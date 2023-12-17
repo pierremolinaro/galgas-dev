@@ -87,7 +87,7 @@ end
        "galgas-random.cpp",
        "C_galgas_CLI_Options.cpp",
        "typeComparisonResult.cpp",
-       "C_Compiler.cpp",
+       "Compiler.cpp",
        "C_Lexique.cpp",
        "C_LocationInSource.cpp",
        "C_SourceTextInString.cpp",

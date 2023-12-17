@@ -23,7 +23,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "galgas2/C_Compiler.h"
+#include "galgas2/Compiler.h"
 #include "galgas2/cProductionNameDescriptor.h"
 #include "galgas2/cTemplateDelimiter.h"
 #include "galgas2/C_galgas_io.h"
@@ -38,13 +38,13 @@ class cIndexingDictionary ;
 //
 //--------------------------------------------------------------------------------------------------
 
-class C_Lexique : public C_Compiler {
+class C_Lexique : public Compiler {
 //--- Constructors and destructor
-  public: C_Lexique (C_Compiler * inCallerCompiler,
+  public: C_Lexique (Compiler * inCallerCompiler,
                      const String & inSourceFileName
                      COMMA_LOCATION_ARGS) ;
 
-  public: C_Lexique (C_Compiler * inCallerCompiler,
+  public: C_Lexique (Compiler * inCallerCompiler,
                      const String & inSourceString,
                      const String & inStringForError
                      COMMA_LOCATION_ARGS) ;

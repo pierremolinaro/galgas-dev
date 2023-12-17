@@ -17,7 +17,7 @@
 
 #include "strings/C_HTMLString.h"
 #include "utilities/MF_MemoryControl.h"
-#include "galgas2/C_Compiler.h"
+#include "galgas2/Compiler.h"
 #include "bdd/C_Relation.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -685,7 +685,7 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
     if (nonTerminal.current_mNonTerminalIndex (HERE).uintValue () == inOriginalGrammarStartSymbol) {
       ioCppFileContents += "void cGrammar_" ;
       ioCppFileContents += inTargetFileName.identifierRepresentation () ;
-      ioCppFileContents += "::performIndexing (C_Compiler * inCompiler,\n"
+      ioCppFileContents += "::performIndexing (Compiler * inCompiler,\n"
                            "             const String & inSourceFilePath) {\n"
                            "  C_Lexique_" ;
       ioCppFileContents += inLexiqueName.identifierRepresentation () ;
@@ -725,7 +725,7 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
                            "}\n\n"
                            "void cGrammar_" ;
       ioCppFileContents += inTargetFileName.identifierRepresentation ();
-      ioCppFileContents += "::performOnlyLexicalAnalysis (C_Compiler * inCompiler,\n"
+      ioCppFileContents += "::performOnlyLexicalAnalysis (Compiler * inCompiler,\n"
                            "             const String & inSourceFilePath) {\n"
                            "  C_Lexique_" ;
       ioCppFileContents += inLexiqueName.identifierRepresentation () ;
@@ -740,7 +740,7 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
                            "}\n\n"
                            "void cGrammar_" ;
       ioCppFileContents += inTargetFileName.identifierRepresentation ();
-      ioCppFileContents += "::performOnlySyntaxAnalysis (C_Compiler * inCompiler,\n"
+      ioCppFileContents += "::performOnlySyntaxAnalysis (Compiler * inCompiler,\n"
                            "             const String & inSourceFilePath) {\n"
                            "  C_Lexique_" ;
       ioCppFileContents += inLexiqueName.identifierRepresentation () ;
@@ -776,7 +776,7 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
         ioCppFileContents += inTargetFileName.identifierRepresentation ();
         ioCppFileContents += "::_performSourceFileParsing_" ;
         ioCppFileContents += currentAltForNonTerminal.current_lkey (HERE).mProperty_string.stringValue ().identifierRepresentation ();
-        ioCppFileContents += " (C_Compiler * inCompiler"
+        ioCppFileContents += " (Compiler * inCompiler"
                              ",\n                                " ;
         if (inSyntaxDirectedTranslationVarName.length() > 0) {
           ioCppFileContents += "String & " ;
@@ -898,7 +898,7 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
         ioCppFileContents += inTargetFileName.identifierRepresentation ();
         ioCppFileContents += "::_performSourceStringParsing_" ;
         ioCppFileContents += currentAltForNonTerminal.current_lkey (HERE).mProperty_string.stringValue ().identifierRepresentation ();
-        ioCppFileContents += " (C_Compiler * inCompiler"
+        ioCppFileContents += " (Compiler * inCompiler"
                             ",\n                                " ;
         if (inSyntaxDirectedTranslationVarName.length() > 0) {
           ioCppFileContents += "String & " ;

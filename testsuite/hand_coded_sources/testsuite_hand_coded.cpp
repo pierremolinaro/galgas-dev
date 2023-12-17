@@ -34,7 +34,7 @@ static void routine_test_dictionary (void) {
 
 //---------------------------------------------------------------------------*
 
-void routine_testsuite_5F_hand_5F_coded (C_Compiler * /* inCompiler */
+void routine_testsuite_5F_hand_5F_coded (Compiler * /* inCompiler */
                                          COMMA_UNUSED_LOCATION_ARGS) {
   routine_test_dictionary () ;
 }
@@ -43,7 +43,7 @@ void routine_testsuite_5F_hand_5F_coded (C_Compiler * /* inCompiler */
 
 GALGAS_uint function_externTestFunction (GALGAS_uint inArg1,
                                          const GALGAS_uint & inArg2,
-                                         C_Compiler * inCompiler
+                                         Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) {
   return inArg1.add_operation (inArg2, inCompiler COMMA_THERE) ;
 }

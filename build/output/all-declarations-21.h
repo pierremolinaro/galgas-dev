@@ -148,27 +148,27 @@ class cGrammar_templateGrammar : public cParser_templateSyntax {
                                                                   C_Lexique_galgasTemplateScanner * inCompiler) ;
 
 //--- Start symbol
-  public: static void _performSourceFileParsing_ (C_Compiler * inCompiler,
+  public: static void _performSourceFileParsing_ (Compiler * inCompiler,
                                                   GALGAS_lstring inFileName,
                                                   GALGAS_templateInstructionListAST & outArgument0
                                                   COMMA_LOCATION_ARGS) ;
 
-  public: static void _performSourceStringParsing_ (C_Compiler * inCompiler,
+  public: static void _performSourceStringParsing_ (Compiler * inCompiler,
                                                     GALGAS_string inSourceString,
                                                     GALGAS_string inNameString,
                                                     GALGAS_templateInstructionListAST & outArgument0
                                                     COMMA_LOCATION_ARGS) ;
 
 //--- Indexing
-  public: static void performIndexing (C_Compiler * inCompiler,
+  public: static void performIndexing (Compiler * inCompiler,
                                        const String & inSourceFilePath) ;
 
 //--- Only lexical analysis
-  public: static void performOnlyLexicalAnalysis (C_Compiler * inCompiler,
+  public: static void performOnlyLexicalAnalysis (Compiler * inCompiler,
                                                   const String & inSourceFilePath) ;
 
 //--- Only syntax analysis
-  public: static void performOnlySyntaxAnalysis (C_Compiler * inCompiler,
+  public: static void performOnlySyntaxAnalysis (Compiler * inCompiler,
                                                  const String & inSourceFilePath) ;
 
 //------------------------------------- 'term_tpl' non terminal
@@ -291,7 +291,7 @@ class GALGAS_optionComponentForGeneration : public GALGAS_semanticDeclarationWit
 
 //--------------------------------- Object extraction
   public: static GALGAS_optionComponentForGeneration extractObject (const GALGAS_object & inObject,
-                                                                    C_Compiler * inCompiler
+                                                                    Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -339,27 +339,27 @@ class cPtr_optionComponentForGeneration : public cPtr_semanticDeclarationWithHea
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension getter headerKind
-  public: virtual class GALGAS_headerKind getter_headerKind (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+  public: virtual class GALGAS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension getter isPredefined
-  public: virtual class GALGAS_bool getter_isPredefined (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+  public: virtual class GALGAS_bool getter_isPredefined (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method appendDeclaration1
   public: virtual void method_appendDeclaration_31_ (class GALGAS_stringset & ioInclusionSet,
            class GALGAS_string & outHeader,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method appendSpecificFiles
   public: virtual void method_appendSpecificFiles (const class GALGAS_string inProductDirectory,
            class GALGAS_stringset & ioAllProductFileSet,
            class GALGAS_stringlist & ioCocoaProductFileList,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method appendSpecificImplementation
   public: virtual void method_appendSpecificImplementation (const class GALGAS_unifiedTypeMap inUnifiedTypeMap,
            class GALGAS_stringset & ioInclusionSet,
            class GALGAS_string & outImplementation,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_bool mProperty_mIsPredefined ;
@@ -410,7 +410,7 @@ class GALGAS_optionComponentForGeneration_2D_weak : public GALGAS_semanticDeclar
   public: GALGAS_optionComponentForGeneration_2D_weak & operator = (const class GALGAS_optionComponentForGeneration & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_optionComponentForGeneration bang_optionComponentForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_optionComponentForGeneration bang_optionComponentForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -419,7 +419,7 @@ class GALGAS_optionComponentForGeneration_2D_weak : public GALGAS_semanticDeclar
 
 //--------------------------------- Object extraction
   public: static GALGAS_optionComponentForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                            C_Compiler * inCompiler
+                                                                            Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -472,7 +472,7 @@ class GALGAS_arrayTypeForGeneration : public GALGAS_semanticTypeForGeneration {
 
 //--------------------------------- Object extraction
   public: static GALGAS_arrayTypeForGeneration extractObject (const GALGAS_object & inObject,
-                                                              C_Compiler * inCompiler
+                                                              Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -517,13 +517,13 @@ class cPtr_arrayTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--- Extension method appendDeclaration1
   public: virtual void method_appendDeclaration_31_ (class GALGAS_stringset & ioInclusionSet,
            class GALGAS_string & outHeader,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method appendSpecificImplementation
   public: virtual void method_appendSpecificImplementation (const class GALGAS_unifiedTypeMap inUnifiedTypeMap,
            class GALGAS_stringset & ioInclusionSet,
            class GALGAS_string & outImplementation,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_unifiedTypeMapEntry mProperty_mElementTypeEntry ;
@@ -565,7 +565,7 @@ class GALGAS_arrayTypeForGeneration_2D_weak : public GALGAS_semanticTypeForGener
   public: GALGAS_arrayTypeForGeneration_2D_weak & operator = (const class GALGAS_arrayTypeForGeneration & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_arrayTypeForGeneration bang_arrayTypeForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_arrayTypeForGeneration bang_arrayTypeForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -574,7 +574,7 @@ class GALGAS_arrayTypeForGeneration_2D_weak : public GALGAS_semanticTypeForGener
 
 //--------------------------------- Object extraction
   public: static GALGAS_arrayTypeForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                      C_Compiler * inCompiler
+                                                                      Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -613,7 +613,7 @@ void extensionSetter_insertDeclaredLocalVariable (class GALGAS_localVarManager &
                                                   const class GALGAS_unifiedTypeMapEntry constin_inType,
                                                   const class GALGAS_string constin_inCppName,
                                                   const class GALGAS_string constin_inNameForCheckingFormalParameterUsing,
-                                                  class C_Compiler * inCompiler
+                                                  class Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -625,7 +625,7 @@ void extensionSetter_insertDeclaredLocalVariable (class GALGAS_localVarManager &
 void extensionMethod_displayRule (const class GALGAS_productionRuleListForGrammarAnalysis_2D_element inObject,
                                   const class GALGAS_string constin_inSyntaxComponentName,
                                   class GALGAS_string & io_ioGeneratedCode,
-                                  class C_Compiler * inCompiler
+                                  class Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -635,7 +635,7 @@ void extensionMethod_displayRule (const class GALGAS_productionRuleListForGramma
 //--------------------------------------------------------------------------------------------------
 
 void routine_println (const class GALGAS_string constinArgument0,
-                      class C_Compiler * inCompiler
+                      class Compiler * inCompiler
                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -645,7 +645,7 @@ void routine_println (const class GALGAS_string constinArgument0,
 //--------------------------------------------------------------------------------------------------
 
 void routine_print (const class GALGAS_string constinArgument0,
-                    class C_Compiler * inCompiler
+                    class Compiler * inCompiler
                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -671,7 +671,7 @@ extern const cDirectoryWrapper gWrapperDirectory_0_projectCreationFileWrapper ;
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_project (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_project (class Compiler * inCompiler,
                                                                                  const class GALGAS_string & in_PROJECT_5F_NAME
                                                                                  COMMA_LOCATION_ARGS) ;
 
@@ -681,7 +681,7 @@ GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_project 
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_cocoa (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_cocoa (class Compiler * inCompiler,
                                                                                const class GALGAS_string & in_PROJECT_5F_NAME
                                                                                COMMA_LOCATION_ARGS) ;
 
@@ -691,7 +691,7 @@ GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_cocoa (c
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_grammar (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_grammar (class Compiler * inCompiler,
                                                                                  const class GALGAS_string & in_PROJECT_5F_NAME
                                                                                  COMMA_LOCATION_ARGS) ;
 
@@ -701,7 +701,7 @@ GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_grammar 
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_lexique (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_lexique (class Compiler * inCompiler,
                                                                                  const class GALGAS_string & in_PROJECT_5F_NAME
                                                                                  COMMA_LOCATION_ARGS) ;
 
@@ -711,7 +711,7 @@ GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_lexique 
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_options (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_options (class Compiler * inCompiler,
                                                                                  const class GALGAS_string & in_PROJECT_5F_NAME
                                                                                  COMMA_LOCATION_ARGS) ;
 
@@ -721,7 +721,7 @@ GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_options 
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_program (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_program (class Compiler * inCompiler,
                                                                                  const class GALGAS_string & in_PROJECT_5F_NAME
                                                                                  COMMA_LOCATION_ARGS) ;
 
@@ -731,7 +731,7 @@ GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_program 
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_semantics (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_semantics (class Compiler * inCompiler,
                                                                                    const class GALGAS_string & in_PROJECT_5F_NAME
                                                                                    COMMA_LOCATION_ARGS) ;
 
@@ -741,7 +741,7 @@ GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_semantic
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_syntax (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_syntax (class Compiler * inCompiler,
                                                                                 const class GALGAS_string & in_PROJECT_5F_NAME
                                                                                 COMMA_LOCATION_ARGS) ;
 
@@ -752,7 +752,7 @@ GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_syntax (
 //--------------------------------------------------------------------------------------------------
 
 void routine_performProjectCreation (const class GALGAS_string constinArgument0,
-                                     class C_Compiler * inCompiler
+                                     class Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -762,7 +762,7 @@ void routine_performProjectCreation (const class GALGAS_string constinArgument0,
 //--------------------------------------------------------------------------------------------------
 
 void routine_projectCreation (const class GALGAS_string constinArgument0,
-                              class C_Compiler * inCompiler
+                              class Compiler * inCompiler
                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -775,7 +775,7 @@ void routine_checkAssignmentTypeWithImplicitGetterCall (const class GALGAS_unifi
                                                         const class GALGAS_unifiedTypeMapEntry constinArgument1,
                                                         const class GALGAS_location constinArgument2,
                                                         class GALGAS_semanticExpressionForGeneration & ioArgument3,
-                                                        class C_Compiler * inCompiler
+                                                        class Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -789,7 +789,7 @@ void routine_checkDiadicOperator (const class GALGAS_bool constinArgument0,
                                   const class GALGAS_location constinArgument2,
                                   class GALGAS_semanticExpressionForGeneration & ioArgument3,
                                   class GALGAS_semanticExpressionForGeneration & ioArgument4,
-                                  class C_Compiler * inCompiler
+                                  class Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -799,7 +799,7 @@ void routine_checkDiadicOperator (const class GALGAS_bool constinArgument0,
 //--------------------------------------------------------------------------------------------------
 
 class GALGAS_lstring function_optionNameForUsefulEntitiesGraph (const class GALGAS_lstring & constinArgument0,
-                                                                class C_Compiler * inCompiler
+                                                                class Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -809,7 +809,7 @@ class GALGAS_lstring function_optionNameForUsefulEntitiesGraph (const class GALG
 //--------------------------------------------------------------------------------------------------
 
 class GALGAS_lstring function_functionNameForUsefulEntitiesGraph (const class GALGAS_lstring & constinArgument0,
-                                                                  class C_Compiler * inCompiler
+                                                                  class Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -824,7 +824,7 @@ void routine_templateInstructionListAnalysis (const class GALGAS_lstring constin
                                               class GALGAS_unifiedTypeMap & ioArgument3,
                                               const class GALGAS_templateInstructionListAST constinArgument4,
                                               class GALGAS_templateInstructionListForGeneration & ioArgument5,
-                                              class C_Compiler * inCompiler
+                                              class Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -839,7 +839,7 @@ void routine_templateCodeGenerationForListInstruction (const class GALGAS_templa
                                                        class GALGAS_uint & ioArgument3,
                                                        class GALGAS_stringset & ioArgument4,
                                                        class GALGAS_bool & ioArgument5,
-                                                       class C_Compiler * inCompiler
+                                                       class Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -848,7 +848,7 @@ void routine_templateCodeGenerationForListInstruction (const class GALGAS_templa
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_lexicalTypeMap function_buildLexicalTypeMap (class C_Compiler * inCompiler
+class GALGAS_lexicalTypeMap function_buildLexicalTypeMap (class Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -860,7 +860,7 @@ class GALGAS_lexicalTypeMap function_buildLexicalTypeMap (class C_Compiler * inC
 void routine_buildLexicalAttributeMap (const class GALGAS_lexicalTypeMap constinArgument0,
                                        const class GALGAS_lexicalAttributeListAST constinArgument1,
                                        class GALGAS_lexicalAttributeMap & ioArgument2,
-                                       class C_Compiler * inCompiler
+                                       class Compiler * inCompiler
                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -886,7 +886,7 @@ extern const cDirectoryWrapper gWrapperDirectory_0_lexiqueGenerationTemplates ;
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_headerZone_32_ (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_headerZone_32_ (class Compiler * inCompiler,
                                                                              const class GALGAS_string & in_LEXIQUE_5F_IDENTIFIER,
                                                                              const class GALGAS_lexicalListDeclarationListAST & in_DELIMITOR_5F_LIST_5F_LIST,
                                                                              const class GALGAS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT,
@@ -900,7 +900,7 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_headerZone_32_ (cla
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_implementationZone_32_Galgas_33_ (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_implementationZone_32_Galgas_33_ (class Compiler * inCompiler,
                                                                                                const class GALGAS_string & in_LEXIQUE_5F_IDENTIFIER,
                                                                                                const class GALGAS_bool & in_USE_5F_LOOP_5F_LOCAL_5F_VARIABLE,
                                                                                                const class GALGAS_lexicalAttributeMap & in_LEXICAL_5F_ATTRIBUTE_5F_MAP,
@@ -922,7 +922,7 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_implementationZone_
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_cocoaHeaderZone_32_ (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_cocoaHeaderZone_32_ (class Compiler * inCompiler,
                                                                                   const class GALGAS_string & in_LEXIQUE_5F_CLASS_5F_NAME,
                                                                                   const class GALGAS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT
                                                                                   COMMA_LOCATION_ARGS) ;
@@ -933,7 +933,7 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_cocoaHeaderZone_32_
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_cocoaImplementationZone_32_ (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_cocoaImplementationZone_32_ (class Compiler * inCompiler,
                                                                                           const class GALGAS_string & in_LEXIQUE_5F_HEADER_5F_FILE_5F_NAME,
                                                                                           const class GALGAS_string & in_LEXIQUE_5F_CLASS_5F_NAME,
                                                                                           const class GALGAS_lexicalAttributeMap & in_LEXICAL_5F_ATTRIBUTE_5F_MAP,
@@ -954,7 +954,7 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_cocoaImplementation
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_swiftCocoaImplementationZone_32_ (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_swiftCocoaImplementationZone_32_ (class Compiler * inCompiler,
                                                                                                const class GALGAS_string & in_LEXIQUE_5F_HEADER_5F_FILE_5F_NAME,
                                                                                                const class GALGAS_string & in_LEXIQUE_5F_CLASS_5F_NAME,
                                                                                                const class GALGAS_lexicalAttributeMap & in_LEXICAL_5F_ATTRIBUTE_5F_MAP,
@@ -976,7 +976,7 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_swiftCocoaImplement
 //--------------------------------------------------------------------------------------------------
 
 class GALGAS_lstring function_lexiqueNameForUsefulEntitiesGraph (const class GALGAS_lstring & constinArgument0,
-                                                                 class C_Compiler * inCompiler
+                                                                 class Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -986,7 +986,7 @@ class GALGAS_lstring function_lexiqueNameForUsefulEntitiesGraph (const class GAL
 //--------------------------------------------------------------------------------------------------
 
 void routine_buildLexicalFunctionMap (class GALGAS_lexicalFunctionMap & outArgument0,
-                                      class C_Compiler * inCompiler
+                                      class Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -996,7 +996,7 @@ void routine_buildLexicalFunctionMap (class GALGAS_lexicalFunctionMap & outArgum
 //--------------------------------------------------------------------------------------------------
 
 void routine_buildLexicalRoutineMap (class GALGAS_lexicalRoutineMap & outArgument0,
-                                     class C_Compiler * inCompiler
+                                     class Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1006,6 +1006,6 @@ void routine_buildLexicalRoutineMap (class GALGAS_lexicalRoutineMap & outArgumen
 //--------------------------------------------------------------------------------------------------
 
 void routine_lexicalUnicodeTestFunctionAnalysis (class GALGAS_stringset & outArgument0,
-                                                 class C_Compiler * inCompiler
+                                                 class Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 

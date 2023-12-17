@@ -20,7 +20,7 @@
 
 #include "galgas2/cLexiqueIntrospection.h"
 #include "galgas2/C_galgas_CLI_Options.h"
-#include "galgas2/C_Compiler.h"
+#include "galgas2/Compiler.h"
 #include "files/C_FileManager.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -66,7 +66,7 @@ void cLexiqueIntrospection::getKeywordListForIdentifier (const String & inIdenti
 
 //--------------------------------------------------------------------------------------------------
 
-void cLexiqueIntrospection::handleGetKeywordListOption (C_Compiler * inCompiler) {
+void cLexiqueIntrospection::handleGetKeywordListOption (Compiler * inCompiler) {
   const String option = gOption_galgas_5F_builtin_5F_options_outputKeywordList.readProperty_value () ;
   if (option != "") {
     const String optionFormat = "lexique_name:list_name:columns:prefix:postfix:path" ;

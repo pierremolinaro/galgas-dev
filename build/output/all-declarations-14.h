@@ -28,11 +28,11 @@ typedef cTokenFor_galgasScanner cTokenFor_galgasTemplateScanner ;
 
 class C_Lexique_galgasTemplateScanner : public C_Lexique_galgasScanner {
 //--- Constructors
-  public: C_Lexique_galgasTemplateScanner (C_Compiler * inCallerCompiler,
+  public: C_Lexique_galgasTemplateScanner (Compiler * inCallerCompiler,
                        const String & inSourceFileName
                        COMMA_LOCATION_ARGS) ;
 
-  public: C_Lexique_galgasTemplateScanner (C_Compiler * inCallerCompiler,
+  public: C_Lexique_galgasTemplateScanner (Compiler * inCallerCompiler,
                        const String & inSourceString,
                        const String & inStringForError
                        COMMA_LOCATION_ARGS) ;
@@ -494,7 +494,7 @@ class cParser_templateSyntax {
 //--------------------------------------------------------------------------------------------------
 
 void routine_enterTemplateString (class GALGAS_templateInstructionListAST & ioArgument0,
-                                  class C_Compiler * inCompiler
+                                  class Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -520,7 +520,7 @@ class GALGAS_templateInstructionStringForGeneration : public GALGAS_templateInst
 
 //--------------------------------- Object extraction
   public: static GALGAS_templateInstructionStringForGeneration extractObject (const GALGAS_object & inObject,
-                                                                              C_Compiler * inCompiler
+                                                                              Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -566,7 +566,7 @@ class cPtr_templateInstructionStringForGeneration : public cPtr_templateInstruct
            class GALGAS_uint & ioTemporaryVariableIndex,
            class GALGAS_stringset & ioUnusedVariableCppNameSet,
            class GALGAS_bool & ioUseColumnMarker,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_string mProperty_mTemplateString ;
@@ -605,7 +605,7 @@ class GALGAS_templateInstructionStringForGeneration_2D_weak : public GALGAS_temp
   public: GALGAS_templateInstructionStringForGeneration_2D_weak & operator = (const class GALGAS_templateInstructionStringForGeneration & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_templateInstructionStringForGeneration bang_templateInstructionStringForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_templateInstructionStringForGeneration bang_templateInstructionStringForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -614,7 +614,7 @@ class GALGAS_templateInstructionStringForGeneration_2D_weak : public GALGAS_temp
 
 //--------------------------------- Object extraction
   public: static GALGAS_templateInstructionStringForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                                      C_Compiler * inCompiler
+                                                                                      Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -658,7 +658,7 @@ class GALGAS_lexiqueComponentAST_2D_weak : public GALGAS_semanticDeclarationAST_
   public: GALGAS_lexiqueComponentAST_2D_weak & operator = (const class GALGAS_lexiqueComponentAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_lexiqueComponentAST bang_lexiqueComponentAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_lexiqueComponentAST bang_lexiqueComponentAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -667,7 +667,7 @@ class GALGAS_lexiqueComponentAST_2D_weak : public GALGAS_semanticDeclarationAST_
 
 //--------------------------------- Object extraction
   public: static GALGAS_lexiqueComponentAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                   C_Compiler * inCompiler
+                                                                   Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -720,7 +720,7 @@ class GALGAS_semanticDeclarationWithHeaderForGeneration : public GALGAS_semantic
 
 //--------------------------------- Object extraction
   public: static GALGAS_semanticDeclarationWithHeaderForGeneration extractObject (const GALGAS_object & inObject,
-                                                                                  C_Compiler * inCompiler
+                                                                                  Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -757,16 +757,16 @@ class cPtr_semanticDeclarationWithHeaderForGeneration : public cPtr_semanticDecl
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension getter hasCppHeaderFile
-  public: virtual class GALGAS_bool getter_hasCppHeaderFile (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+  public: virtual class GALGAS_bool getter_hasCppHeaderFile (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension getter headerKind
-  public: virtual class GALGAS_headerKind getter_headerKind (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+  public: virtual class GALGAS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension getter implementationCppFileName
-  public: virtual class GALGAS_string getter_implementationCppFileName (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+  public: virtual class GALGAS_string getter_implementationCppFileName (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension getter isPredefined
-  public: virtual class GALGAS_bool getter_isPredefined (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+  public: virtual class GALGAS_bool getter_isPredefined (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_bool mProperty_mHasHeader ;
@@ -804,7 +804,7 @@ class GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak : public GALGAS_
   public: GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak & operator = (const class GALGAS_semanticDeclarationWithHeaderForGeneration & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_semanticDeclarationWithHeaderForGeneration bang_semanticDeclarationWithHeaderForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_semanticDeclarationWithHeaderForGeneration bang_semanticDeclarationWithHeaderForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -813,7 +813,7 @@ class GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak : public GALGAS_
 
 //--------------------------------- Object extraction
   public: static GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                                          C_Compiler * inCompiler
+                                                                                          Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -864,7 +864,7 @@ class GALGAS_semanticTypeForGeneration : public GALGAS_semanticDeclarationForGen
 
 //--------------------------------- Object extraction
   public: static GALGAS_semanticTypeForGeneration extractObject (const GALGAS_object & inObject,
-                                                                 C_Compiler * inCompiler
+                                                                 Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -901,19 +901,19 @@ class cPtr_semanticTypeForGeneration : public cPtr_semanticDeclarationForGenerat
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension getter appendTypeGenericImplementation
-  public: virtual class GALGAS_string getter_appendTypeGenericImplementation (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+  public: virtual class GALGAS_string getter_appendTypeGenericImplementation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension getter hasCppHeaderFile
-  public: virtual class GALGAS_bool getter_hasCppHeaderFile (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+  public: virtual class GALGAS_bool getter_hasCppHeaderFile (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension getter headerKind
-  public: virtual class GALGAS_headerKind getter_headerKind (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+  public: virtual class GALGAS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension getter implementationCppFileName
-  public: virtual class GALGAS_string getter_implementationCppFileName (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+  public: virtual class GALGAS_string getter_implementationCppFileName (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension getter isPredefined
-  public: virtual class GALGAS_bool getter_isPredefined (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+  public: virtual class GALGAS_bool getter_isPredefined (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_unifiedTypeMapEntry mProperty_mSelfTypeEntry ;
@@ -949,7 +949,7 @@ class GALGAS_semanticTypeForGeneration_2D_weak : public GALGAS_semanticDeclarati
   public: GALGAS_semanticTypeForGeneration_2D_weak & operator = (const class GALGAS_semanticTypeForGeneration & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_semanticTypeForGeneration bang_semanticTypeForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_semanticTypeForGeneration bang_semanticTypeForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -958,7 +958,7 @@ class GALGAS_semanticTypeForGeneration_2D_weak : public GALGAS_semanticDeclarati
 
 //--------------------------------- Object extraction
   public: static GALGAS_semanticTypeForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                         C_Compiler * inCompiler
+                                                                         Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -1009,7 +1009,7 @@ class GALGAS_boolsetTypeForGeneration : public GALGAS_semanticTypeForGeneration 
 
 //--------------------------------- Object extraction
   public: static GALGAS_boolsetTypeForGeneration extractObject (const GALGAS_object & inObject,
-                                                                C_Compiler * inCompiler
+                                                                Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -1053,13 +1053,13 @@ class cPtr_boolsetTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--- Extension method appendDeclaration1
   public: virtual void method_appendDeclaration_31_ (class GALGAS_stringset & ioInclusionSet,
            class GALGAS_string & outHeader,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method appendSpecificImplementation
   public: virtual void method_appendSpecificImplementation (const class GALGAS_unifiedTypeMap inUnifiedTypeMap,
            class GALGAS_stringset & ioInclusionSet,
            class GALGAS_string & outImplementation,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstringlist mProperty_mFlagList ;
@@ -1099,7 +1099,7 @@ class GALGAS_boolsetTypeForGeneration_2D_weak : public GALGAS_semanticTypeForGen
   public: GALGAS_boolsetTypeForGeneration_2D_weak & operator = (const class GALGAS_boolsetTypeForGeneration & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_boolsetTypeForGeneration bang_boolsetTypeForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_boolsetTypeForGeneration bang_boolsetTypeForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -1108,7 +1108,7 @@ class GALGAS_boolsetTypeForGeneration_2D_weak : public GALGAS_semanticTypeForGen
 
 //--------------------------------- Object extraction
   public: static GALGAS_boolsetTypeForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                        C_Compiler * inCompiler
+                                                                        Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -1169,7 +1169,7 @@ class GALGAS_classTypeForGeneration : public GALGAS_semanticTypeForGeneration {
 
 //--------------------------------- Object extraction
   public: static GALGAS_classTypeForGeneration extractObject (const GALGAS_object & inObject,
-                                                              C_Compiler * inCompiler
+                                                              Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -1218,19 +1218,19 @@ class cPtr_classTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--- Extension method appendDeclaration1
   public: virtual void method_appendDeclaration_31_ (class GALGAS_stringset & ioInclusionSet,
            class GALGAS_string & outHeader,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method appendDeclaration2
   public: virtual void method_appendDeclaration_32_ (const class GALGAS_string inOutputDirectory,
            class GALGAS_stringset & ioInclusionSet,
            class GALGAS_string & outHeader,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method appendSpecificImplementation
   public: virtual void method_appendSpecificImplementation (const class GALGAS_unifiedTypeMap inUnifiedTypeMap,
            class GALGAS_stringset & ioInclusionSet,
            class GALGAS_string & outImplementation,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_bool mProperty_mIsAbstract ;
@@ -1280,7 +1280,7 @@ class GALGAS_classTypeForGeneration_2D_weak : public GALGAS_semanticTypeForGener
   public: GALGAS_classTypeForGeneration_2D_weak & operator = (const class GALGAS_classTypeForGeneration & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_classTypeForGeneration bang_classTypeForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_classTypeForGeneration bang_classTypeForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -1289,7 +1289,7 @@ class GALGAS_classTypeForGeneration_2D_weak : public GALGAS_semanticTypeForGener
 
 //--------------------------------- Object extraction
   public: static GALGAS_classTypeForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                      C_Compiler * inCompiler
+                                                                      Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -1348,7 +1348,7 @@ class GALGAS_weakReferenceTypeForGeneration : public GALGAS_semanticTypeForGener
 
 //--------------------------------- Object extraction
   public: static GALGAS_weakReferenceTypeForGeneration extractObject (const GALGAS_object & inObject,
-                                                                      C_Compiler * inCompiler
+                                                                      Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -1396,13 +1396,13 @@ class cPtr_weakReferenceTypeForGeneration : public cPtr_semanticTypeForGeneratio
 //--- Extension method appendDeclaration1
   public: virtual void method_appendDeclaration_31_ (class GALGAS_stringset & ioInclusionSet,
            class GALGAS_string & outHeader,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method appendSpecificImplementation
   public: virtual void method_appendSpecificImplementation (const class GALGAS_unifiedTypeMap inUnifiedTypeMap,
            class GALGAS_stringset & ioInclusionSet,
            class GALGAS_string & outImplementation,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_unifiedTypeMapEntry mProperty_mReferenceClassType ;

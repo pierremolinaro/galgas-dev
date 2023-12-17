@@ -24,7 +24,7 @@
 //--------------------------------------------------------------------------------------------------
 
 cObjectArray::cObjectArray (const GALGAS_objectlist & inObjectList,
-                            C_Compiler * inCompiler
+                            Compiler * inCompiler
                             COMMA_LOCATION_ARGS) :
 mArray (nullptr),
 mCount (0) {

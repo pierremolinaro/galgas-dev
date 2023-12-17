@@ -21,7 +21,7 @@
 #include "all-predefined-types.h"
 #include "utilities/MF_MemoryControl.h"
 #include "galgas2/cCollectionElement.h"
-#include "galgas2/C_Compiler.h"
+#include "galgas2/Compiler.h"
 
 //--------------------------------------------------------------------------------------------------
 //   cCollectionElement_stringset
@@ -672,7 +672,7 @@ void GALGAS_stringset::insulate (LOCATION_ARGS) {
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_stringset::setter_insert (const GALGAS_string inKey,
-                                      C_Compiler * /* inCompiler */
+                                      Compiler * /* inCompiler */
                                       COMMA_LOCATION_ARGS) {
   if (isValid () && (inKey.isValid ())) {
     #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -814,7 +814,7 @@ GALGAS_stringset GALGAS_stringset::operator_or (const GALGAS_stringset & inOpera
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_stringset::plusAssign_operation (const GALGAS_stringset inOperand2,
-                                             C_Compiler *
+                                             Compiler *
                                              COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand2.isValid ()) {
     #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -844,7 +844,7 @@ void GALGAS_stringset::plusAssign_operation (const GALGAS_stringset inOperand2,
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_stringset GALGAS_stringset::substract_operation (const GALGAS_stringset & inOperand2,
-                                                        C_Compiler * /* inCompiler */
+                                                        Compiler * /* inCompiler */
                                                         COMMA_LOCATION_ARGS) const {
   GALGAS_stringset result ;
   if (isValid () && inOperand2.isValid ()) {
@@ -909,7 +909,7 @@ GALGAS_uint GALGAS_stringset::getter_count (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_stringset::getter_anyString (C_Compiler * inCompiler
+GALGAS_string GALGAS_stringset::getter_anyString (Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {

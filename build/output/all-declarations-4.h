@@ -35,7 +35,7 @@ class GALGAS_sortedListDeclarationAST : public GALGAS_semanticDeclarationAST {
 
 //--------------------------------- Object extraction
   public: static GALGAS_sortedListDeclarationAST extractObject (const GALGAS_object & inObject,
-                                                                C_Compiler * inCompiler
+                                                                Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -79,11 +79,11 @@ class cPtr_sortedListDeclarationAST : public cPtr_semanticDeclarationAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension getter keyRepresentation
-  public: virtual class GALGAS_string getter_keyRepresentation (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+  public: virtual class GALGAS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method addAssociatedElement
   public: virtual void method_addAssociatedElement (class GALGAS_semanticDeclarationListAST & ioSemanticDeclarationList,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & ioSemanticTypePrecedenceGraph,
@@ -91,7 +91,7 @@ class cPtr_sortedListDeclarationAST : public cPtr_semanticDeclarationAST {
            class GALGAS_extensionGetterMapForBuildingContext & ioExtensionGetterMapForBuildingContext,
            class GALGAS_extensionSetterMapForBuildingContext & ioExtensionSetterMapForBuildingContext,
            class GALGAS_semanticDeclarationListAST & ioExtensionOverrideDefinitionList,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInSemanticContext
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
@@ -99,7 +99,7 @@ class cPtr_sortedListDeclarationAST : public cPtr_semanticDeclarationAST {
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
            class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method semanticAnalysis
   public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & ioUsefulnessRootEntities,
@@ -109,7 +109,7 @@ class cPtr_sortedListDeclarationAST : public cPtr_semanticDeclarationAST {
            class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_predefinedTypes inPredefinedTypes,
            class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mSortedListTypeName ;
@@ -153,7 +153,7 @@ class GALGAS_sortedListDeclarationAST_2D_weak : public GALGAS_semanticDeclaratio
   public: GALGAS_sortedListDeclarationAST_2D_weak & operator = (const class GALGAS_sortedListDeclarationAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_sortedListDeclarationAST bang_sortedListDeclarationAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_sortedListDeclarationAST bang_sortedListDeclarationAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -162,7 +162,7 @@ class GALGAS_sortedListDeclarationAST_2D_weak : public GALGAS_semanticDeclaratio
 
 //--------------------------------- Object extraction
   public: static GALGAS_sortedListDeclarationAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                        C_Compiler * inCompiler
+                                                                        Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -217,7 +217,7 @@ class GALGAS_sortDescriptorListForGeneration : public AC_GALGAS_list {
 
 //--------------------------------- Object extraction
   public: static GALGAS_sortDescriptorListForGeneration extractObject (const GALGAS_object & inObject,
-                                                                       C_Compiler * inCompiler
+                                                                       Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -230,7 +230,7 @@ class GALGAS_sortDescriptorListForGeneration : public AC_GALGAS_list {
 
 //--------------------------------- += operator (with expression)
   public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_sortDescriptorListForGeneration inOperand,
-                                                       class C_Compiler * inCompiler
+                                                       class Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
@@ -240,7 +240,7 @@ class GALGAS_sortDescriptorListForGeneration : public AC_GALGAS_list {
                                                      COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GALGAS_sortDescriptorListForGeneration add_operation (const GALGAS_sortDescriptorListForGeneration & inOperand,
-                                                                                 C_Compiler * inCompiler
+                                                                                 Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) const ;
 
 
@@ -248,48 +248,48 @@ class GALGAS_sortDescriptorListForGeneration : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_unifiedTypeMapEntry constinArgument0,
                                                class GALGAS_string constinArgument1,
                                                class GALGAS_bool constinArgument2,
-                                               C_Compiler * inCompiler
+                                               Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_unifiedTypeMapEntry constinArgument0,
                                                       class GALGAS_string constinArgument1,
                                                       class GALGAS_bool constinArgument2,
                                                       class GALGAS_uint constinArgument3,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popFirst (class GALGAS_unifiedTypeMapEntry & outArgument0,
                                                  class GALGAS_string & outArgument1,
                                                  class GALGAS_bool & outArgument2,
-                                                 C_Compiler * inCompiler
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popLast (class GALGAS_unifiedTypeMapEntry & outArgument0,
                                                 class GALGAS_string & outArgument1,
                                                 class GALGAS_bool & outArgument2,
-                                                C_Compiler * inCompiler
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GALGAS_unifiedTypeMapEntry & outArgument0,
                                                       class GALGAS_string & outArgument1,
                                                       class GALGAS_bool & outArgument2,
                                                       class GALGAS_uint constinArgument3,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMAscendingOrderAtIndex (class GALGAS_bool constinArgument0,
                                                                   class GALGAS_uint constinArgument1,
-                                                                  C_Compiler * inCompiler
+                                                                  Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMAttributeNameAtIndex (class GALGAS_string constinArgument0,
                                                                  class GALGAS_uint constinArgument1,
-                                                                 C_Compiler * inCompiler
+                                                                 Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMAttributeTypeIndexAtIndex (class GALGAS_unifiedTypeMapEntry constinArgument0,
                                                                       class GALGAS_uint constinArgument1,
-                                                                      C_Compiler * inCompiler
+                                                                      Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
 
 
@@ -297,40 +297,40 @@ class GALGAS_sortDescriptorListForGeneration : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG void method_first (class GALGAS_unifiedTypeMapEntry & outArgument0,
                                               class GALGAS_string & outArgument1,
                                               class GALGAS_bool & outArgument2,
-                                              C_Compiler * inCompiler
+                                              Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG void method_last (class GALGAS_unifiedTypeMapEntry & outArgument0,
                                              class GALGAS_string & outArgument1,
                                              class GALGAS_bool & outArgument2,
-                                             C_Compiler * inCompiler
+                                             Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_mAscendingOrderAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                            C_Compiler * inCompiler
+                                                                            Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_string getter_mAttributeNameAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                             C_Compiler * inCompiler
+                                                                             Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMapEntry getter_mAttributeTypeIndexAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                               C_Compiler * inCompiler
+                                                                                               Compiler * inCompiler
                                                                                                COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_sortDescriptorListForGeneration getter_subListFromIndex (const class GALGAS_uint & constinOperand0,
-                                                                                                 C_Compiler * inCompiler
+                                                                                                 Compiler * inCompiler
                                                                                                  COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_sortDescriptorListForGeneration getter_subListToIndex (const class GALGAS_uint & constinOperand0,
-                                                                                               C_Compiler * inCompiler
+                                                                                               Compiler * inCompiler
                                                                                                COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_sortDescriptorListForGeneration getter_subListWithRange (const class GALGAS_range & constinOperand0,
-                                                                                                 C_Compiler * inCompiler
+                                                                                                 Compiler * inCompiler
                                                                                                  COMMA_LOCATION_ARGS) const ;
 
 
@@ -422,14 +422,14 @@ class GALGAS_sortDescriptorListForGeneration_2D_element : public AC_GALGAS_root 
 
 //--------------------------------- Object extraction
   public: static GALGAS_sortDescriptorListForGeneration_2D_element extractObject (const GALGAS_object & inObject,
-                                                                                  C_Compiler * inCompiler
+                                                                                  Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_sortDescriptorListForGeneration_2D_element constructor_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
                                                                                           const class GALGAS_string & inOperand1,
                                                                                           const class GALGAS_bool & inOperand2,
-                                                                                          class C_Compiler * inCompiler
+                                                                                          class Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -484,7 +484,7 @@ class GALGAS_structDeclarationAST : public GALGAS_semanticDeclarationAST {
 
 //--------------------------------- Object extraction
   public: static GALGAS_structDeclarationAST extractObject (const GALGAS_object & inObject,
-                                                            C_Compiler * inCompiler
+                                                            Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -528,7 +528,7 @@ class cPtr_structDeclarationAST : public cPtr_semanticDeclarationAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension getter keyRepresentation
-  public: virtual class GALGAS_string getter_keyRepresentation (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+  public: virtual class GALGAS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & ioSemanticTypePrecedenceGraph,
@@ -536,7 +536,7 @@ class cPtr_structDeclarationAST : public cPtr_semanticDeclarationAST {
            class GALGAS_extensionGetterMapForBuildingContext & ioExtensionGetterMapForBuildingContext,
            class GALGAS_extensionSetterMapForBuildingContext & ioExtensionSetterMapForBuildingContext,
            class GALGAS_semanticDeclarationListAST & ioExtensionOverrideDefinitionList,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInSemanticContext
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
@@ -544,7 +544,7 @@ class cPtr_structDeclarationAST : public cPtr_semanticDeclarationAST {
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
            class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method semanticAnalysis
   public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & ioUsefulnessRootEntities,
@@ -554,7 +554,7 @@ class cPtr_structDeclarationAST : public cPtr_semanticDeclarationAST {
            class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_predefinedTypes inPredefinedTypes,
            class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mStructTypeName ;
@@ -598,7 +598,7 @@ class GALGAS_structDeclarationAST_2D_weak : public GALGAS_semanticDeclarationAST
   public: GALGAS_structDeclarationAST_2D_weak & operator = (const class GALGAS_structDeclarationAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_structDeclarationAST bang_structDeclarationAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_structDeclarationAST bang_structDeclarationAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -607,7 +607,7 @@ class GALGAS_structDeclarationAST_2D_weak : public GALGAS_semanticDeclarationAST
 
 //--------------------------------- Object extraction
   public: static GALGAS_structDeclarationAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                    C_Compiler * inCompiler
+                                                                    Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -660,7 +660,7 @@ class GALGAS_typealiasDeclarationAST : public GALGAS_semanticDeclarationAST {
 
 //--------------------------------- Object extraction
   public: static GALGAS_typealiasDeclarationAST extractObject (const GALGAS_object & inObject,
-                                                               C_Compiler * inCompiler
+                                                               Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -703,11 +703,11 @@ class cPtr_typealiasDeclarationAST : public cPtr_semanticDeclarationAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension getter keyRepresentation
-  public: virtual class GALGAS_string getter_keyRepresentation (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+  public: virtual class GALGAS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method addAssociatedElement
   public: virtual void method_addAssociatedElement (class GALGAS_semanticDeclarationListAST & ioSemanticDeclarationList,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & ioSemanticTypePrecedenceGraph,
@@ -715,7 +715,7 @@ class cPtr_typealiasDeclarationAST : public cPtr_semanticDeclarationAST {
            class GALGAS_extensionGetterMapForBuildingContext & ioExtensionGetterMapForBuildingContext,
            class GALGAS_extensionSetterMapForBuildingContext & ioExtensionSetterMapForBuildingContext,
            class GALGAS_semanticDeclarationListAST & ioExtensionOverrideDefinitionList,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInSemanticContext
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
@@ -723,7 +723,7 @@ class cPtr_typealiasDeclarationAST : public cPtr_semanticDeclarationAST {
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
            class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method semanticAnalysis
   public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & ioUsefulnessRootEntities,
@@ -733,7 +733,7 @@ class cPtr_typealiasDeclarationAST : public cPtr_semanticDeclarationAST {
            class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_predefinedTypes inPredefinedTypes,
            class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mAliasTypeName ;
@@ -775,7 +775,7 @@ class GALGAS_typealiasDeclarationAST_2D_weak : public GALGAS_semanticDeclaration
   public: GALGAS_typealiasDeclarationAST_2D_weak & operator = (const class GALGAS_typealiasDeclarationAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_typealiasDeclarationAST bang_typealiasDeclarationAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_typealiasDeclarationAST bang_typealiasDeclarationAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -784,7 +784,7 @@ class GALGAS_typealiasDeclarationAST_2D_weak : public GALGAS_semanticDeclaration
 
 //--------------------------------- Object extraction
   public: static GALGAS_typealiasDeclarationAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                       C_Compiler * inCompiler
+                                                                       Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -841,7 +841,7 @@ class GALGAS_formalInputParameterListAST : public AC_GALGAS_list {
 
 //--------------------------------- Object extraction
   public: static GALGAS_formalInputParameterListAST extractObject (const GALGAS_object & inObject,
-                                                                   C_Compiler * inCompiler
+                                                                   Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -856,7 +856,7 @@ class GALGAS_formalInputParameterListAST : public AC_GALGAS_list {
 
 //--------------------------------- += operator (with expression)
   public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_formalInputParameterListAST inOperand,
-                                                       class C_Compiler * inCompiler
+                                                       class Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
@@ -868,7 +868,7 @@ class GALGAS_formalInputParameterListAST : public AC_GALGAS_list {
                                                      COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GALGAS_formalInputParameterListAST add_operation (const GALGAS_formalInputParameterListAST & inOperand,
-                                                                             C_Compiler * inCompiler
+                                                                             Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) const ;
 
 
@@ -878,7 +878,7 @@ class GALGAS_formalInputParameterListAST : public AC_GALGAS_list {
                                                class GALGAS_lstring constinArgument2,
                                                class GALGAS_bool constinArgument3,
                                                class GALGAS_bool constinArgument4,
-                                               C_Compiler * inCompiler
+                                               Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_lstring constinArgument0,
@@ -887,7 +887,7 @@ class GALGAS_formalInputParameterListAST : public AC_GALGAS_list {
                                                       class GALGAS_bool constinArgument3,
                                                       class GALGAS_bool constinArgument4,
                                                       class GALGAS_uint constinArgument5,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popFirst (class GALGAS_lstring & outArgument0,
@@ -895,7 +895,7 @@ class GALGAS_formalInputParameterListAST : public AC_GALGAS_list {
                                                  class GALGAS_lstring & outArgument2,
                                                  class GALGAS_bool & outArgument3,
                                                  class GALGAS_bool & outArgument4,
-                                                 C_Compiler * inCompiler
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popLast (class GALGAS_lstring & outArgument0,
@@ -903,7 +903,7 @@ class GALGAS_formalInputParameterListAST : public AC_GALGAS_list {
                                                 class GALGAS_lstring & outArgument2,
                                                 class GALGAS_bool & outArgument3,
                                                 class GALGAS_bool & outArgument4,
-                                                C_Compiler * inCompiler
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GALGAS_lstring & outArgument0,
@@ -912,32 +912,32 @@ class GALGAS_formalInputParameterListAST : public AC_GALGAS_list {
                                                       class GALGAS_bool & outArgument3,
                                                       class GALGAS_bool & outArgument4,
                                                       class GALGAS_uint constinArgument5,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMFormalArgumentNameAtIndex (class GALGAS_lstring constinArgument0,
                                                                       class GALGAS_uint constinArgument1,
-                                                                      C_Compiler * inCompiler
+                                                                      Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMFormalArgumentTypeNameAtIndex (class GALGAS_lstring constinArgument0,
                                                                           class GALGAS_uint constinArgument1,
-                                                                          C_Compiler * inCompiler
+                                                                          Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMFormalSelectorAtIndex (class GALGAS_lstring constinArgument0,
                                                                   class GALGAS_uint constinArgument1,
-                                                                  C_Compiler * inCompiler
+                                                                  Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMIsConstantAtIndex (class GALGAS_bool constinArgument0,
                                                               class GALGAS_uint constinArgument1,
-                                                              C_Compiler * inCompiler
+                                                              Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMIsUnusedAtIndex (class GALGAS_bool constinArgument0,
                                                             class GALGAS_uint constinArgument1,
-                                                            C_Compiler * inCompiler
+                                                            Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) ;
 
 
@@ -947,7 +947,7 @@ class GALGAS_formalInputParameterListAST : public AC_GALGAS_list {
                                               class GALGAS_lstring & outArgument2,
                                               class GALGAS_bool & outArgument3,
                                               class GALGAS_bool & outArgument4,
-                                              C_Compiler * inCompiler
+                                              Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG void method_last (class GALGAS_lstring & outArgument0,
@@ -955,42 +955,42 @@ class GALGAS_formalInputParameterListAST : public AC_GALGAS_list {
                                              class GALGAS_lstring & outArgument2,
                                              class GALGAS_bool & outArgument3,
                                              class GALGAS_bool & outArgument4,
-                                             C_Compiler * inCompiler
+                                             Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mFormalArgumentNameAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                   C_Compiler * inCompiler
+                                                                                   Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mFormalArgumentTypeNameAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                       C_Compiler * inCompiler
+                                                                                       Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mFormalSelectorAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                               C_Compiler * inCompiler
+                                                                               Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_mIsConstantAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                        C_Compiler * inCompiler
+                                                                        Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_mIsUnusedAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                      C_Compiler * inCompiler
+                                                                      Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_formalInputParameterListAST getter_subListFromIndex (const class GALGAS_uint & constinOperand0,
-                                                                                             C_Compiler * inCompiler
+                                                                                             Compiler * inCompiler
                                                                                              COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_formalInputParameterListAST getter_subListToIndex (const class GALGAS_uint & constinOperand0,
-                                                                                           C_Compiler * inCompiler
+                                                                                           Compiler * inCompiler
                                                                                            COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_formalInputParameterListAST getter_subListWithRange (const class GALGAS_range & constinOperand0,
-                                                                                             C_Compiler * inCompiler
+                                                                                             Compiler * inCompiler
                                                                                              COMMA_LOCATION_ARGS) const ;
 
 
@@ -1104,7 +1104,7 @@ class GALGAS_formalInputParameterListAST_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Object extraction
   public: static GALGAS_formalInputParameterListAST_2D_element extractObject (const GALGAS_object & inObject,
-                                                                              C_Compiler * inCompiler
+                                                                              Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -1113,7 +1113,7 @@ class GALGAS_formalInputParameterListAST_2D_element : public AC_GALGAS_root {
                                                                                       const class GALGAS_lstring & inOperand2,
                                                                                       const class GALGAS_bool & inOperand3,
                                                                                       const class GALGAS_bool & inOperand4,
-                                                                                      class C_Compiler * inCompiler
+                                                                                      class Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -1170,7 +1170,7 @@ class GALGAS_abstractExtensionGetterAST : public GALGAS_semanticDeclarationAST {
 
 //--------------------------------- Object extraction
   public: static GALGAS_abstractExtensionGetterAST extractObject (const GALGAS_object & inObject,
-                                                                  C_Compiler * inCompiler
+                                                                  Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -1215,7 +1215,7 @@ class cPtr_abstractExtensionGetterAST : public cPtr_semanticDeclarationAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension getter keyRepresentation
-  public: virtual class GALGAS_string getter_keyRepresentation (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+  public: virtual class GALGAS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method buildExtensionListMaps
   public: virtual void method_buildExtensionListMaps (class GALGAS_genericExtensionMethodListMap & ioAbstractExtensionSetterListMap,
@@ -1230,7 +1230,7 @@ class cPtr_abstractExtensionGetterAST : public cPtr_semanticDeclarationAST {
            class GALGAS_genericExtensionMethodListMap & ioExtensionGetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingExtensionGetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingAbstractExtensionGetterListMap,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & ioSemanticTypePrecedenceGraph,
@@ -1238,7 +1238,7 @@ class cPtr_abstractExtensionGetterAST : public cPtr_semanticDeclarationAST {
            class GALGAS_extensionGetterMapForBuildingContext & ioExtensionGetterMapForBuildingContext,
            class GALGAS_extensionSetterMapForBuildingContext & ioExtensionSetterMapForBuildingContext,
            class GALGAS_semanticDeclarationListAST & ioExtensionOverrideDefinitionList,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInSemanticContext
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
@@ -1246,7 +1246,7 @@ class cPtr_abstractExtensionGetterAST : public cPtr_semanticDeclarationAST {
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
            class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method semanticAnalysis
   public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & ioUsefulnessRootEntities,
@@ -1256,7 +1256,7 @@ class cPtr_abstractExtensionGetterAST : public cPtr_semanticDeclarationAST {
            class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_predefinedTypes inPredefinedTypes,
            class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mTypeName ;
@@ -1302,7 +1302,7 @@ class GALGAS_abstractExtensionGetterAST_2D_weak : public GALGAS_semanticDeclarat
   public: GALGAS_abstractExtensionGetterAST_2D_weak & operator = (const class GALGAS_abstractExtensionGetterAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_abstractExtensionGetterAST bang_abstractExtensionGetterAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_abstractExtensionGetterAST bang_abstractExtensionGetterAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -1311,7 +1311,7 @@ class GALGAS_abstractExtensionGetterAST_2D_weak : public GALGAS_semanticDeclarat
 
 //--------------------------------- Object extraction
   public: static GALGAS_abstractExtensionGetterAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                          C_Compiler * inCompiler
+                                                                          Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -1368,7 +1368,7 @@ class GALGAS_formalInputParameterListForGeneration : public AC_GALGAS_list {
 
 //--------------------------------- Object extraction
   public: static GALGAS_formalInputParameterListForGeneration extractObject (const GALGAS_object & inObject,
-                                                                             C_Compiler * inCompiler
+                                                                             Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -1383,7 +1383,7 @@ class GALGAS_formalInputParameterListForGeneration : public AC_GALGAS_list {
 
 //--------------------------------- += operator (with expression)
   public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_formalInputParameterListForGeneration inOperand,
-                                                       class C_Compiler * inCompiler
+                                                       class Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
@@ -1395,7 +1395,7 @@ class GALGAS_formalInputParameterListForGeneration : public AC_GALGAS_list {
                                                      COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GALGAS_formalInputParameterListForGeneration add_operation (const GALGAS_formalInputParameterListForGeneration & inOperand,
-                                                                                       C_Compiler * inCompiler
+                                                                                       Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) const ;
 
 
@@ -1405,7 +1405,7 @@ class GALGAS_formalInputParameterListForGeneration : public AC_GALGAS_list {
                                                class GALGAS_string constinArgument2,
                                                class GALGAS_lstring constinArgument3,
                                                class GALGAS_bool constinArgument4,
-                                               C_Compiler * inCompiler
+                                               Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_lstring constinArgument0,
@@ -1414,7 +1414,7 @@ class GALGAS_formalInputParameterListForGeneration : public AC_GALGAS_list {
                                                       class GALGAS_lstring constinArgument3,
                                                       class GALGAS_bool constinArgument4,
                                                       class GALGAS_uint constinArgument5,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popFirst (class GALGAS_lstring & outArgument0,
@@ -1422,7 +1422,7 @@ class GALGAS_formalInputParameterListForGeneration : public AC_GALGAS_list {
                                                  class GALGAS_string & outArgument2,
                                                  class GALGAS_lstring & outArgument3,
                                                  class GALGAS_bool & outArgument4,
-                                                 C_Compiler * inCompiler
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popLast (class GALGAS_lstring & outArgument0,
@@ -1430,7 +1430,7 @@ class GALGAS_formalInputParameterListForGeneration : public AC_GALGAS_list {
                                                 class GALGAS_string & outArgument2,
                                                 class GALGAS_lstring & outArgument3,
                                                 class GALGAS_bool & outArgument4,
-                                                C_Compiler * inCompiler
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GALGAS_lstring & outArgument0,
@@ -1439,32 +1439,32 @@ class GALGAS_formalInputParameterListForGeneration : public AC_GALGAS_list {
                                                       class GALGAS_lstring & outArgument3,
                                                       class GALGAS_bool & outArgument4,
                                                       class GALGAS_uint constinArgument5,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMFormalArgumentCppNameAtIndex (class GALGAS_string constinArgument0,
                                                                          class GALGAS_uint constinArgument1,
-                                                                         C_Compiler * inCompiler
+                                                                         Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMFormalArgumentNameAtIndex (class GALGAS_lstring constinArgument0,
                                                                       class GALGAS_uint constinArgument1,
-                                                                      C_Compiler * inCompiler
+                                                                      Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMFormalArgumentTypeAtIndex (class GALGAS_unifiedTypeMapEntry constinArgument0,
                                                                       class GALGAS_uint constinArgument1,
-                                                                      C_Compiler * inCompiler
+                                                                      Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMFormalSelectorAtIndex (class GALGAS_lstring constinArgument0,
                                                                   class GALGAS_uint constinArgument1,
-                                                                  C_Compiler * inCompiler
+                                                                  Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMIsConstantAtIndex (class GALGAS_bool constinArgument0,
                                                               class GALGAS_uint constinArgument1,
-                                                              C_Compiler * inCompiler
+                                                              Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
 
 
@@ -1474,7 +1474,7 @@ class GALGAS_formalInputParameterListForGeneration : public AC_GALGAS_list {
                                               class GALGAS_string & outArgument2,
                                               class GALGAS_lstring & outArgument3,
                                               class GALGAS_bool & outArgument4,
-                                              C_Compiler * inCompiler
+                                              Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG void method_last (class GALGAS_lstring & outArgument0,
@@ -1482,42 +1482,42 @@ class GALGAS_formalInputParameterListForGeneration : public AC_GALGAS_list {
                                              class GALGAS_string & outArgument2,
                                              class GALGAS_lstring & outArgument3,
                                              class GALGAS_bool & outArgument4,
-                                             C_Compiler * inCompiler
+                                             Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: VIRTUAL_IN_DEBUG class GALGAS_string getter_mFormalArgumentCppNameAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                     C_Compiler * inCompiler
+                                                                                     Compiler * inCompiler
                                                                                      COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mFormalArgumentNameAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                   C_Compiler * inCompiler
+                                                                                   Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMapEntry getter_mFormalArgumentTypeAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                               C_Compiler * inCompiler
+                                                                                               Compiler * inCompiler
                                                                                                COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mFormalSelectorAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                               C_Compiler * inCompiler
+                                                                               Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_mIsConstantAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                        C_Compiler * inCompiler
+                                                                        Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_formalInputParameterListForGeneration getter_subListFromIndex (const class GALGAS_uint & constinOperand0,
-                                                                                                       C_Compiler * inCompiler
+                                                                                                       Compiler * inCompiler
                                                                                                        COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_formalInputParameterListForGeneration getter_subListToIndex (const class GALGAS_uint & constinOperand0,
-                                                                                                     C_Compiler * inCompiler
+                                                                                                     Compiler * inCompiler
                                                                                                      COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_formalInputParameterListForGeneration getter_subListWithRange (const class GALGAS_range & constinOperand0,
-                                                                                                       C_Compiler * inCompiler
+                                                                                                       Compiler * inCompiler
                                                                                                        COMMA_LOCATION_ARGS) const ;
 
 
@@ -1631,7 +1631,7 @@ class GALGAS_formalInputParameterListForGeneration_2D_element : public AC_GALGAS
 
 //--------------------------------- Object extraction
   public: static GALGAS_formalInputParameterListForGeneration_2D_element extractObject (const GALGAS_object & inObject,
-                                                                                        C_Compiler * inCompiler
+                                                                                        Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -1640,7 +1640,7 @@ class GALGAS_formalInputParameterListForGeneration_2D_element : public AC_GALGAS
                                                                                                 const class GALGAS_string & inOperand2,
                                                                                                 const class GALGAS_lstring & inOperand3,
                                                                                                 const class GALGAS_bool & inOperand4,
-                                                                                                class C_Compiler * inCompiler
+                                                                                                class Compiler * inCompiler
                                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -1695,7 +1695,7 @@ class GALGAS_abstractExtensionMethodAST : public GALGAS_semanticDeclarationAST {
 
 //--------------------------------- Object extraction
   public: static GALGAS_abstractExtensionMethodAST extractObject (const GALGAS_object & inObject,
-                                                                  C_Compiler * inCompiler
+                                                                  Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -1739,7 +1739,7 @@ class cPtr_abstractExtensionMethodAST : public cPtr_semanticDeclarationAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension getter keyRepresentation
-  public: virtual class GALGAS_string getter_keyRepresentation (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+  public: virtual class GALGAS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method buildExtensionListMaps
   public: virtual void method_buildExtensionListMaps (class GALGAS_genericExtensionMethodListMap & ioAbstractExtensionSetterListMap,
@@ -1754,7 +1754,7 @@ class cPtr_abstractExtensionMethodAST : public cPtr_semanticDeclarationAST {
            class GALGAS_genericExtensionMethodListMap & ioExtensionGetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingExtensionGetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingAbstractExtensionGetterListMap,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & ioSemanticTypePrecedenceGraph,
@@ -1762,7 +1762,7 @@ class cPtr_abstractExtensionMethodAST : public cPtr_semanticDeclarationAST {
            class GALGAS_extensionGetterMapForBuildingContext & ioExtensionGetterMapForBuildingContext,
            class GALGAS_extensionSetterMapForBuildingContext & ioExtensionSetterMapForBuildingContext,
            class GALGAS_semanticDeclarationListAST & ioExtensionOverrideDefinitionList,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInSemanticContext
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
@@ -1770,7 +1770,7 @@ class cPtr_abstractExtensionMethodAST : public cPtr_semanticDeclarationAST {
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
            class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method semanticAnalysis
   public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & ioUsefulnessRootEntities,
@@ -1780,7 +1780,7 @@ class cPtr_abstractExtensionMethodAST : public cPtr_semanticDeclarationAST {
            class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_predefinedTypes inPredefinedTypes,
            class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mTypeName ;
@@ -1824,7 +1824,7 @@ class GALGAS_abstractExtensionMethodAST_2D_weak : public GALGAS_semanticDeclarat
   public: GALGAS_abstractExtensionMethodAST_2D_weak & operator = (const class GALGAS_abstractExtensionMethodAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_abstractExtensionMethodAST bang_abstractExtensionMethodAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_abstractExtensionMethodAST bang_abstractExtensionMethodAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -1833,7 +1833,7 @@ class GALGAS_abstractExtensionMethodAST_2D_weak : public GALGAS_semanticDeclarat
 
 //--------------------------------- Object extraction
   public: static GALGAS_abstractExtensionMethodAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                          C_Compiler * inCompiler
+                                                                          Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -1890,7 +1890,7 @@ class GALGAS_formalParameterListForGeneration : public AC_GALGAS_list {
 
 //--------------------------------- Object extraction
   public: static GALGAS_formalParameterListForGeneration extractObject (const GALGAS_object & inObject,
-                                                                        C_Compiler * inCompiler
+                                                                        Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -1905,7 +1905,7 @@ class GALGAS_formalParameterListForGeneration : public AC_GALGAS_list {
 
 //--------------------------------- += operator (with expression)
   public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_formalParameterListForGeneration inOperand,
-                                                       class C_Compiler * inCompiler
+                                                       class Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
@@ -1917,7 +1917,7 @@ class GALGAS_formalParameterListForGeneration : public AC_GALGAS_list {
                                                      COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GALGAS_formalParameterListForGeneration add_operation (const GALGAS_formalParameterListForGeneration & inOperand,
-                                                                                  C_Compiler * inCompiler
+                                                                                  Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) const ;
 
 
@@ -1927,7 +1927,7 @@ class GALGAS_formalParameterListForGeneration : public AC_GALGAS_list {
                                                class GALGAS_unifiedTypeMapEntry constinArgument2,
                                                class GALGAS_lstring constinArgument3,
                                                class GALGAS_string constinArgument4,
-                                               C_Compiler * inCompiler
+                                               Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_lstring constinArgument0,
@@ -1936,7 +1936,7 @@ class GALGAS_formalParameterListForGeneration : public AC_GALGAS_list {
                                                       class GALGAS_lstring constinArgument3,
                                                       class GALGAS_string constinArgument4,
                                                       class GALGAS_uint constinArgument5,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popFirst (class GALGAS_lstring & outArgument0,
@@ -1944,7 +1944,7 @@ class GALGAS_formalParameterListForGeneration : public AC_GALGAS_list {
                                                  class GALGAS_unifiedTypeMapEntry & outArgument2,
                                                  class GALGAS_lstring & outArgument3,
                                                  class GALGAS_string & outArgument4,
-                                                 C_Compiler * inCompiler
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popLast (class GALGAS_lstring & outArgument0,
@@ -1952,7 +1952,7 @@ class GALGAS_formalParameterListForGeneration : public AC_GALGAS_list {
                                                 class GALGAS_unifiedTypeMapEntry & outArgument2,
                                                 class GALGAS_lstring & outArgument3,
                                                 class GALGAS_string & outArgument4,
-                                                C_Compiler * inCompiler
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GALGAS_lstring & outArgument0,
@@ -1961,32 +1961,32 @@ class GALGAS_formalParameterListForGeneration : public AC_GALGAS_list {
                                                       class GALGAS_lstring & outArgument3,
                                                       class GALGAS_string & outArgument4,
                                                       class GALGAS_uint constinArgument5,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMFormalArgumentCppNameAtIndex (class GALGAS_string constinArgument0,
                                                                          class GALGAS_uint constinArgument1,
-                                                                         C_Compiler * inCompiler
+                                                                         Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMFormalArgumentNameAtIndex (class GALGAS_lstring constinArgument0,
                                                                       class GALGAS_uint constinArgument1,
-                                                                      C_Compiler * inCompiler
+                                                                      Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMFormalArgumentPassingModeAtIndex (class GALGAS_formalArgumentPassingModeAST constinArgument0,
                                                                              class GALGAS_uint constinArgument1,
-                                                                             C_Compiler * inCompiler
+                                                                             Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMFormalArgumentTypeAtIndex (class GALGAS_unifiedTypeMapEntry constinArgument0,
                                                                       class GALGAS_uint constinArgument1,
-                                                                      C_Compiler * inCompiler
+                                                                      Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMFormalSelectorAtIndex (class GALGAS_lstring constinArgument0,
                                                                   class GALGAS_uint constinArgument1,
-                                                                  C_Compiler * inCompiler
+                                                                  Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
 
 
@@ -1996,7 +1996,7 @@ class GALGAS_formalParameterListForGeneration : public AC_GALGAS_list {
                                               class GALGAS_unifiedTypeMapEntry & outArgument2,
                                               class GALGAS_lstring & outArgument3,
                                               class GALGAS_string & outArgument4,
-                                              C_Compiler * inCompiler
+                                              Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG void method_last (class GALGAS_lstring & outArgument0,
@@ -2004,42 +2004,42 @@ class GALGAS_formalParameterListForGeneration : public AC_GALGAS_list {
                                              class GALGAS_unifiedTypeMapEntry & outArgument2,
                                              class GALGAS_lstring & outArgument3,
                                              class GALGAS_string & outArgument4,
-                                             C_Compiler * inCompiler
+                                             Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: VIRTUAL_IN_DEBUG class GALGAS_string getter_mFormalArgumentCppNameAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                     C_Compiler * inCompiler
+                                                                                     Compiler * inCompiler
                                                                                      COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mFormalArgumentNameAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                   C_Compiler * inCompiler
+                                                                                   Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_formalArgumentPassingModeAST getter_mFormalArgumentPassingModeAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                                               C_Compiler * inCompiler
+                                                                                                               Compiler * inCompiler
                                                                                                                COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMapEntry getter_mFormalArgumentTypeAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                               C_Compiler * inCompiler
+                                                                                               Compiler * inCompiler
                                                                                                COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mFormalSelectorAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                               C_Compiler * inCompiler
+                                                                               Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_formalParameterListForGeneration getter_subListFromIndex (const class GALGAS_uint & constinOperand0,
-                                                                                                  C_Compiler * inCompiler
+                                                                                                  Compiler * inCompiler
                                                                                                   COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_formalParameterListForGeneration getter_subListToIndex (const class GALGAS_uint & constinOperand0,
-                                                                                                C_Compiler * inCompiler
+                                                                                                Compiler * inCompiler
                                                                                                 COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_formalParameterListForGeneration getter_subListWithRange (const class GALGAS_range & constinOperand0,
-                                                                                                  C_Compiler * inCompiler
+                                                                                                  Compiler * inCompiler
                                                                                                   COMMA_LOCATION_ARGS) const ;
 
 
@@ -2153,7 +2153,7 @@ class GALGAS_formalParameterListForGeneration_2D_element : public AC_GALGAS_root
 
 //--------------------------------- Object extraction
   public: static GALGAS_formalParameterListForGeneration_2D_element extractObject (const GALGAS_object & inObject,
-                                                                                   C_Compiler * inCompiler
+                                                                                   Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -2162,7 +2162,7 @@ class GALGAS_formalParameterListForGeneration_2D_element : public AC_GALGAS_root
                                                                                            const class GALGAS_unifiedTypeMapEntry & inOperand2,
                                                                                            const class GALGAS_lstring & inOperand3,
                                                                                            const class GALGAS_string & inOperand4,
-                                                                                           class C_Compiler * inCompiler
+                                                                                           class Compiler * inCompiler
                                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -2217,7 +2217,7 @@ class GALGAS_abstractExtensionSetterAST : public GALGAS_semanticDeclarationAST {
 
 //--------------------------------- Object extraction
   public: static GALGAS_abstractExtensionSetterAST extractObject (const GALGAS_object & inObject,
-                                                                  C_Compiler * inCompiler
+                                                                  Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -2261,7 +2261,7 @@ class cPtr_abstractExtensionSetterAST : public cPtr_semanticDeclarationAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension getter keyRepresentation
-  public: virtual class GALGAS_string getter_keyRepresentation (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+  public: virtual class GALGAS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method buildExtensionListMaps
   public: virtual void method_buildExtensionListMaps (class GALGAS_genericExtensionMethodListMap & ioAbstractExtensionSetterListMap,
@@ -2276,7 +2276,7 @@ class cPtr_abstractExtensionSetterAST : public cPtr_semanticDeclarationAST {
            class GALGAS_genericExtensionMethodListMap & ioExtensionGetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingExtensionGetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingAbstractExtensionGetterListMap,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & ioSemanticTypePrecedenceGraph,
@@ -2284,7 +2284,7 @@ class cPtr_abstractExtensionSetterAST : public cPtr_semanticDeclarationAST {
            class GALGAS_extensionGetterMapForBuildingContext & ioExtensionGetterMapForBuildingContext,
            class GALGAS_extensionSetterMapForBuildingContext & ioExtensionSetterMapForBuildingContext,
            class GALGAS_semanticDeclarationListAST & ioExtensionOverrideDefinitionList,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInSemanticContext
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
@@ -2292,7 +2292,7 @@ class cPtr_abstractExtensionSetterAST : public cPtr_semanticDeclarationAST {
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
            class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method semanticAnalysis
   public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & ioUsefulnessRootEntities,
@@ -2302,7 +2302,7 @@ class cPtr_abstractExtensionSetterAST : public cPtr_semanticDeclarationAST {
            class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_predefinedTypes inPredefinedTypes,
            class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mTypeName ;
@@ -2346,7 +2346,7 @@ class GALGAS_abstractExtensionSetterAST_2D_weak : public GALGAS_semanticDeclarat
   public: GALGAS_abstractExtensionSetterAST_2D_weak & operator = (const class GALGAS_abstractExtensionSetterAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_abstractExtensionSetterAST bang_abstractExtensionSetterAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_abstractExtensionSetterAST bang_abstractExtensionSetterAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -2355,7 +2355,7 @@ class GALGAS_abstractExtensionSetterAST_2D_weak : public GALGAS_semanticDeclarat
 
 //--------------------------------- Object extraction
   public: static GALGAS_abstractExtensionSetterAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                          C_Compiler * inCompiler
+                                                                          Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -2408,7 +2408,7 @@ class GALGAS_semanticInstructionListAST : public AC_GALGAS_list {
 
 //--------------------------------- Object extraction
   public: static GALGAS_semanticInstructionListAST extractObject (const GALGAS_object & inObject,
-                                                                  C_Compiler * inCompiler
+                                                                  Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -2419,7 +2419,7 @@ class GALGAS_semanticInstructionListAST : public AC_GALGAS_list {
 
 //--------------------------------- += operator (with expression)
   public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_semanticInstructionListAST inOperand,
-                                                       class C_Compiler * inCompiler
+                                                       class Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
@@ -2427,65 +2427,65 @@ class GALGAS_semanticInstructionListAST : public AC_GALGAS_list {
                                                      COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GALGAS_semanticInstructionListAST add_operation (const GALGAS_semanticInstructionListAST & inOperand,
-                                                                            C_Compiler * inCompiler
+                                                                            Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_semanticInstructionAST constinArgument0,
-                                               C_Compiler * inCompiler
+                                               Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_semanticInstructionAST constinArgument0,
                                                       class GALGAS_uint constinArgument1,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popFirst (class GALGAS_semanticInstructionAST & outArgument0,
-                                                 C_Compiler * inCompiler
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popLast (class GALGAS_semanticInstructionAST & outArgument0,
-                                                C_Compiler * inCompiler
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GALGAS_semanticInstructionAST & outArgument0,
                                                       class GALGAS_uint constinArgument1,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMInstructionAtIndex (class GALGAS_semanticInstructionAST constinArgument0,
                                                                class GALGAS_uint constinArgument1,
-                                                               C_Compiler * inCompiler
+                                                               Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
   public: VIRTUAL_IN_DEBUG void method_first (class GALGAS_semanticInstructionAST & outArgument0,
-                                              C_Compiler * inCompiler
+                                              Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG void method_last (class GALGAS_semanticInstructionAST & outArgument0,
-                                             C_Compiler * inCompiler
+                                             Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: VIRTUAL_IN_DEBUG class GALGAS_semanticInstructionAST getter_mInstructionAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                           C_Compiler * inCompiler
+                                                                                           Compiler * inCompiler
                                                                                            COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_semanticInstructionListAST getter_subListFromIndex (const class GALGAS_uint & constinOperand0,
-                                                                                            C_Compiler * inCompiler
+                                                                                            Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_semanticInstructionListAST getter_subListToIndex (const class GALGAS_uint & constinOperand0,
-                                                                                          C_Compiler * inCompiler
+                                                                                          Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_semanticInstructionListAST getter_subListWithRange (const class GALGAS_range & constinOperand0,
-                                                                                            C_Compiler * inCompiler
+                                                                                            Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) const ;
 
 
@@ -2540,7 +2540,7 @@ class GALGAS_syntaxInstructionAST : public AC_GALGAS_reference_class {
 
 //--------------------------------- Object extraction
   public: static GALGAS_syntaxInstructionAST extractObject (const GALGAS_object & inObject,
-                                                            C_Compiler * inCompiler
+                                                            Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -2590,14 +2590,14 @@ class cPtr_syntaxInstructionAST : public acStrongPtr_class {
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
            class GALGAS_localVarManager & ioVariableMap,
            class GALGAS_uint & ioSelectMethodCount,
-           C_Compiler * COMMA_LOCATION_ARGS) = 0 ;
+           Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Extension method transformInstruction
   public: virtual void method_transformInstruction (class GALGAS_terminalSymbolsMapForGrammarAnalysis & ioActuallyUsedTerminalSymbolMap,
            const class GALGAS_nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap,
            class GALGAS_uint & ioAddedNonTerminalIndex,
            class GALGAS_syntaxInstructionListForGrammarAnalysis & ioSyntaxInstructionList,
-           C_Compiler * COMMA_LOCATION_ARGS) = 0 ;
+           Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Properties
   public: GALGAS_location mProperty_mInstructionLocation ;
@@ -2638,7 +2638,7 @@ class GALGAS_semanticInstructionAST : public GALGAS_syntaxInstructionAST {
 
 //--------------------------------- Object extraction
   public: static GALGAS_semanticInstructionAST extractObject (const GALGAS_object & inObject,
-                                                              C_Compiler * inCompiler
+                                                              Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -2681,7 +2681,7 @@ class cPtr_semanticInstructionAST : public cPtr_syntaxInstructionAST {
            class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
            class GALGAS_localVarManager & ioVariableMap,
-           C_Compiler * COMMA_LOCATION_ARGS) = 0 ;
+           Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Extension method analyzeSyntaxInstruction
   public: virtual void method_analyzeSyntaxInstruction (const class GALGAS_lstring inUsefulnessCallerEntityName,
@@ -2697,18 +2697,18 @@ class cPtr_semanticInstructionAST : public cPtr_syntaxInstructionAST {
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
            class GALGAS_localVarManager & ioVariableMap,
            class GALGAS_uint & ioSelectMethodCount,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterInstructionInSemanticContext
   public: virtual void method_enterInstructionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
-           C_Compiler * COMMA_LOCATION_ARGS) = 0 ;
+           Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Extension method transformInstruction
   public: virtual void method_transformInstruction (class GALGAS_terminalSymbolsMapForGrammarAnalysis & ioActuallyUsedTerminalSymbolMap,
            const class GALGAS_nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap,
            class GALGAS_uint & ioAddedNonTerminalIndex,
            class GALGAS_syntaxInstructionListForGrammarAnalysis & ioSyntaxInstructionList,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
 
@@ -2765,12 +2765,12 @@ class GALGAS_semanticInstructionListAST_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Object extraction
   public: static GALGAS_semanticInstructionListAST_2D_element extractObject (const GALGAS_object & inObject,
-                                                                             C_Compiler * inCompiler
+                                                                             Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_semanticInstructionListAST_2D_element constructor_new (const class GALGAS_semanticInstructionAST & inOperand0,
-                                                                                     class C_Compiler * inCompiler
+                                                                                     class Compiler * inCompiler
                                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -2835,7 +2835,7 @@ class GALGAS_extensionGetterAST : public GALGAS_semanticDeclarationAST {
 
 //--------------------------------- Object extraction
   public: static GALGAS_extensionGetterAST extractObject (const GALGAS_object & inObject,
-                                                          C_Compiler * inCompiler
+                                                          Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -2884,7 +2884,7 @@ class cPtr_extensionGetterAST : public cPtr_semanticDeclarationAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension getter keyRepresentation
-  public: virtual class GALGAS_string getter_keyRepresentation (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+  public: virtual class GALGAS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method buildExtensionListMaps
   public: virtual void method_buildExtensionListMaps (class GALGAS_genericExtensionMethodListMap & ioAbstractExtensionSetterListMap,
@@ -2899,7 +2899,7 @@ class cPtr_extensionGetterAST : public cPtr_semanticDeclarationAST {
            class GALGAS_genericExtensionMethodListMap & ioExtensionGetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingExtensionGetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingAbstractExtensionGetterListMap,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & ioSemanticTypePrecedenceGraph,
@@ -2907,7 +2907,7 @@ class cPtr_extensionGetterAST : public cPtr_semanticDeclarationAST {
            class GALGAS_extensionGetterMapForBuildingContext & ioExtensionGetterMapForBuildingContext,
            class GALGAS_extensionSetterMapForBuildingContext & ioExtensionSetterMapForBuildingContext,
            class GALGAS_semanticDeclarationListAST & ioExtensionOverrideDefinitionList,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInSemanticContext
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
@@ -2915,7 +2915,7 @@ class cPtr_extensionGetterAST : public cPtr_semanticDeclarationAST {
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
            class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method semanticAnalysis
   public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & ioUsefulnessRootEntities,
@@ -2925,7 +2925,7 @@ class cPtr_extensionGetterAST : public cPtr_semanticDeclarationAST {
            class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_predefinedTypes inPredefinedTypes,
            class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_bool mProperty_requiresSelfForAccessingProperty ;
@@ -2979,7 +2979,7 @@ class GALGAS_extensionGetterAST_2D_weak : public GALGAS_semanticDeclarationAST_2
   public: GALGAS_extensionGetterAST_2D_weak & operator = (const class GALGAS_extensionGetterAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_extensionGetterAST bang_extensionGetterAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_extensionGetterAST bang_extensionGetterAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -2988,7 +2988,7 @@ class GALGAS_extensionGetterAST_2D_weak : public GALGAS_semanticDeclarationAST_2
 
 //--------------------------------- Object extraction
   public: static GALGAS_extensionGetterAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                  C_Compiler * inCompiler
+                                                                  Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -3041,7 +3041,7 @@ class GALGAS_semanticInstructionListForGeneration : public AC_GALGAS_list {
 
 //--------------------------------- Object extraction
   public: static GALGAS_semanticInstructionListForGeneration extractObject (const GALGAS_object & inObject,
-                                                                            C_Compiler * inCompiler
+                                                                            Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -3052,7 +3052,7 @@ class GALGAS_semanticInstructionListForGeneration : public AC_GALGAS_list {
 
 //--------------------------------- += operator (with expression)
   public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_semanticInstructionListForGeneration inOperand,
-                                                       class C_Compiler * inCompiler
+                                                       class Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
@@ -3060,65 +3060,65 @@ class GALGAS_semanticInstructionListForGeneration : public AC_GALGAS_list {
                                                      COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GALGAS_semanticInstructionListForGeneration add_operation (const GALGAS_semanticInstructionListForGeneration & inOperand,
-                                                                                      C_Compiler * inCompiler
+                                                                                      Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_semanticInstructionForGeneration constinArgument0,
-                                               C_Compiler * inCompiler
+                                               Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_semanticInstructionForGeneration constinArgument0,
                                                       class GALGAS_uint constinArgument1,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popFirst (class GALGAS_semanticInstructionForGeneration & outArgument0,
-                                                 C_Compiler * inCompiler
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popLast (class GALGAS_semanticInstructionForGeneration & outArgument0,
-                                                C_Compiler * inCompiler
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GALGAS_semanticInstructionForGeneration & outArgument0,
                                                       class GALGAS_uint constinArgument1,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMInstructionAtIndex (class GALGAS_semanticInstructionForGeneration constinArgument0,
                                                                class GALGAS_uint constinArgument1,
-                                                               C_Compiler * inCompiler
+                                                               Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
   public: VIRTUAL_IN_DEBUG void method_first (class GALGAS_semanticInstructionForGeneration & outArgument0,
-                                              C_Compiler * inCompiler
+                                              Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG void method_last (class GALGAS_semanticInstructionForGeneration & outArgument0,
-                                             C_Compiler * inCompiler
+                                             Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: VIRTUAL_IN_DEBUG class GALGAS_semanticInstructionForGeneration getter_mInstructionAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                                     C_Compiler * inCompiler
+                                                                                                     Compiler * inCompiler
                                                                                                      COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_semanticInstructionListForGeneration getter_subListFromIndex (const class GALGAS_uint & constinOperand0,
-                                                                                                      C_Compiler * inCompiler
+                                                                                                      Compiler * inCompiler
                                                                                                       COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_semanticInstructionListForGeneration getter_subListToIndex (const class GALGAS_uint & constinOperand0,
-                                                                                                    C_Compiler * inCompiler
+                                                                                                    Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_semanticInstructionListForGeneration getter_subListWithRange (const class GALGAS_range & constinOperand0,
-                                                                                                      C_Compiler * inCompiler
+                                                                                                      Compiler * inCompiler
                                                                                                       COMMA_LOCATION_ARGS) const ;
 
 
@@ -3171,7 +3171,7 @@ class GALGAS_semanticInstructionForGeneration : public AC_GALGAS_reference_class
 
 //--------------------------------- Object extraction
   public: static GALGAS_semanticInstructionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                        C_Compiler * inCompiler
+                                                                        Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -3209,12 +3209,12 @@ class cPtr_semanticInstructionForGeneration : public acStrongPtr_class {
   #endif
 //--- Extension getter compareInstructionSyntaxSignature
   public: virtual class GALGAS_bool getter_compareInstructionSyntaxSignature (const class GALGAS_semanticInstructionForGeneration inTestedInstruction,
-           C_Compiler * COMMA_LOCATION_ARGS) const ;
+           Compiler * COMMA_LOCATION_ARGS) const ;
 
 //--- Extension method appendSyntaxSignature
   public: virtual void method_appendSyntaxSignature (const class GALGAS_string inPosfix,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
-           C_Compiler * COMMA_LOCATION_ARGS) ;
+           Compiler * COMMA_LOCATION_ARGS) ;
 
 //--- Extension method generateInstruction
   public: virtual void method_generateInstruction (class GALGAS_stringset & ioInclusionSet,
@@ -3222,7 +3222,7 @@ class cPtr_semanticInstructionForGeneration : public acStrongPtr_class {
            class GALGAS_stringset & ioUnusedVariableCppNameSet,
            const class GALGAS_bool inGenerateSyntaxDirectedTranslationString,
            class GALGAS_string & ioGeneratedCode,
-           C_Compiler * COMMA_LOCATION_ARGS) = 0 ;
+           Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Properties
 
@@ -3278,12 +3278,12 @@ class GALGAS_semanticInstructionListForGeneration_2D_element : public AC_GALGAS_
 
 //--------------------------------- Object extraction
   public: static GALGAS_semanticInstructionListForGeneration_2D_element extractObject (const GALGAS_object & inObject,
-                                                                                       C_Compiler * inCompiler
+                                                                                       Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_semanticInstructionListForGeneration_2D_element constructor_new (const class GALGAS_semanticInstructionForGeneration & inOperand0,
-                                                                                               class C_Compiler * inCompiler
+                                                                                               class Compiler * inCompiler
                                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -3344,7 +3344,7 @@ class GALGAS_extensionMethodAST : public GALGAS_semanticDeclarationAST {
 
 //--------------------------------- Object extraction
   public: static GALGAS_extensionMethodAST extractObject (const GALGAS_object & inObject,
-                                                          C_Compiler * inCompiler
+                                                          Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -3391,7 +3391,7 @@ class cPtr_extensionMethodAST : public cPtr_semanticDeclarationAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension getter keyRepresentation
-  public: virtual class GALGAS_string getter_keyRepresentation (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+  public: virtual class GALGAS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method buildExtensionListMaps
   public: virtual void method_buildExtensionListMaps (class GALGAS_genericExtensionMethodListMap & ioAbstractExtensionSetterListMap,
@@ -3406,7 +3406,7 @@ class cPtr_extensionMethodAST : public cPtr_semanticDeclarationAST {
            class GALGAS_genericExtensionMethodListMap & ioExtensionGetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingExtensionGetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingAbstractExtensionGetterListMap,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & ioSemanticTypePrecedenceGraph,
@@ -3414,7 +3414,7 @@ class cPtr_extensionMethodAST : public cPtr_semanticDeclarationAST {
            class GALGAS_extensionGetterMapForBuildingContext & ioExtensionGetterMapForBuildingContext,
            class GALGAS_extensionSetterMapForBuildingContext & ioExtensionSetterMapForBuildingContext,
            class GALGAS_semanticDeclarationListAST & ioExtensionOverrideDefinitionList,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInSemanticContext
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
@@ -3422,7 +3422,7 @@ class cPtr_extensionMethodAST : public cPtr_semanticDeclarationAST {
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
            class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method semanticAnalysis
   public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & ioUsefulnessRootEntities,
@@ -3432,7 +3432,7 @@ class cPtr_extensionMethodAST : public cPtr_semanticDeclarationAST {
            class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_predefinedTypes inPredefinedTypes,
            class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_bool mProperty_requiresSelfForAccessingProperty ;
@@ -3482,7 +3482,7 @@ class GALGAS_extensionMethodAST_2D_weak : public GALGAS_semanticDeclarationAST_2
   public: GALGAS_extensionMethodAST_2D_weak & operator = (const class GALGAS_extensionMethodAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_extensionMethodAST bang_extensionMethodAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_extensionMethodAST bang_extensionMethodAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -3491,7 +3491,7 @@ class GALGAS_extensionMethodAST_2D_weak : public GALGAS_semanticDeclarationAST_2
 
 //--------------------------------- Object extraction
   public: static GALGAS_extensionMethodAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                  C_Compiler * inCompiler
+                                                                  Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -3552,7 +3552,7 @@ class GALGAS_extensionSetterAST : public GALGAS_semanticDeclarationAST {
 
 //--------------------------------- Object extraction
   public: static GALGAS_extensionSetterAST extractObject (const GALGAS_object & inObject,
-                                                          C_Compiler * inCompiler
+                                                          Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -3599,7 +3599,7 @@ class cPtr_extensionSetterAST : public cPtr_semanticDeclarationAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension getter keyRepresentation
-  public: virtual class GALGAS_string getter_keyRepresentation (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+  public: virtual class GALGAS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method buildExtensionListMaps
   public: virtual void method_buildExtensionListMaps (class GALGAS_genericExtensionMethodListMap & ioAbstractExtensionSetterListMap,
@@ -3614,7 +3614,7 @@ class cPtr_extensionSetterAST : public cPtr_semanticDeclarationAST {
            class GALGAS_genericExtensionMethodListMap & ioExtensionGetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingExtensionGetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingAbstractExtensionGetterListMap,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & ioSemanticTypePrecedenceGraph,
@@ -3622,7 +3622,7 @@ class cPtr_extensionSetterAST : public cPtr_semanticDeclarationAST {
            class GALGAS_extensionGetterMapForBuildingContext & ioExtensionGetterMapForBuildingContext,
            class GALGAS_extensionSetterMapForBuildingContext & ioExtensionSetterMapForBuildingContext,
            class GALGAS_semanticDeclarationListAST & ioExtensionOverrideDefinitionList,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInSemanticContext
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
@@ -3630,7 +3630,7 @@ class cPtr_extensionSetterAST : public cPtr_semanticDeclarationAST {
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
            class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method semanticAnalysis
   public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & ioUsefulnessRootEntities,
@@ -3640,7 +3640,7 @@ class cPtr_extensionSetterAST : public cPtr_semanticDeclarationAST {
            class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_predefinedTypes inPredefinedTypes,
            class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_bool mProperty_requiresSelfForAccessingProperty ;
@@ -3690,7 +3690,7 @@ class GALGAS_extensionSetterAST_2D_weak : public GALGAS_semanticDeclarationAST_2
   public: GALGAS_extensionSetterAST_2D_weak & operator = (const class GALGAS_extensionSetterAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_extensionSetterAST bang_extensionSetterAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_extensionSetterAST bang_extensionSetterAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -3699,7 +3699,7 @@ class GALGAS_extensionSetterAST_2D_weak : public GALGAS_semanticDeclarationAST_2
 
 //--------------------------------- Object extraction
   public: static GALGAS_extensionSetterAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                  C_Compiler * inCompiler
+                                                                  Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -3756,7 +3756,7 @@ class GALGAS_overridingAbstractExtensionGetterAST : public GALGAS_semanticDeclar
 
 //--------------------------------- Object extraction
   public: static GALGAS_overridingAbstractExtensionGetterAST extractObject (const GALGAS_object & inObject,
-                                                                            C_Compiler * inCompiler
+                                                                            Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -3801,7 +3801,7 @@ class cPtr_overridingAbstractExtensionGetterAST : public cPtr_semanticDeclaratio
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension getter keyRepresentation
-  public: virtual class GALGAS_string getter_keyRepresentation (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+  public: virtual class GALGAS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method buildExtensionListMaps
   public: virtual void method_buildExtensionListMaps (class GALGAS_genericExtensionMethodListMap & ioAbstractExtensionSetterListMap,
@@ -3816,7 +3816,7 @@ class cPtr_overridingAbstractExtensionGetterAST : public cPtr_semanticDeclaratio
            class GALGAS_genericExtensionMethodListMap & ioExtensionGetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingExtensionGetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingAbstractExtensionGetterListMap,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & ioSemanticTypePrecedenceGraph,
@@ -3824,7 +3824,7 @@ class cPtr_overridingAbstractExtensionGetterAST : public cPtr_semanticDeclaratio
            class GALGAS_extensionGetterMapForBuildingContext & ioExtensionGetterMapForBuildingContext,
            class GALGAS_extensionSetterMapForBuildingContext & ioExtensionSetterMapForBuildingContext,
            class GALGAS_semanticDeclarationListAST & ioExtensionOverrideDefinitionList,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInSemanticContext
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
@@ -3832,7 +3832,7 @@ class cPtr_overridingAbstractExtensionGetterAST : public cPtr_semanticDeclaratio
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
            class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method semanticAnalysis
   public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & ioUsefulnessRootEntities,
@@ -3842,7 +3842,7 @@ class cPtr_overridingAbstractExtensionGetterAST : public cPtr_semanticDeclaratio
            class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_predefinedTypes inPredefinedTypes,
            class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mTypeName ;
@@ -3888,7 +3888,7 @@ class GALGAS_overridingAbstractExtensionGetterAST_2D_weak : public GALGAS_semant
   public: GALGAS_overridingAbstractExtensionGetterAST_2D_weak & operator = (const class GALGAS_overridingAbstractExtensionGetterAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_overridingAbstractExtensionGetterAST bang_overridingAbstractExtensionGetterAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_overridingAbstractExtensionGetterAST bang_overridingAbstractExtensionGetterAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -3897,7 +3897,7 @@ class GALGAS_overridingAbstractExtensionGetterAST_2D_weak : public GALGAS_semant
 
 //--------------------------------- Object extraction
   public: static GALGAS_overridingAbstractExtensionGetterAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -3952,7 +3952,7 @@ class GALGAS_overridingAbstractExtensionMethodAST : public GALGAS_semanticDeclar
 
 //--------------------------------- Object extraction
   public: static GALGAS_overridingAbstractExtensionMethodAST extractObject (const GALGAS_object & inObject,
-                                                                            C_Compiler * inCompiler
+                                                                            Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -3996,7 +3996,7 @@ class cPtr_overridingAbstractExtensionMethodAST : public cPtr_semanticDeclaratio
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension getter keyRepresentation
-  public: virtual class GALGAS_string getter_keyRepresentation (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+  public: virtual class GALGAS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method buildExtensionListMaps
   public: virtual void method_buildExtensionListMaps (class GALGAS_genericExtensionMethodListMap & ioAbstractExtensionSetterListMap,
@@ -4011,7 +4011,7 @@ class cPtr_overridingAbstractExtensionMethodAST : public cPtr_semanticDeclaratio
            class GALGAS_genericExtensionMethodListMap & ioExtensionGetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingExtensionGetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingAbstractExtensionGetterListMap,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & ioSemanticTypePrecedenceGraph,
@@ -4019,7 +4019,7 @@ class cPtr_overridingAbstractExtensionMethodAST : public cPtr_semanticDeclaratio
            class GALGAS_extensionGetterMapForBuildingContext & ioExtensionGetterMapForBuildingContext,
            class GALGAS_extensionSetterMapForBuildingContext & ioExtensionSetterMapForBuildingContext,
            class GALGAS_semanticDeclarationListAST & ioExtensionOverrideDefinitionList,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInSemanticContext
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
@@ -4027,7 +4027,7 @@ class cPtr_overridingAbstractExtensionMethodAST : public cPtr_semanticDeclaratio
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
            class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method semanticAnalysis
   public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & ioUsefulnessRootEntities,
@@ -4037,7 +4037,7 @@ class cPtr_overridingAbstractExtensionMethodAST : public cPtr_semanticDeclaratio
            class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_predefinedTypes inPredefinedTypes,
            class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mTypeName ;
@@ -4081,7 +4081,7 @@ class GALGAS_overridingAbstractExtensionMethodAST_2D_weak : public GALGAS_semant
   public: GALGAS_overridingAbstractExtensionMethodAST_2D_weak & operator = (const class GALGAS_overridingAbstractExtensionMethodAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_overridingAbstractExtensionMethodAST bang_overridingAbstractExtensionMethodAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_overridingAbstractExtensionMethodAST bang_overridingAbstractExtensionMethodAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -4090,7 +4090,7 @@ class GALGAS_overridingAbstractExtensionMethodAST_2D_weak : public GALGAS_semant
 
 //--------------------------------- Object extraction
   public: static GALGAS_overridingAbstractExtensionMethodAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -4145,7 +4145,7 @@ class GALGAS_overridingAbstractExtensionSetterAST : public GALGAS_semanticDeclar
 
 //--------------------------------- Object extraction
   public: static GALGAS_overridingAbstractExtensionSetterAST extractObject (const GALGAS_object & inObject,
-                                                                            C_Compiler * inCompiler
+                                                                            Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -4189,7 +4189,7 @@ class cPtr_overridingAbstractExtensionSetterAST : public cPtr_semanticDeclaratio
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension getter keyRepresentation
-  public: virtual class GALGAS_string getter_keyRepresentation (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+  public: virtual class GALGAS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method buildExtensionListMaps
   public: virtual void method_buildExtensionListMaps (class GALGAS_genericExtensionMethodListMap & ioAbstractExtensionSetterListMap,
@@ -4204,7 +4204,7 @@ class cPtr_overridingAbstractExtensionSetterAST : public cPtr_semanticDeclaratio
            class GALGAS_genericExtensionMethodListMap & ioExtensionGetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingExtensionGetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingAbstractExtensionGetterListMap,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & ioSemanticTypePrecedenceGraph,
@@ -4212,7 +4212,7 @@ class cPtr_overridingAbstractExtensionSetterAST : public cPtr_semanticDeclaratio
            class GALGAS_extensionGetterMapForBuildingContext & ioExtensionGetterMapForBuildingContext,
            class GALGAS_extensionSetterMapForBuildingContext & ioExtensionSetterMapForBuildingContext,
            class GALGAS_semanticDeclarationListAST & ioExtensionOverrideDefinitionList,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInSemanticContext
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
@@ -4220,7 +4220,7 @@ class cPtr_overridingAbstractExtensionSetterAST : public cPtr_semanticDeclaratio
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
            class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method semanticAnalysis
   public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & ioUsefulnessRootEntities,
@@ -4230,7 +4230,7 @@ class cPtr_overridingAbstractExtensionSetterAST : public cPtr_semanticDeclaratio
            class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_predefinedTypes inPredefinedTypes,
            class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mTypeName ;
@@ -4274,7 +4274,7 @@ class GALGAS_overridingAbstractExtensionSetterAST_2D_weak : public GALGAS_semant
   public: GALGAS_overridingAbstractExtensionSetterAST_2D_weak & operator = (const class GALGAS_overridingAbstractExtensionSetterAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_overridingAbstractExtensionSetterAST bang_overridingAbstractExtensionSetterAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_overridingAbstractExtensionSetterAST bang_overridingAbstractExtensionSetterAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -4283,7 +4283,7 @@ class GALGAS_overridingAbstractExtensionSetterAST_2D_weak : public GALGAS_semant
 
 //--------------------------------- Object extraction
   public: static GALGAS_overridingAbstractExtensionSetterAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -4348,7 +4348,7 @@ class GALGAS_overridingExtensionGetterAST : public GALGAS_semanticDeclarationAST
 
 //--------------------------------- Object extraction
   public: static GALGAS_overridingExtensionGetterAST extractObject (const GALGAS_object & inObject,
-                                                                    C_Compiler * inCompiler
+                                                                    Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -4397,7 +4397,7 @@ class cPtr_overridingExtensionGetterAST : public cPtr_semanticDeclarationAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension getter keyRepresentation
-  public: virtual class GALGAS_string getter_keyRepresentation (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+  public: virtual class GALGAS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method buildExtensionListMaps
   public: virtual void method_buildExtensionListMaps (class GALGAS_genericExtensionMethodListMap & ioAbstractExtensionSetterListMap,
@@ -4412,7 +4412,7 @@ class cPtr_overridingExtensionGetterAST : public cPtr_semanticDeclarationAST {
            class GALGAS_genericExtensionMethodListMap & ioExtensionGetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingExtensionGetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingAbstractExtensionGetterListMap,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & ioSemanticTypePrecedenceGraph,
@@ -4420,7 +4420,7 @@ class cPtr_overridingExtensionGetterAST : public cPtr_semanticDeclarationAST {
            class GALGAS_extensionGetterMapForBuildingContext & ioExtensionGetterMapForBuildingContext,
            class GALGAS_extensionSetterMapForBuildingContext & ioExtensionSetterMapForBuildingContext,
            class GALGAS_semanticDeclarationListAST & ioExtensionOverrideDefinitionList,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInSemanticContext
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
@@ -4428,7 +4428,7 @@ class cPtr_overridingExtensionGetterAST : public cPtr_semanticDeclarationAST {
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
            class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method semanticAnalysis
   public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & ioUsefulnessRootEntities,
@@ -4438,7 +4438,7 @@ class cPtr_overridingExtensionGetterAST : public cPtr_semanticDeclarationAST {
            class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_predefinedTypes inPredefinedTypes,
            class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_bool mProperty_requiresSelfForAccessingProperty ;
@@ -4492,7 +4492,7 @@ class GALGAS_overridingExtensionGetterAST_2D_weak : public GALGAS_semanticDeclar
   public: GALGAS_overridingExtensionGetterAST_2D_weak & operator = (const class GALGAS_overridingExtensionGetterAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_overridingExtensionGetterAST bang_overridingExtensionGetterAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_overridingExtensionGetterAST bang_overridingExtensionGetterAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -4501,7 +4501,7 @@ class GALGAS_overridingExtensionGetterAST_2D_weak : public GALGAS_semanticDeclar
 
 //--------------------------------- Object extraction
   public: static GALGAS_overridingExtensionGetterAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                            C_Compiler * inCompiler
+                                                                            Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -4562,7 +4562,7 @@ class GALGAS_overridingExtensionMethodAST : public GALGAS_semanticDeclarationAST
 
 //--------------------------------- Object extraction
   public: static GALGAS_overridingExtensionMethodAST extractObject (const GALGAS_object & inObject,
-                                                                    C_Compiler * inCompiler
+                                                                    Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -4609,7 +4609,7 @@ class cPtr_overridingExtensionMethodAST : public cPtr_semanticDeclarationAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension getter keyRepresentation
-  public: virtual class GALGAS_string getter_keyRepresentation (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+  public: virtual class GALGAS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method buildExtensionListMaps
   public: virtual void method_buildExtensionListMaps (class GALGAS_genericExtensionMethodListMap & ioAbstractExtensionSetterListMap,
@@ -4624,7 +4624,7 @@ class cPtr_overridingExtensionMethodAST : public cPtr_semanticDeclarationAST {
            class GALGAS_genericExtensionMethodListMap & ioExtensionGetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingExtensionGetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingAbstractExtensionGetterListMap,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & ioSemanticTypePrecedenceGraph,
@@ -4632,7 +4632,7 @@ class cPtr_overridingExtensionMethodAST : public cPtr_semanticDeclarationAST {
            class GALGAS_extensionGetterMapForBuildingContext & ioExtensionGetterMapForBuildingContext,
            class GALGAS_extensionSetterMapForBuildingContext & ioExtensionSetterMapForBuildingContext,
            class GALGAS_semanticDeclarationListAST & ioExtensionOverrideDefinitionList,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInSemanticContext
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
@@ -4640,7 +4640,7 @@ class cPtr_overridingExtensionMethodAST : public cPtr_semanticDeclarationAST {
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
            class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method semanticAnalysis
   public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & ioUsefulnessRootEntities,
@@ -4650,7 +4650,7 @@ class cPtr_overridingExtensionMethodAST : public cPtr_semanticDeclarationAST {
            class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_predefinedTypes inPredefinedTypes,
            class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_bool mProperty_requiresSelfForAccessingProperty ;
@@ -4700,7 +4700,7 @@ class GALGAS_overridingExtensionMethodAST_2D_weak : public GALGAS_semanticDeclar
   public: GALGAS_overridingExtensionMethodAST_2D_weak & operator = (const class GALGAS_overridingExtensionMethodAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_overridingExtensionMethodAST bang_overridingExtensionMethodAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_overridingExtensionMethodAST bang_overridingExtensionMethodAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -4709,7 +4709,7 @@ class GALGAS_overridingExtensionMethodAST_2D_weak : public GALGAS_semanticDeclar
 
 //--------------------------------- Object extraction
   public: static GALGAS_overridingExtensionMethodAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                            C_Compiler * inCompiler
+                                                                            Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -4770,7 +4770,7 @@ class GALGAS_overridingExtensionSetterAST : public GALGAS_semanticDeclarationAST
 
 //--------------------------------- Object extraction
   public: static GALGAS_overridingExtensionSetterAST extractObject (const GALGAS_object & inObject,
-                                                                    C_Compiler * inCompiler
+                                                                    Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -4817,7 +4817,7 @@ class cPtr_overridingExtensionSetterAST : public cPtr_semanticDeclarationAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension getter keyRepresentation
-  public: virtual class GALGAS_string getter_keyRepresentation (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+  public: virtual class GALGAS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method buildExtensionListMaps
   public: virtual void method_buildExtensionListMaps (class GALGAS_genericExtensionMethodListMap & ioAbstractExtensionSetterListMap,
@@ -4832,7 +4832,7 @@ class cPtr_overridingExtensionSetterAST : public cPtr_semanticDeclarationAST {
            class GALGAS_genericExtensionMethodListMap & ioExtensionGetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingExtensionGetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingAbstractExtensionGetterListMap,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & ioSemanticTypePrecedenceGraph,
@@ -4840,7 +4840,7 @@ class cPtr_overridingExtensionSetterAST : public cPtr_semanticDeclarationAST {
            class GALGAS_extensionGetterMapForBuildingContext & ioExtensionGetterMapForBuildingContext,
            class GALGAS_extensionSetterMapForBuildingContext & ioExtensionSetterMapForBuildingContext,
            class GALGAS_semanticDeclarationListAST & ioExtensionOverrideDefinitionList,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInSemanticContext
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
@@ -4848,7 +4848,7 @@ class cPtr_overridingExtensionSetterAST : public cPtr_semanticDeclarationAST {
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
            class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method semanticAnalysis
   public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & ioUsefulnessRootEntities,
@@ -4858,7 +4858,7 @@ class cPtr_overridingExtensionSetterAST : public cPtr_semanticDeclarationAST {
            class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_predefinedTypes inPredefinedTypes,
            class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_bool mProperty_requiresSelfForAccessingProperty ;
@@ -4908,7 +4908,7 @@ class GALGAS_overridingExtensionSetterAST_2D_weak : public GALGAS_semanticDeclar
   public: GALGAS_overridingExtensionSetterAST_2D_weak & operator = (const class GALGAS_overridingExtensionSetterAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_overridingExtensionSetterAST bang_overridingExtensionSetterAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_overridingExtensionSetterAST bang_overridingExtensionSetterAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -4917,7 +4917,7 @@ class GALGAS_overridingExtensionSetterAST_2D_weak : public GALGAS_semanticDeclar
 
 //--------------------------------- Object extraction
   public: static GALGAS_overridingExtensionSetterAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                            C_Compiler * inCompiler
+                                                                            Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -4964,11 +4964,11 @@ class cPtr_semanticExpressionAST : public acStrongPtr_class {
            class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_localVarManager & ioVariableMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) = 0 ;
+           Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Extension method enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
-           C_Compiler * COMMA_LOCATION_ARGS) = 0 ;
+           Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Properties
 
@@ -5002,7 +5002,7 @@ class GALGAS_semanticExpressionAST_2D_weak : public AC_GALGAS_weak_reference {
   public: GALGAS_semanticExpressionAST_2D_weak & operator = (const class GALGAS_semanticExpressionAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_semanticExpressionAST bang_semanticExpressionAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_semanticExpressionAST bang_semanticExpressionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -5011,7 +5011,7 @@ class GALGAS_semanticExpressionAST_2D_weak : public AC_GALGAS_weak_reference {
 
 //--------------------------------- Object extraction
   public: static GALGAS_semanticExpressionAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                     C_Compiler * inCompiler
+                                                                     Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -5046,7 +5046,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticExpressionA
 //--------------------------------------------------------------------------------------------------
 
 class GALGAS_string extensionGetter_string (const class GALGAS_formalArgumentPassingModeAST & inObject,
-                                            class C_Compiler * inCompiler
+                                            class Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -5056,7 +5056,7 @@ class GALGAS_string extensionGetter_string (const class GALGAS_formalArgumentPas
 //--------------------------------------------------------------------------------------------------
 
 class GALGAS_string extensionGetter_formalArgumentMessage (const class GALGAS_formalArgumentPassingModeAST & inObject,
-                                                           class C_Compiler * inCompiler
+                                                           class Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -5080,7 +5080,7 @@ class GALGAS_actualParameterAST : public AC_GALGAS_reference_class {
 
 //--------------------------------- Object extraction
   public: static GALGAS_actualParameterAST extractObject (const GALGAS_object & inObject,
-                                                          C_Compiler * inCompiler
+                                                          Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -5128,15 +5128,15 @@ class cPtr_actualParameterAST : public acStrongPtr_class {
            class GALGAS_actualParameterListForGeneration & ioActualParameterListForGeneration,
            class GALGAS_stringset & ioExclusiveVariableSet,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
-           C_Compiler * COMMA_LOCATION_ARGS) = 0 ;
+           Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Extension method enterInActualOutputParameterList
   public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & ioActualOutputArgumentList,
-           C_Compiler * COMMA_LOCATION_ARGS) = 0 ;
+           Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Extension method enterParameterInSemanticContext
   public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
-           C_Compiler * COMMA_LOCATION_ARGS) = 0 ;
+           Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Properties
 
@@ -5170,7 +5170,7 @@ class GALGAS_actualParameterAST_2D_weak : public AC_GALGAS_weak_reference {
   public: GALGAS_actualParameterAST_2D_weak & operator = (const class GALGAS_actualParameterAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_actualParameterAST bang_actualParameterAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_actualParameterAST bang_actualParameterAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -5179,7 +5179,7 @@ class GALGAS_actualParameterAST_2D_weak : public AC_GALGAS_weak_reference {
 
 //--------------------------------- Object extraction
   public: static GALGAS_actualParameterAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                  C_Compiler * inCompiler
+                                                                  Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -5234,7 +5234,7 @@ class GALGAS_outputActualParameterAST : public GALGAS_actualParameterAST {
 
 //--------------------------------- Object extraction
   public: static GALGAS_outputActualParameterAST extractObject (const GALGAS_object & inObject,
-                                                                C_Compiler * inCompiler
+                                                                Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -5288,15 +5288,15 @@ class cPtr_outputActualParameterAST : public cPtr_actualParameterAST {
            class GALGAS_actualParameterListForGeneration & ioActualParameterListForGeneration,
            class GALGAS_stringset & ioExclusiveVariableSet,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterInActualOutputParameterList
   public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & ioActualOutputArgumentList,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterParameterInSemanticContext
   public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mActualSelector ;
@@ -5339,7 +5339,7 @@ class GALGAS_outputActualParameterAST_2D_weak : public GALGAS_actualParameterAST
   public: GALGAS_outputActualParameterAST_2D_weak & operator = (const class GALGAS_outputActualParameterAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_outputActualParameterAST bang_outputActualParameterAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_outputActualParameterAST bang_outputActualParameterAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -5348,7 +5348,7 @@ class GALGAS_outputActualParameterAST_2D_weak : public GALGAS_actualParameterAST
 
 //--------------------------------- Object extraction
   public: static GALGAS_outputActualParameterAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                        C_Compiler * inCompiler
+                                                                        Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -5403,7 +5403,7 @@ class GALGAS_outputInputActualParameterAST : public GALGAS_actualParameterAST {
 
 //--------------------------------- Object extraction
   public: static GALGAS_outputInputActualParameterAST extractObject (const GALGAS_object & inObject,
-                                                                     C_Compiler * inCompiler
+                                                                     Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -5457,15 +5457,15 @@ class cPtr_outputInputActualParameterAST : public cPtr_actualParameterAST {
            class GALGAS_actualParameterListForGeneration & ioActualParameterListForGeneration,
            class GALGAS_stringset & ioExclusiveVariableSet,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterInActualOutputParameterList
   public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & ioActualOutputArgumentList,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterParameterInSemanticContext
   public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mActualSelector ;
@@ -5508,7 +5508,7 @@ class GALGAS_outputInputActualParameterAST_2D_weak : public GALGAS_actualParamet
   public: GALGAS_outputInputActualParameterAST_2D_weak & operator = (const class GALGAS_outputInputActualParameterAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_outputInputActualParameterAST bang_outputInputActualParameterAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_outputInputActualParameterAST bang_outputInputActualParameterAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -5517,7 +5517,7 @@ class GALGAS_outputInputActualParameterAST_2D_weak : public GALGAS_actualParamet
 
 //--------------------------------- Object extraction
   public: static GALGAS_outputInputActualParameterAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                             C_Compiler * inCompiler
+                                                                             Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -5568,7 +5568,7 @@ class GALGAS_outputInputSingleJokerParameterAST : public GALGAS_actualParameterA
 
 //--------------------------------- Object extraction
   public: static GALGAS_outputInputSingleJokerParameterAST extractObject (const GALGAS_object & inObject,
-                                                                          C_Compiler * inCompiler
+                                                                          Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -5620,15 +5620,15 @@ class cPtr_outputInputSingleJokerParameterAST : public cPtr_actualParameterAST {
            class GALGAS_actualParameterListForGeneration & ioActualParameterListForGeneration,
            class GALGAS_stringset & ioExclusiveVariableSet,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterInActualOutputParameterList
   public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & ioActualOutputArgumentList,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterParameterInSemanticContext
   public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mActualSelector ;
@@ -5667,7 +5667,7 @@ class GALGAS_outputInputSingleJokerParameterAST_2D_weak : public GALGAS_actualPa
   public: GALGAS_outputInputSingleJokerParameterAST_2D_weak & operator = (const class GALGAS_outputInputSingleJokerParameterAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_outputInputSingleJokerParameterAST bang_outputInputSingleJokerParameterAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_outputInputSingleJokerParameterAST bang_outputInputSingleJokerParameterAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -5676,7 +5676,7 @@ class GALGAS_outputInputSingleJokerParameterAST_2D_weak : public GALGAS_actualPa
 
 //--------------------------------- Object extraction
   public: static GALGAS_outputInputSingleJokerParameterAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                                  C_Compiler * inCompiler
+                                                                                  Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -5727,7 +5727,7 @@ class GALGAS_outputInputSelfParameterAST : public GALGAS_actualParameterAST {
 
 //--------------------------------- Object extraction
   public: static GALGAS_outputInputSelfParameterAST extractObject (const GALGAS_object & inObject,
-                                                                   C_Compiler * inCompiler
+                                                                   Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -5779,15 +5779,15 @@ class cPtr_outputInputSelfParameterAST : public cPtr_actualParameterAST {
            class GALGAS_actualParameterListForGeneration & ioActualParameterListForGeneration,
            class GALGAS_stringset & ioExclusiveVariableSet,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterInActualOutputParameterList
   public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & ioActualOutputArgumentList,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterParameterInSemanticContext
   public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mActualSelector ;
@@ -5826,7 +5826,7 @@ class GALGAS_outputInputSelfParameterAST_2D_weak : public GALGAS_actualParameter
   public: GALGAS_outputInputSelfParameterAST_2D_weak & operator = (const class GALGAS_outputInputSelfParameterAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_outputInputSelfParameterAST bang_outputInputSelfParameterAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_outputInputSelfParameterAST bang_outputInputSelfParameterAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -5835,7 +5835,7 @@ class GALGAS_outputInputSelfParameterAST_2D_weak : public GALGAS_actualParameter
 
 //--------------------------------- Object extraction
   public: static GALGAS_outputInputSelfParameterAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                           C_Compiler * inCompiler
+                                                                           Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -5888,7 +5888,7 @@ class GALGAS_outputInputJokerParameterAST : public GALGAS_actualParameterAST {
 
 //--------------------------------- Object extraction
   public: static GALGAS_outputInputJokerParameterAST extractObject (const GALGAS_object & inObject,
-                                                                    C_Compiler * inCompiler
+                                                                    Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -5941,15 +5941,15 @@ class cPtr_outputInputJokerParameterAST : public cPtr_actualParameterAST {
            class GALGAS_actualParameterListForGeneration & ioActualParameterListForGeneration,
            class GALGAS_stringset & ioExclusiveVariableSet,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterInActualOutputParameterList
   public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & ioActualOutputArgumentList,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterParameterInSemanticContext
   public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_location mProperty_mQualifierLocation ;
@@ -5990,7 +5990,7 @@ class GALGAS_outputInputJokerParameterAST_2D_weak : public GALGAS_actualParamete
   public: GALGAS_outputInputJokerParameterAST_2D_weak & operator = (const class GALGAS_outputInputJokerParameterAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_outputInputJokerParameterAST bang_outputInputJokerParameterAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_outputInputJokerParameterAST bang_outputInputJokerParameterAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -5999,7 +5999,7 @@ class GALGAS_outputInputJokerParameterAST_2D_weak : public GALGAS_actualParamete
 
 //--------------------------------- Object extraction
   public: static GALGAS_outputInputJokerParameterAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                            C_Compiler * inCompiler
+                                                                            Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -6054,7 +6054,7 @@ class GALGAS_inputActualExistingVariableParameterAST : public GALGAS_actualParam
 
 //--------------------------------- Object extraction
   public: static GALGAS_inputActualExistingVariableParameterAST extractObject (const GALGAS_object & inObject,
-                                                                               C_Compiler * inCompiler
+                                                                               Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -6108,15 +6108,15 @@ class cPtr_inputActualExistingVariableParameterAST : public cPtr_actualParameter
            class GALGAS_actualParameterListForGeneration & ioActualParameterListForGeneration,
            class GALGAS_stringset & ioExclusiveVariableSet,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterInActualOutputParameterList
   public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & ioActualOutputArgumentList,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterParameterInSemanticContext
   public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mActualSelector ;
@@ -6159,7 +6159,7 @@ class GALGAS_inputActualExistingVariableParameterAST_2D_weak : public GALGAS_act
   public: GALGAS_inputActualExistingVariableParameterAST_2D_weak & operator = (const class GALGAS_inputActualExistingVariableParameterAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_inputActualExistingVariableParameterAST bang_inputActualExistingVariableParameterAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_inputActualExistingVariableParameterAST bang_inputActualExistingVariableParameterAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -6168,7 +6168,7 @@ class GALGAS_inputActualExistingVariableParameterAST_2D_weak : public GALGAS_act
 
 //--------------------------------- Object extraction
   public: static GALGAS_inputActualExistingVariableParameterAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                                       C_Compiler * inCompiler
+                                                                                       Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -6223,7 +6223,7 @@ class GALGAS_inputActualSelfPropertyParameterAST : public GALGAS_actualParameter
 
 //--------------------------------- Object extraction
   public: static GALGAS_inputActualSelfPropertyParameterAST extractObject (const GALGAS_object & inObject,
-                                                                           C_Compiler * inCompiler
+                                                                           Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -6277,15 +6277,15 @@ class cPtr_inputActualSelfPropertyParameterAST : public cPtr_actualParameterAST 
            class GALGAS_actualParameterListForGeneration & ioActualParameterListForGeneration,
            class GALGAS_stringset & ioExclusiveVariableSet,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterInActualOutputParameterList
   public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & ioActualOutputArgumentList,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterParameterInSemanticContext
   public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mActualSelector ;
@@ -6328,7 +6328,7 @@ class GALGAS_inputActualSelfPropertyParameterAST_2D_weak : public GALGAS_actualP
   public: GALGAS_inputActualSelfPropertyParameterAST_2D_weak & operator = (const class GALGAS_inputActualSelfPropertyParameterAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_inputActualSelfPropertyParameterAST bang_inputActualSelfPropertyParameterAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_inputActualSelfPropertyParameterAST bang_inputActualSelfPropertyParameterAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -6337,7 +6337,7 @@ class GALGAS_inputActualSelfPropertyParameterAST_2D_weak : public GALGAS_actualP
 
 //--------------------------------- Object extraction
   public: static GALGAS_inputActualSelfPropertyParameterAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                                   C_Compiler * inCompiler
+                                                                                   Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -6392,7 +6392,7 @@ class GALGAS_inputActualSelfParameterAST : public GALGAS_actualParameterAST {
 
 //--------------------------------- Object extraction
   public: static GALGAS_inputActualSelfParameterAST extractObject (const GALGAS_object & inObject,
-                                                                   C_Compiler * inCompiler
+                                                                   Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -6446,15 +6446,15 @@ class cPtr_inputActualSelfParameterAST : public cPtr_actualParameterAST {
            class GALGAS_actualParameterListForGeneration & ioActualParameterListForGeneration,
            class GALGAS_stringset & ioExclusiveVariableSet,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterInActualOutputParameterList
   public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & ioActualOutputArgumentList,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterParameterInSemanticContext
   public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mActualSelector ;
@@ -6497,7 +6497,7 @@ class GALGAS_inputActualSelfParameterAST_2D_weak : public GALGAS_actualParameter
   public: GALGAS_inputActualSelfParameterAST_2D_weak & operator = (const class GALGAS_inputActualSelfParameterAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_inputActualSelfParameterAST bang_inputActualSelfParameterAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_inputActualSelfParameterAST bang_inputActualSelfParameterAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -6506,7 +6506,7 @@ class GALGAS_inputActualSelfParameterAST_2D_weak : public GALGAS_actualParameter
 
 //--------------------------------- Object extraction
   public: static GALGAS_inputActualSelfParameterAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                           C_Compiler * inCompiler
+                                                                           Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -6563,7 +6563,7 @@ class GALGAS_inputActualNewVariableParameterAST : public GALGAS_actualParameterA
 
 //--------------------------------- Object extraction
   public: static GALGAS_inputActualNewVariableParameterAST extractObject (const GALGAS_object & inObject,
-                                                                          C_Compiler * inCompiler
+                                                                          Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -6618,15 +6618,15 @@ class cPtr_inputActualNewVariableParameterAST : public cPtr_actualParameterAST {
            class GALGAS_actualParameterListForGeneration & ioActualParameterListForGeneration,
            class GALGAS_stringset & ioExclusiveVariableSet,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterInActualOutputParameterList
   public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & ioActualOutputArgumentList,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterParameterInSemanticContext
   public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mActualSelector ;
@@ -6671,7 +6671,7 @@ class GALGAS_inputActualNewVariableParameterAST_2D_weak : public GALGAS_actualPa
   public: GALGAS_inputActualNewVariableParameterAST_2D_weak & operator = (const class GALGAS_inputActualNewVariableParameterAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_inputActualNewVariableParameterAST bang_inputActualNewVariableParameterAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_inputActualNewVariableParameterAST bang_inputActualNewVariableParameterAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -6680,7 +6680,7 @@ class GALGAS_inputActualNewVariableParameterAST_2D_weak : public GALGAS_actualPa
 
 //--------------------------------- Object extraction
   public: static GALGAS_inputActualNewVariableParameterAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                                  C_Compiler * inCompiler
+                                                                                  Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -6739,7 +6739,7 @@ class GALGAS_inputActualNewConstantParameterAST : public GALGAS_actualParameterA
 
 //--------------------------------- Object extraction
   public: static GALGAS_inputActualNewConstantParameterAST extractObject (const GALGAS_object & inObject,
-                                                                          C_Compiler * inCompiler
+                                                                          Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -6795,15 +6795,15 @@ class cPtr_inputActualNewConstantParameterAST : public cPtr_actualParameterAST {
            class GALGAS_actualParameterListForGeneration & ioActualParameterListForGeneration,
            class GALGAS_stringset & ioExclusiveVariableSet,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterInActualOutputParameterList
   public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & ioActualOutputArgumentList,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterParameterInSemanticContext
   public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mActualSelector ;
@@ -6850,7 +6850,7 @@ class GALGAS_inputActualNewConstantParameterAST_2D_weak : public GALGAS_actualPa
   public: GALGAS_inputActualNewConstantParameterAST_2D_weak & operator = (const class GALGAS_inputActualNewConstantParameterAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_inputActualNewConstantParameterAST bang_inputActualNewConstantParameterAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_inputActualNewConstantParameterAST bang_inputActualNewConstantParameterAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -6859,7 +6859,7 @@ class GALGAS_inputActualNewConstantParameterAST_2D_weak : public GALGAS_actualPa
 
 //--------------------------------- Object extraction
   public: static GALGAS_inputActualNewConstantParameterAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                                  C_Compiler * inCompiler
+                                                                                  Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -6912,7 +6912,7 @@ class GALGAS_inputSingleJokerActualParameterAST : public GALGAS_actualParameterA
 
 //--------------------------------- Object extraction
   public: static GALGAS_inputSingleJokerActualParameterAST extractObject (const GALGAS_object & inObject,
-                                                                          C_Compiler * inCompiler
+                                                                          Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -6965,15 +6965,15 @@ class cPtr_inputSingleJokerActualParameterAST : public cPtr_actualParameterAST {
            class GALGAS_actualParameterListForGeneration & ioActualParameterListForGeneration,
            class GALGAS_stringset & ioExclusiveVariableSet,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterInActualOutputParameterList
   public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & ioActualOutputArgumentList,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterParameterInSemanticContext
   public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mActualSelector ;
@@ -7014,7 +7014,7 @@ class GALGAS_inputSingleJokerActualParameterAST_2D_weak : public GALGAS_actualPa
   public: GALGAS_inputSingleJokerActualParameterAST_2D_weak & operator = (const class GALGAS_inputSingleJokerActualParameterAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_inputSingleJokerActualParameterAST bang_inputSingleJokerActualParameterAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_inputSingleJokerActualParameterAST bang_inputSingleJokerActualParameterAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -7023,7 +7023,7 @@ class GALGAS_inputSingleJokerActualParameterAST_2D_weak : public GALGAS_actualPa
 
 //--------------------------------- Object extraction
   public: static GALGAS_inputSingleJokerActualParameterAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                                  C_Compiler * inCompiler
+                                                                                  Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -7076,7 +7076,7 @@ class GALGAS_inputJokerActualParameterAST : public GALGAS_actualParameterAST {
 
 //--------------------------------- Object extraction
   public: static GALGAS_inputJokerActualParameterAST extractObject (const GALGAS_object & inObject,
-                                                                    C_Compiler * inCompiler
+                                                                    Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -7129,15 +7129,15 @@ class cPtr_inputJokerActualParameterAST : public cPtr_actualParameterAST {
            class GALGAS_actualParameterListForGeneration & ioActualParameterListForGeneration,
            class GALGAS_stringset & ioExclusiveVariableSet,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterInActualOutputParameterList
   public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & ioActualOutputArgumentList,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterParameterInSemanticContext
   public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_location mProperty_mQualifierLocation ;
@@ -7178,7 +7178,7 @@ class GALGAS_inputJokerActualParameterAST_2D_weak : public GALGAS_actualParamete
   public: GALGAS_inputJokerActualParameterAST_2D_weak & operator = (const class GALGAS_inputJokerActualParameterAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_inputJokerActualParameterAST bang_inputJokerActualParameterAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_inputJokerActualParameterAST bang_inputJokerActualParameterAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -7187,7 +7187,7 @@ class GALGAS_inputJokerActualParameterAST_2D_weak : public GALGAS_actualParamete
 
 //--------------------------------- Object extraction
   public: static GALGAS_inputJokerActualParameterAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                            C_Compiler * inCompiler
+                                                                            Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -7240,7 +7240,7 @@ class GALGAS_actualParameterListAST : public AC_GALGAS_list {
 
 //--------------------------------- Object extraction
   public: static GALGAS_actualParameterListAST extractObject (const GALGAS_object & inObject,
-                                                              C_Compiler * inCompiler
+                                                              Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -7251,7 +7251,7 @@ class GALGAS_actualParameterListAST : public AC_GALGAS_list {
 
 //--------------------------------- += operator (with expression)
   public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_actualParameterListAST inOperand,
-                                                       class C_Compiler * inCompiler
+                                                       class Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
@@ -7259,65 +7259,65 @@ class GALGAS_actualParameterListAST : public AC_GALGAS_list {
                                                      COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GALGAS_actualParameterListAST add_operation (const GALGAS_actualParameterListAST & inOperand,
-                                                                        C_Compiler * inCompiler
+                                                                        Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_actualParameterAST constinArgument0,
-                                               C_Compiler * inCompiler
+                                               Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_actualParameterAST constinArgument0,
                                                       class GALGAS_uint constinArgument1,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popFirst (class GALGAS_actualParameterAST & outArgument0,
-                                                 C_Compiler * inCompiler
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popLast (class GALGAS_actualParameterAST & outArgument0,
-                                                C_Compiler * inCompiler
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GALGAS_actualParameterAST & outArgument0,
                                                       class GALGAS_uint constinArgument1,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMActualParameterAtIndex (class GALGAS_actualParameterAST constinArgument0,
                                                                    class GALGAS_uint constinArgument1,
-                                                                   C_Compiler * inCompiler
+                                                                   Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
   public: VIRTUAL_IN_DEBUG void method_first (class GALGAS_actualParameterAST & outArgument0,
-                                              C_Compiler * inCompiler
+                                              Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG void method_last (class GALGAS_actualParameterAST & outArgument0,
-                                             C_Compiler * inCompiler
+                                             Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: VIRTUAL_IN_DEBUG class GALGAS_actualParameterAST getter_mActualParameterAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                           C_Compiler * inCompiler
+                                                                                           Compiler * inCompiler
                                                                                            COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_actualParameterListAST getter_subListFromIndex (const class GALGAS_uint & constinOperand0,
-                                                                                        C_Compiler * inCompiler
+                                                                                        Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_actualParameterListAST getter_subListToIndex (const class GALGAS_uint & constinOperand0,
-                                                                                      C_Compiler * inCompiler
+                                                                                      Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_actualParameterListAST getter_subListWithRange (const class GALGAS_range & constinOperand0,
-                                                                                        C_Compiler * inCompiler
+                                                                                        Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) const ;
 
 
@@ -7387,12 +7387,12 @@ class GALGAS_actualParameterListAST_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Object extraction
   public: static GALGAS_actualParameterListAST_2D_element extractObject (const GALGAS_object & inObject,
-                                                                         C_Compiler * inCompiler
+                                                                         Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_actualParameterListAST_2D_element constructor_new (const class GALGAS_actualParameterAST & inOperand0,
-                                                                                 class C_Compiler * inCompiler
+                                                                                 class Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -7441,7 +7441,7 @@ class GALGAS_abstractInputParameter : public AC_GALGAS_reference_class {
 
 //--------------------------------- Object extraction
   public: static GALGAS_abstractInputParameter extractObject (const GALGAS_object & inObject,
-                                                              C_Compiler * inCompiler
+                                                              Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -7484,7 +7484,7 @@ class cPtr_abstractInputParameter : public acStrongPtr_class {
            const class GALGAS_string inLexicalAttributeName,
            class GALGAS_terminalCheckAssignementList & ioTerminalCheckAssignementList,
            class GALGAS_localVarManager & ioVariableMap,
-           C_Compiler * COMMA_LOCATION_ARGS) = 0 ;
+           Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Properties
 
@@ -7518,7 +7518,7 @@ class GALGAS_abstractInputParameter_2D_weak : public AC_GALGAS_weak_reference {
   public: GALGAS_abstractInputParameter_2D_weak & operator = (const class GALGAS_abstractInputParameter & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_abstractInputParameter bang_abstractInputParameter_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_abstractInputParameter bang_abstractInputParameter_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -7527,7 +7527,7 @@ class GALGAS_abstractInputParameter_2D_weak : public AC_GALGAS_weak_reference {
 
 //--------------------------------- Object extraction
   public: static GALGAS_abstractInputParameter_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                      C_Compiler * inCompiler
+                                                                      Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -7576,7 +7576,7 @@ class GALGAS_inputParameterAnonymousVariable : public GALGAS_abstractInputParame
 
 //--------------------------------- Object extraction
   public: static GALGAS_inputParameterAnonymousVariable extractObject (const GALGAS_object & inObject,
-                                                                       C_Compiler * inCompiler
+                                                                       Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -7622,7 +7622,7 @@ class cPtr_inputParameterAnonymousVariable : public cPtr_abstractInputParameter 
            const class GALGAS_string inLexicalAttributeName,
            class GALGAS_terminalCheckAssignementList & ioTerminalCheckAssignementList,
            class GALGAS_localVarManager & ioVariableMap,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
 
@@ -7659,7 +7659,7 @@ class GALGAS_inputParameterAnonymousVariable_2D_weak : public GALGAS_abstractInp
   public: GALGAS_inputParameterAnonymousVariable_2D_weak & operator = (const class GALGAS_inputParameterAnonymousVariable & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_inputParameterAnonymousVariable bang_inputParameterAnonymousVariable_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_inputParameterAnonymousVariable bang_inputParameterAnonymousVariable_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -7668,7 +7668,7 @@ class GALGAS_inputParameterAnonymousVariable_2D_weak : public GALGAS_abstractInp
 
 //--------------------------------- Object extraction
   public: static GALGAS_inputParameterAnonymousVariable_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                               C_Compiler * inCompiler
+                                                                               Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -7719,7 +7719,7 @@ class GALGAS_inputParameterVariable : public GALGAS_abstractInputParameter {
 
 //--------------------------------- Object extraction
   public: static GALGAS_inputParameterVariable extractObject (const GALGAS_object & inObject,
-                                                              C_Compiler * inCompiler
+                                                              Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -7766,7 +7766,7 @@ class cPtr_inputParameterVariable : public cPtr_abstractInputParameter {
            const class GALGAS_string inLexicalAttributeName,
            class GALGAS_terminalCheckAssignementList & ioTerminalCheckAssignementList,
            class GALGAS_localVarManager & ioVariableMap,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mActualParameterName ;
@@ -7805,7 +7805,7 @@ class GALGAS_inputParameterVariable_2D_weak : public GALGAS_abstractInputParamet
   public: GALGAS_inputParameterVariable_2D_weak & operator = (const class GALGAS_inputParameterVariable & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_inputParameterVariable bang_inputParameterVariable_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_inputParameterVariable bang_inputParameterVariable_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -7814,7 +7814,7 @@ class GALGAS_inputParameterVariable_2D_weak : public GALGAS_abstractInputParamet
 
 //--------------------------------- Object extraction
   public: static GALGAS_inputParameterVariable_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                      C_Compiler * inCompiler
+                                                                      Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -7867,7 +7867,7 @@ class GALGAS_inputParameterDeclaredVariable : public GALGAS_abstractInputParamet
 
 //--------------------------------- Object extraction
   public: static GALGAS_inputParameterDeclaredVariable extractObject (const GALGAS_object & inObject,
-                                                                      C_Compiler * inCompiler
+                                                                      Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -7915,7 +7915,7 @@ class cPtr_inputParameterDeclaredVariable : public cPtr_abstractInputParameter {
            const class GALGAS_string inLexicalAttributeName,
            class GALGAS_terminalCheckAssignementList & ioTerminalCheckAssignementList,
            class GALGAS_localVarManager & ioVariableMap,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mActualParameterTypeName ;
@@ -7956,7 +7956,7 @@ class GALGAS_inputParameterDeclaredVariable_2D_weak : public GALGAS_abstractInpu
   public: GALGAS_inputParameterDeclaredVariable_2D_weak & operator = (const class GALGAS_inputParameterDeclaredVariable & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_inputParameterDeclaredVariable bang_inputParameterDeclaredVariable_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_inputParameterDeclaredVariable bang_inputParameterDeclaredVariable_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -7965,7 +7965,7 @@ class GALGAS_inputParameterDeclaredVariable_2D_weak : public GALGAS_abstractInpu
 
 //--------------------------------- Object extraction
   public: static GALGAS_inputParameterDeclaredVariable_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                              C_Compiler * inCompiler
+                                                                              Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -8018,7 +8018,7 @@ class GALGAS_inputParameterDeclaredConstant : public GALGAS_abstractInputParamet
 
 //--------------------------------- Object extraction
   public: static GALGAS_inputParameterDeclaredConstant extractObject (const GALGAS_object & inObject,
-                                                                      C_Compiler * inCompiler
+                                                                      Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -8066,7 +8066,7 @@ class cPtr_inputParameterDeclaredConstant : public cPtr_abstractInputParameter {
            const class GALGAS_string inLexicalAttributeName,
            class GALGAS_terminalCheckAssignementList & ioTerminalCheckAssignementList,
            class GALGAS_localVarManager & ioVariableMap,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mActualParameterTypeName ;
@@ -8107,7 +8107,7 @@ class GALGAS_inputParameterDeclaredConstant_2D_weak : public GALGAS_abstractInpu
   public: GALGAS_inputParameterDeclaredConstant_2D_weak & operator = (const class GALGAS_inputParameterDeclaredConstant & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_inputParameterDeclaredConstant bang_inputParameterDeclaredConstant_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_inputParameterDeclaredConstant bang_inputParameterDeclaredConstant_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -8116,7 +8116,7 @@ class GALGAS_inputParameterDeclaredConstant_2D_weak : public GALGAS_abstractInpu
 
 //--------------------------------- Object extraction
   public: static GALGAS_inputParameterDeclaredConstant_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                              C_Compiler * inCompiler
+                                                                              Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -8170,7 +8170,7 @@ class GALGAS_actualInputParameterListAST : public AC_GALGAS_list {
 
 //--------------------------------- Object extraction
   public: static GALGAS_actualInputParameterListAST extractObject (const GALGAS_object & inObject,
-                                                                   C_Compiler * inCompiler
+                                                                   Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -8182,7 +8182,7 @@ class GALGAS_actualInputParameterListAST : public AC_GALGAS_list {
 
 //--------------------------------- += operator (with expression)
   public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_actualInputParameterListAST inOperand,
-                                                       class C_Compiler * inCompiler
+                                                       class Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
@@ -8191,81 +8191,81 @@ class GALGAS_actualInputParameterListAST : public AC_GALGAS_list {
                                                      COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GALGAS_actualInputParameterListAST add_operation (const GALGAS_actualInputParameterListAST & inOperand,
-                                                                             C_Compiler * inCompiler
+                                                                             Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_lstring constinArgument0,
                                                class GALGAS_abstractInputParameter constinArgument1,
-                                               C_Compiler * inCompiler
+                                               Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_lstring constinArgument0,
                                                       class GALGAS_abstractInputParameter constinArgument1,
                                                       class GALGAS_uint constinArgument2,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popFirst (class GALGAS_lstring & outArgument0,
                                                  class GALGAS_abstractInputParameter & outArgument1,
-                                                 C_Compiler * inCompiler
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popLast (class GALGAS_lstring & outArgument0,
                                                 class GALGAS_abstractInputParameter & outArgument1,
-                                                C_Compiler * inCompiler
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GALGAS_lstring & outArgument0,
                                                       class GALGAS_abstractInputParameter & outArgument1,
                                                       class GALGAS_uint constinArgument2,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMActualSelectorAtIndex (class GALGAS_lstring constinArgument0,
                                                                   class GALGAS_uint constinArgument1,
-                                                                  C_Compiler * inCompiler
+                                                                  Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMInputParameterAtIndex (class GALGAS_abstractInputParameter constinArgument0,
                                                                   class GALGAS_uint constinArgument1,
-                                                                  C_Compiler * inCompiler
+                                                                  Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
   public: VIRTUAL_IN_DEBUG void method_first (class GALGAS_lstring & outArgument0,
                                               class GALGAS_abstractInputParameter & outArgument1,
-                                              C_Compiler * inCompiler
+                                              Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG void method_last (class GALGAS_lstring & outArgument0,
                                              class GALGAS_abstractInputParameter & outArgument1,
-                                             C_Compiler * inCompiler
+                                             Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mActualSelectorAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                               C_Compiler * inCompiler
+                                                                               Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_abstractInputParameter getter_mInputParameterAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                              C_Compiler * inCompiler
+                                                                                              Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_actualInputParameterListAST getter_subListFromIndex (const class GALGAS_uint & constinOperand0,
-                                                                                             C_Compiler * inCompiler
+                                                                                             Compiler * inCompiler
                                                                                              COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_actualInputParameterListAST getter_subListToIndex (const class GALGAS_uint & constinOperand0,
-                                                                                           C_Compiler * inCompiler
+                                                                                           Compiler * inCompiler
                                                                                            COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_actualInputParameterListAST getter_subListWithRange (const class GALGAS_range & constinOperand0,
-                                                                                             C_Compiler * inCompiler
+                                                                                             Compiler * inCompiler
                                                                                              COMMA_LOCATION_ARGS) const ;
 
 
@@ -8346,13 +8346,13 @@ class GALGAS_actualInputParameterListAST_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Object extraction
   public: static GALGAS_actualInputParameterListAST_2D_element extractObject (const GALGAS_object & inObject,
-                                                                              C_Compiler * inCompiler
+                                                                              Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_actualInputParameterListAST_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
                                                                                       const class GALGAS_abstractInputParameter & inOperand1,
-                                                                                      class C_Compiler * inCompiler
+                                                                                      class Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -8396,7 +8396,7 @@ class GALGAS_syntaxInstructionAST_2D_weak : public AC_GALGAS_weak_reference {
   public: GALGAS_syntaxInstructionAST_2D_weak & operator = (const class GALGAS_syntaxInstructionAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_syntaxInstructionAST bang_syntaxInstructionAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_syntaxInstructionAST bang_syntaxInstructionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -8405,7 +8405,7 @@ class GALGAS_syntaxInstructionAST_2D_weak : public AC_GALGAS_weak_reference {
 
 //--------------------------------- Object extraction
   public: static GALGAS_syntaxInstructionAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                    C_Compiler * inCompiler
+                                                                    Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -8449,7 +8449,7 @@ class GALGAS_semanticInstructionAST_2D_weak : public GALGAS_syntaxInstructionAST
   public: GALGAS_semanticInstructionAST_2D_weak & operator = (const class GALGAS_semanticInstructionAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_semanticInstructionAST bang_semanticInstructionAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_semanticInstructionAST bang_semanticInstructionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -8458,7 +8458,7 @@ class GALGAS_semanticInstructionAST_2D_weak : public GALGAS_syntaxInstructionAST
 
 //--------------------------------- Object extraction
   public: static GALGAS_semanticInstructionAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                      C_Compiler * inCompiler
+                                                                      Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -8511,7 +8511,7 @@ class GALGAS_semanticDeclarationListAST : public AC_GALGAS_list {
 
 //--------------------------------- Object extraction
   public: static GALGAS_semanticDeclarationListAST extractObject (const GALGAS_object & inObject,
-                                                                  C_Compiler * inCompiler
+                                                                  Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -8522,7 +8522,7 @@ class GALGAS_semanticDeclarationListAST : public AC_GALGAS_list {
 
 //--------------------------------- += operator (with expression)
   public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_semanticDeclarationListAST inOperand,
-                                                       class C_Compiler * inCompiler
+                                                       class Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
@@ -8530,65 +8530,65 @@ class GALGAS_semanticDeclarationListAST : public AC_GALGAS_list {
                                                      COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GALGAS_semanticDeclarationListAST add_operation (const GALGAS_semanticDeclarationListAST & inOperand,
-                                                                            C_Compiler * inCompiler
+                                                                            Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_semanticDeclarationAST constinArgument0,
-                                               C_Compiler * inCompiler
+                                               Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_semanticDeclarationAST constinArgument0,
                                                       class GALGAS_uint constinArgument1,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popFirst (class GALGAS_semanticDeclarationAST & outArgument0,
-                                                 C_Compiler * inCompiler
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popLast (class GALGAS_semanticDeclarationAST & outArgument0,
-                                                C_Compiler * inCompiler
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GALGAS_semanticDeclarationAST & outArgument0,
                                                       class GALGAS_uint constinArgument1,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMSemanticDeclarationAtIndex (class GALGAS_semanticDeclarationAST constinArgument0,
                                                                        class GALGAS_uint constinArgument1,
-                                                                       C_Compiler * inCompiler
+                                                                       Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
   public: VIRTUAL_IN_DEBUG void method_first (class GALGAS_semanticDeclarationAST & outArgument0,
-                                              C_Compiler * inCompiler
+                                              Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG void method_last (class GALGAS_semanticDeclarationAST & outArgument0,
-                                             C_Compiler * inCompiler
+                                             Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: VIRTUAL_IN_DEBUG class GALGAS_semanticDeclarationAST getter_mSemanticDeclarationAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                                   C_Compiler * inCompiler
+                                                                                                   Compiler * inCompiler
                                                                                                    COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_semanticDeclarationListAST getter_subListFromIndex (const class GALGAS_uint & constinOperand0,
-                                                                                            C_Compiler * inCompiler
+                                                                                            Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_semanticDeclarationListAST getter_subListToIndex (const class GALGAS_uint & constinOperand0,
-                                                                                          C_Compiler * inCompiler
+                                                                                          Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_semanticDeclarationListAST getter_subListWithRange (const class GALGAS_range & constinOperand0,
-                                                                                            C_Compiler * inCompiler
+                                                                                            Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) const ;
 
 
@@ -8658,12 +8658,12 @@ class GALGAS_semanticDeclarationListAST_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Object extraction
   public: static GALGAS_semanticDeclarationListAST_2D_element extractObject (const GALGAS_object & inObject,
-                                                                             C_Compiler * inCompiler
+                                                                             Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_semanticDeclarationListAST_2D_element constructor_new (const class GALGAS_semanticDeclarationAST & inOperand0,
-                                                                                     class C_Compiler * inCompiler
+                                                                                     class Compiler * inCompiler
                                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -8720,7 +8720,7 @@ class GALGAS_externProcedureDeclarationAST : public GALGAS_semanticDeclarationAS
 
 //--------------------------------- Object extraction
   public: static GALGAS_externProcedureDeclarationAST extractObject (const GALGAS_object & inObject,
-                                                                     C_Compiler * inCompiler
+                                                                     Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -8765,7 +8765,7 @@ class cPtr_externProcedureDeclarationAST : public cPtr_semanticDeclarationAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension getter keyRepresentation
-  public: virtual class GALGAS_string getter_keyRepresentation (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+  public: virtual class GALGAS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & ioSemanticTypePrecedenceGraph,
@@ -8773,7 +8773,7 @@ class cPtr_externProcedureDeclarationAST : public cPtr_semanticDeclarationAST {
            class GALGAS_extensionGetterMapForBuildingContext & ioExtensionGetterMapForBuildingContext,
            class GALGAS_extensionSetterMapForBuildingContext & ioExtensionSetterMapForBuildingContext,
            class GALGAS_semanticDeclarationListAST & ioExtensionOverrideDefinitionList,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInSemanticContext
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
@@ -8781,7 +8781,7 @@ class cPtr_externProcedureDeclarationAST : public cPtr_semanticDeclarationAST {
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
            class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method semanticAnalysis
   public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & ioUsefulnessRootEntities,
@@ -8791,7 +8791,7 @@ class cPtr_externProcedureDeclarationAST : public cPtr_semanticDeclarationAST {
            class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_predefinedTypes inPredefinedTypes,
            class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_bool mProperty_mIsInternal ;
@@ -8837,7 +8837,7 @@ class GALGAS_externProcedureDeclarationAST_2D_weak : public GALGAS_semanticDecla
   public: GALGAS_externProcedureDeclarationAST_2D_weak & operator = (const class GALGAS_externProcedureDeclarationAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_externProcedureDeclarationAST bang_externProcedureDeclarationAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_externProcedureDeclarationAST bang_externProcedureDeclarationAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -8846,7 +8846,7 @@ class GALGAS_externProcedureDeclarationAST_2D_weak : public GALGAS_semanticDecla
 
 //--------------------------------- Object extraction
   public: static GALGAS_externProcedureDeclarationAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                             C_Compiler * inCompiler
+                                                                             Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -8899,7 +8899,7 @@ class GALGAS_procDeclarationAST : public GALGAS_externProcedureDeclarationAST {
 
 //--------------------------------- Object extraction
   public: static GALGAS_procDeclarationAST extractObject (const GALGAS_object & inObject,
-                                                          C_Compiler * inCompiler
+                                                          Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -8951,7 +8951,7 @@ class cPtr_procDeclarationAST : public cPtr_externProcedureDeclarationAST {
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
            class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method semanticAnalysis
   public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & ioUsefulnessRootEntities,
@@ -8961,7 +8961,7 @@ class cPtr_procDeclarationAST : public cPtr_externProcedureDeclarationAST {
            class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_predefinedTypes inPredefinedTypes,
            class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_semanticInstructionListAST mProperty_mRoutineInstructionList ;
@@ -9007,7 +9007,7 @@ class GALGAS_procDeclarationAST_2D_weak : public GALGAS_externProcedureDeclarati
   public: GALGAS_procDeclarationAST_2D_weak & operator = (const class GALGAS_procDeclarationAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_procDeclarationAST bang_procDeclarationAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_procDeclarationAST bang_procDeclarationAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -9016,7 +9016,7 @@ class GALGAS_procDeclarationAST_2D_weak : public GALGAS_externProcedureDeclarati
 
 //--------------------------------- Object extraction
   public: static GALGAS_procDeclarationAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                  C_Compiler * inCompiler
+                                                                  Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -9073,7 +9073,7 @@ class GALGAS_externFunctionDeclarationAST : public GALGAS_semanticDeclarationAST
 
 //--------------------------------- Object extraction
   public: static GALGAS_externFunctionDeclarationAST extractObject (const GALGAS_object & inObject,
-                                                                    C_Compiler * inCompiler
+                                                                    Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -9118,7 +9118,7 @@ class cPtr_externFunctionDeclarationAST : public cPtr_semanticDeclarationAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension getter keyRepresentation
-  public: virtual class GALGAS_string getter_keyRepresentation (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+  public: virtual class GALGAS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & ioSemanticTypePrecedenceGraph,
@@ -9126,7 +9126,7 @@ class cPtr_externFunctionDeclarationAST : public cPtr_semanticDeclarationAST {
            class GALGAS_extensionGetterMapForBuildingContext & ioExtensionGetterMapForBuildingContext,
            class GALGAS_extensionSetterMapForBuildingContext & ioExtensionSetterMapForBuildingContext,
            class GALGAS_semanticDeclarationListAST & ioExtensionOverrideDefinitionList,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInSemanticContext
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
@@ -9134,7 +9134,7 @@ class cPtr_externFunctionDeclarationAST : public cPtr_semanticDeclarationAST {
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
            class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method semanticAnalysis
   public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & ioUsefulnessRootEntities,
@@ -9144,7 +9144,7 @@ class cPtr_externFunctionDeclarationAST : public cPtr_semanticDeclarationAST {
            class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_predefinedTypes inPredefinedTypes,
            class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mFunctionName ;
@@ -9190,7 +9190,7 @@ class GALGAS_externFunctionDeclarationAST_2D_weak : public GALGAS_semanticDeclar
   public: GALGAS_externFunctionDeclarationAST_2D_weak & operator = (const class GALGAS_externFunctionDeclarationAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_externFunctionDeclarationAST bang_externFunctionDeclarationAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_externFunctionDeclarationAST bang_externFunctionDeclarationAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -9199,7 +9199,7 @@ class GALGAS_externFunctionDeclarationAST_2D_weak : public GALGAS_semanticDeclar
 
 //--------------------------------- Object extraction
   public: static GALGAS_externFunctionDeclarationAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                            C_Compiler * inCompiler
+                                                                            Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -9256,7 +9256,7 @@ class GALGAS_functionDeclarationAST : public GALGAS_externFunctionDeclarationAST
 
 //--------------------------------- Object extraction
   public: static GALGAS_functionDeclarationAST extractObject (const GALGAS_object & inObject,
-                                                              C_Compiler * inCompiler
+                                                              Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -9312,7 +9312,7 @@ class cPtr_functionDeclarationAST : public cPtr_externFunctionDeclarationAST {
            class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_predefinedTypes inPredefinedTypes,
            class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mResultVariableName ;
@@ -9362,7 +9362,7 @@ class GALGAS_functionDeclarationAST_2D_weak : public GALGAS_externFunctionDeclar
   public: GALGAS_functionDeclarationAST_2D_weak & operator = (const class GALGAS_functionDeclarationAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_functionDeclarationAST bang_functionDeclarationAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_functionDeclarationAST bang_functionDeclarationAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -9371,7 +9371,7 @@ class GALGAS_functionDeclarationAST_2D_weak : public GALGAS_externFunctionDeclar
 
 //--------------------------------- Object extraction
   public: static GALGAS_functionDeclarationAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                      C_Compiler * inCompiler
+                                                                      Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -9434,7 +9434,7 @@ class GALGAS_onceFunctionDeclarationAST : public GALGAS_semanticDeclarationAST {
 
 //--------------------------------- Object extraction
   public: static GALGAS_onceFunctionDeclarationAST extractObject (const GALGAS_object & inObject,
-                                                                  C_Compiler * inCompiler
+                                                                  Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -9482,7 +9482,7 @@ class cPtr_onceFunctionDeclarationAST : public cPtr_semanticDeclarationAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension getter keyRepresentation
-  public: virtual class GALGAS_string getter_keyRepresentation (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+  public: virtual class GALGAS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & ioSemanticTypePrecedenceGraph,
@@ -9490,7 +9490,7 @@ class cPtr_onceFunctionDeclarationAST : public cPtr_semanticDeclarationAST {
            class GALGAS_extensionGetterMapForBuildingContext & ioExtensionGetterMapForBuildingContext,
            class GALGAS_extensionSetterMapForBuildingContext & ioExtensionSetterMapForBuildingContext,
            class GALGAS_semanticDeclarationListAST & ioExtensionOverrideDefinitionList,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInSemanticContext
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
@@ -9498,7 +9498,7 @@ class cPtr_onceFunctionDeclarationAST : public cPtr_semanticDeclarationAST {
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
            class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method semanticAnalysis
   public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & ioUsefulnessRootEntities,
@@ -9508,7 +9508,7 @@ class cPtr_onceFunctionDeclarationAST : public cPtr_semanticDeclarationAST {
            class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_predefinedTypes inPredefinedTypes,
            class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mFunctionName ;
@@ -9560,7 +9560,7 @@ class GALGAS_onceFunctionDeclarationAST_2D_weak : public GALGAS_semanticDeclarat
   public: GALGAS_onceFunctionDeclarationAST_2D_weak & operator = (const class GALGAS_onceFunctionDeclarationAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_onceFunctionDeclarationAST bang_onceFunctionDeclarationAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_onceFunctionDeclarationAST bang_onceFunctionDeclarationAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -9569,7 +9569,7 @@ class GALGAS_onceFunctionDeclarationAST_2D_weak : public GALGAS_semanticDeclarat
 
 //--------------------------------- Object extraction
   public: static GALGAS_onceFunctionDeclarationAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                          C_Compiler * inCompiler
+                                                                          Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -9625,7 +9625,7 @@ class GALGAS_formalTemplateInputParameterListAST : public AC_GALGAS_list {
 
 //--------------------------------- Object extraction
   public: static GALGAS_formalTemplateInputParameterListAST extractObject (const GALGAS_object & inObject,
-                                                                           C_Compiler * inCompiler
+                                                                           Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -9639,7 +9639,7 @@ class GALGAS_formalTemplateInputParameterListAST : public AC_GALGAS_list {
 
 //--------------------------------- += operator (with expression)
   public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_formalTemplateInputParameterListAST inOperand,
-                                                       class C_Compiler * inCompiler
+                                                       class Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
@@ -9650,7 +9650,7 @@ class GALGAS_formalTemplateInputParameterListAST : public AC_GALGAS_list {
                                                      COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GALGAS_formalTemplateInputParameterListAST add_operation (const GALGAS_formalTemplateInputParameterListAST & inOperand,
-                                                                                     C_Compiler * inCompiler
+                                                                                     Compiler * inCompiler
                                                                                      COMMA_LOCATION_ARGS) const ;
 
 
@@ -9659,7 +9659,7 @@ class GALGAS_formalTemplateInputParameterListAST : public AC_GALGAS_list {
                                                class GALGAS_lstring constinArgument1,
                                                class GALGAS_lstring constinArgument2,
                                                class GALGAS_bool constinArgument3,
-                                               C_Compiler * inCompiler
+                                               Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_lstring constinArgument0,
@@ -9667,21 +9667,21 @@ class GALGAS_formalTemplateInputParameterListAST : public AC_GALGAS_list {
                                                       class GALGAS_lstring constinArgument2,
                                                       class GALGAS_bool constinArgument3,
                                                       class GALGAS_uint constinArgument4,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popFirst (class GALGAS_lstring & outArgument0,
                                                  class GALGAS_lstring & outArgument1,
                                                  class GALGAS_lstring & outArgument2,
                                                  class GALGAS_bool & outArgument3,
-                                                 C_Compiler * inCompiler
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popLast (class GALGAS_lstring & outArgument0,
                                                 class GALGAS_lstring & outArgument1,
                                                 class GALGAS_lstring & outArgument2,
                                                 class GALGAS_bool & outArgument3,
-                                                C_Compiler * inCompiler
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GALGAS_lstring & outArgument0,
@@ -9689,27 +9689,27 @@ class GALGAS_formalTemplateInputParameterListAST : public AC_GALGAS_list {
                                                       class GALGAS_lstring & outArgument2,
                                                       class GALGAS_bool & outArgument3,
                                                       class GALGAS_uint constinArgument4,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMFormalArgumentNameAtIndex (class GALGAS_lstring constinArgument0,
                                                                       class GALGAS_uint constinArgument1,
-                                                                      C_Compiler * inCompiler
+                                                                      Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMFormalArgumentTypeNameAtIndex (class GALGAS_lstring constinArgument0,
                                                                           class GALGAS_uint constinArgument1,
-                                                                          C_Compiler * inCompiler
+                                                                          Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMFormalTemplateSelectorAtIndex (class GALGAS_lstring constinArgument0,
                                                                           class GALGAS_uint constinArgument1,
-                                                                          C_Compiler * inCompiler
+                                                                          Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMIsUnusedAtIndex (class GALGAS_bool constinArgument0,
                                                             class GALGAS_uint constinArgument1,
-                                                            C_Compiler * inCompiler
+                                                            Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) ;
 
 
@@ -9718,45 +9718,45 @@ class GALGAS_formalTemplateInputParameterListAST : public AC_GALGAS_list {
                                               class GALGAS_lstring & outArgument1,
                                               class GALGAS_lstring & outArgument2,
                                               class GALGAS_bool & outArgument3,
-                                              C_Compiler * inCompiler
+                                              Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG void method_last (class GALGAS_lstring & outArgument0,
                                              class GALGAS_lstring & outArgument1,
                                              class GALGAS_lstring & outArgument2,
                                              class GALGAS_bool & outArgument3,
-                                             C_Compiler * inCompiler
+                                             Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mFormalArgumentNameAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                   C_Compiler * inCompiler
+                                                                                   Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mFormalArgumentTypeNameAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                       C_Compiler * inCompiler
+                                                                                       Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mFormalTemplateSelectorAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                       C_Compiler * inCompiler
+                                                                                       Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_mIsUnusedAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                      C_Compiler * inCompiler
+                                                                      Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_formalTemplateInputParameterListAST getter_subListFromIndex (const class GALGAS_uint & constinOperand0,
-                                                                                                     C_Compiler * inCompiler
+                                                                                                     Compiler * inCompiler
                                                                                                      COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_formalTemplateInputParameterListAST getter_subListToIndex (const class GALGAS_uint & constinOperand0,
-                                                                                                   C_Compiler * inCompiler
+                                                                                                   Compiler * inCompiler
                                                                                                    COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_formalTemplateInputParameterListAST getter_subListWithRange (const class GALGAS_range & constinOperand0,
-                                                                                                     C_Compiler * inCompiler
+                                                                                                     Compiler * inCompiler
                                                                                                      COMMA_LOCATION_ARGS) const ;
 
 
@@ -9859,7 +9859,7 @@ class GALGAS_formalTemplateInputParameterListAST_2D_element : public AC_GALGAS_r
 
 //--------------------------------- Object extraction
   public: static GALGAS_formalTemplateInputParameterListAST_2D_element extractObject (const GALGAS_object & inObject,
-                                                                                      C_Compiler * inCompiler
+                                                                                      Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -9867,7 +9867,7 @@ class GALGAS_formalTemplateInputParameterListAST_2D_element : public AC_GALGAS_r
                                                                                               const class GALGAS_lstring & inOperand1,
                                                                                               const class GALGAS_lstring & inOperand2,
                                                                                               const class GALGAS_bool & inOperand3,
-                                                                                              class C_Compiler * inCompiler
+                                                                                              class Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -9922,7 +9922,7 @@ class GALGAS_filewrapperTemplateListAST : public AC_GALGAS_list {
 
 //--------------------------------- Object extraction
   public: static GALGAS_filewrapperTemplateListAST extractObject (const GALGAS_object & inObject,
-                                                                  C_Compiler * inCompiler
+                                                                  Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -9935,7 +9935,7 @@ class GALGAS_filewrapperTemplateListAST : public AC_GALGAS_list {
 
 //--------------------------------- += operator (with expression)
   public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_filewrapperTemplateListAST inOperand,
-                                                       class C_Compiler * inCompiler
+                                                       class Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
@@ -9945,7 +9945,7 @@ class GALGAS_filewrapperTemplateListAST : public AC_GALGAS_list {
                                                      COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GALGAS_filewrapperTemplateListAST add_operation (const GALGAS_filewrapperTemplateListAST & inOperand,
-                                                                            C_Compiler * inCompiler
+                                                                            Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) const ;
 
 
@@ -9953,48 +9953,48 @@ class GALGAS_filewrapperTemplateListAST : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_lstring constinArgument0,
                                                class GALGAS_lstring constinArgument1,
                                                class GALGAS_formalTemplateInputParameterListAST constinArgument2,
-                                               C_Compiler * inCompiler
+                                               Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_lstring constinArgument0,
                                                       class GALGAS_lstring constinArgument1,
                                                       class GALGAS_formalTemplateInputParameterListAST constinArgument2,
                                                       class GALGAS_uint constinArgument3,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popFirst (class GALGAS_lstring & outArgument0,
                                                  class GALGAS_lstring & outArgument1,
                                                  class GALGAS_formalTemplateInputParameterListAST & outArgument2,
-                                                 C_Compiler * inCompiler
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popLast (class GALGAS_lstring & outArgument0,
                                                 class GALGAS_lstring & outArgument1,
                                                 class GALGAS_formalTemplateInputParameterListAST & outArgument2,
-                                                C_Compiler * inCompiler
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GALGAS_lstring & outArgument0,
                                                       class GALGAS_lstring & outArgument1,
                                                       class GALGAS_formalTemplateInputParameterListAST & outArgument2,
                                                       class GALGAS_uint constinArgument3,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMFilewrapperTemplateFormalInputParametersAtIndex (class GALGAS_formalTemplateInputParameterListAST constinArgument0,
                                                                                             class GALGAS_uint constinArgument1,
-                                                                                            C_Compiler * inCompiler
+                                                                                            Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMFilewrapperTemplateNameAtIndex (class GALGAS_lstring constinArgument0,
                                                                            class GALGAS_uint constinArgument1,
-                                                                           C_Compiler * inCompiler
+                                                                           Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMFilewrapperTemplatePathAtIndex (class GALGAS_lstring constinArgument0,
                                                                            class GALGAS_uint constinArgument1,
-                                                                           C_Compiler * inCompiler
+                                                                           Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) ;
 
 
@@ -10002,40 +10002,40 @@ class GALGAS_filewrapperTemplateListAST : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG void method_first (class GALGAS_lstring & outArgument0,
                                               class GALGAS_lstring & outArgument1,
                                               class GALGAS_formalTemplateInputParameterListAST & outArgument2,
-                                              C_Compiler * inCompiler
+                                              Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG void method_last (class GALGAS_lstring & outArgument0,
                                              class GALGAS_lstring & outArgument1,
                                              class GALGAS_formalTemplateInputParameterListAST & outArgument2,
-                                             C_Compiler * inCompiler
+                                             Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: VIRTUAL_IN_DEBUG class GALGAS_formalTemplateInputParameterListAST getter_mFilewrapperTemplateFormalInputParametersAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                                                                     C_Compiler * inCompiler
+                                                                                                                                     Compiler * inCompiler
                                                                                                                                      COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mFilewrapperTemplateNameAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                        C_Compiler * inCompiler
+                                                                                        Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mFilewrapperTemplatePathAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                        C_Compiler * inCompiler
+                                                                                        Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_filewrapperTemplateListAST getter_subListFromIndex (const class GALGAS_uint & constinOperand0,
-                                                                                            C_Compiler * inCompiler
+                                                                                            Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_filewrapperTemplateListAST getter_subListToIndex (const class GALGAS_uint & constinOperand0,
-                                                                                          C_Compiler * inCompiler
+                                                                                          Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_filewrapperTemplateListAST getter_subListWithRange (const class GALGAS_range & constinOperand0,
-                                                                                            C_Compiler * inCompiler
+                                                                                            Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) const ;
 
 
@@ -10127,14 +10127,14 @@ class GALGAS_filewrapperTemplateListAST_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Object extraction
   public: static GALGAS_filewrapperTemplateListAST_2D_element extractObject (const GALGAS_object & inObject,
-                                                                             C_Compiler * inCompiler
+                                                                             Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_filewrapperTemplateListAST_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
                                                                                      const class GALGAS_lstring & inOperand1,
                                                                                      const class GALGAS_formalTemplateInputParameterListAST & inOperand2,
-                                                                                     class C_Compiler * inCompiler
+                                                                                     class Compiler * inCompiler
                                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -10197,7 +10197,7 @@ class GALGAS_filewrapperDeclarationAST : public GALGAS_semanticDeclarationAST {
 
 //--------------------------------- Object extraction
   public: static GALGAS_filewrapperDeclarationAST extractObject (const GALGAS_object & inObject,
-                                                                 C_Compiler * inCompiler
+                                                                 Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -10245,7 +10245,7 @@ class cPtr_filewrapperDeclarationAST : public cPtr_semanticDeclarationAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension getter keyRepresentation
-  public: virtual class GALGAS_string getter_keyRepresentation (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+  public: virtual class GALGAS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & ioSemanticTypePrecedenceGraph,
@@ -10253,7 +10253,7 @@ class cPtr_filewrapperDeclarationAST : public cPtr_semanticDeclarationAST {
            class GALGAS_extensionGetterMapForBuildingContext & ioExtensionGetterMapForBuildingContext,
            class GALGAS_extensionSetterMapForBuildingContext & ioExtensionSetterMapForBuildingContext,
            class GALGAS_semanticDeclarationListAST & ioExtensionOverrideDefinitionList,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInSemanticContext
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
@@ -10261,7 +10261,7 @@ class cPtr_filewrapperDeclarationAST : public cPtr_semanticDeclarationAST {
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
            class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method semanticAnalysis
   public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & ioUsefulnessRootEntities,
@@ -10271,7 +10271,7 @@ class cPtr_filewrapperDeclarationAST : public cPtr_semanticDeclarationAST {
            class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_predefinedTypes inPredefinedTypes,
            class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_bool mProperty_mIsInternal ;
@@ -10323,7 +10323,7 @@ class GALGAS_filewrapperDeclarationAST_2D_weak : public GALGAS_semanticDeclarati
   public: GALGAS_filewrapperDeclarationAST_2D_weak & operator = (const class GALGAS_filewrapperDeclarationAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_filewrapperDeclarationAST bang_filewrapperDeclarationAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_filewrapperDeclarationAST bang_filewrapperDeclarationAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -10332,7 +10332,7 @@ class GALGAS_filewrapperDeclarationAST_2D_weak : public GALGAS_semanticDeclarati
 
 //--------------------------------- Object extraction
   public: static GALGAS_filewrapperDeclarationAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                         C_Compiler * inCompiler
+                                                                         Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -10385,7 +10385,7 @@ class GALGAS_syntaxInstructionList : public AC_GALGAS_list {
 
 //--------------------------------- Object extraction
   public: static GALGAS_syntaxInstructionList extractObject (const GALGAS_object & inObject,
-                                                             C_Compiler * inCompiler
+                                                             Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -10396,7 +10396,7 @@ class GALGAS_syntaxInstructionList : public AC_GALGAS_list {
 
 //--------------------------------- += operator (with expression)
   public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_syntaxInstructionList inOperand,
-                                                       class C_Compiler * inCompiler
+                                                       class Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
@@ -10404,65 +10404,65 @@ class GALGAS_syntaxInstructionList : public AC_GALGAS_list {
                                                      COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GALGAS_syntaxInstructionList add_operation (const GALGAS_syntaxInstructionList & inOperand,
-                                                                       C_Compiler * inCompiler
+                                                                       Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_syntaxInstructionAST constinArgument0,
-                                               C_Compiler * inCompiler
+                                               Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_syntaxInstructionAST constinArgument0,
                                                       class GALGAS_uint constinArgument1,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popFirst (class GALGAS_syntaxInstructionAST & outArgument0,
-                                                 C_Compiler * inCompiler
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popLast (class GALGAS_syntaxInstructionAST & outArgument0,
-                                                C_Compiler * inCompiler
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GALGAS_syntaxInstructionAST & outArgument0,
                                                       class GALGAS_uint constinArgument1,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMInstructionAtIndex (class GALGAS_syntaxInstructionAST constinArgument0,
                                                                class GALGAS_uint constinArgument1,
-                                                               C_Compiler * inCompiler
+                                                               Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
   public: VIRTUAL_IN_DEBUG void method_first (class GALGAS_syntaxInstructionAST & outArgument0,
-                                              C_Compiler * inCompiler
+                                              Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG void method_last (class GALGAS_syntaxInstructionAST & outArgument0,
-                                             C_Compiler * inCompiler
+                                             Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: VIRTUAL_IN_DEBUG class GALGAS_syntaxInstructionAST getter_mInstructionAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                         C_Compiler * inCompiler
+                                                                                         Compiler * inCompiler
                                                                                          COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_syntaxInstructionList getter_subListFromIndex (const class GALGAS_uint & constinOperand0,
-                                                                                       C_Compiler * inCompiler
+                                                                                       Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_syntaxInstructionList getter_subListToIndex (const class GALGAS_uint & constinOperand0,
-                                                                                     C_Compiler * inCompiler
+                                                                                     Compiler * inCompiler
                                                                                      COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_syntaxInstructionList getter_subListWithRange (const class GALGAS_range & constinOperand0,
-                                                                                       C_Compiler * inCompiler
+                                                                                       Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) const ;
 
 
@@ -10532,12 +10532,12 @@ class GALGAS_syntaxInstructionList_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Object extraction
   public: static GALGAS_syntaxInstructionList_2D_element extractObject (const GALGAS_object & inObject,
-                                                                        C_Compiler * inCompiler
+                                                                        Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_syntaxInstructionList_2D_element constructor_new (const class GALGAS_syntaxInstructionAST & inOperand0,
-                                                                                class C_Compiler * inCompiler
+                                                                                class Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -10592,7 +10592,7 @@ class GALGAS_nonTerminalLabelListAST : public AC_GALGAS_list {
 
 //--------------------------------- Object extraction
   public: static GALGAS_nonTerminalLabelListAST extractObject (const GALGAS_object & inObject,
-                                                               C_Compiler * inCompiler
+                                                               Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -10605,7 +10605,7 @@ class GALGAS_nonTerminalLabelListAST : public AC_GALGAS_list {
 
 //--------------------------------- += operator (with expression)
   public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_nonTerminalLabelListAST inOperand,
-                                                       class C_Compiler * inCompiler
+                                                       class Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
@@ -10615,7 +10615,7 @@ class GALGAS_nonTerminalLabelListAST : public AC_GALGAS_list {
                                                      COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GALGAS_nonTerminalLabelListAST add_operation (const GALGAS_nonTerminalLabelListAST & inOperand,
-                                                                         C_Compiler * inCompiler
+                                                                         Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) const ;
 
 
@@ -10623,48 +10623,48 @@ class GALGAS_nonTerminalLabelListAST : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_lstring constinArgument0,
                                                class GALGAS_formalParameterListAST constinArgument1,
                                                class GALGAS_location constinArgument2,
-                                               C_Compiler * inCompiler
+                                               Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_lstring constinArgument0,
                                                       class GALGAS_formalParameterListAST constinArgument1,
                                                       class GALGAS_location constinArgument2,
                                                       class GALGAS_uint constinArgument3,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popFirst (class GALGAS_lstring & outArgument0,
                                                  class GALGAS_formalParameterListAST & outArgument1,
                                                  class GALGAS_location & outArgument2,
-                                                 C_Compiler * inCompiler
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popLast (class GALGAS_lstring & outArgument0,
                                                 class GALGAS_formalParameterListAST & outArgument1,
                                                 class GALGAS_location & outArgument2,
-                                                C_Compiler * inCompiler
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GALGAS_lstring & outArgument0,
                                                       class GALGAS_formalParameterListAST & outArgument1,
                                                       class GALGAS_location & outArgument2,
                                                       class GALGAS_uint constinArgument3,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMEndOfArgumentLocationAtIndex (class GALGAS_location constinArgument0,
                                                                          class GALGAS_uint constinArgument1,
-                                                                         C_Compiler * inCompiler
+                                                                         Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMFormalArgumentListAtIndex (class GALGAS_formalParameterListAST constinArgument0,
                                                                       class GALGAS_uint constinArgument1,
-                                                                      C_Compiler * inCompiler
+                                                                      Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMLabelNameAtIndex (class GALGAS_lstring constinArgument0,
                                                              class GALGAS_uint constinArgument1,
-                                                             C_Compiler * inCompiler
+                                                             Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) ;
 
 
@@ -10672,40 +10672,40 @@ class GALGAS_nonTerminalLabelListAST : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG void method_first (class GALGAS_lstring & outArgument0,
                                               class GALGAS_formalParameterListAST & outArgument1,
                                               class GALGAS_location & outArgument2,
-                                              C_Compiler * inCompiler
+                                              Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG void method_last (class GALGAS_lstring & outArgument0,
                                              class GALGAS_formalParameterListAST & outArgument1,
                                              class GALGAS_location & outArgument2,
-                                             C_Compiler * inCompiler
+                                             Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: VIRTUAL_IN_DEBUG class GALGAS_location getter_mEndOfArgumentLocationAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                       C_Compiler * inCompiler
+                                                                                       Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_formalParameterListAST getter_mFormalArgumentListAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                                  C_Compiler * inCompiler
+                                                                                                  Compiler * inCompiler
                                                                                                   COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mLabelNameAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                          C_Compiler * inCompiler
+                                                                          Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_nonTerminalLabelListAST getter_subListFromIndex (const class GALGAS_uint & constinOperand0,
-                                                                                         C_Compiler * inCompiler
+                                                                                         Compiler * inCompiler
                                                                                          COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_nonTerminalLabelListAST getter_subListToIndex (const class GALGAS_uint & constinOperand0,
-                                                                                       C_Compiler * inCompiler
+                                                                                       Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_nonTerminalLabelListAST getter_subListWithRange (const class GALGAS_range & constinOperand0,
-                                                                                         C_Compiler * inCompiler
+                                                                                         Compiler * inCompiler
                                                                                          COMMA_LOCATION_ARGS) const ;
 
 
@@ -10797,14 +10797,14 @@ class GALGAS_nonTerminalLabelListAST_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Object extraction
   public: static GALGAS_nonTerminalLabelListAST_2D_element extractObject (const GALGAS_object & inObject,
-                                                                          C_Compiler * inCompiler
+                                                                          Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_nonTerminalLabelListAST_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
                                                                                   const class GALGAS_formalParameterListAST & inOperand1,
                                                                                   const class GALGAS_location & inOperand2,
-                                                                                  class C_Compiler * inCompiler
+                                                                                  class Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -10858,7 +10858,7 @@ class GALGAS_nonterminalDeclarationListAST : public AC_GALGAS_list {
 
 //--------------------------------- Object extraction
   public: static GALGAS_nonterminalDeclarationListAST extractObject (const GALGAS_object & inObject,
-                                                                     C_Compiler * inCompiler
+                                                                     Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -10870,7 +10870,7 @@ class GALGAS_nonterminalDeclarationListAST : public AC_GALGAS_list {
 
 //--------------------------------- += operator (with expression)
   public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_nonterminalDeclarationListAST inOperand,
-                                                       class C_Compiler * inCompiler
+                                                       class Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
@@ -10879,81 +10879,81 @@ class GALGAS_nonterminalDeclarationListAST : public AC_GALGAS_list {
                                                      COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GALGAS_nonterminalDeclarationListAST add_operation (const GALGAS_nonterminalDeclarationListAST & inOperand,
-                                                                               C_Compiler * inCompiler
+                                                                               Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_lstring constinArgument0,
                                                class GALGAS_nonTerminalLabelListAST constinArgument1,
-                                               C_Compiler * inCompiler
+                                               Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_lstring constinArgument0,
                                                       class GALGAS_nonTerminalLabelListAST constinArgument1,
                                                       class GALGAS_uint constinArgument2,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popFirst (class GALGAS_lstring & outArgument0,
                                                  class GALGAS_nonTerminalLabelListAST & outArgument1,
-                                                 C_Compiler * inCompiler
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popLast (class GALGAS_lstring & outArgument0,
                                                 class GALGAS_nonTerminalLabelListAST & outArgument1,
-                                                C_Compiler * inCompiler
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GALGAS_lstring & outArgument0,
                                                       class GALGAS_nonTerminalLabelListAST & outArgument1,
                                                       class GALGAS_uint constinArgument2,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMLabelsAtIndex (class GALGAS_nonTerminalLabelListAST constinArgument0,
                                                           class GALGAS_uint constinArgument1,
-                                                          C_Compiler * inCompiler
+                                                          Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMNonterminalNameAtIndex (class GALGAS_lstring constinArgument0,
                                                                    class GALGAS_uint constinArgument1,
-                                                                   C_Compiler * inCompiler
+                                                                   Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
   public: VIRTUAL_IN_DEBUG void method_first (class GALGAS_lstring & outArgument0,
                                               class GALGAS_nonTerminalLabelListAST & outArgument1,
-                                              C_Compiler * inCompiler
+                                              Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG void method_last (class GALGAS_lstring & outArgument0,
                                              class GALGAS_nonTerminalLabelListAST & outArgument1,
-                                             C_Compiler * inCompiler
+                                             Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: VIRTUAL_IN_DEBUG class GALGAS_nonTerminalLabelListAST getter_mLabelsAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                       C_Compiler * inCompiler
+                                                                                       Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mNonterminalNameAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                C_Compiler * inCompiler
+                                                                                Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_nonterminalDeclarationListAST getter_subListFromIndex (const class GALGAS_uint & constinOperand0,
-                                                                                               C_Compiler * inCompiler
+                                                                                               Compiler * inCompiler
                                                                                                COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_nonterminalDeclarationListAST getter_subListToIndex (const class GALGAS_uint & constinOperand0,
-                                                                                             C_Compiler * inCompiler
+                                                                                             Compiler * inCompiler
                                                                                              COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_nonterminalDeclarationListAST getter_subListWithRange (const class GALGAS_range & constinOperand0,
-                                                                                               C_Compiler * inCompiler
+                                                                                               Compiler * inCompiler
                                                                                                COMMA_LOCATION_ARGS) const ;
 
 
@@ -11034,13 +11034,13 @@ class GALGAS_nonterminalDeclarationListAST_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Object extraction
   public: static GALGAS_nonterminalDeclarationListAST_2D_element extractObject (const GALGAS_object & inObject,
-                                                                                C_Compiler * inCompiler
+                                                                                Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_nonterminalDeclarationListAST_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
                                                                                         const class GALGAS_nonTerminalLabelListAST & inOperand1,
-                                                                                        class C_Compiler * inCompiler
+                                                                                        class Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -11097,7 +11097,7 @@ class GALGAS_syntaxRuleLabelListAST : public AC_GALGAS_list {
 
 //--------------------------------- Object extraction
   public: static GALGAS_syntaxRuleLabelListAST extractObject (const GALGAS_object & inObject,
-                                                              C_Compiler * inCompiler
+                                                              Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -11112,7 +11112,7 @@ class GALGAS_syntaxRuleLabelListAST : public AC_GALGAS_list {
 
 //--------------------------------- += operator (with expression)
   public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_syntaxRuleLabelListAST inOperand,
-                                                       class C_Compiler * inCompiler
+                                                       class Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
@@ -11124,7 +11124,7 @@ class GALGAS_syntaxRuleLabelListAST : public AC_GALGAS_list {
                                                      COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GALGAS_syntaxRuleLabelListAST add_operation (const GALGAS_syntaxRuleLabelListAST & inOperand,
-                                                                        C_Compiler * inCompiler
+                                                                        Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) const ;
 
 
@@ -11134,7 +11134,7 @@ class GALGAS_syntaxRuleLabelListAST : public AC_GALGAS_list {
                                                class GALGAS_location constinArgument2,
                                                class GALGAS_syntaxInstructionList constinArgument3,
                                                class GALGAS_location constinArgument4,
-                                               C_Compiler * inCompiler
+                                               Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_lstring constinArgument0,
@@ -11143,7 +11143,7 @@ class GALGAS_syntaxRuleLabelListAST : public AC_GALGAS_list {
                                                       class GALGAS_syntaxInstructionList constinArgument3,
                                                       class GALGAS_location constinArgument4,
                                                       class GALGAS_uint constinArgument5,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popFirst (class GALGAS_lstring & outArgument0,
@@ -11151,7 +11151,7 @@ class GALGAS_syntaxRuleLabelListAST : public AC_GALGAS_list {
                                                  class GALGAS_location & outArgument2,
                                                  class GALGAS_syntaxInstructionList & outArgument3,
                                                  class GALGAS_location & outArgument4,
-                                                 C_Compiler * inCompiler
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popLast (class GALGAS_lstring & outArgument0,
@@ -11159,7 +11159,7 @@ class GALGAS_syntaxRuleLabelListAST : public AC_GALGAS_list {
                                                 class GALGAS_location & outArgument2,
                                                 class GALGAS_syntaxInstructionList & outArgument3,
                                                 class GALGAS_location & outArgument4,
-                                                C_Compiler * inCompiler
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GALGAS_lstring & outArgument0,
@@ -11168,32 +11168,32 @@ class GALGAS_syntaxRuleLabelListAST : public AC_GALGAS_list {
                                                       class GALGAS_syntaxInstructionList & outArgument3,
                                                       class GALGAS_location & outArgument4,
                                                       class GALGAS_uint constinArgument5,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMEndOfArgumentLocationAtIndex (class GALGAS_location constinArgument0,
                                                                          class GALGAS_uint constinArgument1,
-                                                                         C_Compiler * inCompiler
+                                                                         Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMEndOfInstructionListAtIndex (class GALGAS_location constinArgument0,
                                                                         class GALGAS_uint constinArgument1,
-                                                                        C_Compiler * inCompiler
+                                                                        Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMFormalArgumentsAtIndex (class GALGAS_formalParameterListAST constinArgument0,
                                                                    class GALGAS_uint constinArgument1,
-                                                                   C_Compiler * inCompiler
+                                                                   Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMLabelNameAtIndex (class GALGAS_lstring constinArgument0,
                                                              class GALGAS_uint constinArgument1,
-                                                             C_Compiler * inCompiler
+                                                             Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMSyntaxInstructionListAtIndex (class GALGAS_syntaxInstructionList constinArgument0,
                                                                          class GALGAS_uint constinArgument1,
-                                                                         C_Compiler * inCompiler
+                                                                         Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) ;
 
 
@@ -11203,7 +11203,7 @@ class GALGAS_syntaxRuleLabelListAST : public AC_GALGAS_list {
                                               class GALGAS_location & outArgument2,
                                               class GALGAS_syntaxInstructionList & outArgument3,
                                               class GALGAS_location & outArgument4,
-                                              C_Compiler * inCompiler
+                                              Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG void method_last (class GALGAS_lstring & outArgument0,
@@ -11211,42 +11211,42 @@ class GALGAS_syntaxRuleLabelListAST : public AC_GALGAS_list {
                                              class GALGAS_location & outArgument2,
                                              class GALGAS_syntaxInstructionList & outArgument3,
                                              class GALGAS_location & outArgument4,
-                                             C_Compiler * inCompiler
+                                             Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: VIRTUAL_IN_DEBUG class GALGAS_location getter_mEndOfArgumentLocationAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                       C_Compiler * inCompiler
+                                                                                       Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_location getter_mEndOfInstructionListAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                      C_Compiler * inCompiler
+                                                                                      Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_formalParameterListAST getter_mFormalArgumentsAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                               C_Compiler * inCompiler
+                                                                                               Compiler * inCompiler
                                                                                                COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mLabelNameAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                          C_Compiler * inCompiler
+                                                                          Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_syntaxInstructionList getter_mSyntaxInstructionListAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                                    C_Compiler * inCompiler
+                                                                                                    Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_syntaxRuleLabelListAST getter_subListFromIndex (const class GALGAS_uint & constinOperand0,
-                                                                                        C_Compiler * inCompiler
+                                                                                        Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_syntaxRuleLabelListAST getter_subListToIndex (const class GALGAS_uint & constinOperand0,
-                                                                                      C_Compiler * inCompiler
+                                                                                      Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_syntaxRuleLabelListAST getter_subListWithRange (const class GALGAS_range & constinOperand0,
-                                                                                        C_Compiler * inCompiler
+                                                                                        Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) const ;
 
 
@@ -11360,7 +11360,7 @@ class GALGAS_syntaxRuleLabelListAST_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Object extraction
   public: static GALGAS_syntaxRuleLabelListAST_2D_element extractObject (const GALGAS_object & inObject,
-                                                                         C_Compiler * inCompiler
+                                                                         Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -11369,7 +11369,7 @@ class GALGAS_syntaxRuleLabelListAST_2D_element : public AC_GALGAS_root {
                                                                                  const class GALGAS_location & inOperand2,
                                                                                  const class GALGAS_syntaxInstructionList & inOperand3,
                                                                                  const class GALGAS_location & inOperand4,
-                                                                                 class C_Compiler * inCompiler
+                                                                                 class Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -11423,7 +11423,7 @@ class GALGAS_syntaxRuleListAST : public AC_GALGAS_list {
 
 //--------------------------------- Object extraction
   public: static GALGAS_syntaxRuleListAST extractObject (const GALGAS_object & inObject,
-                                                         C_Compiler * inCompiler
+                                                         Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -11435,7 +11435,7 @@ class GALGAS_syntaxRuleListAST : public AC_GALGAS_list {
 
 //--------------------------------- += operator (with expression)
   public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_syntaxRuleListAST inOperand,
-                                                       class C_Compiler * inCompiler
+                                                       class Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
@@ -11444,81 +11444,81 @@ class GALGAS_syntaxRuleListAST : public AC_GALGAS_list {
                                                      COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GALGAS_syntaxRuleListAST add_operation (const GALGAS_syntaxRuleListAST & inOperand,
-                                                                   C_Compiler * inCompiler
+                                                                   Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_lstring constinArgument0,
                                                class GALGAS_syntaxRuleLabelListAST constinArgument1,
-                                               C_Compiler * inCompiler
+                                               Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_lstring constinArgument0,
                                                       class GALGAS_syntaxRuleLabelListAST constinArgument1,
                                                       class GALGAS_uint constinArgument2,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popFirst (class GALGAS_lstring & outArgument0,
                                                  class GALGAS_syntaxRuleLabelListAST & outArgument1,
-                                                 C_Compiler * inCompiler
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popLast (class GALGAS_lstring & outArgument0,
                                                 class GALGAS_syntaxRuleLabelListAST & outArgument1,
-                                                C_Compiler * inCompiler
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GALGAS_lstring & outArgument0,
                                                       class GALGAS_syntaxRuleLabelListAST & outArgument1,
                                                       class GALGAS_uint constinArgument2,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMLabelListAtIndex (class GALGAS_syntaxRuleLabelListAST constinArgument0,
                                                              class GALGAS_uint constinArgument1,
-                                                             C_Compiler * inCompiler
+                                                             Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMNonterminalNameAtIndex (class GALGAS_lstring constinArgument0,
                                                                    class GALGAS_uint constinArgument1,
-                                                                   C_Compiler * inCompiler
+                                                                   Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
   public: VIRTUAL_IN_DEBUG void method_first (class GALGAS_lstring & outArgument0,
                                               class GALGAS_syntaxRuleLabelListAST & outArgument1,
-                                              C_Compiler * inCompiler
+                                              Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG void method_last (class GALGAS_lstring & outArgument0,
                                              class GALGAS_syntaxRuleLabelListAST & outArgument1,
-                                             C_Compiler * inCompiler
+                                             Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: VIRTUAL_IN_DEBUG class GALGAS_syntaxRuleLabelListAST getter_mLabelListAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                         C_Compiler * inCompiler
+                                                                                         Compiler * inCompiler
                                                                                          COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mNonterminalNameAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                C_Compiler * inCompiler
+                                                                                Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_syntaxRuleListAST getter_subListFromIndex (const class GALGAS_uint & constinOperand0,
-                                                                                   C_Compiler * inCompiler
+                                                                                   Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_syntaxRuleListAST getter_subListToIndex (const class GALGAS_uint & constinOperand0,
-                                                                                 C_Compiler * inCompiler
+                                                                                 Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_syntaxRuleListAST getter_subListWithRange (const class GALGAS_range & constinOperand0,
-                                                                                   C_Compiler * inCompiler
+                                                                                   Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) const ;
 
 
@@ -11599,13 +11599,13 @@ class GALGAS_syntaxRuleListAST_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Object extraction
   public: static GALGAS_syntaxRuleListAST_2D_element extractObject (const GALGAS_object & inObject,
-                                                                    C_Compiler * inCompiler
+                                                                    Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_syntaxRuleListAST_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
                                                                             const class GALGAS_syntaxRuleLabelListAST & inOperand1,
-                                                                            class C_Compiler * inCompiler
+                                                                            class Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -11659,7 +11659,7 @@ class GALGAS_listOfSyntaxInstructionList : public AC_GALGAS_list {
 
 //--------------------------------- Object extraction
   public: static GALGAS_listOfSyntaxInstructionList extractObject (const GALGAS_object & inObject,
-                                                                   C_Compiler * inCompiler
+                                                                   Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -11671,7 +11671,7 @@ class GALGAS_listOfSyntaxInstructionList : public AC_GALGAS_list {
 
 //--------------------------------- += operator (with expression)
   public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_listOfSyntaxInstructionList inOperand,
-                                                       class C_Compiler * inCompiler
+                                                       class Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
@@ -11680,81 +11680,81 @@ class GALGAS_listOfSyntaxInstructionList : public AC_GALGAS_list {
                                                      COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GALGAS_listOfSyntaxInstructionList add_operation (const GALGAS_listOfSyntaxInstructionList & inOperand,
-                                                                             C_Compiler * inCompiler
+                                                                             Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_syntaxInstructionList constinArgument0,
                                                class GALGAS_location constinArgument1,
-                                               C_Compiler * inCompiler
+                                               Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_syntaxInstructionList constinArgument0,
                                                       class GALGAS_location constinArgument1,
                                                       class GALGAS_uint constinArgument2,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popFirst (class GALGAS_syntaxInstructionList & outArgument0,
                                                  class GALGAS_location & outArgument1,
-                                                 C_Compiler * inCompiler
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popLast (class GALGAS_syntaxInstructionList & outArgument0,
                                                 class GALGAS_location & outArgument1,
-                                                C_Compiler * inCompiler
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GALGAS_syntaxInstructionList & outArgument0,
                                                       class GALGAS_location & outArgument1,
                                                       class GALGAS_uint constinArgument2,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMEndOf_5F_instructionsAtIndex (class GALGAS_location constinArgument0,
                                                                          class GALGAS_uint constinArgument1,
-                                                                         C_Compiler * inCompiler
+                                                                         Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMSyntaxInstructionListAtIndex (class GALGAS_syntaxInstructionList constinArgument0,
                                                                          class GALGAS_uint constinArgument1,
-                                                                         C_Compiler * inCompiler
+                                                                         Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
   public: VIRTUAL_IN_DEBUG void method_first (class GALGAS_syntaxInstructionList & outArgument0,
                                               class GALGAS_location & outArgument1,
-                                              C_Compiler * inCompiler
+                                              Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG void method_last (class GALGAS_syntaxInstructionList & outArgument0,
                                              class GALGAS_location & outArgument1,
-                                             C_Compiler * inCompiler
+                                             Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: VIRTUAL_IN_DEBUG class GALGAS_location getter_mEndOf_5F_instructionsAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                       C_Compiler * inCompiler
+                                                                                       Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_syntaxInstructionList getter_mSyntaxInstructionListAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                                    C_Compiler * inCompiler
+                                                                                                    Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_listOfSyntaxInstructionList getter_subListFromIndex (const class GALGAS_uint & constinOperand0,
-                                                                                             C_Compiler * inCompiler
+                                                                                             Compiler * inCompiler
                                                                                              COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_listOfSyntaxInstructionList getter_subListToIndex (const class GALGAS_uint & constinOperand0,
-                                                                                           C_Compiler * inCompiler
+                                                                                           Compiler * inCompiler
                                                                                            COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_listOfSyntaxInstructionList getter_subListWithRange (const class GALGAS_range & constinOperand0,
-                                                                                             C_Compiler * inCompiler
+                                                                                             Compiler * inCompiler
                                                                                              COMMA_LOCATION_ARGS) const ;
 
 
@@ -11835,13 +11835,13 @@ class GALGAS_listOfSyntaxInstructionList_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Object extraction
   public: static GALGAS_listOfSyntaxInstructionList_2D_element extractObject (const GALGAS_object & inObject,
-                                                                              C_Compiler * inCompiler
+                                                                              Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_listOfSyntaxInstructionList_2D_element constructor_new (const class GALGAS_syntaxInstructionList & inOperand0,
                                                                                       const class GALGAS_location & inOperand1,
-                                                                                      class C_Compiler * inCompiler
+                                                                                      class Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -11900,7 +11900,7 @@ class GALGAS_galgas_33_SyntaxComponentAST : public GALGAS_semanticDeclarationAST
 
 //--------------------------------- Object extraction
   public: static GALGAS_galgas_33_SyntaxComponentAST extractObject (const GALGAS_object & inObject,
-                                                                    C_Compiler * inCompiler
+                                                                    Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -11946,7 +11946,7 @@ class cPtr_galgas_33_SyntaxComponentAST : public cPtr_semanticDeclarationAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension getter keyRepresentation
-  public: virtual class GALGAS_string getter_keyRepresentation (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+  public: virtual class GALGAS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & ioSemanticTypePrecedenceGraph,
@@ -11954,7 +11954,7 @@ class cPtr_galgas_33_SyntaxComponentAST : public cPtr_semanticDeclarationAST {
            class GALGAS_extensionGetterMapForBuildingContext & ioExtensionGetterMapForBuildingContext,
            class GALGAS_extensionSetterMapForBuildingContext & ioExtensionSetterMapForBuildingContext,
            class GALGAS_semanticDeclarationListAST & ioExtensionOverrideDefinitionList,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInSemanticContext
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
@@ -11962,7 +11962,7 @@ class cPtr_galgas_33_SyntaxComponentAST : public cPtr_semanticDeclarationAST {
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
            class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method semanticAnalysis
   public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & ioUsefulnessRootEntities,
@@ -11972,7 +11972,7 @@ class cPtr_galgas_33_SyntaxComponentAST : public cPtr_semanticDeclarationAST {
            class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_predefinedTypes inPredefinedTypes,
            class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mSyntaxComponentName ;
@@ -12020,7 +12020,7 @@ class GALGAS_galgas_33_SyntaxComponentAST_2D_weak : public GALGAS_semanticDeclar
   public: GALGAS_galgas_33_SyntaxComponentAST_2D_weak & operator = (const class GALGAS_galgas_33_SyntaxComponentAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_galgas_33_SyntaxComponentAST bang_galgas_33_SyntaxComponentAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_galgas_33_SyntaxComponentAST bang_galgas_33_SyntaxComponentAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -12029,7 +12029,7 @@ class GALGAS_galgas_33_SyntaxComponentAST_2D_weak : public GALGAS_semanticDeclar
 
 //--------------------------------- Object extraction
   public: static GALGAS_galgas_33_SyntaxComponentAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                            C_Compiler * inCompiler
+                                                                            Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -12094,7 +12094,7 @@ class GALGAS_galgas_33_GrammarComponentAST : public GALGAS_semanticDeclarationAS
 
 //--------------------------------- Object extraction
   public: static GALGAS_galgas_33_GrammarComponentAST extractObject (const GALGAS_object & inObject,
-                                                                     C_Compiler * inCompiler
+                                                                     Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -12143,7 +12143,7 @@ class cPtr_galgas_33_GrammarComponentAST : public cPtr_semanticDeclarationAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension getter keyRepresentation
-  public: virtual class GALGAS_string getter_keyRepresentation (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+  public: virtual class GALGAS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & ioSemanticTypePrecedenceGraph,
@@ -12151,7 +12151,7 @@ class cPtr_galgas_33_GrammarComponentAST : public cPtr_semanticDeclarationAST {
            class GALGAS_extensionGetterMapForBuildingContext & ioExtensionGetterMapForBuildingContext,
            class GALGAS_extensionSetterMapForBuildingContext & ioExtensionSetterMapForBuildingContext,
            class GALGAS_semanticDeclarationListAST & ioExtensionOverrideDefinitionList,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInSemanticContext
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
@@ -12159,7 +12159,7 @@ class cPtr_galgas_33_GrammarComponentAST : public cPtr_semanticDeclarationAST {
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
            class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method semanticAnalysis
   public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & ioUsefulnessRootEntities,
@@ -12169,7 +12169,7 @@ class cPtr_galgas_33_GrammarComponentAST : public cPtr_semanticDeclarationAST {
            class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_predefinedTypes inPredefinedTypes,
            class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lbool mProperty_mHasIndexing ;
@@ -12223,7 +12223,7 @@ class GALGAS_galgas_33_GrammarComponentAST_2D_weak : public GALGAS_semanticDecla
   public: GALGAS_galgas_33_GrammarComponentAST_2D_weak & operator = (const class GALGAS_galgas_33_GrammarComponentAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_galgas_33_GrammarComponentAST bang_galgas_33_GrammarComponentAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_galgas_33_GrammarComponentAST bang_galgas_33_GrammarComponentAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -12232,7 +12232,7 @@ class GALGAS_galgas_33_GrammarComponentAST_2D_weak : public GALGAS_semanticDecla
 
 //--------------------------------- Object extraction
   public: static GALGAS_galgas_33_GrammarComponentAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                             C_Compiler * inCompiler
+                                                                             Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -12289,7 +12289,7 @@ class GALGAS_galgas_33_SyntaxComponentListAST : public AC_GALGAS_list {
 
 //--------------------------------- Object extraction
   public: static GALGAS_galgas_33_SyntaxComponentListAST extractObject (const GALGAS_object & inObject,
-                                                                        C_Compiler * inCompiler
+                                                                        Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -12304,7 +12304,7 @@ class GALGAS_galgas_33_SyntaxComponentListAST : public AC_GALGAS_list {
 
 //--------------------------------- += operator (with expression)
   public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_galgas_33_SyntaxComponentListAST inOperand,
-                                                       class C_Compiler * inCompiler
+                                                       class Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
@@ -12316,7 +12316,7 @@ class GALGAS_galgas_33_SyntaxComponentListAST : public AC_GALGAS_list {
                                                      COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GALGAS_galgas_33_SyntaxComponentListAST add_operation (const GALGAS_galgas_33_SyntaxComponentListAST & inOperand,
-                                                                                  C_Compiler * inCompiler
+                                                                                  Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) const ;
 
 
@@ -12326,7 +12326,7 @@ class GALGAS_galgas_33_SyntaxComponentListAST : public AC_GALGAS_list {
                                                class GALGAS_nonterminalDeclarationListAST constinArgument2,
                                                class GALGAS_syntaxRuleListAST constinArgument3,
                                                class GALGAS_bool constinArgument4,
-                                               C_Compiler * inCompiler
+                                               Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_lstring constinArgument0,
@@ -12335,7 +12335,7 @@ class GALGAS_galgas_33_SyntaxComponentListAST : public AC_GALGAS_list {
                                                       class GALGAS_syntaxRuleListAST constinArgument3,
                                                       class GALGAS_bool constinArgument4,
                                                       class GALGAS_uint constinArgument5,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popFirst (class GALGAS_lstring & outArgument0,
@@ -12343,7 +12343,7 @@ class GALGAS_galgas_33_SyntaxComponentListAST : public AC_GALGAS_list {
                                                  class GALGAS_nonterminalDeclarationListAST & outArgument2,
                                                  class GALGAS_syntaxRuleListAST & outArgument3,
                                                  class GALGAS_bool & outArgument4,
-                                                 C_Compiler * inCompiler
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popLast (class GALGAS_lstring & outArgument0,
@@ -12351,7 +12351,7 @@ class GALGAS_galgas_33_SyntaxComponentListAST : public AC_GALGAS_list {
                                                 class GALGAS_nonterminalDeclarationListAST & outArgument2,
                                                 class GALGAS_syntaxRuleListAST & outArgument3,
                                                 class GALGAS_bool & outArgument4,
-                                                C_Compiler * inCompiler
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GALGAS_lstring & outArgument0,
@@ -12360,32 +12360,32 @@ class GALGAS_galgas_33_SyntaxComponentListAST : public AC_GALGAS_list {
                                                       class GALGAS_syntaxRuleListAST & outArgument3,
                                                       class GALGAS_bool & outArgument4,
                                                       class GALGAS_uint constinArgument5,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMHasTranslateFeatureAtIndex (class GALGAS_bool constinArgument0,
                                                                        class GALGAS_uint constinArgument1,
-                                                                       C_Compiler * inCompiler
+                                                                       Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMImportedLexiqueFilePathAtIndex (class GALGAS_lstring constinArgument0,
                                                                            class GALGAS_uint constinArgument1,
-                                                                           C_Compiler * inCompiler
+                                                                           Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMNonterminalDeclarationListAtIndex (class GALGAS_nonterminalDeclarationListAST constinArgument0,
                                                                               class GALGAS_uint constinArgument1,
-                                                                              C_Compiler * inCompiler
+                                                                              Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMRuleListAtIndex (class GALGAS_syntaxRuleListAST constinArgument0,
                                                             class GALGAS_uint constinArgument1,
-                                                            C_Compiler * inCompiler
+                                                            Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMSyntaxComponentNameAtIndex (class GALGAS_lstring constinArgument0,
                                                                        class GALGAS_uint constinArgument1,
-                                                                       C_Compiler * inCompiler
+                                                                       Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) ;
 
 
@@ -12395,7 +12395,7 @@ class GALGAS_galgas_33_SyntaxComponentListAST : public AC_GALGAS_list {
                                               class GALGAS_nonterminalDeclarationListAST & outArgument2,
                                               class GALGAS_syntaxRuleListAST & outArgument3,
                                               class GALGAS_bool & outArgument4,
-                                              C_Compiler * inCompiler
+                                              Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG void method_last (class GALGAS_lstring & outArgument0,
@@ -12403,42 +12403,42 @@ class GALGAS_galgas_33_SyntaxComponentListAST : public AC_GALGAS_list {
                                              class GALGAS_nonterminalDeclarationListAST & outArgument2,
                                              class GALGAS_syntaxRuleListAST & outArgument3,
                                              class GALGAS_bool & outArgument4,
-                                             C_Compiler * inCompiler
+                                             Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_mHasTranslateFeatureAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                 C_Compiler * inCompiler
+                                                                                 Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mImportedLexiqueFilePathAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                        C_Compiler * inCompiler
+                                                                                        Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_nonterminalDeclarationListAST getter_mNonterminalDeclarationListAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                                                 C_Compiler * inCompiler
+                                                                                                                 Compiler * inCompiler
                                                                                                                  COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_syntaxRuleListAST getter_mRuleListAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                   C_Compiler * inCompiler
+                                                                                   Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mSyntaxComponentNameAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_galgas_33_SyntaxComponentListAST getter_subListFromIndex (const class GALGAS_uint & constinOperand0,
-                                                                                                  C_Compiler * inCompiler
+                                                                                                  Compiler * inCompiler
                                                                                                   COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_galgas_33_SyntaxComponentListAST getter_subListToIndex (const class GALGAS_uint & constinOperand0,
-                                                                                                C_Compiler * inCompiler
+                                                                                                Compiler * inCompiler
                                                                                                 COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_galgas_33_SyntaxComponentListAST getter_subListWithRange (const class GALGAS_range & constinOperand0,
-                                                                                                  C_Compiler * inCompiler
+                                                                                                  Compiler * inCompiler
                                                                                                   COMMA_LOCATION_ARGS) const ;
 
 
@@ -12552,7 +12552,7 @@ class GALGAS_galgas_33_SyntaxComponentListAST_2D_element : public AC_GALGAS_root
 
 //--------------------------------- Object extraction
   public: static GALGAS_galgas_33_SyntaxComponentListAST_2D_element extractObject (const GALGAS_object & inObject,
-                                                                                   C_Compiler * inCompiler
+                                                                                   Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -12561,7 +12561,7 @@ class GALGAS_galgas_33_SyntaxComponentListAST_2D_element : public AC_GALGAS_root
                                                                                            const class GALGAS_nonterminalDeclarationListAST & inOperand2,
                                                                                            const class GALGAS_syntaxRuleListAST & inOperand3,
                                                                                            const class GALGAS_bool & inOperand4,
-                                                                                           class C_Compiler * inCompiler
+                                                                                           class Compiler * inCompiler
                                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'

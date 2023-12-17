@@ -5,7 +5,7 @@
 
 //--------------------------------- Object extraction
   public: static GALGAS_%!TYPE_IDENTIFIER% extractObject (%?^%const GALGAS_object & inObject,
-               %!^%C_Compiler * inCompiler
+               %!^%Compiler * inCompiler
                %!^%COMMA_LOCATION_ARGS) ;
 
 %
@@ -18,10 +18,10 @@ if [CONSTRUCTOR_MAP count] > 0 then
       between %,\n%!^
     end
     if mHasCompilerArgument & ([mArgumentTypeList count] > 0) then
-      %,\n%!^%class C_Compiler * inCompiler%
+      %,\n%!^%class Compiler * inCompiler%
       %\n%!^%COMMA_LOCATION_ARGS) ;\n\n%
     elsif mHasCompilerArgument then
-      %C_Compiler * inCompiler%
+      %Compiler * inCompiler%
       %\n%!^ %COMMA_LOCATION_ARGS) ;\n\n%
     elsif [mArgumentTypeList count] > 0 then
       %\n%!^ %COMMA_LOCATION_ARGS) ;\n\n%
@@ -40,44 +40,44 @@ end
 if [SUPPORTED_OPERATORS infixShiftOperator] then
   %//--------------------------------- << and >> shift operators\n%
   %  public: VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% left_shift_operation (%?^%const GALGAS_uint inShiftOperand,\n%
-  !^%class C_Compiler * inCompiler\n%
+  !^%class Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
   %  public: VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% left_shift_operation (%?^%const GALGAS_bigint inShiftOperand,\n%
-  !^%class C_Compiler * inCompiler\n%
+  !^%class Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
   %  public: VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% right_shift_operation (%?^%const GALGAS_uint inShiftOperand,\n%
-  !^%class C_Compiler * inCompiler\n%
+  !^%class Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
   %  public: VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% right_shift_operation (%?^%const GALGAS_bigint inShiftOperand,\n%
-  !^%class C_Compiler * inCompiler\n%
+  !^%class Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS plusEqualOperatorWithExpression] then
   %//--------------------------------- += operator (with expression)\n%
   %  public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_%!TYPE_IDENTIFIER% inOperand,\n%
-  %                                                       class C_Compiler * inCompiler\n%
+  %                                                       class Compiler * inCompiler\n%
   %                                                       COMMA_LOCATION_ARGS) ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS minusEqualOperatorWithExpression] then
   %//--------------------------------- -= operator (with expression)\n%
   %  public: VIRTUAL_IN_DEBUG void minusAssign_operation (const GALGAS_%!TYPE_IDENTIFIER% inOperand,\n%
-  %                                                        class C_Compiler * inCompiler\n%
+  %                                                        class Compiler * inCompiler\n%
   %                                                        COMMA_LOCATION_ARGS) ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS mulEqualOperatorWithExpression] then
   %//--------------------------------- *= operator (with expression)\n%
   %  public: VIRTUAL_IN_DEBUG void mulAssign_operation (const GALGAS_%!TYPE_IDENTIFIER% inOperand,\n%
-  %                                                      class C_Compiler * inCompiler\n%
+  %                                                      class Compiler * inCompiler\n%
   %                                                      COMMA_LOCATION_ARGS) ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS divEqualOperatorWithExpression] then
   %//--------------------------------- /= operator (with expression)\n%
   %  public: VIRTUAL_IN_DEBUG void divAssign_operation (const GALGAS_%!TYPE_IDENTIFIER% inOperand,\n%
-  %                                                      class C_Compiler * inCompiler\n%
+  %                                                      class Compiler * inCompiler\n%
   %                                                      COMMA_LOCATION_ARGS) ;\n\n%
 end
 
@@ -89,7 +89,7 @@ if [ADD_ASSIGN_ARGUMENT_LIST count] > 0 then
   between %,\n%!^
   end
   if [SUPPORTED_OPERATORS plusEqualOperatorWithFieldListNeedsCompilerArg] then
-    %,\n%!^%C_Compiler * inCompiler%
+    %,\n%!^%Compiler * inCompiler%
   end
   %\n%!^%COMMA_LOCATION_ARGS) ;
 %
@@ -126,7 +126,7 @@ end
 if [SUPPORTED_OPERATORS infixAddOperator] then
   %//--------------------------------- + operator\n%
   %  public: VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% add_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand,\n%
-  !^%C_Compiler * inCompiler\n%
+  !^%Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
 end
 
@@ -143,14 +143,14 @@ end
 if [SUPPORTED_OPERATORS infixSubOperator] then
   %//--------------------------------- - operator\n%
   %  public: VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% substract_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand,\n%
-  !^%C_Compiler * inCompiler\n%
+  !^%Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS infixMulOperator] then
   %//--------------------------------- * operator\n%
   %  public: VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% multiply_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand,\n%
-  !^%C_Compiler * inCompiler\n%
+  !^%Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
 end
 
@@ -162,7 +162,7 @@ end
 if [SUPPORTED_OPERATORS infixDivOperator] then
   %//--------------------------------- / operator\n%
   %  public: VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% divide_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand,\n%
-  !^%C_Compiler * inCompiler\n%
+  !^%Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
 end
 
@@ -174,13 +174,13 @@ end
 if [SUPPORTED_OPERATORS infixModOperator] then
   %//--------------------------------- mod operator\n%
   %  public: VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% modulo_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand,\n%
-  !^%C_Compiler * inCompiler\n%
+  !^%Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS prefixMinusOperator] then
   %//--------------------------------- prefix - operator\n%
-  %  public: VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% operator_unary_minus (%?^%C_Compiler * inCompiler\n%
+  %  public: VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% operator_unary_minus (%?^%Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
 end
 
@@ -191,9 +191,9 @@ end
 
 if [SUPPORTED_OPERATORS incDecOperator] then
   %//--------------------------------- ++, -- operators\n%
-  %  public: VIRTUAL_IN_DEBUG void increment_operation (%?^%C_Compiler * inCompiler\n%
+  %  public: VIRTUAL_IN_DEBUG void increment_operation (%?^%Compiler * inCompiler\n%
         !^%COMMA_LOCATION_ARGS) ;\n\n%
-  %  public: VIRTUAL_IN_DEBUG void decrement_operation (%?^%C_Compiler * inCompiler\n%
+  %  public: VIRTUAL_IN_DEBUG void decrement_operation (%?^%Compiler * inCompiler\n%
         !^%COMMA_LOCATION_ARGS) ;\n\n%
 end
 if [SUPPORTED_OPERATORS incDecOperatorNoOVF] then
@@ -234,14 +234,14 @@ for (lkey mKind mParameterList mHasCompilerArgument mQualifier mErrorMessage) in
       end
       if [mParameterList count] == 0 then
         if mHasCompilerArgument then
-          %C_Compiler * inCompiler\n%
+          %Compiler * inCompiler\n%
           !^%COMMA_LOCATION_ARGS%
         else
           !^%LOCATION_ARGS%
         end  
       else
         if mHasCompilerArgument then
-          %,\n%!^%C_Compiler * inCompiler\n%
+          %,\n%!^%Compiler * inCompiler\n%
           !^%COMMA_LOCATION_ARGS%
         else
           %\n%!^%COMMA_LOCATION_ARGS%
@@ -272,14 +272,14 @@ for (lkey mKind mParameterList mDeclarationLocation mHasCompilerArgument mQualif
       end
       if [mParameterList count] == 0 then
         if mHasCompilerArgument then
-          %C_Compiler * inCompiler\n%
+          %Compiler * inCompiler\n%
           !^%COMMA_LOCATION_ARGS%
         else
           !^%LOCATION_ARGS%
         end  
       else
         if mHasCompilerArgument then
-          %,\n%!^%C_Compiler * inCompiler\n%
+          %,\n%!^%Compiler * inCompiler\n%
           !^%COMMA_LOCATION_ARGS%
         else
           %\n%!^%COMMA_LOCATION_ARGS%
@@ -307,14 +307,14 @@ for (lkey mParameterList mHasCompilerArgument) in CLASS_METHOD_MAP do
   end
   if [mParameterList count] == 0 then
     if mHasCompilerArgument then
-      %C_Compiler * inCompiler\n%
+      %Compiler * inCompiler\n%
       !^%COMMA_LOCATION_ARGS%
     else
       !^%LOCATION_ARGS%
     end  
   else
     if mHasCompilerArgument then
-      %,\n%!^%C_Compiler * inCompiler\n%
+      %,\n%!^%Compiler * inCompiler\n%
       !^%COMMA_LOCATION_ARGS%
     else
       %\n%!^%COMMA_LOCATION_ARGS%
@@ -338,13 +338,13 @@ for (lkey kind argumentTypeList * hasCompilerArgument returnedType qualifier rep
         end
         if [argumentTypeList count] == 0 then
           if hasCompilerArgument then
-            %C_Compiler * inCompiler\n% !^ %COMMA_LOCATION_ARGS%
+            %Compiler * inCompiler\n% !^ %COMMA_LOCATION_ARGS%
           else
             %LOCATION_ARGS%
           end
         else
           if hasCompilerArgument then
-            %,\n% !^ %C_Compiler * inCompiler\n% !^ %COMMA_LOCATION_ARGS%
+            %,\n% !^ %Compiler * inCompiler\n% !^ %COMMA_LOCATION_ARGS%
           else
             %\n% !^ %COMMA_LOCATION_ARGS%
           end
@@ -384,7 +384,7 @@ if [SUPPORTED_OPERATORS generateEnumerationHelperMethods] then
 %end
 
 if [SUPPORTED_OPERATORS supportWithAccessor] then
-  %  public: VIRTUAL_IN_DEBUG cMapElement_%!TYPE_IDENTIFIER% * readWriteAccessForWithInstruction (%?^%C_Compiler * inCompiler,\n%
+  %  public: VIRTUAL_IN_DEBUG cMapElement_%!TYPE_IDENTIFIER% * readWriteAccessForWithInstruction (%?^%Compiler * inCompiler,\n%
   !^%const GALGAS_string & inKey\n%
   !^%COMMA_LOCATION_ARGS) ;\n\n%
 end

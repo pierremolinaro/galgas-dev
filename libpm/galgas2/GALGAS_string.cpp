@@ -20,7 +20,7 @@
 
 #include "all-predefined-types.h"
 #include "galgas2/C_galgas_CLI_Options.h"
-#include "galgas2/C_Compiler.h"
+#include "galgas2/Compiler.h"
 #include "command_line_interface/F_mainForLIBPM.h"
 #include "command_line_interface/F_Analyze_CLI_Options.h"
 #include "strings/unicode_character_cpp.h"
@@ -247,7 +247,7 @@ GALGAS_string GALGAS_string::constructor_stringWithSequenceOfCharacters (const G
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_string::constructor_stringWithSourceFilePath (C_Compiler * inCompiler
+GALGAS_string GALGAS_string::constructor_stringWithSourceFilePath (Compiler * inCompiler
                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS_string (inCompiler->sourceFilePath ()) ;
 }
@@ -255,7 +255,7 @@ GALGAS_string GALGAS_string::constructor_stringWithSourceFilePath (C_Compiler * 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_string::constructor_stringWithContentsOfFile (const GALGAS_string & inFilePath,
-                                                                   C_Compiler * inCompiler
+                                                                   Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) {
   GALGAS_string result ;
   if (inFilePath.isValid ()) {
@@ -282,7 +282,7 @@ GALGAS_string GALGAS_string::constructor_stringWithCurrentDirectory (UNUSED_LOCA
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_string::constructor_stringWithEnvironmentVariable (const GALGAS_string & inEnvironmentVariableName,
-                                                                        C_Compiler * inCompiler
+                                                                        Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_string result ;
   if (inEnvironmentVariableName.isValid ()) {
@@ -365,7 +365,7 @@ GALGAS_string GALGAS_string::constructor_stringWithCurrentDateTime (UNUSED_LOCAT
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_string::constructor_retrieveAndResetTemplateString (C_Compiler * inCompiler
+GALGAS_string GALGAS_string::constructor_retrieveAndResetTemplateString (Compiler * inCompiler
                                                                          COMMA_UNUSED_LOCATION_ARGS) {
   return inCompiler->retrieveAndResetTemplateString () ;
 }
@@ -373,7 +373,7 @@ GALGAS_string GALGAS_string::constructor_retrieveAndResetTemplateString (C_Compi
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_string::constructor_separatorString (C_Compiler * inCompiler
+GALGAS_string GALGAS_string::constructor_separatorString (Compiler * inCompiler
                                                           COMMA_UNUSED_LOCATION_ARGS) {
   return inCompiler->separatorString () ;
 }
@@ -381,7 +381,7 @@ GALGAS_string GALGAS_string::constructor_separatorString (C_Compiler * inCompile
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_string::constructor_stringWithSymbolicLinkContents (const GALGAS_string & inSymbolicLink,
-                                                                         C_Compiler * inCompiler
+                                                                         Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) {
   GALGAS_string result ;
   if (inSymbolicLink.isValid ()) {
@@ -413,7 +413,7 @@ GALGAS_string GALGAS_string::constructor_stringWithSymbolicLinkContents (const G
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_string::add_operation (const GALGAS_string & inOperand2,
-                                            C_Compiler * /* inCompiler */
+                                            Compiler * /* inCompiler */
                                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid () && inOperand2.isValid ()) {
@@ -425,7 +425,7 @@ GALGAS_string GALGAS_string::add_operation (const GALGAS_string & inOperand2,
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_string::plusAssign_operation (GALGAS_string inOperand,
-                                          C_Compiler *
+                                          Compiler *
                                           COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     mString += inOperand.mString ;
@@ -467,7 +467,7 @@ GALGAS_lstring GALGAS_string::getter_nowhere (LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_string::getter_here (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_string::getter_here (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (isValid ()) {
     result.mProperty_string = * this ;
@@ -663,7 +663,7 @@ GALGAS_string GALGAS_string::getter_assemblerRepresentation (UNUSED_LOCATION_ARG
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_string::getter_decodedStringFromRepresentation (C_Compiler * inCompiler
+GALGAS_string GALGAS_string::getter_decodedStringFromRepresentation (Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
@@ -762,7 +762,7 @@ GALGAS_string GALGAS_string::getter_relativePathFromPath (const GALGAS_string & 
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_char GALGAS_string::getter_lastCharacter (C_Compiler * inCompiler
+GALGAS_char GALGAS_string::getter_lastCharacter (Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) const {
   GALGAS_char result ;
   if (isValid ()) {
@@ -921,7 +921,7 @@ GALGAS_string GALGAS_string::getter_lastPathComponent (UNUSED_LOCATION_ARGS) con
 
 GALGAS_string GALGAS_string::getter_stringByReplacingStringByString (const GALGAS_string & inSearchedString,
                                                                      const GALGAS_string & inReplacementString,
-                                                                     C_Compiler * inCompiler
+                                                                     Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) const {
   GALGAS_string result ;
   if ((inSearchedString.isValid ()) && (inReplacementString.isValid ())) {
@@ -943,7 +943,7 @@ GALGAS_string GALGAS_string::getter_stringByReplacingStringByString (const GALGA
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_string::getter_stringByRemovingCharacterAtIndex (const GALGAS_uint & inIndex,
-                                                                        C_Compiler * inCompiler
+                                                                        Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (inIndex.isValid ()) {
@@ -964,7 +964,7 @@ GALGAS_string GALGAS_string::getter_stringByRemovingCharacterAtIndex (const GALG
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_char GALGAS_string::getter_characterAtIndex (const GALGAS_uint & inIndex,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) const {
   GALGAS_char result ;
   if (isValid () && inIndex.isValid ()) {
@@ -1049,7 +1049,7 @@ GALGAS_sint GALGAS_string::getter_system (UNUSED_LOCATION_ARGS) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_sint GALGAS_string::getter_commandWithArguments (const GALGAS_stringlist & inArguments,
-                                                        C_Compiler * inCompiler
+                                                        Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
   GALGAS_sint result ;
   if (isValid () && inArguments.isValid ()) {
@@ -1067,7 +1067,7 @@ GALGAS_sint GALGAS_string::getter_commandWithArguments (const GALGAS_stringlist 
  //--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_string::getter_hiddenCommandWithArguments (const GALGAS_stringlist & inArguments,
-                                                                C_Compiler * inCompiler
+                                                                Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid () && inArguments.isValid ()) {
@@ -1389,7 +1389,7 @@ GALGAS_bool GALGAS_string::getter_isDecimalUnsignedNumber (UNUSED_LOCATION_ARGS)
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint GALGAS_string::getter_decimalUnsignedNumber (C_Compiler * inCompiler
+GALGAS_uint GALGAS_string::getter_decimalUnsignedNumber (Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) const {
   GALGAS_uint result ;
   if (isValid ()) {
@@ -1420,7 +1420,7 @@ GALGAS_bool GALGAS_string::getter_isDecimalUnsigned_36__34_Number (UNUSED_LOCATI
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint_36__34_ GALGAS_string::getter_decimalUnsigned_36__34_Number (C_Compiler * inCompiler
+GALGAS_uint_36__34_ GALGAS_string::getter_decimalUnsigned_36__34_Number (Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) const {
   GALGAS_uint_36__34_ result ;
   if (isValid ()) {
@@ -1451,7 +1451,7 @@ GALGAS_bool GALGAS_string::getter_isDecimalSignedNumber (UNUSED_LOCATION_ARGS) c
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_sint GALGAS_string::getter_decimalSignedNumber (C_Compiler * inCompiler
+GALGAS_sint GALGAS_string::getter_decimalSignedNumber (Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) const {
   GALGAS_sint result ;
   if (isValid ()) {
@@ -1482,7 +1482,7 @@ GALGAS_bool GALGAS_string::getter_isDecimalSigned_36__34_Number (UNUSED_LOCATION
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_sint_36__34_ GALGAS_string::getter_decimalSigned_36__34_Number (C_Compiler * inCompiler
+GALGAS_sint_36__34_ GALGAS_string::getter_decimalSigned_36__34_Number (Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) const {
   GALGAS_sint_36__34_ result ;
   if (isValid ()) {
@@ -1524,7 +1524,7 @@ GALGAS_bool GALGAS_string::getter_isDecimalSignedBigInt (UNUSED_LOCATION_ARGS) c
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bigint GALGAS_string::getter_decimalSignedBigInt (C_Compiler * inCompiler
+GALGAS_bigint GALGAS_string::getter_decimalSignedBigInt (Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) const {
   GALGAS_bigint result ;
   if (isValid ()) {
@@ -1541,7 +1541,7 @@ GALGAS_bigint GALGAS_string::getter_decimalSignedBigInt (C_Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_double GALGAS_string::getter_doubleNumber (C_Compiler * inCompiler
+GALGAS_double GALGAS_string::getter_doubleNumber (Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const {
   GALGAS_double result ;
   if (isValid ()) {
@@ -1637,7 +1637,7 @@ GALGAS_bool GALGAS_string::getter_isSymbolicLink (UNUSED_LOCATION_ARGS) const {
      return bSuccess ;
   }
 
-  GALGAS_string GALGAS_string::getter_popen (C_Compiler * inCompiler
+  GALGAS_string GALGAS_string::getter_popen (Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const {
     GALGAS_string result ;
     if (isValid ()) {
@@ -1705,7 +1705,7 @@ GALGAS_bool GALGAS_string::getter_isSymbolicLink (UNUSED_LOCATION_ARGS) const {
 
 #else
 
-  GALGAS_string GALGAS_string::getter_popen (C_Compiler * /* inCompiler */
+  GALGAS_string GALGAS_string::getter_popen (Compiler * /* inCompiler */
                                              COMMA_UNUSED_LOCATION_ARGS) const {
     GALGAS_string result ;
     if (isValid ()) {
@@ -1741,7 +1741,7 @@ GALGAS_bool GALGAS_string::getter_isSymbolicLink (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_string::method_makeDirectory (C_Compiler * inCompiler
+void GALGAS_string::method_makeDirectory (Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const {
   const bool ok = C_FileManager::makeDirectoryIfDoesNotExist (mString) ;
   if (! ok) {
@@ -1756,7 +1756,7 @@ void GALGAS_string::method_makeDirectory (C_Compiler * inCompiler
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_string::method_makeDirectoryAndWriteToFile (GALGAS_string inFilePath,
-                                                        C_Compiler * inCompiler
+                                                        Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
   if (isValid () && inFilePath.isValid ()) {
   //--- Make directory
@@ -1777,7 +1777,7 @@ void GALGAS_string::method_makeDirectoryAndWriteToFile (GALGAS_string inFilePath
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_string::method_makeDirectoryAndWriteToExecutableFile (GALGAS_string inFilePath,
-                                                                  C_Compiler * inCompiler
+                                                                  Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) const {
   if (isValid () && inFilePath.isValid ()) {
   //--- Make directory
@@ -1798,10 +1798,10 @@ void GALGAS_string::method_makeDirectoryAndWriteToExecutableFile (GALGAS_string 
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_string::method_writeToFile (GALGAS_string inFilePath,
-                                        C_Compiler * inCompiler
+                                        Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) const {
   if (isValid () && inFilePath.isValid ()) {
-    if (C_Compiler::performGeneration ()) {
+    if (Compiler::performGeneration ()) {
       const bool fileAlreadyExists = C_FileManager::fileExistsAtPath (inFilePath.mString) ;
       const bool verboseOptionOn = verboseOutput () ;
       const bool ok = C_FileManager::writeStringToFile (mString, inFilePath.mString) ;
@@ -1826,7 +1826,7 @@ void GALGAS_string::method_writeToFile (GALGAS_string inFilePath,
 
 void GALGAS_string::method_writeToFileWhenDifferentContents (GALGAS_string inFilePath,
                                                              GALGAS_bool & outFileWritten,
-                                                             C_Compiler * inCompiler
+                                                             Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) const {
   if (isValid () && inFilePath.isValid ()) {
     bool needToWrite = true ;
@@ -1838,7 +1838,7 @@ void GALGAS_string::method_writeToFileWhenDifferentContents (GALGAS_string inFil
     }
     outFileWritten = GALGAS_bool (needToWrite) ;
     if (needToWrite) {
-      if (C_Compiler::performGeneration ()) {
+      if (Compiler::performGeneration ()) {
         const bool verboseOptionOn = verboseOutput () ;
         bool ok = C_FileManager::makeDirectoryIfDoesNotExist (inFilePath.mString.stringByDeletingLastPathComponent ()) ;
         if (! ok) {
@@ -1873,11 +1873,11 @@ void GALGAS_string::method_writeToFileWhenDifferentContents (GALGAS_string inFil
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_string::method_writeToExecutableFile (GALGAS_string inFilePath,
-                                                  C_Compiler * inCompiler
+                                                  Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const {
   if (isValid () && inFilePath.isValid ()) {
     const bool fileAlreadyExists = C_FileManager::fileExistsAtPath (inFilePath.mString) ;
-    if (C_Compiler::performGeneration ()) {
+    if (Compiler::performGeneration ()) {
       const bool verboseOptionOn = verboseOutput () ;
       const bool ok = C_FileManager::writeStringToExecutableFile (mString, inFilePath.mString) ;
       if (ok && verboseOptionOn && fileAlreadyExists) {
@@ -1901,7 +1901,7 @@ void GALGAS_string::method_writeToExecutableFile (GALGAS_string inFilePath,
 
 void GALGAS_string::method_writeToExecutableFileWhenDifferentContents (GALGAS_string inFilePath,
                                                                        GALGAS_bool & outFileWritten,
-                                                                       C_Compiler * inCompiler
+                                                                       Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) const {
   if (isValid () && inFilePath.isValid ()) {
     bool needToWrite = true ;
@@ -1913,7 +1913,7 @@ void GALGAS_string::method_writeToExecutableFileWhenDifferentContents (GALGAS_st
     }
     outFileWritten = GALGAS_bool (needToWrite) ;
     if (needToWrite) {
-      if (C_Compiler::performGeneration ()) {
+      if (Compiler::performGeneration ()) {
         const bool verboseOptionOn = verboseOutput () ;
         bool ok = C_FileManager::makeDirectoryIfDoesNotExist (inFilePath.mString.stringByDeletingLastPathComponent ()) ;
         if (! ok) {
@@ -1948,7 +1948,7 @@ void GALGAS_string::method_writeToExecutableFileWhenDifferentContents (GALGAS_st
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_string::method_makeSymbolicLinkWithPath (GALGAS_string inPath,
-                                                     C_Compiler * inCompiler
+                                                     Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) const {
   if (isValid () && inPath.isValid ()) {
     const bool ok = C_FileManager::makeSymbolicLinkWithPath (inPath.mString, mString) ;
@@ -1977,7 +1977,7 @@ void GALGAS_string::method_makeSymbolicLinkWithPath (GALGAS_string inPath,
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_string::setter_appendSpacesUntilColumn (GALGAS_uint inColumnIndex,
-                                                    C_Compiler * /* inCompiler */
+                                                    Compiler * /* inCompiler */
                                                     COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inColumnIndex.isValid ()) {
     mString.appendSpacesUntilColumn (inColumnIndex.uintValue ()) ;
@@ -1987,7 +1987,7 @@ void GALGAS_string::setter_appendSpacesUntilColumn (GALGAS_uint inColumnIndex,
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_string::setter_setCapacity (GALGAS_uint inNewCapacity,
-                                        C_Compiler * inCompiler
+                                        Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) {
   if (isValid () && inNewCapacity.isValid ()) {
     if (inNewCapacity.uintValue () <= ((uint32_t) INT32_MAX)) {
@@ -2005,7 +2005,7 @@ void GALGAS_string::setter_setCapacity (GALGAS_uint inNewCapacity,
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_string::setter_incIndentation (GALGAS_uint inIndentation,
-                                           C_Compiler * /* inCompiler */
+                                           Compiler * /* inCompiler */
                                            COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inIndentation.isValid ()) {
     mString.incIndentation ((int32_t) inIndentation.uintValue ()) ;
@@ -2015,7 +2015,7 @@ void GALGAS_string::setter_incIndentation (GALGAS_uint inIndentation,
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_string::setter_decIndentation (GALGAS_uint inIndentation,
-                                           C_Compiler * /* inCompiler */
+                                           Compiler * /* inCompiler */
                                            COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inIndentation.isValid ()) {
     mString.incIndentation (- ((int32_t) inIndentation.uintValue ())) ;
@@ -2026,7 +2026,7 @@ void GALGAS_string::setter_decIndentation (GALGAS_uint inIndentation,
 
 void GALGAS_string::setter_setCharacterAtIndex (GALGAS_char inCharacter,
                                                 GALGAS_uint inIndex,
-                                                C_Compiler * inCompiler
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) {
   if (isValid () && (inCharacter.isValid ()) && (inIndex.isValid ())) {
     const int32_t idx = (int32_t) inIndex.uintValue () ;
@@ -2049,7 +2049,7 @@ void GALGAS_string::setter_setCharacterAtIndex (GALGAS_char inCharacter,
 
 void GALGAS_string::setter_insertCharacterAtIndex (GALGAS_char inCharacter,
                                                    GALGAS_uint inIndex,
-                                                   C_Compiler * inCompiler
+                                                   Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) {
   if (isValid () && (inCharacter.isValid ()) && (inIndex.isValid ())) {
     const int32_t idx = (int32_t) inIndex.uintValue () ;
@@ -2072,7 +2072,7 @@ void GALGAS_string::setter_insertCharacterAtIndex (GALGAS_char inCharacter,
 
 void GALGAS_string::setter_removeCharacterAtIndex (GALGAS_char & outChar,
                                                    GALGAS_uint inIndex,
-                                                   C_Compiler * inCompiler
+                                                   Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) {
   outChar.drop () ;
   if (isValid () && (inIndex.isValid ())) {
@@ -2107,10 +2107,10 @@ void GALGAS_string::setter_removeCharacterAtIndex (GALGAS_char & outChar,
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_string::class_method_deleteFile (GALGAS_string inFilePath,
-                                             C_Compiler * inCompiler
+                                             Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) {
   if (inFilePath.isValid ()) {
-    if (! C_Compiler::performGeneration ()) {
+    if (! Compiler::performGeneration ()) {
       ggs_printWarning (inCompiler, C_SourceTextInString (), C_IssueWithFixIt (), String ("Need to delete '") + inFilePath.mString + "'.\n" COMMA_THERE) ;
     }else if (inFilePath.mString.length () == 0) {
       inCompiler->onTheFlyRunTimeError ("cannot perform file delete: file name is an empty string" COMMA_THERE) ;
@@ -2133,7 +2133,7 @@ void GALGAS_string::class_method_deleteFile (GALGAS_string inFilePath,
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_string::class_method_deleteFileIfExists (GALGAS_string inFilePath,
-                                                     C_Compiler * inCompiler
+                                                     Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) {
   if ((inFilePath.isValid ()) && C_FileManager::fileExistsAtPath (inFilePath.mString)) {
     class_method_deleteFile (inFilePath, inCompiler COMMA_THERE) ;
@@ -2143,10 +2143,10 @@ void GALGAS_string::class_method_deleteFileIfExists (GALGAS_string inFilePath,
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_string::class_method_removeEmptyDirectory (GALGAS_string inDirectoryPath,
-                                                       C_Compiler * inCompiler
+                                                       Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) {
   if (inDirectoryPath.isValid ()) {
-    if (! C_Compiler::performGeneration ()) {
+    if (! Compiler::performGeneration ()) {
       ggs_printWarning (inCompiler, C_SourceTextInString (), C_IssueWithFixIt (), String ("Need to remove directory '") + inDirectoryPath.mString + "'.\n" COMMA_THERE) ;
     }else if (inDirectoryPath.mString.length () == 0) {
       inCompiler->onTheFlyRunTimeError ("cannot perform directory removing: directory path is an empty string" COMMA_THERE) ;
@@ -2194,10 +2194,10 @@ static String recursiveRemoveDirectory (const String & inUnixDirectoryPath) {
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_string::class_method_removeDirectoryRecursively (GALGAS_string inDirectoryPath,
-                                                             C_Compiler * inCompiler
+                                                             Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) {
   if (inDirectoryPath.isValid ()) {
-    if (! C_Compiler::performGeneration ()) {
+    if (! Compiler::performGeneration ()) {
       ggs_printWarning (inCompiler, C_SourceTextInString (), C_IssueWithFixIt (), String ("Need to remove directory '") + inDirectoryPath.mString + "'.\n" COMMA_THERE) ;
     }else if (inDirectoryPath.mString.length () == 0) {
       inCompiler->onTheFlyRunTimeError ("cannot perform directory removing: directory path is an empty string" COMMA_THERE) ;
@@ -2218,7 +2218,7 @@ void GALGAS_string::class_method_removeDirectoryRecursively (GALGAS_string inDir
 static bool writeFile (const String & inMessage,
                        const String & inFullPathName,
                        const C_Data & inCurrentData,
-                       C_Compiler * inCompiler) {
+                       Compiler * inCompiler) {
   bool ok = true ;
   if (inCompiler->performGeneration ()) {
     const bool verboseOptionOn = verboseOutput () ;
@@ -2251,7 +2251,7 @@ static bool writeFile (const String & inMessage,
 
 static bool updateFile (const String & inFullPathName,
                         const String & inContents,
-                        C_Compiler * inCompiler) {
+                        Compiler * inCompiler) {
   C_Data currentData ; currentData.appendString (inContents) ;
 //--- Compare file length
   const uint64_t fileSize = C_FileManager::fileSize (inFullPathName) ;
@@ -2278,7 +2278,7 @@ static void generateFile (const String & inStartPath,
                           const String & inFileName,
                           const String & inContents,
                           const bool inMakeExecutable,
-                          C_Compiler * inCompiler) {
+                          Compiler * inCompiler) {
   bool ok = true ;
 //--- File exists ?
   const TC_UniqueArray <String> directoriesToExclude ;
@@ -2304,7 +2304,7 @@ static void generateFile (const String & inStartPath,
 void GALGAS_string::class_method_generateFile (GALGAS_string inStartPath,
                                                GALGAS_string inFileName,
                                                GALGAS_string inContents,
-                                               C_Compiler * inCompiler
+                                               Compiler * inCompiler
                                                COMMA_UNUSED_LOCATION_ARGS) {
   if (inStartPath.isValid () && inFileName.isValid () && inContents.isValid ()) {
     generateFile (inStartPath.mString, inFileName.mString, inContents.mString, false, inCompiler) ;
@@ -2322,7 +2322,7 @@ void GALGAS_string::class_method_generateFileWithPattern (GALGAS_string inStartP
                                                           GALGAS_string inDefaultUserZone2,
                                                           GALGAS_string inGeneratedZone3,
                                                           GALGAS_bool inMakeExecutable,
-                                                          C_Compiler * inCompiler
+                                                          Compiler * inCompiler
                                                           COMMA_UNUSED_LOCATION_ARGS) {
   const bool built = (inStartPath.isValid ())
     && (inFileName.isValid ())

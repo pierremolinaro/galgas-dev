@@ -21,7 +21,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "all-predefined-types.h"
-#include "galgas2/C_Compiler.h"
+#include "galgas2/Compiler.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -333,7 +333,7 @@ static const cDirectoryWrapper * getDirectory (const String & inDirectory,
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_filewrapper::getter_directoryExistsAtPath (const GALGAS_string & inPath,
-                                                              C_Compiler * inCompiler
+                                                              Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (isValid () && inPath.isValid ()) {
@@ -348,7 +348,7 @@ GALGAS_bool GALGAS_filewrapper::getter_directoryExistsAtPath (const GALGAS_strin
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_filewrapper::getter_fileExistsAtPath (const GALGAS_string & inPath,
-                                                         C_Compiler * inCompiler
+                                                         Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (isValid () && inPath.isValid ()) {
@@ -366,7 +366,7 @@ GALGAS_bool GALGAS_filewrapper::getter_fileExistsAtPath (const GALGAS_string & i
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_filewrapper::getter_textFileContentsAtPath (const GALGAS_string & inPath,
-                                                                 C_Compiler * inCompiler
+                                                                 Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid () && inPath.isValid ()) {
@@ -398,7 +398,7 @@ GALGAS_string GALGAS_filewrapper::getter_textFileContentsAtPath (const GALGAS_st
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_data GALGAS_filewrapper::getter_binaryFileContentsAtPath (const GALGAS_string & inPath,
-                                                                 C_Compiler * inCompiler
+                                                                 Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) const {
   GALGAS_data result ;
   if (isValid () && inPath.isValid ()) {
@@ -428,7 +428,7 @@ GALGAS_data GALGAS_filewrapper::getter_binaryFileContentsAtPath (const GALGAS_st
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_filewrapper::setter_setCurrentDirectory (const GALGAS_string inNewDirectory,
-                                                       C_Compiler * inCompiler
+                                                       Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) {
   if ((mRootDirectoryPtr != nullptr) && inNewDirectory.isValid ()) {
     GALGAS_string absolutePath = getter_absolutePathForPath (inNewDirectory, inCompiler COMMA_THERE) ;
@@ -450,7 +450,7 @@ void GALGAS_filewrapper::setter_setCurrentDirectory (const GALGAS_string inNewDi
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_filewrapper::getter_absolutePathForPath (const GALGAS_string & inPath,
-                                                              C_Compiler * inCompiler
+                                                              Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid () && inPath.isValid ()) {
@@ -512,7 +512,7 @@ GALGAS_string GALGAS_filewrapper::getter_absolutePathForPath (const GALGAS_strin
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_stringlist GALGAS_filewrapper::getter_directoriesAtPath (const GALGAS_string & inPath,
-                                                                C_Compiler * inCompiler
+                                                                Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) const {
   GALGAS_stringlist result ;
   if ((mRootDirectoryPtr != nullptr) && inPath.isValid ()) {
@@ -535,7 +535,7 @@ GALGAS_stringlist GALGAS_filewrapper::getter_directoriesAtPath (const GALGAS_str
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_stringlist GALGAS_filewrapper::getter_textFilesAtPath (const GALGAS_string & inPath,
-                                                              C_Compiler * inCompiler
+                                                              Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) const {
   GALGAS_stringlist result ;
   if ((mRootDirectoryPtr != nullptr) && inPath.isValid ()) {
@@ -560,7 +560,7 @@ GALGAS_stringlist GALGAS_filewrapper::getter_textFilesAtPath (const GALGAS_strin
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_stringlist GALGAS_filewrapper::getter_binaryFilesAtPath (const GALGAS_string & inPath,
-                                                                C_Compiler * inCompiler
+                                                                Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) const {
   GALGAS_stringlist result ;
   if ((mRootDirectoryPtr != nullptr) && inPath.isValid ()) {

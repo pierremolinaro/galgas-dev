@@ -45,7 +45,7 @@ class cLexiqueIntrospection final {
                                                    bool & outFound,
                                                    TC_UniqueArray <String> & outList) ;
 
-  public: static void handleGetKeywordListOption (class C_Compiler * inCompiler) ;
+  public: static void handleGetKeywordListOption (class Compiler * inCompiler) ;
 
 //--- No copy
   private: cLexiqueIntrospection (const cLexiqueIntrospection &) ;

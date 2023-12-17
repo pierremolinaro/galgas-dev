@@ -570,7 +570,7 @@ proc generateExtensionSetter
 #--- Compiler argument
   outGeneratedCode += ",\n"
   [!?outGeneratedCode appendSpacesUntilColumn !colRef]
-  outGeneratedCode += "C_Compiler * "
+  outGeneratedCode += "Compiler * "
   if [unusedVariableCppNameSet hasKey !compilerCppName ()] then
     outGeneratedCode += "/* " + compilerCppName () + " */"
   else
@@ -671,7 +671,7 @@ proc generateExtensionMethodNew ?let @unifiedTypeMapEntry inReceiverType
     [!?outGeneratedCode appendSpacesUntilColumn !colRef]
   end
 #--- Compiler argument
-  outGeneratedCode += "C_Compiler * "
+  outGeneratedCode += "Compiler * "
   if [unusedVariableCppNameSet hasKey !compilerCppName ()] then
     outGeneratedCode += "/* " + compilerCppName () + " */"
   else
@@ -1150,7 +1150,7 @@ override method @routineImplementationForGeneration appendSpecificImplementation
     !self.mFormalArgumentList
     !self.mRoutineInstructionList
     !false # Do not generate 'const' qualifier
-    !"C_Compiler"
+    !"Compiler"
     !true # Generate location Argument
     !false # Do not generate 'resetTemplateString'
     !false # Do not generate syntaxDirectedTranslationString argument
@@ -1174,7 +1174,7 @@ override method @functionImplementationForGeneration appendSpecificImplementatio
     !?ioInclusionSet
     !self.mFormalArgumentList
     !self.mFunctionInstructionList
-    !"C_Compiler"
+    !"Compiler"
     !self.mReturnType
     !self.mResultVariableCppName
     !static: false # is not static
@@ -1202,7 +1202,7 @@ override method @onceFunctionDeclarationForGeneration appendSpecificImplementati
     !?ioInclusionSet
     !@formalInputParameterListForGeneration {}
     !self.mFunctionInstructionList
-    !"C_Compiler"
+    !"Compiler"
     !self.mReturnType
     !self.mResultVariableCppName
     !static: true # is static

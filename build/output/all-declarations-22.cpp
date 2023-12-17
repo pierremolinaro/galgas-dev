@@ -1,4 +1,4 @@
-#include "galgas2/C_Compiler.h"
+#include "galgas2/Compiler.h"
 #include "galgas2/C_galgas_io.h"
 #include "galgas2/C_galgas_CLI_Options.h"
 #include "utilities/C_PrologueEpilogue.h"
@@ -13,7 +13,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string cPtr_templateLexiqueComponentAST::getter_keyRepresentation (C_Compiler * inCompiler
+GALGAS_string cPtr_templateLexiqueComponentAST::getter_keyRepresentation (Compiler * inCompiler
                                                                           COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_templateLexiqueComponentAST temp_0 = this ;
@@ -34,7 +34,7 @@ void cPtr_templateLexiqueComponentAST::method_enterDeclarationInGraph (GALGAS_se
                                                                        GALGAS_extensionGetterMapForBuildingContext & /* ioArgument_ioExtensionGetterMapForBuildingContext */,
                                                                        GALGAS_extensionSetterMapForBuildingContext & /* ioArgument_ioExtensionSetterMapForBuildingContext */,
                                                                        GALGAS_semanticDeclarationListAST & /* ioArgument_ioExtensionOverrideDefinitionList */,
-                                                                       C_Compiler * inCompiler
+                                                                       Compiler * inCompiler
                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_templateLexiqueComponentAST temp_0 = this ;
   const GALGAS_templateLexiqueComponentAST temp_1 = this ;
@@ -61,7 +61,7 @@ void cPtr_templateLexiqueComponentAST::method_enterDeclarationInSemanticContext 
                                                                                  const GALGAS_extensionSetterMapForBuildingContext /* constinArgument_inExtensionSetterMapForBuildingContext */,
                                                                                  GALGAS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
                                                                                  GALGAS_semanticContext & ioArgument_ioSemanticContext,
-                                                                                 C_Compiler * inCompiler
+                                                                                 Compiler * inCompiler
                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_bool var_superLexiqueIsTemplate_9499 ;
   GALGAS_terminalMap var_terminalMap_9532 ;
@@ -99,7 +99,7 @@ void cPtr_templateLexiqueComponentAST::method_semanticAnalysis (GALGAS_lstringli
                                                                 GALGAS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
                                                                 const GALGAS_predefinedTypes /* constinArgument_inPredefinedTypes */,
                                                                 GALGAS_semanticDeclarationListForGeneration & ioArgument_ioSemanticDeclarationListForGeneration,
-                                                                C_Compiler * inCompiler
+                                                                Compiler * inCompiler
                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_templateLexiqueComponentAST temp_0 = this ;
   GALGAS_lstring var_nameForUsefulness_10991 = function_lexiqueNameForUsefulEntitiesGraph (temp_0.readProperty_mLexiqueComponentName (), inCompiler COMMA_SOURCE_FILE ("template-lexique-component.galgas", 282)) ;
@@ -279,7 +279,7 @@ const cDirectoryWrapper gWrapperDirectory_0_templateLexiqueGenerationTemplates (
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_cppHeader (C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_cppHeader (Compiler * inCompiler,
                                                                                 const GALGAS_string & in_LEXIQUE_5F_IDENTIFIER,
                                                                                 const GALGAS_string & in_SUPER_5F_LEXIQUE_5F_IDENTIFIER
                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -296,9 +296,9 @@ GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_cppHeader (
   result += in_SUPER_5F_LEXIQUE_5F_IDENTIFIER.stringValue () ;
   result += " {\n//--- Constructors\n  public: C_Lexique_" ;
   result += in_LEXIQUE_5F_IDENTIFIER.stringValue () ;
-  result += " (C_Compiler * inCallerCompiler,\n                       const String & inSourceFileName\n                       COMMA_LOCATION_ARGS) ;\n\n  public: C_Lexique_" ;
+  result += " (Compiler * inCallerCompiler,\n                       const String & inSourceFileName\n                       COMMA_LOCATION_ARGS) ;\n\n  public: C_Lexique_" ;
   result += in_LEXIQUE_5F_IDENTIFIER.stringValue () ;
-  result += " (C_Compiler * inCallerCompiler,\n                       const String & inSourceString,\n                       const String & inStringForError\n                       COMMA_LOCATION_ARGS) ;\n\n//--- Instrospection\n  public: static GALGAS_stringlist symbols (LOCATION_ARGS) ;\n\n//--- Declaring a protected virtual destructor enables the compiler to raise\n//    an error if a direct delete is performed; only the static method\n//    C_SharedObject::detachPointer may invoke delete.\n  #ifndef DO_NOT_GENERATE_CHECKINGS\n    protected: virtual ~ C_Lexique_" ;
+  result += " (Compiler * inCallerCompiler,\n                       const String & inSourceString,\n                       const String & inStringForError\n                       COMMA_LOCATION_ARGS) ;\n\n//--- Instrospection\n  public: static GALGAS_stringlist symbols (LOCATION_ARGS) ;\n\n//--- Declaring a protected virtual destructor enables the compiler to raise\n//    an error if a direct delete is performed; only the static method\n//    C_SharedObject::detachPointer may invoke delete.\n  #ifndef DO_NOT_GENERATE_CHECKINGS\n    protected: virtual ~ C_Lexique_" ;
   result += in_LEXIQUE_5F_IDENTIFIER.stringValue () ;
   result += " (void) {}\n  #endif\n//--- Scanner mode for template scanner\n  private: int32_t mMatchedTemplateDelimiterIndex ;\n\n//--- Parse lexical token\n  protected: virtual bool parseLexicalToken (void) override ;\n} ;\n\n" ;
   return GALGAS_string (result) ;
@@ -310,7 +310,7 @@ GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_cppHeader (
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_cppImplementation (C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_cppImplementation (Compiler * inCompiler,
                                                                                         const GALGAS_string & in_LEXIQUE_5F_IDENTIFIER,
                                                                                         const GALGAS_string & in_SUPER_5F_LEXIQUE_5F_IDENTIFIER,
                                                                                         const GALGAS_lexicalExplicitTokenListMapMap & in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP,
@@ -328,7 +328,7 @@ GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_cppImplemen
   result += in_LEXIQUE_5F_IDENTIFIER.stringValue () ;
   result += " (" ;
   columnMarker = result.currentColumn () ;
-  result += "C_Compiler * inCallerCompiler,\n                " ;
+  result += "Compiler * inCallerCompiler,\n                " ;
   result.appendSpacesUntilColumn (columnMarker) ;
   result += "const String & inSourceFileName\n                " ;
   result.appendSpacesUntilColumn (columnMarker) ;
@@ -340,7 +340,7 @@ GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_cppImplemen
   result += in_LEXIQUE_5F_IDENTIFIER.stringValue () ;
   result += " (" ;
   columnMarker = result.currentColumn () ;
-  result += "C_Compiler * inCallerCompiler,\n                " ;
+  result += "Compiler * inCallerCompiler,\n                " ;
   result.appendSpacesUntilColumn (columnMarker) ;
   result += "const String & inSourceString,\n                " ;
   result.appendSpacesUntilColumn (columnMarker) ;
@@ -349,141 +349,141 @@ GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_cppImplemen
   result += "COMMA_LOCATION_ARGS) :\nC_Lexique_" ;
   result += in_SUPER_5F_LEXIQUE_5F_IDENTIFIER.stringValue () ;
   result += " (inCallerCompiler, inSourceString, inStringForError COMMA_THERE),\nmMatchedTemplateDelimiterIndex (-1) {\n}\n\n//--------------------------------------------------------------------------------------------------\n//                      U N I C O D E    S T R I N G S\n//--------------------------------------------------------------------------------------------------\n" ;
-  GALGAS_uint index_1575_ (0) ;
+  GALGAS_uint index_1571_ (0) ;
   if (in_STRINGS_5F_IN_5F_EXPLICIT_5F_RULES.isValid ()) {
-    cEnumerator_stringset enumerator_1575 (in_STRINGS_5F_IN_5F_EXPLICIT_5F_RULES, kENUMERATION_UP) ;
-    while (enumerator_1575.hasCurrentObject ()) {
-      const enumGalgasBool test_0 = GALGAS_bool (kIsStrictSup, enumerator_1575.current_key (HERE).getter_count (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 35)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
+    cEnumerator_stringset enumerator_1571 (in_STRINGS_5F_IN_5F_EXPLICIT_5F_RULES, kENUMERATION_UP) ;
+    while (enumerator_1571.hasCurrentObject ()) {
+      const enumGalgasBool test_0 = GALGAS_bool (kIsStrictSup, enumerator_1571.current_key (HERE).getter_count (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 35)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
       if (kBoolTrue == test_0) {
         result += "\n//--- Unicode string for '$" ;
-        result += enumerator_1575.current_key (HERE).getter_identifierRepresentation (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 36)).stringValue () ;
+        result += enumerator_1571.current_key (HERE).getter_identifierRepresentation (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 36)).stringValue () ;
         result += "$'\nstatic const utf32 kUnicodeString_" ;
         result += in_LEXIQUE_5F_IDENTIFIER.stringValue () ;
         result += "_" ;
-        result += enumerator_1575.current_key (HERE).getter_identifierRepresentation (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 37)).stringValue () ;
+        result += enumerator_1571.current_key (HERE).getter_identifierRepresentation (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 37)).stringValue () ;
         result += " [] = " ;
-        result += enumerator_1575.current_key (HERE).getter_utf_33__32_Representation (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 37)).stringValue () ;
+        result += enumerator_1571.current_key (HERE).getter_utf_33__32_Representation (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 37)).stringValue () ;
         result += " ;\n" ;
       }else if (kBoolFalse == test_0) {
       }
-      index_1575_.increment () ;
-      enumerator_1575.gotoNextObject () ;
+      index_1571_.increment () ;
+      enumerator_1571.gotoNextObject () ;
     }
   }
   result += "\n//--------------------------------------------------------------------------------------------------\n//                           Template Delimiters\n//--------------------------------------------------------------------------------------------------\n\n" ;
-  GALGAS_uint index_2310_ (0) ;
+  GALGAS_uint index_2306_ (0) ;
   if (in_TEMPLATE_5F_DELIMITOR_5F_LIST.isValid ()) {
-    cEnumerator_templateDelimitorList enumerator_2310 (in_TEMPLATE_5F_DELIMITOR_5F_LIST, kENUMERATION_UP) ;
-    const bool nonEmpty_enumerator_2310 = enumerator_2310.hasCurrentObject () ;
-    if (nonEmpty_enumerator_2310) {
+    cEnumerator_templateDelimitorList enumerator_2306 (in_TEMPLATE_5F_DELIMITOR_5F_LIST, kENUMERATION_UP) ;
+    const bool nonEmpty_enumerator_2306 = enumerator_2306.hasCurrentObject () ;
+    if (nonEmpty_enumerator_2306) {
       result += "static const cTemplateDelimiter " ;
       result += in_LEXIQUE_5F_IDENTIFIER.stringValue () ;
       result += "_kTemplateDefinitionArray [" ;
       result += in_TEMPLATE_5F_DELIMITOR_5F_LIST.getter_count (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 46)).getter_string (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 46)).stringValue () ;
       result += "] = {\n" ;
     }
-    while (enumerator_2310.hasCurrentObject ()) {
+    while (enumerator_2306.hasCurrentObject ()) {
       result += "  cTemplateDelimiter (kUnicodeString_" ;
       result += in_LEXIQUE_5F_IDENTIFIER.stringValue () ;
       result += "_" ;
-      result += enumerator_2310.current_mStartString (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 47)).stringValue () ;
+      result += enumerator_2306.current_mStartString (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 47)).stringValue () ;
       result += ", " ;
-      result += enumerator_2310.current_mStartString (HERE).readProperty_string ().getter_count (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 47)).getter_string (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 47)).stringValue () ;
+      result += enumerator_2306.current_mStartString (HERE).readProperty_string ().getter_count (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 47)).getter_string (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 47)).stringValue () ;
       result += ", " ;
-      const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, enumerator_2310.current_mEndString (HERE).readProperty_string ().getter_count (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 48)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
+      const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, enumerator_2306.current_mEndString (HERE).readProperty_string ().getter_count (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 48)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
       if (kBoolTrue == test_1) {
         result += "nullptr, 0," ;
       }else if (kBoolFalse == test_1) {
         result += "kUnicodeString_" ;
         result += in_LEXIQUE_5F_IDENTIFIER.stringValue () ;
         result += "_" ;
-        result += enumerator_2310.current_mEndString (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 51)).stringValue () ;
+        result += enumerator_2306.current_mEndString (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 51)).stringValue () ;
         result += ", " ;
-        result += enumerator_2310.current_mEndString (HERE).readProperty_string ().getter_count (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 51)).getter_string (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 51)).stringValue () ;
+        result += enumerator_2306.current_mEndString (HERE).readProperty_string ().getter_count (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 51)).getter_string (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 51)).stringValue () ;
         result += "," ;
       }
       result += " nullptr, " ;
-      result += enumerator_2310.current_mPreservesStartDelimiter (HERE).operator_not (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 54)).getter_cString (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 54)).stringValue () ;
+      result += enumerator_2306.current_mPreservesStartDelimiter (HERE).operator_not (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 54)).getter_cString (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 54)).stringValue () ;
       result += ")" ;
-      if (enumerator_2310.hasNextObject ()) {
+      if (enumerator_2306.hasNextObject ()) {
         result += ",\n" ;
       }
-      index_2310_.increment () ;
-      enumerator_2310.gotoNextObject () ;
+      index_2306_.increment () ;
+      enumerator_2306.gotoNextObject () ;
     }
-    if (nonEmpty_enumerator_2310) {
+    if (nonEmpty_enumerator_2306) {
       result += "\n} ;\n" ;
     }
   }
   result += "\n//--------------------------------------------------------------------------------------------------\n//                           Template Replacements\n//--------------------------------------------------------------------------------------------------\n\n" ;
-  GALGAS_uint index_3271_ (0) ;
+  GALGAS_uint index_3267_ (0) ;
   if (in_TEMPLATE_5F_REPLACEMENT_5F_LIST.isValid ()) {
-    cEnumerator_templateReplacementListAST enumerator_3271 (in_TEMPLATE_5F_REPLACEMENT_5F_LIST, kENUMERATION_UP) ;
-    const bool nonEmpty_enumerator_3271 = enumerator_3271.hasCurrentObject () ;
-    if (nonEmpty_enumerator_3271) {
+    cEnumerator_templateReplacementListAST enumerator_3267 (in_TEMPLATE_5F_REPLACEMENT_5F_LIST, kENUMERATION_UP) ;
+    const bool nonEmpty_enumerator_3267 = enumerator_3267.hasCurrentObject () ;
+    if (nonEmpty_enumerator_3267) {
       result += "static const cTemplateDelimiter " ;
       result += in_LEXIQUE_5F_IDENTIFIER.stringValue () ;
       result += "_kTemplateReplacementArray [" ;
       result += in_TEMPLATE_5F_REPLACEMENT_5F_LIST.getter_count (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 65)).getter_string (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 65)).stringValue () ;
       result += "] = {\n" ;
     }
-    while (enumerator_3271.hasCurrentObject ()) {
+    while (enumerator_3267.hasCurrentObject ()) {
       result += "  cTemplateDelimiter (kUnicodeString_" ;
       result += in_LEXIQUE_5F_IDENTIFIER.stringValue () ;
       result += "_" ;
-      result += enumerator_3271.current_mMatchString (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 67)).stringValue () ;
+      result += enumerator_3267.current_mMatchString (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 67)).stringValue () ;
       result += ", " ;
-      result += enumerator_3271.current_mMatchString (HERE).readProperty_string ().getter_count (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 67)).getter_string (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 67)).stringValue () ;
+      result += enumerator_3267.current_mMatchString (HERE).readProperty_string ().getter_count (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 67)).getter_string (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 67)).stringValue () ;
       result += ", kUnicodeString_" ;
       result += in_LEXIQUE_5F_IDENTIFIER.stringValue () ;
       result += "_" ;
-      result += enumerator_3271.current_mReplacementString (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 68)).stringValue () ;
+      result += enumerator_3267.current_mReplacementString (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 68)).stringValue () ;
       result += ", " ;
-      result += enumerator_3271.current_mReplacementString (HERE).readProperty_string ().getter_count (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 68)).getter_string (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 68)).stringValue () ;
+      result += enumerator_3267.current_mReplacementString (HERE).readProperty_string ().getter_count (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 68)).getter_string (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 68)).stringValue () ;
       result += ", " ;
-      const enumGalgasBool test_2 = GALGAS_bool (kIsEqual, enumerator_3271.current_mReplacementFunction (HERE).readProperty_string ().getter_count (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 69)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
+      const enumGalgasBool test_2 = GALGAS_bool (kIsEqual, enumerator_3267.current_mReplacementFunction (HERE).readProperty_string ().getter_count (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 69)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
       if (kBoolTrue == test_2) {
         result += "nullptr" ;
       }else if (kBoolFalse == test_2) {
         result += "scanner_routine_" ;
-        result += enumerator_3271.current_mReplacementFunction (HERE).readProperty_string ().stringValue () ;
+        result += enumerator_3267.current_mReplacementFunction (HERE).readProperty_string ().stringValue () ;
       }
       result += ", true)" ;
-      if (enumerator_3271.hasNextObject ()) {
+      if (enumerator_3267.hasNextObject ()) {
         result += ",\n" ;
       }
-      index_3271_.increment () ;
-      enumerator_3271.gotoNextObject () ;
+      index_3267_.increment () ;
+      enumerator_3267.gotoNextObject () ;
     }
-    if (nonEmpty_enumerator_3271) {
+    if (nonEmpty_enumerator_3267) {
       result += "\n} ;\n" ;
     }
   }
   result += "\n//--------------------------------------------------------------------------------------------------\n//            Terminal Symbols as end of script in template mark\n//--------------------------------------------------------------------------------------------------\n\n" ;
-  GALGAS_uint index_4223_ (0) ;
+  GALGAS_uint index_4219_ (0) ;
   if (in_TERMINAL_5F_LIST.isValid ()) {
-    cEnumerator_terminalList enumerator_4223 (in_TERMINAL_5F_LIST, kENUMERATION_UP) ;
-    const bool nonEmpty_enumerator_4223 = enumerator_4223.hasCurrentObject () ;
-    if (nonEmpty_enumerator_4223) {
+    cEnumerator_terminalList enumerator_4219 (in_TERMINAL_5F_LIST, kENUMERATION_UP) ;
+    const bool nonEmpty_enumerator_4219 = enumerator_4219.hasCurrentObject () ;
+    if (nonEmpty_enumerator_4219) {
       result += "static const bool " ;
       result += in_LEXIQUE_5F_IDENTIFIER.stringValue () ;
       result += "_kEndOfScriptInTemplateArray [" ;
       result += in_TERMINAL_5F_LIST.getter_count (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 84)).getter_string (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 84)).stringValue () ;
       result += "] = {\n" ;
     }
-    while (enumerator_4223.hasCurrentObject ()) {
+    while (enumerator_4219.hasCurrentObject ()) {
       result += "  " ;
-      result += enumerator_4223.current_isEndOfTemplateMark (HERE).getter_cString (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 85)).stringValue () ;
+      result += enumerator_4219.current_isEndOfTemplateMark (HERE).getter_cString (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 85)).stringValue () ;
       result += " /* " ;
-      result += enumerator_4223.current_mTerminalName (HERE).readProperty_string ().stringValue () ;
+      result += enumerator_4219.current_mTerminalName (HERE).readProperty_string ().stringValue () ;
       result += " */" ;
-      if (enumerator_4223.hasNextObject ()) {
+      if (enumerator_4219.hasNextObject ()) {
         result += ",\n" ;
       }
-      index_4223_.increment () ;
-      enumerator_4223.gotoNextObject () ;
+      index_4219_.increment () ;
+      enumerator_4219.gotoNextObject () ;
     }
-    if (nonEmpty_enumerator_4223) {
+    if (nonEmpty_enumerator_4219) {
       result += "\n} ;\n" ;
     }
   }
@@ -520,15 +520,15 @@ GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_cppImplemen
   result += "_kEndOfScriptInTemplateArray [token.mTokenCode - 1]) {\n      mMatchedTemplateDelimiterIndex = -1 ;\n    }\n  }\n  if (UNICODE_VALUE (mCurrentChar) == '\\0') {\n    token.mTokenCode = 0 ;\n    enterToken (token) ;\n  }\n  return token.mTokenCode > 0 ;\n}\n\n//--------------------------------------------------------------------------------------------------\n//                         I N T R O S P E C T I O N\n//--------------------------------------------------------------------------------------------------\n\nGALGAS_stringlist C_Lexique_" ;
   result += in_LEXIQUE_5F_IDENTIFIER.stringValue () ;
   result += "::symbols (LOCATION_ARGS) {\n  GALGAS_stringlist result = GALGAS_stringlist::constructor_emptyList (THERE) ;\n" ;
-  GALGAS_uint index_8040_ (0) ;
+  GALGAS_uint index_8036_ (0) ;
   if (in_TERMINAL_5F_LIST.isValid ()) {
-    cEnumerator_terminalList enumerator_8040 (in_TERMINAL_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_8040.hasCurrentObject ()) {
+    cEnumerator_terminalList enumerator_8036 (in_TERMINAL_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_8036.hasCurrentObject ()) {
       result += "  result.addAssign_operation (GALGAS_string (" ;
-      result += enumerator_8040.current_mTerminalName (HERE).readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 154)).stringValue () ;
+      result += enumerator_8036.current_mTerminalName (HERE).readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 154)).stringValue () ;
       result += ") COMMA_HERE) ;\n" ;
-      index_8040_.increment () ;
-      enumerator_8040.gotoNextObject () ;
+      index_8036_.increment () ;
+      enumerator_8036.gotoNextObject () ;
     }
   }
   result += "  return result ;\n}\n\n//--------------------------------------------------------------------------------------------------\n\nstatic void getKeywordLists_" ;
@@ -541,15 +541,15 @@ GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_cppImplemen
     result += "ioList" ;
   }
   result += ") {\n" ;
-  GALGAS_uint index_8553_ (0) ;
+  GALGAS_uint index_8549_ (0) ;
   if (in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP.isValid ()) {
-    cEnumerator_lexicalExplicitTokenListMapMap enumerator_8553 (in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP, kENUMERATION_UP) ;
-    while (enumerator_8553.hasCurrentObject ()) {
+    cEnumerator_lexicalExplicitTokenListMapMap enumerator_8549 (in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP, kENUMERATION_UP) ;
+    while (enumerator_8549.hasCurrentObject ()) {
       result += "  ioList.appendObject (" ;
-      result += in_LEXIQUE_5F_COMPONENT_5F_NAME.add_operation (GALGAS_string (":"), inCompiler COMMA_SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 166)).add_operation (enumerator_8553.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 166)).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 166)).stringValue () ;
+      result += in_LEXIQUE_5F_COMPONENT_5F_NAME.add_operation (GALGAS_string (":"), inCompiler COMMA_SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 166)).add_operation (enumerator_8549.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 166)).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 166)).stringValue () ;
       result += ") ;\n" ;
-      index_8553_.increment () ;
-      enumerator_8553.gotoNextObject () ;
+      index_8549_.increment () ;
+      enumerator_8549.gotoNextObject () ;
     }
   }
   result += "}\n\n//--------------------------------------------------------------------------------------------------\n\nstatic void getKeywordsForIdentifier_" ;
@@ -582,27 +582,27 @@ GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_cppImplemen
     result += "ioList" ;
   }
   result += ") {\n" ;
-  GALGAS_uint index_9262_ (0) ;
+  GALGAS_uint index_9258_ (0) ;
   if (in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP.isValid ()) {
-    cEnumerator_lexicalExplicitTokenListMapMap enumerator_9262 (in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP, kENUMERATION_UP) ;
-    while (enumerator_9262.hasCurrentObject ()) {
+    cEnumerator_lexicalExplicitTokenListMapMap enumerator_9258 (in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP, kENUMERATION_UP) ;
+    while (enumerator_9258.hasCurrentObject ()) {
       result += "  if (inIdentifier == " ;
-      result += in_LEXIQUE_5F_COMPONENT_5F_NAME.add_operation (GALGAS_string (":"), inCompiler COMMA_SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 178)).add_operation (enumerator_9262.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 178)).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 178)).stringValue () ;
+      result += in_LEXIQUE_5F_COMPONENT_5F_NAME.add_operation (GALGAS_string (":"), inCompiler COMMA_SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 178)).add_operation (enumerator_9258.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 178)).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 178)).stringValue () ;
       result += ") {\n    ioFound = true ;\n" ;
-      GALGAS_uint index_9459_ (0) ;
-      if (enumerator_9262.current_mTokenSortedList (HERE).isValid ()) {
-        cEnumerator_tokenSortedlist enumerator_9459 (enumerator_9262.current_mTokenSortedList (HERE), kENUMERATION_UP) ;
-        while (enumerator_9459.hasCurrentObject ()) {
+      GALGAS_uint index_9455_ (0) ;
+      if (enumerator_9258.current_mTokenSortedList (HERE).isValid ()) {
+        cEnumerator_tokenSortedlist enumerator_9455 (enumerator_9258.current_mTokenSortedList (HERE), kENUMERATION_UP) ;
+        while (enumerator_9455.hasCurrentObject ()) {
           result += "    ioList.appendObject (" ;
-          result += enumerator_9459.current_mName (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 181)).stringValue () ;
+          result += enumerator_9455.current_mName (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 181)).stringValue () ;
           result += ") ;\n" ;
-          index_9459_.increment () ;
-          enumerator_9459.gotoNextObject () ;
+          index_9455_.increment () ;
+          enumerator_9455.gotoNextObject () ;
         }
       }
       result += "    ioList.sortArrayUsingCompareMethod() ;\n  }\n" ;
-      index_9262_.increment () ;
-      enumerator_9262.gotoNextObject () ;
+      index_9258_.increment () ;
+      enumerator_9258.gotoNextObject () ;
     }
   }
   result += "}\n\n//--------------------------------------------------------------------------------------------------\n\nstatic cLexiqueIntrospection lexiqueIntrospection_" ;
@@ -621,7 +621,7 @@ GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_cppImplemen
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_objcCocoaHeaderZone (C_Compiler * /* inCompiler */,
+GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_objcCocoaHeaderZone (Compiler * /* inCompiler */,
                                                                                           const GALGAS_string & in_LEXIQUE_5F_CLASS_5F_NAME,
                                                                                           const GALGAS_string & in_SUPER_5F_LEXIQUE_5F_CLASS_5F_NAME,
                                                                                           const GALGAS_string & in_SUPER_5F_LEXIQUE_5F_HEADER_5F_FILE_5F_NAME
@@ -643,7 +643,7 @@ GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_objcCocoaHe
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_objcCocoaImplementationZone (C_Compiler * /* inCompiler */,
+GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_objcCocoaImplementationZone (Compiler * /* inCompiler */,
                                                                                                   const GALGAS_string & in_LEXIQUE_5F_HEADER_5F_FILE_5F_NAME,
                                                                                                   const GALGAS_string & in_LEXIQUE_5F_CLASS_5F_NAME,
                                                                                                   const GALGAS_terminalList & in_TERMINAL_5F_LIST,
@@ -774,7 +774,7 @@ GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_objcCocoaIm
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_swiftCocoaImplementationZone (C_Compiler * /* inCompiler */,
+GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_swiftCocoaImplementationZone (Compiler * /* inCompiler */,
                                                                                                    const GALGAS_string & /* in_LEXIQUE_5F_HEADER_5F_FILE_5F_NAME */,
                                                                                                    const GALGAS_string & in_LEXIQUE_5F_CLASS_5F_NAME,
                                                                                                    const GALGAS_string & in_SUPER_5F_LEXIQUE_5F_CLASS_5F_NAME,
@@ -974,7 +974,7 @@ GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_swiftCocoaI
 //
 //--------------------------------------------------------------------------------------------------
 
-static GALGAS_lexicalTypeMap onceFunction_buildLexicalTypeMap (C_Compiler * inCompiler
+static GALGAS_lexicalTypeMap onceFunction_buildLexicalTypeMap (Compiler * inCompiler
                                                                COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalTypeMap result_outLexicalTypeMap ; // Returned variable
   result_outLexicalTypeMap = GALGAS_lexicalTypeMap::constructor_emptyMap (SOURCE_FILE ("lexiqueTypesForAST.galgas", 386)) ;
@@ -1017,7 +1017,7 @@ static GALGAS_lexicalTypeMap gOnceFunctionResult_buildLexicalTypeMap ;
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalTypeMap function_buildLexicalTypeMap (class C_Compiler * inCompiler
+GALGAS_lexicalTypeMap function_buildLexicalTypeMap (class Compiler * inCompiler
               COMMA_LOCATION_ARGS) {
   if (! gOnceFunctionResultAvailable_buildLexicalTypeMap) {
     gOnceFunctionResult_buildLexicalTypeMap = onceFunction_buildLexicalTypeMap (inCompiler COMMA_THERE) ;
@@ -1047,7 +1047,7 @@ static const C_galgas_type_descriptor * functionArgs_buildLexicalTypeMap [1] = {
 
 //--------------------------------------------------------------------------------------------------
 
-static GALGAS_object functionWithGenericHeader_buildLexicalTypeMap (C_Compiler * inCompiler,
+static GALGAS_object functionWithGenericHeader_buildLexicalTypeMap (Compiler * inCompiler,
                                                                     const cObjectArray & /* inEffectiveParameterArray */,
                                                                     const GALGAS_location & /* inErrorLocation */
                                                                     COMMA_LOCATION_ARGS) {
@@ -1071,7 +1071,7 @@ C_galgas_function_descriptor functionDescriptor_buildLexicalTypeMap ("buildLexic
 void routine_buildLexicalAttributeMap (const GALGAS_lexicalTypeMap constinArgument_inLexicalTypeMap,
                                        const GALGAS_lexicalAttributeListAST constinArgument_inLexicalAttributeList,
                                        GALGAS_lexicalAttributeMap & ioArgument_ioLexicalAttributeMap,
-                                       C_Compiler * inCompiler
+                                       Compiler * inCompiler
                                        COMMA_UNUSED_LOCATION_ARGS) {
   cEnumerator_lexicalAttributeListAST enumerator_16502 (constinArgument_inLexicalAttributeList, kENUMERATION_UP) ;
   while (enumerator_16502.hasCurrentObject ()) {
@@ -1112,7 +1112,7 @@ void routine_buildLexicalAttributeMap (const GALGAS_lexicalTypeMap constinArgume
 //--------------------------------------------------------------------------------------------------
 
 void routine_lexicalUnicodeTestFunctionAnalysis (GALGAS_stringset & outArgument_outUnicodeTestFunctions,
-                                                 C_Compiler * /* inCompiler */
+                                                 Compiler * /* inCompiler */
                                                  COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outUnicodeTestFunctions.drop () ; // Release 'out' argument
   GALGAS_stringset temp_0 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("lexicalUnicodeTestFunctions.galgas", 188)) ;
@@ -1136,7 +1136,7 @@ void routine_lexicalUnicodeTestFunctionAnalysis (GALGAS_stringset & outArgument_
 //--------------------------------------------------------------------------------------------------
 
 void routine_buildLexicalRoutineMap (GALGAS_lexicalRoutineMap & outArgument_outLexicalRoutineMap,
-                                     C_Compiler * inCompiler
+                                     Compiler * inCompiler
                                      COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outLexicalRoutineMap.drop () ; // Release 'out' argument
   outArgument_outLexicalRoutineMap = GALGAS_lexicalRoutineMap::constructor_emptyMap (SOURCE_FILE ("predefinedLexicalActions.galgas", 36)) ;
@@ -1460,7 +1460,7 @@ void routine_buildLexicalRoutineMap (GALGAS_lexicalRoutineMap & outArgument_outL
 //--------------------------------------------------------------------------------------------------
 
 void routine_buildLexicalFunctionMap (GALGAS_lexicalFunctionMap & outArgument_outLexicalFunctionMap,
-                                      C_Compiler * inCompiler
+                                      Compiler * inCompiler
                                       COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outLexicalFunctionMap.drop () ; // Release 'out' argument
   outArgument_outLexicalFunctionMap = GALGAS_lexicalFunctionMap::constructor_emptyMap (SOURCE_FILE ("predefinedLexicalActions.galgas", 489)) ;
@@ -1483,7 +1483,7 @@ void routine_buildLexicalFunctionMap (GALGAS_lexicalFunctionMap & outArgument_ou
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_printPredefinedLexicalActions (C_Compiler * inCompiler
+void routine_printPredefinedLexicalActions (Compiler * inCompiler
                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalRoutineMap var_lexicalRoutineMap_23040 ;
   {
@@ -1552,7 +1552,7 @@ void routine_printPredefinedLexicalActions (C_Compiler * inCompiler
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string cPtr_lexicalOrExpressionAST::getter_generateConditionCode (const GALGAS_lexiqueAnalysisContext constinArgument_inLexiqueAnalysisContext,
-                                                                         C_Compiler * inCompiler
+                                                                         Compiler * inCompiler
                                                                          COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalOrExpressionAST temp_0 = this ;
@@ -1572,7 +1572,7 @@ GALGAS_string cPtr_lexicalOrExpressionAST::getter_generateConditionCode (const G
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string cPtr_lexicalCharacterIntervalMatchAST::getter_generateConditionCode (const GALGAS_lexiqueAnalysisContext /* constinArgument_inLexiqueAnalysisContext */,
-                                                                                   C_Compiler * inCompiler
+                                                                                   Compiler * inCompiler
                                                                                    COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   result_result = GALGAS_string::makeEmptyString () ;
@@ -1595,7 +1595,7 @@ GALGAS_string cPtr_lexicalCharacterIntervalMatchAST::getter_generateConditionCod
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string cPtr_lexicalStringMatchAST::getter_generateConditionCode (const GALGAS_lexiqueAnalysisContext constinArgument_inLexiqueAnalysisContext,
-                                                                        C_Compiler * inCompiler
+                                                                        Compiler * inCompiler
                                                                         COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalStringMatchAST temp_0 = this ;
@@ -1616,7 +1616,7 @@ GALGAS_string cPtr_lexicalStringMatchAST::getter_generateConditionCode (const GA
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string cPtr_lexicalStringNotMatchAST::getter_generateConditionCode (const GALGAS_lexiqueAnalysisContext constinArgument_inLexiqueAnalysisContext,
-                                                                           C_Compiler * inCompiler
+                                                                           Compiler * inCompiler
                                                                            COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   result_result = GALGAS_string ("notTestForInputUTF32String (kUnicodeString_").add_operation (constinArgument_inLexiqueAnalysisContext.readProperty_mLexiqueName ().getter_identifierRepresentation (SOURCE_FILE ("lexiqueGeneration.galgas", 63)), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 63)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 63)) ;
@@ -1642,7 +1642,7 @@ GALGAS_string cPtr_lexicalStringNotMatchAST::getter_generateConditionCode (const
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string cPtr_lexicalCharacterMatchAST::getter_generateConditionCode (const GALGAS_lexiqueAnalysisContext /* constinArgument_inLexiqueAnalysisContext */,
-                                                                           C_Compiler * inCompiler
+                                                                           Compiler * inCompiler
                                                                            COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   result_result = GALGAS_string ("testForInputUTF32Char (") ;
@@ -1661,7 +1661,7 @@ GALGAS_string cPtr_lexicalCharacterMatchAST::getter_generateConditionCode (const
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string cPtr_lexicalCharacterSetMatchAST::getter_generateConditionCode (const GALGAS_lexiqueAnalysisContext /* constinArgument_inLexiqueAnalysisContext */,
-                                                                              C_Compiler * inCompiler
+                                                                              Compiler * inCompiler
                                                                               COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   result_result = GALGAS_string ("testForCharWithFunction (") ;
@@ -1679,7 +1679,7 @@ GALGAS_string cPtr_lexicalCharacterSetMatchAST::getter_generateConditionCode (co
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string cPtr_lexicalAttributeInputArgumentAST::getter_generateRoutineOrFunctionArgument (C_Compiler * inCompiler
+GALGAS_string cPtr_lexicalAttributeInputArgumentAST::getter_generateRoutineOrFunctionArgument (Compiler * inCompiler
                                                                                                COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalAttributeInputArgumentAST temp_0 = this ;
@@ -1695,7 +1695,7 @@ GALGAS_string cPtr_lexicalAttributeInputArgumentAST::getter_generateRoutineOrFun
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string cPtr_lexicalCharacterInputArgumentAST::getter_generateRoutineOrFunctionArgument (C_Compiler */* inCompiler */
+GALGAS_string cPtr_lexicalCharacterInputArgumentAST::getter_generateRoutineOrFunctionArgument (Compiler */* inCompiler */
                                                                                                COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalCharacterInputArgumentAST temp_0 = this ;
@@ -1711,7 +1711,7 @@ GALGAS_string cPtr_lexicalCharacterInputArgumentAST::getter_generateRoutineOrFun
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string cPtr_lexicalUnsignedInputArgumentAST::getter_generateRoutineOrFunctionArgument (C_Compiler */* inCompiler */
+GALGAS_string cPtr_lexicalUnsignedInputArgumentAST::getter_generateRoutineOrFunctionArgument (Compiler */* inCompiler */
                                                                                               COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalUnsignedInputArgumentAST temp_0 = this ;
@@ -1727,7 +1727,7 @@ GALGAS_string cPtr_lexicalUnsignedInputArgumentAST::getter_generateRoutineOrFunc
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string cPtr_lexicalCurrentCharacterInputArgumentAST::getter_generateRoutineOrFunctionArgument (C_Compiler */* inCompiler */
+GALGAS_string cPtr_lexicalCurrentCharacterInputArgumentAST::getter_generateRoutineOrFunctionArgument (Compiler */* inCompiler */
                                                                                                       COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   result_result = GALGAS_string ("previousChar ()") ;
@@ -1742,7 +1742,7 @@ GALGAS_string cPtr_lexicalCurrentCharacterInputArgumentAST::getter_generateRouti
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string cPtr_lexicalFunctionInputArgumentAST::getter_generateRoutineOrFunctionArgument (C_Compiler * inCompiler
+GALGAS_string cPtr_lexicalFunctionInputArgumentAST::getter_generateRoutineOrFunctionArgument (Compiler * inCompiler
                                                                                               COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalFunctionInputArgumentAST temp_0 = this ;
@@ -1766,7 +1766,7 @@ GALGAS_string cPtr_lexicalFunctionInputArgumentAST::getter_generateRoutineOrFunc
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string cPtr_lexicalSendTerminalByDefaultAST::getter_generateDefaultSendCode (const GALGAS_string /* constinArgument_inScannerClassName */,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalSendTerminalByDefaultAST temp_0 = this ;
@@ -1783,7 +1783,7 @@ GALGAS_string cPtr_lexicalSendTerminalByDefaultAST::getter_generateDefaultSendCo
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string cPtr_lexicalErrorByDefaultAST::getter_generateDefaultSendCode (const GALGAS_string constinArgument_inScannerClassName,
-                                                                             C_Compiler * inCompiler
+                                                                             Compiler * inCompiler
                                                                              COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalErrorByDefaultAST temp_0 = this ;
@@ -1801,7 +1801,7 @@ GALGAS_string cPtr_lexicalErrorByDefaultAST::getter_generateDefaultSendCode (con
 
 GALGAS_string cPtr_lexicalImplicitRuleAST::getter_generateLexicalRuleCode (const GALGAS_string constinArgument_inScannerClassName,
                                                                            const GALGAS_lexiqueAnalysisContext constinArgument_inLexiqueAnalysisContext,
-                                                                           C_Compiler * inCompiler
+                                                                           Compiler * inCompiler
                                                                            COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   GALGAS_tokenSortedlist var_tokenSortedList_9561 ;
@@ -1833,7 +1833,7 @@ GALGAS_string cPtr_lexicalImplicitRuleAST::getter_generateLexicalRuleCode (const
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool cPtr_lexicalImplicitRuleAST::getter_lexicalRuleUsesLoopLocalVar (C_Compiler */* inCompiler */
+GALGAS_bool cPtr_lexicalImplicitRuleAST::getter_lexicalRuleUsesLoopLocalVar (Compiler */* inCompiler */
                                                                              COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result_result ; // Returned variable
   result_result = GALGAS_bool (false) ;
@@ -1850,7 +1850,7 @@ GALGAS_bool cPtr_lexicalImplicitRuleAST::getter_lexicalRuleUsesLoopLocalVar (C_C
 
 GALGAS_string cPtr_lexicalExplicitRuleAST::getter_generateLexicalRuleCode (const GALGAS_string constinArgument_inScannerClassName,
                                                                            const GALGAS_lexiqueAnalysisContext constinArgument_inLexiqueAnalysisContext,
-                                                                           C_Compiler * inCompiler
+                                                                           Compiler * inCompiler
                                                                            COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   result_result = GALGAS_string ("if (") ;
@@ -1881,7 +1881,7 @@ GALGAS_string cPtr_lexicalExplicitRuleAST::getter_generateLexicalRuleCode (const
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool cPtr_lexicalExplicitRuleAST::getter_lexicalRuleUsesLoopLocalVar (C_Compiler * inCompiler
+GALGAS_bool cPtr_lexicalExplicitRuleAST::getter_lexicalRuleUsesLoopLocalVar (Compiler * inCompiler
                                                                              COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result_result ; // Returned variable
   result_result = GALGAS_bool (false) ;
@@ -1909,7 +1909,7 @@ GALGAS_bool cPtr_lexicalExplicitRuleAST::getter_lexicalRuleUsesLoopLocalVar (C_C
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string cPtr_lexicalOrExpressionAST::getter_generateObjcCocoaConditionCode (const GALGAS_lexiqueAnalysisContext constinArgument_inLexiqueAnalysisContext,
-                                                                                  C_Compiler * inCompiler
+                                                                                  Compiler * inCompiler
                                                                                   COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalOrExpressionAST temp_0 = this ;
@@ -1929,7 +1929,7 @@ GALGAS_string cPtr_lexicalOrExpressionAST::getter_generateObjcCocoaConditionCode
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string cPtr_lexicalCharacterIntervalMatchAST::getter_generateObjcCocoaConditionCode (const GALGAS_lexiqueAnalysisContext /* constinArgument_inLexiqueAnalysisContext */,
-                                                                                            C_Compiler * inCompiler
+                                                                                            Compiler * inCompiler
                                                                                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   result_outGeneratedCode = GALGAS_string::makeEmptyString () ;
@@ -1952,7 +1952,7 @@ GALGAS_string cPtr_lexicalCharacterIntervalMatchAST::getter_generateObjcCocoaCon
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string cPtr_lexicalStringMatchAST::getter_generateObjcCocoaConditionCode (const GALGAS_lexiqueAnalysisContext /* constinArgument_inLexiqueAnalysisContext */,
-                                                                                 C_Compiler * inCompiler
+                                                                                 Compiler * inCompiler
                                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   const GALGAS_lexicalStringMatchAST temp_0 = this ;
@@ -1970,7 +1970,7 @@ GALGAS_string cPtr_lexicalStringMatchAST::getter_generateObjcCocoaConditionCode 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string cPtr_lexicalStringNotMatchAST::getter_generateObjcCocoaConditionCode (const GALGAS_lexiqueAnalysisContext /* constinArgument_inLexiqueAnalysisContext */,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   result_outGeneratedCode = GALGAS_string ("[self notTestForInputString:@") ;
@@ -1989,7 +1989,7 @@ GALGAS_string cPtr_lexicalStringNotMatchAST::getter_generateObjcCocoaConditionCo
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string cPtr_lexicalCharacterMatchAST::getter_generateObjcCocoaConditionCode (const GALGAS_lexiqueAnalysisContext /* constinArgument_inLexiqueAnalysisContext */,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   result_outGeneratedCode = GALGAS_string ("[self testForInputChar:") ;
@@ -2008,7 +2008,7 @@ GALGAS_string cPtr_lexicalCharacterMatchAST::getter_generateObjcCocoaConditionCo
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string cPtr_lexicalCharacterSetMatchAST::getter_generateObjcCocoaConditionCode (const GALGAS_lexiqueAnalysisContext /* constinArgument_inLexiqueAnalysisContext */,
-                                                                                       C_Compiler * inCompiler
+                                                                                       Compiler * inCompiler
                                                                                        COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   result_outGeneratedCode = GALGAS_string ("[self testForCharWithFunction: ") ;
@@ -2027,7 +2027,7 @@ GALGAS_string cPtr_lexicalCharacterSetMatchAST::getter_generateObjcCocoaConditio
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string cPtr_lexicalOrExpressionAST::getter_generateSwiftCocoaConditionCode (const GALGAS_lexiqueAnalysisContext constinArgument_inLexiqueAnalysisContext,
-                                                                                   C_Compiler * inCompiler
+                                                                                   Compiler * inCompiler
                                                                                    COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalOrExpressionAST temp_0 = this ;
@@ -2047,7 +2047,7 @@ GALGAS_string cPtr_lexicalOrExpressionAST::getter_generateSwiftCocoaConditionCod
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string cPtr_lexicalCharacterIntervalMatchAST::getter_generateSwiftCocoaConditionCode (const GALGAS_lexiqueAnalysisContext /* constinArgument_inLexiqueAnalysisContext */,
-                                                                                             C_Compiler * inCompiler
+                                                                                             Compiler * inCompiler
                                                                                              COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   result_outGeneratedCode = GALGAS_string::makeEmptyString () ;
@@ -2070,7 +2070,7 @@ GALGAS_string cPtr_lexicalCharacterIntervalMatchAST::getter_generateSwiftCocoaCo
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string cPtr_lexicalStringMatchAST::getter_generateSwiftCocoaConditionCode (const GALGAS_lexiqueAnalysisContext /* constinArgument_inLexiqueAnalysisContext */,
-                                                                                  C_Compiler * inCompiler
+                                                                                  Compiler * inCompiler
                                                                                   COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   const GALGAS_lexicalStringMatchAST temp_0 = this ;
@@ -2088,7 +2088,7 @@ GALGAS_string cPtr_lexicalStringMatchAST::getter_generateSwiftCocoaConditionCode
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string cPtr_lexicalStringNotMatchAST::getter_generateSwiftCocoaConditionCode (const GALGAS_lexiqueAnalysisContext /* constinArgument_inLexiqueAnalysisContext */,
-                                                                                     C_Compiler * inCompiler
+                                                                                     Compiler * inCompiler
                                                                                      COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   result_outGeneratedCode = GALGAS_string ("self.notTestForInputString (") ;
@@ -2107,7 +2107,7 @@ GALGAS_string cPtr_lexicalStringNotMatchAST::getter_generateSwiftCocoaConditionC
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string cPtr_lexicalCharacterMatchAST::getter_generateSwiftCocoaConditionCode (const GALGAS_lexiqueAnalysisContext /* constinArgument_inLexiqueAnalysisContext */,
-                                                                                     C_Compiler * inCompiler
+                                                                                     Compiler * inCompiler
                                                                                      COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   result_outGeneratedCode = GALGAS_string ("self.testForInputChar (") ;
@@ -2126,7 +2126,7 @@ GALGAS_string cPtr_lexicalCharacterMatchAST::getter_generateSwiftCocoaConditionC
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string cPtr_lexicalCharacterSetMatchAST::getter_generateSwiftCocoaConditionCode (const GALGAS_lexiqueAnalysisContext /* constinArgument_inLexiqueAnalysisContext */,
-                                                                                        C_Compiler * inCompiler
+                                                                                        Compiler * inCompiler
                                                                                         COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   result_outGeneratedCode = GALGAS_string ("self.testForCharWithFunction (") ;
@@ -2144,7 +2144,7 @@ GALGAS_string cPtr_lexicalCharacterSetMatchAST::getter_generateSwiftCocoaConditi
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string cPtr_lexicalAttributeInputArgumentAST::getter_generateObjcCocoaRoutineOrFunctionArgument (C_Compiler * inCompiler
+GALGAS_string cPtr_lexicalAttributeInputArgumentAST::getter_generateObjcCocoaRoutineOrFunctionArgument (Compiler * inCompiler
                                                                                                         COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   const GALGAS_lexicalAttributeInputArgumentAST temp_0 = this ;
@@ -2160,7 +2160,7 @@ GALGAS_string cPtr_lexicalAttributeInputArgumentAST::getter_generateObjcCocoaRou
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string cPtr_lexicalCharacterInputArgumentAST::getter_generateObjcCocoaRoutineOrFunctionArgument (C_Compiler */* inCompiler */
+GALGAS_string cPtr_lexicalCharacterInputArgumentAST::getter_generateObjcCocoaRoutineOrFunctionArgument (Compiler */* inCompiler */
                                                                                                         COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   const GALGAS_lexicalCharacterInputArgumentAST temp_0 = this ;
@@ -2176,7 +2176,7 @@ GALGAS_string cPtr_lexicalCharacterInputArgumentAST::getter_generateObjcCocoaRou
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string cPtr_lexicalUnsignedInputArgumentAST::getter_generateObjcCocoaRoutineOrFunctionArgument (C_Compiler */* inCompiler */
+GALGAS_string cPtr_lexicalUnsignedInputArgumentAST::getter_generateObjcCocoaRoutineOrFunctionArgument (Compiler */* inCompiler */
                                                                                                        COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   const GALGAS_lexicalUnsignedInputArgumentAST temp_0 = this ;
@@ -2192,7 +2192,7 @@ GALGAS_string cPtr_lexicalUnsignedInputArgumentAST::getter_generateObjcCocoaRout
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string cPtr_lexicalCurrentCharacterInputArgumentAST::getter_generateObjcCocoaRoutineOrFunctionArgument (C_Compiler */* inCompiler */
+GALGAS_string cPtr_lexicalCurrentCharacterInputArgumentAST::getter_generateObjcCocoaRoutineOrFunctionArgument (Compiler */* inCompiler */
                                                                                                                COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   result_outGeneratedCode = GALGAS_string ("mPreviousChar") ;
@@ -2207,7 +2207,7 @@ GALGAS_string cPtr_lexicalCurrentCharacterInputArgumentAST::getter_generateObjcC
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string cPtr_lexicalFunctionInputArgumentAST::getter_generateObjcCocoaRoutineOrFunctionArgument (C_Compiler * inCompiler
+GALGAS_string cPtr_lexicalFunctionInputArgumentAST::getter_generateObjcCocoaRoutineOrFunctionArgument (Compiler * inCompiler
                                                                                                        COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   const GALGAS_lexicalFunctionInputArgumentAST temp_0 = this ;
@@ -2233,7 +2233,7 @@ GALGAS_string cPtr_lexicalFunctionInputArgumentAST::getter_generateObjcCocoaRout
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string cPtr_lexicalAttributeInputArgumentAST::getter_generateSwiftCocoaRoutineOrFunctionArgument (C_Compiler * inCompiler
+GALGAS_string cPtr_lexicalAttributeInputArgumentAST::getter_generateSwiftCocoaRoutineOrFunctionArgument (Compiler * inCompiler
                                                                                                          COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   const GALGAS_lexicalAttributeInputArgumentAST temp_0 = this ;
@@ -2249,7 +2249,7 @@ GALGAS_string cPtr_lexicalAttributeInputArgumentAST::getter_generateSwiftCocoaRo
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string cPtr_lexicalCharacterInputArgumentAST::getter_generateSwiftCocoaRoutineOrFunctionArgument (C_Compiler */* inCompiler */
+GALGAS_string cPtr_lexicalCharacterInputArgumentAST::getter_generateSwiftCocoaRoutineOrFunctionArgument (Compiler */* inCompiler */
                                                                                                          COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   const GALGAS_lexicalCharacterInputArgumentAST temp_0 = this ;
@@ -2265,7 +2265,7 @@ GALGAS_string cPtr_lexicalCharacterInputArgumentAST::getter_generateSwiftCocoaRo
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string cPtr_lexicalUnsignedInputArgumentAST::getter_generateSwiftCocoaRoutineOrFunctionArgument (C_Compiler */* inCompiler */
+GALGAS_string cPtr_lexicalUnsignedInputArgumentAST::getter_generateSwiftCocoaRoutineOrFunctionArgument (Compiler */* inCompiler */
                                                                                                         COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   const GALGAS_lexicalUnsignedInputArgumentAST temp_0 = this ;
@@ -2281,7 +2281,7 @@ GALGAS_string cPtr_lexicalUnsignedInputArgumentAST::getter_generateSwiftCocoaRou
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string cPtr_lexicalCurrentCharacterInputArgumentAST::getter_generateSwiftCocoaRoutineOrFunctionArgument (C_Compiler */* inCompiler */
+GALGAS_string cPtr_lexicalCurrentCharacterInputArgumentAST::getter_generateSwiftCocoaRoutineOrFunctionArgument (Compiler */* inCompiler */
                                                                                                                 COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   result_outGeneratedCode = GALGAS_string ("self.previousChar") ;
@@ -2296,7 +2296,7 @@ GALGAS_string cPtr_lexicalCurrentCharacterInputArgumentAST::getter_generateSwift
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string cPtr_lexicalFunctionInputArgumentAST::getter_generateSwiftCocoaRoutineOrFunctionArgument (C_Compiler * inCompiler
+GALGAS_string cPtr_lexicalFunctionInputArgumentAST::getter_generateSwiftCocoaRoutineOrFunctionArgument (Compiler * inCompiler
                                                                                                         COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   const GALGAS_lexicalFunctionInputArgumentAST temp_0 = this ;
@@ -2323,7 +2323,7 @@ GALGAS_string cPtr_lexicalFunctionInputArgumentAST::getter_generateSwiftCocoaRou
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string cPtr_lexicalSendTerminalByDefaultAST::getter_generateObjcCocoaDefaultSendCode (const GALGAS_string constinArgument_inScannerClassName,
-                                                                                             C_Compiler * inCompiler
+                                                                                             Compiler * inCompiler
                                                                                              COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   const GALGAS_lexicalSendTerminalByDefaultAST temp_0 = this ;
@@ -2340,7 +2340,7 @@ GALGAS_string cPtr_lexicalSendTerminalByDefaultAST::getter_generateObjcCocoaDefa
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string cPtr_lexicalErrorByDefaultAST::getter_generateObjcCocoaDefaultSendCode (const GALGAS_string /* constinArgument_inScannerClassName */,
-                                                                                      C_Compiler */* inCompiler */
+                                                                                      Compiler */* inCompiler */
                                                                                       COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   result_outGeneratedCode = GALGAS_string ("scanningOk = NO ;\n") ;
@@ -2356,7 +2356,7 @@ GALGAS_string cPtr_lexicalErrorByDefaultAST::getter_generateObjcCocoaDefaultSend
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string cPtr_lexicalSendTerminalByDefaultAST::getter_generateSwiftCocoaDefaultSendCode (const GALGAS_string constinArgument_inScannerClassName,
-                                                                                              C_Compiler * inCompiler
+                                                                                              Compiler * inCompiler
                                                                                               COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   const GALGAS_lexicalSendTerminalByDefaultAST temp_0 = this ;
@@ -2373,7 +2373,7 @@ GALGAS_string cPtr_lexicalSendTerminalByDefaultAST::getter_generateSwiftCocoaDef
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string cPtr_lexicalErrorByDefaultAST::getter_generateSwiftCocoaDefaultSendCode (const GALGAS_string /* constinArgument_inScannerClassName */,
-                                                                                       C_Compiler */* inCompiler */
+                                                                                       Compiler */* inCompiler */
                                                                                        COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   result_outGeneratedCode = GALGAS_string ("scanningOk = false\n") ;
@@ -2390,7 +2390,7 @@ GALGAS_string cPtr_lexicalErrorByDefaultAST::getter_generateSwiftCocoaDefaultSen
 
 GALGAS_string cPtr_lexicalImplicitRuleAST::getter_generateObjcCocoaCode (const GALGAS_string constinArgument_inScannerClassName,
                                                                          const GALGAS_lexiqueAnalysisContext constinArgument_inLexiqueAnalysisContext,
-                                                                         C_Compiler * inCompiler
+                                                                         Compiler * inCompiler
                                                                          COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   GALGAS_tokenSortedlist var_tokenSortedList_15714 ;
@@ -2421,7 +2421,7 @@ GALGAS_string cPtr_lexicalImplicitRuleAST::getter_generateObjcCocoaCode (const G
 
 GALGAS_string cPtr_lexicalExplicitRuleAST::getter_generateObjcCocoaCode (const GALGAS_string constinArgument_inScannerClassName,
                                                                          const GALGAS_lexiqueAnalysisContext constinArgument_inLexiqueAnalysisContext,
-                                                                         C_Compiler * inCompiler
+                                                                         Compiler * inCompiler
                                                                          COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   result_outGeneratedCode = GALGAS_string ("if (scanningOk && (") ;
@@ -2454,7 +2454,7 @@ GALGAS_string cPtr_lexicalExplicitRuleAST::getter_generateObjcCocoaCode (const G
 
 GALGAS_string cPtr_lexicalImplicitRuleAST::getter_generateSwiftCocoaCode (const GALGAS_string constinArgument_inScannerClassName,
                                                                           const GALGAS_lexiqueAnalysisContext constinArgument_inLexiqueAnalysisContext,
-                                                                          C_Compiler * inCompiler
+                                                                          Compiler * inCompiler
                                                                           COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   GALGAS_tokenSortedlist var_tokenSortedList_17825 ;
@@ -2485,7 +2485,7 @@ GALGAS_string cPtr_lexicalImplicitRuleAST::getter_generateSwiftCocoaCode (const 
 
 GALGAS_string cPtr_lexicalExplicitRuleAST::getter_generateSwiftCocoaCode (const GALGAS_string constinArgument_inScannerClassName,
                                                                           const GALGAS_lexiqueAnalysisContext constinArgument_inLexiqueAnalysisContext,
-                                                                          C_Compiler * inCompiler
+                                                                          Compiler * inCompiler
                                                                           COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   result_outGeneratedCode = GALGAS_string ("if scanningOk && (") ;
@@ -2517,7 +2517,7 @@ GALGAS_string cPtr_lexicalExplicitRuleAST::getter_generateSwiftCocoaCode (const 
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalSendTerminalByDefaultAST::method_checkLexicalDefaultAction (GALGAS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
-                                                                             C_Compiler * inCompiler
+                                                                             Compiler * inCompiler
                                                                              COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_lexicalSendTerminalByDefaultAST temp_0 = this ;
   GALGAS_lexicalSentValueList joker_8211 ; // Joker input parameter
@@ -2530,7 +2530,7 @@ void cPtr_lexicalSendTerminalByDefaultAST::method_checkLexicalDefaultAction (GAL
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalErrorByDefaultAST::method_checkLexicalDefaultAction (GALGAS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
-                                                                      C_Compiler * inCompiler
+                                                                      Compiler * inCompiler
                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   {
   const GALGAS_lexicalErrorByDefaultAST temp_0 = this ;
@@ -2544,7 +2544,7 @@ void cPtr_lexicalErrorByDefaultAST::method_checkLexicalDefaultAction (GALGAS_lex
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalOrExpressionAST::method_checkLexicalExpression (GALGAS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
-                                                                 C_Compiler * inCompiler
+                                                                 Compiler * inCompiler
                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_lexicalOrExpressionAST temp_0 = this ;
   callExtensionMethod_checkLexicalExpression ((cPtr_lexicalExpressionAST *) temp_0.readProperty_mLeftOperand ().ptr (), ioArgument_ioLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 214)) ;
@@ -2558,7 +2558,7 @@ void cPtr_lexicalOrExpressionAST::method_checkLexicalExpression (GALGAS_lexiqueA
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalCharacterMatchAST::method_checkLexicalExpression (GALGAS_lexiqueAnalysisContext & /* ioArgument_ioLexiqueAnalysisContext */,
-                                                                   C_Compiler * /* inCompiler */
+                                                                   Compiler * /* inCompiler */
                                                                    COMMA_UNUSED_LOCATION_ARGS) {
 }
 //--------------------------------------------------------------------------------------------------
@@ -2568,7 +2568,7 @@ void cPtr_lexicalCharacterMatchAST::method_checkLexicalExpression (GALGAS_lexiqu
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalCharacterSetMatchAST::method_checkLexicalExpression (GALGAS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
-                                                                      C_Compiler * inCompiler
+                                                                      Compiler * inCompiler
                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
@@ -2589,7 +2589,7 @@ void cPtr_lexicalCharacterSetMatchAST::method_checkLexicalExpression (GALGAS_lex
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalCharacterIntervalMatchAST::method_checkLexicalExpression (GALGAS_lexiqueAnalysisContext & /* ioArgument_ioLexiqueAnalysisContext */,
-                                                                           C_Compiler * /* inCompiler */
+                                                                           Compiler * /* inCompiler */
                                                                            COMMA_UNUSED_LOCATION_ARGS) {
 }
 //--------------------------------------------------------------------------------------------------
@@ -2599,7 +2599,7 @@ void cPtr_lexicalCharacterIntervalMatchAST::method_checkLexicalExpression (GALGA
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalStringMatchAST::method_checkLexicalExpression (GALGAS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
-                                                                C_Compiler * /* inCompiler */
+                                                                Compiler * /* inCompiler */
                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_lexicalStringMatchAST temp_0 = this ;
   ioArgument_ioLexiqueAnalysisContext.mProperty_mUnicodeStringToGenerate.addAssign_operation (temp_0.readProperty_mString ().readProperty_string ()  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 244)) ;
@@ -2611,7 +2611,7 @@ void cPtr_lexicalStringMatchAST::method_checkLexicalExpression (GALGAS_lexiqueAn
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalStringNotMatchAST::method_checkLexicalExpression (GALGAS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
-                                                                   C_Compiler * inCompiler
+                                                                   Compiler * inCompiler
                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_lexicalStringNotMatchAST temp_0 = this ;
   ioArgument_ioLexiqueAnalysisContext.mProperty_mUnicodeStringToGenerate.addAssign_operation (temp_0.readProperty_mString ().readProperty_string ()  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 251)) ;
@@ -2628,7 +2628,7 @@ void cPtr_lexicalStringNotMatchAST::method_checkLexicalExpression (GALGAS_lexiqu
 
 void cPtr_lexicalAttributeInputArgumentAST::method_checkLexicalFunctionCallArgument (GALGAS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
                                                                                      GALGAS_lexicalTypeEnum inArgument_inLexicalRoutineFormalArgumentType,
-                                                                                     C_Compiler * inCompiler
+                                                                                     Compiler * inCompiler
                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalTypeEnum var_attributeLexicalType_12091 ;
   const GALGAS_lexicalAttributeInputArgumentAST temp_0 = this ;
@@ -2651,7 +2651,7 @@ void cPtr_lexicalAttributeInputArgumentAST::method_checkLexicalFunctionCallArgum
 
 void cPtr_lexicalCharacterInputArgumentAST::method_checkLexicalFunctionCallArgument (GALGAS_lexiqueAnalysisContext & /* ioArgument_ioLexiqueAnalysisContext */,
                                                                                      GALGAS_lexicalTypeEnum inArgument_inLexicalRoutineFormalArgumentType,
-                                                                                     C_Compiler * inCompiler
+                                                                                     Compiler * inCompiler
                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
@@ -2671,7 +2671,7 @@ void cPtr_lexicalCharacterInputArgumentAST::method_checkLexicalFunctionCallArgum
 
 void cPtr_lexicalUnsignedInputArgumentAST::method_checkLexicalFunctionCallArgument (GALGAS_lexiqueAnalysisContext & /* ioArgument_ioLexiqueAnalysisContext */,
                                                                                     GALGAS_lexicalTypeEnum inArgument_inLexicalRoutineFormalArgumentType,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
@@ -2691,7 +2691,7 @@ void cPtr_lexicalUnsignedInputArgumentAST::method_checkLexicalFunctionCallArgume
 
 void cPtr_lexicalCurrentCharacterInputArgumentAST::method_checkLexicalFunctionCallArgument (GALGAS_lexiqueAnalysisContext & /* ioArgument_ioLexiqueAnalysisContext */,
                                                                                             GALGAS_lexicalTypeEnum inArgument_inLexicalRoutineFormalArgumentType,
-                                                                                            C_Compiler * inCompiler
+                                                                                            Compiler * inCompiler
                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
@@ -2711,7 +2711,7 @@ void cPtr_lexicalCurrentCharacterInputArgumentAST::method_checkLexicalFunctionCa
 
 void cPtr_lexicalFunctionInputArgumentAST::method_checkLexicalFunctionCallArgument (GALGAS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
                                                                                     GALGAS_lexicalTypeEnum inArgument_inLexicalRoutineFormalArgumentType,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalFunctionFormalArgumentList var_lexicalFormalTypeList_14825 ;
   GALGAS_lexicalTypeEnum var_returnedLexicalFormalType_14856 ;
@@ -2765,7 +2765,7 @@ void cPtr_lexicalFunctionInputArgumentAST::method_checkLexicalFunctionCallArgume
 
 void cPtr_lexicalAttributeInputArgumentAST::method_checkLexicalRoutineCallArgument (GALGAS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
                                                                                     GALGAS_lexicalTypeEnum inArgument_inLexicalRoutineFormalArgumentType,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalTypeEnum var_attributeLexicalType_17098 ;
   const GALGAS_lexicalAttributeInputArgumentAST temp_0 = this ;
@@ -2788,7 +2788,7 @@ void cPtr_lexicalAttributeInputArgumentAST::method_checkLexicalRoutineCallArgume
 
 void cPtr_lexicalCharacterInputArgumentAST::method_checkLexicalRoutineCallArgument (GALGAS_lexiqueAnalysisContext & /* ioArgument_ioLexiqueAnalysisContext */,
                                                                                     GALGAS_lexicalTypeEnum inArgument_inLexicalRoutineFormalArgumentType,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
@@ -2808,7 +2808,7 @@ void cPtr_lexicalCharacterInputArgumentAST::method_checkLexicalRoutineCallArgume
 
 void cPtr_lexicalUnsignedInputArgumentAST::method_checkLexicalRoutineCallArgument (GALGAS_lexiqueAnalysisContext & /* ioArgument_ioLexiqueAnalysisContext */,
                                                                                    GALGAS_lexicalTypeEnum inArgument_inLexicalRoutineFormalArgumentType,
-                                                                                   C_Compiler * inCompiler
+                                                                                   Compiler * inCompiler
                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
@@ -2828,7 +2828,7 @@ void cPtr_lexicalUnsignedInputArgumentAST::method_checkLexicalRoutineCallArgumen
 
 void cPtr_lexicalCurrentCharacterInputArgumentAST::method_checkLexicalRoutineCallArgument (GALGAS_lexiqueAnalysisContext & /* ioArgument_ioLexiqueAnalysisContext */,
                                                                                            GALGAS_lexicalTypeEnum inArgument_inLexicalRoutineFormalArgumentType,
-                                                                                           C_Compiler * inCompiler
+                                                                                           Compiler * inCompiler
                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
@@ -2848,7 +2848,7 @@ void cPtr_lexicalCurrentCharacterInputArgumentAST::method_checkLexicalRoutineCal
 
 void cPtr_lexicalFunctionInputArgumentAST::method_checkLexicalRoutineCallArgument (GALGAS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
                                                                                    GALGAS_lexicalTypeEnum inArgument_inLexicalRoutineFormalArgumentType,
-                                                                                   C_Compiler * inCompiler
+                                                                                   Compiler * inCompiler
                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalFunctionFormalArgumentList var_lexicalFormalTypeList_19835 ;
   GALGAS_lexicalTypeEnum var_returnedLexicalFormalType_19866 ;
@@ -2901,7 +2901,7 @@ void cPtr_lexicalFunctionInputArgumentAST::method_checkLexicalRoutineCallArgumen
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalImplicitRuleAST::method_checkLexicalRule (GALGAS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
-                                                           C_Compiler * inCompiler
+                                                           Compiler * inCompiler
                                                            COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_lexicalImplicitRuleAST temp_0 = this ;
   GALGAS_lexicalExplicitTokenListMap joker_22315 ; // Joker input parameter
@@ -2916,7 +2916,7 @@ void cPtr_lexicalImplicitRuleAST::method_checkLexicalRule (GALGAS_lexiqueAnalysi
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalExplicitRuleAST::method_checkLexicalRule (GALGAS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
-                                                           C_Compiler * inCompiler
+                                                           Compiler * inCompiler
                                                            COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_lexicalExplicitRuleAST temp_0 = this ;
   callExtensionMethod_checkLexicalExpression ((cPtr_lexicalExpressionAST *) temp_0.readProperty_mLexicalRuleExpression ().ptr (), ioArgument_ioLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 503)) ;
@@ -2936,7 +2936,7 @@ void cPtr_lexicalExplicitRuleAST::method_checkLexicalRule (GALGAS_lexiqueAnalysi
 
 void cPtr_lexicalStructuredSendInstructionAST::method_checkLexicalInstruction (GALGAS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
                                                                                GALGAS_lexicalTagMap & /* ioArgument_ioTagMap */,
-                                                                               C_Compiler * inCompiler
+                                                                               Compiler * inCompiler
                                                                                COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_lexicalStructuredSendInstructionAST temp_0 = this ;
   cEnumerator_lexicalSendSearchListAST enumerator_3698 (temp_0.readProperty_mLexicalSendSearchList (), kENUMERATION_UP) ;
@@ -2959,7 +2959,7 @@ void cPtr_lexicalStructuredSendInstructionAST::method_checkLexicalInstruction (G
 
 GALGAS_string cPtr_lexicalStructuredSendInstructionAST::getter_generateObjcCocoaInstructionCode (const GALGAS_string constinArgument_inScannerClassName,
                                                                                                  const GALGAS_lexiqueAnalysisContext /* constinArgument_inLexiqueAnalysisContext */,
-                                                                                                 C_Compiler * inCompiler
+                                                                                                 Compiler * inCompiler
                                                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   result_outGeneratedCode = GALGAS_string::makeEmptyString () ;
@@ -2989,7 +2989,7 @@ GALGAS_string cPtr_lexicalStructuredSendInstructionAST::getter_generateObjcCocoa
 
 GALGAS_string cPtr_lexicalStructuredSendInstructionAST::getter_generateSwiftCocoaInstructionCode (const GALGAS_string constinArgument_inScannerClassName,
                                                                                                   const GALGAS_lexiqueAnalysisContext /* constinArgument_inLexiqueAnalysisContext */,
-                                                                                                  C_Compiler * inCompiler
+                                                                                                  Compiler * inCompiler
                                                                                                   COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   result_outGeneratedCode = GALGAS_string::makeEmptyString () ;
@@ -3017,7 +3017,7 @@ GALGAS_string cPtr_lexicalStructuredSendInstructionAST::getter_generateSwiftCoco
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool cPtr_lexicalStructuredSendInstructionAST::getter_lexicalInstructionUsesLoopLocalVariable (C_Compiler */* inCompiler */
+GALGAS_bool cPtr_lexicalStructuredSendInstructionAST::getter_lexicalInstructionUsesLoopLocalVariable (Compiler */* inCompiler */
                                                                                                       COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result_result ; // Returned variable
   result_result = GALGAS_bool (false) ;
@@ -3034,7 +3034,7 @@ GALGAS_bool cPtr_lexicalStructuredSendInstructionAST::getter_lexicalInstructionU
 
 GALGAS_string cPtr_lexicalStructuredSendInstructionAST::getter_generateLexicalInstructionCode (const GALGAS_string constinArgument_inScannerClassName,
                                                                                                const GALGAS_lexiqueAnalysisContext /* constinArgument_inLexiqueAnalysisContext */,
-                                                                                               C_Compiler * inCompiler
+                                                                                               Compiler * inCompiler
                                                                                                COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   result_result = GALGAS_string::makeEmptyString () ;
@@ -3064,7 +3064,7 @@ GALGAS_string cPtr_lexicalStructuredSendInstructionAST::getter_generateLexicalIn
 
 void cPtr_lexicalDropInstructionAST::method_checkLexicalInstruction (GALGAS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
                                                                      GALGAS_lexicalTagMap & /* ioArgument_ioTagMap */,
-                                                                     C_Compiler * inCompiler
+                                                                     Compiler * inCompiler
                                                                      COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_lexicalDropInstructionAST temp_0 = this ;
   GALGAS_lexicalSentValueList joker_2231 ; // Joker input parameter
@@ -3078,7 +3078,7 @@ void cPtr_lexicalDropInstructionAST::method_checkLexicalInstruction (GALGAS_lexi
 
 GALGAS_string cPtr_lexicalDropInstructionAST::getter_generateObjcCocoaInstructionCode (const GALGAS_string constinArgument_inScannerClassName,
                                                                                        const GALGAS_lexiqueAnalysisContext /* constinArgument_inLexiqueAnalysisContext */,
-                                                                                       C_Compiler * inCompiler
+                                                                                       Compiler * inCompiler
                                                                                        COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   const GALGAS_lexicalDropInstructionAST temp_0 = this ;
@@ -3096,7 +3096,7 @@ GALGAS_string cPtr_lexicalDropInstructionAST::getter_generateObjcCocoaInstructio
 
 GALGAS_string cPtr_lexicalDropInstructionAST::getter_generateSwiftCocoaInstructionCode (const GALGAS_string constinArgument_inScannerClassName,
                                                                                         const GALGAS_lexiqueAnalysisContext /* constinArgument_inLexiqueAnalysisContext */,
-                                                                                        C_Compiler * inCompiler
+                                                                                        Compiler * inCompiler
                                                                                         COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   const GALGAS_lexicalDropInstructionAST temp_0 = this ;
@@ -3112,7 +3112,7 @@ GALGAS_string cPtr_lexicalDropInstructionAST::getter_generateSwiftCocoaInstructi
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool cPtr_lexicalDropInstructionAST::getter_lexicalInstructionUsesLoopLocalVariable (C_Compiler */* inCompiler */
+GALGAS_bool cPtr_lexicalDropInstructionAST::getter_lexicalInstructionUsesLoopLocalVariable (Compiler */* inCompiler */
                                                                                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result_result ; // Returned variable
   result_result = GALGAS_bool (false) ;
@@ -3129,7 +3129,7 @@ GALGAS_bool cPtr_lexicalDropInstructionAST::getter_lexicalInstructionUsesLoopLoc
 
 GALGAS_string cPtr_lexicalDropInstructionAST::getter_generateLexicalInstructionCode (const GALGAS_string /* constinArgument_inScannerClassName */,
                                                                                      const GALGAS_lexiqueAnalysisContext /* constinArgument_inLexiqueAnalysisContext */,
-                                                                                     C_Compiler * inCompiler
+                                                                                     Compiler * inCompiler
                                                                                      COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalDropInstructionAST temp_0 = this ;
@@ -3147,7 +3147,7 @@ GALGAS_string cPtr_lexicalDropInstructionAST::getter_generateLexicalInstructionC
 
 void cPtr_lexicalErrorInstructionAST::method_checkLexicalInstruction (GALGAS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
                                                                       GALGAS_lexicalTagMap & /* ioArgument_ioTagMap */,
-                                                                      C_Compiler * inCompiler
+                                                                      Compiler * inCompiler
                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   {
   const GALGAS_lexicalErrorInstructionAST temp_0 = this ;
@@ -3162,7 +3162,7 @@ void cPtr_lexicalErrorInstructionAST::method_checkLexicalInstruction (GALGAS_lex
 
 GALGAS_string cPtr_lexicalErrorInstructionAST::getter_generateObjcCocoaInstructionCode (const GALGAS_string /* constinArgument_inScannerClassName */,
                                                                                         const GALGAS_lexiqueAnalysisContext /* constinArgument_inLexiqueAnalysisContext */,
-                                                                                        C_Compiler */* inCompiler */
+                                                                                        Compiler */* inCompiler */
                                                                                         COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   result_outGeneratedCode = GALGAS_string ("scanningOk = NO ;\n") ;
@@ -3179,7 +3179,7 @@ GALGAS_string cPtr_lexicalErrorInstructionAST::getter_generateObjcCocoaInstructi
 
 GALGAS_string cPtr_lexicalErrorInstructionAST::getter_generateSwiftCocoaInstructionCode (const GALGAS_string /* constinArgument_inScannerClassName */,
                                                                                          const GALGAS_lexiqueAnalysisContext /* constinArgument_inLexiqueAnalysisContext */,
-                                                                                         C_Compiler */* inCompiler */
+                                                                                         Compiler */* inCompiler */
                                                                                          COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   result_outGeneratedCode = GALGAS_string ("scanningOk = false\n") ;
@@ -3194,7 +3194,7 @@ GALGAS_string cPtr_lexicalErrorInstructionAST::getter_generateSwiftCocoaInstruct
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool cPtr_lexicalErrorInstructionAST::getter_lexicalInstructionUsesLoopLocalVariable (C_Compiler */* inCompiler */
+GALGAS_bool cPtr_lexicalErrorInstructionAST::getter_lexicalInstructionUsesLoopLocalVariable (Compiler */* inCompiler */
                                                                                              COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result_result ; // Returned variable
   result_result = GALGAS_bool (false) ;
@@ -3211,7 +3211,7 @@ GALGAS_bool cPtr_lexicalErrorInstructionAST::getter_lexicalInstructionUsesLoopLo
 
 GALGAS_string cPtr_lexicalErrorInstructionAST::getter_generateLexicalInstructionCode (const GALGAS_string constinArgument_inScannerClassName,
                                                                                       const GALGAS_lexiqueAnalysisContext /* constinArgument_inLexiqueAnalysisContext */,
-                                                                                      C_Compiler * inCompiler
+                                                                                      Compiler * inCompiler
                                                                                       COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalErrorInstructionAST temp_0 = this ;
@@ -3229,7 +3229,7 @@ GALGAS_string cPtr_lexicalErrorInstructionAST::getter_generateLexicalInstruction
 
 void cPtr_lexicalLogInstructionAST::method_checkLexicalInstruction (GALGAS_lexiqueAnalysisContext & /* ioArgument_ioLexiqueAnalysisContext */,
                                                                     GALGAS_lexicalTagMap & /* ioArgument_ioTagMap */,
-                                                                    C_Compiler * /* inCompiler */
+                                                                    Compiler * /* inCompiler */
                                                                     COMMA_UNUSED_LOCATION_ARGS) {
 }
 //--------------------------------------------------------------------------------------------------
@@ -3240,7 +3240,7 @@ void cPtr_lexicalLogInstructionAST::method_checkLexicalInstruction (GALGAS_lexiq
 
 GALGAS_string cPtr_lexicalLogInstructionAST::getter_generateObjcCocoaInstructionCode (const GALGAS_string /* constinArgument_inScannerClassName */,
                                                                                       const GALGAS_lexiqueAnalysisContext /* constinArgument_inLexiqueAnalysisContext */,
-                                                                                      C_Compiler */* inCompiler */
+                                                                                      Compiler */* inCompiler */
                                                                                       COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   result_outGeneratedCode = GALGAS_string ("/* lexicalLog (LINE_AND_SOURCE_FILE) ; */\n") ;
@@ -3257,7 +3257,7 @@ GALGAS_string cPtr_lexicalLogInstructionAST::getter_generateObjcCocoaInstruction
 
 GALGAS_string cPtr_lexicalLogInstructionAST::getter_generateSwiftCocoaInstructionCode (const GALGAS_string /* constinArgument_inScannerClassName */,
                                                                                        const GALGAS_lexiqueAnalysisContext /* constinArgument_inLexiqueAnalysisContext */,
-                                                                                       C_Compiler */* inCompiler */
+                                                                                       Compiler */* inCompiler */
                                                                                        COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   result_outGeneratedCode = GALGAS_string ("/* lexicalLog (LINE_AND_SOURCE_FILE) */\n") ;
@@ -3272,7 +3272,7 @@ GALGAS_string cPtr_lexicalLogInstructionAST::getter_generateSwiftCocoaInstructio
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool cPtr_lexicalLogInstructionAST::getter_lexicalInstructionUsesLoopLocalVariable (C_Compiler */* inCompiler */
+GALGAS_bool cPtr_lexicalLogInstructionAST::getter_lexicalInstructionUsesLoopLocalVariable (Compiler */* inCompiler */
                                                                                            COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result_result ; // Returned variable
   result_result = GALGAS_bool (false) ;
@@ -3289,7 +3289,7 @@ GALGAS_bool cPtr_lexicalLogInstructionAST::getter_lexicalInstructionUsesLoopLoca
 
 GALGAS_string cPtr_lexicalLogInstructionAST::getter_generateLexicalInstructionCode (const GALGAS_string /* constinArgument_inScannerClassName */,
                                                                                     const GALGAS_lexiqueAnalysisContext /* constinArgument_inLexiqueAnalysisContext */,
-                                                                                    C_Compiler */* inCompiler */
+                                                                                    Compiler */* inCompiler */
                                                                                     COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   result_result = GALGAS_string ("lexicalLog (LINE_AND_SOURCE_FILE) ;\n") ;
@@ -3306,7 +3306,7 @@ GALGAS_string cPtr_lexicalLogInstructionAST::getter_generateLexicalInstructionCo
 
 void cPtr_lexicalRepeatInstructionAST::method_checkLexicalInstruction (GALGAS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
                                                                        GALGAS_lexicalTagMap & ioArgument_ioTagMap,
-                                                                       C_Compiler * inCompiler
+                                                                       Compiler * inCompiler
                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_lexicalRepeatInstructionAST temp_0 = this ;
   cEnumerator_lexicalWhileBranchListAST enumerator_3052 (temp_0.readProperty_mLexicalWhileBranchList (), kENUMERATION_UP) ;
@@ -3336,7 +3336,7 @@ void cPtr_lexicalRepeatInstructionAST::method_checkLexicalInstruction (GALGAS_le
 
 GALGAS_string cPtr_lexicalRepeatInstructionAST::getter_generateObjcCocoaInstructionCode (const GALGAS_string constinArgument_inScannerClassName,
                                                                                          const GALGAS_lexiqueAnalysisContext constinArgument_inLexiqueAnalysisContext,
-                                                                                         C_Compiler * inCompiler
+                                                                                         Compiler * inCompiler
                                                                                          COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   const GALGAS_lexicalRepeatInstructionAST temp_0 = this ;
@@ -3392,7 +3392,7 @@ GALGAS_string cPtr_lexicalRepeatInstructionAST::getter_generateObjcCocoaInstruct
 
 GALGAS_string cPtr_lexicalRepeatInstructionAST::getter_generateSwiftCocoaInstructionCode (const GALGAS_string constinArgument_inScannerClassName,
                                                                                           const GALGAS_lexiqueAnalysisContext constinArgument_inLexiqueAnalysisContext,
-                                                                                          C_Compiler * inCompiler
+                                                                                          Compiler * inCompiler
                                                                                           COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   result_outGeneratedCode = GALGAS_string ("while (loop && scanningOk) {\n") ;
@@ -3443,7 +3443,7 @@ GALGAS_string cPtr_lexicalRepeatInstructionAST::getter_generateSwiftCocoaInstruc
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool cPtr_lexicalRepeatInstructionAST::getter_lexicalInstructionUsesLoopLocalVariable (C_Compiler */* inCompiler */
+GALGAS_bool cPtr_lexicalRepeatInstructionAST::getter_lexicalInstructionUsesLoopLocalVariable (Compiler */* inCompiler */
                                                                                               COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result_result ; // Returned variable
   result_result = GALGAS_bool (true) ;
@@ -3460,7 +3460,7 @@ GALGAS_bool cPtr_lexicalRepeatInstructionAST::getter_lexicalInstructionUsesLoopL
 
 GALGAS_string cPtr_lexicalRepeatInstructionAST::getter_generateLexicalInstructionCode (const GALGAS_string constinArgument_inScannerClassName,
                                                                                        const GALGAS_lexiqueAnalysisContext constinArgument_inLexiqueAnalysisContext,
-                                                                                       C_Compiler * inCompiler
+                                                                                       Compiler * inCompiler
                                                                                        COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   result_result = GALGAS_string ("do {\n") ;
@@ -3513,7 +3513,7 @@ GALGAS_string cPtr_lexicalRepeatInstructionAST::getter_generateLexicalInstructio
 
 void cPtr_lexicalRewindInstructionAST::method_checkLexicalInstruction (GALGAS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
                                                                        GALGAS_lexicalTagMap & ioArgument_ioTagMap,
-                                                                       C_Compiler * inCompiler
+                                                                       Compiler * inCompiler
                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_lexicalRewindInstructionAST temp_0 = this ;
   ioArgument_ioTagMap.method_searchKey (temp_0.readProperty_mLexicalTagName (), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-rewind.galgas", 55)) ;
@@ -3529,7 +3529,7 @@ void cPtr_lexicalRewindInstructionAST::method_checkLexicalInstruction (GALGAS_le
 
 GALGAS_string cPtr_lexicalRewindInstructionAST::getter_generateObjcCocoaInstructionCode (const GALGAS_string constinArgument_inScannerClassName,
                                                                                          const GALGAS_lexiqueAnalysisContext /* constinArgument_inLexiqueAnalysisContext */,
-                                                                                         C_Compiler * inCompiler
+                                                                                         Compiler * inCompiler
                                                                                          COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   const GALGAS_lexicalRewindInstructionAST temp_0 = this ;
@@ -3549,7 +3549,7 @@ GALGAS_string cPtr_lexicalRewindInstructionAST::getter_generateObjcCocoaInstruct
 
 GALGAS_string cPtr_lexicalRewindInstructionAST::getter_generateSwiftCocoaInstructionCode (const GALGAS_string constinArgument_inScannerClassName,
                                                                                           const GALGAS_lexiqueAnalysisContext /* constinArgument_inLexiqueAnalysisContext */,
-                                                                                          C_Compiler * inCompiler
+                                                                                          Compiler * inCompiler
                                                                                           COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   const GALGAS_lexicalRewindInstructionAST temp_0 = this ;
@@ -3567,7 +3567,7 @@ GALGAS_string cPtr_lexicalRewindInstructionAST::getter_generateSwiftCocoaInstruc
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool cPtr_lexicalRewindInstructionAST::getter_lexicalInstructionUsesLoopLocalVariable (C_Compiler */* inCompiler */
+GALGAS_bool cPtr_lexicalRewindInstructionAST::getter_lexicalInstructionUsesLoopLocalVariable (Compiler */* inCompiler */
                                                                                               COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result_result ; // Returned variable
   result_result = GALGAS_bool (false) ;
@@ -3584,7 +3584,7 @@ GALGAS_bool cPtr_lexicalRewindInstructionAST::getter_lexicalInstructionUsesLoopL
 
 GALGAS_string cPtr_lexicalRewindInstructionAST::getter_generateLexicalInstructionCode (const GALGAS_string /* constinArgument_inScannerClassName */,
                                                                                        const GALGAS_lexiqueAnalysisContext /* constinArgument_inLexiqueAnalysisContext */,
-                                                                                       C_Compiler * inCompiler
+                                                                                       Compiler * inCompiler
                                                                                        COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalRewindInstructionAST temp_0 = this ;
@@ -3608,7 +3608,7 @@ GALGAS_string cPtr_lexicalRewindInstructionAST::getter_generateLexicalInstructio
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string cPtr_lexicalAttributeInputOutputArgumentAST::getter_generateObjcCocoaRoutineArgument (const GALGAS_lexiqueAnalysisContext constinArgument_inLexiqueAnalysisContext,
-                                                                                                    C_Compiler * inCompiler
+                                                                                                    Compiler * inCompiler
                                                                                                     COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   GALGAS_lexicalTypeEnum var_lexicalType_6087 ;
@@ -3636,7 +3636,7 @@ GALGAS_string cPtr_lexicalAttributeInputOutputArgumentAST::getter_generateObjcCo
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string cPtr_lexicalFormalInputArgumentAST::getter_generateObjcCocoaRoutineArgument (const GALGAS_lexiqueAnalysisContext /* constinArgument_inLexiqueAnalysisContext */,
-                                                                                           C_Compiler * inCompiler
+                                                                                           Compiler * inCompiler
                                                                                            COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   const GALGAS_lexicalFormalInputArgumentAST temp_0 = this ;
@@ -3653,7 +3653,7 @@ GALGAS_string cPtr_lexicalFormalInputArgumentAST::getter_generateObjcCocoaRoutin
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string cPtr_lexicalAttributeInputOutputArgumentAST::getter_generateSwiftCocoaRoutineArgument (const GALGAS_lexiqueAnalysisContext /* constinArgument_inLexiqueAnalysisContext */,
-                                                                                                     C_Compiler * inCompiler
+                                                                                                     Compiler * inCompiler
                                                                                                      COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   const GALGAS_lexicalAttributeInputOutputArgumentAST temp_0 = this ;
@@ -3670,7 +3670,7 @@ GALGAS_string cPtr_lexicalAttributeInputOutputArgumentAST::getter_generateSwiftC
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string cPtr_lexicalFormalInputArgumentAST::getter_generateSwiftCocoaRoutineArgument (const GALGAS_lexiqueAnalysisContext /* constinArgument_inLexiqueAnalysisContext */,
-                                                                                            C_Compiler * inCompiler
+                                                                                            Compiler * inCompiler
                                                                                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   const GALGAS_lexicalFormalInputArgumentAST temp_0 = this ;
@@ -3689,7 +3689,7 @@ GALGAS_string cPtr_lexicalFormalInputArgumentAST::getter_generateSwiftCocoaRouti
 void cPtr_lexicalAttributeInputOutputArgumentAST::method_checkLexicalRoutineCallArgument (GALGAS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
                                                                                           GALGAS_lexicalArgumentModeAST inArgument_inLexicalRoutineFormalArgumentMode,
                                                                                           GALGAS_lexicalTypeEnum inArgument_inLexicalRoutineFormalArgumentType,
-                                                                                          C_Compiler * inCompiler
+                                                                                          Compiler * inCompiler
                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalTypeEnum var_attributeLexicalType_8901 ;
   const GALGAS_lexicalAttributeInputOutputArgumentAST temp_0 = this ;
@@ -3722,7 +3722,7 @@ void cPtr_lexicalAttributeInputOutputArgumentAST::method_checkLexicalRoutineCall
 void cPtr_lexicalFormalInputArgumentAST::method_checkLexicalRoutineCallArgument (GALGAS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
                                                                                  GALGAS_lexicalArgumentModeAST inArgument_inLexicalRoutineFormalArgumentMode,
                                                                                  GALGAS_lexicalTypeEnum inArgument_inLexicalRoutineFormalArgumentType,
-                                                                                 C_Compiler * inCompiler
+                                                                                 Compiler * inCompiler
                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_lexicalFormalInputArgumentAST temp_0 = this ;
   callExtensionMethod_checkLexicalRoutineCallArgument ((cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST *) temp_0.readProperty_mRoutineOrFunctionFormalInputArgument ().ptr (), ioArgument_ioLexiqueAnalysisContext, inArgument_inLexicalRoutineFormalArgumentType, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 236)) ;
@@ -3744,7 +3744,7 @@ void cPtr_lexicalFormalInputArgumentAST::method_checkLexicalRoutineCallArgument 
 
 void cPtr_lexicalRoutineCallInstructionAST::method_checkLexicalInstruction (GALGAS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
                                                                             GALGAS_lexicalTagMap & /* ioArgument_ioTagMap */,
-                                                                            C_Compiler * inCompiler
+                                                                            Compiler * inCompiler
                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalRoutineFormalArgumentList var_lexicalRoutineFormalArgumentList_10668 ;
   GALGAS_stringlist var_routineErrorMessageList_10710 ;
@@ -3800,7 +3800,7 @@ void cPtr_lexicalRoutineCallInstructionAST::method_checkLexicalInstruction (GALG
 
 GALGAS_string cPtr_lexicalRoutineCallInstructionAST::getter_generateObjcCocoaInstructionCode (const GALGAS_string /* constinArgument_inScannerClassName */,
                                                                                               const GALGAS_lexiqueAnalysisContext constinArgument_inLexiqueAnalysisContext,
-                                                                                              C_Compiler * inCompiler
+                                                                                              Compiler * inCompiler
                                                                                               COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   const GALGAS_lexicalRoutineCallInstructionAST temp_0 = this ;
@@ -3825,7 +3825,7 @@ GALGAS_string cPtr_lexicalRoutineCallInstructionAST::getter_generateObjcCocoaIns
 
 GALGAS_string cPtr_lexicalRoutineCallInstructionAST::getter_generateSwiftCocoaInstructionCode (const GALGAS_string /* constinArgument_inScannerClassName */,
                                                                                                const GALGAS_lexiqueAnalysisContext constinArgument_inLexiqueAnalysisContext,
-                                                                                               C_Compiler * inCompiler
+                                                                                               Compiler * inCompiler
                                                                                                COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   const GALGAS_lexicalRoutineCallInstructionAST temp_0 = this ;
@@ -3848,7 +3848,7 @@ GALGAS_string cPtr_lexicalRoutineCallInstructionAST::getter_generateSwiftCocoaIn
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string cPtr_lexicalAttributeInputOutputArgumentAST::getter_generateRoutineArgument (C_Compiler * inCompiler
+GALGAS_string cPtr_lexicalAttributeInputOutputArgumentAST::getter_generateRoutineArgument (Compiler * inCompiler
                                                                                            COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalAttributeInputOutputArgumentAST temp_0 = this ;
@@ -3864,7 +3864,7 @@ GALGAS_string cPtr_lexicalAttributeInputOutputArgumentAST::getter_generateRoutin
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string cPtr_lexicalFormalInputArgumentAST::getter_generateRoutineArgument (C_Compiler * inCompiler
+GALGAS_string cPtr_lexicalFormalInputArgumentAST::getter_generateRoutineArgument (Compiler * inCompiler
                                                                                   COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalFormalInputArgumentAST temp_0 = this ;
@@ -3880,7 +3880,7 @@ GALGAS_string cPtr_lexicalFormalInputArgumentAST::getter_generateRoutineArgument
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool cPtr_lexicalRoutineCallInstructionAST::getter_lexicalInstructionUsesLoopLocalVariable (C_Compiler */* inCompiler */
+GALGAS_bool cPtr_lexicalRoutineCallInstructionAST::getter_lexicalInstructionUsesLoopLocalVariable (Compiler */* inCompiler */
                                                                                                    COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result_result ; // Returned variable
   result_result = GALGAS_bool (false) ;
@@ -3897,7 +3897,7 @@ GALGAS_bool cPtr_lexicalRoutineCallInstructionAST::getter_lexicalInstructionUses
 
 GALGAS_string cPtr_lexicalRoutineCallInstructionAST::getter_generateLexicalInstructionCode (const GALGAS_string constinArgument_inScannerClassName,
                                                                                             const GALGAS_lexiqueAnalysisContext /* constinArgument_inLexiqueAnalysisContext */,
-                                                                                            C_Compiler * inCompiler
+                                                                                            Compiler * inCompiler
                                                                                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalRoutineCallInstructionAST temp_0 = this ;
@@ -3928,7 +3928,7 @@ GALGAS_string cPtr_lexicalRoutineCallInstructionAST::getter_generateLexicalInstr
 
 void cPtr_lexicalSelectInstructionAST::method_checkLexicalInstruction (GALGAS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
                                                                        GALGAS_lexicalTagMap & ioArgument_ioTagMap,
-                                                                       C_Compiler * inCompiler
+                                                                       Compiler * inCompiler
                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_lexicalSelectInstructionAST temp_0 = this ;
   cEnumerator_lexicalSelectBranchListAST enumerator_3479 (temp_0.readProperty_mLexicalSelectBranchList (), kENUMERATION_UP) ;
@@ -3958,7 +3958,7 @@ void cPtr_lexicalSelectInstructionAST::method_checkLexicalInstruction (GALGAS_le
 
 GALGAS_string cPtr_lexicalSelectInstructionAST::getter_generateObjcCocoaInstructionCode (const GALGAS_string constinArgument_inScannerClassName,
                                                                                          const GALGAS_lexiqueAnalysisContext constinArgument_inLexiqueAnalysisContext,
-                                                                                         C_Compiler * inCompiler
+                                                                                         Compiler * inCompiler
                                                                                          COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   result_outGeneratedCode = GALGAS_string::makeEmptyString () ;
@@ -4018,7 +4018,7 @@ GALGAS_string cPtr_lexicalSelectInstructionAST::getter_generateObjcCocoaInstruct
 
 GALGAS_string cPtr_lexicalSelectInstructionAST::getter_generateSwiftCocoaInstructionCode (const GALGAS_string constinArgument_inScannerClassName,
                                                                                           const GALGAS_lexiqueAnalysisContext constinArgument_inLexiqueAnalysisContext,
-                                                                                          C_Compiler * inCompiler
+                                                                                          Compiler * inCompiler
                                                                                           COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   result_outGeneratedCode = GALGAS_string::makeEmptyString () ;
@@ -4076,7 +4076,7 @@ GALGAS_string cPtr_lexicalSelectInstructionAST::getter_generateSwiftCocoaInstruc
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool cPtr_lexicalSelectInstructionAST::getter_lexicalInstructionUsesLoopLocalVariable (C_Compiler * inCompiler
+GALGAS_bool cPtr_lexicalSelectInstructionAST::getter_lexicalInstructionUsesLoopLocalVariable (Compiler * inCompiler
                                                                                               COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result_result ; // Returned variable
   result_result = GALGAS_bool (false) ;
@@ -4127,7 +4127,7 @@ GALGAS_bool cPtr_lexicalSelectInstructionAST::getter_lexicalInstructionUsesLoopL
 
 GALGAS_string cPtr_lexicalSelectInstructionAST::getter_generateLexicalInstructionCode (const GALGAS_string constinArgument_inScannerClassName,
                                                                                        const GALGAS_lexiqueAnalysisContext constinArgument_inLexiqueAnalysisContext,
-                                                                                       C_Compiler * inCompiler
+                                                                                       Compiler * inCompiler
                                                                                        COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   result_result = GALGAS_string::makeEmptyString () ;
@@ -4187,7 +4187,7 @@ GALGAS_string cPtr_lexicalSelectInstructionAST::getter_generateLexicalInstructio
 
 void cPtr_lexicalSimpleSendInstructionAST::method_checkLexicalInstruction (GALGAS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
                                                                            GALGAS_lexicalTagMap & /* ioArgument_ioTagMap */,
-                                                                           C_Compiler * inCompiler
+                                                                           Compiler * inCompiler
                                                                            COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_lexicalSimpleSendInstructionAST temp_0 = this ;
   GALGAS_lexicalSentValueList joker_2234 ; // Joker input parameter
@@ -4201,7 +4201,7 @@ void cPtr_lexicalSimpleSendInstructionAST::method_checkLexicalInstruction (GALGA
 
 GALGAS_string cPtr_lexicalSimpleSendInstructionAST::getter_generateObjcCocoaInstructionCode (const GALGAS_string constinArgument_inScannerClassName,
                                                                                              const GALGAS_lexiqueAnalysisContext /* constinArgument_inLexiqueAnalysisContext */,
-                                                                                             C_Compiler * inCompiler
+                                                                                             Compiler * inCompiler
                                                                                              COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   const GALGAS_lexicalSimpleSendInstructionAST temp_0 = this ;
@@ -4219,7 +4219,7 @@ GALGAS_string cPtr_lexicalSimpleSendInstructionAST::getter_generateObjcCocoaInst
 
 GALGAS_string cPtr_lexicalSimpleSendInstructionAST::getter_generateSwiftCocoaInstructionCode (const GALGAS_string constinArgument_inScannerClassName,
                                                                                               const GALGAS_lexiqueAnalysisContext /* constinArgument_inLexiqueAnalysisContext */,
-                                                                                              C_Compiler * inCompiler
+                                                                                              Compiler * inCompiler
                                                                                               COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   const GALGAS_lexicalSimpleSendInstructionAST temp_0 = this ;
@@ -4235,7 +4235,7 @@ GALGAS_string cPtr_lexicalSimpleSendInstructionAST::getter_generateSwiftCocoaIns
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool cPtr_lexicalSimpleSendInstructionAST::getter_lexicalInstructionUsesLoopLocalVariable (C_Compiler */* inCompiler */
+GALGAS_bool cPtr_lexicalSimpleSendInstructionAST::getter_lexicalInstructionUsesLoopLocalVariable (Compiler */* inCompiler */
                                                                                                   COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result_result ; // Returned variable
   result_result = GALGAS_bool (false) ;
@@ -4252,7 +4252,7 @@ GALGAS_bool cPtr_lexicalSimpleSendInstructionAST::getter_lexicalInstructionUsesL
 
 GALGAS_string cPtr_lexicalSimpleSendInstructionAST::getter_generateLexicalInstructionCode (const GALGAS_string /* constinArgument_inScannerClassName */,
                                                                                            const GALGAS_lexiqueAnalysisContext /* constinArgument_inLexiqueAnalysisContext */,
-                                                                                           C_Compiler * inCompiler
+                                                                                           Compiler * inCompiler
                                                                                            COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalSimpleSendInstructionAST temp_0 = this ;
@@ -4271,7 +4271,7 @@ GALGAS_string cPtr_lexicalSimpleSendInstructionAST::getter_generateLexicalInstru
 
 void cPtr_lexicalTagInstructionAST::method_checkLexicalInstruction (GALGAS_lexiqueAnalysisContext & /* ioArgument_ioLexiqueAnalysisContext */,
                                                                     GALGAS_lexicalTagMap & ioArgument_ioTagMap,
-                                                                    C_Compiler * inCompiler
+                                                                    Compiler * inCompiler
                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   {
   const GALGAS_lexicalTagInstructionAST temp_0 = this ;
@@ -4286,7 +4286,7 @@ void cPtr_lexicalTagInstructionAST::method_checkLexicalInstruction (GALGAS_lexiq
 
 GALGAS_string cPtr_lexicalTagInstructionAST::getter_generateObjcCocoaInstructionCode (const GALGAS_string /* constinArgument_inScannerClassName */,
                                                                                       const GALGAS_lexiqueAnalysisContext /* constinArgument_inLexiqueAnalysisContext */,
-                                                                                      C_Compiler * inCompiler
+                                                                                      Compiler * inCompiler
                                                                                       COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   const GALGAS_lexicalTagInstructionAST temp_0 = this ;
@@ -4306,7 +4306,7 @@ GALGAS_string cPtr_lexicalTagInstructionAST::getter_generateObjcCocoaInstruction
 
 GALGAS_string cPtr_lexicalTagInstructionAST::getter_generateSwiftCocoaInstructionCode (const GALGAS_string /* constinArgument_inScannerClassName */,
                                                                                        const GALGAS_lexiqueAnalysisContext /* constinArgument_inLexiqueAnalysisContext */,
-                                                                                       C_Compiler * inCompiler
+                                                                                       Compiler * inCompiler
                                                                                        COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   const GALGAS_lexicalTagInstructionAST temp_0 = this ;
@@ -4322,7 +4322,7 @@ GALGAS_string cPtr_lexicalTagInstructionAST::getter_generateSwiftCocoaInstructio
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool cPtr_lexicalTagInstructionAST::getter_lexicalInstructionUsesLoopLocalVariable (C_Compiler */* inCompiler */
+GALGAS_bool cPtr_lexicalTagInstructionAST::getter_lexicalInstructionUsesLoopLocalVariable (Compiler */* inCompiler */
                                                                                            COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result_result ; // Returned variable
   result_result = GALGAS_bool (false) ;
@@ -4339,7 +4339,7 @@ GALGAS_bool cPtr_lexicalTagInstructionAST::getter_lexicalInstructionUsesLoopLoca
 
 GALGAS_string cPtr_lexicalTagInstructionAST::getter_generateLexicalInstructionCode (const GALGAS_string /* constinArgument_inScannerClassName */,
                                                                                     const GALGAS_lexiqueAnalysisContext /* constinArgument_inLexiqueAnalysisContext */,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalTagInstructionAST temp_0 = this ;
@@ -4359,7 +4359,7 @@ GALGAS_string cPtr_lexicalTagInstructionAST::getter_generateLexicalInstructionCo
 
 void cPtr_lexicalWarningInstructionAST::method_checkLexicalInstruction (GALGAS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
                                                                         GALGAS_lexicalTagMap & /* ioArgument_ioTagMap */,
-                                                                        C_Compiler * inCompiler
+                                                                        Compiler * inCompiler
                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   {
   const GALGAS_lexicalWarningInstructionAST temp_0 = this ;
@@ -4374,7 +4374,7 @@ void cPtr_lexicalWarningInstructionAST::method_checkLexicalInstruction (GALGAS_l
 
 GALGAS_string cPtr_lexicalWarningInstructionAST::getter_generateObjcCocoaInstructionCode (const GALGAS_string /* constinArgument_inScannerClassName */,
                                                                                           const GALGAS_lexiqueAnalysisContext /* constinArgument_inLexiqueAnalysisContext */,
-                                                                                          C_Compiler */* inCompiler */
+                                                                                          Compiler */* inCompiler */
                                                                                           COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   result_outGeneratedCode = GALGAS_string::makeEmptyString () ;
@@ -4391,7 +4391,7 @@ GALGAS_string cPtr_lexicalWarningInstructionAST::getter_generateObjcCocoaInstruc
 
 GALGAS_string cPtr_lexicalWarningInstructionAST::getter_generateSwiftCocoaInstructionCode (const GALGAS_string /* constinArgument_inScannerClassName */,
                                                                                            const GALGAS_lexiqueAnalysisContext /* constinArgument_inLexiqueAnalysisContext */,
-                                                                                           C_Compiler */* inCompiler */
+                                                                                           Compiler */* inCompiler */
                                                                                            COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_outGeneratedCode ; // Returned variable
   result_outGeneratedCode = GALGAS_string::makeEmptyString () ;
@@ -4406,7 +4406,7 @@ GALGAS_string cPtr_lexicalWarningInstructionAST::getter_generateSwiftCocoaInstru
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool cPtr_lexicalWarningInstructionAST::getter_lexicalInstructionUsesLoopLocalVariable (C_Compiler */* inCompiler */
+GALGAS_bool cPtr_lexicalWarningInstructionAST::getter_lexicalInstructionUsesLoopLocalVariable (Compiler */* inCompiler */
                                                                                                COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result_result ; // Returned variable
   result_result = GALGAS_bool (false) ;
@@ -4423,7 +4423,7 @@ GALGAS_bool cPtr_lexicalWarningInstructionAST::getter_lexicalInstructionUsesLoop
 
 GALGAS_string cPtr_lexicalWarningInstructionAST::getter_generateLexicalInstructionCode (const GALGAS_string constinArgument_inScannerClassName,
                                                                                         const GALGAS_lexiqueAnalysisContext /* constinArgument_inLexiqueAnalysisContext */,
-                                                                                        C_Compiler * inCompiler
+                                                                                        Compiler * inCompiler
                                                                                         COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalWarningInstructionAST temp_0 = this ;
@@ -4444,7 +4444,7 @@ void cPtr_optionComponentDeclarationAST::method_enterDeclarationInGraph (GALGAS_
                                                                          GALGAS_extensionGetterMapForBuildingContext & /* ioArgument_ioExtensionGetterMapForBuildingContext */,
                                                                          GALGAS_extensionSetterMapForBuildingContext & /* ioArgument_ioExtensionSetterMapForBuildingContext */,
                                                                          GALGAS_semanticDeclarationListAST & ioArgument_ioExtensionOverrideDefinitionList,
-                                                                         C_Compiler * /* inCompiler */
+                                                                         Compiler * /* inCompiler */
                                                                          COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_optionComponentDeclarationAST temp_0 = this ;
   ioArgument_ioExtensionOverrideDefinitionList.addAssign_operation (temp_0  COMMA_SOURCE_FILE ("optionCompilation.galgas", 168)) ;
@@ -4460,7 +4460,7 @@ void cPtr_optionComponentDeclarationAST::method_enterDeclarationInSemanticContex
                                                                                    const GALGAS_extensionSetterMapForBuildingContext /* constinArgument_inExtensionSetterMapForBuildingContext */,
                                                                                    GALGAS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
                                                                                    GALGAS_semanticContext & ioArgument_ioSemanticContext,
-                                                                                   C_Compiler * inCompiler
+                                                                                   Compiler * inCompiler
                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_commandLineOptionMap var_boolOptionMap_7012 = GALGAS_commandLineOptionMap::constructor_emptyMap (SOURCE_FILE ("optionCompilation.galgas", 182)) ;
   GALGAS_commandLineOptionMap var_uintOptionMap_7059 = GALGAS_commandLineOptionMap::constructor_emptyMap (SOURCE_FILE ("optionCompilation.galgas", 183)) ;
@@ -4587,7 +4587,7 @@ void cPtr_optionComponentDeclarationAST::method_semanticAnalysis (GALGAS_lstring
                                                                   GALGAS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
                                                                   const GALGAS_predefinedTypes /* constinArgument_inPredefinedTypes */,
                                                                   GALGAS_semanticDeclarationListForGeneration & ioArgument_ioSemanticDeclarationListForGeneration,
-                                                                  C_Compiler * inCompiler
+                                                                  Compiler * inCompiler
                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_optionComponentDeclarationAST temp_0 = this ;
   GALGAS_lstring var_nameForUsefulness_10584 = function_optionNameForUsefulEntitiesGraph (temp_0.readProperty_mOptionComponentName (), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 264)) ;
@@ -4612,7 +4612,7 @@ void cPtr_optionComponentDeclarationAST::method_semanticAnalysis (GALGAS_lstring
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool cPtr_optionComponentForGeneration::getter_isPredefined (C_Compiler */* inCompiler */
+GALGAS_bool cPtr_optionComponentForGeneration::getter_isPredefined (Compiler */* inCompiler */
                                                                     COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result_result ; // Returned variable
   const GALGAS_optionComponentForGeneration temp_0 = this ;
@@ -4628,7 +4628,7 @@ GALGAS_bool cPtr_optionComponentForGeneration::getter_isPredefined (C_Compiler *
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_headerKind cPtr_optionComponentForGeneration::getter_headerKind (C_Compiler */* inCompiler */
+GALGAS_headerKind cPtr_optionComponentForGeneration::getter_headerKind (Compiler */* inCompiler */
                                                                         COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_headerKind result_result ; // Returned variable
   const GALGAS_optionComponentForGeneration temp_0 = this ;
@@ -4653,7 +4653,7 @@ GALGAS_headerKind cPtr_optionComponentForGeneration::getter_headerKind (C_Compil
 
 void cPtr_optionComponentForGeneration::method_appendDeclaration_31_ (GALGAS_stringset & /* ioArgument_ioInclusionSet */,
                                                                       GALGAS_string & outArgument_outHeader,
-                                                                      C_Compiler * inCompiler
+                                                                      Compiler * inCompiler
                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
@@ -4681,7 +4681,7 @@ void cPtr_optionComponentForGeneration::method_appendDeclaration_31_ (GALGAS_str
 void cPtr_optionComponentForGeneration::method_appendSpecificImplementation (const GALGAS_unifiedTypeMap /* constinArgument_inTypeMap */,
                                                                              GALGAS_stringset & ioArgument_ioInclusionSet,
                                                                              GALGAS_string & outArgument_outImplementation,
-                                                                             C_Compiler * inCompiler
+                                                                             Compiler * inCompiler
                                                                              COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
@@ -4711,7 +4711,7 @@ void cPtr_optionComponentForGeneration::method_appendSpecificImplementation (con
 void cPtr_optionComponentForGeneration::method_appendSpecificFiles (const GALGAS_string constinArgument_inProductDirectory,
                                                                     GALGAS_stringset & ioArgument_ioAllProductFileSet,
                                                                     GALGAS_stringlist & ioArgument_ioCocoaProductFileList,
-                                                                    C_Compiler * inCompiler
+                                                                    Compiler * inCompiler
                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
@@ -4796,7 +4796,7 @@ const cDirectoryWrapper gWrapperDirectory_0_optionGenerationTemplates (
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionHeaderZone_33_ (C_Compiler * /* inCompiler */,
+GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionHeaderZone_33_ (Compiler * /* inCompiler */,
                                                                                   const GALGAS_string & in_OPTION_5F_COMPONENT_5F_NAME,
                                                                                   const GALGAS_commandLineOptionMap & in_BOOL_5F_OPTION_5F_MAP,
                                                                                   const GALGAS_commandLineOptionMap & in_UINT_5F_OPTION_5F_MAP,
@@ -4870,7 +4870,7 @@ GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionHeaderZone_33_
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementationGalgas_33_ (C_Compiler * /* inCompiler */,
+GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementationGalgas_33_ (Compiler * /* inCompiler */,
                                                                                             const GALGAS_string & in_OPTION_5F_COMPONENT_5F_NAME,
                                                                                             const GALGAS_commandLineOptionMap & in_BOOL_5F_OPTION_5F_MAP,
                                                                                             const GALGAS_commandLineOptionMap & in_UINT_5F_OPTION_5F_MAP,
@@ -4988,7 +4988,7 @@ GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementation
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionHeaderCocoaZone_32_ (C_Compiler * /* inCompiler */,
+GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionHeaderCocoaZone_32_ (Compiler * /* inCompiler */,
                                                                                        const GALGAS_string & in_OPTION_5F_COMPONENT_5F_NAME
                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
@@ -5006,7 +5006,7 @@ GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionHeaderCocoaZon
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionHeaderCocoaZone_33_ (C_Compiler * /* inCompiler */,
+GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionHeaderCocoaZone_33_ (Compiler * /* inCompiler */,
                                                                                        const GALGAS_string & in_OPTION_5F_COMPONENT_5F_NAME
                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
@@ -5031,7 +5031,7 @@ GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionHeaderCocoaZon
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementationCocoa (C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementationCocoa (Compiler * inCompiler,
                                                                                        const GALGAS_string & in_OPTION_5F_HEADER_5F_FILE_5F_NAME,
                                                                                        const GALGAS_string & in_OPTION_5F_COMPONENT_5F_NAME,
                                                                                        const GALGAS_commandLineOptionMap & in_BOOL_5F_OPTION_5F_MAP,
@@ -5151,7 +5151,7 @@ GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementation
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementationSwiftCocoa (C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementationSwiftCocoa (Compiler * inCompiler,
                                                                                             const GALGAS_string & /* in_OPTION_5F_HEADER_5F_FILE_5F_NAME */,
                                                                                             const GALGAS_string & in_OPTION_5F_COMPONENT_5F_NAME,
                                                                                             const GALGAS_commandLineOptionMap & in_BOOL_5F_OPTION_5F_MAP,
@@ -5285,7 +5285,7 @@ GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementation
 void routine_compileAllGuiComponentFromASTGalgas_33_ (const GALGAS_galgasGUIComponentListAST constinArgument_inGuiComponentListAST,
                                                       const GALGAS_semanticContext constinArgument_inSemanticContext,
                                                       GALGAS_optionComponentMapForGeneration & outArgument_outOptionComponentMapForGeneration,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outOptionComponentMapForGeneration.drop () ; // Release 'out' argument
   outArgument_outOptionComponentMapForGeneration = GALGAS_optionComponentMapForGeneration::constructor_emptyMap (SOURCE_FILE ("guiCompilation.galgas", 398)) ;
@@ -5308,7 +5308,7 @@ void routine_compileAllGuiComponentFromASTGalgas_33_ (const GALGAS_galgasGUIComp
 void routine_guiComponentSemanticAnalysis (const GALGAS_galgasGUIComponentListAST_2D_element constinArgument_inGUIComponentAST,
                                            const GALGAS_semanticContext constinArgument_inSemanticContext,
                                            GALGAS_optionComponentMapForGeneration & ioArgument_ioOptionComponentMapForGeneration,
-                                           C_Compiler * inCompiler
+                                           Compiler * inCompiler
                                            COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
@@ -5521,7 +5521,7 @@ void routine_generateAllGuiComponentsGalgas_33_ (const GALGAS_optionComponentMap
                                                  const GALGAS_bool constinArgument_inQuietOutputByDefault,
                                                  GALGAS_stringlist & ioArgument_ioApplicationSourceSet,
                                                  GALGAS_stringset & ioArgument_ioAllProductFileSet,
-                                                 C_Compiler * inCompiler
+                                                 Compiler * inCompiler
                                                  COMMA_UNUSED_LOCATION_ARGS) {
   cEnumerator_optionComponentMapForGeneration enumerator_18850 (constinArgument_inOptionComponentMapForGeneration, kENUMERATION_UP) ;
   while (enumerator_18850.hasCurrentObject ()) {
@@ -5579,7 +5579,7 @@ const cDirectoryWrapper gWrapperDirectory_0_guiGenerationTemplates (
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_guiGenerationTemplates_objc_5F_gui_5F_implementation (C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_guiGenerationTemplates_objc_5F_gui_5F_implementation (Compiler * inCompiler,
                                                                                         const GALGAS_guiAnalysisContext & in_GUI_5F_CONTEXT,
                                                                                         const GALGAS_bool & in_QUIET_5F_OUTPUT_5F_BY_5F_DEFAULT
                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
@@ -5856,7 +5856,7 @@ GALGAS_string filewrapperTemplate_guiGenerationTemplates_objc_5F_gui_5F_implemen
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_guiGenerationTemplates_swift_5F_gui_5F_implementation (C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_guiGenerationTemplates_swift_5F_gui_5F_implementation (Compiler * inCompiler,
                                                                                          const GALGAS_guiAnalysisContext & in_GUI_5F_CONTEXT,
                                                                                          const GALGAS_bool & in_QUIET_5F_OUTPUT_5F_BY_5F_DEFAULT
                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
@@ -6095,7 +6095,7 @@ void cPtr_arrayDeclarationAST::method_enterDeclarationInGraph (GALGAS_semanticTy
                                                                GALGAS_extensionGetterMapForBuildingContext & /* ioArgument_ioExtensionGetterMapForBuildingContext */,
                                                                GALGAS_extensionSetterMapForBuildingContext & /* ioArgument_ioExtensionSetterMapForBuildingContext */,
                                                                GALGAS_semanticDeclarationListAST & /* ioArgument_ioExtensionOverrideDefinitionList */,
-                                                               C_Compiler * inCompiler
+                                                               Compiler * inCompiler
                                                                COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_arrayDeclarationAST temp_0 = this ;
   const GALGAS_arrayDeclarationAST temp_1 = this ;
@@ -6121,7 +6121,7 @@ void cPtr_arrayDeclarationAST::method_enterDeclarationInSemanticContext (const G
                                                                          const GALGAS_extensionSetterMapForBuildingContext /* constinArgument_inExtensionSetterMapForBuildingContext */,
                                                                          GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
                                                                          GALGAS_semanticContext & /* ioArgument_ioSemanticContext */,
-                                                                         C_Compiler * inCompiler
+                                                                         Compiler * inCompiler
                                                                          COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
@@ -6269,7 +6269,7 @@ void cPtr_arrayDeclarationAST::method_semanticAnalysis (GALGAS_lstringlist & /* 
                                                         GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
                                                         const GALGAS_predefinedTypes /* constinArgument_inPredefinedTypes */,
                                                         GALGAS_semanticDeclarationListForGeneration & ioArgument_ioSemanticDeclarationListForGeneration,
-                                                        C_Compiler * inCompiler
+                                                        Compiler * inCompiler
                                                         COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_arrayDeclarationAST temp_0 = this ;
   GALGAS_lstring var_nameForUsefulness_9073 = function_typeNameForUsefulEntitiesGraph (temp_0.readProperty_mArrayTypeName (), inCompiler COMMA_SOURCE_FILE ("type-array.galgas", 244)) ;
@@ -6295,7 +6295,7 @@ void cPtr_arrayDeclarationAST::method_semanticAnalysis (GALGAS_lstringlist & /* 
 
 void cPtr_arrayTypeForGeneration::method_appendDeclaration_31_ (GALGAS_stringset & /* ioArgument_ioInclusionSet */,
                                                                 GALGAS_string & outArgument_outHeader,
-                                                                C_Compiler * inCompiler
+                                                                Compiler * inCompiler
                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_arrayTypeForGeneration temp_0 = this ;
   GALGAS_unifiedTypeDefinition var_selfTypeDefinition_10346 = extensionGetter_definition (temp_0.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("type-array.galgas", 272)) ;
@@ -6314,7 +6314,7 @@ void cPtr_arrayTypeForGeneration::method_appendDeclaration_31_ (GALGAS_stringset
 void cPtr_arrayTypeForGeneration::method_appendSpecificImplementation (const GALGAS_unifiedTypeMap /* constinArgument_inTypeMap */,
                                                                        GALGAS_stringset & ioArgument_ioInclusionSet,
                                                                        GALGAS_string & outArgument_outImplementation,
-                                                                       C_Compiler * inCompiler
+                                                                       Compiler * inCompiler
                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_arrayTypeForGeneration temp_0 = this ;
   GALGAS_unifiedTypeDefinition var_selfTypeDefinition_11597 = extensionGetter_definition (temp_0.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("type-array.galgas", 302)) ;
@@ -6361,7 +6361,7 @@ void cPtr_boolsetDeclarationAST::method_enterDeclarationInGraph (GALGAS_semantic
                                                                  GALGAS_extensionGetterMapForBuildingContext & /* ioArgument_ioExtensionGetterMapForBuildingContext */,
                                                                  GALGAS_extensionSetterMapForBuildingContext & /* ioArgument_ioExtensionSetterMapForBuildingContext */,
                                                                  GALGAS_semanticDeclarationListAST & /* ioArgument_ioExtensionOverrideDefinitionList */,
-                                                                 C_Compiler * inCompiler
+                                                                 Compiler * inCompiler
                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_boolsetDeclarationAST temp_0 = this ;
   const GALGAS_boolsetDeclarationAST temp_1 = this ;
@@ -6377,7 +6377,7 @@ void cPtr_boolsetDeclarationAST::method_enterDeclarationInGraph (GALGAS_semantic
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string cPtr_boolsetDeclarationAST::getter_keyRepresentation (C_Compiler * inCompiler
+GALGAS_string cPtr_boolsetDeclarationAST::getter_keyRepresentation (Compiler * inCompiler
                                                                     COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_boolsetDeclarationAST temp_0 = this ;
@@ -6393,7 +6393,7 @@ GALGAS_string cPtr_boolsetDeclarationAST::getter_keyRepresentation (C_Compiler *
 //
 //--------------------------------------------------------------------------------------------------
 
-static GALGAS_stringset onceFunction_forbiddenKeysForBoolset (C_Compiler *
+static GALGAS_stringset onceFunction_forbiddenKeysForBoolset (Compiler *
                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_stringset result_result ; // Returned variable
   result_result = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("type-boolset.galgas", 99)) ;
@@ -6417,7 +6417,7 @@ static GALGAS_stringset gOnceFunctionResult_forbiddenKeysForBoolset ;
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_stringset function_forbiddenKeysForBoolset (class C_Compiler * inCompiler
+GALGAS_stringset function_forbiddenKeysForBoolset (class Compiler * inCompiler
               COMMA_LOCATION_ARGS) {
   if (! gOnceFunctionResultAvailable_forbiddenKeysForBoolset) {
     gOnceFunctionResult_forbiddenKeysForBoolset = onceFunction_forbiddenKeysForBoolset (inCompiler COMMA_THERE) ;
@@ -6447,7 +6447,7 @@ static const C_galgas_type_descriptor * functionArgs_forbiddenKeysForBoolset [1]
 
 //--------------------------------------------------------------------------------------------------
 
-static GALGAS_object functionWithGenericHeader_forbiddenKeysForBoolset (C_Compiler * inCompiler,
+static GALGAS_object functionWithGenericHeader_forbiddenKeysForBoolset (Compiler * inCompiler,
                                                                         const cObjectArray & /* inEffectiveParameterArray */,
                                                                         const GALGAS_location & /* inErrorLocation */
                                                                         COMMA_LOCATION_ARGS) {
@@ -6473,7 +6473,7 @@ void cPtr_boolsetDeclarationAST::method_enterDeclarationInSemanticContext (const
                                                                            const GALGAS_extensionSetterMapForBuildingContext constinArgument_inExtensionSetterMapForBuildingContext,
                                                                            GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
                                                                            GALGAS_semanticContext & ioArgument_ioSemanticContext,
-                                                                           C_Compiler * inCompiler
+                                                                           Compiler * inCompiler
                                                                            COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_stringset var_slotNameSet_4778 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("type-boolset.galgas", 117)) ;
   const GALGAS_boolsetDeclarationAST temp_0 = this ;
@@ -6574,7 +6574,7 @@ void cPtr_boolsetDeclarationAST::method_semanticAnalysis (GALGAS_lstringlist & /
                                                           GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
                                                           const GALGAS_predefinedTypes /* constinArgument_inPredefinedTypes */,
                                                           GALGAS_semanticDeclarationListForGeneration & ioArgument_ioSemanticDeclarationListForGeneration,
-                                                          C_Compiler * inCompiler
+                                                          Compiler * inCompiler
                                                           COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
@@ -6633,7 +6633,7 @@ const cDirectoryWrapper gWrapperDirectory_0_structGenerationTemplate (
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeHeader_31_ (C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeHeader_31_ (Compiler * inCompiler,
                                                                                   const GALGAS_string & /* in_TYPE_5F_NAME */,
                                                                                   const GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                                   const GALGAS_lstringlist & /* in_SLOT_5F_LIST */
@@ -6657,7 +6657,7 @@ GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeHeader_31_
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificImplementation (C_Compiler * /* inCompiler */,
+GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificImplementation (Compiler * /* inCompiler */,
                                                                                               const GALGAS_string & in_TYPE_5F_NAME,
                                                                                               const GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                                               const GALGAS_lstringlist & in_SLOT_5F_LIST,
@@ -6765,7 +6765,7 @@ GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificIm
   result += in_TYPE_5F_IDENTIFIER.stringValue () ;
   result += " & inOperand,\n                 " ;
   result.appendSpacesUntilColumn (columnMarker) ;
-  result += "C_Compiler * /* inCompiler */\n                 " ;
+  result += "Compiler * /* inCompiler */\n                 " ;
   result.appendSpacesUntilColumn (columnMarker) ;
   result += "COMMA_UNUSED_LOCATION_ARGS) const {\n  GALGAS_" ;
   result += in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -6790,17 +6790,17 @@ GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificIm
   result += "const int32_t /* inIndentation */) const {\n  ioString += \"<boolset @" ;
   result += in_TYPE_5F_NAME.stringValue () ;
   result += ":\" ;\n  if (! isValid ()) {\n    ioString += \" not built\" ;\n  }else{\n" ;
-  GALGAS_uint index_4705_idx (0) ;
+  GALGAS_uint index_4703_idx (0) ;
   if (in_SLOT_5F_LIST.isValid ()) {
-    cEnumerator_lstringlist enumerator_4705 (in_SLOT_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_4705.hasCurrentObject ()) {
+    cEnumerator_lstringlist enumerator_4703 (in_SLOT_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_4703.hasCurrentObject ()) {
       result += "    if ((mFlags & ((uint64_t) 1) << " ;
-      result += index_4705_idx.getter_string (SOURCE_FILE ("GALGAS_boolset.cpp.galgasTemplate", 123)).stringValue () ;
+      result += index_4703_idx.getter_string (SOURCE_FILE ("GALGAS_boolset.cpp.galgasTemplate", 123)).stringValue () ;
       result += ") != 0) {\n      ioString += \" " ;
-      result += enumerator_4705.current_mValue (HERE).readProperty_string ().stringValue () ;
+      result += enumerator_4703.current_mValue (HERE).readProperty_string ().stringValue () ;
       result += "\" ;\n    }\n" ;
-      index_4705_idx.increment () ;
-      enumerator_4705.gotoNextObject () ;
+      index_4703_idx.increment () ;
+      enumerator_4703.gotoNextObject () ;
     }
   }
   result += "  }\n  ioString += \">\" ;\n}\n\n//--------------------------------------------------------------------------------------------------\n\nGALGAS_bool GALGAS_" ;
@@ -6810,19 +6810,19 @@ GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificIm
   result += "::getter_all (UNUSED_LOCATION_ARGS) const {\n  GALGAS_bool result ;\n  if (mIsValid) {\n    result = GALGAS_bool (mFlags == uint64_t (" ;
   result += in_FULL_5F_SET.getter_hexString (SOURCE_FILE ("GALGAS_boolset.cpp.galgasTemplate", 146)).stringValue () ;
   result += ")) ;\n  }\n  return result ;\n}\n\n" ;
-  GALGAS_uint index_5515_idx (0) ;
+  GALGAS_uint index_5513_idx (0) ;
   if (in_SLOT_5F_LIST.isValid ()) {
-    cEnumerator_lstringlist enumerator_5515 (in_SLOT_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_5515.hasCurrentObject ()) {
+    cEnumerator_lstringlist enumerator_5513 (in_SLOT_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_5513.hasCurrentObject ()) {
       result += "//--------------------------------------------------------------------------------------------------\n\nGALGAS_bool GALGAS_" ;
       result += in_TYPE_5F_IDENTIFIER.stringValue () ;
       result += "::getter_" ;
-      result += enumerator_5515.current_mValue (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS_boolset.cpp.galgasTemplate", 153)).stringValue () ;
+      result += enumerator_5513.current_mValue (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS_boolset.cpp.galgasTemplate", 153)).stringValue () ;
       result += " (UNUSED_LOCATION_ARGS) const {\n  GALGAS_bool result ;\n  if (mIsValid) {\n    result = GALGAS_bool ((mFlags & (uint64_t (1) << " ;
-      result += index_5515_idx.getter_string (SOURCE_FILE ("GALGAS_boolset.cpp.galgasTemplate", 156)).stringValue () ;
+      result += index_5513_idx.getter_string (SOURCE_FILE ("GALGAS_boolset.cpp.galgasTemplate", 156)).stringValue () ;
       result += ")) != 0) ;\n  }\n  return result ;\n}\n\n" ;
-      index_5515_idx.increment () ;
-      enumerator_5515.gotoNextObject () ;
+      index_5513_idx.increment () ;
+      enumerator_5513.gotoNextObject () ;
     }
   }
   return GALGAS_string (result) ;
@@ -6836,7 +6836,7 @@ GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificIm
 
 void cPtr_boolsetTypeForGeneration::method_appendDeclaration_31_ (GALGAS_stringset & /* ioArgument_ioInclusionSet */,
                                                                   GALGAS_string & outArgument_outHeader,
-                                                                  C_Compiler * inCompiler
+                                                                  Compiler * inCompiler
                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_boolsetTypeForGeneration temp_0 = this ;
   GALGAS_unifiedTypeDefinition var_typedefinition_10324 = extensionGetter_definition (temp_0.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 282)) ;
@@ -6853,7 +6853,7 @@ void cPtr_boolsetTypeForGeneration::method_appendDeclaration_31_ (GALGAS_strings
 void cPtr_boolsetTypeForGeneration::method_appendSpecificImplementation (const GALGAS_unifiedTypeMap /* constinArgument_inTypeMap */,
                                                                          GALGAS_stringset & ioArgument_ioInclusionSet,
                                                                          GALGAS_string & outArgument_outImplementation,
-                                                                         C_Compiler * inCompiler
+                                                                         Compiler * inCompiler
                                                                          COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_boolsetTypeForGeneration temp_0 = this ;
   extensionMethod_addHeaderFileName (temp_0.readProperty_mSelfTypeEntry (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 312)) ;
@@ -6869,7 +6869,7 @@ void cPtr_boolsetTypeForGeneration::method_appendSpecificImplementation (const G
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string function_weakSuffix (C_Compiler *
+GALGAS_string function_weakSuffix (Compiler *
                                    COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_result ; // Returned variable
   result_result = GALGAS_string ("-weak") ;
@@ -6888,7 +6888,7 @@ static const C_galgas_type_descriptor * functionArgs_weakSuffix [1] = {
 
 //--------------------------------------------------------------------------------------------------
 
-static GALGAS_object functionWithGenericHeader_weakSuffix (C_Compiler * inCompiler,
+static GALGAS_object functionWithGenericHeader_weakSuffix (Compiler * inCompiler,
                                                            const cObjectArray & /* inEffectiveParameterArray */,
                                                            const GALGAS_location & /* inErrorLocation */
                                                            COMMA_LOCATION_ARGS) {
@@ -6909,7 +6909,7 @@ C_galgas_function_descriptor functionDescriptor_weakSuffix ("weakSuffix",
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string cPtr_classDeclarationAST::getter_keyRepresentation (C_Compiler * inCompiler
+GALGAS_string cPtr_classDeclarationAST::getter_keyRepresentation (Compiler * inCompiler
                                                                   COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_classDeclarationAST temp_0 = this ;
@@ -6930,7 +6930,7 @@ void cPtr_classDeclarationAST::method_enterDeclarationInGraph (GALGAS_semanticTy
                                                                GALGAS_extensionGetterMapForBuildingContext & /* ioArgument_ioExtensionGetterMapForBuildingContext */,
                                                                GALGAS_extensionSetterMapForBuildingContext & /* ioArgument_ioExtensionSetterMapForBuildingContext */,
                                                                GALGAS_semanticDeclarationListAST & /* ioArgument_ioExtensionOverrideDefinitionList */,
-                                                               C_Compiler * inCompiler
+                                                               Compiler * inCompiler
                                                                COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_classDeclarationAST temp_0 = this ;
   const GALGAS_classDeclarationAST temp_1 = this ;
@@ -6972,7 +6972,7 @@ void cPtr_classDeclarationAST::method_enterDeclarationInSemanticContext (const G
                                                                          const GALGAS_extensionSetterMapForBuildingContext constinArgument_inExtensionSetterMapForBuildingContext,
                                                                          GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
                                                                          GALGAS_semanticContext & ioArgument_ioSemanticContext,
-                                                                         C_Compiler * inCompiler
+                                                                         Compiler * inCompiler
                                                                          COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_getterMap var_getterMap_7790 ;
   GALGAS_setterMap var_setterMap_7819 ;
@@ -7207,7 +7207,7 @@ void cPtr_classDeclarationAST::method_semanticAnalysis (GALGAS_lstringlist & /* 
                                                         GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
                                                         const GALGAS_predefinedTypes /* constinArgument_inPredefinedTypes */,
                                                         GALGAS_semanticDeclarationListForGeneration & ioArgument_ioSemanticDeclarationListForGeneration,
-                                                        C_Compiler * inCompiler
+                                                        Compiler * inCompiler
                                                         COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_classDeclarationAST temp_0 = this ;
   GALGAS_lstring var_classTypeNameForUsefulness_15892 = function_typeNameForUsefulEntitiesGraph (temp_0.readProperty_mClassTypeName (), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 408)) ;
@@ -7340,7 +7340,7 @@ void cPtr_classDeclarationAST::method_semanticAnalysis (GALGAS_lstringlist & /* 
 
 void cPtr_classTypeForGeneration::method_appendDeclaration_31_ (GALGAS_stringset & ioArgument_ioInclusionSet,
                                                                 GALGAS_string & outArgument_outHeader,
-                                                                C_Compiler * inCompiler
+                                                                Compiler * inCompiler
                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
@@ -7400,7 +7400,7 @@ void cPtr_classTypeForGeneration::method_appendDeclaration_31_ (GALGAS_stringset
 void cPtr_classTypeForGeneration::method_appendDeclaration_32_ (const GALGAS_string constinArgument_inOutputDirectory,
                                                                 GALGAS_stringset & ioArgument_ioInclusionSet,
                                                                 GALGAS_string & outArgument_outHeader,
-                                                                C_Compiler * inCompiler
+                                                                Compiler * inCompiler
                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_classTypeForGeneration temp_0 = this ;
   cEnumerator_typedPropertyList enumerator_23088 (temp_0.readProperty_mCurrentTypedAttributeList (), kENUMERATION_UP) ;
@@ -7579,7 +7579,7 @@ void cPtr_classTypeForGeneration::method_appendDeclaration_32_ (const GALGAS_str
 void cPtr_classTypeForGeneration::method_appendSpecificImplementation (const GALGAS_unifiedTypeMap /* constinArgument_inTypeMap */,
                                                                        GALGAS_stringset & ioArgument_ioInclusionSet,
                                                                        GALGAS_string & outArgument_outImplementation,
-                                                                       C_Compiler * inCompiler
+                                                                       Compiler * inCompiler
                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_classTypeForGeneration temp_0 = this ;
   extensionMethod_addHeaderFileName (temp_0.readProperty_mSelfTypeEntry (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 681)) ;
@@ -7638,7 +7638,7 @@ GALGAS_string function_generateClassGetterDeclaration (const GALGAS_lstring & co
                                                        const GALGAS_bool & constinArgument_inHasCompilerArgument,
                                                        const GALGAS_unifiedTypeMapEntry & constinArgument_inReturnedType,
                                                        const GALGAS_methodQualifier & constinArgument_inQualifier,
-                                                       C_Compiler * inCompiler
+                                                       Compiler * inCompiler
                                                        COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_result ; // Returned variable
   GALGAS_bool var_generateMethodDeclaration_30249 = GALGAS_bool (true) ;
@@ -7713,7 +7713,7 @@ GALGAS_string function_generateClassGetterDeclaration (const GALGAS_lstring & co
               result_result.plusAssign_operation(GALGAS_string (",\n           "), inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 751)) ;
             }
           }
-          result_result.plusAssign_operation(GALGAS_string ("C_Compiler *"), inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 753)) ;
+          result_result.plusAssign_operation(GALGAS_string ("Compiler *"), inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 753)) ;
           var_first_30936 = GALGAS_bool (false) ;
         }
       }
@@ -7748,7 +7748,7 @@ static const C_galgas_type_descriptor * functionArgs_generateClassGetterDeclarat
 
 //--------------------------------------------------------------------------------------------------
 
-static GALGAS_object functionWithGenericHeader_generateClassGetterDeclaration (C_Compiler * inCompiler,
+static GALGAS_object functionWithGenericHeader_generateClassGetterDeclaration (Compiler * inCompiler,
                                                                                const cObjectArray & inEffectiveParameterArray,
                                                                                const GALGAS_location & /* inErrorLocation */
                                                                                COMMA_LOCATION_ARGS) {
@@ -7794,17 +7794,17 @@ GALGAS_string function_generateClassInstanceMethodDeclaration (const GALGAS_lstr
                                                                const GALGAS_formalParameterSignature & constinArgument_inArgumentTypeList,
                                                                const GALGAS_bool & constinArgument_inHasCompilerArgument,
                                                                const GALGAS_methodQualifier & constinArgument_inQualifier,
-                                                               C_Compiler * inCompiler
+                                                               Compiler * inCompiler
                                                                COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_result ; // Returned variable
-  GALGAS_bool var_generateMethodDeclaration_32020 = GALGAS_bool (true) ;
-  GALGAS_string var_suffix_32059 = GALGAS_string::makeEmptyString () ;
+  GALGAS_bool var_generateMethodDeclaration_32018 = GALGAS_bool (true) ;
+  GALGAS_string var_suffix_32057 = GALGAS_string::makeEmptyString () ;
   switch (constinArgument_inQualifier.enumValue ()) {
   case GALGAS_methodQualifier::kNotBuilt:
     break ;
   case GALGAS_methodQualifier::kEnum_isVirtualAbstract:
     {
-      var_suffix_32059 = GALGAS_string (" = 0") ;
+      var_suffix_32057 = GALGAS_string (" = 0") ;
     }
     break ;
   case GALGAS_methodQualifier::kEnum_isVirtual:
@@ -7814,71 +7814,71 @@ GALGAS_string function_generateClassInstanceMethodDeclaration (const GALGAS_lstr
   case GALGAS_methodQualifier::kEnum_isBasic:
   case GALGAS_methodQualifier::kEnum_isBasicFinal:
     {
-      var_generateMethodDeclaration_32020 = GALGAS_bool (false) ;
+      var_generateMethodDeclaration_32018 = GALGAS_bool (false) ;
     }
     break ;
   case GALGAS_methodQualifier::kEnum_isInherited:
     {
-      var_generateMethodDeclaration_32020 = GALGAS_bool (false) ;
+      var_generateMethodDeclaration_32018 = GALGAS_bool (false) ;
     }
     break ;
   case GALGAS_methodQualifier::kEnum_isVirtualOverriding:
     {
-      var_suffix_32059 = GALGAS_string (" override") ;
+      var_suffix_32057 = GALGAS_string (" override") ;
     }
     break ;
   case GALGAS_methodQualifier::kEnum_isVirtualOverridingAbstract:
     {
-      var_suffix_32059 = GALGAS_string (" override = 0") ;
+      var_suffix_32057 = GALGAS_string (" override = 0") ;
     }
     break ;
   }
   result_result = GALGAS_string::makeEmptyString () ;
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
-    test_0 = var_generateMethodDeclaration_32020.boolEnum () ;
+    test_0 = var_generateMethodDeclaration_32018.boolEnum () ;
     if (kBoolTrue == test_0) {
       result_result.plusAssign_operation(GALGAS_string ("//--- Extension method ").add_operation (constinArgument_inMethodName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 786)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 786)), inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 786)) ;
       result_result.plusAssign_operation(GALGAS_string ("  public: virtual void method_").add_operation (constinArgument_inMethodName.readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("type-class.galgas", 787)), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 787)).add_operation (GALGAS_string (" ("), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 787)), inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 787)) ;
-      GALGAS_bool var_first_32638 = GALGAS_bool (true) ;
-      cEnumerator_formalParameterSignature enumerator_32677 (constinArgument_inArgumentTypeList, kENUMERATION_UP) ;
-      while (enumerator_32677.hasCurrentObject ()) {
+      GALGAS_bool var_first_32636 = GALGAS_bool (true) ;
+      cEnumerator_formalParameterSignature enumerator_32675 (constinArgument_inArgumentTypeList, kENUMERATION_UP) ;
+      while (enumerator_32675.hasCurrentObject ()) {
         enumGalgasBool test_1 = kBoolTrue ;
         if (kBoolTrue == test_1) {
-          test_1 = var_first_32638.boolEnum () ;
+          test_1 = var_first_32636.boolEnum () ;
           if (kBoolTrue == test_1) {
-            var_first_32638 = GALGAS_bool (false) ;
+            var_first_32636 = GALGAS_bool (false) ;
           }
         }
         if (kBoolFalse == test_1) {
           result_result.plusAssign_operation(GALGAS_string (",\n           "), inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 794)) ;
         }
-        switch (enumerator_32677.current (HERE).readProperty_mFormalArgumentPassingMode ().enumValue ()) {
+        switch (enumerator_32675.current (HERE).readProperty_mFormalArgumentPassingMode ().enumValue ()) {
         case GALGAS_formalArgumentPassingModeAST::kNotBuilt:
           break ;
         case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn:
           {
-            result_result.plusAssign_operation(GALGAS_string ("const class GALGAS_").add_operation (extensionGetter_identifierRepresentation (enumerator_32677.current (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 798)), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 798)), inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 798)) ;
+            result_result.plusAssign_operation(GALGAS_string ("const class GALGAS_").add_operation (extensionGetter_identifierRepresentation (enumerator_32675.current (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 798)), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 798)), inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 798)) ;
           }
           break ;
         case GALGAS_formalArgumentPassingModeAST::kEnum_argumentInOut:
           {
-            result_result.plusAssign_operation(GALGAS_string ("class GALGAS_").add_operation (extensionGetter_identifierRepresentation (enumerator_32677.current (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 800)), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 800)).add_operation (GALGAS_string (" &"), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 800)), inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 800)) ;
+            result_result.plusAssign_operation(GALGAS_string ("class GALGAS_").add_operation (extensionGetter_identifierRepresentation (enumerator_32675.current (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 800)), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 800)).add_operation (GALGAS_string (" &"), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 800)), inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 800)) ;
           }
           break ;
         case GALGAS_formalArgumentPassingModeAST::kEnum_argumentOut:
           {
-            result_result.plusAssign_operation(GALGAS_string ("class GALGAS_").add_operation (extensionGetter_identifierRepresentation (enumerator_32677.current (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 802)), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 802)).add_operation (GALGAS_string (" &"), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 802)), inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 802)) ;
+            result_result.plusAssign_operation(GALGAS_string ("class GALGAS_").add_operation (extensionGetter_identifierRepresentation (enumerator_32675.current (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 802)), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 802)).add_operation (GALGAS_string (" &"), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 802)), inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 802)) ;
           }
           break ;
         case GALGAS_formalArgumentPassingModeAST::kEnum_argumentIn:
           {
-            result_result.plusAssign_operation(GALGAS_string ("class GALGAS_").add_operation (extensionGetter_identifierRepresentation (enumerator_32677.current (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 804)), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 804)), inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 804)) ;
+            result_result.plusAssign_operation(GALGAS_string ("class GALGAS_").add_operation (extensionGetter_identifierRepresentation (enumerator_32675.current (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 804)), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 804)), inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 804)) ;
           }
           break ;
         }
-        result_result.plusAssign_operation(GALGAS_string (" ").add_operation (enumerator_32677.current (HERE).readProperty_mFormalArgumentName (), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 806)), inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 806)) ;
-        enumerator_32677.gotoNextObject () ;
+        result_result.plusAssign_operation(GALGAS_string (" ").add_operation (enumerator_32675.current (HERE).readProperty_mFormalArgumentName (), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 806)), inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 806)) ;
+        enumerator_32675.gotoNextObject () ;
       }
       enumGalgasBool test_2 = kBoolTrue ;
       if (kBoolTrue == test_2) {
@@ -7886,24 +7886,24 @@ GALGAS_string function_generateClassInstanceMethodDeclaration (const GALGAS_lstr
         if (kBoolTrue == test_2) {
           enumGalgasBool test_3 = kBoolTrue ;
           if (kBoolTrue == test_3) {
-            test_3 = var_first_32638.operator_not (SOURCE_FILE ("type-class.galgas", 809)).boolEnum () ;
+            test_3 = var_first_32636.operator_not (SOURCE_FILE ("type-class.galgas", 809)).boolEnum () ;
             if (kBoolTrue == test_3) {
               result_result.plusAssign_operation(GALGAS_string (",\n           "), inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 810)) ;
             }
           }
-          result_result.plusAssign_operation(GALGAS_string ("C_Compiler *"), inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 812)) ;
-          var_first_32638 = GALGAS_bool (false) ;
+          result_result.plusAssign_operation(GALGAS_string ("Compiler *"), inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 812)) ;
+          var_first_32636 = GALGAS_bool (false) ;
         }
       }
       GALGAS_string temp_4 ;
-      const enumGalgasBool test_5 = var_first_32638.boolEnum () ;
+      const enumGalgasBool test_5 = var_first_32636.boolEnum () ;
       if (kBoolTrue == test_5) {
         temp_4 = GALGAS_string ("LOCATION_ARGS") ;
       }else if (kBoolFalse == test_5) {
         temp_4 = GALGAS_string (" COMMA_LOCATION_ARGS") ;
       }
       result_result.plusAssign_operation(temp_4.add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 815)), inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 815)) ;
-      result_result.plusAssign_operation(var_suffix_32059.add_operation (GALGAS_string (" ;\n\n"), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 816)), inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 816)) ;
+      result_result.plusAssign_operation(var_suffix_32057.add_operation (GALGAS_string (" ;\n\n"), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 816)), inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 816)) ;
     }
   }
 //---
@@ -7925,7 +7925,7 @@ static const C_galgas_type_descriptor * functionArgs_generateClassInstanceMethod
 
 //--------------------------------------------------------------------------------------------------
 
-static GALGAS_object functionWithGenericHeader_generateClassInstanceMethodDeclaration (C_Compiler * inCompiler,
+static GALGAS_object functionWithGenericHeader_generateClassInstanceMethodDeclaration (Compiler * inCompiler,
                                                                                        const cObjectArray & inEffectiveParameterArray,
                                                                                        const GALGAS_location & /* inErrorLocation */
                                                                                        COMMA_LOCATION_ARGS) {
@@ -7963,7 +7963,7 @@ C_galgas_function_descriptor functionDescriptor_generateClassInstanceMethodDecla
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string cPtr_weakReferenceDeclarationAST::getter_keyRepresentation (C_Compiler * inCompiler
+GALGAS_string cPtr_weakReferenceDeclarationAST::getter_keyRepresentation (Compiler * inCompiler
                                                                           COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_weakReferenceDeclarationAST temp_0 = this ;
@@ -7984,7 +7984,7 @@ void cPtr_weakReferenceDeclarationAST::method_enterDeclarationInGraph (GALGAS_se
                                                                        GALGAS_extensionGetterMapForBuildingContext & /* ioArgument_ioExtensionGetterMapForBuildingContext */,
                                                                        GALGAS_extensionSetterMapForBuildingContext & /* ioArgument_ioExtensionSetterMapForBuildingContext */,
                                                                        GALGAS_semanticDeclarationListAST & /* ioArgument_ioExtensionOverrideDefinitionList */,
-                                                                       C_Compiler * inCompiler
+                                                                       Compiler * inCompiler
                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_weakReferenceDeclarationAST temp_0 = this ;
   const GALGAS_weakReferenceDeclarationAST temp_1 = this ;
@@ -8017,7 +8017,7 @@ void cPtr_weakReferenceDeclarationAST::method_enterDeclarationInSemanticContext 
                                                                                  const GALGAS_extensionSetterMapForBuildingContext constinArgument_inExtensionSetterMapForBuildingContext,
                                                                                  GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
                                                                                  GALGAS_semanticContext & ioArgument_ioSemanticContext,
-                                                                                 C_Compiler * inCompiler
+                                                                                 Compiler * inCompiler
                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_unifiedTypeMapEntry var_superClassIndex_2934 ;
   GALGAS_bool var_generateHeaderInSeparateFile_2962 ;
@@ -8112,7 +8112,7 @@ void cPtr_weakReferenceDeclarationAST::method_semanticAnalysis (GALGAS_lstringli
                                                                 GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
                                                                 const GALGAS_predefinedTypes /* constinArgument_inPredefinedTypes */,
                                                                 GALGAS_semanticDeclarationListForGeneration & ioArgument_ioSemanticDeclarationListForGeneration,
-                                                                C_Compiler * inCompiler
+                                                                Compiler * inCompiler
                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_weakReferenceDeclarationAST temp_0 = this ;
   GALGAS_lstring var_weakRefTypeNameForUsefulness_6852 = function_typeNameForUsefulEntitiesGraph (temp_0.readProperty_mWeakReferenceTypeName (), inCompiler COMMA_SOURCE_FILE ("type-weak-reference.galgas", 170)) ;
@@ -8190,7 +8190,7 @@ void cPtr_weakReferenceDeclarationAST::method_semanticAnalysis (GALGAS_lstringli
 
 void cPtr_weakReferenceTypeForGeneration::method_appendDeclaration_31_ (GALGAS_stringset & ioArgument_ioInclusionSet,
                                                                         GALGAS_string & outArgument_outHeader,
-                                                                        C_Compiler * inCompiler
+                                                                        Compiler * inCompiler
                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
@@ -8228,7 +8228,7 @@ void cPtr_weakReferenceTypeForGeneration::method_appendDeclaration_31_ (GALGAS_s
 void cPtr_weakReferenceTypeForGeneration::method_appendSpecificImplementation (const GALGAS_unifiedTypeMap /* constinArgument_inTypeMap */,
                                                                                GALGAS_stringset & ioArgument_ioInclusionSet,
                                                                                GALGAS_string & outArgument_outImplementation,
-                                                                               C_Compiler * inCompiler
+                                                                               Compiler * inCompiler
                                                                                COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_weakReferenceTypeForGeneration temp_0 = this ;
   extensionMethod_addHeaderFileName (temp_0.readProperty_mSelfTypeEntry (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("type-weak-reference.galgas", 291)) ;
@@ -8262,7 +8262,7 @@ void cPtr_enumDeclarationAST::method_enterDeclarationInGraph (GALGAS_semanticTyp
                                                               GALGAS_extensionGetterMapForBuildingContext & /* ioArgument_ioExtensionGetterMapForBuildingContext */,
                                                               GALGAS_extensionSetterMapForBuildingContext & /* ioArgument_ioExtensionSetterMapForBuildingContext */,
                                                               GALGAS_semanticDeclarationListAST & /* ioArgument_ioExtensionOverrideDefinitionList */,
-                                                              C_Compiler * inCompiler
+                                                              Compiler * inCompiler
                                                               COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_enumDeclarationAST temp_0 = this ;
   const GALGAS_enumDeclarationAST temp_1 = this ;
@@ -8346,7 +8346,7 @@ void cPtr_enumDeclarationAST::method_enterDeclarationInSemanticContext (const GA
                                                                         const GALGAS_extensionSetterMapForBuildingContext constinArgument_inExtensionSetterMapForBuildingContext,
                                                                         GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
                                                                         GALGAS_semanticContext & ioArgument_ioSemanticContext,
-                                                                        C_Compiler * inCompiler
+                                                                        Compiler * inCompiler
                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_constructorMap var_constructorMap_6212 = GALGAS_constructorMap::constructor_emptyMap (SOURCE_FILE ("type-enum.galgas", 160)) ;
   GALGAS_setterMap var_setterMap_6249 = GALGAS_setterMap::constructor_emptyMap (SOURCE_FILE ("type-enum.galgas", 161)) ;
@@ -8473,7 +8473,7 @@ void cPtr_enumDeclarationAST::method_semanticAnalysis (GALGAS_lstringlist & /* i
                                                        GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
                                                        const GALGAS_predefinedTypes /* constinArgument_inPredefinedTypes */,
                                                        GALGAS_semanticDeclarationListForGeneration & ioArgument_ioSemanticDeclarationListForGeneration,
-                                                       C_Compiler * inCompiler
+                                                       Compiler * inCompiler
                                                        COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_enumDeclarationAST temp_0 = this ;
   GALGAS_lstring var_nameForUsefulness_10965 = function_typeNameForUsefulEntitiesGraph (temp_0.readProperty_mEnumTypeName (), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 294)) ;
@@ -8554,7 +8554,7 @@ const cDirectoryWrapper gWrapperDirectory_0_enumGenerationTemplate (
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeHeader_31_ (C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeHeader_31_ (Compiler * inCompiler,
                                                                              const GALGAS_string & /* in_TYPE_5F_NAME */,
                                                                              const GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                              const GALGAS_enumConstantListForGeneration & in_CONSTANT_5F_LIST,
@@ -8594,7 +8594,7 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeHeader_31_ (C_C
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeHeader_32_ (C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeHeader_32_ (Compiler * inCompiler,
                                                                              const GALGAS_string & /* in_TYPE_5F_NAME */,
                                                                              const GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                              const GALGAS_enumConstantListForGeneration & in_CONSTANT_5F_LIST,
@@ -8681,7 +8681,7 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeHeader_32_ (C_C
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImplementation (C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImplementation (Compiler * inCompiler,
                                                                                          const GALGAS_string & in_TYPE_5F_NAME,
                                                                                          const GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                                          const GALGAS_enumConstantListForGeneration & in_CONSTANT_5F_LIST,
@@ -8915,20 +8915,20 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImpleme
           }
         }
         result.appendSpacesUntilColumn (columnMarker) ;
-        result += "C_Compiler * inCompiler\n" ;
+        result += "Compiler * inCompiler\n" ;
         result.appendSpacesUntilColumn (columnMarker) ;
         result += "COMMA_LOCATION_ARGS) const {\n  if (mEnum != kEnum_" ;
         result += enumerator_3812.current_mConstantName (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 100)).stringValue () ;
         result += ") {\n" ;
-        GALGAS_uint index_4416_idx (0) ;
+        GALGAS_uint index_4414_idx (0) ;
         if (enumerator_3812.current_mAssociatedValueTypeList (HERE).isValid ()) {
-          cEnumerator_unifiedTypeMapEntryList enumerator_4416 (enumerator_3812.current_mAssociatedValueTypeList (HERE), kENUMERATION_UP) ;
-          while (enumerator_4416.hasCurrentObject ()) {
+          cEnumerator_unifiedTypeMapEntryList enumerator_4414 (enumerator_3812.current_mAssociatedValueTypeList (HERE), kENUMERATION_UP) ;
+          while (enumerator_4414.hasCurrentObject ()) {
             result += "    outAssociatedValue" ;
-            result += index_4416_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 102)).stringValue () ;
+            result += index_4414_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 102)).stringValue () ;
             result += ".drop () ;\n" ;
-            index_4416_idx.increment () ;
-            enumerator_4416.gotoNextObject () ;
+            index_4414_idx.increment () ;
+            enumerator_4414.gotoNextObject () ;
           }
         }
         result += "    String s ;\n    s += \"method @" ;
@@ -8944,17 +8944,17 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImpleme
         result += "_" ;
         result += enumerator_3812.current_mConstantName (HERE).stringValue () ;
         result += " *) unsafePointer () ;\n" ;
-        GALGAS_uint index_4913_idx (0) ;
+        GALGAS_uint index_4911_idx (0) ;
         if (enumerator_3812.current_mAssociatedValueTypeList (HERE).isValid ()) {
-          cEnumerator_unifiedTypeMapEntryList enumerator_4913 (enumerator_3812.current_mAssociatedValueTypeList (HERE), kENUMERATION_UP) ;
-          while (enumerator_4913.hasCurrentObject ()) {
+          cEnumerator_unifiedTypeMapEntryList enumerator_4911 (enumerator_3812.current_mAssociatedValueTypeList (HERE), kENUMERATION_UP) ;
+          while (enumerator_4911.hasCurrentObject ()) {
             result += "    outAssociatedValue" ;
-            result += index_4913_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 110)).stringValue () ;
+            result += index_4911_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 110)).stringValue () ;
             result += " = ptr->mAssociatedValue" ;
-            result += index_4913_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 110)).stringValue () ;
+            result += index_4911_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 110)).stringValue () ;
             result += " ;\n" ;
-            index_4913_idx.increment () ;
-            enumerator_4913.gotoNextObject () ;
+            index_4911_idx.increment () ;
+            enumerator_4911.gotoNextObject () ;
           }
         }
         result += "  }\n}\n\n" ;
@@ -8964,61 +8964,61 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImpleme
       enumerator_3812.gotoNextObject () ;
     }
   }
-  GALGAS_uint index_5113_ (0) ;
+  GALGAS_uint index_5111_ (0) ;
   if (in_CONSTANT_5F_LIST.isValid ()) {
-    cEnumerator_enumConstantListForGeneration enumerator_5113 (in_CONSTANT_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_5113.hasCurrentObject ()) {
+    cEnumerator_enumConstantListForGeneration enumerator_5111 (in_CONSTANT_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_5111.hasCurrentObject ()) {
       result += "//--------------------------------------------------------------------------------------------------\n\nbool GALGAS_" ;
       result += in_TYPE_5F_IDENTIFIER.stringValue () ;
       result += "::optional_" ;
-      result += enumerator_5113.current_mConstantName (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 120)).stringValue () ;
+      result += enumerator_5111.current_mConstantName (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 120)).stringValue () ;
       result += " (" ;
       columnMarker = result.currentColumn () ;
-      GALGAS_uint index_5374_idx (0) ;
-      if (enumerator_5113.current_mAssociatedValueTypeList (HERE).isValid ()) {
-        cEnumerator_unifiedTypeMapEntryList enumerator_5374 (enumerator_5113.current_mAssociatedValueTypeList (HERE), kENUMERATION_UP) ;
-        while (enumerator_5374.hasCurrentObject ()) {
+      GALGAS_uint index_5372_idx (0) ;
+      if (enumerator_5111.current_mAssociatedValueTypeList (HERE).isValid ()) {
+        cEnumerator_unifiedTypeMapEntryList enumerator_5372 (enumerator_5111.current_mAssociatedValueTypeList (HERE), kENUMERATION_UP) ;
+        while (enumerator_5372.hasCurrentObject ()) {
           result += "GALGAS_" ;
-          result += extensionGetter_identifierRepresentation (enumerator_5374.current_mEntry (HERE), inCompiler COMMA_SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 123)).stringValue () ;
+          result += extensionGetter_identifierRepresentation (enumerator_5372.current_mEntry (HERE), inCompiler COMMA_SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 123)).stringValue () ;
           result += " & outAssociatedValue" ;
-          result += index_5374_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 123)).stringValue () ;
-          if (enumerator_5374.hasNextObject ()) {
+          result += index_5372_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 123)).stringValue () ;
+          if (enumerator_5372.hasNextObject ()) {
             result += ",\n" ;
             result.appendSpacesUntilColumn (columnMarker) ;
           }
-          index_5374_idx.increment () ;
-          enumerator_5374.gotoNextObject () ;
+          index_5372_idx.increment () ;
+          enumerator_5372.gotoNextObject () ;
         }
       }
       result += ") const {\n  const bool ok = mEnum == kEnum_" ;
-      result += enumerator_5113.current_mConstantName (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 128)).stringValue () ;
+      result += enumerator_5111.current_mConstantName (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 128)).stringValue () ;
       result += " ;\n" ;
-      const enumGalgasBool test_5 = GALGAS_bool (kIsStrictSup, enumerator_5113.current_mAssociatedValueTypeList (HERE).getter_count (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 129)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
+      const enumGalgasBool test_5 = GALGAS_bool (kIsStrictSup, enumerator_5111.current_mAssociatedValueTypeList (HERE).getter_count (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 129)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
       if (kBoolTrue == test_5) {
         result += "  if (ok) {\n    const auto * ptr = (const cEnumAssociatedValues_" ;
         result += in_TYPE_5F_IDENTIFIER.stringValue () ;
         result += "_" ;
-        result += enumerator_5113.current_mConstantName (HERE).stringValue () ;
+        result += enumerator_5111.current_mConstantName (HERE).stringValue () ;
         result += " *) unsafePointer () ;\n" ;
-        GALGAS_uint index_5848_idx (0) ;
-        if (enumerator_5113.current_mAssociatedValueTypeList (HERE).isValid ()) {
-          cEnumerator_unifiedTypeMapEntryList enumerator_5848 (enumerator_5113.current_mAssociatedValueTypeList (HERE), kENUMERATION_UP) ;
-          while (enumerator_5848.hasCurrentObject ()) {
+        GALGAS_uint index_5846_idx (0) ;
+        if (enumerator_5111.current_mAssociatedValueTypeList (HERE).isValid ()) {
+          cEnumerator_unifiedTypeMapEntryList enumerator_5846 (enumerator_5111.current_mAssociatedValueTypeList (HERE), kENUMERATION_UP) ;
+          while (enumerator_5846.hasCurrentObject ()) {
             result += "    outAssociatedValue" ;
-            result += index_5848_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 133)).stringValue () ;
+            result += index_5846_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 133)).stringValue () ;
             result += " = ptr->mAssociatedValue" ;
-            result += index_5848_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 133)).stringValue () ;
+            result += index_5846_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 133)).stringValue () ;
             result += " ;\n" ;
-            index_5848_idx.increment () ;
-            enumerator_5848.gotoNextObject () ;
+            index_5846_idx.increment () ;
+            enumerator_5846.gotoNextObject () ;
           }
         }
         result += "  }\n" ;
       }else if (kBoolFalse == test_5) {
       }
       result += "  return ok ;\n}\n\n" ;
-      index_5113_.increment () ;
-      enumerator_5113.gotoNextObject () ;
+      index_5111_.increment () ;
+      enumerator_5111.gotoNextObject () ;
     }
   }
   result += "//--------------------------------------------------------------------------------------------------\n\nstatic const char * gEnumNameArrayFor_" ;
@@ -9026,30 +9026,30 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImpleme
   result += " [" ;
   result += in_CONSTANT_5F_LIST.getter_count (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 143)).add_operation (GALGAS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 143)).getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 143)).stringValue () ;
   result += "] = {\n  \"(not built)\"" ;
-  GALGAS_uint index_6307_ (0) ;
+  GALGAS_uint index_6305_ (0) ;
   if (in_CONSTANT_5F_LIST.isValid ()) {
-    cEnumerator_enumConstantListForGeneration enumerator_6307 (in_CONSTANT_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_6307.hasCurrentObject ()) {
+    cEnumerator_enumConstantListForGeneration enumerator_6305 (in_CONSTANT_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_6305.hasCurrentObject ()) {
       result += ",\n  " ;
-      result += enumerator_6307.current_mConstantName (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 146)).stringValue () ;
-      index_6307_.increment () ;
-      enumerator_6307.gotoNextObject () ;
+      result += enumerator_6305.current_mConstantName (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 146)).stringValue () ;
+      index_6305_.increment () ;
+      enumerator_6305.gotoNextObject () ;
     }
   }
   result += "\n} ;\n\n" ;
-  GALGAS_uint index_6447_ (0) ;
+  GALGAS_uint index_6445_ (0) ;
   if (in_CONSTANT_5F_LIST.isValid ()) {
-    cEnumerator_enumConstantListForGeneration enumerator_6447 (in_CONSTANT_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_6447.hasCurrentObject ()) {
+    cEnumerator_enumConstantListForGeneration enumerator_6445 (in_CONSTANT_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_6445.hasCurrentObject ()) {
       result += "//--------------------------------------------------------------------------------------------------\n\nGALGAS_bool GALGAS_" ;
       result += in_TYPE_5F_IDENTIFIER.stringValue () ;
       result += "::getter_is" ;
-      result += enumerator_6447.current_mConstantName (HERE).getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 154)).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 154)).stringValue () ;
+      result += enumerator_6445.current_mConstantName (HERE).getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 154)).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 154)).stringValue () ;
       result += " (UNUSED_LOCATION_ARGS) const {\n  return GALGAS_bool (kNotBuilt != mEnum, kEnum_" ;
-      result += enumerator_6447.current_mConstantName (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 155)).stringValue () ;
+      result += enumerator_6445.current_mConstantName (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 155)).stringValue () ;
       result += " == mEnum) ;\n}\n\n" ;
-      index_6447_.increment () ;
-      enumerator_6447.gotoNextObject () ;
+      index_6445_.increment () ;
+      enumerator_6445.gotoNextObject () ;
     }
   }
   result += "//--------------------------------------------------------------------------------------------------\n\nvoid GALGAS_" ;

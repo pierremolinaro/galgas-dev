@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  'C_Compiler' : the compiler base class ;
+//  'Compiler' : the compiler base class ;
 //
 //  This file is part of libpm library
 //
@@ -47,18 +47,18 @@ class C_galgas_type_descriptor ;
 //
 //--------------------------------------------------------------------------------------------------
 
-class C_Compiler : public C_SharedObject {
+class Compiler : public C_SharedObject {
 //--- Constructor and destructor
-  public: C_Compiler (C_Compiler * inCallerCompiler
+  public: Compiler (Compiler * inCallerCompiler
                       COMMA_LOCATION_ARGS) ;
-  public: virtual ~ C_Compiler (void) ;
+  public: virtual ~ Compiler (void) ;
 
 //--- No copy
-  private: C_Compiler (const C_Compiler &) = delete ;
-  private: C_Compiler & operator = (const C_Compiler &) = delete ;
+  private: Compiler (const Compiler &) = delete ;
+  private: Compiler & operator = (const Compiler &) = delete ;
 
 //--- Caller compiler (is nullptr for top compiler)
-  protected: C_Compiler * mCallerCompiler ;
+  protected: Compiler * mCallerCompiler ;
 
 //--- Issue array
   private: TC_UniqueArray <cIssueDescriptor> mIssueArray ;

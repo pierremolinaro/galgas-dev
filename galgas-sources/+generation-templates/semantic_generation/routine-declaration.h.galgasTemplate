@@ -17,6 +17,6 @@ void routine_%![ROUTINE_NAME identifierRepresentation]% (%?^
     end
     %,\n%!^
   end
-  %class C_Compiler * inCompiler%
+  %class Compiler * inCompiler%
   %\n %!^%COMMA_LOCATION_ARGS) ;
 

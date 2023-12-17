@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  'C_Compiler' : the compiler base class ;
+//  'Compiler' : the compiler base class ;
 //
 //  This file is part of libpm library
 //
@@ -21,7 +21,7 @@
 #include "command_line_interface/F_Analyze_CLI_Options.h"
 #include "files/C_TextFileWrite.h"
 #include "files/C_FileManager.h"
-#include "galgas2/C_Compiler.h"
+#include "galgas2/Compiler.h"
 #include "galgas2/C_galgas_io.h"
 #include "galgas2/C_galgas_CLI_Options.h"
 #include "all-predefined-types.h"
@@ -34,18 +34,18 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-const char * C_Compiler::kEndOfSourceLexicalErrorMessage = "end of source" ;
+const char * Compiler::kEndOfSourceLexicalErrorMessage = "end of source" ;
 
 //--------------------------------------------------------------------------------------------------
 
-bool C_Compiler::performGeneration (void) {
+bool Compiler::performGeneration (void) {
   return (! gOption_galgas_5F_builtin_5F_options_do_5F_not_5F_generate_5F_any_5F_file.mValue)
       && (executionMode () == kExecutionModeNormal) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool C_Compiler::performLogFileRead (void) {
+bool Compiler::performLogFileRead (void) {
   return gOption_galgas_5F_builtin_5F_options_log_5F_file_5F_read.mValue ;
 }
 
@@ -61,7 +61,7 @@ bool C_Compiler::performLogFileRead (void) {
 //
 //--------------------------------------------------------------------------------------------------
 
-C_Compiler::C_Compiler (C_Compiler * inCallerCompiler
+Compiler::Compiler (Compiler * inCallerCompiler
                         COMMA_LOCATION_ARGS) :
 C_SharedObject (THERE),
 mCallerCompiler (nullptr),
@@ -81,13 +81,13 @@ mEndLocationForNext () {
 
 //--------------------------------------------------------------------------------------------------
 
-C_Compiler::~C_Compiler (void) {
+Compiler::~Compiler (void) {
   macroDetachSharedObject (mCallerCompiler) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-String C_Compiler::sourceFilePath (void) const {
+String Compiler::sourceFilePath (void) const {
   return mSourceText.sourceFilePath () ;
 }
 
@@ -99,7 +99,7 @@ String C_Compiler::sourceFilePath (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Compiler::appendIssue (const cIssueDescriptor & inIssue) {
+void Compiler::appendIssue (const cIssueDescriptor & inIssue) {
   if (nullptr == mCallerCompiler) {
     mIssueArray.appendObject (inIssue) ;
   }else{
@@ -109,7 +109,7 @@ void C_Compiler::appendIssue (const cIssueDescriptor & inIssue) {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Compiler::writeIssueJSONFile (const String & inFile) {
+void Compiler::writeIssueJSONFile (const String & inFile) {
   if (performGeneration ()) {
     String s ("[\n") ;
     bool isFirst = true ;
@@ -136,7 +136,7 @@ void C_Compiler::writeIssueJSONFile (const String & inFile) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string C_Compiler::sentString (void) const {
+GALGAS_string Compiler::sentString (void) const {
   GALGAS_string result ;
   if (mSentStringIsValid) {
    result = GALGAS_string (mSentString) ;
@@ -152,7 +152,7 @@ GALGAS_string C_Compiler::sentString (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string C_Compiler::retrieveAndResetTemplateString (void) {
+GALGAS_string Compiler::retrieveAndResetTemplateString (void) {
   const String s = mTemplateString ;
   mTemplateString.setLengthToZero () ;
   return GALGAS_string (s) ;
@@ -160,7 +160,7 @@ GALGAS_string C_Compiler::retrieveAndResetTemplateString (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Compiler::resetTemplateString (void) {
+void Compiler::resetTemplateString (void) {
   mTemplateString.setLengthToZero () ;
 }
 
@@ -172,7 +172,7 @@ void C_Compiler::resetTemplateString (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Compiler::resetAndLoadSourceFromText (const C_SourceTextInString & inSourceText) {
+void Compiler::resetAndLoadSourceFromText (const C_SourceTextInString & inSourceText) {
   mSourceText = inSourceText ;
   mCurrentLocation.resetWithSourceText (mSourceText) ;
 }
@@ -185,7 +185,7 @@ void C_Compiler::resetAndLoadSourceFromText (const C_SourceTextInString & inSour
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Compiler::onTheFlySemanticError (const String & inErrorMessage
+void Compiler::onTheFlySemanticError (const String & inErrorMessage
                                         COMMA_LOCATION_ARGS) {
   signalSemanticError (this,
                        sourceText (),
@@ -202,7 +202,7 @@ void C_Compiler::onTheFlySemanticError (const String & inErrorMessage
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Compiler::onTheFlySemanticWarning (const String & inWarningMessage
+void Compiler::onTheFlySemanticWarning (const String & inWarningMessage
                                           COMMA_LOCATION_ARGS) {
   signalSemanticWarning (this,
                          sourceText (),
@@ -219,7 +219,7 @@ void C_Compiler::onTheFlySemanticWarning (const String & inWarningMessage
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Compiler::printMessage (const GALGAS_string & inMessage
+void Compiler::printMessage (const GALGAS_string & inMessage
                                COMMA_LOCATION_ARGS) {
   if (inMessage.isValid ()) {
     ggs_printMessage (inMessage.stringValue () COMMA_THERE) ;
@@ -228,7 +228,7 @@ void C_Compiler::printMessage (const GALGAS_string & inMessage
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Compiler::printMessage (const String & inMessage
+void Compiler::printMessage (const String & inMessage
                                COMMA_LOCATION_ARGS) {
   String s ;
   s += inMessage ;
@@ -243,7 +243,7 @@ void C_Compiler::printMessage (const String & inMessage
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Compiler::logFileRead (const String & inFilePath) {
+void Compiler::logFileRead (const String & inFilePath) {
   if (performLogFileRead ()) {
     printf ("Reading '%s' file.\n", inFilePath.cString (HERE)) ;
   }
@@ -257,7 +257,7 @@ void C_Compiler::logFileRead (const String & inFilePath) {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Compiler::loopRunTimeVariantError (LOCATION_ARGS) {
+void Compiler::loopRunTimeVariantError (LOCATION_ARGS) {
   onTheFlyRunTimeError ("loop variant run-time error" COMMA_THERE) ;
 }
 
@@ -269,7 +269,7 @@ void C_Compiler::loopRunTimeVariantError (LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Compiler::castError (const String & inTargetTypeName,
+void Compiler::castError (const String & inTargetTypeName,
                             const C_galgas_type_descriptor * inObjectDynamicTypeDescriptor
                             COMMA_LOCATION_ARGS) {
   String m ;
@@ -288,7 +288,7 @@ void C_Compiler::castError (const String & inTargetTypeName,
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Compiler::semanticErrorAtLocation (const GALGAS_location & inErrorLocation,
+void Compiler::semanticErrorAtLocation (const GALGAS_location & inErrorLocation,
                                           const String & inErrorMessage,
                                           const TC_Array <C_FixItDescription> & inFixItArray
                                           COMMA_LOCATION_ARGS) {
@@ -307,7 +307,7 @@ void C_Compiler::semanticErrorAtLocation (const GALGAS_location & inErrorLocatio
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Compiler::emitSemanticError (const GALGAS_location & inErrorLocation,
+void Compiler::emitSemanticError (const GALGAS_location & inErrorLocation,
                                     const GALGAS_string & inErrorMessage,
                                     const TC_Array <C_FixItDescription> & inFixItArray
                                     COMMA_LOCATION_ARGS) {
@@ -327,7 +327,7 @@ void C_Compiler::emitSemanticError (const GALGAS_location & inErrorLocation,
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Compiler::semanticErrorWith_K_message (const GALGAS_lstring & inKey,
+void Compiler::semanticErrorWith_K_message (const GALGAS_lstring & inKey,
                                               TC_UniqueArray <String> & ioNearestKeyArray,
                                               const char * in_K_ErrorMessage
                                               COMMA_LOCATION_ARGS) {
@@ -362,7 +362,7 @@ void C_Compiler::semanticErrorWith_K_message (const GALGAS_lstring & inKey,
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Compiler::semanticErrorWith_K_L_message (const GALGAS_lstring & inKey,
+void Compiler::semanticErrorWith_K_L_message (const GALGAS_lstring & inKey,
                                                 const char * in_K_L_ErrorMessage,
                                                 const GALGAS_location & inExistingKeyLocation
                                                 COMMA_LOCATION_ARGS) {
@@ -400,7 +400,7 @@ void C_Compiler::semanticErrorWith_K_L_message (const GALGAS_lstring & inKey,
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Compiler::semanticWarningWith_K_L_message (const GALGAS_lstring & inKey,
+void Compiler::semanticWarningWith_K_L_message (const GALGAS_lstring & inKey,
                                                   const char * in_K_L_ErrorMessage,
                                                   const GALGAS_location & inExistingKeyLocation
                                                   COMMA_LOCATION_ARGS) {
@@ -438,7 +438,7 @@ void C_Compiler::semanticWarningWith_K_L_message (const GALGAS_lstring & inKey,
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Compiler::semanticWarningAtLocation (const GALGAS_location & inWarningLocation,
+void Compiler::semanticWarningAtLocation (const GALGAS_location & inWarningLocation,
                                             const String & inWarningMessage
                                             COMMA_LOCATION_ARGS) {
   if (inWarningLocation.isValid ()) { // No warning raised if not built
@@ -456,7 +456,7 @@ void C_Compiler::semanticWarningAtLocation (const GALGAS_location & inWarningLoc
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Compiler::emitSemanticWarning (const GALGAS_location & inWarningLocation,
+void Compiler::emitSemanticWarning (const GALGAS_location & inWarningLocation,
                                       const GALGAS_string & inWarningMessage,
                                       const TC_Array <C_FixItDescription> & inFixItArray
                                       COMMA_LOCATION_ARGS) {
@@ -482,7 +482,7 @@ void C_Compiler::emitSemanticWarning (const GALGAS_location & inWarningLocation,
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Compiler::onTheFlyRunTimeError (const String & inRunTimeErrorMessage
+void Compiler::onTheFlyRunTimeError (const String & inRunTimeErrorMessage
                                        COMMA_LOCATION_ARGS) {
   signalRunTimeError (this, inRunTimeErrorMessage COMMA_THERE) ;
 }
@@ -495,19 +495,19 @@ void C_Compiler::onTheFlyRunTimeError (const String & inRunTimeErrorMessage
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_location C_Compiler::here (void) const {
+GALGAS_location Compiler::here (void) const {
   return GALGAS_location (mStartLocationForHere, mEndLocationForHere, mSourceText) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_location C_Compiler::separator (void) const {
+GALGAS_location Compiler::separator (void) const {
   return GALGAS_location (mEndLocationForHere, mStartLocationForNext, mSourceText) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_location C_Compiler::next (void) const {
+GALGAS_location Compiler::next (void) const {
   return GALGAS_location (mStartLocationForNext, mEndLocationForNext, mSourceText) ;
 }
 
@@ -530,7 +530,7 @@ static const char END_OF_USER_ZONE_2   [] =  "--- END OF USER ZONE 2\n" ;
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Compiler::generateFile (const String & inLineCommentPrefix,
+void Compiler::generateFile (const String & inLineCommentPrefix,
                                const TC_UniqueArray <String> & inDirectoriesToExclude,
                                const String & inFileName,
                                const String & inHeader,
@@ -553,7 +553,7 @@ void C_Compiler::generateFile (const String & inLineCommentPrefix,
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Compiler::generateFileFromPathes (const String & inStartPath,
+void Compiler::generateFileFromPathes (const String & inStartPath,
                                          const TC_UniqueArray <String> & inDirectoriesToExclude,
                                          const String & inFileName,
                                          const String & inContents) {
@@ -616,7 +616,7 @@ void C_Compiler::generateFileFromPathes (const String & inStartPath,
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Compiler::generateFileWithPatternFromPathes (
+void Compiler::generateFileWithPatternFromPathes (
   const String & inStartPath,
   const TC_UniqueArray <String> & inDirectoriesToExclude,
   const String & inLineCommentPrefix,

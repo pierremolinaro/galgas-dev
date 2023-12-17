@@ -35,7 +35,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-class C_Compiler ;
+class Compiler ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -148,7 +148,7 @@ int32_t maxWarningCount (void) ;
 
 int32_t totalWarningCount (void) ;
  
-void signalParsingError (C_Compiler * inCompiler,
+void signalParsingError (Compiler * inCompiler,
                          const C_SourceTextInString & inSourceText,
                          const C_LocationInSource & inPreviousTokenEndLocation,
                          const C_IssueWithFixIt & inIssue,
@@ -156,14 +156,14 @@ void signalParsingError (C_Compiler * inCompiler,
                          const TC_UniqueArray <String> & inAcceptedTokenNames
                          COMMA_LOCATION_ARGS) ;
 
-void signalExtractError (C_Compiler * inCompiler,
+void signalExtractError (Compiler * inCompiler,
                          const C_SourceTextInString & inSourceText,
                          const C_IssueWithFixIt & inIssue,
                          const TC_UniqueArray <String> & inExpectedClassesErrorStringsArray,
                          const String & inActualFoundClassErrorString
                          COMMA_LOCATION_ARGS) ;
 
-void signalCastError (C_Compiler * inCompiler,
+void signalCastError (Compiler * inCompiler,
                       const C_SourceTextInString & inSourceText,
                       const C_IssueWithFixIt & inIssue,
                       const std::type_info * inBaseClass,
@@ -171,45 +171,45 @@ void signalCastError (C_Compiler * inCompiler,
                       const String & inActualFoundClassErrorString
                       COMMA_LOCATION_ARGS) ;
 
-void signalLexicalWarning (C_Compiler * inCompiler,
+void signalLexicalWarning (Compiler * inCompiler,
                            const C_SourceTextInString & inSourceText,
                            const C_IssueWithFixIt & inIssue,
                            const String & inLexicalWarningMessage
                            COMMA_LOCATION_ARGS) ;
 
-void signalLexicalError (C_Compiler * inCompiler,
+void signalLexicalError (Compiler * inCompiler,
                          const C_SourceTextInString & inSourceText,
                          const C_IssueWithFixIt & inIssue,
                          const String & inLexicalErrorMessage
                          COMMA_LOCATION_ARGS) ;
 
-void signalSemanticWarning (C_Compiler * inCompiler,
+void signalSemanticWarning (Compiler * inCompiler,
                             const C_SourceTextInString & inSourceText,
                             const C_IssueWithFixIt & inIssue,
                             const String & inWarningMessage
                             COMMA_LOCATION_ARGS) ;
 
-void signalSemanticError (C_Compiler * inCompiler,
+void signalSemanticError (Compiler * inCompiler,
                           const C_SourceTextInString & inSourceText,
                           const C_IssueWithFixIt & inIssue,
                           const String & inErrorMessage
                           COMMA_LOCATION_ARGS) ;
 
-void signalRunTimeError (C_Compiler * inCompiler,
+void signalRunTimeError (Compiler * inCompiler,
                          const String & inErrorMessage
                          COMMA_LOCATION_ARGS) ;
 
-void signalRunTimeWarning (C_Compiler * inCompiler,
+void signalRunTimeWarning (Compiler * inCompiler,
                            const String & inWarningMessage
                            COMMA_LOCATION_ARGS) ;
 
-void ggs_printError (C_Compiler * inCompiler,
+void ggs_printError (Compiler * inCompiler,
                      const C_SourceTextInString & inSourceText,
                      const C_IssueWithFixIt & inIssue,
                      const String & inMessage
                      COMMA_LOCATION_ARGS) ;
 
-void ggs_printWarning (C_Compiler * inCompiler,
+void ggs_printWarning (Compiler * inCompiler,
                        const C_SourceTextInString & inSourceText,
                        const C_IssueWithFixIt & inIssue,
                        const String & inMessage

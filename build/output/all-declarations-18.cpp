@@ -1,4 +1,4 @@
-#include "galgas2/C_Compiler.h"
+#include "galgas2/Compiler.h"
 #include "galgas2/C_galgas_io.h"
 #include "galgas2/C_galgas_CLI_Options.h"
 #include "utilities/C_PrologueEpilogue.h"
@@ -173,7 +173,7 @@ AC_GALGAS_root * GALGAS_nonTerminalInstructionForGrammarAnalysis::clonedObject (
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_nonTerminalInstructionForGrammarAnalysis GALGAS_nonTerminalInstructionForGrammarAnalysis::extractObject (const GALGAS_object & inObject,
-                                                                                                                C_Compiler * inCompiler
+                                                                                                                Compiler * inCompiler
                                                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_nonTerminalInstructionForGrammarAnalysis result ;
   const GALGAS_nonTerminalInstructionForGrammarAnalysis * p = (const GALGAS_nonTerminalInstructionForGrammarAnalysis *) inObject.embeddedObject () ;
@@ -219,7 +219,7 @@ GALGAS_productionRuleListForGrammarAnalysis_2D_element GALGAS_productionRuleList
                                                                                                                                 const GALGAS_uint & in_mLeftNonterminalSymbolIndex,
                                                                                                                                 const GALGAS_syntaxInstructionListForGrammarAnalysis & in_mInstructionList,
                                                                                                                                 const GALGAS_uint & in_mProductionIndex,
-                                                                                                                                C_Compiler * /* inCompiler */
+                                                                                                                                Compiler * /* inCompiler */
                                                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_productionRuleListForGrammarAnalysis_2D_element result ;
   if (in_mLeftNonterminalSymbol.isValid () && in_mLeftNonterminalSymbolIndex.isValid () && in_mInstructionList.isValid () && in_mProductionIndex.isValid ()) {
@@ -310,7 +310,7 @@ AC_GALGAS_root * GALGAS_productionRuleListForGrammarAnalysis_2D_element::clonedO
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_productionRuleListForGrammarAnalysis_2D_element GALGAS_productionRuleListForGrammarAnalysis_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                                                                              C_Compiler * inCompiler
+                                                                                                                              Compiler * inCompiler
                                                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_productionRuleListForGrammarAnalysis_2D_element result ;
   const GALGAS_productionRuleListForGrammarAnalysis_2D_element * p = (const GALGAS_productionRuleListForGrammarAnalysis_2D_element *) inObject.embeddedObject () ;
@@ -333,7 +333,7 @@ GALGAS_productionRuleListForGrammarAnalysis_2D_element GALGAS_productionRuleList
 void extensionMethod_displayRuleVertically (const GALGAS_productionRuleListForGrammarAnalysis_2D_element inObject,
                                             const GALGAS_string constinArgument_inSyntaxComponentName,
                                             GALGAS_string & ioArgument_ioGeneratedCode,
-                                            C_Compiler * inCompiler
+                                            Compiler * inCompiler
                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string var_currentNode_6792 = GALGAS_string ("P0start") ;
   GALGAS_rowList var_rowArray_6831 = GALGAS_rowList::constructor_emptyList (SOURCE_FILE ("production-rules-in-tex.galgas", 165)) ;
@@ -443,7 +443,7 @@ GALGAS_galgas_33_ProjectComponentAST GALGAS_galgas_33_ProjectComponentAST::const
                                                                                             const GALGAS_galgas_33_QualifiedFeatureList & in_mQualifiedFeatureList,
                                                                                             const GALGAS_lstring & in_mTargetName,
                                                                                             const GALGAS_location & in_mEndOfSourceFile,
-                                                                                            C_Compiler * /* inCompiler */
+                                                                                            Compiler * /* inCompiler */
                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_galgas_33_ProjectComponentAST result ;
   if (in_mProjectSourceList.isValid () && in_mMajorVersion.isValid () && in_mMinorVersion.isValid () && in_mRevisionVersion.isValid () && in_mGenerationFeatureList.isValid () && in_mQualifiedFeatureList.isValid () && in_mTargetName.isValid () && in_mEndOfSourceFile.isValid ()) {
@@ -558,7 +558,7 @@ AC_GALGAS_root * GALGAS_galgas_33_ProjectComponentAST::clonedObject (void) const
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_galgas_33_ProjectComponentAST GALGAS_galgas_33_ProjectComponentAST::extractObject (const GALGAS_object & inObject,
-                                                                                          C_Compiler * inCompiler
+                                                                                          Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_galgas_33_ProjectComponentAST result ;
   const GALGAS_galgas_33_ProjectComponentAST * p = (const GALGAS_galgas_33_ProjectComponentAST *) inObject.embeddedObject () ;
@@ -871,7 +871,7 @@ void cGrammar_galgas_33_ProjectGrammar::nt_project_5F_component_5F_start_5F_symb
   rule_galgas_33_ProjectSyntax_project_5F_component_5F_start_5F_symbol_i1_(parameter_1, inLexique) ;
 }
 
-void cGrammar_galgas_33_ProjectGrammar::performIndexing (C_Compiler * inCompiler,
+void cGrammar_galgas_33_ProjectGrammar::performIndexing (Compiler * inCompiler,
              const String & inSourceFilePath) {
   C_Lexique_galgasScanner * scanner = NULL ;
   macroMyNew (scanner, C_Lexique_galgasScanner (inCompiler, inSourceFilePath COMMA_HERE)) ;
@@ -888,7 +888,7 @@ void cGrammar_galgas_33_ProjectGrammar::performIndexing (C_Compiler * inCompiler
   macroDetachSharedObject (scanner) ;
 }
 
-void cGrammar_galgas_33_ProjectGrammar::performOnlyLexicalAnalysis (C_Compiler * inCompiler,
+void cGrammar_galgas_33_ProjectGrammar::performOnlyLexicalAnalysis (Compiler * inCompiler,
              const String & inSourceFilePath) {
   C_Lexique_galgasScanner * scanner = NULL ;
   macroMyNew (scanner, C_Lexique_galgasScanner (inCompiler, inSourceFilePath COMMA_HERE)) ;
@@ -898,7 +898,7 @@ void cGrammar_galgas_33_ProjectGrammar::performOnlyLexicalAnalysis (C_Compiler *
   macroDetachSharedObject (scanner) ;
 }
 
-void cGrammar_galgas_33_ProjectGrammar::performOnlySyntaxAnalysis (C_Compiler * inCompiler,
+void cGrammar_galgas_33_ProjectGrammar::performOnlySyntaxAnalysis (Compiler * inCompiler,
              const String & inSourceFilePath) {
   C_Lexique_galgasScanner * scanner = NULL ;
   macroMyNew (scanner, C_Lexique_galgasScanner (inCompiler, inSourceFilePath COMMA_HERE)) ;
@@ -915,7 +915,7 @@ void cGrammar_galgas_33_ProjectGrammar::performOnlySyntaxAnalysis (C_Compiler * 
 //                                                                                                                      
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cGrammar_galgas_33_ProjectGrammar::_performSourceFileParsing_ (C_Compiler * inCompiler,
+void cGrammar_galgas_33_ProjectGrammar::_performSourceFileParsing_ (Compiler * inCompiler,
                                 GALGAS_lstring inFilePath,
                                 GALGAS_galgas_33_ProjectComponentAST &  parameter_1
                                 COMMA_LOCATION_ARGS) {
@@ -957,7 +957,7 @@ void cGrammar_galgas_33_ProjectGrammar::_performSourceFileParsing_ (C_Compiler *
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cGrammar_galgas_33_ProjectGrammar::_performSourceStringParsing_ (C_Compiler * inCompiler,
+void cGrammar_galgas_33_ProjectGrammar::_performSourceStringParsing_ (Compiler * inCompiler,
                                 GALGAS_string inSourceString,
                                 GALGAS_string inNameString,
                                 GALGAS_galgas_33_ProjectComponentAST &  parameter_1
@@ -38637,7 +38637,7 @@ void cGrammar_galgas_33_Grammar::nt_start_5F_symbol_ (GALGAS_galgasDeclarationAS
   }
 }
 
-void cGrammar_galgas_33_Grammar::performIndexing (C_Compiler * inCompiler,
+void cGrammar_galgas_33_Grammar::performIndexing (Compiler * inCompiler,
              const String & inSourceFilePath) {
   C_Lexique_galgasScanner * scanner = nullptr ;
   macroMyNew (scanner, C_Lexique_galgasScanner (inCompiler, inSourceFilePath COMMA_HERE)) ;
@@ -38655,7 +38655,7 @@ void cGrammar_galgas_33_Grammar::performIndexing (C_Compiler * inCompiler,
   macroDetachSharedObject (scanner) ;
 }
 
-void cGrammar_galgas_33_Grammar::performOnlyLexicalAnalysis (C_Compiler * inCompiler,
+void cGrammar_galgas_33_Grammar::performOnlyLexicalAnalysis (Compiler * inCompiler,
              const String & inSourceFilePath) {
   C_Lexique_galgasScanner * scanner = NULL ;
   macroMyNew (scanner, C_Lexique_galgasScanner (inCompiler, inSourceFilePath COMMA_HERE)) ;
@@ -38665,7 +38665,7 @@ void cGrammar_galgas_33_Grammar::performOnlyLexicalAnalysis (C_Compiler * inComp
   macroDetachSharedObject (scanner) ;
 }
 
-void cGrammar_galgas_33_Grammar::performOnlySyntaxAnalysis (C_Compiler * inCompiler,
+void cGrammar_galgas_33_Grammar::performOnlySyntaxAnalysis (Compiler * inCompiler,
              const String & inSourceFilePath) {
   C_Lexique_galgasScanner * scanner = NULL ;
   macroMyNew (scanner, C_Lexique_galgasScanner (inCompiler, inSourceFilePath COMMA_HERE)) ;
@@ -38683,7 +38683,7 @@ void cGrammar_galgas_33_Grammar::performOnlySyntaxAnalysis (C_Compiler * inCompi
 //                                                                                                                      
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cGrammar_galgas_33_Grammar::_performSourceFileParsing_ (C_Compiler * inCompiler,
+void cGrammar_galgas_33_Grammar::_performSourceFileParsing_ (Compiler * inCompiler,
                                 GALGAS_lstring inFilePath,
                                 GALGAS_galgasDeclarationAST &  parameter_1
                                 COMMA_LOCATION_ARGS) {
@@ -38726,7 +38726,7 @@ void cGrammar_galgas_33_Grammar::_performSourceFileParsing_ (C_Compiler * inComp
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cGrammar_galgas_33_Grammar::_performSourceStringParsing_ (C_Compiler * inCompiler,
+void cGrammar_galgas_33_Grammar::_performSourceStringParsing_ (Compiler * inCompiler,
                                 GALGAS_string inSourceString,
                                 GALGAS_string inNameString,
                                 GALGAS_galgasDeclarationAST &  parameter_1

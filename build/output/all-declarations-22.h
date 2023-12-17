@@ -31,7 +31,7 @@ extern const cDirectoryWrapper gWrapperDirectory_0_templateLexiqueGenerationTemp
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_cppHeader (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_cppHeader (class Compiler * inCompiler,
                                                                                 const class GALGAS_string & in_LEXIQUE_5F_IDENTIFIER,
                                                                                 const class GALGAS_string & in_SUPER_5F_LEXIQUE_5F_IDENTIFIER
                                                                                 COMMA_LOCATION_ARGS) ;
@@ -42,7 +42,7 @@ GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_cppHeader (
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_cppImplementation (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_cppImplementation (class Compiler * inCompiler,
                                                                                         const class GALGAS_string & in_LEXIQUE_5F_IDENTIFIER,
                                                                                         const class GALGAS_string & in_SUPER_5F_LEXIQUE_5F_IDENTIFIER,
                                                                                         const class GALGAS_lexicalExplicitTokenListMapMap & in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP,
@@ -59,7 +59,7 @@ GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_cppImplemen
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_objcCocoaHeaderZone (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_objcCocoaHeaderZone (class Compiler * inCompiler,
                                                                                           const class GALGAS_string & in_LEXIQUE_5F_CLASS_5F_NAME,
                                                                                           const class GALGAS_string & in_SUPER_5F_LEXIQUE_5F_CLASS_5F_NAME,
                                                                                           const class GALGAS_string & in_SUPER_5F_LEXIQUE_5F_HEADER_5F_FILE_5F_NAME
@@ -71,7 +71,7 @@ GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_objcCocoaHe
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_objcCocoaImplementationZone (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_objcCocoaImplementationZone (class Compiler * inCompiler,
                                                                                                   const class GALGAS_string & in_LEXIQUE_5F_HEADER_5F_FILE_5F_NAME,
                                                                                                   const class GALGAS_string & in_LEXIQUE_5F_CLASS_5F_NAME,
                                                                                                   const class GALGAS_terminalList & in_TERMINAL_5F_LIST,
@@ -85,7 +85,7 @@ GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_objcCocoaIm
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_swiftCocoaImplementationZone (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_swiftCocoaImplementationZone (class Compiler * inCompiler,
                                                                                                    const class GALGAS_string & in_LEXIQUE_5F_HEADER_5F_FILE_5F_NAME,
                                                                                                    const class GALGAS_string & in_LEXIQUE_5F_CLASS_5F_NAME,
                                                                                                    const class GALGAS_string & in_SUPER_5F_LEXIQUE_5F_CLASS_5F_NAME,
@@ -100,7 +100,7 @@ GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_swiftCocoaI
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_printPredefinedLexicalActions (class C_Compiler * inCompiler
+void routine_printPredefinedLexicalActions (class Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -126,7 +126,7 @@ extern const cDirectoryWrapper gWrapperDirectory_0_optionGenerationTemplates ;
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionHeaderZone_33_ (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionHeaderZone_33_ (class Compiler * inCompiler,
                                                                                   const class GALGAS_string & in_OPTION_5F_COMPONENT_5F_NAME,
                                                                                   const class GALGAS_commandLineOptionMap & in_BOOL_5F_OPTION_5F_MAP,
                                                                                   const class GALGAS_commandLineOptionMap & in_UINT_5F_OPTION_5F_MAP,
@@ -140,7 +140,7 @@ GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionHeaderZone_33_
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementationGalgas_33_ (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementationGalgas_33_ (class Compiler * inCompiler,
                                                                                             const class GALGAS_string & in_OPTION_5F_COMPONENT_5F_NAME,
                                                                                             const class GALGAS_commandLineOptionMap & in_BOOL_5F_OPTION_5F_MAP,
                                                                                             const class GALGAS_commandLineOptionMap & in_UINT_5F_OPTION_5F_MAP,
@@ -154,7 +154,7 @@ GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementation
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionHeaderCocoaZone_32_ (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionHeaderCocoaZone_32_ (class Compiler * inCompiler,
                                                                                        const class GALGAS_string & in_OPTION_5F_COMPONENT_5F_NAME
                                                                                        COMMA_LOCATION_ARGS) ;
 
@@ -164,7 +164,7 @@ GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionHeaderCocoaZon
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionHeaderCocoaZone_33_ (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionHeaderCocoaZone_33_ (class Compiler * inCompiler,
                                                                                        const class GALGAS_string & in_OPTION_5F_COMPONENT_5F_NAME
                                                                                        COMMA_LOCATION_ARGS) ;
 
@@ -174,7 +174,7 @@ GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionHeaderCocoaZon
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementationCocoa (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementationCocoa (class Compiler * inCompiler,
                                                                                        const class GALGAS_string & in_OPTION_5F_HEADER_5F_FILE_5F_NAME,
                                                                                        const class GALGAS_string & in_OPTION_5F_COMPONENT_5F_NAME,
                                                                                        const class GALGAS_commandLineOptionMap & in_BOOL_5F_OPTION_5F_MAP,
@@ -189,7 +189,7 @@ GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementation
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementationSwiftCocoa (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementationSwiftCocoa (class Compiler * inCompiler,
                                                                                             const class GALGAS_string & in_OPTION_5F_HEADER_5F_FILE_5F_NAME,
                                                                                             const class GALGAS_string & in_OPTION_5F_COMPONENT_5F_NAME,
                                                                                             const class GALGAS_commandLineOptionMap & in_BOOL_5F_OPTION_5F_MAP,
@@ -207,7 +207,7 @@ GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementation
 void routine_compileAllGuiComponentFromASTGalgas_33_ (const class GALGAS_galgasGUIComponentListAST constinArgument0,
                                                       const class GALGAS_semanticContext constinArgument1,
                                                       class GALGAS_optionComponentMapForGeneration & outArgument2,
-                                                      class C_Compiler * inCompiler
+                                                      class Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -219,7 +219,7 @@ void routine_compileAllGuiComponentFromASTGalgas_33_ (const class GALGAS_galgasG
 void routine_guiComponentSemanticAnalysis (const class GALGAS_galgasGUIComponentListAST_2D_element constinArgument0,
                                            const class GALGAS_semanticContext constinArgument1,
                                            class GALGAS_optionComponentMapForGeneration & ioArgument2,
-                                           class C_Compiler * inCompiler
+                                           class Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -233,7 +233,7 @@ void routine_generateAllGuiComponentsGalgas_33_ (const class GALGAS_optionCompon
                                                  const class GALGAS_bool constinArgument2,
                                                  class GALGAS_stringlist & ioArgument3,
                                                  class GALGAS_stringset & ioArgument4,
-                                                 class C_Compiler * inCompiler
+                                                 class Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -259,7 +259,7 @@ extern const cDirectoryWrapper gWrapperDirectory_0_guiGenerationTemplates ;
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_guiGenerationTemplates_objc_5F_gui_5F_implementation (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_guiGenerationTemplates_objc_5F_gui_5F_implementation (class Compiler * inCompiler,
                                                                                         const class GALGAS_guiAnalysisContext & in_GUI_5F_CONTEXT,
                                                                                         const class GALGAS_bool & in_QUIET_5F_OUTPUT_5F_BY_5F_DEFAULT
                                                                                         COMMA_LOCATION_ARGS) ;
@@ -270,7 +270,7 @@ GALGAS_string filewrapperTemplate_guiGenerationTemplates_objc_5F_gui_5F_implemen
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_guiGenerationTemplates_swift_5F_gui_5F_implementation (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_guiGenerationTemplates_swift_5F_gui_5F_implementation (class Compiler * inCompiler,
                                                                                          const class GALGAS_guiAnalysisContext & in_GUI_5F_CONTEXT,
                                                                                          const class GALGAS_bool & in_QUIET_5F_OUTPUT_5F_BY_5F_DEFAULT
                                                                                          COMMA_LOCATION_ARGS) ;
@@ -283,7 +283,7 @@ GALGAS_string filewrapperTemplate_guiGenerationTemplates_swift_5F_gui_5F_impleme
 
 void routine_commonGetterMapForAllTypes (class GALGAS_unifiedTypeMap & ioArgument0,
                                          class GALGAS_getterMap & outArgument1,
-                                         class C_Compiler * inCompiler
+                                         class Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -300,7 +300,7 @@ void routine_enterBaseGetterWithArgument (class GALGAS_getterMap & ioArgument0,
                                           const class GALGAS_string constinArgument5,
                                           const class GALGAS_string constinArgument6,
                                           const class GALGAS_bool constinArgument7,
-                                          class C_Compiler * inCompiler
+                                          class Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -315,7 +315,7 @@ void routine_enterBaseGetterWithoutArgument (class GALGAS_getterMap & ioArgument
                                              const class GALGAS_string constinArgument3,
                                              const class GALGAS_string constinArgument4,
                                              const class GALGAS_bool constinArgument5,
-                                             class C_Compiler * inCompiler
+                                             class Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -325,7 +325,7 @@ void routine_enterBaseGetterWithoutArgument (class GALGAS_getterMap & ioArgument
 //--------------------------------------------------------------------------------------------------
 
 class GALGAS_lstring function_typeNameForUsefulEntitiesGraph (const class GALGAS_lstring & constinArgument0,
-                                                              class C_Compiler * inCompiler
+                                                              class Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -353,7 +353,7 @@ extern const cDirectoryWrapper gWrapperDirectory_0_typeGenerationTemplate ;
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (class Compiler * inCompiler,
                                                                                   const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                   const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                                   const class GALGAS_bool & in_IS_5F_CONCRETE,
@@ -375,7 +375,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_typeGenerationTemplate_genericTypeImplementation (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_genericTypeImplementation (class Compiler * inCompiler,
                                                                                     const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                     const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                                     const class GALGAS_unifiedTypeMapEntry & in_SUPER_5F_TYPE_5F_INDEX,
@@ -388,7 +388,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_genericTypeImplementati
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_typeGenerationTemplate_externTypeHeader_31_ (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_externTypeHeader_31_ (class Compiler * inCompiler,
                                                                                const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                                const class GALGAS_string & in_PRE_5F_DECLARATION,
@@ -401,7 +401,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_externTypeHeader_31_ (c
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_typeGenerationTemplate_graphTypeHeader_31_ (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_graphTypeHeader_31_ (class Compiler * inCompiler,
                                                                               const class GALGAS_string & in_TYPE_5F_NAME,
                                                                               const class GALGAS_string & in_TYPE_5F_IDENTIFIER
                                                                               COMMA_LOCATION_ARGS) ;
@@ -412,7 +412,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_graphTypeHeader_31_ (cl
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_typeGenerationTemplate_graphTypeSpecificImplementation (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_graphTypeSpecificImplementation (class Compiler * inCompiler,
                                                                                           const class GALGAS_unifiedTypeMapEntry & in_TYPE,
                                                                                           const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                                           const class GALGAS_unifiedTypeMapEntry & in_ASSOCIATED_5F_LIST_5F_TYPE,
@@ -425,7 +425,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_graphTypeSpecificImplem
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeHeader_31_ (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeHeader_31_ (class Compiler * inCompiler,
                                                                               const class GALGAS_string & in_TYPE_5F_NAME,
                                                                               const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                               const class GALGAS_string & in_ELEMENT_5F_TYPE_5F_IDENTIFIER,
@@ -438,7 +438,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeHeader_31_ (cl
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplementation (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplementation (class Compiler * inCompiler,
                                                                                           const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                           const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                                           const class GALGAS_string & in_ELEMENT_5F_TYPE_5F_IDENTIFIER,
@@ -452,7 +452,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_typeGenerationTemplate_listmapTypeHeader_31_ (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_listmapTypeHeader_31_ (class Compiler * inCompiler,
                                                                                 const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                 const class GALGAS_string & in_TYPE_5F_IDENTIFIER
                                                                                 COMMA_LOCATION_ARGS) ;
@@ -463,7 +463,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_listmapTypeHeader_31_ (
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_typeGenerationTemplate_listmapTypeSpecificImplementation (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_listmapTypeSpecificImplementation (class Compiler * inCompiler,
                                                                                             const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                                             const class GALGAS_string & in_ASSOCIATED_5F_LIST_5F_TYPE_5F_IDENTIFIER,
                                                                                             const class GALGAS_typedPropertyList & in_CURRENT_5F_PROPERTY_5F_LIST
@@ -475,7 +475,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_listmapTypeSpecificImpl
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeHeader_31_ (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeHeader_31_ (class Compiler * inCompiler,
                                                                             const class GALGAS_string & in_TYPE_5F_NAME,
                                                                             const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                             const class GALGAS_typedPropertyList & in_CURRENT_5F_PROPERTY_5F_LIST,
@@ -488,7 +488,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeHeader_31_ (clas
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeHeader_32_ (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeHeader_32_ (class Compiler * inCompiler,
                                                                             const class GALGAS_string & in_TYPE_5F_NAME,
                                                                             const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                             const class GALGAS_typedPropertyList & in_CURRENT_5F_PROPERTY_5F_LIST
@@ -500,7 +500,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeHeader_32_ (clas
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplementation (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplementation (class Compiler * inCompiler,
                                                                                         const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                                         const class GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST,
                                                                                         const class GALGAS_insertMethodListAST & in_INSERT_5F_METHOD_5F_LIST,
@@ -515,7 +515,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_typeGenerationTemplate_dictTypeHeader_31_ (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_dictTypeHeader_31_ (class Compiler * inCompiler,
                                                                              const class GALGAS_string & in_TYPE_5F_NAME,
                                                                              const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                              const class GALGAS_typedPropertyList & in_CURRENT_5F_PROPERTY_5F_LIST
@@ -527,7 +527,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_dictTypeHeader_31_ (cla
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_typeGenerationTemplate_dictTypeSpecificImplementation (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_dictTypeSpecificImplementation (class Compiler * inCompiler,
                                                                                          const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                                          const class GALGAS_typedPropertyList & in_CURRENT_5F_PROPERTY_5F_LIST,
                                                                                          const class GALGAS_string & in_KEY_5F_TYPE_5F_IDENTIFIER
@@ -539,7 +539,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_dictTypeSpecificImpleme
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_typeGenerationTemplate_valueClassTypeHeader_31_ (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_valueClassTypeHeader_31_ (class Compiler * inCompiler,
                                                                                    const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                    const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                                    const class GALGAS_string & in_SUPER_5F_TYPE_5F_IDENTIFIER,
@@ -553,7 +553,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_valueClassTypeHeader_31
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_typeGenerationTemplate_valueClassTypeHeader_32_part_31_ (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_valueClassTypeHeader_32_part_31_ (class Compiler * inCompiler,
                                                                                            const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                            const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                                            const class GALGAS_string & in_SUPER_5F_TYPE_5F_IDENTIFIER,
@@ -570,7 +570,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_valueClassTypeHeader_32
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_typeGenerationTemplate_valueClassTypeHeader_32_part_32_ (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_valueClassTypeHeader_32_part_32_ (class Compiler * inCompiler,
                                                                                            const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                            const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                                            const class GALGAS_string & in_SUPER_5F_TYPE_5F_IDENTIFIER,
@@ -585,7 +585,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_valueClassTypeHeader_32
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_typeGenerationTemplate_valueClassTypeSpecificImplementation (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_valueClassTypeSpecificImplementation (class Compiler * inCompiler,
                                                                                                const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                                const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                                                const class GALGAS_string & in_SUPER_5F_TYPE_5F_IDENTIFIER,
@@ -601,7 +601,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_valueClassTypeSpecificI
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_typeGenerationTemplate_referenceClassTypeHeader_31_ (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_referenceClassTypeHeader_31_ (class Compiler * inCompiler,
                                                                                        const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                        const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                                        const class GALGAS_string & in_SUPER_5F_TYPE_5F_IDENTIFIER,
@@ -615,7 +615,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_referenceClassTypeHeade
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_typeGenerationTemplate_referenceClassTypeHeader_32_part_31_ (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_referenceClassTypeHeader_32_part_31_ (class Compiler * inCompiler,
                                                                                                const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                                const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                                                const class GALGAS_string & in_SUPER_5F_TYPE_5F_IDENTIFIER,
@@ -632,7 +632,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_referenceClassTypeHeade
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_typeGenerationTemplate_referenceClassTypeHeader_32_part_32_ (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_referenceClassTypeHeader_32_part_32_ (class Compiler * inCompiler,
                                                                                                const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                                const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                                                const class GALGAS_string & in_SUPER_5F_TYPE_5F_IDENTIFIER,
@@ -647,7 +647,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_referenceClassTypeHeade
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_typeGenerationTemplate_referenceClassTypeSpecificImplementation (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_referenceClassTypeSpecificImplementation (class Compiler * inCompiler,
                                                                                                    const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                                    const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                                                    const class GALGAS_string & in_SUPER_5F_TYPE_5F_IDENTIFIER,
@@ -663,7 +663,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_referenceClassTypeSpeci
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_typeGenerationTemplate_weakReferenceClassTypeHeader_31_ (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_weakReferenceClassTypeHeader_31_ (class Compiler * inCompiler,
                                                                                            const class GALGAS_string & in_CLASS_5F_TYPE_5F_IDENTIFIER,
                                                                                            const class GALGAS_string & in_WEAK_5F_REF_5F_TYPE_5F_IDENTIFIER,
                                                                                            const class GALGAS_string & in_SUPER_5F_WEAK_5F_REF_5F_TYPE_5F_IDENTIFIER
@@ -675,7 +675,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_weakReferenceClassTypeH
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_typeGenerationTemplate_weakReferenceClassTypeSpecificImplementation (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_weakReferenceClassTypeSpecificImplementation (class Compiler * inCompiler,
                                                                                                        const class GALGAS_string & in_CLASS_5F_TYPE_5F_IDENTIFIER,
                                                                                                        const class GALGAS_string & in_WEAK_5F_REF_5F_TYPE_5F_IDENTIFIER,
                                                                                                        const class GALGAS_string & in_SUPER_5F_WEAK_5F_REF_5F_TYPE_5F_IDENTIFIER,
@@ -690,7 +690,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_weakReferenceClassTypeS
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_typeGenerationTemplate_typeAliasTypeHeader_31_ (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_typeAliasTypeHeader_31_ (class Compiler * inCompiler,
                                                                                   const class GALGAS_string & in_ALIAS_5F_TYPE_5F_IDENTIFIER,
                                                                                   const class GALGAS_string & in_REFERENCED_5F_TYPE_5F_IDENTIFIER
                                                                                   COMMA_LOCATION_ARGS) ;
@@ -701,7 +701,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_typeAliasTypeHeader_31_
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_stringset function_forbiddenKeysForBoolset (class C_Compiler * inCompiler
+class GALGAS_stringset function_forbiddenKeysForBoolset (class Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -721,7 +721,7 @@ void routine_addExtensions (const class GALGAS_extensionMethodMapForBuildingCont
                             class GALGAS_setterMap & ioArgument8,
                             class GALGAS_instanceMethodMap & ioArgument9,
                             const class GALGAS_bool constinArgument10,
-                            class C_Compiler * inCompiler
+                            class Compiler * inCompiler
                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -736,7 +736,7 @@ void routine_enterBaseFinalGetterWithoutArgument (class GALGAS_getterMap & ioArg
                                                   const class GALGAS_string constinArgument3,
                                                   const class GALGAS_string constinArgument4,
                                                   const class GALGAS_bool constinArgument5,
-                                                  class C_Compiler * inCompiler
+                                                  class Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -762,7 +762,7 @@ extern const cDirectoryWrapper gWrapperDirectory_0_structGenerationTemplate ;
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeHeader_31_ (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeHeader_31_ (class Compiler * inCompiler,
                                                                                   const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                   const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                                   const class GALGAS_lstringlist & in_SLOT_5F_LIST
@@ -774,7 +774,7 @@ GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeHeader_31_
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificImplementation (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificImplementation (class Compiler * inCompiler,
                                                                                               const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                               const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                                               const class GALGAS_lstringlist & in_SLOT_5F_LIST,
@@ -792,7 +792,7 @@ class GALGAS_string function_generateClassGetterDeclaration (const class GALGAS_
                                                              const class GALGAS_bool & constinArgument2,
                                                              const class GALGAS_unifiedTypeMapEntry & constinArgument3,
                                                              const class GALGAS_methodQualifier & constinArgument4,
-                                                             class C_Compiler * inCompiler
+                                                             class Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -805,7 +805,7 @@ class GALGAS_string function_generateClassInstanceMethodDeclaration (const class
                                                                      const class GALGAS_formalParameterSignature & constinArgument1,
                                                                      const class GALGAS_bool & constinArgument2,
                                                                      const class GALGAS_methodQualifier & constinArgument3,
-                                                                     class C_Compiler * inCompiler
+                                                                     class Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -831,7 +831,7 @@ extern const cDirectoryWrapper gWrapperDirectory_0_enumGenerationTemplate ;
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeHeader_31_ (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeHeader_31_ (class Compiler * inCompiler,
                                                                              const class GALGAS_string & in_TYPE_5F_NAME,
                                                                              const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                              const class GALGAS_enumConstantListForGeneration & in_CONSTANT_5F_LIST,
@@ -844,7 +844,7 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeHeader_31_ (cla
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeHeader_32_ (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeHeader_32_ (class Compiler * inCompiler,
                                                                              const class GALGAS_string & in_TYPE_5F_NAME,
                                                                              const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                              const class GALGAS_enumConstantListForGeneration & in_CONSTANT_5F_LIST,
@@ -857,7 +857,7 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeHeader_32_ (cla
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImplementation (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImplementation (class Compiler * inCompiler,
                                                                                          const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                          const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                                          const class GALGAS_enumConstantListForGeneration & in_CONSTANT_5F_LIST,

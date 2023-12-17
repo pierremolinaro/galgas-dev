@@ -13,7 +13,7 @@ GALGAS_%![RETURN_TYPE identifierRepresentation]% callExtensionGetter_%![GETTER_N
       %GALGAS_%![mFormalArgumentType identifierRepresentation]% in_%![mFormalArgumentName identifierRepresentation]
     end
   end
-  %,\n%!^%C_Compiler * inCompiler%
+  %,\n%!^%Compiler * inCompiler%
   %\n%!^%COMMA_LOCATION_ARGS) {
   GALGAS_%![RETURN_TYPE identifierRepresentation]% result ;
   if (nullptr != inObject) {

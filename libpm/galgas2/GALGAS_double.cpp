@@ -19,7 +19,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "all-predefined-types.h"
-#include "galgas2/C_Compiler.h"
+#include "galgas2/Compiler.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -94,7 +94,7 @@ GALGAS_double GALGAS_double::getter_cos (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_double GALGAS_double::getter_sqrt (C_Compiler * inCompiler
+GALGAS_double GALGAS_double::getter_sqrt (Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const {
   GALGAS_double result ;
   if (isValid ()) {
@@ -111,7 +111,7 @@ GALGAS_double GALGAS_double::getter_sqrt (C_Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_double GALGAS_double::getter_log_32_ (C_Compiler * inCompiler
+GALGAS_double GALGAS_double::getter_log_32_ (Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const {
   GALGAS_double result ;
   if (isValid ()) {
@@ -128,7 +128,7 @@ GALGAS_double GALGAS_double::getter_log_32_ (C_Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_double GALGAS_double::getter_log_31__30_ (C_Compiler * inCompiler
+GALGAS_double GALGAS_double::getter_log_31__30_ (Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) const {
   GALGAS_double result ;
   if (isValid ()) {
@@ -145,7 +145,7 @@ GALGAS_double GALGAS_double::getter_log_31__30_ (C_Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_double GALGAS_double::getter_logn (C_Compiler * inCompiler
+GALGAS_double GALGAS_double::getter_logn (Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) const {
   GALGAS_double result ;
   if (isValid ()) {
@@ -223,7 +223,7 @@ GALGAS_double GALGAS_double::getter_tanDegree (UNUSED_LOCATION_ARGS) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_double GALGAS_double::getter_power (const GALGAS_double & inExponant,
-                                           C_Compiler * /* inCompiler */
+                                           Compiler * /* inCompiler */
                                            COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_double result ;
   if (isValid () && inExponant.isValid ()) {
@@ -234,7 +234,7 @@ GALGAS_double GALGAS_double::getter_power (const GALGAS_double & inExponant,
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint GALGAS_double::getter_uint (C_Compiler * inCompiler
+GALGAS_uint GALGAS_double::getter_uint (Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) const {
   GALGAS_uint result ;
   if ((mDoubleValue > (double) UINT32_MAX) || (mDoubleValue < 0.0)) {
@@ -251,7 +251,7 @@ GALGAS_uint GALGAS_double::getter_uint (C_Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint_36__34_ GALGAS_double::getter_uint_36__34_ (C_Compiler * inCompiler
+GALGAS_uint_36__34_ GALGAS_double::getter_uint_36__34_ (Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
   GALGAS_uint_36__34_ result ;
   if ((mDoubleValue > (double) UINT64_MAX) || (mDoubleValue < 0.0)) {
@@ -268,7 +268,7 @@ GALGAS_uint_36__34_ GALGAS_double::getter_uint_36__34_ (C_Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_sint GALGAS_double::getter_sint (C_Compiler * inCompiler
+GALGAS_sint GALGAS_double::getter_sint (Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const {
   GALGAS_sint result ;
   if ((mDoubleValue > (double) INT32_MAX) || (mDoubleValue < (double) INT32_MIN)) {
@@ -285,7 +285,7 @@ GALGAS_sint GALGAS_double::getter_sint (C_Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_sint_36__34_ GALGAS_double::getter_sint_36__34_ (C_Compiler * inCompiler
+GALGAS_sint_36__34_ GALGAS_double::getter_sint_36__34_ (Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) const {
   GALGAS_sint_36__34_ result ;
   if ((mDoubleValue > (double) INT64_MAX) || (mDoubleValue < (double) INT64_MIN)) {
@@ -340,7 +340,7 @@ GALGAS_string GALGAS_double::getter_string (UNUSED_LOCATION_ARGS) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_double GALGAS_double::add_operation (const GALGAS_double & inOperand2,
-                                            C_Compiler * /* inCompiler */
+                                            Compiler * /* inCompiler */
                                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_double result ;
   if (isValid () && inOperand2.isValid ()) {
@@ -352,7 +352,7 @@ GALGAS_double GALGAS_double::add_operation (const GALGAS_double & inOperand2,
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_double GALGAS_double::substract_operation (const GALGAS_double & inOperand2,
-                                                  C_Compiler * /* inCompiler */
+                                                  Compiler * /* inCompiler */
                                                   COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_double result ;
   if (isValid () && inOperand2.isValid ()) {
@@ -364,7 +364,7 @@ GALGAS_double GALGAS_double::substract_operation (const GALGAS_double & inOperan
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_double::plusAssign_operation (const GALGAS_double inOperand,
-                                          C_Compiler *
+                                          Compiler *
                                           COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     mDoubleValue += inOperand.mDoubleValue ;
@@ -376,7 +376,7 @@ void GALGAS_double::plusAssign_operation (const GALGAS_double inOperand,
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_double::minusAssign_operation (const GALGAS_double inOperand,
-                                           C_Compiler *
+                                           Compiler *
                                            COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     mDoubleValue -= inOperand.mDoubleValue ;
@@ -388,7 +388,7 @@ void GALGAS_double::minusAssign_operation (const GALGAS_double inOperand,
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_double::mulAssign_operation (const GALGAS_double inOperand,
-                                         C_Compiler * /* inCompiler */
+                                         Compiler * /* inCompiler */
                                          COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     mDoubleValue *= inOperand.mDoubleValue ;
@@ -400,7 +400,7 @@ void GALGAS_double::mulAssign_operation (const GALGAS_double inOperand,
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_double::divAssign_operation (const GALGAS_double inOperand,
-                                         C_Compiler * inCompiler
+                                         Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     if (inOperand.mDoubleValue == 0) {
@@ -415,7 +415,7 @@ void GALGAS_double::divAssign_operation (const GALGAS_double inOperand,
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_double GALGAS_double::multiply_operation (const GALGAS_double & inOperand2,
-                                                 C_Compiler * /* inCompiler */
+                                                 Compiler * /* inCompiler */
                                                  COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_double result ;
   if (isValid () && inOperand2.isValid ()) {
@@ -427,7 +427,7 @@ GALGAS_double GALGAS_double::multiply_operation (const GALGAS_double & inOperand
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_double GALGAS_double::divide_operation (const GALGAS_double & inOperand2,
-                                               C_Compiler * inCompiler
+                                               Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) const {
   GALGAS_double result ;
   if (isValid () && inOperand2.isValid ()) {
@@ -452,7 +452,7 @@ GALGAS_double GALGAS_double::divide_operation_no_ovf (const GALGAS_double & inOp
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_double GALGAS_double::operator_unary_minus (C_Compiler * /* inCompiler */
+GALGAS_double GALGAS_double::operator_unary_minus (Compiler * /* inCompiler */
                                                    COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_double result ;
   if (isValid ()) {
@@ -464,7 +464,7 @@ GALGAS_double GALGAS_double::operator_unary_minus (C_Compiler * /* inCompiler */
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_double GALGAS_double::modulo_operation (const GALGAS_double & inOperand,
-                                               C_Compiler * /* inCompiler */
+                                               Compiler * /* inCompiler */
                                                COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_double result ;
   if (isValid () && inOperand.isValid ()) {

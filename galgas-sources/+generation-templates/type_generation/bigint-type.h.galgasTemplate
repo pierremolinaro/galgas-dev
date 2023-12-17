@@ -19,7 +19,7 @@ class GALGAS_bigint : public AC_GALGAS_root {
 
 //--------------------------------- Constructor
   public: GALGAS_bigint (const BigSigned & inValue) ;
-  public: GALGAS_bigint (const char * inDecimalString, C_Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+  public: GALGAS_bigint (const char * inDecimalString, Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Destructor
   public: virtual ~ GALGAS_bigint (void) ;

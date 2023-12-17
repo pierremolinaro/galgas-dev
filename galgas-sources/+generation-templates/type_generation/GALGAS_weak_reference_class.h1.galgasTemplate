@@ -18,5 +18,5 @@ class GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% : public %
   public: GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% & operator = (const class GALGAS_%!CLASS_TYPE_IDENTIFIER% & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_%!CLASS_TYPE_IDENTIFIER% bang_%!WEAK_REF_TYPE_IDENTIFIER% (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_%!CLASS_TYPE_IDENTIFIER% bang_%!WEAK_REF_TYPE_IDENTIFIER% (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 

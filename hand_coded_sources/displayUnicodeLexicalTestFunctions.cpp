@@ -59,7 +59,7 @@ static void displayUnicodeCharacterRange (bool (*inFunction) (const utf32 inUnic
 
 //--------------------------------------------------------------------------------------------------
 
-void routine_displayUnicodeLexicalTestFunctions (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+void routine_displayUnicodeLexicalTestFunctions (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   displayUnicodeCharacterRange (isUnicodeLetter, "isUnicodeLetter") ;
   displayUnicodeCharacterRange (isUnicodeMark, "isUnicodeMark") ;
   displayUnicodeCharacterRange (isUnicodeNumber, "isUnicodeNumber") ;

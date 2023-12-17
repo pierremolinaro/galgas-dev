@@ -10,7 +10,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-C_Lexique_%!LEXIQUE_IDENTIFIER%::C_Lexique_%!LEXIQUE_IDENTIFIER% (%?^%C_Compiler * inCallerCompiler,
+C_Lexique_%!LEXIQUE_IDENTIFIER%::C_Lexique_%!LEXIQUE_IDENTIFIER% (%?^%Compiler * inCallerCompiler,
                 %!^%const String & inSourceFileName
                 %!^%COMMA_LOCATION_ARGS) :
 C_Lexique_%!SUPER_LEXIQUE_IDENTIFIER% (inCallerCompiler, inSourceFileName COMMA_THERE),
@@ -19,7 +19,7 @@ mMatchedTemplateDelimiterIndex (-1) {
 
 //--------------------------------------------------------------------------------------------------
 
-C_Lexique_%!LEXIQUE_IDENTIFIER%::C_Lexique_%!LEXIQUE_IDENTIFIER% (%?^%C_Compiler * inCallerCompiler,
+C_Lexique_%!LEXIQUE_IDENTIFIER%::C_Lexique_%!LEXIQUE_IDENTIFIER% (%?^%Compiler * inCallerCompiler,
                 %!^%const String & inSourceString,
                 %!^%const String & inStringForError
                 %!^%COMMA_LOCATION_ARGS) :

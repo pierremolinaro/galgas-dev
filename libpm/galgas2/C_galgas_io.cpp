@@ -27,7 +27,7 @@
 #include "galgas2/C_galgas_class_inspector.h"
 #include "galgas2/F_verbose_output.h"
 #include "galgas2/cIssueDescriptor.h"
-#include "galgas2/C_Compiler.h"
+#include "galgas2/Compiler.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -205,7 +205,7 @@ static String constructErrorOrWarningLocationMessage (const String & inMessage,
 //
 //--------------------------------------------------------------------------------------------------
 
-void signalLexicalWarning (C_Compiler * inCompiler,
+void signalLexicalWarning (Compiler * inCompiler,
                            const C_SourceTextInString & inSourceText,
                            const C_IssueWithFixIt & inIssue,
                            const String & inLexicalWarningMessage
@@ -235,7 +235,7 @@ void signalLexicalWarning (C_Compiler * inCompiler,
 //
 //--------------------------------------------------------------------------------------------------
 
-void signalLexicalError (C_Compiler * inCompiler,
+void signalLexicalError (Compiler * inCompiler,
                          const C_SourceTextInString & inSourceText,
                          const C_IssueWithFixIt & inIssue,
                          const String & inLexicalErrorMessage
@@ -264,7 +264,7 @@ void signalLexicalError (C_Compiler * inCompiler,
 //
 //--------------------------------------------------------------------------------------------------
 
-void signalParsingError (C_Compiler * inCompiler,
+void signalParsingError (Compiler * inCompiler,
                          const C_SourceTextInString & inSourceText,
                          const C_LocationInSource & inPreviousTokenEndLocation,
                          const C_IssueWithFixIt & inIssue,
@@ -307,7 +307,7 @@ void signalParsingError (C_Compiler * inCompiler,
 //
 //--------------------------------------------------------------------------------------------------
 
-void signalExtractError (C_Compiler * inCompiler,
+void signalExtractError (Compiler * inCompiler,
                          const C_SourceTextInString & inSourceText,
                          const C_IssueWithFixIt & inIssue,
                          const TC_UniqueArray <String> & inExpectedClassesErrorStringsArray,
@@ -362,7 +362,7 @@ void signalExtractError (C_Compiler * inCompiler,
 //
 //--------------------------------------------------------------------------------------------------
 
-void signalCastError (C_Compiler * inCompiler,
+void signalCastError (Compiler * inCompiler,
                       const C_SourceTextInString & inSourceText,
                       const C_IssueWithFixIt & inIssue,
                       const std::type_info * inBaseClass,
@@ -445,7 +445,7 @@ void signalCastError (C_Compiler * inCompiler,
 
 //--------------------------------------------------------------------------------------------------
 
-void signalSemanticWarning (C_Compiler * inCompiler,
+void signalSemanticWarning (Compiler * inCompiler,
                             const C_SourceTextInString & inSourceText,
                             const C_IssueWithFixIt & inIssue,
                             const String & inWarningMessage
@@ -471,7 +471,7 @@ void signalSemanticWarning (C_Compiler * inCompiler,
 
 //--------------------------------------------------------------------------------------------------
 
-void signalSemanticError (C_Compiler * inCompiler,
+void signalSemanticError (Compiler * inCompiler,
                           const C_SourceTextInString & inSourceText,
                           const C_IssueWithFixIt & inIssue,
                           const String & inErrorMessage
@@ -497,7 +497,7 @@ void signalSemanticError (C_Compiler * inCompiler,
 
 //--------------------------------------------------------------------------------------------------
 
-void signalRunTimeError (C_Compiler * inCompiler,
+void signalRunTimeError (Compiler * inCompiler,
                          const String & inRunTimeErrorMessage
                          COMMA_LOCATION_ARGS) {
 //--- Increment error count
@@ -519,7 +519,7 @@ void signalRunTimeError (C_Compiler * inCompiler,
 
 //--------------------------------------------------------------------------------------------------
 
-void signalRunTimeWarning (C_Compiler * inCompiler,
+void signalRunTimeWarning (Compiler * inCompiler,
                            const String & inWarningMessage
                            COMMA_LOCATION_ARGS) {
 //--- Increment warning count
@@ -556,7 +556,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
 //
 //--------------------------------------------------------------------------------------------------
 
-void ggs_printError (C_Compiler * inCompiler,
+void ggs_printError (Compiler * inCompiler,
                      const C_SourceTextInString & inSourceText,
                      const C_IssueWithFixIt & inIssue,
                      const String & inMessage
@@ -657,7 +657,7 @@ void fatalError (const String & inErrorMessage,
 //
 //--------------------------------------------------------------------------------------------------
 
-void ggs_printWarning (C_Compiler * inCompiler,
+void ggs_printWarning (Compiler * inCompiler,
                        const C_SourceTextInString & inSourceText,
                        const C_IssueWithFixIt & inIssue,
                        const String & inMessage

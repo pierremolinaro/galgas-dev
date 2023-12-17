@@ -956,7 +956,7 @@ static void test_MultiplyingDividing_BigSignedByChunkUInt (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void routine_checkBigInteger (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+void routine_checkBigInteger (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   std::cout << "*** Check BigUnsigned and BigSigned (option --check-bit-int) ***\n" ;
 //  #if COMPILE_FOR_WINDOWS == 0
 //    testUnsigned128Divisions () ;

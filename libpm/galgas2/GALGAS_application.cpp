@@ -18,7 +18,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "all-predefined-types.h"
-#include "galgas2/C_Compiler.h"
+#include "galgas2/Compiler.h"
 #include "command_line_interface/C_BoolCommandLineOption.h"
 #include "command_line_interface/C_UIntCommandLineOption.h"
 #include "command_line_interface/C_StringCommandLineOption.h"
@@ -354,7 +354,7 @@ GALGAS_uint GALGAS_application::constructor_commandLineArgumentCount (UNUSED_LOC
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_application::constructor_commandLineArgumentAtIndex (const GALGAS_uint & inIndex,
-                                                                          C_Compiler * inCompiler
+                                                                          Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_string result ;
   if (inIndex.isValid ()) {

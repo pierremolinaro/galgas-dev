@@ -331,7 +331,7 @@ override method @extensionSetterForGeneration appendSpecificImplementation
       !extensionSetterFormalParameterList
       !self.mSemanticInstructionListForGeneration
       !false # is not const
-      !"C_Compiler"
+      !"Compiler"
       !true # Generate location Argument
       !false # Do not generate 'resetTemplateString'
       !false # Do not generate syntaxDirectedTranslationString argument

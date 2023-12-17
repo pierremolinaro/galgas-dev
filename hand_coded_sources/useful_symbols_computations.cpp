@@ -19,7 +19,7 @@
 #include "bdd/C_Relation.h"
 #include "bdd/C_RelationSingleType.h"
 #include "utilities/MF_MemoryControl.h"
-#include "galgas2/C_Compiler.h"
+#include "galgas2/Compiler.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -61,7 +61,7 @@ computeUsefulSymbols (const cPureBNFproductionsList & inPureBNFproductions,
 
 //--------------------------------------------------------------------------------------------------
 
-static bool displayUnusefulSymbols (C_Compiler * inCompiler,
+static bool displayUnusefulSymbols (Compiler * inCompiler,
                                     const GALGAS_location & inErrorLocation,
                                     const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
                                     const C_Relation & inUsefulSymbolsRelation,
@@ -177,7 +177,7 @@ static bool displayUnusefulSymbols (C_Compiler * inCompiler,
 
 //--------------------------------------------------------------------------------------------------
 
-void useful_symbols_computations (C_Compiler * inCompiler,
+void useful_symbols_computations (Compiler * inCompiler,
                                   const GALGAS_location & inErrorLocation,
                                   const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
                                   const cPureBNFproductionsList & inPureBNFproductions,

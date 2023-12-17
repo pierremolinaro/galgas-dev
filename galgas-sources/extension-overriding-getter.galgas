@@ -378,7 +378,7 @@ override method @overrideExtensionGetterForGeneration appendSpecificImplementati
     !?ioInclusionSet
     !self.mOverridingExtensionGetterFormalParameterList
     !self.mSemanticInstructionListForGeneration
-    !"C_Compiler"
+    !"Compiler"
     !self.mResultType
     !self.mResultVarCppName
     ?let @string extensionGetterCode

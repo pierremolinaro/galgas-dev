@@ -12,7 +12,7 @@
 //--------------------------------------------------------------------------------------------------
 
 void routine_println (const GALGAS_string inString,
-                      C_Compiler * /* inCompiler */
+                      Compiler * /* inCompiler */
                       COMMA_LOCATION_ARGS) {
   if (inString.isValid ()) {
     std::cout << inString.stringValue ().cString (THERE) << "\n" ;
@@ -22,7 +22,7 @@ void routine_println (const GALGAS_string inString,
 //--------------------------------------------------------------------------------------------------
 
 void routine_print (const GALGAS_string inString,
-                    C_Compiler * /* inCompiler */
+                    Compiler * /* inCompiler */
                     COMMA_LOCATION_ARGS) {
   if (inString.isValid ()) {
     std::cout << inString.stringValue ().cString (THERE) ;

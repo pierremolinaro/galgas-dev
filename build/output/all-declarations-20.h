@@ -266,11 +266,11 @@ class GALGAS_XcodeProjectDescriptor : public AC_GALGAS_root {
 
 //--------------------------------- Object extraction
   public: static GALGAS_XcodeProjectDescriptor extractObject (const GALGAS_object & inObject,
-                                                              C_Compiler * inCompiler
+                                                              Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_XcodeProjectDescriptor constructor_new (C_Compiler * inCompiler
+  public: static class GALGAS_XcodeProjectDescriptor constructor_new (Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -307,7 +307,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_XcodeProjectDescrip
 void extensionSetter_addTIFF_5F_file (class GALGAS_XcodeProjectDescriptor & ioObject,
                                       const class GALGAS_string constin_inFileName,
                                       class GALGAS_string & out_outFileRef,
-                                      class C_Compiler * inCompiler
+                                      class Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -318,7 +318,7 @@ void extensionSetter_addTIFF_5F_file (class GALGAS_XcodeProjectDescriptor & ioOb
 
 void extensionSetter_getReferenceKey (class GALGAS_XcodeProjectDescriptor & ioObject,
                                       class GALGAS_string & out_outRef,
-                                      class C_Compiler * inCompiler
+                                      class Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -330,7 +330,7 @@ void extensionSetter_getReferenceKey (class GALGAS_XcodeProjectDescriptor & ioOb
 void extensionSetter_addInfoPlistFile (class GALGAS_XcodeProjectDescriptor & ioObject,
                                        const class GALGAS_string constin_inFileName,
                                        class GALGAS_string & out_outFileRef,
-                                       class C_Compiler * inCompiler
+                                       class Compiler * inCompiler
                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -342,7 +342,7 @@ void extensionSetter_addInfoPlistFile (class GALGAS_XcodeProjectDescriptor & ioO
 void extensionSetter_addXIBFile (class GALGAS_XcodeProjectDescriptor & ioObject,
                                  const class GALGAS_string constin_inFileName,
                                  class GALGAS_string & out_outFileRef,
-                                 class C_Compiler * inCompiler
+                                 class Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -354,7 +354,7 @@ void extensionSetter_addXIBFile (class GALGAS_XcodeProjectDescriptor & ioObject,
 void extensionSetter_addFrameworkFile (class GALGAS_XcodeProjectDescriptor & ioObject,
                                        const class GALGAS_string constin_inFileName,
                                        class GALGAS_string & out_outFileRef,
-                                       class C_Compiler * inCompiler
+                                       class Compiler * inCompiler
                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -366,7 +366,7 @@ void extensionSetter_addFrameworkFile (class GALGAS_XcodeProjectDescriptor & ioO
 void extensionSetter_addMFile (class GALGAS_XcodeProjectDescriptor & ioObject,
                                const class GALGAS_string constin_inFileName,
                                class GALGAS_string & out_outFileRef,
-                               class C_Compiler * inCompiler
+                               class Compiler * inCompiler
                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -378,7 +378,7 @@ void extensionSetter_addMFile (class GALGAS_XcodeProjectDescriptor & ioObject,
 void extensionSetter_addMMFile (class GALGAS_XcodeProjectDescriptor & ioObject,
                                 const class GALGAS_string constin_inFileName,
                                 class GALGAS_string & out_outFileRef,
-                                class C_Compiler * inCompiler
+                                class Compiler * inCompiler
                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -390,7 +390,7 @@ void extensionSetter_addMMFile (class GALGAS_XcodeProjectDescriptor & ioObject,
 void extensionSetter_addCppFile (class GALGAS_XcodeProjectDescriptor & ioObject,
                                  const class GALGAS_string constin_inFileName,
                                  class GALGAS_string & out_outFileRef,
-                                 class C_Compiler * inCompiler
+                                 class Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -402,7 +402,7 @@ void extensionSetter_addCppFile (class GALGAS_XcodeProjectDescriptor & ioObject,
 void extensionSetter_addCFile (class GALGAS_XcodeProjectDescriptor & ioObject,
                                const class GALGAS_string constin_inFileName,
                                class GALGAS_string & out_outFileRef,
-                               class C_Compiler * inCompiler
+                               class Compiler * inCompiler
                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -414,7 +414,7 @@ void extensionSetter_addCFile (class GALGAS_XcodeProjectDescriptor & ioObject,
 void extensionSetter_addHeaderFile (class GALGAS_XcodeProjectDescriptor & ioObject,
                                     const class GALGAS_string constin_inFileName,
                                     class GALGAS_string & out_outFileRef,
-                                    class C_Compiler * inCompiler
+                                    class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -427,7 +427,7 @@ void extensionSetter_addBuildFile (class GALGAS_XcodeProjectDescriptor & ioObjec
                                    const class GALGAS_string constin_inFileReference,
                                    const class GALGAS_string constin_inFileName,
                                    class GALGAS_string & out_outBuildRef,
-                                   class C_Compiler * inCompiler
+                                   class Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -444,7 +444,7 @@ void extensionSetter_addToolTarget (class GALGAS_XcodeProjectDescriptor & ioObje
                                     const class GALGAS_stringlist constin_inBuildConfigurationSettingList,
                                     class GALGAS_string & out_outTargetRef,
                                     class GALGAS_string & out_outProductFileRef,
-                                    class C_Compiler * inCompiler
+                                    class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -463,7 +463,7 @@ void extensionSetter_addAppTarget (class GALGAS_XcodeProjectDescriptor & ioObjec
                                    const class GALGAS_stringlist constin_inDependentTargetRefList,
                                    const class GALGAS__32_stringlist constin_inProductCopyList,
                                    class GALGAS_string & out_outProductFileRef,
-                                   class C_Compiler * inCompiler
+                                   class Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -477,7 +477,7 @@ void extensionSetter_addGroup (class GALGAS_XcodeProjectDescriptor & ioObject,
                                const class GALGAS_string constin_inGroupPath,
                                const class GALGAS_stringlist constin_inChildrenRefs,
                                class GALGAS_string & out_outGroupRef,
-                               class C_Compiler * inCompiler
+                               class Compiler * inCompiler
                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -497,7 +497,7 @@ void extensionSetter_addGroupWithFiles (class GALGAS_XcodeProjectDescriptor & io
                                         class GALGAS_stringlist & io_ioFrameWorkFileBuildRefs,
                                         class GALGAS_stringlist & io_ioResourceFileBuildRefs,
                                         class GALGAS_string & out_outGroupRef,
-                                        class C_Compiler * inCompiler
+                                        class Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -509,7 +509,7 @@ void extensionSetter_addGroupWithFiles (class GALGAS_XcodeProjectDescriptor & io
 void extensionSetter_addICNS_5F_file (class GALGAS_XcodeProjectDescriptor & ioObject,
                                       const class GALGAS_string constin_inFileName,
                                       class GALGAS_string & out_outFileRef,
-                                      class C_Compiler * inCompiler
+                                      class Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -520,7 +520,7 @@ void extensionSetter_addICNS_5F_file (class GALGAS_XcodeProjectDescriptor & ioOb
 
 void extensionSetter_placeGroupAsMainGroup (class GALGAS_XcodeProjectDescriptor & ioObject,
                                             const class GALGAS_string constin_inGroupRef,
-                                            class C_Compiler * inCompiler
+                                            class Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -531,7 +531,7 @@ void extensionSetter_placeGroupAsMainGroup (class GALGAS_XcodeProjectDescriptor 
 
 void extensionSetter_addSettingsToDefaultConfiguration (class GALGAS_XcodeProjectDescriptor & ioObject,
                                                         const class GALGAS_stringlist constin_inSettingList,
-                                                        class C_Compiler * inCompiler
+                                                        class Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -543,7 +543,7 @@ void extensionSetter_addSettingsToDefaultConfiguration (class GALGAS_XcodeProjec
 void extensionMethod_generateAtPath (const class GALGAS_XcodeProjectDescriptor inObject,
                                      const class GALGAS_string constin_inPath,
                                      const class GALGAS_string constin_inCacheFilePath,
-                                     class C_Compiler * inCompiler
+                                     class Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -570,7 +570,7 @@ extern const cDirectoryWrapper gWrapperDirectory_1_xcodeProjectGenerationFilewra
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (class Compiler * inCompiler,
                                                                                const class GALGAS_string & in_PROJECT_5F_REF,
                                                                                const class GALGAS_string & in_MAIN_5F_GROUP_5F_REF,
                                                                                const class GALGAS_XCodeGroupList & in_GROUPS,

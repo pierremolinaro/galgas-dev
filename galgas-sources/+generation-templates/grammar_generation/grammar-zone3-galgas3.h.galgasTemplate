@@ -45,7 +45,7 @@ for (lkey mNonTerminalIndex mNonterminalSymbolParametersMap) in NON_TERMINAL_MAP
     if START_SYMBOL_NAME == lkey.string then
       %//--- Start symbol\n%
       %  public: static void _performSourceFileParsing_%![label_lkey identifierRepresentation]% (%?^
-      %C_Compiler * inCompiler,\n%!^
+      %Compiler * inCompiler,\n%!^
       if HAS_TRANSLATE_FEATURE then
         %String & %!syntaxDirectedTranslationResultVarName ()%,\n%!^ 
       end
@@ -64,7 +64,7 @@ for (lkey mNonTerminalIndex mNonterminalSymbolParametersMap) in NON_TERMINAL_MAP
       end
       %\n%!^%COMMA_LOCATION_ARGS) ;\n\n%
       %  public: static void _performSourceStringParsing_%![label_lkey identifierRepresentation]% (%?^
-      %C_Compiler * inCompiler,\n%!^
+      %Compiler * inCompiler,\n%!^
       if HAS_TRANSLATE_FEATURE then
         %String & %!syntaxDirectedTranslationResultVarName ()%,\n%!^ 
       end
@@ -88,13 +88,13 @@ for (lkey mNonTerminalIndex mNonterminalSymbolParametersMap) in NON_TERMINAL_MAP
  #--- Start symbol ?
   if START_SYMBOL_NAME == lkey.string then
     %//--- Indexing\n%
-    %  public: static void performIndexing (%?^%C_Compiler * inCompiler,\n%
+    %  public: static void performIndexing (%?^%Compiler * inCompiler,\n%
     !^%const String & inSourceFilePath) ;\n\n%
     %//--- Only lexical analysis\n%
-    %  public: static void performOnlyLexicalAnalysis (%?^%C_Compiler * inCompiler,\n%
+    %  public: static void performOnlyLexicalAnalysis (%?^%Compiler * inCompiler,\n%
     !^%const String & inSourceFilePath) ;\n\n%
     %//--- Only syntax analysis\n%
-    %  public: static void performOnlySyntaxAnalysis (%?^%C_Compiler * inCompiler,\n%
+    %  public: static void performOnlySyntaxAnalysis (%?^%Compiler * inCompiler,\n%
     !^%const String & inSourceFilePath) ;\n\n%
   end
 end

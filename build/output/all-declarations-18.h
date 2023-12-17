@@ -17,7 +17,7 @@
 void extensionMethod_displayRuleVertically (const class GALGAS_productionRuleListForGrammarAnalysis_2D_element inObject,
                                             const class GALGAS_string constin_inSyntaxComponentName,
                                             class GALGAS_string & io_ioGeneratedCode,
-                                            class C_Compiler * inCompiler
+                                            class Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -27,7 +27,7 @@ void extensionMethod_displayRuleVertically (const class GALGAS_productionRuleLis
 //--------------------------------------------------------------------------------------------------
 
 class GALGAS_string function_escapeForTex (const class GALGAS_string & constinArgument0,
-                                           class C_Compiler * inCompiler
+                                           class Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -47,27 +47,27 @@ class cGrammar_galgas_33_ProjectGrammar : public cParser_galgas_33_ProjectSyntax
                                                                     C_Lexique_galgasScanner * inCompiler) ;
 
 //--- Start symbol
-  public: static void _performSourceFileParsing_ (C_Compiler * inCompiler,
+  public: static void _performSourceFileParsing_ (Compiler * inCompiler,
                                                   GALGAS_lstring inFileName,
                                                   GALGAS_galgas_33_ProjectComponentAST & outArgument0
                                                   COMMA_LOCATION_ARGS) ;
 
-  public: static void _performSourceStringParsing_ (C_Compiler * inCompiler,
+  public: static void _performSourceStringParsing_ (Compiler * inCompiler,
                                                     GALGAS_string inSourceString,
                                                     GALGAS_string inNameString,
                                                     GALGAS_galgas_33_ProjectComponentAST & outArgument0
                                                     COMMA_LOCATION_ARGS) ;
 
 //--- Indexing
-  public: static void performIndexing (C_Compiler * inCompiler,
+  public: static void performIndexing (Compiler * inCompiler,
                                        const String & inSourceFilePath) ;
 
 //--- Only lexical analysis
-  public: static void performOnlyLexicalAnalysis (C_Compiler * inCompiler,
+  public: static void performOnlyLexicalAnalysis (Compiler * inCompiler,
                                                   const String & inSourceFilePath) ;
 
 //--- Only syntax analysis
-  public: static void performOnlySyntaxAnalysis (C_Compiler * inCompiler,
+  public: static void performOnlySyntaxAnalysis (Compiler * inCompiler,
                                                  const String & inSourceFilePath) ;
 
 //------------------------------------- 'project_header' non terminal
@@ -885,27 +885,27 @@ class cGrammar_galgas_33_Grammar : public cParser_galgas_33_ExpressionSyntax,
                                             C_Lexique_galgasScanner * inCompiler) ;
 
 //--- Start symbol
-  public: static void _performSourceFileParsing_ (C_Compiler * inCompiler,
+  public: static void _performSourceFileParsing_ (Compiler * inCompiler,
                                                   GALGAS_lstring inFileName,
                                                   GALGAS_galgasDeclarationAST & ioArgument0
                                                   COMMA_LOCATION_ARGS) ;
 
-  public: static void _performSourceStringParsing_ (C_Compiler * inCompiler,
+  public: static void _performSourceStringParsing_ (Compiler * inCompiler,
                                                     GALGAS_string inSourceString,
                                                     GALGAS_string inNameString,
                                                     GALGAS_galgasDeclarationAST & ioArgument0
                                                     COMMA_LOCATION_ARGS) ;
 
 //--- Indexing
-  public: static void performIndexing (C_Compiler * inCompiler,
+  public: static void performIndexing (Compiler * inCompiler,
                                        const String & inSourceFilePath) ;
 
 //--- Only lexical analysis
-  public: static void performOnlyLexicalAnalysis (C_Compiler * inCompiler,
+  public: static void performOnlyLexicalAnalysis (Compiler * inCompiler,
                                                   const String & inSourceFilePath) ;
 
 //--- Only syntax analysis
-  public: static void performOnlySyntaxAnalysis (C_Compiler * inCompiler,
+  public: static void performOnlySyntaxAnalysis (Compiler * inCompiler,
                                                  const String & inSourceFilePath) ;
 
 //------------------------------------- 'style_declaration_ggs3' non terminal

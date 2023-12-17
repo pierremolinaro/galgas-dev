@@ -1,4 +1,4 @@
-#include "galgas2/C_Compiler.h"
+#include "galgas2/Compiler.h"
 #include "galgas2/C_galgas_io.h"
 #include "galgas2/C_galgas_CLI_Options.h"
 #include "utilities/C_PrologueEpilogue.h"
@@ -15,7 +15,7 @@
 
 void cPtr_applicationPredefinedTypeAST::method_getConstructorMap (GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                                                   GALGAS_constructorMap & outArgument_outMap,
-                                                                  C_Compiler * inCompiler
+                                                                  Compiler * inCompiler
                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outMap = GALGAS_constructorMap::constructor_emptyMap (SOURCE_FILE ("semanticsConstructors.galgas", 400)) ;
   {
@@ -96,7 +96,7 @@ void cPtr_applicationPredefinedTypeAST::method_getConstructorMap (GALGAS_unified
 
 void cPtr_charPredefinedTypeAST::method_getConstructorMap (GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                                            GALGAS_constructorMap & outArgument_outMap,
-                                                           C_Compiler * inCompiler
+                                                           Compiler * inCompiler
                                                            COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outMap = GALGAS_constructorMap::constructor_emptyMap (SOURCE_FILE ("semanticsConstructors.galgas", 626)) ;
   {
@@ -117,7 +117,7 @@ void cPtr_charPredefinedTypeAST::method_getConstructorMap (GALGAS_unifiedTypeMap
 
 void cPtr_uintPredefinedTypeAST::method_getConstructorMap (GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                                            GALGAS_constructorMap & outArgument_outMap,
-                                                           C_Compiler * inCompiler
+                                                           Compiler * inCompiler
                                                            COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outMap = GALGAS_constructorMap::constructor_emptyMap (SOURCE_FILE ("semanticsConstructors.galgas", 657)) ;
   {
@@ -147,7 +147,7 @@ void cPtr_uintPredefinedTypeAST::method_getConstructorMap (GALGAS_unifiedTypeMap
 
 void cPtr_sintPredefinedTypeAST::method_getConstructorMap (GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                                            GALGAS_constructorMap & outArgument_outMap,
-                                                           C_Compiler * inCompiler
+                                                           Compiler * inCompiler
                                                            COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outMap = GALGAS_constructorMap::constructor_emptyMap (SOURCE_FILE ("semanticsConstructors.galgas", 711)) ;
   {
@@ -165,7 +165,7 @@ void cPtr_sintPredefinedTypeAST::method_getConstructorMap (GALGAS_unifiedTypeMap
 
 void cPtr_uint_36__34_PredefinedTypeAST::method_getConstructorMap (GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                                                    GALGAS_constructorMap & outArgument_outMap,
-                                                                   C_Compiler * inCompiler
+                                                                   Compiler * inCompiler
                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outMap = GALGAS_constructorMap::constructor_emptyMap (SOURCE_FILE ("semanticsConstructors.galgas", 733)) ;
   {
@@ -189,7 +189,7 @@ void cPtr_uint_36__34_PredefinedTypeAST::method_getConstructorMap (GALGAS_unifie
 
 void cPtr_sint_36__34_PredefinedTypeAST::method_getConstructorMap (GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                                                    GALGAS_constructorMap & outArgument_outMap,
-                                                                   C_Compiler * inCompiler
+                                                                   Compiler * inCompiler
                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outMap = GALGAS_constructorMap::constructor_emptyMap (SOURCE_FILE ("semanticsConstructors.galgas", 775)) ;
   {
@@ -207,7 +207,7 @@ void cPtr_sint_36__34_PredefinedTypeAST::method_getConstructorMap (GALGAS_unifie
 
 void cPtr_stringsetPredefinedTypeAST::method_getConstructorMap (GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                                                 GALGAS_constructorMap & outArgument_outMap,
-                                                                C_Compiler * inCompiler
+                                                                Compiler * inCompiler
                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outMap = GALGAS_constructorMap::constructor_emptyMap (SOURCE_FILE ("semanticsConstructors.galgas", 797)) ;
   {
@@ -231,7 +231,7 @@ void cPtr_stringsetPredefinedTypeAST::method_getConstructorMap (GALGAS_unifiedTy
 
 void cPtr_binarysetPredefinedTypeAST::method_getConstructorMap (GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                                                 GALGAS_constructorMap & outArgument_outMap,
-                                                                C_Compiler * inCompiler
+                                                                Compiler * inCompiler
                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outMap = GALGAS_constructorMap::constructor_emptyMap (SOURCE_FILE ("semanticsConstructors.galgas", 839)) ;
   {
@@ -291,7 +291,7 @@ void cPtr_binarysetPredefinedTypeAST::method_getConstructorMap (GALGAS_unifiedTy
 
 void cPtr_typePredefinedTypeAST::method_getConstructorMap (GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                                            GALGAS_constructorMap & outArgument_outMap,
-                                                           C_Compiler * inCompiler
+                                                           Compiler * inCompiler
                                                            COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outMap = GALGAS_constructorMap::constructor_emptyMap (SOURCE_FILE ("semanticsConstructors.galgas", 1035)) ;
   {
@@ -306,7 +306,7 @@ void cPtr_typePredefinedTypeAST::method_getConstructorMap (GALGAS_unifiedTypeMap
 
 void cPtr_bigintPredefinedTypeAST::method_getConstructorMap (GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                                              GALGAS_constructorMap & outArgument_outMap,
-                                                             C_Compiler * inCompiler
+                                                             Compiler * inCompiler
                                                              COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outMap = GALGAS_constructorMap::constructor_emptyMap (SOURCE_FILE ("semanticsConstructors.galgas", 1051)) ;
   {
@@ -321,7 +321,7 @@ void cPtr_bigintPredefinedTypeAST::method_getConstructorMap (GALGAS_unifiedTypeM
 
 void cPtr_dataPredefinedTypeAST::method_getConstructorMap (GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                                            GALGAS_constructorMap & outArgument_outMap,
-                                                           C_Compiler * inCompiler
+                                                           Compiler * inCompiler
                                                            COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outMap = GALGAS_constructorMap::constructor_emptyMap (SOURCE_FILE ("semanticsConstructors.galgas", 1067)) ;
   {
@@ -339,7 +339,7 @@ void cPtr_dataPredefinedTypeAST::method_getConstructorMap (GALGAS_unifiedTypeMap
 
 void cPtr_functionPredefinedTypeAST::method_getConstructorMap (GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                                                GALGAS_constructorMap & outArgument_outMap,
-                                                               C_Compiler * inCompiler
+                                                               Compiler * inCompiler
                                                                COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outMap = GALGAS_constructorMap::constructor_emptyMap (SOURCE_FILE ("semanticsConstructors.galgas", 1091)) ;
   {
@@ -360,7 +360,7 @@ void cPtr_functionPredefinedTypeAST::method_getConstructorMap (GALGAS_unifiedTyp
 
 void cPtr_doublePredefinedTypeAST::method_getConstructorMap (GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                                              GALGAS_constructorMap & outArgument_outMap,
-                                                             C_Compiler * inCompiler
+                                                             Compiler * inCompiler
                                                              COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outMap = GALGAS_constructorMap::constructor_emptyMap (SOURCE_FILE ("semanticsConstructors.galgas", 1125)) ;
   {
@@ -378,7 +378,7 @@ void cPtr_doublePredefinedTypeAST::method_getConstructorMap (GALGAS_unifiedTypeM
 
 void cPtr_timerPredefinedTypeAST::method_getConstructorMap (GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                                             GALGAS_constructorMap & outArgument_outMap,
-                                                            C_Compiler * inCompiler
+                                                            Compiler * inCompiler
                                                             COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outMap = GALGAS_constructorMap::constructor_emptyMap (SOURCE_FILE ("semanticsConstructors.galgas", 1150)) ;
   {
@@ -397,7 +397,7 @@ void routine_enterBaseFinalGetterWithoutArgument (GALGAS_getterMap & ioArgument_
                                                   const GALGAS_string constinArgument_inObsoleteGetterName,
                                                   const GALGAS_string constinArgument_inReturnedTypeName,
                                                   const GALGAS_bool constinArgument_inHasCompilerArgument,
-                                                  C_Compiler * inCompiler
+                                                  Compiler * inCompiler
                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_unifiedTypeMapEntry var_returnedTypeIndex_1664 ;
   {
@@ -430,7 +430,7 @@ void routine_enterInheritedGetterWithoutArgument (GALGAS_getterMap & ioArgument_
                                                   const GALGAS_string constinArgument_inObsoleteGetterName,
                                                   const GALGAS_string constinArgument_inReturnedTypeName,
                                                   const GALGAS_bool constinArgument_inHasCompilerArgument,
-                                                  C_Compiler * inCompiler
+                                                  Compiler * inCompiler
                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_unifiedTypeMapEntry var_returnedTypeIndex_3057 ;
   {
@@ -464,7 +464,7 @@ void routine_enterInheritedGetterWithArgument (GALGAS_getterMap & ioArgument_ioG
                                                const GALGAS_string constinArgument_inArgument_31_Name,
                                                const GALGAS_string constinArgument_inReturnedTypeName,
                                                const GALGAS_bool constinArgument_inHasCompilerArgument,
-                                               C_Compiler * inCompiler
+                                               Compiler * inCompiler
                                                COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_unifiedTypeMapEntry var_returnedTypeIndex_4251 ;
   {
@@ -497,7 +497,7 @@ void routine_enterInheritedGetterWith_32_Arguments (GALGAS_getterMap & ioArgumen
                                                     const GALGAS_string constinArgument_inArgument_32_Name,
                                                     const GALGAS_string constinArgument_inReturnedTypeName,
                                                     const GALGAS_bool constinArgument_inHasCompilerArgument,
-                                                    C_Compiler * inCompiler
+                                                    Compiler * inCompiler
                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_unifiedTypeMapEntry var_returnedTypeIndex_5290 ;
   {
@@ -531,7 +531,7 @@ void routine_enterBaseGetterWithoutArgument (GALGAS_getterMap & ioArgument_ioGet
                                              const GALGAS_string constinArgument_inObsoleteGetterName,
                                              const GALGAS_string constinArgument_inReturnedTypeName,
                                              const GALGAS_bool constinArgument_inHasCompilerArgument,
-                                             C_Compiler * inCompiler
+                                             Compiler * inCompiler
                                              COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_unifiedTypeMapEntry var_returnedTypeIndex_6554 ;
   {
@@ -566,7 +566,7 @@ void routine_enterBaseGetterWithArgument (GALGAS_getterMap & ioArgument_ioGetter
                                           const GALGAS_string constinArgument_inArgument_31_Name,
                                           const GALGAS_string constinArgument_inReturnedTypeName,
                                           const GALGAS_bool constinArgument_inHasCompilerArgument,
-                                          C_Compiler * inCompiler
+                                          Compiler * inCompiler
                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_unifiedTypeMapEntry var_returnedTypeIndex_7811 ;
   {
@@ -597,7 +597,7 @@ void routine_enterBaseFinalGetterWithArgument (GALGAS_getterMap & ioArgument_ioG
                                                const GALGAS_string constinArgument_inArgument_31_Name,
                                                const GALGAS_string constinArgument_inReturnedTypeName,
                                                const GALGAS_bool constinArgument_inHasCompilerArgument,
-                                               C_Compiler * inCompiler
+                                               Compiler * inCompiler
                                                COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_unifiedTypeMapEntry var_returnedTypeIndex_8807 ;
   {
@@ -632,7 +632,7 @@ void routine_enterBaseGetterWith_32_Arguments (GALGAS_getterMap & ioArgument_ioG
                                                const GALGAS_string constinArgument_inArgument_32_Name,
                                                const GALGAS_string constinArgument_inReturnedTypeName,
                                                const GALGAS_bool constinArgument_inHasCompilerArgument,
-                                               C_Compiler * inCompiler
+                                               Compiler * inCompiler
                                                COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_unifiedTypeMapEntry var_returnedTypeIndex_10000 ;
   {
@@ -669,7 +669,7 @@ void routine_enterBaseFinalGetterWith_32_Arguments (GALGAS_getterMap & ioArgumen
                                                     const GALGAS_string constinArgument_inArgument_32_Name,
                                                     const GALGAS_string constinArgument_inReturnedTypeName,
                                                     const GALGAS_bool constinArgument_inHasCompilerArgument,
-                                                    C_Compiler * inCompiler
+                                                    Compiler * inCompiler
                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_unifiedTypeMapEntry var_returnedTypeIndex_11211 ;
   {
@@ -708,7 +708,7 @@ void routine_enterBaseFinalGetterWith_33_Arguments (GALGAS_getterMap & ioArgumen
                                                     const GALGAS_string constinArgument_inArgument_33_Name,
                                                     const GALGAS_string constinArgument_inReturnedTypeName,
                                                     const GALGAS_bool constinArgument_inHasCompilerArgument,
-                                                    C_Compiler * inCompiler
+                                                    Compiler * inCompiler
                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_unifiedTypeMapEntry var_returnedTypeIndex_12448 ;
   {
@@ -742,7 +742,7 @@ void routine_enterBaseFinalGetterWith_33_Arguments (GALGAS_getterMap & ioArgumen
 
 void routine_commonGetterMapForAllTypes (GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                          GALGAS_getterMap & outArgument_outMap,
-                                         C_Compiler * inCompiler
+                                         Compiler * inCompiler
                                          COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outMap.drop () ; // Release 'out' argument
   outArgument_outMap = GALGAS_getterMap::constructor_emptyMap (SOURCE_FILE ("semanticsGetters.galgas", 331)) ;
@@ -769,7 +769,7 @@ void routine_commonGetterMapForAllTypes (GALGAS_unifiedTypeMap & ioArgument_ioUn
 
 void cPtr_locationPredefinedTypeAST::method_getGetterMap (GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                                           GALGAS_getterMap & outArgument_outMap,
-                                                          C_Compiler * inCompiler
+                                                          Compiler * inCompiler
                                                           COMMA_UNUSED_LOCATION_ARGS) {
   {
   routine_commonGetterMapForAllTypes (ioArgument_ioUnifiedTypeMap, outArgument_outMap, inCompiler  COMMA_SOURCE_FILE ("semanticsGetters.galgas", 371)) ;
@@ -816,7 +816,7 @@ void cPtr_locationPredefinedTypeAST::method_getGetterMap (GALGAS_unifiedTypeMap 
 
 void cPtr_stringPredefinedTypeAST::method_getGetterMap (GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                                         GALGAS_getterMap & outArgument_outMap,
-                                                        C_Compiler * inCompiler
+                                                        Compiler * inCompiler
                                                         COMMA_UNUSED_LOCATION_ARGS) {
   {
   routine_commonGetterMapForAllTypes (ioArgument_ioUnifiedTypeMap, outArgument_outMap, inCompiler  COMMA_SOURCE_FILE ("semanticsGetters.galgas", 467)) ;
@@ -1055,7 +1055,7 @@ void cPtr_stringPredefinedTypeAST::method_getGetterMap (GALGAS_unifiedTypeMap & 
 
 void cPtr_charPredefinedTypeAST::method_getGetterMap (GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                                       GALGAS_getterMap & outArgument_outMap,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_UNUSED_LOCATION_ARGS) {
   {
   routine_commonGetterMapForAllTypes (ioArgument_ioUnifiedTypeMap, outArgument_outMap, inCompiler  COMMA_SOURCE_FILE ("semanticsGetters.galgas", 1089)) ;
@@ -1132,7 +1132,7 @@ void cPtr_charPredefinedTypeAST::method_getGetterMap (GALGAS_unifiedTypeMap & io
 
 void cPtr_boolPredefinedTypeAST::method_getGetterMap (GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                                       GALGAS_getterMap & outArgument_outMap,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_UNUSED_LOCATION_ARGS) {
   {
   routine_commonGetterMapForAllTypes (ioArgument_ioUnifiedTypeMap, outArgument_outMap, inCompiler  COMMA_SOURCE_FILE ("semanticsGetters.galgas", 1265)) ;
@@ -1167,7 +1167,7 @@ void cPtr_boolPredefinedTypeAST::method_getGetterMap (GALGAS_unifiedTypeMap & io
 
 void cPtr_uintPredefinedTypeAST::method_getGetterMap (GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                                       GALGAS_getterMap & outArgument_outMap,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_UNUSED_LOCATION_ARGS) {
   {
   routine_commonGetterMapForAllTypes (ioArgument_ioUnifiedTypeMap, outArgument_outMap, inCompiler  COMMA_SOURCE_FILE ("semanticsGetters.galgas", 1329)) ;
@@ -1238,7 +1238,7 @@ void cPtr_uintPredefinedTypeAST::method_getGetterMap (GALGAS_unifiedTypeMap & io
 
 void cPtr_sintPredefinedTypeAST::method_getGetterMap (GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                                       GALGAS_getterMap & outArgument_outMap,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_UNUSED_LOCATION_ARGS) {
   {
   routine_commonGetterMapForAllTypes (ioArgument_ioUnifiedTypeMap, outArgument_outMap, inCompiler  COMMA_SOURCE_FILE ("semanticsGetters.galgas", 1488)) ;
@@ -1291,7 +1291,7 @@ void cPtr_sintPredefinedTypeAST::method_getGetterMap (GALGAS_unifiedTypeMap & io
 
 void cPtr_uint_36__34_PredefinedTypeAST::method_getGetterMap (GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                                               GALGAS_getterMap & outArgument_outMap,
-                                                              C_Compiler * inCompiler
+                                                              Compiler * inCompiler
                                                               COMMA_UNUSED_LOCATION_ARGS) {
   {
   routine_commonGetterMapForAllTypes (ioArgument_ioUnifiedTypeMap, outArgument_outMap, inCompiler  COMMA_SOURCE_FILE ("semanticsGetters.galgas", 1601)) ;
@@ -1350,7 +1350,7 @@ void cPtr_uint_36__34_PredefinedTypeAST::method_getGetterMap (GALGAS_unifiedType
 
 void cPtr_sint_36__34_PredefinedTypeAST::method_getGetterMap (GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                                               GALGAS_getterMap & outArgument_outMap,
-                                                              C_Compiler * inCompiler
+                                                              Compiler * inCompiler
                                                               COMMA_UNUSED_LOCATION_ARGS) {
   {
   routine_commonGetterMapForAllTypes (ioArgument_ioUnifiedTypeMap, outArgument_outMap, inCompiler  COMMA_SOURCE_FILE ("semanticsGetters.galgas", 1729)) ;
@@ -1403,7 +1403,7 @@ void cPtr_sint_36__34_PredefinedTypeAST::method_getGetterMap (GALGAS_unifiedType
 
 void cPtr_doublePredefinedTypeAST::method_getGetterMap (GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                                         GALGAS_getterMap & outArgument_outMap,
-                                                        C_Compiler * inCompiler
+                                                        Compiler * inCompiler
                                                         COMMA_UNUSED_LOCATION_ARGS) {
   {
   routine_commonGetterMapForAllTypes (ioArgument_ioUnifiedTypeMap, outArgument_outMap, inCompiler  COMMA_SOURCE_FILE ("semanticsGetters.galgas", 1841)) ;
@@ -1471,7 +1471,7 @@ void cPtr_doublePredefinedTypeAST::method_getGetterMap (GALGAS_unifiedTypeMap & 
 
 void cPtr_stringsetPredefinedTypeAST::method_getGetterMap (GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                                            GALGAS_getterMap & outArgument_outMap,
-                                                           C_Compiler * inCompiler
+                                                           Compiler * inCompiler
                                                            COMMA_UNUSED_LOCATION_ARGS) {
   {
   routine_commonGetterMapForAllTypes (ioArgument_ioUnifiedTypeMap, outArgument_outMap, inCompiler  COMMA_SOURCE_FILE ("semanticsGetters.galgas", 1992)) ;
@@ -1497,7 +1497,7 @@ void cPtr_stringsetPredefinedTypeAST::method_getGetterMap (GALGAS_unifiedTypeMap
 
 void cPtr_binarysetPredefinedTypeAST::method_getGetterMap (GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                                            GALGAS_getterMap & outArgument_outMap,
-                                                           C_Compiler * inCompiler
+                                                           Compiler * inCompiler
                                                            COMMA_UNUSED_LOCATION_ARGS) {
   {
   routine_commonGetterMapForAllTypes (ioArgument_ioUnifiedTypeMap, outArgument_outMap, inCompiler  COMMA_SOURCE_FILE ("semanticsGetters.galgas", 2031)) ;
@@ -1631,7 +1631,7 @@ void cPtr_binarysetPredefinedTypeAST::method_getGetterMap (GALGAS_unifiedTypeMap
 
 void cPtr_typePredefinedTypeAST::method_getGetterMap (GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                                       GALGAS_getterMap & outArgument_outMap,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_UNUSED_LOCATION_ARGS) {
   {
   routine_commonGetterMapForAllTypes (ioArgument_ioUnifiedTypeMap, outArgument_outMap, inCompiler  COMMA_SOURCE_FILE ("semanticsGetters.galgas", 2337)) ;
@@ -1654,7 +1654,7 @@ void cPtr_typePredefinedTypeAST::method_getGetterMap (GALGAS_unifiedTypeMap & io
 
 void cPtr_dataPredefinedTypeAST::method_getGetterMap (GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                                       GALGAS_getterMap & outArgument_outMap,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_UNUSED_LOCATION_ARGS) {
   {
   routine_commonGetterMapForAllTypes (ioArgument_ioUnifiedTypeMap, outArgument_outMap, inCompiler  COMMA_SOURCE_FILE ("semanticsGetters.galgas", 2369)) ;
@@ -1674,7 +1674,7 @@ void cPtr_dataPredefinedTypeAST::method_getGetterMap (GALGAS_unifiedTypeMap & io
 
 void cPtr_functionPredefinedTypeAST::method_getGetterMap (GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                                           GALGAS_getterMap & outArgument_outMap,
-                                                          C_Compiler * inCompiler
+                                                          Compiler * inCompiler
                                                           COMMA_UNUSED_LOCATION_ARGS) {
   {
   routine_commonGetterMapForAllTypes (ioArgument_ioUnifiedTypeMap, outArgument_outMap, inCompiler  COMMA_SOURCE_FILE ("semanticsGetters.galgas", 2393)) ;
@@ -1700,7 +1700,7 @@ void cPtr_functionPredefinedTypeAST::method_getGetterMap (GALGAS_unifiedTypeMap 
 
 void cPtr_objectPredefinedTypeAST::method_getGetterMap (GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                                         GALGAS_getterMap & outArgument_outMap,
-                                                        C_Compiler * inCompiler
+                                                        Compiler * inCompiler
                                                         COMMA_UNUSED_LOCATION_ARGS) {
   {
   routine_commonGetterMapForAllTypes (ioArgument_ioUnifiedTypeMap, outArgument_outMap, inCompiler  COMMA_SOURCE_FILE ("semanticsGetters.galgas", 2432)) ;
@@ -1720,7 +1720,7 @@ void cPtr_objectPredefinedTypeAST::method_getGetterMap (GALGAS_unifiedTypeMap & 
 
 void cPtr_filewrapperPredefinedTypeAST::method_getGetterMap (GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                                              GALGAS_getterMap & outArgument_outMap,
-                                                             C_Compiler * inCompiler
+                                                             Compiler * inCompiler
                                                              COMMA_UNUSED_LOCATION_ARGS) {
   {
   routine_commonGetterMapForAllTypes (ioArgument_ioUnifiedTypeMap, outArgument_outMap, inCompiler  COMMA_SOURCE_FILE ("semanticsGetters.galgas", 2456)) ;
@@ -1773,7 +1773,7 @@ void cPtr_filewrapperPredefinedTypeAST::method_getGetterMap (GALGAS_unifiedTypeM
 
 void cPtr_timerPredefinedTypeAST::method_getGetterMap (GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                                        GALGAS_getterMap & outArgument_outMap,
-                                                       C_Compiler * inCompiler
+                                                       Compiler * inCompiler
                                                        COMMA_UNUSED_LOCATION_ARGS) {
   {
   routine_commonGetterMapForAllTypes (ioArgument_ioUnifiedTypeMap, outArgument_outMap, inCompiler  COMMA_SOURCE_FILE ("semanticsGetters.galgas", 2560)) ;
@@ -1796,7 +1796,7 @@ void cPtr_timerPredefinedTypeAST::method_getGetterMap (GALGAS_unifiedTypeMap & i
 
 void cPtr_bigintPredefinedTypeAST::method_getGetterMap (GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                                         GALGAS_getterMap & outArgument_outMap,
-                                                        C_Compiler * inCompiler
+                                                        Compiler * inCompiler
                                                         COMMA_UNUSED_LOCATION_ARGS) {
   {
   routine_commonGetterMapForAllTypes (ioArgument_ioUnifiedTypeMap, outArgument_outMap, inCompiler  COMMA_SOURCE_FILE ("semanticsGetters.galgas", 2593)) ;
@@ -1889,7 +1889,7 @@ void routine_enterModifierWithInputArgument (GALGAS_setterMap & ioArgument_ioSet
                                              const GALGAS_string constinArgument_inInputArgumentName,
                                              const GALGAS_string constinArgument_inSetterName,
                                              const GALGAS_bool constinArgument_inHasCompilerArgument,
-                                             C_Compiler * inCompiler
+                                             Compiler * inCompiler
                                              COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_unifiedTypeMapEntry var_argumentTypeIndex_1456 ;
   {
@@ -1917,7 +1917,7 @@ void routine_enterModifierWithOutputAndInputArguments (GALGAS_setterMap & ioArgu
                                                        const GALGAS_string constinArgument_inInputArgumentName,
                                                        const GALGAS_string constinArgument_inSetterName,
                                                        const GALGAS_bool constinArgument_inHasCompilerArgument,
-                                                       C_Compiler * inCompiler
+                                                       Compiler * inCompiler
                                                        COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_unifiedTypeMapEntry var_outputArgumentTypeIndex_2416 ;
   {
@@ -1950,7 +1950,7 @@ void routine_enterModifierWith_32_InputArguments (GALGAS_setterMap & ioArgument_
                                                   const GALGAS_string constinArgument_inInputArgument_32_Name,
                                                   const GALGAS_string constinArgument_inSetterName,
                                                   const GALGAS_bool constinArgument_inHasCompilerArgument,
-                                                  C_Compiler * inCompiler
+                                                  Compiler * inCompiler
                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_formalParameterSignature var_argList_3504 = GALGAS_formalParameterSignature::constructor_emptyList (SOURCE_FILE ("semanticsSetters.galgas", 78)) ;
   GALGAS_unifiedTypeMapEntry var_argumentTypeIndex_3607 ;
@@ -1977,7 +1977,7 @@ void routine_enterModifierWith_32_InputArguments (GALGAS_setterMap & ioArgument_
 void routine_enterModifierWithoutArgument (GALGAS_setterMap & ioArgument_ioSetterMap,
                                            const GALGAS_string constinArgument_inSetterName,
                                            const GALGAS_bool constinArgument_inHasCompilerArgument,
-                                           C_Compiler * inCompiler
+                                           Compiler * inCompiler
                                            COMMA_UNUSED_LOCATION_ARGS) {
   {
   ioArgument_ioSetterMap.setter_insertOrReplace (GALGAS_lstring::constructor_new (constinArgument_inSetterName, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsSetters.galgas", 101)), inCompiler  COMMA_SOURCE_FILE ("semanticsSetters.galgas", 101)), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("semanticsSetters.galgas", 102)), GALGAS_formalParameterSignature::constructor_emptyList (SOURCE_FILE ("semanticsSetters.galgas", 103)), constinArgument_inHasCompilerArgument, GALGAS_methodQualifier::constructor_isBasic (SOURCE_FILE ("semanticsSetters.galgas", 105)), GALGAS_string::makeEmptyString () COMMA_SOURCE_FILE ("semanticsSetters.galgas", 100)) ;
@@ -1993,7 +1993,7 @@ void routine_enterModifierWithoutArgument (GALGAS_setterMap & ioArgument_ioSette
 
 void cPtr_stringsetPredefinedTypeAST::method_getSetterMap (GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                                            GALGAS_setterMap & outArgument_outSetterMap,
-                                                           C_Compiler * inCompiler
+                                                           Compiler * inCompiler
                                                            COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_unifiedTypeMapEntry var_stringType_4871 ;
   {
@@ -2015,7 +2015,7 @@ void cPtr_stringsetPredefinedTypeAST::method_getSetterMap (GALGAS_unifiedTypeMap
 
 void cPtr_stringPredefinedTypeAST::method_getSetterMap (GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                                         GALGAS_setterMap & outArgument_outSetterMap,
-                                                        C_Compiler * inCompiler
+                                                        Compiler * inCompiler
                                                         COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outSetterMap = GALGAS_setterMap::constructor_emptyMap (SOURCE_FILE ("semanticsSetters.galgas", 142)) ;
   {
@@ -2048,7 +2048,7 @@ void cPtr_stringPredefinedTypeAST::method_getSetterMap (GALGAS_unifiedTypeMap & 
 
 void cPtr_dataPredefinedTypeAST::method_getSetterMap (GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                                       GALGAS_setterMap & outArgument_outSetterMap,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outSetterMap = GALGAS_setterMap::constructor_emptyMap (SOURCE_FILE ("semanticsSetters.galgas", 212)) ;
   {
@@ -2081,7 +2081,7 @@ void cPtr_dataPredefinedTypeAST::method_getSetterMap (GALGAS_unifiedTypeMap & io
 
 void cPtr_filewrapperPredefinedTypeAST::method_getSetterMap (GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                                              GALGAS_setterMap & outArgument_outSetterMap,
-                                                             C_Compiler * inCompiler
+                                                             Compiler * inCompiler
                                                              COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outSetterMap = GALGAS_setterMap::constructor_emptyMap (SOURCE_FILE ("semanticsSetters.galgas", 277)) ;
   {
@@ -2096,7 +2096,7 @@ void cPtr_filewrapperPredefinedTypeAST::method_getSetterMap (GALGAS_unifiedTypeM
 
 void cPtr_bigintPredefinedTypeAST::method_getSetterMap (GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                                         GALGAS_setterMap & outArgument_outSetterMap,
-                                                        C_Compiler * inCompiler
+                                                        Compiler * inCompiler
                                                         COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outSetterMap = GALGAS_setterMap::constructor_emptyMap (SOURCE_FILE ("semanticsSetters.galgas", 294)) ;
   {
@@ -2114,7 +2114,7 @@ void cPtr_bigintPredefinedTypeAST::method_getSetterMap (GALGAS_unifiedTypeMap & 
 
 void cPtr_timerPredefinedTypeAST::method_getSetterMap (GALGAS_unifiedTypeMap & /* ioArgument_ioUnifiedTypeMap */,
                                                        GALGAS_setterMap & outArgument_outSetterMap,
-                                                       C_Compiler * inCompiler
+                                                       Compiler * inCompiler
                                                        COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outSetterMap = GALGAS_setterMap::constructor_emptyMap (SOURCE_FILE ("semanticsSetters.galgas", 321)) ;
   {
@@ -2133,7 +2133,7 @@ void cPtr_timerPredefinedTypeAST::method_getSetterMap (GALGAS_unifiedTypeMap & /
 void routine_enterInstanceMethodWithoutArgument (GALGAS_instanceMethodMap & ioArgument_ioInstanceMethodMap,
                                                  const GALGAS_string constinArgument_inInstanceMethodName,
                                                  const GALGAS_bool constinArgument_inHasCompilerArgument,
-                                                 C_Compiler * inCompiler
+                                                 Compiler * inCompiler
                                                  COMMA_UNUSED_LOCATION_ARGS) {
   {
   ioArgument_ioInstanceMethodMap.setter_insertKey (constinArgument_inInstanceMethodName.getter_nowhere (SOURCE_FILE ("semanticsInstanceMethods.galgas", 24)), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("semanticsInstanceMethods.galgas", 25)), GALGAS_formalParameterSignature::constructor_emptyList (SOURCE_FILE ("semanticsInstanceMethods.galgas", 26)), GALGAS_location::constructor_nowhere (SOURCE_FILE ("semanticsInstanceMethods.galgas", 27)), constinArgument_inHasCompilerArgument, GALGAS_methodQualifier::constructor_isBasic (SOURCE_FILE ("semanticsInstanceMethods.galgas", 29)), GALGAS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("semanticsInstanceMethods.galgas", 23)) ;
@@ -2153,7 +2153,7 @@ void routine_enterInstanceMethodWithInputArgument (GALGAS_instanceMethodMap & io
                                                    const GALGAS_string constinArgument_inInputArgumentName,
                                                    const GALGAS_string constinArgument_inInstanceMethodName,
                                                    const GALGAS_bool constinArgument_inHasCompilerArgument,
-                                                   C_Compiler * inCompiler
+                                                   Compiler * inCompiler
                                                    COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_unifiedTypeMapEntry var_argumentTypeIndex_2007 ;
   {
@@ -2175,7 +2175,7 @@ void routine_enterInstanceMethodWithInputArgument (GALGAS_instanceMethodMap & io
 
 void cPtr_dataPredefinedTypeAST::method_getInstanceMethodMap (GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                                               GALGAS_instanceMethodMap & outArgument_outInstanceMethodMap,
-                                                              C_Compiler * inCompiler
+                                                              Compiler * inCompiler
                                                               COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outInstanceMethodMap = GALGAS_instanceMethodMap::constructor_emptyMap (SOURCE_FILE ("semanticsInstanceMethods.galgas", 63)) ;
   {
@@ -2206,7 +2206,7 @@ void cPtr_dataPredefinedTypeAST::method_getInstanceMethodMap (GALGAS_unifiedType
 
 void cPtr_stringPredefinedTypeAST::method_getInstanceMethodMap (GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                                                 GALGAS_instanceMethodMap & outArgument_outInstanceMethodMap,
-                                                                C_Compiler * inCompiler
+                                                                Compiler * inCompiler
                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outInstanceMethodMap = GALGAS_instanceMethodMap::constructor_emptyMap (SOURCE_FILE ("semanticsInstanceMethods.galgas", 102)) ;
   {
@@ -2252,7 +2252,7 @@ void cPtr_stringPredefinedTypeAST::method_getInstanceMethodMap (GALGAS_unifiedTy
 
 void cPtr_bigintPredefinedTypeAST::method_getInstanceMethodMap (GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                                                 GALGAS_instanceMethodMap & outArgument_outInstanceMethodMap,
-                                                                C_Compiler * inCompiler
+                                                                Compiler * inCompiler
                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outInstanceMethodMap = GALGAS_instanceMethodMap::constructor_emptyMap (SOURCE_FILE ("semanticsInstanceMethods.galgas", 180)) ;
   GALGAS_unifiedTypeMapEntry var_bigIntType_6499 ;
@@ -2279,7 +2279,7 @@ void routine_enterClassMethodWithInputArgument (GALGAS_classMethodMap & ioArgume
                                                 const GALGAS_string constinArgument_inArgumentTypeName,
                                                 const GALGAS_string constinArgument_inArgumentName,
                                                 const GALGAS_bool constinArgument_inHasCompilerArgument,
-                                                C_Compiler * inCompiler
+                                                Compiler * inCompiler
                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_unifiedTypeMapEntry var_argumentTypeIndex_1468 ;
   {
@@ -2309,7 +2309,7 @@ void routine_enterClassMethodWith_33_InputArguments (GALGAS_classMethodMap & ioA
                                                      const GALGAS_string constinArgument_inArgumentTypeName_33_,
                                                      const GALGAS_string constinArgument_inArgumentName_33_,
                                                      const GALGAS_bool constinArgument_inHasCompilerArgument,
-                                                     C_Compiler * inCompiler
+                                                     Compiler * inCompiler
                                                      COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_formalParameterSignature var_argList_2365 = GALGAS_formalParameterSignature::constructor_emptyList (SOURCE_FILE ("semanticsTypeMethods.galgas", 50)) ;
   GALGAS_unifiedTypeMapEntry var_argumentTypeIndex_31__2462 ;
@@ -2344,7 +2344,7 @@ void routine_enterClassMethodWithStringInputArgument (GALGAS_classMethodMap & io
                                                       const GALGAS_string constinArgument_inClassMethodName,
                                                       const GALGAS_string constinArgument_inStringArgumentName,
                                                       const GALGAS_bool constinArgument_inHasCompilerArgument,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_unifiedTypeMapEntry var_argumentTypeIndex_3502 ;
   {
@@ -2366,7 +2366,7 @@ void routine_enterClassMethodWithStringInputArgument (GALGAS_classMethodMap & io
 
 void cPtr_uintPredefinedTypeAST::method_getClassMethodMap (GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                                            GALGAS_classMethodMap & outArgument_outClassMethodMap,
-                                                           C_Compiler * inCompiler
+                                                           Compiler * inCompiler
                                                            COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outClassMethodMap = GALGAS_classMethodMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypeMethods.galgas", 89)) ;
   {
@@ -2381,7 +2381,7 @@ void cPtr_uintPredefinedTypeAST::method_getClassMethodMap (GALGAS_unifiedTypeMap
 
 void cPtr_applicationPredefinedTypeAST::method_getClassMethodMap (GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                                                   GALGAS_classMethodMap & outArgument_outClassMethodMap,
-                                                                  C_Compiler * inCompiler
+                                                                  Compiler * inCompiler
                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outClassMethodMap = GALGAS_classMethodMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypeMethods.galgas", 104)) ;
   {
@@ -2405,7 +2405,7 @@ void cPtr_applicationPredefinedTypeAST::method_getClassMethodMap (GALGAS_unified
 
 void cPtr_stringPredefinedTypeAST::method_getClassMethodMap (GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                                              GALGAS_classMethodMap & outArgument_outClassMethodMap,
-                                                             C_Compiler * inCompiler
+                                                             Compiler * inCompiler
                                                              COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outClassMethodMap = GALGAS_classMethodMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypeMethods.galgas", 157)) ;
   {
@@ -2457,7 +2457,7 @@ void cPtr_stringPredefinedTypeAST::method_getClassMethodMap (GALGAS_unifiedTypeM
 
 void cPtr_binarysetPredefinedTypeAST::method_getClassMethodMap (GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                                                 GALGAS_classMethodMap & outArgument_outClassMethodMap,
-                                                                C_Compiler * inCompiler
+                                                                Compiler * inCompiler
                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outClassMethodMap = GALGAS_classMethodMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypeMethods.galgas", 222)) ;
   {
@@ -2478,7 +2478,7 @@ void routine_enterBaseOptionalMethodWithArgument (GALGAS_optionalMethodMap & ioA
                                                   const GALGAS_string constinArgument_inOptionalMethodName,
                                                   const GALGAS_string constinArgument_inArgument_31_TypeName,
                                                   const GALGAS_string constinArgument_inArgument_31_Name,
-                                                  C_Compiler * inCompiler
+                                                  Compiler * inCompiler
                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_optionalMethodSignature var_argList_5959 = GALGAS_optionalMethodSignature::constructor_emptyList (SOURCE_FILE ("semanticsOptionalMethods.galgas", 146)) ;
   GALGAS_unifiedTypeMapEntry var_t_6040 ;
@@ -2500,7 +2500,7 @@ void routine_enterBaseOptionalMethodWithArgument (GALGAS_optionalMethodMap & ioA
 
 void cPtr_stringPredefinedTypeAST::method_getOptionalMethodMap (GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                                                 GALGAS_optionalMethodMap & outArgument_outMap,
-                                                                C_Compiler * inCompiler
+                                                                Compiler * inCompiler
                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outMap = GALGAS_optionalMethodMap::constructor_emptyMap (SOURCE_FILE ("semanticsOptionalMethods.galgas", 378)) ;
   {
@@ -2513,7 +2513,7 @@ void cPtr_stringPredefinedTypeAST::method_getOptionalMethodMap (GALGAS_unifiedTy
 //
 //--------------------------------------------------------------------------------------------------
 
-static GALGAS_string onceFunction_compilerCppName (C_Compiler *
+static GALGAS_string onceFunction_compilerCppName (Compiler *
                                                    COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outCompilerCppName ; // Returned variable
   result_outCompilerCppName = GALGAS_string ("inCompiler") ;
@@ -2532,7 +2532,7 @@ static GALGAS_string gOnceFunctionResult_compilerCppName ;
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string function_compilerCppName (class C_Compiler * inCompiler
+GALGAS_string function_compilerCppName (class Compiler * inCompiler
               COMMA_LOCATION_ARGS) {
   if (! gOnceFunctionResultAvailable_compilerCppName) {
     gOnceFunctionResult_compilerCppName = onceFunction_compilerCppName (inCompiler COMMA_THERE) ;
@@ -2562,7 +2562,7 @@ static const C_galgas_type_descriptor * functionArgs_compilerCppName [1] = {
 
 //--------------------------------------------------------------------------------------------------
 
-static GALGAS_object functionWithGenericHeader_compilerCppName (C_Compiler * inCompiler,
+static GALGAS_object functionWithGenericHeader_compilerCppName (Compiler * inCompiler,
                                                                 const cObjectArray & /* inEffectiveParameterArray */,
                                                                 const GALGAS_location & /* inErrorLocation */
                                                                 COMMA_LOCATION_ARGS) {
@@ -2583,7 +2583,7 @@ C_galgas_function_descriptor functionDescriptor_compilerCppName ("compilerCppNam
 //
 //--------------------------------------------------------------------------------------------------
 
-static GALGAS_string onceFunction_syntaxDirectedTranslationResultVarName (C_Compiler *
+static GALGAS_string onceFunction_syntaxDirectedTranslationResultVarName (Compiler *
                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outName ; // Returned variable
   result_outName = GALGAS_string ("ioSyntaxDirectedTranslationResult") ;
@@ -2602,7 +2602,7 @@ static GALGAS_string gOnceFunctionResult_syntaxDirectedTranslationResultVarName 
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string function_syntaxDirectedTranslationResultVarName (class C_Compiler * inCompiler
+GALGAS_string function_syntaxDirectedTranslationResultVarName (class Compiler * inCompiler
               COMMA_LOCATION_ARGS) {
   if (! gOnceFunctionResultAvailable_syntaxDirectedTranslationResultVarName) {
     gOnceFunctionResult_syntaxDirectedTranslationResultVarName = onceFunction_syntaxDirectedTranslationResultVarName (inCompiler COMMA_THERE) ;
@@ -2632,7 +2632,7 @@ static const C_galgas_type_descriptor * functionArgs_syntaxDirectedTranslationRe
 
 //--------------------------------------------------------------------------------------------------
 
-static GALGAS_object functionWithGenericHeader_syntaxDirectedTranslationResultVarName (C_Compiler * inCompiler,
+static GALGAS_object functionWithGenericHeader_syntaxDirectedTranslationResultVarName (Compiler * inCompiler,
                                                                                        const cObjectArray & /* inEffectiveParameterArray */,
                                                                                        const GALGAS_location & /* inErrorLocation */
                                                                                        COMMA_LOCATION_ARGS) {
@@ -2653,7 +2653,7 @@ C_galgas_function_descriptor functionDescriptor_syntaxDirectedTranslationResultV
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string cPtr_galgas_33_GrammarComponentAST::getter_keyRepresentation (C_Compiler * inCompiler
+GALGAS_string cPtr_galgas_33_GrammarComponentAST::getter_keyRepresentation (Compiler * inCompiler
                                                                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_galgas_33_GrammarComponentAST temp_0 = this ;
@@ -2669,7 +2669,7 @@ GALGAS_string cPtr_galgas_33_GrammarComponentAST::getter_keyRepresentation (C_Co
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string cPtr_galgas_33_SyntaxComponentAST::getter_keyRepresentation (C_Compiler * inCompiler
+GALGAS_string cPtr_galgas_33_SyntaxComponentAST::getter_keyRepresentation (Compiler * inCompiler
                                                                            COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_galgas_33_SyntaxComponentAST temp_0 = this ;
@@ -2685,7 +2685,7 @@ GALGAS_string cPtr_galgas_33_SyntaxComponentAST::getter_keyRepresentation (C_Com
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string cPtr_predefinedTypeAST::getter_keyRepresentation (C_Compiler * inCompiler
+GALGAS_string cPtr_predefinedTypeAST::getter_keyRepresentation (Compiler * inCompiler
                                                                 COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_predefinedTypeAST temp_0 = this ;
@@ -2701,7 +2701,7 @@ GALGAS_string cPtr_predefinedTypeAST::getter_keyRepresentation (C_Compiler * inC
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string cPtr_enumDeclarationAST::getter_keyRepresentation (C_Compiler * inCompiler
+GALGAS_string cPtr_enumDeclarationAST::getter_keyRepresentation (Compiler * inCompiler
                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_enumDeclarationAST temp_0 = this ;
@@ -2717,7 +2717,7 @@ GALGAS_string cPtr_enumDeclarationAST::getter_keyRepresentation (C_Compiler * in
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string cPtr_sortedListDeclarationAST::getter_keyRepresentation (C_Compiler * inCompiler
+GALGAS_string cPtr_sortedListDeclarationAST::getter_keyRepresentation (Compiler * inCompiler
                                                                        COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_sortedListDeclarationAST temp_0 = this ;
@@ -2733,7 +2733,7 @@ GALGAS_string cPtr_sortedListDeclarationAST::getter_keyRepresentation (C_Compile
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string cPtr_listDeclarationAST::getter_keyRepresentation (C_Compiler * inCompiler
+GALGAS_string cPtr_listDeclarationAST::getter_keyRepresentation (Compiler * inCompiler
                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_listDeclarationAST temp_0 = this ;
@@ -2749,7 +2749,7 @@ GALGAS_string cPtr_listDeclarationAST::getter_keyRepresentation (C_Compiler * in
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string cPtr_arrayDeclarationAST::getter_keyRepresentation (C_Compiler * inCompiler
+GALGAS_string cPtr_arrayDeclarationAST::getter_keyRepresentation (Compiler * inCompiler
                                                                   COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_arrayDeclarationAST temp_0 = this ;
@@ -2765,7 +2765,7 @@ GALGAS_string cPtr_arrayDeclarationAST::getter_keyRepresentation (C_Compiler * i
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string cPtr_listmapDeclarationAST::getter_keyRepresentation (C_Compiler * inCompiler
+GALGAS_string cPtr_listmapDeclarationAST::getter_keyRepresentation (Compiler * inCompiler
                                                                     COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_listmapDeclarationAST temp_0 = this ;
@@ -2781,7 +2781,7 @@ GALGAS_string cPtr_listmapDeclarationAST::getter_keyRepresentation (C_Compiler *
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string cPtr_filewrapperDeclarationAST::getter_keyRepresentation (C_Compiler * inCompiler
+GALGAS_string cPtr_filewrapperDeclarationAST::getter_keyRepresentation (Compiler * inCompiler
                                                                         COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_filewrapperDeclarationAST temp_0 = this ;
@@ -2797,7 +2797,7 @@ GALGAS_string cPtr_filewrapperDeclarationAST::getter_keyRepresentation (C_Compil
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string cPtr_optionComponentDeclarationAST::getter_keyRepresentation (C_Compiler * inCompiler
+GALGAS_string cPtr_optionComponentDeclarationAST::getter_keyRepresentation (Compiler * inCompiler
                                                                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_optionComponentDeclarationAST temp_0 = this ;
@@ -2813,7 +2813,7 @@ GALGAS_string cPtr_optionComponentDeclarationAST::getter_keyRepresentation (C_Co
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string cPtr_graphDeclarationAST::getter_keyRepresentation (C_Compiler * inCompiler
+GALGAS_string cPtr_graphDeclarationAST::getter_keyRepresentation (Compiler * inCompiler
                                                                   COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_graphDeclarationAST temp_0 = this ;
@@ -2829,7 +2829,7 @@ GALGAS_string cPtr_graphDeclarationAST::getter_keyRepresentation (C_Compiler * i
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string cPtr_externTypeDeclarationAST::getter_keyRepresentation (C_Compiler * inCompiler
+GALGAS_string cPtr_externTypeDeclarationAST::getter_keyRepresentation (Compiler * inCompiler
                                                                        COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_externTypeDeclarationAST temp_0 = this ;
@@ -2845,7 +2845,7 @@ GALGAS_string cPtr_externTypeDeclarationAST::getter_keyRepresentation (C_Compile
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string cPtr_onceFunctionDeclarationAST::getter_keyRepresentation (C_Compiler * inCompiler
+GALGAS_string cPtr_onceFunctionDeclarationAST::getter_keyRepresentation (Compiler * inCompiler
                                                                          COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_onceFunctionDeclarationAST temp_0 = this ;
@@ -2861,7 +2861,7 @@ GALGAS_string cPtr_onceFunctionDeclarationAST::getter_keyRepresentation (C_Compi
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string cPtr_externFunctionDeclarationAST::getter_keyRepresentation (C_Compiler * inCompiler
+GALGAS_string cPtr_externFunctionDeclarationAST::getter_keyRepresentation (Compiler * inCompiler
                                                                            COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_externFunctionDeclarationAST temp_0 = this ;
@@ -2877,7 +2877,7 @@ GALGAS_string cPtr_externFunctionDeclarationAST::getter_keyRepresentation (C_Com
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string cPtr_externProcedureDeclarationAST::getter_keyRepresentation (C_Compiler * inCompiler
+GALGAS_string cPtr_externProcedureDeclarationAST::getter_keyRepresentation (Compiler * inCompiler
                                                                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_externProcedureDeclarationAST temp_0 = this ;
@@ -2904,7 +2904,7 @@ void routine_addExtensions (const GALGAS_extensionMethodMapForBuildingContext co
                             GALGAS_setterMap & ioArgument_ioSetterMap,
                             GALGAS_instanceMethodMap & ioArgument_ioInstanceMethodMap,
                             const GALGAS_bool constinArgument_inAcceptSetters,
-                            C_Compiler * inCompiler
+                            Compiler * inCompiler
                             COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
@@ -3092,7 +3092,7 @@ void routine_addExtensions (const GALGAS_extensionMethodMapForBuildingContext co
 //
 //--------------------------------------------------------------------------------------------------
 
-static GALGAS_string onceFunction_elementTypeNameSuffix (C_Compiler *
+static GALGAS_string onceFunction_elementTypeNameSuffix (Compiler *
                                                          COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_result ; // Returned variable
   result_result = GALGAS_string ("-element") ;
@@ -3111,7 +3111,7 @@ static GALGAS_string gOnceFunctionResult_elementTypeNameSuffix ;
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string function_elementTypeNameSuffix (class C_Compiler * inCompiler
+GALGAS_string function_elementTypeNameSuffix (class Compiler * inCompiler
               COMMA_LOCATION_ARGS) {
   if (! gOnceFunctionResultAvailable_elementTypeNameSuffix) {
     gOnceFunctionResult_elementTypeNameSuffix = onceFunction_elementTypeNameSuffix (inCompiler COMMA_THERE) ;
@@ -3141,7 +3141,7 @@ static const C_galgas_type_descriptor * functionArgs_elementTypeNameSuffix [1] =
 
 //--------------------------------------------------------------------------------------------------
 
-static GALGAS_object functionWithGenericHeader_elementTypeNameSuffix (C_Compiler * inCompiler,
+static GALGAS_object functionWithGenericHeader_elementTypeNameSuffix (Compiler * inCompiler,
                                                                       const cObjectArray & /* inEffectiveParameterArray */,
                                                                       const GALGAS_location & /* inErrorLocation */
                                                                       COMMA_LOCATION_ARGS) {
@@ -3170,7 +3170,7 @@ void routine_recursivelyEnumerateDirectories (const GALGAS_string constinArgumen
                                               GALGAS_wrapperDirectoryMap & outArgument_outWrapperDirectoryMap,
                                               GALGAS_uint & ioArgument_ioWrapperFileIndex,
                                               GALGAS_uint & ioArgument_ioWrapperDirectoryIndex,
-                                              C_Compiler * inCompiler
+                                              Compiler * inCompiler
                                               COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outWrapperFileMap.drop () ; // Release 'out' argument
   outArgument_outWrapperDirectoryMap.drop () ; // Release 'out' argument
@@ -3235,7 +3235,7 @@ void cPtr_filewrapperDeclarationAST::method_enterDeclarationInSemanticContext (c
                                                                                const GALGAS_extensionSetterMapForBuildingContext /* constinArgument_inExtensionSetterMapForBuildingContext */,
                                                                                GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
                                                                                GALGAS_semanticContext & ioArgument_ioSemanticContext,
-                                                                               C_Compiler * inCompiler
+                                                                               Compiler * inCompiler
                                                                                COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_filewrapperTemplateMap var_filewrapperTemplateMap_28488 = GALGAS_filewrapperTemplateMap::constructor_emptyMap (SOURCE_FILE ("semanticContext.galgas", 650)) ;
   const GALGAS_filewrapperDeclarationAST temp_0 = this ;
@@ -3338,7 +3338,7 @@ void cPtr_externProcedureDeclarationAST::method_enterDeclarationInSemanticContex
                                                                                    const GALGAS_extensionSetterMapForBuildingContext /* constinArgument_inExtensionSetterMapForBuildingContext */,
                                                                                    GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
                                                                                    GALGAS_semanticContext & ioArgument_ioSemanticContext,
-                                                                                   C_Compiler * inCompiler
+                                                                                   Compiler * inCompiler
                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_formalParameterSignature var_routineSignature_31548 = GALGAS_formalParameterSignature::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 725)) ;
   const GALGAS_externProcedureDeclarationAST temp_0 = this ;
@@ -3368,7 +3368,7 @@ void cPtr_procDeclarationAST::method_enterDeclarationInSemanticContext (const GA
                                                                         const GALGAS_extensionSetterMapForBuildingContext /* constinArgument_inExtensionSetterMapForBuildingContext */,
                                                                         GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
                                                                         GALGAS_semanticContext & ioArgument_ioSemanticContext,
-                                                                        C_Compiler * inCompiler
+                                                                        Compiler * inCompiler
                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_formalParameterSignature var_routineSignature_32671 = GALGAS_formalParameterSignature::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 747)) ;
   const GALGAS_procDeclarationAST temp_0 = this ;
@@ -3400,7 +3400,7 @@ void cPtr_externFunctionDeclarationAST::method_enterDeclarationInSemanticContext
                                                                                   const GALGAS_extensionSetterMapForBuildingContext /* constinArgument_inExtensionSetterMapForBuildingContext */,
                                                                                   GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
                                                                                   GALGAS_semanticContext & ioArgument_ioSemanticContext,
-                                                                                  C_Compiler * inCompiler
+                                                                                  Compiler * inCompiler
                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_functionSignature var_functionSignature_33961 = GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 771)) ;
   const GALGAS_externFunctionDeclarationAST temp_0 = this ;
@@ -3434,7 +3434,7 @@ void cPtr_onceFunctionDeclarationAST::method_enterDeclarationInSemanticContext (
                                                                                 const GALGAS_extensionSetterMapForBuildingContext /* constinArgument_inExtensionSetterMapForBuildingContext */,
                                                                                 GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
                                                                                 GALGAS_semanticContext & ioArgument_ioSemanticContext,
-                                                                                C_Compiler * inCompiler
+                                                                                Compiler * inCompiler
                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_unifiedTypeMapEntry var_resultTypeIndex_35203 ;
   {
@@ -3458,7 +3458,7 @@ void cPtr_galgas_33_SyntaxComponentAST::method_enterDeclarationInSemanticContext
                                                                                   const GALGAS_extensionSetterMapForBuildingContext /* constinArgument_inExtensionSetterMapForBuildingContext */,
                                                                                   GALGAS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
                                                                                   GALGAS_semanticContext & ioArgument_ioSemanticContext,
-                                                                                  C_Compiler * inCompiler
+                                                                                  Compiler * inCompiler
                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   {
   const GALGAS_galgas_33_SyntaxComponentAST temp_0 = this ;
@@ -3480,7 +3480,7 @@ void cPtr_galgas_33_GrammarComponentAST::method_enterDeclarationInSemanticContex
                                                                                    const GALGAS_extensionSetterMapForBuildingContext /* constinArgument_inExtensionSetterMapForBuildingContext */,
                                                                                    GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
                                                                                    GALGAS_semanticContext & ioArgument_ioSemanticContext,
-                                                                                   C_Compiler * inCompiler
+                                                                                   Compiler * inCompiler
                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_grammarLabelMap var_grammarLabelMap_36796 = GALGAS_grammarLabelMap::constructor_emptyMap (SOURCE_FILE ("semanticContext.galgas", 829)) ;
   const GALGAS_galgas_33_GrammarComponentAST temp_0 = this ;
@@ -3519,7 +3519,7 @@ void cPtr_galgas_33_GrammarComponentAST::method_enterDeclarationInGraph (GALGAS_
                                                                          GALGAS_extensionGetterMapForBuildingContext & /* ioArgument_ioExtensionGetterMapForBuildingContext */,
                                                                          GALGAS_extensionSetterMapForBuildingContext & /* ioArgument_ioExtensionSetterMapForBuildingContext */,
                                                                          GALGAS_semanticDeclarationListAST & /* ioArgument_ioExtensionOverrideDefinitionList */,
-                                                                         C_Compiler * inCompiler
+                                                                         Compiler * inCompiler
                                                                          COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_galgas_33_GrammarComponentAST temp_0 = this ;
   const GALGAS_galgas_33_GrammarComponentAST temp_1 = this ;
@@ -3548,7 +3548,7 @@ void cPtr_galgas_33_SyntaxComponentAST::method_enterDeclarationInGraph (GALGAS_s
                                                                         GALGAS_extensionGetterMapForBuildingContext & /* ioArgument_ioExtensionGetterMapForBuildingContext */,
                                                                         GALGAS_extensionSetterMapForBuildingContext & /* ioArgument_ioExtensionSetterMapForBuildingContext */,
                                                                         GALGAS_semanticDeclarationListAST & /* ioArgument_ioExtensionOverrideDefinitionList */,
-                                                                        C_Compiler * inCompiler
+                                                                        Compiler * inCompiler
                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_galgas_33_SyntaxComponentAST temp_0 = this ;
   const GALGAS_galgas_33_SyntaxComponentAST temp_1 = this ;
@@ -3604,7 +3604,7 @@ void cPtr_externFunctionDeclarationAST::method_enterDeclarationInGraph (GALGAS_s
                                                                         GALGAS_extensionGetterMapForBuildingContext & /* ioArgument_ioExtensionGetterMapForBuildingContext */,
                                                                         GALGAS_extensionSetterMapForBuildingContext & /* ioArgument_ioExtensionSetterMapForBuildingContext */,
                                                                         GALGAS_semanticDeclarationListAST & ioArgument_ioExtensionOverrideDefinitionList,
-                                                                        C_Compiler * /* inCompiler */
+                                                                        Compiler * /* inCompiler */
                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_externFunctionDeclarationAST temp_0 = this ;
   ioArgument_ioExtensionOverrideDefinitionList.addAssign_operation (temp_0  COMMA_SOURCE_FILE ("semanticContext.galgas", 924)) ;
@@ -3620,7 +3620,7 @@ void cPtr_onceFunctionDeclarationAST::method_enterDeclarationInGraph (GALGAS_sem
                                                                       GALGAS_extensionGetterMapForBuildingContext & /* ioArgument_ioExtensionGetterMapForBuildingContext */,
                                                                       GALGAS_extensionSetterMapForBuildingContext & /* ioArgument_ioExtensionSetterMapForBuildingContext */,
                                                                       GALGAS_semanticDeclarationListAST & ioArgument_ioExtensionOverrideDefinitionList,
-                                                                      C_Compiler * /* inCompiler */
+                                                                      Compiler * /* inCompiler */
                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_onceFunctionDeclarationAST temp_0 = this ;
   ioArgument_ioExtensionOverrideDefinitionList.addAssign_operation (temp_0  COMMA_SOURCE_FILE ("semanticContext.galgas", 935)) ;
@@ -3636,7 +3636,7 @@ void cPtr_externProcedureDeclarationAST::method_enterDeclarationInGraph (GALGAS_
                                                                          GALGAS_extensionGetterMapForBuildingContext & /* ioArgument_ioExtensionGetterMapForBuildingContext */,
                                                                          GALGAS_extensionSetterMapForBuildingContext & /* ioArgument_ioExtensionSetterMapForBuildingContext */,
                                                                          GALGAS_semanticDeclarationListAST & ioArgument_ioExtensionOverrideDefinitionList,
-                                                                         C_Compiler * /* inCompiler */
+                                                                         Compiler * /* inCompiler */
                                                                          COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_externProcedureDeclarationAST temp_0 = this ;
   ioArgument_ioExtensionOverrideDefinitionList.addAssign_operation (temp_0  COMMA_SOURCE_FILE ("semanticContext.galgas", 946)) ;
@@ -3652,7 +3652,7 @@ void cPtr_filewrapperDeclarationAST::method_enterDeclarationInGraph (GALGAS_sema
                                                                      GALGAS_extensionGetterMapForBuildingContext & /* ioArgument_ioExtensionGetterMapForBuildingContext */,
                                                                      GALGAS_extensionSetterMapForBuildingContext & /* ioArgument_ioExtensionSetterMapForBuildingContext */,
                                                                      GALGAS_semanticDeclarationListAST & ioArgument_ioExtensionOverrideDefinitionList,
-                                                                     C_Compiler * /* inCompiler */
+                                                                     Compiler * /* inCompiler */
                                                                      COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_filewrapperDeclarationAST temp_0 = this ;
   ioArgument_ioExtensionOverrideDefinitionList.addAssign_operation (temp_0  COMMA_SOURCE_FILE ("semanticContext.galgas", 957)) ;
@@ -3669,7 +3669,7 @@ void routine_generateInstructionList (GALGAS_stringset & ioArgument_ioInclusionS
                                       GALGAS_stringset & ioArgument_ioUnusedVariableCppNameSet,
                                       const GALGAS_bool constinArgument_inGenerateSyntaxDirectedTranslationString,
                                       GALGAS_string & ioArgument_ioGeneratedCode,
-                                      C_Compiler * inCompiler
+                                      Compiler * inCompiler
                                       COMMA_UNUSED_LOCATION_ARGS) {
   {
   ioArgument_ioGeneratedCode.setter_incIndentation (GALGAS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("semanticsDecoratedTypes.galgas", 28)) ;
@@ -3691,7 +3691,7 @@ void routine_generateInstructionList (GALGAS_stringset & ioArgument_ioInclusionS
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string cPtr_semanticTypeForGeneration::getter_implementationCppFileName (C_Compiler * inCompiler
+GALGAS_string cPtr_semanticTypeForGeneration::getter_implementationCppFileName (Compiler * inCompiler
                                                                                 COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_semanticTypeForGeneration temp_0 = this ;
@@ -3707,7 +3707,7 @@ GALGAS_string cPtr_semanticTypeForGeneration::getter_implementationCppFileName (
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool cPtr_semanticTypeForGeneration::getter_hasCppHeaderFile (C_Compiler */* inCompiler */
+GALGAS_bool cPtr_semanticTypeForGeneration::getter_hasCppHeaderFile (Compiler */* inCompiler */
                                                                      COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result_result ; // Returned variable
   result_result = GALGAS_bool (true) ;
@@ -3722,7 +3722,7 @@ GALGAS_bool cPtr_semanticTypeForGeneration::getter_hasCppHeaderFile (C_Compiler 
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool cPtr_semanticTypeForGeneration::getter_isPredefined (C_Compiler * inCompiler
+GALGAS_bool cPtr_semanticTypeForGeneration::getter_isPredefined (Compiler * inCompiler
                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result_result ; // Returned variable
   const GALGAS_semanticTypeForGeneration temp_0 = this ;
@@ -3738,7 +3738,7 @@ GALGAS_bool cPtr_semanticTypeForGeneration::getter_isPredefined (C_Compiler * in
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_headerKind cPtr_semanticTypeForGeneration::getter_headerKind (C_Compiler * inCompiler
+GALGAS_headerKind cPtr_semanticTypeForGeneration::getter_headerKind (Compiler * inCompiler
                                                                      COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_headerKind result_result ; // Returned variable
   const GALGAS_semanticTypeForGeneration temp_0 = this ;
@@ -3754,7 +3754,7 @@ GALGAS_headerKind cPtr_semanticTypeForGeneration::getter_headerKind (C_Compiler 
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string cPtr_semanticDeclarationWithHeaderForGeneration::getter_implementationCppFileName (C_Compiler */* inCompiler */
+GALGAS_string cPtr_semanticDeclarationWithHeaderForGeneration::getter_implementationCppFileName (Compiler */* inCompiler */
                                                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_semanticDeclarationWithHeaderForGeneration temp_0 = this ;
@@ -3770,7 +3770,7 @@ GALGAS_string cPtr_semanticDeclarationWithHeaderForGeneration::getter_implementa
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool cPtr_semanticDeclarationWithHeaderForGeneration::getter_hasCppHeaderFile (C_Compiler */* inCompiler */
+GALGAS_bool cPtr_semanticDeclarationWithHeaderForGeneration::getter_hasCppHeaderFile (Compiler */* inCompiler */
                                                                                       COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result_result ; // Returned variable
   const GALGAS_semanticDeclarationWithHeaderForGeneration temp_0 = this ;
@@ -3786,7 +3786,7 @@ GALGAS_bool cPtr_semanticDeclarationWithHeaderForGeneration::getter_hasCppHeader
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_headerKind cPtr_semanticDeclarationWithHeaderForGeneration::getter_headerKind (C_Compiler */* inCompiler */
+GALGAS_headerKind cPtr_semanticDeclarationWithHeaderForGeneration::getter_headerKind (Compiler */* inCompiler */
                                                                                       COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_headerKind result_result ; // Returned variable
   result_result = GALGAS_headerKind::constructor_twoHeaders (SOURCE_FILE ("semanticsDecoratedTypes.galgas", 303)) ;
@@ -3801,7 +3801,7 @@ GALGAS_headerKind cPtr_semanticDeclarationWithHeaderForGeneration::getter_header
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool cPtr_semanticDeclarationWithHeaderForGeneration::getter_isPredefined (C_Compiler */* inCompiler */
+GALGAS_bool cPtr_semanticDeclarationWithHeaderForGeneration::getter_isPredefined (Compiler */* inCompiler */
                                                                                   COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result_result ; // Returned variable
   result_result = GALGAS_bool (false) ;
@@ -3827,7 +3827,7 @@ void routine_analyzeSemanticInstructionList (const GALGAS_lstring constinArgumen
                                              const GALGAS_location constinArgument_inEndOfBranchLocation,
                                              GALGAS_localVarManager & ioArgument_ioVariableMap,
                                              GALGAS_semanticInstructionListForGeneration & outArgument_outInstructionListForGeneration,
-                                             C_Compiler * inCompiler
+                                             Compiler * inCompiler
                                              COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outInstructionListForGeneration.drop () ; // Release 'out' argument
   {
@@ -3858,7 +3858,7 @@ void routine_analyzeSemanticInstructionListWithoutBranch (const GALGAS_lstring c
                                                           const GALGAS_semanticInstructionListAST constinArgument_inSemanticInstructionListAST,
                                                           GALGAS_localVarManager & ioArgument_ioVariableMap,
                                                           GALGAS_semanticInstructionListForGeneration & outArgument_outInstructionListForGeneration,
-                                                          C_Compiler * inCompiler
+                                                          Compiler * inCompiler
                                                           COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outInstructionListForGeneration.drop () ; // Release 'out' argument
   outArgument_outInstructionListForGeneration = GALGAS_semanticInstructionListForGeneration::constructor_emptyList (SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 95)) ;
@@ -3909,7 +3909,7 @@ void routine_analyzeSemanticInstructionListWithoutBranch (const GALGAS_lstring c
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_outputActualParameterAST::method_enterInActualOutputParameterList (GALGAS_actualOutputExpressionList & ioArgument_ioActualOutputArgumentList,
-                                                                             C_Compiler * /* inCompiler */
+                                                                             Compiler * /* inCompiler */
                                                                              COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_outputActualParameterAST temp_0 = this ;
   const GALGAS_outputActualParameterAST temp_1 = this ;
@@ -3933,7 +3933,7 @@ void cPtr_outputActualParameterAST::method_checkAgainstFormalArgument (const GAL
                                                                        GALGAS_actualParameterListForGeneration & ioArgument_ioActualParameterListForGeneration,
                                                                        GALGAS_stringset & /* ioArgument_ioExclusiveVariableSet */,
                                                                        GALGAS_semanticInstructionListForGeneration & /* ioArgument_ioInstructionListForGeneration */,
-                                                                       C_Compiler * inCompiler
+                                                                       Compiler * inCompiler
                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
@@ -3981,7 +3981,7 @@ void cPtr_outputActualParameterAST::method_checkAgainstFormalArgument (const GAL
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_outputInputActualParameterAST::method_enterInActualOutputParameterList (GALGAS_actualOutputExpressionList & /* ioArgument_ioActualOutputArgumentList */,
-                                                                                  C_Compiler * inCompiler
+                                                                                  Compiler * inCompiler
                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_outputInputActualParameterAST temp_0 = this ;
   TC_Array <C_FixItDescription> fixItArray1 ;
@@ -4004,7 +4004,7 @@ void cPtr_outputInputActualParameterAST::method_checkAgainstFormalArgument (cons
                                                                             GALGAS_actualParameterListForGeneration & ioArgument_ioActualParameterListForGeneration,
                                                                             GALGAS_stringset & ioArgument_ioExclusiveVariableSet,
                                                                             GALGAS_semanticInstructionListForGeneration & /* ioArgument_ioInstructionListForGeneration */,
-                                                                            C_Compiler * inCompiler
+                                                                            Compiler * inCompiler
                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
@@ -4094,7 +4094,7 @@ void cPtr_outputInputActualParameterAST::method_checkAgainstFormalArgument (cons
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_outputInputSingleJokerParameterAST::method_enterInActualOutputParameterList (GALGAS_actualOutputExpressionList & /* ioArgument_ioActualOutputArgumentList */,
-                                                                                       C_Compiler * inCompiler
+                                                                                       Compiler * inCompiler
                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_outputInputSingleJokerParameterAST temp_0 = this ;
   TC_Array <C_FixItDescription> fixItArray1 ;
@@ -4117,7 +4117,7 @@ void cPtr_outputInputSingleJokerParameterAST::method_checkAgainstFormalArgument 
                                                                                  GALGAS_actualParameterListForGeneration & ioArgument_ioActualParameterListForGeneration,
                                                                                  GALGAS_stringset & /* ioArgument_ioExclusiveVariableSet */,
                                                                                  GALGAS_semanticInstructionListForGeneration & ioArgument_ioInstructionListForGeneration,
-                                                                                 C_Compiler * inCompiler
+                                                                                 Compiler * inCompiler
                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
@@ -4198,7 +4198,7 @@ void cPtr_outputInputSingleJokerParameterAST::method_checkAgainstFormalArgument 
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_outputInputSelfParameterAST::method_enterInActualOutputParameterList (GALGAS_actualOutputExpressionList & /* ioArgument_ioActualOutputArgumentList */,
-                                                                                C_Compiler * inCompiler
+                                                                                Compiler * inCompiler
                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_outputInputSelfParameterAST temp_0 = this ;
   TC_Array <C_FixItDescription> fixItArray1 ;
@@ -4221,7 +4221,7 @@ void cPtr_outputInputSelfParameterAST::method_checkAgainstFormalArgument (const 
                                                                           GALGAS_actualParameterListForGeneration & ioArgument_ioActualParameterListForGeneration,
                                                                           GALGAS_stringset & /* ioArgument_ioExclusiveVariableSet */,
                                                                           GALGAS_semanticInstructionListForGeneration & /* ioArgument_ioInstructionListForGeneration */,
-                                                                          C_Compiler * inCompiler
+                                                                          Compiler * inCompiler
                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
@@ -4297,7 +4297,7 @@ void cPtr_outputInputSelfParameterAST::method_checkAgainstFormalArgument (const 
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_outputInputJokerParameterAST::method_enterInActualOutputParameterList (GALGAS_actualOutputExpressionList & /* ioArgument_ioActualOutputArgumentList */,
-                                                                                 C_Compiler * inCompiler
+                                                                                 Compiler * inCompiler
                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_outputInputJokerParameterAST temp_0 = this ;
   TC_Array <C_FixItDescription> fixItArray1 ;
@@ -4320,7 +4320,7 @@ void cPtr_outputInputJokerParameterAST::method_checkAgainstFormalArgument (const
                                                                            GALGAS_actualParameterListForGeneration & ioArgument_ioActualParameterListForGeneration,
                                                                            GALGAS_stringset & /* ioArgument_ioExclusiveVariableSet */,
                                                                            GALGAS_semanticInstructionListForGeneration & ioArgument_ioInstructionListForGeneration,
-                                                                           C_Compiler * inCompiler
+                                                                           Compiler * inCompiler
                                                                            COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
@@ -4381,7 +4381,7 @@ void cPtr_outputInputJokerParameterAST::method_checkAgainstFormalArgument (const
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_inputActualExistingVariableParameterAST::method_enterInActualOutputParameterList (GALGAS_actualOutputExpressionList & /* ioArgument_ioActualOutputArgumentList */,
-                                                                                            C_Compiler * inCompiler
+                                                                                            Compiler * inCompiler
                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_inputActualExistingVariableParameterAST temp_0 = this ;
   TC_Array <C_FixItDescription> fixItArray1 ;
@@ -4404,7 +4404,7 @@ void cPtr_inputActualExistingVariableParameterAST::method_checkAgainstFormalArgu
                                                                                       GALGAS_actualParameterListForGeneration & ioArgument_ioActualParameterListForGeneration,
                                                                                       GALGAS_stringset & ioArgument_ioExclusiveVariableSet,
                                                                                       GALGAS_semanticInstructionListForGeneration & /* ioArgument_ioInstructionListForGeneration */,
-                                                                                      C_Compiler * inCompiler
+                                                                                      Compiler * inCompiler
                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
@@ -4486,7 +4486,7 @@ void cPtr_inputActualExistingVariableParameterAST::method_checkAgainstFormalArgu
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_inputActualSelfPropertyParameterAST::method_enterInActualOutputParameterList (GALGAS_actualOutputExpressionList & /* ioArgument_ioActualOutputArgumentList */,
-                                                                                        C_Compiler * inCompiler
+                                                                                        Compiler * inCompiler
                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_inputActualSelfPropertyParameterAST temp_0 = this ;
   TC_Array <C_FixItDescription> fixItArray1 ;
@@ -4509,7 +4509,7 @@ void cPtr_inputActualSelfPropertyParameterAST::method_checkAgainstFormalArgument
                                                                                   GALGAS_actualParameterListForGeneration & ioArgument_ioActualParameterListForGeneration,
                                                                                   GALGAS_stringset & /* ioArgument_ioExclusiveVariableSet */,
                                                                                   GALGAS_semanticInstructionListForGeneration & /* ioArgument_ioInstructionListForGeneration */,
-                                                                                  C_Compiler * inCompiler
+                                                                                  Compiler * inCompiler
                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
@@ -4606,7 +4606,7 @@ void cPtr_inputActualSelfPropertyParameterAST::method_checkAgainstFormalArgument
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_inputActualSelfParameterAST::method_enterInActualOutputParameterList (GALGAS_actualOutputExpressionList & /* ioArgument_ioActualOutputArgumentList */,
-                                                                                C_Compiler * inCompiler
+                                                                                Compiler * inCompiler
                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_inputActualSelfParameterAST temp_0 = this ;
   TC_Array <C_FixItDescription> fixItArray1 ;
@@ -4629,7 +4629,7 @@ void cPtr_inputActualSelfParameterAST::method_checkAgainstFormalArgument (const 
                                                                           GALGAS_actualParameterListForGeneration & ioArgument_ioActualParameterListForGeneration,
                                                                           GALGAS_stringset & /* ioArgument_ioExclusiveVariableSet */,
                                                                           GALGAS_semanticInstructionListForGeneration & /* ioArgument_ioInstructionListForGeneration */,
-                                                                          C_Compiler * inCompiler
+                                                                          Compiler * inCompiler
                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
@@ -4719,7 +4719,7 @@ void cPtr_inputActualSelfParameterAST::method_checkAgainstFormalArgument (const 
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_inputActualNewVariableParameterAST::method_enterInActualOutputParameterList (GALGAS_actualOutputExpressionList & /* ioArgument_ioActualOutputArgumentList */,
-                                                                                       C_Compiler * inCompiler
+                                                                                       Compiler * inCompiler
                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_inputActualNewVariableParameterAST temp_0 = this ;
   TC_Array <C_FixItDescription> fixItArray1 ;
@@ -4742,7 +4742,7 @@ void cPtr_inputActualNewVariableParameterAST::method_checkAgainstFormalArgument 
                                                                                  GALGAS_actualParameterListForGeneration & ioArgument_ioActualParameterListForGeneration,
                                                                                  GALGAS_stringset & ioArgument_ioExclusiveVariableSet,
                                                                                  GALGAS_semanticInstructionListForGeneration & ioArgument_ioInstructionListForGeneration,
-                                                                                 C_Compiler * inCompiler
+                                                                                 Compiler * inCompiler
                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
@@ -4834,7 +4834,7 @@ void cPtr_inputActualNewVariableParameterAST::method_checkAgainstFormalArgument 
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_inputActualNewConstantParameterAST::method_enterInActualOutputParameterList (GALGAS_actualOutputExpressionList & /* ioArgument_ioActualOutputArgumentList */,
-                                                                                       C_Compiler * inCompiler
+                                                                                       Compiler * inCompiler
                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_inputActualNewConstantParameterAST temp_0 = this ;
   TC_Array <C_FixItDescription> fixItArray1 ;
@@ -4857,7 +4857,7 @@ void cPtr_inputActualNewConstantParameterAST::method_checkAgainstFormalArgument 
                                                                                  GALGAS_actualParameterListForGeneration & ioArgument_ioActualParameterListForGeneration,
                                                                                  GALGAS_stringset & ioArgument_ioExclusiveVariableSet,
                                                                                  GALGAS_semanticInstructionListForGeneration & ioArgument_ioInstructionListForGeneration,
-                                                                                 C_Compiler * inCompiler
+                                                                                 Compiler * inCompiler
                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
@@ -4962,7 +4962,7 @@ void cPtr_inputActualNewConstantParameterAST::method_checkAgainstFormalArgument 
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_inputSingleJokerActualParameterAST::method_enterInActualOutputParameterList (GALGAS_actualOutputExpressionList & /* ioArgument_ioActualOutputArgumentList */,
-                                                                                       C_Compiler * inCompiler
+                                                                                       Compiler * inCompiler
                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_inputSingleJokerActualParameterAST temp_0 = this ;
   TC_Array <C_FixItDescription> fixItArray1 ;
@@ -4985,7 +4985,7 @@ void cPtr_inputSingleJokerActualParameterAST::method_checkAgainstFormalArgument 
                                                                                  GALGAS_actualParameterListForGeneration & ioArgument_ioActualParameterListForGeneration,
                                                                                  GALGAS_stringset & /* ioArgument_ioExclusiveVariableSet */,
                                                                                  GALGAS_semanticInstructionListForGeneration & /* ioArgument_ioInstructionListForGeneration */,
-                                                                                 C_Compiler * inCompiler
+                                                                                 Compiler * inCompiler
                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
@@ -5043,7 +5043,7 @@ void cPtr_inputSingleJokerActualParameterAST::method_checkAgainstFormalArgument 
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_inputJokerActualParameterAST::method_enterInActualOutputParameterList (GALGAS_actualOutputExpressionList & /* ioArgument_ioActualOutputArgumentList */,
-                                                                                 C_Compiler * inCompiler
+                                                                                 Compiler * inCompiler
                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_inputJokerActualParameterAST temp_0 = this ;
   TC_Array <C_FixItDescription> fixItArray1 ;
@@ -5066,7 +5066,7 @@ void cPtr_inputJokerActualParameterAST::method_checkAgainstFormalArgument (const
                                                                            GALGAS_actualParameterListForGeneration & ioArgument_ioActualParameterListForGeneration,
                                                                            GALGAS_stringset & /* ioArgument_ioExclusiveVariableSet */,
                                                                            GALGAS_semanticInstructionListForGeneration & /* ioArgument_ioInstructionListForGeneration */,
-                                                                           C_Compiler * inCompiler
+                                                                           Compiler * inCompiler
                                                                            COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
@@ -5091,7 +5091,7 @@ void cPtr_inputJokerActualParameterAST::method_checkAgainstFormalArgument (const
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_inputActualExistingVariableParameterAST::method_enterParameterInSemanticContext (GALGAS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
-                                                                                           C_Compiler * /* inCompiler */
+                                                                                           Compiler * /* inCompiler */
                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
 }
 //--------------------------------------------------------------------------------------------------
@@ -5101,7 +5101,7 @@ void cPtr_inputActualExistingVariableParameterAST::method_enterParameterInSemant
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_inputActualSelfPropertyParameterAST::method_enterParameterInSemanticContext (GALGAS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
-                                                                                       C_Compiler * /* inCompiler */
+                                                                                       Compiler * /* inCompiler */
                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
 }
 //--------------------------------------------------------------------------------------------------
@@ -5111,7 +5111,7 @@ void cPtr_inputActualSelfPropertyParameterAST::method_enterParameterInSemanticCo
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_inputActualSelfParameterAST::method_enterParameterInSemanticContext (GALGAS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
-                                                                               C_Compiler * /* inCompiler */
+                                                                               Compiler * /* inCompiler */
                                                                                COMMA_UNUSED_LOCATION_ARGS) {
 }
 //--------------------------------------------------------------------------------------------------
@@ -5121,7 +5121,7 @@ void cPtr_inputActualSelfParameterAST::method_enterParameterInSemanticContext (G
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_inputActualNewConstantParameterAST::method_enterParameterInSemanticContext (GALGAS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
-                                                                                      C_Compiler * /* inCompiler */
+                                                                                      Compiler * /* inCompiler */
                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
 }
 //--------------------------------------------------------------------------------------------------
@@ -5131,7 +5131,7 @@ void cPtr_inputActualNewConstantParameterAST::method_enterParameterInSemanticCon
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_inputActualNewVariableParameterAST::method_enterParameterInSemanticContext (GALGAS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
-                                                                                      C_Compiler * /* inCompiler */
+                                                                                      Compiler * /* inCompiler */
                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
 }
 //--------------------------------------------------------------------------------------------------
@@ -5141,7 +5141,7 @@ void cPtr_inputActualNewVariableParameterAST::method_enterParameterInSemanticCon
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_inputJokerActualParameterAST::method_enterParameterInSemanticContext (GALGAS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
-                                                                                C_Compiler * /* inCompiler */
+                                                                                Compiler * /* inCompiler */
                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
 }
 //--------------------------------------------------------------------------------------------------
@@ -5151,7 +5151,7 @@ void cPtr_inputJokerActualParameterAST::method_enterParameterInSemanticContext (
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_inputSingleJokerActualParameterAST::method_enterParameterInSemanticContext (GALGAS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
-                                                                                      C_Compiler * /* inCompiler */
+                                                                                      Compiler * /* inCompiler */
                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
 }
 //--------------------------------------------------------------------------------------------------
@@ -5161,7 +5161,7 @@ void cPtr_inputSingleJokerActualParameterAST::method_enterParameterInSemanticCon
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_outputActualParameterAST::method_enterParameterInSemanticContext (GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
-                                                                            C_Compiler * inCompiler
+                                                                            Compiler * inCompiler
                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_outputActualParameterAST temp_0 = this ;
   callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mOutputActualParameterExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 946)) ;
@@ -5173,7 +5173,7 @@ void cPtr_outputActualParameterAST::method_enterParameterInSemanticContext (GALG
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_outputInputActualParameterAST::method_enterParameterInSemanticContext (GALGAS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
-                                                                                 C_Compiler * /* inCompiler */
+                                                                                 Compiler * /* inCompiler */
                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
 }
 //--------------------------------------------------------------------------------------------------
@@ -5183,7 +5183,7 @@ void cPtr_outputInputActualParameterAST::method_enterParameterInSemanticContext 
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_outputInputJokerParameterAST::method_enterParameterInSemanticContext (GALGAS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
-                                                                                C_Compiler * /* inCompiler */
+                                                                                Compiler * /* inCompiler */
                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
 }
 //--------------------------------------------------------------------------------------------------
@@ -5193,7 +5193,7 @@ void cPtr_outputInputJokerParameterAST::method_enterParameterInSemanticContext (
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_outputInputSingleJokerParameterAST::method_enterParameterInSemanticContext (GALGAS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
-                                                                                      C_Compiler * /* inCompiler */
+                                                                                      Compiler * /* inCompiler */
                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
 }
 //--------------------------------------------------------------------------------------------------
@@ -5203,7 +5203,7 @@ void cPtr_outputInputSingleJokerParameterAST::method_enterParameterInSemanticCon
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_outputInputSelfParameterAST::method_enterParameterInSemanticContext (GALGAS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
-                                                                               C_Compiler * /* inCompiler */
+                                                                               Compiler * /* inCompiler */
                                                                                COMMA_UNUSED_LOCATION_ARGS) {
 }
 //--------------------------------------------------------------------------------------------------
@@ -5223,7 +5223,7 @@ void routine_analyzeRoutineArguments (const GALGAS_lstring constinArgument_inUse
                                       GALGAS_localVarManager & ioArgument_ioVariableMap,
                                       GALGAS_semanticInstructionListForGeneration & ioArgument_ioInstructionListForGeneration,
                                       GALGAS_actualParameterListForGeneration & outArgument_outActualParameterListForGeneration,
-                                      C_Compiler * inCompiler
+                                      Compiler * inCompiler
                                       COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outActualParameterListForGeneration.drop () ; // Release 'out' argument
   enumGalgasBool test_0 = kBoolTrue ;
@@ -5259,7 +5259,7 @@ void routine_checkExpressionIsBoolean (const GALGAS_analysisContext constinArgum
                                        const GALGAS_location constinArgument_inErrorLocation,
                                        const GALGAS_semanticExpressionForGeneration constinArgument_inExpression,
                                        GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
-                                       C_Compiler * inCompiler
+                                       Compiler * inCompiler
                                        COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outExpression.drop () ; // Release 'out' argument
   GALGAS_unifiedTypeMapEntry var_expressionType_50546 = constinArgument_inExpression.readProperty_mResultType () ;
@@ -5367,7 +5367,7 @@ void cPtr_grammarInstructionSyntaxDirectedTranslationResultNone::method_analyzeG
                                                                                                       const GALGAS_string /* constinArgument_inSyntaxDirectedTranslationResultVarName */,
                                                                                                       GALGAS_stringlist & /* ioArgument_ioAssignementList */,
                                                                                                       GALGAS_localVarManager & /* ioArgument_ioVariableMap */,
-                                                                                                      C_Compiler * /* inCompiler */
+                                                                                                      Compiler * /* inCompiler */
                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
 }
 //--------------------------------------------------------------------------------------------------
@@ -5382,7 +5382,7 @@ void cPtr_grammarInstructionSyntaxDirectedTranslationDropResult::method_analyzeG
                                                                                                       const GALGAS_string /* constinArgument_inSyntaxDirectedTranslationResultVarName */,
                                                                                                       GALGAS_stringlist & /* ioArgument_ioAssignementList */,
                                                                                                       GALGAS_localVarManager & /* ioArgument_ioVariableMap */,
-                                                                                                      C_Compiler * inCompiler
+                                                                                                      Compiler * inCompiler
                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
@@ -5406,7 +5406,7 @@ void cPtr_grammarInstructionSyntaxDirectedTranslationResultInVar::method_analyze
                                                                                                        const GALGAS_string constinArgument_inSyntaxDirectedTranslationResultVarName,
                                                                                                        GALGAS_stringlist & ioArgument_ioAssignementList,
                                                                                                        GALGAS_localVarManager & ioArgument_ioVariableMap,
-                                                                                                       C_Compiler * inCompiler
+                                                                                                       Compiler * inCompiler
                                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
@@ -5449,7 +5449,7 @@ void cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar::method
                                                                                                                const GALGAS_string constinArgument_inSyntaxDirectedTranslationResultVarName,
                                                                                                                GALGAS_stringlist & ioArgument_ioAssignementList,
                                                                                                                GALGAS_localVarManager & ioArgument_ioVariableMap,
-                                                                                                               C_Compiler * inCompiler
+                                                                                                               Compiler * inCompiler
                                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
@@ -5494,7 +5494,7 @@ void cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst::meth
                                                                                                                  const GALGAS_string constinArgument_inSyntaxDirectedTranslationResultVarName,
                                                                                                                  GALGAS_stringlist & ioArgument_ioAssignementList,
                                                                                                                  GALGAS_localVarManager & ioArgument_ioVariableMap,
-                                                                                                                 C_Compiler * inCompiler
+                                                                                                                 Compiler * inCompiler
                                                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
@@ -5537,7 +5537,7 @@ void routine_checkMethodSignatures (const GALGAS_formalParameterListForGeneratio
                                     const GALGAS_location constinArgument_inErrorLocation,
                                     const GALGAS_formalParameterSignature constinArgument_inReferenceSignature,
                                     const GALGAS_location constinArgument_inReferenceLocation,
-                                    C_Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
@@ -5630,7 +5630,7 @@ void routine_checkGetterSignatures (const GALGAS_formalInputParameterListForGene
                                     const GALGAS_functionSignature constinArgument_inReferenceSignature,
                                     const GALGAS_unifiedTypeMapEntry constinArgument_inInheritedReturnType,
                                     const GALGAS_location constinArgument_inReferenceLocation,
-                                    C_Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
@@ -5701,7 +5701,7 @@ void routine_buildLocalVariableMapAndSignature (const GALGAS_semanticContext /* 
                                                 const GALGAS_formalParameterListAST constinArgument_inRoutineSignatureAST,
                                                 GALGAS_localVarManager & ioArgument_ioVariableMap,
                                                 GALGAS_formalParameterListForGeneration & outArgument_outRoutineSignature,
-                                                C_Compiler * inCompiler
+                                                Compiler * inCompiler
                                                 COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outRoutineSignature.drop () ; // Release 'out' argument
   outArgument_outRoutineSignature = GALGAS_formalParameterListForGeneration::constructor_emptyList (SOURCE_FILE ("semanticAnalysis.galgas", 136)) ;
@@ -5801,7 +5801,7 @@ void routine_analyzeRoutineBody (const GALGAS_lstring constinArgument_inUsefulne
                                  const GALGAS_location constinArgument_inEndOfMethodLocation,
                                  GALGAS_semanticInstructionListForGeneration & outArgument_outSemanticInstructionListForGeneration,
                                  GALGAS_formalParameterListForGeneration & outArgument_outRoutineSignature,
-                                 C_Compiler * inCompiler
+                                 Compiler * inCompiler
                                  COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outSemanticInstructionListForGeneration.drop () ; // Release 'out' argument
   outArgument_outRoutineSignature.drop () ; // Release 'out' argument
@@ -5858,7 +5858,7 @@ void cPtr_externFunctionDeclarationAST::method_semanticAnalysis (GALGAS_lstringl
                                                                  GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
                                                                  const GALGAS_predefinedTypes /* constinArgument_inPredefinedTypes */,
                                                                  GALGAS_semanticDeclarationListForGeneration & ioArgument_ioSemanticDeclarationListForGeneration,
-                                                                 C_Compiler * inCompiler
+                                                                 Compiler * inCompiler
                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_externFunctionDeclarationAST temp_0 = this ;
   GALGAS_lstring var_nameForUsefulness_13640 = function_functionNameForUsefulEntitiesGraph (temp_0.readProperty_mFunctionName (), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 262)) ;
@@ -5899,7 +5899,7 @@ void cPtr_externProcedureDeclarationAST::method_semanticAnalysis (GALGAS_lstring
                                                                   GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
                                                                   const GALGAS_predefinedTypes /* constinArgument_inPredefinedTypes */,
                                                                   GALGAS_semanticDeclarationListForGeneration & ioArgument_ioSemanticDeclarationListForGeneration,
-                                                                  C_Compiler * inCompiler
+                                                                  Compiler * inCompiler
                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_externProcedureDeclarationAST temp_0 = this ;
   GALGAS_lstring var_nameForUsefulness_15199 = function_procedureNameForUsefulEntitiesGraph (temp_0.readProperty_mRoutineName (), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 300)) ;
@@ -5939,7 +5939,7 @@ void cPtr_procDeclarationAST::method_semanticAnalysis (GALGAS_lstringlist & ioAr
                                                        GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
                                                        const GALGAS_predefinedTypes constinArgument_inPredefinedTypes,
                                                        GALGAS_semanticDeclarationListForGeneration & ioArgument_ioSemanticDeclarationListForGeneration,
-                                                       C_Compiler * inCompiler
+                                                       Compiler * inCompiler
                                                        COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_procDeclarationAST temp_0 = this ;
   GALGAS_lstring var_nameForUsefulness_16704 = function_procedureNameForUsefulEntitiesGraph (temp_0.readProperty_mRoutineName (), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 336)) ;
@@ -5989,7 +5989,7 @@ void routine_analyzeFunctionBody (const GALGAS_lstring constinArgument_inUsefuln
                                   GALGAS_unifiedTypeMapEntry & outArgument_outReturnedType,
                                   GALGAS_string & outArgument_outResultVariableCppName,
                                   GALGAS_semanticInstructionListForGeneration & outArgument_outSemanticInstructionListForGeneration,
-                                  C_Compiler * inCompiler
+                                  Compiler * inCompiler
                                   COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outSignatureForGeneration.drop () ; // Release 'out' argument
   outArgument_outReturnedType.drop () ; // Release 'out' argument
@@ -6083,7 +6083,7 @@ void cPtr_functionDeclarationAST::method_semanticAnalysis (GALGAS_lstringlist & 
                                                            GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
                                                            const GALGAS_predefinedTypes constinArgument_inPredefinedTypes,
                                                            GALGAS_semanticDeclarationListForGeneration & ioArgument_ioSemanticDeclarationListForGeneration,
-                                                           C_Compiler * inCompiler
+                                                           Compiler * inCompiler
                                                            COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_functionDeclarationAST temp_0 = this ;
   GALGAS_lstring var_nameForUsefulness_22082 = function_functionNameForUsefulEntitiesGraph (temp_0.readProperty_mFunctionName (), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 472)) ;
@@ -6129,7 +6129,7 @@ void cPtr_onceFunctionDeclarationAST::method_semanticAnalysis (GALGAS_lstringlis
                                                                GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
                                                                const GALGAS_predefinedTypes constinArgument_inPredefinedTypes,
                                                                GALGAS_semanticDeclarationListForGeneration & ioArgument_ioSemanticDeclarationListForGeneration,
-                                                               C_Compiler * inCompiler
+                                                               Compiler * inCompiler
                                                                COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_onceFunctionDeclarationAST temp_0 = this ;
   GALGAS_lstring var_nameForUsefulness_23985 = function_functionNameForUsefulEntitiesGraph (temp_0.readProperty_mFunctionName (), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 529)) ;
@@ -6174,7 +6174,7 @@ void cPtr_filewrapperDeclarationAST::method_semanticAnalysis (GALGAS_lstringlist
                                                               GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
                                                               const GALGAS_predefinedTypes constinArgument_inPredefinedTypes,
                                                               GALGAS_semanticDeclarationListForGeneration & ioArgument_ioSemanticDeclarationListForGeneration,
-                                                              C_Compiler * inCompiler
+                                                              Compiler * inCompiler
                                                               COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_filewrapperDeclarationAST temp_0 = this ;
   GALGAS_lstring var_filewrapperNameForUsefulness_26099 = function_filewrapperNameForUsefulEntitiesGraph (temp_0.readProperty_mFilewrapperName (), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 588)) ;
@@ -6278,7 +6278,7 @@ void cPtr_galgas_33_SyntaxComponentAST::method_semanticAnalysis (GALGAS_lstringl
                                                                  GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
                                                                  const GALGAS_predefinedTypes constinArgument_inPredefinedTypes,
                                                                  GALGAS_semanticDeclarationListForGeneration & ioArgument_ioSemanticDeclarationListForGeneration,
-                                                                 C_Compiler * inCompiler
+                                                                 Compiler * inCompiler
                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_galgas_33_SyntaxComponentAST temp_0 = this ;
   GALGAS_lstring var_nameForUsefulness_30645 = function_syntaxNameForUsefulEntitiesGraph (temp_0.readProperty_mSyntaxComponentName (), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 682)) ;
@@ -6332,7 +6332,7 @@ void cPtr_galgas_33_GrammarComponentAST::method_semanticAnalysis (GALGAS_lstring
                                                                   GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
                                                                   const GALGAS_predefinedTypes /* constinArgument_inPredefinedTypes */,
                                                                   GALGAS_semanticDeclarationListForGeneration & ioArgument_ioSemanticDeclarationListForGeneration,
-                                                                  C_Compiler * inCompiler
+                                                                  Compiler * inCompiler
                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
@@ -6577,7 +6577,7 @@ void cPtr_galgas_33_GrammarComponentAST::method_semanticAnalysis (GALGAS_lstring
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_predefinedTypes function_buildPredefinedTypes (const GALGAS_unifiedTypeMap & constinArgument_inTypeMap,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_predefinedTypes result_outPredefinedTypes ; // Returned variable
   result_outPredefinedTypes = GALGAS_predefinedTypes::constructor_new (extensionGetter_searchKey (constinArgument_inTypeMap, GALGAS_lstring::constructor_new (GALGAS_string ("location"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 931)), inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 931)), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 931)), extensionGetter_searchKey (constinArgument_inTypeMap, GALGAS_lstring::constructor_new (GALGAS_string ("bool"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 932)), inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 932)), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 932)), extensionGetter_searchKey (constinArgument_inTypeMap, GALGAS_lstring::constructor_new (GALGAS_string ("char"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 933)), inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 933)), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 933)), extensionGetter_searchKey (constinArgument_inTypeMap, GALGAS_lstring::constructor_new (GALGAS_string ("string"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 934)), inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 934)), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 934)), extensionGetter_searchKey (constinArgument_inTypeMap, GALGAS_lstring::constructor_new (GALGAS_string ("uint"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 935)), inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 935)), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 935)), extensionGetter_searchKey (constinArgument_inTypeMap, GALGAS_lstring::constructor_new (GALGAS_string ("sint"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 936)), inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 936)), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 936)), extensionGetter_searchKey (constinArgument_inTypeMap, GALGAS_lstring::constructor_new (GALGAS_string ("uint64"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 937)), inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 937)), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 937)), extensionGetter_searchKey (constinArgument_inTypeMap, GALGAS_lstring::constructor_new (GALGAS_string ("sint64"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 938)), inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 938)), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 938)), extensionGetter_searchKey (constinArgument_inTypeMap, GALGAS_lstring::constructor_new (GALGAS_string ("double"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 939)), inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 939)), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 939)), extensionGetter_searchKey (constinArgument_inTypeMap, GALGAS_lstring::constructor_new (GALGAS_string ("lbool"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 940)), inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 940)), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 940)), extensionGetter_searchKey (constinArgument_inTypeMap, GALGAS_lstring::constructor_new (GALGAS_string ("lchar"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 941)), inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 941)), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 941)), extensionGetter_searchKey (constinArgument_inTypeMap, GALGAS_lstring::constructor_new (GALGAS_string ("lstring"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 942)), inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 942)), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 942)), extensionGetter_searchKey (constinArgument_inTypeMap, GALGAS_lstring::constructor_new (GALGAS_string ("luint"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 943)), inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 943)), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 943)), extensionGetter_searchKey (constinArgument_inTypeMap, GALGAS_lstring::constructor_new (GALGAS_string ("lsint"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 944)), inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 944)), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 944)), extensionGetter_searchKey (constinArgument_inTypeMap, GALGAS_lstring::constructor_new (GALGAS_string ("luint64"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 945)), inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 945)), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 945)), extensionGetter_searchKey (constinArgument_inTypeMap, GALGAS_lstring::constructor_new (GALGAS_string ("lsint64"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 946)), inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 946)), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 946)), extensionGetter_searchKey (constinArgument_inTypeMap, GALGAS_lstring::constructor_new (GALGAS_string ("ldouble"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 947)), inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 947)), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 947)), extensionGetter_searchKey (constinArgument_inTypeMap, GALGAS_lstring::constructor_new (GALGAS_string ("stringlist"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 948)), inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 948)), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 948)), extensionGetter_searchKey (constinArgument_inTypeMap, GALGAS_lstring::constructor_new (GALGAS_string ("lbigint"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 949)), inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 949)), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 949)), extensionGetter_searchKey (constinArgument_inTypeMap, GALGAS_lstring::constructor_new (GALGAS_string ("bigint"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 950)), inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 950)), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 950)), extensionGetter_searchKey (constinArgument_inTypeMap, GALGAS_lstring::constructor_new (GALGAS_string ("stringset"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 951)), inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 951)), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 951)), extensionGetter_searchKey (constinArgument_inTypeMap, GALGAS_lstring::constructor_new (GALGAS_string ("lstringlist"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 952)), inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 952)), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 952)), inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 930)) ;
@@ -6597,7 +6597,7 @@ static const C_galgas_type_descriptor * functionArgs_buildPredefinedTypes [2] = 
 
 //--------------------------------------------------------------------------------------------------
 
-static GALGAS_object functionWithGenericHeader_buildPredefinedTypes (C_Compiler * inCompiler,
+static GALGAS_object functionWithGenericHeader_buildPredefinedTypes (Compiler * inCompiler,
                                                                      const cObjectArray & inEffectiveParameterArray,
                                                                      const GALGAS_location & /* inErrorLocation */
                                                                      COMMA_LOCATION_ARGS) {
@@ -6652,7 +6652,7 @@ const cDirectoryWrapper gWrapperDirectory_0_syntaxFileGenerationTemplate (
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_syntaxFileGenerationTemplate_syntaxFileImplementationGalgas_33_ (C_Compiler * /* inCompiler */,
+GALGAS_string filewrapperTemplate_syntaxFileGenerationTemplate_syntaxFileImplementationGalgas_33_ (Compiler * /* inCompiler */,
                                                                                                    const GALGAS_stringset & in_INCLUSION_5F_SET
                                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
@@ -6677,7 +6677,7 @@ GALGAS_string filewrapperTemplate_syntaxFileGenerationTemplate_syntaxFileImpleme
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_syntaxFileGenerationTemplate_syntaxAnalyserClassDeclaration (C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_syntaxFileGenerationTemplate_syntaxAnalyserClassDeclaration (Compiler * inCompiler,
                                                                                                const GALGAS_string & in_COMPONENT_5F_NAME,
                                                                                                const GALGAS_string & in_LEXIQUE_5F_NAME,
                                                                                                const GALGAS_nonterminalMap & in_NONTERMINAL_5F_MAP,
@@ -6927,7 +6927,7 @@ GALGAS_string filewrapperTemplate_syntaxFileGenerationTemplate_syntaxAnalyserCla
 void routine_enterNonterminalNonTerminalInMapAndCheck (const GALGAS_lstring constinArgument_inNonTerminalName,
                                                        const GALGAS_nonterminalLabelMap constinArgument_inNonterminalLabelMap,
                                                        GALGAS_nonterminalMap & ioArgument_ioNonterminalDeclarationMap,
-                                                       C_Compiler * inCompiler
+                                                       Compiler * inCompiler
                                                        COMMA_UNUSED_LOCATION_ARGS) {
   const cMapElement_nonterminalMap * objectArray_46913 = (const cMapElement_nonterminalMap *) ioArgument_ioNonterminalDeclarationMap.readAccessForWithInstruction (constinArgument_inNonTerminalName.readProperty_string ()) ;
   if (nullptr != objectArray_46913) {
@@ -7003,7 +7003,7 @@ void routine_buildNonterminalDeclarationsMap (const GALGAS_nonterminalDeclaratio
                                               const GALGAS_semanticContext /* constinArgument_inSemanticContext */,
                                               GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
                                               GALGAS_nonterminalMap & outArgument_outNonterminalDeclarationMap,
-                                              C_Compiler * inCompiler
+                                              Compiler * inCompiler
                                               COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outNonterminalDeclarationMap.drop () ; // Release 'out' argument
   outArgument_outNonterminalDeclarationMap = GALGAS_nonterminalMap::constructor_emptyMap (SOURCE_FILE ("semanticAnalysis.galgas", 1087)) ;
@@ -7053,7 +7053,7 @@ void cPtr_semanticInstructionAST::method_analyzeSyntaxInstruction (const GALGAS_
                                                                    GALGAS_semanticInstructionListForGeneration & ioArgument_ioInstructionListForGeneration,
                                                                    GALGAS_localVarManager & ioArgument_ioVariableMap,
                                                                    GALGAS_uint & /* ioArgument_ioSelectMethodCount */,
-                                                                   C_Compiler * inCompiler
+                                                                   Compiler * inCompiler
                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_semanticInstructionAST temp_0 = this ;
   callExtensionMethod_analyzeSemanticInstruction ((cPtr_semanticInstructionAST *) temp_0.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioInstructionListForGeneration, ioArgument_ioVariableMap, inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1143)) ;
@@ -7070,7 +7070,7 @@ void cPtr_inputParameterAnonymousVariable::method_analyzeInputParameter (const G
                                                                          const GALGAS_string /* constinArgument_inLexicalAttributeName */,
                                                                          GALGAS_terminalCheckAssignementList & /* ioArgument_ioTerminalCheckAssignementList */,
                                                                          GALGAS_localVarManager & /* ioArgument_ioVariableMap */,
-                                                                         C_Compiler * /* inCompiler */
+                                                                         Compiler * /* inCompiler */
                                                                          COMMA_UNUSED_LOCATION_ARGS) {
 }
 //--------------------------------------------------------------------------------------------------
@@ -7085,7 +7085,7 @@ void cPtr_inputParameterVariable::method_analyzeInputParameter (const GALGAS_ana
                                                                 const GALGAS_string constinArgument_inLexicalAttributeName,
                                                                 GALGAS_terminalCheckAssignementList & ioArgument_ioTerminalCheckAssignementList,
                                                                 GALGAS_localVarManager & ioArgument_ioVariableMap,
-                                                                C_Compiler * inCompiler
+                                                                Compiler * inCompiler
                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_unifiedTypeMapEntry var_type_53543 ;
   GALGAS_string var_cppName_53561 ;
@@ -7163,7 +7163,7 @@ void cPtr_inputParameterDeclaredVariable::method_analyzeInputParameter (const GA
                                                                         const GALGAS_string constinArgument_inLexicalAttributeName,
                                                                         GALGAS_terminalCheckAssignementList & ioArgument_ioTerminalCheckAssignementList,
                                                                         GALGAS_localVarManager & ioArgument_ioVariableMap,
-                                                                        C_Compiler * inCompiler
+                                                                        Compiler * inCompiler
                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_unifiedTypeMapEntry var_expectedType_55247 ;
   switch (constinArgument_inRequiredLexicalType.enumValue ()) {
@@ -7250,7 +7250,7 @@ void cPtr_inputParameterDeclaredConstant::method_analyzeInputParameter (const GA
                                                                         const GALGAS_string constinArgument_inLexicalAttributeName,
                                                                         GALGAS_terminalCheckAssignementList & ioArgument_ioTerminalCheckAssignementList,
                                                                         GALGAS_localVarManager & ioArgument_ioVariableMap,
-                                                                        C_Compiler * inCompiler
+                                                                        Compiler * inCompiler
                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_unifiedTypeMapEntry var_expectedType_57457 ;
   switch (constinArgument_inRequiredLexicalType.enumValue ()) {
@@ -7335,7 +7335,7 @@ void cPtr_grammarInstructionSyntaxDirectedTranslationResultNone::method_analyzeS
                                                                                     GALGAS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
                                                                                     const GALGAS_bool /* constinArgument_inHasTranslateFeature */,
                                                                                     GALGAS_localVarManager & /* ioArgument_ioVariableMap */,
-                                                                                    C_Compiler * /* inCompiler */
+                                                                                    Compiler * /* inCompiler */
                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
 }
 //--------------------------------------------------------------------------------------------------
@@ -7348,7 +7348,7 @@ void cPtr_grammarInstructionSyntaxDirectedTranslationDropResult::method_analyzeS
                                                                                     GALGAS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
                                                                                     const GALGAS_bool constinArgument_inHasTranslateFeature,
                                                                                     GALGAS_localVarManager & /* ioArgument_ioVariableMap */,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
@@ -7370,7 +7370,7 @@ void cPtr_grammarInstructionSyntaxDirectedTranslationResultInVar::method_analyze
                                                                                      GALGAS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
                                                                                      const GALGAS_bool constinArgument_inHasTranslateFeature,
                                                                                      GALGAS_localVarManager & ioArgument_ioVariableMap,
-                                                                                     C_Compiler * inCompiler
+                                                                                     Compiler * inCompiler
                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
@@ -7410,7 +7410,7 @@ void cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar::method
                                                                                              GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
                                                                                              const GALGAS_bool constinArgument_inHasTranslateFeature,
                                                                                              GALGAS_localVarManager & ioArgument_ioVariableMap,
-                                                                                             C_Compiler * inCompiler
+                                                                                             Compiler * inCompiler
                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
@@ -7452,7 +7452,7 @@ void cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst::meth
                                                                                                GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
                                                                                                const GALGAS_bool constinArgument_inHasTranslateFeature,
                                                                                                GALGAS_localVarManager & ioArgument_ioVariableMap,
-                                                                                               C_Compiler * inCompiler
+                                                                                               Compiler * inCompiler
                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
@@ -7494,7 +7494,7 @@ void cPtr_grammarInstructionSyntaxDirectedTranslationResultNone::method_generate
                                                                                       const GALGAS_string constinArgument_inAccessMethodName,
                                                                                       GALGAS_stringset & ioArgument_ioUnusedVariableCppNameSet,
                                                                                       GALGAS_string & ioArgument_ioGeneratedCode,
-                                                                                      C_Compiler * inCompiler
+                                                                                      Compiler * inCompiler
                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
@@ -7517,7 +7517,7 @@ void cPtr_grammarInstructionSyntaxDirectedTranslationDropResult::method_generate
                                                                                       const GALGAS_string /* constinArgument_inAccessMethodName */,
                                                                                       GALGAS_stringset & /* ioArgument_ioUnusedVariableCppNameSet */,
                                                                                       GALGAS_string & /* ioArgument_ioGeneratedCode */,
-                                                                                      C_Compiler * /* inCompiler */
+                                                                                      Compiler * /* inCompiler */
                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
 }
 //--------------------------------------------------------------------------------------------------
@@ -7530,7 +7530,7 @@ void cPtr_grammarInstructionSyntaxDirectedTranslationResultInVar::method_generat
                                                                                        const GALGAS_string constinArgument_inAccessMethodName,
                                                                                        GALGAS_stringset & /* ioArgument_ioUnusedVariableCppNameSet */,
                                                                                        GALGAS_string & ioArgument_ioGeneratedCode,
-                                                                                       C_Compiler * inCompiler
+                                                                                       Compiler * inCompiler
                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_grammarInstructionSyntaxDirectedTranslationResultInVar temp_0 = this ;
   const GALGAS_grammarInstructionSyntaxDirectedTranslationResultInVar temp_1 = this ;
@@ -7547,7 +7547,7 @@ void cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar::method
                                                                                                const GALGAS_string constinArgument_inAccessMethodName,
                                                                                                GALGAS_stringset & /* ioArgument_ioUnusedVariableCppNameSet */,
                                                                                                GALGAS_string & ioArgument_ioGeneratedCode,
-                                                                                               C_Compiler * inCompiler
+                                                                                               Compiler * inCompiler
                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar temp_0 = this ;
   const GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar temp_1 = this ;
@@ -7564,7 +7564,7 @@ void cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst::meth
                                                                                                  const GALGAS_string constinArgument_inAccessMethodName,
                                                                                                  GALGAS_stringset & /* ioArgument_ioUnusedVariableCppNameSet */,
                                                                                                  GALGAS_string & ioArgument_ioGeneratedCode,
-                                                                                                 C_Compiler * inCompiler
+                                                                                                 Compiler * inCompiler
                                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst temp_0 = this ;
   const GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst temp_1 = this ;
@@ -7592,7 +7592,7 @@ void routine_analyzeSyntaxInstructionList (const GALGAS_lstring constinArgument_
                                            GALGAS_localVarManager & ioArgument_ioVariableMap,
                                            GALGAS_uint & ioArgument_ioSelectMethodCount,
                                            GALGAS_semanticInstructionListForGeneration & outArgument_outInstructionListForGeneration,
-                                           C_Compiler * inCompiler
+                                           Compiler * inCompiler
                                            COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outInstructionListForGeneration.drop () ; // Release 'out' argument
   outArgument_outInstructionListForGeneration = GALGAS_semanticInstructionListForGeneration::constructor_emptyList (SOURCE_FILE ("semanticAnalysis.galgas", 1468)) ;
@@ -7633,7 +7633,7 @@ void routine_semanticAnalysisOfRuleLabel (const GALGAS_lstring constinArgument_i
                                           GALGAS_formalParameterListForGeneration & outArgument_outSignatureForGeneration,
                                           GALGAS_formalParameterSignature & outArgument_outSignature,
                                           GALGAS_semanticInstructionListForGeneration & outArgument_outInstructionListForGeneration,
-                                          C_Compiler * inCompiler
+                                          Compiler * inCompiler
                                           COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outSignatureForGeneration.drop () ; // Release 'out' argument
   outArgument_outSignature.drop () ; // Release 'out' argument
@@ -7678,7 +7678,7 @@ void routine_semanticAnalysisOfSyntaxComponent (const GALGAS_lstring constinArgu
                                                 const GALGAS_bool constinArgument_inHasIndexing,
                                                 const GALGAS_bool constinArgument_inHasTranslateFeature,
                                                 GALGAS_syntaxDeclarationForGeneration & outArgument_outSyntaxDeclarationForGeneration,
-                                                C_Compiler * inCompiler
+                                                Compiler * inCompiler
                                                 COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outSyntaxDeclarationForGeneration.drop () ; // Release 'out' argument
   GALGAS_nonterminalMap var_nonterminalMap_72166 ;
@@ -7750,7 +7750,7 @@ void routine_semanticAnalysisOfSyntaxComponent (const GALGAS_lstring constinArgu
 
 void routine_emitClassGraphFile (const GALGAS_string constinArgument_inDotDocumentFilePath,
                                  const GALGAS_unifiedTypeMap constinArgument_inTypeMap,
-                                 C_Compiler * inCompiler
+                                 Compiler * inCompiler
                                  COMMA_UNUSED_LOCATION_ARGS) {
   constinArgument_inDotDocumentFilePath.getter_stringByDeletingLastPathComponent (SOURCE_FILE ("semanticAnalysis.galgas", 1673)).method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1673)) ;
   GALGAS_string var_document_75590 = GALGAS_string ("digraph G {\n") ;
@@ -7832,7 +7832,7 @@ void cPtr_outputActualParameterForGeneration::method_generateActualParameter (GA
                                                                               GALGAS_stringlist & /* ioArgument_ioOutputVariableList */,
                                                                               GALGAS_stringset & ioArgument_ioUnusedVariableCppNameSet,
                                                                               GALGAS_string & outArgument_outCppName,
-                                                                              C_Compiler * inCompiler
+                                                                              Compiler * inCompiler
                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_outputActualParameterForGeneration temp_0 = this ;
   extensionMethod_addHeaderFileName (temp_0.readProperty_mFormalArgumentType (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("semanticInstructionGeneration.galgas", 27)) ;
@@ -7852,7 +7852,7 @@ void cPtr_outputInputActualParameterForGeneration::method_generateActualParamete
                                                                                    GALGAS_stringlist & /* ioArgument_ioOutputVariableList */,
                                                                                    GALGAS_stringset & ioArgument_ioUnusedVariableCppNameSet,
                                                                                    GALGAS_string & outArgument_outCppName,
-                                                                                   C_Compiler * inCompiler
+                                                                                   Compiler * inCompiler
                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_outputInputActualParameterForGeneration temp_0 = this ;
   cEnumerator_unifiedTypeMapEntryList enumerator_2145 (temp_0.readProperty_mTypeList (), kENUMERATION_UP) ;
@@ -7886,7 +7886,7 @@ void cPtr_inputActualParameterForGeneration::method_generateActualParameter (GAL
                                                                              GALGAS_stringlist & ioArgument_ioOutputVariableList,
                                                                              GALGAS_stringset & ioArgument_ioUnusedVariableCppNameSet,
                                                                              GALGAS_string & outArgument_outCppName,
-                                                                             C_Compiler * /* inCompiler */
+                                                                             Compiler * /* inCompiler */
                                                                              COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_inputActualParameterForGeneration temp_0 = this ;
   outArgument_outCppName = temp_0.readProperty_mInputActualCppName () ;
@@ -7909,7 +7909,7 @@ void cPtr_inputJokerParameterForGeneration::method_generateActualParameter (GALG
                                                                             GALGAS_stringlist & ioArgument_ioOutputVariableList,
                                                                             GALGAS_stringset & /* ioArgument_ioUnusedVariableCppNameSet */,
                                                                             GALGAS_string & outArgument_outCppName,
-                                                                            C_Compiler * inCompiler
+                                                                            Compiler * inCompiler
                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_inputJokerParameterForGeneration temp_0 = this ;
   extensionMethod_addHeaderFileName (temp_0.readProperty_mFormalArgumentType (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("semanticInstructionGeneration.galgas", 76)) ;
@@ -7933,7 +7933,7 @@ void cPtr_semanticBlockInstructionForGeneration::method_generateInstruction (GAL
                                                                              GALGAS_stringset & ioArgument_ioUnusedVariableCppNameSet,
                                                                              const GALGAS_bool constinArgument_inGenerateSyntaxDirectedTranslationString,
                                                                              GALGAS_string & ioArgument_ioGeneratedCode,
-                                                                             C_Compiler * inCompiler
+                                                                             Compiler * inCompiler
                                                                              COMMA_UNUSED_LOCATION_ARGS) {
   ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("{\n"), inCompiler  COMMA_SOURCE_FILE ("semanticInstructionGeneration.galgas", 91)) ;
   {
@@ -7950,7 +7950,7 @@ void cPtr_semanticBlockInstructionForGeneration::method_generateInstruction (GAL
 
 void cPtr_outputInputActualParameterForGeneration::method_generatePoisonedVariables (GALGAS_string & /* ioArgument_ioImplementation */,
                                                                                      GALGAS_stringset & /* ioArgument_ioUnusedVariableCppNameSet */,
-                                                                                     C_Compiler * /* inCompiler */
+                                                                                     Compiler * /* inCompiler */
                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
 }
 //--------------------------------------------------------------------------------------------------
@@ -7961,7 +7961,7 @@ void cPtr_outputInputActualParameterForGeneration::method_generatePoisonedVariab
 
 void cPtr_outputActualParameterForGeneration::method_generatePoisonedVariables (GALGAS_string & /* ioArgument_ioImplementation */,
                                                                                 GALGAS_stringset & /* ioArgument_ioUnusedVariableCppNameSet */,
-                                                                                C_Compiler * /* inCompiler */
+                                                                                Compiler * /* inCompiler */
                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
 }
 //--------------------------------------------------------------------------------------------------
@@ -7972,7 +7972,7 @@ void cPtr_outputActualParameterForGeneration::method_generatePoisonedVariables (
 
 void cPtr_inputJokerParameterForGeneration::method_generatePoisonedVariables (GALGAS_string & ioArgument_ioImplementation,
                                                                               GALGAS_stringset & ioArgument_ioUnusedVariableCppNameSet,
-                                                                              C_Compiler * inCompiler
+                                                                              Compiler * inCompiler
                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
@@ -8002,7 +8002,7 @@ void cPtr_inputJokerParameterForGeneration::method_generatePoisonedVariables (GA
 
 void cPtr_inputActualParameterForGeneration::method_generatePoisonedVariables (GALGAS_string & ioArgument_ioImplementation,
                                                                                GALGAS_stringset & ioArgument_ioUnusedVariableCppNameSet,
-                                                                               C_Compiler * inCompiler
+                                                                               Compiler * inCompiler
                                                                                COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
@@ -8032,7 +8032,7 @@ void cPtr_inputActualParameterForGeneration::method_generatePoisonedVariables (G
 
 void cPtr_grammarForGeneration::method_appendDeclaration_31_ (GALGAS_stringset & ioArgument_ioInclusionSet,
                                                               GALGAS_string & outArgument_outHeader,
-                                                              C_Compiler * inCompiler
+                                                              Compiler * inCompiler
                                                               COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_grammarForGeneration temp_0 = this ;
   cEnumerator_lstringlist enumerator_1346 (temp_0.readProperty_mSyntaxComponents (), kENUMERATION_UP) ;
@@ -8058,7 +8058,7 @@ void cPtr_grammarForGeneration::method_appendDeclaration_31_ (GALGAS_stringset &
 void cPtr_grammarForGeneration::method_appendSpecificImplementation (const GALGAS_unifiedTypeMap constinArgument_inUnifiedTypeMap,
                                                                      GALGAS_stringset & ioArgument_ioInclusionSet,
                                                                      GALGAS_string & outArgument_outImplementation,
-                                                                     C_Compiler * inCompiler
+                                                                     Compiler * inCompiler
                                                                      COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_grammarForGeneration temp_0 = this ;
   ioArgument_ioInclusionSet.addAssign_operation (GALGAS_string ("grammar-").add_operation (temp_0.readProperty_mGrammarName ().getter_fileNameRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 45)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 45))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 45)) ;
@@ -8100,7 +8100,7 @@ void cPtr_grammarForGeneration::method_appendSpecificImplementation (const GALGA
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string cPtr_grammarForGeneration::getter_implementationCppFileName (C_Compiler * inCompiler
+GALGAS_string cPtr_grammarForGeneration::getter_implementationCppFileName (Compiler * inCompiler
                                                                            COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_grammarForGeneration temp_0 = this ;
@@ -8116,7 +8116,7 @@ GALGAS_string cPtr_grammarForGeneration::getter_implementationCppFileName (C_Com
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool cPtr_grammarForGeneration::getter_hasCppHeaderFile (C_Compiler */* inCompiler */
+GALGAS_bool cPtr_grammarForGeneration::getter_hasCppHeaderFile (Compiler */* inCompiler */
                                                                 COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result_result ; // Returned variable
   result_result = GALGAS_bool (false) ;
@@ -8131,7 +8131,7 @@ GALGAS_bool cPtr_grammarForGeneration::getter_hasCppHeaderFile (C_Compiler */* i
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_headerKind cPtr_grammarForGeneration::getter_headerKind (C_Compiler */* inCompiler */
+GALGAS_headerKind cPtr_grammarForGeneration::getter_headerKind (Compiler */* inCompiler */
                                                                 COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_headerKind result_result ; // Returned variable
   result_result = GALGAS_headerKind::constructor_oneHeader (SOURCE_FILE ("semanticGeneration.galgas", 76)) ;
@@ -8146,7 +8146,7 @@ GALGAS_headerKind cPtr_grammarForGeneration::getter_headerKind (C_Compiler */* i
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool cPtr_grammarForGeneration::getter_isPredefined (C_Compiler */* inCompiler */
+GALGAS_bool cPtr_grammarForGeneration::getter_isPredefined (Compiler */* inCompiler */
                                                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result_result ; // Returned variable
   result_result = GALGAS_bool (false) ;
@@ -8161,7 +8161,7 @@ GALGAS_bool cPtr_grammarForGeneration::getter_isPredefined (C_Compiler */* inCom
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string cPtr_syntaxDeclarationForGeneration::getter_implementationCppFileName (C_Compiler * inCompiler
+GALGAS_string cPtr_syntaxDeclarationForGeneration::getter_implementationCppFileName (Compiler * inCompiler
                                                                                      COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_syntaxDeclarationForGeneration temp_0 = this ;
@@ -8177,7 +8177,7 @@ GALGAS_string cPtr_syntaxDeclarationForGeneration::getter_implementationCppFileN
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool cPtr_syntaxDeclarationForGeneration::getter_hasCppHeaderFile (C_Compiler */* inCompiler */
+GALGAS_bool cPtr_syntaxDeclarationForGeneration::getter_hasCppHeaderFile (Compiler */* inCompiler */
                                                                           COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result_result ; // Returned variable
   result_result = GALGAS_bool (false) ;
@@ -8192,7 +8192,7 @@ GALGAS_bool cPtr_syntaxDeclarationForGeneration::getter_hasCppHeaderFile (C_Comp
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_headerKind cPtr_syntaxDeclarationForGeneration::getter_headerKind (C_Compiler */* inCompiler */
+GALGAS_headerKind cPtr_syntaxDeclarationForGeneration::getter_headerKind (Compiler */* inCompiler */
                                                                           COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_headerKind result_result ; // Returned variable
   result_result = GALGAS_headerKind::constructor_oneHeader (SOURCE_FILE ("semanticGeneration.galgas", 102)) ;
@@ -8207,7 +8207,7 @@ GALGAS_headerKind cPtr_syntaxDeclarationForGeneration::getter_headerKind (C_Comp
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool cPtr_syntaxDeclarationForGeneration::getter_isPredefined (C_Compiler */* inCompiler */
+GALGAS_bool cPtr_syntaxDeclarationForGeneration::getter_isPredefined (Compiler */* inCompiler */
                                                                       COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result_result ; // Returned variable
   result_result = GALGAS_bool (false) ;
@@ -8224,7 +8224,7 @@ GALGAS_bool cPtr_syntaxDeclarationForGeneration::getter_isPredefined (C_Compiler
 
 void cPtr_syntaxDeclarationForGeneration::method_appendDeclaration_31_ (GALGAS_stringset & ioArgument_ioInclusionSet,
                                                                         GALGAS_string & outArgument_outHeader,
-                                                                        C_Compiler * inCompiler
+                                                                        Compiler * inCompiler
                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_syntaxDeclarationForGeneration temp_0 = this ;
   ioArgument_ioInclusionSet.addAssign_operation (GALGAS_string ("lexique-").add_operation (temp_0.readProperty_mLexiqueName ().getter_fileNameRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 115)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 115))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 115)) ;
@@ -8268,7 +8268,7 @@ void cPtr_syntaxDeclarationForGeneration::method_appendDeclaration_31_ (GALGAS_s
 void cPtr_syntaxDeclarationForGeneration::method_appendSpecificImplementation (const GALGAS_unifiedTypeMap /* constinArgument_inTypeMap */,
                                                                                GALGAS_stringset & ioArgument_ioInclusionSet,
                                                                                GALGAS_string & outArgument_outImplementation,
-                                                                               C_Compiler * inCompiler
+                                                                               Compiler * inCompiler
                                                                                COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_syntaxDeclarationForGeneration temp_0 = this ;
   ioArgument_ioInclusionSet.addAssign_operation (GALGAS_string ("syntax-").add_operation (temp_0.readProperty_mSyntaxComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 141)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 141))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 141)) ;
@@ -8350,7 +8350,7 @@ void routine_generateProcedure (const GALGAS_bool constinArgument_inGenerateStat
                                 const GALGAS_bool constinArgument_inGenerateResetTemplateString,
                                 const GALGAS_bool constinArgument_inGenerateSyntaxDirectedTranslationString,
                                 GALGAS_string & outArgument_outGeneratedCode,
-                                C_Compiler * inCompiler
+                                Compiler * inCompiler
                                 COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outGeneratedCode.drop () ; // Release 'out' argument
   GALGAS_stringset var_unusedVariableCppNameSet_10327 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("semanticGeneration.galgas", 237)) ;
@@ -8546,7 +8546,7 @@ void routine_generateFunction (const GALGAS_string constinArgument_inFunctionCpp
                                const GALGAS_bool constinArgument_inIsStatic,
                                const GALGAS_bool constinArgument_inIsConst,
                                GALGAS_string & outArgument_outGeneratedCode,
-                               C_Compiler * inCompiler
+                               Compiler * inCompiler
                                COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outGeneratedCode.drop () ; // Release 'out' argument
   outArgument_outGeneratedCode = GALGAS_string::makeEmptyString () ;

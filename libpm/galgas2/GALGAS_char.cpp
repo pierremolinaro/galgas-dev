@@ -19,7 +19,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "all-predefined-types.h"
-#include "galgas2/C_Compiler.h"
+#include "galgas2/Compiler.h"
 #include "strings/unicode_character_cpp.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -46,7 +46,7 @@ mCharValue (TO_UNICODE (0)) {
 //--------------------------------------------------------------------------------------------------
 
 #if (COMPILE_FOR_WINDOWS == 1) || defined(__CYGWIN__)
-  GALGAS_char GALGAS_char::constructor_unicodeCharacterFromRawKeyboard (C_Compiler * inCompiler
+  GALGAS_char GALGAS_char::constructor_unicodeCharacterFromRawKeyboard (Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) {
     inCompiler->onTheFlyRunTimeError (
       "@char unicodeCharacterFromRawKeyboard constructor is not implemented for Windows"
@@ -67,7 +67,7 @@ mCharValue (TO_UNICODE (0)) {
     }
   }
 
-  GALGAS_char GALGAS_char::constructor_unicodeCharacterFromRawKeyboard (C_Compiler * /* inCompiler */
+  GALGAS_char GALGAS_char::constructor_unicodeCharacterFromRawKeyboard (Compiler * /* inCompiler */
                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   //--- Save current configuration
     struct termios termios_orig ;

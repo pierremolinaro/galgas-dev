@@ -21,14 +21,14 @@ static const C_galgas_type_descriptor * functionArgs_%![FUNCTION_NAME identifier
 
 %
 if [FORMAL_ARGUMENT_LIST count] == 0 then
-  %static GALGAS_object functionWithGenericHeader_%![FUNCTION_NAME identifierRepresentation]% (%?^%C_Compiler * inCompiler,\n%
+  %static GALGAS_object functionWithGenericHeader_%![FUNCTION_NAME identifierRepresentation]% (%?^%Compiler * inCompiler,\n%
                                              !^%const cObjectArray & /* inEffectiveParameterArray */,\n%
                                              !^%const GALGAS_location & /* inErrorLocation */\n%
                                              !^%COMMA_LOCATION_ARGS) {\n%
   %  return function_%![FUNCTION_NAME identifierRepresentation]% (inCompiler COMMA_THERE).getter_object (THERE) ;\n%
   %}\n%
 else
-  %static GALGAS_object functionWithGenericHeader_%![FUNCTION_NAME identifierRepresentation]% (%?^%C_Compiler * inCompiler,\n%
+  %static GALGAS_object functionWithGenericHeader_%![FUNCTION_NAME identifierRepresentation]% (%?^%Compiler * inCompiler,\n%
                                              !^%const cObjectArray & inEffectiveParameterArray,\n%
                                              !^%const GALGAS_location & /* inErrorLocation */\n%
                                              !^%COMMA_LOCATION_ARGS) {\n%

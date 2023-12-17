@@ -21,7 +21,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "all-predefined-types.h"
-#include "galgas2/C_Compiler.h"
+#include "galgas2/Compiler.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -54,7 +54,7 @@ GALGAS_binaryset GALGAS_binaryset::constructor_fullBinarySet (UNUSED_LOCATION_AR
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_binaryset GALGAS_binaryset::constructor_binarySetWithBit (const GALGAS_uint & inBitIndex,
-                                                                 C_Compiler * /* inCompiler */
+                                                                 Compiler * /* inCompiler */
                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_binaryset result ;
   if (inBitIndex.isValid ()) {
@@ -68,7 +68,7 @@ GALGAS_binaryset GALGAS_binaryset::constructor_binarySetWithBit (const GALGAS_ui
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_binaryset GALGAS_binaryset::constructor_binarySetWithPredicateString (const GALGAS_string & inBitString,
-                                                                             C_Compiler * inCompiler
+                                                                             Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) {
   GALGAS_binaryset result ;
   if (inBitString.isValid ()) {
@@ -122,7 +122,7 @@ GALGAS_binaryset GALGAS_binaryset::constructor_binarySetWithPredicateString (con
 
 //--------------------------------------------------------------------------------------------------
 
-static GALGAS_binaryset binarySetWithComparison (C_Compiler * inCompiler,
+static GALGAS_binaryset binarySetWithComparison (Compiler * inCompiler,
                                                  const GALGAS_uint & inLeftFirstIndex,
                                                  const GALGAS_uint & inBitCount,
                                                  const C_BDD::compareEnum inComparison,
@@ -151,7 +151,7 @@ static GALGAS_binaryset binarySetWithComparison (C_Compiler * inCompiler,
 GALGAS_binaryset GALGAS_binaryset::constructor_binarySetWithEqualComparison (const GALGAS_uint & inLeftFirstIndex,
                                                                              const GALGAS_uint & inBitCount,
                                                                              const GALGAS_uint & inRightFirstIndex,
-                                                                             C_Compiler * inCompiler
+                                                                             Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) {
   return binarySetWithComparison (inCompiler,
                                   inLeftFirstIndex,
@@ -166,7 +166,7 @@ GALGAS_binaryset GALGAS_binaryset::constructor_binarySetWithEqualComparison (con
 GALGAS_binaryset GALGAS_binaryset::constructor_binarySetWithNotEqualComparison (const GALGAS_uint & inLeftFirstIndex,
                                                                                 const GALGAS_uint & inBitCount,
                                                                                 const GALGAS_uint & inRightFirstIndex,
-                                                                                C_Compiler * inCompiler
+                                                                                Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) {
   return binarySetWithComparison (inCompiler,
                                   inLeftFirstIndex,
@@ -181,7 +181,7 @@ GALGAS_binaryset GALGAS_binaryset::constructor_binarySetWithNotEqualComparison (
 GALGAS_binaryset GALGAS_binaryset::constructor_binarySetWithLowerOrEqualComparison (const GALGAS_uint & inLeftFirstIndex,
                                                                                     const GALGAS_uint & inBitCount,
                                                                                     const GALGAS_uint & inRightFirstIndex,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) {
   return binarySetWithComparison (inCompiler,
                                   inLeftFirstIndex,
@@ -196,7 +196,7 @@ GALGAS_binaryset GALGAS_binaryset::constructor_binarySetWithLowerOrEqualComparis
 GALGAS_binaryset GALGAS_binaryset::constructor_binarySetWithGreaterOrEqualComparison (const GALGAS_uint & inLeftFirstIndex,
                                                                                       const GALGAS_uint & inBitCount,
                                                                                       const GALGAS_uint & inRightFirstIndex,
-                                                                                      C_Compiler * inCompiler
+                                                                                      Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) {
   return binarySetWithComparison (inCompiler,
                                   inLeftFirstIndex,
@@ -211,7 +211,7 @@ GALGAS_binaryset GALGAS_binaryset::constructor_binarySetWithGreaterOrEqualCompar
 GALGAS_binaryset GALGAS_binaryset::constructor_binarySetWithStrictLowerComparison (const GALGAS_uint & inLeftFirstIndex,
                                                                                    const GALGAS_uint & inBitCount,
                                                                                    const GALGAS_uint & inRightFirstIndex,
-                                                                                   C_Compiler * inCompiler
+                                                                                   Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) {
   return binarySetWithComparison (inCompiler,
                                   inLeftFirstIndex,
@@ -226,7 +226,7 @@ GALGAS_binaryset GALGAS_binaryset::constructor_binarySetWithStrictLowerCompariso
 GALGAS_binaryset GALGAS_binaryset::constructor_binarySetWithStrictGreaterComparison (const GALGAS_uint & inLeftFirstIndex,
                                                                                      const GALGAS_uint & inBitCount,
                                                                                      const GALGAS_uint & inRightFirstIndex,
-                                                                                     C_Compiler * inCompiler
+                                                                                     Compiler * inCompiler
                                                                                      COMMA_LOCATION_ARGS) {
   return binarySetWithComparison (inCompiler,
                                   inLeftFirstIndex,
@@ -238,7 +238,7 @@ GALGAS_binaryset GALGAS_binaryset::constructor_binarySetWithStrictGreaterCompari
 
 //--------------------------------------------------------------------------------------------------
 
-static GALGAS_binaryset binarySetWithComparisonWithConstant (C_Compiler * inCompiler,
+static GALGAS_binaryset binarySetWithComparisonWithConstant (Compiler * inCompiler,
                                                              const GALGAS_uint & inBitIndex,
                                                              const GALGAS_uint & inBitCount,
                                                              const C_BDD::compareEnum inComparison,
@@ -264,7 +264,7 @@ static GALGAS_binaryset binarySetWithComparisonWithConstant (C_Compiler * inComp
 GALGAS_binaryset GALGAS_binaryset::constructor_binarySetWithEqualToConstant (const GALGAS_uint & inBitIndex,
                                                                              const GALGAS_uint & inBitCount,
                                                                              const GALGAS_uint_36__34_ & inConstant,
-                                                                             C_Compiler * inCompiler
+                                                                             Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) {
   return binarySetWithComparisonWithConstant (inCompiler,
                                               inBitIndex,
@@ -279,7 +279,7 @@ GALGAS_binaryset GALGAS_binaryset::constructor_binarySetWithEqualToConstant (con
 GALGAS_binaryset GALGAS_binaryset::constructor_binarySetWithNotEqualToConstant (const GALGAS_uint & inBitIndex,
                                                                                 const GALGAS_uint & inBitCount,
                                                                                 const GALGAS_uint_36__34_ & inConstant,
-                                                                                C_Compiler * inCompiler
+                                                                                Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) {
   return binarySetWithComparisonWithConstant (inCompiler,
                                               inBitIndex,
@@ -294,7 +294,7 @@ GALGAS_binaryset GALGAS_binaryset::constructor_binarySetWithNotEqualToConstant (
 GALGAS_binaryset GALGAS_binaryset::constructor_binarySetWithLowerOrEqualToConstant (const GALGAS_uint & inBitIndex,
                                                                                     const GALGAS_uint & inBitCount,
                                                                                     const GALGAS_uint_36__34_ & inConstant,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) {
   return binarySetWithComparisonWithConstant (inCompiler,
                                               inBitIndex,
@@ -309,7 +309,7 @@ GALGAS_binaryset GALGAS_binaryset::constructor_binarySetWithLowerOrEqualToConsta
 GALGAS_binaryset GALGAS_binaryset::constructor_binarySetWithStrictLowerThanConstant (const GALGAS_uint & inBitIndex,
                                                                                      const GALGAS_uint & inBitCount,
                                                                                      const GALGAS_uint_36__34_ & inConstant,
-                                                                                     C_Compiler * inCompiler
+                                                                                     Compiler * inCompiler
                                                                                      COMMA_LOCATION_ARGS) {
   return binarySetWithComparisonWithConstant (inCompiler,
                                               inBitIndex,
@@ -324,7 +324,7 @@ GALGAS_binaryset GALGAS_binaryset::constructor_binarySetWithStrictLowerThanConst
 GALGAS_binaryset GALGAS_binaryset::constructor_binarySetWithGreaterOrEqualToConstant (const GALGAS_uint & inBitIndex,
                                                                                       const GALGAS_uint & inBitCount,
                                                                                       const GALGAS_uint_36__34_ & inConstant,
-                                                                                      C_Compiler * inCompiler
+                                                                                      Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) {
   return binarySetWithComparisonWithConstant (inCompiler,
                                               inBitIndex,
@@ -339,7 +339,7 @@ GALGAS_binaryset GALGAS_binaryset::constructor_binarySetWithGreaterOrEqualToCons
 GALGAS_binaryset GALGAS_binaryset::constructor_binarySetWithStrictGreaterThanConstant (const GALGAS_uint & inBitIndex,
                                                                                        const GALGAS_uint & inBitCount,
                                                                                        const GALGAS_uint_36__34_ & inConstant,
-                                                                                       C_Compiler * inCompiler
+                                                                                       Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) {
   return binarySetWithComparisonWithConstant (inCompiler,
                                               inBitIndex,
@@ -562,7 +562,7 @@ GALGAS_uint GALGAS_binaryset::getter_significantVariableCount (UNUSED_LOCATION_A
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_uint_36__34_ GALGAS_binaryset::getter_valueCount (const GALGAS_uint & inVariableCount,
-                                                         C_Compiler * inCompiler
+                                                         Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) const {
   GALGAS_uint_36__34_ result ;
   if (isValid () && inVariableCount.isValid ()) {
@@ -578,7 +578,7 @@ GALGAS_uint_36__34_ GALGAS_binaryset::getter_valueCount (const GALGAS_uint & inV
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bigint GALGAS_binaryset::getter_bigValueCount (const GALGAS_uint & inVariableCount,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) const {
   GALGAS_bigint result ;
   if (isValid () && inVariableCount.isValid ()) {
@@ -622,7 +622,7 @@ GALGAS_uint_36__34_list GALGAS_binaryset::getter_uint_36__34_ValueList (const GA
 
 GALGAS_stringlist GALGAS_binaryset::getter_stringValueListWithNameList (const GALGAS_uint & inVariableCount,
                                                                         const GALGAS_stringlist & inStringList,
-                                                                        C_Compiler * inCompiler
+                                                                        Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) const {
   GALGAS_stringlist result ;
   if (isValid () && inVariableCount.isValid () && inStringList.isValid ()) {
@@ -641,7 +641,7 @@ GALGAS_stringlist GALGAS_binaryset::getter_stringValueListWithNameList (const GA
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_stringlist GALGAS_binaryset::getter_compressedStringValueList (const GALGAS_uint & inVariableCount,
-                                                                      C_Compiler * inCompiler
+                                                                      Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) const {
   GALGAS_stringlist result ;
   if (isValid () && inVariableCount.isValid ()) {
@@ -994,7 +994,7 @@ GALGAS_binaryset GALGAS_binaryset::getter_existsOnBitRange (const GALGAS_uint & 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_binaryset GALGAS_binaryset::getter_transposedBy (const class GALGAS_uintlist & inVector,
-                                                        C_Compiler * inCompiler
+                                                        Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
   GALGAS_binaryset result ;
   if (isValid () && inVector.isValid ()) {
@@ -1014,7 +1014,7 @@ GALGAS_binaryset GALGAS_binaryset::getter_transposedBy (const class GALGAS_uintl
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_binaryset GALGAS_binaryset::left_shift_operation (const GALGAS_uint inLeftShiftCount,
-                                                         class C_Compiler * /* inCompiler */
+                                                         class Compiler * /* inCompiler */
                                                          COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_binaryset result ;
   if (isValid () && inLeftShiftCount.isValid ()) {
@@ -1026,7 +1026,7 @@ GALGAS_binaryset GALGAS_binaryset::left_shift_operation (const GALGAS_uint inLef
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_binaryset GALGAS_binaryset::left_shift_operation (const GALGAS_bigint inLeftShiftCount,
-                                                         class C_Compiler * inCompiler
+                                                         class Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) const {
   GALGAS_binaryset result ;
   if (isValid () && inLeftShiftCount.isValid ()) {
@@ -1042,7 +1042,7 @@ GALGAS_binaryset GALGAS_binaryset::left_shift_operation (const GALGAS_bigint inL
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_binaryset GALGAS_binaryset::right_shift_operation (const GALGAS_uint inRightShiftCount,
-                                                          class C_Compiler * /* inCompiler*/
+                                                          class Compiler * /* inCompiler*/
                                                           COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_binaryset result ;
   if (isValid () && inRightShiftCount.isValid ()) {
@@ -1054,7 +1054,7 @@ GALGAS_binaryset GALGAS_binaryset::right_shift_operation (const GALGAS_uint inRi
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_binaryset GALGAS_binaryset::right_shift_operation (const GALGAS_bigint inRightShiftCount,
-                                                          class C_Compiler * inCompiler
+                                                          class Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) const {
   GALGAS_binaryset result ;
   if (isValid () && inRightShiftCount.isValid ()) {

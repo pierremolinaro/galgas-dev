@@ -19,7 +19,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "all-predefined-types.h"
-#include "galgas2/C_Compiler.h"
+#include "galgas2/Compiler.h"
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -98,7 +98,7 @@ GALGAS_bool GALGAS_type::getter_hasSuperclass (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_type GALGAS_type::getter_superclass (C_Compiler * inCompiler
+GALGAS_type GALGAS_type::getter_superclass (Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const {
   GALGAS_type result ;
   if (mTypeDescriptor != nullptr) {

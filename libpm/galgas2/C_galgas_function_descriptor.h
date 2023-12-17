@@ -26,7 +26,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-class C_Compiler ;
+class Compiler ;
 class GALGAS_location ;
 class GALGAS_object ;
 class C_galgas_type_descriptor ;
@@ -39,7 +39,7 @@ class cObjectArray ;
 //
 //--------------------------------------------------------------------------------------------------
 
-typedef GALGAS_object (*functionPrototypeForIntrospection) (C_Compiler * inCompiler,
+typedef GALGAS_object (*functionPrototypeForIntrospection) (Compiler * inCompiler,
                                                             const cObjectArray & inEffectiveParameterArray,
                                                             const GALGAS_location & inErrorLocation
                                                             COMMA_LOCATION_ARGS) ;

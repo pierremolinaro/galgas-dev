@@ -18,7 +18,7 @@ typedef void (*extensionSetterSignature_%![CLASS_NAME identifierRepresentation]%
       %class GALGAS_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
     end
   end
-  %,\n%!^%class C_Compiler * inCompiler%
+  %,\n%!^%class Compiler * inCompiler%
   %\n %!^%COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -41,6 +41,6 @@ void callExtensionSetter_%![MODIFIER_NAME identifierRepresentation]% (%?^%class 
       %GALGAS_%![mFormalArgumentType identifierRepresentation]% in_%![mFormalArgumentName identifierRepresentation]
     end
   end
-  %,\n%!^%C_Compiler * inCompiler%
+  %,\n%!^%Compiler * inCompiler%
   %\n%!^%COMMA_LOCATION_ARGS) ;
 

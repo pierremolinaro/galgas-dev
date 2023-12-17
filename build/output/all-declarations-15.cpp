@@ -1,4 +1,4 @@
-#include "galgas2/C_Compiler.h"
+#include "galgas2/Compiler.h"
 #include "galgas2/C_galgas_io.h"
 #include "galgas2/C_galgas_CLI_Options.h"
 #include "utilities/C_PrologueEpilogue.h"
@@ -61,7 +61,7 @@ GALGAS_weakReferenceTypeForGeneration_2D_weak GALGAS_weakReferenceTypeForGenerat
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_weakReferenceTypeForGeneration GALGAS_weakReferenceTypeForGeneration_2D_weak::bang_weakReferenceTypeForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_weakReferenceTypeForGeneration GALGAS_weakReferenceTypeForGeneration_2D_weak::bang_weakReferenceTypeForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_weakReferenceTypeForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -104,7 +104,7 @@ AC_GALGAS_root * GALGAS_weakReferenceTypeForGeneration_2D_weak::clonedObject (vo
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_weakReferenceTypeForGeneration_2D_weak GALGAS_weakReferenceTypeForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                            C_Compiler * inCompiler
+                                                                                                            Compiler * inCompiler
                                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_weakReferenceTypeForGeneration_2D_weak result ;
   const GALGAS_weakReferenceTypeForGeneration_2D_weak * p = (const GALGAS_weakReferenceTypeForGeneration_2D_weak *) inObject.embeddedObject () ;
@@ -284,7 +284,7 @@ AC_GALGAS_root * GALGAS_enumDeclarationAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_enumDeclarationAST GALGAS_enumDeclarationAST::extractObject (const GALGAS_object & inObject,
-                                                                    C_Compiler * inCompiler
+                                                                    Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_enumDeclarationAST result ;
   const GALGAS_enumDeclarationAST * p = (const GALGAS_enumDeclarationAST *) inObject.embeddedObject () ;
@@ -443,7 +443,7 @@ AC_GALGAS_root * GALGAS_enumTypeForGeneration::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_enumTypeForGeneration GALGAS_enumTypeForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                          C_Compiler * inCompiler
+                                                                          Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_enumTypeForGeneration result ;
   const GALGAS_enumTypeForGeneration * p = (const GALGAS_enumTypeForGeneration *) inObject.embeddedObject () ;
@@ -511,7 +511,7 @@ GALGAS_enumTypeForGeneration_2D_weak GALGAS_enumTypeForGeneration_2D_weak::const
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_enumTypeForGeneration GALGAS_enumTypeForGeneration_2D_weak::bang_enumTypeForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_enumTypeForGeneration GALGAS_enumTypeForGeneration_2D_weak::bang_enumTypeForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_enumTypeForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -554,7 +554,7 @@ AC_GALGAS_root * GALGAS_enumTypeForGeneration_2D_weak::clonedObject (void) const
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_enumTypeForGeneration_2D_weak GALGAS_enumTypeForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                          C_Compiler * inCompiler
+                                                                                          Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_enumTypeForGeneration_2D_weak result ;
   const GALGAS_enumTypeForGeneration_2D_weak * p = (const GALGAS_enumTypeForGeneration_2D_weak *) inObject.embeddedObject () ;
@@ -839,7 +839,7 @@ AC_GALGAS_root * GALGAS_externTypeDeclarationAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_externTypeDeclarationAST GALGAS_externTypeDeclarationAST::extractObject (const GALGAS_object & inObject,
-                                                                                C_Compiler * inCompiler
+                                                                                Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_externTypeDeclarationAST result ;
   const GALGAS_externTypeDeclarationAST * p = (const GALGAS_externTypeDeclarationAST *) inObject.embeddedObject () ;
@@ -1040,7 +1040,7 @@ AC_GALGAS_root * GALGAS_externTypeDeclarationForGeneration::clonedObject (void) 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_externTypeDeclarationForGeneration GALGAS_externTypeDeclarationForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                    C_Compiler * inCompiler
+                                                                                                    Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_externTypeDeclarationForGeneration result ;
   const GALGAS_externTypeDeclarationForGeneration * p = (const GALGAS_externTypeDeclarationForGeneration *) inObject.embeddedObject () ;
@@ -1108,7 +1108,7 @@ GALGAS_externTypeDeclarationForGeneration_2D_weak GALGAS_externTypeDeclarationFo
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_externTypeDeclarationForGeneration GALGAS_externTypeDeclarationForGeneration_2D_weak::bang_externTypeDeclarationForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_externTypeDeclarationForGeneration GALGAS_externTypeDeclarationForGeneration_2D_weak::bang_externTypeDeclarationForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_externTypeDeclarationForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -1151,7 +1151,7 @@ AC_GALGAS_root * GALGAS_externTypeDeclarationForGeneration_2D_weak::clonedObject
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_externTypeDeclarationForGeneration_2D_weak GALGAS_externTypeDeclarationForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                                    C_Compiler * inCompiler
+                                                                                                                    Compiler * inCompiler
                                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_externTypeDeclarationForGeneration_2D_weak result ;
   const GALGAS_externTypeDeclarationForGeneration_2D_weak * p = (const GALGAS_externTypeDeclarationForGeneration_2D_weak *) inObject.embeddedObject () ;
@@ -1352,7 +1352,7 @@ AC_GALGAS_root * GALGAS_graphDeclarationAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_graphDeclarationAST GALGAS_graphDeclarationAST::extractObject (const GALGAS_object & inObject,
-                                                                      C_Compiler * inCompiler
+                                                                      Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_graphDeclarationAST result ;
   const GALGAS_graphDeclarationAST * p = (const GALGAS_graphDeclarationAST *) inObject.embeddedObject () ;
@@ -1553,7 +1553,7 @@ AC_GALGAS_root * GALGAS_graphDeclarationForGeneration::clonedObject (void) const
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_graphDeclarationForGeneration GALGAS_graphDeclarationForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                          C_Compiler * inCompiler
+                                                                                          Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_graphDeclarationForGeneration result ;
   const GALGAS_graphDeclarationForGeneration * p = (const GALGAS_graphDeclarationForGeneration *) inObject.embeddedObject () ;
@@ -1621,7 +1621,7 @@ GALGAS_graphDeclarationForGeneration_2D_weak GALGAS_graphDeclarationForGeneratio
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_graphDeclarationForGeneration GALGAS_graphDeclarationForGeneration_2D_weak::bang_graphDeclarationForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_graphDeclarationForGeneration GALGAS_graphDeclarationForGeneration_2D_weak::bang_graphDeclarationForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_graphDeclarationForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -1664,7 +1664,7 @@ AC_GALGAS_root * GALGAS_graphDeclarationForGeneration_2D_weak::clonedObject (voi
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_graphDeclarationForGeneration_2D_weak GALGAS_graphDeclarationForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                          C_Compiler * inCompiler
+                                                                                                          Compiler * inCompiler
                                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_graphDeclarationForGeneration_2D_weak result ;
   const GALGAS_graphDeclarationForGeneration_2D_weak * p = (const GALGAS_graphDeclarationForGeneration_2D_weak *) inObject.embeddedObject () ;
@@ -1865,7 +1865,7 @@ AC_GALGAS_root * GALGAS_listDeclarationAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_listDeclarationAST GALGAS_listDeclarationAST::extractObject (const GALGAS_object & inObject,
-                                                                    C_Compiler * inCompiler
+                                                                    Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_listDeclarationAST result ;
   const GALGAS_listDeclarationAST * p = (const GALGAS_listDeclarationAST *) inObject.embeddedObject () ;
@@ -2045,7 +2045,7 @@ AC_GALGAS_root * GALGAS_listTypeForGeneration::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_listTypeForGeneration GALGAS_listTypeForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                          C_Compiler * inCompiler
+                                                                          Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_listTypeForGeneration result ;
   const GALGAS_listTypeForGeneration * p = (const GALGAS_listTypeForGeneration *) inObject.embeddedObject () ;
@@ -2113,7 +2113,7 @@ GALGAS_listTypeForGeneration_2D_weak GALGAS_listTypeForGeneration_2D_weak::const
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_listTypeForGeneration GALGAS_listTypeForGeneration_2D_weak::bang_listTypeForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_listTypeForGeneration GALGAS_listTypeForGeneration_2D_weak::bang_listTypeForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_listTypeForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -2156,7 +2156,7 @@ AC_GALGAS_root * GALGAS_listTypeForGeneration_2D_weak::clonedObject (void) const
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_listTypeForGeneration_2D_weak GALGAS_listTypeForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                          C_Compiler * inCompiler
+                                                                                          Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_listTypeForGeneration_2D_weak result ;
   const GALGAS_listTypeForGeneration_2D_weak * p = (const GALGAS_listTypeForGeneration_2D_weak *) inObject.embeddedObject () ;
@@ -2336,7 +2336,7 @@ AC_GALGAS_root * GALGAS_listmapDeclarationAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_listmapDeclarationAST GALGAS_listmapDeclarationAST::extractObject (const GALGAS_object & inObject,
-                                                                          C_Compiler * inCompiler
+                                                                          Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_listmapDeclarationAST result ;
   const GALGAS_listmapDeclarationAST * p = (const GALGAS_listmapDeclarationAST *) inObject.embeddedObject () ;
@@ -2537,7 +2537,7 @@ AC_GALGAS_root * GALGAS_listmapTypeForGeneration::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_listmapTypeForGeneration GALGAS_listmapTypeForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                C_Compiler * inCompiler
+                                                                                Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_listmapTypeForGeneration result ;
   const GALGAS_listmapTypeForGeneration * p = (const GALGAS_listmapTypeForGeneration *) inObject.embeddedObject () ;
@@ -2605,7 +2605,7 @@ GALGAS_listmapTypeForGeneration_2D_weak GALGAS_listmapTypeForGeneration_2D_weak:
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_listmapTypeForGeneration GALGAS_listmapTypeForGeneration_2D_weak::bang_listmapTypeForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_listmapTypeForGeneration GALGAS_listmapTypeForGeneration_2D_weak::bang_listmapTypeForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_listmapTypeForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -2648,7 +2648,7 @@ AC_GALGAS_root * GALGAS_listmapTypeForGeneration_2D_weak::clonedObject (void) co
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_listmapTypeForGeneration_2D_weak GALGAS_listmapTypeForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                C_Compiler * inCompiler
+                                                                                                Compiler * inCompiler
                                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_listmapTypeForGeneration_2D_weak result ;
   const GALGAS_listmapTypeForGeneration_2D_weak * p = (const GALGAS_listmapTypeForGeneration_2D_weak *) inObject.embeddedObject () ;
@@ -2849,7 +2849,7 @@ AC_GALGAS_root * GALGAS_dictDeclarationAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_dictDeclarationAST GALGAS_dictDeclarationAST::extractObject (const GALGAS_object & inObject,
-                                                                    C_Compiler * inCompiler
+                                                                    Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_dictDeclarationAST result ;
   const GALGAS_dictDeclarationAST * p = (const GALGAS_dictDeclarationAST *) inObject.embeddedObject () ;
@@ -3071,7 +3071,7 @@ AC_GALGAS_root * GALGAS_dictTypeForGeneration::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_dictTypeForGeneration GALGAS_dictTypeForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                          C_Compiler * inCompiler
+                                                                          Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_dictTypeForGeneration result ;
   const GALGAS_dictTypeForGeneration * p = (const GALGAS_dictTypeForGeneration *) inObject.embeddedObject () ;
@@ -3139,7 +3139,7 @@ GALGAS_dictTypeForGeneration_2D_weak GALGAS_dictTypeForGeneration_2D_weak::const
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_dictTypeForGeneration GALGAS_dictTypeForGeneration_2D_weak::bang_dictTypeForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_dictTypeForGeneration GALGAS_dictTypeForGeneration_2D_weak::bang_dictTypeForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_dictTypeForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -3182,7 +3182,7 @@ AC_GALGAS_root * GALGAS_dictTypeForGeneration_2D_weak::clonedObject (void) const
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_dictTypeForGeneration_2D_weak GALGAS_dictTypeForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                          C_Compiler * inCompiler
+                                                                                          Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_dictTypeForGeneration_2D_weak result ;
   const GALGAS_dictTypeForGeneration_2D_weak * p = (const GALGAS_dictTypeForGeneration_2D_weak *) inObject.embeddedObject () ;
@@ -3446,7 +3446,7 @@ AC_GALGAS_root * GALGAS_mapDeclarationAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_mapDeclarationAST GALGAS_mapDeclarationAST::extractObject (const GALGAS_object & inObject,
-                                                                  C_Compiler * inCompiler
+                                                                  Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_mapDeclarationAST result ;
   const GALGAS_mapDeclarationAST * p = (const GALGAS_mapDeclarationAST *) inObject.embeddedObject () ;
@@ -3731,7 +3731,7 @@ AC_GALGAS_root * GALGAS_mapTypeForGeneration::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_mapTypeForGeneration GALGAS_mapTypeForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                        C_Compiler * inCompiler
+                                                                        Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_mapTypeForGeneration result ;
   const GALGAS_mapTypeForGeneration * p = (const GALGAS_mapTypeForGeneration *) inObject.embeddedObject () ;
@@ -3799,7 +3799,7 @@ GALGAS_mapTypeForGeneration_2D_weak GALGAS_mapTypeForGeneration_2D_weak::constru
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_mapTypeForGeneration GALGAS_mapTypeForGeneration_2D_weak::bang_mapTypeForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_mapTypeForGeneration GALGAS_mapTypeForGeneration_2D_weak::bang_mapTypeForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_mapTypeForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -3842,7 +3842,7 @@ AC_GALGAS_root * GALGAS_mapTypeForGeneration_2D_weak::clonedObject (void) const 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_mapTypeForGeneration_2D_weak GALGAS_mapTypeForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                        C_Compiler * inCompiler
+                                                                                        Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_mapTypeForGeneration_2D_weak result ;
   const GALGAS_mapTypeForGeneration_2D_weak * p = (const GALGAS_mapTypeForGeneration_2D_weak *) inObject.embeddedObject () ;
@@ -4043,7 +4043,7 @@ AC_GALGAS_root * GALGAS_sortedListDeclarationAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_sortedListDeclarationAST GALGAS_sortedListDeclarationAST::extractObject (const GALGAS_object & inObject,
-                                                                                C_Compiler * inCompiler
+                                                                                Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_sortedListDeclarationAST result ;
   const GALGAS_sortedListDeclarationAST * p = (const GALGAS_sortedListDeclarationAST *) inObject.embeddedObject () ;
@@ -4244,7 +4244,7 @@ AC_GALGAS_root * GALGAS_sortedListTypeForGeneration::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_sortedListTypeForGeneration GALGAS_sortedListTypeForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                      C_Compiler * inCompiler
+                                                                                      Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_sortedListTypeForGeneration result ;
   const GALGAS_sortedListTypeForGeneration * p = (const GALGAS_sortedListTypeForGeneration *) inObject.embeddedObject () ;
@@ -4312,7 +4312,7 @@ GALGAS_sortedListTypeForGeneration_2D_weak GALGAS_sortedListTypeForGeneration_2D
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_sortedListTypeForGeneration GALGAS_sortedListTypeForGeneration_2D_weak::bang_sortedListTypeForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_sortedListTypeForGeneration GALGAS_sortedListTypeForGeneration_2D_weak::bang_sortedListTypeForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_sortedListTypeForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -4355,7 +4355,7 @@ AC_GALGAS_root * GALGAS_sortedListTypeForGeneration_2D_weak::clonedObject (void)
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_sortedListTypeForGeneration_2D_weak GALGAS_sortedListTypeForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                      C_Compiler * inCompiler
+                                                                                                      Compiler * inCompiler
                                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_sortedListTypeForGeneration_2D_weak result ;
   const GALGAS_sortedListTypeForGeneration_2D_weak * p = (const GALGAS_sortedListTypeForGeneration_2D_weak *) inObject.embeddedObject () ;
@@ -4556,7 +4556,7 @@ AC_GALGAS_root * GALGAS_structDeclarationAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_structDeclarationAST GALGAS_structDeclarationAST::extractObject (const GALGAS_object & inObject,
-                                                                        C_Compiler * inCompiler
+                                                                        Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_structDeclarationAST result ;
   const GALGAS_structDeclarationAST * p = (const GALGAS_structDeclarationAST *) inObject.embeddedObject () ;
@@ -4778,7 +4778,7 @@ AC_GALGAS_root * GALGAS_structTypeForGeneration::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_structTypeForGeneration GALGAS_structTypeForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                              C_Compiler * inCompiler
+                                                                              Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_structTypeForGeneration result ;
   const GALGAS_structTypeForGeneration * p = (const GALGAS_structTypeForGeneration *) inObject.embeddedObject () ;
@@ -4846,7 +4846,7 @@ GALGAS_structTypeForGeneration_2D_weak GALGAS_structTypeForGeneration_2D_weak::c
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_structTypeForGeneration GALGAS_structTypeForGeneration_2D_weak::bang_structTypeForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_structTypeForGeneration GALGAS_structTypeForGeneration_2D_weak::bang_structTypeForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_structTypeForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -4889,7 +4889,7 @@ AC_GALGAS_root * GALGAS_structTypeForGeneration_2D_weak::clonedObject (void) con
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_structTypeForGeneration_2D_weak GALGAS_structTypeForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                              C_Compiler * inCompiler
+                                                                                              Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_structTypeForGeneration_2D_weak result ;
   const GALGAS_structTypeForGeneration_2D_weak * p = (const GALGAS_structTypeForGeneration_2D_weak *) inObject.embeddedObject () ;
@@ -5069,7 +5069,7 @@ AC_GALGAS_root * GALGAS_typealiasDeclarationAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_typealiasDeclarationAST GALGAS_typealiasDeclarationAST::extractObject (const GALGAS_object & inObject,
-                                                                              C_Compiler * inCompiler
+                                                                              Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_typealiasDeclarationAST result ;
   const GALGAS_typealiasDeclarationAST * p = (const GALGAS_typealiasDeclarationAST *) inObject.embeddedObject () ;
@@ -5249,7 +5249,7 @@ AC_GALGAS_root * GALGAS_aliasTypeForGeneration::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_aliasTypeForGeneration GALGAS_aliasTypeForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                            C_Compiler * inCompiler
+                                                                            Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_aliasTypeForGeneration result ;
   const GALGAS_aliasTypeForGeneration * p = (const GALGAS_aliasTypeForGeneration *) inObject.embeddedObject () ;
@@ -5317,7 +5317,7 @@ GALGAS_aliasTypeForGeneration_2D_weak GALGAS_aliasTypeForGeneration_2D_weak::con
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_aliasTypeForGeneration GALGAS_aliasTypeForGeneration_2D_weak::bang_aliasTypeForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_aliasTypeForGeneration GALGAS_aliasTypeForGeneration_2D_weak::bang_aliasTypeForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_aliasTypeForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -5360,7 +5360,7 @@ AC_GALGAS_root * GALGAS_aliasTypeForGeneration_2D_weak::clonedObject (void) cons
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_aliasTypeForGeneration_2D_weak GALGAS_aliasTypeForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                            C_Compiler * inCompiler
+                                                                                            Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_aliasTypeForGeneration_2D_weak result ;
   const GALGAS_aliasTypeForGeneration_2D_weak * p = (const GALGAS_aliasTypeForGeneration_2D_weak *) inObject.embeddedObject () ;
@@ -5582,7 +5582,7 @@ AC_GALGAS_root * GALGAS_abstractExtensionGetterAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionGetterAST GALGAS_abstractExtensionGetterAST::extractObject (const GALGAS_object & inObject,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_abstractExtensionGetterAST result ;
   const GALGAS_abstractExtensionGetterAST * p = (const GALGAS_abstractExtensionGetterAST *) inObject.embeddedObject () ;
@@ -5811,7 +5811,7 @@ AC_GALGAS_root * GALGAS_abstractExtensionGetterForGeneration::clonedObject (void
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionGetterForGeneration GALGAS_abstractExtensionGetterForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                        C_Compiler * inCompiler
+                                                                                                        Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_abstractExtensionGetterForGeneration result ;
   const GALGAS_abstractExtensionGetterForGeneration * p = (const GALGAS_abstractExtensionGetterForGeneration *) inObject.embeddedObject () ;
@@ -5879,7 +5879,7 @@ GALGAS_abstractExtensionGetterForGeneration_2D_weak GALGAS_abstractExtensionGett
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_abstractExtensionGetterForGeneration GALGAS_abstractExtensionGetterForGeneration_2D_weak::bang_abstractExtensionGetterForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_abstractExtensionGetterForGeneration GALGAS_abstractExtensionGetterForGeneration_2D_weak::bang_abstractExtensionGetterForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_abstractExtensionGetterForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -5922,7 +5922,7 @@ AC_GALGAS_root * GALGAS_abstractExtensionGetterForGeneration_2D_weak::clonedObje
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionGetterForGeneration_2D_weak GALGAS_abstractExtensionGetterForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                                        C_Compiler * inCompiler
+                                                                                                                        Compiler * inCompiler
                                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_abstractExtensionGetterForGeneration_2D_weak result ;
   const GALGAS_abstractExtensionGetterForGeneration_2D_weak * p = (const GALGAS_abstractExtensionGetterForGeneration_2D_weak *) inObject.embeddedObject () ;
@@ -6123,7 +6123,7 @@ AC_GALGAS_root * GALGAS_abstractExtensionMethodAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionMethodAST GALGAS_abstractExtensionMethodAST::extractObject (const GALGAS_object & inObject,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_abstractExtensionMethodAST result ;
   const GALGAS_abstractExtensionMethodAST * p = (const GALGAS_abstractExtensionMethodAST *) inObject.embeddedObject () ;
@@ -6331,7 +6331,7 @@ AC_GALGAS_root * GALGAS_abstractExtensionMethodForGeneration::clonedObject (void
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionMethodForGeneration GALGAS_abstractExtensionMethodForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                        C_Compiler * inCompiler
+                                                                                                        Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_abstractExtensionMethodForGeneration result ;
   const GALGAS_abstractExtensionMethodForGeneration * p = (const GALGAS_abstractExtensionMethodForGeneration *) inObject.embeddedObject () ;
@@ -6399,7 +6399,7 @@ GALGAS_abstractExtensionMethodForGeneration_2D_weak GALGAS_abstractExtensionMeth
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_abstractExtensionMethodForGeneration GALGAS_abstractExtensionMethodForGeneration_2D_weak::bang_abstractExtensionMethodForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_abstractExtensionMethodForGeneration GALGAS_abstractExtensionMethodForGeneration_2D_weak::bang_abstractExtensionMethodForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_abstractExtensionMethodForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -6442,7 +6442,7 @@ AC_GALGAS_root * GALGAS_abstractExtensionMethodForGeneration_2D_weak::clonedObje
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionMethodForGeneration_2D_weak GALGAS_abstractExtensionMethodForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                                        C_Compiler * inCompiler
+                                                                                                                        Compiler * inCompiler
                                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_abstractExtensionMethodForGeneration_2D_weak result ;
   const GALGAS_abstractExtensionMethodForGeneration_2D_weak * p = (const GALGAS_abstractExtensionMethodForGeneration_2D_weak *) inObject.embeddedObject () ;
@@ -6643,7 +6643,7 @@ AC_GALGAS_root * GALGAS_abstractExtensionSetterAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionSetterAST GALGAS_abstractExtensionSetterAST::extractObject (const GALGAS_object & inObject,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_abstractExtensionSetterAST result ;
   const GALGAS_abstractExtensionSetterAST * p = (const GALGAS_abstractExtensionSetterAST *) inObject.embeddedObject () ;
@@ -6851,7 +6851,7 @@ AC_GALGAS_root * GALGAS_abstractExtensionSetterForGeneration::clonedObject (void
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionSetterForGeneration GALGAS_abstractExtensionSetterForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                        C_Compiler * inCompiler
+                                                                                                        Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_abstractExtensionSetterForGeneration result ;
   const GALGAS_abstractExtensionSetterForGeneration * p = (const GALGAS_abstractExtensionSetterForGeneration *) inObject.embeddedObject () ;
@@ -6919,7 +6919,7 @@ GALGAS_abstractExtensionSetterForGeneration_2D_weak GALGAS_abstractExtensionSett
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_abstractExtensionSetterForGeneration GALGAS_abstractExtensionSetterForGeneration_2D_weak::bang_abstractExtensionSetterForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_abstractExtensionSetterForGeneration GALGAS_abstractExtensionSetterForGeneration_2D_weak::bang_abstractExtensionSetterForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_abstractExtensionSetterForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -6962,7 +6962,7 @@ AC_GALGAS_root * GALGAS_abstractExtensionSetterForGeneration_2D_weak::clonedObje
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionSetterForGeneration_2D_weak GALGAS_abstractExtensionSetterForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                                        C_Compiler * inCompiler
+                                                                                                                        Compiler * inCompiler
                                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_abstractExtensionSetterForGeneration_2D_weak result ;
   const GALGAS_abstractExtensionSetterForGeneration_2D_weak * p = (const GALGAS_abstractExtensionSetterForGeneration_2D_weak *) inObject.embeddedObject () ;
@@ -7268,7 +7268,7 @@ AC_GALGAS_root * GALGAS_extensionGetterAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionGetterAST GALGAS_extensionGetterAST::extractObject (const GALGAS_object & inObject,
-                                                                    C_Compiler * inCompiler
+                                                                    Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_extensionGetterAST result ;
   const GALGAS_extensionGetterAST * p = (const GALGAS_extensionGetterAST *) inObject.embeddedObject () ;
@@ -7581,7 +7581,7 @@ AC_GALGAS_root * GALGAS_extensionGetterForGeneration::clonedObject (void) const 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionGetterForGeneration GALGAS_extensionGetterForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                        C_Compiler * inCompiler
+                                                                                        Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_extensionGetterForGeneration result ;
   const GALGAS_extensionGetterForGeneration * p = (const GALGAS_extensionGetterForGeneration *) inObject.embeddedObject () ;
@@ -7649,7 +7649,7 @@ GALGAS_extensionGetterForGeneration_2D_weak GALGAS_extensionGetterForGeneration_
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_extensionGetterForGeneration GALGAS_extensionGetterForGeneration_2D_weak::bang_extensionGetterForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_extensionGetterForGeneration GALGAS_extensionGetterForGeneration_2D_weak::bang_extensionGetterForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_extensionGetterForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -7692,7 +7692,7 @@ AC_GALGAS_root * GALGAS_extensionGetterForGeneration_2D_weak::clonedObject (void
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionGetterForGeneration_2D_weak GALGAS_extensionGetterForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                        C_Compiler * inCompiler
+                                                                                                        Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_extensionGetterForGeneration_2D_weak result ;
   const GALGAS_extensionGetterForGeneration_2D_weak * p = (const GALGAS_extensionGetterForGeneration_2D_weak *) inObject.embeddedObject () ;
@@ -7956,7 +7956,7 @@ AC_GALGAS_root * GALGAS_extensionMethodAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionMethodAST GALGAS_extensionMethodAST::extractObject (const GALGAS_object & inObject,
-                                                                    C_Compiler * inCompiler
+                                                                    Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_extensionMethodAST result ;
   const GALGAS_extensionMethodAST * p = (const GALGAS_extensionMethodAST *) inObject.embeddedObject () ;
@@ -8227,7 +8227,7 @@ AC_GALGAS_root * GALGAS_extensionMethodForGeneration::clonedObject (void) const 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionMethodForGeneration GALGAS_extensionMethodForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                        C_Compiler * inCompiler
+                                                                                        Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_extensionMethodForGeneration result ;
   const GALGAS_extensionMethodForGeneration * p = (const GALGAS_extensionMethodForGeneration *) inObject.embeddedObject () ;
@@ -8295,7 +8295,7 @@ GALGAS_extensionMethodForGeneration_2D_weak GALGAS_extensionMethodForGeneration_
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_extensionMethodForGeneration GALGAS_extensionMethodForGeneration_2D_weak::bang_extensionMethodForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_extensionMethodForGeneration GALGAS_extensionMethodForGeneration_2D_weak::bang_extensionMethodForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_extensionMethodForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -8338,7 +8338,7 @@ AC_GALGAS_root * GALGAS_extensionMethodForGeneration_2D_weak::clonedObject (void
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionMethodForGeneration_2D_weak GALGAS_extensionMethodForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                        C_Compiler * inCompiler
+                                                                                                        Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_extensionMethodForGeneration_2D_weak result ;
   const GALGAS_extensionMethodForGeneration_2D_weak * p = (const GALGAS_extensionMethodForGeneration_2D_weak *) inObject.embeddedObject () ;
@@ -8602,7 +8602,7 @@ AC_GALGAS_root * GALGAS_extensionSetterAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionSetterAST GALGAS_extensionSetterAST::extractObject (const GALGAS_object & inObject,
-                                                                    C_Compiler * inCompiler
+                                                                    Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_extensionSetterAST result ;
   const GALGAS_extensionSetterAST * p = (const GALGAS_extensionSetterAST *) inObject.embeddedObject () ;
@@ -8873,7 +8873,7 @@ AC_GALGAS_root * GALGAS_extensionSetterForGeneration::clonedObject (void) const 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionSetterForGeneration GALGAS_extensionSetterForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                        C_Compiler * inCompiler
+                                                                                        Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_extensionSetterForGeneration result ;
   const GALGAS_extensionSetterForGeneration * p = (const GALGAS_extensionSetterForGeneration *) inObject.embeddedObject () ;
@@ -8941,7 +8941,7 @@ GALGAS_extensionSetterForGeneration_2D_weak GALGAS_extensionSetterForGeneration_
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_extensionSetterForGeneration GALGAS_extensionSetterForGeneration_2D_weak::bang_extensionSetterForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_extensionSetterForGeneration GALGAS_extensionSetterForGeneration_2D_weak::bang_extensionSetterForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_extensionSetterForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -8984,7 +8984,7 @@ AC_GALGAS_root * GALGAS_extensionSetterForGeneration_2D_weak::clonedObject (void
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionSetterForGeneration_2D_weak GALGAS_extensionSetterForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                        C_Compiler * inCompiler
+                                                                                                        Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_extensionSetterForGeneration_2D_weak result ;
   const GALGAS_extensionSetterForGeneration_2D_weak * p = (const GALGAS_extensionSetterForGeneration_2D_weak *) inObject.embeddedObject () ;
@@ -9206,7 +9206,7 @@ AC_GALGAS_root * GALGAS_overridingAbstractExtensionGetterAST::clonedObject (void
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingAbstractExtensionGetterAST GALGAS_overridingAbstractExtensionGetterAST::extractObject (const GALGAS_object & inObject,
-                                                                                                        C_Compiler * inCompiler
+                                                                                                        Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_overridingAbstractExtensionGetterAST result ;
   const GALGAS_overridingAbstractExtensionGetterAST * p = (const GALGAS_overridingAbstractExtensionGetterAST *) inObject.embeddedObject () ;
@@ -9407,7 +9407,7 @@ AC_GALGAS_root * GALGAS_overridingAbstractExtensionMethodAST::clonedObject (void
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingAbstractExtensionMethodAST GALGAS_overridingAbstractExtensionMethodAST::extractObject (const GALGAS_object & inObject,
-                                                                                                        C_Compiler * inCompiler
+                                                                                                        Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_overridingAbstractExtensionMethodAST result ;
   const GALGAS_overridingAbstractExtensionMethodAST * p = (const GALGAS_overridingAbstractExtensionMethodAST *) inObject.embeddedObject () ;
@@ -9608,7 +9608,7 @@ AC_GALGAS_root * GALGAS_overridingAbstractExtensionSetterAST::clonedObject (void
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingAbstractExtensionSetterAST GALGAS_overridingAbstractExtensionSetterAST::extractObject (const GALGAS_object & inObject,
-                                                                                                        C_Compiler * inCompiler
+                                                                                                        Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_overridingAbstractExtensionSetterAST result ;
   const GALGAS_overridingAbstractExtensionSetterAST * p = (const GALGAS_overridingAbstractExtensionSetterAST *) inObject.embeddedObject () ;
@@ -9914,7 +9914,7 @@ AC_GALGAS_root * GALGAS_overridingExtensionGetterAST::clonedObject (void) const 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingExtensionGetterAST GALGAS_overridingExtensionGetterAST::extractObject (const GALGAS_object & inObject,
-                                                                                        C_Compiler * inCompiler
+                                                                                        Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_overridingExtensionGetterAST result ;
   const GALGAS_overridingExtensionGetterAST * p = (const GALGAS_overridingExtensionGetterAST *) inObject.embeddedObject () ;
@@ -10227,7 +10227,7 @@ AC_GALGAS_root * GALGAS_overrideExtensionGetterForGeneration::clonedObject (void
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_overrideExtensionGetterForGeneration GALGAS_overrideExtensionGetterForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                        C_Compiler * inCompiler
+                                                                                                        Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_overrideExtensionGetterForGeneration result ;
   const GALGAS_overrideExtensionGetterForGeneration * p = (const GALGAS_overrideExtensionGetterForGeneration *) inObject.embeddedObject () ;
@@ -10295,7 +10295,7 @@ GALGAS_overrideExtensionGetterForGeneration_2D_weak GALGAS_overrideExtensionGett
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_overrideExtensionGetterForGeneration GALGAS_overrideExtensionGetterForGeneration_2D_weak::bang_overrideExtensionGetterForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_overrideExtensionGetterForGeneration GALGAS_overrideExtensionGetterForGeneration_2D_weak::bang_overrideExtensionGetterForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_overrideExtensionGetterForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -10338,7 +10338,7 @@ AC_GALGAS_root * GALGAS_overrideExtensionGetterForGeneration_2D_weak::clonedObje
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_overrideExtensionGetterForGeneration_2D_weak GALGAS_overrideExtensionGetterForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                                        C_Compiler * inCompiler
+                                                                                                                        Compiler * inCompiler
                                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_overrideExtensionGetterForGeneration_2D_weak result ;
   const GALGAS_overrideExtensionGetterForGeneration_2D_weak * p = (const GALGAS_overrideExtensionGetterForGeneration_2D_weak *) inObject.embeddedObject () ;
@@ -10602,7 +10602,7 @@ AC_GALGAS_root * GALGAS_overridingExtensionMethodAST::clonedObject (void) const 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingExtensionMethodAST GALGAS_overridingExtensionMethodAST::extractObject (const GALGAS_object & inObject,
-                                                                                        C_Compiler * inCompiler
+                                                                                        Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_overridingExtensionMethodAST result ;
   const GALGAS_overridingExtensionMethodAST * p = (const GALGAS_overridingExtensionMethodAST *) inObject.embeddedObject () ;
@@ -10873,7 +10873,7 @@ AC_GALGAS_root * GALGAS_overridingExtensionMethodForGeneration::clonedObject (vo
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingExtensionMethodForGeneration GALGAS_overridingExtensionMethodForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                            C_Compiler * inCompiler
+                                                                                                            Compiler * inCompiler
                                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_overridingExtensionMethodForGeneration result ;
   const GALGAS_overridingExtensionMethodForGeneration * p = (const GALGAS_overridingExtensionMethodForGeneration *) inObject.embeddedObject () ;
@@ -10941,7 +10941,7 @@ GALGAS_overridingExtensionMethodForGeneration_2D_weak GALGAS_overridingExtension
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_overridingExtensionMethodForGeneration GALGAS_overridingExtensionMethodForGeneration_2D_weak::bang_overridingExtensionMethodForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_overridingExtensionMethodForGeneration GALGAS_overridingExtensionMethodForGeneration_2D_weak::bang_overridingExtensionMethodForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_overridingExtensionMethodForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -10984,7 +10984,7 @@ AC_GALGAS_root * GALGAS_overridingExtensionMethodForGeneration_2D_weak::clonedOb
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingExtensionMethodForGeneration_2D_weak GALGAS_overridingExtensionMethodForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                                            C_Compiler * inCompiler
+                                                                                                                            Compiler * inCompiler
                                                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_overridingExtensionMethodForGeneration_2D_weak result ;
   const GALGAS_overridingExtensionMethodForGeneration_2D_weak * p = (const GALGAS_overridingExtensionMethodForGeneration_2D_weak *) inObject.embeddedObject () ;
@@ -11248,7 +11248,7 @@ AC_GALGAS_root * GALGAS_overridingExtensionSetterAST::clonedObject (void) const 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingExtensionSetterAST GALGAS_overridingExtensionSetterAST::extractObject (const GALGAS_object & inObject,
-                                                                                        C_Compiler * inCompiler
+                                                                                        Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_overridingExtensionSetterAST result ;
   const GALGAS_overridingExtensionSetterAST * p = (const GALGAS_overridingExtensionSetterAST *) inObject.embeddedObject () ;
@@ -11519,7 +11519,7 @@ AC_GALGAS_root * GALGAS_overridingExtensionSetterForGeneration::clonedObject (vo
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingExtensionSetterForGeneration GALGAS_overridingExtensionSetterForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                            C_Compiler * inCompiler
+                                                                                                            Compiler * inCompiler
                                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_overridingExtensionSetterForGeneration result ;
   const GALGAS_overridingExtensionSetterForGeneration * p = (const GALGAS_overridingExtensionSetterForGeneration *) inObject.embeddedObject () ;
@@ -11587,7 +11587,7 @@ GALGAS_overridingExtensionSetterForGeneration_2D_weak GALGAS_overridingExtension
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_overridingExtensionSetterForGeneration GALGAS_overridingExtensionSetterForGeneration_2D_weak::bang_overridingExtensionSetterForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_overridingExtensionSetterForGeneration GALGAS_overridingExtensionSetterForGeneration_2D_weak::bang_overridingExtensionSetterForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_overridingExtensionSetterForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -11630,7 +11630,7 @@ AC_GALGAS_root * GALGAS_overridingExtensionSetterForGeneration_2D_weak::clonedOb
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingExtensionSetterForGeneration_2D_weak GALGAS_overridingExtensionSetterForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                                            C_Compiler * inCompiler
+                                                                                                                            Compiler * inCompiler
                                                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_overridingExtensionSetterForGeneration_2D_weak result ;
   const GALGAS_overridingExtensionSetterForGeneration_2D_weak * p = (const GALGAS_overridingExtensionSetterForGeneration_2D_weak *) inObject.embeddedObject () ;
@@ -11824,7 +11824,7 @@ AC_GALGAS_root * GALGAS_outputActualParameterAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_outputActualParameterAST GALGAS_outputActualParameterAST::extractObject (const GALGAS_object & inObject,
-                                                                                C_Compiler * inCompiler
+                                                                                Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_outputActualParameterAST result ;
   const GALGAS_outputActualParameterAST * p = (const GALGAS_outputActualParameterAST *) inObject.embeddedObject () ;
@@ -12018,7 +12018,7 @@ AC_GALGAS_root * GALGAS_outputInputActualParameterAST::clonedObject (void) const
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_outputInputActualParameterAST GALGAS_outputInputActualParameterAST::extractObject (const GALGAS_object & inObject,
-                                                                                          C_Compiler * inCompiler
+                                                                                          Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_outputInputActualParameterAST result ;
   const GALGAS_outputInputActualParameterAST * p = (const GALGAS_outputInputActualParameterAST *) inObject.embeddedObject () ;
@@ -12170,7 +12170,7 @@ AC_GALGAS_root * GALGAS_outputInputSingleJokerParameterAST::clonedObject (void) 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_outputInputSingleJokerParameterAST GALGAS_outputInputSingleJokerParameterAST::extractObject (const GALGAS_object & inObject,
-                                                                                                    C_Compiler * inCompiler
+                                                                                                    Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_outputInputSingleJokerParameterAST result ;
   const GALGAS_outputInputSingleJokerParameterAST * p = (const GALGAS_outputInputSingleJokerParameterAST *) inObject.embeddedObject () ;
@@ -12322,7 +12322,7 @@ AC_GALGAS_root * GALGAS_outputInputSelfParameterAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_outputInputSelfParameterAST GALGAS_outputInputSelfParameterAST::extractObject (const GALGAS_object & inObject,
-                                                                                      C_Compiler * inCompiler
+                                                                                      Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_outputInputSelfParameterAST result ;
   const GALGAS_outputInputSelfParameterAST * p = (const GALGAS_outputInputSelfParameterAST *) inObject.embeddedObject () ;
@@ -12516,7 +12516,7 @@ AC_GALGAS_root * GALGAS_inputActualExistingVariableParameterAST::clonedObject (v
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_inputActualExistingVariableParameterAST GALGAS_inputActualExistingVariableParameterAST::extractObject (const GALGAS_object & inObject,
-                                                                                                              C_Compiler * inCompiler
+                                                                                                              Compiler * inCompiler
                                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_inputActualExistingVariableParameterAST result ;
   const GALGAS_inputActualExistingVariableParameterAST * p = (const GALGAS_inputActualExistingVariableParameterAST *) inObject.embeddedObject () ;
@@ -12710,7 +12710,7 @@ AC_GALGAS_root * GALGAS_inputActualSelfPropertyParameterAST::clonedObject (void)
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_inputActualSelfPropertyParameterAST GALGAS_inputActualSelfPropertyParameterAST::extractObject (const GALGAS_object & inObject,
-                                                                                                      C_Compiler * inCompiler
+                                                                                                      Compiler * inCompiler
                                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_inputActualSelfPropertyParameterAST result ;
   const GALGAS_inputActualSelfPropertyParameterAST * p = (const GALGAS_inputActualSelfPropertyParameterAST *) inObject.embeddedObject () ;
@@ -12904,7 +12904,7 @@ AC_GALGAS_root * GALGAS_inputActualSelfParameterAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_inputActualSelfParameterAST GALGAS_inputActualSelfParameterAST::extractObject (const GALGAS_object & inObject,
-                                                                                      C_Compiler * inCompiler
+                                                                                      Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_inputActualSelfParameterAST result ;
   const GALGAS_inputActualSelfParameterAST * p = (const GALGAS_inputActualSelfParameterAST *) inObject.embeddedObject () ;
@@ -13119,7 +13119,7 @@ AC_GALGAS_root * GALGAS_inputActualNewVariableParameterAST::clonedObject (void) 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_inputActualNewVariableParameterAST GALGAS_inputActualNewVariableParameterAST::extractObject (const GALGAS_object & inObject,
-                                                                                                    C_Compiler * inCompiler
+                                                                                                    Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_inputActualNewVariableParameterAST result ;
   const GALGAS_inputActualNewVariableParameterAST * p = (const GALGAS_inputActualNewVariableParameterAST *) inObject.embeddedObject () ;
@@ -13355,7 +13355,7 @@ AC_GALGAS_root * GALGAS_inputActualNewConstantParameterAST::clonedObject (void) 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_inputActualNewConstantParameterAST GALGAS_inputActualNewConstantParameterAST::extractObject (const GALGAS_object & inObject,
-                                                                                                    C_Compiler * inCompiler
+                                                                                                    Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_inputActualNewConstantParameterAST result ;
   const GALGAS_inputActualNewConstantParameterAST * p = (const GALGAS_inputActualNewConstantParameterAST *) inObject.embeddedObject () ;
@@ -13528,7 +13528,7 @@ AC_GALGAS_root * GALGAS_inputSingleJokerActualParameterAST::clonedObject (void) 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_inputSingleJokerActualParameterAST GALGAS_inputSingleJokerActualParameterAST::extractObject (const GALGAS_object & inObject,
-                                                                                                    C_Compiler * inCompiler
+                                                                                                    Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_inputSingleJokerActualParameterAST result ;
   const GALGAS_inputSingleJokerActualParameterAST * p = (const GALGAS_inputSingleJokerActualParameterAST *) inObject.embeddedObject () ;
@@ -13680,7 +13680,7 @@ AC_GALGAS_root * GALGAS_inputParameterVariable::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_inputParameterVariable GALGAS_inputParameterVariable::extractObject (const GALGAS_object & inObject,
-                                                                            C_Compiler * inCompiler
+                                                                            Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_inputParameterVariable result ;
   const GALGAS_inputParameterVariable * p = (const GALGAS_inputParameterVariable *) inObject.embeddedObject () ;
@@ -13853,7 +13853,7 @@ AC_GALGAS_root * GALGAS_inputParameterDeclaredVariable::clonedObject (void) cons
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_inputParameterDeclaredVariable GALGAS_inputParameterDeclaredVariable::extractObject (const GALGAS_object & inObject,
-                                                                                            C_Compiler * inCompiler
+                                                                                            Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_inputParameterDeclaredVariable result ;
   const GALGAS_inputParameterDeclaredVariable * p = (const GALGAS_inputParameterDeclaredVariable *) inObject.embeddedObject () ;
@@ -14026,7 +14026,7 @@ AC_GALGAS_root * GALGAS_inputParameterDeclaredConstant::clonedObject (void) cons
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_inputParameterDeclaredConstant GALGAS_inputParameterDeclaredConstant::extractObject (const GALGAS_object & inObject,
-                                                                                            C_Compiler * inCompiler
+                                                                                            Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_inputParameterDeclaredConstant result ;
   const GALGAS_inputParameterDeclaredConstant * p = (const GALGAS_inputParameterDeclaredConstant *) inObject.embeddedObject () ;
@@ -14248,7 +14248,7 @@ AC_GALGAS_root * GALGAS_externProcedureDeclarationAST::clonedObject (void) const
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_externProcedureDeclarationAST GALGAS_externProcedureDeclarationAST::extractObject (const GALGAS_object & inObject,
-                                                                                          C_Compiler * inCompiler
+                                                                                          Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_externProcedureDeclarationAST result ;
   const GALGAS_externProcedureDeclarationAST * p = (const GALGAS_externProcedureDeclarationAST *) inObject.embeddedObject () ;
@@ -14456,7 +14456,7 @@ AC_GALGAS_root * GALGAS_procDeclarationAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_procDeclarationAST GALGAS_procDeclarationAST::extractObject (const GALGAS_object & inObject,
-                                                                    C_Compiler * inCompiler
+                                                                    Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_procDeclarationAST result ;
   const GALGAS_procDeclarationAST * p = (const GALGAS_procDeclarationAST *) inObject.embeddedObject () ;
@@ -14678,7 +14678,7 @@ AC_GALGAS_root * GALGAS_externFunctionDeclarationAST::clonedObject (void) const 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_externFunctionDeclarationAST GALGAS_externFunctionDeclarationAST::extractObject (const GALGAS_object & inObject,
-                                                                                        C_Compiler * inCompiler
+                                                                                        Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_externFunctionDeclarationAST result ;
   const GALGAS_externFunctionDeclarationAST * p = (const GALGAS_externFunctionDeclarationAST *) inObject.embeddedObject () ;
@@ -14928,7 +14928,7 @@ AC_GALGAS_root * GALGAS_functionDeclarationAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_functionDeclarationAST GALGAS_functionDeclarationAST::extractObject (const GALGAS_object & inObject,
-                                                                            C_Compiler * inCompiler
+                                                                            Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_functionDeclarationAST result ;
   const GALGAS_functionDeclarationAST * p = (const GALGAS_functionDeclarationAST *) inObject.embeddedObject () ;
@@ -15213,7 +15213,7 @@ AC_GALGAS_root * GALGAS_onceFunctionDeclarationAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_onceFunctionDeclarationAST GALGAS_onceFunctionDeclarationAST::extractObject (const GALGAS_object & inObject,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_onceFunctionDeclarationAST result ;
   const GALGAS_onceFunctionDeclarationAST * p = (const GALGAS_onceFunctionDeclarationAST *) inObject.embeddedObject () ;
@@ -15498,7 +15498,7 @@ AC_GALGAS_root * GALGAS_filewrapperDeclarationAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_filewrapperDeclarationAST GALGAS_filewrapperDeclarationAST::extractObject (const GALGAS_object & inObject,
-                                                                                  C_Compiler * inCompiler
+                                                                                  Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_filewrapperDeclarationAST result ;
   const GALGAS_filewrapperDeclarationAST * p = (const GALGAS_filewrapperDeclarationAST *) inObject.embeddedObject () ;

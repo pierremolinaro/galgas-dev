@@ -1711,7 +1711,7 @@ class cParser_galgas_33_DeclarationsSyntax {
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_string function_weakSuffix (class C_Compiler * inCompiler
+class GALGAS_string function_weakSuffix (class Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -2224,7 +2224,7 @@ class GALGAS_lexiqueComponentAST : public GALGAS_semanticDeclarationAST {
 
 //--------------------------------- Object extraction
   public: static GALGAS_lexiqueComponentAST extractObject (const GALGAS_object & inObject,
-                                                           C_Compiler * inCompiler
+                                                           Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -2276,7 +2276,7 @@ class cPtr_lexiqueComponentAST : public cPtr_semanticDeclarationAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension getter keyRepresentation
-  public: virtual class GALGAS_string getter_keyRepresentation (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+  public: virtual class GALGAS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & ioSemanticTypePrecedenceGraph,
@@ -2284,7 +2284,7 @@ class cPtr_lexiqueComponentAST : public cPtr_semanticDeclarationAST {
            class GALGAS_extensionGetterMapForBuildingContext & ioExtensionGetterMapForBuildingContext,
            class GALGAS_extensionSetterMapForBuildingContext & ioExtensionSetterMapForBuildingContext,
            class GALGAS_semanticDeclarationListAST & ioExtensionOverrideDefinitionList,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInSemanticContext
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
@@ -2292,7 +2292,7 @@ class cPtr_lexiqueComponentAST : public cPtr_semanticDeclarationAST {
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
            class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method semanticAnalysis
   public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & ioUsefulnessRootEntities,
@@ -2302,7 +2302,7 @@ class cPtr_lexiqueComponentAST : public cPtr_semanticDeclarationAST {
            class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_predefinedTypes inPredefinedTypes,
            class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mLexiqueComponentName ;

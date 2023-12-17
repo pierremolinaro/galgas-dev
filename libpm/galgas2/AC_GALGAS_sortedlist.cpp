@@ -23,7 +23,7 @@
 #include "galgas2/cSortedListElement.h"
 #include "all-predefined-types.h"
 #include "utilities/MF_MemoryControl.h"
-#include "galgas2/C_Compiler.h"
+#include "galgas2/Compiler.h"
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -145,20 +145,20 @@ class cSharedSortedListRoot : public C_SharedObject {
 
 //--------------------------------- Method Implementation
   protected: void smallestObjectAttributeList (capSortedListElement & outAttributes,
-                                                C_Compiler * inCompiler
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) const ;
 
   protected: void greatestObjectAttributeList (capSortedListElement & outAttributes,
-                                                C_Compiler * inCompiler
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Modifier Implementation
   protected: void removeSmallestObject (capSortedListElement & outAttributes,
-                                         C_Compiler * inCompiler
+                                         Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) ;
 
   protected: void removeGreatestObject (capSortedListElement & outAttributes,
-                                         C_Compiler * inCompiler
+                                         Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Copy from a other list
@@ -593,7 +593,7 @@ static void internalRemoveLowestElement (cSortedListNode * & ioRoot,
 //--------------------------------------------------------------------------------------------------
 
 void cSharedSortedListRoot::removeSmallestObject (capSortedListElement & outAttributes,
-                                                  C_Compiler * inCompiler
+                                                  Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkSortedList (mRoot, mCount, mFirst, mLast COMMA_HERE) ;
@@ -624,7 +624,7 @@ void cSharedSortedListRoot::removeSmallestObject (capSortedListElement & outAttr
 //--------------------------------------------------------------------------------------------------
 
 void AC_GALGAS_sortedlist::removeSmallestObject (capSortedListElement & outAttributes,
-                                              C_Compiler * inCompiler
+                                              Compiler * inCompiler
                                               COMMA_UNUSED_LOCATION_ARGS) {
   if (nullptr != mSharedRoot) {
     mSharedRoot->removeSmallestObject (outAttributes, inCompiler COMMA_HERE) ;
@@ -658,7 +658,7 @@ static void internalRemoveGreatestElement (cSortedListNode * & ioRoot,
 //--------------------------------------------------------------------------------------------------
 
 void cSharedSortedListRoot::removeGreatestObject (capSortedListElement & outAttributes,
-                                                  C_Compiler * inCompiler
+                                                  Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkSortedList (mRoot, mCount, mFirst, mLast COMMA_HERE) ;
@@ -689,7 +689,7 @@ void cSharedSortedListRoot::removeGreatestObject (capSortedListElement & outAttr
 //--------------------------------------------------------------------------------------------------
 
 void AC_GALGAS_sortedlist::removeGreatestObject (capSortedListElement & outAttributes,
-                                              C_Compiler * inCompiler
+                                              Compiler * inCompiler
                                               COMMA_UNUSED_LOCATION_ARGS) {
   if (nullptr != mSharedRoot) {
     mSharedRoot->removeGreatestObject (outAttributes, inCompiler COMMA_HERE) ;
@@ -819,7 +819,7 @@ uint32_t AC_GALGAS_sortedlist::count () const {
 //--------------------------------------------------------------------------------------------------
 
 void cSharedSortedListRoot::smallestObjectAttributeList (capSortedListElement & outAttributes,
-                                                         C_Compiler * inCompiler
+                                                         Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) const {
   if (mFirst == nullptr) {
     inCompiler->onTheFlyRunTimeError ("'smallest' method invoked on an empty list" COMMA_THERE) ;
@@ -831,7 +831,7 @@ void cSharedSortedListRoot::smallestObjectAttributeList (capSortedListElement & 
 //--------------------------------------------------------------------------------------------------
 
 void AC_GALGAS_sortedlist::smallestObjectAttributeList (capSortedListElement & outAttributes,
-                                                     C_Compiler * inCompiler
+                                                     Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) const {
   if (mSharedRoot != nullptr) {
     mSharedRoot->smallestObjectAttributeList (outAttributes, inCompiler COMMA_THERE) ;
@@ -841,7 +841,7 @@ void AC_GALGAS_sortedlist::smallestObjectAttributeList (capSortedListElement & o
 //--------------------------------------------------------------------------------------------------
 
 void cSharedSortedListRoot::greatestObjectAttributeList (capSortedListElement & outAttributes,
-                                                         C_Compiler * inCompiler
+                                                         Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) const {
   if (mLast == nullptr) {
     inCompiler->onTheFlyRunTimeError ("'greatest' method invoked on an empty list" COMMA_THERE) ;
@@ -853,7 +853,7 @@ void cSharedSortedListRoot::greatestObjectAttributeList (capSortedListElement & 
 //--------------------------------------------------------------------------------------------------
 
 void AC_GALGAS_sortedlist::greatestObjectAttributeList (capSortedListElement & outAttributes,
-                                                     C_Compiler * inCompiler
+                                                     Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) const {
   if (mSharedRoot != nullptr) {
     mSharedRoot->greatestObjectAttributeList (outAttributes, inCompiler COMMA_THERE) ;

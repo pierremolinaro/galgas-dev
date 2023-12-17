@@ -28,7 +28,7 @@
 //--------------------------------------------------------------------------------------------------
 
 class GALGAS_uint ;
-class C_Compiler ;
+class Compiler ;
 class cSharedSortedListRoot ;
 class String ;
 class C_galgas_type_descriptor ;
@@ -78,11 +78,11 @@ class AC_GALGAS_sortedlist : public AC_GALGAS_root {
 
 //--------------------------------- Method Implementation
   protected: void smallestObjectAttributeList (capSortedListElement & outAttributeArray,
-                                                C_Compiler * inCompiler
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) const ;
 
   protected: void greatestObjectAttributeList (capSortedListElement & outAttributeArray,
-                                                C_Compiler * inCompiler
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Insulate
@@ -90,11 +90,11 @@ class AC_GALGAS_sortedlist : public AC_GALGAS_root {
 
 //--------------------------------- Modifier Implementation
   protected: void removeSmallestObject (capSortedListElement & outAttributeArray,
-                                         C_Compiler * inCompiler
+                                         Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) ;
 
   protected: void removeGreatestObject (capSortedListElement & outAttributeArray,
-                                         C_Compiler * inCompiler
+                                         Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Compare

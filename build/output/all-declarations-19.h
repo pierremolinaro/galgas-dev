@@ -783,27 +783,27 @@ class cGrammar_galgas_34_Grammar : public cParser_galgas_34_ExpressionSyntax,
                                             C_Lexique_galgasScanner * inCompiler) ;
 
 //--- Start symbol
-  public: static void _performSourceFileParsing_ (C_Compiler * inCompiler,
+  public: static void _performSourceFileParsing_ (Compiler * inCompiler,
                                                   GALGAS_lstring inFileName,
                                                   GALGAS_galgasDeclarationAST & ioArgument0
                                                   COMMA_LOCATION_ARGS) ;
 
-  public: static void _performSourceStringParsing_ (C_Compiler * inCompiler,
+  public: static void _performSourceStringParsing_ (Compiler * inCompiler,
                                                     GALGAS_string inSourceString,
                                                     GALGAS_string inNameString,
                                                     GALGAS_galgasDeclarationAST & ioArgument0
                                                     COMMA_LOCATION_ARGS) ;
 
 //--- Indexing
-  public: static void performIndexing (C_Compiler * inCompiler,
+  public: static void performIndexing (Compiler * inCompiler,
                                        const String & inSourceFilePath) ;
 
 //--- Only lexical analysis
-  public: static void performOnlyLexicalAnalysis (C_Compiler * inCompiler,
+  public: static void performOnlyLexicalAnalysis (Compiler * inCompiler,
                                                   const String & inSourceFilePath) ;
 
 //--- Only syntax analysis
-  public: static void performOnlySyntaxAnalysis (C_Compiler * inCompiler,
+  public: static void performOnlySyntaxAnalysis (Compiler * inCompiler,
                                                  const String & inSourceFilePath) ;
 
 //------------------------------------- 'style_declaration' non terminal

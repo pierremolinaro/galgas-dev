@@ -1,4 +1,4 @@
-#include "galgas2/C_Compiler.h"
+#include "galgas2/Compiler.h"
 #include "galgas2/C_galgas_io.h"
 #include "galgas2/C_galgas_CLI_Options.h"
 #include "utilities/C_PrologueEpilogue.h"
@@ -236,7 +236,7 @@ AC_GALGAS_root * GALGAS_galgas_33_SyntaxComponentAST::clonedObject (void) const 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_galgas_33_SyntaxComponentAST GALGAS_galgas_33_SyntaxComponentAST::extractObject (const GALGAS_object & inObject,
-                                                                                        C_Compiler * inCompiler
+                                                                                        Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_galgas_33_SyntaxComponentAST result ;
   const GALGAS_galgas_33_SyntaxComponentAST * p = (const GALGAS_galgas_33_SyntaxComponentAST *) inObject.embeddedObject () ;
@@ -542,7 +542,7 @@ AC_GALGAS_root * GALGAS_galgas_33_GrammarComponentAST::clonedObject (void) const
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_galgas_33_GrammarComponentAST GALGAS_galgas_33_GrammarComponentAST::extractObject (const GALGAS_object & inObject,
-                                                                                          C_Compiler * inCompiler
+                                                                                          Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_galgas_33_GrammarComponentAST result ;
   const GALGAS_galgas_33_GrammarComponentAST * p = (const GALGAS_galgas_33_GrammarComponentAST *) inObject.embeddedObject () ;
@@ -568,7 +568,7 @@ void callExtensionMethod_generateExpression (cPtr_semanticExpressionForGeneratio
                                              GALGAS_uint & io_ioTemporaryVariableIndex,
                                              GALGAS_stringset & io_ioUnusedVariableCppNameSet,
                                              GALGAS_string & out_outCppExpression,
-                                             C_Compiler * inCompiler
+                                             Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
   out_outCppExpression.drop () ;
@@ -772,7 +772,7 @@ AC_GALGAS_root * GALGAS_castInExpressionForGeneration::clonedObject (void) const
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_castInExpressionForGeneration GALGAS_castInExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                          C_Compiler * inCompiler
+                                                                                          Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_castInExpressionForGeneration result ;
   const GALGAS_castInExpressionForGeneration * p = (const GALGAS_castInExpressionForGeneration *) inObject.embeddedObject () ;
@@ -931,7 +931,7 @@ AC_GALGAS_root * GALGAS_outputActualParameterForGeneration::clonedObject (void) 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_outputActualParameterForGeneration GALGAS_outputActualParameterForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                    C_Compiler * inCompiler
+                                                                                                    Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_outputActualParameterForGeneration result ;
   const GALGAS_outputActualParameterForGeneration * p = (const GALGAS_outputActualParameterForGeneration *) inObject.embeddedObject () ;
@@ -1111,7 +1111,7 @@ AC_GALGAS_root * GALGAS_inputActualParameterForGeneration::clonedObject (void) c
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_inputActualParameterForGeneration GALGAS_inputActualParameterForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                  C_Compiler * inCompiler
+                                                                                                  Compiler * inCompiler
                                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_inputActualParameterForGeneration result ;
   const GALGAS_inputActualParameterForGeneration * p = (const GALGAS_inputActualParameterForGeneration *) inObject.embeddedObject () ;
@@ -1403,7 +1403,7 @@ AC_GALGAS_root * GALGAS_lexiqueDeclarationForGeneration::clonedObject (void) con
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lexiqueDeclarationForGeneration GALGAS_lexiqueDeclarationForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                              C_Compiler * inCompiler
+                                                                                              Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_lexiqueDeclarationForGeneration result ;
   const GALGAS_lexiqueDeclarationForGeneration * p = (const GALGAS_lexiqueDeclarationForGeneration *) inObject.embeddedObject () ;
@@ -1471,7 +1471,7 @@ GALGAS_lexiqueDeclarationForGeneration_2D_weak GALGAS_lexiqueDeclarationForGener
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexiqueDeclarationForGeneration GALGAS_lexiqueDeclarationForGeneration_2D_weak::bang_lexiqueDeclarationForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_lexiqueDeclarationForGeneration GALGAS_lexiqueDeclarationForGeneration_2D_weak::bang_lexiqueDeclarationForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexiqueDeclarationForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -1514,7 +1514,7 @@ AC_GALGAS_root * GALGAS_lexiqueDeclarationForGeneration_2D_weak::clonedObject (v
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lexiqueDeclarationForGeneration_2D_weak GALGAS_lexiqueDeclarationForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                              C_Compiler * inCompiler
+                                                                                                              Compiler * inCompiler
                                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_lexiqueDeclarationForGeneration_2D_weak result ;
   const GALGAS_lexiqueDeclarationForGeneration_2D_weak * p = (const GALGAS_lexiqueDeclarationForGeneration_2D_weak *) inObject.embeddedObject () ;
@@ -1827,7 +1827,7 @@ AC_GALGAS_root * GALGAS_grammarForGeneration::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_grammarForGeneration GALGAS_grammarForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                        C_Compiler * inCompiler
+                                                                        Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_grammarForGeneration result ;
   const GALGAS_grammarForGeneration * p = (const GALGAS_grammarForGeneration *) inObject.embeddedObject () ;
@@ -1895,7 +1895,7 @@ GALGAS_grammarForGeneration_2D_weak GALGAS_grammarForGeneration_2D_weak::constru
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_grammarForGeneration GALGAS_grammarForGeneration_2D_weak::bang_grammarForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_grammarForGeneration GALGAS_grammarForGeneration_2D_weak::bang_grammarForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_grammarForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -1938,7 +1938,7 @@ AC_GALGAS_root * GALGAS_grammarForGeneration_2D_weak::clonedObject (void) const 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_grammarForGeneration_2D_weak GALGAS_grammarForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                        C_Compiler * inCompiler
+                                                                                        Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_grammarForGeneration_2D_weak result ;
   const GALGAS_grammarForGeneration_2D_weak * p = (const GALGAS_grammarForGeneration_2D_weak *) inObject.embeddedObject () ;
@@ -2125,7 +2125,7 @@ AC_GALGAS_root * GALGAS_routinePrototypeDeclarationForGeneration::clonedObject (
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_routinePrototypeDeclarationForGeneration GALGAS_routinePrototypeDeclarationForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                                C_Compiler * inCompiler
+                                                                                                                Compiler * inCompiler
                                                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_routinePrototypeDeclarationForGeneration result ;
   const GALGAS_routinePrototypeDeclarationForGeneration * p = (const GALGAS_routinePrototypeDeclarationForGeneration *) inObject.embeddedObject () ;
@@ -2193,7 +2193,7 @@ GALGAS_routinePrototypeDeclarationForGeneration_2D_weak GALGAS_routinePrototypeD
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_routinePrototypeDeclarationForGeneration GALGAS_routinePrototypeDeclarationForGeneration_2D_weak::bang_routinePrototypeDeclarationForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_routinePrototypeDeclarationForGeneration GALGAS_routinePrototypeDeclarationForGeneration_2D_weak::bang_routinePrototypeDeclarationForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_routinePrototypeDeclarationForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -2236,7 +2236,7 @@ AC_GALGAS_root * GALGAS_routinePrototypeDeclarationForGeneration_2D_weak::cloned
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_routinePrototypeDeclarationForGeneration_2D_weak GALGAS_routinePrototypeDeclarationForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                                                C_Compiler * inCompiler
+                                                                                                                                Compiler * inCompiler
                                                                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_routinePrototypeDeclarationForGeneration_2D_weak result ;
   const GALGAS_routinePrototypeDeclarationForGeneration_2D_weak * p = (const GALGAS_routinePrototypeDeclarationForGeneration_2D_weak *) inObject.embeddedObject () ;
@@ -2437,7 +2437,7 @@ AC_GALGAS_root * GALGAS_routineImplementationForGeneration::clonedObject (void) 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_routineImplementationForGeneration GALGAS_routineImplementationForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                    C_Compiler * inCompiler
+                                                                                                    Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_routineImplementationForGeneration result ;
   const GALGAS_routineImplementationForGeneration * p = (const GALGAS_routineImplementationForGeneration *) inObject.embeddedObject () ;
@@ -2505,7 +2505,7 @@ GALGAS_routineImplementationForGeneration_2D_weak GALGAS_routineImplementationFo
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_routineImplementationForGeneration GALGAS_routineImplementationForGeneration_2D_weak::bang_routineImplementationForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_routineImplementationForGeneration GALGAS_routineImplementationForGeneration_2D_weak::bang_routineImplementationForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_routineImplementationForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -2548,7 +2548,7 @@ AC_GALGAS_root * GALGAS_routineImplementationForGeneration_2D_weak::clonedObject
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_routineImplementationForGeneration_2D_weak GALGAS_routineImplementationForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                                    C_Compiler * inCompiler
+                                                                                                                    Compiler * inCompiler
                                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_routineImplementationForGeneration_2D_weak result ;
   const GALGAS_routineImplementationForGeneration_2D_weak * p = (const GALGAS_routineImplementationForGeneration_2D_weak *) inObject.embeddedObject () ;
@@ -2756,7 +2756,7 @@ AC_GALGAS_root * GALGAS_functionPrototypeDeclarationForGeneration::clonedObject 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_functionPrototypeDeclarationForGeneration GALGAS_functionPrototypeDeclarationForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                                  C_Compiler * inCompiler
+                                                                                                                  Compiler * inCompiler
                                                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_functionPrototypeDeclarationForGeneration result ;
   const GALGAS_functionPrototypeDeclarationForGeneration * p = (const GALGAS_functionPrototypeDeclarationForGeneration *) inObject.embeddedObject () ;
@@ -2824,7 +2824,7 @@ GALGAS_functionPrototypeDeclarationForGeneration_2D_weak GALGAS_functionPrototyp
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_functionPrototypeDeclarationForGeneration GALGAS_functionPrototypeDeclarationForGeneration_2D_weak::bang_functionPrototypeDeclarationForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_functionPrototypeDeclarationForGeneration GALGAS_functionPrototypeDeclarationForGeneration_2D_weak::bang_functionPrototypeDeclarationForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_functionPrototypeDeclarationForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -2867,7 +2867,7 @@ AC_GALGAS_root * GALGAS_functionPrototypeDeclarationForGeneration_2D_weak::clone
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_functionPrototypeDeclarationForGeneration_2D_weak GALGAS_functionPrototypeDeclarationForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                                                  C_Compiler * inCompiler
+                                                                                                                                  Compiler * inCompiler
                                                                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_functionPrototypeDeclarationForGeneration_2D_weak result ;
   const GALGAS_functionPrototypeDeclarationForGeneration_2D_weak * p = (const GALGAS_functionPrototypeDeclarationForGeneration_2D_weak *) inObject.embeddedObject () ;
@@ -3075,7 +3075,7 @@ AC_GALGAS_root * GALGAS_functionImplementationForGeneration::clonedObject (void)
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_functionImplementationForGeneration GALGAS_functionImplementationForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                      C_Compiler * inCompiler
+                                                                                                      Compiler * inCompiler
                                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_functionImplementationForGeneration result ;
   const GALGAS_functionImplementationForGeneration * p = (const GALGAS_functionImplementationForGeneration *) inObject.embeddedObject () ;
@@ -3143,7 +3143,7 @@ GALGAS_functionImplementationForGeneration_2D_weak GALGAS_functionImplementation
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_functionImplementationForGeneration GALGAS_functionImplementationForGeneration_2D_weak::bang_functionImplementationForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_functionImplementationForGeneration GALGAS_functionImplementationForGeneration_2D_weak::bang_functionImplementationForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_functionImplementationForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -3186,7 +3186,7 @@ AC_GALGAS_root * GALGAS_functionImplementationForGeneration_2D_weak::clonedObjec
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_functionImplementationForGeneration_2D_weak GALGAS_functionImplementationForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                                      C_Compiler * inCompiler
+                                                                                                                      Compiler * inCompiler
                                                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_functionImplementationForGeneration_2D_weak result ;
   const GALGAS_functionImplementationForGeneration_2D_weak * p = (const GALGAS_functionImplementationForGeneration_2D_weak *) inObject.embeddedObject () ;
@@ -3415,7 +3415,7 @@ AC_GALGAS_root * GALGAS_onceFunctionDeclarationForGeneration::clonedObject (void
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_onceFunctionDeclarationForGeneration GALGAS_onceFunctionDeclarationForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                        C_Compiler * inCompiler
+                                                                                                        Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_onceFunctionDeclarationForGeneration result ;
   const GALGAS_onceFunctionDeclarationForGeneration * p = (const GALGAS_onceFunctionDeclarationForGeneration *) inObject.embeddedObject () ;
@@ -3483,7 +3483,7 @@ GALGAS_onceFunctionDeclarationForGeneration_2D_weak GALGAS_onceFunctionDeclarati
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_onceFunctionDeclarationForGeneration GALGAS_onceFunctionDeclarationForGeneration_2D_weak::bang_onceFunctionDeclarationForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_onceFunctionDeclarationForGeneration GALGAS_onceFunctionDeclarationForGeneration_2D_weak::bang_onceFunctionDeclarationForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_onceFunctionDeclarationForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -3526,7 +3526,7 @@ AC_GALGAS_root * GALGAS_onceFunctionDeclarationForGeneration_2D_weak::clonedObje
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_onceFunctionDeclarationForGeneration_2D_weak GALGAS_onceFunctionDeclarationForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                                        C_Compiler * inCompiler
+                                                                                                                        Compiler * inCompiler
                                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_onceFunctionDeclarationForGeneration_2D_weak result ;
   const GALGAS_onceFunctionDeclarationForGeneration_2D_weak * p = (const GALGAS_onceFunctionDeclarationForGeneration_2D_weak *) inObject.embeddedObject () ;
@@ -3706,7 +3706,7 @@ AC_GALGAS_root * GALGAS_primitiveTypeForGeneration::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_primitiveTypeForGeneration GALGAS_primitiveTypeForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_primitiveTypeForGeneration result ;
   const GALGAS_primitiveTypeForGeneration * p = (const GALGAS_primitiveTypeForGeneration *) inObject.embeddedObject () ;
@@ -3774,7 +3774,7 @@ GALGAS_primitiveTypeForGeneration_2D_weak GALGAS_primitiveTypeForGeneration_2D_w
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_primitiveTypeForGeneration GALGAS_primitiveTypeForGeneration_2D_weak::bang_primitiveTypeForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_primitiveTypeForGeneration GALGAS_primitiveTypeForGeneration_2D_weak::bang_primitiveTypeForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_primitiveTypeForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -3817,7 +3817,7 @@ AC_GALGAS_root * GALGAS_primitiveTypeForGeneration_2D_weak::clonedObject (void) 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_primitiveTypeForGeneration_2D_weak GALGAS_primitiveTypeForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                    C_Compiler * inCompiler
+                                                                                                    Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_primitiveTypeForGeneration_2D_weak result ;
   const GALGAS_primitiveTypeForGeneration_2D_weak * p = (const GALGAS_primitiveTypeForGeneration_2D_weak *) inObject.embeddedObject () ;
@@ -4067,7 +4067,7 @@ AC_GALGAS_root * GALGAS_filewrapperDeclarationForGeneration::clonedObject (void)
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_filewrapperDeclarationForGeneration GALGAS_filewrapperDeclarationForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                      C_Compiler * inCompiler
+                                                                                                      Compiler * inCompiler
                                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_filewrapperDeclarationForGeneration result ;
   const GALGAS_filewrapperDeclarationForGeneration * p = (const GALGAS_filewrapperDeclarationForGeneration *) inObject.embeddedObject () ;
@@ -4135,7 +4135,7 @@ GALGAS_filewrapperDeclarationForGeneration_2D_weak GALGAS_filewrapperDeclaration
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperDeclarationForGeneration GALGAS_filewrapperDeclarationForGeneration_2D_weak::bang_filewrapperDeclarationForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_filewrapperDeclarationForGeneration GALGAS_filewrapperDeclarationForGeneration_2D_weak::bang_filewrapperDeclarationForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_filewrapperDeclarationForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -4178,7 +4178,7 @@ AC_GALGAS_root * GALGAS_filewrapperDeclarationForGeneration_2D_weak::clonedObjec
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_filewrapperDeclarationForGeneration_2D_weak GALGAS_filewrapperDeclarationForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                                      C_Compiler * inCompiler
+                                                                                                                      Compiler * inCompiler
                                                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_filewrapperDeclarationForGeneration_2D_weak result ;
   const GALGAS_filewrapperDeclarationForGeneration_2D_weak * p = (const GALGAS_filewrapperDeclarationForGeneration_2D_weak *) inObject.embeddedObject () ;
@@ -4365,7 +4365,7 @@ AC_GALGAS_root * GALGAS_programComponentForGeneration::clonedObject (void) const
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_programComponentForGeneration GALGAS_programComponentForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                          C_Compiler * inCompiler
+                                                                                          Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_programComponentForGeneration result ;
   const GALGAS_programComponentForGeneration * p = (const GALGAS_programComponentForGeneration *) inObject.embeddedObject () ;
@@ -4433,7 +4433,7 @@ GALGAS_programComponentForGeneration_2D_weak GALGAS_programComponentForGeneratio
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_programComponentForGeneration GALGAS_programComponentForGeneration_2D_weak::bang_programComponentForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_programComponentForGeneration GALGAS_programComponentForGeneration_2D_weak::bang_programComponentForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_programComponentForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -4476,7 +4476,7 @@ AC_GALGAS_root * GALGAS_programComponentForGeneration_2D_weak::clonedObject (voi
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_programComponentForGeneration_2D_weak GALGAS_programComponentForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                          C_Compiler * inCompiler
+                                                                                                          Compiler * inCompiler
                                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_programComponentForGeneration_2D_weak result ;
   const GALGAS_programComponentForGeneration_2D_weak * p = (const GALGAS_programComponentForGeneration_2D_weak *) inObject.embeddedObject () ;
@@ -4503,7 +4503,7 @@ void callExtensionMethod_analyzeGrammarInstructionSDT (cPtr_abstractGrammarInstr
                                                        const GALGAS_string constin_inSyntaxDirectedTranslationResultVarName,
                                                        GALGAS_stringlist & io_ioAssignementList,
                                                        GALGAS_localVarManager & io_ioVariableMap,
-                                                       C_Compiler * inCompiler
+                                                       Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
 //--- Find method
@@ -4534,7 +4534,7 @@ mProperty_mOverridenManagers (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_localVarManager GALGAS_localVarManager::constructor_new (C_Compiler * inCompiler
+GALGAS_localVarManager GALGAS_localVarManager::constructor_new (Compiler * inCompiler
                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_currentVarManager in_mCurrentManager = GALGAS_currentVarManager::constructor_new (inCompiler  COMMA_SOURCE_FILE ("variable-manager.galgas", 368)) ;
   const GALGAS_openedOverrideList in_mOverridenManagers = GALGAS_openedOverrideList::constructor_emptyList (SOURCE_FILE ("variable-manager.galgas", 369)) ;
@@ -4615,7 +4615,7 @@ AC_GALGAS_root * GALGAS_localVarManager::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_localVarManager GALGAS_localVarManager::extractObject (const GALGAS_object & inObject,
-                                                              C_Compiler * inCompiler
+                                                              Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) {
   GALGAS_localVarManager result ;
   const GALGAS_localVarManager * p = (const GALGAS_localVarManager *) inObject.embeddedObject () ;
@@ -4641,7 +4641,7 @@ void extensionSetter_insertInitializedLocalVariable (GALGAS_localVarManager & io
                                                      const GALGAS_unifiedTypeMapEntry constinArgument_inType,
                                                      const GALGAS_string constinArgument_inCppName,
                                                      const GALGAS_string constinArgument_inNameForCheckingFormalParameterUsing,
-                                                     C_Compiler * inCompiler
+                                                     Compiler * inCompiler
                                                      COMMA_UNUSED_LOCATION_ARGS) {
   {
   GALGAS_localVariableAttributes temp_0 ;
@@ -4667,7 +4667,7 @@ void extensionSetter_insertUsedLocalConstant (GALGAS_localVarManager & ioObject,
                                               const GALGAS_unifiedTypeMapEntry constinArgument_inType,
                                               const GALGAS_string constinArgument_inCppName,
                                               const GALGAS_string constinArgument_inNameForCheckingFormalParameterUsing,
-                                              C_Compiler * inCompiler
+                                              Compiler * inCompiler
                                               COMMA_UNUSED_LOCATION_ARGS) {
   {
   extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_rejectWriteInInitializedAndReadStates (SOURCE_FILE ("variable-manager.galgas", 64)).operator_or (GALGAS_localVariableAttributes::constructor_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 64)) COMMA_SOURCE_FILE ("variable-manager.galgas", 64)), GALGAS_localVarValuation::constructor_read (SOURCE_FILE ("variable-manager.galgas", 65)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 59)) ;
@@ -4686,7 +4686,7 @@ void extensionSetter_insertInitializedLocalConstant (GALGAS_localVarManager & io
                                                      const GALGAS_unifiedTypeMapEntry constinArgument_inType,
                                                      const GALGAS_string constinArgument_inCppName,
                                                      const GALGAS_string constinArgument_inNameForCheckingFormalParameterUsing,
-                                                     C_Compiler * inCompiler
+                                                     Compiler * inCompiler
                                                      COMMA_UNUSED_LOCATION_ARGS) {
   {
   extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_rejectWriteInInitializedAndReadStates (SOURCE_FILE ("variable-manager.galgas", 80)).operator_or (GALGAS_localVariableAttributes::constructor_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 80)) COMMA_SOURCE_FILE ("variable-manager.galgas", 80)), GALGAS_localVarValuation::constructor_initialized (SOURCE_FILE ("variable-manager.galgas", 81)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 75)) ;
@@ -4705,7 +4705,7 @@ void extensionSetter_insertDeclaredLocalConstant (GALGAS_localVarManager & ioObj
                                                   const GALGAS_unifiedTypeMapEntry constinArgument_inType,
                                                   const GALGAS_string constinArgument_inCppName,
                                                   const GALGAS_string constinArgument_inNameForCheckingFormalParameterUsing,
-                                                  C_Compiler * inCompiler
+                                                  Compiler * inCompiler
                                                   COMMA_UNUSED_LOCATION_ARGS) {
   {
   extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_rejectWriteInInitializedAndReadStates (SOURCE_FILE ("variable-manager.galgas", 96)).operator_or (GALGAS_localVariableAttributes::constructor_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 96)) COMMA_SOURCE_FILE ("variable-manager.galgas", 96)), GALGAS_localVarValuation::constructor_declared (GALGAS_bool (false)  COMMA_SOURCE_FILE ("variable-manager.galgas", 97)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 91)) ;
@@ -4724,7 +4724,7 @@ void extensionSetter_insertInputFormalArgumentDeclaredAsUnused (GALGAS_localVarM
                                                                 const GALGAS_unifiedTypeMapEntry constinArgument_inType,
                                                                 const GALGAS_string constinArgument_inCppName,
                                                                 const GALGAS_string constinArgument_inNameForCheckingFormalParameterUsing,
-                                                                C_Compiler * inCompiler
+                                                                Compiler * inCompiler
                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   {
   extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 114)).operator_or (GALGAS_localVariableAttributes::constructor_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 114)) COMMA_SOURCE_FILE ("variable-manager.galgas", 114)).operator_or (GALGAS_localVariableAttributes::constructor_warnsOnAnyAcces (SOURCE_FILE ("variable-manager.galgas", 114)) COMMA_SOURCE_FILE ("variable-manager.galgas", 114)), GALGAS_localVarValuation::constructor_initialized (SOURCE_FILE ("variable-manager.galgas", 115)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 109)) ;
@@ -4743,7 +4743,7 @@ void extensionSetter_insertInputFormalArgument (GALGAS_localVarManager & ioObjec
                                                 const GALGAS_unifiedTypeMapEntry constinArgument_inType,
                                                 const GALGAS_string constinArgument_inCppName,
                                                 const GALGAS_string constinArgument_inNameForCheckingFormalParameterUsing,
-                                                C_Compiler * inCompiler
+                                                Compiler * inCompiler
                                                 COMMA_UNUSED_LOCATION_ARGS) {
   {
   extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 130)).operator_or (GALGAS_localVariableAttributes::constructor_suggestDeclareUnusedParameterAsUnused (SOURCE_FILE ("variable-manager.galgas", 130)) COMMA_SOURCE_FILE ("variable-manager.galgas", 130)), GALGAS_localVarValuation::constructor_initialized (SOURCE_FILE ("variable-manager.galgas", 131)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 125)) ;
@@ -4762,7 +4762,7 @@ void extensionSetter_insertConstantInputFormalArgumentDeclaredAsUnused (GALGAS_l
                                                                         const GALGAS_unifiedTypeMapEntry constinArgument_inType,
                                                                         const GALGAS_string constinArgument_inCppName,
                                                                         const GALGAS_string constinArgument_inNameForCheckingFormalParameterUsing,
-                                                                        C_Compiler * inCompiler
+                                                                        Compiler * inCompiler
                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   {
   extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_rejectWriteInInitializedAndReadStates (SOURCE_FILE ("variable-manager.galgas", 146)).operator_or (GALGAS_localVariableAttributes::constructor_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 146)) COMMA_SOURCE_FILE ("variable-manager.galgas", 146)).operator_or (GALGAS_localVariableAttributes::constructor_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 146)) COMMA_SOURCE_FILE ("variable-manager.galgas", 146)).operator_or (GALGAS_localVariableAttributes::constructor_warnsOnAnyAcces (SOURCE_FILE ("variable-manager.galgas", 146)) COMMA_SOURCE_FILE ("variable-manager.galgas", 146)), GALGAS_localVarValuation::constructor_initialized (SOURCE_FILE ("variable-manager.galgas", 147)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 141)) ;
@@ -4781,7 +4781,7 @@ void extensionSetter_insertConstantInputFormalArgument (GALGAS_localVarManager &
                                                         const GALGAS_unifiedTypeMapEntry constinArgument_inType,
                                                         const GALGAS_string constinArgument_inCppName,
                                                         const GALGAS_string constinArgument_inNameForCheckingFormalParameterUsing,
-                                                        C_Compiler * inCompiler
+                                                        Compiler * inCompiler
                                                         COMMA_UNUSED_LOCATION_ARGS) {
   {
   extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_rejectWriteInInitializedAndReadStates (SOURCE_FILE ("variable-manager.galgas", 162)).operator_or (GALGAS_localVariableAttributes::constructor_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 162)) COMMA_SOURCE_FILE ("variable-manager.galgas", 162)).operator_or (GALGAS_localVariableAttributes::constructor_suggestDeclareUnusedParameterAsUnused (SOURCE_FILE ("variable-manager.galgas", 162)) COMMA_SOURCE_FILE ("variable-manager.galgas", 162)), GALGAS_localVarValuation::constructor_initialized (SOURCE_FILE ("variable-manager.galgas", 163)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 157)) ;
@@ -4800,7 +4800,7 @@ void extensionSetter_insertOutputFormalArgument (GALGAS_localVarManager & ioObje
                                                  const GALGAS_unifiedTypeMapEntry constinArgument_inType,
                                                  const GALGAS_string constinArgument_inCppName,
                                                  const GALGAS_string constinArgument_inNameForCheckingFormalParameterUsing,
-                                                 C_Compiler * inCompiler
+                                                 Compiler * inCompiler
                                                  COMMA_UNUSED_LOCATION_ARGS) {
   {
   extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_rejectDeclaredStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 180)).operator_or (GALGAS_localVariableAttributes::constructor_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 180)) COMMA_SOURCE_FILE ("variable-manager.galgas", 180)).operator_or (GALGAS_localVariableAttributes::constructor_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 180)) COMMA_SOURCE_FILE ("variable-manager.galgas", 180)), GALGAS_localVarValuation::constructor_declared (GALGAS_bool (false)  COMMA_SOURCE_FILE ("variable-manager.galgas", 181)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 175)) ;
@@ -4819,7 +4819,7 @@ void extensionSetter_insertInputOutputFormalArgumentDeclaredAsUnused (GALGAS_loc
                                                                       const GALGAS_unifiedTypeMapEntry constinArgument_inType,
                                                                       const GALGAS_string constinArgument_inCppName,
                                                                       const GALGAS_string constinArgument_inNameForCheckingFormalParameterUsing,
-                                                                      C_Compiler * inCompiler
+                                                                      Compiler * inCompiler
                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   {
   extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 198)).operator_or (GALGAS_localVariableAttributes::constructor_warnsOnAnyAcces (SOURCE_FILE ("variable-manager.galgas", 198)) COMMA_SOURCE_FILE ("variable-manager.galgas", 198)), GALGAS_localVarValuation::constructor_initialized (SOURCE_FILE ("variable-manager.galgas", 199)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 193)) ;
@@ -4838,7 +4838,7 @@ void extensionSetter_insertInputOutputFormalArgument (GALGAS_localVarManager & i
                                                       const GALGAS_unifiedTypeMapEntry constinArgument_inType,
                                                       const GALGAS_string constinArgument_inCppName,
                                                       const GALGAS_string constinArgument_inNameForCheckingFormalParameterUsing,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_UNUSED_LOCATION_ARGS) {
   {
   extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 214)).operator_or (GALGAS_localVariableAttributes::constructor_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 214)) COMMA_SOURCE_FILE ("variable-manager.galgas", 214)).operator_or (GALGAS_localVariableAttributes::constructor_suggestDeclareUnusedParameterAsUnused (SOURCE_FILE ("variable-manager.galgas", 214)) COMMA_SOURCE_FILE ("variable-manager.galgas", 214)), GALGAS_localVarValuation::constructor_initialized (SOURCE_FILE ("variable-manager.galgas", 215)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 209)) ;
@@ -4857,7 +4857,7 @@ void extensionSetter_insertNonMutableProperty (GALGAS_localVarManager & ioObject
                                                const GALGAS_unifiedTypeMapEntry constinArgument_inType,
                                                const GALGAS_string constinArgument_inCppName,
                                                const GALGAS_string constinArgument_inNameForCheckingFormalParameterUsing,
-                                               C_Compiler * inCompiler
+                                               Compiler * inCompiler
                                                COMMA_UNUSED_LOCATION_ARGS) {
   {
   extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_rejectWriteInInitializedAndReadStates (SOURCE_FILE ("variable-manager.galgas", 232)).operator_or (GALGAS_localVariableAttributes::constructor_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 232)) COMMA_SOURCE_FILE ("variable-manager.galgas", 232)).operator_or (GALGAS_localVariableAttributes::constructor_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 232)) COMMA_SOURCE_FILE ("variable-manager.galgas", 232)), GALGAS_localVarValuation::constructor_initialized (SOURCE_FILE ("variable-manager.galgas", 233)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 227)) ;
@@ -4876,7 +4876,7 @@ void extensionSetter_insertMutableProperty (GALGAS_localVarManager & ioObject,
                                             const GALGAS_unifiedTypeMapEntry constinArgument_inType,
                                             const GALGAS_string constinArgument_inCppName,
                                             const GALGAS_string constinArgument_inNameForCheckingFormalParameterUsing,
-                                            C_Compiler * inCompiler
+                                            Compiler * inCompiler
                                             COMMA_UNUSED_LOCATION_ARGS) {
   {
   extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 248)).operator_or (GALGAS_localVariableAttributes::constructor_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 248)) COMMA_SOURCE_FILE ("variable-manager.galgas", 248)), GALGAS_localVarValuation::constructor_initialized (SOURCE_FILE ("variable-manager.galgas", 249)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 243)) ;
@@ -4891,7 +4891,7 @@ void extensionSetter_insertMutableProperty (GALGAS_localVarManager & ioObject,
 //--------------------------------------------------------------------------------------------------
 
 void extensionSetter_openOverrideForSelectBlock (GALGAS_localVarManager & ioObject,
-                                                 C_Compiler * /* inCompiler */
+                                                 Compiler * /* inCompiler */
                                                  COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_localVarManager temp_0 = ioObject ;
   ioObject.mProperty_mOverridenManagers.addAssign_operation (GALGAS_overrideKind::constructor_selectOverrideFirstBranch (temp_0.readProperty_mCurrentManager ()  COMMA_SOURCE_FILE ("variable-manager.galgas", 258))  COMMA_SOURCE_FILE ("variable-manager.galgas", 258)) ;
@@ -4905,7 +4905,7 @@ void extensionSetter_openOverrideForSelectBlock (GALGAS_localVarManager & ioObje
 //--------------------------------------------------------------------------------------------------
 
 void extensionSetter_openOverrideForRepeatBlock (GALGAS_localVarManager & ioObject,
-                                                 C_Compiler * /* inCompiler */
+                                                 Compiler * /* inCompiler */
                                                  COMMA_UNUSED_LOCATION_ARGS) {
   ioObject.mProperty_mOverridenManagers.addAssign_operation (GALGAS_overrideKind::constructor_repeatOverride (SOURCE_FILE ("variable-manager.galgas", 264))  COMMA_SOURCE_FILE ("variable-manager.galgas", 264)) ;
 }
@@ -4919,7 +4919,7 @@ void extensionSetter_openOverrideForRepeatBlock (GALGAS_localVarManager & ioObje
 
 void extensionSetter_closeOverride (GALGAS_localVarManager & ioObject,
                                     const GALGAS_location /* constinArgument_inEndOfBranchLocation */,
-                                    C_Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
@@ -4964,7 +4964,7 @@ void extensionSetter_closeOverride (GALGAS_localVarManager & ioObject,
 //--------------------------------------------------------------------------------------------------
 
 void extensionSetter_openBranch (GALGAS_localVarManager & ioObject,
-                                 C_Compiler * inCompiler
+                                 Compiler * inCompiler
                                  COMMA_UNUSED_LOCATION_ARGS) {
   {
   extensionSetter_openScope (ioObject.mProperty_mCurrentManager, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 284)) ;
@@ -4980,7 +4980,7 @@ void extensionSetter_openBranch (GALGAS_localVarManager & ioObject,
 
 void extensionSetter_closeBranch (GALGAS_localVarManager & ioObject,
                                   const GALGAS_location constinArgument_inEndOfBranchLocation,
-                                  C_Compiler * inCompiler
+                                  Compiler * inCompiler
                                   COMMA_UNUSED_LOCATION_ARGS) {
   {
   extensionSetter_closeScope (ioObject.mProperty_mCurrentManager, constinArgument_inEndOfBranchLocation, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 290)) ;
@@ -5042,7 +5042,7 @@ void extensionSetter_neutralAccess (GALGAS_localVarManager & ioObject,
                                     GALGAS_unifiedTypeMapEntry & outArgument_outType,
                                     GALGAS_string & outArgument_outCppName,
                                     GALGAS_string & outArgument_outNameForCheckingFormalParameterUsing,
-                                    C_Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outType.drop () ; // Release 'out' argument
   outArgument_outCppName.drop () ; // Release 'out' argument
@@ -5061,7 +5061,7 @@ void extensionSetter_neutralAccess (GALGAS_localVarManager & ioObject,
 
 void extensionSetter_searchForDropAccess (GALGAS_localVarManager & ioObject,
                                           const GALGAS_lstring constinArgument_inVarName,
-                                          C_Compiler * inCompiler
+                                          Compiler * inCompiler
                                           COMMA_UNUSED_LOCATION_ARGS) {
   {
   extensionSetter_searchForDropAccess (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 431)) ;
@@ -5080,7 +5080,7 @@ void extensionSetter_searchForWriteAccess (GALGAS_localVarManager & ioObject,
                                            GALGAS_unifiedTypeMapEntry & outArgument_outType,
                                            GALGAS_string & outArgument_outCppName,
                                            GALGAS_string & outArgument_outNameForCheckingFormalParameterUsing,
-                                           C_Compiler * inCompiler
+                                           Compiler * inCompiler
                                            COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outType.drop () ; // Release 'out' argument
   outArgument_outCppName.drop () ; // Release 'out' argument
@@ -5102,7 +5102,7 @@ void extensionSetter_searchForReadAccess (GALGAS_localVarManager & ioObject,
                                           GALGAS_unifiedTypeMapEntry & outArgument_outType,
                                           GALGAS_string & outArgument_outCppName,
                                           GALGAS_string & outArgument_outNameForCheckingFormalParameterUsing,
-                                          C_Compiler * inCompiler
+                                          Compiler * inCompiler
                                           COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outType.drop () ; // Release 'out' argument
   outArgument_outCppName.drop () ; // Release 'out' argument
@@ -5124,7 +5124,7 @@ void extensionSetter_searchForReadWriteAccess (GALGAS_localVarManager & ioObject
                                                GALGAS_unifiedTypeMapEntry & outArgument_outType,
                                                GALGAS_string & outArgument_outCppName,
                                                GALGAS_string & outArgument_outNameForCheckingFormalParameterUsing,
-                                               C_Compiler * inCompiler
+                                               Compiler * inCompiler
                                                COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outType.drop () ; // Release 'out' argument
   outArgument_outCppName.drop () ; // Release 'out' argument
@@ -5143,7 +5143,7 @@ void extensionSetter_searchForReadWriteAccess (GALGAS_localVarManager & ioObject
 
 void extensionMethod_checkAutomatonStates (const GALGAS_localVarManager inObject,
                                            const GALGAS_location constinArgument_inErrorLocation,
-                                           C_Compiler * inCompiler
+                                           Compiler * inCompiler
                                            COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_localVarManager temp_0 = inObject ;
   extensionMethod_checkAutomatonStates (temp_0.readProperty_mCurrentManager (), constinArgument_inErrorLocation, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 823)) ;
@@ -5274,7 +5274,7 @@ GALGAS_unifiedTypeDefinition GALGAS_unifiedTypeDefinition::constructor_new (cons
                                                                             const GALGAS_string & in_defaultConstructorName,
                                                                             const GALGAS_string & in_mHeaderFileName,
                                                                             const GALGAS_headerKind & in_mHeaderKind,
-                                                                            C_Compiler * /* inCompiler */
+                                                                            Compiler * /* inCompiler */
                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_unifiedTypeDefinition result ;
   if (in_mTypeName.isValid () && in_mIsPredefined.isValid () && in_mIsConcrete.isValid () && in_mSuperType.isValid () && in_mTypeKindEnum.isValid () && in_mSupportCollectionValue.isValid () && in_mAllTypedPropertyList.isValid () && in_mPropertyMap.isValid () && in_mCurrentTypedPropertyList.isValid () && in_mConstructorMap.isValid () && in_mGetterMap.isValid () && in_mSetterMap.isValid () && in_mInstanceMethodMap.isValid () && in_mClassMethodMap.isValid () && in_mOptionalMethodMap.isValid () && in_mEnumerationDescriptor.isValid () && in_mHandledOperatorFlags.isValid () && in_mAddAssignOperatorArguments.isValid () && in_mEnumConstantMap.isValid () && in_mEnumConstantList.isValid () && in_mMapSearchMethodList.isValid () && in_mMapEntrySearchConstructorList.isValid () && in_mGenerateHeaderInSeparateFile.isValid () && in_mTypeForEnumeratedElement.isValid () && in_defaultConstructorName.isValid () && in_mHeaderFileName.isValid () && in_mHeaderKind.isValid ()) {
@@ -5503,7 +5503,7 @@ AC_GALGAS_root * GALGAS_unifiedTypeDefinition::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_unifiedTypeDefinition GALGAS_unifiedTypeDefinition::extractObject (const GALGAS_object & inObject,
-                                                                          C_Compiler * inCompiler
+                                                                          Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_unifiedTypeDefinition result ;
   const GALGAS_unifiedTypeDefinition * p = (const GALGAS_unifiedTypeDefinition *) inObject.embeddedObject () ;
@@ -5524,7 +5524,7 @@ GALGAS_unifiedTypeDefinition GALGAS_unifiedTypeDefinition::extractObject (const 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lstringlist extensionGetter_unsolvedEntryList (const GALGAS_unifiedTypeMap & inObject,
-                                                      C_Compiler *
+                                                      Compiler *
                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lstringlist result_result ; // Returned variable
   result_result = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("unified-type-map.galgas", 19)) ;
@@ -5696,7 +5696,7 @@ AC_GALGAS_root * GALGAS_unifiedTypeMapElementClass::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_unifiedTypeMapElementClass GALGAS_unifiedTypeMapElementClass::extractObject (const GALGAS_object & inObject,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_unifiedTypeMapElementClass result ;
   const GALGAS_unifiedTypeMapElementClass * p = (const GALGAS_unifiedTypeMapElementClass *) inObject.embeddedObject () ;
@@ -5716,7 +5716,7 @@ GALGAS_unifiedTypeMapElementClass GALGAS_unifiedTypeMapElementClass::extractObje
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeDefinition cPtr_unifiedTypeMapElementClass::getter_definition (C_Compiler * inCompiler
+GALGAS_unifiedTypeDefinition cPtr_unifiedTypeMapElementClass::getter_definition (Compiler * inCompiler
                                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_unifiedTypeDefinition result_result ; // Returned variable
   const GALGAS_unifiedTypeMapElementClass temp_0 = this ;
@@ -5747,7 +5747,7 @@ GALGAS_unifiedTypeDefinition cPtr_unifiedTypeMapElementClass::getter_definition 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_unifiedTypeDefinition callExtensionGetter_definition (const cPtr_unifiedTypeMapElementClass * inObject,
-                                                             C_Compiler * inCompiler
+                                                             Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) {
   GALGAS_unifiedTypeDefinition result ;
   if (nullptr != inObject) {
@@ -5950,7 +5950,7 @@ AC_GALGAS_root * GALGAS_ifExpressionForGeneration::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_ifExpressionForGeneration GALGAS_ifExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                  C_Compiler * inCompiler
+                                                                                  Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_ifExpressionForGeneration result ;
   const GALGAS_ifExpressionForGeneration * p = (const GALGAS_ifExpressionForGeneration *) inObject.embeddedObject () ;
@@ -6116,7 +6116,7 @@ AC_GALGAS_root * GALGAS_unaryMinusExpressionForGeneration::clonedObject (void) c
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_unaryMinusExpressionForGeneration GALGAS_unaryMinusExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                  C_Compiler * inCompiler
+                                                                                                  Compiler * inCompiler
                                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_unaryMinusExpressionForGeneration result ;
   const GALGAS_unaryMinusExpressionForGeneration * p = (const GALGAS_unaryMinusExpressionForGeneration *) inObject.embeddedObject () ;
@@ -6268,7 +6268,7 @@ AC_GALGAS_root * GALGAS_varInExpressionAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_varInExpressionAST GALGAS_varInExpressionAST::extractObject (const GALGAS_object & inObject,
-                                                                    C_Compiler * inCompiler
+                                                                    Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_varInExpressionAST result ;
   const GALGAS_varInExpressionAST * p = (const GALGAS_varInExpressionAST *) inObject.embeddedObject () ;
@@ -6455,7 +6455,7 @@ AC_GALGAS_root * GALGAS_varInExpressionForGeneration::clonedObject (void) const 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_varInExpressionForGeneration GALGAS_varInExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                        C_Compiler * inCompiler
+                                                                                        Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_varInExpressionForGeneration result ;
   const GALGAS_varInExpressionForGeneration * p = (const GALGAS_varInExpressionForGeneration *) inObject.embeddedObject () ;
@@ -6600,7 +6600,7 @@ AC_GALGAS_root * GALGAS_trueExpressionForGeneration::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_trueExpressionForGeneration GALGAS_trueExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                      C_Compiler * inCompiler
+                                                                                      Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_trueExpressionForGeneration result ;
   const GALGAS_trueExpressionForGeneration * p = (const GALGAS_trueExpressionForGeneration *) inObject.embeddedObject () ;
@@ -6745,7 +6745,7 @@ AC_GALGAS_root * GALGAS_falseExpressionForGeneration::clonedObject (void) const 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_falseExpressionForGeneration GALGAS_falseExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                        C_Compiler * inCompiler
+                                                                                        Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_falseExpressionForGeneration result ;
   const GALGAS_falseExpressionForGeneration * p = (const GALGAS_falseExpressionForGeneration *) inObject.embeddedObject () ;
@@ -6765,7 +6765,7 @@ GALGAS_falseExpressionForGeneration GALGAS_falseExpressionForGeneration::extract
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool cPtr_semanticExpressionForGeneration::getter_isTrueExpression (C_Compiler */* inCompiler */
+GALGAS_bool cPtr_semanticExpressionForGeneration::getter_isTrueExpression (Compiler */* inCompiler */
                                                                            COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result_result ; // Returned variable
   result_result = GALGAS_bool (false) ;
@@ -6778,7 +6778,7 @@ GALGAS_bool cPtr_semanticExpressionForGeneration::getter_isTrueExpression (C_Com
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool callExtensionGetter_isTrueExpression (const cPtr_semanticExpressionForGeneration * inObject,
-                                                  C_Compiler * inCompiler
+                                                  Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) {
   GALGAS_bool result ;
   if (nullptr != inObject) {
@@ -6939,7 +6939,7 @@ AC_GALGAS_root * GALGAS_literalStringExpressionForGeneration::clonedObject (void
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_literalStringExpressionForGeneration GALGAS_literalStringExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                        C_Compiler * inCompiler
+                                                                                                        Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_literalStringExpressionForGeneration result ;
   const GALGAS_literalStringExpressionForGeneration * p = (const GALGAS_literalStringExpressionForGeneration *) inObject.embeddedObject () ;
@@ -7091,7 +7091,7 @@ AC_GALGAS_root * GALGAS_literalCharExpressionAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_literalCharExpressionAST GALGAS_literalCharExpressionAST::extractObject (const GALGAS_object & inObject,
-                                                                                C_Compiler * inCompiler
+                                                                                Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_literalCharExpressionAST result ;
   const GALGAS_literalCharExpressionAST * p = (const GALGAS_literalCharExpressionAST *) inObject.embeddedObject () ;
@@ -7257,7 +7257,7 @@ AC_GALGAS_root * GALGAS_literalCharExpressionForGeneration::clonedObject (void) 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_literalCharExpressionForGeneration GALGAS_literalCharExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                    C_Compiler * inCompiler
+                                                                                                    Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_literalCharExpressionForGeneration result ;
   const GALGAS_literalCharExpressionForGeneration * p = (const GALGAS_literalCharExpressionForGeneration *) inObject.embeddedObject () ;
@@ -7409,7 +7409,7 @@ AC_GALGAS_root * GALGAS_literalDoubleExpressionAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_literalDoubleExpressionAST GALGAS_literalDoubleExpressionAST::extractObject (const GALGAS_object & inObject,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_literalDoubleExpressionAST result ;
   const GALGAS_literalDoubleExpressionAST * p = (const GALGAS_literalDoubleExpressionAST *) inObject.embeddedObject () ;
@@ -7575,7 +7575,7 @@ AC_GALGAS_root * GALGAS_literalDoubleExpressionForGeneration::clonedObject (void
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_literalDoubleExpressionForGeneration GALGAS_literalDoubleExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                        C_Compiler * inCompiler
+                                                                                                        Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_literalDoubleExpressionForGeneration result ;
   const GALGAS_literalDoubleExpressionForGeneration * p = (const GALGAS_literalDoubleExpressionForGeneration *) inObject.embeddedObject () ;
@@ -7727,7 +7727,7 @@ AC_GALGAS_root * GALGAS_literalBigIntExpressionAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_literalBigIntExpressionAST GALGAS_literalBigIntExpressionAST::extractObject (const GALGAS_object & inObject,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_literalBigIntExpressionAST result ;
   const GALGAS_literalBigIntExpressionAST * p = (const GALGAS_literalBigIntExpressionAST *) inObject.embeddedObject () ;
@@ -7893,7 +7893,7 @@ AC_GALGAS_root * GALGAS_literalUIntExpressionForGeneration::clonedObject (void) 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_literalUIntExpressionForGeneration GALGAS_literalUIntExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                    C_Compiler * inCompiler
+                                                                                                    Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_literalUIntExpressionForGeneration result ;
   const GALGAS_literalUIntExpressionForGeneration * p = (const GALGAS_literalUIntExpressionForGeneration *) inObject.embeddedObject () ;
@@ -8059,7 +8059,7 @@ AC_GALGAS_root * GALGAS_literalUInt_36__34_ExpressionForGeneration::clonedObject
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_literalUInt_36__34_ExpressionForGeneration GALGAS_literalUInt_36__34_ExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                                    C_Compiler * inCompiler
+                                                                                                                    Compiler * inCompiler
                                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_literalUInt_36__34_ExpressionForGeneration result ;
   const GALGAS_literalUInt_36__34_ExpressionForGeneration * p = (const GALGAS_literalUInt_36__34_ExpressionForGeneration *) inObject.embeddedObject () ;
@@ -8225,7 +8225,7 @@ AC_GALGAS_root * GALGAS_literalSIntExpressionForGeneration::clonedObject (void) 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_literalSIntExpressionForGeneration GALGAS_literalSIntExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                    C_Compiler * inCompiler
+                                                                                                    Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_literalSIntExpressionForGeneration result ;
   const GALGAS_literalSIntExpressionForGeneration * p = (const GALGAS_literalSIntExpressionForGeneration *) inObject.embeddedObject () ;
@@ -8391,7 +8391,7 @@ AC_GALGAS_root * GALGAS_literalSInt_36__34_ExpressionForGeneration::clonedObject
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_literalSInt_36__34_ExpressionForGeneration GALGAS_literalSInt_36__34_ExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                                    C_Compiler * inCompiler
+                                                                                                                    Compiler * inCompiler
                                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_literalSInt_36__34_ExpressionForGeneration result ;
   const GALGAS_literalSInt_36__34_ExpressionForGeneration * p = (const GALGAS_literalSInt_36__34_ExpressionForGeneration *) inObject.embeddedObject () ;
@@ -8557,7 +8557,7 @@ AC_GALGAS_root * GALGAS_literalBigIntExpressionForGeneration::clonedObject (void
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_literalBigIntExpressionForGeneration GALGAS_literalBigIntExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                        C_Compiler * inCompiler
+                                                                                                        Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_literalBigIntExpressionForGeneration result ;
   const GALGAS_literalBigIntExpressionForGeneration * p = (const GALGAS_literalBigIntExpressionForGeneration *) inObject.embeddedObject () ;
@@ -8765,7 +8765,7 @@ AC_GALGAS_root * GALGAS_comparisonExpressionForGeneration::clonedObject (void) c
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_comparisonExpressionForGeneration GALGAS_comparisonExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                  C_Compiler * inCompiler
+                                                                                                  Compiler * inCompiler
                                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_comparisonExpressionForGeneration result ;
   const GALGAS_comparisonExpressionForGeneration * p = (const GALGAS_comparisonExpressionForGeneration *) inObject.embeddedObject () ;
@@ -8973,7 +8973,7 @@ AC_GALGAS_root * GALGAS_binaryOperatorExpressionForGeneration::clonedObject (voi
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_binaryOperatorExpressionForGeneration GALGAS_binaryOperatorExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                          C_Compiler * inCompiler
+                                                                                                          Compiler * inCompiler
                                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_binaryOperatorExpressionForGeneration result ;
   const GALGAS_binaryOperatorExpressionForGeneration * p = (const GALGAS_binaryOperatorExpressionForGeneration *) inObject.embeddedObject () ;
@@ -9188,7 +9188,7 @@ AC_GALGAS_root * GALGAS_testDynamicClassInExpressionAST::clonedObject (void) con
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_testDynamicClassInExpressionAST GALGAS_testDynamicClassInExpressionAST::extractObject (const GALGAS_object & inObject,
-                                                                                              C_Compiler * inCompiler
+                                                                                              Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_testDynamicClassInExpressionAST result ;
   const GALGAS_testDynamicClassInExpressionAST * p = (const GALGAS_testDynamicClassInExpressionAST *) inObject.embeddedObject () ;
@@ -9382,7 +9382,7 @@ AC_GALGAS_root * GALGAS_castInExpressionAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_castInExpressionAST GALGAS_castInExpressionAST::extractObject (const GALGAS_object & inObject,
-                                                                      C_Compiler * inCompiler
+                                                                      Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_castInExpressionAST result ;
   const GALGAS_castInExpressionAST * p = (const GALGAS_castInExpressionAST *) inObject.embeddedObject () ;
@@ -9590,7 +9590,7 @@ AC_GALGAS_root * GALGAS_testDynamicClassInExpressionForGeneration::clonedObject 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_testDynamicClassInExpressionForGeneration GALGAS_testDynamicClassInExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                                  C_Compiler * inCompiler
+                                                                                                                  Compiler * inCompiler
                                                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_testDynamicClassInExpressionForGeneration result ;
   const GALGAS_testDynamicClassInExpressionForGeneration * p = (const GALGAS_testDynamicClassInExpressionForGeneration *) inObject.embeddedObject () ;
@@ -9777,7 +9777,7 @@ AC_GALGAS_root * GALGAS_extractObjectInExpressionForGeneration::clonedObject (vo
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_extractObjectInExpressionForGeneration GALGAS_extractObjectInExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                            C_Compiler * inCompiler
+                                                                                                            Compiler * inCompiler
                                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_extractObjectInExpressionForGeneration result ;
   const GALGAS_extractObjectInExpressionForGeneration * p = (const GALGAS_extractObjectInExpressionForGeneration *) inObject.embeddedObject () ;
@@ -9971,7 +9971,7 @@ AC_GALGAS_root * GALGAS_optionExpressionAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_optionExpressionAST GALGAS_optionExpressionAST::extractObject (const GALGAS_object & inObject,
-                                                                      C_Compiler * inCompiler
+                                                                      Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_optionExpressionAST result ;
   const GALGAS_optionExpressionAST * p = (const GALGAS_optionExpressionAST *) inObject.embeddedObject () ;
@@ -10179,7 +10179,7 @@ AC_GALGAS_root * GALGAS_optionValueExpressionForGeneration::clonedObject (void) 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_optionValueExpressionForGeneration GALGAS_optionValueExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                    C_Compiler * inCompiler
+                                                                                                    Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_optionValueExpressionForGeneration result ;
   const GALGAS_optionValueExpressionForGeneration * p = (const GALGAS_optionValueExpressionForGeneration *) inObject.embeddedObject () ;
@@ -10387,7 +10387,7 @@ AC_GALGAS_root * GALGAS_optionCharExpressionForGeneration::clonedObject (void) c
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_optionCharExpressionForGeneration GALGAS_optionCharExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                  C_Compiler * inCompiler
+                                                                                                  Compiler * inCompiler
                                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_optionCharExpressionForGeneration result ;
   const GALGAS_optionCharExpressionForGeneration * p = (const GALGAS_optionCharExpressionForGeneration *) inObject.embeddedObject () ;
@@ -10595,7 +10595,7 @@ AC_GALGAS_root * GALGAS_optionStringExpressionForGeneration::clonedObject (void)
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_optionStringExpressionForGeneration GALGAS_optionStringExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                      C_Compiler * inCompiler
+                                                                                                      Compiler * inCompiler
                                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_optionStringExpressionForGeneration result ;
   const GALGAS_optionStringExpressionForGeneration * p = (const GALGAS_optionStringExpressionForGeneration *) inObject.embeddedObject () ;
@@ -10803,7 +10803,7 @@ AC_GALGAS_root * GALGAS_optionCommentExpressionForGeneration::clonedObject (void
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_optionCommentExpressionForGeneration GALGAS_optionCommentExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                        C_Compiler * inCompiler
+                                                                                                        Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_optionCommentExpressionForGeneration result ;
   const GALGAS_optionCommentExpressionForGeneration * p = (const GALGAS_optionCommentExpressionForGeneration *) inObject.embeddedObject () ;
@@ -10976,7 +10976,7 @@ AC_GALGAS_root * GALGAS_lexiqueIntrospectionExpressionAST::clonedObject (void) c
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lexiqueIntrospectionExpressionAST GALGAS_lexiqueIntrospectionExpressionAST::extractObject (const GALGAS_object & inObject,
-                                                                                                  C_Compiler * inCompiler
+                                                                                                  Compiler * inCompiler
                                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_lexiqueIntrospectionExpressionAST result ;
   const GALGAS_lexiqueIntrospectionExpressionAST * p = (const GALGAS_lexiqueIntrospectionExpressionAST *) inObject.embeddedObject () ;
@@ -11163,7 +11163,7 @@ AC_GALGAS_root * GALGAS_lexiqueIntrospectionForGeneration::clonedObject (void) c
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lexiqueIntrospectionForGeneration GALGAS_lexiqueIntrospectionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                  C_Compiler * inCompiler
+                                                                                                  Compiler * inCompiler
                                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_lexiqueIntrospectionForGeneration result ;
   const GALGAS_lexiqueIntrospectionForGeneration * p = (const GALGAS_lexiqueIntrospectionForGeneration *) inObject.embeddedObject () ;
@@ -11315,7 +11315,7 @@ AC_GALGAS_root * GALGAS_filewrapperObjectInstanciationInExpressionAST::clonedObj
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_filewrapperObjectInstanciationInExpressionAST GALGAS_filewrapperObjectInstanciationInExpressionAST::extractObject (const GALGAS_object & inObject,
-                                                                                                                          C_Compiler * inCompiler
+                                                                                                                          Compiler * inCompiler
                                                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_filewrapperObjectInstanciationInExpressionAST result ;
   const GALGAS_filewrapperObjectInstanciationInExpressionAST * p = (const GALGAS_filewrapperObjectInstanciationInExpressionAST *) inObject.embeddedObject () ;
@@ -11488,7 +11488,7 @@ AC_GALGAS_root * GALGAS_filewrapperInExpressionAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_filewrapperInExpressionAST GALGAS_filewrapperInExpressionAST::extractObject (const GALGAS_object & inObject,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_filewrapperInExpressionAST result ;
   const GALGAS_filewrapperInExpressionAST * p = (const GALGAS_filewrapperInExpressionAST *) inObject.embeddedObject () ;
@@ -11682,7 +11682,7 @@ AC_GALGAS_root * GALGAS_filewrapperTemplateInExpressionAST::clonedObject (void) 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_filewrapperTemplateInExpressionAST GALGAS_filewrapperTemplateInExpressionAST::extractObject (const GALGAS_object & inObject,
-                                                                                                    C_Compiler * inCompiler
+                                                                                                    Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_filewrapperTemplateInExpressionAST result ;
   const GALGAS_filewrapperTemplateInExpressionAST * p = (const GALGAS_filewrapperTemplateInExpressionAST *) inObject.embeddedObject () ;
@@ -11869,7 +11869,7 @@ AC_GALGAS_root * GALGAS_filewrapperInExpressionForGeneration::clonedObject (void
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_filewrapperInExpressionForGeneration GALGAS_filewrapperInExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                        C_Compiler * inCompiler
+                                                                                                        Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_filewrapperInExpressionForGeneration result ;
   const GALGAS_filewrapperInExpressionForGeneration * p = (const GALGAS_filewrapperInExpressionForGeneration *) inObject.embeddedObject () ;
@@ -12077,7 +12077,7 @@ AC_GALGAS_root * GALGAS_filewrapperTemplateInExpressionForGeneration::clonedObje
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_filewrapperTemplateInExpressionForGeneration GALGAS_filewrapperTemplateInExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                                        C_Compiler * inCompiler
+                                                                                                                        Compiler * inCompiler
                                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_filewrapperTemplateInExpressionForGeneration result ;
   const GALGAS_filewrapperTemplateInExpressionForGeneration * p = (const GALGAS_filewrapperTemplateInExpressionForGeneration *) inObject.embeddedObject () ;
@@ -12285,7 +12285,7 @@ AC_GALGAS_root * GALGAS_filewrapperStaticPathInExpressionForGeneration::clonedOb
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_filewrapperStaticPathInExpressionForGeneration GALGAS_filewrapperStaticPathInExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                                            C_Compiler * inCompiler
+                                                                                                                            Compiler * inCompiler
                                                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_filewrapperStaticPathInExpressionForGeneration result ;
   const GALGAS_filewrapperStaticPathInExpressionForGeneration * p = (const GALGAS_filewrapperStaticPathInExpressionForGeneration *) inObject.embeddedObject () ;
@@ -12521,7 +12521,7 @@ AC_GALGAS_root * GALGAS_getterCallExpressionAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_getterCallExpressionAST GALGAS_getterCallExpressionAST::extractObject (const GALGAS_object & inObject,
-                                                                              C_Compiler * inCompiler
+                                                                              Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_getterCallExpressionAST result ;
   const GALGAS_getterCallExpressionAST * p = (const GALGAS_getterCallExpressionAST *) inObject.embeddedObject () ;
@@ -12792,7 +12792,7 @@ AC_GALGAS_root * GALGAS_getterCallExpressionForGeneration::clonedObject (void) c
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_getterCallExpressionForGeneration GALGAS_getterCallExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                  C_Compiler * inCompiler
+                                                                                                  Compiler * inCompiler
                                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_getterCallExpressionForGeneration result ;
   const GALGAS_getterCallExpressionForGeneration * p = (const GALGAS_getterCallExpressionForGeneration *) inObject.embeddedObject () ;
@@ -13007,7 +13007,7 @@ AC_GALGAS_root * GALGAS_constructorExpressionAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_constructorExpressionAST GALGAS_constructorExpressionAST::extractObject (const GALGAS_object & inObject,
-                                                                                C_Compiler * inCompiler
+                                                                                Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_constructorExpressionAST result ;
   const GALGAS_constructorExpressionAST * p = (const GALGAS_constructorExpressionAST *) inObject.embeddedObject () ;
@@ -13236,7 +13236,7 @@ AC_GALGAS_root * GALGAS_constructorExpressionForGeneration::clonedObject (void) 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_constructorExpressionForGeneration GALGAS_constructorExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                    C_Compiler * inCompiler
+                                                                                                    Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_constructorExpressionForGeneration result ;
   const GALGAS_constructorExpressionForGeneration * p = (const GALGAS_constructorExpressionForGeneration *) inObject.embeddedObject () ;
@@ -13423,7 +13423,7 @@ AC_GALGAS_root * GALGAS_defaultConstructorExpressionForGeneration::clonedObject 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_defaultConstructorExpressionForGeneration GALGAS_defaultConstructorExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                                  C_Compiler * inCompiler
+                                                                                                                  Compiler * inCompiler
                                                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_defaultConstructorExpressionForGeneration result ;
   const GALGAS_defaultConstructorExpressionForGeneration * p = (const GALGAS_defaultConstructorExpressionForGeneration *) inObject.embeddedObject () ;
@@ -13596,7 +13596,7 @@ AC_GALGAS_root * GALGAS_functionCallExpressionAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_functionCallExpressionAST GALGAS_functionCallExpressionAST::extractObject (const GALGAS_object & inObject,
-                                                                                  C_Compiler * inCompiler
+                                                                                  Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_functionCallExpressionAST result ;
   const GALGAS_functionCallExpressionAST * p = (const GALGAS_functionCallExpressionAST *) inObject.embeddedObject () ;
@@ -13783,7 +13783,7 @@ AC_GALGAS_root * GALGAS_functionCallExpressionForGeneration::clonedObject (void)
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_functionCallExpressionForGeneration GALGAS_functionCallExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                      C_Compiler * inCompiler
+                                                                                                      Compiler * inCompiler
                                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_functionCallExpressionForGeneration result ;
   const GALGAS_functionCallExpressionForGeneration * p = (const GALGAS_functionCallExpressionForGeneration *) inObject.embeddedObject () ;
@@ -13935,7 +13935,7 @@ AC_GALGAS_root * GALGAS_literalTypeInExpressionAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_literalTypeInExpressionAST GALGAS_literalTypeInExpressionAST::extractObject (const GALGAS_object & inObject,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_literalTypeInExpressionAST result ;
   const GALGAS_literalTypeInExpressionAST * p = (const GALGAS_literalTypeInExpressionAST *) inObject.embeddedObject () ;
@@ -14101,7 +14101,7 @@ AC_GALGAS_root * GALGAS_literalTypeInExpressionForGeneration::clonedObject (void
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_literalTypeInExpressionForGeneration GALGAS_literalTypeInExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                        C_Compiler * inCompiler
+                                                                                                        Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_literalTypeInExpressionForGeneration result ;
   const GALGAS_literalTypeInExpressionForGeneration * p = (const GALGAS_literalTypeInExpressionForGeneration *) inObject.embeddedObject () ;
@@ -14295,7 +14295,7 @@ AC_GALGAS_root * GALGAS_collectionValueAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_collectionValueAST GALGAS_collectionValueAST::extractObject (const GALGAS_object & inObject,
-                                                                    C_Compiler * inCompiler
+                                                                    Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_collectionValueAST result ;
   const GALGAS_collectionValueAST * p = (const GALGAS_collectionValueAST *) inObject.embeddedObject () ;
@@ -14454,7 +14454,7 @@ AC_GALGAS_root * GALGAS_expressionCollectionValueForGeneration::clonedObject (vo
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_expressionCollectionValueForGeneration GALGAS_expressionCollectionValueForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                            C_Compiler * inCompiler
+                                                                                                            Compiler * inCompiler
                                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_expressionCollectionValueForGeneration result ;
   const GALGAS_expressionCollectionValueForGeneration * p = (const GALGAS_expressionCollectionValueForGeneration *) inObject.embeddedObject () ;
@@ -14620,7 +14620,7 @@ AC_GALGAS_root * GALGAS_expressionCollectionForGeneration::clonedObject (void) c
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_expressionCollectionForGeneration GALGAS_expressionCollectionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                  C_Compiler * inCompiler
+                                                                                                  Compiler * inCompiler
                                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_expressionCollectionForGeneration result ;
   const GALGAS_expressionCollectionForGeneration * p = (const GALGAS_expressionCollectionForGeneration *) inObject.embeddedObject () ;
@@ -14786,7 +14786,7 @@ AC_GALGAS_root * GALGAS_selfInExpressionForGeneration::clonedObject (void) const
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_selfInExpressionForGeneration GALGAS_selfInExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                          C_Compiler * inCompiler
+                                                                                          Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_selfInExpressionForGeneration result ;
   const GALGAS_selfInExpressionForGeneration * p = (const GALGAS_selfInExpressionForGeneration *) inObject.embeddedObject () ;
@@ -14980,7 +14980,7 @@ AC_GALGAS_root * GALGAS_structPropertyAccessExpressionAST::clonedObject (void) c
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_structPropertyAccessExpressionAST GALGAS_structPropertyAccessExpressionAST::extractObject (const GALGAS_object & inObject,
-                                                                                                  C_Compiler * inCompiler
+                                                                                                  Compiler * inCompiler
                                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_structPropertyAccessExpressionAST result ;
   const GALGAS_structPropertyAccessExpressionAST * p = (const GALGAS_structPropertyAccessExpressionAST *) inObject.embeddedObject () ;
@@ -15167,7 +15167,7 @@ AC_GALGAS_root * GALGAS_structPropertyAccessExpressionForGeneration::clonedObjec
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_structPropertyAccessExpressionForGeneration GALGAS_structPropertyAccessExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                                      C_Compiler * inCompiler
+                                                                                                                      Compiler * inCompiler
                                                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_structPropertyAccessExpressionForGeneration result ;
   const GALGAS_structPropertyAccessExpressionForGeneration * p = (const GALGAS_structPropertyAccessExpressionForGeneration *) inObject.embeddedObject () ;

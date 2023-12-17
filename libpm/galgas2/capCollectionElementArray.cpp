@@ -21,7 +21,7 @@
 #include "galgas2/capCollectionElementArray.h"
 #include "utilities/MF_MemoryControl.h"
 #include "strings/String-class.h"
-#include "galgas2/C_Compiler.h"
+#include "galgas2/Compiler.h"
 
 //--------------------------------------------------------------------------------------------------
 //   capCollectionRoot
@@ -191,7 +191,7 @@ void capCollectionElementArray::appendObject (const capCollectionElement & inObj
 
 void capCollectionElementArray::insertObjectAtIndex (const capCollectionElement & inObject,
                                                      const uint32_t inInsertionIndex,
-                                                     C_Compiler * inCompiler
+                                                     Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) {
   setCapacity (count () + 1) ;
   macroUniqueSharedObject (mSharedRoot) ;
@@ -216,7 +216,7 @@ void capCollectionElementArray::insertObjectAtIndex (const capCollectionElement 
 
 void capCollectionElementArray::removeObjectAtIndex (capCollectionElement & outObject,
                                                      const uint32_t inIndex,
-                                                     C_Compiler * inCompiler
+                                                     Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) {
   insulateOrCreate () ;
   macroUniqueSharedObject (mSharedRoot) ;
@@ -241,7 +241,7 @@ void capCollectionElementArray::removeObjectAtIndex (capCollectionElement & outO
 //--------------------------------------------------------------------------------------------------
 
 void capCollectionElementArray::removeFirstObject (capCollectionElement & outObject,
-                                                   C_Compiler * inCompiler
+                                                   Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) {
   insulateOrCreate () ;
   macroUniqueSharedObject (mSharedRoot) ;
@@ -261,7 +261,7 @@ void capCollectionElementArray::removeFirstObject (capCollectionElement & outObj
 //--------------------------------------------------------------------------------------------------
 
 void capCollectionElementArray::readFirstObject (capCollectionElement & outObject,
-                                                 C_Compiler * inCompiler
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) const {
   if (count () == 0) {
     String s = "firstObject: empty list" ;
@@ -274,7 +274,7 @@ void capCollectionElementArray::readFirstObject (capCollectionElement & outObjec
 //--------------------------------------------------------------------------------------------------
 
 void capCollectionElementArray::removeLastObject (capCollectionElement & outObject,
-                                                  C_Compiler * inCompiler
+                                                  Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) {
   insulateOrCreate () ;
   macroUniqueSharedObject (mSharedRoot) ;
@@ -291,7 +291,7 @@ void capCollectionElementArray::removeLastObject (capCollectionElement & outObje
 //--------------------------------------------------------------------------------------------------
 
 void capCollectionElementArray::readLastObject (capCollectionElement & outObject,
-                                                C_Compiler * inCompiler
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) const {
   if (count () == 0) {
     String s = "lastObject: empty list" ;
@@ -425,7 +425,7 @@ void capCollectionElementArray::description (String & ioString,
 void capCollectionElementArray::subListToIndex (capCollectionElementArray & outSubList,
                                                 const uint32_t inIndex,
                                                 bool & outOk,
-                                                C_Compiler * inCompiler
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) const {
   outSubList.removeAllObjects () ;
   outOk = false ;
@@ -452,7 +452,7 @@ void capCollectionElementArray::subListWithRange (capCollectionElementArray & ou
                                                   const uint32_t inStartIndex,
                                                   const uint32_t inLength,
                                                   bool & outOk,
-                                                  C_Compiler * inCompiler
+                                                  Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const {
   outOk = false ;
   outSubList.removeAllObjects () ;
@@ -479,7 +479,7 @@ void capCollectionElementArray::subListWithRange (capCollectionElementArray & ou
 void capCollectionElementArray::subListFromIndex (capCollectionElementArray & outSubList,
                                                   const uint32_t inIndex,
                                                   bool & outOk,
-                                                  C_Compiler * inCompiler
+                                                  Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const {
   outOk = false ;
   outSubList.removeAllObjects () ;

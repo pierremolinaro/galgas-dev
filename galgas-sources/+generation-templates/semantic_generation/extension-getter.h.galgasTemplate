@@ -13,6 +13,6 @@ class GALGAS_%![RETURN_TYPE identifierRepresentation]% callExtensionGetter_%![GE
       %class GALGAS_%![mFormalArgumentType identifierRepresentation]% in_%![mFormalArgumentName identifierRepresentation]
     end
   end
-  %,\n%!^%class C_Compiler * inCompiler%
+  %,\n%!^%class Compiler * inCompiler%
   %\n%!^%COMMA_LOCATION_ARGS) ;
 

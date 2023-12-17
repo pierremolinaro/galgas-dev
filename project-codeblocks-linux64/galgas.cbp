@@ -185,7 +185,7 @@
    <Unit filename="../libpm/utilities/galgas-random.cpp" />
    <Unit filename="../libpm/galgas2/C_galgas_CLI_Options.cpp" />
    <Unit filename="../libpm/galgas2/typeComparisonResult.cpp" />
-   <Unit filename="../libpm/galgas2/C_Compiler.cpp" />
+   <Unit filename="../libpm/galgas2/Compiler.cpp" />
    <Unit filename="../libpm/galgas2/C_Lexique.cpp" />
    <Unit filename="../libpm/galgas2/C_LocationInSource.cpp" />
    <Unit filename="../libpm/galgas2/C_SourceTextInString.cpp" />

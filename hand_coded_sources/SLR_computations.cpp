@@ -17,7 +17,7 @@
 
 #include "strings/C_HTMLString.h"
 #include "generic-arraies/TC_UniqueArray2.h"
-#include "galgas2/C_Compiler.h"
+#include "galgas2/Compiler.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1052,7 +1052,7 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
     //--- Engendrer l'axiome ?
     if (nonTerminal.current_mNonTerminalIndex (HERE).uintValue () == inOriginalGrammarStartSymbol) {
       ioCppFileContents += String ("void cGrammar_") + inTargetFileName.identifierRepresentation ()
-                         + "::performIndexing (C_Compiler * inCompiler,\n"
+                         + "::performIndexing (Compiler * inCompiler,\n"
                            "             const String & inSourceFilePath) {\n"
                            "  C_Lexique_" + inLexiqueName.identifierRepresentation () + " * scanner = nullptr ;\n"
                            "  macroMyNew (scanner, C_Lexique_" + inLexiqueName.identifierRepresentation () + " (inCompiler, inSourceFilePath COMMA_HERE)) ;\n"
@@ -1070,7 +1070,7 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
                            "  macroDetachSharedObject (scanner) ;\n"
                            "}\n\n"
                            "void cGrammar_" + inTargetFileName.identifierRepresentation ()
-                         + "::performOnlyLexicalAnalysis (C_Compiler * inCompiler,\n"
+                         + "::performOnlyLexicalAnalysis (Compiler * inCompiler,\n"
                            "             const String & inSourceFilePath) {\n"
                            "  C_Lexique_" + inLexiqueName.identifierRepresentation () + " * scanner = NULL ;\n"
                            "  macroMyNew (scanner, C_Lexique_" + inLexiqueName.identifierRepresentation () + " (inCompiler, inSourceFilePath COMMA_HERE)) ;\n"
@@ -1080,7 +1080,7 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
                            "  macroDetachSharedObject (scanner) ;\n"
                            "}\n\n"
                            "void cGrammar_" + inTargetFileName.identifierRepresentation ()
-                         + "::performOnlySyntaxAnalysis (C_Compiler * inCompiler,\n"
+                         + "::performOnlySyntaxAnalysis (Compiler * inCompiler,\n"
                            "             const String & inSourceFilePath) {\n"
                            "  C_Lexique_" + inLexiqueName.identifierRepresentation () + " * scanner = NULL ;\n"
                            "  macroMyNew (scanner, C_Lexique_" + inLexiqueName.identifierRepresentation () + " (inCompiler, inSourceFilePath COMMA_HERE)) ;\n"
@@ -1099,7 +1099,7 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
         ioCppFileContents += inTargetFileName.identifierRepresentation ();
         ioCppFileContents += "::_performSourceFileParsing_" ;
         ioCppFileContents += currentAltForNonTerminal.current_lkey (HERE).mProperty_string.stringValue ().identifierRepresentation ();
-        ioCppFileContents += " (C_Compiler * inCompiler"
+        ioCppFileContents += " (Compiler * inCompiler"
                              ",\n                                " ;
         if (inSyntaxDirectedTranslationVarName.length() > 0) {
           ioCppFileContents += "String & " ;
@@ -1194,7 +1194,7 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
         ioCppFileContents += inTargetFileName.identifierRepresentation ();
         ioCppFileContents += "::_performSourceStringParsing_" ;
         ioCppFileContents += currentAltForNonTerminal.current_lkey (HERE).mProperty_string.stringValue ().identifierRepresentation ();
-        ioCppFileContents += " (C_Compiler * inCompiler"
+        ioCppFileContents += " (Compiler * inCompiler"
                              ",\n                                " ;
         if (inSyntaxDirectedTranslationVarName.length() > 0) {
           ioCppFileContents += "String & " ;

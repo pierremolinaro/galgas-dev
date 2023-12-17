@@ -17,6 +17,6 @@ void extensionSetter_%![MODIFIER_NAME identifierRepresentation]% (%?^%class GALG
       %class GALGAS_%![mFormalArgumentType identifierRepresentation]% in_%![mFormalArgumentName identifierRepresentation]
     end
   end
-  %,\n%!^%class C_Compiler * inCompiler%
+  %,\n%!^%class Compiler * inCompiler%
   %\n%!^%COMMA_LOCATION_ARGS) ;
 

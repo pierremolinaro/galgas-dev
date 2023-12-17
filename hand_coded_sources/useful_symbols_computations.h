@@ -22,14 +22,14 @@
 class cPureBNFproductionsList ;
 class cVocabulary ;
 class C_HTMLString ;
-class C_Compiler ;
+class Compiler ;
 class GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis ;
 class C_RelationSingleType ;
 class C_Relation ;
 
 //--------------------------------------------------------------------------------------------------
 
-void useful_symbols_computations (C_Compiler * inCompiler,
+void useful_symbols_computations (Compiler * inCompiler,
                                   const GALGAS_location & inErrorLocation,
                                   const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
                                   const cPureBNFproductionsList & inPureBNFproductions,

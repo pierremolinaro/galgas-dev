@@ -21,7 +21,7 @@
 #include "all-predefined-types.h"
 #include "galgas2/capCollectionElement.h"
 #include "galgas2/cCollectionElement.h"
-#include "galgas2/C_Compiler.h"
+#include "galgas2/Compiler.h"
 #include "galgas2/C_galgas_io.h"
 #include "strings/unicode_character_cpp.h"
 #include "galgas2/C_galgas_CLI_Options.h"
@@ -55,7 +55,7 @@ GALGAS_data GALGAS_data::constructor_emptyData (UNUSED_LOCATION_ARGS) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_data GALGAS_data::constructor_dataWithContentsOfFile (const GALGAS_string & inFilePath,
-                                                             C_Compiler * inCompiler
+                                                             Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) {
   GALGAS_data result ;
   if (inFilePath.isValid()){
@@ -138,7 +138,7 @@ GALGAS_string GALGAS_data::getter_cStringRepresentation (UNUSED_LOCATION_ARGS) c
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_data::setter_appendByte (GALGAS_uint inArgument0,
-                                     C_Compiler * inCompiler
+                                     Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) {
   if (inArgument0.isValid ()) {
     if (inArgument0.uintValue () > 255) {
@@ -153,7 +153,7 @@ void GALGAS_data::setter_appendByte (GALGAS_uint inArgument0,
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_data::setter_appendShortBE (GALGAS_uint inArgument0,
-                                        C_Compiler * inCompiler
+                                        Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) {
   if (inArgument0.isValid ()) {
     if (inArgument0.uintValue () > 0xFFFF) {
@@ -169,7 +169,7 @@ void GALGAS_data::setter_appendShortBE (GALGAS_uint inArgument0,
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_data::setter_appendShortLE (GALGAS_uint inArgument0,
-                                        C_Compiler * inCompiler
+                                        Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) {
   if (inArgument0.isValid ()) {
     if (inArgument0.uintValue () > 0xFFFF) {
@@ -239,7 +239,7 @@ void GALGAS_data::setter_appendData (GALGAS_data inData
 
 void GALGAS_data::method_writeToFileWhenDifferentContents (GALGAS_string inFilePath,
                                                            GALGAS_bool & outFileWritten,
-                                                           C_Compiler * inCompiler
+                                                           Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) const {
   outFileWritten.drop () ;
   if (inFilePath.isValid ()) {
@@ -253,7 +253,7 @@ void GALGAS_data::method_writeToFileWhenDifferentContents (GALGAS_string inFileP
     }
     outFileWritten = GALGAS_bool (needToWrite) ;
     if (needToWrite) {
-      if (C_Compiler::performGeneration ()) {
+      if (Compiler::performGeneration ()) {
         const bool verboseOptionOn = verboseOutput () ;
         bool ok = C_FileManager::makeDirectoryIfDoesNotExist (inFilePath.stringValue ().stringByDeletingLastPathComponent ()) ;
         if (! ok) {
@@ -288,13 +288,13 @@ void GALGAS_data::method_writeToFileWhenDifferentContents (GALGAS_string inFileP
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_data::method_writeToFile (GALGAS_string inFilePath,
-                                      C_Compiler * inCompiler
+                                      Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) const {
   if (inFilePath.isValid ()) {
     const String filePath = inFilePath.stringValue () ;
     if (filePath.length () == 0) {
       inCompiler->onTheFlyRunTimeError ("'@data writeToFile' modifier invoked with empty file path argument" COMMA_THERE) ;
-    }else if (! C_Compiler::performGeneration ()) {
+    }else if (! Compiler::performGeneration ()) {
       ggs_printWarning (inCompiler, C_SourceTextInString (), C_IssueWithFixIt (), String ("Need to write '") + filePath + "'." COMMA_HERE) ;
     }else{
       const bool fileAlreadyExists = C_FileManager::fileExistsAtPath (filePath) ;
@@ -329,13 +329,13 @@ void GALGAS_data::method_writeToFile (GALGAS_string inFilePath,
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_data::method_writeToExecutableFile (GALGAS_string inFilePath,
-                                                C_Compiler * inCompiler
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) const {
   if (inFilePath.isValid ()) {
     const String filePath = inFilePath.stringValue () ;
     if (filePath.length () == 0) {
       inCompiler->onTheFlyRunTimeError ("'@data writeToFile' modifier invoked with empty file path argument" COMMA_THERE) ;
-    }else if (! C_Compiler::performGeneration ()) {
+    }else if (! Compiler::performGeneration ()) {
       ggs_printWarning (inCompiler, C_SourceTextInString (), C_IssueWithFixIt (), String ("Need to write '") + filePath + "'." COMMA_HERE) ;
     }else{
       const bool fileAlreadyExists = C_FileManager::fileExistsAtPath (filePath) ;

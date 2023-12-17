@@ -14,6 +14,6 @@ class GALGAS_%!RETURN_TYPE_IDENTIFIER% extensionGetter_%![GETTER_NAME identifier
     end
   end
   %,\n%!^
-  %class C_Compiler * inCompiler\n%
+  %class Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) ;
 

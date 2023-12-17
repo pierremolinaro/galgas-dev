@@ -20,7 +20,7 @@ void routine_recursivlyEnumerateRegularFile (const class GALGAS_wrapperFileMap c
                                              class GALGAS_stringlist & ioArgument3,
                                              class GALGAS_stringlist & ioArgument4,
                                              class GALGAS_stringlist & ioArgument5,
-                                             class C_Compiler * inCompiler
+                                             class Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -35,7 +35,7 @@ void routine_generateWrapperContents (const class GALGAS_string constinArgument0
                                       const class GALGAS_wrapperFileMap constinArgument3,
                                       const class GALGAS_wrapperDirectoryMap constinArgument4,
                                       class GALGAS_string & ioArgument5,
-                                      class C_Compiler * inCompiler
+                                      class Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -61,7 +61,7 @@ extern const cDirectoryWrapper gWrapperDirectory_0_predefinedTypeGenerationTempl
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_predefinedTypesImplementation (class C_Compiler * inCompiler
+GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_predefinedTypesImplementation (class Compiler * inCompiler
                                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -70,7 +70,7 @@ GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_predefinedTyp
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_primitiveTypesHeaderPrologue (class C_Compiler * inCompiler
+GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_primitiveTypesHeaderPrologue (class Compiler * inCompiler
                                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -79,7 +79,7 @@ GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_primitiveType
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_predefinedTypeSeparation (class C_Compiler * inCompiler
+GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_predefinedTypeSeparation (class Compiler * inCompiler
                                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -88,7 +88,7 @@ GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_predefinedTyp
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_sint_5F_type (class C_Compiler * inCompiler
+GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_sint_5F_type (class Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -97,7 +97,7 @@ GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_sint_5F_type 
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_sint_36__34__5F_type (class C_Compiler * inCompiler
+GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_sint_36__34__5F_type (class Compiler * inCompiler
                                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -106,7 +106,7 @@ GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_sint_36__34__
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_object_5F_type (class C_Compiler * inCompiler
+GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_object_5F_type (class Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -115,7 +115,7 @@ GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_object_5F_typ
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_uint_5F_type (class C_Compiler * inCompiler
+GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_uint_5F_type (class Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -124,7 +124,7 @@ GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_uint_5F_type 
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_uint_36__34__5F_type (class C_Compiler * inCompiler
+GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_uint_36__34__5F_type (class Compiler * inCompiler
                                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -133,7 +133,7 @@ GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_uint_36__34__
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_bool_5F_type (class C_Compiler * inCompiler
+GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_bool_5F_type (class Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -142,7 +142,7 @@ GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_bool_5F_type 
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_binaryset_5F_type (class C_Compiler * inCompiler
+GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_binaryset_5F_type (class Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -151,7 +151,7 @@ GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_binaryset_5F_
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_function_5F_type (class C_Compiler * inCompiler
+GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_function_5F_type (class Compiler * inCompiler
                                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -160,7 +160,7 @@ GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_function_5F_t
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_type_5F_type (class C_Compiler * inCompiler
+GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_type_5F_type (class Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -169,7 +169,7 @@ GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_type_5F_type 
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_location_5F_type (class C_Compiler * inCompiler
+GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_location_5F_type (class Compiler * inCompiler
                                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -178,7 +178,7 @@ GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_location_5F_t
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_data_5F_type (class C_Compiler * inCompiler
+GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_data_5F_type (class Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -187,7 +187,7 @@ GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_data_5F_type 
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_char_5F_type (class C_Compiler * inCompiler
+GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_char_5F_type (class Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -196,7 +196,7 @@ GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_char_5F_type 
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_double_5F_type (class C_Compiler * inCompiler
+GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_double_5F_type (class Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -205,7 +205,7 @@ GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_double_5F_typ
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_string_5F_type (class C_Compiler * inCompiler
+GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_string_5F_type (class Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -214,7 +214,7 @@ GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_string_5F_typ
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_stringset_5F_type (class C_Compiler * inCompiler
+GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_stringset_5F_type (class Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -223,7 +223,7 @@ GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_stringset_5F_
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_filewrapper_5F_type (class C_Compiler * inCompiler
+GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_filewrapper_5F_type (class Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -232,7 +232,7 @@ GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_filewrapper_5
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_application_5F_type (class C_Compiler * inCompiler
+GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_application_5F_type (class Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -241,7 +241,7 @@ GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_application_5
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_bigint_5F_type (class C_Compiler * inCompiler
+GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_bigint_5F_type (class Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -250,7 +250,7 @@ GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_bigint_5F_typ
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_timer_5F_type (class C_Compiler * inCompiler
+GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_timer_5F_type (class Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -264,7 +264,7 @@ void routine_generatePredefinedTypeFiles (const class GALGAS_string constinArgum
                                           class GALGAS_stringlist & ioArgument2,
                                           class GALGAS_stringlist & ioArgument3,
                                           class GALGAS_stringset & ioArgument4,
-                                          class C_Compiler * inCompiler
+                                          class Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -290,7 +290,7 @@ extern const cDirectoryWrapper gWrapperDirectory_0_semanticFileGenerationTemplat
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_semanticFileGenerationTemplate_semanticFileHeader (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_semanticFileGenerationTemplate_semanticFileHeader (class Compiler * inCompiler,
                                                                                      const class GALGAS_string & in_COMPONENT_5F_NAME,
                                                                                      const class GALGAS_stringlist & in_IMPORTED_5F_COMPONENT_5F_LIST
                                                                                      COMMA_LOCATION_ARGS) ;
@@ -301,7 +301,7 @@ GALGAS_string filewrapperTemplate_semanticFileGenerationTemplate_semanticFileHea
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_semanticFileGenerationTemplate_semanticFileImplementation (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_semanticFileGenerationTemplate_semanticFileImplementation (class Compiler * inCompiler,
                                                                                              const class GALGAS_stringlist & in_IMPORTED_5F_COMPONENT_5F_LIST
                                                                                              COMMA_LOCATION_ARGS) ;
 
@@ -314,7 +314,7 @@ GALGAS_string filewrapperTemplate_semanticFileGenerationTemplate_semanticFileImp
 void routine_appendPredefinedListTypeAST (class GALGAS_semanticDeclarationListAST & ioArgument0,
                                           const class GALGAS_string constinArgument1,
                                           class GALGAS_lstringlist & ioArgument2,
-                                          class C_Compiler * inCompiler
+                                          class Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -325,7 +325,7 @@ void routine_appendPredefinedListTypeAST (class GALGAS_semanticDeclarationListAS
 
 void routine_insertInUsefulnessEntities (class GALGAS_lstringlist & ioArgument0,
                                          const class GALGAS_string constinArgument1,
-                                         class C_Compiler * inCompiler
+                                         class Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -336,7 +336,7 @@ void routine_insertInUsefulnessEntities (class GALGAS_lstringlist & ioArgument0,
 
 void routine_appendPredefined_32_StringListTypeAST (class GALGAS_semanticDeclarationListAST & ioArgument0,
                                                     class GALGAS_lstringlist & ioArgument1,
-                                                    class C_Compiler * inCompiler
+                                                    class Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -348,7 +348,7 @@ void routine_appendPredefined_32_StringListTypeAST (class GALGAS_semanticDeclara
 void routine_appendStructASTForTypeWithLocation (class GALGAS_semanticDeclarationListAST & ioArgument0,
                                                  const class GALGAS_string constinArgument1,
                                                  class GALGAS_lstringlist & ioArgument2,
-                                                 class C_Compiler * inCompiler
+                                                 class Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -359,7 +359,7 @@ void routine_appendStructASTForTypeWithLocation (class GALGAS_semanticDeclaratio
 
 void routine_appendStructASTForRangeType (class GALGAS_semanticDeclarationListAST & ioArgument0,
                                           class GALGAS_lstringlist & ioArgument1,
-                                          class C_Compiler * inCompiler
+                                          class Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -370,7 +370,7 @@ void routine_appendStructASTForRangeType (class GALGAS_semanticDeclarationListAS
 
 void routine_appendPredefinedTypesASTs (class GALGAS_semanticDeclarationListAST & ioArgument0,
                                         class GALGAS_lstringlist & ioArgument1,
-                                        class C_Compiler * inCompiler
+                                        class Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -382,6 +382,6 @@ void routine_appendPredefinedTypesASTs (class GALGAS_semanticDeclarationListAST 
 void routine_checkUsefulEntities (const class GALGAS_usefulEntitiesGraph constinArgument0,
                                   const class GALGAS_lstringlist constinArgument1,
                                   const class GALGAS_string constinArgument2,
-                                  class C_Compiler * inCompiler
+                                  class Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 

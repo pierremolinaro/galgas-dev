@@ -20,7 +20,7 @@
 #include "utilities/MF_MemoryControl.h"
 #include "streams/C_ConsoleOut.h"
 #include "galgas2/C_galgas_CLI_Options.h"
-#include "galgas2/C_Compiler.h"
+#include "galgas2/Compiler.h"
 #include "galgas_cli_options.h"
 #include "galgas2/C_galgas_io.h"
 #include "strings/C_HTMLString.h"
@@ -290,7 +290,7 @@ static const char k_default_style [] = {
 //--------------------------------------------------------------------------------------------------
 
 static void
-analyzeGrammar (C_Compiler * inCompiler,
+analyzeGrammar (Compiler * inCompiler,
                 const String & inHTMLFileName,
                 const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
                 const GALGAS_lstring & inTargetFileName,
@@ -649,7 +649,7 @@ routine_grammarAnalysisAndGeneration (const GALGAS_lstring inTargetFileName,
                                       const GALGAS_string inSyntaxDirectedTranslationVarName,
                                       GALGAS_string & outCppFileContents,
                                       GALGAS_string & outHTMLHelperFileContents,
-                                      C_Compiler * inCompiler
+                                      Compiler * inCompiler
                                       COMMA_UNUSED_LOCATION_ARGS) {
   if (totalErrorCount () == 0) {
     C_BDD::markAndSweepUnusedNodes () ;

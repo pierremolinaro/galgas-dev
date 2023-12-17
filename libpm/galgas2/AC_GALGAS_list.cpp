@@ -20,7 +20,7 @@
 
 #include "all-predefined-types.h"
 #include "utilities/MF_MemoryControl.h"
-#include "galgas2/C_Compiler.h"
+#include "galgas2/Compiler.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -32,7 +32,7 @@
 
 void AC_GALGAS_list::removeObjectAtIndex (capCollectionElement & outAttributes,
                                           const uint32_t inRemoveIndex,
-                                          C_Compiler * inCompiler
+                                          Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) {
   mSharedArray.removeObjectAtIndex (outAttributes, inRemoveIndex, inCompiler COMMA_THERE) ;
 }
@@ -46,7 +46,7 @@ void AC_GALGAS_list::removeObjectAtIndex (capCollectionElement & outAttributes,
 //--------------------------------------------------------------------------------------------------
 
 void AC_GALGAS_list::removeFirstObject (capCollectionElement & outAttributes,
-                                        C_Compiler * inCompiler
+                                        Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) {
   mSharedArray.removeFirstObject (outAttributes, inCompiler COMMA_THERE) ;
 }
@@ -60,7 +60,7 @@ void AC_GALGAS_list::removeFirstObject (capCollectionElement & outAttributes,
 //--------------------------------------------------------------------------------------------------
 
 void AC_GALGAS_list::removeLastObject (capCollectionElement & outAttributes,
-                                       C_Compiler * inCompiler
+                                       Compiler * inCompiler
                                        COMMA_LOCATION_ARGS) {
   mSharedArray.removeLastObject (outAttributes, inCompiler COMMA_THERE) ;
 }
@@ -162,7 +162,7 @@ void AC_GALGAS_list::appendObject (const capCollectionElement & inElementToAdd) 
 
 void AC_GALGAS_list::insertObjectAtIndex (const capCollectionElement & inElementToAdd,
                                           const uint32_t inInsertionIndex,
-                                          C_Compiler * inCompiler
+                                          Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) {
   mSharedArray.insertObjectAtIndex (inElementToAdd, inInsertionIndex, inCompiler COMMA_THERE) ;
 }
@@ -170,7 +170,7 @@ void AC_GALGAS_list::insertObjectAtIndex (const capCollectionElement & inElement
 //--------------------------------------------------------------------------------------------------
 
 void AC_GALGAS_list::readFirst (capCollectionElement & outAttributes,
-                                C_Compiler * inCompiler
+                                Compiler * inCompiler
                                 COMMA_LOCATION_ARGS) const {
   mSharedArray.readFirstObject (outAttributes, inCompiler COMMA_THERE) ;
 }
@@ -178,7 +178,7 @@ void AC_GALGAS_list::readFirst (capCollectionElement & outAttributes,
 //--------------------------------------------------------------------------------------------------
 
 void AC_GALGAS_list::readLast (capCollectionElement & outAttributes,
-                               C_Compiler * inCompiler
+                               Compiler * inCompiler
                                COMMA_LOCATION_ARGS) const {
   mSharedArray.readLastObject (outAttributes, inCompiler COMMA_THERE) ;
 }
@@ -187,7 +187,7 @@ void AC_GALGAS_list::readLast (capCollectionElement & outAttributes,
 
 void AC_GALGAS_list::subListWithRange (AC_GALGAS_list & outList,
                                        const GALGAS_range & inRange,
-                                       C_Compiler * inCompiler
+                                       Compiler * inCompiler
                                        COMMA_LOCATION_ARGS) const {
   if (isValid () && inRange.isValid ()) {
     bool ok = false ;
@@ -206,7 +206,7 @@ void AC_GALGAS_list::subListWithRange (AC_GALGAS_list & outList,
 
 void AC_GALGAS_list::subListFromIndex (AC_GALGAS_list & outList,
                                        const GALGAS_uint & inIndex,
-                                       C_Compiler * inCompiler
+                                       Compiler * inCompiler
                                        COMMA_LOCATION_ARGS) const {
   if (isValid () && inIndex.isValid ()) {
     bool ok = false ;
@@ -221,7 +221,7 @@ void AC_GALGAS_list::subListFromIndex (AC_GALGAS_list & outList,
 
 void AC_GALGAS_list::subListToIndex (AC_GALGAS_list & outList,
                                      const GALGAS_uint & inIndex,
-                                     C_Compiler * inCompiler
+                                     Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) const {
   if (isValid () && inIndex.isValid ()) {
     bool ok = false ;
@@ -243,7 +243,7 @@ void AC_GALGAS_list::appendList (const AC_GALGAS_list & inList) {
 //--------------------------------------------------------------------------------------------------
 
 capCollectionElement AC_GALGAS_list::readObjectAtIndex (const GALGAS_uint & inIndex,
-                                                        C_Compiler * inCompiler
+                                                        Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
   capCollectionElement result ;
   if (isValid () && inIndex.isValid ()) {
@@ -265,7 +265,7 @@ capCollectionElement AC_GALGAS_list::readObjectAtIndex (const GALGAS_uint & inIn
 //--------------------------------------------------------------------------------------------------
 
 cCollectionElement * AC_GALGAS_list::uniquelyReferencedPointerAtIndex (const GALGAS_uint & inIndex,
-                                                                       C_Compiler * inCompiler
+                                                                       Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) {
   cCollectionElement * result = nullptr ;
   if (isValid ()) {

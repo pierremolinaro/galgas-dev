@@ -15,7 +15,7 @@
 //--------------------------------------------------------------------------------------------------
 
 class GALGAS_lstring function_afterNameForUsefulEntitiesGraph (const class GALGAS_location & constinArgument0,
-                                                               class C_Compiler * inCompiler
+                                                               class Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -25,7 +25,7 @@ class GALGAS_lstring function_afterNameForUsefulEntitiesGraph (const class GALGA
 //--------------------------------------------------------------------------------------------------
 
 class GALGAS_lstring function_beforeNameForUsefulEntitiesGraph (const class GALGAS_location & constinArgument0,
-                                                                class C_Compiler * inCompiler
+                                                                class Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -35,7 +35,7 @@ class GALGAS_lstring function_beforeNameForUsefulEntitiesGraph (const class GALG
 //--------------------------------------------------------------------------------------------------
 
 class GALGAS_lstring function_rootRuleNameForUsefulEntitiesGraph (const class GALGAS_lstring & constinArgument0,
-                                                                  class C_Compiler * inCompiler
+                                                                  class Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -58,7 +58,7 @@ void routine_analyzeConstructorInvocation (const class GALGAS_lstring constinArg
                                            class GALGAS_unifiedTypeMapEntry & outArgument11,
                                            class GALGAS_semanticExpressionListForGeneration & outArgument12,
                                            class GALGAS_bool & outArgument13,
-                                           class C_Compiler * inCompiler
+                                           class Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -70,7 +70,7 @@ void routine_analyzeConstructorInvocation (const class GALGAS_lstring constinArg
 void routine_checkAssignmentTypes (const class GALGAS_unifiedTypeMapEntry constinArgument0,
                                    const class GALGAS_unifiedTypeMapEntry constinArgument1,
                                    const class GALGAS_location constinArgument2,
-                                   class C_Compiler * inCompiler
+                                   class Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -92,6 +92,6 @@ void routine_analyzeErrorOrWarningInstruction (const class GALGAS_lstring consti
                                                class GALGAS_semanticExpressionForGeneration & outArgument10,
                                                class GALGAS_semanticExpressionForGeneration & outArgument11,
                                                class GALGAS_fixitListForGeneration & outArgument12,
-                                               class C_Compiler * inCompiler
+                                               class Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 

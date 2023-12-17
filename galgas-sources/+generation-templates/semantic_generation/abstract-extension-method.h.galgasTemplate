@@ -17,6 +17,6 @@ void callExtensionMethod_%![METHOD_NAME identifierRepresentation]% (%?^%class cP
       %class GALGAS_%![mFormalArgumentType identifierRepresentation]% in_%![mFormalArgumentName identifierRepresentation]
     end
   end
-  %,\n%!^%class C_Compiler * inCompiler%
+  %,\n%!^%class Compiler * inCompiler%
   %\n%!^%COMMA_LOCATION_ARGS) ;
 

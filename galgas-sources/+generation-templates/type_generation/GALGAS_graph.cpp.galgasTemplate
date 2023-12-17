@@ -23,7 +23,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_%![mInsertModifierName identifierRepresen
   for (mFormalSelector mFormalArgumentType mFormalArgumentName) in [ASSOCIATED_LIST_TYPE definition].mAddAssignOperatorArguments do (IDX)
     %,\n%!^%GALGAS_%![mFormalArgumentType identifierRepresentation]% inArgument_%![IDX string]
   end
-  %,\n%!^%C_Compiler * inCompiler\n%
+  %,\n%!^%Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]%::makeAttributesFromObjects (attributes%
@@ -44,7 +44,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_topologicalSort (%?^%GALGAS_%![ASSOCIATED
                        %!^%GALGAS_lstringlist & outSortedKeyList,
                        %!^%GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% & outUnsortedList,
                        %!^%GALGAS_lstringlist & outUnsortedKeyList,
-                       %!^%C_Compiler * inCompiler
+                       %!^%Compiler * inCompiler
                        %!^%COMMA_LOCATION_ARGS) const {
   capCollectionElementArray sortedList ;
   capCollectionElementArray unsortedList ;
@@ -59,7 +59,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_depthFirstTopologicalSort (%?^%GALGAS_%![
                        %!^%GALGAS_lstringlist & outSortedKeyList,
                        %!^%GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% & outUnsortedList,
                        %!^%GALGAS_lstringlist & outUnsortedKeyList,
-                       %!^%C_Compiler * inCompiler
+                       %!^%Compiler * inCompiler
                        %!^%COMMA_LOCATION_ARGS) const {
   capCollectionElementArray sortedList ;
   capCollectionElementArray unsortedList ;
@@ -111,7 +111,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_nodesWithNoPredecessor (%?^%GALGAS_%![ASS
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::getter_subgraphFromNodes (%?^%const GALGAS_lstringlist & inStartKeyList,
                                         %!^%const GALGAS_stringset & inKeysToExclude,
-                                        %!^%C_Compiler * inCompiler
+                                        %!^%Compiler * inCompiler
                                         %!^%COMMA_LOCATION_ARGS) const {
   GALGAS_%!TYPE_IDENTIFIER% result ;
   subGraph (result, inStartKeyList, inKeysToExclude, inCompiler COMMA_THERE) ;
@@ -132,7 +132,7 @@ GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% GALGAS_%!TYPE_IDENTIFI
 
 GALGAS_lstringlist GALGAS_%!TYPE_IDENTIFIER%::getter_accessibleNodesFrom (%?^%const GALGAS_lstringlist & inStartKeyList,
                                         %!^%const GALGAS_stringset & inNodesToExclude,
-                                        %!^%C_Compiler * inCompiler
+                                        %!^%Compiler * inCompiler
                                         %!^%COMMA_LOCATION_ARGS) const {
   GALGAS_lstringlist result ;
   GALGAS_%!TYPE_IDENTIFIER% resultingGraph ;

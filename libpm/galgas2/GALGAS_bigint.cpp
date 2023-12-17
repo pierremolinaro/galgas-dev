@@ -19,7 +19,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "all-predefined-types.h"
-#include "galgas2/C_Compiler.h"
+#include "galgas2/Compiler.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -47,7 +47,7 @@ mValue (inValue) {
 
 static bool gOk ;
 
-GALGAS_bigint::GALGAS_bigint (const char * inDecimalString, C_Compiler * inCompiler COMMA_LOCATION_ARGS) :
+GALGAS_bigint::GALGAS_bigint (const char * inDecimalString, Compiler * inCompiler COMMA_LOCATION_ARGS) :
 AC_GALGAS_root (),
 mIsValid (true),
 mValue (inDecimalString, BigUnsignedBase::ten, gOk) {
@@ -366,7 +366,7 @@ GALGAS_string GALGAS_bigint::getter_hexString (UNUSED_LOCATION_ARGS) const {
 
 GALGAS_string GALGAS_bigint::getter_hexStringSeparatedBy (const GALGAS_char & inSeparator,
                                                           const GALGAS_uint & inGroup,
-                                                          C_Compiler * inCompiler
+                                                          Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid () && inSeparator.isValid () && inGroup.isValid ()) {
@@ -403,7 +403,7 @@ GALGAS_string GALGAS_bigint::getter_xString (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_bigint::increment_operation (C_Compiler * /* inCompiler */
+void GALGAS_bigint::increment_operation (Compiler * /* inCompiler */
                                          COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid ()) {
     mValue += 1 ;
@@ -412,7 +412,7 @@ void GALGAS_bigint::increment_operation (C_Compiler * /* inCompiler */
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_bigint::decrement_operation (C_Compiler * /* inCompiler */
+void GALGAS_bigint::decrement_operation (Compiler * /* inCompiler */
                                          COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid ()) {
     mValue -= 1 ;
@@ -473,7 +473,7 @@ GALGAS_bigint GALGAS_bigint::getter_abs (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint GALGAS_bigint::getter_uint (C_Compiler * inCompiler
+GALGAS_uint GALGAS_bigint::getter_uint (Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) const {
   GALGAS_uint result ;
   if (isValid ()) {
@@ -488,7 +488,7 @@ GALGAS_uint GALGAS_bigint::getter_uint (C_Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_sint GALGAS_bigint::getter_sint (C_Compiler * inCompiler
+GALGAS_sint GALGAS_bigint::getter_sint (Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) const {
   GALGAS_sint result ;
   if (isValid ()) {
@@ -503,7 +503,7 @@ GALGAS_sint GALGAS_bigint::getter_sint (C_Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint_36__34_ GALGAS_bigint::getter_uint_36__34_ (C_Compiler * inCompiler
+GALGAS_uint_36__34_ GALGAS_bigint::getter_uint_36__34_ (Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
   GALGAS_uint_36__34_ result ;
   if (isValid ()) {
@@ -518,7 +518,7 @@ GALGAS_uint_36__34_ GALGAS_bigint::getter_uint_36__34_ (C_Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_sint_36__34_ GALGAS_bigint::getter_sint_36__34_ (C_Compiler * inCompiler
+GALGAS_sint_36__34_ GALGAS_bigint::getter_sint_36__34_ (Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
   GALGAS_sint_36__34_ result ;
   if (isValid ()) {
@@ -539,7 +539,7 @@ GALGAS_sint_36__34_ GALGAS_bigint::getter_sint_36__34_ (C_Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bigint GALGAS_bigint::operator_unary_minus (C_Compiler * /* inCompiler */ COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_bigint GALGAS_bigint::operator_unary_minus (Compiler * /* inCompiler */ COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_bigint result ;
   if (isValid ()) {
     result = GALGAS_bigint (- mValue) ;
@@ -550,7 +550,7 @@ GALGAS_bigint GALGAS_bigint::operator_unary_minus (C_Compiler * /* inCompiler */
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bigint GALGAS_bigint::add_operation (const GALGAS_bigint & inOperand,
-                                            C_Compiler * /* inCompiler */
+                                            Compiler * /* inCompiler */
                                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_bigint result ;
   if (isValid() && inOperand.isValid ()) {
@@ -562,7 +562,7 @@ GALGAS_bigint GALGAS_bigint::add_operation (const GALGAS_bigint & inOperand,
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bigint GALGAS_bigint::substract_operation (const GALGAS_bigint & inOperand,
-                                                  C_Compiler * /* inCompiler */
+                                                  Compiler * /* inCompiler */
                                                   COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_bigint result ;
   if (isValid() && inOperand.isValid ()) {
@@ -574,7 +574,7 @@ GALGAS_bigint GALGAS_bigint::substract_operation (const GALGAS_bigint & inOperan
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bigint GALGAS_bigint::multiply_operation (const GALGAS_bigint & inOperand,
-                                                 C_Compiler * /* inCompiler */
+                                                 Compiler * /* inCompiler */
                                                  COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_bigint result ;
   if (isValid() && inOperand.isValid ()) {
@@ -586,7 +586,7 @@ GALGAS_bigint GALGAS_bigint::multiply_operation (const GALGAS_bigint & inOperand
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bigint GALGAS_bigint::divide_operation (const GALGAS_bigint & inOperand,
-                                               C_Compiler * inCompiler
+                                               Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) const {
   GALGAS_bigint result ;
   if (isValid() && inOperand.isValid ()) {
@@ -602,7 +602,7 @@ GALGAS_bigint GALGAS_bigint::divide_operation (const GALGAS_bigint & inOperand,
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bigint GALGAS_bigint::modulo_operation (const GALGAS_bigint & inOperand2,
-                                               C_Compiler * inCompiler
+                                               Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) const {
   GALGAS_bigint result ;
   if (isValid () && inOperand2.isValid ()) {
@@ -620,7 +620,7 @@ GALGAS_bigint GALGAS_bigint::modulo_operation (const GALGAS_bigint & inOperand2,
 //void GALGAS_bigint::method_ceilDivideBy (GALGAS_bigint inDivisor,
 //                                         GALGAS_bigint & outQuotient,
 //                                         GALGAS_bigint & outRemainder,
-//                                         C_Compiler * inCompiler
+//                                         Compiler * inCompiler
 //                                         COMMA_LOCATION_ARGS) const {
 //  outQuotient.drop () ;
 //  outRemainder.drop () ;
@@ -642,7 +642,7 @@ GALGAS_bigint GALGAS_bigint::modulo_operation (const GALGAS_bigint & inOperand2,
 void GALGAS_bigint::method_divideBy (GALGAS_bigint inDivisor,
                                      GALGAS_bigint & outQuotient,
                                      GALGAS_bigint & outRemainder,
-                                     C_Compiler * inCompiler
+                                     Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) const {
   outQuotient.drop () ;
   outRemainder.drop () ;
@@ -662,7 +662,7 @@ void GALGAS_bigint::method_divideBy (GALGAS_bigint inDivisor,
 //void GALGAS_bigint::method_floorDivideBy (GALGAS_bigint inDivisor,
 //                                          GALGAS_bigint & outQuotient,
 //                                          GALGAS_bigint & outRemainder,
-//                                          C_Compiler * inCompiler
+//                                          Compiler * inCompiler
 //                                          COMMA_LOCATION_ARGS) const {
 //  outQuotient.drop () ;
 //  outRemainder.drop () ;
@@ -737,7 +737,7 @@ GALGAS_bigint GALGAS_bigint::operator_tilde (UNUSED_LOCATION_ARGS) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bigint GALGAS_bigint::left_shift_operation (const GALGAS_uint inShiftOperand,
-                                                   class C_Compiler * /* inCompiler*/
+                                                   class Compiler * /* inCompiler*/
                                                    COMMA_UNUSED_LOCATION_ARGS) const {
 
   GALGAS_bigint result ;
@@ -750,7 +750,7 @@ GALGAS_bigint GALGAS_bigint::left_shift_operation (const GALGAS_uint inShiftOper
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bigint GALGAS_bigint::left_shift_operation (const GALGAS_bigint inShiftOperand,
-                                                   class C_Compiler * inCompiler
+                                                   class Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) const {
 
   GALGAS_bigint result ;
@@ -769,7 +769,7 @@ GALGAS_bigint GALGAS_bigint::left_shift_operation (const GALGAS_bigint inShiftOp
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bigint GALGAS_bigint::right_shift_operation (const GALGAS_uint inShiftOperand,
-                                                    class C_Compiler * /* inCompiler*/
+                                                    class Compiler * /* inCompiler*/
                                                     COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_bigint result ;
   if (isValid () && inShiftOperand.isValid ()) {
@@ -781,7 +781,7 @@ GALGAS_bigint GALGAS_bigint::right_shift_operation (const GALGAS_uint inShiftOpe
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bigint GALGAS_bigint::right_shift_operation (const GALGAS_bigint inShiftOperand,
-                                                    class C_Compiler * inCompiler
+                                                    class Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) const {
 
   GALGAS_bigint result ;
@@ -800,7 +800,7 @@ GALGAS_bigint GALGAS_bigint::right_shift_operation (const GALGAS_bigint inShiftO
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_bigint::plusAssign_operation (const GALGAS_bigint inOperand,
-                                          C_Compiler * /* inCompiler */
+                                          Compiler * /* inCompiler */
                                           COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     mValue += inOperand.mValue ;
@@ -810,7 +810,7 @@ void GALGAS_bigint::plusAssign_operation (const GALGAS_bigint inOperand,
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_bigint::minusAssign_operation (const GALGAS_bigint inOperand,
-                                           C_Compiler * /* inCompiler */
+                                           Compiler * /* inCompiler */
                                            COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     mValue -= inOperand.mValue ;
@@ -821,7 +821,7 @@ void GALGAS_bigint::minusAssign_operation (const GALGAS_bigint inOperand,
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_bigint::mulAssign_operation (const GALGAS_bigint inOperand,
-                                         C_Compiler * /* inCompiler */
+                                         Compiler * /* inCompiler */
                                          COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     mValue *= inOperand.mValue ;
@@ -831,7 +831,7 @@ void GALGAS_bigint::mulAssign_operation (const GALGAS_bigint inOperand,
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_bigint::divAssign_operation (const GALGAS_bigint inOperand,
-                                         C_Compiler * inCompiler
+                                         Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     if (inOperand.mValue.isZero ()) {

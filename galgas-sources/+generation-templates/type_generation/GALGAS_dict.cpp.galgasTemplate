@@ -504,7 +504,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^%const GALGAS_%!KEY_TYPE
 for (propertyTypeEntry 3*) in CURRENT_PROPERTY_LIST
   do (IDX) %,\n%!^%const GALGAS_%![propertyTypeEntry identifierRepresentation]% & inArgument%![IDX string]
 end
-%,\n %!^%C_Compiler * /* inCompiler */%
+%,\n %!^%Compiler * /* inCompiler */%
 %\n %!^%COMMA_LOCATION_ARGS) {\n%
 %  GALGAS_%!TYPE_IDENTIFIER%_2D_element newElement (inKey%
 for (4*) in CURRENT_PROPERTY_LIST
@@ -525,7 +525,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_insert (%?^%const GALGAS_%!KEY_TYPE_IDENT
 for (propertyTypeEntry 3*) in CURRENT_PROPERTY_LIST
   do (IDX) %,\n%!^%const GALGAS_%![propertyTypeEntry identifierRepresentation]% inArgument%![IDX string]
 end
-%,\n %!^%C_Compiler * /* inCompiler */%
+%,\n %!^%Compiler * /* inCompiler */%
 %\n %!^%COMMA_LOCATION_ARGS) {\n%
 %  GALGAS_%!TYPE_IDENTIFIER%_2D_element newElement (inKey%
 for (4*) in CURRENT_PROPERTY_LIST
@@ -558,7 +558,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_searchKey (%?^%GALGAS_%!KEY_TYPE_IDENTIFI
 for (propertyTypeEntry 3*) in CURRENT_PROPERTY_LIST
   do (IDX) %,\n%!^%GALGAS_%![propertyTypeEntry identifierRepresentation]% & outArgument%![IDX string]
 end
-%,\n %!^%C_Compiler * inCompiler%
+%,\n %!^%Compiler * inCompiler%
 %\n %!^%COMMA_LOCATION_ARGS) const {
   const cNode_%!TYPE_IDENTIFIER% * p = nullptr ;
   if (isValid () && inKey.isValid ()) {
@@ -590,7 +590,7 @@ end
 for (propertyTypeEntry 3*) in CURRENT_PROPERTY_LIST
   do (IDX) %,\n%!^%GALGAS_%![propertyTypeEntry identifierRepresentation]% & outArgument%![IDX string]
 end
-%,\n %!^%C_Compiler * inCompiler%
+%,\n %!^%Compiler * inCompiler%
 %\n %!^%COMMA_LOCATION_ARGS) {
   cNode_%!TYPE_IDENTIFIER% * p = nullptr ;
   if (isValid () && inKey.isValid ()) {
@@ -622,7 +622,7 @@ end
 %for (propertyTypeEntry propertyName 2*) in CURRENT_PROPERTY_LIST do
   %//--------------------------------------------------------------------------------------------------\n\n%
   %GALGAS_%![propertyTypeEntry identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::getter_%![propertyName identifierRepresentation]%ForKey (%?^%const GALGAS_%!KEY_TYPE_IDENTIFIER% & inKey,\n%
-  %                                               %!^%C_Compiler * inCompiler\n%
+  %                                               %!^%Compiler * inCompiler\n%
   %                                               %!^%COMMA_LOCATION_ARGS) const {\n%
   %  GALGAS_%![propertyTypeEntry identifierRepresentation]% result ;\n%
   %  if (isValid () && inKey.isValid ()) {\n%
@@ -647,7 +647,7 @@ for (propertyTypeEntry propertyName 2*) in CURRENT_PROPERTY_LIST do
   %//--------------------------------------------------------------------------------------------------\n\n%
   %void GALGAS_%!TYPE_IDENTIFIER%::setter_set%![[propertyName stringByCapitalizingFirstCharacter] identifierRepresentation]%ForKey (%?^%GALGAS_%![propertyTypeEntry identifierRepresentation]% inPropertyValue,\n%
   %                           %!^%GALGAS_%!KEY_TYPE_IDENTIFIER% inKey,\n%
-  %                           %!^%C_Compiler * inCompiler\n%
+  %                           %!^%Compiler * inCompiler\n%
   %                           %!^%COMMA_LOCATION_ARGS) {\n%
   %  if (isValid () && inKey.isValid ()) {\n%
   %    insulate (THERE) ;\n%

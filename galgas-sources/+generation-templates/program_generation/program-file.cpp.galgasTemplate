@@ -70,8 +70,8 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
     returnCode = 1 ;
   }else{
   //--- Common lexique object
-    C_Compiler * commonCompiler = nullptr ;
-    macroMyNew (commonCompiler, C_Compiler (nullptr COMMA_HERE)) ;
+    Compiler * commonCompiler = nullptr ;
+    macroMyNew (commonCompiler, Compiler (nullptr COMMA_HERE)) ;
     try{
       routine_before (commonCompiler COMMA_HERE) ;
       cLexiqueIntrospection::handleGetKeywordListOption (commonCompiler) ;

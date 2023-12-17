@@ -112,7 +112,7 @@ override method @messageInstructionForGeneration generateInstruction
     !?ioUnusedVariableCppNameSet
     ?let @string messageCppVarName
   ]
-#--- Invoke 'printMessage' method of C_Compiler
+#--- Invoke 'printMessage' method of Compiler
   ioGeneratedCode += compilerCppName () + "->printMessage (" + messageCppVarName
   ioGeneratedCode += " " + [self.mInstructionLocation commaSourceFile] + ") ;\n"
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]

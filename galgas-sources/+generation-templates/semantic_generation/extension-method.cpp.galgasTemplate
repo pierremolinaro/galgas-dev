@@ -21,7 +21,7 @@ void callExtensionMethod_%![METHOD_NAME identifierRepresentation]% (%?^%cPtr_%![
       %GALGAS_%![mFormalArgumentType identifierRepresentation]% in_%![mFormalArgumentName identifierRepresentation]
     end
   end
-  %,\n%!^%C_Compiler * inCompiler%
+  %,\n%!^%Compiler * inCompiler%
   %\n%!^%COMMA_LOCATION_ARGS) {
 %
   for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentType mFormalArgumentName mFormalArgumentCppName) in FORMAL_ARGUMENT_LIST do

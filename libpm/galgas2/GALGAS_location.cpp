@@ -19,7 +19,7 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 #include "all-predefined-types.h"
-#include "galgas2/C_Compiler.h"
+#include "galgas2/Compiler.h"
 #include "files/C_FileManager.h"
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -62,21 +62,21 @@ GALGAS_location GALGAS_location::constructor_nowhere (UNUSED_LOCATION_ARGS) {
 //   CONSTRUCTORS
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_location::constructor_here (C_Compiler * inCompiler
+GALGAS_location GALGAS_location::constructor_here (Compiler * inCompiler
                                                    COMMA_UNUSED_LOCATION_ARGS) {
   return inCompiler->here () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_location::constructor_next (C_Compiler * inCompiler
+GALGAS_location GALGAS_location::constructor_next (Compiler * inCompiler
                                                    COMMA_UNUSED_LOCATION_ARGS) {
   return inCompiler->next () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_location::constructor_separator (C_Compiler * inCompiler
+GALGAS_location GALGAS_location::constructor_separator (Compiler * inCompiler
                                                         COMMA_UNUSED_LOCATION_ARGS) {
   return inCompiler->separator () ;
 }
@@ -145,7 +145,7 @@ void GALGAS_location::description (String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_location::getter_startLocationString (C_Compiler * inCompiler
+GALGAS_string GALGAS_location::getter_startLocationString (Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
@@ -168,7 +168,7 @@ GALGAS_string GALGAS_location::getter_startLocationString (C_Compiler * inCompil
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_location::getter_endLocationString (C_Compiler * inCompiler
+GALGAS_string GALGAS_location::getter_endLocationString (Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
@@ -191,7 +191,7 @@ GALGAS_string GALGAS_location::getter_endLocationString (C_Compiler * inCompiler
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_location::getter_file (C_Compiler * inCompiler
+GALGAS_string GALGAS_location::getter_file (Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
@@ -206,7 +206,7 @@ GALGAS_string GALGAS_location::getter_file (C_Compiler * inCompiler
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_uint GALGAS_location::getter_startLocationIndex (C_Compiler * inCompiler
+GALGAS_uint GALGAS_location::getter_startLocationIndex (Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) const {
   GALGAS_uint result ;
   if (isValid ()) {
@@ -221,7 +221,7 @@ GALGAS_uint GALGAS_location::getter_startLocationIndex (C_Compiler * inCompiler
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_uint GALGAS_location::getter_endLocationIndex (C_Compiler * inCompiler
+GALGAS_uint GALGAS_location::getter_endLocationIndex (Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) const {
   GALGAS_uint result ;
   if (isValid ()) {
@@ -236,7 +236,7 @@ GALGAS_uint GALGAS_location::getter_endLocationIndex (C_Compiler * inCompiler
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_uint GALGAS_location::getter_startColumn (C_Compiler * inCompiler
+GALGAS_uint GALGAS_location::getter_startColumn (Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) const {
   GALGAS_uint result ;
   if (isValid ()) {
@@ -251,7 +251,7 @@ GALGAS_uint GALGAS_location::getter_startColumn (C_Compiler * inCompiler
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_uint GALGAS_location::getter_endColumn (C_Compiler * inCompiler
+GALGAS_uint GALGAS_location::getter_endColumn (Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) const {
   GALGAS_uint result ;
   if (isValid ()) {
@@ -266,7 +266,7 @@ GALGAS_uint GALGAS_location::getter_endColumn (C_Compiler * inCompiler
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_uint GALGAS_location::getter_startLine (C_Compiler * inCompiler
+GALGAS_uint GALGAS_location::getter_startLine (Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) const {
   GALGAS_uint result ;
   if (isValid ()) {
@@ -281,7 +281,7 @@ GALGAS_uint GALGAS_location::getter_startLine (C_Compiler * inCompiler
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_uint GALGAS_location::getter_endLine (C_Compiler * inCompiler
+GALGAS_uint GALGAS_location::getter_endLine (Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const {
   GALGAS_uint result ;
   if (isValid ()) {
@@ -297,7 +297,7 @@ GALGAS_uint GALGAS_location::getter_endLine (C_Compiler * inCompiler
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_location GALGAS_location::getter_union (const GALGAS_location & inOtherLocation,
-                                               C_Compiler * inCompiler
+                                               Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (isValid () && inOtherLocation.isValid ()) {

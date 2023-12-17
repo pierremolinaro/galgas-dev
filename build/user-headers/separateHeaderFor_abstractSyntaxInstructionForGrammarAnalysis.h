@@ -17,7 +17,7 @@ class cPtr_abstractSyntaxInstructionForGrammarAnalysis : public acStrongPtr_clas
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension getter isLinear
-  public: virtual class GALGAS_bool getter_isLinear (C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
+  public: virtual class GALGAS_bool getter_isLinear (Compiler * COMMA_LOCATION_ARGS) const = 0 ;
 
 //--- Extension method tikzNodeForSyntaxInstruction
   public: virtual void method_tikzNodeForSyntaxInstruction (class GALGAS_rowList & ioRowList,
@@ -28,7 +28,7 @@ class cPtr_abstractSyntaxInstructionForGrammarAnalysis : public acStrongPtr_clas
            class GALGAS_string & ioArrows,
            class GALGAS_uint & ioMaxUsedRowIndex,
            const class GALGAS_bool inDebug,
-           C_Compiler * COMMA_LOCATION_ARGS) = 0 ;
+           Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- START OF USER ZONE 2
 

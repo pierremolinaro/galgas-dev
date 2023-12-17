@@ -58,7 +58,7 @@ GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::construct
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!CLASS_TYPE_IDENTIFIER% GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::bang_%!WEAK_REF_TYPE_IDENTIFIER% (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_%!CLASS_TYPE_IDENTIFIER% GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::bang_%!WEAK_REF_TYPE_IDENTIFIER% (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_%!CLASS_TYPE_IDENTIFIER% result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;

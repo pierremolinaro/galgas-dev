@@ -1,4 +1,4 @@
-#include "galgas2/C_Compiler.h"
+#include "galgas2/Compiler.h"
 #include "galgas2/C_galgas_io.h"
 #include "galgas2/C_galgas_CLI_Options.h"
 #include "utilities/C_PrologueEpilogue.h"
@@ -61,7 +61,7 @@ GALGAS_sortedListDeclarationAST_2D_weak GALGAS_sortedListDeclarationAST_2D_weak:
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_sortedListDeclarationAST GALGAS_sortedListDeclarationAST_2D_weak::bang_sortedListDeclarationAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_sortedListDeclarationAST GALGAS_sortedListDeclarationAST_2D_weak::bang_sortedListDeclarationAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_sortedListDeclarationAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -104,7 +104,7 @@ AC_GALGAS_root * GALGAS_sortedListDeclarationAST_2D_weak::clonedObject (void) co
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_sortedListDeclarationAST_2D_weak GALGAS_sortedListDeclarationAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                C_Compiler * inCompiler
+                                                                                                Compiler * inCompiler
                                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_sortedListDeclarationAST_2D_weak result ;
   const GALGAS_sortedListDeclarationAST_2D_weak * p = (const GALGAS_sortedListDeclarationAST_2D_weak *) inObject.embeddedObject () ;
@@ -273,7 +273,7 @@ void GALGAS_sortDescriptorListForGeneration::addAssign_operation (const GALGAS_u
 void GALGAS_sortDescriptorListForGeneration::setter_append (const GALGAS_unifiedTypeMapEntry inOperand0,
                                                             const GALGAS_string inOperand1,
                                                             const GALGAS_bool inOperand2,
-                                                            C_Compiler * /* inCompiler */
+                                                            Compiler * /* inCompiler */
                                                             COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
@@ -291,7 +291,7 @@ void GALGAS_sortDescriptorListForGeneration::setter_insertAtIndex (const GALGAS_
                                                                    const GALGAS_string inOperand1,
                                                                    const GALGAS_bool inOperand2,
                                                                    const GALGAS_uint inInsertionIndex,
-                                                                   C_Compiler * inCompiler
+                                                                   Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
@@ -313,7 +313,7 @@ void GALGAS_sortDescriptorListForGeneration::setter_removeAtIndex (GALGAS_unifie
                                                                    GALGAS_string & outOperand1,
                                                                    GALGAS_bool & outOperand2,
                                                                    const GALGAS_uint inRemoveIndex,
-                                                                   C_Compiler * inCompiler
+                                                                   Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inRemoveIndex.isValid ()) {
@@ -349,7 +349,7 @@ void GALGAS_sortDescriptorListForGeneration::setter_removeAtIndex (GALGAS_unifie
 void GALGAS_sortDescriptorListForGeneration::setter_popFirst (GALGAS_unifiedTypeMapEntry & outOperand0,
                                                               GALGAS_string & outOperand1,
                                                               GALGAS_bool & outOperand2,
-                                                              C_Compiler * inCompiler
+                                                              Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
@@ -371,7 +371,7 @@ void GALGAS_sortDescriptorListForGeneration::setter_popFirst (GALGAS_unifiedType
 void GALGAS_sortDescriptorListForGeneration::setter_popLast (GALGAS_unifiedTypeMapEntry & outOperand0,
                                                              GALGAS_string & outOperand1,
                                                              GALGAS_bool & outOperand2,
-                                                             C_Compiler * inCompiler
+                                                             Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
@@ -393,7 +393,7 @@ void GALGAS_sortDescriptorListForGeneration::setter_popLast (GALGAS_unifiedTypeM
 void GALGAS_sortDescriptorListForGeneration::method_first (GALGAS_unifiedTypeMapEntry & outOperand0,
                                                            GALGAS_string & outOperand1,
                                                            GALGAS_bool & outOperand2,
-                                                           C_Compiler * inCompiler
+                                                           Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readFirst (attributes, inCompiler COMMA_THERE) ;
@@ -415,7 +415,7 @@ void GALGAS_sortDescriptorListForGeneration::method_first (GALGAS_unifiedTypeMap
 void GALGAS_sortDescriptorListForGeneration::method_last (GALGAS_unifiedTypeMapEntry & outOperand0,
                                                           GALGAS_string & outOperand1,
                                                           GALGAS_bool & outOperand2,
-                                                          C_Compiler * inCompiler
+                                                          Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readLast (attributes, inCompiler COMMA_THERE) ;
@@ -435,7 +435,7 @@ void GALGAS_sortDescriptorListForGeneration::method_last (GALGAS_unifiedTypeMapE
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_sortDescriptorListForGeneration GALGAS_sortDescriptorListForGeneration::add_operation (const GALGAS_sortDescriptorListForGeneration & inOperand,
-                                                                                              C_Compiler * /* inCompiler */
+                                                                                              Compiler * /* inCompiler */
                                                                                               COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_sortDescriptorListForGeneration result ;
   if (isValid () && inOperand.isValid ()) {
@@ -448,7 +448,7 @@ GALGAS_sortDescriptorListForGeneration GALGAS_sortDescriptorListForGeneration::a
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_sortDescriptorListForGeneration GALGAS_sortDescriptorListForGeneration::getter_subListWithRange (const GALGAS_range & inRange,
-                                                                                                        C_Compiler * inCompiler
+                                                                                                        Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) const {
   GALGAS_sortDescriptorListForGeneration result = GALGAS_sortDescriptorListForGeneration::constructor_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
@@ -458,7 +458,7 @@ GALGAS_sortDescriptorListForGeneration GALGAS_sortDescriptorListForGeneration::g
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_sortDescriptorListForGeneration GALGAS_sortDescriptorListForGeneration::getter_subListFromIndex (const GALGAS_uint & inIndex,
-                                                                                                        C_Compiler * inCompiler
+                                                                                                        Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) const {
   GALGAS_sortDescriptorListForGeneration result = GALGAS_sortDescriptorListForGeneration::constructor_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
@@ -468,7 +468,7 @@ GALGAS_sortDescriptorListForGeneration GALGAS_sortDescriptorListForGeneration::g
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_sortDescriptorListForGeneration GALGAS_sortDescriptorListForGeneration::getter_subListToIndex (const GALGAS_uint & inIndex,
-                                                                                                      C_Compiler * inCompiler
+                                                                                                      Compiler * inCompiler
                                                                                                       COMMA_LOCATION_ARGS) const {
   GALGAS_sortDescriptorListForGeneration result = GALGAS_sortDescriptorListForGeneration::constructor_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
@@ -478,7 +478,7 @@ GALGAS_sortDescriptorListForGeneration GALGAS_sortDescriptorListForGeneration::g
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_sortDescriptorListForGeneration::plusAssign_operation (const GALGAS_sortDescriptorListForGeneration inOperand,
-                                                                   C_Compiler * /* inCompiler */
+                                                                   Compiler * /* inCompiler */
                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
@@ -487,7 +487,7 @@ void GALGAS_sortDescriptorListForGeneration::plusAssign_operation (const GALGAS_
 
 void GALGAS_sortDescriptorListForGeneration::setter_setMAttributeTypeIndexAtIndex (GALGAS_unifiedTypeMapEntry inOperand,
                                                                                    GALGAS_uint inIndex,
-                                                                                   C_Compiler * inCompiler
+                                                                                   Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) {
   cCollectionElement_sortDescriptorListForGeneration * p = (cCollectionElement_sortDescriptorListForGeneration *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -500,7 +500,7 @@ void GALGAS_sortDescriptorListForGeneration::setter_setMAttributeTypeIndexAtInde
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_unifiedTypeMapEntry GALGAS_sortDescriptorListForGeneration::getter_mAttributeTypeIndexAtIndex (const GALGAS_uint & inIndex,
-                                                                                                      C_Compiler * inCompiler
+                                                                                                      Compiler * inCompiler
                                                                                                       COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_sortDescriptorListForGeneration * p = (cCollectionElement_sortDescriptorListForGeneration *) attributes.ptr () ;
@@ -516,7 +516,7 @@ GALGAS_unifiedTypeMapEntry GALGAS_sortDescriptorListForGeneration::getter_mAttri
 
 void GALGAS_sortDescriptorListForGeneration::setter_setMAttributeNameAtIndex (GALGAS_string inOperand,
                                                                               GALGAS_uint inIndex,
-                                                                              C_Compiler * inCompiler
+                                                                              Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) {
   cCollectionElement_sortDescriptorListForGeneration * p = (cCollectionElement_sortDescriptorListForGeneration *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -529,7 +529,7 @@ void GALGAS_sortDescriptorListForGeneration::setter_setMAttributeNameAtIndex (GA
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_sortDescriptorListForGeneration::getter_mAttributeNameAtIndex (const GALGAS_uint & inIndex,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_sortDescriptorListForGeneration * p = (cCollectionElement_sortDescriptorListForGeneration *) attributes.ptr () ;
@@ -545,7 +545,7 @@ GALGAS_string GALGAS_sortDescriptorListForGeneration::getter_mAttributeNameAtInd
 
 void GALGAS_sortDescriptorListForGeneration::setter_setMAscendingOrderAtIndex (GALGAS_bool inOperand,
                                                                                GALGAS_uint inIndex,
-                                                                               C_Compiler * inCompiler
+                                                                               Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) {
   cCollectionElement_sortDescriptorListForGeneration * p = (cCollectionElement_sortDescriptorListForGeneration *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -558,7 +558,7 @@ void GALGAS_sortDescriptorListForGeneration::setter_setMAscendingOrderAtIndex (G
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_sortDescriptorListForGeneration::getter_mAscendingOrderAtIndex (const GALGAS_uint & inIndex,
-                                                                                   C_Compiler * inCompiler
+                                                                                   Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_sortDescriptorListForGeneration * p = (cCollectionElement_sortDescriptorListForGeneration *) attributes.ptr () ;
@@ -645,7 +645,7 @@ AC_GALGAS_root * GALGAS_sortDescriptorListForGeneration::clonedObject (void) con
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_sortDescriptorListForGeneration GALGAS_sortDescriptorListForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                              C_Compiler * inCompiler
+                                                                                              Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_sortDescriptorListForGeneration result ;
   const GALGAS_sortDescriptorListForGeneration * p = (const GALGAS_sortDescriptorListForGeneration *) inObject.embeddedObject () ;
@@ -713,7 +713,7 @@ GALGAS_structDeclarationAST_2D_weak GALGAS_structDeclarationAST_2D_weak::constru
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_structDeclarationAST GALGAS_structDeclarationAST_2D_weak::bang_structDeclarationAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_structDeclarationAST GALGAS_structDeclarationAST_2D_weak::bang_structDeclarationAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_structDeclarationAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -756,7 +756,7 @@ AC_GALGAS_root * GALGAS_structDeclarationAST_2D_weak::clonedObject (void) const 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_structDeclarationAST_2D_weak GALGAS_structDeclarationAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                        C_Compiler * inCompiler
+                                                                                        Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_structDeclarationAST_2D_weak result ;
   const GALGAS_structDeclarationAST_2D_weak * p = (const GALGAS_structDeclarationAST_2D_weak *) inObject.embeddedObject () ;
@@ -824,7 +824,7 @@ GALGAS_typealiasDeclarationAST_2D_weak GALGAS_typealiasDeclarationAST_2D_weak::c
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typealiasDeclarationAST GALGAS_typealiasDeclarationAST_2D_weak::bang_typealiasDeclarationAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_typealiasDeclarationAST GALGAS_typealiasDeclarationAST_2D_weak::bang_typealiasDeclarationAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_typealiasDeclarationAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -867,7 +867,7 @@ AC_GALGAS_root * GALGAS_typealiasDeclarationAST_2D_weak::clonedObject (void) con
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_typealiasDeclarationAST_2D_weak GALGAS_typealiasDeclarationAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                              C_Compiler * inCompiler
+                                                                                              Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_typealiasDeclarationAST_2D_weak result ;
   const GALGAS_typealiasDeclarationAST_2D_weak * p = (const GALGAS_typealiasDeclarationAST_2D_weak *) inObject.embeddedObject () ;
@@ -1058,7 +1058,7 @@ void GALGAS_formalInputParameterListAST::setter_append (const GALGAS_lstring inO
                                                         const GALGAS_lstring inOperand2,
                                                         const GALGAS_bool inOperand3,
                                                         const GALGAS_bool inOperand4,
-                                                        C_Compiler * /* inCompiler */
+                                                        Compiler * /* inCompiler */
                                                         COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
@@ -1078,7 +1078,7 @@ void GALGAS_formalInputParameterListAST::setter_insertAtIndex (const GALGAS_lstr
                                                                const GALGAS_bool inOperand3,
                                                                const GALGAS_bool inOperand4,
                                                                const GALGAS_uint inInsertionIndex,
-                                                               C_Compiler * inCompiler
+                                                               Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
@@ -1102,7 +1102,7 @@ void GALGAS_formalInputParameterListAST::setter_removeAtIndex (GALGAS_lstring & 
                                                                GALGAS_bool & outOperand3,
                                                                GALGAS_bool & outOperand4,
                                                                const GALGAS_uint inRemoveIndex,
-                                                               C_Compiler * inCompiler
+                                                               Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inRemoveIndex.isValid ()) {
@@ -1148,7 +1148,7 @@ void GALGAS_formalInputParameterListAST::setter_popFirst (GALGAS_lstring & outOp
                                                           GALGAS_lstring & outOperand2,
                                                           GALGAS_bool & outOperand3,
                                                           GALGAS_bool & outOperand4,
-                                                          C_Compiler * inCompiler
+                                                          Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
@@ -1176,7 +1176,7 @@ void GALGAS_formalInputParameterListAST::setter_popLast (GALGAS_lstring & outOpe
                                                          GALGAS_lstring & outOperand2,
                                                          GALGAS_bool & outOperand3,
                                                          GALGAS_bool & outOperand4,
-                                                         C_Compiler * inCompiler
+                                                         Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
@@ -1204,7 +1204,7 @@ void GALGAS_formalInputParameterListAST::method_first (GALGAS_lstring & outOpera
                                                        GALGAS_lstring & outOperand2,
                                                        GALGAS_bool & outOperand3,
                                                        GALGAS_bool & outOperand4,
-                                                       C_Compiler * inCompiler
+                                                       Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readFirst (attributes, inCompiler COMMA_THERE) ;
@@ -1232,7 +1232,7 @@ void GALGAS_formalInputParameterListAST::method_last (GALGAS_lstring & outOperan
                                                       GALGAS_lstring & outOperand2,
                                                       GALGAS_bool & outOperand3,
                                                       GALGAS_bool & outOperand4,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readLast (attributes, inCompiler COMMA_THERE) ;
@@ -1256,7 +1256,7 @@ void GALGAS_formalInputParameterListAST::method_last (GALGAS_lstring & outOperan
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_formalInputParameterListAST GALGAS_formalInputParameterListAST::add_operation (const GALGAS_formalInputParameterListAST & inOperand,
-                                                                                      C_Compiler * /* inCompiler */
+                                                                                      Compiler * /* inCompiler */
                                                                                       COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_formalInputParameterListAST result ;
   if (isValid () && inOperand.isValid ()) {
@@ -1269,7 +1269,7 @@ GALGAS_formalInputParameterListAST GALGAS_formalInputParameterListAST::add_opera
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_formalInputParameterListAST GALGAS_formalInputParameterListAST::getter_subListWithRange (const GALGAS_range & inRange,
-                                                                                                C_Compiler * inCompiler
+                                                                                                Compiler * inCompiler
                                                                                                 COMMA_LOCATION_ARGS) const {
   GALGAS_formalInputParameterListAST result = GALGAS_formalInputParameterListAST::constructor_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
@@ -1279,7 +1279,7 @@ GALGAS_formalInputParameterListAST GALGAS_formalInputParameterListAST::getter_su
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_formalInputParameterListAST GALGAS_formalInputParameterListAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
-                                                                                                C_Compiler * inCompiler
+                                                                                                Compiler * inCompiler
                                                                                                 COMMA_LOCATION_ARGS) const {
   GALGAS_formalInputParameterListAST result = GALGAS_formalInputParameterListAST::constructor_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
@@ -1289,7 +1289,7 @@ GALGAS_formalInputParameterListAST GALGAS_formalInputParameterListAST::getter_su
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_formalInputParameterListAST GALGAS_formalInputParameterListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
-                                                                                              C_Compiler * inCompiler
+                                                                                              Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) const {
   GALGAS_formalInputParameterListAST result = GALGAS_formalInputParameterListAST::constructor_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
@@ -1299,7 +1299,7 @@ GALGAS_formalInputParameterListAST GALGAS_formalInputParameterListAST::getter_su
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_formalInputParameterListAST::plusAssign_operation (const GALGAS_formalInputParameterListAST inOperand,
-                                                               C_Compiler * /* inCompiler */
+                                                               Compiler * /* inCompiler */
                                                                COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
@@ -1308,7 +1308,7 @@ void GALGAS_formalInputParameterListAST::plusAssign_operation (const GALGAS_form
 
 void GALGAS_formalInputParameterListAST::setter_setMFormalSelectorAtIndex (GALGAS_lstring inOperand,
                                                                            GALGAS_uint inIndex,
-                                                                           C_Compiler * inCompiler
+                                                                           Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) {
   cCollectionElement_formalInputParameterListAST * p = (cCollectionElement_formalInputParameterListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -1321,7 +1321,7 @@ void GALGAS_formalInputParameterListAST::setter_setMFormalSelectorAtIndex (GALGA
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_formalInputParameterListAST::getter_mFormalSelectorAtIndex (const GALGAS_uint & inIndex,
-                                                                                  C_Compiler * inCompiler
+                                                                                  Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_formalInputParameterListAST * p = (cCollectionElement_formalInputParameterListAST *) attributes.ptr () ;
@@ -1337,7 +1337,7 @@ GALGAS_lstring GALGAS_formalInputParameterListAST::getter_mFormalSelectorAtIndex
 
 void GALGAS_formalInputParameterListAST::setter_setMFormalArgumentTypeNameAtIndex (GALGAS_lstring inOperand,
                                                                                    GALGAS_uint inIndex,
-                                                                                   C_Compiler * inCompiler
+                                                                                   Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) {
   cCollectionElement_formalInputParameterListAST * p = (cCollectionElement_formalInputParameterListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -1350,7 +1350,7 @@ void GALGAS_formalInputParameterListAST::setter_setMFormalArgumentTypeNameAtInde
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_formalInputParameterListAST::getter_mFormalArgumentTypeNameAtIndex (const GALGAS_uint & inIndex,
-                                                                                          C_Compiler * inCompiler
+                                                                                          Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_formalInputParameterListAST * p = (cCollectionElement_formalInputParameterListAST *) attributes.ptr () ;
@@ -1366,7 +1366,7 @@ GALGAS_lstring GALGAS_formalInputParameterListAST::getter_mFormalArgumentTypeNam
 
 void GALGAS_formalInputParameterListAST::setter_setMFormalArgumentNameAtIndex (GALGAS_lstring inOperand,
                                                                                GALGAS_uint inIndex,
-                                                                               C_Compiler * inCompiler
+                                                                               Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) {
   cCollectionElement_formalInputParameterListAST * p = (cCollectionElement_formalInputParameterListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -1379,7 +1379,7 @@ void GALGAS_formalInputParameterListAST::setter_setMFormalArgumentNameAtIndex (G
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_formalInputParameterListAST::getter_mFormalArgumentNameAtIndex (const GALGAS_uint & inIndex,
-                                                                                      C_Compiler * inCompiler
+                                                                                      Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_formalInputParameterListAST * p = (cCollectionElement_formalInputParameterListAST *) attributes.ptr () ;
@@ -1395,7 +1395,7 @@ GALGAS_lstring GALGAS_formalInputParameterListAST::getter_mFormalArgumentNameAtI
 
 void GALGAS_formalInputParameterListAST::setter_setMIsUnusedAtIndex (GALGAS_bool inOperand,
                                                                      GALGAS_uint inIndex,
-                                                                     C_Compiler * inCompiler
+                                                                     Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) {
   cCollectionElement_formalInputParameterListAST * p = (cCollectionElement_formalInputParameterListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -1408,7 +1408,7 @@ void GALGAS_formalInputParameterListAST::setter_setMIsUnusedAtIndex (GALGAS_bool
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_formalInputParameterListAST::getter_mIsUnusedAtIndex (const GALGAS_uint & inIndex,
-                                                                         C_Compiler * inCompiler
+                                                                         Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_formalInputParameterListAST * p = (cCollectionElement_formalInputParameterListAST *) attributes.ptr () ;
@@ -1424,7 +1424,7 @@ GALGAS_bool GALGAS_formalInputParameterListAST::getter_mIsUnusedAtIndex (const G
 
 void GALGAS_formalInputParameterListAST::setter_setMIsConstantAtIndex (GALGAS_bool inOperand,
                                                                        GALGAS_uint inIndex,
-                                                                       C_Compiler * inCompiler
+                                                                       Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) {
   cCollectionElement_formalInputParameterListAST * p = (cCollectionElement_formalInputParameterListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -1437,7 +1437,7 @@ void GALGAS_formalInputParameterListAST::setter_setMIsConstantAtIndex (GALGAS_bo
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_formalInputParameterListAST::getter_mIsConstantAtIndex (const GALGAS_uint & inIndex,
-                                                                           C_Compiler * inCompiler
+                                                                           Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_formalInputParameterListAST * p = (cCollectionElement_formalInputParameterListAST *) attributes.ptr () ;
@@ -1540,7 +1540,7 @@ AC_GALGAS_root * GALGAS_formalInputParameterListAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_formalInputParameterListAST GALGAS_formalInputParameterListAST::extractObject (const GALGAS_object & inObject,
-                                                                                      C_Compiler * inCompiler
+                                                                                      Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_formalInputParameterListAST result ;
   const GALGAS_formalInputParameterListAST * p = (const GALGAS_formalInputParameterListAST *) inObject.embeddedObject () ;
@@ -1608,7 +1608,7 @@ GALGAS_abstractExtensionGetterAST_2D_weak GALGAS_abstractExtensionGetterAST_2D_w
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_abstractExtensionGetterAST GALGAS_abstractExtensionGetterAST_2D_weak::bang_abstractExtensionGetterAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_abstractExtensionGetterAST GALGAS_abstractExtensionGetterAST_2D_weak::bang_abstractExtensionGetterAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_abstractExtensionGetterAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -1651,7 +1651,7 @@ AC_GALGAS_root * GALGAS_abstractExtensionGetterAST_2D_weak::clonedObject (void) 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionGetterAST_2D_weak GALGAS_abstractExtensionGetterAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                    C_Compiler * inCompiler
+                                                                                                    Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_abstractExtensionGetterAST_2D_weak result ;
   const GALGAS_abstractExtensionGetterAST_2D_weak * p = (const GALGAS_abstractExtensionGetterAST_2D_weak *) inObject.embeddedObject () ;
@@ -1842,7 +1842,7 @@ void GALGAS_formalInputParameterListForGeneration::setter_append (const GALGAS_l
                                                                   const GALGAS_string inOperand2,
                                                                   const GALGAS_lstring inOperand3,
                                                                   const GALGAS_bool inOperand4,
-                                                                  C_Compiler * /* inCompiler */
+                                                                  Compiler * /* inCompiler */
                                                                   COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
@@ -1862,7 +1862,7 @@ void GALGAS_formalInputParameterListForGeneration::setter_insertAtIndex (const G
                                                                          const GALGAS_lstring inOperand3,
                                                                          const GALGAS_bool inOperand4,
                                                                          const GALGAS_uint inInsertionIndex,
-                                                                         C_Compiler * inCompiler
+                                                                         Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
@@ -1886,7 +1886,7 @@ void GALGAS_formalInputParameterListForGeneration::setter_removeAtIndex (GALGAS_
                                                                          GALGAS_lstring & outOperand3,
                                                                          GALGAS_bool & outOperand4,
                                                                          const GALGAS_uint inRemoveIndex,
-                                                                         C_Compiler * inCompiler
+                                                                         Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inRemoveIndex.isValid ()) {
@@ -1932,7 +1932,7 @@ void GALGAS_formalInputParameterListForGeneration::setter_popFirst (GALGAS_lstri
                                                                     GALGAS_string & outOperand2,
                                                                     GALGAS_lstring & outOperand3,
                                                                     GALGAS_bool & outOperand4,
-                                                                    C_Compiler * inCompiler
+                                                                    Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
@@ -1960,7 +1960,7 @@ void GALGAS_formalInputParameterListForGeneration::setter_popLast (GALGAS_lstrin
                                                                    GALGAS_string & outOperand2,
                                                                    GALGAS_lstring & outOperand3,
                                                                    GALGAS_bool & outOperand4,
-                                                                   C_Compiler * inCompiler
+                                                                   Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
@@ -1988,7 +1988,7 @@ void GALGAS_formalInputParameterListForGeneration::method_first (GALGAS_lstring 
                                                                  GALGAS_string & outOperand2,
                                                                  GALGAS_lstring & outOperand3,
                                                                  GALGAS_bool & outOperand4,
-                                                                 C_Compiler * inCompiler
+                                                                 Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readFirst (attributes, inCompiler COMMA_THERE) ;
@@ -2016,7 +2016,7 @@ void GALGAS_formalInputParameterListForGeneration::method_last (GALGAS_lstring &
                                                                 GALGAS_string & outOperand2,
                                                                 GALGAS_lstring & outOperand3,
                                                                 GALGAS_bool & outOperand4,
-                                                                C_Compiler * inCompiler
+                                                                Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readLast (attributes, inCompiler COMMA_THERE) ;
@@ -2040,7 +2040,7 @@ void GALGAS_formalInputParameterListForGeneration::method_last (GALGAS_lstring &
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_formalInputParameterListForGeneration GALGAS_formalInputParameterListForGeneration::add_operation (const GALGAS_formalInputParameterListForGeneration & inOperand,
-                                                                                                          C_Compiler * /* inCompiler */
+                                                                                                          Compiler * /* inCompiler */
                                                                                                           COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_formalInputParameterListForGeneration result ;
   if (isValid () && inOperand.isValid ()) {
@@ -2053,7 +2053,7 @@ GALGAS_formalInputParameterListForGeneration GALGAS_formalInputParameterListForG
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_formalInputParameterListForGeneration GALGAS_formalInputParameterListForGeneration::getter_subListWithRange (const GALGAS_range & inRange,
-                                                                                                                    C_Compiler * inCompiler
+                                                                                                                    Compiler * inCompiler
                                                                                                                     COMMA_LOCATION_ARGS) const {
   GALGAS_formalInputParameterListForGeneration result = GALGAS_formalInputParameterListForGeneration::constructor_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
@@ -2063,7 +2063,7 @@ GALGAS_formalInputParameterListForGeneration GALGAS_formalInputParameterListForG
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_formalInputParameterListForGeneration GALGAS_formalInputParameterListForGeneration::getter_subListFromIndex (const GALGAS_uint & inIndex,
-                                                                                                                    C_Compiler * inCompiler
+                                                                                                                    Compiler * inCompiler
                                                                                                                     COMMA_LOCATION_ARGS) const {
   GALGAS_formalInputParameterListForGeneration result = GALGAS_formalInputParameterListForGeneration::constructor_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
@@ -2073,7 +2073,7 @@ GALGAS_formalInputParameterListForGeneration GALGAS_formalInputParameterListForG
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_formalInputParameterListForGeneration GALGAS_formalInputParameterListForGeneration::getter_subListToIndex (const GALGAS_uint & inIndex,
-                                                                                                                  C_Compiler * inCompiler
+                                                                                                                  Compiler * inCompiler
                                                                                                                   COMMA_LOCATION_ARGS) const {
   GALGAS_formalInputParameterListForGeneration result = GALGAS_formalInputParameterListForGeneration::constructor_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
@@ -2083,7 +2083,7 @@ GALGAS_formalInputParameterListForGeneration GALGAS_formalInputParameterListForG
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_formalInputParameterListForGeneration::plusAssign_operation (const GALGAS_formalInputParameterListForGeneration inOperand,
-                                                                         C_Compiler * /* inCompiler */
+                                                                         Compiler * /* inCompiler */
                                                                          COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
@@ -2092,7 +2092,7 @@ void GALGAS_formalInputParameterListForGeneration::plusAssign_operation (const G
 
 void GALGAS_formalInputParameterListForGeneration::setter_setMFormalSelectorAtIndex (GALGAS_lstring inOperand,
                                                                                      GALGAS_uint inIndex,
-                                                                                     C_Compiler * inCompiler
+                                                                                     Compiler * inCompiler
                                                                                      COMMA_LOCATION_ARGS) {
   cCollectionElement_formalInputParameterListForGeneration * p = (cCollectionElement_formalInputParameterListForGeneration *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -2105,7 +2105,7 @@ void GALGAS_formalInputParameterListForGeneration::setter_setMFormalSelectorAtIn
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_formalInputParameterListForGeneration::getter_mFormalSelectorAtIndex (const GALGAS_uint & inIndex,
-                                                                                            C_Compiler * inCompiler
+                                                                                            Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_formalInputParameterListForGeneration * p = (cCollectionElement_formalInputParameterListForGeneration *) attributes.ptr () ;
@@ -2121,7 +2121,7 @@ GALGAS_lstring GALGAS_formalInputParameterListForGeneration::getter_mFormalSelec
 
 void GALGAS_formalInputParameterListForGeneration::setter_setMFormalArgumentTypeAtIndex (GALGAS_unifiedTypeMapEntry inOperand,
                                                                                          GALGAS_uint inIndex,
-                                                                                         C_Compiler * inCompiler
+                                                                                         Compiler * inCompiler
                                                                                          COMMA_LOCATION_ARGS) {
   cCollectionElement_formalInputParameterListForGeneration * p = (cCollectionElement_formalInputParameterListForGeneration *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -2134,7 +2134,7 @@ void GALGAS_formalInputParameterListForGeneration::setter_setMFormalArgumentType
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_unifiedTypeMapEntry GALGAS_formalInputParameterListForGeneration::getter_mFormalArgumentTypeAtIndex (const GALGAS_uint & inIndex,
-                                                                                                            C_Compiler * inCompiler
+                                                                                                            Compiler * inCompiler
                                                                                                             COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_formalInputParameterListForGeneration * p = (cCollectionElement_formalInputParameterListForGeneration *) attributes.ptr () ;
@@ -2150,7 +2150,7 @@ GALGAS_unifiedTypeMapEntry GALGAS_formalInputParameterListForGeneration::getter_
 
 void GALGAS_formalInputParameterListForGeneration::setter_setMFormalArgumentCppNameAtIndex (GALGAS_string inOperand,
                                                                                             GALGAS_uint inIndex,
-                                                                                            C_Compiler * inCompiler
+                                                                                            Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) {
   cCollectionElement_formalInputParameterListForGeneration * p = (cCollectionElement_formalInputParameterListForGeneration *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -2163,7 +2163,7 @@ void GALGAS_formalInputParameterListForGeneration::setter_setMFormalArgumentCppN
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_formalInputParameterListForGeneration::getter_mFormalArgumentCppNameAtIndex (const GALGAS_uint & inIndex,
-                                                                                                  C_Compiler * inCompiler
+                                                                                                  Compiler * inCompiler
                                                                                                   COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_formalInputParameterListForGeneration * p = (cCollectionElement_formalInputParameterListForGeneration *) attributes.ptr () ;
@@ -2179,7 +2179,7 @@ GALGAS_string GALGAS_formalInputParameterListForGeneration::getter_mFormalArgume
 
 void GALGAS_formalInputParameterListForGeneration::setter_setMFormalArgumentNameAtIndex (GALGAS_lstring inOperand,
                                                                                          GALGAS_uint inIndex,
-                                                                                         C_Compiler * inCompiler
+                                                                                         Compiler * inCompiler
                                                                                          COMMA_LOCATION_ARGS) {
   cCollectionElement_formalInputParameterListForGeneration * p = (cCollectionElement_formalInputParameterListForGeneration *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -2192,7 +2192,7 @@ void GALGAS_formalInputParameterListForGeneration::setter_setMFormalArgumentName
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_formalInputParameterListForGeneration::getter_mFormalArgumentNameAtIndex (const GALGAS_uint & inIndex,
-                                                                                                C_Compiler * inCompiler
+                                                                                                Compiler * inCompiler
                                                                                                 COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_formalInputParameterListForGeneration * p = (cCollectionElement_formalInputParameterListForGeneration *) attributes.ptr () ;
@@ -2208,7 +2208,7 @@ GALGAS_lstring GALGAS_formalInputParameterListForGeneration::getter_mFormalArgum
 
 void GALGAS_formalInputParameterListForGeneration::setter_setMIsConstantAtIndex (GALGAS_bool inOperand,
                                                                                  GALGAS_uint inIndex,
-                                                                                 C_Compiler * inCompiler
+                                                                                 Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) {
   cCollectionElement_formalInputParameterListForGeneration * p = (cCollectionElement_formalInputParameterListForGeneration *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -2221,7 +2221,7 @@ void GALGAS_formalInputParameterListForGeneration::setter_setMIsConstantAtIndex 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_formalInputParameterListForGeneration::getter_mIsConstantAtIndex (const GALGAS_uint & inIndex,
-                                                                                     C_Compiler * inCompiler
+                                                                                     Compiler * inCompiler
                                                                                      COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_formalInputParameterListForGeneration * p = (cCollectionElement_formalInputParameterListForGeneration *) attributes.ptr () ;
@@ -2324,7 +2324,7 @@ AC_GALGAS_root * GALGAS_formalInputParameterListForGeneration::clonedObject (voi
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_formalInputParameterListForGeneration GALGAS_formalInputParameterListForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                          C_Compiler * inCompiler
+                                                                                                          Compiler * inCompiler
                                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_formalInputParameterListForGeneration result ;
   const GALGAS_formalInputParameterListForGeneration * p = (const GALGAS_formalInputParameterListForGeneration *) inObject.embeddedObject () ;
@@ -2392,7 +2392,7 @@ GALGAS_abstractExtensionMethodAST_2D_weak GALGAS_abstractExtensionMethodAST_2D_w
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_abstractExtensionMethodAST GALGAS_abstractExtensionMethodAST_2D_weak::bang_abstractExtensionMethodAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_abstractExtensionMethodAST GALGAS_abstractExtensionMethodAST_2D_weak::bang_abstractExtensionMethodAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_abstractExtensionMethodAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -2435,7 +2435,7 @@ AC_GALGAS_root * GALGAS_abstractExtensionMethodAST_2D_weak::clonedObject (void) 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionMethodAST_2D_weak GALGAS_abstractExtensionMethodAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                    C_Compiler * inCompiler
+                                                                                                    Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_abstractExtensionMethodAST_2D_weak result ;
   const GALGAS_abstractExtensionMethodAST_2D_weak * p = (const GALGAS_abstractExtensionMethodAST_2D_weak *) inObject.embeddedObject () ;
@@ -2626,7 +2626,7 @@ void GALGAS_formalParameterListForGeneration::setter_append (const GALGAS_lstrin
                                                              const GALGAS_unifiedTypeMapEntry inOperand2,
                                                              const GALGAS_lstring inOperand3,
                                                              const GALGAS_string inOperand4,
-                                                             C_Compiler * /* inCompiler */
+                                                             Compiler * /* inCompiler */
                                                              COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
@@ -2646,7 +2646,7 @@ void GALGAS_formalParameterListForGeneration::setter_insertAtIndex (const GALGAS
                                                                     const GALGAS_lstring inOperand3,
                                                                     const GALGAS_string inOperand4,
                                                                     const GALGAS_uint inInsertionIndex,
-                                                                    C_Compiler * inCompiler
+                                                                    Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
@@ -2670,7 +2670,7 @@ void GALGAS_formalParameterListForGeneration::setter_removeAtIndex (GALGAS_lstri
                                                                     GALGAS_lstring & outOperand3,
                                                                     GALGAS_string & outOperand4,
                                                                     const GALGAS_uint inRemoveIndex,
-                                                                    C_Compiler * inCompiler
+                                                                    Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inRemoveIndex.isValid ()) {
@@ -2716,7 +2716,7 @@ void GALGAS_formalParameterListForGeneration::setter_popFirst (GALGAS_lstring & 
                                                                GALGAS_unifiedTypeMapEntry & outOperand2,
                                                                GALGAS_lstring & outOperand3,
                                                                GALGAS_string & outOperand4,
-                                                               C_Compiler * inCompiler
+                                                               Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
@@ -2744,7 +2744,7 @@ void GALGAS_formalParameterListForGeneration::setter_popLast (GALGAS_lstring & o
                                                               GALGAS_unifiedTypeMapEntry & outOperand2,
                                                               GALGAS_lstring & outOperand3,
                                                               GALGAS_string & outOperand4,
-                                                              C_Compiler * inCompiler
+                                                              Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
@@ -2772,7 +2772,7 @@ void GALGAS_formalParameterListForGeneration::method_first (GALGAS_lstring & out
                                                             GALGAS_unifiedTypeMapEntry & outOperand2,
                                                             GALGAS_lstring & outOperand3,
                                                             GALGAS_string & outOperand4,
-                                                            C_Compiler * inCompiler
+                                                            Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readFirst (attributes, inCompiler COMMA_THERE) ;
@@ -2800,7 +2800,7 @@ void GALGAS_formalParameterListForGeneration::method_last (GALGAS_lstring & outO
                                                            GALGAS_unifiedTypeMapEntry & outOperand2,
                                                            GALGAS_lstring & outOperand3,
                                                            GALGAS_string & outOperand4,
-                                                           C_Compiler * inCompiler
+                                                           Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readLast (attributes, inCompiler COMMA_THERE) ;
@@ -2824,7 +2824,7 @@ void GALGAS_formalParameterListForGeneration::method_last (GALGAS_lstring & outO
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_formalParameterListForGeneration GALGAS_formalParameterListForGeneration::add_operation (const GALGAS_formalParameterListForGeneration & inOperand,
-                                                                                                C_Compiler * /* inCompiler */
+                                                                                                Compiler * /* inCompiler */
                                                                                                 COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_formalParameterListForGeneration result ;
   if (isValid () && inOperand.isValid ()) {
@@ -2837,7 +2837,7 @@ GALGAS_formalParameterListForGeneration GALGAS_formalParameterListForGeneration:
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_formalParameterListForGeneration GALGAS_formalParameterListForGeneration::getter_subListWithRange (const GALGAS_range & inRange,
-                                                                                                          C_Compiler * inCompiler
+                                                                                                          Compiler * inCompiler
                                                                                                           COMMA_LOCATION_ARGS) const {
   GALGAS_formalParameterListForGeneration result = GALGAS_formalParameterListForGeneration::constructor_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
@@ -2847,7 +2847,7 @@ GALGAS_formalParameterListForGeneration GALGAS_formalParameterListForGeneration:
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_formalParameterListForGeneration GALGAS_formalParameterListForGeneration::getter_subListFromIndex (const GALGAS_uint & inIndex,
-                                                                                                          C_Compiler * inCompiler
+                                                                                                          Compiler * inCompiler
                                                                                                           COMMA_LOCATION_ARGS) const {
   GALGAS_formalParameterListForGeneration result = GALGAS_formalParameterListForGeneration::constructor_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
@@ -2857,7 +2857,7 @@ GALGAS_formalParameterListForGeneration GALGAS_formalParameterListForGeneration:
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_formalParameterListForGeneration GALGAS_formalParameterListForGeneration::getter_subListToIndex (const GALGAS_uint & inIndex,
-                                                                                                        C_Compiler * inCompiler
+                                                                                                        Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) const {
   GALGAS_formalParameterListForGeneration result = GALGAS_formalParameterListForGeneration::constructor_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
@@ -2867,7 +2867,7 @@ GALGAS_formalParameterListForGeneration GALGAS_formalParameterListForGeneration:
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_formalParameterListForGeneration::plusAssign_operation (const GALGAS_formalParameterListForGeneration inOperand,
-                                                                    C_Compiler * /* inCompiler */
+                                                                    Compiler * /* inCompiler */
                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
@@ -2876,7 +2876,7 @@ void GALGAS_formalParameterListForGeneration::plusAssign_operation (const GALGAS
 
 void GALGAS_formalParameterListForGeneration::setter_setMFormalSelectorAtIndex (GALGAS_lstring inOperand,
                                                                                 GALGAS_uint inIndex,
-                                                                                C_Compiler * inCompiler
+                                                                                Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) {
   cCollectionElement_formalParameterListForGeneration * p = (cCollectionElement_formalParameterListForGeneration *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -2889,7 +2889,7 @@ void GALGAS_formalParameterListForGeneration::setter_setMFormalSelectorAtIndex (
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_formalParameterListForGeneration::getter_mFormalSelectorAtIndex (const GALGAS_uint & inIndex,
-                                                                                       C_Compiler * inCompiler
+                                                                                       Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_formalParameterListForGeneration * p = (cCollectionElement_formalParameterListForGeneration *) attributes.ptr () ;
@@ -2905,7 +2905,7 @@ GALGAS_lstring GALGAS_formalParameterListForGeneration::getter_mFormalSelectorAt
 
 void GALGAS_formalParameterListForGeneration::setter_setMFormalArgumentPassingModeAtIndex (GALGAS_formalArgumentPassingModeAST inOperand,
                                                                                            GALGAS_uint inIndex,
-                                                                                           C_Compiler * inCompiler
+                                                                                           Compiler * inCompiler
                                                                                            COMMA_LOCATION_ARGS) {
   cCollectionElement_formalParameterListForGeneration * p = (cCollectionElement_formalParameterListForGeneration *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -2918,7 +2918,7 @@ void GALGAS_formalParameterListForGeneration::setter_setMFormalArgumentPassingMo
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_formalArgumentPassingModeAST GALGAS_formalParameterListForGeneration::getter_mFormalArgumentPassingModeAtIndex (const GALGAS_uint & inIndex,
-                                                                                                                       C_Compiler * inCompiler
+                                                                                                                       Compiler * inCompiler
                                                                                                                        COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_formalParameterListForGeneration * p = (cCollectionElement_formalParameterListForGeneration *) attributes.ptr () ;
@@ -2934,7 +2934,7 @@ GALGAS_formalArgumentPassingModeAST GALGAS_formalParameterListForGeneration::get
 
 void GALGAS_formalParameterListForGeneration::setter_setMFormalArgumentTypeAtIndex (GALGAS_unifiedTypeMapEntry inOperand,
                                                                                     GALGAS_uint inIndex,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) {
   cCollectionElement_formalParameterListForGeneration * p = (cCollectionElement_formalParameterListForGeneration *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -2947,7 +2947,7 @@ void GALGAS_formalParameterListForGeneration::setter_setMFormalArgumentTypeAtInd
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_unifiedTypeMapEntry GALGAS_formalParameterListForGeneration::getter_mFormalArgumentTypeAtIndex (const GALGAS_uint & inIndex,
-                                                                                                       C_Compiler * inCompiler
+                                                                                                       Compiler * inCompiler
                                                                                                        COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_formalParameterListForGeneration * p = (cCollectionElement_formalParameterListForGeneration *) attributes.ptr () ;
@@ -2963,7 +2963,7 @@ GALGAS_unifiedTypeMapEntry GALGAS_formalParameterListForGeneration::getter_mForm
 
 void GALGAS_formalParameterListForGeneration::setter_setMFormalArgumentNameAtIndex (GALGAS_lstring inOperand,
                                                                                     GALGAS_uint inIndex,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) {
   cCollectionElement_formalParameterListForGeneration * p = (cCollectionElement_formalParameterListForGeneration *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -2976,7 +2976,7 @@ void GALGAS_formalParameterListForGeneration::setter_setMFormalArgumentNameAtInd
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_formalParameterListForGeneration::getter_mFormalArgumentNameAtIndex (const GALGAS_uint & inIndex,
-                                                                                           C_Compiler * inCompiler
+                                                                                           Compiler * inCompiler
                                                                                            COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_formalParameterListForGeneration * p = (cCollectionElement_formalParameterListForGeneration *) attributes.ptr () ;
@@ -2992,7 +2992,7 @@ GALGAS_lstring GALGAS_formalParameterListForGeneration::getter_mFormalArgumentNa
 
 void GALGAS_formalParameterListForGeneration::setter_setMFormalArgumentCppNameAtIndex (GALGAS_string inOperand,
                                                                                        GALGAS_uint inIndex,
-                                                                                       C_Compiler * inCompiler
+                                                                                       Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) {
   cCollectionElement_formalParameterListForGeneration * p = (cCollectionElement_formalParameterListForGeneration *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -3005,7 +3005,7 @@ void GALGAS_formalParameterListForGeneration::setter_setMFormalArgumentCppNameAt
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_formalParameterListForGeneration::getter_mFormalArgumentCppNameAtIndex (const GALGAS_uint & inIndex,
-                                                                                             C_Compiler * inCompiler
+                                                                                             Compiler * inCompiler
                                                                                              COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_formalParameterListForGeneration * p = (cCollectionElement_formalParameterListForGeneration *) attributes.ptr () ;
@@ -3108,7 +3108,7 @@ AC_GALGAS_root * GALGAS_formalParameterListForGeneration::clonedObject (void) co
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_formalParameterListForGeneration GALGAS_formalParameterListForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                C_Compiler * inCompiler
+                                                                                                Compiler * inCompiler
                                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_formalParameterListForGeneration result ;
   const GALGAS_formalParameterListForGeneration * p = (const GALGAS_formalParameterListForGeneration *) inObject.embeddedObject () ;
@@ -3176,7 +3176,7 @@ GALGAS_abstractExtensionSetterAST_2D_weak GALGAS_abstractExtensionSetterAST_2D_w
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_abstractExtensionSetterAST GALGAS_abstractExtensionSetterAST_2D_weak::bang_abstractExtensionSetterAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_abstractExtensionSetterAST GALGAS_abstractExtensionSetterAST_2D_weak::bang_abstractExtensionSetterAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_abstractExtensionSetterAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -3219,7 +3219,7 @@ AC_GALGAS_root * GALGAS_abstractExtensionSetterAST_2D_weak::clonedObject (void) 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionSetterAST_2D_weak GALGAS_abstractExtensionSetterAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                    C_Compiler * inCompiler
+                                                                                                    Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_abstractExtensionSetterAST_2D_weak result ;
   const GALGAS_abstractExtensionSetterAST_2D_weak * p = (const GALGAS_abstractExtensionSetterAST_2D_weak *) inObject.embeddedObject () ;
@@ -3366,7 +3366,7 @@ void GALGAS_semanticInstructionListAST::addAssign_operation (const GALGAS_semant
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_semanticInstructionListAST::setter_append (const GALGAS_semanticInstructionAST inOperand0,
-                                                       C_Compiler * /* inCompiler */
+                                                       Compiler * /* inCompiler */
                                                        COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
@@ -3382,7 +3382,7 @@ void GALGAS_semanticInstructionListAST::setter_append (const GALGAS_semanticInst
 
 void GALGAS_semanticInstructionListAST::setter_insertAtIndex (const GALGAS_semanticInstructionAST inOperand0,
                                                               const GALGAS_uint inInsertionIndex,
-                                                              C_Compiler * inCompiler
+                                                              Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inInsertionIndex.isValid () && inOperand0.isValid ()) {
@@ -3402,7 +3402,7 @@ void GALGAS_semanticInstructionListAST::setter_insertAtIndex (const GALGAS_seman
 
 void GALGAS_semanticInstructionListAST::setter_removeAtIndex (GALGAS_semanticInstructionAST & outOperand0,
                                                               const GALGAS_uint inRemoveIndex,
-                                                              C_Compiler * inCompiler
+                                                              Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inRemoveIndex.isValid ()) {
@@ -3428,7 +3428,7 @@ void GALGAS_semanticInstructionListAST::setter_removeAtIndex (GALGAS_semanticIns
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_semanticInstructionListAST::setter_popFirst (GALGAS_semanticInstructionAST & outOperand0,
-                                                         C_Compiler * inCompiler
+                                                         Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
@@ -3444,7 +3444,7 @@ void GALGAS_semanticInstructionListAST::setter_popFirst (GALGAS_semanticInstruct
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_semanticInstructionListAST::setter_popLast (GALGAS_semanticInstructionAST & outOperand0,
-                                                        C_Compiler * inCompiler
+                                                        Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
@@ -3460,7 +3460,7 @@ void GALGAS_semanticInstructionListAST::setter_popLast (GALGAS_semanticInstructi
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_semanticInstructionListAST::method_first (GALGAS_semanticInstructionAST & outOperand0,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readFirst (attributes, inCompiler COMMA_THERE) ;
@@ -3476,7 +3476,7 @@ void GALGAS_semanticInstructionListAST::method_first (GALGAS_semanticInstruction
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_semanticInstructionListAST::method_last (GALGAS_semanticInstructionAST & outOperand0,
-                                                     C_Compiler * inCompiler
+                                                     Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readLast (attributes, inCompiler COMMA_THERE) ;
@@ -3492,7 +3492,7 @@ void GALGAS_semanticInstructionListAST::method_last (GALGAS_semanticInstructionA
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_semanticInstructionListAST GALGAS_semanticInstructionListAST::add_operation (const GALGAS_semanticInstructionListAST & inOperand,
-                                                                                    C_Compiler * /* inCompiler */
+                                                                                    Compiler * /* inCompiler */
                                                                                     COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticInstructionListAST result ;
   if (isValid () && inOperand.isValid ()) {
@@ -3505,7 +3505,7 @@ GALGAS_semanticInstructionListAST GALGAS_semanticInstructionListAST::add_operati
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_semanticInstructionListAST GALGAS_semanticInstructionListAST::getter_subListWithRange (const GALGAS_range & inRange,
-                                                                                              C_Compiler * inCompiler
+                                                                                              Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) const {
   GALGAS_semanticInstructionListAST result = GALGAS_semanticInstructionListAST::constructor_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
@@ -3515,7 +3515,7 @@ GALGAS_semanticInstructionListAST GALGAS_semanticInstructionListAST::getter_subL
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_semanticInstructionListAST GALGAS_semanticInstructionListAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
-                                                                                              C_Compiler * inCompiler
+                                                                                              Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) const {
   GALGAS_semanticInstructionListAST result = GALGAS_semanticInstructionListAST::constructor_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
@@ -3525,7 +3525,7 @@ GALGAS_semanticInstructionListAST GALGAS_semanticInstructionListAST::getter_subL
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_semanticInstructionListAST GALGAS_semanticInstructionListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
-                                                                                            C_Compiler * inCompiler
+                                                                                            Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) const {
   GALGAS_semanticInstructionListAST result = GALGAS_semanticInstructionListAST::constructor_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
@@ -3535,7 +3535,7 @@ GALGAS_semanticInstructionListAST GALGAS_semanticInstructionListAST::getter_subL
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_semanticInstructionListAST::plusAssign_operation (const GALGAS_semanticInstructionListAST inOperand,
-                                                              C_Compiler * /* inCompiler */
+                                                              Compiler * /* inCompiler */
                                                               COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
@@ -3544,7 +3544,7 @@ void GALGAS_semanticInstructionListAST::plusAssign_operation (const GALGAS_seman
 
 void GALGAS_semanticInstructionListAST::setter_setMInstructionAtIndex (GALGAS_semanticInstructionAST inOperand,
                                                                        GALGAS_uint inIndex,
-                                                                       C_Compiler * inCompiler
+                                                                       Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) {
   cCollectionElement_semanticInstructionListAST * p = (cCollectionElement_semanticInstructionListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -3557,7 +3557,7 @@ void GALGAS_semanticInstructionListAST::setter_setMInstructionAtIndex (GALGAS_se
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_semanticInstructionAST GALGAS_semanticInstructionListAST::getter_mInstructionAtIndex (const GALGAS_uint & inIndex,
-                                                                                             C_Compiler * inCompiler
+                                                                                             Compiler * inCompiler
                                                                                              COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_semanticInstructionListAST * p = (cCollectionElement_semanticInstructionListAST *) attributes.ptr () ;
@@ -3628,7 +3628,7 @@ AC_GALGAS_root * GALGAS_semanticInstructionListAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_semanticInstructionListAST GALGAS_semanticInstructionListAST::extractObject (const GALGAS_object & inObject,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_semanticInstructionListAST result ;
   const GALGAS_semanticInstructionListAST * p = (const GALGAS_semanticInstructionListAST *) inObject.embeddedObject () ;
@@ -3696,7 +3696,7 @@ GALGAS_extensionGetterAST_2D_weak GALGAS_extensionGetterAST_2D_weak::constructor
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_extensionGetterAST GALGAS_extensionGetterAST_2D_weak::bang_extensionGetterAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_extensionGetterAST GALGAS_extensionGetterAST_2D_weak::bang_extensionGetterAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_extensionGetterAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -3739,7 +3739,7 @@ AC_GALGAS_root * GALGAS_extensionGetterAST_2D_weak::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionGetterAST_2D_weak GALGAS_extensionGetterAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_extensionGetterAST_2D_weak result ;
   const GALGAS_extensionGetterAST_2D_weak * p = (const GALGAS_extensionGetterAST_2D_weak *) inObject.embeddedObject () ;
@@ -3886,7 +3886,7 @@ void GALGAS_semanticInstructionListForGeneration::addAssign_operation (const GAL
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_semanticInstructionListForGeneration::setter_append (const GALGAS_semanticInstructionForGeneration inOperand0,
-                                                                 C_Compiler * /* inCompiler */
+                                                                 Compiler * /* inCompiler */
                                                                  COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
@@ -3902,7 +3902,7 @@ void GALGAS_semanticInstructionListForGeneration::setter_append (const GALGAS_se
 
 void GALGAS_semanticInstructionListForGeneration::setter_insertAtIndex (const GALGAS_semanticInstructionForGeneration inOperand0,
                                                                         const GALGAS_uint inInsertionIndex,
-                                                                        C_Compiler * inCompiler
+                                                                        Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inInsertionIndex.isValid () && inOperand0.isValid ()) {
@@ -3922,7 +3922,7 @@ void GALGAS_semanticInstructionListForGeneration::setter_insertAtIndex (const GA
 
 void GALGAS_semanticInstructionListForGeneration::setter_removeAtIndex (GALGAS_semanticInstructionForGeneration & outOperand0,
                                                                         const GALGAS_uint inRemoveIndex,
-                                                                        C_Compiler * inCompiler
+                                                                        Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inRemoveIndex.isValid ()) {
@@ -3948,7 +3948,7 @@ void GALGAS_semanticInstructionListForGeneration::setter_removeAtIndex (GALGAS_s
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_semanticInstructionListForGeneration::setter_popFirst (GALGAS_semanticInstructionForGeneration & outOperand0,
-                                                                   C_Compiler * inCompiler
+                                                                   Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
@@ -3964,7 +3964,7 @@ void GALGAS_semanticInstructionListForGeneration::setter_popFirst (GALGAS_semant
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_semanticInstructionListForGeneration::setter_popLast (GALGAS_semanticInstructionForGeneration & outOperand0,
-                                                                  C_Compiler * inCompiler
+                                                                  Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
@@ -3980,7 +3980,7 @@ void GALGAS_semanticInstructionListForGeneration::setter_popLast (GALGAS_semanti
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_semanticInstructionListForGeneration::method_first (GALGAS_semanticInstructionForGeneration & outOperand0,
-                                                                C_Compiler * inCompiler
+                                                                Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readFirst (attributes, inCompiler COMMA_THERE) ;
@@ -3996,7 +3996,7 @@ void GALGAS_semanticInstructionListForGeneration::method_first (GALGAS_semanticI
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_semanticInstructionListForGeneration::method_last (GALGAS_semanticInstructionForGeneration & outOperand0,
-                                                               C_Compiler * inCompiler
+                                                               Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readLast (attributes, inCompiler COMMA_THERE) ;
@@ -4012,7 +4012,7 @@ void GALGAS_semanticInstructionListForGeneration::method_last (GALGAS_semanticIn
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_semanticInstructionListForGeneration GALGAS_semanticInstructionListForGeneration::add_operation (const GALGAS_semanticInstructionListForGeneration & inOperand,
-                                                                                                        C_Compiler * /* inCompiler */
+                                                                                                        Compiler * /* inCompiler */
                                                                                                         COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticInstructionListForGeneration result ;
   if (isValid () && inOperand.isValid ()) {
@@ -4025,7 +4025,7 @@ GALGAS_semanticInstructionListForGeneration GALGAS_semanticInstructionListForGen
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_semanticInstructionListForGeneration GALGAS_semanticInstructionListForGeneration::getter_subListWithRange (const GALGAS_range & inRange,
-                                                                                                                  C_Compiler * inCompiler
+                                                                                                                  Compiler * inCompiler
                                                                                                                   COMMA_LOCATION_ARGS) const {
   GALGAS_semanticInstructionListForGeneration result = GALGAS_semanticInstructionListForGeneration::constructor_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
@@ -4035,7 +4035,7 @@ GALGAS_semanticInstructionListForGeneration GALGAS_semanticInstructionListForGen
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_semanticInstructionListForGeneration GALGAS_semanticInstructionListForGeneration::getter_subListFromIndex (const GALGAS_uint & inIndex,
-                                                                                                                  C_Compiler * inCompiler
+                                                                                                                  Compiler * inCompiler
                                                                                                                   COMMA_LOCATION_ARGS) const {
   GALGAS_semanticInstructionListForGeneration result = GALGAS_semanticInstructionListForGeneration::constructor_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
@@ -4045,7 +4045,7 @@ GALGAS_semanticInstructionListForGeneration GALGAS_semanticInstructionListForGen
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_semanticInstructionListForGeneration GALGAS_semanticInstructionListForGeneration::getter_subListToIndex (const GALGAS_uint & inIndex,
-                                                                                                                C_Compiler * inCompiler
+                                                                                                                Compiler * inCompiler
                                                                                                                 COMMA_LOCATION_ARGS) const {
   GALGAS_semanticInstructionListForGeneration result = GALGAS_semanticInstructionListForGeneration::constructor_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
@@ -4055,7 +4055,7 @@ GALGAS_semanticInstructionListForGeneration GALGAS_semanticInstructionListForGen
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_semanticInstructionListForGeneration::plusAssign_operation (const GALGAS_semanticInstructionListForGeneration inOperand,
-                                                                        C_Compiler * /* inCompiler */
+                                                                        Compiler * /* inCompiler */
                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
@@ -4064,7 +4064,7 @@ void GALGAS_semanticInstructionListForGeneration::plusAssign_operation (const GA
 
 void GALGAS_semanticInstructionListForGeneration::setter_setMInstructionAtIndex (GALGAS_semanticInstructionForGeneration inOperand,
                                                                                  GALGAS_uint inIndex,
-                                                                                 C_Compiler * inCompiler
+                                                                                 Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) {
   cCollectionElement_semanticInstructionListForGeneration * p = (cCollectionElement_semanticInstructionListForGeneration *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -4077,7 +4077,7 @@ void GALGAS_semanticInstructionListForGeneration::setter_setMInstructionAtIndex 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_semanticInstructionForGeneration GALGAS_semanticInstructionListForGeneration::getter_mInstructionAtIndex (const GALGAS_uint & inIndex,
-                                                                                                                 C_Compiler * inCompiler
+                                                                                                                 Compiler * inCompiler
                                                                                                                  COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_semanticInstructionListForGeneration * p = (cCollectionElement_semanticInstructionListForGeneration *) attributes.ptr () ;
@@ -4148,7 +4148,7 @@ AC_GALGAS_root * GALGAS_semanticInstructionListForGeneration::clonedObject (void
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_semanticInstructionListForGeneration GALGAS_semanticInstructionListForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                        C_Compiler * inCompiler
+                                                                                                        Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_semanticInstructionListForGeneration result ;
   const GALGAS_semanticInstructionListForGeneration * p = (const GALGAS_semanticInstructionListForGeneration *) inObject.embeddedObject () ;
@@ -4216,7 +4216,7 @@ GALGAS_extensionMethodAST_2D_weak GALGAS_extensionMethodAST_2D_weak::constructor
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_extensionMethodAST GALGAS_extensionMethodAST_2D_weak::bang_extensionMethodAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_extensionMethodAST GALGAS_extensionMethodAST_2D_weak::bang_extensionMethodAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_extensionMethodAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -4259,7 +4259,7 @@ AC_GALGAS_root * GALGAS_extensionMethodAST_2D_weak::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionMethodAST_2D_weak GALGAS_extensionMethodAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_extensionMethodAST_2D_weak result ;
   const GALGAS_extensionMethodAST_2D_weak * p = (const GALGAS_extensionMethodAST_2D_weak *) inObject.embeddedObject () ;
@@ -4327,7 +4327,7 @@ GALGAS_extensionSetterAST_2D_weak GALGAS_extensionSetterAST_2D_weak::constructor
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_extensionSetterAST GALGAS_extensionSetterAST_2D_weak::bang_extensionSetterAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_extensionSetterAST GALGAS_extensionSetterAST_2D_weak::bang_extensionSetterAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_extensionSetterAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -4370,7 +4370,7 @@ AC_GALGAS_root * GALGAS_extensionSetterAST_2D_weak::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionSetterAST_2D_weak GALGAS_extensionSetterAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_extensionSetterAST_2D_weak result ;
   const GALGAS_extensionSetterAST_2D_weak * p = (const GALGAS_extensionSetterAST_2D_weak *) inObject.embeddedObject () ;
@@ -4438,7 +4438,7 @@ GALGAS_overridingAbstractExtensionGetterAST_2D_weak GALGAS_overridingAbstractExt
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_overridingAbstractExtensionGetterAST GALGAS_overridingAbstractExtensionGetterAST_2D_weak::bang_overridingAbstractExtensionGetterAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_overridingAbstractExtensionGetterAST GALGAS_overridingAbstractExtensionGetterAST_2D_weak::bang_overridingAbstractExtensionGetterAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_overridingAbstractExtensionGetterAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -4481,7 +4481,7 @@ AC_GALGAS_root * GALGAS_overridingAbstractExtensionGetterAST_2D_weak::clonedObje
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingAbstractExtensionGetterAST_2D_weak GALGAS_overridingAbstractExtensionGetterAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                                        C_Compiler * inCompiler
+                                                                                                                        Compiler * inCompiler
                                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_overridingAbstractExtensionGetterAST_2D_weak result ;
   const GALGAS_overridingAbstractExtensionGetterAST_2D_weak * p = (const GALGAS_overridingAbstractExtensionGetterAST_2D_weak *) inObject.embeddedObject () ;
@@ -4549,7 +4549,7 @@ GALGAS_overridingAbstractExtensionMethodAST_2D_weak GALGAS_overridingAbstractExt
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_overridingAbstractExtensionMethodAST GALGAS_overridingAbstractExtensionMethodAST_2D_weak::bang_overridingAbstractExtensionMethodAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_overridingAbstractExtensionMethodAST GALGAS_overridingAbstractExtensionMethodAST_2D_weak::bang_overridingAbstractExtensionMethodAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_overridingAbstractExtensionMethodAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -4592,7 +4592,7 @@ AC_GALGAS_root * GALGAS_overridingAbstractExtensionMethodAST_2D_weak::clonedObje
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingAbstractExtensionMethodAST_2D_weak GALGAS_overridingAbstractExtensionMethodAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                                        C_Compiler * inCompiler
+                                                                                                                        Compiler * inCompiler
                                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_overridingAbstractExtensionMethodAST_2D_weak result ;
   const GALGAS_overridingAbstractExtensionMethodAST_2D_weak * p = (const GALGAS_overridingAbstractExtensionMethodAST_2D_weak *) inObject.embeddedObject () ;
@@ -4660,7 +4660,7 @@ GALGAS_overridingAbstractExtensionSetterAST_2D_weak GALGAS_overridingAbstractExt
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_overridingAbstractExtensionSetterAST GALGAS_overridingAbstractExtensionSetterAST_2D_weak::bang_overridingAbstractExtensionSetterAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_overridingAbstractExtensionSetterAST GALGAS_overridingAbstractExtensionSetterAST_2D_weak::bang_overridingAbstractExtensionSetterAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_overridingAbstractExtensionSetterAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -4703,7 +4703,7 @@ AC_GALGAS_root * GALGAS_overridingAbstractExtensionSetterAST_2D_weak::clonedObje
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingAbstractExtensionSetterAST_2D_weak GALGAS_overridingAbstractExtensionSetterAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                                        C_Compiler * inCompiler
+                                                                                                                        Compiler * inCompiler
                                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_overridingAbstractExtensionSetterAST_2D_weak result ;
   const GALGAS_overridingAbstractExtensionSetterAST_2D_weak * p = (const GALGAS_overridingAbstractExtensionSetterAST_2D_weak *) inObject.embeddedObject () ;
@@ -4771,7 +4771,7 @@ GALGAS_overridingExtensionGetterAST_2D_weak GALGAS_overridingExtensionGetterAST_
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_overridingExtensionGetterAST GALGAS_overridingExtensionGetterAST_2D_weak::bang_overridingExtensionGetterAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_overridingExtensionGetterAST GALGAS_overridingExtensionGetterAST_2D_weak::bang_overridingExtensionGetterAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_overridingExtensionGetterAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -4814,7 +4814,7 @@ AC_GALGAS_root * GALGAS_overridingExtensionGetterAST_2D_weak::clonedObject (void
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingExtensionGetterAST_2D_weak GALGAS_overridingExtensionGetterAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                        C_Compiler * inCompiler
+                                                                                                        Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_overridingExtensionGetterAST_2D_weak result ;
   const GALGAS_overridingExtensionGetterAST_2D_weak * p = (const GALGAS_overridingExtensionGetterAST_2D_weak *) inObject.embeddedObject () ;
@@ -4882,7 +4882,7 @@ GALGAS_overridingExtensionMethodAST_2D_weak GALGAS_overridingExtensionMethodAST_
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_overridingExtensionMethodAST GALGAS_overridingExtensionMethodAST_2D_weak::bang_overridingExtensionMethodAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_overridingExtensionMethodAST GALGAS_overridingExtensionMethodAST_2D_weak::bang_overridingExtensionMethodAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_overridingExtensionMethodAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -4925,7 +4925,7 @@ AC_GALGAS_root * GALGAS_overridingExtensionMethodAST_2D_weak::clonedObject (void
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingExtensionMethodAST_2D_weak GALGAS_overridingExtensionMethodAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                        C_Compiler * inCompiler
+                                                                                                        Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_overridingExtensionMethodAST_2D_weak result ;
   const GALGAS_overridingExtensionMethodAST_2D_weak * p = (const GALGAS_overridingExtensionMethodAST_2D_weak *) inObject.embeddedObject () ;
@@ -4993,7 +4993,7 @@ GALGAS_overridingExtensionSetterAST_2D_weak GALGAS_overridingExtensionSetterAST_
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_overridingExtensionSetterAST GALGAS_overridingExtensionSetterAST_2D_weak::bang_overridingExtensionSetterAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_overridingExtensionSetterAST GALGAS_overridingExtensionSetterAST_2D_weak::bang_overridingExtensionSetterAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_overridingExtensionSetterAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -5036,7 +5036,7 @@ AC_GALGAS_root * GALGAS_overridingExtensionSetterAST_2D_weak::clonedObject (void
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingExtensionSetterAST_2D_weak GALGAS_overridingExtensionSetterAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                        C_Compiler * inCompiler
+                                                                                                        Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_overridingExtensionSetterAST_2D_weak result ;
   const GALGAS_overridingExtensionSetterAST_2D_weak * p = (const GALGAS_overridingExtensionSetterAST_2D_weak *) inObject.embeddedObject () ;
@@ -5130,7 +5130,7 @@ AC_GALGAS_root * GALGAS_semanticExpressionAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_semanticExpressionAST GALGAS_semanticExpressionAST::extractObject (const GALGAS_object & inObject,
-                                                                          C_Compiler * inCompiler
+                                                                          Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_semanticExpressionAST result ;
   const GALGAS_semanticExpressionAST * p = (const GALGAS_semanticExpressionAST *) inObject.embeddedObject () ;
@@ -5198,7 +5198,7 @@ GALGAS_semanticExpressionAST_2D_weak GALGAS_semanticExpressionAST_2D_weak::const
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_semanticExpressionAST_2D_weak::bang_semanticExpressionAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_semanticExpressionAST_2D_weak::bang_semanticExpressionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -5241,7 +5241,7 @@ AC_GALGAS_root * GALGAS_semanticExpressionAST_2D_weak::clonedObject (void) const
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_semanticExpressionAST_2D_weak GALGAS_semanticExpressionAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                          C_Compiler * inCompiler
+                                                                                          Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_semanticExpressionAST_2D_weak result ;
   const GALGAS_semanticExpressionAST_2D_weak * p = (const GALGAS_semanticExpressionAST_2D_weak *) inObject.embeddedObject () ;
@@ -5409,7 +5409,7 @@ AC_GALGAS_root * GALGAS_formalArgumentPassingModeAST::clonedObject (void) const 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_formalArgumentPassingModeAST GALGAS_formalArgumentPassingModeAST::extractObject (const GALGAS_object & inObject,
-                                                                                        C_Compiler * inCompiler
+                                                                                        Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_formalArgumentPassingModeAST result ;
   const GALGAS_formalArgumentPassingModeAST * p = (const GALGAS_formalArgumentPassingModeAST *) inObject.embeddedObject () ;
@@ -5430,7 +5430,7 @@ GALGAS_formalArgumentPassingModeAST GALGAS_formalArgumentPassingModeAST::extract
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string extensionGetter_string (const GALGAS_formalArgumentPassingModeAST & inObject,
-                                      C_Compiler *
+                                      Compiler *
                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_formalArgumentPassingModeAST temp_0 = inObject ;
@@ -5472,7 +5472,7 @@ GALGAS_string extensionGetter_string (const GALGAS_formalArgumentPassingModeAST 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string extensionGetter_formalArgumentMessage (const GALGAS_formalArgumentPassingModeAST & inObject,
-                                                     C_Compiler *
+                                                     Compiler *
                                                      COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_formalArgumentPassingModeAST temp_0 = inObject ;
@@ -5587,7 +5587,7 @@ AC_GALGAS_root * GALGAS_actualParameterAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_actualParameterAST GALGAS_actualParameterAST::extractObject (const GALGAS_object & inObject,
-                                                                    C_Compiler * inCompiler
+                                                                    Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_actualParameterAST result ;
   const GALGAS_actualParameterAST * p = (const GALGAS_actualParameterAST *) inObject.embeddedObject () ;
@@ -5655,7 +5655,7 @@ GALGAS_actualParameterAST_2D_weak GALGAS_actualParameterAST_2D_weak::constructor
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_actualParameterAST GALGAS_actualParameterAST_2D_weak::bang_actualParameterAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_actualParameterAST GALGAS_actualParameterAST_2D_weak::bang_actualParameterAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_actualParameterAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -5698,7 +5698,7 @@ AC_GALGAS_root * GALGAS_actualParameterAST_2D_weak::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_actualParameterAST_2D_weak GALGAS_actualParameterAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_actualParameterAST_2D_weak result ;
   const GALGAS_actualParameterAST_2D_weak * p = (const GALGAS_actualParameterAST_2D_weak *) inObject.embeddedObject () ;
@@ -5766,7 +5766,7 @@ GALGAS_outputActualParameterAST_2D_weak GALGAS_outputActualParameterAST_2D_weak:
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_outputActualParameterAST GALGAS_outputActualParameterAST_2D_weak::bang_outputActualParameterAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_outputActualParameterAST GALGAS_outputActualParameterAST_2D_weak::bang_outputActualParameterAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_outputActualParameterAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -5809,7 +5809,7 @@ AC_GALGAS_root * GALGAS_outputActualParameterAST_2D_weak::clonedObject (void) co
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_outputActualParameterAST_2D_weak GALGAS_outputActualParameterAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                C_Compiler * inCompiler
+                                                                                                Compiler * inCompiler
                                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_outputActualParameterAST_2D_weak result ;
   const GALGAS_outputActualParameterAST_2D_weak * p = (const GALGAS_outputActualParameterAST_2D_weak *) inObject.embeddedObject () ;
@@ -5877,7 +5877,7 @@ GALGAS_outputInputActualParameterAST_2D_weak GALGAS_outputInputActualParameterAS
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_outputInputActualParameterAST GALGAS_outputInputActualParameterAST_2D_weak::bang_outputInputActualParameterAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_outputInputActualParameterAST GALGAS_outputInputActualParameterAST_2D_weak::bang_outputInputActualParameterAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_outputInputActualParameterAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -5920,7 +5920,7 @@ AC_GALGAS_root * GALGAS_outputInputActualParameterAST_2D_weak::clonedObject (voi
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_outputInputActualParameterAST_2D_weak GALGAS_outputInputActualParameterAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                          C_Compiler * inCompiler
+                                                                                                          Compiler * inCompiler
                                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_outputInputActualParameterAST_2D_weak result ;
   const GALGAS_outputInputActualParameterAST_2D_weak * p = (const GALGAS_outputInputActualParameterAST_2D_weak *) inObject.embeddedObject () ;
@@ -5988,7 +5988,7 @@ GALGAS_outputInputSingleJokerParameterAST_2D_weak GALGAS_outputInputSingleJokerP
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_outputInputSingleJokerParameterAST GALGAS_outputInputSingleJokerParameterAST_2D_weak::bang_outputInputSingleJokerParameterAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_outputInputSingleJokerParameterAST GALGAS_outputInputSingleJokerParameterAST_2D_weak::bang_outputInputSingleJokerParameterAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_outputInputSingleJokerParameterAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -6031,7 +6031,7 @@ AC_GALGAS_root * GALGAS_outputInputSingleJokerParameterAST_2D_weak::clonedObject
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_outputInputSingleJokerParameterAST_2D_weak GALGAS_outputInputSingleJokerParameterAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                                    C_Compiler * inCompiler
+                                                                                                                    Compiler * inCompiler
                                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_outputInputSingleJokerParameterAST_2D_weak result ;
   const GALGAS_outputInputSingleJokerParameterAST_2D_weak * p = (const GALGAS_outputInputSingleJokerParameterAST_2D_weak *) inObject.embeddedObject () ;
@@ -6099,7 +6099,7 @@ GALGAS_outputInputSelfParameterAST_2D_weak GALGAS_outputInputSelfParameterAST_2D
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_outputInputSelfParameterAST GALGAS_outputInputSelfParameterAST_2D_weak::bang_outputInputSelfParameterAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_outputInputSelfParameterAST GALGAS_outputInputSelfParameterAST_2D_weak::bang_outputInputSelfParameterAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_outputInputSelfParameterAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -6142,7 +6142,7 @@ AC_GALGAS_root * GALGAS_outputInputSelfParameterAST_2D_weak::clonedObject (void)
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_outputInputSelfParameterAST_2D_weak GALGAS_outputInputSelfParameterAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                      C_Compiler * inCompiler
+                                                                                                      Compiler * inCompiler
                                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_outputInputSelfParameterAST_2D_weak result ;
   const GALGAS_outputInputSelfParameterAST_2D_weak * p = (const GALGAS_outputInputSelfParameterAST_2D_weak *) inObject.embeddedObject () ;
@@ -6315,7 +6315,7 @@ AC_GALGAS_root * GALGAS_outputInputJokerParameterAST::clonedObject (void) const 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_outputInputJokerParameterAST GALGAS_outputInputJokerParameterAST::extractObject (const GALGAS_object & inObject,
-                                                                                        C_Compiler * inCompiler
+                                                                                        Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_outputInputJokerParameterAST result ;
   const GALGAS_outputInputJokerParameterAST * p = (const GALGAS_outputInputJokerParameterAST *) inObject.embeddedObject () ;
@@ -6383,7 +6383,7 @@ GALGAS_outputInputJokerParameterAST_2D_weak GALGAS_outputInputJokerParameterAST_
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_outputInputJokerParameterAST GALGAS_outputInputJokerParameterAST_2D_weak::bang_outputInputJokerParameterAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_outputInputJokerParameterAST GALGAS_outputInputJokerParameterAST_2D_weak::bang_outputInputJokerParameterAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_outputInputJokerParameterAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -6426,7 +6426,7 @@ AC_GALGAS_root * GALGAS_outputInputJokerParameterAST_2D_weak::clonedObject (void
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_outputInputJokerParameterAST_2D_weak GALGAS_outputInputJokerParameterAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                        C_Compiler * inCompiler
+                                                                                                        Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_outputInputJokerParameterAST_2D_weak result ;
   const GALGAS_outputInputJokerParameterAST_2D_weak * p = (const GALGAS_outputInputJokerParameterAST_2D_weak *) inObject.embeddedObject () ;
@@ -6494,7 +6494,7 @@ GALGAS_inputActualExistingVariableParameterAST_2D_weak GALGAS_inputActualExistin
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_inputActualExistingVariableParameterAST GALGAS_inputActualExistingVariableParameterAST_2D_weak::bang_inputActualExistingVariableParameterAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_inputActualExistingVariableParameterAST GALGAS_inputActualExistingVariableParameterAST_2D_weak::bang_inputActualExistingVariableParameterAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_inputActualExistingVariableParameterAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -6537,7 +6537,7 @@ AC_GALGAS_root * GALGAS_inputActualExistingVariableParameterAST_2D_weak::clonedO
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_inputActualExistingVariableParameterAST_2D_weak GALGAS_inputActualExistingVariableParameterAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                                              C_Compiler * inCompiler
+                                                                                                                              Compiler * inCompiler
                                                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_inputActualExistingVariableParameterAST_2D_weak result ;
   const GALGAS_inputActualExistingVariableParameterAST_2D_weak * p = (const GALGAS_inputActualExistingVariableParameterAST_2D_weak *) inObject.embeddedObject () ;
@@ -6605,7 +6605,7 @@ GALGAS_inputActualSelfPropertyParameterAST_2D_weak GALGAS_inputActualSelfPropert
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_inputActualSelfPropertyParameterAST GALGAS_inputActualSelfPropertyParameterAST_2D_weak::bang_inputActualSelfPropertyParameterAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_inputActualSelfPropertyParameterAST GALGAS_inputActualSelfPropertyParameterAST_2D_weak::bang_inputActualSelfPropertyParameterAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_inputActualSelfPropertyParameterAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -6648,7 +6648,7 @@ AC_GALGAS_root * GALGAS_inputActualSelfPropertyParameterAST_2D_weak::clonedObjec
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_inputActualSelfPropertyParameterAST_2D_weak GALGAS_inputActualSelfPropertyParameterAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                                      C_Compiler * inCompiler
+                                                                                                                      Compiler * inCompiler
                                                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_inputActualSelfPropertyParameterAST_2D_weak result ;
   const GALGAS_inputActualSelfPropertyParameterAST_2D_weak * p = (const GALGAS_inputActualSelfPropertyParameterAST_2D_weak *) inObject.embeddedObject () ;
@@ -6716,7 +6716,7 @@ GALGAS_inputActualSelfParameterAST_2D_weak GALGAS_inputActualSelfParameterAST_2D
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_inputActualSelfParameterAST GALGAS_inputActualSelfParameterAST_2D_weak::bang_inputActualSelfParameterAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_inputActualSelfParameterAST GALGAS_inputActualSelfParameterAST_2D_weak::bang_inputActualSelfParameterAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_inputActualSelfParameterAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -6759,7 +6759,7 @@ AC_GALGAS_root * GALGAS_inputActualSelfParameterAST_2D_weak::clonedObject (void)
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_inputActualSelfParameterAST_2D_weak GALGAS_inputActualSelfParameterAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                      C_Compiler * inCompiler
+                                                                                                      Compiler * inCompiler
                                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_inputActualSelfParameterAST_2D_weak result ;
   const GALGAS_inputActualSelfParameterAST_2D_weak * p = (const GALGAS_inputActualSelfParameterAST_2D_weak *) inObject.embeddedObject () ;
@@ -6827,7 +6827,7 @@ GALGAS_inputActualNewVariableParameterAST_2D_weak GALGAS_inputActualNewVariableP
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_inputActualNewVariableParameterAST GALGAS_inputActualNewVariableParameterAST_2D_weak::bang_inputActualNewVariableParameterAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_inputActualNewVariableParameterAST GALGAS_inputActualNewVariableParameterAST_2D_weak::bang_inputActualNewVariableParameterAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_inputActualNewVariableParameterAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -6870,7 +6870,7 @@ AC_GALGAS_root * GALGAS_inputActualNewVariableParameterAST_2D_weak::clonedObject
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_inputActualNewVariableParameterAST_2D_weak GALGAS_inputActualNewVariableParameterAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                                    C_Compiler * inCompiler
+                                                                                                                    Compiler * inCompiler
                                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_inputActualNewVariableParameterAST_2D_weak result ;
   const GALGAS_inputActualNewVariableParameterAST_2D_weak * p = (const GALGAS_inputActualNewVariableParameterAST_2D_weak *) inObject.embeddedObject () ;
@@ -6938,7 +6938,7 @@ GALGAS_inputActualNewConstantParameterAST_2D_weak GALGAS_inputActualNewConstantP
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_inputActualNewConstantParameterAST GALGAS_inputActualNewConstantParameterAST_2D_weak::bang_inputActualNewConstantParameterAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_inputActualNewConstantParameterAST GALGAS_inputActualNewConstantParameterAST_2D_weak::bang_inputActualNewConstantParameterAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_inputActualNewConstantParameterAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -6981,7 +6981,7 @@ AC_GALGAS_root * GALGAS_inputActualNewConstantParameterAST_2D_weak::clonedObject
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_inputActualNewConstantParameterAST_2D_weak GALGAS_inputActualNewConstantParameterAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                                    C_Compiler * inCompiler
+                                                                                                                    Compiler * inCompiler
                                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_inputActualNewConstantParameterAST_2D_weak result ;
   const GALGAS_inputActualNewConstantParameterAST_2D_weak * p = (const GALGAS_inputActualNewConstantParameterAST_2D_weak *) inObject.embeddedObject () ;
@@ -7049,7 +7049,7 @@ GALGAS_inputSingleJokerActualParameterAST_2D_weak GALGAS_inputSingleJokerActualP
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_inputSingleJokerActualParameterAST GALGAS_inputSingleJokerActualParameterAST_2D_weak::bang_inputSingleJokerActualParameterAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_inputSingleJokerActualParameterAST GALGAS_inputSingleJokerActualParameterAST_2D_weak::bang_inputSingleJokerActualParameterAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_inputSingleJokerActualParameterAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -7092,7 +7092,7 @@ AC_GALGAS_root * GALGAS_inputSingleJokerActualParameterAST_2D_weak::clonedObject
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_inputSingleJokerActualParameterAST_2D_weak GALGAS_inputSingleJokerActualParameterAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                                    C_Compiler * inCompiler
+                                                                                                                    Compiler * inCompiler
                                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_inputSingleJokerActualParameterAST_2D_weak result ;
   const GALGAS_inputSingleJokerActualParameterAST_2D_weak * p = (const GALGAS_inputSingleJokerActualParameterAST_2D_weak *) inObject.embeddedObject () ;
@@ -7265,7 +7265,7 @@ AC_GALGAS_root * GALGAS_inputJokerActualParameterAST::clonedObject (void) const 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_inputJokerActualParameterAST GALGAS_inputJokerActualParameterAST::extractObject (const GALGAS_object & inObject,
-                                                                                        C_Compiler * inCompiler
+                                                                                        Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_inputJokerActualParameterAST result ;
   const GALGAS_inputJokerActualParameterAST * p = (const GALGAS_inputJokerActualParameterAST *) inObject.embeddedObject () ;
@@ -7333,7 +7333,7 @@ GALGAS_inputJokerActualParameterAST_2D_weak GALGAS_inputJokerActualParameterAST_
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_inputJokerActualParameterAST GALGAS_inputJokerActualParameterAST_2D_weak::bang_inputJokerActualParameterAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_inputJokerActualParameterAST GALGAS_inputJokerActualParameterAST_2D_weak::bang_inputJokerActualParameterAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_inputJokerActualParameterAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -7376,7 +7376,7 @@ AC_GALGAS_root * GALGAS_inputJokerActualParameterAST_2D_weak::clonedObject (void
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_inputJokerActualParameterAST_2D_weak GALGAS_inputJokerActualParameterAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                        C_Compiler * inCompiler
+                                                                                                        Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_inputJokerActualParameterAST_2D_weak result ;
   const GALGAS_inputJokerActualParameterAST_2D_weak * p = (const GALGAS_inputJokerActualParameterAST_2D_weak *) inObject.embeddedObject () ;
@@ -7523,7 +7523,7 @@ void GALGAS_actualParameterListAST::addAssign_operation (const GALGAS_actualPara
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_actualParameterListAST::setter_append (const GALGAS_actualParameterAST inOperand0,
-                                                   C_Compiler * /* inCompiler */
+                                                   Compiler * /* inCompiler */
                                                    COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
@@ -7539,7 +7539,7 @@ void GALGAS_actualParameterListAST::setter_append (const GALGAS_actualParameterA
 
 void GALGAS_actualParameterListAST::setter_insertAtIndex (const GALGAS_actualParameterAST inOperand0,
                                                           const GALGAS_uint inInsertionIndex,
-                                                          C_Compiler * inCompiler
+                                                          Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inInsertionIndex.isValid () && inOperand0.isValid ()) {
@@ -7559,7 +7559,7 @@ void GALGAS_actualParameterListAST::setter_insertAtIndex (const GALGAS_actualPar
 
 void GALGAS_actualParameterListAST::setter_removeAtIndex (GALGAS_actualParameterAST & outOperand0,
                                                           const GALGAS_uint inRemoveIndex,
-                                                          C_Compiler * inCompiler
+                                                          Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inRemoveIndex.isValid ()) {
@@ -7585,7 +7585,7 @@ void GALGAS_actualParameterListAST::setter_removeAtIndex (GALGAS_actualParameter
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_actualParameterListAST::setter_popFirst (GALGAS_actualParameterAST & outOperand0,
-                                                     C_Compiler * inCompiler
+                                                     Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
@@ -7601,7 +7601,7 @@ void GALGAS_actualParameterListAST::setter_popFirst (GALGAS_actualParameterAST &
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_actualParameterListAST::setter_popLast (GALGAS_actualParameterAST & outOperand0,
-                                                    C_Compiler * inCompiler
+                                                    Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
@@ -7617,7 +7617,7 @@ void GALGAS_actualParameterListAST::setter_popLast (GALGAS_actualParameterAST & 
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_actualParameterListAST::method_first (GALGAS_actualParameterAST & outOperand0,
-                                                  C_Compiler * inCompiler
+                                                  Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readFirst (attributes, inCompiler COMMA_THERE) ;
@@ -7633,7 +7633,7 @@ void GALGAS_actualParameterListAST::method_first (GALGAS_actualParameterAST & ou
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_actualParameterListAST::method_last (GALGAS_actualParameterAST & outOperand0,
-                                                 C_Compiler * inCompiler
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readLast (attributes, inCompiler COMMA_THERE) ;
@@ -7649,7 +7649,7 @@ void GALGAS_actualParameterListAST::method_last (GALGAS_actualParameterAST & out
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_actualParameterListAST GALGAS_actualParameterListAST::add_operation (const GALGAS_actualParameterListAST & inOperand,
-                                                                            C_Compiler * /* inCompiler */
+                                                                            Compiler * /* inCompiler */
                                                                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_actualParameterListAST result ;
   if (isValid () && inOperand.isValid ()) {
@@ -7662,7 +7662,7 @@ GALGAS_actualParameterListAST GALGAS_actualParameterListAST::add_operation (cons
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_actualParameterListAST GALGAS_actualParameterListAST::getter_subListWithRange (const GALGAS_range & inRange,
-                                                                                      C_Compiler * inCompiler
+                                                                                      Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) const {
   GALGAS_actualParameterListAST result = GALGAS_actualParameterListAST::constructor_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
@@ -7672,7 +7672,7 @@ GALGAS_actualParameterListAST GALGAS_actualParameterListAST::getter_subListWithR
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_actualParameterListAST GALGAS_actualParameterListAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
-                                                                                      C_Compiler * inCompiler
+                                                                                      Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) const {
   GALGAS_actualParameterListAST result = GALGAS_actualParameterListAST::constructor_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
@@ -7682,7 +7682,7 @@ GALGAS_actualParameterListAST GALGAS_actualParameterListAST::getter_subListFromI
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_actualParameterListAST GALGAS_actualParameterListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) const {
   GALGAS_actualParameterListAST result = GALGAS_actualParameterListAST::constructor_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
@@ -7692,7 +7692,7 @@ GALGAS_actualParameterListAST GALGAS_actualParameterListAST::getter_subListToInd
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_actualParameterListAST::plusAssign_operation (const GALGAS_actualParameterListAST inOperand,
-                                                          C_Compiler * /* inCompiler */
+                                                          Compiler * /* inCompiler */
                                                           COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
@@ -7701,7 +7701,7 @@ void GALGAS_actualParameterListAST::plusAssign_operation (const GALGAS_actualPar
 
 void GALGAS_actualParameterListAST::setter_setMActualParameterAtIndex (GALGAS_actualParameterAST inOperand,
                                                                        GALGAS_uint inIndex,
-                                                                       C_Compiler * inCompiler
+                                                                       Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) {
   cCollectionElement_actualParameterListAST * p = (cCollectionElement_actualParameterListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -7714,7 +7714,7 @@ void GALGAS_actualParameterListAST::setter_setMActualParameterAtIndex (GALGAS_ac
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_actualParameterAST GALGAS_actualParameterListAST::getter_mActualParameterAtIndex (const GALGAS_uint & inIndex,
-                                                                                         C_Compiler * inCompiler
+                                                                                         Compiler * inCompiler
                                                                                          COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_actualParameterListAST * p = (cCollectionElement_actualParameterListAST *) attributes.ptr () ;
@@ -7785,7 +7785,7 @@ AC_GALGAS_root * GALGAS_actualParameterListAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_actualParameterListAST GALGAS_actualParameterListAST::extractObject (const GALGAS_object & inObject,
-                                                                            C_Compiler * inCompiler
+                                                                            Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_actualParameterListAST result ;
   const GALGAS_actualParameterListAST * p = (const GALGAS_actualParameterListAST *) inObject.embeddedObject () ;
@@ -7879,7 +7879,7 @@ AC_GALGAS_root * GALGAS_abstractInputParameter::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractInputParameter GALGAS_abstractInputParameter::extractObject (const GALGAS_object & inObject,
-                                                                            C_Compiler * inCompiler
+                                                                            Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_abstractInputParameter result ;
   const GALGAS_abstractInputParameter * p = (const GALGAS_abstractInputParameter *) inObject.embeddedObject () ;
@@ -7947,7 +7947,7 @@ GALGAS_abstractInputParameter_2D_weak GALGAS_abstractInputParameter_2D_weak::con
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_abstractInputParameter GALGAS_abstractInputParameter_2D_weak::bang_abstractInputParameter_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_abstractInputParameter GALGAS_abstractInputParameter_2D_weak::bang_abstractInputParameter_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_abstractInputParameter result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -7990,7 +7990,7 @@ AC_GALGAS_root * GALGAS_abstractInputParameter_2D_weak::clonedObject (void) cons
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractInputParameter_2D_weak GALGAS_abstractInputParameter_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                            C_Compiler * inCompiler
+                                                                                            Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_abstractInputParameter_2D_weak result ;
   const GALGAS_abstractInputParameter_2D_weak * p = (const GALGAS_abstractInputParameter_2D_weak *) inObject.embeddedObject () ;
@@ -8116,7 +8116,7 @@ AC_GALGAS_root * GALGAS_inputParameterAnonymousVariable::clonedObject (void) con
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_inputParameterAnonymousVariable GALGAS_inputParameterAnonymousVariable::extractObject (const GALGAS_object & inObject,
-                                                                                              C_Compiler * inCompiler
+                                                                                              Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_inputParameterAnonymousVariable result ;
   const GALGAS_inputParameterAnonymousVariable * p = (const GALGAS_inputParameterAnonymousVariable *) inObject.embeddedObject () ;
@@ -8184,7 +8184,7 @@ GALGAS_inputParameterAnonymousVariable_2D_weak GALGAS_inputParameterAnonymousVar
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_inputParameterAnonymousVariable GALGAS_inputParameterAnonymousVariable_2D_weak::bang_inputParameterAnonymousVariable_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_inputParameterAnonymousVariable GALGAS_inputParameterAnonymousVariable_2D_weak::bang_inputParameterAnonymousVariable_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_inputParameterAnonymousVariable result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -8227,7 +8227,7 @@ AC_GALGAS_root * GALGAS_inputParameterAnonymousVariable_2D_weak::clonedObject (v
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_inputParameterAnonymousVariable_2D_weak GALGAS_inputParameterAnonymousVariable_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                              C_Compiler * inCompiler
+                                                                                                              Compiler * inCompiler
                                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_inputParameterAnonymousVariable_2D_weak result ;
   const GALGAS_inputParameterAnonymousVariable_2D_weak * p = (const GALGAS_inputParameterAnonymousVariable_2D_weak *) inObject.embeddedObject () ;
@@ -8295,7 +8295,7 @@ GALGAS_inputParameterVariable_2D_weak GALGAS_inputParameterVariable_2D_weak::con
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_inputParameterVariable GALGAS_inputParameterVariable_2D_weak::bang_inputParameterVariable_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_inputParameterVariable GALGAS_inputParameterVariable_2D_weak::bang_inputParameterVariable_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_inputParameterVariable result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -8338,7 +8338,7 @@ AC_GALGAS_root * GALGAS_inputParameterVariable_2D_weak::clonedObject (void) cons
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_inputParameterVariable_2D_weak GALGAS_inputParameterVariable_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                            C_Compiler * inCompiler
+                                                                                            Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_inputParameterVariable_2D_weak result ;
   const GALGAS_inputParameterVariable_2D_weak * p = (const GALGAS_inputParameterVariable_2D_weak *) inObject.embeddedObject () ;
@@ -8406,7 +8406,7 @@ GALGAS_inputParameterDeclaredVariable_2D_weak GALGAS_inputParameterDeclaredVaria
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_inputParameterDeclaredVariable GALGAS_inputParameterDeclaredVariable_2D_weak::bang_inputParameterDeclaredVariable_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_inputParameterDeclaredVariable GALGAS_inputParameterDeclaredVariable_2D_weak::bang_inputParameterDeclaredVariable_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_inputParameterDeclaredVariable result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -8449,7 +8449,7 @@ AC_GALGAS_root * GALGAS_inputParameterDeclaredVariable_2D_weak::clonedObject (vo
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_inputParameterDeclaredVariable_2D_weak GALGAS_inputParameterDeclaredVariable_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                            C_Compiler * inCompiler
+                                                                                                            Compiler * inCompiler
                                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_inputParameterDeclaredVariable_2D_weak result ;
   const GALGAS_inputParameterDeclaredVariable_2D_weak * p = (const GALGAS_inputParameterDeclaredVariable_2D_weak *) inObject.embeddedObject () ;
@@ -8517,7 +8517,7 @@ GALGAS_inputParameterDeclaredConstant_2D_weak GALGAS_inputParameterDeclaredConst
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_inputParameterDeclaredConstant GALGAS_inputParameterDeclaredConstant_2D_weak::bang_inputParameterDeclaredConstant_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_inputParameterDeclaredConstant GALGAS_inputParameterDeclaredConstant_2D_weak::bang_inputParameterDeclaredConstant_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_inputParameterDeclaredConstant result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -8560,7 +8560,7 @@ AC_GALGAS_root * GALGAS_inputParameterDeclaredConstant_2D_weak::clonedObject (vo
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_inputParameterDeclaredConstant_2D_weak GALGAS_inputParameterDeclaredConstant_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                            C_Compiler * inCompiler
+                                                                                                            Compiler * inCompiler
                                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_inputParameterDeclaredConstant_2D_weak result ;
   const GALGAS_inputParameterDeclaredConstant_2D_weak * p = (const GALGAS_inputParameterDeclaredConstant_2D_weak *) inObject.embeddedObject () ;
@@ -8718,7 +8718,7 @@ void GALGAS_actualInputParameterListAST::addAssign_operation (const GALGAS_lstri
 
 void GALGAS_actualInputParameterListAST::setter_append (const GALGAS_lstring inOperand0,
                                                         const GALGAS_abstractInputParameter inOperand1,
-                                                        C_Compiler * /* inCompiler */
+                                                        Compiler * /* inCompiler */
                                                         COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
@@ -8735,7 +8735,7 @@ void GALGAS_actualInputParameterListAST::setter_append (const GALGAS_lstring inO
 void GALGAS_actualInputParameterListAST::setter_insertAtIndex (const GALGAS_lstring inOperand0,
                                                                const GALGAS_abstractInputParameter inOperand1,
                                                                const GALGAS_uint inInsertionIndex,
-                                                               C_Compiler * inCompiler
+                                                               Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
@@ -8756,7 +8756,7 @@ void GALGAS_actualInputParameterListAST::setter_insertAtIndex (const GALGAS_lstr
 void GALGAS_actualInputParameterListAST::setter_removeAtIndex (GALGAS_lstring & outOperand0,
                                                                GALGAS_abstractInputParameter & outOperand1,
                                                                const GALGAS_uint inRemoveIndex,
-                                                               C_Compiler * inCompiler
+                                                               Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inRemoveIndex.isValid ()) {
@@ -8787,7 +8787,7 @@ void GALGAS_actualInputParameterListAST::setter_removeAtIndex (GALGAS_lstring & 
 
 void GALGAS_actualInputParameterListAST::setter_popFirst (GALGAS_lstring & outOperand0,
                                                           GALGAS_abstractInputParameter & outOperand1,
-                                                          C_Compiler * inCompiler
+                                                          Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
@@ -8806,7 +8806,7 @@ void GALGAS_actualInputParameterListAST::setter_popFirst (GALGAS_lstring & outOp
 
 void GALGAS_actualInputParameterListAST::setter_popLast (GALGAS_lstring & outOperand0,
                                                          GALGAS_abstractInputParameter & outOperand1,
-                                                         C_Compiler * inCompiler
+                                                         Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
@@ -8825,7 +8825,7 @@ void GALGAS_actualInputParameterListAST::setter_popLast (GALGAS_lstring & outOpe
 
 void GALGAS_actualInputParameterListAST::method_first (GALGAS_lstring & outOperand0,
                                                        GALGAS_abstractInputParameter & outOperand1,
-                                                       C_Compiler * inCompiler
+                                                       Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readFirst (attributes, inCompiler COMMA_THERE) ;
@@ -8844,7 +8844,7 @@ void GALGAS_actualInputParameterListAST::method_first (GALGAS_lstring & outOpera
 
 void GALGAS_actualInputParameterListAST::method_last (GALGAS_lstring & outOperand0,
                                                       GALGAS_abstractInputParameter & outOperand1,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readLast (attributes, inCompiler COMMA_THERE) ;
@@ -8862,7 +8862,7 @@ void GALGAS_actualInputParameterListAST::method_last (GALGAS_lstring & outOperan
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_actualInputParameterListAST GALGAS_actualInputParameterListAST::add_operation (const GALGAS_actualInputParameterListAST & inOperand,
-                                                                                      C_Compiler * /* inCompiler */
+                                                                                      Compiler * /* inCompiler */
                                                                                       COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_actualInputParameterListAST result ;
   if (isValid () && inOperand.isValid ()) {
@@ -8875,7 +8875,7 @@ GALGAS_actualInputParameterListAST GALGAS_actualInputParameterListAST::add_opera
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_actualInputParameterListAST GALGAS_actualInputParameterListAST::getter_subListWithRange (const GALGAS_range & inRange,
-                                                                                                C_Compiler * inCompiler
+                                                                                                Compiler * inCompiler
                                                                                                 COMMA_LOCATION_ARGS) const {
   GALGAS_actualInputParameterListAST result = GALGAS_actualInputParameterListAST::constructor_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
@@ -8885,7 +8885,7 @@ GALGAS_actualInputParameterListAST GALGAS_actualInputParameterListAST::getter_su
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_actualInputParameterListAST GALGAS_actualInputParameterListAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
-                                                                                                C_Compiler * inCompiler
+                                                                                                Compiler * inCompiler
                                                                                                 COMMA_LOCATION_ARGS) const {
   GALGAS_actualInputParameterListAST result = GALGAS_actualInputParameterListAST::constructor_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
@@ -8895,7 +8895,7 @@ GALGAS_actualInputParameterListAST GALGAS_actualInputParameterListAST::getter_su
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_actualInputParameterListAST GALGAS_actualInputParameterListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
-                                                                                              C_Compiler * inCompiler
+                                                                                              Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) const {
   GALGAS_actualInputParameterListAST result = GALGAS_actualInputParameterListAST::constructor_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
@@ -8905,7 +8905,7 @@ GALGAS_actualInputParameterListAST GALGAS_actualInputParameterListAST::getter_su
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_actualInputParameterListAST::plusAssign_operation (const GALGAS_actualInputParameterListAST inOperand,
-                                                               C_Compiler * /* inCompiler */
+                                                               Compiler * /* inCompiler */
                                                                COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
@@ -8914,7 +8914,7 @@ void GALGAS_actualInputParameterListAST::plusAssign_operation (const GALGAS_actu
 
 void GALGAS_actualInputParameterListAST::setter_setMActualSelectorAtIndex (GALGAS_lstring inOperand,
                                                                            GALGAS_uint inIndex,
-                                                                           C_Compiler * inCompiler
+                                                                           Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) {
   cCollectionElement_actualInputParameterListAST * p = (cCollectionElement_actualInputParameterListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -8927,7 +8927,7 @@ void GALGAS_actualInputParameterListAST::setter_setMActualSelectorAtIndex (GALGA
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_actualInputParameterListAST::getter_mActualSelectorAtIndex (const GALGAS_uint & inIndex,
-                                                                                  C_Compiler * inCompiler
+                                                                                  Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_actualInputParameterListAST * p = (cCollectionElement_actualInputParameterListAST *) attributes.ptr () ;
@@ -8943,7 +8943,7 @@ GALGAS_lstring GALGAS_actualInputParameterListAST::getter_mActualSelectorAtIndex
 
 void GALGAS_actualInputParameterListAST::setter_setMInputParameterAtIndex (GALGAS_abstractInputParameter inOperand,
                                                                            GALGAS_uint inIndex,
-                                                                           C_Compiler * inCompiler
+                                                                           Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) {
   cCollectionElement_actualInputParameterListAST * p = (cCollectionElement_actualInputParameterListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -8956,7 +8956,7 @@ void GALGAS_actualInputParameterListAST::setter_setMInputParameterAtIndex (GALGA
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractInputParameter GALGAS_actualInputParameterListAST::getter_mInputParameterAtIndex (const GALGAS_uint & inIndex,
-                                                                                                 C_Compiler * inCompiler
+                                                                                                 Compiler * inCompiler
                                                                                                  COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_actualInputParameterListAST * p = (cCollectionElement_actualInputParameterListAST *) attributes.ptr () ;
@@ -9035,7 +9035,7 @@ AC_GALGAS_root * GALGAS_actualInputParameterListAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_actualInputParameterListAST GALGAS_actualInputParameterListAST::extractObject (const GALGAS_object & inObject,
-                                                                                      C_Compiler * inCompiler
+                                                                                      Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_actualInputParameterListAST result ;
   const GALGAS_actualInputParameterListAST * p = (const GALGAS_actualInputParameterListAST *) inObject.embeddedObject () ;
@@ -9144,7 +9144,7 @@ AC_GALGAS_root * GALGAS_syntaxInstructionAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_syntaxInstructionAST GALGAS_syntaxInstructionAST::extractObject (const GALGAS_object & inObject,
-                                                                        C_Compiler * inCompiler
+                                                                        Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_syntaxInstructionAST result ;
   const GALGAS_syntaxInstructionAST * p = (const GALGAS_syntaxInstructionAST *) inObject.embeddedObject () ;
@@ -9212,7 +9212,7 @@ GALGAS_syntaxInstructionAST_2D_weak GALGAS_syntaxInstructionAST_2D_weak::constru
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_syntaxInstructionAST GALGAS_syntaxInstructionAST_2D_weak::bang_syntaxInstructionAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_syntaxInstructionAST GALGAS_syntaxInstructionAST_2D_weak::bang_syntaxInstructionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_syntaxInstructionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -9255,7 +9255,7 @@ AC_GALGAS_root * GALGAS_syntaxInstructionAST_2D_weak::clonedObject (void) const 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_syntaxInstructionAST_2D_weak GALGAS_syntaxInstructionAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                        C_Compiler * inCompiler
+                                                                                        Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_syntaxInstructionAST_2D_weak result ;
   const GALGAS_syntaxInstructionAST_2D_weak * p = (const GALGAS_syntaxInstructionAST_2D_weak *) inObject.embeddedObject () ;
@@ -9350,7 +9350,7 @@ AC_GALGAS_root * GALGAS_semanticInstructionAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_semanticInstructionAST GALGAS_semanticInstructionAST::extractObject (const GALGAS_object & inObject,
-                                                                            C_Compiler * inCompiler
+                                                                            Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_semanticInstructionAST result ;
   const GALGAS_semanticInstructionAST * p = (const GALGAS_semanticInstructionAST *) inObject.embeddedObject () ;
@@ -9418,7 +9418,7 @@ GALGAS_semanticInstructionAST_2D_weak GALGAS_semanticInstructionAST_2D_weak::con
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_semanticInstructionAST GALGAS_semanticInstructionAST_2D_weak::bang_semanticInstructionAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_semanticInstructionAST GALGAS_semanticInstructionAST_2D_weak::bang_semanticInstructionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_semanticInstructionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -9461,7 +9461,7 @@ AC_GALGAS_root * GALGAS_semanticInstructionAST_2D_weak::clonedObject (void) cons
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_semanticInstructionAST_2D_weak GALGAS_semanticInstructionAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                            C_Compiler * inCompiler
+                                                                                            Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_semanticInstructionAST_2D_weak result ;
   const GALGAS_semanticInstructionAST_2D_weak * p = (const GALGAS_semanticInstructionAST_2D_weak *) inObject.embeddedObject () ;
@@ -9608,7 +9608,7 @@ void GALGAS_semanticDeclarationListAST::addAssign_operation (const GALGAS_semant
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_semanticDeclarationListAST::setter_append (const GALGAS_semanticDeclarationAST inOperand0,
-                                                       C_Compiler * /* inCompiler */
+                                                       Compiler * /* inCompiler */
                                                        COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
@@ -9624,7 +9624,7 @@ void GALGAS_semanticDeclarationListAST::setter_append (const GALGAS_semanticDecl
 
 void GALGAS_semanticDeclarationListAST::setter_insertAtIndex (const GALGAS_semanticDeclarationAST inOperand0,
                                                               const GALGAS_uint inInsertionIndex,
-                                                              C_Compiler * inCompiler
+                                                              Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inInsertionIndex.isValid () && inOperand0.isValid ()) {
@@ -9644,7 +9644,7 @@ void GALGAS_semanticDeclarationListAST::setter_insertAtIndex (const GALGAS_seman
 
 void GALGAS_semanticDeclarationListAST::setter_removeAtIndex (GALGAS_semanticDeclarationAST & outOperand0,
                                                               const GALGAS_uint inRemoveIndex,
-                                                              C_Compiler * inCompiler
+                                                              Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inRemoveIndex.isValid ()) {
@@ -9670,7 +9670,7 @@ void GALGAS_semanticDeclarationListAST::setter_removeAtIndex (GALGAS_semanticDec
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_semanticDeclarationListAST::setter_popFirst (GALGAS_semanticDeclarationAST & outOperand0,
-                                                         C_Compiler * inCompiler
+                                                         Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
@@ -9686,7 +9686,7 @@ void GALGAS_semanticDeclarationListAST::setter_popFirst (GALGAS_semanticDeclarat
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_semanticDeclarationListAST::setter_popLast (GALGAS_semanticDeclarationAST & outOperand0,
-                                                        C_Compiler * inCompiler
+                                                        Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
@@ -9702,7 +9702,7 @@ void GALGAS_semanticDeclarationListAST::setter_popLast (GALGAS_semanticDeclarati
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_semanticDeclarationListAST::method_first (GALGAS_semanticDeclarationAST & outOperand0,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readFirst (attributes, inCompiler COMMA_THERE) ;
@@ -9718,7 +9718,7 @@ void GALGAS_semanticDeclarationListAST::method_first (GALGAS_semanticDeclaration
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_semanticDeclarationListAST::method_last (GALGAS_semanticDeclarationAST & outOperand0,
-                                                     C_Compiler * inCompiler
+                                                     Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readLast (attributes, inCompiler COMMA_THERE) ;
@@ -9734,7 +9734,7 @@ void GALGAS_semanticDeclarationListAST::method_last (GALGAS_semanticDeclarationA
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_semanticDeclarationListAST GALGAS_semanticDeclarationListAST::add_operation (const GALGAS_semanticDeclarationListAST & inOperand,
-                                                                                    C_Compiler * /* inCompiler */
+                                                                                    Compiler * /* inCompiler */
                                                                                     COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticDeclarationListAST result ;
   if (isValid () && inOperand.isValid ()) {
@@ -9747,7 +9747,7 @@ GALGAS_semanticDeclarationListAST GALGAS_semanticDeclarationListAST::add_operati
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_semanticDeclarationListAST GALGAS_semanticDeclarationListAST::getter_subListWithRange (const GALGAS_range & inRange,
-                                                                                              C_Compiler * inCompiler
+                                                                                              Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) const {
   GALGAS_semanticDeclarationListAST result = GALGAS_semanticDeclarationListAST::constructor_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
@@ -9757,7 +9757,7 @@ GALGAS_semanticDeclarationListAST GALGAS_semanticDeclarationListAST::getter_subL
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_semanticDeclarationListAST GALGAS_semanticDeclarationListAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
-                                                                                              C_Compiler * inCompiler
+                                                                                              Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) const {
   GALGAS_semanticDeclarationListAST result = GALGAS_semanticDeclarationListAST::constructor_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
@@ -9767,7 +9767,7 @@ GALGAS_semanticDeclarationListAST GALGAS_semanticDeclarationListAST::getter_subL
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_semanticDeclarationListAST GALGAS_semanticDeclarationListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
-                                                                                            C_Compiler * inCompiler
+                                                                                            Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) const {
   GALGAS_semanticDeclarationListAST result = GALGAS_semanticDeclarationListAST::constructor_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
@@ -9777,7 +9777,7 @@ GALGAS_semanticDeclarationListAST GALGAS_semanticDeclarationListAST::getter_subL
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_semanticDeclarationListAST::plusAssign_operation (const GALGAS_semanticDeclarationListAST inOperand,
-                                                              C_Compiler * /* inCompiler */
+                                                              Compiler * /* inCompiler */
                                                               COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
@@ -9786,7 +9786,7 @@ void GALGAS_semanticDeclarationListAST::plusAssign_operation (const GALGAS_seman
 
 void GALGAS_semanticDeclarationListAST::setter_setMSemanticDeclarationAtIndex (GALGAS_semanticDeclarationAST inOperand,
                                                                                GALGAS_uint inIndex,
-                                                                               C_Compiler * inCompiler
+                                                                               Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) {
   cCollectionElement_semanticDeclarationListAST * p = (cCollectionElement_semanticDeclarationListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -9799,7 +9799,7 @@ void GALGAS_semanticDeclarationListAST::setter_setMSemanticDeclarationAtIndex (G
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_semanticDeclarationAST GALGAS_semanticDeclarationListAST::getter_mSemanticDeclarationAtIndex (const GALGAS_uint & inIndex,
-                                                                                                     C_Compiler * inCompiler
+                                                                                                     Compiler * inCompiler
                                                                                                      COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_semanticDeclarationListAST * p = (cCollectionElement_semanticDeclarationListAST *) attributes.ptr () ;
@@ -9870,7 +9870,7 @@ AC_GALGAS_root * GALGAS_semanticDeclarationListAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_semanticDeclarationListAST GALGAS_semanticDeclarationListAST::extractObject (const GALGAS_object & inObject,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_semanticDeclarationListAST result ;
   const GALGAS_semanticDeclarationListAST * p = (const GALGAS_semanticDeclarationListAST *) inObject.embeddedObject () ;
@@ -9938,7 +9938,7 @@ GALGAS_externProcedureDeclarationAST_2D_weak GALGAS_externProcedureDeclarationAS
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_externProcedureDeclarationAST GALGAS_externProcedureDeclarationAST_2D_weak::bang_externProcedureDeclarationAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_externProcedureDeclarationAST GALGAS_externProcedureDeclarationAST_2D_weak::bang_externProcedureDeclarationAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_externProcedureDeclarationAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -9981,7 +9981,7 @@ AC_GALGAS_root * GALGAS_externProcedureDeclarationAST_2D_weak::clonedObject (voi
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_externProcedureDeclarationAST_2D_weak GALGAS_externProcedureDeclarationAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                          C_Compiler * inCompiler
+                                                                                                          Compiler * inCompiler
                                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_externProcedureDeclarationAST_2D_weak result ;
   const GALGAS_externProcedureDeclarationAST_2D_weak * p = (const GALGAS_externProcedureDeclarationAST_2D_weak *) inObject.embeddedObject () ;
@@ -10049,7 +10049,7 @@ GALGAS_procDeclarationAST_2D_weak GALGAS_procDeclarationAST_2D_weak::constructor
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_procDeclarationAST GALGAS_procDeclarationAST_2D_weak::bang_procDeclarationAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_procDeclarationAST GALGAS_procDeclarationAST_2D_weak::bang_procDeclarationAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_procDeclarationAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -10092,7 +10092,7 @@ AC_GALGAS_root * GALGAS_procDeclarationAST_2D_weak::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_procDeclarationAST_2D_weak GALGAS_procDeclarationAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_procDeclarationAST_2D_weak result ;
   const GALGAS_procDeclarationAST_2D_weak * p = (const GALGAS_procDeclarationAST_2D_weak *) inObject.embeddedObject () ;
@@ -10160,7 +10160,7 @@ GALGAS_externFunctionDeclarationAST_2D_weak GALGAS_externFunctionDeclarationAST_
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_externFunctionDeclarationAST GALGAS_externFunctionDeclarationAST_2D_weak::bang_externFunctionDeclarationAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_externFunctionDeclarationAST GALGAS_externFunctionDeclarationAST_2D_weak::bang_externFunctionDeclarationAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_externFunctionDeclarationAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -10203,7 +10203,7 @@ AC_GALGAS_root * GALGAS_externFunctionDeclarationAST_2D_weak::clonedObject (void
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_externFunctionDeclarationAST_2D_weak GALGAS_externFunctionDeclarationAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                        C_Compiler * inCompiler
+                                                                                                        Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_externFunctionDeclarationAST_2D_weak result ;
   const GALGAS_externFunctionDeclarationAST_2D_weak * p = (const GALGAS_externFunctionDeclarationAST_2D_weak *) inObject.embeddedObject () ;
@@ -10271,7 +10271,7 @@ GALGAS_functionDeclarationAST_2D_weak GALGAS_functionDeclarationAST_2D_weak::con
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_functionDeclarationAST GALGAS_functionDeclarationAST_2D_weak::bang_functionDeclarationAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_functionDeclarationAST GALGAS_functionDeclarationAST_2D_weak::bang_functionDeclarationAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_functionDeclarationAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -10314,7 +10314,7 @@ AC_GALGAS_root * GALGAS_functionDeclarationAST_2D_weak::clonedObject (void) cons
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_functionDeclarationAST_2D_weak GALGAS_functionDeclarationAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                            C_Compiler * inCompiler
+                                                                                            Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_functionDeclarationAST_2D_weak result ;
   const GALGAS_functionDeclarationAST_2D_weak * p = (const GALGAS_functionDeclarationAST_2D_weak *) inObject.embeddedObject () ;
@@ -10382,7 +10382,7 @@ GALGAS_onceFunctionDeclarationAST_2D_weak GALGAS_onceFunctionDeclarationAST_2D_w
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_onceFunctionDeclarationAST GALGAS_onceFunctionDeclarationAST_2D_weak::bang_onceFunctionDeclarationAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_onceFunctionDeclarationAST GALGAS_onceFunctionDeclarationAST_2D_weak::bang_onceFunctionDeclarationAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_onceFunctionDeclarationAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -10425,7 +10425,7 @@ AC_GALGAS_root * GALGAS_onceFunctionDeclarationAST_2D_weak::clonedObject (void) 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_onceFunctionDeclarationAST_2D_weak GALGAS_onceFunctionDeclarationAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                    C_Compiler * inCompiler
+                                                                                                    Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_onceFunctionDeclarationAST_2D_weak result ;
   const GALGAS_onceFunctionDeclarationAST_2D_weak * p = (const GALGAS_onceFunctionDeclarationAST_2D_weak *) inObject.embeddedObject () ;
@@ -10577,7 +10577,7 @@ GALGAS_AccessControlAST GALGAS_AccessControlAST::constructor_fileprivateSetAcces
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_AccessControlAST::method_fileprivateAccess (GALGAS_location & outAssociatedValue0,
-                                                        C_Compiler * inCompiler
+                                                        Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
   if (mEnum != kEnum_fileprivateAccess) {
     outAssociatedValue0.drop () ;
@@ -10593,7 +10593,7 @@ void GALGAS_AccessControlAST::method_fileprivateAccess (GALGAS_location & outAss
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_AccessControlAST::method_fileprivateSetAccess (GALGAS_location & outAssociatedValue0,
-                                                           C_Compiler * inCompiler
+                                                           Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) const {
   if (mEnum != kEnum_fileprivateSetAccess) {
     outAssociatedValue0.drop () ;
@@ -10773,7 +10773,7 @@ AC_GALGAS_root * GALGAS_AccessControlAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_AccessControlAST GALGAS_AccessControlAST::extractObject (const GALGAS_object & inObject,
-                                                                C_Compiler * inCompiler
+                                                                Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_AccessControlAST result ;
   const GALGAS_AccessControlAST * p = (const GALGAS_AccessControlAST *) inObject.embeddedObject () ;
@@ -10849,7 +10849,7 @@ GALGAS_propertyInCollectionInitializationAST GALGAS_propertyInCollectionInitiali
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_propertyInCollectionInitializationAST::method_some (GALGAS_semanticExpressionAST & outAssociatedValue0,
-                                                                C_Compiler * inCompiler
+                                                                Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) const {
   if (mEnum != kEnum_some) {
     outAssociatedValue0.drop () ;
@@ -10955,7 +10955,7 @@ AC_GALGAS_root * GALGAS_propertyInCollectionInitializationAST::clonedObject (voi
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_propertyInCollectionInitializationAST GALGAS_propertyInCollectionInitializationAST::extractObject (const GALGAS_object & inObject,
-                                                                                                          C_Compiler * inCompiler
+                                                                                                          Compiler * inCompiler
                                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_propertyInCollectionInitializationAST result ;
   const GALGAS_propertyInCollectionInitializationAST * p = (const GALGAS_propertyInCollectionInitializationAST *) inObject.embeddedObject () ;
@@ -11135,7 +11135,7 @@ void GALGAS_formalTemplateInputParameterListAST::setter_append (const GALGAS_lst
                                                                 const GALGAS_lstring inOperand1,
                                                                 const GALGAS_lstring inOperand2,
                                                                 const GALGAS_bool inOperand3,
-                                                                C_Compiler * /* inCompiler */
+                                                                Compiler * /* inCompiler */
                                                                 COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
@@ -11154,7 +11154,7 @@ void GALGAS_formalTemplateInputParameterListAST::setter_insertAtIndex (const GAL
                                                                        const GALGAS_lstring inOperand2,
                                                                        const GALGAS_bool inOperand3,
                                                                        const GALGAS_uint inInsertionIndex,
-                                                                       C_Compiler * inCompiler
+                                                                       Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
@@ -11177,7 +11177,7 @@ void GALGAS_formalTemplateInputParameterListAST::setter_removeAtIndex (GALGAS_ls
                                                                        GALGAS_lstring & outOperand2,
                                                                        GALGAS_bool & outOperand3,
                                                                        const GALGAS_uint inRemoveIndex,
-                                                                       C_Compiler * inCompiler
+                                                                       Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inRemoveIndex.isValid ()) {
@@ -11218,7 +11218,7 @@ void GALGAS_formalTemplateInputParameterListAST::setter_popFirst (GALGAS_lstring
                                                                   GALGAS_lstring & outOperand1,
                                                                   GALGAS_lstring & outOperand2,
                                                                   GALGAS_bool & outOperand3,
-                                                                  C_Compiler * inCompiler
+                                                                  Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
@@ -11243,7 +11243,7 @@ void GALGAS_formalTemplateInputParameterListAST::setter_popLast (GALGAS_lstring 
                                                                  GALGAS_lstring & outOperand1,
                                                                  GALGAS_lstring & outOperand2,
                                                                  GALGAS_bool & outOperand3,
-                                                                 C_Compiler * inCompiler
+                                                                 Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
@@ -11268,7 +11268,7 @@ void GALGAS_formalTemplateInputParameterListAST::method_first (GALGAS_lstring & 
                                                                GALGAS_lstring & outOperand1,
                                                                GALGAS_lstring & outOperand2,
                                                                GALGAS_bool & outOperand3,
-                                                               C_Compiler * inCompiler
+                                                               Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readFirst (attributes, inCompiler COMMA_THERE) ;
@@ -11293,7 +11293,7 @@ void GALGAS_formalTemplateInputParameterListAST::method_last (GALGAS_lstring & o
                                                               GALGAS_lstring & outOperand1,
                                                               GALGAS_lstring & outOperand2,
                                                               GALGAS_bool & outOperand3,
-                                                              C_Compiler * inCompiler
+                                                              Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readLast (attributes, inCompiler COMMA_THERE) ;
@@ -11315,7 +11315,7 @@ void GALGAS_formalTemplateInputParameterListAST::method_last (GALGAS_lstring & o
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_formalTemplateInputParameterListAST GALGAS_formalTemplateInputParameterListAST::add_operation (const GALGAS_formalTemplateInputParameterListAST & inOperand,
-                                                                                                      C_Compiler * /* inCompiler */
+                                                                                                      Compiler * /* inCompiler */
                                                                                                       COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_formalTemplateInputParameterListAST result ;
   if (isValid () && inOperand.isValid ()) {
@@ -11328,7 +11328,7 @@ GALGAS_formalTemplateInputParameterListAST GALGAS_formalTemplateInputParameterLi
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_formalTemplateInputParameterListAST GALGAS_formalTemplateInputParameterListAST::getter_subListWithRange (const GALGAS_range & inRange,
-                                                                                                                C_Compiler * inCompiler
+                                                                                                                Compiler * inCompiler
                                                                                                                 COMMA_LOCATION_ARGS) const {
   GALGAS_formalTemplateInputParameterListAST result = GALGAS_formalTemplateInputParameterListAST::constructor_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
@@ -11338,7 +11338,7 @@ GALGAS_formalTemplateInputParameterListAST GALGAS_formalTemplateInputParameterLi
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_formalTemplateInputParameterListAST GALGAS_formalTemplateInputParameterListAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
-                                                                                                                C_Compiler * inCompiler
+                                                                                                                Compiler * inCompiler
                                                                                                                 COMMA_LOCATION_ARGS) const {
   GALGAS_formalTemplateInputParameterListAST result = GALGAS_formalTemplateInputParameterListAST::constructor_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
@@ -11348,7 +11348,7 @@ GALGAS_formalTemplateInputParameterListAST GALGAS_formalTemplateInputParameterLi
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_formalTemplateInputParameterListAST GALGAS_formalTemplateInputParameterListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
-                                                                                                              C_Compiler * inCompiler
+                                                                                                              Compiler * inCompiler
                                                                                                               COMMA_LOCATION_ARGS) const {
   GALGAS_formalTemplateInputParameterListAST result = GALGAS_formalTemplateInputParameterListAST::constructor_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
@@ -11358,7 +11358,7 @@ GALGAS_formalTemplateInputParameterListAST GALGAS_formalTemplateInputParameterLi
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_formalTemplateInputParameterListAST::plusAssign_operation (const GALGAS_formalTemplateInputParameterListAST inOperand,
-                                                                       C_Compiler * /* inCompiler */
+                                                                       Compiler * /* inCompiler */
                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
@@ -11367,7 +11367,7 @@ void GALGAS_formalTemplateInputParameterListAST::plusAssign_operation (const GAL
 
 void GALGAS_formalTemplateInputParameterListAST::setter_setMFormalTemplateSelectorAtIndex (GALGAS_lstring inOperand,
                                                                                            GALGAS_uint inIndex,
-                                                                                           C_Compiler * inCompiler
+                                                                                           Compiler * inCompiler
                                                                                            COMMA_LOCATION_ARGS) {
   cCollectionElement_formalTemplateInputParameterListAST * p = (cCollectionElement_formalTemplateInputParameterListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -11380,7 +11380,7 @@ void GALGAS_formalTemplateInputParameterListAST::setter_setMFormalTemplateSelect
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_formalTemplateInputParameterListAST::getter_mFormalTemplateSelectorAtIndex (const GALGAS_uint & inIndex,
-                                                                                                  C_Compiler * inCompiler
+                                                                                                  Compiler * inCompiler
                                                                                                   COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_formalTemplateInputParameterListAST * p = (cCollectionElement_formalTemplateInputParameterListAST *) attributes.ptr () ;
@@ -11396,7 +11396,7 @@ GALGAS_lstring GALGAS_formalTemplateInputParameterListAST::getter_mFormalTemplat
 
 void GALGAS_formalTemplateInputParameterListAST::setter_setMFormalArgumentTypeNameAtIndex (GALGAS_lstring inOperand,
                                                                                            GALGAS_uint inIndex,
-                                                                                           C_Compiler * inCompiler
+                                                                                           Compiler * inCompiler
                                                                                            COMMA_LOCATION_ARGS) {
   cCollectionElement_formalTemplateInputParameterListAST * p = (cCollectionElement_formalTemplateInputParameterListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -11409,7 +11409,7 @@ void GALGAS_formalTemplateInputParameterListAST::setter_setMFormalArgumentTypeNa
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_formalTemplateInputParameterListAST::getter_mFormalArgumentTypeNameAtIndex (const GALGAS_uint & inIndex,
-                                                                                                  C_Compiler * inCompiler
+                                                                                                  Compiler * inCompiler
                                                                                                   COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_formalTemplateInputParameterListAST * p = (cCollectionElement_formalTemplateInputParameterListAST *) attributes.ptr () ;
@@ -11425,7 +11425,7 @@ GALGAS_lstring GALGAS_formalTemplateInputParameterListAST::getter_mFormalArgumen
 
 void GALGAS_formalTemplateInputParameterListAST::setter_setMFormalArgumentNameAtIndex (GALGAS_lstring inOperand,
                                                                                        GALGAS_uint inIndex,
-                                                                                       C_Compiler * inCompiler
+                                                                                       Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) {
   cCollectionElement_formalTemplateInputParameterListAST * p = (cCollectionElement_formalTemplateInputParameterListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -11438,7 +11438,7 @@ void GALGAS_formalTemplateInputParameterListAST::setter_setMFormalArgumentNameAt
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_formalTemplateInputParameterListAST::getter_mFormalArgumentNameAtIndex (const GALGAS_uint & inIndex,
-                                                                                              C_Compiler * inCompiler
+                                                                                              Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_formalTemplateInputParameterListAST * p = (cCollectionElement_formalTemplateInputParameterListAST *) attributes.ptr () ;
@@ -11454,7 +11454,7 @@ GALGAS_lstring GALGAS_formalTemplateInputParameterListAST::getter_mFormalArgumen
 
 void GALGAS_formalTemplateInputParameterListAST::setter_setMIsUnusedAtIndex (GALGAS_bool inOperand,
                                                                              GALGAS_uint inIndex,
-                                                                             C_Compiler * inCompiler
+                                                                             Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) {
   cCollectionElement_formalTemplateInputParameterListAST * p = (cCollectionElement_formalTemplateInputParameterListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -11467,7 +11467,7 @@ void GALGAS_formalTemplateInputParameterListAST::setter_setMIsUnusedAtIndex (GAL
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_formalTemplateInputParameterListAST::getter_mIsUnusedAtIndex (const GALGAS_uint & inIndex,
-                                                                                 C_Compiler * inCompiler
+                                                                                 Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_formalTemplateInputParameterListAST * p = (cCollectionElement_formalTemplateInputParameterListAST *) attributes.ptr () ;
@@ -11562,7 +11562,7 @@ AC_GALGAS_root * GALGAS_formalTemplateInputParameterListAST::clonedObject (void)
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_formalTemplateInputParameterListAST GALGAS_formalTemplateInputParameterListAST::extractObject (const GALGAS_object & inObject,
-                                                                                                      C_Compiler * inCompiler
+                                                                                                      Compiler * inCompiler
                                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_formalTemplateInputParameterListAST result ;
   const GALGAS_formalTemplateInputParameterListAST * p = (const GALGAS_formalTemplateInputParameterListAST *) inObject.embeddedObject () ;
@@ -11731,7 +11731,7 @@ void GALGAS_filewrapperTemplateListAST::addAssign_operation (const GALGAS_lstrin
 void GALGAS_filewrapperTemplateListAST::setter_append (const GALGAS_lstring inOperand0,
                                                        const GALGAS_lstring inOperand1,
                                                        const GALGAS_formalTemplateInputParameterListAST inOperand2,
-                                                       C_Compiler * /* inCompiler */
+                                                       Compiler * /* inCompiler */
                                                        COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
@@ -11749,7 +11749,7 @@ void GALGAS_filewrapperTemplateListAST::setter_insertAtIndex (const GALGAS_lstri
                                                               const GALGAS_lstring inOperand1,
                                                               const GALGAS_formalTemplateInputParameterListAST inOperand2,
                                                               const GALGAS_uint inInsertionIndex,
-                                                              C_Compiler * inCompiler
+                                                              Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
@@ -11771,7 +11771,7 @@ void GALGAS_filewrapperTemplateListAST::setter_removeAtIndex (GALGAS_lstring & o
                                                               GALGAS_lstring & outOperand1,
                                                               GALGAS_formalTemplateInputParameterListAST & outOperand2,
                                                               const GALGAS_uint inRemoveIndex,
-                                                              C_Compiler * inCompiler
+                                                              Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inRemoveIndex.isValid ()) {
@@ -11807,7 +11807,7 @@ void GALGAS_filewrapperTemplateListAST::setter_removeAtIndex (GALGAS_lstring & o
 void GALGAS_filewrapperTemplateListAST::setter_popFirst (GALGAS_lstring & outOperand0,
                                                          GALGAS_lstring & outOperand1,
                                                          GALGAS_formalTemplateInputParameterListAST & outOperand2,
-                                                         C_Compiler * inCompiler
+                                                         Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
@@ -11829,7 +11829,7 @@ void GALGAS_filewrapperTemplateListAST::setter_popFirst (GALGAS_lstring & outOpe
 void GALGAS_filewrapperTemplateListAST::setter_popLast (GALGAS_lstring & outOperand0,
                                                         GALGAS_lstring & outOperand1,
                                                         GALGAS_formalTemplateInputParameterListAST & outOperand2,
-                                                        C_Compiler * inCompiler
+                                                        Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
@@ -11851,7 +11851,7 @@ void GALGAS_filewrapperTemplateListAST::setter_popLast (GALGAS_lstring & outOper
 void GALGAS_filewrapperTemplateListAST::method_first (GALGAS_lstring & outOperand0,
                                                       GALGAS_lstring & outOperand1,
                                                       GALGAS_formalTemplateInputParameterListAST & outOperand2,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readFirst (attributes, inCompiler COMMA_THERE) ;
@@ -11873,7 +11873,7 @@ void GALGAS_filewrapperTemplateListAST::method_first (GALGAS_lstring & outOperan
 void GALGAS_filewrapperTemplateListAST::method_last (GALGAS_lstring & outOperand0,
                                                      GALGAS_lstring & outOperand1,
                                                      GALGAS_formalTemplateInputParameterListAST & outOperand2,
-                                                     C_Compiler * inCompiler
+                                                     Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readLast (attributes, inCompiler COMMA_THERE) ;
@@ -11893,7 +11893,7 @@ void GALGAS_filewrapperTemplateListAST::method_last (GALGAS_lstring & outOperand
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_filewrapperTemplateListAST GALGAS_filewrapperTemplateListAST::add_operation (const GALGAS_filewrapperTemplateListAST & inOperand,
-                                                                                    C_Compiler * /* inCompiler */
+                                                                                    Compiler * /* inCompiler */
                                                                                     COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_filewrapperTemplateListAST result ;
   if (isValid () && inOperand.isValid ()) {
@@ -11906,7 +11906,7 @@ GALGAS_filewrapperTemplateListAST GALGAS_filewrapperTemplateListAST::add_operati
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_filewrapperTemplateListAST GALGAS_filewrapperTemplateListAST::getter_subListWithRange (const GALGAS_range & inRange,
-                                                                                              C_Compiler * inCompiler
+                                                                                              Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) const {
   GALGAS_filewrapperTemplateListAST result = GALGAS_filewrapperTemplateListAST::constructor_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
@@ -11916,7 +11916,7 @@ GALGAS_filewrapperTemplateListAST GALGAS_filewrapperTemplateListAST::getter_subL
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_filewrapperTemplateListAST GALGAS_filewrapperTemplateListAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
-                                                                                              C_Compiler * inCompiler
+                                                                                              Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) const {
   GALGAS_filewrapperTemplateListAST result = GALGAS_filewrapperTemplateListAST::constructor_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
@@ -11926,7 +11926,7 @@ GALGAS_filewrapperTemplateListAST GALGAS_filewrapperTemplateListAST::getter_subL
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_filewrapperTemplateListAST GALGAS_filewrapperTemplateListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
-                                                                                            C_Compiler * inCompiler
+                                                                                            Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) const {
   GALGAS_filewrapperTemplateListAST result = GALGAS_filewrapperTemplateListAST::constructor_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
@@ -11936,7 +11936,7 @@ GALGAS_filewrapperTemplateListAST GALGAS_filewrapperTemplateListAST::getter_subL
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_filewrapperTemplateListAST::plusAssign_operation (const GALGAS_filewrapperTemplateListAST inOperand,
-                                                              C_Compiler * /* inCompiler */
+                                                              Compiler * /* inCompiler */
                                                               COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
@@ -11945,7 +11945,7 @@ void GALGAS_filewrapperTemplateListAST::plusAssign_operation (const GALGAS_filew
 
 void GALGAS_filewrapperTemplateListAST::setter_setMFilewrapperTemplateNameAtIndex (GALGAS_lstring inOperand,
                                                                                    GALGAS_uint inIndex,
-                                                                                   C_Compiler * inCompiler
+                                                                                   Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) {
   cCollectionElement_filewrapperTemplateListAST * p = (cCollectionElement_filewrapperTemplateListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -11958,7 +11958,7 @@ void GALGAS_filewrapperTemplateListAST::setter_setMFilewrapperTemplateNameAtInde
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_filewrapperTemplateListAST::getter_mFilewrapperTemplateNameAtIndex (const GALGAS_uint & inIndex,
-                                                                                          C_Compiler * inCompiler
+                                                                                          Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_filewrapperTemplateListAST * p = (cCollectionElement_filewrapperTemplateListAST *) attributes.ptr () ;
@@ -11974,7 +11974,7 @@ GALGAS_lstring GALGAS_filewrapperTemplateListAST::getter_mFilewrapperTemplateNam
 
 void GALGAS_filewrapperTemplateListAST::setter_setMFilewrapperTemplatePathAtIndex (GALGAS_lstring inOperand,
                                                                                    GALGAS_uint inIndex,
-                                                                                   C_Compiler * inCompiler
+                                                                                   Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) {
   cCollectionElement_filewrapperTemplateListAST * p = (cCollectionElement_filewrapperTemplateListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -11987,7 +11987,7 @@ void GALGAS_filewrapperTemplateListAST::setter_setMFilewrapperTemplatePathAtInde
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_filewrapperTemplateListAST::getter_mFilewrapperTemplatePathAtIndex (const GALGAS_uint & inIndex,
-                                                                                          C_Compiler * inCompiler
+                                                                                          Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_filewrapperTemplateListAST * p = (cCollectionElement_filewrapperTemplateListAST *) attributes.ptr () ;
@@ -12003,7 +12003,7 @@ GALGAS_lstring GALGAS_filewrapperTemplateListAST::getter_mFilewrapperTemplatePat
 
 void GALGAS_filewrapperTemplateListAST::setter_setMFilewrapperTemplateFormalInputParametersAtIndex (GALGAS_formalTemplateInputParameterListAST inOperand,
                                                                                                     GALGAS_uint inIndex,
-                                                                                                    C_Compiler * inCompiler
+                                                                                                    Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) {
   cCollectionElement_filewrapperTemplateListAST * p = (cCollectionElement_filewrapperTemplateListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -12016,7 +12016,7 @@ void GALGAS_filewrapperTemplateListAST::setter_setMFilewrapperTemplateFormalInpu
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_formalTemplateInputParameterListAST GALGAS_filewrapperTemplateListAST::getter_mFilewrapperTemplateFormalInputParametersAtIndex (const GALGAS_uint & inIndex,
-                                                                                                                                       C_Compiler * inCompiler
+                                                                                                                                       Compiler * inCompiler
                                                                                                                                        COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_filewrapperTemplateListAST * p = (cCollectionElement_filewrapperTemplateListAST *) attributes.ptr () ;
@@ -12103,7 +12103,7 @@ AC_GALGAS_root * GALGAS_filewrapperTemplateListAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_filewrapperTemplateListAST GALGAS_filewrapperTemplateListAST::extractObject (const GALGAS_object & inObject,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_filewrapperTemplateListAST result ;
   const GALGAS_filewrapperTemplateListAST * p = (const GALGAS_filewrapperTemplateListAST *) inObject.embeddedObject () ;
@@ -12171,7 +12171,7 @@ GALGAS_filewrapperDeclarationAST_2D_weak GALGAS_filewrapperDeclarationAST_2D_wea
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperDeclarationAST GALGAS_filewrapperDeclarationAST_2D_weak::bang_filewrapperDeclarationAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_filewrapperDeclarationAST GALGAS_filewrapperDeclarationAST_2D_weak::bang_filewrapperDeclarationAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_filewrapperDeclarationAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -12214,7 +12214,7 @@ AC_GALGAS_root * GALGAS_filewrapperDeclarationAST_2D_weak::clonedObject (void) c
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_filewrapperDeclarationAST_2D_weak GALGAS_filewrapperDeclarationAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                  C_Compiler * inCompiler
+                                                                                                  Compiler * inCompiler
                                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_filewrapperDeclarationAST_2D_weak result ;
   const GALGAS_filewrapperDeclarationAST_2D_weak * p = (const GALGAS_filewrapperDeclarationAST_2D_weak *) inObject.embeddedObject () ;
@@ -12361,7 +12361,7 @@ void GALGAS_syntaxInstructionList::addAssign_operation (const GALGAS_syntaxInstr
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_syntaxInstructionList::setter_append (const GALGAS_syntaxInstructionAST inOperand0,
-                                                  C_Compiler * /* inCompiler */
+                                                  Compiler * /* inCompiler */
                                                   COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
@@ -12377,7 +12377,7 @@ void GALGAS_syntaxInstructionList::setter_append (const GALGAS_syntaxInstruction
 
 void GALGAS_syntaxInstructionList::setter_insertAtIndex (const GALGAS_syntaxInstructionAST inOperand0,
                                                          const GALGAS_uint inInsertionIndex,
-                                                         C_Compiler * inCompiler
+                                                         Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inInsertionIndex.isValid () && inOperand0.isValid ()) {
@@ -12397,7 +12397,7 @@ void GALGAS_syntaxInstructionList::setter_insertAtIndex (const GALGAS_syntaxInst
 
 void GALGAS_syntaxInstructionList::setter_removeAtIndex (GALGAS_syntaxInstructionAST & outOperand0,
                                                          const GALGAS_uint inRemoveIndex,
-                                                         C_Compiler * inCompiler
+                                                         Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inRemoveIndex.isValid ()) {
@@ -12423,7 +12423,7 @@ void GALGAS_syntaxInstructionList::setter_removeAtIndex (GALGAS_syntaxInstructio
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_syntaxInstructionList::setter_popFirst (GALGAS_syntaxInstructionAST & outOperand0,
-                                                    C_Compiler * inCompiler
+                                                    Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
@@ -12439,7 +12439,7 @@ void GALGAS_syntaxInstructionList::setter_popFirst (GALGAS_syntaxInstructionAST 
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_syntaxInstructionList::setter_popLast (GALGAS_syntaxInstructionAST & outOperand0,
-                                                   C_Compiler * inCompiler
+                                                   Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
@@ -12455,7 +12455,7 @@ void GALGAS_syntaxInstructionList::setter_popLast (GALGAS_syntaxInstructionAST &
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_syntaxInstructionList::method_first (GALGAS_syntaxInstructionAST & outOperand0,
-                                                 C_Compiler * inCompiler
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readFirst (attributes, inCompiler COMMA_THERE) ;
@@ -12471,7 +12471,7 @@ void GALGAS_syntaxInstructionList::method_first (GALGAS_syntaxInstructionAST & o
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_syntaxInstructionList::method_last (GALGAS_syntaxInstructionAST & outOperand0,
-                                                C_Compiler * inCompiler
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readLast (attributes, inCompiler COMMA_THERE) ;
@@ -12487,7 +12487,7 @@ void GALGAS_syntaxInstructionList::method_last (GALGAS_syntaxInstructionAST & ou
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_syntaxInstructionList GALGAS_syntaxInstructionList::add_operation (const GALGAS_syntaxInstructionList & inOperand,
-                                                                          C_Compiler * /* inCompiler */
+                                                                          Compiler * /* inCompiler */
                                                                           COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_syntaxInstructionList result ;
   if (isValid () && inOperand.isValid ()) {
@@ -12500,7 +12500,7 @@ GALGAS_syntaxInstructionList GALGAS_syntaxInstructionList::add_operation (const 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_syntaxInstructionList GALGAS_syntaxInstructionList::getter_subListWithRange (const GALGAS_range & inRange,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) const {
   GALGAS_syntaxInstructionList result = GALGAS_syntaxInstructionList::constructor_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
@@ -12510,7 +12510,7 @@ GALGAS_syntaxInstructionList GALGAS_syntaxInstructionList::getter_subListWithRan
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_syntaxInstructionList GALGAS_syntaxInstructionList::getter_subListFromIndex (const GALGAS_uint & inIndex,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) const {
   GALGAS_syntaxInstructionList result = GALGAS_syntaxInstructionList::constructor_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
@@ -12520,7 +12520,7 @@ GALGAS_syntaxInstructionList GALGAS_syntaxInstructionList::getter_subListFromInd
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_syntaxInstructionList GALGAS_syntaxInstructionList::getter_subListToIndex (const GALGAS_uint & inIndex,
-                                                                                  C_Compiler * inCompiler
+                                                                                  Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) const {
   GALGAS_syntaxInstructionList result = GALGAS_syntaxInstructionList::constructor_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
@@ -12530,7 +12530,7 @@ GALGAS_syntaxInstructionList GALGAS_syntaxInstructionList::getter_subListToIndex
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_syntaxInstructionList::plusAssign_operation (const GALGAS_syntaxInstructionList inOperand,
-                                                         C_Compiler * /* inCompiler */
+                                                         Compiler * /* inCompiler */
                                                          COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
@@ -12539,7 +12539,7 @@ void GALGAS_syntaxInstructionList::plusAssign_operation (const GALGAS_syntaxInst
 
 void GALGAS_syntaxInstructionList::setter_setMInstructionAtIndex (GALGAS_syntaxInstructionAST inOperand,
                                                                   GALGAS_uint inIndex,
-                                                                  C_Compiler * inCompiler
+                                                                  Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) {
   cCollectionElement_syntaxInstructionList * p = (cCollectionElement_syntaxInstructionList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -12552,7 +12552,7 @@ void GALGAS_syntaxInstructionList::setter_setMInstructionAtIndex (GALGAS_syntaxI
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_syntaxInstructionAST GALGAS_syntaxInstructionList::getter_mInstructionAtIndex (const GALGAS_uint & inIndex,
-                                                                                      C_Compiler * inCompiler
+                                                                                      Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_syntaxInstructionList * p = (cCollectionElement_syntaxInstructionList *) attributes.ptr () ;
@@ -12623,7 +12623,7 @@ AC_GALGAS_root * GALGAS_syntaxInstructionList::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_syntaxInstructionList GALGAS_syntaxInstructionList::extractObject (const GALGAS_object & inObject,
-                                                                          C_Compiler * inCompiler
+                                                                          Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_syntaxInstructionList result ;
   const GALGAS_syntaxInstructionList * p = (const GALGAS_syntaxInstructionList *) inObject.embeddedObject () ;
@@ -12792,7 +12792,7 @@ void GALGAS_nonTerminalLabelListAST::addAssign_operation (const GALGAS_lstring &
 void GALGAS_nonTerminalLabelListAST::setter_append (const GALGAS_lstring inOperand0,
                                                     const GALGAS_formalParameterListAST inOperand1,
                                                     const GALGAS_location inOperand2,
-                                                    C_Compiler * /* inCompiler */
+                                                    Compiler * /* inCompiler */
                                                     COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
@@ -12810,7 +12810,7 @@ void GALGAS_nonTerminalLabelListAST::setter_insertAtIndex (const GALGAS_lstring 
                                                            const GALGAS_formalParameterListAST inOperand1,
                                                            const GALGAS_location inOperand2,
                                                            const GALGAS_uint inInsertionIndex,
-                                                           C_Compiler * inCompiler
+                                                           Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
@@ -12832,7 +12832,7 @@ void GALGAS_nonTerminalLabelListAST::setter_removeAtIndex (GALGAS_lstring & outO
                                                            GALGAS_formalParameterListAST & outOperand1,
                                                            GALGAS_location & outOperand2,
                                                            const GALGAS_uint inRemoveIndex,
-                                                           C_Compiler * inCompiler
+                                                           Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inRemoveIndex.isValid ()) {
@@ -12868,7 +12868,7 @@ void GALGAS_nonTerminalLabelListAST::setter_removeAtIndex (GALGAS_lstring & outO
 void GALGAS_nonTerminalLabelListAST::setter_popFirst (GALGAS_lstring & outOperand0,
                                                       GALGAS_formalParameterListAST & outOperand1,
                                                       GALGAS_location & outOperand2,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
@@ -12890,7 +12890,7 @@ void GALGAS_nonTerminalLabelListAST::setter_popFirst (GALGAS_lstring & outOperan
 void GALGAS_nonTerminalLabelListAST::setter_popLast (GALGAS_lstring & outOperand0,
                                                      GALGAS_formalParameterListAST & outOperand1,
                                                      GALGAS_location & outOperand2,
-                                                     C_Compiler * inCompiler
+                                                     Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
@@ -12912,7 +12912,7 @@ void GALGAS_nonTerminalLabelListAST::setter_popLast (GALGAS_lstring & outOperand
 void GALGAS_nonTerminalLabelListAST::method_first (GALGAS_lstring & outOperand0,
                                                    GALGAS_formalParameterListAST & outOperand1,
                                                    GALGAS_location & outOperand2,
-                                                   C_Compiler * inCompiler
+                                                   Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readFirst (attributes, inCompiler COMMA_THERE) ;
@@ -12934,7 +12934,7 @@ void GALGAS_nonTerminalLabelListAST::method_first (GALGAS_lstring & outOperand0,
 void GALGAS_nonTerminalLabelListAST::method_last (GALGAS_lstring & outOperand0,
                                                   GALGAS_formalParameterListAST & outOperand1,
                                                   GALGAS_location & outOperand2,
-                                                  C_Compiler * inCompiler
+                                                  Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readLast (attributes, inCompiler COMMA_THERE) ;
@@ -12954,7 +12954,7 @@ void GALGAS_nonTerminalLabelListAST::method_last (GALGAS_lstring & outOperand0,
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_nonTerminalLabelListAST GALGAS_nonTerminalLabelListAST::add_operation (const GALGAS_nonTerminalLabelListAST & inOperand,
-                                                                              C_Compiler * /* inCompiler */
+                                                                              Compiler * /* inCompiler */
                                                                               COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_nonTerminalLabelListAST result ;
   if (isValid () && inOperand.isValid ()) {
@@ -12967,7 +12967,7 @@ GALGAS_nonTerminalLabelListAST GALGAS_nonTerminalLabelListAST::add_operation (co
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_nonTerminalLabelListAST GALGAS_nonTerminalLabelListAST::getter_subListWithRange (const GALGAS_range & inRange,
-                                                                                        C_Compiler * inCompiler
+                                                                                        Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) const {
   GALGAS_nonTerminalLabelListAST result = GALGAS_nonTerminalLabelListAST::constructor_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
@@ -12977,7 +12977,7 @@ GALGAS_nonTerminalLabelListAST GALGAS_nonTerminalLabelListAST::getter_subListWit
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_nonTerminalLabelListAST GALGAS_nonTerminalLabelListAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
-                                                                                        C_Compiler * inCompiler
+                                                                                        Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) const {
   GALGAS_nonTerminalLabelListAST result = GALGAS_nonTerminalLabelListAST::constructor_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
@@ -12987,7 +12987,7 @@ GALGAS_nonTerminalLabelListAST GALGAS_nonTerminalLabelListAST::getter_subListFro
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_nonTerminalLabelListAST GALGAS_nonTerminalLabelListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
-                                                                                      C_Compiler * inCompiler
+                                                                                      Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) const {
   GALGAS_nonTerminalLabelListAST result = GALGAS_nonTerminalLabelListAST::constructor_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
@@ -12997,7 +12997,7 @@ GALGAS_nonTerminalLabelListAST GALGAS_nonTerminalLabelListAST::getter_subListToI
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_nonTerminalLabelListAST::plusAssign_operation (const GALGAS_nonTerminalLabelListAST inOperand,
-                                                           C_Compiler * /* inCompiler */
+                                                           Compiler * /* inCompiler */
                                                            COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
@@ -13006,7 +13006,7 @@ void GALGAS_nonTerminalLabelListAST::plusAssign_operation (const GALGAS_nonTermi
 
 void GALGAS_nonTerminalLabelListAST::setter_setMLabelNameAtIndex (GALGAS_lstring inOperand,
                                                                   GALGAS_uint inIndex,
-                                                                  C_Compiler * inCompiler
+                                                                  Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) {
   cCollectionElement_nonTerminalLabelListAST * p = (cCollectionElement_nonTerminalLabelListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -13019,7 +13019,7 @@ void GALGAS_nonTerminalLabelListAST::setter_setMLabelNameAtIndex (GALGAS_lstring
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_nonTerminalLabelListAST::getter_mLabelNameAtIndex (const GALGAS_uint & inIndex,
-                                                                         C_Compiler * inCompiler
+                                                                         Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_nonTerminalLabelListAST * p = (cCollectionElement_nonTerminalLabelListAST *) attributes.ptr () ;
@@ -13035,7 +13035,7 @@ GALGAS_lstring GALGAS_nonTerminalLabelListAST::getter_mLabelNameAtIndex (const G
 
 void GALGAS_nonTerminalLabelListAST::setter_setMFormalArgumentListAtIndex (GALGAS_formalParameterListAST inOperand,
                                                                            GALGAS_uint inIndex,
-                                                                           C_Compiler * inCompiler
+                                                                           Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) {
   cCollectionElement_nonTerminalLabelListAST * p = (cCollectionElement_nonTerminalLabelListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -13048,7 +13048,7 @@ void GALGAS_nonTerminalLabelListAST::setter_setMFormalArgumentListAtIndex (GALGA
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_formalParameterListAST GALGAS_nonTerminalLabelListAST::getter_mFormalArgumentListAtIndex (const GALGAS_uint & inIndex,
-                                                                                                 C_Compiler * inCompiler
+                                                                                                 Compiler * inCompiler
                                                                                                  COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_nonTerminalLabelListAST * p = (cCollectionElement_nonTerminalLabelListAST *) attributes.ptr () ;
@@ -13064,7 +13064,7 @@ GALGAS_formalParameterListAST GALGAS_nonTerminalLabelListAST::getter_mFormalArgu
 
 void GALGAS_nonTerminalLabelListAST::setter_setMEndOfArgumentLocationAtIndex (GALGAS_location inOperand,
                                                                               GALGAS_uint inIndex,
-                                                                              C_Compiler * inCompiler
+                                                                              Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) {
   cCollectionElement_nonTerminalLabelListAST * p = (cCollectionElement_nonTerminalLabelListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -13077,7 +13077,7 @@ void GALGAS_nonTerminalLabelListAST::setter_setMEndOfArgumentLocationAtIndex (GA
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_location GALGAS_nonTerminalLabelListAST::getter_mEndOfArgumentLocationAtIndex (const GALGAS_uint & inIndex,
-                                                                                      C_Compiler * inCompiler
+                                                                                      Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_nonTerminalLabelListAST * p = (cCollectionElement_nonTerminalLabelListAST *) attributes.ptr () ;
@@ -13164,7 +13164,7 @@ AC_GALGAS_root * GALGAS_nonTerminalLabelListAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_nonTerminalLabelListAST GALGAS_nonTerminalLabelListAST::extractObject (const GALGAS_object & inObject,
-                                                                              C_Compiler * inCompiler
+                                                                              Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_nonTerminalLabelListAST result ;
   const GALGAS_nonTerminalLabelListAST * p = (const GALGAS_nonTerminalLabelListAST *) inObject.embeddedObject () ;
@@ -13322,7 +13322,7 @@ void GALGAS_nonterminalDeclarationListAST::addAssign_operation (const GALGAS_lst
 
 void GALGAS_nonterminalDeclarationListAST::setter_append (const GALGAS_lstring inOperand0,
                                                           const GALGAS_nonTerminalLabelListAST inOperand1,
-                                                          C_Compiler * /* inCompiler */
+                                                          Compiler * /* inCompiler */
                                                           COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
@@ -13339,7 +13339,7 @@ void GALGAS_nonterminalDeclarationListAST::setter_append (const GALGAS_lstring i
 void GALGAS_nonterminalDeclarationListAST::setter_insertAtIndex (const GALGAS_lstring inOperand0,
                                                                  const GALGAS_nonTerminalLabelListAST inOperand1,
                                                                  const GALGAS_uint inInsertionIndex,
-                                                                 C_Compiler * inCompiler
+                                                                 Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
@@ -13360,7 +13360,7 @@ void GALGAS_nonterminalDeclarationListAST::setter_insertAtIndex (const GALGAS_ls
 void GALGAS_nonterminalDeclarationListAST::setter_removeAtIndex (GALGAS_lstring & outOperand0,
                                                                  GALGAS_nonTerminalLabelListAST & outOperand1,
                                                                  const GALGAS_uint inRemoveIndex,
-                                                                 C_Compiler * inCompiler
+                                                                 Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inRemoveIndex.isValid ()) {
@@ -13391,7 +13391,7 @@ void GALGAS_nonterminalDeclarationListAST::setter_removeAtIndex (GALGAS_lstring 
 
 void GALGAS_nonterminalDeclarationListAST::setter_popFirst (GALGAS_lstring & outOperand0,
                                                             GALGAS_nonTerminalLabelListAST & outOperand1,
-                                                            C_Compiler * inCompiler
+                                                            Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
@@ -13410,7 +13410,7 @@ void GALGAS_nonterminalDeclarationListAST::setter_popFirst (GALGAS_lstring & out
 
 void GALGAS_nonterminalDeclarationListAST::setter_popLast (GALGAS_lstring & outOperand0,
                                                            GALGAS_nonTerminalLabelListAST & outOperand1,
-                                                           C_Compiler * inCompiler
+                                                           Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
@@ -13429,7 +13429,7 @@ void GALGAS_nonterminalDeclarationListAST::setter_popLast (GALGAS_lstring & outO
 
 void GALGAS_nonterminalDeclarationListAST::method_first (GALGAS_lstring & outOperand0,
                                                          GALGAS_nonTerminalLabelListAST & outOperand1,
-                                                         C_Compiler * inCompiler
+                                                         Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readFirst (attributes, inCompiler COMMA_THERE) ;
@@ -13448,7 +13448,7 @@ void GALGAS_nonterminalDeclarationListAST::method_first (GALGAS_lstring & outOpe
 
 void GALGAS_nonterminalDeclarationListAST::method_last (GALGAS_lstring & outOperand0,
                                                         GALGAS_nonTerminalLabelListAST & outOperand1,
-                                                        C_Compiler * inCompiler
+                                                        Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readLast (attributes, inCompiler COMMA_THERE) ;
@@ -13466,7 +13466,7 @@ void GALGAS_nonterminalDeclarationListAST::method_last (GALGAS_lstring & outOper
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_nonterminalDeclarationListAST GALGAS_nonterminalDeclarationListAST::add_operation (const GALGAS_nonterminalDeclarationListAST & inOperand,
-                                                                                          C_Compiler * /* inCompiler */
+                                                                                          Compiler * /* inCompiler */
                                                                                           COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_nonterminalDeclarationListAST result ;
   if (isValid () && inOperand.isValid ()) {
@@ -13479,7 +13479,7 @@ GALGAS_nonterminalDeclarationListAST GALGAS_nonterminalDeclarationListAST::add_o
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_nonterminalDeclarationListAST GALGAS_nonterminalDeclarationListAST::getter_subListWithRange (const GALGAS_range & inRange,
-                                                                                                    C_Compiler * inCompiler
+                                                                                                    Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) const {
   GALGAS_nonterminalDeclarationListAST result = GALGAS_nonterminalDeclarationListAST::constructor_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
@@ -13489,7 +13489,7 @@ GALGAS_nonterminalDeclarationListAST GALGAS_nonterminalDeclarationListAST::gette
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_nonterminalDeclarationListAST GALGAS_nonterminalDeclarationListAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
-                                                                                                    C_Compiler * inCompiler
+                                                                                                    Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) const {
   GALGAS_nonterminalDeclarationListAST result = GALGAS_nonterminalDeclarationListAST::constructor_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
@@ -13499,7 +13499,7 @@ GALGAS_nonterminalDeclarationListAST GALGAS_nonterminalDeclarationListAST::gette
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_nonterminalDeclarationListAST GALGAS_nonterminalDeclarationListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
-                                                                                                  C_Compiler * inCompiler
+                                                                                                  Compiler * inCompiler
                                                                                                   COMMA_LOCATION_ARGS) const {
   GALGAS_nonterminalDeclarationListAST result = GALGAS_nonterminalDeclarationListAST::constructor_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
@@ -13509,7 +13509,7 @@ GALGAS_nonterminalDeclarationListAST GALGAS_nonterminalDeclarationListAST::gette
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_nonterminalDeclarationListAST::plusAssign_operation (const GALGAS_nonterminalDeclarationListAST inOperand,
-                                                                 C_Compiler * /* inCompiler */
+                                                                 Compiler * /* inCompiler */
                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
@@ -13518,7 +13518,7 @@ void GALGAS_nonterminalDeclarationListAST::plusAssign_operation (const GALGAS_no
 
 void GALGAS_nonterminalDeclarationListAST::setter_setMNonterminalNameAtIndex (GALGAS_lstring inOperand,
                                                                               GALGAS_uint inIndex,
-                                                                              C_Compiler * inCompiler
+                                                                              Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) {
   cCollectionElement_nonterminalDeclarationListAST * p = (cCollectionElement_nonterminalDeclarationListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -13531,7 +13531,7 @@ void GALGAS_nonterminalDeclarationListAST::setter_setMNonterminalNameAtIndex (GA
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_nonterminalDeclarationListAST::getter_mNonterminalNameAtIndex (const GALGAS_uint & inIndex,
-                                                                                     C_Compiler * inCompiler
+                                                                                     Compiler * inCompiler
                                                                                      COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_nonterminalDeclarationListAST * p = (cCollectionElement_nonterminalDeclarationListAST *) attributes.ptr () ;
@@ -13547,7 +13547,7 @@ GALGAS_lstring GALGAS_nonterminalDeclarationListAST::getter_mNonterminalNameAtIn
 
 void GALGAS_nonterminalDeclarationListAST::setter_setMLabelsAtIndex (GALGAS_nonTerminalLabelListAST inOperand,
                                                                      GALGAS_uint inIndex,
-                                                                     C_Compiler * inCompiler
+                                                                     Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) {
   cCollectionElement_nonterminalDeclarationListAST * p = (cCollectionElement_nonterminalDeclarationListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -13560,7 +13560,7 @@ void GALGAS_nonterminalDeclarationListAST::setter_setMLabelsAtIndex (GALGAS_nonT
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_nonTerminalLabelListAST GALGAS_nonterminalDeclarationListAST::getter_mLabelsAtIndex (const GALGAS_uint & inIndex,
-                                                                                            C_Compiler * inCompiler
+                                                                                            Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_nonterminalDeclarationListAST * p = (cCollectionElement_nonterminalDeclarationListAST *) attributes.ptr () ;
@@ -13639,7 +13639,7 @@ AC_GALGAS_root * GALGAS_nonterminalDeclarationListAST::clonedObject (void) const
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_nonterminalDeclarationListAST GALGAS_nonterminalDeclarationListAST::extractObject (const GALGAS_object & inObject,
-                                                                                          C_Compiler * inCompiler
+                                                                                          Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_nonterminalDeclarationListAST result ;
   const GALGAS_nonterminalDeclarationListAST * p = (const GALGAS_nonterminalDeclarationListAST *) inObject.embeddedObject () ;
@@ -13830,7 +13830,7 @@ void GALGAS_syntaxRuleLabelListAST::setter_append (const GALGAS_lstring inOperan
                                                    const GALGAS_location inOperand2,
                                                    const GALGAS_syntaxInstructionList inOperand3,
                                                    const GALGAS_location inOperand4,
-                                                   C_Compiler * /* inCompiler */
+                                                   Compiler * /* inCompiler */
                                                    COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
@@ -13850,7 +13850,7 @@ void GALGAS_syntaxRuleLabelListAST::setter_insertAtIndex (const GALGAS_lstring i
                                                           const GALGAS_syntaxInstructionList inOperand3,
                                                           const GALGAS_location inOperand4,
                                                           const GALGAS_uint inInsertionIndex,
-                                                          C_Compiler * inCompiler
+                                                          Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
@@ -13874,7 +13874,7 @@ void GALGAS_syntaxRuleLabelListAST::setter_removeAtIndex (GALGAS_lstring & outOp
                                                           GALGAS_syntaxInstructionList & outOperand3,
                                                           GALGAS_location & outOperand4,
                                                           const GALGAS_uint inRemoveIndex,
-                                                          C_Compiler * inCompiler
+                                                          Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inRemoveIndex.isValid ()) {
@@ -13920,7 +13920,7 @@ void GALGAS_syntaxRuleLabelListAST::setter_popFirst (GALGAS_lstring & outOperand
                                                      GALGAS_location & outOperand2,
                                                      GALGAS_syntaxInstructionList & outOperand3,
                                                      GALGAS_location & outOperand4,
-                                                     C_Compiler * inCompiler
+                                                     Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
@@ -13948,7 +13948,7 @@ void GALGAS_syntaxRuleLabelListAST::setter_popLast (GALGAS_lstring & outOperand0
                                                     GALGAS_location & outOperand2,
                                                     GALGAS_syntaxInstructionList & outOperand3,
                                                     GALGAS_location & outOperand4,
-                                                    C_Compiler * inCompiler
+                                                    Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
@@ -13976,7 +13976,7 @@ void GALGAS_syntaxRuleLabelListAST::method_first (GALGAS_lstring & outOperand0,
                                                   GALGAS_location & outOperand2,
                                                   GALGAS_syntaxInstructionList & outOperand3,
                                                   GALGAS_location & outOperand4,
-                                                  C_Compiler * inCompiler
+                                                  Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readFirst (attributes, inCompiler COMMA_THERE) ;
@@ -14004,7 +14004,7 @@ void GALGAS_syntaxRuleLabelListAST::method_last (GALGAS_lstring & outOperand0,
                                                  GALGAS_location & outOperand2,
                                                  GALGAS_syntaxInstructionList & outOperand3,
                                                  GALGAS_location & outOperand4,
-                                                 C_Compiler * inCompiler
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readLast (attributes, inCompiler COMMA_THERE) ;
@@ -14028,7 +14028,7 @@ void GALGAS_syntaxRuleLabelListAST::method_last (GALGAS_lstring & outOperand0,
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_syntaxRuleLabelListAST GALGAS_syntaxRuleLabelListAST::add_operation (const GALGAS_syntaxRuleLabelListAST & inOperand,
-                                                                            C_Compiler * /* inCompiler */
+                                                                            Compiler * /* inCompiler */
                                                                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_syntaxRuleLabelListAST result ;
   if (isValid () && inOperand.isValid ()) {
@@ -14041,7 +14041,7 @@ GALGAS_syntaxRuleLabelListAST GALGAS_syntaxRuleLabelListAST::add_operation (cons
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_syntaxRuleLabelListAST GALGAS_syntaxRuleLabelListAST::getter_subListWithRange (const GALGAS_range & inRange,
-                                                                                      C_Compiler * inCompiler
+                                                                                      Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) const {
   GALGAS_syntaxRuleLabelListAST result = GALGAS_syntaxRuleLabelListAST::constructor_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
@@ -14051,7 +14051,7 @@ GALGAS_syntaxRuleLabelListAST GALGAS_syntaxRuleLabelListAST::getter_subListWithR
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_syntaxRuleLabelListAST GALGAS_syntaxRuleLabelListAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
-                                                                                      C_Compiler * inCompiler
+                                                                                      Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) const {
   GALGAS_syntaxRuleLabelListAST result = GALGAS_syntaxRuleLabelListAST::constructor_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
@@ -14061,7 +14061,7 @@ GALGAS_syntaxRuleLabelListAST GALGAS_syntaxRuleLabelListAST::getter_subListFromI
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_syntaxRuleLabelListAST GALGAS_syntaxRuleLabelListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) const {
   GALGAS_syntaxRuleLabelListAST result = GALGAS_syntaxRuleLabelListAST::constructor_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
@@ -14071,7 +14071,7 @@ GALGAS_syntaxRuleLabelListAST GALGAS_syntaxRuleLabelListAST::getter_subListToInd
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_syntaxRuleLabelListAST::plusAssign_operation (const GALGAS_syntaxRuleLabelListAST inOperand,
-                                                          C_Compiler * /* inCompiler */
+                                                          Compiler * /* inCompiler */
                                                           COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
@@ -14080,7 +14080,7 @@ void GALGAS_syntaxRuleLabelListAST::plusAssign_operation (const GALGAS_syntaxRul
 
 void GALGAS_syntaxRuleLabelListAST::setter_setMLabelNameAtIndex (GALGAS_lstring inOperand,
                                                                  GALGAS_uint inIndex,
-                                                                 C_Compiler * inCompiler
+                                                                 Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) {
   cCollectionElement_syntaxRuleLabelListAST * p = (cCollectionElement_syntaxRuleLabelListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -14093,7 +14093,7 @@ void GALGAS_syntaxRuleLabelListAST::setter_setMLabelNameAtIndex (GALGAS_lstring 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_syntaxRuleLabelListAST::getter_mLabelNameAtIndex (const GALGAS_uint & inIndex,
-                                                                        C_Compiler * inCompiler
+                                                                        Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_syntaxRuleLabelListAST * p = (cCollectionElement_syntaxRuleLabelListAST *) attributes.ptr () ;
@@ -14109,7 +14109,7 @@ GALGAS_lstring GALGAS_syntaxRuleLabelListAST::getter_mLabelNameAtIndex (const GA
 
 void GALGAS_syntaxRuleLabelListAST::setter_setMFormalArgumentsAtIndex (GALGAS_formalParameterListAST inOperand,
                                                                        GALGAS_uint inIndex,
-                                                                       C_Compiler * inCompiler
+                                                                       Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) {
   cCollectionElement_syntaxRuleLabelListAST * p = (cCollectionElement_syntaxRuleLabelListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -14122,7 +14122,7 @@ void GALGAS_syntaxRuleLabelListAST::setter_setMFormalArgumentsAtIndex (GALGAS_fo
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_formalParameterListAST GALGAS_syntaxRuleLabelListAST::getter_mFormalArgumentsAtIndex (const GALGAS_uint & inIndex,
-                                                                                             C_Compiler * inCompiler
+                                                                                             Compiler * inCompiler
                                                                                              COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_syntaxRuleLabelListAST * p = (cCollectionElement_syntaxRuleLabelListAST *) attributes.ptr () ;
@@ -14138,7 +14138,7 @@ GALGAS_formalParameterListAST GALGAS_syntaxRuleLabelListAST::getter_mFormalArgum
 
 void GALGAS_syntaxRuleLabelListAST::setter_setMEndOfArgumentLocationAtIndex (GALGAS_location inOperand,
                                                                              GALGAS_uint inIndex,
-                                                                             C_Compiler * inCompiler
+                                                                             Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) {
   cCollectionElement_syntaxRuleLabelListAST * p = (cCollectionElement_syntaxRuleLabelListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -14151,7 +14151,7 @@ void GALGAS_syntaxRuleLabelListAST::setter_setMEndOfArgumentLocationAtIndex (GAL
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_location GALGAS_syntaxRuleLabelListAST::getter_mEndOfArgumentLocationAtIndex (const GALGAS_uint & inIndex,
-                                                                                     C_Compiler * inCompiler
+                                                                                     Compiler * inCompiler
                                                                                      COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_syntaxRuleLabelListAST * p = (cCollectionElement_syntaxRuleLabelListAST *) attributes.ptr () ;
@@ -14167,7 +14167,7 @@ GALGAS_location GALGAS_syntaxRuleLabelListAST::getter_mEndOfArgumentLocationAtIn
 
 void GALGAS_syntaxRuleLabelListAST::setter_setMSyntaxInstructionListAtIndex (GALGAS_syntaxInstructionList inOperand,
                                                                              GALGAS_uint inIndex,
-                                                                             C_Compiler * inCompiler
+                                                                             Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) {
   cCollectionElement_syntaxRuleLabelListAST * p = (cCollectionElement_syntaxRuleLabelListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -14180,7 +14180,7 @@ void GALGAS_syntaxRuleLabelListAST::setter_setMSyntaxInstructionListAtIndex (GAL
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_syntaxInstructionList GALGAS_syntaxRuleLabelListAST::getter_mSyntaxInstructionListAtIndex (const GALGAS_uint & inIndex,
-                                                                                                  C_Compiler * inCompiler
+                                                                                                  Compiler * inCompiler
                                                                                                   COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_syntaxRuleLabelListAST * p = (cCollectionElement_syntaxRuleLabelListAST *) attributes.ptr () ;
@@ -14196,7 +14196,7 @@ GALGAS_syntaxInstructionList GALGAS_syntaxRuleLabelListAST::getter_mSyntaxInstru
 
 void GALGAS_syntaxRuleLabelListAST::setter_setMEndOfInstructionListAtIndex (GALGAS_location inOperand,
                                                                             GALGAS_uint inIndex,
-                                                                            C_Compiler * inCompiler
+                                                                            Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) {
   cCollectionElement_syntaxRuleLabelListAST * p = (cCollectionElement_syntaxRuleLabelListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -14209,7 +14209,7 @@ void GALGAS_syntaxRuleLabelListAST::setter_setMEndOfInstructionListAtIndex (GALG
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_location GALGAS_syntaxRuleLabelListAST::getter_mEndOfInstructionListAtIndex (const GALGAS_uint & inIndex,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_syntaxRuleLabelListAST * p = (cCollectionElement_syntaxRuleLabelListAST *) attributes.ptr () ;
@@ -14312,7 +14312,7 @@ AC_GALGAS_root * GALGAS_syntaxRuleLabelListAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_syntaxRuleLabelListAST GALGAS_syntaxRuleLabelListAST::extractObject (const GALGAS_object & inObject,
-                                                                            C_Compiler * inCompiler
+                                                                            Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_syntaxRuleLabelListAST result ;
   const GALGAS_syntaxRuleLabelListAST * p = (const GALGAS_syntaxRuleLabelListAST *) inObject.embeddedObject () ;
@@ -14470,7 +14470,7 @@ void GALGAS_syntaxRuleListAST::addAssign_operation (const GALGAS_lstring & inOpe
 
 void GALGAS_syntaxRuleListAST::setter_append (const GALGAS_lstring inOperand0,
                                               const GALGAS_syntaxRuleLabelListAST inOperand1,
-                                              C_Compiler * /* inCompiler */
+                                              Compiler * /* inCompiler */
                                               COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
@@ -14487,7 +14487,7 @@ void GALGAS_syntaxRuleListAST::setter_append (const GALGAS_lstring inOperand0,
 void GALGAS_syntaxRuleListAST::setter_insertAtIndex (const GALGAS_lstring inOperand0,
                                                      const GALGAS_syntaxRuleLabelListAST inOperand1,
                                                      const GALGAS_uint inInsertionIndex,
-                                                     C_Compiler * inCompiler
+                                                     Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
@@ -14508,7 +14508,7 @@ void GALGAS_syntaxRuleListAST::setter_insertAtIndex (const GALGAS_lstring inOper
 void GALGAS_syntaxRuleListAST::setter_removeAtIndex (GALGAS_lstring & outOperand0,
                                                      GALGAS_syntaxRuleLabelListAST & outOperand1,
                                                      const GALGAS_uint inRemoveIndex,
-                                                     C_Compiler * inCompiler
+                                                     Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inRemoveIndex.isValid ()) {
@@ -14539,7 +14539,7 @@ void GALGAS_syntaxRuleListAST::setter_removeAtIndex (GALGAS_lstring & outOperand
 
 void GALGAS_syntaxRuleListAST::setter_popFirst (GALGAS_lstring & outOperand0,
                                                 GALGAS_syntaxRuleLabelListAST & outOperand1,
-                                                C_Compiler * inCompiler
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
@@ -14558,7 +14558,7 @@ void GALGAS_syntaxRuleListAST::setter_popFirst (GALGAS_lstring & outOperand0,
 
 void GALGAS_syntaxRuleListAST::setter_popLast (GALGAS_lstring & outOperand0,
                                                GALGAS_syntaxRuleLabelListAST & outOperand1,
-                                               C_Compiler * inCompiler
+                                               Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
@@ -14577,7 +14577,7 @@ void GALGAS_syntaxRuleListAST::setter_popLast (GALGAS_lstring & outOperand0,
 
 void GALGAS_syntaxRuleListAST::method_first (GALGAS_lstring & outOperand0,
                                              GALGAS_syntaxRuleLabelListAST & outOperand1,
-                                             C_Compiler * inCompiler
+                                             Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readFirst (attributes, inCompiler COMMA_THERE) ;
@@ -14596,7 +14596,7 @@ void GALGAS_syntaxRuleListAST::method_first (GALGAS_lstring & outOperand0,
 
 void GALGAS_syntaxRuleListAST::method_last (GALGAS_lstring & outOperand0,
                                             GALGAS_syntaxRuleLabelListAST & outOperand1,
-                                            C_Compiler * inCompiler
+                                            Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readLast (attributes, inCompiler COMMA_THERE) ;
@@ -14614,7 +14614,7 @@ void GALGAS_syntaxRuleListAST::method_last (GALGAS_lstring & outOperand0,
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_syntaxRuleListAST GALGAS_syntaxRuleListAST::add_operation (const GALGAS_syntaxRuleListAST & inOperand,
-                                                                  C_Compiler * /* inCompiler */
+                                                                  Compiler * /* inCompiler */
                                                                   COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_syntaxRuleListAST result ;
   if (isValid () && inOperand.isValid ()) {
@@ -14627,7 +14627,7 @@ GALGAS_syntaxRuleListAST GALGAS_syntaxRuleListAST::add_operation (const GALGAS_s
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_syntaxRuleListAST GALGAS_syntaxRuleListAST::getter_subListWithRange (const GALGAS_range & inRange,
-                                                                            C_Compiler * inCompiler
+                                                                            Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) const {
   GALGAS_syntaxRuleListAST result = GALGAS_syntaxRuleListAST::constructor_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
@@ -14637,7 +14637,7 @@ GALGAS_syntaxRuleListAST GALGAS_syntaxRuleListAST::getter_subListWithRange (cons
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_syntaxRuleListAST GALGAS_syntaxRuleListAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
-                                                                            C_Compiler * inCompiler
+                                                                            Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) const {
   GALGAS_syntaxRuleListAST result = GALGAS_syntaxRuleListAST::constructor_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
@@ -14647,7 +14647,7 @@ GALGAS_syntaxRuleListAST GALGAS_syntaxRuleListAST::getter_subListFromIndex (cons
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_syntaxRuleListAST GALGAS_syntaxRuleListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
-                                                                          C_Compiler * inCompiler
+                                                                          Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) const {
   GALGAS_syntaxRuleListAST result = GALGAS_syntaxRuleListAST::constructor_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
@@ -14657,7 +14657,7 @@ GALGAS_syntaxRuleListAST GALGAS_syntaxRuleListAST::getter_subListToIndex (const 
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_syntaxRuleListAST::plusAssign_operation (const GALGAS_syntaxRuleListAST inOperand,
-                                                     C_Compiler * /* inCompiler */
+                                                     Compiler * /* inCompiler */
                                                      COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
@@ -14666,7 +14666,7 @@ void GALGAS_syntaxRuleListAST::plusAssign_operation (const GALGAS_syntaxRuleList
 
 void GALGAS_syntaxRuleListAST::setter_setMNonterminalNameAtIndex (GALGAS_lstring inOperand,
                                                                   GALGAS_uint inIndex,
-                                                                  C_Compiler * inCompiler
+                                                                  Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) {
   cCollectionElement_syntaxRuleListAST * p = (cCollectionElement_syntaxRuleListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -14679,7 +14679,7 @@ void GALGAS_syntaxRuleListAST::setter_setMNonterminalNameAtIndex (GALGAS_lstring
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_syntaxRuleListAST::getter_mNonterminalNameAtIndex (const GALGAS_uint & inIndex,
-                                                                         C_Compiler * inCompiler
+                                                                         Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_syntaxRuleListAST * p = (cCollectionElement_syntaxRuleListAST *) attributes.ptr () ;
@@ -14695,7 +14695,7 @@ GALGAS_lstring GALGAS_syntaxRuleListAST::getter_mNonterminalNameAtIndex (const G
 
 void GALGAS_syntaxRuleListAST::setter_setMLabelListAtIndex (GALGAS_syntaxRuleLabelListAST inOperand,
                                                             GALGAS_uint inIndex,
-                                                            C_Compiler * inCompiler
+                                                            Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) {
   cCollectionElement_syntaxRuleListAST * p = (cCollectionElement_syntaxRuleListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -14708,7 +14708,7 @@ void GALGAS_syntaxRuleListAST::setter_setMLabelListAtIndex (GALGAS_syntaxRuleLab
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_syntaxRuleLabelListAST GALGAS_syntaxRuleListAST::getter_mLabelListAtIndex (const GALGAS_uint & inIndex,
-                                                                                  C_Compiler * inCompiler
+                                                                                  Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_syntaxRuleListAST * p = (cCollectionElement_syntaxRuleListAST *) attributes.ptr () ;
@@ -14787,7 +14787,7 @@ AC_GALGAS_root * GALGAS_syntaxRuleListAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_syntaxRuleListAST GALGAS_syntaxRuleListAST::extractObject (const GALGAS_object & inObject,
-                                                                  C_Compiler * inCompiler
+                                                                  Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_syntaxRuleListAST result ;
   const GALGAS_syntaxRuleListAST * p = (const GALGAS_syntaxRuleListAST *) inObject.embeddedObject () ;
@@ -14945,7 +14945,7 @@ void GALGAS_listOfSyntaxInstructionList::addAssign_operation (const GALGAS_synta
 
 void GALGAS_listOfSyntaxInstructionList::setter_append (const GALGAS_syntaxInstructionList inOperand0,
                                                         const GALGAS_location inOperand1,
-                                                        C_Compiler * /* inCompiler */
+                                                        Compiler * /* inCompiler */
                                                         COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
@@ -14962,7 +14962,7 @@ void GALGAS_listOfSyntaxInstructionList::setter_append (const GALGAS_syntaxInstr
 void GALGAS_listOfSyntaxInstructionList::setter_insertAtIndex (const GALGAS_syntaxInstructionList inOperand0,
                                                                const GALGAS_location inOperand1,
                                                                const GALGAS_uint inInsertionIndex,
-                                                               C_Compiler * inCompiler
+                                                               Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
@@ -14983,7 +14983,7 @@ void GALGAS_listOfSyntaxInstructionList::setter_insertAtIndex (const GALGAS_synt
 void GALGAS_listOfSyntaxInstructionList::setter_removeAtIndex (GALGAS_syntaxInstructionList & outOperand0,
                                                                GALGAS_location & outOperand1,
                                                                const GALGAS_uint inRemoveIndex,
-                                                               C_Compiler * inCompiler
+                                                               Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inRemoveIndex.isValid ()) {
@@ -15014,7 +15014,7 @@ void GALGAS_listOfSyntaxInstructionList::setter_removeAtIndex (GALGAS_syntaxInst
 
 void GALGAS_listOfSyntaxInstructionList::setter_popFirst (GALGAS_syntaxInstructionList & outOperand0,
                                                           GALGAS_location & outOperand1,
-                                                          C_Compiler * inCompiler
+                                                          Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
@@ -15033,7 +15033,7 @@ void GALGAS_listOfSyntaxInstructionList::setter_popFirst (GALGAS_syntaxInstructi
 
 void GALGAS_listOfSyntaxInstructionList::setter_popLast (GALGAS_syntaxInstructionList & outOperand0,
                                                          GALGAS_location & outOperand1,
-                                                         C_Compiler * inCompiler
+                                                         Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
@@ -15052,7 +15052,7 @@ void GALGAS_listOfSyntaxInstructionList::setter_popLast (GALGAS_syntaxInstructio
 
 void GALGAS_listOfSyntaxInstructionList::method_first (GALGAS_syntaxInstructionList & outOperand0,
                                                        GALGAS_location & outOperand1,
-                                                       C_Compiler * inCompiler
+                                                       Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readFirst (attributes, inCompiler COMMA_THERE) ;
@@ -15071,7 +15071,7 @@ void GALGAS_listOfSyntaxInstructionList::method_first (GALGAS_syntaxInstructionL
 
 void GALGAS_listOfSyntaxInstructionList::method_last (GALGAS_syntaxInstructionList & outOperand0,
                                                       GALGAS_location & outOperand1,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readLast (attributes, inCompiler COMMA_THERE) ;
@@ -15089,7 +15089,7 @@ void GALGAS_listOfSyntaxInstructionList::method_last (GALGAS_syntaxInstructionLi
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_listOfSyntaxInstructionList GALGAS_listOfSyntaxInstructionList::add_operation (const GALGAS_listOfSyntaxInstructionList & inOperand,
-                                                                                      C_Compiler * /* inCompiler */
+                                                                                      Compiler * /* inCompiler */
                                                                                       COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_listOfSyntaxInstructionList result ;
   if (isValid () && inOperand.isValid ()) {
@@ -15102,7 +15102,7 @@ GALGAS_listOfSyntaxInstructionList GALGAS_listOfSyntaxInstructionList::add_opera
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_listOfSyntaxInstructionList GALGAS_listOfSyntaxInstructionList::getter_subListWithRange (const GALGAS_range & inRange,
-                                                                                                C_Compiler * inCompiler
+                                                                                                Compiler * inCompiler
                                                                                                 COMMA_LOCATION_ARGS) const {
   GALGAS_listOfSyntaxInstructionList result = GALGAS_listOfSyntaxInstructionList::constructor_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
@@ -15112,7 +15112,7 @@ GALGAS_listOfSyntaxInstructionList GALGAS_listOfSyntaxInstructionList::getter_su
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_listOfSyntaxInstructionList GALGAS_listOfSyntaxInstructionList::getter_subListFromIndex (const GALGAS_uint & inIndex,
-                                                                                                C_Compiler * inCompiler
+                                                                                                Compiler * inCompiler
                                                                                                 COMMA_LOCATION_ARGS) const {
   GALGAS_listOfSyntaxInstructionList result = GALGAS_listOfSyntaxInstructionList::constructor_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
@@ -15122,7 +15122,7 @@ GALGAS_listOfSyntaxInstructionList GALGAS_listOfSyntaxInstructionList::getter_su
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_listOfSyntaxInstructionList GALGAS_listOfSyntaxInstructionList::getter_subListToIndex (const GALGAS_uint & inIndex,
-                                                                                              C_Compiler * inCompiler
+                                                                                              Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) const {
   GALGAS_listOfSyntaxInstructionList result = GALGAS_listOfSyntaxInstructionList::constructor_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
@@ -15132,7 +15132,7 @@ GALGAS_listOfSyntaxInstructionList GALGAS_listOfSyntaxInstructionList::getter_su
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_listOfSyntaxInstructionList::plusAssign_operation (const GALGAS_listOfSyntaxInstructionList inOperand,
-                                                               C_Compiler * /* inCompiler */
+                                                               Compiler * /* inCompiler */
                                                                COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
@@ -15141,7 +15141,7 @@ void GALGAS_listOfSyntaxInstructionList::plusAssign_operation (const GALGAS_list
 
 void GALGAS_listOfSyntaxInstructionList::setter_setMSyntaxInstructionListAtIndex (GALGAS_syntaxInstructionList inOperand,
                                                                                   GALGAS_uint inIndex,
-                                                                                  C_Compiler * inCompiler
+                                                                                  Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) {
   cCollectionElement_listOfSyntaxInstructionList * p = (cCollectionElement_listOfSyntaxInstructionList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -15154,7 +15154,7 @@ void GALGAS_listOfSyntaxInstructionList::setter_setMSyntaxInstructionListAtIndex
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_syntaxInstructionList GALGAS_listOfSyntaxInstructionList::getter_mSyntaxInstructionListAtIndex (const GALGAS_uint & inIndex,
-                                                                                                       C_Compiler * inCompiler
+                                                                                                       Compiler * inCompiler
                                                                                                        COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_listOfSyntaxInstructionList * p = (cCollectionElement_listOfSyntaxInstructionList *) attributes.ptr () ;
@@ -15170,7 +15170,7 @@ GALGAS_syntaxInstructionList GALGAS_listOfSyntaxInstructionList::getter_mSyntaxI
 
 void GALGAS_listOfSyntaxInstructionList::setter_setMEndOf_5F_instructionsAtIndex (GALGAS_location inOperand,
                                                                                   GALGAS_uint inIndex,
-                                                                                  C_Compiler * inCompiler
+                                                                                  Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) {
   cCollectionElement_listOfSyntaxInstructionList * p = (cCollectionElement_listOfSyntaxInstructionList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -15183,7 +15183,7 @@ void GALGAS_listOfSyntaxInstructionList::setter_setMEndOf_5F_instructionsAtIndex
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_location GALGAS_listOfSyntaxInstructionList::getter_mEndOf_5F_instructionsAtIndex (const GALGAS_uint & inIndex,
-                                                                                          C_Compiler * inCompiler
+                                                                                          Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_listOfSyntaxInstructionList * p = (cCollectionElement_listOfSyntaxInstructionList *) attributes.ptr () ;
@@ -15262,7 +15262,7 @@ AC_GALGAS_root * GALGAS_listOfSyntaxInstructionList::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_listOfSyntaxInstructionList GALGAS_listOfSyntaxInstructionList::extractObject (const GALGAS_object & inObject,
-                                                                                      C_Compiler * inCompiler
+                                                                                      Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_listOfSyntaxInstructionList result ;
   const GALGAS_listOfSyntaxInstructionList * p = (const GALGAS_listOfSyntaxInstructionList *) inObject.embeddedObject () ;
@@ -15330,7 +15330,7 @@ GALGAS_galgas_33_SyntaxComponentAST_2D_weak GALGAS_galgas_33_SyntaxComponentAST_
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_galgas_33_SyntaxComponentAST GALGAS_galgas_33_SyntaxComponentAST_2D_weak::bang_galgas_33_SyntaxComponentAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_galgas_33_SyntaxComponentAST GALGAS_galgas_33_SyntaxComponentAST_2D_weak::bang_galgas_33_SyntaxComponentAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_galgas_33_SyntaxComponentAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -15373,7 +15373,7 @@ AC_GALGAS_root * GALGAS_galgas_33_SyntaxComponentAST_2D_weak::clonedObject (void
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_galgas_33_SyntaxComponentAST_2D_weak GALGAS_galgas_33_SyntaxComponentAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                        C_Compiler * inCompiler
+                                                                                                        Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_galgas_33_SyntaxComponentAST_2D_weak result ;
   const GALGAS_galgas_33_SyntaxComponentAST_2D_weak * p = (const GALGAS_galgas_33_SyntaxComponentAST_2D_weak *) inObject.embeddedObject () ;
@@ -15441,7 +15441,7 @@ GALGAS_galgas_33_GrammarComponentAST_2D_weak GALGAS_galgas_33_GrammarComponentAS
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_galgas_33_GrammarComponentAST GALGAS_galgas_33_GrammarComponentAST_2D_weak::bang_galgas_33_GrammarComponentAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_galgas_33_GrammarComponentAST GALGAS_galgas_33_GrammarComponentAST_2D_weak::bang_galgas_33_GrammarComponentAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_galgas_33_GrammarComponentAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -15484,7 +15484,7 @@ AC_GALGAS_root * GALGAS_galgas_33_GrammarComponentAST_2D_weak::clonedObject (voi
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_galgas_33_GrammarComponentAST_2D_weak GALGAS_galgas_33_GrammarComponentAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                          C_Compiler * inCompiler
+                                                                                                          Compiler * inCompiler
                                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_galgas_33_GrammarComponentAST_2D_weak result ;
   const GALGAS_galgas_33_GrammarComponentAST_2D_weak * p = (const GALGAS_galgas_33_GrammarComponentAST_2D_weak *) inObject.embeddedObject () ;
@@ -15675,7 +15675,7 @@ void GALGAS_galgas_33_SyntaxComponentListAST::setter_append (const GALGAS_lstrin
                                                              const GALGAS_nonterminalDeclarationListAST inOperand2,
                                                              const GALGAS_syntaxRuleListAST inOperand3,
                                                              const GALGAS_bool inOperand4,
-                                                             C_Compiler * /* inCompiler */
+                                                             Compiler * /* inCompiler */
                                                              COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
@@ -15695,7 +15695,7 @@ void GALGAS_galgas_33_SyntaxComponentListAST::setter_insertAtIndex (const GALGAS
                                                                     const GALGAS_syntaxRuleListAST inOperand3,
                                                                     const GALGAS_bool inOperand4,
                                                                     const GALGAS_uint inInsertionIndex,
-                                                                    C_Compiler * inCompiler
+                                                                    Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
@@ -15719,7 +15719,7 @@ void GALGAS_galgas_33_SyntaxComponentListAST::setter_removeAtIndex (GALGAS_lstri
                                                                     GALGAS_syntaxRuleListAST & outOperand3,
                                                                     GALGAS_bool & outOperand4,
                                                                     const GALGAS_uint inRemoveIndex,
-                                                                    C_Compiler * inCompiler
+                                                                    Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inRemoveIndex.isValid ()) {
@@ -15765,7 +15765,7 @@ void GALGAS_galgas_33_SyntaxComponentListAST::setter_popFirst (GALGAS_lstring & 
                                                                GALGAS_nonterminalDeclarationListAST & outOperand2,
                                                                GALGAS_syntaxRuleListAST & outOperand3,
                                                                GALGAS_bool & outOperand4,
-                                                               C_Compiler * inCompiler
+                                                               Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
@@ -15793,7 +15793,7 @@ void GALGAS_galgas_33_SyntaxComponentListAST::setter_popLast (GALGAS_lstring & o
                                                               GALGAS_nonterminalDeclarationListAST & outOperand2,
                                                               GALGAS_syntaxRuleListAST & outOperand3,
                                                               GALGAS_bool & outOperand4,
-                                                              C_Compiler * inCompiler
+                                                              Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
@@ -15821,7 +15821,7 @@ void GALGAS_galgas_33_SyntaxComponentListAST::method_first (GALGAS_lstring & out
                                                             GALGAS_nonterminalDeclarationListAST & outOperand2,
                                                             GALGAS_syntaxRuleListAST & outOperand3,
                                                             GALGAS_bool & outOperand4,
-                                                            C_Compiler * inCompiler
+                                                            Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readFirst (attributes, inCompiler COMMA_THERE) ;
@@ -15849,7 +15849,7 @@ void GALGAS_galgas_33_SyntaxComponentListAST::method_last (GALGAS_lstring & outO
                                                            GALGAS_nonterminalDeclarationListAST & outOperand2,
                                                            GALGAS_syntaxRuleListAST & outOperand3,
                                                            GALGAS_bool & outOperand4,
-                                                           C_Compiler * inCompiler
+                                                           Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readLast (attributes, inCompiler COMMA_THERE) ;
@@ -15873,7 +15873,7 @@ void GALGAS_galgas_33_SyntaxComponentListAST::method_last (GALGAS_lstring & outO
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_galgas_33_SyntaxComponentListAST GALGAS_galgas_33_SyntaxComponentListAST::add_operation (const GALGAS_galgas_33_SyntaxComponentListAST & inOperand,
-                                                                                                C_Compiler * /* inCompiler */
+                                                                                                Compiler * /* inCompiler */
                                                                                                 COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_galgas_33_SyntaxComponentListAST result ;
   if (isValid () && inOperand.isValid ()) {
@@ -15886,7 +15886,7 @@ GALGAS_galgas_33_SyntaxComponentListAST GALGAS_galgas_33_SyntaxComponentListAST:
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_galgas_33_SyntaxComponentListAST GALGAS_galgas_33_SyntaxComponentListAST::getter_subListWithRange (const GALGAS_range & inRange,
-                                                                                                          C_Compiler * inCompiler
+                                                                                                          Compiler * inCompiler
                                                                                                           COMMA_LOCATION_ARGS) const {
   GALGAS_galgas_33_SyntaxComponentListAST result = GALGAS_galgas_33_SyntaxComponentListAST::constructor_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
@@ -15896,7 +15896,7 @@ GALGAS_galgas_33_SyntaxComponentListAST GALGAS_galgas_33_SyntaxComponentListAST:
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_galgas_33_SyntaxComponentListAST GALGAS_galgas_33_SyntaxComponentListAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
-                                                                                                          C_Compiler * inCompiler
+                                                                                                          Compiler * inCompiler
                                                                                                           COMMA_LOCATION_ARGS) const {
   GALGAS_galgas_33_SyntaxComponentListAST result = GALGAS_galgas_33_SyntaxComponentListAST::constructor_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
@@ -15906,7 +15906,7 @@ GALGAS_galgas_33_SyntaxComponentListAST GALGAS_galgas_33_SyntaxComponentListAST:
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_galgas_33_SyntaxComponentListAST GALGAS_galgas_33_SyntaxComponentListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
-                                                                                                        C_Compiler * inCompiler
+                                                                                                        Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) const {
   GALGAS_galgas_33_SyntaxComponentListAST result = GALGAS_galgas_33_SyntaxComponentListAST::constructor_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
@@ -15916,7 +15916,7 @@ GALGAS_galgas_33_SyntaxComponentListAST GALGAS_galgas_33_SyntaxComponentListAST:
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_galgas_33_SyntaxComponentListAST::plusAssign_operation (const GALGAS_galgas_33_SyntaxComponentListAST inOperand,
-                                                                    C_Compiler * /* inCompiler */
+                                                                    Compiler * /* inCompiler */
                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
@@ -15925,7 +15925,7 @@ void GALGAS_galgas_33_SyntaxComponentListAST::plusAssign_operation (const GALGAS
 
 void GALGAS_galgas_33_SyntaxComponentListAST::setter_setMSyntaxComponentNameAtIndex (GALGAS_lstring inOperand,
                                                                                      GALGAS_uint inIndex,
-                                                                                     C_Compiler * inCompiler
+                                                                                     Compiler * inCompiler
                                                                                      COMMA_LOCATION_ARGS) {
   cCollectionElement_galgas_33_SyntaxComponentListAST * p = (cCollectionElement_galgas_33_SyntaxComponentListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -15938,7 +15938,7 @@ void GALGAS_galgas_33_SyntaxComponentListAST::setter_setMSyntaxComponentNameAtIn
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_galgas_33_SyntaxComponentListAST::getter_mSyntaxComponentNameAtIndex (const GALGAS_uint & inIndex,
-                                                                                            C_Compiler * inCompiler
+                                                                                            Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_galgas_33_SyntaxComponentListAST * p = (cCollectionElement_galgas_33_SyntaxComponentListAST *) attributes.ptr () ;
@@ -15954,7 +15954,7 @@ GALGAS_lstring GALGAS_galgas_33_SyntaxComponentListAST::getter_mSyntaxComponentN
 
 void GALGAS_galgas_33_SyntaxComponentListAST::setter_setMImportedLexiqueFilePathAtIndex (GALGAS_lstring inOperand,
                                                                                          GALGAS_uint inIndex,
-                                                                                         C_Compiler * inCompiler
+                                                                                         Compiler * inCompiler
                                                                                          COMMA_LOCATION_ARGS) {
   cCollectionElement_galgas_33_SyntaxComponentListAST * p = (cCollectionElement_galgas_33_SyntaxComponentListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -15967,7 +15967,7 @@ void GALGAS_galgas_33_SyntaxComponentListAST::setter_setMImportedLexiqueFilePath
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_galgas_33_SyntaxComponentListAST::getter_mImportedLexiqueFilePathAtIndex (const GALGAS_uint & inIndex,
-                                                                                                C_Compiler * inCompiler
+                                                                                                Compiler * inCompiler
                                                                                                 COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_galgas_33_SyntaxComponentListAST * p = (cCollectionElement_galgas_33_SyntaxComponentListAST *) attributes.ptr () ;
@@ -15983,7 +15983,7 @@ GALGAS_lstring GALGAS_galgas_33_SyntaxComponentListAST::getter_mImportedLexiqueF
 
 void GALGAS_galgas_33_SyntaxComponentListAST::setter_setMNonterminalDeclarationListAtIndex (GALGAS_nonterminalDeclarationListAST inOperand,
                                                                                             GALGAS_uint inIndex,
-                                                                                            C_Compiler * inCompiler
+                                                                                            Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) {
   cCollectionElement_galgas_33_SyntaxComponentListAST * p = (cCollectionElement_galgas_33_SyntaxComponentListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -15996,7 +15996,7 @@ void GALGAS_galgas_33_SyntaxComponentListAST::setter_setMNonterminalDeclarationL
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_nonterminalDeclarationListAST GALGAS_galgas_33_SyntaxComponentListAST::getter_mNonterminalDeclarationListAtIndex (const GALGAS_uint & inIndex,
-                                                                                                                         C_Compiler * inCompiler
+                                                                                                                         Compiler * inCompiler
                                                                                                                          COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_galgas_33_SyntaxComponentListAST * p = (cCollectionElement_galgas_33_SyntaxComponentListAST *) attributes.ptr () ;
@@ -16012,7 +16012,7 @@ GALGAS_nonterminalDeclarationListAST GALGAS_galgas_33_SyntaxComponentListAST::ge
 
 void GALGAS_galgas_33_SyntaxComponentListAST::setter_setMRuleListAtIndex (GALGAS_syntaxRuleListAST inOperand,
                                                                           GALGAS_uint inIndex,
-                                                                          C_Compiler * inCompiler
+                                                                          Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) {
   cCollectionElement_galgas_33_SyntaxComponentListAST * p = (cCollectionElement_galgas_33_SyntaxComponentListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -16025,7 +16025,7 @@ void GALGAS_galgas_33_SyntaxComponentListAST::setter_setMRuleListAtIndex (GALGAS
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_syntaxRuleListAST GALGAS_galgas_33_SyntaxComponentListAST::getter_mRuleListAtIndex (const GALGAS_uint & inIndex,
-                                                                                           C_Compiler * inCompiler
+                                                                                           Compiler * inCompiler
                                                                                            COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_galgas_33_SyntaxComponentListAST * p = (cCollectionElement_galgas_33_SyntaxComponentListAST *) attributes.ptr () ;
@@ -16041,7 +16041,7 @@ GALGAS_syntaxRuleListAST GALGAS_galgas_33_SyntaxComponentListAST::getter_mRuleLi
 
 void GALGAS_galgas_33_SyntaxComponentListAST::setter_setMHasTranslateFeatureAtIndex (GALGAS_bool inOperand,
                                                                                      GALGAS_uint inIndex,
-                                                                                     C_Compiler * inCompiler
+                                                                                     Compiler * inCompiler
                                                                                      COMMA_LOCATION_ARGS) {
   cCollectionElement_galgas_33_SyntaxComponentListAST * p = (cCollectionElement_galgas_33_SyntaxComponentListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -16054,7 +16054,7 @@ void GALGAS_galgas_33_SyntaxComponentListAST::setter_setMHasTranslateFeatureAtIn
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_galgas_33_SyntaxComponentListAST::getter_mHasTranslateFeatureAtIndex (const GALGAS_uint & inIndex,
-                                                                                         C_Compiler * inCompiler
+                                                                                         Compiler * inCompiler
                                                                                          COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_galgas_33_SyntaxComponentListAST * p = (cCollectionElement_galgas_33_SyntaxComponentListAST *) attributes.ptr () ;
@@ -16157,7 +16157,7 @@ AC_GALGAS_root * GALGAS_galgas_33_SyntaxComponentListAST::clonedObject (void) co
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_galgas_33_SyntaxComponentListAST GALGAS_galgas_33_SyntaxComponentListAST::extractObject (const GALGAS_object & inObject,
-                                                                                                C_Compiler * inCompiler
+                                                                                                Compiler * inCompiler
                                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_galgas_33_SyntaxComponentListAST result ;
   const GALGAS_galgas_33_SyntaxComponentListAST * p = (const GALGAS_galgas_33_SyntaxComponentListAST *) inObject.embeddedObject () ;

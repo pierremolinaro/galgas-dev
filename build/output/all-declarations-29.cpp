@@ -1,4 +1,4 @@
-#include "galgas2/C_Compiler.h"
+#include "galgas2/Compiler.h"
 #include "galgas2/C_galgas_io.h"
 #include "galgas2/C_galgas_CLI_Options.h"
 #include "utilities/C_PrologueEpilogue.h"
@@ -14,7 +14,7 @@
 //--------------------------------------------------------------------------------------------------
 
 void routine_updateLIBPMatPath (const GALGAS_string constinArgument_inLIBPMPath,
-                                C_Compiler * inCompiler
+                                Compiler * inCompiler
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_filewrapper var_fw_999 = GALGAS_filewrapper (gWrapperDirectory_0_libpmFileWrapper) ;
   cEnumerator_stringlist enumerator_1066 (var_fw_999.getter_allDirectoryPathes (SOURCE_FILE ("libpmHandling.galgas", 22)), kENUMERATION_UP) ;
@@ -84,7 +84,7 @@ void routine_compileSemanticDeclarationsGalgas (GALGAS_lstringlist & ioArgument_
                                                 GALGAS_semanticContext & outArgument_outSemanticContext,
                                                 GALGAS_unifiedTypeMap & outArgument_outTypeMap,
                                                 GALGAS_semanticDeclarationListForGeneration & outArgument_outSemanticDeclarationSortedListForGeneration,
-                                                C_Compiler * inCompiler
+                                                Compiler * inCompiler
                                                 COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outSemanticContext.drop () ; // Release 'out' argument
   outArgument_outTypeMap.drop () ; // Release 'out' argument
@@ -168,7 +168,7 @@ void routine_buildGalgasSemanticContext (const GALGAS_semanticDeclarationListAST
                                          GALGAS_semanticContext & outArgument_outSemanticContext,
                                          GALGAS_unifiedTypeMap & outArgument_outTypeMap,
                                          GALGAS_semanticDeclarationListAST & outArgument_outSortedSemanticDeclarationListAST,
-                                         C_Compiler * inCompiler
+                                         Compiler * inCompiler
                                          COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outSemanticContext.drop () ; // Release 'out' argument
   outArgument_outTypeMap.drop () ; // Release 'out' argument
@@ -267,7 +267,7 @@ void routine_generateSemanticDeclarationsGalgas_33_ (const GALGAS_unifiedTypeMap
                                                      GALGAS_stringlist & ioArgument_ioToolProductFileList,
                                                      GALGAS_stringlist & ioArgument_ioToolHeaderFileList,
                                                      GALGAS_stringset & ioArgument_ioAllProductFileSet,
-                                                     C_Compiler * inCompiler
+                                                     Compiler * inCompiler
                                                      COMMA_UNUSED_LOCATION_ARGS) {
   cEnumerator_semanticDeclarationListForGeneration enumerator_9933 (constinArgument_inSemanticDeclarationSortedListForGeneration, kENUMERATION_UP) ;
   while (enumerator_9933.hasCurrentObject ()) {
@@ -352,7 +352,7 @@ void routine_generateManyHeaders (const GALGAS_string constinArgument_inProductD
                                   const GALGAS_semanticDeclarationListForGeneration constinArgument_inSemanticDeclarationSortedListForGeneration,
                                   GALGAS_stringset & ioArgument_ioAllProductFileSet,
                                   GALGAS_stringlist & ioArgument_ioToolHeaderFileList,
-                                  C_Compiler * inCompiler
+                                  Compiler * inCompiler
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_stringlist var_headerInclusionList_31__12846 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 298)) ;
   GALGAS_stringlist var_headerInclusionList_32__12890 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 299)) ;
@@ -535,7 +535,7 @@ void routine_generateOneBigHeader (const GALGAS_string constinArgument_inProduct
                                    const GALGAS_semanticDeclarationListForGeneration constinArgument_inSemanticDeclarationSortedListForGeneration,
                                    GALGAS_stringset & ioArgument_ioAllProductFileSet,
                                    GALGAS_stringlist & ioArgument_ioToolHeaderFileList,
-                                   C_Compiler * inCompiler
+                                   Compiler * inCompiler
                                    COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string var_headerString_18424 = GALGAS_string (filewrapperTemplate_semanticFileGenerationTemplate_semanticFileHeader (inCompiler, GALGAS_string ("all-declarations"), GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 417)) COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 415))) ;
   cEnumerator_semanticDeclarationListForGeneration enumerator_18578 (constinArgument_inSemanticDeclarationSortedListForGeneration, kENUMERATION_UP) ;
@@ -585,7 +585,7 @@ void routine_buildHeader (const GALGAS_headerCompositionMap constinArgument_inHe
                           const GALGAS_string constinArgument_inDeclarationName,
                           GALGAS_headerRepartitionMap & ioArgument_ioHeaderRepartitionMap,
                           GALGAS_string & ioArgument_ioHeaderString,
-                          C_Compiler * inCompiler
+                          Compiler * inCompiler
                           COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
@@ -625,7 +625,7 @@ void routine_buildHeader (const GALGAS_headerCompositionMap constinArgument_inHe
 //
 //--------------------------------------------------------------------------------------------------
 
-static GALGAS_uint onceFunction_definitionGroupAmount (C_Compiler *
+static GALGAS_uint onceFunction_definitionGroupAmount (Compiler *
                                                        COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_uint result_result ; // Returned variable
   result_result = GALGAS_uint (uint32_t (50U)) ;
@@ -644,7 +644,7 @@ static GALGAS_uint gOnceFunctionResult_definitionGroupAmount ;
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint function_definitionGroupAmount (class C_Compiler * inCompiler
+GALGAS_uint function_definitionGroupAmount (class Compiler * inCompiler
               COMMA_LOCATION_ARGS) {
   if (! gOnceFunctionResultAvailable_definitionGroupAmount) {
     gOnceFunctionResult_definitionGroupAmount = onceFunction_definitionGroupAmount (inCompiler COMMA_THERE) ;
@@ -674,7 +674,7 @@ static const C_galgas_type_descriptor * functionArgs_definitionGroupAmount [1] =
 
 //--------------------------------------------------------------------------------------------------
 
-static GALGAS_object functionWithGenericHeader_definitionGroupAmount (C_Compiler * inCompiler,
+static GALGAS_object functionWithGenericHeader_definitionGroupAmount (Compiler * inCompiler,
                                                                       const cObjectArray & /* inEffectiveParameterArray */,
                                                                       const GALGAS_location & /* inErrorLocation */
                                                                       COMMA_LOCATION_ARGS) {
@@ -700,7 +700,7 @@ void routine_generateFewImplementationFiles (const GALGAS_unifiedTypeMap constin
                                              const GALGAS_semanticDeclarationListForGeneration constinArgument_inSemanticDeclarationSortedListForGeneration,
                                              GALGAS_stringlist & ioArgument_ioToolProductFileList,
                                              GALGAS_stringset & ioArgument_ioAllProductFileSet,
-                                             C_Compiler * inCompiler
+                                             Compiler * inCompiler
                                              COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_bool var_useOneHugeHeader_21679 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_generateOneHeader.readProperty_value ()) ;
   GALGAS_bigint var_n_21792 = GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 510)) ;
@@ -798,7 +798,7 @@ void routine_generateFewImplementationFilesWithFewHeaders (const GALGAS_unifiedT
                                                            GALGAS_stringlist & ioArgument_ioToolProductFileList,
                                                            GALGAS_stringset & ioArgument_ioAllProductFileSet,
                                                            GALGAS_stringlist & ioArgument_ioToolHeaderFileList,
-                                                           C_Compiler * inCompiler
+                                                           Compiler * inCompiler
                                                            COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_headerCompositionMap var_headerCompositionMap_24163 = GALGAS_headerCompositionMap::constructor_emptyMap (SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 574)) ;
   cEnumerator_semanticDeclarationListForGeneration enumerator_24210 (constinArgument_inSemanticDeclarationSortedListForGeneration, kENUMERATION_UP) ;
@@ -993,7 +993,7 @@ void routine_generateManyImplementationFiles (const GALGAS_unifiedTypeMap consti
                                               const GALGAS_semanticDeclarationListForGeneration constinArgument_inSemanticDeclarationSortedListForGeneration,
                                               GALGAS_stringlist & ioArgument_ioToolProductFileList,
                                               GALGAS_stringset & ioArgument_ioAllProductFileSet,
-                                              C_Compiler * inCompiler
+                                              Compiler * inCompiler
                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_bool var_useOneHugeHeader_29696 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_generateOneHeader.readProperty_value ()) ;
   cEnumerator_semanticDeclarationListForGeneration enumerator_29804 (constinArgument_inSemanticDeclarationSortedListForGeneration, kENUMERATION_UP) ;
@@ -1094,7 +1094,7 @@ const cDirectoryWrapper gWrapperDirectory_0_xcodeProjectGenerationFilewrapper (
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C_Compiler * /* inCompiler */,
+GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Compiler * /* inCompiler */,
                                                                                const GALGAS_string & in_PROJECT_5F_REF,
                                                                                const GALGAS_string & in_MAIN_5F_GROUP_5F_REF,
                                                                                const GALGAS_XCodeGroupList & in_GROUPS,
@@ -1940,7 +1940,7 @@ const cDirectoryWrapper gWrapperDirectory_0_targetGalgas_33_GenerationFileWrappe
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_macosx (C_Compiler * /* inCompiler */,
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_macosx (Compiler * /* inCompiler */,
                                                                                          const GALGAS_string & /* in_PROJECT_5F_NAME */
                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
@@ -1954,7 +1954,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_macosx (C_Compiler * /* inCompiler */,
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_macosx (Compiler * /* inCompiler */,
                                                                                          const GALGAS_string & in_PROJECT_5F_NAME,
                                                                                          const GALGAS_string & in_BUILD_5F_DIR_5F_NAME
                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
@@ -1975,7 +1975,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_macosx (C_Compiler * /* inCompiler */
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_macosx (Compiler * /* inCompiler */
                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
   result += "#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n\n#-----------------------------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#-----------------------------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#-----------------------------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"/usr/bin/python3\", \"build.py\", \"all\", \"1\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#-----------------------------------------------------------------------------------------------------------------------\n" ;
@@ -1988,7 +1988,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_macosx (C_Compiler * /* inCompiler */
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_macosx (Compiler * /* inCompiler */
                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
   result += "#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n\n#-----------------------------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#-----------------------------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#-----------------------------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"/usr/bin/python3\", \"build.py\", \"debug\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#-----------------------------------------------------------------------------------------------------------------------\n" ;
@@ -2001,7 +2001,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_macosx (C_Compiler * /* inCompiler */
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_macosx (Compiler * /* inCompiler */
                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
   result += "#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n\n#-----------------------------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#-----------------------------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#-----------------------------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"/usr/bin/python3\", \"build.py\", \"release\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#-----------------------------------------------------------------------------------------------------------------------\n" ;
@@ -2014,7 +2014,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_macosx (C_Compiler * /* inCompiler */
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_macosx (Compiler * /* inCompiler */
                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
   result += "#! /usr/bin/python3\n#! /usr/bin/python3\n\n#-----------------------------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#-----------------------------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#-----------------------------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"/usr/bin/python3\", \"build.py\", \"lto\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#-----------------------------------------------------------------------------------------------------------------------\n" ;
@@ -2027,7 +2027,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_unix (C_Compiler * /* inCompiler */,
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_unix (Compiler * /* inCompiler */,
                                                                                        const GALGAS_string & /* in_PROJECT_5F_NAME */
                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
@@ -2041,7 +2041,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_unix (C_Compiler * /* inCompiler */,
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_unix (Compiler * /* inCompiler */,
                                                                                        const GALGAS_string & in_PROJECT_5F_NAME,
                                                                                        const GALGAS_string & in_BUILD_5F_DIR_5F_NAME
                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
@@ -2062,7 +2062,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_unix (C_Compiler * /* inCompiler */
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_unix (Compiler * /* inCompiler */
                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
   result += "#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n\n#-----------------------------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#-----------------------------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#-----------------------------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"/usr/bin/python3\", \"build.py\", \"all\", \"1\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#-----------------------------------------------------------------------------------------------------------------------\n" ;
@@ -2075,7 +2075,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_unix (C_Compiler * /* inCompiler */
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_unix (Compiler * /* inCompiler */
                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
   result += "#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n\n#-----------------------------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#-----------------------------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#-----------------------------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"/usr/bin/python3\", \"build.py\", \"debug\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#-----------------------------------------------------------------------------------------------------------------------\n" ;
@@ -2088,7 +2088,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_unix (C_Compiler * /* inCompiler */
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_unix (Compiler * /* inCompiler */
                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
   result += "#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n\n#-----------------------------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#-----------------------------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#-----------------------------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"/usr/bin/python3\", \"build.py\", \"release\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#-----------------------------------------------------------------------------------------------------------------------\n" ;
@@ -2101,7 +2101,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_unix (C_Compiler * /* inCompiler */
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_unix (Compiler * /* inCompiler */
                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
   result += "#! /usr/bin/python3\n#! /usr/bin/python3\n\n#-----------------------------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#-----------------------------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#-----------------------------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"/usr/bin/python3\", \"build.py\", \"lto\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#-----------------------------------------------------------------------------------------------------------------------\n" ;
@@ -2114,7 +2114,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_install_5F_unix (C_Compiler * /* inCompiler */
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_install_5F_unix (Compiler * /* inCompiler */
                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
   result += "#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n\n#-----------------------------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#-----------------------------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#-----------------------------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"/usr/bin/python3\", \"build.py\", \"install-release\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#-----------------------------------------------------------------------------------------------------------------------\n" ;
@@ -2127,7 +2127,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_install_
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_x_38__36_linux_33__32__5F_on_5F_mac (C_Compiler * /* inCompiler */,
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_x_38__36_linux_33__32__5F_on_5F_mac (Compiler * /* inCompiler */,
                                                                                                                       const GALGAS_string & /* in_PROJECT_5F_NAME */
                                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
@@ -2141,7 +2141,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_x_38__36_linux_33__32__5F_on_5F_mac (C_Compiler * /* inCompiler */,
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_x_38__36_linux_33__32__5F_on_5F_mac (Compiler * /* inCompiler */,
                                                                                                                       const GALGAS_string & in_PROJECT_5F_NAME,
                                                                                                                       const GALGAS_string & in_BUILD_5F_DIR_5F_NAME
                                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
@@ -2162,7 +2162,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_x_38__36_linux_33__32__5F_on_5F_mac (C_Compiler * /* inCompiler */
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_x_38__36_linux_33__32__5F_on_5F_mac (Compiler * /* inCompiler */
                                                                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
   result += "#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n\n#-----------------------------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#-----------------------------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#-----------------------------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"/usr/bin/python3\", \"build.py\", \"all\", \"1\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#-----------------------------------------------------------------------------------------------------------------------\n" ;
@@ -2175,7 +2175,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_x_38__36_linux_33__32__5F_on_5F_mac (C_Compiler * /* inCompiler */
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_x_38__36_linux_33__32__5F_on_5F_mac (Compiler * /* inCompiler */
                                                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
   result += "#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n\n#-----------------------------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#-----------------------------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#-----------------------------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"/usr/bin/python3\", \"build.py\", \"debug\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#-----------------------------------------------------------------------------------------------------------------------\n" ;
@@ -2188,7 +2188,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_x_38__36_linux_33__32__5F_on_5F_mac (C_Compiler * /* inCompiler */
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_x_38__36_linux_33__32__5F_on_5F_mac (Compiler * /* inCompiler */
                                                                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
   result += "#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n\n#-----------------------------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#-----------------------------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#-----------------------------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"/usr/bin/python3\", \"build.py\", \"release\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#-----------------------------------------------------------------------------------------------------------------------\n" ;
@@ -2201,7 +2201,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_x_38__36_linux_33__32__5F_on_5F_mac (C_Compiler * /* inCompiler */
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_x_38__36_linux_33__32__5F_on_5F_mac (Compiler * /* inCompiler */
                                                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
   result += "#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n\n#-----------------------------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#-----------------------------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#-----------------------------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"/usr/bin/python3\", \"build.py\", \"lto\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#-----------------------------------------------------------------------------------------------------------------------\n" ;
@@ -2214,7 +2214,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_x_38__36_linux_36__34__5F_on_5F_mac (C_Compiler * /* inCompiler */,
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_x_38__36_linux_36__34__5F_on_5F_mac (Compiler * /* inCompiler */,
                                                                                                                       const GALGAS_string & /* in_PROJECT_5F_NAME */
                                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
@@ -2228,7 +2228,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_x_38__36_linux_36__34__5F_on_5F_mac (C_Compiler * /* inCompiler */,
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_x_38__36_linux_36__34__5F_on_5F_mac (Compiler * /* inCompiler */,
                                                                                                                       const GALGAS_string & in_PROJECT_5F_NAME,
                                                                                                                       const GALGAS_string & in_BUILD_5F_DIR_5F_NAME
                                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
@@ -2249,7 +2249,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_x_38__36_linux_36__34__5F_on_5F_mac (C_Compiler * /* inCompiler */
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_x_38__36_linux_36__34__5F_on_5F_mac (Compiler * /* inCompiler */
                                                                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
   result += "#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n\n#-----------------------------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#-----------------------------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#-----------------------------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"/usr/bin/python3\", \"build.py\", \"all\", \"1\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#-----------------------------------------------------------------------------------------------------------------------\n" ;
@@ -2262,7 +2262,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_x_38__36_linux_36__34__5F_on_5F_mac (C_Compiler * /* inCompiler */
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_x_38__36_linux_36__34__5F_on_5F_mac (Compiler * /* inCompiler */
                                                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
   result += "#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n\n#-----------------------------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#-----------------------------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#-----------------------------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"/usr/bin/python3\", \"build.py\", \"debug\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#-----------------------------------------------------------------------------------------------------------------------\n" ;
@@ -2275,7 +2275,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_x_38__36_linux_36__34__5F_on_5F_mac (C_Compiler * /* inCompiler */
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_x_38__36_linux_36__34__5F_on_5F_mac (Compiler * /* inCompiler */
                                                                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
   result += "#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n\n#-----------------------------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#-----------------------------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#-----------------------------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"/usr/bin/python3\", \"build.py\", \"release\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#-----------------------------------------------------------------------------------------------------------------------\n" ;
@@ -2288,7 +2288,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_x_38__36_linux_36__34__5F_on_5F_mac (C_Compiler * /* inCompiler */
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_x_38__36_linux_36__34__5F_on_5F_mac (Compiler * /* inCompiler */
                                                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
   result += "#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n\n#-----------------------------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#-----------------------------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#-----------------------------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"/usr/bin/python3\", \"build.py\", \"lto\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#-----------------------------------------------------------------------------------------------------------------------\n" ;
@@ -2301,7 +2301,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_win_33__32__5F_on_5F_mac (C_Compiler * /* inCompiler */,
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_win_33__32__5F_on_5F_mac (Compiler * /* inCompiler */,
                                                                                                            const GALGAS_string & /* in_PROJECT_5F_NAME */
                                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
@@ -2315,7 +2315,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_win_33__32__5F_on_5F_mac (C_Compiler * /* inCompiler */,
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_win_33__32__5F_on_5F_mac (Compiler * /* inCompiler */,
                                                                                                            const GALGAS_string & in_PROJECT_5F_NAME,
                                                                                                            const GALGAS_string & in_BUILD_5F_DIR_5F_NAME
                                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
@@ -2336,7 +2336,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_win_33__32__5F_on_5F_mac (C_Compiler * /* inCompiler */
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_win_33__32__5F_on_5F_mac (Compiler * /* inCompiler */
                                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
   result += "#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n\n#-----------------------------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#-----------------------------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#-----------------------------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"/usr/bin/python3\", \"build.py\", \"all\", \"1\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#-----------------------------------------------------------------------------------------------------------------------\n" ;
@@ -2349,7 +2349,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_win_33__32__5F_on_5F_mac (C_Compiler * /* inCompiler */
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_win_33__32__5F_on_5F_mac (Compiler * /* inCompiler */
                                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
   result += "#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n\n#-----------------------------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#-----------------------------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#-----------------------------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"/usr/bin/python3\", \"build.py\", \"debug\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#-----------------------------------------------------------------------------------------------------------------------\n" ;
@@ -2362,7 +2362,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_win_33__32__5F_on_5F_mac (C_Compiler * /* inCompiler */
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_win_33__32__5F_on_5F_mac (Compiler * /* inCompiler */
                                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
   result += "#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n\n#-----------------------------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#-----------------------------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#-----------------------------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"/usr/bin/python3\", \"build.py\", \"release\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#-----------------------------------------------------------------------------------------------------------------------\n" ;
@@ -2375,7 +2375,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_win_33__32__5F_on_5F_mac (C_Compiler * /* inCompiler */
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_win_33__32__5F_on_5F_mac (Compiler * /* inCompiler */
                                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
   result += "#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n\n#-----------------------------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#-----------------------------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#-----------------------------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"/usr/bin/python3\", \"build.py\", \"lto\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#-----------------------------------------------------------------------------------------------------------------------\n" ;
@@ -2388,7 +2388,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codeblocks_5F_project (C_Compiler * /* inCompiler */,
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codeblocks_5F_project (Compiler * /* inCompiler */,
                                                                                                const GALGAS_string & in_PROJECT_5F_NAME,
                                                                                                const GALGAS_stringlist & in_TOOL_5F_CPP_5F_FILE_5F_LIST,
                                                                                                const GALGAS_string & in_LIBPM_5F_PATH,
@@ -2642,7 +2642,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codebloc
   result += in_LIBPM_5F_PATH.stringValue () ;
   result += "/galgas2/typeComparisonResult.cpp\" />\n   <Unit filename=\"" ;
   result += in_LIBPM_5F_PATH.stringValue () ;
-  result += "/galgas2/C_Compiler.cpp\" />\n   <Unit filename=\"" ;
+  result += "/galgas2/Compiler.cpp\" />\n   <Unit filename=\"" ;
   result += in_LIBPM_5F_PATH.stringValue () ;
   result += "/galgas2/C_Lexique.cpp\" />\n   <Unit filename=\"" ;
   result += in_LIBPM_5F_PATH.stringValue () ;
@@ -2756,7 +2756,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codebloc
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile_5F_info_5F_plist (C_Compiler * /* inCompiler */,
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile_5F_info_5F_plist (Compiler * /* inCompiler */,
                                                                                                    const GALGAS_string & in_PROJECT_5F_NAME,
                                                                                                    const GALGAS_string & in_APPLICATION_5F_BUNDLE_5F_BASE,
                                                                                                    const GALGAS_string & in_VERSION_5F_STRING,
@@ -2814,7 +2814,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile_5F_build_5F_xcode (C_Compiler * /* inCompiler */
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile_5F_build_5F_xcode (Compiler * /* inCompiler */
                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
   result += "#!/bin/sh\ncd `dirname $0` && xcodebuild -alltargets -configuration Default\n" ;
@@ -2827,7 +2827,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile_5F_info_5F_plist_5F_strings (C_Compiler * /* inCompiler */,
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile_5F_info_5F_plist_5F_strings (Compiler * /* inCompiler */,
                                                                                                               const GALGAS_string & /* in_PROJECT_5F_NAME */
                                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
@@ -2841,7 +2841,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_json_5F_file_5F_list (C_Compiler * /* inCompiler */,
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_json_5F_file_5F_list (Compiler * /* inCompiler */,
                                                                                               const GALGAS_stringset & in_HAND_5F_CODED_5F_SOURCE_5F_DIR_5F_SET,
                                                                                               const GALGAS_stringlist & in_HAND_5F_CODED_5F_SOURCE_5F_FILE_5F_LIST,
                                                                                               const GALGAS_stringlist & in_MAKEFILE_5F_FILE_5F_LIST,
@@ -2893,19 +2893,19 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_json_5F_
       enumerator_405.gotoNextObject () ;
     }
   }
-  result += "       \"C_CommandLineOption.cpp\",\n       \"C_BoolCommandLineOption.cpp\",\n       \"C_UIntCommandLineOption.cpp\",\n       \"C_StringCommandLineOption.cpp\",\n       \"C_StringListCommandLineOption.cpp\",\n       \"C_builtin_CLI_Options.cpp\",\n       \"F_Analyze_CLI_Options.cpp\",\n       \"F_mainForLIBPM.cpp\",\n       \"C_BDD.cpp\",\n       \"C_BDD-find-or-add.cpp\",\n       \"C_BDD-single-operand-ops.cpp\",\n       \"C_BDD-and-operation.cpp\",\n       \"C_RelationSingleType.cpp\",\n       \"C_RelationConfiguration.cpp\",\n       \"C_Relation.cpp\",\n       \"C_FileManager.cpp\",\n       \"AC_FileHandle.cpp\",\n       \"C_TextFileWrite.cpp\",\n       \"C_HTML_FileWrite.cpp\",\n       \"C_BinaryFileWrite.cpp\",\n       \"AC_OutputStream.cpp\",\n       \"C_ColoredConsole.cpp\",\n       \"C_ConsoleOut.cpp\",\n       \"C_ErrorOut.cpp\",\n       \"unicode_character_cpp.cpp\",\n       \"unicode_string_routines.cpp\",\n       \"String-class.cpp\",\n       \"C_HTMLString.cpp\",\n       \"print.cpp\",\n       \"C_Timer.cpp\",\n       \"C_DateTime.cpp\",\n       \"C_PrologueEpilogue.cpp\",\n       \"C_SharedObject.cpp\",\n       \"BigSigned-add.cpp\",\n       \"BigSigned-bit.cpp\",\n       \"BigSigned-chunk-operations.cpp\",\n       \"BigSigned-constructors.cpp\",\n       \"BigSigned-conversions.cpp\",\n       \"BigSigned-divide.cpp\",\n       \"BigSigned-logic-operations.cpp\",\n       \"BigSigned-multiply.cpp\",\n       \"BigSigned-print.cpp\",\n       \"BigSigned-shifts.cpp\",\n       \"BigSigned-subtract.cpp\",\n       \"BigSigned-utilities.cpp\",\n       \"BigSigned.cpp\",\n       \"BigUnsigned-add.cpp\",\n       \"BigUnsigned-bit.cpp\",\n       \"BigUnsigned-chunk-operations.cpp\",\n       \"BigUnsigned-constructors.cpp\",\n       \"BigUnsigned-conversions.cpp\",\n       \"BigUnsigned-divide-naive.cpp\",\n       \"BigUnsigned-divide.cpp\",\n       \"BigUnsigned-logic-operations.cpp\",\n       \"BigUnsigned-multiply.cpp\",\n       \"BigUnsigned-print.cpp\",\n       \"BigUnsigned-shifts.cpp\",\n       \"BigUnsigned-subtract.cpp\",\n       \"BigUnsigned-utilities.cpp\",\n       \"ChunkSharedArray.cpp\",\n       \"PMUInt128.cpp\",\n       \"C_Data.cpp\",\n       \"F_DisplayException.cpp\",\n       \"MF_Assert.cpp\",\n       \"F_GetPrime.cpp\",\n       \"MF_MemoryControl.cpp\",\n       \"cpp-allocation.cpp\",\n       \"basic-allocation.cpp\",\n       \"C_UIntSet.cpp\",\n       \"C_DirectedGraph.cpp\",\n       \"md5.cpp\",\n       \"galgas-random.cpp\",\n       \"C_galgas_CLI_Options.cpp\",\n       \"typeComparisonResult.cpp\",\n       \"C_Compiler.cpp\",\n       \"C_Lexique.cpp\",\n       \"C_LocationInSource.cpp\",\n       \"C_SourceTextInString.cpp\",\n       \"C_galgas_type_descriptor.cpp\",\n       \"C_galgas_function_descriptor.cpp\",\n       \"C_galgas_io.cpp\",\n       \"C_galgas_class_inspector.cpp\",\n       \"C_IssueWithFixIt.cpp\",\n       \"cObjectArray.cpp\",\n       \"cCollectionElement.cpp\",\n       \"capCollectionElement.cpp\",\n       \"capCollectionElementArray.cpp\",\n       \"cSortedListElement.cpp\",\n       \"capSortedListElement.cpp\",\n       \"cGenericAbstractEnumerator.cpp\",\n       \"cEnumerator_range.cpp\",\n       \"cIndexingDictionary.cpp\",\n       \"cIssueDescriptor.cpp\",\n       \"cLexiqueIntrospection.cpp\",\n       \"AC_GALGAS_root.cpp\",\n       \"AC_GALGAS_list.cpp\",\n       \"AC_GALGAS_sortedlist.cpp\",\n       \"AC_GALGAS_map.cpp\",\n       \"AC_GALGAS_reference_class.cpp\",\n       \"AC_GALGAS_value_class.cpp\",\n       \"AC_GALGAS_graph.cpp\",\n       \"AC_GALGAS_enumAssociatedValues.cpp\",\n       \"acPtr_class.cpp\",\n       \"acStrongPtr_class.cpp\",\n       \"cPtr_weakReference_proxy.cpp\",\n       \"AC_GALGAS_weak_reference.cpp\",\n       \"cPtr_object.cpp\",\n       \"scanner_actions.cpp\",\n       \"GALGAS_application.cpp\",\n       \"GALGAS_bigint.cpp\",\n       \"GALGAS_binaryset.cpp\",\n       \"GALGAS_bool.cpp\",\n       \"GALGAS_char.cpp\",\n       \"GALGAS_data.cpp\",\n       \"GALGAS_double.cpp\",\n       \"GALGAS_filewrapper.cpp\",\n       \"GALGAS_function.cpp\",\n       \"GALGAS_location.cpp\",\n       \"GALGAS_sint.cpp\",\n       \"GALGAS_sint_36__34_.cpp\",\n       \"GALGAS_string.cpp\",\n       \"GALGAS_stringset.cpp\",\n       \"GALGAS_type.cpp\",\n       \"GALGAS_object.cpp\",\n       \"GALGAS_uint.cpp\",\n       \"GALGAS_timer.cpp\",\n       \"GALGAS_uint_36__34_.cpp\"\n    ],\n    \"USER_LINK_OPTIONS\"  :  [" ;
-  GALGAS_uint index_4553_ (0) ;
+  result += "       \"C_CommandLineOption.cpp\",\n       \"C_BoolCommandLineOption.cpp\",\n       \"C_UIntCommandLineOption.cpp\",\n       \"C_StringCommandLineOption.cpp\",\n       \"C_StringListCommandLineOption.cpp\",\n       \"C_builtin_CLI_Options.cpp\",\n       \"F_Analyze_CLI_Options.cpp\",\n       \"F_mainForLIBPM.cpp\",\n       \"C_BDD.cpp\",\n       \"C_BDD-find-or-add.cpp\",\n       \"C_BDD-single-operand-ops.cpp\",\n       \"C_BDD-and-operation.cpp\",\n       \"C_RelationSingleType.cpp\",\n       \"C_RelationConfiguration.cpp\",\n       \"C_Relation.cpp\",\n       \"C_FileManager.cpp\",\n       \"AC_FileHandle.cpp\",\n       \"C_TextFileWrite.cpp\",\n       \"C_HTML_FileWrite.cpp\",\n       \"C_BinaryFileWrite.cpp\",\n       \"AC_OutputStream.cpp\",\n       \"C_ColoredConsole.cpp\",\n       \"C_ConsoleOut.cpp\",\n       \"C_ErrorOut.cpp\",\n       \"unicode_character_cpp.cpp\",\n       \"unicode_string_routines.cpp\",\n       \"String-class.cpp\",\n       \"C_HTMLString.cpp\",\n       \"print.cpp\",\n       \"C_Timer.cpp\",\n       \"C_DateTime.cpp\",\n       \"C_PrologueEpilogue.cpp\",\n       \"C_SharedObject.cpp\",\n       \"BigSigned-add.cpp\",\n       \"BigSigned-bit.cpp\",\n       \"BigSigned-chunk-operations.cpp\",\n       \"BigSigned-constructors.cpp\",\n       \"BigSigned-conversions.cpp\",\n       \"BigSigned-divide.cpp\",\n       \"BigSigned-logic-operations.cpp\",\n       \"BigSigned-multiply.cpp\",\n       \"BigSigned-print.cpp\",\n       \"BigSigned-shifts.cpp\",\n       \"BigSigned-subtract.cpp\",\n       \"BigSigned-utilities.cpp\",\n       \"BigSigned.cpp\",\n       \"BigUnsigned-add.cpp\",\n       \"BigUnsigned-bit.cpp\",\n       \"BigUnsigned-chunk-operations.cpp\",\n       \"BigUnsigned-constructors.cpp\",\n       \"BigUnsigned-conversions.cpp\",\n       \"BigUnsigned-divide-naive.cpp\",\n       \"BigUnsigned-divide.cpp\",\n       \"BigUnsigned-logic-operations.cpp\",\n       \"BigUnsigned-multiply.cpp\",\n       \"BigUnsigned-print.cpp\",\n       \"BigUnsigned-shifts.cpp\",\n       \"BigUnsigned-subtract.cpp\",\n       \"BigUnsigned-utilities.cpp\",\n       \"ChunkSharedArray.cpp\",\n       \"PMUInt128.cpp\",\n       \"C_Data.cpp\",\n       \"F_DisplayException.cpp\",\n       \"MF_Assert.cpp\",\n       \"F_GetPrime.cpp\",\n       \"MF_MemoryControl.cpp\",\n       \"cpp-allocation.cpp\",\n       \"basic-allocation.cpp\",\n       \"C_UIntSet.cpp\",\n       \"C_DirectedGraph.cpp\",\n       \"md5.cpp\",\n       \"galgas-random.cpp\",\n       \"C_galgas_CLI_Options.cpp\",\n       \"typeComparisonResult.cpp\",\n       \"Compiler.cpp\",\n       \"C_Lexique.cpp\",\n       \"C_LocationInSource.cpp\",\n       \"C_SourceTextInString.cpp\",\n       \"C_galgas_type_descriptor.cpp\",\n       \"C_galgas_function_descriptor.cpp\",\n       \"C_galgas_io.cpp\",\n       \"C_galgas_class_inspector.cpp\",\n       \"C_IssueWithFixIt.cpp\",\n       \"cObjectArray.cpp\",\n       \"cCollectionElement.cpp\",\n       \"capCollectionElement.cpp\",\n       \"capCollectionElementArray.cpp\",\n       \"cSortedListElement.cpp\",\n       \"capSortedListElement.cpp\",\n       \"cGenericAbstractEnumerator.cpp\",\n       \"cEnumerator_range.cpp\",\n       \"cIndexingDictionary.cpp\",\n       \"cIssueDescriptor.cpp\",\n       \"cLexiqueIntrospection.cpp\",\n       \"AC_GALGAS_root.cpp\",\n       \"AC_GALGAS_list.cpp\",\n       \"AC_GALGAS_sortedlist.cpp\",\n       \"AC_GALGAS_map.cpp\",\n       \"AC_GALGAS_reference_class.cpp\",\n       \"AC_GALGAS_value_class.cpp\",\n       \"AC_GALGAS_graph.cpp\",\n       \"AC_GALGAS_enumAssociatedValues.cpp\",\n       \"acPtr_class.cpp\",\n       \"acStrongPtr_class.cpp\",\n       \"cPtr_weakReference_proxy.cpp\",\n       \"AC_GALGAS_weak_reference.cpp\",\n       \"cPtr_object.cpp\",\n       \"scanner_actions.cpp\",\n       \"GALGAS_application.cpp\",\n       \"GALGAS_bigint.cpp\",\n       \"GALGAS_binaryset.cpp\",\n       \"GALGAS_bool.cpp\",\n       \"GALGAS_char.cpp\",\n       \"GALGAS_data.cpp\",\n       \"GALGAS_double.cpp\",\n       \"GALGAS_filewrapper.cpp\",\n       \"GALGAS_function.cpp\",\n       \"GALGAS_location.cpp\",\n       \"GALGAS_sint.cpp\",\n       \"GALGAS_sint_36__34_.cpp\",\n       \"GALGAS_string.cpp\",\n       \"GALGAS_stringset.cpp\",\n       \"GALGAS_type.cpp\",\n       \"GALGAS_object.cpp\",\n       \"GALGAS_uint.cpp\",\n       \"GALGAS_timer.cpp\",\n       \"GALGAS_uint_36__34_.cpp\"\n    ],\n    \"USER_LINK_OPTIONS\"  :  [" ;
+  GALGAS_uint index_4551_ (0) ;
   if (in_TOOL_5F_LINK_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_4553 (in_TOOL_5F_LINK_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_4553.hasCurrentObject ()) {
+    cEnumerator_stringlist enumerator_4551 (in_TOOL_5F_LINK_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_4551.hasCurrentObject ()) {
       result += "\n        \"" ;
-      result += enumerator_4553.current_mValue (HERE).stringValue () ;
+      result += enumerator_4551.current_mValue (HERE).stringValue () ;
       result += "\"" ;
-      if (enumerator_4553.hasNextObject ()) {
+      if (enumerator_4551.hasNextObject ()) {
         result += "," ;
       }
-      index_4553_.increment () ;
-      enumerator_4553.gotoNextObject () ;
+      index_4551_.increment () ;
+      enumerator_4551.gotoNextObject () ;
     }
   }
   result += "\n    ]\n}\n\n" ;
@@ -2918,7 +2918,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_json_5F_
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_project_5F_header (C_Compiler * /* inCompiler */,
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_project_5F_header (Compiler * /* inCompiler */,
                                                                                            const GALGAS_string & in_VERSION_5F_STRING
                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
@@ -2942,7 +2942,7 @@ void routine_generateGalgasCodeBlocksWindowsTarget (const GALGAS_string constinA
                                                     const GALGAS_stringlist constinArgument_inHandCodedSourceToolFileList,
                                                     const GALGAS_stringset constinArgument_inHandCodedSourceDirectorySet,
                                                     const GALGAS_bool constinArgument_inVerboseOption,
-                                                    C_Compiler * inCompiler
+                                                    Compiler * inCompiler
                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string var_dir_5530 = constinArgument_inProjectDirectory.add_operation (GALGAS_string ("/project-codeblocks-windows"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 96)) ;
   var_dir_5530.method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 97)) ;
@@ -2966,7 +2966,7 @@ void routine_generateGalgasCodeBlocksLinuxI_36__38__36_Target (const GALGAS_stri
                                                                const GALGAS_stringlist constinArgument_inHandCodedSourceToolFileList,
                                                                const GALGAS_stringset constinArgument_inHandCodedSourceDirectorySet,
                                                                const GALGAS_bool constinArgument_inVerboseOption,
-                                                               C_Compiler * inCompiler
+                                                               Compiler * inCompiler
                                                                COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string var_dir_7521 = constinArgument_inProjectDirectory.add_operation (GALGAS_string ("/project-codeblocks-linux32"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 152)) ;
   var_dir_7521.method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 153)) ;
@@ -2990,7 +2990,7 @@ void routine_generateGalgasCodeBlocksLinuxX_38__36__5F__36__34_Target (const GAL
                                                                        const GALGAS_stringlist constinArgument_inHandCodedSourceToolFileList,
                                                                        const GALGAS_stringset constinArgument_inHandCodedSourceDirectorySet,
                                                                        const GALGAS_bool constinArgument_inVerboseOption,
-                                                                       C_Compiler * inCompiler
+                                                                       Compiler * inCompiler
                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string var_dir_8510 = constinArgument_inProjectDirectory.add_operation (GALGAS_string ("/project-codeblocks-linux64"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 180)) ;
   var_dir_8510.method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 181)) ;
@@ -3009,7 +3009,7 @@ void routine_generateGalgasCodeBlocksLinuxX_38__36__5F__36__34_Target (const GAL
 void routine_generateGalgas_33_MinGWOnMacOSXTarget (const GALGAS_string constinArgument_inProjectDirectory,
                                                     const GALGAS_string constinArgument_inBuildDirectoryName,
                                                     const GALGAS_string constinArgument_inProjectName,
-                                                    C_Compiler * inCompiler
+                                                    Compiler * inCompiler
                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string var_dir_9302 = constinArgument_inProjectDirectory.add_operation (GALGAS_string ("/makefile-win32-on-macosx"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 202)) ;
   var_dir_9302.method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 203)) ;
@@ -3040,7 +3040,7 @@ void routine_generateGalgas_33_MinGWOnMacOSXTarget (const GALGAS_string constinA
 void routine_generateGalgas_33_MakefileUnixTarget (const GALGAS_string constinArgument_inProjectDirectory,
                                                    const GALGAS_string constinArgument_inBuildDirectoryName,
                                                    const GALGAS_string constinArgument_inProjectName,
-                                                   C_Compiler * inCompiler
+                                                   Compiler * inCompiler
                                                    COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string var_dir_10661 = constinArgument_inProjectDirectory.add_operation (GALGAS_string ("/makefile-unix"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 222)) ;
   var_dir_10661.method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 223)) ;
@@ -3073,7 +3073,7 @@ void routine_generateGalgas_33_MakefileUnixTarget (const GALGAS_string constinAr
 void routine_generateGalgas_33_MakefileMacTarget (const GALGAS_string constinArgument_inProjectDirectory,
                                                   const GALGAS_string constinArgument_inBuildDirectoryName,
                                                   const GALGAS_string constinArgument_inProjectName,
-                                                  C_Compiler * inCompiler
+                                                  Compiler * inCompiler
                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string var_dir_12081 = constinArgument_inProjectDirectory.add_operation (GALGAS_string ("/makefile-macosx"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 240)) ;
   var_dir_12081.method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 241)) ;
@@ -3104,7 +3104,7 @@ void routine_generateGalgas_33_MakefileMacTarget (const GALGAS_string constinArg
 void routine_generateGalgas_33_Linux_33__32_OnMacOSXTarget (const GALGAS_string constinArgument_inProjectDirectory,
                                                             const GALGAS_string constinArgument_inBuildDirectoryName,
                                                             const GALGAS_string constinArgument_inProjectName,
-                                                            C_Compiler * inCompiler
+                                                            Compiler * inCompiler
                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string var_dir_13522 = constinArgument_inProjectDirectory.add_operation (GALGAS_string ("/makefile-x86linux32-on-macosx"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 258)) ;
   var_dir_13522.method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 259)) ;
@@ -3135,7 +3135,7 @@ void routine_generateGalgas_33_Linux_33__32_OnMacOSXTarget (const GALGAS_string 
 void routine_generateGalgas_33_Linux_36__34_OnMacOSXTarget (const GALGAS_string constinArgument_inProjectDirectory,
                                                             const GALGAS_string constinArgument_inBuildDirectoryName,
                                                             const GALGAS_string constinArgument_inProjectName,
-                                                            C_Compiler * inCompiler
+                                                            Compiler * inCompiler
                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string var_dir_14908 = constinArgument_inProjectDirectory.add_operation (GALGAS_string ("/makefile-x86linux64-on-macosx"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 275)) ;
   var_dir_14908.method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 276)) ;
@@ -3183,7 +3183,7 @@ void routine_updateGalgasTargets (const GALGAS_string constinArgument_inAbsolute
                                   const GALGAS_stringlist constinArgument_inHandCodedSourceAppFileList,
                                   const GALGAS_stringlist constinArgument_inHandCodedLinkAppFileList,
                                   const GALGAS_stringlist constinArgument_inHandCodedLinkToolFileList,
-                                  C_Compiler * inCompiler
+                                  Compiler * inCompiler
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string var_projectDirectory_17023 = constinArgument_inProjectSourceFilePath.getter_stringByDeletingLastPathComponent (SOURCE_FILE ("galgasTargetGeneration.galgas", 310)) ;
   GALGAS_bool joker_17316 ; // Joker input parameter
@@ -3860,8 +3860,8 @@ void routine_updateGalgasTargets (const GALGAS_string constinArgument_inAbsolute
       temp_48.addAssign_operation (GALGAS_string ("acStrongPtr_class.h")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 968)) ;
       temp_48.addAssign_operation (GALGAS_string ("cPtr_weakReference_proxy.cpp")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 969)) ;
       temp_48.addAssign_operation (GALGAS_string ("cPtr_weakReference_proxy.h")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 970)) ;
-      temp_48.addAssign_operation (GALGAS_string ("C_Compiler.cpp")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 971)) ;
-      temp_48.addAssign_operation (GALGAS_string ("C_Compiler.h")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 972)) ;
+      temp_48.addAssign_operation (GALGAS_string ("Compiler.cpp")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 971)) ;
+      temp_48.addAssign_operation (GALGAS_string ("Compiler.h")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 972)) ;
       temp_48.addAssign_operation (GALGAS_string ("C_galgas_class_inspector.cpp")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 973)) ;
       temp_48.addAssign_operation (GALGAS_string ("C_galgas_class_inspector.h")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 974)) ;
       temp_48.addAssign_operation (GALGAS_string ("C_galgas_CLI_Options.cpp")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 975)) ;
@@ -4027,85 +4027,85 @@ void routine_updateGalgasTargets (const GALGAS_string constinArgument_inAbsolute
       extensionSetter_addGroupWithFiles (var_xcodeProject_26427, GALGAS_string ("Utilities"), GALGAS_string ("utilities"), temp_56, var_buildCFileRefListForTool_31256, var_buildCppFileRefListForTool_31306, var_m_5F_FileRefList_31358, var_mm_5F_FileRefList_31397, var_frameworksFileRefList_31437, var_resourceFileBuildRefs_31484, var_groupRef_33402, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1127)) ;
       }
       var_libpmReferenceGroupList_33499.addAssign_operation (var_groupRef_33402  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1170)) ;
-      GALGAS_string var_libpmGroupRef_49251 ;
+      GALGAS_string var_libpmGroupRef_49247 ;
       {
-      extensionSetter_addGroup (var_xcodeProject_26427, GALGAS_string ("libpm"), GALGAS_string ("../").add_operation (constinArgument_inBuildDirectoryName, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1172)).add_operation (GALGAS_string ("/libpm"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1172)), var_libpmReferenceGroupList_33499, var_libpmGroupRef_49251, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1172)) ;
+      extensionSetter_addGroup (var_xcodeProject_26427, GALGAS_string ("libpm"), GALGAS_string ("../").add_operation (constinArgument_inBuildDirectoryName, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1172)).add_operation (GALGAS_string ("/libpm"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1172)), var_libpmReferenceGroupList_33499, var_libpmGroupRef_49247, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1172)) ;
       }
       {
-      extensionSetter_placeGroupAsMainGroup (var_xcodeProject_26427, var_libpmGroupRef_49251, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1173)) ;
+      extensionSetter_placeGroupAsMainGroup (var_xcodeProject_26427, var_libpmGroupRef_49247, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1173)) ;
       }
-      GALGAS_string var_resourcesGroupRef_49778 ;
+      GALGAS_string var_resourcesGroupRef_49774 ;
       {
       GALGAS_stringset temp_57 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgasTargetGeneration.galgas", 1179)) ;
       temp_57.addAssign_operation (GALGAS_string ("Info.plist")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1179)) ;
-      extensionSetter_addGroupWithFiles (var_xcodeProject_26427, GALGAS_string ("Resources"), GALGAS_string ("."), temp_57, var_buildCFileRefListForTool_31256, var_buildCppFileRefListForTool_31306, var_m_5F_FileRefList_31358, var_mm_5F_FileRefList_31397, var_frameworksFileRefList_31437, var_resourceFileBuildRefs_31484, var_resourcesGroupRef_49778, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1175)) ;
+      extensionSetter_addGroupWithFiles (var_xcodeProject_26427, GALGAS_string ("Resources"), GALGAS_string ("."), temp_57, var_buildCFileRefListForTool_31256, var_buildCppFileRefListForTool_31306, var_m_5F_FileRefList_31358, var_mm_5F_FileRefList_31397, var_frameworksFileRefList_31437, var_resourceFileBuildRefs_31484, var_resourcesGroupRef_49774, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1175)) ;
       }
       {
-      extensionSetter_placeGroupAsMainGroup (var_xcodeProject_26427, var_resourcesGroupRef_49778, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1189)) ;
+      extensionSetter_placeGroupAsMainGroup (var_xcodeProject_26427, var_resourcesGroupRef_49774, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1189)) ;
       }
-      GALGAS_string var_userResourcesGroupRef_50355 ;
+      GALGAS_string var_userResourcesGroupRef_50351 ;
       {
-      extensionSetter_addGroupWithFiles (var_xcodeProject_26427, GALGAS_string ("User Resources"), GALGAS_string ("userResources"), GALGAS_stringset::constructor_setWithStringList (var_resourceFiles_26062  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1194)), var_buildCFileRefListForTool_31256, var_buildCppFileRefListForTool_31306, var_m_5F_FileRefList_31358, var_mm_5F_FileRefList_31397, var_frameworksFileRefList_31437, var_resourceFileBuildRefs_31484, var_userResourcesGroupRef_50355, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1191)) ;
+      extensionSetter_addGroupWithFiles (var_xcodeProject_26427, GALGAS_string ("User Resources"), GALGAS_string ("userResources"), GALGAS_stringset::constructor_setWithStringList (var_resourceFiles_26062  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1194)), var_buildCFileRefListForTool_31256, var_buildCppFileRefListForTool_31306, var_m_5F_FileRefList_31358, var_mm_5F_FileRefList_31397, var_frameworksFileRefList_31437, var_resourceFileBuildRefs_31484, var_userResourcesGroupRef_50351, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1191)) ;
       }
       {
-      extensionSetter_placeGroupAsMainGroup (var_xcodeProject_26427, var_userResourcesGroupRef_50355, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1203)) ;
+      extensionSetter_placeGroupAsMainGroup (var_xcodeProject_26427, var_userResourcesGroupRef_50351, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1203)) ;
       }
-      GALGAS_string var_frameworkGroupRef_50980 ;
+      GALGAS_string var_frameworkGroupRef_50976 ;
       {
       GALGAS_stringset temp_58 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgasTargetGeneration.galgas", 1210)) ;
       temp_58.addAssign_operation (GALGAS_string ("AppKit.framework")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1209)) ;
       temp_58.addAssign_operation (GALGAS_string ("Cocoa.framework")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1210)) ;
-      extensionSetter_addGroupWithFiles (var_xcodeProject_26427, GALGAS_string ("Frameworks for App"), GALGAS_string ("/System/Library/Frameworks"), temp_58, var_buildCFileRefListForTool_31256, var_buildCppFileRefListForTool_31306, var_m_5F_FileRefList_31358, var_mm_5F_FileRefList_31397, var_frameworksFileRefList_31437, var_resourceFileBuildRefs_31484, var_frameworkGroupRef_50980, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1205)) ;
+      extensionSetter_addGroupWithFiles (var_xcodeProject_26427, GALGAS_string ("Frameworks for App"), GALGAS_string ("/System/Library/Frameworks"), temp_58, var_buildCFileRefListForTool_31256, var_buildCppFileRefListForTool_31306, var_m_5F_FileRefList_31358, var_mm_5F_FileRefList_31397, var_frameworksFileRefList_31437, var_resourceFileBuildRefs_31484, var_frameworkGroupRef_50976, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1205)) ;
       }
       {
-      extensionSetter_placeGroupAsMainGroup (var_xcodeProject_26427, var_frameworkGroupRef_50980, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1220)) ;
+      extensionSetter_placeGroupAsMainGroup (var_xcodeProject_26427, var_frameworkGroupRef_50976, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1220)) ;
       }
-      GALGAS_stringlist var_codeSigningSettingList_51124 ;
+      GALGAS_stringlist var_codeSigningSettingList_51120 ;
       enumGalgasBool test_59 = kBoolTrue ;
       if (kBoolTrue == test_59) {
         test_59 = GALGAS_bool (kIsEqual, var_macCodeSign_17734.readProperty_string ().objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
         if (kBoolTrue == test_59) {
           GALGAS_stringlist temp_60 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgasTargetGeneration.galgas", 1224)) ;
           temp_60.addAssign_operation (GALGAS_string ("CODE_SIGN_IDENTITY = \"-\"")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1224)) ;
-          var_codeSigningSettingList_51124 = temp_60 ;
+          var_codeSigningSettingList_51120 = temp_60 ;
         }
       }
       if (kBoolFalse == test_59) {
-        GALGAS_stringlist var_components_51266 = var_macCodeSign_17734.readProperty_string ().getter_componentsSeparatedByString (GALGAS_string (":") COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1226)) ;
+        GALGAS_stringlist var_components_51262 = var_macCodeSign_17734.readProperty_string ().getter_componentsSeparatedByString (GALGAS_string (":") COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1226)) ;
         enumGalgasBool test_61 = kBoolTrue ;
         if (kBoolTrue == test_61) {
-          test_61 = GALGAS_bool (kIsNotEqual, var_components_51266.getter_count (SOURCE_FILE ("galgasTargetGeneration.galgas", 1227)).objectCompare (GALGAS_uint (uint32_t (2U)))).boolEnum () ;
+          test_61 = GALGAS_bool (kIsNotEqual, var_components_51262.getter_count (SOURCE_FILE ("galgasTargetGeneration.galgas", 1227)).objectCompare (GALGAS_uint (uint32_t (2U)))).boolEnum () ;
           if (kBoolTrue == test_61) {
             TC_Array <C_FixItDescription> fixItArray62 ;
             inCompiler->emitSemanticError (var_macCodeSign_17734.readProperty_location (), GALGAS_string ("the %macCodeSign attribute associated string should be \"key:value\""), fixItArray62  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1228)) ;
-            var_codeSigningSettingList_51124.drop () ; // Release error dropped variable
+            var_codeSigningSettingList_51120.drop () ; // Release error dropped variable
           }
         }
         if (kBoolFalse == test_61) {
           enumGalgasBool test_63 = kBoolTrue ;
           if (kBoolTrue == test_63) {
-            test_63 = GALGAS_bool (kIsEqual, var_components_51266.getter_mValueAtIndex (GALGAS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1229)).objectCompare (GALGAS_string ("MacDeveloper"))).boolEnum () ;
+            test_63 = GALGAS_bool (kIsEqual, var_components_51262.getter_mValueAtIndex (GALGAS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1229)).objectCompare (GALGAS_string ("MacDeveloper"))).boolEnum () ;
             if (kBoolTrue == test_63) {
               GALGAS_stringlist temp_64 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgasTargetGeneration.galgas", 1232)) ;
               temp_64.addAssign_operation (GALGAS_string ("CODE_SIGN_IDENTITY = \"Mac Developer\"")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1231)) ;
-              temp_64.addAssign_operation (GALGAS_string ("DEVELOPMENT_TEAM = \"").add_operation (var_components_51266.getter_mValueAtIndex (GALGAS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1232)), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1232)).add_operation (GALGAS_string ("\""), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1232))  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1232)) ;
-              var_codeSigningSettingList_51124 = temp_64 ;
+              temp_64.addAssign_operation (GALGAS_string ("DEVELOPMENT_TEAM = \"").add_operation (var_components_51262.getter_mValueAtIndex (GALGAS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1232)), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1232)).add_operation (GALGAS_string ("\""), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1232))  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1232)) ;
+              var_codeSigningSettingList_51120 = temp_64 ;
             }
           }
           if (kBoolFalse == test_63) {
             enumGalgasBool test_65 = kBoolTrue ;
             if (kBoolTrue == test_65) {
-              test_65 = GALGAS_bool (kIsEqual, var_components_51266.getter_mValueAtIndex (GALGAS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1234)).objectCompare (GALGAS_string ("Certificate"))).boolEnum () ;
+              test_65 = GALGAS_bool (kIsEqual, var_components_51262.getter_mValueAtIndex (GALGAS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1234)).objectCompare (GALGAS_string ("Certificate"))).boolEnum () ;
               if (kBoolTrue == test_65) {
                 GALGAS_stringlist temp_66 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgasTargetGeneration.galgas", 1235)) ;
-                temp_66.addAssign_operation (GALGAS_string ("CODE_SIGN_IDENTITY = \"").add_operation (var_components_51266.getter_mValueAtIndex (GALGAS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1235)), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1235)).add_operation (GALGAS_string ("\""), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1235))  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1235)) ;
-                var_codeSigningSettingList_51124 = temp_66 ;
+                temp_66.addAssign_operation (GALGAS_string ("CODE_SIGN_IDENTITY = \"").add_operation (var_components_51262.getter_mValueAtIndex (GALGAS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1235)), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1235)).add_operation (GALGAS_string ("\""), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1235))  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1235)) ;
+                var_codeSigningSettingList_51120 = temp_66 ;
               }
             }
             if (kBoolFalse == test_65) {
               TC_Array <C_FixItDescription> fixItArray67 ;
               inCompiler->emitSemanticError (var_macCodeSign_17734.readProperty_location (), GALGAS_string ("the %macCodeSign attribute string is \"key:value\", but key should be 'MacDeveloper' or 'Certificate'"), fixItArray67  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1237)) ;
-              var_codeSigningSettingList_51124.drop () ; // Release error dropped variable
+              var_codeSigningSettingList_51120.drop () ; // Release error dropped variable
             }
           }
         }
@@ -4115,28 +4115,28 @@ void routine_updateGalgasTargets (const GALGAS_string constinArgument_inAbsolute
       temp_68.addAssign_operation (GALGAS_string ("GCC_PREPROCESSOR_DEFINITIONS = (DO_NOT_GENERATE_CHECKINGS)")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1243)) ;
       temp_68.addAssign_operation (GALGAS_string ("GCC_WARN_UNUSED_PARAMETER = YES")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1244)) ;
       temp_68.addAssign_operation (GALGAS_string ("PRODUCT_BUNDLE_IDENTIFIER = \"").add_operation (var_applicationBundleBase_24598, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1245)).add_operation (GALGAS_string ("."), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1245)).add_operation (constinArgument_inTargetName, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1245)).add_operation (GALGAS_string (".tool\""), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1245))  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1245)) ;
-      GALGAS_stringlist var_settingList_52136 = temp_68.add_operation (var_codeSigningSettingList_51124, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1246)) ;
+      GALGAS_stringlist var_settingList_52132 = temp_68.add_operation (var_codeSigningSettingList_51120, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1246)) ;
       enumGalgasBool test_69 = kBoolTrue ;
       if (kBoolTrue == test_69) {
         test_69 = GALGAS_bool (kIsStrictSup, constinArgument_inHandCodedLinkToolFileList.getter_count (SOURCE_FILE ("galgasTargetGeneration.galgas", 1247)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
         if (kBoolTrue == test_69) {
-          GALGAS_string var_s_52490 = GALGAS_string ("OTHER_LDFLAGS=(") ;
-          cEnumerator_stringlist enumerator_52523 (constinArgument_inHandCodedLinkToolFileList, kENUMERATION_UP) ;
-          while (enumerator_52523.hasCurrentObject ()) {
-            var_s_52490.plusAssign_operation(GALGAS_string ("\"").add_operation (enumerator_52523.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1250)).add_operation (GALGAS_string ("\""), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1250)), inCompiler  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1250)) ;
-            if (enumerator_52523.hasNextObject ()) {
-              var_s_52490.plusAssign_operation(GALGAS_string (","), inCompiler  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1251)) ;
+          GALGAS_string var_s_52486 = GALGAS_string ("OTHER_LDFLAGS=(") ;
+          cEnumerator_stringlist enumerator_52519 (constinArgument_inHandCodedLinkToolFileList, kENUMERATION_UP) ;
+          while (enumerator_52519.hasCurrentObject ()) {
+            var_s_52486.plusAssign_operation(GALGAS_string ("\"").add_operation (enumerator_52519.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1250)).add_operation (GALGAS_string ("\""), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1250)), inCompiler  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1250)) ;
+            if (enumerator_52519.hasNextObject ()) {
+              var_s_52486.plusAssign_operation(GALGAS_string (","), inCompiler  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1251)) ;
             }
-            enumerator_52523.gotoNextObject () ;
+            enumerator_52519.gotoNextObject () ;
           }
-          var_s_52490.plusAssign_operation(GALGAS_string (")"), inCompiler  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1253)) ;
-          var_settingList_52136.addAssign_operation (var_s_52490  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1254)) ;
+          var_s_52486.plusAssign_operation(GALGAS_string (")"), inCompiler  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1253)) ;
+          var_settingList_52132.addAssign_operation (var_s_52486  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1254)) ;
         }
       }
-      GALGAS_string var_releaseTargetRef_53000 ;
-      GALGAS_string var_releaseProductFileRef_53043 ;
+      GALGAS_string var_releaseTargetRef_52996 ;
+      GALGAS_string var_releaseProductFileRef_53039 ;
       {
-      extensionSetter_addToolTarget (var_xcodeProject_26427, constinArgument_inTargetName.add_operation (GALGAS_string (" tool"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1257)), constinArgument_inTargetName, var_buildCFileRefListForTool_31256.add_operation (var_buildCppFileRefListForTool_31306, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1259)).add_operation (var_mm_5F_FileRefList_31397, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1259)), var_toolFrameworksFileRefList_32244, var_settingList_52136, var_releaseTargetRef_53000, var_releaseProductFileRef_53043, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1256)) ;
+      extensionSetter_addToolTarget (var_xcodeProject_26427, constinArgument_inTargetName.add_operation (GALGAS_string (" tool"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1257)), constinArgument_inTargetName, var_buildCFileRefListForTool_31256.add_operation (var_buildCppFileRefListForTool_31306, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1259)).add_operation (var_mm_5F_FileRefList_31397, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1259)), var_toolFrameworksFileRefList_32244, var_settingList_52132, var_releaseTargetRef_52996, var_releaseProductFileRef_53039, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1256)) ;
       }
       GALGAS_stringlist temp_70 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgasTargetGeneration.galgas", 1271)) ;
       temp_70.addAssign_operation (GALGAS_string ("GCC_OPTIMIZATION_LEVEL = 0")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1267)) ;
@@ -4144,42 +4144,42 @@ void routine_updateGalgasTargets (const GALGAS_string constinArgument_inAbsolute
       temp_70.addAssign_operation (GALGAS_string ("GCC_PREPROCESSOR_DEFINITIONS = ()")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1269)) ;
       temp_70.addAssign_operation (GALGAS_string ("GCC_WARN_UNUSED_PARAMETER = YES")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1270)) ;
       temp_70.addAssign_operation (GALGAS_string ("PRODUCT_BUNDLE_IDENTIFIER = \"").add_operation (var_applicationBundleBase_24598, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1271)).add_operation (GALGAS_string ("."), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1271)).add_operation (constinArgument_inTargetName, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1271)).add_operation (GALGAS_string (".tooldebug\""), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1271))  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1271)) ;
-      var_settingList_52136 = temp_70.add_operation (var_codeSigningSettingList_51124, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1272)) ;
+      var_settingList_52132 = temp_70.add_operation (var_codeSigningSettingList_51120, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1272)) ;
       enumGalgasBool test_71 = kBoolTrue ;
       if (kBoolTrue == test_71) {
         test_71 = GALGAS_bool (kIsStrictSup, constinArgument_inHandCodedLinkToolFileList.getter_count (SOURCE_FILE ("galgasTargetGeneration.galgas", 1273)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
         if (kBoolTrue == test_71) {
-          GALGAS_string var_s_53487 = GALGAS_string ("OTHER_LDFLAGS=(") ;
-          cEnumerator_stringlist enumerator_53520 (constinArgument_inHandCodedLinkToolFileList, kENUMERATION_UP) ;
-          while (enumerator_53520.hasCurrentObject ()) {
-            var_s_53487.plusAssign_operation(GALGAS_string ("\"").add_operation (enumerator_53520.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1276)).add_operation (GALGAS_string ("\""), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1276)), inCompiler  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1276)) ;
-            if (enumerator_53520.hasNextObject ()) {
-              var_s_53487.plusAssign_operation(GALGAS_string (","), inCompiler  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1277)) ;
+          GALGAS_string var_s_53483 = GALGAS_string ("OTHER_LDFLAGS=(") ;
+          cEnumerator_stringlist enumerator_53516 (constinArgument_inHandCodedLinkToolFileList, kENUMERATION_UP) ;
+          while (enumerator_53516.hasCurrentObject ()) {
+            var_s_53483.plusAssign_operation(GALGAS_string ("\"").add_operation (enumerator_53516.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1276)).add_operation (GALGAS_string ("\""), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1276)), inCompiler  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1276)) ;
+            if (enumerator_53516.hasNextObject ()) {
+              var_s_53483.plusAssign_operation(GALGAS_string (","), inCompiler  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1277)) ;
             }
-            enumerator_53520.gotoNextObject () ;
+            enumerator_53516.gotoNextObject () ;
           }
-          var_s_53487.plusAssign_operation(GALGAS_string (")"), inCompiler  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1279)) ;
-          var_settingList_52136.addAssign_operation (var_s_53487  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1280)) ;
+          var_s_53483.plusAssign_operation(GALGAS_string (")"), inCompiler  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1279)) ;
+          var_settingList_52132.addAssign_operation (var_s_53483  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1280)) ;
         }
       }
-      GALGAS_string var_debugTargetRef_54012 ;
-      GALGAS_string var_debugProductFileRef_54053 ;
+      GALGAS_string var_debugTargetRef_54008 ;
+      GALGAS_string var_debugProductFileRef_54049 ;
       {
-      extensionSetter_addToolTarget (var_xcodeProject_26427, constinArgument_inTargetName.add_operation (GALGAS_string (" tool debug"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1283)), constinArgument_inTargetName.add_operation (GALGAS_string ("-debug"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1284)), var_buildCFileRefListForTool_31256.add_operation (var_buildCppFileRefListForTool_31306, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1285)).add_operation (var_mm_5F_FileRefList_31397, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1285)), var_toolFrameworksFileRefList_32244, var_settingList_52136, var_debugTargetRef_54012, var_debugProductFileRef_54053, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1282)) ;
+      extensionSetter_addToolTarget (var_xcodeProject_26427, constinArgument_inTargetName.add_operation (GALGAS_string (" tool debug"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1283)), constinArgument_inTargetName.add_operation (GALGAS_string ("-debug"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1284)), var_buildCFileRefListForTool_31256.add_operation (var_buildCppFileRefListForTool_31306, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1285)).add_operation (var_mm_5F_FileRefList_31397, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1285)), var_toolFrameworksFileRefList_32244, var_settingList_52132, var_debugTargetRef_54008, var_debugProductFileRef_54049, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1282)) ;
       }
       GALGAS_stringlist temp_72 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgasTargetGeneration.galgas", 1294)) ;
       temp_72.addAssign_operation (GALGAS_string ("GCC_OPTIMIZATION_LEVEL = 0")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1293)) ;
       temp_72.addAssign_operation (GALGAS_string ("GCC_PREPROCESSOR_DEFINITIONS = ()")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1294)) ;
-      GALGAS_stringlist var_cocoaConfigurationSettingList_54123 = temp_72.add_operation (var_codeSigningSettingList_51124, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1295)) ;
+      GALGAS_stringlist var_cocoaConfigurationSettingList_54119 = temp_72.add_operation (var_codeSigningSettingList_51120, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1295)) ;
       {
       GALGAS_stringlist temp_73 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgasTargetGeneration.galgas", 1303)) ;
-      temp_73.addAssign_operation (var_releaseTargetRef_53000  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1303)) ;
-      temp_73.addAssign_operation (var_debugTargetRef_54012  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1303)) ;
+      temp_73.addAssign_operation (var_releaseTargetRef_52996  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1303)) ;
+      temp_73.addAssign_operation (var_debugTargetRef_54008  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1303)) ;
       GALGAS__32_stringlist temp_74 = GALGAS__32_stringlist::constructor_emptyList (SOURCE_FILE ("galgasTargetGeneration.galgas", 1304)) ;
-      temp_74.addAssign_operation (var_releaseProductFileRef_53043, constinArgument_inTargetName  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1304)) ;
-      temp_74.addAssign_operation (var_debugProductFileRef_54053, constinArgument_inTargetName.add_operation (GALGAS_string ("-debug"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1304))  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1304)) ;
-      GALGAS_string joker_54898 ; // Joker input parameter
-      extensionSetter_addAppTarget (var_xcodeProject_26427, GALGAS_string ("Cocoa ").add_operation (constinArgument_inTargetName, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1297)), GALGAS_string ("Cocoa").add_operation (constinArgument_inTargetName.getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("galgasTargetGeneration.galgas", 1298)), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1298)), var_m_5F_FileRefList_31358.add_operation (var_m_5F_HandCodedSourceFileRefForAppList_29884, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1299)), var_frameworksFileRefList_31437.add_operation (var_appFrameworksFileRefList_30625, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1300)), var_resourceFileBuildRefs_31484.add_operation (var_m_5F_HandCodedResourceFileRefForAppList_29944, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1301)), var_cocoaConfigurationSettingList_54123, temp_73, temp_74, joker_54898, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1296)) ;
+      temp_74.addAssign_operation (var_releaseProductFileRef_53039, constinArgument_inTargetName  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1304)) ;
+      temp_74.addAssign_operation (var_debugProductFileRef_54049, constinArgument_inTargetName.add_operation (GALGAS_string ("-debug"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1304))  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1304)) ;
+      GALGAS_string joker_54894 ; // Joker input parameter
+      extensionSetter_addAppTarget (var_xcodeProject_26427, GALGAS_string ("Cocoa ").add_operation (constinArgument_inTargetName, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1297)), GALGAS_string ("Cocoa").add_operation (constinArgument_inTargetName.getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("galgasTargetGeneration.galgas", 1298)), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1298)), var_m_5F_FileRefList_31358.add_operation (var_m_5F_HandCodedSourceFileRefForAppList_29884, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1299)), var_frameworksFileRefList_31437.add_operation (var_appFrameworksFileRefList_30625, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1300)), var_resourceFileBuildRefs_31484.add_operation (var_m_5F_HandCodedResourceFileRefForAppList_29944, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1301)), var_cocoaConfigurationSettingList_54119, temp_73, temp_74, joker_54894, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1296)) ;
       }
       extensionMethod_generateAtPath (var_xcodeProject_26427, var_dir_24498.add_operation (GALGAS_string ("/"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1309)).add_operation (constinArgument_inTargetName, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1309)).add_operation (GALGAS_string (".xcodeproj"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1309)), var_newIntermediateFilePath_26173, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1308)) ;
     }
@@ -4240,7 +4240,7 @@ const char * projectVersionString (void) {
 //
 //--------------------------------------------------------------------------------------------------
 
-static void routine_before (C_Compiler * inCompiler
+static void routine_before (Compiler * inCompiler
                             COMMA_UNUSED_LOCATION_ARGS) {
   {
     GALGAS_string var_creationProjectName_1134 = GALGAS_string (gOption_galgas_5F_cli_5F_options_create_5F_project.readProperty_value ()) ;
@@ -4301,7 +4301,7 @@ static void routine_before (C_Compiler * inCompiler
 //
 //--------------------------------------------------------------------------------------------------
 
-static void routine_after (C_Compiler * /* inCompiler */
+static void routine_after (Compiler * /* inCompiler */
                            COMMA_UNUSED_LOCATION_ARGS) {
 }
 
@@ -4313,7 +4313,7 @@ static void routine_after (C_Compiler * /* inCompiler */
 //--------------------------------------------------------------------------------------------------
 
 static void routine_programRule_5F__30_ (const GALGAS_lstring constinArgument_inSourceFile,
-                                         C_Compiler * inCompiler
+                                         Compiler * inCompiler
                                          COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string var_parentDirectory_2981 = constinArgument_inSourceFile.readProperty_string ().getter_stringByDeletingLastPathComponent (SOURCE_FILE ("galgasProgram.galgas", 70)).getter_stringByDeletingLastPathComponent (SOURCE_FILE ("galgasProgram.galgas", 70)) ;
   GALGAS_stringlist temp_0 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgasProgram.galgas", 71)) ;
@@ -4359,7 +4359,7 @@ static void routine_programRule_5F__30_ (const GALGAS_lstring constinArgument_in
 //--------------------------------------------------------------------------------------------------
 
 static void routine_programRule_5F__31_ (const GALGAS_lstring constinArgument_inSourceFile,
-                                         C_Compiler * inCompiler
+                                         Compiler * inCompiler
                                          COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string var_parentDirectory_4315 = constinArgument_inSourceFile.readProperty_string ().getter_stringByDeletingLastPathComponent (SOURCE_FILE ("galgasProgram.galgas", 96)).getter_stringByDeletingLastPathComponent (SOURCE_FILE ("galgasProgram.galgas", 96)) ;
   GALGAS_stringlist temp_0 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgasProgram.galgas", 97)) ;
@@ -4405,7 +4405,7 @@ static void routine_programRule_5F__31_ (const GALGAS_lstring constinArgument_in
 //--------------------------------------------------------------------------------------------------
 
 static void routine_programRule_5F__32_ (const GALGAS_lstring constinArgument_inSourceFile,
-                                         C_Compiler * inCompiler
+                                         Compiler * inCompiler
                                          COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_templateInstructionListAST joker_5636 ; // Joker input parameter
   cGrammar_templateGrammar::_performSourceFileParsing_ (inCompiler, constinArgument_inSourceFile, joker_5636  COMMA_SOURCE_FILE ("galgasProgram.galgas", 122)) ;
@@ -4419,7 +4419,7 @@ static void routine_programRule_5F__32_ (const GALGAS_lstring constinArgument_in
 //--------------------------------------------------------------------------------------------------
 
 static void routine_programRule_5F__33_ (const GALGAS_lstring constinArgument_inProjectSourceFile,
-                                         C_Compiler * inCompiler
+                                         Compiler * inCompiler
                                          COMMA_UNUSED_LOCATION_ARGS) {
   {
   routine_parseAndAnalyzeProject (constinArgument_inProjectSourceFile, GALGAS_bool (false), GALGAS_string::makeEmptyString (), inCompiler  COMMA_SOURCE_FILE ("galgasProgram.galgas", 135)) ;
@@ -4434,7 +4434,7 @@ static void routine_programRule_5F__33_ (const GALGAS_lstring constinArgument_in
 //--------------------------------------------------------------------------------------------------
 
 static void routine_programRule_5F__34_ (const GALGAS_lstring constinArgument_inProjectSourceFile,
-                                         C_Compiler * inCompiler
+                                         Compiler * inCompiler
                                          COMMA_UNUSED_LOCATION_ARGS) {
   {
   routine_parseAndAnalyzeProject (constinArgument_inProjectSourceFile, GALGAS_bool (true), GALGAS_string::makeEmptyString (), inCompiler  COMMA_SOURCE_FILE ("galgasProgram.galgas", 144)) ;
@@ -4466,8 +4466,8 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
     returnCode = 1 ;
   }else{
   //--- Common lexique object
-    C_Compiler * commonCompiler = nullptr ;
-    macroMyNew (commonCompiler, C_Compiler (nullptr COMMA_HERE)) ;
+    Compiler * commonCompiler = nullptr ;
+    macroMyNew (commonCompiler, Compiler (nullptr COMMA_HERE)) ;
     try{
       routine_before (commonCompiler COMMA_HERE) ;
       cLexiqueIntrospection::handleGetKeywordListOption (commonCompiler) ;

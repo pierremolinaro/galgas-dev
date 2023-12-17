@@ -49,7 +49,7 @@ for (mValue) in DIMENSION_LIST
  before ?^
  do !^%const uint32_t inSize%!mValue%,\n%
  end
-% %!^%C_Compiler * inCompiler
+% %!^%Compiler * inCompiler
   %!^%COMMA_LOCATION_ARGS) const ;
 
 //--- 
@@ -123,7 +123,7 @@ int32_t cPtr_%!TYPE_IDENTIFIER%::indexForIndexes (%?^
 for (mValue) in DIMENSION_LIST
  do !^%const uint32_t inIndex%!mValue%,\n%
 end
-%  %!^%C_Compiler * inCompiler
+%  %!^%Compiler * inCompiler
    %!^%COMMA_LOCATION_ARGS) const {
   int32_t result = -1 ;
   %
@@ -271,7 +271,7 @@ GALGAS_uint GALGAS_%!TYPE_IDENTIFIER%::getter_axisCount (UNUSED_LOCATION_ARGS) c
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_range GALGAS_%!TYPE_IDENTIFIER%::getter_rangeForAxis (%?^%const GALGAS_uint & inAxisIndex,
-               %!^%C_Compiler * inCompiler
+               %!^%Compiler * inCompiler
                %!^%COMMA_LOCATION_ARGS) const {
   GALGAS_range result ;
   if (isValid () && inAxisIndex.isValid ()) {
@@ -292,7 +292,7 @@ end
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_uint GALGAS_%!TYPE_IDENTIFIER%::getter_sizeForAxis (%?^%const GALGAS_uint & inAxisIndex,
-               %!^%C_Compiler * inCompiler
+               %!^%Compiler * inCompiler
                %!^%COMMA_LOCATION_ARGS) const {
   GALGAS_uint result ;
   if (isValid () && inAxisIndex.isValid ()) {
@@ -316,7 +316,7 @@ GALGAS_bool GALGAS_%!TYPE_IDENTIFIER%::getter_isValueValidAtIndex (%?^
 for (mValue) in DIMENSION_LIST
  do !^%const GALGAS_uint & inIndex%!mValue%,\n%
  end
-%  %!^%C_Compiler * inCompiler
+%  %!^%Compiler * inCompiler
    %!^%COMMA_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (isValid ()% for (mValue) in DIMENSION_LIST do % && inIndex%!mValue%.isValid ()%end %) {
@@ -340,7 +340,7 @@ GALGAS_%!ELEMENT_TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::getter_valueAtIndex
 for (mValue) in DIMENSION_LIST
  do !^%const GALGAS_uint & inIndex%!mValue%,\n%
  end
-%  %!^%C_Compiler * inCompiler
+%  %!^%Compiler * inCompiler
    %!^%COMMA_LOCATION_ARGS) const {
   GALGAS_%!ELEMENT_TYPE_IDENTIFIER% result ;
   if (isValid ()% for (mValue) in DIMENSION_LIST do % && inIndex%!mValue%.isValid ()%end %) {
@@ -386,7 +386,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_setValueAtIndex (%?^%GALGAS_%!ELEMENT_TYP
 for (mValue) in DIMENSION_LIST
  do !^%GALGAS_uint inIndex%!mValue%,\n%
  end
-%       %!^%C_Compiler * inCompiler
+%       %!^%Compiler * inCompiler
        %!^%COMMA_LOCATION_ARGS) {
   if (isValid () && inValue.isValid ()% for (mValue) in DIMENSION_LIST do % && inIndex%!mValue%.isValid ()%end %) {
     insulate (THERE) ;
@@ -410,7 +410,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_forceValueAtIndex (%?^%GALGAS_%!ELEMENT_T
 %for (mValue) in DIMENSION_LIST
  do !^%const GALGAS_uint inIndex%!mValue%,\n%
  end
-% %!^%C_Compiler * inCompiler
+% %!^%Compiler * inCompiler
   %!^%COMMA_LOCATION_ARGS) {
   if (isValid () && inValue.isValid ()% for (mValue) in DIMENSION_LIST do % && inIndex%!mValue%.isValid ()%end %) {
     insulate (THERE) ;
@@ -442,7 +442,7 @@ end
 
 void GALGAS_%!TYPE_IDENTIFIER%::setter_setSizeForAxis (%?^%GALGAS_uint inNewSize,
         %!^%GALGAS_uint inAxisIndex,
-        %!^%C_Compiler * inCompiler
+        %!^%Compiler * inCompiler
         %!^%COMMA_LOCATION_ARGS) {
   if (isValid () && inNewSize.isValid () && inAxisIndex.isValid ()) {
     insulate (THERE) ;
@@ -472,7 +472,7 @@ for (mValue) in DIMENSION_LIST
  before ?^
  do !^%GALGAS_uint inIndex%!mValue%,\n%
  end
-%        %!^%C_Compiler * inCompiler
+%        %!^%Compiler * inCompiler
         %!^%COMMA_LOCATION_ARGS) {
   if (isValid ()% for (mValue) in DIMENSION_LIST do % && inIndex%!mValue%.isValid ()%end %) {
     insulate (THERE) ;
@@ -496,7 +496,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_setSize (%?^
 for (mValue) in DIMENSION_LIST
 do !^%const GALGAS_uint inNewSize%!mValue%,\n%
 end
-%  %!^%C_Compiler * /* inCompiler */
+%  %!^%Compiler * /* inCompiler */
    %!^%COMMA_LOCATION_ARGS) {
   if (isValid ()% for (mValue) in DIMENSION_LIST do % && inNewSize%!mValue%.isValid ()%end %) {
     insulate (THERE) ;

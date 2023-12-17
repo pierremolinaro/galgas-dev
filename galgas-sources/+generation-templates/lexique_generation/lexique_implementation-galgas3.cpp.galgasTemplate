@@ -21,7 +21,7 @@ cTokenFor_%!LEXIQUE_IDENTIFIER%::cTokenFor_%!LEXIQUE_IDENTIFIER% (void)%
 
 //--------------------------------------------------------------------------------------------------
 
-C_Lexique_%!LEXIQUE_IDENTIFIER%::C_Lexique_%!LEXIQUE_IDENTIFIER% (%?^%C_Compiler * inCallerCompiler,
+C_Lexique_%!LEXIQUE_IDENTIFIER%::C_Lexique_%!LEXIQUE_IDENTIFIER% (%?^%Compiler * inCallerCompiler,
                 %!^%const String & inSourceFileName
                 %!^%COMMA_LOCATION_ARGS) :
 C_Lexique (inCallerCompiler, inSourceFileName COMMA_THERE)%
@@ -33,7 +33,7 @@ C_Lexique (inCallerCompiler, inSourceFileName COMMA_THERE)%
 
 //--------------------------------------------------------------------------------------------------
 
-C_Lexique_%!LEXIQUE_IDENTIFIER%::C_Lexique_%!LEXIQUE_IDENTIFIER% (%?^%C_Compiler * inCallerCompiler,
+C_Lexique_%!LEXIQUE_IDENTIFIER%::C_Lexique_%!LEXIQUE_IDENTIFIER% (%?^%Compiler * inCallerCompiler,
                 %!^%const String & inSourceString,
                 %!^%const String & inStringForError
                 %!^%COMMA_LOCATION_ARGS) :

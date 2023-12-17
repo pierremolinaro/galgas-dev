@@ -1,4 +1,4 @@
-#include "galgas2/C_Compiler.h"
+#include "galgas2/Compiler.h"
 #include "galgas2/C_galgas_io.h"
 #include "galgas2/C_galgas_CLI_Options.h"
 #include "utilities/C_PrologueEpilogue.h"
@@ -31322,7 +31322,7 @@ void cGrammar_galgas_34_Grammar::nt_start_5F_symbol_ (GALGAS_galgasDeclarationAS
   }
 }
 
-void cGrammar_galgas_34_Grammar::performIndexing (C_Compiler * inCompiler,
+void cGrammar_galgas_34_Grammar::performIndexing (Compiler * inCompiler,
              const String & inSourceFilePath) {
   C_Lexique_galgasScanner * scanner = nullptr ;
   macroMyNew (scanner, C_Lexique_galgasScanner (inCompiler, inSourceFilePath COMMA_HERE)) ;
@@ -31340,7 +31340,7 @@ void cGrammar_galgas_34_Grammar::performIndexing (C_Compiler * inCompiler,
   macroDetachSharedObject (scanner) ;
 }
 
-void cGrammar_galgas_34_Grammar::performOnlyLexicalAnalysis (C_Compiler * inCompiler,
+void cGrammar_galgas_34_Grammar::performOnlyLexicalAnalysis (Compiler * inCompiler,
              const String & inSourceFilePath) {
   C_Lexique_galgasScanner * scanner = NULL ;
   macroMyNew (scanner, C_Lexique_galgasScanner (inCompiler, inSourceFilePath COMMA_HERE)) ;
@@ -31350,7 +31350,7 @@ void cGrammar_galgas_34_Grammar::performOnlyLexicalAnalysis (C_Compiler * inComp
   macroDetachSharedObject (scanner) ;
 }
 
-void cGrammar_galgas_34_Grammar::performOnlySyntaxAnalysis (C_Compiler * inCompiler,
+void cGrammar_galgas_34_Grammar::performOnlySyntaxAnalysis (Compiler * inCompiler,
              const String & inSourceFilePath) {
   C_Lexique_galgasScanner * scanner = NULL ;
   macroMyNew (scanner, C_Lexique_galgasScanner (inCompiler, inSourceFilePath COMMA_HERE)) ;
@@ -31368,7 +31368,7 @@ void cGrammar_galgas_34_Grammar::performOnlySyntaxAnalysis (C_Compiler * inCompi
 //                                                                                                                      
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cGrammar_galgas_34_Grammar::_performSourceFileParsing_ (C_Compiler * inCompiler,
+void cGrammar_galgas_34_Grammar::_performSourceFileParsing_ (Compiler * inCompiler,
                                 GALGAS_lstring inFilePath,
                                 GALGAS_galgasDeclarationAST &  parameter_1
                                 COMMA_LOCATION_ARGS) {
@@ -31411,7 +31411,7 @@ void cGrammar_galgas_34_Grammar::_performSourceFileParsing_ (C_Compiler * inComp
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cGrammar_galgas_34_Grammar::_performSourceStringParsing_ (C_Compiler * inCompiler,
+void cGrammar_galgas_34_Grammar::_performSourceStringParsing_ (Compiler * inCompiler,
                                 GALGAS_string inSourceString,
                                 GALGAS_string inNameString,
                                 GALGAS_galgasDeclarationAST &  parameter_1

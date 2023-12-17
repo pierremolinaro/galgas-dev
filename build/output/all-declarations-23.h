@@ -25,7 +25,7 @@ void routine_enterBaseGetterWith_32_Arguments (class GALGAS_getterMap & ioArgume
                                                const class GALGAS_string constinArgument8,
                                                const class GALGAS_string constinArgument9,
                                                const class GALGAS_bool constinArgument10,
-                                               class C_Compiler * inCompiler
+                                               class Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -41,7 +41,7 @@ void routine_enterInheritedGetterWithArgument (class GALGAS_getterMap & ioArgume
                                                const class GALGAS_string constinArgument4,
                                                const class GALGAS_string constinArgument5,
                                                const class GALGAS_bool constinArgument6,
-                                               class C_Compiler * inCompiler
+                                               class Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -56,7 +56,7 @@ void routine_enterInheritedGetterWithoutArgument (class GALGAS_getterMap & ioArg
                                                   const class GALGAS_string constinArgument3,
                                                   const class GALGAS_string constinArgument4,
                                                   const class GALGAS_bool constinArgument5,
-                                                  class C_Compiler * inCompiler
+                                                  class Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -65,7 +65,7 @@ void routine_enterInheritedGetterWithoutArgument (class GALGAS_getterMap & ioArg
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_string function_elementTypeNameSuffix (class C_Compiler * inCompiler
+class GALGAS_string function_elementTypeNameSuffix (class Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -75,7 +75,7 @@ class GALGAS_string function_elementTypeNameSuffix (class C_Compiler * inCompile
 //--------------------------------------------------------------------------------------------------
 
 void routine_check_5F_K_5F_L_5F_escapeCharacters (const class GALGAS_lstring constinArgument0,
-                                                  class C_Compiler * inCompiler
+                                                  class Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -89,7 +89,7 @@ void routine_enterConstructorWithoutArgument (class GALGAS_constructorMap & ioAr
                                               const class GALGAS_string constinArgument2,
                                               const class GALGAS_string constinArgument3,
                                               const class GALGAS_bool constinArgument4,
-                                              class C_Compiler * inCompiler
+                                              class Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -115,7 +115,7 @@ extern const cDirectoryWrapper gWrapperDirectory_0_listGenerationTemplate ;
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeHeader_31_ (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeHeader_31_ (class Compiler * inCompiler,
                                                                              const class GALGAS_string & in_TYPE_5F_NAME,
                                                                              const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                              const class GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST
@@ -127,7 +127,7 @@ GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeHeader_31_ (cla
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImplementation (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImplementation (class Compiler * inCompiler,
                                                                                          const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                          const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                                          const class GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST,
@@ -141,7 +141,7 @@ GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImpleme
 //--------------------------------------------------------------------------------------------------
 
 void routine_check_5F_K_5F_escapeCharacters (const class GALGAS_lstring constinArgument0,
-                                             class C_Compiler * inCompiler
+                                             class Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -150,7 +150,7 @@ void routine_check_5F_K_5F_escapeCharacters (const class GALGAS_lstring constinA
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_stringset function_forbiddenKeysForMapAndDict (class C_Compiler * inCompiler
+class GALGAS_stringset function_forbiddenKeysForMapAndDict (class Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -166,7 +166,7 @@ void routine_enterConstructorWithArgument (class GALGAS_constructorMap & ioArgum
                                            const class GALGAS_string constinArgument4,
                                            const class GALGAS_string constinArgument5,
                                            const class GALGAS_bool constinArgument6,
-                                           class C_Compiler * inCompiler
+                                           class Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -184,7 +184,7 @@ void routine_enterInheritedGetterWith_32_Arguments (class GALGAS_getterMap & ioA
                                                     const class GALGAS_string constinArgument6,
                                                     const class GALGAS_string constinArgument7,
                                                     const class GALGAS_bool constinArgument8,
-                                                    class C_Compiler * inCompiler
+                                                    class Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -210,7 +210,7 @@ extern const cDirectoryWrapper gWrapperDirectory_0_sortedListGenerationTemplate 
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_sortedListGenerationTemplate_sortedlistTypeHeader_31_ (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_sortedListGenerationTemplate_sortedlistTypeHeader_31_ (class Compiler * inCompiler,
                                                                                          const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                          const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                                          const class GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST
@@ -222,7 +222,7 @@ GALGAS_string filewrapperTemplate_sortedListGenerationTemplate_sortedlistTypeHea
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_sortedListGenerationTemplate_sortedlistTypeSpecificImplementation (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_sortedListGenerationTemplate_sortedlistTypeSpecificImplementation (class Compiler * inCompiler,
                                                                                                      const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                                                      const class GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST,
                                                                                                      const class GALGAS_sortDescriptorListForGeneration & in_SORT_5F_ATTRIBUTE_5F_LIST
@@ -234,7 +234,7 @@ GALGAS_string filewrapperTemplate_sortedListGenerationTemplate_sortedlistTypeSpe
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_stringset function_forbiddenKeysForStruct (class C_Compiler * inCompiler
+class GALGAS_stringset function_forbiddenKeysForStruct (class Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -243,7 +243,7 @@ class GALGAS_stringset function_forbiddenKeysForStruct (class C_Compiler * inCom
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_string function_compilerCppName (class C_Compiler * inCompiler
+class GALGAS_string function_compilerCppName (class Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -269,7 +269,7 @@ extern const cDirectoryWrapper gWrapperDirectory_0_structureGenerationTemplate ;
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_structureGenerationTemplate_structTypeHeader_31_ (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_structureGenerationTemplate_structTypeHeader_31_ (class Compiler * inCompiler,
                                                                                     const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                     const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                                     const class GALGAS_typedPropertyList & in_PROPERTY_5F_LIST,
@@ -282,7 +282,7 @@ GALGAS_string filewrapperTemplate_structureGenerationTemplate_structTypeHeader_3
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_structureGenerationTemplate_structTypeSpecificImplementation (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_structureGenerationTemplate_structTypeSpecificImplementation (class Compiler * inCompiler,
                                                                                                 const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                                 const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                                                 const class GALGAS_typedPropertyList & in_PROPERTY_5F_LIST,
@@ -314,7 +314,7 @@ extern const cDirectoryWrapper gWrapperDirectory_0_semanticComponentGenerationTe
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExtensionGetterDeclaration (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExtensionGetterDeclaration (class Compiler * inCompiler,
                                                                                                           const class GALGAS_string & in_CLASS_5F_NAME,
                                                                                                           const class GALGAS_string & in_GETTER_5F_NAME,
                                                                                                           const class GALGAS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
@@ -327,7 +327,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractEx
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExtensionGetterImplementation (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExtensionGetterImplementation (class Compiler * inCompiler,
                                                                                                              const class GALGAS_string & in_CLASS_5F_NAME,
                                                                                                              const class GALGAS_string & in_GETTER_5F_NAME,
                                                                                                              const class GALGAS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
@@ -340,7 +340,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractEx
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionGetterDeclaration (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionGetterDeclaration (class Compiler * inCompiler,
                                                                                                   const class GALGAS_string & in_CLASS_5F_NAME,
                                                                                                   const class GALGAS_string & in_GETTER_5F_NAME,
                                                                                                   const class GALGAS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
@@ -353,7 +353,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionG
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionGetterImplementation (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionGetterImplementation (class Compiler * inCompiler,
                                                                                                      const class GALGAS_string & in_CLASS_5F_NAME,
                                                                                                      const class GALGAS_string & in_GETTER_5F_NAME,
                                                                                                      const class GALGAS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
@@ -367,7 +367,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionG
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_overridingExtensionGetterImplementation (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_overridingExtensionGetterImplementation (class Compiler * inCompiler,
                                                                                                                const class GALGAS_string & in_CLASS_5F_NAME,
                                                                                                                const class GALGAS_string & in_GETTER_5F_NAME,
                                                                                                                const class GALGAS_string & in_GETTER_5F_IMPLEMENTATION,
@@ -380,7 +380,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_overriding
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExtensionSetterDeclaration (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExtensionSetterDeclaration (class Compiler * inCompiler,
                                                                                                           const class GALGAS_string & in_CLASS_5F_NAME,
                                                                                                           const class GALGAS_string & in_MODIFIER_5F_NAME,
                                                                                                           const class GALGAS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST
@@ -392,7 +392,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractEx
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExtensionSetterImplementation (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExtensionSetterImplementation (class Compiler * inCompiler,
                                                                                                              const class GALGAS_string & in_CLASS_5F_NAME,
                                                                                                              const class GALGAS_string & in_MODIFIER_5F_NAME,
                                                                                                              const class GALGAS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST
@@ -404,7 +404,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractEx
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionSetterDeclaration (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionSetterDeclaration (class Compiler * inCompiler,
                                                                                                   const class GALGAS_string & in_CLASS_5F_NAME,
                                                                                                   const class GALGAS_string & in_MODIFIER_5F_NAME,
                                                                                                   const class GALGAS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST
@@ -416,7 +416,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionS
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionsetterImplementation (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionsetterImplementation (class Compiler * inCompiler,
                                                                                                      const class GALGAS_string & in_CLASS_5F_NAME,
                                                                                                      const class GALGAS_string & in_MODIFIER_5F_NAME,
                                                                                                      const class GALGAS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
@@ -429,7 +429,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensions
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_overridingExtensionSetterImplementation (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_overridingExtensionSetterImplementation (class Compiler * inCompiler,
                                                                                                                const class GALGAS_string & in_CLASS_5F_NAME,
                                                                                                                const class GALGAS_string & in_MODIFIER_5F_NAME,
                                                                                                                const class GALGAS_string & in_MODIFIER_5F_IMPLEMENTATION
@@ -441,7 +441,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_overriding
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExtensionMethodDeclaration (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExtensionMethodDeclaration (class Compiler * inCompiler,
                                                                                                           const class GALGAS_string & in_CLASS_5F_NAME,
                                                                                                           const class GALGAS_string & in_METHOD_5F_NAME,
                                                                                                           const class GALGAS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST
@@ -453,7 +453,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractEx
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExtensionMethodImplementation (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExtensionMethodImplementation (class Compiler * inCompiler,
                                                                                                              const class GALGAS_unifiedTypeMapEntry & in_RECEIVER_5F_TYPE,
                                                                                                              const class GALGAS_string & in_METHOD_5F_NAME,
                                                                                                              const class GALGAS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST
@@ -465,7 +465,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractEx
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionMethodDeclaration (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionMethodDeclaration (class Compiler * inCompiler,
                                                                                                   const class GALGAS_string & in_CLASS_5F_NAME,
                                                                                                   const class GALGAS_string & in_METHOD_5F_NAME,
                                                                                                   const class GALGAS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST
@@ -477,7 +477,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionM
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionMethodImplementation (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionMethodImplementation (class Compiler * inCompiler,
                                                                                                      const class GALGAS_string & in_CLASS_5F_NAME,
                                                                                                      const class GALGAS_string & in_METHOD_5F_NAME,
                                                                                                      const class GALGAS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
@@ -490,7 +490,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionM
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_overridingExtensionMethodImplementation (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_overridingExtensionMethodImplementation (class Compiler * inCompiler,
                                                                                                                const class GALGAS_string & in_CLASS_5F_NAME,
                                                                                                                const class GALGAS_string & in_METHOD_5F_NAME,
                                                                                                                const class GALGAS_string & in_METHOD_5F_IMPLEMENTATION
@@ -502,7 +502,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_overriding
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrapperDeclaration (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrapperDeclaration (class Compiler * inCompiler,
                                                                                               const class GALGAS_stringlist & in_FILE_5F_INDEX_5F_STRING_5F_LIST,
                                                                                               const class GALGAS_stringlist & in_DIRECTORY_5F_INDEX_5F_STRING_5F_LIST,
                                                                                               const class GALGAS_stringlist & in_TEXT_5F_CONTENT_5F_INDEX_5F_STRING_5F_LIST,
@@ -516,7 +516,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrappe
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrapperImplementation (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrapperImplementation (class Compiler * inCompiler,
                                                                                                  const class GALGAS_string & in_FILEWRAPPER_5F_NAME,
                                                                                                  const class GALGAS_string & in_FILEWRAPPER_5F_IMPLEMENTATION
                                                                                                  COMMA_LOCATION_ARGS) ;
@@ -527,7 +527,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrappe
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionGetterAsFunctionDeclaration (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionGetterAsFunctionDeclaration (class Compiler * inCompiler,
                                                                                                             const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                                             const class GALGAS_string & in_GETTER_5F_NAME,
                                                                                                             const class GALGAS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
@@ -540,7 +540,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionG
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionGetterAsFunctionImplementation (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionGetterAsFunctionImplementation (class Compiler * inCompiler,
                                                                                                                const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                                                const class GALGAS_string & in_GETTER_5F_NAME,
                                                                                                                const class GALGAS_string & in_FUNCTION_5F_IMPLEMENTATION
@@ -552,7 +552,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionG
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionMethodAsFunctionDeclaration (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionMethodAsFunctionDeclaration (class Compiler * inCompiler,
                                                                                                             const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                                             const class GALGAS_string & in_METHOD_5F_NAME,
                                                                                                             const class GALGAS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST
@@ -564,7 +564,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionM
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionMethodAsFunctionImplementation (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionMethodAsFunctionImplementation (class Compiler * inCompiler,
                                                                                                                const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                                                const class GALGAS_string & in_METHOD_5F_NAME,
                                                                                                                const class GALGAS_string & in_METHOD_5F_IMPLEMENTATION
@@ -576,7 +576,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionM
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionSetterAsFunctionDeclaration (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionSetterAsFunctionDeclaration (class Compiler * inCompiler,
                                                                                                             const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                                             const class GALGAS_string & in_MODIFIER_5F_NAME,
                                                                                                             const class GALGAS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST
@@ -588,7 +588,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionS
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_functionDeclaration (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_functionDeclaration (class Compiler * inCompiler,
                                                                                            const class GALGAS_string & in_FUNCTION_5F_NAME,
                                                                                            const class GALGAS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
                                                                                            const class GALGAS_string & in_RETURN_5F_TYPE_5F_IDENTIFIER
@@ -600,7 +600,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_functionDe
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_functionImplementation (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_functionImplementation (class Compiler * inCompiler,
                                                                                               const class GALGAS_string & in_FUNCTION_5F_NAME,
                                                                                               const class GALGAS_string & in_FUNCTION_5F_IMPLEMENTATION,
                                                                                               const class GALGAS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
@@ -613,7 +613,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_functionIm
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_routineDeclaration (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_routineDeclaration (class Compiler * inCompiler,
                                                                                           const class GALGAS_string & in_ROUTINE_5F_NAME,
                                                                                           const class GALGAS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST
                                                                                           COMMA_LOCATION_ARGS) ;
@@ -624,7 +624,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_routineDec
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_routineImplementation (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_routineImplementation (class Compiler * inCompiler,
                                                                                              const class GALGAS_string & in_ROUTINE_5F_NAME,
                                                                                              const class GALGAS_string & in_ROUTINE_5F_IMPLEMENTATION
                                                                                              COMMA_LOCATION_ARGS) ;
@@ -635,7 +635,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_routineImp
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_onceFunctionImplementation (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_onceFunctionImplementation (class Compiler * inCompiler,
                                                                                                   const class GALGAS_string & in_FUNCTION_5F_NAME,
                                                                                                   const class GALGAS_string & in_FUNCTION_5F_IMPLEMENTATION,
                                                                                                   const class GALGAS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
@@ -648,7 +648,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_onceFuncti
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrapperTemplateDeclaration (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrapperTemplateDeclaration (class Compiler * inCompiler,
                                                                                                       const class GALGAS_string & in_FILEWRAPPER_5F_NAME,
                                                                                                       const class GALGAS_string & in_TEMPLATE_5F_NAME,
                                                                                                       const class GALGAS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST
@@ -660,7 +660,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrappe
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrapperTemplateImplementation (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrapperTemplateImplementation (class Compiler * inCompiler,
                                                                                                          const class GALGAS_string & in_FILEWRAPPER_5F_NAME,
                                                                                                          const class GALGAS_string & in_TEMPLATE_5F_NAME,
                                                                                                          const class GALGAS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
@@ -677,7 +677,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrappe
 
 class GALGAS_lstring function_getterNameForUsefulEntitiesGraph (const class GALGAS_string & constinArgument0,
                                                                 const class GALGAS_lstring & constinArgument1,
-                                                                class C_Compiler * inCompiler
+                                                                class Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -701,7 +701,7 @@ void routine_analyzeFunctionBody (const class GALGAS_lstring constinArgument0,
                                   class GALGAS_unifiedTypeMapEntry & outArgument12,
                                   class GALGAS_string & outArgument13,
                                   class GALGAS_semanticInstructionListForGeneration & outArgument14,
-                                  class C_Compiler * inCompiler
+                                  class Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -718,7 +718,7 @@ void routine_generateExtensionGetterNew (const class GALGAS_string constinArgume
                                          const class GALGAS_unifiedTypeMapEntry constinArgument5,
                                          const class GALGAS_string constinArgument6,
                                          class GALGAS_string & outArgument7,
-                                         class C_Compiler * inCompiler
+                                         class Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -737,7 +737,7 @@ void routine_generateFunction (const class GALGAS_string constinArgument0,
                                const class GALGAS_bool constinArgument7,
                                const class GALGAS_bool constinArgument8,
                                class GALGAS_string & outArgument9,
-                               class C_Compiler * inCompiler
+                               class Compiler * inCompiler
                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -748,7 +748,7 @@ void routine_generateFunction (const class GALGAS_string constinArgument0,
 
 class GALGAS_lstring function_methodNameForUsefulEntitiesGraph (const class GALGAS_string & constinArgument0,
                                                                 const class GALGAS_lstring & constinArgument1,
-                                                                class C_Compiler * inCompiler
+                                                                class Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -768,7 +768,7 @@ void routine_analyzeRoutineBody (const class GALGAS_lstring constinArgument0,
                                  const class GALGAS_location constinArgument8,
                                  class GALGAS_semanticInstructionListForGeneration & outArgument9,
                                  class GALGAS_formalParameterListForGeneration & outArgument10,
-                                 class C_Compiler * inCompiler
+                                 class Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -783,7 +783,7 @@ void routine_generateExtensionMethodNew (const class GALGAS_unifiedTypeMapEntry 
                                          const class GALGAS_formalParameterListForGeneration constinArgument3,
                                          const class GALGAS_semanticInstructionListForGeneration constinArgument4,
                                          class GALGAS_string & outArgument5,
-                                         class C_Compiler * inCompiler
+                                         class Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -803,7 +803,7 @@ void routine_generateProcedure (const class GALGAS_bool constinArgument0,
                                 const class GALGAS_bool constinArgument8,
                                 const class GALGAS_bool constinArgument9,
                                 class GALGAS_string & outArgument10,
-                                class C_Compiler * inCompiler
+                                class Compiler * inCompiler
                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -814,7 +814,7 @@ void routine_generateProcedure (const class GALGAS_bool constinArgument0,
 
 class GALGAS_lstring function_setterNameForUsefulEntitiesGraph (const class GALGAS_string & constinArgument0,
                                                                 const class GALGAS_lstring & constinArgument1,
-                                                                class C_Compiler * inCompiler
+                                                                class Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -830,7 +830,7 @@ void routine_generateExtensionSetter (const class GALGAS_string constinArgument0
                                       const class GALGAS_formalParameterListForGeneration constinArgument4,
                                       const class GALGAS_semanticInstructionListForGeneration constinArgument5,
                                       class GALGAS_string & outArgument6,
-                                      class C_Compiler * inCompiler
+                                      class Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -845,7 +845,7 @@ void routine_checkGetterSignatures (const class GALGAS_formalInputParameterListF
                                     const class GALGAS_functionSignature constinArgument3,
                                     const class GALGAS_unifiedTypeMapEntry constinArgument4,
                                     const class GALGAS_location constinArgument5,
-                                    class C_Compiler * inCompiler
+                                    class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -859,7 +859,7 @@ void routine_buildLocalVariableMapAndSignature (const class GALGAS_semanticConte
                                                 const class GALGAS_formalParameterListAST constinArgument2,
                                                 class GALGAS_localVarManager & ioArgument3,
                                                 class GALGAS_formalParameterListForGeneration & outArgument4,
-                                                class C_Compiler * inCompiler
+                                                class Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -872,7 +872,7 @@ void routine_checkMethodSignatures (const class GALGAS_formalParameterListForGen
                                     const class GALGAS_location constinArgument1,
                                     const class GALGAS_formalParameterSignature constinArgument2,
                                     const class GALGAS_location constinArgument3,
-                                    class C_Compiler * inCompiler
+                                    class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -881,7 +881,7 @@ void routine_checkMethodSignatures (const class GALGAS_formalParameterListForGen
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_bool function_generateFewHeaderFiles (class C_Compiler * inCompiler
+class GALGAS_bool function_generateFewHeaderFiles (class Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -899,7 +899,7 @@ void routine_enterConstructorWith_32_Arguments (class GALGAS_constructorMap & io
                                                 const class GALGAS_string constinArgument6,
                                                 const class GALGAS_string constinArgument7,
                                                 const class GALGAS_bool constinArgument8,
-                                                class C_Compiler * inCompiler
+                                                class Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -919,6 +919,6 @@ void routine_enterConstructorWith_33_Arguments (class GALGAS_constructorMap & io
                                                 const class GALGAS_string constinArgument8,
                                                 const class GALGAS_string constinArgument9,
                                                 const class GALGAS_bool constinArgument10,
-                                                class C_Compiler * inCompiler
+                                                class Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 

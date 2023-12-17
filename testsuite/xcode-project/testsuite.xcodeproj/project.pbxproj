@@ -1123,67 +1123,67 @@
     settings = {ATTRIBUTES = (); };
   };
 
-  A391DAABE3DE1D76A6739CCD /* C_Compiler.cpp */ = {
+  A391DAABE3DE1D76A6739CCD /* C_IssueWithFixIt.cpp */ = {
     isa = PBXBuildFile;
     fileRef = F552CEA2F369918C5E1E12BC ;
     settings = {ATTRIBUTES = (); };
   };
 
-  EFEE97BACB63E52C54F0ADA0 /* C_IssueWithFixIt.cpp */ = {
+  EFEE97BACB63E52C54F0ADA0 /* C_Lexique.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 080F7736089C757404650E40 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  48976138166DE32772B1BF40 /* C_Lexique.cpp */ = {
+  48976138166DE32772B1BF40 /* C_LocationInSource.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 3A0739141292A5429B952FE6 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  5990E441F0FB6F3FAD709E21 /* C_LocationInSource.cpp */ = {
+  5990E441F0FB6F3FAD709E21 /* C_SourceTextInString.cpp */ = {
     isa = PBXBuildFile;
     fileRef = BB602B6D35BEA8460AA8F8E5 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  0B6109813DAFA101CEB2FAEB /* C_SourceTextInString.cpp */ = {
+  0B6109813DAFA101CEB2FAEB /* C_galgas_CLI_Options.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 2E496207586DF2854B17995F ;
     settings = {ATTRIBUTES = (); };
   };
 
-  56E613024C057BE590B542EB /* C_galgas_CLI_Options.cpp */ = {
+  56E613024C057BE590B542EB /* C_galgas_class_inspector.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 749B2941217DDD59394240E8 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  46ED40E1AF829D1FA82DAA10 /* C_galgas_class_inspector.cpp */ = {
+  46ED40E1AF829D1FA82DAA10 /* C_galgas_function_descriptor.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 9183DE32E976C6F04E700201 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  3DE0D4EACB9A3E6E53E5448D /* C_galgas_function_descriptor.cpp */ = {
+  3DE0D4EACB9A3E6E53E5448D /* C_galgas_io.cpp */ = {
     isa = PBXBuildFile;
     fileRef = A7A5D6A1A87373DFFA53DBE5 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  2492B5106526B2331E526138 /* C_galgas_io.cpp */ = {
+  2492B5106526B2331E526138 /* C_galgas_quiet_option.cpp */ = {
     isa = PBXBuildFile;
     fileRef = F376FFFE2EE4DDF4A988880D ;
     settings = {ATTRIBUTES = (); };
   };
 
-  0859F2CB9F7C8F8CACB8D2A6 /* C_galgas_quiet_option.cpp */ = {
+  0859F2CB9F7C8F8CACB8D2A6 /* C_galgas_type_descriptor.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 02ACD8D7DD095917F9EFE4CB ;
     settings = {ATTRIBUTES = (); };
   };
 
-  E1538FB6C45901D524EE2F98 /* C_galgas_type_descriptor.cpp */ = {
+  E1538FB6C45901D524EE2F98 /* Compiler.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 513B73148B7D49F70AFCFB32 ;
     settings = {ATTRIBUTES = (); };
@@ -2966,16 +2966,7 @@
     sourceTree = "<group>";
   };
 
-  F552CEA2F369918C5E1E12BC /* C_Compiler.cpp */ = {
-    isa = PBXFileReference;
-    fileEncoding = 4;
-    lastKnownFileType = sourcecode.cpp.cpp;
-    name = "C_Compiler.cpp";
-    path = "C_Compiler.cpp";
-    sourceTree = "<group>";
-  };
-
-  080F7736089C757404650E40 /* C_IssueWithFixIt.cpp */ = {
+  F552CEA2F369918C5E1E12BC /* C_IssueWithFixIt.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
@@ -2984,7 +2975,7 @@
     sourceTree = "<group>";
   };
 
-  3A0739141292A5429B952FE6 /* C_Lexique.cpp */ = {
+  080F7736089C757404650E40 /* C_Lexique.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
@@ -2993,7 +2984,7 @@
     sourceTree = "<group>";
   };
 
-  BB602B6D35BEA8460AA8F8E5 /* C_LocationInSource.cpp */ = {
+  3A0739141292A5429B952FE6 /* C_LocationInSource.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
@@ -3002,7 +2993,7 @@
     sourceTree = "<group>";
   };
 
-  2E496207586DF2854B17995F /* C_SourceTextInString.cpp */ = {
+  BB602B6D35BEA8460AA8F8E5 /* C_SourceTextInString.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
@@ -3011,7 +3002,7 @@
     sourceTree = "<group>";
   };
 
-  749B2941217DDD59394240E8 /* C_galgas_CLI_Options.cpp */ = {
+  2E496207586DF2854B17995F /* C_galgas_CLI_Options.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
@@ -3020,7 +3011,7 @@
     sourceTree = "<group>";
   };
 
-  9183DE32E976C6F04E700201 /* C_galgas_class_inspector.cpp */ = {
+  749B2941217DDD59394240E8 /* C_galgas_class_inspector.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
@@ -3029,7 +3020,7 @@
     sourceTree = "<group>";
   };
 
-  A7A5D6A1A87373DFFA53DBE5 /* C_galgas_function_descriptor.cpp */ = {
+  9183DE32E976C6F04E700201 /* C_galgas_function_descriptor.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
@@ -3038,7 +3029,7 @@
     sourceTree = "<group>";
   };
 
-  F376FFFE2EE4DDF4A988880D /* C_galgas_io.cpp */ = {
+  A7A5D6A1A87373DFFA53DBE5 /* C_galgas_io.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
@@ -3047,7 +3038,7 @@
     sourceTree = "<group>";
   };
 
-  02ACD8D7DD095917F9EFE4CB /* C_galgas_quiet_option.cpp */ = {
+  F376FFFE2EE4DDF4A988880D /* C_galgas_quiet_option.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
@@ -3056,12 +3047,21 @@
     sourceTree = "<group>";
   };
 
-  513B73148B7D49F70AFCFB32 /* C_galgas_type_descriptor.cpp */ = {
+  02ACD8D7DD095917F9EFE4CB /* C_galgas_type_descriptor.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
     name = "C_galgas_type_descriptor.cpp";
     path = "C_galgas_type_descriptor.cpp";
+    sourceTree = "<group>";
+  };
+
+  513B73148B7D49F70AFCFB32 /* Compiler.cpp */ = {
+    isa = PBXFileReference;
+    fileEncoding = 4;
+    lastKnownFileType = sourcecode.cpp.cpp;
+    name = "Compiler.cpp";
+    path = "Compiler.cpp";
     sourceTree = "<group>";
   };
 
@@ -5369,16 +5369,7 @@
     sourceTree = "<group>";
   };
 
-  70AE7C3F6F3F1F37029303C9 /* C_Compiler.h */ = {
-    isa = PBXFileReference;
-    fileEncoding = 4;
-    lastKnownFileType = sourcecode.c.h;
-    name = "C_Compiler.h";
-    path = "C_Compiler.h";
-    sourceTree = "<group>";
-  };
-
-  E9D31EA2830A5E73CE3ED328 /* C_IssueWithFixIt.h */ = {
+  70AE7C3F6F3F1F37029303C9 /* C_IssueWithFixIt.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
@@ -5387,7 +5378,7 @@
     sourceTree = "<group>";
   };
 
-  25EDED36F486BC85FEB3F0AB /* C_Lexique.h */ = {
+  E9D31EA2830A5E73CE3ED328 /* C_Lexique.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
@@ -5396,7 +5387,7 @@
     sourceTree = "<group>";
   };
 
-  A81692282BA642AAFD57BE3A /* C_LocationInSource.h */ = {
+  25EDED36F486BC85FEB3F0AB /* C_LocationInSource.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
@@ -5405,7 +5396,7 @@
     sourceTree = "<group>";
   };
 
-  4D5DE9D18C350CDF64C5AA3D /* C_SourceTextInString.h */ = {
+  A81692282BA642AAFD57BE3A /* C_SourceTextInString.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
@@ -5414,7 +5405,7 @@
     sourceTree = "<group>";
   };
 
-  76FB8C371AFEAD6410D55534 /* C_galgas_CLI_Options.h */ = {
+  4D5DE9D18C350CDF64C5AA3D /* C_galgas_CLI_Options.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
@@ -5423,7 +5414,7 @@
     sourceTree = "<group>";
   };
 
-  E374177EEF023BF5D0C018B6 /* C_galgas_class_inspector.h */ = {
+  76FB8C371AFEAD6410D55534 /* C_galgas_class_inspector.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
@@ -5432,7 +5423,7 @@
     sourceTree = "<group>";
   };
 
-  714116F3B292A982238F83D2 /* C_galgas_function_descriptor.h */ = {
+  E374177EEF023BF5D0C018B6 /* C_galgas_function_descriptor.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
@@ -5441,7 +5432,7 @@
     sourceTree = "<group>";
   };
 
-  31C8188555C2FF05B4D542C3 /* C_galgas_io.h */ = {
+  714116F3B292A982238F83D2 /* C_galgas_io.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
@@ -5450,7 +5441,7 @@
     sourceTree = "<group>";
   };
 
-  80A8F11F8F69CBB52B1396BE /* C_galgas_quiet_option.h */ = {
+  31C8188555C2FF05B4D542C3 /* C_galgas_quiet_option.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
@@ -5459,12 +5450,21 @@
     sourceTree = "<group>";
   };
 
-  7A33AE8CEF33961C34144F84 /* C_galgas_type_descriptor.h */ = {
+  80A8F11F8F69CBB52B1396BE /* C_galgas_type_descriptor.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
     name = "C_galgas_type_descriptor.h";
     path = "C_galgas_type_descriptor.h";
+    sourceTree = "<group>";
+  };
+
+  7A33AE8CEF33961C34144F84 /* Compiler.h */ = {
+    isa = PBXFileReference;
+    fileEncoding = 4;
+    lastKnownFileType = sourcecode.c.h;
+    name = "Compiler.h";
+    path = "Compiler.h";
     sourceTree = "<group>";
   };
 

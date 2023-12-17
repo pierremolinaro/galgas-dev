@@ -750,7 +750,7 @@ func generateClassGetterDeclaration ?let @lstring inGetterName
       if not first then
         result += ",\n           "
       end
-      result += "C_Compiler *"
+      result += "Compiler *"
       first = false
     end
     result += if first then "LOCATION_ARGS" else " COMMA_LOCATION_ARGS" end + ") const"
@@ -809,7 +809,7 @@ func generateClassInstanceMethodDeclaration ?let @lstring inMethodName
       if not first then
         result += ",\n           "
       end
-      result += "C_Compiler *"
+      result += "Compiler *"
       first = false
     end
     result += if first then "LOCATION_ARGS" else " COMMA_LOCATION_ARGS" end + ")"

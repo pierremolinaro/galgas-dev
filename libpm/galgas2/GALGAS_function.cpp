@@ -21,7 +21,7 @@
 #include "all-predefined-types.h"
 #include "galgas2/C_galgas_function_descriptor.h"
 #include "galgas2/C_galgas_type_descriptor.h"
-#include "galgas2/C_Compiler.h"
+#include "galgas2/Compiler.h"
 #include "galgas2/cObjectArray.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -158,7 +158,7 @@ GALGAS_type GALGAS_function::getter_resultType (UNUSED_LOCATION_ARGS) const {
 
 GALGAS_object GALGAS_function::getter_invoke (const GALGAS_objectlist & inObjectList,
                                               const GALGAS_location & inErrorLocation,
-                                              C_Compiler * inCompiler
+                                              Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const {
   const cObjectArray argumentsArray (inObjectList, inCompiler COMMA_THERE) ;
 //--- Check parameter count

@@ -15,13 +15,13 @@
 //--------------------------------------------------------------------------------------------------
 
 void routine_println (const GALGAS_string inString,
-                      class C_Compiler * inCompiler
+                      class Compiler * inCompiler
                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 
 void routine_print (const GALGAS_string inString,
-                    C_Compiler * inCompiler
+                    Compiler * inCompiler
                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------

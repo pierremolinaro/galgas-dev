@@ -72,55 +72,55 @@ class AC_GALGAS_list : public AC_GALGAS_root {
 
   protected: VIRTUAL_IN_DEBUG void insertObjectAtIndex (const capCollectionElement & inElementToAdd,
                                                       const uint32_t inInsertionIndex,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   protected: VIRTUAL_IN_DEBUG void removeObjectAtIndex (capCollectionElement & outAttributes,
                                                          const uint32_t inRemoveIndex,
-                                                         C_Compiler * inCompiler
+                                                         Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) ;
 
   protected: VIRTUAL_IN_DEBUG void removeFirstObject (capCollectionElement & outAttributes,
-                                                       C_Compiler * inCompiler
+                                                       Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
   protected: VIRTUAL_IN_DEBUG void removeLastObject (capCollectionElement & outAttributes,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   protected: VIRTUAL_IN_DEBUG void readFirst (capCollectionElement & outAttributes,
-                                               C_Compiler * inCompiler
+                                               Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) const ;
 
   protected: VIRTUAL_IN_DEBUG void readLast (capCollectionElement & outAttributes,
-                                              C_Compiler * inCompiler
+                                              Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const ;
 
   protected: VIRTUAL_IN_DEBUG void appendList (const AC_GALGAS_list & inList) ;
 
   protected: VIRTUAL_IN_DEBUG void subListWithRange (AC_GALGAS_list & outList,
                                                       const GALGAS_range & inRange,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) const ;
 
   protected: VIRTUAL_IN_DEBUG void subListFromIndex (AC_GALGAS_list & outList,
                                                       const GALGAS_uint & inIndex,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) const ;
 
   protected: VIRTUAL_IN_DEBUG void subListToIndex (AC_GALGAS_list & outList,
                                                     const GALGAS_uint & inIndex,
-                                                    C_Compiler * inCompiler
+                                                    Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) const ;
 
   protected: VIRTUAL_IN_DEBUG capCollectionElement readObjectAtIndex (const GALGAS_uint & inIndex,
-                                                                       C_Compiler * inCompiler
+                                                                       Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) const ;
 
 
   protected: VIRTUAL_IN_DEBUG
   cCollectionElement * uniquelyReferencedPointerAtIndex (const GALGAS_uint & inIndex,
-                                                         C_Compiler * inCompiler
+                                                         Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) ;
 } ;
 

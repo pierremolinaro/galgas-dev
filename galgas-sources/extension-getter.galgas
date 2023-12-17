@@ -378,7 +378,7 @@ override method @extensionGetterForGeneration appendSpecificImplementation
       !?ioInclusionSet
       !extensionReaderFormalParameterList
       !self.mSemanticInstructionListForGeneration
-      !"C_Compiler"
+      !"Compiler"
       !self.mResultType
       !self.mResultVarCppName
       !static: false # is not static
@@ -413,7 +413,7 @@ override method @extensionGetterForGeneration appendSpecificImplementation
       !?ioInclusionSet
       !extensionReaderFormalParameterList
       !self.mSemanticInstructionListForGeneration
-      !"C_Compiler"
+      !"Compiler"
       !self.mResultType
       !self.mResultVarCppName
       ?let @string extensionGetterCode

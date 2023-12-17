@@ -35,7 +35,7 @@ class GALGAS_switchInstructionForGeneration : public GALGAS_semanticInstructionF
 
 //--------------------------------- Object extraction
   public: static GALGAS_switchInstructionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                      C_Compiler * inCompiler
+                                                                      Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -83,7 +83,7 @@ class cPtr_switchInstructionForGeneration : public cPtr_semanticInstructionForGe
            class GALGAS_stringset & ioUnusedVariableCppNameSet,
            const class GALGAS_bool inGenerateSyntaxDirectedTranslationString,
            class GALGAS_string & ioGeneratedCode,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_unifiedTypeMapEntry mProperty_mEnumType ;
@@ -126,7 +126,7 @@ class GALGAS_switchInstructionForGeneration_2D_weak : public GALGAS_semanticInst
   public: GALGAS_switchInstructionForGeneration_2D_weak & operator = (const class GALGAS_switchInstructionForGeneration & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_switchInstructionForGeneration bang_switchInstructionForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_switchInstructionForGeneration bang_switchInstructionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -135,7 +135,7 @@ class GALGAS_switchInstructionForGeneration_2D_weak : public GALGAS_semanticInst
 
 //--------------------------------- Object extraction
   public: static GALGAS_switchInstructionForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                              C_Compiler * inCompiler
+                                                                              Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -190,7 +190,7 @@ class GALGAS_typeMethodCallInstructionAST : public GALGAS_semanticInstructionAST
 
 //--------------------------------- Object extraction
   public: static GALGAS_typeMethodCallInstructionAST extractObject (const GALGAS_object & inObject,
-                                                                    C_Compiler * inCompiler
+                                                                    Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -240,11 +240,11 @@ class cPtr_typeMethodCallInstructionAST : public cPtr_semanticInstructionAST {
            class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
            class GALGAS_localVarManager & ioVariableMap,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterInstructionInSemanticContext
   public: virtual void method_enterInstructionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mTypeName ;
@@ -288,7 +288,7 @@ class GALGAS_typeMethodCallInstructionAST_2D_weak : public GALGAS_semanticInstru
   public: GALGAS_typeMethodCallInstructionAST_2D_weak & operator = (const class GALGAS_typeMethodCallInstructionAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_typeMethodCallInstructionAST bang_typeMethodCallInstructionAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_typeMethodCallInstructionAST bang_typeMethodCallInstructionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -297,7 +297,7 @@ class GALGAS_typeMethodCallInstructionAST_2D_weak : public GALGAS_semanticInstru
 
 //--------------------------------- Object extraction
   public: static GALGAS_typeMethodCallInstructionAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                            C_Compiler * inCompiler
+                                                                            Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -354,7 +354,7 @@ class GALGAS_typeMethodCallInstructionForGeneration : public GALGAS_semanticInst
 
 //--------------------------------- Object extraction
   public: static GALGAS_typeMethodCallInstructionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                              C_Compiler * inCompiler
+                                                                              Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -403,7 +403,7 @@ class cPtr_typeMethodCallInstructionForGeneration : public cPtr_semanticInstruct
            class GALGAS_stringset & ioUnusedVariableCppNameSet,
            const class GALGAS_bool inGenerateSyntaxDirectedTranslationString,
            class GALGAS_string & ioGeneratedCode,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mTypeName ;
@@ -448,7 +448,7 @@ class GALGAS_typeMethodCallInstructionForGeneration_2D_weak : public GALGAS_sema
   public: GALGAS_typeMethodCallInstructionForGeneration_2D_weak & operator = (const class GALGAS_typeMethodCallInstructionForGeneration & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_typeMethodCallInstructionForGeneration bang_typeMethodCallInstructionForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_typeMethodCallInstructionForGeneration bang_typeMethodCallInstructionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -457,7 +457,7 @@ class GALGAS_typeMethodCallInstructionForGeneration_2D_weak : public GALGAS_sema
 
 //--------------------------------- Object extraction
   public: static GALGAS_typeMethodCallInstructionForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                                      C_Compiler * inCompiler
+                                                                                      Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -510,7 +510,7 @@ class GALGAS_localVariableDeclarationWithAssignmentAST : public GALGAS_semanticI
 
 //--------------------------------- Object extraction
   public: static GALGAS_localVariableDeclarationWithAssignmentAST extractObject (const GALGAS_object & inObject,
-                                                                                 C_Compiler * inCompiler
+                                                                                 Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -559,11 +559,11 @@ class cPtr_localVariableDeclarationWithAssignmentAST : public cPtr_semanticInstr
            class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
            class GALGAS_localVarManager & ioVariableMap,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterInstructionInSemanticContext
   public: virtual void method_enterInstructionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mVariableName ;
@@ -605,7 +605,7 @@ class GALGAS_localVariableDeclarationWithAssignmentAST_2D_weak : public GALGAS_s
   public: GALGAS_localVariableDeclarationWithAssignmentAST_2D_weak & operator = (const class GALGAS_localVariableDeclarationWithAssignmentAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_localVariableDeclarationWithAssignmentAST bang_localVariableDeclarationWithAssignmentAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_localVariableDeclarationWithAssignmentAST bang_localVariableDeclarationWithAssignmentAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -614,7 +614,7 @@ class GALGAS_localVariableDeclarationWithAssignmentAST_2D_weak : public GALGAS_s
 
 //--------------------------------- Object extraction
   public: static GALGAS_localVariableDeclarationWithAssignmentAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                                         C_Compiler * inCompiler
+                                                                                         Compiler * inCompiler
                                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -667,7 +667,7 @@ class GALGAS_localVariableDeclarationNoAssignmentAST : public GALGAS_semanticIns
 
 //--------------------------------- Object extraction
   public: static GALGAS_localVariableDeclarationNoAssignmentAST extractObject (const GALGAS_object & inObject,
-                                                                               C_Compiler * inCompiler
+                                                                               Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -716,11 +716,11 @@ class cPtr_localVariableDeclarationNoAssignmentAST : public cPtr_semanticInstruc
            class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
            class GALGAS_localVarManager & ioVariableMap,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterInstructionInSemanticContext
   public: virtual void method_enterInstructionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mTypeName ;
@@ -762,7 +762,7 @@ class GALGAS_localVariableDeclarationNoAssignmentAST_2D_weak : public GALGAS_sem
   public: GALGAS_localVariableDeclarationNoAssignmentAST_2D_weak & operator = (const class GALGAS_localVariableDeclarationNoAssignmentAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_localVariableDeclarationNoAssignmentAST bang_localVariableDeclarationNoAssignmentAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_localVariableDeclarationNoAssignmentAST bang_localVariableDeclarationNoAssignmentAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -771,7 +771,7 @@ class GALGAS_localVariableDeclarationNoAssignmentAST_2D_weak : public GALGAS_sem
 
 //--------------------------------- Object extraction
   public: static GALGAS_localVariableDeclarationNoAssignmentAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                                       C_Compiler * inCompiler
+                                                                                       Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -824,7 +824,7 @@ class GALGAS_localVariableDeclarationForGeneration : public GALGAS_semanticInstr
 
 //--------------------------------- Object extraction
   public: static GALGAS_localVariableDeclarationForGeneration extractObject (const GALGAS_object & inObject,
-                                                                             C_Compiler * inCompiler
+                                                                             Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -871,7 +871,7 @@ class cPtr_localVariableDeclarationForGeneration : public cPtr_semanticInstructi
            class GALGAS_stringset & ioUnusedVariableCppNameSet,
            const class GALGAS_bool inGenerateSyntaxDirectedTranslationString,
            class GALGAS_string & ioGeneratedCode,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_unifiedTypeMapEntry mProperty_mVariableType ;
@@ -912,7 +912,7 @@ class GALGAS_localVariableDeclarationForGeneration_2D_weak : public GALGAS_seman
   public: GALGAS_localVariableDeclarationForGeneration_2D_weak & operator = (const class GALGAS_localVariableDeclarationForGeneration & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_localVariableDeclarationForGeneration bang_localVariableDeclarationForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_localVariableDeclarationForGeneration bang_localVariableDeclarationForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -921,7 +921,7 @@ class GALGAS_localVariableDeclarationForGeneration_2D_weak : public GALGAS_seman
 
 //--------------------------------- Object extraction
   public: static GALGAS_localVariableDeclarationForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                                     C_Compiler * inCompiler
+                                                                                     Compiler * inCompiler
                                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -976,7 +976,7 @@ class GALGAS_warningInstructionAST : public GALGAS_semanticInstructionAST {
 
 //--------------------------------- Object extraction
   public: static GALGAS_warningInstructionAST extractObject (const GALGAS_object & inObject,
-                                                             C_Compiler * inCompiler
+                                                             Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -1026,11 +1026,11 @@ class cPtr_warningInstructionAST : public cPtr_semanticInstructionAST {
            class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
            class GALGAS_localVarManager & ioVariableMap,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterInstructionInSemanticContext
   public: virtual void method_enterInstructionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_semanticExpressionAST mProperty_mLocationExpression ;
@@ -1074,7 +1074,7 @@ class GALGAS_warningInstructionAST_2D_weak : public GALGAS_semanticInstructionAS
   public: GALGAS_warningInstructionAST_2D_weak & operator = (const class GALGAS_warningInstructionAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_warningInstructionAST bang_warningInstructionAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_warningInstructionAST bang_warningInstructionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -1083,7 +1083,7 @@ class GALGAS_warningInstructionAST_2D_weak : public GALGAS_semanticInstructionAS
 
 //--------------------------------- Object extraction
   public: static GALGAS_warningInstructionAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                     C_Compiler * inCompiler
+                                                                     Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -1140,7 +1140,7 @@ class GALGAS_warningInstructionForGeneration : public GALGAS_semanticInstruction
 
 //--------------------------------- Object extraction
   public: static GALGAS_warningInstructionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                       C_Compiler * inCompiler
+                                                                       Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -1189,7 +1189,7 @@ class cPtr_warningInstructionForGeneration : public cPtr_semanticInstructionForG
            class GALGAS_stringset & ioUnusedVariableCppNameSet,
            const class GALGAS_bool inGenerateSyntaxDirectedTranslationString,
            class GALGAS_string & ioGeneratedCode,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_location mProperty_mInstructionLocation ;
@@ -1234,7 +1234,7 @@ class GALGAS_warningInstructionForGeneration_2D_weak : public GALGAS_semanticIns
   public: GALGAS_warningInstructionForGeneration_2D_weak & operator = (const class GALGAS_warningInstructionForGeneration & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_warningInstructionForGeneration bang_warningInstructionForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_warningInstructionForGeneration bang_warningInstructionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -1243,7 +1243,7 @@ class GALGAS_warningInstructionForGeneration_2D_weak : public GALGAS_semanticIns
 
 //--------------------------------- Object extraction
   public: static GALGAS_warningInstructionForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                               C_Compiler * inCompiler
+                                                                               Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -1312,7 +1312,7 @@ class GALGAS_readAccessWithInstructionAST : public GALGAS_semanticInstructionAST
 
 //--------------------------------- Object extraction
   public: static GALGAS_readAccessWithInstructionAST extractObject (const GALGAS_object & inObject,
-                                                                    C_Compiler * inCompiler
+                                                                    Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -1369,11 +1369,11 @@ class cPtr_readAccessWithInstructionAST : public cPtr_semanticInstructionAST {
            class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
            class GALGAS_localVarManager & ioVariableMap,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterInstructionInSemanticContext
   public: virtual void method_enterInstructionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mPrefix ;
@@ -1431,7 +1431,7 @@ class GALGAS_readAccessWithInstructionAST_2D_weak : public GALGAS_semanticInstru
   public: GALGAS_readAccessWithInstructionAST_2D_weak & operator = (const class GALGAS_readAccessWithInstructionAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_readAccessWithInstructionAST bang_readAccessWithInstructionAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_readAccessWithInstructionAST bang_readAccessWithInstructionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -1440,7 +1440,7 @@ class GALGAS_readAccessWithInstructionAST_2D_weak : public GALGAS_semanticInstru
 
 //--------------------------------- Object extraction
   public: static GALGAS_readAccessWithInstructionAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                            C_Compiler * inCompiler
+                                                                            Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -1513,7 +1513,7 @@ class GALGAS_readWriteAccessWithInstructionAST : public GALGAS_semanticInstructi
 
 //--------------------------------- Object extraction
   public: static GALGAS_readWriteAccessWithInstructionAST extractObject (const GALGAS_object & inObject,
-                                                                         C_Compiler * inCompiler
+                                                                         Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -1572,11 +1572,11 @@ class cPtr_readWriteAccessWithInstructionAST : public cPtr_semanticInstructionAS
            class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
            class GALGAS_localVarManager & ioVariableMap,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterInstructionInSemanticContext
   public: virtual void method_enterInstructionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mPrefix ;
@@ -1638,7 +1638,7 @@ class GALGAS_readWriteAccessWithInstructionAST_2D_weak : public GALGAS_semanticI
   public: GALGAS_readWriteAccessWithInstructionAST_2D_weak & operator = (const class GALGAS_readWriteAccessWithInstructionAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_readWriteAccessWithInstructionAST bang_readWriteAccessWithInstructionAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_readWriteAccessWithInstructionAST bang_readWriteAccessWithInstructionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -1647,7 +1647,7 @@ class GALGAS_readWriteAccessWithInstructionAST_2D_weak : public GALGAS_semanticI
 
 //--------------------------------- Object extraction
   public: static GALGAS_readWriteAccessWithInstructionAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                                 C_Compiler * inCompiler
+                                                                                 Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -1710,7 +1710,7 @@ class GALGAS_readOnlyWithInstructionForGeneration : public GALGAS_semanticInstru
 
 //--------------------------------- Object extraction
   public: static GALGAS_readOnlyWithInstructionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                            C_Compiler * inCompiler
+                                                                            Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -1762,7 +1762,7 @@ class cPtr_readOnlyWithInstructionForGeneration : public cPtr_semanticInstructio
            class GALGAS_stringset & ioUnusedVariableCppNameSet,
            const class GALGAS_bool inGenerateSyntaxDirectedTranslationString,
            class GALGAS_string & ioGeneratedCode,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_location mProperty_mInstructionLocation ;
@@ -1813,7 +1813,7 @@ class GALGAS_readOnlyWithInstructionForGeneration_2D_weak : public GALGAS_semant
   public: GALGAS_readOnlyWithInstructionForGeneration_2D_weak & operator = (const class GALGAS_readOnlyWithInstructionForGeneration & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_readOnlyWithInstructionForGeneration bang_readOnlyWithInstructionForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_readOnlyWithInstructionForGeneration bang_readOnlyWithInstructionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -1822,7 +1822,7 @@ class GALGAS_readOnlyWithInstructionForGeneration_2D_weak : public GALGAS_semant
 
 //--------------------------------- Object extraction
   public: static GALGAS_readOnlyWithInstructionForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -1889,7 +1889,7 @@ class GALGAS_readWriteWithInstructionForGeneration : public GALGAS_semanticInstr
 
 //--------------------------------- Object extraction
   public: static GALGAS_readWriteWithInstructionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                             C_Compiler * inCompiler
+                                                                             Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -1943,7 +1943,7 @@ class cPtr_readWriteWithInstructionForGeneration : public cPtr_semanticInstructi
            class GALGAS_stringset & ioUnusedVariableCppNameSet,
            const class GALGAS_bool inGenerateSyntaxDirectedTranslationString,
            class GALGAS_string & ioGeneratedCode,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_location mProperty_mInstructionLocation ;
@@ -1998,7 +1998,7 @@ class GALGAS_readWriteWithInstructionForGeneration_2D_weak : public GALGAS_seman
   public: GALGAS_readWriteWithInstructionForGeneration_2D_weak & operator = (const class GALGAS_readWriteWithInstructionForGeneration & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_readWriteWithInstructionForGeneration bang_readWriteWithInstructionForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_readWriteWithInstructionForGeneration bang_readWriteWithInstructionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -2007,7 +2007,7 @@ class GALGAS_readWriteWithInstructionForGeneration_2D_weak : public GALGAS_seman
 
 //--------------------------------- Object extraction
   public: static GALGAS_readWriteWithInstructionForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                                     C_Compiler * inCompiler
+                                                                                     Compiler * inCompiler
                                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -2064,7 +2064,7 @@ class GALGAS_nonterminalCallInstruction : public GALGAS_syntaxInstructionAST {
 
 //--------------------------------- Object extraction
   public: static GALGAS_nonterminalCallInstruction extractObject (const GALGAS_object & inObject,
-                                                                  C_Compiler * inCompiler
+                                                                  Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -2122,14 +2122,14 @@ class cPtr_nonterminalCallInstruction : public cPtr_syntaxInstructionAST {
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
            class GALGAS_localVarManager & ioVariableMap,
            class GALGAS_uint & ioSelectMethodCount,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method transformInstruction
   public: virtual void method_transformInstruction (class GALGAS_terminalSymbolsMapForGrammarAnalysis & ioActuallyUsedTerminalSymbolMap,
            const class GALGAS_nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap,
            class GALGAS_uint & ioAddedNonTerminalIndex,
            class GALGAS_syntaxInstructionListForGrammarAnalysis & ioSyntaxInstructionList,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mNonterminalName ;
@@ -2175,7 +2175,7 @@ class GALGAS_nonterminalCallInstruction_2D_weak : public GALGAS_syntaxInstructio
   public: GALGAS_nonterminalCallInstruction_2D_weak & operator = (const class GALGAS_nonterminalCallInstruction & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_nonterminalCallInstruction bang_nonterminalCallInstruction_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_nonterminalCallInstruction bang_nonterminalCallInstruction_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -2184,7 +2184,7 @@ class GALGAS_nonterminalCallInstruction_2D_weak : public GALGAS_syntaxInstructio
 
 //--------------------------------- Object extraction
   public: static GALGAS_nonterminalCallInstruction_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                          C_Compiler * inCompiler
+                                                                          Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -2241,7 +2241,7 @@ class GALGAS_nonterminalInstructionForGeneration : public GALGAS_syntaxInstructi
 
 //--------------------------------- Object extraction
   public: static GALGAS_nonterminalInstructionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                           C_Compiler * inCompiler
+                                                                           Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -2287,12 +2287,12 @@ class cPtr_nonterminalInstructionForGeneration : public cPtr_syntaxInstructionFo
   #endif
 //--- Extension getter compareInstructionSyntaxSignature
   public: virtual class GALGAS_bool getter_compareInstructionSyntaxSignature (const class GALGAS_semanticInstructionForGeneration inTestedInstruction,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method appendSyntaxSignature
   public: virtual void method_appendSyntaxSignature (const class GALGAS_string inPosfix,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method generateInstruction
   public: virtual void method_generateInstruction (class GALGAS_stringset & ioInclusionSet,
@@ -2300,7 +2300,7 @@ class cPtr_nonterminalInstructionForGeneration : public cPtr_syntaxInstructionFo
            class GALGAS_stringset & ioUnusedVariableCppNameSet,
            const class GALGAS_bool inGenerateSyntaxDirectedTranslationString,
            class GALGAS_string & ioGeneratedCode,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_string mProperty_mNonterminalName ;
@@ -2346,7 +2346,7 @@ class GALGAS_nonterminalInstructionForGeneration_2D_weak : public GALGAS_syntaxI
   public: GALGAS_nonterminalInstructionForGeneration_2D_weak & operator = (const class GALGAS_nonterminalInstructionForGeneration & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_nonterminalInstructionForGeneration bang_nonterminalInstructionForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_nonterminalInstructionForGeneration bang_nonterminalInstructionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -2355,7 +2355,7 @@ class GALGAS_nonterminalInstructionForGeneration_2D_weak : public GALGAS_syntaxI
 
 //--------------------------------- Object extraction
   public: static GALGAS_nonterminalInstructionForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                                   C_Compiler * inCompiler
+                                                                                   Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -2412,7 +2412,7 @@ class GALGAS_repeatInstruction : public GALGAS_syntaxInstructionAST {
 
 //--------------------------------- Object extraction
   public: static GALGAS_repeatInstruction extractObject (const GALGAS_object & inObject,
-                                                         C_Compiler * inCompiler
+                                                         Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -2470,14 +2470,14 @@ class cPtr_repeatInstruction : public cPtr_syntaxInstructionAST {
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
            class GALGAS_localVarManager & ioVariableMap,
            class GALGAS_uint & ioSelectMethodCount,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method transformInstruction
   public: virtual void method_transformInstruction (class GALGAS_terminalSymbolsMapForGrammarAnalysis & ioActuallyUsedTerminalSymbolMap,
            const class GALGAS_nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap,
            class GALGAS_uint & ioAddedNonTerminalIndex,
            class GALGAS_syntaxInstructionListForGrammarAnalysis & ioSyntaxInstructionList,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_syntaxInstructionList mProperty_mRepeatedInstructionList ;
@@ -2523,7 +2523,7 @@ class GALGAS_repeatInstruction_2D_weak : public GALGAS_syntaxInstructionAST_2D_w
   public: GALGAS_repeatInstruction_2D_weak & operator = (const class GALGAS_repeatInstruction & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_repeatInstruction bang_repeatInstruction_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_repeatInstruction bang_repeatInstruction_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -2532,7 +2532,7 @@ class GALGAS_repeatInstruction_2D_weak : public GALGAS_syntaxInstructionAST_2D_w
 
 //--------------------------------- Object extraction
   public: static GALGAS_repeatInstruction_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                 C_Compiler * inCompiler
+                                                                 Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -2591,7 +2591,7 @@ class GALGAS_repeatInstructionForGeneration : public GALGAS_syntaxInstructionFor
 
 //--------------------------------- Object extraction
   public: static GALGAS_repeatInstructionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                      C_Compiler * inCompiler
+                                                                      Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -2638,12 +2638,12 @@ class cPtr_repeatInstructionForGeneration : public cPtr_syntaxInstructionForGene
   #endif
 //--- Extension getter compareInstructionSyntaxSignature
   public: virtual class GALGAS_bool getter_compareInstructionSyntaxSignature (const class GALGAS_semanticInstructionForGeneration inTestedInstruction,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method appendSyntaxSignature
   public: virtual void method_appendSyntaxSignature (const class GALGAS_string inPosfix,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method generateInstruction
   public: virtual void method_generateInstruction (class GALGAS_stringset & ioInclusionSet,
@@ -2651,7 +2651,7 @@ class cPtr_repeatInstructionForGeneration : public cPtr_syntaxInstructionForGene
            class GALGAS_stringset & ioUnusedVariableCppNameSet,
            const class GALGAS_bool inGenerateSyntaxDirectedTranslationString,
            class GALGAS_string & ioGeneratedCode,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_string mProperty_mSyntaxComponentName ;
@@ -2699,7 +2699,7 @@ class GALGAS_repeatInstructionForGeneration_2D_weak : public GALGAS_syntaxInstru
   public: GALGAS_repeatInstructionForGeneration_2D_weak & operator = (const class GALGAS_repeatInstructionForGeneration & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_repeatInstructionForGeneration bang_repeatInstructionForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_repeatInstructionForGeneration bang_repeatInstructionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -2708,7 +2708,7 @@ class GALGAS_repeatInstructionForGeneration_2D_weak : public GALGAS_syntaxInstru
 
 //--------------------------------- Object extraction
   public: static GALGAS_repeatInstructionForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                              C_Compiler * inCompiler
+                                                                              Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -2761,7 +2761,7 @@ class GALGAS_selectInstruction : public GALGAS_syntaxInstructionAST {
 
 //--------------------------------- Object extraction
   public: static GALGAS_selectInstruction extractObject (const GALGAS_object & inObject,
-                                                         C_Compiler * inCompiler
+                                                         Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -2817,14 +2817,14 @@ class cPtr_selectInstruction : public cPtr_syntaxInstructionAST {
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
            class GALGAS_localVarManager & ioVariableMap,
            class GALGAS_uint & ioSelectMethodCount,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method transformInstruction
   public: virtual void method_transformInstruction (class GALGAS_terminalSymbolsMapForGrammarAnalysis & ioActuallyUsedTerminalSymbolMap,
            const class GALGAS_nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap,
            class GALGAS_uint & ioAddedNonTerminalIndex,
            class GALGAS_syntaxInstructionListForGrammarAnalysis & ioSyntaxInstructionList,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_listOfSyntaxInstructionList mProperty_mSelectBranchList ;
@@ -2866,7 +2866,7 @@ class GALGAS_selectInstruction_2D_weak : public GALGAS_syntaxInstructionAST_2D_w
   public: GALGAS_selectInstruction_2D_weak & operator = (const class GALGAS_selectInstruction & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_selectInstruction bang_selectInstruction_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_selectInstruction bang_selectInstruction_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -2875,7 +2875,7 @@ class GALGAS_selectInstruction_2D_weak : public GALGAS_syntaxInstructionAST_2D_w
 
 //--------------------------------- Object extraction
   public: static GALGAS_selectInstruction_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                 C_Compiler * inCompiler
+                                                                 Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -2930,7 +2930,7 @@ class GALGAS_selectInstructionForGeneration : public GALGAS_syntaxInstructionFor
 
 //--------------------------------- Object extraction
   public: static GALGAS_selectInstructionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                      C_Compiler * inCompiler
+                                                                      Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -2975,12 +2975,12 @@ class cPtr_selectInstructionForGeneration : public cPtr_syntaxInstructionForGene
   #endif
 //--- Extension getter compareInstructionSyntaxSignature
   public: virtual class GALGAS_bool getter_compareInstructionSyntaxSignature (const class GALGAS_semanticInstructionForGeneration inTestedInstruction,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method appendSyntaxSignature
   public: virtual void method_appendSyntaxSignature (const class GALGAS_string inPosfix,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method generateInstruction
   public: virtual void method_generateInstruction (class GALGAS_stringset & ioInclusionSet,
@@ -2988,7 +2988,7 @@ class cPtr_selectInstructionForGeneration : public cPtr_syntaxInstructionForGene
            class GALGAS_stringset & ioUnusedVariableCppNameSet,
            const class GALGAS_bool inGenerateSyntaxDirectedTranslationString,
            class GALGAS_string & ioGeneratedCode,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_string mProperty_mSyntaxComponentName ;
@@ -3032,7 +3032,7 @@ class GALGAS_selectInstructionForGeneration_2D_weak : public GALGAS_syntaxInstru
   public: GALGAS_selectInstructionForGeneration_2D_weak & operator = (const class GALGAS_selectInstructionForGeneration & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_selectInstructionForGeneration bang_selectInstructionForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_selectInstructionForGeneration bang_selectInstructionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -3041,7 +3041,7 @@ class GALGAS_selectInstructionForGeneration_2D_weak : public GALGAS_syntaxInstru
 
 //--------------------------------- Object extraction
   public: static GALGAS_selectInstructionForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                              C_Compiler * inCompiler
+                                                                              Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -3100,7 +3100,7 @@ class GALGAS_terminalCheckInstruction : public GALGAS_syntaxInstructionAST {
 
 //--------------------------------- Object extraction
   public: static GALGAS_terminalCheckInstruction extractObject (const GALGAS_object & inObject,
-                                                                C_Compiler * inCompiler
+                                                                Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -3159,14 +3159,14 @@ class cPtr_terminalCheckInstruction : public cPtr_syntaxInstructionAST {
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
            class GALGAS_localVarManager & ioVariableMap,
            class GALGAS_uint & ioSelectMethodCount,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method transformInstruction
   public: virtual void method_transformInstruction (class GALGAS_terminalSymbolsMapForGrammarAnalysis & ioActuallyUsedTerminalSymbolMap,
            const class GALGAS_nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap,
            class GALGAS_uint & ioAddedNonTerminalIndex,
            class GALGAS_syntaxInstructionListForGrammarAnalysis & ioSyntaxInstructionList,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mTerminalName ;
@@ -3214,7 +3214,7 @@ class GALGAS_terminalCheckInstruction_2D_weak : public GALGAS_syntaxInstructionA
   public: GALGAS_terminalCheckInstruction_2D_weak & operator = (const class GALGAS_terminalCheckInstruction & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_terminalCheckInstruction bang_terminalCheckInstruction_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_terminalCheckInstruction bang_terminalCheckInstruction_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -3223,7 +3223,7 @@ class GALGAS_terminalCheckInstruction_2D_weak : public GALGAS_syntaxInstructionA
 
 //--------------------------------- Object extraction
   public: static GALGAS_terminalCheckInstruction_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                        C_Compiler * inCompiler
+                                                                        Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -3284,7 +3284,7 @@ class GALGAS_terminalCheckInstructionForGeneration : public GALGAS_syntaxInstruc
 
 //--------------------------------- Object extraction
   public: static GALGAS_terminalCheckInstructionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                             C_Compiler * inCompiler
+                                                                             Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -3332,12 +3332,12 @@ class cPtr_terminalCheckInstructionForGeneration : public cPtr_syntaxInstruction
   #endif
 //--- Extension getter compareInstructionSyntaxSignature
   public: virtual class GALGAS_bool getter_compareInstructionSyntaxSignature (const class GALGAS_semanticInstructionForGeneration inTestedInstruction,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method appendSyntaxSignature
   public: virtual void method_appendSyntaxSignature (const class GALGAS_string inPosfix,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method generateInstruction
   public: virtual void method_generateInstruction (class GALGAS_stringset & ioInclusionSet,
@@ -3345,7 +3345,7 @@ class cPtr_terminalCheckInstructionForGeneration : public cPtr_syntaxInstruction
            class GALGAS_stringset & ioUnusedVariableCppNameSet,
            const class GALGAS_bool inGenerateSyntaxDirectedTranslationString,
            class GALGAS_string & ioGeneratedCode,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mTerminalName ;
@@ -3395,7 +3395,7 @@ class GALGAS_terminalCheckInstructionForGeneration_2D_weak : public GALGAS_synta
   public: GALGAS_terminalCheckInstructionForGeneration_2D_weak & operator = (const class GALGAS_terminalCheckInstructionForGeneration & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_terminalCheckInstructionForGeneration bang_terminalCheckInstructionForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_terminalCheckInstructionForGeneration bang_terminalCheckInstructionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -3404,7 +3404,7 @@ class GALGAS_terminalCheckInstructionForGeneration_2D_weak : public GALGAS_synta
 
 //--------------------------------- Object extraction
   public: static GALGAS_terminalCheckInstructionForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                                     C_Compiler * inCompiler
+                                                                                     Compiler * inCompiler
                                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -3465,7 +3465,7 @@ class GALGAS_parseLoopInstruction : public GALGAS_syntaxInstructionAST {
 
 //--------------------------------- Object extraction
   public: static GALGAS_parseLoopInstruction extractObject (const GALGAS_object & inObject,
-                                                            C_Compiler * inCompiler
+                                                            Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -3525,14 +3525,14 @@ class cPtr_parseLoopInstruction : public cPtr_syntaxInstructionAST {
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
            class GALGAS_localVarManager & ioVariableMap,
            class GALGAS_uint & ioSelectMethodCount,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method transformInstruction
   public: virtual void method_transformInstruction (class GALGAS_terminalSymbolsMapForGrammarAnalysis & ioActuallyUsedTerminalSymbolMap,
            const class GALGAS_nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap,
            class GALGAS_uint & ioAddedNonTerminalIndex,
            class GALGAS_syntaxInstructionListForGrammarAnalysis & ioSyntaxInstructionList,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_semanticExpressionAST mProperty_mVariantExpression ;
@@ -3582,7 +3582,7 @@ class GALGAS_parseLoopInstruction_2D_weak : public GALGAS_syntaxInstructionAST_2
   public: GALGAS_parseLoopInstruction_2D_weak & operator = (const class GALGAS_parseLoopInstruction & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_parseLoopInstruction bang_parseLoopInstruction_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_parseLoopInstruction bang_parseLoopInstruction_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -3591,7 +3591,7 @@ class GALGAS_parseLoopInstruction_2D_weak : public GALGAS_syntaxInstructionAST_2
 
 //--------------------------------- Object extraction
   public: static GALGAS_parseLoopInstruction_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                    C_Compiler * inCompiler
+                                                                    Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -3646,7 +3646,7 @@ class GALGAS_parseLoopInstructionForGeneration : public GALGAS_syntaxInstruction
 
 //--------------------------------- Object extraction
   public: static GALGAS_parseLoopInstructionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                         C_Compiler * inCompiler
+                                                                         Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -3692,7 +3692,7 @@ class cPtr_parseLoopInstructionForGeneration : public cPtr_syntaxInstructionForG
 //--- Extension method appendSyntaxSignature
   public: virtual void method_appendSyntaxSignature (const class GALGAS_string inPosfix,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method generateInstruction
   public: virtual void method_generateInstruction (class GALGAS_stringset & ioInclusionSet,
@@ -3700,7 +3700,7 @@ class cPtr_parseLoopInstructionForGeneration : public cPtr_syntaxInstructionForG
            class GALGAS_stringset & ioUnusedVariableCppNameSet,
            const class GALGAS_bool inGenerateSyntaxDirectedTranslationString,
            class GALGAS_string & ioGeneratedCode,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_semanticExpressionForGeneration mProperty_mVariantExpression ;
@@ -3744,7 +3744,7 @@ class GALGAS_parseLoopInstructionForGeneration_2D_weak : public GALGAS_syntaxIns
   public: GALGAS_parseLoopInstructionForGeneration_2D_weak & operator = (const class GALGAS_parseLoopInstructionForGeneration & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_parseLoopInstructionForGeneration bang_parseLoopInstructionForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_parseLoopInstructionForGeneration bang_parseLoopInstructionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -3753,7 +3753,7 @@ class GALGAS_parseLoopInstructionForGeneration_2D_weak : public GALGAS_syntaxIns
 
 //--------------------------------- Object extraction
   public: static GALGAS_parseLoopInstructionForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                                 C_Compiler * inCompiler
+                                                                                 Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -3806,7 +3806,7 @@ class GALGAS_parseRewindInstruction : public GALGAS_syntaxInstructionAST {
 
 //--------------------------------- Object extraction
   public: static GALGAS_parseRewindInstruction extractObject (const GALGAS_object & inObject,
-                                                              C_Compiler * inCompiler
+                                                              Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -3862,14 +3862,14 @@ class cPtr_parseRewindInstruction : public cPtr_syntaxInstructionAST {
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
            class GALGAS_localVarManager & ioVariableMap,
            class GALGAS_uint & ioSelectMethodCount,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method transformInstruction
   public: virtual void method_transformInstruction (class GALGAS_terminalSymbolsMapForGrammarAnalysis & ioActuallyUsedTerminalSymbolMap,
            const class GALGAS_nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap,
            class GALGAS_uint & ioAddedNonTerminalIndex,
            class GALGAS_syntaxInstructionListForGrammarAnalysis & ioSyntaxInstructionList,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_listOfSyntaxInstructionList mProperty_mParseRewindBranchList ;
@@ -3911,7 +3911,7 @@ class GALGAS_parseRewindInstruction_2D_weak : public GALGAS_syntaxInstructionAST
   public: GALGAS_parseRewindInstruction_2D_weak & operator = (const class GALGAS_parseRewindInstruction & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_parseRewindInstruction bang_parseRewindInstruction_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_parseRewindInstruction bang_parseRewindInstruction_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -3920,7 +3920,7 @@ class GALGAS_parseRewindInstruction_2D_weak : public GALGAS_syntaxInstructionAST
 
 //--------------------------------- Object extraction
   public: static GALGAS_parseRewindInstruction_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                      C_Compiler * inCompiler
+                                                                      Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -3971,7 +3971,7 @@ class GALGAS_parseRewindInstructionForGeneration : public GALGAS_syntaxInstructi
 
 //--------------------------------- Object extraction
   public: static GALGAS_parseRewindInstructionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                           C_Compiler * inCompiler
+                                                                           Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -4015,7 +4015,7 @@ class cPtr_parseRewindInstructionForGeneration : public cPtr_syntaxInstructionFo
 //--- Extension method appendSyntaxSignature
   public: virtual void method_appendSyntaxSignature (const class GALGAS_string inPosfix,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method generateInstruction
   public: virtual void method_generateInstruction (class GALGAS_stringset & ioInclusionSet,
@@ -4023,7 +4023,7 @@ class cPtr_parseRewindInstructionForGeneration : public cPtr_syntaxInstructionFo
            class GALGAS_stringset & ioUnusedVariableCppNameSet,
            const class GALGAS_bool inGenerateSyntaxDirectedTranslationString,
            class GALGAS_string & ioGeneratedCode,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_listOfSemanticInstructionListForGeneration mProperty_mListOfSemanticInstructionListForGeneration ;
@@ -4063,7 +4063,7 @@ class GALGAS_parseRewindInstructionForGeneration_2D_weak : public GALGAS_syntaxI
   public: GALGAS_parseRewindInstructionForGeneration_2D_weak & operator = (const class GALGAS_parseRewindInstructionForGeneration & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_parseRewindInstructionForGeneration bang_parseRewindInstructionForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_parseRewindInstructionForGeneration bang_parseRewindInstructionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -4072,7 +4072,7 @@ class GALGAS_parseRewindInstructionForGeneration_2D_weak : public GALGAS_syntaxI
 
 //--------------------------------- Object extraction
   public: static GALGAS_parseRewindInstructionForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                                   C_Compiler * inCompiler
+                                                                                   Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -4133,7 +4133,7 @@ class GALGAS_parseWhenInstruction : public GALGAS_syntaxInstructionAST {
 
 //--------------------------------- Object extraction
   public: static GALGAS_parseWhenInstruction extractObject (const GALGAS_object & inObject,
-                                                            C_Compiler * inCompiler
+                                                            Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -4193,14 +4193,14 @@ class cPtr_parseWhenInstruction : public cPtr_syntaxInstructionAST {
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
            class GALGAS_localVarManager & ioVariableMap,
            class GALGAS_uint & ioSelectMethodCount,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method transformInstruction
   public: virtual void method_transformInstruction (class GALGAS_terminalSymbolsMapForGrammarAnalysis & ioActuallyUsedTerminalSymbolMap,
            const class GALGAS_nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap,
            class GALGAS_uint & ioAddedNonTerminalIndex,
            class GALGAS_syntaxInstructionListForGrammarAnalysis & ioSyntaxInstructionList,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_semanticExpressionAST mProperty_mWhenExpression ;
@@ -4250,7 +4250,7 @@ class GALGAS_parseWhenInstruction_2D_weak : public GALGAS_syntaxInstructionAST_2
   public: GALGAS_parseWhenInstruction_2D_weak & operator = (const class GALGAS_parseWhenInstruction & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_parseWhenInstruction bang_parseWhenInstruction_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_parseWhenInstruction bang_parseWhenInstruction_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -4259,7 +4259,7 @@ class GALGAS_parseWhenInstruction_2D_weak : public GALGAS_syntaxInstructionAST_2
 
 //--------------------------------- Object extraction
   public: static GALGAS_parseWhenInstruction_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                    C_Compiler * inCompiler
+                                                                    Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -4314,7 +4314,7 @@ class GALGAS_parseWhenInstructionForGeneration : public GALGAS_syntaxInstruction
 
 //--------------------------------- Object extraction
   public: static GALGAS_parseWhenInstructionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                         C_Compiler * inCompiler
+                                                                         Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -4360,7 +4360,7 @@ class cPtr_parseWhenInstructionForGeneration : public cPtr_syntaxInstructionForG
 //--- Extension method appendSyntaxSignature
   public: virtual void method_appendSyntaxSignature (const class GALGAS_string inPosfix,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method generateInstruction
   public: virtual void method_generateInstruction (class GALGAS_stringset & ioInclusionSet,
@@ -4368,7 +4368,7 @@ class cPtr_parseWhenInstructionForGeneration : public cPtr_syntaxInstructionForG
            class GALGAS_stringset & ioUnusedVariableCppNameSet,
            const class GALGAS_bool inGenerateSyntaxDirectedTranslationString,
            class GALGAS_string & ioGeneratedCode,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_semanticExpressionForGeneration mProperty_mWhenExpression ;
@@ -4412,7 +4412,7 @@ class GALGAS_parseWhenInstructionForGeneration_2D_weak : public GALGAS_syntaxIns
   public: GALGAS_parseWhenInstructionForGeneration_2D_weak & operator = (const class GALGAS_parseWhenInstructionForGeneration & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_parseWhenInstructionForGeneration bang_parseWhenInstructionForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_parseWhenInstructionForGeneration bang_parseWhenInstructionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -4421,7 +4421,7 @@ class GALGAS_parseWhenInstructionForGeneration_2D_weak : public GALGAS_syntaxIns
 
 //--------------------------------- Object extraction
   public: static GALGAS_parseWhenInstructionForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                                 C_Compiler * inCompiler
+                                                                                 Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -4472,7 +4472,7 @@ class GALGAS_syntaxSendInstruction : public GALGAS_syntaxInstructionAST {
 
 //--------------------------------- Object extraction
   public: static GALGAS_syntaxSendInstruction extractObject (const GALGAS_object & inObject,
-                                                             C_Compiler * inCompiler
+                                                             Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -4527,14 +4527,14 @@ class cPtr_syntaxSendInstruction : public cPtr_syntaxInstructionAST {
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
            class GALGAS_localVarManager & ioVariableMap,
            class GALGAS_uint & ioSelectMethodCount,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method transformInstruction
   public: virtual void method_transformInstruction (class GALGAS_terminalSymbolsMapForGrammarAnalysis & ioActuallyUsedTerminalSymbolMap,
            const class GALGAS_nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap,
            class GALGAS_uint & ioAddedNonTerminalIndex,
            class GALGAS_syntaxInstructionListForGrammarAnalysis & ioSyntaxInstructionList,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_semanticExpressionAST mProperty_mExpression ;
@@ -4574,7 +4574,7 @@ class GALGAS_syntaxSendInstruction_2D_weak : public GALGAS_syntaxInstructionAST_
   public: GALGAS_syntaxSendInstruction_2D_weak & operator = (const class GALGAS_syntaxSendInstruction & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_syntaxSendInstruction bang_syntaxSendInstruction_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_syntaxSendInstruction bang_syntaxSendInstruction_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -4583,7 +4583,7 @@ class GALGAS_syntaxSendInstruction_2D_weak : public GALGAS_syntaxInstructionAST_
 
 //--------------------------------- Object extraction
   public: static GALGAS_syntaxSendInstruction_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                     C_Compiler * inCompiler
+                                                                     Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -4634,7 +4634,7 @@ class GALGAS_syntaxSendInstructionForGeneration : public GALGAS_syntaxInstructio
 
 //--------------------------------- Object extraction
   public: static GALGAS_syntaxSendInstructionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                          C_Compiler * inCompiler
+                                                                          Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -4681,7 +4681,7 @@ class cPtr_syntaxSendInstructionForGeneration : public cPtr_syntaxInstructionFor
            class GALGAS_stringset & ioUnusedVariableCppNameSet,
            const class GALGAS_bool inGenerateSyntaxDirectedTranslationString,
            class GALGAS_string & ioGeneratedCode,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_semanticExpressionForGeneration mProperty_mExpression ;
@@ -4721,7 +4721,7 @@ class GALGAS_syntaxSendInstructionForGeneration_2D_weak : public GALGAS_syntaxIn
   public: GALGAS_syntaxSendInstructionForGeneration_2D_weak & operator = (const class GALGAS_syntaxSendInstructionForGeneration & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_syntaxSendInstructionForGeneration bang_syntaxSendInstructionForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_syntaxSendInstructionForGeneration bang_syntaxSendInstructionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -4730,7 +4730,7 @@ class GALGAS_syntaxSendInstructionForGeneration_2D_weak : public GALGAS_syntaxIn
 
 //--------------------------------- Object extraction
   public: static GALGAS_syntaxSendInstructionForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                                  C_Compiler * inCompiler
+                                                                                  Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -4767,7 +4767,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxSendInstructi
 void callExtensionMethod_appendSyntaxSignature (class cPtr_semanticInstructionForGeneration * inObject,
                                                 const class GALGAS_string constin_inPosfix,
                                                 class GALGAS_semanticInstructionListForGeneration & io_ioInstructionListForGeneration,
-                                                C_Compiler * inCompiler
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -4778,7 +4778,7 @@ void callExtensionMethod_appendSyntaxSignature (class cPtr_semanticInstructionFo
 
 class GALGAS_bool callExtensionGetter_compareInstructionSyntaxSignature (const cPtr_semanticInstructionForGeneration * inObject,
                                                                          const class GALGAS_semanticInstructionForGeneration constin_inTestedInstruction,
-                                                                         class C_Compiler * inCompiler
+                                                                         class Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -4804,7 +4804,7 @@ class GALGAS_abstractSyntaxInstructionForGrammarAnalysis : public AC_GALGAS_refe
 
 //--------------------------------- Object extraction
   public: static GALGAS_abstractSyntaxInstructionForGrammarAnalysis extractObject (const GALGAS_object & inObject,
-                                                                                   C_Compiler * inCompiler
+                                                                                   Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -4847,7 +4847,7 @@ class GALGAS_abstractSyntaxInstructionForGrammarAnalysis_2D_weak : public AC_GAL
   public: GALGAS_abstractSyntaxInstructionForGrammarAnalysis_2D_weak & operator = (const class GALGAS_abstractSyntaxInstructionForGrammarAnalysis & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_abstractSyntaxInstructionForGrammarAnalysis bang_abstractSyntaxInstructionForGrammarAnalysis_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_abstractSyntaxInstructionForGrammarAnalysis bang_abstractSyntaxInstructionForGrammarAnalysis_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -4856,7 +4856,7 @@ class GALGAS_abstractSyntaxInstructionForGrammarAnalysis_2D_weak : public AC_GAL
 
 //--------------------------------- Object extraction
   public: static GALGAS_abstractSyntaxInstructionForGrammarAnalysis_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                                           C_Compiler * inCompiler
+                                                                                           Compiler * inCompiler
                                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -4909,7 +4909,7 @@ class GALGAS_syntaxInstructionListForGrammarAnalysis : public AC_GALGAS_list {
 
 //--------------------------------- Object extraction
   public: static GALGAS_syntaxInstructionListForGrammarAnalysis extractObject (const GALGAS_object & inObject,
-                                                                               C_Compiler * inCompiler
+                                                                               Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -4920,7 +4920,7 @@ class GALGAS_syntaxInstructionListForGrammarAnalysis : public AC_GALGAS_list {
 
 //--------------------------------- += operator (with expression)
   public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_syntaxInstructionListForGrammarAnalysis inOperand,
-                                                       class C_Compiler * inCompiler
+                                                       class Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
@@ -4928,65 +4928,65 @@ class GALGAS_syntaxInstructionListForGrammarAnalysis : public AC_GALGAS_list {
                                                      COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GALGAS_syntaxInstructionListForGrammarAnalysis add_operation (const GALGAS_syntaxInstructionListForGrammarAnalysis & inOperand,
-                                                                                         C_Compiler * inCompiler
+                                                                                         Compiler * inCompiler
                                                                                          COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_abstractSyntaxInstructionForGrammarAnalysis constinArgument0,
-                                               C_Compiler * inCompiler
+                                               Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_abstractSyntaxInstructionForGrammarAnalysis constinArgument0,
                                                       class GALGAS_uint constinArgument1,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popFirst (class GALGAS_abstractSyntaxInstructionForGrammarAnalysis & outArgument0,
-                                                 C_Compiler * inCompiler
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popLast (class GALGAS_abstractSyntaxInstructionForGrammarAnalysis & outArgument0,
-                                                C_Compiler * inCompiler
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GALGAS_abstractSyntaxInstructionForGrammarAnalysis & outArgument0,
                                                       class GALGAS_uint constinArgument1,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMInstructionAtIndex (class GALGAS_abstractSyntaxInstructionForGrammarAnalysis constinArgument0,
                                                                class GALGAS_uint constinArgument1,
-                                                               C_Compiler * inCompiler
+                                                               Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
   public: VIRTUAL_IN_DEBUG void method_first (class GALGAS_abstractSyntaxInstructionForGrammarAnalysis & outArgument0,
-                                              C_Compiler * inCompiler
+                                              Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG void method_last (class GALGAS_abstractSyntaxInstructionForGrammarAnalysis & outArgument0,
-                                             C_Compiler * inCompiler
+                                             Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: VIRTUAL_IN_DEBUG class GALGAS_abstractSyntaxInstructionForGrammarAnalysis getter_mInstructionAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                                                C_Compiler * inCompiler
+                                                                                                                Compiler * inCompiler
                                                                                                                 COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_syntaxInstructionListForGrammarAnalysis getter_subListFromIndex (const class GALGAS_uint & constinOperand0,
-                                                                                                         C_Compiler * inCompiler
+                                                                                                         Compiler * inCompiler
                                                                                                          COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_syntaxInstructionListForGrammarAnalysis getter_subListToIndex (const class GALGAS_uint & constinOperand0,
-                                                                                                       C_Compiler * inCompiler
+                                                                                                       Compiler * inCompiler
                                                                                                        COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_syntaxInstructionListForGrammarAnalysis getter_subListWithRange (const class GALGAS_range & constinOperand0,
-                                                                                                         C_Compiler * inCompiler
+                                                                                                         Compiler * inCompiler
                                                                                                          COMMA_LOCATION_ARGS) const ;
 
 
@@ -5056,12 +5056,12 @@ class GALGAS_syntaxInstructionListForGrammarAnalysis_2D_element : public AC_GALG
 
 //--------------------------------- Object extraction
   public: static GALGAS_syntaxInstructionListForGrammarAnalysis_2D_element extractObject (const GALGAS_object & inObject,
-                                                                                          C_Compiler * inCompiler
+                                                                                          Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_syntaxInstructionListForGrammarAnalysis_2D_element constructor_new (const class GALGAS_abstractSyntaxInstructionForGrammarAnalysis & inOperand0,
-                                                                                                  class C_Compiler * inCompiler
+                                                                                                  class Compiler * inCompiler
                                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -5117,7 +5117,7 @@ class GALGAS_productionRuleListForGrammarAnalysis : public AC_GALGAS_list {
 
 //--------------------------------- Object extraction
   public: static GALGAS_productionRuleListForGrammarAnalysis extractObject (const GALGAS_object & inObject,
-                                                                            C_Compiler * inCompiler
+                                                                            Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -5131,7 +5131,7 @@ class GALGAS_productionRuleListForGrammarAnalysis : public AC_GALGAS_list {
 
 //--------------------------------- += operator (with expression)
   public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_productionRuleListForGrammarAnalysis inOperand,
-                                                       class C_Compiler * inCompiler
+                                                       class Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
@@ -5142,7 +5142,7 @@ class GALGAS_productionRuleListForGrammarAnalysis : public AC_GALGAS_list {
                                                      COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GALGAS_productionRuleListForGrammarAnalysis add_operation (const GALGAS_productionRuleListForGrammarAnalysis & inOperand,
-                                                                                      C_Compiler * inCompiler
+                                                                                      Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) const ;
 
 
@@ -5151,7 +5151,7 @@ class GALGAS_productionRuleListForGrammarAnalysis : public AC_GALGAS_list {
                                                class GALGAS_uint constinArgument1,
                                                class GALGAS_syntaxInstructionListForGrammarAnalysis constinArgument2,
                                                class GALGAS_uint constinArgument3,
-                                               C_Compiler * inCompiler
+                                               Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_lstring constinArgument0,
@@ -5159,21 +5159,21 @@ class GALGAS_productionRuleListForGrammarAnalysis : public AC_GALGAS_list {
                                                       class GALGAS_syntaxInstructionListForGrammarAnalysis constinArgument2,
                                                       class GALGAS_uint constinArgument3,
                                                       class GALGAS_uint constinArgument4,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popFirst (class GALGAS_lstring & outArgument0,
                                                  class GALGAS_uint & outArgument1,
                                                  class GALGAS_syntaxInstructionListForGrammarAnalysis & outArgument2,
                                                  class GALGAS_uint & outArgument3,
-                                                 C_Compiler * inCompiler
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popLast (class GALGAS_lstring & outArgument0,
                                                 class GALGAS_uint & outArgument1,
                                                 class GALGAS_syntaxInstructionListForGrammarAnalysis & outArgument2,
                                                 class GALGAS_uint & outArgument3,
-                                                C_Compiler * inCompiler
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GALGAS_lstring & outArgument0,
@@ -5181,27 +5181,27 @@ class GALGAS_productionRuleListForGrammarAnalysis : public AC_GALGAS_list {
                                                       class GALGAS_syntaxInstructionListForGrammarAnalysis & outArgument2,
                                                       class GALGAS_uint & outArgument3,
                                                       class GALGAS_uint constinArgument4,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMInstructionListAtIndex (class GALGAS_syntaxInstructionListForGrammarAnalysis constinArgument0,
                                                                    class GALGAS_uint constinArgument1,
-                                                                   C_Compiler * inCompiler
+                                                                   Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMLeftNonterminalSymbolAtIndex (class GALGAS_lstring constinArgument0,
                                                                          class GALGAS_uint constinArgument1,
-                                                                         C_Compiler * inCompiler
+                                                                         Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMLeftNonterminalSymbolIndexAtIndex (class GALGAS_uint constinArgument0,
                                                                               class GALGAS_uint constinArgument1,
-                                                                              C_Compiler * inCompiler
+                                                                              Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMProductionIndexAtIndex (class GALGAS_uint constinArgument0,
                                                                    class GALGAS_uint constinArgument1,
-                                                                   C_Compiler * inCompiler
+                                                                   Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
 
 
@@ -5210,45 +5210,45 @@ class GALGAS_productionRuleListForGrammarAnalysis : public AC_GALGAS_list {
                                               class GALGAS_uint & outArgument1,
                                               class GALGAS_syntaxInstructionListForGrammarAnalysis & outArgument2,
                                               class GALGAS_uint & outArgument3,
-                                              C_Compiler * inCompiler
+                                              Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG void method_last (class GALGAS_lstring & outArgument0,
                                              class GALGAS_uint & outArgument1,
                                              class GALGAS_syntaxInstructionListForGrammarAnalysis & outArgument2,
                                              class GALGAS_uint & outArgument3,
-                                             C_Compiler * inCompiler
+                                             Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: VIRTUAL_IN_DEBUG class GALGAS_syntaxInstructionListForGrammarAnalysis getter_mInstructionListAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                                                C_Compiler * inCompiler
+                                                                                                                Compiler * inCompiler
                                                                                                                 COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mLeftNonterminalSymbolAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                      C_Compiler * inCompiler
+                                                                                      Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_uint getter_mLeftNonterminalSymbolIndexAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                        C_Compiler * inCompiler
+                                                                                        Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_uint getter_mProductionIndexAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                             C_Compiler * inCompiler
+                                                                             Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_productionRuleListForGrammarAnalysis getter_subListFromIndex (const class GALGAS_uint & constinOperand0,
-                                                                                                      C_Compiler * inCompiler
+                                                                                                      Compiler * inCompiler
                                                                                                       COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_productionRuleListForGrammarAnalysis getter_subListToIndex (const class GALGAS_uint & constinOperand0,
-                                                                                                    C_Compiler * inCompiler
+                                                                                                    Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_productionRuleListForGrammarAnalysis getter_subListWithRange (const class GALGAS_range & constinOperand0,
-                                                                                                      C_Compiler * inCompiler
+                                                                                                      Compiler * inCompiler
                                                                                                       COMMA_LOCATION_ARGS) const ;
 
 
@@ -5351,7 +5351,7 @@ class GALGAS_productionRuleListForGrammarAnalysis_2D_element : public AC_GALGAS_
 
 //--------------------------------- Object extraction
   public: static GALGAS_productionRuleListForGrammarAnalysis_2D_element extractObject (const GALGAS_object & inObject,
-                                                                                       C_Compiler * inCompiler
+                                                                                       Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -5359,7 +5359,7 @@ class GALGAS_productionRuleListForGrammarAnalysis_2D_element : public AC_GALGAS_
                                                                                                const class GALGAS_uint & inOperand1,
                                                                                                const class GALGAS_syntaxInstructionListForGrammarAnalysis & inOperand2,
                                                                                                const class GALGAS_uint & inOperand3,
-                                                                                               class C_Compiler * inCompiler
+                                                                                               class Compiler * inCompiler
                                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -5412,7 +5412,7 @@ class GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis : public AC_GALGAS_map
 
 //--------------------------------- Object extraction
   public: static GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis extractObject (const GALGAS_object & inObject,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -5424,23 +5424,23 @@ class GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis : public AC_GALGAS_map
 //--------------------------------- += operator (with list of field expressions)
   public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
                                                      const class GALGAS_uint & inOperand1,
-                                                     C_Compiler * inCompiler
+                                                     Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis add_operation (const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis & inOperand,
-                                                                                              C_Compiler * inCompiler
+                                                                                              Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_insertKey (class GALGAS_lstring constinArgument0,
                                                   class GALGAS_uint constinArgument1,
-                                                  C_Compiler * inCompiler
+                                                  Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMNonTerminalIndexForKey (class GALGAS_uint constinArgument0,
                                                                    class GALGAS_string constinArgument1,
-                                                                   C_Compiler * inCompiler
+                                                                   Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
 
 
@@ -5449,10 +5449,10 @@ class GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis : public AC_GALGAS_map
 
 //--------------------------------- Getters
   public: VIRTUAL_IN_DEBUG class GALGAS_uint getter_mNonTerminalIndexForKey (const class GALGAS_string & constinOperand0,
-                                                                             C_Compiler * inCompiler
+                                                                             Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis getter_overriddenMap (C_Compiler * inCompiler
+  public: VIRTUAL_IN_DEBUG class GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis getter_overriddenMap (Compiler * inCompiler
                                                                                                            COMMA_LOCATION_ARGS) const ;
 
 
@@ -5463,7 +5463,7 @@ class GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis : public AC_GALGAS_map
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-  public: VIRTUAL_IN_DEBUG cMapElement_unusedNonTerminalSymbolMapForGrammarAnalysis * readWriteAccessForWithInstruction (C_Compiler * inCompiler,
+  public: VIRTUAL_IN_DEBUG cMapElement_unusedNonTerminalSymbolMapForGrammarAnalysis * readWriteAccessForWithInstruction (Compiler * inCompiler,
                                                                                                                          const GALGAS_string & inKey
                                                                                                                          COMMA_LOCATION_ARGS) ;
 
@@ -5568,13 +5568,13 @@ class GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis_2D_element : public AC
 
 //--------------------------------- Object extraction
   public: static GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis_2D_element extractObject (const GALGAS_object & inObject,
-                                                                                               C_Compiler * inCompiler
+                                                                                               Compiler * inCompiler
                                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
                                                                                                        const class GALGAS_uint & inOperand1,
-                                                                                                       class C_Compiler * inCompiler
+                                                                                                       class Compiler * inCompiler
                                                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -5619,7 +5619,7 @@ class GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis : public AC_GALGAS_so
 
 //--------------------------------- Object extraction
   public: static GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis extractObject (const GALGAS_object & inObject,
-                                                                                     C_Compiler * inCompiler
+                                                                                     Compiler * inCompiler
                                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -5632,7 +5632,7 @@ class GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis : public AC_GALGAS_so
 
 //--------------------------------- += operator (with expression)
   public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis inOperand,
-                                                       class C_Compiler * inCompiler
+                                                       class Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
@@ -5645,19 +5645,19 @@ class GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis : public AC_GALGAS_so
   public: VIRTUAL_IN_DEBUG void setter_insert (class GALGAS_lstring inArgument0,
                                                class GALGAS_uint inArgument1,
                                                class GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis inArgument2,
-                                               C_Compiler * inCompiler
+                                               Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popGreatest (class GALGAS_lstring & outArgument0,
                                                     class GALGAS_uint & outArgument1,
                                                     class GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis & outArgument2,
-                                                    C_Compiler * inCompiler
+                                                    Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popSmallest (class GALGAS_lstring & outArgument0,
                                                     class GALGAS_uint & outArgument1,
                                                     class GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis & outArgument2,
-                                                    C_Compiler * inCompiler
+                                                    Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) ;
 
 
@@ -5665,13 +5665,13 @@ class GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis : public AC_GALGAS_so
   public: VIRTUAL_IN_DEBUG void method_greatest (class GALGAS_lstring & outArgument0,
                                                  class GALGAS_uint & outArgument1,
                                                  class GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis & outArgument2,
-                                                 C_Compiler * inCompiler
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG void method_smallest (class GALGAS_lstring & outArgument0,
                                                  class GALGAS_uint & outArgument1,
                                                  class GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis & outArgument2,
-                                                 C_Compiler * inCompiler
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Class Methods
@@ -5766,14 +5766,14 @@ class GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis_2D_element : public A
 
 //--------------------------------- Object extraction
   public: static GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis_2D_element extractObject (const GALGAS_object & inObject,
-                                                                                                C_Compiler * inCompiler
+                                                                                                Compiler * inCompiler
                                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
                                                                                                         const class GALGAS_uint & inOperand1,
                                                                                                         const class GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis & inOperand2,
-                                                                                                        class C_Compiler * inCompiler
+                                                                                                        class Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -5826,7 +5826,7 @@ class GALGAS_terminalInstructionForGrammarAnalysis : public GALGAS_abstractSynta
 
 //--------------------------------- Object extraction
   public: static GALGAS_terminalInstructionForGrammarAnalysis extractObject (const GALGAS_object & inObject,
-                                                                             C_Compiler * inCompiler
+                                                                             Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -5875,7 +5875,7 @@ class GALGAS_terminalInstructionForGrammarAnalysis_2D_weak : public GALGAS_abstr
   public: GALGAS_terminalInstructionForGrammarAnalysis_2D_weak & operator = (const class GALGAS_terminalInstructionForGrammarAnalysis & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_terminalInstructionForGrammarAnalysis bang_terminalInstructionForGrammarAnalysis_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_terminalInstructionForGrammarAnalysis bang_terminalInstructionForGrammarAnalysis_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -5884,7 +5884,7 @@ class GALGAS_terminalInstructionForGrammarAnalysis_2D_weak : public GALGAS_abstr
 
 //--------------------------------- Object extraction
   public: static GALGAS_terminalInstructionForGrammarAnalysis_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                                     C_Compiler * inCompiler
+                                                                                     Compiler * inCompiler
                                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -5937,7 +5937,7 @@ class GALGAS_nonTerminalInstructionForGrammarAnalysis : public GALGAS_abstractSy
 
 //--------------------------------- Object extraction
   public: static GALGAS_nonTerminalInstructionForGrammarAnalysis extractObject (const GALGAS_object & inObject,
-                                                                                C_Compiler * inCompiler
+                                                                                Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -5986,7 +5986,7 @@ class GALGAS_nonTerminalInstructionForGrammarAnalysis_2D_weak : public GALGAS_ab
   public: GALGAS_nonTerminalInstructionForGrammarAnalysis_2D_weak & operator = (const class GALGAS_nonTerminalInstructionForGrammarAnalysis & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_nonTerminalInstructionForGrammarAnalysis bang_nonTerminalInstructionForGrammarAnalysis_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_nonTerminalInstructionForGrammarAnalysis bang_nonTerminalInstructionForGrammarAnalysis_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -5995,7 +5995,7 @@ class GALGAS_nonTerminalInstructionForGrammarAnalysis_2D_weak : public GALGAS_ab
 
 //--------------------------------- Object extraction
   public: static GALGAS_nonTerminalInstructionForGrammarAnalysis_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                                        C_Compiler * inCompiler
+                                                                                        Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -6048,7 +6048,7 @@ class GALGAS_branchListForGrammarAnalysis : public AC_GALGAS_list {
 
 //--------------------------------- Object extraction
   public: static GALGAS_branchListForGrammarAnalysis extractObject (const GALGAS_object & inObject,
-                                                                    C_Compiler * inCompiler
+                                                                    Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -6059,7 +6059,7 @@ class GALGAS_branchListForGrammarAnalysis : public AC_GALGAS_list {
 
 //--------------------------------- += operator (with expression)
   public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_branchListForGrammarAnalysis inOperand,
-                                                       class C_Compiler * inCompiler
+                                                       class Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
@@ -6067,65 +6067,65 @@ class GALGAS_branchListForGrammarAnalysis : public AC_GALGAS_list {
                                                      COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GALGAS_branchListForGrammarAnalysis add_operation (const GALGAS_branchListForGrammarAnalysis & inOperand,
-                                                                              C_Compiler * inCompiler
+                                                                              Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_syntaxInstructionListForGrammarAnalysis constinArgument0,
-                                               C_Compiler * inCompiler
+                                               Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_syntaxInstructionListForGrammarAnalysis constinArgument0,
                                                       class GALGAS_uint constinArgument1,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popFirst (class GALGAS_syntaxInstructionListForGrammarAnalysis & outArgument0,
-                                                 C_Compiler * inCompiler
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popLast (class GALGAS_syntaxInstructionListForGrammarAnalysis & outArgument0,
-                                                C_Compiler * inCompiler
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GALGAS_syntaxInstructionListForGrammarAnalysis & outArgument0,
                                                       class GALGAS_uint constinArgument1,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMSyntaxInstructionListAtIndex (class GALGAS_syntaxInstructionListForGrammarAnalysis constinArgument0,
                                                                          class GALGAS_uint constinArgument1,
-                                                                         C_Compiler * inCompiler
+                                                                         Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
   public: VIRTUAL_IN_DEBUG void method_first (class GALGAS_syntaxInstructionListForGrammarAnalysis & outArgument0,
-                                              C_Compiler * inCompiler
+                                              Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG void method_last (class GALGAS_syntaxInstructionListForGrammarAnalysis & outArgument0,
-                                             C_Compiler * inCompiler
+                                             Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: VIRTUAL_IN_DEBUG class GALGAS_syntaxInstructionListForGrammarAnalysis getter_mSyntaxInstructionListAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                                                      C_Compiler * inCompiler
+                                                                                                                      Compiler * inCompiler
                                                                                                                       COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_branchListForGrammarAnalysis getter_subListFromIndex (const class GALGAS_uint & constinOperand0,
-                                                                                              C_Compiler * inCompiler
+                                                                                              Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_branchListForGrammarAnalysis getter_subListToIndex (const class GALGAS_uint & constinOperand0,
-                                                                                            C_Compiler * inCompiler
+                                                                                            Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_branchListForGrammarAnalysis getter_subListWithRange (const class GALGAS_range & constinOperand0,
-                                                                                              C_Compiler * inCompiler
+                                                                                              Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) const ;
 
 
@@ -6195,12 +6195,12 @@ class GALGAS_branchListForGrammarAnalysis_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Object extraction
   public: static GALGAS_branchListForGrammarAnalysis_2D_element extractObject (const GALGAS_object & inObject,
-                                                                               C_Compiler * inCompiler
+                                                                               Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_branchListForGrammarAnalysis_2D_element constructor_new (const class GALGAS_syntaxInstructionListForGrammarAnalysis & inOperand0,
-                                                                                       class C_Compiler * inCompiler
+                                                                                       class Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -6253,7 +6253,7 @@ class GALGAS_selectInstructionForGrammarAnalysis : public GALGAS_abstractSyntaxI
 
 //--------------------------------- Object extraction
   public: static GALGAS_selectInstructionForGrammarAnalysis extractObject (const GALGAS_object & inObject,
-                                                                           C_Compiler * inCompiler
+                                                                           Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -6302,7 +6302,7 @@ class GALGAS_selectInstructionForGrammarAnalysis_2D_weak : public GALGAS_abstrac
   public: GALGAS_selectInstructionForGrammarAnalysis_2D_weak & operator = (const class GALGAS_selectInstructionForGrammarAnalysis & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_selectInstructionForGrammarAnalysis bang_selectInstructionForGrammarAnalysis_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_selectInstructionForGrammarAnalysis bang_selectInstructionForGrammarAnalysis_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -6311,7 +6311,7 @@ class GALGAS_selectInstructionForGrammarAnalysis_2D_weak : public GALGAS_abstrac
 
 //--------------------------------- Object extraction
   public: static GALGAS_selectInstructionForGrammarAnalysis_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                                   C_Compiler * inCompiler
+                                                                                   Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -6364,7 +6364,7 @@ class GALGAS_repeatInstructionForGrammarAnalysis : public GALGAS_abstractSyntaxI
 
 //--------------------------------- Object extraction
   public: static GALGAS_repeatInstructionForGrammarAnalysis extractObject (const GALGAS_object & inObject,
-                                                                           C_Compiler * inCompiler
+                                                                           Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -6413,7 +6413,7 @@ class GALGAS_repeatInstructionForGrammarAnalysis_2D_weak : public GALGAS_abstrac
   public: GALGAS_repeatInstructionForGrammarAnalysis_2D_weak & operator = (const class GALGAS_repeatInstructionForGrammarAnalysis & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_repeatInstructionForGrammarAnalysis bang_repeatInstructionForGrammarAnalysis_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_repeatInstructionForGrammarAnalysis bang_repeatInstructionForGrammarAnalysis_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -6422,7 +6422,7 @@ class GALGAS_repeatInstructionForGrammarAnalysis_2D_weak : public GALGAS_abstrac
 
 //--------------------------------- Object extraction
   public: static GALGAS_repeatInstructionForGrammarAnalysis_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                                   C_Compiler * inCompiler
+                                                                                   Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -6476,7 +6476,7 @@ class GALGAS_syntaxComponentListForGrammarAnalysis : public AC_GALGAS_list {
 
 //--------------------------------- Object extraction
   public: static GALGAS_syntaxComponentListForGrammarAnalysis extractObject (const GALGAS_object & inObject,
-                                                                             C_Compiler * inCompiler
+                                                                             Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -6488,7 +6488,7 @@ class GALGAS_syntaxComponentListForGrammarAnalysis : public AC_GALGAS_list {
 
 //--------------------------------- += operator (with expression)
   public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_syntaxComponentListForGrammarAnalysis inOperand,
-                                                       class C_Compiler * inCompiler
+                                                       class Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
@@ -6497,81 +6497,81 @@ class GALGAS_syntaxComponentListForGrammarAnalysis : public AC_GALGAS_list {
                                                      COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GALGAS_syntaxComponentListForGrammarAnalysis add_operation (const GALGAS_syntaxComponentListForGrammarAnalysis & inOperand,
-                                                                                       C_Compiler * inCompiler
+                                                                                       Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_productionRuleListForGrammarAnalysis constinArgument0,
                                                class GALGAS_lstring constinArgument1,
-                                               C_Compiler * inCompiler
+                                               Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_productionRuleListForGrammarAnalysis constinArgument0,
                                                       class GALGAS_lstring constinArgument1,
                                                       class GALGAS_uint constinArgument2,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popFirst (class GALGAS_productionRuleListForGrammarAnalysis & outArgument0,
                                                  class GALGAS_lstring & outArgument1,
-                                                 C_Compiler * inCompiler
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popLast (class GALGAS_productionRuleListForGrammarAnalysis & outArgument0,
                                                 class GALGAS_lstring & outArgument1,
-                                                C_Compiler * inCompiler
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GALGAS_productionRuleListForGrammarAnalysis & outArgument0,
                                                       class GALGAS_lstring & outArgument1,
                                                       class GALGAS_uint constinArgument2,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMProductionRulesListAtIndex (class GALGAS_productionRuleListForGrammarAnalysis constinArgument0,
                                                                        class GALGAS_uint constinArgument1,
-                                                                       C_Compiler * inCompiler
+                                                                       Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMSyntaxComponentNameAtIndex (class GALGAS_lstring constinArgument0,
                                                                        class GALGAS_uint constinArgument1,
-                                                                       C_Compiler * inCompiler
+                                                                       Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
   public: VIRTUAL_IN_DEBUG void method_first (class GALGAS_productionRuleListForGrammarAnalysis & outArgument0,
                                               class GALGAS_lstring & outArgument1,
-                                              C_Compiler * inCompiler
+                                              Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG void method_last (class GALGAS_productionRuleListForGrammarAnalysis & outArgument0,
                                              class GALGAS_lstring & outArgument1,
-                                             C_Compiler * inCompiler
+                                             Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: VIRTUAL_IN_DEBUG class GALGAS_productionRuleListForGrammarAnalysis getter_mProductionRulesListAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                                                 C_Compiler * inCompiler
+                                                                                                                 Compiler * inCompiler
                                                                                                                  COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mSyntaxComponentNameAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_syntaxComponentListForGrammarAnalysis getter_subListFromIndex (const class GALGAS_uint & constinOperand0,
-                                                                                                       C_Compiler * inCompiler
+                                                                                                       Compiler * inCompiler
                                                                                                        COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_syntaxComponentListForGrammarAnalysis getter_subListToIndex (const class GALGAS_uint & constinOperand0,
-                                                                                                     C_Compiler * inCompiler
+                                                                                                     Compiler * inCompiler
                                                                                                      COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_syntaxComponentListForGrammarAnalysis getter_subListWithRange (const class GALGAS_range & constinOperand0,
-                                                                                                       C_Compiler * inCompiler
+                                                                                                       Compiler * inCompiler
                                                                                                        COMMA_LOCATION_ARGS) const ;
 
 
@@ -6652,13 +6652,13 @@ class GALGAS_syntaxComponentListForGrammarAnalysis_2D_element : public AC_GALGAS
 
 //--------------------------------- Object extraction
   public: static GALGAS_syntaxComponentListForGrammarAnalysis_2D_element extractObject (const GALGAS_object & inObject,
-                                                                                        C_Compiler * inCompiler
+                                                                                        Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_syntaxComponentListForGrammarAnalysis_2D_element constructor_new (const class GALGAS_productionRuleListForGrammarAnalysis & inOperand0,
                                                                                                 const class GALGAS_lstring & inOperand1,
-                                                                                                class C_Compiler * inCompiler
+                                                                                                class Compiler * inCompiler
                                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -6715,7 +6715,7 @@ class GALGAS_terminalSymbolsMapForGrammarAnalysis : public AC_GALGAS_map {
 
 //--------------------------------- Object extraction
   public: static GALGAS_terminalSymbolsMapForGrammarAnalysis extractObject (const GALGAS_object & inObject,
-                                                                            C_Compiler * inCompiler
+                                                                            Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -6727,40 +6727,40 @@ class GALGAS_terminalSymbolsMapForGrammarAnalysis : public AC_GALGAS_map {
 //--------------------------------- += operator (with list of field expressions)
   public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
                                                      const class GALGAS_uint & inOperand1,
-                                                     C_Compiler * inCompiler
+                                                     Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GALGAS_terminalSymbolsMapForGrammarAnalysis add_operation (const GALGAS_terminalSymbolsMapForGrammarAnalysis & inOperand,
-                                                                                      C_Compiler * inCompiler
+                                                                                      Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_insertKey (class GALGAS_lstring constinArgument0,
                                                   class GALGAS_uint constinArgument1,
-                                                  C_Compiler * inCompiler
+                                                  Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMTerminalIndexForKey (class GALGAS_uint constinArgument0,
                                                                 class GALGAS_string constinArgument1,
-                                                                C_Compiler * inCompiler
+                                                                Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
   public: VIRTUAL_IN_DEBUG void method_searchKey (class GALGAS_lstring constinArgument0,
                                                   class GALGAS_uint & outArgument1,
-                                                  C_Compiler * inCompiler
+                                                  Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: VIRTUAL_IN_DEBUG class GALGAS_uint getter_mTerminalIndexForKey (const class GALGAS_string & constinOperand0,
-                                                                          C_Compiler * inCompiler
+                                                                          Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GALGAS_terminalSymbolsMapForGrammarAnalysis getter_overriddenMap (C_Compiler * inCompiler
+  public: VIRTUAL_IN_DEBUG class GALGAS_terminalSymbolsMapForGrammarAnalysis getter_overriddenMap (Compiler * inCompiler
                                                                                                    COMMA_LOCATION_ARGS) const ;
 
 
@@ -6771,7 +6771,7 @@ class GALGAS_terminalSymbolsMapForGrammarAnalysis : public AC_GALGAS_map {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-  public: VIRTUAL_IN_DEBUG cMapElement_terminalSymbolsMapForGrammarAnalysis * readWriteAccessForWithInstruction (C_Compiler * inCompiler,
+  public: VIRTUAL_IN_DEBUG cMapElement_terminalSymbolsMapForGrammarAnalysis * readWriteAccessForWithInstruction (Compiler * inCompiler,
                                                                                                                  const GALGAS_string & inKey
                                                                                                                  COMMA_LOCATION_ARGS) ;
 
@@ -6876,13 +6876,13 @@ class GALGAS_terminalSymbolsMapForGrammarAnalysis_2D_element : public AC_GALGAS_
 
 //--------------------------------- Object extraction
   public: static GALGAS_terminalSymbolsMapForGrammarAnalysis_2D_element extractObject (const GALGAS_object & inObject,
-                                                                                       C_Compiler * inCompiler
+                                                                                       Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_terminalSymbolsMapForGrammarAnalysis_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
                                                                                                const class GALGAS_uint & inOperand1,
-                                                                                               class C_Compiler * inCompiler
+                                                                                               class Compiler * inCompiler
                                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -6921,7 +6921,7 @@ void callExtensionMethod_transformInstruction (class cPtr_syntaxInstructionAST *
                                                const class GALGAS_nonTerminalSymbolMapForGrammarAnalysis constin_inNonTerminalSymbolMap,
                                                class GALGAS_uint & io_ioAddedNonTerminalIndex,
                                                class GALGAS_syntaxInstructionListForGrammarAnalysis & io_ioSyntaxInstructionList,
-                                               class C_Compiler * inCompiler
+                                               class Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -6939,7 +6939,7 @@ void extensionMethod_tikzNodeForSyntaxInstruction (const class GALGAS_syntaxInst
                                                    class GALGAS_string & io_ioArrows,
                                                    class GALGAS_uint & io_ioMaxUsedRowIndex,
                                                    const class GALGAS_bool constin_inDebug,
-                                                   class C_Compiler * inCompiler
+                                                   class Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -6967,7 +6967,7 @@ class GALGAS_rowList : public AC_GALGAS_list {
 
 //--------------------------------- Object extraction
   public: static GALGAS_rowList extractObject (const GALGAS_object & inObject,
-                                               C_Compiler * inCompiler
+                                               Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -6978,7 +6978,7 @@ class GALGAS_rowList : public AC_GALGAS_list {
 
 //--------------------------------- += operator (with expression)
   public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_rowList inOperand,
-                                                       class C_Compiler * inCompiler
+                                                       class Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
@@ -6986,65 +6986,65 @@ class GALGAS_rowList : public AC_GALGAS_list {
                                                      COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GALGAS_rowList add_operation (const GALGAS_rowList & inOperand,
-                                                         C_Compiler * inCompiler
+                                                         Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS__32_stringlist constinArgument0,
-                                               C_Compiler * inCompiler
+                                               Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS__32_stringlist constinArgument0,
                                                       class GALGAS_uint constinArgument1,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popFirst (class GALGAS__32_stringlist & outArgument0,
-                                                 C_Compiler * inCompiler
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popLast (class GALGAS__32_stringlist & outArgument0,
-                                                C_Compiler * inCompiler
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GALGAS__32_stringlist & outArgument0,
                                                       class GALGAS_uint constinArgument1,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setColumnsAtIndex (class GALGAS__32_stringlist constinArgument0,
                                                           class GALGAS_uint constinArgument1,
-                                                          C_Compiler * inCompiler
+                                                          Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
   public: VIRTUAL_IN_DEBUG void method_first (class GALGAS__32_stringlist & outArgument0,
-                                              C_Compiler * inCompiler
+                                              Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG void method_last (class GALGAS__32_stringlist & outArgument0,
-                                             C_Compiler * inCompiler
+                                             Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: VIRTUAL_IN_DEBUG class GALGAS__32_stringlist getter_columnsAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                              C_Compiler * inCompiler
+                                                                              Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_rowList getter_subListFromIndex (const class GALGAS_uint & constinOperand0,
-                                                                         C_Compiler * inCompiler
+                                                                         Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_rowList getter_subListToIndex (const class GALGAS_uint & constinOperand0,
-                                                                       C_Compiler * inCompiler
+                                                                       Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_rowList getter_subListWithRange (const class GALGAS_range & constinOperand0,
-                                                                         C_Compiler * inCompiler
+                                                                         Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) const ;
 
 
@@ -7091,7 +7091,7 @@ void callExtensionMethod_tikzNodeForSyntaxInstruction (class cPtr_abstractSyntax
                                                        class GALGAS_string & io_ioArrows,
                                                        class GALGAS_uint & io_ioMaxUsedRowIndex,
                                                        const class GALGAS_bool constin_inDebug,
-                                                       class C_Compiler * inCompiler
+                                                       class Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -7105,7 +7105,7 @@ void extensionSetter_appendRow (class GALGAS_rowList & ioObject,
                                 const class GALGAS_uint constin_inRow,
                                 const class GALGAS_uint constin_inColumn,
                                 class GALGAS_string & out_outNodeName,
-                                class C_Compiler * inCompiler
+                                class Compiler * inCompiler
                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -7146,12 +7146,12 @@ class GALGAS_rowList_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Object extraction
   public: static GALGAS_rowList_2D_element extractObject (const GALGAS_object & inObject,
-                                                          C_Compiler * inCompiler
+                                                          Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_rowList_2D_element constructor_new (const class GALGAS__32_stringlist & inOperand0,
-                                                                  class C_Compiler * inCompiler
+                                                                  class Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -7186,7 +7186,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_rowList_2D_element 
 //--------------------------------------------------------------------------------------------------
 
 class GALGAS_bool extensionGetter_displayVertically (const class GALGAS_syntaxInstructionListForGrammarAnalysis & inObject,
-                                                     class C_Compiler * inCompiler
+                                                     class Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -7196,7 +7196,7 @@ class GALGAS_bool extensionGetter_displayVertically (const class GALGAS_syntaxIn
 //--------------------------------------------------------------------------------------------------
 
 class GALGAS_bool callExtensionGetter_isLinear (const class cPtr_abstractSyntaxInstructionForGrammarAnalysis * inObject,
-                                                class C_Compiler * inCompiler
+                                                class Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -7224,7 +7224,7 @@ class GALGAS_programListForGeneration : public AC_GALGAS_list {
 
 //--------------------------------- Object extraction
   public: static GALGAS_programListForGeneration extractObject (const GALGAS_object & inObject,
-                                                                C_Compiler * inCompiler
+                                                                Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -7235,7 +7235,7 @@ class GALGAS_programListForGeneration : public AC_GALGAS_list {
 
 //--------------------------------- += operator (with expression)
   public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_programListForGeneration inOperand,
-                                                       class C_Compiler * inCompiler
+                                                       class Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
@@ -7243,65 +7243,65 @@ class GALGAS_programListForGeneration : public AC_GALGAS_list {
                                                      COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GALGAS_programListForGeneration add_operation (const GALGAS_programListForGeneration & inOperand,
-                                                                          C_Compiler * inCompiler
+                                                                          Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_semanticDeclarationForGeneration constinArgument0,
-                                               C_Compiler * inCompiler
+                                               Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_semanticDeclarationForGeneration constinArgument0,
                                                       class GALGAS_uint constinArgument1,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popFirst (class GALGAS_semanticDeclarationForGeneration & outArgument0,
-                                                 C_Compiler * inCompiler
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popLast (class GALGAS_semanticDeclarationForGeneration & outArgument0,
-                                                C_Compiler * inCompiler
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GALGAS_semanticDeclarationForGeneration & outArgument0,
                                                       class GALGAS_uint constinArgument1,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMDeclarationAtIndex (class GALGAS_semanticDeclarationForGeneration constinArgument0,
                                                                class GALGAS_uint constinArgument1,
-                                                               C_Compiler * inCompiler
+                                                               Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
   public: VIRTUAL_IN_DEBUG void method_first (class GALGAS_semanticDeclarationForGeneration & outArgument0,
-                                              C_Compiler * inCompiler
+                                              Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG void method_last (class GALGAS_semanticDeclarationForGeneration & outArgument0,
-                                             C_Compiler * inCompiler
+                                             Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: VIRTUAL_IN_DEBUG class GALGAS_semanticDeclarationForGeneration getter_mDeclarationAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                                     C_Compiler * inCompiler
+                                                                                                     Compiler * inCompiler
                                                                                                      COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_programListForGeneration getter_subListFromIndex (const class GALGAS_uint & constinOperand0,
-                                                                                          C_Compiler * inCompiler
+                                                                                          Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_programListForGeneration getter_subListToIndex (const class GALGAS_uint & constinOperand0,
-                                                                                        C_Compiler * inCompiler
+                                                                                        Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_programListForGeneration getter_subListWithRange (const class GALGAS_range & constinOperand0,
-                                                                                          C_Compiler * inCompiler
+                                                                                          Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) const ;
 
 
@@ -7371,12 +7371,12 @@ class GALGAS_programListForGeneration_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Object extraction
   public: static GALGAS_programListForGeneration_2D_element extractObject (const GALGAS_object & inObject,
-                                                                           C_Compiler * inCompiler
+                                                                           Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_programListForGeneration_2D_element constructor_new (const class GALGAS_semanticDeclarationForGeneration & inOperand0,
-                                                                                   class C_Compiler * inCompiler
+                                                                                   class Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -7421,7 +7421,7 @@ class GALGAS_genericExtensionMethodListMap : public AC_GALGAS_listmap {
 
 //--------------------------------- Object extraction
   public: static GALGAS_genericExtensionMethodListMap extractObject (const GALGAS_object & inObject,
-                                                                     C_Compiler * inCompiler
+                                                                     Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -7435,7 +7435,7 @@ class GALGAS_genericExtensionMethodListMap : public AC_GALGAS_listmap {
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_insert (class GALGAS_string constinArgument0,
                                                class GALGAS_lstring constinArgument1,
-                                               C_Compiler * inCompiler
+                                               Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
 
@@ -7524,13 +7524,13 @@ class GALGAS_genericExtensionMethodListMap_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Object extraction
   public: static GALGAS_genericExtensionMethodListMap_2D_element extractObject (const GALGAS_object & inObject,
-                                                                                C_Compiler * inCompiler
+                                                                                Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_genericExtensionMethodListMap_2D_element constructor_new (const class GALGAS_string & inOperand0,
                                                                                         const class GALGAS_lstringlist & inOperand1,
-                                                                                        class C_Compiler * inCompiler
+                                                                                        class Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -7577,7 +7577,7 @@ void callExtensionMethod_buildExtensionListMaps (class cPtr_semanticDeclarationA
                                                  class GALGAS_genericExtensionMethodListMap & io_ioExtensionGetterListMap,
                                                  class GALGAS_genericExtensionMethodListMap & io_ioOverridingExtensionGetterListMap,
                                                  class GALGAS_genericExtensionMethodListMap & io_ioOverridingAbstractExtensionGetterListMap,
-                                                 C_Compiler * inCompiler
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -7597,7 +7597,7 @@ class GALGAS_descendantClassListMap : public AC_GALGAS_listmap {
 
 //--------------------------------- Object extraction
   public: static GALGAS_descendantClassListMap extractObject (const GALGAS_object & inObject,
-                                                              C_Compiler * inCompiler
+                                                              Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -7611,7 +7611,7 @@ class GALGAS_descendantClassListMap : public AC_GALGAS_listmap {
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_insert (class GALGAS_string constinArgument0,
                                                class GALGAS_unifiedTypeMapEntry constinArgument1,
-                                               C_Compiler * inCompiler
+                                               Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
 
@@ -7700,13 +7700,13 @@ class GALGAS_descendantClassListMap_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Object extraction
   public: static GALGAS_descendantClassListMap_2D_element extractObject (const GALGAS_object & inObject,
-                                                                         C_Compiler * inCompiler
+                                                                         Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_descendantClassListMap_2D_element constructor_new (const class GALGAS_string & inOperand0,
                                                                                  const class GALGAS_unifiedTypeMapEntryList & inOperand1,
-                                                                                 class C_Compiler * inCompiler
+                                                                                 class Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -7759,7 +7759,7 @@ class GALGAS_extensionMethodMapForGlobalCheckings : public AC_GALGAS_map {
 
 //--------------------------------- Object extraction
   public: static GALGAS_extensionMethodMapForGlobalCheckings extractObject (const GALGAS_object & inObject,
-                                                                            C_Compiler * inCompiler
+                                                                            Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -7770,17 +7770,17 @@ class GALGAS_extensionMethodMapForGlobalCheckings : public AC_GALGAS_map {
 
 //--------------------------------- += operator (with list of field expressions)
   public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
-                                                     C_Compiler * inCompiler
+                                                     Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GALGAS_extensionMethodMapForGlobalCheckings add_operation (const GALGAS_extensionMethodMapForGlobalCheckings & inOperand,
-                                                                                      C_Compiler * inCompiler
+                                                                                      Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_insertKey (class GALGAS_lstring constinArgument0,
-                                                  C_Compiler * inCompiler
+                                                  Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
 
 
@@ -7788,7 +7788,7 @@ class GALGAS_extensionMethodMapForGlobalCheckings : public AC_GALGAS_map {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_extensionMethodMapForGlobalCheckings getter_overriddenMap (C_Compiler * inCompiler
+  public: VIRTUAL_IN_DEBUG class GALGAS_extensionMethodMapForGlobalCheckings getter_overriddenMap (Compiler * inCompiler
                                                                                                    COMMA_LOCATION_ARGS) const ;
 
 
@@ -7798,7 +7798,7 @@ class GALGAS_extensionMethodMapForGlobalCheckings : public AC_GALGAS_map {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-  public: VIRTUAL_IN_DEBUG cMapElement_extensionMethodMapForGlobalCheckings * readWriteAccessForWithInstruction (C_Compiler * inCompiler,
+  public: VIRTUAL_IN_DEBUG cMapElement_extensionMethodMapForGlobalCheckings * readWriteAccessForWithInstruction (Compiler * inCompiler,
                                                                                                                  const GALGAS_string & inKey
                                                                                                                  COMMA_LOCATION_ARGS) ;
 
@@ -7890,12 +7890,12 @@ class GALGAS_extensionMethodMapForGlobalCheckings_2D_element : public AC_GALGAS_
 
 //--------------------------------- Object extraction
   public: static GALGAS_extensionMethodMapForGlobalCheckings_2D_element extractObject (const GALGAS_object & inObject,
-                                                                                       C_Compiler * inCompiler
+                                                                                       Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_extensionMethodMapForGlobalCheckings_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                                               class C_Compiler * inCompiler
+                                                                                               class Compiler * inCompiler
                                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -7948,7 +7948,7 @@ class GALGAS_extensionSetterMapForGlobalCheckings : public AC_GALGAS_map {
 
 //--------------------------------- Object extraction
   public: static GALGAS_extensionSetterMapForGlobalCheckings extractObject (const GALGAS_object & inObject,
-                                                                            C_Compiler * inCompiler
+                                                                            Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -7959,17 +7959,17 @@ class GALGAS_extensionSetterMapForGlobalCheckings : public AC_GALGAS_map {
 
 //--------------------------------- += operator (with list of field expressions)
   public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
-                                                     C_Compiler * inCompiler
+                                                     Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GALGAS_extensionSetterMapForGlobalCheckings add_operation (const GALGAS_extensionSetterMapForGlobalCheckings & inOperand,
-                                                                                      C_Compiler * inCompiler
+                                                                                      Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_insertKey (class GALGAS_lstring constinArgument0,
-                                                  C_Compiler * inCompiler
+                                                  Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
 
 
@@ -7977,7 +7977,7 @@ class GALGAS_extensionSetterMapForGlobalCheckings : public AC_GALGAS_map {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_extensionSetterMapForGlobalCheckings getter_overriddenMap (C_Compiler * inCompiler
+  public: VIRTUAL_IN_DEBUG class GALGAS_extensionSetterMapForGlobalCheckings getter_overriddenMap (Compiler * inCompiler
                                                                                                    COMMA_LOCATION_ARGS) const ;
 
 
@@ -7987,7 +7987,7 @@ class GALGAS_extensionSetterMapForGlobalCheckings : public AC_GALGAS_map {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-  public: VIRTUAL_IN_DEBUG cMapElement_extensionSetterMapForGlobalCheckings * readWriteAccessForWithInstruction (C_Compiler * inCompiler,
+  public: VIRTUAL_IN_DEBUG cMapElement_extensionSetterMapForGlobalCheckings * readWriteAccessForWithInstruction (Compiler * inCompiler,
                                                                                                                  const GALGAS_string & inKey
                                                                                                                  COMMA_LOCATION_ARGS) ;
 
@@ -8079,12 +8079,12 @@ class GALGAS_extensionSetterMapForGlobalCheckings_2D_element : public AC_GALGAS_
 
 //--------------------------------- Object extraction
   public: static GALGAS_extensionSetterMapForGlobalCheckings_2D_element extractObject (const GALGAS_object & inObject,
-                                                                                       C_Compiler * inCompiler
+                                                                                       Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_extensionSetterMapForGlobalCheckings_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                                               class C_Compiler * inCompiler
+                                                                                               class Compiler * inCompiler
                                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -8137,7 +8137,7 @@ class GALGAS_extensionGetterMapForGlobalCheckings : public AC_GALGAS_map {
 
 //--------------------------------- Object extraction
   public: static GALGAS_extensionGetterMapForGlobalCheckings extractObject (const GALGAS_object & inObject,
-                                                                            C_Compiler * inCompiler
+                                                                            Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -8148,17 +8148,17 @@ class GALGAS_extensionGetterMapForGlobalCheckings : public AC_GALGAS_map {
 
 //--------------------------------- += operator (with list of field expressions)
   public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
-                                                     C_Compiler * inCompiler
+                                                     Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GALGAS_extensionGetterMapForGlobalCheckings add_operation (const GALGAS_extensionGetterMapForGlobalCheckings & inOperand,
-                                                                                      C_Compiler * inCompiler
+                                                                                      Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_insertKey (class GALGAS_lstring constinArgument0,
-                                                  C_Compiler * inCompiler
+                                                  Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
 
 
@@ -8166,7 +8166,7 @@ class GALGAS_extensionGetterMapForGlobalCheckings : public AC_GALGAS_map {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_extensionGetterMapForGlobalCheckings getter_overriddenMap (C_Compiler * inCompiler
+  public: VIRTUAL_IN_DEBUG class GALGAS_extensionGetterMapForGlobalCheckings getter_overriddenMap (Compiler * inCompiler
                                                                                                    COMMA_LOCATION_ARGS) const ;
 
 
@@ -8176,7 +8176,7 @@ class GALGAS_extensionGetterMapForGlobalCheckings : public AC_GALGAS_map {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-  public: VIRTUAL_IN_DEBUG cMapElement_extensionGetterMapForGlobalCheckings * readWriteAccessForWithInstruction (C_Compiler * inCompiler,
+  public: VIRTUAL_IN_DEBUG cMapElement_extensionGetterMapForGlobalCheckings * readWriteAccessForWithInstruction (Compiler * inCompiler,
                                                                                                                  const GALGAS_string & inKey
                                                                                                                  COMMA_LOCATION_ARGS) ;
 
@@ -8268,12 +8268,12 @@ class GALGAS_extensionGetterMapForGlobalCheckings_2D_element : public AC_GALGAS_
 
 //--------------------------------- Object extraction
   public: static GALGAS_extensionGetterMapForGlobalCheckings_2D_element extractObject (const GALGAS_object & inObject,
-                                                                                       C_Compiler * inCompiler
+                                                                                       Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_extensionGetterMapForGlobalCheckings_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                                               class C_Compiler * inCompiler
+                                                                                               class Compiler * inCompiler
                                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -8327,7 +8327,7 @@ class GALGAS_galgas_33_QualifiedFeatureList : public AC_GALGAS_list {
 
 //--------------------------------- Object extraction
   public: static GALGAS_galgas_33_QualifiedFeatureList extractObject (const GALGAS_object & inObject,
-                                                                      C_Compiler * inCompiler
+                                                                      Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -8339,7 +8339,7 @@ class GALGAS_galgas_33_QualifiedFeatureList : public AC_GALGAS_list {
 
 //--------------------------------- += operator (with expression)
   public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_galgas_33_QualifiedFeatureList inOperand,
-                                                       class C_Compiler * inCompiler
+                                                       class Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
@@ -8348,81 +8348,81 @@ class GALGAS_galgas_33_QualifiedFeatureList : public AC_GALGAS_list {
                                                      COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GALGAS_galgas_33_QualifiedFeatureList add_operation (const GALGAS_galgas_33_QualifiedFeatureList & inOperand,
-                                                                                C_Compiler * inCompiler
+                                                                                Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_lstring constinArgument0,
                                                class GALGAS_lstring constinArgument1,
-                                               C_Compiler * inCompiler
+                                               Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_lstring constinArgument0,
                                                       class GALGAS_lstring constinArgument1,
                                                       class GALGAS_uint constinArgument2,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popFirst (class GALGAS_lstring & outArgument0,
                                                  class GALGAS_lstring & outArgument1,
-                                                 C_Compiler * inCompiler
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popLast (class GALGAS_lstring & outArgument0,
                                                 class GALGAS_lstring & outArgument1,
-                                                C_Compiler * inCompiler
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GALGAS_lstring & outArgument0,
                                                       class GALGAS_lstring & outArgument1,
                                                       class GALGAS_uint constinArgument2,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMFeatureNameAtIndex (class GALGAS_lstring constinArgument0,
                                                                class GALGAS_uint constinArgument1,
-                                                               C_Compiler * inCompiler
+                                                               Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMFeatureValueAtIndex (class GALGAS_lstring constinArgument0,
                                                                 class GALGAS_uint constinArgument1,
-                                                                C_Compiler * inCompiler
+                                                                Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
   public: VIRTUAL_IN_DEBUG void method_first (class GALGAS_lstring & outArgument0,
                                               class GALGAS_lstring & outArgument1,
-                                              C_Compiler * inCompiler
+                                              Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG void method_last (class GALGAS_lstring & outArgument0,
                                              class GALGAS_lstring & outArgument1,
-                                             C_Compiler * inCompiler
+                                             Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mFeatureNameAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                            C_Compiler * inCompiler
+                                                                            Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mFeatureValueAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                             C_Compiler * inCompiler
+                                                                             Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_galgas_33_QualifiedFeatureList getter_subListFromIndex (const class GALGAS_uint & constinOperand0,
-                                                                                                C_Compiler * inCompiler
+                                                                                                Compiler * inCompiler
                                                                                                 COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_galgas_33_QualifiedFeatureList getter_subListToIndex (const class GALGAS_uint & constinOperand0,
-                                                                                              C_Compiler * inCompiler
+                                                                                              Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_galgas_33_QualifiedFeatureList getter_subListWithRange (const class GALGAS_range & constinOperand0,
-                                                                                                C_Compiler * inCompiler
+                                                                                                Compiler * inCompiler
                                                                                                 COMMA_LOCATION_ARGS) const ;
 
 
@@ -8503,13 +8503,13 @@ class GALGAS_galgas_33_QualifiedFeatureList_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Object extraction
   public: static GALGAS_galgas_33_QualifiedFeatureList_2D_element extractObject (const GALGAS_object & inObject,
-                                                                                 C_Compiler * inCompiler
+                                                                                 Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_galgas_33_QualifiedFeatureList_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
                                                                                          const class GALGAS_lstring & inOperand1,
-                                                                                         class C_Compiler * inCompiler
+                                                                                         class Compiler * inCompiler
                                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -8700,7 +8700,7 @@ class GALGAS_galgas_33_ProjectComponentAST : public AC_GALGAS_root {
 
 //--------------------------------- Object extraction
   public: static GALGAS_galgas_33_ProjectComponentAST extractObject (const GALGAS_object & inObject,
-                                                                     C_Compiler * inCompiler
+                                                                     Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
@@ -8712,7 +8712,7 @@ class GALGAS_galgas_33_ProjectComponentAST : public AC_GALGAS_root {
                                                                              const class GALGAS_galgas_33_QualifiedFeatureList & inOperand5,
                                                                              const class GALGAS_lstring & inOperand6,
                                                                              const class GALGAS_location & inOperand7,
-                                                                             class C_Compiler * inCompiler
+                                                                             class Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -8748,7 +8748,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_galgas_33_ProjectCo
 
 void extensionMethod_checkCompatibilityWithLet (const class GALGAS_AccessControlAST inObject,
                                                 const class GALGAS_location constin_inLocation,
-                                                class C_Compiler * inCompiler
+                                                class Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -8759,7 +8759,7 @@ void extensionMethod_checkCompatibilityWithLet (const class GALGAS_AccessControl
 
 class GALGAS_AccessControl extensionGetter_accessControl (const class GALGAS_AccessControlAST & inObject,
                                                           const class GALGAS_unifiedTypeMapEntry & constinArgument0,
-                                                          class C_Compiler * inCompiler
+                                                          class Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -8771,7 +8771,7 @@ class GALGAS_AccessControl extensionGetter_accessControl (const class GALGAS_Acc
 void extensionMethod_checkSetAccess (const class GALGAS_AccessControl inObject,
                                      const class GALGAS_selfAvailability constin_inOptionalCurrentType,
                                      const class GALGAS_location constin_inErrorLocation,
-                                     class C_Compiler * inCompiler
+                                     class Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -8783,7 +8783,7 @@ void extensionMethod_checkSetAccess (const class GALGAS_AccessControl inObject,
 void extensionMethod_checkGetAccess (const class GALGAS_AccessControl inObject,
                                      const class GALGAS_selfAvailability constin_inOptionalCurrentType,
                                      const class GALGAS_location constin_inErrorLocation,
-                                     class C_Compiler * inCompiler
+                                     class Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------

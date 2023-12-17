@@ -18,11 +18,11 @@ typedef cTokenFor_%!SUPER_LEXIQUE_IDENTIFIER% cTokenFor_%!LEXIQUE_IDENTIFIER% ;
 
 class C_Lexique_%!LEXIQUE_IDENTIFIER% : public C_Lexique_%!SUPER_LEXIQUE_IDENTIFIER% {
 //--- Constructors
-  public: C_Lexique_%!LEXIQUE_IDENTIFIER% (C_Compiler * inCallerCompiler,
+  public: C_Lexique_%!LEXIQUE_IDENTIFIER% (Compiler * inCallerCompiler,
                        const String & inSourceFileName
                        COMMA_LOCATION_ARGS) ;
 
-  public: C_Lexique_%!LEXIQUE_IDENTIFIER% (C_Compiler * inCallerCompiler,
+  public: C_Lexique_%!LEXIQUE_IDENTIFIER% (Compiler * inCallerCompiler,
                        const String & inSourceString,
                        const String & inStringForError
                        COMMA_LOCATION_ARGS) ;

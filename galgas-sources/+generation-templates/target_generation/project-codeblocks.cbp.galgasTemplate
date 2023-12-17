@@ -156,7 +156,7 @@ end
    <Unit filename="%!LIBPM_PATH%/utilities/galgas-random.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas2/C_galgas_CLI_Options.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas2/typeComparisonResult.cpp" />
-   <Unit filename="%!LIBPM_PATH%/galgas2/C_Compiler.cpp" />
+   <Unit filename="%!LIBPM_PATH%/galgas2/Compiler.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas2/C_Lexique.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas2/C_LocationInSource.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas2/C_SourceTextInString.cpp" />

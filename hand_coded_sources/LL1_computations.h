@@ -27,7 +27,7 @@ class cPureBNFproductionsList ;
 class C_HTMLString ;
 class cVocabulary ;
 class String ;
-class C_Compiler ;
+class Compiler ;
 class GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis ;
 class C_Relation ;
 

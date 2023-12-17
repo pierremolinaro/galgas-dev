@@ -80,10 +80,10 @@ mDiscardStartString (inOperand.mDiscardStartString) {
 
 //--------------------------------------------------------------------------------------------------
 
-C_Lexique::C_Lexique (C_Compiler * inCallerCompiler,
+C_Lexique::C_Lexique (Compiler * inCallerCompiler,
                       const String & inSourceFileName
                       COMMA_LOCATION_ARGS) :
-C_Compiler (inCallerCompiler COMMA_THERE),
+Compiler (inCallerCompiler COMMA_THERE),
 mIndexingDictionary (nullptr),
 mFirstToken (nullptr),
 mLastToken (nullptr),
@@ -126,11 +126,11 @@ mLatexNextCharacterToEnterIndex (0) {
 
 //--------------------------------------------------------------------------------------------------
 
-C_Lexique::C_Lexique (C_Compiler * inCallerCompiler,
+C_Lexique::C_Lexique (Compiler * inCallerCompiler,
                       const String & inSourceString,
                       const String & inStringForError
                       COMMA_LOCATION_ARGS) :
-C_Compiler (inCallerCompiler COMMA_THERE),
+Compiler (inCallerCompiler COMMA_THERE),
 mIndexingDictionary (nullptr),
 mFirstToken (nullptr),
 mLastToken (nullptr),

@@ -62,7 +62,7 @@ typeComparisonResult GALGAS_complex::objectCompare (const GALGAS_complex & inOpe
 
 GALGAS_complex GALGAS_complex::constructor_new (const GALGAS_double & inReal,
                                                 const GALGAS_double & inImaginary,
-                                                C_Compiler * /* inCompiler */
+                                                Compiler * /* inCompiler */
                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_complex result ;
   if (inReal.isValid () && inImaginary.isValid ()) {
@@ -75,7 +75,7 @@ GALGAS_complex GALGAS_complex::constructor_new (const GALGAS_double & inReal,
 
 //---------------------------------------------------------------------------*
 
-GALGAS_double GALGAS_complex::getter_real (C_Compiler * /* inCompiler */
+GALGAS_double GALGAS_complex::getter_real (Compiler * /* inCompiler */
                                            COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_double result ;
   if (isValid ()) {
@@ -86,7 +86,7 @@ GALGAS_double GALGAS_complex::getter_real (C_Compiler * /* inCompiler */
 
 //---------------------------------------------------------------------------*
 
-GALGAS_double GALGAS_complex::getter_imaginary (C_Compiler * /* inCompiler */
+GALGAS_double GALGAS_complex::getter_imaginary (Compiler * /* inCompiler */
                                                 COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_double result ;
   if (isValid ()) {

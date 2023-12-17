@@ -1,4 +1,4 @@
-#include "galgas2/C_Compiler.h"
+#include "galgas2/Compiler.h"
 #include "galgas2/C_galgas_io.h"
 #include "galgas2/C_galgas_CLI_Options.h"
 #include "utilities/C_PrologueEpilogue.h"
@@ -151,7 +151,7 @@ void GALGAS__32_lstringlist::addAssign_operation (const GALGAS_lstring & inOpera
 
 void GALGAS__32_lstringlist::setter_append (const GALGAS_lstring inOperand0,
                                             const GALGAS_lstring inOperand1,
-                                            C_Compiler * /* inCompiler */
+                                            Compiler * /* inCompiler */
                                             COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
@@ -168,7 +168,7 @@ void GALGAS__32_lstringlist::setter_append (const GALGAS_lstring inOperand0,
 void GALGAS__32_lstringlist::setter_insertAtIndex (const GALGAS_lstring inOperand0,
                                                    const GALGAS_lstring inOperand1,
                                                    const GALGAS_uint inInsertionIndex,
-                                                   C_Compiler * inCompiler
+                                                   Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
@@ -189,7 +189,7 @@ void GALGAS__32_lstringlist::setter_insertAtIndex (const GALGAS_lstring inOperan
 void GALGAS__32_lstringlist::setter_removeAtIndex (GALGAS_lstring & outOperand0,
                                                    GALGAS_lstring & outOperand1,
                                                    const GALGAS_uint inRemoveIndex,
-                                                   C_Compiler * inCompiler
+                                                   Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inRemoveIndex.isValid ()) {
@@ -220,7 +220,7 @@ void GALGAS__32_lstringlist::setter_removeAtIndex (GALGAS_lstring & outOperand0,
 
 void GALGAS__32_lstringlist::setter_popFirst (GALGAS_lstring & outOperand0,
                                               GALGAS_lstring & outOperand1,
-                                              C_Compiler * inCompiler
+                                              Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
@@ -239,7 +239,7 @@ void GALGAS__32_lstringlist::setter_popFirst (GALGAS_lstring & outOperand0,
 
 void GALGAS__32_lstringlist::setter_popLast (GALGAS_lstring & outOperand0,
                                              GALGAS_lstring & outOperand1,
-                                             C_Compiler * inCompiler
+                                             Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
@@ -258,7 +258,7 @@ void GALGAS__32_lstringlist::setter_popLast (GALGAS_lstring & outOperand0,
 
 void GALGAS__32_lstringlist::method_first (GALGAS_lstring & outOperand0,
                                            GALGAS_lstring & outOperand1,
-                                           C_Compiler * inCompiler
+                                           Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readFirst (attributes, inCompiler COMMA_THERE) ;
@@ -277,7 +277,7 @@ void GALGAS__32_lstringlist::method_first (GALGAS_lstring & outOperand0,
 
 void GALGAS__32_lstringlist::method_last (GALGAS_lstring & outOperand0,
                                           GALGAS_lstring & outOperand1,
-                                          C_Compiler * inCompiler
+                                          Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readLast (attributes, inCompiler COMMA_THERE) ;
@@ -295,7 +295,7 @@ void GALGAS__32_lstringlist::method_last (GALGAS_lstring & outOperand0,
 //--------------------------------------------------------------------------------------------------
 
 GALGAS__32_lstringlist GALGAS__32_lstringlist::add_operation (const GALGAS__32_lstringlist & inOperand,
-                                                              C_Compiler * /* inCompiler */
+                                                              Compiler * /* inCompiler */
                                                               COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS__32_lstringlist result ;
   if (isValid () && inOperand.isValid ()) {
@@ -308,7 +308,7 @@ GALGAS__32_lstringlist GALGAS__32_lstringlist::add_operation (const GALGAS__32_l
 //--------------------------------------------------------------------------------------------------
 
 GALGAS__32_lstringlist GALGAS__32_lstringlist::getter_subListWithRange (const GALGAS_range & inRange,
-                                                                        C_Compiler * inCompiler
+                                                                        Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) const {
   GALGAS__32_lstringlist result = GALGAS__32_lstringlist::constructor_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
@@ -318,7 +318,7 @@ GALGAS__32_lstringlist GALGAS__32_lstringlist::getter_subListWithRange (const GA
 //--------------------------------------------------------------------------------------------------
 
 GALGAS__32_lstringlist GALGAS__32_lstringlist::getter_subListFromIndex (const GALGAS_uint & inIndex,
-                                                                        C_Compiler * inCompiler
+                                                                        Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) const {
   GALGAS__32_lstringlist result = GALGAS__32_lstringlist::constructor_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
@@ -328,7 +328,7 @@ GALGAS__32_lstringlist GALGAS__32_lstringlist::getter_subListFromIndex (const GA
 //--------------------------------------------------------------------------------------------------
 
 GALGAS__32_lstringlist GALGAS__32_lstringlist::getter_subListToIndex (const GALGAS_uint & inIndex,
-                                                                      C_Compiler * inCompiler
+                                                                      Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) const {
   GALGAS__32_lstringlist result = GALGAS__32_lstringlist::constructor_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
@@ -338,7 +338,7 @@ GALGAS__32_lstringlist GALGAS__32_lstringlist::getter_subListToIndex (const GALG
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS__32_lstringlist::plusAssign_operation (const GALGAS__32_lstringlist inOperand,
-                                                   C_Compiler * /* inCompiler */
+                                                   Compiler * /* inCompiler */
                                                    COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
@@ -347,7 +347,7 @@ void GALGAS__32_lstringlist::plusAssign_operation (const GALGAS__32_lstringlist 
 
 void GALGAS__32_lstringlist::setter_setMValue_30_AtIndex (GALGAS_lstring inOperand,
                                                           GALGAS_uint inIndex,
-                                                          C_Compiler * inCompiler
+                                                          Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) {
   cCollectionElement__32_lstringlist * p = (cCollectionElement__32_lstringlist *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -360,7 +360,7 @@ void GALGAS__32_lstringlist::setter_setMValue_30_AtIndex (GALGAS_lstring inOpera
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS__32_lstringlist::getter_mValue_30_AtIndex (const GALGAS_uint & inIndex,
-                                                                 C_Compiler * inCompiler
+                                                                 Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement__32_lstringlist * p = (cCollectionElement__32_lstringlist *) attributes.ptr () ;
@@ -376,7 +376,7 @@ GALGAS_lstring GALGAS__32_lstringlist::getter_mValue_30_AtIndex (const GALGAS_ui
 
 void GALGAS__32_lstringlist::setter_setMValue_31_AtIndex (GALGAS_lstring inOperand,
                                                           GALGAS_uint inIndex,
-                                                          C_Compiler * inCompiler
+                                                          Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) {
   cCollectionElement__32_lstringlist * p = (cCollectionElement__32_lstringlist *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -389,7 +389,7 @@ void GALGAS__32_lstringlist::setter_setMValue_31_AtIndex (GALGAS_lstring inOpera
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS__32_lstringlist::getter_mValue_31_AtIndex (const GALGAS_uint & inIndex,
-                                                                 C_Compiler * inCompiler
+                                                                 Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement__32_lstringlist * p = (cCollectionElement__32_lstringlist *) attributes.ptr () ;
@@ -468,7 +468,7 @@ AC_GALGAS_root * GALGAS__32_lstringlist::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS__32_lstringlist GALGAS__32_lstringlist::extractObject (const GALGAS_object & inObject,
-                                                              C_Compiler * inCompiler
+                                                              Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) {
   GALGAS__32_lstringlist result ;
   const GALGAS__32_lstringlist * p = (const GALGAS__32_lstringlist *) inObject.embeddedObject () ;
@@ -508,7 +508,7 @@ mLexicalAttribute_uint_36__34_value () {
 
 //--------------------------------------------------------------------------------------------------
 
-C_Lexique_galgasScanner::C_Lexique_galgasScanner (C_Compiler * inCallerCompiler,
+C_Lexique_galgasScanner::C_Lexique_galgasScanner (Compiler * inCallerCompiler,
                                                   const String & inSourceFileName
                                                   COMMA_LOCATION_ARGS) :
 C_Lexique (inCallerCompiler, inSourceFileName COMMA_THERE) {
@@ -516,7 +516,7 @@ C_Lexique (inCallerCompiler, inSourceFileName COMMA_THERE) {
 
 //--------------------------------------------------------------------------------------------------
 
-C_Lexique_galgasScanner::C_Lexique_galgasScanner (C_Compiler * inCallerCompiler,
+C_Lexique_galgasScanner::C_Lexique_galgasScanner (Compiler * inCallerCompiler,
                                                   const String & inSourceString,
                                                   const String & inStringForError
                                                   COMMA_LOCATION_ARGS) :
@@ -5538,7 +5538,7 @@ AC_GALGAS_root * GALGAS_templateInstructionAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateInstructionAST GALGAS_templateInstructionAST::extractObject (const GALGAS_object & inObject,
-                                                                            C_Compiler * inCompiler
+                                                                            Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_templateInstructionAST result ;
   const GALGAS_templateInstructionAST * p = (const GALGAS_templateInstructionAST *) inObject.embeddedObject () ;
@@ -5606,7 +5606,7 @@ GALGAS_templateInstructionAST_2D_weak GALGAS_templateInstructionAST_2D_weak::con
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionAST GALGAS_templateInstructionAST_2D_weak::bang_templateInstructionAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_templateInstructionAST GALGAS_templateInstructionAST_2D_weak::bang_templateInstructionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_templateInstructionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -5649,7 +5649,7 @@ AC_GALGAS_root * GALGAS_templateInstructionAST_2D_weak::clonedObject (void) cons
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateInstructionAST_2D_weak GALGAS_templateInstructionAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                            C_Compiler * inCompiler
+                                                                                            Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_templateInstructionAST_2D_weak result ;
   const GALGAS_templateInstructionAST_2D_weak * p = (const GALGAS_templateInstructionAST_2D_weak *) inObject.embeddedObject () ;
@@ -5796,7 +5796,7 @@ void GALGAS_templateInstructionListAST::addAssign_operation (const GALGAS_templa
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_templateInstructionListAST::setter_append (const GALGAS_templateInstructionAST inOperand0,
-                                                       C_Compiler * /* inCompiler */
+                                                       Compiler * /* inCompiler */
                                                        COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
@@ -5812,7 +5812,7 @@ void GALGAS_templateInstructionListAST::setter_append (const GALGAS_templateInst
 
 void GALGAS_templateInstructionListAST::setter_insertAtIndex (const GALGAS_templateInstructionAST inOperand0,
                                                               const GALGAS_uint inInsertionIndex,
-                                                              C_Compiler * inCompiler
+                                                              Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inInsertionIndex.isValid () && inOperand0.isValid ()) {
@@ -5832,7 +5832,7 @@ void GALGAS_templateInstructionListAST::setter_insertAtIndex (const GALGAS_templ
 
 void GALGAS_templateInstructionListAST::setter_removeAtIndex (GALGAS_templateInstructionAST & outOperand0,
                                                               const GALGAS_uint inRemoveIndex,
-                                                              C_Compiler * inCompiler
+                                                              Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inRemoveIndex.isValid ()) {
@@ -5858,7 +5858,7 @@ void GALGAS_templateInstructionListAST::setter_removeAtIndex (GALGAS_templateIns
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_templateInstructionListAST::setter_popFirst (GALGAS_templateInstructionAST & outOperand0,
-                                                         C_Compiler * inCompiler
+                                                         Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
@@ -5874,7 +5874,7 @@ void GALGAS_templateInstructionListAST::setter_popFirst (GALGAS_templateInstruct
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_templateInstructionListAST::setter_popLast (GALGAS_templateInstructionAST & outOperand0,
-                                                        C_Compiler * inCompiler
+                                                        Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
@@ -5890,7 +5890,7 @@ void GALGAS_templateInstructionListAST::setter_popLast (GALGAS_templateInstructi
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_templateInstructionListAST::method_first (GALGAS_templateInstructionAST & outOperand0,
-                                                      C_Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readFirst (attributes, inCompiler COMMA_THERE) ;
@@ -5906,7 +5906,7 @@ void GALGAS_templateInstructionListAST::method_first (GALGAS_templateInstruction
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_templateInstructionListAST::method_last (GALGAS_templateInstructionAST & outOperand0,
-                                                     C_Compiler * inCompiler
+                                                     Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readLast (attributes, inCompiler COMMA_THERE) ;
@@ -5922,7 +5922,7 @@ void GALGAS_templateInstructionListAST::method_last (GALGAS_templateInstructionA
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateInstructionListAST GALGAS_templateInstructionListAST::add_operation (const GALGAS_templateInstructionListAST & inOperand,
-                                                                                    C_Compiler * /* inCompiler */
+                                                                                    Compiler * /* inCompiler */
                                                                                     COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_templateInstructionListAST result ;
   if (isValid () && inOperand.isValid ()) {
@@ -5935,7 +5935,7 @@ GALGAS_templateInstructionListAST GALGAS_templateInstructionListAST::add_operati
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateInstructionListAST GALGAS_templateInstructionListAST::getter_subListWithRange (const GALGAS_range & inRange,
-                                                                                              C_Compiler * inCompiler
+                                                                                              Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) const {
   GALGAS_templateInstructionListAST result = GALGAS_templateInstructionListAST::constructor_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
@@ -5945,7 +5945,7 @@ GALGAS_templateInstructionListAST GALGAS_templateInstructionListAST::getter_subL
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateInstructionListAST GALGAS_templateInstructionListAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
-                                                                                              C_Compiler * inCompiler
+                                                                                              Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) const {
   GALGAS_templateInstructionListAST result = GALGAS_templateInstructionListAST::constructor_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
@@ -5955,7 +5955,7 @@ GALGAS_templateInstructionListAST GALGAS_templateInstructionListAST::getter_subL
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateInstructionListAST GALGAS_templateInstructionListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
-                                                                                            C_Compiler * inCompiler
+                                                                                            Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) const {
   GALGAS_templateInstructionListAST result = GALGAS_templateInstructionListAST::constructor_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
@@ -5965,7 +5965,7 @@ GALGAS_templateInstructionListAST GALGAS_templateInstructionListAST::getter_subL
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_templateInstructionListAST::plusAssign_operation (const GALGAS_templateInstructionListAST inOperand,
-                                                              C_Compiler * /* inCompiler */
+                                                              Compiler * /* inCompiler */
                                                               COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
@@ -5974,7 +5974,7 @@ void GALGAS_templateInstructionListAST::plusAssign_operation (const GALGAS_templ
 
 void GALGAS_templateInstructionListAST::setter_setMInstructionAtIndex (GALGAS_templateInstructionAST inOperand,
                                                                        GALGAS_uint inIndex,
-                                                                       C_Compiler * inCompiler
+                                                                       Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) {
   cCollectionElement_templateInstructionListAST * p = (cCollectionElement_templateInstructionListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -5987,7 +5987,7 @@ void GALGAS_templateInstructionListAST::setter_setMInstructionAtIndex (GALGAS_te
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateInstructionAST GALGAS_templateInstructionListAST::getter_mInstructionAtIndex (const GALGAS_uint & inIndex,
-                                                                                             C_Compiler * inCompiler
+                                                                                             Compiler * inCompiler
                                                                                              COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_templateInstructionListAST * p = (cCollectionElement_templateInstructionListAST *) attributes.ptr () ;
@@ -6058,7 +6058,7 @@ AC_GALGAS_root * GALGAS_templateInstructionListAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateInstructionListAST GALGAS_templateInstructionListAST::extractObject (const GALGAS_object & inObject,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_templateInstructionListAST result ;
   const GALGAS_templateInstructionListAST * p = (const GALGAS_templateInstructionListAST *) inObject.embeddedObject () ;
@@ -6152,7 +6152,7 @@ AC_GALGAS_root * GALGAS_templateExpressionAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateExpressionAST GALGAS_templateExpressionAST::extractObject (const GALGAS_object & inObject,
-                                                                          C_Compiler * inCompiler
+                                                                          Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_templateExpressionAST result ;
   const GALGAS_templateExpressionAST * p = (const GALGAS_templateExpressionAST *) inObject.embeddedObject () ;
@@ -6220,7 +6220,7 @@ GALGAS_templateExpressionAST_2D_weak GALGAS_templateExpressionAST_2D_weak::const
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionAST GALGAS_templateExpressionAST_2D_weak::bang_templateExpressionAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_templateExpressionAST GALGAS_templateExpressionAST_2D_weak::bang_templateExpressionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_templateExpressionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -6263,7 +6263,7 @@ AC_GALGAS_root * GALGAS_templateExpressionAST_2D_weak::clonedObject (void) const
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateExpressionAST_2D_weak GALGAS_templateExpressionAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                          C_Compiler * inCompiler
+                                                                                          Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_templateExpressionAST_2D_weak result ;
   const GALGAS_templateExpressionAST_2D_weak * p = (const GALGAS_templateExpressionAST_2D_weak *) inObject.embeddedObject () ;
@@ -6432,7 +6432,7 @@ void GALGAS_templateExpressionListAST::addAssign_operation (const GALGAS_lstring
 void GALGAS_templateExpressionListAST::setter_append (const GALGAS_lstring inOperand0,
                                                       const GALGAS_templateExpressionAST inOperand1,
                                                       const GALGAS_location inOperand2,
-                                                      C_Compiler * /* inCompiler */
+                                                      Compiler * /* inCompiler */
                                                       COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
@@ -6450,7 +6450,7 @@ void GALGAS_templateExpressionListAST::setter_insertAtIndex (const GALGAS_lstrin
                                                              const GALGAS_templateExpressionAST inOperand1,
                                                              const GALGAS_location inOperand2,
                                                              const GALGAS_uint inInsertionIndex,
-                                                             C_Compiler * inCompiler
+                                                             Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
@@ -6472,7 +6472,7 @@ void GALGAS_templateExpressionListAST::setter_removeAtIndex (GALGAS_lstring & ou
                                                              GALGAS_templateExpressionAST & outOperand1,
                                                              GALGAS_location & outOperand2,
                                                              const GALGAS_uint inRemoveIndex,
-                                                             C_Compiler * inCompiler
+                                                             Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inRemoveIndex.isValid ()) {
@@ -6508,7 +6508,7 @@ void GALGAS_templateExpressionListAST::setter_removeAtIndex (GALGAS_lstring & ou
 void GALGAS_templateExpressionListAST::setter_popFirst (GALGAS_lstring & outOperand0,
                                                         GALGAS_templateExpressionAST & outOperand1,
                                                         GALGAS_location & outOperand2,
-                                                        C_Compiler * inCompiler
+                                                        Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
@@ -6530,7 +6530,7 @@ void GALGAS_templateExpressionListAST::setter_popFirst (GALGAS_lstring & outOper
 void GALGAS_templateExpressionListAST::setter_popLast (GALGAS_lstring & outOperand0,
                                                        GALGAS_templateExpressionAST & outOperand1,
                                                        GALGAS_location & outOperand2,
-                                                       C_Compiler * inCompiler
+                                                       Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
@@ -6552,7 +6552,7 @@ void GALGAS_templateExpressionListAST::setter_popLast (GALGAS_lstring & outOpera
 void GALGAS_templateExpressionListAST::method_first (GALGAS_lstring & outOperand0,
                                                      GALGAS_templateExpressionAST & outOperand1,
                                                      GALGAS_location & outOperand2,
-                                                     C_Compiler * inCompiler
+                                                     Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readFirst (attributes, inCompiler COMMA_THERE) ;
@@ -6574,7 +6574,7 @@ void GALGAS_templateExpressionListAST::method_first (GALGAS_lstring & outOperand
 void GALGAS_templateExpressionListAST::method_last (GALGAS_lstring & outOperand0,
                                                     GALGAS_templateExpressionAST & outOperand1,
                                                     GALGAS_location & outOperand2,
-                                                    C_Compiler * inCompiler
+                                                    Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readLast (attributes, inCompiler COMMA_THERE) ;
@@ -6594,7 +6594,7 @@ void GALGAS_templateExpressionListAST::method_last (GALGAS_lstring & outOperand0
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateExpressionListAST GALGAS_templateExpressionListAST::add_operation (const GALGAS_templateExpressionListAST & inOperand,
-                                                                                  C_Compiler * /* inCompiler */
+                                                                                  Compiler * /* inCompiler */
                                                                                   COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_templateExpressionListAST result ;
   if (isValid () && inOperand.isValid ()) {
@@ -6607,7 +6607,7 @@ GALGAS_templateExpressionListAST GALGAS_templateExpressionListAST::add_operation
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateExpressionListAST GALGAS_templateExpressionListAST::getter_subListWithRange (const GALGAS_range & inRange,
-                                                                                            C_Compiler * inCompiler
+                                                                                            Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) const {
   GALGAS_templateExpressionListAST result = GALGAS_templateExpressionListAST::constructor_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
@@ -6617,7 +6617,7 @@ GALGAS_templateExpressionListAST GALGAS_templateExpressionListAST::getter_subLis
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateExpressionListAST GALGAS_templateExpressionListAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
-                                                                                            C_Compiler * inCompiler
+                                                                                            Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) const {
   GALGAS_templateExpressionListAST result = GALGAS_templateExpressionListAST::constructor_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
@@ -6627,7 +6627,7 @@ GALGAS_templateExpressionListAST GALGAS_templateExpressionListAST::getter_subLis
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateExpressionListAST GALGAS_templateExpressionListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
-                                                                                          C_Compiler * inCompiler
+                                                                                          Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) const {
   GALGAS_templateExpressionListAST result = GALGAS_templateExpressionListAST::constructor_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
@@ -6637,7 +6637,7 @@ GALGAS_templateExpressionListAST GALGAS_templateExpressionListAST::getter_subLis
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_templateExpressionListAST::plusAssign_operation (const GALGAS_templateExpressionListAST inOperand,
-                                                             C_Compiler * /* inCompiler */
+                                                             Compiler * /* inCompiler */
                                                              COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
@@ -6646,7 +6646,7 @@ void GALGAS_templateExpressionListAST::plusAssign_operation (const GALGAS_templa
 
 void GALGAS_templateExpressionListAST::setter_setMActualSelectorAtIndex (GALGAS_lstring inOperand,
                                                                          GALGAS_uint inIndex,
-                                                                         C_Compiler * inCompiler
+                                                                         Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) {
   cCollectionElement_templateExpressionListAST * p = (cCollectionElement_templateExpressionListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -6659,7 +6659,7 @@ void GALGAS_templateExpressionListAST::setter_setMActualSelectorAtIndex (GALGAS_
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_templateExpressionListAST::getter_mActualSelectorAtIndex (const GALGAS_uint & inIndex,
-                                                                                C_Compiler * inCompiler
+                                                                                Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_templateExpressionListAST * p = (cCollectionElement_templateExpressionListAST *) attributes.ptr () ;
@@ -6675,7 +6675,7 @@ GALGAS_lstring GALGAS_templateExpressionListAST::getter_mActualSelectorAtIndex (
 
 void GALGAS_templateExpressionListAST::setter_setMExpressionAtIndex (GALGAS_templateExpressionAST inOperand,
                                                                      GALGAS_uint inIndex,
-                                                                     C_Compiler * inCompiler
+                                                                     Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) {
   cCollectionElement_templateExpressionListAST * p = (cCollectionElement_templateExpressionListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -6688,7 +6688,7 @@ void GALGAS_templateExpressionListAST::setter_setMExpressionAtIndex (GALGAS_temp
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateExpressionAST GALGAS_templateExpressionListAST::getter_mExpressionAtIndex (const GALGAS_uint & inIndex,
-                                                                                          C_Compiler * inCompiler
+                                                                                          Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_templateExpressionListAST * p = (cCollectionElement_templateExpressionListAST *) attributes.ptr () ;
@@ -6704,7 +6704,7 @@ GALGAS_templateExpressionAST GALGAS_templateExpressionListAST::getter_mExpressio
 
 void GALGAS_templateExpressionListAST::setter_setMEndOfExpressionLocationAtIndex (GALGAS_location inOperand,
                                                                                   GALGAS_uint inIndex,
-                                                                                  C_Compiler * inCompiler
+                                                                                  Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) {
   cCollectionElement_templateExpressionListAST * p = (cCollectionElement_templateExpressionListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -6717,7 +6717,7 @@ void GALGAS_templateExpressionListAST::setter_setMEndOfExpressionLocationAtIndex
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_location GALGAS_templateExpressionListAST::getter_mEndOfExpressionLocationAtIndex (const GALGAS_uint & inIndex,
-                                                                                          C_Compiler * inCompiler
+                                                                                          Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_templateExpressionListAST * p = (cCollectionElement_templateExpressionListAST *) attributes.ptr () ;
@@ -6804,7 +6804,7 @@ AC_GALGAS_root * GALGAS_templateExpressionListAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateExpressionListAST GALGAS_templateExpressionListAST::extractObject (const GALGAS_object & inObject,
-                                                                                  C_Compiler * inCompiler
+                                                                                  Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_templateExpressionListAST result ;
   const GALGAS_templateExpressionListAST * p = (const GALGAS_templateExpressionListAST *) inObject.embeddedObject () ;
@@ -6872,7 +6872,7 @@ GALGAS_templateConstructorAST_2D_weak GALGAS_templateConstructorAST_2D_weak::con
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateConstructorAST GALGAS_templateConstructorAST_2D_weak::bang_templateConstructorAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_templateConstructorAST GALGAS_templateConstructorAST_2D_weak::bang_templateConstructorAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_templateConstructorAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -6915,7 +6915,7 @@ AC_GALGAS_root * GALGAS_templateConstructorAST_2D_weak::clonedObject (void) cons
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateConstructorAST_2D_weak GALGAS_templateConstructorAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                            C_Compiler * inCompiler
+                                                                                            Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_templateConstructorAST_2D_weak result ;
   const GALGAS_templateConstructorAST_2D_weak * p = (const GALGAS_templateConstructorAST_2D_weak *) inObject.embeddedObject () ;
@@ -6983,7 +6983,7 @@ GALGAS_templateFileWrapperTemplateCallAST_2D_weak GALGAS_templateFileWrapperTemp
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateFileWrapperTemplateCallAST GALGAS_templateFileWrapperTemplateCallAST_2D_weak::bang_templateFileWrapperTemplateCallAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_templateFileWrapperTemplateCallAST GALGAS_templateFileWrapperTemplateCallAST_2D_weak::bang_templateFileWrapperTemplateCallAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_templateFileWrapperTemplateCallAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -7026,7 +7026,7 @@ AC_GALGAS_root * GALGAS_templateFileWrapperTemplateCallAST_2D_weak::clonedObject
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateFileWrapperTemplateCallAST_2D_weak GALGAS_templateFileWrapperTemplateCallAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                                    C_Compiler * inCompiler
+                                                                                                                    Compiler * inCompiler
                                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_templateFileWrapperTemplateCallAST_2D_weak result ;
   const GALGAS_templateFileWrapperTemplateCallAST_2D_weak * p = (const GALGAS_templateFileWrapperTemplateCallAST_2D_weak *) inObject.embeddedObject () ;
@@ -7094,7 +7094,7 @@ GALGAS_templateExtensionTemplateCallAST_2D_weak GALGAS_templateExtensionTemplate
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateExtensionTemplateCallAST GALGAS_templateExtensionTemplateCallAST_2D_weak::bang_templateExtensionTemplateCallAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_templateExtensionTemplateCallAST GALGAS_templateExtensionTemplateCallAST_2D_weak::bang_templateExtensionTemplateCallAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_templateExtensionTemplateCallAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -7137,7 +7137,7 @@ AC_GALGAS_root * GALGAS_templateExtensionTemplateCallAST_2D_weak::clonedObject (
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateExtensionTemplateCallAST_2D_weak GALGAS_templateExtensionTemplateCallAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                                C_Compiler * inCompiler
+                                                                                                                Compiler * inCompiler
                                                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_templateExtensionTemplateCallAST_2D_weak result ;
   const GALGAS_templateExtensionTemplateCallAST_2D_weak * p = (const GALGAS_templateExtensionTemplateCallAST_2D_weak *) inObject.embeddedObject () ;
@@ -7331,7 +7331,7 @@ AC_GALGAS_root * GALGAS_templateAndOperationAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateAndOperationAST GALGAS_templateAndOperationAST::extractObject (const GALGAS_object & inObject,
-                                                                              C_Compiler * inCompiler
+                                                                              Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_templateAndOperationAST result ;
   const GALGAS_templateAndOperationAST * p = (const GALGAS_templateAndOperationAST *) inObject.embeddedObject () ;
@@ -7399,7 +7399,7 @@ GALGAS_templateAndOperationAST_2D_weak GALGAS_templateAndOperationAST_2D_weak::c
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateAndOperationAST GALGAS_templateAndOperationAST_2D_weak::bang_templateAndOperationAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_templateAndOperationAST GALGAS_templateAndOperationAST_2D_weak::bang_templateAndOperationAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_templateAndOperationAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -7442,7 +7442,7 @@ AC_GALGAS_root * GALGAS_templateAndOperationAST_2D_weak::clonedObject (void) con
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateAndOperationAST_2D_weak GALGAS_templateAndOperationAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                              C_Compiler * inCompiler
+                                                                                              Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_templateAndOperationAST_2D_weak result ;
   const GALGAS_templateAndOperationAST_2D_weak * p = (const GALGAS_templateAndOperationAST_2D_weak *) inObject.embeddedObject () ;
@@ -7636,7 +7636,7 @@ AC_GALGAS_root * GALGAS_templateOrOperationAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateOrOperationAST GALGAS_templateOrOperationAST::extractObject (const GALGAS_object & inObject,
-                                                                            C_Compiler * inCompiler
+                                                                            Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_templateOrOperationAST result ;
   const GALGAS_templateOrOperationAST * p = (const GALGAS_templateOrOperationAST *) inObject.embeddedObject () ;
@@ -7704,7 +7704,7 @@ GALGAS_templateOrOperationAST_2D_weak GALGAS_templateOrOperationAST_2D_weak::con
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateOrOperationAST GALGAS_templateOrOperationAST_2D_weak::bang_templateOrOperationAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_templateOrOperationAST GALGAS_templateOrOperationAST_2D_weak::bang_templateOrOperationAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_templateOrOperationAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -7747,7 +7747,7 @@ AC_GALGAS_root * GALGAS_templateOrOperationAST_2D_weak::clonedObject (void) cons
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateOrOperationAST_2D_weak GALGAS_templateOrOperationAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                            C_Compiler * inCompiler
+                                                                                            Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_templateOrOperationAST_2D_weak result ;
   const GALGAS_templateOrOperationAST_2D_weak * p = (const GALGAS_templateOrOperationAST_2D_weak *) inObject.embeddedObject () ;
@@ -7941,7 +7941,7 @@ AC_GALGAS_root * GALGAS_templateXorOperationAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateXorOperationAST GALGAS_templateXorOperationAST::extractObject (const GALGAS_object & inObject,
-                                                                              C_Compiler * inCompiler
+                                                                              Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_templateXorOperationAST result ;
   const GALGAS_templateXorOperationAST * p = (const GALGAS_templateXorOperationAST *) inObject.embeddedObject () ;
@@ -8009,7 +8009,7 @@ GALGAS_templateXorOperationAST_2D_weak GALGAS_templateXorOperationAST_2D_weak::c
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateXorOperationAST GALGAS_templateXorOperationAST_2D_weak::bang_templateXorOperationAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_templateXorOperationAST GALGAS_templateXorOperationAST_2D_weak::bang_templateXorOperationAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_templateXorOperationAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -8052,7 +8052,7 @@ AC_GALGAS_root * GALGAS_templateXorOperationAST_2D_weak::clonedObject (void) con
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateXorOperationAST_2D_weak GALGAS_templateXorOperationAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                              C_Compiler * inCompiler
+                                                                                              Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_templateXorOperationAST_2D_weak result ;
   const GALGAS_templateXorOperationAST_2D_weak * p = (const GALGAS_templateXorOperationAST_2D_weak *) inObject.embeddedObject () ;
@@ -8204,7 +8204,7 @@ AC_GALGAS_root * GALGAS_templateTrueBoolAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateTrueBoolAST GALGAS_templateTrueBoolAST::extractObject (const GALGAS_object & inObject,
-                                                                      C_Compiler * inCompiler
+                                                                      Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_templateTrueBoolAST result ;
   const GALGAS_templateTrueBoolAST * p = (const GALGAS_templateTrueBoolAST *) inObject.embeddedObject () ;
@@ -8272,7 +8272,7 @@ GALGAS_templateTrueBoolAST_2D_weak GALGAS_templateTrueBoolAST_2D_weak::construct
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateTrueBoolAST GALGAS_templateTrueBoolAST_2D_weak::bang_templateTrueBoolAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_templateTrueBoolAST GALGAS_templateTrueBoolAST_2D_weak::bang_templateTrueBoolAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_templateTrueBoolAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -8315,7 +8315,7 @@ AC_GALGAS_root * GALGAS_templateTrueBoolAST_2D_weak::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateTrueBoolAST_2D_weak GALGAS_templateTrueBoolAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                      C_Compiler * inCompiler
+                                                                                      Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_templateTrueBoolAST_2D_weak result ;
   const GALGAS_templateTrueBoolAST_2D_weak * p = (const GALGAS_templateTrueBoolAST_2D_weak *) inObject.embeddedObject () ;
@@ -8467,7 +8467,7 @@ AC_GALGAS_root * GALGAS_templateFalseBoolAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateFalseBoolAST GALGAS_templateFalseBoolAST::extractObject (const GALGAS_object & inObject,
-                                                                        C_Compiler * inCompiler
+                                                                        Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_templateFalseBoolAST result ;
   const GALGAS_templateFalseBoolAST * p = (const GALGAS_templateFalseBoolAST *) inObject.embeddedObject () ;
@@ -8535,7 +8535,7 @@ GALGAS_templateFalseBoolAST_2D_weak GALGAS_templateFalseBoolAST_2D_weak::constru
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateFalseBoolAST GALGAS_templateFalseBoolAST_2D_weak::bang_templateFalseBoolAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_templateFalseBoolAST GALGAS_templateFalseBoolAST_2D_weak::bang_templateFalseBoolAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_templateFalseBoolAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -8578,7 +8578,7 @@ AC_GALGAS_root * GALGAS_templateFalseBoolAST_2D_weak::clonedObject (void) const 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateFalseBoolAST_2D_weak GALGAS_templateFalseBoolAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                        C_Compiler * inCompiler
+                                                                                        Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_templateFalseBoolAST_2D_weak result ;
   const GALGAS_templateFalseBoolAST_2D_weak * p = (const GALGAS_templateFalseBoolAST_2D_weak *) inObject.embeddedObject () ;
@@ -8646,7 +8646,7 @@ GALGAS_templateLiteralStringExpressionAST_2D_weak GALGAS_templateLiteralStringEx
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateLiteralStringExpressionAST GALGAS_templateLiteralStringExpressionAST_2D_weak::bang_templateLiteralStringExpressionAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_templateLiteralStringExpressionAST GALGAS_templateLiteralStringExpressionAST_2D_weak::bang_templateLiteralStringExpressionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_templateLiteralStringExpressionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -8689,7 +8689,7 @@ AC_GALGAS_root * GALGAS_templateLiteralStringExpressionAST_2D_weak::clonedObject
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateLiteralStringExpressionAST_2D_weak GALGAS_templateLiteralStringExpressionAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                                    C_Compiler * inCompiler
+                                                                                                                    Compiler * inCompiler
                                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_templateLiteralStringExpressionAST_2D_weak result ;
   const GALGAS_templateLiteralStringExpressionAST_2D_weak * p = (const GALGAS_templateLiteralStringExpressionAST_2D_weak *) inObject.embeddedObject () ;
@@ -8757,7 +8757,7 @@ GALGAS_templateLiteralUIntExpressionAST_2D_weak GALGAS_templateLiteralUIntExpres
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateLiteralUIntExpressionAST GALGAS_templateLiteralUIntExpressionAST_2D_weak::bang_templateLiteralUIntExpressionAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_templateLiteralUIntExpressionAST GALGAS_templateLiteralUIntExpressionAST_2D_weak::bang_templateLiteralUIntExpressionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_templateLiteralUIntExpressionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -8800,7 +8800,7 @@ AC_GALGAS_root * GALGAS_templateLiteralUIntExpressionAST_2D_weak::clonedObject (
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateLiteralUIntExpressionAST_2D_weak GALGAS_templateLiteralUIntExpressionAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                                C_Compiler * inCompiler
+                                                                                                                Compiler * inCompiler
                                                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_templateLiteralUIntExpressionAST_2D_weak result ;
   const GALGAS_templateLiteralUIntExpressionAST_2D_weak * p = (const GALGAS_templateLiteralUIntExpressionAST_2D_weak *) inObject.embeddedObject () ;
@@ -8868,7 +8868,7 @@ GALGAS_templateLiteralCharExpressionAST_2D_weak GALGAS_templateLiteralCharExpres
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateLiteralCharExpressionAST GALGAS_templateLiteralCharExpressionAST_2D_weak::bang_templateLiteralCharExpressionAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_templateLiteralCharExpressionAST GALGAS_templateLiteralCharExpressionAST_2D_weak::bang_templateLiteralCharExpressionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_templateLiteralCharExpressionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -8911,7 +8911,7 @@ AC_GALGAS_root * GALGAS_templateLiteralCharExpressionAST_2D_weak::clonedObject (
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateLiteralCharExpressionAST_2D_weak GALGAS_templateLiteralCharExpressionAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                                C_Compiler * inCompiler
+                                                                                                                Compiler * inCompiler
                                                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_templateLiteralCharExpressionAST_2D_weak result ;
   const GALGAS_templateLiteralCharExpressionAST_2D_weak * p = (const GALGAS_templateLiteralCharExpressionAST_2D_weak *) inObject.embeddedObject () ;
@@ -8979,7 +8979,7 @@ GALGAS_templateLiteralDoubleExpressionAST_2D_weak GALGAS_templateLiteralDoubleEx
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateLiteralDoubleExpressionAST GALGAS_templateLiteralDoubleExpressionAST_2D_weak::bang_templateLiteralDoubleExpressionAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_templateLiteralDoubleExpressionAST GALGAS_templateLiteralDoubleExpressionAST_2D_weak::bang_templateLiteralDoubleExpressionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_templateLiteralDoubleExpressionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -9022,7 +9022,7 @@ AC_GALGAS_root * GALGAS_templateLiteralDoubleExpressionAST_2D_weak::clonedObject
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateLiteralDoubleExpressionAST_2D_weak GALGAS_templateLiteralDoubleExpressionAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                                    C_Compiler * inCompiler
+                                                                                                                    Compiler * inCompiler
                                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_templateLiteralDoubleExpressionAST_2D_weak result ;
   const GALGAS_templateLiteralDoubleExpressionAST_2D_weak * p = (const GALGAS_templateLiteralDoubleExpressionAST_2D_weak *) inObject.embeddedObject () ;
@@ -9090,7 +9090,7 @@ GALGAS_structFieldAccessTemplateExpressionAST_2D_weak GALGAS_structFieldAccessTe
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_structFieldAccessTemplateExpressionAST GALGAS_structFieldAccessTemplateExpressionAST_2D_weak::bang_structFieldAccessTemplateExpressionAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_structFieldAccessTemplateExpressionAST GALGAS_structFieldAccessTemplateExpressionAST_2D_weak::bang_structFieldAccessTemplateExpressionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_structFieldAccessTemplateExpressionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -9133,7 +9133,7 @@ AC_GALGAS_root * GALGAS_structFieldAccessTemplateExpressionAST_2D_weak::clonedOb
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_structFieldAccessTemplateExpressionAST_2D_weak GALGAS_structFieldAccessTemplateExpressionAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                                            C_Compiler * inCompiler
+                                                                                                                            Compiler * inCompiler
                                                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_structFieldAccessTemplateExpressionAST_2D_weak result ;
   const GALGAS_structFieldAccessTemplateExpressionAST_2D_weak * p = (const GALGAS_structFieldAccessTemplateExpressionAST_2D_weak *) inObject.embeddedObject () ;
@@ -9306,7 +9306,7 @@ AC_GALGAS_root * GALGAS_templateNotOperatorAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateNotOperatorAST GALGAS_templateNotOperatorAST::extractObject (const GALGAS_object & inObject,
-                                                                            C_Compiler * inCompiler
+                                                                            Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_templateNotOperatorAST result ;
   const GALGAS_templateNotOperatorAST * p = (const GALGAS_templateNotOperatorAST *) inObject.embeddedObject () ;
@@ -9374,7 +9374,7 @@ GALGAS_templateNotOperatorAST_2D_weak GALGAS_templateNotOperatorAST_2D_weak::con
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateNotOperatorAST GALGAS_templateNotOperatorAST_2D_weak::bang_templateNotOperatorAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_templateNotOperatorAST GALGAS_templateNotOperatorAST_2D_weak::bang_templateNotOperatorAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_templateNotOperatorAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -9417,7 +9417,7 @@ AC_GALGAS_root * GALGAS_templateNotOperatorAST_2D_weak::clonedObject (void) cons
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateNotOperatorAST_2D_weak GALGAS_templateNotOperatorAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                            C_Compiler * inCompiler
+                                                                                            Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_templateNotOperatorAST_2D_weak result ;
   const GALGAS_templateNotOperatorAST_2D_weak * p = (const GALGAS_templateNotOperatorAST_2D_weak *) inObject.embeddedObject () ;
@@ -9590,7 +9590,7 @@ AC_GALGAS_root * GALGAS_templateLogicalNegateAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateLogicalNegateAST GALGAS_templateLogicalNegateAST::extractObject (const GALGAS_object & inObject,
-                                                                                C_Compiler * inCompiler
+                                                                                Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_templateLogicalNegateAST result ;
   const GALGAS_templateLogicalNegateAST * p = (const GALGAS_templateLogicalNegateAST *) inObject.embeddedObject () ;
@@ -9658,7 +9658,7 @@ GALGAS_templateLogicalNegateAST_2D_weak GALGAS_templateLogicalNegateAST_2D_weak:
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateLogicalNegateAST GALGAS_templateLogicalNegateAST_2D_weak::bang_templateLogicalNegateAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_templateLogicalNegateAST GALGAS_templateLogicalNegateAST_2D_weak::bang_templateLogicalNegateAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_templateLogicalNegateAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -9701,7 +9701,7 @@ AC_GALGAS_root * GALGAS_templateLogicalNegateAST_2D_weak::clonedObject (void) co
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateLogicalNegateAST_2D_weak GALGAS_templateLogicalNegateAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                C_Compiler * inCompiler
+                                                                                                Compiler * inCompiler
                                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_templateLogicalNegateAST_2D_weak result ;
   const GALGAS_templateLogicalNegateAST_2D_weak * p = (const GALGAS_templateLogicalNegateAST_2D_weak *) inObject.embeddedObject () ;
@@ -9769,7 +9769,7 @@ GALGAS_templateOptionAccessAST_2D_weak GALGAS_templateOptionAccessAST_2D_weak::c
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateOptionAccessAST GALGAS_templateOptionAccessAST_2D_weak::bang_templateOptionAccessAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_templateOptionAccessAST GALGAS_templateOptionAccessAST_2D_weak::bang_templateOptionAccessAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_templateOptionAccessAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -9812,7 +9812,7 @@ AC_GALGAS_root * GALGAS_templateOptionAccessAST_2D_weak::clonedObject (void) con
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateOptionAccessAST_2D_weak GALGAS_templateOptionAccessAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                              C_Compiler * inCompiler
+                                                                                              Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_templateOptionAccessAST_2D_weak result ;
   const GALGAS_templateOptionAccessAST_2D_weak * p = (const GALGAS_templateOptionAccessAST_2D_weak *) inObject.embeddedObject () ;
@@ -9958,7 +9958,7 @@ AC_GALGAS_root * GALGAS_dynamicTypeComparisonKind::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_dynamicTypeComparisonKind GALGAS_dynamicTypeComparisonKind::extractObject (const GALGAS_object & inObject,
-                                                                                  C_Compiler * inCompiler
+                                                                                  Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_dynamicTypeComparisonKind result ;
   const GALGAS_dynamicTypeComparisonKind * p = (const GALGAS_dynamicTypeComparisonKind *) inObject.embeddedObject () ;
@@ -10026,7 +10026,7 @@ GALGAS_templateTestDynamicClassAST_2D_weak GALGAS_templateTestDynamicClassAST_2D
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateTestDynamicClassAST GALGAS_templateTestDynamicClassAST_2D_weak::bang_templateTestDynamicClassAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_templateTestDynamicClassAST GALGAS_templateTestDynamicClassAST_2D_weak::bang_templateTestDynamicClassAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_templateTestDynamicClassAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -10069,7 +10069,7 @@ AC_GALGAS_root * GALGAS_templateTestDynamicClassAST_2D_weak::clonedObject (void)
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateTestDynamicClassAST_2D_weak GALGAS_templateTestDynamicClassAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                      C_Compiler * inCompiler
+                                                                                                      Compiler * inCompiler
                                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_templateTestDynamicClassAST_2D_weak result ;
   const GALGAS_templateTestDynamicClassAST_2D_weak * p = (const GALGAS_templateTestDynamicClassAST_2D_weak *) inObject.embeddedObject () ;
@@ -10137,7 +10137,7 @@ GALGAS_templateFunctionCallAST_2D_weak GALGAS_templateFunctionCallAST_2D_weak::c
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateFunctionCallAST GALGAS_templateFunctionCallAST_2D_weak::bang_templateFunctionCallAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_templateFunctionCallAST GALGAS_templateFunctionCallAST_2D_weak::bang_templateFunctionCallAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_templateFunctionCallAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -10180,7 +10180,7 @@ AC_GALGAS_root * GALGAS_templateFunctionCallAST_2D_weak::clonedObject (void) con
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateFunctionCallAST_2D_weak GALGAS_templateFunctionCallAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                              C_Compiler * inCompiler
+                                                                                              Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_templateFunctionCallAST_2D_weak result ;
   const GALGAS_templateFunctionCallAST_2D_weak * p = (const GALGAS_templateFunctionCallAST_2D_weak *) inObject.embeddedObject () ;
@@ -10248,7 +10248,7 @@ GALGAS_templateVarInExpressionAST_2D_weak GALGAS_templateVarInExpressionAST_2D_w
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateVarInExpressionAST GALGAS_templateVarInExpressionAST_2D_weak::bang_templateVarInExpressionAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_templateVarInExpressionAST GALGAS_templateVarInExpressionAST_2D_weak::bang_templateVarInExpressionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_templateVarInExpressionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -10291,7 +10291,7 @@ AC_GALGAS_root * GALGAS_templateVarInExpressionAST_2D_weak::clonedObject (void) 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateVarInExpressionAST_2D_weak GALGAS_templateVarInExpressionAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                    C_Compiler * inCompiler
+                                                                                                    Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_templateVarInExpressionAST_2D_weak result ;
   const GALGAS_templateVarInExpressionAST_2D_weak * p = (const GALGAS_templateVarInExpressionAST_2D_weak *) inObject.embeddedObject () ;
@@ -10485,7 +10485,7 @@ AC_GALGAS_root * GALGAS_templateAddOperationAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateAddOperationAST GALGAS_templateAddOperationAST::extractObject (const GALGAS_object & inObject,
-                                                                              C_Compiler * inCompiler
+                                                                              Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_templateAddOperationAST result ;
   const GALGAS_templateAddOperationAST * p = (const GALGAS_templateAddOperationAST *) inObject.embeddedObject () ;
@@ -10553,7 +10553,7 @@ GALGAS_templateAddOperationAST_2D_weak GALGAS_templateAddOperationAST_2D_weak::c
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateAddOperationAST GALGAS_templateAddOperationAST_2D_weak::bang_templateAddOperationAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_templateAddOperationAST GALGAS_templateAddOperationAST_2D_weak::bang_templateAddOperationAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_templateAddOperationAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -10596,7 +10596,7 @@ AC_GALGAS_root * GALGAS_templateAddOperationAST_2D_weak::clonedObject (void) con
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateAddOperationAST_2D_weak GALGAS_templateAddOperationAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                              C_Compiler * inCompiler
+                                                                                              Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_templateAddOperationAST_2D_weak result ;
   const GALGAS_templateAddOperationAST_2D_weak * p = (const GALGAS_templateAddOperationAST_2D_weak *) inObject.embeddedObject () ;
@@ -10790,7 +10790,7 @@ AC_GALGAS_root * GALGAS_templateSubOperationAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateSubOperationAST GALGAS_templateSubOperationAST::extractObject (const GALGAS_object & inObject,
-                                                                              C_Compiler * inCompiler
+                                                                              Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_templateSubOperationAST result ;
   const GALGAS_templateSubOperationAST * p = (const GALGAS_templateSubOperationAST *) inObject.embeddedObject () ;
@@ -10858,7 +10858,7 @@ GALGAS_templateSubOperationAST_2D_weak GALGAS_templateSubOperationAST_2D_weak::c
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateSubOperationAST GALGAS_templateSubOperationAST_2D_weak::bang_templateSubOperationAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_templateSubOperationAST GALGAS_templateSubOperationAST_2D_weak::bang_templateSubOperationAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_templateSubOperationAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -10901,7 +10901,7 @@ AC_GALGAS_root * GALGAS_templateSubOperationAST_2D_weak::clonedObject (void) con
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateSubOperationAST_2D_weak GALGAS_templateSubOperationAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                              C_Compiler * inCompiler
+                                                                                              Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_templateSubOperationAST_2D_weak result ;
   const GALGAS_templateSubOperationAST_2D_weak * p = (const GALGAS_templateSubOperationAST_2D_weak *) inObject.embeddedObject () ;
@@ -11095,7 +11095,7 @@ AC_GALGAS_root * GALGAS_templateMultiplyOperationAST::clonedObject (void) const 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateMultiplyOperationAST GALGAS_templateMultiplyOperationAST::extractObject (const GALGAS_object & inObject,
-                                                                                        C_Compiler * inCompiler
+                                                                                        Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_templateMultiplyOperationAST result ;
   const GALGAS_templateMultiplyOperationAST * p = (const GALGAS_templateMultiplyOperationAST *) inObject.embeddedObject () ;
@@ -11163,7 +11163,7 @@ GALGAS_templateMultiplyOperationAST_2D_weak GALGAS_templateMultiplyOperationAST_
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateMultiplyOperationAST GALGAS_templateMultiplyOperationAST_2D_weak::bang_templateMultiplyOperationAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_templateMultiplyOperationAST GALGAS_templateMultiplyOperationAST_2D_weak::bang_templateMultiplyOperationAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_templateMultiplyOperationAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -11206,7 +11206,7 @@ AC_GALGAS_root * GALGAS_templateMultiplyOperationAST_2D_weak::clonedObject (void
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateMultiplyOperationAST_2D_weak GALGAS_templateMultiplyOperationAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                        C_Compiler * inCompiler
+                                                                                                        Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_templateMultiplyOperationAST_2D_weak result ;
   const GALGAS_templateMultiplyOperationAST_2D_weak * p = (const GALGAS_templateMultiplyOperationAST_2D_weak *) inObject.embeddedObject () ;
@@ -11400,7 +11400,7 @@ AC_GALGAS_root * GALGAS_templateDivideOperationAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateDivideOperationAST GALGAS_templateDivideOperationAST::extractObject (const GALGAS_object & inObject,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_templateDivideOperationAST result ;
   const GALGAS_templateDivideOperationAST * p = (const GALGAS_templateDivideOperationAST *) inObject.embeddedObject () ;
@@ -11468,7 +11468,7 @@ GALGAS_templateDivideOperationAST_2D_weak GALGAS_templateDivideOperationAST_2D_w
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateDivideOperationAST GALGAS_templateDivideOperationAST_2D_weak::bang_templateDivideOperationAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_templateDivideOperationAST GALGAS_templateDivideOperationAST_2D_weak::bang_templateDivideOperationAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_templateDivideOperationAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -11511,7 +11511,7 @@ AC_GALGAS_root * GALGAS_templateDivideOperationAST_2D_weak::clonedObject (void) 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateDivideOperationAST_2D_weak GALGAS_templateDivideOperationAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                    C_Compiler * inCompiler
+                                                                                                    Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_templateDivideOperationAST_2D_weak result ;
   const GALGAS_templateDivideOperationAST_2D_weak * p = (const GALGAS_templateDivideOperationAST_2D_weak *) inObject.embeddedObject () ;
@@ -11705,7 +11705,7 @@ AC_GALGAS_root * GALGAS_templateModuloOperationAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateModuloOperationAST GALGAS_templateModuloOperationAST::extractObject (const GALGAS_object & inObject,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_templateModuloOperationAST result ;
   const GALGAS_templateModuloOperationAST * p = (const GALGAS_templateModuloOperationAST *) inObject.embeddedObject () ;
@@ -11773,7 +11773,7 @@ GALGAS_templateModuloOperationAST_2D_weak GALGAS_templateModuloOperationAST_2D_w
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateModuloOperationAST GALGAS_templateModuloOperationAST_2D_weak::bang_templateModuloOperationAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_templateModuloOperationAST GALGAS_templateModuloOperationAST_2D_weak::bang_templateModuloOperationAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_templateModuloOperationAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -11816,7 +11816,7 @@ AC_GALGAS_root * GALGAS_templateModuloOperationAST_2D_weak::clonedObject (void) 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateModuloOperationAST_2D_weak GALGAS_templateModuloOperationAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                    C_Compiler * inCompiler
+                                                                                                    Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_templateModuloOperationAST_2D_weak result ;
   const GALGAS_templateModuloOperationAST_2D_weak * p = (const GALGAS_templateModuloOperationAST_2D_weak *) inObject.embeddedObject () ;
@@ -11989,7 +11989,7 @@ AC_GALGAS_root * GALGAS_templateUnaryMinusOperationAST::clonedObject (void) cons
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateUnaryMinusOperationAST GALGAS_templateUnaryMinusOperationAST::extractObject (const GALGAS_object & inObject,
-                                                                                            C_Compiler * inCompiler
+                                                                                            Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_templateUnaryMinusOperationAST result ;
   const GALGAS_templateUnaryMinusOperationAST * p = (const GALGAS_templateUnaryMinusOperationAST *) inObject.embeddedObject () ;
@@ -12057,7 +12057,7 @@ GALGAS_templateUnaryMinusOperationAST_2D_weak GALGAS_templateUnaryMinusOperation
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateUnaryMinusOperationAST GALGAS_templateUnaryMinusOperationAST_2D_weak::bang_templateUnaryMinusOperationAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_templateUnaryMinusOperationAST GALGAS_templateUnaryMinusOperationAST_2D_weak::bang_templateUnaryMinusOperationAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_templateUnaryMinusOperationAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -12100,7 +12100,7 @@ AC_GALGAS_root * GALGAS_templateUnaryMinusOperationAST_2D_weak::clonedObject (vo
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateUnaryMinusOperationAST_2D_weak GALGAS_templateUnaryMinusOperationAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                            C_Compiler * inCompiler
+                                                                                                            Compiler * inCompiler
                                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_templateUnaryMinusOperationAST_2D_weak result ;
   const GALGAS_templateUnaryMinusOperationAST_2D_weak * p = (const GALGAS_templateUnaryMinusOperationAST_2D_weak *) inObject.embeddedObject () ;
@@ -12294,7 +12294,7 @@ AC_GALGAS_root * GALGAS_templateEqualTestAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateEqualTestAST GALGAS_templateEqualTestAST::extractObject (const GALGAS_object & inObject,
-                                                                        C_Compiler * inCompiler
+                                                                        Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_templateEqualTestAST result ;
   const GALGAS_templateEqualTestAST * p = (const GALGAS_templateEqualTestAST *) inObject.embeddedObject () ;
@@ -12362,7 +12362,7 @@ GALGAS_templateEqualTestAST_2D_weak GALGAS_templateEqualTestAST_2D_weak::constru
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateEqualTestAST GALGAS_templateEqualTestAST_2D_weak::bang_templateEqualTestAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_templateEqualTestAST GALGAS_templateEqualTestAST_2D_weak::bang_templateEqualTestAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_templateEqualTestAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -12405,7 +12405,7 @@ AC_GALGAS_root * GALGAS_templateEqualTestAST_2D_weak::clonedObject (void) const 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateEqualTestAST_2D_weak GALGAS_templateEqualTestAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                        C_Compiler * inCompiler
+                                                                                        Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_templateEqualTestAST_2D_weak result ;
   const GALGAS_templateEqualTestAST_2D_weak * p = (const GALGAS_templateEqualTestAST_2D_weak *) inObject.embeddedObject () ;
@@ -12599,7 +12599,7 @@ AC_GALGAS_root * GALGAS_templateNonEqualTestAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateNonEqualTestAST GALGAS_templateNonEqualTestAST::extractObject (const GALGAS_object & inObject,
-                                                                              C_Compiler * inCompiler
+                                                                              Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_templateNonEqualTestAST result ;
   const GALGAS_templateNonEqualTestAST * p = (const GALGAS_templateNonEqualTestAST *) inObject.embeddedObject () ;
@@ -12667,7 +12667,7 @@ GALGAS_templateNonEqualTestAST_2D_weak GALGAS_templateNonEqualTestAST_2D_weak::c
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateNonEqualTestAST GALGAS_templateNonEqualTestAST_2D_weak::bang_templateNonEqualTestAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_templateNonEqualTestAST GALGAS_templateNonEqualTestAST_2D_weak::bang_templateNonEqualTestAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_templateNonEqualTestAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -12710,7 +12710,7 @@ AC_GALGAS_root * GALGAS_templateNonEqualTestAST_2D_weak::clonedObject (void) con
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateNonEqualTestAST_2D_weak GALGAS_templateNonEqualTestAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                              C_Compiler * inCompiler
+                                                                                              Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_templateNonEqualTestAST_2D_weak result ;
   const GALGAS_templateNonEqualTestAST_2D_weak * p = (const GALGAS_templateNonEqualTestAST_2D_weak *) inObject.embeddedObject () ;
@@ -12904,7 +12904,7 @@ AC_GALGAS_root * GALGAS_templateStrictInfTestAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateStrictInfTestAST GALGAS_templateStrictInfTestAST::extractObject (const GALGAS_object & inObject,
-                                                                                C_Compiler * inCompiler
+                                                                                Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_templateStrictInfTestAST result ;
   const GALGAS_templateStrictInfTestAST * p = (const GALGAS_templateStrictInfTestAST *) inObject.embeddedObject () ;
@@ -12972,7 +12972,7 @@ GALGAS_templateStrictInfTestAST_2D_weak GALGAS_templateStrictInfTestAST_2D_weak:
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateStrictInfTestAST GALGAS_templateStrictInfTestAST_2D_weak::bang_templateStrictInfTestAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_templateStrictInfTestAST GALGAS_templateStrictInfTestAST_2D_weak::bang_templateStrictInfTestAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_templateStrictInfTestAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -13015,7 +13015,7 @@ AC_GALGAS_root * GALGAS_templateStrictInfTestAST_2D_weak::clonedObject (void) co
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateStrictInfTestAST_2D_weak GALGAS_templateStrictInfTestAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                C_Compiler * inCompiler
+                                                                                                Compiler * inCompiler
                                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_templateStrictInfTestAST_2D_weak result ;
   const GALGAS_templateStrictInfTestAST_2D_weak * p = (const GALGAS_templateStrictInfTestAST_2D_weak *) inObject.embeddedObject () ;
@@ -13209,7 +13209,7 @@ AC_GALGAS_root * GALGAS_templateInfOrEqualTestAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateInfOrEqualTestAST GALGAS_templateInfOrEqualTestAST::extractObject (const GALGAS_object & inObject,
-                                                                                  C_Compiler * inCompiler
+                                                                                  Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_templateInfOrEqualTestAST result ;
   const GALGAS_templateInfOrEqualTestAST * p = (const GALGAS_templateInfOrEqualTestAST *) inObject.embeddedObject () ;
@@ -13277,7 +13277,7 @@ GALGAS_templateInfOrEqualTestAST_2D_weak GALGAS_templateInfOrEqualTestAST_2D_wea
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateInfOrEqualTestAST GALGAS_templateInfOrEqualTestAST_2D_weak::bang_templateInfOrEqualTestAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_templateInfOrEqualTestAST GALGAS_templateInfOrEqualTestAST_2D_weak::bang_templateInfOrEqualTestAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_templateInfOrEqualTestAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -13320,7 +13320,7 @@ AC_GALGAS_root * GALGAS_templateInfOrEqualTestAST_2D_weak::clonedObject (void) c
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateInfOrEqualTestAST_2D_weak GALGAS_templateInfOrEqualTestAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                  C_Compiler * inCompiler
+                                                                                                  Compiler * inCompiler
                                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_templateInfOrEqualTestAST_2D_weak result ;
   const GALGAS_templateInfOrEqualTestAST_2D_weak * p = (const GALGAS_templateInfOrEqualTestAST_2D_weak *) inObject.embeddedObject () ;
@@ -13514,7 +13514,7 @@ AC_GALGAS_root * GALGAS_templateStrictSupTestAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateStrictSupTestAST GALGAS_templateStrictSupTestAST::extractObject (const GALGAS_object & inObject,
-                                                                                C_Compiler * inCompiler
+                                                                                Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_templateStrictSupTestAST result ;
   const GALGAS_templateStrictSupTestAST * p = (const GALGAS_templateStrictSupTestAST *) inObject.embeddedObject () ;
@@ -13582,7 +13582,7 @@ GALGAS_templateStrictSupTestAST_2D_weak GALGAS_templateStrictSupTestAST_2D_weak:
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateStrictSupTestAST GALGAS_templateStrictSupTestAST_2D_weak::bang_templateStrictSupTestAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_templateStrictSupTestAST GALGAS_templateStrictSupTestAST_2D_weak::bang_templateStrictSupTestAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_templateStrictSupTestAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -13625,7 +13625,7 @@ AC_GALGAS_root * GALGAS_templateStrictSupTestAST_2D_weak::clonedObject (void) co
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateStrictSupTestAST_2D_weak GALGAS_templateStrictSupTestAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                C_Compiler * inCompiler
+                                                                                                Compiler * inCompiler
                                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_templateStrictSupTestAST_2D_weak result ;
   const GALGAS_templateStrictSupTestAST_2D_weak * p = (const GALGAS_templateStrictSupTestAST_2D_weak *) inObject.embeddedObject () ;
@@ -13819,7 +13819,7 @@ AC_GALGAS_root * GALGAS_templateSupOrEqualTestAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateSupOrEqualTestAST GALGAS_templateSupOrEqualTestAST::extractObject (const GALGAS_object & inObject,
-                                                                                  C_Compiler * inCompiler
+                                                                                  Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_templateSupOrEqualTestAST result ;
   const GALGAS_templateSupOrEqualTestAST * p = (const GALGAS_templateSupOrEqualTestAST *) inObject.embeddedObject () ;
@@ -13887,7 +13887,7 @@ GALGAS_templateSupOrEqualTestAST_2D_weak GALGAS_templateSupOrEqualTestAST_2D_wea
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateSupOrEqualTestAST GALGAS_templateSupOrEqualTestAST_2D_weak::bang_templateSupOrEqualTestAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_templateSupOrEqualTestAST GALGAS_templateSupOrEqualTestAST_2D_weak::bang_templateSupOrEqualTestAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_templateSupOrEqualTestAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -13930,7 +13930,7 @@ AC_GALGAS_root * GALGAS_templateSupOrEqualTestAST_2D_weak::clonedObject (void) c
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateSupOrEqualTestAST_2D_weak GALGAS_templateSupOrEqualTestAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                  C_Compiler * inCompiler
+                                                                                                  Compiler * inCompiler
                                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_templateSupOrEqualTestAST_2D_weak result ;
   const GALGAS_templateSupOrEqualTestAST_2D_weak * p = (const GALGAS_templateSupOrEqualTestAST_2D_weak *) inObject.embeddedObject () ;
@@ -14124,7 +14124,7 @@ AC_GALGAS_root * GALGAS_templateLeftShiftOperationAST::clonedObject (void) const
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateLeftShiftOperationAST GALGAS_templateLeftShiftOperationAST::extractObject (const GALGAS_object & inObject,
-                                                                                          C_Compiler * inCompiler
+                                                                                          Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_templateLeftShiftOperationAST result ;
   const GALGAS_templateLeftShiftOperationAST * p = (const GALGAS_templateLeftShiftOperationAST *) inObject.embeddedObject () ;
@@ -14192,7 +14192,7 @@ GALGAS_templateLeftShiftOperationAST_2D_weak GALGAS_templateLeftShiftOperationAS
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateLeftShiftOperationAST GALGAS_templateLeftShiftOperationAST_2D_weak::bang_templateLeftShiftOperationAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_templateLeftShiftOperationAST GALGAS_templateLeftShiftOperationAST_2D_weak::bang_templateLeftShiftOperationAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_templateLeftShiftOperationAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -14235,7 +14235,7 @@ AC_GALGAS_root * GALGAS_templateLeftShiftOperationAST_2D_weak::clonedObject (voi
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateLeftShiftOperationAST_2D_weak GALGAS_templateLeftShiftOperationAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                          C_Compiler * inCompiler
+                                                                                                          Compiler * inCompiler
                                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_templateLeftShiftOperationAST_2D_weak result ;
   const GALGAS_templateLeftShiftOperationAST_2D_weak * p = (const GALGAS_templateLeftShiftOperationAST_2D_weak *) inObject.embeddedObject () ;
@@ -14429,7 +14429,7 @@ AC_GALGAS_root * GALGAS_templateRightShiftOperationAST::clonedObject (void) cons
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateRightShiftOperationAST GALGAS_templateRightShiftOperationAST::extractObject (const GALGAS_object & inObject,
-                                                                                            C_Compiler * inCompiler
+                                                                                            Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_templateRightShiftOperationAST result ;
   const GALGAS_templateRightShiftOperationAST * p = (const GALGAS_templateRightShiftOperationAST *) inObject.embeddedObject () ;
@@ -14497,7 +14497,7 @@ GALGAS_templateRightShiftOperationAST_2D_weak GALGAS_templateRightShiftOperation
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateRightShiftOperationAST GALGAS_templateRightShiftOperationAST_2D_weak::bang_templateRightShiftOperationAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_templateRightShiftOperationAST GALGAS_templateRightShiftOperationAST_2D_weak::bang_templateRightShiftOperationAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_templateRightShiftOperationAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -14540,7 +14540,7 @@ AC_GALGAS_root * GALGAS_templateRightShiftOperationAST_2D_weak::clonedObject (vo
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateRightShiftOperationAST_2D_weak GALGAS_templateRightShiftOperationAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                            C_Compiler * inCompiler
+                                                                                                            Compiler * inCompiler
                                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_templateRightShiftOperationAST_2D_weak result ;
   const GALGAS_templateRightShiftOperationAST_2D_weak * p = (const GALGAS_templateRightShiftOperationAST_2D_weak *) inObject.embeddedObject () ;
@@ -14608,7 +14608,7 @@ GALGAS_templateInstructionStringAST_2D_weak GALGAS_templateInstructionStringAST_
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionStringAST GALGAS_templateInstructionStringAST_2D_weak::bang_templateInstructionStringAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_templateInstructionStringAST GALGAS_templateInstructionStringAST_2D_weak::bang_templateInstructionStringAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_templateInstructionStringAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -14651,7 +14651,7 @@ AC_GALGAS_root * GALGAS_templateInstructionStringAST_2D_weak::clonedObject (void
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateInstructionStringAST_2D_weak GALGAS_templateInstructionStringAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                        C_Compiler * inCompiler
+                                                                                                        Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_templateInstructionStringAST_2D_weak result ;
   const GALGAS_templateInstructionStringAST_2D_weak * p = (const GALGAS_templateInstructionStringAST_2D_weak *) inObject.embeddedObject () ;
@@ -14824,7 +14824,7 @@ AC_GALGAS_root * GALGAS_templateInstructionExpressionAST::clonedObject (void) co
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateInstructionExpressionAST GALGAS_templateInstructionExpressionAST::extractObject (const GALGAS_object & inObject,
-                                                                                                C_Compiler * inCompiler
+                                                                                                Compiler * inCompiler
                                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_templateInstructionExpressionAST result ;
   const GALGAS_templateInstructionExpressionAST * p = (const GALGAS_templateInstructionExpressionAST *) inObject.embeddedObject () ;
@@ -14892,7 +14892,7 @@ GALGAS_templateInstructionExpressionAST_2D_weak GALGAS_templateInstructionExpres
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionExpressionAST GALGAS_templateInstructionExpressionAST_2D_weak::bang_templateInstructionExpressionAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_templateInstructionExpressionAST GALGAS_templateInstructionExpressionAST_2D_weak::bang_templateInstructionExpressionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_templateInstructionExpressionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -14935,7 +14935,7 @@ AC_GALGAS_root * GALGAS_templateInstructionExpressionAST_2D_weak::clonedObject (
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateInstructionExpressionAST_2D_weak GALGAS_templateInstructionExpressionAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                                C_Compiler * inCompiler
+                                                                                                                Compiler * inCompiler
                                                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_templateInstructionExpressionAST_2D_weak result ;
   const GALGAS_templateInstructionExpressionAST_2D_weak * p = (const GALGAS_templateInstructionExpressionAST_2D_weak *) inObject.embeddedObject () ;
@@ -15129,7 +15129,7 @@ AC_GALGAS_root * GALGAS_templateBlockInstructionAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateBlockInstructionAST GALGAS_templateBlockInstructionAST::extractObject (const GALGAS_object & inObject,
-                                                                                      C_Compiler * inCompiler
+                                                                                      Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_templateBlockInstructionAST result ;
   const GALGAS_templateBlockInstructionAST * p = (const GALGAS_templateBlockInstructionAST *) inObject.embeddedObject () ;
@@ -15197,7 +15197,7 @@ GALGAS_templateBlockInstructionAST_2D_weak GALGAS_templateBlockInstructionAST_2D
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateBlockInstructionAST GALGAS_templateBlockInstructionAST_2D_weak::bang_templateBlockInstructionAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_templateBlockInstructionAST GALGAS_templateBlockInstructionAST_2D_weak::bang_templateBlockInstructionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_templateBlockInstructionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -15240,7 +15240,7 @@ AC_GALGAS_root * GALGAS_templateBlockInstructionAST_2D_weak::clonedObject (void)
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateBlockInstructionAST_2D_weak GALGAS_templateBlockInstructionAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                      C_Compiler * inCompiler
+                                                                                                      Compiler * inCompiler
                                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_templateBlockInstructionAST_2D_weak result ;
   const GALGAS_templateBlockInstructionAST_2D_weak * p = (const GALGAS_templateBlockInstructionAST_2D_weak *) inObject.embeddedObject () ;
@@ -15366,7 +15366,7 @@ AC_GALGAS_root * GALGAS_templateInstructionGetColumnLocationAST::clonedObject (v
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateInstructionGetColumnLocationAST GALGAS_templateInstructionGetColumnLocationAST::extractObject (const GALGAS_object & inObject,
-                                                                                                              C_Compiler * inCompiler
+                                                                                                              Compiler * inCompiler
                                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_templateInstructionGetColumnLocationAST result ;
   const GALGAS_templateInstructionGetColumnLocationAST * p = (const GALGAS_templateInstructionGetColumnLocationAST *) inObject.embeddedObject () ;
@@ -15434,7 +15434,7 @@ GALGAS_templateInstructionGetColumnLocationAST_2D_weak GALGAS_templateInstructio
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionGetColumnLocationAST GALGAS_templateInstructionGetColumnLocationAST_2D_weak::bang_templateInstructionGetColumnLocationAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_templateInstructionGetColumnLocationAST GALGAS_templateInstructionGetColumnLocationAST_2D_weak::bang_templateInstructionGetColumnLocationAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_templateInstructionGetColumnLocationAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -15477,7 +15477,7 @@ AC_GALGAS_root * GALGAS_templateInstructionGetColumnLocationAST_2D_weak::clonedO
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateInstructionGetColumnLocationAST_2D_weak GALGAS_templateInstructionGetColumnLocationAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                                              C_Compiler * inCompiler
+                                                                                                                              Compiler * inCompiler
                                                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_templateInstructionGetColumnLocationAST_2D_weak result ;
   const GALGAS_templateInstructionGetColumnLocationAST_2D_weak * p = (const GALGAS_templateInstructionGetColumnLocationAST_2D_weak *) inObject.embeddedObject () ;
@@ -15603,7 +15603,7 @@ AC_GALGAS_root * GALGAS_templateInstructionGotoColumnLocationAST::clonedObject (
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateInstructionGotoColumnLocationAST GALGAS_templateInstructionGotoColumnLocationAST::extractObject (const GALGAS_object & inObject,
-                                                                                                                C_Compiler * inCompiler
+                                                                                                                Compiler * inCompiler
                                                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_templateInstructionGotoColumnLocationAST result ;
   const GALGAS_templateInstructionGotoColumnLocationAST * p = (const GALGAS_templateInstructionGotoColumnLocationAST *) inObject.embeddedObject () ;
@@ -15671,7 +15671,7 @@ GALGAS_templateInstructionGotoColumnLocationAST_2D_weak GALGAS_templateInstructi
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionGotoColumnLocationAST GALGAS_templateInstructionGotoColumnLocationAST_2D_weak::bang_templateInstructionGotoColumnLocationAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_templateInstructionGotoColumnLocationAST GALGAS_templateInstructionGotoColumnLocationAST_2D_weak::bang_templateInstructionGotoColumnLocationAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_templateInstructionGotoColumnLocationAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -15714,7 +15714,7 @@ AC_GALGAS_root * GALGAS_templateInstructionGotoColumnLocationAST_2D_weak::cloned
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateInstructionGotoColumnLocationAST_2D_weak GALGAS_templateInstructionGotoColumnLocationAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                                                C_Compiler * inCompiler
+                                                                                                                                Compiler * inCompiler
                                                                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_templateInstructionGotoColumnLocationAST_2D_weak result ;
   const GALGAS_templateInstructionGotoColumnLocationAST_2D_weak * p = (const GALGAS_templateInstructionGotoColumnLocationAST_2D_weak *) inObject.embeddedObject () ;
@@ -15872,7 +15872,7 @@ void GALGAS_templateInstructionIfBranchListAST::addAssign_operation (const GALGA
 
 void GALGAS_templateInstructionIfBranchListAST::setter_append (const GALGAS_templateExpressionAST inOperand0,
                                                                const GALGAS_templateInstructionListAST inOperand1,
-                                                               C_Compiler * /* inCompiler */
+                                                               Compiler * /* inCompiler */
                                                                COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
@@ -15889,7 +15889,7 @@ void GALGAS_templateInstructionIfBranchListAST::setter_append (const GALGAS_temp
 void GALGAS_templateInstructionIfBranchListAST::setter_insertAtIndex (const GALGAS_templateExpressionAST inOperand0,
                                                                       const GALGAS_templateInstructionListAST inOperand1,
                                                                       const GALGAS_uint inInsertionIndex,
-                                                                      C_Compiler * inCompiler
+                                                                      Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
@@ -15910,7 +15910,7 @@ void GALGAS_templateInstructionIfBranchListAST::setter_insertAtIndex (const GALG
 void GALGAS_templateInstructionIfBranchListAST::setter_removeAtIndex (GALGAS_templateExpressionAST & outOperand0,
                                                                       GALGAS_templateInstructionListAST & outOperand1,
                                                                       const GALGAS_uint inRemoveIndex,
-                                                                      C_Compiler * inCompiler
+                                                                      Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inRemoveIndex.isValid ()) {
@@ -15941,7 +15941,7 @@ void GALGAS_templateInstructionIfBranchListAST::setter_removeAtIndex (GALGAS_tem
 
 void GALGAS_templateInstructionIfBranchListAST::setter_popFirst (GALGAS_templateExpressionAST & outOperand0,
                                                                  GALGAS_templateInstructionListAST & outOperand1,
-                                                                 C_Compiler * inCompiler
+                                                                 Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
@@ -15960,7 +15960,7 @@ void GALGAS_templateInstructionIfBranchListAST::setter_popFirst (GALGAS_template
 
 void GALGAS_templateInstructionIfBranchListAST::setter_popLast (GALGAS_templateExpressionAST & outOperand0,
                                                                 GALGAS_templateInstructionListAST & outOperand1,
-                                                                C_Compiler * inCompiler
+                                                                Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
@@ -15979,7 +15979,7 @@ void GALGAS_templateInstructionIfBranchListAST::setter_popLast (GALGAS_templateE
 
 void GALGAS_templateInstructionIfBranchListAST::method_first (GALGAS_templateExpressionAST & outOperand0,
                                                               GALGAS_templateInstructionListAST & outOperand1,
-                                                              C_Compiler * inCompiler
+                                                              Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readFirst (attributes, inCompiler COMMA_THERE) ;
@@ -15998,7 +15998,7 @@ void GALGAS_templateInstructionIfBranchListAST::method_first (GALGAS_templateExp
 
 void GALGAS_templateInstructionIfBranchListAST::method_last (GALGAS_templateExpressionAST & outOperand0,
                                                              GALGAS_templateInstructionListAST & outOperand1,
-                                                             C_Compiler * inCompiler
+                                                             Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readLast (attributes, inCompiler COMMA_THERE) ;
@@ -16016,7 +16016,7 @@ void GALGAS_templateInstructionIfBranchListAST::method_last (GALGAS_templateExpr
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateInstructionIfBranchListAST GALGAS_templateInstructionIfBranchListAST::add_operation (const GALGAS_templateInstructionIfBranchListAST & inOperand,
-                                                                                                    C_Compiler * /* inCompiler */
+                                                                                                    Compiler * /* inCompiler */
                                                                                                     COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_templateInstructionIfBranchListAST result ;
   if (isValid () && inOperand.isValid ()) {
@@ -16029,7 +16029,7 @@ GALGAS_templateInstructionIfBranchListAST GALGAS_templateInstructionIfBranchList
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateInstructionIfBranchListAST GALGAS_templateInstructionIfBranchListAST::getter_subListWithRange (const GALGAS_range & inRange,
-                                                                                                              C_Compiler * inCompiler
+                                                                                                              Compiler * inCompiler
                                                                                                               COMMA_LOCATION_ARGS) const {
   GALGAS_templateInstructionIfBranchListAST result = GALGAS_templateInstructionIfBranchListAST::constructor_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
@@ -16039,7 +16039,7 @@ GALGAS_templateInstructionIfBranchListAST GALGAS_templateInstructionIfBranchList
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateInstructionIfBranchListAST GALGAS_templateInstructionIfBranchListAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
-                                                                                                              C_Compiler * inCompiler
+                                                                                                              Compiler * inCompiler
                                                                                                               COMMA_LOCATION_ARGS) const {
   GALGAS_templateInstructionIfBranchListAST result = GALGAS_templateInstructionIfBranchListAST::constructor_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
@@ -16049,7 +16049,7 @@ GALGAS_templateInstructionIfBranchListAST GALGAS_templateInstructionIfBranchList
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateInstructionIfBranchListAST GALGAS_templateInstructionIfBranchListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
-                                                                                                            C_Compiler * inCompiler
+                                                                                                            Compiler * inCompiler
                                                                                                             COMMA_LOCATION_ARGS) const {
   GALGAS_templateInstructionIfBranchListAST result = GALGAS_templateInstructionIfBranchListAST::constructor_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
@@ -16059,7 +16059,7 @@ GALGAS_templateInstructionIfBranchListAST GALGAS_templateInstructionIfBranchList
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_templateInstructionIfBranchListAST::plusAssign_operation (const GALGAS_templateInstructionIfBranchListAST inOperand,
-                                                                      C_Compiler * /* inCompiler */
+                                                                      Compiler * /* inCompiler */
                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
@@ -16068,7 +16068,7 @@ void GALGAS_templateInstructionIfBranchListAST::plusAssign_operation (const GALG
 
 void GALGAS_templateInstructionIfBranchListAST::setter_setMExpressionAtIndex (GALGAS_templateExpressionAST inOperand,
                                                                               GALGAS_uint inIndex,
-                                                                              C_Compiler * inCompiler
+                                                                              Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) {
   cCollectionElement_templateInstructionIfBranchListAST * p = (cCollectionElement_templateInstructionIfBranchListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -16081,7 +16081,7 @@ void GALGAS_templateInstructionIfBranchListAST::setter_setMExpressionAtIndex (GA
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateExpressionAST GALGAS_templateInstructionIfBranchListAST::getter_mExpressionAtIndex (const GALGAS_uint & inIndex,
-                                                                                                   C_Compiler * inCompiler
+                                                                                                   Compiler * inCompiler
                                                                                                    COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_templateInstructionIfBranchListAST * p = (cCollectionElement_templateInstructionIfBranchListAST *) attributes.ptr () ;
@@ -16097,7 +16097,7 @@ GALGAS_templateExpressionAST GALGAS_templateInstructionIfBranchListAST::getter_m
 
 void GALGAS_templateInstructionIfBranchListAST::setter_setMInstructionListAtIndex (GALGAS_templateInstructionListAST inOperand,
                                                                                    GALGAS_uint inIndex,
-                                                                                   C_Compiler * inCompiler
+                                                                                   Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) {
   cCollectionElement_templateInstructionIfBranchListAST * p = (cCollectionElement_templateInstructionIfBranchListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -16110,7 +16110,7 @@ void GALGAS_templateInstructionIfBranchListAST::setter_setMInstructionListAtInde
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateInstructionListAST GALGAS_templateInstructionIfBranchListAST::getter_mInstructionListAtIndex (const GALGAS_uint & inIndex,
-                                                                                                             C_Compiler * inCompiler
+                                                                                                             Compiler * inCompiler
                                                                                                              COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_templateInstructionIfBranchListAST * p = (cCollectionElement_templateInstructionIfBranchListAST *) attributes.ptr () ;
@@ -16189,7 +16189,7 @@ AC_GALGAS_root * GALGAS_templateInstructionIfBranchListAST::clonedObject (void) 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateInstructionIfBranchListAST GALGAS_templateInstructionIfBranchListAST::extractObject (const GALGAS_object & inObject,
-                                                                                                    C_Compiler * inCompiler
+                                                                                                    Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_templateInstructionIfBranchListAST result ;
   const GALGAS_templateInstructionIfBranchListAST * p = (const GALGAS_templateInstructionIfBranchListAST *) inObject.embeddedObject () ;
@@ -16362,7 +16362,7 @@ AC_GALGAS_root * GALGAS_templateInstructionIfAST::clonedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateInstructionIfAST GALGAS_templateInstructionIfAST::extractObject (const GALGAS_object & inObject,
-                                                                                C_Compiler * inCompiler
+                                                                                Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_templateInstructionIfAST result ;
   const GALGAS_templateInstructionIfAST * p = (const GALGAS_templateInstructionIfAST *) inObject.embeddedObject () ;
@@ -16430,7 +16430,7 @@ GALGAS_templateInstructionIfAST_2D_weak GALGAS_templateInstructionIfAST_2D_weak:
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionIfAST GALGAS_templateInstructionIfAST_2D_weak::bang_templateInstructionIfAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_templateInstructionIfAST GALGAS_templateInstructionIfAST_2D_weak::bang_templateInstructionIfAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_templateInstructionIfAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -16473,7 +16473,7 @@ AC_GALGAS_root * GALGAS_templateInstructionIfAST_2D_weak::clonedObject (void) co
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateInstructionIfAST_2D_weak GALGAS_templateInstructionIfAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                C_Compiler * inCompiler
+                                                                                                Compiler * inCompiler
                                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_templateInstructionIfAST_2D_weak result ;
   const GALGAS_templateInstructionIfAST_2D_weak * p = (const GALGAS_templateInstructionIfAST_2D_weak *) inObject.embeddedObject () ;
@@ -16567,7 +16567,7 @@ AC_GALGAS_root * GALGAS_templateInstructionForGeneration::clonedObject (void) co
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateInstructionForGeneration GALGAS_templateInstructionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                C_Compiler * inCompiler
+                                                                                                Compiler * inCompiler
                                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_templateInstructionForGeneration result ;
   const GALGAS_templateInstructionForGeneration * p = (const GALGAS_templateInstructionForGeneration *) inObject.embeddedObject () ;
@@ -16635,7 +16635,7 @@ GALGAS_templateInstructionForGeneration_2D_weak GALGAS_templateInstructionForGen
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionForGeneration GALGAS_templateInstructionForGeneration_2D_weak::bang_templateInstructionForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_templateInstructionForGeneration GALGAS_templateInstructionForGeneration_2D_weak::bang_templateInstructionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_templateInstructionForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -16678,7 +16678,7 @@ AC_GALGAS_root * GALGAS_templateInstructionForGeneration_2D_weak::clonedObject (
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateInstructionForGeneration_2D_weak GALGAS_templateInstructionForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                                C_Compiler * inCompiler
+                                                                                                                Compiler * inCompiler
                                                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_templateInstructionForGeneration_2D_weak result ;
   const GALGAS_templateInstructionForGeneration_2D_weak * p = (const GALGAS_templateInstructionForGeneration_2D_weak *) inObject.embeddedObject () ;
@@ -16746,7 +16746,7 @@ GALGAS_templateInstructionExpressionForGeneration_2D_weak GALGAS_templateInstruc
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionExpressionForGeneration GALGAS_templateInstructionExpressionForGeneration_2D_weak::bang_templateInstructionExpressionForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_templateInstructionExpressionForGeneration GALGAS_templateInstructionExpressionForGeneration_2D_weak::bang_templateInstructionExpressionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_templateInstructionExpressionForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -16789,7 +16789,7 @@ AC_GALGAS_root * GALGAS_templateInstructionExpressionForGeneration_2D_weak::clon
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateInstructionExpressionForGeneration_2D_weak GALGAS_templateInstructionExpressionForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                                                    C_Compiler * inCompiler
+                                                                                                                                    Compiler * inCompiler
                                                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_templateInstructionExpressionForGeneration_2D_weak result ;
   const GALGAS_templateInstructionExpressionForGeneration_2D_weak * p = (const GALGAS_templateInstructionExpressionForGeneration_2D_weak *) inObject.embeddedObject () ;
@@ -16936,7 +16936,7 @@ void GALGAS_templateInstructionListForGeneration::addAssign_operation (const GAL
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_templateInstructionListForGeneration::setter_append (const GALGAS_templateInstructionForGeneration inOperand0,
-                                                                 C_Compiler * /* inCompiler */
+                                                                 Compiler * /* inCompiler */
                                                                  COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
@@ -16952,7 +16952,7 @@ void GALGAS_templateInstructionListForGeneration::setter_append (const GALGAS_te
 
 void GALGAS_templateInstructionListForGeneration::setter_insertAtIndex (const GALGAS_templateInstructionForGeneration inOperand0,
                                                                         const GALGAS_uint inInsertionIndex,
-                                                                        C_Compiler * inCompiler
+                                                                        Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inInsertionIndex.isValid () && inOperand0.isValid ()) {
@@ -16972,7 +16972,7 @@ void GALGAS_templateInstructionListForGeneration::setter_insertAtIndex (const GA
 
 void GALGAS_templateInstructionListForGeneration::setter_removeAtIndex (GALGAS_templateInstructionForGeneration & outOperand0,
                                                                         const GALGAS_uint inRemoveIndex,
-                                                                        C_Compiler * inCompiler
+                                                                        Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inRemoveIndex.isValid ()) {
@@ -16998,7 +16998,7 @@ void GALGAS_templateInstructionListForGeneration::setter_removeAtIndex (GALGAS_t
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_templateInstructionListForGeneration::setter_popFirst (GALGAS_templateInstructionForGeneration & outOperand0,
-                                                                   C_Compiler * inCompiler
+                                                                   Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
@@ -17014,7 +17014,7 @@ void GALGAS_templateInstructionListForGeneration::setter_popFirst (GALGAS_templa
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_templateInstructionListForGeneration::setter_popLast (GALGAS_templateInstructionForGeneration & outOperand0,
-                                                                  C_Compiler * inCompiler
+                                                                  Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
@@ -17030,7 +17030,7 @@ void GALGAS_templateInstructionListForGeneration::setter_popLast (GALGAS_templat
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_templateInstructionListForGeneration::method_first (GALGAS_templateInstructionForGeneration & outOperand0,
-                                                                C_Compiler * inCompiler
+                                                                Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readFirst (attributes, inCompiler COMMA_THERE) ;
@@ -17046,7 +17046,7 @@ void GALGAS_templateInstructionListForGeneration::method_first (GALGAS_templateI
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_templateInstructionListForGeneration::method_last (GALGAS_templateInstructionForGeneration & outOperand0,
-                                                               C_Compiler * inCompiler
+                                                               Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readLast (attributes, inCompiler COMMA_THERE) ;
@@ -17062,7 +17062,7 @@ void GALGAS_templateInstructionListForGeneration::method_last (GALGAS_templateIn
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionListForGeneration::add_operation (const GALGAS_templateInstructionListForGeneration & inOperand,
-                                                                                                        C_Compiler * /* inCompiler */
+                                                                                                        Compiler * /* inCompiler */
                                                                                                         COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_templateInstructionListForGeneration result ;
   if (isValid () && inOperand.isValid ()) {
@@ -17075,7 +17075,7 @@ GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionListForGen
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionListForGeneration::getter_subListWithRange (const GALGAS_range & inRange,
-                                                                                                                  C_Compiler * inCompiler
+                                                                                                                  Compiler * inCompiler
                                                                                                                   COMMA_LOCATION_ARGS) const {
   GALGAS_templateInstructionListForGeneration result = GALGAS_templateInstructionListForGeneration::constructor_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
@@ -17085,7 +17085,7 @@ GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionListForGen
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionListForGeneration::getter_subListFromIndex (const GALGAS_uint & inIndex,
-                                                                                                                  C_Compiler * inCompiler
+                                                                                                                  Compiler * inCompiler
                                                                                                                   COMMA_LOCATION_ARGS) const {
   GALGAS_templateInstructionListForGeneration result = GALGAS_templateInstructionListForGeneration::constructor_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
@@ -17095,7 +17095,7 @@ GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionListForGen
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionListForGeneration::getter_subListToIndex (const GALGAS_uint & inIndex,
-                                                                                                                C_Compiler * inCompiler
+                                                                                                                Compiler * inCompiler
                                                                                                                 COMMA_LOCATION_ARGS) const {
   GALGAS_templateInstructionListForGeneration result = GALGAS_templateInstructionListForGeneration::constructor_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
@@ -17105,7 +17105,7 @@ GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionListForGen
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_templateInstructionListForGeneration::plusAssign_operation (const GALGAS_templateInstructionListForGeneration inOperand,
-                                                                        C_Compiler * /* inCompiler */
+                                                                        Compiler * /* inCompiler */
                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
@@ -17114,7 +17114,7 @@ void GALGAS_templateInstructionListForGeneration::plusAssign_operation (const GA
 
 void GALGAS_templateInstructionListForGeneration::setter_setMInstructionAtIndex (GALGAS_templateInstructionForGeneration inOperand,
                                                                                  GALGAS_uint inIndex,
-                                                                                 C_Compiler * inCompiler
+                                                                                 Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) {
   cCollectionElement_templateInstructionListForGeneration * p = (cCollectionElement_templateInstructionListForGeneration *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
@@ -17127,7 +17127,7 @@ void GALGAS_templateInstructionListForGeneration::setter_setMInstructionAtIndex 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateInstructionForGeneration GALGAS_templateInstructionListForGeneration::getter_mInstructionAtIndex (const GALGAS_uint & inIndex,
-                                                                                                                 C_Compiler * inCompiler
+                                                                                                                 Compiler * inCompiler
                                                                                                                  COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_templateInstructionListForGeneration * p = (cCollectionElement_templateInstructionListForGeneration *) attributes.ptr () ;
@@ -17198,7 +17198,7 @@ AC_GALGAS_root * GALGAS_templateInstructionListForGeneration::clonedObject (void
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionListForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                        C_Compiler * inCompiler
+                                                                                                        Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_templateInstructionListForGeneration result ;
   const GALGAS_templateInstructionListForGeneration * p = (const GALGAS_templateInstructionListForGeneration *) inObject.embeddedObject () ;

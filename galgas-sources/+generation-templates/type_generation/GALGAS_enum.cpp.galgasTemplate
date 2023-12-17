@@ -95,7 +95,7 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
     for (mType) in mAssociatedValueTypeList do (idx)
       %GALGAS_%![mType identifierRepresentation]% & outAssociatedValue%![idx string]%,\n%!^
     end
-    !^%C_Compiler * inCompiler\n%
+    !^%Compiler * inCompiler\n%
     !^%COMMA_LOCATION_ARGS) const {\n%
     %  if (mEnum != kEnum_%![mConstantName identifierRepresentation]%) {\n%
     for (mType) in mAssociatedValueTypeList do (idx)

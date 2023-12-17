@@ -20,7 +20,7 @@
 
 #include "all-predefined-types.h"
 #include "utilities/MF_MemoryControl.h"
-#include "galgas2/C_Compiler.h"
+#include "galgas2/Compiler.h"
 #include "utilities/C_DirectedGraph.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -82,7 +82,7 @@ class cSharedGraph : public C_SharedObject {
 
 //--- locationForKey
   public: GALGAS_location locationForKey (const String & inKey,
-                                           C_Compiler * inCompiler
+                                           Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) const ;
 
 //--- Internal methods
@@ -104,7 +104,7 @@ class cSharedGraph : public C_SharedObject {
   public: void internalAddNode (const GALGAS_lstring & inKey,
                                  const char * inErrorMessage,
                                  const capCollectionElement & inAttributes,
-                                 C_Compiler * inCompiler
+                                 Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
 
   public: void addEdge (const String & inSourceNodeKey,
@@ -115,7 +115,7 @@ class cSharedGraph : public C_SharedObject {
   public: void removeEdgesToDominators (LOCATION_ARGS) ;
 
   public: void removeEdgesToNode (const String & inNodeName,
-                                   C_Compiler * inCompiler
+                                   Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
 
   public: void internalTopologicalSort (capCollectionElementArray & outSortedList,
@@ -141,7 +141,7 @@ class cSharedGraph : public C_SharedObject {
   public: void subGraph (AC_GALGAS_graph & outResultingGraph,
                           const GALGAS_lstringlist & inStartNodes,
                           const GALGAS_stringset & inNodesToExclude,
-                          C_Compiler * inCompiler
+                          Compiler * inCompiler
                           COMMA_LOCATION_ARGS) const ;
 
   public: void graph (capCollectionElementArray & outNodeList) const ;
@@ -388,7 +388,7 @@ bool cSharedGraph::isNodeDefined (const String & inKey) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_location AC_GALGAS_graph::getter_locationForKey (const GALGAS_string & inKey,
-                                                        C_Compiler * inCompiler
+                                                        Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (isValid () && inKey.isValid ()) {
@@ -400,7 +400,7 @@ GALGAS_location AC_GALGAS_graph::getter_locationForKey (const GALGAS_string & in
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_location cSharedGraph::locationForKey (const String & inKey,
-                                              C_Compiler * inCompiler
+                                              Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const {
   GALGAS_location result ;
   bool found = false ;
@@ -550,7 +550,7 @@ capCollectionElementArray AC_GALGAS_graph::graph (void) const {
 void cSharedGraph::subGraph (AC_GALGAS_graph & outResultingGraph,
                              const GALGAS_lstringlist & inStartNodes,
                              const GALGAS_stringset & inNodesToExclude,
-                             C_Compiler * inCompiler
+                             Compiler * inCompiler
                              COMMA_LOCATION_ARGS) const {
 //--- Build start node set
   C_UIntSet startNodeSet ;
@@ -626,7 +626,7 @@ void cSharedGraph::subGraph (AC_GALGAS_graph & outResultingGraph,
 void AC_GALGAS_graph::subGraph (AC_GALGAS_graph & outResultingGraph,
                                 const GALGAS_lstringlist & inStartNodes,
                                 const GALGAS_stringset & inNodesToExclude,
-                                C_Compiler * inCompiler
+                                Compiler * inCompiler
                                 COMMA_LOCATION_ARGS) const {
   if (isValid () && inStartNodes.isValid () && inNodesToExclude.isValid ()) {
     outResultingGraph.makeNewEmptyGraph (THERE) ;
@@ -834,7 +834,7 @@ cGraphNode * cSharedGraph::findOrAddNodeForKey (const String & inKey) {
 void cSharedGraph::internalAddNode (const GALGAS_lstring & inKey,
                                     const char * inErrorMessage,
                                     const capCollectionElement & inAttributes,
-                                    C_Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) {
   cGraphNode * node = findOrAddNodeForKey (inKey.mProperty_string.stringValue ()) ;
   if (node->mAttributes.ptr () == nullptr) { // Node exists, but is undefined
@@ -854,7 +854,7 @@ void cSharedGraph::internalAddNode (const GALGAS_lstring & inKey,
 void AC_GALGAS_graph::internalAddNode (const GALGAS_lstring & inKey,
                                        const char * inErrorMessage,
                                        const capCollectionElement & inAttributes,
-                                       C_Compiler * inCompiler
+                                       Compiler * inCompiler
                                        COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid () && inAttributes.isValid ()) {
     insulateGraph (THERE) ;
@@ -1206,7 +1206,7 @@ void AC_GALGAS_graph::internalTopologicalSort (capCollectionElementArray & outSo
                                                GALGAS_lstringlist & outSortedNodeKeyList,
                                                capCollectionElementArray & outUnsortedList,
                                                GALGAS_lstringlist & outUnsortedNodeKeyList,
-                                               C_Compiler * inCompiler
+                                               Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) const {
   outSortedNodeKeyList.drop () ;
   outUnsortedNodeKeyList.drop () ;
@@ -1277,7 +1277,7 @@ void AC_GALGAS_graph::internalDepthFirstTopologicalSort (capCollectionElementArr
                                                          GALGAS_lstringlist & outSortedNodeKeyList,
                                                          capCollectionElementArray & outUnsortedList,
                                                          GALGAS_lstringlist & outUnsortedNodeKeyList,
-                                                         C_Compiler * inCompiler
+                                                         Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) const {
   outSortedNodeKeyList.drop () ;
   outUnsortedNodeKeyList.drop () ;
@@ -1345,7 +1345,7 @@ GALGAS_lstringlist AC_GALGAS_graph::getter_undefinedNodeReferenceList (LOCATION_
 //--------------------------------------------------------------------------------------------------
 
 void AC_GALGAS_graph::setter_removeEdgesToNode (const GALGAS_string & inNodeName,
-                                                  C_Compiler * inCompiler
+                                                  Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) {
   if (isValid () && inNodeName.isValid ()) {
     insulateGraph (HERE) ;
@@ -1359,7 +1359,7 @@ void AC_GALGAS_graph::setter_removeEdgesToNode (const GALGAS_string & inNodeName
 //--------------------------------------------------------------------------------------------------
 
 void cSharedGraph::removeEdgesToNode (const String & inNodeName,
-                                      C_Compiler * inCompiler
+                                      Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) {
 //--- Find node
   const cGraphNode * node = findNode (inNodeName, mRoot) ;
