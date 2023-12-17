@@ -59,10 +59,10 @@
 
 #if COMPILE_FOR_WINDOWS == 0
   void F_default_display_exception (const ::std:: exception & inException) {
-    co.flush () ;
-    ce += "\n*** Exception: " ;
-    ce += inException.what () ;
-    ce += " ***\n" ;
+    gCout.flush () ;
+    gCout += "\n*** Exception: " ;
+    gCout += inException.what () ;
+    gCout += " ***\n" ;
   }
 #endif
 

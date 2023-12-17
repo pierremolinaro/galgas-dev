@@ -276,8 +276,8 @@
 		CFBA184C250EB0D500624240 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFBA184B250EB0D500624240 /* Security.framework */; };
 		CFBA37792B12982A00DBD02B /* md5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0676430E7EE037008B9D1F /* md5.cpp */; };
 		CFBF7006179ACAD400789D8A /* PMUndoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBF7005179ACAD400789D8A /* PMUndoManager.m */; };
-		CFC89AB11BAF10D6002AF9C2 /* check-gmp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC89AB01BAF10D6002AF9C2 /* check-gmp.cpp */; };
-		CFC89AB21BAF10D6002AF9C2 /* check-gmp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC89AB01BAF10D6002AF9C2 /* check-gmp.cpp */; };
+		CFC89AB11BAF10D6002AF9C2 /* check-big-integer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC89AB01BAF10D6002AF9C2 /* check-big-integer.cpp */; };
+		CFC89AB21BAF10D6002AF9C2 /* check-big-integer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC89AB01BAF10D6002AF9C2 /* check-big-integer.cpp */; };
 		CFCA2EA11C331E8500AB04B8 /* C_galgas_quiet_option.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFAC1A091C3318B800465212 /* C_galgas_quiet_option.cpp */; };
 		CFCA2EA51C331FF300AB04B8 /* AC_GALGAS_enumAssociatedValues.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCA2EA21C331FF300AB04B8 /* AC_GALGAS_enumAssociatedValues.cpp */; };
 		CFCA2EA61C33200700AB04B8 /* AC_GALGAS_enumAssociatedValues.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCA2EA21C331FF300AB04B8 /* AC_GALGAS_enumAssociatedValues.cpp */; };
@@ -730,7 +730,7 @@
 		CFBF7004179ACAD400789D8A /* PMUndoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMUndoManager.h; sourceTree = "<group>"; };
 		CFBF7005179ACAD400789D8A /* PMUndoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMUndoManager.m; sourceTree = "<group>"; };
 		CFC51EEE10D3BBB4008BF80F /* GALGAS_type.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = GALGAS_type.cpp; sourceTree = "<group>"; };
-		CFC89AB01BAF10D6002AF9C2 /* check-gmp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "check-gmp.cpp"; sourceTree = "<group>"; };
+		CFC89AB01BAF10D6002AF9C2 /* check-big-integer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "check-big-integer.cpp"; sourceTree = "<group>"; };
 		CFC92D7C11181F6300ACA25F /* GALGAS_binaryset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = GALGAS_binaryset.cpp; sourceTree = "<group>"; };
 		CFCA2EA21C331FF300AB04B8 /* AC_GALGAS_enumAssociatedValues.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AC_GALGAS_enumAssociatedValues.cpp; sourceTree = "<group>"; };
 		CFCA2EA31C331FF300AB04B8 /* AC_GALGAS_enumAssociatedValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AC_GALGAS_enumAssociatedValues.h; sourceTree = "<group>"; };
@@ -1314,7 +1314,7 @@
 			isa = PBXGroup;
 			children = (
 				CFF537C7057A524B00854C83 /* Grammar Component */,
-				CFC89AB01BAF10D6002AF9C2 /* check-gmp.cpp */,
+				CFC89AB01BAF10D6002AF9C2 /* check-big-integer.cpp */,
 				CFFF84011E3295A900D52CF4 /* displayUnicodeLexicalTestFunctions.cpp */,
 			);
 			fileEncoding = 5;
@@ -1743,7 +1743,7 @@
 				CFD94ADD1290635400864538 /* follow_by_empty_computation.cpp in Sources */,
 				CF23745C19967C4F0061D2D8 /* all-declarations-8.cpp in Sources */,
 				CFD94ADE1290635400864538 /* FOLLOW_computations.cpp in Sources */,
-				CFC89AB11BAF10D6002AF9C2 /* check-gmp.cpp in Sources */,
+				CFC89AB11BAF10D6002AF9C2 /* check-big-integer.cpp in Sources */,
 				CFB02C8219F3FC2F0011D03D /* all-declarations-23.cpp in Sources */,
 				CFCB7A172B2DAECF008DD653 /* BigSigned-utilities.cpp in Sources */,
 				CFCB7A3F2B2DAECF008DD653 /* BigUnsigned-subtract.cpp in Sources */,
@@ -1921,7 +1921,7 @@
 				CFD94AE71290635400864538 /* empty_strings_computations.cpp in Sources */,
 				CFD94AE81290635400864538 /* FIRST_computations.cpp in Sources */,
 				CFD94AE91290635400864538 /* follow_by_empty_computation.cpp in Sources */,
-				CFC89AB21BAF10D6002AF9C2 /* check-gmp.cpp in Sources */,
+				CFC89AB21BAF10D6002AF9C2 /* check-big-integer.cpp in Sources */,
 				CF23745D19967C4F0061D2D8 /* all-declarations-8.cpp in Sources */,
 				CFCB7A182B2DAECF008DD653 /* BigSigned-utilities.cpp in Sources */,
 				CFD94AEA1290635400864538 /* FOLLOW_computations.cpp in Sources */,

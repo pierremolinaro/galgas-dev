@@ -1,13 +1,13 @@
 //--------------------------------------------------------------------------------------------------
 //
-// Routines for computing FOLLOWS                                                                
+// Routines for computing FOLLOWS
 //
 //  Copyright (C) 1999, ..., 2014 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
 //  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public  *
-//  License as published by the Free Software Foundation.                                        
+//  License as published by the Free Software Foundation.
 //
 //  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
 //  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
@@ -26,7 +26,7 @@
 
 //--------------------------------------------------------------------------------------------------
 //
-//    C O M P U T E    F O L L O W    S E T S                                                    
+//    C O M P U T E    F O L L O W    S E T S
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -66,7 +66,7 @@ static void computeFOLLOWsets (const cPureBNFproductionsList & inProductionRules
       C_Relation d (lastOfProduction.configuration (), false) ;
       int32_t j = derivationLength-1 ; // last one of right sequence
       do{
-        const C_Relation t (lastOfProduction.configuration (), 0, C_BDD::kEqual, (uint32_t) p.derivationAtIndex (j COMMA_HERE) COMMA_HERE) ;      
+        const C_Relation t (lastOfProduction.configuration (), 0, C_BDD::kEqual, (uint32_t) p.derivationAtIndex (j COMMA_HERE) COMMA_HERE) ;
         d.orWith (t COMMA_HERE) ;
         j -- ;
       }while ((j>=0) && inNonterminalSymbolsDerivingInEmpty (p.derivationAtIndex (j+1 COMMA_HERE) COMMA_HERE)) ;
@@ -94,7 +94,7 @@ static void computeFOLLOWsets (const cPureBNFproductionsList & inProductionRules
     const C_Relation t = v.swap210 (HERE) ;
     outFOLLOWsets.orWith ((lastOfProduction.andOp (t COMMA_HERE)).exitsOnVariable (2 COMMA_HERE) COMMA_HERE) ;
   }while (v != outFOLLOWsets) ;
-  
+
   //--- Suppress nonterminal symbols in the FOLLOW sets
   outFOLLOWsets.andWith (C_Relation (outFOLLOWsets.configuration(), 1, C_BDD::kLowerOrEqual, (uint32_t) (inTerminalSymbolsCount - 1) COMMA_HERE) COMMA_HERE) ;
 
@@ -105,7 +105,7 @@ static void computeFOLLOWsets (const cPureBNFproductionsList & inProductionRules
   nonterminalSymbolsFollowedByEmpty.addVariable ("", inFIRSTsets.configuration().typeForVariable (0 COMMA_HERE)) ;
   outFOLLOWsets.orWith (nonterminalSymbolsFollowedByEmpty.andOp (emptyString COMMA_HERE) COMMA_HERE) ;
   outFOLLOWsets = outFOLLOWsets.relationByDeletingLastVariable (HERE) ;
-  
+
 //--- FOLLOW sets, given with an array
   { TC_UniqueArray <TC_UniqueArray <uint64_t> > tempArray (inVocabulary.getAllSymbolsCount () COMMA_HERE) ;
     swap (outFOLLOWarray, tempArray) ;
@@ -186,17 +186,17 @@ checkFOLLOWsets (C_HTMLString & ioHTMLFileContents,
   C_Relation nterminauxAverifier (inUsefulSymbols.configuration(), 0, C_BDD::kGreaterOrEqual, (uint32_t) inVocabulary.getTerminalSymbolsCount () COMMA_HERE) ;
   const C_Relation temp (inUsefulSymbols.configuration(), 0, C_BDD::kLowerOrEqual, (uint32_t) inVocabulary.getAllSymbolsCount () - 1 COMMA_HERE) ;
   nterminauxAverifier.andWith (temp COMMA_HERE) ; ;
-  const C_Relation ntErreurSuivants = nterminauxAverifier.andOp (inUsefulSymbols COMMA_HERE).andOp (~(suivantsPlusVide.relationByDeletingLastVariable (HERE)) COMMA_HERE) ; 
+  const C_Relation ntErreurSuivants = nterminauxAverifier.andOp (inUsefulSymbols COMMA_HERE).andOp (~(suivantsPlusVide.relationByDeletingLastVariable (HERE)) COMMA_HERE) ;
 
 //--- Afficher les non-terminaux en erreur
   const uint64_t n = ntErreurSuivants.value64Count () ;
   if (inVerboseOptionOn) {
     if (n == 0) {
-      co += "ok.\n" ;
+      gCout += "ok.\n" ;
     }else{
-      co += "error.\n" ;
+      gCout += "error.\n" ;
     }
-    co.flush () ;
+    gCout.flush () ;
   }
   if (inPopulateHTMLHelperString) {
     if (n == 0) {
@@ -226,7 +226,7 @@ checkFOLLOWsets (C_HTMLString & ioHTMLFileContents,
       ioHTMLFileContents.outputRawData ("</table>") ;
     }
   }
-  return n == 0 ; 
+  return n == 0 ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -245,8 +245,8 @@ void FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
                           const bool inVerboseOptionOn) {
 //--- Console display
   if (inVerboseOptionOn) {
-    co += "  FOLLOW sets... " ;
-    co.flush () ;
+    gCout += "  FOLLOW sets... " ;
+    gCout.flush () ;
   }
 //--- Print in BNF file
   if (inPopulateHTMLHelperString) {

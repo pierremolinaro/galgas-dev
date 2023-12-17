@@ -1,13 +1,13 @@
 //--------------------------------------------------------------------------------------------------
 //
-// Routines for computing empty string derivations                                               
+// Routines for computing empty string derivations
 //
 //  Copyright (C) 1999, ..., 2016 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
 //  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public  *
-//  License as published by the Free Software Foundation.                                        
+//  License as published by the Free Software Foundation.
 //
 //  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
 //  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
@@ -28,7 +28,7 @@
 
 static C_Relation
 computeNonterminalSymbolsHavingEmptyDerivation (const cPureBNFproductionsList & inProductionRules,
-                                                const C_RelationConfiguration & inConfiguration) { 
+                                                const C_RelationConfiguration & inConfiguration) {
   C_Relation nonterminalSymbolsHavingEmptyDerivation (inConfiguration, false) ;
   for (int32_t i=0 ; i<inProductionRules.mProductionArray.count () ; i++) {
     const cProduction & p = inProductionRules.mProductionArray (i COMMA_HERE) ;
@@ -39,7 +39,7 @@ computeNonterminalSymbolsHavingEmptyDerivation (const cPureBNFproductionsList & 
 
   return nonterminalSymbolsHavingEmptyDerivation ;
 }
-  
+
 //--------------------------------------------------------------------------------------------------
 
 static void
@@ -76,11 +76,11 @@ printNonterminalSymbolsHavingEmptyDerivation (const C_Relation & inNonterminalSy
 static C_Relation
 computeNonterminalDerivingInEmptyString (const cPureBNFproductionsList & inProductionRules,
                                          const C_Relation & inNonTerminalHavingEmptyDerivation,
-                                         TC_UniqueArray <bool> & outVocabulaireSeDerivantEnVide, 
+                                         TC_UniqueArray <bool> & outVocabulaireSeDerivantEnVide,
                                          const uint32_t inAllSymbolsCount,
                                          int32_t & outIterationsCount) {
   const int32_t productionCount = inProductionRules.mProductionArray.count () ;
-  
+
   { TC_UniqueArray <bool> tempo ((int32_t) inAllSymbolsCount, false COMMA_HERE) ;
     swap (tempo, outVocabulaireSeDerivantEnVide) ;
   }
@@ -108,7 +108,7 @@ computeNonterminalDerivingInEmptyString (const cPureBNFproductionsList & inProdu
       }
     }
   }
-  
+
 //--- Contruire le bdd
   C_Relation result = inNonTerminalHavingEmptyDerivation ;
   for (uint32_t i=0 ; i<inAllSymbolsCount ; i++) {
@@ -128,7 +128,7 @@ printNonterminalDerivingInEmptyString (const C_Relation & inVocabularyDerivingTo
                                        C_HTMLString & ioHTMLFileContents,
                                        const bool inPopulateHTMLstring,
                                        const int32_t inIterationsCount,
-                                       const bool inVerboseOptionOn) { 
+                                       const bool inVerboseOptionOn) {
   const uint64_t t = inVocabularyDerivingToEmpty.value64Count () ;
   if (inPopulateHTMLstring) {
     ioHTMLFileContents.outputRawData ("<p>") ;
@@ -165,9 +165,9 @@ printNonterminalDerivingInEmptyString (const C_Relation & inVocabularyDerivingTo
     }
   }
   if (inVerboseOptionOn) {
-    co.appendUnsigned (t) ;
-    co += ".\n" ;
-    co.flush () ;
+    gCout.appendUnsigned (t) ;
+    gCout += ".\n" ;
+    gCout.flush () ;
   }
 }
 
@@ -182,8 +182,8 @@ empty_strings_computations (const cPureBNFproductionsList & inPureBNFproductions
                             const bool inVerboseOptionOn) {
 //--- Console display
   if (inVerboseOptionOn) {
-    co += "  Nonterminal symbols deriving in empty... " ;
-    co.flush () ;
+    gCout += "  Nonterminal symbols deriving in empty... " ;
+    gCout.flush () ;
   }
 //--- Print in BNF file
   if (inPopulateHTMLstring) {
@@ -201,7 +201,7 @@ empty_strings_computations (const cPureBNFproductionsList & inPureBNFproductions
   const uint32_t allSymbolCount = inVocabularyConfiguration.constantCountForVariable (0 COMMA_HERE) ;
 
   int32_t iterationCount = 0 ;
-  const C_Relation vocabularyDerivingToEmpty 
+  const C_Relation vocabularyDerivingToEmpty
      = computeNonterminalDerivingInEmptyString (inPureBNFproductions,
                                                 nonTerminalHavingEmptyDerivation,
                                                 outVocabularyDerivingToEmpty_Array,

@@ -126,34 +126,34 @@ void C_StringListCommandLineOption::printStringOptions (void) {
     if (p->mCommandChar != '\0') {
       for (uint32_t i=0 ; i<2 ; i++) {
         if (i != 0) {
-          co += " " ;
+          gCout += " " ;
         }
-        co.setForeColor (kBlueForeColor) ;
-        co.setTextAttribute (kBoldTextAttribute) ;
-        co += "-" ;
-        co += cStringWithCharacter (p->mCommandChar) ;
-        co += "=string" ;
-        co.setTextAttribute (kAllAttributesOff) ;
+        gCout.setForeColor (kBlueForeColor) ;
+        gCout.setTextAttribute (kBoldTextAttribute) ;
+        gCout += "-" ;
+        gCout += cStringWithCharacter (p->mCommandChar) ;
+        gCout += "=string" ;
+        gCout.setTextAttribute (kAllAttributesOff) ;
       }
-      co += " ...\n" ;
+      gCout += " ...\n" ;
     }
     if (p->mCommandString [0] != '\0') {
       for (uint32_t i=0 ; i<2 ; i++) {
         if (i != 0) {
-          co += " " ;
+          gCout += " " ;
         }
-        co.setForeColor (kBlueForeColor) ;
-        co.setTextAttribute (kBoldTextAttribute) ;
-        co += "--" ;
-        co += p->mCommandString ;
-        co += "=string" ;
-        co.setTextAttribute (kAllAttributesOff) ;
+        gCout.setForeColor (kBlueForeColor) ;
+        gCout.setTextAttribute (kBoldTextAttribute) ;
+        gCout += "--" ;
+        gCout += p->mCommandString ;
+        gCout += "=string" ;
+        gCout.setTextAttribute (kAllAttributesOff) ;
       }
-      co += " ...\n" ;
+      gCout += " ...\n" ;
     }
-    co += "    " ;
-    co += p->mComment ;
-    co += "\n" ;
+    gCout += "    " ;
+    gCout += p->mComment ;
+    gCout += "\n" ;
     p = p->mNext ;
   }
 }

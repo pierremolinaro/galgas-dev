@@ -126,9 +126,9 @@ static bool displayUnusefulSymbols (C_Compiler * inCompiler,
 //--- Ok, or warning ?
   const bool warning = (usedSymbolDeclaredAsUnusedArray.count () > 0) || (unusedSymbolArrayForWarning.count () > 0) ;
   if (inVerboseOptionOn) {
-    co += (warning ? "warning.\n" : "all, ok.\n") ;
+    gCout += (warning ? "warning.\n" : "all, ok.\n") ;
   }
-  co.flush () ;
+  gCout.flush () ;
 //--- Warn for unused symbols
   if (unusedSymbolArrayForWarning.count () > 0) {
     C_String warningMessage ;
@@ -190,8 +190,8 @@ void useful_symbols_computations (C_Compiler * inCompiler,
                                   const bool inVerboseOptionOn) {
 //--- Console display
   if (inVerboseOptionOn) {
-    co += "  Useful nonterminal symbols... " ;
-    co.flush () ;
+    gCout += "  Useful nonterminal symbols... " ;
+    gCout.flush () ;
   }
 //--- Print in BNF file
   if (inPopulateHTMLHelperString) {

@@ -39,8 +39,8 @@ option galgas_cli_options {
   @string cppCompile : '\0', "compile"
     -> "Perform C++ compilation on 'string' target"
 
-  @bool check_gmp : '\0', "check-gmp"
-    -> "Run a GMP check"
+  @bool check_big_int : '\0', "check-big-int"
+    -> "Run bit integers checks"
 
   @bool emitSyntaxDiagrams : '\0', "emit-syntax-diagrams"
     -> "Emit grammar syntax diagrams in TEX files"

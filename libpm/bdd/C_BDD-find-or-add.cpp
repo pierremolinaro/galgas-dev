@@ -390,13 +390,13 @@ void C_BDD::markAndSweepUnusedNodes (void) {
     }
   }
   if (C_BDD::displaysInformationMessages ()) {
-    co += "BDD package info: mark and sweep done in " ;
-    co += timer ;
-    co += " (nodes " ;
-    co += cStringWithUnsigned (previousNodeCount) ;
-    co += " -> " ;
-    co += cStringWithUnsigned (gCurrentNodeCount) ;
-    co += ")\n" ;
+    gCout += "BDD package info: mark and sweep done in " ;
+    gCout += timer ;
+    gCout += " (nodes " ;
+    gCout += cStringWithUnsigned (previousNodeCount) ;
+    gCout += " -> " ;
+    gCout += cStringWithUnsigned (gCurrentNodeCount) ;
+    gCout += ")\n" ;
   }
 }
 

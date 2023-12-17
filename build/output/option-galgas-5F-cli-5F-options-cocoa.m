@@ -25,10 +25,10 @@ void enterOptionsFor_galgas_5F_cli_5F_options (NSMutableArray * ioBoolOptionArra
   [ioBoolOptionArray addObject:option] ;
   option = [[OC_GGS_CommandLineOption alloc]
     initWithDomainName:@"galgas_cli_options"
-    identifier:@"check_gmp"
+    identifier:@"check_big_int"
     commandChar:0
-    commandString:@"check-gmp"
-    comment:@"Run a GMP check"
+    commandString:@"check-big-int"
+    comment:@"Run bit integers checks"
     defaultValue:@""
   ] ;
   [ioBoolOptionArray addObject:option] ;

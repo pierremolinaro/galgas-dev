@@ -2371,11 +2371,11 @@ bool GALGAS_string::optional_extractBigInt (GALGAS_bigint & outBigInt) const {
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void GALGAS_string::printNonNullClassInstanceProperties (const char * inPropertyName) const {
     if (isValid ()) {
-      co += "    " ;
-      co += inPropertyName ;
-      co += " : " ;
-      co += mString.cString (HERE) ;
-      co += "\n" ;
+      gCout += "    " ;
+      gCout += inPropertyName ;
+      gCout += " : " ;
+      gCout += mString.cString (HERE) ;
+      gCout += "\n" ;
     }
   }
 #endif

@@ -38,11 +38,11 @@ before { #--- Extract LIBPM
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extern proc checkGMP
+extern proc checkBigInteger
 
 before { #--- Extract LIBPM
-  if [option galgas_cli_options.check_gmp value] then
-    checkGMP ()
+  if [option galgas_cli_options.check_big_int value] then
+    checkBigInteger ()
   end
 }
 

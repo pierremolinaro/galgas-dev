@@ -8713,11 +8713,11 @@ C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_checkEntityUsefulness (
                                          "check-usefulness",
                                          "Check Entity Usefulness") ;
 
-C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_check_5F_gmp ("galgas_cli_options",
-                                         "check_gmp",
+C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_check_5F_big_5F_int ("galgas_cli_options",
+                                         "check_big_int",
                                          0,
-                                         "check-gmp",
-                                         "Run a GMP check") ;
+                                         "check-big-int",
+                                         "Run bit integers checks") ;
 
 C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_displayUnicodeLexicalTestFunctions ("galgas_cli_options",
                                          "displayUnicodeLexicalTestFunctions",

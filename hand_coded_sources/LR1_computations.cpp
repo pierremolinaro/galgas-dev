@@ -1,13 +1,13 @@
 //--------------------------------------------------------------------------------------------------
 //
-//     Routines for LR(1) grammar computations                                                   
+//     Routines for LR(1) grammar computations
 //
 //  Copyright (C) 2002, ..., 2023 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
 //  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
-//  License as published by the Free Software Foundation.                                        
+//  License as published by the Free Software Foundation.
 //
 //  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
 //  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
@@ -30,7 +30,7 @@
 
 //--------------------------------------------------------------------------------------------------
 //
-//    C L A S S    F O R   L R 1    I T E M                                                      
+//    C L A S S    F O R   L R 1    I T E M
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -90,7 +90,7 @@ compare_LR1_items (const c_LR1_item & inItem1,
 
 //--------------------------------------------------------------------------------------------------
 //
-// C L A S S    F O R   I T E M S    A V L    T R E E                                            
+// C L A S S    F O R   I T E M S    A V L    T R E E
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -133,16 +133,16 @@ cLR1_items_AVL_tree::~cLR1_items_AVL_tree (void) {
 
 //--------------------------------------------------------------------------------------------------
 //
-//       Rotate left                                                                             
+//       Rotate left
 //
 //--------------------------------------------------------------------------------------------------
 
 static void rotateLeft (cLR1_items_AVL_tree * & ioPtr) {
-//--- Rotate 
+//--- Rotate
   cLR1_items_AVL_tree * ptr = ioPtr->mPtrToSup ;
   ioPtr->mPtrToSup = ptr->mPtrToInf ;
   ptr->mPtrToInf = ioPtr ;
-//--- Update balance 
+//--- Update balance
   if (ptr->mBalance < 0) {
     ioPtr->mBalance -= ptr->mBalance ;
   }
@@ -152,20 +152,20 @@ static void rotateLeft (cLR1_items_AVL_tree * & ioPtr) {
   }
   ptr->mBalance ++ ;
   ioPtr = ptr ;
-} 
+}
 
 //--------------------------------------------------------------------------------------------------
 //
-//       Rotate right                                                                            
+//       Rotate right
 //
 //--------------------------------------------------------------------------------------------------
 
 static void rotateRight (cLR1_items_AVL_tree * & ioPtr) {
-//--- Rotate 
+//--- Rotate
   cLR1_items_AVL_tree * ptr = ioPtr->mPtrToInf ;
   ioPtr->mPtrToInf = ptr->mPtrToSup ;
   ptr->mPtrToSup = ioPtr ;
- //--- Update balance 
+ //--- Update balance
   if (ptr->mBalance > 0) {
     ioPtr->mBalance -= ptr->mBalance ;
   }
@@ -176,7 +176,7 @@ static void rotateRight (cLR1_items_AVL_tree * & ioPtr) {
   ptr->mBalance-- ;
   ioPtr = ptr ;
 }
- 
+
 //--------------------------------------------------------------------------------------------------
 
 cLR1_items_AVL_tree * cLR1_items_AVL_tree::
@@ -254,10 +254,10 @@ recursiveSearchOrInsertLR1Item (cLR1_items_AVL_tree * & ioRootPointer,
 class cLR1ItemUniqueArray {
 //--- Default Constructor
   public: cLR1ItemUniqueArray (void) ;
-  
+
 //--- Allocation Constructor (empty array)
   public: cLR1ItemUniqueArray (const int32_t inAllocatedSize COMMA_LOCATION_ARGS) ;
-  
+
 //--- Virtual Destructor
   public: virtual ~cLR1ItemUniqueArray (void) ;
 
@@ -279,7 +279,7 @@ class cLR1ItemUniqueArray {
 
 //--- Remove all objects and deallocate
   public: void free (void) ;
-  
+
 //--- Add objects at the end of the array
   public: void appendObject (const cLR1_items_AVL_tree * inValue) ;
 
@@ -323,7 +323,7 @@ void swap (cLR1ItemUniqueArray & ioOperand1,
 
 //--------------------------------------------------------------------------------------------------
 //
-//   Default Constructor                                                                         
+//   Default Constructor
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -335,7 +335,7 @@ mCapacity (0) {
 
 //--------------------------------------------------------------------------------------------------
 //
-//   Allocation Constructor                                                                      
+//   Allocation Constructor
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -358,7 +358,7 @@ mCapacity (0) {
 
 //--------------------------------------------------------------------------------------------------
 //
-//   Destructor                                                                                  
+//   Destructor
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -368,7 +368,7 @@ cLR1ItemUniqueArray::~cLR1ItemUniqueArray (void) {
 
 //--------------------------------------------------------------------------------------------------
 //
-//   Method for making room using copy                                                           
+//   Method for making room using copy
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -390,7 +390,7 @@ void cLR1ItemUniqueArray::makeRoom (const int32_t inNewCapacity) {
 
 //--------------------------------------------------------------------------------------------------
 //
-//   Remove all objects and deallocate                                                           
+//   Remove all objects and deallocate
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -402,7 +402,7 @@ void cLR1ItemUniqueArray::free (void) {
 
 //--------------------------------------------------------------------------------------------------
 //
-//   Add object at the end of the array                                                          
+//   Add object at the end of the array
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -416,7 +416,7 @@ void cLR1ItemUniqueArray::appendObject (const cLR1_items_AVL_tree * inValue) {
 
 //--------------------------------------------------------------------------------------------------
 //
-//   Check index before insertion                                                                
+//   Check index before insertion
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -430,7 +430,7 @@ void cLR1ItemUniqueArray::appendObject (const cLR1_items_AVL_tree * inValue) {
 
 //--------------------------------------------------------------------------------------------------
 //
-//   Array Access                                                                                
+//   Array Access
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -470,7 +470,7 @@ void cLR1ItemUniqueArray::appendObject (const cLR1_items_AVL_tree * inValue) {
 
 //--------------------------------------------------------------------------------------------------
 //
-//    C L A S S    F O R   L R 1    I T E M S    S E T                                           
+//    C L A S S    F O R   L R 1    I T E M S    S E T
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -669,13 +669,13 @@ display (const cPureBNFproductionsList & inProductionRules,
     inHTMLfile += " ->" ;
     for (int32_t j=0 ; j<p.derivationLength () ; j++) {
       if (j == location) {
-        inHTMLfile += " ." ;      
+        inHTMLfile += " ." ;
       }
       inHTMLfile += " " ;
       inVocabulary.printInFile (inHTMLfile, p.derivationAtIndex (j COMMA_HERE) COMMA_HERE) ;
     }
     if (location == p.derivationLength ()) {
-      inHTMLfile += " ." ;      
+      inHTMLfile += " ." ;
     }
     inHTMLfile += ", " ;
     inVocabulary.printInFile (inHTMLfile, mItemsSet (i COMMA_HERE).mTerminalSymbol COMMA_HERE) ;
@@ -725,7 +725,7 @@ getProductionsWhereLocationIsRight (const cPureBNFproductionsList & inProduction
     if ((productionRuleIndex == (inProductionRules.mProductionArray.count () - 1)) && (location == 1)) {
       outAcceptCondition = true ;
     }
-  }  
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -771,7 +771,7 @@ void swap (c_LR1_items_set & ioOperand1, c_LR1_items_set & ioOperand2) {
 
 //--------------------------------------------------------------------------------------------------
 //
-// C L A S S    F O R   I T E M S    S E T    A V L    T R E E                                   
+// C L A S S    F O R   I T E M S    S E T    A V L    T R E E
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -826,16 +826,16 @@ compare (c_LR1_items_set & in_LR1_items_set,
 
 //--------------------------------------------------------------------------------------------------
 //
-//       Rotate left                                                                             
+//       Rotate left
 //
 //--------------------------------------------------------------------------------------------------
 
 static void rotateLeft (cLR1_items_sets_AVL_tree * & ioPtr) {
-//--- Rotate 
+//--- Rotate
   cLR1_items_sets_AVL_tree * ptr = ioPtr->mPtrToSup ;
   ioPtr->mPtrToSup = ptr->mPtrToInf ;
   ptr->mPtrToInf = ioPtr ;
-//--- Update balance 
+//--- Update balance
   if (ptr->mBalance < 0) {
     ioPtr->mBalance -= ptr->mBalance ;
   }
@@ -845,20 +845,20 @@ static void rotateLeft (cLR1_items_sets_AVL_tree * & ioPtr) {
   }
   ptr->mBalance ++ ;
   ioPtr = ptr ;
-} 
+}
 
 //--------------------------------------------------------------------------------------------------
 //
-//       Rotate right                                                                            
+//       Rotate right
 //
 //--------------------------------------------------------------------------------------------------
 
 static void rotateRight (cLR1_items_sets_AVL_tree * & ioPtr) {
-//--- Rotate 
+//--- Rotate
   cLR1_items_sets_AVL_tree * ptr = ioPtr->mPtrToInf ;
   ioPtr->mPtrToInf = ptr->mPtrToSup ;
   ptr->mPtrToSup = ioPtr ;
- //--- Update balance 
+ //--- Update balance
   if (ptr->mBalance > 0) {
     ioPtr->mBalance -= ptr->mBalance ;
   }
@@ -869,7 +869,7 @@ static void rotateRight (cLR1_items_sets_AVL_tree * & ioPtr) {
   ptr->mBalance-- ;
   ioPtr = ptr ;
 }
- 
+
 //--------------------------------------------------------------------------------------------------
 
 int32_t cLR1_items_sets_AVL_tree::
@@ -940,7 +940,7 @@ recursiveSearchOrInsert (cLR1_items_sets_AVL_tree * & ioRootPointer,
   }
   return result ;
 }
- 
+
 //--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
@@ -949,7 +949,7 @@ recursiveSearchOrInsert (cLR1_items_sets_AVL_tree * & ioRootPointer,
 
 //--------------------------------------------------------------------------------------------------
 //
-// C L A S S    F O R   L R 1    I T E M S    S E T S   C O L L E C T I O N                      
+// C L A S S    F O R   L R 1    I T E M S    S E T S   C O L L E C T I O N
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -1074,7 +1074,7 @@ void c_LR1_items_sets_collection::getProductionsWhereLocationIsRight (const int3
 
 //--------------------------------------------------------------------------------------------------
 //
-// L R 1    A U T O M A T O N    T R A N S I T I O N                                             
+// L R 1    A U T O M A T O N    T R A N S I T I O N
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -1111,7 +1111,7 @@ class c_LR1_automaton_transition final {
 
 //--------------------------------------------------------------------------------------------------
 //
-// G E N E R A T E    L R ( 1 )    A N A L Y Z E R                                               
+// G E N E R A T E    L R ( 1 )    A N A L Y Z E R
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -1247,7 +1247,7 @@ generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
                        "// an entry is (non_terminal_symbol, n) ; successor is state n.\n\n" ;
   int32_t currentSourceState = -1 ; // No state
   for (int32_t t=0 ; t<transitionsCount ; t++) {
-    const int32_t nonterminal =  inTransitionList (t COMMA_HERE).action () - columnsCount ; 
+    const int32_t nonterminal =  inTransitionList (t COMMA_HERE).action () - columnsCount ;
     if (nonterminal >= 0) {
       const int32_t sourceState = inTransitionList (t COMMA_HERE).sourceState () ;
       if (currentSourceState == sourceState) {
@@ -1781,7 +1781,7 @@ generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
 
 //--------------------------------------------------------------------------------------------------
 //
-// C O M P U T E    L R 1    A U T O M A T O N                                                   
+// C O M P U T E    L R 1    A U T O M A T O N
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -1805,7 +1805,7 @@ compute_LR1_automation (const cPureBNFproductionsList & inProductionRules,
                                      inVocabularyDerivingToEmpty_Array) ;
   outLR1_items_sets_collection.searchOrInsert_LR1_itemSet (LR1_items_set) ;
 //--- Calculate LR1 automaton
-  // printf ("************** LR1 AUTOMATON BEGIN *****************\n") ; co.flush () ;
+  // printf ("************** LR1 AUTOMATON BEGIN *****************\n") ; gCout.flush () ;
   for (int32_t explorationIndex=0 ; explorationIndex<outLR1_items_sets_collection.getStateCount () ; explorationIndex++) {
     for (int32_t s=0 ; s<vocabularyCount ; s++) {
       outLR1_items_sets_collection.getTransitionFrom (inProductionRules, explorationIndex, s, LR1_items_set) ;
@@ -1820,12 +1820,12 @@ compute_LR1_automation (const cPureBNFproductionsList & inProductionRules,
       }
     }
   }
-  // printf ("************** LR1 AUTOMATON END *****************\n") ; co.flush () ;
+  // printf ("************** LR1 AUTOMATON END *****************\n") ; gCout.flush () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 //
-// L R ( 1 )    C O M P U T A T I O N S                                                          
+// L R ( 1 )    C O M P U T A T I O N S
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -1846,8 +1846,8 @@ LR1_computations (const cPureBNFproductionsList & inProductionRules,
                   const C_String & inSyntaxDirectedTranslationVarName) {
 //--- Console display
   if (inVerboseOptionOn) {
-    co += "  LR(1) automaton... " ;
-    co.flush () ;
+    gCout += "  LR(1) automaton... " ;
+    gCout.flush () ;
   }
 //--- Print in BNF file
   if (inPopulateHTMLHelperString) {
@@ -1866,11 +1866,11 @@ LR1_computations (const cPureBNFproductionsList & inProductionRules,
                           inVocabularyDerivingToEmpty_Array,
                           transitionList) ;
   if (inVerboseOptionOn) {
-    co += cStringWithSigned (LR1_items_sets_collection->getStateCount ()) ;
-    co += " states, " ;
-    co += cStringWithSigned (transitionList.count ()) ;
-    co += " transitions.\n" ;
-    co.flush () ;
+    gCout += cStringWithSigned (LR1_items_sets_collection->getStateCount ()) ;
+    gCout += " states, " ;
+    gCout += cStringWithSigned (transitionList.count ()) ;
+    gCout += " transitions.\n" ;
+    gCout.flush () ;
   }
 //--- Display automaton states
   if (inPopulateHTMLHelperString) {
@@ -1899,8 +1899,8 @@ LR1_computations (const cPureBNFproductionsList & inProductionRules,
   }
 //--- Console display
   if (inVerboseOptionOn) {
-    co += "  Checking LR(1) condition... " ;
-    co.flush () ;
+    gCout += "  Checking LR(1) condition... " ;
+    gCout.flush () ;
   }
 //--- Print in BNF file
   if (inPopulateHTMLHelperString) {
@@ -2032,15 +2032,15 @@ LR1_computations (const cPureBNFproductionsList & inProductionRules,
 //--- Display summary
   if (inVerboseOptionOn) {
     if (conflictCount == 0) {
-      co += "ok.\n" ;
+      gCout += "ok.\n" ;
     }else{
-      co += "error, " ;
-      co += cStringWithSigned (conflictCount) ;
-      co += " conflict" ;
-      co += ((conflictCount > 1) ? "s" : "") ;
-      co += ".\n" ;
+      gCout += "error, " ;
+      gCout += cStringWithSigned (conflictCount) ;
+      gCout += " conflict" ;
+      gCout += ((conflictCount > 1) ? "s" : "") ;
+      gCout += ".\n" ;
     }
-    co.flush () ;
+    gCout.flush () ;
   }
   if (inPopulateHTMLHelperString) {
     ioHTMLFileContents += "LR1 automaton has " ;

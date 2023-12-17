@@ -142,28 +142,28 @@ void C_UIntCommandLineOption::printUIntOptions (void) {
   C_UIntCommandLineOption * p = gFirstIntOption ;
   while (p != nullptr) {
     if (p->mCommandChar != '\0') {
-      co.setForeColor (kBlueForeColor) ;
-      co.setTextAttribute (kBoldTextAttribute) ;
-      co += "-" ;
-      co += cStringWithCharacter (p->mCommandChar) ;
-      co += "=number" ;
-      co.setTextAttribute (kAllAttributesOff) ;
-      co += "\n" ;
+      gCout.setForeColor (kBlueForeColor) ;
+      gCout.setTextAttribute (kBoldTextAttribute) ;
+      gCout += "-" ;
+      gCout += cStringWithCharacter (p->mCommandChar) ;
+      gCout += "=number" ;
+      gCout.setTextAttribute (kAllAttributesOff) ;
+      gCout += "\n" ;
     }
     if (p->mCommandString [0] != '\0') {
-      co.setForeColor (kBlueForeColor) ;
-      co.setTextAttribute (kBoldTextAttribute) ;
-      co += "--" ;
-      co += p->mCommandString ;
-      co += "=number" ;
-      co.setTextAttribute (kAllAttributesOff) ;
-      co += "\n" ;
+      gCout.setForeColor (kBlueForeColor) ;
+      gCout.setTextAttribute (kBoldTextAttribute) ;
+      gCout += "--" ;
+      gCout += p->mCommandString ;
+      gCout += "=number" ;
+      gCout.setTextAttribute (kAllAttributesOff) ;
+      gCout += "\n" ;
     }
-    co += "    " ;
-    co += p->mComment ;
-    co += " (default value: " ;
-    co += cStringWithUnsigned (p->mDefaultValue) ;
-    co += ")\n" ;
+    gCout += "    " ;
+    gCout += p->mComment ;
+    gCout += " (default value: " ;
+    gCout += cStringWithUnsigned (p->mDefaultValue) ;
+    gCout += ")\n" ;
     p = p->mNext ;
   }
 }

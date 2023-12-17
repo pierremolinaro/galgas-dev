@@ -47,7 +47,7 @@
         "LL1_computations.cpp",
         "LR1_computations.cpp",
         "SLR_computations.cpp",
-        "check-gmp.cpp",
+        "check-big-integer.cpp",
         "displayUnicodeLexicalTestFunctions.cpp",
        "C_CommandLineOption.cpp",
        "C_BoolCommandLineOption.cpp",

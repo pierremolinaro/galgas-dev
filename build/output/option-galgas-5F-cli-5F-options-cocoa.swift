@@ -19,10 +19,10 @@ func enterOptions (_ ioBoolOptionArray : inout [SWIFT_CommandLineOption],
   ))
   ioBoolOptionArray.append (SWIFT_CommandLineOption (
     domainName: "galgas_cli_options",
-    identifier: "check_gmp",
+    identifier: "check_big_int",
     commandChar: "",
-    commandString: "check-gmp",
-    comment: "Run a GMP check",
+    commandString: "check-big-int",
+    comment: "Run bit integers checks",
     defaultValue: ""
   ))
   ioBoolOptionArray.append (SWIFT_CommandLineOption (

@@ -106,9 +106,9 @@ displayNonterminalSymbolsFollowedByEmpty (const C_Relation & inVocabularyFollowe
     ioHTMLFileContents.outputRawData ("</table>") ;
   }
   if (inVerboseOptionOn) {
-    co.appendUnsigned (n) ;
-    co += ".\n" ;
-    co.flush () ;
+    gCout.appendUnsigned (n) ;
+    gCout += ".\n" ;
+    gCout.flush () ;
   }
 }
 
@@ -124,8 +124,8 @@ follow_by_empty_computations (const cPureBNFproductionsList & inPureBNFproductio
                               const bool inVerboseOptionOn) {
 //--- Console display
   if (inVerboseOptionOn) {
-    co += "  Nonterminal symbols followed by empty... " ;
-    co.flush () ;
+    gCout += "  Nonterminal symbols followed by empty... " ;
+    gCout.flush () ;
   }
 //--- Print in BNF file
   if (inPopulateHTMLHelperString) {

@@ -1,8 +1,8 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  Implementation of routines for handling dynamic allocation checking.                         
+//  Implementation of routines for handling dynamic allocation checking.
 //
-//  This file is part of libpm library                                                           
+//  This file is part of libpm library
 //
 //  Copyright (C) 1994, ..., 2016 Pierre Molinaro.
 //
@@ -28,7 +28,7 @@
 
 //--------------------------------------------------------------------------------------------------
 //
-//         Enum for describing a pointer                                                         
+//         Enum for describing a pointer
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -113,7 +113,7 @@
       myFreeRoutine (inPointer) ;
       unregisterPointer (inPointer, kAllocatedByMacroMyNewPODArray COMMA_THERE) ;
       #ifdef TRACE_DELETE
-        co << "macroMyDeleteStructC -> "
+        gCout << "macroMyDeleteStructC -> "
            << inPointer
            << " at line "
            << IN_SOURCE_LINE
@@ -133,7 +133,7 @@
 
 //--------------------------------------------------------------------------------------------------
 //
-//          Localisation de l'appel du deallocateur 'delete'                                     
+//          Localisation de l'appel du deallocateur 'delete'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -142,7 +142,7 @@
     if (inPointer != nullptr) {
       unregisterPointer (inPointer, kAllocatedByMacroMyNew COMMA_THERE) ;
       #ifdef TRACE_DELETE
-        co << "macroMyDelete -> "
+        gCout << "macroMyDelete -> "
            << inPointer
            << " at line "
            << IN_SOURCE_LINE
@@ -161,7 +161,7 @@
     if (inPointer != nullptr) {
       unregisterPointer (inPointer, kAllocatedByMacroMyNewArray COMMA_THERE) ;
       #ifdef TRACE_DELETE
-        co << "macroMyDeleteArray -> "
+        gCout << "macroMyDeleteArray -> "
            << inPointer
            << " at line "
            << IN_SOURCE_LINE
@@ -205,7 +205,7 @@
 
 //--------------------------------------------------------------------------------------------------
 //
-//                Comparaison de deux clefs                                                      
+//                Comparaison de deux clefs
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -214,7 +214,7 @@
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//   Prototypes                                                                                  
+//   Prototypes
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -251,19 +251,19 @@
     }
     return result ;
   }
-#endif 
+#endif
 
 //--------------------------------------------------------------------------------------------------
-//     Rotations elementaires de reequilibrage d'un ioRoot binaire                               
+//     Rotations elementaires de reequilibrage d'un ioRoot binaire
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   static void rotateLeft (cPointerDescriptor * & ioPtr) {
-  //--- faire la rotation 
+  //--- faire la rotation
     cPointerDescriptor * b = ioPtr->mSupPtr;
     ioPtr->mSupPtr = b->mInfPtr;
     b->mInfPtr = ioPtr;
-  //--- recalculer l'equilibrage 
+  //--- recalculer l'equilibrage
     if (b->mBalance >= 0) {
       ioPtr->mBalance ++ ;
     }else{
@@ -275,18 +275,18 @@
       b->mBalance ++ ;
     }
     ioPtr = b ;
-  } 
+  }
 #endif
 
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   static void rotateRight (cPointerDescriptor * & ioPtr) {
-  //-- faire la rotation 
+  //-- faire la rotation
     cPointerDescriptor * b = ioPtr->mInfPtr;
     ioPtr->mInfPtr = b->mSupPtr;
     b->mSupPtr = ioPtr;
-   //--- recalculer l'equilibrage 
+   //--- recalculer l'equilibrage
     if (b->mBalance > 0) {
       ioPtr->mBalance -= 1 + b->mBalance ;
     }else{
@@ -300,9 +300,9 @@
     ioPtr = b ;
   }
 #endif
- 
+
 //--------------------------------------------------------------------------------------------------
-//    Suppression d'un element dans un ioRoot binaire equilibre                                  
+//    Suppression d'un element dans un ioRoot binaire equilibre
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -332,7 +332,7 @@
     }
   }
 #endif
- 
+
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -506,7 +506,7 @@
     }
   }
 #endif
- 
+
 //--------------------------------------------------------------------------------------------------
 //   http://stackoverflow.com/questions/3442639/hashing-of-pointer-values
 //   https://gist.github.com/badboy/6267743
@@ -604,19 +604,19 @@
       switch (inAllocationKind) {
       case kAllocatedByMacroMyNew :
         if (pointerToDelete->mAllocationKind != kAllocatedByMacroMyNew) {
-          runtime_error_routine ("(" __FILE__ ") Appel de 'macroMyDelete' sur un pointeur declare dans '%s' ligne %d qui n'a pas ete alloue par 'macroMyNew'", 
+          runtime_error_routine ("(" __FILE__ ") Appel de 'macroMyDelete' sur un pointeur declare dans '%s' ligne %d qui n'a pas ete alloue par 'macroMyNew'",
                                  (intptr_t) nomFichierSource, inSourceFileLine, IN_SOURCE_FILE, IN_SOURCE_LINE) ;
         }
         break ;
       case kAllocatedByMacroMyNewArray :
         if (pointerToDelete->mAllocationKind != kAllocatedByMacroMyNewArray) {
-          runtime_error_routine ("(" __FILE__ ") Appel de 'macroMyDeleteArray' sur un pointeur declare dans '%s' ligne %d qui n'a pas ete alloue par 'macroMyNewArray'", 
+          runtime_error_routine ("(" __FILE__ ") Appel de 'macroMyDeleteArray' sur un pointeur declare dans '%s' ligne %d qui n'a pas ete alloue par 'macroMyNewArray'",
                                  (intptr_t) nomFichierSource, inSourceFileLine, IN_SOURCE_FILE, IN_SOURCE_LINE) ;
         }
         break ;
       case kAllocatedByMacroMyNewPODArray :
         if (pointerToDelete->mAllocationKind != kAllocatedByMacroMyNewPODArray) {
-          runtime_error_routine ("(" __FILE__ ") Appel de 'macroMyDeletePODArray' sur un pointeur declare dans '%s' ligne %d qui n'a pas ete alloue par 'macroMyNewPODArray'", 
+          runtime_error_routine ("(" __FILE__ ") Appel de 'macroMyDeletePODArray' sur un pointeur declare dans '%s' ligne %d qui n'a pas ete alloue par 'macroMyNewPODArray'",
                                  (intptr_t) nomFichierSource, inSourceFileLine, IN_SOURCE_FILE, IN_SOURCE_LINE) ;
         }
         break ;
@@ -629,7 +629,7 @@
 
 //--------------------------------------------------------------------------------------------------
 //
-//             Routine garantissant la nullite d'un pointeur                                     
+//             Routine garantissant la nullite d'un pointeur
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -643,7 +643,7 @@
 
 //--------------------------------------------------------------------------------------------------
 //
-//            Routine garantissant la validite d'un pointeur                                     
+//            Routine garantissant la validite d'un pointeur
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -695,7 +695,7 @@ void displayAllocatedBlocksInfo (void) {
     }
     if (gPointersCurrentCount != 0) {
       printf ("*** Warning: %d block information datas (instead of 0):\n", gPointersCurrentCount) ;
-      printf ("  address | source line | source file\n") ;  
+      printf ("  address | source line | source file\n") ;
     }
     for (uint32_t i=0 ; i<ROOT_TABLE_SIZE ; i++) {
       recursiveDisplay (gPointerDescriptorTreeRoot [i]) ;

@@ -1,13 +1,13 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  Routines for checking LL(1) condition                                                        
+//  Routines for checking LL(1) condition
 //
 //  Copyright (C) 1994, ..., 2023 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
 //  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public  *
-//  License as published by the Free Software Foundation.                                        
+//  License as published by the Free Software Foundation.
 //
 //  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
 //  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
@@ -42,7 +42,7 @@ class cAffichagePremiersProduction : public C_bdd_value_traversing {
   public: virtual void action (const bool tableauDesValeurs [],
                                 const uint32_t nombreVariables) ;
 } ;
-  
+
 //--------------------------------------------------------------------------------------------------
 
 cAffichagePremiersProduction::cAffichagePremiersProduction (C_HTMLString & inHTMLfile,
@@ -170,11 +170,11 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
 //--- Bilan de l'analyse
   if (inVerboseOptionOn) {
     if (nombreDeConflits == 0) {
-      co += "ok.\n" ;
+      gCout += "ok.\n" ;
     }else{
-      co += "error.\n" ;
+      gCout += "error.\n" ;
     }
-    co.flush () ;
+    gCout.flush () ;
   }
   if (inPopulateHTMLHelperString) {
     if (nombreDeConflits == 0) {
@@ -213,7 +213,7 @@ class cEcrireNonTerminal : public C_bdd_value_traversing {
   public: virtual void action (const bool tableauDesValeurs [],
                                 const uint32_t nombreVariables) ;
 } ;
-  
+
 //--------------------------------------------------------------------------------------------------
 
 cEcrireNonTerminal::
@@ -284,9 +284,9 @@ class C_ProductionNameDescriptor {
   public: C_String mName ;
   public: C_String mFileName ;
   public: uint32_t mLineNumber ;
-  
+
   public: C_ProductionNameDescriptor (void) ;
-  
+
   public: C_ProductionNameDescriptor (const C_String & inName,
                                        const C_String & inFileName,
                                        const uint32_t inLineNumber) ;
@@ -370,7 +370,7 @@ printProductions (const cPureBNFproductionsList & inPureBNFproductions,
             inCppFile += ") // <" ;
             inCppFile += inVocabulary.getSymbol (v COMMA_HERE) ;
             inCppFile += ">\n" ;
-          } 
+          }
         }else{
           inCppFile += "END_PRODUCTION\n" ;
         }
@@ -542,10 +542,10 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
     ioCppFileContents +=  " : <" ;
     ioCppFileContents += inVocabulary.getSymbol ((i + inVocabulary.getTerminalSymbolsCount ()) COMMA_HERE);
     ioCppFileContents += ">\n" ;
-  } 
+  }
   ioCppFileContents += "0} ;\n\n" ;
-  
-//--- Generate decision tables  
+
+//--- Generate decision tables
   TC_UniqueArray <int16_t> productionDecisionIndex (500 COMMA_HERE) ;
   ioCppFileContents.appendCppTitleComment ("L L ( 1 )    D E C I S I O N    T A B L E S") ;
   ioCppFileContents += "static const int32_t gDecision_" ;
@@ -584,7 +584,7 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
     ioCppFileContents += ">\n" ;
   }
   ioCppFileContents += "0} ;\n\n" ;
-  
+
 //--- Generate non terminal implementation ----------------------------
   nonTerminal.rewind () ;
   while (nonTerminal.hasCurrentObject ()) {
@@ -611,7 +611,7 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
                                       "parse",
                                       inSyntaxDirectedTranslationVarName) ;
     ioCppFileContents += "}\n\n" ;
-  //--- Indexing ? 
+  //--- Indexing ?
     ioCppFileContents += "void cGrammar_" ;
     ioCppFileContents += inTargetFileName.identifierRepresentation ();
     ioCppFileContents += "::nt_" ;
@@ -952,8 +952,8 @@ LL1_computations (const cPureBNFproductionsList & inPureBNFproductions,
 
 //--- Console display
   if (inVerboseOptionOn) {
-    co += "  LL(1) condition... " ;
-    co.flush () ;
+    gCout += "  LL(1) condition... " ;
+    gCout.flush () ;
   }
 //--- Print in BNF file
   ioHTMLFileContents.appendCppTitleComment ("Checking LL(1) condition", "title") ;

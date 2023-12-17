@@ -130,20 +130,20 @@ void C_SharedObject::retainRelease (const C_SharedObject * inObjectToRetain,
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void C_SharedObject::checkAllObjectsHaveBeenReleased (void) {
     if (gObjectCurrentCount != 0) {
-      co += "Warning: " ;
-      co += cStringWithUnsigned (gObjectCurrentCount) ;
-      co += " object" ;
-      co += ((gObjectCurrentCount > 1) ? "s have" : " has") ;
-      co += " not been released:\n" ;
+      gCout += "Warning: " ;
+      gCout += cStringWithUnsigned (gObjectCurrentCount) ;
+      gCout += " object" ;
+      gCout += ((gObjectCurrentCount > 1) ? "s have" : " has") ;
+      gCout += " not been released:\n" ;
       C_SharedObject * p = gFirstObject ;
       while (p != nullptr) {
-        co += "- object declared in '" ;
-        co += p->mCreationFile ;
-        co += "', line " ;
-        co += cStringWithSigned (p->mCreationLine) ;
-        co += " (retain count: " ;
-        co += cStringWithSigned (p->mRetainCount) ;
-        co += ")\n" ;
+        gCout += "- object declared in '" ;
+        gCout += p->mCreationFile ;
+        gCout += "', line " ;
+        gCout += cStringWithSigned (p->mCreationLine) ;
+        gCout += " (retain count: " ;
+        gCout += cStringWithSigned (p->mRetainCount) ;
+        gCout += ")\n" ;
         p = p->mPtrToNextObject ;
       }
     }

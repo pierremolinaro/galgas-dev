@@ -9177,7 +9177,7 @@ class cParser_galgas_33_ExpressionSyntax {
 
 extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_checkEntityUsefulness ;
 
-extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_check_5F_gmp ;
+extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_check_5F_big_5F_int ;
 
 extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_displayUnicodeLexicalTestFunctions ;
 

@@ -1,13 +1,13 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  This file handles all computations performed on grammars                                     
+//  This file handles all computations performed on grammars
 //
 //  Copyright (C) 1999, ..., 2023 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
 //  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public  *
-//  License as published by the Free Software Foundation.                                        
+//  License as published by the Free Software Foundation.
 //
 //  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
 //  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
@@ -363,13 +363,13 @@ analyzeGrammar (C_Compiler * inCompiler,
   cPureBNFproductionsList pureBNFproductions ;
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     if (verboseOptionOn) {
-      co += "  Building pure BNF productions... " ;
+      gCout += "  Building pure BNF productions... " ;
     }
   //--- Build vocabulary
     vocabulary.buildVocabulary (inTerminalSymbolMap,
                                 inNonTerminalSymbolSortedListForGrammarAnalysis,
                                 inOriginalGrammarStartSymbol.uintValue ()) ;
-  
+
   //--- Build pure BNFproductions, add new non terminal symbols from 'repeat' and 'select' instructions
     buildPureBNFgrammar (inSyntaxComponentsList,
                          vocabulary,
@@ -380,9 +380,9 @@ analyzeGrammar (C_Compiler * inCompiler,
     outHTMLHelperFileContents.appendCppTitleComment ("  Pure BNF productions list", "title") ;
     printPureBNFgrammarInBNFfile (outHTMLHelperFileContents, vocabulary, pureBNFproductions) ;
     if (verboseOptionOn) {
-      co += cStringWithSigned (pureBNFproductions.mProductionArray.count ()) ;
-      co += ".\n" ;
-      co.flush () ;
+      gCout += cStringWithSigned (pureBNFproductions.mProductionArray.count ()) ;
+      gCout += ".\n" ;
+      gCout.flush () ;
     }
   }
 //--- Define vocabulary BDD sets descriptor
@@ -390,19 +390,19 @@ analyzeGrammar (C_Compiler * inCompiler,
 //--- Search for identical productions -----------------------------------------------------------
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     if (verboseOptionOn) {
-      co += "  Identical productions... " ;
+      gCout += "  Identical productions... " ;
     }
     const bool step2ok = searchForIdenticalProductions (pureBNFproductions, outHTMLHelperFileContents) ;
     if (! step2ok) {
       errorFlag = kError ;
       if (! verboseOptionOn) {
-        co += "  Identical productions... " ;
+        gCout += "  Identical productions... " ;
       }
-      co += "error.\n" ;
+      gCout += "error.\n" ;
     }else if (verboseOptionOn) {
-      co += "none, ok.\n" ;
+      gCout += "none, ok.\n" ;
     }
-    co.flush () ;
+    gCout.flush () ;
   }
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
   //--- Enregistrer les caracteristiques de la grammaire

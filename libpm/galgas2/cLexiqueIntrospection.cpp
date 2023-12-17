@@ -70,11 +70,11 @@ void cLexiqueIntrospection::handleGetKeywordListOption (C_Compiler * inCompiler)
   const C_String option = gOption_galgas_5F_builtin_5F_options_outputKeywordList.readProperty_value () ;
   if (option != "") {
     const C_String optionFormat = "lexique_name:list_name:columns:prefix:postfix:path" ;
-    co += "Option \"--" ;
-    co += gOption_galgas_5F_builtin_5F_options_outputKeywordList.mCommandString ;
-    co += "=" ;
-    co += option ;
-    co += "\":\n" ;
+    gCout += "Option \"--" ;
+    gCout += gOption_galgas_5F_builtin_5F_options_outputKeywordList.mCommandString ;
+    gCout += "=" ;
+    gCout += option ;
+    gCout += "\":\n" ;
     TC_UniqueArray <C_String> components ;
     option.componentsSeparatedByString (":", components) ;
     if (components.count () != 6) {

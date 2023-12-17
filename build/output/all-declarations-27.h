@@ -198,12 +198,12 @@ void routine_compileProgramComponentGalgas_33_ (class GALGAS_lstringlist & ioArg
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'checkGMP'
+//Routine 'checkBigInteger'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_checkGMP (class C_Compiler * inCompiler
-                       COMMA_LOCATION_ARGS) ;
+void routine_checkBigInteger (class C_Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

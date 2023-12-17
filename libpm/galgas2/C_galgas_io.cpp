@@ -585,20 +585,20 @@ void ggs_printError (C_Compiler * inCompiler,
 //--- Append source string
   if (! executionModeIsIndexing ()) {
     if (cocoaOutput ()) {
-      co.setForeColor (kRedForeColor) ;
-      co.setTextAttribute (kBoldTextAttribute) ;
-      co.appendUnicodeCharacter (COCOA_ERROR_ID COMMA_HERE) ;
-      co += errorMessage ;
-      co.setTextAttribute (kAllAttributesOff) ;
-      co += "\n" ;
-      co.flush () ;
+      gCout.setForeColor (kRedForeColor) ;
+      gCout.setTextAttribute (kBoldTextAttribute) ;
+      gCout.appendUnicodeCharacter (COCOA_ERROR_ID COMMA_HERE) ;
+      gCout += errorMessage ;
+      gCout.setTextAttribute (kAllAttributesOff) ;
+      gCout += "\n" ;
+      gCout.flush () ;
     }else{
-      co.setForeColor (kRedForeColor) ;
-      co.setTextAttribute (kBoldTextAttribute) ;
-      co += errorMessage ;
-      co.setTextAttribute (kAllAttributesOff) ;
-      co += "\n" ;
-      co.flush () ;
+      gCout.setForeColor (kRedForeColor) ;
+      gCout.setTextAttribute (kBoldTextAttribute) ;
+      gCout += errorMessage ;
+      gCout.setTextAttribute (kAllAttributesOff) ;
+      gCout += "\n" ;
+      gCout.flush () ;
     }
   }
 }
@@ -632,20 +632,20 @@ void fatalError (const C_String & inErrorMessage,
 //--- Append source string
   if (! executionModeIsIndexing ()) {
     if (cocoaOutput ()) {
-      co.setForeColor (kRedForeColor) ;
-      co.setTextAttribute (kBoldTextAttribute) ;
-      co.appendUnicodeCharacter (COCOA_ERROR_ID COMMA_HERE) ;
-      co += message ;
-      co.setTextAttribute (kAllAttributesOff) ;
-      co += "\n" ;
-      co.flush () ;
+      gCout.setForeColor (kRedForeColor) ;
+      gCout.setTextAttribute (kBoldTextAttribute) ;
+      gCout.appendUnicodeCharacter (COCOA_ERROR_ID COMMA_HERE) ;
+      gCout += message ;
+      gCout.setTextAttribute (kAllAttributesOff) ;
+      gCout += "\n" ;
+      gCout.flush () ;
     }else{
-      co.setForeColor (kRedForeColor) ;
-      co.setTextAttribute (kBoldTextAttribute) ;
-      co += message ;
-      co.setTextAttribute (kAllAttributesOff) ;
-      co += "\n" ;
-      co.flush () ;
+      gCout.setForeColor (kRedForeColor) ;
+      gCout.setTextAttribute (kBoldTextAttribute) ;
+      gCout += message ;
+      gCout.setTextAttribute (kAllAttributesOff) ;
+      gCout += "\n" ;
+      gCout.flush () ;
     }
   }
   exit (1) ;
@@ -689,20 +689,20 @@ void ggs_printWarning (C_Compiler * inCompiler,
   }
   if (! executionModeIsIndexing ()) {
     if (cocoaOutput ()) {
-      co.setForeColor (kYellowForeColor) ;
-      co.setTextAttribute (kBoldTextAttribute) ;
-      co.appendUnicodeCharacter (COCOA_WARNING_ID COMMA_HERE) ;
-      co += warningMessage ;
-      co.setTextAttribute (kAllAttributesOff) ;
-      co += "\n" ;
-      co.flush () ;
+      gCout.setForeColor (kYellowForeColor) ;
+      gCout.setTextAttribute (kBoldTextAttribute) ;
+      gCout.appendUnicodeCharacter (COCOA_WARNING_ID COMMA_HERE) ;
+      gCout += warningMessage ;
+      gCout.setTextAttribute (kAllAttributesOff) ;
+      gCout += "\n" ;
+      gCout.flush () ;
     }else{
-      co.setForeColor (kYellowForeColor) ;
-      co.setTextAttribute (kBoldTextAttribute) ;
-      co += warningMessage ;
-      co.setTextAttribute (kAllAttributesOff) ;
-      co += "\n" ;
-      co.flush () ;
+      gCout.setForeColor (kYellowForeColor) ;
+      gCout.setTextAttribute (kBoldTextAttribute) ;
+      gCout += warningMessage ;
+      gCout.setTextAttribute (kAllAttributesOff) ;
+      gCout += "\n" ;
+      gCout.flush () ;
     }
   }
 }
@@ -716,17 +716,17 @@ void ggs_printWarning (C_Compiler * inCompiler,
 void ggs_printFileOperationSuccess (const C_String & inMessage) {
   if (! executionModeIsIndexing ()) {
     if (cocoaOutput ()) {
-      co.setForeColor (kGreenForeColor) ;
-      co.setTextAttribute (kBoldTextAttribute) ;
-      co += inMessage;
-      co.setTextAttribute (kAllAttributesOff) ;
-      co.flush () ;
+      gCout.setForeColor (kGreenForeColor) ;
+      gCout.setTextAttribute (kBoldTextAttribute) ;
+      gCout += inMessage;
+      gCout.setTextAttribute (kAllAttributesOff) ;
+      gCout.flush () ;
     }else{
-      co.setForeColor (kGreenForeColor) ;
-      co.setTextAttribute (kBoldTextAttribute) ;
-      co += inMessage ;
-      co.setTextAttribute (kAllAttributesOff) ;
-      co.flush () ;
+      gCout.setForeColor (kGreenForeColor) ;
+      gCout.setTextAttribute (kBoldTextAttribute) ;
+      gCout += inMessage ;
+      gCout.setTextAttribute (kAllAttributesOff) ;
+      gCout.flush () ;
     }
   }
 }
@@ -740,17 +740,17 @@ void ggs_printFileOperationSuccess (const C_String & inMessage) {
 void ggs_printFileCreationSuccess (const C_String & inMessage) {
   if (! executionModeIsIndexing ()) {
     if (cocoaOutput ()) {
-      co.setForeColor (kBlueForeColor) ;
-      co.setTextAttribute (kBoldTextAttribute) ;
-      co += inMessage;
-      co.setTextAttribute (kAllAttributesOff) ;
-      co.flush () ;
+      gCout.setForeColor (kBlueForeColor) ;
+      gCout.setTextAttribute (kBoldTextAttribute) ;
+      gCout += inMessage;
+      gCout.setTextAttribute (kAllAttributesOff) ;
+      gCout.flush () ;
     }else{
-      co.setForeColor (kBlueForeColor) ;
-      co.setTextAttribute (kBoldTextAttribute) ;
-      co += inMessage ;
-      co.setTextAttribute (kAllAttributesOff) ;
-      co.flush () ;
+      gCout.setForeColor (kBlueForeColor) ;
+      gCout.setTextAttribute (kBoldTextAttribute) ;
+      gCout += inMessage ;
+      gCout.setTextAttribute (kAllAttributesOff) ;
+      gCout.flush () ;
     }
   }
 }
@@ -774,8 +774,8 @@ void ggs_printMessage (const C_String & inMessage
         message += "]\n" ;
       }
     #endif
-    co += message ;
-    co.flush () ;
+    gCout += message ;
+    gCout.flush () ;
   }
 }
 

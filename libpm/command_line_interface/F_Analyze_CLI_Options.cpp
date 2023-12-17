@@ -71,18 +71,18 @@ const char * galgasVersionString (void) {
 //--------------------------------------------------------------------------------------------------
 
 static void print_usage (int argv, const char * argc []) {
-  co.setForeColor (kMagentaForeColor) ;
-  co.setTextAttribute (kBoldTextAttribute) ;
-  co += "Usage:\n" ;
-  co.setTextAttribute (kAllAttributesOff) ;
+  gCout.setForeColor (kMagentaForeColor) ;
+  gCout.setTextAttribute (kBoldTextAttribute) ;
+  gCout += "Usage:\n" ;
+  gCout.setTextAttribute (kAllAttributesOff) ;
   if (argv > 0) {
-    co += argc [0] ;
+    gCout += argc [0] ;
   }
   C_BoolCommandLineOption::printUsageOfBoolOptions () ;
   C_UIntCommandLineOption::printUsageOfUIntOptions () ;
   C_StringCommandLineOption::printUsageOfStringOptions () ;
   C_StringListCommandLineOption::printUsageOfStringOptions () ;
-  co += " file...\n" ;
+  gCout += " file...\n" ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -111,17 +111,17 @@ static void print_help (int argv,
                         const char * inHelpMessages [],
                         void print_tool_help_message (void)) {
   #ifdef __LP64__
-    co += "Compiled in 64 bits mode" ;
+    gCout += "Compiled in 64 bits mode" ;
   #else
-    co += "Compiled in 32 bits mode" ;
+    gCout += "Compiled in 32 bits mode" ;
   #endif
   #ifndef DO_NOT_GENERATE_CHECKINGS
-    co += " (with debug code)" ;
+    gCout += " (with debug code)" ;
   #endif
-  co += ".\n" ;
+  gCout += ".\n" ;
   print_tool_help_message () ;
 /*  #ifndef DO_NOT_GENERATE_CHECKINGS
-    co += "sizeof (short)=" + ((uint32_t) sizeof (short))
+    gCout += "sizeof (short)=" + ((uint32_t) sizeof (short))
        + ", sizeof (int)=" + ((uint32_t) sizeof (int))
        + ", sizeof (long)=" + ((uint32_t) sizeof (long))
        + ", sizeof (long long)=" + ((uint32_t) sizeof (long long))
@@ -129,11 +129,11 @@ static void print_help (int argv,
        + "\n" ;
   #endif */
   print_usage (argv, argc) ;
-  co.setForeColor (kMagentaForeColor) ;
-  co.setTextAttribute (kBoldTextAttribute) ;
-  co += "Options:\n" ;
-  co.setTextAttribute (kAllAttributesOff) ;
-  co += "You can place options anywhere in the command line: they will be executed before the files are processed.\n" ;
+  gCout.setForeColor (kMagentaForeColor) ;
+  gCout.setTextAttribute (kBoldTextAttribute) ;
+  gCout += "Options:\n" ;
+  gCout.setTextAttribute (kAllAttributesOff) ;
+  gCout += "You can place options anywhere in the command line: they will be executed before the files are processed.\n" ;
   C_BoolCommandLineOption::printBoolOptions () ;
   C_UIntCommandLineOption::printUIntOptions () ;
   C_StringCommandLineOption::printStringOptions () ;
@@ -143,31 +143,31 @@ static void print_help (int argv,
   while (inExtensions [extensionIndex] != nullptr) {
     extensionIndex ++ ;
   }
-  co.setForeColor (kMagentaForeColor) ;
-  co.setTextAttribute (kBoldTextAttribute) ;
-  co += "Handled extension" ;
-  co += ((extensionIndex > 1) ? "s" : "") ;
-  co += ":\n" ;
-  co.setTextAttribute (kAllAttributesOff) ;
+  gCout.setForeColor (kMagentaForeColor) ;
+  gCout.setTextAttribute (kBoldTextAttribute) ;
+  gCout += "Handled extension" ;
+  gCout += ((extensionIndex > 1) ? "s" : "") ;
+  gCout += ":\n" ;
+  gCout.setTextAttribute (kAllAttributesOff) ;
   extensionIndex = 0 ;
   while (inExtensions [extensionIndex] != nullptr) {
-    co.setForeColor (kBlueForeColor) ;
-    co.setTextAttribute (kBoldTextAttribute) ;
-    co += "." ;
-    co += inExtensions [extensionIndex] ;
-    co.setTextAttribute (kAllAttributesOff) ;
+    gCout.setForeColor (kBlueForeColor) ;
+    gCout.setTextAttribute (kBoldTextAttribute) ;
+    gCout += "." ;
+    gCout += inExtensions [extensionIndex] ;
+    gCout.setTextAttribute (kAllAttributesOff) ;
     const uint32_t extensionLength = (uint32_t) (strlen (inExtensions [extensionIndex]) & UINT32_MAX) ;
     const uint32_t kDisplayLength = 20 ;
     if (extensionLength < kDisplayLength) {
       for (uint32_t i=extensionLength ; i<kDisplayLength ; i++) {
-        co += " " ;
+        gCout += " " ;
       }
     }else{
-      co += "\n" ;
-      co.appendSpaces (kDisplayLength+2) ;
+      gCout += "\n" ;
+      gCout.appendSpaces (kDisplayLength+2) ;
     }
-    co += inHelpMessages [extensionIndex] ;
-    co += "\n" ;
+    gCout += inHelpMessages [extensionIndex] ;
+    gCout += "\n" ;
     extensionIndex ++ ;
   }
 }
@@ -186,9 +186,9 @@ static void option_beginning_with_single_minus_sign (const char * inCommand,
   if (optionLength == 2) {
     C_BoolCommandLineOption::setBoolOptionForCommandChar (inCommand [1], outOk) ;
     if (! outOk) {
-      co += "Error : unknown '" ;
-      co += inCommand ;
-      co += "' command line option.\n" ;
+      gCout += "Error : unknown '" ;
+      gCout += inCommand ;
+      gCout += "' command line option.\n" ;
     }
   }else if (optionLength > 2) {
   //--- Search for an UInt option
@@ -202,21 +202,21 @@ static void option_beginning_with_single_minus_sign (const char * inCommand,
       C_StringListCommandLineOption::setStringListOptionForCommandChar (& inCommand [1], outOk, correctFormat) ;
     }
     if (! outOk) {
-      co += "Error : unknown '" ;
-      co += inCommand ;
-      co += "' command line option.\n" ;
+      gCout += "Error : unknown '" ;
+      gCout += inCommand ;
+      gCout += "' command line option.\n" ;
     }else if (! correctFormat) {
       outOk = false ;
-      co += "Error : incorrect format for '" ;
-      co += inCommand ;
-      co += "' command line option (correct format is : '-" ;
-      co += inCommand ;
-      co += "=value').\n" ;
+      gCout += "Error : incorrect format for '" ;
+      gCout += inCommand ;
+      gCout += "' command line option (correct format is : '-" ;
+      gCout += inCommand ;
+      gCout += "=value').\n" ;
     }
   }else{
-    co += "Error : unknown '" ;
-    co += inCommand ;
-    co += "' command line option.\n" ;
+    gCout += "Error : unknown '" ;
+    gCout += inCommand ;
+    gCout += "' command line option.\n" ;
   }
 }
 
@@ -244,14 +244,14 @@ static void option_beginning_with_double_minus_sign (const char * inCommand,
     C_StringListCommandLineOption::setStringListOptionForCommandString (& inCommand [2], outFound, correctFormat) ;
   }
   if (! outFound) {
-    co += "Error : unknown '" ;
-    co += inCommand ;
-    co += "' command line option.\n" ;
+    gCout += "Error : unknown '" ;
+    gCout += inCommand ;
+    gCout += "' command line option.\n" ;
   }else if (! correctFormat) {
     outFound = false ;
-    co += "Error : incorrect format for '" ;
-    co += inCommand ;
-    co += "' command line option.\n" ;
+    gCout += "Error : incorrect format for '" ;
+    gCout += inCommand ;
+    gCout += "' command line option.\n" ;
   }
 }
 
@@ -402,15 +402,15 @@ void F_Analyze_CLI_Options (const int argv,
   #endif
 //--- Print version ?
   if (gOption_generic_5F_cli_5F_options_display_5F_version.mValue) {
-    co += argc [0] ;
-    co += " : " ;
-    co += projectVersionString () ;
+    gCout += argc [0] ;
+    gCout += " : " ;
+    gCout += projectVersionString () ;
     #ifndef DO_NOT_GENERATE_CHECKINGS
-      co += " [DEBUG]" ;
+      gCout += " [DEBUG]" ;
     #endif
-    co += ", build with GALGAS " ;
-    co += galgasVersionString () ;
-    co += "\n" ;
+    gCout += ", build with GALGAS " ;
+    gCout += galgasVersionString () ;
+    gCout += "\n" ;
   }
 //--- Print Help ?
   if (gOption_generic_5F_cli_5F_options_display_5F_help.mValue) {

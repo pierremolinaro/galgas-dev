@@ -1,13 +1,13 @@
 //--------------------------------------------------------------------------------------------------
 //
-//     Routines for SLR grammar computations                                                     
+//     Routines for SLR grammar computations
 //
 //  Copyright (C) 2002, ..., 2023 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
 //  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public  *
-//  License as published by the Free Software Foundation.                                        
+//  License as published by the Free Software Foundation.
 //
 //  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
 //  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
@@ -29,7 +29,7 @@
 
 //--------------------------------------------------------------------------------------------------
 //
-//    C L A S S    F O R   L R 0    I T E M                                                      
+//    C L A S S    F O R   L R 0    I T E M
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -81,7 +81,7 @@ compare_LR0_items (const c_LR0_item & inItem1,
 
 //--------------------------------------------------------------------------------------------------
 //
-//    C L A S S    F O R   L R 0    I T E M S    S E T                                           
+//    C L A S S    F O R   L R 0    I T E M S    S E T
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -215,13 +215,13 @@ display (const cPureBNFproductionsList & inProductionRules,
     inHTMLfile += " ->" ;
     for (int32_t j=0 ; j<p.derivationLength () ; j++) {
       if (j == location) {
-        inHTMLfile += " ." ;      
+        inHTMLfile += " ." ;
       }
       inHTMLfile += " " ;
       inVocabulary.printInFile (inHTMLfile, p.derivationAtIndex (j COMMA_HERE) COMMA_HERE) ;
     }
     if (location == p.derivationLength ()) {
-      inHTMLfile += " ." ;      
+      inHTMLfile += " ." ;
     }
     inHTMLfile += "]" ;
     inHTMLfile.outputRawData ("</span>\n") ;
@@ -266,7 +266,7 @@ getProductionsWhereLocationIsRight (const cPureBNFproductionsList & inProduction
     if ((productionRuleIndex == (inProductionRules.mProductionArray.count () - 1)) && (location == 1)) {
       outAcceptCondition = true ;
     }
-  }  
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -302,7 +302,7 @@ void swap (c_LR0_items_set & ioOperand1, c_LR0_items_set & ioOperand2) {
 
 //--------------------------------------------------------------------------------------------------
 //
-// E L E M E N T    C L A S S    F O R   A V L    T R E E                                        
+// E L E M E N T    C L A S S    F O R   A V L    T R E E
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -354,16 +354,16 @@ compare (const c_LR0_items_set & in_LR0_items_set,
 
 //--------------------------------------------------------------------------------------------------
 //
-//       Rotate left                                                                             
+//       Rotate left
 //
 //--------------------------------------------------------------------------------------------------
 
 static void rotateLeft (cLR0_items_sets_AVL_tree * & ioPtr) {
-//--- Rotate 
+//--- Rotate
   cLR0_items_sets_AVL_tree * ptr = ioPtr->mPtrToSup ;
   ioPtr->mPtrToSup = ptr->mPtrToInf ;
   ptr->mPtrToInf = ioPtr ;
-//--- Update balance 
+//--- Update balance
   if (ptr->mBalance < 0) {
     ioPtr->mBalance -= ptr->mBalance ;
   }
@@ -373,20 +373,20 @@ static void rotateLeft (cLR0_items_sets_AVL_tree * & ioPtr) {
   }
   ptr->mBalance ++ ;
   ioPtr = ptr ;
-} 
+}
 
 //--------------------------------------------------------------------------------------------------
 //
-//       Rotate right                                                                            
+//       Rotate right
 //
 //--------------------------------------------------------------------------------------------------
 
 static void rotateRight (cLR0_items_sets_AVL_tree * & ioPtr) {
-//--- Rotate 
+//--- Rotate
   cLR0_items_sets_AVL_tree * ptr = ioPtr->mPtrToInf ;
   ioPtr->mPtrToInf = ptr->mPtrToSup ;
   ptr->mPtrToSup = ioPtr ;
- //--- Update balance 
+ //--- Update balance
   if (ptr->mBalance > 0) {
     ioPtr->mBalance -= ptr->mBalance ;
   }
@@ -397,7 +397,7 @@ static void rotateRight (cLR0_items_sets_AVL_tree * & ioPtr) {
   ptr->mBalance-- ;
   ioPtr = ptr ;
 }
- 
+
 //--------------------------------------------------------------------------------------------------
 
 int32_t cLR0_items_sets_AVL_tree::
@@ -476,7 +476,7 @@ recursiveSearchOrInsert (cLR0_items_sets_AVL_tree * & ioRootPointer,
   return result ;
 }
 
- 
+
 //--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
@@ -485,7 +485,7 @@ recursiveSearchOrInsert (cLR0_items_sets_AVL_tree * & ioRootPointer,
 
 //--------------------------------------------------------------------------------------------------
 //
-// C L A S S    F O R   L R 0    I T E M S    S E T S   C O L L E C T I O N                      
+// C L A S S    F O R   L R 0    I T E M S    S E T S   C O L L E C T I O N
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -601,7 +601,7 @@ getProductionsWhereLocationIsRight (const int32_t inStateIndex,
 
 //--------------------------------------------------------------------------------------------------
 //
-// L R 0    A U T O M A T O N    T R A N S I T I O N                                             
+// L R 0    A U T O M A T O N    T R A N S I T I O N
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -648,7 +648,7 @@ mTargetState (inTargetState) {
 
 //--------------------------------------------------------------------------------------------------
 //
-// G E N E R A T E    S L R    A N A L Y Z E R                                                   
+// G E N E R A T E    S L R    A N A L Y Z E R
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -785,7 +785,7 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
                     "// an entry is (non_terminal_symbol, n) ; successor is state n.\n\n" ;
   int32_t currentSourceState = -1 ; // No state
   for (int32_t t=0 ; t<transitionsCount ; t++) {
-    const int32_t nonterminal =  inTransitionList (t COMMA_HERE).action () - columnsCount ; 
+    const int32_t nonterminal =  inTransitionList (t COMMA_HERE).action () - columnsCount ;
     if (nonterminal >= 0) {
       const int32_t sourceState = inTransitionList (t COMMA_HERE).sourceState () ;
       if (currentSourceState == sourceState) {
@@ -1315,11 +1315,11 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
 
 //--------------------------------------------------------------------------------------------------
 //
-// G E N E R A T E    S L R    A N A L Y Z E R                                                   
+// G E N E R A T E    S L R    A N A L Y Z E R
 //
 //--------------------------------------------------------------------------------------------------
 //
-// C O M P U T E    L R 0    A U T O M A T O N                                                   
+// C O M P U T E    L R 0    A U T O M A T O N
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -1351,7 +1351,7 @@ compute_LR0_automation (const cPureBNFproductionsList & inProductionRules,
 
 //--------------------------------------------------------------------------------------------------
 //
-// S L R    C O M P U T A T I O N S                                                              
+// S L R    C O M P U T A T I O N S
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -1371,8 +1371,8 @@ SLR_computations (const cPureBNFproductionsList & inProductionRules,
                   const C_String & inSyntaxDirectedTranslationVarName) {
 //--- Console display
   if (inVerboseOptionOn) {
-    co += "  SLR automaton... " ;
-    co.flush () ;
+    gCout += "  SLR automaton... " ;
+    gCout.flush () ;
   }
 //--- Print in BNF file
   if (inPopulateHTMLHelperString) {
@@ -1388,11 +1388,11 @@ SLR_computations (const cPureBNFproductionsList & inProductionRules,
                           LR0_items_sets_collection,
                           transitionList) ;
   if (inVerboseOptionOn) {
-    co += cStringWithSigned (LR0_items_sets_collection.getStatesCount ()) ;
-    co += " states, " ;
-    co += cStringWithSigned (transitionList.count ()) ;
-    co += " transitions.\n" ;
-    co.flush () ;
+    gCout += cStringWithSigned (LR0_items_sets_collection.getStatesCount ()) ;
+    gCout += " states, " ;
+    gCout += cStringWithSigned (transitionList.count ()) ;
+    gCout += " transitions.\n" ;
+    gCout.flush () ;
   }
 //--- Display automaton states
   if (inPopulateHTMLHelperString) {
@@ -1423,8 +1423,8 @@ SLR_computations (const cPureBNFproductionsList & inProductionRules,
 
 //--- Console display
   if (inVerboseOptionOn) {
-    co += "  Checking SLR condition... " ;
-    co.flush () ;
+    gCout += "  Checking SLR condition... " ;
+    gCout.flush () ;
   }
 //--- Print in BNF file
   if (inPopulateHTMLHelperString) {
@@ -1526,7 +1526,7 @@ SLR_computations (const cPureBNFproductionsList & inProductionRules,
         }
         SLRdecisionTable (state, terminal COMMA_HERE) = cDecisionTableElement::reduceDecision (productionIndex) ;
         reduceActions += 1 ;
-      }    
+      }
     }
   }
 //--- Successors
@@ -1548,15 +1548,15 @@ SLR_computations (const cPureBNFproductionsList & inProductionRules,
 //--- Display summary
   if (inVerboseOptionOn) {
     if (conflictCount == 0) {
-      co += "ok.\n" ;
+      gCout += "ok.\n" ;
     }else{
-      co += "error, " ;
-      co += cStringWithSigned (conflictCount) ;
-      co += " conflict" ;
-      co += ((conflictCount > 1) ? "s" : "") ;
-      co += ".\n" ;
+      gCout += "error, " ;
+      gCout += cStringWithSigned (conflictCount) ;
+      gCout += " conflict" ;
+      gCout += ((conflictCount > 1) ? "s" : "") ;
+      gCout += ".\n" ;
     }
-    co.flush () ;
+    gCout.flush () ;
   }
   if (inPopulateHTMLHelperString) {
     ioHTMLFileContents.outputRawData ("</table><p>") ;

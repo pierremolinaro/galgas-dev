@@ -107,24 +107,24 @@ void C_BoolCommandLineOption::printBoolOptions (void) {
   C_BoolCommandLineOption * p = gFirstBoolCommand ;
   while (p != nullptr) {
     if (p->mCommandChar != '\0') {
-      co.setForeColor (kBlueForeColor) ;
-      co.setTextAttribute (kBoldTextAttribute) ;
-      co += "-" ;
-      co += cStringWithCharacter (p->mCommandChar) ;
-      co.setTextAttribute (kAllAttributesOff) ;
-      co += "\n" ;
+      gCout.setForeColor (kBlueForeColor) ;
+      gCout.setTextAttribute (kBoldTextAttribute) ;
+      gCout += "-" ;
+      gCout += cStringWithCharacter (p->mCommandChar) ;
+      gCout.setTextAttribute (kAllAttributesOff) ;
+      gCout += "\n" ;
     }
     if (p->mCommandString [0] != '\0') {
-      co.setForeColor (kBlueForeColor) ;
-      co.setTextAttribute (kBoldTextAttribute) ;
-      co += "--" ;
-      co += p->mCommandString ;
-      co.setTextAttribute (kAllAttributesOff) ;
-      co += "\n" ;
+      gCout.setForeColor (kBlueForeColor) ;
+      gCout.setTextAttribute (kBoldTextAttribute) ;
+      gCout += "--" ;
+      gCout += p->mCommandString ;
+      gCout.setTextAttribute (kAllAttributesOff) ;
+      gCout += "\n" ;
     }
-    co += "    " ;
-    co += p->mComment ;
-    co += "\n" ;
+    gCout += "    " ;
+    gCout += p->mComment ;
+    gCout += "\n" ;
     p = p->mNext ;
   }
 }

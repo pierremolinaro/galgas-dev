@@ -128,28 +128,28 @@ void C_StringCommandLineOption::printStringOptions (void) {
   C_StringCommandLineOption * p = gFirstStringOption ;
   while (p != nullptr) {
     if (p->mCommandChar != '\0') {
-      co.setForeColor (kBlueForeColor) ;
-      co.setTextAttribute (kBoldTextAttribute) ;
-      co += "-" ;
-      co += cStringWithCharacter (p->mCommandChar) ;
-      co += "=string" ;
-      co.setTextAttribute (kAllAttributesOff) ;
-      co += "\n" ;
+      gCout.setForeColor (kBlueForeColor) ;
+      gCout.setTextAttribute (kBoldTextAttribute) ;
+      gCout += "-" ;
+      gCout += cStringWithCharacter (p->mCommandChar) ;
+      gCout += "=string" ;
+      gCout.setTextAttribute (kAllAttributesOff) ;
+      gCout += "\n" ;
     }
     if (p->mCommandString [0] != '\0') {
-      co.setForeColor (kBlueForeColor) ;
-      co.setTextAttribute (kBoldTextAttribute) ;
-      co += "--" ;
-      co += p->mCommandString ;
-      co += "=string" ;
-      co.setTextAttribute (kAllAttributesOff) ;
-      co += "\n" ;
+      gCout.setForeColor (kBlueForeColor) ;
+      gCout.setTextAttribute (kBoldTextAttribute) ;
+      gCout += "--" ;
+      gCout += p->mCommandString ;
+      gCout += "=string" ;
+      gCout.setTextAttribute (kAllAttributesOff) ;
+      gCout += "\n" ;
     }
-    co += "    " ;
-    co += p->mComment  ;
-    co += " (default value: '" ;
-    co += p->mDefaultValue ;
-    co += "')\n" ;
+    gCout += "    " ;
+    gCout += p->mComment  ;
+    gCout += " (default value: '" ;
+    gCout += p->mDefaultValue ;
+    gCout += "')\n" ;
     p = p->mNext ;
   }
 }

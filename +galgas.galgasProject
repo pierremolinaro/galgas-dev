@@ -254,7 +254,7 @@ project (3:6:3) -> "galgas" {
   %tool-source : "hand_coded_sources/LL1_computations.cpp"
   %tool-source : "hand_coded_sources/LR1_computations.cpp"
   %tool-source : "hand_coded_sources/SLR_computations.cpp"
-  %tool-source : "hand_coded_sources/check-gmp.cpp"
+  %tool-source : "hand_coded_sources/check-big-integer.cpp"
   %tool-source : "hand_coded_sources/displayUnicodeLexicalTestFunctions.cpp"
 }
 

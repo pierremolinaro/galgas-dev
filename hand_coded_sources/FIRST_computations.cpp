@@ -1,13 +1,13 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  Perform FIRST computations for pure BNF grammar.                                             
+//  Perform FIRST computations for pure BNF grammar.
 //
 //  Copyright (C) 1999, ..., 2014 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
 //  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public  *
-//  License as published by the Free Software Foundation.                                        
+//  License as published by the Free Software Foundation.
 //
 //  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
 //  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
@@ -50,7 +50,7 @@ computeFIRSTsets (const cPureBNFproductionsList & inProductionRules,
       directFIRST.orWith (left.andOp (right COMMA_HERE) COMMA_HERE) ;
     }
   }
-  
+
 //---------------------------------- Perform transitive closure of 'directFIRST'
   C_Relation FIRST = directFIRST.transitiveClosure (& outIterationsCount) ;
 
@@ -133,7 +133,7 @@ displayAndCheckFIRSTsets (C_HTMLString & ioHTMLFileContents,
   const C_Relation ntInError_relation = ntToCheck_relation
     .andOp (inUsefulSymbols COMMA_HERE)
     .andOp (~(FIRST_with_empty_relation.relationByDeletingLastVariable (HERE)) COMMA_HERE)
-  ; 
+  ;
   const uint64_t ntInErrorCount = ntInError_relation.value64Count () ;
 
 //--- Display nonterminal symbols in error
@@ -172,13 +172,13 @@ displayAndCheckFIRSTsets (C_HTMLString & ioHTMLFileContents,
   }
   if (inVerboseOptionOn) {
     if (ntInErrorCount == 0) {
-      co += "ok.\n" ;
+      gCout += "ok.\n" ;
     }else{
-      co += "error.\n" ;
+      gCout += "error.\n" ;
     }
-    co.flush () ;
+    gCout.flush () ;
   }
-  return ntInErrorCount == 0 ; 
+  return ntInErrorCount == 0 ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -198,8 +198,8 @@ FIRST_computations (const cPureBNFproductionsList & inPureBNFproductions,
   const C_RelationConfiguration vocabularyConfiguration = inUsefulSymbols.configuration () ;
 //--- Console display
   if (inVerboseOptionOn) {
-    co += "  FIRST sets... " ;
-    co.flush () ;
+    gCout += "  FIRST sets... " ;
+    gCout.flush () ;
   }
 //--- Print in BNF file
   if (inPopulateHTMLHelperString) {
