@@ -84,6 +84,9 @@ class GALGAS_location : public AC_GALGAS_root {
   public: GALGAS_location (const GALGAS_location & inSource) ;
   public: GALGAS_location & operator = (const GALGAS_location & inSource) ;
 
+//--------------------------------- Destructor
+  public: virtual ~ GALGAS_location (void) ;
+
 //--------------------------------- Native constructor
   public: GALGAS_location (const LocationInSource & inStartLocationInSource,
                            const LocationInSource & inEndLocationInSource,
