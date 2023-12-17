@@ -752,7 +752,7 @@ void AC_GALGAS_sortedlist::createNewEmptySortedList (LOCATION_ARGS) {
 void cSharedSortedListRoot::description (C_String & ioString,
                                          const int32_t inIndentation) const {
   ioString += " (" ;
-  ioString += cStringWithUnsigned (mCount) ;
+  ioString.appendUnsigned (mCount) ;
   ioString += " object" ;
   ioString += ((mCount > 1) ? "s" : "") ;
   ioString += "): " ;
@@ -762,7 +762,7 @@ void cSharedSortedListRoot::description (C_String & ioString,
     ioString += "\n" ;
     ioString.writeStringMultiple ("| ", inIndentation) ;
     ioString += "|-at " ;
-    ioString += cStringWithUnsigned (idx) ;
+    ioString.appendUnsigned (idx) ;
     p->mProperties.description (ioString, inIndentation + 1) ;
     p = p->mNextPtr ;
     idx ++ ;

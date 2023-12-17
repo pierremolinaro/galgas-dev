@@ -192,7 +192,7 @@ void GALGAS_sint::description (C_String & ioString,
                                const int32_t /* inIndentation */) const {
   ioString += "<@sint:" ;
   if (isValid ()) {
-    ioString += cStringWithSigned (mSIntValue) ;
+    ioString.appendSigned (mSIntValue) ;
   }else{
     ioString += "not built" ;
   }

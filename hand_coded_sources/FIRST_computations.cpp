@@ -103,9 +103,9 @@ displayAndCheckFIRSTsets (C_HTMLString & ioHTMLFileContents,
   if (inPopulateHTMLHelperString) {
     ioHTMLFileContents.outputRawData ("<p>") ;
     ioHTMLFileContents += "Calculus completed in " ;
-    ioHTMLFileContents += cStringWithSigned (inIterationsCount) ;
+    ioHTMLFileContents.appendSigned (inIterationsCount) ;
     ioHTMLFileContents += " iterations, " ;
-    ioHTMLFileContents += cStringWithUnsigned (m) ;
+    ioHTMLFileContents.appendUnsigned (m) ;
     ioHTMLFileContents += " values ;\n"
                           "'$$' means the nonterminal can be derived to empty string (see step 4).\n" ;
     ioHTMLFileContents.outputRawData ("</p>") ;
@@ -153,7 +153,7 @@ displayAndCheckFIRSTsets (C_HTMLString & ioHTMLFileContents,
     }else{
       ioHTMLFileContents.outputRawData ("<span class=\"error\">") ;
       ioHTMLFileContents += "Error : " ;
-      ioHTMLFileContents += cStringWithUnsigned (ntInErrorCount) ;
+      ioHTMLFileContents.appendUnsigned (ntInErrorCount) ;
       ioHTMLFileContents += " nonterminal symbol" ;
       ioHTMLFileContents += ((ntInErrorCount>1) ? " has" : "s have") ;
       ioHTMLFileContents += " an empty FIRST :" ;

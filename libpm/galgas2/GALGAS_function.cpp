@@ -168,11 +168,11 @@ GALGAS_object GALGAS_function::getter_invoke (const GALGAS_objectlist & inObject
     errorMessage += "the '" ;
     errorMessage += mFunctionDescriptor->mFunctionName ;
     errorMessage += "' function is called with " ;
-    errorMessage += cStringWithUnsigned (argumentsArray.count ()) ;
+    errorMessage.appendUnsigned (argumentsArray.count ()) ;
     errorMessage += " actual parameter" ;
     errorMessage += ((argumentsArray.count () > 1) ? "s" : "") ;
     errorMessage += ", but its header requires " ;
-    errorMessage += cStringWithUnsigned (mFunctionDescriptor->mParameterCount) ;
+    errorMessage.appendUnsigned (mFunctionDescriptor->mParameterCount) ;
     inCompiler->semanticErrorAtLocation (inErrorLocation, errorMessage, TC_Array <C_FixItDescription> () COMMA_THERE) ;
   }
 //--- Check parameters
@@ -189,7 +189,7 @@ GALGAS_object GALGAS_function::getter_invoke (const GALGAS_objectlist & inObject
       if (! ok) {
         C_String errorMessage ;
         errorMessage += "the actual parameter #" ;
-        errorMessage += cStringWithUnsigned (i) ;
+        errorMessage.appendUnsigned (i) ;
         errorMessage += " of the '" ;
         errorMessage += mFunctionDescriptor->mFunctionName ;
         errorMessage += "' function call has the '@" ;

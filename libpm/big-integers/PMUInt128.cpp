@@ -184,7 +184,7 @@ C_String PMUInt128::decimalString (void) const {
       value.divideBy (1000, remainder) ;
       values.appendObject (remainder) ;
     }
-    result = cStringWithUnsigned (values.lastObject (HERE)) ;
+    result.appendUnsigned (values.lastObject (HERE)) ;
     for (int32_t i=values.count () - 2 ; i>=0 ; i--) {
       char s [16] ;
       snprintf (s, 16, " %03u", values (i COMMA_HERE)) ;

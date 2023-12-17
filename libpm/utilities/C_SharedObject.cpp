@@ -131,7 +131,7 @@ void C_SharedObject::retainRelease (const C_SharedObject * inObjectToRetain,
   void C_SharedObject::checkAllObjectsHaveBeenReleased (void) {
     if (gObjectCurrentCount != 0) {
       gCout += "Warning: " ;
-      gCout += cStringWithUnsigned (gObjectCurrentCount) ;
+      gCout.appendUnsigned (gObjectCurrentCount) ;
       gCout += " object" ;
       gCout += ((gObjectCurrentCount > 1) ? "s have" : " has") ;
       gCout += " not been released:\n" ;
@@ -140,9 +140,9 @@ void C_SharedObject::retainRelease (const C_SharedObject * inObjectToRetain,
         gCout += "- object declared in '" ;
         gCout += p->mCreationFile ;
         gCout += "', line " ;
-        gCout += cStringWithSigned (p->mCreationLine) ;
+        gCout.appendSigned (p->mCreationLine) ;
         gCout += " (retain count: " ;
-        gCout += cStringWithSigned (p->mRetainCount) ;
+        gCout.appendSigned (p->mRetainCount) ;
         gCout += ")\n" ;
         p = p->mPtrToNextObject ;
       }

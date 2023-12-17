@@ -134,9 +134,9 @@ void GALGAS_location::description (C_String & ioString,
       ioString += "'" ;
     }
     ioString += ":" ;
-    ioString += cStringWithSigned (mStartLocationInSource.lineNumber ()) ;
+    ioString.appendSigned (mStartLocationInSource.lineNumber ()) ;
     ioString += ":" ;
-    ioString += cStringWithSigned (mStartLocationInSource.columnNumber ()) ;
+    ioString.appendSigned (mStartLocationInSource.columnNumber ()) ;
   }else{
     ioString += "not built" ;
   }
@@ -156,9 +156,9 @@ GALGAS_string GALGAS_location::getter_startLocationString (C_Compiler * inCompil
       s += "file '" ;
       s += mSourceText.sourceFilePath () ;
       s += "', line ";
-      s += cStringWithSigned (mStartLocationInSource.lineNumber ()) ;
+      s.appendSigned (mStartLocationInSource.lineNumber ()) ;
       s += ":";
-      s += cStringWithSigned (mStartLocationInSource.columnNumber ()) ;
+      s.appendSigned (mStartLocationInSource.columnNumber ()) ;
       result = GALGAS_string (s) ;
     }
   }
@@ -178,10 +178,10 @@ GALGAS_string GALGAS_location::getter_endLocationString (C_Compiler * inCompiler
       C_String s ;
       s += "file '" ;
       s += mSourceText.sourceFilePath () ;
-      s +=  "', line " ;
-      s +=  cStringWithSigned (mEndLocationInSource.lineNumber ()) ;
-      s +=  ":" ;
-      s += cStringWithSigned (mEndLocationInSource.columnNumber ()) ;
+      s += "', line " ;
+      s.appendSigned (mEndLocationInSource.lineNumber ()) ;
+      s += ":" ;
+      s.appendSigned (mEndLocationInSource.columnNumber ()) ;
       result = GALGAS_string (s) ;
     }
   }

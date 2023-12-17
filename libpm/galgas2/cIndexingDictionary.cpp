@@ -198,13 +198,13 @@ void cIndexingDictionary::addIndexedKey (const uint32_t inIndexingKind,
   cIndexEntryNode * entryNode = findOrAddEntry (mEntryRoot, inIndexedKey, extension) ;
 //--- Register index
   C_String entryDescriptor ;
-  entryDescriptor += cStringWithUnsigned (inIndexingKind) ;
+  entryDescriptor.appendUnsigned (inIndexingKind) ;
   entryDescriptor += ":" ;
-  entryDescriptor += cStringWithUnsigned (inTokenLineInSource) ;
+  entryDescriptor.appendUnsigned (inTokenLineInSource) ;
   entryDescriptor += ":" ;
-  entryDescriptor += cStringWithUnsigned (inTokenLocationInSource) ;
+  entryDescriptor.appendUnsigned (inTokenLocationInSource) ;
   entryDescriptor += ":" ;
-  entryDescriptor += cStringWithUnsigned (inTokenLengthInSource) ;
+  entryDescriptor.appendUnsigned (inTokenLengthInSource) ;
   entryDescriptor += ":" ;
   entryDescriptor += inSourceFilePath ;
   entryNode->mDescriptorArray.appendObject (entryDescriptor) ;

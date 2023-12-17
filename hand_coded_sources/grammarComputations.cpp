@@ -113,13 +113,13 @@ engendrerAppelProduction (const int16_t nombreDeParametres,
   fichierCPP += "_" ;
   fichierCPP += inVocabulary.getSymbol (mLeftNonTerminalIndex COMMA_HERE).identifierRepresentation () ;
   fichierCPP += "_i" ;
-  fichierCPP += cStringWithUnsigned (mProductionIndex) ;
+  fichierCPP.appendUnsigned (mProductionIndex) ;
   fichierCPP += "_" ;
   fichierCPP += inAltName.identifierRepresentation () ;
   fichierCPP += "(" ;
   for (int32_t i=1 ; i<nombreDeParametres ; i++) {
      fichierCPP += "parameter_" ;
-    fichierCPP += cStringWithSigned (i)  ;
+    fichierCPP.appendSigned (i)  ;
     fichierCPP += ", " ;
   }
   if (inSyntaxDirectedTranslationVarName.length () > 0) {
@@ -164,9 +164,9 @@ searchForIdenticalProductions (const cPureBNFproductionsList & productions,
       if (identiques) {
         ok = false ;
         ioHTMLFileContents += "  Error : productions " ;
-        ioHTMLFileContents += cStringWithSigned (i) ;
+        ioHTMLFileContents.appendSigned (i) ;
         ioHTMLFileContents += " and " ;
-        ioHTMLFileContents += cStringWithSigned (j) ;
+        ioHTMLFileContents.appendSigned (j) ;
         ioHTMLFileContents += " are identical.\n" ;
       }
     }
@@ -380,7 +380,7 @@ analyzeGrammar (C_Compiler * inCompiler,
     outHTMLHelperFileContents.appendCppTitleComment ("  Pure BNF productions list", "title") ;
     printPureBNFgrammarInBNFfile (outHTMLHelperFileContents, vocabulary, pureBNFproductions) ;
     if (verboseOptionOn) {
-      gCout += cStringWithSigned (pureBNFproductions.mProductionArray.count ()) ;
+      gCout.appendSigned (pureBNFproductions.mProductionArray.count ()) ;
       gCout += ".\n" ;
       gCout.flush () ;
     }
@@ -408,26 +408,26 @@ analyzeGrammar (C_Compiler * inCompiler,
   //--- Enregistrer les caracteristiques de la grammaire
     outHTMLHelperFileContents += "For information :\n" ;
     outHTMLHelperFileContents.outputRawData ("<ul><li>") ;
-    outHTMLHelperFileContents += cStringWithSigned ((int32_t)(vocabulary.getTerminalSymbolsCount () - 1)) ;
+    outHTMLHelperFileContents.appendSigned ((int32_t)(vocabulary.getTerminalSymbolsCount () - 1)) ;
     outHTMLHelperFileContents += " terminal symbols, numbered from 0 to " ;
-    outHTMLHelperFileContents += cStringWithSigned ((int32_t)(vocabulary.getTerminalSymbolsCount () - 2)) ;
+    outHTMLHelperFileContents.appendSigned ((int32_t)(vocabulary.getTerminalSymbolsCount () - 2)) ;
     outHTMLHelperFileContents += " ;" ;
     outHTMLHelperFileContents.outputRawData ("</li>\n<li>") ;
     outHTMLHelperFileContents += " the 'empty string' symbol '$$' is numbered " ;
-    outHTMLHelperFileContents += cStringWithSigned (vocabulary.getEmptyStringTerminalSymbolIndex ()) ;
+    outHTMLHelperFileContents.appendSigned (vocabulary.getEmptyStringTerminalSymbolIndex ()) ;
     outHTMLHelperFileContents += " ;" ;
     outHTMLHelperFileContents.outputRawData ("</li>\n<li>") ;
-    outHTMLHelperFileContents += cStringWithSigned (vocabulary.getNonTerminalSymbolsCount ()) ;
+    outHTMLHelperFileContents.appendSigned (vocabulary.getNonTerminalSymbolsCount ()) ;
     outHTMLHelperFileContents += " nonterminal symbols in the pure BNF grammar, numbered from " ;
-    outHTMLHelperFileContents += cStringWithSigned (vocabulary.getTerminalSymbolsCount ()) ;
+    outHTMLHelperFileContents.appendSigned (vocabulary.getTerminalSymbolsCount ()) ;
     outHTMLHelperFileContents += " to " ;
-    outHTMLHelperFileContents += cStringWithSigned ((int32_t)(vocabulary.getAllSymbolsCount () - 1)) ;
+    outHTMLHelperFileContents.appendSigned ((int32_t)(vocabulary.getAllSymbolsCount () - 1)) ;
     outHTMLHelperFileContents += " ;" ;
     outHTMLHelperFileContents.outputRawData ("</li>\n<li>") ;
     outHTMLHelperFileContents += "whole vocabulary : " ;
-    outHTMLHelperFileContents += cStringWithSigned (vocabulary.getAllSymbolsCount ()) ;
+    outHTMLHelperFileContents.appendSigned (vocabulary.getAllSymbolsCount ()) ;
     outHTMLHelperFileContents += " elements, " ;
-    outHTMLHelperFileContents += cStringWithUnsigned (vocabularyBDDType.BDDBitCount ()) ;
+    outHTMLHelperFileContents.appendUnsigned (vocabularyBDDType.BDDBitCount ()) ;
     outHTMLHelperFileContents += " bits for BDDs." ;
     outHTMLHelperFileContents.outputRawData ("</li>\n</ul>\n") ;
   }
@@ -590,7 +590,7 @@ analyzeGrammar (C_Compiler * inCompiler,
   if (errorFlag != kNoError) {
     C_String s ;
     s += "ENDING ON ERROR, STEP" ;
-    s += cStringWithSigned ((uint16_t) errorFlag) ;
+    s.appendSigned ((uint16_t) errorFlag) ;
     outHTMLHelperFileContents.appendCppTitleComment (s, "title") ;
     C_String errorMessage  ;
     if (inPopulateHTMLHelperString) {
@@ -610,7 +610,7 @@ analyzeGrammar (C_Compiler * inCompiler,
     while (warningFlag != 0) {
       if ((warningFlag & 1) != 0) {
         s += " " ;
-        s += cStringWithSigned (i) ;
+        s.appendSigned (i) ;
       }
       warningFlag >>= 1 ;
       i ++ ;

@@ -239,11 +239,11 @@ void cSharedGraph::copyFrom (const cSharedGraph * inSource) {
 void cSharedGraph::description (C_String & ioString,
                                 const int32_t /* inIndentation */) const {
   ioString += " (" ;
-  ioString += cStringWithUnsigned (mDirectedGraph.nodeCount ()) ;
+  ioString.appendUnsigned (mDirectedGraph.nodeCount ()) ;
   ioString += " node" ;
   ioString += ((mDirectedGraph.nodeCount () > 1) ? "s" : "") ;
   ioString += ", " ;
-  ioString += cStringWithUnsigned (mDirectedGraph.edgeCount ()) ;
+  ioString.appendUnsigned (mDirectedGraph.edgeCount ()) ;
   ioString += " edge" ;
   ioString += ((mDirectedGraph.edgeCount () > 1) ? "s" : "") ;
   ioString += ")" ;
@@ -1218,7 +1218,7 @@ void AC_GALGAS_graph::internalTopologicalSort (capCollectionElementArray & outSo
       s += "Cannot apply graph topologicalSort: there " ;
       if (undefinedNodeCount > 1) {
         s += "are " ;
-        s += cStringWithUnsigned (undefinedNodeCount) ;
+        s.appendUnsigned (undefinedNodeCount) ;
         s += " undefined nodes" ;
       }else{
         s += "is 1 undefined node" ;
@@ -1289,7 +1289,7 @@ void AC_GALGAS_graph::internalDepthFirstTopologicalSort (capCollectionElementArr
       s += "Cannot apply graph topologicalSort: there " ;
       if (undefinedNodeCount > 1) {
         s += "are " ;
-        s += cStringWithUnsigned (undefinedNodeCount) ;
+        s.appendUnsigned (undefinedNodeCount) ;
         s += " undefined nodes" ;
       }else{
         s += "is 1 undefined node" ;

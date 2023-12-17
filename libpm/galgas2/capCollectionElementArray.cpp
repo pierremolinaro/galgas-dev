@@ -204,9 +204,9 @@ void capCollectionElementArray::insertObjectAtIndex (const capCollectionElement 
     mSharedRoot->mCount ++ ;
   }else{
     C_String s = "insertAtIndex: insertion index (" ;
-    s += cStringWithUnsigned (inInsertionIndex) ;
+    s.appendUnsigned (inInsertionIndex) ;
     s += ") > length (" ;
-    s += cStringWithUnsigned (count ()) ;
+    s.appendUnsigned (count ()) ;
     s += ")" ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }
@@ -230,9 +230,9 @@ void capCollectionElementArray::removeObjectAtIndex (capCollectionElement & outO
     mSharedRoot->mArray [mSharedRoot->mCount].drop () ;
   }else{
     C_String s = "removeObjectAtIndex: index (" ;
-    s += cStringWithUnsigned (inIndex) ;
+    s.appendUnsigned (inIndex) ;
     s += ") >= length (" ;
-    s += cStringWithUnsigned (count ()) ;
+    s.appendUnsigned (count ()) ;
     s += ")" ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }
@@ -415,7 +415,7 @@ void capCollectionElementArray::description (C_String & ioString,
     ioString += "\n" ;
     ioString.writeStringMultiple ("| ", inIndentation) ;
     ioString += "|-at " ;
-    ioString += cStringWithUnsigned (i) ;
+    ioString.appendUnsigned (i) ;
     mSharedRoot->mArray [i].description (ioString, inIndentation + 1) ;
   }
 }
@@ -432,9 +432,9 @@ void capCollectionElementArray::subListToIndex (capCollectionElementArray & outS
   if (inIndex >= count ()) {
     C_String s ;
     s += "Cannot get a sub list from index " ;
-    s += cStringWithUnsigned (inIndex) ;
+    s.appendUnsigned (inIndex) ;
     s += " with a list of length " ;
-    s += cStringWithUnsigned (count ()) ;
+    s.appendUnsigned (count ()) ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
     const uint32_t length = inIndex + 1 ;
@@ -459,11 +459,11 @@ void capCollectionElementArray::subListWithRange (capCollectionElementArray & ou
   if ((inStartIndex + inLength) > count ()) {
     C_String s ;
     s += "Cannot get a sub list of range [" ;
-    s += cStringWithUnsigned (inStartIndex) ;
+    s.appendUnsigned (inStartIndex) ;
     s += ":" ;
-    s += cStringWithUnsigned (inLength) ;
+    s.appendUnsigned (inLength) ;
     s += "] from a list of length " ;
-    s += cStringWithUnsigned (count ()) ;
+    s.appendUnsigned (count ()) ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
     outSubList.setCapacity (inLength) ;
@@ -486,9 +486,9 @@ void capCollectionElementArray::subListFromIndex (capCollectionElementArray & ou
   if (inIndex > count ()) {
     C_String s ;
     s += "Cannot get a sub list from index " ;
-    s += cStringWithUnsigned (inIndex) ;
+    s.appendUnsigned (inIndex) ;
     s += " with a list of length " ;
-    s += cStringWithUnsigned (count ()) ;
+    s.appendUnsigned (count ()) ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
     const uint32_t length = count () - inIndex ;

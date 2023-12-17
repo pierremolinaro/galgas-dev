@@ -973,9 +973,9 @@ GALGAS_char GALGAS_string::getter_characterAtIndex (const GALGAS_uint & inIndex,
     if (idx >= stringLength) {
       C_String message ;
       message += "string index (" ;
-      message += cStringWithSigned (idx) ;
+      message.appendSigned (idx) ;
       message += ") too large (string length: " ;
-      message += cStringWithSigned (stringLength) ;
+      message.appendSigned (stringLength) ;
       message += ")" ;
       inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
     }else{
@@ -2034,9 +2034,9 @@ void GALGAS_string::setter_setCharacterAtIndex (GALGAS_char inCharacter,
     if (idx >= stringLength) {
       C_String message ;
       message += "string index (" ;
-      message += cStringWithSigned (idx) ;
+      message.appendSigned (idx) ;
       message += ") too large (string length: " ;
-      message += cStringWithSigned (stringLength) ;
+      message.appendSigned (stringLength) ;
       message += ")" ;
       inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
     }else{
@@ -2057,9 +2057,9 @@ void GALGAS_string::setter_insertCharacterAtIndex (GALGAS_char inCharacter,
     if (idx > stringLength) {
       C_String message ;
       message += "string index (" ;
-      message += cStringWithSigned (idx) ;
+      message.appendSigned (idx) ;
       message += ") too large (string length: " ;
-      message += cStringWithSigned (stringLength) ;
+      message.appendSigned (stringLength) ;
       message += ")" ;
       inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
     }else{
@@ -2081,9 +2081,9 @@ void GALGAS_string::setter_removeCharacterAtIndex (GALGAS_char & outChar,
     if (idx >= stringLength) {
       C_String message ;
       message += "string index (" ;
-      message += cStringWithSigned (idx) ;
+      message.appendSigned (idx) ;
       message += ") too large (string length: " ;
-      message += cStringWithSigned (stringLength) ;
+      message.appendSigned (stringLength) ;
       message += ")" ;
       inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
     }else{

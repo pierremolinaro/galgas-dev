@@ -84,7 +84,7 @@ displayNonterminalSymbolsFollowedByEmpty (const C_Relation & inVocabularyFollowe
   if (inPopulateHTMLHelperString) {
     ioHTMLFileContents.outputRawData ("<p><a name=\"follow_by_empty\"></a>") ;
     ioHTMLFileContents += "Calculus completed in " ;
-    ioHTMLFileContents += cStringWithSigned (inIterationsCount) ;
+    ioHTMLFileContents.appendSigned (inIterationsCount) ;
     ioHTMLFileContents += " iterations.\n" ;
     ioHTMLFileContents.outputRawData ("</p><p>") ;
     if (n == 1) {

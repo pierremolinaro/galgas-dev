@@ -95,7 +95,7 @@ void AC_GALGAS_list::description (C_String & ioString,
   ioString += "<list @" ;
   ioString += staticTypeDescriptor ()->mGalgasTypeName ;
   ioString += " (" ;
-  ioString += cStringWithUnsigned (count()) ;
+  ioString.appendUnsigned (count()) ;
   ioString += " object" ;
   ioString += ((count() > 1) ? "s" : "") ;
   ioString += "):" ;
@@ -252,9 +252,9 @@ capCollectionElement AC_GALGAS_list::readObjectAtIndex (const GALGAS_uint & inIn
       result = mSharedArray.objectAtIndex (index COMMA_THERE) ;
     }else{
       C_String s = "objectAtIndex: index (" ;
-      s += cStringWithUnsigned (index) ;
+      s.appendUnsigned (index) ;
       s += ") >= length (" ;
-      s += cStringWithUnsigned (count ()) ;
+      s.appendUnsigned (count ()) ;
       s += ")" ;
       inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
     }
@@ -276,9 +276,9 @@ cCollectionElement * AC_GALGAS_list::uniquelyReferencedPointerAtIndex (const GAL
         macroUniqueSharedObject (result) ;
       }else{
         C_String s = "objectAtIndex: index (" ;
-        s += cStringWithUnsigned (index) ;
+        s.appendUnsigned (index) ;
         s += ") >= length (" ;
-        s += cStringWithUnsigned (count ()) ;
+        s.appendUnsigned (count ()) ;
         s += ")" ;
         inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
       }
@@ -569,7 +569,7 @@ void cSharedListMapRoot::internalDescription (cListMapNode * inNode,
     ioString += "\n" ;
     ioString.writeStringMultiple ("| ", inIndentation) ;
     ioString += "|-at " ;
-    ioString += cStringWithUnsigned (ioIdx) ;
+    ioString.appendUnsigned (ioIdx) ;
     ioString += ": key '" ;
     ioString += inNode->mKey ;
     ioString += "' " ;
@@ -584,7 +584,7 @@ void cSharedListMapRoot::internalDescription (cListMapNode * inNode,
 void cSharedListMapRoot::description (C_String & ioString,
                                       const int32_t inIndentation) const {
   ioString += " (" ;
-  ioString += cStringWithUnsigned (count ()) ;
+  ioString.appendUnsigned (count ()) ;
   ioString += " object" ;
   ioString += ((count () > 1) ? "s" : "") ;
   ioString += "): " ;
@@ -601,7 +601,7 @@ void AC_GALGAS_listmap::description (C_String & ioString,
   ioString += staticTypeDescriptor ()->mGalgasTypeName ;
   if (isValid ()) {
     ioString += ": " ;
-    ioString += cStringWithUnsigned (count()) ;
+    ioString.appendUnsigned (count()) ;
     ioString += " object" ;
     ioString += ((count() > 1) ? "s" : "") ;
     mSharedListMap->description (ioString, inIndentation) ;

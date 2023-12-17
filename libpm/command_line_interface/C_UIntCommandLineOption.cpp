@@ -145,7 +145,7 @@ void C_UIntCommandLineOption::printUIntOptions (void) {
       gCout.setForeColor (kBlueForeColor) ;
       gCout.setTextAttribute (kBoldTextAttribute) ;
       gCout += "-" ;
-      gCout += cStringWithCharacter (p->mCommandChar) ;
+      gCout.appendCharacter (p->mCommandChar) ;
       gCout += "=number" ;
       gCout.setTextAttribute (kAllAttributesOff) ;
       gCout += "\n" ;
@@ -162,7 +162,7 @@ void C_UIntCommandLineOption::printUIntOptions (void) {
     gCout += "    " ;
     gCout += p->mComment ;
     gCout += " (default value: " ;
-    gCout += cStringWithUnsigned (p->mDefaultValue) ;
+    gCout.appendUnsigned (p->mDefaultValue) ;
     gCout += ")\n" ;
     p = p->mNext ;
   }

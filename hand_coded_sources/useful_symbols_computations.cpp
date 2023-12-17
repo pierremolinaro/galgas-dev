@@ -71,7 +71,7 @@ static bool displayUnusefulSymbols (C_Compiler * inCompiler,
                                     const bool inVerboseOptionOn) {
   ioHTMLFileContents.outputRawData ("<p><a name=\"useful_symbols\"></a>") ;
   ioHTMLFileContents += "Calculus completed in " ;
-  ioHTMLFileContents += cStringWithSigned (inIterationCount) ;
+  ioHTMLFileContents.appendSigned (inIterationCount) ;
   ioHTMLFileContents += " iterations.\n" ;
   ioHTMLFileContents.outputRawData ("</p>") ;
 

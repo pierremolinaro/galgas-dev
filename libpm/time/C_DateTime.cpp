@@ -225,7 +225,7 @@ void operator += (AC_OutputStream & inStream,
   const int32_t dayOfMonth = inDate.getDayOfMonth () ;
   inStream += inDate.getMonthName () ;
   inStream += " " ;
-  inStream += cStringWithSigned (dayOfMonth) ;
+  inStream.appendSigned (dayOfMonth) ;
   switch (dayOfMonth) {
   case 1 :
     inStream += "st" ;
@@ -241,13 +241,13 @@ void operator += (AC_OutputStream & inStream,
     break ;
   }
   inStream += ", " ;
-  inStream += cStringWithSigned (inDate.getYearCount ()) ;
+  inStream.appendSigned (inDate.getYearCount ()) ;
   inStream += ", at " ;
-  inStream += cStringWithSigned (inDate.getHourOfDay ()) ;
+  inStream.appendSigned (inDate.getHourOfDay ()) ;
   inStream += "h" ;
-  inStream += cStringWithSigned (inDate.getMinuteOfHour ()) ;
+  inStream.appendSigned (inDate.getMinuteOfHour ()) ;
   inStream += "\'" ;
-  inStream += cStringWithSigned (inDate.getSecondOfMinute ()) ;
+  inStream.appendSigned (inDate.getSecondOfMinute ()) ;
   inStream += "\"" ;
 }
 

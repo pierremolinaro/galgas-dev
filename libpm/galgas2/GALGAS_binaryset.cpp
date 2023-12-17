@@ -650,9 +650,9 @@ GALGAS_stringlist GALGAS_binaryset::getter_compressedStringValueList (const GALG
     if (actualVariableCount > variableCount) {
       C_String message ;
       message += "variable count argument (" ;
-      message += cStringWithSigned (variableCount) ;
+      message.appendSigned (variableCount) ;
       message += ") is lower than actual variable count (" ;
-      message += cStringWithSigned (actualVariableCount) ;
+      message.appendSigned (actualVariableCount) ;
       message += "); it should be greater or equal" ;
       inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
     }else{

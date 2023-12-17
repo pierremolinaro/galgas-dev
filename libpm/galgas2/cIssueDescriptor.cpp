@@ -85,13 +85,13 @@ void cIssueDescriptor::appendToJSONstring (C_String & ioJSONstring, const bool i
   ioJSONstring += mFile.lastPathComponent () ;
   ioJSONstring += "\",\n" ;
   ioJSONstring += "    \"LINE\"  : " ;
-  ioJSONstring += cStringWithSigned (mLine) ;
+  ioJSONstring.appendSigned (mLine) ;
   ioJSONstring += ",\n" ;
   ioJSONstring += "    \"START_COLUMN\"  : " ;
-  ioJSONstring += cStringWithSigned (mStartColumn) ;
+  ioJSONstring.appendSigned (mStartColumn) ;
   ioJSONstring += ",\n" ;
   ioJSONstring += "    \"END_COLUMN\"  : " ;
-  ioJSONstring += cStringWithSigned (mEndColumn) ;
+  ioJSONstring.appendSigned (mEndColumn) ;
   ioJSONstring += ",\n" ;
   ioJSONstring += "    \"MESSAGE\" : \"" ;
   ioJSONstring += s ;

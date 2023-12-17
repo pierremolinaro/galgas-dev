@@ -157,7 +157,7 @@ class C_UnsignedTypeInRelation : public C_RelationSingleType::cType {
 
   public: virtual C_String nameForValue (const uint32_t inIndex
                                           COMMA_UNUSED_LOCATION_ARGS) const {
-    return cStringWithUnsigned (inIndex) ;
+    return stringWithUnsigned (inIndex) ;
   }
 
 //--- Attributes

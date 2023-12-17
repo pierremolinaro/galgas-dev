@@ -1030,7 +1030,7 @@ display (const cPureBNFproductionsList & inProductionRules,
   for (int32_t i=0 ; i<m_LR1_items_sets_array.count () ; i++) {
     inHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\">") ;
     inHTMLfile += "S" ;
-    inHTMLfile += cStringWithSigned (i) ;
+    inHTMLfile.appendSigned (i) ;
     inHTMLfile.outputRawData ("</td><td><code>") ;
     m_LR1_items_sets_array (i COMMA_HERE).display (inProductionRules, inVocabulary, inHTMLfile) ;
     inHTMLfile.outputRawData ("</code></td></tr>") ;
@@ -1139,7 +1139,7 @@ generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
   ioCppFileContents += "static const char * gNonTerminalNames_" ;
   ioCppFileContents += inTargetFileName ;
   ioCppFileContents += " [" ;
-  ioCppFileContents += cStringWithSigned (inVocabulary.getNonTerminalSymbolsCount ()) ;
+  ioCppFileContents.appendSigned (inVocabulary.getNonTerminalSymbolsCount ()) ;
   ioCppFileContents += "] = {\n" ;
   for (int32_t i=inVocabulary.getTerminalSymbolsCount () ; i<inVocabulary.getAllSymbolsCount () ; i++) {
     ioCppFileContents += "  \"<" ;
@@ -1147,7 +1147,7 @@ generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
     ioCppFileContents += ">\"" ;
     ioCppFileContents += (((i+1)<inVocabulary.getAllSymbolsCount ()) ? "," : "") ;
     ioCppFileContents += "// Index " ;
-    ioCppFileContents += cStringWithSigned (i - inVocabulary.getTerminalSymbolsCount ()) ;
+    ioCppFileContents.appendSigned (i - inVocabulary.getTerminalSymbolsCount ()) ;
     ioCppFileContents += "\n" ;
   }
   ioCppFileContents += "} ;\n\n" ;
@@ -1174,9 +1174,9 @@ generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
   for (int32_t i=0 ; i<rowsCount ; i++) {
     startIndexArray.appendObject (startIndex) ;
     ioCppFileContents +="\n// State S" ;
-    ioCppFileContents += cStringWithSigned (i) ;
+    ioCppFileContents.appendSigned (i) ;
     ioCppFileContents += " (index = " ;
-    ioCppFileContents += cStringWithSigned (startIndex) ;
+    ioCppFileContents.appendSigned (startIndex) ;
     ioCppFileContents += ")" ;
     for (int32_t j=0 ; j<columnsCount ; j++) {
       const int32_t parameter = inSLRdecisionTable (i, j COMMA_HERE).parameter () ;
@@ -1197,11 +1197,11 @@ generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
         ioCppFileContents += ", " ;
         if (decision == cDecisionTableElement::kDecisionReduce) { // Reduce action
           ioCppFileContents += "REDUCE (" ;
-          ioCppFileContents += cStringWithSigned (parameter) ;
+          ioCppFileContents.appendSigned (parameter) ;
           ioCppFileContents += ")" ;
         }else if (decision == cDecisionTableElement::kDecisionShift) { // Shift action
           ioCppFileContents += "SHIFT (" ;
-          ioCppFileContents += cStringWithSigned (parameter) ;
+          ioCppFileContents.appendSigned (parameter) ;
           ioCppFileContents += ")" ;
         }else{ // Accept action
           ioCppFileContents += "ACCEPT" ;
@@ -1215,7 +1215,7 @@ generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
                        "static const uint32_t gActionTableIndex_" ;
   ioCppFileContents += inTargetFileName ;
   ioCppFileContents += " [" ;
-  ioCppFileContents += cStringWithSigned (rowsCount) ;
+  ioCppFileContents.appendSigned (rowsCount) ;
   ioCppFileContents += "] = {" ;
   isFirst = true ;
   for (int32_t i=0 ; i<rowsCount ; i++) {
@@ -1226,9 +1226,9 @@ generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
     }else{
       ioCppFileContents += ", " ;
     }
-    ioCppFileContents += cStringWithSigned (startIndexArray (i COMMA_HERE)) ;
+    ioCppFileContents.appendSigned (startIndexArray (i COMMA_HERE)) ;
     ioCppFileContents += "  // S" ;
-    ioCppFileContents += cStringWithSigned (i) ;
+    ioCppFileContents.appendSigned (i) ;
   }
   ioCppFileContents += "\n} ;\n\n" ;
 //--- Generate state successor table -----------------------------------------
@@ -1259,15 +1259,15 @@ generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
         ioCppFileContents += "static const int32_t gSuccessorTable_" ;
         ioCppFileContents += inTargetFileName ;
         ioCppFileContents += "_" ;
-        ioCppFileContents += cStringWithSigned (sourceState) ;
+        ioCppFileContents.appendSigned (sourceState) ;
         ioCppFileContents += " [" ;
-        ioCppFileContents += cStringWithSigned ((int32_t)(2 * stateSuccessorsCount (sourceState COMMA_HERE) + 1)) ;
+        ioCppFileContents.appendSigned ((int32_t)(2 * stateSuccessorsCount (sourceState COMMA_HERE) + 1)) ;
         ioCppFileContents += "] = {" ;
         currentSourceState = sourceState ;
       }
-      ioCppFileContents += cStringWithSigned (nonterminal) ;
+      ioCppFileContents.appendSigned (nonterminal) ;
       ioCppFileContents += ", " ;
-      ioCppFileContents += cStringWithSigned (inTransitionList (t COMMA_HERE).targetState ()) ;
+      ioCppFileContents.appendSigned (inTransitionList (t COMMA_HERE).targetState ()) ;
     }
   }
   ioCppFileContents += ", -1} ;\n\n" ;
@@ -1275,7 +1275,7 @@ generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
   ioCppFileContents += "static const int32_t * gSuccessorTable_" ;
   ioCppFileContents += inTargetFileName ;
   ioCppFileContents += " [" ;
-  ioCppFileContents += cStringWithSigned (rowsCount) ;
+  ioCppFileContents.appendSigned (rowsCount) ;
   ioCppFileContents += "] = {\n" ;
   int32_t itemInSameLineCount = 0 ;
   for (int32_t r=0 ; r<rowsCount ; r++) {
@@ -1291,7 +1291,7 @@ generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
       ioCppFileContents += "gSuccessorTable_" ;
       ioCppFileContents += inTargetFileName ;
       ioCppFileContents += "_" ;
-      ioCppFileContents += cStringWithSigned (r) ;
+      ioCppFileContents.appendSigned (r) ;
     }
   }
   ioCppFileContents += "} ;\n\n" ;
@@ -1303,16 +1303,16 @@ generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
   ioCppFileContents += "static const int32_t gProductionsTable_" ;
   ioCppFileContents += inTargetFileName ;
   ioCppFileContents += " [" ;
-  ioCppFileContents += cStringWithSigned (productionsCount) ;
+  ioCppFileContents.appendSigned (productionsCount) ;
   ioCppFileContents += " * 2] = {\n" ;
   for (int32_t p=0 ; p<productionsCount ; p++) {
     if (p > 0) {
       ioCppFileContents += ",\n" ;
     }
     ioCppFileContents += "  " ;
-    ioCppFileContents += cStringWithSigned (inProductionRules.mProductionArray (p COMMA_HERE).leftNonTerminalIndex () - columnsCount) ;
+    ioCppFileContents.appendSigned (inProductionRules.mProductionArray (p COMMA_HERE).leftNonTerminalIndex () - columnsCount) ;
     ioCppFileContents += ", " ;
-    ioCppFileContents += cStringWithSigned (inProductionRules.mProductionArray (p COMMA_HERE).derivationLength ()) ;
+    ioCppFileContents.appendSigned (inProductionRules.mProductionArray (p COMMA_HERE).derivationLength ()) ;
   }
   ioCppFileContents += "\n} ;\n\n" ;
 
@@ -1345,7 +1345,7 @@ generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
       if (first == last) {
         const int32_t ip = inProductionRules.tableauIndirectionProduction (first COMMA_HERE) ;
         ioCppFileContents += "  if (inLexique->nextProductionIndex () == " ;
-        ioCppFileContents += cStringWithSigned (ip) ;
+        ioCppFileContents.appendSigned (ip) ;
         ioCppFileContents += ") {\n" ;
         inProductionRules.mProductionArray (ip COMMA_HERE).engendrerAppelProduction (0,
                                                                     inVocabulary,
@@ -1360,7 +1360,7 @@ generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
         for (int32_t j=first ; j<=last ; j++) {
           const int32_t ip = inProductionRules.tableauIndirectionProduction (j COMMA_HERE) ;
           ioCppFileContents += "  case " ;
-          ioCppFileContents += cStringWithSigned (ip) ;
+          ioCppFileContents.appendSigned (ip) ;
           ioCppFileContents += " :\n    " ;
           inProductionRules.mProductionArray (ip COMMA_HERE).engendrerAppelProduction (0,
                                                                       inVocabulary,
@@ -1398,7 +1398,7 @@ generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
       if (first == last) {
         const int32_t ip = inProductionRules.tableauIndirectionProduction (first COMMA_HERE) ;
         ioCppFileContents += "  if (inLexique->nextProductionIndex () == " ;
-        ioCppFileContents += cStringWithSigned (ip) ;
+        ioCppFileContents.appendSigned (ip) ;
         ioCppFileContents += ") {\n" ;
         inProductionRules.mProductionArray (ip COMMA_HERE).engendrerAppelProduction (0,
                                                                     inVocabulary,
@@ -1414,7 +1414,7 @@ generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
         for (int32_t j=first ; j<=last ; j++) {
           const int32_t ip = inProductionRules.tableauIndirectionProduction (j COMMA_HERE) ;
           ioCppFileContents += "  case " ;
-          ioCppFileContents += cStringWithSigned (ip) ;
+          ioCppFileContents.appendSigned (ip) ;
           ioCppFileContents += " :\n    " ;
           inProductionRules.mProductionArray (ip COMMA_HERE).engendrerAppelProduction (0,
                                                                       inVocabulary,
@@ -1462,7 +1462,7 @@ generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
         }
         if (first >= 0) {
           ioCppFileContents += " parameter_" ;
-          ioCppFileContents += cStringWithSigned (numeroParametre) ;
+          ioCppFileContents.appendSigned (numeroParametre) ;
         }
         parametre.gotoNextObject () ;
         ioCppFileContents += ",\n                                " ;
@@ -1484,7 +1484,7 @@ generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
         if (first == last) {
           const int32_t ip = inProductionRules.tableauIndirectionProduction (first COMMA_HERE) ;
           ioCppFileContents += "  if (inLexique->nextProductionIndex () == " ;
-          ioCppFileContents += cStringWithSigned (ip) ;
+          ioCppFileContents.appendSigned (ip) ;
           ioCppFileContents += ") {\n" ;
           inProductionRules.mProductionArray (ip COMMA_HERE).engendrerAppelProduction (numeroParametre,
                                                                       inVocabulary,
@@ -1499,7 +1499,7 @@ generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
           for (int32_t j=first ; j<=last ; j++) {
             const int32_t ip = inProductionRules.tableauIndirectionProduction (j COMMA_HERE) ;
             ioCppFileContents += "  case " ;
-            ioCppFileContents += cStringWithSigned (ip) ;
+            ioCppFileContents.appendSigned (ip) ;
             ioCppFileContents += " :\n    " ;
             inProductionRules.mProductionArray (ip COMMA_HERE).engendrerAppelProduction (numeroParametre,
                                                                         inVocabulary,
@@ -1599,7 +1599,7 @@ generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
           default : break ;
           }
           ioCppFileContents += " parameter_" ;
-          ioCppFileContents += cStringWithSigned (numeroParametre) ;
+          ioCppFileContents.appendSigned (numeroParametre) ;
           parametre.gotoNextObject () ;
           numeroParametre ++ ;
         }
@@ -1628,7 +1628,7 @@ generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
         numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
           ioCppFileContents += "parameter_" ;
-          ioCppFileContents += cStringWithSigned (numeroParametre) ;
+          ioCppFileContents.appendSigned (numeroParametre) ;
           ioCppFileContents += ", " ;
           parametre.gotoNextObject () ;
           numeroParametre ++ ;
@@ -1696,7 +1696,7 @@ generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
           default : break ;
           }
           ioCppFileContents += " parameter_" ;
-          ioCppFileContents += cStringWithSigned (numeroParametre) ;
+          ioCppFileContents.appendSigned (numeroParametre) ;
           parametre.gotoNextObject () ;
           numeroParametre ++ ;
         }
@@ -1721,7 +1721,7 @@ generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
         numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
           ioCppFileContents += "parameter_" ;
-          ioCppFileContents += cStringWithSigned (numeroParametre) ;
+          ioCppFileContents.appendSigned (numeroParametre) ;
           ioCppFileContents += ", " ;
           parametre.gotoNextObject () ;
           numeroParametre ++ ;
@@ -1766,11 +1766,11 @@ generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
       MF_Assert (last >= first, "last (%ld) < first (%ld)", last, first) ;
       for (int32_t j=first ; j<=last ; j++) {
         ioCppFileContents += " " ;
-        ioCppFileContents += cStringWithSigned (inProductionRules.tableauIndirectionProduction (j COMMA_HERE)) ;
+        ioCppFileContents.appendSigned (inProductionRules.tableauIndirectionProduction (j COMMA_HERE)) ;
       }
       ioCppFileContents += "\n"
                            "  return inLexique->nextProductionIndex () - " ;
-      ioCppFileContents += cStringWithSigned ((int32_t)(first - 1)) ;
+      ioCppFileContents.appendSigned ((int32_t)(first - 1)) ;
       ioCppFileContents += " ;\n"
                            "}\n\n" ;
     }
@@ -1866,9 +1866,9 @@ LR1_computations (const cPureBNFproductionsList & inProductionRules,
                           inVocabularyDerivingToEmpty_Array,
                           transitionList) ;
   if (inVerboseOptionOn) {
-    gCout += cStringWithSigned (LR1_items_sets_collection->getStateCount ()) ;
+    gCout.appendSigned (LR1_items_sets_collection->getStateCount ()) ;
     gCout += " states, " ;
-    gCout += cStringWithSigned (transitionList.count ()) ;
+    gCout.appendSigned (transitionList.count ()) ;
     gCout += " transitions.\n" ;
     gCout.flush () ;
   }
@@ -1888,11 +1888,11 @@ LR1_computations (const cPureBNFproductionsList & inProductionRules,
     for (int32_t i=0 ; i<transitionList.count () ; i++) {
       ioHTMLFileContents.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
       ioHTMLFileContents += "S" ;
-      ioHTMLFileContents += cStringWithSigned (transitionList (i COMMA_HERE).sourceState ()) ;
+      ioHTMLFileContents.appendSigned (transitionList (i COMMA_HERE).sourceState ()) ;
       ioHTMLFileContents += " |- " ;
       inVocabulary.printInFile (ioHTMLFileContents, transitionList (i COMMA_HERE).action () COMMA_HERE) ;
       ioHTMLFileContents += " -> S" ;
-      ioHTMLFileContents += cStringWithSigned (transitionList (i COMMA_HERE).targetState ()) ;
+      ioHTMLFileContents.appendSigned (transitionList (i COMMA_HERE).targetState ()) ;
       ioHTMLFileContents.outputRawData ("</code></td></tr>") ;
     }
     ioHTMLFileContents.outputRawData ("</table>") ;
@@ -1930,11 +1930,11 @@ LR1_computations (const cPureBNFproductionsList & inProductionRules,
       if (inPopulateHTMLHelperString) {
         ioHTMLFileContents.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
         ioHTMLFileContents += "Action [S" ;
-        ioHTMLFileContents += cStringWithSigned (sourceState) ;
+        ioHTMLFileContents.appendSigned (sourceState) ;
         ioHTMLFileContents += ", " ;
         inVocabulary.printInFile (ioHTMLFileContents, terminal COMMA_HERE) ;
         ioHTMLFileContents += "] : shift, goto S" ;
-        ioHTMLFileContents += cStringWithSigned (targetState) ;
+        ioHTMLFileContents.appendSigned (targetState) ;
         ioHTMLFileContents.outputRawData ("</code></td></tr>") ;
       }
     }
@@ -1956,7 +1956,7 @@ LR1_computations (const cPureBNFproductionsList & inProductionRules,
       if (inPopulateHTMLHelperString) {
         ioHTMLFileContents.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
         ioHTMLFileContents += "Action [S" ;
-        ioHTMLFileContents += cStringWithSigned (state) ;
+        ioHTMLFileContents.appendSigned (state) ;
         ioHTMLFileContents += ", " ;
         inVocabulary.printInFile (ioHTMLFileContents, terminal COMMA_HERE) ;
         ioHTMLFileContents += "] : accept" ;
@@ -1985,7 +1985,7 @@ LR1_computations (const cPureBNFproductionsList & inProductionRules,
         if (inPopulateHTMLHelperString) {
           ioHTMLFileContents.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
           ioHTMLFileContents += "Action [S" ;
-          ioHTMLFileContents += cStringWithSigned (state) ;
+          ioHTMLFileContents.appendSigned (state) ;
           ioHTMLFileContents += ", " ;
           inVocabulary.printInFile (ioHTMLFileContents, terminal COMMA_HERE) ;
           ioHTMLFileContents += "] : reduce by " ;
@@ -2017,11 +2017,11 @@ LR1_computations (const cPureBNFproductionsList & inProductionRules,
       if (inPopulateHTMLHelperString) {
         ioHTMLFileContents.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
         ioHTMLFileContents += "Successor [S" ;
-        ioHTMLFileContents += cStringWithSigned (transitionList (tr COMMA_HERE).sourceState ()) ;
+        ioHTMLFileContents.appendSigned (transitionList (tr COMMA_HERE).sourceState ()) ;
         ioHTMLFileContents += ", " ;
         inVocabulary.printInFile (ioHTMLFileContents, transitionList (tr COMMA_HERE).action () COMMA_HERE) ;
         ioHTMLFileContents += "] = S" ;
-        ioHTMLFileContents += cStringWithSigned (transitionList (tr COMMA_HERE).targetState ()) ;
+        ioHTMLFileContents.appendSigned (transitionList (tr COMMA_HERE).targetState ()) ;
         ioHTMLFileContents.outputRawData ("</code></td></tr>") ;
       }
     }
@@ -2035,7 +2035,7 @@ LR1_computations (const cPureBNFproductionsList & inProductionRules,
       gCout += "ok.\n" ;
     }else{
       gCout += "error, " ;
-      gCout += cStringWithSigned (conflictCount) ;
+      gCout.appendSigned (conflictCount) ;
       gCout += " conflict" ;
       gCout += ((conflictCount > 1) ? "s" : "") ;
       gCout += ".\n" ;
@@ -2044,16 +2044,16 @@ LR1_computations (const cPureBNFproductionsList & inProductionRules,
   }
   if (inPopulateHTMLHelperString) {
     ioHTMLFileContents += "LR1 automaton has " ;
-    ioHTMLFileContents += cStringWithSigned (LR1_items_sets_collection->getStateCount ()) ;
+    ioHTMLFileContents.appendSigned (LR1_items_sets_collection->getStateCount ()) ;
     ioHTMLFileContents += " states and " ;
-    ioHTMLFileContents += cStringWithSigned (transitionList.count ()) ;
+    ioHTMLFileContents.appendSigned (transitionList.count ()) ;
     ioHTMLFileContents += " transitions.\n\n"
                           "Analyze table has " ;
-    ioHTMLFileContents += cStringWithSigned (shiftActions) ;
+    ioHTMLFileContents.appendSigned (shiftActions) ;
     ioHTMLFileContents += " shift actions, " ;
-    ioHTMLFileContents += cStringWithSigned (reduceActions) ;
+    ioHTMLFileContents.appendSigned (reduceActions) ;
     ioHTMLFileContents += " reduce actions, and " ;
-    ioHTMLFileContents += cStringWithSigned (successorEntries) ;
+    ioHTMLFileContents.appendSigned (successorEntries) ;
     ioHTMLFileContents += " state successor entries.\n\n" ;
     ioHTMLFileContents.outputRawData ("</p><p>") ;
     if (conflictCount == 0) {
@@ -2062,7 +2062,7 @@ LR1_computations (const cPureBNFproductionsList & inProductionRules,
       ioHTMLFileContents.outputRawData ("</span>") ;
     }else{
       ioHTMLFileContents.outputRawData ("<span class=\"error\">") ;
-      ioHTMLFileContents += cStringWithSigned (conflictCount) ;
+      ioHTMLFileContents.appendSigned (conflictCount) ;
       ioHTMLFileContents += " conflict" ;
       ioHTMLFileContents += ((conflictCount > 1) ? "s" : "") ;
       ioHTMLFileContents += " : grammar is not LR (1)." ;

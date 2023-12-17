@@ -99,7 +99,7 @@ void GALGAS_data::description (C_String & ioString,
   ioString += "<@data:" ;
   if (isValid ()) {
     ioString += "length=" ;
-    ioString += cStringWithSigned (mData.count ()) ;
+    ioString.appendSigned (mData.count ()) ;
   }else{
     ioString += "not built" ;
   }
@@ -121,10 +121,11 @@ GALGAS_uint GALGAS_data::getter_count (UNUSED_LOCATION_ARGS) const {
 GALGAS_string GALGAS_data::getter_cStringRepresentation (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
-    C_String s (cStringWithUnsigned (mData (0 COMMA_HERE))) ;
+    C_String s ;
+    s.appendUnsigned (mData (0 COMMA_HERE)) ;
     for (int32_t i=1 ; i<mData.count () ; i++) {
       s += ", " ;
-      s += cStringWithUnsigned (mData (i COMMA_HERE)) ;
+      s.appendUnsigned (mData (i COMMA_HERE)) ;
       if ((i % 16) == 0) {
         s += "\n" ;
       }

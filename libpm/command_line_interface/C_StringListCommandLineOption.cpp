@@ -131,7 +131,7 @@ void C_StringListCommandLineOption::printStringOptions (void) {
         gCout.setForeColor (kBlueForeColor) ;
         gCout.setTextAttribute (kBoldTextAttribute) ;
         gCout += "-" ;
-        gCout += cStringWithCharacter (p->mCommandChar) ;
+        gCout.appendCharacter (p->mCommandChar) ;
         gCout += "=string" ;
         gCout.setTextAttribute (kAllAttributesOff) ;
       }

@@ -132,11 +132,11 @@ static C_String errorOrWarningLocationString (const C_IssueWithFixIt & inIssue,
     const C_String textLine = inSourceText.getLineForLocation (inIssue.mStartLocation) ;
     result += inSourceText.sourceFilePath () ;
     result += ":" ;
-    result += cStringWithSigned (inIssue.mStartLocation.lineNumber ()) ;
+    result.appendSigned (inIssue.mStartLocation.lineNumber ()) ;
     result += ":" ;
-    result += cStringWithSigned (inIssue.mStartLocation.columnNumber ()) ;
+    result.appendSigned (inIssue.mStartLocation.columnNumber ()) ;
     result += ":" ;
-    result += cStringWithSigned (inIssue.mEndLocation.columnNumber ()) ;
+    result.appendSigned (inIssue.mEndLocation.columnNumber ()) ;
     result += ":\n" ;
   }
   return result ;
@@ -167,7 +167,7 @@ static C_String constructErrorOrWarningLocationMessage (const C_String & inMessa
       }
       result += "\n" ;
     //--- Add fix it suggestions
-      const C_String ZeroWidthSpace = cStringWithUnicodeCharacter (TO_UNICODE (0x200B)) ;
+      const C_String ZeroWidthSpace = stringWithUnicodeCharacter (TO_UNICODE (0x200B)) ;
       for (int32_t i=0 ; i<inIssue.mFixItArray.count () ; i++) {
         const C_FixItDescription d = inIssue.mFixItArray (i COMMA_HERE) ;
         switch (d.kind()) {
@@ -217,7 +217,7 @@ void signalLexicalWarning (C_Compiler * inCompiler,
 //--- Add warning
   warningMessage += (verboseOutput () ? "lexical " : "") ;
   warningMessage += "warning #" ;
-  warningMessage += cStringWithSigned (mTotalWarningCount) ;
+  warningMessage.appendSigned (mTotalWarningCount) ;
   warningMessage += ": " ;
   warningMessage += inLexicalWarningMessage ;
   warningMessage += "\n" ;
@@ -246,7 +246,7 @@ void signalLexicalError (C_Compiler * inCompiler,
   C_String errorMessage ;
   errorMessage += (verboseOutput () ? "lexical " : "") ;
   errorMessage += "error #" ;
-  errorMessage += cStringWithSigned (mErrorTotalCount) ;
+  errorMessage.appendSigned (mErrorTotalCount) ;
   errorMessage += ": " ;
   errorMessage += inLexicalErrorMessage ;
   errorMessage += "\n" ;
@@ -278,7 +278,7 @@ void signalParsingError (C_Compiler * inCompiler,
 //--- Construct parsing error message
   errorMessage += (verboseOutput () ? "syntax " : "") ;
   errorMessage += "error #" ;
-  errorMessage += cStringWithSigned (mErrorTotalCount) ;
+  errorMessage.appendSigned (mErrorTotalCount) ;
   errorMessage += ": found " ;
   errorMessage += inFoundTokenMessage ;
   errorMessage += ", expected:\n" ;
@@ -289,9 +289,9 @@ void signalParsingError (C_Compiler * inCompiler,
   }
 //--- Previous token location
   errorMessage += "Previous token end location:" ;
-  errorMessage += cStringWithSigned (inPreviousTokenEndLocation.lineNumber ()) ;
+  errorMessage.appendSigned (inPreviousTokenEndLocation.lineNumber ()) ;
   errorMessage += ":" ;
-  errorMessage += cStringWithSigned (inPreviousTokenEndLocation.columnNumber ()) ;
+  errorMessage.appendSigned (inPreviousTokenEndLocation.columnNumber ()) ;
   errorMessage += "\n" ;
 //--- Print
   ggs_printError (inCompiler, inSourceText, inIssue, errorMessage COMMA_THERE) ;
@@ -457,7 +457,7 @@ void signalSemanticWarning (C_Compiler * inCompiler,
 //--- Add warning
   warningMessage += (verboseOutput () ? "semantic " : "") ;
   warningMessage += "warning #" ;
-  warningMessage += cStringWithSigned (mTotalWarningCount) ;
+  warningMessage.appendSigned (mTotalWarningCount) ;
   warningMessage += ": " ;
   warningMessage += inWarningMessage ;
   warningMessage += "\n" ;
@@ -483,7 +483,7 @@ void signalSemanticError (C_Compiler * inCompiler,
   C_String errorMessage ;
 //--- Print error
   errorMessage += "semantic error #" ;
-  errorMessage += cStringWithSigned (mErrorTotalCount) ;
+  errorMessage.appendSigned (mErrorTotalCount) ;
   errorMessage += ": " ;
   errorMessage += inErrorMessage ;
   errorMessage += "\n" ;
@@ -505,7 +505,7 @@ void signalRunTimeError (C_Compiler * inCompiler,
 //--- Construct location error message
   C_String errorMessage ;
   errorMessage += "Run Time Error #" ;
-  errorMessage += cStringWithSigned (mErrorTotalCount) ;
+  errorMessage.appendSigned (mErrorTotalCount) ;
   errorMessage += ": " ;
   errorMessage += inRunTimeErrorMessage ;
   errorMessage += "\n" ;
@@ -527,7 +527,7 @@ void signalRunTimeWarning (C_Compiler * inCompiler,
 //--- Construct location error message
   C_String warningMessage ;
   warningMessage += "Run Time Warning #" ;
-  warningMessage += cStringWithSigned (mTotalWarningCount) ;
+  warningMessage.appendSigned (mTotalWarningCount) ;
   warningMessage += ": " ;
   warningMessage += inWarningMessage ;
   warningMessage += "\n" ;
@@ -578,7 +578,7 @@ void ggs_printError (C_Compiler * inCompiler,
       errorMessage += "[Error raised from file '" ;
       errorMessage += C_String (IN_SOURCE_FILE).lastPathComponent () ;
       errorMessage += "' at line " ;
-      errorMessage += cStringWithSigned (IN_SOURCE_LINE) ;
+      errorMessage.appendSigned (IN_SOURCE_LINE) ;
       errorMessage += "]\n" ;
     }
   #endif
@@ -616,7 +616,7 @@ void fatalError (const C_String & inErrorMessage,
   errorMessage += " in file '" ;
   errorMessage += inSourceFile ;
   errorMessage += "', line " ;
-  errorMessage += cStringWithSigned (inSourceLine) ;
+  errorMessage.appendSigned (inSourceLine) ;
   errorMessage += "\n" ;
 //----
   C_String message = constructErrorOrWarningLocationMessage (errorMessage, C_IssueWithFixIt (), C_SourceTextInString ()) ;
@@ -625,7 +625,7 @@ void fatalError (const C_String & inErrorMessage,
       message += "[Error raised from file '" ;
       message += C_String (inSourceFile).lastPathComponent () ;
       message += "' at line " ;
-      message += cStringWithSigned (inSourceLine) ;
+      message.appendSigned (inSourceLine) ;
       message += "]\n" ;
     }
   #endif
@@ -679,7 +679,7 @@ void ggs_printWarning (C_Compiler * inCompiler,
       warningMessage += "[Warning raised from file '" ;
       warningMessage += C_String (IN_SOURCE_FILE).lastPathComponent () ;
       warningMessage += "' at line " ;
-      warningMessage += cStringWithSigned (IN_SOURCE_LINE) ;
+      warningMessage.appendSigned (IN_SOURCE_LINE) ;
       warningMessage += "]\n" ;
     }
   #endif
@@ -770,7 +770,7 @@ void ggs_printMessage (const C_String & inMessage
         message += "[Displayed from file '" ;
         message += C_String (IN_SOURCE_FILE).lastPathComponent () ;
         message += "' at line " ;
-        message += cStringWithSigned (IN_SOURCE_LINE) ;
+        message.appendSigned (IN_SOURCE_LINE) ;
         message += "]\n" ;
       }
     #endif

@@ -364,9 +364,9 @@ GALGAS_string GALGAS_application::constructor_commandLineArgumentAtIndex (const 
     }else{
       C_String message ;
       message += "@application.commandLineArgumentAtIndex: index " ;
-      message += cStringWithUnsigned (idx) ;
+      message.appendUnsigned (idx) ;
       message += " >= argument count = " ;
-      message += cStringWithUnsigned (commandLineArgumentCount ()) ;
+      message.appendUnsigned (commandLineArgumentCount ()) ;
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }
   }

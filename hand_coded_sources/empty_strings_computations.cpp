@@ -154,7 +154,7 @@ printNonterminalDerivingInEmptyString (const C_Relation & inVocabularyDerivingTo
       for (int32_t i=0 ; i<nonTerminalArray.count () ; i++) {
         if (nonTerminalArray (i COMMA_HERE)) {
           ioHTMLFileContents.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\">") ;
-          ioHTMLFileContents += cStringWithSigned (index) ;
+          ioHTMLFileContents.appendSigned (index) ;
           index ++ ;
           ioHTMLFileContents.outputRawData ("</td><td><code>") ;
           ioHTMLFileContents += newNonterminal.configuration().constantNameForVariableAndValue(0, (uint32_t) nonTerminalArray (i COMMA_HERE) COMMA_HERE) ;

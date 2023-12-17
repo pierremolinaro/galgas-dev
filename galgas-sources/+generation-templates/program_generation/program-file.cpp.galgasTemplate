@@ -160,7 +160,7 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
         }else if (totalWarningCount () == 1) {
           message += "1 warning" ;
         }else{
-          message += cStringWithSigned (totalWarningCount ()) ;
+          message.appendSigned (totalWarningCount ()) ;
           message += " warnings" ;
         }
         message += ", " ;
@@ -169,7 +169,7 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
         }else if (totalErrorCount () == 1) {
           message += "1 error" ;
         }else{
-          message += cStringWithSigned (totalErrorCount ()) ;
+          message.appendSigned (totalErrorCount ()) ;
           message += " errors" ;
         }
         message += ".\\n" ;

@@ -110,7 +110,7 @@ void C_BoolCommandLineOption::printBoolOptions (void) {
       gCout.setForeColor (kBlueForeColor) ;
       gCout.setTextAttribute (kBoldTextAttribute) ;
       gCout += "-" ;
-      gCout += cStringWithCharacter (p->mCommandChar) ;
+      gCout.appendCharacter (p->mCommandChar) ;
       gCout.setTextAttribute (kAllAttributesOff) ;
       gCout += "\n" ;
     }

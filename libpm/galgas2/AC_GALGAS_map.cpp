@@ -318,7 +318,7 @@ static void internalDescription (cMapNode * inNode,
     ioString += "\n" ;
     ioString.writeStringMultiple ("| ", inIndentation) ;
     ioString += "|-at " ;
-    ioString += cStringWithUnsigned (ioIdx) ;
+    ioString.appendUnsigned (ioIdx) ;
     ioString += ": key '" ;
     ioString += inNode->mKey ;
     ioString += "' " ;
@@ -337,10 +337,10 @@ void cSharedMapRoot::description (C_String & ioString,
     ioString += "\n" ;
     ioString.writeStringMultiple ("| ", inIndentation + 1) ;
     ioString += "override #" ;
-    ioString += cStringWithUnsigned (inLevel) ;
+    ioString.appendUnsigned (inLevel) ;
   }
   ioString += " (" ;
-  ioString += cStringWithUnsigned (count ()) ;
+  ioString.appendUnsigned (count ()) ;
   ioString += " object" ;
   ioString += ((count () > 1) ? "s" : "") ;
   ioString += "): " ;

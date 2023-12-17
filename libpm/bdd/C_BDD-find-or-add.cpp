@@ -393,9 +393,9 @@ void C_BDD::markAndSweepUnusedNodes (void) {
     gCout += "BDD package info: mark and sweep done in " ;
     gCout += timer ;
     gCout += " (nodes " ;
-    gCout += cStringWithUnsigned (previousNodeCount) ;
+    gCout.appendUnsigned (previousNodeCount) ;
     gCout += " -> " ;
-    gCout += cStringWithUnsigned (gCurrentNodeCount) ;
+    gCout.appendUnsigned (gCurrentNodeCount) ;
     gCout += ")\n" ;
   }
 }
@@ -578,15 +578,15 @@ void C_BDD::printBDDpackageOperationsSummary (AC_OutputStream & inStream) {
     const uint32_t mode = 32 ;
   #endif
   inStream += "\n" "Statistics about BDD package (" ;
-  inStream += cStringWithUnsigned (mode) ;
+  inStream.appendUnsigned (mode) ;
   inStream += "-bit mode, " ;
-  inStream += cStringWithUnsigned (getBDDnodeSize ()) ;
+  inStream.appendUnsigned (getBDDnodeSize ()) ;
   inStream += " bytes for a BDD node)\n" ;
   inStream += "  Current BDD count: " ;
-  inStream += cStringWithUnsigned (getBDDinstancesCount ()) ;
+  inStream.appendUnsigned (getBDDinstancesCount ()) ;
   inStream += "\n" ;
   inStream += "  Created nodes count: " ;
-  inStream += cStringWithUnsigned (getCreatedNodesCount ()) ;
+  inStream.appendUnsigned (getCreatedNodesCount ()) ;
   inStream += "\n" ;
   inStream += "  RAM usage: " ;
   inStream.appendUnsigned (currentMemoryUsage ()) ;
@@ -594,9 +594,9 @@ void C_BDD::printBDDpackageOperationsSummary (AC_OutputStream & inStream) {
 //---
   inStream += "Unique table:\n" ;
   inStream += "  size: " ;
-  inStream += cStringWithUnsigned (gCollisionMapSize) ;
+  inStream.appendUnsigned (gCollisionMapSize) ;
   inStream += " (" ;
-  inStream += cStringWithUnsigned ((gCollisionMapSize * sizeof (uint32_t)) / 1000000) ;
+  inStream.appendUnsigned ((gCollisionMapSize * sizeof (uint32_t)) / 1000000) ;
   inStream += " MB)\n" ;
   TC_UniqueArray <uint32_t> entrySizeArray (1 COMMA_HERE) ;
   for (uint32_t i=0 ; i<gCollisionMapSize ; i++) {
@@ -615,11 +615,11 @@ void C_BDD::printBDDpackageOperationsSummary (AC_OutputStream & inStream) {
   for (int32_t i=0 ; i<entrySizeArray.count () ; i++) {
     if ((entrySizeArray (i COMMA_HERE) > 0) && (gCollisionMapSize > 0)) {
       inStream += "  " ;
-      inStream += cStringWithUnsigned (entrySizeArray (i COMMA_HERE)) ;
+      inStream.appendUnsigned (entrySizeArray (i COMMA_HERE)) ;
       inStream += " entries of size " ;
-      inStream += cStringWithSigned (i) ;
+      inStream.appendSigned (i) ;
       inStream += " (" ;
-      inStream += cStringWithUnsigned ((100UL * entrySizeArray (i COMMA_HERE)) / gCollisionMapSize) ;
+      inStream.appendUnsigned ((100UL * entrySizeArray (i COMMA_HERE)) / gCollisionMapSize) ;
       inStream += "%)\n" ;
     }
   }

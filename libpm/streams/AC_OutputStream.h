@@ -51,9 +51,11 @@ class AC_OutputStream {
   public: void appendUTF32String (const utf32 * inUTF32String) ;
 
 //--- Appending character
+  public: void appendCharacter (const char inCharacter) ;
   public: void appendUnicodeCharacter (const utf32 inUnicodeCharacter COMMA_LOCATION_ARGS) ;
 
 //--- Appending uint64_t in Hex
+  public: void appendHex0xUnsigned (const uint64_t inValue) ;
   public: void appendUnsignedHex  (const uint64_t inValue) ;
   public: void appendUnsignedHex2 (const uint64_t inValue) ;
   public: void appendUnsignedHex4 (const uint64_t inValue) ;
@@ -150,30 +152,18 @@ class AC_OutputStream {
 
 //--------------------------------------------------------------------------------------------------
 
-C_String cStringWithUnsigned (const uint64_t inValue) ;
+C_String stringWithUnsigned (const uint64_t inValue) ;
 
-//--------------------------------------------------------------------------------------------------
+C_String stringWithHex0xUnsigned (const uint64_t inValue) ;
 
-C_String cHexStringWithUnsigned (const uint64_t inValue) ;
+C_String stringWithSigned (const int64_t inValue) ;
 
-//--------------------------------------------------------------------------------------------------
+C_String stringWithPointer (const void * inValue) ;
 
-C_String cStringWithSigned (const int64_t inValue) ;
+C_String stringWithCharacter (const char inValue) ;
 
-//--------------------------------------------------------------------------------------------------
+C_String stringWithUnicodeCharacter (const utf32 inValue) ;
 
-C_String cStringWithPointer (const void * inValue) ;
-
-//--------------------------------------------------------------------------------------------------
-
-C_String cStringWithCharacter (const char inValue) ;
-
-//--------------------------------------------------------------------------------------------------
-
-C_String cStringWithUnicodeCharacter (const utf32 inValue) ;
-
-//--------------------------------------------------------------------------------------------------
-
-C_String cStringWithDouble (const double inValue) ;
+C_String stringWithDouble (const double inValue) ;
 
 //--------------------------------------------------------------------------------------------------

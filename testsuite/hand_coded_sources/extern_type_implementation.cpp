@@ -29,9 +29,9 @@ void GALGAS_complex::description (C_String & ioString,
                                   const int32_t /* inIndentation */) const {
   ioString += "<@complex:" ;
   if (mIsValid) {
-    ioString += cStringWithDouble (mReal) ;
+    ioString.appendDouble (mReal) ;
     ioString += ", " ;
-    ioString += cStringWithDouble (mImaginary) ;
+    ioString.appendDouble (mImaginary) ;
   }else{
     ioString += "invalid" ;
   }

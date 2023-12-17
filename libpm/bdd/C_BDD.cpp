@@ -710,7 +710,7 @@ action (const bool tableauDesValeurs [],
         const uint32_t inVariableCount) {
   C_String value ;
   for (uint32_t i=0 ; i<inVariableCount ; i++) {
-    value += cStringWithCharacter ((char) ('0' + tableauDesValeurs [i])) ;
+    value.appendCharacter ((char) ('0' + tableauDesValeurs [i])) ;
   }
   mPtr->appendObject (value) ;
 }
@@ -753,7 +753,7 @@ action (const bool tableauDesValeurs [],
         const uint32_t inVariableCount) {
   C_String value ;
   for (uint32_t i=inVariableCount ; i>0 ; i--) {
-    value += cStringWithCharacter ((char) ('0' + tableauDesValeurs [i-1])) ;
+    value.appendCharacter ((char) ('0' + tableauDesValeurs [i-1])) ;
   }
   mPtr->appendObject (value) ;
 }
@@ -800,7 +800,7 @@ action (const bool tableauDesValeurs [],
     *mStringPtr += "|" ;
   }
   for (uint32_t i=inVariableCount ; i>0 ; i--) {
-    *mStringPtr += cStringWithCharacter ((char) ('0' + tableauDesValeurs [i-1])) ;
+    mStringPtr->appendCharacter ((char) ('0' + tableauDesValeurs [i-1])) ;
   }
 }
 
@@ -1766,7 +1766,7 @@ static void printLineWithSeparator (AC_OutputStream & outputStream,
     if ((i % 4) == 3) {
       outputStream += " " ;
     }
-    outputStream += cStringWithCharacter (inValueArray (i COMMA_HERE)) ;
+    outputStream.appendCharacter (inValueArray (i COMMA_HERE)) ;
   }
   outputStream += "\n" ;
 }
@@ -1859,7 +1859,7 @@ void C_BDD::printHeader (AC_OutputStream & outputStream) const {
           outputStream += " " ;
         }
         const int32_t v = (i / divisor) % 10 ;
-        outputStream += cStringWithSigned (v) ;
+        outputStream.appendSigned (v) ;
       }
       outputStream += "\n" ;
     }
@@ -1897,7 +1897,7 @@ static void printLineWithSeparator (AC_OutputStream & outputStream,
     outputStream += " " ;
     outputStream += C_String::spaces (inValueSeparation (i COMMA_HERE)) ;
     for (int32_t j=0 ; j<inBitCounts (i COMMA_HERE) ; j++) {
-      outputStream += cStringWithCharacter (inValueArray (bitIndex COMMA_HERE)) ;
+      outputStream.appendCharacter (inValueArray (bitIndex COMMA_HERE)) ;
       bitIndex -- ;
     }
   }
@@ -2020,7 +2020,7 @@ static void buildGraphvizRepresentation (C_String & ioString,
                                          const TC_UniqueArray <C_String> & inBitNames) {
   const uint32_t nodeIndex = nodeIndexForRoot (inBDDValue COMMA_HERE) ;
   const int32_t var = (int32_t) gNodeArray [nodeIndex].mVariableIndex ;
-  const C_String node = C_String ("N") + cStringWithUnsigned (nodeIndex) ;
+  const C_String node = C_String ("N") + stringWithUnsigned (nodeIndex) ;
   if (! isNodeMarkedThenMark (inBDDValue COMMA_HERE)) {
     const uint32_t THENbranch = gNodeArray [nodeIndex].mTHEN ;
     C_String THENlabel ;
@@ -2077,7 +2077,7 @@ C_String C_BDD::graphvizRepresentation (void) const {
   }
   TC_UniqueArray <C_String> bitNames ;
   for (int32_t i=0 ; i<varCount ; i++) {
-    bitNames.appendObject (cStringWithSigned (i)) ;
+    bitNames.appendObject (stringWithSigned (i)) ;
   }
   return graphvizRepresentationWithNames (bitNames) ;
 }

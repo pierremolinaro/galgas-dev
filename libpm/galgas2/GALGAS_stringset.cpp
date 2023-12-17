@@ -485,7 +485,7 @@ void cSharedStringsetRoot::displayEntries (const cStringsetNode * inNode,
 //--------------------------------------------------------------------------------------------------
 
 void cSharedStringsetRoot::description (C_String & ioString) const {
-  ioString += cStringWithUnsigned (mEntryCount) ;
+  ioString.appendUnsigned (mEntryCount) ;
   if (mEntryCount > 1) {
     ioString += " entries" ;
   }else{

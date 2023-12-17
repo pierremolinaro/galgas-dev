@@ -133,7 +133,7 @@ void printOriginalGrammar (C_HTMLString & inHTMLfile,
   }
   inHTMLfile.outputRawData ("<p>") ;
   inHTMLfile += "The original grammar has " ;
-  inHTMLfile += cStringWithSigned (productionsCount) ;
+  inHTMLfile.appendSigned (productionsCount) ;
   inHTMLfile += " production" ;
   inHTMLfile += ((productionsCount > 1) ? "s" : "") ;
   inHTMLfile += "." ;
@@ -162,7 +162,7 @@ void printOriginalGrammar (C_HTMLString & inHTMLfile,
       inHTMLfile += "'" ;
       inHTMLfile.outputRawData ("<br>") ;
       inHTMLfile += "line " ;
-      inHTMLfile += cStringWithSigned (currentRule.current_mLeftNonterminalSymbol (HERE).mProperty_location.startLocation ().lineNumber ()) ;
+      inHTMLfile.appendSigned (currentRule.current_mLeftNonterminalSymbol (HERE).mProperty_location.startLocation ().lineNumber ()) ;
       inHTMLfile.outputRawData ("</td><td><code>") ;
       printInstructionsListForGrammar (currentRule.current_mInstructionList (HERE),
                                        inHTMLfile) ;

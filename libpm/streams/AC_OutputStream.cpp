@@ -169,6 +169,12 @@ void AC_OutputStream::appendUTF32LiteralStringConstant (const C_String & inStrin
 
 //--------------------------------------------------------------------------------------------------
 
+void AC_OutputStream::appendCharacter (const char inValue) {
+  appendUnicodeCharacter (TO_UNICODE (uint32_t (inValue)) COMMA_HERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void AC_OutputStream::appendUnicodeCharacter (const utf32 inUnicodeCharacter COMMA_UNUSED_LOCATION_ARGS) {
   genericUnicodeArrayOutput (& inUnicodeCharacter, 1) ;
 }
@@ -257,6 +263,14 @@ void AC_OutputStream::appendUnsignedWithZeroFill (const uint64_t inValue, const 
 void AC_OutputStream::appendUnsignedHex (const uint64_t inValue) {
   char s [32] ;
   snprintf (s, 31, "%" PRIX64, inValue) ;
+  appendCString (s) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void AC_OutputStream::appendHex0xUnsigned (const uint64_t inValue) {
+  char s [32] ;
+  snprintf (s, 31, "0x%" PRIX64, inValue) ;
   appendCString (s) ;
 }
 
@@ -660,12 +674,12 @@ void AC_OutputStream::appendFileHeaderComment (const C_String & inLineCommentPre
 //--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark cStringWithUnsigned
+  #pragma mark stringWith...
 #endif
 
 //--------------------------------------------------------------------------------------------------
 
-C_String cStringWithUnsigned (const uint64_t inValue) {
+C_String stringWithUnsigned (const uint64_t inValue) {
   C_String result ;
   result.appendUnsigned (inValue) ;
   return result ;
@@ -673,28 +687,15 @@ C_String cStringWithUnsigned (const uint64_t inValue) {
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark cHexStringWithUnsigned
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
-C_String cHexStringWithUnsigned (const uint64_t inValue) {
-  char s [32] ;
-  snprintf (s, 32, "0x%" PRIx64, inValue) ;
-  C_String result = s ;
-  return result ;
+C_String stringWithHex0xUnsigned (const uint64_t inValue) {
+  C_String s ;
+  s.appendHex0xUnsigned (inValue) ;
+  return s ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark cStringWithSigned
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
-C_String cStringWithSigned (const int64_t inValue) {
+C_String stringWithSigned (const int64_t inValue) {
   C_String result ;
   result.appendSigned (inValue) ;
   return result ;
@@ -702,27 +703,15 @@ C_String cStringWithSigned (const int64_t inValue) {
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark cStringWithCharacter
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
-C_String cStringWithCharacter (const char inValue) {
+C_String stringWithCharacter (const char inValue) {
   C_String result ;
-  result.appendUnicodeCharacter (TO_UNICODE ((uint32_t) inValue) COMMA_HERE) ;
+  result.appendUnicodeCharacter (TO_UNICODE (uint32_t (inValue)) COMMA_HERE) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark cStringWithUnicodeCharacter
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
-C_String cStringWithUnicodeCharacter (const utf32 inValue) {
+C_String stringWithUnicodeCharacter (const utf32 inValue) {
   C_String result ;
   result.appendUnicodeCharacter (inValue COMMA_HERE) ;
   return result ;
@@ -730,13 +719,7 @@ C_String cStringWithUnicodeCharacter (const utf32 inValue) {
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark cStringWithPointer
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
-C_String cStringWithPointer (const void * inValue) {
+C_String stringWithPointer (const void * inValue) {
   C_String result ;
   result.appendPointer (inValue) ;
   return result ;
@@ -744,13 +727,7 @@ C_String cStringWithPointer (const void * inValue) {
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark cStringWithDouble
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
-C_String cStringWithDouble (const double inValue) {
+C_String stringWithDouble (const double inValue) {
   C_String result ;
   result.appendDouble (inValue) ;
   return result ;
