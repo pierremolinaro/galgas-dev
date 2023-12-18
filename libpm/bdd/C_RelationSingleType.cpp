@@ -6,7 +6,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "bdd/C_RelationSingleType.h"
-#include "utilities/C_SharedObject.h"
+#include "utilities/SharedObject.h"
 #include "strings/String-class.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -30,12 +30,12 @@ static C_RelationSingleType::cType * gLastRelation ;
 
 //--------------------------------------------------------------------------------------------------
 
-class C_RelationSingleType::cType : public C_SharedObject {
+class C_RelationSingleType::cType : public SharedObject {
 //--- Constructor
   public: inline cType (const String & inTypeName,
                          const uint32_t inBDDBitCount
                          COMMA_LOCATION_ARGS) :
-  C_SharedObject (THERE),
+  SharedObject (THERE),
   mTypeName (inTypeName),
   mBDDBitCount (inBDDBitCount),
   mNextPtr (gFirstRelation),

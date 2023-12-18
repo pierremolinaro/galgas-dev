@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  C_SharedObject : Base class for GALGAS object handling                                       
+//  SharedObject : Base class for GALGAS object handling                                       
 //
 //  This file is part of libpm library                                                           
 //
@@ -18,7 +18,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "utilities/C_SharedObject.h"
+#include "utilities/SharedObject.h"
 #include "utilities/MF_MemoryControl.h"
 #include "streams/C_ConsoleOut.h"
 #include "strings/String-class.h"
@@ -35,13 +35,13 @@
 #ifndef DO_NOT_GENERATE_CHECKINGS
   static uint32_t gCreationIndex ;
   static uint32_t gObjectCurrentCount ;
-  static C_SharedObject * gFirstObject ;
-  static C_SharedObject * gLastObject ;
+  static SharedObject * gFirstObject ;
+  static SharedObject * gLastObject ;
 #endif
 
 //--------------------------------------------------------------------------------------------------
 
-C_SharedObject::C_SharedObject (LOCATION_ARGS) :
+SharedObject::SharedObject (LOCATION_ARGS) :
 #ifndef DO_NOT_GENERATE_CHECKINGS
   mObjectIndex (gCreationIndex),
   mCreationFile (IN_SOURCE_FILE),
@@ -68,11 +68,11 @@ mRetainCount (1) {
 
 //--------------------------------------------------------------------------------------------------
 
-C_SharedObject::~ C_SharedObject (void) {
+SharedObject::~ SharedObject (void) {
 //--- Remove object from instance list
   #ifndef DO_NOT_GENERATE_CHECKINGS
-    C_SharedObject * previousObject = mPtrToPreviousObject ;
-    C_SharedObject * nextObject = mPtrToNextObject ;
+    SharedObject * previousObject = mPtrToPreviousObject ;
+    SharedObject * nextObject = mPtrToNextObject ;
     if (previousObject == nullptr) {
       gFirstObject = nextObject ;
     }else{
@@ -90,18 +90,18 @@ C_SharedObject::~ C_SharedObject (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_SharedObject::retain (const C_SharedObject * inObject COMMA_LOCATION_ARGS) {
+void SharedObject::retain (const SharedObject * inObject COMMA_LOCATION_ARGS) {
   if (inObject != nullptr) {
-    macroValidSharedObjectThere (inObject, C_SharedObject) ;
+    macroValidSharedObjectThere (inObject, SharedObject) ;
     inObject->mRetainCount ++ ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void C_SharedObject::release (const C_SharedObject * inObject COMMA_LOCATION_ARGS) {
+void SharedObject::release (const SharedObject * inObject COMMA_LOCATION_ARGS) {
   if (inObject != nullptr) {
-    macroValidSharedObjectThere (inObject, C_SharedObject) ;
+    macroValidSharedObjectThere (inObject, SharedObject) ;
     MF_AssertThere (inObject->mRetainCount > 0, "mRetainCount should be > 0)", 0, 0) ;
     inObject->mRetainCount -- ;
     if (inObject->mRetainCount == 0) {
@@ -112,8 +112,8 @@ void C_SharedObject::release (const C_SharedObject * inObject COMMA_LOCATION_ARG
 
 //--------------------------------------------------------------------------------------------------
 
-void C_SharedObject::retainRelease (const C_SharedObject * inObjectToRetain,
-                                    const C_SharedObject * inObjectToRelease
+void SharedObject::retainRelease (const SharedObject * inObjectToRetain,
+                                    const SharedObject * inObjectToRelease
                                     COMMA_LOCATION_ARGS) {
   retain (inObjectToRetain COMMA_THERE) ;
   release (inObjectToRelease COMMA_THERE) ;
@@ -128,22 +128,22 @@ void C_SharedObject::retainRelease (const C_SharedObject * inObjectToRetain,
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
-  void C_SharedObject::checkAllObjectsHaveBeenReleased (void) {
+  void SharedObject::checkAllObjectsHaveBeenReleased (void) {
     if (gObjectCurrentCount != 0) {
-      gCout += "Warning: " ;
-      gCout.appendUnsigned (gObjectCurrentCount) ;
-      gCout += " object" ;
-      gCout += ((gObjectCurrentCount > 1) ? "s have" : " has") ;
-      gCout += " not been released:\n" ;
-      C_SharedObject * p = gFirstObject ;
+      gCout.addString ("Warning: ") ;
+      gCout.addUnsigned (gObjectCurrentCount) ;
+      gCout.addString (" object") ;
+      gCout.addString ((gObjectCurrentCount > 1) ? "s have" : " has") ;
+      gCout.addString (" not been released:\n") ;
+      SharedObject * p = gFirstObject ;
       while (p != nullptr) {
-        gCout += "- object declared in '" ;
-        gCout += p->mCreationFile ;
-        gCout += "', line " ;
-        gCout.appendSigned (p->mCreationLine) ;
-        gCout += " (retain count: " ;
-        gCout.appendSigned (p->mRetainCount) ;
-        gCout += ")\n" ;
+        gCout.addString ("- object declared in '") ;
+        gCout.addString (p->mCreationFile) ;
+        gCout.addString ("', line ") ;
+        gCout.addSigned (p->mCreationLine) ;
+        gCout.addString (" (retain count: ") ;
+        gCout.addSigned (p->mRetainCount) ;
+        gCout.addString (")\n") ;
         p = p->mPtrToNextObject ;
       }
     }

@@ -304,7 +304,7 @@
         const UInt16 displayFlags = *p ;
         p += 2 ; // Goto display strip description
         NSMutableString * title = [NSMutableString new] ;
-        [title appendString:@" "] ;
+        [title appendString: @" "] ;
         for (NSUInteger k=0 ; k<=labelLength ; k++) {
           const UInt16 stripDescription = *p ;
           if (stripDescription != 0xFFFF) {
@@ -325,9 +325,9 @@
               }
             }
             if (k > 0) {
-              [title appendString:@" "] ;
+              [title appendString: @" "] ;
             }
-            [title appendString:[mSourceString substringWithRange:range]] ;
+            [title appendString: [mSourceString substringWithRange:range]] ;
           }
           p += 2 ;
         }

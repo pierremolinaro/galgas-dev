@@ -118,10 +118,10 @@ void cVocabulary::addNonTerminalSymbol (const char * inPrefix,
                                         const int32_t inOrderInSourceFile,
                                         const bool inGenerateChoice) {
   String nt  ;
-  nt += inPrefix ;
-  nt += inClassName.identifierRepresentation () ;
-  nt += "_" ;
-  nt.appendSigned (inOrderInSourceFile) ;
+  nt.addString (inPrefix) ;
+  nt.addString (inClassName.identifierRepresentation ()) ;
+  nt.addString ("_") ;
+  nt.addSigned (inOrderInSourceFile) ;
   mStringsArray.appendObject (nt) ;
   mGenerateChoiceArray.appendObject (inGenerateChoice) ;
 }
@@ -146,13 +146,13 @@ void cVocabulary::printInFile (AC_OutputStream & inHTMLfile,
                                const int32_t inSymbolIndex
                                COMMA_LOCATION_ARGS) const {
   if (inSymbolIndex < mTerminalSymbolsCount) {
-    inHTMLfile += "$" ;
-    inHTMLfile += mStringsArray (inSymbolIndex COMMA_THERE) ;
-    inHTMLfile += "$" ;
+    inHTMLfile.addString ("$") ;
+    inHTMLfile.addString (mStringsArray (inSymbolIndex COMMA_THERE)) ;
+    inHTMLfile.addString ("$") ;
   }else{
-    inHTMLfile += "<" ;
-    inHTMLfile += mStringsArray (inSymbolIndex COMMA_THERE) ;
-    inHTMLfile += ">" ;
+    inHTMLfile.addString ("<") ;
+    inHTMLfile.addString (mStringsArray (inSymbolIndex COMMA_THERE)) ;
+    inHTMLfile.addString (">") ;
   }
 }
 

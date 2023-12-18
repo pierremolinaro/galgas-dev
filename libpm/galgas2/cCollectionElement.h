@@ -22,7 +22,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "utilities/C_SharedObject.h"
+#include "utilities/SharedObject.h"
 #include "galgas2/typeComparisonResult.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -31,7 +31,7 @@ class String ;
 
 //--------------------------------------------------------------------------------------------------
 
-class cCollectionElement : public C_SharedObject {
+class cCollectionElement : public SharedObject {
 //--- Default constructor
   public: cCollectionElement (LOCATION_ARGS) ;
 

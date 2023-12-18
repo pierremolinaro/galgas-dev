@@ -70,39 +70,15 @@ String C_Timer::timeString (void) const {
   const uint32_t minutes  = d / 60000 ;
   String result ;
   if (minutes > 0) {
-    result.appendUnsigned (minutes) ;
-    result += " min " ;
+    result.addUnsigned (minutes) ;
+    result.addString (" min ") ;
   }
-  result.appendUnsigned (secondes) ;
-  result += " s " ;
-  result.appendUnsigned (ms / 100) ;
-  result.appendUnsigned ((ms / 10) % 10) ;
-  result.appendUnsigned (ms % 10) ;
+  result.addUnsigned (secondes) ;
+  result.addString (" s ") ;
+  result.addUnsigned (ms / 100) ;
+  result.addUnsigned ((ms / 10) % 10) ;
+  result.addUnsigned (ms % 10) ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void operator += (AC_OutputStream & inStream,
-                  const C_Timer & inTimer) {
-  clock_t duration ;
-  if (inTimer.mRunning) {
-    duration = ::clock () - inTimer.mStart ;
-  }else{
-    duration = inTimer.mEnd - inTimer.mStart ;
-  }
-  duration /= CLOCKS_PER_SEC / 100 ;
-  const clock_t cs = duration % 100 ;
-  const clock_t secondes = (duration / 100) % 60 ;
-  const clock_t minutes = duration / 6000 ;
-  if (minutes > 0) {
-    inStream.appendUnsigned (minutes) ;
-    inStream += " min " ;
-  }
-  inStream.appendUnsigned (secondes) ;
-  inStream += " s " ;
-  inStream.appendUnsigned (cs / 10) ;
-  inStream.appendUnsigned (cs % 10) ;
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -85,9 +85,9 @@ typedef enum {
 
 class String : public AC_OutputStream {
 //--- Constructors
-  public: String (void) ; // Empty string
+  public: explicit String (void) ; // Empty string
   public: String (const char * inCString) ; // From a C string
-  public: String (const utf32 * inUTF32String) ;
+  public: explicit String (const utf32 * inUTF32String) ;
   public: static String spaces (const int32_t inSpaceCount) ;
   
 //--- Virtual destructor

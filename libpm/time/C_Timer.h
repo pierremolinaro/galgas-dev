@@ -50,15 +50,6 @@ class C_Timer final {
   public: String timeString (void) const ;
   
   public: inline bool isRunning (void) const { return mRunning ; }
-
-  friend void operator += (AC_OutputStream & inStream,
-                           const C_Timer & inTimer) ;
-
 } ;
-
-//--------------------------------------------------------------------------------------------------
-
-void operator += (AC_OutputStream & inStream,
-                  const C_Timer & inTimer) ;
 
 //--------------------------------------------------------------------------------------------------

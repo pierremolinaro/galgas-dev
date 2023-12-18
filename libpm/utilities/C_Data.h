@@ -51,7 +51,7 @@ class C_Data final {
 
 //--- Append data
   public: void appendData (const C_Data & inData) ;
-  public: void appendString (const class String & inString) ;
+  public: void addString (const class String & inString) ;
   public: void appendUTF32Character (const utf32 inUnicodeChar) ;
   
 //---

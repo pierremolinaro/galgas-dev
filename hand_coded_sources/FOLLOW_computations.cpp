@@ -122,33 +122,33 @@ printFOLLOWsets (const TC_UniqueArray <TC_UniqueArray <uint64_t> > & inFOLLOWarr
                  const uint64_t inValuesCount,
                  const int32_t inIterationsCount) {
 //--- Print messages
-  inHTMLfile.outputRawData ("<p>") ;
-  inHTMLfile += "Calculus completed in " ;
-  inHTMLfile.appendSigned (inIterationsCount) ;
-  inHTMLfile += " iterations, " ;
-  inHTMLfile.appendUnsigned (inValuesCount) ;
-  inHTMLfile += " values ;\n"
+  inHTMLfile.addRawData ("<p>") ;
+  inHTMLfile.addString ("Calculus completed in ") ;
+  inHTMLfile.addSigned (inIterationsCount) ;
+  inHTMLfile.addString (" iterations, ") ;
+  inHTMLfile.addUnsigned (inValuesCount) ;
+  inHTMLfile.addString (" values ;\n"
                 "'$$' means the nonterminal symbol can be followed by empty string (see step 6) ;\n\n"
-                "the followings of terminal symbols are given for information.\n";
-  inHTMLfile.outputRawData ("</p>") ;
+                "the followings of terminal symbols are given for information.\n") ;
+  inHTMLfile.addRawData ("</p>") ;
 
 //--- Print FOLLOW sets (don't display last symbol, the '<>' added non terminal)
-  inHTMLfile.outputRawData ("<table class=\"result\">") ;
+  inHTMLfile.addRawData ("<table class=\"result\">") ;
   const int32_t symbolsToDisplayCount = inFOLLOWarray.count () - 1 ;
   for (int32_t i=0 ; i<symbolsToDisplayCount ; i++) {
     if (i != inVocabulary.getEmptyStringTerminalSymbolIndex ()) { // Don't print follower of empty string
-      inHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
+      inHTMLfile.addRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
       inVocabulary.printInFile (inHTMLfile, i COMMA_HERE) ;
-      inHTMLfile.outputRawData ("</code></td><td><code>") ;
+      inHTMLfile.addRawData ("</code></td><td><code>") ;
       const int32_t n = inFOLLOWarray (i COMMA_HERE).count () ;
       for (int32_t j=0 ; j<n ; j++) {
-        inHTMLfile += " " ;
+        inHTMLfile.addString (" ") ;
         inVocabulary.printInFile (inHTMLfile, (int32_t) inFOLLOWarray (i COMMA_HERE) (j COMMA_HERE) COMMA_HERE) ;
       }
-      inHTMLfile.outputRawData ("</code></td></tr>") ;
+      inHTMLfile.addRawData ("</code></td></tr>") ;
     }
   }
-  inHTMLfile.outputRawData ("</table>") ;
+  inHTMLfile.addRawData ("</table>") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -174,13 +174,13 @@ checkFOLLOWsets (C_HTMLString & ioHTMLFileContents,
 
 //--- Verifier les suivants
   if (inPopulateHTMLHelperString) {
-    ioHTMLFileContents.outputRawData ("<p>") ;
-    ioHTMLFileContents += "Every useful nonterminal symbol should:"
+    ioHTMLFileContents.addRawData ("<p>") ;
+    ioHTMLFileContents.addString ("Every useful nonterminal symbol should:"
                    " either have a non empty FOLLOW,"
                    " either can be followed by the empty string,"
                    " either both."
-                   " In no way none of them : it is an error." ;
-    ioHTMLFileContents.outputRawData ("</p>") ;
+                   " In no way none of them : it is an error.") ;
+    ioHTMLFileContents.addRawData ("</p>") ;
   }
 //--- Obtenir les non terminaux en erreur
   C_Relation nterminauxAverifier (inUsefulSymbols.configuration(), 0, C_BDD::kGreaterOrEqual, (uint32_t) inVocabulary.getTerminalSymbolsCount () COMMA_HERE) ;
@@ -192,38 +192,38 @@ checkFOLLOWsets (C_HTMLString & ioHTMLFileContents,
   const uint64_t n = ntErreurSuivants.value64Count () ;
   if (inVerboseOptionOn) {
     if (n == 0) {
-      gCout += "ok.\n" ;
+      gCout.addString ("ok.\n") ;
     }else{
-      gCout += "error.\n" ;
+      gCout.addString ("error.\n") ;
     }
     gCout.flush () ;
   }
   if (inPopulateHTMLHelperString) {
     if (n == 0) {
-      ioHTMLFileContents.outputRawData ("<p><span class=\"success\">") ;
-      ioHTMLFileContents += "All FOLLOW are correct." ;
-      ioHTMLFileContents.outputRawData ("</span></p>") ;
+      ioHTMLFileContents.addRawData ("<p><span class=\"success\">") ;
+      ioHTMLFileContents.addString ("All FOLLOW are correct.") ;
+      ioHTMLFileContents.addRawData ("</span></p>") ;
     }else{
-      ioHTMLFileContents.outputRawData ("<p><span class=\"error\">") ;
-      ioHTMLFileContents += "Error : " ;
-      ioHTMLFileContents.appendUnsigned (n) ;
-      ioHTMLFileContents += " nonterminal symbol" ;
-      ioHTMLFileContents += ((n > 1) ? "s have" : " has") ;
-      ioHTMLFileContents += " an empty FOLLOW :\n" ;
-      ioHTMLFileContents.outputRawData ("</span></p>") ;
+      ioHTMLFileContents.addRawData ("<p><span class=\"error\">") ;
+      ioHTMLFileContents.addString ("Error : ") ;
+      ioHTMLFileContents.addUnsigned (n) ;
+      ioHTMLFileContents.addString (" nonterminal symbol") ;
+      ioHTMLFileContents.addString ((n > 1) ? "s have" : " has") ;
+      ioHTMLFileContents.addString (" an empty FOLLOW :\n") ;
+      ioHTMLFileContents.addRawData ("</span></p>") ;
 
       TC_UniqueArray <uint64_t> array ;
       ntErreurSuivants.getValueArray (array) ;
-      ioHTMLFileContents.outputRawData ("<table class=\"result\">") ;
+      ioHTMLFileContents.addRawData ("<table class=\"result\">") ;
       for (int32_t i=0 ; i < array.count () ; i++) {
         const int32_t symbol = (int32_t) array (i COMMA_HERE) ;
         if (symbol >= inVocabulary.getTerminalSymbolsCount ()) {
-          ioHTMLFileContents.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
+          ioHTMLFileContents.addRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
           inVocabulary.printInFile (ioHTMLFileContents, symbol COMMA_HERE) ;
-          ioHTMLFileContents.outputRawData ("</code></td></tr>") ;
+          ioHTMLFileContents.addRawData ("</code></td></tr>") ;
         }
       }
-      ioHTMLFileContents.outputRawData ("</table>") ;
+      ioHTMLFileContents.addRawData ("</table>") ;
     }
   }
   return n == 0 ;
@@ -245,13 +245,13 @@ void FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
                           const bool inVerboseOptionOn) {
 //--- Console display
   if (inVerboseOptionOn) {
-    gCout += "  FOLLOW sets... " ;
+    gCout.addString ("  FOLLOW sets... ") ;
     gCout.flush () ;
   }
 //--- Print in BNF file
   if (inPopulateHTMLHelperString) {
-    ioHTMLFileContents.outputRawData ("<p></p>") ;
-    ioHTMLFileContents.appendCppTitleComment ("Computing the FOLLOW sets", "title") ;
+    ioHTMLFileContents.addRawData ("<p></p>") ;
+    ioHTMLFileContents.addCppTitleComment ("Computing the FOLLOW sets", "title") ;
   }
 //--- Compute FOLLOW (with BDD)
   int32_t iterationsCount = 0 ;

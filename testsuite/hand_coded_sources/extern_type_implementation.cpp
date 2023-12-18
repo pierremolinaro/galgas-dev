@@ -27,15 +27,15 @@ void GALGAS_complex::drop (void) {
 
 void GALGAS_complex::description (String & ioString,
                                   const int32_t /* inIndentation */) const {
-  ioString += "<@complex:" ;
+  ioString.addString ("<@complex:") ;
   if (mIsValid) {
-    ioString.appendDouble (mReal) ;
-    ioString += ", " ;
-    ioString.appendDouble (mImaginary) ;
+    ioString.addDouble (mReal) ;
+    ioString.addString (", ") ;
+    ioString.addDouble (mImaginary) ;
   }else{
-    ioString += "invalid" ;
+    ioString.addString ("invalid") ;
   }
-  ioString += ">" ;
+  ioString.addString (">") ;
 }
 
 //---------------------------------------------------------------------------*

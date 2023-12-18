@@ -33,13 +33,13 @@ mTimer () {
 
 void GALGAS_timer::description (String & ioString,
                                 const int32_t /* inIndentation */) const {
-  ioString += "<@timer: " ;
+  ioString.addString ("<@timer: ") ;
   if (!mIsValid) {
-    ioString += "not built" ;
+    ioString.addString ("not built") ;
   }else{
-    ioString += mTimer.timeString () ;
+    ioString.addString (mTimer.timeString ()) ;
   }
-  ioString += ">" ;
+  ioString.addString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------

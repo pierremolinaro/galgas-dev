@@ -36,7 +36,7 @@ class cMapNode ;
 //
 //--------------------------------------------------------------------------------------------------
 
-class cSharedMapRoot : public C_SharedObject {
+class cSharedMapRoot : public SharedObject {
 //--------------------------------- Attributes
   private: cMapNode * mRoot ;
   private: uint32_t mCount ;
@@ -183,7 +183,7 @@ class cMapNode {
 //--------------------------------------------------------------------------------------------------
 
 cSharedMapRoot::cSharedMapRoot (LOCATION_ARGS) :
-C_SharedObject (THERE),
+SharedObject (THERE),
 mRoot (nullptr),
 mCount (0),
 mOverridenMap (nullptr) {
@@ -315,13 +315,13 @@ static void internalDescription (cMapNode * inNode,
                                  uint32_t & ioIdx) {
   if (nullptr != inNode) {
     internalDescription (inNode->mInfPtr, ioString, inIndentation, ioIdx) ;
-    ioString += "\n" ;
-    ioString.writeStringMultiple ("| ", inIndentation) ;
-    ioString += "|-at " ;
-    ioString.appendUnsigned (ioIdx) ;
-    ioString += ": key '" ;
-    ioString += inNode->mKey ;
-    ioString += "' " ;
+    ioString.addString ("\n") ;
+    ioString.addStringMultiple ("| ", inIndentation) ;
+    ioString.addString ("|-at ") ;
+    ioString.addUnsigned (ioIdx) ;
+    ioString.addString (": key '") ;
+    ioString.addString (inNode->mKey) ;
+    ioString.addString ("' ") ;
     inNode->mAttributes.description (ioString, inIndentation + 2) ;
     ioIdx ++ ;
     internalDescription (inNode->mSupPtr, ioString, inIndentation, ioIdx) ;
@@ -334,16 +334,16 @@ void cSharedMapRoot::description (String & ioString,
                                   const int32_t inIndentation,
                                   const uint32_t inLevel) const {
   if (inLevel > 0) {
-    ioString += "\n" ;
-    ioString.writeStringMultiple ("| ", inIndentation + 1) ;
-    ioString += "override #" ;
-    ioString.appendUnsigned (inLevel) ;
+    ioString.addString ("\n") ;
+    ioString.addStringMultiple ("| ", inIndentation + 1) ;
+    ioString.addString ("override #") ;
+    ioString.addUnsigned (inLevel) ;
   }
-  ioString += " (" ;
-  ioString.appendUnsigned (count ()) ;
-  ioString += " object" ;
-  ioString += ((count () > 1) ? "s" : "") ;
-  ioString += "): " ;
+  ioString.addString (" (") ;
+  ioString.addUnsigned (count ()) ;
+  ioString.addString (" object") ;
+  ioString.addString ((count () > 1) ? "s" : "") ;
+  ioString.addString ("): ") ;
   uint32_t idx = 0 ;
   internalDescription (mRoot, ioString, inIndentation, idx) ;
 }
@@ -352,8 +352,8 @@ void cSharedMapRoot::description (String & ioString,
 
 void AC_GALGAS_map::description (String & ioString,
                                  const int32_t inIndentation) const {
-  ioString += "<map @" ;
-  ioString += staticTypeDescriptor ()->mGalgasTypeName ;
+  ioString.addString ("<map @") ;
+  ioString.addString (staticTypeDescriptor ()->mGalgasTypeName) ;
   if (isValid ()) {
     const cSharedMapRoot * currentMap = mSharedMap ;
     uint32_t level = 0 ;
@@ -363,9 +363,9 @@ void AC_GALGAS_map::description (String & ioString,
       currentMap = currentMap->mOverridenMap ;
     }
   }else{
-    ioString += " not built" ;
+    ioString.addString (" not built") ;
   }
-  ioString += ">" ;
+  ioString.addString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -438,9 +438,9 @@ const cMapNode * cSharedMapRoot::findNodeForKeyInMapOrInOverridenMaps (const GAL
     result = findEntryInMap (key, this) ;
     if (nullptr == result) {
       String errorMessage ;
-      errorMessage += "the '" ;
-      errorMessage += key ;
-      errorMessage += "' key is not defined in map" ;
+      errorMessage.addString ("the '") ;
+      errorMessage.addString (key) ;
+      errorMessage.addString ("' key is not defined in map") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
     }
   }
@@ -981,10 +981,9 @@ GALGAS_location cSharedMapRoot::locationForKey (const GALGAS_string & inKey,
     const String key = inKey.stringValue () ;
     cMapNode * node = findEntryInMap (key, this) ;
     if (nullptr == node) {
-      String message ;
-      message += "'locationForKey' map reader run-time error: the '" ;
-      message += key ;
-      message += "' does not exist in map" ;
+      String message = "'locationForKey' map reader run-time error: the '" ;
+      message.addString (key) ;
+      message.addString ("' does not exist in map") ;
       inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
     }else{
       cMapElement * p = (cMapElement *) node->mAttributes.ptr () ;
@@ -1228,10 +1227,9 @@ const cMapElement * cSharedMapRoot::searchForReadingAttribute (const GALGAS_stri
       macroValidSharedObject (result, cMapElement) ;
     }else{
     //--- Build error message
-      String message ;
-      message += "cannot read attribute in map: the '" ;
-      message += key ;
-      message += "' key does not exist" ;
+      String message = "cannot read attribute in map: the '" ;
+      message.addString (key) ;
+      message.addString ("' key does not exist") ;
     //--- Emit error message
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }
@@ -1275,10 +1273,9 @@ cMapElement * cSharedMapRoot::searchForReadWriteAttribute (const GALGAS_string &
       macroUniqueSharedObject (result) ;
     }else if (inErrorOnUnknownKey) {
     //--- Build error message
-      String message ;
-      message += "cannot read attribute in map: the '" ;
-      message += key ;
-      message += "' key does not exist" ;
+      String message = "cannot read attribute in map: the '" ;
+      message.addString (key) ;
+      message.addString ("' key does not exist") ;
     //--- Emit error message
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }
@@ -1498,13 +1495,13 @@ void cSharedMapRoot::performRemove (GALGAS_lstring & inKey,
         const utf32 c = removeErrorMessage (i COMMA_HERE) ;
         if (perCentFound) {
           if (UNICODE_VALUE (c) == 'K') {
-            message += key ;
+            message.addString (key) ;
           }
           perCentFound = false ;
         }else if (UNICODE_VALUE (c) == '%') {
           perCentFound = true ;
         }else{
-          message.appendUnicodeCharacter (c COMMA_HERE) ;
+          message.addUnicodeChar (c COMMA_HERE) ;
         }
       }
     //--- Emit error message

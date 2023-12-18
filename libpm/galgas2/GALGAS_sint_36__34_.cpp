@@ -138,7 +138,7 @@ GALGAS_string GALGAS_sint_36__34_::getter_string (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
     String s ;
-    s.appendSigned (mSInt64Value) ;
+    s.addSigned (mSInt64Value) ;
     result = GALGAS_string (s) ;
   }
   return result ;
@@ -151,8 +151,8 @@ GALGAS_string GALGAS_sint_36__34_::getter_hexString (UNUSED_LOCATION_ARGS) const
   if (isValid ()) {
     const uint64_t v = (uint64_t) mSInt64Value ;
     String s ;
-    s += "0x" ;
-    s.appendUnsignedHex16 (v) ;
+    s.addString ("0x") ;
+    s.addUnsignedHex16 (v) ;
     result = GALGAS_string (s) ;
   }
   return result ;
@@ -171,7 +171,7 @@ GALGAS_string GALGAS_sint_36__34_::getter_hexStringSeparatedBy (const GALGAS_cha
       inCompiler->onTheFlyRunTimeError ("last argument should be > 0" COMMA_THERE) ;
     }else{
       String s ;
-      s.appendUnsignedHex ((uint64_t) mSInt64Value) ;
+      s.addUnsignedHex ((uint64_t) mSInt64Value) ;
       const utf32 separator = inSeparator.charValue() ;
       for (int i = (int) (s.length () - group) ; i > 0 ; i -= group) {
         s.insertCharacterAtIndex (separator, i COMMA_HERE) ;
@@ -188,7 +188,7 @@ GALGAS_string GALGAS_sint_36__34_::getter_xString (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
     const uint64_t v = (uint64_t) mSInt64Value ;
-    String s ; s.appendUnsignedHex16 (v) ;
+    String s ; s.addUnsignedHex16 (v) ;
     result = GALGAS_string (s) ;
   }
   return result ;
@@ -198,9 +198,9 @@ GALGAS_string GALGAS_sint_36__34_::getter_xString (UNUSED_LOCATION_ARGS) const {
 
 void GALGAS_sint_36__34_::description (String & ioString,
                                        const int32_t /* inIndentation */) const {
-  ioString += "<@sint64:" ;
-  ioString.appendSigned (mSInt64Value) ;
-  ioString += ">" ;
+  ioString.addString ("<@sint64:") ;
+  ioString.addSigned (mSInt64Value) ;
+  ioString.addString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -39,7 +39,7 @@ class C_HTMLString : public String {
 //  public: C_HTMLString & operator = (const C_HTMLString & inString) ;
 
 //--- Output data, without HTML formatting
-  public: void outputRawData (const char * in_Cstring) ;
+  public: void addRawData (const char * in_Cstring) ;
 
 //--- General stream methods
   protected: virtual void performActualCharArrayOutput (const char * inCharArray,
@@ -49,7 +49,7 @@ class C_HTMLString : public String {
                                                             const int32_t inArrayCount) ;
 
 //--- Method for writing a HTML table
-  public: void appendCppTitleComment (const String & inCommentString,
+  public: void addCppTitleComment (const String & inCommentString,
                                        const String & inTableStyleClass) ;
 
 //--- Write start code

@@ -6,13 +6,13 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "bdd/C_Relation.h"
-#include "utilities/C_SharedObject.h"
+#include "utilities/SharedObject.h"
 
 //--------------------------------------------------------------------------------------------------
 //  cVariablesInRelationConfiguration
 //--------------------------------------------------------------------------------------------------
 
-class cVariablesInRelationConfiguration : public C_SharedObject {
+class cVariablesInRelationConfiguration : public SharedObject {
 //--- Constructor
   public: cVariablesInRelationConfiguration (LOCATION_ARGS) ;
   public: cVariablesInRelationConfiguration (cVariablesInRelationConfiguration * inPtr COMMA_LOCATION_ARGS) ;
@@ -81,7 +81,7 @@ class cVariablesInRelationConfiguration : public C_SharedObject {
 
 cVariablesInRelationConfiguration::
 cVariablesInRelationConfiguration (LOCATION_ARGS) :
-C_SharedObject (THERE),
+SharedObject (THERE),
 mBDDStartIndexArray (),
 mVariableNameArray (),
 mVariableTypeArray () {
@@ -92,7 +92,7 @@ mVariableTypeArray () {
 cVariablesInRelationConfiguration::
 cVariablesInRelationConfiguration (cVariablesInRelationConfiguration * inPtr
                                    COMMA_LOCATION_ARGS) :
-C_SharedObject (THERE),
+SharedObject (THERE),
 mBDDStartIndexArray (),
 mVariableNameArray (),
 mVariableTypeArray () {

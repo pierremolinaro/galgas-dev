@@ -31,7 +31,7 @@
 #include "galgas2/LocationInSource.h"
 #include "galgas2/SourceTextInString.h"
 #include "galgas2/C_IssueWithFixIt.h"
-#include "utilities/C_SharedObject.h"
+#include "utilities/SharedObject.h"
 
 //--------------------------------------------------------------------------------------------------
 

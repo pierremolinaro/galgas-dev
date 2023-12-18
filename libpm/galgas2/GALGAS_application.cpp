@@ -63,7 +63,7 @@ typeComparisonResult GALGAS_application::objectCompare (const GALGAS_application
 
 void GALGAS_application::description (String & ioString,
                                       const int32_t /* inIndentation */) const {
-  ioString += "<@application:not built>" ;
+  ioString.addString ("<@application:not built>") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -363,10 +363,10 @@ GALGAS_string GALGAS_application::constructor_commandLineArgumentAtIndex (const 
       result = GALGAS_string (commandLineArgumentAtIndex (idx)) ;
     }else{
       String message ;
-      message += "@application.commandLineArgumentAtIndex: index " ;
-      message.appendUnsigned (idx) ;
-      message += " >= argument count = " ;
-      message.appendUnsigned (commandLineArgumentCount ()) ;
+      message.addString ("@application.commandLineArgumentAtIndex: index ") ;
+      message.addUnsigned (idx) ;
+      message.addString (" >= argument count = ") ;
+      message.addUnsigned (commandLineArgumentCount ()) ;
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }
   }

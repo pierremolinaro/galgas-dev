@@ -45,7 +45,7 @@ end
        "C_Timer.cpp",
        "C_DateTime.cpp",
        "C_PrologueEpilogue.cpp",
-       "C_SharedObject.cpp",
+       "SharedObject.cpp",
        "BigSigned-add.cpp",
        "BigSigned-bit.cpp",
        "BigSigned-chunk-operations.cpp",

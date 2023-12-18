@@ -126,7 +126,7 @@ override method @syntaxSendInstructionForGeneration generateInstruction
 #---
   [!?ioUnusedVariableCppNameSet removeKey !syntaxDirectedTranslationResultVarName ()]
   ioGeneratedCode += "if (" + sourceVar + ".isValid ()) {\n"
-                   + "  " + syntaxDirectedTranslationResultVarName () + " += " + sourceVar + ".stringValue () ;\n"
+                   + "  " + syntaxDirectedTranslationResultVarName () + ".addString (" + sourceVar + ".stringValue ()) ;\n"
                    + "}\n"
 }
 

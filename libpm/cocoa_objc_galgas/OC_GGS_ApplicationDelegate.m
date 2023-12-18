@@ -233,12 +233,12 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 //---- Build string for displaying
   NSMutableString * s = [NSMutableString new] ;
   if ([self prefixByToolUtility]) {
-    [s appendString:[self toolUtilityPrefix]] ;
-    [s appendString:@" "] ;
+    [s appendString: [self toolUtilityPrefix]] ;
+    [s appendString: @" "] ;
   }
   for (NSUInteger i=0 ; i<[arguments count] ; i++) {
-    [s appendString:[arguments objectAtIndex:i]] ;
-    [s appendString:@" "] ;  
+    [s appendString: [arguments objectAtIndex:i]] ;
+    [s appendString: @" "] ;
   }
 //---
   return s ;

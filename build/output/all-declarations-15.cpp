@@ -8,6 +8,249 @@
 #include "all-declarations-15.h"
 
 //--------------------------------------------------------------------------------------------------
+// @weakReferenceTypeForGeneration reference class
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_weakReferenceTypeForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticTypeForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mReferenceClassType.printNonNullClassInstanceProperties ("mReferenceClassType") ;
+    mProperty_mSuperClass.printNonNullClassInstanceProperties ("mSuperClass") ;
+    mProperty_mAllTypedPropertyList.printNonNullClassInstanceProperties ("mAllTypedPropertyList") ;
+    mProperty_mTypedAttributeList.printNonNullClassInstanceProperties ("mTypedAttributeList") ;
+    mProperty_mGenerateHeaderInSeparateFile.printNonNullClassInstanceProperties ("mGenerateHeaderInSeparateFile") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+typeComparisonResult cPtr_weakReferenceTypeForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_weakReferenceTypeForGeneration * p = (const cPtr_weakReferenceTypeForGeneration *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_weakReferenceTypeForGeneration) ;
+  if (kOperandEqual == result) {
+    result = mProperty_mSelfTypeEntry.objectCompare (p->mProperty_mSelfTypeEntry) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mReferenceClassType.objectCompare (p->mProperty_mReferenceClassType) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mSuperClass.objectCompare (p->mProperty_mSuperClass) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mAllTypedPropertyList.objectCompare (p->mProperty_mAllTypedPropertyList) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mTypedAttributeList.objectCompare (p->mProperty_mTypedAttributeList) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mGenerateHeaderInSeparateFile.objectCompare (p->mProperty_mGenerateHeaderInSeparateFile) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+
+typeComparisonResult GALGAS_weakReferenceTypeForGeneration::objectCompare (const GALGAS_weakReferenceTypeForGeneration & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = kOperandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_weakReferenceTypeForGeneration::GALGAS_weakReferenceTypeForGeneration (void) :
+GALGAS_semanticTypeForGeneration () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_weakReferenceTypeForGeneration::GALGAS_weakReferenceTypeForGeneration (const cPtr_weakReferenceTypeForGeneration * inSourcePtr) :
+GALGAS_semanticTypeForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_weakReferenceTypeForGeneration) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_weakReferenceTypeForGeneration GALGAS_weakReferenceTypeForGeneration::constructor_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mSelfTypeEntry,
+                                                                                              const GALGAS_unifiedTypeMapEntry & inAttribute_mReferenceClassType,
+                                                                                              const GALGAS_unifiedTypeMapEntry & inAttribute_mSuperClass,
+                                                                                              const GALGAS_typedPropertyList & inAttribute_mAllTypedPropertyList,
+                                                                                              const GALGAS_typedPropertyList & inAttribute_mTypedAttributeList,
+                                                                                              const GALGAS_bool & inAttribute_mGenerateHeaderInSeparateFile
+                                                                                              COMMA_LOCATION_ARGS) {
+  GALGAS_weakReferenceTypeForGeneration result ;
+  if (inAttribute_mSelfTypeEntry.isValid () && inAttribute_mReferenceClassType.isValid () && inAttribute_mSuperClass.isValid () && inAttribute_mAllTypedPropertyList.isValid () && inAttribute_mTypedAttributeList.isValid () && inAttribute_mGenerateHeaderInSeparateFile.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_weakReferenceTypeForGeneration (inAttribute_mSelfTypeEntry, inAttribute_mReferenceClassType, inAttribute_mSuperClass, inAttribute_mAllTypedPropertyList, inAttribute_mTypedAttributeList, inAttribute_mGenerateHeaderInSeparateFile COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_unifiedTypeMapEntry GALGAS_weakReferenceTypeForGeneration::readProperty_mReferenceClassType (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_unifiedTypeMapEntry () ;
+  }else{
+    cPtr_weakReferenceTypeForGeneration * p = (cPtr_weakReferenceTypeForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_weakReferenceTypeForGeneration) ;
+    return p->mProperty_mReferenceClassType ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_unifiedTypeMapEntry GALGAS_weakReferenceTypeForGeneration::readProperty_mSuperClass (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_unifiedTypeMapEntry () ;
+  }else{
+    cPtr_weakReferenceTypeForGeneration * p = (cPtr_weakReferenceTypeForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_weakReferenceTypeForGeneration) ;
+    return p->mProperty_mSuperClass ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_typedPropertyList GALGAS_weakReferenceTypeForGeneration::readProperty_mAllTypedPropertyList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_typedPropertyList () ;
+  }else{
+    cPtr_weakReferenceTypeForGeneration * p = (cPtr_weakReferenceTypeForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_weakReferenceTypeForGeneration) ;
+    return p->mProperty_mAllTypedPropertyList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_typedPropertyList GALGAS_weakReferenceTypeForGeneration::readProperty_mTypedAttributeList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_typedPropertyList () ;
+  }else{
+    cPtr_weakReferenceTypeForGeneration * p = (cPtr_weakReferenceTypeForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_weakReferenceTypeForGeneration) ;
+    return p->mProperty_mTypedAttributeList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_weakReferenceTypeForGeneration::readProperty_mGenerateHeaderInSeparateFile (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_bool () ;
+  }else{
+    cPtr_weakReferenceTypeForGeneration * p = (cPtr_weakReferenceTypeForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_weakReferenceTypeForGeneration) ;
+    return p->mProperty_mGenerateHeaderInSeparateFile ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @weakReferenceTypeForGeneration class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_weakReferenceTypeForGeneration::cPtr_weakReferenceTypeForGeneration (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                                                                          const GALGAS_unifiedTypeMapEntry & in_mReferenceClassType,
+                                                                          const GALGAS_unifiedTypeMapEntry & in_mSuperClass,
+                                                                          const GALGAS_typedPropertyList & in_mAllTypedPropertyList,
+                                                                          const GALGAS_typedPropertyList & in_mTypedAttributeList,
+                                                                          const GALGAS_bool & in_mGenerateHeaderInSeparateFile
+                                                                          COMMA_LOCATION_ARGS) :
+cPtr_semanticTypeForGeneration (in_mSelfTypeEntry COMMA_THERE),
+mProperty_mReferenceClassType (in_mReferenceClassType),
+mProperty_mSuperClass (in_mSuperClass),
+mProperty_mAllTypedPropertyList (in_mAllTypedPropertyList),
+mProperty_mTypedAttributeList (in_mTypedAttributeList),
+mProperty_mGenerateHeaderInSeparateFile (in_mGenerateHeaderInSeparateFile) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * cPtr_weakReferenceTypeForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_weakReferenceTypeForGeneration ;
+}
+
+void cPtr_weakReferenceTypeForGeneration::description (String & ioString,
+                                                       const int32_t inIndentation) const {
+  ioString.addString ("[@weakReferenceTypeForGeneration:") ;
+  mProperty_mSelfTypeEntry.description (ioString, inIndentation+1) ;
+  ioString.addString (", ") ;
+  mProperty_mReferenceClassType.description (ioString, inIndentation+1) ;
+  ioString.addString (", ") ;
+  mProperty_mSuperClass.description (ioString, inIndentation+1) ;
+  ioString.addString (", ") ;
+  mProperty_mAllTypedPropertyList.description (ioString, inIndentation+1) ;
+  ioString.addString (", ") ;
+  mProperty_mTypedAttributeList.description (ioString, inIndentation+1) ;
+  ioString.addString (", ") ;
+  mProperty_mGenerateHeaderInSeparateFile.description (ioString, inIndentation+1) ;
+  ioString.addString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_weakReferenceTypeForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_weakReferenceTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mReferenceClassType, mProperty_mSuperClass, mProperty_mAllTypedPropertyList, mProperty_mTypedAttributeList, mProperty_mGenerateHeaderInSeparateFile COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @weakReferenceTypeForGeneration generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_weakReferenceTypeForGeneration ("weakReferenceTypeForGeneration",
+                                                       & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_weakReferenceTypeForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_weakReferenceTypeForGeneration ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_weakReferenceTypeForGeneration::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_weakReferenceTypeForGeneration (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_weakReferenceTypeForGeneration GALGAS_weakReferenceTypeForGeneration::extractObject (const GALGAS_object & inObject,
+                                                                                            Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) {
+  GALGAS_weakReferenceTypeForGeneration result ;
+  const GALGAS_weakReferenceTypeForGeneration * p = (const GALGAS_weakReferenceTypeForGeneration *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_weakReferenceTypeForGeneration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("weakReferenceTypeForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult GALGAS_weakReferenceTypeForGeneration_2D_weak::objectCompare (const GALGAS_weakReferenceTypeForGeneration_2D_weak & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
@@ -237,13 +480,13 @@ const C_galgas_type_descriptor * cPtr_enumDeclarationAST::classDescriptor (void)
 
 void cPtr_enumDeclarationAST::description (String & ioString,
                                            const int32_t inIndentation) const {
-  ioString += "[@enumDeclarationAST:" ;
+  ioString.addString ("[@enumDeclarationAST:") ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mEnumTypeName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mConstantList.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -398,11 +641,11 @@ const C_galgas_type_descriptor * cPtr_enumTypeForGeneration::classDescriptor (vo
 
 void cPtr_enumTypeForGeneration::description (String & ioString,
                                               const int32_t inIndentation) const {
-  ioString += "[@enumTypeForGeneration:" ;
+  ioString.addString ("[@enumTypeForGeneration:") ;
   mProperty_mSelfTypeEntry.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mConstantList.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -782,23 +1025,23 @@ const C_galgas_type_descriptor * cPtr_externTypeDeclarationAST::classDescriptor 
 
 void cPtr_externTypeDeclarationAST::description (String & ioString,
                                                  const int32_t inIndentation) const {
-  ioString += "[@externTypeDeclarationAST:" ;
+  ioString.addString ("[@externTypeDeclarationAST:") ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mExternTypeName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mCppPreDeclarationCode.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mCppClassCode.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mExternTypeConstructorList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mExternTypeGetterList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mExternTypeSetterList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mExternTypeMethodList.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -991,15 +1234,15 @@ const C_galgas_type_descriptor * cPtr_externTypeDeclarationForGeneration::classD
 
 void cPtr_externTypeDeclarationForGeneration::description (String & ioString,
                                                            const int32_t inIndentation) const {
-  ioString += "[@externTypeDeclarationForGeneration:" ;
+  ioString.addString ("[@externTypeDeclarationForGeneration:") ;
   mProperty_mSelfTypeEntry.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mExternTypeName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mCppPreDeclarationCode.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mCppClassCode.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1303,15 +1546,15 @@ const C_galgas_type_descriptor * cPtr_graphDeclarationAST::classDescriptor (void
 
 void cPtr_graphDeclarationAST::description (String & ioString,
                                             const int32_t inIndentation) const {
-  ioString += "[@graphDeclarationAST:" ;
+  ioString.addString ("[@graphDeclarationAST:") ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mGraphTypeName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mAssociatedListTypeName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mInsertModifierList.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1504,15 +1747,15 @@ const C_galgas_type_descriptor * cPtr_graphDeclarationForGeneration::classDescri
 
 void cPtr_graphDeclarationForGeneration::description (String & ioString,
                                                       const int32_t inIndentation) const {
-  ioString += "[@graphDeclarationForGeneration:" ;
+  ioString.addString ("[@graphDeclarationForGeneration:") ;
   mProperty_mSelfTypeEntry.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mAssociatedListTypeEntry.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mAssociatedListElementTypeEntry.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mInsertModifierList.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1816,15 +2059,15 @@ const C_galgas_type_descriptor * cPtr_listDeclarationAST::classDescriptor (void)
 
 void cPtr_listDeclarationAST::description (String & ioString,
                                            const int32_t inIndentation) const {
-  ioString += "[@listDeclarationAST:" ;
+  ioString.addString ("[@listDeclarationAST:") ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mListTypeName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mPropertyList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_usefullList.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1998,13 +2241,13 @@ const C_galgas_type_descriptor * cPtr_listTypeForGeneration::classDescriptor (vo
 
 void cPtr_listTypeForGeneration::description (String & ioString,
                                               const int32_t inIndentation) const {
-  ioString += "[@listTypeForGeneration:" ;
+  ioString.addString ("[@listTypeForGeneration:") ;
   mProperty_mSelfTypeEntry.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mListElementTypeIndex.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mTypedAttributeList.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2289,13 +2532,13 @@ const C_galgas_type_descriptor * cPtr_listmapDeclarationAST::classDescriptor (vo
 
 void cPtr_listmapDeclarationAST::description (String & ioString,
                                               const int32_t inIndentation) const {
-  ioString += "[@listmapDeclarationAST:" ;
+  ioString.addString ("[@listmapDeclarationAST:") ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mListmapTypeName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mAssociatedListTypeName.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2488,15 +2731,15 @@ const C_galgas_type_descriptor * cPtr_listmapTypeForGeneration::classDescriptor 
 
 void cPtr_listmapTypeForGeneration::description (String & ioString,
                                                  const int32_t inIndentation) const {
-  ioString += "[@listmapTypeForGeneration:" ;
+  ioString.addString ("[@listmapTypeForGeneration:") ;
   mProperty_mSelfTypeEntry.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mAssociatedListTypeIndex.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mAssociatedListTypedAttributeList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mAssociatedListMapElementTypeIndex.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2800,15 +3043,15 @@ const C_galgas_type_descriptor * cPtr_dictDeclarationAST::classDescriptor (void)
 
 void cPtr_dictDeclarationAST::description (String & ioString,
                                            const int32_t inIndentation) const {
-  ioString += "[@dictDeclarationAST:" ;
+  ioString.addString ("[@dictDeclarationAST:") ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mDictTypeName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mKeyTypeName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mPropertyList.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3020,17 +3263,17 @@ const C_galgas_type_descriptor * cPtr_dictTypeForGeneration::classDescriptor (vo
 
 void cPtr_dictTypeForGeneration::description (String & ioString,
                                               const int32_t inIndentation) const {
-  ioString += "[@dictTypeForGeneration:" ;
+  ioString.addString ("[@dictTypeForGeneration:") ;
   mProperty_mSelfTypeEntry.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mElementTypeEntry.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mDictTypeName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mTypedAttributeList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mKeyTypeName.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3391,21 +3634,21 @@ const C_galgas_type_descriptor * cPtr_mapDeclarationAST::classDescriptor (void) 
 
 void cPtr_mapDeclarationAST::description (String & ioString,
                                           const int32_t inIndentation) const {
-  ioString += "[@mapDeclarationAST:" ;
+  ioString.addString ("[@mapDeclarationAST:") ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mMapTypeName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mPropertyList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mInsertMethodList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mSearchMethodList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mRemoveMethodList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mInsertOrReplaceDeclarationListAST.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3674,23 +3917,23 @@ const C_galgas_type_descriptor * cPtr_mapTypeForGeneration::classDescriptor (voi
 
 void cPtr_mapTypeForGeneration::description (String & ioString,
                                              const int32_t inIndentation) const {
-  ioString += "[@mapTypeForGeneration:" ;
+  ioString.addString ("[@mapTypeForGeneration:") ;
   mProperty_mSelfTypeEntry.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mElementTypeEntry.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mMapTypeName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mTypedAttributeList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mInsertMethodList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mSearchMethodList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mRemoveMethodList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mHasInsertOrReplaceModifier.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3994,15 +4237,15 @@ const C_galgas_type_descriptor * cPtr_sortedListDeclarationAST::classDescriptor 
 
 void cPtr_sortedListDeclarationAST::description (String & ioString,
                                                  const int32_t inIndentation) const {
-  ioString += "[@sortedListDeclarationAST:" ;
+  ioString.addString ("[@sortedListDeclarationAST:") ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mSortedListTypeName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mPropertyList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mSortDescriptorList.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4195,15 +4438,15 @@ const C_galgas_type_descriptor * cPtr_sortedListTypeForGeneration::classDescript
 
 void cPtr_sortedListTypeForGeneration::description (String & ioString,
                                                     const int32_t inIndentation) const {
-  ioString += "[@sortedListTypeForGeneration:" ;
+  ioString.addString ("[@sortedListTypeForGeneration:") ;
   mProperty_mSelfTypeEntry.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mListElementTypeIndex.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mTypedAttributeList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mSortDescriptorList.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4507,15 +4750,15 @@ const C_galgas_type_descriptor * cPtr_structDeclarationAST::classDescriptor (voi
 
 void cPtr_structDeclarationAST::description (String & ioString,
                                              const int32_t inIndentation) const {
-  ioString += "[@structDeclarationAST:" ;
+  ioString.addString ("[@structDeclarationAST:") ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mStructTypeName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mStructurePropertyList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mEnumeratedElementTypeName.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4727,17 +4970,17 @@ const C_galgas_type_descriptor * cPtr_structTypeForGeneration::classDescriptor (
 
 void cPtr_structTypeForGeneration::description (String & ioString,
                                                 const int32_t inIndentation) const {
-  ioString += "[@structTypeForGeneration:" ;
+  ioString.addString ("[@structTypeForGeneration:") ;
   mProperty_mSelfTypeEntry.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mTypedPropertyList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mConstructorArgumentList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mConstructorInitializationCode.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mConstructorNeedsCompilerVar.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5022,13 +5265,13 @@ const C_galgas_type_descriptor * cPtr_typealiasDeclarationAST::classDescriptor (
 
 void cPtr_typealiasDeclarationAST::description (String & ioString,
                                                 const int32_t inIndentation) const {
-  ioString += "[@typealiasDeclarationAST:" ;
+  ioString.addString ("[@typealiasDeclarationAST:") ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mAliasTypeName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mDefinedTypeName.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5202,13 +5445,13 @@ const C_galgas_type_descriptor * cPtr_aliasTypeForGeneration::classDescriptor (v
 
 void cPtr_aliasTypeForGeneration::description (String & ioString,
                                                const int32_t inIndentation) const {
-  ioString += "[@aliasTypeForGeneration:" ;
+  ioString.addString ("[@aliasTypeForGeneration:") ;
   mProperty_mSelfTypeEntry.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mAliasTypeName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mReferencedType.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5531,17 +5774,17 @@ const C_galgas_type_descriptor * cPtr_abstractExtensionGetterAST::classDescripto
 
 void cPtr_abstractExtensionGetterAST::description (String & ioString,
                                                    const int32_t inIndentation) const {
-  ioString += "[@abstractExtensionGetterAST:" ;
+  ioString.addString ("[@abstractExtensionGetterAST:") ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mTypeName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mAbstractExtensionGetterName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mAbstractExtensionGetterFormalInputParameterList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mAbstractExtensionGetterReturnedTypeName.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5758,19 +6001,19 @@ const C_galgas_type_descriptor * cPtr_abstractExtensionGetterForGeneration::clas
 
 void cPtr_abstractExtensionGetterForGeneration::description (String & ioString,
                                                              const int32_t inIndentation) const {
-  ioString += "[@abstractExtensionGetterForGeneration:" ;
+  ioString.addString ("[@abstractExtensionGetterForGeneration:") ;
   mProperty_mHasHeader.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mImplementationCppFileName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mReceiverType.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mAbstractExtensionGetterName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mResultType.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mAbstractExtensionGetterFormalParameterList.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6074,15 +6317,15 @@ const C_galgas_type_descriptor * cPtr_abstractExtensionMethodAST::classDescripto
 
 void cPtr_abstractExtensionMethodAST::description (String & ioString,
                                                    const int32_t inIndentation) const {
-  ioString += "[@abstractExtensionMethodAST:" ;
+  ioString.addString ("[@abstractExtensionMethodAST:") ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mTypeName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mAbstractExtensionMethodName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mAbstractExtensionMethodFormalParameterList.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6280,17 +6523,17 @@ const C_galgas_type_descriptor * cPtr_abstractExtensionMethodForGeneration::clas
 
 void cPtr_abstractExtensionMethodForGeneration::description (String & ioString,
                                                              const int32_t inIndentation) const {
-  ioString += "[@abstractExtensionMethodForGeneration:" ;
+  ioString.addString ("[@abstractExtensionMethodForGeneration:") ;
   mProperty_mHasHeader.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mImplementationCppFileName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mReceiverType.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mAbstractExtensionMethodName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mAbstractExtensionMethodFormalParameterList.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6594,15 +6837,15 @@ const C_galgas_type_descriptor * cPtr_abstractExtensionSetterAST::classDescripto
 
 void cPtr_abstractExtensionSetterAST::description (String & ioString,
                                                    const int32_t inIndentation) const {
-  ioString += "[@abstractExtensionSetterAST:" ;
+  ioString.addString ("[@abstractExtensionSetterAST:") ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mTypeName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mAbstractExtensionSetterName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mAbstractExtensionSetterFormalParameterList.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6800,17 +7043,17 @@ const C_galgas_type_descriptor * cPtr_abstractExtensionSetterForGeneration::clas
 
 void cPtr_abstractExtensionSetterForGeneration::description (String & ioString,
                                                              const int32_t inIndentation) const {
-  ioString += "[@abstractExtensionSetterForGeneration:" ;
+  ioString.addString ("[@abstractExtensionSetterForGeneration:") ;
   mProperty_mHasHeader.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mImplementationCppFileName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mReceiverType.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mAbstractExtensionSetterName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mAbstractExtensionSetterFormalParameterList.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7209,25 +7452,25 @@ const C_galgas_type_descriptor * cPtr_extensionGetterAST::classDescriptor (void)
 
 void cPtr_extensionGetterAST::description (String & ioString,
                                            const int32_t inIndentation) const {
-  ioString += "[@extensionGetterAST:" ;
+  ioString.addString ("[@extensionGetterAST:") ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_requiresSelfForAccessingProperty.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mTypeName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mExtensionGetterName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mExtensionGetterFormalInputParameterList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mExtensionGetterReturnedTypeName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mExtensionGetterReturnedVariableName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mExtensionGetterInstructionList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mEndOfReaderLocation.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7520,27 +7763,27 @@ const C_galgas_type_descriptor * cPtr_extensionGetterForGeneration::classDescrip
 
 void cPtr_extensionGetterForGeneration::description (String & ioString,
                                                      const int32_t inIndentation) const {
-  ioString += "[@extensionGetterForGeneration:" ;
+  ioString.addString ("[@extensionGetterForGeneration:") ;
   mProperty_mHasHeader.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mImplementationCppFileName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mReceiverType.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mExtensionGetterName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mImplementedAsFunction.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mResultType.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mResultVarCppName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mExtensionGetterFormalParameterList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mTypedAttributeList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mSemanticInstructionListForGeneration.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7901,21 +8144,21 @@ const C_galgas_type_descriptor * cPtr_extensionMethodAST::classDescriptor (void)
 
 void cPtr_extensionMethodAST::description (String & ioString,
                                            const int32_t inIndentation) const {
-  ioString += "[@extensionMethodAST:" ;
+  ioString.addString ("[@extensionMethodAST:") ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_requiresSelfForAccessingProperty.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mTypeName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mExtensionMethodName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mExtensionMethodFormalParameterList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mExtensionMethodInstructionList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mEndOfMethodLocation.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8170,23 +8413,23 @@ const C_galgas_type_descriptor * cPtr_extensionMethodForGeneration::classDescrip
 
 void cPtr_extensionMethodForGeneration::description (String & ioString,
                                                      const int32_t inIndentation) const {
-  ioString += "[@extensionMethodForGeneration:" ;
+  ioString.addString ("[@extensionMethodForGeneration:") ;
   mProperty_mHasHeader.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mImplementationCppFileName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mReceiverType.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mExtensionMethodName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mImplementedAsFunction.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mExtensionMethodFormalParameterList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mTypedAttributeList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mSemanticInstructionListForGeneration.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8547,21 +8790,21 @@ const C_galgas_type_descriptor * cPtr_extensionSetterAST::classDescriptor (void)
 
 void cPtr_extensionSetterAST::description (String & ioString,
                                            const int32_t inIndentation) const {
-  ioString += "[@extensionSetterAST:" ;
+  ioString.addString ("[@extensionSetterAST:") ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_requiresSelfForAccessingProperty.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mTypeName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mExtensionSetterName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mExtensionSetterFormalParameterList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mExtensionSetterInstructionList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mEndOfSetterDeclarationLocation.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8816,23 +9059,23 @@ const C_galgas_type_descriptor * cPtr_extensionSetterForGeneration::classDescrip
 
 void cPtr_extensionSetterForGeneration::description (String & ioString,
                                                      const int32_t inIndentation) const {
-  ioString += "[@extensionSetterForGeneration:" ;
+  ioString.addString ("[@extensionSetterForGeneration:") ;
   mProperty_mHasHeader.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mImplementationCppFileName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mReceiverType.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mExtensionSetterName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mImplementedAsFunction.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mExtensionSetterFormalParameterList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mTypedAttributeList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mSemanticInstructionListForGeneration.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9155,17 +9398,17 @@ const C_galgas_type_descriptor * cPtr_overridingAbstractExtensionGetterAST::clas
 
 void cPtr_overridingAbstractExtensionGetterAST::description (String & ioString,
                                                              const int32_t inIndentation) const {
-  ioString += "[@overridingAbstractExtensionGetterAST:" ;
+  ioString.addString ("[@overridingAbstractExtensionGetterAST:") ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mTypeName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mAbstractExtensionGetterName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mAbstractExtensionGetterFormalInputParameterList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mAbstractExtensionGetterReturnedTypeName.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9358,15 +9601,15 @@ const C_galgas_type_descriptor * cPtr_overridingAbstractExtensionMethodAST::clas
 
 void cPtr_overridingAbstractExtensionMethodAST::description (String & ioString,
                                                              const int32_t inIndentation) const {
-  ioString += "[@overridingAbstractExtensionMethodAST:" ;
+  ioString.addString ("[@overridingAbstractExtensionMethodAST:") ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mTypeName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mOverridingExtensionMethodName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mOverridingExtensionMethodFormalParameterList.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9559,15 +9802,15 @@ const C_galgas_type_descriptor * cPtr_overridingAbstractExtensionSetterAST::clas
 
 void cPtr_overridingAbstractExtensionSetterAST::description (String & ioString,
                                                              const int32_t inIndentation) const {
-  ioString += "[@overridingAbstractExtensionSetterAST:" ;
+  ioString.addString ("[@overridingAbstractExtensionSetterAST:") ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mTypeName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mOverridingExtensionSetterName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mOverridingExtensionSetterFormalParameterList.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9855,25 +10098,25 @@ const C_galgas_type_descriptor * cPtr_overridingExtensionGetterAST::classDescrip
 
 void cPtr_overridingExtensionGetterAST::description (String & ioString,
                                                      const int32_t inIndentation) const {
-  ioString += "[@overridingExtensionGetterAST:" ;
+  ioString.addString ("[@overridingExtensionGetterAST:") ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_requiresSelfForAccessingProperty.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mTypeName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mOverridingExtensionGetterName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mOverridingExtensionGetterFormalInputParameterList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mOverridingExtensionGetterReturnedTypeName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mOverridingExtensionGetterReturnedVariableName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mOverridingExtensionGetterInstructionList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mEndOfReaderLocation.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10166,27 +10409,27 @@ const C_galgas_type_descriptor * cPtr_overrideExtensionGetterForGeneration::clas
 
 void cPtr_overrideExtensionGetterForGeneration::description (String & ioString,
                                                              const int32_t inIndentation) const {
-  ioString += "[@overrideExtensionGetterForGeneration:" ;
+  ioString.addString ("[@overrideExtensionGetterForGeneration:") ;
   mProperty_mHasHeader.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mImplementationCppFileName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mReceiverType.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mBaseTypeName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mOverridingExtensionGetterName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mResultType.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mResultVarCppName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mOverridingExtensionGetterFormalParameterList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mTypedAttributeList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mSemanticInstructionListForGeneration.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10547,21 +10790,21 @@ const C_galgas_type_descriptor * cPtr_overridingExtensionMethodAST::classDescrip
 
 void cPtr_overridingExtensionMethodAST::description (String & ioString,
                                                      const int32_t inIndentation) const {
-  ioString += "[@overridingExtensionMethodAST:" ;
+  ioString.addString ("[@overridingExtensionMethodAST:") ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_requiresSelfForAccessingProperty.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mTypeName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mOverridingExtensionMethodName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mOverridingExtensionMethodFormalParameterList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mOverridingExtensionMethodInstructionList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mEndOfMethodLocation.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10816,23 +11059,23 @@ const C_galgas_type_descriptor * cPtr_overridingExtensionMethodForGeneration::cl
 
 void cPtr_overridingExtensionMethodForGeneration::description (String & ioString,
                                                                const int32_t inIndentation) const {
-  ioString += "[@overridingExtensionMethodForGeneration:" ;
+  ioString.addString ("[@overridingExtensionMethodForGeneration:") ;
   mProperty_mHasHeader.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mImplementationCppFileName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mReceiverType.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mBaseTypeName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mExtensionMethodName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mExtensionMethodFormalParameterList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mTypedAttributeList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mSemanticInstructionListForGeneration.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11193,21 +11436,21 @@ const C_galgas_type_descriptor * cPtr_overridingExtensionSetterAST::classDescrip
 
 void cPtr_overridingExtensionSetterAST::description (String & ioString,
                                                      const int32_t inIndentation) const {
-  ioString += "[@overridingExtensionSetterAST:" ;
+  ioString.addString ("[@overridingExtensionSetterAST:") ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_requiresSelfForAccessingProperty.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mTypeName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mOverridingExtensionSetterName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mOverridingExtensionSetterFormalParameterList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mOverridingExtensionSetterInstructionList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mEndOfSetterDeclarationLocation.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11462,23 +11705,23 @@ const C_galgas_type_descriptor * cPtr_overridingExtensionSetterForGeneration::cl
 
 void cPtr_overridingExtensionSetterForGeneration::description (String & ioString,
                                                                const int32_t inIndentation) const {
-  ioString += "[@overridingExtensionSetterForGeneration:" ;
+  ioString.addString ("[@overridingExtensionSetterForGeneration:") ;
   mProperty_mHasHeader.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mImplementationCppFileName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mReceiverType.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mBaseTypeName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mExtensionSetterName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mExtensionSetterFormalParameterList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mTypedAttributeList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mSemanticInstructionListForGeneration.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11777,13 +12020,13 @@ const C_galgas_type_descriptor * cPtr_outputActualParameterAST::classDescriptor 
 
 void cPtr_outputActualParameterAST::description (String & ioString,
                                                  const int32_t inIndentation) const {
-  ioString += "[@outputActualParameterAST:" ;
+  ioString.addString ("[@outputActualParameterAST:") ;
   mProperty_mActualSelector.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mOutputActualParameterExpression.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mEndOfExpressionLocation.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11971,13 +12214,13 @@ const C_galgas_type_descriptor * cPtr_outputInputActualParameterAST::classDescri
 
 void cPtr_outputInputActualParameterAST::description (String & ioString,
                                                       const int32_t inIndentation) const {
-  ioString += "[@outputInputActualParameterAST:" ;
+  ioString.addString ("[@outputInputActualParameterAST:") ;
   mProperty_mActualSelector.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mOutputInputActualParameterName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mStructAttributeList.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -12127,9 +12370,9 @@ const C_galgas_type_descriptor * cPtr_outputInputSingleJokerParameterAST::classD
 
 void cPtr_outputInputSingleJokerParameterAST::description (String & ioString,
                                                            const int32_t inIndentation) const {
-  ioString += "[@outputInputSingleJokerParameterAST:" ;
+  ioString.addString ("[@outputInputSingleJokerParameterAST:") ;
   mProperty_mActualSelector.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -12279,9 +12522,9 @@ const C_galgas_type_descriptor * cPtr_outputInputSelfParameterAST::classDescript
 
 void cPtr_outputInputSelfParameterAST::description (String & ioString,
                                                     const int32_t inIndentation) const {
-  ioString += "[@outputInputSelfParameterAST:" ;
+  ioString.addString ("[@outputInputSelfParameterAST:") ;
   mProperty_mActualSelector.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -12469,13 +12712,13 @@ const C_galgas_type_descriptor * cPtr_inputActualExistingVariableParameterAST::c
 
 void cPtr_inputActualExistingVariableParameterAST::description (String & ioString,
                                                                 const int32_t inIndentation) const {
-  ioString += "[@inputActualExistingVariableParameterAST:" ;
+  ioString.addString ("[@inputActualExistingVariableParameterAST:") ;
   mProperty_mActualSelector.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mInputActualParameterName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mPoisonedVarNameList.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -12663,13 +12906,13 @@ const C_galgas_type_descriptor * cPtr_inputActualSelfPropertyParameterAST::class
 
 void cPtr_inputActualSelfPropertyParameterAST::description (String & ioString,
                                                             const int32_t inIndentation) const {
-  ioString += "[@inputActualSelfPropertyParameterAST:" ;
+  ioString.addString ("[@inputActualSelfPropertyParameterAST:") ;
   mProperty_mActualSelector.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mInputActualSelfPropertyName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mPoisonedVarNameList.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -12857,13 +13100,13 @@ const C_galgas_type_descriptor * cPtr_inputActualSelfParameterAST::classDescript
 
 void cPtr_inputActualSelfParameterAST::description (String & ioString,
                                                     const int32_t inIndentation) const {
-  ioString += "[@inputActualSelfParameterAST:" ;
+  ioString.addString ("[@inputActualSelfParameterAST:") ;
   mProperty_mActualSelector.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mSelfLocation.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mPoisonedVarNameList.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13070,15 +13313,15 @@ const C_galgas_type_descriptor * cPtr_inputActualNewVariableParameterAST::classD
 
 void cPtr_inputActualNewVariableParameterAST::description (String & ioString,
                                                            const int32_t inIndentation) const {
-  ioString += "[@inputActualNewVariableParameterAST:" ;
+  ioString.addString ("[@inputActualNewVariableParameterAST:") ;
   mProperty_mActualSelector.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mInputOptionalActualTypeName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mInputActualParameterName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mPoisonedVarNameList.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13304,17 +13547,17 @@ const C_galgas_type_descriptor * cPtr_inputActualNewConstantParameterAST::classD
 
 void cPtr_inputActualNewConstantParameterAST::description (String & ioString,
                                                            const int32_t inIndentation) const {
-  ioString += "[@inputActualNewConstantParameterAST:" ;
+  ioString.addString ("[@inputActualNewConstantParameterAST:") ;
   mProperty_mActualSelector.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mInputOptionalActualTypeName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mInputActualParameterName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mMarkedAsUnused.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mPoisonedVarNameList.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13483,11 +13726,11 @@ const C_galgas_type_descriptor * cPtr_inputSingleJokerActualParameterAST::classD
 
 void cPtr_inputSingleJokerActualParameterAST::description (String & ioString,
                                                            const int32_t inIndentation) const {
-  ioString += "[@inputSingleJokerActualParameterAST:" ;
+  ioString.addString ("[@inputSingleJokerActualParameterAST:") ;
   mProperty_mActualSelector.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mPoisonedVarNameList.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13637,9 +13880,9 @@ const C_galgas_type_descriptor * cPtr_inputParameterVariable::classDescriptor (v
 
 void cPtr_inputParameterVariable::description (String & ioString,
                                                const int32_t inIndentation) const {
-  ioString += "[@inputParameterVariable:" ;
+  ioString.addString ("[@inputParameterVariable:") ;
   mProperty_mActualParameterName.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13808,11 +14051,11 @@ const C_galgas_type_descriptor * cPtr_inputParameterDeclaredVariable::classDescr
 
 void cPtr_inputParameterDeclaredVariable::description (String & ioString,
                                                        const int32_t inIndentation) const {
-  ioString += "[@inputParameterDeclaredVariable:" ;
+  ioString.addString ("[@inputParameterDeclaredVariable:") ;
   mProperty_mActualParameterTypeName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mActualParameterName.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13981,11 +14224,11 @@ const C_galgas_type_descriptor * cPtr_inputParameterDeclaredConstant::classDescr
 
 void cPtr_inputParameterDeclaredConstant::description (String & ioString,
                                                        const int32_t inIndentation) const {
-  ioString += "[@inputParameterDeclaredConstant:" ;
+  ioString.addString ("[@inputParameterDeclaredConstant:") ;
   mProperty_mActualParameterTypeName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mActualParameterName.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -14197,17 +14440,17 @@ const C_galgas_type_descriptor * cPtr_externProcedureDeclarationAST::classDescri
 
 void cPtr_externProcedureDeclarationAST::description (String & ioString,
                                                       const int32_t inIndentation) const {
-  ioString += "[@externProcedureDeclarationAST:" ;
+  ioString.addString ("[@externProcedureDeclarationAST:") ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mIsInternal.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mRoutineName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mFormalArgumentList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_usefullProcedure.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -14401,21 +14644,21 @@ const C_galgas_type_descriptor * cPtr_procDeclarationAST::classDescriptor (void)
 
 void cPtr_procDeclarationAST::description (String & ioString,
                                            const int32_t inIndentation) const {
-  ioString += "[@procDeclarationAST:" ;
+  ioString.addString ("[@procDeclarationAST:") ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mIsInternal.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mRoutineName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mFormalArgumentList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_usefullProcedure.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mRoutineInstructionList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mEndOfRoutineInstructionList.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -14627,17 +14870,17 @@ const C_galgas_type_descriptor * cPtr_externFunctionDeclarationAST::classDescrip
 
 void cPtr_externFunctionDeclarationAST::description (String & ioString,
                                                      const int32_t inIndentation) const {
-  ioString += "[@externFunctionDeclarationAST:" ;
+  ioString.addString ("[@externFunctionDeclarationAST:") ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mFunctionName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mFormalArgumentList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mResultTypeName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_usefullFunc.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -14869,25 +15112,25 @@ const C_galgas_type_descriptor * cPtr_functionDeclarationAST::classDescriptor (v
 
 void cPtr_functionDeclarationAST::description (String & ioString,
                                                const int32_t inIndentation) const {
-  ioString += "[@functionDeclarationAST:" ;
+  ioString.addString ("[@functionDeclarationAST:") ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mFunctionName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mFormalArgumentList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mResultTypeName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_usefullFunc.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mResultVariableName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mFunctionInstructionList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mEndOfFunctionInstructionList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mIsInternal.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -15156,23 +15399,23 @@ const C_galgas_type_descriptor * cPtr_onceFunctionDeclarationAST::classDescripto
 
 void cPtr_onceFunctionDeclarationAST::description (String & ioString,
                                                    const int32_t inIndentation) const {
-  ioString += "[@onceFunctionDeclarationAST:" ;
+  ioString.addString ("[@onceFunctionDeclarationAST:") ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mFunctionName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mResultTypeName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mResultVariableName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mFunctionInstructionList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mEndOfFunctionInstructionList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mIsInternal.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mIsUsefull.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -15222,291 +15465,6 @@ GALGAS_onceFunctionDeclarationAST GALGAS_onceFunctionDeclarationAST::extractObje
       result = *p ;
     }else{
       inCompiler->castError ("onceFunctionDeclarationAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @filewrapperDeclarationAST reference class
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_filewrapperDeclarationAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_mIsInternal.printNonNullClassInstanceProperties ("mIsInternal") ;
-    mProperty_mSourceFileAbsolutePath.printNonNullClassInstanceProperties ("mSourceFileAbsolutePath") ;
-    mProperty_mFilewrapperName.printNonNullClassInstanceProperties ("mFilewrapperName") ;
-    mProperty_mFilewrapperPath.printNonNullClassInstanceProperties ("mFilewrapperPath") ;
-    mProperty_mFilewrapperTextFileExtensionList.printNonNullClassInstanceProperties ("mFilewrapperTextFileExtensionList") ;
-    mProperty_mFilewrapperBinaryFileExtensionList.printNonNullClassInstanceProperties ("mFilewrapperBinaryFileExtensionList") ;
-    mProperty_mFilewrapperTemplateList.printNonNullClassInstanceProperties ("mFilewrapperTemplateList") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
-typeComparisonResult cPtr_filewrapperDeclarationAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_filewrapperDeclarationAST * p = (const cPtr_filewrapperDeclarationAST *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_filewrapperDeclarationAST) ;
-  if (kOperandEqual == result) {
-    result = mProperty_mIsPredefined.objectCompare (p->mProperty_mIsPredefined) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mIsInternal.objectCompare (p->mProperty_mIsInternal) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mSourceFileAbsolutePath.objectCompare (p->mProperty_mSourceFileAbsolutePath) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mFilewrapperName.objectCompare (p->mProperty_mFilewrapperName) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mFilewrapperPath.objectCompare (p->mProperty_mFilewrapperPath) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mFilewrapperTextFileExtensionList.objectCompare (p->mProperty_mFilewrapperTextFileExtensionList) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mFilewrapperBinaryFileExtensionList.objectCompare (p->mProperty_mFilewrapperBinaryFileExtensionList) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mFilewrapperTemplateList.objectCompare (p->mProperty_mFilewrapperTemplateList) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-
-typeComparisonResult GALGAS_filewrapperDeclarationAST::objectCompare (const GALGAS_filewrapperDeclarationAST & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = kOperandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_filewrapperDeclarationAST::GALGAS_filewrapperDeclarationAST (void) :
-GALGAS_semanticDeclarationAST () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_filewrapperDeclarationAST::GALGAS_filewrapperDeclarationAST (const cPtr_filewrapperDeclarationAST * inSourcePtr) :
-GALGAS_semanticDeclarationAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_filewrapperDeclarationAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_filewrapperDeclarationAST GALGAS_filewrapperDeclarationAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
-                                                                                    const GALGAS_bool & inAttribute_mIsInternal,
-                                                                                    const GALGAS_string & inAttribute_mSourceFileAbsolutePath,
-                                                                                    const GALGAS_lstring & inAttribute_mFilewrapperName,
-                                                                                    const GALGAS_lstring & inAttribute_mFilewrapperPath,
-                                                                                    const GALGAS_lstringlist & inAttribute_mFilewrapperTextFileExtensionList,
-                                                                                    const GALGAS_lstringlist & inAttribute_mFilewrapperBinaryFileExtensionList,
-                                                                                    const GALGAS_filewrapperTemplateListAST & inAttribute_mFilewrapperTemplateList
-                                                                                    COMMA_LOCATION_ARGS) {
-  GALGAS_filewrapperDeclarationAST result ;
-  if (inAttribute_mIsPredefined.isValid () && inAttribute_mIsInternal.isValid () && inAttribute_mSourceFileAbsolutePath.isValid () && inAttribute_mFilewrapperName.isValid () && inAttribute_mFilewrapperPath.isValid () && inAttribute_mFilewrapperTextFileExtensionList.isValid () && inAttribute_mFilewrapperBinaryFileExtensionList.isValid () && inAttribute_mFilewrapperTemplateList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_filewrapperDeclarationAST (inAttribute_mIsPredefined, inAttribute_mIsInternal, inAttribute_mSourceFileAbsolutePath, inAttribute_mFilewrapperName, inAttribute_mFilewrapperPath, inAttribute_mFilewrapperTextFileExtensionList, inAttribute_mFilewrapperBinaryFileExtensionList, inAttribute_mFilewrapperTemplateList COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_filewrapperDeclarationAST::readProperty_mIsInternal (void) const {
-  if (nullptr == mObjectPtr) {
-    return GALGAS_bool () ;
-  }else{
-    cPtr_filewrapperDeclarationAST * p = (cPtr_filewrapperDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_filewrapperDeclarationAST) ;
-    return p->mProperty_mIsInternal ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_string GALGAS_filewrapperDeclarationAST::readProperty_mSourceFileAbsolutePath (void) const {
-  if (nullptr == mObjectPtr) {
-    return GALGAS_string () ;
-  }else{
-    cPtr_filewrapperDeclarationAST * p = (cPtr_filewrapperDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_filewrapperDeclarationAST) ;
-    return p->mProperty_mSourceFileAbsolutePath ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_lstring GALGAS_filewrapperDeclarationAST::readProperty_mFilewrapperName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GALGAS_lstring () ;
-  }else{
-    cPtr_filewrapperDeclarationAST * p = (cPtr_filewrapperDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_filewrapperDeclarationAST) ;
-    return p->mProperty_mFilewrapperName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_lstring GALGAS_filewrapperDeclarationAST::readProperty_mFilewrapperPath (void) const {
-  if (nullptr == mObjectPtr) {
-    return GALGAS_lstring () ;
-  }else{
-    cPtr_filewrapperDeclarationAST * p = (cPtr_filewrapperDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_filewrapperDeclarationAST) ;
-    return p->mProperty_mFilewrapperPath ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_lstringlist GALGAS_filewrapperDeclarationAST::readProperty_mFilewrapperTextFileExtensionList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GALGAS_lstringlist () ;
-  }else{
-    cPtr_filewrapperDeclarationAST * p = (cPtr_filewrapperDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_filewrapperDeclarationAST) ;
-    return p->mProperty_mFilewrapperTextFileExtensionList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_lstringlist GALGAS_filewrapperDeclarationAST::readProperty_mFilewrapperBinaryFileExtensionList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GALGAS_lstringlist () ;
-  }else{
-    cPtr_filewrapperDeclarationAST * p = (cPtr_filewrapperDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_filewrapperDeclarationAST) ;
-    return p->mProperty_mFilewrapperBinaryFileExtensionList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_filewrapperTemplateListAST GALGAS_filewrapperDeclarationAST::readProperty_mFilewrapperTemplateList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GALGAS_filewrapperTemplateListAST () ;
-  }else{
-    cPtr_filewrapperDeclarationAST * p = (cPtr_filewrapperDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_filewrapperDeclarationAST) ;
-    return p->mProperty_mFilewrapperTemplateList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @filewrapperDeclarationAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_filewrapperDeclarationAST::cPtr_filewrapperDeclarationAST (const GALGAS_bool & in_mIsPredefined,
-                                                                const GALGAS_bool & in_mIsInternal,
-                                                                const GALGAS_string & in_mSourceFileAbsolutePath,
-                                                                const GALGAS_lstring & in_mFilewrapperName,
-                                                                const GALGAS_lstring & in_mFilewrapperPath,
-                                                                const GALGAS_lstringlist & in_mFilewrapperTextFileExtensionList,
-                                                                const GALGAS_lstringlist & in_mFilewrapperBinaryFileExtensionList,
-                                                                const GALGAS_filewrapperTemplateListAST & in_mFilewrapperTemplateList
-                                                                COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (in_mIsPredefined COMMA_THERE),
-mProperty_mIsInternal (in_mIsInternal),
-mProperty_mSourceFileAbsolutePath (in_mSourceFileAbsolutePath),
-mProperty_mFilewrapperName (in_mFilewrapperName),
-mProperty_mFilewrapperPath (in_mFilewrapperPath),
-mProperty_mFilewrapperTextFileExtensionList (in_mFilewrapperTextFileExtensionList),
-mProperty_mFilewrapperBinaryFileExtensionList (in_mFilewrapperBinaryFileExtensionList),
-mProperty_mFilewrapperTemplateList (in_mFilewrapperTemplateList) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * cPtr_filewrapperDeclarationAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_filewrapperDeclarationAST ;
-}
-
-void cPtr_filewrapperDeclarationAST::description (String & ioString,
-                                                  const int32_t inIndentation) const {
-  ioString += "[@filewrapperDeclarationAST:" ;
-  mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
-  mProperty_mIsInternal.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
-  mProperty_mSourceFileAbsolutePath.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
-  mProperty_mFilewrapperName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
-  mProperty_mFilewrapperPath.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
-  mProperty_mFilewrapperTextFileExtensionList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
-  mProperty_mFilewrapperBinaryFileExtensionList.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
-  mProperty_mFilewrapperTemplateList.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_filewrapperDeclarationAST::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_filewrapperDeclarationAST (mProperty_mIsPredefined, mProperty_mIsInternal, mProperty_mSourceFileAbsolutePath, mProperty_mFilewrapperName, mProperty_mFilewrapperPath, mProperty_mFilewrapperTextFileExtensionList, mProperty_mFilewrapperBinaryFileExtensionList, mProperty_mFilewrapperTemplateList COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @filewrapperDeclarationAST generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_filewrapperDeclarationAST ("filewrapperDeclarationAST",
-                                                  & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_filewrapperDeclarationAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_filewrapperDeclarationAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_filewrapperDeclarationAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_filewrapperDeclarationAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_filewrapperDeclarationAST GALGAS_filewrapperDeclarationAST::extractObject (const GALGAS_object & inObject,
-                                                                                  Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) {
-  GALGAS_filewrapperDeclarationAST result ;
-  const GALGAS_filewrapperDeclarationAST * p = (const GALGAS_filewrapperDeclarationAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_filewrapperDeclarationAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("filewrapperDeclarationAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

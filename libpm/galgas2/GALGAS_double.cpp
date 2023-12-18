@@ -99,8 +99,7 @@ GALGAS_double GALGAS_double::getter_sqrt (Compiler * inCompiler
   GALGAS_double result ;
   if (isValid ()) {
     if (mDoubleValue < 0.0) {
-      String s ;
-      s += "Cannot compute square root of a negative @double" ;
+      String s = "Cannot compute square root of a negative @double" ;
       inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
     }else{
       result = GALGAS_double (sqrt (mDoubleValue)) ;
@@ -117,7 +116,7 @@ GALGAS_double GALGAS_double::getter_log_32_ (Compiler * inCompiler
   if (isValid ()) {
     if (mDoubleValue <= 0.0) {
       String s ;
-      s += "Cannot compute log2 of a null or negative @double" ;
+      s.addString ("Cannot compute log2 of a null or negative @double") ;
       inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
     }else{
       result = GALGAS_double (log2 (mDoubleValue)) ;
@@ -133,8 +132,7 @@ GALGAS_double GALGAS_double::getter_log_31__30_ (Compiler * inCompiler
   GALGAS_double result ;
   if (isValid ()) {
     if (mDoubleValue <= 0.0) {
-      String s ;
-      s += "Cannot compute log10 of a null or negative @double" ;
+      String s = "Cannot compute log10 of a null or negative @double" ;
       inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
     }else{
       result = GALGAS_double (log10 (mDoubleValue)) ;
@@ -150,8 +148,7 @@ GALGAS_double GALGAS_double::getter_logn (Compiler * inCompiler
   GALGAS_double result ;
   if (isValid ()) {
     if (mDoubleValue <= 0.0) {
-      String s ;
-      s += "Cannot compute logn of a null or negative @double" ;
+      String s = "Cannot compute logn of a null or negative @double" ;
       inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
     }else{
       result = GALGAS_double (::log (mDoubleValue)) ;
@@ -238,10 +235,9 @@ GALGAS_uint GALGAS_double::getter_uint (Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) const {
   GALGAS_uint result ;
   if ((mDoubleValue > (double) UINT32_MAX) || (mDoubleValue < 0.0)) {
-    String s ;
-    s += "Cannot convert @double (" ;
-    s.appendDouble (mDoubleValue) ;
-    s += ") to @uint" ;
+    String s = "Cannot convert @double (" ;
+    s.addDouble (mDoubleValue) ;
+    s.addString (") to @uint") ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
     result = GALGAS_uint ((uint32_t) (lround (mDoubleValue) & INT32_MAX)) ;
@@ -255,10 +251,9 @@ GALGAS_uint_36__34_ GALGAS_double::getter_uint_36__34_ (Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
   GALGAS_uint_36__34_ result ;
   if ((mDoubleValue > (double) UINT64_MAX) || (mDoubleValue < 0.0)) {
-    String s ;
-    s += "Cannot convert @double (" ;
-    s.appendDouble (mDoubleValue) ;
-    s += ") to @uint64" ;
+    String s = "Cannot convert @double (" ;
+    s.addDouble (mDoubleValue) ;
+    s.addString (") to @uint64") ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
     result = GALGAS_uint_36__34_ ((uint64_t) lround (mDoubleValue)) ;
@@ -272,10 +267,9 @@ GALGAS_sint GALGAS_double::getter_sint (Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const {
   GALGAS_sint result ;
   if ((mDoubleValue > (double) INT32_MAX) || (mDoubleValue < (double) INT32_MIN)) {
-    String s ;
-    s += "Cannot convert @double (" ;
-    s.appendDouble (mDoubleValue) ;
-    s += ") to @sint" ;
+    String s = "Cannot convert @double (" ;
+    s.addDouble (mDoubleValue) ;
+    s.addString (") to @sint") ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
     result = GALGAS_sint ((int32_t) (lround (mDoubleValue) & INT32_MAX)) ;
@@ -289,10 +283,9 @@ GALGAS_sint_36__34_ GALGAS_double::getter_sint_36__34_ (Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) const {
   GALGAS_sint_36__34_ result ;
   if ((mDoubleValue > (double) INT64_MAX) || (mDoubleValue < (double) INT64_MIN)) {
-    String s ;
-    s += "Cannot convert @double (" ;
-    s.appendDouble (mDoubleValue) ;
-    s += ") to @sint64" ;
+    String s = "Cannot convert @double (" ;
+    s.addDouble (mDoubleValue) ;
+    s.addString (") to @sint64") ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
     result = GALGAS_sint_36__34_ (lround (mDoubleValue)) ;
@@ -320,20 +313,20 @@ typeComparisonResult GALGAS_double::objectCompare (const GALGAS_double & inOpera
 
 void GALGAS_double::description (String & ioString,
                                const int32_t /* inIndentation */) const {
-  ioString += "<@double:" ;
+  ioString.addString ("<@double:") ;
   if (isValid ()) {
-    ioString.appendDouble (mDoubleValue) ;
+    ioString.addDouble (mDoubleValue) ;
   }else{
-    ioString += "not built" ;
+    ioString.addString ("not built") ;
   }
-  ioString += ">" ;
+  ioString.addString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_double::getter_string (UNUSED_LOCATION_ARGS) const {
   String s ;
-  s.appendDouble (mDoubleValue) ;
+  s.addDouble (mDoubleValue) ;
   return GALGAS_string (s) ;
 }
 

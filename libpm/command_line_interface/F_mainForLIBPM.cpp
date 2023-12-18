@@ -24,7 +24,7 @@
 #include "utilities/F_DisplayException.h"
 #include "streams/C_ConsoleOut.h"
 #include "time/C_DateTime.h"
-#include "utilities/C_SharedObject.h"
+#include "utilities/SharedObject.h"
 #include "utilities/cpp-allocation.h"
 #include "utilities/basic-allocation.h"
 #include "utilities/C_PrologueEpilogue.h"
@@ -73,7 +73,7 @@ int main (int argc, const char * argv []) {
       C_BDD::freeBDDStataStructures () ;
       #ifndef DO_NOT_GENERATE_CHECKINGS
         acStrongPtr_class::printExistingClassInstances () ;
-        C_SharedObject::checkAllObjectsHaveBeenReleased () ;
+        SharedObject::checkAllObjectsHaveBeenReleased () ;
         displayAllocationStats () ;
         displayAllocatedBlockSizeStats () ;
         displayAllocatedBlocksInfo () ;
@@ -82,21 +82,21 @@ int main (int argc, const char * argv []) {
       F_default_display_exception (e) ;
       #ifndef DO_NOT_GENERATE_CHECKINGS
         acStrongPtr_class::printExistingClassInstances () ;
-        C_SharedObject::checkAllObjectsHaveBeenReleased () ;
+        SharedObject::checkAllObjectsHaveBeenReleased () ;
       #endif
       returnCode = 1 ; // Error code
     }catch (char * inExceptionString) {
       printf ("*** Exception: '%s' ***\n", inExceptionString) ;
       #ifndef DO_NOT_GENERATE_CHECKINGS
         acStrongPtr_class::printExistingClassInstances () ;
-        C_SharedObject::checkAllObjectsHaveBeenReleased () ;
+        SharedObject::checkAllObjectsHaveBeenReleased () ;
       #endif
       returnCode = 1 ; // Error code
     }catch (...) {
       F_default_display_unknown_exception () ;
       #ifndef DO_NOT_GENERATE_CHECKINGS
         acStrongPtr_class::printExistingClassInstances () ;
-        C_SharedObject::checkAllObjectsHaveBeenReleased () ;
+        SharedObject::checkAllObjectsHaveBeenReleased () ;
       #endif
       returnCode = 2 ; // Error code
     }

@@ -144,26 +144,26 @@ void C_UIntCommandLineOption::printUIntOptions (void) {
     if (p->mCommandChar != '\0') {
       gCout.setForeColor (kBlueForeColor) ;
       gCout.setTextAttribute (kBoldTextAttribute) ;
-      gCout += "-" ;
-      gCout.appendCharacter (p->mCommandChar) ;
-      gCout += "=number" ;
+      gCout.addString ("-") ;
+      gCout.addChar (p->mCommandChar) ;
+      gCout.addString ("=number") ;
       gCout.setTextAttribute (kAllAttributesOff) ;
-      gCout += "\n" ;
+      gCout.addNL () ; ;
     }
     if (p->mCommandString [0] != '\0') {
       gCout.setForeColor (kBlueForeColor) ;
       gCout.setTextAttribute (kBoldTextAttribute) ;
-      gCout += "--" ;
-      gCout += p->mCommandString ;
-      gCout += "=number" ;
+      gCout.addString ("--") ;
+      gCout.addString (p->mCommandString) ;
+      gCout.addString ("=number") ;
       gCout.setTextAttribute (kAllAttributesOff) ;
-      gCout += "\n" ;
+      gCout.addNL () ; ;
     }
-    gCout += "    " ;
-    gCout += p->mComment ;
-    gCout += " (default value: " ;
-    gCout.appendUnsigned (p->mDefaultValue) ;
-    gCout += ")\n" ;
+    gCout.addString ("    ") ;
+    gCout.addString (p->mComment) ;
+    gCout.addString (" (default value: ") ;
+    gCout.addUnsigned (p->mDefaultValue) ;
+    gCout.addString (")\n") ;
     p = p->mNext ;
   }
 }

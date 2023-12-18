@@ -390,13 +390,13 @@ void C_BDD::markAndSweepUnusedNodes (void) {
     }
   }
   if (C_BDD::displaysInformationMessages ()) {
-    gCout += "BDD package info: mark and sweep done in " ;
-    gCout += timer ;
-    gCout += " (nodes " ;
-    gCout.appendUnsigned (previousNodeCount) ;
-    gCout += " -> " ;
-    gCout.appendUnsigned (gCurrentNodeCount) ;
-    gCout += ")\n" ;
+    gCout.addString ("BDD package info: mark and sweep done in ") ;
+    gCout.addString (timer.timeString ()) ;
+    gCout.addString (" (nodes ") ;
+    gCout.addUnsigned (previousNodeCount) ;
+    gCout.addString (" -> ") ;
+    gCout.addUnsigned (gCurrentNodeCount) ;
+    gCout.addString (")\n") ;
   }
 }
 
@@ -577,27 +577,27 @@ void C_BDD::printBDDpackageOperationsSummary (AC_OutputStream & inStream) {
   #else
     const uint32_t mode = 32 ;
   #endif
-  inStream += "\n" "Statistics about BDD package (" ;
-  inStream.appendUnsigned (mode) ;
-  inStream += "-bit mode, " ;
-  inStream.appendUnsigned (getBDDnodeSize ()) ;
-  inStream += " bytes for a BDD node)\n" ;
-  inStream += "  Current BDD count: " ;
-  inStream.appendUnsigned (getBDDinstancesCount ()) ;
-  inStream += "\n" ;
-  inStream += "  Created nodes count: " ;
-  inStream.appendUnsigned (getCreatedNodesCount ()) ;
-  inStream += "\n" ;
-  inStream += "  RAM usage: " ;
-  inStream.appendUnsigned (currentMemoryUsage ()) ;
-  inStream += " MB\n" ;
+  inStream.addString ("\n" "Statistics about BDD package (") ;
+  inStream.addUnsigned (mode) ;
+  inStream.addString ("-bit mode, ") ;
+  inStream.addUnsigned (getBDDnodeSize ()) ;
+  inStream.addString (" bytes for a BDD node)\n") ;
+  inStream.addString ("  Current BDD count: ") ;
+  inStream.addUnsigned (getBDDinstancesCount ()) ;
+  inStream.addString ("\n") ;
+  inStream.addString ("  Created nodes count: ") ;
+  inStream.addUnsigned (getCreatedNodesCount ()) ;
+  inStream.addNL () ;
+  inStream.addString ("  RAM usage: ") ;
+  inStream.addUnsigned (currentMemoryUsage ()) ;
+  inStream.addString (" MB\n") ;
 //---
-  inStream += "Unique table:\n" ;
-  inStream += "  size: " ;
-  inStream.appendUnsigned (gCollisionMapSize) ;
-  inStream += " (" ;
-  inStream.appendUnsigned ((gCollisionMapSize * sizeof (uint32_t)) / 1000000) ;
-  inStream += " MB)\n" ;
+  inStream.addString ("Unique table:\n") ;
+  inStream.addString ("  size: ") ;
+  inStream.addUnsigned (gCollisionMapSize) ;
+  inStream.addString (" (") ;
+  inStream.addUnsigned ((gCollisionMapSize * sizeof (uint32_t)) / 1000000) ;
+  inStream.addString (" MB)\n") ;
   TC_UniqueArray <uint32_t> entrySizeArray (1 COMMA_HERE) ;
   for (uint32_t i=0 ; i<gCollisionMapSize ; i++) {
     int32_t length = 0 ;
@@ -614,13 +614,13 @@ void C_BDD::printBDDpackageOperationsSummary (AC_OutputStream & inStream) {
   }
   for (int32_t i=0 ; i<entrySizeArray.count () ; i++) {
     if ((entrySizeArray (i COMMA_HERE) > 0) && (gCollisionMapSize > 0)) {
-      inStream += "  " ;
-      inStream.appendUnsigned (entrySizeArray (i COMMA_HERE)) ;
-      inStream += " entries of size " ;
-      inStream.appendSigned (i) ;
-      inStream += " (" ;
-      inStream.appendUnsigned ((100UL * entrySizeArray (i COMMA_HERE)) / gCollisionMapSize) ;
-      inStream += "%)\n" ;
+      inStream.addString ("  ") ;
+      inStream.addUnsigned (entrySizeArray (i COMMA_HERE)) ;
+      inStream.addString (" entries of size ") ;
+      inStream.addSigned (i) ;
+      inStream.addString (" (") ;
+      inStream.addUnsigned ((100UL * entrySizeArray (i COMMA_HERE)) / gCollisionMapSize) ;
+      inStream.addString ("%)\n") ;
     }
   }
 }

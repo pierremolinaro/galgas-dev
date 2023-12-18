@@ -84,9 +84,9 @@ cCollectionElement * cCollectionElement_%!TYPE_IDENTIFIER%::copy (void) {
 void cCollectionElement_%!TYPE_IDENTIFIER%::description (String & ioString, const int32_t inIndentation) const {
 %
   for (propertyTypeEntry propertyName * *) in ATTRIBUTE_LIST do
-    %  ioString += "\\n" ;\n%
-    %  ioString.writeStringMultiple ("| ", inIndentation) ;\n%
-    %  ioString += %![propertyName utf8RepresentationEscapingQuestionMark]% ":" ;\n%
+    %  ioString.addNL () ;\n%
+    %  ioString.addStringMultiple ("| ", inIndentation) ;\n%
+    %  ioString.addString (%![propertyName utf8RepresentationEscapingQuestionMark]% ":") ;\n%
     %  mObject.mProperty_%![propertyName identifierRepresentation]%.description (ioString, inIndentation) ;\n%
   end
 %}

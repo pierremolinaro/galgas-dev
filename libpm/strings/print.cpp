@@ -13,9 +13,10 @@
 
 void routine_println (const GALGAS_string inString,
                       Compiler * /* inCompiler */
-                      COMMA_LOCATION_ARGS) {
+                      COMMA_UNUSED_LOCATION_ARGS) {
   if (inString.isValid ()) {
-    std::cout << inString.stringValue ().cString (THERE) << "\n" ;
+    gCout.addString (inString.stringValue ()) ;
+    gCout.addNL () ; ;
   }
 }
 
@@ -23,9 +24,9 @@ void routine_println (const GALGAS_string inString,
 
 void routine_print (const GALGAS_string inString,
                     Compiler * /* inCompiler */
-                    COMMA_LOCATION_ARGS) {
+                    COMMA_UNUSED_LOCATION_ARGS) {
   if (inString.isValid ()) {
-    std::cout << inString.stringValue ().cString (THERE) ;
+    gCout.addString (inString.stringValue ()) ;
   }
 }
 

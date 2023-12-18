@@ -160,19 +160,19 @@ typeComparisonResult GALGAS_char::objectCompare (const GALGAS_char & inOperand) 
 
 void GALGAS_char::description (String & ioString,
                                const int32_t /* inIndentation */) const {
-  ioString += "<@char:" ;
+  ioString.addString ("<@char:") ;
   if (isValid ()) {
     if (isprint ((int) UNICODE_VALUE (mCharValue))) {
-      ioString += "'" ;
-      ioString.appendUnicodeCharacter (mCharValue COMMA_HERE) ;
-      ioString += "'" ;
+      ioString.addString ("'") ;
+      ioString.addUnicodeChar (mCharValue COMMA_HERE) ;
+      ioString.addString ("'") ;
     }else{
-      ioString += unicodeName (mCharValue) ;
+      ioString.addString (unicodeName (mCharValue)) ;
     }
   }else{
-    ioString += "not built" ;
+    ioString.addString ("not built") ;
   }
-  ioString += ">" ;
+  ioString.addString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -181,7 +181,7 @@ GALGAS_string GALGAS_char::getter_string (LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
     String s ;
-    s.appendUnicodeCharacter (mCharValue COMMA_THERE) ;
+    s.addUnicodeChar (mCharValue COMMA_THERE) ;
     result = GALGAS_string (s) ;
   }
   return result ;
@@ -193,9 +193,9 @@ GALGAS_string GALGAS_char::getter_utf_33__32_CharConstantRepresentation (UNUSED_
   GALGAS_string result ;
   if (isValid ()) {
     String s ;
-    s.appendCString ("TO_UNICODE (") ;
-    s.appendCLiteralCharConstant (mCharValue) ;
-    s.appendCString (")") ;
+    s.addString ("TO_UNICODE (") ;
+    s.addStringAsCLiteralCharConstant (mCharValue) ;
+    s.addString (")") ;
     result = GALGAS_string (s) ;
   }
   return result ;

@@ -24,12 +24,11 @@
 //--------------------------------------------------------------------------------------------------
 
 void AC_GALGAS_root::log (const char * inMessage COMMA_LOCATION_ARGS) const {
-  String s ;
-  s += "LOGGING " ;
-  s += inMessage ;
-  s += ": " ;
+  String s = "LOGGING " ;
+  s.addString (inMessage) ;
+  s.addString (": ") ;
   description (s, 0) ;
-  s += "\n" ;
+  s.addString ("\n") ;
   ggs_printMessage (s COMMA_THERE) ;
 }
 

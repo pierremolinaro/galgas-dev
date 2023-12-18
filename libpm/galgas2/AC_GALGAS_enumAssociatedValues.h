@@ -22,13 +22,13 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "utilities/C_SharedObject.h"
+#include "utilities/SharedObject.h"
 #include "galgas2/AC_GALGAS_root.h"
 #include "galgas2/typeComparisonResult.h"
 
 //--------------------------------------------------------------------------------------------------
 
-class cEnumAssociatedValues : public C_SharedObject {
+class cEnumAssociatedValues : public SharedObject {
   public: cEnumAssociatedValues (LOCATION_ARGS) ;
 
   public: virtual void description (class String & ioString,

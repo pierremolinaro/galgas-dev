@@ -17,11 +17,11 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
     %//--------------------------------------------------------------------------------------------------\n\n%
     %void cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName%::description (%?^%String & ioString,\n%
                        !^%const int32_t inIndentation) const {\n%
-    %  ioString += "(\\n" ;\n%
+    %  ioString.addString ("(\\n") ;\n%
     for (mType) in mAssociatedValueTypeList do (idx)
       %  mAssociatedValue%![idx string]%.description (ioString, inIndentation) ;\n%
     end
-    %  ioString += ")" ;\n%
+    %  ioString.addString (")") ;\n%
     %}\n\n%
     %//--------------------------------------------------------------------------------------------------\n\n%
     %typeComparisonResult cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName%::compare (const cEnumAssociatedValues * inOperand) const {\n%
@@ -102,7 +102,7 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
       %    outAssociatedValue%![idx string]%.drop () ;\n%
     end
     %    String s ;\n%
-    %    s += "method @%!TYPE_IDENTIFIER% %!mConstantName% invoked with an invalid enum value" ;\n%
+    %    s.addString ("method @%!TYPE_IDENTIFIER% %!mConstantName% invoked with an invalid enum value") ;\n%
     %    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;\n%
     %  }else{\n%
     %    const cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% * ptr = (const cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% *) unsafePointer () ;\n%    
@@ -165,13 +165,13 @@ else
   %/* inIndentation */%
 end
 %) const {
-  ioString += "<enum @%!TYPE_NAME%: " ;
-  ioString += gEnumNameArrayFor_%!TYPE_IDENTIFIER% [mEnum] ;
+  ioString.addString ("<enum @%!TYPE_NAME%: ") ;
+  ioString.addString (gEnumNameArrayFor_%!TYPE_IDENTIFIER% [mEnum]) ;
 %
 if HAS_ASSOCIATED_VALUES then
   %  mAssociatedValues.description (ioString, inIndentation) ;\n%
 end
-%  ioString += ">" ;
+%  ioString.addString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------

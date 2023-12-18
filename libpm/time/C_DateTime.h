@@ -48,6 +48,7 @@ class C_DateTime final {
   public: int32_t getDayOfWeek (void) const ; // 0 = dimanche
   public: const char * getDayName (void) const ;
   public: const char * getMonthName (void) const ;
+  public: String string (void) const ;
 
 //--- Date comparisons
   public: int32_t compare (const C_DateTime & inDate) const ;
@@ -62,9 +63,5 @@ class C_DateTime final {
   public: static void enterCurrentToolModificationTime (const char * inMainRoutineFirstArgument) ;
   public: static C_DateTime currentToolModificationTime (void) ;
 } ;
-
-//--------------------------------------------------------------------------------------------------
-
-void operator += (AC_OutputStream & inStream, const C_DateTime & inDate) ;
 
 //--------------------------------------------------------------------------------------------------

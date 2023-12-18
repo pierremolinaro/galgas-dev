@@ -102,7 +102,7 @@ static void disposeNodes (cSortedListNode * inNode) {
 //
 //--------------------------------------------------------------------------------------------------
 
-class cSharedSortedListRoot : public C_SharedObject {
+class cSharedSortedListRoot : public SharedObject {
 //--------------------------------- Private data members
   private: cSortedListNode * mRoot ; // For AVL tree
   private: cSortedListNode * mFirst ;
@@ -171,7 +171,7 @@ class cSharedSortedListRoot : public C_SharedObject {
 //--------------------------------------------------------------------------------------------------
 
 cSharedSortedListRoot::cSharedSortedListRoot (LOCATION_ARGS) :
-C_SharedObject (THERE),
+SharedObject (THERE),
 mRoot (nullptr),
 mFirst (nullptr),
 mLast (nullptr),
@@ -751,37 +751,37 @@ void AC_GALGAS_sortedlist::createNewEmptySortedList (LOCATION_ARGS) {
 
 void cSharedSortedListRoot::description (String & ioString,
                                          const int32_t inIndentation) const {
-  ioString += " (" ;
-  ioString.appendUnsigned (mCount) ;
-  ioString += " object" ;
-  ioString += ((mCount > 1) ? "s" : "") ;
-  ioString += "): " ;
+  ioString.addString (" (") ;
+  ioString.addUnsigned (mCount) ;
+  ioString.addString (" object") ;
+  ioString.addString ((mCount > 1) ? "s" : "") ;
+  ioString.addString ("): ") ;
   const cSortedListNode * p = mFirst ;
   uint32_t idx = 0 ;
   while (p != nullptr) {
-    ioString += "\n" ;
-    ioString.writeStringMultiple ("| ", inIndentation) ;
-    ioString += "|-at " ;
-    ioString.appendUnsigned (idx) ;
+    ioString.addString ("\n") ;
+    ioString.addStringMultiple ("| ", inIndentation) ;
+    ioString.addString ("|-at ") ;
+    ioString.addUnsigned (idx) ;
     p->mProperties.description (ioString, inIndentation + 1) ;
     p = p->mNextPtr ;
     idx ++ ;
   }
-  ioString += ">" ;
+  ioString.addString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void AC_GALGAS_sortedlist::description (String & ioString,
                                      const int32_t inIndentation) const {
-  ioString += "<@" ;
-  ioString += staticTypeDescriptor ()->mGalgasTypeName ;
+  ioString.addString ("<@") ;
+  ioString.addString (staticTypeDescriptor ()->mGalgasTypeName) ;
   if (nullptr == mSharedRoot) {
-    ioString += " not built" ;
+    ioString.addString (" not built") ;
   }else{
     mSharedRoot->description (ioString, inIndentation) ;
   }
-  ioString += ">" ;
+  ioString.addString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------

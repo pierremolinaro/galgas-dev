@@ -130,7 +130,7 @@ GALGAS_bigint GALGAS_sint::getter_bigint (UNUSED_LOCATION_ARGS) const {
 GALGAS_string GALGAS_sint::getter_string (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
-    String s ; s.appendSigned (mSIntValue) ;
+    String s ; s.addSigned (mSIntValue) ;
     result = GALGAS_string (s) ;
   }
   return result ;
@@ -142,9 +142,8 @@ GALGAS_string GALGAS_sint::getter_hexString (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
     const uint32_t v = (uint32_t) mSIntValue ;
-    String s ;
-    s += "0x" ;
-    s.appendUnsignedHex8 (v) ;
+    String s = "0x" ;
+    s.addUnsignedHex8 (v) ;
     result = GALGAS_string (s) ;
   }
   return result ;
@@ -163,7 +162,7 @@ GALGAS_string GALGAS_sint::getter_hexStringSeparatedBy (const GALGAS_char & inSe
       inCompiler->onTheFlyRunTimeError ("last argument should be > 0" COMMA_THERE) ;
     }else{
       String s ;
-      s.appendUnsignedHex ((uint32_t) mSIntValue) ;
+      s.addUnsignedHex ((uint32_t) mSIntValue) ;
       const utf32 separator = inSeparator.charValue() ;
       for (int i = (int) (s.length () - group) ; i > 0 ; i -= group) {
         s.insertCharacterAtIndex (separator, i COMMA_HERE) ;
@@ -180,7 +179,7 @@ GALGAS_string GALGAS_sint::getter_xString (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
     const uint32_t v = (uint32_t) mSIntValue ;
-    String s ; s.appendUnsignedHex8 (v) ;
+    String s ; s.addUnsignedHex8 (v) ;
     result = GALGAS_string (s) ;
   }
   return result ;
@@ -190,13 +189,13 @@ GALGAS_string GALGAS_sint::getter_xString (UNUSED_LOCATION_ARGS) const {
 
 void GALGAS_sint::description (String & ioString,
                                const int32_t /* inIndentation */) const {
-  ioString += "<@sint:" ;
+  ioString.addString ("<@sint:") ;
   if (isValid ()) {
-    ioString.appendSigned (mSIntValue) ;
+    ioString.addSigned (mSIntValue) ;
   }else{
-    ioString += "not built" ;
+    ioString.addString ("not built") ;
   }
-  ioString += ">" ;
+  ioString.addString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------

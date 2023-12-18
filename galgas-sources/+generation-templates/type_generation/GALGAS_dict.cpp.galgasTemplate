@@ -34,14 +34,14 @@ end
 
 //--------------------------------------------------------------------------------------------------
 
-class cSharedDictRoot_%!TYPE_IDENTIFIER% : public C_SharedObject {
+class cSharedDictRoot_%!TYPE_IDENTIFIER% : public SharedObject {
 //--------------------------------- Attributes
   private: cNode_%!TYPE_IDENTIFIER% * mRoot ;
   private: uint32_t mCount ;
 
 //--------------------------------- Constructor
   protected: cSharedDictRoot_%!TYPE_IDENTIFIER% (LOCATION_ARGS) :
-  C_SharedObject (THERE),
+  SharedObject (THERE),
   mRoot (nullptr),
   mCount (0) {
   }
@@ -407,7 +407,7 @@ static void internalDescription_%!TYPE_IDENTIFIER% (const cNode_%!TYPE_IDENTIFIE
                                  const int32_t inIndentation) {
   if (nullptr != inNode) {
     internalDescription_%!TYPE_IDENTIFIER% (inNode->mInfPtr, ioString, inIndentation) ;
-    ioString += "\\n" ;
+    ioString.addNL () ;
     inNode->description (ioString, inIndentation) ;
     internalDescription_%!TYPE_IDENTIFIER% (inNode->mSupPtr, ioString, inIndentation) ;
   }
@@ -417,15 +417,15 @@ static void internalDescription_%!TYPE_IDENTIFIER% (const cNode_%!TYPE_IDENTIFIE
 
 void GALGAS_%!TYPE_IDENTIFIER%::description (String & ioString,
                                              const int32_t inIndentation) const {
-  ioString += "<dict @" ;
-  ioString += staticTypeDescriptor ()->mGalgasTypeName ;
-  ioString += ":" ;
+  ioString.addString ("<dict @") ;
+  ioString.addString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.addString (":") ;
   if (isValid ()) {
     internalDescription_%!TYPE_IDENTIFIER% (mSharedDict->mRoot, ioString, inIndentation) ;
   }else{
-    ioString += " not built" ;
+    ioString.addString (" not built") ;
   }
-  ioString += ">" ;
+  ioString.addString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -565,8 +565,7 @@ end
     p = mSharedDict->findEntryInDict (inKey) ;
     if (nullptr == p) {
     //--- Build error message
-      String message ;
-      message += "cannot search in dict: the key does not exist" ;
+      String message = "cannot search in dict: the key does not exist" ;
     //--- Emit error message
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }
@@ -599,8 +598,7 @@ end
     mSharedDict->performRemove (inKey, p) ;
     if (nullptr == p) {
     //--- Build error message
-      String message ;
-      message += "cannot remove in dict: the key does not exist" ;
+      String message = "cannot remove in dict: the key does not exist" ;
     //--- Emit error message
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }
@@ -629,8 +627,7 @@ end
   %  const cNode_%!TYPE_IDENTIFIER% * p = mSharedDict->findEntryInDict (inKey) ;\n%
   %   if (nullptr == p) {\n%
   %    //--- Build error message\n%
-  %      String message ;\n%
-  %      message += "cannot get %![propertyName identifierRepresentation]% ForKey in dict: the key does not exist" ;\n%
+  %      String message = "cannot get %![propertyName identifierRepresentation]% ForKey in dict: the key does not exist" ;\n%
   %    //--- Emit error message\n%
   %      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;\n%
   %    }else{\n%
@@ -655,8 +652,7 @@ for (propertyTypeEntry propertyName 2*) in CURRENT_PROPERTY_LIST do
   %    cNode_%!TYPE_IDENTIFIER% * p = mSharedDict->findEntryInDict (inKey) ;\n%
   %    if (nullptr == p) {\n%
   %    //--- Build error message\n%
-  %      String message ;\n%
-  %      message += "cannot set%![[propertyName stringByCapitalizingFirstCharacter] identifierRepresentation]%ForKey in dict: the key does not exist" ;\n%
+  %      String message = "cannot set%![[propertyName stringByCapitalizingFirstCharacter] identifierRepresentation]%ForKey in dict: the key does not exist" ;\n%
   %    //--- Emit error message\n%
   %      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;\n%
   %    }else{\n%

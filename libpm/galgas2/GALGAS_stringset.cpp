@@ -379,7 +379,7 @@ static void internalRemoveRecursively (cStringsetNode * & ioRoot,
 //
 //--------------------------------------------------------------------------------------------------
 
-class cSharedStringsetRoot : public C_SharedObject {
+class cSharedStringsetRoot : public SharedObject {
 //--- Private data members
   private: cStringsetNode * mRoot ;
   private: uint32_t mEntryCount ;
@@ -435,7 +435,7 @@ class cSharedStringsetRoot : public C_SharedObject {
 //--------------------------------------------------------------------------------------------------
 
 cSharedStringsetRoot::cSharedStringsetRoot (LOCATION_ARGS) :
-C_SharedObject (THERE),
+SharedObject (THERE),
 mRoot (nullptr),
 mEntryCount (0) {
 }
@@ -475,9 +475,9 @@ void cSharedStringsetRoot::displayEntries (const cStringsetNode * inNode,
                                            String & ioString) const {
   if (inNode != nullptr) {
     displayEntries (inNode->mInfPtr, ioString) ;
-    ioString += " '" ;
-    ioString += inNode->mKey ;
-    ioString += "'" ;
+    ioString.addString (" '") ;
+    ioString.addString (inNode->mKey) ;
+    ioString.addString ("'") ;
     displayEntries (inNode->mSupPtr, ioString) ;
   }
 }
@@ -485,11 +485,11 @@ void cSharedStringsetRoot::displayEntries (const cStringsetNode * inNode,
 //--------------------------------------------------------------------------------------------------
 
 void cSharedStringsetRoot::description (String & ioString) const {
-  ioString.appendUnsigned (mEntryCount) ;
+  ioString.addUnsigned (mEntryCount) ;
   if (mEntryCount > 1) {
-    ioString += " entries" ;
+    ioString.addString (" entries") ;
   }else{
-    ioString += " entry" ;
+    ioString.addString (" entry") ;
   }
   displayEntries (mRoot, ioString) ;
 }
@@ -645,13 +645,13 @@ GALGAS_stringset & GALGAS_stringset::operator = (const GALGAS_stringset & inSour
 
 void GALGAS_stringset::description (String & ioString,
                                     const int32_t /* inIndentation */) const {
-  ioString += "<@stringset:" ;
+  ioString.addString ("<@stringset:") ;
   if (nullptr == mSharedRoot) {
-    ioString += "not built" ;
+    ioString.addString ("not built") ;
   }else{
     mSharedRoot->description (ioString) ;
   }
-  ioString += ">" ;
+  ioString.addString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------

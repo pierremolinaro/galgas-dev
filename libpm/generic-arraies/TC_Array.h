@@ -21,7 +21,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "utilities/C_SharedObject.h"
+#include "utilities/SharedObject.h"
 #include "utilities/M_SourceLocation.h"
 #include "utilities/TF_Swap.h"
 #include "utilities/MF_MemoryControl.h"
@@ -47,10 +47,10 @@ template <typename TYPE> void swap (TC_Array <TYPE> & ioOperand1,
 
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE> class cSharedArray final : public C_SharedObject {
+template <typename TYPE> class cSharedArray final : public SharedObject {
 //--- Default Constructor
   public: cSharedArray (void) :
-  C_SharedObject (HERE),
+  SharedObject (HERE),
   mUniqueArray () {
   }
 
@@ -60,14 +60,14 @@ template <typename TYPE> class cSharedArray final : public C_SharedObject {
 
 //--- Allocation Constructor (empty array)
   public: cSharedArray (const int inCapacity COMMA_LOCATION_ARGS) :
-  C_SharedObject (THERE),
+  SharedObject (THERE),
   mUniqueArray (inCapacity COMMA_THERE) {
   }
 
 //--- Allocation Constructor (array initialized with inValue)
   public: cSharedArray (const int inCount,
                         const TYPE & inValue COMMA_LOCATION_ARGS) :
-  C_SharedObject (THERE),
+  SharedObject (THERE),
   mUniqueArray (inCount, inValue COMMA_THERE) {
   }
 

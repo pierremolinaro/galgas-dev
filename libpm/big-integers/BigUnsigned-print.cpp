@@ -24,19 +24,19 @@ String BigUnsigned::decimalString (void) const {
     result = "0" ;
   }else{
     BigUnsigned number = *this ;
-    std::vector <ChunkUInt> decimalValueArray ;
+    TC_UniqueArray <ChunkUInt> decimalValueArray ;
     while (!number.isZero ()) {
       const ChunkUInt divisor = greatestPowerOf10 ;
       const BigUnsignedQuotientU64Remainder r = number.dividingByChunkUInt (divisor) ;
-      decimalValueArray.push_back (r.remainder ()) ;
+      decimalValueArray.appendObject (r.remainder ()) ;
       number = r.quotient () ;
     }
-    const size_t n = decimalValueArray.size () ;
-    result.appendUnsigned (decimalValueArray [n - 1]) ;
-    for (size_t i = n - 1 ; i > 0 ; i--) {
+    const int32_t n = decimalValueArray.count () ;
+    result.addUnsigned (decimalValueArray (n - 1 COMMA_HERE)) ;
+    for (int32_t i = n - 2 ; i >= 0 ; i--) {
       char s [32] ;
-      snprintf (s, 31, ChunkUIntDecimalFormatSpecifierWithLeadingZeros, decimalValueArray [i-1]) ;
-      result += s ;
+      snprintf (s, 31, ChunkUIntDecimalFormatSpecifierWithLeadingZeros, decimalValueArray (i COMMA_HERE)) ;
+      result.addString (s) ;
     }
   }
   return result ;
@@ -67,9 +67,9 @@ String BigUnsigned::spacedDecimalStringWithDigitCount (const uint32_t inSeparati
     }
   }
   String result = "[" ;
-  result.appendSigned (length) ;
-  result += "] " ;
-  result += s ;
+  result.addSigned (length) ;
+  result.addString ("] ") ;
+  result.addString (s) ;
   return result ;
 }
 
@@ -81,9 +81,9 @@ String BigUnsigned::hexString (void) const {
     result = "0" ;
   }else{
     result = "0x" ;
-    result.appendUnsignedHex (u64AtIndex (u64Count () - 1)) ;
+    result.addUnsignedHex (u64AtIndex (u64Count () - 1)) ;
     for (size_t i = u64Count () - 1 ; i > 0 ; i--) {
-      result.appendUnsignedHex16 (u64AtIndex (i - 1)) ;
+      result.addUnsignedHex16 (u64AtIndex (i - 1)) ;
     }
   }
   return result ;
@@ -96,9 +96,9 @@ String BigUnsigned::xString (void) const {
   if (u64Count () == 0) {
     result = "0" ;
   }else{
-    result.appendUnsignedHex (u64AtIndex (u64Count () - 1)) ;
+    result.addUnsignedHex (u64AtIndex (u64Count () - 1)) ;
     for (size_t i = u64Count () - 1 ; i > 0 ; i--) {
-      result.appendUnsignedHex16 (u64AtIndex (i - 1)) ;
+      result.addUnsignedHex16 (u64AtIndex (i - 1)) ;
     }
   }
   return result ;
@@ -114,7 +114,7 @@ String BigUnsigned::bitString (void) const {
     for (size_t i = u64Count () ; i > 0 ; i--) {
       uint64_t v = u64AtIndex (i-1) ;
       for (size_t bit = 0 ; bit < 64 ; bit++) {
-        result += (((v & (uint64_t (1) << 63)) != 0) ? "1" : "0") ;
+        result.addString (((v & (uint64_t (1) << 63)) != 0) ? "1" : "0") ;
         v <<= 1 ;
       }
     }

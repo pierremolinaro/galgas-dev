@@ -48,26 +48,26 @@ printNonterminalSymbolsHavingEmptyDerivation (const C_Relation & inNonterminalSy
   TC_UniqueArray <uint64_t> valueArray ;
   inNonterminalSymbolsHavingEmptyDerivation.getValueArray (valueArray) ;
   const int32_t n = valueArray.count () ;
-  inHTMLfile.outputRawData ("<p><a name=\"empty_strings\"></a>") ;
+  inHTMLfile.addRawData ("<p><a name=\"empty_strings\"></a>") ;
   if (n == 0) {
-    inHTMLfile += " no nonterminal symbols has a empty production.\n" ;
+    inHTMLfile.addString (" no nonterminal symbols has a empty production.\n") ;
   }else if (n == 1) {
-    inHTMLfile += " 1 nonterminal symbols has a empty production:\n" ;
+    inHTMLfile.addString (" 1 nonterminal symbols has a empty production:\n") ;
   }else{
-    inHTMLfile.appendSigned (n) ;
-    inHTMLfile += " nonterminal symbols have a empty production:\n" ;
+    inHTMLfile.addSigned (n) ;
+    inHTMLfile.addString (" nonterminal symbols have a empty production:\n") ;
   }
-  inHTMLfile.outputRawData ("</p>") ;
+  inHTMLfile.addRawData ("</p>") ;
   if (n > 0) {
-    inHTMLfile.outputRawData ("<table class=\"result\">") ;
+    inHTMLfile.addRawData ("<table class=\"result\">") ;
     for (int32_t i=0 ; i<valueArray.count () ; i++) {
-      inHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\">") ;
-      inHTMLfile.appendSigned (i) ;
-      inHTMLfile.outputRawData ("</td><td><code>") ;
-      inHTMLfile += inNonterminalSymbolsHavingEmptyDerivation.configuration().constantNameForVariableAndValue(0, (uint32_t) valueArray (i COMMA_HERE) COMMA_HERE) ;
-      inHTMLfile.outputRawData ("</code></td></tr>\n") ;
+      inHTMLfile.addRawData ("<tr class=\"result_line\"><td class=\"result_line\">") ;
+      inHTMLfile.addSigned (i) ;
+      inHTMLfile.addRawData ("</td><td><code>") ;
+      inHTMLfile.addString (inNonterminalSymbolsHavingEmptyDerivation.configuration().constantNameForVariableAndValue(0, (uint32_t) valueArray (i COMMA_HERE) COMMA_HERE)) ;
+      inHTMLfile.addRawData ("</code></td></tr>\n") ;
     }
-    inHTMLfile.outputRawData ("</table>") ;
+    inHTMLfile.addRawData ("</table>") ;
   }
 }
 
@@ -131,42 +131,42 @@ printNonterminalDerivingInEmptyString (const C_Relation & inVocabularyDerivingTo
                                        const bool inVerboseOptionOn) {
   const uint64_t t = inVocabularyDerivingToEmpty.value64Count () ;
   if (inPopulateHTMLstring) {
-    ioHTMLFileContents.outputRawData ("<p>") ;
-    ioHTMLFileContents += "Nonterminal symbols deriving indirectly in empty string : calculus in " ;
-    ioHTMLFileContents.appendSigned (inIterationsCount) ;
-    ioHTMLFileContents += " iterations.\n" ;
-    ioHTMLFileContents.outputRawData ("</p>") ;
+    ioHTMLFileContents.addRawData ("<p>") ;
+    ioHTMLFileContents.addString ("Nonterminal symbols deriving indirectly in empty string : calculus in ") ;
+    ioHTMLFileContents.addSigned (inIterationsCount) ;
+    ioHTMLFileContents.addString (" iterations.\n") ;
+    ioHTMLFileContents.addRawData ("</p>") ;
     const C_Relation newNonterminal = inVocabularyDerivingToEmpty.andOp (~ inNonTerminalHavingEmptyDerivation COMMA_HERE) ;
     const uint64_t n = newNonterminal.value64Count () ;
     if (n == 0) {
-      ioHTMLFileContents.outputRawData ("<p>") ;
-      ioHTMLFileContents += "No more than those deriving directly to the empty string.\n" ;
-      ioHTMLFileContents.outputRawData ("</p>") ;
+      ioHTMLFileContents.addRawData ("<p>") ;
+      ioHTMLFileContents.addString ("No more than those deriving directly to the empty string.\n") ;
+      ioHTMLFileContents.addRawData ("</p>") ;
     }else{
-      ioHTMLFileContents.outputRawData ("<p>") ;
-      ioHTMLFileContents.appendUnsigned (n) ;
-      ioHTMLFileContents.appendCString (" nonterminal symbol(s) in addition to those deriving directly to the empty string :\n") ;
-      ioHTMLFileContents.outputRawData ("</p>") ;
+      ioHTMLFileContents.addRawData ("<p>") ;
+      ioHTMLFileContents.addUnsigned (n) ;
+      ioHTMLFileContents.addString (" nonterminal symbol(s) in addition to those deriving directly to the empty string :\n") ;
+      ioHTMLFileContents.addRawData ("</p>") ;
       TC_UniqueArray <uint64_t> nonTerminalArray ;
       newNonterminal.getValueArray (nonTerminalArray) ;
       int32_t index = 0 ;
-      ioHTMLFileContents.outputRawData ("<table class=\"result\">") ;
+      ioHTMLFileContents.addRawData ("<table class=\"result\">") ;
       for (int32_t i=0 ; i<nonTerminalArray.count () ; i++) {
         if (nonTerminalArray (i COMMA_HERE)) {
-          ioHTMLFileContents.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\">") ;
-          ioHTMLFileContents.appendSigned (index) ;
+          ioHTMLFileContents.addRawData ("<tr class=\"result_line\"><td class=\"result_line\">") ;
+          ioHTMLFileContents.addSigned (index) ;
           index ++ ;
-          ioHTMLFileContents.outputRawData ("</td><td><code>") ;
-          ioHTMLFileContents += newNonterminal.configuration().constantNameForVariableAndValue(0, (uint32_t) nonTerminalArray (i COMMA_HERE) COMMA_HERE) ;
-          ioHTMLFileContents.outputRawData ("</code></td></tr>") ;
+          ioHTMLFileContents.addRawData ("</td><td><code>") ;
+          ioHTMLFileContents.addString (newNonterminal.configuration().constantNameForVariableAndValue(0, (uint32_t) nonTerminalArray (i COMMA_HERE) COMMA_HERE)) ;
+          ioHTMLFileContents.addRawData ("</code></td></tr>") ;
         }
       }
-      ioHTMLFileContents.outputRawData ("</table>") ;
+      ioHTMLFileContents.addRawData ("</table>") ;
     }
   }
   if (inVerboseOptionOn) {
-    gCout.appendUnsigned (t) ;
-    gCout += ".\n" ;
+    gCout.addUnsigned (t) ;
+    gCout.addString (".\n") ;
     gCout.flush () ;
   }
 }
@@ -182,12 +182,12 @@ empty_strings_computations (const cPureBNFproductionsList & inPureBNFproductions
                             const bool inVerboseOptionOn) {
 //--- Console display
   if (inVerboseOptionOn) {
-    gCout += "  Nonterminal symbols deriving in empty... " ;
+    gCout.addString ("  Nonterminal symbols deriving in empty... ") ;
     gCout.flush () ;
   }
 //--- Print in BNF file
   if (inPopulateHTMLstring) {
-    ioHTMLFileContents.appendCppTitleComment ("Searching for nonterminal symbols deriving in empty string", "title") ;
+    ioHTMLFileContents.addCppTitleComment ("Searching for nonterminal symbols deriving in empty string", "title") ;
   }
 
   const C_Relation nonTerminalHavingEmptyDerivation

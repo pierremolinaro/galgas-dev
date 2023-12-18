@@ -63,7 +63,7 @@ void C_StringCommandLineOption::setStringOptionForCommandChar (const char * inCo
       outFound = inCommandString [0] == p->mCommandChar ;
       if (outFound) {
         p->mValue.setLengthToZero () ;
-        p->mValue += & inCommandString [2] ;
+        p->mValue.addString (& inCommandString [2]) ;
       }
       p = p->mNext ;
     }
@@ -98,7 +98,7 @@ void C_StringCommandLineOption::setStringOptionForCommandString (const char * in
                  (strncmp (p->mCommandString, inCommandString, equalSignIndex) == 0) ;
       if (outFound) {
         p->mValue.setLengthToZero () ;
-        p->mValue += & inCommandString [strlen (p->mCommandString) + 1] ;
+        p->mValue.addString (& inCommandString [strlen (p->mCommandString) + 1]) ;
       }
       p = p->mNext ;
     }
@@ -130,26 +130,26 @@ void C_StringCommandLineOption::printStringOptions (void) {
     if (p->mCommandChar != '\0') {
       gCout.setForeColor (kBlueForeColor) ;
       gCout.setTextAttribute (kBoldTextAttribute) ;
-      gCout += "-" ;
-      gCout.appendCharacter (p->mCommandChar) ;
-      gCout += "=string" ;
+      gCout.addString ("-") ;
+      gCout.addChar (p->mCommandChar) ;
+      gCout.addString ("=string") ;
       gCout.setTextAttribute (kAllAttributesOff) ;
-      gCout += "\n" ;
+      gCout.addNL () ; ;
     }
     if (p->mCommandString [0] != '\0') {
       gCout.setForeColor (kBlueForeColor) ;
       gCout.setTextAttribute (kBoldTextAttribute) ;
-      gCout += "--" ;
-      gCout += p->mCommandString ;
-      gCout += "=string" ;
+      gCout.addString ("--") ;
+      gCout.addString (p->mCommandString) ;
+      gCout.addString ("=string") ;
       gCout.setTextAttribute (kAllAttributesOff) ;
-      gCout += "\n" ;
+      gCout.addNL () ; ;
     }
-    gCout += "    " ;
-    gCout += p->mComment  ;
-    gCout += " (default value: '" ;
-    gCout += p->mDefaultValue ;
-    gCout += "')\n" ;
+    gCout.addString ("    ") ;
+    gCout.addString (p->mComment)  ;
+    gCout.addString (" (default value: '") ;
+    gCout.addString (p->mDefaultValue) ;
+    gCout.addString ("')\n") ;
     p = p->mNext ;
   }
 }

@@ -38,9 +38,9 @@ cMapElement * cMapElement_%!TYPE_IDENTIFIER%::copy (void) {
 else
   %void cMapElement_%!TYPE_IDENTIFIER%::description (String & ioString, const int32_t inIndentation) const {\n%
   for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST do
-    %  ioString += "\\n" ;\n%
-    %  ioString.writeStringMultiple ("| ", inIndentation) ;\n%
-    %  ioString += %![mPropertyName utf8RepresentationEscapingQuestionMark]% ":" ;\n%
+    %  ioString.addNL () ;\n%
+    %  ioString.addStringMultiple ("| ", inIndentation) ;\n%
+    %  ioString.addString (%![mPropertyName utf8RepresentationEscapingQuestionMark]% ":") ;\n%
     %  mProperty_%![mPropertyName identifierRepresentation]%.description (ioString, inIndentation) ;\n%
   end
 end

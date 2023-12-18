@@ -1495,39 +1495,39 @@
     settings = {ATTRIBUTES = (); };
   };
 
-  0C3540F67C1E9575E213BE0A /* C_SharedObject.cpp */ = {
+  0C3540F67C1E9575E213BE0A /* C_UIntSet.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 884A62116BE975A9BB8257E3 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  6F0150C77BDA2EDA01AE484C /* C_UIntSet.cpp */ = {
+  6F0150C77BDA2EDA01AE484C /* F_DisplayException.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 56967D946471AF29D7BF99F1 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  BA8C592DB97D0DBE54C7ADFC /* F_DisplayException.cpp */ = {
+  BA8C592DB97D0DBE54C7ADFC /* F_GetPrime.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 0048B187F7182F1B9CE7A6A7 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  FDAF6C699B223C61B1B5AB89 /* F_GetPrime.cpp */ = {
+  FDAF6C699B223C61B1B5AB89 /* MF_Assert.cpp */ = {
     isa = PBXBuildFile;
     fileRef = CF9246BB0D40EB4D8027D90F ;
     settings = {ATTRIBUTES = (); };
   };
 
-  A68C18DA59A35C2BFE1CA554 /* MF_Assert.cpp */ = {
+  A68C18DA59A35C2BFE1CA554 /* MF_MemoryControl.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 050594C7BC3C36E7E8AB9550 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  F4AAFCFC22149D77BABEE96D /* MF_MemoryControl.cpp */ = {
+  87586B71E2DA9ACFE4FBD19E /* SharedObject.cpp */ = {
     isa = PBXBuildFile;
-    fileRef = 40581880C4F2C82958DE8CFE ;
+    fileRef = 53DF9505E1F48C3A701C0682 ;
     settings = {ATTRIBUTES = (); };
   };
 
@@ -3515,16 +3515,7 @@
     sourceTree = "<group>";
   };
 
-  884A62116BE975A9BB8257E3 /* C_SharedObject.cpp */ = {
-    isa = PBXFileReference;
-    fileEncoding = 4;
-    lastKnownFileType = sourcecode.cpp.cpp;
-    name = "C_SharedObject.cpp";
-    path = "C_SharedObject.cpp";
-    sourceTree = "<group>";
-  };
-
-  56967D946471AF29D7BF99F1 /* C_UIntSet.cpp */ = {
+  884A62116BE975A9BB8257E3 /* C_UIntSet.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
@@ -3533,7 +3524,7 @@
     sourceTree = "<group>";
   };
 
-  0048B187F7182F1B9CE7A6A7 /* F_DisplayException.cpp */ = {
+  56967D946471AF29D7BF99F1 /* F_DisplayException.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
@@ -3542,7 +3533,7 @@
     sourceTree = "<group>";
   };
 
-  CF9246BB0D40EB4D8027D90F /* F_GetPrime.cpp */ = {
+  0048B187F7182F1B9CE7A6A7 /* F_GetPrime.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
@@ -3551,7 +3542,7 @@
     sourceTree = "<group>";
   };
 
-  050594C7BC3C36E7E8AB9550 /* MF_Assert.cpp */ = {
+  CF9246BB0D40EB4D8027D90F /* MF_Assert.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
@@ -3560,12 +3551,21 @@
     sourceTree = "<group>";
   };
 
-  40581880C4F2C82958DE8CFE /* MF_MemoryControl.cpp */ = {
+  050594C7BC3C36E7E8AB9550 /* MF_MemoryControl.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
     name = "MF_MemoryControl.cpp";
     path = "MF_MemoryControl.cpp";
+    sourceTree = "<group>";
+  };
+
+  53DF9505E1F48C3A701C0682 /* SharedObject.cpp */ = {
+    isa = PBXFileReference;
+    fileEncoding = 4;
+    lastKnownFileType = sourcecode.cpp.cpp;
+    name = "SharedObject.cpp";
+    path = "SharedObject.cpp";
     sourceTree = "<group>";
   };
 
@@ -5819,16 +5819,7 @@
     sourceTree = "<group>";
   };
 
-  140A811D0C45CE03C1C93A28 /* C_SharedObject.h */ = {
-    isa = PBXFileReference;
-    fileEncoding = 4;
-    lastKnownFileType = sourcecode.c.h;
-    name = "C_SharedObject.h";
-    path = "C_SharedObject.h";
-    sourceTree = "<group>";
-  };
-
-  AB650B25B4114E93A98F1EBA /* C_UIntSet.h */ = {
+  140A811D0C45CE03C1C93A28 /* C_UIntSet.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
@@ -5837,7 +5828,7 @@
     sourceTree = "<group>";
   };
 
-  6281D984952C07998DC54358 /* F_DisplayException.h */ = {
+  AB650B25B4114E93A98F1EBA /* F_DisplayException.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
@@ -5846,7 +5837,7 @@
     sourceTree = "<group>";
   };
 
-  3CD70FE748E6982B3439AD3B /* F_GetPrime.h */ = {
+  6281D984952C07998DC54358 /* F_GetPrime.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
@@ -5855,7 +5846,7 @@
     sourceTree = "<group>";
   };
 
-  33945135B874349CFBED4FB9 /* MF_Assert.h */ = {
+  3CD70FE748E6982B3439AD3B /* MF_Assert.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
@@ -5864,7 +5855,7 @@
     sourceTree = "<group>";
   };
 
-  53DF9505E1F48C3A701C0682 /* MF_MemoryControl.h */ = {
+  33945135B874349CFBED4FB9 /* MF_MemoryControl.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
@@ -5873,7 +5864,7 @@
     sourceTree = "<group>";
   };
 
-  87586B71E2DA9ACFE4FBD19E /* M_SourceLocation.h */ = {
+  40581880C4F2C82958DE8CFE /* M_SourceLocation.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
@@ -5882,12 +5873,21 @@
     sourceTree = "<group>";
   };
 
-  F79D56C7EDF3365FEA7520F2 /* M_machine.h */ = {
+  F4AAFCFC22149D77BABEE96D /* M_machine.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
     name = "M_machine.h";
     path = "M_machine.h";
+    sourceTree = "<group>";
+  };
+
+  F79D56C7EDF3365FEA7520F2 /* SharedObject.h */ = {
+    isa = PBXFileReference;
+    fileEncoding = 4;
+    lastKnownFileType = sourcecode.c.h;
+    name = "SharedObject.h";
+    path = "SharedObject.h";
     sourceTree = "<group>";
   };
 
@@ -6625,8 +6625,8 @@
       050594C7BC3C36E7E8AB9550, 
       33945135B874349CFBED4FB9, 
       40581880C4F2C82958DE8CFE, 
+      F4AAFCFC22149D77BABEE96D, 
       53DF9505E1F48C3A701C0682, 
-      87586B71E2DA9ACFE4FBD19E, 
       F79D56C7EDF3365FEA7520F2, 
       7B2826CAF99687388D2E8F7C, 
       FEC820B41B54430B50E96B5C, 
@@ -7017,7 +7017,7 @@
         BA8C592DB97D0DBE54C7ADFC,
         FDAF6C699B223C61B1B5AB89,
         A68C18DA59A35C2BFE1CA554,
-        F4AAFCFC22149D77BABEE96D,
+        87586B71E2DA9ACFE4FBD19E,
         1D3D3EBAABB04D6B5D099425,
         7102CE1A1AEC05359CC16DD9,
         2F19414DE3EBD9F63D5C0169,
@@ -7249,7 +7249,7 @@
         BA8C592DB97D0DBE54C7ADFC,
         FDAF6C699B223C61B1B5AB89,
         A68C18DA59A35C2BFE1CA554,
-        F4AAFCFC22149D77BABEE96D,
+        87586B71E2DA9ACFE4FBD19E,
         1D3D3EBAABB04D6B5D099425,
         7102CE1A1AEC05359CC16DD9,
         2F19414DE3EBD9F63D5C0169,

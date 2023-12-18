@@ -207,13 +207,13 @@ GALGAS_sint_36__34_ GALGAS_bool::getter_sint_36__34_ (UNUSED_LOCATION_ARGS) cons
 
 void GALGAS_bool::description (String & ioString,
                                const int32_t /* inIndentation */) const {
-  ioString += "<@bool:" ;
+  ioString.addString ("<@bool:") ;
   if (isValid ()) {
-    ioString += (mBoolValue ? "true" : "false") ;
+    ioString.addString (mBoolValue ? "true" : "false") ;
   }else{
-    ioString += "not built" ;
+    ioString.addString ("not built") ;
   }
-  ioString += ">" ;
+  ioString.addString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------

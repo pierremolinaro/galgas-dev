@@ -141,7 +141,7 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
       NSMutableString * allMessages = [NSMutableString new] ;
       for (PMIssueDescriptor * issue in mIssueArray) {
         if (NSLocationInRange (issue.startLocationInSourceString, lineRange) && (issue.locationInSourceStringStatus == kLocationInSourceStringSolved)) {
-          [allMessages appendString:issue.fullMessage] ;
+          [allMessages appendString: issue.fullMessage] ;
           if (issue.isError) {
             hasError = YES ;
           }else{

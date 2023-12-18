@@ -136,12 +136,12 @@ static NSMutableDictionary * gDocumentDataDictionary ;
         if (CRcount > 0) {
           source = [a componentsJoinedByString:@"\n"] ;
           if ([s length] > 0) {
-            [s appendString:@"\n"] ;
+            [s appendString: @"\n"] ;
           }
           if (CRcount == 1) {
-            [s appendFormat:@"1 CR has been converted to LF."] ;
+            [s appendFormat: @"1 CR has been converted to LF."] ;
           }else if (CRcount > 1) {
-            [s appendFormat:@"%lu CR have been converted to LF.", CRcount] ;
+            [s appendFormat: @"%lu CR have been converted to LF.", CRcount] ;
           }
         }
       }
@@ -151,7 +151,7 @@ static NSMutableDictionary * gDocumentDataDictionary ;
         if (HTABcount > 0) {
           source = [a componentsJoinedByString:@" "] ;
           if ([s length] > 0) {
-            [s appendString:@"\n"] ;
+            [s appendString: @"\n"] ;
           }
           if (HTABcount == 1) {
             [s appendFormat:@"1 HTAB has been converted to SPACE."] ;

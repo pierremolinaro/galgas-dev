@@ -10,6 +10,18 @@
 
 //--------------------------------------------------------------------------------------------------
 //
+//Routine 'checkUsefulEntities'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_checkUsefulEntities (const class GALGAS_usefulEntitiesGraph constinArgument0,
+                                  const class GALGAS_lstringlist constinArgument1,
+                                  const class GALGAS_string constinArgument2,
+                                  class Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Function 'afterNameForUsefulEntitiesGraph'
 //
 //--------------------------------------------------------------------------------------------------

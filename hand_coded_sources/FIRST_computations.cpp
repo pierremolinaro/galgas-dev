@@ -101,27 +101,27 @@ displayAndCheckFIRSTsets (C_HTMLString & ioHTMLFileContents,
 //--- Display FIRST
   const uint64_t m = FIRST_with_empty_relation.value64Count() ;
   if (inPopulateHTMLHelperString) {
-    ioHTMLFileContents.outputRawData ("<p>") ;
-    ioHTMLFileContents += "Calculus completed in " ;
-    ioHTMLFileContents.appendSigned (inIterationsCount) ;
-    ioHTMLFileContents += " iterations, " ;
-    ioHTMLFileContents.appendUnsigned (m) ;
-    ioHTMLFileContents += " values ;\n"
-                          "'$$' means the nonterminal can be derived to empty string (see step 4).\n" ;
-    ioHTMLFileContents.outputRawData ("</p>") ;
-    ioHTMLFileContents.outputRawData ("<table class=\"result\">") ;
+    ioHTMLFileContents.addRawData ("<p>") ;
+    ioHTMLFileContents.addString ("Calculus completed in ") ;
+    ioHTMLFileContents.addSigned (inIterationsCount) ;
+    ioHTMLFileContents.addString (" iterations, ") ;
+    ioHTMLFileContents.addUnsigned (m) ;
+    ioHTMLFileContents.addString (" values ;\n"
+                          "'$$' means the nonterminal can be derived to empty string (see step 4).\n") ;
+    ioHTMLFileContents.addRawData ("</p>") ;
+    ioHTMLFileContents.addRawData ("<table class=\"result\">") ;
     for (int32_t symbol=inVocabulary.getTerminalSymbolsCount () ; symbol < symbolsCount ; symbol++) {
-      ioHTMLFileContents.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
-      ioHTMLFileContents += FIRST_with_empty_relation.configuration().constantNameForVariableAndValue(0, (uint32_t) symbol COMMA_HERE) ;
-      ioHTMLFileContents.outputRawData ("</code></td><td><code>") ;
+      ioHTMLFileContents.addRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
+      ioHTMLFileContents.addString (FIRST_with_empty_relation.configuration().constantNameForVariableAndValue(0, (uint32_t) symbol COMMA_HERE)) ;
+      ioHTMLFileContents.addRawData ("</code></td><td><code>") ;
       const int32_t length = outFIRSTarray (symbol COMMA_HERE).count () ;
       for (int32_t e=0 ; e<length ; e++) {
-        ioHTMLFileContents += " " ;
+        ioHTMLFileContents.addString (" ") ;
         inVocabulary.printInFile (ioHTMLFileContents, (int32_t) outFIRSTarray (symbol COMMA_HERE) (e COMMA_HERE) COMMA_HERE) ;
       }
-      ioHTMLFileContents.outputRawData ("</code></td></tr>") ;
+      ioHTMLFileContents.addRawData ("</code></td></tr>") ;
     }
-    ioHTMLFileContents.outputRawData ("</table>") ;
+    ioHTMLFileContents.addRawData ("</table>") ;
   }
 //----------------------------------------------- Check FIRST
   const C_Relation ntToCheck_relation (inUsefulSymbols.configuration(),
@@ -138,43 +138,43 @@ displayAndCheckFIRSTsets (C_HTMLString & ioHTMLFileContents,
 
 //--- Display nonterminal symbols in error
   if (inPopulateHTMLHelperString) {
-    ioHTMLFileContents.outputRawData ("<p>") ;
-    ioHTMLFileContents += "Every useful nonterminal should"
+    ioHTMLFileContents.addRawData ("<p>") ;
+    ioHTMLFileContents.addString ("Every useful nonterminal should"
                    " either have a non empty FIRST,"
                    " either be derived to empty string,"
                    " either both."
-                   " In any way having none: it is an error." ;
-    ioHTMLFileContents.outputRawData ("</p>") ;
-    ioHTMLFileContents.outputRawData ("<p>") ;
+                   " In any way having none: it is an error.") ;
+    ioHTMLFileContents.addRawData ("</p>") ;
+    ioHTMLFileContents.addRawData ("<p>") ;
     if (ntInErrorCount == 0) {
-      ioHTMLFileContents.outputRawData ("<span class=\"success\">") ;
-      ioHTMLFileContents += "All FIRST are correct.\n\n" ;
-      ioHTMLFileContents.outputRawData ("</span>") ;
+      ioHTMLFileContents.addRawData ("<span class=\"success\">") ;
+      ioHTMLFileContents.addString ("All FIRST are correct.\n\n") ;
+      ioHTMLFileContents.addRawData ("</span>") ;
     }else{
-      ioHTMLFileContents.outputRawData ("<span class=\"error\">") ;
-      ioHTMLFileContents += "Error : " ;
-      ioHTMLFileContents.appendUnsigned (ntInErrorCount) ;
-      ioHTMLFileContents += " nonterminal symbol" ;
-      ioHTMLFileContents += ((ntInErrorCount>1) ? " has" : "s have") ;
-      ioHTMLFileContents += " an empty FIRST :" ;
+      ioHTMLFileContents.addRawData ("<span class=\"error\">") ;
+      ioHTMLFileContents.addString ("Error : ") ;
+      ioHTMLFileContents.addUnsigned (ntInErrorCount) ;
+      ioHTMLFileContents.addString (" nonterminal symbol") ;
+      ioHTMLFileContents.addString ((ntInErrorCount>1) ? " has" : "s have") ;
+      ioHTMLFileContents.addString (" an empty FIRST :") ;
       TC_UniqueArray <uint64_t> errorArray_relation ;
       ntInError_relation.getValueArray (errorArray_relation) ;
-      ioHTMLFileContents.outputRawData ("<code>") ;
+      ioHTMLFileContents.addRawData ("<code>") ;
       for (int32_t i=0 ; i<errorArray_relation.count () ; i++) {
         const uint64_t ntInError = errorArray_relation (i COMMA_HERE) ;
-        ioHTMLFileContents += " " ;
-        ioHTMLFileContents += ntInError_relation.configuration().constantNameForVariableAndValue (0, (uint32_t) ntInError COMMA_HERE) ;
+        ioHTMLFileContents.addString (" ") ;
+        ioHTMLFileContents.addString (ntInError_relation.configuration().constantNameForVariableAndValue (0, (uint32_t) ntInError COMMA_HERE)) ;
       }
-      ioHTMLFileContents.outputRawData ("</code>") ;
-      ioHTMLFileContents.outputRawData ("</span>") ;
+      ioHTMLFileContents.addRawData ("</code>") ;
+      ioHTMLFileContents.addRawData ("</span>") ;
     }
-    ioHTMLFileContents.outputRawData ("</p>") ;
+    ioHTMLFileContents.addRawData ("</p>") ;
   }
   if (inVerboseOptionOn) {
     if (ntInErrorCount == 0) {
-      gCout += "ok.\n" ;
+      gCout.addString ("ok.\n") ;
     }else{
-      gCout += "error.\n" ;
+      gCout.addString ("error.\n") ;
     }
     gCout.flush () ;
   }
@@ -198,13 +198,13 @@ FIRST_computations (const cPureBNFproductionsList & inPureBNFproductions,
   const C_RelationConfiguration vocabularyConfiguration = inUsefulSymbols.configuration () ;
 //--- Console display
   if (inVerboseOptionOn) {
-    gCout += "  FIRST sets... " ;
+    gCout.addString ("  FIRST sets... ") ;
     gCout.flush () ;
   }
 //--- Print in BNF file
   if (inPopulateHTMLHelperString) {
-    ioHTMLFileContents.outputRawData ("<p><a name=\"first_sets\"></a></p>") ;
-    ioHTMLFileContents.appendCppTitleComment ("FIRST set", "title") ;
+    ioHTMLFileContents.addRawData ("<p><a name=\"first_sets\"></a></p>") ;
+    ioHTMLFileContents.addCppTitleComment ("FIRST set", "title") ;
   }
 
 //--- Compute FIRST sets

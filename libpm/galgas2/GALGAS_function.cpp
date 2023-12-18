@@ -65,23 +65,23 @@ GALGAS_function::~ GALGAS_function (void) {
 
 void GALGAS_function::description (String & ioString,
                                    const int32_t /* inIndentation */) const {
-  ioString += "<@function:" ;
+  ioString.addString ("<@function:") ;
   if (nullptr == mFunctionDescriptor) {
-    ioString += "not built" ;
+    ioString.addString ("not built") ;
   }else{
-    ioString += mFunctionDescriptor->mFunctionName ;
-    ioString += " [" ;
+    ioString.addString (mFunctionDescriptor->mFunctionName) ;
+    ioString.addString (" [") ;
     for (uint32_t i=0 ; i<mFunctionDescriptor->mParameterCount ; i++) {
       if (i > 0) {
-        ioString += " " ;
+        ioString.addString (" ") ;
       }
-      ioString += "?@" ;
-      ioString += mFunctionDescriptor->mFormalParameterTypeList [i]->mGalgasTypeName ;
+      ioString.addString ("?@") ;
+      ioString.addString (mFunctionDescriptor->mFormalParameterTypeList [i]->mGalgasTypeName) ;
     }
-    ioString += "] -> @" ;
-    ioString += mFunctionDescriptor->mResultType->mGalgasTypeName ;
+    ioString.addString ("] -> @") ;
+    ioString.addString (mFunctionDescriptor->mResultType->mGalgasTypeName) ;
   }
-  ioString += ">" ;
+  ioString.addString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -165,14 +165,14 @@ GALGAS_object GALGAS_function::getter_invoke (const GALGAS_objectlist & inObject
   bool ok = mFunctionDescriptor->mParameterCount == argumentsArray.count () ;
   if (! ok) {
     String errorMessage ;
-    errorMessage += "the '" ;
-    errorMessage += mFunctionDescriptor->mFunctionName ;
-    errorMessage += "' function is called with " ;
-    errorMessage.appendUnsigned (argumentsArray.count ()) ;
-    errorMessage += " actual parameter" ;
-    errorMessage += ((argumentsArray.count () > 1) ? "s" : "") ;
-    errorMessage += ", but its header requires " ;
-    errorMessage.appendUnsigned (mFunctionDescriptor->mParameterCount) ;
+    errorMessage.addString ("the '") ;
+    errorMessage.addString (mFunctionDescriptor->mFunctionName) ;
+    errorMessage.addString ("' function is called with ") ;
+    errorMessage.addUnsigned (argumentsArray.count ()) ;
+    errorMessage.addString (" actual parameter") ;
+    errorMessage.addString ((argumentsArray.count () > 1) ? "s" : "") ;
+    errorMessage.addString (", but its header requires ") ;
+    errorMessage.addUnsigned (mFunctionDescriptor->mParameterCount) ;
     inCompiler->semanticErrorAtLocation (inErrorLocation, errorMessage, TC_Array <C_FixItDescription> () COMMA_THERE) ;
   }
 //--- Check parameters
@@ -188,15 +188,15 @@ GALGAS_object GALGAS_function::getter_invoke (const GALGAS_objectlist & inObject
       }
       if (! ok) {
         String errorMessage ;
-        errorMessage += "the actual parameter #" ;
-        errorMessage.appendUnsigned (i) ;
-        errorMessage += " of the '" ;
-        errorMessage += mFunctionDescriptor->mFunctionName ;
-        errorMessage += "' function call has the '@" ;
-        errorMessage += parameter.staticTypeDescriptor ()->mGalgasTypeName ;
-        errorMessage += "', but the function header requires an instance of '@" ;
-        errorMessage += mFunctionDescriptor->mFormalParameterTypeList [i]->mGalgasTypeName ;
-        errorMessage += "'" ;
+        errorMessage.addString ("the actual parameter #") ;
+        errorMessage.addUnsigned (i) ;
+        errorMessage.addString (" of the '") ;
+        errorMessage.addString (mFunctionDescriptor->mFunctionName) ;
+        errorMessage.addString ("' function call has the '@") ;
+        errorMessage.addString (parameter.staticTypeDescriptor ()->mGalgasTypeName) ;
+        errorMessage.addString ("', but the function header requires an instance of '@") ;
+        errorMessage.addString (mFunctionDescriptor->mFormalParameterTypeList [i]->mGalgasTypeName) ;
+        errorMessage.addString ("'") ;
         inCompiler->semanticErrorAtLocation (inErrorLocation, errorMessage, TC_Array <C_FixItDescription> () COMMA_THERE) ;
       }
     }

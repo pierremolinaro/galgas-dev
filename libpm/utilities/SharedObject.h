@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  C_SharedObject : Base class for GALGAS object handling                                       
+//  SharedObject : Base class for GALGAS object handling                                       
 //
 //  This file is part of libpm library                                                           
 //
@@ -27,7 +27,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-class C_SharedObject {
+class SharedObject {
 //--- Attributes for debug
   #ifndef DO_NOT_GENERATE_CHECKINGS
   //--- Object index
@@ -36,8 +36,8 @@ class C_SharedObject {
     public: const char * const mCreationFile ;
     public: const int mCreationLine ;
   //--- Link between existing instances
-    private: C_SharedObject * mPtrToPreviousObject ;
-    private: C_SharedObject * mPtrToNextObject ;
+    private: SharedObject * mPtrToPreviousObject ;
+    private: SharedObject * mPtrToNextObject ;
   #endif
 
 
@@ -46,23 +46,23 @@ class C_SharedObject {
 
   public: inline bool isUniquelyReferenced (void) const { return mRetainCount == 1 ; }
   
-  public: static void retain (const C_SharedObject * inObject COMMA_LOCATION_ARGS) ;
+  public: static void retain (const SharedObject * inObject COMMA_LOCATION_ARGS) ;
 
-  public: static void release (const C_SharedObject * inObject COMMA_LOCATION_ARGS) ;
+  public: static void release (const SharedObject * inObject COMMA_LOCATION_ARGS) ;
 
-  public: static void retainRelease (const C_SharedObject * inObjectToRetain,
-                                      const C_SharedObject * inObjectToRelease
-                                      COMMA_LOCATION_ARGS) ;
-  
+  public: static void retainRelease (const SharedObject * inObjectToRetain,
+                                     const SharedObject * inObjectToRelease
+                                     COMMA_LOCATION_ARGS) ;
+
 //--- Default Constructor
-  protected: C_SharedObject (LOCATION_ARGS) ;
+  protected: SharedObject (LOCATION_ARGS) ;
   
 //--- Virtual Destructor
-  protected: virtual ~ C_SharedObject (void) ;
+  protected: virtual ~ SharedObject (void) ;
   
 //--- No copy
-  private: C_SharedObject (const C_SharedObject &) ;
-  private: C_SharedObject & operator = (const C_SharedObject &) ;
+  private: SharedObject (const SharedObject &) = delete ;
+  private: SharedObject & operator = (const SharedObject &) = delete ;
 
 //------------------------------------------------------------- Handling Pointer checking
   #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -133,28 +133,28 @@ class C_SharedObject {
 //--------------------------------------------------------------------------------------------------
 
 #define macroAssignSharedObject(TARGET_PTR,SOURCE_PTR) \
-  { C_SharedObject::retainRelease (SOURCE_PTR, TARGET_PTR COMMA_HERE) ; TARGET_PTR = SOURCE_PTR ; }
+  { SharedObject::retainRelease (SOURCE_PTR, TARGET_PTR COMMA_HERE) ; TARGET_PTR = SOURCE_PTR ; }
 
 //--------------------------------------------------------------------------------------------------
 //   macroAssignSharedObjectThere                                                                
 //--------------------------------------------------------------------------------------------------
 
 #define macroAssignSharedObjectThere(TARGET_PTR,SOURCE_PTR) \
-  { C_SharedObject::retainRelease (SOURCE_PTR, TARGET_PTR COMMA_THERE) ; TARGET_PTR = SOURCE_PTR ; }
+  { SharedObject::retainRelease (SOURCE_PTR, TARGET_PTR COMMA_THERE) ; TARGET_PTR = SOURCE_PTR ; }
 
 //--------------------------------------------------------------------------------------------------
 //   macroDetachSharedObject                                                                     
 //--------------------------------------------------------------------------------------------------
 
 #define macroDetachSharedObject(PTR) \
-  { C_SharedObject::release (PTR COMMA_HERE) ; PTR = nullptr ; }
+  { SharedObject::release (PTR COMMA_HERE) ; PTR = nullptr ; }
 
 //--------------------------------------------------------------------------------------------------
 //   macroDetachSharedObjectThere                                                                
 //--------------------------------------------------------------------------------------------------
 
 #define macroDetachSharedObjectThere(PTR) \
-  { C_SharedObject::release (PTR COMMA_THERE) ; PTR = nullptr ; }
+  { SharedObject::release (PTR COMMA_THERE) ; PTR = nullptr ; }
 
 //--------------------------------------------------------------------------------------------------
 //   macroUniqueSharedObject                                                                     

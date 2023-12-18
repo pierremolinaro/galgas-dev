@@ -22,7 +22,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "utilities/C_SharedObject.h"
+#include "utilities/SharedObject.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -31,7 +31,7 @@ class AC_GALGAS_root ;
 
 //--------------------------------------------------------------------------------------------------
 
-class cPtr_object : public C_SharedObject {
+class cPtr_object : public SharedObject {
 //--- Default Constructor
   public: cPtr_object (LOCATION_ARGS) ;
 

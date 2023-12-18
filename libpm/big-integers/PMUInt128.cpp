@@ -175,7 +175,7 @@ void PMUInt128::operator /= (const uint32_t inDivisor) {
 String PMUInt128::decimalString (void) const {
   String result ;
   if (isZero()) {
-    result += "0" ;
+    result.addString ("0") ;
   }else{
     PMUInt128 value = *this ;
     TC_UniqueArray <uint32_t> values ;
@@ -184,11 +184,11 @@ String PMUInt128::decimalString (void) const {
       value.divideBy (1000, remainder) ;
       values.appendObject (remainder) ;
     }
-    result.appendUnsigned (values.lastObject (HERE)) ;
+    result.addUnsigned (values.lastObject (HERE)) ;
     for (int32_t i=values.count () - 2 ; i>=0 ; i--) {
       char s [16] ;
       snprintf (s, 16, " %03u", values (i COMMA_HERE)) ;
-      result += s ;
+      result.addString (s) ;
     }
   }
   return result ;

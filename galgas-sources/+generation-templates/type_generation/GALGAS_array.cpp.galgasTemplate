@@ -4,7 +4,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-class cPtr_%!TYPE_IDENTIFIER% : public C_SharedObject {
+class cPtr_%!TYPE_IDENTIFIER% : public SharedObject {
   private: GALGAS_%!ELEMENT_TYPE_IDENTIFIER% * mObjectArray ;
 %for (mValue) in DIMENSION_LIST do
 %  private: uint32_t mSize%!mValue% ;
@@ -70,7 +70,7 @@ for (mValue) in DIMENSION_LIST
  between %,\n                                                      %
  end
 %    %!^%COMMA_LOCATION_ARGS) :
-C_SharedObject (THERE),
+SharedObject (THERE),
 mObjectArray (nullptr),
 % for (mValue) in DIMENSION_LIST
   do %mSize%!mValue% (inSize%!mValue%)%
@@ -83,7 +83,7 @@ mObjectArray (nullptr),
 
 cPtr_%!TYPE_IDENTIFIER%::cPtr_%!TYPE_IDENTIFIER% (%?^%const cPtr_%!TYPE_IDENTIFIER% * inPointer
     %!^%COMMA_LOCATION_ARGS) :
-C_SharedObject (THERE),
+SharedObject (THERE),
 mObjectArray (nullptr),
 % for (mValue) in DIMENSION_LIST
   do %mSize%!mValue% (inPointer->size%!mValue% ())%
@@ -131,10 +131,10 @@ for (mValue) in DIMENSION_LIST
 do
 %if (inIndex%!mValue% >= size%!mValue% ()) {
     String s ;
-    s += "array index %!mValue% : " ;
-    s.appendUnsigned (inIndex%!mValue%) ;
-    s += " >= size " ;
-    s.appendUnsigned (size%!mValue% ()) ;
+    s.addString ("array index %!mValue% : ") ;
+    s.addUnsigned (inIndex%!mValue%) ;
+    s.addString (" >= size ") ;
+    s.addUnsigned (size%!mValue% ()) ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;\n%
 between %  }else %
 end
@@ -243,19 +243,19 @@ for (mValue) in DIMENSION_LIST
 
 void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%String & ioString,
        %!^%const int32_t /* inIndentation */) const {
-  ioString += "<@ptrint:" ;
+  ioString.addString ("<@ptrint:") ;
   if (nullptr == mSharedObject) {
-    ioString += "NULL" ;
+    ioString.addString ("NULL") ;
   }else{
     macroValidSharedObject (mSharedObject, cPtr_%!TYPE_IDENTIFIER%) ;
-    ioString += "array [" ;\n%
+    ioString.addString ("array [") ;\n%
 for (mValue) in DIMENSION_LIST
-do %    ioString.appendUnsigned (mSharedObject->size%!mValue% ())\n%
-between %    ioString += ", "%
+do %    ioString.addUnsigned (mSharedObject->size%!mValue% ())\n%
+between %    ioString.addString (", ")%
 end
-%    ioString += "] of @uint" ;
+%    ioString.addString ("] of @uint") ;
   }
-  ioString += ">" ;
+  ioString.addString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -355,11 +355,11 @@ end
       result = mSharedObject->objectAtAbsoluteIndex (idx) ;
       if (! result.isValid ()) {
         String s ;
-        s += "getter @ptrint valueAtIndex: object at index (" ;\n%
+        s.addString ("getter @ptrint valueAtIndex: object at index (") ;\n%
 for (mValue) in DIMENSION_LIST
-do %        s.appendUnsigned (mSharedObject->size%!mValue% ())\n%
+do %        s.addUnsigned (mSharedObject->size%!mValue% ())\n%
 end
-%        s += ") is invalid" ;
+%        s.addString (") is invalid") ;
         inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
       }
     }
@@ -452,9 +452,9 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_setSizeForAxis (%?^%GALGAS_uint inNewSize
     const uint32_t axisIndex = inAxisIndex.uintValue () ;
     if (axisIndex >= %![DIMENSION string]%) {
       String s ;
-      s += "setter @ptrint setSizeForAxis: axis index (" ;
-      s.appendUnsigned (axisIndex) ;
-      s += ") >= dimension (%![DIMENSION string]%)" ;
+      s.addString ("setter @ptrint setSizeForAxis: axis index (") ;
+      s.addUnsigned (axisIndex) ;
+      s.addString (") >= dimension (%![DIMENSION string]%)") ;
       inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
     }else{
 % for (mValue) in DIMENSION_LIST

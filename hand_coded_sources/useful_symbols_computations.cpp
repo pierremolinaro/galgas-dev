@@ -69,11 +69,11 @@ static bool displayUnusefulSymbols (Compiler * inCompiler,
                                     const cVocabulary & inVocabulary,
                                     const int32_t inIterationCount,
                                     const bool inVerboseOptionOn) {
-  ioHTMLFileContents.outputRawData ("<p><a name=\"useful_symbols\"></a>") ;
-  ioHTMLFileContents += "Calculus completed in " ;
-  ioHTMLFileContents.appendSigned (inIterationCount) ;
-  ioHTMLFileContents += " iterations.\n" ;
-  ioHTMLFileContents.outputRawData ("</p>") ;
+  ioHTMLFileContents.addRawData ("<p><a name=\"useful_symbols\"></a>") ;
+  ioHTMLFileContents.addString ("Calculus completed in ") ;
+  ioHTMLFileContents.addSigned (inIterationCount) ;
+  ioHTMLFileContents.addString (" iterations.\n") ;
+  ioHTMLFileContents.addRawData ("</p>") ;
 
 //------------------------------------------------------ Compute useless symbols
   C_Relation uselessSymbols = ~ inUsefulSymbolsRelation ;
@@ -103,50 +103,50 @@ static bool displayUnusefulSymbols (Compiler * inCompiler,
   TC_UniqueArray <uint64_t> unusedSymbolArrayForWarning ;
   uselessSymbolsForWarning.getValueArray (unusedSymbolArrayForWarning) ;
 //---------------------------------------------------------- Print in HTML file  
-  ioHTMLFileContents.outputRawData ("<p>") ;
+  ioHTMLFileContents.addRawData ("<p>") ;
   if (unusedSymbolArrayForWarning.count () == 0) {
-    ioHTMLFileContents.outputRawData ("<span class=\"success\">") ;
-    ioHTMLFileContents += "All terminal and nonterminal symbols are useful.\n\n" ;
-    ioHTMLFileContents.outputRawData ("</span>") ;
+    ioHTMLFileContents.addRawData ("<span class=\"success\">") ;
+    ioHTMLFileContents.addString ("All terminal and nonterminal symbols are useful.\n\n") ;
+    ioHTMLFileContents.addRawData ("</span>") ;
   }else{
-    ioHTMLFileContents.outputRawData ("<span class=\"warning\">") ;
-    ioHTMLFileContents += "The vocabulary has " ;
-    ioHTMLFileContents.appendSigned (unusedSymbolArrayForWarning.count ()) ;
-    ioHTMLFileContents += " useless symbol(s) : \n" ;
-    ioHTMLFileContents.outputRawData ("<code>") ;
+    ioHTMLFileContents.addRawData ("<span class=\"warning\">") ;
+    ioHTMLFileContents.addString ("The vocabulary has ") ;
+    ioHTMLFileContents.addSigned (unusedSymbolArrayForWarning.count ()) ;
+    ioHTMLFileContents.addString (" useless symbol(s) : \n") ;
+    ioHTMLFileContents.addRawData ("<code>") ;
     for (int32_t symbol=0 ; symbol < unusedSymbolArrayForWarning.count () ; symbol++) {
-      ioHTMLFileContents.outputRawData ("<br>") ;
-      ioHTMLFileContents += uselessSymbolsForWarning.configuration().constantNameForVariableAndValue (0, (uint32_t) unusedSymbolArrayForWarning (symbol COMMA_HERE) COMMA_HERE) ;
+      ioHTMLFileContents.addRawData ("<br>") ;
+      ioHTMLFileContents.addString (uselessSymbolsForWarning.configuration().constantNameForVariableAndValue (0, (uint32_t) unusedSymbolArrayForWarning (symbol COMMA_HERE) COMMA_HERE)) ;
     }
-    ioHTMLFileContents.outputRawData ("</code></span>") ;
+    ioHTMLFileContents.addRawData ("</code></span>") ;
   }
-  ioHTMLFileContents.outputRawData ("</p>") ;
+  ioHTMLFileContents.addRawData ("</p>") ;
 
 //---------------------------------------- Print messages and warnings on stdout
 //--- Ok, or warning ?
   const bool warning = (usedSymbolDeclaredAsUnusedArray.count () > 0) || (unusedSymbolArrayForWarning.count () > 0) ;
   if (inVerboseOptionOn) {
-    gCout += (warning ? "warning.\n" : "all, ok.\n") ;
+    gCout.addString (warning ? "warning.\n" : "all, ok.\n") ;
   }
   gCout.flush () ;
 //--- Warn for unused symbols
   if (unusedSymbolArrayForWarning.count () > 0) {
     String warningMessage ;
     if (unusedSymbolArrayForWarning.count () == 1) {
-      warningMessage += "there is 1 useless symbol, not declared as unused: " ;
+      warningMessage.addString ("there is 1 useless symbol, not declared as unused: ") ;
     }else{
-      warningMessage += "there are " ;
-      warningMessage.appendSigned (unusedSymbolArrayForWarning.count ()) ;
-      warningMessage += " useless symbols, not declared as unused: " ;
+      warningMessage.addString ("there are ") ;
+      warningMessage.addSigned (unusedSymbolArrayForWarning.count ()) ;
+      warningMessage.addString (" useless symbols, not declared as unused: ") ;
     }
     bool first = true ;
     for (int32_t symbol=0 ; symbol < unusedSymbolArrayForWarning.count () ; symbol++) {
       if (first) {
         first = false ;
       }else{
-        warningMessage += ", " ;
+        warningMessage.addString (", ") ;
       }
-      warningMessage += uselessSymbolsForWarning.configuration().constantNameForVariableAndValue (0, (uint32_t) unusedSymbolArrayForWarning (symbol COMMA_HERE) COMMA_HERE) ;
+      warningMessage.addString (uselessSymbolsForWarning.configuration().constantNameForVariableAndValue (0, (uint32_t) unusedSymbolArrayForWarning (symbol COMMA_HERE) COMMA_HERE)) ;
     }
     inCompiler->semanticWarningAtLocation (inErrorLocation, warningMessage COMMA_HERE) ;
   }
@@ -154,20 +154,20 @@ static bool displayUnusefulSymbols (Compiler * inCompiler,
   if (usedSymbolDeclaredAsUnusedArray.count () > 0) {
     String warningMessage ;
     if (usedSymbolDeclaredAsUnusedArray.count () == 1) {
-      warningMessage += "there is 1 useful symbol declared as unused: " ;
+      warningMessage.addString ("there is 1 useful symbol declared as unused: ") ;
     }else{
-      warningMessage += "there are " ;
-      warningMessage.appendSigned (usedSymbolDeclaredAsUnusedArray.count ()) ;
-      warningMessage += " useful symbols declared as unused: " ;
+      warningMessage.addString ("there are ") ;
+      warningMessage.addSigned (usedSymbolDeclaredAsUnusedArray.count ()) ;
+      warningMessage.addString (" useful symbols declared as unused: ") ;
     }
     bool first = true ;
     for (int32_t i=0 ; i<usedSymbolDeclaredAsUnusedArray.count () ; i++) {
       if (first) {
         first = false ;
       }else{
-        warningMessage += ", " ;
+        warningMessage.addString (", ") ;
       }
-      warningMessage += usedSymbolDeclaredAsUnusedArray (i COMMA_HERE) ;
+      warningMessage.addString (usedSymbolDeclaredAsUnusedArray (i COMMA_HERE)) ;
     }
     inCompiler->semanticWarningAtLocation (inErrorLocation, warningMessage COMMA_HERE) ;
   }
@@ -190,12 +190,12 @@ void useful_symbols_computations (Compiler * inCompiler,
                                   const bool inVerboseOptionOn) {
 //--- Console display
   if (inVerboseOptionOn) {
-    gCout += "  Useful nonterminal symbols... " ;
+    gCout.addString ("  Useful nonterminal symbols... ") ;
     gCout.flush () ;
   }
 //--- Print in BNF file
   if (inPopulateHTMLHelperString) {
-    ioHTMLFileContents.appendCppTitleComment ("Useful terminal and nonterminal symbols", "title") ;
+    ioHTMLFileContents.addCppTitleComment ("Useful terminal and nonterminal symbols", "title") ;
   }
   int32_t iterationsCount = 0 ;
   computeUsefulSymbols (inPureBNFproductions,

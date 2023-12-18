@@ -335,7 +335,7 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
   //NSLog (@"spaceCount %u", spaceCount) ;
   NSMutableString * s = [[NSMutableString alloc] init] ;
   for (NSUInteger i=0 ; i<spaceCount ; i++) {
-    [s appendString:@" "] ;
+    [s appendString: @" "] ;
   }
   return s ;
 }

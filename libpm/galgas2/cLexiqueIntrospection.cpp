@@ -70,25 +70,25 @@ void cLexiqueIntrospection::handleGetKeywordListOption (Compiler * inCompiler) {
   const String option = gOption_galgas_5F_builtin_5F_options_outputKeywordList.readProperty_value () ;
   if (option != "") {
     const String optionFormat = "lexique_name:list_name:columns:prefix:postfix:path" ;
-    gCout += "Option \"--" ;
-    gCout += gOption_galgas_5F_builtin_5F_options_outputKeywordList.mCommandString ;
-    gCout += "=" ;
-    gCout += option ;
-    gCout += "\":\n" ;
+    gCout.addString ("Option \"--") ;
+    gCout.addString (gOption_galgas_5F_builtin_5F_options_outputKeywordList.mCommandString) ;
+    gCout.addString ("=") ;
+    gCout.addString (option) ;
+    gCout.addString ("\":\n") ;
     TC_UniqueArray <String> components ;
     option.componentsSeparatedByString (":", components) ;
     if (components.count () != 6) {
       String message = "invalid option ; should be \"--" ;
-      message += gOption_galgas_5F_builtin_5F_options_outputKeywordList.mCommandString ;
-      message += "=" ;
-      message += optionFormat + "\"" ;
+      message.addString (gOption_galgas_5F_builtin_5F_options_outputKeywordList.mCommandString) ;
+      message.addString ("=") ;
+      message.addString (optionFormat + "\"") ;
       inCompiler->onTheFlyRunTimeError (message COMMA_HERE) ;
     }else if (!components (2 COMMA_HERE).isUnsignedInteger ()) {
       String message = "invalid option ; in \"--" ;
-      message += gOption_galgas_5F_builtin_5F_options_outputKeywordList.mCommandString ;
-      message += "=" ;
-      message += optionFormat + "\", " ;
-      message += "\"columns\" should be an decimal unsigned number" ;
+      message.addString (gOption_galgas_5F_builtin_5F_options_outputKeywordList.mCommandString) ;
+      message.addString ("=") ;
+      message.addString (optionFormat + "\", ") ;
+      message.addString ("\"columns\" should be an decimal unsigned number") ;
       inCompiler->onTheFlyRunTimeError (message COMMA_HERE) ;
     }else{
       const uint32_t columns = components (2 COMMA_HERE).unsignedIntegerValue () ;
@@ -100,39 +100,39 @@ void cLexiqueIntrospection::handleGetKeywordListOption (Compiler * inCompiler) {
       getKeywordListForIdentifier (identifier, found, nameList) ;
       if (!found) {
         String message = "invalid option ; in \"--" ;
-        message += gOption_galgas_5F_builtin_5F_options_outputKeywordList.mCommandString ;
-        message += "=" ;
-        message += optionFormat + "\", " ;
-        message += "available values for \"lexique_name:list_name\" are:" ;
+        message.addString (gOption_galgas_5F_builtin_5F_options_outputKeywordList.mCommandString) ;
+        message.addString ("=") ;
+        message.addString (optionFormat + "\", ") ;
+        message.addString ("available values for \"lexique_name:list_name\" are:") ;
         TC_UniqueArray <String> keywordListNames ; getKeywordListNames (keywordListNames) ;
         for (int32_t i=0 ; i<keywordListNames.count () ; i++) {
-          message += "  - " ;
-          message += keywordListNames (i COMMA_HERE) ;
-          message += "\n" ;
+          message.addString ("  - ") ;
+          message.addString (keywordListNames (i COMMA_HERE)) ;
+          message.addNL () ;
         }
         inCompiler->onTheFlyRunTimeError (message COMMA_HERE) ;
       }else{
         uint32_t idx = 0 ;
         String s ;
         for (int32_t i=0 ; i<nameList.count() ; i++) {
-          s += "  " ;
-          s += prefix ;
-          s += nameList (i COMMA_HERE) ;
-          s += postfix ;
-          s += "  " ;
+          s.addString ("  ") ;
+          s.addString (prefix) ;
+          s.addString (nameList (i COMMA_HERE)) ;
+          s.addString (postfix) ;
+          s.addString ("  ") ;
           idx += 1 ;
           if (idx < columns) {
-            s += "&" ;
+            s.addString ("&") ;
           }else{
-            s += " \\\\\n" ;
+            s.addString (" \\\\\n") ;
             idx = 0 ;
           }
         }
         if (idx > 0) {
           for (uint32_t i = idx+1 ; i<columns ; i++) {
-            s += "  &  " ;
+            s.addString ("  &  ") ;
           }
-          s += "  \\\\\n" ;
+          s.addString ("  \\\\\n") ;
         }
         const String path = components (5 COMMA_HERE) ;
         C_FileManager::writeStringToFile (s, path) ;

@@ -25,7 +25,7 @@
 //--------------------------------------------------------------------------------------------------
 
 cPtr_object::cPtr_object (LOCATION_ARGS) :
-C_SharedObject (THERE),
+SharedObject (THERE),
 mEmbeddedObjectPtr (nullptr) {
 }
 
@@ -33,7 +33,7 @@ mEmbeddedObjectPtr (nullptr) {
 
 cPtr_object::cPtr_object (AC_GALGAS_root * inObjectPointer
                           COMMA_LOCATION_ARGS) :
-C_SharedObject (THERE),
+SharedObject (THERE),
 mEmbeddedObjectPtr (nullptr) {
   mEmbeddedObjectPtr = inObjectPointer ;
 }

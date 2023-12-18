@@ -109,22 +109,22 @@ void C_BoolCommandLineOption::printBoolOptions (void) {
     if (p->mCommandChar != '\0') {
       gCout.setForeColor (kBlueForeColor) ;
       gCout.setTextAttribute (kBoldTextAttribute) ;
-      gCout += "-" ;
-      gCout.appendCharacter (p->mCommandChar) ;
+      gCout.addString ("-") ;
+      gCout.addChar (p->mCommandChar) ;
       gCout.setTextAttribute (kAllAttributesOff) ;
-      gCout += "\n" ;
+      gCout.addNL () ; ;
     }
     if (p->mCommandString [0] != '\0') {
       gCout.setForeColor (kBlueForeColor) ;
       gCout.setTextAttribute (kBoldTextAttribute) ;
-      gCout += "--" ;
-      gCout += p->mCommandString ;
+      gCout.addString ("--") ;
+      gCout.addString (p->mCommandString) ;
       gCout.setTextAttribute (kAllAttributesOff) ;
-      gCout += "\n" ;
+      gCout.addNL () ; ;
     }
-    gCout += "    " ;
-    gCout += p->mComment ;
-    gCout += "\n" ;
+    gCout.addString ("    ") ;
+    gCout.addString (p->mComment) ;
+    gCout.addNL () ; ;
     p = p->mNext ;
   }
 }

@@ -392,8 +392,8 @@
 		CFF2177129FAAD3B00F58C35 /* all-declarations-29.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF2176E29FAAD3A00F58C35 /* all-declarations-29.cpp */; };
 		CFF8BF00126614D9001B7E61 /* cPtr_object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF8BEFC126614D9001B7E61 /* cPtr_object.cpp */; };
 		CFF8BF01126614D9001B7E61 /* cPtr_object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF8BEFC126614D9001B7E61 /* cPtr_object.cpp */; };
-		CFF991AA110B6CA40055EE27 /* C_SharedObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF991A8110B6CA40055EE27 /* C_SharedObject.cpp */; };
-		CFF991AB110B6CA40055EE27 /* C_SharedObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF991A8110B6CA40055EE27 /* C_SharedObject.cpp */; };
+		CFF991AA110B6CA40055EE27 /* SharedObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF991A8110B6CA40055EE27 /* SharedObject.cpp */; };
+		CFF991AB110B6CA40055EE27 /* SharedObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF991A8110B6CA40055EE27 /* SharedObject.cpp */; };
 		CFFC0F1D11EDC44200C97B85 /* C_BDD-and-operation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFC0F1311EDC44200C97B85 /* C_BDD-and-operation.cpp */; };
 		CFFC0F1E11EDC44200C97B85 /* C_BDD-find-or-add.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFC0F1411EDC44200C97B85 /* C_BDD-find-or-add.cpp */; };
 		CFFC0F1F11EDC44200C97B85 /* C_BDD-single-operand-ops.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFC0F1611EDC44200C97B85 /* C_BDD-single-operand-ops.cpp */; };
@@ -840,8 +840,8 @@
 		CFF2176F29FAAD3A00F58C35 /* all-declarations-29.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "all-declarations-29.h"; sourceTree = "<group>"; };
 		CFF8BEFC126614D9001B7E61 /* cPtr_object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = cPtr_object.cpp; sourceTree = "<group>"; };
 		CFF8BEFD126614D9001B7E61 /* cPtr_object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = cPtr_object.h; sourceTree = "<group>"; };
-		CFF991A8110B6CA40055EE27 /* C_SharedObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = C_SharedObject.cpp; sourceTree = "<group>"; };
-		CFF991A9110B6CA40055EE27 /* C_SharedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = C_SharedObject.h; sourceTree = "<group>"; };
+		CFF991A8110B6CA40055EE27 /* SharedObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = SharedObject.cpp; sourceTree = "<group>"; };
+		CFF991A9110B6CA40055EE27 /* SharedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SharedObject.h; sourceTree = "<group>"; };
 		CFF9E2911310429D0012D41A /* C_ColoredConsole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = C_ColoredConsole.h; sourceTree = "<group>"; };
 		CFFC0F1311EDC44200C97B85 /* C_BDD-and-operation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = "C_BDD-and-operation.cpp"; sourceTree = "<group>"; };
 		CFFC0F1411EDC44200C97B85 /* C_BDD-find-or-add.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = "C_BDD-find-or-add.cpp"; sourceTree = "<group>"; };
@@ -1411,8 +1411,8 @@
 				CFB3190217B38D76009424C2 /* C_DirectedGraph.h */,
 				CF63B54F10FC6A5E00B5E41F /* C_PrologueEpilogue.cpp */,
 				CF63B55010FC6A5E00B5E41F /* C_PrologueEpilogue.h */,
-				CFF991A8110B6CA40055EE27 /* C_SharedObject.cpp */,
-				CFF991A9110B6CA40055EE27 /* C_SharedObject.h */,
+				CFF991A8110B6CA40055EE27 /* SharedObject.cpp */,
+				CFF991A9110B6CA40055EE27 /* SharedObject.h */,
 				CFB3190717B3C553009424C2 /* C_UIntSet.cpp */,
 				CFB3190617B3C545009424C2 /* C_UIntSet.h */,
 				CFD396EF110E1EAF001549E6 /* cpp-allocation.cpp */,
@@ -1674,7 +1674,7 @@
 				CF63B55310FC6A5E00B5E41F /* C_PrologueEpilogue.cpp in Sources */,
 				CF23745219967C4F0061D2D8 /* all-declarations-3.cpp in Sources */,
 				CFCB7A212B2DAECF008DD653 /* BigUnsigned-bit.cpp in Sources */,
-				CFF991AB110B6CA40055EE27 /* C_SharedObject.cpp in Sources */,
+				CFF991AB110B6CA40055EE27 /* SharedObject.cpp in Sources */,
 				CFB02C7C19F3FC2F0011D03D /* all-declarations-20.cpp in Sources */,
 				CFD396F1110E1EAF001549E6 /* cpp-allocation.cpp in Sources */,
 				CFCB7A2F2B2DAECF008DD653 /* BigUnsigned-print.cpp in Sources */,
@@ -1854,7 +1854,7 @@
 				CF82F11310BEDAB200F40B32 /* C_CommandLineOption.cpp in Sources */,
 				CF63B55410FC6A5E00B5E41F /* C_PrologueEpilogue.cpp in Sources */,
 				CF23745319967C4F0061D2D8 /* all-declarations-3.cpp in Sources */,
-				CFF991AA110B6CA40055EE27 /* C_SharedObject.cpp in Sources */,
+				CFF991AA110B6CA40055EE27 /* SharedObject.cpp in Sources */,
 				CF12C0C01D043E8B0060778F /* all-predefined-types.cpp in Sources */,
 				CFB02C7D19F3FC2F0011D03D /* all-declarations-20.cpp in Sources */,
 				CFCB7A302B2DAECF008DD653 /* BigUnsigned-print.cpp in Sources */,

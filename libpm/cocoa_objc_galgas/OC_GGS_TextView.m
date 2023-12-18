@@ -189,7 +189,7 @@
     const NSInteger pageGuideColumn = [ud integerForKey:GGS_page_guide_column] ;
     NSMutableString * str = [NSMutableString new] ;
     for (NSInteger i=0 ; i<=pageGuideColumn ; i++) {
-      [str appendString:@"0"] ;
+      [str appendString: @"0"] ;
     }
     const NSSize s = [str sizeWithAttributes:attributes] ;
     const double column = rint (s.width) + 0.5 ;
@@ -287,7 +287,7 @@
         }
         NSMutableString * s = [NSMutableString new] ;
         for (NSInteger i=0 ; i<spacesToInsert ; i++) {
-          [s appendString:@" "] ;
+          [s appendString: @" "] ;
         }
         [self insertText:s] ;
       }break ;
@@ -301,11 +301,11 @@
         }
       //--- Insert string
         NSMutableString * stringToInsert = [NSMutableString new] ;
-        [stringToInsert appendString:@"\n"] ;
+        [stringToInsert appendString: @"\n"] ;
         while ((currentLineRange.length > 0) && ([s characterAtIndex:currentLineRange.location] == ' ')) {
           currentLineRange.location ++ ;
           currentLineRange.length -- ;
-          [stringToInsert appendString:@" "] ;
+          [stringToInsert appendString: @" "] ;
         }
         [self insertText:stringToInsert] ;
       }break ;

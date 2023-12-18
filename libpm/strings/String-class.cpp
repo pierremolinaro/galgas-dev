@@ -20,7 +20,7 @@
 
 #include "utilities/MF_MemoryControl.h"
 #include "utilities/md5.h"
-#include "utilities/C_SharedObject.h"
+#include "utilities/SharedObject.h"
 #include "strings/unicode_string_routines.h"
 #include "strings/unicode_character_cpp.h"
 #include "generic-arraies/TC_UniqueArray2.h"
@@ -59,7 +59,7 @@ static const utf32 kEmptyUTF32String [1] = {TO_UNICODE (0)} ;
 
 //--------------------------------------------------------------------------------------------------
 
-class cEmbeddedString : public C_SharedObject {
+class cEmbeddedString : public SharedObject {
   public: uint32_t mCapacity ; // Maximun allowed length of the following C string
   public: uint32_t mLength ; // Current length of the following C string
   public: char * mEncodedCString ;
@@ -98,7 +98,7 @@ static uint32_t stringGoodSize (const uint32_t inCurrentCapacity,
 //--------------------------------------------------------------------------------------------------
 
 cEmbeddedString::cEmbeddedString (const uint32_t inCapacity COMMA_LOCATION_ARGS) :
-C_SharedObject (THERE),
+SharedObject (THERE),
 mCapacity (0),
 mLength (0),
 mEncodedCString (nullptr),
@@ -114,7 +114,7 @@ mString (nullptr) {
 cEmbeddedString::cEmbeddedString (const cEmbeddedString * inEmbeddedString,
                                   const uint32_t inCapacity
                                   COMMA_LOCATION_ARGS) :
-C_SharedObject (THERE),
+SharedObject (THERE),
 mCapacity (0),
 mLength (0),
 mEncodedCString (nullptr),
@@ -246,7 +246,7 @@ String::~String (void) {
 String String::spaces (const int32_t inSpaceCount) {
   String result ;
   for (int32_t i=0 ; i<inSpaceCount ; i++) {
-    result += " " ;
+    result.addString (" ") ;
   }
   return result ;
 }
@@ -733,7 +733,7 @@ void String::linesArray (TC_UniqueArray <String> & outStringArray) const {
           state = kGotCarriageReturn ;
           break ;
         default: // Other character
-          outStringArray (index COMMA_HERE).appendUnicodeCharacter (c COMMA_HERE) ;
+          outStringArray (index COMMA_HERE).addUnicodeChar (c COMMA_HERE) ;
         }
         break ;
       case kGotCarriageReturn :
@@ -748,7 +748,7 @@ void String::linesArray (TC_UniqueArray <String> & outStringArray) const {
         default: // Other character
           outStringArray.appendObject (String ()) ;
           index ++ ;
-          outStringArray (index COMMA_HERE).appendUnicodeCharacter (c COMMA_HERE) ;
+          outStringArray (index COMMA_HERE).addUnicodeChar (c COMMA_HERE) ;
           state = kAppendToCurrentLine ;
         }
         break ;
@@ -766,7 +766,7 @@ void String::linesArray (TC_UniqueArray <String> & outStringArray) const {
         default: // Other character
           outStringArray.appendObject (String ()) ;
           index ++ ;
-          outStringArray (index COMMA_HERE).appendUnicodeCharacter (c COMMA_HERE) ;
+          outStringArray (index COMMA_HERE).addUnicodeChar (c COMMA_HERE) ;
           state = kAppendToCurrentLine ;
         }
         break ;
@@ -879,10 +879,10 @@ String String::componentsJoinedByString (const TC_UniqueArray <String> & inCompo
                                              const String & inSeparator) {
   String result ;
   if (inComponentArray.count () > 0) {
-    result += (inComponentArray (0 COMMA_HERE)) ;
+    result.addString (inComponentArray (0 COMMA_HERE)) ;
     for (int32_t i=1 ; i<inComponentArray.count () ; i++) {
-      result += (inSeparator) ;
-      result += (inComponentArray (i COMMA_HERE)) ;
+      result.addString (inSeparator) ;
+      result.addString (inComponentArray (i COMMA_HERE)) ;
     }
   }
   return result ;
@@ -941,20 +941,20 @@ String String::stringByReplacingCharacterByString (const utf32 inCharacter,
     const utf32 c = ((*this).operator () (i COMMA_HERE)) ;
     if (previousCharIsSubstituteChar) {
       if (UNICODE_VALUE (c) == UNICODE_VALUE (inCharacter)) {
-        resultingString.appendUnicodeCharacter (inCharacter COMMA_HERE) ;
+        resultingString.addUnicodeChar (inCharacter COMMA_HERE) ;
       }else{
-        resultingString += (inString) ;
-        resultingString.appendUnicodeCharacter (c COMMA_HERE) ;
+        resultingString.addString (inString) ;
+        resultingString.addUnicodeChar (c COMMA_HERE) ;
       }
       previousCharIsSubstituteChar = false ;
     }else if (UNICODE_VALUE (c) == UNICODE_VALUE (inCharacter)) {
       previousCharIsSubstituteChar = true ;
     }else{
-      resultingString.appendUnicodeCharacter (c COMMA_HERE) ;
+      resultingString.addUnicodeChar (c COMMA_HERE) ;
     }
   }
   if (previousCharIsSubstituteChar) {
-    resultingString += (inString) ;
+    resultingString.addString (inString) ;
   }
 //--- Return
   return resultingString ;
@@ -982,11 +982,11 @@ String String::stringByReplacingStringByString (const String inSearchedString,
     while (index <= (sourceLength - searchedStringLength)) {
       const bool found = utf32_strncmp (& sourceString [index], searchedString, searchedStringLength) == 0 ;
       if (found) {
-        result += (inReplacementString) ;
+        result.addString (inReplacementString) ;
         index += searchedStringLength ;
         outReplacementCount ++ ;
       }else{
-        result.appendUnicodeCharacter (sourceString [index] COMMA_HERE) ;
+        result.addUnicodeChar (sourceString [index] COMMA_HERE) ;
         index ++ ;
       }
     }
@@ -1037,7 +1037,7 @@ String String::subString (const int32_t inStartIndex,
     }
     const utf32 * ptr = utf32String (HERE) ;
     for (int32_t i=inStartIndex ; i<last ; i++) {
-      s.appendUnicodeCharacter (ptr [i] COMMA_HERE) ;
+      s.addUnicodeChar (ptr [i] COMMA_HERE) ;
     }
   }
   return s ;
@@ -1051,9 +1051,9 @@ String String::stringByCapitalizingFirstCharacter (void) const {
   s.setCapacity ((uint32_t) receiver_length) ;
   const utf32 * ptr = utf32String (HERE) ;
   if (receiver_length > 0) {
-    s.appendUnicodeCharacter (unicodeToUpper (ptr [0]) COMMA_HERE) ;
+    s.addUnicodeChar (unicodeToUpper (ptr [0]) COMMA_HERE) ;
     for (int32_t i=1 ; i<receiver_length ; i++) {
-      s.appendUnicodeCharacter (ptr [i] COMMA_HERE) ;
+      s.addUnicodeChar (ptr [i] COMMA_HERE) ;
     }
   }
   return s ;
@@ -1067,7 +1067,7 @@ String String::lowercaseString (void) const {
   s.setCapacity ((uint32_t) receiver_length) ;
   const utf32 * ptr = utf32String (HERE) ;
   for (int32_t i=0 ; i<receiver_length ; i++) {
-    s.appendUnicodeCharacter (unicodeToLower (ptr [i]) COMMA_HERE) ;
+    s.addUnicodeChar (unicodeToLower (ptr [i]) COMMA_HERE) ;
   }
   return s ;
 }
@@ -1092,10 +1092,10 @@ String String::stringByTrimmingSeparators (void) const {
       isCurrentlyTrimming = true ;
     }else{
       if (isCurrentlyTrimming) {
-        s.appendUnicodeCharacter (TO_UNICODE (' ') COMMA_HERE) ;
+        s.addUnicodeChar (TO_UNICODE (' ') COMMA_HERE) ;
         isCurrentlyTrimming = false ;
       }
-      s.appendUnicodeCharacter (c COMMA_HERE) ;
+      s.addUnicodeChar (c COMMA_HERE) ;
     }
     idx ++ ;
   }
@@ -1110,7 +1110,7 @@ String String::uppercaseString (void) const {
   s.setCapacity ((uint32_t) receiver_length) ;
   const utf32 * ptr = utf32String (HERE) ;
   for (int32_t i=0 ; i<receiver_length ; i++) {
-    s.appendUnicodeCharacter (unicodeToUpper (ptr [i]) COMMA_HERE) ;
+    s.addUnicodeChar (unicodeToUpper (ptr [i]) COMMA_HERE) ;
   }
   return s ;
 }
@@ -1185,7 +1185,7 @@ uint32_t String::currentColumn (void) const {
 
 void String::appendSpacesUntilColumn (const uint32_t inColumn) {
   for (uint32_t i=currentColumn () ; i<inColumn ; i++) {
-    appendUnicodeCharacter (TO_UNICODE (' ') COMMA_HERE) ;
+    addUnicodeChar (TO_UNICODE (' ') COMMA_HERE) ;
   }
 }
 
@@ -1195,7 +1195,7 @@ String String::stringWithRepeatedCharacter (const utf32 inRepeatedCharacter,
                                                 const uint32_t inCount) {
   String result ;
   for (uint32_t i=0 ; i<inCount ; i++) {
-    result.appendUnicodeCharacter (inRepeatedCharacter COMMA_HERE) ;
+    result.addUnicodeChar (inRepeatedCharacter COMMA_HERE) ;
   }
   return result ;
 }
@@ -1403,11 +1403,11 @@ String String::identifierRepresentation (void) const {
   for (int32_t i=0 ; i<receiver_length ; i++) {
     const utf32 c = ptr [i] ;
     if (isalpha ((int) UNICODE_VALUE (c))) {
-      s.appendUnicodeCharacter (c COMMA_HERE) ;
+      s.addUnicodeChar (c COMMA_HERE) ;
     }else{
-      s.appendUnicodeCharacter (TO_UNICODE ('_') COMMA_HERE) ;
-      s.appendUnsignedHex (UNICODE_VALUE (c)) ;
-      s.appendUnicodeCharacter (TO_UNICODE ('_') COMMA_HERE) ;
+      s.addUnicodeChar (TO_UNICODE ('_') COMMA_HERE) ;
+      s.addUnsignedHex (UNICODE_VALUE (c)) ;
+      s.addUnicodeChar (TO_UNICODE ('_') COMMA_HERE) ;
     }
   }
   return s ;
@@ -1423,11 +1423,11 @@ String String::nameRepresentation (void) const {
   for (int32_t i=0 ; i<receiver_length ; i++) {
     const utf32 c = ptr [i] ;
     if (isalnum ((int) UNICODE_VALUE (c))) {
-      s.appendUnicodeCharacter (c COMMA_HERE) ;
+      s.addUnicodeChar (c COMMA_HERE) ;
     }else{
-      s.appendUnicodeCharacter (TO_UNICODE ('_') COMMA_HERE) ;
-      s.appendUnsignedHex (UNICODE_VALUE (c)) ;
-      s.appendUnicodeCharacter (TO_UNICODE ('_') COMMA_HERE) ;
+      s.addUnicodeChar (TO_UNICODE ('_') COMMA_HERE) ;
+      s.addUnsignedHex (UNICODE_VALUE (c)) ;
+      s.addUnicodeChar (TO_UNICODE ('_') COMMA_HERE) ;
     }
   }
   return s ;
@@ -1444,11 +1444,11 @@ String String::fileNameRepresentation (void) const {
     const utf32 c = ptr [i] ;
     const int nc = (int) UNICODE_VALUE (c) ;
     if (isdigit (nc) || islower (nc)) {
-      s.appendUnicodeCharacter (c COMMA_HERE) ;
+      s.addUnicodeChar (c COMMA_HERE) ;
     }else{
-      s.appendUnicodeCharacter (TO_UNICODE ('-') COMMA_HERE) ;
-      s.appendUnsignedHex (UNICODE_VALUE (c)) ;
-      s.appendUnicodeCharacter (TO_UNICODE ('-') COMMA_HERE) ;
+      s.addUnicodeChar (TO_UNICODE ('-') COMMA_HERE) ;
+      s.addUnsignedHex (UNICODE_VALUE (c)) ;
+      s.addUnicodeChar (TO_UNICODE ('-') COMMA_HERE) ;
     }
   }
   return s ;
@@ -1464,11 +1464,11 @@ String String::assemblerRepresentation (void) const {
   for (int32_t i=0 ; i<receiver_length ; i++) {
     const utf32 c = ptr [i] ;
     if (isalnum ((int) UNICODE_VALUE (c)) || (UNICODE_VALUE (c) == '.')  || (UNICODE_VALUE (c) == '-') || (UNICODE_VALUE (c) == '$')) {
-      s.appendUnicodeCharacter (c COMMA_HERE) ;
+      s.addUnicodeChar (c COMMA_HERE) ;
     }else{
-      s.appendUnicodeCharacter (TO_UNICODE ('_') COMMA_HERE) ;
-      s.appendUnsignedHex (UNICODE_VALUE (c)) ;
-      s.appendUnicodeCharacter (TO_UNICODE ('_') COMMA_HERE) ;
+      s.addUnicodeChar (TO_UNICODE ('_') COMMA_HERE) ;
+      s.addUnsignedHex (UNICODE_VALUE (c)) ;
+      s.addUnicodeChar (TO_UNICODE ('_') COMMA_HERE) ;
     }
   }
   return s ;
@@ -1481,29 +1481,29 @@ String String::utf8RepresentationEnclosedWithin (const utf32 inCharacter, const 
   const int32_t receiver_length = length () ;
   s.setCapacity ((uint32_t) receiver_length) ;
   const utf32 * ptr = utf32String (HERE) ;
-  s.appendUnicodeCharacter  (inCharacter COMMA_HERE) ;
+  s.addUnicodeChar  (inCharacter COMMA_HERE) ;
   for (int32_t i=0 ; i<receiver_length ; i++) {
     const utf32 c = ptr [i] ;
     if (UNICODE_VALUE (c) == '\\') {
-      s.appendUnicodeCharacter ('\\' COMMA_HERE) ;
-      s.appendUnicodeCharacter ('\\' COMMA_HERE) ;
+      s.addUnicodeChar ('\\' COMMA_HERE) ;
+      s.addUnicodeChar ('\\' COMMA_HERE) ;
     }else if (UNICODE_VALUE (c) == '\n') {
-      s.appendUnicodeCharacter ('\\' COMMA_HERE) ;
-      s.appendUnicodeCharacter ('n' COMMA_HERE) ;
+      s.addUnicodeChar ('\\' COMMA_HERE) ;
+      s.addUnicodeChar ('n' COMMA_HERE) ;
     }else if (UNICODE_VALUE (c) == '\r') {
-      s.appendUnicodeCharacter ('\\' COMMA_HERE) ;
-      s.appendUnicodeCharacter ('r' COMMA_HERE) ;
+      s.addUnicodeChar ('\\' COMMA_HERE) ;
+      s.addUnicodeChar ('r' COMMA_HERE) ;
     }else if (inEscapeQuestionMark && (UNICODE_VALUE (c) == '?')) { // Trigraph protection !!!
-      s.appendUnicodeCharacter ('\\' COMMA_HERE) ;
-      s.appendUnicodeCharacter ('?' COMMA_HERE) ;
+      s.addUnicodeChar ('\\' COMMA_HERE) ;
+      s.addUnicodeChar ('?' COMMA_HERE) ;
     }else if (c == inCharacter) {
-      s.appendUnicodeCharacter ('\\' COMMA_HERE) ;
-      s.appendUnicodeCharacter (inCharacter COMMA_HERE) ;
+      s.addUnicodeChar ('\\' COMMA_HERE) ;
+      s.addUnicodeChar (inCharacter COMMA_HERE) ;
     }else{
-      s.appendUnicodeCharacter (c COMMA_HERE) ;
+      s.addUnicodeChar (c COMMA_HERE) ;
     }
   }
-  s.appendUnicodeCharacter  (inCharacter COMMA_HERE) ;
+  s.addUnicodeChar  (inCharacter COMMA_HERE) ;
   return s ;
 }
 
@@ -1512,10 +1512,10 @@ String String::utf8RepresentationEnclosedWithin (const utf32 inCharacter, const 
 static String hex4 (const uint32_t inValue) {
   static const uint8_t digit [16] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'} ;
   String result = "" ;
-  result.appendUnicodeCharacter (TO_UNICODE (digit [(inValue >> 12) & 15]) COMMA_HERE) ;
-  result.appendUnicodeCharacter (TO_UNICODE (digit [(inValue >>  8) & 15]) COMMA_HERE) ;
-  result.appendUnicodeCharacter (TO_UNICODE (digit [(inValue >>  4) & 15]) COMMA_HERE) ;
-  result.appendUnicodeCharacter (TO_UNICODE (digit [(inValue >>  0) & 15]) COMMA_HERE) ;
+  result.addUnicodeChar (TO_UNICODE (digit [(inValue >> 12) & 15]) COMMA_HERE) ;
+  result.addUnicodeChar (TO_UNICODE (digit [(inValue >>  8) & 15]) COMMA_HERE) ;
+  result.addUnicodeChar (TO_UNICODE (digit [(inValue >>  4) & 15]) COMMA_HERE) ;
+  result.addUnicodeChar (TO_UNICODE (digit [(inValue >>  0) & 15]) COMMA_HERE) ;
   return result ;
 }
 
@@ -1523,8 +1523,8 @@ static String hex4 (const uint32_t inValue) {
 
 static String hex8 (const uint32_t inValue) {
   String result = "" ;
-  result += hex4 (inValue >> 16) ;
-  result += hex4 (inValue >>  0) ;
+  result.addString (hex4 (inValue >> 16)) ;
+  result.addString (hex4 (inValue >>  0)) ;
   return result ;
 }
 
@@ -1535,32 +1535,32 @@ String String::utf8RepresentationWithUnicodeEscaping (void) const {
   const int32_t receiver_length = length () ;
   s.setCapacity ((uint32_t) receiver_length) ;
   const utf32 * ptr = utf32String (HERE) ;
-  s.appendUnicodeCharacter  ('\"' COMMA_HERE) ;
+  s.addUnicodeChar  ('\"' COMMA_HERE) ;
   for (int32_t i=0 ; i<receiver_length ; i++) {
     const utf32 c = ptr [i] ;
     if (UNICODE_VALUE (c) == '\\') {
-      s.appendUnicodeCharacter ('\\' COMMA_HERE) ;
-      s.appendUnicodeCharacter ('\\' COMMA_HERE) ;
+      s.addUnicodeChar ('\\' COMMA_HERE) ;
+      s.addUnicodeChar ('\\' COMMA_HERE) ;
     }else if (c == '\"') {
-      s.appendUnicodeCharacter ('\\' COMMA_HERE) ;
-      s.appendUnicodeCharacter ('\"' COMMA_HERE) ;
+      s.addUnicodeChar ('\\' COMMA_HERE) ;
+      s.addUnicodeChar ('\"' COMMA_HERE) ;
     }else if (UNICODE_VALUE (c) < ' ') {
-      s.appendUnicodeCharacter ('\\' COMMA_HERE) ;
-      s.appendUnicodeCharacter ('u' COMMA_HERE) ;
-      s += hex4 (UNICODE_VALUE (c)) ;
+      s.addUnicodeChar ('\\' COMMA_HERE) ;
+      s.addUnicodeChar ('u' COMMA_HERE) ;
+      s.addString (hex4 (UNICODE_VALUE (c))) ;
     }else if (UNICODE_VALUE (c) < '~') {
-      s.appendUnicodeCharacter (c COMMA_HERE) ;
+      s.addUnicodeChar (c COMMA_HERE) ;
     }else if (UNICODE_VALUE (c) < 0x800) {
-      s.appendUnicodeCharacter ('\\' COMMA_HERE) ;
-      s.appendUnicodeCharacter ('u' COMMA_HERE) ;
-      s += hex4 (UNICODE_VALUE (c)) ;
+      s.addUnicodeChar ('\\' COMMA_HERE) ;
+      s.addUnicodeChar ('u' COMMA_HERE) ;
+      s.addString (hex4 (UNICODE_VALUE (c))) ;
     }else{
-      s.appendUnicodeCharacter ('\\' COMMA_HERE) ;
-      s.appendUnicodeCharacter ('U' COMMA_HERE) ;
-      s += hex8 (UNICODE_VALUE (c)) ;
+      s.addUnicodeChar ('\\' COMMA_HERE) ;
+      s.addUnicodeChar ('U' COMMA_HERE) ;
+      s.addString (hex8 (UNICODE_VALUE (c))) ;
     }
   }
-  s.appendUnicodeCharacter  ('\"' COMMA_HERE) ;
+  s.addUnicodeChar  ('\"' COMMA_HERE) ;
   return s ;
 }
 
@@ -1573,7 +1573,7 @@ String String::decodedStringFromRepresentation (bool & outOk) const {
   outOk = true ;
   for (int32_t i=0 ; i<components.count () ; i++) {
     if ((i & 1) == 0) {
-      result += components (i COMMA_HERE) ;
+      result.addString (components (i COMMA_HERE)) ;
     }else{
       uint32_t codePoint = 0 ;
       for (int32_t j=0 ; j<components (i COMMA_HERE).length () ; j++) {
@@ -1589,7 +1589,7 @@ String String::decodedStringFromRepresentation (bool & outOk) const {
           outOk = false ;
         }
       }
-      result.appendUnicodeCharacter (codePoint COMMA_HERE) ;
+      result.addUnicodeChar (codePoint COMMA_HERE) ;
     }
   }
   return outOk ? result : "" ;
@@ -1602,15 +1602,15 @@ String String::HTMLRepresentation (void) const {
   for (int32_t i=0 ; i<length () ; i++) {
     const utf32 c = this->operator () (i COMMA_HERE) ;
     if (UNICODE_VALUE (c) == '&') {
-      result += "&amp;" ;
+      result.addString ("&amp;") ;
     }else if (UNICODE_VALUE (c) == '"') {
-      result += "&quot;" ;
+      result.addString ("&quot;") ;
     }else if (UNICODE_VALUE (c) == '<') {
-      result += "&lt;" ;
+      result.addString ("&lt;") ;
     }else if (UNICODE_VALUE (c) == '>') {
-      result += "&gt;" ;
+      result.addString ("&gt;") ;
     }else{
-      result.appendUnicodeCharacter (c COMMA_HERE) ;
+      result.addUnicodeChar (c COMMA_HERE) ;
     }
   }
   return result ;
@@ -1692,7 +1692,7 @@ int32_t String::compareStringByLength (const String & inString) const {
 
 String String::operator + (const String & inOperand) const {
   String s = *this ;
-  s += inOperand ;
+  s.addString (inOperand) ;
   return s ;
 }
 
@@ -1700,7 +1700,7 @@ String String::operator + (const String & inOperand) const {
 
 String String::operator + (const char * inOperand) const {
   String s = *this ;
-  s.appendCString (inOperand) ;
+  s.addString (inOperand) ;
   return s ;
 }
 
@@ -1801,10 +1801,10 @@ stringByAppendingPathComponent (const String & inPathComponent) const {
   if (result.length () == 0) {
     result = inPathComponent ;
   }else if (UNICODE_VALUE (result.lastCharacter (HERE)) != '/') {
-    result.appendUnicodeCharacter (TO_UNICODE ('/') COMMA_HERE) ;
-    result.appendString (inPathComponent) ;
+    result.addUnicodeChar (TO_UNICODE ('/') COMMA_HERE) ;
+    result.addString (inPathComponent) ;
   }else{
-    result.appendString (inPathComponent) ;
+    result.addString (inPathComponent) ;
   }
   return result ;
 }
@@ -1862,7 +1862,7 @@ String String::md5 (void) const {
   char s [40] ;
   for (uint32_t i=0 ; i<16 ; i++) {
     snprintf (s, 40, "%02X", digest [i]) ;
-    result += s ;
+    result.addString (s) ;
   }
   return result ;
 }
@@ -1935,7 +1935,7 @@ String & String::operator = (const char * inSource) {
 
 void String::setFromCstring (const char * inCstring) {
   setLengthToZero () ;
-  *this += inCstring ;
+  addString (inCstring) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1950,13 +1950,13 @@ String String::XMLEscapedString (void) const {
   for (int32_t i=0 ; i<length () ; i++) {
     const utf32 c = this->operator () (i COMMA_HERE) ;
     switch (UNICODE_VALUE (c)) {
-    case '"'  : result += "&quot;" ; break ;
-    case '\'' : result += "&apos;" ; break ;
-    case '<'  : result += "&lt;"   ; break ;
-    case '>'  : result += "&gt;"   ; break ;
-    case '&'  : result += "&amp;"  ; break ;
-    case '\n' : result += "&#10;" ; break ;
-    default   : result.appendUnicodeCharacter (c COMMA_HERE) ; break;
+    case '"'  : result.addString ("&quot;") ; break ;
+    case '\'' : result.addString ("&apos;") ; break ;
+    case '<'  : result.addString ("&lt;")   ; break ;
+    case '>'  : result.addString ("&gt;")   ; break ;
+    case '&'  : result.addString ("&amp;")  ; break ;
+    case '\n' : result.addString ("&#10;") ; break ;
+    default   : result.addUnicodeChar (c COMMA_HERE) ; break;
     }
   }
   return result ;
@@ -1971,7 +1971,7 @@ String String::stringByStandardizingPath (void) const {
     String path = * this ;
   #endif
   if (path.length () == 0) {
-    path += "." ;
+    path.addString (".") ;
   }else{
   //#define TRACE_stringByStandardizingPath
   //--- Decompose path
@@ -2057,16 +2057,16 @@ bool String::parseUTF8 (const C_Data & inDataString,
       idx = inDataString.count () ; // For exiting loop
     }else if (c == 0x0A) { // LF
       if (! foundCR) {
-        outString.appendUnicodeCharacter (TO_UNICODE ('\n') COMMA_HERE) ;
+        outString.addUnicodeChar (TO_UNICODE ('\n') COMMA_HERE) ;
       }
       foundCR = false ;
       idx ++ ;
     }else if (c == 0x0D) { // CR
-      outString.appendUnicodeCharacter (TO_UNICODE ('\n') COMMA_HERE) ;
+      outString.addUnicodeChar (TO_UNICODE ('\n') COMMA_HERE) ;
       foundCR = true ;
       idx ++ ;
     }else if ((c & 0x80) == 0) { // ASCII Character
-      outString.appendUnicodeCharacter (TO_UNICODE (c) COMMA_HERE) ;
+      outString.addUnicodeChar (TO_UNICODE (c) COMMA_HERE) ;
       foundCR = false ;
       idx ++ ;
     }else{
@@ -2077,17 +2077,17 @@ bool String::parseUTF8 (const C_Data & inDataString,
       case 0x0085 : // NEL: Next Line
       case 0x2028 : // LS: Line Separator
       case 0x2029 : // PS: Paragraph Separator
-        outString.appendUnicodeCharacter ('\n' COMMA_HERE) ;
+        outString.addUnicodeChar ('\n' COMMA_HERE) ;
         break ;
       default :
-        outString.appendUnicodeCharacter (uc COMMA_HERE) ;
+        outString.addUnicodeChar (uc COMMA_HERE) ;
         foundCR = false ;
         break ;
       }
     }
   }
   if (foundCR) {
-    outString.appendUnicodeCharacter (TO_UNICODE ('\n') COMMA_HERE) ;
+    outString.addUnicodeChar (TO_UNICODE ('\n') COMMA_HERE) ;
   }
   return ok ;
 }

@@ -23,7 +23,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "strings/String-class.h"
-#include "utilities/C_SharedObject.h"
+#include "utilities/SharedObject.h"
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -31,13 +31,13 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-class cSourceTextInString final : public C_SharedObject {
+class cSourceTextInString final : public SharedObject {
 //--- Constructor
   public: cSourceTextInString (const String & inSourceString,
                                const String & inFilePath,
                                const bool inShowSourceOnDetailledErrorMessage
                                COMMA_LOCATION_ARGS) :
-  C_SharedObject (THERE),
+  SharedObject (THERE),
   mFilePath (inFilePath),
   mSourceString (inSourceString),
   mShowSourceOnDetailledErrorMessage (inShowSourceOnDetailledErrorMessage) {

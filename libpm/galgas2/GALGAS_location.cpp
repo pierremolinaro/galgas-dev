@@ -24,7 +24,7 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class InternalLocation final : public C_SharedObject {
+class InternalLocation final : public SharedObject {
   public: const SourceTextInString mSourceText ;
   public: const LocationInSource mStartLocation ;
   public: const LocationInSource mEndLocation ;
@@ -33,7 +33,7 @@ class InternalLocation final : public C_SharedObject {
   public: InternalLocation (const SourceTextInString & inSourceText,
                             const LocationInSource & inStartLocation,
                             const LocationInSource & inEndLocation) :
-  C_SharedObject (HERE),
+  SharedObject (HERE),
   mSourceText (inSourceText),
   mStartLocation (inStartLocation),
   mEndLocation (inEndLocation) {
@@ -187,23 +187,23 @@ typeComparisonResult GALGAS_location::objectCompare (const GALGAS_location & inO
 
 void GALGAS_location::description (String & ioString,
                                    const int32_t /* inIndentation */) const {
-  ioString += "<@location:" ;
+  ioString.addString ("<@location:") ;
   if (isValid ()) {
     if (!mInternalLocation->mSourceText.isValid ()) {
-      ioString += "nowhere" ;
+      ioString.addString ("nowhere") ;
     }else{
-      ioString += "'" ;
-      ioString += mInternalLocation->mSourceText.sourceFilePath () ;
-      ioString += "'" ;
+      ioString.addString ("'") ;
+      ioString.addString (mInternalLocation->mSourceText.sourceFilePath ()) ;
+      ioString.addString ("'") ;
     }
-    ioString += ":" ;
-    ioString.appendSigned (mInternalLocation->mStartLocation.lineNumber ()) ;
-    ioString += ":" ;
-    ioString.appendSigned (mInternalLocation->mStartLocation.columnNumber ()) ;
+    ioString.addString (":") ;
+    ioString.addSigned (mInternalLocation->mStartLocation.lineNumber ()) ;
+    ioString.addString (":") ;
+    ioString.addSigned (mInternalLocation->mStartLocation.columnNumber ()) ;
   }else{
-    ioString += "not built" ;
+    ioString.addString ("not built") ;
   }
-  ioString += ">" ;
+  ioString.addString (">") ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -216,12 +216,12 @@ GALGAS_string GALGAS_location::getter_startLocationString (Compiler * inCompiler
       inCompiler->onTheFlyRunTimeError ("'startLocationString' reader cannot be called on a nowhere @location object" COMMA_THERE) ;
     }else{
       String s ;
-      s += "file '" ;
-      s += mInternalLocation->mSourceText.sourceFilePath () ;
-      s += "', line ";
-      s.appendSigned (mInternalLocation->mStartLocation.lineNumber ()) ;
-      s += ":";
-      s.appendSigned (mInternalLocation->mStartLocation.columnNumber ()) ;
+      s.addString ("file '") ;
+      s.addString (mInternalLocation->mSourceText.sourceFilePath ()) ;
+      s.addString ("', line ") ;
+      s.addSigned (mInternalLocation->mStartLocation.lineNumber ()) ;
+      s.addString (":") ;
+      s.addSigned (mInternalLocation->mStartLocation.columnNumber ()) ;
       result = GALGAS_string (s) ;
     }
   }
@@ -238,13 +238,12 @@ GALGAS_string GALGAS_location::getter_endLocationString (Compiler * inCompiler
     if (!mInternalLocation->mSourceText.isValid ()) {
       inCompiler->onTheFlyRunTimeError ("'endLocationString' reader cannot be called on a nowhere @location object" COMMA_THERE) ;
     }else{
-      String s ;
-      s += "file '" ;
-      s += mInternalLocation->mSourceText.sourceFilePath () ;
-      s += "', line " ;
-      s.appendSigned (mInternalLocation->mEndLocation.lineNumber ()) ;
-      s += ":" ;
-      s.appendSigned (mInternalLocation->mEndLocation.columnNumber ()) ;
+      String s = "file '" ;
+      s.addString (mInternalLocation->mSourceText.sourceFilePath ()) ;
+      s.addString ("', line ") ;
+      s.addSigned (mInternalLocation->mEndLocation.lineNumber ()) ;
+      s.addString (":") ;
+      s.addSigned (mInternalLocation->mEndLocation.columnNumber ()) ;
       result = GALGAS_string (s) ;
     }
   }

@@ -82,32 +82,32 @@ displayNonterminalSymbolsFollowedByEmpty (const C_Relation & inVocabularyFollowe
   const uint64_t n = inVocabularyFollowedByEmpty.value64Count () ;
 
   if (inPopulateHTMLHelperString) {
-    ioHTMLFileContents.outputRawData ("<p><a name=\"follow_by_empty\"></a>") ;
-    ioHTMLFileContents += "Calculus completed in " ;
-    ioHTMLFileContents.appendSigned (inIterationsCount) ;
-    ioHTMLFileContents += " iterations.\n" ;
-    ioHTMLFileContents.outputRawData ("</p><p>") ;
+    ioHTMLFileContents.addRawData ("<p><a name=\"follow_by_empty\"></a>") ;
+    ioHTMLFileContents.addString ("Calculus completed in ") ;
+    ioHTMLFileContents.addSigned (inIterationsCount) ;
+    ioHTMLFileContents.addString (" iterations.\n") ;
+    ioHTMLFileContents.addRawData ("</p><p>") ;
     if (n == 1) {
-      ioHTMLFileContents += "One nonterminal symbol (the start symbol) can be followed by the empty string.\n" ;
+      ioHTMLFileContents.addString ("One nonterminal symbol (the start symbol) can be followed by the empty string.\n") ;
     }else{
-      ioHTMLFileContents.appendUnsigned (n) ;
-       ioHTMLFileContents.appendCString (" nonterminal symbols (including the start symbol) can be followed by the empty string.\n") ;
+      ioHTMLFileContents.addUnsigned (n) ;
+       ioHTMLFileContents.addString (" nonterminal symbols (including the start symbol) can be followed by the empty string.\n") ;
     }
-    ioHTMLFileContents.outputRawData ("</p>") ;
+    ioHTMLFileContents.addRawData ("</p>") ;
     TC_UniqueArray <uint64_t> array ;
     inVocabularyFollowedByEmpty.getValueArray (array) ;
-    ioHTMLFileContents.outputRawData ("<table class=\"result\">") ;
+    ioHTMLFileContents.addRawData ("<table class=\"result\">") ;
     for (int32_t i=0 ; i < array.count () ; i++) {
-      ioHTMLFileContents.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
+      ioHTMLFileContents.addRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
       const uint64_t symbol = array (i COMMA_HERE) ;
       inVocabulary.printInFile (ioHTMLFileContents, (int32_t) symbol COMMA_HERE) ;
-      ioHTMLFileContents.outputRawData ("</code></td></tr>") ;
+      ioHTMLFileContents.addRawData ("</code></td></tr>") ;
     }
-    ioHTMLFileContents.outputRawData ("</table>") ;
+    ioHTMLFileContents.addRawData ("</table>") ;
   }
   if (inVerboseOptionOn) {
-    gCout.appendUnsigned (n) ;
-    gCout += ".\n" ;
+    gCout.addUnsigned (n) ;
+    gCout.addString (".\n") ;
     gCout.flush () ;
   }
 }
@@ -124,12 +124,12 @@ follow_by_empty_computations (const cPureBNFproductionsList & inPureBNFproductio
                               const bool inVerboseOptionOn) {
 //--- Console display
   if (inVerboseOptionOn) {
-    gCout += "  Nonterminal symbols followed by empty... " ;
+    gCout.addString ("  Nonterminal symbols followed by empty... ") ;
     gCout.flush () ;
   }
 //--- Print in BNF file
   if (inPopulateHTMLHelperString) {
-    ioHTMLFileContents.appendCppTitleComment ("Nonterminal symbol set followed by empty string", "title") ;
+    ioHTMLFileContents.addCppTitleComment ("Nonterminal symbol set followed by empty string", "title") ;
   }
 
 //--- Compute nonterminal symbols followed by empty 

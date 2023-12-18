@@ -16,7 +16,7 @@
 //--------------------------------------------------------------------------------------------------
 
 static void print_tool_help_message (void) {
-  gCout += "Compiled with GALGAS revision NUMERO_REVISION_GALGAS\\n" ;
+  gCout.addString ("Compiled with GALGAS revision NUMERO_REVISION_GALGAS\\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -66,7 +66,7 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
   String executionModeOptionErrorMessage ;
   setExecutionMode (executionModeOptionErrorMessage) ;
   if (executionModeOptionErrorMessage.length () > 0) {
-    gCout += executionModeOptionErrorMessage ;
+    gCout.addString (executionModeOptionErrorMessage) ;
     returnCode = 1 ;
   }else{
   //--- Common lexique object
@@ -156,23 +156,23 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
       if (verboseOptionOn || (totalWarningCount () > 0) || (totalErrorCount () > 0)) {
         String message ;
         if (totalWarningCount () == 0) {
-          message += "No warning" ;
+          message.addString ("No warning") ;
         }else if (totalWarningCount () == 1) {
-          message += "1 warning" ;
+          message.addString ("1 warning") ;
         }else{
-          message.appendSigned (totalWarningCount ()) ;
-          message += " warnings" ;
+          message.addSigned (totalWarningCount ()) ;
+          message.addString (" warnings") ;
         }
-        message += ", " ;
+        message.addString (", ") ;
         if (totalErrorCount () == 0) {
-          message += "no error" ;
+          message.addString ("no error") ;
         }else if (totalErrorCount () == 1) {
-          message += "1 error" ;
+          message.addString ("1 error") ;
         }else{
-          message.appendSigned (totalErrorCount ()) ;
-          message += " errors" ;
+          message.addSigned (totalErrorCount ()) ;
+          message.addString (" errors") ;
         }
-        message += ".\\n" ;
+        message.addString (".\\n") ;
         ggs_printMessage (message COMMA_HERE) ;
       }
     }catch (const ::std::exception & e) {

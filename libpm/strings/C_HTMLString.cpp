@@ -40,36 +40,36 @@ String () {
 void C_HTMLString::writeStartCode (const String & inWindowTitle,
                                    const String & inCSSFileName,
                                    const String & inCSSContents) {
-  outputRawData ("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">\n"
+  addRawData ("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">\n"
                  "<html>"
                  "<head>\n"
                  "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n"
                  "<title>\n") ;
-  *this += inWindowTitle ;
-  outputRawData ("</title>") ;
+  addString (inWindowTitle) ;
+  addRawData ("</title>") ;
   if (inCSSFileName.length () > 0) {
-    outputRawData ("<link rel=stylesheet type=\"text/css\" href=\"") ;
-    outputRawData (inCSSFileName.cString (HERE)) ;
-    outputRawData ("\">") ;
+    addRawData ("<link rel=stylesheet type=\"text/css\" href=\"") ;
+    addRawData (inCSSFileName.cString (HERE)) ;
+    addRawData ("\">") ;
   }  
   if (inCSSContents.length () > 0) {
-    outputRawData ("<style type=\"text/css\">") ;
-    outputRawData (inCSSContents.cString (HERE)) ;
-    outputRawData ("</style>") ;
+    addRawData ("<style type=\"text/css\">") ;
+    addRawData (inCSSContents.cString (HERE)) ;
+    addRawData ("</style>") ;
   }
-  outputRawData ("</head>"
+  addRawData ("</head>"
                  "<body><div>\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void C_HTMLString::writeEndCode (void) {
-  outputRawData ("</div></body></html>\n") ;
+  addRawData ("</div></body></html>\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void C_HTMLString::outputRawData (const char * in_Cstring) {
+void C_HTMLString::addRawData (const char * in_Cstring) {
   inherited::performActualCharArrayOutput (in_Cstring, (int32_t) (strlen (in_Cstring) & UINT32_MAX)) ;
 }
 
@@ -126,17 +126,17 @@ void C_HTMLString::performActualUnicodeArrayOutput (const utf32 * inCharArray,
 //                 Comments as a table                                                           
 //--------------------------------------------------------------------------------------------------
 
-void C_HTMLString::appendCppTitleComment (const String & inCommentString,
+void C_HTMLString::addCppTitleComment (const String & inCommentString,
                                           const String & inTableStyleClass) {
-  outputRawData ("<table") ;
+  addRawData ("<table") ;
   if (inTableStyleClass.length () > 0) {
-    outputRawData (" class=\"") ;
-    outputRawData (inTableStyleClass.cString (HERE)) ;
-    outputRawData ("\"") ;
+    addRawData (" class=\"") ;
+    addRawData (inTableStyleClass.cString (HERE)) ;
+    addRawData ("\"") ;
   }
-  outputRawData ("><tr><td>\n") ;
-  *this += inCommentString ;
-  outputRawData ("\n</td></tr></table>\n") ;
+  addRawData ("><tr><td>\n") ;
+  addString (inCommentString) ;
+  addRawData ("\n</td></tr></table>\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------

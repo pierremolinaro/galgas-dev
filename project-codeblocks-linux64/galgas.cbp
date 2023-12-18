@@ -171,7 +171,7 @@
    <Unit filename="../libpm/time/C_Timer.cpp" />
    <Unit filename="../libpm/time/C_DateTime.cpp" />
    <Unit filename="../libpm/utilities/C_PrologueEpilogue.cpp" />
-   <Unit filename="../libpm/utilities/C_SharedObject.cpp" />
+   <Unit filename="../libpm/utilities/SharedObject.cpp" />
    <Unit filename="../libpm/utilities/C_Data.cpp" />
    <Unit filename="../libpm/utilities/F_DisplayException.cpp" />
    <Unit filename="../libpm/utilities/MF_Assert.cpp" />

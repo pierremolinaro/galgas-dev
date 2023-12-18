@@ -143,22 +143,22 @@ String C_DirectedGraph::graphvizString (const TC_UniqueArray <String> & inNodeNa
   String s = "digraph G {\n" ;
   for (int32_t i=0 ; i<mEdges.count () ; i++) {
     if (isNodeDefined (uint32_t (i))) {
-      s += "  " ;
-      s += inNodeNameArray (i COMMA_HERE).utf8RepresentationEnclosedWithin ('"', false) ;
-      s += " [shape=rectangle] ;\n" ;
+      s.addString ("  ") ;
+      s.addString (inNodeNameArray (i COMMA_HERE).utf8RepresentationEnclosedWithin ('"', false)) ;
+      s.addString (" [shape=rectangle] ;\n") ;
       const C_UIntSet targetSet = mEdges (i COMMA_HERE) ;
       TC_UniqueArray <uint32_t> targetList ; targetSet.getValueArray (targetList) ;
       for (int32_t j=0 ; j<targetList.count () ; j++) {
         const uint32_t targetIndex = targetList (j COMMA_HERE) ;
-        s += "  " ;
-        s += inNodeNameArray (i COMMA_HERE).utf8RepresentationEnclosedWithin ('"', false) ;
-        s += " -> " ;
-        s += inNodeNameArray (int32_t (targetIndex) COMMA_HERE).utf8RepresentationEnclosedWithin ('"', false) ;
-        s += " ;\n" ;
+        s.addString ("  ") ;
+        s.addString (inNodeNameArray (i COMMA_HERE).utf8RepresentationEnclosedWithin ('"', false)) ;
+        s.addString (" -> ") ;
+        s.addString (inNodeNameArray (int32_t (targetIndex) COMMA_HERE).utf8RepresentationEnclosedWithin ('"', false)) ;
+        s.addString (" ;\n") ;
       }
     }
   }
-  s += "}\n" ;
+  s.addString ("}\n") ;
   return s ;
 }
 

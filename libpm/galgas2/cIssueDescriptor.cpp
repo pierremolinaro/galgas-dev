@@ -77,26 +77,26 @@ cIssueDescriptor & cIssueDescriptor::operator = (const cIssueDescriptor & inSour
 void cIssueDescriptor::appendToJSONstring (String & ioJSONstring, const bool inIsFirstIssue) const {
   String s = mMessage.stringByReplacingStringByString("\n", "\\n") ;
   s = s.stringByReplacingStringByString("\"", "\\\"") ;
-  ioJSONstring += (inIsFirstIssue ? "" : ",\n") ;
-  ioJSONstring += "  { \"ERROR\" : " ;
-  ioJSONstring += (mIsError ? "true" : "false") ;
-  ioJSONstring += ",\n" ;
-  ioJSONstring += "    \"SOURCE\" : \"" ;
-  ioJSONstring += mFile.lastPathComponent () ;
-  ioJSONstring += "\",\n" ;
-  ioJSONstring += "    \"LINE\"  : " ;
-  ioJSONstring.appendSigned (mLine) ;
-  ioJSONstring += ",\n" ;
-  ioJSONstring += "    \"START_COLUMN\"  : " ;
-  ioJSONstring.appendSigned (mStartColumn) ;
-  ioJSONstring += ",\n" ;
-  ioJSONstring += "    \"END_COLUMN\"  : " ;
-  ioJSONstring.appendSigned (mEndColumn) ;
-  ioJSONstring += ",\n" ;
-  ioJSONstring += "    \"MESSAGE\" : \"" ;
-  ioJSONstring += s ;
-  ioJSONstring += "\"\n"
-                  "  }" ;
+  ioJSONstring.addString (inIsFirstIssue ? "" : ",\n") ;
+  ioJSONstring.addString ("  { \"ERROR\" : ") ;
+  ioJSONstring.addString (mIsError ? "true" : "false") ;
+  ioJSONstring.addString (",\n") ;
+  ioJSONstring.addString ("    \"SOURCE\" : \"") ;
+  ioJSONstring.addString (mFile.lastPathComponent ()) ;
+  ioJSONstring.addString ("\",\n") ;
+  ioJSONstring.addString ("    \"LINE\"  : ") ;
+  ioJSONstring.addSigned (mLine) ;
+  ioJSONstring.addString (",\n") ;
+  ioJSONstring.addString ("    \"START_COLUMN\"  : ") ;
+  ioJSONstring.addSigned (mStartColumn) ;
+  ioJSONstring.addString (",\n") ;
+  ioJSONstring.addString ("    \"END_COLUMN\"  : ") ;
+  ioJSONstring.addSigned (mEndColumn) ;
+  ioJSONstring.addString (",\n") ;
+  ioJSONstring.addString ("    \"MESSAGE\" : \"") ;
+  ioJSONstring.addString (s) ;
+  ioJSONstring.addString ("\"\n"
+                  "  }") ;
 }
 
 //--------------------------------------------------------------------------------------------------

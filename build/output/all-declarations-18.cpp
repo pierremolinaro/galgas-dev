@@ -8,6 +8,546 @@
 #include "all-declarations-18.h"
 
 //--------------------------------------------------------------------------------------------------
+// @parseWhenInstructionForGeneration reference class
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_parseWhenInstructionForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_syntaxInstructionForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mWhenExpression.printNonNullClassInstanceProperties ("mWhenExpression") ;
+    mProperty_mInstructionList.printNonNullClassInstanceProperties ("mInstructionList") ;
+    mProperty_mElseInstructionList.printNonNullClassInstanceProperties ("mElseInstructionList") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+typeComparisonResult cPtr_parseWhenInstructionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_parseWhenInstructionForGeneration * p = (const cPtr_parseWhenInstructionForGeneration *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_parseWhenInstructionForGeneration) ;
+  if (kOperandEqual == result) {
+    result = mProperty_mInstructionLocation.objectCompare (p->mProperty_mInstructionLocation) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mWhenExpression.objectCompare (p->mProperty_mWhenExpression) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mInstructionList.objectCompare (p->mProperty_mInstructionList) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mElseInstructionList.objectCompare (p->mProperty_mElseInstructionList) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+
+typeComparisonResult GALGAS_parseWhenInstructionForGeneration::objectCompare (const GALGAS_parseWhenInstructionForGeneration & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = kOperandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_parseWhenInstructionForGeneration::GALGAS_parseWhenInstructionForGeneration (void) :
+GALGAS_syntaxInstructionForGeneration () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_parseWhenInstructionForGeneration::GALGAS_parseWhenInstructionForGeneration (const cPtr_parseWhenInstructionForGeneration * inSourcePtr) :
+GALGAS_syntaxInstructionForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_parseWhenInstructionForGeneration) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_parseWhenInstructionForGeneration GALGAS_parseWhenInstructionForGeneration::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,
+                                                                                                    const GALGAS_semanticExpressionForGeneration & inAttribute_mWhenExpression,
+                                                                                                    const GALGAS_semanticInstructionListForGeneration & inAttribute_mInstructionList,
+                                                                                                    const GALGAS_semanticInstructionListForGeneration & inAttribute_mElseInstructionList
+                                                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_parseWhenInstructionForGeneration result ;
+  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mWhenExpression.isValid () && inAttribute_mInstructionList.isValid () && inAttribute_mElseInstructionList.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_parseWhenInstructionForGeneration (inAttribute_mInstructionLocation, inAttribute_mWhenExpression, inAttribute_mInstructionList, inAttribute_mElseInstructionList COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_semanticExpressionForGeneration GALGAS_parseWhenInstructionForGeneration::readProperty_mWhenExpression (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_semanticExpressionForGeneration () ;
+  }else{
+    cPtr_parseWhenInstructionForGeneration * p = (cPtr_parseWhenInstructionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_parseWhenInstructionForGeneration) ;
+    return p->mProperty_mWhenExpression ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_semanticInstructionListForGeneration GALGAS_parseWhenInstructionForGeneration::readProperty_mInstructionList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_semanticInstructionListForGeneration () ;
+  }else{
+    cPtr_parseWhenInstructionForGeneration * p = (cPtr_parseWhenInstructionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_parseWhenInstructionForGeneration) ;
+    return p->mProperty_mInstructionList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_semanticInstructionListForGeneration GALGAS_parseWhenInstructionForGeneration::readProperty_mElseInstructionList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_semanticInstructionListForGeneration () ;
+  }else{
+    cPtr_parseWhenInstructionForGeneration * p = (cPtr_parseWhenInstructionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_parseWhenInstructionForGeneration) ;
+    return p->mProperty_mElseInstructionList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @parseWhenInstructionForGeneration class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_parseWhenInstructionForGeneration::cPtr_parseWhenInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
+                                                                                const GALGAS_semanticExpressionForGeneration & in_mWhenExpression,
+                                                                                const GALGAS_semanticInstructionListForGeneration & in_mInstructionList,
+                                                                                const GALGAS_semanticInstructionListForGeneration & in_mElseInstructionList
+                                                                                COMMA_LOCATION_ARGS) :
+cPtr_syntaxInstructionForGeneration (in_mInstructionLocation COMMA_THERE),
+mProperty_mWhenExpression (in_mWhenExpression),
+mProperty_mInstructionList (in_mInstructionList),
+mProperty_mElseInstructionList (in_mElseInstructionList) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * cPtr_parseWhenInstructionForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_parseWhenInstructionForGeneration ;
+}
+
+void cPtr_parseWhenInstructionForGeneration::description (String & ioString,
+                                                          const int32_t inIndentation) const {
+  ioString.addString ("[@parseWhenInstructionForGeneration:") ;
+  mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
+  ioString.addString (", ") ;
+  mProperty_mWhenExpression.description (ioString, inIndentation+1) ;
+  ioString.addString (", ") ;
+  mProperty_mInstructionList.description (ioString, inIndentation+1) ;
+  ioString.addString (", ") ;
+  mProperty_mElseInstructionList.description (ioString, inIndentation+1) ;
+  ioString.addString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_parseWhenInstructionForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_parseWhenInstructionForGeneration (mProperty_mInstructionLocation, mProperty_mWhenExpression, mProperty_mInstructionList, mProperty_mElseInstructionList COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @parseWhenInstructionForGeneration generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_parseWhenInstructionForGeneration ("parseWhenInstructionForGeneration",
+                                                          & kTypeDescriptor_GALGAS_syntaxInstructionForGeneration) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_parseWhenInstructionForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_parseWhenInstructionForGeneration ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_parseWhenInstructionForGeneration::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_parseWhenInstructionForGeneration (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_parseWhenInstructionForGeneration GALGAS_parseWhenInstructionForGeneration::extractObject (const GALGAS_object & inObject,
+                                                                                                  Compiler * inCompiler
+                                                                                                  COMMA_LOCATION_ARGS) {
+  GALGAS_parseWhenInstructionForGeneration result ;
+  const GALGAS_parseWhenInstructionForGeneration * p = (const GALGAS_parseWhenInstructionForGeneration *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_parseWhenInstructionForGeneration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("parseWhenInstructionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @syntaxSendInstructionForGeneration reference class
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_syntaxSendInstructionForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_syntaxInstructionForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mExpression.printNonNullClassInstanceProperties ("mExpression") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+typeComparisonResult cPtr_syntaxSendInstructionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_syntaxSendInstructionForGeneration * p = (const cPtr_syntaxSendInstructionForGeneration *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_syntaxSendInstructionForGeneration) ;
+  if (kOperandEqual == result) {
+    result = mProperty_mInstructionLocation.objectCompare (p->mProperty_mInstructionLocation) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mExpression.objectCompare (p->mProperty_mExpression) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+
+typeComparisonResult GALGAS_syntaxSendInstructionForGeneration::objectCompare (const GALGAS_syntaxSendInstructionForGeneration & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = kOperandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_syntaxSendInstructionForGeneration::GALGAS_syntaxSendInstructionForGeneration (void) :
+GALGAS_syntaxInstructionForGeneration () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_syntaxSendInstructionForGeneration::GALGAS_syntaxSendInstructionForGeneration (const cPtr_syntaxSendInstructionForGeneration * inSourcePtr) :
+GALGAS_syntaxInstructionForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_syntaxSendInstructionForGeneration) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_syntaxSendInstructionForGeneration GALGAS_syntaxSendInstructionForGeneration::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,
+                                                                                                      const GALGAS_semanticExpressionForGeneration & inAttribute_mExpression
+                                                                                                      COMMA_LOCATION_ARGS) {
+  GALGAS_syntaxSendInstructionForGeneration result ;
+  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mExpression.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_syntaxSendInstructionForGeneration (inAttribute_mInstructionLocation, inAttribute_mExpression COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_semanticExpressionForGeneration GALGAS_syntaxSendInstructionForGeneration::readProperty_mExpression (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_semanticExpressionForGeneration () ;
+  }else{
+    cPtr_syntaxSendInstructionForGeneration * p = (cPtr_syntaxSendInstructionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_syntaxSendInstructionForGeneration) ;
+    return p->mProperty_mExpression ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @syntaxSendInstructionForGeneration class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_syntaxSendInstructionForGeneration::cPtr_syntaxSendInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
+                                                                                  const GALGAS_semanticExpressionForGeneration & in_mExpression
+                                                                                  COMMA_LOCATION_ARGS) :
+cPtr_syntaxInstructionForGeneration (in_mInstructionLocation COMMA_THERE),
+mProperty_mExpression (in_mExpression) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * cPtr_syntaxSendInstructionForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_syntaxSendInstructionForGeneration ;
+}
+
+void cPtr_syntaxSendInstructionForGeneration::description (String & ioString,
+                                                           const int32_t inIndentation) const {
+  ioString.addString ("[@syntaxSendInstructionForGeneration:") ;
+  mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
+  ioString.addString (", ") ;
+  mProperty_mExpression.description (ioString, inIndentation+1) ;
+  ioString.addString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_syntaxSendInstructionForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_syntaxSendInstructionForGeneration (mProperty_mInstructionLocation, mProperty_mExpression COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @syntaxSendInstructionForGeneration generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_syntaxSendInstructionForGeneration ("syntaxSendInstructionForGeneration",
+                                                           & kTypeDescriptor_GALGAS_syntaxInstructionForGeneration) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_syntaxSendInstructionForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_syntaxSendInstructionForGeneration ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_syntaxSendInstructionForGeneration::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_syntaxSendInstructionForGeneration (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_syntaxSendInstructionForGeneration GALGAS_syntaxSendInstructionForGeneration::extractObject (const GALGAS_object & inObject,
+                                                                                                    Compiler * inCompiler
+                                                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_syntaxSendInstructionForGeneration result ;
+  const GALGAS_syntaxSendInstructionForGeneration * p = (const GALGAS_syntaxSendInstructionForGeneration *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_syntaxSendInstructionForGeneration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("syntaxSendInstructionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @terminalInstructionForGrammarAnalysis reference class
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_terminalInstructionForGrammarAnalysis::printNonNullClassInstanceProperties (void) const {
+    cPtr_abstractSyntaxInstructionForGrammarAnalysis::printNonNullClassInstanceProperties () ;
+    mProperty_mTerminalSymbolName.printNonNullClassInstanceProperties ("mTerminalSymbolName") ;
+    mProperty_mTerminalSymbolIndex.printNonNullClassInstanceProperties ("mTerminalSymbolIndex") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+typeComparisonResult cPtr_terminalInstructionForGrammarAnalysis::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_terminalInstructionForGrammarAnalysis * p = (const cPtr_terminalInstructionForGrammarAnalysis *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_terminalInstructionForGrammarAnalysis) ;
+  if (kOperandEqual == result) {
+    result = mProperty_mStartLocation.objectCompare (p->mProperty_mStartLocation) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mTerminalSymbolName.objectCompare (p->mProperty_mTerminalSymbolName) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mTerminalSymbolIndex.objectCompare (p->mProperty_mTerminalSymbolIndex) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+
+typeComparisonResult GALGAS_terminalInstructionForGrammarAnalysis::objectCompare (const GALGAS_terminalInstructionForGrammarAnalysis & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = kOperandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_terminalInstructionForGrammarAnalysis::GALGAS_terminalInstructionForGrammarAnalysis (void) :
+GALGAS_abstractSyntaxInstructionForGrammarAnalysis () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_terminalInstructionForGrammarAnalysis::GALGAS_terminalInstructionForGrammarAnalysis (const cPtr_terminalInstructionForGrammarAnalysis * inSourcePtr) :
+GALGAS_abstractSyntaxInstructionForGrammarAnalysis (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_terminalInstructionForGrammarAnalysis) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_terminalInstructionForGrammarAnalysis GALGAS_terminalInstructionForGrammarAnalysis::constructor_new (const GALGAS_location & inAttribute_mStartLocation,
+                                                                                                            const GALGAS_lstring & inAttribute_mTerminalSymbolName,
+                                                                                                            const GALGAS_uint & inAttribute_mTerminalSymbolIndex
+                                                                                                            COMMA_LOCATION_ARGS) {
+  GALGAS_terminalInstructionForGrammarAnalysis result ;
+  if (inAttribute_mStartLocation.isValid () && inAttribute_mTerminalSymbolName.isValid () && inAttribute_mTerminalSymbolIndex.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_terminalInstructionForGrammarAnalysis (inAttribute_mStartLocation, inAttribute_mTerminalSymbolName, inAttribute_mTerminalSymbolIndex COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lstring GALGAS_terminalInstructionForGrammarAnalysis::readProperty_mTerminalSymbolName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_lstring () ;
+  }else{
+    cPtr_terminalInstructionForGrammarAnalysis * p = (cPtr_terminalInstructionForGrammarAnalysis *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_terminalInstructionForGrammarAnalysis) ;
+    return p->mProperty_mTerminalSymbolName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_uint GALGAS_terminalInstructionForGrammarAnalysis::readProperty_mTerminalSymbolIndex (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_uint () ;
+  }else{
+    cPtr_terminalInstructionForGrammarAnalysis * p = (cPtr_terminalInstructionForGrammarAnalysis *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_terminalInstructionForGrammarAnalysis) ;
+    return p->mProperty_mTerminalSymbolIndex ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @terminalInstructionForGrammarAnalysis class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_terminalInstructionForGrammarAnalysis::cPtr_terminalInstructionForGrammarAnalysis (const GALGAS_location & in_mStartLocation,
+                                                                                        const GALGAS_lstring & in_mTerminalSymbolName,
+                                                                                        const GALGAS_uint & in_mTerminalSymbolIndex
+                                                                                        COMMA_LOCATION_ARGS) :
+cPtr_abstractSyntaxInstructionForGrammarAnalysis (in_mStartLocation COMMA_THERE),
+mProperty_mTerminalSymbolName (in_mTerminalSymbolName),
+mProperty_mTerminalSymbolIndex (in_mTerminalSymbolIndex) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * cPtr_terminalInstructionForGrammarAnalysis::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_terminalInstructionForGrammarAnalysis ;
+}
+
+void cPtr_terminalInstructionForGrammarAnalysis::description (String & ioString,
+                                                              const int32_t inIndentation) const {
+  ioString.addString ("[@terminalInstructionForGrammarAnalysis:") ;
+  mProperty_mStartLocation.description (ioString, inIndentation+1) ;
+  ioString.addString (", ") ;
+  mProperty_mTerminalSymbolName.description (ioString, inIndentation+1) ;
+  ioString.addString (", ") ;
+  mProperty_mTerminalSymbolIndex.description (ioString, inIndentation+1) ;
+  ioString.addString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_terminalInstructionForGrammarAnalysis::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_terminalInstructionForGrammarAnalysis (mProperty_mStartLocation, mProperty_mTerminalSymbolName, mProperty_mTerminalSymbolIndex COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @terminalInstructionForGrammarAnalysis generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_terminalInstructionForGrammarAnalysis ("terminalInstructionForGrammarAnalysis",
+                                                              & kTypeDescriptor_GALGAS_abstractSyntaxInstructionForGrammarAnalysis) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_terminalInstructionForGrammarAnalysis::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_terminalInstructionForGrammarAnalysis ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_terminalInstructionForGrammarAnalysis::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_terminalInstructionForGrammarAnalysis (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_terminalInstructionForGrammarAnalysis GALGAS_terminalInstructionForGrammarAnalysis::extractObject (const GALGAS_object & inObject,
+                                                                                                          Compiler * inCompiler
+                                                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_terminalInstructionForGrammarAnalysis result ;
+  const GALGAS_terminalInstructionForGrammarAnalysis * p = (const GALGAS_terminalInstructionForGrammarAnalysis *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_terminalInstructionForGrammarAnalysis *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("terminalInstructionForGrammarAnalysis", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
 // @nonTerminalInstructionForGrammarAnalysis reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -126,13 +666,13 @@ const C_galgas_type_descriptor * cPtr_nonTerminalInstructionForGrammarAnalysis::
 
 void cPtr_nonTerminalInstructionForGrammarAnalysis::description (String & ioString,
                                                                  const int32_t inIndentation) const {
-  ioString += "[@nonTerminalInstructionForGrammarAnalysis:" ;
+  ioString.addString ("[@nonTerminalInstructionForGrammarAnalysis:") ;
   mProperty_mStartLocation.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mNonterminalSymbolName.description (ioString, inIndentation+1) ;
-  ioString += ", " ;
+  ioString.addString (", ") ;
   mProperty_mNonterminalSymbolIndex.description (ioString, inIndentation+1) ;
-  ioString += "]" ;
+  ioString.addString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -266,19 +806,19 @@ void GALGAS_productionRuleListForGrammarAnalysis_2D_element::drop (void) {
 
 void GALGAS_productionRuleListForGrammarAnalysis_2D_element::description (String & ioString,
                                                                           const int32_t inIndentation) const {
-  ioString += "<struct @productionRuleListForGrammarAnalysis-element:" ;
+  ioString.addString ("<struct @productionRuleListForGrammarAnalysis-element:") ;
   if (! isValid ()) {
-    ioString += " not built" ;
+    ioString.addString (" not built") ;
   }else{
     mProperty_mLeftNonterminalSymbol.description (ioString, inIndentation+1) ;
-    ioString += ", " ;
+    ioString.addString (", ") ;
     mProperty_mLeftNonterminalSymbolIndex.description (ioString, inIndentation+1) ;
-    ioString += ", " ;
+    ioString.addString (", ") ;
     mProperty_mInstructionList.description (ioString, inIndentation+1) ;
-    ioString += ", " ;
+    ioString.addString (", ") ;
     mProperty_mProductionIndex.description (ioString, inIndentation+1) ;
   }
-  ioString += ">" ;
+  ioString.addString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -506,27 +1046,27 @@ void GALGAS_galgas_33_ProjectComponentAST::drop (void) {
 
 void GALGAS_galgas_33_ProjectComponentAST::description (String & ioString,
                                                         const int32_t inIndentation) const {
-  ioString += "<struct @galgas3ProjectComponentAST:" ;
+  ioString.addString ("<struct @galgas3ProjectComponentAST:") ;
   if (! isValid ()) {
-    ioString += " not built" ;
+    ioString.addString (" not built") ;
   }else{
     mProperty_mProjectSourceList.description (ioString, inIndentation+1) ;
-    ioString += ", " ;
+    ioString.addString (", ") ;
     mProperty_mMajorVersion.description (ioString, inIndentation+1) ;
-    ioString += ", " ;
+    ioString.addString (", ") ;
     mProperty_mMinorVersion.description (ioString, inIndentation+1) ;
-    ioString += ", " ;
+    ioString.addString (", ") ;
     mProperty_mRevisionVersion.description (ioString, inIndentation+1) ;
-    ioString += ", " ;
+    ioString.addString (", ") ;
     mProperty_mGenerationFeatureList.description (ioString, inIndentation+1) ;
-    ioString += ", " ;
+    ioString.addString (", ") ;
     mProperty_mQualifiedFeatureList.description (ioString, inIndentation+1) ;
-    ioString += ", " ;
+    ioString.addString (", ") ;
     mProperty_mTargetName.description (ioString, inIndentation+1) ;
-    ioString += ", " ;
+    ioString.addString (", ") ;
     mProperty_mEndOfSourceFile.description (ioString, inIndentation+1) ;
   }
-  ioString += ">" ;
+  ioString.addString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -937,18 +1477,18 @@ void cGrammar_galgas_33_ProjectGrammar::_performSourceFileParsing_ (Compiler * i
         }
       }else{
         String message ;
-        message += "the '" ;
-        message += filePath ;
-        message += "' file exists, but cannot be read" ;
+        message.addString ("the '") ;
+        message.addString (filePath) ;
+        message.addString ("' file exists, but cannot be read") ;
         const GALGAS_location errorLocation (inFilePath.readProperty_location ()) ;
         inCompiler->semanticErrorAtLocation (errorLocation, message, TC_Array <C_FixItDescription> () COMMA_THERE) ;
       }
       macroDetachSharedObject (scanner) ;
     }else{
       String message ;
-      message += "the '"  ;
-      message += filePath ;
-      message += "' file does not exist" ;
+      message.addString ("the '") ;
+      message.addString (filePath) ;
+      message.addString ("' file does not exist") ;
       const GALGAS_location errorLocation (inFilePath.readProperty_location ()) ;
       inCompiler->semanticErrorAtLocation (errorLocation, message, TC_Array <C_FixItDescription> () COMMA_THERE) ;
     }
@@ -965,7 +1505,7 @@ void cGrammar_galgas_33_ProjectGrammar::_performSourceStringParsing_ (Compiler *
   if (inSourceString.isValid () && inNameString.isValid ()) {
     const String sourceString = inSourceString.stringValue () ;
     const String nameString = inNameString.stringValue () ;
-    C_Lexique_galgasScanner * scanner = NULL ;
+    C_Lexique_galgasScanner * scanner = nullptr ;
     macroMyNew (scanner, C_Lexique_galgasScanner (inCompiler, sourceString, nameString COMMA_HERE)) ;
     const bool ok = scanner->performTopDownParsing (gProductions_galgas3ProjectGrammar, gProductionNames_galgas3ProjectGrammar, gProductionIndexes_galgas3ProjectGrammar,
                                                     gFirstProductionIndexes_galgas3ProjectGrammar, gDecision_galgas3ProjectGrammar, gDecisionIndexes_galgas3ProjectGrammar, 85) ;
@@ -38706,18 +39246,18 @@ void cGrammar_galgas_33_Grammar::_performSourceFileParsing_ (Compiler * inCompil
         }
       }else{
         String message ;
-        message += "the '" ;
-        message += filePath ;
-        message += "' file exists, but cannot be read" ;
+        message.addString ("the '") ;
+        message.addString (filePath) ;
+        message.addString ("' file exists, but cannot be read") ;
         const GALGAS_location errorLocation (inFilePath.readProperty_location ()) ;
         inCompiler->semanticErrorAtLocation (errorLocation, message, TC_Array <C_FixItDescription> () COMMA_THERE) ;
       }
       macroDetachSharedObject (scanner) ;
     }else{
       String message ;
-      message += "the '" ;
-      message += filePath ;
-      message += "' file does not exist" ;
+      message.addString ("the '") ;
+      message.addString (filePath) ;
+      message.addString ("' file does not exist") ;
       const GALGAS_location errorLocation (inFilePath.readProperty_location ()) ;
       inCompiler->semanticErrorAtLocation (errorLocation, message, TC_Array <C_FixItDescription> () COMMA_THERE) ;
     }
@@ -40714,7 +41254,7 @@ void cGrammar_galgas_33_Grammar::nt_label_5F_formal_5F_parameter_5F_ggs_33__ (GA
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ExpressionSyntax_0 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 236 237
+// Productions numbers:  236 237
   return inLexique->nextProductionIndex () - 235 ;
 }
 
@@ -40725,7 +41265,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ExpressionSyntax_0 (C_Lexiq
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ExpressionSyntax_1 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 238 239
+// Productions numbers:  238 239
   return inLexique->nextProductionIndex () - 237 ;
 }
 
@@ -40736,7 +41276,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ExpressionSyntax_1 (C_Lexiq
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ExpressionSyntax_2 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 240 241 242 243 244 245 246 247 248
+// Productions numbers:  240 241 242 243 244 245 246 247 248
   return inLexique->nextProductionIndex () - 239 ;
 }
 
@@ -40747,7 +41287,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ExpressionSyntax_2 (C_Lexiq
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ExpressionSyntax_3 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 249 250 251 252 253 254 255
+// Productions numbers:  249 250 251 252 253 254 255
   return inLexique->nextProductionIndex () - 248 ;
 }
 
@@ -40758,7 +41298,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ExpressionSyntax_3 (C_Lexiq
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ExpressionSyntax_4 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 256 257 258 259 260 261
+// Productions numbers:  256 257 258 259 260 261
   return inLexique->nextProductionIndex () - 255 ;
 }
 
@@ -40769,7 +41309,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ExpressionSyntax_4 (C_Lexiq
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ExpressionSyntax_5 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 262 263 264
+// Productions numbers:  262 263 264
   return inLexique->nextProductionIndex () - 261 ;
 }
 
@@ -40780,7 +41320,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ExpressionSyntax_5 (C_Lexiq
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ExpressionSyntax_6 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 265 266 267 268
+// Productions numbers:  265 266 267 268
   return inLexique->nextProductionIndex () - 264 ;
 }
 
@@ -40791,7 +41331,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ExpressionSyntax_6 (C_Lexiq
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ExpressionSyntax_7 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 269 270
+// Productions numbers:  269 270
   return inLexique->nextProductionIndex () - 268 ;
 }
 
@@ -40802,7 +41342,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ExpressionSyntax_7 (C_Lexiq
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ExpressionSyntax_8 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 271 272
+// Productions numbers:  271 272
   return inLexique->nextProductionIndex () - 270 ;
 }
 
@@ -40813,7 +41353,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ExpressionSyntax_8 (C_Lexiq
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ExpressionSyntax_9 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 273 274
+// Productions numbers:  273 274
   return inLexique->nextProductionIndex () - 272 ;
 }
 
@@ -40824,7 +41364,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ExpressionSyntax_9 (C_Lexiq
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ExpressionSyntax_10 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 275 276
+// Productions numbers:  275 276
   return inLexique->nextProductionIndex () - 274 ;
 }
 
@@ -40835,7 +41375,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ExpressionSyntax_10 (C_Lexi
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ExpressionSyntax_11 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 277 278
+// Productions numbers:  277 278
   return inLexique->nextProductionIndex () - 276 ;
 }
 
@@ -40846,7 +41386,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ExpressionSyntax_11 (C_Lexi
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ExpressionSyntax_12 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 279 280
+// Productions numbers:  279 280
   return inLexique->nextProductionIndex () - 278 ;
 }
 
@@ -40857,7 +41397,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ExpressionSyntax_12 (C_Lexi
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ExpressionSyntax_13 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 281 282
+// Productions numbers:  281 282
   return inLexique->nextProductionIndex () - 280 ;
 }
 
@@ -40868,7 +41408,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ExpressionSyntax_13 (C_Lexi
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ExpressionSyntax_14 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 283 284
+// Productions numbers:  283 284
   return inLexique->nextProductionIndex () - 282 ;
 }
 
@@ -40879,7 +41419,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ExpressionSyntax_14 (C_Lexi
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ExpressionSyntax_15 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 285 286 287 288 289 290
+// Productions numbers:  285 286 287 288 289 290
   return inLexique->nextProductionIndex () - 284 ;
 }
 
@@ -40890,7 +41430,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ExpressionSyntax_15 (C_Lexi
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ExpressionSyntax_16 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 291 292 293
+// Productions numbers:  291 292 293
   return inLexique->nextProductionIndex () - 290 ;
 }
 
@@ -40901,7 +41441,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ExpressionSyntax_16 (C_Lexi
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ParameterArgumentSyntax_0 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 294 295
+// Productions numbers:  294 295
   return inLexique->nextProductionIndex () - 293 ;
 }
 
@@ -40912,7 +41452,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ParameterArgumentSyntax_0 (
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ParameterArgumentSyntax_1 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 296 297 298 299
+// Productions numbers:  296 297 298 299
   return inLexique->nextProductionIndex () - 295 ;
 }
 
@@ -40923,7 +41463,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ParameterArgumentSyntax_1 (
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ParameterArgumentSyntax_2 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 300 301
+// Productions numbers:  300 301
   return inLexique->nextProductionIndex () - 299 ;
 }
 
@@ -40934,7 +41474,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ParameterArgumentSyntax_2 (
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ParameterArgumentSyntax_3 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 302 303 304 305 306 307 308 309 310 311 312 313 314
+// Productions numbers:  302 303 304 305 306 307 308 309 310 311 312 313 314
   return inLexique->nextProductionIndex () - 301 ;
 }
 
@@ -40945,7 +41485,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ParameterArgumentSyntax_3 (
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ParameterArgumentSyntax_4 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 315 316
+// Productions numbers:  315 316
   return inLexique->nextProductionIndex () - 314 ;
 }
 
@@ -40956,7 +41496,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ParameterArgumentSyntax_4 (
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ParameterArgumentSyntax_5 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 317 318
+// Productions numbers:  317 318
   return inLexique->nextProductionIndex () - 316 ;
 }
 
@@ -40967,7 +41507,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ParameterArgumentSyntax_5 (
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ParameterArgumentSyntax_6 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 319 320
+// Productions numbers:  319 320
   return inLexique->nextProductionIndex () - 318 ;
 }
 
@@ -40978,7 +41518,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ParameterArgumentSyntax_6 (
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ParameterArgumentSyntax_7 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 321 322
+// Productions numbers:  321 322
   return inLexique->nextProductionIndex () - 320 ;
 }
 
@@ -40989,7 +41529,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ParameterArgumentSyntax_7 (
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ParameterArgumentSyntax_8 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 323 324
+// Productions numbers:  323 324
   return inLexique->nextProductionIndex () - 322 ;
 }
 
@@ -41000,7 +41540,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ParameterArgumentSyntax_8 (
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ParameterArgumentSyntax_9 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 325 326
+// Productions numbers:  325 326
   return inLexique->nextProductionIndex () - 324 ;
 }
 
@@ -41011,7 +41551,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ParameterArgumentSyntax_9 (
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ParameterArgumentSyntax_10 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 327 328
+// Productions numbers:  327 328
   return inLexique->nextProductionIndex () - 326 ;
 }
 
@@ -41022,7 +41562,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ParameterArgumentSyntax_10 
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ParameterArgumentSyntax_11 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 329 330
+// Productions numbers:  329 330
   return inLexique->nextProductionIndex () - 328 ;
 }
 
@@ -41033,7 +41573,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ParameterArgumentSyntax_11 
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ParameterArgumentSyntax_12 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 331 332
+// Productions numbers:  331 332
   return inLexique->nextProductionIndex () - 330 ;
 }
 
@@ -41044,7 +41584,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ParameterArgumentSyntax_12 
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_0 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 333 334
+// Productions numbers:  333 334
   return inLexique->nextProductionIndex () - 332 ;
 }
 
@@ -41055,7 +41595,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_0 (C_Lex
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_1 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 335 336
+// Productions numbers:  335 336
   return inLexique->nextProductionIndex () - 334 ;
 }
 
@@ -41066,7 +41606,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_1 (C_Lex
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_2 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 337 338
+// Productions numbers:  337 338
   return inLexique->nextProductionIndex () - 336 ;
 }
 
@@ -41077,7 +41617,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_2 (C_Lex
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_3 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 339 340
+// Productions numbers:  339 340
   return inLexique->nextProductionIndex () - 338 ;
 }
 
@@ -41088,7 +41628,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_3 (C_Lex
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_4 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 341 342
+// Productions numbers:  341 342
   return inLexique->nextProductionIndex () - 340 ;
 }
 
@@ -41099,7 +41639,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_4 (C_Lex
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_5 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 343 344
+// Productions numbers:  343 344
   return inLexique->nextProductionIndex () - 342 ;
 }
 
@@ -41110,7 +41650,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_5 (C_Lex
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_6 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 345 346 347
+// Productions numbers:  345 346 347
   return inLexique->nextProductionIndex () - 344 ;
 }
 
@@ -41121,7 +41661,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_6 (C_Lex
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_7 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 348 349
+// Productions numbers:  348 349
   return inLexique->nextProductionIndex () - 347 ;
 }
 
@@ -41132,7 +41672,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_7 (C_Lex
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_8 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 350 351 352
+// Productions numbers:  350 351 352
   return inLexique->nextProductionIndex () - 349 ;
 }
 
@@ -41143,7 +41683,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_8 (C_Lex
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_9 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 353 354
+// Productions numbers:  353 354
   return inLexique->nextProductionIndex () - 352 ;
 }
 
@@ -41154,7 +41694,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_9 (C_Lex
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_10 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 355 356
+// Productions numbers:  355 356
   return inLexique->nextProductionIndex () - 354 ;
 }
 
@@ -41165,7 +41705,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_10 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_11 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 357 358 359 360
+// Productions numbers:  357 358 359 360
   return inLexique->nextProductionIndex () - 356 ;
 }
 
@@ -41176,7 +41716,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_11 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_12 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 361 362 363 364 365
+// Productions numbers:  361 362 363 364 365
   return inLexique->nextProductionIndex () - 360 ;
 }
 
@@ -41187,7 +41727,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_12 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_13 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 366 367
+// Productions numbers:  366 367
   return inLexique->nextProductionIndex () - 365 ;
 }
 
@@ -41198,7 +41738,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_13 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_14 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 368 369
+// Productions numbers:  368 369
   return inLexique->nextProductionIndex () - 367 ;
 }
 
@@ -41209,7 +41749,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_14 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_15 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 370 371
+// Productions numbers:  370 371
   return inLexique->nextProductionIndex () - 369 ;
 }
 
@@ -41220,7 +41760,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_15 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_16 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 372 373
+// Productions numbers:  372 373
   return inLexique->nextProductionIndex () - 371 ;
 }
 
@@ -41231,7 +41771,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_16 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_17 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 374 375 376
+// Productions numbers:  374 375 376
   return inLexique->nextProductionIndex () - 373 ;
 }
 
@@ -41242,7 +41782,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_17 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_18 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 377 378
+// Productions numbers:  377 378
   return inLexique->nextProductionIndex () - 376 ;
 }
 
@@ -41253,7 +41793,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_18 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_19 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 379 380 381
+// Productions numbers:  379 380 381
   return inLexique->nextProductionIndex () - 378 ;
 }
 
@@ -41264,7 +41804,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_19 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_20 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 382 383
+// Productions numbers:  382 383
   return inLexique->nextProductionIndex () - 381 ;
 }
 
@@ -41275,7 +41815,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_20 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_21 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 384 385
+// Productions numbers:  384 385
   return inLexique->nextProductionIndex () - 383 ;
 }
 
@@ -41286,7 +41826,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_21 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_22 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 386 387 388 389
+// Productions numbers:  386 387 388 389
   return inLexique->nextProductionIndex () - 385 ;
 }
 
@@ -41297,7 +41837,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_22 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_23 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 390 391
+// Productions numbers:  390 391
   return inLexique->nextProductionIndex () - 389 ;
 }
 
@@ -41308,7 +41848,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_23 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_24 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 392 393
+// Productions numbers:  392 393
   return inLexique->nextProductionIndex () - 391 ;
 }
 
@@ -41319,7 +41859,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_24 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_25 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 394 395
+// Productions numbers:  394 395
   return inLexique->nextProductionIndex () - 393 ;
 }
 
@@ -41330,7 +41870,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_25 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_26 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 396 397
+// Productions numbers:  396 397
   return inLexique->nextProductionIndex () - 395 ;
 }
 
@@ -41341,7 +41881,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_26 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_27 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 398 399 400 401 402
+// Productions numbers:  398 399 400 401 402
   return inLexique->nextProductionIndex () - 397 ;
 }
 
@@ -41352,7 +41892,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_27 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_28 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 403 404
+// Productions numbers:  403 404
   return inLexique->nextProductionIndex () - 402 ;
 }
 
@@ -41363,7 +41903,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_28 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_29 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 405 406
+// Productions numbers:  405 406
   return inLexique->nextProductionIndex () - 404 ;
 }
 
@@ -41374,7 +41914,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_29 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_30 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 407 408
+// Productions numbers:  407 408
   return inLexique->nextProductionIndex () - 406 ;
 }
 
@@ -41385,7 +41925,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_30 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_31 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 409 410
+// Productions numbers:  409 410
   return inLexique->nextProductionIndex () - 408 ;
 }
 
@@ -41396,7 +41936,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_31 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_32 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 411 412
+// Productions numbers:  411 412
   return inLexique->nextProductionIndex () - 410 ;
 }
 
@@ -41407,7 +41947,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_32 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_33 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 413 414
+// Productions numbers:  413 414
   return inLexique->nextProductionIndex () - 412 ;
 }
 
@@ -41418,7 +41958,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_33 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_34 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 415 416
+// Productions numbers:  415 416
   return inLexique->nextProductionIndex () - 414 ;
 }
 
@@ -41429,7 +41969,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_34 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_35 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 417 418
+// Productions numbers:  417 418
   return inLexique->nextProductionIndex () - 416 ;
 }
 
@@ -41440,7 +41980,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_35 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_36 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 419 420
+// Productions numbers:  419 420
   return inLexique->nextProductionIndex () - 418 ;
 }
 
@@ -41451,7 +41991,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_36 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_37 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 421 422
+// Productions numbers:  421 422
   return inLexique->nextProductionIndex () - 420 ;
 }
 
@@ -41462,7 +42002,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_37 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_38 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 423 424
+// Productions numbers:  423 424
   return inLexique->nextProductionIndex () - 422 ;
 }
 
@@ -41473,7 +42013,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_38 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_39 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 425 426
+// Productions numbers:  425 426
   return inLexique->nextProductionIndex () - 424 ;
 }
 
@@ -41484,7 +42024,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_39 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_40 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 427 428
+// Productions numbers:  427 428
   return inLexique->nextProductionIndex () - 426 ;
 }
 
@@ -41495,7 +42035,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_40 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_41 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 429 430
+// Productions numbers:  429 430
   return inLexique->nextProductionIndex () - 428 ;
 }
 
@@ -41506,7 +42046,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_41 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_42 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 431 432
+// Productions numbers:  431 432
   return inLexique->nextProductionIndex () - 430 ;
 }
 
@@ -41517,7 +42057,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_42 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_43 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 433 434
+// Productions numbers:  433 434
   return inLexique->nextProductionIndex () - 432 ;
 }
 
@@ -41528,7 +42068,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_43 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_44 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 435 436
+// Productions numbers:  435 436
   return inLexique->nextProductionIndex () - 434 ;
 }
 
@@ -41539,7 +42079,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_44 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_45 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 437 438
+// Productions numbers:  437 438
   return inLexique->nextProductionIndex () - 436 ;
 }
 
@@ -41550,7 +42090,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_45 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_46 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 439 440
+// Productions numbers:  439 440
   return inLexique->nextProductionIndex () - 438 ;
 }
 
@@ -41561,7 +42101,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_46 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_47 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 441 442
+// Productions numbers:  441 442
   return inLexique->nextProductionIndex () - 440 ;
 }
 
@@ -41572,7 +42112,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_47 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_48 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 443 444
+// Productions numbers:  443 444
   return inLexique->nextProductionIndex () - 442 ;
 }
 
@@ -41583,7 +42123,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_48 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_49 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 445 446
+// Productions numbers:  445 446
   return inLexique->nextProductionIndex () - 444 ;
 }
 
@@ -41594,7 +42134,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_49 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_50 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 447 448
+// Productions numbers:  447 448
   return inLexique->nextProductionIndex () - 446 ;
 }
 
@@ -41605,7 +42145,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_50 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_51 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 449 450
+// Productions numbers:  449 450
   return inLexique->nextProductionIndex () - 448 ;
 }
 
@@ -41616,7 +42156,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_51 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_52 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 451 452
+// Productions numbers:  451 452
   return inLexique->nextProductionIndex () - 450 ;
 }
 
@@ -41627,7 +42167,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_52 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_53 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 453 454 455 456
+// Productions numbers:  453 454 455 456
   return inLexique->nextProductionIndex () - 452 ;
 }
 
@@ -41638,7 +42178,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_53 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_54 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 457 458 459 460
+// Productions numbers:  457 458 459 460
   return inLexique->nextProductionIndex () - 456 ;
 }
 
@@ -41649,7 +42189,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_54 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_55 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 461 462 463
+// Productions numbers:  461 462 463
   return inLexique->nextProductionIndex () - 460 ;
 }
 
@@ -41660,7 +42200,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_55 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_56 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 464 465
+// Productions numbers:  464 465
   return inLexique->nextProductionIndex () - 463 ;
 }
 
@@ -41671,7 +42211,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_56 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_57 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 466 467 468
+// Productions numbers:  466 467 468
   return inLexique->nextProductionIndex () - 465 ;
 }
 
@@ -41682,7 +42222,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_57 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_58 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 469 470
+// Productions numbers:  469 470
   return inLexique->nextProductionIndex () - 468 ;
 }
 
@@ -41693,7 +42233,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_58 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_59 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 471 472
+// Productions numbers:  471 472
   return inLexique->nextProductionIndex () - 470 ;
 }
 
@@ -41704,7 +42244,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_59 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_60 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 473 474 475
+// Productions numbers:  473 474 475
   return inLexique->nextProductionIndex () - 472 ;
 }
 
@@ -41715,7 +42255,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_60 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_61 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 476 477 478 479
+// Productions numbers:  476 477 478 479
   return inLexique->nextProductionIndex () - 475 ;
 }
 
@@ -41726,7 +42266,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_61 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_62 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 480 481
+// Productions numbers:  480 481
   return inLexique->nextProductionIndex () - 479 ;
 }
 
@@ -41737,7 +42277,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_62 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_63 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 482 483
+// Productions numbers:  482 483
   return inLexique->nextProductionIndex () - 481 ;
 }
 
@@ -41748,7 +42288,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_63 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_64 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 484 485
+// Productions numbers:  484 485
   return inLexique->nextProductionIndex () - 483 ;
 }
 
@@ -41759,7 +42299,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_64 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_65 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 486 487 488
+// Productions numbers:  486 487 488
   return inLexique->nextProductionIndex () - 485 ;
 }
 
@@ -41770,7 +42310,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_65 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_66 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 489 490
+// Productions numbers:  489 490
   return inLexique->nextProductionIndex () - 488 ;
 }
 
@@ -41781,7 +42321,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_66 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_67 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 491 492
+// Productions numbers:  491 492
   return inLexique->nextProductionIndex () - 490 ;
 }
 
@@ -41792,7 +42332,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_67 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_68 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 493 494
+// Productions numbers:  493 494
   return inLexique->nextProductionIndex () - 492 ;
 }
 
@@ -41803,7 +42343,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_68 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_69 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 495 496
+// Productions numbers:  495 496
   return inLexique->nextProductionIndex () - 494 ;
 }
 
@@ -41814,7 +42354,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_69 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_70 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 497 498
+// Productions numbers:  497 498
   return inLexique->nextProductionIndex () - 496 ;
 }
 
@@ -41825,7 +42365,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_70 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_71 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 499 500
+// Productions numbers:  499 500
   return inLexique->nextProductionIndex () - 498 ;
 }
 
@@ -41836,7 +42376,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_71 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_72 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 501 502
+// Productions numbers:  501 502
   return inLexique->nextProductionIndex () - 500 ;
 }
 
@@ -41847,7 +42387,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_72 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_73 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 503 504 505
+// Productions numbers:  503 504 505
   return inLexique->nextProductionIndex () - 502 ;
 }
 
@@ -41858,7 +42398,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_73 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_74 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 506 507
+// Productions numbers:  506 507
   return inLexique->nextProductionIndex () - 505 ;
 }
 
@@ -41869,7 +42409,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_74 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_75 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 508 509
+// Productions numbers:  508 509
   return inLexique->nextProductionIndex () - 507 ;
 }
 
@@ -41880,7 +42420,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_75 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_76 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 510 511
+// Productions numbers:  510 511
   return inLexique->nextProductionIndex () - 509 ;
 }
 
@@ -41891,7 +42431,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_76 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_77 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 512 513
+// Productions numbers:  512 513
   return inLexique->nextProductionIndex () - 511 ;
 }
 
@@ -41902,7 +42442,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_77 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_78 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 514 515
+// Productions numbers:  514 515
   return inLexique->nextProductionIndex () - 513 ;
 }
 
@@ -41913,7 +42453,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_78 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_79 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 516 517
+// Productions numbers:  516 517
   return inLexique->nextProductionIndex () - 515 ;
 }
 
@@ -41924,7 +42464,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_79 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_80 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 518 519
+// Productions numbers:  518 519
   return inLexique->nextProductionIndex () - 517 ;
 }
 
@@ -41935,7 +42475,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_80 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_81 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 520 521
+// Productions numbers:  520 521
   return inLexique->nextProductionIndex () - 519 ;
 }
 
@@ -41946,7 +42486,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_81 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_82 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 522 523
+// Productions numbers:  522 523
   return inLexique->nextProductionIndex () - 521 ;
 }
 
@@ -41957,7 +42497,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_82 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_83 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 524 525
+// Productions numbers:  524 525
   return inLexique->nextProductionIndex () - 523 ;
 }
 
@@ -41968,7 +42508,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_83 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_84 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 526 527
+// Productions numbers:  526 527
   return inLexique->nextProductionIndex () - 525 ;
 }
 
@@ -41979,7 +42519,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_InstructionsSyntax_84 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_0 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 528 529
+// Productions numbers:  528 529
   return inLexique->nextProductionIndex () - 527 ;
 }
 
@@ -41990,7 +42530,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_0 (C_Lex
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_1 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 530 531
+// Productions numbers:  530 531
   return inLexique->nextProductionIndex () - 529 ;
 }
 
@@ -42001,7 +42541,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_1 (C_Lex
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_2 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 532 533
+// Productions numbers:  532 533
   return inLexique->nextProductionIndex () - 531 ;
 }
 
@@ -42012,7 +42552,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_2 (C_Lex
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_3 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 534 535
+// Productions numbers:  534 535
   return inLexique->nextProductionIndex () - 533 ;
 }
 
@@ -42023,7 +42563,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_3 (C_Lex
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_4 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 536 537
+// Productions numbers:  536 537
   return inLexique->nextProductionIndex () - 535 ;
 }
 
@@ -42034,7 +42574,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_4 (C_Lex
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_5 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 538 539
+// Productions numbers:  538 539
   return inLexique->nextProductionIndex () - 537 ;
 }
 
@@ -42045,7 +42585,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_5 (C_Lex
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_6 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 540 541
+// Productions numbers:  540 541
   return inLexique->nextProductionIndex () - 539 ;
 }
 
@@ -42056,7 +42596,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_6 (C_Lex
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_7 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 542 543
+// Productions numbers:  542 543
   return inLexique->nextProductionIndex () - 541 ;
 }
 
@@ -42067,7 +42607,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_7 (C_Lex
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_8 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 544 545
+// Productions numbers:  544 545
   return inLexique->nextProductionIndex () - 543 ;
 }
 
@@ -42078,7 +42618,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_8 (C_Lex
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_9 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 546 547
+// Productions numbers:  546 547
   return inLexique->nextProductionIndex () - 545 ;
 }
 
@@ -42089,7 +42629,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_9 (C_Lex
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_10 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 548 549
+// Productions numbers:  548 549
   return inLexique->nextProductionIndex () - 547 ;
 }
 
@@ -42100,7 +42640,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_10 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_11 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 550 551
+// Productions numbers:  550 551
   return inLexique->nextProductionIndex () - 549 ;
 }
 
@@ -42111,7 +42651,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_11 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_12 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 552 553
+// Productions numbers:  552 553
   return inLexique->nextProductionIndex () - 551 ;
 }
 
@@ -42122,7 +42662,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_12 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_13 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 554 555
+// Productions numbers:  554 555
   return inLexique->nextProductionIndex () - 553 ;
 }
 
@@ -42133,7 +42673,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_13 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_14 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 556 557
+// Productions numbers:  556 557
   return inLexique->nextProductionIndex () - 555 ;
 }
 
@@ -42144,7 +42684,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_14 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_15 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 558 559
+// Productions numbers:  558 559
   return inLexique->nextProductionIndex () - 557 ;
 }
 
@@ -42155,7 +42695,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_15 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_16 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 560 561
+// Productions numbers:  560 561
   return inLexique->nextProductionIndex () - 559 ;
 }
 
@@ -42166,7 +42706,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_16 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_17 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 562 563
+// Productions numbers:  562 563
   return inLexique->nextProductionIndex () - 561 ;
 }
 
@@ -42177,7 +42717,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_17 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_18 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 564 565 566
+// Productions numbers:  564 565 566
   return inLexique->nextProductionIndex () - 563 ;
 }
 
@@ -42188,7 +42728,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_18 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_19 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 567 568
+// Productions numbers:  567 568
   return inLexique->nextProductionIndex () - 566 ;
 }
 
@@ -42199,7 +42739,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_19 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_20 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 569 570
+// Productions numbers:  569 570
   return inLexique->nextProductionIndex () - 568 ;
 }
 
@@ -42210,7 +42750,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_20 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_21 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 571 572
+// Productions numbers:  571 572
   return inLexique->nextProductionIndex () - 570 ;
 }
 
@@ -42221,7 +42761,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_21 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_22 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 573 574
+// Productions numbers:  573 574
   return inLexique->nextProductionIndex () - 572 ;
 }
 
@@ -42232,7 +42772,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_22 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_23 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 575 576 577 578 579
+// Productions numbers:  575 576 577 578 579
   return inLexique->nextProductionIndex () - 574 ;
 }
 
@@ -42243,7 +42783,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_23 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_24 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 580 581
+// Productions numbers:  580 581
   return inLexique->nextProductionIndex () - 579 ;
 }
 
@@ -42254,7 +42794,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_24 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_25 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 582 583
+// Productions numbers:  582 583
   return inLexique->nextProductionIndex () - 581 ;
 }
 
@@ -42265,7 +42805,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_25 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_26 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 584 585
+// Productions numbers:  584 585
   return inLexique->nextProductionIndex () - 583 ;
 }
 
@@ -42276,7 +42816,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_26 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_27 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 586 587
+// Productions numbers:  586 587
   return inLexique->nextProductionIndex () - 585 ;
 }
 
@@ -42287,7 +42827,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_27 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_28 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 588 589
+// Productions numbers:  588 589
   return inLexique->nextProductionIndex () - 587 ;
 }
 
@@ -42298,7 +42838,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_28 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_29 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 590 591
+// Productions numbers:  590 591
   return inLexique->nextProductionIndex () - 589 ;
 }
 
@@ -42309,7 +42849,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_29 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_30 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 592 593
+// Productions numbers:  592 593
   return inLexique->nextProductionIndex () - 591 ;
 }
 
@@ -42320,7 +42860,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_30 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_31 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 594 595
+// Productions numbers:  594 595
   return inLexique->nextProductionIndex () - 593 ;
 }
 
@@ -42331,7 +42871,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_31 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_32 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 596 597 598
+// Productions numbers:  596 597 598
   return inLexique->nextProductionIndex () - 595 ;
 }
 
@@ -42342,7 +42882,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_32 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_33 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 599 600 601 602 603 604 605
+// Productions numbers:  599 600 601 602 603 604 605
   return inLexique->nextProductionIndex () - 598 ;
 }
 
@@ -42353,7 +42893,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_33 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_34 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 606 607
+// Productions numbers:  606 607
   return inLexique->nextProductionIndex () - 605 ;
 }
 
@@ -42364,7 +42904,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_34 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_35 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 608 609
+// Productions numbers:  608 609
   return inLexique->nextProductionIndex () - 607 ;
 }
 
@@ -42375,7 +42915,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_35 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_36 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 610 611
+// Productions numbers:  610 611
   return inLexique->nextProductionIndex () - 609 ;
 }
 
@@ -42386,7 +42926,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_36 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_37 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 612 613
+// Productions numbers:  612 613
   return inLexique->nextProductionIndex () - 611 ;
 }
 
@@ -42397,7 +42937,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_37 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_38 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 614 615 616
+// Productions numbers:  614 615 616
   return inLexique->nextProductionIndex () - 613 ;
 }
 
@@ -42408,7 +42948,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_38 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_39 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 617 618
+// Productions numbers:  617 618
   return inLexique->nextProductionIndex () - 616 ;
 }
 
@@ -42419,7 +42959,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_39 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_40 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 619 620
+// Productions numbers:  619 620
   return inLexique->nextProductionIndex () - 618 ;
 }
 
@@ -42430,7 +42970,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_40 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_41 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 621 622
+// Productions numbers:  621 622
   return inLexique->nextProductionIndex () - 620 ;
 }
 
@@ -42441,7 +42981,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_41 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_42 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 623 624
+// Productions numbers:  623 624
   return inLexique->nextProductionIndex () - 622 ;
 }
 
@@ -42452,7 +42992,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_42 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_43 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 625 626
+// Productions numbers:  625 626
   return inLexique->nextProductionIndex () - 624 ;
 }
 
@@ -42463,7 +43003,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_43 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_44 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 627 628
+// Productions numbers:  627 628
   return inLexique->nextProductionIndex () - 626 ;
 }
 
@@ -42474,7 +43014,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_44 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_45 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 629 630
+// Productions numbers:  629 630
   return inLexique->nextProductionIndex () - 628 ;
 }
 
@@ -42485,7 +43025,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_45 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_46 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 631 632
+// Productions numbers:  631 632
   return inLexique->nextProductionIndex () - 630 ;
 }
 
@@ -42496,7 +43036,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_46 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_47 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 633 634 635 636 637
+// Productions numbers:  633 634 635 636 637
   return inLexique->nextProductionIndex () - 632 ;
 }
 
@@ -42507,7 +43047,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_47 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_48 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 638 639
+// Productions numbers:  638 639
   return inLexique->nextProductionIndex () - 637 ;
 }
 
@@ -42518,7 +43058,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_48 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_49 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 640 641
+// Productions numbers:  640 641
   return inLexique->nextProductionIndex () - 639 ;
 }
 
@@ -42529,7 +43069,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_49 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_50 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 642 643
+// Productions numbers:  642 643
   return inLexique->nextProductionIndex () - 641 ;
 }
 
@@ -42540,7 +43080,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_DeclarationsSyntax_50 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_0 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 644 645 646 647 648 649 650 651 652 653 654
+// Productions numbers:  644 645 646 647 648 649 650 651 652 653 654
   return inLexique->nextProductionIndex () - 643 ;
 }
 
@@ -42551,7 +43091,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_0 (C
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_1 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 655 656 657 658 659 660 661 662 663 664 665
+// Productions numbers:  655 656 657 658 659 660 661 662 663 664 665
   return inLexique->nextProductionIndex () - 654 ;
 }
 
@@ -42562,7 +43102,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_1 (C
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_2 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 666 667
+// Productions numbers:  666 667
   return inLexique->nextProductionIndex () - 665 ;
 }
 
@@ -42573,7 +43113,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_2 (C
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_3 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 668 669
+// Productions numbers:  668 669
   return inLexique->nextProductionIndex () - 667 ;
 }
 
@@ -42584,7 +43124,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_3 (C
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_4 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 670 671
+// Productions numbers:  670 671
   return inLexique->nextProductionIndex () - 669 ;
 }
 
@@ -42595,7 +43135,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_4 (C
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_5 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 672 673
+// Productions numbers:  672 673
   return inLexique->nextProductionIndex () - 671 ;
 }
 
@@ -42606,7 +43146,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_5 (C
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_6 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 674 675
+// Productions numbers:  674 675
   return inLexique->nextProductionIndex () - 673 ;
 }
 
@@ -42617,7 +43157,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_6 (C
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_7 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 676 677
+// Productions numbers:  676 677
   return inLexique->nextProductionIndex () - 675 ;
 }
 
@@ -42628,7 +43168,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_7 (C
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_8 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 678 679
+// Productions numbers:  678 679
   return inLexique->nextProductionIndex () - 677 ;
 }
 
@@ -42639,7 +43179,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_8 (C
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_9 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 680 681
+// Productions numbers:  680 681
   return inLexique->nextProductionIndex () - 679 ;
 }
 
@@ -42650,7 +43190,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_9 (C
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_10 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 682 683
+// Productions numbers:  682 683
   return inLexique->nextProductionIndex () - 681 ;
 }
 
@@ -42661,7 +43201,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_10 (
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_11 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 684 685 686
+// Productions numbers:  684 685 686
   return inLexique->nextProductionIndex () - 683 ;
 }
 
@@ -42672,7 +43212,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_11 (
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_12 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 687 688
+// Productions numbers:  687 688
   return inLexique->nextProductionIndex () - 686 ;
 }
 
@@ -42683,7 +43223,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_12 (
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_13 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 689 690
+// Productions numbers:  689 690
   return inLexique->nextProductionIndex () - 688 ;
 }
 
@@ -42694,7 +43234,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_13 (
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_14 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 691 692 693 694
+// Productions numbers:  691 692 693 694
   return inLexique->nextProductionIndex () - 690 ;
 }
 
@@ -42705,7 +43245,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_14 (
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_15 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 695 696 697
+// Productions numbers:  695 696 697
   return inLexique->nextProductionIndex () - 694 ;
 }
 
@@ -42716,7 +43256,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_15 (
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_16 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 698 699 700 701
+// Productions numbers:  698 699 700 701
   return inLexique->nextProductionIndex () - 697 ;
 }
 
@@ -42727,7 +43267,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_16 (
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_17 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 702 703
+// Productions numbers:  702 703
   return inLexique->nextProductionIndex () - 701 ;
 }
 
@@ -42738,7 +43278,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_17 (
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_18 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 704 705
+// Productions numbers:  704 705
   return inLexique->nextProductionIndex () - 703 ;
 }
 
@@ -42749,7 +43289,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_18 (
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_19 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 706 707
+// Productions numbers:  706 707
   return inLexique->nextProductionIndex () - 705 ;
 }
 
@@ -42760,7 +43300,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_19 (
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_20 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 708 709
+// Productions numbers:  708 709
   return inLexique->nextProductionIndex () - 707 ;
 }
 
@@ -42771,7 +43311,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_20 (
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_21 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 710 711
+// Productions numbers:  710 711
   return inLexique->nextProductionIndex () - 709 ;
 }
 
@@ -42782,7 +43322,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_21 (
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_22 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 712 713 714
+// Productions numbers:  712 713 714
   return inLexique->nextProductionIndex () - 711 ;
 }
 
@@ -42793,7 +43333,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_22 (
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_23 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 715 716
+// Productions numbers:  715 716
   return inLexique->nextProductionIndex () - 714 ;
 }
 
@@ -42804,7 +43344,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_23 (
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_24 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 717 718
+// Productions numbers:  717 718
   return inLexique->nextProductionIndex () - 716 ;
 }
 
@@ -42815,7 +43355,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_24 (
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_25 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 719 720
+// Productions numbers:  719 720
   return inLexique->nextProductionIndex () - 718 ;
 }
 
@@ -42826,7 +43366,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_25 (
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_26 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 721 722
+// Productions numbers:  721 722
   return inLexique->nextProductionIndex () - 720 ;
 }
 
@@ -42837,7 +43377,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_26 (
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_27 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 723 724
+// Productions numbers:  723 724
   return inLexique->nextProductionIndex () - 722 ;
 }
 
@@ -42848,7 +43388,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_27 (
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_OptionComponentSyntax_0 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 725 726
+// Productions numbers:  725 726
   return inLexique->nextProductionIndex () - 724 ;
 }
 
@@ -42859,7 +43399,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_OptionComponentSyntax_0 (C_
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_OptionComponentSyntax_1 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 727 728
+// Productions numbers:  727 728
   return inLexique->nextProductionIndex () - 726 ;
 }
 
@@ -42870,7 +43410,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_OptionComponentSyntax_1 (C_
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_OptionComponentSyntax_2 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 729 730
+// Productions numbers:  729 730
   return inLexique->nextProductionIndex () - 728 ;
 }
 
@@ -42881,7 +43421,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_OptionComponentSyntax_2 (C_
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GuiComponentSyntax_0 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 731 732 733 734 735
+// Productions numbers:  731 732 733 734 735
   return inLexique->nextProductionIndex () - 730 ;
 }
 
@@ -42892,7 +43432,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GuiComponentSyntax_0 (C_Lex
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GuiComponentSyntax_1 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 736 737 738 739
+// Productions numbers:  736 737 738 739
   return inLexique->nextProductionIndex () - 735 ;
 }
 
@@ -42903,7 +43443,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GuiComponentSyntax_1 (C_Lex
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GuiComponentSyntax_2 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 740 741
+// Productions numbers:  740 741
   return inLexique->nextProductionIndex () - 739 ;
 }
 
@@ -42914,7 +43454,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GuiComponentSyntax_2 (C_Lex
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GuiComponentSyntax_3 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 742 743
+// Productions numbers:  742 743
   return inLexique->nextProductionIndex () - 741 ;
 }
 
@@ -42925,7 +43465,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GuiComponentSyntax_3 (C_Lex
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GuiComponentSyntax_4 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 744 745 746
+// Productions numbers:  744 745 746
   return inLexique->nextProductionIndex () - 743 ;
 }
 
@@ -42936,7 +43476,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GuiComponentSyntax_4 (C_Lex
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GuiComponentSyntax_5 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 747 748
+// Productions numbers:  747 748
   return inLexique->nextProductionIndex () - 746 ;
 }
 
@@ -42947,7 +43487,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GuiComponentSyntax_5 (C_Lex
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GuiComponentSyntax_6 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 749 750
+// Productions numbers:  749 750
   return inLexique->nextProductionIndex () - 748 ;
 }
 
@@ -42958,7 +43498,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GuiComponentSyntax_6 (C_Lex
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_0 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 751 752
+// Productions numbers:  751 752
   return inLexique->nextProductionIndex () - 750 ;
 }
 
@@ -42969,7 +43509,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_0 (C_
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_1 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 753 754
+// Productions numbers:  753 754
   return inLexique->nextProductionIndex () - 752 ;
 }
 
@@ -42980,7 +43520,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_1 (C_
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_2 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 755 756 757
+// Productions numbers:  755 756 757
   return inLexique->nextProductionIndex () - 754 ;
 }
 
@@ -42991,7 +43531,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_2 (C_
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_3 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 758 759 760
+// Productions numbers:  758 759 760
   return inLexique->nextProductionIndex () - 757 ;
 }
 
@@ -43002,7 +43542,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_3 (C_
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_4 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 761 762
+// Productions numbers:  761 762
   return inLexique->nextProductionIndex () - 760 ;
 }
 
@@ -43013,7 +43553,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_4 (C_
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_5 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 763 764
+// Productions numbers:  763 764
   return inLexique->nextProductionIndex () - 762 ;
 }
 
@@ -43024,7 +43564,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_5 (C_
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_6 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 765 766
+// Productions numbers:  765 766
   return inLexique->nextProductionIndex () - 764 ;
 }
 
@@ -43035,7 +43575,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_6 (C_
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_7 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 767 768
+// Productions numbers:  767 768
   return inLexique->nextProductionIndex () - 766 ;
 }
 
@@ -43046,7 +43586,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_7 (C_
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_8 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 769 770
+// Productions numbers:  769 770
   return inLexique->nextProductionIndex () - 768 ;
 }
 
@@ -43057,7 +43597,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_8 (C_
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_9 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 771 772
+// Productions numbers:  771 772
   return inLexique->nextProductionIndex () - 770 ;
 }
 
@@ -43068,7 +43608,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_9 (C_
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_10 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 773 774 775
+// Productions numbers:  773 774 775
   return inLexique->nextProductionIndex () - 772 ;
 }
 
@@ -43079,7 +43619,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_10 (C
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_11 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 776 777
+// Productions numbers:  776 777
   return inLexique->nextProductionIndex () - 775 ;
 }
 
@@ -43090,7 +43630,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_11 (C
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_12 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 778 779
+// Productions numbers:  778 779
   return inLexique->nextProductionIndex () - 777 ;
 }
 
@@ -43101,7 +43641,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_12 (C
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_13 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 780 781
+// Productions numbers:  780 781
   return inLexique->nextProductionIndex () - 779 ;
 }
 
@@ -43112,7 +43652,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_13 (C
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_14 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 782 783
+// Productions numbers:  782 783
   return inLexique->nextProductionIndex () - 781 ;
 }
 
@@ -43123,7 +43663,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_14 (C
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_15 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 784 785
+// Productions numbers:  784 785
   return inLexique->nextProductionIndex () - 783 ;
 }
 
@@ -43134,7 +43674,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_15 (C
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_16 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 786 787
+// Productions numbers:  786 787
   return inLexique->nextProductionIndex () - 785 ;
 }
 
@@ -43145,7 +43685,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_16 (C
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_17 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 788 789
+// Productions numbers:  788 789
   return inLexique->nextProductionIndex () - 787 ;
 }
 
@@ -43156,7 +43696,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_17 (C
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_18 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 790 791
+// Productions numbers:  790 791
   return inLexique->nextProductionIndex () - 789 ;
 }
 
@@ -43167,7 +43707,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_18 (C
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GrammarComponentSyntax_0 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 792 793
+// Productions numbers:  792 793
   return inLexique->nextProductionIndex () - 791 ;
 }
 
@@ -43178,7 +43718,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GrammarComponentSyntax_0 (C
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GrammarComponentSyntax_1 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 794 795
+// Productions numbers:  794 795
   return inLexique->nextProductionIndex () - 793 ;
 }
 
@@ -43189,7 +43729,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GrammarComponentSyntax_1 (C
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GrammarComponentSyntax_2 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 796 797
+// Productions numbers:  796 797
   return inLexique->nextProductionIndex () - 795 ;
 }
 
@@ -43200,7 +43740,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GrammarComponentSyntax_2 (C
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GrammarComponentSyntax_3 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 798 799
+// Productions numbers:  798 799
   return inLexique->nextProductionIndex () - 797 ;
 }
 
@@ -43211,7 +43751,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GrammarComponentSyntax_3 (C
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GrammarComponentSyntax_4 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 800 801
+// Productions numbers:  800 801
   return inLexique->nextProductionIndex () - 799 ;
 }
 
@@ -43222,7 +43762,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GrammarComponentSyntax_4 (C
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GrammarComponentSyntax_5 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 802 803
+// Productions numbers:  802 803
   return inLexique->nextProductionIndex () - 801 ;
 }
 
@@ -43233,7 +43773,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GrammarComponentSyntax_5 (C
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GrammarComponentSyntax_6 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 804 805
+// Productions numbers:  804 805
   return inLexique->nextProductionIndex () - 803 ;
 }
 
@@ -43244,7 +43784,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GrammarComponentSyntax_6 (C
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GrammarComponentSyntax_7 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 806 807
+// Productions numbers:  806 807
   return inLexique->nextProductionIndex () - 805 ;
 }
 
@@ -43255,7 +43795,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GrammarComponentSyntax_7 (C
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GrammarComponentSyntax_8 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 808 809
+// Productions numbers:  808 809
   return inLexique->nextProductionIndex () - 807 ;
 }
 
@@ -43266,7 +43806,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GrammarComponentSyntax_8 (C
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ProgramDeclarations_0 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 810 811
+// Productions numbers:  810 811
   return inLexique->nextProductionIndex () - 809 ;
 }
 
@@ -43277,7 +43817,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ProgramDeclarations_0 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ProgramDeclarations_1 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 812 813
+// Productions numbers:  812 813
   return inLexique->nextProductionIndex () - 811 ;
 }
 
@@ -43288,7 +43828,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ProgramDeclarations_1 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ProgramDeclarations_2 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 814 815
+// Productions numbers:  814 815
   return inLexique->nextProductionIndex () - 813 ;
 }
 

@@ -24,7 +24,7 @@
 
 #include "generic-arraies/TC_UniqueArray.h"
 #include "strings/String-class.h"
-#include "utilities/C_SharedObject.h"
+#include "utilities/SharedObject.h"
 #include "galgas2/LocationInSource.h"
 #include "galgas2/SourceTextInString.h"
 #include "galgas2/C_IssueWithFixIt.h"
@@ -47,7 +47,7 @@ class C_galgas_type_descriptor ;
 //
 //--------------------------------------------------------------------------------------------------
 
-class Compiler : public C_SharedObject {
+class Compiler : public SharedObject {
 //--- Constructor and destructor
   public: Compiler (Compiler * inCallerCompiler
                       COMMA_LOCATION_ARGS) ;

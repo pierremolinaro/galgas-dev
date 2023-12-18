@@ -22,7 +22,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "utilities/C_SharedObject.h"
+#include "utilities/SharedObject.h"
 #include "galgas2/typeComparisonResult.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -32,7 +32,7 @@ class C_galgas_type_descriptor ;
 
 //--------------------------------------------------------------------------------------------------
 
-class acPtr_class : public C_SharedObject {
+class acPtr_class : public SharedObject {
   public: acPtr_class (LOCATION_ARGS) ;
 
   public: virtual void description (String & ioString,

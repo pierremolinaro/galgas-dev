@@ -463,60 +463,60 @@ printPureBNFgrammarInBNFfile (C_HTMLString & inHTMLfile,
                               const cVocabulary & inVocabulary,
                               const cPureBNFproductionsList & inProductions) {
   const int32_t productionsCount = inProductions.mProductionArray.count () ;
-  inHTMLfile.outputRawData ("<p><a name=\"pure_bnf\"></a>") ;
-  inHTMLfile += "Listing of the " ;
-  inHTMLfile.appendSigned (productionsCount) ;
-  inHTMLfile += " BNF production" ;
-  inHTMLfile += ((productionsCount > 1) ? "s" : "") ;
-  inHTMLfile += " :" ;
-  inHTMLfile.outputRawData ("</p>\n<table class=\"result\">") ;
+  inHTMLfile.addRawData ("<p><a name=\"pure_bnf\"></a>") ;
+  inHTMLfile.addString ("Listing of the ") ;
+  inHTMLfile.addSigned (productionsCount) ;
+  inHTMLfile.addString (" BNF production") ;
+  inHTMLfile.addString ((productionsCount > 1) ? "s" : "") ;
+  inHTMLfile.addString (" :") ;
+  inHTMLfile.addRawData ("</p>\n<table class=\"result\">") ;
   for (int32_t i=0 ; i<productionsCount ; i++) {
     const cProduction & p = inProductions.mProductionArray (i COMMA_HERE) ;
-    inHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\">") ;
-    inHTMLfile.outputRawData ("<a name=\"pure_bnf_") ;
-    inHTMLfile.appendSigned (i) ;
-    inHTMLfile.outputRawData ("\">") ;
-    inHTMLfile.appendSigned (i) ;
-    inHTMLfile.outputRawData ("</a></td><td class=\"result_line\">") ;
-    inHTMLfile += "rule " ;
-    inHTMLfile.outputRawData ("<code>") ;
+    inHTMLfile.addRawData ("<tr class=\"result_line\"><td class=\"result_line\">") ;
+    inHTMLfile.addRawData ("<a name=\"pure_bnf_") ;
+    inHTMLfile.addSigned (i) ;
+    inHTMLfile.addRawData ("\">") ;
+    inHTMLfile.addSigned (i) ;
+    inHTMLfile.addRawData ("</a></td><td class=\"result_line\">") ;
+    inHTMLfile.addString ("rule ") ;
+    inHTMLfile.addRawData ("<code>") ;
     inVocabulary.printInFile (inHTMLfile, p.leftNonTerminalIndex () COMMA_HERE) ;
-    inHTMLfile.outputRawData ("</code>") ;
+    inHTMLfile.addRawData ("</code>") ;
     if (i == (productionsCount - 1)) {
-      inHTMLfile.outputRawData ("<br>") ;
-      inHTMLfile += "(added production)" ;
+      inHTMLfile.addRawData ("<br>") ;
+      inHTMLfile.addString ("(added production)") ;
     }else{
-      inHTMLfile.outputRawData ("<br>") ;
-      inHTMLfile += "file '" ;
-      inHTMLfile += p.sourceFileName () ;
-      inHTMLfile += "'" ;
-      inHTMLfile.outputRawData ("<br>") ;
-      inHTMLfile += "line " ;
-      inHTMLfile.appendSigned (p.lineDefinition ()) ;
+      inHTMLfile.addRawData ("<br>") ;
+      inHTMLfile.addString ("file '") ;
+      inHTMLfile.addString (p.sourceFileName ()) ;
+      inHTMLfile.addString ("'") ;
+      inHTMLfile.addRawData ("<br>") ;
+      inHTMLfile.addString ("line ") ;
+      inHTMLfile.addSigned (p.lineDefinition ()) ;
     }
-    inHTMLfile.outputRawData ("</td><td><code>") ;
+    inHTMLfile.addRawData ("</td><td><code>") ;
     for (int32_t d=0 ; d<p.derivationLength () ; d++) {
       if (d != 0) {
-        inHTMLfile.outputRawData ("<br>") ;
+        inHTMLfile.addRawData ("<br>") ;
       }
       inVocabulary.printInFile (inHTMLfile, p.derivationAtIndex (d COMMA_HERE) COMMA_HERE) ;
     }
-    inHTMLfile.outputRawData ("</code></td></tr>") ;
+    inHTMLfile.addRawData ("</code></td></tr>") ;
   }
 //--- Print vocabulary
-  inHTMLfile.outputRawData ("</table><p><a name=\"vocabulary\"></a></p>"
+  inHTMLfile.addRawData ("</table><p><a name=\"vocabulary\"></a></p>"
                             "<table class=\"result\">"
                             "<tr><td class=\"result_title\"colspan=\"2\">") ;
-  inHTMLfile += "Vocabulary" ;
-  inHTMLfile.outputRawData ("</td></tr>\n") ;
+  inHTMLfile.addString ("Vocabulary") ;
+  inHTMLfile.addRawData ("</td></tr>\n") ;
   for (int32_t s=0 ; s<inVocabulary.getAllSymbolsCount () ; s++) {
-    inHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\">") ;
-    inHTMLfile.appendSigned (s) ;
-    inHTMLfile.outputRawData ("</td><td><code>") ;
+    inHTMLfile.addRawData ("<tr class=\"result_line\"><td class=\"result_line\">") ;
+    inHTMLfile.addSigned (s) ;
+    inHTMLfile.addRawData ("</td><td><code>") ;
     inVocabulary.printInFile (inHTMLfile, s COMMA_HERE) ;
-    inHTMLfile.outputRawData ("</code></td></tr>\n") ;
+    inHTMLfile.addRawData ("</code></td></tr>\n") ;
   }
-    inHTMLfile.outputRawData ("</table>") ;
+    inHTMLfile.addRawData ("</table>") ;
 }
 
 //--------------------------------------------------------------------------------------------------

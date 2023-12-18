@@ -114,10 +114,9 @@ mLatexNextCharacterToEnterIndex (0) {
       mTokenStartLocation.resetWithSourceText (source) ;
       mTokenEndLocation.resetWithSourceText (source) ;
     }else if (inCallerCompiler != nullptr) {
-      String errorMessage ;
-      errorMessage += "cannot read '" ;
-      errorMessage += inSourceFileName ;
-      errorMessage += "': this file does not exist or is not encoded in UTF8" ;
+      String errorMessage = "cannot read '" ;
+      errorMessage.addString (inSourceFileName) ;
+      errorMessage.addString ("': this file does not exist or is not encoded in UTF8") ;
       inCallerCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE)  ;
     }
   }
@@ -179,7 +178,7 @@ void C_Lexique::appendLastSeparatorTo (String & ioString) const {
   if (nullptr != mLastToken) {
     const int32_t lastSeparatorStart = mLastToken->mEndLocation.index () + 1 ;
     const String lastSeparatorString = sourceText ().sourceString ().subStringFromIndex (lastSeparatorStart) ;
-    ioString += lastSeparatorString ;
+    ioString.addString (lastSeparatorString) ;
   }
 }
 
@@ -191,7 +190,7 @@ void C_Lexique::enterTokenFromPointer (cToken * inToken) {
   const int32_t tokenStart = mTokenStartLocation.index () ;
   if (tokenStart > mLastSeparatorIndex) {
     const String sep = sourceText ().sourceString ().subString (mLastSeparatorIndex, tokenStart -mLastSeparatorIndex) ;
-    inToken->mSeparatorStringBeforeToken += sep ;
+    inToken->mSeparatorStringBeforeToken.addString (sep) ;
   }
   mLastSeparatorIndex = mTokenEndLocation.index () + 1 ;
 //--- Enter token in token list
@@ -207,31 +206,31 @@ void C_Lexique::enterTokenFromPointer (cToken * inToken) {
     for (int32_t i=inToken->mStartLocation.index () ; i<=inToken->mEndLocation.index () ; i++) {
       const utf32 c = sourceText ().readCharOrNul (i COMMA_HERE) ;
       if (UNICODE_VALUE (c) != '\0') {
-        s.appendUnicodeCharacter (c COMMA_HERE) ;
+        s.addUnicodeChar (c COMMA_HERE) ;
       }
     }
-    gCout += "  " ;
-    gCout += getCurrentTokenString (inToken) ;
-    gCout += ", from location " ;
-    gCout.appendSigned (inToken->mStartLocation.index ()) ;
-    gCout += " (line " ;
-    gCout.appendSigned (inToken->mStartLocation.lineNumber ()) ;
-    gCout += ", column " ;
-    gCout.appendSigned (inToken->mStartLocation.columnNumber ()) ;
-    gCout += ")" ;
-    gCout += " to location " ;
-    gCout.appendSigned (inToken->mEndLocation.index ()) ;
-    gCout += " (line " ;
-    gCout.appendSigned (inToken->mEndLocation.lineNumber ()) ;
-    gCout += ", column " ;
-    gCout.appendSigned (inToken->mEndLocation.columnNumber ()) ;
-    gCout += ")" ;
+    gCout.addString ("  ") ;
+    gCout.addString (getCurrentTokenString (inToken)) ;
+    gCout.addString (", from location ") ;
+    gCout.addSigned (inToken->mStartLocation.index ()) ;
+    gCout.addString (" (line ") ;
+    gCout.addSigned (inToken->mStartLocation.lineNumber ()) ;
+    gCout.addString (", column ") ;
+    gCout.addSigned (inToken->mStartLocation.columnNumber ()) ;
+    gCout.addString (")") ;
+    gCout.addString (" to location ") ;
+    gCout.addSigned (inToken->mEndLocation.index ()) ;
+    gCout.addString (" (line ") ;
+    gCout.addSigned (inToken->mEndLocation.lineNumber ()) ;
+    gCout.addString (", column ") ;
+    gCout.addSigned (inToken->mEndLocation.columnNumber ()) ;
+    gCout.addString (")") ;
     if (inToken->mTemplateStringBeforeToken.length () > 0) {
-      gCout += ", template '" ;
-      gCout += inToken->mTemplateStringBeforeToken ;
-      gCout += "'" ;
+      gCout.addString (", template '") ;
+      gCout.addString (inToken->mTemplateStringBeforeToken) ;
+      gCout.addString ("'") ;
     }
-    gCout += "\n" ;
+    gCout.addNL () ; ;
   }else if (executionModeIsLatex ()) {
     while (mLatexNextCharacterToEnterIndex < inToken->mStartLocation.index ()) {
       const utf32 c = sourceText ().readCharOrNul (mLatexNextCharacterToEnterIndex COMMA_HERE) ;
@@ -240,10 +239,10 @@ void C_Lexique::enterTokenFromPointer (cToken * inToken) {
     }
     const String styleName = styleNameForIndex (styleIndexForTerminal (inToken->mTokenCode)) ;
     if (styleName.length () > 0) {
-      mLatexOutputString += "\\" ;
-      mLatexOutputString += styleName ;
-      mLatexOutputString += latexModeStyleSuffixString () ;
-      mLatexOutputString += "{" ;
+      mLatexOutputString.addString ("\\") ;
+      mLatexOutputString.addString (styleName) ;
+      mLatexOutputString.addString (latexModeStyleSuffixString ()) ;
+      mLatexOutputString.addString ("{") ;
     }
     for (int32_t i=inToken->mStartLocation.index () ; i<=inToken->mEndLocation.index () ; i++) {
       const utf32 c = sourceText ().readCharOrNul (i COMMA_HERE) ;
@@ -252,7 +251,7 @@ void C_Lexique::enterTokenFromPointer (cToken * inToken) {
       }
     }
     if (styleName.length () > 0) {
-      mLatexOutputString += "}" ;
+      mLatexOutputString.addString ("}") ;
     }
   //---
     mLatexNextCharacterToEnterIndex = inToken->mEndLocation.index () + 1 ;
@@ -271,7 +270,7 @@ void C_Lexique::resetForSecondPass (void) {
     mEndLocationForHere = mCurrentTokenPtr->mEndLocation ;
     mStartLocationForNext = mCurrentTokenPtr->mStartLocation ;
     mEndLocationForNext = mCurrentTokenPtr->mEndLocation ;
-    mTemplateString += mCurrentTokenPtr->mTemplateStringBeforeToken ;
+    mTemplateString.addString (mCurrentTokenPtr->mTemplateStringBeforeToken) ;
     mCurrentLocation = mCurrentTokenPtr->mEndLocation ;
   }
 }
@@ -316,14 +315,14 @@ int32_t C_Lexique::findTemplateDelimiterIndex (const cTemplateDelimiter inTempla
 
 void C_Lexique::performLexicalAnalysis (void) {
   if (executionModeIsLexicalAnalysisOnly ()) {
-    gCout += "*** PERFORM LEXICAL ANALYSIS ONLY (--mode=lexical-only option) ***\n" ;
+    gCout.addString ("*** PERFORM LEXICAL ANALYSIS ONLY (--mode=lexical-only option) ***\n") ;
   }
   bool loop = true ;
   while (loop) {
     loop = parseLexicalToken () ;
   }
   if (executionModeIsLexicalAnalysisOnly ()) {
-    gCout += "*** END OF LEXICAL ANALYSIS ***\n" ;
+    gCout.addString ("*** END OF LEXICAL ANALYSIS ***\n") ;
   }else if (executionModeIsLatex ()) {
     generateLatexFile () ;
   }
@@ -431,9 +430,9 @@ bool C_Lexique::notTestForInputUTF32String (const utf32 * inTestCstring,
 
 void C_Lexique::lexicalLog (LOCATION_ARGS) {
   String message ;
-  message += "LEXICAL LOG:'" ;
-  message.appendCLiteralCharConstant (mCurrentChar) ;
-  message += "'\n" ;
+  message.addString ("LEXICAL LOG:'") ;
+  message.addStringAsCLiteralCharConstant (mCurrentChar) ;
+  message.addString ("'\n") ;
   printMessage (message COMMA_THERE) ;
 }
 
@@ -455,7 +454,7 @@ int32_t C_Lexique::searchInList (const String & inString,
     const int32_t index = (bottom + top) / 2 ;
     int32_t result = searchedStringLength - inTable [index].mEntryStringLength ;
     if (result == 0) {
-      result = inString.compare (inTable [index].mEntryString) ;
+      result = inString.compare (String (inTable [index].mEntryString)) ;
     }
     if (result < 0) { // <
       top = index - 1 ;
@@ -493,11 +492,11 @@ void C_Lexique::internalBottomUpParserError (LOCATION_ARGS) {
 
 void C_Lexique::unknownCharacterLexicalError (LOCATION_ARGS) {
   String errorMessage ;
-  errorMessage += "Unknown character: " ;
-  errorMessage += unicodeName (mCurrentChar) ;
-  errorMessage += " (Unicode " ;
-  errorMessage.appendHex0xUnsigned (UNICODE_VALUE (mCurrentChar)) ;
-  errorMessage += ")" ;
+  errorMessage.addString ("Unknown character: ") ;
+  errorMessage.addString (unicodeName (mCurrentChar)) ;
+  errorMessage.addString (" (Unicode ") ;
+  errorMessage.adddHex0xUnsigned (UNICODE_VALUE (mCurrentChar)) ;
+  errorMessage.addString (")") ;
   lexicalError (errorMessage COMMA_THERE) ;
 }
 
@@ -580,12 +579,12 @@ bool C_Lexique::acceptTerminalForErrorSignaling (const int32_t inTerminal,
                                                  const int32_t inErrorProgramCounter) {
   if (TRACE_LL1_PARSING ()) {
     String m = getMessageForTerminal (inTerminal) ;
-    gCout += "------ Enter 'acceptTerminalForErrorSignaling' with '" ;
-    gCout += m ;
-    gCout += "' (" ;
-    gCout += inTerminal ;
-    gCout += ") terminal and program counter " ;
-    gCout += inErrorProgramCounter ;
+    gCout.addString ("------ Enter 'acceptTerminalForErrorSignaling' with '") ;
+    gCout.addString (m) ;
+    gCout.addString ("' (") ;
+    gCout.addSigned (inTerminal) ;
+    gCout.addString (") terminal and program counter ") ;
+    gCout.addSigned (inErrorProgramCounter) ;
     gCout.flush () ;
   }
   bool accept = false ;
@@ -600,20 +599,20 @@ bool C_Lexique::acceptTerminalForErrorSignaling (const int32_t inTerminal,
       accept = reachedTerminal == inTerminal ;
       if (TRACE_LL1_PARSING ()) {
         const String m = getMessageForTerminal (reachedTerminal) ;
-        gCout += "reached '" ;
-        gCout += m ;
-        gCout += "' terminal" ;
-        gCout += (accept ? " (accepted)" : "") ;
-        gCout += "\n" ;
+        gCout.addString ("reached '") ;
+        gCout.addString (m) ;
+        gCout.addString ("' terminal") ;
+        gCout.addString (accept ? " (accepted)" : "") ;
+        gCout.addNL () ; ;
         gCout.flush () ;
       }
       loop = false ;
     }else if (instruction < 0) { // We reach a nonterminal
       const int32_t reachedNonterminal = (int32_t) (- instruction - 1) ;
       if (TRACE_LL1_PARSING ()) {
-        gCout += "reached non-terminal " ;
-        gCout += reachedNonterminal ;
-        gCout += "\n" ;
+        gCout.addString ("reached non-terminal ") ;
+        gCout.addSigned (reachedNonterminal) ;
+        gCout.addNL () ; ;
         gCout.flush () ;
       }
       int32_t nonTerminalEntry = inDecisionTableIndexes [reachedNonterminal] ;
@@ -621,9 +620,9 @@ bool C_Lexique::acceptTerminalForErrorSignaling (const int32_t inTerminal,
         stack.appendObject (programCounter) ;
         programCounter = inProductionIndexes [inFirstProductionIndex [reachedNonterminal]] ;
         if (TRACE_LL1_PARSING ()) {
-          gCout += "One rule: goto " ;
-          gCout += programCounter ;
-          gCout += "\n" ;
+          gCout.addString ("One rule: goto ") ;
+          gCout.addSigned (programCounter) ;
+          gCout.addNL () ; ;
           gCout.flush () ;
         }
       }else{ // More than one rule : test if terminal is accepted, and call rule
@@ -635,11 +634,11 @@ bool C_Lexique::acceptTerminalForErrorSignaling (const int32_t inTerminal,
             found = inDecisionTable [nonTerminalEntry] == inTerminal ;
             if (TRACE_LL1_PARSING ()) {
               const String m = getMessageForTerminal (inDecisionTable [nonTerminalEntry]) ;
-              gCout += "try '" ;
-              gCout += m ;
-              gCout += "' non terminal" ;
-              gCout += (found ? " (accepted)": "") ;
-              gCout += "\n" ;
+              gCout.addString ("try '") ;
+              gCout.addString (m) ;
+              gCout.addString ("' non terminal") ;
+              gCout.addString (found ? " (accepted)": "") ;
+              gCout.addNL () ; ;
               gCout.flush () ;
             }
             if (found) {
@@ -671,9 +670,9 @@ bool C_Lexique::acceptTerminalForErrorSignaling (const int32_t inTerminal,
     }
   }
   if (TRACE_LL1_PARSING ()) {
-    gCout += "------ Exit 'acceptTerminalForErrorSignaling' with accept == " ;
-    gCout += (accept ? "true" : "false") ;
-    gCout += "\n" ;
+    gCout.addString ("------ Exit 'acceptTerminalForErrorSignaling' with accept == ") ;
+    gCout.addString (accept ? "true" : "false") ;
+    gCout.addNL () ; ;
   }
   return accept ;
 }
@@ -705,17 +704,17 @@ void C_Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int32_t inErrorP
     errorStack.appendObject (inErrorStack (i COMMA_HERE)) ;
   }
   if (TRACE_LL1_PARSING ()) {
-    gCout += "------ Enter 'buildExpectedTerminalsArrayOnSyntaxError'\n" ;
-    gCout += "programCounter: " ;
-    gCout += programCounter ;
-    gCout += ", errorStack: " ;
-    gCout += errorStack.count() ;
-    gCout += " value(s):" ;
+    gCout.addString ("------ Enter 'buildExpectedTerminalsArrayOnSyntaxError'\n") ;
+    gCout.addString ("programCounter: ") ;
+    gCout.addSigned (programCounter) ;
+    gCout.addString (", errorStack: ") ;
+    gCout.addSigned (errorStack.count ()) ;
+    gCout.addString (" value(s):") ;
     for (int32_t i=0 ; i<errorStack.count() ; i++) {
-      gCout += " " ;
-      gCout += errorStack (i COMMA_HERE) ;
+      gCout.addString (" ") ;
+      gCout.addSigned (errorStack (i COMMA_HERE)) ;
     }
-    gCout += "\n" ;
+    gCout.addNL () ; ;
     gCout.flush () ;
   }
   bool loop = true ;
@@ -724,19 +723,19 @@ void C_Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int32_t inErrorP
       loop = false ;
       if (TRACE_LL1_PARSING ()) {
         String m = getMessageForTerminal (inProductions [programCounter]) ;
-        gCout +="Terminal '" ;
-        gCout += m ;
-        gCout += "' (" ;
-        gCout += inProductions [programCounter] ;
-        gCout += ") reached\n" ;
+        gCout.addString ("Terminal '") ;
+        gCout.addString (m) ;
+        gCout.addString ("' (") ;
+        gCout.addSigned (inProductions [programCounter]) ;
+        gCout.addString (") reached\n") ;
         gCout.flush () ;
       }
     }else if (inProductions [programCounter] < 0) { // We reach a non terminal (<0)
       const int32_t nonTerminal = (int32_t) (- inProductions [programCounter] - 1) ;
       if (TRACE_LL1_PARSING ()) {
-        gCout += "Non-Terminal " ;
-        gCout += nonTerminal ;
-        gCout += " reached\n" ;
+        gCout.addString ("Non-Terminal ") ;
+        gCout.addSigned (nonTerminal) ;
+        gCout.addString (" reached\n") ;
         gCout.flush () ;
       }
     //--- We look if we get a non terminal that has only one production rule
@@ -746,9 +745,9 @@ void C_Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int32_t inErrorP
         errorStack.appendObject ((int32_t) (programCounter + 1)) ;
         programCounter = inProductionIndexes [inFirstProductionIndex [nonTerminal]] ;
         if (TRACE_LL1_PARSING ()) {
-          gCout += "Only one rule: goto " ;
-          gCout += programCounter ;
-          gCout += "\n" ;
+          gCout.addString ("Only one rule: goto ") ;
+          gCout.addSigned (programCounter) ;
+          gCout.addNL () ; ;
           gCout.flush () ;
         }
       }else{
@@ -758,14 +757,14 @@ void C_Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int32_t inErrorP
       programCounter = errorStack.lastObject (HERE) ;
       errorStack.removeLastObject (HERE) ;
       if (TRACE_LL1_PARSING ()) {
-        gCout += "return instruction (goes to " ;
-        gCout += programCounter ;
-        gCout += ")\n" ;
+        gCout.addString ("return instruction (goes to ") ;
+        gCout.addSigned (programCounter) ;
+        gCout.addString (")\n") ;
         gCout.flush () ;
       }
     }else{ // End of source reached
       if (TRACE_LL1_PARSING ()) {
-        gCout += "end of source reached\n" ;
+        gCout.addString ("end of source reached\n") ;
         gCout.flush () ;
       }
       loop = false ;
@@ -775,7 +774,7 @@ void C_Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int32_t inErrorP
   if (errorStack.count () == 0) { // We reach end of productions rules
     outExpectedTerminalsArray.appendObject (0) ; // 0 is always "end_of_text" terminal symbol
     if (TRACE_LL1_PARSING ()) {
-      gCout += "add 'end of source' to outExpectedTerminalsArray\n" ;
+      gCout.addString ("add 'end of source' to outExpectedTerminalsArray\n") ;
       gCout.flush () ;
     }
   }else if (inProductions [programCounter] > 0) { // We reach a terminal symbol
@@ -783,11 +782,11 @@ void C_Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int32_t inErrorP
     outExpectedTerminalsArray.appendObject (terminalSymbol) ;
     if (TRACE_LL1_PARSING ()) {
       String m = getMessageForTerminal (inProductions [programCounter]) ;
-      gCout += "add '" ;
-      gCout += m ;
-      gCout += "' (" ;
-      gCout += inProductions [programCounter] ;
-      gCout += ") to outExpectedTerminalsArray\n" ;
+      gCout.addString ("add '") ;
+      gCout.addString (m) ;
+      gCout.addString ("' (") ;
+      gCout.addSigned (inProductions [programCounter]) ;
+      gCout.addString (") to outExpectedTerminalsArray\n") ;
       gCout.flush () ;
     }
   }else{  // We reach a non terminal symbol
@@ -806,11 +805,11 @@ void C_Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int32_t inErrorP
         if (ok) {
           if (TRACE_LL1_PARSING ()) {
             String m = getMessageForTerminal (inDecisionTable [nonTerminalEntry]) ;
-            gCout += "add '" ;
-            gCout += m ;
-            gCout += "' (" ;
-            gCout += inDecisionTable [nonTerminalEntry] ;
-            gCout += ") to outExpectedTerminalsArray\n" ;
+            gCout.addString ("add '") ;
+            gCout.addString (m) ;
+            gCout.addString ("' (") ;
+            gCout.addSigned (inDecisionTable [nonTerminalEntry]) ;
+            gCout.addString (") to outExpectedTerminalsArray\n") ;
             gCout.flush () ;
           }
           outExpectedTerminalsArray.appendObject (inDecisionTable [nonTerminalEntry]) ;
@@ -821,7 +820,7 @@ void C_Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int32_t inErrorP
     }
   }
   if (TRACE_LL1_PARSING ()) {
-    gCout += "------ Exit 'buildExpectedTerminalsArrayOnSyntaxError'\n" ;
+    gCout.addString ("------ Exit 'buildExpectedTerminalsArrayOnSyntaxError'\n") ;
   }
 }
 
@@ -833,10 +832,10 @@ void C_Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int32_t inErrorP
 
 static void indentForParseOnly (const int32_t inIndentation) {
   for (int32_t i=1 ; i<inIndentation ; i++) {
-    gCout += "|  " ;
+    gCout.addString ("|  ") ;
   }
   if (inIndentation > 0) {
-    gCout += "|- " ;
+    gCout.addString ("|- ") ;
   }
 }
 
@@ -862,15 +861,15 @@ bool C_Lexique::performTopDownParsing (const int32_t inProductions [],
     uint32_t uniqueTerminalIndex = 0 ;
     uint32_t currentProductionName = 0 ;
     if (produceSyntaxTree) {
-      syntaxTreeDescriptionString += "digraph G {\n"
-                                     "  size =\"4,4\";\n" ;
+      syntaxTreeDescriptionString.addString ("digraph G {\n"
+                                     "  size =\"4,4\";\n") ;
     }
   //---
     int32_t indentationForParseOnly = 0 ;
     cToken * previousTokenPtr = nullptr ;
     cToken * tokenPtr = mFirstToken ;
     if (executionModeIsSyntaxAnalysisOnly ()) {
-      gCout += "*** PERFORM TOP-DOWN PARSING ONLY (--mode=syntax-only option) ***\n" ;
+      gCout.addString ("*** PERFORM TOP-DOWN PARSING ONLY (--mode=syntax-only option) ***\n") ;
     }
     TC_UniqueArray <int32_t> listForSecondPassParsing ;
     TC_Array <int32_t> stack (10000 COMMA_HERE) ;
@@ -901,12 +900,12 @@ bool C_Lexique::performTopDownParsing (const int32_t inProductions [],
         }
       }
       if (TRACE_LL1_PARSING ()) {
-        gCout += "---------------------------\n" ;
-        gCout += "Current token is " ;
-        gCout += getCurrentTokenString (tokenPtr) ;
-        gCout += " (#" ;
-        gCout += currentToken ;
-        gCout += ")\n" ;
+        gCout.addString ("---------------------------\n") ;
+        gCout.addString ("Current token is ") ;
+        gCout.addString (getCurrentTokenString (tokenPtr)) ;
+        gCout.addString (" (#") ;
+        gCout.addSigned (currentToken) ;
+        gCout.addString (")\n") ;
         gCout.flush () ;
       }
     //--- Get instruction to do
@@ -917,49 +916,49 @@ bool C_Lexique::performTopDownParsing (const int32_t inProductions [],
       //--- Get entry of nonterminal symbol to parse
         const int32_t nonTerminalToParse = (int32_t) (- instruction - 1) ;
         if (TRACE_LL1_PARSING ()) {
-          gCout += "Parse non terminal " ;
-          gCout.appendSigned (nonTerminalToParse) ;
-          gCout += ": " ;
+          gCout.addString ("Parse non terminal ") ;
+          gCout.addSigned (nonTerminalToParse) ;
+          gCout.addString (": ") ;
           gCout.flush () ;
         }
         int32_t nonTerminalEntry = inDecisionTableIndexes [nonTerminalToParse] ;
         if (inDecisionTable [nonTerminalEntry] < 0) { // Means only one production : don't make any choice
           if (TRACE_LL1_PARSING ()) {
-            gCout += " ok (only one production)\n" ;
+            gCout.addString (" ok (only one production)\n") ;
             gCout.flush () ;
           }
           stack.appendObject (programCounter) ;
           programCounter = inProductionIndexes [inFirstProductionIndex [nonTerminalToParse]] ;
           if (produceSyntaxTree) {
             uniqueProductionNameIndex ++ ;
-            syntaxTreeDescriptionString += "  NT" ;
-            syntaxTreeDescriptionString.appendUnsigned (uniqueProductionNameIndex) ;
-            syntaxTreeDescriptionString += " [label=\"" ;
-            syntaxTreeDescriptionString += inProductionNames [inFirstProductionIndex [nonTerminalToParse]].mName ;
-            syntaxTreeDescriptionString += "\", shape=box];\n" ;
+            syntaxTreeDescriptionString.addString ("  NT") ;
+            syntaxTreeDescriptionString.addUnsigned (uniqueProductionNameIndex) ;
+            syntaxTreeDescriptionString.addString (" [label=\"") ;
+            syntaxTreeDescriptionString.addString (inProductionNames [inFirstProductionIndex [nonTerminalToParse]].mName) ;
+            syntaxTreeDescriptionString.addString ("\", shape=box];\n") ;
             if (currentProductionName > 0) {
-              syntaxTreeDescriptionString += "  NT" ;
-              syntaxTreeDescriptionString.appendUnsigned (currentProductionName) ;
-              syntaxTreeDescriptionString += " -> NT" ;
-              syntaxTreeDescriptionString.appendUnsigned (uniqueProductionNameIndex) ;
-              syntaxTreeDescriptionString += ";\n" ;
+              syntaxTreeDescriptionString.addString ("  NT") ;
+              syntaxTreeDescriptionString.addUnsigned (currentProductionName) ;
+              syntaxTreeDescriptionString.addString (" -> NT") ;
+              syntaxTreeDescriptionString.addUnsigned (uniqueProductionNameIndex) ;
+              syntaxTreeDescriptionString.addString (";\n") ;
             }
             productionUniqueNameStack.appendObject (currentProductionName) ;
             currentProductionName = uniqueProductionNameIndex ;
           }
           if (executionModeIsSyntaxAnalysisOnly ()) {
             indentForParseOnly (indentationForParseOnly) ;
-            gCout += inProductionNames [inFirstProductionIndex [nonTerminalToParse]].mName ;
-            gCout += ", file '" ;
-            gCout += inProductionNames [inFirstProductionIndex [nonTerminalToParse]].mFileName ;
-            gCout += "', line " ;
-            gCout.appendUnsigned (inProductionNames [inFirstProductionIndex [nonTerminalToParse]].mLineNumber) ;
-            gCout += "\n" ;
+            gCout.addString (inProductionNames [inFirstProductionIndex [nonTerminalToParse]].mName) ;
+            gCout.addString (", file '") ;
+            gCout.addString (inProductionNames [inFirstProductionIndex [nonTerminalToParse]].mFileName) ;
+            gCout.addString ("', line ") ;
+            gCout.addUnsigned (inProductionNames [inFirstProductionIndex [nonTerminalToParse]].mLineNumber) ;
+            gCout.addNL () ; ;
             indentationForParseOnly ++ ;
           }
         }else{ //--- There are several choices : find the one to do
           if (TRACE_LL1_PARSING ()) {
-            gCout += " try tokens\n" ; gCout.flush () ;
+            gCout.addString (" try tokens\n") ; gCout.flush () ;
           }
           int32_t choice = -1 ;
           bool found = false ;
@@ -968,13 +967,13 @@ bool C_Lexique::performTopDownParsing (const int32_t inProductions [],
               found = currentToken == inDecisionTable [nonTerminalEntry] ;
               if (TRACE_LL1_PARSING ()) {
                 String m = getMessageForTerminal (inDecisionTable [nonTerminalEntry]) ;
-                gCout += " try " ;
-                gCout += m ;
-                gCout += " (" ;
-                gCout += inDecisionTable [nonTerminalEntry] ;
-                gCout += ")" ;
-                gCout += (found ? " (accepted)" : "") ;
-                gCout += "\n" ;
+                gCout.addString (" try ") ;
+                gCout.addString (m) ;
+                gCout.addString (" (") ;
+                gCout.addSigned (inDecisionTable [nonTerminalEntry]) ;
+                gCout.addString (")") ;
+                gCout.addString (found ? " (accepted)" : "") ;
+                gCout.addNL () ; ;
                 gCout.flush () ;
               }
               nonTerminalEntry ++ ;
@@ -988,29 +987,29 @@ bool C_Lexique::performTopDownParsing (const int32_t inProductions [],
             programCounter = inProductionIndexes [inFirstProductionIndex [nonTerminalToParse] + choice] ;
             if (produceSyntaxTree) {
               uniqueProductionNameIndex ++ ;
-              syntaxTreeDescriptionString += "  NT" ;
-              syntaxTreeDescriptionString.appendUnsigned (uniqueProductionNameIndex) ;
-              syntaxTreeDescriptionString += " [label=\"" ;
-              syntaxTreeDescriptionString += inProductionNames [inFirstProductionIndex [nonTerminalToParse] + choice].mName ;
-              syntaxTreeDescriptionString += "\", shape=box];\n" ;
+              syntaxTreeDescriptionString.addString ("  NT") ;
+              syntaxTreeDescriptionString.addUnsigned (uniqueProductionNameIndex) ;
+              syntaxTreeDescriptionString.addString (" [label=\"") ;
+              syntaxTreeDescriptionString.addString (inProductionNames [inFirstProductionIndex [nonTerminalToParse] + choice].mName) ;
+              syntaxTreeDescriptionString.addString ("\", shape=box];\n") ;
               if (currentProductionName > 0) {
-                syntaxTreeDescriptionString += "  NT" ;
-                syntaxTreeDescriptionString.appendUnsigned (currentProductionName) ;
-                syntaxTreeDescriptionString += " -> NT" ;
-                syntaxTreeDescriptionString.appendUnsigned (uniqueProductionNameIndex) ;
-                syntaxTreeDescriptionString += ";\n" ;
+                syntaxTreeDescriptionString.addString ("  NT") ;
+                syntaxTreeDescriptionString.addUnsigned (currentProductionName) ;
+                syntaxTreeDescriptionString.addString (" -> NT") ;
+                syntaxTreeDescriptionString.addUnsigned (uniqueProductionNameIndex) ;
+                syntaxTreeDescriptionString.addString (";\n") ;
               }
               productionUniqueNameStack.appendObject (currentProductionName) ;
               currentProductionName = uniqueProductionNameIndex ;
             }
             if (executionModeIsSyntaxAnalysisOnly ()) {
               indentForParseOnly (indentationForParseOnly) ;
-              gCout += inProductionNames [inFirstProductionIndex [nonTerminalToParse + choice]].mName ;
-              gCout += ", file '" ;
-              gCout += inProductionNames [inFirstProductionIndex [nonTerminalToParse + choice]].mFileName ;
-              gCout += "', line " ;
-              gCout.appendUnsigned (inProductionNames [inFirstProductionIndex [nonTerminalToParse + choice]].mLineNumber) ;
-              gCout += "\n" ;
+              gCout.addString (inProductionNames [inFirstProductionIndex [nonTerminalToParse + choice]].mName) ;
+              gCout.addString (", file '") ;
+              gCout.addString (inProductionNames [inFirstProductionIndex [nonTerminalToParse + choice]].mFileName) ;
+              gCout.addString ("', line ") ;
+              gCout.addUnsigned (inProductionNames [inFirstProductionIndex [nonTerminalToParse + choice]].mLineNumber) ;
+              gCout.addNL () ; ;
               indentationForParseOnly ++ ;
             }
             listForSecondPassParsing.appendObject (choice + 1) ;
@@ -1027,8 +1026,8 @@ bool C_Lexique::performTopDownParsing (const int32_t inProductions [],
                                                       inDecisionTableIndexes,
                                                       expectedTerminalsArray) ;
             if (TRACE_LL1_PARSING ()) {
-              gCout += expectedTerminalsArray.count () ;
-              gCout += " Token(s) in syntax error message\n" ;
+              gCout.addSigned (expectedTerminalsArray.count ()) ;
+              gCout.addString (" Token(s) in syntax error message\n") ;
               gCout.flush () ;
             }
             parsingError (expectedTerminalsArray, previousTokenPtr, tokenPtr, currentToken LINE_AND_SOURCE_FILE_FOR_LEXIQUE) ;
@@ -1042,21 +1041,21 @@ bool C_Lexique::performTopDownParsing (const int32_t inProductions [],
         if (currentToken == terminalSymbol) {
           if (executionModeIsSyntaxAnalysisOnly ()) {
             indentForParseOnly (indentationForParseOnly) ;
-            gCout += getCurrentTokenString (tokenPtr) ;
-            gCout += "\n" ;
+            gCout.addString (getCurrentTokenString (tokenPtr)) ;
+            gCout.addNL () ; ;
           }
           currentToken = -1 ; // Ok, current terminal symbol is no longer available
           if (produceSyntaxTree) {
-            syntaxTreeDescriptionString += "  T" ;
-            syntaxTreeDescriptionString.appendUnsigned (uniqueTerminalIndex) ;
-            syntaxTreeDescriptionString += " [shape=ellipse, label=" ;
-            syntaxTreeDescriptionString.appendCLiteralStringConstant (getCurrentTokenString (tokenPtr)) ;
-            syntaxTreeDescriptionString += "];\n" ;
-            syntaxTreeDescriptionString += "  NT" ;
-            syntaxTreeDescriptionString.appendUnsigned (currentProductionName) ;
-            syntaxTreeDescriptionString += " -> T" ;
-            syntaxTreeDescriptionString.appendUnsigned (uniqueTerminalIndex) ;
-            syntaxTreeDescriptionString += ";\n" ;
+            syntaxTreeDescriptionString.addString ("  T") ;
+            syntaxTreeDescriptionString.addUnsigned (uniqueTerminalIndex) ;
+            syntaxTreeDescriptionString.addString (" [shape=ellipse, label=") ;
+            syntaxTreeDescriptionString.addStringAsCLiteralStringConstant (getCurrentTokenString (tokenPtr)) ;
+            syntaxTreeDescriptionString.addString ("];\n") ;
+            syntaxTreeDescriptionString.addString ("  NT") ;
+            syntaxTreeDescriptionString.addUnsigned (currentProductionName) ;
+            syntaxTreeDescriptionString.addString (" -> T") ;
+            syntaxTreeDescriptionString.addUnsigned (uniqueTerminalIndex) ;
+            syntaxTreeDescriptionString.addString (";\n") ;
             uniqueTerminalIndex ++ ;
           }
           errorStackCount = stack.count () ;
@@ -1064,7 +1063,7 @@ bool C_Lexique::performTopDownParsing (const int32_t inProductions [],
           errorProgramCounter = programCounter ;
         }else{ // Error !
           if (TRACE_LL1_PARSING ()) {
-            gCout += "ERROR: TOKEN NOT EXPECTED\n" ; gCout.flush () ;
+            gCout.addString ("ERROR: TOKEN NOT EXPECTED\n") ; gCout.flush () ;
           }
           TC_UniqueArray <int32_t> expectedTerminalsArray (100 COMMA_HERE) ;
           buildExpectedTerminalsArrayOnSyntaxError (errorProgramCounter,
@@ -1084,7 +1083,7 @@ bool C_Lexique::performTopDownParsing (const int32_t inProductions [],
     //--- It is the end of a production
       }else if (stack.count () > 0) {
         if (TRACE_LL1_PARSING ()) {
-          gCout += "END OF PRODUCTION REACHED\n" ; gCout.flush () ;
+          gCout.addString ("END OF PRODUCTION REACHED\n") ; gCout.flush () ;
         }
         programCounter = stack.lastObject (HERE) ;
         if (errorStackCount >= stack.count ()) {
@@ -1121,7 +1120,7 @@ bool C_Lexique::performTopDownParsing (const int32_t inProductions [],
     }
   //--- Output graphviz file
     if (produceSyntaxTree) {
-      syntaxTreeDescriptionString += "}\n" ;
+      syntaxTreeDescriptionString.addString ("}\n") ;
       const String dotFilePath = sourceFilePath ().stringByDeletingPathExtension () + ".dot" ;
       GALGAS_bool fileWritten ;
       GALGAS_string (syntaxTreeDescriptionString).method_writeToFileWhenDifferentContents (GALGAS_string (dotFilePath), fileWritten, this COMMA_HERE) ;
@@ -1130,9 +1129,9 @@ bool C_Lexique::performTopDownParsing (const int32_t inProductions [],
     listForSecondPassParsing.copyTo (mArrayForSecondPassParsing) ;
     resetForSecondPass () ;
     if (executionModeIsSyntaxAnalysisOnly ()) {
-      gCout += "*** END OF PARSING (success: " ;
-      gCout += (result ? "yes" : "no") ;
-      gCout += ") ***\n" ;
+      gCout.addString ("*** END OF PARSING (success: ") ;
+      gCout.addString (result ? "yes" : "no") ;
+      gCout.addString (") ***\n") ;
     }
   }
 //---
@@ -1224,8 +1223,8 @@ bool C_Lexique::performBottomUpParsing (const int32_t inActionTable [],
   performLexicalAnalysis () ;
   if (! executionModeIsLexicalAnalysisOnly ()) {
     if (executionModeIsSyntaxAnalysisOnly ()) {
-      gCout += "*** PERFORM BOTTOM-UP PARSING ONLY (--mode=syntax-only option) ***\n"
-            "  Initial State: S0\n" ;
+      gCout.addString ("*** PERFORM BOTTOM-UP PARSING ONLY (--mode=syntax-only option) ***\n"
+                          "  Initial State: S0\n") ;
     }
   //--- Variables for generating syntax tree in a form suitable for graphviz
     const bool produceSyntaxTree = gOption_galgas_5F_builtin_5F_options_outputConcreteSyntaxTree.mValue
@@ -1236,8 +1235,8 @@ bool C_Lexique::performBottomUpParsing (const int32_t inActionTable [],
     uint32_t uniqueTerminalIndex = 0 ;
     uint32_t currentProductionName = 0 ;
     if (produceSyntaxTree) {
-      syntaxTreeDescriptionString += "digraph G {\n"
-                                     "  size =\"4,4\";\n" ;
+      syntaxTreeDescriptionString.addString ("digraph G {\n"
+                                     "  size =\"4,4\";\n") ;
     }
   //--- Perform first pass
     TC_UniqueArray <TC_UniqueArray <int32_t> > executionList (100 COMMA_HERE) ;
@@ -1299,25 +1298,25 @@ bool C_Lexique::performBottomUpParsing (const int32_t inActionTable [],
       //---
         if (produceSyntaxTree) {
           String terminalUniqueName ;
-          terminalUniqueName += "T" ;
-          terminalUniqueName.appendUnsigned (uniqueTerminalIndex) ;
-          syntaxTreeDescriptionString += "  " ;
-          syntaxTreeDescriptionString += terminalUniqueName ;
-          syntaxTreeDescriptionString += " [shape=ellipse, label=" ;
-          syntaxTreeDescriptionString.appendCLiteralStringConstant (getCurrentTokenString (tokenPtr)) ;
-          syntaxTreeDescriptionString += "];\n" ;
+          terminalUniqueName.addString ("T") ;
+          terminalUniqueName.addUnsigned (uniqueTerminalIndex) ;
+          syntaxTreeDescriptionString.addString ("  ") ;
+          syntaxTreeDescriptionString.addString (terminalUniqueName) ;
+          syntaxTreeDescriptionString.addString (" [shape=ellipse, label=") ;
+          syntaxTreeDescriptionString.addStringAsCLiteralStringConstant (getCurrentTokenString (tokenPtr)) ;
+          syntaxTreeDescriptionString.addString ("];\n") ;
           shiftedElementStack.appendObject (terminalUniqueName) ;
           uniqueTerminalIndex ++ ;
         }
       //--- Parse Only : print terminal symbol
         if (executionModeIsSyntaxAnalysisOnly ()) {
-          gCout += "  [S" ;
-          gCout.appendSigned (currentState) ;
-          gCout += ", " ;
-          gCout += getCurrentTokenString (tokenPtr) ;
-          gCout += "] |- Shift -> S" ;
-          gCout.appendSigned (actionCode) ;
-          gCout += "\n" ;
+          gCout.addString ("  [S") ;
+          gCout.addSigned (currentState) ;
+          gCout.addString (", ") ;
+          gCout.addString (getCurrentTokenString (tokenPtr)) ;
+          gCout.addString ("] |- Shift -> S") ;
+          gCout.addSigned (actionCode) ;
+          gCout.addNL () ; ;
         }
       }else if (actionCode < 0) {
       //--- Reduce action ------------------------------------
@@ -1344,11 +1343,11 @@ bool C_Lexique::performBottomUpParsing (const int32_t inActionTable [],
         }
         if (produceSyntaxTree) {
           for (int32_t i=0 ; i<reduceSize ; i++) {
-            syntaxTreeDescriptionString += "  NT" ;
-            syntaxTreeDescriptionString.appendUnsigned (currentProductionName) ;
-            syntaxTreeDescriptionString += " -> " ;
-            syntaxTreeDescriptionString += shiftedElementStack.lastObject (HERE) ;
-            syntaxTreeDescriptionString += ";\n" ;
+            syntaxTreeDescriptionString.addString ("  NT") ;
+            syntaxTreeDescriptionString.addUnsigned (currentProductionName) ;
+            syntaxTreeDescriptionString.addString (" -> ") ;
+            syntaxTreeDescriptionString.addString (shiftedElementStack.lastObject (HERE)) ;
+            syntaxTreeDescriptionString.addString (";\n") ;
             shiftedElementStack.removeLastObject (HERE) ;
           }
         }
@@ -1371,26 +1370,26 @@ bool C_Lexique::performBottomUpParsing (const int32_t inActionTable [],
         errorSignalingUselessEntryOnTopOfStack += 2 ;
         if (produceSyntaxTree) {
           String uniqueProductionName ;
-          uniqueProductionName += "NT" ;
-          uniqueProductionName.appendUnsigned (currentProductionName) ;
-          syntaxTreeDescriptionString += "  " ;
-          syntaxTreeDescriptionString += uniqueProductionName ;
-          syntaxTreeDescriptionString += " [label=\"" ;
-          syntaxTreeDescriptionString += inNonTerminalSymbolNames [nonTerminal] ;
-          syntaxTreeDescriptionString += "\", shape=box];\n" ;
+          uniqueProductionName.addString ("NT") ;
+          uniqueProductionName.addUnsigned (currentProductionName) ;
+          syntaxTreeDescriptionString.addString ("  ") ;
+          syntaxTreeDescriptionString.addString (uniqueProductionName) ;
+          syntaxTreeDescriptionString.addString (" [label=\"") ;
+          syntaxTreeDescriptionString.addString (inNonTerminalSymbolNames [nonTerminal]) ;
+          syntaxTreeDescriptionString.addString ("\", shape=box];\n") ;
           shiftedElementStack.appendObject (uniqueProductionName) ;
           currentProductionName ++ ;
         }
         if (executionModeIsSyntaxAnalysisOnly ()) {
-          gCout += "  [S" ;
-          gCout.appendSigned (currentState) ;
-          gCout += ", " ;
-          gCout += getCurrentTokenString (tokenPtr) ;
-          gCout += "] |- Reduce " ;
-          gCout += inNonTerminalSymbolNames [nonTerminal] ;
-          gCout += " -> S" ;
-          gCout.appendSigned (newCurrentState) ;
-          gCout += "\n" ;
+          gCout.addString ("  [S") ;
+          gCout.addSigned (currentState) ;
+          gCout.addString (", ") ;
+          gCout.addString (getCurrentTokenString (tokenPtr)) ;
+          gCout.addString ("] |- Reduce ") ;
+          gCout.addString (inNonTerminalSymbolNames [nonTerminal]) ;
+          gCout.addString (" -> S") ;
+          gCout.addSigned (newCurrentState) ;
+          gCout.addNL () ; ;
         }
       }else if (actionCode == 1) {
       //--- Accept action -----------------------------------
@@ -1398,11 +1397,11 @@ bool C_Lexique::performBottomUpParsing (const int32_t inActionTable [],
         executionList (0 COMMA_HERE).appendObjectsFromArray (executionList (1 COMMA_HERE)) ;
         executionList (1 COMMA_HERE).removeAllKeepingCapacity () ;
         if (executionModeIsSyntaxAnalysisOnly ()) {
-          gCout += "  [S" ;
-          gCout.appendSigned (currentState) ;
-          gCout += ", " ;
-          gCout += getCurrentTokenString (tokenPtr) ;
-          gCout += "] : Accept\n" ;
+          gCout.addString ("  [S") ;
+          gCout.addSigned (currentState) ;
+          gCout.addString (", ") ;
+          gCout.addString (getCurrentTokenString (tokenPtr)) ;
+          gCout.addString ("] : Accept\n") ;
         }
       }else{
       //--- Parsing error -----------------------------------
@@ -1446,15 +1445,15 @@ bool C_Lexique::performBottomUpParsing (const int32_t inActionTable [],
     }
   //--- Output graphviz file
     if (produceSyntaxTree) {
-      syntaxTreeDescriptionString += "}\n" ;
+      syntaxTreeDescriptionString.addString ("}\n") ;
       const String dotFilePath = sourceFilePath ().stringByDeletingPathExtension () + ".dot" ;
       GALGAS_bool fileWritten ;
       GALGAS_string (syntaxTreeDescriptionString).method_writeToFileWhenDifferentContents (GALGAS_string (dotFilePath), fileWritten, this COMMA_HERE) ;
     }
     if (executionModeIsSyntaxAnalysisOnly ()) {
-      gCout += "*** END OF PARSING (success: " ;
-      gCout += (result ? "yes" : "no") ;
-      gCout += ") ***\n" ;
+      gCout.addString ("*** END OF PARSING (success: ") ;
+      gCout.addString (result ? "yes" : "no") ;
+      gCout.addString (") ***\n") ;
     }
   //--- Set current read location to 0
     resetForSecondPass () ;
@@ -1534,7 +1533,7 @@ void C_Lexique::acceptTerminal (const int32_t IN_EXPECTED_TERMINAL COMMA_LOCATIO
       macroValidPointer (mCurrentTokenPtr) ;
       mStartLocationForNext = mCurrentTokenPtr->mStartLocation ;
       mEndLocationForNext = mCurrentTokenPtr->mEndLocation ;
-      mTemplateString += mCurrentTokenPtr->mTemplateStringBeforeToken ;
+      mTemplateString.addString (mCurrentTokenPtr->mTemplateStringBeforeToken) ;
       mTemplateStringLocation = mCurrentTokenPtr->mStartLocation ;
       mCurrentLocation = mCurrentTokenPtr->mEndLocation ;
     }
@@ -1637,21 +1636,21 @@ void C_Lexique::enterProduction (const char * inProductionName,
   if (mDebugIsRunning) {
     String message ;
     for (uint16_t i=1 ; i<mDebugDepthCounter ; i++) {
-      message += "|  " ;
+      message.addString ("|  ") ;
     }
-    message += ((mDebugDepthCounter > 0) ? "|- " : "") ;
-    message += inProductionName ;
+    message.addString ((mDebugDepthCounter > 0) ? "|- " : "") ;
+    message.addString (inProductionName) ;
     if (inLabel != nullptr) {
-      message += " label '" ;
-      message += inLabel ;
-      message += "'" ;
+      message.addString (" label '") ;
+      message.addString (inLabel) ;
+      message.addString ("'") ;
     }
     if ((inTag != nullptr) && (inTag [0] != '\0')) {
-      message += " tag '" ;
-      message += inTag ;
-      message += "'" ;
+      message.addString (" tag '") ;
+      message.addString (inTag) ;
+      message.addString ("'") ;
     }
-    message += "\n" ;
+    message.addString ("\n") ;
     ggs_printMessage (message COMMA_HERE) ;
     mDebugDepthCounter ++ ;
   }
@@ -1673,14 +1672,14 @@ void C_Lexique::didParseTerminal (const char * inTerminalName,
   if (mDebugIsRunning) {
     String message ;
     for (uint16_t i=1 ; i<mDebugDepthCounter ; i++) {
-      message += "|  " ;
+      message.addString ("|  ") ;
     }
-    message += ((mDebugDepthCounter > 0) ? "|- " : "") ;
-    message += inTerminalName ;
+    message.addString ((mDebugDepthCounter > 0) ? "|- " : "") ;
+    message.addString (inTerminalName) ;
     if (inValue.length () > 0) {
-      message += inValue ;
+      message.addString (inValue) ;
     }
-    message += "\n" ;
+    message.addString ("\n") ;
     ggs_printMessage (message COMMA_HERE) ;
   }
 }
@@ -1702,10 +1701,10 @@ void C_Lexique::enterDroppedTerminal (const int32_t inTerminalIndex) {
     }
     const String styleName = styleNameForIndex (styleIndexForTerminal (inTerminalIndex)) ;
     if (styleName.length () > 0) {
-      mLatexOutputString += "\\" ;
-      mLatexOutputString += styleName ;
-      mLatexOutputString += latexModeStyleSuffixString () ;
-      mLatexOutputString += "{" ;
+      mLatexOutputString.addString ("\\") ;
+      mLatexOutputString.addString (styleName) ;
+      mLatexOutputString.addString (latexModeStyleSuffixString ()) ;
+      mLatexOutputString.addString ("{") ;
     }
     for (int32_t i=mTokenStartLocation.index () ; i<=mTokenEndLocation.index () ; i++) {
       const utf32 c = sourceText ().readCharOrNul (i COMMA_HERE) ;
@@ -1714,7 +1713,7 @@ void C_Lexique::enterDroppedTerminal (const int32_t inTerminalIndex) {
       }
     }
     if (styleName.length () > 0) {
-      mLatexOutputString += "}" ;
+      mLatexOutputString.addString ("}") ;
     }
   //---
     mLatexNextCharacterToEnterIndex = mTokenEndLocation.index () + 1 ;
@@ -1725,28 +1724,28 @@ void C_Lexique::enterDroppedTerminal (const int32_t inTerminalIndex) {
 
 void C_Lexique::appendCharacterToLatexFile (const utf32 inUnicodeCharacter) {
   switch (UNICODE_VALUE (inUnicodeCharacter)) {
-  case '>' : mLatexOutputString += "\\textgreater{}" ; break ;
-  case '<' : mLatexOutputString += "\\textless{}" ; break ;
-  case '~' : mLatexOutputString += "$\\sim$" ; break ;
-  case '^' : mLatexOutputString += "$\\wedge$" ; break ;
-  case '|' : mLatexOutputString += "\\textbar{}" ; break ;
-  case '&' : mLatexOutputString += "\\&" ; break ;
-  case '%' : mLatexOutputString += "\\%" ; break ;
-  case '#' : mLatexOutputString += "\\#" ; break ;
-  case '$' : mLatexOutputString += "\\$" ; break ;
-//  case '`' : mLatexOutputString += "\\`{}" ; break ;
-  case ' ' : mLatexOutputString += "\\hspace*{.6em}" ; break ;
-  case '\n' : mLatexOutputString += "\\newline\n" ; break ;
-  case '{' : mLatexOutputString += "\\{" ; break ;
-  case '}' : mLatexOutputString += "\\}" ; break ;
-  case '_' : mLatexOutputString += "\\_" ; break ;
-  case '\\' : mLatexOutputString += "\\textbackslash{}"  ; break ;
-  case '\'' : mLatexOutputString += "\\textquotesingle{}" ; break ;
-//  case '"' : mLatexOutputString += "\\textquotedbl{}" ; break ;
-  case '"' : mLatexOutputString += "\"" ; break ;
+  case '>' : mLatexOutputString.addString ("\\textgreater{}") ; break ;
+  case '<' : mLatexOutputString.addString ("\\textless{}") ; break ;
+  case '~' : mLatexOutputString.addString ("$\\sim$") ; break ;
+  case '^' : mLatexOutputString.addString ("$\\wedge$") ; break ;
+  case '|' : mLatexOutputString.addString ("\\textbar{}") ; break ;
+  case '&' : mLatexOutputString.addString ("\\&") ; break ;
+  case '%' : mLatexOutputString.addString ("\\%") ; break ;
+  case '#' : mLatexOutputString.addString ("\\#") ; break ;
+  case '$' : mLatexOutputString.addString ("\\$") ; break ;
+//  case '`' : mLatexOutputString.addString ("\\`{}") ; break ;
+  case ' ' : mLatexOutputString.addString ("\\hspace*{.6em}") ; break ;
+  case '\n' : mLatexOutputString.addString ("\\newline\n") ; break ;
+  case '{' : mLatexOutputString.addString ("\\{") ; break ;
+  case '}' : mLatexOutputString.addString ("\\}") ; break ;
+  case '_' : mLatexOutputString.addString ("\\_") ; break ;
+  case '\\' : mLatexOutputString.addString ("\\textbackslash{}")  ; break ;
+  case '\'' : mLatexOutputString.addString ("\\textquotesingle{}") ; break ;
+//  case '"' : mLatexOutputString.addString ("\\textquotedbl{}") ; break ;
+  case '"' : mLatexOutputString.addString ("\"") ; break ;
   default:
-    mLatexOutputString.appendUnicodeCharacter (inUnicodeCharacter COMMA_HERE) ;
-    mLatexOutputString += "{}" ;
+    mLatexOutputString.addUnicodeChar (inUnicodeCharacter COMMA_HERE) ;
+    mLatexOutputString.addString ("{}") ;
     break ;
   }
 }
@@ -1754,8 +1753,8 @@ void C_Lexique::appendCharacterToLatexFile (const utf32 inUnicodeCharacter) {
 //--------------------------------------------------------------------------------------------------
 
 void C_Lexique::signalLexicalErrorInLatexOutput (void) {
-  mLatexOutputString += "\\lexicalError" ;
-  mLatexOutputString += latexModeStyleSuffixString () ;
+  mLatexOutputString.addString ("\\lexicalError") ;
+  mLatexOutputString.addString (latexModeStyleSuffixString ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------

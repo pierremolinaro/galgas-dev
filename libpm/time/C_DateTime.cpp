@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 1999, ..., 2009 Pierre Molinaro.
+//  Copyright (C) 1999, ..., 2023 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -220,35 +220,36 @@ bool C_DateTime::operator <= (const C_DateTime & inDate) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void operator += (AC_OutputStream & inStream,
-                  const C_DateTime & inDate) {
-  const int32_t dayOfMonth = inDate.getDayOfMonth () ;
-  inStream += inDate.getMonthName () ;
-  inStream += " " ;
-  inStream.appendSigned (dayOfMonth) ;
+String C_DateTime::string (void) const {
+  String result ;
+  const int32_t dayOfMonth = getDayOfMonth () ;
+  result.addString (getMonthName ()) ;
+  result.addString (" ") ;
+  result.addSigned (dayOfMonth) ;
   switch (dayOfMonth) {
   case 1 :
-    inStream += "st" ;
+    result.addString ("st") ;
     break ;
   case 2 :
-    inStream += "nd" ;
+    result.addString ("nd") ;
     break ;
   case 3 :
-    inStream += "rd" ;
+    result.addString ("rd") ;
     break ;
   default :
-    inStream += "th" ;
+    result.addString ("th") ;
     break ;
   }
-  inStream += ", " ;
-  inStream.appendSigned (inDate.getYearCount ()) ;
-  inStream += ", at " ;
-  inStream.appendSigned (inDate.getHourOfDay ()) ;
-  inStream += "h" ;
-  inStream.appendSigned (inDate.getMinuteOfHour ()) ;
-  inStream += "\'" ;
-  inStream.appendSigned (inDate.getSecondOfMinute ()) ;
-  inStream += "\"" ;
+  result.addString (", ") ;
+  result.addSigned (getYearCount ()) ;
+  result.addString (", at ") ;
+  result.addSigned (getHourOfDay ()) ;
+  result.addString ("h") ;
+  result.addSigned (getMinuteOfHour ()) ;
+  result.addString ("\'") ;
+  result.addSigned (getSecondOfMinute ()) ;
+  result.addString ("\"") ;
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
