@@ -1146,13 +1146,6 @@ void routine_checkBigInteger (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
     gCout.addNL () ;
     exit (1) ;
   }
-
-//  #ifdef USE_8_BITS_CHUNKS
-//
-// && (!defined (USE_16_BITS_CHUNKS)) && (!defined (USE_32_BITS_CHUNKS))
-//  #define USE_64_BITS_CHUNKS
-//#endif
-  
 //--- BigUnsigned
   testBigUnsignedDecimalStringConstructor () ;
   testBigUnsignedBinaryStringConstructor () ;

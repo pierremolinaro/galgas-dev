@@ -350,7 +350,7 @@ BigUnsigned & BigUnsigned::operator = (const BigUnsigned & inSource) {
     mSharedArray (inU64Count * 4) {
     for (size_t i = inU64Count ; i > 0 ; i--) {
       uint64_t v = inSourceU64Array [i-1] ;
-      for (size_t j = 0 ; j < 8 ; j++) {
+      for (size_t j = 0 ; j < 4 ; j++) {
         mSharedArray.appendChunk (uint16_t (v) COMMA_HERE) ;
         v >>= 16 ;
       }

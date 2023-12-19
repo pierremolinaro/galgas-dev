@@ -106,6 +106,7 @@ class ChunkSharedArray final {
       mChunkArray = newChunkArray ;
       mChunkCapacity = newChunkCapacity ;
     }else if (mChunkCapacity < newChunkCapacity) {
+      mChunkSharedArrayAllocationCount += (mChunkArray == nullptr) ;
       mChunkSharedArrayCurrentlyAllocatedCount += (mChunkArray == nullptr) ;
       macroMyReallocPODArray (mChunkArray, ChunkUInt, newChunkCapacity + 1) ;
       mChunkCapacity = newChunkCapacity ;

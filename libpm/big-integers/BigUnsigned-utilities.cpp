@@ -277,7 +277,7 @@ int BigUnsigned::compare (const BigUnsigned & inOperand) const {
   size_t BigUnsigned::u8Count (void) const {
     size_t n = mSharedArray.chunkCount () * 4 ;
     if (n > 0) {
-      const uint32_t last = chunkAtIndex (mSharedArray.chunkCount () COMMA_HERE) ;
+      const uint32_t last = chunkAtIndex (mSharedArray.chunkCount () - 1 COMMA_HERE) ;
       if (last <= UINT8_MAX) {
         n -= 3 ;
       }else if (last < UINT16_MAX) {
@@ -295,7 +295,7 @@ int BigUnsigned::compare (const BigUnsigned & inOperand) const {
 #ifdef USE_32_BITS_CHUNKS
   uint8_t BigUnsigned::u8AtIndex (const size_t inU8Index) const { // 0-Based Indexing
     if (inU8Index < u8Count ()) {
-      const uint32_t v = mSharedArray.chunkAtIndex (inU8Index / 2 + 1 COMMA_HERE) ; // 1-Based Indexing
+      const uint32_t v = mSharedArray.chunkAtIndex (inU8Index / 4 + 1 COMMA_HERE) ; // 1-Based Indexing
       switch (inU8Index & 3) {
       case 0 : return uint8_t (v) ;
       case 1 : return uint8_t (v >> 8) ;
