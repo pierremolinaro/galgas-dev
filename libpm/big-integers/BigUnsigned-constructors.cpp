@@ -197,7 +197,7 @@ BigUnsigned & BigUnsigned::operator = (const BigUnsigned & inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef CHUNK_8_BITS
+#ifdef USE_8_BITS_CHUNKS
   BigUnsigned::BigUnsigned (const uint64_t inValue) :
   mSharedArray (8) {
     uint64_t v = inValue ;
@@ -211,7 +211,7 @@ BigUnsigned & BigUnsigned::operator = (const BigUnsigned & inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef CHUNK_8_BITS
+#ifdef USE_8_BITS_CHUNKS
   BigUnsigned::BigUnsigned (const size_t inU8Count,
                             const uint8_t inSourceU8Array []) :
   mSharedArray (inU8Count) {
@@ -224,7 +224,7 @@ BigUnsigned & BigUnsigned::operator = (const BigUnsigned & inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef CHUNK_8_BITS
+#ifdef USE_8_BITS_CHUNKS
   BigUnsigned::BigUnsigned (const size_t inU64Count,
                             const uint64_t inSourceU64Array []) :
     mSharedArray (inU64Count * 8) {
@@ -247,7 +247,7 @@ BigUnsigned & BigUnsigned::operator = (const BigUnsigned & inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef CHUNK_32_BITS
+#ifdef USE_32_BITS_CHUNKS
   BigUnsigned::BigUnsigned (const uint64_t inValue) :
   mSharedArray (2) {
     mSharedArray.appendChunk (uint32_t (inValue) COMMA_HERE) ;
@@ -258,7 +258,7 @@ BigUnsigned & BigUnsigned::operator = (const BigUnsigned & inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef CHUNK_32_BITS
+#ifdef USE_32_BITS_CHUNKS
   BigUnsigned::BigUnsigned (const size_t inU8Count,
                             const uint8_t inSourceU8Array []) :
   mSharedArray ((inU8Count + 3) / 4) {
@@ -283,7 +283,7 @@ BigUnsigned & BigUnsigned::operator = (const BigUnsigned & inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef CHUNK_32_BITS
+#ifdef USE_32_BITS_CHUNKS
   BigUnsigned::BigUnsigned (const size_t inU64Count,
                             const uint64_t inSourceU64Array []) :
     mSharedArray (inU64Count * 2) {
@@ -306,7 +306,7 @@ BigUnsigned & BigUnsigned::operator = (const BigUnsigned & inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef CHUNK_16_BITS
+#ifdef USE_16_BITS_CHUNKS
   BigUnsigned::BigUnsigned (const uint64_t inValue) :
   mSharedArray (4) {
     mSharedArray.appendChunk (uint16_t (inValue) COMMA_HERE) ;
@@ -319,7 +319,7 @@ BigUnsigned & BigUnsigned::operator = (const BigUnsigned & inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef CHUNK_16_BITS
+#ifdef USE_16_BITS_CHUNKS
   BigUnsigned::BigUnsigned (const size_t inU8Count,
                             const uint8_t inSourceU8Array []) :
   mSharedArray ((inU8Count + 1) / 2) {
@@ -344,7 +344,7 @@ BigUnsigned & BigUnsigned::operator = (const BigUnsigned & inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef CHUNK_16_BITS
+#ifdef USE_16_BITS_CHUNKS
   BigUnsigned::BigUnsigned (const size_t inU64Count,
                             const uint64_t inSourceU64Array []) :
     mSharedArray (inU64Count * 4) {
@@ -367,7 +367,7 @@ BigUnsigned & BigUnsigned::operator = (const BigUnsigned & inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef CHUNK_64_BITS
+#ifdef USE_64_BITS_CHUNKS
   BigUnsigned::BigUnsigned (const uint64_t inValue) :
   mSharedArray (1) {
     mSharedArray.appendChunk (inValue COMMA_HERE) ;
@@ -377,7 +377,7 @@ BigUnsigned & BigUnsigned::operator = (const BigUnsigned & inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef CHUNK_64_BITS
+#ifdef USE_64_BITS_CHUNKS
   BigUnsigned::BigUnsigned (const size_t inU8Count,
                             const uint8_t inSourceU8Array []) :
   mSharedArray ((inU8Count + 7) / 8) {
@@ -402,7 +402,7 @@ BigUnsigned & BigUnsigned::operator = (const BigUnsigned & inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef CHUNK_64_BITS
+#ifdef USE_64_BITS_CHUNKS
   BigUnsigned::BigUnsigned (const size_t inU64Count,
                             const uint64_t inSourceU64Array []) :
     mSharedArray (inU64Count) {

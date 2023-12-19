@@ -2,26 +2,25 @@
 
 //--------------------------------------------------------------------------------------------------
 
-//#define CHUNK_8_BITS
-//#define CHUNK_16_BITS
-//#define CHUNK_32_BITS
-#define CHUNK_64_BITS
+#if (!defined (USE_8_BITS_CHUNKS)) && (!defined (USE_16_BITS_CHUNKS)) && (!defined (USE_32_BITS_CHUNKS))
+  #define USE_64_BITS_CHUNKS
+#endif
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef CHUNK_8_BITS
+#ifdef USE_8_BITS_CHUNKS
   #include "chunk-U8.h"
 #endif
 
-#ifdef CHUNK_16_BITS
+#ifdef USE_16_BITS_CHUNKS
  #include "chunk-U16.h"
 #endif
 
-#ifdef CHUNK_32_BITS
+#ifdef USE_32_BITS_CHUNKS
  #include "chunk-U32.h"
 #endif
 
-#ifdef CHUNK_64_BITS
+#ifdef USE_64_BITS_CHUNKS
  #include "chunk-U64.h"
 #endif
 

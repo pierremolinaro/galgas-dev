@@ -1116,6 +1116,7 @@ static void test_MultiplyingDividing_BigSignedByChunkUInt (void) {
 //--------------------------------------------------------------------------------------------------
 
 void routine_checkBigInteger (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  const clock_t start = ::clock () ;
   gCout.addString ("*** Check BigUnsigned and BigSigned (option --check-big-int) ***\n") ;
 //  #if COMPILE_FOR_WINDOWS == 0
 //    testUnsigned128Divisions () ;
@@ -1124,7 +1125,34 @@ void routine_checkBigInteger (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   gCout.addString ("Chunk size: ") ;
   gCout.addUnsigned (ChunkUIntBitCount) ;
   gCout.addString (" bits\n") ;
-  const clock_t start = ::clock () ;
+//--- Check ctl (count leading zeros) function
+  const ChunkUInt testValue = ChunkUInt (0x10) ;
+  const uint32_t computedCTL = countLeadingZeros (testValue) ;
+  uint32_t requiredCTL = 0 ;
+  { ChunkUInt v = testValue ;
+    while ((v & (ChunkUInt (1) << (ChunkUIntBitCount - 1))) == 0) {
+      v <<= 1 ;
+      requiredCTL += 1 ;
+    }
+  }
+  gCout.addString ("countLeadingZeros function: ") ;
+  if (computedCTL == requiredCTL) {
+    gCout.addString ("ok\n") ;
+  }else{
+    gCout.addString ("error, computed ") ;
+    gCout.addUnsigned (computedCTL) ;
+    gCout.addString (", required ") ;
+    gCout.addUnsigned (requiredCTL) ;
+    gCout.addNL () ;
+    exit (1) ;
+  }
+
+//  #ifdef USE_8_BITS_CHUNKS
+//
+// && (!defined (USE_16_BITS_CHUNKS)) && (!defined (USE_32_BITS_CHUNKS))
+//  #define USE_64_BITS_CHUNKS
+//#endif
+  
 //--- BigUnsigned
   testBigUnsignedDecimalStringConstructor () ;
   testBigUnsignedBinaryStringConstructor () ;

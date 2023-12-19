@@ -22,7 +22,7 @@ static const size_t greatestPowerOf10DigitCount = 9 ;
 //--------------------------------------------------------------------------------------------------
 
 inline uint32_t countLeadingZeros (const ChunkUInt inValue) {
-  return uint32_t (__builtin_clzl (inValue)) ;
+  return uint32_t (__builtin_clzl (inValue) - 32) ;
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -27,7 +27,7 @@ class ChunkSharedArray final {
   mChunkArray (nullptr),
   mChunkCount (0),
   mChunkCapacity (0) {
-    macroMyNewArray (mChunkArray, ChunkUInt, inChunkCapacity + 1) ;
+    macroMyNewPODArray (mChunkArray, ChunkUInt, inChunkCapacity + 1) ;
     mChunkSharedArrayAllocationCount += 1 ;
     mChunkSharedArrayCurrentlyAllocatedCount += 1 ;
     mChunkArray [0] = 0 ; // Index 0: reference count (minus one)
@@ -38,7 +38,7 @@ class ChunkSharedArray final {
   public: ~ChunkSharedArray (void)  {
     if (mChunkArray != nullptr) {
       if (mChunkArray [0] == 0) {
-        macroMyDeleteArray (mChunkArray) ;
+        macroMyDeletePODArray (mChunkArray) ;
         MF_Assert (mChunkSharedArrayCurrentlyAllocatedCount > 0, "Zero!", 0, 0) ;
         mChunkSharedArrayCurrentlyAllocatedCount -= 1 ;
       }else{
@@ -65,7 +65,7 @@ class ChunkSharedArray final {
   //--- Release
     if (mChunkArray != nullptr) {
       if (mChunkArray [0] == 0) {
-        macroMyDeleteArray (mChunkArray) ;
+        macroMyDeletePODArray (mChunkArray) ;
         MF_Assert (mChunkSharedArrayCurrentlyAllocatedCount > 0, "Zero!", 0, 0) ;
         mChunkSharedArrayCurrentlyAllocatedCount -= 1 ;
       }else{
@@ -96,7 +96,7 @@ class ChunkSharedArray final {
         mChunkArray [0] -= 1 ;
       }
       ChunkUInt * newChunkArray = nullptr ;
-      macroMyNewArray (newChunkArray, ChunkUInt, newChunkCapacity + 1) ;
+      macroMyNewPODArray (newChunkArray, ChunkUInt, newChunkCapacity + 1) ;
       mChunkSharedArrayAllocationCount += 1 ;
       mChunkSharedArrayCurrentlyAllocatedCount += 1 ;
       newChunkArray [0] = 0 ; // Index 0: reference count (minus one)
@@ -106,20 +106,8 @@ class ChunkSharedArray final {
       mChunkArray = newChunkArray ;
       mChunkCapacity = newChunkCapacity ;
     }else if (mChunkCapacity < newChunkCapacity) {
-      ChunkUInt * newChunkArray = nullptr ;
-      macroMyNewArray (newChunkArray, ChunkUInt, newChunkCapacity + 1) ;
-      mChunkSharedArrayAllocationCount += 1 ;
-      mChunkSharedArrayCurrentlyAllocatedCount += 1 ;
-      newChunkArray [0] = 0 ; // Index 0: reference count (minus one)
-      for (size_t i = 1 ; i <= mChunkCount ; i++) {
-        newChunkArray [i] = mChunkArray [i] ;  // 1-Based Indexing
-      }
-      if (mChunkArray != nullptr) {
-        macroMyDeleteArray (mChunkArray) ;
-        MF_Assert (mChunkSharedArrayCurrentlyAllocatedCount > 0, "Zero!", 0, 0) ;
-        mChunkSharedArrayCurrentlyAllocatedCount -= 1 ;
-      }
-      mChunkArray = newChunkArray ;
+      mChunkSharedArrayCurrentlyAllocatedCount += (mChunkArray == nullptr) ;
+      macroMyReallocPODArray (mChunkArray, ChunkUInt, newChunkCapacity + 1) ;
       mChunkCapacity = newChunkCapacity ;
     }
   }

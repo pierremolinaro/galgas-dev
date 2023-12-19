@@ -148,7 +148,9 @@
    <Unit filename="../libpm/big-integers/ChunkSharedArray.cpp" />
    <Unit filename="../libpm/big-integers/PMUInt128.cpp" />
    <Unit filename="../libpm/bdd/C_BDD.cpp" />
-   <Unit filename="../libpm/bdd/C_BDD-find-or-add.cpp" />
+   <Unit filename="../libpm/bdd/C_BDD-value-count.cpp" />
+   <Unit filename="../libpm/bdd/C_BDD-build-value-array.cpp" />
+   <Unit filename="../libpm/bdd/C_BDD-operators.cpp" />
    <Unit filename="../libpm/bdd/C_BDD-single-operand-ops.cpp" />
    <Unit filename="../libpm/bdd/C_BDD-and-operation.cpp" />
    <Unit filename="../libpm/bdd/C_RelationSingleType.cpp" />
@@ -165,6 +167,7 @@
    <Unit filename="../libpm/streams/C_ErrorOut.cpp" />
    <Unit filename="../libpm/strings/unicode_character_cpp.cpp" />
    <Unit filename="../libpm/strings/unicode_string_routines.cpp" />
+   <Unit filename="../libpm/strings/String-class-getters.cpp" />
    <Unit filename="../libpm/strings/String-class.cpp" />
    <Unit filename="../libpm/strings/C_HTMLString.cpp" />
    <Unit filename="../libpm/strings/print.cpp" />
@@ -187,6 +190,7 @@
    <Unit filename="../libpm/galgas2/typeComparisonResult.cpp" />
    <Unit filename="../libpm/galgas2/Compiler.cpp" />
    <Unit filename="../libpm/galgas2/C_Lexique.cpp" />
+   <Unit filename="../libpm/galgas2/C_Lexique-parsing.cpp" />
    <Unit filename="../libpm/galgas2/LocationInSource.cpp" />
    <Unit filename="../libpm/galgas2/SourceTextInString.cpp" />
    <Unit filename="../libpm/galgas2/C_galgas_type_descriptor.cpp" />
@@ -232,6 +236,7 @@
    <Unit filename="../libpm/galgas2/GALGAS_sint.cpp" />
    <Unit filename="../libpm/galgas2/GALGAS_sint_36__34_.cpp" />
    <Unit filename="../libpm/galgas2/GALGAS_string.cpp" />
+   <Unit filename="../libpm/galgas2/GALGAS_string-getters.cpp" />
    <Unit filename="../libpm/galgas2/GALGAS_stringset.cpp" />
    <Unit filename="../libpm/galgas2/GALGAS_type.cpp" />
    <Unit filename="../libpm/galgas2/GALGAS_object.cpp" />

@@ -54,7 +54,7 @@ int BigUnsigned::compare (const BigUnsigned & inOperand) const {
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef CHUNK_64_BITS
+#ifdef USE_64_BITS_CHUNKS
   size_t BigUnsigned::u64Count (void) const {
     return mSharedArray.chunkCount () ;
   }
@@ -62,7 +62,7 @@ int BigUnsigned::compare (const BigUnsigned & inOperand) const {
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef CHUNK_64_BITS
+#ifdef USE_64_BITS_CHUNKS
   uint64_t BigUnsigned::u64AtIndex (const size_t inU64Index) const { // 0-Based Indexing
     if (inU64Index < mSharedArray.chunkCount ()) {
       return mSharedArray.chunkAtIndex (inU64Index + 1 COMMA_HERE) ; // 1-Based Indexing
@@ -80,7 +80,7 @@ int BigUnsigned::compare (const BigUnsigned & inOperand) const {
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef CHUNK_64_BITS
+#ifdef USE_64_BITS_CHUNKS
   size_t BigUnsigned::u8Count (void) const {
     size_t n = mSharedArray.chunkCount () * 8 ;
     if (n > 0) {
@@ -94,7 +94,7 @@ int BigUnsigned::compare (const BigUnsigned & inOperand) const {
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef CHUNK_64_BITS
+#ifdef USE_64_BITS_CHUNKS
   uint8_t BigUnsigned::u8AtIndex (const size_t inU8Index) const { // 0-Based Indexing
     const size_t u64Idx = inU8Index / 8 ;
     const uint64_t v = u64AtIndex (u64Idx) ;
@@ -111,7 +111,7 @@ int BigUnsigned::compare (const BigUnsigned & inOperand) const {
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef CHUNK_8_BITS
+#ifdef USE_8_BITS_CHUNKS
   size_t BigUnsigned::u64Count (void) const {
     return (7 + mSharedArray.chunkCount ()) / 8 ;
   }
@@ -119,7 +119,7 @@ int BigUnsigned::compare (const BigUnsigned & inOperand) const {
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef CHUNK_8_BITS
+#ifdef USE_8_BITS_CHUNKS
   uint64_t BigUnsigned::u64AtIndex (const size_t inU64Index) const { // 0-Based Indexing
     if (inU64Index < u64Count ()) {
       uint64_t v = 0 ;
@@ -145,7 +145,7 @@ int BigUnsigned::compare (const BigUnsigned & inOperand) const {
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef CHUNK_8_BITS
+#ifdef USE_8_BITS_CHUNKS
   size_t BigUnsigned::u8Count (void) const {
     return mSharedArray.chunkCount () ;
   }
@@ -153,7 +153,7 @@ int BigUnsigned::compare (const BigUnsigned & inOperand) const {
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef CHUNK_8_BITS
+#ifdef USE_8_BITS_CHUNKS
   uint8_t BigUnsigned::u8AtIndex (const size_t inU8Index) const { // 0-Based Indexing
     if (inU8Index < mSharedArray.chunkCount ()) {
       return mSharedArray.chunkAtIndex (inU8Index + 1 COMMA_HERE) ; // 1-Based Indexing
@@ -171,7 +171,7 @@ int BigUnsigned::compare (const BigUnsigned & inOperand) const {
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef CHUNK_16_BITS
+#ifdef USE_16_BITS_CHUNKS
   size_t BigUnsigned::u64Count (void) const {
     return (3 + mSharedArray.chunkCount ()) / 4 ;
   }
@@ -179,7 +179,7 @@ int BigUnsigned::compare (const BigUnsigned & inOperand) const {
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef CHUNK_16_BITS
+#ifdef USE_16_BITS_CHUNKS
   uint64_t BigUnsigned::u64AtIndex (const size_t inU64Index) const { // 0-Based Indexing
     if (inU64Index < u64Count ()) {
       uint64_t v = 0 ;
@@ -205,7 +205,7 @@ int BigUnsigned::compare (const BigUnsigned & inOperand) const {
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef CHUNK_16_BITS
+#ifdef USE_16_BITS_CHUNKS
   size_t BigUnsigned::u8Count (void) const {
     size_t n = mSharedArray.chunkCount () * 2 ;
     if (n > 0) {
@@ -220,7 +220,7 @@ int BigUnsigned::compare (const BigUnsigned & inOperand) const {
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef CHUNK_16_BITS
+#ifdef USE_16_BITS_CHUNKS
   uint8_t BigUnsigned::u8AtIndex (const size_t inU8Index) const { // 0-Based Indexing
     if (inU8Index < u8Count ()) {
       const uint16_t v = mSharedArray.chunkAtIndex (inU8Index / 2 + 1 COMMA_HERE) ; // 1-Based Indexing
@@ -239,7 +239,7 @@ int BigUnsigned::compare (const BigUnsigned & inOperand) const {
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef CHUNK_32_BITS
+#ifdef USE_32_BITS_CHUNKS
   size_t BigUnsigned::u64Count (void) const {
     return (1 + mSharedArray.chunkCount ()) / 2 ;
   }
@@ -247,7 +247,7 @@ int BigUnsigned::compare (const BigUnsigned & inOperand) const {
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef CHUNK_32_BITS
+#ifdef USE_32_BITS_CHUNKS
   uint64_t BigUnsigned::u64AtIndex (const size_t inU64Index) const { // 0-Based Indexing
     if (inU64Index < u64Count ()) {
       uint64_t v = 0 ;
@@ -273,7 +273,7 @@ int BigUnsigned::compare (const BigUnsigned & inOperand) const {
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef CHUNK_32_BITS
+#ifdef USE_32_BITS_CHUNKS
   size_t BigUnsigned::u8Count (void) const {
     size_t n = mSharedArray.chunkCount () * 4 ;
     if (n > 0) {
@@ -292,7 +292,7 @@ int BigUnsigned::compare (const BigUnsigned & inOperand) const {
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef CHUNK_32_BITS
+#ifdef USE_32_BITS_CHUNKS
   uint8_t BigUnsigned::u8AtIndex (const size_t inU8Index) const { // 0-Based Indexing
     if (inU8Index < u8Count ()) {
       const uint32_t v = mSharedArray.chunkAtIndex (inU8Index / 2 + 1 COMMA_HERE) ; // 1-Based Indexing

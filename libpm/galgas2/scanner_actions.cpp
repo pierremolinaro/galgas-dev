@@ -777,7 +777,7 @@ void scanner_routine_enterDecimalDigitIntoBigInt (C_Lexique & inLexique,
   if ((UNICODE_VALUE (inCharacter) < '0') || (UNICODE_VALUE (inCharacter) > '9')) {
     inLexique.lexicalError (inCharacterIsNotDecimalDigitError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
   }else{
-    const uint32_t digit = UNICODE_VALUE (inCharacter) - '0' ;
+    const uint8_t digit = uint8_t (UNICODE_VALUE (inCharacter) - '0') ;
     ioBigInt *= 10 ;
     ioBigInt += digit ;
   }
@@ -791,15 +791,15 @@ void scanner_routine_enterHexDigitIntoBigInt (C_Lexique & inLexique,
                                               const char * inCharacterIsNotDecimalDigitError) {
 
   if ((UNICODE_VALUE (inCharacter) >= '0') && (UNICODE_VALUE (inCharacter) <= '9')) {
-    const uint32_t digit = UNICODE_VALUE (inCharacter) - '0' ;
+    const uint8_t digit = uint8_t (UNICODE_VALUE (inCharacter) - '0') ;
     ioBigInt *= 16 ;
     ioBigInt += digit ;
   }else if ((UNICODE_VALUE (inCharacter) >= 'A') && (UNICODE_VALUE (inCharacter) <= 'F')) {
-    const uint32_t digit = UNICODE_VALUE (inCharacter) - 'A' + 10 ;
+    const uint8_t digit = uint8_t (UNICODE_VALUE (inCharacter) - 'A' + 10) ;
     ioBigInt *= 16 ;
     ioBigInt += digit ;
   }else if ((UNICODE_VALUE (inCharacter) >= 'a') && (UNICODE_VALUE (inCharacter) <= 'f')) {
-    const uint32_t digit = UNICODE_VALUE (inCharacter) - 'a' + 10 ;
+    const uint8_t digit = uint8_t (UNICODE_VALUE (inCharacter) - 'a' + 10) ;
     ioBigInt *= 16 ;
     ioBigInt += digit ;
   }else{
@@ -848,7 +848,7 @@ void scanner_routine_enterBinaryDigitIntoBigInt (C_Lexique & inLexique,
   if ((UNICODE_VALUE (inCharacter) < '0') || (UNICODE_VALUE (inCharacter) > '1')) {
     inLexique.lexicalError (inCharacterIsNotBinaryDigitError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
   }else{
-    const uint32_t digit = UNICODE_VALUE (inCharacter) - '0' ;
+    const uint8_t digit = uint8_t (UNICODE_VALUE (inCharacter) - '0') ;
     ioBigInt *= 2 ;
     ioBigInt += digit ;
   }
