@@ -215,14 +215,6 @@ print ("ANNÉE : \(ANNÉE)")
   remplacerAnneeEtVersionGALGAS (ANNÉE, VERSION_GALGAS, directory: DISTRIBUTION_DIR + "/galgas-dev/galgas-sources")
   remplacerAnneeEtVersionGALGAS (ANNÉE, VERSION_GALGAS, directory: DISTRIBUTION_DIR + "/galgas-dev/libpm/command_line_interface")
   remplacerAnneeEtVersionGALGAS (ANNÉE, VERSION_GALGAS, directory: DISTRIBUTION_DIR + "/galgas-dev/build")
-//-------------------- Vérifier les programmes d'exemple
-  runCommand (DISTRIBUTION_DIR + "/galgas-dev/sample_code/+build-all-unix.command", [])
-  runCommand ("/bin/rm", ["-fr", DISTRIBUTION_DIR + "/galgas-dev/sample_code"])
-//-------------------- Exécuter les tests
-  runCommand (DISTRIBUTION_DIR + "/galgas-dev/testsuite/+run-test-suite.command", [])
-  runCommand ("/bin/rm", ["-fr", DISTRIBUTION_DIR + "/galgas-dev/testsuite"])
-//-------------------- Vérifier la création de projet
-  runCommand (DISTRIBUTION_DIR + "/galgas-dev/+verifier-create-galgas.command", [])
 //-------------------- Construire la documentation Latex
   let latexDir = DISTRIBUTION_DIR + "/galgas-dev/galgas-3-documentation-latex-sources"
   let directoryEnumerator = fm.enumerator (atPath: latexDir)
@@ -234,6 +226,14 @@ print ("ANNÉE : \(ANNÉE)")
   runCommand (latexDir + "/+build.command", [])
   runCommand ("/bin/cp", [latexDir + "/galgas-book.pdf", "galgas-\(VERSION_GALGAS).pdf"])
   runCommand ("/bin/rm", ["-fr", latexDir])
+//-------------------- Vérifier les programmes d'exemple
+  runCommand (DISTRIBUTION_DIR + "/galgas-dev/sample_code/+build-all-unix.command", [])
+  runCommand ("/bin/rm", ["-fr", DISTRIBUTION_DIR + "/galgas-dev/sample_code"])
+//-------------------- Exécuter les tests
+  runCommand (DISTRIBUTION_DIR + "/galgas-dev/testsuite/+run-test-suite.command", [])
+  runCommand ("/bin/rm", ["-fr", DISTRIBUTION_DIR + "/galgas-dev/testsuite"])
+//-------------------- Vérifier la création de projet
+  runCommand (DISTRIBUTION_DIR + "/galgas-dev/+verifier-create-galgas.command", [])
 //-------------------- Créer le répertoire recevant les outils ligne de commande
   let cliToolsDir = DISTRIBUTION_DIR + "/galgas-\(VERSION_GALGAS)-tools"
   runCommand ("/bin/mkdir", [cliToolsDir])
