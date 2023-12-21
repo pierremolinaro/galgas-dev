@@ -242,7 +242,7 @@ let galgasScanner4_1__25_replaceBy : UInt16 = 138
 let galgasScanner4_1__25_insertAfter : UInt16 = 139
 let galgasScanner4_1__25_insertBefore : UInt16 = 140
 let galgasScanner4_1__25_useGrammar : UInt16 = 141
-let galgasScanner4_1__25_codeFor : UInt16 = 142
+let galgasScanner4_1__25_searchString : UInt16 = 142
 let galgasScanner4_1__25_templateReplacement : UInt16 = 143
 let galgasScanner4_1__2A_ : UInt16 = 144
 let galgasScanner4_1__2C_ : UInt16 = 145
@@ -553,7 +553,7 @@ class SWIFT_Lexique_galgasScanner4 : SWIFT_Lexique {
       12, // 139 : galgasScanner4_1__25_insertAfter
       12, // 140 : galgasScanner4_1__25_insertBefore
       12, // 141 : galgasScanner4_1__25_useGrammar
-      12, // 142 : galgasScanner4_1__25_codeFor
+      12, // 142 : galgasScanner4_1__25_searchString
       12, // 143 : galgasScanner4_1__25_templateReplacement
       2, // 144 : galgasScanner4_1__2A_
       2, // 145 : galgasScanner4_1__2C_
@@ -751,7 +751,7 @@ class SWIFT_Lexique_galgasScanner4 : SWIFT_Lexique {
       true, // 139 : galgasScanner4_1__25_insertAfter
       true, // 140 : galgasScanner4_1__25_insertBefore
       true, // 141 : galgasScanner4_1__25_useGrammar
-      true, // 142 : galgasScanner4_1__25_codeFor
+      true, // 142 : galgasScanner4_1__25_searchString
       true, // 143 : galgasScanner4_1__25_templateReplacement
       true, // 144 : galgasScanner4_1__2A_
       true, // 145 : galgasScanner4_1__2C_
@@ -1583,7 +1583,6 @@ fileprivate func search_into_galgasScanner_34__attributeKeyWordList (_ inSearche
     "once" : galgasScanner4_1__25_once,
     "MacOS" : galgasScanner4_1__25_MacOS,
     "remove" : galgasScanner4_1__25_remove,
-    "codeFor" : galgasScanner4_1__25_codeFor,
     "usefull" : galgasScanner4_1__25_usefull,
     "app-link" : galgasScanner4_1__25_app_2D_link,
     "selector" : galgasScanner4_1__25_selector,
@@ -1601,6 +1600,7 @@ fileprivate func search_into_galgasScanner_34__attributeKeyWordList (_ inSearche
     "insertSetter" : galgasScanner4_1__25_insertSetter,
     "removeSetter" : galgasScanner4_1__25_removeSetter,
     "searchMethod" : galgasScanner4_1__25_searchMethod,
+    "searchString" : galgasScanner4_1__25_searchString,
     "makefile-unix" : galgasScanner4_1__25_makefile_2D_unix,
     "MacOSDeployment" : galgasScanner4_1__25_MacOSDeployment,
     "makefile-macosx" : galgasScanner4_1__25_makefile_2D_macosx,

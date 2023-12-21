@@ -10,7 +10,7 @@ before {
 
 #--- 'when' clauses
 case . "XMLParsing"
-%errorMessage "an XML text file with the .XMLParsing extension"
+message "an XML text file with the .XMLParsing extension"
 ?sourceFilePath:@lstring inSourceFile {
   grammar xml_parsing_grammar (
     ?let rootNodes

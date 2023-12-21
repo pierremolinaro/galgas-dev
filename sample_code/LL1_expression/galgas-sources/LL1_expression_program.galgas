@@ -4,7 +4,7 @@ before {
 }
 
 case . "LL1_expression"
-%errorMessage "an '.LL1_expression' source file"
+message "an '.LL1_expression' source file"
 ?sourceFilePath:@lstring inSourceFile {
   grammar LL1_expression_grammar () in inSourceFile :> ?let @string s
   log s

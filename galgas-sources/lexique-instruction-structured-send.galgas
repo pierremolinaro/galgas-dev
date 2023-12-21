@@ -54,7 +54,7 @@ syntax extension galgas4LexiqueComponentSyntax {
 
   rule <lexical_send_instruction> !@lexicalInstructionAST outInstruction {
     var @lexicalSendSearchListAST lexicalSendSearchList = {}
-    $%codeFor$
+    $%searchString$
     repeat
       $identifier$ ?let @lstring attributeName
       $in$
@@ -62,7 +62,7 @@ syntax extension galgas4LexiqueComponentSyntax {
       lexicalSendSearchList += !attributeName !searchListName
       $default$
     while
-      $%codeFor$
+      $%searchString$
     end
     let @lexicalSendDefaultActionAST lexicalSendDefaultAction
     select

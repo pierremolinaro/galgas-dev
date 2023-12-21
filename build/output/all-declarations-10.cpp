@@ -11589,7 +11589,7 @@ String C_Lexique_galgasScanner_34_::getMessageForTerminal (const int32_t inTermi
         "the '%insertAfter' keyword",
         "the '%insertBefore' keyword",
         "the '%useGrammar' keyword",
-        "the '%codeFor' keyword",
+        "the '%searchString' keyword",
         "the '%templateReplacement' keyword",
         "the '*' delimitor",
         "the ',' delimitor",
@@ -12151,18 +12151,6 @@ static const utf32 kUnicodeString_galgasScanner_34__class [] = {
   TO_UNICODE ('a'),
   TO_UNICODE ('s'),
   TO_UNICODE ('s'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$codeFor$'
-static const utf32 kUnicodeString_galgasScanner_34__codeFor [] = {
-  TO_UNICODE ('c'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('F'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
   TO_UNICODE (0)
 } ;
 
@@ -13211,6 +13199,23 @@ static const utf32 kUnicodeString_galgasScanner_34__searchMethod [] = {
   TO_UNICODE (0)
 } ;
 
+//--- Unicode string for '$searchString$'
+static const utf32 kUnicodeString_galgasScanner_34__searchString [] = {
+  TO_UNICODE ('s'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('S'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('g'),
+  TO_UNICODE (0)
+} ;
+
 //--- Unicode string for '$select$'
 static const utf32 kUnicodeString_galgasScanner_34__select [] = {
   TO_UNICODE ('s'),
@@ -13577,7 +13582,6 @@ static const C_unicode_lexique_table_entry ktable_for_galgasScanner_34__attribut
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__once, 4, C_Lexique_galgasScanner_34_::kToken__25_once),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__MacOS, 5, C_Lexique_galgasScanner_34_::kToken__25_MacOS),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__remove, 6, C_Lexique_galgasScanner_34_::kToken__25_remove),
-  C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__codeFor, 7, C_Lexique_galgasScanner_34_::kToken__25_codeFor),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__usefull, 7, C_Lexique_galgasScanner_34_::kToken__25_usefull),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__app_2D_link, 8, C_Lexique_galgasScanner_34_::kToken__25_app_2D_link),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__selector, 8, C_Lexique_galgasScanner_34_::kToken__25_selector),
@@ -13595,6 +13599,7 @@ static const C_unicode_lexique_table_entry ktable_for_galgasScanner_34__attribut
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__insertSetter, 12, C_Lexique_galgasScanner_34_::kToken__25_insertSetter),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__removeSetter, 12, C_Lexique_galgasScanner_34_::kToken__25_removeSetter),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__searchMethod, 12, C_Lexique_galgasScanner_34_::kToken__25_searchMethod),
+  C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__searchString, 12, C_Lexique_galgasScanner_34_::kToken__25_searchString),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__makefile_2D_unix, 13, C_Lexique_galgasScanner_34_::kToken__25_makefile_2D_unix),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__MacOSDeployment, 15, C_Lexique_galgasScanner_34_::kToken__25_MacOSDeployment),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__makefile_2D_macosx, 15, C_Lexique_galgasScanner_34_::kToken__25_makefile_2D_macosx),
@@ -14519,9 +14524,9 @@ String C_Lexique_galgasScanner_34_::getCurrentTokenString (const cToken * inToke
       s.addString ("%useGrammar") ;
       s.addUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
       break ;
-    case kToken__25_codeFor:
+    case kToken__25_searchString:
       s.addUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.addString ("%codeFor") ;
+      s.addString ("%searchString") ;
       s.addUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
       break ;
     case kToken__25_templateReplacement:
@@ -15871,7 +15876,7 @@ GALGAS_stringlist C_Lexique_galgasScanner_34_::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("%insertAfter") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("%insertBefore") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("%useGrammar") COMMA_HERE) ;
-  result.addAssign_operation (GALGAS_string ("%codeFor") COMMA_HERE) ;
+  result.addAssign_operation (GALGAS_string ("%searchString") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("%templateReplacement") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("*") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string (",") COMMA_HERE) ;
@@ -15938,7 +15943,6 @@ static void getKeywordsForIdentifier_galgasScanner_34_ (const String & inIdentif
     ioList.appendObject ("once") ;
     ioList.appendObject ("MacOS") ;
     ioList.appendObject ("remove") ;
-    ioList.appendObject ("codeFor") ;
     ioList.appendObject ("usefull") ;
     ioList.appendObject ("app-link") ;
     ioList.appendObject ("selector") ;
@@ -15956,6 +15960,7 @@ static void getKeywordsForIdentifier_galgasScanner_34_ (const String & inIdentif
     ioList.appendObject ("insertSetter") ;
     ioList.appendObject ("removeSetter") ;
     ioList.appendObject ("searchMethod") ;
+    ioList.appendObject ("searchString") ;
     ioList.appendObject ("makefile-unix") ;
     ioList.appendObject ("MacOSDeployment") ;
     ioList.appendObject ("makefile-macosx") ;
@@ -16267,7 +16272,7 @@ uint32_t C_Lexique_galgasScanner_34_::styleIndexForTerminal (const int32_t inTer
     12 /* galgasScanner4_1__25_insertAfter */,
     12 /* galgasScanner4_1__25_insertBefore */,
     12 /* galgasScanner4_1__25_useGrammar */,
-    12 /* galgasScanner4_1__25_codeFor */,
+    12 /* galgasScanner4_1__25_searchString */,
     12 /* galgasScanner4_1__25_templateReplacement */,
     2 /* galgasScanner4_1__2A_ */,
     2 /* galgasScanner4_1__2C_ */,

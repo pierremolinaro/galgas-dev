@@ -1,5 +1,5 @@
 case . "logo"
-%errorMessage "a source text file with the .logo extension"
+message "a source text file with the .logo extension"
 %useGrammar logo_grammar
 ?sourceFilePath:@lstring inSourceFile {
   grammar logo_grammar () in inSourceFile

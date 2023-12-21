@@ -359,7 +359,7 @@ list attributeKeyWordList style attributeStyle error message"the '%K' keyword" {
   "insertAfter" -> $%insertAfter$,
   "insertBefore" -> $%insertBefore$,
   "useGrammar" -> $%useGrammar$,
-  "codeFor" -> $%codeFor$,
+  "searchString" -> $%searchString$,
   "templateReplacement" -> $%templateReplacement$
 }
 

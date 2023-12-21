@@ -1,6 +1,6 @@
 map @myMap {
   public let @string value
-  insert puterror message""
+  %insertSetter put %errorMessage ""
 }
 
 # Version avant 3.2.13 : bug, « log a » affiche "World"

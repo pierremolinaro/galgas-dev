@@ -5347,45 +5347,45 @@ void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSy
                                                                                                                           C_Lexique_galgasScanner_34_ * inCompiler) {
   outArgument_outInstruction.drop () ; // Release 'out' argument
   GALGAS_lexicalSendSearchListAST var_lexicalSendSearchList_2321 = GALGAS_lexicalSendSearchListAST::constructor_emptyList (SOURCE_FILE ("lexique-instruction-structured-send.galgas", 56)) ;
-  inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken__25_codeFor COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas", 57)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken__25_searchString COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas", 57)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    GALGAS_lstring var_attributeName_2407 = inCompiler->synthetizedAttribute_tokenString () ;
+    GALGAS_lstring var_attributeName_2412 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas", 59)) ;
     inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_in COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas", 60)) ;
-    GALGAS_lstring var_searchListName_2465 = inCompiler->synthetizedAttribute_tokenString () ;
+    GALGAS_lstring var_searchListName_2470 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas", 61)) ;
-    var_lexicalSendSearchList_2321.addAssign_operation (var_attributeName_2407, var_searchListName_2465  COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas", 62)) ;
+    var_lexicalSendSearchList_2321.addAssign_operation (var_attributeName_2412, var_searchListName_2470  COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas", 62)) ;
     inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_default COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas", 63)) ;
     if (select_galgas_34_LexiqueComponentSyntax_17 (inCompiler) == 2) {
-      inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken__25_codeFor COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas", 65)) ;
+      inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken__25_searchString COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas", 65)) ;
     }else{
       repeatFlag_0 = false ;
     }
   }
-  GALGAS_lexicalSendDefaultActionAST var_lexicalSendDefaultAction_2630 ;
+  GALGAS_lexicalSendDefaultActionAST var_lexicalSendDefaultAction_2640 ;
   switch (select_galgas_34_LexiqueComponentSyntax_18 (inCompiler)) {
   case 1: {
-    GALGAS_lstring var_defaultSentTerminal_2701 = inCompiler->synthetizedAttribute_tokenString () ;
+    GALGAS_lstring var_defaultSentTerminal_2711 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken__24_terminal_24_ COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas", 69)) ;
-    var_lexicalSendDefaultAction_2630 = GALGAS_lexicalSendTerminalByDefaultAST::constructor_new (var_defaultSentTerminal_2701  COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas", 70)) ;
+    var_lexicalSendDefaultAction_2640 = GALGAS_lexicalSendTerminalByDefaultAST::constructor_new (var_defaultSentTerminal_2711  COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas", 70)) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_error COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas", 72)) ;
-    GALGAS_lstring var_defaultErrorMessageName_2868 = inCompiler->synthetizedAttribute_tokenString () ;
+    GALGAS_lstring var_defaultErrorMessageName_2878 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas", 73)) ;
-    var_lexicalSendDefaultAction_2630 = GALGAS_lexicalErrorByDefaultAST::constructor_new (var_defaultErrorMessageName_2868  COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas", 74)) ;
+    var_lexicalSendDefaultAction_2640 = GALGAS_lexicalErrorByDefaultAST::constructor_new (var_defaultErrorMessageName_2878  COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas", 74)) ;
   } break ;
   default:
     break ;
   }
-  outArgument_outInstruction = GALGAS_lexicalStructuredSendInstructionAST::constructor_new (var_lexicalSendSearchList_2321, var_lexicalSendDefaultAction_2630  COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas", 76)) ;
+  outArgument_outInstruction = GALGAS_lexicalStructuredSendInstructionAST::constructor_new (var_lexicalSendSearchList_2321, var_lexicalSendDefaultAction_2640  COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas", 76)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_send_5F_instruction_i25_parse (C_Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken__25_codeFor COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas", 57)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken__25_searchString COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas", 57)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas", 59)) ;
@@ -5393,7 +5393,7 @@ void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSy
     inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas", 61)) ;
     inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_default COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas", 63)) ;
     if (select_galgas_34_LexiqueComponentSyntax_17 (inCompiler) == 2) {
-      inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken__25_codeFor COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas", 65)) ;
+      inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken__25_searchString COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas", 65)) ;
     }else{
       repeatFlag_0 = false ;
     }
@@ -5415,7 +5415,7 @@ void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSy
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_send_5F_instruction_i25_indexing (C_Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken__25_codeFor COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas", 57)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken__25_searchString COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas", 57)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas", 59)) ;
@@ -5423,7 +5423,7 @@ void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSy
     inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas", 61)) ;
     inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_default COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas", 63)) ;
     if (select_galgas_34_LexiqueComponentSyntax_17 (inCompiler) == 2) {
-      inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken__25_codeFor COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas", 65)) ;
+      inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken__25_searchString COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas", 65)) ;
     }else{
       repeatFlag_0 = false ;
     }

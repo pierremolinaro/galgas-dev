@@ -8505,7 +8505,7 @@ class C_Lexique_galgasScanner_34_ : public C_Lexique {
    kToken__25_insertAfter,
    kToken__25_insertBefore,
    kToken__25_useGrammar,
-   kToken__25_codeFor,
+   kToken__25_searchString,
    kToken__25_templateReplacement,
    kToken__2A_,
    kToken__2C_,

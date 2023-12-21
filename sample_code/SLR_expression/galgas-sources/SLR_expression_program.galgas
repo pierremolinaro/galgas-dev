@@ -4,7 +4,7 @@ before {
 }
 
 case . "SLR_expression"
-%errorMessage "an '.SLR_expression' source file"
+message "an '.SLR_expression' source file"
 ?sourceFilePath:@lstring inSourceFile {
   grammar SLR_expression_grammar () in inSourceFile
 }
