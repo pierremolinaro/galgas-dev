@@ -22,7 +22,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "utilities/MF_Assert.h"
+#include "utilities/macroAssert.h"
 #include "utilities/MF_MemoryControl.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -77,9 +77,7 @@ class SharedObject {
 #ifndef DO_NOT_GENERATE_CHECKINGS
   #define macroValidSharedObject(OBJECT,TYPE) { \
     macroValidPointer (OBJECT) ; \
-    if (dynamic_cast <const TYPE *> (OBJECT) == nullptr) { \
-      MF_RunTimeError ("'"#OBJECT"' is not an instance of '"#TYPE" *'", 0, 0) ; \
-    } \
+    macroAssert (dynamic_cast <const TYPE *> (OBJECT) != nullptr, "'"#OBJECT"' is not an instance of '"#TYPE" *'", 0, 0) ; \
   }
 #else
   #define macroValidSharedObject(OBJECT,TYPE)
@@ -92,9 +90,7 @@ class SharedObject {
 #ifndef DO_NOT_GENERATE_CHECKINGS
   #define macroValidSharedObjectThere(OBJECT,TYPE) { \
     macroValidPointerThere (OBJECT) ; \
-    if (dynamic_cast <const TYPE *> (OBJECT) == nullptr) { \
-      MF_RunTimeErrorThere ("'"#OBJECT"' is not an instance of '"#TYPE" *'", 0, 0) ; \
-    } \
+    macroAssertThere (dynamic_cast <const TYPE *> (OBJECT) != nullptr, "'"#OBJECT"' is not an instance of '"#TYPE" *'", 0, 0) ; \
   }
 #else
   #define macroValidSharedObjectThere(OBJECT,TYPE)
@@ -108,7 +104,7 @@ class SharedObject {
   #define macroNullOrValidSharedObject(OBJECT,TYPE) \
     if (nullptr != (OBJECT)) { \
       macroValidPointer (OBJECT) ; \
-      MF_Assert (dynamic_cast <const TYPE *> (OBJECT) != nullptr, "'"#OBJECT"' is not an instance of '"#TYPE" *'", 0, 0) ; \
+      macroAssert (dynamic_cast <const TYPE *> (OBJECT) != nullptr, "'"#OBJECT"' is not an instance of '"#TYPE" *'", 0, 0) ; \
     }
 #else
   #define macroNullOrValidSharedObject(OBJECT,TYPE)
@@ -122,7 +118,7 @@ class SharedObject {
   #define macroNullOrValidSharedObjectThere(OBJECT,TYPE) \
     if (nullptr != (OBJECT)) { \
       macroValidPointerThere (OBJECT) ; \
-      MF_AssertThere (dynamic_cast <const TYPE *> (OBJECT) != nullptr, "'"#OBJECT"' is not an instance of '"#TYPE" *'", 0, 0) ; \
+      macroAssertThere (dynamic_cast <const TYPE *> (OBJECT) != nullptr, "'"#OBJECT"' is not an instance of '"#TYPE" *'", 0, 0) ; \
     }
 #else
   #define macroNullOrValidSharedObjectThere(OBJECT,TYPE)
@@ -161,13 +157,13 @@ class SharedObject {
 //--------------------------------------------------------------------------------------------------
 
 #define macroUniqueSharedObject(PTR) \
-  { MF_Assert ((PTR)->isUniquelyReferenced (), "isUniquelyReferenced () is false", 0, 0) ; }
+  { macroAssert ((PTR)->isUniquelyReferenced (), "isUniquelyReferenced () is false", 0, 0) ; }
 
 //--------------------------------------------------------------------------------------------------
 //   macroUniqueSharedObjectThere                                                                
 //--------------------------------------------------------------------------------------------------
 
 #define macroUniqueSharedObjectThere(PTR) \
-  { MF_AssertThere ((PTR)->isUniquelyReferenced (), "isUniquelyReferenced () is false", 0, 0) ; }
+  { macroAssertThere ((PTR)->isUniquelyReferenced (), "isUniquelyReferenced () is false", 0, 0) ; }
 
 //--------------------------------------------------------------------------------------------------

@@ -218,25 +218,25 @@ cSharedSortedListRoot::~ cSharedSortedListRoot (void) {
     macroMyNewPODArray (array, const cSortedListNode *, inCount) ;
     uint32_t idx = 0 ;
     populateCheckArray (inRoot, idx, array) ;
-    MF_AssertThere (idx == inCount, "a: idx (%lld) != inCount (%lld)", idx, inCount) ;
+    macroAssertThere (idx == inCount, "a: idx (%lld) != inCount (%lld)", idx, inCount) ;
 
     const cSortedListNode * p = inFirst ;
     idx = 0 ;
     while (p != nullptr) {
-      MF_AssertThere (p == array [idx], "b: p (%p) != array [idx] (%p)", (int64_t) p, (int64_t) array [idx]) ;
+      macroAssertThere (p == array [idx], "b: p (%p) != array [idx] (%p)", (int64_t) p, (int64_t) array [idx]) ;
       idx ++ ;
       p = p->mNextPtr ;
     }
-    MF_AssertThere (idx == inCount, "c: idx (%lld) != inCount (%lld)", idx, inCount) ;
+    macroAssertThere (idx == inCount, "c: idx (%lld) != inCount (%lld)", idx, inCount) ;
 
     p = inLast ;
     idx = inCount ;
     while (p != nullptr) {
       idx -- ;
-      MF_AssertThere (p == array [idx], "d: p (%p) != array [idx] (%p)", (int64_t) p, (int64_t) array [idx]) ;
+      macroAssertThere (p == array [idx], "d: p (%p) != array [idx] (%p)", (int64_t) p, (int64_t) array [idx]) ;
       p = p->mPreviousPtr ;
     }
-    MF_AssertThere (idx == 0, "idx (%lld) != 0", idx, 0) ;
+    macroAssertThere (idx == 0, "idx (%lld) != 0", idx, 0) ;
     macroMyDeletePODArray (array) ;
   }
 #endif
@@ -290,13 +290,13 @@ void cSharedSortedListRoot::copyFrom (const cSharedSortedListRoot * inList) {
     #ifndef DO_NOT_GENERATE_CHECKINGS
       checkSortedList (inList->mRoot, inList->mCount, inList->mFirst, inList->mLast COMMA_HERE) ;
     #endif
-    MF_Assert (mCount == 0, "mCount (%lld) != 0", mCount, 0) ;
+    macroAssert (mCount == 0, "mCount (%lld) != 0", mCount, 0) ;
     macroValidSharedObject (inList, cSharedSortedListRoot) ;
     mCount = inList->mCount ;
     macroMyNew (mRoot, cSortedListNode (inList->mRoot)) ;
-    MF_Assert (mFirst == nullptr, "mFirst (%p) != nullptr", (int64_t) mFirst, 0) ;
+    macroAssert (mFirst == nullptr, "mFirst (%p) != nullptr", (int64_t) mFirst, 0) ;
     buildDirectLinksOnCopy (mRoot, mFirst) ;
-    MF_Assert (mLast == nullptr, "mLast (%p) != nullptr", (int64_t) mLast, 0) ;
+    macroAssert (mLast == nullptr, "mLast (%p) != nullptr", (int64_t) mLast, 0) ;
     buildReverseLinksOnCopy (mRoot, mLast) ;
   }
   #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -881,7 +881,7 @@ void cSharedSortedListRoot::populateEnumerationArray (capCollectionElementArray 
     inEnumerationArray.appendObject (object) ;
     p = p->mNextPtr ;
   }
-  MF_Assert (mCount == inEnumerationArray.count (), "mCount %lld != inEnumerationArray.count () %lld", mCount, inEnumerationArray.count ()) ;
+  macroAssert (mCount == inEnumerationArray.count (), "mCount %lld != inEnumerationArray.count () %lld", mCount, inEnumerationArray.count ()) ;
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkSortedList (mRoot, mCount, mFirst, mLast COMMA_HERE) ;
   #endif

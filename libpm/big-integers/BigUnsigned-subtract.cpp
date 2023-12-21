@@ -25,7 +25,7 @@ BigUnsigned BigUnsigned::operator - (const BigUnsigned inOperand) const {
         ChunkUInt newBorrow = left < right ;
         const ChunkUInt r2 = r1 - borrow ; // Can underflow
         newBorrow += r1 < borrow ;
-        MF_Assert (newBorrow <= 1, "borrow error", 0, 0) ;
+        macroAssert (newBorrow <= 1, "borrow error", 0, 0) ;
         result.mSharedArray.appendChunk (r2 COMMA_HERE) ;
         borrow = newBorrow ;
       }

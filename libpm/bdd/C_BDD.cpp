@@ -490,7 +490,7 @@ C_BDD C_BDD::BDDWithPredicateString (const String & inPredicateStringValue
     }
     if (stringIndex < stringLength) {
       ok = UNICODE_VALUE (cc) == '|' ;
-      MF_AssertThere (ok, "BDD predicate string syntax error at character index %lld", stringIndex, 0) ;
+      macroAssertThere (ok, "BDD predicate string syntax error at character index %lld", stringIndex, 0) ;
       stringIndex ++ ;
     }
   }

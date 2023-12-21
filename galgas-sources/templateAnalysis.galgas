@@ -22,8 +22,8 @@
 map @templateVariableMap {
   public let @unifiedTypeMapEntry mType
   public let @string mCppName
-  %searchMethod searchKey %errorMessage "the '%K' variable is not declared"
-  %insertSetter insertKey %errorMessage "the '%K' variable is already declared in %L"
+  search searchKey error message"the '%K' variable is not declared"
+  insert insertKey error message"the '%K' variable is already declared in %L"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -119,7 +119,7 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
       if actualGetterNameString != "" then
         actualGetterName = actualGetterNameString
         if [option galgas_cli_options.errorObsoleteGetterCall value] then
-          error self.mGetterName : "obsolete getter" fixit { %replaceBy actualGetterName }
+          error self.mGetterName : "obsolete getter" fixit { replace actualGetterName }
         end
       end
     else
@@ -167,7 +167,7 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
         error self.mGetterName
         : "the '@"+ receiverTypeName + "' type does not define the '" + self.mGetterName + "' getter"
         : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
-        fixit { %replaceBy [getterMap keyList] }
+        fixit { replace [getterMap keyList] }
       end
     end
   #--- Analysis arguments
@@ -181,7 +181,7 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
           (mFormalSelector mFormalArgumentType *) in getterFormalArgumentTypeList do
         if mFormalSelector.string != mActualSelector.string then
           let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
-          error mActualSelector : "the selector should be '" + s + "'" fixit { %replaceBy s }
+          error mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
         end
         [mExpression templateExpressionAnalysis
           !inUsefulnessCallerEntityName
@@ -194,7 +194,7 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
         constructorEffectiveParameterList += !exp
       end
       if (actualGetterName != self.mGetterName.string) && [option galgas_cli_options.errorObsoleteGetterCall value] then
-        error self.mGetterName : "obsolete getter" fixit { %replaceBy actualGetterName }
+        error self.mGetterName : "obsolete getter" fixit { replace actualGetterName }
       end
       outExpression = @getterCallExpressionForGeneration.new {
         !returnedType
@@ -241,7 +241,7 @@ override method @templateConstructorAST templateExpressionAnalysis
       error self.mConstructorName
       : "the '@"+ self.mTypeName + "' type does not define the '" + self.mConstructorName + "' constructor"
       : constructorFormalArgumentTypeList, hasCompilerArgument, returnedType
-      fixit { %replaceBy [constructorMap keyList] }
+      fixit { replace [constructorMap keyList] }
     end
   end
 #--- Analysis arguments
@@ -257,7 +257,7 @@ override method @templateConstructorAST templateExpressionAnalysis
     for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressionList, (mFormalSelector mFormalArgumentType *) in constructorFormalArgumentTypeList do
       if mFormalSelector.string != mActualSelector.string then
         let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
-        error mActualSelector : "the selector should be '" + s + "'" fixit { %replaceBy s }
+        error mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
 #        error mActualSelector
 #          : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
       end
@@ -750,7 +750,7 @@ override method @templateOptionAccessAST templateExpressionAnalysis
     error self.mOptionName
     : "the '" + self.mOptionComponentName + "' option component does not define the '" + self.mOptionName + "' option"
     : outExpression
-    fixit { %replaceBy s }
+    fixit { replace s }
   end
 }
 
@@ -802,7 +802,7 @@ override method @templateFunctionCallAST templateExpressionAnalysis
       semanticExpressionListForGeneration += !expression
       if mFormalSelector.string != mActualSelector.string then
         let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
-        error mActualSelector : "the selector should be '" + s + "'" fixit { %replaceBy s }
+        error mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
 #        error mActualSelector : "the selector should be '!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end + "'"
       end
     end

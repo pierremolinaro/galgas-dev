@@ -18,7 +18,7 @@ refclass @classWithSuperClassAST : @declarationAST {
 
 
 graph @inheritanceGraph (@declarationListAST) {
-  %insertSetter addNode %errorMessage "the '%K' class is already declared"
+  insert addNodeerror message"the '%K' class is already declared"
 }
 
 abstract method @declarationAST buildGraph

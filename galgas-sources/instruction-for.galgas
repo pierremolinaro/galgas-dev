@@ -575,7 +575,7 @@ override method @enumeratedCollectionImplicitVarInExpAST analyzeEnumeration
   if [option galgas_cli_options.errorAnomynousForInstructionEnumeratedObject value] then
     error self.mEndOfAnonymousEnumeration
     : "anonymous 'for' enumerated object (due to '--error-anonymous-for-instruction' option)"
-    fixit { %replaceBy suggestion }
+    fixit { replace suggestion }
   end
 }
 
@@ -636,7 +636,7 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
         let missingArgumentCount = [enumerationDescriptorList count] - [self.mElementList count]
         error self.mEndOfEnumerationExpression
         : "enumerated object ends with '...' (due to '--error-ellipsis-in-for-instruction' option)"
-        fixit { %replaceBy if missingArgumentCount == 1 then "*" else " " + missingArgumentCount + "*" end }
+        fixit { replace if missingArgumentCount == 1 then "*" else " " + missingArgumentCount + "*" end }
       end
       for (mOptionalTypeName mDeclaredAsUnused mOptionalConstantName) in self.mElementList, (mEnumeratedType mEnumerationName) in enumerationDescriptorList do
         if mOptionalConstantName.string != "" then # Empty string if joker

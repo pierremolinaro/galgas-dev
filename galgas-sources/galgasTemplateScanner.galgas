@@ -14,15 +14,15 @@
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-template lexique galgasTemplateScanner : galgasScanner {
+template lexique galgasTemplateScanner : galgasScanner3 {
 
   template "%" ... "%"
   
-  %templateReplacement "\\%" -> "%"
+  replace "\\%" -> "%"
   
-  %templateReplacement "\\n" -> "\n"
+  replace "\\n" -> "\n"
   
-  %templateReplacement "\\\\" -> "\\"
+  replace "\\\\" -> "\\"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

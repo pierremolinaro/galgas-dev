@@ -29,7 +29,7 @@ refclass @lexiqueComponentAST : @semanticDeclarationAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-syntax galgas3LexiqueComponentSyntax (galgasScanner) {
+syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
 
   #·····················································································································
 
@@ -158,7 +158,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner) {
 
   rule <lexical_message_declaration_ggs3>
     ?!@lexicalMessageDeclarationListAST ioLexicalMessageDeclarationList {
-    $%errorMessage$
+    $message$
     $identifier$ ?let @lstring messageName
     $:$
     $"string"$ ?let @lstring messageValue
@@ -246,7 +246,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner) {
       while
         $!$ ?let selector
         if selector.string != "" then
-          error selector : "the selector should be '!'" fixit { %replaceBy "!" }
+          error selector : "the selector should be '!'" fixit { replace "!" }
         end
         <lexical_output_effective_argument> ?let @lexicalRoutineOrFunctionFormalInputArgumentAST arg
         functionActualArgumentList += !arg
@@ -330,7 +330,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner) {
     or
       theStyle = @lstring.new {!"" !@location.here}
     end
-    $%errorMessage$
+    $error$ ; $message$
     $"string"$ ?let @lstring errorMessage
     ${$
     var entryList = @lexicalListEntryListAST {}
@@ -407,7 +407,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner) {
       $%templateEndMark$
       templateEndMark = true
     end
-    $%errorMessage$
+    $error$ ; $message$
     $"string"$ ?let @lstring errorMessage
     ioTerminalDeclarationList +=
       !name
@@ -440,7 +440,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner) {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-syntax galgas4LexiqueComponentSyntax (galgasScanner) {
+syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
 
   #·····················································································································
 
@@ -601,7 +601,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner) {
       while
         $!$ ?let selector
         if selector.string != "" then
-          error selector : "the selector should be '!'" fixit { %replaceBy "!" }
+          error selector : "the selector should be '!'" fixit { replace "!" }
         end
         <lexical_output_effective_argument> ?let @lexicalRoutineOrFunctionFormalInputArgumentAST arg
         functionActualArgumentList += !arg

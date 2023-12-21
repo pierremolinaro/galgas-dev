@@ -67,8 +67,8 @@ method @semanticInstructionListAST enterInstructionListInSemanticContext
 
 map @grammarLabelMap {
   public let @formalParameterSignature mLabelSignature
-  %insertSetter insertKey %errorMessage "the '%K' grammar label has been already declared in %L"
-  %searchMethod searchKey %errorMessage "the '%K' grammar label is not declared"
+  insert insertKey error message"the '%K' grammar label has been already declared in %L"
+  search searchKey error message"the '%K' grammar label is not declared"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -77,8 +77,8 @@ map @grammarMap {
   public let @grammarLabelMap mLabelMap
   public let @bool mHasIndexing
   public let @bool mHasTranslateFeature
-  %insertSetter insertGrammar %errorMessage "the '%K' grammar has been already declared in %L"
-  %searchMethod searchKey %errorMessage "the '%K' grammar is not declared"
+  insert insertGrammar error message"the '%K' grammar has been already declared in %L"
+  search searchKey error message"the '%K' grammar is not declared"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -90,8 +90,8 @@ map @grammarMap {
 map @routineMap {
   public let @formalParameterSignature mRoutineSignature
   public let @bool mIsInternal
-  %insertSetter insertKey %errorMessage "the '%K' routine has been already declared in %L"
-  %searchMethod searchKey %errorMessage "the '%K' routine is not declared"
+  insert insertKey error message"the '%K' routine has been already declared in %L"
+  search searchKey error message"the '%K' routine is not declared"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -104,8 +104,8 @@ map @functionMap {
   public let @functionSignature mFunctionSignature
   public let @unifiedTypeMapEntry mResultType
   public let @bool mIsInternal
-  %insertSetter insertKey %errorMessage "the '%K' function has been already declared in %L"
-  %searchMethod searchKey %errorMessage "the '%K' function is not declared"
+  insert insertKey error message"the '%K' function has been already declared in %L"
+  search searchKey error message"the '%K' function is not declared"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -119,8 +119,8 @@ map @wrapperFileMap { # Key is file name
   public let @bool mIsTextFile # true: text file, false: binary file
   public let @uint mWrapperDirectoryIndex
   public let @uint mWrapperFileIndex
-  %insertSetter insertKey %errorMessage "INTERNAL ERROR"
-  %searchMethod searchKey %errorMessage "INTERNAL ERROR"
+  insert insertKey error message"INTERNAL ERROR"
+  search searchKey error message"INTERNAL ERROR"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -129,8 +129,8 @@ map @wrapperDirectoryMap { # Key is directory name
   public let @wrapperFileMap mRegularFileMap
   public let @wrapperDirectoryMap mDirectoryMap
   public let @uint mWrapperDirectoryIndex
-  %insertSetter insertKey %errorMessage "INTERNAL ERROR"
-  %searchMethod searchKey %errorMessage "INTERNAL ERROR"
+  insert insertKey error message"INTERNAL ERROR"
+  search searchKey error message"INTERNAL ERROR"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -138,8 +138,8 @@ map @wrapperDirectoryMap { # Key is directory name
 map @filewrapperTemplateMap {
   public let @functionSignature mTemplateSignature
   public let @lstring mFilewrapperTemplatePath
-  %insertSetter insertKey %errorMessage "the '%K' filewrapper template has been already declared in %L"
-  %searchMethod searchKey %errorMessage "the '%K' filewrapper template is not declared"
+  insert insertKey error message"the '%K' filewrapper template has been already declared in %L"
+  search searchKey error message"the '%K' filewrapper template is not declared"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -151,8 +151,8 @@ map @filewrapperMap {
   public let @wrapperDirectoryMap mFilewrapperDirectoryMap
   public let @filewrapperTemplateMap mFilewrapperTemplateMap
   public let @bool mIsInternal
-  %insertSetter insertKey %errorMessage "the '%K' filewrapper has been already declared in %L"
-  %searchMethod searchKey %errorMessage "the '%K' filewrapper is not declared"
+  insert insertKey error message"the '%K' filewrapper has been already declared in %L"
+  search searchKey error message"the '%K' filewrapper is not declared"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -167,8 +167,8 @@ map @optionComponentMapForSemanticAnalysis {
   public let @commandLineOptionMap mUIntOptionMap
   public let @commandLineOptionMap mStringOptionMap
   public let @commandLineOptionMap mStringListOptionMap
-  %insertSetter insertKey %errorMessage "redefinition of the '%K' option component: it has been already declared in %L"
-  %searchMethod searchKey %errorMessage "the '%K' option component is not imported"
+  insert insertKey error message"redefinition of the '%K' option component: it has been already declared in %L"
+  search searchKey error message"the '%K' option component is not imported"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -186,8 +186,8 @@ map @lexiqueComponentMapForSemanticAnalysis {
   private let @lexicalAttributeListAST mLexicalAttributeListAST
   private let @lexicalStyleListAST mLexicalStyleListAST
   private let @lexicalListDeclarationListAST mLexicalListDeclarationListAST
-  %insertSetter insertKey %errorMessage "redefinition of the '%K' lexique component: it has been already declared in %L"
-  %searchMethod searchKey %errorMessage "the '%K' lexique component is not imported"
+  insert insertKey error message"redefinition of the '%K' lexique component: it has been already declared in %L"
+  search searchKey error message"the '%K' lexique component is not imported"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -201,8 +201,8 @@ map @syntaxComponentMap {
   public let @nonterminalDeclarationListAST mNonterminalDeclarationList
   public let @syntaxRuleListAST mRuleList
   public let @bool mHasTranslateFeature
-  %insertSetter insertKey %errorMessage "the '%K' syntax component has already been parsed"
-  %searchMethod searchKey %errorMessage "the '%K' syntax component is not parsed"
+  insert insertKey error message"the '%K' syntax component has already been parsed"
+  search searchKey error message"the '%K' syntax component is not parsed"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -231,15 +231,15 @@ struct @semanticContext {
 map @extensionMethodMapForType {
   public let @formalParameterListAST mFormalParameterList
   public let @methodQualifier mQualifier
-  %insertSetter insertKey %errorMessage "the '%K' method has been already declared in %L"
+  insert insertKey error message"the '%K' method has been already declared in %L"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @extensionMethodMapForBuildingContext {
   public let @extensionMethodMapForType mExtensionMethodMapForType
-  %insertSetter insertKey %errorMessage "internal error"
-  %searchMethod searchKey %errorMessage "internal error"
+  insert insertKey error message"internal error"
+  search searchKey error message"internal error"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -250,15 +250,15 @@ map @extensionMethodMapForBuildingContext {
 
 map @extensionSetterMapForType {
   public let @formalParameterListAST mFormalParameterList
-  %insertSetter insertKey %errorMessage "the '%K' setter has been already declared in %L"
+  insert insertKey error message"the '%K' setter has been already declared in %L"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @extensionSetterMapForBuildingContext {
   public let @extensionSetterMapForType mExtensionSetterMapForType
-  %insertSetter insertKey %errorMessage "internal error"
-  %searchMethod searchKey %errorMessage "internal error"
+  insert insertKey error message"internal error"
+  search searchKey error message"internal error"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -271,15 +271,15 @@ map @extensionGetterMapForType {
   public let @lstring mResultTypeName
   public let @formalInputParameterListAST mInputFormalParameterList
   public let @methodQualifier mQualifier
-  %insertSetter insertKey %errorMessage "the '%K' getter has been already declared in %L"
+  insert insertKey error message"the '%K' getter has been already declared in %L"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @extensionGetterMapForBuildingContext {
   public let @extensionGetterMapForType mExtensionGetterMapForType
-  %insertSetter insertKey %errorMessage "internal error"
-  %searchMethod searchKey %errorMessage "internal error"
+  insert insertKey error message"internal error"
+  search searchKey error message"internal error"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -571,7 +571,7 @@ func %once elementTypeNameSuffix -> @string {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @wrapperExtensionMap {
-  %insertSetter insertKey %errorMessage "the '%K' extension has been already declared"
+  insert insertKey error message"the '%K' extension has been already declared"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -863,7 +863,7 @@ override method @galgas3GrammarComponentAST enterDeclarationInSemanticContext
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graph @semanticTypePrecedenceGraph (@semanticDeclarationListAST) {
-  %insertSetter addNode %errorMessage "the '%K' type is already declared at %L"
+  insert addNode error message"the '%K' type is already declared at %L"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

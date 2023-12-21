@@ -80,7 +80,7 @@ end
        "PMUInt128.cpp",
        "C_Data.cpp",
        "F_DisplayException.cpp",
-       "MF_Assert.cpp",
+       "macroAssert.cpp",
        "F_GetPrime.cpp",
        "MF_MemoryControl.cpp",
        "cpp-allocation.cpp",

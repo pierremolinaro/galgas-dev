@@ -313,7 +313,7 @@ override method @expressionListCollectionValue analyze
       ]
       if mFormalSelector.string != expression.mActualSelector.string then
         let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
-        error expression.mActualSelector : "the selector should be '" + s + "'" fixit { %replaceBy s }
+        error expression.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
 #        error expression.mActualSelector
 #          : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
       end

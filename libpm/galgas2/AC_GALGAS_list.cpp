@@ -904,7 +904,7 @@ static void enterAscendingEnumeration (const cListMapNode * inNode,
 void cSharedListMapRoot::populateEnumerationArray (capCollectionElementArray & ioEnumerationArray) const {
   ioEnumerationArray.setCapacity (mCount) ;
   enterAscendingEnumeration (mRoot, ioEnumerationArray) ;
-  MF_Assert (mCount == ioEnumerationArray.count (), "mCount (%lld) != ioEnumerationArray.count () (%lld)", mCount, ioEnumerationArray.count ()) ;
+  macroAssert (mCount == ioEnumerationArray.count (), "mCount (%lld) != ioEnumerationArray.count () (%lld)", mCount, ioEnumerationArray.count ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -3,7 +3,7 @@
 
 //--- END OF USER ZONE 1
 
-#import "lexique-galgas-53-canner-cocoa.h"
+#import "lexique-galgas-53-canner3-cocoa.h"
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -11,7 +11,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-@interface OC_Lexique_galgasTemplateScanner : OC_Lexique_galgasScanner {
+@interface OC_Lexique_galgasTemplateScanner : OC_Lexique_galgasScanner3 {
 }
 - (void) parseLexicalTokenForLexicalColoring ;
 

@@ -166,14 +166,14 @@ String C_DirectedGraph::graphvizString (const TC_UniqueArray <String> & inNodeNa
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void C_DirectedGraph::checkGraph (LOCATION_ARGS) const {
-    MF_AssertThere (mEdges.count () == mReverseEdges.count (), "mEdges.count () %lld != mReverseEdges.count () %lld", mEdges.count (), mReverseEdges.count ()) ;
-    MF_AssertThere (mNodes.firstValueNotIsSet () == (uint32_t) (mEdges.count ()), "mNodes.firstValueNotIsSet () %lld != mEdges.count () %lld", mNodes.firstValueNotIsSet (), mEdges.count ()) ;
+    macroAssertThere (mEdges.count () == mReverseEdges.count (), "mEdges.count () %lld != mReverseEdges.count () %lld", mEdges.count (), mReverseEdges.count ()) ;
+    macroAssertThere (mNodes.firstValueNotIsSet () == (uint32_t) (mEdges.count ()), "mNodes.firstValueNotIsSet () %lld != mEdges.count () %lld", mNodes.firstValueNotIsSet (), mEdges.count ()) ;
   //---
     for (uint32_t i=0 ; i<(uint32_t) mEdges.count () ; i++) {
       TC_UniqueArray <uint32_t> targetList ; mEdges ((int32_t) i COMMA_HERE).getValueArray (targetList) ;
       for (int32_t j=0 ; j<targetList.count () ; j++) {
         const uint32_t target = targetList (j COMMA_HERE) ;
-        MF_AssertThere (mReverseEdges ((int32_t) target COMMA_HERE).contains (i), "! mReverseEdges (%lld COMMA_HERE).contains (%lld)", target, i) ;
+        macroAssertThere (mReverseEdges ((int32_t) target COMMA_HERE).contains (i), "! mReverseEdges (%lld COMMA_HERE).contains (%lld)", target, i) ;
       }
     }
   //---
@@ -181,7 +181,7 @@ String C_DirectedGraph::graphvizString (const TC_UniqueArray <String> & inNodeNa
       TC_UniqueArray <uint32_t> sourceList ; mReverseEdges ((int32_t) i COMMA_HERE).getValueArray (sourceList) ;
       for (int32_t j=0 ; j<sourceList.count () ; j++) {
         const uint32_t source = sourceList (j COMMA_HERE) ;
-        MF_AssertThere (mEdges ((int32_t) source COMMA_HERE).contains (i), "! mEdges (%lld COMMA_HERE).contains (%lld)", source, i) ;
+        macroAssertThere (mEdges ((int32_t) source COMMA_HERE).contains (i), "! mEdges (%lld COMMA_HERE).contains (%lld)", source, i) ;
       }
     }
   }
@@ -449,7 +449,7 @@ void C_DirectedGraph::getDominators (TC_UniqueArray <C_UIntSet> & outDominators
 //--- Start nodes are their own dominator
   TC_UniqueArray <uint32_t> startNodeArray ;
   getNodesWithNoPredecessor (startNodeArray) ;
-  MF_AssertThere (startNodeArray.count () == 1, "startNodeArray.count () == %lld != 1", startNodeArray.count (), 0) ;
+  macroAssertThere (startNodeArray.count () == 1, "startNodeArray.count () == %lld != 1", startNodeArray.count (), 0) ;
   for (int32_t i=0 ; i<startNodeArray.count () ; i++) {
     const uint32_t startNode = startNodeArray (i COMMA_HERE) ;
     outDominators.setObjectAtIndex (C_UIntSet (startNode), (int32_t) startNode COMMA_HERE) ;

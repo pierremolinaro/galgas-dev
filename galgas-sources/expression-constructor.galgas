@@ -203,7 +203,7 @@ private proc analyzeConstructorInvocation
         error inConstructorName
         : "the '@"+ [outConstructorType definition].mTypeName.string + "' type does not define the '" + inConstructorName + "' constructor"
         : constructorFormalArgumentTypeList, outHasCompilerArgument, outReturnedType
-        fixit { %replaceBy [constructorMap keyList] }
+        fixit { replace [constructorMap keyList] }
       end
     end
   #--- Analysis arguments
@@ -229,7 +229,7 @@ private proc analyzeConstructorInvocation
       outConstructorEffectiveParameterList += !exp
       if mFormalSelector.string != mActualSelector.string then
         let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
-        error mActualSelector : "the selector should be '" + s + "'" fixit { %replaceBy s }
+        error mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
       end
     end
   end
@@ -239,7 +239,7 @@ private proc analyzeConstructorInvocation
     if [oldInitializers hasKey !inConstructorName.string] then
       error inLocationForOldStyleCollectionInitializerError
       : "old style collection initializer call (due to '--error-old-syle-collection-initializer' option)"
-      fixit { %replaceBy " {}" }
+      fixit { replace " {}" }
     end
   end
 }

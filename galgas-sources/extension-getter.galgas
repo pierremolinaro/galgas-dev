@@ -184,7 +184,7 @@ override method @extensionGetterAST enterDeclarationInGraph
       !{}
     ]
   end
-  with self.mTypeName in !?ioExtensionGetterMapForBuildingContext %errorMessage searchKey  do
+  with self.mTypeName in !?ioExtensionGetterMapForBuildingContext error message searchKey  do
     [!?mExtensionGetterMapForType insertKey
       !self.mExtensionGetterName
       !self.mExtensionGetterReturnedTypeName

@@ -66,7 +66,7 @@ static NSArray * kTemplateDefinitionArray_galgasTemplateScanner ;
 //
 //--------------------------------------------------------------------------------------------------
 
-static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [187] = {
+static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [180] = {
   NO /* identifier */,
   NO /* double.xxx */,
   NO /* literalInt */,
@@ -124,6 +124,7 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [187] = {
   NO /* if */,
   NO /* in */,
   NO /* indexing */,
+  NO /* insert */,
   NO /* is */,
   NO /* label */,
   NO /* let */,
@@ -133,6 +134,7 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [187] = {
   NO /* log */,
   NO /* loop */,
   NO /* map */,
+  NO /* message */,
   NO /* method */,
   NO /* mod */,
   NO /* mutating */,
@@ -149,7 +151,9 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [187] = {
   NO /* proc */,
   NO /* project */,
   NO /* refclass */,
+  NO /* remove */,
   NO /* repeat */,
+  NO /* replace */,
   NO /* rewind */,
   NO /* rule */,
   NO /* search */,
@@ -198,18 +202,7 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [187] = {
   NO /* %templateEndMark */,
   NO /* %preserved */,
   NO /* %selector */,
-  NO /* %insertSetter */,
-  NO /* %searchMethod */,
-  NO /* %removeSetter */,
-  NO /* %errorMessage */,
-  NO /* %insertOrReplaceSetter */,
-  NO /* %remove */,
-  NO /* %replaceBy */,
-  NO /* %insertAfter */,
-  NO /* %insertBefore */,
   NO /* %useGrammar */,
-  NO /* %codeFor */,
-  NO /* %templateReplacement */,
   NO /* * */,
   NO /* , */,
   NO /* + */,

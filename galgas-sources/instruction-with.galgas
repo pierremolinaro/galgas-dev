@@ -72,7 +72,8 @@ syntax extension galgas3InstructionsSyntax {
     select
       searchMethodNameForErrorSignaling = ["" nowhere]
     or
-      $%errorMessage$
+      $error$
+      $message$
       $identifier$ ?searchMethodNameForErrorSignaling
     end
     $do$
@@ -149,7 +150,8 @@ syntax extension galgas3InstructionsSyntax {
     select
       searchMethodNameForErrorSignaling = ["" nowhere]
     or
-      $%errorMessage$
+      $error$
+      $message$
       $identifier$ ?searchMethodNameForErrorSignaling
     end
     $do$

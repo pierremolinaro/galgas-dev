@@ -94,7 +94,7 @@ syntax extension galgas3LexiqueComponentSyntax {
   #·····················································································································
 
   rule <template_replacement_ggs3> ?!@templateReplacementListAST ioTemplateReplacement {
-    $%templateReplacement$
+    $replace$
     $"string"$ ?let @lstring matchString
     let @lstring replacementString
     let @lstring replacementFunction

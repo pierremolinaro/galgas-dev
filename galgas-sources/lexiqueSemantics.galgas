@@ -17,8 +17,8 @@ map @lexicalExplicitTokenListMap {
   public let @lstring mTerminal
   public let @bool atomicSelection %selector # True if atomic selection in source editor
   public let @bool isEndOfTemplateMark %selector
-  %insertSetter insertKey %errorMessage "the '%K' terminal has been already declared in the list"
-  %searchMethod searchKey %errorMessage "the '%K' terminal is not declared"
+  insert insertKey error message"the '%K' terminal has been already declared in the list"
+  search searchKey error message"the '%K' terminal is not declared"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -37,8 +37,8 @@ map @lexicalExplicitTokenListMapMap {
   public let @lexicalExplicitTokenListMap mExplicitTokenListMap
   public let @tokenSortedlist mTokenSortedList
   public let @bool mShouldBeGenerated
-  %insertSetter insertKey %errorMessage "the '%K' token list has been already declared in %L"
-  %searchMethod searchKey %errorMessage "the '%K' token list is not declared"
+  insert insertKey error message"the '%K' token list has been already declared in %L"
+  search searchKey error message"the '%K' token list is not declared"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -46,8 +46,8 @@ map @lexicalExplicitTokenListMapMap {
 map @lexicalMessageMap {
   public let @lstring mLexicalMessage
   public let @bool mMessageIsUsed
-  %insertSetter insertKey %errorMessage "the '%K' message has been already declared in %L"
-  %searchMethod searchKey %errorMessage "the '%K' message is not declared"
+  insert insertKey error message"the '%K' message has been already declared in %L"
+  search searchKey error message"the '%K' message is not declared"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -64,8 +64,8 @@ map @lexicalRoutineMap {
   public let @lexicalRoutineFormalArgumentList mLexicalRoutineFormalArgumentList
   public let @stringlist mErrorMessageList
   public let @bool mIsExtern
-  %insertSetter insertKey %errorMessage "the '%K' lexical routine has been already declared"
-  %searchMethod searchKey %errorMessage "the '%K' lexical routine is not declared"
+  insert insertKey error message"the '%K' lexical routine has been already declared"
+  search searchKey error message"the '%K' lexical routine is not declared"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -82,8 +82,8 @@ map @lexicalFunctionMap {
   public let @lexicalTypeEnum mReturnedLexicalType
   public let @string mReplacementFunctionName # If obsolete, the name of replacement routine
   public let @bool mIsExtern
-  %insertSetter insertKey %errorMessage "the '%K' lexical function has been already declared"
-  %searchMethod searchKey %errorMessage "the '%K' lexical function is not declared"
+  insert insertKey error message"the '%K' lexical function has been already declared"
+  search searchKey error message"the '%K' lexical function is not declared"
 }
 
 
@@ -102,16 +102,16 @@ list @templateDelimitorList {
 map @styleMap {
   public let @lstring mComment
   public let @uint mStyleIndex # Allways > 0
-  %insertSetter insertKey %errorMessage "the '%K' style is already declared in %L"
-  %searchMethod searchKey %errorMessage "the '%K' style is not declared"
+  insert insertKey error message"the '%K' style is already declared in %L"
+  search searchKey error message"the '%K' style is not declared"
 }
 
 #------------------------------------------------------------------*
 
 map @lexicalTagMap {
-  %insertSetter insertKey %errorMessage "the '%K' tag is already declared in %L",
+  insert insertKey error message"the '%K' tag is already declared in %L",
                                  "the '%K' tag declaration shadows the tag declared in %L"
-  %searchMethod searchKey %errorMessage "the '%K' tag is not declared"
+  search searchKey error message"the '%K' tag is not declared"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

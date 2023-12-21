@@ -13,7 +13,7 @@
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-syntax galgas3DeclarationsSyntax (galgasScanner) {
+syntax galgas3DeclarationsSyntax (galgasScanner3) {
 
   #·····················································································································
   #          Start symbol                     
@@ -233,7 +233,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner) {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-syntax galgas4DeclarationsSyntax (galgasScanner) {
+syntax galgas4DeclarationsSyntax (galgasScanner4) {
 
   #·····················································································································
   #          Start symbol                     

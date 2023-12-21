@@ -465,7 +465,7 @@ cSharedStringsetRoot::~cSharedStringsetRoot (void) {
   void cSharedStringsetRoot::checkStringset (LOCATION_ARGS) const {
     uint32_t n = 0 ;
     countStringSetNodes (mRoot, n) ;
-    MF_AssertThere (n == mEntryCount, "count %lld != mEntryCount %lld", n, mEntryCount) ;
+    macroAssertThere (n == mEntryCount, "count %lld != mEntryCount %lld", n, mEntryCount) ;
   }
 #endif
 
@@ -957,7 +957,7 @@ void GALGAS_stringset::populateEnumerationArray (capCollectionElementArray & inE
     inEnumerationArray.setCapacity (mSharedRoot->count ()) ;
     enterAscendingEnumeration (mSharedRoot->root (), inEnumerationArray) ;
     #ifndef DO_NOT_GENERATE_CHECKINGS
-      MF_Assert (mSharedRoot->count () == inEnumerationArray.count (),
+      macroAssert (mSharedRoot->count () == inEnumerationArray.count (),
                  "mSharedRoot->count () %lld != inEnumerationArray.count () %lld",
                  mSharedRoot->count (), inEnumerationArray.count ()) ;
     #endif

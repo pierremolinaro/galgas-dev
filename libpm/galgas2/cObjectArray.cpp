@@ -46,7 +46,7 @@ cObjectArray::~cObjectArray (void) {
 
 GALGAS_object cObjectArray::objectAtIndex (const uint32_t inIndex
                                            COMMA_LOCATION_ARGS) const {
-  MF_AssertThere (inIndex < mCount, "inIndex (%ld) >= mCount (%ld)", inIndex, mCount) ;
+  macroAssertThere (inIndex < mCount, "inIndex (%ld) >= mCount (%ld)", inIndex, mCount) ;
   return mArray [inIndex] ;
 }
 

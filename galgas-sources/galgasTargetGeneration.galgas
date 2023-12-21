@@ -390,7 +390,7 @@ proc updateGalgasTargets
       for (key) in availableGenerationFeatures do
         s += !"%" + key
       end
-      error value: "unknown '" + value + "' feature" fixit { %replaceBy s }
+      error value: "unknown '" + value + "' feature" fixit { replace s }
     end
   end
 #--- Codesign without selecting OSX ?
@@ -1168,8 +1168,8 @@ proc updateGalgasTargets
         !"M_SourceLocation.h",
         !"md5.cpp",
         !"md5.h",
-        !"MF_Assert.cpp",
-        !"MF_Assert.h",
+        !"macroAssert.cpp",
+        !"macroAssert.h",
         !"MF_MemoryControl.cpp",
         !"MF_MemoryControl.h",
         !"switch-fallthrough.h",

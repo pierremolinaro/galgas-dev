@@ -46,7 +46,7 @@ proc checkMethodSignatures
           s = "!"
         end
         s += if ref_mFormalSelector.string != "" then ref_mFormalSelector.string + ":" else "" end
-        error mFormalSelector : "the selector should be '" + s + "'" fixit { %replaceBy s }
+        error mFormalSelector : "the selector should be '" + s + "'" fixit { replace s }
 #        error mFormalSelector : "the selector should be '" + [ref_mFormalArgumentPassingMode string] + ref_mFormalSelector + if ref_mFormalSelector.string != "" then ":" else "" end + "'"
       end
       if [mFormalArgumentType definition].mTypeName.string != [ref_mFormalArgumentType definition].mTypeName.string then
@@ -86,7 +86,7 @@ proc checkGetterSignatures
     for (ref_mFormalSelector ref_mFormalArgumentType *) in inReferenceSignature, (mFormalSelector mFormalArgumentType * mFormalArgumentName *) in inTestedSignature do
       if mFormalSelector.string != ref_mFormalSelector.string then
         let @string s = "?" + if ref_mFormalSelector.string != "" then ref_mFormalSelector.string + ":" else "" end
-        error mFormalSelector : "the selector should be '" + s + "'" fixit { %replaceBy s }
+        error mFormalSelector : "the selector should be '" + s + "'" fixit { replace s }
 #        error mFormalSelector
 #        : "the selector should be '?" + ref_mFormalSelector
 #          + if ref_mFormalSelector.string != "" then ":" else "" end + "'"
@@ -120,8 +120,8 @@ abstract method @semanticDeclarationAST semanticAnalysis
 
 map @propertyIndexMap {
   public let @unifiedTypeMapEntry mPropertyTypeIndex
-  %insertSetter insertKey %errorMessage "the '%K' attribute is already declared"
-  %searchMethod searchKey %errorMessage "the '%K' attribute is not declared"
+  insert insertKey error message"the '%K' attribute is already declared"
+  search searchKey error message"the '%K' attribute is not declared"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -963,16 +963,16 @@ map @nonterminalLabelMap {
   public let @formalParameterListForGeneration mSignatureForGeneration
   public let @formalParameterSignature mSignature
   public let @location mEndOfArgumentLocation
-  %insertSetter insertKey %errorMessage "the '%K' nonterminal label has been already declared in %L"
-  %searchMethod searchKey %errorMessage "the '%K' nonterminal label is not declared"
+  insert insertKey error message"the '%K' nonterminal label has been already declared in %L"
+  search searchKey error message"the '%K' nonterminal label is not declared"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @nonterminalMap {
   public let @nonterminalLabelMap mLabelMap
-  %insertSetter insertKey %errorMessage "the '%K' nonterminal has been already declared in %L"
-  %searchMethod searchKey %errorMessage "the '%K' nonterminal is not declared"
+  insert insertKey error message"the '%K' nonterminal has been already declared in %L"
+  search searchKey error message"the '%K' nonterminal is not declared"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

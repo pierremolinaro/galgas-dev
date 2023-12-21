@@ -169,7 +169,7 @@ static uint32_t addNewNode (const cBDDnode inNode) {
 //--------------------------------------------------------------------------------------------------
 
 void C_BDD::unmarkAllExistingBDDnodes (void) {
-  MF_Assert ((gNodeArraySize % 64) == 0, "gNodeArraySize (%lld) is not a multiple of 64", gNodeArraySize, 0) ;
+  macroAssert ((gNodeArraySize % 64) == 0, "gNodeArraySize (%lld) is not a multiple of 64", gNodeArraySize, 0) ;
   for (uint32_t i=0 ; i<(gNodeArraySize >> 6) ; i++) {
     gMarkTable [i] = 0 ;
   }
@@ -181,8 +181,8 @@ static bool isNodeMarked (const uint32_t inValue COMMA_LOCATION_ARGS) {
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
   bool marked = nodeIndex == 0 ;
   if (! marked) {
-    MF_AssertThere (nodeIndex > 0, "nodeIndex (%lld) should be > 0", nodeIndex, 0) ;
-    MF_AssertThere (nodeIndex <= gCurrentNodeCount, "nodeIndex (%lld) should be <= gCurrentNodeCount (%lld)", nodeIndex, gCurrentNodeCount) ;
+    macroAssertThere (nodeIndex > 0, "nodeIndex (%lld) should be > 0", nodeIndex, 0) ;
+    macroAssertThere (nodeIndex <= gCurrentNodeCount, "nodeIndex (%lld) should be <= gCurrentNodeCount (%lld)", nodeIndex, gCurrentNodeCount) ;
     const uint64_t mask = 1ULL << (nodeIndex & 0x3F) ;
     const uint32_t idx = nodeIndex >> 6 ;
     marked = (gMarkTable [idx] & mask) != 0 ;
@@ -194,8 +194,8 @@ static bool isNodeMarked (const uint32_t inValue COMMA_LOCATION_ARGS) {
 
 bool isNodeMarkedThenMark (const uint32_t inValue COMMA_LOCATION_ARGS) {
   const uint32_t nodeIndex = inValue >> 1 ;
-  MF_AssertThere (nodeIndex > 0, "nodeIndex (%lld) should be > 0", nodeIndex, 0) ;
-  MF_AssertThere (nodeIndex <= gCurrentNodeCount, "nodeIndex (%lld) should be <= gCurrentNodeCount (%lld)", nodeIndex, gCurrentNodeCount) ;
+  macroAssertThere (nodeIndex > 0, "nodeIndex (%lld) should be > 0", nodeIndex, 0) ;
+  macroAssertThere (nodeIndex <= gCurrentNodeCount, "nodeIndex (%lld) should be <= gCurrentNodeCount (%lld)", nodeIndex, gCurrentNodeCount) ;
   const uint64_t mask = 1ULL << (nodeIndex & 0x3F) ;
   const uint32_t idx = nodeIndex >> 6 ;
   const bool isMarked = (gMarkTable [idx] & mask) != 0 ;
@@ -207,8 +207,8 @@ bool isNodeMarkedThenMark (const uint32_t inValue COMMA_LOCATION_ARGS) {
 
 void markNode (const uint32_t inValue) {
   const uint32_t nodeIndex = inValue >> 1 ;
-  MF_Assert (nodeIndex > 0, "nodeIndex (%lld) should be > 0", nodeIndex, 0) ;
-  MF_Assert (nodeIndex <= gCurrentNodeCount, "nodeIndex (%lld) should be <= gCurrentNodeCount (%lld)", nodeIndex, gCurrentNodeCount) ;
+  macroAssert (nodeIndex > 0, "nodeIndex (%lld) should be > 0", nodeIndex, 0) ;
+  macroAssert (nodeIndex <= gCurrentNodeCount, "nodeIndex (%lld) should be <= gCurrentNodeCount (%lld)", nodeIndex, gCurrentNodeCount) ;
   const uint64_t mask = 1ULL << (nodeIndex & 0x3F) ;
   const uint32_t idx = nodeIndex >> 6 ;
   gMarkTable [idx] |= mask ;
@@ -356,8 +356,8 @@ void C_BDD::markAndSweepUnusedNodes (void) {
       const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
       const uint32_t thenBranch = gNodeArray [nodeIndex].mTHEN ;
       const uint32_t elseBranch = gNodeArray [nodeIndex].mELSE ;
-      MF_Assert ((thenBranch >> 1) < nodeIndex, "(thenBranch [%lld] >> 1) < nodeIndex [%lld]", thenBranch >> 1, nodeIndex) ;
-      MF_Assert ((elseBranch >> 1) < nodeIndex, "(elseBranch [%lld] >> 1) < nodeIndex [%lld]", elseBranch >> 1, nodeIndex) ;
+      macroAssert ((thenBranch >> 1) < nodeIndex, "(thenBranch [%lld] >> 1) < nodeIndex [%lld]", thenBranch >> 1, nodeIndex) ;
+      macroAssert ((elseBranch >> 1) < nodeIndex, "(elseBranch [%lld] >> 1) < nodeIndex [%lld]", elseBranch >> 1, nodeIndex) ;
       const uint32_t newThenBranch = (gNodeArray [thenBranch >> 1].mAuxiliary << 1) | (thenBranch & 1) ;
       const uint32_t newElseBranch = (gNodeArray [elseBranch >> 1].mAuxiliary << 1) | (elseBranch & 1) ;
       newNodeCount ++ ;
@@ -373,7 +373,7 @@ void C_BDD::markAndSweepUnusedNodes (void) {
     p = gFirstBDD ;
     while (p != nullptr) {
       const uint32_t previousValue = p->mBDDvalue ;
-      MF_Assert ((gNodeArray [previousValue >> 1].mAuxiliary) <= (previousValue >> 1), "(elseBranch [%lld] >> 1) <= nodeIndex [%lld]", (gNodeArray [previousValue >> 1].mAuxiliary), previousValue >> 1) ;
+      macroAssert ((gNodeArray [previousValue >> 1].mAuxiliary) <= (previousValue >> 1), "(elseBranch [%lld] >> 1) <= nodeIndex [%lld]", (gNodeArray [previousValue >> 1].mAuxiliary), previousValue >> 1) ;
       p->mBDDvalue = (gNodeArray [previousValue >> 1].mAuxiliary << 1) | (previousValue & 1) ;
       p = p->mPtrToNextBDD ;
     }

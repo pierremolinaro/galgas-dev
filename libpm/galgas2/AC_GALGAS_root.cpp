@@ -72,7 +72,7 @@ GALGAS_object AC_GALGAS_root::getter_object (LOCATION_ARGS) const {
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void AC_GALGAS_root::checkIsValid (LOCATION_ARGS) const {
-    MF_AssertThere (isValid (), "Object not valid", 0, 0) ;
+    macroAssertThere (isValid (), "Object not valid", 0, 0) ;
   }
 #endif
 

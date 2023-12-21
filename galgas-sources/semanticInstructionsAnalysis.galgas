@@ -184,7 +184,7 @@ override method @outputActualParameterAST checkAgainstFormalArgument
   else
     if inFormalSelector.string != self.mActualSelector.string then
       let @string s = "!" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
-      error self.mActualSelector : "the selector should be '" + s + "'" fixit { %replaceBy s }
+      error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
      end
     [self.mOutputActualParameterExpression analyzeSemanticExpression
       !inUsefulnessCallerEntityName
@@ -231,7 +231,7 @@ override method @outputInputActualParameterAST checkAgainstFormalArgument
     + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
   elsif inFormalSelector.string != self.mActualSelector.string then
     let @string s = "!?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
-    error self.mActualSelector : "the selector should be '" + s + "'" fixit { %replaceBy s }
+    error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
   end
 #--- Analyze input/output variable
   [!?ioVariableMap searchForReadWriteAccess
@@ -307,7 +307,7 @@ override method @outputInputSingleJokerParameterAST checkAgainstFormalArgument
     + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
   elsif inFormalSelector.string != self.mActualSelector.string then
     let @string s = "!?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
-    error self.mActualSelector : "the selector should be '" + s + "'" fixit { %replaceBy s }
+    error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
   end
 #--- Find a constructor without any argument
   let constructorMap = [inFormalArgumentType definition].mConstructorMap
@@ -368,7 +368,7 @@ override method @outputInputSelfParameterAST checkAgainstFormalArgument
     + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
   elsif inFormalSelector.string != self.mActualSelector.string then
     let @string s = "!?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
-    error self.mActualSelector : "the selector should be '" + s + "'" fixit { %replaceBy s }
+    error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
   end
 #  let defaultConstructorName = [inFormalArgumentType definition].mDefaultConstructorName
 #  if defaultConstructorName == "" then
@@ -481,7 +481,7 @@ override method @inputActualExistingVariableParameterAST checkAgainstFormalArgum
     + "' passing mode: this parameter should be passed with '" + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
   elsif inFormalSelector.string != self.mActualSelector.string then
     let @string s = "?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
-    error self.mActualSelector : "the selector should be '" + s + "'" fixit { %replaceBy s }
+    error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
 #     error self.mActualSelector : "the selector should be '?" + inFormalSelector + if inFormalSelector.string != "" then ":" else "" end + "'"
   end
   [!?ioVariableMap searchForWriteAccess
@@ -547,7 +547,7 @@ override method @inputActualSelfPropertyParameterAST checkAgainstFormalArgument
     + "' passing mode: this parameter should be passed with '" + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
   elsif inFormalSelector.string != self.mActualSelector.string then
     let @string s = "?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
-    error self.mActualSelector : "the selector should be '" + s + "'" fixit { %replaceBy s }
+    error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
   end
   
   if let [inAnalysisContext.selfType available ?type: let selfType ?mutable: let selfIsMutable ?mutableproperties: *] then
@@ -613,7 +613,7 @@ override method @inputActualSelfParameterAST checkAgainstFormalArgument
     + "' passing mode: this parameter should be passed with '" + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
   elsif inFormalSelector.string != self.mActualSelector.string then
     let @string s = "?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
-    error self.mActualSelector : "the selector should be '" + s + "'" fixit { %replaceBy s }
+    error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
   end
   
   if let [inAnalysisContext.selfType available ?type: let selfType ?mutable: let selfIsMutable ?mutableproperties: *] then
@@ -681,7 +681,7 @@ override method @inputActualNewVariableParameterAST checkAgainstFormalArgument
     + "' passing mode: this parameter should be passed with '" + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
   elsif inFormalSelector.string != self.mActualSelector.string then
     let @string s = "?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
-    error self.mActualSelector : "the selector should be '" + s + "'" fixit { %replaceBy s }
+    error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
 #     error self.mActualSelector : "the selector should be '?" + inFormalSelector + if inFormalSelector.string != "" then ":" else "" end + "'"
   end
 #--- Analyze or infer type
@@ -759,7 +759,7 @@ override method @inputActualNewConstantParameterAST checkAgainstFormalArgument
     + "' passing mode: this parameter should be passed with '" + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
   elsif inFormalSelector.string != self.mActualSelector.string then
     let @string s = "?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
-    error self.mActualSelector : "the selector should be '" + s + "'" fixit { %replaceBy s }
+    error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
 #     error self.mActualSelector : "the selector should be '?" + inFormalSelector + if inFormalSelector.string != "" then ":" else "" end + "'"
   end
 #--- Analyze or infer type
@@ -843,7 +843,7 @@ override method @inputSingleJokerActualParameterAST checkAgainstFormalArgument
     + "' passing mode: this parameter should be passed with '" + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
   elsif inFormalSelector.string != self.mActualSelector.string then
     let @string s = "?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
-    error self.mActualSelector : "the selector should be '" + s + "'" fixit { %replaceBy s }
+    error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
 #     error self.mActualSelector : "the selector should be '?" + inFormalSelector + if inFormalSelector.string != "" then ":" else "" end + "'"
   else
     let cppVarName = "joker_" + [self.mActualSelector.location startLocationIndex]
@@ -1074,7 +1074,7 @@ proc checkExpressionIsBoolean
         error inErrorLocation
         : "the expression type is not '@bool', but '@"+ [expressionType definition].mTypeName.string + "', and this type does not define the 'bool' getter "
         : outExpression
-        fixit { %replaceBy [[expressionType definition].mGetterMap keyList] }
+        fixit { replace [[expressionType definition].mGetterMap keyList] }
       end
     end
   end

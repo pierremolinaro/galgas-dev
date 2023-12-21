@@ -148,7 +148,7 @@ end
    <Unit filename="%!LIBPM_PATH%/utilities/SharedObject.cpp" />
    <Unit filename="%!LIBPM_PATH%/utilities/C_Data.cpp" />
    <Unit filename="%!LIBPM_PATH%/utilities/F_DisplayException.cpp" />
-   <Unit filename="%!LIBPM_PATH%/utilities/MF_Assert.cpp" />
+   <Unit filename="%!LIBPM_PATH%/utilities/macroAssert.cpp" />
    <Unit filename="%!LIBPM_PATH%/utilities/F_GetPrime.cpp" />
    <Unit filename="%!LIBPM_PATH%/utilities/MF_MemoryControl.cpp" />
    <Unit filename="%!LIBPM_PATH%/utilities/cpp-allocation.cpp" />

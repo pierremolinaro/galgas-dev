@@ -64,7 +64,7 @@ listmap @descendantClassListMap (@unifiedTypeMapEntryList)
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @extensionMethodMapForGlobalCheckings {
-  %insertSetter insertKey %errorMessage "the '%K' extension method is already declared in %L"
+  insert insertKey error message"the '%K' extension method is already declared in %L"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -75,7 +75,7 @@ map @extensionMethodMapForGlobalCheckings {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @extensionSetterMapForGlobalCheckings {
-  %insertSetter insertKey %errorMessage "the '%K' extension setter is already declared in %L"
+  insert insertKey error message"the '%K' extension setter is already declared in %L"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -86,7 +86,7 @@ map @extensionSetterMapForGlobalCheckings {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @extensionGetterMapForGlobalCheckings {
-  %insertSetter insertKey %errorMessage "the '%K' extension getter is already declared in %L"
+  insert insertKey error message"the '%K' extension getter is already declared in %L"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

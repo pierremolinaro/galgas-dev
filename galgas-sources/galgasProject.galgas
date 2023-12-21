@@ -44,7 +44,7 @@ indexing grammar galgas3ProjectGrammar "LL1" {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-syntax galgas3ProjectSyntax (galgasScanner) {
+syntax galgas3ProjectSyntax (galgasScanner3) {
 
 rule <project_header> !@lbigint majorVersion !@lbigint minorVersion !@lbigint revisionVersion !@lstring targetName {
   $project$

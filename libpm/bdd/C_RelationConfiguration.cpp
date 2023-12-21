@@ -109,17 +109,17 @@ mVariableTypeArray () {
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cVariablesInRelationConfiguration::checkConfiguration (LOCATION_ARGS) const {
-    MF_AssertThere (mBDDStartIndexArray.count () == mVariableNameArray.count (),
+    macroAssertThere (mBDDStartIndexArray.count () == mVariableNameArray.count (),
                     "mBDDStartIndexArray.count () == %lld != mVariableNameArray.count () == %lld",
                     mBDDStartIndexArray.count (),
                     mVariableNameArray.count ()) ;
-    MF_AssertThere (mBDDStartIndexArray.count () == mVariableTypeArray.count (),
+    macroAssertThere (mBDDStartIndexArray.count () == mVariableTypeArray.count (),
                     "mBDDStartIndexArray.count () == %lld != mVariableTypeArray.count () == %lld",
                     mBDDStartIndexArray.count (),
                     mVariableTypeArray.count ()) ;
     uint32_t bddIndex = 0 ;
     for (int32_t i=0 ; i<mBDDStartIndexArray.count () ; i++) {
-      MF_AssertThere (bddIndex == mBDDStartIndexArray (i COMMA_HERE),
+      macroAssertThere (bddIndex == mBDDStartIndexArray (i COMMA_HERE),
                       "bddIndex == %lld != mBDDStartIndexArray (i COMMA_HERE) == %lld",
                       bddIndex,
                       mBDDStartIndexArray (i COMMA_HERE)) ;
@@ -153,7 +153,7 @@ void cVariablesInRelationConfiguration::checkIdenticalTo (const cVariablesInRela
   for (int32_t i=0 ; (i<mVariableTypeArray.count()) && same ; i++) {
     same = mVariableTypeArray (i COMMA_HERE) == inVariables->mVariableTypeArray (i COMMA_HERE) ;
   }
-  MF_AssertThere (same,
+  macroAssertThere (same,
                   "cVariablesInRelationConfiguration::checkIdenticalTo failure",
                   0,
                   0) ;

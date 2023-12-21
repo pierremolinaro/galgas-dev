@@ -8,8 +8,8 @@
 
 map @projectQualifiedFeatureMap {
   public let @lstring mFeatureValue
-  %insertSetter insertKey %errorMessage "the '%K' attribute is already declared"
-  %searchMethod searchKey %errorMessage "the '%K' attribute is not declared"  
+  insert insertKey error message"the '%K' attribute is already declared"
+  search searchKey error message"the '%K' attribute is not declared"  
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -180,9 +180,9 @@ close_items_set (const cPureBNFproductionsList & inProductionRules,
         const int32_t prodX = inProductionRules.mProductionArray (productionRule COMMA_HERE).derivationAtIndex (locationIndex COMMA_HERE) - inTerminalSymbolsCount ;
         if (prodX >= 0) {
           const int32_t first = inProductionRules.tableauIndicePremiereProduction (prodX COMMA_HERE) ;
-          MF_Assert (first >= 0, "first (%ld) < 0", first, 0) ;
+          macroAssert (first >= 0, "first (%ld) < 0", first, 0) ;
           const int32_t last = inProductionRules.tableauIndiceDerniereProduction (prodX COMMA_HERE) ;
-          MF_Assert (last >= first, "last (%ld) < first (%ld)", last, first) ;
+          macroAssert (last >= first, "last (%ld) < first (%ld)", last, first) ;
           for (int32_t j=first ; j<=last ; j++) {
             const int32_t ip = inProductionRules.tableauIndirectionProduction (j COMMA_HERE) ;
             const bool inserted = add_LR0_item (ip, 0) ;
@@ -879,7 +879,7 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
       ioCppFileContents.addString ( "  inLexique->internalBottomUpParserError (HERE) ;\n") ;
     }else{
       const int32_t last = inProductionRules.tableauIndiceDerniereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
-      MF_Assert (last >= first, "last (%ld) < first (%ld)", last, first) ;
+      macroAssert (last >= first, "last (%ld) < first (%ld)", last, first) ;
       if (first == last) {
         const int32_t ip = inProductionRules.tableauIndirectionProduction (first COMMA_HERE) ;
         ioCppFileContents.addString ("  if (inLexique->nextProductionIndex () == ") ;
@@ -942,7 +942,7 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
                              "  }\n") ;
       }else{
         ioCppFileContents.addString ("  switch (inLexique->nextProductionIndex ()) {\n") ;
-        MF_Assert (last >= first, "last (%ld) < first (%ld)", last, first) ;
+        macroAssert (last >= first, "last (%ld) < first (%ld)", last, first) ;
         for (int32_t j=first ; j<=last ; j++) {
           const int32_t ip = inProductionRules.tableauIndirectionProduction (j COMMA_HERE) ;
           ioCppFileContents.addString ("  case ") ;
@@ -1012,7 +1012,7 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
         ioCppFileContents.addString ("  inLexique->internalBottomUpParserError (HERE) ;\n") ;
       }else{
         const int32_t last = inProductionRules.tableauIndiceDerniereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
-        MF_Assert (last >= first, "last (%ld) < first (%ld)", last, first) ;
+        macroAssert (last >= first, "last (%ld) < first (%ld)", last, first) ;
         if (first == last) {
           const int32_t ip = inProductionRules.tableauIndirectionProduction (first COMMA_HERE) ;
           ioCppFileContents.addString ("  if (inLexique->nextProductionIndex () == ") ;
@@ -1366,9 +1366,9 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
       ioCppFileContents.addString ("// Productions numbers: ") ;
 
       const int32_t first = inProductionRules.tableauIndicePremiereProduction (ts - terminalSymbolsCount COMMA_HERE) ;
-      MF_Assert (first >= 0, "first (%ld) < 0", first, 0) ;
+      macroAssert (first >= 0, "first (%ld) < 0", first, 0) ;
       const int32_t last = inProductionRules.tableauIndiceDerniereProduction (ts - terminalSymbolsCount COMMA_HERE) ;
-      MF_Assert (last >= first, "last (%ld) < first (%ld)", last, first) ;
+      macroAssert (last >= first, "last (%ld) < first (%ld)", last, first) ;
       for (int32_t j=first ; j<=last ; j++) {
         ioCppFileContents.addString (" ") ;
         ioCppFileContents.addSigned (inProductionRules.tableauIndirectionProduction (j COMMA_HERE)) ;

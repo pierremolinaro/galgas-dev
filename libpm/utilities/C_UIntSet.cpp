@@ -205,7 +205,7 @@ bool C_UIntSet::operator != (const C_UIntSet & inOther) const {
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void C_UIntSet::check (void) const {
     if (mDefinition.count () > 0) {
-      MF_Assert (mDefinition.lastObject (HERE) != 0, "last entry of C_UIntSet is 0", 0, 0) ;
+      macroAssert (mDefinition.lastObject (HERE) != 0, "last entry of C_UIntSet is 0", 0, 0) ;
     }
   }
 #endif

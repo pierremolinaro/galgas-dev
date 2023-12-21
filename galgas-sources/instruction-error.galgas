@@ -41,25 +41,25 @@ syntax extension galgas3InstructionsSyntax {
       var hasFixItRemove = false
       repeat
       while
-        $%remove$
+        $remove$
         if hasFixItRemove then
-          warning .here : "duplicated action" fixit { %remove }
+          warning .here : "duplicated action" fixit { remove }
         else
           outFixitListAST += !.fixItRemove
           hasFixItRemove = true
         end
       while
-        $%replaceBy$
+        $replace$
         let errorLocation = @location.here
         <expression_ggs3> ?let @semanticExpressionAST expression
         outFixitListAST += !.fixItReplace {!exp:expression !errorLocation:errorLocation}
       while
-        $%insertAfter$
+        $insert$ ; $after$
         let errorLocation = @location.here
         <expression_ggs3> ?let @semanticExpressionAST expression
         outFixitListAST += !.fixItInsertAfter {!exp:expression !errorLocation:errorLocation}
       while
-        $%insertBefore$
+        $insert$ ; $before$
         let errorLocation = @location.here
         <expression_ggs3> ?let @semanticExpressionAST expression
         outFixitListAST += !.fixItInsertBefore {!exp:expression !errorLocation:errorLocation}
@@ -118,7 +118,7 @@ syntax extension galgas4InstructionsSyntax {
         select
           $%remove$
           if hasFixItRemove then
-            warning .here : "duplicated action" fixit { %remove }
+            warning .here : "duplicated action" fixit { remove }
           else
             outFixitListAST += !.fixItRemove
             hasFixItRemove = true

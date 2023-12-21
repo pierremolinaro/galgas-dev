@@ -115,7 +115,7 @@ override method @functionCallExpressionAST analyzeSemanticExpression
       if mFormalSelector.string != mActualSelector.string then
         let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
         error mActualSelector : "the selector should be '" + s + "'"
-        fixit { %replaceBy s }
+        fixit { replace s }
       end
       semanticExpressionListForGeneration += !expression
     end

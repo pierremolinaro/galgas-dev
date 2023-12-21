@@ -182,7 +182,7 @@ void capCollectionElementArray::setCapacity (const uint32_t inNewCapacity) {
 void capCollectionElementArray::appendObject (const capCollectionElement & inObject) {
   setCapacity (count () + 1) ;
   macroUniqueSharedObject (mSharedRoot) ;
-  MF_Assert (count () < capacity (), "mCount (%lld) >= mCapacity (%lld)", count (), capacity ()) ;
+  macroAssert (count () < capacity (), "mCount (%lld) >= mCapacity (%lld)", count (), capacity ()) ;
   mSharedRoot->mArray [mSharedRoot->mCount] = inObject ;
   mSharedRoot->mCount ++ ;
 }
@@ -195,7 +195,7 @@ void capCollectionElementArray::insertObjectAtIndex (const capCollectionElement 
                                                      COMMA_LOCATION_ARGS) {
   setCapacity (count () + 1) ;
   macroUniqueSharedObject (mSharedRoot) ;
-  MF_Assert (count () < capacity (), "mCount (%lld) >= mCapacity (%lld)", count (), capacity ()) ;
+  macroAssert (count () < capacity (), "mCount (%lld) >= mCapacity (%lld)", count (), capacity ()) ;
   if (inInsertionIndex <= mSharedRoot->mCount) {
     for (uint32_t i=mSharedRoot->mCount ; i>inInsertionIndex ; i--) {
       mSharedRoot->mArray [i] = mSharedRoot->mArray [i-1] ;
@@ -220,7 +220,7 @@ void capCollectionElementArray::removeObjectAtIndex (capCollectionElement & outO
                                                      COMMA_LOCATION_ARGS) {
   insulateOrCreate () ;
   macroUniqueSharedObject (mSharedRoot) ;
-  MF_Assert (count () > 0, "empty array", 0, 0) ;
+  macroAssert (count () > 0, "empty array", 0, 0) ;
   if (inIndex < mSharedRoot->mCount) {
     outObject = mSharedRoot->mArray [inIndex] ;
     for (uint32_t i=inIndex + 1 ; i<mSharedRoot->mCount ; i++) {
@@ -308,7 +308,7 @@ void capCollectionElementArray::replaceObjectAtIndex (const capCollectionElement
                                                       COMMA_LOCATION_ARGS) {
   insulateOrCreate () ;
   macroUniqueSharedObject (mSharedRoot) ;
-  MF_AssertThere (inIndex < count (), "inIndex (%ld) >= mCount (%ld)", inIndex, count ()) ;
+  macroAssertThere (inIndex < count (), "inIndex (%ld) >= mCount (%ld)", inIndex, count ()) ;
   mSharedRoot->mArray [inIndex] = inObject ;
 }
 
@@ -316,7 +316,7 @@ void capCollectionElementArray::replaceObjectAtIndex (const capCollectionElement
 
 capCollectionElement capCollectionElementArray::objectAtIndex (const uint32_t inIndex
                                                                COMMA_LOCATION_ARGS) const {
-  MF_AssertThere (inIndex < count (), "inIndex (%ld) >= mCount (%ld)", inIndex, count ()) ;
+  macroAssertThere (inIndex < count (), "inIndex (%ld) >= mCount (%ld)", inIndex, count ()) ;
   return mSharedRoot->mArray [inIndex] ;
 }
 
@@ -326,7 +326,7 @@ cCollectionElement * capCollectionElementArray::uniquelyReferencedPointerAtIndex
                                                                                   COMMA_LOCATION_ARGS) {
   insulateOrCreate () ;
   macroUniqueSharedObject (mSharedRoot) ;
-  MF_AssertThere (inIndex < count (), "inIndex (%ld) >= mCount (%ld)", inIndex, count ()) ;
+  macroAssertThere (inIndex < count (), "inIndex (%ld) >= mCount (%ld)", inIndex, count ()) ;
   mSharedRoot->mArray [inIndex].insulate () ;
   return mSharedRoot->mArray [inIndex].ptr () ;
 }
@@ -335,7 +335,7 @@ cCollectionElement * capCollectionElementArray::uniquelyReferencedPointerAtIndex
 
 const cCollectionElement * capCollectionElementArray::pointerAtIndexForReadAccess (const uint32_t inIndex
                                                                                    COMMA_LOCATION_ARGS) const {
-  MF_AssertThere (inIndex < count (), "inIndex (%ld) >= mCount (%ld)", inIndex, count ()) ;
+  macroAssertThere (inIndex < count (), "inIndex (%ld) >= mCount (%ld)", inIndex, count ()) ;
   return mSharedRoot->mArray [inIndex].ptr () ;
 }
 
@@ -344,7 +344,7 @@ const cCollectionElement * capCollectionElementArray::pointerAtIndexForReadAcces
 void capCollectionElementArray::removeObjectAtIndex (const uint32_t inIndex) {
   insulateOrCreate () ;
   macroUniqueSharedObject (mSharedRoot) ;
-  MF_Assert (count () > inIndex, "mCount (%ld) <= inIndex (%lld)", count (), inIndex) ;
+  macroAssert (count () > inIndex, "mCount (%ld) <= inIndex (%lld)", count (), inIndex) ;
   for (uint32_t i=inIndex+1 ; i<mSharedRoot->mCount ; i++) {
     mSharedRoot->mArray [i - 1] = mSharedRoot->mArray [i] ;
   }
@@ -357,7 +357,7 @@ void capCollectionElementArray::removeObjectAtIndex (const uint32_t inIndex) {
 void capCollectionElementArray::predendObject (const capCollectionElement & inObject) {
   setCapacity (count () + 1) ;
   macroUniqueSharedObject (mSharedRoot) ;
-  MF_Assert (count () < capacity (), "mCount (%lld) >= mCapacity (%lld)", count (), capacity ()) ;
+  macroAssert (count () < capacity (), "mCount (%lld) >= mCapacity (%lld)", count (), capacity ()) ;
   for (uint32_t i=count () ; i>0 ; i--) {
     mSharedRoot->mArray [i] = mSharedRoot->mArray [i-1] ;
   }

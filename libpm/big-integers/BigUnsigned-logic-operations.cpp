@@ -111,7 +111,7 @@ BigUnsigned BigUnsigned::subtractedOneAndComplemented (const size_t inChunkCount
     borrow = v < borrow ;
     result.mSharedArray.appendChunk (~ r COMMA_HERE) ;
   }
-  MF_Assert (borrow == 0, "Borrow non null (%llu)", int64_t (borrow), 0) ;
+  macroAssert (borrow == 0, "Borrow non null (%llu)", int64_t (borrow), 0) ;
   for (size_t i = chunkCount () + 1 ; i <= inChunkCount ; i++) {
     result.mSharedArray.appendChunk (ChunkUIntMax COMMA_HERE) ;
   }
@@ -139,12 +139,12 @@ BigUnsigned BigUnsigned::utilityForNegativeOrNegative (const BigUnsigned & inOpe
     carry = r < carry ;
     result.mSharedArray.appendChunk (r COMMA_HERE) ;
   }
-//  MF_Assert (operandBorrow == 0, "operandBorrow not null", 0, 0) ;
-//  MF_Assert (thisBorrow == 0, "thisBorrow not null", 0, 0) ;
+//  macroAssert (operandBorrow == 0, "operandBorrow not null", 0, 0) ;
+//  macroAssert (thisBorrow == 0, "thisBorrow not null", 0, 0) ;
   if (carry == 0) {
     result.mSharedArray.removeLeadingZeroChunks (HERE) ;
   }else{
-    MF_Assert (carry == 1, "carry != 1", 0, 0) ;
+    macroAssert (carry == 1, "carry != 1", 0, 0) ;
     result.mSharedArray.appendChunk (carry COMMA_HERE) ;
   }
   return result ;
@@ -173,7 +173,7 @@ BigUnsigned BigUnsigned::utilityForNegativeAndNegative (const BigUnsigned & inOp
     result.mSharedArray.appendChunk (r COMMA_HERE) ;
   }
   for (size_t i = minChunkCount + 1 ; i <= chunkCount() ; i++) {
-    MF_Assert (operandBorrow == 0, "operandBorrow not null", 0, 0) ;
+    macroAssert (operandBorrow == 0, "operandBorrow not null", 0, 0) ;
     const ChunkUInt thisValue = mSharedArray.chunkAtIndex (i COMMA_HERE) ;
     const ChunkUInt leftValue = thisValue - thisBorrow ;
     thisBorrow = thisValue < thisBorrow ;
@@ -182,7 +182,7 @@ BigUnsigned BigUnsigned::utilityForNegativeAndNegative (const BigUnsigned & inOp
     result.mSharedArray.appendChunk (r COMMA_HERE) ;
   }
   for (size_t i = minChunkCount + 1 ; i <= inOperand.chunkCount() ; i++) {
-    MF_Assert (thisBorrow == 0, "thisBorrow not null", 0, 0) ;
+    macroAssert (thisBorrow == 0, "thisBorrow not null", 0, 0) ;
     const ChunkUInt operandValue = inOperand.mSharedArray.chunkAtIndex (i COMMA_HERE) ;
     const ChunkUInt rightValue = operandValue - operandBorrow ;
     operandBorrow = operandValue < operandBorrow ;
@@ -191,7 +191,7 @@ BigUnsigned BigUnsigned::utilityForNegativeAndNegative (const BigUnsigned & inOp
     result.mSharedArray.appendChunk (r COMMA_HERE) ;
   }
   if (carry > 0) {
-    MF_Assert (carry == 1, "carry != 1", 0, 0) ;
+    macroAssert (carry == 1, "carry != 1", 0, 0) ;
     result.mSharedArray.appendChunk (carry COMMA_HERE) ;
   }
   return result ;
@@ -224,7 +224,7 @@ BigUnsigned BigUnsigned::utilityForPositiveAndNegative (const BigUnsigned & inNe
 //    const ChunkUInt positive = mSharedArray.chunkAtIndex (i COMMA_HERE) ;
 //    result.mSharedArray.appendChunk (positive COMMA_HERE) ;
   }
- // MF_Assert (borrow == 0, "borrow != 0", 0, 0) ;
+ // macroAssert (borrow == 0, "borrow != 0", 0, 0) ;
   result.mSharedArray.removeLeadingZeroChunks (HERE) ;
   return result ;
 }
@@ -249,7 +249,7 @@ BigUnsigned BigUnsigned::utilityForPositiveOrNegative (const BigUnsigned & inNeg
     carry = v < carry ;
     result.mSharedArray.appendChunk (v COMMA_HERE) ;
   }
-//  MF_Assert (carry >= borrow, "carry, borrow error", 0, 0) ;
+//  macroAssert (carry >= borrow, "carry, borrow error", 0, 0) ;
   for (size_t i = minChunkCount + 1 ; i <= inNegative.chunkCount() ; i++) {
     const ChunkUInt negative = inNegative.mSharedArray.chunkAtIndex (i COMMA_HERE) ;
     const ChunkUInt n = negative - borrow ;
@@ -293,8 +293,8 @@ BigUnsigned BigUnsigned::utilityForNegativeXorNegative (const BigUnsigned & inOp
     rightBorrow = rightOp < rightBorrow ;
     result.mSharedArray.appendChunk (rightValue COMMA_HERE) ;
   }
-  MF_Assert (rightBorrow == 0, "borrow != 0", 0, 0) ;
-  MF_Assert (leftBorrow == 0, "borrow != 0", 0, 0) ;
+  macroAssert (rightBorrow == 0, "borrow != 0", 0, 0) ;
+  macroAssert (leftBorrow == 0, "borrow != 0", 0, 0) ;
   result.mSharedArray.removeLeadingZeroChunks (HERE) ;
   return result ;
 }
@@ -334,9 +334,9 @@ BigUnsigned BigUnsigned::utilityForPositiveXorNegative (const BigUnsigned & inNe
     carry = v < carry ;
     result.mSharedArray.appendChunk (v COMMA_HERE) ;
   }
-  MF_Assert (borrow == 0, "borrow != 0", 0, 0) ;
+  macroAssert (borrow == 0, "borrow != 0", 0, 0) ;
   if (carry > 0) {
-    MF_Assert (carry == 1, "carry != 1", 0, 0) ;
+    macroAssert (carry == 1, "carry != 1", 0, 0) ;
     result.mSharedArray.appendChunk (carry COMMA_HERE) ;
   }
   result.mSharedArray.removeLeadingZeroChunks (HERE) ;

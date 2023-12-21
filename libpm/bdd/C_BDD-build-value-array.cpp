@@ -106,7 +106,7 @@ void C_build_values64_array::action (const bool tableauDesValeurs [],
 
 void C_BDD::buildValue64Array (TC_UniqueArray <uint64_t> & outValuesArray,
                                const uint32_t inVariableCount) const {
-  MF_Assert(inVariableCount < 64, "inVariableCount == %ld >= 64", (int64_t) inVariableCount, 0) ;
+  macroAssert(inVariableCount < 64, "inVariableCount == %ld >= 64", (int64_t) inVariableCount, 0) ;
   outValuesArray.removeAllKeepingCapacity () ;
   C_build_values64_array builder (& outValuesArray) ;
   bool * tableauDesValeurs = nullptr ;

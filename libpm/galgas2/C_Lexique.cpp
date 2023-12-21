@@ -627,7 +627,7 @@ void C_Lexique::acceptTerminal (const int32_t IN_EXPECTED_TERMINAL COMMA_LOCATIO
     if (currentTokenCode != inExpectedTerminal) {
       const String currentTokenString = getMessageForTerminal (currentTokenCode) ;
       const String expectedTokenString = getMessageForTerminal (inExpectedTerminal) ;
-      MF_AssertThere (false,
+      macroAssertThere (false,
                       "Internal second pass parsing error (current token:%s, expected token:%s)",
                       (intptr_t) currentTokenString.cString (HERE),
                       (intptr_t) expectedTokenString.cString (HERE)) ;

@@ -4,9 +4,9 @@ lexique class_sample_language_lexique {
 
 style keywordsStyle -> "Keywords:"
 
-$identifier$ ! tokenString %errorMessage "an identifier"
+$identifier$ ! tokenStringerror message"an identifier"
 
-list keyWordList style keywordsStyle %errorMessage "the '%K' keyword"{
+list keyWordList style keywordsStyleerror message"the '%K' keyword"{
  "class" }
 
 rule 'a'->'z' | 'A'->'Z' {
@@ -20,7 +20,7 @@ rule 'a'->'z' | 'A'->'Z' {
 # ----------------------------- Delimitors ---------------------------------------
 style delimitersStyle -> "Delimiters:"
 
-list delimitorsList style delimitersStyle %errorMessage "the '%K' delimitor"{
+list delimitorsList style delimitersStyleerror message"the '%K' delimitor"{
   ";",      ":"  }
 
 rule list delimitorsList

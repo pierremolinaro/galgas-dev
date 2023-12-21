@@ -168,7 +168,7 @@ C_Relation C_Relation::accessibleStatesFrom (const C_Relation & inStartStates,
     const int32_t startRelationVariableCount = inStartStates.variableCount () ;
     const int32_t accessibilityVariableCount = variableCount () ;
   #endif
-  MF_AssertThere ((startRelationVariableCount + startRelationVariableCount) == accessibilityVariableCount,
+  macroAssertThere ((startRelationVariableCount + startRelationVariableCount) == accessibilityVariableCount,
                   "C_Relation::accessibleStatesFrom error: start state has %lld variables, accessibility relation has %lld variables",
                   (int64_t) startRelationVariableCount,
                   (int64_t) accessibilityVariableCount) ;
@@ -215,7 +215,7 @@ uint64_t C_Relation::value64Count (void) const {
 
 void C_Relation::getArray (TC_UniqueArray <TC_UniqueArray <uint64_t> > & outArray
                            COMMA_LOCATION_ARGS) const {
-  MF_AssertThere (variableCount () == 2,
+  macroAssertThere (variableCount () == 2,
                   "C_Relation::getArray error: variableCount () == %lld != 2",
                   (int64_t) variableCount (),
                   0) ;
@@ -243,7 +243,7 @@ C_Relation C_Relation::relationByDeletingLastVariable (LOCATION_ARGS) const {
 //--------------------------------------------------------------------------------------------------
 
 C_Relation C_Relation::swap021 (LOCATION_ARGS) const {
-  MF_AssertThere (variableCount () == 3,
+  macroAssertThere (variableCount () == 3,
                   "C_Relation::swap021 error: variableCount () == %lld != 3",
                   (int64_t) variableCount (),
                   0) ;
@@ -259,7 +259,7 @@ C_Relation C_Relation::swap021 (LOCATION_ARGS) const {
 //--------------------------------------------------------------------------------------------------
 
 C_Relation C_Relation::swap102 (LOCATION_ARGS) const {
-  MF_AssertThere (variableCount () == 3,
+  macroAssertThere (variableCount () == 3,
                   "C_Relation::swap102 error: variableCount () == %lld != 3",
                   (int64_t) variableCount (),
                   0) ;
@@ -275,7 +275,7 @@ C_Relation C_Relation::swap102 (LOCATION_ARGS) const {
 //--------------------------------------------------------------------------------------------------
 
 C_Relation C_Relation::swap120 (LOCATION_ARGS) const {
-  MF_AssertThere (variableCount () == 3,
+  macroAssertThere (variableCount () == 3,
                   "C_Relation::swap120 error: variableCount () == %lld != 3",
                   (int64_t) variableCount (),
                   0) ;
@@ -291,7 +291,7 @@ C_Relation C_Relation::swap120 (LOCATION_ARGS) const {
 //--------------------------------------------------------------------------------------------------
 
 C_Relation C_Relation::swap201 (LOCATION_ARGS) const {
-  MF_AssertThere (variableCount () == 3,
+  macroAssertThere (variableCount () == 3,
                   "C_Relation::swap201 error: variableCount () == %lld != 3",
                   (int64_t) variableCount (),
                   0) ;
@@ -307,7 +307,7 @@ C_Relation C_Relation::swap201 (LOCATION_ARGS) const {
 //--------------------------------------------------------------------------------------------------
 
 C_Relation C_Relation::swap210 (LOCATION_ARGS) const {
-  MF_AssertThere (variableCount () == 3,
+  macroAssertThere (variableCount () == 3,
                   "C_Relation::swap210 error: variableCount () == %lld != 3",
                   (int64_t) variableCount (),
                   0) ;
@@ -348,7 +348,7 @@ bool C_Relation::operator != (const C_Relation & inRelation) const {
 //--------------------------------------------------------------------------------------------------
 
 C_Relation C_Relation::transposedRelation (LOCATION_ARGS) const {
-  MF_AssertThere (variableCount () == 2,
+  macroAssertThere (variableCount () == 2,
                   "C_Relation::transposedRelation error: variableCount () == %lld != 2",
                   (int64_t) variableCount (),
                   0) ;

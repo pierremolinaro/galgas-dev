@@ -444,16 +444,16 @@ private proc generateOneBigHeader
 map @headerCompositionMap {
   public let @stringset mInclusion
   public let @string mHeaderString
-  %insertSetter insertKey %errorMessage "the '%K' key is already declared in %L"
-  %searchMethod searchKey %errorMessage "there is no '%K' key"
+  insert insertKey error message"the '%K' key is already declared in %L"
+  search searchKey error message"there is no '%K' key"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @headerRepartitionMap {
   public let @string mHeaderFileName
-  %insertSetter insertKey %errorMessage "the '%K' key is already declared in %L"
-  %searchMethod searchKey %errorMessage "there is no '%K' key"
+  insert insertKey error message"the '%K' key is already declared in %L"
+  search searchKey error message"there is no '%K' key"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

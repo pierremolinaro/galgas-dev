@@ -1,9 +1,9 @@
 lexique SLR_expression_lexique {
 
 @uint number
-$number$ ! number %errorMessage "a number"
+$number$ ! numbererror message"a number"
   
-list operator_list %errorMessage "the '%K' keyword"{
+list operator_listerror message"the '%K' keyword"{
   "+", "*", "(", ")" }
 
 rule list operator_list

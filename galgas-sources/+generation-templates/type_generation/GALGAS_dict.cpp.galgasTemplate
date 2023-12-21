@@ -314,7 +314,7 @@ end
       private: VIRTUAL_IN_DEBUG void checkDict (LOCATION_ARGS) const {
       uint32_t n = 0 ;
       checkNode (mRoot, n) ;
-      MF_AssertThere (n == mCount, "n (\%lld) != mCount (\%lld)", n, mCount) ;
+      macroAssertThere (n == mCount, "n (\%lld) != mCount (\%lld)", n, mCount) ;
     }
   #endif
 
@@ -745,7 +745,7 @@ void cSharedDictRoot_%!TYPE_IDENTIFIER%::populateEnumerationArray (capCollection
   #endif
   ioEnumerationArray.setCapacity (mCount) ;
   enterAscendingEnumeration_%!TYPE_IDENTIFIER% (mRoot, ioEnumerationArray) ;
-  MF_Assert (mCount == ioEnumerationArray.count (), "mCount (\%lld) != ioEnumerationArray.count () (\%lld)", mCount, ioEnumerationArray.count ()) ;
+  macroAssert (mCount == ioEnumerationArray.count (), "mCount (\%lld) != ioEnumerationArray.count () (\%lld)", mCount, ioEnumerationArray.count ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------

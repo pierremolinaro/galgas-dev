@@ -10,6 +10,21 @@
 
 //--------------------------------------------------------------------------------------------------
 //
+//Routine 'compileAfterClauseGalgas3'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_compileAfterClauseGalgas_33_ (class GALGAS_lstringlist & ioArgument0,
+                                           class GALGAS_usefulEntitiesGraph & ioArgument1,
+                                           const class GALGAS_analysisContext constinArgument2,
+                                           class GALGAS_unifiedTypeMap & ioArgument3,
+                                           const class GALGAS_prologueEpilogueList constinArgument4,
+                                           class GALGAS_programListForGeneration & ioArgument5,
+                                           class Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Routine 'compileProgramComponentGalgas3'
 //
 //--------------------------------------------------------------------------------------------------
@@ -559,21 +574,21 @@ extern const char * gWrapperFileContent_125_libpmFileWrapper ;
 extern const char * gWrapperFileContent_119_libpmFileWrapper ;
 extern const char * gWrapperFileContent_121_libpmFileWrapper ;
 extern const char * gWrapperFileContent_128_libpmFileWrapper ;
-extern const char * gWrapperFileContent_112_libpmFileWrapper ;
-extern const char * gWrapperFileContent_134_libpmFileWrapper ;
 extern const char * gWrapperFileContent_114_libpmFileWrapper ;
-extern const char * gWrapperFileContent_133_libpmFileWrapper ;
+extern const char * gWrapperFileContent_134_libpmFileWrapper ;
 extern const char * gWrapperFileContent_117_libpmFileWrapper ;
 extern const char * gWrapperFileContent_120_libpmFileWrapper ;
 extern const char * gWrapperFileContent_129_libpmFileWrapper ;
 extern const char * gWrapperFileContent_126_libpmFileWrapper ;
 extern const char * gWrapperFileContent_123_libpmFileWrapper ;
 extern const char * gWrapperFileContent_115_libpmFileWrapper ;
-extern const char * gWrapperFileContent_132_libpmFileWrapper ;
+extern const char * gWrapperFileContent_133_libpmFileWrapper ;
 extern const char * gWrapperFileContent_127_libpmFileWrapper ;
 extern const char * gWrapperFileContent_136_libpmFileWrapper ;
 extern const char * gWrapperFileContent_108_libpmFileWrapper ;
 extern const char * gWrapperFileContent_110_libpmFileWrapper ;
+extern const char * gWrapperFileContent_132_libpmFileWrapper ;
+extern const char * gWrapperFileContent_112_libpmFileWrapper ;
 extern const char * gWrapperFileContent_109_libpmFileWrapper ;
 extern const char * gWrapperFileContent_116_libpmFileWrapper ;
 extern const char * gWrapperFileContent_118_libpmFileWrapper ;
@@ -922,5 +937,4 @@ extern const cDirectoryWrapper gWrapperDirectory_12_libpmFileWrapper ;
 extern const cDirectoryWrapper gWrapperDirectory_13_libpmFileWrapper ;
 extern const cDirectoryWrapper gWrapperDirectory_14_libpmFileWrapper ;
 extern const cDirectoryWrapper gWrapperDirectory_15_libpmFileWrapper ;
-extern const cDirectoryWrapper gWrapperDirectory_16_libpmFileWrapper ;
 

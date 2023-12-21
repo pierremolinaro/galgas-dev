@@ -52,7 +52,7 @@ BigUnsignedQuotientRemainder BigUnsigned::divideByBigUnsigned (const BigUnsigned
     return BigUnsignedQuotientRemainder (BigUnsigned (), *this) ;
   }else{
     const uint32_t s = countLeadingZeros (inDivisor.mSharedArray.lastChunk (HERE)) ;
-    MF_Assert (s < ChunkUIntBitCount, "Error (0x%llx -> %llu)", int64_t (inDivisor.mSharedArray.lastChunk (HERE)), int32_t (s)) ;
+    macroAssert (s < ChunkUIntBitCount, "Error (0x%llx -> %llu)", int64_t (inDivisor.mSharedArray.lastChunk (HERE)), int32_t (s)) ;
     const BigUnsigned divisor = inDivisor << s ;
     BigUnsigned remainder = *this << s ;
 //    std::cout << "§shift " << s += "\n" ;
@@ -88,7 +88,7 @@ BigUnsignedQuotientRemainder BigUnsigned::divideByBigUnsigned (const BigUnsigned
           const size_t remainderIndex = i + quotientIndex - 1 ;
           const ChunkUInt r = remainder.mSharedArray.chunkAtIndex (remainderIndex COMMA_HERE) ;
           currentCarry += r < resultL ;
-          MF_Assert (! ((r < resultL) && (currentCarry == 0)), "double ovf", 0, 0) ;
+          macroAssert (! ((r < resultL) && (currentCarry == 0)), "double ovf", 0, 0) ;
           remainder.mSharedArray.subtractFromChunkAtIndex (resultL, remainderIndex COMMA_HERE) ;
   //        std::cout << "§remainder [ " << remainderIndex << "] = 0x" << std::hex << uint64_t (remainder.mSharedArray.chunkAtIndex (remainderIndex COMMA_HERE)) << std::dec << "\n" ;
         }
@@ -99,7 +99,7 @@ BigUnsignedQuotientRemainder BigUnsigned::divideByBigUnsigned (const BigUnsigned
   //        size_t adjustCount = 0 ;
         while (underflow) {
   //          adjustCount += 1 ;
-          MF_Assert (u64Quotient > 0, "Error", 0, 0) ; // Quotient is > 0, no underflow
+          macroAssert (u64Quotient > 0, "Error", 0, 0) ; // Quotient is > 0, no underflow
           u64Quotient -= 1 ;
   //        std::cout << "§quotient [ " << quotientIndex << "] = 0x" << std::hex << uint64_t (u64Quotient) << std::dec << "\n" ;
           ChunkUInt carry = 0 ; // 0 or 1
@@ -110,10 +110,10 @@ BigUnsignedQuotientRemainder BigUnsigned::divideByBigUnsigned (const BigUnsigned
             const ChunkUInt carry1 = sum < v1 ;
             sum += carry ;
             const ChunkUInt carry2 = sum < carry ;
-  //          MF_Assert (carry2 == 0, "Invalid carry", 0, 0) ;
+  //          macroAssert (carry2 == 0, "Invalid carry", 0, 0) ;
             remainder.mSharedArray.setChunkAtIndex (sum, i + quotientIndex - 1 COMMA_HERE) ;
             carry = carry1 + carry2 ;
-            MF_Assert (carry <= 1, "Invalid carry", 0, 0) ;
+            macroAssert (carry <= 1, "Invalid carry", 0, 0) ;
           }
           ChunkUInt lastRemainderValue = remainder.mSharedArray.chunkAtIndex (remainderLastIndex COMMA_HERE) ;
           lastRemainderValue += carry ;

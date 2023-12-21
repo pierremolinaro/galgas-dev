@@ -85,6 +85,7 @@ fileprivate let kEndOfScriptInTemplateArray_galgasTemplateScanner : [Bool] = [
   false /* if */,
   false /* in */,
   false /* indexing */,
+  false /* insert */,
   false /* is */,
   false /* label */,
   false /* let */,
@@ -94,6 +95,7 @@ fileprivate let kEndOfScriptInTemplateArray_galgasTemplateScanner : [Bool] = [
   false /* log */,
   false /* loop */,
   false /* map */,
+  false /* message */,
   false /* method */,
   false /* mod */,
   false /* mutating */,
@@ -110,7 +112,9 @@ fileprivate let kEndOfScriptInTemplateArray_galgasTemplateScanner : [Bool] = [
   false /* proc */,
   false /* project */,
   false /* refclass */,
+  false /* remove */,
   false /* repeat */,
+  false /* replace */,
   false /* rewind */,
   false /* rule */,
   false /* search */,
@@ -159,18 +163,7 @@ fileprivate let kEndOfScriptInTemplateArray_galgasTemplateScanner : [Bool] = [
   false /* %templateEndMark */,
   false /* %preserved */,
   false /* %selector */,
-  false /* %insertSetter */,
-  false /* %searchMethod */,
-  false /* %removeSetter */,
-  false /* %errorMessage */,
-  false /* %insertOrReplaceSetter */,
-  false /* %remove */,
-  false /* %replaceBy */,
-  false /* %insertAfter */,
-  false /* %insertBefore */,
   false /* %useGrammar */,
-  false /* %codeFor */,
-  false /* %templateReplacement */,
   false /* * */,
   false /* , */,
   false /* + */,
@@ -228,7 +221,7 @@ func galgasTemplateScanner_lexiqueIdentifier () -> String {
 //                     S C A N N E R    C L A S S
 //--------------------------------------------------------------------------------------------------
 
-class SWIFT_Lexique_galgasTemplateScanner : SWIFT_Lexique_galgasScanner {
+class SWIFT_Lexique_galgasTemplateScanner : SWIFT_Lexique_galgasScanner3 {
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -348,7 +341,7 @@ class SWIFT_Lexique_galgasTemplateScanner : SWIFT_Lexique_galgasScanner {
 //--------------------------------------------------------------------------------------------------
 
 /*
-static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [187] = {
+static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [180] = {
   NO /* identifier */,
   NO /* double.xxx */,
   NO /* literalInt */,
@@ -406,6 +399,7 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [187] = {
   NO /* if */,
   NO /* in */,
   NO /* indexing */,
+  NO /* insert */,
   NO /* is */,
   NO /* label */,
   NO /* let */,
@@ -415,6 +409,7 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [187] = {
   NO /* log */,
   NO /* loop */,
   NO /* map */,
+  NO /* message */,
   NO /* method */,
   NO /* mod */,
   NO /* mutating */,
@@ -431,7 +426,9 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [187] = {
   NO /* proc */,
   NO /* project */,
   NO /* refclass */,
+  NO /* remove */,
   NO /* repeat */,
+  NO /* replace */,
   NO /* rewind */,
   NO /* rule */,
   NO /* search */,
@@ -480,18 +477,7 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [187] = {
   NO /* %templateEndMark */,
   NO /* %preserved */,
   NO /* %selector */,
-  NO /* %insertSetter */,
-  NO /* %searchMethod */,
-  NO /* %removeSetter */,
-  NO /* %errorMessage */,
-  NO /* %insertOrReplaceSetter */,
-  NO /* %remove */,
-  NO /* %replaceBy */,
-  NO /* %insertAfter */,
-  NO /* %insertBefore */,
   NO /* %useGrammar */,
-  NO /* %codeFor */,
-  NO /* %templateReplacement */,
   NO /* * */,
   NO /* , */,
   NO /* + */,

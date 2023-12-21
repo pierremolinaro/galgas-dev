@@ -2,7 +2,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "MF_Assert.h"
+#include "macroAssert.h"
 #include <cinttypes>
 
 //--------------------------------------------------------------------------------------------------
@@ -45,7 +45,7 @@ inline void divForSingleWordDivision (const uint16_t inDividendH, // inDividendH
                                       const uint16_t inDivisor,
                                       uint16_t & outQuotient,
                                       uint16_t & outRemainder) {
-  MF_Assert (inDividendH < inDivisor, "inDividendH error (%llu, %llu)", int64_t (inDividendH), int64_t (inDivisor)) ;
+  macroAssert (inDividendH < inDivisor, "inDividendH error (%llu, %llu)", int64_t (inDividendH), int64_t (inDivisor)) ;
   uint32_t dividend = inDividendH ;
   dividend <<= 16 ;
   dividend |= inDividendL ;
@@ -61,7 +61,7 @@ inline uint16_t divForNaiveDivision (const uint16_t inDividendH, // inDividendH 
   if (inDividendH == inDivisor) {
     return ChunkUIntMax ;
   }else{
-    MF_Assert (inDividendH < inDivisor, "inDividendH error (%llx, %llx)", int64_t (inDividendH), int64_t (inDivisor)) ;
+    macroAssert (inDividendH < inDivisor, "inDividendH error (%llx, %llx)", int64_t (inDividendH), int64_t (inDivisor)) ;
     uint32_t dividend = inDividendH ;
     dividend <<= 16 ;
     dividend |= inDividendL ;
@@ -74,7 +74,7 @@ inline uint16_t divForNaiveDivision (const uint16_t inDividendH, // inDividendH 
 inline uint16_t divForDivision (const uint16_t inDividendH, // inDividendH <= inDivisor
                                 const uint16_t inDividendL,
                                 const uint16_t inDivisor) { // inDivisor >= 0x8000
-  MF_Assert (inDivisor > (ChunkUIntMax / 2), "Indivisor error (%llx)", int64_t (inDivisor), 0) ;
+  macroAssert (inDivisor > (ChunkUIntMax / 2), "Indivisor error (%llx)", int64_t (inDivisor), 0) ;
   if (inDividendH == inDivisor) {
     return ChunkUIntMax ;
   }else{

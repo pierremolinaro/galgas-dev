@@ -274,7 +274,7 @@ override method @selfPlusEqualElementsInstructionAST analyzeSemanticInstruction
         ]
         if mFormalSelector.string != mActualSelector.string then
           let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
-          error mActualSelector : "the selector should be '" + s + "'" fixit { %replaceBy s }
+          error mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
         end
         checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType !expression.mResultType !mEndOfExpressionLocation !?expression)
         effectiveParameterList += !expression

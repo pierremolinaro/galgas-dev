@@ -2,9 +2,9 @@
 
 map @aMap {
   public let @uint value
-  %insertSetter insertKey %errorMessage "the '%K' key is already inserted"
-  %searchMethod searchKey %errorMessage "the '%K' key is not inserted"
-  %removeSetter removeKey %errorMessage "the '%K' key is not inserted"
+  insert insertKey error message"the '%K' key is already inserted"
+  search searchKey error message"the '%K' key is not inserted"
+  %removeSetter removeKeyerror message"the '%K' key is not inserted"
 }
 
 proc testsuite_map() {

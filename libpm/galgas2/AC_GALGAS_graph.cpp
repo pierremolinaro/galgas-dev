@@ -213,7 +213,7 @@ mIsDefined (inNode->mIsDefined) {
 static void buildNodeArray (cGraphNode * inNode,
                             TC_UniqueArray <cGraphNode *> & ioNodeArray) {
   if (nullptr != inNode) {
-    MF_Assert (ioNodeArray ((int32_t) inNode->mNodeID COMMA_HERE) == nullptr, "ioNodeArray (%lld COMMA_HERE) != nullptr", inNode->mNodeID, 0) ;
+    macroAssert (ioNodeArray ((int32_t) inNode->mNodeID COMMA_HERE) == nullptr, "ioNodeArray (%lld COMMA_HERE) != nullptr", inNode->mNodeID, 0) ;
     ioNodeArray ((int32_t) inNode->mNodeID COMMA_HERE) = inNode ;
     buildNodeArray (inNode->mInfPtr, ioNodeArray) ;
     buildNodeArray (inNode->mSupPtr, ioNodeArray) ;
@@ -256,10 +256,10 @@ void cSharedGraph::description (String & ioString,
     TC_UniqueArray <cGraphNode *> nodeArray (mNodeArray.count () COMMA_HERE) ;
     nodeArray.appendObjects (mNodeArray.count (), nullptr) ;
     buildNodeArray (mRoot, nodeArray) ;
-    MF_AssertThere (nodeArray.count() == mNodeArray.count (), "nodeArray.count() == %lld != mNodeArray.count () %lld", nodeArray.count(), mNodeArray.count ()) ;
+    macroAssertThere (nodeArray.count() == mNodeArray.count (), "nodeArray.count() == %lld != mNodeArray.count () %lld", nodeArray.count(), mNodeArray.count ()) ;
     for (int32_t i=0 ; i<nodeArray.count() ; i++) {
-      MF_AssertThere (nodeArray (i COMMA_HERE) == mNodeArray (i COMMA_HERE), "nodeArray.(%lld) != mNodeArray.(%lld)", i, i) ;
-      MF_AssertThere (mDirectedGraph.isNodeDefined ((uint32_t) i), "! mDirectedGraph.isNodeDefined (i) : %lld != 0", i, 0) ;
+      macroAssertThere (nodeArray (i COMMA_HERE) == mNodeArray (i COMMA_HERE), "nodeArray.(%lld) != mNodeArray.(%lld)", i, i) ;
+      macroAssertThere (mDirectedGraph.isNodeDefined ((uint32_t) i), "! mDirectedGraph.isNodeDefined (i) : %lld != 0", i, 0) ;
     }
   }
 #endif
@@ -858,7 +858,7 @@ void AC_GALGAS_graph::internalAddNode (const GALGAS_lstring & inKey,
                                        COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid () && inAttributes.isValid ()) {
     insulateGraph (THERE) ;
-    MF_Assert (nullptr != mSharedGraph, "mSharedGraph == nullptr", 0, 0) ;
+    macroAssert (nullptr != mSharedGraph, "mSharedGraph == nullptr", 0, 0) ;
     if (nullptr != mSharedGraph) {
       mSharedGraph->internalAddNode (inKey, inErrorMessage, inAttributes, inCompiler COMMA_THERE) ;
     }
@@ -881,7 +881,7 @@ void AC_GALGAS_graph::setter_noteNode (const GALGAS_lstring & inKey
                                          COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
     insulateGraph (THERE) ;
-    MF_Assert (nullptr != mSharedGraph, "mSharedGraph == nullptr", 0, 0) ;
+    macroAssert (nullptr != mSharedGraph, "mSharedGraph == nullptr", 0, 0) ;
     cGraphNode * node = (nullptr == mSharedGraph)
       ? nullptr
       : mSharedGraph->findOrAddNodeForKey (inKey.mProperty_string.stringValue ())
@@ -923,7 +923,7 @@ void AC_GALGAS_graph::setter_addEdge (const GALGAS_lstring & inSourceNodeKey,
                                         COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inSourceNodeKey.isValid () && inTargetNodeKey.isValid ()) {
     insulateGraph (HERE) ;
-    MF_Assert (nullptr != mSharedGraph, "mSharedGraph == nullptr", 0, 0) ;
+    macroAssert (nullptr != mSharedGraph, "mSharedGraph == nullptr", 0, 0) ;
     if (nullptr != mSharedGraph) {
       mSharedGraph->addEdge (inSourceNodeKey.mProperty_string.stringValue (),
                              inSourceNodeKey.mProperty_location,
@@ -1347,7 +1347,7 @@ void AC_GALGAS_graph::setter_removeEdgesToNode (const GALGAS_string & inNodeName
                                                   COMMA_LOCATION_ARGS) {
   if (isValid () && inNodeName.isValid ()) {
     insulateGraph (HERE) ;
-    MF_Assert (nullptr != mSharedGraph, "mSharedGraph == nullptr", 0, 0) ;
+    macroAssert (nullptr != mSharedGraph, "mSharedGraph == nullptr", 0, 0) ;
     if (nullptr != mSharedGraph) {
       mSharedGraph->removeEdgesToNode (inNodeName.stringValue (), inCompiler COMMA_THERE) ;
     }
@@ -1383,7 +1383,7 @@ void cSharedGraph::removeEdgesToNode (const String & inNodeName,
 void AC_GALGAS_graph::setter_removeEdgesToDominators (LOCATION_ARGS) {
   if (isValid ()) {
     insulateGraph (HERE) ;
-    MF_Assert (nullptr != mSharedGraph, "mSharedGraph == nullptr", 0, 0) ;
+    macroAssert (nullptr != mSharedGraph, "mSharedGraph == nullptr", 0, 0) ;
     if (nullptr != mSharedGraph) {
       mSharedGraph->removeEdgesToDominators (THERE) ;
     }

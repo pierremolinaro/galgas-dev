@@ -24,7 +24,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "utilities/MF_Assert.h"
+#include "utilities/macroAssert.h"
 #include "utilities/M_SourceLocation.h"
 #include "utilities/TF_Swap.h"
 #include "utilities/MF_MemoryControl.h"
@@ -338,7 +338,7 @@ mArray (nullptr),
 mCount (0),
 mCapacity (0) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
-    MF_AssertThere (inCapacity >= 0, "inCapacity (%ld) < 0", inCapacity, 0) ;
+    macroAssertThere (inCapacity >= 0, "inCapacity (%ld) < 0", inCapacity, 0) ;
   #endif
   if (inCapacity > 0) {
     macroMyNewArray (mArray, TYPE, uint32_t (inCapacity)) ;
@@ -359,7 +359,7 @@ mArray (nullptr),
 mCount (0),
 mCapacity (0) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
-    MF_AssertThere (inCapacity >= 0, "inCapacity (%ld) < 0", inCapacity, 0) ;
+    macroAssertThere (inCapacity >= 0, "inCapacity (%ld) < 0", inCapacity, 0) ;
   #endif
   if (inCapacity > 0) {
     macroMyNewArray (mArray, TYPE, uint32_t (inCapacity)) ;
@@ -614,8 +614,8 @@ template <typename TYPE> void TC_UniqueArray <TYPE>::appendObjectsFromArray (con
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   template <typename TYPE> void TC_UniqueArray <TYPE>::checkIndexForInsertion (const int32_t inIndex COMMA_LOCATION_ARGS) const {
-    MF_AssertThere (inIndex >= 0, "inIndex (%ld) < 0", inIndex, 0) ;
-    MF_AssertThere (inIndex <= mCount, "inIndex (%d) > mCount (%ld)", inIndex, mCount) ;
+    macroAssertThere (inIndex >= 0, "inIndex (%ld) < 0", inIndex, 0) ;
+    macroAssertThere (inIndex <= mCount, "inIndex (%d) > mCount (%ld)", inIndex, mCount) ;
   }
 #endif
 
@@ -835,8 +835,8 @@ template <typename TYPE> int32_t TC_UniqueArray <TYPE>::indexOfFirstObjectEqualT
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   template <typename TYPE> void TC_UniqueArray <TYPE>::checkIndex (const int32_t inIndex COMMA_LOCATION_ARGS) const {
-    MF_AssertThere (inIndex >= 0, "inIndex (%lld) < 0", inIndex, 0) ;
-    MF_AssertThere (inIndex < mCount, "inIndex (%lld) >= mCount (%lld)", inIndex, mCount) ;
+    macroAssertThere (inIndex >= 0, "inIndex (%lld) < 0", inIndex, 0) ;
+    macroAssertThere (inIndex < mCount, "inIndex (%lld) >= mCount (%lld)", inIndex, mCount) ;
   }
 #endif
 
@@ -1465,7 +1465,7 @@ void swap (TC_UniqueArray <TYPE> & ioOperand1,
   template <typename TYPE> void TC_UniqueArray <TYPE>::checkOrdered (LOCATION_ARGS) const {
     for (int32_t i=1 ; i<count () ; i++) {
       const int32_t r = mArray [i - 1].compare (mArray [i]) ;
-      MF_AssertThere (r < 0, "Ordered Array Error for index %lld", i, 0) ;
+      macroAssertThere (r < 0, "Ordered Array Error for index %lld", i, 0) ;
     }
   }
 #endif

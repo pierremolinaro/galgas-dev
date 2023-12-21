@@ -245,7 +245,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS__32_lstringlist_2D_
 
 //--------------------------------------------------------------------------------------------------
 //
-//LEXIQUE galgasScanner
+//LEXIQUE galgasScanner_33_
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -263,7 +263,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS__32_lstringlist_2D_
 //                       T O K E N    C L A S S
 //--------------------------------------------------------------------------------------------------
 
-class cTokenFor_galgasScanner : public cToken {
+class cTokenFor_galgasScanner_33_ : public cToken {
   public: BigSigned mLexicalAttribute_bigintValue ;
   public: utf32 mLexicalAttribute_charValue ;
   public: double mLexicalAttribute_floatValue ;
@@ -274,20 +274,20 @@ class cTokenFor_galgasScanner : public cToken {
   public: uint32_t mLexicalAttribute_uint_33__32_value ;
   public: uint64_t mLexicalAttribute_uint_36__34_value ;
 
-  public: cTokenFor_galgasScanner (void) ;
+  public: cTokenFor_galgasScanner_33_ (void) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 //                     S C A N N E R    C L A S S
 //--------------------------------------------------------------------------------------------------
 
-class C_Lexique_galgasScanner : public C_Lexique {
+class C_Lexique_galgasScanner_33_ : public C_Lexique {
 //--- Constructors
-  public: C_Lexique_galgasScanner (Compiler * inCallerCompiler,
+  public: C_Lexique_galgasScanner_33_ (Compiler * inCallerCompiler,
                        const String & inSourceFileName
                        COMMA_LOCATION_ARGS) ;
 
-  public: C_Lexique_galgasScanner (Compiler * inCallerCompiler,
+  public: C_Lexique_galgasScanner_33_ (Compiler * inCallerCompiler,
                        const String & inSourceString,
                        const String & inStringForError
                        COMMA_LOCATION_ARGS) ;
@@ -299,7 +299,7 @@ class C_Lexique_galgasScanner : public C_Lexique {
 //    an error if a direct delete is performed; only the static method
 //    SharedObject::detachPointer may invoke delete.
   #ifndef DO_NOT_GENERATE_CHECKINGS
-    protected: virtual ~ C_Lexique_galgasScanner (void) {}
+    protected: virtual ~ C_Lexique_galgasScanner_33_ (void) {}
   #endif
 
 
@@ -363,6 +363,7 @@ class C_Lexique_galgasScanner : public C_Lexique {
    kToken_if,
    kToken_in,
    kToken_indexing,
+   kToken_insert,
    kToken_is,
    kToken_label,
    kToken_let,
@@ -372,6 +373,7 @@ class C_Lexique_galgasScanner : public C_Lexique {
    kToken_log,
    kToken_loop,
    kToken_map,
+   kToken_message,
    kToken_method,
    kToken_mod,
    kToken_mutating,
@@ -388,7 +390,9 @@ class C_Lexique_galgasScanner : public C_Lexique {
    kToken_proc,
    kToken_project,
    kToken_refclass,
+   kToken_remove,
    kToken_repeat,
+   kToken_replace,
    kToken_rewind,
    kToken_rule,
    kToken_search,
@@ -437,18 +441,7 @@ class C_Lexique_galgasScanner : public C_Lexique {
    kToken__25_templateEndMark,
    kToken__25_preserved,
    kToken__25_selector,
-   kToken__25_insertSetter,
-   kToken__25_searchMethod,
-   kToken__25_removeSetter,
-   kToken__25_errorMessage,
-   kToken__25_insertOrReplaceSetter,
-   kToken__25_remove,
-   kToken__25_replaceBy,
-   kToken__25_insertAfter,
-   kToken__25_insertBefore,
    kToken__25_useGrammar,
-   kToken__25_codeFor,
-   kToken__25_templateReplacement,
    kToken__2A_,
    kToken__2C_,
    kToken__2B_,
@@ -589,20 +582,20 @@ class C_Lexique_galgasScanner : public C_Lexique {
   } ;
 
 //--- Parse lexical token
-  protected: void internalParseLexicalToken (cTokenFor_galgasScanner & token) ;
+  protected: void internalParseLexicalToken (cTokenFor_galgasScanner_33_ & token) ;
   protected: virtual bool parseLexicalToken (void) override ;
 
 //--- Get terminal message
   protected: virtual String getMessageForTerminal (const int32_t inTerminalSymbol) const override ;
 
 //--- Get terminal count
-  public: virtual int32_t terminalVocabularyCount (void) const override { return 187 ; }
+  public: virtual int32_t terminalVocabularyCount (void) const override { return 180 ; }
 
 //--- Get Token String
   public: virtual String getCurrentTokenString (const cToken * inTokenPtr) const override ;
 
 //--- Enter Token
-  protected: void enterToken (cTokenFor_galgasScanner & ioToken) ;
+  protected: void enterToken (cTokenFor_galgasScanner_33_ & ioToken) ;
 
 //--- Style name for Latex
   protected: virtual String styleNameForIndex (const uint32_t inStyleIndex) const override ;

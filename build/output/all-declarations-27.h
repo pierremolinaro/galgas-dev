@@ -163,18 +163,3 @@ void routine_compileProgramRulesGalgas_33_ (class GALGAS_lstringlist & ioArgumen
                                             class Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) ;
 
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'compileAfterClauseGalgas3'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_compileAfterClauseGalgas_33_ (class GALGAS_lstringlist & ioArgument0,
-                                           class GALGAS_usefulEntitiesGraph & ioArgument1,
-                                           const class GALGAS_analysisContext constinArgument2,
-                                           class GALGAS_unifiedTypeMap & ioArgument3,
-                                           const class GALGAS_prologueEpilogueList constinArgument4,
-                                           class GALGAS_programListForGeneration & ioArgument5,
-                                           class Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) ;
-

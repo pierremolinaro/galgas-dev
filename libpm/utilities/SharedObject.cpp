@@ -102,7 +102,7 @@ void SharedObject::retain (const SharedObject * inObject COMMA_LOCATION_ARGS) {
 void SharedObject::release (const SharedObject * inObject COMMA_LOCATION_ARGS) {
   if (inObject != nullptr) {
     macroValidSharedObjectThere (inObject, SharedObject) ;
-    MF_AssertThere (inObject->mRetainCount > 0, "mRetainCount should be > 0)", 0, 0) ;
+    macroAssertThere (inObject->mRetainCount > 0, "mRetainCount should be > 0)", 0, 0) ;
     inObject->mRetainCount -- ;
     if (inObject->mRetainCount == 0) {
       macroMyDelete (inObject) ;

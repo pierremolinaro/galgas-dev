@@ -19,7 +19,7 @@ style textStyle -> "Text"
 
 #-------------------------- comment  --------------------
 
-$comment$ ! tokenString  style commentStyle %templateEndMark %errorMessage "a comment"
+$comment$ ! tokenString  style commentStyle %templateEndMarkerror message"a comment"
 
 %errorMessage incorrectCommentError : "incorrect XML comment"
 
@@ -44,7 +44,7 @@ rule "<!--" {
 }
 
 # ----------------------------- Delimiters ---------------------------------------
-list xmlDelimitorsList style delimitersStyle %errorMessage "the '%K' delimitor"{
+list xmlDelimitorsList style delimitersStyleerror message"the '%K' delimitor"{
   "<",
   "<?",
   ">" %templateEndMark,
@@ -57,7 +57,7 @@ rule list xmlDelimitorsList
 
 #-------------------------- name  --------------------
 
-$name$ ! tokenString  style nameStyle %errorMessage "a name"
+$name$ ! tokenString  style nameStyleerror message"a name"
 
 rule isUnicodeLetter {
   repeat
@@ -69,7 +69,7 @@ rule isUnicodeLetter {
 
 #-------------------------- Attribute value  --------------------
 
-$value$ ! tokenString  style attributeValue %errorMessage "an attribute value"
+$value$ ! tokenString  style attributeValueerror message"an attribute value"
 
 %errorMessage incorrectAttributeEnd : "attribute value should be enclosed between apostrophes (') or quotation marks (\")"
 

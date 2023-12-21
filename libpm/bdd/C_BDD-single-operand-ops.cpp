@@ -304,7 +304,7 @@ static uint32_t internalRecursiveSubstitution (const uint32_t inValue,
   }else{
     const uint32_t complement = inValue & 1 ;
     const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
-    MF_AssertThere (var < inBDDvariablesCount, "var (%lld) < inBDDvariablesCount (%lld)", var, inBDDvariablesCount) ;
+    macroAssertThere (var < inBDDvariablesCount, "var (%lld) < inBDDvariablesCount (%lld)", var, inBDDvariablesCount) ;
     if (var < inNoChangeIndex) {
       result = inValue ;
       gSingleOperandOperationCacheTrivialOperationCount ++ ;

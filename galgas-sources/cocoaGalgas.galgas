@@ -29,7 +29,7 @@ gui cocoa {
 
   #·····················································································································
 
-  with lexique galgasScanner {
+  with lexique galgasScanner3 {
     fileExtension : "ggsproject"
     fileExtension : "galgasProject"
     fileExtension : "galgas"
@@ -100,8 +100,8 @@ gui cocoa {
     textMacro "Map" :
       "map @type {\n"
       "  public let @aType mProperty\n"
-      "  %insertSetter insertKey %errorMessage \"the '%K' key is already declared in %L\"\n"
-      "  %searchMethod searchKey %errorMessage \"there is no '%K' key\"\n"
+      "  insert insertKey error message\"the '%K' key is already declared in %L\"\n"
+      "  search searchKey error message\"there is no '%K' key\"\n"
       "}\n"
     
     textMacro "Sorted List" :

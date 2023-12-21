@@ -55,7 +55,7 @@ list @productionRuleListForGrammarAnalysis {
 
 map @unusedNonTerminalSymbolMapForGrammarAnalysis {
   public let @uint mNonTerminalIndex
-  %insertSetter insertKey %errorMessage "the '<%K>' non terminal symbol has already been declared as unused in %L"
+  insert insertKey error message"the '<%K>' non terminal symbol has already been declared as unused in %L"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -145,8 +145,8 @@ list @syntaxComponentListForGrammarAnalysis {
 
 map @terminalSymbolsMapForGrammarAnalysis {
   public let @uint mTerminalIndex
-  %insertSetter insertKey %errorMessage "the terminal symbol '$%K$' is already declared in %L"
-  %searchMethod searchKey %errorMessage "the terminal symbol '$%K$' is not declared"
+  insert insertKey error message"the terminal symbol '$%K$' is already declared in %L"
+  search searchKey error message"the terminal symbol '$%K$' is not declared"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -52,7 +52,7 @@ extern cBDDnode * gNodeArray ;
 
 inline uint32_t nodeIndexForRoot (const uint32_t inRoot
                                   COMMA_LOCATION_ARGS) {
-  MF_AssertThere ((inRoot >> 1) <= C_BDD::getExistingNodesCount (), "nodeIndex (%lld) should be <= current node count (%lld)", inRoot >> 1, C_BDD::getExistingNodesCount ()) ;
+  macroAssertThere ((inRoot >> 1) <= C_BDD::getExistingNodesCount (), "nodeIndex (%lld) should be <= current node count (%lld)", inRoot >> 1, C_BDD::getExistingNodesCount ()) ;
   return inRoot >> 1 ;
 }
 

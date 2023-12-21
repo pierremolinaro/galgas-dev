@@ -63,7 +63,7 @@ before {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 case . "galgas"
-%errorMessage "a GALGAS 3 source file"
+message "a GALGAS 3 source file"
 %useGrammar galgas3Grammar
 ?sourceFilePath: @lstring inSourceFile {
 #--- Search for a project file in parent directory
@@ -90,7 +90,7 @@ case . "galgas"
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 case . "ggs"
-%errorMessage "a GALGAS 4 source file"
+message "a GALGAS 4 source file"
 %useGrammar galgas4Grammar ?sourceFilePath: @lstring inSourceFile {
 #--- Search for a project file in parent directory
   let parentDirectory = [[inSourceFile.string stringByDeletingLastPathComponent] stringByDeletingLastPathComponent]
@@ -116,7 +116,7 @@ case . "ggs"
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 case . "galgasTemplate"
-%errorMessage "a GALGAS Template source file"
+message "a GALGAS Template source file"
 %useGrammar templateGrammar
 ?sourceFilePath:@lstring inSourceFile {
   grammar templateGrammar (?*) in inSourceFile
@@ -129,7 +129,7 @@ case . "galgasTemplate"
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 case . "galgasProject"
-%errorMessage "a GALGAS project source file"
+message "a GALGAS project source file"
 %useGrammar galgas3ProjectGrammar
 ?sourceFilePath:@lstring inProjectSourceFile {
   parseAndAnalyzeProject (!inProjectSourceFile !galgas4: false !"" )
@@ -138,7 +138,7 @@ case . "galgasProject"
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 case . "ggsproject"
-%errorMessage "a GALGAS project source file"
+message "a GALGAS project source file"
 %useGrammar galgas3ProjectGrammar
 ?sourceFilePath: @lstring inProjectSourceFile {
   parseAndAnalyzeProject (!inProjectSourceFile !galgas4: true !"" )

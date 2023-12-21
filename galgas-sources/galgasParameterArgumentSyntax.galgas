@@ -13,7 +13,7 @@
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-syntax galgas3ParameterArgumentSyntax (galgasScanner) {
+syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
 
   #·····················································································································
 
@@ -88,7 +88,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner) {
         $*$
         var n = [count.bigint uint]
         if selector.string != "" then
-          error selector : "the selector should be '?'" fixit { %replaceBy "?" }
+          error selector : "the selector should be '?'" fixit { replace "?" }
         end
        if n == 0 then
           error count: "the count value should be > 0"
@@ -129,7 +129,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner) {
       $*$
       var n = [count.bigint uint]
       if selector.string != "" then
-        error selector : "the selector should be '!?'" fixit { %replaceBy "!?" }
+        error selector : "the selector should be '!?'" fixit { replace "!?" }
       end
       if n == 0 then
         error count: "the count value should be > 0"
@@ -284,7 +284,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner) {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-syntax galgas4ParameterArgumentSyntax (galgasScanner) {
+syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
 
   #·····················································································································
 
@@ -388,7 +388,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner) {
       $*$
       var n = [count.bigint uint]
       if selector.string != "" then
-        error selector : "the selector should be '?'" fixit { %replaceBy "?" }
+        error selector : "the selector should be '?'" fixit { replace "?" }
       end
      if n == 0 then
         error count: "the count value should be > 0"
@@ -432,7 +432,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner) {
       $*$
       var n = [count.bigint uint]
       if selector.string != "" then
-        error selector : "the selector should be '!?'" fixit { %replaceBy "!?" }
+        error selector : "the selector should be '!?'" fixit { replace "!?" }
       end
       if n == 0 then
         error count: "the count value should be > 0"

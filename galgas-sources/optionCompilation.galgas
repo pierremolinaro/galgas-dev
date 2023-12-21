@@ -30,7 +30,7 @@ refclass @optionComponentDeclarationAST : @semanticDeclarationAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 
-syntax galgas3OptionComponentSyntax (galgasScanner) {
+syntax galgas3OptionComponentSyntax (galgasScanner3) {
 
   #·····················································································································
 
@@ -93,7 +93,7 @@ syntax galgas3OptionComponentSyntax (galgasScanner) {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 
-syntax galgas4OptionComponentSyntax (galgasScanner) {
+syntax galgas4OptionComponentSyntax (galgasScanner4) {
 
   #·····················································································································
 
@@ -429,8 +429,8 @@ map @commandLineOptionMap { # the key is the option identifier
   public let @string mOptionString
   public let @string mComment
   public let @string mDefaultValue
-  %insertSetter insertKey %errorMessage "the '%K' command line option has been already declared in %L"
-  %searchMethod searchKey %errorMessage "the '%K' command line option is not declared"
+  insert insertKey error message"the '%K' command line option has been already declared in %L"
+  search searchKey error message"the '%K' command line option is not declared"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

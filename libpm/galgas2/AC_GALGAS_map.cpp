@@ -241,7 +241,7 @@ cMapNode::~cMapNode (void) {
   void cSharedMapRoot::checkMap (LOCATION_ARGS) const {
     uint32_t n = 0 ;
     checkNode (mRoot, n) ;
-    MF_AssertThere (n == mCount, "n (%lld) != mCount (%lld)", n, mCount) ;
+    macroAssertThere (n == mCount, "n (%lld) != mCount (%lld)", n, mCount) ;
   }
 #endif
 
@@ -1623,7 +1623,7 @@ static void enterAscendingEnumeration (cMapNode * inNode,
 void cSharedMapRoot::populateEnumerationArray (capCollectionElementArray & ioEnumerationArray) const {
   ioEnumerationArray.setCapacity (mCount) ;
   enterAscendingEnumeration (mRoot, ioEnumerationArray) ;
-  MF_Assert (mCount == ioEnumerationArray.count (), "mCount (%lld) != ioEnumerationArray.count () (%lld)", mCount, ioEnumerationArray.count ()) ;
+  macroAssert (mCount == ioEnumerationArray.count (), "mCount (%lld) != ioEnumerationArray.count () (%lld)", mCount, ioEnumerationArray.count ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------

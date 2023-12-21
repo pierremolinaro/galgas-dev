@@ -23,7 +23,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "utilities/M_machine.h"
-#include "utilities/MF_Assert.h"
+#include "utilities/macroAssert.h"
 #include "galgas2/SourceTextInString.h"
 
 //--------------------------------------------------------------------------------------------------

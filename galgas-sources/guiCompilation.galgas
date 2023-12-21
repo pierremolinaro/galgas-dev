@@ -53,7 +53,7 @@ list @guiCommandLineOptionList {
 map @extensionMap {
   public let @string mLexiqueName
   public let @uint mIndex
-  %insertSetter insertKey %errorMessage "the '%K' extension is already declared in %L"
+  insert insertKey error message"the '%K' extension is already declared in %L"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -96,7 +96,7 @@ list @galgasGUIComponentListAST {
 #! SYNTAX
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-syntax galgas3GuiComponentSyntax (galgasScanner) {
+syntax galgas3GuiComponentSyntax (galgasScanner3) {
 
   #·····················································································································
 
@@ -231,7 +231,7 @@ syntax galgas3GuiComponentSyntax (galgasScanner) {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-syntax galgas4GuiComponentSyntax (galgasScanner) {
+syntax galgas4GuiComponentSyntax (galgasScanner4) {
 
   #·····················································································································
 
@@ -385,7 +385,7 @@ struct @guiAnalysisContext {
 
 map @optionComponentMapForGeneration {
   public let @guiAnalysisContext mGuiComponentContext
-  %insertSetter insertKey %errorMessage "redefinition of the '%K' option component: it has been already declared in %L"
+  insert insertKey error message"redefinition of the '%K' option component: it has been already declared in %L"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

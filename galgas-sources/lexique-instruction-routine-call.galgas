@@ -48,7 +48,7 @@ syntax extension galgas3LexiqueComponentSyntax {
     while
       $!$ ?let selector
       if selector.string != "" then
-        error selector : "the selector should be '!'" fixit { %replaceBy "!" }
+        error selector : "the selector should be '!'" fixit { replace "!" }
       end
       let passingModeLocation = @location.here
       <lexical_output_effective_argument> ?let @lexicalRoutineOrFunctionFormalInputArgumentAST arg
@@ -56,7 +56,7 @@ syntax extension galgas3LexiqueComponentSyntax {
     while
       $!?$ ?let selector
       if selector.string != "" then
-        error selector : "the selector should be '!?'" fixit { %replaceBy "!?" }
+        error selector : "the selector should be '!?'" fixit { replace "!?" }
       end
       let passingModeLocation = @location.here
       $identifier$ ?let @lstring attributeName
@@ -99,7 +99,7 @@ syntax extension galgas4LexiqueComponentSyntax {
     while
       $!$ ?let selector
       if selector.string != "" then
-        error selector : "the selector should be '!'" fixit { %replaceBy "!" }
+        error selector : "the selector should be '!'" fixit { replace "!" }
       end
       let passingModeLocation = @location.here
       <lexical_output_effective_argument> ?let @lexicalRoutineOrFunctionFormalInputArgumentAST arg
@@ -107,7 +107,7 @@ syntax extension galgas4LexiqueComponentSyntax {
     while
       $!?$ ?let selector
       if selector.string != "" then
-        error selector : "the selector should be '!?'" fixit { %replaceBy "!?" }
+        error selector : "the selector should be '!?'" fixit { replace "!?" }
       end
       let passingModeLocation = @location.here
       $identifier$ ?let @lstring attributeName
@@ -278,7 +278,7 @@ override method @lexicalRoutineCallInstructionAST checkLexicalInstruction
   end
 #--- Check error messages are actually defined
   for (mValue) in self.mErrorMessageList do
-    with mValue in !?ioLexiqueAnalysisContext.mLexicalMessageMap %errorMessage searchKey  do
+    with mValue in !?ioLexiqueAnalysisContext.mLexicalMessageMap error message searchKey  do
       mMessageIsUsed = true
     end
   end

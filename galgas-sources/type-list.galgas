@@ -24,7 +24,7 @@ syntax extension galgas3DeclarationsSyntax {
     while
       $%usefull$
       if isUsefull then
-        error .here : "duplicate attribute" fixit { %remove }
+        error .here : "duplicate attribute" fixit { remove }
       end
       isUsefull = true
     end
@@ -66,7 +66,7 @@ syntax extension galgas4DeclarationsSyntax {
     while
       $%usefull$
       if isUsefull then
-        error .here : "duplicate attribute" fixit { %remove }
+        error .here : "duplicate attribute" fixit { remove }
       end
       isUsefull = true
     end

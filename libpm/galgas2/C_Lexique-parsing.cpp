@@ -656,13 +656,13 @@ static bool acceptExpectedTerminalForBottomUpParsingError (const int32_t inExpec
     while (loop) {
     //--- Perform reduce action
       const int32_t reduceAction = (int32_t) (- actionCode - 1) ;
-      MF_Assert (reduceAction >= 0, "reduceAction (%lld) < 0", reduceAction, 0) ;
+      macroAssert (reduceAction >= 0, "reduceAction (%lld) < 0", reduceAction, 0) ;
       const int32_t nonTerminal = inProductionsTable [2 * reduceAction] ;
       const int32_t reduceSize = inProductionsTable [2 * reduceAction + 1] ;
       stack.removeLastObjects (2 * reduceSize  COMMA_HERE) ;
    //--- Get Successor state
       const int32_t tempCurrentState = stack.lastObject (HERE) ;
-      MF_Assert (tempCurrentState >= 0, "tempCurrentState (%lld) < 0", tempCurrentState, 0) ;
+      macroAssert (tempCurrentState >= 0, "tempCurrentState (%lld) < 0", tempCurrentState, 0) ;
       const int32_t * successorTable = inSuccessorTable [tempCurrentState] ;
       int32_t newCurrentState = -1 ;
       while (((* successorTable) >= 0) && (newCurrentState < 0)) {
@@ -673,12 +673,12 @@ static bool acceptExpectedTerminalForBottomUpParsingError (const int32_t inExpec
         successorTable ++ ;
         successorTable ++ ;
       }
-      MF_Assert (newCurrentState >= 0, "newCurrentState (%lld) < 0", newCurrentState, 0) ;
+      macroAssert (newCurrentState >= 0, "newCurrentState (%lld) < 0", newCurrentState, 0) ;
       stack.appendObject (-1) ; // Enter any value
       stack.appendObject (newCurrentState) ; // Enter next current state
     //--- In the state, find action corresponding to expected terminal
       const int32_t currentState = stack (stack.count () - 1 COMMA_HERE) ;
-      MF_Assert (currentState >= 0, "currentState (%lld) < 0", currentState, 0) ;
+      macroAssert (currentState >= 0, "currentState (%lld) < 0", currentState, 0) ;
       const int32_t * actionTable = & (inActionTable [inActionTableIndex [currentState]]) ;
       actionCode = 0 ;
       while (((* actionTable) >= 0) && (actionCode == 0)) {
@@ -765,7 +765,7 @@ bool C_Lexique::performBottomUpParsing (const int32_t inActionTable [],
       }
     //--- Get Action code -----------------------------------
       const int32_t currentState = stack.lastObject (HERE) ;
-      MF_Assert (currentState >= 0, "currentState (%lld) < 0", currentState, 0) ;
+      macroAssert (currentState >= 0, "currentState (%lld) < 0", currentState, 0) ;
       const int32_t * actionTable = & (inActionTable [inActionTableIndex [currentState]]) ;
       int32_t actionCode = 0 ;
       while (((* actionTable) >= 0) && (actionCode == 0)) {
@@ -812,7 +812,7 @@ bool C_Lexique::performBottomUpParsing (const int32_t inActionTable [],
       }else if (actionCode < 0) {
       //--- Reduce action ------------------------------------
         actionCode = int32_t (- actionCode - 1) ;
-        MF_Assert (actionCode >= 0, "actionCode (%lld) < 0", actionCode, 0) ;
+        macroAssert (actionCode >= 0, "actionCode (%lld) < 0", actionCode, 0) ;
         const int32_t nonTerminal = inProductionsTable [2 * actionCode] ;
         const int32_t reduceSize = inProductionsTable [2 * actionCode + 1] ;
         const int32_t executionListLength = executionList.count () ;
@@ -844,7 +844,7 @@ bool C_Lexique::performBottomUpParsing (const int32_t inActionTable [],
         }
      //--- Get Successor state
         const int32_t tempCurrentState = stack.lastObject (HERE) ;
-        MF_Assert (tempCurrentState >= 0, "tempCurrentState (%lld) < 0", tempCurrentState, 0) ;
+        macroAssert (tempCurrentState >= 0, "tempCurrentState (%lld) < 0", tempCurrentState, 0) ;
         const int32_t * successorTable = inSuccessorTable [tempCurrentState] ;
         int32_t newCurrentState = -1 ;
         while (((* successorTable) >= 0) && (newCurrentState < 0)) {
@@ -855,7 +855,7 @@ bool C_Lexique::performBottomUpParsing (const int32_t inActionTable [],
           successorTable ++ ;
           successorTable ++ ;
         }
-        MF_Assert (newCurrentState >= 0, "newCurrentState (%lld) < 0", newCurrentState, 0) ;
+        macroAssert (newCurrentState >= 0, "newCurrentState (%lld) < 0", newCurrentState, 0) ;
         stack.appendObject (-1) ; // Enter any value
         stack.appendObject (newCurrentState) ; // Enter next current state
         errorSignalingUselessEntryOnTopOfStack += 2 ;

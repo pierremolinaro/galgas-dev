@@ -60,161 +60,161 @@ void enterOptions (NSMutableArray * ioBoolOptionArray,
 //                     P O P    U P    L I S T    D A T A
 //--------------------------------------------------------------------------------------------------
 
-fileprivate let gPopUpData_0_galgasScanner : [[UInt16]] = [
+fileprivate let gPopUpData_0_galgasScanner_33_ : [[UInt16]] = [
   [0, // Leading character count to strip
-    galgasScanner_1_before, 0,
-    galgasScanner_1__7B_, 0
+    galgasScanner3_1_before, 0,
+    galgasScanner3_1__7B_, 0
   ],
   [0, // Leading character count to strip
-    galgasScanner_1_after, 0,
-    galgasScanner_1__7B_, 0
+    galgasScanner3_1_after, 0,
+    galgasScanner3_1__7B_, 0
   ],
   [0, // Leading character count to strip
-    galgasScanner_1_map, 0,
-    galgasScanner_1__40_type, 0
+    galgasScanner3_1_map, 0,
+    galgasScanner3_1__40_type, 0
   ],
   [0, // Leading character count to strip
-    galgasScanner_1_boolset, 0,
-    galgasScanner_1__40_type, 0
+    galgasScanner3_1_boolset, 0,
+    galgasScanner3_1__40_type, 0
   ],
   [0, // Leading character count to strip
-    galgasScanner_1_list, 0,
-    galgasScanner_1__40_type, 0
+    galgasScanner3_1_list, 0,
+    galgasScanner3_1__40_type, 0
   ],
   [0, // Leading character count to strip
-    galgasScanner_1_sortedlist, 0,
-    galgasScanner_1__40_type, 0
+    galgasScanner3_1_sortedlist, 0,
+    galgasScanner3_1__40_type, 0
   ],
   [0, // Leading character count to strip
-    galgasScanner_1_enum, 0,
-    galgasScanner_1__40_type, 0
+    galgasScanner3_1_enum, 0,
+    galgasScanner3_1__40_type, 0
   ],
   [0, // Leading character count to strip
-    galgasScanner_1_class, 0,
-    galgasScanner_1__40_type, 0
+    galgasScanner3_1_class, 0,
+    galgasScanner3_1__40_type, 0
   ],
   [0, // Leading character count to strip
-    galgasScanner_1_refclass, 0,
-    galgasScanner_1__40_type, 0
+    galgasScanner3_1_refclass, 0,
+    galgasScanner3_1__40_type, 0
   ],
   [0, // Leading character count to strip
-    galgasScanner_1_extern, 0,
-    galgasScanner_1__40_type, 0
+    galgasScanner3_1_extern, 0,
+    galgasScanner3_1__40_type, 0
   ],
   [0, // Leading character count to strip
-    galgasScanner_1_struct, 0,
-    galgasScanner_1__40_type, 0
+    galgasScanner3_1_struct, 0,
+    galgasScanner3_1__40_type, 0
   ],
   [0, // Leading character count to strip
-    galgasScanner_1_rule, 0,
-    galgasScanner_1__3C_non_5F_terminal_3E_, 0
+    galgasScanner3_1_rule, 0,
+    galgasScanner3_1__3C_non_5F_terminal_3E_, 0
   ],
   [0, // Leading character count to strip
-    galgasScanner_1_proc, 0,
-    galgasScanner_1_identifier, 0
+    galgasScanner3_1_proc, 0,
+    galgasScanner3_1_identifier, 0
   ],
   [0, // Leading character count to strip
-    galgasScanner_1_func, 0,
-    galgasScanner_1_identifier, 0
+    galgasScanner3_1_func, 0,
+    galgasScanner3_1_identifier, 0
   ],
   [0, // Leading character count to strip
-    galgasScanner_1_func, 0,
-    galgasScanner_1__25_once, 0,
-    galgasScanner_1_identifier, 0
+    galgasScanner3_1_func, 0,
+    galgasScanner3_1__25_once, 0,
+    galgasScanner3_1_identifier, 0
   ],
   [0, // Leading character count to strip
-    galgasScanner_1_func, 0,
-    galgasScanner_1__25_once, 0,
-    galgasScanner_1__25_usefull, 0,
-    galgasScanner_1_identifier, 0
+    galgasScanner3_1_func, 0,
+    galgasScanner3_1__25_once, 0,
+    galgasScanner3_1__25_usefull, 0,
+    galgasScanner3_1_identifier, 0
   ],
   [0, // Leading character count to strip
-    galgasScanner_1_func, 0,
-    galgasScanner_1__25_usefull, 0,
-    galgasScanner_1_identifier, 0
+    galgasScanner3_1_func, 0,
+    galgasScanner3_1__25_usefull, 0,
+    galgasScanner3_1_identifier, 0
   ],
   [0, // Leading character count to strip
-    galgasScanner_1_func, 0,
-    galgasScanner_1__25_usefull, 0,
-    galgasScanner_1__25_once, 0,
-    galgasScanner_1_identifier, 0
+    galgasScanner3_1_func, 0,
+    galgasScanner3_1__25_usefull, 0,
+    galgasScanner3_1__25_once, 0,
+    galgasScanner3_1_identifier, 0
   ],
   [0, // Leading character count to strip
-    galgasScanner_1_filewrapper, 0,
-    galgasScanner_1_identifier, 0,
-    galgasScanner_1_in, 0
+    galgasScanner3_1_filewrapper, 0,
+    galgasScanner3_1_identifier, 0,
+    galgasScanner3_1_in, 0
   ],
   [0, // Leading character count to strip
-    galgasScanner_1_abstract, 0,
-    galgasScanner_1_method, 0,
-    galgasScanner_1__40_type, 0,
-    galgasScanner_1_identifier, 0
+    galgasScanner3_1_abstract, 0,
+    galgasScanner3_1_method, 0,
+    galgasScanner3_1__40_type, 0,
+    galgasScanner3_1_identifier, 0
   ],
   [0, // Leading character count to strip
-    galgasScanner_1_override, 0,
-    galgasScanner_1_method, 0,
-    galgasScanner_1__40_type, 0,
-    galgasScanner_1_identifier, 0
+    galgasScanner3_1_override, 0,
+    galgasScanner3_1_method, 0,
+    galgasScanner3_1__40_type, 0,
+    galgasScanner3_1_identifier, 0
   ],
   [0, // Leading character count to strip
-    galgasScanner_1_method, 0,
-    galgasScanner_1__40_type, 0,
-    galgasScanner_1_identifier, 0
+    galgasScanner3_1_method, 0,
+    galgasScanner3_1__40_type, 0,
+    galgasScanner3_1_identifier, 0
   ],
   [0, // Leading character count to strip
-    galgasScanner_1_abstract, 0,
-    galgasScanner_1_getter, 0,
-    galgasScanner_1__40_type, 0,
-    galgasScanner_1_identifier, 0
+    galgasScanner3_1_abstract, 0,
+    galgasScanner3_1_getter, 0,
+    galgasScanner3_1__40_type, 0,
+    galgasScanner3_1_identifier, 0
   ],
   [0, // Leading character count to strip
-    galgasScanner_1_override, 0,
-    galgasScanner_1_getter, 0,
-    galgasScanner_1__40_type, 0,
-    galgasScanner_1_identifier, 0
+    galgasScanner3_1_override, 0,
+    galgasScanner3_1_getter, 0,
+    galgasScanner3_1__40_type, 0,
+    galgasScanner3_1_identifier, 0
   ],
   [0, // Leading character count to strip
-    galgasScanner_1_getter, 0,
-    galgasScanner_1__40_type, 0,
-    galgasScanner_1_identifier, 0
+    galgasScanner3_1_getter, 0,
+    galgasScanner3_1__40_type, 0,
+    galgasScanner3_1_identifier, 0
   ],
   [0, // Leading character count to strip
-    galgasScanner_1_abstract, 0,
-    galgasScanner_1_setter, 0,
-    galgasScanner_1__40_type, 0,
-    galgasScanner_1_identifier, 0
+    galgasScanner3_1_abstract, 0,
+    galgasScanner3_1_setter, 0,
+    galgasScanner3_1__40_type, 0,
+    galgasScanner3_1_identifier, 0
   ],
   [0, // Leading character count to strip
-    galgasScanner_1_override, 0,
-    galgasScanner_1_setter, 0,
-    galgasScanner_1__40_type, 0,
-    galgasScanner_1_identifier, 0
+    galgasScanner3_1_override, 0,
+    galgasScanner3_1_setter, 0,
+    galgasScanner3_1__40_type, 0,
+    galgasScanner3_1_identifier, 0
   ],
   [0, // Leading character count to strip
-    galgasScanner_1_setter, 0,
-    galgasScanner_1__40_type, 0,
-    galgasScanner_1_identifier, 0
+    galgasScanner3_1_setter, 0,
+    galgasScanner3_1__40_type, 0,
+    galgasScanner3_1_identifier, 0
   ],
   [0, // Leading character count to strip
-    galgasScanner_1_syntax, 0,
-    galgasScanner_1_extension, 0,
-    galgasScanner_1_identifier, 0
+    galgasScanner3_1_syntax, 0,
+    galgasScanner3_1_extension, 0,
+    galgasScanner3_1_identifier, 0
   ],
   [0, // Leading character count to strip
-    galgasScanner_1_case, 0,
-    galgasScanner_1__2E_, 0,
-    galgasScanner_1__22_string_22_, 0
+    galgasScanner3_1_case, 0,
+    galgasScanner3_1__2E_, 0,
+    galgasScanner3_1__22_string_22_, 0
   ],
   [1, // Leading character count to strip
-    galgasScanner_1_commentMark, 32
+    galgasScanner3_1_commentMark, 32
   ],
   [0, // Leading character count to strip
-    galgasScanner_1__24_terminal_24_, 0,
-    galgasScanner_1__21_, 65535
+    galgasScanner3_1__24_terminal_24_, 0,
+    galgasScanner3_1__21_, 65535
   ],
   [0, // Leading character count to strip
-    galgasScanner_1__24_terminal_24_, 0,
-    galgasScanner_1_error, 65535
+    galgasScanner3_1__24_terminal_24_, 0,
+    galgasScanner3_1_error, 65535
   ]
 ]
 
@@ -222,7 +222,7 @@ fileprivate let gPopUpData_0_galgasScanner : [[UInt16]] = [
 //                            Lexique interface
 //--------------------------------------------------------------------------------------------------
   
-class SWIFT_Tokenizer_0_galgasScanner : SWIFT_Lexique_galgasScanner, SWIFT_Tokenizer_Protocol {
+class SWIFT_Tokenizer_0_galgasScanner3 : SWIFT_Lexique_galgasScanner3, SWIFT_Tokenizer_Protocol {
 
 //- (NSUInteger) textMacroCount ;
 
@@ -233,7 +233,7 @@ class SWIFT_Tokenizer_0_galgasScanner : SWIFT_Lexique_galgasScanner, SWIFT_Token
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func popupListData () -> [[UInt16]] {
-    return gPopUpData_0_galgasScanner
+    return gPopUpData_0_galgasScanner_33_
   }
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -273,7 +273,7 @@ class SWIFT_Tokenizer_0_galgasScanner : SWIFT_Lexique_galgasScanner, SWIFT_Token
 
 //--------------------------------------------------------------------------------------------------
 
-/* @implementation OC_Tokenizer_0_galgasScanner
+/* @implementation OC_Tokenizer_0_galgasScanner3
 
 //--------------------------------------------------------------------------------------------------
 
@@ -307,7 +307,7 @@ class SWIFT_Tokenizer_0_galgasScanner : SWIFT_Lexique_galgasScanner, SWIFT_Token
     @"enum @aType {\n  constant1, constant2\n}\n",
     @"list @type {\n  public let @aType mProperty\n}\n",
     @"list @type {\n  public let @aType mAProperty\n}\nlistmap @myListMap (@aList)\n",
-    @"map @type {\n  public let @aType mProperty\n  %insertSetter insertKey %errorMessage \"the '%K' key is already declared in %L\"\n  %searchMethod searchKey %errorMessage \"there is no '%K' key\"\n}\n",
+    @"map @type {\n  public let @aType mProperty\n  insert insertKey error message\"the '%K' key is already declared in %L\"\n  search searchKey error message\"there is no '%K' key\"\n}\n",
     @"sortedlist @type {\n  public let @string mFirstAttribute\n  public let @bool mSecondAttribute\n}{\n  mFirstAttribute >, mSecondAttribute <\n}\n",
     @"struct @type {\n  public let @aType mProperty\n}\n",
     nullptr
@@ -423,17 +423,17 @@ class SWIFT_Tokenizer_1_galgasTemplateScanner : SWIFT_Lexique_galgasTemplateScan
 func tokenizerFor (extension inExtension : String) -> SWIFT_Tokenizer_Protocol? {
   var result : SWIFT_Tokenizer_Protocol? = nil
   if inExtension == "galgas" {
-    result = SWIFT_Tokenizer_0_galgasScanner ()
+    result = SWIFT_Tokenizer_0_galgasScanner3 ()
   }else if inExtension == "galgasProject" {
-    result = SWIFT_Tokenizer_0_galgasScanner ()
+    result = SWIFT_Tokenizer_0_galgasScanner3 ()
   }else if inExtension == "galgasTemplate" {
     result = SWIFT_Tokenizer_1_galgasTemplateScanner ()
   }else if inExtension == "ggs" {
-    result = SWIFT_Tokenizer_0_galgasScanner ()
+    result = SWIFT_Tokenizer_0_galgasScanner3 ()
   }else if inExtension == "ggsTemplate" {
     result = SWIFT_Tokenizer_1_galgasTemplateScanner ()
   }else if inExtension == "ggsproject" {
-    result = SWIFT_Tokenizer_0_galgasScanner ()
+    result = SWIFT_Tokenizer_0_galgasScanner3 ()
   }
   return result
 }
@@ -442,7 +442,7 @@ func tokenizerFor (extension inExtension : String) -> SWIFT_Tokenizer_Protocol? 
 
 func tokenizers () -> [SWIFT_Tokenizer_Protocol] {
   return [
-    SWIFT_Tokenizer_0_galgasScanner (),
+    SWIFT_Tokenizer_0_galgasScanner3 (),
     SWIFT_Tokenizer_1_galgasTemplateScanner ()
   ]
 }

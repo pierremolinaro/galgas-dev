@@ -200,7 +200,7 @@ override method @terminalCheckInstruction analyzeSyntaxInstruction
 #---
   for (mValue0 *) in self.mIndexingKeyList do
     if not [inIndexNameSet hasKey !mValue0.string] then
-      error mValue0 : "the '" + mValue0 + "' indexing name is not declared by the lexique" fixit { %replaceBy inIndexNameSet }
+      error mValue0 : "the '" + mValue0 + "' indexing name is not declared by the lexique" fixit { replace inIndexNameSet }
     end
   end
 #--- Check syntax directed translation destination variable

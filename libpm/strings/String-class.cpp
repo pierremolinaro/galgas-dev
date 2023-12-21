@@ -121,11 +121,11 @@ mEncodedCString (nullptr),
 mString (nullptr) {
   macroValidPointer (inEmbeddedString) ;
   macroValidPointer (inEmbeddedString->mString) ;
-  MF_Assert (inCapacity > inEmbeddedString->mLength, "inCapacity (%lld) < inEmbeddedString->mLength (%lld)", inCapacity, inEmbeddedString->mLength) ;
+  macroAssert (inCapacity > inEmbeddedString->mLength, "inCapacity (%lld) < inEmbeddedString->mLength (%lld)", inCapacity, inEmbeddedString->mLength) ;
   const uint32_t newCapacity = stringGoodSize (inEmbeddedString->mCapacity, inCapacity) ;
   macroMyNewPODArray (mString, utf32, newCapacity) ;
   mCapacity = newCapacity ;
-  MF_Assert (inEmbeddedString->mLength < mCapacity, "inEmbeddedString->mLength (%lld) >= mCapacity (%lld)", inEmbeddedString->mLength, mCapacity) ;
+  macroAssert (inEmbeddedString->mLength < mCapacity, "inEmbeddedString->mLength (%lld) >= mCapacity (%lld)", inEmbeddedString->mLength, mCapacity) ;
   for (uint32_t i=0 ; i<=inEmbeddedString->mLength ; i++) {
     mString [i] = inEmbeddedString->mString [i] ;
   }
@@ -144,18 +144,18 @@ cEmbeddedString::~cEmbeddedString (void) {
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cEmbeddedString::checkEmbeddedString (LOCATION_ARGS) const {
     if (mCapacity == 0) {
-      MF_AssertThere (UNICODE_VALUE (mString [0]) == '\0', "mString [0] (%lld) != '\\0'",
+      macroAssertThere (UNICODE_VALUE (mString [0]) == '\0', "mString [0] (%lld) != '\\0'",
                       (int32_t) UNICODE_VALUE (mString [0]), '\0') ;
-      MF_AssertThere (mLength == 0, "mLength (%ld) != 0", mLength, 0) ;
+      macroAssertThere (mLength == 0, "mLength (%ld) != 0", mLength, 0) ;
     }else{
-      MF_AssertThere (mLength <= mCapacity, "mLength (%ld) > mCapacity (%ld)", mLength, mCapacity) ;
-      MF_AssertThere (UNICODE_VALUE (mString [mLength]) == '\0',
+      macroAssertThere (mLength <= mCapacity, "mLength (%ld) > mCapacity (%ld)", mLength, mCapacity) ;
+      macroAssertThere (UNICODE_VALUE (mString [mLength]) == '\0',
                       "mString [mLength] == %ld != '\\0'",
                       (int32_t) UNICODE_VALUE (mString [mLength]), '\0') ;
       if (mEncodedCString != nullptr) {
         macroValidPointer (mEncodedCString) ;
         for (uint32_t i=0 ; i<=mLength ; i++) {
-          MF_AssertThere (UNICODE_VALUE (mString [i]) == (uint32_t) mEncodedCString [i],
+          macroAssertThere (UNICODE_VALUE (mString [i]) == (uint32_t) mEncodedCString [i],
                           "mString [i] (%ld) != mEncodedCString [i] (%ld)",
                           UNICODE_VALUE (mString [i]), (uint32_t) mEncodedCString [i]) ;
         }
@@ -317,8 +317,8 @@ utf32 String::operator () (const int32_t inIndex COMMA_LOCATION_ARGS) const {
     checkString (THERE) ;
   #endif
   macroValidSharedObjectThere (mEmbeddedString, cEmbeddedString) ;
-  MF_AssertThere (inIndex >= 0, "inIndex (%ld) < 0", inIndex, 0) ;
-  MF_AssertThere ((uint32_t) inIndex < mEmbeddedString->mLength,
+  macroAssertThere (inIndex >= 0, "inIndex (%ld) < 0", inIndex, 0) ;
+  macroAssertThere ((uint32_t) inIndex < mEmbeddedString->mLength,
                  "inIndex (%ld) >= string length (%ld)",
                  inIndex, mEmbeddedString->mLength) ;
   return mEmbeddedString->mString [inIndex] ;
@@ -327,7 +327,7 @@ utf32 String::operator () (const int32_t inIndex COMMA_LOCATION_ARGS) const {
 //--------------------------------------------------------------------------------------------------
 
 utf32 String::readCharOrNul (const int32_t inIndex COMMA_LOCATION_ARGS) const {
-  MF_AssertThere (inIndex >= 0, "inIndex (%ld) < 0", inIndex, 0) ;
+  macroAssertThere (inIndex >= 0, "inIndex (%ld) < 0", inIndex, 0) ;
   return ((mEmbeddedString == nullptr) || ((uint32_t) inIndex >= mEmbeddedString->mLength))
     ? TO_UNICODE ('\0')
     : mEmbeddedString->mString [inIndex] ;
@@ -341,7 +341,7 @@ utf32 String::readCharOrNul (const int32_t inIndex COMMA_LOCATION_ARGS) const {
 
 utf32 String::lastCharacter (LOCATION_ARGS) const {
   const uint32_t stringLength = mEmbeddedString->mLength ;
-  MF_AssertThere (stringLength > 0, "length == 0", 0, 0) ;
+  macroAssertThere (stringLength > 0, "length == 0", 0, 0) ;
   return (stringLength == 0) ? TO_UNICODE ('\0') : mEmbeddedString->mString [stringLength - 1] ;
 }
 
@@ -459,7 +459,7 @@ void String::insulateEmbeddedString (const uint32_t inNewCapacity) const {
       checkString (HERE) ;
     #endif
   }
-  MF_Assert (capacity () >= inNewCapacity, "capacity (%lld) < inNewCapacity (%lld)", capacity (), inNewCapacity) ;
+  macroAssert (capacity () >= inNewCapacity, "capacity (%lld) < inNewCapacity (%lld)", capacity (), inNewCapacity) ;
   macroValidSharedObject (mEmbeddedString, cEmbeddedString) ;
   macroUniqueSharedObject (mEmbeddedString) ;
 }
@@ -535,7 +535,7 @@ void String::setCapacity (const uint32_t inNewCapacity) {
       checkString (HERE) ;
     #endif
   }
-  MF_Assert (capacity () >= inNewCapacity, "capacity (%lld) < inNewCapacity (%lld)", capacity (), inNewCapacity) ;
+  macroAssert (capacity () >= inNewCapacity, "capacity (%lld) < inNewCapacity (%lld)", capacity (), inNewCapacity) ;
   if (mEmbeddedString != nullptr) {
     macroValidSharedObject (mEmbeddedString, cEmbeddedString) ;
     macroUniqueSharedObject (mEmbeddedString) ;
@@ -552,7 +552,7 @@ void String::performActualUnicodeArrayOutput (const utf32 * inUTF32CharArray,
   if (inArrayCount > 0) {
     const int32_t kNewLength = length () + inArrayCount ;
     insulateEmbeddedString ((uint32_t) (kNewLength + 1)) ;
-    MF_Assert (mEmbeddedString->isUniquelyReferenced (), "mEmbeddedString->isUniquelyReferenced () is false", 0, 0) ;
+    macroAssert (mEmbeddedString->isUniquelyReferenced (), "mEmbeddedString->isUniquelyReferenced () is false", 0, 0) ;
     for (int32_t i=0 ; i<inArrayCount ; i++) {
       mEmbeddedString->mString [mEmbeddedString->mLength + (uint32_t) i] = inUTF32CharArray [i] ;
     }
@@ -561,7 +561,7 @@ void String::performActualUnicodeArrayOutput (const utf32 * inUTF32CharArray,
     #ifndef DO_NOT_GENERATE_CHECKINGS
       checkString (HERE) ;
     #endif
-    MF_Assert (capacity () > (uint32_t) kNewLength, "capacity (%lld) <= kNewLength (%lld)", capacity (), kNewLength) ;
+    macroAssert (capacity () > (uint32_t) kNewLength, "capacity (%lld) <= kNewLength (%lld)", capacity (), kNewLength) ;
     macroUniqueSharedObject (mEmbeddedString) ;
   }
 }
@@ -594,7 +594,7 @@ void String::performActualCharArrayOutput (const char * inCharArray,
     #ifndef DO_NOT_GENERATE_CHECKINGS
       checkString (HERE) ;
     #endif
-    MF_Assert (capacity () > (uint32_t) newLength, "capacity (%lld) <= kNewLength (%lld)", capacity (), newLength) ;
+    macroAssert (capacity () > (uint32_t) newLength, "capacity (%lld) <= kNewLength (%lld)", capacity (), newLength) ;
     macroUniqueSharedObject (mEmbeddedString) ;
   }
 }
@@ -613,9 +613,9 @@ void String::setUnicodeCharacterAtIndex (const utf32 inCharacter,
     checkString (HERE) ;
   #endif
   macroValidPointerThere (mEmbeddedString) ;
-  MF_AssertThere (inIndex >= 0, "inIndex (%ld) < 0", inIndex, 0) ;
+  macroAssertThere (inIndex >= 0, "inIndex (%ld) < 0", inIndex, 0) ;
   if (nullptr != mEmbeddedString) {
-    MF_AssertThere ((uint32_t) inIndex < mEmbeddedString->mLength,
+    macroAssertThere ((uint32_t) inIndex < mEmbeddedString->mLength,
                     "inIndex (%ld) >= string length (%ld)",
                     inIndex, mEmbeddedString->mLength) ;
     insulateEmbeddedString (mEmbeddedString->mCapacity) ;
@@ -639,11 +639,11 @@ void String::suppress (const int32_t inLocation,
       checkString (HERE) ;
     #endif
     macroValidPointerThere (mEmbeddedString) ;
-    MF_AssertThere (inLocation >= 0, "inLocation (%ld) < 0", inLocation, 0) ;
-    MF_AssertThere ((uint32_t) inLocation <= mEmbeddedString->mLength,
+    macroAssertThere (inLocation >= 0, "inLocation (%ld) < 0", inLocation, 0) ;
+    macroAssertThere ((uint32_t) inLocation <= mEmbeddedString->mLength,
                    "inLocation (%ld) > mLength (%ld)",
                     inLocation, mEmbeddedString->mLength) ;
-    MF_AssertThere ((uint32_t) inLength <= mEmbeddedString->mLength,
+    macroAssertThere ((uint32_t) inLength <= mEmbeddedString->mLength,
                    "inLength (%ld) > string length (%ld)",
                     inLength, mEmbeddedString->mLength) ;
     const int32_t bytesToMove = 1 + ((int32_t) mEmbeddedString->mLength) - inLength - inLocation ;
@@ -651,7 +651,7 @@ void String::suppress (const int32_t inLocation,
       for (int32_t i=0 ; i<bytesToMove ; i++) {
         mEmbeddedString->mString [inLocation + i] = mEmbeddedString->mString [inLocation + i + inLength] ;
       }
-      MF_Assert (mEmbeddedString->mLength >= (uint32_t) inLength,
+      macroAssert (mEmbeddedString->mLength >= (uint32_t) inLength,
                  "mLength (%lld) < inLength (%lld)",
                  mEmbeddedString->mLength, inLength) ;
       mEmbeddedString->mLength -= (uint32_t) inLength ;
@@ -678,8 +678,8 @@ void String::insertCharacterAtIndex (const utf32 inChar,
     checkString (HERE) ;
   #endif
   macroValidPointerThere (mEmbeddedString) ;
-  MF_AssertThere (inIndex >= 0, "inIndex (%ld) < 0", inIndex, 0) ;
-  MF_AssertThere ((uint32_t) inIndex <= mEmbeddedString->mLength,
+  macroAssertThere (inIndex >= 0, "inIndex (%ld) < 0", inIndex, 0) ;
+  macroAssertThere ((uint32_t) inIndex <= mEmbeddedString->mLength,
                  "inIndex (%ld) > mLength (%ld)",
                   inIndex, mEmbeddedString->mLength) ;
   const int32_t bytesToMove = 1 + ((int32_t) mEmbeddedString->mLength) - inIndex ;

@@ -181,7 +181,7 @@
    <Unit filename="../libpm/utilities/SharedObject.cpp" />
    <Unit filename="../libpm/utilities/C_Data.cpp" />
    <Unit filename="../libpm/utilities/F_DisplayException.cpp" />
-   <Unit filename="../libpm/utilities/MF_Assert.cpp" />
+   <Unit filename="../libpm/utilities/macroAssert.cpp" />
    <Unit filename="../libpm/utilities/F_GetPrime.cpp" />
    <Unit filename="../libpm/utilities/MF_MemoryControl.cpp" />
    <Unit filename="../libpm/utilities/cpp-allocation.cpp" />
