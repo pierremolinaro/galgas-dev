@@ -27,11 +27,8 @@ project (1:2:3) -> "logo" {
   %makefile-x86linux32-on-macosx
   %makefile-x86linux64-on-macosx
   %makefile-win32-on-macosx
-  %makefile-msys32-on-windows
-  %Mavericks
   %applicationBundleBase : "fr.what"
   %codeblocks-windows
-  %codeblocks-mac
 
 #--- Source files
   "galgas-sources/logo-lexique.galgas"
@@ -120,7 +117,6 @@ project (0:0:1) -> "logo" {
 Comme GALGAS est développé sur Mac, c'est pour cette plateforme que l'on trouve le plus grand nombre de cibles :
 \begin{itemize}
   \item application Cocoa~;
-  \item compilation via \texttt{Code{}::Blocks}~;
   \item compilation en ligne de commande~;
   \item cross-compilation pour Win32~;
   \item cross-compilation pour Linux32~;
@@ -137,16 +133,6 @@ La déclaration \ggs!%makefile-macosx! engendre une cible pour obtenir un exécu
 \begin{galgas}
 project (0:0:1) -> "logo" {
   %makefile-macosx
-  ...
-}
-\end{galgas}
-
-\subsubsection{\texttt{Code{}::Blocks} pour Mac}
-
-L'option \ggs!%codeblocks-mac! engendre une cible qui peut être compilée sur Mac en utilisant \texttt{Code{}::Blocks}\footnote{\url{http://www.codeblocks.org}}.
-\begin{galgas}
-project (0:0:1) -> "logo" {
-  %codeblocks-linux32
   ...
 }
 \end{galgas}
