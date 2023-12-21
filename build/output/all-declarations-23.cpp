@@ -121,10 +121,10 @@ void cPtr_externTypeDeclarationAST::method_enterDeclarationInGraph (GALGAS_seman
                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_externTypeDeclarationAST temp_0 = this ;
   const GALGAS_externTypeDeclarationAST temp_1 = this ;
-  GALGAS_lstring var_key_12997 = GALGAS_lstring::constructor_new (GALGAS_string ("@").add_operation (temp_0.readProperty_mExternTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-extern.galgas", 322)), temp_1.readProperty_mExternTypeName ().readProperty_location (), inCompiler  COMMA_SOURCE_FILE ("type-extern.galgas", 322)) ;
+  GALGAS_lstring var_key_13006 = GALGAS_lstring::constructor_new (GALGAS_string ("@").add_operation (temp_0.readProperty_mExternTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-extern.galgas", 323)), temp_1.readProperty_mExternTypeName ().readProperty_location (), inCompiler  COMMA_SOURCE_FILE ("type-extern.galgas", 323)) ;
   {
   const GALGAS_externTypeDeclarationAST temp_2 = this ;
-  ioArgument_ioSemanticTypePrecedenceGraph.setter_addNode (var_key_12997, temp_2, inCompiler COMMA_SOURCE_FILE ("type-extern.galgas", 323)) ;
+  ioArgument_ioSemanticTypePrecedenceGraph.setter_addNode (var_key_13006, temp_2, inCompiler COMMA_SOURCE_FILE ("type-extern.galgas", 324)) ;
   }
 }
 //--------------------------------------------------------------------------------------------------
@@ -140,99 +140,99 @@ void cPtr_externTypeDeclarationAST::method_enterDeclarationInSemanticContext (co
                                                                               GALGAS_semanticContext & /* ioArgument_ioSemanticContext */,
                                                                               Compiler * inCompiler
                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_getterMap var_getterMap_13913 ;
+  GALGAS_getterMap var_getterMap_13922 ;
   {
-  routine_commonGetterMapForAllTypes (ioArgument_ioTypeMap, var_getterMap_13913, inCompiler  COMMA_SOURCE_FILE ("type-extern.galgas", 337)) ;
+  routine_commonGetterMapForAllTypes (ioArgument_ioTypeMap, var_getterMap_13922, inCompiler  COMMA_SOURCE_FILE ("type-extern.galgas", 338)) ;
   }
-  GALGAS_constructorMap var_constructorMap_13947 = GALGAS_constructorMap::constructor_emptyMap (SOURCE_FILE ("type-extern.galgas", 338)) ;
-  GALGAS_setterMap var_setterMap_13984 = GALGAS_setterMap::constructor_emptyMap (SOURCE_FILE ("type-extern.galgas", 339)) ;
-  GALGAS_instanceMethodMap var_instanceMethodMap_14024 = GALGAS_instanceMethodMap::constructor_emptyMap (SOURCE_FILE ("type-extern.galgas", 340)) ;
+  GALGAS_constructorMap var_constructorMap_13956 = GALGAS_constructorMap::constructor_emptyMap (SOURCE_FILE ("type-extern.galgas", 339)) ;
+  GALGAS_setterMap var_setterMap_13993 = GALGAS_setterMap::constructor_emptyMap (SOURCE_FILE ("type-extern.galgas", 340)) ;
+  GALGAS_instanceMethodMap var_instanceMethodMap_14033 = GALGAS_instanceMethodMap::constructor_emptyMap (SOURCE_FILE ("type-extern.galgas", 341)) ;
   const GALGAS_externTypeDeclarationAST temp_0 = this ;
-  cEnumerator_externTypeConstructorList enumerator_14105 (temp_0.readProperty_mExternTypeConstructorList (), kENUMERATION_UP) ;
-  while (enumerator_14105.hasCurrentObject ()) {
-    GALGAS_unifiedTypeMapEntry var_returnedTypeEntry_14208 ;
+  cEnumerator_externTypeConstructorList enumerator_14114 (temp_0.readProperty_mExternTypeConstructorList (), kENUMERATION_UP) ;
+  while (enumerator_14114.hasCurrentObject ()) {
+    GALGAS_unifiedTypeMapEntry var_returnedTypeEntry_14217 ;
     {
-    extensionSetter_makeEntry (ioArgument_ioTypeMap, enumerator_14105.current_mResultTypeName (HERE), var_returnedTypeEntry_14208, inCompiler COMMA_SOURCE_FILE ("type-extern.galgas", 343)) ;
+    extensionSetter_makeEntry (ioArgument_ioTypeMap, enumerator_14114.current_mResultTypeName (HERE), var_returnedTypeEntry_14217, inCompiler COMMA_SOURCE_FILE ("type-extern.galgas", 344)) ;
     }
-    GALGAS_functionSignature var_arguments_14261 = GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("type-extern.galgas", 345)) ;
-    cEnumerator_typeNameFormalParameterNameList enumerator_14326 (enumerator_14105.current_mParameterList (HERE), kENUMERATION_UP) ;
-    while (enumerator_14326.hasCurrentObject ()) {
-      GALGAS_unifiedTypeMapEntry var_argumentTypeEntry_14429 ;
+    GALGAS_functionSignature var_arguments_14270 = GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("type-extern.galgas", 346)) ;
+    cEnumerator_typeNameFormalParameterNameList enumerator_14335 (enumerator_14114.current_mParameterList (HERE), kENUMERATION_UP) ;
+    while (enumerator_14335.hasCurrentObject ()) {
+      GALGAS_unifiedTypeMapEntry var_argumentTypeEntry_14438 ;
       {
-      extensionSetter_makeEntry (ioArgument_ioTypeMap, enumerator_14326.current_mFormalParameterTypeName (HERE), var_argumentTypeEntry_14429, inCompiler COMMA_SOURCE_FILE ("type-extern.galgas", 347)) ;
+      extensionSetter_makeEntry (ioArgument_ioTypeMap, enumerator_14335.current_mFormalParameterTypeName (HERE), var_argumentTypeEntry_14438, inCompiler COMMA_SOURCE_FILE ("type-extern.galgas", 348)) ;
       }
-      var_arguments_14261.addAssign_operation (enumerator_14326.current_mFormalSelector (HERE), var_argumentTypeEntry_14429, enumerator_14326.current_mFormalParameterName (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("type-extern.galgas", 348)) ;
-      enumerator_14326.gotoNextObject () ;
+      var_arguments_14270.addAssign_operation (enumerator_14335.current_mFormalSelector (HERE), var_argumentTypeEntry_14438, enumerator_14335.current_mFormalParameterName (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("type-extern.galgas", 349)) ;
+      enumerator_14335.gotoNextObject () ;
     }
     {
-    var_constructorMap_13947.setter_insertKey (enumerator_14105.current_mConstructorName (HERE), var_arguments_14261, GALGAS_bool (true), var_returnedTypeEntry_14208, inCompiler COMMA_SOURCE_FILE ("type-extern.galgas", 351)) ;
+    var_constructorMap_13956.setter_insertKey (enumerator_14114.current_mConstructorName (HERE), var_arguments_14270, GALGAS_bool (true), var_returnedTypeEntry_14217, inCompiler COMMA_SOURCE_FILE ("type-extern.galgas", 352)) ;
     }
-    enumerator_14105.gotoNextObject () ;
+    enumerator_14114.gotoNextObject () ;
   }
   const GALGAS_externTypeDeclarationAST temp_1 = this ;
-  cEnumerator_externTypeGetterList enumerator_14751 (temp_1.readProperty_mExternTypeGetterList (), kENUMERATION_UP) ;
-  while (enumerator_14751.hasCurrentObject ()) {
-    GALGAS_unifiedTypeMapEntry var_returnedTypeEntry_14849 ;
+  cEnumerator_externTypeGetterList enumerator_14760 (temp_1.readProperty_mExternTypeGetterList (), kENUMERATION_UP) ;
+  while (enumerator_14760.hasCurrentObject ()) {
+    GALGAS_unifiedTypeMapEntry var_returnedTypeEntry_14858 ;
     {
-    extensionSetter_makeEntry (ioArgument_ioTypeMap, enumerator_14751.current_mResultTypeName (HERE), var_returnedTypeEntry_14849, inCompiler COMMA_SOURCE_FILE ("type-extern.galgas", 360)) ;
+    extensionSetter_makeEntry (ioArgument_ioTypeMap, enumerator_14760.current_mResultTypeName (HERE), var_returnedTypeEntry_14858, inCompiler COMMA_SOURCE_FILE ("type-extern.galgas", 361)) ;
     }
-    GALGAS_functionSignature var_arguments_14902 = GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("type-extern.galgas", 362)) ;
-    cEnumerator_typeNameFormalParameterNameList enumerator_14967 (enumerator_14751.current_mParameterList (HERE), kENUMERATION_UP) ;
-    while (enumerator_14967.hasCurrentObject ()) {
-      GALGAS_unifiedTypeMapEntry var_argumentTypeEntry_15070 ;
+    GALGAS_functionSignature var_arguments_14911 = GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("type-extern.galgas", 363)) ;
+    cEnumerator_typeNameFormalParameterNameList enumerator_14976 (enumerator_14760.current_mParameterList (HERE), kENUMERATION_UP) ;
+    while (enumerator_14976.hasCurrentObject ()) {
+      GALGAS_unifiedTypeMapEntry var_argumentTypeEntry_15079 ;
       {
-      extensionSetter_makeEntry (ioArgument_ioTypeMap, enumerator_14967.current_mFormalParameterTypeName (HERE), var_argumentTypeEntry_15070, inCompiler COMMA_SOURCE_FILE ("type-extern.galgas", 364)) ;
+      extensionSetter_makeEntry (ioArgument_ioTypeMap, enumerator_14976.current_mFormalParameterTypeName (HERE), var_argumentTypeEntry_15079, inCompiler COMMA_SOURCE_FILE ("type-extern.galgas", 365)) ;
       }
-      var_arguments_14902.addAssign_operation (enumerator_14967.current_mFormalSelector (HERE), var_argumentTypeEntry_15070, enumerator_14967.current_mFormalParameterName (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("type-extern.galgas", 365)) ;
-      enumerator_14967.gotoNextObject () ;
+      var_arguments_14911.addAssign_operation (enumerator_14976.current_mFormalSelector (HERE), var_argumentTypeEntry_15079, enumerator_14976.current_mFormalParameterName (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("type-extern.galgas", 366)) ;
+      enumerator_14976.gotoNextObject () ;
     }
     {
-    var_getterMap_13913.setter_insertKey (enumerator_14751.current_mGetterName (HERE), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("type-extern.galgas", 370)), var_arguments_14902, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("type-extern.galgas", 372)), GALGAS_bool (true), var_returnedTypeEntry_14849, GALGAS_methodQualifier::constructor_isBasicFinal (SOURCE_FILE ("type-extern.galgas", 375)), GALGAS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("type-extern.galgas", 368)) ;
+    var_getterMap_13922.setter_insertKey (enumerator_14760.current_mGetterName (HERE), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("type-extern.galgas", 371)), var_arguments_14911, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("type-extern.galgas", 373)), GALGAS_bool (true), var_returnedTypeEntry_14858, GALGAS_methodQualifier::constructor_isBasicFinal (SOURCE_FILE ("type-extern.galgas", 376)), GALGAS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("type-extern.galgas", 369)) ;
     }
-    enumerator_14751.gotoNextObject () ;
+    enumerator_14760.gotoNextObject () ;
   }
   const GALGAS_externTypeDeclarationAST temp_2 = this ;
-  cEnumerator_externTypeSetterList enumerator_15525 (temp_2.readProperty_mExternTypeSetterList (), kENUMERATION_UP) ;
-  while (enumerator_15525.hasCurrentObject ()) {
-    GALGAS_formalParameterSignature var_routineSignature_15614 = GALGAS_formalParameterSignature::constructor_emptyList (SOURCE_FILE ("type-extern.galgas", 381)) ;
-    cEnumerator_formalParameterListAST enumerator_15732 (enumerator_15525.current_mFormalParameterList (HERE), kENUMERATION_UP) ;
-    while (enumerator_15732.hasCurrentObject ()) {
-      GALGAS_unifiedTypeMapEntry var_parameterTypeIndex_15858 ;
+  cEnumerator_externTypeSetterList enumerator_15534 (temp_2.readProperty_mExternTypeSetterList (), kENUMERATION_UP) ;
+  while (enumerator_15534.hasCurrentObject ()) {
+    GALGAS_formalParameterSignature var_routineSignature_15623 = GALGAS_formalParameterSignature::constructor_emptyList (SOURCE_FILE ("type-extern.galgas", 382)) ;
+    cEnumerator_formalParameterListAST enumerator_15741 (enumerator_15534.current_mFormalParameterList (HERE), kENUMERATION_UP) ;
+    while (enumerator_15741.hasCurrentObject ()) {
+      GALGAS_unifiedTypeMapEntry var_parameterTypeIndex_15867 ;
       {
-      extensionSetter_makeEntry (ioArgument_ioTypeMap, enumerator_15732.current_mFormalArgumentTypeName (HERE), var_parameterTypeIndex_15858, inCompiler COMMA_SOURCE_FILE ("type-extern.galgas", 383)) ;
+      extensionSetter_makeEntry (ioArgument_ioTypeMap, enumerator_15741.current_mFormalArgumentTypeName (HERE), var_parameterTypeIndex_15867, inCompiler COMMA_SOURCE_FILE ("type-extern.galgas", 384)) ;
       }
-      var_routineSignature_15614.addAssign_operation (enumerator_15732.current_mFormalSelector (HERE), var_parameterTypeIndex_15858, enumerator_15732.current_mFormalArgumentPassingMode (HERE), enumerator_15732.current_mFormalArgumentName (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("type-extern.galgas", 387)) ;
-      enumerator_15732.gotoNextObject () ;
+      var_routineSignature_15623.addAssign_operation (enumerator_15741.current_mFormalSelector (HERE), var_parameterTypeIndex_15867, enumerator_15741.current_mFormalArgumentPassingMode (HERE), enumerator_15741.current_mFormalArgumentName (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("type-extern.galgas", 388)) ;
+      enumerator_15741.gotoNextObject () ;
     }
     {
-    var_setterMap_13984.setter_insertKey (enumerator_15525.current_mSetterName (HERE), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("type-extern.galgas", 392)), var_routineSignature_15614, GALGAS_bool (true), GALGAS_methodQualifier::constructor_isBasicFinal (SOURCE_FILE ("type-extern.galgas", 395)), GALGAS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("type-extern.galgas", 390)) ;
+    var_setterMap_13993.setter_insertKey (enumerator_15534.current_mSetterName (HERE), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("type-extern.galgas", 393)), var_routineSignature_15623, GALGAS_bool (true), GALGAS_methodQualifier::constructor_isBasicFinal (SOURCE_FILE ("type-extern.galgas", 396)), GALGAS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("type-extern.galgas", 391)) ;
     }
-    enumerator_15525.gotoNextObject () ;
+    enumerator_15534.gotoNextObject () ;
   }
   const GALGAS_externTypeDeclarationAST temp_3 = this ;
-  cEnumerator_externTypeMethodList enumerator_16301 (temp_3.readProperty_mExternTypeMethodList (), kENUMERATION_UP) ;
-  while (enumerator_16301.hasCurrentObject ()) {
-    GALGAS_formalParameterSignature var_routineSignature_16364 = GALGAS_formalParameterSignature::constructor_emptyList (SOURCE_FILE ("type-extern.galgas", 401)) ;
-    cEnumerator_formalParameterListAST enumerator_16508 (enumerator_16301.current_mFormalParameterList (HERE), kENUMERATION_UP) ;
-    while (enumerator_16508.hasCurrentObject ()) {
-      GALGAS_unifiedTypeMapEntry var_parameterTypeIndex_16613 ;
+  cEnumerator_externTypeMethodList enumerator_16310 (temp_3.readProperty_mExternTypeMethodList (), kENUMERATION_UP) ;
+  while (enumerator_16310.hasCurrentObject ()) {
+    GALGAS_formalParameterSignature var_routineSignature_16373 = GALGAS_formalParameterSignature::constructor_emptyList (SOURCE_FILE ("type-extern.galgas", 402)) ;
+    cEnumerator_formalParameterListAST enumerator_16517 (enumerator_16310.current_mFormalParameterList (HERE), kENUMERATION_UP) ;
+    while (enumerator_16517.hasCurrentObject ()) {
+      GALGAS_unifiedTypeMapEntry var_parameterTypeIndex_16622 ;
       {
-      extensionSetter_makeEntry (ioArgument_ioTypeMap, enumerator_16508.current_mFormalArgumentTypeName (HERE), var_parameterTypeIndex_16613, inCompiler COMMA_SOURCE_FILE ("type-extern.galgas", 403)) ;
+      extensionSetter_makeEntry (ioArgument_ioTypeMap, enumerator_16517.current_mFormalArgumentTypeName (HERE), var_parameterTypeIndex_16622, inCompiler COMMA_SOURCE_FILE ("type-extern.galgas", 404)) ;
       }
-      var_routineSignature_16364.addAssign_operation (enumerator_16508.current_mFormalSelector (HERE), var_parameterTypeIndex_16613, enumerator_16508.current_mFormalArgumentPassingMode (HERE), enumerator_16508.current_mFormalArgumentName (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("type-extern.galgas", 407)) ;
-      enumerator_16508.gotoNextObject () ;
+      var_routineSignature_16373.addAssign_operation (enumerator_16517.current_mFormalSelector (HERE), var_parameterTypeIndex_16622, enumerator_16517.current_mFormalArgumentPassingMode (HERE), enumerator_16517.current_mFormalArgumentName (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("type-extern.galgas", 408)) ;
+      enumerator_16517.gotoNextObject () ;
     }
     {
-    var_instanceMethodMap_14024.setter_insertKey (enumerator_16301.current_mMethodName (HERE), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("type-extern.galgas", 412)), var_routineSignature_16364, enumerator_16301.current_mDeclarationLocation (HERE), GALGAS_bool (true), GALGAS_methodQualifier::constructor_isBasicFinal (SOURCE_FILE ("type-extern.galgas", 416)), GALGAS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("type-extern.galgas", 410)) ;
+    var_instanceMethodMap_14033.setter_insertKey (enumerator_16310.current_mMethodName (HERE), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("type-extern.galgas", 413)), var_routineSignature_16373, enumerator_16310.current_mDeclarationLocation (HERE), GALGAS_bool (true), GALGAS_methodQualifier::constructor_isBasicFinal (SOURCE_FILE ("type-extern.galgas", 417)), GALGAS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("type-extern.galgas", 411)) ;
     }
-    enumerator_16301.gotoNextObject () ;
+    enumerator_16310.gotoNextObject () ;
   }
   const GALGAS_externTypeDeclarationAST temp_4 = this ;
   const GALGAS_externTypeDeclarationAST temp_5 = this ;
   const GALGAS_externTypeDeclarationAST temp_6 = this ;
-  GALGAS_unifiedTypeDefinition var_typeDefinition_17073 = GALGAS_unifiedTypeDefinition::constructor_new (temp_4.readProperty_mExternTypeName (), temp_5.readProperty_mIsPredefined (), GALGAS_bool (true), GALGAS_unifiedTypeMapEntry::constructor_null (SOURCE_FILE ("type-extern.galgas", 425)), GALGAS_typeKindEnum::constructor_externType (SOURCE_FILE ("type-extern.galgas", 426)), GALGAS_bool (false), GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("type-extern.galgas", 428)), GALGAS_propertyMap::constructor_emptyMap (SOURCE_FILE ("type-extern.galgas", 429)), GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("type-extern.galgas", 430)), var_constructorMap_13947, var_getterMap_13913, var_setterMap_13984, var_instanceMethodMap_14024, GALGAS_classMethodMap::constructor_emptyMap (SOURCE_FILE ("type-extern.galgas", 435)), GALGAS_optionalMethodMap::constructor_emptyMap (SOURCE_FILE ("type-extern.galgas", 436)), GALGAS_enumerationDescriptorList::constructor_emptyList (SOURCE_FILE ("type-extern.galgas", 437)), GALGAS_operators::constructor_none (SOURCE_FILE ("type-extern.galgas", 438)), GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("type-extern.galgas", 439)), GALGAS_constantIndexMap::constructor_emptyMap (SOURCE_FILE ("type-extern.galgas", 440)), GALGAS_enumConstantList::constructor_emptyList (SOURCE_FILE ("type-extern.galgas", 441)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("type-extern.galgas", 442)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("type-extern.galgas", 443)), GALGAS_bool (false), GALGAS_unifiedTypeMapEntry::constructor_null (SOURCE_FILE ("type-extern.galgas", 445)), GALGAS_string ("default"), GALGAS_string ("externtype-").add_operation (temp_6.readProperty_mExternTypeName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("type-extern.galgas", 447)), inCompiler COMMA_SOURCE_FILE ("type-extern.galgas", 447)), GALGAS_headerKind::constructor_oneHeader (SOURCE_FILE ("type-extern.galgas", 448)), inCompiler  COMMA_SOURCE_FILE ("type-extern.galgas", 421)) ;
+  GALGAS_unifiedTypeDefinition var_typeDefinition_17082 = GALGAS_unifiedTypeDefinition::constructor_new (temp_4.readProperty_mExternTypeName (), temp_5.readProperty_mIsPredefined (), GALGAS_bool (true), GALGAS_unifiedTypeMapEntry::constructor_null (SOURCE_FILE ("type-extern.galgas", 426)), GALGAS_typeKindEnum::constructor_externType (SOURCE_FILE ("type-extern.galgas", 427)), GALGAS_bool (false), GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("type-extern.galgas", 429)), GALGAS_propertyMap::constructor_emptyMap (SOURCE_FILE ("type-extern.galgas", 430)), GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("type-extern.galgas", 431)), var_constructorMap_13956, var_getterMap_13922, var_setterMap_13993, var_instanceMethodMap_14033, GALGAS_classMethodMap::constructor_emptyMap (SOURCE_FILE ("type-extern.galgas", 436)), GALGAS_optionalMethodMap::constructor_emptyMap (SOURCE_FILE ("type-extern.galgas", 437)), GALGAS_enumerationDescriptorList::constructor_emptyList (SOURCE_FILE ("type-extern.galgas", 438)), GALGAS_operators::constructor_none (SOURCE_FILE ("type-extern.galgas", 439)), GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("type-extern.galgas", 440)), GALGAS_constantIndexMap::constructor_emptyMap (SOURCE_FILE ("type-extern.galgas", 441)), GALGAS_enumConstantList::constructor_emptyList (SOURCE_FILE ("type-extern.galgas", 442)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("type-extern.galgas", 443)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("type-extern.galgas", 444)), GALGAS_bool (false), GALGAS_unifiedTypeMapEntry::constructor_null (SOURCE_FILE ("type-extern.galgas", 446)), GALGAS_string ("default"), GALGAS_string ("externtype-").add_operation (temp_6.readProperty_mExternTypeName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("type-extern.galgas", 448)), inCompiler COMMA_SOURCE_FILE ("type-extern.galgas", 448)), GALGAS_headerKind::constructor_oneHeader (SOURCE_FILE ("type-extern.galgas", 449)), inCompiler  COMMA_SOURCE_FILE ("type-extern.galgas", 422)) ;
   {
-  extensionSetter_insertType (ioArgument_ioTypeMap, var_typeDefinition_17073.readProperty_mTypeName (), var_typeDefinition_17073, inCompiler COMMA_SOURCE_FILE ("type-extern.galgas", 450)) ;
+  extensionSetter_insertType (ioArgument_ioTypeMap, var_typeDefinition_17082.readProperty_mTypeName (), var_typeDefinition_17082, inCompiler COMMA_SOURCE_FILE ("type-extern.galgas", 451)) ;
   }
 }
 //--------------------------------------------------------------------------------------------------
@@ -251,16 +251,16 @@ void cPtr_externTypeDeclarationAST::method_semanticAnalysis (GALGAS_lstringlist 
                                                              Compiler * inCompiler
                                                              COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_externTypeDeclarationAST temp_0 = this ;
-  GALGAS_lstring var_nameForUsefulness_18637 = function_typeNameForUsefulEntitiesGraph (temp_0.readProperty_mExternTypeName (), inCompiler COMMA_SOURCE_FILE ("type-extern.galgas", 467)) ;
+  GALGAS_lstring var_nameForUsefulness_18646 = function_typeNameForUsefulEntitiesGraph (temp_0.readProperty_mExternTypeName (), inCompiler COMMA_SOURCE_FILE ("type-extern.galgas", 468)) ;
   {
-  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_nameForUsefulness_18637, var_nameForUsefulness_18637, inCompiler COMMA_SOURCE_FILE ("type-extern.galgas", 468)) ;
+  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_nameForUsefulness_18646, var_nameForUsefulness_18646, inCompiler COMMA_SOURCE_FILE ("type-extern.galgas", 469)) ;
   }
   const GALGAS_externTypeDeclarationAST temp_1 = this ;
   const GALGAS_externTypeDeclarationAST temp_2 = this ;
   const GALGAS_externTypeDeclarationAST temp_3 = this ;
   const GALGAS_externTypeDeclarationAST temp_4 = this ;
   const GALGAS_externTypeDeclarationAST temp_5 = this ;
-  ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GALGAS_string ("extern type ").add_operation (temp_1.readProperty_mExternTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-extern.galgas", 471)), GALGAS_externTypeDeclarationForGeneration::constructor_new (extensionGetter_searchKey (ioArgument_ioTypeMap, temp_2.readProperty_mExternTypeName (), inCompiler COMMA_SOURCE_FILE ("type-extern.galgas", 473)), temp_3.readProperty_mExternTypeName ().readProperty_string (), temp_4.readProperty_mCppPreDeclarationCode (), temp_5.readProperty_mCppClassCode ()  COMMA_SOURCE_FILE ("type-extern.galgas", 472))  COMMA_SOURCE_FILE ("type-extern.galgas", 470)) ;
+  ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GALGAS_string ("extern type ").add_operation (temp_1.readProperty_mExternTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-extern.galgas", 472)), GALGAS_externTypeDeclarationForGeneration::constructor_new (extensionGetter_searchKey (ioArgument_ioTypeMap, temp_2.readProperty_mExternTypeName (), inCompiler COMMA_SOURCE_FILE ("type-extern.galgas", 474)), temp_3.readProperty_mExternTypeName ().readProperty_string (), temp_4.readProperty_mCppPreDeclarationCode (), temp_5.readProperty_mCppClassCode ()  COMMA_SOURCE_FILE ("type-extern.galgas", 473))  COMMA_SOURCE_FILE ("type-extern.galgas", 471)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -273,13 +273,13 @@ void cPtr_externTypeDeclarationForGeneration::method_appendDeclaration_31_ (GALG
                                                                             Compiler * inCompiler
                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_externTypeDeclarationForGeneration temp_0 = this ;
-  GALGAS_unifiedTypeDefinition var_selfTypedefinition_19826 = extensionGetter_definition (temp_0.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("type-extern.galgas", 495)) ;
+  GALGAS_unifiedTypeDefinition var_selfTypedefinition_19835 = extensionGetter_definition (temp_0.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("type-extern.galgas", 496)) ;
   const GALGAS_externTypeDeclarationForGeneration temp_1 = this ;
   const GALGAS_externTypeDeclarationForGeneration temp_2 = this ;
   const GALGAS_externTypeDeclarationForGeneration temp_3 = this ;
-  outArgument_outHeader = GALGAS_string (filewrapperTemplate_typeGenerationTemplate_externTypeHeader_31_ (inCompiler, var_selfTypedefinition_19826.readProperty_mTypeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_1.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("type-extern.galgas", 498)), temp_2.readProperty_mCppPreDeclarationCode (), temp_3.readProperty_mCppClassCode () COMMA_SOURCE_FILE ("type-extern.galgas", 496))) ;
+  outArgument_outHeader = GALGAS_string (filewrapperTemplate_typeGenerationTemplate_externTypeHeader_31_ (inCompiler, var_selfTypedefinition_19835.readProperty_mTypeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_1.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("type-extern.galgas", 499)), temp_2.readProperty_mCppPreDeclarationCode (), temp_3.readProperty_mCppClassCode () COMMA_SOURCE_FILE ("type-extern.galgas", 497))) ;
   const GALGAS_externTypeDeclarationForGeneration temp_4 = this ;
-  outArgument_outHeader.plusAssign_operation(GALGAS_string (filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (inCompiler, var_selfTypedefinition_19826.readProperty_mTypeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_4.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("type-extern.galgas", 504)), var_selfTypedefinition_19826.readProperty_mIsConcrete (), var_selfTypedefinition_19826.readProperty_mConstructorMap (), var_selfTypedefinition_19826.readProperty_mGetterMap (), var_selfTypedefinition_19826.readProperty_mSetterMap (), var_selfTypedefinition_19826.readProperty_mInstanceMethodMap (), var_selfTypedefinition_19826.readProperty_mClassMethodMap (), var_selfTypedefinition_19826.readProperty_mOptionalMethodMap (), var_selfTypedefinition_19826.readProperty_mEnumerationDescriptor (), var_selfTypedefinition_19826.readProperty_mHandledOperatorFlags (), var_selfTypedefinition_19826.readProperty_mAddAssignOperatorArguments (), var_selfTypedefinition_19826.readProperty_mTypeForEnumeratedElement () COMMA_SOURCE_FILE ("type-extern.galgas", 502))), inCompiler  COMMA_SOURCE_FILE ("type-extern.galgas", 502)) ;
+  outArgument_outHeader.plusAssign_operation(GALGAS_string (filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (inCompiler, var_selfTypedefinition_19835.readProperty_mTypeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_4.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("type-extern.galgas", 505)), var_selfTypedefinition_19835.readProperty_mIsConcrete (), var_selfTypedefinition_19835.readProperty_mConstructorMap (), var_selfTypedefinition_19835.readProperty_mGetterMap (), var_selfTypedefinition_19835.readProperty_mSetterMap (), var_selfTypedefinition_19835.readProperty_mInstanceMethodMap (), var_selfTypedefinition_19835.readProperty_mClassMethodMap (), var_selfTypedefinition_19835.readProperty_mOptionalMethodMap (), var_selfTypedefinition_19835.readProperty_mEnumerationDescriptor (), var_selfTypedefinition_19835.readProperty_mHandledOperatorFlags (), var_selfTypedefinition_19835.readProperty_mAddAssignOperatorArguments (), var_selfTypedefinition_19835.readProperty_mTypeForEnumeratedElement () COMMA_SOURCE_FILE ("type-extern.galgas", 503))), inCompiler  COMMA_SOURCE_FILE ("type-extern.galgas", 503)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //

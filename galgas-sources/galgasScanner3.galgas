@@ -353,12 +353,7 @@ list attributeKeyWordList style attributeStyle error message"the '%K' keyword" {
   "templateEndMark" -> $%templateEndMark$,
   "preserved" -> $%preserved$,
   "selector" -> $%selector$,
-#  "replaceBy" -> $%replaceBy$,
-#  "insertAfter" -> $%insertAfter$,
-#  "insertBefore" -> $%insertBefore$,
   "useGrammar" -> $%useGrammar$
-#  "codeFor" -> $%codeFor$
-#  "templateReplacement" -> $%templateReplacement$
 }
 
 rule '%' {

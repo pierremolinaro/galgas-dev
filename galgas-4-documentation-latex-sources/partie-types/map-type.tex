@@ -258,7 +258,7 @@ var @lstring clef = ...
 %\subsection{Getter \texttt{allKeyList}}
 %
 %\begin{galgas}
-%getter @T allKeyList -> @lstringlist
+%func @T allKeyList -> @lstringlist
 %\end{galgas}
 %
 %Le \emph{getter} \ggs+allKeyList+ retourne la liste construite avec toutes les clés du récepteur, dans la table de premier niveau et dans les tables surchargées. L'ordre de la liste est~:
@@ -270,7 +270,7 @@ var @lstring clef = ...
 \subsection{Getter \texttt{count}}
 
 \begin{galgas}
-getter count -> @uint
+func count () -> @uint
 \end{galgas}
 
 
@@ -281,7 +281,7 @@ Le \emph{getter} \ggs+count+ retourne un \ggs+@uint+ qui contient le nombre d'en
 \subsection{Getter \texttt{hasKey}}
 
 \begin{galgas}
-getter hasKey ?@string inKey -> @bool
+func hasKey (@string inKey) -> @bool
 \end{galgas}
 
 
@@ -292,7 +292,7 @@ Le \emph{getter} \ggs+hasKey+ retourne un \ggs+@bool+ qui est \ggs+true+ si la c
 \subsection{Getter \texttt{keyList}}
 
 \begin{galgas}
-getter keyList -> @lstringlist
+func keyList () -> @lstringlist
 \end{galgas}
 
 
@@ -303,7 +303,7 @@ Le \emph{getter} \ggs+keyList+ retourne la liste construite avec toutes les clé
 \subsection{Getter \texttt{keySet}}
 
 \begin{galgas}
-getter keySet -> @stringset
+func keySet () -> @stringset
 \end{galgas}
 
 
@@ -316,7 +316,7 @@ Le \emph{getter} \ggs+keySet+ retourne l'ensemble de toutes les clés de la tabl
 \subsectionLabel{Getter \texttt{locationForKey}}{getterLocationForKey}
 
 \begin{galgas}
-getter locationForKey ?@string inKey -> @location
+func locationForKey (@string inKey) -> @location
 \end{galgas}
 
 
@@ -332,7 +332,7 @@ Le \emph{getter} \ggs+locationForKey+ retourne un \ggs+@location+ qui contient l
 \subsection{Getter \texttt{overriddenMap}}
 
 \begin{galgas}
-getter overriddenMap -> @T
+func overriddenMap () -> @T
 \end{galgas}
 
 

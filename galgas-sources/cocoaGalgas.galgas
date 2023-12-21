@@ -1,8 +1,8 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#----------------------------------------------------------------------------
 #                                           
 #  Cocoa component for GALGAS               
 #                                           
-#  Copyright (C) 2004, ..., 2022 Pierre Molinaro.
+#  Copyright (C) 2004, ..., 2023 Pierre Molinaro.
 #  e-mail : pierre@pcmolinaro.name          
 #                                           
 #  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
@@ -12,30 +12,28 @@
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
 #  details.                                 
 #                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#----------------------------------------------------------------------------
 
 gui cocoa {
   with option galgas_cli_options
 
-  #·····················································································································
+  #··········································································
 
   project "galgasProject" indexing in "build/indexes"
   
   project "ggsproject" indexing in "*-build/indexes"
  
-  #·····················································································································
+  #··········································································
 
   nibAndMainClass : "GGSUpdateCocoaGalgas"
 
-  #·····················································································································
+  #··········································································
 
   with lexique galgasScanner3 {
-    fileExtension : "ggsproject"
     fileExtension : "galgasProject"
     fileExtension : "galgas"
-    fileExtension : "ggs"
     blockComment : "#"
-    title: "Source GALGAS"
+    title: "Source GALGAS 3"
     label $before$, ${$
     label $after$, ${$
     label $map$, $@type$
@@ -118,7 +116,23 @@ gui cocoa {
       "}\n"
   }
 
-  #·····················································································································
+  #··········································································
+
+  with lexique galgasScanner4 {
+    fileExtension : "ggsproject"
+    fileExtension : "ggs"
+    blockComment : "//"
+    title: "Source GALGAS 4"
+
+    textMacro "Map" :
+      "map @type {\n"
+      "  public let @aType mProperty\n"
+      "  %insertSetter insertKey %errorMessage \"the '%K' key is already declared in %L\"\n"
+      "  %searchMethod searchKey %error%essage \"there is no '%K' key\"\n"
+      "}\n"
+  }
+
+  #··········································································
 
   with lexique galgasTemplateScanner {
     fileExtension : "galgasTemplate"
@@ -126,8 +140,8 @@ gui cocoa {
     title: "Template"
   }
 
-  #·····················································································································
+  #··········································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#----------------------------------------------------------------------------

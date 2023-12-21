@@ -268,7 +268,7 @@ syntax extension galgas4DeclarationsSyntax {
   rule <externtype_getter> ?!@galgasDeclarationAST ioDeclarations
                            ?!@stringset ioUserImplicitDeclaredTypeSet
                            ?!@externTypeGetterList ioExternTypeGetterList {
-    $getter$
+    $func$
     $identifier$ ?let @lstring getterName
     var @typeNameFormalParameterNameList argumentTypeList = {}
     repeat
@@ -288,7 +288,8 @@ syntax extension galgas4DeclarationsSyntax {
   rule <externtype_setter> ?!@galgasDeclarationAST ioDeclarations
                            ?!@stringset ioUserImplicitDeclaredTypeSet
                            ?!@externTypeSetterList ioExternTypeSetterList {
-    $setter$
+    $mutating$
+    $proc$
     $identifier$ ?let @lstring setterName
     <formal_parameter_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @formalParameterListAST formalParameterList
     ioExternTypeSetterList += !setterName !formalParameterList
@@ -299,7 +300,7 @@ syntax extension galgas4DeclarationsSyntax {
   rule <externtype_method> ?!@galgasDeclarationAST ioDeclarations
                            ?!@stringset ioUserImplicitDeclaredTypeSet
                            ?!@externTypeMethodList ioExternTypeMethodList {
-    $method$
+    $proc$
     $identifier$ ?let @lstring methodName
     <formal_parameter_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @formalParameterListAST formalParameterList
     ioExternTypeMethodList += !methodName !formalParameterList !.here

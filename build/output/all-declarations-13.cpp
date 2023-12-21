@@ -1312,34 +1312,34 @@ void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_ext
                                                                                                         GALGAS_stringset & ioArgument_ioUserImplicitDeclaredTypeSet,
                                                                                                         GALGAS_externTypeGetterList & ioArgument_ioExternTypeGetterList,
                                                                                                         C_Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_getter COMMA_SOURCE_FILE ("type-extern.galgas", 271)) ;
-  GALGAS_lstring var_getterName_10469 = inCompiler->synthetizedAttribute_tokenString () ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_func COMMA_SOURCE_FILE ("type-extern.galgas", 271)) ;
+  GALGAS_lstring var_getterName_10467 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("type-extern.galgas", 272)) ;
-  GALGAS_typeNameFormalParameterNameList var_argumentTypeList_10521 = GALGAS_typeNameFormalParameterNameList::constructor_emptyList (SOURCE_FILE ("type-extern.galgas", 273)) ;
+  GALGAS_typeNameFormalParameterNameList var_argumentTypeList_10519 = GALGAS_typeNameFormalParameterNameList::constructor_emptyList (SOURCE_FILE ("type-extern.galgas", 273)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     if (select_galgas_34_DeclarationsSyntax_26 (inCompiler) == 2) {
-      GALGAS_lstring var_selector_10579 = inCompiler->synthetizedAttribute_tokenString () ;
+      GALGAS_lstring var_selector_10577 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken__3F_ COMMA_SOURCE_FILE ("type-extern.galgas", 276)) ;
-      GALGAS_lstring var_argumentTypeName_10616 = inCompiler->synthetizedAttribute_tokenString () ;
+      GALGAS_lstring var_argumentTypeName_10614 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken__40_type COMMA_SOURCE_FILE ("type-extern.galgas", 277)) ;
-      GALGAS_lstring var_argumentName_10666 = inCompiler->synthetizedAttribute_tokenString () ;
+      GALGAS_lstring var_argumentName_10664 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("type-extern.galgas", 278)) ;
-      var_argumentTypeList_10521.addAssign_operation (var_selector_10579, var_argumentTypeName_10616, var_argumentName_10666  COMMA_SOURCE_FILE ("type-extern.galgas", 279)) ;
+      var_argumentTypeList_10519.addAssign_operation (var_selector_10577, var_argumentTypeName_10614, var_argumentName_10664  COMMA_SOURCE_FILE ("type-extern.galgas", 279)) ;
     }else{
       repeatFlag_0 = false ;
     }
   }
   inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken__2D__3E_ COMMA_SOURCE_FILE ("type-extern.galgas", 281)) ;
-  GALGAS_lstring var_resultTypeName_10840 ;
-  nt_type_5F_definition_ (ioArgument_ioDeclarations, ioArgument_ioUserImplicitDeclaredTypeSet, var_resultTypeName_10840, inCompiler) ;
-  ioArgument_ioExternTypeGetterList.addAssign_operation (var_getterName_10469, var_resultTypeName_10840, var_argumentTypeList_10521  COMMA_SOURCE_FILE ("type-extern.galgas", 283)) ;
+  GALGAS_lstring var_resultTypeName_10838 ;
+  nt_type_5F_definition_ (ioArgument_ioDeclarations, ioArgument_ioUserImplicitDeclaredTypeSet, var_resultTypeName_10838, inCompiler) ;
+  ioArgument_ioExternTypeGetterList.addAssign_operation (var_getterName_10467, var_resultTypeName_10838, var_argumentTypeList_10519  COMMA_SOURCE_FILE ("type-extern.galgas", 283)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_externtype_5F_getter_i14_parse (C_Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_getter COMMA_SOURCE_FILE ("type-extern.galgas", 271)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_func COMMA_SOURCE_FILE ("type-extern.galgas", 271)) ;
   inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("type-extern.galgas", 272)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
@@ -1359,7 +1359,7 @@ void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_ext
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_externtype_5F_getter_i14_indexing (C_Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_getter COMMA_SOURCE_FILE ("type-extern.galgas", 271)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_func COMMA_SOURCE_FILE ("type-extern.galgas", 271)) ;
   inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("type-extern.galgas", 272)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
@@ -1381,19 +1381,21 @@ void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_ext
                                                                                                         GALGAS_stringset & ioArgument_ioUserImplicitDeclaredTypeSet,
                                                                                                         GALGAS_externTypeSetterList & ioArgument_ioExternTypeSetterList,
                                                                                                         C_Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_setter COMMA_SOURCE_FILE ("type-extern.galgas", 291)) ;
-  GALGAS_lstring var_setterName_11314 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("type-extern.galgas", 292)) ;
-  GALGAS_formalParameterListAST var_formalParameterList_11431 ;
-  nt_formal_5F_parameter_5F_list_ (ioArgument_ioDeclarations, ioArgument_ioUserImplicitDeclaredTypeSet, var_formalParameterList_11431, inCompiler) ;
-  ioArgument_ioExternTypeSetterList.addAssign_operation (var_setterName_11314, var_formalParameterList_11431  COMMA_SOURCE_FILE ("type-extern.galgas", 294)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_mutating COMMA_SOURCE_FILE ("type-extern.galgas", 291)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_proc COMMA_SOURCE_FILE ("type-extern.galgas", 292)) ;
+  GALGAS_lstring var_setterName_11325 = inCompiler->synthetizedAttribute_tokenString () ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("type-extern.galgas", 293)) ;
+  GALGAS_formalParameterListAST var_formalParameterList_11442 ;
+  nt_formal_5F_parameter_5F_list_ (ioArgument_ioDeclarations, ioArgument_ioUserImplicitDeclaredTypeSet, var_formalParameterList_11442, inCompiler) ;
+  ioArgument_ioExternTypeSetterList.addAssign_operation (var_setterName_11325, var_formalParameterList_11442  COMMA_SOURCE_FILE ("type-extern.galgas", 295)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_externtype_5F_setter_i15_parse (C_Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_setter COMMA_SOURCE_FILE ("type-extern.galgas", 291)) ;
-  inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("type-extern.galgas", 292)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_mutating COMMA_SOURCE_FILE ("type-extern.galgas", 291)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_proc COMMA_SOURCE_FILE ("type-extern.galgas", 292)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("type-extern.galgas", 293)) ;
   nt_formal_5F_parameter_5F_list_parse (inCompiler) ;
   inCompiler->resetTemplateString () ;
 }
@@ -1401,8 +1403,9 @@ void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_ext
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_externtype_5F_setter_i15_indexing (C_Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_setter COMMA_SOURCE_FILE ("type-extern.galgas", 291)) ;
-  inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("type-extern.galgas", 292)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_mutating COMMA_SOURCE_FILE ("type-extern.galgas", 291)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_proc COMMA_SOURCE_FILE ("type-extern.galgas", 292)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("type-extern.galgas", 293)) ;
   nt_formal_5F_parameter_5F_list_indexing (inCompiler) ;
 }
 
@@ -1412,19 +1415,19 @@ void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_ext
                                                                                                         GALGAS_stringset & ioArgument_ioUserImplicitDeclaredTypeSet,
                                                                                                         GALGAS_externTypeMethodList & ioArgument_ioExternTypeMethodList,
                                                                                                         C_Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_method COMMA_SOURCE_FILE ("type-extern.galgas", 302)) ;
-  GALGAS_lstring var_methodName_11897 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("type-extern.galgas", 303)) ;
-  GALGAS_formalParameterListAST var_formalParameterList_12014 ;
-  nt_formal_5F_parameter_5F_list_ (ioArgument_ioDeclarations, ioArgument_ioUserImplicitDeclaredTypeSet, var_formalParameterList_12014, inCompiler) ;
-  ioArgument_ioExternTypeMethodList.addAssign_operation (var_methodName_11897, var_formalParameterList_12014, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("type-extern.galgas", 305))  COMMA_SOURCE_FILE ("type-extern.galgas", 305)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_proc COMMA_SOURCE_FILE ("type-extern.galgas", 303)) ;
+  GALGAS_lstring var_methodName_11906 = inCompiler->synthetizedAttribute_tokenString () ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("type-extern.galgas", 304)) ;
+  GALGAS_formalParameterListAST var_formalParameterList_12023 ;
+  nt_formal_5F_parameter_5F_list_ (ioArgument_ioDeclarations, ioArgument_ioUserImplicitDeclaredTypeSet, var_formalParameterList_12023, inCompiler) ;
+  ioArgument_ioExternTypeMethodList.addAssign_operation (var_methodName_11906, var_formalParameterList_12023, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("type-extern.galgas", 306))  COMMA_SOURCE_FILE ("type-extern.galgas", 306)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_externtype_5F_method_i16_parse (C_Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_method COMMA_SOURCE_FILE ("type-extern.galgas", 302)) ;
-  inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("type-extern.galgas", 303)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_proc COMMA_SOURCE_FILE ("type-extern.galgas", 303)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("type-extern.galgas", 304)) ;
   nt_formal_5F_parameter_5F_list_parse (inCompiler) ;
   inCompiler->resetTemplateString () ;
 }
@@ -1432,8 +1435,8 @@ void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_ext
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_externtype_5F_method_i16_indexing (C_Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_method COMMA_SOURCE_FILE ("type-extern.galgas", 302)) ;
-  inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("type-extern.galgas", 303)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_proc COMMA_SOURCE_FILE ("type-extern.galgas", 303)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("type-extern.galgas", 304)) ;
   nt_formal_5F_parameter_5F_list_indexing (inCompiler) ;
 }
 

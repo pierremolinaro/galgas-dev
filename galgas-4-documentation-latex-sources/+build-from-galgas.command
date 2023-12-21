@@ -12,4 +12,4 @@ cp ../build/tex/templateGrammar.tex $DIR/chapitre-grammaires/templateGrammar.tex
 #--- Reconstruire la table des mots réservés et celle des délimiteurs
 ../makefile-unix/galgas --output-keyword-list-file=galgasScanner4:galgasKeyWordList:5:\\ggs!:!:partie-utilisation/included-keyword-list.tex &&
 ../makefile-unix/galgas --output-keyword-list-file=galgasScanner4:galgasDelimitorsList:15:\\ggs0:0:partie-utilisation/included-delimiter-list.tex &&
-../makefile-unix/galgas --output-keyword-list-file=galgasScanner4:attributeKeyWordList:3:\\ggs!%:!:partie-utilisation/included-attribute-list.tex
+../makefile-unix/galgas --output-keyword-list-file=galgasScanner4:attributeKeyWordList:2:\\ggs!%:!:partie-utilisation/included-attribute-list.tex

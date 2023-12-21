@@ -1,7 +1,5 @@
-filewrapper generationTemplate in "." {
-}{
-}{
-  template svg "logo-svg.galgasTemplate"
-    ?@string TITLE
-    ?@string DRAWINGS
-}
+rule <T> { I1 I0 <T> }
+
+rule <T> { I2 I0 <T> }
+
+rule <T> {  }

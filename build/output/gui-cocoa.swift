@@ -239,7 +239,7 @@ class SWIFT_Tokenizer_0_galgasScanner3 : SWIFT_Lexique_galgasScanner3, SWIFT_Tok
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func tabItemTitle () -> String {
-    return "Source GALGAS"
+    return "Source GALGAS 3"
   }
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -323,7 +323,7 @@ class SWIFT_Tokenizer_0_galgasScanner3 : SWIFT_Lexique_galgasScanner3, SWIFT_Tok
 //                     P O P    U P    L I S T    D A T A
 //--------------------------------------------------------------------------------------------------
 
-fileprivate let gPopUpData_1_galgasTemplateScanner : [[UInt16]] = [
+fileprivate let gPopUpData_1_galgasScanner_34_ : [[UInt16]] = [
 
 ]
 
@@ -331,7 +331,7 @@ fileprivate let gPopUpData_1_galgasTemplateScanner : [[UInt16]] = [
 //                            Lexique interface
 //--------------------------------------------------------------------------------------------------
   
-class SWIFT_Tokenizer_1_galgasTemplateScanner : SWIFT_Lexique_galgasTemplateScanner, SWIFT_Tokenizer_Protocol {
+class SWIFT_Tokenizer_1_galgasScanner4 : SWIFT_Lexique_galgasScanner4, SWIFT_Tokenizer_Protocol {
 
 //- (NSUInteger) textMacroCount ;
 
@@ -342,7 +342,104 @@ class SWIFT_Tokenizer_1_galgasTemplateScanner : SWIFT_Lexique_galgasTemplateScan
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func popupListData () -> [[UInt16]] {
-    return gPopUpData_1_galgasTemplateScanner
+    return gPopUpData_1_galgasScanner_34_
+  }
+
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func tabItemTitle () -> String {
+    return "Source GALGAS 4"
+  }
+
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  
+  func blockComment () -> String {
+    return "//"
+  }
+
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func attributes (fromStyleIndex inStyleIndex : UInt8) -> [NSAttributedString.Key : Any] {
+    let fontManager = NSFontManager.shared
+    var font = fontManager.convert (
+      self.font.propval,
+      toHaveTrait: self.bold (forStyle: inStyleIndex).propval ? .boldFontMask : .unboldFontMask
+    )
+    font = fontManager.convert (
+      font,
+      toHaveTrait: self.italic (forStyle: inStyleIndex).propval ? .italicFontMask : .unitalicFontMask
+    )
+    let result : [NSAttributedString.Key : Any] = [
+      .foregroundColor : self.color (forStyle: inStyleIndex).propval,
+      .font : font
+    ]
+    return result
+  }
+
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------
+
+/* @implementation OC_Tokenizer_1_galgasScanner4
+
+//--------------------------------------------------------------------------------------------------
+
+- (NSUInteger) textMacroCount {
+  return 1 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------
+
+- (NSString *) textMacroTitleAtIndex: (const UInt32) inIndex {
+  static NSString * kTextMacroTitle [2] = {
+    @"Map",
+    nullptr
+  } ;
+  return kTextMacroTitle [inIndex] ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+- (NSString *) textMacroContentAtIndex: (const UInt32) inIndex {
+  static NSString * kTextMacroContent [2] = {
+    @"map @type {\n  public let @aType mProperty\n  %insertSetter insertKey %errorMessage \"the '%K' key is already declared in %L\"\n  %searchMethod searchKey %error%essage \"there is no '%K' key\"\n}\n",
+    nullptr
+  } ;
+  return kTextMacroContent [inIndex] ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+@end */
+
+//--------------------------------------------------------------------------------------------------
+//                     P O P    U P    L I S T    D A T A
+//--------------------------------------------------------------------------------------------------
+
+fileprivate let gPopUpData_2_galgasTemplateScanner : [[UInt16]] = [
+
+]
+
+//--------------------------------------------------------------------------------------------------
+//                            Lexique interface
+//--------------------------------------------------------------------------------------------------
+  
+class SWIFT_Tokenizer_2_galgasTemplateScanner : SWIFT_Lexique_galgasTemplateScanner, SWIFT_Tokenizer_Protocol {
+
+//- (NSUInteger) textMacroCount ;
+
+//- (NSString *) textMacroTitleAtIndex: (const UInt32) inIndex ;
+
+//- (NSString *) textMacroContentAtIndex: (const UInt32) inIndex ;
+
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func popupListData () -> [[UInt16]] {
+    return gPopUpData_2_galgasTemplateScanner
   }
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -382,7 +479,7 @@ class SWIFT_Tokenizer_1_galgasTemplateScanner : SWIFT_Lexique_galgasTemplateScan
 
 //--------------------------------------------------------------------------------------------------
 
-/* @implementation OC_Tokenizer_1_galgasTemplateScanner
+/* @implementation OC_Tokenizer_2_galgasTemplateScanner
 
 //--------------------------------------------------------------------------------------------------
 
@@ -427,13 +524,13 @@ func tokenizerFor (extension inExtension : String) -> SWIFT_Tokenizer_Protocol? 
   }else if inExtension == "galgasProject" {
     result = SWIFT_Tokenizer_0_galgasScanner3 ()
   }else if inExtension == "galgasTemplate" {
-    result = SWIFT_Tokenizer_1_galgasTemplateScanner ()
+    result = SWIFT_Tokenizer_2_galgasTemplateScanner ()
   }else if inExtension == "ggs" {
-    result = SWIFT_Tokenizer_0_galgasScanner3 ()
+    result = SWIFT_Tokenizer_1_galgasScanner4 ()
   }else if inExtension == "ggsTemplate" {
-    result = SWIFT_Tokenizer_1_galgasTemplateScanner ()
+    result = SWIFT_Tokenizer_2_galgasTemplateScanner ()
   }else if inExtension == "ggsproject" {
-    result = SWIFT_Tokenizer_0_galgasScanner3 ()
+    result = SWIFT_Tokenizer_1_galgasScanner4 ()
   }
   return result
 }
@@ -443,7 +540,8 @@ func tokenizerFor (extension inExtension : String) -> SWIFT_Tokenizer_Protocol? 
 func tokenizers () -> [SWIFT_Tokenizer_Protocol] {
   return [
     SWIFT_Tokenizer_0_galgasScanner3 (),
-    SWIFT_Tokenizer_1_galgasTemplateScanner ()
+    SWIFT_Tokenizer_1_galgasScanner4 (),
+    SWIFT_Tokenizer_2_galgasTemplateScanner ()
   ]
 }
 
