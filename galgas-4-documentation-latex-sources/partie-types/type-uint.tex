@@ -1,0 +1,441 @@
+%!TEX encoding = UTF-8 Unicode
+%!TEX root = ../galgas-book.tex
+
+\chapitreTypePredefiniLabelIndex{uint}
+
+\tableDesMatieresLocaleDeProfondeurRelative{1}
+
+
+An \ggs+@uint+ object value is a 32-bit unsigned integer value. You can initialize an \ggs+@uint+ object from an unsigned integer constant:\\
+
+\begin{galgas}
+@uint myUnsignedInteger = 123_456 ;
+\end{galgas}
+
+Note that a 32-bit unsigned integer constant is characterized by no suffix.
+
+\section{Constructors}
+
+\subsectionConstructor{errorCount}{uint}
+
+\begin{galgas}
+constructor errorCount -> @uint
+\end{galgas}
+
+
+Returns an \ggs+@uint+ object that contains the number of errors. The returned value is the cumulative count of errors from the beginning of execution.
+
+\textbf{Exemple :}
+\begin{galgas}
+@uint x = [@uint errorCount] ;
+\end{galgas}
+
+
+
+
+\subsectionConstructor{max}{uint}
+
+\begin{galgas}
+constructor max -> @uint
+\end{galgas}
+
+Returns an \ggs+@uint+ object that the maximum value of the 32-bit unsigned range ($2^{32}-1$).
+
+
+
+
+
+
+\subsectionConstructor{random}{uint}
+
+\begin{galgas}
+constructor random -> @uint
+\end{galgas}
+
+Retourne une valeur aléatoire de type \ggs+@uint+. La procédure de type \refStaticProcPage{uint}{setRandomSeed} permet d'en fixer la valeur initiale.
+
+\begin{galgas}
+  let v = @uint.random
+\end{galgas}
+
+
+{\bf Note. } Sur Unix, la valeur renvoyée est la valeur renvoyée par l'appel de la fonction \texttt{random} de la librairie \texttt{libc}. Sur Windows, c'est la fonction \texttt{rand} qui est appelée.
+
+
+\subsectionConstructor{valueWithMask}{uint}
+
+\begin{galgas}
+constructor valueWithMask ?@uint inLowerIndex ?@uint inUpperIndex -> @uint
+\end{galgas}
+
+
+Returns an \ggs+@uint+ object with bits from \emph{inLowerIndex} to \emph{inUpperIndex} equal to 1.
+
+A run-time error is raised if \emph{inLowerIndex $>$ inUpperIndex} or if \emph{inUpperIndex $>$ 31}.
+
+
+
+\textbf{Exemple :}
+\begin{galgas}
+@uint x = [@uint valueWithMask !2 !4] ; # x is equal to 28 (0b1_1100)
+\end{galgas}
+
+
+
+
+\subsectionConstructor{warningCount}{uint}
+
+\begin{galgas}
+constructor warningCount -> @uint
+\end{galgas}
+
+
+Returns an \ggs+@uint+ object that contains the number of warnings. The returned value is the cumulative count of warnings from the beginning of execution.
+
+
+
+
+
+\section{Procédure de type}
+
+
+\subsectionStaticProc{setRandomSeed}{uint}
+
+
+\begin{galgasbox}
+proc @uint setRandomSeed ?@uint inSeed
+\end{galgasbox}
+
+Affecte la valeur initiale utilisée par le générateur de nombres aléatoires (voir le \refConstructorPage{uint}{random}) Par exemple~:
+
+\begin{galgas}
+  [@uint setRandomSeed !0]
+\end{galgas}
+
+
+
+
+
+
+\section{Getters}
+
+\subsectionGetter{alphaString}{uint}
+
+Ce \emph{getter} permet de convertir un \ggs!@uint! en une chaîne de caractères, telle que l'ordre des entiers est conservé sur la chaîne obtenue.
+
+La chaîne obtenue comporte exactement 7 lettres minuscules. C'est en fait une conversion en base 26, la lettre \ggs=a= ayant la valeur $0$, et la lettre \ggs=z= la valeur $25$.
+
+
+\begin{galgas}
+  message [0 alphaString] + "\n"         # aaaaaaa
+  message [12_345 alphaString] + "\n"    # aaaasgv
+  message [@uint.max alphaString] + "\n" # nxmrlxv
+\end{galgas}
+
+
+
+\subsectionGetter{bigint}{uint}
+
+Ce \emph{getter} permet de convertir un \ggs!@uint! en \ggs!@bigint!. Comme la plage des valeurs des \ggs!bigint! n'est limitée que par la mémoire disponible, il n'échoue jamais.
+
+\begin{galgas}
+  message [[1234 bigint] string] + "\n" # 1234
+\end{galgas}
+
+
+\subsectionGetter{double}{uint}
+
+\begin{galgas}
+getter double -> @double
+\end{galgas}
+
+Returns the receiver's value converted in a \ggs+@double+ object. As a 32-bit integer value can always be converted in a \ggs+@double+ value, this getter never fails.
+
+
+
+\subsectionGetter{hexString}{uint}
+
+\begin{galgas}
+getter hexString -> @string
+\end{galgas}
+
+Returns the an hexadecimal string representation of the receiver value, prefixed by the string \texttt{0x}. For getting an hexadecimal representation string without any prefix, see \refGetterPage{uint}{xString}.
+
+
+
+\subsectionGetter{hexStringSeparatedBy}{uint}
+
+\begin{galgas}
+getter hexStringSeparatedBy ?@char inSeparator ?@uint inGroup -> @string
+\end{galgas}
+
+Returns the an hexadecimal string representation of the receiver value, prefixed by the string \texttt{0x}. Groups of \ggs=inGroup= digits are separated by the \ggs=inSeparator= character.
+
+If \ggs=inGroup= is equal to zero, a run-time error is raised.
+
+For example:
+\begin{galgas}
+let s = [0x12345678 hexStringSeparatedBy !'_' !2] # 0x12_34_56_78
+\end{galgas}
+
+
+
+\subsectionGetter{isInRange}{uint}
+
+\begin{galgas}
+getter isInRange ?@range inRange -> @bool
+\end{galgas}
+
+{Returns an \ggs+@bool+ value indicating whether the receiver'value belongs to \ggs+inRange+ range : for a receiver's value equal to $v$ and a range of length $length$ starting at $start$, it returns \ggs+true+ if $((v \geqslant start)~and~(v<(start+length)))$, and \ggs+false+ otherwise.
+
+
+
+\subsectionGetter{isUnicodeValueAssigned}{uint}
+
+\begin{galgas}
+getter isUnicodeValueAssigned -> @bool
+\end{galgas}
+
+Returns an \ggs+@bool+ value indicating whether the receiver'value represents an assigned Unicode character. It returns \ggs+true+ if the receiver value represents an assigned Unicode character, \ggs+false+ and otherwise.
+
+\textbf{Exemple :}
+\begin{galgas}
+[0xFFFF isUnicodeValueAssigned] # is false, as \uFFFF is not assigned.
+[0x41 isUnicodeValueAssigned] # is true, as \u0041 is assigned (LATIN CAPITAL LETTER A).
+\end{galgas}
+
+
+
+\subsectionGetter{lsbIndex}{uint}
+
+\begin{galgas}
+getter lsbIndex -> @uint
+\end{galgas}
+
+Returns an \ggs+@uint+ value of the index of the most significant bit of the receiver value. It raises a run-time error if the receiver value is zero.
+
+\textbf{Exemple :}
+\begin{galgas}
+@uint value = 192 ; # 192 is ...011000000 in binary
+@uint x = [value lsbIndex] ; # x is equal to 7
+\end{galgas}
+
+The most significant bit of 192 is the 7th bit.
+
+
+
+
+\subsectionGetter{significantBitCount}{uint}
+
+\begin{galgas}
+getter significantBitCount -> @uint
+\end{galgas}
+
+Returns the number of bits needed to express the receiver value. If the receiver value is zero, it returns 0 ; otherwise, it returns the most significant bit index plus one.
+
+\textbf{Exemple :}
+\begin{galgas}
+@uint value = 145 ; # 145 is 10010001 in binary
+@uint x = [value significantBitCount] ; # x is equal to 8
+\end{galgas}
+
+
+
+
+
+
+\subsectionGetter{sint}{uint}
+
+\begin{galgas}
+getter sint -> @sint
+\end{galgas}
+
+Returns the receiver's value in an \refTypePredefini{sint} (32-bit signed integer) object. An error is raised is receiver's value is greater than $2^{31}-1$.
+
+This getter is the only way to convert an \refTypePredefini{uint} object into an \refTypePredefini{sint} object.
+
+
+
+
+\subsectionGetter{sint64}{uint}
+
+\begin{galgas}
+getter sint64 -> @sint64
+\end{galgas}
+
+Returns the receiver's value in an \refTypePredefini{sint64} (64-bit signed integer) object. As a 32-bit unsigned value can always be converted in a 64-bit signed value, this getter never fails.
+
+This getter is the only way to convert an \refTypePredefini{uint} object into an \refTypePredefini{sint64} object.
+
+
+\subsectionGetter{string}{uint}
+
+\begin{galgas}
+getter string -> @string
+\end{galgas}
+
+Returns a decimal string representation of the receiver's value. For an hexadecimal string representation of the receiver's value, see \refGetterPage{uint}{hexString} and \refGetterPage{uint}{xString}.
+
+
+
+
+\subsectionGetter{uint64}{uint}
+
+\begin{galgas}
+getter uint64 -> @uint64
+\end{galgas}
+
+Returns the receiver's value in an \refTypePredefini{uint64} (64-bit unsigned integer) object. As a 32-bit unsigned value can always be converted in a 64-bit unsigned value, this getter never fails.
+
+This getter is the only way to convert an \refTypePredefini{uint} object into an \refTypePredefini{uint64} object.
+
+
+
+
+\subsectionGetter{xString}{uint}
+
+\begin{galgas}
+getter xString -> @string
+\end{galgas}
+
+Returns an hexadecimal string representation of the receiver's value (without any prefix). For an decimal string representation of the receiver's value, see the \refGetterPage{uint}{hexString}; for a decimal string representation of the receiver's value, see the \refGetterPage{uint}{string}.
+
+
+
+
+
+
+
+\section{Arithmétique}
+
+\subsection{Opérateurs infixés}
+
+Le type \ggs+@uint+ accepte les opérateurs arithmétiques infixés suivants :
+\begin{itemize}
+  \item \ggs!+!, addition, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggs!-!, soustraction, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggs!*!, multiplication, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggs!/!, division, une erreur d'exécution est déclenchée si le diviseur est nul ;
+  \item \ggs!mod!, calcul du reste, une erreur d'exécution est déclenchée si le diviseur est nul ;
+  \item \ggs!&+!, addition, le résultat étant silencieusement tronqué sur 32 bits ;
+  \item \ggs!&-!, soustraction, le résultat étant silencieusement tronqué sur 32 bits ;
+  \item \ggs!&*!, multiplication, le résultat étant silencieusement tronqué sur 32 bits ;
+  \item \ggs!&/!, division, qui retourne zéro si le diviseur est nul.
+\end{itemize}
+
+Ces opérateurs exigent que les deux opérandes soient des objets du même type \ggs+@uint+. 
+
+\subsection{Opérateur préfixé}
+Le type \ggs+@uint+ accepte un opérateur arithmétique préfixé :
+\begin{itemize}
+  \item \ggs!+!, qui retourne simplement la valeur de l'opérande.
+\end{itemize}
+
+\subsectionLabel{Instructions}{instructionsUINT}
+
+Le type \ggs+@uint+ accepte les deux instructions arithmétiques suivantes :
+\begin{itemize}
+  \item \ggs!+=!, addition, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggs!-=!, soustraction, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggs!*=!, multiplication, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggs!/=!, division, une erreur d'exécution est déclenchée en cas division par zéro ;
+  \item \ggs!++!, incrémentation, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggs!--!, décrémentation, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggs!&++!, incrémentation, le résultat étant silencieusement tronqué sur 32 bits ;
+  \item \ggs!&--!, décrémentation, le résultat étant silencieusement tronqué sur 32 bits.
+\end{itemize}
+
+\ggs!x+=y! est équivalent à \ggs!x=x+y! ; \ggs!x-=y! est équivalent à \ggs!x=x-y!.
+La variable cible \ggs!x!, comme l'expression source \ggs!y! doivent être du même type \ggs+@uint+. 
+
+Incrémentation et décrémentation sont des instructions, et ne peuvent pas apparaître des expressions.
+\begin{galgas}
+@uint n = ... ; n ++ # Incrémentation
+\end{galgas}
+
+\begin{galgas}
+@uint n = ... ; n -- # Décrémentation
+\end{galgas}
+
+
+
+
+\section{Shift Operators}
+
+
+The \ggs+@uint+ type supports right and left shift operators:\newline
+
+\begin{tabular}{|c|c|}
+\hline
+$<<$ & Left shift \\
+\hline
+$>>$ & Right shift \\
+\hline
+\end{tabular}
+
+Theses operators require both arguments to be \ggs+@uint+ objects.\newline
+
+Note the right shift inserts always a zero bit in the most significant bit location (it is a logical right shift).\newline
+
+The actual amount of the shift is the value of the right-hand operand masked by 31, i.e. the shift distance is always between 0 and 31.
+
+
+
+
+\section{Logical Operators}
+
+The \ggs+@uint+ type supports the three bit-wise logical operators:\newline
+
+\begin{tabular}{|c|c|}
+\hline
+$\&$ & Bit-wise and \\
+\hline
+\textbar & Bit-wise or \\
+\hline
+\^\  & Bit-wise exclusive or \\
+\hline
+\end{tabular}
+
+Theses operators require both arguments to be \ggs+@uint+ objects.\newline
+
+
+The \ggs+@uint+ type supports the bit-wise logical unary operator:\newline
+
+\begin{tabular}{|c|c|}
+\hline
+$\sim$ & Bit-wise complementation \\
+\hline
+\end{tabular}
+
+This operator returns an \ggs+@uint+ object.
+
+
+
+
+
+
+
+\section{Comparison Operators}
+
+The \ggs+@uint+ type supports the six comparison operators:\newline
+
+\begin{tabular}{|c|c|}
+\hline
+$=$ & Equality \\
+\hline
+$!=$ & Non Equality \\
+\hline
+$<$  & Strict Lower Than \\
+\hline
+$<=$  & Lower or Equal \\
+\hline
+$>$  & Strict Greater Than \\
+\hline
+$>=$  & Greater or Equal \\
+\hline
+\end{tabular}
+
+\vspace{2mm}
+Theses operators require both arguments to be \ggs+@uint+ objects, and return a \ggs+@bool+ object.
+
+

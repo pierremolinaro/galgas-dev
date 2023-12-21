@@ -1,0 +1,210 @@
+%!TEX encoding = UTF-8 Unicode
+%!TEX root = ../galgas-book.tex
+
+\chapitreTypePredefiniLabelIndex{double}
+
+\tableDesMatieresLocaleDeProfondeurRelative{1}
+
+
+The \ggs+@double+ object values correspond to the C type \ggs+@double+ values. You can initialize an \ggs+@double+ object from a float constant:
+
+\begin{galgas}
+@double myDouble = 123.456
+\end{galgas}
+
+Note that a \ggs+@double+ constant is characterized by the occurrence of the decimal point (.)
+
+\section{Constructor}
+
+\subsectionConstructor{doubleWithBinaryImage}{double}
+
+\begin{galgas}
+constructor doubleWithBinaryImage ?@uint inValue -> @double
+\end{galgas}
+
+
+Returns a double object from the binary image of the argument.
+
+
+
+\subsectionConstructor{pi}{double}
+
+\begin{galgas}
+constructor pi -> @double
+\end{galgas}
+
+
+
+Returns an approximation of the $\pi$ constant value (\ggs+3.14159265358979323846264338327950288+).
+
+\section{Getters}
+
+\subsectionGetter{binaryImage}{double}
+
+\begin{galgas}
+getter binaryImage -> @uint64
+\end{galgas}
+
+Returns the binary image of the value of receiver's value.
+
+
+
+
+\subsectionGetter{cos}{double}
+
+\begin{galgas}
+getter cos -> @double
+\end{galgas}
+
+Returns the \emph{cosine} value of receiver's value, expressed in radian.
+
+
+
+
+\subsectionGetter{sin}{double}
+
+\begin{galgas}
+getter sint -> @double
+\end{galgas}
+
+Returns the \emph{sine} value of receiver's value, expressed in radian.
+
+
+
+
+\subsectionGetter{sint}{double}
+
+\begin{galgas}
+getter sint -> @sint
+\end{galgas}
+
+Returns the receiver's value in an \refTypePredefini{sint} (32-bit signed integer) object: if receiver's value is outside \ggs+@sint+ bounds, a runtime error is raised.
+
+
+
+\subsectionGetter{sint64}{double}
+
+\begin{galgas}
+getter sint64 -> @sint64
+\end{galgas}
+
+Returns the receiver's value in an \refTypePredefini{sint64} (64-bit signed integer) object: if receiver's value is outside \ggs+@sint64+ bounds, a runtime error is raised.
+
+
+
+
+\subsectionGetter{string}{double}
+
+\begin{galgas}
+getter string -> @string
+\end{galgas}
+
+Returns a decimal string representation of the receiver's value (this getter never fails).
+
+
+
+
+\subsectionGetter{tan}{double}
+
+\begin{galgas}
+getter tan -> @double
+\end{galgas}
+
+Returns the \emph{tangent} value of receiver's value, expressed in radian.
+
+
+
+
+
+
+
+\subsectionGetter{uint}{double}
+
+\begin{galgas}
+getter uint -> @uint
+\end{galgas}
+
+Returns the receiver's value in an \refTypePredefini{uint} (32-bit unsigned integer) object: if receiver's value is outside \ggs+@uint+ bounds, a runtime error is raised.
+
+
+
+
+
+\subsectionGetter{uint64}{double}
+
+\begin{galgas}
+getter uint64 -> @uint64
+\end{galgas}
+
+Returns the receiver's value in an \refTypePredefini{uint64} (64-bit unsigned integer) object: if receiver's value is outside \ggs+@uint64+ bounds, a runtime error is raised.
+
+
+
+\section{Arithmétique}
+
+\subsection{Opérateurs infixés}
+
+Le type \ggs+@double+ accepte les opérateurs arithmétiques infixés suivants :
+\begin{itemize}
+  \item \ggs!+!, addition ;
+  \item \ggs!-!, soustraction ;
+  \item \ggs!*!, multiplication ;
+  \item \ggs!/!, division, une erreur d'exécution est déclenchée si le diviseur est nul ;
+  \item \ggs!mod!, calcul du reste, une erreur d'exécution est déclenchée si le diviseur est nul ;
+  \item \ggs!&/!, division, qui retourne zéro si le diviseur est nul.
+\end{itemize}
+
+Ces opérateurs exigent que les deux opérandes soient des objets du même type \ggs+@double+. 
+
+\subsection{Opérateurs préfixés}
+Le type \ggs+@double+ accepte les opérateurs arithmétiques préfixés suivants :
+\begin{itemize}
+  \item \ggs!+!, qui retourne simplement la valeur de l'opérande ;
+  \item \ggs!-!, négation arithmétique.
+\end{itemize}
+
+La valeur renvoyée est du même type  \ggs+@double+.
+
+
+\subsectionLabel{Instructions}{affectationsCombineesDouble}
+
+Le type \ggs+@double+ accepte les instructions arithmétiques suivantes :
+\begin{itemize}
+  \item \ggs!+=!, addition ;
+  \item \ggs!-=!, soustraction ;
+  \item \ggs!*=!, multiplication ;
+  \item \ggs!/=!, division.
+\end{itemize}
+
+\ggs!x+=y! est équivalent à \ggs!x=x+y! ; \ggs!x-=y! est équivalent à \ggs!x=x-y!.
+La variable cible \ggs!x!, comme l'expression source \ggs!y! doivent être du même type \ggs+@double+. 
+
+
+
+
+
+
+
+\section{Comparison Operators}
+
+The \ggs+@double+ type supports the six comparison operators:\newline
+
+\begin{tabular}{|c|c|}
+\hline
+$=$ & Equality \\
+\hline
+$!=$ & Non Equality \\
+\hline
+$<$  & Strict Lower Than \\
+\hline
+$<=$  & Lower or Equal \\
+\hline
+$>$  & Strict Greater Than \\
+\hline
+$>=$  & Greater or Equal \\
+\hline
+\end{tabular}
+
+Theses operators require both arguments to be \ggs+@double+ objects, and return a \ggs+@bool+ object.
+
+

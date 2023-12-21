@@ -1,0 +1,68 @@
+%!TEX encoding = UTF-8 Unicode
+%!TEX root = ../galgas-book.tex
+
+%--------------------------------------------------------------
+\chapterLabel{Le type \texttt{extern}}{typeExtern}
+%-------------------------------------------------------------
+
+\tableDesMatieresLocaleDeProfondeurRelative{1}
+
+
+Un type \ggs+extern+ est déclaré et spécifié en GALGAS, et implémenté par une classe C++. Ceci permet de définir des types qui seraient difficilement exprimables en GALGAS.
+
+On va voir sur un exemple comment déclarer et implémenter :
+\begin{itemize}
+  \item un type externe minimum ;
+  \item un constructeur ;
+  \item un \emph{setter} ;
+  \item une \emph{méthode} ;
+  \item un \emph{getter} ;
+  \item une \emph{méthode} de classe.
+\end{itemize}
+
+L'exemple consiste à implémenter le type \ggs+@complex+ qui représente les nombres complexes.
+
+\section{Type externe minimum}
+
+L'implémentation minimum ne sera pas opérationnelle, car elle ne comprendra pas de constructeur : on ne pourra donc pas instancier d'objet du type \ggs+@complex+. L'ajout de constructeur sera présenté à la section suivante. De même, cette implémentation minimum ne définira ni \emph{setter}, ni \emph{méthode}, ni \emph{getter}.
+
+
+\subsection{Déclaration en GALGAS}
+
+La description minimum est la suivante :
+\begin{galgas}
+extern @complex {
+  "// No Predeclaration\n"
+}{
+  "  private : bool mIsValid ;\n"
+  "  private : double mReal ;\n"
+  "  private : double mImaginary ;\n"
+}{
+}
+\end{galgas}
+
+Cette description est divisée en trois parties, délimitées par les accolades \ggs+{+ et \ggs+}+.
+
+\textbf{Première partie.} Elle cite une séquence de chaînes de caractères, qui seront écrites telles quelles dans le fichier d'en-tête C++ engendré, juste avant la déclaration de la classe C++ ; on peut y placer là des pré-déclarations de classe, des inclusions de fichier, … Pour le type \ggs+@complex+, aucune pré-déclaration n'est nécessaire, aussi on place un simple commentaire C++, de façon à le localiser dans le fichier d'en-tête C++ engendré.
+
+\subsection{Implémentation en C++}
+
+
+
+
+
+
+\section{Constructeur}
+
+
+\section{Setter}
+
+
+\section{Méthode}
+
+
+\section{Getter}
+
+
+\section{Méthode de classe}
+

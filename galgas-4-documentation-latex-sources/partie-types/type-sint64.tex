@@ -1,0 +1,279 @@
+%!TEX encoding = UTF-8 Unicode
+%!TEX root = ../galgas-book.tex
+
+\chapitreTypePredefiniLabelIndex{sint64}
+
+\tableDesMatieresLocaleDeProfondeurRelative{1}
+
+
+An \ggs+@sint64+ object value is a 64-bit signed integer value. You can initialize an \ggs+@sint64+ object from an 64-bit signed integer constant:\\
+
+\texttt{@sint64 mySignedInteger = 123\_456LS ;}
+
+Note that a 64-bit signed integer constant is characterized by the 'LS' suffix.
+
+\section{Constructors}
+
+
+\subsectionConstructor{min}{sint64}
+
+\begin{galgas}
+constructor min -> @sint64
+\end{galgas}
+
+Returns an \ggs+@sint64+ object that the minimum value of the 64-bit signed range ($-2^{63}$).
+
+
+
+
+
+\subsectionConstructor{max}{sint64}
+
+\begin{galgas}
+constructor max -> @sint64
+\end{galgas}
+
+Returns an \ggs+@sint64+ object that the maximum value of the 64-bit signed range ($2^{63}-1$).
+
+
+\section{Getters}
+
+
+\subsectionGetter{bigint}{sint64}
+
+Ce \emph{getter} permet de convertir un \ggs!@sint64! en \ggs!@bigint!. Comme la plage des valeurs des \ggs!bigint! n'est limitée que par la mémoire disponible, il n'échoue jamais.
+
+\begin{galgas}
+  message [[-1234LS bigint] string] + "\n" # -1234
+\end{galgas}
+
+
+
+\subsectionGetter{double}{sint64}
+
+\begin{galgas}
+getter double -> @double
+\end{galgas}
+
+Returns the receiver's value converted in a \ggs+@double+ object. As a 64-bit integer value can always be converted in a \ggs+@double+ value, this getter never fails.
+
+
+
+\subsectionGetter{hexStringSeparatedBy}{sint64}
+
+\begin{galgas}
+getter hexStringSeparatedBy ?@char inSeparator ?@uint inGroup -> @string
+\end{galgas}
+
+Returns the an hexadecimal string representation of the receiver value, prefixed by the string \texttt{0x}. Groups of \ggs=inGroup= digits are separated by the \ggs=inSeparator= character.
+
+If \ggs=inGroup= is equal to zero, a run-time error is raised.
+
+For example:
+\begin{galgas}
+let s = [0x123456789ABCDEF0LS hexStringSeparatedBy !'_' !3] # 0x1_234_567_89A_BCD_EF0
+\end{galgas}
+
+
+
+
+\subsectionGetter{sint}{sint64}
+
+\begin{galgas}
+getter sint -> @sint
+\end{galgas}
+
+Returns the receiver's value in an \refTypePredefini{sint} (32-bit signed integer) object. An error is raised is receiver's value is lower than $-2^{31}$ or greater than $2^{31}-1$.
+
+This getter is the only way to convert an \refTypePredefini{sint64} object into an \refTypePredefini{sint} object.
+
+
+
+
+
+\subsectionGetter{string}{sint64}
+
+\begin{galgas}
+getter string -> @string
+\end{galgas}
+
+Returns a decimal string representation of the receiver's value. This getter never fails.
+
+
+
+
+
+
+
+
+\subsectionGetter{uint}{sint64}
+
+\begin{galgas}
+getter uint -> @uint
+\end{galgas}
+
+Returns the receiver's value in an \refTypePredefini{uint} (32-bit unsigned integer) object. An error is raised is receiver's value is negative or greater than $2^{32}-1$.
+
+This getter is the only way to convert an \refTypePredefini{sint64} object into an \refTypePredefini{uint} object.
+
+
+
+
+
+\subsectionGetter{uint64}{sint64}
+
+\begin{galgas}
+getter uint64 -> @uint64
+\end{galgas}
+
+Returns the receiver's value in an \refTypePredefini{uint64} (64-bit unsigned integer) object. This getter raises a run-time error if the receiver's value is negative.
+
+This getter is the only way to convert an \refTypePredefini{sint64} object into an \refTypePredefini{uint64} object.
+
+
+
+
+
+
+
+
+\section{Arithmétique}
+
+\subsection{Opérateurs infixés}
+
+Le type \ggs+@sint64+ accepte les opérateurs arithmétiques infixés suivants :
+\begin{itemize}
+  \item \ggs!+!, addition, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggs!-!, soustraction, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggs!*!, multiplication, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggs!/!, division, une erreur d'exécution est déclenchée si le diviseur est nul ;
+  \item \ggs!mod!, calcul du reste, une erreur d'exécution est déclenchée si le diviseur est nul ;
+  \item \ggs!&+!, addition, le résultat étant silencieusement tronqué sur 64 bits ;
+  \item \ggs!&-!, soustraction, le résultat étant silencieusement tronqué sur 64 bits ;
+  \item \ggs!&*!, multiplication, le résultat étant silencieusement tronqué sur 64 bits ;
+  \item \ggs!&/!, division, qui retourne zéro si le diviseur est nul.
+\end{itemize}
+
+Ces opérateurs exigent que les deux opérandes soient des objets du même type \ggs+@sint64+. 
+
+\subsection{Opérateurs préfixés}
+Le type \ggs+@sint64+ accepte les opérateurs arithmétiques préfixés suivants :
+\begin{itemize}
+  \item \ggs!+!, qui retourne simplement la valeur de l'opérande ;
+  \item \ggs!-!, négation arithmétique, une erreur d'exécution est déclenchée si l'opérande est égal à $-2^{63}$ ;
+  \item \ggs!&-!, négation arithmétique, sans détection de débordement : la négation de $-2^{63}$ est $-2^{63}$.
+\end{itemize}
+
+La valeur renvoyée est du même type  \ggs+@sint64+.
+
+
+\subsectionLabel{Instructions}{instructionsSINT64}
+
+Le type \ggs+@sint64+ accepte les instructions arithmétiques suivantes :
+\begin{itemize}
+  \item \ggs!+=!, addition, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggs!-=!, soustraction, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggs!*=!, multiplication, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggs!/=!, division, une erreur d'exécution est déclenchée en cas division par zéro ;
+  \item \ggs!++!, incrémentation, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggs!--!, décrémentation, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggs!&++!, incrémentation, le résultat étant silencieusement tronqué sur 64 bits ;
+  \item \ggs!&--!, décrémentation, le résultat étant silencieusement tronqué sur 64 bits.
+\end{itemize}
+
+\ggs!x+=y! est équivalent à \ggs!x=x+y! ; \ggs!x-=y! est équivalent à \ggs!x=x-y!.
+La variable cible \ggs!x!, comme l'expression source \ggs!y! doivent être du même type \ggs+@sint64+. 
+
+Incrémentation et décrémentation sont des instructions, et ne peuvent pas apparaître des expressions.
+\begin{galgas}
+@sint64 n = ... ; n ++ # Incrémentation
+\end{galgas}
+
+\begin{galgas}
+@sint64 n = ... ; n -- # Décrémentation
+\end{galgas}
+
+
+
+
+
+
+
+\section{Shift Operators}
+
+
+The \ggs+@sint64+ type supports right and left shift operators:\newline
+
+\begin{tabular}{|c|c|}
+\hline
+$<<$ & Left shift \\
+\hline
+$>>$ & Right shift \\
+\hline
+\end{tabular}
+
+Theses operators require the right argument to be \ggs+@sint64+ object, and the left argument to be \ggs+@uint+ object.\newline
+
+Note the right shift inserts a zero bit in the most significant bit location if the receiver's value is negative, and a one bit otherwise (it is a arithmetic right shift).\newline
+
+The actual amount of the shift is the value of the right-hand operand masked by 63, i.e. the shift distance is always between 0 and 63.
+
+
+
+
+\section{Logical Operators}
+
+The \ggs+@sint64+ type supports the three bit-wise logical operators:\newline
+
+\begin{tabular}{|c|c|}
+\hline
+$\&$ & Bit-wise and \\
+\hline
+\textbar & Bit-wise or \\
+\hline
+\^\  & Bit-wise exclusive or \\
+\hline
+\end{tabular}
+
+Theses operators require both arguments to be \ggs+@sint64+ objects.\newline
+
+
+The \ggs+@sint64+ type supports the bit-wise logical unary operator:\newline
+
+\begin{tabular}{|c|c|}
+\hline
+$\sim$ & Bit-wise complementation \\
+\hline
+\end{tabular}
+
+This operator returns an \ggs+@sint64+ object.
+
+
+
+
+
+
+
+\section{Comparison Operators}
+
+The \ggs+@sint64+ type supports the six comparison operators:\newline
+
+\begin{tabular}{|c|c|}
+\hline
+$=$ & Equality \\
+\hline
+$!=$ & Non Equality \\
+\hline
+$<$  & Strict Lower Than \\
+\hline
+$<=$  & Lower or Equal \\
+\hline
+$>$  & Strict Greater Than \\
+\hline
+$>=$  & Greater or Equal \\
+\hline
+\end{tabular}
+
+Theses operators require both arguments to be \ggs+@sint64+ objects, and return a \ggs+@bool+ object.
+
+

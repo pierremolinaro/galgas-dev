@@ -1,0 +1,2466 @@
+%!TEX encoding = UTF-8 Unicode
+%!TEX root = ../galgas-book.tex
+
+%--------------------------------------------------------------
+\chapter{Instructions sémantiques}
+%-------------------------------------------------------------
+
+\tableDesMatieresLocaleDeProfondeurRelative{1}
+
+
+
+
+
+\section{Rôle du point-virgule «\texttt{;}»}
+
+Le point-virgule n'est pas un terminateur d'instruction. Il représente une instruction vide. Aussi, il peut être utilisé en nombre quelconque entre deux instructions consécutives. Ainsi, on peut écrire~:
+
+\begin{galgas}
+instruction1  instruction2
+\end{galgas}
+
+Ou encore~:
+\begin{galgas}
+instruction1 ; instruction2
+\end{galgas}
+\begin{galgas}
+instruction1 ;;;; instruction2
+\end{galgas}
+
+
+
+
+
+
+
+\section{Instruction de déclaration de variable}
+
+
+Une déclaration de variable peut citer une \ggs+expression+ qui lui fournit sa valeur initiale. Dans le cas contraire, la variable est \emph{non initialisée} jusqu'à ce qu'une valeur lui soit affectée.
+
+Les deux formes de déclaration sont donc~:
+\begin{itemize}
+\item déclaration d'une variable \emph{non initialisée}~: « \ggs+var @type variable+ »~;
+\item déclaration d'une variable \emph{initialisée}~: « \ggs+var @type variable = expression+ ».
+\end{itemize}
+
+
+\subsection{Déclaration « \texttt{var @type variable} »}
+
+La forme générale de déclaration d'une variable \emph{non initialisée} est~:
+\begin{galgasbox}
+var @type variable
+\end{galgasbox}
+
+
+\subsectionLabel{Déclaration « \texttt{var @type variable = expression} »}{declarationVariableAvecExpression}
+
+
+
+La forme générale de déclaration d'une variable \emph{initialisée} est~:
+\begin{galgasbox}
+var @type variable = expression
+\end{galgasbox}
+
+On peut omettre le type, à la condition que l'expression puisse fournir l'information de type. Par exemple, dans l'écriture suivante~:
+\begin{galgas}
+var s = "Hello" # Type implicite @string
+\end{galgas}
+
+
+Prenons un autre exemple, celui de l'initialisation d'une liste~:
+\begin{galgas}
+var @stringlist sl = @stringlist {}
+\end{galgas}
+
+Le type est annoté de façon redondante, puisqu'il apparaît à la fois dans le membre de gauche et dans l'expression~; l'une des deux annotations peut être omise~:
+\begin{galgas}
+var sl = @stringlist {}
+\end{galgas}
+
+Ou~:
+\begin{galgas}
+var @stringlist sl = {}
+\end{galgas}
+
+Par contre, omettre les deux annotations ne permet pas de déduire le type de la variable~; c'est donc une erreur détectée par le compilateur~:
+\begin{galgas}
+var sl = {} # Erreur : le type est indéterminé
+\end{galgas}
+
+Un dernier exemple, avec un constructeur~:
+\begin{galgas}
+var @location sl = @location.here
+\end{galgas}
+
+On peut écrire~:
+\begin{galgas}
+var sl = @location.here
+\end{galgas}
+
+Ou~:
+\begin{galgas}
+var @location sl = .here
+\end{galgas}
+
+Mais en aucun cas~:
+\begin{galgas}
+var sl = .here # Erreur : le type est indéterminé
+\end{galgas}
+
+
+
+
+
+\section{Instruction de déclaration de constante}
+
+Une déclaration de constante peut citer une \ggs+expression+ qui lui fournit sa valeur initiale. Dans le cas contraire, la variable est \emph{non initialisée} jusqu'à ce qu'une valeur lui soit affectée.
+
+Les deux formes de déclaration sont donc~:
+\begin{itemize}
+\item déclaration d'une constante \emph{initialisée}~: « \ggs+let @type constante = expression+ ».
+\item déclaration d'une constante \emph{non initialisée}~: « \ggs+let @type constante+ »~;
+\end{itemize}
+
+\subsection{Déclaration d'une constante initialisée}
+
+
+Le mot clé \ggs+let+ caractérise une déclaration de constante. L'annotation de type peut être omis si le type peut être déduit de l'expression, comme pour l'instruction de déclaration de variable (\refSubsectionPage{declarationVariableAvecExpression}). On peut donc reprendre les exemples de la section précédente~:
+\begin{galgas}
+let @string s = "Hello"
+\end{galgas}
+
+L'expression est une chaîne de caractères, dont le type est \ggs+@string+. On peut donc omettre l'annotation de type dans l'instruction~:
+\begin{galgas}
+let s = "Hello"
+\end{galgas}
+
+
+Prenons un autre exemple, celui de l'initialisation d'une liste~:
+\begin{galgas}
+let @stringlist sl = @stringlist {}
+\end{galgas}
+
+Le type est annoté de façon redondante, puisqu'il apparaît à la fois dans le membre de gauche et dans l'expression~; l'une des deux annotations peut être omise~:
+\begin{galgas}
+let sl = @stringlist {}
+\end{galgas}
+
+Ou~:
+\begin{galgas}
+let @stringlist sl = {}
+\end{galgas}
+
+Par contre, omettre les deux annotations ne permet pas de déduire le type de la constante, c'est donc une erreur détectée par le compilateur~:
+\begin{galgas}
+let sl = {} # Erreur : le type est indéterminé
+\end{galgas}
+
+Un dernier exemple, avec un constructeur~:
+\begin{galgas}
+let @location sl = @location.here
+\end{galgas}
+
+On peut écrire~:
+\begin{galgas}
+let sl = @location.here
+\end{galgas}
+
+Ou~:
+\begin{galgas}
+let @location sl = .here
+\end{galgas}
+
+Mais en aucun cas~:
+\begin{galgas}
+let sl = .here # Erreur : le type est indéterminé
+\end{galgas}
+
+
+\subsection{Déclaration d'une constante non initialisée}
+
+Il est possible de déclarer une constante sans fournir de valeur initiale. Une seule affectation est alors permise.
+
+\begin{galgas}
+let @string s
+...
+s = "Hello"
+...
+s = "World" # Erreur sémantique, une constante ne peut pas être modifiée
+\end{galgas}
+
+L'intérêt est de pouvoir initialiser la constante dans chaque branche d'une instruction sélective~:
+\begin{galgas}
+let @string s
+if ... then
+  s = "Hello 1"
+else
+  s = "Hello 2"
+end
+\end{galgas}
+
+
+
+
+
+
+
+
+
+
+
+
+\sectionLabel{L'instruction d'affectation}{assignmentInstruction}
+
+L'instruction d'affectation peut prendre plusieurs formes. La plus courante est~:
+
+\begin{galgasbox}
+variable = expression
+\end{galgasbox}
+
+Si \ggs+variable+ est une instance de structure (\refChapterPage{typeStructure}), on peut directement en modifier un champ en utilisant l'opérateur \ggs+.+~:
+
+\begin{galgasbox}
+variable.champ = expression
+\end{galgasbox}
+
+Si \ggs+champ+ est lui-même une structure, on peut accéder à l'un de ses champs (et ainsi de suite)~:
+
+\begin{galgasbox}
+variable.champ.champ1 = expression
+\end{galgasbox}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\sectionLabel{L'instruction \texttt{cast}}{instructionCast}
+
+L'instruction \ggs+cast+ permet simplement d'exprimer de manière élégante une série de tests de conversions polymorphiques inverses. Sa syntaxe est~:
+
+\begin{galgasbox}
+cast expression
+case conversion @T1 nom1 :
+  ...
+case conversion @T2 nom2 :
+  ...
+else
+  ...
+end
+\end{galgasbox}
+
+L'instruction accepte une ou plusieurs branches \ggs+case+, et zéro ou une branche \ggs+else+. \ggs+conversion+ est soit \ggs+==+, soit \ggs+>=+. \ggs+nom1+ et \ggs+nom2+ sont des constantes dont le type est le type nommé dans la branche \ggs+case+ qui la déclare, et dont la portée est limitée à cette branche \ggs+case+.
+
+Lors de l'exécution, le type dynamique de \ggs+expression+ est comparé successivement aux types (\ggs+@T1+, \ggs+@T2+) nommés dans les branches \ggs+case+~; dès que ce type dynamique est~:
+\begin{itemize}
+  \item exactement la classe \ggs+@T+ (\ggs+conversion+ est \ggs+==+), 
+  \item la classe \ggs+@T+ ou de l'une de ses classes héritières (\ggs+conversion+ est \ggs+>=+),
+  \item une classe héritière de la classe \ggs+@T+, mais pas la classe \ggs+@T+ (\ggs+conversion+ est \ggs+>+),
+\end{itemize}
+alors la constante prend la valeur de \ggs+expression+ et les instructions de la branche correspondante sont exécutées.
+
+Si toutes les comparaisons échouent, la branche \ggs+else+ est exécutée (si elle existe). La forme typique de cette instruction est donc~:
+
+
+\begin{galgasbox}
+cast expression
+case >= @B v1 :
+  ...
+case >= @C v2 :
+  ...
+else
+  message "conversion impossible"
+end
+\end{galgasbox}
+
+Note~: si la variable \ggs+nom1+ ou  \ggs+nom2+ n'est pas utilisée dans la branche correspondante, une alerte est émise. Pour la supprimer, ne pas mentionner la variable en écrivant \ggs+case >= @T :+.
+
+
+
+
+
+
+
+
+
+\sectionLabel{L'instruction d'ajout \texttt{+=} d'un élément à une collection}{concatInstruction}
+
+L'instruction \ggs!+=! présente deux syntaxes~:
+\begin{itemize}
+  \item le membre de droite est une expression~: \ggs*cible += expression*~; cette instruction est décrite \refSectionPage{instructionAffectationCombineeOperation}~;
+  \item le membre de droite est une liste d'expressions~: \ggs*cible += !expression1 ... !expressionN*~; cette instruction est décrite ci-dessous.
+\end{itemize}
+
+La \ggs+cible+ est une variable ou un champ de structure.
+
+Cette instruction s'applique aux types suivants~:
+\begin{itemize}
+  \item \ggs+@stringset+ (\refSubsectionPage{instructionConcatStringset})~;
+  \item \ggs+list @T+ (\refSubsectionPage{instructionConcatList})~;
+  \item \ggs+sortedlist @T+ (\refSubsectionPage{instructionConcatSortedList})~;
+  \item \ggs+map @T+ (\refSubsectionPage{instructionConcatMap}).
+\end{itemize}
+
+
+\subsectionLabel{Instruction d'ajout et le type \texttt{@stringset}}{instructionConcatStringset}
+
+Sous la forme \ggs*cible += expression*, l'instruction permet de concaténer d'effectuer l'union des ensembles de chaînes~:
+\begin{galgas}
+var strset1 = @stringset {!"a", !"b"} # Valeur : "a", "b"
+var strset2 = @stringset {!"b", !"c"} # Valeur : "b", "c"
+strset1 += strset2 # strset1 vaut "a", "b", "c"
+\end{galgas}
+
+La forme \ggs*cible += !expression1 ... !expressionN* permet d'ajouter une chaîne à l'ensemble~:
+\begin{galgas}
+var strset1 = @stringset {!"a", !"b"} # Valeur : "a", "b"
+strset1 += !"c" # strset1 vaut "a", "b", "c"
+strset1 += !"b" # strset1 vaut "a", "b", "c"
+\end{galgas}
+
+
+
+\subsectionLabel{Instruction d'ajout et les listes}{instructionConcatList}
+
+Sous la forme \ggs*cible += expression*, l'instruction effectue une concaténation de listes~: \ggs+cible+ et \ggs+expression+ doivent avoir le même type \ggs+list @T+, et l'\ggs+expression+ est ajoutée à la fin de la \ggs+cible+.
+
+\begin{galgas}
+var liste1 = @stringlist {!"a", !"b"}
+var liste2 = @stringlist {!"c", !"d"}
+liste1 += liste2 # liste1 vaut "a" "b" "c" "d"
+\end{galgas}
+
+
+
+Sous la forme \ggs*cible += !expression1 ... !expressionN*, l'instruction ajoute un élément à la fin de \ggs+cible+. L'élément est défini par la liste des valeurs de ses champs.
+
+Avec la liste~:
+\begin{galgas}
+list @maListe {
+  @uint mProperty1
+  @string mProperty2
+}
+\end{galgas}
+
+On a~:
+
+\begin{galgas}
+var liste = @maListe {}
+liste += !2 !"a" # liste vaut contient un élément 2, "a"
+\end{galgas}
+
+
+
+
+
+
+\subsectionLabel{Instruction d'ajout et les listes triées}{instructionConcatSortedList}
+
+Sous la forme \ggs*cible += expression*, l'instruction effectue une concaténation de listes~: \ggs+cible+ et \ggs+expression+ doivent avoir le même type \ggs+sortedlist @T+, et chaque élément de \ggs+expression+ est ajouté à la \ggs+cible+ en respectant l'ordre de tri.
+
+Avec la liste triée~:
+\begin{galgas}
+sortedlist @maListeTriee {
+  @uint mProperty1
+  @string mProperty2
+}{
+  mProperty1 <
+}
+\end{galgas}
+
+\begin{galgas}
+var liste1 = @maListeTriee {!3 !"a", !1 !"c"} # Valeur : (1, "c"), (3, "a")
+var liste2 = @maListeTriee {!4 !"d", !2 !"b"} # Valeur : (2, "b"), (4, "d")
+liste1 += liste2 # liste1 vaut (1, "c"), (2, "b"), (3, "a"), (4, "d")
+\end{galgas}
+
+
+
+Sous la forme \ggs*cible += !expression1 ... !expressionN*, l'instruction ajoute un élément à la fin de \ggs+cible+. L'élément est défini par la liste des valeurs de ses champs.
+
+
+On a~:
+
+\begin{galgas}
+var liste = @maListeTriee {}
+liste += !2 !"a" # Valeur : (2, "a")
+liste += !1 !"b" # Valeur : (1, "b"), (2, "a")
+liste += !3 !"c" # Valeur : (1, "b"), (2, "a"), (3, "c")
+\end{galgas}
+
+
+
+
+
+
+
+\subsectionLabel{Instruction d'ajout et les tables}{instructionConcatMap}
+
+La forme \ggs*cible += expression* n'est pas prise en charge.
+
+Sous la forme \ggs*cible += !expression1 ... !expressionN*, l'instruction ajoute un élément à la table \ggs+cible+. L'élément est défini par la clé et suivie de la liste des valeurs de ses champs.
+
+
+Avec la table~:
+\begin{galgas}
+map @maTable {
+  @uint mProperty1
+  @string mProperty2
+}
+\end{galgas}
+
+on a~:
+
+\begin{galgas}
+var table = @maTable {}
+@lstring clef = ...
+table += !clef !2 !"a"
+\end{galgas}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\sectionLabel{Affectation combinée à une opération~: \texttt{+=}, \texttt{-=}, \texttt{*=} et \texttt{/=}}{instructionAffectationCombineeOperation}
+
+L'instruction \ggs!+=! présente deux syntaxes~:
+\begin{itemize}
+  \item le membre de droite est une expression~: \ggs*cible += expression*~; cette instruction est décrite ci-dessous~;
+  \item le membre de droite est une liste d'expressions~: \ggs*cible += !expression1 ... !expressionN*~; cette instruction est décrite \refSectionPage{concatInstruction}.
+\end{itemize}
+
+La \ggs+cible+ est une variable ou un champ de structure.
+
+Les instructions \ggs!+=!, \ggs!-=!, \ggs!*=!, \ggs!/=! s'appliquent~:
+\begin{itemize}
+ \item aux types entiers \ggs!@sint! (\refSubsectionPage{instructionsSINT}, \ggs!@sint64! (\refSubsectionPage{instructionsSINT64}, \ggs!@uint! (\refSubsectionPage{instructionsUINT} et \ggs!@uint64! (\refSubsectionPage{instructionsUINT64}~;
+ \item au type flottant \ggs!@double! (\refSubsectionPage{affectationsCombineesDouble}).
+\end{itemize}
+
+L'instruction \ggs!+=! s'applique aussi au type \ggs+@string+ (\refSubsectionPage{instructionConcatString}).
+
+D'une manière générale, \texttt{x $op$= y} est équivalent à {x = x $op$ y}.
+
+
+\subsectionLabel{Instruction \texttt{+=} et le type \texttt{@string}}{instructionConcatString}
+
+Sous la forme \ggs*cible += expression*, l'instruction permet de concaténer des chaînes de caractères~:
+\begin{galgas}
+var s = "abc"
+s += "def" # s vaut "abcdef"
+\end{galgas}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\sectionLabel{Décrémentation \texttt{-{}-} et \texttt{\&-{}-}}{decrementInstruction}
+
+L'instruction de décrémentation s'applique aux types \refTypePredefini{sint}, \refTypePredefini{sint64}, \refTypePredefini{uint}, \refTypePredefini{uint64} et \refTypePredefini{bigint}~; sa syntaxe est la suivante~:
+
+\begin{galgasbox}
+variable --
+\end{galgasbox}
+
+Les champs de structure peuvent être décrémentés~:
+\begin{galgasbox}
+variable.champ --
+\end{galgasbox}
+
+
+Ainsi qu'une propriété de l'objet courant~:
+\begin{galgasbox}
+self.champ --
+\end{galgasbox}
+
+Une erreur d'exécution est déclenchée en cas de dépassement de capacité.
+
+L'opérateur \ggs+&--+ effectue une décrémentation sans déclencher d'erreur en cas de dépassement de capacité~:
+\begin{galgasbox}
+variable &--
+\end{galgasbox}
+
+Les champs de structure peuvent être décrémentés sans déclencher d'erreur en cas de dépassement de capacité~:
+\begin{galgasbox}
+variable.champ &--
+\end{galgasbox}
+
+
+
+%---------------------------------------------------------------------------------------------------------------------------
+
+\section{L'instruction \texttt{drop}}
+
+La syntaxe de l'instruction \ggs+drop+ est la suivante~:
+
+\begin{galgasbox}
+drop variable, ...
+\end{galgasbox}
+
+Chaque variable nommée est placée dans l'état \emph{non construit}.
+
+
+
+
+
+
+
+%---------------------------------------------------------------------------------------------------------------------------
+
+\section{L'instruction \texttt{error}}
+
+L'instruction \ggs+error+ permet de signaler une erreur à l'utilisateur. Elle est constituée de trois champs séparés par un double-point (\ggs+:+)~:
+
+\begin{galgasbox}
+error localisation : message_erreur : variable1, ..., variableN
+\end{galgasbox}
+
+
+
+Le champ \ggs+localisation+ signale à l'utilisateur la position de l'erreur dans le texte source. C'est donc une expression de type \ggs+@location+, ou d'un type possédant un \emph{getter} sans argument nommé \ggs+location+ et renvoyant un objet de type \ggs+@location+~: c'est le cas des types prédéfinis \ggs+@luint+, \ggs+@luint64+, \ggs+@lsint+, \ggs+@lsint64+, \ggs+@lbigint+, \ggs+@lbool+, \ggs+@lchar+ et \ggs+@lstring+.
+
+Le \ggs+message_erreur+ est le message affiché à l'utilisateur~: c'est donc une expression de type \ggs+@string+.
+
+Le troisième champ liste les variables \ggs+variable1+, ..., \ggs+variableN+ qui sont détruites du fait de l'erreur (\refSubsectionPage{listVarDetruitesInstructionError}).
+
+Il y a un quatrième champ, optionnel, qui permet de transmettre à l'utilisateur des suggestions de corrections~: il commence par le mot réservé \ggs=fixit= et est décrit à la \refSubsectionPage{clauseFixItInstructionErreur}.
+
+Si il n'y a pas de variable à citer, l'instruction s'écrit~:
+\begin{galgas}
+error localisation : message_erreur
+\end{galgas}
+
+Par exemple~:
+
+\begin{galgas}
+$identifier$ ?@lstring nom
+...
+error nom.location : message_erreur
+\end{galgas}
+
+Comme \ggs+nom+ est de type \ggs+lstring+ (voir ci-dessus), on peut simplement écrire~:
+\begin{galgas}
+$identifier$ ?@lstring nom
+...
+error nom : message_erreur
+\end{galgas}
+
+
+\subsectionLabel{Liste de variables détruites}{listVarDetruitesInstructionError}
+
+Lister des variables qui ne peuvent pas être construites est indispensable dans certains cas. Examinons le code suivant (\underline{qui ne compile pas})~:
+\begin{galgas}
+$identifier$ ?@lstring nom
+@unType résultat
+if ok then
+  résultat = ...
+else
+  error nom : message_erreur
+end # Erreur : 'résultat' est valué par une branche
+\end{galgas}
+
+En effet, une des branches du \ggs+if+ donne une valeur à \ggs+résultat+, et l'autre pas. Or, en cas d'erreur, on veut que \ggs+résultat+ ne soit pas valué à l'exécution. On écrit alors le texte suivant (qui compile)~:
+\begin{galgas}
+$identifier$ ?@lstring nom
+@unType résultat
+if ok then
+  résultat = ...
+else
+  error nom : message_erreur : résultat
+end
+\end{galgas}
+
+Mentionner \ggs+résultat+ à la fin de l'instruction \ggs+error+ permet de faire croire au compilateur que \ggs+résultat+ est valué.
+
+
+\subsectionLabel{Clause \texttt{fixit}}{clauseFixItInstructionErreur}
+
+La clause \ggs=fixit= est optionnelle et permet de transmettre à l'utilisateur des suggestions de corrections~: il peut apparaître à la fin d'une instruction \ggs=error= et d'une instruction \ggs=warning= (\refSectionPage{instructionWarning}).
+
+Si vous utilisez l'application Cocoa engendrée par GALGAS, la liste des suggestions apparaît au début du menu contextuel \texttt{cmd-clic}~: il suffit donc d'effectuer un \texttt{cmd-clic} sur un token souligné par un trait rouge (qui signale une erreur) ou orange (une alerte) pour voir apparaître la liste des suggestions. Les suggestions concernent le token désigné par l'expression \ggs=localisation= de l'erreur ou de l'alerte.
+
+Sa syntaxe est la suivante~:
+
+\begin{galgas}
+fixit {
+  remove
+  replace expression
+  after expression
+  before expression
+}
+\end{galgas}
+
+La clause \ggs=fixit= contient une séquence de suggestions~; il existe quatre types de suggestions~:
+\begin{itemize}
+\item \ggs=remove=, qui suggère d'éliminer le token désigné~;
+\item \ggs=replace=, qui suggère de remplacer le token désigné par l'\ggs=expression= indiquée~;
+\item \ggs=after=, qui suggère d'insérer l'\ggs=expression= indiquée après le token désigné~;
+\item \ggs=before=, qui suggère d'insérer l'\ggs=expression= indiquée avant le token désigné.
+\end{itemize}
+
+Quatre types sont acceptés pour l'\ggs=expression=~:
+\begin{itemize}
+  \item \ggs=@string=, l'expression représente une suggestion unique~;
+  \item \ggs=@stringlist=, l'expression représente une liste de suggestions, qui seront présentées à l'utilisateur dans l'ordre de la liste~;
+  \item \ggs=@lstringlist=, l'expression représente une liste de suggestions, qui seront présentées à l'utilisateur dans l'ordre de la liste (les information de localisation sont ignorées)~;
+  \item \ggs=@stringset=, l'expression représente une liste de suggestions, qui seront présentées à l'utilisateur dans l'ordre alphabétique des chaînes.
+\end{itemize}
+
+Ainsi, on peut écrire (et de même avec \ggs=after= et \ggs=before=)~:
+\begin{galgas}
+fixit { replace "toto" } # Suggère de remplacer le token par toto
+fixit { replace "toto" replace "tata" } # Deux suggestions
+fixit { replace @stringlist {!"toto" !"tata"} } # Identique au précédent
+fixit { replace {!"toto" !"tata"} } # Le type @stringlist est inféré
+\end{galgas}
+
+
+L'\ggs=expression= n'est pas limitée aux constructions statiques, mais accepte des expressions calculées à l'exécution~: la liste des suggestions peut donc être calculée dynamiquement.
+
+La clause \ggs=fixit= contient une séquence de suggestions, qui peut être vide. Une séquence peut contenir plusieurs suggestions \ggs=replace=, \ggs=after=, \ggs=before=~; par contre, la suggestion \ggs=remove= ne peut apparaître qu'au plus une fois. Les suggestions sont présentées à l'utilisateur dans l'ordre où elles apparaissent dans la clause \ggs=fixit=. Il est parfaitement légal d'écrire par exemple~:
+\begin{galgas}
+fixit {
+  replace "toto"
+  after "tata"
+  before "tutu"
+  replace "titi"
+  remove
+}
+\end{galgas}
+
+
+La suite présente plusieurs exemples~:
+\begin{itemize}
+  \item un premier exemple \ggs=remove= sur un identificateur (\refSubsubsectionPage {premierExempleFixit})~;
+  \item un exemple  \ggs=remove= sur un mot réservé (\refSubsubsectionPage {deuxiemeExempleFixit})~;
+  \item un exemple \ggs=replace= (\refSubsubsectionPage {troisiemeExempleFixIt})~;
+  \item un second exemple \ggs=replace=, qui met en évidence un piège qui existe avec des chaînes de caractères (\refSubsubsectionPage {quatriemeExempleFixIt}).
+\end{itemize}
+
+L'utilisation de \ggs=before= et de \ggs=after= est analogue à celui de \ggs=replace=~: on se reportera aux exemples \ggs=replace= pour ceux-ci.
+
+
+\subsubsectionLabel{Premier exemple \texttt{fixit remove}}{premierExempleFixit}
+
+Supposons que votre langage contient une règle de production où un identificateur apparaît~:
+
+\begin{galgas}
+rule <règle> ... {
+  ...
+  $identifier$ ?let idf
+  ...
+}
+\end{galgas}
+
+Le langage change, l'identificateur n'est plus utile~; sans utiliser la clause \ggs=fixit=, on écrit alors~:
+
+\begin{galgas}
+rule <règle> ... {
+  ...
+  select
+    $identifier$ ?let idf
+    warning idf : "the identifier is no longer needed: remove it"
+  or
+  end
+  ...
+  
+}
+\end{galgas}
+
+
+Et en utilisant la clause \ggs=fixit=~:
+
+\begin{galgas}
+rule <règle> ... {
+  ...
+  select
+    $identifier$ ?let idf
+    warning idf : "the identifier is no longer needed" fixit { remove }
+  or
+  end
+  ...
+  
+}
+\end{galgas}
+
+Dans l'application Cocoa, le menu contextuel activé sur l'identificateur présentera la suggestion de supprimer l'identificateur.
+
+
+\subsubsectionLabel{Second exemple \texttt{fixit remove}}{deuxiemeExempleFixit}
+
+Reprenons l'exemple précédent, mais en considérant que c'est un mot réservé qui devient inutile~; on écrit~:
+
+\begin{galgas}
+rule <règle> ... {
+  ...
+  select
+    $mot-réservé$
+    warning .here : "this keyword is no longer needed" fixit { remove }
+  or
+  end
+  ...
+  
+}
+\end{galgas}
+
+La différence est que l'on ne dispose pas d'une localisation explicite de l'alerte~: on est obligé d'utiliser le \refConstructorPage{location}{here} ou le \refConstructorPage{location}{next}. Utiliser à bon escient ces constructeurs est indispensable pour bien localiser le signalement.
+
+Dans l'exemple ci-dessus, on utilise \ggs=here=, qui désigne le token qui précède, c'est-à-dire \ggs=$mot-réservé$=. On peut utiliser \ggs=next=, qui désigne le token suivant, en écrivant~:
+
+\begin{galgas}
+rule <règle> ... {
+  ...
+  select
+    let loc = @location.next
+    $mot-réservé$
+    warning loc : "this keyword is no longer needed" fixit { remove }
+  or
+  end
+  ...
+  
+}
+\end{galgas}
+
+
+\subsubsectionLabel{Exemple \texttt{fixit replace}}{troisiemeExempleFixIt}
+
+Supposons qu'un identificateur ne puisse prendre qu'un ensemble de valeurs possibles. C'est le rôle des écritures sémantiques de vérifier que la valeur est l'une de celles autorisées.
+
+Ainsi, la règle syntaxique peut être~:
+\begin{galgas}
+rule <règle> ... {
+  ...
+  $identifier$ ?let valeurÀVérifier
+  ...
+}
+\end{galgas}
+
+Maintenant, la sémantique. Sans clause \ggs=fixit=, elle a l'allure suivante~:
+\begin{galgas}
+  let @stringset valeursPossibles = ...
+  if [valeursPossibles hasKey !valeurÀVérifier] then
+    ...
+  else
+    error valeurÀVérifier : "valeur invalide"
+  end
+}
+\end{galgas}
+
+On pourrait améliorer le message d'erreur ci-dessus en ajoutant la liste des valeurs possibles. Ajouter une clause \ggs=fixit replace= permet de le faire très simplement. Après le mot réservé \ggs=replace= est attendue une expression de type \ggs=@string= ou \ggs=@stringlist=, or la variable \ggs=valeursPossibles= est du type \ggs=@stringset=~: on utilise donc le getter \refGetterPage{stringset}{stringList}. D'où~:
+
+\begin{galgas}
+  let @stringset valeursPossibles = ...
+  if [valeursPossibles hasKey !valeurÀVérifier] then
+    ...
+  else
+    error valeurÀVérifier : "valeur invalide" fixit {
+      replace [valeursPossibles stringList]
+    }
+  end
+}
+\end{galgas}
+
+\subsubsectionLabel{Exemple \texttt{fixit replace}, chaîne de caractères}{quatriemeExempleFixIt}
+
+Reprenons l'exemple précédent, mais en supposant \ggs=valeurÀVérifier= est obtenue à partir d'une chaîne de caractères.
+
+\begin{galgas}
+rule <règle> ... {
+  ...
+  $literal_string$ ?let valeurÀVérifier
+  ...
+}
+\end{galgas}
+%\textquotedbl
+
+On pourrait que le fait que le terminal soit une chaîne plutôt qu'un identificateur ne change rien. Mais lorsque le terminal est une chaîne,  la valeur \ggs=valeurÀVérifier= ne contient pas les «~"~» qui délimitent la constante chaîne de caractères. Si l'on fait le remplacement tel quel, les valeurs suggérées n'ont pas ces délimiteurs~: lors du remplacement, ils sont perdus. Aussi, il faut explicitement les rajouter avant de soumettre les suggestions~:
+\begin{galgas}
+  let @stringset valeursPossibles = ...
+  if [valeursPossibles hasKey !valeurÀVérifier] then
+    ...
+  else
+    @stringlist suggestions = {}
+    for (s) in valeursPossibles do
+      suggestions += !"\"" + s + "\""
+    end
+    error valeurÀVérifier : "valeur invalide" fixit {
+      replace suggestions
+    }
+  end
+}
+\end{galgas}
+
+
+%---------------------------------------------------------------------------------------------------------------------------
+
+\sectionLabel{L'appel de procédure}{appelRoutine}
+
+Cette instruction permet d'exécuter une procédure. Si par exemple celle-ci est définie par~:
+\begin{galgas}
+proc maRoutine !@uint a ?!@string b {
+  ...
+}
+\end{galgas}
+
+L'instruction d'appel de cette routine est (il y a plusieurs variantes possibles pour le premier paramètre qui est en entrée)~:
+\begin{galgas}
+@string x = ...
+maRoutine (?@uint y !?x)
+\end{galgas}
+
+Note~: les parenthèses sont obligatoires, même si il n'y a aucun argment.
+
+La correspondance entre arguments formels et paramètres effectifs est décrite à la \refSectionPage{correspondanceArgFormelsParametresEffectifs}.
+
+
+
+%---------------------------------------------------------------------------------------------------------------------------
+
+\sectionLabel{L'instruction \texttt{for}}{instructionFor}
+
+L'instruction \ggs+for+ permet d'énumérer~:
+\begin{itemize}
+  \item une collection~;
+  \item plusieurs collections de manière synchrone.
+\end{itemize}
+
+Pour énumérer une collection, la syntaxe est la suivante~:
+
+\begin{galgasbox}
+for enumeration_collection
+while condition # Optionnel
+before instructions_before  # Optionnel
+do 
+  (nom_index) # Optionnel
+  instructions_do
+between instructions_between  # Optionnel
+after instructions_after  # Optionnel
+end
+\end{galgasbox}
+
+
+Énumérer plusieurs collections s'exprime en séparant les différentes énumérations par une virgule~:
+\begin{galgasbox}
+for enumeration_collection1, enumeration_collection2, ...
+while condition # Optionnel
+before instructions_before  # Optionnel
+do
+  (nom_index) # Optionnel
+  instructions_do
+between instructions_between  # Optionnel
+after instructions_after  # Optionnel
+end
+\end{galgasbox}
+
+
+\subsection{Les quatre formes d'une énumération}
+
+Le \refTableau{quatreFormesEnumeration} liste les quatre façons d'exprimer l'énumération \ggs+enumeration_collection+.
+
+
+\begin{table}[t]
+  \centering
+  \begin{tabular}{lp{8cm}}
+  \textbf{Énumération} & \textbf{Signification}\\
+  \ggs+sens () in expression+ & Utilisation de constantes définies implicitement qui représentent les champs de l'élément courant (\refSubsectionPage{enumerationImplicite}).\\
+  \ggs+sens () prefixe in expression+ & Utilisation de constantes préfixées définies implicitement qui représentent les champs de l'élément courant (\refSubsectionPage{enumerationImplicitePrefixee}).\\
+  \ggs+sens cst in expression+ & Déclaration d'une constante représentant l'élément courant (\refSubsectionPage{enumerationParConstante}).\\
+  \ggs+sens (cst1 cst2 ...) in expression+ & Déclaration de constantes représentant les champs de l'élément courant (\refSubsectionPage{enumerationParListeConstantes}).\\
+  \end{tabular}
+  \caption{Les quatre formes d'énumération de l'instruction \texttt{for}}
+  \labelTableau{quatreFormesEnumeration}
+\end{table}
+
+
+\subsection{Types énumérables et ordre d'énumération}
+
+Les types pouvant être énumérés sont listés dans le \refTableau{typesEnumerablesFor}, ainsi que leur ordre d'énumération par défaut. Si le champ \ggs+sens+ est vide, c'est l'ordre par défaut qui est adopté. Utiliser \ggs+>+ fixe le sens inverse.
+
+\begin{table}[t]
+  \centering
+  \begin{tabular}{ll}
+  \textbf{Type} & \textbf{Ordre d'énumération}\\
+  \ggs+@data+ & Ordre croissant des indices\\
+  \ggs+dict @T+ & Ordre alphabétique des clés \\
+  \ggs+list @T+ & Ordre croissant des indices \\
+  \ggs+map @T+ & Ordre alphabétique des clés \\
+  \ggs+listmap @T+ & Ordre alphabétique des clés \\
+  \ggs+sortedlist @T+ & Ordre du tri \\
+  \ggs+@stringset+ & Ordre alphabétique \\
+  \end{tabular}
+  \caption{Types énumérables par l'instruction \texttt{for}}
+  \labelTableau{typesEnumerablesFor}
+\end{table}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsectionLabel{Énumération « \texttt{() in expression} »}{enumerationImplicite}
+
+Des constantes correspondants à chaque champ de l'élément courant sont implicitement déclarées (\refTableau{constantesImplicitementDeclarees}). 
+
+\begin{table}[t]
+  \centering
+  \begin{tabular}{lp{12cm}}
+  \textbf{Type} & \textbf{Constantes implicitement déclarées}\\
+  \ggs+@data+ & \ggs+data+, de type \ggs+@uint+\\
+  \ggs+dict @T+ & \ggs+key+ représente la clé, et à chaque champ de la table, correspond une constante de même nom.\\
+  \ggs+list @T+ & À chaque champ de la liste, correspond une constante de même nom.\\
+  \ggs+map @T+ & \ggs+lkey+, de type \ggs+@lstring+, qui représente la clé, et à chaque champ de la table, correspond une constante de même nom.\\
+  \ggs+listmap @T+ & \ggs+key+, de type \ggs+@string+, qui représente la clé, et \ggs+mList+, qui représente la liste associée.\\
+  \ggs+sortedlist @T+ & À chaque champ de la liste, correspond une constante de même nom.\\
+  \ggs+@stringset+ & \ggs+key+, de type \ggs+@string+ \\
+  \end{tabular}
+  \caption{Constantes implicitement déclarées par «\texttt{() in expression}»}
+  \labelTableau{constantesImplicitementDeclarees}
+\end{table}
+
+Voici quelques exemples~:
+\begin{galgas}
+@data d = ...
+for () in d do
+  log data
+end
+\end{galgas}
+
+
+
+\begin{galgas}
+@stringset v = ...
+for () in v do
+  log key # Affichage des clés dans l'ordre alphabétique
+end
+\end{galgas}
+
+Avec la liste~:
+\begin{galgas}
+list @maListe {
+  @uint mProperty1
+  @string mProperty2
+}
+\end{galgas}
+
+On peut écrire~:
+
+\begin{galgas}
+@maListe lst = ...
+for () in lst do
+  log mProperty1, mProperty2
+end
+\end{galgas}
+
+
+Avec la table~:
+\begin{galgas}
+map @maTable {
+  @uint mProperty1
+  @string mProperty2
+}
+\end{galgas}
+
+On peut écrire~:
+
+\begin{galgas}
+@maTable tab = ...
+for () in tab do
+  log lkey, mProperty1, mProperty2
+end
+\end{galgas}
+
+
+\subsectionLabel{Énumération « \texttt{() pref{}ix in expression} »}{enumerationImplicitePrefixee}
+
+Cette écriture est une extension de celle de la section précédente~: \ggs+prefix+ est utilisé pour préfixer le nom des constantes implicitement déclarées. En reprenant les exemples de la section précédente~:
+
+\begin{galgas}
+@data d = ...
+for () xyz_ in d do
+  log xyz_data
+end
+\end{galgas}
+
+
+
+\begin{galgas}
+@stringset v = ...
+for () pre in v do
+  log prekey # Affichage des clés dans l'ordre alphabétique
+end
+\end{galgas}
+
+
+\begin{galgas}
+@maListe lst = ...
+for () lst in lst do
+  log lstmProperty1, lstmProperty2
+end
+\end{galgas}
+
+
+\begin{galgas}
+@maTable tab = ...
+for () tb_ in tab do
+  log tb_lkey, tb_mProperty1, tb_mProperty2
+end
+\end{galgas}
+
+Utiliser un préfixe permet de lever les collisions des noms des constantes implicites quand on énumère des collections ayant des champs de même nom~:
+
+\begin{galgas}
+@maListe v1 = ...
+@maListe v2 = ...
+for () in v1, () in v2 do # Erreur !
+ ...
+end
+\end{galgas}
+
+Le compilateur GALGAS déclenche une erreur, car il y a ambiguïté sur la signification de \ggs+mProperty1+ et de \ggs+mProperty2+ à l'intérieur de la boucle~: désigne-t'elle l'élément courant de \ggs+v1+ ou l'élément courant de \ggs+v2+ ?
+
+Pour lever l'ambiguïté, on complète l'instruction en précisant un préfixe pour l'une des deux listes (par exemple la seconde)~:
+\begin{galgas}
+@maListe v1 = ...
+@maListe v2 = ...
+for () in v1, () l2_ in v2 do
+  log mProperty1 # Désigne sans ambiguïté le champ de la première liste
+  log l2_mProperty1 # Désigne sans ambiguïté le champ de la seconde liste
+end
+\end{galgas}
+
+
+\subsectionLabel{Énumération « \texttt{cst in expression} »}{enumerationParConstante}
+
+Dans cette forme, une seule constante est déclarée (\ggs+cst+), et son type est donné par le \refTableau{enumerationParConstante}. Le type \ggs+@T-element+ est implicitement déclaré avec la déclaration de la collection correspondante (liste, table), et est une structure~: on accède donc à ses champs par l'opérateur \ggs+.+. 
+
+
+\begin{table}[t]
+  \centering
+  \begin{tabular}{llp{7cm}}
+  \textbf{Type de \texttt{expression}} & \textbf{Type implicite de la constante \texttt{cst}}\\
+  \ggs+@data+ & \ggs+@uint+\\
+  \ggs+dict @T+ & \ggs+@T-element+\\
+  \ggs+list @T+ & \ggs+@T-element+\\
+  \ggs+map @T+ & \ggs+@T-element+\\
+  \ggs+listmap @T+ & \ggs+@T-element+\\
+  \ggs+sortedlist @T+ & \ggs+@T-element+\\
+  \ggs+@stringset+ & \ggs+@string+ \\
+  \end{tabular}
+  \caption{Type de la constante dans «\texttt{cst in expression} »}
+  \labelTableau{enumerationParConstante}
+\end{table}
+
+
+En reprenant les exemples de la \refSubsectionPage{enumerationImplicite}~:
+
+\begin{galgas}
+@data d = ...
+for v in d do
+  log v
+end
+\end{galgas}
+
+
+
+\begin{galgas}
+@stringset v = ...
+for s in v do
+  log s
+end
+\end{galgas}
+
+
+\begin{galgas}
+@maListe lst = ...
+for x in lst do
+  log x.mProperty1, x.mProperty2
+end
+\end{galgas}
+
+
+\begin{galgas}
+@maTable tab = ...
+for entry in tab do
+  log entry.lkey, entry.mProperty1, entry.mProperty2
+end
+\end{galgas}
+
+\subsubsection{Type explicite}
+
+On peut annoter le nom de la constante en la faisant précéder par un nom de type. Le compilateur GALGAS vérifie alors l'identité entre le type explicitement déclaré, et le type implicitement déduit du type de l'expression enumérée. Il est possible de déclarer explicitement le type de la constante en écrivant l'énumération sous la forme~:
+
+\begin{galgas}
+@unType cst in expression
+\end{galgas}
+
+Les exemples précédents deviennent alors~:
+
+\begin{galgas}
+@data d = ...
+for @uint v in d do
+  log v
+end
+\end{galgas}
+
+
+
+\begin{galgas}
+@stringset v = ...
+for @string s in v do
+  log s
+end
+\end{galgas}
+
+
+\begin{galgas}
+@maListe lst = ...
+for @maListe-element x in lst do
+  log x.mProperty1, x.mProperty2
+end
+\end{galgas}
+
+
+\begin{galgas}
+@maListe tab = ...
+for @maListe-element entry in tab do
+  log entry.lkey, entry.mProperty1, entry.mProperty2
+end
+\end{galgas}
+
+
+
+\subsectionLabel{Énumération « \texttt{(cst1 cst2 ...) in expression} »}{enumerationParListeConstantes}
+
+Le \refTableau{enumerationParListeConstantes} liste pour chaque type le nombre et la signification des constantes qui doivent être déclarées.
+
+\begin{table}[t]
+  \centering
+  \begin{tabular}{lp{12cm}}
+  \textbf{Type} & \textbf{Constantes à déclarer}\\
+  \ggs+@data+ & \emph{Ce type n'est pas pris en charge par cette forme.}\\
+  \ggs+dict @T+ & Une constante de type de la clé, suivi d'une constante pour chaque champ de la table, dans l'ordre de déclaration.\\
+  \ggs+list @T+ & Une constante pour chaque champ, dans l'ordre de déclaration.\\
+  \ggs+map @T+ & Une constante de type \ggs+@lstring+, qui représente la clé, suivi d'une constante pour chaque champ de la table, dans l'ordre de déclaration.\\
+  \ggs+listmap @T+ & Une constante de type \ggs+@string+, qui représente la clé, et une constante qui représente la liste associée.\\
+  \ggs+sortedlist @T+ & Une constante pour chaque champ, dans l'ordre de déclaration.\\
+  \ggs+@stringset+ & \emph{Ce type n'est pas pris en charge par cette forme.} \\
+  \end{tabular}
+  \caption{Constantes à déclarer pour «\texttt{(cst1 cst2 ...) in expression} »}
+  \labelTableau{enumerationParListeConstantes}
+\end{table}
+
+
+Prenons comme exemple le type liste suivant~:
+\begin{galgas}
+list @maListe {
+  @uint mProperty1
+  @string mProperty2
+  @char mProperty3
+  @bool mProperty4
+}
+\end{galgas}
+
+L'énumération s'écrit~:
+\begin{galgas}
+@maListe uneListe = {!1 !"a" !'b' !false}
+for (p1 p2 p3 p4) in uneListe do
+  log p1, p2, p3, p4
+end
+\end{galgas}
+
+Plusieurs variantes sont possibles, et sont décrites ci-après.
+
+\subsubsection{Type explicite}
+
+Il est possible d'annoter chaque constante en précisant son type.
+
+\begin{galgas}
+@maListe uneListe = {!1 !"a" !'b' !false}
+for (@uint p1 @string p2 @char p3 @bool p4) in uneListe do
+  log p1, p2, p3, p4
+end
+\end{galgas}
+
+Le compilateur vérifie alors que le type cité est égal au type déduit du type de l'expression énumérée.
+\begin{galgas}
+@maListe uneListe = {!1 !"a" !'b' !false}
+for (@uint p1 @string p2 @char p3 @bool p4) in uneListe do
+  log p1, p2, p3, p4
+end
+\end{galgas}
+
+
+\subsubsection{Joker}
+
+Si certaines constantes ne sont pas utiles, on peut les remplacer par un joker (\ggs+*+). Le nom du type ne doit alors pas figurer.
+\begin{galgas}
+@maListe uneListe = {!1 !"a" !'b' !false}
+for (@uint p1 * * @bool p4) in uneListe do
+  log p1, p4
+end
+\end{galgas}
+
+Plusieurs jokers peuvent être rassemblés en mentionnant leur nombre d'occurrences.
+\begin{galgas}
+@maListe uneListe = {!1 !"a" !'b' !false}
+for (@uint p1 2* @bool p4) in uneListe do
+  log p1, p4
+end
+\end{galgas}
+
+
+
+\subsubsection{Points de suspension}
+
+Trois points consécutifs (\ggs+...+) peuvent être utilisés pour signifier que les dernières constantes ne sont pas utiles.
+
+\begin{galgas}
+@maListe uneListe = {!1 !"a" !'b' !false}
+for (@uint p1 ...) in uneListe do
+  log p1
+end
+\end{galgas}
+
+Et si aucune constante n'est utile, on écrit~:
+\begin{galgas}
+@maListe uneListe = {!1 !"a" !'b' !false}
+for (...) in uneListe do
+
+end
+\end{galgas}
+
+
+
+
+
+
+\subsection{Organigramme d'exécution}
+
+L'organigramme illustrant l'exécution de l'instruction \ggs+for+ est donné à la \refFigure{}{organigrammeFor}. Si plusieurs collections sont énumérées, l'instructions se termine dès que la collection la moins nombreuse est complètement enumérée.
+
+\begin{figure}[t]
+  \centering
+  \small
+  \begin{tikzpicture}[
+      cloud/.style ={draw=red, thick, ellipse,fill=red!20, minimum height=2em},
+      block/.style ={rectangle, draw=blue, thick, fill=green!20, align=center},
+      decision/.style={chamfered rectangle, draw=blue, thick, fill=green!20},
+      node distance=7mm
+    ]
+    \node [cloud] (start) {\textsc{begin}};
+    \node [block] (init) [below=of start] {{\tt \emph{nom\_index}} = 0};
+    \node [decision] (premierTest) [below=of init] {non empty \& {\tt \emph{while\_expression}} ?};
+    \node [block] (before) [below=of premierTest] {\tt \emph{before\_instructions}};
+    \node [block] (gotoFirst) [below=of before] {goto first element};
+    \node [block] (doInstructions) [below=of gotoFirst] {\tt \emph{instructions\_do}};
+    \node [block] (incLoopIndex) [below=of doInstructions] {{\tt \emph{nom\_index}} ++};
+    \node [decision] (exp) [below=of incLoopIndex] {has next element \& {\tt \emph{while\_expression}} ?};
+    \node [block] (after) [below=of exp] {\tt \emph{instructions\_after}};
+    \node [cloud] (end) [below=of after] {\textsc{end}};
+    \node [block] (between) [right=of doInstructions] {\tt \emph{instructions\_between}};
+    \node [block] (gotoNext) [below=of between] {goto next element};
+    
+    \draw [-stealth, thick] (start) -- (init);
+    \draw [-stealth, thick] (init) -- (premierTest);
+    \draw [>-stealth, thick] (premierTest) to (before);
+    \draw [o-stealth, thick] (premierTest.west) -- +(-1, 0) |- (end.west);
+    \draw [-stealth, thick] (before) -- (gotoFirst);
+    \draw [-stealth, thick] (gotoFirst) -- (doInstructions);
+    \draw [-stealth, thick] (doInstructions) -- (incLoopIndex);
+    \draw [-stealth, thick] (incLoopIndex) -- (exp);
+    \draw [o-stealth, thick] (exp) to (after);
+    \draw [>-stealth, thick] (exp.east) -| (gotoNext.south);
+    \draw [-stealth, thick] (after) -- (end);
+    \draw [-stealth, thick] (gotoNext) -- (between);
+    \draw [-stealth, thick] (between) -- (doInstructions);
+  \end{tikzpicture}
+  \caption{Organigramme d'exécution d'une instruction \texttt{for}}
+  \labelFigure{organigrammeFor}
+\end{figure}
+
+
+\subsection{Champs optionnels}
+
+Plusieurs champs de l'instruction \ggs+for+ sont optionnels.
+
+
+\ggs+sens+. Ce champ peut prendre trois valeurs, et fixe l'ordre dans lequel les éléments sont énumérés~:
+\begin{itemize}
+  \item si le champ est vide, dans l'ordre indiqué par le \refTableau{typesEnumerablesFor}~;
+  \item \ggs+>+, dans l'ordre inverse à celui indiqué par le \refTableau{typesEnumerablesFor}.
+\end{itemize}
+
+
+\ggs+(nom_index)+. Vous pouvez mentionner un identificateur entre parenthèses après le mot réservé \ggs+do+. Cet identificateur est le nom d'une constante qui a implicitement le type \ggs+@uint+ et qui est initialisée à 0 avant toute exécution de la boucle, et incrémentée après chaque exécution des \ggs+instructions_do+, et avant l'exécution des \ggs+instructions_between+. Sa visibilité est la branche \ggs+do+.
+
+\ggs+while expression+. L'énumération est exécutée tant que l'\ggs+expression+ est vraie. L'absence de cette construction est équivalent à \ggs+while true+ et permet d'énumérer toutes les valeurs.
+
+
+\ggs+before instructions_before+. Ces instructions sont exécutées une seule fois, au début de l'exécution de l'instruction. Aucun accès aux objets énumérés n'est possible. Si l'énumération est vide, ces instructions ne sont pas exécutées.
+
+\ggs+between instructions_between+. Ces instructions sont exécutées entre deux exécutions consécutives des \ggs+instructions_do+. Aucun accès aux objets énumérés n'est possible.
+
+\ggs+after instructions_after+. Ces instructions sont exécutées une seule fois, à la fin de l'exécution de l'instruction. Aucun accès aux objets énumérés n'est possible. Si l'énumération est vide, ces instructions ne sont pas exécutées.
+
+
+\subsection{Modification de la collection}
+
+Au début de l'exécution de l'instruction \ggs+for+, les valeurs des collections enumérées sont capturées et mémorisées. L'énumération s'effectue sur ces valeurs mémorisées. Aussi, il est possible de modifier la collection en cours d'énumération sans que cela affecte l'exécution~:
+\begin{galgas}
+@stringlist v = {!"A", !"B", !"C"}
+log v # "A", "B", "C"
+for s in v do
+  v += !s
+end for
+log v # "A", "B", "C", "A", "B", "C"
+\end{galgas}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\sectionLabel{Incrémentation \texttt{++} et \texttt{\&++}}{incrementInstruction}
+
+L'instruction d'incrémentation s'applique aux types  \refTypePredefini{sint},  \refTypePredefini{sint64}, \refTypePredefini{uint} et \ggs+uint64+~; sa syntaxe est la suivante~:
+
+\begin{galgasbox}
+variable ++
+\end{galgasbox}
+
+Les champs de structure peuvent être incrémentés~:
+\begin{galgasbox}
+variable.champ ++
+\end{galgasbox}
+
+
+Ainsi qu'une propriété de l'objet courant~:
+\begin{galgasbox}
+self.champ ++
+\end{galgasbox}
+
+Une erreur d'exécution est déclenchée en cas de dépassement de capacité.
+
+L'opérateur \ggs-&++- effectue une incrémentation sans déclencher d'erreur en cas de dépassement de capacité~:
+\begin{galgasbox}
+variable &++
+\end{galgasbox}
+
+Les champs de structure peuvent être incrémentés sans déclencher d'erreur en cas de dépassement de capacité~:
+\begin{galgasbox}
+variable.champ &++
+\end{galgasbox}
+
+
+
+
+
+
+
+
+\section{L'instruction \texttt{if}}
+
+
+Dans sa forme la plus générale, l'instruction \ggs+if+ a la syntaxe suivante:
+
+\begin{galgasbox}
+if condition then
+  instructions
+elsif condition2 then
+  instructions2
+...
+else
+  instructions_else
+end
+\end{galgasbox}
+
+
+Plus précisement, elle contient~:
+\begin{itemize}
+\item zéro, une ou plusieurs branches \ggs+elsif+~;
+\item zéro ou une branche \ggs+else+.
+\end{itemize}
+
+
+Aucune branche \ggs+else+ est équivalent à une branche \ggs+else+ sans aucune instruction.
+
+
+Les branches \ggs+elsif+ sont simplement du sucre syntaxique~: il est sémantiquement équivalent d'utiliser des instructions \ggs+if+ imbriquées. Par exemple~:
+\begin{galgas}
+if condition then
+  instructions
+elsif condition2 then
+  instructions2
+else
+  instructions_else
+end
+\end{galgas}
+
+est équivalent à~:
+\begin{galgas}
+if condition then
+  instructions
+else
+  if condition2 then
+    instructions2
+  else
+    instructions_else
+  end
+end
+\end{galgas}
+
+Le langage permet plusieurs aux conditions notées \ggs+condition+ et \ggs+condition2+ dans les exemples ci-dessus :
+\begin{itemize}
+  \item soit une simple expression ;
+  \item soit une affectation conditionnelle ;
+  \item soit une liste de simples expressions et d'affectations conditionnelles.
+\end{itemize}
+
+
+\subsection{Simple expression}
+Le langage permet que le type des \ggs+condition+ et \ggs+condition2+ soit différent du type \refTypePredefini{bool}, sous certaines conditions. La règle complète est que le type des \ggs+condition+ et \ggs+condition2+ est~:
+\begin{itemize}
+\item soit le type \ggs+@bool+~;
+\item soit un type \emph{structure}, possèdant une propriété nommée \ggs+bool+, dont le type est \ggs+@bool+; 
+\item soit un type possédant un \emph{getter} sans argument nommé \ggs+bool+ et renvoyant une valeur de type \ggs+@bool+.
+\end{itemize}
+
+Voici un exemple illustrant le deuxième cas~; le type \refTypePredefini{bool} est une structure possèdant une propriété nommée \ggs+bool+, dont le type est \ggs+@bool+. Aussi, écrire~:
+
+\begin{galgas}
+@lbool variable = ...
+if variable then
+  instructions
+else
+  else_instructions
+end
+\end{galgas}
+
+
+est équivalent à~:
+\begin{galgas}
+@lbool variable = ...
+if variable.bool then
+  instructions
+else
+  else_instructions
+end
+\end{galgas}
+
+
+Pour illustrer le troisième cas, on prend l'exemple de la classe suivante~:
+\begin{galgas}
+class @myClass { ... }
+
+getter @myClass bool -> @bool outResult { ... }
+\end{galgas}
+
+Ainsi, on peut écrire~:
+\begin{galgas}
+@myClass myObject = ...
+if myObject then
+  instructions
+else
+  else_instructions
+end
+\end{galgas}
+
+
+Il est équivalent d'écrire~:
+\begin{galgas}
+@myClass myObject = ...
+if [myObject bool] then
+  instructions
+else
+  else_instructions
+end
+\end{galgas}
+
+
+\subsectionLabel{L'affectation conditionnelle}{affectationConditionnelle}
+
+L'affectation conditionnelle a la syntaxe suivante~:
+\begin{galgas}
+if let cible = expression as @T then
+  then_instructions # cible est défini, du type @T
+else
+  else_instructions # cible n'est pas défini
+end
+\end{galgas}
+
+Si l'\ggs=expression= est de type \ggs=@T=, alors la condition est vraie et les \ggs=then_instructions= sont exécutées. La constante\ggs=cible= est définie dans ces instructions, elle a pour type \ggs=@tT= et pour valeur celle de l'\ggs=expression=.
+
+Si l'\ggs=expression= n'est pas de type \ggs=@T=, alors la condition est fausse et les \ggs=else_instructions= sont exécutées. La constante\ggs=cible= n'est pas définie dans ces instructions.
+
+L'affectation conditionnelle permet de faire une affectation polymorphique inverse de manière propre, sans utiliser l'\emph{expression de conversion polymorphique inverse} (\ggs=expression as @T=, \refSubsectionPage{expConversionPolymorphiqueInverse}).
+
+
+\subsection{Liste de simples expressions et d'affectations conditionnelles}
+
+La condition d'une instruction \ggs=if= peut être une liste simples expressions et d'affectations conditionnelles, le séparateur étant la virgule \ggs=,=. L'évaluation s'effectue de gauche à droite, sous la forme d'un court-circuit~:
+\begin{itemize}
+\item dès qu'une condition ou affectation conditionnelle n'est pas vraie (c'est-à-dire fausse ou non construite), les éléments suivants ne sont pas évalués et la condition est fausse ;
+\item la condition est vraie si les évaluations de gauche à droite de toutes les simples expressions et affectations conditionnelles sont vraies.
+\end{itemize}
+
+Le résultat d'une affectation conditionnelle peut être utilisé dans les éléments suivants~:
+\begin{galgas}
+if let cible = exp as @T, let cible2 = [cible unGetter] as @U then
+  then_instructions # cible et cible2 sont définis
+else
+  else_instructions # Ni cible ni cible2 ne sont définis
+end
+\end{galgas}
+
+
+
+
+
+
+
+\sectionLabel{L'instruction \texttt{grammar}}{instruction-grammar}
+
+L'instruction \ggs+grammar+ permet d'exécuter l'analyse d'un texte par une grammaire. Le texte peut être contenu~:
+\begin{itemize}
+  \item dans un fichier (\refSubsectionPage{texteSourceDansFichier})~;
+  \item dans une chaîne de caractères (\refSubsectionPage{texteSourceDansChaine}).
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+\subsectionLabel{Texte source dans un fichier}{texteSourceDansFichier}
+
+\begin{galgasbox}
+grammar
+  nom_grammaire
+  label_grammaire # Optionnel
+  (liste_parametres)
+  in expression # Chemin du fichier source
+  traduction_dirigee_par_la_syntaxe # Optionnel
+\end{galgasbox}
+
+Le mot réservé \ggs!in! caractérise la localisation de la chaîne source dans un fichier.
+\begin{itemize}
+  \item \ggs+nom_grammaire+ est un identificateur nommant la grammaire, c'est le nom d'un composant grammaire du projet~;
+  \item \ggs+label_grammaire+ est optionnel, et permet d'exécuter une variante des règles de production (voir \refSectionPage{analysePlusieursPhases})~;
+  \item \ggs+liste_parametres+ est une liste de paramètres effectifs (en entrée, sortie, ou sortie/entrée), en accord avec la liste des arguments formels de l'axiome de la grammaire~;
+  \item \ggs+expression+ est une valeur de type \ggs+@lstring+, dont le champ \ggs+string+ désigne un fichier source, par un chemin relatif ou absolu, et dont le champ \ggs+location+ est la position de signalement d'erreur si le fichier source ne peut pas être lu~;
+  \item \ggs+traduction_dirigee_par_la_syntaxe+ est optionnel, et permet d'obtenir la chaîne source traduite lors d'une \emph{traduction dirigée par la syntaxe} (voir \refSectionPage{instructionGrammarEtTraductionDirigeeParLaSyntaxe}).
+\end{itemize}
+
+Prenons l'exemple d'un composant grammaire~:
+\begin{galgas}
+grammar maGrammaire "SLR" {
+  syntax ...
+   <start_symbol> (?!@declarationAST ioDeclarations)
+}
+\end{galgas}
+
+L'instruction grammaire s'écrit alors~:
+\begin{galgas}
+grammar maGrammaire (!?ioDeclarations) in fichierSource
+\end{galgas}
+
+Cette instruction est typiquement utilisé dans une règle d'analyse de fichier source (\refChapterPage{regleAnalyseFichierSource})~:
+
+\begin{galgas}
+case . "monExtension"
+message "un fichier source"
+grammar maGrammaire
+?sourceFilePath: @lstring inSourceFile {
+  var declaration = @declarationList {}
+  grammar maGrammaire (!?ioDeclarations) in inSourceFile
+  ...
+}
+\end{galgas}
+
+
+
+
+\subsectionLabel{Texte source dans une chaîne de caractères}{texteSourceDansChaine}
+\begin{galgasbox}
+grammar
+  nom_grammaire
+  label_grammaire # Optionnel
+  (liste_parametres)
+  on chaine_source : nom_associe
+  traduction_dirigee_par_la_syntaxe # Optionnel
+\end{galgasbox}
+
+Le mot réservé \ggs!on! caractérise la localisation de la chaîne source dans une chaîne de caractères.
+\begin{itemize}
+  \item \ggs+nom_grammaire+ est un identificateur nommant la grammaire, c'est le nom d'un composant grammaire du projet~;
+  \item \ggs+label_grammaire+ est optionnel, et permet d'exécuter une variante des règles de production (voir \refSectionPage{analysePlusieursPhases})~;
+  \item \ggs+liste_parametres+ est une liste de paramètres effectifs (en entrée, sortie, ou sortie/entrée), en accord avec la liste des arguments formels de l'axiome de la grammaire~;
+  \item \ggs+chaine_source+ est une expression de type \ggs!@string!, qui contient directement la chaîne source à analyser~;
+  \item \ggs+nom_associe+ est une expression de type \ggs!@string!, qui est utilisé lorsque \ggs!@location.here! est appelé~: \ggs![@location.here file]! renvoie la valeur transmise dans \ggs+nom_associe+~;
+  \item \ggs+traduction_dirigee_par_la_syntaxe+ est optionnel, et permet d'obtenir la chaîne source traduite lors d'une \emph{traduction dirigée par la syntaxe} (voir \refSectionPage{instructionGrammarEtTraductionDirigeeParLaSyntaxe}).
+\end{itemize}
+
+
+
+La chaîne \ggs+nom_associe+ sert lorsque qu'une erreur est détectée lors de l'analyse de \ggs+chaine_source+. On a alors un message d'erreur dont la première ligne est~:
+
+\texttt{nom\_associe:ligne:colonne:}
+
+Ce message est alors similaire au message que l'on obtient lors que l'on analyse un fichier, où le message dont la première ligne est~:
+
+\texttt{nom\_fichier\_source:ligne:colonne:}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\sectionLabel{L'instruction \texttt{log}}{instructionLog}
+
+L'instruction \ggs+log+ permet d'afficher le détail de la valeur d'une variable, d'une constante ou d'une expression~:
+\begin{itemize}
+  \item pour une variable ou une constante, \ggs+log nom+~;
+  \item pour une expression, \ggs+log "message" : expression+~;
+\end{itemize}
+
+Par exemple~:
+\begin{galgas}
+let x = 2
+log x # Affiche LOGGING x: <@uint:2>
+log "valeur" : x * 2 # Affiche LOGGING valeur: <@uint:4>
+\end{galgas}
+
+Plusieurs variables ou constantes peuvent être affichées par une même instruction \ggs+log+, en les séparant par une virgule~:
+\begin{galgas}
+let x = 2
+log x, "valeur" : x * 2
+\end{galgas}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{L'instruction \texttt{loop}}
+
+
+L'instruction \ggs+loop+ a la syntaxe suivante~:
+\begin{galgasbox}
+loop (variant_expression)
+  instructions_1
+while expression do
+  instructions_2
+end
+\end{galgasbox}
+
+
+Les \ggs+instructions_1+ et \ggs+instructions_2+ sont des listes d'instructions qui peuvent être vides.
+
+
+Le \ggs+variant_expression+ est une expression de type \ggs+@uint+ qui assure que la boucle n'est pas sans fin~: elle est calculée au début de l'exécution de l'instruction, et décrémentée après chaque itération. Si sa valeur atteint zéro, une erreur d'exécution est déclenchée.
+
+L'\ggs+expression+ est une expression de type \ggs+@bool+ qui exprime la continuation de l'exécution de la boucle.
+
+L'exécution de l'instruction \ggs+loop+ est illustrée par l'organigramme de la \refFigurePage{}{loopInstructionFlowchart}.
+
+
+\begin{figure}[t]
+  \centering
+  \small
+  \begin{tikzpicture}[
+      cloud/.style ={draw=red, thick, ellipse,fill=red!20, minimum height=2em},
+      block/.style ={rectangle, draw=blue, thick, fill=green!20, align=center},
+      error/.style ={rectangle, draw=red, thick, fill=green!20, align=center},
+      decision/.style={chamfered rectangle, draw=blue, thick, fill=green!20},
+      node distance=7mm
+    ]
+    \node [cloud] (start) {\textsc{begin}};
+    \node [block] (affectationVariant) [below=of start] {variant := {\tt \emph{variant\_expression}}};
+    \node [decision] (premierTest) [below=of affectationVariant] {variant > 0 ?};
+    \node [error] (loopVariantError) [right=of premierTest] {loop variant error};
+    \node [block] (instructions1) [below=of premierTest] {\tt \emph{instructions\_1}};
+    \node [decision] (expression) [below=of instructions1] {\tt \emph{expression} ?};
+    \node [decision] (secondTest) [below=of expression] {variant > 0 ?};
+    \node [error] (loopVariantError2) [right=of secondTest] {loop variant error};
+    \node [block] (decVariant) [below=of secondTest] {variant {-}{-}};
+    \node [block] (instructions2) [below=of decVariant] {\tt \emph{instructions\_2}};
+    \node [cloud] (end) [below=of instructions2] {\textsc{end}};
+    
+    \draw [-stealth, thick] (start) -- (affectationVariant);
+    \draw [-stealth, thick] (affectationVariant) -- (premierTest);
+    \draw [o-stealth, thick] (premierTest) -- (loopVariantError);
+    \draw [o-stealth, thick] (secondTest) -- (loopVariantError2);
+    \draw [-stealth, thick] (loopVariantError.east) -- +(1, 0) |- (end.east);
+    \draw [-stealth, thick] (loopVariantError2.east) -- +(1, 0);
+    \draw [o-stealth, thick] (expression.east) -- +(4.4, 0);
+    \draw [-stealth, thick] (instructions1) -- (expression);
+    \draw [>-stealth, thick] (premierTest) -- (instructions1);
+    \draw [>-stealth, thick] (expression) -- (secondTest);
+    \draw [>-stealth, thick] (secondTest) -- (decVariant);
+    \draw [-stealth, thick] (decVariant) -- (instructions2);
+    \draw [-stealth, thick] (instructions2.west) -- +(-1, 0) |- (instructions1.west);
+  \end{tikzpicture}
+  \caption{Organigramme d'exécution d'une instruction \texttt{loop}}
+  \labelFigure{loopInstructionFlowchart}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%\sectionLabel{L'instruction \texttt{poison}}{instructionPoison}
+%
+%\begin{galgasbox}
+%poison variable_poison, ... : variable_empoisonnee, ...
+%\end{galgasbox}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\sectionLabel{L'instruction d'appel de procédure}{instructionAppelProcedure}
+
+La syntaxe de l'appel d'une procédure est~:
+\begin{galgasbox}
+nom_procedure (liste_parametres_effectifs)
+\end{galgasbox}
+
+Les parenthèses sont obligatoires. La déclaration d'un procédure est présentée à la \refSectionPage{declarationProcedure}.
+
+\ggs+nom_procedure+ est le nom de la procédure, et \ggs+liste_parametres_effectifs+ est la liste des paramètres effectifs de l'appel, en accord avec l'en-tête de la procédure.
+
+Par exemple, la procedure suivante~:
+\begin{galgas}
+proc produit ?@uint a ?@uint b !@uint résultat {
+  résultat = a * b
+}
+\end{galgas}
+
+Peut être appelée par~:
+\begin{galgas}
+produit (!2 !3 ?@uint résultat)
+\end{galgas}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\sectionLabel{L'instruction d'appel de méthode}{methodCallInstruction}
+
+En GALGAS, une \emph{méthode} est un sous-programme qui s'applique à un objet, et qui ne modifie pas cet objet. La syntaxe de l'appel d'une méthode est~:
+\begin{galgas}
+[expression nom_methode liste_parametres_effectifs]
+\end{galgas}
+
+La valeur d'\ggs+expression+ est l'objet sur lequel la méthode est appelée, \ggs+nom_methode+ est le nom de la méthode, et \ggs+liste_parametres_effectifs+ est la liste des paramètres effectifs, en accord avec l'en-tête de la méthode.
+
+Avec l'option \texttt{-T}, un fichier HTML qui contient les caractéristiques de tous les types d'un projet est engendré dans le répertoire \texttt{build/helpers}. Ainsi, les en-têtes de toutes les méthodes sont listés. Par exemple, pour le type \ggs+@string+, la méthode \ggs+writeToExecutableFileWhenDifferentContents+ est présentée comme suit~:
+
+\begin{galgas}
+method writeToExecutableFileWhenDifferentContents
+  ?@string inFilePath
+  !@bool outFileModified
+\end{galgas}
+
+
+Aussi, cette méthode peut être appelée par~:
+\begin{galgas}
+@string contents = ...
+@string filePath = ...
+[contents writeToExecutableFileWhenDifferentContents
+  !filePath
+  ?@bool fileChanged
+]
+\end{galgas}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\sectionLabel{L'instruction d'appel de procédure de classe}{classProcCallInstruction}
+
+En GALGAS, une \emph{procédure de classe} est est une procédure définie dans un type. Au contraire d'une méthode, elle ne s'applique pas à un objet. La syntaxe de l'appel d'une procédure de classe est~:
+\begin{galgas}
+[@T nom_procedure liste_parametres_effectifs]
+\end{galgas}
+
+\ggs+nom_procedure+ est le nom de la procédure, et \ggs+liste_parametres_effectifs+ est la liste des paramètres effectifs, en accord avec l'en-tête de la procédure.
+
+Avec l'option \tpp{-T}, un fichier HTML qui contient les caractéristiques de tous les types d'un projet est engendré dans le répertoire \tpp{build/helpers}. Ainsi, les en-têtes de toutes les méthodes sont listés. Par exemple, pour le type \ggs+@string+, la procédure de classe \ggs+deleteFile+ est présentée comme suit~:
+
+{\noindent\ttfamily
+\textbf{proc} @string deleteFile ?@string inFilePath\\
+}
+
+Aussi, elle peut être appelée par~:
+\begin{galgas}
+@string filePath = ...
+[@string deleteFile !filePath]
+\end{galgas}
+
+
+
+
+
+
+
+
+
+\sectionLabel{L'instruction d'appel de \emph{setter}}{setterCallInstruction}
+
+
+En GALGAS, un \emph{setter} est un sous-programme qui s'applique à un objet, et qui peut modifier cet objet. L'instruction d'appel accepte deux formes différentes.
+
+\subsection{Appel simple}
+
+La première syntaxe de l'appel d'un  \emph{setter} est~:
+\begin{galgas}
+[!?cible nom_setter liste_parametres_effectifs]
+\end{galgas}
+
+Le délimiteur \ggs+!?+  devant \ggs+cible+ permet de distinguer syntaxiquement un appel de \emph{setter} d'un appel de méthode. \ggs+cible+ désigne l'objet sur lequel le \emph{setter} est appelé, et peut être une variable, ou le champ d'une variable (\ggs+variable.champ+), ou le champ d'un champ d'une variable (\ggs+variable.champ.champ2+), ... \ggs+nom_setter+ est le nom du \emph{setter}, et \ggs+liste_parametres_effectifs+ est la liste des paramètres effectifs, en accord avec l'en-tête du \emph{setter}.
+
+Avec l'option \texttt{-T}, un fichier HTML qui contient les caractéristiques de tous les types d'un projet est engendré dans le répertoire \texttt{build/helpers}. Ainsi, les en-têtes de toutes les \emph{setters} sont listées. Par exemple, pour le type \ggs+@string+, le \emph{setter} \ggs+setCharacterAtIndex+ est présenté comme suit~:
+
+\begin{galgas}
+setter setCharacterAtIndex
+  ?@char inChar
+  ?@uint inIndex
+\end{galgas}
+
+Aussi, ce \emph{setter} peut être appelé par~:
+\begin{galgas}
+@string s = ...
+[!?s setCharacterAtIndex !'a' !4]
+\end{galgas}
+
+
+\subsection{Appel avec conversion de type}
+
+La seconde syntaxe de l'appel d'un  \emph{setter} est~:
+
+\begin{galgas}
+[!?cible as @T nom_setter liste_parametres_effectifs]
+\end{galgas}
+
+Statiquement, le type \ggs+@T+ doit être un type héritier du type statique de \ggs+cible+.
+
+À l'exécution, si le type dynamique est le type \ggs+@T+ ou un de ses héritiers, l'instruction est exécutée. Sinon, une erreur d'exécution a lieu et le setter n'est pas appelé.
+
+Par exemple, on considère les déclarations de classe et le setter suivant~:
+
+\begin{galgas}
+class @a { }
+
+class @b : @a { }
+
+setter @b aSetter { }
+\end{galgas}
+
+Si on écrit~:
+\begin{galgas}
+@a unObjet = ...
+[!?unObjet aSetter] # Erreur sémantique
+\end{galgas}
+
+L'instruction \ggs+[!?unObjet aSetter]+ donne lieu à une erreur sémantique, puisque la classe \ggs+@a+ ne définit pas le setter \ggs+aSetter+.
+
+L'écriture suivante est acceptée par le compilateur car la classe \ggs+@b+ définit le setter \ggs+aSetter+~:
+\begin{galgas}
+@a unObjet = ...
+[!?unObjet as @b aSetter] # Compilation ok
+\end{galgas}
+
+À l'exécution, le comportement dépend du type dynamique de \ggs+unObjet+. Si celui-ci est une instance de \ggs+@a+, une erreur d'exécution est déclenchée~:
+\begin{galgas}
+@a unObjet = @a.new
+[!?unObjet as @b aSetter] # Compilation ok, erreur d'exécution
+\end{galgas}
+
+
+Par contre, si \ggs+unObject+ est une instance de \ggs+@b+, l'appel du setter d'effectue~:
+\begin{galgas}
+@a unObjet = @b.new
+[!?unObjet as @b aSetter] # Compilation ok, appel du setter
+\end{galgas}
+
+
+
+
+
+
+
+
+
+
+\sectionLabel{L'instruction \texttt{switch}}{instructionSwitch}
+
+L'instruction \ggs+switch+ est dédiée aux types énumérés. Elle présente la syntaxe suivante~:
+
+\begin{galgas}
+switch expression
+case constante, constante, ... :
+  liste_instructions
+case constante, constante, ... :
+  liste_instructions
+...
+end
+\end{galgas}
+
+
+Où \ggs+expression+ est une expression d'un type énuméré. Toutes les constantes de ce type doivent être nommées dans les branches \ggs+case+, une et une seule fois.
+
+Par exemple, avec la déclaration~:
+
+\begin{galgas}
+enum @feuTricolore {
+  case vert
+  case orange
+  case rouge
+}
+\end{galgas}
+
+On peut écrire~:
+
+\begin{galgas}
+@feuTricolore feu = ...
+
+switch feu
+case vert, orange:
+  ...
+case rouge :
+  ...
+end
+\end{galgas}
+
+Si des constantes déclarées dans l'énumération ont des valeurs associées, alors les branches \ggs+case+ nommant ces constantes doivent adopter une syntaxe particulière. 
+
+En prenant pour exemple une constante possédant deux valeurs associées, la forme la plus générale est~:
+
+\begin{galgas}
+switch expression
+case constante (@type1 nom1 @type2 nom2) :
+...
+end
+\end{galgas}
+
+\ggs+nom1+ et \ggs+nom2+ sont des constantes qui reçoivent les valeurs associées.
+
+Si on n'est pas intéressé par une valeur, on peut substituer \ggs+*+ au nom~:
+
+\begin{galgas}
+switch expression
+case constante (@type1 nom1 @type2 *) :
+...
+end
+\end{galgas}
+
+De même, l'annotation du type est optionnel~: les types \ggs+@type1+, \ggs+@type2+ peuvent être déduits de la déclaration de la valeur associée~:
+
+\begin{galgas}
+switch expression
+case constante (nom1 *) :
+...
+end
+\end{galgas}
+
+Ainsi, si l'on n'est pas intéressé par les valeurs associées, on peut écrire~:
+\begin{galgas}
+switch expression
+case constante (* *) :
+...
+end
+\end{galgas}
+
+Ou aussi~:
+\begin{galgas}
+switch expression
+case constante (2*) :
+...
+end
+\end{galgas}
+
+
+Ou utiliser le mot clé \ggs+unused+ (avec ou sans annotation de type)~:
+\begin{galgas}
+switch expression
+case constante (@type1 unused nom1 unused nom2) :
+...
+end
+\end{galgas}
+
+
+Enfin, on peut mentionner dans la même branche \ggs+case+ plusieurs constantes déclarant des valeurs associées, à la condition que ces valeurs associées soient de même nombre et de même type. Par exemple~:
+
+\begin{galgas}
+enum @erreur {
+  case ok
+  case erreur1 (@string unMessage)
+  case erreur2 (@string autreMessage) 
+}
+\end{galgas}
+
+On peut écrire l'instruction \ggs+switch+ correspondante~:
+\begin{galgas}
+@erreur erreur = ...
+
+switch erreur
+case ok:
+  ...
+case erreur1, erreur2 (@string m) :
+  ...
+end
+\end{galgas}
+
+
+
+
+\sectionLabel{L'instruction \texttt{warning}}{instructionWarning}
+
+L'instruction \ggs+warning+ permet de signaler une alerte à l'utilisateur. Elle est constituée de deux champs séparés par un double-point (\ggs+:+)~:
+
+\begin{galgas}
+warning localisation : message_alerte
+\end{galgas}
+
+
+
+Le champ \ggs+localisation+ signale à l'utilisateur la position de l'erreur dans le texte source. C'est donc une expression de type \ggs+@location+, ou d'un type possédant un \emph{getter} sans argument nommé \ggs+location+ et renvoyant un objet de type \ggs+@location+~: c'est le cas dses types prédéfinis \ggs+@luint+, \ggs+@luint64+, \ggs+@lsint+, \ggs+@lsint64+, \ggs+@lbigint+, \ggs+@lbool+, \ggs+@lchar+ et \ggs+@lstring+.
+
+
+Le \ggs+message_alerte+ est le message affiché à l'utilisateur~: c'est donc une expression de type \ggs+@string+.
+
+Il y a un troisième champ, optionnel, qui permet de transmettre à l'utilisateur des suggestions de corrections~: il commence par le mot réservé \ggs=fixit= et est décrit à la \refSubsectionPage{clauseFixItInstructionErreur}.
+
+Exemple d'instruction \ggs=warning=~:
+
+\begin{galgas}
+$identifier$ ?@lstring nom
+...
+warning nom.location : message_alerte
+\end{galgas}
+
+Comme \ggs+nom+ est de type \ggs+@lstring+ (voir ci-dessus), on peut simplement écrire~:
+\begin{galgas}
+$identifier$ ?@lstring nom
+...
+warning nom : message_alerte
+\end{galgas}
+
+
+
+
+
+
+
+
+
+
+\section{L'instruction \texttt{with}}
+
+L'instruction \ggs+with+ permet d'associer un test de recherche dans une table et l'accès aux champs correspondants si succès. Elle peut prendre quatre formes différentes, suivi que l'on veuille modifier la table ou non, et suivant que l'on veut tolérer l'échec de la recherche ou non.
+
+\textbf{Première forme.} Accès en lecture, tolérance de l'échec de la recherche (\refSubsectionPage{instructionWithEnLectureTolerante})~:
+\begin{galgas}
+with expression_cle prefixe_optionnel in expression_table
+do
+  liste_instructions_do
+else
+  liste_instructions_else # Optionnel
+end
+\end{galgas}
+
+\textbf{Deuxième forme.} Accès en lecture, signalement d'erreur si échec de la recherche (\refSubsectionPage{instructionWithEnLectureSansTolerance})~:
+\begin{galgas}
+with expression_cle prefixe_optionnel in expression_table
+error message methode_recherche
+do
+  liste_instructions_do
+end
+\end{galgas}
+
+
+
+\textbf{Troisième forme.} Accès en lecture/écriture, tolérance de l'échec de la recherche (\refSubsectionPage{instructionWithEnLectureEcritureTolerante})~:
+\begin{galgas}
+with expression_cle prefixe_optionnel in !?cible_table
+do
+  liste_instructions_do
+else
+  liste_instructions_else # Optionnel
+end
+\end{galgas}
+
+\textbf{Quatrième forme.} Accès en lecture/écriture, signalement d'erreur si échec de la recherche (\refSubsectionPage{instructionWithEnLectureEcritureSansTolerance})~:
+\begin{galgas}
+with expression_cle prefixe_optionnel in !?cible_table
+error message methode_recherche
+do
+  liste_instructions_do
+end
+\end{galgas}
+
+
+
+
+\subsectionLabel{Accès en lecture tolérant l'échec de la recherche}{instructionWithEnLectureTolerante}
+
+
+\begin{galgas}
+with expression_cle prefixe_optionnel in expression_table
+do
+  liste_instructions_do
+else
+  liste_instructions_else # Optionnel
+end
+\end{galgas}
+
+Où~:
+\begin{itemize}
+  \item \ggs+expression_cle+ est une expression de type \ggs+@string+ dont la valeur définit la clé~;
+  \item \ggs+prefixe_optionnel+ est soit vide, soit est constitué d'un double-point \ggs+:+ suivi d'un identificateur qui préfixe les noms des champs dans la liste d'instructions \ggs+liste_instructions_do+~;
+  \item \ggs+expression_table+ est une expression qui désigne la table.
+\end{itemize}
+
+La clé désignée par la valeur de \ggs+expression_cle+ est recherchée dans la table désignée par la valeur de \ggs+expression_table+~:
+\begin{itemize}
+  \item en cas d'échec, les instructions \ggs+liste_instructions_else+ sont exécutées~;
+  \item en cas de succès, ce sont les instructions \ggs+liste_instructions_do+ qui sont exécutées~; les propriétés de l'élément recherché sont alors disponibles en lecture, sous leur nom éventuellement préfixé~; la clé est disponible sous le nom \ggs+lkey+ éventuellement préfixé, et est de type \ggs+@lstring+.
+\end{itemize}
+
+%Par exemple, on veut disposer d'une table qui implémente un \emph{counted set}, c'est à dire que l'on associe à la clé son nombre de citations. On déclare~:
+%\begin{galgas}
+%map @maTable {
+%  @uint mOccurrenceCount
+%  insert insertKey error message "entree deja presente"
+%}
+%\end{galgas}
+%
+%Et on effectue des recherches / insertions de la façon suivante~:
+%\begin{galgas}
+%@lstring cle = ...
+%with cle.string in !?table do
+%  mOccurrenceCount ++
+%else
+%  [!?table insertKey !cle !1]
+%end
+%\end{galgas}
+%
+%En utilisant un préfixe, le code devient~:
+%\begin{galgas}
+%@lstring cle = ...
+%with cle.string : xyz_ in !?table do
+%  mOccurrenceCount ++
+%else
+%  [!?table insertKey !cle !1]
+%end
+%\end{galgas}
+
+
+Par exemple, on veut disposer d'une table possédant une propriété identifiant de manière unique la clé. On déclare~:
+\begin{galgas}
+map @maTable {
+  @uint mIndex
+  insert insertKey error message "entree deja presente"
+}
+\end{galgas}
+
+Et on effectue des recherches / insertions de la façon suivante~:
+\begin{galgas}
+@uint idx
+@lstring cle = ...
+with cle.string in table do
+  idx = mIndex
+else
+  idx = [table count]
+  [!?table insertKey !cle !idx]
+end
+\end{galgas}
+
+En utilisant un préfixe, le code devient~:
+\begin{galgas}
+@uint idx
+@lstring cle = ...
+with cle.string : xyz_ in table do
+  idx = xyz_mIndex
+else
+  idx = [table count]
+  [!?table insertKey !cle !idx]
+end
+\end{galgas}
+
+
+
+
+\subsectionLabel{Accès en lecture, signalement d'erreur si échec de la recherche}{instructionWithEnLectureSansTolerance}
+
+
+\begin{galgas}
+with expression_cle prefixe_optionnel in expression_table
+error message methode_recherche
+do
+  liste_instructions_do
+end
+\end{galgas}
+
+Où~:
+\begin{itemize}
+  \item \ggs+expression_cle+ est une expression de type \ggs+@lstring+ dont la valeur définit la clé~;
+  \item \ggs+prefixe_optionnel+ est soit vide, soit est constitué d'un double-point \ggs+:+ suivi d'un identificateur qui préfixe les noms des champs dans la liste d'instructions \ggs+liste_instructions_do+~;
+  \item \ggs+expression_table+ est une expression qui désigne la table~;
+  \item \ggs+methode_recherche+ est une méthode de recherche de la table (c'est-à-dire déclarée par \ggs+search+) dont le message associé sera utilisé pour le signalement d'erreur.
+\end{itemize}
+
+La clé désignée par la valeur de \ggs+expression_cle+ est recherchée dans la table désignée par la valeur de \ggs+expression_table+~:
+\begin{itemize}
+  \item en cas d'échec, une erreur est affichée, son message étant fourni par la méthode de recherche \ggs+methode_recherche+, et sa localisation par le champ \ggs+location+ de l'\ggs+expression_cle+~;
+  \item en cas de succès, ce sont les instructions \ggs+liste_instructions_do+ qui sont exécutées~; les propriétés de l'élément recherché sont alors disponibles en lecture, sous leur nom éventuellement préfixé~; la clé est disponible sous le nom \ggs+lkey+ éventuellement préfixé, et est de type \ggs+@lstring+.
+\end{itemize}
+
+Par exemple, on veut disposer d'une table qui implémente un \emph{counted set}, c'est à dire que l'on associe à la clé son nombre de citations, et la doit avoir été entrée auparavant. On déclare~:
+\begin{galgas}
+map @maTable {
+  @uint mOccurrenceCount
+  search searchKey error message "entree %K absente"
+}
+\end{galgas}
+
+Et on effectue des recherches de la façon suivante~:
+\begin{galgas}
+@lstring cle = ...
+@uint occurenceCount
+with cle in table error message searchKey do
+  occurenceCount = mOccurrenceCount ++
+end
+\end{galgas}
+
+En utilisant un préfixe, le code devient~:
+\begin{galgas}
+@lstring cle = ...
+@uint occurenceCount
+with cle : abc_ in table error message searchKey do
+  occurenceCount = abc_mOccurrenceCount ++
+end
+\end{galgas}
+
+
+
+
+
+\subsectionLabel{Accès en lecture/écriture tolérant l'échec de la recherche}{instructionWithEnLectureEcritureTolerante}
+
+
+\begin{galgas}
+with expression_cle prefixe_optionnel in !?cible_table
+do
+  liste_instructions_do
+else
+  liste_instructions_else # Optionnel
+end
+\end{galgas}
+
+
+Où~:
+\begin{itemize}
+  \item \ggs+expression_cle+ est une expression de type \ggs+@string+ dont la valeur définit la clé~;
+  \item \ggs+prefixe_optionnel+ est soit vide, soit est constitué d'un double-point \ggs+:+ suivi d'un identificateur qui préfixe les noms des champs dans la liste d'instructions \ggs+liste_instructions_do+~;
+  \item \ggs+cible_table+ est de la forme \ggs+variable+, ou  \ggs+variable.champ+, ou \ggs+variable.champ.champ2+, ... et désigne la table~; la cible est accédée en lecture/écriture.
+\end{itemize}
+
+La clé désignée par la valeur de \ggs+expression_cle+ est recherchée dans la table désignée par la valeur de \ggs+cible_table+~:
+\begin{itemize}
+  \item en cas d'échec, les instructions \ggs+liste_instructions_else+ sont exécutées~;
+  \item en cas de succès, ce sont les instructions \ggs+liste_instructions_do+ qui sont exécutées~; les propriétés de l'élément recherché sont alors disponibles en lecture / écriture, sous leur nom éventuellement préfixé~; la clé est disponible en lecture seule sous le nom \ggs+lkey+ éventuellement préfixé, est de type \ggs+@lstring+.
+\end{itemize}
+
+Par exemple, on veut disposer d'une table qui implémente un \emph{counted set}, c'est à dire que l'on associe à la clé son nombre de citations. On déclare~:
+\begin{galgas}
+map @maTable {
+  @uint mOccurrenceCount
+  insert insertKey error message "entree deja presente"
+}
+\end{galgas}
+
+Et on effectue des recherches / insertions de la façon suivante~:
+\begin{galgas}
+@lstring cle = ...
+with cle.string in !?table do
+  mOccurrenceCount ++
+else
+  [!?table insertKey !cle !1]
+end
+\end{galgas}
+
+En utilisant un préfixe, le code devient~:
+\begin{galgas}
+@lstring cle = ...
+with cle.string : xyz_ in !?table do
+  xyz_mOccurrenceCount ++
+else
+  [!?table insertKey !cle !1]
+end
+\end{galgas}
+
+
+
+\subsectionLabel{Accès en lecture/écriture, signalement d'erreur si échec de la recherche}{instructionWithEnLectureEcritureSansTolerance}
+
+
+\begin{galgas}
+with expression_cle prefixe_optionnel in !?cible_table
+error message methode_recherche
+do
+  liste_instructions_do
+end
+\end{galgas}
+
+Où~:
+\begin{itemize}
+  \item \ggs+expression_cle+ est une expression de type \ggs+@lstring+ dont la valeur définit la clé~;
+  \item \ggs+prefixe_optionnel+ est soit vide, soit est constitué d'un double-point \ggs+:+ suivi d'un identificateur qui préfixe les noms des champs dans la liste d'instructions \ggs+liste_instructions_do+~;
+  \item \ggs+expression_table+ est une expression qui désigne la table~;
+  \item \ggs+methode_recherche+ est une méthode de recherche de la table (c'est-à-dire déclarée par \ggs+search+) dont le message associé sera utilisé pour le signalement d'erreur~;
+  \item \ggs+cible_table+ est de la forme \ggs+variable+, ou  \ggs+variable.champ+, ou \ggs+variable.champ.champ2+, ... et désigne la table~; la cible est accédée en lecture/écriture.
+\end{itemize}
+
+La clé désignée par la valeur de \ggs+expression_cle+ est recherchée dans la table désignée par la valeur de \ggs+expression_table+~:
+\begin{itemize}
+  \item en cas d'échec, une erreur est affichée, son message étant fourni par la méthode de recherche \ggs+methode_recherche+, et sa localisation par le champ \ggs+location+ de l'\ggs+expression_cle+~;
+  \item en cas de succès, ce sont les instructions \ggs+liste_instructions_do+ qui sont exécutées~; les propriétés de l'élément recherché sont alors disponibles en lecture/écriture, sous leur nom éventuellement préfixé~; la clé est disponible en lecture seule sous le nom \ggs+lkey+ éventuellement préfixé, et est de type \ggs+@lstring+.
+\end{itemize}
+
+Par exemple, on veut disposer d'une table qui implémente un \emph{counted set}, c'est à dire que l'on associe à la clé son nombre de citations, et la clé doit avoir été entrée auparavant. On déclare~:
+\begin{galgas}
+map @maTable {
+  @uint mOccurrenceCount
+  search searchKey error message "entree %K absente"
+}
+\end{galgas}
+
+Et on effectue des recherches de la façon suivante~:
+\begin{galgas}
+@lstring cle = ...
+with cle in !?table error message searchKey do
+  mOccurrenceCount ++
+end
+\end{galgas}
+
+En utilisant un préfixe, le code devient~:
+\begin{galgas}
+@lstring cle = ...
+with cle : abc_ in !?table error message searchKey do
+  abc_mOccurrenceCount ++
+end
+\end{galgas}
+

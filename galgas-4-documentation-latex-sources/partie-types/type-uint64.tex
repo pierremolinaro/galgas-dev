@@ -1,0 +1,377 @@
+%!TEX encoding = UTF-8 Unicode
+%!TEX root = ../galgas-book.tex
+
+\chapitreTypePredefiniLabelIndex{uint64}
+
+\tableDesMatieresLocaleDeProfondeurRelative{1}
+
+An \ggs+@uint64+ object value is a 64-bit unsigned integer value. You can initialize an \ggs+@uint64+ object from a 64-bit unsigned integer constant:
+
+\begin{galgas}
+@uint64 myUnsignedInteger = 123_456L
+\end{galgas}
+
+Note the \texttt{L} suffix is required for a 64-bit unsigned integer constant.
+
+\section{Constructeurs}
+
+
+
+
+\subsectionConstructor{max}{uint64}
+
+\begin{galgas}
+constructor max -> @uint64
+\end{galgas}
+
+Returns an \ggs+@uint64+ object that the maximum value of the 64-bit unsigned range ($2^{64}-1$).
+
+
+\subsectionConstructor{uint64BaseValueWithCompressedBitString}{uint64}
+
+\begin{galgas}
+constructor uint64BaseValueWithCompressedBitString
+   ?@string inBitString
+   -> @uint64
+\end{galgas}
+
+
+Returns an \ggs+@uint64+ object computed from a string containing '0', '1' or 'X' characters, replacing all occurrences of 'X' by '0'.
+
+The inBitString argument should contain only '0', '1' or 'X' characters. A run time exception is raised if an other character appears.
+
+This constructor considers the \emph{inBitString} argument value as a binary encoding of an integer value. First, it internally replaces all 'X's by '0's, and then converts the resulting string into an integer value that is the one returned by this constructor.
+
+Note that the first character of the \emph{inBitString} argument value corresponds to the most significant bit of the converted value.
+
+
+\textbf{Exemple :}
+\begin{galgas}
+@uint64 v [uint64BaseValueWithCompressedBitString !"01XX10"]
+log v # Displays <@uint64:18>
+\end{galgas}
+
+
+
+
+
+\subsectionConstructor{uint64MaskWithCompressedBitString}{uint64}
+
+\begin{galgas}
+constructor uint64MaskWithCompressedBitString ?@string inBitString -> @uint64
+\end{galgas}
+
+
+Returns an \ggs+@uint64+ object computed from a string containing '0', '1' or 'X' characters, replacing all occurrences of '0' by '1' and all occurrences of 'X' by '0'.
+
+The \emph{inBitString} argument should contain only '0', '1' and 'X' characters. A run time exception is raised if an other character appears.
+
+This constructor considers the \emph{inBitString} argument value as a binary encoding of an integer value. First, it internally replaces all '0's by '1's and all 'X's by '0's, and then converts the resulting string into an integer value that is the one returned by this constructor.
+
+Note that the first '0' or '1' character of the \emph{inBitString} argument value corresponds to the most significant Bit of the converted value.
+
+\textbf{Exemple :}
+\begin{galgas}
+@uint64 v [uint64MaskWithCompressedBitString !"01XX10"] ;
+log v ; # Displays <@uint64:51> ;
+\end{galgas}
+
+
+
+\subsectionConstructor{uint64WithBitString}{uint64}
+
+\begin{galgas}
+constructor uint64WithBitString ?@string inBitString -> @uint64
+\end{galgas}
+
+
+Returns an \ggs+@uint64+ object computed from a string containing '0' or '1' characters.
+
+The \emph{inBitString} argument should contain only '0' and '1' characters. A run time exception is raised if an other character appears.
+
+This constructor considers the \emph{inBitString} argument value as a binary encoding of an integer value. It returns an \ggs+@uint64+ object containing the converted value.
+
+Note that the first '1' character of the \emph{inBitString} argument value corresponds to the most significant bit of the converted value.
+
+\textbf{Exemple :}
+\begin{galgas}
+@uint64 v [uint64WithBitString !"0101"]] ;
+log v ; # Displays <@uint64:5> ;
+\end{galgas}
+
+
+\section{Getters}
+
+
+\subsectionGetter{alphaString}{uint64}
+
+Ce \emph{getter} permet de convertir un \ggs!@uint64! en une chaîne de caractères, telle que l'ordre des entiers est conservé sur la chaîne obtenue.
+
+La chaîne obtenue comporte exactement 14 lettres minuscules. C'est en fait une conversion en base 26, la lettre \ggs=a= ayant la valeur $0$, et la lettre \ggs=z= la valeur $25$.
+
+
+\begin{galgas}
+  message [0L alphaString] + "\n"          # aaaaaaaaaaaaaa
+  message [12_345L alphaString] + "\n"     # aaaaaaaaaaasgv
+  message [@uint64.max alphaString] + "\n" # hlhxczmxsyumqp
+\end{galgas}
+
+\subsectionGetter{bigint}{uint64}
+
+Ce \emph{getter} permet de convertir un \ggs!@uint64! en \ggs!@bigint!. Comme la plage des valeurs des \ggs!bigint! n'est limitée que par la mémoire disponible, il n'échoue jamais.
+
+\begin{galgas}
+  message [[1234L bigint] string] + "\n" # 1234
+\end{galgas}
+
+
+\subsectionGetter{double}{uint64}
+
+\begin{galgas}
+getter double -> @double
+\end{galgas}
+
+Returns the receiver's value converted in a \ggs+@double+ object. As a 64-bit integer value can always be converted in a \ggs+@double+ value, this getter never fails.
+
+
+
+\subsectionGetter{hexString}{uint64}
+
+
+\begin{galgas}
+getter hexString -> @string
+\end{galgas}
+
+Returns the an hexadecimal string representation of the receiver value, prefixed by the string \texttt{0x}. For getting an hexadecimal representation string with any prefix, see \refGetterPage{uint64}{xString}.
+
+
+
+
+
+
+\subsectionGetter{hexStringSeparatedBy}{uint64}
+
+\begin{galgas}
+getter hexStringSeparatedBy ?@char inSeparator ?@uint inGroup -> @string
+\end{galgas}
+
+Returns the an hexadecimal string representation of the receiver value, prefixed by the string \texttt{0x}. Groups of \ggs=inGroup= digits are separated by the \ggs=inSeparator= character.
+
+If \ggs=inGroup= is equal to zero, a run-time error is raised.
+
+For example:
+\begin{galgas}
+let s = [0x123456789ABCDEF0L hexStringSeparatedBy !'_' !4] # 0x1234_5678_9ABC_DEF0
+\end{galgas}
+
+
+
+
+
+\subsectionGetter{sint}{uint64}
+
+\begin{galgas}
+getter sint -> @sint
+\end{galgas}
+
+Returns the receiver's value in an \refTypePredefini{sint} (32-bit signed integer) object. An error is raised is receiver's value is greater than $2^{31}-1$. This getter is the only way to convert an \refTypePredefini{uint64} object into an \refTypePredefini{sint} object.
+
+
+
+\subsectionGetter{sint64}{uint64}
+
+\begin{galgas}
+getter sint64 -> @sint64
+\end{galgas}
+
+Returns the receiver's value in an \refTypePredefini{sint64} (64-bit signed integer) object. An error is raised is receiver's value is greater than $2^{63}-1$. This getter is the only way to convert an \refTypePredefini{uint64} object into an \refTypePredefini{sint64} object.
+
+
+\subsectionGetter{string}{uint64}
+
+\begin{galgas}
+getter string -> @string
+\end{galgas}
+
+Returns a decimal string representation of the receiver's value. For an hexadecimal string representation of the receiver's value, see \refGetterPage{uint64}{hexString} and \refGetterPage{uint64}{xString}.
+
+
+
+\subsectionGetter{uint}{uint64}
+
+\begin{galgas}
+getter uint -> @uint
+\end{galgas}
+
+Returns the receiver's value in an \refTypePredefini{uint} (32-bit unsigned integer) object. An error is raised is receiver's value is greater than $2^{32}-1$. This getter is the only way to convert an \refTypePredefini{uint64} object into an \refTypePredefini{uint} object.
+
+
+\subsectionGetter{uintSlice}{uint64}
+
+\begin{galgas}
+getter uintSlice ?@uint inStartBit ?@uint inBitCount -> @uint
+\end{galgas}
+
+
+
+Returns an \refTypePredefini{uint} value, extracted from a bit slice of the receiver's value. The receiver's value is right shifted by \emph{inStartBit}, and the resulted value is and'ed with a mask equal to $2^{inBitCount}-1$.
+
+
+\textbf{Exemple :}
+\begin{galgas}
+@uint64 v = 0x1234_5678_9ABC_DEF0L
+@uint result = [v uintSlice !4 !5] # The result value is 0x8_9ABC
+\end{galgas}
+
+
+
+
+%\defReaderSansArgument{xString}{uint64}
+%{1.9.10}
+%{string}
+%{Returns an hexadecimal string representation of the receiver's value (without any prefix).}
+%{for an decimal string representation of the receiver's value, see the \refGetterPage{uint64}{hexString}; for a decimal string representation of the receiver's value, see the \refGetterPage{uint64}{string}.}
+%{}{}
+
+\subsectionGetter{xString}{uint64}
+
+\begin{galgas}
+getter xString -> @string
+\end{galgas}
+
+Returns an hexadecimal string representation of the receiver's value (without any prefix). For an decimal string representation of the receiver's value, see the \refGetterPage{uint64}{hexString}; for a decimal string representation of the receiver's value, see the \refGetterPage{uint64}{string}.
+
+
+
+
+
+
+
+
+
+
+\section{Arithmétique}
+
+\subsection{Opérateurs infixés}
+
+Le type \ggs+@uint64+ accepte les opérateurs arithmétiques infixés suivants :
+\begin{itemize}
+  \item \ggs!+!, addition, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggs!-!, soustraction, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggs!*!, multiplication, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggs!/!, division, une erreur d'exécution est déclenchée si le diviseur est nul ;
+  \item \ggs!mod!, calcul du reste, une erreur d'exécution est déclenchée si le diviseur est nul ;
+  \item \ggs!&+!, addition, le résultat étant silencieusement tronqué sur 64 bits ;
+  \item \ggs!&-!, soustraction, le résultat étant silencieusement tronqué sur 64 bits ;
+  \item \ggs!&*!, multiplication, le résultat étant silencieusement tronqué sur 64 bits ;
+  \item \ggs!&/!, division, qui retourne zéro si le diviseur est nul.
+\end{itemize}
+
+Ces opérateurs exigent que les deux opérandes soient des objets du même type \ggs+@uint64+. 
+
+\subsection{Opérateur préfixé}
+Le type \ggs+@uint64+ accepte un opérateur arithmétique préfixé :
+\begin{itemize}
+  \item \ggs!+!, qui retourne simplement la valeur de l'opérande.
+\end{itemize}
+
+\subsectionLabel{Instructions}{instructionsUINT64}
+
+Le type \ggs+@uint64+ accepte les instructions arithmétiques suivantes :
+\begin{itemize}
+  \item \ggs!+=!, addition, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggs!-=!, soustraction, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggs!*=!, multiplication, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggs!/=!, division, une erreur d'exécution est déclenchée en cas division par zéro ;
+  \item \ggs!++!, incrémentation, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggs!--!, décrémentation, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggs!&++!, incrémentation, le résultat étant silencieusement tronqué sur 64 bits ;
+  \item \ggs!&--!, décrémentation, le résultat étant silencieusement tronqué sur 64 bits.
+\end{itemize}
+
+\ggs!x+=y! est équivalent à \ggs!x=x+y! ; \ggs!x-=y! est équivalent à \ggs!x=x-y!.
+La variable cible \ggs!x!, comme l'expression source \ggs!y! doivent être du même type \ggs+@uint64+. 
+
+Incrémentation et décrémentation sont des instructions, et ne peuvent pas apparaître des expressions.
+\begin{galgas}
+@uint64 n = ... ; n ++ # Incrémentation
+\end{galgas}
+
+\begin{galgas}
+@uint64 n = ... ; n -- # Décrémentation
+\end{galgas}
+
+
+\section{Shift Operators}
+
+
+The \ggs+@uint+ type supports right and left shift operators:\newline
+
+\begin{tabular}{|c|c|}
+\hline
+$<<$ & Left shift \\
+\hline
+$>>$ & Right shift \\
+\hline
+\end{tabular}
+
+Theses operators require the left argument to be \ggs+@uint64+ object, and  the right argument to be \ggs+@uint+ object.\newline
+
+Note the right shift inserts always a zero bit in the most significant bit location (it is a logical right shift).\newline
+
+The actual amount of the shift is the value of the right-hand operand masked by 63, i.e. the shift distance is always between 0 and 63.
+
+
+
+
+\section{Logical Operators}
+
+The \ggs+@uint64+ type supports the three bit-wise logical diadic operators:
+
+\begin{tabular}{|c|c|}
+\hline
+$\&$ & Bit-wise and \\
+\hline
+\textbar & Bit-wise or \\
+\hline
+\^\  & Bit-wise exclusive or \\
+\hline
+\end{tabular}
+
+Theses operators require both arguments to be \ggs+@uint64+ objects.\newline
+
+
+The \ggs+@uint64+ type supports the bit-wise logical unary operator:
+
+\begin{tabular}{|c|c|}
+  \hline
+  $\sim$ & Bit-wise complementation \\
+  \hline
+\end{tabular}
+
+This operator returns an \ggs+@uint64+ object.
+
+
+
+
+\section{Comparison Operators}
+
+The \ggs+@uint64+ type supports the six comparison operators:
+
+\begin{tabular}{|c|c|}
+\hline
+$=$ & Equality \\
+\hline
+$!=$ & Non Equality \\
+\hline
+$<$  & Strict Lower Than \\
+\hline
+$<=$  & Lower or Equal \\
+\hline
+$>$  & Strict Greater Than \\
+\hline
+$>=$  & Greater or Equal \\
+\hline
+\end{tabular}
+
+Theses operators require both arguments to be \ggs+@uint64+ objects, and return a \ggs+@bool+ object.

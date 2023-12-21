@@ -1,0 +1,2045 @@
+%!TEX encoding = UTF-8 Unicode
+%!TEX root = ../galgas-book.tex
+
+\chapitreTypePredefiniLabelIndex{string}
+
+\tableDesMatieresLocaleDeProfondeurRelative{1}
+
+
+Le type \ggs!@string! définit les chaînes de caractères Unicode.
+
+\section{Chaînes de caractères littérales}
+
+En GALGAS, les chaînes de caractères littérales sont délimitées par des caractères « " », par exemple : \ggs+"a string"+. Une chaîne de caractères littérale est un objet constant de type \ggs!@string!, si bien que l'on peut lui appliquer méthodes et \emph{getters} : \ggs+["ae" uppercaseString]+ retourne la chaîne \ggs+"AE"+.
+
+
+
+
+
+
+
+\section{Constructeurs}
+
+\subsectionConstructor{componentsJoinedByString}{string}
+
+\begin{galgasbox}
+constructor componentsJoinedByString
+   ?@stringlist inComponents
+   ?@string inSeparator -> @string
+\end{galgasbox}
+
+Retourne la chaîne de caractéres obtenue en concaténant tous les éléments de \ggs!inComponents! en insérant une copie de \ggs!inSeparator! entre deux éléments consécutifs.
+
+\begin{galgas}
+let aList = @stringlist {!"A", !"B", !"C"}
+let s = @string.componentsJoinedByString {!aList !"-"} # "A-B-C"
+\end{galgas}
+
+
+
+
+\subsectionConstructor{CppChar}{string}
+
+\begin{galgasbox}
+constructor CppChar ?@char inChar -> @string
+\end{galgasbox}
+
+Retourne la chaîne de caractéres constitué du caractère \ggs!inChar! précédé et suivi par un caractère « " ».
+
+\begin{galgas}
+let s = @string.CppChar {!'A'} # "A"
+\end{galgas}
+
+
+
+\subsectionConstructor{CppLineComment}{string}
+
+\begin{galgasbox}
+constructor CppLineComment -> @string
+\end{galgasbox}
+
+Retourne une chaîne de caractères constitué de :
+\begin{itemize}
+  \item deux caractères « \texttt{/} » ;
+  \item suivi de 117 caractères « \texttt{-} » ;
+  \item suivi d'un caractère « \texttt{*} » ;
+  \item et terminée par un retour à la ligne.
+\end{itemize}
+
+
+
+
+\subsectionConstructor{CppTitleComment}{string}
+
+\begin{galgasbox}
+constructor CppTitleComment ?@string inString -> @string
+\end{galgasbox}
+
+Retourne une chaîne de caractères constitué de cinq lignes de commentaires C++ :
+\begin{itemize}
+\item une ligne obtenue par appel du \refConstructorPage{string}{CppLineComment} ;
+\item une ligne obtenue par appel du \refConstructorPage{string}{CppSpaceComment} ;
+\item une ligne de commentaire contenant \ggs!inString! centré ;
+\item une ligne obtenue par appel du \refConstructorPage{string}{CppSpaceComment} ;
+\item une ligne obtenue par appel du \refConstructorPage{string}{CppLineComment}.
+\end{itemize}
+
+
+
+\subsectionConstructor{CppSpaceComment}{string}
+
+\begin{galgasbox}
+constructor CppSpaceComment -> @string
+\end{galgasbox}
+
+Retourne une chaîne de caractères constitué de :
+\begin{itemize}
+  \item deux caractères « \texttt{/} » ;
+  \item suivi de 117 caractères \emph{espace} ;
+  \item suivi d'un caractère « \texttt{*} » ;
+  \item et terminée par un retour à la ligne.
+\end{itemize}
+
+Ce constructeur permet d'écrire des commentaires encadrés dans le code C++ engendré.
+
+
+\subsectionConstructor{default}{string}
+
+\begin{galgasbox}
+constructor default -> @string
+\end{galgasbox}
+
+Retourne la chaîne vide (voir \refSubsectionPage{constructeurParDefaut}).
+
+
+
+
+\subsectionConstructor{homeDirectory}{string}
+
+\begin{galgasbox}
+constructor homeDirectory -> @string
+\end{galgasbox}
+
+Retourne une chaîne de caractères contenant le chemin absolu vers le répertoire \emph{home} de l'utilisateur. Fonctionne sous Unix et Windows.
+
+
+
+
+\subsectionConstructor{newWithStdIn}{string}
+
+\begin{galgasbox}
+constructor newWithStdIn -> @string
+\end{galgasbox}
+
+Bloque l'exécution en attente de saisie d'une ligne sur le terminal. La saisie du retour-chariot relance l'exécution. La chaîne saisie (y compris le retour-chariot qui la termine) est renvoyée par le constructeur.
+
+
+
+
+
+
+\subsectionConstructor{retrieveAndResetTemplateString}{string}
+
+\begin{galgasbox}
+constructor retrieveAndResetTemplateString -> @string
+\end{galgasbox}
+
+Ce constructeur est utilisé pour la génération de \emph{templates}.
+
+
+
+
+
+
+\subsectionConstructor{separatorString}{string}
+
+\begin{galgasbox}
+constructor separatorString -> @string
+\end{galgasbox}
+
+Ce constructeur renvoie la chaîne de caractères formant le séparateur entre le token courant et le suivant (y compris les commentaires). Son utilisation principale est de permettre d'implémenter un mécanisme permettant de vérifier qu'une instruction se termine par une fin de ligne, ou un \ggs=;=.
+
+Par exemple, considérons l'analyse d'une liste d'instructions :
+
+\begin{galgas}
+repeat
+while
+  <instruction>
+end
+\end{galgas}
+
+Dans le code ci-dessus, rien n'oblige à séparer les instructions par une fin de ligne. On impose l'occurrence d'une fin de ligne (ou plusieurs) ou d'un \ggs=;= en écrivant :
+
+\begin{galgas}
+repeat
+while
+  <instruction>
+  select
+   $;$
+  or
+    let s = @string.separatorString 
+    if not [s containsCharacter !'\n'] then
+      error .here
+       : "instruction should be terminated by an end of line or a ';'"
+    end
+  end
+end
+\end{galgas}
+
+
+
+\subsectionConstructor{stringByRepeatingString}{string}
+
+\begin{galgasbox}
+constructor stringByRepeatingString
+  ?@string inString
+  ?@uint inCount
+  -> @string
+\end{galgasbox}
+
+Ce constructeur retourne la chaîne de caractères constituée d'une séquence de \ggs!inCount! chaînes \ggs!inString!.
+
+
+
+
+
+
+
+
+\subsectionConstructor{stringWithContentsOfFile}{string}
+
+\begin{galgasbox}
+constructor stringWithContentsOfFile ?@string inFilePath -> @string
+\end{galgasbox}
+
+Ce constructeur lit le fichier texte désigné par le chemin relatif ou absolu \ggs!inFilePath! et retourne sont contenu. Une erreur d'exécution est déclenché si le fichier ne peut pas être lu.
+
+
+
+
+
+
+\subsectionConstructor{stringWithCurrentDateTime}{string}
+
+\begin{galgasbox}
+constructor stringWithCurrentDateTime -> @string
+\end{galgasbox}
+
+Ce constructeur retourne une chaîne de caractères contenant la date et l'heure courante.
+
+Par exemple :
+\begin{galgas}
+let s = @string.stringWithCurrentDateTime # "Wed Jan  6 20:08:33 2016"
+\end{galgas}
+
+
+
+
+
+
+
+\subsectionConstructor{stringWithCurrentDirectory}{string}
+
+\begin{galgasbox}
+constructor stringWithCurrentDirectory -> @string
+\end{galgasbox}
+
+Ce constructeur retourne une chaîne de caractères contenant le chemin absolu du répertoire courant.
+
+
+
+
+\subsectionConstructor{stringWithEnvironmentVariable}{string}
+
+\begin{galgasbox}
+constructor stringWithEnvironmentVariable
+  ?@string inVariableName
+  -> @string
+\end{galgasbox}
+
+Ce constructeur retourne la valeur associée à la variable d'environnement \ggs!inVariableName!. Une erreur d'exécution est déclenchée si la variable d'environnement n'est pas définie. L'existence d'une variable d'environnement peut être testée par le \refGetterPage{string}{doesEnvironmentVariableExist}.
+
+
+
+
+
+\subsectionConstructor{stringWithEnvironmentVariableOrEmpty}{string}
+
+\begin{galgasbox}
+constructor stringWithEnvironmentVariableOrEmpty
+  ?@string inVariableName
+  -> @string
+\end{galgasbox}
+
+Ce constructeur retourne la valeur associée à la variable d'environnement \ggs!inVariableName!. Si la variable d'environnement n'est pas définie, la chaîne vide est retournée et aucune erreur n'est déclenchée.
+
+
+
+
+
+
+\subsectionConstructor{stringWithSequenceOfCharacters}{string}
+
+\begin{galgasbox}
+constructor stringWithSequenceOfCharacters
+  ?@char inChar
+  ?@uint inCount
+  -> @string
+\end{galgasbox}
+
+Ce constructeur retourne la chaîne de caractères constituée d'une séquence de \ggs!inCount! caractères \ggs!inChar!. Pour répéter une chaîne de caractères, voir le \refConstructorPage{string}{stringByRepeatingString}.
+
+
+
+
+
+\subsectionConstructor{stringWithSourceFilePath}{string}
+
+\begin{galgasbox}
+constructor stringWithSourceFilePath -> @string
+\end{galgasbox}
+
+Ce constructeur retourne le chemin absolu du fichier source en cours d'analyse.
+
+
+
+
+
+
+\subsectionConstructor{stringWithSymbolicLinkContents}{string}
+
+\begin{galgasbox}
+constructor stringWithSymbolicLinkContents ?@string inPath -> @string
+\end{galgasbox}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Getters}
+
+\tableDesMatieresLocaleDeProfondeurRelative{1}
+
+\subsectionGetter{absolutePathFromPath}{string}
+
+\begin{galgasbox}
+getter @string absolutePathFromPath ?@string inPath -> @string
+\end{galgasbox}
+
+Si la valeur du récepteur est un chemin absolu, cette valeur est retournée et \ggs!inPath! est inutilisé.
+
+Si la valeur du récepteur est un chemin relatif, cette valeur est retournée préfixée par \ggs!inPath!.
+
+
+
+
+\subsectionGetter{assemblerRepresentation}{string}
+
+\begin{galgasbox}
+getter @string assemblerRepresentation -> @string
+\end{galgasbox}
+
+Retourne la valeur du récepteur sous la forme d'une chaîne de caractères construite en traduisant chaque caractère :
+\begin{itemize}
+\item une lettre ASCII (minuscule ou majuscule) est inchangée ;
+\item un chiffre décimal est inchangé ;
+\item les caractères « . »,  « - » et  « \$ » sont inchangés ;
+\item tout autre caractère est traduit en son point de code en hexadécimal, précédé et suivi par un caractère « \_ ».
+\end{itemize}
+
+La chaîne obtenue est un identificateur C ou C++ valide si le récepteur commence par une lettre ASCII ou un caractère de soulignement « \_ ».
+
+Par exemple :
+\begin{galgas}
+let x = ["$Z2.3" assemblerRepresentation] # "$Z2.3"
+let y = [":?" assemblerRepresentation] # "_3A__3F_"
+let y = ["_é" assemblerRepresentation] # "_5F__E8_"
+\end{galgas}
+
+Voir aussi le \refGetterPage{string}{identifierRepresentation} qui retourne toujours un identificateur C ou C++ valide et le \refGetterPage{string}{nameRepresentation}.
+
+Pour reconstituer la chaîne d'origine, appeler le \refGetterPage{string}{decodedStringFromRepresentation}.
+
+
+
+
+
+
+
+\subsectionGetter{capacity}{string}
+
+\begin{galgasbox}
+getter @string capacity -> @uint
+\end{galgasbox}
+
+Retourne le nombre de caractères alloués pour stocker la valeur du récepteur. 
+
+
+
+
+
+
+
+\subsectionGetter{characterAtIndex}{string}
+
+\begin{galgasbox}
+getter @string characterAtIndex ?@uint inIndex -> @char
+\end{galgasbox}
+
+Retourne le caractère situé à l'indice \ggs!inIndex! de la valeur du récepteur. Le premier caractère a pour indice $0$. Si \ggs!inIndex! est supérieur au égal à la longueur de la valeur du récepteur, une erreur d'exécution est déclenchée.
+
+
+
+
+
+
+
+
+
+
+
+\subsectionGetter{commandWithArguments}{string}
+
+\begin{galgasbox}
+getter @string commandWithArguments ?@stringlist inArguments -> @sint
+\end{galgasbox}
+Exécute la commande \emph{shell} dont le nom est la valeur du récepteur, avec les arguments désignés par la valeur de \texttt{inArguments}. La sortie de la commande est affichée sur la console. Quand la commande est terminée, sa valeur de sortie est retournée.
+
+Contrairement au \refGetterPage{string}{system}, des espaces sont acceptés dans le nom de la commande et dans les arguments.
+
+\begin{galgas}
+let r = ["cp" commandWithArguments !{!"fichierA.txt", !"fichierB.txt"}]
+if r == 0S then
+  # Ok, pas d'erreur
+else
+  # Erreur
+end
+\end{galgas}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsectionGetter{componentsSeparatedByString}{string}
+
+\begin{galgasbox}
+getter @string componentsSeparatedByString ?@string inSeparator -> @stringlist
+\end{galgasbox}
+Retourne une liste des sous-chaînes de la valeur du récepteur qui a été divisée par \ggs!inSeparator!.
+
+\begin{galgas}
+let b = ["a--b--c--" componentsSeparatedByString !"--"]
+# "a", "b", "c", ""
+\end{galgas}
+
+
+
+
+
+
+
+
+
+
+
+
+\subsectionGetter{containsCharacter}{string}
+
+\begin{galgasbox}
+getter @string containsCharacter ?@char inCharacter -> @bool
+\end{galgasbox}
+Retourne \ggs!true! si le récepteur contient le caractère \ggs!inCharacter!, et \ggs!false! dans le cas contraire.
+
+\begin{galgas}
+let b = ["abcdef" containsCharacter !'c'] # true
+\end{galgas}
+
+
+
+
+
+
+\subsectionGetter{containsCharacterInRange}{string}
+\begin{galgasbox}
+getter @string containsCharacterInRange
+  ?@char inFirstCharacter
+  ?@char inLastCharacter
+  -> @bool
+\end{galgasbox}
+
+Retourne \ggs!true! si le récepteur contient un ou plusieurs caractère dont le point de code est supérieur ou égal à celui de \ggs!inLastCharacter! et inférieur ou égal à celui de \ggs!inFirstCharacter!, et \ggs!false! dans le cas contraire. En conséquence, si le point de code Unicode de \ggs!inFirstCharacter! doit être strictement supérieur au point de de code de \ggs!inLastCharacter!, la valeur renvoyée est toujours \ggs!false!.
+
+\begin{galgas}
+let b = ["abcdef" containsCharacterInRange !'c' !'d'] # true
+let c = ["abcdef" containsCharacterInRange !'x' !'z'] # false
+\end{galgas}
+
+
+
+
+
+
+
+
+\subsectionGetter{count}{string}
+
+\begin{galgasbox}
+getter @string count -> @uint
+\end{galgasbox}
+
+Retourne le nombre de caractères UTF-32 du récepteur. Si le récepteur n'est pas une chaîne ASCII, ce getter ne donne pas le nombre d'octets de sa représentation en UTF-8~: pour cela utiliser le \refGetterPage{string}{utf8Length}.
+
+
+
+
+
+
+
+
+
+\subsectionGetter{cStringRepresentation}{string}
+\begin{galgasbox}
+getter @string cStringRepresentation -> @string
+\end{galgasbox}
+
+Retourne la valeur du récepteur sous la forme d'une chaîne UTF-8, c'est-à-dire qu'un caractère « \texttt{"} » a été inséré au début et à la fin.
+
+Le caractère « \texttt{"} » est échappé en « \texttt{\textbackslash"} », le caractère « \texttt{\textbackslash} » est échappé en « \texttt{\textbackslash\textbackslash} ». Le caractère de code ASCII \texttt{0x0D} (« \emph{Carriage Return} ») est écrit sous la forme d'un anti slash suivi du caractère \texttt{"n"}. 
+
+
+
+
+
+
+
+\subsectionGetter{currentColumn}{string}
+
+\begin{galgasbox}
+getter @string currentColumn -> @uint
+\end{galgasbox}
+
+Retourne l'indice de la colonne, c'est-à-dire :
+\begin{itemize}
+\item si le récepteur ne contient pas de retour à la ligne, le nombre de caractères du récepteur ;
+\item si le récepteur contient des retours à la ligne, le nombre de caractères du récepteur qui suivent la dernière occurrence d'un retour à la ligne.
+\end{itemize}
+
+
+
+
+
+
+
+\subsectionGetter{decimalSignedBigInt}{string}
+
+\begin{galgasbox}
+getter @string decimalSignedBigInt -> @bigint
+\end{galgasbox}
+
+Retourne la valeur du récepteur convertie en entier signé. La valeur du récepteur doit donc ne contenir que des chiffres décimaux, éventuellement précédés par un «~+~» ou un «~-~». Si ce n'est pas le cas, une erreur d'exécution est déclenchée.
+
+La valeur du récepteur peut être testée en appelant le \refGetterPage{string}{isDecimalSignedBigInt}.
+
+
+
+
+
+
+
+\subsectionGetter{decimalSignedNumber}{string}
+
+\begin{galgasbox}
+getter @string decimalSignedNumber -> @sint
+\end{galgasbox}
+
+Retourne la valeur du récepteur convertie en entier signé 32 bits. La valeur du récepteur doit donc ne contenir que des chiffres décimaux, éventuellement précédés par un «~+~» ou un «~-~». Si ce n'est pas le cas, une erreur d'exécution est déclenchée.
+
+La valeur du récepteur peut être testée en appelant le \refGetterPage{string}{isDecimalSignedNumber}.
+
+
+
+
+
+
+
+\subsectionGetter{decimalSigned64Number}{string}
+
+\begin{galgasbox}
+getter @string decimalSigned64Number -> @sint64
+\end{galgasbox}
+
+Retourne la valeur du récepteur convertie en entier signé 64 bits. La valeur du récepteur doit donc ne contenir que des chiffres décimaux, éventuellement précédés par un «~+~» ou un «~-~». Si ce n'est pas le cas, une erreur d'exécution est déclenchée.
+
+La valeur du récepteur peut être testée en appelant le \refGetterPage{string}{isDecimalSigned64Number}.
+
+
+
+
+
+
+
+\subsectionGetter{decimalUnsignedNumber}{string}
+
+\begin{galgasbox}
+getter @string decimalUnsignedNumber -> @uint
+\end{galgasbox}
+
+Retourne la valeur du récepteur convertie en entier non signé 32 bits. La valeur du récepteur doit donc ne contenir que des chiffres décimaux. Si ce n'est pas le cas, une erreur d'exécution est déclenchée.
+
+La valeur du récepteur peut être testée en appelant le \refGetterPage{string}{isDecimalUnsignedNumber}.
+
+
+
+
+
+
+
+\subsectionGetter{decimalUnsigned64Number}{string}
+
+\begin{galgasbox}
+getter @string decimalUnsigned64Number -> @uint64
+\end{galgasbox}
+
+Retourne la valeur du récepteur convertie en entier non signé 64 bits. La valeur du récepteur doit donc ne contenir que des chiffres décimaux. Si ce n'est pas le cas, une erreur d'exécution est déclenchée.
+
+La valeur du récepteur peut être testée en appelant le \refGetterPage{string}{isDecimalUnsigned64Number}.
+
+
+
+
+
+
+
+\subsectionGetter{decodedStringFromRepresentation}{string}
+
+\begin{galgasbox}
+getter @string decodedStringFromRepresentation -> @string
+\end{galgasbox}
+
+Ce getter suppose que le récepteur est une chaîne de caractères résultat de l'appel du \refGetterPage{string}{assemblerRepresentation}, du \refGetterPage{string}{identifierRepresentation} ou du \refGetterPage{string}{nameRepresentation}, et retourne la chaîne d'origine.
+
+Par exemple :
+\begin{galgas}
+let s = ["chaîne accentuée" identifierRepresentation]
+log s # LOGGING s: <@string:"cha_EE_ne_20_accentu_E9_e">
+let y = [s decodedStringFromRepresentation]
+log y #LOGGING y: <@string:"chaîne accentuée">
+\end{galgas}
+
+Une erreur est déclenchée à l'exécution si le réception n'est pas une chaîne valide, et la valeur retournée n'est pas construite.
+
+
+
+
+
+
+
+\subsectionGetter{directories}{string}
+
+\begin{galgasbox}
+getter @string directories ?@bool inRecursiveSearch -> @stringlist
+\end{galgasbox}
+
+Retourne la liste des sous-répertoires du répertoire désigné par la valeur du récepteur. Si le paramètre \ggs!inRecursiveSearch! est vrai, une recherche récursive dans les sous répertoires est effectuée.
+
+
+
+
+
+
+
+
+
+\subsectionGetter{directoriesWithExtensions}{string}
+
+\begin{galgasbox}
+getter @string directoriesWithExtensions
+    ?@bool inRecursiveSearch
+    ?@stringlist inExtensionList -> @stringlist
+\end{galgasbox}
+
+Retourne la liste des sous-répertoires du répertoire désigné par la valeur du récepteur, en ne retenant que les répertoires dont l'extension appartient à liste \ggs!inExtensionList!. Si le paramètre \ggs!inRecursiveSearch! est vrai, une recherche récursive dans les sous répertoires est effectuée.
+
+
+
+
+
+
+
+
+\subsectionGetter{directoryExists}{string}
+
+\begin{galgasbox}
+getter @string directoryExists -> @bool
+\end{galgasbox}
+
+Retourne \ggs!true! si la valeur du récepteur désigne un répertoire existant, et \ggs!false! dans le cas contraire.
+
+
+
+
+
+
+
+
+\subsectionGetter{doesEnvironmentVariableExist}{string}
+
+\begin{galgasbox}
+getter @string doesEnvironmentVariableExist -> @bool
+\end{galgasbox}
+
+Retourne \ggs!true! si la valeur du récepteur nomme une variable d'environnement existante, et \ggs!false! dans le cas contraire.
+
+
+
+
+
+
+
+
+\subsectionGetter{doubleNumber}{string}
+
+\begin{galgasbox}
+getter @string doubleNumber -> @double
+\end{galgasbox}
+
+Retourne la valeur du récepteur convertie en entier non signé. La valeur du récepteur doit donc ne contenir que des chiffres décimaux. Si ce n'est pas le cas, une erreur d'exécution est déclenchée.
+
+La valeur du récepteur peut être testée en appelant le \refGetterPage{string}{isDoubleNumber}.
+
+%Un nombre flottant doit obéir à la syntaxe suivante :
+%
+%{
+%  \tikzset{
+%    nonterminal/.style={
+%      % The shape:
+%      rectangle,
+%      % The size:
+%      minimum size=6mm,
+%      % The border:
+%      very thick,
+%      draw=red!50!black!50,         % 50% red and 50% black,
+%                                    % and that mixed with 50% white
+%      % The filling:
+%      top color=white,              % a shading that is white at the top...
+%      bottom color=red!50!black!20, % and something else at the bottom
+%      % Font
+%      font=\itshape\scriptsize
+%    },
+%    terminal/.style={
+%      % The shape:
+%      rounded rectangle,
+%      minimum size=6mm,
+%      % The rest
+%      very thick,draw=black!50,
+%      top color=white,bottom color=black!20,
+%      font=\ttfamily\scriptsize
+%    },
+%    firstPoint/.style={circle,>=stealth',thick,draw=black!50},
+%    point/.style={coordinate,>=stealth',thick,draw=black!50},
+%    tip/.style={->,shorten >=0.007pt},
+%    lastPoint/.style={rectangle,>=stealth',thick,draw=black!50},
+%    every join/.style={rounded corners}
+%  }
+%  \begin{tikzpicture}
+%    \matrix[column sep=1.5mm, row sep=1mm] {
+%      & & & \node (p2-3) [terminal] {+}; &  \\
+%      & & & \node (p1-3) [terminal] {-}; & & & & & \node (p1-9) [terminal] {:>}; & \node (p1-10) [nonterminal] {syntax\_directed\_translation\_result}; & \\
+%      \node (P0start) [firstPoint] {}; & \node (p0-2) [point] {}; & \node (p0-3) [point] {}; & & \node (p0-5) [point] {}; & \node (p0-6) [terminal] {chiffre}; & \node (p0-7) [nonterminal] {actual\_parameter\_list}; & \node (p0-8) [point] {}; & \node (p0-9) [point] {}; & & \node (p0-11) [point] {}; & \node (p0-12) [lastPoint] {}; & \\
+%    };
+%    \draw (P0start) -- (p0-3) ;
+%    \draw[->] (p0-2) |- (p1-3) ;
+%    \draw[->] (p0-2) |- (p2-3) ;
+%    \draw (p0-3) -- (p0-5) ;
+%    \draw[->] (p1-3) -| (p0-5) ;
+%    \draw[->] (p2-3) -| (p0-5) ;
+%    \draw[->] (p0-5) -- (p0-6) ;
+%    \draw[->] (p0-6) -- (p0-7) ;
+%    \draw (p0-7) -- (p0-9) ;
+%    \draw[->] (p0-8) |- (p1-9) ;
+%    \draw[->] (p1-9) -- (p1-10) ;
+%    \draw (p0-9) -- (p0-11) ;
+%    \draw[->] (p1-10) -| (p0-11) ;
+%    \draw[->] (p0-11) -- (p0-12) ;
+%  \end{tikzpicture}
+%}
+
+
+
+
+
+\subsectionGetter{fileExists}{string}
+
+\begin{galgasbox}
+getter @string fileExists -> @bool
+\end{galgasbox}
+
+Retourne \ggs!true! si la valeur du récepteur désigne un fichier existant, et \ggs!false! dans le cas contraire.
+
+
+
+
+
+
+\subsectionGetter{fileNameRepresentation}{string}
+
+\begin{galgasbox}
+getter @string fileNameRepresentation -> @string
+\end{galgasbox}
+
+Retourne la valeur du récepteur sous la forme d'une chaîne de caractères qui sera toujours un nom de fichier valide :
+\begin{itemize}
+\item une lettre ASCII minuscule est inchangée ;
+\item un chiffre décimal est inchangé ;
+\item tout autre caractère est traduit en son point de code en hexadécimal, précédé et suivi par un caractère « - ».
+\end{itemize}
+
+Par exemple :
+\begin{galgas}
+let x = ["Z23" fileNameRepresentation] # "-5A-23"
+let y = [":?" fileNameRepresentation] # "-3A--3F-"
+\end{galgas}
+
+En particulier, les lettres majuscules sont remplacées ; c'est indispensable pour les systèmes de fichiers qui sont insensibles à la casse, cela permet d'obtenir des noms de fichiers différents à partir de noms ne différant que par la casse :
+
+\begin{galgas}
+let x = ["exemple" fileNameRepresentation] # "exemple"
+let y = ["Exemple" fileNameRepresentation] # "-45-xemple"
+\end{galgas}
+
+
+
+
+
+
+\subsectionGetter{firstCharacterOrNul}{string}
+
+\begin{galgasbox}
+getter @string firstCharacterOrNul -> @char
+\end{galgasbox}
+
+Si la longueur de la valeur du récepteur est non nulle, retourne son premier caractère, sinon le caractère \texttt{NUL}.
+
+
+
+
+
+
+
+\subsectionGetter{here}{string}
+
+\begin{galgasbox}
+getter @string here -> @lstring
+\end{galgasbox}
+
+Retourne un \ggs!@lstring! dont le champ \ggs!string! est la valeur du récepteur, et dont le champ \ggs!location! désigne la position courante de l'analyse. L'expression \ggs![s here]! est équivalente à \ggs*@lstring.new{!s !.here}*.
+
+
+
+
+
+
+
+
+
+
+
+
+\subsectionGetter{hiddenCommandWithArguments}{string}
+
+\begin{galgasbox}
+getter @string hiddenCommandWithArguments ?@stringlist inArguments -> @string
+\end{galgasbox}
+Exécute la commande \emph{shell} dont le nom est la valeur du récepteur, avec les arguments désignés par la valeur de \texttt{inArguments}. Quand la commande est terminée, la sortie de la commande est retournée.
+
+Contrairement au \refGetterPage{string}{popen}, des espaces sont acceptés dans le nom de la commande et dans les arguments.
+
+
+
+
+
+
+
+
+\subsectionGetter{hiddenFiles}{string}
+
+\begin{galgasbox}
+getter @string hiddenFiles ?@bool inRecursiveSearch -> @stringlist
+\end{galgasbox}
+
+Retourne la liste des fichiers cachés du répertoire désigné par la valeur du récepteur. Si le paramètre \ggs!inRecursiveSearch! est vrai, une recherche récursive dans les sous répertoires est effectuée.
+
+
+
+
+
+
+
+
+
+
+\subsectionGetter{HTMLRepresentation}{string}
+
+\begin{galgasbox}
+getter @string HTMLRepresentation -> @string
+\end{galgasbox}
+Retourne la valeur du récepteur encodée pour former une chaîne HTML valide. Les caractères «~\texttt{\&}~», « \texttt{"} », « \texttt{<} » et « \texttt{>} » sont modifiés selon le \refTableauPage{codageHTML}.
+
+
+\begin{table}[t]
+  \centering
+  \begin{tabular}{lllllll}
+  \textbf{Caractère} & \textbf{Codage en HTML} \\
+  \texttt{\&} & \texttt{\&amp;} \\
+  \texttt{"} & \texttt{\&quot;} \\
+  \texttt{<} & \texttt{\&lt;} \\
+  \texttt{>} & \texttt{\&gt;} \\
+  \end{tabular}
+  \caption{Codage des caractères, getter \texttt{HTMLRepresentation} du type \texttt{@string}}
+  \labelTableau{codageHTML}
+\end{table}
+
+
+
+
+
+
+\subsectionGetter{identifierRepresentation}{string}
+
+\begin{galgasbox}
+getter @string identifierRepresentation -> @string
+\end{galgasbox}
+
+Retourne la valeur du récepteur sous la forme d'une chaîne de caractères qui sera toujours un identificateur C ou C++ valide :
+\begin{itemize}
+\item une lettre ASCII (minuscule ou majuscule) est inchangée ;
+\item tout autre caractère est traduit en son point de code en hexadécimal, précédé et suivi par un caractère « \_ ».
+\end{itemize}
+
+Par exemple :
+\begin{galgas}
+let x = ["Z23" identifierRepresentation] # "Z_32__33_"
+let y = [":?" identifierRepresentation] # "_3A__3F_"
+\end{galgas}
+
+Voir aussi le \refGetterPage{string}{nameRepresentation} qui laisse inchangé un chiffre décimal, et le \refGetterPage{string}{assemblerRepresentation}.
+
+
+Pour reconstituer la chaîne d'origine, appeler le \refGetterPage{string}{decodedStringFromRepresentation}.
+
+
+
+
+
+
+\subsectionGetter{isDecimalSignedBigInt}{string}
+
+\begin{galgasbox}
+getter @string isDecimalSignedBigInt -> @bool
+\end{galgasbox}
+
+Ce \emph{getter} permet de savoir si le récepteur représente un entier signé, c'est-à-dire si le \refGetterPage{string}{decimalSignedBigInt} peut être appelé sans qu'une erreur d'exécution se déclenche.
+
+
+
+
+
+
+\subsectionGetter{isDecimalSignedNumber}{string}
+
+\begin{galgasbox}
+getter @string isDecimalSignedNumber -> @bool
+\end{galgasbox}
+
+Ce \emph{getter} permet de savoir si le récepteur représente un entier signé sur 32 bits, c'est-à-dire si le \refGetterPage{string}{decimalSignedNumber} peut être appelé sans qu'une erreur d'exécution se déclenche.
+
+
+
+
+
+
+\subsectionGetter{isDecimalSigned64Number}{string}
+
+\begin{galgasbox}
+getter @string isDecimalSigned64Number -> @bool
+\end{galgasbox}
+
+Ce \emph{getter} permet de savoir si le récepteur représente un entier signé sur 64 bits, c'est-à-dire si le \refGetterPage{string}{decimalSigned64Number} peut être appelé sans qu'une erreur d'exécution se déclenche.
+
+
+
+
+
+
+\subsectionGetter{isDecimalUnsignedNumber}{string}
+
+\begin{galgasbox}
+getter @string isDecimalUnsignedNumber -> @bool
+\end{galgasbox}
+
+Ce \emph{getter} permet de savoir si le récepteur représente un entier non signé sur 32 bits, c'est-à-dire si le \refGetterPage{string}{decimalUnsignedNumber} peut être appelé sans qu'une erreur d'exécution se déclenche.
+
+
+
+
+
+
+\subsectionGetter{isDecimalUnsigned64Number}{string}
+
+\begin{galgasbox}
+getter @string isDecimalUnsigned64Number -> @bool
+\end{galgasbox}
+
+Ce \emph{getter} permet de savoir si le récepteur représente un entier non signé sur 64 bits, c'est-à-dire si le \refGetterPage{string}{decimalUnsigned64Number} peut être appelé sans qu'une erreur d'exécution se déclenche.
+
+
+
+
+
+
+\subsectionGetter{isDoubleNumber}{string}
+
+\begin{galgasbox}
+getter @string isDoubleNumber -> @bool
+\end{galgasbox}
+
+Ce \emph{getter} permet de savoir si le récepteur représente un nombre flottant, c'est-à-dire si le \refGetterPage{string}{doubleNumber} peut être appelé sans qu'une erreur d'exécution se déclenche.
+
+
+
+
+
+
+
+\subsectionGetter{isSymbolicLink}{string}
+
+\begin{galgasbox}
+getter @string isSymbolicLink -> @bool
+\end{galgasbox}
+
+Retourne \ggs!true! si la valeur du récepteur désigne un lien symbolique existant, et \ggs!false! dans le cas contraire.
+
+
+
+
+
+
+
+
+\subsectionGetter{lastCharacter}{string}
+
+\begin{galgasbox}
+getter @string lastCharacter -> @char
+\end{galgasbox}
+
+Retourne le dernier caractère du récepteur. Si celui-ci est vide, une erreur d'exécution est déclenchée.
+
+
+
+
+
+
+
+
+\subsectionGetter{lastPathComponent}{string}
+
+\begin{galgasbox}
+getter @string lastPathComponent -> @string
+\end{galgasbox}
+
+Retourne le récepteur ne contient pas de caractère « \texttt{/} », il est retourné inchangé. Sinon, ce \emph{getter} retourne la sous-chaîne de caractères qui suit la dernière occurrence du caractère « \texttt{/} ».
+
+
+
+
+
+
+
+
+\subsectionGetter{leftSubString}{string}
+
+\begin{galgasbox}
+getter @string leftSubString ?@uint inLength -> @string
+\end{galgasbox}
+
+Retourne la sous-chaîne constituée des \ggs!inLength! derniers caractères du récepteur. Si celui-ci contient moins de \ggs!inLength! caractères, une erreur d'exécution est déclenchée.
+
+
+
+
+
+
+
+
+\subsectionGetter{length}{string}
+
+\begin{galgasbox}
+getter @string length -> @uint # Obsolete, utiliser count
+\end{galgasbox}
+
+Retourne le nombre de caractères UTF-32 du récepteur. Si le récepteur n'est pas une chaîne ASCII, ce getter ne donne pas le nombre d'octets de sa représentation en UTF-8~: pour cela utiliser le \refGetterPage{string}{utf8Length}.
+
+
+
+
+
+
+
+
+\subsectionGetter{lowercaseString}{string}
+
+\begin{galgasbox}
+getter @string lowercaseString -> @string
+\end{galgasbox}
+
+Retourne la valeur du récepteur, dans laquelle toutes les lettres majuscules sont transformées en minuscules.
+
+Par exemple :
+\begin{galgas}
+let x = ["AbcD" lowercaseString] # "abcd"
+let y = ["ÊÆ" lowercaseString] # "êæ"
+\end{galgas}
+
+
+
+
+
+
+
+\subsectionGetter{md5}{string}
+
+\begin{galgasbox}
+getter @string md5 -> @string
+\end{galgasbox}
+
+Retourne la somme de contrôle MD5 du récepteur sous la forme d'une chaîne de 32 caractères hexadécimaux.
+
+Par exemple :
+\begin{galgas}
+let x = ["Hello" md5] # "8B1A9953C4611296A827ABF8C47804D7"
+\end{galgas}
+
+
+
+
+
+
+
+\subsectionGetter{nameRepresentation}{string}
+
+\begin{galgasbox}
+getter @string nameRepresentation -> @string
+\end{galgasbox}
+
+Retourne la valeur du récepteur sous la forme d'une chaîne de caractères construite en traduisant chaque caractère :
+\begin{itemize}
+\item une lettre ASCII (minuscule ou majuscule) est inchangée ;
+\item un chiffre décimal est inchangé ;
+\item tout autre caractère est traduit en son point de code en hexadécimal, précédé et suivi par un caractère « \_ ».
+\end{itemize}
+
+La chaîne obtenue est un identificateur C ou C++ valide si le récepteur commence par une lettre ASCII ou un caractère de soulignement « \_ ».
+
+Par exemple :
+\begin{galgas}
+let x = ["Z23" nameRepresentation] # "Z23"
+let y = [":?" nameRepresentation] # "_3A__3F_"
+let y = ["_é" nameRepresentation] # "_5F__E8_"
+\end{galgas}
+
+Voir aussi le \refGetterPage{string}{identifierRepresentation} qui retourne toujours un identificateur C ou C++ valide, et le \refGetterPage{string}{assemblerRepresentation}.
+
+Pour reconstituer la chaîne d'origine, appeler le \refGetterPage{string}{decodedStringFromRepresentation}.
+
+
+
+
+
+
+
+\subsectionGetter{nativePathWithUnixPath}{string}
+
+\begin{galgasbox}
+getter @string nativePathWithUnixPath -> @string
+\end{galgasbox}
+
+Sous Unix, ce \emph{getter} retourne la valeur du récepteur. Sous Windows, il retourne la valeur du récepteur encodé \emph{à la Windows}.
+
+Par exemple, sous Windows :
+\begin{galgas}
+let x = ["/C/Program Files/f" nativePathWithUnixPath] # "C:\Program Files\f"
+\end{galgas}
+
+
+
+
+
+
+
+\subsectionGetter{nowhere}{string}
+
+\begin{galgasbox}
+getter @string nowhere -> @lstring
+\end{galgasbox}
+
+Retourne un \ggs!@lstring! dont le champ \ggs!string! est la valeur du réception, et dont le champ \ggs!location! est vide.
+
+
+
+
+
+
+
+\subsectionGetter{pathExtension}{string}
+
+\begin{galgasbox}
+getter @string pathExtension -> @string
+\end{galgasbox}
+
+Si le récepteur ne contient pas de caractère « \texttt{.} », la chaîne vide est retournée. Sinon, ce \emph{getter} retourne la sous-chaîne de caractères qui suit la dernière occurrence du caractère « \texttt{.} ».
+
+
+
+
+
+
+
+
+\subsectionGetter{popen}{string}
+
+\begin{galgasbox}
+getter @string popen -> @string
+\end{galgasbox}
+
+Ce \emph{getter} exécute la commande Shell exprimée par la valeur du récepteur. La sortie de cette commande est accumulée et retournée par ce \emph{getter} lorsque la commande est terminée.
+
+
+
+
+
+
+
+
+\subsectionGetter{range}{string}
+
+\begin{galgasbox}
+getter @string range -> @range
+\end{galgasbox}
+
+Retourne un objet de type \refTypePredefini{range} dont le champ \ggs!start! est $0$ et le champ \ggs!length! est égal au nombre de caractères du récepteur.
+
+
+
+
+
+
+
+
+\subsectionGetter{regularFiles}{string}
+
+\begin{galgasbox}
+getter @string regularFiles ?@bool inRecursiveSearch -> @stringlist
+\end{galgasbox}
+
+Retourne la liste des fichiers non cachés du répertoire désigné par la valeur du récepteur. Si le paramètre \ggs!inRecursiveSearch! est vrai, une recherche récursive dans les sous répertoires est effectuée.
+
+
+
+
+
+
+
+
+
+\subsectionGetter{regularFilesWithExtensions}{string}
+
+\begin{galgasbox}
+getter @string regularFilesWithExtensions
+    ?@bool inRecursiveSearch
+    ?@stringlist inExtensionList -> @stringlist
+\end{galgasbox}
+
+Retourne la liste des fichiers non cachés du répertoire désigné par la valeur du récepteur, en ne retenant que les fichiers dont l'extension est nommée dans \ggs!inExtensionList!. Si le paramètre \ggs!inRecursiveSearch! est vrai, une recherche récursive dans les sous répertoires est effectuée.
+
+
+
+
+
+
+
+
+
+\subsectionGetter{relativePathFromPath}{string}
+
+\begin{galgasbox}
+getter @string relativePathFromPath ?@string inPath -> @string
+\end{galgasbox}
+
+Retourne le chemin relatif du récepteur à partir du chemin \ggs!inPath!.
+
+
+
+
+
+
+
+
+
+\subsectionGetter{reversedString}{string}
+
+\begin{galgasbox}
+getter @string reversedString -> @string
+\end{galgasbox}
+
+Retourne la valeur renversée du récepteur.
+
+\begin{galgas}
+let x = ["abcde" reversedString] # "edcba"
+\end{galgas}
+
+
+
+
+
+
+
+
+\subsectionGetter{rightSubString}{string}
+
+\begin{galgasbox}
+getter @string rightSubString ?@uint inLength -> @string
+\end{galgasbox}
+
+Retourne la sous-chaîne constituée des \ggs!inLength! premiers caractères du récepteur. Si celui-ci contient moins de \ggs!inLength! caractères, une erreur d'exécution est déclenchée.
+
+
+
+
+
+
+
+
+\subsectionGetter{stringByCapitalizingFirstCharacter}{string}
+
+\begin{galgasbox}
+getter @string stringByCapitalizingFirstCharacter -> @string
+\end{galgasbox}
+
+Retourne la valeur du récepteur dans laquelle le premier caractère, si il est une lettre, a été mis en majuscule.
+
+
+
+
+
+
+
+
+\subsectionGetter{stringByDeletingLastPathComponent}{string}
+
+\begin{galgasbox}
+getter @string stringByDeletingLastPathComponent -> @string
+\end{galgasbox}
+
+Si le récepteur ne contient pas de caractère « \texttt{/} », la chaîne vide est retournée. Sinon, ce \emph{getter} retourne la sous-chaîne de caractères qui précède la dernière occurrence du caractère « \texttt{/} ».
+
+
+
+
+
+
+
+
+
+\subsectionGetter{stringByDeletingPathExtension}{string}
+
+\begin{galgasbox}
+getter @string stringByDeletingPathExtension -> @string
+\end{galgasbox}
+
+Si le récepteur ne contient pas de caractère « \texttt{.} », la valeur du récepteur est retournée. Sinon, ce \emph{getter} retourne la sous-chaîne de caractères qui précède la dernière occurrence du caractère «~\texttt{.}~».
+
+
+
+
+
+
+
+
+\subsectionGetter{stringByLeftAndRightPadding}{string}
+
+\begin{galgasbox}
+getter @string stringByLeftAndRightPadding
+   ?@uint inPaddedStringLength
+   ?@char inPaddingChar -> @string
+\end{galgasbox}
+
+Si la longueur de la valeur du récepteur est supérieure ou égal à \ggs!inPaddedStringLength!, la valeur du récepteur est retournée. Sinon, ce \emph{getter} retourne la valeur du récepteur précédée et suivie d'un nombre égal de caractères \ggs!inPaddingChar!, de façon à atteindre la longueur \ggs!inPaddedStringLength!. Si le nombre de caractères à ajouter est impair, le nombre de caractères ajoutés est supérieur d'une unité au nombre de caractères insérés au début.
+
+
+
+
+
+
+
+
+\subsectionGetter{stringByLeftPadding}{string}
+
+\begin{galgasbox}
+getter @string stringByLeftPadding
+   ?@uint inPaddedStringLength
+   ?@char inPaddingChar -> @string
+\end{galgasbox}
+
+Si la longueur de la valeur du récepteur est supérieure ou égal à \ggs!inPaddedStringLength!, la valeur du récepteur est retournée. Sinon, ce \emph{getter} retourne la valeur du récepteur suivie d'un nombre de caractères \ggs!inPaddingChar!, de façon à atteindre la longueur \ggs!inPaddedStringLength!.
+
+
+
+
+
+
+
+\subsectionGetter{stringByRemovingCharacterAtIndex}{string}
+
+\begin{galgasbox}
+getter @string stringByRemovingCharacterAtIndex ?@uint inIndex -> @string
+\end{galgasbox}
+
+Retourne la valeur du récepteur, amputée du caractère situé à l'indice \ggs!inIndex!. Une erreur d'exécution est déclenchée si \ggs!inIndex! est supérieur ou égal au nombre de caractères du récepteur.
+
+
+
+
+
+
+
+\subsectionGetter{stringByReplacingStringByString}{string}
+
+\begin{galgasbox}
+getter @string stringByReplacingStringByString
+     ?@string inSearchedString
+     ?@string inReplacementString  -> @string
+\end{galgasbox}
+
+Retourne la valeur du récepteur, dans laquelle chaque occurrence de \ggs!inSearchedString! est remplacée par \ggs!inReplacementString!.
+
+
+
+
+
+
+
+\subsectionGetter{stringByRightPadding}{string}
+
+\begin{galgasbox}
+getter @string stringByRightPadding
+   ?@uint inPaddedStringLength
+   ?@char inPaddingChar -> @string
+\end{galgasbox}
+
+Si la longueur de la valeur du récepteur est supérieure ou égal à \ggs!inPaddedStringLength!, la valeur du récepteur est retournée. Sinon, ce \emph{getter} retourne la valeur du récepteur précédée d'un nombre de caractères \ggs!inPaddingChar!, de façon à atteindre la longueur \ggs!inPaddedStringLength!.
+
+
+
+
+\subsectionGetter{stringByStandardizingPath}{string}
+
+\begin{galgasbox}
+getter @string stringByStandardizingPath -> @string
+\end{galgasbox}
+
+Retourne la valeur du récepteur, dans laquelle les séquences « \texttt{./} » et « \texttt{../} » sont supprimées.
+
+
+
+
+
+
+
+\subsectionGetter{stringByTrimmingWhiteSpaces}{string}
+
+\begin{galgasbox}
+getter @string stringByTrimmingWhiteSpaces -> @string
+\end{galgasbox}
+
+Retourne la valeur du récepteur dans laquelles les espaces en tête et en fin ont été supprimés.
+
+
+
+
+\subsectionGetter{subString}{string}
+
+\begin{galgasbox}
+getter @string subString ?@uint inStart ?@uint inLength -> @string
+\end{galgasbox}
+
+Retourne la sous-chaîne de \ggs!inLength! caractères extraite de la valeur du récepteur à partir de l'indice \ggs!inStart!.
+
+
+
+
+
+
+\subsectionGetter{subStringFromIndex}{string}
+
+\begin{galgasbox}
+getter @string subStringFromIndex ?@uint inIndex -> @string
+\end{galgasbox}
+
+Retourne la sous-chaîne de caractères extraite de la valeur du récepteur à partir de l'indice \ggs!inIndex!. Si \ggs!inIndex! est supérieur ou égal au nombre de caractères du récepteur, la chaîne vide est retournée.
+
+
+
+
+
+
+\subsectionGetter{system}{string}
+
+\begin{galgasbox}
+getter @string system -> @sint
+\end{galgasbox}
+
+
+Exécute la commande \emph{shell} avec la valeur du récepteur en argument. La valeur retournée par cet appel est la valeur retournée par ce \emph{getter}. On peut exécuter plusieurs commandes séquentiellement en les séparant par un point-virgule. La sortie de la commande est affichée sur la console.
+
+Contrairement au \refGetterPage{string}{commandWithArguments}, les espaces dans les arguments doivent être explicitement échappés.
+
+
+
+
+\subsectionGetter{unixPathWithNativePath}{string}
+
+\begin{galgasbox}
+getter @string unixPathWithNativePath -> @string
+\end{galgasbox}
+
+La valeur du récepteur est un chemin valide pour la plateforme courante.
+
+Sous Windows, ce \emph{getter} retourne la valeur du récepteur sous la forme d'un chemin Unix. Sous Unix, la valeur du récepteur est renvoyée.
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsectionGetter{uppercaseString}{string}
+
+\begin{galgasbox}
+getter @string uppercaseString -> @string
+\end{galgasbox}
+
+Retourne la valeur du récepteur, dans laquelle toutes les lettres minuscules sont transformées en majuscules.
+
+Par exemple :
+\begin{galgas}
+let x = ["AbcD" uppercaseString] # "ABCD"
+let y = ["êæ" uppercaseString] # "ÊÆ"
+\end{galgas}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsectionGetter{utf32Representation}{string}
+
+\begin{galgasbox}
+getter @string utf32Representation -> @string
+\end{galgasbox}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsectionGetter{utf8Length}{string}
+
+\begin{galgasbox}
+getter @string utf8Length -> @uint
+\end{galgasbox}
+
+Retourne le nombre d'octets de la représentation UTF-8 de la valeur du récepteur. Si le récepteur n'est pas une chaîne ASCII, ce nombre diffère de la valeur retournée par le \refGetterPage{string}{length}~:
+
+\begin{galgas}
+ var s1 = "Toto"
+ var nUTF32 = [s length] # 4
+ var nUTF8  = [s utf8Length] # 4
+ s1 = "Tâche"
+ nUTF32 = [s length] # 5
+ nUTF8  = [s utf8Length] # 6
+\end{galgas}
+
+
+
+
+
+
+
+
+\subsectionGetter{utf8Representation}{string}
+
+\begin{galgasbox}
+getter @string utf8Representation -> @string
+\end{galgasbox}
+
+Retourne la valeur du récepteur sous la forme d'une chaîne UTF-8, c'est-à-dire qu'un caractère « \texttt{"} » a été inséré au début et à la fin.
+
+Les caractères non-ASCII sont échappés.
+
+Le caractère « \texttt{"} » est échappé en « \texttt{\textbackslash"} », le caractère « \texttt{\textbackslash} » est échappé en « \texttt{\textbackslash\textbackslash} ».
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsectionGetter{utf8RepresentationEscapingQuestionMark}{string}
+
+\begin{galgasbox}
+getter @string utf8RepresentationEscapingQuestionMark -> @string
+\end{galgasbox}
+
+Retourne la valeur du récepteur sous la forme d'une chaîne UTF-8, c'est-à-dire qu'un caractère « \texttt{"} » a été inséré au début et à la fin.
+
+Les caractères non-ASCII sont échappés. De plus, le caractère « \texttt{"} » est échappé en « \texttt{\textbackslash"} », le caractère « \texttt{\textbackslash} » est échappé en « \texttt{\textbackslash\textbackslash} », le caractère « \texttt{?} » est échappé en « \texttt{\textbackslash?} ».
+
+
+
+
+
+
+
+
+
+\subsectionGetter{utf8RepresentationEnclosedWithin}{string}
+
+\begin{galgasbox}
+getter @string utf8RepresentationEnclosedWithin ?@char inCharacter -> @string
+\end{galgasbox}
+
+Retourne la valeur du récepteur sous la forme d'une chaîne UTF-8, entourée par le caractère indiqué en argument.
+
+Le caractère indiqué en argument est échappé en le préfixant par« \texttt{\textbackslash} ». Le caractère « \texttt{\textbackslash} » est échappé en « \texttt{\textbackslash\textbackslash} ».
+
+
+
+
+
+
+
+
+
+\subsectionGetter{utf8RepresentationWithoutDelimiters}{string}
+
+\begin{galgasbox}
+getter @string utf8RepresentationWithoutDelimiters -> @string
+\end{galgasbox}
+
+Retourne la valeur du récepteur sous la forme d'une chaîne UTF-8 sans le délimiteur initial et ni le délimiteur terminal, c'est-à-dire qu'aucun caractère « \texttt{"} » n'est inséré au début et à la fin.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Méthodes}
+
+
+
+
+
+\subsectionMethod{makeDirectory}{string}
+
+\begin{galgasbox}
+method @string makeDirectory
+\end{galgasbox}
+
+Crée le répertoire désigné par la valeur du récepteur. Les répertoires intermédiaires sont créés si besoin. Si le répertoire existe déjà, aucune erreur n'est déclenchée.
+
+
+
+
+
+
+\subsectionMethod{makeDirectoryAndWriteToExecutableFile}{string}
+
+\begin{galgasbox}
+method @string makeDirectoryAndWriteToExecutableFile ?@string inFilePath
+\end{galgasbox}
+
+Le récepteur contient la chaîne de caractères qui est écrit dans le fichier \ggs!inFilePath!. Les répertoires intermédiaires sont créés si besoin. Le fichier \ggs!inFilePath! est rendu exécutable.
+
+
+
+
+
+
+
+\subsectionMethod{makeDirectoryAndWriteToFile}{string}
+
+\begin{galgasbox}
+method @string makeDirectoryAndWriteToFile ?@string inFilePath
+\end{galgasbox}
+
+Le récepteur contient la chaîne de caractères qui est écrit dans le fichier \ggs!inFilePath!. Les répertoires intermédiaires sont créés si besoin.
+
+
+
+
+
+
+
+
+\subsectionMethod{makeSymbolicLinkWithPath}{string}
+
+\begin{galgasbox}
+method @string makeSymbolicLinkWithPath ?@string inFilePath
+\end{galgasbox}
+
+
+
+
+
+
+
+
+\subsectionMethod{writeToExecutableFile}{string}
+
+\begin{galgasbox}
+method @string writeToExecutableFile ?@string inFilePath
+\end{galgasbox}
+
+Le récepteur contient la chaîne de caractères qui est écrit dans le fichier \ggs!inFilePath!. Aucun répertoire intermédiaire n'est créé, c'est une erreur d'exécution si ils n'existent pas. Si il a été écrit avec succès, le fichier \ggs!inFilePath! est rendu exécutable.
+
+
+
+
+
+
+
+
+
+\subsectionMethod{writeToExecutableFileWhenDifferentContents}{string}
+
+\begin{galgasbox}
+method @string writeToExecutableFileWhenDifferentContents
+    ?@string inFilePath
+    !@bool outFileModified
+\end{galgasbox}
+
+Le récepteur contient la chaîne de caractères qui est écrit dans le fichier \ggs!inFilePath!. Aucun répertoire intermédiaire n'est créé, c'est une erreur d'exécution si ils n'existent pas. Si il a été écrit avec succès, le fichier \ggs!inFilePath! est rendu exécutable. Le booléen \ggs!outFileModified! permet de savoir si le contenu original du fichier a été modifié.
+
+
+
+
+
+
+
+
+
+\subsectionMethod{writeToFile}{string}
+
+\begin{galgasbox}
+method @string writeToFile ?@string inFilePath
+\end{galgasbox}
+
+Le récepteur contient la chaîne de caractères qui est écrit dans le fichier \ggs!inFilePath!. Aucun répertoire intermédiaire n'est créé, c'est une erreur d'exécution si ils n'existent pas.
+
+
+
+
+
+
+
+
+
+\subsectionMethod{writeToFileWhenDifferentContents}{string}
+
+\begin{galgasbox}
+method @string @string writeToFileWhenDifferentContents
+    ?@string inFilePath
+    !@bool outFileModified
+\end{galgasbox}
+
+Le récepteur contient la chaîne de caractères qui est écrit dans le fichier \ggs!inFilePath!. Aucun répertoire intermédiaire n'est créé, c'est une erreur d'exécution si ils n'existent pas.Le booléen \ggs!outFileModified! permet de savoir si le contenu original du fichier a été modifié.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Setters}
+
+\subsectionSetter{appendSpacesUntilColumn}{string}
+
+\begin{galgasbox}
+setter @string appendSpacesUntilColumn ?@uint inColumnIndex
+\end{galgasbox}
+
+Ce \emph{setter} ajoute des espaces en fin de ligne jusqu'à atteindre la colonne \ggs!inColumnIndex!.
+
+
+
+
+\subsectionSetter{decIndentation}{string}
+
+\begin{galgasbox}
+setter @string decIndentation ?@uint inAmount
+\end{galgasbox}
+
+Lorsqu'un retour à la ligne est inséré, des espaces sont automatiquement insérés à la suite. Initialement, ce nombre est nul. Le \refSetterPage{string}{incIndentation} permet de l'incrémenter, ce \emph{setter} de le décrémenter. Ces deux \emph{setters} permettent d'obtenir facilement des sorties où le texte est indenté.
+
+
+
+
+
+\subsectionSetter{incIndentation}{string}
+
+\begin{galgasbox}
+setter @string incIndentation ?@uint inAmount
+\end{galgasbox}
+
+Lorsqu'un retour à la ligne est inséré, des espaces sont automatiquement insérés à la suite. Initialement, ce nombre est nul. Ce \emph{setter} permet de l'incrémenter, le \refSetterPage{string}{decIndentation} de le décrémenter. Ces deux \emph{setters} permettent d'obtenir facilement des sorties où le texte est indenté.
+
+
+
+
+
+
+
+
+\subsectionSetter{insertCharacterAtIndex}{string}
+
+\begin{galgasbox}
+setter @string insertCharacterAtIndex
+   ?@char inChar
+   ?@uint inIndex
+\end{galgasbox}
+
+
+Ce \emph{setter} insère le caractère caractère \ggs!inChar! à l'indice \ggs!inIndex!. Si \ggs!inIndex! doit être inférieur ou égal au nombre de caractères du récepteur. Si \ggs!inIndex! est égal au nombre de caractères, \ggs!inChar! est inséré après le dernier caractère. 
+
+
+
+
+
+
+
+
+\subsectionSetter{setCapacity}{string}
+
+\begin{galgasbox}
+setter @string setCapacity ?@uint inCapacity
+\end{galgasbox}
+
+
+Ce \emph{setter} ajuste la zone mémoire allouée au buffer de la chaîne de caractères. Si \ggs!inCapacity! est strictement inférieur au nombre de caractères, ce \emph{setter} n'a pas d'effet.
+
+
+
+
+
+
+\subsectionSetter{removeCharacterAtIndex}{string}
+
+\begin{galgasbox}
+setter @string removeCharacterAtIndex
+   !@char outChar
+   ?@uint inIndex
+\end{galgasbox}
+
+
+Ce \emph{setter} retire de la chaîne le caractère à l'indice \ggs!inIndex!. Le caractère retiré est renvoyé dans \ggs!outChar!. \ggs!inIndex! doit être strictement inférieur au nombre de caractères~; sinon, une erreur d'exécution est déclenchée, et une valeur poison est retournée dans \ggs!outChar!. 
+
+
+
+
+
+
+\subsectionSetter{setCharacterAtIndex}{string}
+
+\begin{galgasbox}
+setter @string setCharacterAtIndex
+   ?@char inChar
+   ?@uint inIndex
+\end{galgasbox}
+
+
+Ce \emph{setter} remplace le caractère d'indice \ggs!inIndex! par le caractère \ggs!inChar!. Si \ggs!inIndex! est supérieur ou égal au nombre de caractères, une erreur d'exécution est déclenchée. 
+
+
+
+
+\section{Procédures de type}
+
+
+\subsectionStaticProc{deleteFile}{string}
+
+
+\begin{galgasbox}
+proc @string deleteFile ?@string inFilePath
+\end{galgasbox}
+
+Supprime le fichier \ggs!inFilePath!. Une erreur d'exécution est déclenchée si le fichier n'existe pas.
+
+
+
+
+\subsectionStaticProc{deleteFileIfExists}{string}
+
+
+\begin{galgasbox}
+proc @string deleteFileIfExists ?@string inFilePath
+\end{galgasbox}
+
+Supprime le fichier \ggs!inFilePath!. Aucune erreur d'exécution n'est déclenchée si le fichier n'existe pas.
+
+
+
+
+
+
+\subsectionStaticProc{generateFile}{string}
+
+
+\begin{galgasbox}
+proc @string generateFile
+   ?@string inStartPath
+   ?@string inFileName
+   ?@string inContents
+\end{galgasbox}
+
+Cette procédure commence par rechercher le fichier \ggs!inFileName! dans le répertoire \ggs!inStartPath!, et récursivement dans ses sous-répertoires.
+
+Si le fichier existe, son contenu est remplacé par \ggs!inContents!.
+
+Si il n'existe pas, il est créé dans le répertoire \ggs!inStartPath! avec le nom \ggs!inFileName!, et le contenu \ggs!inContents!.
+
+
+
+
+
+
+
+
+\subsectionStaticProc{generateFileWithPattern}{string}
+
+
+\begin{galgasbox}
+proc @string generateFileWithPattern
+   ?startPath:@string inStartPath
+   ?fileName:@string inFileName
+   ?lineComment:@string inLineCommentPrefix
+   ?header:@string inHeader
+   ?defaultUserZone1:@string inDefaultUserZone1
+   ?generatedZone2:@string inGeneratedZone2
+   ?defaultUserZone2:@string inDefaultUserZone2
+   ?generatedZone3:@string inGeneratedZone3
+   ?makeExecutable:@bool inMakeExecutable
+\end{galgasbox}
+
+
+
+
+
+
+\subsectionStaticProc{removeDirectoryRecursively}{string}
+
+
+\begin{galgasbox}
+proc @string removeDirectoryRecursively ?@string inDirectoryPath
+\end{galgasbox}
+
+Supprime le répertoire \ggs!inDirectoryPath!, après avoir supprimé tous ses fichiers et récursivement tous ses sous-répertoires.
+
+
+
+
+
+
+
+\subsectionStaticProc{removeEmptyDirectory}{string}
+
+
+\begin{galgasbox}
+proc @string removeEmptyDirectory ?@string inDirectoryPath
+\end{galgasbox}
+
+Supprime le répertoire \ggs!inDirectoryPath!. Une erreur d'exécution est déclenchée si le répertoire n'est pas vide.
+
+

@@ -33,10 +33,9 @@ let NOTES : [String] = [
 let BUGFIXES : [String] = [
 ]
 let CHANGES : [String] = [
-  "%makefile-unix : reconnaissance de cygwin par '(os.name == \"nt\") or sys.platform.startswith (\"cygwin\")'"
+  "Remplacement de GMP par la librairie BigSignedBigUnsigned"
 ]
 let NEWS : [String] = [
-  "Ajout de %makefile-macosx pour compiler l'outil ligne de commande sur MacOS pour X86_64, arm64 et Universal"
 ]
 
 //--------------------------------------------------------------------------------------------------
@@ -179,9 +178,6 @@ fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR_TEMPORARY)
 runCommand ("/bin/rm", ["-f", "archive.zip"])
 runCommand ("/bin/rm", ["-fr", "galgas-dev"])
 runCommand ("/usr/bin/git", ["clone", "--depth=1", "https://github.com/pierremolinaro/galgas-dev.git"])
-//runCommand ("/usr/bin/curl", ["clone", "--depth=1", "https://github.com/pierremolinaro/galgas-dev/archive/master.zip", "-o", "archive.zip"])
-//runCommand ("/usr/bin/unzip", ["archive.zip"])
-//runCommand ("/bin/rm", ["archive.zip"])
 fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR_TEMPORARY + "/galgas-dev")
 //-------------------- Obtenir l'année
 let ANNÉE = Calendar.current.component (.year, from: Date ())
@@ -228,7 +224,7 @@ print ("ANNÉE : \(ANNÉE)")
 //-------------------- Vérifier la création de projet
   runCommand (DISTRIBUTION_DIR + "/galgas-dev/+verifier-create-galgas.command", [])
 //-------------------- Construire la documentation Latex
-  let latexDir = DISTRIBUTION_DIR + "/galgas-dev/galgas-documentation-latex-sources"
+  let latexDir = DISTRIBUTION_DIR + "/galgas-dev/galgas-3-documentation-latex-sources"
   let directoryEnumerator = fm.enumerator (atPath: latexDir)
   while let filename = directoryEnumerator?.nextObject () as? String {
     if filename.hasSuffix (".tex") {
