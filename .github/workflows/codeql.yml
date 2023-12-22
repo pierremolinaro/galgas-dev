@@ -92,7 +92,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - run: ./makefile-unix/build+debug.py ; ./makefile-unix/galgas-debug --check-big-int
+    - run: ./makefile-unix/build+debug.py && ./makefile-unix/galgas-debug --check-big-int
 
   RunDemoMac:
     name: Check big integer on Mac OS
@@ -103,26 +103,19 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - run: ./makefile-unix/build+debug.py ; ./makefile-unix/galgas-debug --check-big-int
+    - run: ./makefile-unix/build+debug.py && ./makefile-unix/galgas-debug --check-big-int
 
   RunDemoWindows:
     name: Check big integer on Windows
-#    runs-on: ${{ 'windows-latest' }}
-#    timeout-minutes: ${{ 360 }}
-#    permissions:
-#      actions: read
-#      contents: read
-#      security-events: write
+    runs-on: ${{ 'windows-latest' }}
+    timeout-minutes: ${{ 360 }}
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-#    - run: python3 ./makefile-unix/build+debug.py ; ls ./makefile-unix
-    - name: Cross compile
-        runs-on: ${{ 'macos-latest' }}
-        run: ./makefile-win32-on-macosx/build+debug.py
-
-    - name: Run
-        runs-on: ${{ 'windows-latest' }}
-        run: ./makefile-win32-on-macosx/galgas-debug.exe --check-big-int
+    - run: ./makefile-unix/build.py && ls ./makefile-unix && ./makefile-unix/galgas --check-big-int
