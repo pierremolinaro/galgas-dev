@@ -238,37 +238,23 @@ override method @selectInstructionForGeneration generateInstruction
                           ?let @bool inGenerateSyntaxDirectedTranslationString
                           ?!@string ioGeneratedCode {
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
-#  if [self.mListOfSemanticInstructionListForGeneration count] == 1 then
-#    ioGeneratedCode += "if (select_" + [self.mSyntaxComponentName identifierRepresentation] + "_" 
-#    ioGeneratedCode += [self.mChoiceIndex string] + " (" + compilerCppName () + ") == " + [IDX + 1 string] + ") {\n"
-#    generateInstructionList (
-#      !?ioInclusionSet
-#      !mInstructionList
-#      !?ioTemporaryVariableIndex
-#      !?ioUnusedVariableCppNameSet
-#      !inGenerateSyntaxDirectedTranslationString
-#      !?ioGeneratedCode
-#    )
-#    ioGeneratedCode += "}\n" 
-#  else
-    ioGeneratedCode += "switch (select_" + [self.mSyntaxComponentName identifierRepresentation] + "_" 
-    ioGeneratedCode += [self.mChoiceIndex string] + " (" + compilerCppName () + ")) {\n"
-    for (mInstructionList *) in self.mListOfSemanticInstructionListForGeneration do(IDX)
-      ioGeneratedCode += "case " + [IDX + 1 string] + ": {\n"
-      generateInstructionList (
-        !?ioInclusionSet
-        !mInstructionList
-        !?ioTemporaryVariableIndex
-        !?ioUnusedVariableCppNameSet
-        !inGenerateSyntaxDirectedTranslationString
-        !?ioGeneratedCode
-      )
-      ioGeneratedCode += "} break ;\n"
-    end
-    ioGeneratedCode += "default:\n"
-    ioGeneratedCode += "  break ;\n"
-    ioGeneratedCode += "}\n"
-#  end
+  ioGeneratedCode += "switch (select_" + [self.mSyntaxComponentName identifierRepresentation] + "_" 
+  ioGeneratedCode += [self.mChoiceIndex string] + " (" + compilerCppName () + ")) {\n"
+  for (mInstructionList *) in self.mListOfSemanticInstructionListForGeneration do(IDX)
+    ioGeneratedCode += "case " + [IDX + 1 string] + ": {\n"
+    generateInstructionList (
+      !?ioInclusionSet
+      !mInstructionList
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      !inGenerateSyntaxDirectedTranslationString
+      !?ioGeneratedCode
+    )
+    ioGeneratedCode += "} break ;\n"
+  end
+  ioGeneratedCode += "default:\n"
+  ioGeneratedCode += "  break ;\n"
+  ioGeneratedCode += "}\n"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -283,7 +283,6 @@ void C_Lexique_%!LEXIQUE_IDENTIFIER%::enterToken (cTokenFor_%!LEXIQUE_IDENTIFIER
   cTokenFor_%!LEXIQUE_IDENTIFIER% * ptr = nullptr ;
   macroMyNew (ptr, cTokenFor_%!LEXIQUE_IDENTIFIER% ()) ;
   ptr->mTokenCode = ioToken.mTokenCode ;
-  // ptr->mIsOptional = ioToken.mIsOptional ;
   ptr->mStartLocation = mTokenStartLocation ;
   ptr->mEndLocation = mTokenEndLocation ;
   ptr->mTemplateStringBeforeToken = ioToken.mTemplateStringBeforeToken ;

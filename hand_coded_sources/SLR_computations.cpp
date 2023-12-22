@@ -330,8 +330,8 @@ class cLR0_items_sets_AVL_tree {
 
 cLR0_items_sets_AVL_tree::
 cLR0_items_sets_AVL_tree (const int32_t inInfo) :
-mPtrToInf (NULL),
-mPtrToSup (NULL),
+mPtrToInf (nullptr),
+mPtrToSup (nullptr),
 mInfo (inInfo),
 mBalance (0) {
 } ;
@@ -406,7 +406,7 @@ recursiveSearchOrInsert (cLR0_items_sets_AVL_tree * & ioRootPointer,
                          TC_UniqueArray <c_LR0_items_set> & io_LR0_items_sets_array,
                          bool & outExtension) {
   int32_t result ;
-  if (ioRootPointer == NULL) {
+  if (ioRootPointer == nullptr) {
     result = io_LR0_items_sets_array.count () ;
     macroMyNew (ioRootPointer, cLR0_items_sets_AVL_tree (result)) ;
     io_LR0_items_sets_array.appendObjectUsingSwap (io_LR0_items_set) ;
@@ -530,7 +530,7 @@ class c_LR0_items_sets_collection {
 
 c_LR0_items_sets_collection::c_LR0_items_sets_collection (void) :
 m_LR0_items_sets_array (),
-mRoot (NULL) {
+mRoot (nullptr) {
   m_LR0_items_sets_array.setCapacityUsingSwap (500) ;
 }
 
@@ -1093,7 +1093,7 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
                            "             const String & inSourceFilePath) {\n"
                            "  C_Lexique_") ;
       ioCppFileContents.addString (inLexiqueName.identifierRepresentation ()) ;
-      ioCppFileContents.addString (" * scanner = NULL ;\n"
+      ioCppFileContents.addString (" * scanner = nullptr ;\n"
                            "  macroMyNew (scanner, C_Lexique_") ;
       ioCppFileContents.addString (inLexiqueName.identifierRepresentation ()) ;
       ioCppFileContents.addString (" (inCompiler, inSourceFilePath COMMA_HERE)) ;\n"
@@ -1108,7 +1108,7 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
                            "             const String & inSourceFilePath) {\n"
                            "  C_Lexique_") ;
       ioCppFileContents.addString (inLexiqueName.identifierRepresentation ()) ;
-      ioCppFileContents.addString (" * scanner = NULL ;\n"
+      ioCppFileContents.addString (" * scanner = nullptr ;\n"
                            "  macroMyNew (scanner, C_Lexique_") ;
       ioCppFileContents.addString (inLexiqueName.identifierRepresentation ()) ;
       ioCppFileContents.addString (" (inCompiler, inSourceFilePath COMMA_HERE)) ;\n"
@@ -1182,7 +1182,7 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
                              "    if (C_FileManager::fileExistsAtPath (filePath)) {\n"
                              "      C_Lexique_") ;
       ioCppFileContents.addString (inLexiqueName.identifierRepresentation ()) ;
-      ioCppFileContents.addString (" * scanner = NULL ;\n"
+      ioCppFileContents.addString (" * scanner = nullptr ;\n"
                              "      macroMyNew (scanner, C_Lexique_") ;
       ioCppFileContents.addString (inLexiqueName.identifierRepresentation ()) ;
       ioCppFileContents.addString (" (inCompiler, filePath COMMA_HERE)) ;\n"
@@ -1249,15 +1249,15 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
         ioCppFileContents.addString ("::_performSourceStringParsing_") ;
         ioCppFileContents.addString (currentAltForNonTerminal.current_lkey (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
         ioCppFileContents.addString (" (Compiler * inCompiler"
-                             ",\n                                ") ;
+                                     ",\n                                ") ;
         if (inSyntaxDirectedTranslationVarName.length() > 0) {
           ioCppFileContents.addString ("String & ") ;
           ioCppFileContents.addString (inSyntaxDirectedTranslationVarName) ;
           ioCppFileContents.addString (",\n                                ") ;
         }
         ioCppFileContents.addString ("GALGAS_string inSourceString"
-                             ",\n                                "
-                             "GALGAS_string inNameString") ;
+                                     ",\n                                "
+                                     "GALGAS_string inNameString") ;
         parametre.rewind () ;
         numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
@@ -1285,32 +1285,32 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
           parametre.gotoNextObject () ;
           numeroParametre ++ ;
         }
-        ioCppFileContents.addString ("\n                                COMMA_UNUSED_LOCATION_ARGS) {\n") ;
-        ioCppFileContents.addString ("  if (inSourceString.isValid () && inNameString.isValid ()) {\n"
-                             "    const String sourceString = inSourceString.stringValue () ;\n"
-                             "    const String nameString = inNameString.stringValue () ;\n"
-                             "    C_Lexique_") ;
+        ioCppFileContents.addString ("\n                                COMMA_UNUSED_LOCATION_ARGS) {\n"
+                                     "  if (inSourceString.isValid () && inNameString.isValid ()) {\n"
+                                     "    const String sourceString = inSourceString.stringValue () ;\n"
+                                     "    const String nameString = inNameString.stringValue () ;\n"
+                                     "    C_Lexique_") ;
         ioCppFileContents.addString (inLexiqueName.identifierRepresentation ()) ;
-        ioCppFileContents.addString (" * scanner = NULL ;\n"
-                             "    macroMyNew (scanner, C_Lexique_") ;
+        ioCppFileContents.addString (" * scanner = nullptr ;\n"
+                                     "    macroMyNew (scanner, C_Lexique_") ;
         ioCppFileContents.addString (inLexiqueName.identifierRepresentation ()) ;
         ioCppFileContents.addString (" (inCompiler, sourceString, nameString COMMA_HERE)) ;\n"
-                             "    if (scanner->sourceText ().isValid ()) {\n"
-                             "      const bool ok = scanner->performBottomUpParsing (gActionTable_") ;
+                                     "    if (scanner->sourceText ().isValid ()) {\n"
+                                     "      const bool ok = scanner->performBottomUpParsing (gActionTable_") ;
         ioCppFileContents.addString (inTargetFileName) ;
         ioCppFileContents.addString (", gNonTerminalNames_") ;
         ioCppFileContents.addString (inTargetFileName) ;
         ioCppFileContents.addString (",\n"
-                             "                                                       gActionTableIndex_") ;
+                                     "                                                       gActionTableIndex_") ;
         ioCppFileContents.addString (inTargetFileName) ;
         ioCppFileContents.addString (", gSuccessorTable_") ;
         ioCppFileContents.addString (inTargetFileName) ;
         ioCppFileContents.addString (",\n"
-                             "                                                       gProductionsTable_") ;
+                                     "                                                       gProductionsTable_") ;
         ioCppFileContents.addString (inTargetFileName) ;
         ioCppFileContents.addString (") ;\n"
-                             "      if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {\n"
-                             "        cGrammar_") ;
+                                     "      if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {\n"
+                                     "        cGrammar_") ;
         ioCppFileContents.addString (inTargetFileName.identifierRepresentation ()) ;
         ioCppFileContents.addString (" grammar ;\n"
                                      "        ") ;
@@ -1339,10 +1339,10 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
           ioCppFileContents.addString (") ;\n") ;
         }
         ioCppFileContents.addString ("      }\n"
-                             "    }\n"
-                             "    macroDetachSharedObject (scanner) ;\n"
-                             "  }\n"
-                             "}\n\n") ;
+                                     "    }\n"
+                                     "    macroDetachSharedObject (scanner) ;\n"
+                                     "  }\n"
+                                     "}\n\n") ;
         currentAltForNonTerminal.gotoNextObject () ;
       }
     }
@@ -1374,10 +1374,10 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
         ioCppFileContents.addSigned (inProductionRules.tableauIndirectionProduction (j COMMA_HERE)) ;
       }
       ioCppFileContents.addString ("\n"
-                           "  return inLexique->nextProductionIndex () - ") ;
+                                   "  return inLexique->nextProductionIndex () - ") ;
       ioCppFileContents.addSigned ((int32_t)(first - 1)) ;
       ioCppFileContents.addString (" ;\n"
-                           "}\n\n") ;
+                                   "}\n\n") ;
     }
   }
 //--- End of C++ file

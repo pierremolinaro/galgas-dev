@@ -689,7 +689,7 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
                                    "             const String & inSourceFilePath) {\n"
                                    "  C_Lexique_") ;
       ioCppFileContents.addString (inLexiqueName.identifierRepresentation ()) ;
-      ioCppFileContents.addString (" * scanner = NULL ;\n"
+      ioCppFileContents.addString (" * scanner = nullptr ;\n"
                            "  macroMyNew (scanner, C_Lexique_") ;
       ioCppFileContents.addString (inLexiqueName.identifierRepresentation ()) ;
       ioCppFileContents.addString (" (inCompiler, inSourceFilePath COMMA_HERE)) ;\n"
@@ -728,7 +728,7 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
                            "             const String & inSourceFilePath) {\n"
                            "  C_Lexique_") ;
       ioCppFileContents.addString (inLexiqueName.identifierRepresentation ()) ;
-      ioCppFileContents.addString (" * scanner = NULL ;\n"
+      ioCppFileContents.addString (" * scanner = nullptr ;\n"
                            "  macroMyNew (scanner, C_Lexique_") ;
       ioCppFileContents.addString (inLexiqueName.identifierRepresentation ()) ;
       ioCppFileContents.addString (" (inCompiler, inSourceFilePath COMMA_HERE)) ;\n"
@@ -743,7 +743,7 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
                            "             const String & inSourceFilePath) {\n"
                            "  C_Lexique_") ;
       ioCppFileContents.addString (inLexiqueName.identifierRepresentation ()) ;
-      ioCppFileContents.addString (" * scanner = NULL ;\n"
+      ioCppFileContents.addString (" * scanner = nullptr ;\n"
                            "  macroMyNew (scanner, C_Lexique_") ;
       ioCppFileContents.addString (inLexiqueName.identifierRepresentation ()) ;
       ioCppFileContents.addString (" (inCompiler, inSourceFilePath COMMA_HERE)) ;\n"
@@ -821,7 +821,7 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
                             "    if (C_FileManager::fileExistsAtPath (filePath)) {\n"
                             "    C_Lexique_") ;
         ioCppFileContents.addString (inLexiqueName.identifierRepresentation ()) ;
-        ioCppFileContents.addString (" * scanner = NULL ;\n"
+        ioCppFileContents.addString (" * scanner = nullptr ;\n"
                             "    macroMyNew (scanner, C_Lexique_") ;
         ioCppFileContents.addString (inLexiqueName.identifierRepresentation ()) ;
         ioCppFileContents.addString (" (inCompiler, filePath COMMA_HERE)) ;\n"

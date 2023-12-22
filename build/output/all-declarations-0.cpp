@@ -4473,7 +4473,6 @@ void C_Lexique_galgasScanner_33_::enterToken (cTokenFor_galgasScanner_33_ & ioTo
   cTokenFor_galgasScanner_33_ * ptr = nullptr ;
   macroMyNew (ptr, cTokenFor_galgasScanner_33_ ()) ;
   ptr->mTokenCode = ioToken.mTokenCode ;
-  // ptr->mIsOptional = ioToken.mIsOptional ;
   ptr->mStartLocation = mTokenStartLocation ;
   ptr->mEndLocation = mTokenEndLocation ;
   ptr->mTemplateStringBeforeToken = ioToken.mTemplateStringBeforeToken ;
@@ -9321,7 +9320,6 @@ void C_Lexique_galgasScanner_34_::enterToken (cTokenFor_galgasScanner_34_ & ioTo
   cTokenFor_galgasScanner_34_ * ptr = nullptr ;
   macroMyNew (ptr, cTokenFor_galgasScanner_34_ ()) ;
   ptr->mTokenCode = ioToken.mTokenCode ;
-  // ptr->mIsOptional = ioToken.mIsOptional ;
   ptr->mStartLocation = mTokenStartLocation ;
   ptr->mEndLocation = mTokenEndLocation ;
   ptr->mTemplateStringBeforeToken = ioToken.mTemplateStringBeforeToken ;

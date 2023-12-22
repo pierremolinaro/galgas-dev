@@ -52,9 +52,12 @@ void cParser_galgas_34_GrammarComponentSyntax::rule_galgas_34_GrammarComponentSy
     GALGAS_lstring var_syntaxComponent_7384 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas", 211)) ;
     var_syntaxComponents_7303.addAssign_operation (var_syntaxComponent_7384  COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas", 212)) ;
-    if (select_galgas_34_GrammarComponentSyntax_2 (inCompiler) == 2) {
-    }else{
+    switch (select_galgas_34_GrammarComponentSyntax_2 (inCompiler)) {
+    case 2: {
+    } break ;
+    default:
       repeatFlag_0 = false ;
+      break ;
     }
   }
   GALGAS_lstring var_startSymbol_7515 = inCompiler->synthetizedAttribute_tokenString () ;
@@ -64,25 +67,31 @@ void cParser_galgas_34_GrammarComponentSyntax::rule_galgas_34_GrammarComponentSy
   nt_grammar_5F_start_5F_symbol_5F_label_ (GALGAS_lstring::constructor_new (GALGAS_string::makeEmptyString (), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas", 218)), inCompiler  COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas", 218)), var_mLabelList_7558, inCompiler) ;
   bool repeatFlag_1 = true ;
   while (repeatFlag_1) {
-    if (select_galgas_34_GrammarComponentSyntax_3 (inCompiler) == 2) {
+    switch (select_galgas_34_GrammarComponentSyntax_3 (inCompiler)) {
+    case 2: {
       inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_label COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas", 221)) ;
       GALGAS_lstring var_labelName_7749 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas", 222)) ;
       nt_grammar_5F_start_5F_symbol_5F_label_ (var_labelName_7749, var_mLabelList_7558, inCompiler) ;
-    }else{
+    } break ;
+    default:
       repeatFlag_1 = false ;
+      break ;
     }
   }
   GALGAS_lstringlist var_mUnusedNonterminalList_7870 = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("galgasGrammarComponentSyntax.galgas", 226)) ;
   bool repeatFlag_2 = true ;
   while (repeatFlag_2) {
-    if (select_galgas_34_GrammarComponentSyntax_4 (inCompiler) == 2) {
+    switch (select_galgas_34_GrammarComponentSyntax_4 (inCompiler)) {
+    case 2: {
       inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_unused COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas", 229)) ;
       GALGAS_lstring var_nonterminalSymbolName_7984 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken__3C_non_5F_terminal_3E_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas", 230)) ;
       var_mUnusedNonterminalList_7870.addAssign_operation (var_nonterminalSymbolName_7984  COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas", 231)) ;
-    }else{
+    } break ;
+    default:
       repeatFlag_2 = false ;
+      break ;
     }
   }
   inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas", 234)) ;
@@ -119,9 +128,12 @@ void cParser_galgas_34_GrammarComponentSyntax::rule_galgas_34_GrammarComponentSy
   while (repeatFlag_0) {
     inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_syntax COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas", 210)) ;
     inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas", 211)) ;
-    if (select_galgas_34_GrammarComponentSyntax_2 (inCompiler) == 2) {
-    }else{
+    switch (select_galgas_34_GrammarComponentSyntax_2 (inCompiler)) {
+    case 2: {
+    } break ;
+    default:
       repeatFlag_0 = false ;
+      break ;
     }
   }
   inCompiler->enterIndexing (C_Lexique_galgasScanner_34_::kIndexing_ruleReference, "") ;
@@ -129,21 +141,27 @@ void cParser_galgas_34_GrammarComponentSyntax::rule_galgas_34_GrammarComponentSy
   nt_grammar_5F_start_5F_symbol_5F_label_parse (inCompiler) ;
   bool repeatFlag_1 = true ;
   while (repeatFlag_1) {
-    if (select_galgas_34_GrammarComponentSyntax_3 (inCompiler) == 2) {
+    switch (select_galgas_34_GrammarComponentSyntax_3 (inCompiler)) {
+    case 2: {
       inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_label COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas", 221)) ;
       inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas", 222)) ;
       nt_grammar_5F_start_5F_symbol_5F_label_parse (inCompiler) ;
-    }else{
+    } break ;
+    default:
       repeatFlag_1 = false ;
+      break ;
     }
   }
   bool repeatFlag_2 = true ;
   while (repeatFlag_2) {
-    if (select_galgas_34_GrammarComponentSyntax_4 (inCompiler) == 2) {
+    switch (select_galgas_34_GrammarComponentSyntax_4 (inCompiler)) {
+    case 2: {
       inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_unused COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas", 229)) ;
       inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken__3C_non_5F_terminal_3E_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas", 230)) ;
-    }else{
+    } break ;
+    default:
       repeatFlag_2 = false ;
+      break ;
     }
   }
   inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas", 234)) ;
@@ -180,9 +198,12 @@ void cParser_galgas_34_GrammarComponentSyntax::rule_galgas_34_GrammarComponentSy
   while (repeatFlag_0) {
     inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_syntax COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas", 210)) ;
     inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas", 211)) ;
-    if (select_galgas_34_GrammarComponentSyntax_2 (inCompiler) == 2) {
-    }else{
+    switch (select_galgas_34_GrammarComponentSyntax_2 (inCompiler)) {
+    case 2: {
+    } break ;
+    default:
       repeatFlag_0 = false ;
+      break ;
     }
   }
   inCompiler->enterIndexing (C_Lexique_galgasScanner_34_::kIndexing_ruleReference, "") ;
@@ -190,21 +211,27 @@ void cParser_galgas_34_GrammarComponentSyntax::rule_galgas_34_GrammarComponentSy
   nt_grammar_5F_start_5F_symbol_5F_label_indexing (inCompiler) ;
   bool repeatFlag_1 = true ;
   while (repeatFlag_1) {
-    if (select_galgas_34_GrammarComponentSyntax_3 (inCompiler) == 2) {
+    switch (select_galgas_34_GrammarComponentSyntax_3 (inCompiler)) {
+    case 2: {
       inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_label COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas", 221)) ;
       inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas", 222)) ;
       nt_grammar_5F_start_5F_symbol_5F_label_indexing (inCompiler) ;
-    }else{
+    } break ;
+    default:
       repeatFlag_1 = false ;
+      break ;
     }
   }
   bool repeatFlag_2 = true ;
   while (repeatFlag_2) {
-    if (select_galgas_34_GrammarComponentSyntax_4 (inCompiler) == 2) {
+    switch (select_galgas_34_GrammarComponentSyntax_4 (inCompiler)) {
+    case 2: {
       inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken_unused COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas", 229)) ;
       inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken__3C_non_5F_terminal_3E_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas", 230)) ;
-    }else{
+    } break ;
+    default:
       repeatFlag_2 = false ;
+      break ;
     }
   }
   inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas", 234)) ;
@@ -235,10 +262,13 @@ void cParser_galgas_34_GrammarComponentSyntax::rule_galgas_34_GrammarComponentSy
         }
       }
       var_argumentNameSet_8656.addAssign_operation (var_argumentName_8811.readProperty_string ()  COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas", 261)) ;
-      if (select_galgas_34_GrammarComponentSyntax_6 (inCompiler) == 2) {
+      switch (select_galgas_34_GrammarComponentSyntax_6 (inCompiler)) {
+      case 2: {
         inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken__2C_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas", 263)) ;
-      }else{
+      } break ;
+      default:
         repeatFlag_0 = false ;
+        break ;
       }
     }
   } break ;
@@ -260,10 +290,13 @@ void cParser_galgas_34_GrammarComponentSyntax::rule_galgas_34_GrammarComponentSy
     bool repeatFlag_0 = true ;
     while (repeatFlag_0) {
       nt_label_5F_formal_5F_parameter_parse (inCompiler) ;
-      if (select_galgas_34_GrammarComponentSyntax_6 (inCompiler) == 2) {
+      switch (select_galgas_34_GrammarComponentSyntax_6 (inCompiler)) {
+      case 2: {
         inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken__2C_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas", 263)) ;
-      }else{
+      } break ;
+      default:
         repeatFlag_0 = false ;
+        break ;
       }
     }
   } break ;
@@ -285,10 +318,13 @@ void cParser_galgas_34_GrammarComponentSyntax::rule_galgas_34_GrammarComponentSy
     bool repeatFlag_0 = true ;
     while (repeatFlag_0) {
       nt_label_5F_formal_5F_parameter_indexing (inCompiler) ;
-      if (select_galgas_34_GrammarComponentSyntax_6 (inCompiler) == 2) {
+      switch (select_galgas_34_GrammarComponentSyntax_6 (inCompiler)) {
+      case 2: {
         inCompiler->acceptTerminal (C_Lexique_galgasScanner_34_::kToken__2C_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas", 263)) ;
-      }else{
+      } break ;
+      default:
         repeatFlag_0 = false ;
+        break ;
       }
     }
   } break ;
@@ -19234,7 +19270,7 @@ void cGrammar_templateGrammar::performIndexing (Compiler * inCompiler,
 
 void cGrammar_templateGrammar::performOnlyLexicalAnalysis (Compiler * inCompiler,
              const String & inSourceFilePath) {
-  C_Lexique_galgasTemplateScanner * scanner = NULL ;
+  C_Lexique_galgasTemplateScanner * scanner = nullptr ;
   macroMyNew (scanner, C_Lexique_galgasTemplateScanner (inCompiler, inSourceFilePath COMMA_HERE)) ;
   if (scanner->sourceText ().isValid ()) {
     scanner->performLexicalAnalysis () ;
@@ -19244,7 +19280,7 @@ void cGrammar_templateGrammar::performOnlyLexicalAnalysis (Compiler * inCompiler
 
 void cGrammar_templateGrammar::performOnlySyntaxAnalysis (Compiler * inCompiler,
              const String & inSourceFilePath) {
-  C_Lexique_galgasTemplateScanner * scanner = NULL ;
+  C_Lexique_galgasTemplateScanner * scanner = nullptr ;
   macroMyNew (scanner, C_Lexique_galgasTemplateScanner (inCompiler, inSourceFilePath COMMA_HERE)) ;
   if (scanner->sourceText ().isValid ()) {
     scanner->performBottomUpParsing (gActionTable_templateGrammar, gNonTerminalNames_templateGrammar,
@@ -19271,7 +19307,7 @@ void cGrammar_templateGrammar::_performSourceFileParsing_ (Compiler * inCompiler
       filePath = inCompiler->sourceFilePath ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (filePath) ;
     }
     if (C_FileManager::fileExistsAtPath (filePath)) {
-      C_Lexique_galgasTemplateScanner * scanner = NULL ;
+      C_Lexique_galgasTemplateScanner * scanner = nullptr ;
       macroMyNew (scanner, C_Lexique_galgasTemplateScanner (inCompiler, filePath COMMA_HERE)) ;
       if (scanner->sourceText ().isValid ()) {
         const bool ok = scanner->performBottomUpParsing (gActionTable_templateGrammar, gNonTerminalNames_templateGrammar,
@@ -19311,7 +19347,7 @@ void cGrammar_templateGrammar::_performSourceStringParsing_ (Compiler * inCompil
   if (inSourceString.isValid () && inNameString.isValid ()) {
     const String sourceString = inSourceString.stringValue () ;
     const String nameString = inNameString.stringValue () ;
-    C_Lexique_galgasTemplateScanner * scanner = NULL ;
+    C_Lexique_galgasTemplateScanner * scanner = nullptr ;
     macroMyNew (scanner, C_Lexique_galgasTemplateScanner (inCompiler, sourceString, nameString COMMA_HERE)) ;
     if (scanner->sourceText ().isValid ()) {
       const bool ok = scanner->performBottomUpParsing (gActionTable_templateGrammar, gNonTerminalNames_templateGrammar,

@@ -31329,7 +31329,7 @@ void cGrammar_galgas_34_Grammar::performIndexing (Compiler * inCompiler,
 
 void cGrammar_galgas_34_Grammar::performOnlyLexicalAnalysis (Compiler * inCompiler,
              const String & inSourceFilePath) {
-  C_Lexique_galgasScanner_34_ * scanner = NULL ;
+  C_Lexique_galgasScanner_34_ * scanner = nullptr ;
   macroMyNew (scanner, C_Lexique_galgasScanner_34_ (inCompiler, inSourceFilePath COMMA_HERE)) ;
   if (scanner->sourceText ().isValid ()) {
     scanner->performLexicalAnalysis () ;
@@ -31339,7 +31339,7 @@ void cGrammar_galgas_34_Grammar::performOnlyLexicalAnalysis (Compiler * inCompil
 
 void cGrammar_galgas_34_Grammar::performOnlySyntaxAnalysis (Compiler * inCompiler,
              const String & inSourceFilePath) {
-  C_Lexique_galgasScanner_34_ * scanner = NULL ;
+  C_Lexique_galgasScanner_34_ * scanner = nullptr ;
   macroMyNew (scanner, C_Lexique_galgasScanner_34_ (inCompiler, inSourceFilePath COMMA_HERE)) ;
   if (scanner->sourceText ().isValid ()) {
     scanner->performBottomUpParsing (gActionTable_galgas4Grammar, gNonTerminalNames_galgas4Grammar,
@@ -31366,7 +31366,7 @@ void cGrammar_galgas_34_Grammar::_performSourceFileParsing_ (Compiler * inCompil
       filePath = inCompiler->sourceFilePath ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (filePath) ;
     }
     if (C_FileManager::fileExistsAtPath (filePath)) {
-      C_Lexique_galgasScanner_34_ * scanner = NULL ;
+      C_Lexique_galgasScanner_34_ * scanner = nullptr ;
       macroMyNew (scanner, C_Lexique_galgasScanner_34_ (inCompiler, filePath COMMA_HERE)) ;
       if (scanner->sourceText ().isValid ()) {
         const bool ok = scanner->performBottomUpParsing (gActionTable_galgas4Grammar, gNonTerminalNames_galgas4Grammar,
@@ -31406,7 +31406,7 @@ void cGrammar_galgas_34_Grammar::_performSourceStringParsing_ (Compiler * inComp
   if (inSourceString.isValid () && inNameString.isValid ()) {
     const String sourceString = inSourceString.stringValue () ;
     const String nameString = inNameString.stringValue () ;
-    C_Lexique_galgasScanner_34_ * scanner = NULL ;
+    C_Lexique_galgasScanner_34_ * scanner = nullptr ;
     macroMyNew (scanner, C_Lexique_galgasScanner_34_ (inCompiler, sourceString, nameString COMMA_HERE)) ;
     if (scanner->sourceText ().isValid ()) {
       const bool ok = scanner->performBottomUpParsing (gActionTable_galgas4Grammar, gNonTerminalNames_galgas4Grammar,
