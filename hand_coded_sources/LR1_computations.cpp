@@ -1871,7 +1871,6 @@ compute_LR1_automation (const cPureBNFproductionsList & inProductionRules,
                                      inVocabularyDerivingToEmpty_Array) ;
   outLR1_items_sets_collection.searchOrInsert_LR1_itemSet (LR1_items_set) ;
 //--- Calculate LR1 automaton
-  // printf ("************** LR1 AUTOMATON BEGIN *****************\n") ; gCout.flush () ;
   for (int32_t explorationIndex=0 ; explorationIndex<outLR1_items_sets_collection.getStateCount () ; explorationIndex++) {
     for (int32_t s=0 ; s<vocabularyCount ; s++) {
       outLR1_items_sets_collection.getTransitionFrom (inProductionRules, explorationIndex, s, LR1_items_set) ;
@@ -1886,7 +1885,6 @@ compute_LR1_automation (const cPureBNFproductionsList & inProductionRules,
       }
     }
   }
-  // printf ("************** LR1 AUTOMATON END *****************\n") ; gCout.flush () ;
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -101,9 +101,7 @@ int32_t String::indexFromLineAndColumn (const int32_t inLineNumber,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
-//   C O N T A I N S   S T R I N G
-//
+//   containsString
 //--------------------------------------------------------------------------------------------------
 
 bool String::containsString (const String & inSearchedString) const {
@@ -120,9 +118,7 @@ bool String::containsString (const String & inSearchedString) const {
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //   componentsSeparatedByString
-//
 //--------------------------------------------------------------------------------------------------
 
 void String::componentsSeparatedByString (const String & inSeparatorString,
@@ -149,9 +145,7 @@ void String::componentsSeparatedByString (const String & inSeparatorString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //   componentsJoinedByString
-//
 //--------------------------------------------------------------------------------------------------
 
 String String::componentsJoinedByString (const TC_UniqueArray <String> & inComponentArray,
@@ -168,9 +162,7 @@ String String::componentsJoinedByString (const TC_UniqueArray <String> & inCompo
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //   stringByDeletingTailFromString
-//
 //--------------------------------------------------------------------------------------------------
 
 String String::stringByDeletingTailFromString (const String & inSearchedString) const {
@@ -189,9 +181,7 @@ String String::stringByDeletingTailFromString (const String & inSearchedString) 
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //   endsWithString
-//
 //--------------------------------------------------------------------------------------------------
 
 bool String::endsWithString (const String & inString) const {
@@ -204,15 +194,13 @@ bool String::endsWithString (const String & inString) const {
 }
 
 //--------------------------------------------------------------------------------------------------
-//
-//   S U B S T I T U T E    C H A R A C T E R    B Y    S T R I N G
-//
+//   stringByReplacingCharacterByString
 //--------------------------------------------------------------------------------------------------
 
 //--- Substitute 'inCharacter' by 'inString' ; if the character occurs twice, suppress one
 
 String String::stringByReplacingCharacterByString (const utf32 inCharacter,
-                                                       const String & inString) const {
+                                                   const String & inString) const {
   const int32_t stringLength = length () ;
   String resultingString ;
   bool previousCharIsSubstituteChar = false ;
@@ -240,15 +228,13 @@ String String::stringByReplacingCharacterByString (const utf32 inCharacter,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
-//   S U B S T I T U T E    S T R I N G    B Y    S T R I N G
-//
+//   stringByReplacingStringByString
 //--------------------------------------------------------------------------------------------------
 
 String String::stringByReplacingStringByString (const String inSearchedString,
-                                                    const String inReplacementString,
-                                                    uint32_t & outReplacementCount,
-                                                    bool & outOk) const {
+                                                const String inReplacementString,
+                                                uint32_t & outReplacementCount,
+                                                bool & outOk) const {
   String result ;
   outReplacementCount = 0 ;
   outOk = inSearchedString.length () != 0 ;
@@ -277,16 +263,14 @@ String String::stringByReplacingStringByString (const String inSearchedString,
 //--------------------------------------------------------------------------------------------------
 
 String String::stringByReplacingStringByString (const String inSearchedString,
-                                                    const String inReplacementString) const {
+                                                const String inReplacementString) const {
   uint32_t unusedReplacementCount = 0 ;
   bool unusedOk = true ;
   return stringByReplacingStringByString (inSearchedString, inReplacementString, unusedReplacementCount, unusedOk) ;
 }
 
 //--------------------------------------------------------------------------------------------------
-//
-//   G E T    L A S T   O C C U R R E N C E   O F   A   C H A R
-//
+//   lastOccurrenceIndexOfChar
 //--------------------------------------------------------------------------------------------------
 
 int32_t String::lastOccurrenceIndexOfChar (const utf32 inChar) const {
@@ -881,9 +865,7 @@ String String::HTMLRepresentation (void) const {
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //   S T R I N G    C O M P A R E
-//
 //--------------------------------------------------------------------------------------------------
 
 int32_t String::compare (const char * const inCstring) const {
@@ -937,21 +919,7 @@ int32_t String::compareStringByLength (const String & inString) const {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-//bool String::operator == (const String & inString) const {
-//  return compareStringByLength (inString) == 0 ;
-//}
-
-//--------------------------------------------------------------------------------------------------
-
-//bool String::operator != (const String & inString) const {
-//  return compareStringByLength (inString) != 0 ;
-//}
-
-//--------------------------------------------------------------------------------------------------
-//
 //   pathExtension
-//
 //--------------------------------------------------------------------------------------------------
 
 String String::pathExtension (void) const {

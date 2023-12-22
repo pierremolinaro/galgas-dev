@@ -503,9 +503,6 @@ static void internalWriteCstringConstantWithoutDelimiters (AC_OutputStream & ioS
     case '\"' :
       ioStream.addString ("\\\"") ;
       break ;
-//    case '\?' :
-//      ioStream.addString ("\\?") ;
-//      break ;
     default :
       if ((UNICODE_VALUE (c) >= ' ') && (UNICODE_VALUE (c) < 127)) {
         ioStream.addUnicodeChar (c COMMA_HERE) ;

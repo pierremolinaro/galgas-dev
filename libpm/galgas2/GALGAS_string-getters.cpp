@@ -41,20 +41,6 @@
 
 //--------------------------------------------------------------------------------------------------
 
-//#ifndef COMPILE_FOR_WINDOWS
-//  #error COMPILE_FOR_WINDOWS is undefined
-//#endif
-//
-//#if COMPILE_FOR_WINDOWS == 0
-//  #include <pwd.h>
-//#endif
-//
-//#if COMPILE_FOR_WINDOWS == 1
-//  #include <Shlobj.h>
-//#endif
-
-//--------------------------------------------------------------------------------------------------
-
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Getters
 #endif

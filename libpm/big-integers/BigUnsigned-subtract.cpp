@@ -13,8 +13,6 @@ BigUnsigned BigUnsigned::operator - (const BigUnsigned inOperand) const {
       std::cout << "Error " << __FILE__ << ":" << __LINE__ << "\n" ;
       exit (1) ;
     }else if (compareResult > 0) {
-//      printHex           ("§left  ") ;
-//      inOperand.printHex ("- right") ;
       BigUnsigned result ;
       result.mSharedArray.insulateWithChunkCapacity (mSharedArray.chunkCount ()) ;
       ChunkUInt borrow = 0 ; // 0 or 1

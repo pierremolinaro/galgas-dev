@@ -617,28 +617,6 @@ GALGAS_bigint GALGAS_bigint::modulo_operation (const GALGAS_bigint & inOperand2,
 
 //--------------------------------------------------------------------------------------------------
 
-//void GALGAS_bigint::method_ceilDivideBy (GALGAS_bigint inDivisor,
-//                                         GALGAS_bigint & outQuotient,
-//                                         GALGAS_bigint & outRemainder,
-//                                         Compiler * inCompiler
-//                                         COMMA_LOCATION_ARGS) const {
-//  outQuotient.drop () ;
-//  outRemainder.drop () ;
-//  if (isValid () && inDivisor.isValid ()) {
-//    if (inDivisor.mValue.isZero ()) {
-//      inCompiler->onTheFlyRunTimeError ("@sint64 divide by zero in modulo operation" COMMA_THERE) ;
-//    }else{
-//      BigSigned quotient ;
-//      BigSigned remainder ;
-//      mValue.ceilDivideBy (inDivisor.mValue, quotient, remainder) ;
-//      outQuotient = GALGAS_bigint (quotient) ;
-//      outRemainder = GALGAS_bigint (remainder) ;
-//    }
-//  }
-//}
-
-//--------------------------------------------------------------------------------------------------
-
 void GALGAS_bigint::method_divideBy (GALGAS_bigint inDivisor,
                                      GALGAS_bigint & outQuotient,
                                      GALGAS_bigint & outRemainder,
@@ -656,28 +634,6 @@ void GALGAS_bigint::method_divideBy (GALGAS_bigint inDivisor,
     }
   }
 }
-
-//--------------------------------------------------------------------------------------------------
-
-//void GALGAS_bigint::method_floorDivideBy (GALGAS_bigint inDivisor,
-//                                          GALGAS_bigint & outQuotient,
-//                                          GALGAS_bigint & outRemainder,
-//                                          Compiler * inCompiler
-//                                          COMMA_LOCATION_ARGS) const {
-//  outQuotient.drop () ;
-//  outRemainder.drop () ;
-//  if (isValid () && inDivisor.isValid ()) {
-//    if (inDivisor.mValue.isZero ()) {
-//      inCompiler->onTheFlyRunTimeError ("@bigint divide by zero in modulo operation" COMMA_THERE) ;
-//    }else{
-//      BigSigned quotient ;
-//      BigSigned remainder ;
-//      mValue.floorDivideBy (inDivisor.mValue, quotient, remainder) ;
-//      outQuotient = GALGAS_bigint (quotient) ;
-//      outRemainder = GALGAS_bigint (remainder) ;
-//    }
-//  }
-//}
 
 //--------------------------------------------------------------------------------------------------
 

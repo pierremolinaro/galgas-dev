@@ -93,9 +93,3 @@ int32_t LocationInSource::columnNumber (void) const {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-//LineColumnContents LocationInSource::lineColumnNumber (void) const {
-//  return mSourceText.sourceString ().lineAndColumnFromIndex (mIndex) ;
-//}
-
-//--------------------------------------------------------------------------------------------------

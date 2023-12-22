@@ -12,8 +12,6 @@
 
 //--------------------------------------------------------------------------------------------------
 
-//static size_t maxAdjustCountOld = 0 ;
-
 BigUnsignedQuotientRemainder BigUnsigned::naiveDivideByBigUnsigned (const BigUnsigned & inDivisor) const {
   if (inDivisor.isZero ()) { // Divide by 0
     std::cout << "Error " << __FILE__ << ":" << __LINE__ << "\n" ;
@@ -32,7 +30,6 @@ BigUnsignedQuotientRemainder BigUnsigned::naiveDivideByBigUnsigned (const BigUns
     BigUnsigned quotient ;
     quotient.mSharedArray.insulateWithChunkCapacity (quotientWordCount) ;
     quotient.mSharedArray.appendRandomChunks (quotientWordCount COMMA_HERE) ;
-  //  std::cout << "§quotientWordCount " << quotientWordCount << "\n" ;
     for (size_t quotientIndex = quotientWordCount ; quotientIndex > 0 ; quotientIndex--) {
       const size_t remainderIndexH = remainder.mSharedArray.chunkCount () + quotientIndex - quotientWordCount ;
       ChunkUInt u64Quotient = divForNaiveDivision (
@@ -40,7 +37,6 @@ BigUnsignedQuotientRemainder BigUnsigned::naiveDivideByBigUnsigned (const BigUns
         remainder.mSharedArray.chunkAtIndex (remainderIndexH - 1 COMMA_HERE),
         inDivisor.mSharedArray.lastChunk (HERE)
       ) ;
-  //    std::cout << "§quotient [ " << quotientIndex << "] = 0x" << std::hex << uint64_t (u64Quotient) << std::dec << "\n" ;
       if (u64Quotient > 0) {
         ChunkUInt currentCarry = 0 ;
         for (size_t i = 1 ; i <= inDivisor.mSharedArray.chunkCount () ; i++) {
@@ -55,18 +51,13 @@ BigUnsignedQuotientRemainder BigUnsigned::naiveDivideByBigUnsigned (const BigUns
           currentCarry += r < resultL ;
           macroAssert (! ((r < resultL) && (currentCarry == 0)), "double ovf", 0, 0) ;
           remainder.mSharedArray.subtractFromChunkAtIndex (resultL, remainderIndex COMMA_HERE) ;
-  //        std::cout << "§remainder [ " << remainderIndex << "] = 0x" << std::hex << uint64_t (remainder.mSharedArray.chunkAtIndex (remainderIndex COMMA_HERE)) << std::dec << "\n" ;
         }
-  //        bool underflow = currentCarry > 0 ;
         const size_t remainderLastIndex = quotientIndex + inDivisor.mSharedArray.chunkCount () ;
         bool underflow = remainder.mSharedArray.chunkAtIndex (remainderLastIndex COMMA_HERE) < currentCarry ;
         remainder.mSharedArray.subtractFromChunkAtIndex (currentCarry, remainderLastIndex COMMA_HERE) ;
-  //        size_t adjustCount = 0 ;
         while (underflow) {
-  //          adjustCount += 1 ;
           macroAssert (u64Quotient > 0, "Error", 0, 0) ; // Quotient is > 0, no underflow
           u64Quotient -= 1 ;
-  //        std::cout << "§quotient [ " << quotientIndex << "] = 0x" << std::hex << uint64_t (u64Quotient) << std::dec << "\n" ;
           ChunkUInt carry = 0 ; // 0 or 1
           for (size_t i = 1 ; i <= inDivisor.mSharedArray.chunkCount () ; i++) {
             const ChunkUInt v1 = remainder.mSharedArray.chunkAtIndex (i + quotientIndex - 1 COMMA_HERE) ;
@@ -75,7 +66,6 @@ BigUnsignedQuotientRemainder BigUnsigned::naiveDivideByBigUnsigned (const BigUns
             const ChunkUInt carry1 = sum < v1 ;
             sum += carry ;
             const ChunkUInt carry2 = sum < carry ;
-  //          macroAssert (carry2 == 0, "Invalid carry", 0, 0) ;
             remainder.mSharedArray.setChunkAtIndex (sum, i + quotientIndex - 1 COMMA_HERE) ;
             carry = carry1 + carry2 ;
             macroAssert (carry <= 1, "Invalid carry", 0, 0) ;
@@ -86,10 +76,6 @@ BigUnsignedQuotientRemainder BigUnsigned::naiveDivideByBigUnsigned (const BigUns
           remainder.mSharedArray.setChunkAtIndex (lastRemainderValue, remainderLastIndex COMMA_HERE) ;
           underflow = carry == 0 ;
         }
-  //        if (maxAdjustCountOld < adjustCount) {
-  //          maxAdjustCountOld = adjustCount ;
-  //          std::cout << "maxAdjustCountOld " << maxAdjustCountOld << "\n" ;
-  //        }
       }
       quotient.mSharedArray.setChunkAtIndex (u64Quotient, quotientIndex COMMA_HERE) ;
     }

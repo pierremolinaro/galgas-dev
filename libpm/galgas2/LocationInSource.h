@@ -58,8 +58,6 @@ class LocationInSource final {
 
   public: int32_t columnNumber (void) const ;
 
-//  public: LineColumnContents lineColumnNumber (void) const ;
-
   public: String sourceFilePath (void) const ;
 } ;
 

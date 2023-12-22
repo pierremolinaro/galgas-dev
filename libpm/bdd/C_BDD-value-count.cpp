@@ -230,7 +230,7 @@ static void internalValueCount (const uint32_t inValue,
                                 COMMA_LOCATION_ARGS) {
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_THERE) ;
   if (bothBranches (gNodeArray [nodeIndex]) == 0) {
-    nombreDirect = BigSigned () ; //.setToZero () ;
+    nombreDirect = BigSigned () ;
     nombreComplement = BigSigned (true, 1) ;
     nombreComplement <<= inVariableCount ;
   }else{
@@ -271,7 +271,7 @@ static void internalValueCountUsingCache (const uint32_t inValue,
                                           COMMA_LOCATION_ARGS) {
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_THERE) ;
   if (bothBranches (gNodeArray [nodeIndex]) == 0) {
-    nombreDirect = BigSigned () ; // .setToZero () ;
+    nombreDirect = BigSigned () ;
     nombreComplement = BigSigned (true, 1) ;
     nombreComplement <<= inVariableCount ;
   }else if ((ioDirectCacheArray.count () > (int32_t) (inValue / 2))

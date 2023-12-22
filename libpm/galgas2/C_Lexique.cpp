@@ -818,7 +818,6 @@ void C_Lexique::appendCharacterToLatexFile (const utf32 inUnicodeCharacter) {
   case '%' : mLatexOutputString.addString ("\\%") ; break ;
   case '#' : mLatexOutputString.addString ("\\#") ; break ;
   case '$' : mLatexOutputString.addString ("\\$") ; break ;
-//  case '`' : mLatexOutputString.addString ("\\`{}") ; break ;
   case ' ' : mLatexOutputString.addString ("\\hspace*{.6em}") ; break ;
   case '\n' : mLatexOutputString.addString ("\\newline\n") ; break ;
   case '{' : mLatexOutputString.addString ("\\{") ; break ;
@@ -826,7 +825,6 @@ void C_Lexique::appendCharacterToLatexFile (const utf32 inUnicodeCharacter) {
   case '_' : mLatexOutputString.addString ("\\_") ; break ;
   case '\\' : mLatexOutputString.addString ("\\textbackslash{}")  ; break ;
   case '\'' : mLatexOutputString.addString ("\\textquotesingle{}") ; break ;
-//  case '"' : mLatexOutputString.addString ("\\textquotedbl{}") ; break ;
   case '"' : mLatexOutputString.addString ("\"") ; break ;
   default:
     mLatexOutputString.addUnicodeChar (inUnicodeCharacter COMMA_HERE) ;
