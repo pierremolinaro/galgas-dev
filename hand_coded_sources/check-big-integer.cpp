@@ -225,7 +225,7 @@ static void testBigUnsignedHexadecimalStringConstructor (void) {
     for (size_t j = 0 ; j < n ; j++) {
       const uint32_t value = galgas_random () ;
       char s [12] ;
-      snprintf (s, 11, "%08" PRIX8, value) ;
+      snprintf (s, 11, "%08" PRIX32, value) ;
       refString.addString (s) ;
     }
   //--- Remove leading zeros
