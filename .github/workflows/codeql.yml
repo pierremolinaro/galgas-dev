@@ -109,6 +109,10 @@ jobs:
     name: Check big integer on Windows
     runs-on: ${{ 'windows-latest' }}
     timeout-minutes: ${{ 360 }}
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
 
     steps:
     - name: Checkout repository
