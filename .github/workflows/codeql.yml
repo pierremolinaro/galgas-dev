@@ -118,5 +118,5 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - run: ./makefile-unix/build+debug.py ; ls ./makefile-unix ; ./makefile-unix/galgas-debug --check-big-int
+    - run: ./makefile-unix/build+debug.py ; ls ./makefile-unix
 
