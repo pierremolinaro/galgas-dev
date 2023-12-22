@@ -124,12 +124,12 @@ gui cocoa {
     blockComment : "//"
     title: "Source GALGAS 4"
 
-    textMacro "Map" :
-      "map @type {\n"
-      "  public let @aType mProperty\n"
-      "  %insertSetter insertKey %errorMessage \"the '%K' key is already declared in %L\"\n"
-      "  %searchMethod searchKey %error%essage \"there is no '%K' key\"\n"
-      "}\n"
+#    textMacro "Map" :
+#      "map @type {\n"
+#      "  public let @aType mProperty\n"
+#      "  %insertSetter insertKey %errorMessage \"the '%K' key is already declared in %L\"\n"
+#      "  %searchMethod searchKey %error%essage \"there is no '%K' key\"\n"
+#      "}\n"
   }
 
   #··········································································

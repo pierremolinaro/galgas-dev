@@ -387,7 +387,7 @@ class SWIFT_Tokenizer_1_galgasScanner4 : SWIFT_Lexique_galgasScanner4, SWIFT_Tok
 //--------------------------------------------------------------------------------------------------
 
 - (NSUInteger) textMacroCount {
-  return 1 ;
+  return 0 ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -395,8 +395,7 @@ class SWIFT_Tokenizer_1_galgasScanner4 : SWIFT_Lexique_galgasScanner4, SWIFT_Tok
 //--------------------------------------------------------------------------------------------------
 
 - (NSString *) textMacroTitleAtIndex: (const UInt32) inIndex {
-  static NSString * kTextMacroTitle [2] = {
-    @"Map",
+  static NSString * kTextMacroTitle [1] = {
     nullptr
   } ;
   return kTextMacroTitle [inIndex] ;
@@ -405,8 +404,7 @@ class SWIFT_Tokenizer_1_galgasScanner4 : SWIFT_Lexique_galgasScanner4, SWIFT_Tok
 //--------------------------------------------------------------------------------------------------
 
 - (NSString *) textMacroContentAtIndex: (const UInt32) inIndex {
-  static NSString * kTextMacroContent [2] = {
-    @"map @type {\n  public let @aType mProperty\n  %insertSetter insertKey %errorMessage \"the '%K' key is already declared in %L\"\n  %searchMethod searchKey %error%essage \"there is no '%K' key\"\n}\n",
+  static NSString * kTextMacroContent [1] = {
     nullptr
   } ;
   return kTextMacroContent [inIndex] ;

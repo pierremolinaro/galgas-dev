@@ -8,16 +8,13 @@
 //--------------------------------------------------------------------------------------------------
 
 typedef uint8_t ChunkUInt ;
-static const size_t ChunkUIntBitCount = 8 ;
 static const ChunkUInt ChunkUIntMax = UINT8_MAX ;
-
-//--------------------------------------------------------------------------------------------------
 
 static const ChunkUInt greatestPowerOf10 = 100 ; // 10**2
 static const size_t greatestPowerOf10DigitCount = 2 ;
 
-#define ChunkUIntDecimalFormatSpecifierWithLeadingZeros "%02" PRIu8
-#define ChunkUIntHexFormatSpecifierWithLeadingZeros "%02" PRIX8
+static const char * ChunkUIntDecimalFormatSpecifierWithLeadingZeros __attribute__ ((usused)) = "%02" PRIu8 ;
+static const char * ChunkUIntHexFormatSpecifierWithLeadingZeros __attribute__ ((usused)) = "%02" PRIX8 ;
 
 //--------------------------------------------------------------------------------------------------
 

@@ -504,7 +504,7 @@ static const UInt16 * gPopUpData_1_galgasScanner_34_ [1] = {
 //--------------------------------------------------------------------------------------------------
 
 - (NSUInteger) textMacroCount {
-  return 1 ;
+  return 0 ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -516,8 +516,7 @@ static const UInt16 * gPopUpData_1_galgasScanner_34_ [1] = {
 //--------------------------------------------------------------------------------------------------
 
 - (NSString *) textMacroTitleAtIndex: (const UInt32) inIndex {
-  static NSString * kTextMacroTitle [2] = {
-    @"Map",
+  static NSString * kTextMacroTitle [1] = {
     NULL
   } ;
   return kTextMacroTitle [inIndex] ;
@@ -526,8 +525,7 @@ static const UInt16 * gPopUpData_1_galgasScanner_34_ [1] = {
 //--------------------------------------------------------------------------------------------------
 
 - (NSString *) textMacroContentAtIndex: (const UInt32) inIndex {
-  static NSString * kTextMacroContent [2] = {
-    @"map @type {\n  public let @aType mProperty\n  %insertSetter insertKey %errorMessage \"the '%K' key is already declared in %L\"\n  %searchMethod searchKey %error%essage \"there is no '%K' key\"\n}\n",
+  static NSString * kTextMacroContent [1] = {
     NULL
   } ;
   return kTextMacroContent [inIndex] ;

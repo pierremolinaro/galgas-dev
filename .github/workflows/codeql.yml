@@ -22,14 +22,14 @@ on:
 
 jobs:
   analyze:
-    name: Analyze
+    name: CodeQL analyzis
     # Runner size impacts CodeQL analysis time. To learn more, please see:
     #   - https://gh.io/recommended-hardware-resources-for-running-codeql
     #   - https://gh.io/supported-runners-and-hardware-resources
     #   - https://gh.io/using-larger-runners
     # Consider using larger runners for possible analysis time improvements.
-    runs-on: ${{ (matrix.language == 'swift' && 'macos-latest') || 'ubuntu-20.04' }}
-    timeout-minutes: ${{ (matrix.language == 'swift' && 120) || 360 }}
+    runs-on: ${{ 'ubuntu-20.04' }}
+    timeout-minutes: ${{ 360 }}
     permissions:
       actions: read
       contents: read
@@ -61,20 +61,7 @@ jobs:
         # queries: security-extended,security-and-quality
         queries: security-and-quality
 
-
-    # Autobuild attempts to build any compiled languages (C/C++, C#, Go, Java, or Swift).
-    # If this step fails, then you should remove it and run the build manually (see below)
-  #  - name: Autobuild
- #     uses: github/codeql-action/autobuild@v2
-
-    # ℹ️ Command-line programs to run using the OS shell.
-    # 📚 See https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsrun
-
-    #   If the Autobuild fails above, remove it and uncomment the following three lines.
-    #   modify them (or add more) to build your code if your project, please refer to the EXAMPLE below for guidance.
-
-    - run: |
-        ./.github/workflows/codeql-buildscript.sh
+    - run: ./.github/workflows/codeql-buildscript.sh
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
@@ -95,3 +82,21 @@ jobs:
         name: codeql-results
         path: ${{ steps.step1.outputs.sarif-output }}
         retention-days: 5
+
+  RunDemoUbuntu:
+    name: Check big integer on Ubuntu
+    runs-on: ${{ 'ubuntu-latest' }}
+    timeout-minutes: ${{ 360 }}
+#    permissions:
+#      actions: read
+#      contents: read
+#      security-events: write
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - run: |
+      ./makefile-unix/build+debug.py
+      ./makefile-unix/galgas-debug --check-big-int
+
