@@ -679,10 +679,7 @@ void AC_GALGAS_graph::reversedGraphFromGraph (const AC_GALGAS_graph & inGraph
 //--------------------------------------------------------------------------------------------------
 
 int32_t cSharedGraph::graphCompare (const cSharedGraph * inOperand) const {
-  int32_t r = ((int32_t) allNodeCount ()) - ((int32_t) inOperand->allNodeCount ()) ;
-  if (r == 0) {
-    // TODO
-  }
+  const int32_t r = int32_t (allNodeCount ()) - int32_t (inOperand->allNodeCount ()) ;
   return r ;
 }
 

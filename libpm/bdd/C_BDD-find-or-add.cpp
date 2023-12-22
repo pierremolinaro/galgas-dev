@@ -254,9 +254,7 @@ uint32_t find_or_add (const uint32_t inBoolVar,
     const uint32_t complement = inELSEbranch & 1 ;
     const uint32_t c1 = inTHENbranch ^ complement ;
     const uint32_t c0 = inELSEbranch ^ complement ;
-//     const cBDDnode candidateNode = cBDDnode (c1, c0, inBoolVar) ;
     const cBDDnode candidateNode = {c1, c0, inBoolVar, 0} ;
-    // printf ("candidateNode %llu gCollisionMapSize %u\n", candidateNode, gCollisionMapSize) ;
     const uint64_t hashCode = nodeHashCode (candidateNode) ;
     uint32_t nodeIndex = gCollisionMap [hashCode] ;
     while ((0 != nodeIndex)

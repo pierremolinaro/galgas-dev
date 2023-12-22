@@ -317,10 +317,6 @@ uint32_t C_BDD::significantVariableCount (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-//    #define DEBUG_CONTAINS_VALUE
-
-//--------------------------------------------------------------------------------------------------
-
 static bool recursiveContainsValue64 (const uint32_t inBDD,
                                       const uint64_t inValue,
                                       const uint32_t inFirstBit,
@@ -330,43 +326,22 @@ static bool recursiveContainsValue64 (const uint32_t inBDD,
   const uint32_t complement = inBDD & 1 ;
   if (bothBranches (gNodeArray [nodeIndex]) == 0) {
     result = complement != 0 ;
-    #ifdef DEBUG_CONTAINS_VALUE
-      printf ("result %s\n", result ? "YES" : "NO") ;
-    #endif
   }else{
     const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
     if (var >= inLastBitPlusOne) {
-      #ifdef DEBUG_CONTAINS_VALUE
-        printf ("var %u\n", var) ;
-      #endif
       result = recursiveContainsValue64 (gNodeArray [nodeIndex].mTHEN ^ complement, inValue, inFirstBit, inLastBitPlusOne) ;
-      #ifdef DEBUG_CONTAINS_VALUE
-        printf ("var %u branch THEN returns %s\n", var, result ? "YES" : "NO") ;
-      #endif
       if (! result) {
         result = recursiveContainsValue64 (gNodeArray [nodeIndex].mELSE ^ complement, inValue, inFirstBit, inLastBitPlusOne) ;
-        #ifdef DEBUG_CONTAINS_VALUE
-          printf ("var %u branch ELSE returns %s\n", var, result ? "YES" : "NO") ;
-        #endif
       }
     }else if (var < inFirstBit) {
-      #ifdef DEBUG_CONTAINS_VALUE
-        printf ("var %u -> true\n", var) ;
-      #endif
       result = true ;
     }else{
       const bool bitValue = ((inValue >> (var - inFirstBit)) & 1) != 0 ;
-      #ifdef DEBUG_CONTAINS_VALUE
-        printf ("var %u, bitvalue %s\n", var, bitValue ? "YES" : "NO") ;
-      #endif
       if (bitValue) {
         result = recursiveContainsValue64 (gNodeArray [nodeIndex].mTHEN ^ complement, inValue, inFirstBit, inLastBitPlusOne) ;
       }else{
         result = recursiveContainsValue64 (gNodeArray [nodeIndex].mELSE ^ complement, inValue, inFirstBit, inLastBitPlusOne) ;
       }
-      #ifdef DEBUG_CONTAINS_VALUE
-        printf ("var %u, bitvalue %s returns %s\n", var, bitValue ? "YES" : "NO", result ? "YES" : "NO") ;
-      #endif
     }
   }
   return result ;
@@ -394,43 +369,22 @@ static bool recursiveContainsValue (const uint32_t inBDD,
   const uint32_t complement = inBDD & 1 ;
   if (bothBranches (gNodeArray [nodeIndex]) == 0) {
     result = complement != 0 ;
-    #ifdef DEBUG_CONTAINS_VALUE
-      printf ("result %s\n", result ? "YES" : "NO") ;
-    #endif
   }else{
     const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
     if (var >= inLastBitPlusOne) {
-      #ifdef DEBUG_CONTAINS_VALUE
-        printf ("var %u\n", var) ;
-      #endif
       result = recursiveContainsValue (gNodeArray [nodeIndex].mTHEN ^ complement, inValue, inFirstBit, inLastBitPlusOne) ;
-      #ifdef DEBUG_CONTAINS_VALUE
-        printf ("var %u branch THEN returns %s\n", var, result ? "YES" : "NO") ;
-      #endif
       if (! result) {
         result = recursiveContainsValue (gNodeArray [nodeIndex].mELSE ^ complement, inValue, inFirstBit, inLastBitPlusOne) ;
-        #ifdef DEBUG_CONTAINS_VALUE
-          printf ("var %u branch ELSE returns %s\n", var, result ? "YES" : "NO") ;
-        #endif
       }
     }else if (var < inFirstBit) {
-      #ifdef DEBUG_CONTAINS_VALUE
-        printf ("var %u -> true\n", var) ;
-      #endif
       result = true ;
     }else{
       const bool bitValue = inValue ((int32_t) (var - inFirstBit) COMMA_HERE) ;
-      #ifdef DEBUG_CONTAINS_VALUE
-        printf ("var %u, bitvalue %s\n", var, bitValue ? "YES" : "NO") ;
-      #endif
       if (bitValue) {
         result = recursiveContainsValue (gNodeArray [nodeIndex].mTHEN ^ complement, inValue, inFirstBit, inLastBitPlusOne) ;
       }else{
         result = recursiveContainsValue (gNodeArray [nodeIndex].mELSE ^ complement, inValue, inFirstBit, inLastBitPlusOne) ;
       }
-      #ifdef DEBUG_CONTAINS_VALUE
-        printf ("var %u, bitvalue %s returns %s\n", var, bitValue ? "YES" : "NO", result ? "YES" : "NO") ;
-      #endif
     }
   }
   return result ;

@@ -20,7 +20,6 @@
 
 #include "galgas2/C_galgas_CLI_Options.h"
 #include "galgas2/C_galgas_CLI_Options.h"
-//#include "streams/C_TCPSocketOut.h"
 #include "utilities/C_PrologueEpilogue.h"
 
 //--------------------------------------------------------------------------------------------------

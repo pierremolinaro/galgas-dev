@@ -334,7 +334,6 @@ C_BDD C_BDD::substitution (const uint32_t inSubstitutionArray [],
     noChangeIndex ++ ;
   }
   noChangeIndex -- ;
-  // printf ("inBDDvariablesCount %u\n", inBDDvariablesCount) ;
   return C_BDD (estIdentite ? mBDDvalue : internalRecursiveSubstitution (mBDDvalue, inSubstitutionArray, noChangeIndex, inBDDvariablesCount COMMA_THERE)) ;
 }
 

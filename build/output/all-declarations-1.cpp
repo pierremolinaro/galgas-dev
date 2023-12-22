@@ -3857,18 +3857,15 @@ void cParser_templateSyntax::rule_templateSyntax_relation_5F_term_5F_tpl_i1_ (GA
   nt_relation_5F_factor_5F_tpl_ (outArgument_outExpression, inCompiler) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_templateSyntax_1 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_1 (inCompiler) == 2) {
       GALGAS_location var_operatorLocation_2771 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 58)) ;
       inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__26_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 59)) ;
       GALGAS_templateExpressionAST var_leftOperand_2844 = outArgument_outExpression ;
       GALGAS_templateExpressionAST var_rightOperand_2902 ;
       nt_relation_5F_factor_5F_tpl_ (var_rightOperand_2902, inCompiler) ;
       outArgument_outExpression = GALGAS_templateAndOperationAST::constructor_new (var_operatorLocation_2771, var_leftOperand_2844, var_rightOperand_2902  COMMA_SOURCE_FILE ("templateSyntax.galgas", 63)) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
 }
@@ -3879,14 +3876,11 @@ void cParser_templateSyntax::rule_templateSyntax_relation_5F_term_5F_tpl_i1_pars
   nt_relation_5F_factor_5F_tpl_parse (inCompiler) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_templateSyntax_1 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_1 (inCompiler) == 2) {
       inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__26_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 59)) ;
       nt_relation_5F_factor_5F_tpl_parse (inCompiler) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
   inCompiler->resetTemplateString () ;
@@ -3898,14 +3892,11 @@ void cParser_templateSyntax::rule_templateSyntax_relation_5F_term_5F_tpl_i1_inde
   nt_relation_5F_factor_5F_tpl_indexing (inCompiler) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_templateSyntax_1 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_1 (inCompiler) == 2) {
       inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__26_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 59)) ;
       nt_relation_5F_factor_5F_tpl_indexing (inCompiler) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
 }
@@ -4255,16 +4246,13 @@ void cParser_templateSyntax::rule_templateSyntax_factor_5F_tpl_i5_ (GALGAS_templ
   nt_primary_5F_tpl_ (outArgument_outExpression, inCompiler) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_templateSyntax_5 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_5 (inCompiler) == 2) {
       inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__2E_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 206)) ;
       GALGAS_lstring var_structFieldName_9217 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("templateSyntax.galgas", 207)) ;
       outArgument_outExpression = GALGAS_structFieldAccessTemplateExpressionAST::constructor_new (var_structFieldName_9217.readProperty_location (), outArgument_outExpression, var_structFieldName_9217  COMMA_SOURCE_FILE ("templateSyntax.galgas", 208)) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
 }
@@ -4275,14 +4263,11 @@ void cParser_templateSyntax::rule_templateSyntax_factor_5F_tpl_i5_parse (C_Lexiq
   nt_primary_5F_tpl_parse (inCompiler) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_templateSyntax_5 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_5 (inCompiler) == 2) {
       inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__2E_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 206)) ;
       inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("templateSyntax.galgas", 207)) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
   inCompiler->resetTemplateString () ;
@@ -4294,14 +4279,11 @@ void cParser_templateSyntax::rule_templateSyntax_factor_5F_tpl_i5_indexing (C_Le
   nt_primary_5F_tpl_indexing (inCompiler) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_templateSyntax_5 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_5 (inCompiler) == 2) {
       inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__2E_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 206)) ;
       inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("templateSyntax.galgas", 207)) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
 }
@@ -4562,12 +4544,9 @@ void cParser_templateSyntax::rule_templateSyntax_primary_5F_tpl_i16_ (GALGAS_tem
     GALGAS_lstring var_literalString_15600 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 343)) ;
     var_literalStringList_15539.addAssign_operation (var_literalString_15600.readProperty_string ()  COMMA_SOURCE_FILE ("templateSyntax.galgas", 344)) ;
-    switch (select_templateSyntax_6 (inCompiler)) {
-    case 2: {
-    } break ;
-    default:
+    if (select_templateSyntax_6 (inCompiler) == 2) {
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
   outArgument_outExpression = GALGAS_templateLiteralStringExpressionAST::constructor_new (var_literalStringList_15539, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 347))  COMMA_SOURCE_FILE ("templateSyntax.galgas", 347)) ;
@@ -4579,12 +4558,9 @@ void cParser_templateSyntax::rule_templateSyntax_primary_5F_tpl_i16_parse (C_Lex
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 343)) ;
-    switch (select_templateSyntax_6 (inCompiler)) {
-    case 2: {
-    } break ;
-    default:
+    if (select_templateSyntax_6 (inCompiler) == 2) {
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
   inCompiler->resetTemplateString () ;
@@ -4596,12 +4572,9 @@ void cParser_templateSyntax::rule_templateSyntax_primary_5F_tpl_i16_indexing (C_
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 343)) ;
-    switch (select_templateSyntax_6 (inCompiler)) {
-    case 2: {
-    } break ;
-    default:
+    if (select_templateSyntax_6 (inCompiler) == 2) {
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
 }
@@ -4916,17 +4889,14 @@ void cParser_templateSyntax::rule_templateSyntax_output_5F_expression_5F_list_5F
   outArgument_outExpressionList = GALGAS_templateExpressionListAST::constructor_emptyList (SOURCE_FILE ("templateSyntax.galgas", 478)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_templateSyntax_10 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_10 (inCompiler) == 2) {
       GALGAS_lstring var_selector_20791 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__21_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 481)) ;
       GALGAS_templateExpressionAST var_expression_20849 ;
       nt_expression_5F_tpl_ (var_expression_20849, inCompiler) ;
       outArgument_outExpressionList.addAssign_operation (var_selector_20791, var_expression_20849, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 483))  COMMA_SOURCE_FILE ("templateSyntax.galgas", 483)) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
 }
@@ -4936,14 +4906,11 @@ void cParser_templateSyntax::rule_templateSyntax_output_5F_expression_5F_list_5F
 void cParser_templateSyntax::rule_templateSyntax_output_5F_expression_5F_list_5F_tpl_i20_parse (C_Lexique_galgasTemplateScanner * inCompiler) {
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_templateSyntax_10 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_10 (inCompiler) == 2) {
       inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__21_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 481)) ;
       nt_expression_5F_tpl_parse (inCompiler) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
   inCompiler->resetTemplateString () ;
@@ -4954,14 +4921,11 @@ void cParser_templateSyntax::rule_templateSyntax_output_5F_expression_5F_list_5F
 void cParser_templateSyntax::rule_templateSyntax_output_5F_expression_5F_list_5F_tpl_i20_indexing (C_Lexique_galgasTemplateScanner * inCompiler) {
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_templateSyntax_10 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_10 (inCompiler) == 2) {
       inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__21_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 481)) ;
       nt_expression_5F_tpl_indexing (inCompiler) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
 }
@@ -5057,13 +5021,10 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i24_ (G
     {
     routine_enterTemplateString (var_blockInstructionList_22599, inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 526)) ;
     }
-    switch (select_templateSyntax_11 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_11 (inCompiler) == 2) {
       nt_template_5F_instruction_ (var_blockInstructionList_22599, inCompiler) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
   inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_end COMMA_SOURCE_FILE ("templateSyntax.galgas", 531)) ;
@@ -5078,13 +5039,10 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i24_par
   inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__3A_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 522)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_templateSyntax_11 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_11 (inCompiler) == 2) {
       nt_template_5F_instruction_parse (inCompiler) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
   inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_end COMMA_SOURCE_FILE ("templateSyntax.galgas", 531)) ;
@@ -5099,13 +5057,10 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i24_ind
   inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__3A_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 522)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_templateSyntax_11 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_11 (inCompiler) == 2) {
       nt_template_5F_instruction_indexing (inCompiler) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
   inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_end COMMA_SOURCE_FILE ("templateSyntax.galgas", 531)) ;
@@ -5128,23 +5083,17 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i25_ (G
       {
       routine_enterTemplateString (var_instructionList_23307, inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 548)) ;
       }
-      switch (select_templateSyntax_13 (inCompiler)) {
-      case 2: {
+      if (select_templateSyntax_13 (inCompiler) == 2) {
         nt_template_5F_instruction_ (var_instructionList_23307, inCompiler) ;
-      } break ;
-      default:
+      }else{
         repeatFlag_1 = false ;
-        break ;
       }
     }
     var_templateInstructionIfBranchList_23141.addAssign_operation (var_expression_23249, var_instructionList_23307  COMMA_SOURCE_FILE ("templateSyntax.galgas", 552)) ;
-    switch (select_templateSyntax_12 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_12 (inCompiler) == 2) {
       inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_elsif COMMA_SOURCE_FILE ("templateSyntax.galgas", 554)) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
   GALGAS_templateInstructionListAST var_elseInstructionList_23588 = GALGAS_templateInstructionListAST::constructor_emptyList (SOURCE_FILE ("templateSyntax.galgas", 557)) ;
@@ -5158,13 +5107,10 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i25_ (G
       {
       routine_enterTemplateString (var_elseInstructionList_23588, inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 562)) ;
       }
-      switch (select_templateSyntax_15 (inCompiler)) {
-      case 2: {
+      if (select_templateSyntax_15 (inCompiler) == 2) {
         nt_template_5F_instruction_ (var_elseInstructionList_23588, inCompiler) ;
-      } break ;
-      default:
+      }else{
         repeatFlag_2 = false ;
-        break ;
       }
     }
   } break ;
@@ -5185,22 +5131,16 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i25_par
     inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_then COMMA_SOURCE_FILE ("templateSyntax.galgas", 545)) ;
     bool repeatFlag_1 = true ;
     while (repeatFlag_1) {
-      switch (select_templateSyntax_13 (inCompiler)) {
-      case 2: {
+      if (select_templateSyntax_13 (inCompiler) == 2) {
         nt_template_5F_instruction_parse (inCompiler) ;
-      } break ;
-      default:
+      }else{
         repeatFlag_1 = false ;
-        break ;
       }
     }
-    switch (select_templateSyntax_12 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_12 (inCompiler) == 2) {
       inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_elsif COMMA_SOURCE_FILE ("templateSyntax.galgas", 554)) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
   switch (select_templateSyntax_14 (inCompiler)) {
@@ -5210,13 +5150,10 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i25_par
     inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_else COMMA_SOURCE_FILE ("templateSyntax.galgas", 560)) ;
     bool repeatFlag_2 = true ;
     while (repeatFlag_2) {
-      switch (select_templateSyntax_15 (inCompiler)) {
-      case 2: {
+      if (select_templateSyntax_15 (inCompiler) == 2) {
         nt_template_5F_instruction_parse (inCompiler) ;
-      } break ;
-      default:
+      }else{
         repeatFlag_2 = false ;
-        break ;
       }
     }
   } break ;
@@ -5237,22 +5174,16 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i25_ind
     inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_then COMMA_SOURCE_FILE ("templateSyntax.galgas", 545)) ;
     bool repeatFlag_1 = true ;
     while (repeatFlag_1) {
-      switch (select_templateSyntax_13 (inCompiler)) {
-      case 2: {
+      if (select_templateSyntax_13 (inCompiler) == 2) {
         nt_template_5F_instruction_indexing (inCompiler) ;
-      } break ;
-      default:
+      }else{
         repeatFlag_1 = false ;
-        break ;
       }
     }
-    switch (select_templateSyntax_12 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_12 (inCompiler) == 2) {
       inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_elsif COMMA_SOURCE_FILE ("templateSyntax.galgas", 554)) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
   switch (select_templateSyntax_14 (inCompiler)) {
@@ -5262,13 +5193,10 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i25_ind
     inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_else COMMA_SOURCE_FILE ("templateSyntax.galgas", 560)) ;
     bool repeatFlag_2 = true ;
     while (repeatFlag_2) {
-      switch (select_templateSyntax_15 (inCompiler)) {
-      case 2: {
+      if (select_templateSyntax_15 (inCompiler) == 2) {
         nt_template_5F_instruction_indexing (inCompiler) ;
-      } break ;
-      default:
+      }else{
         repeatFlag_2 = false ;
-        break ;
       }
     }
   } break ;
@@ -5289,13 +5217,10 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_parser_5F_start_5F_
     {
     routine_enterTemplateString (outArgument_outResultingInstructionList, inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 579)) ;
     }
-    switch (select_templateSyntax_16 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_16 (inCompiler) == 2) {
       nt_template_5F_instruction_ (outArgument_outResultingInstructionList, inCompiler) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
 }
@@ -5305,13 +5230,10 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_parser_5F_start_5F_
 void cParser_templateSyntax::rule_templateSyntax_template_5F_parser_5F_start_5F_symbol_i26_parse (C_Lexique_galgasTemplateScanner * inCompiler) {
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_templateSyntax_16 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_16 (inCompiler) == 2) {
       nt_template_5F_instruction_parse (inCompiler) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
   inCompiler->resetTemplateString () ;
@@ -5322,13 +5244,10 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_parser_5F_start_5F_
 void cParser_templateSyntax::rule_templateSyntax_template_5F_parser_5F_start_5F_symbol_i26_indexing (C_Lexique_galgasTemplateScanner * inCompiler) {
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_templateSyntax_16 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_16 (inCompiler) == 2) {
       nt_template_5F_instruction_indexing (inCompiler) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
 }
@@ -5509,12 +5428,9 @@ void cParser_templateSyntax::rule_templateSyntax_for_5F_instruction_5F_enumerate
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     nt_for_5F_instruction_5F_element_ (var_enumeration_3341, inCompiler) ;
-    switch (select_templateSyntax_18 (inCompiler)) {
-    case 2: {
-    } break ;
-    default:
+    if (select_templateSyntax_18 (inCompiler) == 2) {
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
   GALGAS_location var_endOfProperties_3462 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 89)) ;
@@ -5546,12 +5462,9 @@ void cParser_templateSyntax::rule_templateSyntax_for_5F_instruction_5F_enumerate
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     nt_for_5F_instruction_5F_element_parse (inCompiler) ;
-    switch (select_templateSyntax_18 (inCompiler)) {
-    case 2: {
-    } break ;
-    default:
+    if (select_templateSyntax_18 (inCompiler) == 2) {
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
   inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__29_ COMMA_SOURCE_FILE ("template-for-instruction.galgas", 90)) ;
@@ -5577,12 +5490,9 @@ void cParser_templateSyntax::rule_templateSyntax_for_5F_instruction_5F_enumerate
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     nt_for_5F_instruction_5F_element_indexing (inCompiler) ;
-    switch (select_templateSyntax_18 (inCompiler)) {
-    case 2: {
-    } break ;
-    default:
+    if (select_templateSyntax_18 (inCompiler) == 2) {
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
   inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__29_ COMMA_SOURCE_FILE ("template-for-instruction.galgas", 90)) ;
@@ -5635,13 +5545,10 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i32_ (G
       {
       routine_enterTemplateString (var_beforeInstructionList_4385, inCompiler  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 125)) ;
       }
-      switch (select_templateSyntax_22 (inCompiler)) {
-      case 2: {
+      if (select_templateSyntax_22 (inCompiler) == 2) {
         nt_template_5F_instruction_ (var_beforeInstructionList_4385, inCompiler) ;
-      } break ;
-      default:
+      }else{
         repeatFlag_0 = false ;
-        break ;
       }
     }
   } break ;
@@ -5669,13 +5576,10 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i32_ (G
     {
     routine_enterTemplateString (var_doInstructionList_4833, inCompiler  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 142)) ;
     }
-    switch (select_templateSyntax_24 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_24 (inCompiler) == 2) {
       nt_template_5F_instruction_ (var_doInstructionList_4833, inCompiler) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_1 = false ;
-      break ;
     }
   }
   GALGAS_templateInstructionListAST var_betweenInstructionList_5039 = GALGAS_templateInstructionListAST::constructor_emptyList (SOURCE_FILE ("template-for-instruction.galgas", 147)) ;
@@ -5689,13 +5593,10 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i32_ (G
       {
       routine_enterTemplateString (var_betweenInstructionList_5039, inCompiler  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 152)) ;
       }
-      switch (select_templateSyntax_26 (inCompiler)) {
-      case 2: {
+      if (select_templateSyntax_26 (inCompiler) == 2) {
         nt_template_5F_instruction_ (var_betweenInstructionList_5039, inCompiler) ;
-      } break ;
-      default:
+      }else{
         repeatFlag_2 = false ;
-        break ;
       }
     }
   } break ;
@@ -5713,13 +5614,10 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i32_ (G
       {
       routine_enterTemplateString (var_afterInstructionList_5310, inCompiler  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 163)) ;
       }
-      switch (select_templateSyntax_28 (inCompiler)) {
-      case 2: {
+      if (select_templateSyntax_28 (inCompiler) == 2) {
         nt_template_5F_instruction_ (var_beforeInstructionList_4385, inCompiler) ;
-      } break ;
-      default:
+      }else{
         repeatFlag_3 = false ;
-        break ;
       }
     }
   } break ;
@@ -5754,13 +5652,10 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i32_par
     inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_before COMMA_SOURCE_FILE ("template-for-instruction.galgas", 123)) ;
     bool repeatFlag_0 = true ;
     while (repeatFlag_0) {
-      switch (select_templateSyntax_22 (inCompiler)) {
-      case 2: {
+      if (select_templateSyntax_22 (inCompiler) == 2) {
         nt_template_5F_instruction_parse (inCompiler) ;
-      } break ;
-      default:
+      }else{
         repeatFlag_0 = false ;
-        break ;
       }
     }
   } break ;
@@ -5781,13 +5676,10 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i32_par
   }
   bool repeatFlag_1 = true ;
   while (repeatFlag_1) {
-    switch (select_templateSyntax_24 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_24 (inCompiler) == 2) {
       nt_template_5F_instruction_parse (inCompiler) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_1 = false ;
-      break ;
     }
   }
   switch (select_templateSyntax_25 (inCompiler)) {
@@ -5797,13 +5689,10 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i32_par
     inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_between COMMA_SOURCE_FILE ("template-for-instruction.galgas", 150)) ;
     bool repeatFlag_2 = true ;
     while (repeatFlag_2) {
-      switch (select_templateSyntax_26 (inCompiler)) {
-      case 2: {
+      if (select_templateSyntax_26 (inCompiler) == 2) {
         nt_template_5F_instruction_parse (inCompiler) ;
-      } break ;
-      default:
+      }else{
         repeatFlag_2 = false ;
-        break ;
       }
     }
   } break ;
@@ -5817,13 +5706,10 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i32_par
     inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_after COMMA_SOURCE_FILE ("template-for-instruction.galgas", 161)) ;
     bool repeatFlag_3 = true ;
     while (repeatFlag_3) {
-      switch (select_templateSyntax_28 (inCompiler)) {
-      case 2: {
+      if (select_templateSyntax_28 (inCompiler) == 2) {
         nt_template_5F_instruction_parse (inCompiler) ;
-      } break ;
-      default:
+      }else{
         repeatFlag_3 = false ;
-        break ;
       }
     }
   } break ;
@@ -5858,13 +5744,10 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i32_ind
     inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_before COMMA_SOURCE_FILE ("template-for-instruction.galgas", 123)) ;
     bool repeatFlag_0 = true ;
     while (repeatFlag_0) {
-      switch (select_templateSyntax_22 (inCompiler)) {
-      case 2: {
+      if (select_templateSyntax_22 (inCompiler) == 2) {
         nt_template_5F_instruction_indexing (inCompiler) ;
-      } break ;
-      default:
+      }else{
         repeatFlag_0 = false ;
-        break ;
       }
     }
   } break ;
@@ -5885,13 +5768,10 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i32_ind
   }
   bool repeatFlag_1 = true ;
   while (repeatFlag_1) {
-    switch (select_templateSyntax_24 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_24 (inCompiler) == 2) {
       nt_template_5F_instruction_indexing (inCompiler) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_1 = false ;
-      break ;
     }
   }
   switch (select_templateSyntax_25 (inCompiler)) {
@@ -5901,13 +5781,10 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i32_ind
     inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_between COMMA_SOURCE_FILE ("template-for-instruction.galgas", 150)) ;
     bool repeatFlag_2 = true ;
     while (repeatFlag_2) {
-      switch (select_templateSyntax_26 (inCompiler)) {
-      case 2: {
+      if (select_templateSyntax_26 (inCompiler) == 2) {
         nt_template_5F_instruction_indexing (inCompiler) ;
-      } break ;
-      default:
+      }else{
         repeatFlag_2 = false ;
-        break ;
       }
     }
   } break ;
@@ -5921,13 +5798,10 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i32_ind
     inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_after COMMA_SOURCE_FILE ("template-for-instruction.galgas", 161)) ;
     bool repeatFlag_3 = true ;
     while (repeatFlag_3) {
-      switch (select_templateSyntax_28 (inCompiler)) {
-      case 2: {
+      if (select_templateSyntax_28 (inCompiler) == 2) {
         nt_template_5F_instruction_indexing (inCompiler) ;
-      } break ;
-      default:
+      }else{
         repeatFlag_3 = false ;
-        break ;
       }
     }
   } break ;
@@ -5948,8 +5822,7 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i33_ (G
   GALGAS_templateInstructionSwitchBranchListAST var_templateInstructionSwitchBranchList_1602 = GALGAS_templateInstructionSwitchBranchListAST::constructor_emptyList (SOURCE_FILE ("template-switch-instruction.galgas", 34)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_templateSyntax_29 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_29 (inCompiler) == 2) {
       inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_case COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 37)) ;
       GALGAS_lstringlist var_constantNameList_1723 ;
       GALGAS_switchExtractedValuesListAST var_associatedValuesExtraction_1783 ;
@@ -5961,20 +5834,15 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i33_ (G
         {
         routine_enterTemplateString (var_instructionList_1858, inCompiler  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 44)) ;
         }
-        switch (select_templateSyntax_30 (inCompiler)) {
-        case 2: {
+        if (select_templateSyntax_30 (inCompiler) == 2) {
           nt_template_5F_instruction_ (var_instructionList_1858, inCompiler) ;
-        } break ;
-        default:
+        }else{
           repeatFlag_1 = false ;
-          break ;
         }
       }
       var_templateInstructionSwitchBranchList_1602.addAssign_operation (var_constantNameList_1723, var_associatedValuesExtraction_1783, var_instructionList_1858, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 48))  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 48)) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
   inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_end COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 50)) ;
@@ -5988,26 +5856,20 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i33_par
   nt_expression_5F_tpl_parse (inCompiler) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_templateSyntax_29 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_29 (inCompiler) == 2) {
       inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_case COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 37)) ;
       nt_switch_5F_case_parse (inCompiler) ;
       inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__3A_ COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 41)) ;
       bool repeatFlag_1 = true ;
       while (repeatFlag_1) {
-        switch (select_templateSyntax_30 (inCompiler)) {
-        case 2: {
+        if (select_templateSyntax_30 (inCompiler) == 2) {
           nt_template_5F_instruction_parse (inCompiler) ;
-        } break ;
-        default:
+        }else{
           repeatFlag_1 = false ;
-          break ;
         }
       }
-    } break ;
-    default:
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
   inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_end COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 50)) ;
@@ -6021,26 +5883,20 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i33_ind
   nt_expression_5F_tpl_indexing (inCompiler) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_templateSyntax_29 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_29 (inCompiler) == 2) {
       inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_case COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 37)) ;
       nt_switch_5F_case_indexing (inCompiler) ;
       inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__3A_ COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 41)) ;
       bool repeatFlag_1 = true ;
       while (repeatFlag_1) {
-        switch (select_templateSyntax_30 (inCompiler)) {
-        case 2: {
+        if (select_templateSyntax_30 (inCompiler) == 2) {
           nt_template_5F_instruction_indexing (inCompiler) ;
-        } break ;
-        default:
+        }else{
           repeatFlag_1 = false ;
-          break ;
         }
       }
-    } break ;
-    default:
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
   inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_end COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 50)) ;
@@ -6059,13 +5915,10 @@ void cParser_templateSyntax::rule_templateSyntax_switch_5F_case_i34_ (GALGAS_lst
     GALGAS_lstring var_constantName_2652 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 67)) ;
     outArgument_outConstantNameList.addAssign_operation (var_constantName_2652  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 68)) ;
-    switch (select_templateSyntax_31 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_31 (inCompiler) == 2) {
       inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__2C_ COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 70)) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
   outArgument_outAssociatedValuesExtraction = GALGAS_switchExtractedValuesListAST::constructor_emptyList (SOURCE_FILE ("template-switch-instruction.galgas", 72)) ;
@@ -6123,12 +5976,9 @@ void cParser_templateSyntax::rule_templateSyntax_switch_5F_case_i34_ (GALGAS_lst
       default:
         break ;
       }
-      switch (select_templateSyntax_33 (inCompiler)) {
-      case 2: {
-      } break ;
-      default:
+      if (select_templateSyntax_33 (inCompiler) == 2) {
+      }else{
         repeatFlag_1 = false ;
-        break ;
       }
     }
     inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__29_ COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 105)) ;
@@ -6144,13 +5994,10 @@ void cParser_templateSyntax::rule_templateSyntax_switch_5F_case_i34_parse (C_Lex
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 67)) ;
-    switch (select_templateSyntax_31 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_31 (inCompiler) == 2) {
       inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__2C_ COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 70)) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
   switch (select_templateSyntax_32 (inCompiler)) {
@@ -6192,12 +6039,9 @@ void cParser_templateSyntax::rule_templateSyntax_switch_5F_case_i34_parse (C_Lex
       default:
         break ;
       }
-      switch (select_templateSyntax_33 (inCompiler)) {
-      case 2: {
-      } break ;
-      default:
+      if (select_templateSyntax_33 (inCompiler) == 2) {
+      }else{
         repeatFlag_1 = false ;
-        break ;
       }
     }
     inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__29_ COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 105)) ;
@@ -6214,13 +6058,10 @@ void cParser_templateSyntax::rule_templateSyntax_switch_5F_case_i34_indexing (C_
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 67)) ;
-    switch (select_templateSyntax_31 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_31 (inCompiler) == 2) {
       inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__2C_ COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 70)) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
   switch (select_templateSyntax_32 (inCompiler)) {
@@ -6262,12 +6103,9 @@ void cParser_templateSyntax::rule_templateSyntax_switch_5F_case_i34_indexing (C_
       default:
         break ;
       }
-      switch (select_templateSyntax_33 (inCompiler)) {
-      case 2: {
-      } break ;
-      default:
+      if (select_templateSyntax_33 (inCompiler) == 2) {
+      }else{
         repeatFlag_1 = false ;
-        break ;
       }
     }
     inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__29_ COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 105)) ;
@@ -14823,6 +14661,745 @@ GALGAS_lexicalStyleListAST GALGAS_lexicalStyleListAST::extractObject (const GALG
       result = *p ;
     }else{
       inCompiler->castError ("lexicalStyleListAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//Class for element of '@terminalDeclarationListAST' list
+//
+//--------------------------------------------------------------------------------------------------
+
+class cCollectionElement_terminalDeclarationListAST : public cCollectionElement {
+  public: GALGAS_terminalDeclarationListAST_2D_element mObject ;
+
+//--- Constructors
+  public: cCollectionElement_terminalDeclarationListAST (const GALGAS_lstring & in_mName,
+                                                         const GALGAS_sentLexicalAttributeListAST & in_mSentAttributeList,
+                                                         const GALGAS_lstring & in_mSyntaxErrorMessage,
+                                                         const GALGAS_lstring & in_mStyle,
+                                                         const GALGAS_bool & in_nonAtomicSelection,
+                                                         const GALGAS_bool & in_isEndOfTemplateMark
+                                                         COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_terminalDeclarationListAST (const GALGAS_terminalDeclarationListAST_2D_element & inElement COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method for comparing elements
+  public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+
+//--- Virtual method that checks that all attributes are valid
+  public: virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public: virtual cCollectionElement * copy (void) ;
+
+//--- Description
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+cCollectionElement_terminalDeclarationListAST::cCollectionElement_terminalDeclarationListAST (const GALGAS_lstring & in_mName,
+                                                                                              const GALGAS_sentLexicalAttributeListAST & in_mSentAttributeList,
+                                                                                              const GALGAS_lstring & in_mSyntaxErrorMessage,
+                                                                                              const GALGAS_lstring & in_mStyle,
+                                                                                              const GALGAS_bool & in_nonAtomicSelection,
+                                                                                              const GALGAS_bool & in_isEndOfTemplateMark
+                                                                                              COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (in_mName, in_mSentAttributeList, in_mSyntaxErrorMessage, in_mStyle, in_nonAtomicSelection, in_isEndOfTemplateMark) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cCollectionElement_terminalDeclarationListAST::cCollectionElement_terminalDeclarationListAST (const GALGAS_terminalDeclarationListAST_2D_element & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (inElement.mProperty_mName, inElement.mProperty_mSentAttributeList, inElement.mProperty_mSyntaxErrorMessage, inElement.mProperty_mStyle, inElement.mProperty_nonAtomicSelection, inElement.mProperty_isEndOfTemplateMark) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool cCollectionElement_terminalDeclarationListAST::isValid (void) const {
+  return true ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cCollectionElement * cCollectionElement_terminalDeclarationListAST::copy (void) {
+  cCollectionElement * result = nullptr ;
+  macroMyNew (result, cCollectionElement_terminalDeclarationListAST (mObject.mProperty_mName, mObject.mProperty_mSentAttributeList, mObject.mProperty_mSyntaxErrorMessage, mObject.mProperty_mStyle, mObject.mProperty_nonAtomicSelection, mObject.mProperty_isEndOfTemplateMark COMMA_HERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cCollectionElement_terminalDeclarationListAST::description (String & ioString, const int32_t inIndentation) const {
+  ioString.addNL () ;
+  ioString.addStringMultiple ("| ", inIndentation) ;
+  ioString.addString ("mName" ":") ;
+  mObject.mProperty_mName.description (ioString, inIndentation) ;
+  ioString.addNL () ;
+  ioString.addStringMultiple ("| ", inIndentation) ;
+  ioString.addString ("mSentAttributeList" ":") ;
+  mObject.mProperty_mSentAttributeList.description (ioString, inIndentation) ;
+  ioString.addNL () ;
+  ioString.addStringMultiple ("| ", inIndentation) ;
+  ioString.addString ("mSyntaxErrorMessage" ":") ;
+  mObject.mProperty_mSyntaxErrorMessage.description (ioString, inIndentation) ;
+  ioString.addNL () ;
+  ioString.addStringMultiple ("| ", inIndentation) ;
+  ioString.addString ("mStyle" ":") ;
+  mObject.mProperty_mStyle.description (ioString, inIndentation) ;
+  ioString.addNL () ;
+  ioString.addStringMultiple ("| ", inIndentation) ;
+  ioString.addString ("nonAtomicSelection" ":") ;
+  mObject.mProperty_nonAtomicSelection.description (ioString, inIndentation) ;
+  ioString.addNL () ;
+  ioString.addStringMultiple ("| ", inIndentation) ;
+  ioString.addString ("isEndOfTemplateMark" ":") ;
+  mObject.mProperty_isEndOfTemplateMark.description (ioString, inIndentation) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+typeComparisonResult cCollectionElement_terminalDeclarationListAST::compare (const cCollectionElement * inOperand) const {
+  cCollectionElement_terminalDeclarationListAST * operand = (cCollectionElement_terminalDeclarationListAST *) inOperand ;
+  macroValidSharedObject (operand, cCollectionElement_terminalDeclarationListAST) ;
+  return mObject.objectCompare (operand->mObject) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_terminalDeclarationListAST::GALGAS_terminalDeclarationListAST (void) :
+AC_GALGAS_list () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_terminalDeclarationListAST::GALGAS_terminalDeclarationListAST (const capCollectionElementArray & inSharedArray) :
+AC_GALGAS_list (inSharedArray) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_terminalDeclarationListAST GALGAS_terminalDeclarationListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_terminalDeclarationListAST (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_terminalDeclarationListAST GALGAS_terminalDeclarationListAST::constructor_listWithValue (const GALGAS_lstring & inOperand0,
+                                                                                                const GALGAS_sentLexicalAttributeListAST & inOperand1,
+                                                                                                const GALGAS_lstring & inOperand2,
+                                                                                                const GALGAS_lstring & inOperand3,
+                                                                                                const GALGAS_bool & inOperand4,
+                                                                                                const GALGAS_bool & inOperand5
+                                                                                                COMMA_LOCATION_ARGS) {
+  GALGAS_terminalDeclarationListAST result ;
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid ()) {
+    result = GALGAS_terminalDeclarationListAST (capCollectionElementArray ()) ;
+    capCollectionElement attributes ;
+    GALGAS_terminalDeclarationListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5 COMMA_THERE) ;
+    result.appendObject (attributes) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_terminalDeclarationListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
+                                                                   const GALGAS_lstring & in_mName,
+                                                                   const GALGAS_sentLexicalAttributeListAST & in_mSentAttributeList,
+                                                                   const GALGAS_lstring & in_mSyntaxErrorMessage,
+                                                                   const GALGAS_lstring & in_mStyle,
+                                                                   const GALGAS_bool & in_nonAtomicSelection,
+                                                                   const GALGAS_bool & in_isEndOfTemplateMark
+                                                                   COMMA_LOCATION_ARGS) {
+  cCollectionElement_terminalDeclarationListAST * p = nullptr ;
+  macroMyNew (p, cCollectionElement_terminalDeclarationListAST (in_mName,
+                                                                in_mSentAttributeList,
+                                                                in_mSyntaxErrorMessage,
+                                                                in_mStyle,
+                                                                in_nonAtomicSelection,
+                                                                in_isEndOfTemplateMark COMMA_THERE)) ;
+  outAttributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_terminalDeclarationListAST::addAssign_operation (const GALGAS_lstring & inOperand0,
+                                                             const GALGAS_sentLexicalAttributeListAST & inOperand1,
+                                                             const GALGAS_lstring & inOperand2,
+                                                             const GALGAS_lstring & inOperand3,
+                                                             const GALGAS_bool & inOperand4,
+                                                             const GALGAS_bool & inOperand5
+                                                             COMMA_LOCATION_ARGS) {
+  if (isValid ()) {
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_terminalDeclarationListAST (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_terminalDeclarationListAST::setter_append (const GALGAS_lstring inOperand0,
+                                                       const GALGAS_sentLexicalAttributeListAST inOperand1,
+                                                       const GALGAS_lstring inOperand2,
+                                                       const GALGAS_lstring inOperand3,
+                                                       const GALGAS_bool inOperand4,
+                                                       const GALGAS_bool inOperand5,
+                                                       Compiler * /* inCompiler */
+                                                       COMMA_LOCATION_ARGS) {
+  if (isValid ()) {
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_terminalDeclarationListAST (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_terminalDeclarationListAST::setter_insertAtIndex (const GALGAS_lstring inOperand0,
+                                                              const GALGAS_sentLexicalAttributeListAST inOperand1,
+                                                              const GALGAS_lstring inOperand2,
+                                                              const GALGAS_lstring inOperand3,
+                                                              const GALGAS_bool inOperand4,
+                                                              const GALGAS_bool inOperand5,
+                                                              const GALGAS_uint inInsertionIndex,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) {
+  if (isValid ()) {
+    if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid ()) {
+      cCollectionElement * p = nullptr ;
+      macroMyNew (p, cCollectionElement_terminalDeclarationListAST (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5 COMMA_THERE)) ;
+      capCollectionElement attributes ;
+      attributes.setPointer (p) ;
+      macroDetachSharedObject (p) ;
+      insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+    }else{
+      drop () ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_terminalDeclarationListAST::setter_removeAtIndex (GALGAS_lstring & outOperand0,
+                                                              GALGAS_sentLexicalAttributeListAST & outOperand1,
+                                                              GALGAS_lstring & outOperand2,
+                                                              GALGAS_lstring & outOperand3,
+                                                              GALGAS_bool & outOperand4,
+                                                              GALGAS_bool & outOperand5,
+                                                              const GALGAS_uint inRemoveIndex,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) {
+  if (isValid ()) {
+    if (inRemoveIndex.isValid ()) {
+      capCollectionElement attributes ;
+      removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+      cCollectionElement_terminalDeclarationListAST * p = (cCollectionElement_terminalDeclarationListAST *) attributes.ptr () ;
+      if (nullptr == p) {
+        outOperand0.drop () ;
+        outOperand1.drop () ;
+        outOperand2.drop () ;
+        outOperand3.drop () ;
+        outOperand4.drop () ;
+        outOperand5.drop () ;
+        drop () ;
+      }else{
+        macroValidSharedObject (p, cCollectionElement_terminalDeclarationListAST) ;
+        outOperand0 = p->mObject.mProperty_mName ;
+        outOperand1 = p->mObject.mProperty_mSentAttributeList ;
+        outOperand2 = p->mObject.mProperty_mSyntaxErrorMessage ;
+        outOperand3 = p->mObject.mProperty_mStyle ;
+        outOperand4 = p->mObject.mProperty_nonAtomicSelection ;
+        outOperand5 = p->mObject.mProperty_isEndOfTemplateMark ;
+      }
+    }else{
+      outOperand0.drop () ;
+      outOperand1.drop () ;
+      outOperand2.drop () ;
+      outOperand3.drop () ;
+      outOperand4.drop () ;
+      outOperand5.drop () ;
+      drop () ;    
+    }
+  }else{
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+    outOperand3.drop () ;
+    outOperand4.drop () ;
+    outOperand5.drop () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_terminalDeclarationListAST::setter_popFirst (GALGAS_lstring & outOperand0,
+                                                         GALGAS_sentLexicalAttributeListAST & outOperand1,
+                                                         GALGAS_lstring & outOperand2,
+                                                         GALGAS_lstring & outOperand3,
+                                                         GALGAS_bool & outOperand4,
+                                                         GALGAS_bool & outOperand5,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_terminalDeclarationListAST * p = (cCollectionElement_terminalDeclarationListAST *) attributes.ptr () ;
+  if (nullptr == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+    outOperand3.drop () ;
+    outOperand4.drop () ;
+    outOperand5.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_terminalDeclarationListAST) ;
+    outOperand0 = p->mObject.mProperty_mName ;
+    outOperand1 = p->mObject.mProperty_mSentAttributeList ;
+    outOperand2 = p->mObject.mProperty_mSyntaxErrorMessage ;
+    outOperand3 = p->mObject.mProperty_mStyle ;
+    outOperand4 = p->mObject.mProperty_nonAtomicSelection ;
+    outOperand5 = p->mObject.mProperty_isEndOfTemplateMark ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_terminalDeclarationListAST::setter_popLast (GALGAS_lstring & outOperand0,
+                                                        GALGAS_sentLexicalAttributeListAST & outOperand1,
+                                                        GALGAS_lstring & outOperand2,
+                                                        GALGAS_lstring & outOperand3,
+                                                        GALGAS_bool & outOperand4,
+                                                        GALGAS_bool & outOperand5,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeLastObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_terminalDeclarationListAST * p = (cCollectionElement_terminalDeclarationListAST *) attributes.ptr () ;
+  if (nullptr == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+    outOperand3.drop () ;
+    outOperand4.drop () ;
+    outOperand5.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_terminalDeclarationListAST) ;
+    outOperand0 = p->mObject.mProperty_mName ;
+    outOperand1 = p->mObject.mProperty_mSentAttributeList ;
+    outOperand2 = p->mObject.mProperty_mSyntaxErrorMessage ;
+    outOperand3 = p->mObject.mProperty_mStyle ;
+    outOperand4 = p->mObject.mProperty_nonAtomicSelection ;
+    outOperand5 = p->mObject.mProperty_isEndOfTemplateMark ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_terminalDeclarationListAST::method_first (GALGAS_lstring & outOperand0,
+                                                      GALGAS_sentLexicalAttributeListAST & outOperand1,
+                                                      GALGAS_lstring & outOperand2,
+                                                      GALGAS_lstring & outOperand3,
+                                                      GALGAS_bool & outOperand4,
+                                                      GALGAS_bool & outOperand5,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readFirst (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_terminalDeclarationListAST * p = (cCollectionElement_terminalDeclarationListAST *) attributes.ptr () ;
+  if (nullptr == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+    outOperand3.drop () ;
+    outOperand4.drop () ;
+    outOperand5.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_terminalDeclarationListAST) ;
+    outOperand0 = p->mObject.mProperty_mName ;
+    outOperand1 = p->mObject.mProperty_mSentAttributeList ;
+    outOperand2 = p->mObject.mProperty_mSyntaxErrorMessage ;
+    outOperand3 = p->mObject.mProperty_mStyle ;
+    outOperand4 = p->mObject.mProperty_nonAtomicSelection ;
+    outOperand5 = p->mObject.mProperty_isEndOfTemplateMark ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_terminalDeclarationListAST::method_last (GALGAS_lstring & outOperand0,
+                                                     GALGAS_sentLexicalAttributeListAST & outOperand1,
+                                                     GALGAS_lstring & outOperand2,
+                                                     GALGAS_lstring & outOperand3,
+                                                     GALGAS_bool & outOperand4,
+                                                     GALGAS_bool & outOperand5,
+                                                     Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readLast (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_terminalDeclarationListAST * p = (cCollectionElement_terminalDeclarationListAST *) attributes.ptr () ;
+  if (nullptr == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+    outOperand3.drop () ;
+    outOperand4.drop () ;
+    outOperand5.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_terminalDeclarationListAST) ;
+    outOperand0 = p->mObject.mProperty_mName ;
+    outOperand1 = p->mObject.mProperty_mSentAttributeList ;
+    outOperand2 = p->mObject.mProperty_mSyntaxErrorMessage ;
+    outOperand3 = p->mObject.mProperty_mStyle ;
+    outOperand4 = p->mObject.mProperty_nonAtomicSelection ;
+    outOperand5 = p->mObject.mProperty_isEndOfTemplateMark ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_terminalDeclarationListAST GALGAS_terminalDeclarationListAST::add_operation (const GALGAS_terminalDeclarationListAST & inOperand,
+                                                                                    Compiler * /* inCompiler */
+                                                                                    COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_terminalDeclarationListAST result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.appendList (inOperand) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_terminalDeclarationListAST GALGAS_terminalDeclarationListAST::getter_subListWithRange (const GALGAS_range & inRange,
+                                                                                              Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) const {
+  GALGAS_terminalDeclarationListAST result = GALGAS_terminalDeclarationListAST::constructor_emptyList (THERE) ;
+  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_terminalDeclarationListAST GALGAS_terminalDeclarationListAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
+                                                                                              Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) const {
+  GALGAS_terminalDeclarationListAST result = GALGAS_terminalDeclarationListAST::constructor_emptyList (THERE) ;
+  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_terminalDeclarationListAST GALGAS_terminalDeclarationListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
+                                                                                            Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) const {
+  GALGAS_terminalDeclarationListAST result = GALGAS_terminalDeclarationListAST::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_terminalDeclarationListAST::plusAssign_operation (const GALGAS_terminalDeclarationListAST inOperand,
+                                                              Compiler * /* inCompiler */
+                                                              COMMA_UNUSED_LOCATION_ARGS) {
+  appendList (inOperand) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_terminalDeclarationListAST::setter_setMNameAtIndex (GALGAS_lstring inOperand,
+                                                                GALGAS_uint inIndex,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) {
+  cCollectionElement_terminalDeclarationListAST * p = (cCollectionElement_terminalDeclarationListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_terminalDeclarationListAST) ;
+    macroUniqueSharedObject (p) ;
+    p->mObject.mProperty_mName = inOperand ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lstring GALGAS_terminalDeclarationListAST::getter_mNameAtIndex (const GALGAS_uint & inIndex,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_terminalDeclarationListAST * p = (cCollectionElement_terminalDeclarationListAST *) attributes.ptr () ;
+  GALGAS_lstring result ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_terminalDeclarationListAST) ;
+    result = p->mObject.mProperty_mName ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_terminalDeclarationListAST::setter_setMSentAttributeListAtIndex (GALGAS_sentLexicalAttributeListAST inOperand,
+                                                                             GALGAS_uint inIndex,
+                                                                             Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) {
+  cCollectionElement_terminalDeclarationListAST * p = (cCollectionElement_terminalDeclarationListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_terminalDeclarationListAST) ;
+    macroUniqueSharedObject (p) ;
+    p->mObject.mProperty_mSentAttributeList = inOperand ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_sentLexicalAttributeListAST GALGAS_terminalDeclarationListAST::getter_mSentAttributeListAtIndex (const GALGAS_uint & inIndex,
+                                                                                                        Compiler * inCompiler
+                                                                                                        COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_terminalDeclarationListAST * p = (cCollectionElement_terminalDeclarationListAST *) attributes.ptr () ;
+  GALGAS_sentLexicalAttributeListAST result ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_terminalDeclarationListAST) ;
+    result = p->mObject.mProperty_mSentAttributeList ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_terminalDeclarationListAST::setter_setMSyntaxErrorMessageAtIndex (GALGAS_lstring inOperand,
+                                                                              GALGAS_uint inIndex,
+                                                                              Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) {
+  cCollectionElement_terminalDeclarationListAST * p = (cCollectionElement_terminalDeclarationListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_terminalDeclarationListAST) ;
+    macroUniqueSharedObject (p) ;
+    p->mObject.mProperty_mSyntaxErrorMessage = inOperand ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lstring GALGAS_terminalDeclarationListAST::getter_mSyntaxErrorMessageAtIndex (const GALGAS_uint & inIndex,
+                                                                                     Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_terminalDeclarationListAST * p = (cCollectionElement_terminalDeclarationListAST *) attributes.ptr () ;
+  GALGAS_lstring result ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_terminalDeclarationListAST) ;
+    result = p->mObject.mProperty_mSyntaxErrorMessage ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_terminalDeclarationListAST::setter_setMStyleAtIndex (GALGAS_lstring inOperand,
+                                                                 GALGAS_uint inIndex,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) {
+  cCollectionElement_terminalDeclarationListAST * p = (cCollectionElement_terminalDeclarationListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_terminalDeclarationListAST) ;
+    macroUniqueSharedObject (p) ;
+    p->mObject.mProperty_mStyle = inOperand ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lstring GALGAS_terminalDeclarationListAST::getter_mStyleAtIndex (const GALGAS_uint & inIndex,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_terminalDeclarationListAST * p = (cCollectionElement_terminalDeclarationListAST *) attributes.ptr () ;
+  GALGAS_lstring result ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_terminalDeclarationListAST) ;
+    result = p->mObject.mProperty_mStyle ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_terminalDeclarationListAST::setter_setNonAtomicSelectionAtIndex (GALGAS_bool inOperand,
+                                                                             GALGAS_uint inIndex,
+                                                                             Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) {
+  cCollectionElement_terminalDeclarationListAST * p = (cCollectionElement_terminalDeclarationListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_terminalDeclarationListAST) ;
+    macroUniqueSharedObject (p) ;
+    p->mObject.mProperty_nonAtomicSelection = inOperand ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_terminalDeclarationListAST::getter_nonAtomicSelectionAtIndex (const GALGAS_uint & inIndex,
+                                                                                 Compiler * inCompiler
+                                                                                 COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_terminalDeclarationListAST * p = (cCollectionElement_terminalDeclarationListAST *) attributes.ptr () ;
+  GALGAS_bool result ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_terminalDeclarationListAST) ;
+    result = p->mObject.mProperty_nonAtomicSelection ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_terminalDeclarationListAST::setter_setIsEndOfTemplateMarkAtIndex (GALGAS_bool inOperand,
+                                                                              GALGAS_uint inIndex,
+                                                                              Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) {
+  cCollectionElement_terminalDeclarationListAST * p = (cCollectionElement_terminalDeclarationListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_terminalDeclarationListAST) ;
+    macroUniqueSharedObject (p) ;
+    p->mObject.mProperty_isEndOfTemplateMark = inOperand ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_terminalDeclarationListAST::getter_isEndOfTemplateMarkAtIndex (const GALGAS_uint & inIndex,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_terminalDeclarationListAST * p = (cCollectionElement_terminalDeclarationListAST *) attributes.ptr () ;
+  GALGAS_bool result ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_terminalDeclarationListAST) ;
+    result = p->mObject.mProperty_isEndOfTemplateMark ;
+  }
+  return result ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+
+cEnumerator_terminalDeclarationListAST::cEnumerator_terminalDeclarationListAST (const GALGAS_terminalDeclarationListAST & inEnumeratedObject,
+                                                                                const typeEnumerationOrder inOrder) :
+cGenericAbstractEnumerator (inOrder) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_terminalDeclarationListAST_2D_element cEnumerator_terminalDeclarationListAST::current (LOCATION_ARGS) const {
+  const cCollectionElement_terminalDeclarationListAST * p = (const cCollectionElement_terminalDeclarationListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_terminalDeclarationListAST) ;
+  return p->mObject ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lstring cEnumerator_terminalDeclarationListAST::current_mName (LOCATION_ARGS) const {
+  const cCollectionElement_terminalDeclarationListAST * p = (const cCollectionElement_terminalDeclarationListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_terminalDeclarationListAST) ;
+  return p->mObject.mProperty_mName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_sentLexicalAttributeListAST cEnumerator_terminalDeclarationListAST::current_mSentAttributeList (LOCATION_ARGS) const {
+  const cCollectionElement_terminalDeclarationListAST * p = (const cCollectionElement_terminalDeclarationListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_terminalDeclarationListAST) ;
+  return p->mObject.mProperty_mSentAttributeList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lstring cEnumerator_terminalDeclarationListAST::current_mSyntaxErrorMessage (LOCATION_ARGS) const {
+  const cCollectionElement_terminalDeclarationListAST * p = (const cCollectionElement_terminalDeclarationListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_terminalDeclarationListAST) ;
+  return p->mObject.mProperty_mSyntaxErrorMessage ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lstring cEnumerator_terminalDeclarationListAST::current_mStyle (LOCATION_ARGS) const {
+  const cCollectionElement_terminalDeclarationListAST * p = (const cCollectionElement_terminalDeclarationListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_terminalDeclarationListAST) ;
+  return p->mObject.mProperty_mStyle ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool cEnumerator_terminalDeclarationListAST::current_nonAtomicSelection (LOCATION_ARGS) const {
+  const cCollectionElement_terminalDeclarationListAST * p = (const cCollectionElement_terminalDeclarationListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_terminalDeclarationListAST) ;
+  return p->mObject.mProperty_nonAtomicSelection ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool cEnumerator_terminalDeclarationListAST::current_isEndOfTemplateMark (LOCATION_ARGS) const {
+  const cCollectionElement_terminalDeclarationListAST * p = (const cCollectionElement_terminalDeclarationListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_terminalDeclarationListAST) ;
+  return p->mObject.mProperty_isEndOfTemplateMark ;
+}
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @terminalDeclarationListAST generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_terminalDeclarationListAST ("terminalDeclarationListAST",
+                                                   nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_terminalDeclarationListAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_terminalDeclarationListAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_terminalDeclarationListAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_terminalDeclarationListAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_terminalDeclarationListAST GALGAS_terminalDeclarationListAST::extractObject (const GALGAS_object & inObject,
+                                                                                    Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_terminalDeclarationListAST result ;
+  const GALGAS_terminalDeclarationListAST * p = (const GALGAS_terminalDeclarationListAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_terminalDeclarationListAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("terminalDeclarationListAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

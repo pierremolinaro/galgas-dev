@@ -19,11 +19,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "all-predefined-types.h"
-#include "galgas2/C_galgas_CLI_Options.h"
 #include "galgas2/Compiler.h"
-#include "command_line_interface/F_mainForLIBPM.h"
-#include "command_line_interface/F_Analyze_CLI_Options.h"
-#include "strings/unicode_character_cpp.h"
 #include "galgas2/C_galgas_io.h"
 #include "files/C_FileManager.h"
 #include "files/C_BinaryFileWrite.h"
@@ -263,8 +259,7 @@ GALGAS_string GALGAS_string::constructor_stringWithContentsOfFile (const GALGAS_
     if (C_FileManager::fileExistsAtPath (inFilePath.mString)) {
       result = GALGAS_string (C_FileManager::stringWithContentOfFile (inFilePath.mString)) ;
     }else{
-      String message ;
-      message.addString ("cannot read '") ;
+      String message = "cannot read '" ;
       message.addString (inFilePath.mString) ;
       message.addString ("' file (does not exist)") ;
       inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
@@ -288,8 +283,7 @@ GALGAS_string GALGAS_string::constructor_stringWithEnvironmentVariable (const GA
   if (inEnvironmentVariableName.isValid ()) {
     const char * value = ::getenv (inEnvironmentVariableName.mString.cString (HERE)) ;
     if (value == nullptr) {
-      String message ;
-      message.addString ("the '") ;
+      String message = "the '" ;
       message.addString (inEnvironmentVariableName.mString) ;
       message.addString ("' environment variable does not exist") ;
       inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
@@ -350,15 +344,6 @@ GALGAS_string GALGAS_string::constructor_stringWithCurrentDateTime (UNUSED_LOCAT
   bool ok = currentTime >= 0 ;
   if (ok) {
     ::strftime (timeString, sizeof (timeString), "Www Mmm dd hh:mm:ss yyyy", & currentTimeTM) ;
-//    timeString = ::ctime (& currentTime) ;
-//    ok = timeString != nullptr ;
-//    if (ok) {
-//      const size_t length = ::strlen (timeString) ;
-//      ok = length > 0 ;
-//      if (ok) {
-//        timeString [length - 1] = '\0' ; // Suppress trailing '\n'
-//      }
-//    }
   }
   return GALGAS_string (ok ? timeString : "") ;
 }
@@ -369,7 +354,6 @@ GALGAS_string GALGAS_string::constructor_retrieveAndResetTemplateString (Compile
                                                                          COMMA_UNUSED_LOCATION_ARGS) {
   return inCompiler->retrieveAndResetTemplateString () ;
 }
-
 
 //--------------------------------------------------------------------------------------------------
 
@@ -390,8 +374,7 @@ GALGAS_string GALGAS_string::constructor_stringWithSymbolicLinkContents (const G
     if (ok) {
       result = GALGAS_string (r) ;
     }else{
-      String s ;
-      s.addString ("'@string stringWithSymbolicLinkContents' error; receiver's value '") ;
+      String s = "'@string stringWithSymbolicLinkContents' error; receiver's value '" ;
       s.addString (inSymbolicLink.mString) ;
       s.addString ("' is not a symbolic link") ;
       inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
@@ -460,8 +443,7 @@ void GALGAS_string::method_makeDirectory (Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const {
   const bool ok = C_FileManager::makeDirectoryIfDoesNotExist (mString) ;
   if (! ok) {
-    String message ;
-    message.addString ("cannot create '") ;
+    String message = "cannot create '" ;
     message.addString (mString) ;
     message.addString ("' directory") ;
     inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
@@ -756,7 +738,7 @@ void GALGAS_string::setter_insertCharacterAtIndex (GALGAS_char inCharacter,
                                                    Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) {
   if (isValid () && (inCharacter.isValid ()) && (inIndex.isValid ())) {
-    const int32_t idx = (int32_t) inIndex.uintValue () ;
+    const int32_t idx = int32_t (inIndex.uintValue ()) ;
     const int32_t stringLength = mString.length () ;
     if (idx > stringLength) {
       String message = "string index (" ;
@@ -779,7 +761,7 @@ void GALGAS_string::setter_removeCharacterAtIndex (GALGAS_char & outChar,
                                                    COMMA_LOCATION_ARGS) {
   outChar.drop () ;
   if (isValid () && (inIndex.isValid ())) {
-    const int32_t idx = (int32_t) inIndex.uintValue () ;
+    const int32_t idx = int32_t (inIndex.uintValue ()) ;
     const int32_t stringLength = mString.length () ;
     if (idx >= stringLength) {
       String message = "string index (" ;

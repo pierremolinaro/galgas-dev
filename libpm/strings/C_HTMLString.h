@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2014, ..., 2014 Pierre Molinaro.
+//  Copyright (C) 2014, ..., 2023 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -33,29 +33,25 @@
 class C_HTMLString : public String {
 //--- Constructors
   public: C_HTMLString (void) ;
-  
-//--- Handling copy
-//  public: C_HTMLString (const C_HTMLString & inSource) ;
-//  public: C_HTMLString & operator = (const C_HTMLString & inString) ;
 
 //--- Output data, without HTML formatting
-  public: void addRawData (const char * in_Cstring) ;
+  public: void addRawData (const char * inCString) ;
 
 //--- General stream methods
   protected: virtual void performActualCharArrayOutput (const char * inCharArray,
-                                                         const int32_t inArrayCount) ;
+                                                        const int32_t inArrayCount) ;
 
   protected: virtual void performActualUnicodeArrayOutput (const utf32 * inCharArray,
-                                                            const int32_t inArrayCount) ;
+                                                           const int32_t inArrayCount) ;
 
 //--- Method for writing a HTML table
   public: void addCppTitleComment (const String & inCommentString,
-                                       const String & inTableStyleClass) ;
+                                   const String & inTableStyleClass) ;
 
 //--- Write start code
   public: void writeStartCode (const String & inWindowTitle,
-                                const String & inCSSFileName,
-                                const String & inCSSContents) ;
+                               const String & inCSSFileName,
+                               const String & inCSSContents) ;
 
 //--- Write end code
   public: void writeEndCode (void) ;

@@ -90,7 +90,6 @@ static bool displayUnusefulSymbols (Compiler * inCompiler,
   TC_UniqueArray <String> usedSymbolDeclaredAsUnusedArray ;
   while (currentNT.hasCurrentObject ()) {
     const uint32_t nt = currentNT.current_mNonTerminalIndex (HERE).uintValue () + (uint32_t) inVocabulary.getTerminalSymbolsCount () ;
-    // printf ("*** UNUSED DECLARED SYMBOL %u *** \n", nt) ;
     if (uselessSymbols.containsValue (0, nt COMMA_HERE)) {
       uselessSymbolsForWarning.andWith (~ C_Relation (uselessSymbols.configuration (), 0, C_BDD::kEqual, nt COMMA_HERE) COMMA_HERE) ;
     }else{

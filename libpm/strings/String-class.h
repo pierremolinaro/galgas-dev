@@ -106,8 +106,8 @@ class String : public AC_OutputStream {
 //--- Set capacity (does nothing if length >= inCapacity)
   public: void setCapacity (const uint32_t inCapacity) ;
   
-//--- Suppress 'inLength' characters from 'inLocation' index
-  public: void suppress (const int32_t inLocation, const int32_t inLength COMMA_LOCATION_ARGS) ;
+//--- Suppress 'inLength' characters from 'inIndex' index
+  public: void suppress (const int32_t inIndex, const int32_t inLength COMMA_LOCATION_ARGS) ;
 
 //--- Insert 'inChar' character at 'inIndex' index
   public: void insertCharacterAtIndex (const utf32 inChar, const int32_t inIndex COMMA_LOCATION_ARGS) ;
@@ -201,20 +201,20 @@ class String : public AC_OutputStream {
 
 //--- Get index from line number and column number
   public: int32_t indexFromLineAndColumn (const int32_t inLineNumber,
-                                           const int32_t inColumnNumber) const ;
+                                          const int32_t inColumnNumber) const ;
 
 //--- Subsitute 'inCharacter' by 'inString' ; if the character occurs twice, suppress one
   public: String stringByReplacingCharacterByString (const utf32 inCharacter,
-                                                        const String & inString) const ;
+                                                     const String & inString) const ;
 
 //--- Substitute 'inSearchedString' by 'inReplacementString'
   public: String stringByReplacingStringByString (const String inSearchedString,
-                                                     const String inReplacementString,
-                                                     uint32_t & outReplacementCount,
-                                                     bool & outOk) const ;
+                                                  const String inReplacementString,
+                                                  uint32_t & outReplacementCount,
+                                                  bool & outOk) const ;
 
   public: String stringByReplacingStringByString (const String inSearchedString,
-                                                     const String inReplacementString) const ;
+                                                  const String inReplacementString) const ;
 
 //--- Get character last occurrence (returns -1 if not found)
   public: int32_t lastOccurrenceIndexOfChar (const utf32 inChar) const ;
@@ -227,7 +227,7 @@ class String : public AC_OutputStream {
 
 //--- Get a sub string
   public: String subString (const int32_t inStartIndex,
-                              const int32_t inLength) const ;
+                            const int32_t inLength) const ;
 
 //--- Get a sub string
   public: String leftSubString (const int32_t inLength) const ;
@@ -243,11 +243,11 @@ class String : public AC_OutputStream {
 
 //--- Returns an array containing substrings from the receiver that have been divided by separator
   public: void componentsSeparatedByString (const String & inSeparator,
-                                             TC_UniqueArray <String> & outResult) const ;
+                                            TC_UniqueArray <String> & outResult) const ;
 
 //--- Recompose a string from components
   public: static String componentsJoinedByString (const TC_UniqueArray <String> & inComponentArray,
-                                                     const String & inSeparator) ;
+                                                  const String & inSeparator) ;
 
 //--- Interprets the receiver as a path, returning the receiver's extension
   public: String pathExtension (void) const ;
@@ -319,10 +319,10 @@ class String : public AC_OutputStream {
 
 //---------------- Virtual output stream methods --------------
   protected: virtual void performActualCharArrayOutput (const char * inCharArray,
-                                                         const int32_t inArrayCount) ;
+                                                        const int32_t inArrayCount) ;
 
   protected: virtual void performActualUnicodeArrayOutput (const utf32 * inCharArray,
-                                                            const int32_t inArrayCount) ;
+                                                           const int32_t inArrayCount) ;
 
 //--- Private (internal) methods
   private: void insulateEmbeddedString (const uint32_t inNewCapacity) const ;
@@ -332,8 +332,8 @@ class String : public AC_OutputStream {
   #endif
 
   public: static bool parseUTF8 (const C_Data & inDataString,
-                                  const int32_t inOffset,
-                                  String & outString) ;
+                                 const int32_t inOffset,
+                                 String & outString) ;
 
 //---------------- Private attributes -------------
   private: mutable class cEmbeddedString * mEmbeddedString ;
