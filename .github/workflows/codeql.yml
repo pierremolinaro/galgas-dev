@@ -87,10 +87,28 @@ jobs:
     name: Check big integer on Ubuntu
     runs-on: ${{ 'ubuntu-latest' }}
     timeout-minutes: ${{ 360 }}
-#    permissions:
-#      actions: read
-#      contents: read
-#      security-events: write
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - run: ./makefile-unix/build+debug.py ; ./makefile-unix/galgas-debug --check-big-int
+
+  RunDemoMac:
+    name: Check big integer on Mac OS
+    runs-on: ${{ 'macos-latest' }}
+    timeout-minutes: ${{ 360 }}
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - run: ./makefile-unix/build+debug.py ; ./makefile-unix/galgas-debug --check-big-int
+
+  RunDemoWindows:
+    name: Check big integer on Windows
+    runs-on: ${{ 'windows-latest' }}
+    timeout-minutes: ${{ 360 }}
 
     steps:
     - name: Checkout repository
