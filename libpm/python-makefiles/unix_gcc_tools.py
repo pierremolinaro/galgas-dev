@@ -10,8 +10,6 @@ import generic_galgas_makefile
 #-----------------------------------------------------------------------------------------
 
 def buildForUnix (dictionary, jsonFilePath, EXECUTABLE, BUILD_DIR_NAME, GOAL, maxParallelJobs, displayCommands) :
-  if os.path.exists (os.path.expanduser ("~/galgas-tools-for-cross-compilation")) :
-    print (makefile.BLUE () + makefile.BOLD () + "The '~/galgas-tools-for-cross-compilation' is useless from now: you can delete it" + makefile.ENDC ()) ;
   gmf = generic_galgas_makefile.GenericGalgasMakefile ()
   gmf.mJSONfilePath = jsonFilePath
   gmf.mDictionary = dictionary
@@ -34,6 +32,7 @@ def buildForUnix (dictionary, jsonFilePath, EXECUTABLE, BUILD_DIR_NAME, GOAL, ma
 
   if (os.name == "nt") or sys.platform.startswith ("cygwin") : # Cygwin
     gmf.mLinkerTool.append ("-static")
+    gmf.mLinkerTool.append (["-l", "Comdlg32"])
     gmf.mExecutableSuffix = ".exe"
     gmf.mCompilationMessage = "Compiling for Cygwin"
     gmf.mLinkingMessage = "Linking for Cygwin"
