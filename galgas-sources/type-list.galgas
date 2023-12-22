@@ -31,12 +31,13 @@ syntax extension galgas3DeclarationsSyntax {
     ${$
     var @propertyInCollectionListAST propertyList = {}
     repeat
-      <property_declaration_ggs3> !?propertyList
-      select
-      or
-        $;$
-      end
     while
+      <property_declaration_ggs3> !?propertyList
+    while
+      <method_declaration_ggs3> !listTypeName !?ioDeclarations
+    end
+    if [propertyList count] == 0 then
+      error .here : "a list declaration must declare at least one property"
     end
     $}$
     ioDeclarations.mDeclarationList += !@listDeclarationAST.new {

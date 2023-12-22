@@ -401,8 +401,6 @@
 		CFEF3A7D12A04C0F007CA2D8 /* cIndexingDictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEF3A7912A04C0F007CA2D8 /* cIndexingDictionary.cpp */; };
 		CFEF3A7E12A04C0F007CA2D8 /* cIndexingDictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEF3A7912A04C0F007CA2D8 /* cIndexingDictionary.cpp */; };
 		CFF1F6022655B2AE00FB19C9 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFF1F6012655B2AE00FB19C9 /* Sparkle.framework */; };
-		CFF2177029FAAD3B00F58C35 /* all-declarations-29.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF2176E29FAAD3A00F58C35 /* all-declarations-29.cpp */; };
-		CFF2177129FAAD3B00F58C35 /* all-declarations-29.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF2176E29FAAD3A00F58C35 /* all-declarations-29.cpp */; };
 		CFF8BF00126614D9001B7E61 /* cPtr_object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF8BEFC126614D9001B7E61 /* cPtr_object.cpp */; };
 		CFF8BF01126614D9001B7E61 /* cPtr_object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF8BEFC126614D9001B7E61 /* cPtr_object.cpp */; };
 		CFF991AA110B6CA40055EE27 /* SharedObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF991A8110B6CA40055EE27 /* SharedObject.cpp */; };
@@ -869,8 +867,6 @@
 		CFEF3A7912A04C0F007CA2D8 /* cIndexingDictionary.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = cIndexingDictionary.cpp; sourceTree = "<group>"; };
 		CFEF3A7A12A04C0F007CA2D8 /* cIndexingDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = cIndexingDictionary.h; sourceTree = "<group>"; };
 		CFF1F6012655B2AE00FB19C9 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
-		CFF2176E29FAAD3A00F58C35 /* all-declarations-29.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-29.cpp"; sourceTree = "<group>"; };
-		CFF2176F29FAAD3A00F58C35 /* all-declarations-29.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "all-declarations-29.h"; sourceTree = "<group>"; };
 		CFF8BEFC126614D9001B7E61 /* cPtr_object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = cPtr_object.cpp; sourceTree = "<group>"; };
 		CFF8BEFD126614D9001B7E61 /* cPtr_object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = cPtr_object.h; sourceTree = "<group>"; };
 		CFF991A8110B6CA40055EE27 /* SharedObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = SharedObject.cpp; sourceTree = "<group>"; };
@@ -1050,8 +1046,6 @@
 				CF4C996D27301EDB000A6A07 /* all-declarations-27.h */,
 				CF45B175239AF1FD00F16511 /* all-declarations-28.cpp */,
 				CF4C997327301EDC000A6A07 /* all-declarations-28.h */,
-				CFF2176E29FAAD3A00F58C35 /* all-declarations-29.cpp */,
-				CFF2176F29FAAD3A00F58C35 /* all-declarations-29.h */,
 				CF4C995327301EDA000A6A07 /* all-declarations.h */,
 				CF12C0BD1D043E610060778F /* all-predefined-types.cpp */,
 				CF4C996B27301EDB000A6A07 /* all-predefined-types.h */,
@@ -1841,7 +1835,6 @@
 				CF2D3B9D129725F800E93E98 /* AC_GALGAS_graph.cpp in Sources */,
 				CF4853222724629A0063154F /* acStrongPtr_class.cpp in Sources */,
 				CFEF3A7D12A04C0F007CA2D8 /* cIndexingDictionary.cpp in Sources */,
-				CFF2177029FAAD3B00F58C35 /* all-declarations-29.cpp in Sources */,
 				CF5610A5137B32C30007E1BC /* typeComparisonResult.cpp in Sources */,
 				CFA1756B1C89BF8E00BB0B17 /* cLexiqueIntrospection.cpp in Sources */,
 				CF702741137C53D600FA7C3E /* C_ColoredConsole.cpp in Sources */,
@@ -2028,7 +2021,6 @@
 				CFEF3A7E12A04C0F007CA2D8 /* cIndexingDictionary.cpp in Sources */,
 				CF5610A6137B32C30007E1BC /* typeComparisonResult.cpp in Sources */,
 				CF4853232724629A0063154F /* acStrongPtr_class.cpp in Sources */,
-				CFF2177129FAAD3B00F58C35 /* all-declarations-29.cpp in Sources */,
 				CFA1756C1C89BF8E00BB0B17 /* cLexiqueIntrospection.cpp in Sources */,
 				CF702742137C53D600FA7C3E /* C_ColoredConsole.cpp in Sources */,
 				CF2A85F314E5BDB100C52116 /* C_FileManager.cpp in Sources */,

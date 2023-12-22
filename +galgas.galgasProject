@@ -39,6 +39,10 @@ project (3:7:0) -> "galgas" {
 #--- Project Creation
   "galgas-sources/projectCreation.galgas"
 
+#--- Scanners
+  "galgas-sources/galgasScanner3.galgas"
+  "galgas-sources/galgasScanner4.galgas"
+
 #--- Template
   "galgas-sources/galgasTemplateScanner.galgas"
   "galgas-sources/templateTypesForAST.galgas"
@@ -222,8 +226,6 @@ project (3:7:0) -> "galgas" {
   "galgas-sources/libpmHandling.galgas"
 
 #--- GALGAS Project
-  "galgas-sources/galgasScanner3.galgas"
-  "galgas-sources/galgasScanner4.galgas"
   "galgas-sources/galgasProject.galgas"
 
 #--- GALGAS File

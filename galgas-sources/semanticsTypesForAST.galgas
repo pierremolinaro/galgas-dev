@@ -184,6 +184,16 @@ refclass @inputJokerActualParameterAST : @actualParameterAST {
 
 list @actualParameterListAST {
   public let @actualParameterAST mActualParameter
+
+  
+#getter mangledName ?procName: @string inProcName -> @string {
+#    result = inProcName + "("
+#    for actualParameter in self do
+#    
+#    end
+#    result += ")"
+#  }
+
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
