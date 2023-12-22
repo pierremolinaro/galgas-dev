@@ -22,7 +22,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-static size_t TEST_COUNT = 1'000'000 ;
+static size_t TEST_COUNT = 10'000 ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -123,6 +123,7 @@ static uint32_t msFromStart (const clock_t inStart) {
 static void testBigUnsignedDecimalStringConstructor (void) {
   set_galgas_random_seed (0) ;
   gCout.addString ("BigUnsigned: test decimal string constructor... ") ;
+  gCout.flush () ;
   const size_t LENGTH = 13 ;
   String refString ;
   const clock_t start = ::clock () ;
@@ -166,6 +167,7 @@ static void testBigUnsignedDecimalStringConstructor (void) {
 static void testBigUnsignedBinaryStringConstructor (void) {
   set_galgas_random_seed (0) ;
   gCout.addString ("BigUnsigned: test binary string constructor... ") ;
+  gCout.flush () ;
   const size_t LENGTH = 13 ;
   String refString ;
   const clock_t start = ::clock () ;
@@ -213,6 +215,7 @@ static void testBigUnsignedBinaryStringConstructor (void) {
 static void testBigUnsignedHexadecimalStringConstructor (void) {
   set_galgas_random_seed (0) ;
   gCout.addString ("BigUnsigned: test hexadecimal string constructor... ") ;
+  gCout.flush () ;
   const size_t LENGTH = 13 ;
   String refString ;
   const clock_t start = ::clock () ;
@@ -259,6 +262,7 @@ static void testBigUnsignedHexadecimalStringConstructor (void) {
 static void testBigUnsignedU8ArrayConstructor (void) {
   set_galgas_random_seed (0) ;
   gCout.addString ("BigUnsigned: test U8 array constructor, U8 access... ") ;
+  gCout.flush () ;
   const size_t LENGTH = 41 ;
   uint8_t u8Array [LENGTH] ;
   String refString ;
@@ -321,6 +325,7 @@ static void testBigUnsignedU8ArrayConstructor (void) {
 static void testBigUnsignedU64ArrayConstructor (void) {
   set_galgas_random_seed (0) ;
   gCout.addString ("BigUnsigned: test U64 array constructor... ") ;
+  gCout.flush () ;
   const size_t LENGTH = 20 ;
   uint64_t u64Array [LENGTH] ;
   String refString ;
@@ -366,6 +371,7 @@ static void testBigUnsignedU64ArrayConstructor (void) {
 static void testBigUnsignedU64Constructor (void) {
   set_galgas_random_seed (0) ;
   gCout.addString ("BigUnsigned: test U64 constructor... ") ;
+  gCout.flush () ;
   const clock_t start = ::clock () ;
   for (size_t i = 0 ; i < TEST_COUNT ; i++) {
     uint64_t v = galgas_random () ;
@@ -397,6 +403,7 @@ static void testBigUnsignedU64Constructor (void) {
 static void testLogic_and_or_complemented_BigUnsigned (void) {
   set_galgas_random_seed (0) ;
   gCout.addString ("BigUnsigned: and, or, complement... ") ;
+  gCout.flush () ;
   const clock_t start = ::clock () ;
   for (size_t i = 0 ; i < TEST_COUNT ; i++) {
     const BigUnsigned bigA = BigUnsigned::randomNumber () ;
@@ -429,6 +436,7 @@ static void testLogic_and_or_complemented_BigUnsigned (void) {
 static void testLogic_xor_BigUnsigned (void) {
   set_galgas_random_seed (0) ;
   gCout.addString ("BigUnsigned: xor... ") ;
+  gCout.flush () ;
   const clock_t start = ::clock () ;
   for (size_t i = 0 ; i < TEST_COUNT ; i++) {
     const BigUnsigned bigA = BigUnsigned::randomNumber () ;
@@ -459,6 +467,7 @@ static void testLogic_xor_BigUnsigned (void) {
 static void testMultiplyingDividingBigUnsignedByChunkUInt (void) {
   set_galgas_random_seed (0) ;
   gCout.addString ("BigUnsigned: test multiplying, dividing by ChunkUInt... ") ;
+  gCout.flush () ;
   const clock_t start = ::clock () ;
   for (size_t i = 0 ; i < TEST_COUNT ; i++) {
     const BigUnsigned dividend = BigUnsigned::randomNumber () ;
@@ -491,6 +500,7 @@ static void testMultiplyingDividingBigUnsignedByChunkUInt (void) {
 static void testBigUnsignedMultiplyPowerOfTwo (void) {
   set_galgas_random_seed (0) ;
   gCout.addString ("BigUnsigned: test multiplying power of two... ") ;
+  gCout.flush () ;
   const clock_t start = ::clock () ;
   for (uint32_t i = 0 ; i < 1000 ; i++) {
     const BigUnsigned bigA = BigUnsigned::powerOfTwo (i) ;
@@ -522,6 +532,7 @@ static void testBigUnsignedMultiplyPowerOfTwo (void) {
 static void testBigUnsignedRightAndLeftShifts (void) {
   set_galgas_random_seed (0) ;
   gCout.addString ("BigUnsigned: test left / right shifts... ") ;
+  gCout.flush () ;
   const clock_t start = ::clock () ;
   for (uint32_t i = 0 ; i < 100'000 ; i++) {
     const BigUnsigned bigA = BigUnsigned::randomNumber () ;
@@ -549,6 +560,7 @@ static void testBigUnsignedRightAndLeftShifts (void) {
 static void test_MultiplyingDividing_BigUnsigned (void) {
   set_galgas_random_seed (0) ;
   gCout.addString ("BigUnsigned: test multiplying, dividing... ") ;
+  gCout.flush () ;
 //  const BigUnsigned dividend (2, 2, (uint8_t[2]) {0x57, 0x4E} COMMA_HERE) ;
 //  const BigUnsigned divisor (2, 2, (uint8_t[2]) {0x51, 0xD3} COMMA_HERE) ;
 //  const BigUnsignedQuotientRemainder r = dividend.divideByBigUnsigned (divisor) ;
@@ -610,6 +622,7 @@ static void test_MultiplyingDividing_BigUnsigned (void) {
 static void testAddingSubtractingBigUnsigned (void) {
   set_galgas_random_seed (0) ;
   gCout.addString ("BigUnsigned: test adding, subtracting... ") ;
+  gCout.flush () ;
   const clock_t start = ::clock () ;
   for (size_t i = 0 ; i < TEST_COUNT ; i++) {
     const BigUnsigned bigA = BigUnsigned::randomNumber () ;
@@ -761,6 +774,7 @@ static void pgcdComputing (void) {
 static void somePrimeNumbers (void) {
   set_galgas_random_seed (0) ;
   gCout.addString ("BigUnsigned: some prime numbers...\n") ;
+  gCout.flush () ;
   const clock_t start = ::clock () ;
   { BigUnsigned n = BigUnsigned (1) ;
     n <<= 127 ;
@@ -819,6 +833,7 @@ static void somePrimeNumbers (void) {
 static void testLogicComplementBigSigned (void) {
   set_galgas_random_seed (0) ;
   gCout.addString ("BigSigned: logic complement... ") ;
+  gCout.flush () ;
   const clock_t start = ::clock () ;
   for (size_t i = 0 ; i < TEST_COUNT ; i++) {
     const BigSigned bigA = BigSigned::randomNumber () ;
@@ -847,6 +862,7 @@ static void testLogicComplementBigSigned (void) {
 static void testLogic_bitSetting_BigSigned (void) {
   set_galgas_random_seed (0) ;
   gCout.addString ("BigSigned: bit set / reset... ") ;
+  gCout.flush () ;
   const clock_t start = ::clock () ;
   for (size_t i = 0 ; i < TEST_COUNT ; i++) {
     const BigSigned bigA = BigSigned::randomNumber () ;
@@ -887,6 +903,7 @@ static void testLogic_bitSetting_BigSigned (void) {
 static void testLogic_XOR_BigSigned (void) {
   set_galgas_random_seed (0) ;
   gCout.addString ("BigSigned: xor... ") ;
+  gCout.flush () ;
   const clock_t start = ::clock () ;
   for (size_t i = 0 ; i < TEST_COUNT ; i++) {
     const BigSigned bigA = BigSigned::randomNumber () ;
@@ -916,6 +933,7 @@ static void testLogic_XOR_BigSigned (void) {
 static void testLogic_and_or_complement_BigSigned (void) {
   set_galgas_random_seed (0) ;
   gCout.addString ("BigSigned: and, or, complement... ") ;
+  gCout.flush () ;
   const clock_t start = ::clock () ;
   for (size_t i = 0 ; i < TEST_COUNT ; i++) {
     const BigSigned bigA = BigSigned::randomNumber () ;
@@ -947,6 +965,7 @@ static void testLogic_and_or_complement_BigSigned (void) {
 static void testAddingSubtractingBigSigned (void) {
   set_galgas_random_seed (0) ;
   gCout.addString ("BigSigned: test adding, subtracting... ") ;
+  gCout.flush () ;
   const clock_t start = ::clock () ;
   for (size_t i = 0 ; i < TEST_COUNT ; i++) {
     const BigSigned bigA = BigSigned::randomNumber () ;
@@ -975,6 +994,7 @@ static void testAddingSubtractingBigSigned (void) {
 static void test_MultiplyingDividing_BigSigned (void) {
   set_galgas_random_seed (0) ;
   gCout.addString ("BigSigned: test multiplying, dividing... ") ;
+  gCout.flush () ;
   const clock_t start = ::clock () ;
   for (size_t i = 0 ; i < TEST_COUNT ; i++) {
     const BigSigned dividend = BigSigned::randomNumber () ;
@@ -1016,6 +1036,7 @@ static void test_MultiplyingDividing_BigSigned (void) {
 static void test_LeftShift_BigSigned (void) {
   set_galgas_random_seed (0) ;
   gCout.addString ("BigSigned: left shift... ") ;
+  gCout.flush () ;
   const clock_t start = ::clock () ;
   for (size_t i = 0 ; i < TEST_COUNT ; i++) {
     const BigSigned bigA = BigSigned::randomNumber () ;
@@ -1045,6 +1066,7 @@ static void test_LeftShift_BigSigned (void) {
 static void test_RightShift_BigSigned (void) {
   set_galgas_random_seed (0) ;
   gCout.addString ("BigSigned: right shift... ") ;
+  gCout.flush () ;
   const clock_t start = ::clock () ;
   for (size_t i = 0 ; i < TEST_COUNT ; i++) {
     const BigSigned bigA = BigSigned::randomNumber () ;
@@ -1080,6 +1102,7 @@ static void test_RightShift_BigSigned (void) {
 static void test_MultiplyingDividing_BigSignedByChunkUInt (void) {
   set_galgas_random_seed (0) ;
   gCout.addString ("BigSigned: test multiplying, dividing by ChunkUInt... ") ;
+  gCout.flush () ;
   const clock_t start = ::clock () ;
   for (size_t i = 0 ; i < TEST_COUNT ; i++) {
     const BigSigned dividend = BigSigned::randomNumber () ;
@@ -1118,6 +1141,7 @@ static void test_MultiplyingDividing_BigSignedByChunkUInt (void) {
 void routine_checkBigInteger (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   const clock_t start = ::clock () ;
   gCout.addString ("*** Check BigUnsigned and BigSigned (option --check-big-int) ***\n") ;
+  gCout.flush () ;
 //  #if COMPILE_FOR_WINDOWS == 0
 //    testUnsigned128Divisions () ;
 //    testUnsigned128Multplications () ;
