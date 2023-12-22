@@ -34,86 +34,6 @@ static uint32_t msFromStart (const clock_t inStart) {
 
 //--------------------------------------------------------------------------------------------------
 
-//#if COMPILE_FOR_WINDOWS == 0
-//  static void testUnsigned128Multplications (void) {
-//    C_Timer timer ;
-//    uint64_t errorCount = 0 ;
-//    gCout.addString ("Test multiplications 64 x 64 -> 128... " ;
-//    for (int i = 0 ; i < 100'000'000 ; i++) {
-//      const uint64_t operand1 = uint64_t (galgas_random ()) ;
-//      const uint64_t operand2 = uint64_t (galgas_random ()) ;
-//    //--- Compute reference result
-//     const unsigned __int128 op1_128 = operand1 ;
-//     const unsigned __int128 op2_128 = operand2 ;
-//     const unsigned __int128 referenceProduct = op1_128 * op2_128 ;
-//    //--- Compute with galgas routine
-//     uint64_t productH ;
-//     uint64_t productL ;
-//     mul64x64to128 (operand1, operand2, productH, productL) ;
-//    //--- Compare result
-//      unsigned __int128 product = productH ;
-//      product <<= 64 ;
-//      product |= productL ;
-//      const bool ok = referenceProduct == product ;
-//      if (!ok) {
-//        errorCount += 1 ;
-//      }
-//    }
-//    if (errorCount == 0) {
-//      gCout.addString ("Ok " << timer.msFromStart () << " ms\n" ;
-//    }else{
-//      gCout.addString (errorCount << " errors (" << timer.msFromStart () << " ms)\n" ;
-//      exit (1) ;
-//    }
-//  }
-//#endif
-
-//--------------------------------------------------------------------------------------------------
-
-//#if COMPILE_FOR_WINDOWS == 0
-//  static void testUnsigned128Divisions (void) {
-//    C_Timer timer ;
-//    uint64_t errorCount = 0 ;
-//    gCout.addString ("Test divisions 128 / 64 -> (128, 64)... " ;
-//    for (int i = 0 ; i < 100'000'000 ; i++) {
-//      const uint64_t dividendH = uint64_t (galgas_random ()) ;
-//      const uint64_t dividendL = uint64_t (galgas_random ()) ;
-//      uint64_t divisor = 0 ;
-//      while (divisor == 0) {
-//        divisor = uint64_t (galgas_random ()) ;
-//      }
-//    //--- Build 128 bits operands
-//      unsigned __int128 dividend = dividendH ;
-//      dividend <<= 64 ;
-//      dividend |= dividendL ;
-//    //--- Compute reference result
-//     const unsigned __int128 referenceQuotient = dividend / divisor ;
-//     const unsigned __int128 referenceRemainder = dividend % divisor ;
-//    //--- Compute with galgas routine
-//     uint64_t quotientH ;
-//     uint64_t quotientL ;
-//     uint64_t remainder ;
-//     div128By64 (dividendH, dividendL, divisor, quotientH, quotientL, remainder) ;
-//    //--- Compare result
-//      unsigned __int128 quotient = quotientH ;
-//      quotient <<= 64 ;
-//      quotient |= quotientL ;
-//      const bool ok = (referenceQuotient == quotient) && (referenceRemainder == remainder) ;
-//      if (!ok) {
-//        errorCount += 1 ;
-//      }
-//    }
-//    if (errorCount == 0) {
-//      gCout.addString ("Ok " << timer.msFromStart () << " ms\n" ;
-//    }else{
-//      gCout.addString (errorCount << " errors (" << timer.msFromStart () << " ms)\n" ;
-//      exit (1) ;
-//    }
-//  }
-//#endif
-
-//--------------------------------------------------------------------------------------------------
-
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark BigUnsigned
 #endif
@@ -558,22 +478,8 @@ static void test_MultiplyingDividing_BigUnsigned (void) {
   set_galgas_random_seed (0) ;
   gCout.addString ("BigUnsigned: test multiplying, dividing... ") ;
   gCout.flush () ;
-//  const BigUnsigned dividend (2, 2, (uint8_t[2]) {0x57, 0x4E} COMMA_HERE) ;
-//  const BigUnsigned divisor (2, 2, (uint8_t[2]) {0x51, 0xD3} COMMA_HERE) ;
-//  const BigUnsignedQuotientRemainder r = dividend.divideByBigUnsigned (divisor) ;
-//  BigUnsigned verif = divisor ;
-//  verif *= r.quotient () ;
-//  verif.printHex     ("Q * div  ") ;
-//  verif += r.remainder () ;
-//  verif.printHex     ("Verif    ") ;
-//  dividend.printHex  ("Dividend ") ;
-//  divisor.printHex   ("Divisor  ") ;
-//  r.quotient ().printHex   ("Quotient ") ;
-//  r.remainder ().printHex   ("Remainder") ;
-//  exit (1) ;
   const clock_t start = ::clock () ;
   for (size_t i = 0 ; i < TEST_COUNT ; i++) {
-//    gCout.addString ("----\n" ;
     const BigUnsigned dividend = BigUnsigned::randomNumber () ;
     BigUnsigned divisor ;
     while (divisor.isZero ()) {
@@ -683,29 +589,13 @@ static void pgcdComputing (void) {
   nPlus1Power17Plus9 += 9 ;
   gCout.addString (" (n+1)**17 + 9 ") ;
   gCout.addString (nPlus1Power17Plus9.spacedDecimalStringWithDigitCount (3)) ;
-  gCout.addNL () ; ;
+  gCout.addNL () ;
 //--- Calcul du PGCD
   { BigUnsigned dividend = nPlus1Power17Plus9 ;
     BigUnsigned divisor  = nPower17Plus9 ;
     bool loop = true ;
     while (loop) {
       const BigUnsignedQuotientRemainder r = dividend.divideByBigUnsigned (divisor) ;
-//    gCout.addString ("  Dividend " << dividend.componentCount ()
-//              << ", divisor " << divisor.componentCount ()
-//              << ", quotient " << quotient.componentCount ()
-//              << ", remainder " << remainder.componentCount () << "\n" << std::flush ;
-//    BigUnsigned verif = divisor ;
-//    verif.mulBigUnsignedInPlace (quotient) ;
-//    verif.addBigUnsignedInPlace (remainder) ;
-//    if ((verif != dividend) || (remainder >= divisor)) {
-//      gCout.addString ("*** Error verif\n" ;
-//      dividend.printHex  ("dividend ") ;
-//      verif.printHex     ("verif    ") ;
-//      quotient.printHex  ("quotient ") ;
-//      divisor.printHex   ("divisor  ") ;
-//      remainder.printHex ("remainder") ;
-//      exit (1) ;
-//    }
       loop = !r.remainder ().isZero () ;
       if (loop) {
         dividend = divisor ;
@@ -734,22 +624,6 @@ static void pgcdComputing (void) {
     bool loop = true ;
     while (loop) {
       const BigUnsignedQuotientRemainder r = dividend.divideByBigUnsigned (divisor) ;
-//    gCout.addString ("  Dividend " << dividend.componentCount ()
-//              << ", divisor " << divisor.componentCount ()
-//              << ", quotient " << quotient.componentCount ()
-//              << ", remainder " << remainder.componentCount () << "\n" << std::flush ;
-//    BigUnsigned verif = divisor ;
-//    verif.mulBigUnsignedInPlace (quotient) ;
-//    verif.addBigUnsignedInPlace (remainder) ;
-//    if ((verif != dividend) || (remainder >= divisor)) {
-//      gCout.addString ("*** Error verif\n" ;
-//      dividend.printHex  ("dividend ") ;
-//      verif.printHex     ("verif    ") ;
-//      quotient.printHex  ("quotient ") ;
-//      divisor.printHex   ("divisor  ") ;
-//      remainder.printHex ("remainder") ;
-//      exit (1) ;
-//    }
       loop = !r.remainder ().isZero () ;
       if (loop) {
         dividend = divisor ;
@@ -1003,14 +877,6 @@ static void test_MultiplyingDividing_BigSigned (void) {
     BigSigned verif = divisor ;
     verif *= r.quotient () ;
     verif += r.remainder () ;
-//    bool ok = dividend == verif ;
-//    if (ok) {
-//      if (dividend.isPositive ()) {
-//        ok = (r.remainder () < divisor) && r.remainder ().isPositive () ;
-//      }else{
-//        ok = (r.remainder () > divisor) && (!r.remainder ().isPositive () || r.remainder ().isZero ()) ;
-//      }
-//    }
     if (dividend != verif) {
       gCout.addString (" error (i=") ;
       gCout.addUnsigned (i) ;
@@ -1139,10 +1005,6 @@ void routine_checkBigInteger (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   const clock_t start = ::clock () ;
   gCout.addString ("*** Check BigUnsigned and BigSigned (option --check-big-int) ***\n") ;
   gCout.flush () ;
-//  #if COMPILE_FOR_WINDOWS == 0
-//    testUnsigned128Divisions () ;
-//    testUnsigned128Multplications () ;
-//  #endif
   gCout.addString ("Chunk size: ") ;
   gCout.addUnsigned (ChunkUIntBitCount) ;
   gCout.addString (" bits\n") ;

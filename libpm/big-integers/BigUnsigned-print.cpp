@@ -48,7 +48,6 @@ String BigUnsigned::spacedDecimalString (const uint32_t inSeparation) const {
   String result = decimalString () ;
   if (inSeparation > 0) {
     for (int32_t i = result.length () - int32_t (inSeparation) ; i > 0 ; i -= int32_t (inSeparation)) {
- //     result.insert (size_t (i), 1, ' ') ;
       result.insertCharacterAtIndex (' ', i COMMA_HERE) ;
     }
   }
@@ -63,7 +62,6 @@ String BigUnsigned::spacedDecimalStringWithDigitCount (const uint32_t inSeparati
   if (inSeparation > 0) {
     for (int32_t i = s.length () - int32_t (inSeparation) ; i > 0 ; i -= int32_t (inSeparation)) {
       s.insertCharacterAtIndex (' ', i COMMA_HERE) ;
-//      s.insert (size_t (i), 1, ' ') ;
     }
   }
   String result = "[" ;
