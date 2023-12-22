@@ -1459,18 +1459,23 @@ GALGAS_string filewrapperTemplate_sortedListGenerationTemplate_sortedlistTypeSpe
     while (enumerator_4531.hasCurrentObject ()) {
       result.addString ("  if (result == kOperandEqual) {\n    result = ") ;
       const enumGalgasBool test_0 = enumerator_4531.current_mAscendingOrder (HERE).boolEnum () ;
-      if (kBoolTrue == test_0) {
+      switch (test_0) {
+      case kBoolTrue : {
         result.addString ("mObject.mProperty_") ;
         result.addString (enumerator_4531.current_mAttributeName (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 108)).stringValue ()) ;
         result.addString (".objectCompare (operand->mObject.mProperty_") ;
         result.addString (enumerator_4531.current_mAttributeName (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 108)).stringValue ()) ;
         result.addString (")") ;
-      }else if (kBoolFalse == test_0) {
+        } break ;
+      case kBoolFalse : {
         result.addString ("operand->mObject.mProperty_") ;
         result.addString (enumerator_4531.current_mAttributeName (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 110)).stringValue ()) ;
         result.addString (".objectCompare (mObject.mProperty_") ;
         result.addString (enumerator_4531.current_mAttributeName (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 110)).stringValue ()) ;
         result.addString (")") ;
+        } break ;
+      default :
+        break ;
       }
       result.addString (" ;\n  }\n") ;
       index_4531_.increment () ;
@@ -2449,16 +2454,23 @@ GALGAS_string filewrapperTemplate_structureGenerationTemplate_structTypeSpecific
   result.addString ("::constructor_new (") ;
   columnMarker = result.currentColumn () ;
   const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, in_CONSTRUCTOR_5F_ARGUMENT_5F_LIST.getter_count (SOURCE_FILE ("GALGAS_struct.cpp.galgasTemplate", 33)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
-  if (kBoolTrue == test_0) {
+  switch (test_0) {
+  case kBoolTrue : {
     const enumGalgasBool test_1 = in_CONSTRUCTOR_5F_NEEDS_5F_COMPILER_5F_VAR.boolEnum () ;
-    if (kBoolTrue == test_1) {
+    switch (test_1) {
+    case kBoolTrue : {
       result.addString ("Compiler * inCompiler\n") ;
-    }else if (kBoolFalse == test_1) {
+      } break ;
+    case kBoolFalse : {
       result.addString ("Compiler * /* inCompiler */\n") ;
+      } break ;
+    default :
+      break ;
     }
     result.appendSpacesUntilColumn (columnMarker) ;
     result.addString ("COMMA_UNUSED_LOCATION_ARGS) {\n") ;
-  }else if (kBoolFalse == test_0) {
+    } break ;
+  case kBoolFalse : {
     GALGAS_uint index_1519_ (0) ;
     if (in_CONSTRUCTOR_5F_ARGUMENT_5F_LIST.isValid ()) {
       cEnumerator_typedPropertyList enumerator_1519 (in_CONSTRUCTOR_5F_ARGUMENT_5F_LIST, kENUMERATION_UP) ;
@@ -2474,13 +2486,21 @@ GALGAS_string filewrapperTemplate_structureGenerationTemplate_structTypeSpecific
       }
     }
     const enumGalgasBool test_2 = in_CONSTRUCTOR_5F_NEEDS_5F_COMPILER_5F_VAR.boolEnum () ;
-    if (kBoolTrue == test_2) {
+    switch (test_2) {
+    case kBoolTrue : {
       result.addString ("Compiler * inCompiler\n") ;
-    }else if (kBoolFalse == test_2) {
+      } break ;
+    case kBoolFalse : {
       result.addString ("Compiler * /* inCompiler */\n") ;
+      } break ;
+    default :
+      break ;
     }
     result.appendSpacesUntilColumn (columnMarker) ;
     result.addString ("COMMA_UNUSED_LOCATION_ARGS) {\n") ;
+    } break ;
+  default :
+    break ;
   }
   result.addString (in_CONSTRUCTOR_5F_INITIALIZATION_5F_CODE.stringValue ()) ;
   result.addString ("  GALGAS_") ;

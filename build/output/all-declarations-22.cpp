@@ -3609,9 +3609,14 @@ GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementation
   result.appendSpacesUntilColumn (columnMarker) ;
   result.addString ("NSMutableArray * ioStringListOptionArray) {\n") ;
   const enumGalgasBool test_0 = GALGAS_bool (kIsStrictSup, in_BOOL_5F_OPTION_5F_MAP.getter_count (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 12)).add_operation (in_UINT_5F_OPTION_5F_MAP.getter_count (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 12)), inCompiler COMMA_SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 12)).add_operation (in_STRING_5F_OPTION_5F_MAP.getter_count (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 12)), inCompiler COMMA_SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 12)).add_operation (in_STRING_5F_LIST_5F_OPTION_5F_MAP.getter_count (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 12)), inCompiler COMMA_SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 12)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
-  if (kBoolTrue == test_0) {
+  switch (test_0) {
+  case kBoolTrue : {
     result.addString ("  OC_GGS_CommandLineOption * option ;\n") ;
-  }else if (kBoolFalse == test_0) {
+    } break ;
+  case kBoolFalse : {
+    } break ;
+  default :
+    break ;
   }
   GALGAS_uint index_811_ (0) ;
   if (in_BOOL_5F_OPTION_5F_MAP.isValid ()) {
@@ -3734,10 +3739,15 @@ GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementation
       result.addString (enumerator_481.current_lkey (HERE).readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 11)).stringValue ()) ;
       result.addString (",\n    commandChar: ") ;
       const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, enumerator_481.current_mOptionChar (HERE).objectCompare (GALGAS_char (TO_UNICODE (0)))).boolEnum () ;
-      if (kBoolTrue == test_0) {
+      switch (test_0) {
+      case kBoolTrue : {
         result.addString (GALGAS_string ("\"\"").stringValue ()) ;
-      }else if (kBoolFalse == test_0) {
+        } break ;
+      case kBoolFalse : {
         result.addString (GALGAS_string ("\"").add_operation (enumerator_481.current_mOptionChar (HERE).getter_string (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 12)), inCompiler COMMA_SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 12)).add_operation (GALGAS_string ("\""), inCompiler COMMA_SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 12)).stringValue ()) ;
+        } break ;
+      default :
+        break ;
       }
       result.addString (",\n    commandString: ") ;
       result.addString (enumerator_481.current_mOptionString (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 13)).stringValue ()) ;
@@ -3758,10 +3768,15 @@ GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementation
       result.addString (enumerator_1090.current_lkey (HERE).readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 21)).stringValue ()) ;
       result.addString (",\n    commandChar: ") ;
       const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, enumerator_1090.current_mOptionChar (HERE).objectCompare (GALGAS_char (TO_UNICODE (0)))).boolEnum () ;
-      if (kBoolTrue == test_1) {
+      switch (test_1) {
+      case kBoolTrue : {
         result.addString (GALGAS_string ("\"\"").stringValue ()) ;
-      }else if (kBoolFalse == test_1) {
+        } break ;
+      case kBoolFalse : {
         result.addString (GALGAS_string ("\"").add_operation (enumerator_1090.current_mOptionChar (HERE).getter_string (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 22)), inCompiler COMMA_SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 22)).add_operation (GALGAS_string ("\""), inCompiler COMMA_SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 22)).stringValue ()) ;
+        } break ;
+      default :
+        break ;
       }
       result.addString (",\n    commandString: ") ;
       result.addString (enumerator_1090.current_mOptionString (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 23)).stringValue ()) ;
@@ -3784,10 +3799,15 @@ GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementation
       result.addString (enumerator_1756.current_lkey (HERE).readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 31)).stringValue ()) ;
       result.addString (",\n    commandChar: ") ;
       const enumGalgasBool test_2 = GALGAS_bool (kIsEqual, enumerator_1756.current_mOptionChar (HERE).objectCompare (GALGAS_char (TO_UNICODE (0)))).boolEnum () ;
-      if (kBoolTrue == test_2) {
+      switch (test_2) {
+      case kBoolTrue : {
         result.addString (GALGAS_string ("\"\"").stringValue ()) ;
-      }else if (kBoolFalse == test_2) {
+        } break ;
+      case kBoolFalse : {
         result.addString (GALGAS_string ("\"").add_operation (enumerator_1756.current_mOptionChar (HERE).getter_string (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 32)), inCompiler COMMA_SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 32)).add_operation (GALGAS_string ("\""), inCompiler COMMA_SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 32)).stringValue ()) ;
+        } break ;
+      default :
+        break ;
       }
       result.addString (",\n    commandString: ") ;
       result.addString (enumerator_1756.current_mOptionString (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 33)).stringValue ()) ;
@@ -3810,10 +3830,15 @@ GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementation
       result.addString (enumerator_2429.current_lkey (HERE).readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 41)).stringValue ()) ;
       result.addString (",\n    commandChar: ") ;
       const enumGalgasBool test_3 = GALGAS_bool (kIsEqual, enumerator_2429.current_mOptionChar (HERE).objectCompare (GALGAS_char (TO_UNICODE (0)))).boolEnum () ;
-      if (kBoolTrue == test_3) {
+      switch (test_3) {
+      case kBoolTrue : {
         result.addString (GALGAS_string ("\"\"").stringValue ()) ;
-      }else if (kBoolFalse == test_3) {
+        } break ;
+      case kBoolFalse : {
         result.addString (GALGAS_string ("\"").add_operation (enumerator_2429.current_mOptionChar (HERE).getter_string (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 42)), inCompiler COMMA_SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 42)).add_operation (GALGAS_string ("\""), inCompiler COMMA_SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 42)).stringValue ()) ;
+        } break ;
+      default :
+        break ;
       }
       result.addString (",\n    commandString: ") ;
       result.addString (enumerator_2429.current_mOptionString (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 43)).stringValue ()) ;
@@ -4163,9 +4188,11 @@ GALGAS_string filewrapperTemplate_guiGenerationTemplates_objc_5F_gui_5F_implemen
   }
   result.addString ("\n#ifdef USER_DEFAULT_COLORS_DEFINED\n  #import \"user_default_colors.h\"\n#endif\n\n//--------------------------------------------------------------------------------------------------\n\n#pragma mark Nibs\n\n//--------------------------------------------------------------------------------------------------\n//          N I B S   A N D   T H E I R   M A I N   C L A S S E S                                \n//--------------------------------------------------------------------------------------------------\n\n") ;
   const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, in_GUI_5F_CONTEXT.readProperty_mNibAndClassList ().getter_count (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 24)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
-  if (kBoolTrue == test_0) {
+  switch (test_0) {
+  case kBoolTrue : {
     result.addString ("NSArray * nibsAndClasses (void) {\n  return [NSArray array] ;\n}\n") ;
-  }else if (kBoolFalse == test_0) {
+    } break ;
+  case kBoolFalse : {
     result.addString ("NSArray * nibsAndClasses (void) {\n  return [NSArray arrayWithObjects:\n") ;
     GALGAS_uint index_1125_ (0) ;
     if (in_GUI_5F_CONTEXT.readProperty_mNibAndClassList ().isValid ()) {
@@ -4181,12 +4208,17 @@ GALGAS_string filewrapperTemplate_guiGenerationTemplates_objc_5F_gui_5F_implemen
       }
     }
     result.addString ("    nil\n  ] ;\n}\n") ;
+    } break ;
+  default :
+    break ;
   }
   result.addString ("\n//--------------------------------------------------------------------------------------------------\n//    Project file extensions\n//--------------------------------------------------------------------------------------------------\n\nNSDictionary * indexingDescriptorDictionary (void) {\n") ;
   const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, in_GUI_5F_CONTEXT.readProperty_mProjectIndexingDescriptorList ().getter_count (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 45)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
-  if (kBoolTrue == test_1) {
+  switch (test_1) {
+  case kBoolTrue : {
     result.addString (" return [NSDictionary dictionary] ;\n") ;
-  }else if (kBoolFalse == test_1) {
+    } break ;
+  case kBoolFalse : {
     result.addString ("  return [NSDictionary dictionaryWithObjectsAndKeys: ") ;
     GALGAS_uint index_1774_ (0) ;
     if (in_GUI_5F_CONTEXT.readProperty_mProjectIndexingDescriptorList ().isValid ()) {
@@ -4202,6 +4234,9 @@ GALGAS_string filewrapperTemplate_guiGenerationTemplates_objc_5F_gui_5F_implemen
       }
     }
     result.addString ("nil] ;\n") ;
+    } break ;
+  default :
+    break ;
   }
   result.addString ("}\n\n//--------------------------------------------------------------------------------------------------\n\n#pragma mark Command Line Options\n\n//--------------------------------------------------------------------------------------------------\n//                       Command Line Options                                                    \n//--------------------------------------------------------------------------------------------------\n\n") ;
   GALGAS_uint index_2371_ (0) ;
@@ -4228,10 +4263,15 @@ GALGAS_string filewrapperTemplate_guiGenerationTemplates_objc_5F_gui_5F_implemen
     }
   }
   const enumGalgasBool test_2 = in_QUIET_5F_OUTPUT_5F_BY_5F_DEFAULT.boolEnum () ;
-  if (kBoolTrue == test_2) {
+  switch (test_2) {
+  case kBoolTrue : {
     result.addString ("  OC_GGS_CommandLineOption * option = [[OC_GGS_CommandLineOption alloc]\n    initWithDomainName:@\"galgas_cli_options\"\n    identifier:@\"verbose_output\"\n    commandChar:'v'\n    commandString:@\"verbose\"\n    comment:@\"Verbose output\"\n    defaultValue:@\"\"\n  ] ;\n") ;
-  }else if (kBoolFalse == test_2) {
+    } break ;
+  case kBoolFalse : {
     result.addString ("  OC_GGS_CommandLineOption * option = [[OC_GGS_CommandLineOption alloc]\n    initWithDomainName:@\"galgas_cli_options\"\n    identifier:@\"quiet_output\"\n    commandChar:'q'\n    commandString:@\"quiet\"\n    comment:@\"Quiet output\"\n    defaultValue:@\"\"\n  ] ;\n") ;
+    } break ;
+  default :
+    break ;
   }
   result.addString ("  [ioBoolOptionArray addObject:option] ;\n}\n\n") ;
   GALGAS_uint index_3759_ (0) ;
@@ -4379,9 +4419,11 @@ GALGAS_string filewrapperTemplate_guiGenerationTemplates_objc_5F_gui_5F_implemen
   }
   result.addString ("  return result ;\n}\n\n//--------------------------------------------------------------------------------------------------\n\nNSArray * tokenizers (void) {") ;
   const enumGalgasBool test_3 = GALGAS_bool (kIsEqual, in_GUI_5F_CONTEXT.readProperty_mWithLexiqueList ().getter_count (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 197)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
-  if (kBoolTrue == test_3) {
+  switch (test_3) {
+  case kBoolTrue : {
     result.addString ("\n  return [NSArray array] ;\n") ;
-  }else if (kBoolFalse == test_3) {
+    } break ;
+  case kBoolFalse : {
     result.addString ("\n  return [NSArray arrayWithObjects:\n") ;
     GALGAS_uint index_8867_ (0) ;
     if (in_GUI_5F_CONTEXT.readProperty_mWithLexiqueList ().isValid ()) {
@@ -4397,6 +4439,9 @@ GALGAS_string filewrapperTemplate_guiGenerationTemplates_objc_5F_gui_5F_implemen
       }
     }
     result.addString ("    nil\n  ] ;\n") ;
+    } break ;
+  default :
+    break ;
   }
   result.addString ("}\n\n//--------------------------------------------------------------------------------------------------\n\nNSString * buildRunOption (void) {\n  return @\"") ;
   result.addString (in_GUI_5F_CONTEXT.readProperty_mBuildRunOption ().stringValue ()) ;
@@ -4417,9 +4462,11 @@ GALGAS_string filewrapperTemplate_guiGenerationTemplates_swift_5F_gui_5F_impleme
   String result ;
   result.addString ("\nimport AppKit\n\n//--------------------------------------------------------------------------------------------------\n//          N I B S   A N D   T H E I R   M A I N   C L A S S E S                                \n//--------------------------------------------------------------------------------------------------\n\n/*\n") ;
   const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, in_GUI_5F_CONTEXT.readProperty_mNibAndClassList ().getter_count (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 10)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
-  if (kBoolTrue == test_0) {
+  switch (test_0) {
+  case kBoolTrue : {
     result.addString ("NSArray * nibsAndClasses (void) {\n  return [NSArray array] ;\n}\n") ;
-  }else if (kBoolFalse == test_0) {
+    } break ;
+  case kBoolFalse : {
     result.addString ("NSArray * nibsAndClasses (void) {\n  return [NSArray arrayWithObjects:\n") ;
     GALGAS_uint index_560_ (0) ;
     if (in_GUI_5F_CONTEXT.readProperty_mNibAndClassList ().isValid ()) {
@@ -4435,12 +4482,17 @@ GALGAS_string filewrapperTemplate_guiGenerationTemplates_swift_5F_gui_5F_impleme
       }
     }
     result.addString ("    nil\n  ] ;\n}\n") ;
+    } break ;
+  default :
+    break ;
   }
   result.addString ("\n\n*/\n//--------------------------------------------------------------------------------------------------\n//    Project file extensions\n//--------------------------------------------------------------------------------------------------\n\nNSDictionary * indexingDescriptorDictionary (void) {\n") ;
   const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, in_GUI_5F_CONTEXT.readProperty_mProjectIndexingDescriptorList ().getter_count (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 33)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
-  if (kBoolTrue == test_1) {
+  switch (test_1) {
+  case kBoolTrue : {
     result.addString (" return [NSDictionary dictionary] ;\n") ;
-  }else if (kBoolFalse == test_1) {
+    } break ;
+  case kBoolFalse : {
     result.addString ("  return [NSDictionary dictionaryWithObjectsAndKeys: ") ;
     GALGAS_uint index_1213_ (0) ;
     if (in_GUI_5F_CONTEXT.readProperty_mProjectIndexingDescriptorList ().isValid ()) {
@@ -4456,6 +4508,9 @@ GALGAS_string filewrapperTemplate_guiGenerationTemplates_swift_5F_gui_5F_impleme
       }
     }
     result.addString ("nil] ;\n") ;
+    } break ;
+  default :
+    break ;
   }
   result.addString ("}\n\n//--------------------------------------------------------------------------------------------------\n//\n//                       Command Line Options                                                    \n//\n//--------------------------------------------------------------------------------------------------\n\n") ;
   GALGAS_uint index_1679_ (0) ;
@@ -4482,10 +4537,15 @@ GALGAS_string filewrapperTemplate_guiGenerationTemplates_swift_5F_gui_5F_impleme
     }
   }
   const enumGalgasBool test_2 = in_QUIET_5F_OUTPUT_5F_BY_5F_DEFAULT.boolEnum () ;
-  if (kBoolTrue == test_2) {
+  switch (test_2) {
+  case kBoolTrue : {
     result.addString ("  OC_GGS_CommandLineOption * option = [[OC_GGS_CommandLineOption alloc]\n    initWithDomainName:@\"galgas_cli_options\"\n    identifier:@\"verbose_output\"\n    commandChar:'v'\n    commandString:@\"verbose\"\n    comment:@\"Verbose output\"\n    defaultValue:@\"\"\n  ] ;\n") ;
-  }else if (kBoolFalse == test_2) {
+    } break ;
+  case kBoolFalse : {
     result.addString ("  OC_GGS_CommandLineOption * option = [[OC_GGS_CommandLineOption alloc]\n    initWithDomainName:@\"galgas_cli_options\"\n    identifier:@\"quiet_output\"\n    commandChar:'q'\n    commandString:@\"quiet\"\n    comment:@\"Quiet output\"\n    defaultValue:@\"\"\n  ] ;\n") ;
+    } break ;
+  default :
+    break ;
   }
   result.addString ("  [ioBoolOptionArray addObject:option] ;\n}\n\n*/\n\n") ;
   GALGAS_uint index_3093_ (0) ;
@@ -4610,9 +4670,11 @@ GALGAS_string filewrapperTemplate_guiGenerationTemplates_swift_5F_gui_5F_impleme
   }
   result.addString ("  return result\n}\n\n//--------------------------------------------------------------------------------------------------\n\nfunc tokenizers () -> [SWIFT_Tokenizer_Protocol] {") ;
   const enumGalgasBool test_3 = GALGAS_bool (kIsEqual, in_GUI_5F_CONTEXT.readProperty_mWithLexiqueList ().getter_count (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 215)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
-  if (kBoolTrue == test_3) {
+  switch (test_3) {
+  case kBoolTrue : {
     result.addString ("\n  return []\n") ;
-  }else if (kBoolFalse == test_3) {
+    } break ;
+  case kBoolFalse : {
     result.addString ("\n  return [\n") ;
     GALGAS_uint index_8521_ (0) ;
     if (in_GUI_5F_CONTEXT.readProperty_mWithLexiqueList ().isValid ()) {
@@ -4631,6 +4693,9 @@ GALGAS_string filewrapperTemplate_guiGenerationTemplates_swift_5F_gui_5F_impleme
       }
     }
     result.addString ("\n  ]\n") ;
+    } break ;
+  default :
+    break ;
   }
   result.addString ("}\n\n//--------------------------------------------------------------------------------------------------\n\nfunc buildRunOption () -> String {\n  return \"") ;
   result.addString (in_GUI_5F_CONTEXT.readProperty_mBuildRunOption ().stringValue ()) ;
@@ -6868,9 +6933,14 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeHeader_31_ (Com
   }
   result.addString ("\n  } enumeration ;\n  \n//--------------------------------- Private data member\n") ;
   const enumGalgasBool test_0 = in_HAS_5F_ASSOCIATED_5F_VALUES.boolEnum () ;
-  if (kBoolTrue == test_0) {
+  switch (test_0) {
+  case kBoolTrue : {
     result.addString ("  private: AC_GALGAS_enumAssociatedValues mAssociatedValues ;\n  public: VIRTUAL_IN_DEBUG const cEnumAssociatedValues * unsafePointer (void) const {\n    return mAssociatedValues.unsafePointer () ;\n  }\n\n") ;
-  }else if (kBoolFalse == test_0) {
+    } break ;
+  case kBoolFalse : {
+    } break ;
+  default :
+    break ;
   }
   result.addString ("  private: enumeration mEnum ;\n\n//--------------------------------- Accessors\n  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return kNotBuilt != mEnum ; }\n  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mEnum = kNotBuilt ; }\n  public: inline enumeration enumValue (void) const { return mEnum ; }\n\n") ;
   return GALGAS_string (result) ;
@@ -6891,7 +6961,8 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeHeader_32_ (Com
   String result ;
   uint32_t columnMarker = 0 ;
   const enumGalgasBool test_0 = in_HAS_5F_ASSOCIATED_5F_VALUES.boolEnum () ;
-  if (kBoolTrue == test_0) {
+  switch (test_0) {
+  case kBoolTrue : {
     result.addString ("//--------------------------------------------------------------------------------------------------\n//\n//") ;
     result.addString (GALGAS_string (" Phase 2: @").add_operation (in_TYPE_5F_IDENTIFIER, inCompiler COMMA_SOURCE_FILE ("GALGAS_enum.h2.galgasTemplate", 4)).add_operation (GALGAS_string (" enum, associated values"), inCompiler COMMA_SOURCE_FILE ("GALGAS_enum.h2.galgasTemplate", 4)).stringValue ()) ;
     result.addString ("\n//\n") ;
@@ -6900,7 +6971,8 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeHeader_32_ (Com
       cEnumerator_enumConstantListForGeneration enumerator_269 (in_CONSTANT_5F_LIST, kENUMERATION_UP) ;
       while (enumerator_269.hasCurrentObject ()) {
         const enumGalgasBool test_1 = GALGAS_bool (kIsStrictSup, enumerator_269.current_mAssociatedValueTypeList (HERE).getter_count (SOURCE_FILE ("GALGAS_enum.h2.galgasTemplate", 8)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
-        if (kBoolTrue == test_1) {
+        switch (test_1) {
+        case kBoolTrue : {
           result.addString ("//--------------------------------------------------------------------------------------------------\n\nclass cEnumAssociatedValues_") ;
           result.addString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
           result.addString ("_") ;
@@ -6952,13 +7024,21 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeHeader_32_ (Com
           result.addString ("_") ;
           result.addString (enumerator_269.current_mConstantName (HERE).stringValue ()) ;
           result.addString (" (void) {}\n} ;\n\n") ;
-        }else if (kBoolFalse == test_1) {
+          } break ;
+        case kBoolFalse : {
+          } break ;
+        default :
+          break ;
         }
         index_269_.increment () ;
         enumerator_269.gotoNextObject () ;
       }
     }
-  }else if (kBoolFalse == test_0) {
+    } break ;
+  case kBoolFalse : {
+    } break ;
+  default :
+    break ;
   }
   return GALGAS_string (result) ;
 }
@@ -6982,7 +7062,8 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImpleme
     cEnumerator_enumConstantListForGeneration enumerator_64 (in_CONSTANT_5F_LIST, kENUMERATION_UP) ;
     while (enumerator_64.hasCurrentObject ()) {
       const enumGalgasBool test_0 = GALGAS_bool (kIsStrictSup, enumerator_64.current_mAssociatedValueTypeList (HERE).getter_count (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 3)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
-      if (kBoolTrue == test_0) {
+      switch (test_0) {
+      case kBoolTrue : {
         result.addString ("//--------------------------------------------------------------------------------------------------\n\ncEnumAssociatedValues_") ;
         result.addString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
         result.addString ("_") ;
@@ -7072,7 +7153,11 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImpleme
           }
         }
         result.addString ("  return result ;\n}\n\n") ;
-      }else if (kBoolFalse == test_0) {
+        } break ;
+      case kBoolFalse : {
+        } break ;
+      default :
+        break ;
       }
       index_64_.increment () ;
       enumerator_64.gotoNextObject () ;
@@ -7084,9 +7169,14 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImpleme
   result.addString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
   result.addString (" (void) :\n") ;
   const enumGalgasBool test_1 = in_HAS_5F_ASSOCIATED_5F_VALUES.boolEnum () ;
-  if (kBoolTrue == test_1) {
+  switch (test_1) {
+  case kBoolTrue : {
     result.addString ("mAssociatedValues (),\n") ;
-  }else if (kBoolFalse == test_1) {
+    } break ;
+  case kBoolFalse : {
+    } break ;
+  default :
+    break ;
   }
   result.addString ("mEnum (kNotBuilt) {\n}\n\n") ;
   GALGAS_uint index_2395_ (0) ;
@@ -7102,9 +7192,11 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImpleme
       result.addString (" (") ;
       columnMarker = result.currentColumn () ;
       const enumGalgasBool test_2 = GALGAS_bool (kIsEqual, enumerator_2395.current_mAssociatedValueTypeList (HERE).getter_count (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 55)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
-      if (kBoolTrue == test_2) {
+      switch (test_2) {
+      case kBoolTrue : {
         result.addString ("UNUSED_LOCATION_ARGS") ;
-      }else if (kBoolFalse == test_2) {
+        } break ;
+      case kBoolFalse : {
         GALGAS_uint index_2758_idx (0) ;
         if (enumerator_2395.current_mAssociatedValueTypeList (HERE).isValid ()) {
           cEnumerator_unifiedTypeMapEntryList enumerator_2758 (enumerator_2395.current_mAssociatedValueTypeList (HERE), kENUMERATION_UP) ;
@@ -7124,16 +7216,21 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImpleme
         result.addString ("\n") ;
         result.appendSpacesUntilColumn (columnMarker) ;
         result.addString ("COMMA_LOCATION_ARGS") ;
+        } break ;
+      default :
+        break ;
       }
       result.addString (") {\n  GALGAS_") ;
       result.addString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
       result.addString (" result ;\n") ;
       const enumGalgasBool test_3 = GALGAS_bool (kIsEqual, enumerator_2395.current_mAssociatedValueTypeList (HERE).getter_count (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 66)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
-      if (kBoolTrue == test_3) {
+      switch (test_3) {
+      case kBoolTrue : {
         result.addString ("  result.mEnum = kEnum_") ;
         result.addString (enumerator_2395.current_mConstantName (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 67)).stringValue ()) ;
         result.addString (" ;\n") ;
-      }else if (kBoolFalse == test_3) {
+        } break ;
+      case kBoolFalse : {
         result.addString ("  if (") ;
         GALGAS_uint index_3163_idx (0) ;
         if (enumerator_2395.current_mAssociatedValueTypeList (HERE).isValid ()) {
@@ -7170,6 +7267,9 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImpleme
           }
         }
         result.addString (" COMMA_THERE)) ;\n    result.mAssociatedValues.setPointer (ptr) ;\n    macroDetachSharedObject (ptr) ;\n  }\n") ;
+        } break ;
+      default :
+        break ;
       }
       result.addString ("  return result ;\n}\n\n") ;
       index_2395_.increment () ;
@@ -7181,7 +7281,8 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImpleme
     cEnumerator_enumConstantListForGeneration enumerator_3830 (in_CONSTANT_5F_LIST, kENUMERATION_UP) ;
     while (enumerator_3830.hasCurrentObject ()) {
       const enumGalgasBool test_4 = GALGAS_bool (kIsStrictSup, enumerator_3830.current_mAssociatedValueTypeList (HERE).getter_count (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 92)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
-      if (kBoolTrue == test_4) {
+      switch (test_4) {
+      case kBoolTrue : {
         result.addString ("//--------------------------------------------------------------------------------------------------\n\nvoid GALGAS_") ;
         result.addString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
         result.addString ("::method_") ;
@@ -7246,7 +7347,11 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImpleme
           }
         }
         result.addString ("  }\n}\n\n") ;
-      }else if (kBoolFalse == test_4) {
+        } break ;
+      case kBoolFalse : {
+        } break ;
+      default :
+        break ;
       }
       index_3830_.increment () ;
       enumerator_3830.gotoNextObject () ;
@@ -7282,7 +7387,8 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImpleme
       result.addString (enumerator_5138.current_mConstantName (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 128)).stringValue ()) ;
       result.addString (" ;\n") ;
       const enumGalgasBool test_5 = GALGAS_bool (kIsStrictSup, enumerator_5138.current_mAssociatedValueTypeList (HERE).getter_count (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 129)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
-      if (kBoolTrue == test_5) {
+      switch (test_5) {
+      case kBoolTrue : {
         result.addString ("  if (ok) {\n    const auto * ptr = (const cEnumAssociatedValues_") ;
         result.addString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
         result.addString ("_") ;
@@ -7302,7 +7408,11 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImpleme
           }
         }
         result.addString ("  }\n") ;
-      }else if (kBoolFalse == test_5) {
+        } break ;
+      case kBoolFalse : {
+        } break ;
+      default :
+        break ;
       }
       result.addString ("  return ok ;\n}\n\n") ;
       index_5138_.increment () ;
@@ -7348,10 +7458,15 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImpleme
   result.appendSpacesUntilColumn (columnMarker) ;
   result.addString ("const int32_t ") ;
   const enumGalgasBool test_6 = in_HAS_5F_ASSOCIATED_5F_VALUES.boolEnum () ;
-  if (kBoolTrue == test_6) {
+  switch (test_6) {
+  case kBoolTrue : {
     result.addString ("inIndentation") ;
-  }else if (kBoolFalse == test_6) {
+    } break ;
+  case kBoolFalse : {
     result.addString ("/* inIndentation */") ;
+    } break ;
+  default :
+    break ;
   }
   result.addString (") const {\n  ioString.addString (\"<enum @") ;
   result.addString (in_TYPE_5F_NAME.stringValue ()) ;
@@ -7359,9 +7474,14 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImpleme
   result.addString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
   result.addString (" [mEnum]) ;\n") ;
   const enumGalgasBool test_7 = in_HAS_5F_ASSOCIATED_5F_VALUES.boolEnum () ;
-  if (kBoolTrue == test_7) {
+  switch (test_7) {
+  case kBoolTrue : {
     result.addString ("  mAssociatedValues.description (ioString, inIndentation) ;\n") ;
-  }else if (kBoolFalse == test_7) {
+    } break ;
+  case kBoolFalse : {
+    } break ;
+  default :
+    break ;
   }
   result.addString ("  ioString.addString (\">\") ;\n}\n\n//--------------------------------------------------------------------------------------------------\n\ntypeComparisonResult GALGAS_") ;
   result.addString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
@@ -7369,10 +7489,15 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImpleme
   result.addString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
   result.addString (" & inOperand) const {\n  typeComparisonResult result = kOperandNotValid ;\n  if (isValid () && inOperand.isValid ()) {\n    if (mEnum < inOperand.mEnum) {\n      result = kFirstOperandLowerThanSecond ;\n    }else if (mEnum > inOperand.mEnum) {\n      result = kFirstOperandGreaterThanSecond ;\n    }else{\n") ;
   const enumGalgasBool test_8 = in_HAS_5F_ASSOCIATED_5F_VALUES.boolEnum () ;
-  if (kBoolTrue == test_8) {
+  switch (test_8) {
+  case kBoolTrue : {
     result.addString ("      result = mAssociatedValues.objectCompare (inOperand.mAssociatedValues) ;\n") ;
-  }else if (kBoolFalse == test_8) {
+    } break ;
+  case kBoolFalse : {
     result.addString ("      result = kOperandEqual ;\n") ;
+    } break ;
+  default :
+    break ;
   }
   result.addString ("    }\n  }\n  return result ;\n}\n\n") ;
   return GALGAS_string (result) ;
@@ -9033,7 +9158,8 @@ GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImpleme
     cEnumerator_typedPropertyList enumerator_17292 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
     while (enumerator_17292.hasCurrentObject ()) {
       const enumGalgasBool test_0 = enumerator_17292.current_hasSetter (HERE).boolEnum () ;
-      if (kBoolTrue == test_0) {
+      switch (test_0) {
+      case kBoolTrue : {
         result.addString ("//--------------------------------------------------------------------------------------------------\n\nvoid GALGAS_") ;
         result.addString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
         result.addString ("::setter_set") ;
@@ -9057,7 +9183,11 @@ GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImpleme
         result.addString (") ;\n    macroUniqueSharedObject (p) ;\n    p->mObject.mProperty_") ;
         result.addString (enumerator_17292.current_mPropertyName (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 450)).stringValue ()) ;
         result.addString (" = inOperand ;\n  }\n}\n\n") ;
-      }else if (kBoolFalse == test_0) {
+        } break ;
+      case kBoolFalse : {
+        } break ;
+      default :
+        break ;
       }
       result.addString ("//--------------------------------------------------------------------------------------------------\n\nGALGAS_") ;
       result.addString (extensionGetter_identifierRepresentation (enumerator_17292.current_mPropertyTypeEntry (HERE), inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 456)).stringValue ()) ;

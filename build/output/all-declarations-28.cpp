@@ -1330,7 +1330,8 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
     cEnumerator_XCodeToolTargetList enumerator_5714 (in_TOOL_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
     while (enumerator_5714.hasCurrentObject ()) {
       const enumGalgasBool test_0 = GALGAS_bool (kIsStrictSup, enumerator_5714.current_mFrameworksFileRefList (HERE).getter_count (SOURCE_FILE ("project.pbxproj.galgasTemplate", 139)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
-      if (kBoolTrue == test_0) {
+      switch (test_0) {
+      case kBoolTrue : {
         result.addString ("  ") ;
         result.addString (enumerator_5714.current_mFrameworkBuildPhaseRef (HERE).stringValue ()) ;
         result.addString (" = {\n    isa = PBXFrameworksBuildPhase;\n    buildActionMask = 2147483647;\n    files = (\n") ;
@@ -1346,7 +1347,11 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
           }
         }
         result.addString ("    );\n    runOnlyForDeploymentPostprocessing = 0;\n  };\n\n") ;
-      }else if (kBoolFalse == test_0) {
+        } break ;
+      case kBoolFalse : {
+        } break ;
+      default :
+        break ;
       }
       index_5714_.increment () ;
       enumerator_5714.gotoNextObject () ;
@@ -1434,11 +1439,16 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
       result.addString (enumerator_7744.current_mBuildPhaseRef (HERE).stringValue ()) ;
       result.addString (" ,\n") ;
       const enumGalgasBool test_1 = GALGAS_bool (kIsStrictSup, enumerator_7744.current_mFrameworksFileRefList (HERE).getter_count (SOURCE_FILE ("project.pbxproj.galgasTemplate", 200)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
-      if (kBoolTrue == test_1) {
+      switch (test_1) {
+      case kBoolTrue : {
         result.addString ("      ") ;
         result.addString (enumerator_7744.current_mFrameworkBuildPhaseRef (HERE).stringValue ()) ;
         result.addString (" , /* Frameworks */\n") ;
-      }else if (kBoolFalse == test_1) {
+        } break ;
+      case kBoolFalse : {
+        } break ;
+      default :
+        break ;
       }
       result.addString ("    );\n    buildRules = (\n    );\n    dependencies = (\n    );\n    name = ") ;
       result.addString (enumerator_7744.current_mTargetName (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 208)).stringValue ()) ;
@@ -2407,15 +2417,25 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codebloc
   result.addString (";\" />\n    <Option output=\"") ;
   result.addString (in_PROJECT_5F_NAME.stringValue ()) ;
   const enumGalgasBool test_0 = in_GENERATE_5F_FOR_5F_WINDOWS.boolEnum () ;
-  if (kBoolTrue == test_0) {
+  switch (test_0) {
+  case kBoolTrue : {
     result.addString (GALGAS_string (".exe").stringValue ()) ;
-  }else if (kBoolFalse == test_0) {
+    } break ;
+  case kBoolFalse : {
+    } break ;
+  default :
+    break ;
   }
   result.addString ("\" prefix_auto=\"0\" extension_auto=\"0\" />\n    <Option object_output=\"objects\" />\n    <Option type=\"1\" />\n    <Option compiler=\"gcc\" />\n    <Option projectResourceIncludeDirsRelation=\"1\" />\n    <Compiler>\n     <Add option=\"-fomit-frame-pointer\" />\n     <Add option=\"-O2\" />\n     <Add option=\"-Wnon-virtual-dtor\" />\n     <Add option=\"-Winit-self\" />\n     <Add option=\"-Wredundant-decls\" />\n     <Add option=\"-Wundef\" />\n     <Add option=\"-Wmissing-include-dirs\" />\n     <Add option=\"-Weffc++\" />\n     <Add option=\"-std=c++14\" />\n     <Add option=\"-Wshadow\" />\n     <Add option=\"-Wall\" />\n     <Add option=\"-W\" />\n     <Add option=\"-DDO_NOT_GENERATE_CHECKINGS\" />\n     ") ;
   const enumGalgasBool test_1 = in_GENERATE_5F_FOR_5F_WINDOWS.boolEnum () ;
-  if (kBoolTrue == test_1) {
+  switch (test_1) {
+  case kBoolTrue : {
     result.addString (GALGAS_string ("<Add option=\"-D_WIN32_WINNT=0x501\" />\n").stringValue ()) ;
-  }else if (kBoolFalse == test_1) {
+    } break ;
+  case kBoolFalse : {
+    } break ;
+  default :
+    break ;
   }
   result.addString ("    </Compiler>\n   </Target>\n   <Target title=\"Debug\">\n    <Option platforms=\"") ;
   result.addString (in_PLATFORM.stringValue ()) ;
@@ -2423,15 +2443,25 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codebloc
   result.addString (in_PROJECT_5F_NAME.stringValue ()) ;
   result.addString ("-debug") ;
   const enumGalgasBool test_2 = in_GENERATE_5F_FOR_5F_WINDOWS.boolEnum () ;
-  if (kBoolTrue == test_2) {
+  switch (test_2) {
+  case kBoolTrue : {
     result.addString (GALGAS_string (".exe").stringValue ()) ;
-  }else if (kBoolFalse == test_2) {
+    } break ;
+  case kBoolFalse : {
+    } break ;
+  default :
+    break ;
   }
   result.addString ("\" prefix_auto=\"0\" extension_auto=\"0\" />\n    <Option object_output=\"objects_debug\" />\n    <Option deps_output=\".deps_debug\" />\n    <Option type=\"1\" />\n    <Option compiler=\"gcc\" />\n    <Option projectResourceIncludeDirsRelation=\"1\" />\n    <Compiler>\n     <Add option=\"-g\" />\n     <Add option=\"-Wnon-virtual-dtor\" />\n     <Add option=\"-Winit-self\" />\n     <Add option=\"-Wredundant-decls\" />\n     <Add option=\"-Wundef\" />\n     <Add option=\"-Winline\" />\n     <Add option=\"-Wmissing-include-dirs\" />\n     <Add option=\"-Weffc++\" />\n     <Add option=\"-std=c++14\" />\n     <Add option=\"-Wshadow\" />\n     <Add option=\"-Wall\" />\n     <Add option=\"-W\" />\n     ") ;
   const enumGalgasBool test_3 = in_GENERATE_5F_FOR_5F_WINDOWS.boolEnum () ;
-  if (kBoolTrue == test_3) {
+  switch (test_3) {
+  case kBoolTrue : {
     result.addString (GALGAS_string ("<Add option=\"-D_WIN32_WINNT=0x501\" />\n").stringValue ()) ;
-  }else if (kBoolFalse == test_3) {
+    } break ;
+  case kBoolFalse : {
+    } break ;
+  default :
+    break ;
   }
   result.addString ("    </Compiler>\n   </Target>\n  </Build>\n  <VirtualTargets>\n   <Add alias=\"All\" targets=\"Release;Debug;\" />\n  </VirtualTargets>\n  <Compiler>\n   <Add directory=\"") ;
   result.addString (in_LIBPM_5F_PATH.stringValue ()) ;
@@ -2453,20 +2483,30 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codebloc
   }
   result.addString ("  </Compiler>\n  <Linker>\n") ;
   const enumGalgasBool test_4 = in_GENERATE_5F_FOR_5F_WINDOWS.boolEnum () ;
-  if (kBoolTrue == test_4) {
+  switch (test_4) {
+  case kBoolTrue : {
     result.addString (GALGAS_string ("   <Add option=\"-static\" />\n   <Add library=\"Comdlg32\" />\n").stringValue ()) ;
-  }else if (kBoolFalse == test_4) {
+    } break ;
+  case kBoolFalse : {
+    } break ;
+  default :
+    break ;
   }
   result.addString ("  </Linker>\n") ;
   const enumGalgasBool test_5 = in_VERBOSE_5F_OPTION.boolEnum () ;
-  if (kBoolTrue == test_5) {
+  switch (test_5) {
+  case kBoolTrue : {
     result.addString ("  <Unit filename=\"") ;
     result.addString (in_LIBPM_5F_PATH.stringValue ()) ;
     result.addString ("/galgas2/C_galgas_verbose_option.cpp\" />\n") ;
-  }else if (kBoolFalse == test_5) {
+    } break ;
+  case kBoolFalse : {
     result.addString ("  <Unit filename=\"") ;
     result.addString (in_LIBPM_5F_PATH.stringValue ()) ;
     result.addString ("/galgas2/C_galgas_quiet_option.cpp\" />\n") ;
+    } break ;
+  default :
+    break ;
   }
   GALGAS_uint index_2787_ (0) ;
   if (in_TOOL_5F_CPP_5F_FILE_5F_LIST.isValid ()) {

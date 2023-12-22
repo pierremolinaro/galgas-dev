@@ -134,10 +134,11 @@ override method @templateInstructionIfForGeneration templateCodeGeneration
       !?ioUnusedVariableCppNameSet
       ?let ifVarCppName
     ]
-    let @string testVar = "test_" + [ioTemporaryVariableIndex string]
+    let testVar = "test_" + [ioTemporaryVariableIndex string]
     ioTemporaryVariableIndex += 1
     ioGeneratedCode += "const enumGalgasBool " + testVar + " = " + ifVarCppName + ".boolEnum () ;\n"
-    ioGeneratedCode += "if (kBoolTrue == " + testVar + ") {\n"
+    ioGeneratedCode += "switch (" + testVar + ") {\n"
+    ioGeneratedCode += "case kBoolTrue : {\n"
     [!?ioGeneratedCode incIndentation !2]
     templateCodeGenerationForListInstruction (
       !instructionList
@@ -147,8 +148,9 @@ override method @templateInstructionIfForGeneration templateCodeGeneration
       !?ioUnusedVariableCppNameSet
       !?ioUseColumnMarker
     )
+    ioGeneratedCode += "} break ;\n"
     [!?ioGeneratedCode decIndentation !2]
-    ioGeneratedCode += "}else if (kBoolFalse == " + testVar + ") {\n"
+    ioGeneratedCode += "case kBoolFalse : {\n"
     [!?ioGeneratedCode incIndentation !2]
   end
 #--- else instructions
@@ -162,6 +164,9 @@ override method @templateInstructionIfForGeneration templateCodeGeneration
   )
   for (* *) in self.mTemplateInstructionIfBranchList do
     [!?ioGeneratedCode decIndentation !2]
+    ioGeneratedCode += "  } break ;\n"
+    ioGeneratedCode += "default :\n"
+    ioGeneratedCode += "  break ;\n"
     ioGeneratedCode += "}\n"
   end
 }
