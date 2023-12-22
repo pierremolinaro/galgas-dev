@@ -30,7 +30,7 @@ def buildForWin32OnMacOSX (dictionary, jsonFilePath, EXECUTABLE, BUILD_DIR_NAME,
   gmf.mBuildDirName = BUILD_DIR_NAME
 #---
   gmf.mCompilerTool = ["x86_64-w64-mingw32-gcc"]
-  gmf.mLinkerTool = ["x86_64-w64-mingw32-g++", "-std=c++11"]
+  gmf.mLinkerTool = ["x86_64-w64-mingw32-g++"]
   gmf.mStripTool = ["x86_64-w64-mingw32-strip", "--strip-all"]
   gmf.mCompilationMessage = "Compiling for Win32"
   gmf.mLinkingMessage = "Linking for Win32"
@@ -44,7 +44,7 @@ def buildForWin32OnMacOSX (dictionary, jsonFilePath, EXECUTABLE, BUILD_DIR_NAME,
 #--- Options for C compiling (.c extension)
   gmf.m_C_CompilerOptions = default_build_options.C_CompilerOptions ([])
 #--- Options for C++ compiling (.cpp extension)
-  gmf.m_Cpp_CompilerOptions = default_build_options.Cpp_CompilerOptions (["-Weffc++", "-Wsign-promo"])
+  gmf.m_Cpp_CompilerOptions = default_build_options.Cpp_CompilerOptions (["-Weffc++", "-Wsign-promo", "-std=c++14"])
 #--- Options for Objective-C compiling (.m extension)
   gmf.m_ObjectiveC_CompilerOptions = default_build_options.ObjectiveC_CompilerOptions ([])
 #--- Options for Objective-C++ compiling (.mm extension)
