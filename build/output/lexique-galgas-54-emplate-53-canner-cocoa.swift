@@ -60,7 +60,6 @@ fileprivate let kEndOfScriptInTemplateArray_galgasTemplateScanner : [Bool] = [
   false /* cast */,
   false /* case */,
   false /* class */,
-  false /* constructor */,
   false /* default */,
   false /* dict */,
   false /* do */,
@@ -85,6 +84,7 @@ fileprivate let kEndOfScriptInTemplateArray_galgasTemplateScanner : [Bool] = [
   false /* if */,
   false /* in */,
   false /* indexing */,
+  false /* init */,
   false /* insert */,
   false /* is */,
   false /* label */,
@@ -126,6 +126,7 @@ fileprivate let kEndOfScriptInTemplateArray_galgasTemplateScanner : [Bool] = [
   false /* spoil */,
   false /* struct */,
   false /* style */,
+  false /* super */,
   false /* switch */,
   false /* syntax */,
   false /* tag */,
@@ -341,7 +342,7 @@ class SWIFT_Lexique_galgasTemplateScanner : SWIFT_Lexique_galgasScanner3 {
 //--------------------------------------------------------------------------------------------------
 
 /*
-static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [180] = {
+static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [181] = {
   NO /* identifier */,
   NO /* double.xxx */,
   NO /* literalInt */,
@@ -374,7 +375,6 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [180] = {
   NO /* cast */,
   NO /* case */,
   NO /* class */,
-  NO /* constructor */,
   NO /* default */,
   NO /* dict */,
   NO /* do */,
@@ -399,6 +399,7 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [180] = {
   NO /* if */,
   NO /* in */,
   NO /* indexing */,
+  NO /* init */,
   NO /* insert */,
   NO /* is */,
   NO /* label */,
@@ -440,6 +441,7 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [180] = {
   NO /* spoil */,
   NO /* struct */,
   NO /* style */,
+  NO /* super */,
   NO /* switch */,
   NO /* syntax */,
   NO /* tag */,

@@ -338,7 +338,6 @@ class C_Lexique_galgasScanner_33_ : public C_Lexique {
    kToken_cast,
    kToken_case,
    kToken_class,
-   kToken_constructor,
    kToken_default,
    kToken_dict,
    kToken_do,
@@ -363,6 +362,7 @@ class C_Lexique_galgasScanner_33_ : public C_Lexique {
    kToken_if,
    kToken_in,
    kToken_indexing,
+   kToken_init,
    kToken_insert,
    kToken_is,
    kToken_label,
@@ -404,6 +404,7 @@ class C_Lexique_galgasScanner_33_ : public C_Lexique {
    kToken_spoil,
    kToken_struct,
    kToken_style,
+   kToken_super,
    kToken_switch,
    kToken_syntax,
    kToken_tag,
@@ -589,7 +590,7 @@ class C_Lexique_galgasScanner_33_ : public C_Lexique {
   protected: virtual String getMessageForTerminal (const int32_t inTerminalSymbol) const override ;
 
 //--- Get terminal count
-  public: virtual int32_t terminalVocabularyCount (void) const override { return 180 ; }
+  public: virtual int32_t terminalVocabularyCount (void) const override { return 181 ; }
 
 //--- Get Token String
   public: virtual String getCurrentTokenString (const cToken * inTokenPtr) const override ;
@@ -687,7 +688,6 @@ class C_Lexique_galgasScanner_34_ : public C_Lexique {
    kToken__22_string_22_,
    kToken_abstract,
    kToken_after,
-   kToken_array,
    kToken_as,
    kToken_bang,
    kToken_before,
@@ -696,7 +696,6 @@ class C_Lexique_galgasScanner_34_ : public C_Lexique {
    kToken_boolset,
    kToken_case,
    kToken_class,
-   kToken_constructor,
    kToken_default,
    kToken_dict,
    kToken_do,
@@ -720,6 +719,7 @@ class C_Lexique_galgasScanner_34_ : public C_Lexique {
    kToken_if,
    kToken_in,
    kToken_indexing,
+   kToken_init,
    kToken_is,
    kToken_label,
    kToken_let,
@@ -751,6 +751,7 @@ class C_Lexique_galgasScanner_34_ : public C_Lexique {
    kToken_send,
    kToken_sortedlist,
    kToken_spoil,
+   kToken_super,
    kToken_struct,
    kToken_style,
    kToken_switch,

@@ -3,7 +3,7 @@
 proc testsuite_extension_mutating_proc () {
   println ("*************************************** begin of mutating proc test")
   var @uint v = 12
-  !?v.init (179)
+  !?v.initialize (179)
   println ("v = " + v + "")
   !?v.autreInit (183)
   println ("v = " + v + "")
@@ -11,12 +11,12 @@ proc testsuite_extension_mutating_proc () {
   println ("v = " + v + "")
 }
 
-mutating proc @uint.init (?let @uint inValue) {
+mutating proc @uint.initialize (?let @uint inValue) {
   self = inValue
 }
 
 mutating proc @uint.autreInit (?let @uint inValue) {
-  !?self.init (!inValue)
+  !?self.initialize (!inValue)
 }
 
 mutating proc @uint.init3 (?let @uint inValue) {

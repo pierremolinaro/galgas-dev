@@ -735,18 +735,18 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?@graphInsertModifierList INSERT_MODIFIER_LIST
 
 #---------- Array
-  template arrayTypeHeader1 "GALGAS_array.h1.galgasTemplate"
-    ?@string TYPE_NAME
-    ?@string TYPE_IDENTIFIER
-    ?@string ELEMENT_TYPE_IDENTIFIER
-    ?@uint DIMENSION
-
-  template arrayTypeSpecificImplementation "GALGAS_array.cpp.galgasTemplate"
-    ?@string TYPE_NAME
-    ?@string TYPE_IDENTIFIER
-    ?@string ELEMENT_TYPE_IDENTIFIER
-    ?@uint DIMENSION
-    ?@stringlist DIMENSION_LIST
+#  template arrayTypeHeader1 "GALGAS_array.h1.galgasTemplate"
+#    ?@string TYPE_NAME
+#    ?@string TYPE_IDENTIFIER
+#    ?@string ELEMENT_TYPE_IDENTIFIER
+#    ?@uint DIMENSION
+#
+#  template arrayTypeSpecificImplementation "GALGAS_array.cpp.galgasTemplate"
+#    ?@string TYPE_NAME
+#    ?@string TYPE_IDENTIFIER
+#    ?@string ELEMENT_TYPE_IDENTIFIER
+#    ?@uint DIMENSION
+#    ?@stringlist DIMENSION_LIST
 
 #---------- LIST MAP
   template listmapTypeHeader1 "GALGAS_listmap.h1.galgasTemplate"

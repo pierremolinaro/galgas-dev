@@ -122,7 +122,7 @@ syntax extension galgas3DeclarationsSyntax {
   #·····················································································································
 
   rule <externtype_constructor> ?!@externTypeConstructorList ioExternTypeConstructorList {
-    $constructor$
+    $init$
     $identifier$ ?let @lstring constructorName
     var @typeNameFormalParameterNameList argumentTypeList = {}
     repeat
@@ -248,7 +248,7 @@ syntax extension galgas4DeclarationsSyntax {
   rule <externtype_constructor> ?!@galgasDeclarationAST ioDeclarations
                                 ?!@stringset ioUserImplicitDeclaredTypeSet
                                 ?!@externTypeConstructorList ioExternTypeConstructorList {
-    $constructor$
+    $init$
     $identifier$ ?let @lstring constructorName
     var @typeNameFormalParameterNameList argumentTypeList = {}
     repeat

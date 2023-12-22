@@ -83,7 +83,7 @@ project (3:7:0) -> "galgas" {
   "galgas-sources/guiCompilation.galgas"
 
 #--- Type declaration
-  "galgas-sources/type-array.galgas"
+#  "galgas-sources/type-array.galgas"
   "galgas-sources/type-boolset.galgas"
   "galgas-sources/type-class.galgas"
   "galgas-sources/type-weak-reference.galgas"

@@ -463,13 +463,13 @@
     settings = {ATTRIBUTES = (); };
   };
 
-  CBCC5E5D1C6E28598E8CBBE8 /* setter-uint-init.cpp */ = {
+  CBCC5E5D1C6E28598E8CBBE8 /* setter-uint-init3.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 59E3BB12D203F45A912EEAF2 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  F65B6DF5B5E3F94D95B11DAF /* setter-uint-init3.cpp */ = {
+  F65B6DF5B5E3F94D95B11DAF /* setter-uint-initialize.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 088D7D9BF74191E006D8E24C ;
     settings = {ATTRIBUTES = (); };
@@ -2282,21 +2282,21 @@
     sourceTree = "<group>";
   };
 
-  59E3BB12D203F45A912EEAF2 /* setter-uint-init.cpp */ = {
-    isa = PBXFileReference;
-    fileEncoding = 4;
-    lastKnownFileType = sourcecode.cpp.cpp;
-    name = "setter-uint-init.cpp";
-    path = "setter-uint-init.cpp";
-    sourceTree = "<group>";
-  };
-
-  088D7D9BF74191E006D8E24C /* setter-uint-init3.cpp */ = {
+  59E3BB12D203F45A912EEAF2 /* setter-uint-init3.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
     name = "setter-uint-init3.cpp";
     path = "setter-uint-init3.cpp";
+    sourceTree = "<group>";
+  };
+
+  088D7D9BF74191E006D8E24C /* setter-uint-initialize.cpp */ = {
+    isa = PBXFileReference;
+    fileEncoding = 4;
+    lastKnownFileType = sourcecode.cpp.cpp;
+    name = "setter-uint-initialize.cpp";
+    path = "setter-uint-initialize.cpp";
     sourceTree = "<group>";
   };
 
@@ -4667,21 +4667,21 @@
     sourceTree = "<group>";
   };
 
-  C950ECB729A966504AF0A635 /* setter-uint-init.h */ = {
-    isa = PBXFileReference;
-    fileEncoding = 4;
-    lastKnownFileType = sourcecode.c.h;
-    name = "setter-uint-init.h";
-    path = "setter-uint-init.h";
-    sourceTree = "<group>";
-  };
-
-  DB5B34375400904F03D8E6A5 /* setter-uint-init3.h */ = {
+  C950ECB729A966504AF0A635 /* setter-uint-init3.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
     name = "setter-uint-init3.h";
     path = "setter-uint-init3.h";
+    sourceTree = "<group>";
+  };
+
+  DB5B34375400904F03D8E6A5 /* setter-uint-initialize.h */ = {
+    isa = PBXFileReference;
+    fileEncoding = 4;
+    lastKnownFileType = sourcecode.c.h;
+    name = "setter-uint-initialize.h";
+    path = "setter-uint-initialize.h";
     sourceTree = "<group>";
   };
 

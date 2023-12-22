@@ -334,13 +334,6 @@ override getter @listDeclarationAST keyRepresentation
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @arrayDeclarationAST keyRepresentation
-  ->@string {
-  result = "array @" + self.mArrayTypeName
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 override getter @listmapDeclarationAST keyRepresentation
   ->@string {
   result = "listmap @" + self.mListmapTypeName

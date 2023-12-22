@@ -123,70 +123,70 @@ let galgasScanner4_1__3C_non_5F_terminal_3E_ : UInt16 = 19
 let galgasScanner4_1__22_string_22_ : UInt16 = 20
 let galgasScanner4_1_abstract : UInt16 = 21
 let galgasScanner4_1_after : UInt16 = 22
-let galgasScanner4_1_array : UInt16 = 23
-let galgasScanner4_1_as : UInt16 = 24
-let galgasScanner4_1_bang : UInt16 = 25
-let galgasScanner4_1_before : UInt16 = 26
-let galgasScanner4_1_between : UInt16 = 27
-let galgasScanner4_1_block : UInt16 = 28
-let galgasScanner4_1_boolset : UInt16 = 29
-let galgasScanner4_1_case : UInt16 = 30
-let galgasScanner4_1_class : UInt16 = 31
-let galgasScanner4_1_constructor : UInt16 = 32
-let galgasScanner4_1_default : UInt16 = 33
-let galgasScanner4_1_dict : UInt16 = 34
-let galgasScanner4_1_do : UInt16 = 35
-let galgasScanner4_1_drop : UInt16 = 36
-let galgasScanner4_1_else : UInt16 = 37
-let galgasScanner4_1_elsif : UInt16 = 38
-let galgasScanner4_1_end : UInt16 = 39
-let galgasScanner4_1_enum : UInt16 = 40
-let galgasScanner4_1_error : UInt16 = 41
-let galgasScanner4_1_extension : UInt16 = 42
-let galgasScanner4_1_extern : UInt16 = 43
-let galgasScanner4_1_false : UInt16 = 44
-let galgasScanner4_1_fileprivate : UInt16 = 45
-let galgasScanner4_1_filewrapper : UInt16 = 46
-let galgasScanner4_1_for : UInt16 = 47
-let galgasScanner4_1_fixit : UInt16 = 48
-let galgasScanner4_1_func : UInt16 = 49
-let galgasScanner4_1_grammar : UInt16 = 50
-let galgasScanner4_1_graph : UInt16 = 51
-let galgasScanner4_1_gui : UInt16 = 52
-let galgasScanner4_1_if : UInt16 = 53
-let galgasScanner4_1_in : UInt16 = 54
-let galgasScanner4_1_indexing : UInt16 = 55
-let galgasScanner4_1_is : UInt16 = 56
-let galgasScanner4_1_label : UInt16 = 57
-let galgasScanner4_1_let : UInt16 = 58
-let galgasScanner4_1_lexique : UInt16 = 59
-let galgasScanner4_1_list : UInt16 = 60
-let galgasScanner4_1_listmap : UInt16 = 61
-let galgasScanner4_1_log : UInt16 = 62
-let galgasScanner4_1_loop : UInt16 = 63
-let galgasScanner4_1_map : UInt16 = 64
-let galgasScanner4_1_mod : UInt16 = 65
-let galgasScanner4_1_mutating : UInt16 = 66
-let galgasScanner4_1_not : UInt16 = 67
-let galgasScanner4_1_on : UInt16 = 68
-let galgasScanner4_1_operator : UInt16 = 69
-let galgasScanner4_1_option : UInt16 = 70
-let galgasScanner4_1_or : UInt16 = 71
-let galgasScanner4_1_override : UInt16 = 72
-let galgasScanner4_1_parse : UInt16 = 73
-let galgasScanner4_1_public : UInt16 = 74
-let galgasScanner4_1_protected : UInt16 = 75
-let galgasScanner4_1_private : UInt16 = 76
-let galgasScanner4_1_proc : UInt16 = 77
-let galgasScanner4_1_project : UInt16 = 78
-let galgasScanner4_1_repeat : UInt16 = 79
-let galgasScanner4_1_rewind : UInt16 = 80
-let galgasScanner4_1_rule : UInt16 = 81
-let galgasScanner4_1_select : UInt16 = 82
-let galgasScanner4_1_self : UInt16 = 83
-let galgasScanner4_1_send : UInt16 = 84
-let galgasScanner4_1_sortedlist : UInt16 = 85
-let galgasScanner4_1_spoil : UInt16 = 86
+let galgasScanner4_1_as : UInt16 = 23
+let galgasScanner4_1_bang : UInt16 = 24
+let galgasScanner4_1_before : UInt16 = 25
+let galgasScanner4_1_between : UInt16 = 26
+let galgasScanner4_1_block : UInt16 = 27
+let galgasScanner4_1_boolset : UInt16 = 28
+let galgasScanner4_1_case : UInt16 = 29
+let galgasScanner4_1_class : UInt16 = 30
+let galgasScanner4_1_default : UInt16 = 31
+let galgasScanner4_1_dict : UInt16 = 32
+let galgasScanner4_1_do : UInt16 = 33
+let galgasScanner4_1_drop : UInt16 = 34
+let galgasScanner4_1_else : UInt16 = 35
+let galgasScanner4_1_elsif : UInt16 = 36
+let galgasScanner4_1_end : UInt16 = 37
+let galgasScanner4_1_enum : UInt16 = 38
+let galgasScanner4_1_error : UInt16 = 39
+let galgasScanner4_1_extension : UInt16 = 40
+let galgasScanner4_1_extern : UInt16 = 41
+let galgasScanner4_1_false : UInt16 = 42
+let galgasScanner4_1_fileprivate : UInt16 = 43
+let galgasScanner4_1_filewrapper : UInt16 = 44
+let galgasScanner4_1_for : UInt16 = 45
+let galgasScanner4_1_fixit : UInt16 = 46
+let galgasScanner4_1_func : UInt16 = 47
+let galgasScanner4_1_grammar : UInt16 = 48
+let galgasScanner4_1_graph : UInt16 = 49
+let galgasScanner4_1_gui : UInt16 = 50
+let galgasScanner4_1_if : UInt16 = 51
+let galgasScanner4_1_in : UInt16 = 52
+let galgasScanner4_1_indexing : UInt16 = 53
+let galgasScanner4_1_init : UInt16 = 54
+let galgasScanner4_1_is : UInt16 = 55
+let galgasScanner4_1_label : UInt16 = 56
+let galgasScanner4_1_let : UInt16 = 57
+let galgasScanner4_1_lexique : UInt16 = 58
+let galgasScanner4_1_list : UInt16 = 59
+let galgasScanner4_1_listmap : UInt16 = 60
+let galgasScanner4_1_log : UInt16 = 61
+let galgasScanner4_1_loop : UInt16 = 62
+let galgasScanner4_1_map : UInt16 = 63
+let galgasScanner4_1_mod : UInt16 = 64
+let galgasScanner4_1_mutating : UInt16 = 65
+let galgasScanner4_1_not : UInt16 = 66
+let galgasScanner4_1_on : UInt16 = 67
+let galgasScanner4_1_operator : UInt16 = 68
+let galgasScanner4_1_option : UInt16 = 69
+let galgasScanner4_1_or : UInt16 = 70
+let galgasScanner4_1_override : UInt16 = 71
+let galgasScanner4_1_parse : UInt16 = 72
+let galgasScanner4_1_public : UInt16 = 73
+let galgasScanner4_1_protected : UInt16 = 74
+let galgasScanner4_1_private : UInt16 = 75
+let galgasScanner4_1_proc : UInt16 = 76
+let galgasScanner4_1_project : UInt16 = 77
+let galgasScanner4_1_repeat : UInt16 = 78
+let galgasScanner4_1_rewind : UInt16 = 79
+let galgasScanner4_1_rule : UInt16 = 80
+let galgasScanner4_1_select : UInt16 = 81
+let galgasScanner4_1_self : UInt16 = 82
+let galgasScanner4_1_send : UInt16 = 83
+let galgasScanner4_1_sortedlist : UInt16 = 84
+let galgasScanner4_1_spoil : UInt16 = 85
+let galgasScanner4_1_super : UInt16 = 86
 let galgasScanner4_1_struct : UInt16 = 87
 let galgasScanner4_1_style : UInt16 = 88
 let galgasScanner4_1_switch : UInt16 = 89
@@ -428,70 +428,70 @@ class SWIFT_Lexique_galgasScanner4 : SWIFT_Lexique {
       10, // 20 : galgasScanner4_1__22_string_22_
       1, // 21 : galgasScanner4_1_abstract
       1, // 22 : galgasScanner4_1_after
-      1, // 23 : galgasScanner4_1_array
-      1, // 24 : galgasScanner4_1_as
-      1, // 25 : galgasScanner4_1_bang
-      1, // 26 : galgasScanner4_1_before
-      1, // 27 : galgasScanner4_1_between
-      1, // 28 : galgasScanner4_1_block
-      1, // 29 : galgasScanner4_1_boolset
-      1, // 30 : galgasScanner4_1_case
-      1, // 31 : galgasScanner4_1_class
-      1, // 32 : galgasScanner4_1_constructor
-      1, // 33 : galgasScanner4_1_default
-      1, // 34 : galgasScanner4_1_dict
-      1, // 35 : galgasScanner4_1_do
-      1, // 36 : galgasScanner4_1_drop
-      1, // 37 : galgasScanner4_1_else
-      1, // 38 : galgasScanner4_1_elsif
-      1, // 39 : galgasScanner4_1_end
-      1, // 40 : galgasScanner4_1_enum
-      1, // 41 : galgasScanner4_1_error
-      1, // 42 : galgasScanner4_1_extension
-      1, // 43 : galgasScanner4_1_extern
-      1, // 44 : galgasScanner4_1_false
-      1, // 45 : galgasScanner4_1_fileprivate
-      1, // 46 : galgasScanner4_1_filewrapper
-      1, // 47 : galgasScanner4_1_for
-      1, // 48 : galgasScanner4_1_fixit
-      1, // 49 : galgasScanner4_1_func
-      1, // 50 : galgasScanner4_1_grammar
-      1, // 51 : galgasScanner4_1_graph
-      1, // 52 : galgasScanner4_1_gui
-      1, // 53 : galgasScanner4_1_if
-      1, // 54 : galgasScanner4_1_in
-      1, // 55 : galgasScanner4_1_indexing
-      1, // 56 : galgasScanner4_1_is
-      1, // 57 : galgasScanner4_1_label
-      1, // 58 : galgasScanner4_1_let
-      1, // 59 : galgasScanner4_1_lexique
-      1, // 60 : galgasScanner4_1_list
-      1, // 61 : galgasScanner4_1_listmap
-      1, // 62 : galgasScanner4_1_log
-      1, // 63 : galgasScanner4_1_loop
-      1, // 64 : galgasScanner4_1_map
-      1, // 65 : galgasScanner4_1_mod
-      1, // 66 : galgasScanner4_1_mutating
-      1, // 67 : galgasScanner4_1_not
-      1, // 68 : galgasScanner4_1_on
-      1, // 69 : galgasScanner4_1_operator
-      1, // 70 : galgasScanner4_1_option
-      1, // 71 : galgasScanner4_1_or
-      1, // 72 : galgasScanner4_1_override
-      1, // 73 : galgasScanner4_1_parse
-      1, // 74 : galgasScanner4_1_public
-      1, // 75 : galgasScanner4_1_protected
-      1, // 76 : galgasScanner4_1_private
-      1, // 77 : galgasScanner4_1_proc
-      1, // 78 : galgasScanner4_1_project
-      1, // 79 : galgasScanner4_1_repeat
-      1, // 80 : galgasScanner4_1_rewind
-      1, // 81 : galgasScanner4_1_rule
-      1, // 82 : galgasScanner4_1_select
-      1, // 83 : galgasScanner4_1_self
-      1, // 84 : galgasScanner4_1_send
-      1, // 85 : galgasScanner4_1_sortedlist
-      1, // 86 : galgasScanner4_1_spoil
+      1, // 23 : galgasScanner4_1_as
+      1, // 24 : galgasScanner4_1_bang
+      1, // 25 : galgasScanner4_1_before
+      1, // 26 : galgasScanner4_1_between
+      1, // 27 : galgasScanner4_1_block
+      1, // 28 : galgasScanner4_1_boolset
+      1, // 29 : galgasScanner4_1_case
+      1, // 30 : galgasScanner4_1_class
+      1, // 31 : galgasScanner4_1_default
+      1, // 32 : galgasScanner4_1_dict
+      1, // 33 : galgasScanner4_1_do
+      1, // 34 : galgasScanner4_1_drop
+      1, // 35 : galgasScanner4_1_else
+      1, // 36 : galgasScanner4_1_elsif
+      1, // 37 : galgasScanner4_1_end
+      1, // 38 : galgasScanner4_1_enum
+      1, // 39 : galgasScanner4_1_error
+      1, // 40 : galgasScanner4_1_extension
+      1, // 41 : galgasScanner4_1_extern
+      1, // 42 : galgasScanner4_1_false
+      1, // 43 : galgasScanner4_1_fileprivate
+      1, // 44 : galgasScanner4_1_filewrapper
+      1, // 45 : galgasScanner4_1_for
+      1, // 46 : galgasScanner4_1_fixit
+      1, // 47 : galgasScanner4_1_func
+      1, // 48 : galgasScanner4_1_grammar
+      1, // 49 : galgasScanner4_1_graph
+      1, // 50 : galgasScanner4_1_gui
+      1, // 51 : galgasScanner4_1_if
+      1, // 52 : galgasScanner4_1_in
+      1, // 53 : galgasScanner4_1_indexing
+      1, // 54 : galgasScanner4_1_init
+      1, // 55 : galgasScanner4_1_is
+      1, // 56 : galgasScanner4_1_label
+      1, // 57 : galgasScanner4_1_let
+      1, // 58 : galgasScanner4_1_lexique
+      1, // 59 : galgasScanner4_1_list
+      1, // 60 : galgasScanner4_1_listmap
+      1, // 61 : galgasScanner4_1_log
+      1, // 62 : galgasScanner4_1_loop
+      1, // 63 : galgasScanner4_1_map
+      1, // 64 : galgasScanner4_1_mod
+      1, // 65 : galgasScanner4_1_mutating
+      1, // 66 : galgasScanner4_1_not
+      1, // 67 : galgasScanner4_1_on
+      1, // 68 : galgasScanner4_1_operator
+      1, // 69 : galgasScanner4_1_option
+      1, // 70 : galgasScanner4_1_or
+      1, // 71 : galgasScanner4_1_override
+      1, // 72 : galgasScanner4_1_parse
+      1, // 73 : galgasScanner4_1_public
+      1, // 74 : galgasScanner4_1_protected
+      1, // 75 : galgasScanner4_1_private
+      1, // 76 : galgasScanner4_1_proc
+      1, // 77 : galgasScanner4_1_project
+      1, // 78 : galgasScanner4_1_repeat
+      1, // 79 : galgasScanner4_1_rewind
+      1, // 80 : galgasScanner4_1_rule
+      1, // 81 : galgasScanner4_1_select
+      1, // 82 : galgasScanner4_1_self
+      1, // 83 : galgasScanner4_1_send
+      1, // 84 : galgasScanner4_1_sortedlist
+      1, // 85 : galgasScanner4_1_spoil
+      1, // 86 : galgasScanner4_1_super
       1, // 87 : galgasScanner4_1_struct
       1, // 88 : galgasScanner4_1_style
       1, // 89 : galgasScanner4_1_switch
@@ -620,70 +620,70 @@ class SWIFT_Lexique_galgasScanner4 : SWIFT_Lexique {
       false, // 20 : galgasScanner4_1__22_string_22_
       true, // 21 : galgasScanner4_1_abstract
       true, // 22 : galgasScanner4_1_after
-      true, // 23 : galgasScanner4_1_array
-      true, // 24 : galgasScanner4_1_as
-      true, // 25 : galgasScanner4_1_bang
-      true, // 26 : galgasScanner4_1_before
-      true, // 27 : galgasScanner4_1_between
-      true, // 28 : galgasScanner4_1_block
-      true, // 29 : galgasScanner4_1_boolset
-      true, // 30 : galgasScanner4_1_case
-      true, // 31 : galgasScanner4_1_class
-      true, // 32 : galgasScanner4_1_constructor
-      true, // 33 : galgasScanner4_1_default
-      true, // 34 : galgasScanner4_1_dict
-      true, // 35 : galgasScanner4_1_do
-      true, // 36 : galgasScanner4_1_drop
-      true, // 37 : galgasScanner4_1_else
-      true, // 38 : galgasScanner4_1_elsif
-      true, // 39 : galgasScanner4_1_end
-      true, // 40 : galgasScanner4_1_enum
-      true, // 41 : galgasScanner4_1_error
-      true, // 42 : galgasScanner4_1_extension
-      true, // 43 : galgasScanner4_1_extern
-      true, // 44 : galgasScanner4_1_false
-      true, // 45 : galgasScanner4_1_fileprivate
-      true, // 46 : galgasScanner4_1_filewrapper
-      true, // 47 : galgasScanner4_1_for
-      true, // 48 : galgasScanner4_1_fixit
-      true, // 49 : galgasScanner4_1_func
-      true, // 50 : galgasScanner4_1_grammar
-      true, // 51 : galgasScanner4_1_graph
-      true, // 52 : galgasScanner4_1_gui
-      true, // 53 : galgasScanner4_1_if
-      true, // 54 : galgasScanner4_1_in
-      true, // 55 : galgasScanner4_1_indexing
-      true, // 56 : galgasScanner4_1_is
-      true, // 57 : galgasScanner4_1_label
-      true, // 58 : galgasScanner4_1_let
-      true, // 59 : galgasScanner4_1_lexique
-      true, // 60 : galgasScanner4_1_list
-      true, // 61 : galgasScanner4_1_listmap
-      true, // 62 : galgasScanner4_1_log
-      true, // 63 : galgasScanner4_1_loop
-      true, // 64 : galgasScanner4_1_map
-      true, // 65 : galgasScanner4_1_mod
-      true, // 66 : galgasScanner4_1_mutating
-      true, // 67 : galgasScanner4_1_not
-      true, // 68 : galgasScanner4_1_on
-      true, // 69 : galgasScanner4_1_operator
-      true, // 70 : galgasScanner4_1_option
-      true, // 71 : galgasScanner4_1_or
-      true, // 72 : galgasScanner4_1_override
-      true, // 73 : galgasScanner4_1_parse
-      true, // 74 : galgasScanner4_1_public
-      true, // 75 : galgasScanner4_1_protected
-      true, // 76 : galgasScanner4_1_private
-      true, // 77 : galgasScanner4_1_proc
-      true, // 78 : galgasScanner4_1_project
-      true, // 79 : galgasScanner4_1_repeat
-      true, // 80 : galgasScanner4_1_rewind
-      true, // 81 : galgasScanner4_1_rule
-      true, // 82 : galgasScanner4_1_select
-      true, // 83 : galgasScanner4_1_self
-      true, // 84 : galgasScanner4_1_send
-      true, // 85 : galgasScanner4_1_sortedlist
-      true, // 86 : galgasScanner4_1_spoil
+      true, // 23 : galgasScanner4_1_as
+      true, // 24 : galgasScanner4_1_bang
+      true, // 25 : galgasScanner4_1_before
+      true, // 26 : galgasScanner4_1_between
+      true, // 27 : galgasScanner4_1_block
+      true, // 28 : galgasScanner4_1_boolset
+      true, // 29 : galgasScanner4_1_case
+      true, // 30 : galgasScanner4_1_class
+      true, // 31 : galgasScanner4_1_default
+      true, // 32 : galgasScanner4_1_dict
+      true, // 33 : galgasScanner4_1_do
+      true, // 34 : galgasScanner4_1_drop
+      true, // 35 : galgasScanner4_1_else
+      true, // 36 : galgasScanner4_1_elsif
+      true, // 37 : galgasScanner4_1_end
+      true, // 38 : galgasScanner4_1_enum
+      true, // 39 : galgasScanner4_1_error
+      true, // 40 : galgasScanner4_1_extension
+      true, // 41 : galgasScanner4_1_extern
+      true, // 42 : galgasScanner4_1_false
+      true, // 43 : galgasScanner4_1_fileprivate
+      true, // 44 : galgasScanner4_1_filewrapper
+      true, // 45 : galgasScanner4_1_for
+      true, // 46 : galgasScanner4_1_fixit
+      true, // 47 : galgasScanner4_1_func
+      true, // 48 : galgasScanner4_1_grammar
+      true, // 49 : galgasScanner4_1_graph
+      true, // 50 : galgasScanner4_1_gui
+      true, // 51 : galgasScanner4_1_if
+      true, // 52 : galgasScanner4_1_in
+      true, // 53 : galgasScanner4_1_indexing
+      true, // 54 : galgasScanner4_1_init
+      true, // 55 : galgasScanner4_1_is
+      true, // 56 : galgasScanner4_1_label
+      true, // 57 : galgasScanner4_1_let
+      true, // 58 : galgasScanner4_1_lexique
+      true, // 59 : galgasScanner4_1_list
+      true, // 60 : galgasScanner4_1_listmap
+      true, // 61 : galgasScanner4_1_log
+      true, // 62 : galgasScanner4_1_loop
+      true, // 63 : galgasScanner4_1_map
+      true, // 64 : galgasScanner4_1_mod
+      true, // 65 : galgasScanner4_1_mutating
+      true, // 66 : galgasScanner4_1_not
+      true, // 67 : galgasScanner4_1_on
+      true, // 68 : galgasScanner4_1_operator
+      true, // 69 : galgasScanner4_1_option
+      true, // 70 : galgasScanner4_1_or
+      true, // 71 : galgasScanner4_1_override
+      true, // 72 : galgasScanner4_1_parse
+      true, // 73 : galgasScanner4_1_public
+      true, // 74 : galgasScanner4_1_protected
+      true, // 75 : galgasScanner4_1_private
+      true, // 76 : galgasScanner4_1_proc
+      true, // 77 : galgasScanner4_1_project
+      true, // 78 : galgasScanner4_1_repeat
+      true, // 79 : galgasScanner4_1_rewind
+      true, // 80 : galgasScanner4_1_rule
+      true, // 81 : galgasScanner4_1_select
+      true, // 82 : galgasScanner4_1_self
+      true, // 83 : galgasScanner4_1_send
+      true, // 84 : galgasScanner4_1_sortedlist
+      true, // 85 : galgasScanner4_1_spoil
+      true, // 86 : galgasScanner4_1_super
       true, // 87 : galgasScanner4_1_struct
       true, // 88 : galgasScanner4_1_style
       true, // 89 : galgasScanner4_1_switch
@@ -1635,6 +1635,7 @@ fileprivate func search_into_galgasScanner_34__galgasKeyWordList (_ inSearchedSt
     "else" : galgasScanner4_1_else,
     "enum" : galgasScanner4_1_enum,
     "func" : galgasScanner4_1_func,
+    "init" : galgasScanner4_1_init,
     "list" : galgasScanner4_1_list,
     "loop" : galgasScanner4_1_loop,
     "proc" : galgasScanner4_1_proc,
@@ -1645,7 +1646,6 @@ fileprivate func search_into_galgasScanner_34__galgasKeyWordList (_ inSearchedSt
     "true" : galgasScanner4_1_true,
     "with" : galgasScanner4_1_with,
     "after" : galgasScanner4_1_after,
-    "array" : galgasScanner4_1_array,
     "block" : galgasScanner4_1_block,
     "class" : galgasScanner4_1_class,
     "elsif" : galgasScanner4_1_elsif,
@@ -1657,6 +1657,7 @@ fileprivate func search_into_galgasScanner_34__galgasKeyWordList (_ inSearchedSt
     "parse" : galgasScanner4_1_parse,
     "spoil" : galgasScanner4_1_spoil,
     "style" : galgasScanner4_1_style,
+    "super" : galgasScanner4_1_super,
     "while" : galgasScanner4_1_while,
     "before" : galgasScanner4_1_before,
     "extern" : galgasScanner4_1_extern,
@@ -1688,7 +1689,6 @@ fileprivate func search_into_galgasScanner_34__galgasKeyWordList (_ inSearchedSt
     "protected" : galgasScanner4_1_protected,
     "typealias" : galgasScanner4_1_typealias,
     "sortedlist" : galgasScanner4_1_sortedlist,
-    "constructor" : galgasScanner4_1_constructor,
     "fileprivate" : galgasScanner4_1_fileprivate,
     "filewrapper" : galgasScanner4_1_filewrapper
   ]

@@ -487,28 +487,6 @@
   \draw[->] (p0-2) -- (p0-3) ;
 \end{tikzpicture}
 
-\ruleSubsection{galgas3DeclarationsSyntax}{type-array}{19}
-
-\begin{tikzpicture}
-  \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
-    \node (P0start) [firstPoint] {}; & & \node (p6-2) [terminal] {array}; & \\
-    & & \node (p5-2) [terminal] {@type}; & \\
-    & & \node (p4-2) [terminal] {:}; & \\
-    & & \node (p3-2) [terminal] {@type}; & \\
-    & & \node (p2-2) [terminal] {[}; & \\
-    & & \node (p1-2) [terminal] {literalInt}; & \\
-    & & \node (p0-2) [terminal] {]}; & \node (p0-3) [lastPoint] {}; & \\
-  };
-  \draw[->] (P0start) -- (p6-2) ;
-  \draw[->] (p6-2) -- (p5-2) ;
-  \draw[->] (p5-2) -- (p4-2) ;
-  \draw[->] (p4-2) -- (p3-2) ;
-  \draw[->] (p3-2) -- (p2-2) ;
-  \draw[->] (p2-2) -- (p1-2) ;
-  \draw[->] (p1-2) -- (p0-2) ;
-  \draw[->] (p0-2) -- (p0-3) ;
-\end{tikzpicture}
-
 \ruleSubsection{galgas3DeclarationsSyntax}{type-boolset}{18}
 
 \begin{tikzpicture}
@@ -659,10 +637,10 @@
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
-    & & & & & & & & & & & & & & & & \node (p3-16) [point] {}; & \\
-    & & & & & & & & \node (p2-8) [point] {}; & \\
-    & & & & & & & \node (p1-7) [terminal] {\verb=%=usefull}; & & & & & & \node (p1-13) [terminal] {;}; & \\
-    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {list}; & \node (p0-3) [terminal] {@type}; & \node (p0-4) [point] {}; & \node (p0-5) [point] {}; & \node (p0-6) [point] {}; & & & \node (p0-9) [terminal] {\{}; & \node (p0-10) [point] {}; & \node (p0-11) [nonterminal] {\nonTerminalSymbol{property\_declaration\_ggs3}{35}}; & \node (p0-12) [point] {}; & \node (p0-13) [point] {}; & \node (p0-14) [point] {}; & \node (p0-15) [point] {}; & & \node (p0-17) [terminal] {\}}; & \node (p0-18) [lastPoint] {}; & \\
+    & & & & & & & & & & & & & & \node (p3-14) [point] {}; & \\
+    & & & & & & & & \node (p2-8) [point] {}; & & & & & \node (p2-13) [nonterminal] {\nonTerminalSymbol{method\_declaration\_ggs3}{51}}; & \\
+    & & & & & & & \node (p1-7) [terminal] {\verb=%=usefull}; & & & & & & \node (p1-13) [nonterminal] {\nonTerminalSymbol{property\_declaration\_ggs3}{35}}; & \\
+    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {list}; & \node (p0-3) [terminal] {@type}; & \node (p0-4) [point] {}; & \node (p0-5) [point] {}; & \node (p0-6) [point] {}; & & & \node (p0-9) [terminal] {\{}; & \node (p0-10) [point] {}; & \node (p0-11) [point] {}; & \node (p0-12) [point] {}; & & & \node (p0-15) [terminal] {\}}; & \node (p0-16) [lastPoint] {}; & \\
   };
   \draw[->] (P0start) -- (p0-2) ;
   \draw[->] (p0-2) -- (p0-3) ;
@@ -671,15 +649,14 @@
   \draw[->] (p2-8) -| (p0-4) ;
   \draw[->] (p1-7) -| (p2-8) ;
   \draw[->] (p0-5) -- (p0-9) ;
-  \draw[->] (p0-9) -- (p0-11) ;
-  \draw (p0-11) -- (p0-13) ;
+  \draw (p0-9) -- (p0-11) ;
   \draw[->] (p0-12) |- (p1-13) ;
-  \draw (p0-13) -- (p0-14) ;
-  \draw[->] (p1-13) -| (p0-14) ;
-  \draw[->] (p3-16) -| (p0-10) ;
-  \draw[->] (p0-15) -| (p3-16) ;
-  \draw[->] (p0-14) -- (p0-17) ;
-  \draw[->] (p0-17) -- (p0-18) ;
+  \draw[->] (p0-12) |- (p2-13) ;
+  \draw[->] (p3-14) -| (p0-10) ;
+  \draw[->] (p1-13) -| (p3-14) ;
+  \draw[->] (p2-13) -| (p3-14) ;
+  \draw[->] (p0-11) -- (p0-15) ;
+  \draw[->] (p0-15) -- (p0-16) ;
 \end{tikzpicture}
 
 \ruleSubsection{galgas3DeclarationsSyntax}{type-listmap}{18}

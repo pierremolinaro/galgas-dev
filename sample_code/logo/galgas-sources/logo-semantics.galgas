@@ -33,7 +33,7 @@ abstract method @instruction codeDisplay
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @instructionList {
-  public let @instruction mInstruction ;
+  public let @instruction mInstruction
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
