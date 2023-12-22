@@ -31,7 +31,7 @@ def buildForUnix (dictionary, jsonFilePath, EXECUTABLE, BUILD_DIR_NAME, GOAL, ma
   gmf.mStripMessage = "Stripping"
 
   if (os.name == "nt") or sys.platform.startswith ("cygwin") : # Cygwin
-    gmf.mLinkerOptions = ["-lComdlg32", "-static"]
+    gmf.mLinkerOptions = ["-lComdlg32"]
     gmf.mExecutableSuffix = ".exe"
     gmf.mCompilationMessage = "Compiling for Cygwin"
     gmf.mLinkingMessage = "Linking for Cygwin"
