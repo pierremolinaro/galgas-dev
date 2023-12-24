@@ -637,7 +637,8 @@ override method @filewrapperDeclarationAST semanticAnalysis
       let templateAnalysisContext = @templateAnalysisContext.new {
         !inSemanticContext
         !inPredefinedTypes
-        !templateVariableMap}
+        !templateVariableMap
+      }
       templateInstructionListAnalysis (
         !filewrapperNameForUsefulness
         !?ioUsefulEntitiesGraph
@@ -662,8 +663,8 @@ override method @filewrapperDeclarationAST semanticAnalysis
         !self.mFilewrapperPath.string
         !wrapperFileMap
         !wrapperDirectoryMap
-        !filewrapperTemplateListForGeneration}
-#    !""
+        !filewrapperTemplateListForGeneration
+     }
   end
 }
 

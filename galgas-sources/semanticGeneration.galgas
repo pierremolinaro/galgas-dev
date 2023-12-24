@@ -1398,20 +1398,44 @@ proc generateWrapperContents
 #--- Generate regular files
   for (lkey mAbsoluteFilePath mIsTextFile * mWrapperFileIndex) in inFilewrapperRegularFileMap do
     if mIsTextFile then
-      let @string contents = @string. stringWithContentsOfFile {!mAbsoluteFilePath}
+      let contents = @string.stringWithContentsOfFile {!mAbsoluteFilePath}
       ioImplementation += "//--- File '" + inFilewrapperDirectory + "/" + lkey + "'\n\n"
-      +  "const char * gWrapperFileContent_"
-      + [mWrapperFileIndex string] + "_"
-      + [inFilewrapperName identifierRepresentation] + " = "
-      + [contents utf8RepresentationEscapingQuestionMark] + " ;\n\n"
-      + "const cRegularFileWrapper gWrapperFile_" + [mWrapperFileIndex string]+ "_"
-      + [inFilewrapperName identifierRepresentation] + " (\n"
-      + "  " + [lkey utf8RepresentationEscapingQuestionMark] + ",\n"
-      + "  " + [[lkey pathExtension] utf8RepresentationEscapingQuestionMark] + ",\n"
-      + "  true, // Text file\n"
-      + "  " + [contents count] + ", // Text length\n"
-      + "  gWrapperFileContent_" + [mWrapperFileIndex string] + "_" + [inFilewrapperName identifierRepresentation] +"\n"
-      + ") ;\n\n"
+      ioImplementation +=  "const char * gWrapperFileContent_"
+      ioImplementation += [mWrapperFileIndex string]
+      ioImplementation += "_"
+      ioImplementation += [inFilewrapperName identifierRepresentation]
+      ioImplementation += " = "
+      if [contents length] > 100 then
+        var components = [contents componentsSeparatedByString !"\n"]
+        [!?components popLast ?let lastLine]
+        for (str) in components
+        before
+          ioImplementation += "\n  "
+        do
+          let s = str + "\n"
+          ioImplementation += [s utf8RepresentationEscapingQuestionMark] + "\n  "
+        end
+        if [lastLine length] > 0 then
+          ioImplementation += [lastLine utf8RepresentationEscapingQuestionMark]
+        end
+      else
+        ioImplementation += [contents utf8RepresentationEscapingQuestionMark]
+      end
+      ioImplementation += " ;\n\nconst cRegularFileWrapper gWrapperFile_"
+      ioImplementation += [mWrapperFileIndex string]
+      ioImplementation += "_"
+      ioImplementation += [inFilewrapperName identifierRepresentation]
+      ioImplementation += " (\n  "
+      ioImplementation += [lkey utf8RepresentationEscapingQuestionMark]
+      ioImplementation += ",\n  "
+      ioImplementation += [[lkey pathExtension] utf8RepresentationEscapingQuestionMark]
+      ioImplementation += ",\n  true, // Text file\n "
+      ioImplementation += [contents count]
+      ioImplementation += ", // Text length\n  gWrapperFileContent_"
+      ioImplementation += [mWrapperFileIndex string]
+      ioImplementation += "_"
+      ioImplementation += [inFilewrapperName identifierRepresentation]
+      ioImplementation += "\n) ;\n\n"
     else
       let @data contents = @data. dataWithContentsOfFile {!mAbsoluteFilePath}
       ioImplementation += "//--- File '" + inFilewrapperDirectory + "/" + lkey + "'\n\n"

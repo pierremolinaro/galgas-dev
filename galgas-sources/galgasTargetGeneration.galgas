@@ -1083,23 +1083,9 @@ proc updateGalgasTargets
       !groupName:"Strings"
       !groupPath:"strings"
       !fileNames:{
-#        !"HTMLFileWrite.cpp",
-#        !"HTMLFileWrite.h",
         !"String-class-getters.cpp",
         !"String-class.cpp",
         !"String-class.h",
-        !"cUnicodeData-part-1.h",
-        !"cUnicodeData-part-2.h",
-        !"cUnicodeData-part-3.h",
-        !"cUnicodeData-part-4.h",
-        !"cUnicodeData-part-5.h",
-        !"cUnicodeData-part-6.h",
-        !"cUnicodeData-part-7.h",
-        !"cUnicodeData-part-8.h",
-        !"cUnicodeData-part-9.h",
-        !"cUnicodeData-part-10.h",
-        !"cUnicodeData-part-11.h",
-        !"cUnicodeData-part-12.h",
         !"cUnicodeData.h",
         !"string_encodings.h",
         !"unicode_character_base.h",

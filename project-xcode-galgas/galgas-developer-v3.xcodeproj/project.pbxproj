@@ -712,18 +712,6 @@
 		CFA113AA2B31C6C400C17B20 /* C_Lexique-parsing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "C_Lexique-parsing.cpp"; sourceTree = "<group>"; };
 		CFA113AD2B31C8CD00C17B20 /* GALGAS_string-getters.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "GALGAS_string-getters.cpp"; sourceTree = "<group>"; };
 		CFA113B02B31CBA400C17B20 /* String-class-getters.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "String-class-getters.cpp"; sourceTree = "<group>"; };
-		CFA113B32B31D62D00C17B20 /* cUnicodeData-part-1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "cUnicodeData-part-1.h"; sourceTree = "<group>"; };
-		CFA113B42B31D6BA00C17B20 /* cUnicodeData-part-2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "cUnicodeData-part-2.h"; sourceTree = "<group>"; };
-		CFA113B52B31D76500C17B20 /* cUnicodeData-part-3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "cUnicodeData-part-3.h"; sourceTree = "<group>"; };
-		CFA113B62B31D97700C17B20 /* cUnicodeData-part-5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "cUnicodeData-part-5.h"; sourceTree = "<group>"; };
-		CFA113B72B31DA2600C17B20 /* cUnicodeData-part-9.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "cUnicodeData-part-9.h"; sourceTree = "<group>"; };
-		CFA113B82B31DAB200C17B20 /* cUnicodeData-part-11.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "cUnicodeData-part-11.h"; sourceTree = "<group>"; };
-		CFA113B92B31DB1800C17B20 /* cUnicodeData-part-12.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "cUnicodeData-part-12.h"; sourceTree = "<group>"; };
-		CFA113BA2B31DB6900C17B20 /* cUnicodeData-part-10.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "cUnicodeData-part-10.h"; sourceTree = "<group>"; };
-		CFA113BB2B31DC1A00C17B20 /* cUnicodeData-part-8.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "cUnicodeData-part-8.h"; sourceTree = "<group>"; };
-		CFA113BC2B31DCDF00C17B20 /* cUnicodeData-part-6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "cUnicodeData-part-6.h"; sourceTree = "<group>"; };
-		CFA113BF2B31DED700C17B20 /* cUnicodeData-part-7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "cUnicodeData-part-7.h"; sourceTree = "<group>"; };
-		CFA113C02B31DFA300C17B20 /* cUnicodeData-part-4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "cUnicodeData-part-4.h"; sourceTree = "<group>"; };
 		CFA175691C89BF8E00BB0B17 /* cLexiqueIntrospection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cLexiqueIntrospection.cpp; sourceTree = "<group>"; };
 		CFA1756A1C89BF8E00BB0B17 /* cLexiqueIntrospection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cLexiqueIntrospection.h; sourceTree = "<group>"; };
 		CFA5892C10D28A2200B7E541 /* GALGAS_uint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = GALGAS_uint.cpp; sourceTree = "<group>"; };
@@ -1332,18 +1320,6 @@
 			children = (
 				CF1AA58F1979A9240095B745 /* HTMLString.cpp */,
 				CF1AA5901979A9240095B745 /* HTMLString.h */,
-				CFA113B32B31D62D00C17B20 /* cUnicodeData-part-1.h */,
-				CFA113B42B31D6BA00C17B20 /* cUnicodeData-part-2.h */,
-				CFA113B52B31D76500C17B20 /* cUnicodeData-part-3.h */,
-				CFA113C02B31DFA300C17B20 /* cUnicodeData-part-4.h */,
-				CFA113B62B31D97700C17B20 /* cUnicodeData-part-5.h */,
-				CFA113BC2B31DCDF00C17B20 /* cUnicodeData-part-6.h */,
-				CFA113BF2B31DED700C17B20 /* cUnicodeData-part-7.h */,
-				CFA113BB2B31DC1A00C17B20 /* cUnicodeData-part-8.h */,
-				CFA113B72B31DA2600C17B20 /* cUnicodeData-part-9.h */,
-				CFA113BA2B31DB6900C17B20 /* cUnicodeData-part-10.h */,
-				CFA113B82B31DAB200C17B20 /* cUnicodeData-part-11.h */,
-				CFA113B92B31DB1800C17B20 /* cUnicodeData-part-12.h */,
 				CFD3E8540FA0C0F800C4995E /* cUnicodeData.h */,
 				CFCDC7EC2AB358C800FD6CB0 /* print.cpp */,
 				CFCDC7ED2AB358C800FD6CB0 /* print.h */,
