@@ -15,7 +15,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "strings/C_HTMLString.h"
+#include "strings/HTMLString.h"
 #include "bdd/C_Relation.h"
 #include "bdd/C_RelationSingleType.h"
 #include "utilities/MF_MemoryControl.h"
@@ -65,7 +65,7 @@ static bool displayUnusefulSymbols (Compiler * inCompiler,
                                     const GALGAS_location & inErrorLocation,
                                     const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
                                     const C_Relation & inUsefulSymbolsRelation,
-                                    C_HTMLString & ioHTMLFileContents,
+                                    HTMLString & ioHTMLFileContents,
                                     const cVocabulary & inVocabulary,
                                     const int32_t inIterationCount,
                                     const bool inVerboseOptionOn) {
@@ -182,7 +182,7 @@ void useful_symbols_computations (Compiler * inCompiler,
                                   const cPureBNFproductionsList & inPureBNFproductions,
                                   const C_RelationSingleType & inVocabularyBDDType,
                                   const cVocabulary & inVocabulary,
-                                  C_HTMLString & ioHTMLFileContents,
+                                  HTMLString & ioHTMLFileContents,
                                   const bool inPopulateHTMLHelperString,
                                   C_Relation & outUsefulSymbols,
                                   bool & outWarningFlag,

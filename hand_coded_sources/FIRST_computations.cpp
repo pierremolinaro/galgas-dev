@@ -15,7 +15,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "strings/C_HTMLString.h"
+#include "strings/HTMLString.h"
 #include "bdd/C_Relation.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -69,7 +69,7 @@ computeFIRSTsets (const cPureBNFproductionsList & inProductionRules,
 //--------------------------------------------------------------------------------------------------
 
 static bool
-displayAndCheckFIRSTsets (C_HTMLString & ioHTMLFileContents,
+displayAndCheckFIRSTsets (HTMLString & ioHTMLFileContents,
                           const bool inPopulateHTMLHelperString,
                           const C_Relation & inVocabularyDerivingInEmptyString,
                           const cVocabulary & inVocabulary,
@@ -185,7 +185,7 @@ displayAndCheckFIRSTsets (C_HTMLString & ioHTMLFileContents,
 
 void
 FIRST_computations (const cPureBNFproductionsList & inPureBNFproductions,
-                    C_HTMLString & ioHTMLFileContents,
+                    HTMLString & ioHTMLFileContents,
                     const bool inPopulateHTMLHelperString,
                     const cVocabulary & inVocabulary,
                     const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,

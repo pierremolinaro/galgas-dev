@@ -1,11 +1,10 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  'C_HTML_FileWrite' : a class for stream writing html text files                              
-//    (with facility for outputing C++ code)                                                     
+//  String : an implementation of fully dynamic character string                               
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2003, ..., 2014 Pierre Molinaro.
+//  Copyright (C) 1997, ..., 2023 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -19,21 +18,28 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "files/C_HTML_FileWrite.h"
-#include "strings/String-class.h"
-#include "time/C_DateTime.h"
+#include "strings/HTMLString.h"
 
 //--------------------------------------------------------------------------------------------------
 
 #include <string.h>
 
 //--------------------------------------------------------------------------------------------------
+//
+//   C O N S T R U C T O R S                                                                     
+//
+//--------------------------------------------------------------------------------------------------
 
-C_HTML_FileWrite::C_HTML_FileWrite (const String & inFileName,
-                                    const String & inWindowTitle,
-                                    const String & inCSSFileName,
-                                    const String & inCSSContents) :
-C_TextFileWrite (inFileName) {
+HTMLString::HTMLString (void) :
+String () {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+void HTMLString::writeStartCode (const String & inWindowTitle,
+                                 const String & inCSSFileName,
+                                 const String & inCSSContents) {
   addRawData ("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">\n"
                  "<html>"
                  "<head>\n"
@@ -52,55 +58,42 @@ C_TextFileWrite (inFileName) {
     addRawData ("</style>") ;
   }
   addRawData ("</head>"
-                 "<body><div>\n") ;
+              "<body><div>\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
-//                     Close                             
-//--------------------------------------------------------------------------------------------------
 
-bool C_HTML_FileWrite::close (void) {
-  addRawData ("</div></body></html>\n") ;
-  return inherited::close () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//  Destructor writes html ending code, the closes the file                    *
-//--------------------------------------------------------------------------------------------------
-
-C_HTML_FileWrite::~C_HTML_FileWrite (void) {
+void HTMLString::writeEndCode (void) {
   addRawData ("</div></body></html>\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
-//  Write a character string into the file WITHOUT any translation             *
-//--------------------------------------------------------------------------------------------------
 
-void C_HTML_FileWrite::addRawData (const char * in_Cstring) {
-  inherited::performActualCharArrayOutput (in_Cstring, (int32_t) (strlen (in_Cstring) & UINT32_MAX)) ;
+void HTMLString::addRawData (const char * in_Cstring) {
+  super::performActualCharArrayOutput (in_Cstring, (int32_t) (strlen (in_Cstring) & UINT32_MAX)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
-//                  Write a character string into the file                     *
-//  Performs HTML character translation (i.e. '<' --> '&lt;', ...)             *
+//                  Write a character string into the file                                       
+//  Performs HTML character translation (i.e. '<' --> '&lt;', ...)                               
 //--------------------------------------------------------------------------------------------------
 
-void C_HTML_FileWrite::performActualCharArrayOutput (const char * inCharArray,
-                                                     const int32_t inArrayCount) {
+void HTMLString::performActualCharArrayOutput (const char * inCharArray,
+                                               const int32_t inArrayCount) {
   for (int32_t i=0 ; i<inArrayCount ; i++) {
     const char c = inCharArray [i] ;
     switch (c) {
     case '<' :
-      inherited::performActualCharArrayOutput ("&lt;", 4) ;
+      super::performActualCharArrayOutput ("&lt;", 4) ;
       break ;
     case '>' :
-      inherited::performActualCharArrayOutput ("&gt;", 4) ;
+      super::performActualCharArrayOutput ("&gt;", 4) ;
       break ;
     case '&' :
-      inherited::performActualCharArrayOutput ("&amp;", 5) ;
+      super::performActualCharArrayOutput ("&amp;", 5) ;
       break ;
     default :
-      inherited::performActualCharArrayOutput (& c, 1) ;
+      super::performActualCharArrayOutput (& c, 1) ;
       break ;
     }
   }
@@ -108,33 +101,33 @@ void C_HTML_FileWrite::performActualCharArrayOutput (const char * inCharArray,
 
 //--------------------------------------------------------------------------------------------------
 
-void C_HTML_FileWrite::performActualUnicodeArrayOutput (const utf32 * inCharArray,
-                                                        const int32_t inArrayCount) {
+void HTMLString::performActualUnicodeArrayOutput (const utf32 * inCharArray,
+                                                  const int32_t inArrayCount) {
   for (int32_t i=0 ; i<inArrayCount ; i++) {
     const utf32 codePoint = inCharArray [i] ;
     switch (UNICODE_VALUE (codePoint)) {
     case '<' :
-      inherited::performActualCharArrayOutput ("&lt;", 4) ;
+      super::performActualCharArrayOutput ("&lt;", 4) ;
       break ;
     case '>' :
-      inherited::performActualCharArrayOutput ("&gt;", 4) ;
+      super::performActualCharArrayOutput ("&gt;", 4) ;
       break ;
     case '&' :
-      inherited::performActualCharArrayOutput ("&amp;", 5) ;
+      super::performActualCharArrayOutput ("&amp;", 5) ;
       break ;
     default :
-      inherited::performActualUnicodeArrayOutput (& codePoint, 1) ;
+      super::performActualUnicodeArrayOutput (& codePoint, 1) ;
       break ;
     }
   }
 }
 
 //--------------------------------------------------------------------------------------------------
-//                 Comments as a table                   
+//                 Comments as a table                                                           
 //--------------------------------------------------------------------------------------------------
 
-void C_HTML_FileWrite::addCppTitleComment (const String & inCommentString,
-                                              const String & inTableStyleClass) {
+void HTMLString::addCppTitleComment (const String & inCommentString,
+                                     const String & inTableStyleClass) {
   addRawData ("<table") ;
   if (inTableStyleClass.length () > 0) {
     addRawData (" class=\"") ;

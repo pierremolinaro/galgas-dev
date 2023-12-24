@@ -19,12 +19,12 @@
 
 //--------------------------------------------------------------------------------------------------
 
-class C_HTMLString ;
+class HTMLString ;
 class GALGAS_syntaxComponentListForGrammarAnalysis ;
 
 //--------------------------------------------------------------------------------------------------
 
-void printOriginalGrammar (C_HTMLString & inHTMLfile,
+void printOriginalGrammar (HTMLString & inHTMLfile,
                            const GALGAS_syntaxComponentListForGrammarAnalysis & inSyntaxComponentsList) ;
 
 //--------------------------------------------------------------------------------------------------

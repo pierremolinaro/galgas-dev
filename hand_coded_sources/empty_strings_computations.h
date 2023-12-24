@@ -24,7 +24,7 @@
 //--------------------------------------------------------------------------------------------------
 
 class cPureBNFproductionsList ;
-class C_HTMLString ;
+class HTMLString ;
 class C_Lexique ;
 class C_Relation ;
 class C_RelationConfiguration ;
@@ -32,7 +32,7 @@ class C_RelationConfiguration ;
 //--------------------------------------------------------------------------------------------------
 
 C_Relation empty_strings_computations (const cPureBNFproductionsList & inPureBNFproductions,
-                                       C_HTMLString & ioHTMLFileContents,
+                                       HTMLString & ioHTMLFileContents,
                                        const bool inPopulateHTMLstring,
                                        TC_UniqueArray <bool> & outVocabularyDerivingToEmpty_Array,
                                        const C_RelationConfiguration & inVocabularyConfiguration,

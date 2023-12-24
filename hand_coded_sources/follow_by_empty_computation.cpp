@@ -16,7 +16,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "follow_by_empty_computation.h"
-#include "strings/C_HTMLString.h"
+#include "strings/HTMLString.h"
 #include "bdd/C_Relation.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -74,7 +74,7 @@ computeNonterminalFollowedByEmpty (const cPureBNFproductionsList & inProductionR
  
 static void
 displayNonterminalSymbolsFollowedByEmpty (const C_Relation & inVocabularyFollowedByEmpty,
-                                          C_HTMLString & ioHTMLFileContents,
+                                          HTMLString & ioHTMLFileContents,
                                           const bool inPopulateHTMLHelperString,
                                           const cVocabulary & inVocabulary,
                                           const int32_t inIterationsCount,
@@ -116,7 +116,7 @@ displayNonterminalSymbolsFollowedByEmpty (const C_Relation & inVocabularyFollowe
 
 void
 follow_by_empty_computations (const cPureBNFproductionsList & inPureBNFproductions,
-                              C_HTMLString & ioHTMLFileContents,
+                              HTMLString & ioHTMLFileContents,
                               const bool inPopulateHTMLHelperString,
                               const cVocabulary & inVocabulary,
                               const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,

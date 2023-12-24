@@ -25,7 +25,7 @@
 #include "command_line_interface/C_StringListCommandLineOption.h"
 #include "command_line_interface/C_builtin_CLI_Options.h"
 #include "streams/C_ConsoleOut.h"
-#include "files/C_FileManager.h"
+#include "files/FileManager.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -299,7 +299,7 @@ static void analyze_one_option (const char * inCommand,
       #else
         fileName = inCommand ;
       #endif
-      outSourceFileArray.appendObject (C_FileManager::absolutePathFromPath (fileName, "")) ;
+      outSourceFileArray.appendObject (FileManager::absolutePathFromPath (fileName, "")) ;
       found = true ;
     }
   }

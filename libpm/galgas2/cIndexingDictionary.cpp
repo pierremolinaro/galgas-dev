@@ -20,7 +20,7 @@
 
 #include "galgas2/cIndexingDictionary.h"
 #include "strings/String-class.h"
-#include "files/C_FileManager.h"
+#include "files/FileManager.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -242,7 +242,7 @@ void cIndexingDictionary::generateIndexFile (const String & inOutputIndexFilePat
   contents.addString ("</dict>") ;
 //--- End of file
   contents.addString ("</plist>") ;
-  C_FileManager::writeStringToFile (contents, inOutputIndexFilePath) ;
+  FileManager::writeStringToFile (contents, inOutputIndexFilePath) ;
 }
 
 //--------------------------------------------------------------------------------------------------

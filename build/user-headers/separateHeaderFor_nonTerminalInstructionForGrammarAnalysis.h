@@ -29,7 +29,7 @@ class cPtr_nonTerminalInstructionForGrammarAnalysis : public cPtr_abstractSyntax
 
 //--- START OF USER ZONE 2
 
-  public: virtual void printInstructionForGrammar (C_HTMLString & inHTMLfile) const override ;
+  public: virtual void printInstructionForGrammar (HTMLString & inHTMLfile) const override ;
 
 
   public: virtual void fixNewNonterminalSymbols (cVocabulary & ioVocabulary,

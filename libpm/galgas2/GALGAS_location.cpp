@@ -20,7 +20,7 @@
 
 #include "all-predefined-types.h"
 #include "galgas2/Compiler.h"
-#include "files/C_FileManager.h"
+#include "files/FileManager.h"
 
 //----------------------------------------------------------------------------------------------------------------------
 

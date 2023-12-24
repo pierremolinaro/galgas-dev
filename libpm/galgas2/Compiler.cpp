@@ -20,7 +20,7 @@
 
 #include "command_line_interface/F_Analyze_CLI_Options.h"
 #include "files/C_TextFileWrite.h"
-#include "files/C_FileManager.h"
+#include "files/FileManager.h"
 #include "galgas2/Compiler.h"
 #include "galgas2/C_galgas_io.h"
 #include "galgas2/C_galgas_CLI_Options.h"
@@ -118,7 +118,7 @@ void Compiler::writeIssueJSONFile (const String & inFile) {
       isFirst = false ;
     }
     s.addString ("\n]\n") ;
-    const bool ok = C_FileManager::writeStringToFile (s, inFile) ;
+    const bool ok = FileManager::writeStringToFile (s, inFile) ;
     if (!ok) {
       const String message (String ("Cannot write to '") + inFile + "'") ;
       fatalError (message, "", 0) ;
@@ -561,14 +561,14 @@ void Compiler::generateFileFromPathes (const String & inStartPath,
    ? sourceFilePath ().stringByDeletingLastPathComponent ()
    : inStartPath ;
 //--- Search file in directory
-  const String fullPathName = C_FileManager::findFileInDirectory (startPath, inFileName, inDirectoriesToExclude) ;
+  const String fullPathName = FileManager::findFileInDirectory (startPath, inFileName, inDirectoriesToExclude) ;
   if (fullPathName.length () == 0) {
   //--- File does not exist : create it
     String fileName = startPath ;
     fileName.addString ("/") ;
     fileName.addString (inFileName) ;
     const String directory = fileName.stringByDeletingLastPathComponent () ;
-    C_FileManager::makeDirectoryIfDoesNotExist (directory) ;
+    FileManager::makeDirectoryIfDoesNotExist (directory) ;
     if (performGeneration ()) {
       C_TextFileWrite f (fileName) ;
       bool ok = f.isOpened () ;
@@ -586,7 +586,7 @@ void Compiler::generateFileFromPathes (const String & inStartPath,
       ggs_printWarning (this, SourceTextInString(), C_IssueWithFixIt (), String ("Need to create '") + fileName + "'.\n" COMMA_HERE) ;
     }
   }else{
-    const String previousContents = C_FileManager::stringWithContentOfFile (fullPathName) ;
+    const String previousContents = FileManager::stringWithContentOfFile (fullPathName) ;
     const bool same = previousContents == inContents ;
     if (! same) {
       if (performGeneration ()) {
@@ -636,14 +636,14 @@ void Compiler::generateFileWithPatternFromPathes (
     : inStartPath
   ;
 //--- Search file in directory
-  const String fullPathName = C_FileManager::findFileInDirectory (startPath, inFileName, inDirectoriesToExclude) ;
+  const String fullPathName = FileManager::findFileInDirectory (startPath, inFileName, inDirectoriesToExclude) ;
   if (fullPathName.length () == 0) {
   //--- File does not exist : create it
     String fileName = startPath ;
     fileName.addString ("/") ;
     fileName.addString (inFileName) ;
     const String directory = fileName.stringByDeletingLastPathComponent () ;
-    C_FileManager::makeDirectoryIfDoesNotExist (directory) ;
+    FileManager::makeDirectoryIfDoesNotExist (directory) ;
     if (performGeneration ()) {
       C_TextFileWrite f (fileName) ;
       bool ok = f.isOpened () ;
@@ -683,7 +683,7 @@ void Compiler::generateFileWithPatternFromPathes (
     String firstGeneratedPart ;
     String secondGeneratedPart ;
     logFileRead (fullPathName) ;
-    String s = C_FileManager::stringWithContentOfFile (fullPathName) ;
+    String s = FileManager::stringWithContentOfFile (fullPathName) ;
     TC_UniqueArray <String> stringArray ;
     s.componentsSeparatedByString (kSTART_OF_USER_ZONE_1, stringArray) ;
     String header ;

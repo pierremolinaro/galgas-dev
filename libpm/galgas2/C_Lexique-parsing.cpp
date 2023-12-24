@@ -26,7 +26,7 @@
 #include "strings/unicode_string_routines.h"
 #include "galgas2/C_galgas_CLI_Options.h"
 #include "galgas2/cIndexingDictionary.h"
-#include "files/C_FileManager.h"
+#include "files/FileManager.h"
 #include "galgas2/F_verbose_output.h"
 
 //--------------------------------------------------------------------------------------------------

@@ -15,7 +15,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "files/C_FileManager.h"
+#include "files/FileManager.h"
 #include "bdd/C_Relation.h"
 #include "utilities/MF_MemoryControl.h"
 #include "streams/C_ConsoleOut.h"
@@ -23,7 +23,7 @@
 #include "galgas2/Compiler.h"
 #include "galgas_cli_options.h"
 #include "galgas2/C_galgas_io.h"
-#include "strings/C_HTMLString.h"
+#include "strings/HTMLString.h"
 #include "galgas2/F_verbose_output.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -146,7 +146,7 @@ void swap (cProduction & ioProduction1, cProduction & ioProduction2) {
 
 static bool
 searchForIdenticalProductions (const cPureBNFproductionsList & productions,
-                               C_HTMLString & ioHTMLFileContents) {
+                               HTMLString & ioHTMLFileContents) {
   ioHTMLFileContents.addRawData ("<p><a name=\"identical_productions\"></a></p>") ;
   ioHTMLFileContents.addCppTitleComment ("Step 2 : searching for identical productions", "title") ;
   bool ok = true ;
@@ -303,7 +303,7 @@ analyzeGrammar (Compiler * inCompiler,
                 const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                 const String & inSyntaxDirectedTranslationVarName,
                 String & ioCppFileContents,
-                C_HTMLString & outHTMLHelperFileContents,
+                HTMLString & outHTMLHelperFileContents,
                 const bool inPopulateHTMLHelperString) {
   bool warningFlag = false ;
 
@@ -657,7 +657,7 @@ routine_grammarAnalysisAndGeneration (const GALGAS_lstring inTargetFileName,
 
     const GALGAS_location inErrorLocation = inTargetFileName.mProperty_location ;
 
-    C_HTMLString HTMLHelperFileContents ;
+    HTMLString HTMLHelperFileContents ;
     String CppFileContents ;
     const bool populateHTMLHelperString = gOption_galgas_5F_cli_5F_options_outputHTMLgrammarFile.mValue ;
     analyzeGrammar (inCompiler,

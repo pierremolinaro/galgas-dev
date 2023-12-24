@@ -26,7 +26,7 @@
 #include "strings/unicode_string_routines.h"
 #include "galgas2/C_galgas_CLI_Options.h"
 #include "galgas2/cIndexingDictionary.h"
-#include "files/C_FileManager.h"
+#include "files/FileManager.h"
 #include "galgas2/F_verbose_output.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -97,7 +97,7 @@ mLatexNextCharacterToEnterIndex (0) {
     logFileRead (inSourceFileName) ;
     bool ok = false ;
     PMTextFileEncoding textFileEncoding ;
-    const String sourceString = C_FileManager::stringWithContentOfFile (inSourceFileName, textFileEncoding, ok) ;
+    const String sourceString = FileManager::stringWithContentOfFile (inSourceFileName, textFileEncoding, ok) ;
     if (ok) {
       const SourceTextInString source (sourceString,
                                          inSourceFileName,
@@ -849,7 +849,7 @@ void C_Lexique::generateLatexFile (void) {
   if (mLatexOutputString.endsWithString (newLine)) {
     mLatexOutputString = mLatexOutputString.subString (0, mLatexOutputString.length () - newLine.length ()) ;
   }
-  C_FileManager::writeStringToFile (mLatexOutputString, latexFilePath) ;
+  FileManager::writeStringToFile (mLatexOutputString, latexFilePath) ;
 }
 
 //--------------------------------------------------------------------------------------------------

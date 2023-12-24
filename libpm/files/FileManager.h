@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  'C_FileManager' : a class for handling files, independantly from platform                    
+//  'FileManager' : a class for handling files, independantly from platform                    
 //
 //  This file is part of libpm library                                                           
 //
@@ -27,7 +27,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-class C_FileManager final {
+class FileManager final {
 //--- File path conversions
   public: static String unixPathWithNativePath (const String & inFilePath) ;
   public: static String nativePathWithUnixPath (const String & inFilePath) ;
@@ -88,30 +88,30 @@ class C_FileManager final {
 //    Initial directory is got from receiver value. If it is not a directory, this method does nothing.
 //    Found files are appended to outFoundFilePathes.
   public: static void findAllFilesInDirectoryFromExtension (const String & inDirectoryPath,
-                                                             const String & inExtension,
-                                                             TC_UniqueArray <String> & outFoundFilePathes) ;
+                                                            const String & inExtension,
+                                                            TC_UniqueArray <String> & outFoundFilePathes) ;
 
 //--- Path handling
   public: static bool isAbsolutePath (const String & inPath) ;
   public: static String absolutePathFromCurrentDirectory (const String & inPath) ;
   public: static String absolutePathFromPath (const String & inPath,
-                                                 const String & inFromPath) ;
+                                              const String & inFromPath) ;
   public: static String relativePathFromPath (const String & inPath,
-                                                 const String & inFromPath) ;
+                                              const String & inFromPath) ;
 
 
 //--- Symbolic Link
   public: static bool makeSymbolicLinkWithPath (const String & inPath,
-                                                 const String & inLinkPath) ;
+                                                const String & inLinkPath) ;
   public: static bool isSymbolicLink (const String & inLinkPath) ;
   public: static String stringWithSymbolicLinkContents (const String & inLinkPath,
-                                                           bool & outOk) ;
+                                                        bool & outOk) ;
 
 //--- File permissions
   public: static int32_t filePosixPermissions (const String & inFilePath) ;
 
   public: static int32_t setFilePosixPermissions (const String & inFilePath,
-                                                    const int32_t inNewFilePosixPermissions) ;
+                                                  const int32_t inNewFilePosixPermissions) ;
 
 //--- File modification time
   public: static C_DateTime fileModificationTime (const String & inFilePath) ;

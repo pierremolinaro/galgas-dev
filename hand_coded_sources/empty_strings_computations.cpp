@@ -15,7 +15,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "strings/C_HTMLString.h"
+#include "strings/HTMLString.h"
 #include "bdd/C_Relation.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -44,7 +44,7 @@ computeNonterminalSymbolsHavingEmptyDerivation (const cPureBNFproductionsList & 
 
 static void
 printNonterminalSymbolsHavingEmptyDerivation (const C_Relation & inNonterminalSymbolsHavingEmptyDerivation,
-                                              C_HTMLString & inHTMLfile) {
+                                              HTMLString & inHTMLfile) {
   TC_UniqueArray <uint64_t> valueArray ;
   inNonterminalSymbolsHavingEmptyDerivation.getValueArray (valueArray) ;
   const int32_t n = valueArray.count () ;
@@ -125,7 +125,7 @@ computeNonterminalDerivingInEmptyString (const cPureBNFproductionsList & inProdu
 static void
 printNonterminalDerivingInEmptyString (const C_Relation & inVocabularyDerivingToEmpty,
                                        const C_Relation & inNonTerminalHavingEmptyDerivation,
-                                       C_HTMLString & ioHTMLFileContents,
+                                       HTMLString & ioHTMLFileContents,
                                        const bool inPopulateHTMLstring,
                                        const int32_t inIterationsCount,
                                        const bool inVerboseOptionOn) {
@@ -175,7 +175,7 @@ printNonterminalDerivingInEmptyString (const C_Relation & inVocabularyDerivingTo
 
 C_Relation
 empty_strings_computations (const cPureBNFproductionsList & inPureBNFproductions,
-                            C_HTMLString & ioHTMLFileContents,
+                            HTMLString & ioHTMLFileContents,
                             const bool inPopulateHTMLstring,
                             TC_UniqueArray <bool> & outVocabularyDerivingToEmpty_Array,
                             const C_RelationConfiguration & inVocabularyConfiguration,

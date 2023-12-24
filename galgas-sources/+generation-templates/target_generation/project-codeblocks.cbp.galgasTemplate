@@ -127,10 +127,10 @@ end
    <Unit filename="%!LIBPM_PATH%/bdd/C_RelationSingleType.cpp" />
    <Unit filename="%!LIBPM_PATH%/bdd/C_RelationConfiguration.cpp" />
    <Unit filename="%!LIBPM_PATH%/bdd/C_Relation.cpp" />
-   <Unit filename="%!LIBPM_PATH%/files/C_FileManager.cpp" />
+   <Unit filename="%!LIBPM_PATH%/files/FileManager.cpp" />
    <Unit filename="%!LIBPM_PATH%/files/AC_FileHandle.cpp" />
    <Unit filename="%!LIBPM_PATH%/files/C_TextFileWrite.cpp" />
-   <Unit filename="%!LIBPM_PATH%/files/C_HTML_FileWrite.cpp" />
+   <Unit filename="%!LIBPM_PATH%/files/HTMLFileWrite.cpp" />
    <Unit filename="%!LIBPM_PATH%/files/C_BinaryFileWrite.cpp" />
    <Unit filename="%!LIBPM_PATH%/streams/AC_OutputStream.cpp" />
    <Unit filename="%!LIBPM_PATH%/streams/C_ColoredConsole.cpp" />
@@ -140,7 +140,7 @@ end
    <Unit filename="%!LIBPM_PATH%/strings/unicode_string_routines.cpp" />
    <Unit filename="%!LIBPM_PATH%/strings/String-class-getters.cpp" />
    <Unit filename="%!LIBPM_PATH%/strings/String-class.cpp" />
-   <Unit filename="%!LIBPM_PATH%/strings/C_HTMLString.cpp" />
+   <Unit filename="%!LIBPM_PATH%/strings/HTMLString.cpp" />
    <Unit filename="%!LIBPM_PATH%/strings/print.cpp" />
    <Unit filename="%!LIBPM_PATH%/time/C_Timer.cpp" />
    <Unit filename="%!LIBPM_PATH%/time/C_DateTime.cpp" />

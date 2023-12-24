@@ -21,7 +21,7 @@
 #include "galgas2/cLexiqueIntrospection.h"
 #include "galgas2/C_galgas_CLI_Options.h"
 #include "galgas2/Compiler.h"
-#include "files/C_FileManager.h"
+#include "files/FileManager.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -135,7 +135,7 @@ void cLexiqueIntrospection::handleGetKeywordListOption (Compiler * inCompiler) {
           s.addString ("  \\\\\n") ;
         }
         const String path = components (5 COMMA_HERE) ;
-        C_FileManager::writeStringToFile (s, path) ;
+        FileManager::writeStringToFile (s, path) ;
       }
     }
   }

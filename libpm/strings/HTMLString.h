@@ -1,11 +1,10 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  'C_HTML_FileWrite' : a class for stream writing html text files                              
-//    (with facility for outputing C++ code)                                                     
+//  HTMLString : generating HTML text                                                          
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2003, ..., 2023 Pierre Molinaro.
+//  Copyright (C) 2014, ..., 2023 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -23,29 +22,17 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "files/C_TextFileWrite.h"
+#include "strings/String-class.h"
 
 //--------------------------------------------------------------------------------------------------
-
-class String ;
-
+//
+//      Fully dynamic character string : String                                                
+//
 //--------------------------------------------------------------------------------------------------
 
-class C_HTML_FileWrite final : public C_TextFileWrite {
-//--- Constructor : if inFileName is the empty string, no file is opened.
-//    Otherwise, it tries to open the file for writing;
-//    The destructor will close the file (is successfully opened)
-  public: C_HTML_FileWrite (const String & inFileName,
-                            const String & inWindowTitle,
-                            const String & inCSSFileName,
-                            const String & inCSSContents) ;
-
-//--- Destructor
-  public: virtual ~C_HTML_FileWrite (void) ;
-
-//--- No copy
-  private: C_HTML_FileWrite & operator = (C_HTML_FileWrite &) ;
-  private: C_HTML_FileWrite (C_HTML_FileWrite &) ;
+class HTMLString : public String {
+//--- Constructors
+  public: HTMLString (void) ;
 
 //--- Output data, without HTML formatting
   public: void addRawData (const char * inCString) ;
@@ -55,17 +42,22 @@ class C_HTML_FileWrite final : public C_TextFileWrite {
                                                         const int32_t inArrayCount) ;
 
   protected: virtual void performActualUnicodeArrayOutput (const utf32 * inCharArray,
-                                                          const int32_t inArrayCount) ;
+                                                           const int32_t inArrayCount) ;
 
 //--- Method for writing a HTML table
   public: void addCppTitleComment (const String & inCommentString,
-                                      const String & inTableStyleClass) ;
+                                   const String & inTableStyleClass) ;
 
-//--- Close file (does nothing is file is not open)
-  public: virtual bool close (void) ;
+//--- Write start code
+  public: void writeStartCode (const String & inWindowTitle,
+                               const String & inCSSFileName,
+                               const String & inCSSContents) ;
+
+//--- Write end code
+  public: void writeEndCode (void) ;
 
 //--- Private attributes
-  private: typedef C_TextFileWrite inherited ;
+  private: typedef String super ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

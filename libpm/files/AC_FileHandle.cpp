@@ -26,7 +26,7 @@ AC_FileHandle::AC_FileHandle (const String & inFilePath,
                               const char * inMode) :
 mFilePtr ((inFilePath.length () == 0)
   ? nullptr :
-  ::fopen (C_FileManager::nativePathWithUnixPath (inFilePath).cString (HERE), inMode)
+  ::fopen (FileManager::nativePathWithUnixPath (inFilePath).cString (HERE), inMode)
 ),
 mFilePath (inFilePath) {
 }

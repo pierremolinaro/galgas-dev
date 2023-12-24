@@ -21,7 +21,7 @@
 #include "all-predefined-types.h"
 #include "galgas2/Compiler.h"
 #include "galgas2/C_galgas_io.h"
-#include "files/C_FileManager.h"
+#include "files/FileManager.h"
 #include "files/C_BinaryFileWrite.h"
 #include "galgas2/F_verbose_output.h"
 
@@ -256,8 +256,8 @@ GALGAS_string GALGAS_string::constructor_stringWithContentsOfFile (const GALGAS_
   GALGAS_string result ;
   if (inFilePath.isValid ()) {
     inCompiler->logFileRead (inFilePath.mString) ;
-    if (C_FileManager::fileExistsAtPath (inFilePath.mString)) {
-      result = GALGAS_string (C_FileManager::stringWithContentOfFile (inFilePath.mString)) ;
+    if (FileManager::fileExistsAtPath (inFilePath.mString)) {
+      result = GALGAS_string (FileManager::stringWithContentOfFile (inFilePath.mString)) ;
     }else{
       String message = "cannot read '" ;
       message.addString (inFilePath.mString) ;
@@ -271,7 +271,7 @@ GALGAS_string GALGAS_string::constructor_stringWithContentsOfFile (const GALGAS_
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_string::constructor_stringWithCurrentDirectory (UNUSED_LOCATION_ARGS) {
-  return GALGAS_string (C_FileManager::currentDirectory ()) ;
+  return GALGAS_string (FileManager::currentDirectory ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -370,7 +370,7 @@ GALGAS_string GALGAS_string::constructor_stringWithSymbolicLinkContents (const G
   GALGAS_string result ;
   if (inSymbolicLink.isValid ()) {
     bool ok = false ;
-    const String r = C_FileManager::stringWithSymbolicLinkContents (inSymbolicLink.mString, ok) ;
+    const String r = FileManager::stringWithSymbolicLinkContents (inSymbolicLink.mString, ok) ;
     if (ok) {
       result = GALGAS_string (r) ;
     }else{
@@ -441,7 +441,7 @@ void GALGAS_string::plusAssign_operation (GALGAS_string inOperand,
 
 void GALGAS_string::method_makeDirectory (Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const {
-  const bool ok = C_FileManager::makeDirectoryIfDoesNotExist (mString) ;
+  const bool ok = FileManager::makeDirectoryIfDoesNotExist (mString) ;
   if (! ok) {
     String message = "cannot create '" ;
     message.addString (mString) ;
@@ -458,7 +458,7 @@ void GALGAS_string::method_makeDirectoryAndWriteToFile (GALGAS_string inFilePath
   if (isValid () && inFilePath.isValid ()) {
   //--- Make directory
     const String directory = inFilePath.mString.stringByDeletingLastPathComponent () ;
-    bool ok = C_FileManager::makeDirectoryIfDoesNotExist (directory) ;
+    bool ok = FileManager::makeDirectoryIfDoesNotExist (directory) ;
     if (! ok) {
       String message = "cannot create '" ;
       message.addString (directory) ;
@@ -478,7 +478,7 @@ void GALGAS_string::method_makeDirectoryAndWriteToExecutableFile (GALGAS_string 
   if (isValid () && inFilePath.isValid ()) {
   //--- Make directory
     const String directory = inFilePath.mString.stringByDeletingLastPathComponent () ;
-    bool ok = C_FileManager::makeDirectoryIfDoesNotExist (directory) ;
+    bool ok = FileManager::makeDirectoryIfDoesNotExist (directory) ;
     if (! ok) {
       String message = "cannot create '" ;
       message.addString (directory) ;
@@ -497,9 +497,9 @@ void GALGAS_string::method_writeToFile (GALGAS_string inFilePath,
                                         COMMA_LOCATION_ARGS) const {
   if (isValid () && inFilePath.isValid ()) {
     if (Compiler::performGeneration ()) {
-      const bool fileAlreadyExists = C_FileManager::fileExistsAtPath (inFilePath.mString) ;
+      const bool fileAlreadyExists = FileManager::fileExistsAtPath (inFilePath.mString) ;
       const bool verboseOptionOn = verboseOutput () ;
-      const bool ok = C_FileManager::writeStringToFile (mString, inFilePath.mString) ;
+      const bool ok = FileManager::writeStringToFile (mString, inFilePath.mString) ;
       if (ok && verboseOptionOn && fileAlreadyExists) {
         ggs_printFileOperationSuccess (String ("Replaced '") + inFilePath.mString + "'.\n") ;
       }else if (ok && verboseOptionOn && ! fileAlreadyExists) {
@@ -524,17 +524,17 @@ void GALGAS_string::method_writeToFileWhenDifferentContents (GALGAS_string inFil
                                                              COMMA_LOCATION_ARGS) const {
   if (isValid () && inFilePath.isValid ()) {
     bool needToWrite = true ;
-    const bool fileAlreadyExists = C_FileManager::fileExistsAtPath (inFilePath.mString) ;
+    const bool fileAlreadyExists = FileManager::fileExistsAtPath (inFilePath.mString) ;
     if (fileAlreadyExists) {
       inCompiler->logFileRead (inFilePath.mString) ;
-      const String readContents = C_FileManager::stringWithContentOfFile (inFilePath.mString) ;
+      const String readContents = FileManager::stringWithContentOfFile (inFilePath.mString) ;
       needToWrite = mString.compare (readContents) != 0 ;
     }
     outFileWritten = GALGAS_bool (needToWrite) ;
     if (needToWrite) {
       if (Compiler::performGeneration ()) {
         const bool verboseOptionOn = verboseOutput () ;
-        bool ok = C_FileManager::makeDirectoryIfDoesNotExist (inFilePath.mString.stringByDeletingLastPathComponent ()) ;
+        bool ok = FileManager::makeDirectoryIfDoesNotExist (inFilePath.mString.stringByDeletingLastPathComponent ()) ;
         if (! ok) {
           String message = "cannot create '" ;
           message.addString (inFilePath.mString) ;
@@ -542,7 +542,7 @@ void GALGAS_string::method_writeToFileWhenDifferentContents (GALGAS_string inFil
           inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
           outFileWritten.drop () ;
         }else{
-          ok = C_FileManager::writeStringToFile (mString, inFilePath.mString) ;
+          ok = FileManager::writeStringToFile (mString, inFilePath.mString) ;
           if (ok && verboseOptionOn && fileAlreadyExists) {
             ggs_printFileOperationSuccess (String ("Replaced '") + inFilePath.mString + "'.\n") ;
           }else if (ok && verboseOptionOn && ! fileAlreadyExists) {
@@ -568,10 +568,10 @@ void GALGAS_string::method_writeToExecutableFile (GALGAS_string inFilePath,
                                                   Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const {
   if (isValid () && inFilePath.isValid ()) {
-    const bool fileAlreadyExists = C_FileManager::fileExistsAtPath (inFilePath.mString) ;
+    const bool fileAlreadyExists = FileManager::fileExistsAtPath (inFilePath.mString) ;
     if (Compiler::performGeneration ()) {
       const bool verboseOptionOn = verboseOutput () ;
-      const bool ok = C_FileManager::writeStringToExecutableFile (mString, inFilePath.mString) ;
+      const bool ok = FileManager::writeStringToExecutableFile (mString, inFilePath.mString) ;
       if (ok && verboseOptionOn && fileAlreadyExists) {
         ggs_printFileOperationSuccess (String ("Replaced '") + inFilePath.mString + "'.\n") ;
       }else if (ok && verboseOptionOn && ! fileAlreadyExists) {
@@ -596,17 +596,17 @@ void GALGAS_string::method_writeToExecutableFileWhenDifferentContents (GALGAS_st
                                                                        COMMA_LOCATION_ARGS) const {
   if (isValid () && inFilePath.isValid ()) {
     bool needToWrite = true ;
-    const bool fileAlreadyExists = C_FileManager::fileExistsAtPath (inFilePath.mString) ;
+    const bool fileAlreadyExists = FileManager::fileExistsAtPath (inFilePath.mString) ;
     if (fileAlreadyExists) {
       inCompiler->logFileRead (inFilePath.mString) ;
-      const String readContents = C_FileManager::stringWithContentOfFile (inFilePath.mString) ;
+      const String readContents = FileManager::stringWithContentOfFile (inFilePath.mString) ;
       needToWrite = mString.compare (readContents) != 0 ;
     }
     outFileWritten = GALGAS_bool (needToWrite) ;
     if (needToWrite) {
       if (Compiler::performGeneration ()) {
         const bool verboseOptionOn = verboseOutput () ;
-        bool ok = C_FileManager::makeDirectoryIfDoesNotExist (inFilePath.mString.stringByDeletingLastPathComponent ()) ;
+        bool ok = FileManager::makeDirectoryIfDoesNotExist (inFilePath.mString.stringByDeletingLastPathComponent ()) ;
         if (! ok) {
           String message = "cannot create '" ;
           message.addString (inFilePath.mString) ;
@@ -614,7 +614,7 @@ void GALGAS_string::method_writeToExecutableFileWhenDifferentContents (GALGAS_st
           inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
           outFileWritten.drop () ;
         }else{
-          ok = C_FileManager::writeStringToExecutableFile (mString, inFilePath.mString) ;
+          ok = FileManager::writeStringToExecutableFile (mString, inFilePath.mString) ;
           if (ok && verboseOptionOn && fileAlreadyExists) {
             ggs_printFileOperationSuccess (String ("Replaced '") + inFilePath.mString + "'.\n") ;
           }else if (ok && verboseOptionOn && ! fileAlreadyExists) {
@@ -640,7 +640,7 @@ void GALGAS_string::method_makeSymbolicLinkWithPath (GALGAS_string inPath,
                                                      Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) const {
   if (isValid () && inPath.isValid ()) {
-    const bool ok = C_FileManager::makeSymbolicLinkWithPath (inPath.mString, mString) ;
+    const bool ok = FileManager::makeSymbolicLinkWithPath (inPath.mString, mString) ;
     if (! ok) {
         String s = "'@string makeSymbolicLinkWithPath' error; cannot make a symbolic link with receiver's value '" ;
         s.addString (mString) ;
@@ -799,7 +799,7 @@ void GALGAS_string::class_method_deleteFile (GALGAS_string inFilePath,
     }else if (inFilePath.mString.length () == 0) {
       inCompiler->onTheFlyRunTimeError ("cannot perform file delete: file name is an empty string" COMMA_THERE) ;
     }else{
-      const String errorMessage = C_FileManager::deleteFile (inFilePath.mString) ;
+      const String errorMessage = FileManager::deleteFile (inFilePath.mString) ;
       if (errorMessage.length () == 0) {
         ggs_printFileOperationSuccess (String ("Deleted '") + inFilePath.mString + "'.\n") ;
       }else{
@@ -818,7 +818,7 @@ void GALGAS_string::class_method_deleteFile (GALGAS_string inFilePath,
 void GALGAS_string::class_method_deleteFileIfExists (GALGAS_string inFilePath,
                                                      Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) {
-  if ((inFilePath.isValid ()) && C_FileManager::fileExistsAtPath (inFilePath.mString)) {
+  if ((inFilePath.isValid ()) && FileManager::fileExistsAtPath (inFilePath.mString)) {
     class_method_deleteFile (inFilePath, inCompiler COMMA_THERE) ;
   }
 }
@@ -834,7 +834,7 @@ void GALGAS_string::class_method_removeEmptyDirectory (GALGAS_string inDirectory
     }else if (inDirectoryPath.mString.length () == 0) {
       inCompiler->onTheFlyRunTimeError ("cannot perform directory removing: directory path is an empty string" COMMA_THERE) ;
     }else{
-      const String errorMessage = C_FileManager::removeDirectory (inDirectoryPath.mString) ;
+      const String errorMessage = FileManager::removeDirectory (inDirectoryPath.mString) ;
       if (errorMessage.length () > 0) {
         String message = "cannot perform directory removing: " ;
         message.addString (errorMessage) ;
@@ -848,7 +848,7 @@ void GALGAS_string::class_method_removeEmptyDirectory (GALGAS_string inDirectory
 
 static String recursiveRemoveDirectory (const String & inUnixDirectoryPath) {
   String result ;
-  const String nativeStartPath = C_FileManager::nativePathWithUnixPath (inUnixDirectoryPath) ;
+  const String nativeStartPath = FileManager::nativePathWithUnixPath (inUnixDirectoryPath) ;
   DIR * dir = ::opendir (nativeStartPath.cString (HERE)) ;
   if (dir != nullptr) {
     struct dirent  * current = readdir (dir) ;
@@ -857,10 +857,10 @@ static String recursiveRemoveDirectory (const String & inUnixDirectoryPath) {
         String name = nativeStartPath ;
         name.addString ("/") ;
         name.addString (current->d_name) ;
-        if (C_FileManager::directoryExistsWithNativePath (name)) {
+        if (FileManager::directoryExistsWithNativePath (name)) {
           recursiveRemoveDirectory (name) ;
-        }else if (C_FileManager::fileExistsAtPath (name)) {
-          result = C_FileManager::deleteFile (name) ;
+        }else if (FileManager::fileExistsAtPath (name)) {
+          result = FileManager::deleteFile (name) ;
         }
       }
       current = readdir (dir) ;
@@ -868,7 +868,7 @@ static String recursiveRemoveDirectory (const String & inUnixDirectoryPath) {
     closedir (dir) ;
   }
   if (result.length () == 0) {
-    result = C_FileManager::removeDirectory (inUnixDirectoryPath) ;
+    result = FileManager::removeDirectory (inUnixDirectoryPath) ;
   }
   return result ;
 }
@@ -904,7 +904,7 @@ static bool writeFile (const String & inMessage,
   if (inCompiler->performGeneration ()) {
     const bool verboseOptionOn = verboseOutput () ;
     const String directory = inFullPathName.stringByDeletingLastPathComponent () ;
-    C_FileManager::makeDirectoryIfDoesNotExist (directory) ;
+    FileManager::makeDirectoryIfDoesNotExist (directory) ;
     C_BinaryFileWrite binaryFile (inFullPathName) ;
     ok = binaryFile.isOpened () ;
     if (! ok) {
@@ -934,13 +934,13 @@ static bool updateFile (const String & inFullPathName,
                         Compiler * inCompiler) {
   C_Data currentData ; currentData.addString (inContents) ;
 //--- Compare file length
-  const uint64_t fileSize = C_FileManager::fileSize (inFullPathName) ;
+  const uint64_t fileSize = FileManager::fileSize (inFullPathName) ;
   bool needsToWriteFile = fileSize != (uint64_t) currentData.count () ;
   bool ok = true ;
 //--- Read file
   if (! needsToWriteFile) {
     C_Data fileData ;
-    ok = C_FileManager::binaryDataWithContentOfFile (inFullPathName, fileData) ;
+    ok = FileManager::binaryDataWithContentOfFile (inFullPathName, fileData) ;
     if (ok) {
       needsToWriteFile = fileData != currentData ;
     }
@@ -962,7 +962,7 @@ static void generateFile (const String & inStartPath,
   bool ok = true ;
 //--- File exists ?
   const TC_UniqueArray <String> directoriesToExclude ;
-  const String fullPathName = C_FileManager::findFileInDirectory (inStartPath, inFileName, directoriesToExclude) ;
+  const String fullPathName = FileManager::findFileInDirectory (inStartPath, inFileName, directoriesToExclude) ;
   if (fullPathName.length () == 0) { // No, does not exist
     C_Data currentData ; currentData.addString (inContents) ;
     ok = writeFile ("Created", inStartPath + "/" + inFileName, currentData, inCompiler) ;

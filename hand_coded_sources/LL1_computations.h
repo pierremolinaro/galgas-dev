@@ -24,7 +24,7 @@
 //--------------------------------------------------------------------------------------------------
 
 class cPureBNFproductionsList ;
-class C_HTMLString ;
+class HTMLString ;
 class cVocabulary ;
 class String ;
 class Compiler ;
@@ -35,7 +35,7 @@ class C_Relation ;
 
 void
 LL1_computations (const cPureBNFproductionsList & inPureBNFproductions,
-                  C_HTMLString & ioHTMLFileContents,
+                  HTMLString & ioHTMLFileContents,
                   const bool inPopulateHTMLHelperString,
                   const cVocabulary & inVocabulary,
                   const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,

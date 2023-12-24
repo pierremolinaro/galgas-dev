@@ -12,7 +12,7 @@
 #include "utilities/MF_MemoryControl.h"
 #include "galgas2/C_galgas_CLI_Options.h"
 
-#include "files/C_FileManager.h"
+#include "files/FileManager.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -31362,10 +31362,10 @@ void cGrammar_galgas_34_Grammar::_performSourceFileParsing_ (Compiler * inCompil
   if (inFilePath.isValid ()) {
     const GALGAS_string filePathAsString = inFilePath.readProperty_string () ;
     String filePath = filePathAsString.stringValue () ;
-    if (! C_FileManager::isAbsolutePath (filePath)) {
+    if (! FileManager::isAbsolutePath (filePath)) {
       filePath = inCompiler->sourceFilePath ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (filePath) ;
     }
-    if (C_FileManager::fileExistsAtPath (filePath)) {
+    if (FileManager::fileExistsAtPath (filePath)) {
       C_Lexique_galgasScanner_34_ * scanner = nullptr ;
       macroMyNew (scanner, C_Lexique_galgasScanner_34_ (inCompiler, filePath COMMA_HERE)) ;
       if (scanner->sourceText ().isValid ()) {

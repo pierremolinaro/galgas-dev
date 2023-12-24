@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  'C_FileManager' : a class for handling files, independantly from platform
+//  'FileManager' : a class for handling files, independantly from platform
 //
 //  This file is part of libpm library
 //
@@ -18,7 +18,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "files/C_FileManager.h"
+#include "files/FileManager.h"
 #include "files/C_TextFileWrite.h"
 #include "files/C_BinaryFileWrite.h"
 #include "strings/unicode_character_base.h"
@@ -56,7 +56,7 @@
 
 //--- On Unix: do nothing
 #if COMPILE_FOR_WINDOWS == 0
-  String C_FileManager::unixPathWithNativePath (const String & inFilePath) {
+  String FileManager::unixPathWithNativePath (const String & inFilePath) {
     return inFilePath ;
   }
 #endif
@@ -65,7 +65,7 @@
 
 //--- On Windows: translate
 #if COMPILE_FOR_WINDOWS == 1
-  String C_FileManager::unixPathWithNativePath (const String & inFilePath) {
+  String FileManager::unixPathWithNativePath (const String & inFilePath) {
     String result ;
     const int32_t pathLength = inFilePath.length () ;
     int32_t firstChar = 0 ;
@@ -104,7 +104,7 @@
 
 //--- On Unix: do nothing
 #if COMPILE_FOR_WINDOWS == 0
-  String C_FileManager::nativePathWithUnixPath (const String & inFilePath) {
+  String FileManager::nativePathWithUnixPath (const String & inFilePath) {
     return inFilePath ;
   }
 #endif
@@ -113,7 +113,7 @@
 
 //--- On Windows: convert
 #if COMPILE_FOR_WINDOWS == 1
-  String C_FileManager::nativePathWithUnixPath (const String & inFilePath) {
+  String FileManager::nativePathWithUnixPath (const String & inFilePath) {
     String winPath ;
       const int32_t fileLength = inFilePath.length () ;
       int32_t firstChar = 0 ;
@@ -141,7 +141,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-FILE * C_FileManager::openTextFileForReading (const String & inFilePath) {
+FILE * FileManager::openTextFileForReading (const String & inFilePath) {
   return ::fopen (nativePathWithUnixPath (inFilePath).cString (HERE), "rt") ;
 }
 
@@ -153,7 +153,7 @@ FILE * C_FileManager::openTextFileForReading (const String & inFilePath) {
 
 //--------------------------------------------------------------------------------------------------
 
-FILE * C_FileManager::openBinaryFileForReading (const String & inFilePath) {
+FILE * FileManager::openBinaryFileForReading (const String & inFilePath) {
   return ::fopen (nativePathWithUnixPath (inFilePath).cString (HERE), "rb") ;
 }
 
@@ -165,7 +165,7 @@ FILE * C_FileManager::openBinaryFileForReading (const String & inFilePath) {
 
 //--------------------------------------------------------------------------------------------------
 
-bool C_FileManager::binaryDataWithContentOfFile (const String & inFilePath,
+bool FileManager::binaryDataWithContentOfFile (const String & inFilePath,
                                                  C_Data & outBinaryData) {
   outBinaryData.free () ;
 //--- Open file for binary reading
@@ -565,7 +565,7 @@ static void parseASCIIWithReplacementCharacter (const C_Data & inDataString,
 
 //--------------------------------------------------------------------------------------------------
 
-String C_FileManager::stringWithContentOfFile (const String & inFilePath,
+String FileManager::stringWithContentOfFile (const String & inFilePath,
                                                  PMTextFileEncoding & outTextFileEncoding,
                                                  bool & outOk) {
   #ifdef PRINT_SNIFF_ENCODING
@@ -604,7 +604,7 @@ String C_FileManager::stringWithContentOfFile (const String & inFilePath,
 
 //--------------------------------------------------------------------------------------------------
 
-String C_FileManager::stringWithContentOfFile (const String & inFilePath) {
+String FileManager::stringWithContentOfFile (const String & inFilePath) {
   bool ok = false ;
   PMTextFileEncoding textFileEncoding ;
   String result_string = stringWithContentOfFile (inFilePath, textFileEncoding, ok) ;
@@ -623,7 +623,7 @@ String C_FileManager::stringWithContentOfFile (const String & inFilePath) {
 
 //--------------------------------------------------------------------------------------------------
 
-bool C_FileManager::writeStringToFile (const String & inString,
+bool FileManager::writeStringToFile (const String & inString,
                                        const String & inFilePath) {
   makeDirectoryIfDoesNotExist (inFilePath.stringByDeletingLastPathComponent ()) ;
   C_TextFileWrite file (inFilePath) ;
@@ -637,7 +637,7 @@ bool C_FileManager::writeStringToFile (const String & inString,
 
 //--------------------------------------------------------------------------------------------------
 
-bool C_FileManager::writeStringToExecutableFile (const String & inString,
+bool FileManager::writeStringToExecutableFile (const String & inString,
                                                  const String & inFilePath) {
   makeDirectoryIfDoesNotExist (inFilePath.stringByDeletingLastPathComponent()) ;
   C_TextFileWrite file (inFilePath) ;
@@ -656,7 +656,7 @@ bool C_FileManager::writeStringToExecutableFile (const String & inString,
 
 //--------------------------------------------------------------------------------------------------
 
-bool C_FileManager::writeBinaryDataToFile (const C_Data & inBinaryData,
+bool FileManager::writeBinaryDataToFile (const C_Data & inBinaryData,
                                            const String & inFilePath) {
   makeDirectoryIfDoesNotExist (inFilePath.stringByDeletingLastPathComponent()) ;
 //---
@@ -673,7 +673,7 @@ bool C_FileManager::writeBinaryDataToFile (const C_Data & inBinaryData,
 
 //--------------------------------------------------------------------------------------------------
 
-bool C_FileManager::writeBinaryDataToExecutableFile (const C_Data & inBinaryData,
+bool FileManager::writeBinaryDataToExecutableFile (const C_Data & inBinaryData,
                                                      const String & inFilePath) {
   makeDirectoryIfDoesNotExist (inFilePath.stringByDeletingLastPathComponent()) ;
 //---
@@ -701,7 +701,7 @@ bool C_FileManager::writeBinaryDataToExecutableFile (const C_Data & inBinaryData
 
 //--------------------------------------------------------------------------------------------------
 
-bool C_FileManager::makeFileExecutable (const String & inFilePath) {
+bool FileManager::makeFileExecutable (const String & inFilePath) {
   const bool result = fileExistsAtPath (inFilePath) ;
   #if COMPILE_FOR_WINDOWS == 0
     if (result) {
@@ -721,13 +721,13 @@ bool C_FileManager::makeFileExecutable (const String & inFilePath) {
 
 //--------------------------------------------------------------------------------------------------
 
-bool C_FileManager::directoryExists (const String & inDirectoryPath) {
+bool FileManager::directoryExists (const String & inDirectoryPath) {
   return directoryExistsWithNativePath (nativePathWithUnixPath (inDirectoryPath)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool C_FileManager::directoryExistsWithNativePath (const String & inDirectoryNativePath) {
+bool FileManager::directoryExistsWithNativePath (const String & inDirectoryNativePath) {
   #if COMPILE_FOR_WINDOWS == 1
     const char dirSep = '\\' ;
   #else
@@ -750,7 +750,7 @@ bool C_FileManager::directoryExistsWithNativePath (const String & inDirectoryNat
 
 //--------------------------------------------------------------------------------------------------
 
-String C_FileManager::currentDirectory (void) {
+String FileManager::currentDirectory (void) {
   char * cwd = getcwd (nullptr, 0) ;
   #if COMPILE_FOR_WINDOWS == 1
     const int32_t fileLength = (int32_t) strlen (cwd) ;
@@ -774,7 +774,7 @@ String C_FileManager::currentDirectory (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-bool C_FileManager::makeDirectoryIfDoesNotExist (const String & inDirectoryPath) {
+bool FileManager::makeDirectoryIfDoesNotExist (const String & inDirectoryPath) {
   const String directoryPath = absolutePathFromCurrentDirectory (inDirectoryPath) ;
   bool ok = directoryExists (directoryPath) ;
   if (! ok) {
@@ -795,7 +795,7 @@ bool C_FileManager::makeDirectoryIfDoesNotExist (const String & inDirectoryPath)
 
 //--------------------------------------------------------------------------------------------------
 
-String C_FileManager::removeDirectory (const String & inDirectoryPath) {
+String FileManager::removeDirectory (const String & inDirectoryPath) {
  String errorString ;
   const String nativePath = nativePathWithUnixPath (inDirectoryPath) ;
   const int result = rmdir (nativePath.cString (HERE)) ;
@@ -813,13 +813,13 @@ String C_FileManager::removeDirectory (const String & inDirectoryPath) {
 
 //--------------------------------------------------------------------------------------------------
 
-bool C_FileManager::isAbsolutePath (const String & inPath) {
+bool FileManager::isAbsolutePath (const String & inPath) {
   return (inPath.length () > 0) && (UNICODE_VALUE (inPath (0 COMMA_HERE)) == '/') ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-String C_FileManager::absolutePathFromCurrentDirectory (const String & inPath) {
+String FileManager::absolutePathFromCurrentDirectory (const String & inPath) {
   const int32_t stringLength = inPath.length () ;
   String result ;
   if ((stringLength > 0) && (UNICODE_VALUE (inPath (0 COMMA_HERE)) == '/')) {
@@ -835,7 +835,7 @@ String C_FileManager::absolutePathFromCurrentDirectory (const String & inPath) {
 //    Otherwise, prepend path argument
 //    if path argument it self is relative, current directory is prepended
 
-String C_FileManager::absolutePathFromPath (const String & inPath,
+String FileManager::absolutePathFromPath (const String & inPath,
                                               const String & inFromPath) {
   const int32_t pathLength = inPath.length () ;
   String result ;
@@ -853,7 +853,7 @@ String C_FileManager::absolutePathFromPath (const String & inPath,
 
 //--------------------------------------------------------------------------------------------------
 
-String C_FileManager::relativePathFromPath (const String & inPath,
+String FileManager::relativePathFromPath (const String & inPath,
                                               const String & inFromPath) {
   TC_UniqueArray <String> absoluteReferencePathComponents ;
   absolutePathFromCurrentDirectory (inFromPath.stringByStandardizingPath ()).componentsSeparatedByString("/", absoluteReferencePathComponents) ;
@@ -887,12 +887,12 @@ String C_FileManager::relativePathFromPath (const String & inPath,
 //--------------------------------------------------------------------------------------------------
 
 #if (COMPILE_FOR_WINDOWS == 1) || defined (__CYGWIN__)
-  bool C_FileManager::makeSymbolicLinkWithPath (const String & /* inPath */,
+  bool FileManager::makeSymbolicLinkWithPath (const String & /* inPath */,
                                                 const String & /* inLinkPath */) {
     return true ; // Symbolic links are not supported on Windows
   }
 #else
-  bool C_FileManager::makeSymbolicLinkWithPath (const String & inPath,
+  bool FileManager::makeSymbolicLinkWithPath (const String & inPath,
                                                 const String & inLinkPath) {
     const int r = symlink (inPath.cString (HERE), inLinkPath.cString (HERE)) ;
     return r >= 0 ;
@@ -909,11 +909,11 @@ String C_FileManager::relativePathFromPath (const String & inPath,
 //--------------------------------------------------------------------------------------------------
 
 #if (COMPILE_FOR_WINDOWS == 1) || defined (__CYGWIN__)
-  bool C_FileManager::isSymbolicLink (const String & /* inLinkPath */) {
+  bool FileManager::isSymbolicLink (const String & /* inLinkPath */) {
     return false ; // Symbolic links are not supported on Windows
   }
 #else
-  bool C_FileManager::isSymbolicLink (const String & inLinkPath) {
+  bool FileManager::isSymbolicLink (const String & inLinkPath) {
     char buffer [8] ; // Any value
     return readlink (inLinkPath.cString (HERE), buffer, 8) >= 0 ;
   }
@@ -922,13 +922,13 @@ String C_FileManager::relativePathFromPath (const String & inPath,
 //--------------------------------------------------------------------------------------------------
 
 #if (COMPILE_FOR_WINDOWS == 1) || defined (__CYGWIN__)
-  String C_FileManager::stringWithSymbolicLinkContents (const String & /* inLinkPath */,
+  String FileManager::stringWithSymbolicLinkContents (const String & /* inLinkPath */,
                                                           bool & outOk) {
     outOk = false ; // Symbolic links are not supported on Windows
     return String () ;
   }
 #else
-  String C_FileManager::stringWithSymbolicLinkContents (const String & inLinkPath,
+  String FileManager::stringWithSymbolicLinkContents (const String & inLinkPath,
                                                           bool & outOk) {
     String result ;
     bool loop = true ;
@@ -966,7 +966,7 @@ String C_FileManager::relativePathFromPath (const String & inPath,
 //
 //--------------------------------------------------------------------------------------------------
 
-String C_FileManager::deleteFile (const String & inFilePath) {
+String FileManager::deleteFile (const String & inFilePath) {
   String returnValue ;
   const String nativePath = nativePathWithUnixPath (inFilePath) ;
   const int result = unlink (nativePath.cString (HERE)) ;
@@ -989,13 +989,13 @@ static String recursiveSearchInDirectory (const String & inStartSearchPath,
                                             const int32_t inDirectoriesToExcludeCount,
                                             const TC_UniqueArray <String> & inDirectoriesToExclude) {
   String result ;
-  const String nativeStartSearchPath = C_FileManager::nativePathWithUnixPath (inStartSearchPath) ;
+  const String nativeStartSearchPath = FileManager::nativePathWithUnixPath (inStartSearchPath) ;
   DIR * dir = ::opendir (nativeStartSearchPath.cString (HERE)) ;
   if (dir != nullptr) {
     String fileName = inStartSearchPath ;
     fileName.addString ("/") ;
     fileName.addString (inFileName) ;
-    if (C_FileManager::fileExistsAtPath (fileName)) {
+    if (FileManager::fileExistsAtPath (fileName)) {
       result = fileName ;
     }else{
       struct dirent  * current = readdir (dir) ;
@@ -1004,7 +1004,7 @@ static String recursiveSearchInDirectory (const String & inStartSearchPath,
           String name = inStartSearchPath ;
           name.addString ("/") ;
           name.addString (current->d_name) ;
-          if (C_FileManager::directoryExistsWithNativePath (name)) {
+          if (FileManager::directoryExistsWithNativePath (name)) {
             bool dirOk = true ;
             for (int32_t i=0 ; (i<inDirectoriesToExcludeCount) && dirOk ; i++) {
               if (UNICODE_VALUE (inDirectoriesToExclude (i COMMA_HERE) (0 COMMA_HERE)) == '.') {
@@ -1029,7 +1029,7 @@ static String recursiveSearchInDirectory (const String & inStartSearchPath,
 
 //--------------------------------------------------------------------------------------------------
 
-String C_FileManager::findFileInDirectory (const String & inDirectoryPath,
+String FileManager::findFileInDirectory (const String & inDirectoryPath,
                                              const String & inFileName,
                                              const TC_UniqueArray <String> & inDirectoriesToExclude) {
   const int32_t directoriesToExcludeCount = inDirectoriesToExclude.count () ;
@@ -1048,7 +1048,7 @@ static void recursiveFindAllFilesInDirectory (const String & inStartSearchPath,
                                               const String & inExtension,
                                               TC_UniqueArray <String> & outFoundFilePathes) {
 //--- Iterate throught directory
-  const String nativeStartSearchPath = C_FileManager::nativePathWithUnixPath (inStartSearchPath) ;
+  const String nativeStartSearchPath = FileManager::nativePathWithUnixPath (inStartSearchPath) ;
   DIR * dir = ::opendir (nativeStartSearchPath.cString (HERE)) ;
   if (dir != nullptr) {
     struct dirent  * current = readdir (dir) ;
@@ -1057,9 +1057,9 @@ static void recursiveFindAllFilesInDirectory (const String & inStartSearchPath,
         String name = inStartSearchPath ;
         name.addString ("/") ;
         name.addString (current->d_name) ;
-        if (C_FileManager::directoryExistsWithNativePath (name)) {
+        if (FileManager::directoryExistsWithNativePath (name)) {
           recursiveFindAllFilesInDirectory (name, inExtension, outFoundFilePathes) ;
-        }else if (C_FileManager::fileExistsAtPath (name) && (name.pathExtension () == inExtension)) {
+        }else if (FileManager::fileExistsAtPath (name) && (name.pathExtension () == inExtension)) {
           outFoundFilePathes.appendObject (name) ;
         }
       }
@@ -1071,7 +1071,7 @@ static void recursiveFindAllFilesInDirectory (const String & inStartSearchPath,
 
 //--------------------------------------------------------------------------------------------------
 
-void C_FileManager::findAllFilesInDirectoryFromExtension (const String & inDirectoryPath,
+void FileManager::findAllFilesInDirectoryFromExtension (const String & inDirectoryPath,
                                                           const String & inExtension,
                                                           TC_UniqueArray <String> & outFoundFilePathes) {
   if (directoryExists (inDirectoryPath)) {
@@ -1087,7 +1087,7 @@ void C_FileManager::findAllFilesInDirectoryFromExtension (const String & inDirec
 
 //--------------------------------------------------------------------------------------------------
 
-C_DateTime C_FileManager::fileModificationTime (const String & inFilePath) {
+C_DateTime FileManager::fileModificationTime (const String & inFilePath) {
   const String nativePath = nativePathWithUnixPath (inFilePath) ;
 //--- Get file properties
   time_t modificationTime = 0 ;
@@ -1111,7 +1111,7 @@ C_DateTime C_FileManager::fileModificationTime (const String & inFilePath) {
 
 //--------------------------------------------------------------------------------------------------
 
-uint64_t C_FileManager::fileSize (const String & inFilePath) {
+uint64_t FileManager::fileSize (const String & inFilePath) {
   uint64_t result = 0 ;
   const String nativePath = nativePathWithUnixPath (inFilePath) ;
   if (nativePath.length () > 0) {
@@ -1132,7 +1132,7 @@ uint64_t C_FileManager::fileSize (const String & inFilePath) {
 
 //--------------------------------------------------------------------------------------------------
 
-int32_t C_FileManager::filePosixPermissions (const String & inFilePath) {
+int32_t FileManager::filePosixPermissions (const String & inFilePath) {
   const String nativePath = nativePathWithUnixPath (inFilePath) ;
 //--- Get file properties
   int32_t permissions = -1 ;
@@ -1147,7 +1147,7 @@ int32_t C_FileManager::filePosixPermissions (const String & inFilePath) {
 
 //--------------------------------------------------------------------------------------------------
 
-int32_t C_FileManager::setFilePosixPermissions (const String & inFilePath,
+int32_t FileManager::setFilePosixPermissions (const String & inFilePath,
                                                 const int32_t inNewFilePosixPermissions) {
   int32_t newMode = -1 ; // Error Code
   const int32_t v = inNewFilePosixPermissions & (int32_t) 0xFFFFF000 ;
@@ -1166,7 +1166,7 @@ int32_t C_FileManager::setFilePosixPermissions (const String & inFilePath,
 
 //--------------------------------------------------------------------------------------------------
 
-bool C_FileManager::fileExistsAtPath (const String & inFilePath) {
+bool FileManager::fileExistsAtPath (const String & inFilePath) {
   const String nativePath = nativePathWithUnixPath (inFilePath) ;
 //--- Get file properties
   bool exists = nativePath.length () > 0 ;

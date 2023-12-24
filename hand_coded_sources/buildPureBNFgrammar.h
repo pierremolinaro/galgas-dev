@@ -22,7 +22,7 @@
 class GALGAS_syntaxComponentListForGrammarAnalysis ;
 class cPureBNFproductionsList ;
 class cVocabulary ;
-class C_HTMLString ;
+class HTMLString ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -32,7 +32,7 @@ buildPureBNFgrammar (const GALGAS_syntaxComponentListForGrammarAnalysis & inSynt
                      cPureBNFproductionsList & ioProductions) ;
 
 void
-printPureBNFgrammarInBNFfile (C_HTMLString & inHTMLfile,
+printPureBNFgrammarInBNFfile (HTMLString & inHTMLfile,
                               const cVocabulary & inVocabulary,
                               const cPureBNFproductionsList & inProductions) ;
 

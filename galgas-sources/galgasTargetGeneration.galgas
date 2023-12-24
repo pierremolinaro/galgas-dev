@@ -922,16 +922,16 @@ proc updateGalgasTargets
       !groupName:"File"
       !groupPath:"files"
       !fileNames:{
-        !"C_FileManager.cpp",
-        !"C_FileManager.h",
+        !"FileManager.cpp",
+        !"FileManager.h",
         !"AC_FileHandle.cpp",
         !"AC_FileHandle.h",
         !"C_BinaryFileWrite.cpp",
         !"C_BinaryFileWrite.h",
         !"C_TextFileWrite.cpp",
         !"C_TextFileWrite.h",
-        !"C_HTML_FileWrite.cpp",
-        !"C_HTML_FileWrite.h"
+        !"HTMLFileWrite.cpp",
+        !"HTMLFileWrite.h"
       }
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
@@ -1083,8 +1083,8 @@ proc updateGalgasTargets
       !groupName:"Strings"
       !groupPath:"strings"
       !fileNames:{
-        !"C_HTMLString.cpp",
-        !"C_HTMLString.h",
+#        !"HTMLFileWrite.cpp",
+#        !"HTMLFileWrite.h",
         !"String-class-getters.cpp",
         !"String-class.cpp",
         !"String-class.h",

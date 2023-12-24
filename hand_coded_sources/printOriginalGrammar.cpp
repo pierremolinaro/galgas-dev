@@ -16,7 +16,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "utilities/MF_MemoryControl.h"
-#include "strings/C_HTMLString.h"
+#include "strings/HTMLString.h"
 #include "galgas2/SourceTextInString.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -28,7 +28,7 @@
 
 static void
 printInstructionsListForGrammar (const GALGAS_syntaxInstructionListForGrammarAnalysis & inInstructionsList,
-                                 C_HTMLString & inHTMLfile) {
+                                 HTMLString & inHTMLfile) {
   cEnumerator_syntaxInstructionListForGrammarAnalysis currentInstruction (inInstructionsList, kENUMERATION_UP) ;
   while (currentInstruction.hasCurrentObject ()) {
     cPtr_abstractSyntaxInstructionForGrammarAnalysis * instruction = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) currentInstruction.current_mInstruction (HERE).ptr () ;
@@ -45,7 +45,7 @@ printInstructionsListForGrammar (const GALGAS_syntaxInstructionListForGrammarAna
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_repeatInstructionForGrammarAnalysis::
-printInstructionForGrammar (C_HTMLString & inHTMLfile) const {
+printInstructionForGrammar (HTMLString & inHTMLfile) const {
   inHTMLfile.addRawData ("<span class=\"galgas_structure\">") ;
   inHTMLfile.addRawData ("<span class=\"galgas_keyword\">") ;
   inHTMLfile.addString ("repeat ") ;
@@ -73,7 +73,7 @@ printInstructionForGrammar (C_HTMLString & inHTMLfile) const {
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_selectInstructionForGrammarAnalysis::
-printInstructionForGrammar (C_HTMLString & inHTMLfile) const {
+printInstructionForGrammar (HTMLString & inHTMLfile) const {
   inHTMLfile.addRawData ("<span class=\"galgas_structure\">") ;
   inHTMLfile.addRawData ("<span class=\"galgas_keyword\">") ;
   inHTMLfile.addString ("select ") ;
@@ -101,7 +101,7 @@ printInstructionForGrammar (C_HTMLString & inHTMLfile) const {
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_nonTerminalInstructionForGrammarAnalysis::
-printInstructionForGrammar (C_HTMLString & inHTMLfile) const {
+printInstructionForGrammar (HTMLString & inHTMLfile) const {
   inHTMLfile.addRawData ("<span class=\"galgas_nonterminal\">") ;
   inHTMLfile.addString ("<") ;
   inHTMLfile.addString (mProperty_mNonterminalSymbolName.mProperty_string.stringValue ()) ;
@@ -112,7 +112,7 @@ printInstructionForGrammar (C_HTMLString & inHTMLfile) const {
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_terminalInstructionForGrammarAnalysis::
-printInstructionForGrammar (C_HTMLString & inHTMLfile) const {
+printInstructionForGrammar (HTMLString & inHTMLfile) const {
   inHTMLfile.addRawData ("<span class=\"galgas_terminal\">") ;
   inHTMLfile.addString ("$") ;
   inHTMLfile.addString (mProperty_mTerminalSymbolName.mProperty_string.stringValue ()) ;
@@ -122,7 +122,7 @@ printInstructionForGrammar (C_HTMLString & inHTMLfile) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void printOriginalGrammar (C_HTMLString & inHTMLfile,
+void printOriginalGrammar (HTMLString & inHTMLfile,
                            const GALGAS_syntaxComponentListForGrammarAnalysis & inSyntaxComponentsList) {
 //--- Print message
   int32_t productionsCount = 0 ;

@@ -25,7 +25,7 @@
 #include "command_line_interface/F_Analyze_CLI_Options.h"
 #include "strings/unicode_character_cpp.h"
 #include "galgas2/C_galgas_io.h"
-#include "files/C_FileManager.h"
+#include "files/FileManager.h"
 #include "files/C_BinaryFileWrite.h"
 #include "galgas2/F_verbose_output.h"
 
@@ -82,7 +82,7 @@ GALGAS_lstring GALGAS_string::getter_here (Compiler * inCompiler COMMA_LOCATION_
 GALGAS_bool GALGAS_string::getter_fileExists (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (isValid ()) {
-    result = GALGAS_bool (C_FileManager::fileExistsAtPath (mString)) ;
+    result = GALGAS_bool (FileManager::fileExistsAtPath (mString)) ;
   }
   return result ;
 }
@@ -92,7 +92,7 @@ GALGAS_bool GALGAS_string::getter_fileExists (UNUSED_LOCATION_ARGS) const {
 GALGAS_bool GALGAS_string::getter_directoryExists (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (isValid ()) {
-    result = GALGAS_bool (C_FileManager::directoryExists (mString)) ;
+    result = GALGAS_bool (FileManager::directoryExists (mString)) ;
   }
   return result ;
 }
@@ -356,7 +356,7 @@ GALGAS_string GALGAS_string::getter_relativePathFromPath (const GALGAS_string & 
                                                           COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid () && inReferencePath.isValid ()) {
-    result = GALGAS_string (C_FileManager::relativePathFromPath (mString, inReferencePath.mString)) ;
+    result = GALGAS_string (FileManager::relativePathFromPath (mString, inReferencePath.mString)) ;
   }
   return result ;
 }
@@ -611,13 +611,13 @@ GALGAS_bool GALGAS_string::getter_containsCharacterInRange (const GALGAS_char & 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_string::getter_unixPathWithNativePath (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_string (C_FileManager::unixPathWithNativePath (mString)) ;
+  return GALGAS_string (FileManager::unixPathWithNativePath (mString)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_string::getter_nativePathWithUnixPath (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_string (C_FileManager::nativePathWithUnixPath (mString)) ;
+  return GALGAS_string (FileManager::nativePathWithUnixPath (mString)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -688,7 +688,7 @@ static void recursiveSearchForRegularFiles (const String & inUnixStartPath,
                                             const bool inRecursiveSearch,
                                             const String & inRelativePath,
                                             GALGAS_stringlist & ioResult) {
-  const String nativeStartPath = C_FileManager::nativePathWithUnixPath (inUnixStartPath) ;
+  const String nativeStartPath = FileManager::nativePathWithUnixPath (inUnixStartPath) ;
   DIR * dir = ::opendir (nativeStartPath.cString (HERE)) ;
   if (dir != nullptr) {
     struct dirent  * current = readdir (dir) ;
@@ -697,14 +697,14 @@ static void recursiveSearchForRegularFiles (const String & inUnixStartPath,
         String name = nativeStartPath ;
         name.addString ("/") ;
         name.addString (current->d_name) ;
-        if (C_FileManager::directoryExistsWithNativePath (name)) {
+        if (FileManager::directoryExistsWithNativePath (name)) {
           if (inRecursiveSearch) {
             recursiveSearchForRegularFiles (name,
                                             inRecursiveSearch,
                                             inRelativePath + current->d_name + "/",
                                             ioResult) ;
           }
-        }else if (C_FileManager::fileExistsAtPath (name)) {
+        }else if (FileManager::fileExistsAtPath (name)) {
           const String relativePath = inRelativePath + current->d_name ;
           ioResult.addAssign_operation (GALGAS_string (relativePath) COMMA_HERE) ;
         }
@@ -736,7 +736,7 @@ static void recursiveSearchForHiddenFiles (const String & inUnixStartPath,
                                            const bool inRecursiveSearch,
                                            const String & inRelativePath,
                                            GALGAS_stringlist & ioResult) {
-  const String nativeStartPath = C_FileManager::nativePathWithUnixPath (inUnixStartPath) ;
+  const String nativeStartPath = FileManager::nativePathWithUnixPath (inUnixStartPath) ;
   DIR * dir = ::opendir (nativeStartPath.cString (HERE)) ;
   if (dir != nullptr) {
     struct dirent  * current = readdir (dir) ;
@@ -745,14 +745,14 @@ static void recursiveSearchForHiddenFiles (const String & inUnixStartPath,
         String name = nativeStartPath ;
         name.addString ("/") ;
         name.addString (current->d_name) ;
-        if (C_FileManager::directoryExistsWithNativePath (name)) {
+        if (FileManager::directoryExistsWithNativePath (name)) {
           if (inRecursiveSearch) {
             recursiveSearchForHiddenFiles (name,
                                            inRecursiveSearch,
                                            inRelativePath + current->d_name + "/",
                                            ioResult) ;
           }
-        }else if (C_FileManager::fileExistsAtPath (name)) {
+        }else if (FileManager::fileExistsAtPath (name)) {
           const String relativePath = inRelativePath + current->d_name ;
           ioResult.addAssign_operation (GALGAS_string (relativePath) COMMA_HERE) ;
         }
@@ -784,7 +784,7 @@ static void recursiveSearchForDirectories (const String & inUnixStartPath,
                                            const bool inRecursiveSearch,
                                            const String & inRelativePath,
                                            GALGAS_stringlist & ioResult) {
-  const String nativeStartPath = C_FileManager::nativePathWithUnixPath (inUnixStartPath) ;
+  const String nativeStartPath = FileManager::nativePathWithUnixPath (inUnixStartPath) ;
   DIR * dir = ::opendir (nativeStartPath.cString (HERE)) ;
   if (dir != nullptr) {
     struct dirent  * current = readdir (dir) ;
@@ -793,7 +793,7 @@ static void recursiveSearchForDirectories (const String & inUnixStartPath,
         String name = nativeStartPath ;
         name.addString ("/") ;
         name.addString (current->d_name) ;
-        if (C_FileManager::directoryExistsWithNativePath (name)) {
+        if (FileManager::directoryExistsWithNativePath (name)) {
           const String relativePath = inRelativePath + current->d_name ;
           ioResult.addAssign_operation (GALGAS_string (relativePath) COMMA_HERE) ;
           if (inRecursiveSearch) {
@@ -817,7 +817,7 @@ GALGAS_stringlist GALGAS_string::getter_directories (const GALGAS_bool & inRecur
   GALGAS_stringlist result ;
   if (inRecursiveSearch.isValid ()) {
     result = GALGAS_stringlist::constructor_emptyList (THERE) ;
-    if (C_FileManager::directoryExists (mString)) {
+    if (FileManager::directoryExists (mString)) {
       recursiveSearchForDirectories (mString,
                                      inRecursiveSearch.boolValue (),
                                      "",
@@ -834,7 +834,7 @@ static void recursiveSearchForRegularFiles (const String & inUnixStartPath,
                                             const bool inRecursiveSearch,
                                             const String & inRelativePath,
                                             GALGAS_stringlist & ioResult) {
-  const String nativeStartPath = C_FileManager::nativePathWithUnixPath (inUnixStartPath) ;
+  const String nativeStartPath = FileManager::nativePathWithUnixPath (inUnixStartPath) ;
   DIR * dir = ::opendir (nativeStartPath.cString (HERE)) ;
   if (dir != nullptr) {
     struct dirent  * current = readdir (dir) ;
@@ -843,7 +843,7 @@ static void recursiveSearchForRegularFiles (const String & inUnixStartPath,
         String name = nativeStartPath ;
         name.addString ("/") ;
         name.addString (current->d_name) ;
-        if (C_FileManager::directoryExistsWithNativePath (name)) {
+        if (FileManager::directoryExistsWithNativePath (name)) {
           if (inRecursiveSearch) {
             recursiveSearchForRegularFiles (name,
                                             inExtensionList,
@@ -851,7 +851,7 @@ static void recursiveSearchForRegularFiles (const String & inUnixStartPath,
                                             inRelativePath + current->d_name + "/",
                                             ioResult) ;
           }
-        }else if (C_FileManager::fileExistsAtPath (name)) {
+        }else if (FileManager::fileExistsAtPath (name)) {
           const String extension = name.pathExtension () ;
           bool extensionFound = false ;
           cEnumerator_stringlist currentExtension (inExtensionList, kENUMERATION_UP) ;
@@ -879,7 +879,7 @@ GALGAS_stringlist GALGAS_string::getter_regularFilesWithExtensions (const GALGAS
   GALGAS_stringlist result ;
   if ((inRecursiveSearch.isValid ()) && (inExtensionList.isValid ())) {
     result = GALGAS_stringlist::constructor_emptyList (THERE) ;
-    if (C_FileManager::directoryExists (mString)) {
+    if (FileManager::directoryExists (mString)) {
       recursiveSearchForRegularFiles (mString,
                                       inExtensionList,
                                       inRecursiveSearch.boolValue (),
@@ -897,7 +897,7 @@ static void recursiveSearchForDirectories (const String & inUnixStartPath,
                                            const bool inRecursiveSearch,
                                            const String & inRelativePath,
                                            GALGAS_stringlist & ioResult) {
-  const String nativeStartPath = C_FileManager::nativePathWithUnixPath (inUnixStartPath) ;
+  const String nativeStartPath = FileManager::nativePathWithUnixPath (inUnixStartPath) ;
   DIR * dir = ::opendir (nativeStartPath.cString (HERE)) ;
   if (dir != nullptr) {
     struct dirent  * current = readdir (dir) ;
@@ -906,7 +906,7 @@ static void recursiveSearchForDirectories (const String & inUnixStartPath,
         String name = nativeStartPath ;
         name.addString ("/") ;
         name.addString (current->d_name) ;
-        if (C_FileManager::directoryExistsWithNativePath (name)) {
+        if (FileManager::directoryExistsWithNativePath (name)) {
         //--- Look for extension
           const String extension = name.pathExtension () ;
           bool extensionFound = false ;
@@ -943,7 +943,7 @@ GALGAS_stringlist GALGAS_string::getter_directoriesWithExtensions (const GALGAS_
   GALGAS_stringlist result ;
   if (isValid () && inRecursiveSearch.isValid () && inExtensionList.isValid ()) {
     result = GALGAS_stringlist::constructor_emptyList (THERE) ;
-    if (C_FileManager::directoryExists (mString)) {
+    if (FileManager::directoryExists (mString)) {
       recursiveSearchForDirectories (mString,
                                      inExtensionList,
                                      inRecursiveSearch.boolValue (),
@@ -1175,7 +1175,7 @@ GALGAS_bool GALGAS_string::getter_isDoubleNumber (UNUSED_LOCATION_ARGS) const {
 GALGAS_bool GALGAS_string::getter_isSymbolicLink (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (isValid ()) {
-    result = GALGAS_bool (C_FileManager::isSymbolicLink (mString)) ;
+    result = GALGAS_bool (FileManager::isSymbolicLink (mString)) ;
   }
   return result ;
 }

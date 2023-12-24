@@ -60,7 +60,7 @@ GALGAS_data GALGAS_data::constructor_dataWithContentsOfFile (const GALGAS_string
   GALGAS_data result ;
   if (inFilePath.isValid()){
     C_Data binaryData ;
-    const bool ok = C_FileManager::binaryDataWithContentOfFile (inFilePath.stringValue (), binaryData) ;
+    const bool ok = FileManager::binaryDataWithContentOfFile (inFilePath.stringValue (), binaryData) ;
     if (ok) {
 
       result = GALGAS_data (binaryData) ;
@@ -243,18 +243,18 @@ void GALGAS_data::method_writeToFileWhenDifferentContents (GALGAS_string inFileP
   outFileWritten.drop () ;
   if (inFilePath.isValid ()) {
     bool needToWrite = true ;
-    const bool fileAlreadyExists = C_FileManager::fileExistsAtPath (inFilePath.stringValue ()) ;
+    const bool fileAlreadyExists = FileManager::fileExistsAtPath (inFilePath.stringValue ()) ;
     if (fileAlreadyExists) {
       inCompiler->logFileRead (inFilePath.stringValue ()) ;
       C_Data binaryData ;
-      C_FileManager::binaryDataWithContentOfFile (inFilePath.stringValue (), binaryData) ;
+      FileManager::binaryDataWithContentOfFile (inFilePath.stringValue (), binaryData) ;
       needToWrite = mData != binaryData ;
     }
     outFileWritten = GALGAS_bool (needToWrite) ;
     if (needToWrite) {
       if (Compiler::performGeneration ()) {
         const bool verboseOptionOn = verboseOutput () ;
-        bool ok = C_FileManager::makeDirectoryIfDoesNotExist (inFilePath.stringValue ().stringByDeletingLastPathComponent ()) ;
+        bool ok = FileManager::makeDirectoryIfDoesNotExist (inFilePath.stringValue ().stringByDeletingLastPathComponent ()) ;
         if (! ok) {
           String message ;
           message.addString ("cannot create '") ;
@@ -263,7 +263,7 @@ void GALGAS_data::method_writeToFileWhenDifferentContents (GALGAS_string inFileP
           inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
           outFileWritten.drop () ;
         }else{
-          ok = C_FileManager::writeBinaryDataToFile (mData, inFilePath.stringValue ()) ;
+          ok = FileManager::writeBinaryDataToFile (mData, inFilePath.stringValue ()) ;
           if (ok && verboseOptionOn && fileAlreadyExists) {
             ggs_printFileOperationSuccess (String ("Replaced '") + inFilePath.stringValue () + "'.\n") ;
           }else if (ok && verboseOptionOn && ! fileAlreadyExists) {
@@ -296,9 +296,9 @@ void GALGAS_data::method_writeToFile (GALGAS_string inFilePath,
     }else if (! Compiler::performGeneration ()) {
       ggs_printWarning (inCompiler, SourceTextInString (), C_IssueWithFixIt (), String ("Need to write '") + filePath + "'." COMMA_HERE) ;
     }else{
-      const bool fileAlreadyExists = C_FileManager::fileExistsAtPath (filePath) ;
+      const bool fileAlreadyExists = FileManager::fileExistsAtPath (filePath) ;
       const bool verboseOptionOn = verboseOutput () ;
-      C_FileManager::makeDirectoryIfDoesNotExist (filePath.stringByDeletingLastPathComponent()) ;
+      FileManager::makeDirectoryIfDoesNotExist (filePath.stringByDeletingLastPathComponent()) ;
       C_BinaryFileWrite binaryFile (filePath) ;
       if (! binaryFile.isOpened ()) {
         String s ;
@@ -337,9 +337,9 @@ void GALGAS_data::method_writeToExecutableFile (GALGAS_string inFilePath,
     }else if (! Compiler::performGeneration ()) {
       ggs_printWarning (inCompiler, SourceTextInString (), C_IssueWithFixIt (), String ("Need to write '") + filePath + "'." COMMA_HERE) ;
     }else{
-      const bool fileAlreadyExists = C_FileManager::fileExistsAtPath (filePath) ;
+      const bool fileAlreadyExists = FileManager::fileExistsAtPath (filePath) ;
       const bool verboseOptionOn = verboseOutput () ;
-      C_FileManager::makeDirectoryIfDoesNotExist (filePath.stringByDeletingLastPathComponent()) ;
+      FileManager::makeDirectoryIfDoesNotExist (filePath.stringByDeletingLastPathComponent()) ;
       C_BinaryFileWrite binaryFile (filePath) ;
       if (! binaryFile.isOpened ()) {
         String s ;
@@ -350,7 +350,7 @@ void GALGAS_data::method_writeToExecutableFile (GALGAS_string inFilePath,
       }else{
         binaryFile.appendData (mData) ;
         const bool ok = binaryFile.close () ;
-        C_FileManager::makeFileExecutable (filePath) ;
+        FileManager::makeFileExecutable (filePath) ;
         if (ok && verboseOptionOn && fileAlreadyExists) {
           ggs_printFileOperationSuccess (String ("Replaced '") + filePath + "'.\n") ;
         }else if (ok && verboseOptionOn && ! fileAlreadyExists) {

@@ -1,10 +1,11 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  C_HTMLString : generating HTML text                                                          
+//  'HTMLFileWrite' : a class for stream writing html text files                              
+//    (with facility for outputing C++ code)                                                     
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2014, ..., 2023 Pierre Molinaro.
+//  Copyright (C) 2003, ..., 2023 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -22,17 +23,29 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "strings/String-class.h"
+#include "files/C_TextFileWrite.h"
 
 //--------------------------------------------------------------------------------------------------
-//
-//      Fully dynamic character string : String                                                
-//
+
+class String ;
+
 //--------------------------------------------------------------------------------------------------
 
-class C_HTMLString : public String {
-//--- Constructors
-  public: C_HTMLString (void) ;
+class HTMLFileWrite final : public C_TextFileWrite {
+//--- Constructor : if inFileName is the empty string, no file is opened.
+//    Otherwise, it tries to open the file for writing;
+//    The destructor will close the file (is successfully opened)
+  public: HTMLFileWrite (const String & inFileName,
+                         const String & inWindowTitle,
+                         const String & inCSSFileName,
+                         const String & inCSSContents) ;
+
+//--- Destructor
+  public: virtual ~ HTMLFileWrite (void) ;
+
+//--- No copy
+  private: HTMLFileWrite & operator = (HTMLFileWrite &) = delete ;
+  private: HTMLFileWrite (HTMLFileWrite &) = delete ;
 
 //--- Output data, without HTML formatting
   public: void addRawData (const char * inCString) ;
@@ -48,16 +61,11 @@ class C_HTMLString : public String {
   public: void addCppTitleComment (const String & inCommentString,
                                    const String & inTableStyleClass) ;
 
-//--- Write start code
-  public: void writeStartCode (const String & inWindowTitle,
-                               const String & inCSSFileName,
-                               const String & inCSSContents) ;
-
-//--- Write end code
-  public: void writeEndCode (void) ;
+//--- Close file (does nothing is file is not open)
+  public: virtual bool close (void) ;
 
 //--- Private attributes
-  private: typedef String inherited ;
+  private: typedef C_TextFileWrite super ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

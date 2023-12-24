@@ -15,7 +15,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "strings/C_HTMLString.h"
+#include "strings/HTMLString.h"
 #include "bdd/C_Relation.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -118,7 +118,7 @@ static void computeFOLLOWsets (const cPureBNFproductionsList & inProductionRules
 static void
 printFOLLOWsets (const TC_UniqueArray <TC_UniqueArray <uint64_t> > & inFOLLOWarray,
                  const cVocabulary & inVocabulary,
-                 C_HTMLString & inHTMLfile,
+                 HTMLString & inHTMLfile,
                  const uint64_t inValuesCount,
                  const int32_t inIterationsCount) {
 //--- Print messages
@@ -154,7 +154,7 @@ printFOLLOWsets (const TC_UniqueArray <TC_UniqueArray <uint64_t> > & inFOLLOWarr
 //--------------------------------------------------------------------------------------------------
 
 static bool
-checkFOLLOWsets (C_HTMLString & ioHTMLFileContents,
+checkFOLLOWsets (HTMLString & ioHTMLFileContents,
                  const bool inPopulateHTMLHelperString,
                  const C_Relation & inNonterminalSymbolsFollowedByEmpty,
                  const cVocabulary & inVocabulary,
@@ -232,7 +232,7 @@ checkFOLLOWsets (C_HTMLString & ioHTMLFileContents,
 //--------------------------------------------------------------------------------------------------
 
 void FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
-                          C_HTMLString & ioHTMLFileContents,
+                          HTMLString & ioHTMLFileContents,
                           const bool inPopulateHTMLHelperString,
                           const cVocabulary & inVocabulary,
                           const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,

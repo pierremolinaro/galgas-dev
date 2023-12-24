@@ -16,7 +16,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "utilities/MF_MemoryControl.h"
-#include "strings/C_HTMLString.h"
+#include "strings/HTMLString.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -459,7 +459,7 @@ buildPureBNFgrammar (const GALGAS_syntaxComponentListForGrammarAnalysis & inSynt
 //--------------------------------------------------------------------------------------------------
 
 void
-printPureBNFgrammarInBNFfile (C_HTMLString & inHTMLfile,
+printPureBNFgrammarInBNFfile (HTMLString & inHTMLfile,
                               const cVocabulary & inVocabulary,
                               const cPureBNFproductionsList & inProductions) {
   const int32_t productionsCount = inProductions.mProductionArray.count () ;

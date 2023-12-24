@@ -15,7 +15,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "strings/C_HTMLString.h"
+#include "strings/HTMLString.h"
 #include "generic-arraies/TC_UniqueArray2.h"
 #include "galgas2/Compiler.h"
 
@@ -111,7 +111,7 @@ class c_LR0_items_set final {
 //--- Display LR0 items set
   public: void display (const cPureBNFproductionsList & inProductionRules,
                          const cVocabulary & inVocabulary,
-                         C_HTMLString & inHTMLfile) ;
+                         HTMLString & inHTMLfile) ;
 
 //--- Compare two items sets
   public: static int32_t compare_LR0_items_sets (const c_LR0_items_set & inItemsSet1,
@@ -205,7 +205,7 @@ bool c_LR0_items_set::isEmptySet (void) const {
 void c_LR0_items_set::
 display (const cPureBNFproductionsList & inProductionRules,
          const cVocabulary & inVocabulary,
-         C_HTMLString & inHTMLfile) {
+         HTMLString & inHTMLfile) {
   for (int32_t i=0 ; i<mItemsSet.count () ; i++) {
     const cProduction & p = inProductionRules.mProductionArray (mItemsSet (i COMMA_HERE).mProductionRuleIndex COMMA_HERE) ;
     const int32_t location = mItemsSet (i COMMA_HERE).mLocationIndex ;
@@ -513,7 +513,7 @@ class c_LR0_items_sets_collection {
 //--- Display LR0 items set
   public: void display (const cPureBNFproductionsList & inProductionRules,
                          const cVocabulary & inVocabulary,
-                         C_HTMLString & inHTMLfile) ;
+                         HTMLString & inHTMLfile) ;
 
 //--- Search from a LR0 items set (used for building 'reduce' actions of SLR table)
   public: void getProductionsWhereLocationIsRight (const int32_t inStateIndex,
@@ -553,7 +553,7 @@ searchOrInsert_LR0_itemSet (c_LR0_items_set & ioItemSet) {
 void c_LR0_items_sets_collection::
 display (const cPureBNFproductionsList & inProductionRules,
          const cVocabulary & inVocabulary,
-         C_HTMLString & inHTMLfile) {
+         HTMLString & inHTMLfile) {
   for (int32_t i=0 ; i<m_LR0_items_sets_array.count () ; i++) {
     inHTMLfile.addRawData ("<tr class=\"result_line\"><td class=\"result_line\">") ;
     inHTMLfile.addString ("S") ;
@@ -667,7 +667,7 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
   ioCppFileContents.addCppHyphenLineComment () ;
   ioCppFileContents.addString ("#include \"utilities/MF_MemoryControl.h\"\n") ;
   ioCppFileContents.addString ("#include \"galgas2/C_galgas_CLI_Options.h\"\n\n") ;
-  ioCppFileContents.addString ("#include \"files/C_FileManager.h\"\n\n") ;
+  ioCppFileContents.addString ("#include \"files/FileManager.h\"\n\n") ;
 
   ioCppFileContents.addCppHyphenLineComment () ;
   ioCppFileContents.addNL () ;
@@ -1176,10 +1176,10 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
         ioCppFileContents.addString ("  if (inFilePath.isValid ()) {\n"
                              "    const GALGAS_string filePathAsString = inFilePath.readProperty_string () ;\n"
                              "    String filePath = filePathAsString.stringValue () ;\n"
-                             "    if (! C_FileManager::isAbsolutePath (filePath)) {\n"
+                             "    if (! FileManager::isAbsolutePath (filePath)) {\n"
                              "      filePath = inCompiler->sourceFilePath ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (filePath) ;\n"
                              "    }\n"
-                             "    if (C_FileManager::fileExistsAtPath (filePath)) {\n"
+                             "    if (FileManager::fileExistsAtPath (filePath)) {\n"
                              "      C_Lexique_") ;
       ioCppFileContents.addString (inLexiqueName.identifierRepresentation ()) ;
       ioCppFileContents.addString (" * scanner = nullptr ;\n"
@@ -1429,7 +1429,7 @@ compute_LR0_automation (const cPureBNFproductionsList & inProductionRules,
 void
 SLR_computations (const cPureBNFproductionsList & inProductionRules,
                   const cVocabulary & inVocabulary,
-                  C_HTMLString & ioHTMLFileContents,
+                  HTMLString & ioHTMLFileContents,
                   const bool inPopulateHTMLHelperString,
                   const TC_UniqueArray <TC_UniqueArray <uint64_t> > & inFOLLOWarray,
                   const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,

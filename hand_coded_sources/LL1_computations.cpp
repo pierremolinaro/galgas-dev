@@ -15,7 +15,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "strings/C_HTMLString.h"
+#include "strings/HTMLString.h"
 #include "utilities/MF_MemoryControl.h"
 #include "galgas2/Compiler.h"
 #include "bdd/C_Relation.h"
@@ -31,11 +31,11 @@
 
 class cAffichagePremiersProduction : public C_bdd_value_traversing {
 //--- Attributs
-  protected: C_HTMLString & mFichierBNF ;
+  protected: HTMLString & mFichierBNF ;
   protected: const cVocabulary & mVocabulary ;
 
 //--- Constructeur
-  public: cAffichagePremiersProduction (C_HTMLString & inHTMLfile,
+  public: cAffichagePremiersProduction (HTMLString & inHTMLfile,
                                          const cVocabulary & inVocabulary) ;
 
 //--- Methode virtelle appelee pour chaque valeur
@@ -45,7 +45,7 @@ class cAffichagePremiersProduction : public C_bdd_value_traversing {
 
 //--------------------------------------------------------------------------------------------------
 
-cAffichagePremiersProduction::cAffichagePremiersProduction (C_HTMLString & inHTMLfile,
+cAffichagePremiersProduction::cAffichagePremiersProduction (HTMLString & inHTMLfile,
                                                             const cVocabulary & inVocabulary) :
 mFichierBNF (inHTMLfile),
 mVocabulary (inVocabulary) {
@@ -71,7 +71,7 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
                      const C_Relation & inFOLLOWsets,
                      const TC_UniqueArray <bool> & vocabulaireSeDerivantEnVide,
                      const cVocabulary & inVocabulary,
-                     C_HTMLString & ioHTMLFileContents,
+                     HTMLString & ioHTMLFileContents,
                      const bool inPopulateHTMLHelperString,
                      const bool inVerboseOptionOn) {
 //--- Pour chaque non-terminal presentant plusieurs inPureBNFproductions, calculer le 'premiers' de chacune d'elle,
@@ -199,13 +199,13 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
 
 class cEcrireNonTerminal : public C_bdd_value_traversing {
 //--- Attributs
-  protected: C_HTMLString & mFichierBNF ;
+  protected: HTMLString & mFichierBNF ;
   protected: const cVocabulary & mVocabulary ;
   protected: String aNomClasseLexique ;
   protected: int16_t aIndice ;
 
 //--- Constructeur
-  public: cEcrireNonTerminal (C_HTMLString & inHTMLfile,
+  public: cEcrireNonTerminal (HTMLString & inHTMLfile,
                                const cVocabulary & inVocabulary,
                                const String & nomClasseLexique) ;
 
@@ -217,7 +217,7 @@ class cEcrireNonTerminal : public C_bdd_value_traversing {
 //--------------------------------------------------------------------------------------------------
 
 cEcrireNonTerminal::
-cEcrireNonTerminal (C_HTMLString & inHTMLfile,
+cEcrireNonTerminal (HTMLString & inHTMLfile,
                     const cVocabulary & inVocabulary,
                     const String & nomClasseLexique) :
 mFichierBNF (inHTMLfile),
@@ -446,7 +446,7 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
   ioCppFileContents.addCppHyphenLineComment () ;
   ioCppFileContents.addString ("#include \"utilities/MF_MemoryControl.h\"\n") ;
   ioCppFileContents.addString ("#include \"galgas2/C_galgas_CLI_Options.h\"\n\n") ;
-  ioCppFileContents.addString ("#include \"files/C_FileManager.h\"\n\n") ;
+  ioCppFileContents.addString ("#include \"files/FileManager.h\"\n\n") ;
 
   ioCppFileContents.addCppHyphenLineComment () ;
   ioCppFileContents.addString ("\n") ;
@@ -815,10 +815,10 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
                             "  if (inFilePath.isValid ()) {\n"
                             "    const GALGAS_string filePathAsString = inFilePath.readProperty_string () ;\n"
                             "    String filePath = filePathAsString.stringValue () ;\n"
-                            "    if (! C_FileManager::isAbsolutePath (filePath)) {\n"
+                            "    if (! FileManager::isAbsolutePath (filePath)) {\n"
                             "      filePath = inCompiler->sourceFilePath ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (filePath) ;\n"
                             "    }\n"
-                            "    if (C_FileManager::fileExistsAtPath (filePath)) {\n"
+                            "    if (FileManager::fileExistsAtPath (filePath)) {\n"
                             "    C_Lexique_") ;
         ioCppFileContents.addString (inLexiqueName.identifierRepresentation ()) ;
         ioCppFileContents.addString (" * scanner = nullptr ;\n"
@@ -1014,7 +1014,7 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
 
 void
 LL1_computations (const cPureBNFproductionsList & inPureBNFproductions,
-                  C_HTMLString & ioHTMLFileContents,
+                  HTMLString & ioHTMLFileContents,
                   const bool inPopulateHTMLHelperString,
                   const cVocabulary & inVocabulary,
                   const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,

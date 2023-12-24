@@ -105,9 +105,9 @@ style commentStyle -> "Comments"
 # keywords can be written in lower or upper case
 # for identifiers, case is significant
 
-$identifier$ ! tokenString error message"an identifier"
+$identifier$ ! tokenString error message "an identifier"
 
-list galgasKeyWordList style keywordsStyle error message"the '%K' keyword" {
+list galgasKeyWordList style keywordsStyle error message "the '%K' keyword" {
   "abstract",
   "after",
   "as",
@@ -118,7 +118,6 @@ list galgasKeyWordList style keywordsStyle error message"the '%K' keyword" {
   "boolset",
   "case",
   "class",
-#  "constructor",
   "default",
   "dict",
   "do",
@@ -203,8 +202,8 @@ rule isUnicodeLetter {
 #------------------------------- Integer, floating Point Constant ------------------
 @double floatValue
 @bigint bigintValue
-$double.xxx$ !floatValue !tokenString  style floatStyle error message"a float number"
-$literalInt$ !bigintValue  style bigintStyle error message"a big integer number"
+$double.xxx$ !floatValue !tokenString style floatStyle error message "a float number"
+$literalInt$ !bigintValue style bigintStyle error message "a big integer number"
 
 message floatNumberConversionError : "invalid float number"
 message internalError : "internal error"
@@ -254,9 +253,9 @@ rule '0'->'9' {
 
 
 #------------------------------- Floating point Number ------------------
-$.$  style delimitersStyle error message"the '.' delimitor"
-$...$  style delimitersStyle error message"the '...' delimitor"
-$..<$  style delimitersStyle error message"the '..<' delimitor"
+$.$ style delimitersStyle error message "the '.' delimitor"
+$...$ style delimitersStyle error message "the '...' delimitor"
+$..<$ style delimitersStyle error message "the '..<' delimitor"
 
 #--- Floating Point constant begining with a dot
 rule '.' {
@@ -287,7 +286,7 @@ rule '.' {
 
 # -------------------------- Type Name -----------------------------
 
-$@type$ ! tokenString  style typeNameStyle error message"a type name (@...)"
+$@type$ ! tokenString style typeNameStyle error message "a type name (@...)"
 
 message incorrectTypeNameError : "in a type name, a letter, a digit or the underscore character should follow the '@' character"
 
@@ -318,7 +317,7 @@ message attributeError : "in an attribute name, a letter or a digit should follo
 
 message undefinedAttribute : "undefined attribute"
 
-list attributeKeyWordList style attributeStyle error message"the '%K' keyword" {
+list attributeKeyWordList style attributeStyle error message "the '%K' keyword" {
   "app-link" -> $%app-link$,
   "app-source" -> $%app-source$,
   "makefile-macosx" -> $%makefile-macosx$,
@@ -372,7 +371,7 @@ rule '%' {
 }
 
 #--------------------------------- Character constant ------------------------------------
-$'char'$ ! charValue  style characterStyle error message"a character constant"
+$'char'$ ! charValue style characterStyle error message "a character constant"
 
 message incorrectCharConstant : "incorrect literal character"
 
@@ -501,7 +500,7 @@ rule '\'' {
 }
 
 #----------------------- Grammar terminal symbol ---------------------------
-$\$terminal\$$ ! tokenString  style terminalStyle error message"a terminal symbol ($...$)"
+$\$terminal\$$ ! tokenString style terminalStyle error message "a terminal symbol ($...$)"
 
 message incorrect_terminal_start : "incorrect terminal start"
 
@@ -551,8 +550,8 @@ rule '$' {
 }
 
 # ------------------------------------ Comment ----------------------------
-$comment$  style commentStyle %nonAtomicSelection error message"a comment"
-$commentMark$  style commentStyle %nonAtomicSelection error message"a comment"
+$comment$ style commentStyle %nonAtomicSelection error message "a comment"
+$commentMark$ style commentStyle %nonAtomicSelection error message "a comment"
 
 rule '#' {
   select
@@ -585,7 +584,7 @@ rule "//" {
 }
 
 # ----------------------------- Delimitors ---------------------------------------
-list galgasDelimitorsList style delimitersStyle error message"the '%K' delimitor" {
+list galgasDelimitorsList style delimitersStyle error message "the '%K' delimitor" {
   "*",    ",",   "+",  "&+", "&-", "&*", "&/",
   ">",    ";",   ":",  ":>",
   "-",    "(",   ")",  "->",
@@ -601,10 +600,10 @@ list galgasDelimitorsList style delimitersStyle error message"the '%K' delimitor
 rule list galgasDelimitorsList
 
 # --------- Special formal arguments, actual parameters --------------------------
-$?$ ! tokenString  style selectorStyle error message"the '\?' or '\?selector:' delimitor"
-$?!$ ! tokenString  style selectorStyle error message"the '\?!' or '\?!selector:' delimitor"
-$!$ ! tokenString  style selectorStyle error message"the '!' or '!selector:' delimitor"
-$!?$ ! tokenString  style selectorStyle error message"the '!\?' or '!\?selector:' delimitor"
+$?$ ! tokenString style selectorStyle error message "the '\?' or '\?selector:' delimitor"
+$?!$ ! tokenString style selectorStyle error message "the '\?!' or '\?!selector:' delimitor"
+$!$ ! tokenString style selectorStyle error message "the '!' or '!selector:' delimitor"
+$!?$ ! tokenString style selectorStyle error message "the '!\?' or '!\?selector:' delimitor"
 
 rule '?' {
   tag onlyInterrogationMark
@@ -683,10 +682,10 @@ rule '!' {
 }
 
 # --------- Special delimitors / non terminal symbol --------------------------
-$<$  style delimitersStyle error message"the '<' delimitor"
-$<=$  style delimitersStyle error message"the '<=' delimitor"
-$<<$  style delimitersStyle error message"the '<<' delimitor"
-$<non_terminal>$ ! tokenString  style nonTerminalStyle error message"a non terminal symbol <...>"
+$<$ style delimitersStyle error message "the '<' delimitor"
+$<=$ style delimitersStyle error message "the '<=' delimitor"
+$<<$ style delimitersStyle error message "the '<<' delimitor"
+$<non_terminal>$ ! tokenString style nonTerminalStyle error message "a non terminal symbol <...>"
 
 rule '<' {
   tag onlyInfDelimiter
@@ -712,11 +711,9 @@ rule '<' {
 }
 
 # -------------------- Characters string --------------------------------------
-$"string"$ ! tokenString  style stringStyle %nonAtomicSelection error message"a character string constant \"...\""
+$"string"$ ! tokenString style stringStyle %nonAtomicSelection error message "a character string constant \"...\""
 
 message incorrectStringEnd : "string does not end with '\"'"
-
-#message obsoleteStringConstruction : "\\ followed by digits is obsolete: now, use \\u.... or \\U........"
 
 rule '"' {
   repeat
