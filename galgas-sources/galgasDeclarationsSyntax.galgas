@@ -1,4 +1,4 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
 #  Copyright (C) 2014, ..., 2014 Pierre Molinaro.
 #                                           
@@ -11,13 +11,13 @@
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
 #  details.                                 
 #                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax galgas3DeclarationsSyntax (galgasScanner3) {
 
-  #·····················································································································
+  #·················································································································
   #          Start symbol                     
-  #·····················································································································
+  #·················································································································
 
   rule <start_symbol> ?!@galgasDeclarationAST ioDeclarations {
     repeat
@@ -26,9 +26,9 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
     end
   }
 
-  #·····················································································································
+  #·················································································································
   #          Rules prototypes                 
-  #·····················································································································
+  #·················································································································
 
   rule <formal_parameter_list_ggs3> !@formalParameterListAST outFormalParameterList
   
@@ -38,9 +38,9 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
 
   rule <expression_ggs3> !@semanticExpressionAST outExpression
 
-  #·····················································································································
+  #·················································································································
   #    A T T R I B U T E    I N    C O L L E C T I O N
-  #·····················································································································
+  #·················································································································
 
   rule <property_declaration_ggs3> ?!@propertyInCollectionListAST ioAttributeInCollectionList {
     <acces_control> ?let accessControl
@@ -78,7 +78,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
       !initialization
   }
 
-  #·····················································································································
+  #·················································································································
 
   rule <property_declaration_ggs3> ?!@propertyInCollectionListAST ioAttributeInCollectionList {
     $@type$ ?let propertyTypeName
@@ -114,9 +114,9 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
   }
 
 
-  #·····················································································································
+  #·················································································································
   #! Filewrapper Declaration
-  #·····················································································································
+  #·················································································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $filewrapper$
@@ -127,7 +127,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
     <filewrapper_binary_files> ?let filewrapperBinaryFileExtensionList
     <filewrapper_templates> ?let filewrapperTemplateList
     ioDeclarations.mDeclarationList += !@filewrapperDeclarationAST.new {
-      !false # Is not predefined
+      !isPredefined: false # Is not predefined
       !false # private
       !@string.stringWithSourceFilePath
       !mFilewrapperName
@@ -137,7 +137,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
       !filewrapperTemplateList
     }
   }
-  #·····················································································································
+  #·················································································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $private$
@@ -149,7 +149,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
     <filewrapper_binary_files> ?let filewrapperBinaryFileExtensionList
     <filewrapper_templates> ?let filewrapperTemplateList
     ioDeclarations.mDeclarationList += !@filewrapperDeclarationAST.new {
-      !false # Is not predefined
+      !isPredefined: false # Is not predefined
       !true # private
       !@string.stringWithSourceFilePath
       !mFilewrapperName
@@ -160,7 +160,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
     }
   }
 
-  #·····················································································································
+  #·················································································································
 
   rule <filewrapper_text_files> !@lstringlist outFilewrapperTextFileExtensionList {
     outFilewrapperTextFileExtensionList = {}
@@ -177,7 +177,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
     $}$
   }
 
-  #·····················································································································
+  #·················································································································
 
   rule <filewrapper_binary_files> !@lstringlist outFilewrapperBinaryFileExtensionList {
     outFilewrapperBinaryFileExtensionList = {}
@@ -194,7 +194,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
     $}$
   }
 
-  #·····················································································································
+  #·················································································································
 
   rule <filewrapper_templates> !@filewrapperTemplateListAST outFilewrapperTemplateList {
     ${$
@@ -227,17 +227,17 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
     $}$
   }
 
-  #·····················································································································
+  #·················································································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax galgas4DeclarationsSyntax (galgasScanner4) {
 
-  #·····················································································································
+  #·················································································································
   #          Start symbol                     
-  #·····················································································································
+  #·················································································································
 
   rule <start_symbol> ?!@galgasDeclarationAST ioDeclarations {
     repeat
@@ -246,9 +246,9 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
     end
   }
 
-  #·····················································································································
+  #·················································································································
   #          Rules prototypes                 
-  #·····················································································································
+  #·················································································································
 
   rule <formal_parameter_list> ?!@galgasDeclarationAST ioDeclarations
                                ?!@stringset ioUserImplicitDeclaredTypeSet
@@ -266,9 +266,9 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
                          ?!@stringset ioUserImplicitDeclaredTypeSet
                          !@lstring outTypeName
 
-  #·····················································································································
+  #·················································································································
   #    A T T R I B U T E    I N    C O L L E C T I O N
-  #·····················································································································
+  #·················································································································
 
   rule <property_declaration> ?!@galgasDeclarationAST ioDeclarations
                               ?!@stringset ioUserImplicitDeclaredTypeSet
@@ -308,9 +308,9 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
       !initialization
   }
 
-  #·····················································································································
+  #·················································································································
   #! Filewrapper Declaration
-  #·····················································································································
+  #·················································································································
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations
                      ?!@stringset ioUserImplicitDeclaredTypeSet {
@@ -322,7 +322,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
     <filewrapper_binary_files> ?let filewrapperBinaryFileExtensionList
     <filewrapper_templates> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let filewrapperTemplateList
     ioDeclarations.mDeclarationList += !@filewrapperDeclarationAST.new {
-      !false # Is not predefined
+      !isPredefined: false # Is not predefined
       !false # private
       !@string.stringWithSourceFilePath
       !mFilewrapperName
@@ -332,7 +332,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
       !filewrapperTemplateList
     }
   }
-  #·····················································································································
+  #·················································································································
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations
                      ?!@stringset ioUserImplicitDeclaredTypeSet {
@@ -345,7 +345,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
     <filewrapper_binary_files> ?let filewrapperBinaryFileExtensionList
     <filewrapper_templates> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let filewrapperTemplateList
     ioDeclarations.mDeclarationList += !@filewrapperDeclarationAST.new {
-      !false # Is not predefined
+      !isPredefined: false # Is not predefined
       !true # private
       !@string.stringWithSourceFilePath
       !mFilewrapperName
@@ -356,7 +356,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
     }
   }
 
-  #·····················································································································
+  #·················································································································
 
   rule <filewrapper_text_files> !@lstringlist outFilewrapperTextFileExtensionList {
     outFilewrapperTextFileExtensionList = {}
@@ -373,7 +373,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
     $}$
   }
 
-  #·····················································································································
+  #·················································································································
 
   rule <filewrapper_binary_files> !@lstringlist outFilewrapperBinaryFileExtensionList {
     outFilewrapperBinaryFileExtensionList = {}
@@ -390,7 +390,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
     $}$
   }
 
-  #·····················································································································
+  #·················································································································
 
   rule <filewrapper_templates> ?!@galgasDeclarationAST ioDeclarations
                                ?!@stringset ioUserImplicitDeclaredTypeSet
@@ -440,8 +440,8 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
     $}$
   }
 
-  #·····················································································································
+  #·················································································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -1,9 +1,9 @@
 lexique LL1_expression_lexique {
 
   @uint number
-  $number$ ! number error message"a number"
+  $number$ ! number error message "a number"
   
-  list operator_list error message"the '%K' delimitor"{
+  list operator_list error message "the '%K' delimitor"{
     "+", "*", ")", "(" }
   rule list operator_list
   

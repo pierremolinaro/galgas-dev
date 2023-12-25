@@ -1,4 +1,4 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
 #  Computation of useful entities           
 #                                           
@@ -13,20 +13,20 @@
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
 #  details.                                 
 #                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graph @usefulEntitiesGraph (@lstringlist) {
-  insert addNode error message"the '%K' entity is already declared at %L"
+  insert addNode error message "the '%K' entity is already declared at %L"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @uselessEntityLocationMap {
   public let @location mLocation
-  insert insertKey error message"--- %K INTERNAL ERROR ---"
+  insert insertKey error message "--- %K INTERNAL ERROR ---"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc checkUsefulEntities
   ?let @usefulEntitiesGraph inUsefulEntitiesGraph
@@ -65,95 +65,95 @@ proc checkUsefulEntities
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func getterNameForUsefulEntitiesGraph ?let @string inTypeName ?let @lstring inGetterName -> @lstring {
   result = .new {!"getter @" + inTypeName + " " + inGetterName !inGetterName.location}
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func setterNameForUsefulEntitiesGraph ?let @string inTypeName ?let @lstring inSetterName -> @lstring {
   result = .new {!"setter @" + inTypeName + " " + inSetterName !inSetterName.location}
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func methodNameForUsefulEntitiesGraph ?let @string inTypeName ?let @lstring inMethodName -> @lstring {
   result = .new {!"method @" + inTypeName + " " + inMethodName !inMethodName.location}
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func lexiqueNameForUsefulEntitiesGraph ?let @lstring inLexiqueName -> @lstring {
   result = .new {!"lexique " + inLexiqueName !inLexiqueName.location}
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func grammarNameForUsefulEntitiesGraph ?let @lstring inGrammarName -> @lstring {
   result = .new {!"grammar " + inGrammarName !inGrammarName.location}
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func syntaxNameForUsefulEntitiesGraph ?let @lstring inSyntaxName -> @lstring {
   result = .new {!"syntax " + inSyntaxName !inSyntaxName.location}
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func optionNameForUsefulEntitiesGraph ?let @lstring inOptionName -> @lstring {
   result = .new {!"option " + inOptionName !inOptionName.location}
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func filewrapperNameForUsefulEntitiesGraph ?let @lstring inFilewrapperName -> @lstring {
   result = .new {!"filewrapper " + inFilewrapperName !inFilewrapperName.location}
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func filewrapperTemplateNameForUsefulEntitiesGraph ?let @lstring inFilewrapperName  ?let @lstring inTemplateName
 -> @lstring {
   result = .new {!"filewrapper template " + inFilewrapperName + "." + inTemplateName !inTemplateName.location}
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func functionNameForUsefulEntitiesGraph ?let @lstring inFunctionName -> @lstring {
   result = .new {!"function " + inFunctionName !inFunctionName.location}
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func procedureNameForUsefulEntitiesGraph ?let @lstring inProcName -> @lstring {
   result = .new {!"procedure " + inProcName !inProcName.location}
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func typeNameForUsefulEntitiesGraph ?let @lstring inTypeName -> @lstring {
   result = .new {!"type @" + inTypeName !inTypeName.location}
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func afterNameForUsefulEntitiesGraph ?let @location inLocation -> @lstring {
   result = .new {!"after" !inLocation}
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func beforeNameForUsefulEntitiesGraph ?let @location inLocation -> @lstring {
   result = .new {!"before" !inLocation}
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func rootRuleNameForUsefulEntitiesGraph ?let @lstring inFileExtension -> @lstring {
   result = .new {!"rule ." + inFileExtension !inFileExtension}
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————

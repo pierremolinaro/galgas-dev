@@ -1,4 +1,4 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
 #  metamodel that defines expression        
 #                                           
@@ -13,11 +13,11 @@
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
 #  details.                                 
 #                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
 #    I N S T R U C T I O N    A N A L Y S I S    
 #                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @semanticInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
@@ -27,7 +27,7 @@ abstract method @semanticInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @localConstantList {
   public let @unifiedTypeMapEntry mType
@@ -36,7 +36,7 @@ list @localConstantList {
   public let @string mCppName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @localInitializedVariableList {
   public let @unifiedTypeMapEntry mType
@@ -44,7 +44,7 @@ list @localInitializedVariableList {
   public let @string mCppName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc analyzeSemanticInstructionList
   ?let @lstring inUsefulnessCallerEntityName
@@ -78,7 +78,7 @@ proc analyzeSemanticInstructionList
   [!?ioVariableMap closeBranch !inEndOfBranchLocation]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc analyzeSemanticInstructionListWithoutBranch
   ?let @lstring inUsefulnessCallerEntityName
@@ -121,7 +121,7 @@ proc analyzeSemanticInstructionListWithoutBranch
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @actualParameterAST checkAgainstFormalArgument
   ?let @lstring inUsefulnessCallerEntityName
@@ -136,11 +136,11 @@ abstract method @actualParameterAST checkAgainstFormalArgument
   ?!@stringset ioExclusiveVariableSet
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @actualParameterAST enterInActualOutputParameterList ?!@actualOutputExpressionList ioActualOutputArgumentList
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 getter @formalArgumentPassingModeAST correspondingEffectiveParameterString -> @string {
   switch self
@@ -151,7 +151,7 @@ getter @formalArgumentPassingModeAST correspondingEffectiveParameterString -> @s
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @outputActualParameterAST enterInActualOutputParameterList ?!@actualOutputExpressionList ioActualOutputArgumentList {
   ioActualOutputArgumentList +=
@@ -160,7 +160,7 @@ override method @outputActualParameterAST enterInActualOutputParameterList ?!@ac
     !self.mEndOfExpressionLocation
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @outputActualParameterAST checkAgainstFormalArgument
   ?let @lstring inUsefulnessCallerEntityName
@@ -204,13 +204,13 @@ override method @outputActualParameterAST checkAgainstFormalArgument
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @outputInputActualParameterAST enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
   error self.mActualSelector : "a getter does not support output/input parameter"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @outputInputActualParameterAST checkAgainstFormalArgument
                             ?let @lstring unused inUsefulnessCallerEntityName
@@ -280,13 +280,13 @@ override method @outputInputActualParameterAST checkAgainstFormalArgument
   }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @outputInputSingleJokerParameterAST enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
   error self.mActualSelector : "a getter does not support output/input parameter"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @outputInputSingleJokerParameterAST checkAgainstFormalArgument
                                 ?let @lstring unused inUsefulnessCallerEntityName
@@ -341,13 +341,13 @@ override method @outputInputSingleJokerParameterAST checkAgainstFormalArgument
   }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @outputInputSelfParameterAST enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
   error self.mActualSelector : "a getter does not support output/input parameter"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @outputInputSelfParameterAST checkAgainstFormalArgument
                           ?let @lstring unused inUsefulnessCallerEntityName
@@ -399,13 +399,13 @@ override method @outputInputSelfParameterAST checkAgainstFormalArgument
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @outputInputJokerParameterAST enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
   error self.mQualifierLocation : "a getter does not support output/input parameter"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @outputInputJokerParameterAST checkAgainstFormalArgument
                                             ?let @lstring unused inUsefulnessCallerEntityName
@@ -455,13 +455,13 @@ override method @outputInputJokerParameterAST checkAgainstFormalArgument
     !@unifiedTypeMapEntryList. listWithValue {!inFormalArgumentType}}
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @inputActualExistingVariableParameterAST enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
   error self.mActualSelector : "a getter does not support input parameter"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @inputActualExistingVariableParameterAST checkAgainstFormalArgument
   ?let @lstring unused inUsefulnessCallerEntityName
@@ -520,13 +520,13 @@ override method @inputActualExistingVariableParameterAST checkAgainstFormalArgum
   }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @inputActualSelfPropertyParameterAST enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
   error self.mActualSelector : "a getter does not support input parameter"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @inputActualSelfPropertyParameterAST checkAgainstFormalArgument
   ?let @lstring unused inUsefulnessCallerEntityName
@@ -586,13 +586,13 @@ override method @inputActualSelfPropertyParameterAST checkAgainstFormalArgument
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @inputActualSelfParameterAST enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
   error self.mActualSelector : "a getter does not support input parameter"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @inputActualSelfParameterAST checkAgainstFormalArgument
   ?let @lstring unused inUsefulnessCallerEntityName
@@ -653,13 +653,13 @@ override method @inputActualSelfParameterAST checkAgainstFormalArgument
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @inputActualNewVariableParameterAST enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
   error self.mActualSelector : "a getter does not support input parameter"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @inputActualNewVariableParameterAST checkAgainstFormalArgument
   ?let @lstring unused inUsefulnessCallerEntityName
@@ -731,13 +731,13 @@ override method @inputActualNewVariableParameterAST checkAgainstFormalArgument
   }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @inputActualNewConstantParameterAST enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
   error self.mActualSelector : "a getter does not support input parameter"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @inputActualNewConstantParameterAST checkAgainstFormalArgument
   ?let @lstring unused inUsefulnessCallerEntityName
@@ -817,13 +817,13 @@ override method @inputActualNewConstantParameterAST checkAgainstFormalArgument
   }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @inputSingleJokerActualParameterAST enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
   error self.mActualSelector : "a getter does not support input parameter"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @inputSingleJokerActualParameterAST checkAgainstFormalArgument
   ?let @lstring unused inUsefulnessCallerEntityName
@@ -866,13 +866,13 @@ override method @inputSingleJokerActualParameterAST checkAgainstFormalArgument
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @inputJokerActualParameterAST enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
   error self.mQualifierLocation : "a getter does not support input parameter"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @inputJokerActualParameterAST checkAgainstFormalArgument
   ?let @lstring unused inUsefulnessCallerEntityName
@@ -901,72 +901,72 @@ override method @inputJokerActualParameterAST checkAgainstFormalArgument
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @actualParameterAST enterParameterInSemanticContext ?!@unifiedTypeMap ioTypeMap
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @inputActualExistingVariableParameterAST enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @inputActualSelfPropertyParameterAST enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @inputActualSelfParameterAST enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @inputActualNewConstantParameterAST enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @inputActualNewVariableParameterAST enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @inputJokerActualParameterAST enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @inputSingleJokerActualParameterAST enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @outputActualParameterAST enterParameterInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   [self.mOutputActualParameterExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @outputInputActualParameterAST enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @outputInputJokerParameterAST enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @outputInputSingleJokerParameterAST enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @outputInputSelfParameterAST enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc analyzeRoutineArguments  ?let @lstring inUsefulnessCallerEntityName
                               ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
@@ -1006,7 +1006,7 @@ proc analyzeRoutineArguments  ?let @lstring inUsefulnessCallerEntityName
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc checkExpressionIsBoolean
   ?let @analysisContext inAnalysisContext
@@ -1080,7 +1080,7 @@ proc checkExpressionIsBoolean
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @abstractGrammarInstructionSyntaxDirectedTranslationResult analyzeGrammarInstructionSDT
   ?let @analysisContext inAnalysisContext
@@ -1090,7 +1090,7 @@ abstract method @abstractGrammarInstructionSyntaxDirectedTranslationResult analy
   ?!@stringlist ioAssignementList
   ?!@localVarManager ioVariableMap
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @grammarInstructionSyntaxDirectedTranslationResultNone analyzeGrammarInstructionSDT
   ?let @analysisContext unused inAnalysisContext
@@ -1101,7 +1101,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultNone analyzeGr
   ?!@localVarManager unused ioVariableMap {
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @grammarInstructionSyntaxDirectedTranslationDropResult  analyzeGrammarInstructionSDT
   ?let @analysisContext unused inAnalysisContext
@@ -1115,7 +1115,7 @@ override method @grammarInstructionSyntaxDirectedTranslationDropResult  analyzeG
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @grammarInstructionSyntaxDirectedTranslationResultInVar  analyzeGrammarInstructionSDT
   ?let @analysisContext inAnalysisContext
@@ -1137,7 +1137,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInVar  analyze
   ioAssignementList += !cppName + " = GALGAS_string (" + inSyntaxDirectedTranslationResultVarName + ") ;" 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar  analyzeGrammarInstructionSDT
   ?let @analysisContext inAnalysisContext
@@ -1161,7 +1161,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar 
   ioAssignementList += !"GALGAS_string " + cppName + " (" + inSyntaxDirectedTranslationResultVarName + ") ;" 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst  analyzeGrammarInstructionSDT
   ?let @analysisContext inAnalysisContext
@@ -1185,5 +1185,5 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredCons
   ioAssignementList += !"const GALGAS_string " + cppName + " (" + inSyntaxDirectedTranslationResultVarName + ") ;" 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

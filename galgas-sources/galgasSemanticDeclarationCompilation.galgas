@@ -1,4 +1,4 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
 #  Copyright (C) 2016, ..., 2020 Pierre Molinaro.
 #                                           
@@ -11,7 +11,7 @@
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
 #  details.                                 
 #                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc compileSemanticDeclarationsGalgas ?!@lstringlist ioUsefulnessRootEntities 
                             ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
@@ -61,7 +61,7 @@ proc compileSemanticDeclarationsGalgas ?!@lstringlist ioUsefulnessRootEntities
       !.noDefaultValue
   end
   semanticDeclarationListWithPredefinedTypes += !@optionComponentDeclarationAST.new {
-    !true # Is predefined
+    !isPredefined: true # Is predefined
     !["galgas_builtin_options" nowhere]
     !options
   }
@@ -102,11 +102,11 @@ proc compileSemanticDeclarationsGalgas ?!@lstringlist ioUsefulnessRootEntities
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
 #    B U I L D    S E M A N T I C    C O N T E X T
 #                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc buildGalgasSemanticContext ?let @semanticDeclarationListAST inSemanticDeclarationList
                                         ?let @location inEndOfProjectSourceFile
@@ -185,9 +185,9 @@ private proc buildGalgasSemanticContext ?let @semanticDeclarationListAST inSeman
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! Generation
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc generateSemanticDeclarationsGalgas3
   ?let @unifiedTypeMap inUnifiedTypeMap
@@ -277,7 +277,7 @@ proc generateSemanticDeclarationsGalgas3
    end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc generateManyHeaders
   ?let @string inProductDirectory
@@ -315,29 +315,29 @@ private proc generateManyHeaders
       case noHeader :
         if headerIncludes1 != "" then
           error ["" nowhere]
-          : "'noHeader' setting for the '" + declaration.mMessage + "' declaration, and 'headerIncludes1' string is not empty"
+          : "'noHeader' setting for the '" + declaration.infoMessage + "' declaration, and 'headerIncludes1' string is not empty"
         end
         if headerIncludes2 != "" then
           error ["" nowhere]
-          : "'noHeader' setting for the '" + declaration.mMessage + "' declaration, and 'headerIncludes2' string is not empty"
+          : "'noHeader' setting for the '" + declaration.infoMessage + "' declaration, and 'headerIncludes2' string is not empty"
         end
       case oneHeader :
         if headerIncludes1 == "" then
           error ["" nowhere]
-          : "'oneHeader' setting for the '" + declaration.mMessage + "' declaration, and 'headerIncludes1' string is empty"
+          : "'oneHeader' setting for the '" + declaration.infoMessage + "' declaration, and 'headerIncludes1' string is empty"
         end
         if headerIncludes2 != "" then
           warning ["" nowhere]
-          : "'oneHeader' setting for the '" + declaration.mMessage + "' declaration, and 'headerIncludes2' string is not empty"
+          : "'oneHeader' setting for the '" + declaration.infoMessage + "' declaration, and 'headerIncludes2' string is not empty"
         end
       case twoHeaders :
         if headerIncludes1 == "" then
           warning ["" nowhere]
-          : "'twoHeaders' setting for the '" + declaration.mMessage + "' declaration, and 'headerIncludes1' string is empty"
+          : "'twoHeaders' setting for the '" + declaration.infoMessage + "' declaration, and 'headerIncludes1' string is empty"
         end
         if headerIncludes2 == "" then
           warning ["" nowhere]
-          : "'twoHeaders' setting for the '" + declaration.mMessage + "' declaration, and 'headerIncludes2' string is empty"
+          : "'twoHeaders' setting for the '" + declaration.infoMessage + "' declaration, and 'headerIncludes2' string is empty"
         end
       end
     #--- Header 1
@@ -396,7 +396,7 @@ private proc generateManyHeaders
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc generateOneBigHeader
   ?let @string inProductDirectory
@@ -430,24 +430,24 @@ private proc generateOneBigHeader
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @headerCompositionMap {
   public let @stringset mInclusion
   public let @string mHeaderString
-  insert insertKey error message"the '%K' key is already declared in %L"
-  search searchKey error message"there is no '%K' key"
+  insert insertKey error message "the '%K' key is already declared in %L"
+  search searchKey error message "there is no '%K' key"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @headerRepartitionMap {
   public let @string mHeaderFileName
-  insert insertKey error message"the '%K' key is already declared in %L"
-  search searchKey error message"there is no '%K' key"
+  insert insertKey error message "the '%K' key is already declared in %L"
+  search searchKey error message "there is no '%K' key"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc buildHeader
   ?let @headerCompositionMap inHeaderCompositionMap
@@ -481,13 +481,13 @@ private proc buildHeader
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private func %once definitionGroupAmount -> @uint {
   result = 50
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc generateFewImplementationFiles
   ?let @unifiedTypeMap inUnifiedTypeMap
@@ -552,7 +552,7 @@ private proc generateFewImplementationFiles
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc generateFewImplementationFilesWithFewHeaders
   ?let @unifiedTypeMap inUnifiedTypeMap
@@ -682,7 +682,7 @@ private proc generateFewImplementationFilesWithFewHeaders
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc generateManyImplementationFiles
   ?let @unifiedTypeMap inUnifiedTypeMap
@@ -719,5 +719,5 @@ private proc generateManyImplementationFiles
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

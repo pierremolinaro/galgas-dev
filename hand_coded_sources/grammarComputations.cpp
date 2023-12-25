@@ -637,7 +637,7 @@ analyzeGrammar (Compiler * inCompiler,
 //--------------------------------------------------------------------------------------------------
 
 void
-routine_grammarAnalysisAndGeneration (const GALGAS_lstring inTargetFileName,
+routine_grammarAnalysisAndGeneration_3F__3F__3F__3F__3F__3F__3F__3F__3F__3F__21__21_ (const GALGAS_lstring inTargetFileName,
                                       const GALGAS_lstring inGrammarClass,
                                       const GALGAS_uint inOriginalGrammarStartSymbol,
                                       const GALGAS_string inLexiqueName,

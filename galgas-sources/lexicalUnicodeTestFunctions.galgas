@@ -1,4 +1,4 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
 #  Lexical Unicode Test Functions           
 #                                           
@@ -13,9 +13,9 @@
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
 #  details.                                 
 #                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   AST                                     
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #list @lexicalFunctionListAST {
 #  public let @lstring mFunctionName
@@ -53,13 +53,13 @@
 #  private let @lchar mUpperBound
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   Production rules                        
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3LexiqueComponentSyntax {
 
-  #·····················································································································
+  #·················································································································
 
 #  rule <lexical_function_declaration> ?!@lexicalFunctionListAST ioLexicalFunctionListAST {
 #    $func$
@@ -69,13 +69,13 @@ syntax extension galgas3LexiqueComponentSyntax {
 #    ioLexicalFunctionListAST += !functionName !expression
 #  }
 
-  #·····················································································································
+  #·················································································································
 
 #  rule <lexical_function_expression> !@lexicalFunctionExpressionAST outExpression {
 #    <lexical_function_term> ?outExpression
 #  }
 
-  #·····················································································································
+  #·················································································································
 
 #  rule <lexical_function_term> !@lexicalFunctionExpressionAST outExpression {
 #    <lexical_function_factor> ?outExpression
@@ -87,7 +87,7 @@ syntax extension galgas3LexiqueComponentSyntax {
 #    end
 #  }
 
-  #·····················································································································
+  #·················································································································
 
 #  rule <lexical_function_factor> !@lexicalFunctionExpressionAST outExpression {
 #    $'char'$ ?let character
@@ -100,22 +100,22 @@ syntax extension galgas3LexiqueComponentSyntax {
 #    end
 #  }
 
-  #·····················································································································
+  #·················································································································
 
 #  rule <lexical_function_factor> !@lexicalFunctionExpressionAST outExpression {
 #    $identifier$ ?let functionName
 #    outExpression = @lexicalFunctionCallAST.new {!functionName}
 #  }
 
-  #·····················································································································
+  #·················································································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4LexiqueComponentSyntax {
 
-  #·····················································································································
+  #·················································································································
 
 #  rule <lexical_function_declaration> ?!@lexicalFunctionListAST ioLexicalFunctionListAST {
 #    $func$
@@ -125,13 +125,13 @@ syntax extension galgas4LexiqueComponentSyntax {
 #    ioLexicalFunctionListAST += !functionName !expression
 #  }
 
-  #·····················································································································
+  #·················································································································
 
 #  rule <lexical_function_expression> !@lexicalFunctionExpressionAST outExpression {
 #    <lexical_function_term> ?outExpression
 #  }
 
-  #·····················································································································
+  #·················································································································
 
 #  rule <lexical_function_term> !@lexicalFunctionExpressionAST outExpression {
 #    <lexical_function_factor> ?outExpression
@@ -143,7 +143,7 @@ syntax extension galgas4LexiqueComponentSyntax {
 #    end
 #  }
 
-  #·····················································································································
+  #·················································································································
 
 #  rule <lexical_function_factor> !@lexicalFunctionExpressionAST outExpression {
 #    $'char'$ ?let character
@@ -156,20 +156,20 @@ syntax extension galgas4LexiqueComponentSyntax {
 #    end
 #  }
 
-  #·····················································································································
+  #·················································································································
 
 #  rule <lexical_function_factor> !@lexicalFunctionExpressionAST outExpression {
 #    $identifier$ ?let functionName
 #    outExpression = @lexicalFunctionCallAST.new {!functionName}
 #  }
 
-  #·····················································································································
+  #·················································································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   SEMANTIC ANALYSIS                       
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc lexicalUnicodeTestFunctionAnalysis !@stringset outUnicodeTestFunctions {
 #--- Check for no recursive call
@@ -209,30 +209,30 @@ proc lexicalUnicodeTestFunctionAnalysis !@stringset outUnicodeTestFunctions {
 #  end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   checkUnicodeConstants                   
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #abstract method @lexicalFunctionExpressionAST checkUnicodeConstants
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #override method @lexicalFunctionOrExpressionAST checkUnicodeConstants {
 #  [self.mLeftOperand checkUnicodeConstants]
 #  [self.mRightOperand checkUnicodeConstants]
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #override method @lexicalFunctionCallAST checkUnicodeConstants {
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #override method @lexicalFunctionCharacterMatchAST checkUnicodeConstants {
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #override method @lexicalFunctionCharacterIntervalMatchAST checkUnicodeConstants {
 #  if [self.mUpperBound.char uint] < [self.mLowerBound.char uint] then
@@ -240,13 +240,13 @@ proc lexicalUnicodeTestFunctionAnalysis !@stringset outUnicodeTestFunctions {
 #  end
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   callsDefinedUnicodeTestFunctions        
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #abstract getter @lexicalFunctionExpressionAST callsDefinedUnicodeTestFunctions ?let @stringset inDefinedUnicodeFunctionSet -> @bool
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #override getter @lexicalFunctionOrExpressionAST callsDefinedUnicodeTestFunctions
 #  ?let @stringset inDefinedUnicodeFunctionSet -> @bool
@@ -255,7 +255,7 @@ proc lexicalUnicodeTestFunctionAnalysis !@stringset outUnicodeTestFunctions {
 #           [self.mRightOperand callsDefinedUnicodeTestFunctions !inDefinedUnicodeFunctionSet]
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #override getter @lexicalFunctionCallAST callsDefinedUnicodeTestFunctions
 #  ?let @stringset inDefinedUnicodeFunctionSet -> @bool
@@ -263,7 +263,7 @@ proc lexicalUnicodeTestFunctionAnalysis !@stringset outUnicodeTestFunctions {
 #  result = [inDefinedUnicodeFunctionSet hasKey !self.mCalledFunctionName]
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #override getter @lexicalFunctionCharacterMatchAST callsDefinedUnicodeTestFunctions
 #  ?let @stringset unused inDefinedUnicodeFunctionSet -> @bool
@@ -271,7 +271,7 @@ proc lexicalUnicodeTestFunctionAnalysis !@stringset outUnicodeTestFunctions {
 #  result = true
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #override getter @lexicalFunctionCharacterIntervalMatchAST callsDefinedUnicodeTestFunctions
 #  ?let @stringset unused inDefinedUnicodeFunctionSet -> @bool
@@ -279,13 +279,13 @@ proc lexicalUnicodeTestFunctionAnalysis !@stringset outUnicodeTestFunctions {
 #  result = true
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   generateForUnicodeTestFunctions         
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #abstract getter @lexicalFunctionExpressionAST generateForUnicodeTestFunctions -> @string
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #override getter @lexicalFunctionOrExpressionAST generateForUnicodeTestFunctions -> @string {
 #  result = [self.mLeftOperand generateForUnicodeTestFunctions]
@@ -293,19 +293,19 @@ proc lexicalUnicodeTestFunctionAnalysis !@stringset outUnicodeTestFunctions {
 #  result += [self.mRightOperand generateForUnicodeTestFunctions]
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #override getter @lexicalFunctionCallAST generateForUnicodeTestFunctions -> @string {
 #  result = self.mCalledFunctionName.string + " (inUnicodeCharacter)"
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #override getter @lexicalFunctionCharacterMatchAST generateForUnicodeTestFunctions -> @string {
 #  result = "(" + [[self.mCharacter.char uint] hexString] + " == UNICODE_VALUE (inUnicodeCharacter))"
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #override getter @lexicalFunctionCharacterIntervalMatchAST generateForUnicodeTestFunctions -> @string {
 #  result = "((" + [[self.mLowerBound.char uint] hexString]
@@ -313,4 +313,4 @@ proc lexicalUnicodeTestFunctionAnalysis !@stringset outUnicodeTestFunctions {
 #    + [[self.mUpperBound.char uint] hexString] + "))"
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————

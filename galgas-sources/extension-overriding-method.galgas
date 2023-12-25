@@ -1,10 +1,10 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   SYNTAX                                  
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
 
-  #·····················································································································
+  #·················································································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $override$
@@ -17,7 +17,7 @@ syntax extension galgas3DeclarationsSyntax {
     let @location endOfMethodLocation = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@overridingExtensionMethodAST.new {
-      !false # Is not predefined
+      !isPredefined: false # Is not predefined
       !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
       !className
       !mMethodName
@@ -27,7 +27,7 @@ syntax extension galgas3DeclarationsSyntax {
     }
   }
 
-  #·····················································································································
+  #·················································································································
 
   rule <method_declaration_ggs3> ?let @lstring inClassName ?!@galgasDeclarationAST ioDeclarations {
     $override$
@@ -39,7 +39,7 @@ syntax extension galgas3DeclarationsSyntax {
     let @location endOfMethodLocation = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@overridingExtensionMethodAST.new {
-      !false # Is not predefined
+      !isPredefined: false # Is not predefined
       !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
       !inClassName
       !mMethodName
@@ -49,15 +49,15 @@ syntax extension galgas3DeclarationsSyntax {
     }
   }
 
-  #·····················································································································
+  #·················································································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4DeclarationsSyntax {
 
-  #·····················································································································
+  #·················································································································
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations
                      ?!@stringset ioUserImplicitDeclaredTypeSet {
@@ -72,7 +72,7 @@ syntax extension galgas4DeclarationsSyntax {
     let @location endOfMethodLocation = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@overridingExtensionMethodAST.new {
-      !false # Is not predefined
+      !isPredefined: false # Is not predefined
       !requiresSelfForAccessingProperty: true
       !className
       !mMethodName
@@ -82,7 +82,7 @@ syntax extension galgas4DeclarationsSyntax {
     }
   }
 
-  #·····················································································································
+  #·················································································································
 
   rule <method_declaration> ?let @lstring inClassName
                             ?!@galgasDeclarationAST ioDeclarations
@@ -96,7 +96,7 @@ syntax extension galgas4DeclarationsSyntax {
     let @location endOfMethodLocation = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@overridingExtensionMethodAST.new {
-      !false # Is not predefined
+      !isPredefined: false # Is not predefined
       !requiresSelfForAccessingProperty: true
       !inClassName
       !mMethodName
@@ -106,13 +106,13 @@ syntax extension galgas4DeclarationsSyntax {
     }
   }
 
-  #·····················································································································
+  #·················································································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   AST                                     
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @overridingExtensionMethodAST : @semanticDeclarationAST {
   private let @bool requiresSelfForAccessingProperty %selector
@@ -123,17 +123,17 @@ refclass @overridingExtensionMethodAST : @semanticDeclarationAST {
   private let @location mEndOfMethodLocation
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   KEY REPRESENTATION                      
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @overridingExtensionMethodAST keyRepresentation -> @string {
   result = "overriding extension method @" + self.mTypeName + " " + self.mOverridingExtensionMethodName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   ENTER IN GRAPH                          
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingExtensionMethodAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
@@ -159,9 +159,9 @@ override method @overridingExtensionMethodAST enterDeclarationInGraph
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   SEMANTIC CONTEXT                        
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingExtensionMethodAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
@@ -171,9 +171,9 @@ override method @overridingExtensionMethodAST enterDeclarationInSemanticContext
   ?!@semanticContext unused ioSemanticContext {
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   SEMANTIC ANALYSIS                       
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingExtensionMethodAST semanticAnalysis
   ?!@lstringlist unused ioUsefulnessRootEntities 
@@ -268,10 +268,10 @@ override method @overridingExtensionMethodAST semanticAnalysis
   end
 #---
   ioSemanticDeclarationListForGeneration +=
-    !"override extension method " + self.mOverridingExtensionMethodName
+    !infoMessage: "override extension method " + self.mOverridingExtensionMethodName
     !@overridingExtensionMethodForGeneration.new {
-      !false # Do not generate Cpp header file
-      !"method-" + [[selfType definition].mTypeName.string fileNameRepresentation] + "-" + [self.mOverridingExtensionMethodName fileNameRepresentation]
+      !generateHeader: false # Do not generate Cpp header file
+      !mImplementationCppFileName: "method-" + [[selfType definition].mTypeName.string fileNameRepresentation] + "-" + [self.mOverridingExtensionMethodName fileNameRepresentation]
       !selfType
       !baseTypeName
       !self.mOverridingExtensionMethodName.string
@@ -281,9 +281,9 @@ override method @overridingExtensionMethodAST semanticAnalysis
     }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   EXTENSION LIST MAP                      
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingExtensionMethodAST buildExtensionListMaps
   ?!@genericExtensionMethodListMap unused ioAbstractExtensionSetterListMap
@@ -303,9 +303,9 @@ override method @overridingExtensionMethodAST buildExtensionListMaps
     !self.mOverridingExtensionMethodName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   CODE GENERATION                         
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @overridingExtensionMethodForGeneration : @semanticDeclarationWithHeaderForGeneration {
   private let @unifiedTypeMapEntry mReceiverType
@@ -343,5 +343,5 @@ override method @overridingExtensionMethodForGeneration appendSpecificImplementa
   ] 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

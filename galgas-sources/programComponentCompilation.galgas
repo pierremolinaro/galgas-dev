@@ -1,4 +1,4 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
 #  Program component compilation            
 #                                           
@@ -12,17 +12,17 @@
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
 #  details.                                 
 #                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @programListForGeneration {
   public let @semanticDeclarationForGeneration mDeclaration
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
 #           G E N E R A T I O N    F I L E W R A P P E R S                                                     
 #                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private filewrapper programFileGenerationTemplate in "+generation-templates/program_generation" {
 }{
@@ -35,11 +35,11 @@ private filewrapper programFileGenerationTemplate in "+generation-templates/prog
     ?@string PROJECT_VERSION_STRING
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
 #           C O M P I L E    ' B E F O R E '     
 #                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc compileBeforeClauseGalgas3
   ?!@lstringlist ioUsefulnessRootEntities
@@ -74,20 +74,20 @@ proc compileBeforeClauseGalgas3
 #---
   ioDecoratedDeclarationListForGeneration +=
     !@routineImplementationForGeneration.new {
-      !false # Has no header
-      !"proc-before"
-      !"before"
+      !generateHeader: false # Has no header
+      !mImplementationCppFileName: "proc-before"
+      !routineMangledName:"before"
       !@formalParameterListForGeneration {}
       !true # Generate static
       !semanticInstructionListForGeneration
     }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
 #           C O M P I L E    P R O G R A M    R U L E S 
 #                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc compileProgramRulesGalgas3
   ?!@lstringlist ioUsefulnessRootEntities
@@ -124,9 +124,9 @@ private proc compileProgramRulesGalgas3
     )
     ioDecoratedDeclarationListForGeneration +=
       !@routineImplementationForGeneration.new {
-        !false # Has no header
-        !"proc-programrule"
-        !"programRule_" + [ruleIndex string]
+        !generateHeader: false # Has no header
+        !mImplementationCppFileName: "proc-programrule"
+        !routineMangledName: "programRule_" + [ruleIndex string]
         !routineSignature
         !true # Generate static
         !semanticInstructionListForGeneration
@@ -135,11 +135,11 @@ private proc compileProgramRulesGalgas3
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
 #           C O M P I L E    ' A F T E R '  
 #                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc compileAfterClauseGalgas3
   ?!@lstringlist ioUsefulnessRootEntities
@@ -173,20 +173,20 @@ proc compileAfterClauseGalgas3
   end
 #---
   ioDecoratedDeclarationListForGeneration += !@routineImplementationForGeneration.new {
-    !false # Has no header
-    !"proc-after"
-    !"after"
+    !generateHeader: false # Has no header
+    !mImplementationCppFileName: "proc-after"
+    !routineMangledName: "after"
     !@formalParameterListForGeneration {}
     !true # Generate static
     !semanticInstructionListForGeneration
   }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
 #           C O M P I L E    P R O G R A M    C O M P O N E N T                                                
 #                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc compileProgramComponentGalgas3
   ?!@lstringlist ioUsefulnessRootEntities
@@ -258,12 +258,12 @@ proc compileProgramComponentGalgas3
   ]
 #---
   outProgramComponentForGeneration = @programComponentForGeneration.new {
-    !false # No header
-    !"program"
+    !generateHeader: false # No header
+    !mImplementationCppFileName: "program"
     !inclusionSet
     !cppContents
   }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

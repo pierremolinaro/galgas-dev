@@ -39,10 +39,6 @@ project (3:7:0) -> "galgas" {
 #--- Project Creation
   "galgas-sources/projectCreation.galgas"
 
-#--- Scanners
-  "galgas-sources/galgasScanner3.galgas"
-  "galgas-sources/galgasScanner4.galgas"
-
 #--- Template
   "galgas-sources/galgasTemplateScanner.galgas"
   "galgas-sources/templateTypesForAST.galgas"
@@ -82,6 +78,10 @@ project (3:7:0) -> "galgas" {
 #--- GUI component
   "galgas-sources/guiCompilation.galgas"
 
+#--- Scanners
+  "galgas-sources/galgasScanner3.galgas"
+  "galgas-sources/galgasScanner4.galgas"
+
 #--- Type declaration
 #  "galgas-sources/type-array.galgas"
   "galgas-sources/type-boolset.galgas"
@@ -113,6 +113,8 @@ project (3:7:0) -> "galgas" {
   "galgas-sources/extension-overriding-setter.galgas"
 
 #--- Semantics Component
+  "galgas-sources/extern-procedure-declaration.galgas"
+  "galgas-sources/procedure-declaration.galgas"
   "galgas-sources/semanticsTypesForAST.galgas"
   "galgas-sources/semanticsTypes.galgas"
   "galgas-sources/semanticsTypeFeatures.galgas"
@@ -122,6 +124,7 @@ project (3:7:0) -> "galgas" {
   "galgas-sources/semanticsInstanceMethods.galgas"
   "galgas-sources/semanticsTypeMethods.galgas"
   "galgas-sources/semanticsOptionalMethods.galgas"
+  "galgas-sources/routineMap.galgas"
   "galgas-sources/semanticContext.galgas"
   "galgas-sources/semanticsDecoratedTypes.galgas"
   "galgas-sources/semanticInstructionsAnalysis.galgas"

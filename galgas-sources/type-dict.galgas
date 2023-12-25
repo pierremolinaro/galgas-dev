@@ -1,6 +1,6 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   AST                                     
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @dictDeclarationAST : @semanticDeclarationAST {
   private let @lstring mDictTypeName
@@ -8,19 +8,19 @@ refclass @dictDeclarationAST : @semanticDeclarationAST {
   private let @propertyInCollectionListAST mPropertyList
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @dictDeclarationAST keyRepresentation ->@string {
   result = "dict @" + self.mDictTypeName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   SYNTAX                                  
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
 
-  #·····················································································································
+  #·················································································································
   
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $dict$
@@ -40,22 +40,22 @@ syntax extension galgas3DeclarationsSyntax {
     end
     $}$
     ioDeclarations.mDeclarationList += !@dictDeclarationAST.new {
-      !false # Is not predefined
+      !isPredefined: false # Is not predefined
       !mDictTypeName
       !keyTypeName
       !propertyList
     }
   }
   
-  #·····················································································································
+  #·················································································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4DeclarationsSyntax {
 
-  #·····················································································································
+  #·················································································································
   
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations
                      ?!@stringset ioUserImplicitDeclaredTypeSet {
@@ -76,20 +76,20 @@ syntax extension galgas4DeclarationsSyntax {
     end
     $}$
     ioDeclarations.mDeclarationList += !@dictDeclarationAST.new {
-      !false # Is not predefined
+      !isPredefined: false # Is not predefined
       !mDictTypeName
       !keyTypeName
       !propertyList
     }
   }
   
-  #·····················································································································
+  #·················································································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   ASSOCIATED ELEMENT                      
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @dictDeclarationAST addAssociatedElement ?!@semanticDeclarationListAST ioSemanticDeclarationList {
   var @propertyInCollectionListAST structAttributeList = {}
@@ -98,16 +98,16 @@ override method @dictDeclarationAST addAssociatedElement ?!@semanticDeclarationL
     structAttributeList += !isConstant: true !qualifiedTypeAST !mPropertyName !.publicAccess !selector: hasSelector !.none
   end
   ioSemanticDeclarationList += !@structDeclarationAST.new {
-    !self.mIsPredefined
+    !isPredefined: self.isPredefined
     !.new {!self.mDictTypeName.string + elementTypeNameSuffix () !self.mDictTypeName.location}
     !structAttributeList
     !""
   }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   ENTER IN GRAPH                          
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @dictDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
@@ -124,9 +124,9 @@ override method @dictDeclarationAST enterDeclarationInGraph
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   ENTER IN SEMANTIC CONTEXT               
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @dictDeclarationAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
@@ -305,7 +305,7 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
 #--- Enter in type map
   let typeDefinition = @unifiedTypeDefinition.new {
     !self.mDictTypeName
-    !self.mIsPredefined
+    !self.isPredefined
     !true # Concrete Type
     !@unifiedTypeMapEntry.null
     !@typeKindEnum.mapType
@@ -335,9 +335,9 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
   [!?ioTypeMap insertType !typeDefinition.mTypeName !typeDefinition]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   SEMANTIC ANALYSIS                       
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc check_K_escapeCharacters ?let @lstring inString {  #--- Check escape sequences : only %K or %%
   for components in [inString.string componentsSeparatedByString !"%%"] do
@@ -347,14 +347,14 @@ proc check_K_escapeCharacters ?let @lstring inString {  #--- Check escape sequen
       if [mValue count] > 0 then
         let @char c = [mValue characterAtIndex !0]
         if c != 'K' then
-          error inString: "only '%K' and '%%' escape sequences are allowed in this error message"
+          error inString: "only '%K' and '%%' escape sequences are allowed in this error message "
         end
       end
     end
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc check_K_L_escapeCharacters ?let @lstring inString {  #--- Check escape sequences : only %K, %L or %%
   for components in [inString.string componentsSeparatedByString !"%%"] do
@@ -364,14 +364,14 @@ proc check_K_L_escapeCharacters ?let @lstring inString {  #--- Check escape sequ
       if [mValue count] > 0 then
         let @char c = [mValue characterAtIndex !0]
         if (c != 'K') & (c != 'L') then
-          error inString: "only '%K', '%L' and '%%' escape sequences are allowed in this error message"
+          error inString: "only '%K', '%L' and '%%' escape sequences are allowed in this error message "
         end
       end
     end
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func %once forbiddenKeysForMapAndDict -> @stringset {
   result = {}
@@ -380,7 +380,7 @@ func %once forbiddenKeysForMapAndDict -> @stringset {
   result += !"object"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @dictDeclarationAST semanticAnalysis
   ?!@lstringlist unused ioUsefulnessRootEntities 
@@ -421,7 +421,7 @@ override method @dictDeclarationAST semanticAnalysis
   end
 #--- Enter map declaration
   ioSemanticDeclarationListForGeneration +=
-    !"dict " + self.mDictTypeName
+    !infoMessage: "dict " + self.mDictTypeName
     !@dictTypeForGeneration.new {
       ![ioTypeMap searchKey !self.mDictTypeName]
       ![ioTypeMap searchKey !@lstring.new {!self.mDictTypeName.string + elementTypeNameSuffix () !self.mDictTypeName.location}]
@@ -431,9 +431,9 @@ override method @dictDeclarationAST semanticAnalysis
     }
 }
   
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   CODE GENERATION                         
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @dictTypeForGeneration : @semanticTypeForGeneration {
   private let @unifiedTypeMapEntry mElementTypeEntry
@@ -442,7 +442,7 @@ refclass @dictTypeForGeneration : @semanticTypeForGeneration {
   private let @lstring mKeyTypeName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @dictTypeForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
@@ -471,7 +471,7 @@ override method @dictTypeForGeneration appendDeclaration1
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @dictTypeForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -486,4 +486,4 @@ override method @dictTypeForGeneration appendSpecificImplementation
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -1,4 +1,4 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
 #  semantics definitions for semantics component 
 #                                           
@@ -13,7 +13,7 @@
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
 #  details.                                 
 #                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @unifiedTypeDefinition {
   public let @lstring mTypeName
@@ -45,19 +45,19 @@ struct @unifiedTypeDefinition {
   public let @headerKind mHeaderKind
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 getter @unifiedTypeMapEntry identifierRepresentation -> @string {
   result = [[self definition].mTypeName.string identifierRepresentation]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 getter @unifiedTypeMapEntry typeName -> @string {
   result = [self definition].mTypeName.string
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 getter @unifiedTypeMapEntry baseType -> @unifiedTypeMapEntry outBaseType {
   outBaseType = self
@@ -66,7 +66,7 @@ getter @unifiedTypeMapEntry baseType -> @unifiedTypeMapEntry outBaseType {
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 method @unifiedTypeMapEntry addHeaderFileName ?!@stringset ioInclusions {
   let typeDefinition = [self definition]
@@ -75,7 +75,7 @@ method @unifiedTypeMapEntry addHeaderFileName ?!@stringset ioInclusions {
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 method @unifiedTypeMapEntry addHeaderFileName1 ?!@stringset ioInclusions {
   let typeDefinition = [self definition]
@@ -90,5 +90,5 @@ method @unifiedTypeMapEntry addHeaderFileName1 ?!@stringset ioInclusions {
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

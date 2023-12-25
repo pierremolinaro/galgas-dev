@@ -1,0 +1,221 @@
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#                                           
+#    E X T E R N    R O U T I N E    D E C L A R A T I O N                                                     
+#                                           
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas3InstructionsSyntax {
+
+  #·················································································································
+  #    E X T E R N    R O U T I N E    D E C L A R A T I O N
+  #·················································································································
+
+  rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
+    $extern$
+    $proc$
+    var isUsefull = false
+    repeat
+    while
+      $%usefull$
+      if isUsefull then
+        error .here : "duplicate attribute" fixit { remove }
+      end
+      isUsefull = true
+    end
+    $identifier$ ?let @lstring mActionName indexing routineDefinition
+    <formal_parameter_list_ggs3> ?let @formalParameterListAST mFormalParameterList
+    ioDeclarations.mDeclarationList += !@externProcedureDeclarationAST.new {
+      !isPredefined: false # Is not predefined
+      !isFilePrivate: false # Is not internal
+      !mActionName
+      !mFormalParameterList
+      !usefullProcedure: isUsefull
+    }
+  }
+
+  #·················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4InstructionsSyntax {
+
+  #·················································································································
+  #    E X T E R N    R O U T I N E    D E C L A R A T I O N
+  #·················································································································
+
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
+                     ?!@stringset ioUserImplicitDeclaredTypeSet {
+    $extern$
+    $proc$
+    var isUsefull = false
+    repeat
+    while
+      $%usefull$
+      if isUsefull then
+        error .here : "duplicate attribute" fixit { remove }
+      end
+      isUsefull = true
+    end
+    $identifier$ ?let @lstring mActionName indexing routineDefinition
+    <formal_parameter_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @formalParameterListAST mFormalParameterList
+    ioDeclarations.mDeclarationList += !@externProcedureDeclarationAST.new {
+      !isPredefined: false # Is not predefined
+      !isFilePrivate: false # Is not internal
+      !mActionName
+      !mFormalParameterList
+      !usefullProcedure: isUsefull
+    }
+  }
+
+  #·················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+refclass @externProcedureDeclarationAST : @semanticDeclarationAST {
+  public let @bool isFilePrivate %selector
+  public let @lstring mRoutineName
+  public let @formalParameterListAST mFormalArgumentListAST
+  public let @bool usefullProcedure %selector
+
+  #·················································································································
+
+  override method enterDeclarationInGraph
+    ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
+    ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
+    ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
+    ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
+    ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList {
+    ioExtensionOverrideDefinitionList += !self
+  }
+
+  #·················································································································
+
+  override getter keyRepresentation -> @string {
+    result = "routine " + self.mRoutineName + "("
+    for parameter in self.mFormalArgumentListAST
+    do
+      switch parameter.mFormalArgumentPassingMode 
+      case argumentConstantIn, argumentIn :
+        result +="?"
+      case argumentInOut :
+        result +="?!"
+      case argumentOut :
+        result +="!"
+      end
+      result += parameter.mFormalSelector
+    between
+      result += ", "
+    end
+    result += ")"
+  }
+
+  #·················································································································
+
+  override method enterDeclarationInSemanticContext
+                      ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
+                      ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
+                      ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
+                      ?!@unifiedTypeMap ioTypeMap
+                      ?!@semanticContext ioSemanticContext {
+  #--- Build signature
+    var routineSignature = @formalParameterSignature {}
+    for argument in self.mFormalArgumentListAST do
+      [!?ioTypeMap makeEntry !argument.mFormalArgumentTypeName ?let parameterTypeIndex]
+      routineSignature +=
+        !argument.mFormalSelector
+        !parameterTypeIndex
+        !argument.mFormalArgumentPassingMode
+        !argument.mFormalArgumentName.string
+    end
+  #--- Enter routine in routine map
+    [!?ioSemanticContext.mRoutineMap insertKey
+      !self.mRoutineName
+      !routineSignature
+      !isFilePrivate: self.isFilePrivate
+    ]
+  }
+
+  #·················································································································
+
+  override method semanticAnalysis?!@lstringlist ioUsefulnessRootEntities 
+                                  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+                                  ?let @string unused inProductDirectory
+                                  ?let @semanticContext unused inSemanticContext
+                                  ?!@unifiedTypeMap ioTypeMap
+                                  ?let @predefinedTypes unused inPredefinedTypes
+                                  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration {
+  #---
+    var formalArgumentList = @formalParameterListForGeneration {}
+    var routineSignature = @formalParameterSignature {}
+    for argument in self.mFormalArgumentListAST do
+      let parameterType = [ioTypeMap searchKey !argument.mFormalArgumentTypeName]
+      formalArgumentList +=
+        !argument.mFormalSelector
+        !argument.mFormalArgumentPassingMode
+        !parameterType
+        !argument.mFormalArgumentName
+        !argument.mFormalArgumentName.string
+      routineSignature +=
+        !argument.mFormalSelector
+        !parameterType
+        !argument.mFormalArgumentPassingMode
+        !argument.mFormalArgumentName.string
+    end
+    let mangledName = routineMangledName (!self.mRoutineName !routineSignature)
+  #--- Useful entities graph
+    let nameForUsefulness = procedureNameForUsefulEntitiesGraph (!mangledName)
+    [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+    if self.usefullProcedure then
+      ioUsefulnessRootEntities += !nameForUsefulness
+    end
+  #---
+    ioSemanticDeclarationListForGeneration +=
+      !infoMessage: "proc " + mangledName
+      !@routinePrototypeDeclarationForGeneration.new {
+        !generateHeader: true # Generate Cpp header file
+        !mImplementationCppFileName: "proc-" + [mangledName fileNameRepresentation]
+        !routineMangledName: mangledName.string # self.mRoutineName.string
+        !formalArgumentList
+       }
+  }
+
+  #·················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#                                           
+#    R O U T I N E    D E C L A R A T I O N 
+#                                           
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+refclass @routinePrototypeDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
+  public let @string routineMangledName %selector
+  public let @formalParameterListForGeneration mFormalArgumentList
+
+  #·················································································································
+
+  override getter headerKind -> @headerKind {
+    result = .oneHeader
+  }
+
+  #·················································································································
+
+  override method appendDeclaration1 ?!@stringset unused ioInclusionSet
+                                     !@string outHeader {
+    outHeader = [filewrapper semanticComponentGenerationTemplate.routineDeclaration
+      !self.routineMangledName
+      !self.mFormalArgumentList
+    ] 
+  }
+
+  #·················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

@@ -1,14 +1,14 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func weakSuffix -> @string { result = "-weak" }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   SYNTAX                                  
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
 
-  #·····················································································································
+  #·················································································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     let @bool isAbstract
@@ -58,7 +58,7 @@ syntax extension galgas3DeclarationsSyntax {
     end
     $}$
     ioDeclarations.mDeclarationList += !@classDeclarationAST.new {
-      !false # Is not predefined
+      !isPredefined: false # Is not predefined
       !isAbstract
       !isReference
       !className
@@ -68,7 +68,7 @@ syntax extension galgas3DeclarationsSyntax {
     }
     if isReference then
       ioDeclarations.mDeclarationList += !@weakReferenceDeclarationAST.new {
-        !false # Is not predefined
+        !isPredefined: false # Is not predefined
         !className
         !.new {!className.string + weakSuffix () !className.location}
         !if superClassName.string == ""
@@ -81,15 +81,15 @@ syntax extension galgas3DeclarationsSyntax {
     end
   }
 
-  #·····················································································································
+  #·················································································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4DeclarationsSyntax {
 
-  #·····················································································································
+  #·················································································································
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations
                      ?!@stringset ioUserImplicitDeclaredTypeSet {
@@ -127,7 +127,7 @@ syntax extension galgas4DeclarationsSyntax {
     end
     $}$
     ioDeclarations.mDeclarationList += !@classDeclarationAST.new {
-      !false # Is not predefined
+      !isPredefined: false # Is not predefined
       !isAbstract
       !true
       !className
@@ -137,7 +137,7 @@ syntax extension galgas4DeclarationsSyntax {
     }
   #--- Associated Weak Type
     ioDeclarations.mDeclarationList += !@weakReferenceDeclarationAST.new {
-      !false # Is not predefined
+      !isPredefined: false # Is not predefined
       !className
       !.new {!className.string + weakSuffix () !className.location}
       !if superClassName.string == ""
@@ -149,13 +149,13 @@ syntax extension galgas4DeclarationsSyntax {
     }
   }
 
-  #·····················································································································
+  #·················································································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   AST                                     
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @classDeclarationAST : @semanticDeclarationAST {
   private let @bool mIsAbstract
@@ -165,13 +165,13 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
   private let @bool mGenerateInSeparateFile
   private let @propertyInCollectionListAST mPropertyList
 
-  #·····················································································································
+  #·················································································································
 
   override getter keyRepresentation -> @string {
     result = "valueclass @" + self.mClassTypeName
   }
 
-  #·····················································································································
+  #·················································································································
 
   override method enterDeclarationInGraph
                                     ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
@@ -197,7 +197,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
     end
   }
 
-  #·····················································································································
+  #·················································································································
 
   override method enterDeclarationInSemanticContext
                                         ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
@@ -365,7 +365,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
   #--- Enter in type map
     let typeDefinition = @unifiedTypeDefinition.new {
       !self.mClassTypeName
-      !self.mIsPredefined
+      !self.isPredefined
       !not self.mIsAbstract # Concrete Type
       !superClassIndex
       !@typeKindEnum.classType {!isReference: self.mIsReference}
@@ -395,7 +395,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
     [!?ioTypeMap insertType !typeDefinition.mTypeName !typeDefinition]
   }
 
-  #·····················································································································
+  #·················································································································
 
   override method semanticAnalysis ?!@lstringlist unused ioUsefulnessRootEntities 
                                     ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
@@ -484,7 +484,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
     end
   #------
     ioSemanticDeclarationListForGeneration +=
-      !"class " + self.mClassTypeName
+      !infoMessage: "class " + self.mClassTypeName
       !@classTypeForGeneration.new {
         !selfType
         !self.mIsAbstract
@@ -496,13 +496,13 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
       }
   }
 
-  #·····················································································································
+  #·················································································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   CODE GENERATION                         
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @classTypeForGeneration : @semanticTypeForGeneration {
   private let @bool mIsAbstract
@@ -513,7 +513,7 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
   private let @bool mGenerateHeaderInSeparateFile # Significant only for classes
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @classTypeForGeneration appendDeclaration1 ?!@stringset ioInclusionSet
                                                            !@string outHeader {
@@ -555,7 +555,7 @@ override method @classTypeForGeneration appendDeclaration1 ?!@stringset ioInclus
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @classTypeForGeneration appendDeclaration2 ?let @string inOutputDirectory
                                                            ?!@stringset ioInclusionSet
@@ -673,7 +673,7 @@ override method @classTypeForGeneration appendDeclaration2 ?let @string inOutput
   end
  }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @classTypeForGeneration appendSpecificImplementation ?let @unifiedTypeMap unused inTypeMap
                                                                      ?!@stringset ioInclusionSet
@@ -706,7 +706,7 @@ override method @classTypeForGeneration appendSpecificImplementation ?let @unifi
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func generateClassGetterDeclaration ?let @lstring inGetterName
                                     ?let @functionSignature inArgumentTypeList
@@ -758,7 +758,7 @@ func generateClassGetterDeclaration ?let @lstring inGetterName
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func generateClassInstanceMethodDeclaration ?let @lstring inMethodName
                                             ?let @formalParameterSignature inArgumentTypeList
@@ -817,5 +817,5 @@ func generateClassInstanceMethodDeclaration ?let @lstring inMethodName
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

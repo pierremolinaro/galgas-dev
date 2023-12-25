@@ -1,4 +1,4 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
 #  semantics definitions for semantics component 
 #                                           
@@ -13,11 +13,11 @@
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
 #  details.                                 
 #                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
 #  G E T    E N U M E R A T I O N    L I S T     
 #                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @stringsetPredefinedTypeAST getEnumerationList ?!@unifiedTypeMap ioUnifiedTypeMap
                                                                !@enumerationDescriptorList outEnumerationList
@@ -28,7 +28,7 @@ override method @stringsetPredefinedTypeAST getEnumerationList ?!@unifiedTypeMap
   outEnumeratedType = "string"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @dataPredefinedTypeAST getEnumerationList
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -41,17 +41,17 @@ override method @dataPredefinedTypeAST getEnumerationList
   outEnumeratedType = "uint"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
 #  G E T    S U P P O R T E D    O P E R A T O R    F L A G S                                                  
 #                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @applicationPredefinedTypeAST getSupportedOperatorFlags -> @operators {
   result = .generateDescriptionGetterUtilityMethod
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @bigintPredefinedTypeAST getSupportedOperatorFlags -> @operators {
   result = .generateDescriptionGetterUtilityMethod | .prefixPlusOperator | .prefixMinusOperator |
@@ -63,39 +63,39 @@ override getter @bigintPredefinedTypeAST getSupportedOperatorFlags -> @operators
              .mulEqualOperatorWithExpression | .divEqualOperatorWithExpression
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @timerPredefinedTypeAST getSupportedOperatorFlags -> @operators {
   result = .generateDescriptionGetterUtilityMethod
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @objectPredefinedTypeAST getSupportedOperatorFlags -> @operators {
   result = .generateDescriptionGetterUtilityMethod
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @stringPredefinedTypeAST getSupportedOperatorFlags -> @operators {
   result = .plusEqualOperatorWithExpression | .infixAddOperator
     | .generateDescriptionGetterUtilityMethod | .isComparable
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @charPredefinedTypeAST getSupportedOperatorFlags -> @operators {
   result = .generateDescriptionGetterUtilityMethod | .isComparable
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @boolPredefinedTypeAST getSupportedOperatorFlags -> @operators {
   result = .infixAndOperator | .infixOrOperator | .infixXorOperator | .prefixNotOperator
     | .generateDescriptionGetterUtilityMethod | .isComparable
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @uintPredefinedTypeAST getSupportedOperatorFlags -> @operators {
   result = .infixAddOperator | .infixSubOperator | .infixMulOperator | .infixDivOperator
@@ -107,7 +107,7 @@ override getter @uintPredefinedTypeAST getSupportedOperatorFlags -> @operators {
     | .mulEqualOperatorWithExpression | .divEqualOperatorWithExpression
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @sintPredefinedTypeAST getSupportedOperatorFlags -> @operators {
   result = .infixAddOperator | .infixSubOperator | .infixMulOperator | .infixDivOperator
@@ -120,7 +120,7 @@ override getter @sintPredefinedTypeAST getSupportedOperatorFlags -> @operators {
     | .mulEqualOperatorWithExpression | .divEqualOperatorWithExpression
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @uint64PredefinedTypeAST getSupportedOperatorFlags ->@operators {
   result = .infixAddOperator | .infixSubOperator | .infixMulOperator | .infixDivOperator
@@ -132,7 +132,7 @@ override getter @uint64PredefinedTypeAST getSupportedOperatorFlags ->@operators 
     | .mulEqualOperatorWithExpression | .divEqualOperatorWithExpression
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @sint64PredefinedTypeAST getSupportedOperatorFlags -> @operators {
   result = .infixAddOperator | .infixSubOperator | .infixMulOperator | .infixDivOperator
@@ -145,7 +145,7 @@ override getter @sint64PredefinedTypeAST getSupportedOperatorFlags -> @operators
     | .mulEqualOperatorWithExpression | .divEqualOperatorWithExpression
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @doublePredefinedTypeAST getSupportedOperatorFlags -> @operators {
   result = .infixAddOperator | .infixSubOperator | .infixMulOperator | .infixDivOperator
@@ -155,7 +155,7 @@ override getter @doublePredefinedTypeAST getSupportedOperatorFlags -> @operators
     | .mulEqualOperatorWithExpression | .divEqualOperatorWithExpression
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @stringsetPredefinedTypeAST getSupportedOperatorFlags -> @operators {
   result = .infixSubOperator
@@ -165,7 +165,7 @@ override getter @stringsetPredefinedTypeAST getSupportedOperatorFlags -> @operat
     | .generateCopyConstructorAndAssignmentOperator
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @binarysetPredefinedTypeAST getSupportedOperatorFlags -> @operators {
   result = .infixAndOperator | .infixOrOperator | .infixXorOperator
@@ -173,37 +173,37 @@ override getter @binarysetPredefinedTypeAST getSupportedOperatorFlags -> @operat
     | .generateDescriptionGetterUtilityMethod | .isComparable
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @typePredefinedTypeAST getSupportedOperatorFlags -> @operators {
   result = .generateDescriptionGetterUtilityMethod | .isComparable
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @dataPredefinedTypeAST getSupportedOperatorFlags -> @operators {
   result = .generateDescriptionGetterUtilityMethod | .generateEnumerationHelperMethods
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @functionPredefinedTypeAST getSupportedOperatorFlags -> @operators {
   result = .generateDescriptionGetterUtilityMethod
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @locationPredefinedTypeAST getSupportedOperatorFlags -> @operators {
   result = .generateDescriptionGetterUtilityMethod | .isComparable
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @filewrapperPredefinedTypeAST getSupportedOperatorFlags -> @operators {
   result = .generateDescriptionGetterUtilityMethod
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @stringsetPredefinedTypeAST getAddAssignArgumentList
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -213,5 +213,5 @@ override method @stringsetPredefinedTypeAST getAddAssignArgumentList
   outAddAssignArgumentList = {!["" nowhere] !stringTypeIndex !"inString"}
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

@@ -1,6 +1,6 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   AST                                     
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @listDeclarationAST : @semanticDeclarationAST {
   private let @lstring mListTypeName
@@ -8,13 +8,13 @@ refclass @listDeclarationAST : @semanticDeclarationAST {
   private let @bool usefullList %selector
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   SYNTAX                                  
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
 
-  #·····················································································································
+  #·················································································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $list$
@@ -41,22 +41,22 @@ syntax extension galgas3DeclarationsSyntax {
     end
     $}$
     ioDeclarations.mDeclarationList += !@listDeclarationAST.new {
-      !false # Is not predefined
+      !isPredefined: false # Is not predefined
       !listTypeName
       !propertyList
       !usefullList: isUsefull
     }
   }
 
-  #·····················································································································
+  #·················································································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4DeclarationsSyntax {
 
-  #·····················································································································
+  #·················································································································
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations
                      ?!@stringset ioUserImplicitDeclaredTypeSet {
@@ -81,20 +81,20 @@ syntax extension galgas4DeclarationsSyntax {
     end
     $}$
     ioDeclarations.mDeclarationList += !@listDeclarationAST.new {
-      !false # Is not predefined
+      !isPredefined: false # Is not predefined
       !listTypeName
       !propertyList
       !usefullList: isUsefull
     }
   }
 
-  #·····················································································································
+  #·················································································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   ENTER IN GRAPH                          
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @listDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
@@ -109,9 +109,9 @@ override method @listDeclarationAST enterDeclarationInGraph
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   SEMANTIC ANALYSIS                       
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @listDeclarationAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
@@ -327,7 +327,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
 #--- Enter in type map
   let typeDefinition = @unifiedTypeDefinition.new {
     !self.mListTypeName
-    !self.mIsPredefined
+    !self.isPredefined
     !true # Concrete Type
     !@unifiedTypeMapEntry.null
     !@typeKindEnum.listType
@@ -373,7 +373,7 @@ override method @listDeclarationAST addAssociatedElement
       !initExpression
   end
   ioSemanticDeclarationList += !@structDeclarationAST.new {
-    !self.mIsPredefined
+    !isPredefined: self.isPredefined
     !.new {!self.mListTypeName.string + elementTypeNameSuffix () !self.mListTypeName.location}
     !structAttributeList
     !""
@@ -381,9 +381,9 @@ override method @listDeclarationAST addAssociatedElement
 }
 
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   ENTER IN SEMANTIC CONTEXT               
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @listDeclarationAST semanticAnalysis
   ?!@lstringlist ioUsefulnessRootEntities 
@@ -422,7 +422,7 @@ override method @listDeclarationAST semanticAnalysis
 #---
   let selfType = [ioTypeMap searchKey !self.mListTypeName]
   ioSemanticDeclarationListForGeneration +=
-    !"list type " + self.mListTypeName
+    !infoMessage: "list type " + self.mListTypeName
     !@listTypeForGeneration.new {
       !selfType
       ![ioTypeMap searchKey !.new {!self.mListTypeName.string + elementTypeNameSuffix () !self.mListTypeName.location}]
@@ -430,9 +430,9 @@ override method @listDeclarationAST semanticAnalysis
     }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   CODE GENERATION                         
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @listTypeForGeneration : @semanticTypeForGeneration {
   private let @unifiedTypeMapEntry mListElementTypeIndex
@@ -505,5 +505,5 @@ override method @listTypeForGeneration appendSpecificImplementation
   ]
  }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

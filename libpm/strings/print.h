@@ -14,14 +14,14 @@
 
 //--------------------------------------------------------------------------------------------------
 
-void routine_println (const GALGAS_string inString,
-                      class Compiler * inCompiler
-                      COMMA_LOCATION_ARGS) ;
+void routine_println_3F_ (const GALGAS_string inString,
+                          class Compiler * inCompiler
+                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 
-void routine_print (const GALGAS_string inString,
-                    Compiler * inCompiler
-                    COMMA_LOCATION_ARGS) ;
+void routine_print_3F_ (const GALGAS_string inString,
+                        Compiler * inCompiler
+                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------

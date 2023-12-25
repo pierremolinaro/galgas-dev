@@ -1,4 +1,4 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
 #  Copyright (C) 2022, ..., 2022 Pierre Molinaro.
 #                                           
@@ -11,7 +11,7 @@
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
 #  details.                                 
 #                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateLexiqueComponentAST : @semanticDeclarationAST {
   private let @lstring mLexiqueComponentName
@@ -20,7 +20,7 @@ refclass @templateLexiqueComponentAST : @semanticDeclarationAST {
   private let @templateReplacementListAST mTemplateReplacementList
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3LexiqueComponentSyntax {
 
@@ -45,7 +45,7 @@ syntax extension galgas3LexiqueComponentSyntax {
     end
     $}$
     ioDeclarations.mDeclarationList += !@templateLexiqueComponentAST.new {
-      !false # Is not predefined
+      !isPredefined: false # Is not predefined
       !lexiqueComponentName
       !lexiqueSuperComponentName
       !templateDelimitorList
@@ -53,7 +53,7 @@ syntax extension galgas3LexiqueComponentSyntax {
     }
   }
 
-  #·····················································································································
+  #·················································································································
 
   rule <template_delimitor_ggs3> ?!@templateDelimitorListAST ioTemplateDelimitorList {
     $template$
@@ -91,7 +91,7 @@ syntax extension galgas3LexiqueComponentSyntax {
       !endString
   }
 
-  #·····················································································································
+  #·················································································································
 
   rule <template_replacement_ggs3> ?!@templateReplacementListAST ioTemplateReplacement {
     $replace$
@@ -111,15 +111,15 @@ syntax extension galgas3LexiqueComponentSyntax {
     ioTemplateReplacement += !matchString !replacementString !replacementFunction
   }
 
-  #·····················································································································
+  #·················································································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4LexiqueComponentSyntax {
 
-  #·····················································································································
+  #·················································································································
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations
                      ?!@stringset unused ioUserImplicitDeclaredTypeSet {
@@ -141,7 +141,7 @@ syntax extension galgas4LexiqueComponentSyntax {
     end
     $}$
     ioDeclarations.mDeclarationList += !@templateLexiqueComponentAST.new {
-      !false # Is not predefined
+      !isPredefined: false # Is not predefined
       !lexiqueComponentName
       !lexiqueSuperComponentName
       !templateDelimitorList
@@ -149,7 +149,7 @@ syntax extension galgas4LexiqueComponentSyntax {
     }
   }
 
-  #·····················································································································
+  #·················································································································
 
   rule <template_delimitor> ?!@templateDelimitorListAST ioTemplateDelimitorList {
     $template$
@@ -187,7 +187,7 @@ syntax extension galgas4LexiqueComponentSyntax {
       !endString
   }
 
-  #·····················································································································
+  #·················································································································
 
   rule <template_replacement> ?!@templateReplacementListAST ioTemplateReplacement {
     $%templateReplacement$
@@ -207,17 +207,17 @@ syntax extension galgas4LexiqueComponentSyntax {
     ioTemplateReplacement += !matchString !replacementString !replacementFunction
   }
 
-  #·····················································································································
+  #·················································································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @templateLexiqueComponentAST keyRepresentation -> @string {
   result = "lexique " + self.mLexiqueComponentName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateLexiqueComponentAST enterDeclarationInGraph
                                 ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
@@ -231,7 +231,7 @@ override method @templateLexiqueComponentAST enterDeclarationInGraph
   [!?ioSemanticTypePrecedenceGraph addEdge !key !superKey]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateLexiqueComponentAST enterDeclarationInSemanticContext
                               ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
@@ -268,7 +268,7 @@ override method @templateLexiqueComponentAST enterDeclarationInSemanticContext
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateLexiqueComponentAST semanticAnalysis
                                   ?!@lstringlist unused ioUsefulnessRootEntities 
@@ -426,10 +426,10 @@ override method @templateLexiqueComponentAST semanticAnalysis
     ]
   #---
     ioSemanticDeclarationListForGeneration +=
-      !""
+      !infoMessage: ""
       !@lexiqueDeclarationForGeneration.new {
-        !true # has header
-        !"lexique-" + [self.mLexiqueComponentName.string fileNameRepresentation]
+        !generateHeader: true # has header
+        !mImplementationCppFileName: "lexique-" + [self.mLexiqueComponentName.string fileNameRepresentation]
         !self.mLexiqueComponentName.string
         !self.mLexiqueSuperComponentName.string
         !headerContents
@@ -441,9 +441,9 @@ override method @templateLexiqueComponentAST semanticAnalysis
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #         G E N E R A T I O N    T E M P L A T E S      
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private filewrapper templateLexiqueGenerationTemplates in "+generation-templates/lexique_generation" {
 }{
@@ -483,4 +483,4 @@ private filewrapper templateLexiqueGenerationTemplates in "+generation-templates
     ?@templateReplacementListAST TEMPLATE_REPLACEMENT_LIST
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————

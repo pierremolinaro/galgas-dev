@@ -1,6 +1,6 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   AST                                     
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @overridingAbstractExtensionMethodAST : @semanticDeclarationAST {
   public let @lstring mTypeName
@@ -8,13 +8,13 @@ refclass @overridingAbstractExtensionMethodAST : @semanticDeclarationAST {
   public let @formalParameterListAST mOverridingExtensionMethodFormalParameterList
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   SYNTAX                                  
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
 
-  #·····················································································································
+  #·················································································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $override$
@@ -24,14 +24,14 @@ syntax extension galgas3DeclarationsSyntax {
     $identifier$ ?let @lstring mMethodName indexing overrideAbstractExtensionMethodDefinition
     <formal_parameter_list_ggs3> ?let @formalParameterListAST formalParameterList
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionMethodAST.new {
-      !false # Is not predefined
+      !isPredefined: false # Is not predefined
       !className
       !mMethodName
       !formalParameterList
     }
   }
 
-  #·····················································································································
+  #·················································································································
 
   rule <method_declaration_ggs3> ?let @lstring inClassName ?!@galgasDeclarationAST ioDeclarations {
     $override$
@@ -40,22 +40,22 @@ syntax extension galgas3DeclarationsSyntax {
     $identifier$ ?let @lstring mMethodName indexing overrideAbstractExtensionMethodDefinition
     <formal_parameter_list_ggs3> ?let @formalParameterListAST formalParameterList
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionMethodAST.new {
-      !false # Is not predefined
+      !isPredefined: false # Is not predefined
       !inClassName
       !mMethodName
       !formalParameterList
     }
   }
 
-  #·····················································································································
+  #·················································································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4DeclarationsSyntax {
 
-  #·····················································································································
+  #·················································································································
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations
                      ?!@stringset ioUserImplicitDeclaredTypeSet {
@@ -67,14 +67,14 @@ syntax extension galgas4DeclarationsSyntax {
     $identifier$ ?let @lstring mMethodName indexing overrideAbstractExtensionMethodDefinition
     <formal_parameter_list>!?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @formalParameterListAST formalParameterList
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionMethodAST.new {
-      !false # Is not predefined
+      !isPredefined: false # Is not predefined
       !className
       !mMethodName
       !formalParameterList
     }
   }
 
-  #·····················································································································
+  #·················································································································
 
   rule <method_declaration> ?let @lstring inClassName
                             ?!@galgasDeclarationAST ioDeclarations
@@ -85,28 +85,28 @@ syntax extension galgas4DeclarationsSyntax {
     $identifier$ ?let @lstring mMethodName indexing overrideAbstractExtensionMethodDefinition
     <formal_parameter_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @formalParameterListAST formalParameterList
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionMethodAST.new {
-      !false # Is not predefined
+      !isPredefined: false # Is not predefined
       !inClassName
       !mMethodName
       !formalParameterList
     }
   }
 
-  #·····················································································································
+  #·················································································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   KEY REPRESENTATION                      
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @overridingAbstractExtensionMethodAST keyRepresentation -> @string {
   result = "overriding extension method @" + self.mTypeName + " " + self.mOverridingExtensionMethodName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   ENTER IN GRAPH                          
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingAbstractExtensionMethodAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
@@ -132,9 +132,9 @@ override method @overridingAbstractExtensionMethodAST enterDeclarationInGraph
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   SEMANTIC CONTEXT                        
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingAbstractExtensionMethodAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
@@ -144,9 +144,9 @@ override method @overridingAbstractExtensionMethodAST enterDeclarationInSemantic
   ?!@semanticContext unused ioSemanticContext {
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   SEMANTIC ANALYSIS                       
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingAbstractExtensionMethodAST semanticAnalysis
   ?!@lstringlist unused ioUsefulnessRootEntities 
@@ -216,9 +216,9 @@ override method @overridingAbstractExtensionMethodAST semanticAnalysis
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   EXTENSION LIST MAP                      
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingAbstractExtensionMethodAST buildExtensionListMaps
   ?!@genericExtensionMethodListMap unused ioAbstractExtensionSetterListMap
@@ -239,4 +239,4 @@ override method @overridingAbstractExtensionMethodAST buildExtensionListMaps
     !self.mOverridingExtensionMethodName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————

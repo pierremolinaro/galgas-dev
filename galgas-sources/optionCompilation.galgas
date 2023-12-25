@@ -1,12 +1,12 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum @optionDefaultValueEnumAST {
   case noDefaultValue  case unsignedDefaultValue  case stringDefaultValue
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @commandLineOptionListAST {
   public let @lstring mOptionTypeName
@@ -18,21 +18,21 @@ list @commandLineOptionListAST {
   public let @optionDefaultValueEnumAST mOptionDefaultValueKind
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @optionComponentDeclarationAST : @semanticDeclarationAST {
   public let @lstring mOptionComponentName
   public let @commandLineOptionListAST mOptions
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 
 syntax galgas3OptionComponentSyntax (galgasScanner3) {
 
-  #·····················································································································
+  #·················································································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $option$
@@ -45,13 +45,13 @@ syntax galgas3OptionComponentSyntax (galgasScanner3) {
     end
     $}$
     ioDeclarations.mDeclarationList += !@optionComponentDeclarationAST.new {
-      !false
+      !isPredefined: false
       !optionComponentName
       !options
     }
   }
 
-  #·····················································································································
+  #·················································································································
 
   rule <option_declaration_ggs3> ?!@commandLineOptionListAST ioCommandLineOptionList {
     $@type$ ?let @lstring mOptionTypeName
@@ -87,15 +87,15 @@ syntax galgas3OptionComponentSyntax (galgasScanner3) {
       !optionDefaultValueKind
   }
 
-  #·····················································································································
+  #·················································································································
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 
 syntax galgas4OptionComponentSyntax (galgasScanner4) {
 
-  #·····················································································································
+  #·················································································································
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations
                      ?!@stringset unused ioUserImplicitDeclaredTypeSet {
@@ -109,13 +109,13 @@ syntax galgas4OptionComponentSyntax (galgasScanner4) {
     end
     $}$
     ioDeclarations.mDeclarationList += !@optionComponentDeclarationAST.new {
-      !false
+      !isPredefined: false
       !optionComponentName
       !options
     }
   }
 
-  #·····················································································································
+  #·················································································································
 
   rule <option_declaration_ggs3> ?!@commandLineOptionListAST ioCommandLineOptionList {
     $@type$ ?let @lstring mOptionTypeName
@@ -151,12 +151,12 @@ syntax galgas4OptionComponentSyntax (galgasScanner4) {
       !optionDefaultValueKind
   }
 
-  #·····················································································································
+  #·················································································································
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! ENTER IN GRAPH
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @optionComponentDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
@@ -168,9 +168,9 @@ override method @optionComponentDeclarationAST enterDeclarationInGraph
   ioExtensionOverrideDefinitionList += !self
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! ENTER IN CONTEXT
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @optionComponentDeclarationAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
@@ -239,7 +239,7 @@ override method @optionComponentDeclarationAST enterDeclarationInSemanticContext
 #--- Insert option
   [!?ioSemanticContext.mOptionComponentMapForSemanticAnalysis insertKey
     !self.mOptionComponentName
-    !self.mIsPredefined
+    !self.isPredefined
     !boolOptionMap
     !uintOptionMap
     !stringOptionMap
@@ -247,9 +247,9 @@ override method @optionComponentDeclarationAST enterDeclarationInSemanticContext
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTIC ANALYSIS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @optionComponentDeclarationAST semanticAnalysis
   ?!@lstringlist unused ioUsefulnessRootEntities 
@@ -266,7 +266,7 @@ override method @optionComponentDeclarationAST semanticAnalysis
 #---
   [inSemanticContext.mOptionComponentMapForSemanticAnalysis searchKey
     !self.mOptionComponentName
-    ?let @bool isPredefined
+    ?let @bool optionIsPredefined
     ?let @commandLineOptionMap boolOptionMap
     ?let @commandLineOptionMap uintOptionMap
     ?let @commandLineOptionMap stringOptionMap
@@ -274,11 +274,11 @@ override method @optionComponentDeclarationAST semanticAnalysis
   ] 
 #---- Enter filewrapper in generated list
   ioSemanticDeclarationListForGeneration +=
-    !"option " + self.mOptionComponentName
+    !infoMessage: "option " + self.mOptionComponentName
     !@optionComponentForGeneration.new {
-      !true # Generate Cpp header file
-      !"option-" + [self.mOptionComponentName fileNameRepresentation]
-      !isPredefined
+      !generateHeader: true # Generate Cpp header file
+      !mImplementationCppFileName: "option-" + [self.mOptionComponentName fileNameRepresentation]
+      !optionIsPredefined
       !self.mOptionComponentName.string
       !boolOptionMap
       !uintOptionMap
@@ -287,9 +287,9 @@ override method @optionComponentDeclarationAST semanticAnalysis
     }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @optionComponentForGeneration : @semanticDeclarationWithHeaderForGeneration {
   public let @bool mIsPredefined
@@ -300,19 +300,19 @@ refclass @optionComponentForGeneration : @semanticDeclarationWithHeaderForGenera
   public let @commandLineOptionMap mStringListOptionMap
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @optionComponentForGeneration isPredefined -> @bool {
   result = self.mIsPredefined
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @optionComponentForGeneration headerKind -> @headerKind {
   result = if self.mIsPredefined then .noHeader else .oneHeader end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @optionComponentForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
@@ -331,7 +331,7 @@ override method @optionComponentForGeneration appendDeclaration1
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @optionComponentForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -352,7 +352,7 @@ override method @optionComponentForGeneration appendSpecificImplementation
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @optionComponentForGeneration appendSpecificFiles
   ?let @string inProductDirectory
@@ -422,20 +422,20 @@ override method @optionComponentForGeneration appendSpecificFiles
  end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @commandLineOptionMap { # the key is the option identifier
   public let @char mOptionChar
   public let @string mOptionString
   public let @string mComment
   public let @string mDefaultValue
-  insert insertKey error message"the '%K' command line option has been already declared in %L"
-  search searchKey error message"the '%K' command line option is not declared"
+  insert insertKey error message "the '%K' command line option has been already declared in %L"
+  search searchKey error message "the '%K' command line option is not declared"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #         G E N E R A T I O N    T E M P L A T E S      
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper optionGenerationTemplates in "+generation-templates/option_generation" {
 }{
@@ -477,5 +477,5 @@ filewrapper optionGenerationTemplates in "+generation-templates/option_generatio
     ?@commandLineOptionMap STRING_LIST_OPTION_MAP
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

@@ -10,8 +10,8 @@ enum @xmlNodeType {
 
 map @xmlAttributeMap {
   public let @lstring value
-  insert insertKey error message"the '%K' attribute has been already declared"
-  search searchKey error message"the '%K' attribute is not declared"
+  insert insertKey error message "the '%K' attribute has been already declared"
+  search searchKey error message "the '%K' attribute is not declared"
 }
 
 #------------------------------------------------------------*

@@ -1,20 +1,8 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   AST                                     
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @structDeclarationAST : @semanticDeclarationAST {
-  private let @lstring mStructTypeName
-  private let @propertyInCollectionListAST mStructurePropertyList
-  private let @string mEnumeratedElementTypeName # Empty string if not enumerable
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SYNTAX                                  
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
 
-  #·····················································································································
+  #·················································································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $struct$
@@ -29,22 +17,22 @@ syntax extension galgas3DeclarationsSyntax {
     end
     $}$
     ioDeclarations.mDeclarationList += !@structDeclarationAST.new {
-      !false # Is not predefined
+      !isPredefined: false # Is not predefined
       !structTypeName
       !propertyList
       !""
     }
   }
 
-  #·····················································································································
+  #·················································································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4DeclarationsSyntax {
 
-  #·····················································································································
+  #·················································································································
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations
                      ?!@stringset ioUserImplicitDeclaredTypeSet {
@@ -60,158 +48,18 @@ syntax extension galgas4DeclarationsSyntax {
     end
     $}$
     ioDeclarations.mDeclarationList += !@structDeclarationAST.new {
-      !false # Is not predefined
+      !isPredefined: false # Is not predefined
       !structTypeName
       !propertyList
       !""
     }
   }
 
-  #·····················································································································
+  #·················································································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   ENTER IN GRAPH                          
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-override method @structDeclarationAST enterDeclarationInGraph
-  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
-  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
-  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
-  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
-  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
-{
-  let key = @lstring.new {!"@" + self.mStructTypeName !self.mStructTypeName.location}
-  [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  for (* propertyTypeName 4*) in self.mStructurePropertyList do
-    let propertyKey = @lstring.new {!"@" + propertyTypeName !propertyTypeName.location}
-    [!?ioSemanticTypePrecedenceGraph addEdge !key !propertyKey]
-  end
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   KEY REPRESENTATION                       
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-override getter @structDeclarationAST keyRepresentation ->@string result {
-  result = "struct @" + self.mStructTypeName
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC CONTEXT                        
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-override method @structDeclarationAST enterDeclarationInSemanticContext
-  ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
-  ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
-  ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
-  ?!@unifiedTypeMap ioTypeMap
-  ?!@semanticContext ioSemanticContext
-{
-  let optionalMethodMap = @optionalMethodMap {}
-#--- Struct type index
-  [!?ioTypeMap makeEntry  !self.mStructTypeName ?let structTypeIndex]
-#--- Constructors and property map
-  var @propertyMap propertyMap = {}
-  var @constructorMap constructorMap = {}
-  var @functionSignature constructorPropertyTypeList = {}
-  var @typedPropertyList typedPropertyList = {}
-  var @unifiedTypeMapEntryList typesToIncludeInHeaderCompilation = {}
-  for (isConstant propertyTypeName propertyName accessControlAST hasSelector initExpression) in self.mStructurePropertyList do
-    [!?ioTypeMap makeEntry  !propertyTypeName ?let propertyTypeEntry]
-    let @lstring selector = [if hasSelector then propertyName.string else "" end nowhere]
-    if [initExpression isNone] then
-      constructorPropertyTypeList += !selector !propertyTypeEntry !propertyName.string
-    end
-    typesToIncludeInHeaderCompilation += !propertyTypeEntry
-    typedPropertyList += !propertyTypeEntry !propertyName !hasSetter: not isConstant !hasSelector: hasSelector
-    [!?propertyMap insertKey
-      !propertyName
-      ![accessControlAST accessControl !forDeclaringType: structTypeIndex]
-      !isConstant
-      !propertyTypeEntry
-    ]
-  end
-  [!?constructorMap insertKey
-    !@lstring.new {!"new" !.here}
-    !constructorPropertyTypeList
-    !true
-    !structTypeIndex
-  ]
-#--- Getters
-  commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap)
-#--- Setters
-  var @setterMap setterMap = {}
-#--- Instance methods
-  var @instanceMethodMap instanceMethodMap = {}
-#--- Add Extensions
-  addExtensions (
-    !inExtensionMethodMapForBuildingContext
-    !inExtensionGetterMapForBuildingContext
-    !inExtensionSetterMapForBuildingContext
-    !?ioSemanticContext
-    !?ioTypeMap
-    !self.mStructTypeName
-    !isClass: false
-    !?getterMap
-    !?setterMap
-    !?instanceMethodMap
-    !acceptSetters: true
-  )
-#--- Enumeration by "for" instruction
-  let @unifiedTypeMapEntry enumeratedType
-  if self.mEnumeratedElementTypeName == "" then
-    enumeratedType = @unifiedTypeMapEntry.null
-  else
-   [!?ioTypeMap makeEntryFromString
-     !self.mEnumeratedElementTypeName
-     ?enumeratedType
-    ]
-  end
-#--- Generate a "default" constructor ?
-  var @string defaultConstructorName = "default"
-  for (mPropertyTypeEntry 3*) in typedPropertyList while defaultConstructorName != "" do
-    if ([mPropertyTypeEntry definition].defaultConstructorName == "") | not [mPropertyTypeEntry definition].mIsConcrete then
-      defaultConstructorName = ""
-    end
-  end  
-#--- Enter in type map
-  let typeDefinition = @unifiedTypeDefinition.new {
-    !self.mStructTypeName
-    !self.mIsPredefined
-    !true # Concrete Type
-    !@unifiedTypeMapEntry.null
-    !@typeKindEnum.structType
-    !false # Does not support collection value
-    !typedPropertyList
-    !propertyMap
-    !typedPropertyList
-    !constructorMap
-    !getterMap
-    !setterMap
-    !instanceMethodMap
-    !{}
-    !optionalMethodMap
-    !@enumerationDescriptorList {}
-    !.generateDescriptionGetterUtilityMethod | .isComparable
-    !@functionSignature {}
-    !{}
-    !{}
-    !@mapSearchMethodListAST {}
-    !@mapSearchMethodListAST {}
-    !false # Do not generate header in separate file
-    !enumeratedType # Type for enumerated element for "for" instruction
-    !defaultConstructorName: defaultConstructorName # Default constructor
-    !"struct-" + [self.mStructTypeName fileNameRepresentation]
-    !@headerKind.oneHeader
-  }
-  [!?ioTypeMap insertType !typeDefinition.mTypeName !typeDefinition]
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC ANALYSIS                       
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private func %once forbiddenKeysForStruct -> @stringset {
   result = {}
@@ -220,128 +68,262 @@ private func %once forbiddenKeysForStruct -> @stringset {
   result += !"dynamicType"
 }
 
-#·······················································································································
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @structDeclarationAST semanticAnalysis
-  ?!@lstringlist unused ioUsefulnessRootEntities 
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @string unused inProductDirectory
-  ?let @semanticContext inSemanticContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?let @predefinedTypes inPredefinedTypes
-  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
-{
-#--- Useful entities graph
-  let structNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mStructTypeName)
-  [!?ioUsefulEntitiesGraph addNode !structNameForUsefulness !structNameForUsefulness]
-#---
-  if [self.mStructurePropertyList count] == 0 then
-    error self.mStructTypeName: "a structure cannot be empty: it must have at least one property" 
-  end
-  var @typedPropertyList typedPropertyList = {}
-  var @typedPropertyList constructorArgumentList = {}
-  var @propertyIndexMap propertyMap = {}
-  for (isConstant propertyTypeName mPropertyName * hasSelector initExpression) in self.mStructurePropertyList do
-    let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!propertyTypeName)
-    [!?ioUsefulEntitiesGraph addEdge !structNameForUsefulness !propertyTypeNameForUsefulness]
-    let t = [ioTypeMap searchKey !propertyTypeName]
-    if [forbiddenKeysForStruct () hasKey !mPropertyName.string] then
-      var @string m = "an property cannot be named:"
-      for s in forbiddenKeysForStruct () do
-        m+= " " + s
-      end
-      m += "; theses names are reserved"
-      error mPropertyName: m
+refclass @structDeclarationAST : @semanticDeclarationAST {
+  private let @lstring mStructTypeName
+  private let @propertyInCollectionListAST mStructurePropertyList
+  private let @string mEnumeratedElementTypeName # Empty string if not enumerable
+
+  #·················································································································
+
+  override method enterDeclarationInGraph
+    ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+    ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
+    ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
+    ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
+    ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
+  {
+    let key = @lstring.new {!"@" + self.mStructTypeName !self.mStructTypeName.location}
+    [!?ioSemanticTypePrecedenceGraph addNode !key !self]
+    for (* propertyTypeName 4*) in self.mStructurePropertyList do
+      let propertyKey = @lstring.new {!"@" + propertyTypeName !propertyTypeName.location}
+      [!?ioSemanticTypePrecedenceGraph addEdge !key !propertyKey]
     end
-    [!?propertyMap insertKey !mPropertyName !t]
-    switch initExpression
-    case none :
-      constructorArgumentList +=
+  }
+
+  #·················································································································
+
+  override getter keyRepresentation ->@string result {
+    result = "struct @" + self.mStructTypeName
+  }
+
+  #·················································································································
+
+  override method enterDeclarationInSemanticContext
+    ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
+    ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
+    ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
+    ?!@unifiedTypeMap ioTypeMap
+    ?!@semanticContext ioSemanticContext
+  {
+    let optionalMethodMap = @optionalMethodMap {}
+  #--- Struct type index
+    [!?ioTypeMap makeEntry  !self.mStructTypeName ?let structTypeIndex]
+  #--- Constructors and property map
+    var @propertyMap propertyMap = {}
+    var @constructorMap constructorMap = {}
+    var @functionSignature constructorPropertyTypeList = {}
+    var @typedPropertyList typedPropertyList = {}
+    var @unifiedTypeMapEntryList typesToIncludeInHeaderCompilation = {}
+    for (isConstant propertyTypeName propertyName accessControlAST hasSelector initExpression) in self.mStructurePropertyList do
+      [!?ioTypeMap makeEntry  !propertyTypeName ?let propertyTypeEntry]
+      let @lstring selector = [if hasSelector then propertyName.string else "" end nowhere]
+      if [initExpression isNone] then
+        constructorPropertyTypeList += !selector !propertyTypeEntry !propertyName.string
+      end
+      typesToIncludeInHeaderCompilation += !propertyTypeEntry
+      typedPropertyList += !propertyTypeEntry !propertyName !hasSetter: not isConstant !hasSelector: hasSelector
+      [!?propertyMap insertKey
+        !propertyName
+        ![accessControlAST accessControl !forDeclaringType: structTypeIndex]
+        !isConstant
+        !propertyTypeEntry
+      ]
+    end
+    [!?constructorMap insertKey
+      !@lstring.new {!"new" !.here}
+      !constructorPropertyTypeList
+      !true
+      !structTypeIndex
+    ]
+  #--- Getters
+    commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap)
+  #--- Setters
+    var @setterMap setterMap = {}
+  #--- Instance methods
+    var @instanceMethodMap instanceMethodMap = {}
+  #--- Add Extensions
+    addExtensions (
+      !inExtensionMethodMapForBuildingContext
+      !inExtensionGetterMapForBuildingContext
+      !inExtensionSetterMapForBuildingContext
+      !?ioSemanticContext
+      !?ioTypeMap
+      !self.mStructTypeName
+      !isClass: false
+      !?getterMap
+      !?setterMap
+      !?instanceMethodMap
+      !acceptSetters: true
+    )
+  #--- Enumeration by "for" instruction
+    let @unifiedTypeMapEntry enumeratedType
+    if self.mEnumeratedElementTypeName == "" then
+      enumeratedType = @unifiedTypeMapEntry.null
+    else
+     [!?ioTypeMap makeEntryFromString
+       !self.mEnumeratedElementTypeName
+       ?enumeratedType
+      ]
+    end
+  #--- Generate a "default" constructor ?
+    var @string defaultConstructorName = "default"
+    for (mPropertyTypeEntry 3*) in typedPropertyList while defaultConstructorName != "" do
+      if ([mPropertyTypeEntry definition].defaultConstructorName == "") | not [mPropertyTypeEntry definition].mIsConcrete then
+        defaultConstructorName = ""
+      end
+    end  
+  #--- Enter in type map
+    let typeDefinition = @unifiedTypeDefinition.new {
+      !self.mStructTypeName
+      !self.isPredefined
+      !true # Concrete Type
+      !@unifiedTypeMapEntry.null
+      !@typeKindEnum.structType
+      !false # Does not support collection value
+      !typedPropertyList
+      !propertyMap
+      !typedPropertyList
+      !constructorMap
+      !getterMap
+      !setterMap
+      !instanceMethodMap
+      !{}
+      !optionalMethodMap
+      !@enumerationDescriptorList {}
+      !.generateDescriptionGetterUtilityMethod | .isComparable
+      !@functionSignature {}
+      !{}
+      !{}
+      !@mapSearchMethodListAST {}
+      !@mapSearchMethodListAST {}
+      !false # Do not generate header in separate file
+      !enumeratedType # Type for enumerated element for "for" instruction
+      !defaultConstructorName: defaultConstructorName # Default constructor
+      !"struct-" + [self.mStructTypeName fileNameRepresentation]
+      !@headerKind.oneHeader
+    }
+    [!?ioTypeMap insertType !typeDefinition.mTypeName !typeDefinition]
+  }
+
+  #·················································································································
+
+  override method semanticAnalysis
+    ?!@lstringlist unused ioUsefulnessRootEntities 
+    ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+    ?let @string unused inProductDirectory
+    ?let @semanticContext inSemanticContext
+                                  ?!@unifiedTypeMap ioTypeMap
+    ?let @predefinedTypes inPredefinedTypes
+    ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+  {
+  #--- Useful entities graph
+    let structNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mStructTypeName)
+    [!?ioUsefulEntitiesGraph addNode !structNameForUsefulness !structNameForUsefulness]
+  #---
+    if [self.mStructurePropertyList count] == 0 then
+      error self.mStructTypeName: "a structure cannot be empty: it must have at least one property" 
+    end
+    var @typedPropertyList typedPropertyList = {}
+    var @typedPropertyList constructorArgumentList = {}
+    var @propertyIndexMap propertyMap = {}
+    for (isConstant propertyTypeName mPropertyName * hasSelector initExpression) in self.mStructurePropertyList do
+      let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!propertyTypeName)
+      [!?ioUsefulEntitiesGraph addEdge !structNameForUsefulness !propertyTypeNameForUsefulness]
+      let t = [ioTypeMap searchKey !propertyTypeName]
+      if [forbiddenKeysForStruct () hasKey !mPropertyName.string] then
+        var @string m = "an property cannot be named:"
+        for s in forbiddenKeysForStruct () do
+          m+= " " + s
+        end
+        m += "; theses names are reserved"
+        error mPropertyName: m
+      end
+      [!?propertyMap insertKey !mPropertyName !t]
+      switch initExpression
+      case none :
+        constructorArgumentList +=
+          !t
+          !mPropertyName
+          !hasSetter: not isConstant
+          !hasSelector: hasSelector
+      case some (*) :
+      end
+      typedPropertyList +=
         !t
         !mPropertyName
         !hasSetter: not isConstant
         !hasSelector: hasSelector
-    case some (*) :
     end
-    typedPropertyList +=
-      !t
-      !mPropertyName
-      !hasSetter: not isConstant
-      !hasSelector: hasSelector
-  end
-#--- Build property initialzation code
-  var initializationCode = ""
-  var inclusionSet = @stringset {}
-  var @uint temporaryVariableIndex = 0
-  var unusedVariableCppNameSet = @stringset {!compilerCppName ()}
-  var @usefulEntitiesGraph usefulEntitiesGraph = .emptyGraph
-  for (* propertyTypeName propertyName 2* initExpression) in self.mStructurePropertyList do
-   switch initExpression
-    case none :
-    case some (expressionAST) :
-      var variableMap = @localVarManager.new {}
-      let @analysisContext analysisContext = .new {
-        !inSemanticContext
-        !inPredefinedTypes
-        !""
-        !selfType: .none
-        !""
-        !requiresSelfForAccessingProperty: true
+  #--- Build property initialzation code
+    var initializationCode = ""
+    var inclusionSet = @stringset {}
+    var @uint temporaryVariableIndex = 0
+    var unusedVariableCppNameSet = @stringset {!compilerCppName ()}
+    var @usefulEntitiesGraph usefulEntitiesGraph = .emptyGraph
+    for (* propertyTypeName propertyName 2* initExpression) in self.mStructurePropertyList do
+     switch initExpression
+      case none :
+      case some (expressionAST) :
+        var variableMap = @localVarManager.new {}
+        let @analysisContext analysisContext = .new {
+          !inSemanticContext
+          !inPredefinedTypes
+          !""
+          !selfType: .none
+          !""
+          !requiresSelfForAccessingProperty: true
+        }
+        let propertyType = [ioTypeMap searchKey !propertyTypeName]
+        [expressionAST analyzeSemanticExpression
+          !["" nowhere]
+          !?usefulEntitiesGraph
+          !inferenceType: propertyType
+          !analysisContext
+          !?ioTypeMap
+          !?variableMap
+          ?var @semanticExpressionForGeneration expression
+        ]
+      #--- Check assignment type compatibility
+        checkAssignmentTypeWithImplicitGetterCall (
+          !propertyType
+          !expression.mResultType
+          !propertyName.location
+          !?expression
+        )
+        [expression generateExpression
+          !?initializationCode
+          !?inclusionSet
+          !?temporaryVariableIndex
+          !?unusedVariableCppNameSet
+          ?let sourceVar
+        ]
+        initializationCode += "  const GALGAS_" + [propertyType identifierRepresentation]
+        initializationCode += " in_" + [propertyName string] + " = " + sourceVar + " ;\n"
+      end
+  
+    end
+  #---
+    let constructorNeedsCompilerVar = not [unusedVariableCppNameSet hasKey !compilerCppName ()]
+    ioSemanticDeclarationListForGeneration +=
+      !infoMessage: "struct " + self.mStructTypeName
+      !@structTypeForGeneration.new {
+        ![ioTypeMap searchKey !self.mStructTypeName]
+        !typedPropertyList
+        !constructorArgumentList
+        !initializationCode
+        !constructorNeedsCompilerVar
       }
-      let propertyType = [ioTypeMap searchKey !propertyTypeName]
-      [expressionAST analyzeSemanticExpression
-        !["" nowhere]
-        !?usefulEntitiesGraph
-        !inferenceType: propertyType
-        !analysisContext
-        !?ioTypeMap
-        !?variableMap
-        ?var @semanticExpressionForGeneration expression
-      ]
-    #--- Check assignment type compatibility
-      checkAssignmentTypeWithImplicitGetterCall (
-        !propertyType
-        !expression.mResultType
-        !propertyName.location
-        !?expression
-      )
-      [expression generateExpression
-        !?initializationCode
-        !?inclusionSet
-        !?temporaryVariableIndex
-        !?unusedVariableCppNameSet
-        ?let sourceVar
-      ]
-      initializationCode += "  const GALGAS_" + [propertyType identifierRepresentation]
-      initializationCode += " in_" + [propertyName string] + " = " + sourceVar + " ;\n"
-    end
+  }
 
-  end
-#---
-  let constructorNeedsCompilerVar = not [unusedVariableCppNameSet hasKey !compilerCppName ()]
-  ioSemanticDeclarationListForGeneration +=
-    !"struct " + self.mStructTypeName
-    !@structTypeForGeneration.new {
-      ![ioTypeMap searchKey !self.mStructTypeName]
-      !typedPropertyList
-      !constructorArgumentList
-      !initializationCode
-      !constructorNeedsCompilerVar
-    }
+  #·················································································································
+
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   CODE GENERATION                         
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @structTypeForGeneration : @semanticTypeForGeneration {
-  private let @typedPropertyList mTypedPropertyList
-  private let @typedPropertyList mConstructorArgumentList
-  private let @string mConstructorInitializationCode
-  private let @bool mConstructorNeedsCompilerVar
-}
-
-#·······················································································································
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper structureGenerationTemplate in "+generation-templates/type_generation" {
 }{
@@ -361,56 +343,68 @@ filewrapper structureGenerationTemplate in "+generation-templates/type_generatio
     ?@bool CONSTRUCTOR_NEEDS_COMPILER_VAR
 }
 
-#·······················································································································
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @structTypeForGeneration appendDeclaration1
-  ?!@stringset ioInclusionSet
-  !@string outHeader
-{
-  for (t 3*) in self.mTypedPropertyList do
-    [t addHeaderFileName1 !?ioInclusionSet]
-  end
-  let selfTypedefinition = [self.mSelfTypeEntry definition]
-  outHeader = [filewrapper structureGenerationTemplate.structTypeHeader1
-    !selfTypedefinition.mTypeName.string
-    ![self.mSelfTypeEntry  identifierRepresentation]
-    !self.mTypedPropertyList
-    !self.mConstructorArgumentList
-  ]
-  outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    !selfTypedefinition.mTypeName.string
-    ![self.mSelfTypeEntry identifierRepresentation]
-    !selfTypedefinition.mIsConcrete
-    !selfTypedefinition.mConstructorMap
-    !selfTypedefinition.mGetterMap
-    !selfTypedefinition.mSetterMap
-    !selfTypedefinition.mInstanceMethodMap
-    !selfTypedefinition.mClassMethodMap
-    !selfTypedefinition.mOptionalMethodMap
-    !selfTypedefinition.mEnumerationDescriptor
-    !selfTypedefinition.mHandledOperatorFlags
-    !selfTypedefinition.mAddAssignOperatorArguments
-    !selfTypedefinition.mTypeForEnumeratedElement
-  ]
- }
+refclass @structTypeForGeneration : @semanticTypeForGeneration {
+  private let @typedPropertyList mTypedPropertyList
+  private let @typedPropertyList mConstructorArgumentList
+  private let @string mConstructorInitializationCode
+  private let @bool mConstructorNeedsCompilerVar
 
-#·······················································································································
+  #·················································································································
 
-override method @structTypeForGeneration appendSpecificImplementation
-  ?let @unifiedTypeMap unused inTypeMap
-  ?!@stringset ioInclusionSet
-  !@string outImplementation
-{
-  [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
-  let selfTypedefinition = [self.mSelfTypeEntry definition]
-  outImplementation = [filewrapper structureGenerationTemplate.structTypeSpecificImplementation
-    !selfTypedefinition.mTypeName.string
-    ![self.mSelfTypeEntry  identifierRepresentation]
-    !self.mTypedPropertyList
-    !self.mConstructorArgumentList
-    !self.mConstructorInitializationCode
-    !self.mConstructorNeedsCompilerVar
-  ]
- }
+  override method appendDeclaration1
+    ?!@stringset ioInclusionSet
+    !@string outHeader
+  {
+    for (t 3*) in self.mTypedPropertyList do
+      [t addHeaderFileName1 !?ioInclusionSet]
+    end
+    let selfTypedefinition = [self.mSelfTypeEntry definition]
+    outHeader = [filewrapper structureGenerationTemplate.structTypeHeader1
+      !selfTypedefinition.mTypeName.string
+      ![self.mSelfTypeEntry  identifierRepresentation]
+      !self.mTypedPropertyList
+      !self.mConstructorArgumentList
+    ]
+    outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
+      !selfTypedefinition.mTypeName.string
+      ![self.mSelfTypeEntry identifierRepresentation]
+      !selfTypedefinition.mIsConcrete
+      !selfTypedefinition.mConstructorMap
+      !selfTypedefinition.mGetterMap
+      !selfTypedefinition.mSetterMap
+      !selfTypedefinition.mInstanceMethodMap
+      !selfTypedefinition.mClassMethodMap
+      !selfTypedefinition.mOptionalMethodMap
+      !selfTypedefinition.mEnumerationDescriptor
+      !selfTypedefinition.mHandledOperatorFlags
+      !selfTypedefinition.mAddAssignOperatorArguments
+      !selfTypedefinition.mTypeForEnumeratedElement
+    ]
+  }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+  #·················································································································
+
+  override method appendSpecificImplementation
+    ?let @unifiedTypeMap unused inTypeMap
+    ?!@stringset ioInclusionSet
+    !@string outImplementation
+  {
+    [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
+    let selfTypedefinition = [self.mSelfTypeEntry definition]
+    outImplementation = [filewrapper structureGenerationTemplate.structTypeSpecificImplementation
+      !selfTypedefinition.mTypeName.string
+      ![self.mSelfTypeEntry  identifierRepresentation]
+      !self.mTypedPropertyList
+      !self.mConstructorArgumentList
+      !self.mConstructorInitializationCode
+      !self.mConstructorNeedsCompilerVar
+    ]
+  }
+
+  #·················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -1,4 +1,4 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
 #  'lexique' component metamodel            
 #                                           
@@ -13,29 +13,29 @@
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
 #  details.                                 
 #                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract refclass @semanticDeclarationAST {
-  protected let @bool mIsPredefined
+  protected let @bool isPredefined %selector
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract refclass @lexicalExpressionAST {
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract refclass @lexicalInstructionAST {
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @lexicalInstructionListAST {
   public let @lexicalInstructionAST mInstruction
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @templateDelimitorListAST {
   public let @lstring mStartString
@@ -45,7 +45,7 @@ list @templateDelimitorListAST {
   public let @lstring mEndString
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @templateReplacementListAST {
   public let @lstring mMatchString
@@ -53,18 +53,18 @@ list @templateReplacementListAST {
   public let @lstring mReplacementFunction
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract refclass @abstractLexicalRuleAST {
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @lexicalRuleListAST {
   public let @abstractLexicalRuleAST mLexicalRule
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 getter @lexicalRuleListAST useLoopLocalVar -> @bool {
   result = false
@@ -73,41 +73,41 @@ getter @lexicalRuleListAST useLoopLocalVar -> @bool {
   end 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexicalImplicitRuleAST : @abstractLexicalRuleAST {
   private let @lstring mListName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexicalExplicitRuleAST : @abstractLexicalRuleAST {
   private let @lexicalExpressionAST mLexicalRuleExpression
   private let @lexicalInstructionListAST mInstructionList
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @lexicalMessageDeclarationListAST {
   public let @lstring mMessageName
   public let @lstring mMessageValue
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @lexicalAttributeListAST {
   public let @lstring mTypeName
   public let @lstring mName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @lexicalStyleListAST {
   public let @lstring mName
   public let @lstring mComment
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @terminalDeclarationListAST {
   public let @lstring mName
@@ -118,7 +118,7 @@ list @terminalDeclarationListAST {
   public let @bool isEndOfTemplateMark %selector
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @lexicalListEntryListAST {
   public let @lstring mEntrySpelling
@@ -127,14 +127,14 @@ list @lexicalListEntryListAST {
   public let @bool isEndOfTemplateMark %selector
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @sentLexicalAttributeListAST {
   public let @lstring mFormalSelector
   public let @lstring mAttributeName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @lexicalListDeclarationListAST {
   public let @lstring mName
@@ -144,126 +144,126 @@ list @lexicalListDeclarationListAST {
   public let @lexicalListEntryListAST mEntryList  
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexicalOrExpressionAST : @lexicalExpressionAST {
   private let @lexicalExpressionAST mLeftOperand
   private let @lexicalExpressionAST mRightOperand
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexicalCharacterSetMatchAST : @lexicalExpressionAST {
   private let @lstring mCharacterSetName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexicalCharacterMatchAST : @lexicalExpressionAST {
   private let @lchar mCharacter
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexicalCharacterIntervalMatchAST : @lexicalExpressionAST {
   private let @lchar mLowerBound
   private let @lchar mUpperBound
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexicalStringMatchAST : @lexicalExpressionAST {
   private let @lstring mString
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexicalStringNotMatchAST : @lexicalExpressionAST {
   private let @lstring mString
   private let @lstring mErrorMessage
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @lexicalSendSearchListAST {
   private let @lstring mAttributeName
   private let @lstring mSearchListName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract refclass @lexicalSendDefaultActionAST {
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexicalSendTerminalByDefaultAST : @lexicalSendDefaultActionAST {
   private let @lstring mDefaultSentTerminal
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexicalErrorByDefaultAST : @lexicalSendDefaultActionAST {
   private let @lstring mDefaultErrorMessageName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @lexicalWhileBranchListAST {
   public let @lexicalExpressionAST mWhileExpression
   public let @lexicalInstructionListAST mWhileInstructionList
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @lexicalSelectBranchListAST {
   public let @lexicalExpressionAST mSelectExpression
   public let @lexicalInstructionListAST mSelectInstructionList
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract refclass @lexicalRoutineOrFunctionFormalInputArgumentAST {
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @lexicalFunctionCallActualArgumentListAST {
   public let @lexicalRoutineOrFunctionFormalInputArgumentAST mLexicalActualInputArgument
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexicalAttributeInputArgumentAST : @lexicalRoutineOrFunctionFormalInputArgumentAST {
   private let @lstring mAttributeName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexicalCharacterInputArgumentAST : @lexicalRoutineOrFunctionFormalInputArgumentAST {
   private let @lchar mCharacter
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexicalUnsignedInputArgumentAST : @lexicalRoutineOrFunctionFormalInputArgumentAST {
   private let @lbigint mUnsigned
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexicalCurrentCharacterInputArgumentAST : @lexicalRoutineOrFunctionFormalInputArgumentAST {
   private let @location mLocation
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexicalFunctionInputArgumentAST : @lexicalRoutineOrFunctionFormalInputArgumentAST {
   private let @lstring mFunctionName
   private let @lexicalFunctionCallActualArgumentListAST mFunctionActualArgumentList
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum @lexicalArgumentModeAST {
   case lexicalInputMode  case lexicalInputOutputMode
@@ -297,7 +297,7 @@ getter @lexicalArgumentModeAST cocoaPointerInFormalArgument -> @string {
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #list @lexicalExternRoutineFormalArgumentListAST {
 #  public let @lexicalArgumentModeAST mPassingMode
@@ -305,7 +305,7 @@ getter @lexicalArgumentModeAST cocoaPointerInFormalArgument -> @string {
 #  public let @lstring mFormalArgumentName
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #list @externRoutineListAST {
 #  public let @lstring mRoutineName
@@ -313,14 +313,14 @@ getter @lexicalArgumentModeAST cocoaPointerInFormalArgument -> @string {
 #  public let @stringlist mErrorMessageList
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #list @lexicalExternFunctionFormalArgumentListAST {
 #  public let @lstring mLexicalTypeName
 #  public let @lstring mFormalArgumentName
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #list @externFunctionListAST {
 #  public let @lstring mFunctionName
@@ -328,18 +328,18 @@ getter @lexicalArgumentModeAST cocoaPointerInFormalArgument -> @string {
 #  public let @lstring mReturnedTypeName
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @indexingListAST {
   public let @lstring mIndexName
   public let @lstring mIndexComment
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
 #           B U I L D    T E R M I N A L    M A P
 #                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum @lexicalTypeEnum {
   case lexicalType_string
@@ -352,7 +352,7 @@ enum @lexicalTypeEnum {
   case lexicalType_bigint
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @lexicalSentValueList {
   public let @lstring mLexicalFormalSelector
@@ -360,25 +360,25 @@ list @lexicalSentValueList {
   public let @lexicalTypeEnum mLexicalType
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @terminalMap {
   public let @lexicalSentValueList mSentAttributeList
-  insert insertKey error message"the '%K' terminal has been already declared in %L"
-  search searchKey error message"the '%K' terminal is not declared"
+  insert insertKey error message "the '%K' terminal has been already declared in %L"
+  search searchKey error message "the '%K' terminal is not declared"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #          B U I L D    L E X I C A L    T Y P E    M A P                                                      
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @lexicalTypeMap {
   public let @lexicalTypeEnum mLexicalType
-  insert insertKey error message"the '@%K' lexical type is already declared in %L"
-  search searchKey error message"there is no '@%K' lexical type"
+  insert insertKey error message "the '@%K' lexical type is already declared in %L"
+  search searchKey error message "there is no '@%K' lexical type"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func %once buildLexicalTypeMap
   ->@lexicalTypeMap outLexicalTypeMap
@@ -394,17 +394,17 @@ func %once buildLexicalTypeMap
   [!?outLexicalTypeMap insertKey !@lstring.new {!"bigint" !@location.here} !.lexicalType_bigint]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @lexicalAttributeMap {
   public let @lexicalTypeEnum mLexicalType
-  insert insertKey error message"the '%K' lexical attribute has been already declared in %L"
-  search searchKey error message"the '%K' lexical attribute is not declared"
+  insert insertKey error message "the '%K' lexical attribute has been already declared in %L"
+  search searchKey error message "the '%K' lexical attribute is not declared"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   B U I L D    L E X I C A L    A T T R I B U T E    M A P                                                   
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc buildLexicalAttributeMap
   ?let @lexicalTypeMap inLexicalTypeMap
@@ -427,4 +427,4 @@ proc buildLexicalAttributeMap
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————

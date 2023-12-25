@@ -1,4 +1,4 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
 #  semantics definitions for semantics component 
 #                                           
@@ -13,7 +13,7 @@
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
 #  details.                                 
 #                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 getter @location sourceFile -> @string {
   if [self isNowhere] then
@@ -23,33 +23,33 @@ getter @location sourceFile -> @string {
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 getter @location commaSourceFile -> @string {
   result = " COMMA_" + [self sourceFile]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func %once compilerCppName ->@string outCompilerCppName {
   outCompilerCppName = "inCompiler"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func %once syntaxDirectedTranslationResultVarName ->@string outName {
   outName = "ioSyntaxDirectedTranslationResult"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @semanticInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @semanticExpressionAST enterExpressionInSemanticContext ?!@unifiedTypeMap ioTypeMap
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 method @semanticInstructionListAST enterInstructionListInSemanticContext 
   ?!@unifiedTypeMap ioTypeMap
@@ -59,90 +59,77 @@ method @semanticInstructionListAST enterInstructionListInSemanticContext
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
 #  G R A M M A R   M A P                    
 #                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @grammarLabelMap {
   public let @formalParameterSignature mLabelSignature
-  insert insertKey error message"the '%K' grammar label has been already declared in %L"
-  search searchKey error message"the '%K' grammar label is not declared"
+  insert insertKey error message "the '%K' grammar label has been already declared in %L"
+  search searchKey error message "the '%K' grammar label is not declared"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @grammarMap {
   public let @grammarLabelMap mLabelMap
   public let @bool mHasIndexing
   public let @bool mHasTranslateFeature
-  insert insertGrammar error message"the '%K' grammar has been already declared in %L"
-  search searchKey error message"the '%K' grammar is not declared"
+  insert insertGrammar error message "the '%K' grammar has been already declared in %L"
+  search searchKey error message "the '%K' grammar is not declared"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#  R O U T I N E   M A P                    
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-map @routineMap {
-  public let @formalParameterSignature mRoutineSignature
-  public let @bool mIsInternal
-  insert insertKey error message"the '%K' routine has been already declared in %L"
-  search searchKey error message"the '%K' routine is not declared"
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
 #  F U N C T I O N   M A P                  
 #                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @functionMap {
   public let @functionSignature mFunctionSignature
   public let @unifiedTypeMapEntry mResultType
   public let @bool mIsInternal
-  insert insertKey error message"the '%K' function has been already declared in %L"
-  search searchKey error message"the '%K' function is not declared"
+  insert insertKey error message "the '%K' function has been already declared in %L"
+  search searchKey error message "the '%K' function is not declared"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
 #  F I L E W R A P P E R   M A P            
 #                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @wrapperFileMap { # Key is file name
   public let @string mAbsoluteFilePath
   public let @bool mIsTextFile # true: text file, false: binary file
   public let @uint mWrapperDirectoryIndex
   public let @uint mWrapperFileIndex
-  insert insertKey error message"INTERNAL ERROR"
-  search searchKey error message"INTERNAL ERROR"
+  insert insertKey error message "INTERNAL ERROR"
+  search searchKey error message "INTERNAL ERROR"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @wrapperDirectoryMap { # Key is directory name
   public let @wrapperFileMap mRegularFileMap
   public let @wrapperDirectoryMap mDirectoryMap
   public let @uint mWrapperDirectoryIndex
-  insert insertKey error message"INTERNAL ERROR"
-  search searchKey error message"INTERNAL ERROR"
+  insert insertKey error message "INTERNAL ERROR"
+  search searchKey error message "INTERNAL ERROR"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @filewrapperTemplateMap {
   public let @functionSignature mTemplateSignature
   public let @lstring mFilewrapperTemplatePath
-  insert insertKey error message"the '%K' filewrapper template has been already declared in %L"
-  search searchKey error message"the '%K' filewrapper template is not declared"
+  insert insertKey error message "the '%K' filewrapper template has been already declared in %L"
+  search searchKey error message "the '%K' filewrapper template is not declared"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @filewrapperMap {
   public let @lstring mFilewrapperPath
@@ -151,15 +138,15 @@ map @filewrapperMap {
   public let @wrapperDirectoryMap mFilewrapperDirectoryMap
   public let @filewrapperTemplateMap mFilewrapperTemplateMap
   public let @bool mIsInternal
-  insert insertKey error message"the '%K' filewrapper has been already declared in %L"
-  search searchKey error message"the '%K' filewrapper is not declared"
+  insert insertKey error message "the '%K' filewrapper has been already declared in %L"
+  search searchKey error message "the '%K' filewrapper is not declared"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
 #  O P T I O N   M A P                      
 #                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @optionComponentMapForSemanticAnalysis {
   public let @bool mIsPredefined
@@ -167,15 +154,15 @@ map @optionComponentMapForSemanticAnalysis {
   public let @commandLineOptionMap mUIntOptionMap
   public let @commandLineOptionMap mStringOptionMap
   public let @commandLineOptionMap mStringListOptionMap
-  insert insertKey error message"redefinition of the '%K' option component: it has been already declared in %L"
-  search searchKey error message"the '%K' option component is not imported"
+  insert insertKey error message "redefinition of the '%K' option component: it has been already declared in %L"
+  search searchKey error message "the '%K' option component is not imported"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
 #  L E X I Q U E   M A P                    
 #                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @lexiqueComponentMapForSemanticAnalysis {
   public let @bool mIsTemplate
@@ -186,33 +173,33 @@ map @lexiqueComponentMapForSemanticAnalysis {
   private let @lexicalAttributeListAST mLexicalAttributeListAST
   private let @lexicalStyleListAST mLexicalStyleListAST
   private let @lexicalListDeclarationListAST mLexicalListDeclarationListAST
-  insert insertKey error message"redefinition of the '%K' lexique component: it has been already declared in %L"
-  search searchKey error message"the '%K' lexique component is not imported"
+  insert insertKey error message "redefinition of the '%K' lexique component: it has been already declared in %L"
+  search searchKey error message "the '%K' lexique component is not imported"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
 #  S Y N T A X   M A P                      
 #                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @syntaxComponentMap {
   public let @lstring mLexiqueName 
   public let @nonterminalDeclarationListAST mNonterminalDeclarationList
   public let @syntaxRuleListAST mRuleList
   public let @bool mHasTranslateFeature
-  insert insertKey error message"the '%K' syntax component has already been parsed"
-  search searchKey error message"the '%K' syntax component is not parsed"
+  insert insertKey error message "the '%K' syntax component has already been parsed"
+  search searchKey error message "the '%K' syntax component is not parsed"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
 #    S E M A N T I C    C O N T E X T       
 #                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @semanticContext {
-  public var @routineMap mRoutineMap %selector = {}
+  public var @routineMap mRoutineMap %selector = .new
   public var @functionMap mFunctionMap %selector = {}
   public var @filewrapperMap mFilewrapperMap %selector = {}
   public var @grammarMap mGrammarMap %selector  = {}
@@ -222,175 +209,169 @@ struct @semanticContext {
   public var @bool galgas4 %selector
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
 #    E X T E N S I O N    M E T H O D    M A P
 #                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @extensionMethodMapForType {
   public let @formalParameterListAST mFormalParameterList
   public let @methodQualifier mQualifier
-  insert insertKey error message"the '%K' method has been already declared in %L"
+  insert insertKey error message "the '%K' method has been already declared in %L"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @extensionMethodMapForBuildingContext {
   public let @extensionMethodMapForType mExtensionMethodMapForType
-  insert insertKey error message"internal error"
-  search searchKey error message"internal error"
+  insert insertKey error message "internal error"
+  search searchKey error message "internal error"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
 #    E X T E N S I O N    M O D I F I E R    M A P 
 #                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @extensionSetterMapForType {
   public let @formalParameterListAST mFormalParameterList
-  insert insertKey error message"the '%K' setter has been already declared in %L"
+  insert insertKey error message "the '%K' setter has been already declared in %L"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @extensionSetterMapForBuildingContext {
   public let @extensionSetterMapForType mExtensionSetterMapForType
-  insert insertKey error message"internal error"
-  search searchKey error message"internal error"
+  insert insertKey error message "internal error"
+  search searchKey error message "internal error"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
 #    E X T E N S I O N    G E T T E R    M A P     
 #                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @extensionGetterMapForType {
   public let @lstring mResultTypeName
   public let @formalInputParameterListAST mInputFormalParameterList
   public let @methodQualifier mQualifier
-  insert insertKey error message"the '%K' getter has been already declared in %L"
+  insert insertKey error message "the '%K' getter has been already declared in %L"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @extensionGetterMapForBuildingContext {
   public let @extensionGetterMapForType mExtensionGetterMapForType
-  insert insertKey error message"internal error"
-  search searchKey error message"internal error"
+  insert insertKey error message "internal error"
+  search searchKey error message "internal error"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
 #    D I S P L A Y                          
 #                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract getter @semanticDeclarationAST keyRepresentation -> @string
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @galgas3GrammarComponentAST keyRepresentation
   ->@string {
   result = "grammar " + self.mGrammarComponentName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @galgas3SyntaxComponentAST keyRepresentation
   ->@string {
   result = "syntax " + self.mSyntaxComponentName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @predefinedTypeAST keyRepresentation
   ->@string {
   result = "predefined type @" + self.mPredefinedTypeName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @enumDeclarationAST keyRepresentation
   ->@string {
   result = "enum @" + self.mEnumTypeName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @sortedListDeclarationAST keyRepresentation
   ->@string {
   result = "sorted list @" + self.mSortedListTypeName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @listDeclarationAST keyRepresentation
   ->@string {
   result = "list @" + self.mListTypeName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @listmapDeclarationAST keyRepresentation
   ->@string {
   result = "listmap @" + self.mListmapTypeName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @filewrapperDeclarationAST keyRepresentation
   ->@string {
   result = "filewrapper @" + self.mFilewrapperName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @optionComponentDeclarationAST keyRepresentation
   ->@string {
   result = "option " + self.mOptionComponentName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @graphDeclarationAST keyRepresentation
   ->@string {
   result = "graph @" + self.mGraphTypeName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @externTypeDeclarationAST keyRepresentation
   ->@string {
   result = "extern @" + self.mExternTypeName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @onceFunctionDeclarationAST keyRepresentation
   ->@string {
   result = "once function " + self.mFunctionName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @externFunctionDeclarationAST keyRepresentation -> @string {
   result = "extern function " + self.mFunctionName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-override getter @externProcedureDeclarationAST keyRepresentation -> @string {
-  result = "extern routine " + self.mRoutineName
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
 #    E N T E R    T Y P E S                 
 #                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc addExtensions ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
                    ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
@@ -521,9 +502,9 @@ proc addExtensions ?let @extensionMethodMapForBuildingContext inExtensionMethodM
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! enterInSemanticContext
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @semanticDeclarationAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
@@ -532,7 +513,7 @@ abstract method @semanticDeclarationAST enterDeclarationInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
   ?!@semanticContext unused ioSemanticContext
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 getter @predefinedTypeKindEnum defaultConstructorName
   -> @string {
@@ -555,19 +536,19 @@ getter @predefinedTypeKindEnum defaultConstructorName
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func %once elementTypeNameSuffix -> @string {
   result = "-element"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @wrapperExtensionMap {
-  insert insertKey error message"the '%K' extension has been already declared"
+  insert insertKey error message "the '%K' extension has been already declared"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc recursivelyEnumerateDirectories
   ?let @string inAbsoluteSourcePath
@@ -630,7 +611,7 @@ proc recursivelyEnumerateDirectories
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @filewrapperDeclarationAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
@@ -706,53 +687,7 @@ override method @filewrapperDeclarationAST enterDeclarationInSemanticContext
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-override method @externProcedureDeclarationAST enterDeclarationInSemanticContext
-  ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
-  ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
-  ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?!@semanticContext ioSemanticContext {
-#--- Build signature
-  var routineSignature = @formalParameterSignature {}
-  for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in self.mFormalArgumentList do
-    [!?ioTypeMap makeEntry  !mFormalArgumentTypeName ?let parameterTypeIndex]
-    routineSignature += !mFormalSelector !parameterTypeIndex !mFormalArgumentPassingMode !mFormalArgumentName.string
-  end
-#--- Enter routine in routine map
-  [!?ioSemanticContext.mRoutineMap insertKey
-    !self.mRoutineName
-    !routineSignature
-    !self.mIsInternal
-  ]
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-override method @procDeclarationAST enterDeclarationInSemanticContext
-  ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
-  ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
-  ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?!@semanticContext ioSemanticContext {
-#--- Build signature
-  var routineSignature = @formalParameterSignature {}
-  for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in self.mFormalArgumentList do
-    [!?ioTypeMap makeEntry  !mFormalArgumentTypeName ?let parameterTypeIndex]
-    routineSignature += !mFormalSelector !parameterTypeIndex !mFormalArgumentPassingMode !mFormalArgumentName.string
-  end
-#--- Enter types for instruction list
-  [self.mRoutineInstructionList enterInstructionListInSemanticContext !?ioTypeMap]
-#--- Enter routine in routine map
-  [!?ioSemanticContext.mRoutineMap insertKey
-    !self.mRoutineName
-    !routineSignature
-    !self.mIsInternal
-  ]
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @externFunctionDeclarationAST enterDeclarationInSemanticContext # Handles also function declaration
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
@@ -777,7 +712,7 @@ override method @externFunctionDeclarationAST enterDeclarationInSemanticContext 
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @onceFunctionDeclarationAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
@@ -791,7 +726,7 @@ override method @onceFunctionDeclarationAST enterDeclarationInSemanticContext
   [!?ioSemanticContext.mFunctionMap insertKey !self.mFunctionName !{} !resultTypeIndex !self.mIsInternal]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @galgas3SyntaxComponentAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
@@ -809,7 +744,7 @@ override method @galgas3SyntaxComponentAST enterDeclarationInSemanticContext
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @galgas3GrammarComponentAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
@@ -845,21 +780,21 @@ override method @galgas3GrammarComponentAST enterDeclarationInSemanticContext
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
 #    B U I L D    O R D E R E D     S E M A N T I C    L I S T                                                 
 #                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #! enterDeclarationInGraph
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graph @semanticTypePrecedenceGraph (@semanticDeclarationListAST) {
-  insert addNode error message"the '%K' type is already declared at %L"
+  insert addNode error message "the '%K' type is already declared at %L"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @semanticDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
@@ -868,7 +803,7 @@ abstract method @semanticDeclarationAST enterDeclarationInGraph
   ?!@extensionSetterMapForBuildingContext ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @galgas3GrammarComponentAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
@@ -883,7 +818,7 @@ override method @galgas3GrammarComponentAST enterDeclarationInGraph
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @galgas3SyntaxComponentAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
@@ -906,7 +841,7 @@ override method @galgas3SyntaxComponentAST enterDeclarationInGraph
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @externFunctionDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
@@ -917,7 +852,7 @@ override method @externFunctionDeclarationAST enterDeclarationInGraph
   ioExtensionOverrideDefinitionList += !self
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @onceFunctionDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
@@ -928,18 +863,7 @@ override method @onceFunctionDeclarationAST enterDeclarationInGraph
   ioExtensionOverrideDefinitionList += !self
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-override method @externProcedureDeclarationAST enterDeclarationInGraph
-  ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
-  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
-  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
-  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
-  ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList {
-  ioExtensionOverrideDefinitionList += !self
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @filewrapperDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
@@ -950,10 +874,10 @@ override method @filewrapperDeclarationAST enterDeclarationInGraph
   ioExtensionOverrideDefinitionList += !self
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 method @semanticDeclarationAST addAssociatedElement
   ?!@semanticDeclarationListAST unused ioSemanticDeclarationList {
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————

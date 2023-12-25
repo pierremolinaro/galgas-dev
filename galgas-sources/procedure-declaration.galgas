@@ -1,0 +1,290 @@
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#                                           
+#    R O U T I N E    D E C L A R A T I O N 
+#                                           
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas3InstructionsSyntax {
+
+  #·················································································································
+  #    R O U T I N E    D E C L A R A T I O N 
+  #·················································································································
+
+  rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
+    $proc$
+    var isUsefull = false
+    repeat
+    while
+      $%usefull$
+      if isUsefull then
+        error .here : "duplicate attribute" fixit { remove }
+      end
+      isUsefull = true
+    end
+    $identifier$ ?let mRoutineName indexing routineDefinition
+    <formal_parameter_list_ggs3> ?let @formalParameterListAST mFormalParameterList
+    ${$
+    <semantic_instruction_list_ggs3> ?let @semanticInstructionListAST mRoutineInstructionList
+    $}$
+    let endOfInstructionList = @location.here
+    ioDeclarations.mDeclarationList += !@procDeclarationAST.new {
+      !isPredefined: false # Is not predefined
+      !isFilePrivate: false # private
+      !mRoutineName
+      !mFormalParameterList
+      !usefullProcedure: isUsefull
+      !mRoutineInstructionList
+      !endOfInstructionList
+    }
+  }
+
+  #·················································································································
+
+  rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
+    $private$
+    $proc$
+    var isUsefull = false
+    repeat
+    while
+      $%usefull$
+      if isUsefull then
+        error .here : "duplicate attribute" fixit { remove }
+      end
+      isUsefull = true
+    end
+    $identifier$ ?let mRoutineName indexing routineDefinition
+    <formal_parameter_list_ggs3> ?let @formalParameterListAST mFormalParameterList
+    ${$
+    <semantic_instruction_list_ggs3> ?let @semanticInstructionListAST mRoutineInstructionList
+    $}$
+    let endOfInstructionList = @location.here
+    ioDeclarations.mDeclarationList += !@procDeclarationAST.new {
+      !isPredefined: false # Is not predefined
+      !isFilePrivate: true # private
+      !mRoutineName
+      !mFormalParameterList
+      !usefullProcedure: isUsefull
+      !mRoutineInstructionList
+      !endOfInstructionList
+    }
+  }
+
+  #·················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4InstructionsSyntax {
+
+  #·················································································································
+  #    R O U T I N E    D E C L A R A T I O N 
+  #·················································································································
+
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
+                     ?!@stringset ioUserImplicitDeclaredTypeSet {
+    $proc$
+    var isUsefull = false
+    repeat
+    while
+      $%usefull$
+      if isUsefull then
+        error .here : "duplicate attribute" fixit { remove }
+      end
+      isUsefull = true
+    end
+    $identifier$ ?let mRoutineName indexing routineDefinition
+    <formal_parameter_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @formalParameterListAST mFormalParameterList
+    ${$
+    <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @semanticInstructionListAST mRoutineInstructionList
+    $}$
+    let endOfInstructionList = @location.here
+    ioDeclarations.mDeclarationList += !@procDeclarationAST.new {
+      !isPredefined: false # Is not predefined
+      !isFilePrivate: false
+      !mRoutineName
+      !mFormalParameterList
+      !usefullProcedure: isUsefull
+      !mRoutineInstructionList
+      !endOfInstructionList
+    }
+  }
+
+  #·················································································································
+
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
+                     ?!@stringset ioUserImplicitDeclaredTypeSet {
+    $private$
+    $proc$
+    var isUsefull = false
+    repeat
+    while
+      $%usefull$
+      if isUsefull then
+        error .here : "duplicate attribute" fixit { remove }
+      end
+      isUsefull = true
+    end
+    $identifier$ ?let mRoutineName indexing routineDefinition
+    <formal_parameter_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @formalParameterListAST mFormalParameterList
+    ${$
+    <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @semanticInstructionListAST mRoutineInstructionList
+    $}$
+    let endOfInstructionList = @location.here
+    ioDeclarations.mDeclarationList += !@procDeclarationAST.new {
+      !isPredefined: false # Is not predefined
+      !isFilePrivate: true
+      !mRoutineName
+      !mFormalParameterList
+      !usefullProcedure: isUsefull
+      !mRoutineInstructionList
+      !endOfInstructionList
+    }
+  }
+
+  #·················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+refclass @procDeclarationAST : @externProcedureDeclarationAST {
+  public let @semanticInstructionListAST mRoutineInstructionList
+  public let @location mEndOfRoutineInstructionList
+
+  #·················································································································
+
+  override method enterDeclarationInSemanticContext
+                          ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
+                          ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
+                          ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
+                          ?!@unifiedTypeMap ioTypeMap
+                          ?!@semanticContext ioSemanticContext {
+  #--- Build signature
+    var routineSignature = @formalParameterSignature {}
+    for argument in self.mFormalArgumentListAST do
+      [!?ioTypeMap makeEntry !argument.mFormalArgumentTypeName ?let parameterTypeIndex]
+      routineSignature +=
+        !argument.mFormalSelector
+        !parameterTypeIndex
+        !argument.mFormalArgumentPassingMode
+        !argument.mFormalArgumentName.string
+    end
+  #--- Enter types for instruction list
+    [self.mRoutineInstructionList enterInstructionListInSemanticContext !?ioTypeMap]
+  #--- Enter routine in routine map
+    [!?ioSemanticContext.mRoutineMap insertKey
+      !self.mRoutineName
+      !routineSignature
+      !isFilePrivate: self.isFilePrivate
+    ]
+  }
+
+  #·················································································································
+
+  override method semanticAnalysis?!@lstringlist ioUsefulnessRootEntities 
+                                  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+                                  ?let @string unused inProductDirectory
+                                  ?let @semanticContext inSemanticContext
+                                  ?!@unifiedTypeMap ioTypeMap
+                                  ?let @predefinedTypes inPredefinedTypes
+                                  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration {
+  #---
+    var routineSignature = @formalParameterSignature {}
+    for argument in self.mFormalArgumentListAST do
+      let parameterType = [ioTypeMap searchKey !argument.mFormalArgumentTypeName]
+      routineSignature +=
+        !argument.mFormalSelector
+        !parameterType
+        !argument.mFormalArgumentPassingMode
+        !argument.mFormalArgumentName.string
+    end
+    let mangledName = routineMangledName (!self.mRoutineName !routineSignature)
+  #--- Useful entities graph
+    let nameForUsefulness = procedureNameForUsefulEntitiesGraph (!mangledName)
+    [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+    if self.usefullProcedure then
+      ioUsefulnessRootEntities += !nameForUsefulness
+    end
+  #--- Instruction list
+    let analysisContext = @analysisContext.new {
+      !inSemanticContext
+      !inPredefinedTypes
+      !""
+      !selfType: .none
+      !""
+      !requiresSelfForAccessingProperty: true
+    }
+    analyzeRoutineBody (
+      !nameForUsefulness
+      !?ioUsefulEntitiesGraph
+      !analysisContext
+      !?ioTypeMap
+      !self.mFormalArgumentListAST
+      !nonMutablePropertyList: @typedPropertyList {}
+      !mutablePropertyList: @typedPropertyList {}
+      !self.mRoutineInstructionList
+      !self.mEndOfRoutineInstructionList
+      ?let instructionList
+      ?let formalArgumentList
+    )
+    ioSemanticDeclarationListForGeneration +=
+      !infoMessage: "proc " + mangledName
+      !@routineImplementationForGeneration.new {
+        !generateHeader: true # Generate Cpp header file
+        !mImplementationCppFileName: "proc-" + [mangledName fileNameRepresentation]
+        !routineMangledName: mangledName.string
+        !formalArgumentList
+        !false # Do not generate static
+        !instructionList
+      }
+  }
+
+  #·················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#                                           
+#    R O U T I N E    I M P L E M E N T A T I O N
+#                                           
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+refclass @routineImplementationForGeneration : @routinePrototypeDeclarationForGeneration {
+  public let @bool mGenerateStatic
+  public let @semanticInstructionListForGeneration mRoutineInstructionList
+
+  #·················································································································
+
+  override method appendSpecificImplementation
+    ?let @unifiedTypeMap unused inTypeMap
+    ?!@stringset ioInclusionSet
+    !@string outImplementation
+  {
+    if self.generateHeader then
+      ioInclusionSet += !"proc-" + [self.routineMangledName fileNameRepresentation]
+    end
+    generateProcedure (
+      !static: self.mGenerateStatic
+      !"routine_" + [self.routineMangledName identifierRepresentation]
+      !?ioInclusionSet
+      !self.mFormalArgumentList
+      !self.mRoutineInstructionList
+      !false # Do not generate 'const' qualifier
+      !"Compiler"
+      !true # Generate location Argument
+      !false # Do not generate 'resetTemplateString'
+      !false # Do not generate syntaxDirectedTranslationString argument
+      ?let @string code
+    )
+    outImplementation = [filewrapper semanticComponentGenerationTemplate.routineImplementation
+      !self.routineMangledName
+      !code
+    ] 
+  }
+
+  #·················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————

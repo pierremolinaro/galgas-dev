@@ -1,4 +1,4 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
 #  Syntax component compilation             
 #                                           
@@ -12,7 +12,7 @@
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
 #  details.                                 
 #                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc groupSyntaxComponentsGalgas3
   ?let @galgas3SyntaxComponentListAST inAllSyntaxComponents
@@ -30,7 +30,7 @@ proc groupSyntaxComponentsGalgas3
       ruleList += mRuleList
     end
     ioDeclarationList += !@galgas3SyntaxComponentAST.new {
-      !false # Is not predefined
+      !isPredefined: false # Is not predefined
       !component.mSyntaxComponentName
       !component.mImportedLexiqueFilePath
       !nonterminalDeclarationList
@@ -47,5 +47,5 @@ proc groupSyntaxComponentsGalgas3
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

@@ -1,0 +1,77 @@
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#                                           
+#  semantics routine map
+#                                           
+#  Copyright (C) 2010, ..., 2023 Pierre Molinaro.
+#                                           
+#  e-mail : pierre@pcmolinaro.name          
+#                                           
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
+#  License as published by the Free Software Foundation.
+#                                           
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+#  details.                                 
+#                                           
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+func routineMangledName ?let @lstring inRoutineName 
+                        ?let @formalParameterSignature inRoutineFormalParameters -> @lstring {
+  var str = inRoutineName.string
+  for parameter in inRoutineFormalParameters do
+    switch parameter.mFormalArgumentPassingMode 
+    case argumentConstantIn, argumentIn :
+      str +="?"
+    case argumentInOut :
+      str +="&"
+    case argumentOut :
+      str +="!"
+    end
+    str += parameter.mFormalSelector
+  end
+  result = .new {!str !inRoutineName.location}
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+struct @routineMap {
+  private var @internalRoutineMap mInternalRoutineMap = {}
+ 
+  #·················································································································
+ 
+  setter insertKey ?let @lstring inRoutineName
+                   ?let @formalParameterSignature inRoutineSignature
+                   ?isFilePrivate: let @bool inIsInternal {
+    [!?self.mInternalRoutineMap insertKey !inRoutineName !inRoutineSignature !inIsInternal]
+  }
+
+  #·················································································································
+ 
+  method searchKey ?let @lstring inRoutineName
+                   !@formalParameterSignature outRoutineSignature
+                   !@bool outIsInternal
+                   !routineMangledName: @lstring outRoutineMangledName {
+    [self.mInternalRoutineMap searchKey !inRoutineName ?outRoutineSignature ?outIsInternal]
+    outRoutineMangledName = routineMangledName (!inRoutineName !outRoutineSignature)
+  }
+
+  #·················································································································
+ 
+  getter locationForKey ?let @string inKey -> @location {
+    result = [self.mInternalRoutineMap locationForKey !inKey]
+  }
+
+  #·················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+map @internalRoutineMap {
+  public let @formalParameterSignature mRoutineSignature
+  public let @bool mIsInternal
+  insert insertKey error message "the '%K' routine has been already declared in %L"
+  search searchKey error message "the '%K' routine is not declared"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————

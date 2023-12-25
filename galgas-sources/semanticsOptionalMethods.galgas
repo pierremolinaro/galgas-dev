@@ -1,4 +1,4 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
 #  semantics definitions for semantics component 
 #                                           
@@ -13,7 +13,7 @@
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
 #  details.                                 
 #                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #proc enterBaseFinalGetterWithoutArgument ?!@getterMap ioGetterMap
 #                                         ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -33,7 +33,7 @@
 #  ]
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #proc enterInheritedGetterWithoutArgument
 #  ?!@getterMap ioGetterMap
@@ -54,7 +54,7 @@
 #  ]
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #proc enterInheritedGetterWithArgument
 #  ?!@getterMap ioGetterMap
@@ -81,7 +81,7 @@
 #  ]
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #proc enterInheritedGetterWith2Arguments
 #  ?!@getterMap ioGetterMap
@@ -112,7 +112,7 @@
 #  ]
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #proc enterBaseGetterWithoutArgument
 #  ?!@getterMap ioGetterMap
@@ -134,7 +134,7 @@
 #  ]
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc enterBaseOptionalMethodWithArgument
   ?!@optionalMethodMap ioMap
@@ -152,7 +152,7 @@ proc enterBaseOptionalMethodWithArgument
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #proc enterBaseFinalGetterWithArgument
 #  ?!@getterMap ioGetterMap
@@ -179,7 +179,7 @@ proc enterBaseOptionalMethodWithArgument
 #  ]
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #proc enterBaseGetterWith2Arguments
 #  ?!@getterMap ioGetterMap
@@ -210,7 +210,7 @@ proc enterBaseOptionalMethodWithArgument
 #  ]
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #proc enterBaseFinalGetterWith2Arguments
 #  ?!@getterMap ioGetterMap
@@ -241,7 +241,7 @@ proc enterBaseOptionalMethodWithArgument
 #  ]
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #proc enterBaseFinalGetterWith3Arguments
 #  ?!@getterMap ioGetterMap
@@ -276,7 +276,7 @@ proc enterBaseOptionalMethodWithArgument
 #  ]
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #proc commonGetterMapForAllTypes ?!@unifiedTypeMap ioUnifiedTypeMap
 #                                !@getterMap outMap {
@@ -311,7 +311,7 @@ proc enterBaseOptionalMethodWithArgument
 #  )
 #}
 #
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 ##override method @locationPredefinedTypeAST getOptionalMethodMap
 ##  ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -370,7 +370,7 @@ proc enterBaseOptionalMethodWithArgument
 #  )
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @stringPredefinedTypeAST getOptionalMethodMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -383,7 +383,7 @@ override method @stringPredefinedTypeAST getOptionalMethodMap
   )
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #override method @charPredefinedTypeAST getOptionalMethodMap
 #  ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -539,7 +539,7 @@ override method @stringPredefinedTypeAST getOptionalMethodMap
 #  )
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #override method @boolPredefinedTypeAST getOptionalMethodMap
 #  ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -597,7 +597,7 @@ override method @stringPredefinedTypeAST getOptionalMethodMap
 #  )
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #override method @uintPredefinedTypeAST getOptionalMethodMap
 #  ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -744,7 +744,7 @@ override method @stringPredefinedTypeAST getOptionalMethodMap
 #  )
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #override method @sintPredefinedTypeAST getOptionalMethodMap
 #  ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -849,7 +849,7 @@ override method @stringPredefinedTypeAST getOptionalMethodMap
 #  )
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #override method @uint64PredefinedTypeAST getOptionalMethodMap
 #  ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -969,7 +969,7 @@ override method @stringPredefinedTypeAST getOptionalMethodMap
 #  )
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #override method @sint64PredefinedTypeAST getOptionalMethodMap
 #  ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -1074,7 +1074,7 @@ override method @stringPredefinedTypeAST getOptionalMethodMap
 #  )
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #override method @doublePredefinedTypeAST getOptionalMethodMap
 #  ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -1209,7 +1209,7 @@ override method @stringPredefinedTypeAST getOptionalMethodMap
 #  )
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #override method @stringsetPredefinedTypeAST getOptionalMethodMap
 #  ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -1246,7 +1246,7 @@ override method @stringPredefinedTypeAST getOptionalMethodMap
 #  )
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #override method @binarysetPredefinedTypeAST getOptionalMethodMap
 #  ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -1546,7 +1546,7 @@ override method @stringPredefinedTypeAST getOptionalMethodMap
 #  )
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #override method @typePredefinedTypeAST getOptionalMethodMap
 #  ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -1576,7 +1576,7 @@ override method @stringPredefinedTypeAST getOptionalMethodMap
 #  )
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #override method @dataPredefinedTypeAST getOptionalMethodMap
 #  ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -1599,7 +1599,7 @@ override method @stringPredefinedTypeAST getOptionalMethodMap
 #  )
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #override method @functionPredefinedTypeAST getOptionalMethodMap
 #  ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -1636,7 +1636,7 @@ override method @stringPredefinedTypeAST getOptionalMethodMap
 #  )
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #override method @objectPredefinedTypeAST getOptionalMethodMap
 #  ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -1659,7 +1659,7 @@ override method @stringPredefinedTypeAST getOptionalMethodMap
 #  )
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #override method @filewrapperPredefinedTypeAST getOptionalMethodMap
 #  ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -1759,7 +1759,7 @@ override method @stringPredefinedTypeAST getOptionalMethodMap
 #  )
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #override method @timerPredefinedTypeAST getOptionalMethodMap
 #  ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -1790,7 +1790,7 @@ override method @stringPredefinedTypeAST getOptionalMethodMap
 #  )
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #override method @bigintPredefinedTypeAST getOptionalMethodMap
 #  ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -1981,4 +1981,4 @@ override method @stringPredefinedTypeAST getOptionalMethodMap
 #  )
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————

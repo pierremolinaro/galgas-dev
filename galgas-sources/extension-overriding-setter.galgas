@@ -1,6 +1,6 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   AST                                     
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @overridingExtensionSetterAST : @semanticDeclarationAST {
   private let @bool requiresSelfForAccessingProperty %selector
@@ -11,13 +11,13 @@ refclass @overridingExtensionSetterAST : @semanticDeclarationAST {
   private let @location mEndOfSetterDeclarationLocation
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   SYNTAX                                  
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
 
-  #·····················································································································
+  #·················································································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $override$
@@ -30,7 +30,7 @@ syntax extension galgas3DeclarationsSyntax {
     let @location endOfSetterLocation = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@overridingExtensionSetterAST.new {
-      !false # Is not predefined
+      !isPredefined: false # Is not predefined
       !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
       !className
       !setterName
@@ -40,7 +40,7 @@ syntax extension galgas3DeclarationsSyntax {
     }
   }
 
-  #·····················································································································
+  #·················································································································
 
   rule <method_declaration_ggs3> ?let @lstring inClassName
                             ?!@galgasDeclarationAST ioDeclarations {
@@ -53,7 +53,7 @@ syntax extension galgas3DeclarationsSyntax {
     let @location endOfSetterLocation = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@overridingExtensionSetterAST.new {
-      !false # Is not predefined
+      !isPredefined: false # Is not predefined
       !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
       !inClassName
       !setterName
@@ -63,13 +63,13 @@ syntax extension galgas3DeclarationsSyntax {
     }
   }
 
-  #·····················································································································
+  #·················································································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   ENTER IN GRAPH                          
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingExtensionSetterAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
@@ -81,17 +81,17 @@ override method @overridingExtensionSetterAST enterDeclarationInGraph
   ioExtensionOverrideDefinitionList += !self
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   KEY REPRESENTATION                      
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @overridingExtensionSetterAST keyRepresentation -> @string {
   result = "overriding extension setter @" + self.mTypeName + " " + self.mOverridingExtensionSetterName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   SEMANTIC CONTEXT                        
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingExtensionSetterAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
@@ -102,9 +102,9 @@ override method @overridingExtensionSetterAST enterDeclarationInSemanticContext
 {
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   SEMANTIC ANALYSIS                       
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingExtensionSetterAST semanticAnalysis
   ?!@lstringlist unused ioUsefulnessRootEntities 
@@ -176,10 +176,10 @@ override method @overridingExtensionSetterAST semanticAnalysis
   end
 #---
   ioSemanticDeclarationListForGeneration +=
-    !" overriding extension setter " + self.mOverridingExtensionSetterName
+    !infoMessage: " overriding extension setter " + self.mOverridingExtensionSetterName
     !@overridingExtensionSetterForGeneration.new {
-      !false # Do not generate Cpp header file
-      !"setter-" + [self.mTypeName fileNameRepresentation] + "-" + [self.mOverridingExtensionSetterName fileNameRepresentation]
+      !generateHeader: false # Do not generate Cpp header file
+      !mImplementationCppFileName: "setter-" + [self.mTypeName fileNameRepresentation] + "-" + [self.mOverridingExtensionSetterName fileNameRepresentation]
       !selfType
       !baseTypeName
       !self.mOverridingExtensionSetterName.string
@@ -189,9 +189,9 @@ override method @overridingExtensionSetterAST semanticAnalysis
     }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   EXTENSION LIST MAP                      
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingExtensionSetterAST buildExtensionListMaps
   ?!@genericExtensionMethodListMap unused ioAbstractExtensionSetterListMap
@@ -212,9 +212,9 @@ override method @overridingExtensionSetterAST buildExtensionListMaps
     !self.mOverridingExtensionSetterName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   CODE GENERATION                         
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @overridingExtensionSetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
   private let @unifiedTypeMapEntry mReceiverType
@@ -268,5 +268,5 @@ override method @overridingExtensionSetterForGeneration appendSpecificImplementa
   ] 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

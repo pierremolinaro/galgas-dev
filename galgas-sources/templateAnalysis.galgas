@@ -1,4 +1,4 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
 #  Template semantics analysis              
 #                                           
@@ -13,20 +13,20 @@
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
 #  details.                                 
 #                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
 #   T E M P L A T E    A N A L Y S I S    C O N T E X T 
 #                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @templateVariableMap {
   public let @unifiedTypeMapEntry mType
   public let @string mCppName
-  search searchKey error message"the '%K' variable is not declared"
-  insert insertKey error message"the '%K' variable is already declared in %L"
+  search searchKey error message "the '%K' variable is not declared"
+  insert insertKey error message "the '%K' variable is already declared in %L"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @templateAnalysisContext {
   public let @semanticContext mSemanticContext
@@ -34,11 +34,11 @@ struct @templateAnalysisContext {
   public var @templateVariableMap mTemplateVariableMap
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
 #   E X P R E S S I O N                     
 #                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @templateExpressionAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
@@ -47,9 +47,9 @@ abstract method @templateExpressionAST templateExpressionAnalysis
   ?!@unifiedTypeMap ioTypeMap
   !@semanticExpressionForGeneration outExpression
  
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   G E T T E R    C A L L    O P E R A N D 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateGetterCallInExpressionAST : @templateExpressionAST {
   private let @templateExpressionAST mReceiverExpression
@@ -58,9 +58,9 @@ refclass @templateGetterCallInExpressionAST : @templateExpressionAST {
   private let @location mExpressionLocation
 }
  
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   R E A D E R    C A L L    O P E R A N D 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateGetterCallInExpressionAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
@@ -210,9 +210,9 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
   end
 }
  
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   C O N S T R U C T O R                   
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateConstructorAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
@@ -282,9 +282,9 @@ override method @templateConstructorAST templateExpressionAnalysis
     !hasCompilerArgument}
 }
  
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   F I L E W R A P P E R    T E M P L A T E     C A L L
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateFileWrapperTemplateCallAST templateExpressionAnalysis
   ?let @lstring unused inUsefulnessCallerEntityName
@@ -296,9 +296,9 @@ override method @templateFileWrapperTemplateCallAST templateExpressionAnalysis
   error self.mFileWrapperName:"unhandled @templateFileWrapperTemplateCallAST templateExpressionAnalysis":outExpression
 }
  
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   B O O L E A N    O P E R A T I O N S    
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateAndOperationAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
@@ -341,7 +341,7 @@ override method @templateAndOperationAST templateExpressionAnalysis
   }
 }
  
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateOrOperationAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
@@ -384,7 +384,7 @@ override method @templateOrOperationAST templateExpressionAnalysis
   }
 }
  
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateXorOperationAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
@@ -427,7 +427,7 @@ override method @templateXorOperationAST templateExpressionAnalysis
   }
 }
  
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateTrueBoolAST templateExpressionAnalysis
   ?let @lstring unused inUsefulnessCallerEntityName
@@ -439,7 +439,7 @@ override method @templateTrueBoolAST templateExpressionAnalysis
   outExpression = @trueExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mBoolType !self.mLocation}
 }
  
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateFalseBoolAST templateExpressionAnalysis
   ?let @lstring unused inUsefulnessCallerEntityName
@@ -451,7 +451,7 @@ override method @templateFalseBoolAST templateExpressionAnalysis
   outExpression = @falseExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mBoolType !self.mLocation}
 }
  
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateLiteralStringExpressionAST templateExpressionAnalysis
   ?let @lstring unused inUsefulnessCallerEntityName
@@ -467,7 +467,7 @@ override method @templateLiteralStringExpressionAST templateExpressionAnalysis
   outExpression = @literalStringExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mStringType !self.mLocation !s}
 }
  
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateLiteralUIntExpressionAST templateExpressionAnalysis
   ?let @lstring unused inUsefulnessCallerEntityName
@@ -483,7 +483,7 @@ override method @templateLiteralUIntExpressionAST templateExpressionAnalysis
   }
 }
  
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #override method @templateLiteralSIntExpressionAST templateExpressionAnalysis
 #  ?let @lstring unused inUsefulnessCallerEntityName
@@ -497,7 +497,7 @@ override method @templateLiteralUIntExpressionAST templateExpressionAnalysis
 #    !self.mLiteralInt.sint}
 #}
  
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #override method @templateLiteralUInt64ExpressionAST templateExpressionAnalysis
 #  ?let @lstring unused inUsefulnessCallerEntityName
@@ -511,7 +511,7 @@ override method @templateLiteralUIntExpressionAST templateExpressionAnalysis
 #    !self.mLiteralInt.uint64}
 #}
  
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #override method @templateLiteralSInt64ExpressionAST templateExpressionAnalysis
 #  ?let @lstring unused inUsefulnessCallerEntityName
@@ -525,7 +525,7 @@ override method @templateLiteralUIntExpressionAST templateExpressionAnalysis
 #    !self.mLiteralInt.sint64}
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateLiteralCharExpressionAST templateExpressionAnalysis
   ?let @lstring unused inUsefulnessCallerEntityName
@@ -540,7 +540,7 @@ override method @templateLiteralCharExpressionAST templateExpressionAnalysis
     !self.mLiteralChar.char}
 }
  
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateLiteralDoubleExpressionAST templateExpressionAnalysis
   ?let @lstring unused inUsefulnessCallerEntityName
@@ -555,7 +555,7 @@ override method @templateLiteralDoubleExpressionAST templateExpressionAnalysis
     !self.mLiteralDouble.double}
 }
  
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateNotOperatorAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
@@ -588,7 +588,7 @@ override method @templateNotOperatorAST templateExpressionAnalysis
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateLogicalNegateAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
@@ -620,7 +620,7 @@ override method @templateLogicalNegateAST templateExpressionAnalysis
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateTestDynamicClassAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
@@ -667,7 +667,7 @@ override method @templateTestDynamicClassAST templateExpressionAnalysis
     !castType}
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateOptionAccessAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
@@ -754,9 +754,9 @@ override method @templateOptionAccessAST templateExpressionAnalysis
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   F U N C T I O N    C A L L              
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateFunctionCallAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
@@ -814,9 +814,9 @@ override method @templateFunctionCallAST templateExpressionAnalysis
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   T E M P L A T E    E X T E N S I O N    
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateExtensionTemplateCallAST templateExpressionAnalysis
   ?let @lstring unused inUsefulnessCallerEntityName
@@ -830,9 +830,9 @@ override method @templateExtensionTemplateCallAST templateExpressionAnalysis
   :outExpression
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   S I M P L E    V A R I A B L E          
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateVarInExpressionAST templateExpressionAnalysis
   ?let @lstring unused inUsefulnessCallerEntityName
@@ -849,9 +849,9 @@ override method @templateVarInExpressionAST templateExpressionAnalysis
     !sourceVariableCppName}
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   A D D I T I O N    O P E R A T I O N    
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateAddOperationAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
@@ -894,9 +894,9 @@ override method @templateAddOperationAST templateExpressionAnalysis
   }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   S U B S T R A C T I O N    O P E R A T I O N 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateSubOperationAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
@@ -939,9 +939,9 @@ override method @templateSubOperationAST templateExpressionAnalysis
   }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   M U L T I P L I C A T I O N    O P E R A T I O N    
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateMultiplyOperationAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
@@ -984,9 +984,9 @@ override method @templateMultiplyOperationAST templateExpressionAnalysis
   }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   D I V I S I O N    O P E R A T I O N    
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateDivideOperationAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
@@ -1029,9 +1029,9 @@ override method @templateDivideOperationAST templateExpressionAnalysis
   }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   M O D U L O    O P E R A T I O N        
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateModuloOperationAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
@@ -1074,9 +1074,9 @@ override method @templateModuloOperationAST templateExpressionAnalysis
   }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   U N A R Y   -    O P E R A T I O N      
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateUnaryMinusOperationAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
@@ -1108,9 +1108,9 @@ override method @templateUnaryMinusOperationAST templateExpressionAnalysis
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   S T R U C T    F I E L D    A C C E S S    O P E R A T I O N                                               
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @structFieldAccessTemplateExpressionAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
@@ -1147,9 +1147,9 @@ override method @structFieldAccessTemplateExpressionAST templateExpressionAnalys
   }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #  ==    O P E R A T I O N                  
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateEqualTestAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
@@ -1192,7 +1192,7 @@ override method @templateEqualTestAST templateExpressionAnalysis
   }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateNonEqualTestAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
@@ -1235,7 +1235,7 @@ override method @templateNonEqualTestAST templateExpressionAnalysis
   }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateStrictInfTestAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
@@ -1278,7 +1278,7 @@ override method @templateStrictInfTestAST templateExpressionAnalysis
   }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateInfOrEqualTestAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
@@ -1321,7 +1321,7 @@ override method @templateInfOrEqualTestAST templateExpressionAnalysis
   }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateStrictSupTestAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
@@ -1364,7 +1364,7 @@ override method @templateStrictSupTestAST templateExpressionAnalysis
   }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateSupOrEqualTestAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
@@ -1407,7 +1407,7 @@ override method @templateSupOrEqualTestAST templateExpressionAnalysis
   }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateLeftShiftOperationAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
@@ -1455,7 +1455,7 @@ override method @templateLeftShiftOperationAST templateExpressionAnalysis
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateRightShiftOperationAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
@@ -1503,11 +1503,11 @@ override method @templateRightShiftOperationAST templateExpressionAnalysis
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
 #    I N S T R U C T I O N S                
 #                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @templateInstructionAST templateInstructionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
@@ -1516,7 +1516,7 @@ abstract method @templateInstructionAST templateInstructionAnalysis
   ?!@unifiedTypeMap ioTypeMap
   ?!@templateInstructionListForGeneration ioInstructionList
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc templateInstructionListAnalysis
   ?let @lstring inUsefulnessCallerEntityName
@@ -1537,7 +1537,7 @@ proc templateInstructionListAnalysis
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateInstructionStringAST templateInstructionAnalysis
   ?let @lstring unused inUsefulnessCallerEntityName
@@ -1549,7 +1549,7 @@ override method @templateInstructionStringAST templateInstructionAnalysis
   ioInstructionList += !@templateInstructionStringForGeneration.new {!self.mTemplateString}
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateInstructionExpressionAST templateInstructionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
@@ -1571,7 +1571,7 @@ override method @templateInstructionExpressionAST templateInstructionAnalysis
   ioInstructionList += !@templateInstructionExpressionForGeneration.new {!expression}
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateBlockInstructionAST templateInstructionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
@@ -1614,7 +1614,7 @@ override method @templateBlockInstructionAST templateInstructionAnalysis
   ioInstructionList += !@templateBlockInstructionForGeneration.new {!expression !self.mLocation !blockInstructionList}
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateInstructionGetColumnLocationAST templateInstructionAnalysis
   ?let @lstring unused inUsefulnessCallerEntityName
@@ -1626,7 +1626,7 @@ override method @templateInstructionGetColumnLocationAST templateInstructionAnal
   ioInstructionList += !@templateInstructionGetColumnLocationForGeneration.new
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateInstructionGotoColumnLocationAST templateInstructionAnalysis
   ?let @lstring unused inUsefulnessCallerEntityName
@@ -1639,7 +1639,7 @@ override method @templateInstructionGotoColumnLocationAST templateInstructionAna
 }
 
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateInstructionIfAST templateInstructionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
@@ -1687,5 +1687,5 @@ override method @templateInstructionIfAST templateInstructionAnalysis
     !elseInstructionList}
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

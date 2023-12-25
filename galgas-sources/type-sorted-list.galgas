@@ -1,13 +1,13 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   AST                                     
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @sortedListSortDescriptorListAST {
   public let @lstring mSortedAttributeName
   public let @bool mAscending
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @sortedListDeclarationAST : @semanticDeclarationAST {
   private let @lstring mSortedListTypeName
@@ -15,13 +15,13 @@ refclass @sortedListDeclarationAST : @semanticDeclarationAST {
   private let @sortedListSortDescriptorListAST mSortDescriptorList
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   SYNTAX                                  
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
 
-  #·····················································································································
+  #·················································································································
 
   rule <declaration_ggs3>
     ?!@galgasDeclarationAST ioDeclarations
@@ -44,14 +44,14 @@ syntax extension galgas3DeclarationsSyntax {
     end
     $}$
     ioDeclarations.mDeclarationList += !@sortedListDeclarationAST.new {
-      !false # Is not predefined
+      !isPredefined: false # Is not predefined
       !sortedListTypeName
       !attributeList
       !sortDescriptorList
     }
   }
 
-  #·····················································································································
+  #·················································································································
 
   rule <sortedlist_sort_descriptor> ?!@sortedListSortDescriptorListAST ioSortedListSortDescriptorList {
     $identifier$ ?let @lstring mSortedAttributeName
@@ -66,15 +66,15 @@ syntax extension galgas3DeclarationsSyntax {
     ioSortedListSortDescriptorList += !mSortedAttributeName !mAscending
   }
 
-  #·····················································································································
+  #·················································································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4DeclarationsSyntax {
 
-  #·····················································································································
+  #·················································································································
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations
                      ?!@stringset ioUserImplicitDeclaredTypeSet {
@@ -96,14 +96,14 @@ syntax extension galgas4DeclarationsSyntax {
     end
     $}$
     ioDeclarations.mDeclarationList += !@sortedListDeclarationAST.new {
-      !false # Is not predefined
+      !isPredefined: false # Is not predefined
       !sortedListTypeName
       !attributeList
       !sortDescriptorList
     }
   }
 
-  #·····················································································································
+  #·················································································································
 
   rule <sortedlist_sort_descriptor> ?!@sortedListSortDescriptorListAST ioSortedListSortDescriptorList {
     $identifier$ ?let @lstring mSortedAttributeName
@@ -118,12 +118,12 @@ syntax extension galgas4DeclarationsSyntax {
     ioSortedListSortDescriptorList += !mSortedAttributeName !mAscending
   }
 
-  #·····················································································································
+  #·················································································································
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   ENTER IN GRAPH                          
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @sortedListDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
@@ -138,9 +138,9 @@ override method @sortedListDeclarationAST enterDeclarationInGraph
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   SEMANTIC CONTEXT                        
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @sortedListDeclarationAST addAssociatedElement
   ?!@semanticDeclarationListAST ioSemanticDeclarationList {
@@ -155,7 +155,7 @@ override method @sortedListDeclarationAST addAssociatedElement
       !initExpression
   end
   ioSemanticDeclarationList += !@structDeclarationAST.new {
-    !self.mIsPredefined
+    !isPredefined: self.isPredefined
     !@lstring.new {!self.mSortedListTypeName.string + elementTypeNameSuffix () !self.mSortedListTypeName.location}
     !structAttributeList
     !""
@@ -282,7 +282,7 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
 #--- Enter in type map
   let typeDefinition = @unifiedTypeDefinition.new {
     !self.mSortedListTypeName
-    !self.mIsPredefined
+    !self.isPredefined
     !true # Concrete Type
     !@unifiedTypeMapEntry.null
     !@typeKindEnum. sortedListType
@@ -312,9 +312,9 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
   [!?ioTypeMap insertType !typeDefinition.mTypeName !typeDefinition]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   SEMANTIC ANALYSIS                       
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @sortedListDeclarationAST semanticAnalysis
   ?!@lstringlist unused ioUsefulnessRootEntities 
@@ -358,7 +358,7 @@ override method @sortedListDeclarationAST semanticAnalysis
   end
 #--- Generate type
   ioSemanticDeclarationListForGeneration +=
-    !"sorted list " + self.mSortedListTypeName
+    !infoMessage: "sorted list " + self.mSortedListTypeName
     !@sortedListTypeForGeneration.new {
       ![ioTypeMap searchKey !self.mSortedListTypeName]
       ![ioTypeMap searchKey !.new {!self.mSortedListTypeName.string + elementTypeNameSuffix () !self.mSortedListTypeName}]
@@ -367,9 +367,9 @@ override method @sortedListDeclarationAST semanticAnalysis
     }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   CODE GENERATION                         
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @sortDescriptorListForGeneration {
   public let @unifiedTypeMapEntry mAttributeTypeIndex
@@ -447,5 +447,5 @@ override method @sortedListTypeForGeneration appendSpecificImplementation
   ]
  }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
