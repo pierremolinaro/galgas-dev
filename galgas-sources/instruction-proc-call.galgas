@@ -69,8 +69,9 @@ refclass @procCallInstructionAST : @semanticInstructionAST {
    #--- Get routine signature
     [inAnalysisContext.mSemanticContext.mRoutineMap searchKey
        !self.mRoutineName
+       !actualParameters: self.mActualParameterList
        ?let @formalParameterSignature routineSignature
-       ?let @bool isFilePrivate
+       ?isFilePrivate: let @bool isFilePrivate
        ?routineMangledName: let routineMangledName
      ]
   #--- Usefulness
@@ -84,7 +85,7 @@ refclass @procCallInstructionAST : @semanticInstructionAST {
       end
     end
   #--- Check effective parameters
-    analyzeRoutineArguments (
+    [self.mActualParameterList analyzeRoutineArguments
       !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
@@ -92,11 +93,10 @@ refclass @procCallInstructionAST : @semanticInstructionAST {
       !self.mRoutineName
       !invokedEntityNameForErrorSignaling: "'" + routineMangledName + "' routine header"
       !routineSignature
-      !self.mActualParameterList
       !?ioVariableMap
       !?ioInstructionListForGeneration
       ?let @actualParameterListForGeneration actualParameterListForGeneration
-    )
+    ]
   #--- Generate instruction
     ioInstructionListForGeneration += !@procCallInstructionForGeneration.new {
       !routineMangledName: routineMangledName # self.mRoutineName

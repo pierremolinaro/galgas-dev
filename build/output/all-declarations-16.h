@@ -360,6 +360,26 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtension
 
 //--------------------------------------------------------------------------------------------------
 //
+//Extension method '@actualParameterListAST analyzeRoutineArguments'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionMethod_analyzeRoutineArguments (const class GALGAS_actualParameterListAST inObject,
+                                              const class GALGAS_lstring constin_inUsefulnessCallerEntityName,
+                                              class GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
+                                              const class GALGAS_analysisContext constin_inAnalysisContext,
+                                              class GALGAS_unifiedTypeMap & io_ioTypeMap,
+                                              const class GALGAS_lstring constin_inRoutineName,
+                                              const class GALGAS_string constin_inInvokedEntityName,
+                                              const class GALGAS_formalParameterSignature constin_inRoutineSignature,
+                                              class GALGAS_localVarManager & io_ioVariableMap,
+                                              class GALGAS_semanticInstructionListForGeneration & io_ioInstructionListForGeneration,
+                                              class GALGAS_actualParameterListForGeneration & out_outActualParameterListForGeneration,
+                                              class Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 // Phase 1: @routinePrototypeDeclarationForGeneration reference class
 //
 //--------------------------------------------------------------------------------------------------
@@ -676,11 +696,22 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_routineImplementati
 
 void extensionMethod_searchKey (const class GALGAS_routineMap inObject,
                                 const class GALGAS_lstring constin_inRoutineName,
+                                class GALGAS_actualParameterListAST in_inActualParameterList,
                                 class GALGAS_formalParameterSignature & out_outRoutineSignature,
-                                class GALGAS_bool & out_outIsInternal,
+                                class GALGAS_bool & out_outIsFilePrivate,
                                 class GALGAS_lstring & out_outRoutineMangledName,
                                 class Compiler * inCompiler
                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'routineArgumentFromFormalParameters'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_string function_routineArgumentFromFormalParameters (const class GALGAS_formalParameterSignature & constinArgument0,
+                                                                  class Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

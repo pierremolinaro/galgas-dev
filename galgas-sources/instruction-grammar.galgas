@@ -386,7 +386,7 @@ override method @grammarInFileInstructionAST analyzeSemanticInstruction
     ?let @formalParameterSignature labelSignature
   ]
 #--- Check actual parameters
-  analyzeRoutineArguments (
+  [self.mActualParameterList analyzeRoutineArguments
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
@@ -394,11 +394,10 @@ override method @grammarInFileInstructionAST analyzeSemanticInstruction
     !self.mLabelName
     !invokedEntityNameForErrorSignaling: "label of the " + self.mGrammarComponentName + " grammar"
     !labelSignature
-    !self.mActualParameterList
     !?ioVariableMap
     !?ioInstructionListForGeneration
     ?let @actualParameterListForGeneration actualParameterListForGeneration
-  )
+  ]
 #--- Parse source expression
   [self.mSourceExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
@@ -464,7 +463,7 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
     ?let @formalParameterSignature labelSignature
   ]
 #--- Check actual parameters
-  analyzeRoutineArguments (
+  [self.mActualParameterList analyzeRoutineArguments
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
@@ -472,11 +471,10 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
     !self.mLabelName
     !invokedEntityNameForErrorSignaling: "label of the " + self.mGrammarComponentName + " grammar"
     !labelSignature
-    !self.mActualParameterList
     !?ioVariableMap
     !?ioInstructionListForGeneration
     ?let @actualParameterListForGeneration actualParameterListForGeneration
-  )
+  ]
 #--- Parse source expression
   [self.mSourceExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName

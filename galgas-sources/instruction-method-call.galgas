@@ -126,7 +126,7 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
     error self.mMethodName : errorMessage
   end
 #--- Check effective parameters
-  analyzeRoutineArguments (
+  [self.mActualParameterList analyzeRoutineArguments
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
@@ -134,11 +134,10 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
     !self.mMethodName
     !invokedEntityNameForErrorSignaling: "'" + self.mMethodName + "' instance method header"
     !routineSignature
-    !self.mActualParameterList
     !?ioVariableMap
     !?ioInstructionListForGeneration
     ?let @actualParameterListForGeneration actualParameterListForGeneration
-  )
+  ]
 #--- Search base type that declares the method
   var baseType = receiverExpression.mResultType
   var searching = true

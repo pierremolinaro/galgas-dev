@@ -137,7 +137,7 @@ override method @nonterminalCallInstruction analyzeSyntaxInstruction
     [labelMap searchKey !self.mLabelName ?* ?signature ?*]
   end
 #--- call arguments
-  analyzeRoutineArguments (
+  [self.mActualParameterList analyzeRoutineArguments
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
@@ -145,11 +145,10 @@ override method @nonterminalCallInstruction analyzeSyntaxInstruction
     !self.mNonterminalName
     !invokedEntityNameForErrorSignaling: "'<" + self.mNonterminalName + ">' nonterminal declaration"
     !signature
-    !self.mActualParameterList
     !?ioVariableMap
     !?ioInstructionListForGeneration
     ?let @actualParameterListForGeneration actualParameterListForGeneration
-  )
+  ]
 #--- Check syntax directed translation destination variable
   [self.mGrammarInstructionSyntaxDirectedTranslationResult analyzeSDT
     !inAnalysisContext

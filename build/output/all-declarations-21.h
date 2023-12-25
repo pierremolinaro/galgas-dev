@@ -606,7 +606,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_boolsetTypeForGener
 void extensionSetter_insertKey (class GALGAS_routineMap & ioObject,
                                 const class GALGAS_lstring constin_inRoutineName,
                                 const class GALGAS_formalParameterSignature constin_inRoutineSignature,
-                                const class GALGAS_bool constin_inIsInternal,
+                                const class GALGAS_bool constin_inIsFilePrivate,
                                 class Compiler * inCompiler
                                 COMMA_LOCATION_ARGS) ;
 

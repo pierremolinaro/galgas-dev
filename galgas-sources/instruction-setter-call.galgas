@@ -299,7 +299,7 @@ override method @setterCallInstructionAST analyzeSemanticInstruction ?let @lstri
     error self.mSetterName : setterErrorMessage
   end
 #--- Check effective parameters
-  analyzeRoutineArguments (
+  [self.mActualParameterList analyzeRoutineArguments
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
@@ -307,11 +307,10 @@ override method @setterCallInstructionAST analyzeSemanticInstruction ?let @lstri
     !self.mSetterName
     !invokedEntityNameForErrorSignaling: "'" + self.mSetterName + "' setter header"
     !routineSignature
-    !self.mActualParameterList
     !?ioVariableMap
     !?ioInstructionListForGeneration
     ?let @actualParameterListForGeneration actualParameterListForGeneration
-  )
+  ]
 #--- Search base type that declares the method
   var baseType = castType
   var searching = true
@@ -364,7 +363,7 @@ override method @selfSetterCallInstructionAST analyzeSemanticInstruction
   #--- Get setter signature
     [[selfType definition].mSetterMap searchKey !self.mSetterName ?let kind ?let routineSignature ?let hasCompilerArgument ?* ?*]
   #--- Check effective parameters
-    analyzeRoutineArguments (
+    [self.mActualParameterList analyzeRoutineArguments
       !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
@@ -372,11 +371,10 @@ override method @selfSetterCallInstructionAST analyzeSemanticInstruction
       !self.mSetterName
       !invokedEntityNameForErrorSignaling: "'" + self.mSetterName + "' setter header"
       !routineSignature
-      !self.mActualParameterList
       !?ioVariableMap
       !?ioInstructionListForGeneration
       ?let @actualParameterListForGeneration actualParameterListForGeneration
-    )
+    ]
   #--- Generate instructions
     ioInstructionListForGeneration += !@selfSetterCallInstructionForGeneration.new {
       !inAnalysisContext.mSelfObjectCppName

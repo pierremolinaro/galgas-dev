@@ -2,7 +2,7 @@
 #                                           
 #  semantics routine map
 #                                           
-#  Copyright (C) 2010, ..., 2023 Pierre Molinaro.
+#  Copyright (C) 2023, ..., 2023 Pierre Molinaro.
 #                                           
 #  e-mail : pierre@pcmolinaro.name          
 #                                           
@@ -34,6 +34,27 @@ func routineMangledName ?let @lstring inRoutineName
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+private func routineArgumentFromFormalParameters ?let @formalParameterSignature inRoutineFormalParameters -> @string {
+  result = "("
+  for parameter in inRoutineFormalParameters
+  do
+    switch parameter.mFormalArgumentPassingMode 
+    case argumentConstantIn, argumentIn :
+      result +="?"
+    case argumentInOut :
+      result +="!?"
+    case argumentOut :
+      result +="!"
+    end
+    result += parameter.mFormalSelector.string + ":"
+  between
+    result += ","
+  end
+  result += ")"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 struct @routineMap {
   private var @internalRoutineMap mInternalRoutineMap = {}
  
@@ -41,18 +62,69 @@ struct @routineMap {
  
   setter insertKey ?let @lstring inRoutineName
                    ?let @formalParameterSignature inRoutineSignature
-                   ?isFilePrivate: let @bool inIsInternal {
-    [!?self.mInternalRoutineMap insertKey !inRoutineName !inRoutineSignature !inIsInternal]
+                   ?isFilePrivate: let @bool inIsFilePrivate {
+    var @routineArgumentMap routineArgumentMap
+    if [self.mInternalRoutineMap hasKey !inRoutineName] then
+      [self.mInternalRoutineMap searchKey !inRoutineName ?routineArgumentMap]
+    else
+      routineArgumentMap = {}
+    end
+    let routineArguments = routineArgumentFromFormalParameters (!inRoutineSignature)
+    if [routineArgumentMap hasKey !routineArguments] then
+      error inRoutineName : "duplicated declaration of the " + inRoutineName + routineArguments + " routine"
+    else
+     [!?routineArgumentMap insertKey
+       !.new {!routineArguments !inRoutineName.location}
+       !inRoutineSignature
+       !inIsFilePrivate
+     ]
+     [!?self.mInternalRoutineMap insertOrReplace !inRoutineName !routineArgumentMap]
+    end
   }
 
   #·················································································································
  
   method searchKey ?let @lstring inRoutineName
+                   ?actualParameters: @actualParameterListAST inActualParameterList
                    !@formalParameterSignature outRoutineSignature
-                   !@bool outIsInternal
+                   !isFilePrivate: @bool outIsFilePrivate
                    !routineMangledName: @lstring outRoutineMangledName {
-    [self.mInternalRoutineMap searchKey !inRoutineName ?outRoutineSignature ?outIsInternal]
-    outRoutineMangledName = routineMangledName (!inRoutineName !outRoutineSignature)
+    [self.mInternalRoutineMap searchKey !inRoutineName ?let routineArgumentMap]
+    outIsFilePrivate = false
+    outRoutineSignature = {}
+    for entry in routineArgumentMap do
+      outIsFilePrivate = entry.mIsFilePrivate
+      outRoutineSignature = entry.mRoutineSignature
+    end
+    var @acceptableParameterList acceptableParameterList = {}
+    for entry in routineArgumentMap do
+      var accept = [inActualParameterList length] == [entry.mRoutineSignature length]
+      for formalParameter in entry.mRoutineSignature, (actualParameter) in inActualParameterList while accept do
+        accept = [actualParameter isCompatibleWith
+          !formalParameter.mFormalArgumentPassingMode
+          !formalParameter.mFormalSelector
+        ]
+      end
+      if accept then
+        acceptableParameterList += !entry.mRoutineSignature !entry.mIsFilePrivate
+      end
+    end
+    if [acceptableParameterList count] == 1 then
+      [acceptableParameterList first ?outRoutineSignature ?outIsFilePrivate]
+      outRoutineMangledName = routineMangledName (!inRoutineName !outRoutineSignature)
+    elsif [acceptableParameterList count] == 0 then
+      error inRoutineName
+      : "cannot find any procedure with compatible formal argument list"
+      : outRoutineSignature, outIsFilePrivate, outRoutineMangledName
+    else
+      var s = "ambiguity, several procedures with compatible formal argument list:"
+      for element in acceptableParameterList do
+        s += "\n  - " + routineArgumentFromFormalParameters (!element.mRoutineSignature)
+      end
+      error inRoutineName
+      : s
+      : outRoutineSignature, outIsFilePrivate, outRoutineMangledName
+    end
   }
 
   #·················································································································
@@ -68,10 +140,26 @@ struct @routineMap {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @internalRoutineMap {
-  public let @formalParameterSignature mRoutineSignature
-  public let @bool mIsInternal
+  public var @routineArgumentMap mArgumentMap
   insert insertKey error message "the '%K' routine has been already declared in %L"
   search searchKey error message "the '%K' routine is not declared"
+  insert or replace
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+map @routineArgumentMap {
+  public let @formalParameterSignature mRoutineSignature
+  public let @bool mIsFilePrivate
+  insert insertKey error message "-- internal error --"
+  search searchKey error message "-- internal error --"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+list @acceptableParameterList {
+  public let @formalParameterSignature mRoutineSignature
+  public let @bool mIsFilePrivate
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————

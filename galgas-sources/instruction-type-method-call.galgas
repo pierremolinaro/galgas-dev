@@ -85,7 +85,7 @@ override method @typeMethodCallInstructionAST analyzeSemanticInstruction
 #--- Get type method signature
   [[type definition].mClassMethodMap searchKey !self.mMethodName ?let routineSignature ?let hasCompilerArgument]
 #--- Check effective parameters
-  analyzeRoutineArguments (
+  [self.mActualParameterList analyzeRoutineArguments
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
@@ -93,11 +93,10 @@ override method @typeMethodCallInstructionAST analyzeSemanticInstruction
     !self.mMethodName
     !invokedEntityNameForErrorSignaling: "'" + self.mMethodName + "' type proc header"
     !routineSignature
-    !self.mActualParameterList
     !?ioVariableMap
     !?ioInstructionListForGeneration
     ?let @actualParameterListForGeneration actualParameterListForGeneration
-  )
+  ]
 #--- Generate instructions
   ioInstructionListForGeneration += !@typeMethodCallInstructionForGeneration.new {
     !self.mTypeName

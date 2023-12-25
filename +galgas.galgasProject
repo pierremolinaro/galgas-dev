@@ -112,7 +112,8 @@ project (3:7:0) -> "galgas" {
   "galgas-sources/extension-overriding-method.galgas"
   "galgas-sources/extension-overriding-setter.galgas"
 
-#--- Semantics Component
+#--- Semantics Component`
+  "galgas-sources/actual-parameters.galgas"
   "galgas-sources/extern-procedure-declaration.galgas"
   "galgas-sources/procedure-declaration.galgas"
   "galgas-sources/semanticsTypesForAST.galgas"
