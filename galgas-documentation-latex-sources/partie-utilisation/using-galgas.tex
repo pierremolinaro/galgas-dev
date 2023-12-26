@@ -1,0 +1,225 @@
+%!TEX encoding = UTF-8 Unicode
+%!TEX root = ../galgas-book.tex
+
+%--------------------------------------------------------------
+\chapter{Options de la ligne de commande}\index{Options de la ligne de commande}
+%-------------------------------------------------------------
+
+\tableDesMatieresLocaleDeProfondeurRelative{1}
+
+GALGAS accepte un certain nombre d’options, qui sont détaillées dans les pages suivantes.
+
+L’analyse des arguments de la ligne de commande est simple :
+\begin{itemize}
+  \item tout argument qui commence par un « - » est une option ;
+  \item tout argument qui ne commence pas par un « - » est considéré comme un fichier source GALGAS ;
+  \item les extensions acceptables par le compilateur GALGAS sont :
+  \begin{itemize}
+    \item « \texttt{.galgas} », un fichier source ;
+    \item « \texttt{.galgasProject} », un fichier de description de projet ;
+    \item « \texttt{.galgasTemplate} », un fichier de description de template.
+  \end{itemize}
+\end{itemize}
+
+L’ordre des options et des fichiers sources est quelconque. La ligne de commande est complètement analysée avant le traitement des fichiers sources. Si plusieurs fichiers sources apparaissent dans la ligne de commande, ils sont traités dans leur ordre d’apparition.
+
+{\bf Note pour Windows.} L’outil GALGAS pour Windows propose par défaut un dialogue invitant à entrer les références d’un fichier source si la ligne ne contient aucun fichier source (c’est le cas quand on double-clique sur l’icône de l’application). L'option \optionGGS{-{-}no-dialog}, spécifique à cette plate forme, permet d'inhiber l’apparition du dialogue.
+
+\sectionLabel{Options générales}{optionGenerales}
+
+\optionGGS{-{-}help} Affiche la liste des options.
+
+\optionGGS{-{-}version} Affiche le numéro de version.
+
+\optionGGS{-{-}no-color} Les messages émis sur le terminal sont en texte pur, sans coloration.
+
+\optionGGS{-{-}no-dialog} (\emph{uniquement sur Windows}) L’outil GALGAS pour Windows propose par défaut un dialogue invitant à entrer la référence d’un fichier source si la ligne ne contient aucun fichier source (c’est le cas quand on double-clique sur l’icône de l’application). Cette option permet d'inhiber l’apparition du dialogue.
+
+
+\sectionLabel{Options \emph{quiet} et \emph{verbose}}{optionsQuietVerbose}
+
+
+\optionGGS{-v}, \optionGGS{-{-}verbose} Affiche des messages complémentaires sur le terminal. Par défaut, quand toutes les étapes se déroulent correctement, aucun message n’est affiché.
+
+\optionGGS{-q}, \optionGGS{-{-}quiet} N'affiche aucun message complémentaire sur le terminal. Par défaut, des messages complémentaires sur le terminal sont affichés.
+
+Ces deux options s'excluent, c'est-à-dire qu'un exécutable définit soit l'option \emph{quiet}, soit l'option \emph{verbose}, mais par les deux :
+\begin{itemize}
+  \item le compilateur GALGAS implémente l'option \emph{quiet}, mais pas l'option \emph{verbose} ;
+  \item par défaut, un compilateur engendré par GALGAS implémente l'option \emph{quiet}, mais pas l'option \emph{verbose} ;
+  \item Si la déclaration \ggst!%quietOutputByDefault!\index{\%quietOutputByDefault} parmi les déclarations du fichier projet (voir \refSectionPage{projetDeclarationQuietOutputByDefault}), le compilateur engendré par GALGAS implémente l'option \emph{verbose}, mais pas l'option \emph{quiet}.
+\end{itemize}
+
+
+
+
+
+\section{Option de création d'un projet}
+
+
+\optionGGS{-{-}create-project=$nom$} Crée un nouveau projet GALGAS nommé $nom$ dans le répertoire courant.
+
+
+
+
+\section{Options contrôlant le compilateur}
+
+
+
+
+
+\optionGGS{-W}, \optionGGS{-{-}Werror} Tout \emph{warning} est considéré comme une erreur. Cela peut être important dans un script, l’outil de commande renvoyant un code non nul si une ou plusieurs erreurs ont été détectées.
+
+\optionGGS{-{-}max-errors=$n$} Stoppe après $n$ erreurs.
+
+\optionGGS{-{-}max-warnings=$n$} Stoppe après $n$ alertes.
+
+\optionGGS{-{-}check-usefulness} Calcul de l'utilité des constructions. L'utilisation de cette option est décrite dans le \refChapterPage{chapitreCalculEntitesUtiles}.
+
+
+
+\optionGGS{-{-}property-access-requires-self} Quand cette option est activée, \ggst!self! est requis pour accéder aux propriétés de l'objet courant dans les \emph{méthodes}, \emph{getter} et \emph{setter}. Par exemple, étant donné la classe \ggst!@maClasse!~:
+
+\begin{galgas3}
+class @maClasse {
+  @uint maPropriété
+}
+\end{galgas3}
+
+Si on écrit~:
+\begin{galgas3}
+setter @maClasse incrémenter {
+  maPropriété ++
+}
+\end{galgas3}
+
+Cette écriture du \ggst!setter! n'est acceptée que si l'option \texttt{-{-}property-access-requires-self} est désactivée. Si elle est activée, il faut écrire~:
+\begin{galgas3}
+setter @maClasse incrémenter {
+  self.maPropriété ++
+}
+\end{galgas3}
+
+À noter que cette dernière écriture est toujours acceptée, que l'option \texttt{-{-}property-access-requires-self} soit activée ou non.
+
+
+
+\optionGGS{-{-}warns-anonymous-for-instruction} Quand cette option est activée, un warning est émis pour chaque instruction \ggst!for! dont la variable énumérée est anonyme (construction \ggst!for () in ... !, voir \refSubsectionPage{enumerationImplicite}).
+
+
+
+
+
+
+
+\sectionLabel{Options contrôlant la génération de fichiers}{optionsGeneration}
+
+
+
+\optionGGS{-{-}emit-issue-json-file=$fichier$} Écrit dans un $fichier$ au format JSON la liste des erreurs et des alertes.
+
+
+\optionGGS{-{-}log-f{}ile-read} Affiche sur la console tout accès en lecture à un fichier.
+
+
+\optionGGS{-{-}no-f{}ile-generation} Inhibe l'écriture de tout fichier.
+
+
+\optionGGS{-{-}mode=$nom$} Contrôle l'opération du compilateur : si $nom$ est vide, le compilateur opère normalement. Si $nom$ est \texttt{lexical-only}, le compilateur affiche le résultat de l'analyse lexicale et s'arrête ; aucun fichier n'est engendré. Si $nom$ est \texttt{syntax-only}, le compilateur affiche le résultat de l'analyse syntaxique et s'arrête ; aucun fichier n'est engendré.
+
+
+
+
+
+\optionGGS{-{-}compile=$nom$} Enchaîne une compilation C++ après une compilation GALGAS sans erreur. Le $nom$ est le nom d'une cible de type \emph{makefile} ; par exemple, \texttt{-{-}compile=makefile-macosx} enchaîne la compilation C++ de la cible \emph{makefile-macosx}.
+
+
+\optionGGS{-{-}macosx=$n$} Force la génération d'un projet Xcode dont le SDK et le \emph{macos Deployement Target} sont fixés à 10.$n$.  Attention, cette option ne vous dispense pas de préciser \ggst=%applicationBundleBase= (\refSectionPage{parametrageProjetGALGAS}).
+
+
+
+
+\section{Options de débogage du compilateur}
+
+Ces options ne sont pas destinées à être utilisées lors de l'exploitation de GALGAS : elles permettent de déboguer le compilateur lui-même, et non pas le fichier source compilé.
+
+
+
+\optionGGS{-{-}generate-many-cpp-files} Engendre le code C++ dans une multitude de fichiers. Ceci permet un débogage plus simple du compilateur GALGAS lui-même, mais ralentit ensuite l'étape de compilation C++.
+
+
+\optionGGS{-{-}generate-one-cpp-header} Engendre un seul fichier d'en-tête C++ pour tout le projet. Ceci permet un débogage plus simple du compilateur GALGAS lui-même, mais ralentit ensuite l'étape de compilation C++.
+
+
+\optionGGS{-{-}check-gmp} Exécute au démarrage une série de calculs afin de vérifier si la librairie GMP s'exécute correctement.
+
+
+
+
+
+\section{Options de documentation}
+
+Ces options produisent des fichiers qui facilitent la documention \LaTeX~de votre compilateur.
+
+\optionGGS{-{-}emit-syntax-diagrams} Cette option provoquent l'émission de fichiers \LaTeX~qui contiennent les diagrammes syntaxiques des grammaires des projets compilés. Son utilisation est détaillée au \refChapterPage{chapitreDiagrammesSyntaxiques}. % C'est ainsi que les diagrammes des langages GALGAS présentés au \refChapterPage{grammaireProjet}, \refChapterPage{grammaireSource} et \refChapterPage{grammaireTemplate} ont été obtenus.
+
+
+
+
+
+\optionGGS{-{-}print-predefined-lexical-actions} Affiche sur la console la liste des routines lexicales prédéfinies.
+
+
+
+
+\optionGGS{-{-}generate-shared-map-automaton-dot-files} Exporte les automates d'états finis associés à chaque table de symboles de type \ggst!shared map!. Les fichiers de sortie sont placés dans le répertoire \texttt{build/helpers}, et portent le nom du type table postfixé par l'extension \texttt{.dot}.
+
+
+
+
+
+\optionGGS{-{-}output-concrete-syntax-tree} Exporte dans un fichier l'arbre syntaxique concret du code source analysé sous la forme d'un graphe dont le format est compatible avec \emph{Graphviz}. Le nom du fichier de sortie est le nom du fichier source doté de l'extension complémentaire \texttt{.dot}.
+
+
+\optionGGS{-{-}output-keyword-list-file=$nomLexique$:$nomListe$:$colonnes$:$prefixe$:$postfixe$:$fichier$} Cette option permet d'engendrer un fichier au format contenant la liste des mots réservés de votre langage. L'argument qui suit le signe « \texttt{=} » est une séquence de six champs :
+\begin{itemize}
+  \item $nomLexique$ est le nom du lexique ;
+  \item $nomListe$ est le nom de la liste ;
+  \item $colonnes$ est un nombre entier naturel, qui représente le nombre de colonnes de la sortie ;
+  \item $prefixe$ est une chaîne (éventuellement vide) qui est placée avant chaque élément de liste ;
+  \item $postfixe$ est une chaîne (éventuellement vide) qui est placée après chaque élément de liste ;
+  \item $fichier$ est une chaîne qui désigne le fichier de sortie.
+\end{itemize}
+
+Prenons un exemple ; supposons que le composant \ggst!lexique! de votre langage soit~:
+\begin{galgas3}
+lexique lex {
+  ...
+  list mots ... { "a", "b", "c" }
+  ...
+}
+\end{galgas3}
+
+En appelant votre compilateur avec l'option \optionGGS{-{-}output-keyword-list-file=lex:mots:2:::motsreserves.tex}, la liste des mots réservés définies par la liste \ggst!mots! du lexique \ggst!lex! sera écrite dans le fichier \texttt{motsreserves.tex}. Ce fichier aura le contenu suivant :
+\begin{lstlisting}[backgroundcolor=\color{yellow!10}, frame=tlbr, basicstyle=\small\tt]
+  a & b \\
+  c & \\
+\end{lstlisting}
+
+C'est un fichier qui peut être inclus dans une définition de tableau à deux colonnes. Si le nombre d'éléments n'est pas un multiple du nombre de colonnes, la dernière ligne est complétée par des champs vides. Par exemple, on écrit en \LaTeX :
+\begin{lstlisting}[backgroundcolor=\color{yellow!10}, frame=tlbr, basicstyle=\small\tt]
+\begin{table}[!t]
+  \centering
+  \begin{tabular}{ll}
+    \input{motsreserves.tex}
+  \end{tabular}
+\end{table}
+\end{lstlisting}
+
+On peut utiliser les champs $prefixe$ et $postfixe$ pour afficher de manière particulière chaque élément : avec l'option \optionGGS{-{-}output-keyword-list-file=lex:mots:2:\textbackslash texttt\{:\}:motsreserves.tex}, le fichier \texttt{motsreserves.tex} aura le contenu suivant :
+\begin{lstlisting}[backgroundcolor=\color{yellow!10}, frame=tlbr, basicstyle=\small\tt]
+  \texttt{a} & \texttt{b} \\
+  \texttt{c} & \\
+\end{lstlisting}
+
+

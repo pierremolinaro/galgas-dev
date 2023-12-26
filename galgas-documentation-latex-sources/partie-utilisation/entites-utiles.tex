@@ -1,0 +1,80 @@
+%!TEX encoding = UTF-8 Unicode
+%!TEX root = ../galgas-book.tex
+
+%--------------------------------------------------------------
+\chapterLabel{Calcul des entités utiles}{chapitreCalculEntitesUtiles}
+%-------------------------------------------------------------
+
+\tableDesMatieresLocaleDeProfondeurRelative{1}
+
+
+Le compilateur GALGAS implémente l'option \tpp{-{}-check-usefulness} qui permet de déceler si des constructions sont inutiles. Au fur et à mesure de l'évolution de la conception de votre compilateur, il se peut que des constructions (type, functions, …) deviennent inutilisées. Cette option permet de déceler ces constructions.
+
+L'option \tpp{-{}-check-usefulness} demande au compilateur GALGAS de construire le graphe d'utilité. La construction n'est entreprise que si analyse lexicale, syntaxique et sémantique sont effectuées sans erreur.
+
+Pour chaque construction inutile, un \emph{warning} est déclenché, qui indique l'endroit de la déclaration de la construction inutile.
+
+
+
+\section{Le calcul d'utilité}
+
+Les constructions qui sont évaluées sont :
+\begin{itemize}
+  \item les routines \ggst=extension getter= ;
+  \item les routines \ggst=extension setter= ;
+  \item les routines \ggst=extension method= ;
+  \item les composants \ggst=lexique= ;
+  \item les composants \ggst=grammar= ;
+  \item les composants \ggst=syntax= ;
+  \item les composants \ggst=option= ;
+  \item les \ggst=filewrapper= ;
+  \item les fonctions ;
+  \item les procédures ;
+  \item les types ;
+  \item les routines \ggst=after= ;
+  \item les routines \ggst=before= ;
+  \item les routines d'analyse \ggst=case .fileExtension=.
+\end{itemize}
+
+Le compilateur GALGAS calcule l'utilité des constructions en se partant des nœuds racines :
+\begin{itemize}
+  \item les routines \ggst=after= sont utiles ;
+  \item les routines \ggst=before= sont utiles ;
+  \item les routines d'analyse \ggst=case .fileExtension= sont utiles ;
+  \item tous les types prédéfinis sont utiles ;
+  \item toutes les fonctions marquées \ggst=%usefull= sont utiles (\refSectionPage{utiliteFonctionIndirectes}).
+\end{itemize}
+
+Les relations d'utilité sont :
+\begin{itemize}
+  \item une routine \ggst=extension getter=, \ggst=extension setter=, \ggst=extension method= est utile si son type est utile~;
+  \item un composant \ggst=grammar= est utile si il apparaît dans une instruction \ggst=grammar= utile~;
+  \item un composant \ggst=syntax= est utile si il est nommé par un composant \ggst=grammar= utile~;
+  \item un composant \ggst=lexique= est utile si il est nommé par un composant \ggst=syntax= utile~;
+  \item un composant \ggst=option= est utile si il est nommé dans les instructions d'une routine utile~;
+  \item un  \ggst=filewrapper= est utile si il est nommé dans les instructions d'une routine utile~;
+  \item une fonction est utile si elle est nommée dans les instructions d'une routine utile~;
+  \item une procédure est utile si elle est nommée dans les instructions d'une routine utile~;
+  \item un type est utile si il est instancié par les instructions d'une routine utile.
+\end{itemize}
+
+
+
+\section{Trucs et astuces}
+
+Supprimer une construction inutile n'est pas toujours élémentaire : par exemple, un type qui n'est jamais instancié est inutile, mais il peut apparaître comme type d'une propriété d'un type structure lui aussi inutile. Aussi, supprimer un type inutile peut entraîner des erreurs de compilation.
+
+De plus, le calcul d'utilité a été récemment implémenté dans GALGAS, et un \emph{faux positif} est possible.
+
+On peut donc commencer par supprimer procédures et fonctions inutiles (attention si vous appelez les fonctions par l'intermédiaire d'un objet de type \ggst=@function=, voir \refSectionPage{utiliteFonctionIndirectes}), c'est en général plus simple que la suppression d'un type.
+
+Une astuce consiste à renommer la construction calculée comme inutile puis à recompiler le projet~: si il n'y a pas d'erreur, cette construction peut être supprimée sans dommage.
+
+
+\sectionLabel{Cas particulier : l'appel indirect des fonctions}{utiliteFonctionIndirectes}
+
+Le calcul d'utilité ne rend utile que les fonctions appelées directement à partir des instructions des routines utiles. L'appel indirect via des objets de type \refTypePredefini{function} n'est pas pris en compte par le calcul d'utilité. En conséquence, les fonctions appelées uniquement via des objets de type \refTypePredefini{function} sont calculées inutiles.
+
+Il suffit d'ajouter l'attribut \ggst=%usefull= à ces fonctions pour forcer leur utilité (\refSubsectionPage{fonctionUsefull}).
+
+

@@ -1,0 +1,308 @@
+%!TEX encoding = UTF-8 Unicode
+%!TEX root = ../galgas-book.tex
+
+%--------------------------------------------------------------
+\chapter{Élements lexicaux (GALGAS 4)}
+%-------------------------------------------------------------
+
+\tableDesMatieresLocaleDeProfondeurRelative{1}
+
+
+Les éléments lexicaux du langage GALGAS 4 sont~:
+\begin{itemize}
+  \item les identificateurs (\refSectionPage{identificateursGALGAS4})~;
+  \item les mots réservés (\refSectionPage{motReservesGALGAS4})~;
+  \item les délimiteurs (\refSectionPage{delimiteursGALGAS4})~;
+  \item les sélecteurs  (\refSectionPage{selecteursGALGAS4})~;
+  \item les séparateurs  (\refSectionPage{separateursGALGAS4})~;
+  \item les commentaires  (\refSectionPage{commentairesGALGAS4})~;
+  \item les non terminaux  (\refSectionPage{nonTerminauxGALGAS4})~;
+  \item les terminaux (\refSectionPage{terminauxGALGAS4})~;
+  \item les constantes littérales entières (\refSectionPage{constantesLitteralesEntiersGALGAS4})~;
+  \item les constantes littérales flottantes (\refSectionPage{constantesLitteralesFlottantesGALGAS4})~;
+  \item les caractères littéraux (\refSectionPage{constantesLitteralesCaracteresGALGAS4})~;
+  \item les constantes chaînes de caractères (\refSectionPage{constantesLitteralesChainesGALGAS4})~;
+  \item les noms de types (\refSectionPage{nomTypeGALGAS4})~;
+  \item les attributs (\refSectionPage{attributsGALGAS4}).
+\end{itemize}
+
+
+\sectionLabel{Les identificateurs}{identificateursGALGAS4}
+
+Un identificateur commence par une lettre minuscule ou majuscule, suivie de zéro, un ou plusieurs chiffres décimaux, lettres minuscules ou majuscules ou caractères \ggsq='_'=. Par exemple~:
+
+\ggsq=element=, \ggsq=element0=, \ggsq=element_0=, \ggsq=instructionList=, \ggsq=instruction_list=.
+
+Toutes les lettres Unicode sont acceptées~: il est possible d'utiliser des lettres accentuées, des lettres grecques, ... Par exemple~:
+
+\begin{galgas4}
+let constanteAccentuée = 12
+let π = 3.14
+let α = 1
+var переменная = 7
+\end{galgas4}
+
+
+\sectionLabel{Les mots réservés}{motReservesGALGAS4}
+
+Les mots réservés de GALGAS sont les identificateurs listés dans le \refTableauPage{mots-reserves}.
+
+\begin{table}[t]
+  \centering
+  \begin{tabular}{llllllll}
+    \input{partie-utilisation/included-keyword-list-4.tex}
+  \end{tabular}
+  \caption{Mots réservés du langage GALGAS4}
+  \labelTableau{mots-reserves}
+\end{table}
+
+
+\sectionLabel{Les délimiteurs}{delimiteursGALGAS4}
+
+Les délimiteurs du langage GALGAS sont listés dans le \refTableauPage{delimiteurs}.
+
+\begin{table}[t]
+  \centering
+  \begin{tabular}{lllllllllllllllll}
+    \input{partie-utilisation/included-delimiter-list-4.tex}
+  \end{tabular}
+  \caption{Délimiteurs du langage GALGAS4}
+  \labelTableau{delimiteurs}
+\end{table}
+
+
+
+\sectionLabel{Les sélecteurs}{selecteursGALGAS4}
+
+\begin{table}[t]
+  \centering
+  \begin{tabular}{llllllllllllll}
+    \ggsq=!=  & \ggsq=!selecteur:=  & \ggsq=!?=  & \ggsq=!?selecteur:= & \ggsq=?= & \ggsq=?selecteur:= & \ggsq=?!= & \ggsq=?!selecteur:= \\
+   \end{tabular}
+  \caption{Sélecteurs du langage GALGAS4}
+  \labelTableau{selecteurs}
+\end{table}
+
+Les sélecteurs du langage GALGAS sont listés dans le \refTableauPage{selecteurs}.
+
+
+
+\sectionLabel{Les séparateurs}{separateursGALGAS4}
+
+Les séparateurs du langage GALGAS sont~:
+\begin{itemize}
+  \item le caractère \emph{espace}~;
+  \item tout caractère dont le point de code est compris entre \texttt{U+0000} et \texttt{U+001F}.
+\end{itemize}
+
+
+
+\sectionLabel{Les commentaires}{commentairesGALGAS4}
+
+Un commentaire commence par le caractère « \texttt{\#} » s'étend jusqu'à la fin de la ligne courante.
+
+
+
+
+
+
+
+
+\sectionLabel{Les non terminaux}{nonTerminauxGALGAS4}
+
+Un \emph{non terminal} d'une grammaire est un identificateur placé entre les caractères \texttt{<} et \texttt{>}. Exemple~:
+
+\begin{galgas4}
+ <expression>, <instruction>
+\end{galgas4}
+
+Les lettres Unicode y sont acceptées.
+
+
+
+
+
+\sectionLabel{Les terminaux}{terminauxGALGAS4}
+
+Un \emph{terminal} d'une grammaire est une chaîne de caractères placée entre deux caractères «~\texttt{\$}~». Exemple~:
+
+\begin{galgas4}
+ $identifier$, $constant$
+\end{galgas4}
+
+Tout caractère Unicode dont le point de code est compris entre \texttt{0x21} (« \texttt{!} ») et \texttt{0xFFFD} peut apparaître dans un terminal~:
+\begin{galgas4}
+ $=$, $($, $--$, $≠$
+\end{galgas4}
+
+Deux échappements sont définis~:
+\begin{itemize}
+\item «~\texttt{\textbackslash\textbackslash}~» qui permet de définir un unique «~\texttt{\textbackslash}~»~;
+\item «~\texttt{\textbackslash\$}~» qui permet de définir un «~\texttt{\$}~».
+\end{itemize}
+
+Ceci permet par exemple de définir les terminaux suivants~:
+\begin{galgas4}
+ $\\$, $\$terminal\$$
+\end{galgas4}
+
+
+
+\sectionLabel{Les constantes littérales entières}{constantesLitteralesEntiersGALGAS4}
+
+Une constante littérale entière peut être écrite~:
+\begin{itemize}
+  \item en \emph{décimal}~: elle est constituée de un ou plusieurs chiffres décimaux~; exemple~: \ggsq=123=, \ggsq=9=, \ggsq=05=~;
+  \item en \emph{hexadécimal}~: elle commence par \texttt{0x}, suivi d'un ou plusieurs chiffres hexadécimaux~; exemple~: \ggsq=0x12A=, \ggsq=0xabcd=.
+\end{itemize}
+
+Le caractère « \texttt{\_} » peut être utilisé pour séparer les chiffres décimaux ou hexadécimaux~: \ggsq=1_234=, \ggsq=0x123_4567=.
+
+Une constante littérale entière est typée~; son type est fixé par son suffixe (\refTableau{suffixeConstantesLiteralesEntieres}).
+
+\begin{table}[t]
+  \centering
+  \begin{tabular}{llllllllllllll}
+    \textbf{Suffixe} & \textbf{Type} & \textbf{Exemples}\\
+    \emph{Pas de suffixe}  & \ggsq=@uint=  & \ggsq=1_234=, \ggsq=0x1234_5678= \\
+    \texttt{L}  & \ggsq=@uint64=  & \ggsq=1_234L=, \ggsq=0x1234_5678L= \\
+    \texttt{S}  & \ggsq=@sint=  & \ggsq=1_234S=, \ggsq=0x1234_5678S= \\
+    \texttt{LS}  & \ggsq=@sint64=  & \ggsq=1_234LS=, \ggsq=0x1234_5678LS= \\
+    \texttt{G}  & \ggsq=@bigint=  & \ggsq=1_234G=, \ggsq=0x1234_5678G= \\
+   \end{tabular}
+  \caption{Suffixes et types des constantes littérales entières}
+  \labelTableau{suffixeConstantesLiteralesEntieres}
+\end{table}
+
+
+
+
+
+
+
+\sectionLabel{Les constantes littérales flottantes}{constantesLitteralesFlottantesGALGAS4}
+
+Une constante littérale flottante comprend toujours un point. Elle est constituée~:
+\begin{itemize}
+  \item d'un ou plusieurs chiffres décimaux~;
+  \item suivis d'un point~;
+  \item suivi de zéro, un ou plusieurs chiffres décimaux.
+\end{itemize}
+
+Par exemple~: \ggsq=0.=, \ggsq=12.34=.
+
+Le caractère « \texttt{\_} » peut être utilisé pour séparer les chiffres~: \ggsq=1_234.567_890=.
+
+Une constante littérale flottante est du type \ggsq=@double=.
+
+
+
+
+\sectionLabel{Les caractères littéraux}{constantesLitteralesCaracteresGALGAS4}
+
+Un \emph{caractère littéral} est un caractère Unicode placé entre deux apostrophes « \texttt{\textquotesingle} ». Exemple~:
+
+\begin{galgas4}
+ 'a', 'æ', 'Œ'
+\end{galgas4}
+
+Plusieurs séquences d'échappements sont définies et listées dans le \refTableau{echappementConstantesLiteralesCaracteres}.
+
+\begin{table}[t]
+  \centering
+  \begin{tabular}{llllllllllllll}
+    \textbf{Échappement} & \textbf{Caractère} & \textbf{Point de code}\\
+    \ggsq='\f'=  & Nouvelle page & \texttt{U+0C} \\
+    \ggsq='\n'=  & Passage à la ligne (\emph{Line Feed}) & \texttt{U+0A} \\
+    \ggsq='\r'=  & Retour chariot & \texttt{U+0D} \\
+    \ggsq='\t'=  & Tabulation horizontale & \texttt{U+09} \\
+    \ggsq='\v'=  & Tabulation verticale & \texttt{U+0B} \\
+    \ggsq='\\'=  & Barre oblique inversée & \texttt{U+5C} \\
+    \ggsq='\0'=  & Caractère nul & \texttt{U+0} \\
+    \ggsq='\''=  & Apostrophe & \texttt{U+27} \\
+    \ggsq='\uabcd'=  & Caractère du plan de base (4 chiffres hexadécimaux) & \texttt{U+ABCD} \\
+    \texttt{\textquotesingle\textbackslash Uabcdefgh\textquotesingle}  & Caractère Unicode (8 chiffres hexadécimaux) & \texttt{U+abcdefgh} \\
+   \end{tabular}
+  \caption{Séquence d'échappement des constantes littérales caractère}
+  \labelTableau{echappementConstantesLiteralesCaracteres}
+\end{table}
+
+
+
+
+\sectionLabel{Les constantes chaînes de caractères}{constantesLitteralesChainesGALGAS4}
+
+Un \emph{chaîne de caractères littérale} est une séquence de caractères Unicode placé entre deux guillemets « \texttt{"} ». Exemple~:
+
+\begin{galgas4}
+ "une chaîne", "Œnologie"
+\end{galgas4}
+
+Plusieurs séquences d'échappements sont définies et listées dans le \refTableau{echappementConstantesLiteralesChaine}.
+
+\begin{table}[t]
+  \centering
+  \begin{tabular}{llllllllllllll}
+    \textbf{Échappement} & \textbf{Caractère} & \textbf{Point de code}\\
+    \ggsq="\f"=  & Nouvelle page & \texttt{U+0C} \\
+    \ggsq="\n"=  & Passage à la ligne (\emph{Line Feed}) & \texttt{U+0A} \\
+    \ggsq="\r"=  & Retour chariot & \texttt{U+0D} \\
+    \ggsq="\t"=  & Tabulation horizontale & \texttt{U+09} \\
+    \ggsq="\v"=  & Tabulation verticale & \texttt{U+0B} \\
+    \ggsq="\\"=  & Barre oblique inversée & \texttt{U+5C} \\
+    \ggsq="\""=  & Guillemet & \texttt{U+22} \\
+    \ggsq="\uabcd"=  & Caractère du plan de base (4 chiffres hexadécimaux) & \texttt{U+ABCD} \\
+%    \texttt{\textquotedbl\textbackslash Uabcdefgh\textquotedbl}  & Caractère Unicode (8 chiffres hexadécimaux) & \texttt{U+abcdefgh} \\
+    \texttt{"\textbackslash Uabcdefgh"}  & Caractère Unicode (8 chiffres hexadécimaux) & \texttt{U+abcdefgh} \\
+   \end{tabular}
+  \caption{Séquence d'échappement des constantes littérales chaîne de caractères}
+  \labelTableau{echappementConstantesLiteralesChaine}
+\end{table}
+
+
+
+
+
+
+
+
+\sectionLabel{Les noms de types}{nomTypeGALGAS4}
+
+Un nom de type~:
+\begin{itemize}
+  \item commence par un caractère « \texttt{@}~»~;
+  \item est suivi par un ou plusieurs chiffres ou lettres~;
+  \item est suivi éventuellement par un tiret « \texttt{-} », lui-même suivi par un ou plusieurs chiffres ou lettres.
+\end{itemize}
+
+Par exemple~:
+\begin{galgas4}
+ @string, @stringlist-element, @2stringlist
+\end{galgas4}
+
+
+
+
+
+\sectionLabel{Les attributs}{attributsGALGAS4}
+
+Un attribut~:
+\begin{itemize}
+  \item commence par un caractère «~\texttt{\%}~»~;
+  \item est suivi par une lettre Unicode~;
+  \item est suivi par une ou plusieurs lettres Unicode, chiffres décimaux, «~\texttt{-}~» ou «~\texttt{\_}~».
+\end{itemize}
+
+La liste des attributs est donnée dans le \refTableauPage{attributs-reserves}. Un attribut est un mot réservé « secondaire ».
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{llllllll}
+    \input{partie-utilisation/included-attribute-list-4.tex}
+  \end{tabular}
+  \caption{Attributs du langage GALGAS4}
+  \labelTableau{attributs-reserves}
+\end{table}
+
+
+

@@ -1,0 +1,126 @@
+%!TEX encoding = UTF-8 Unicode
+%!TEX root = ../galgas-book.tex
+
+\chapitreTypePredefiniLabelIndex{bool}
+
+\tableDesMatieresLocaleDeProfondeurRelative{1}
+
+
+Le type \ggst+@bool+ est le type booléen. Les deux mots réservés \ggst+true+ et \ggst+false+ sont du type \ggst+@bool+ type, et dénote les valeurs \emph{vari} et \emph{faux}. Le seul constructeur du \ggst+@bool+ type est le constructeur \ggst!default!, qui initialise un booléen à \ggst+false+.
+
+
+\section{Conversion en chaîne de caractères}
+
+\subsectionGetter{cString}{bool}
+
+\begin{galgas3box}
+getter cString -> @string
+\end{galgas3box}
+
+Retourne la chaîne \ggst!"true"! si le booléen est vrai, et la chaîne \ggst!"false"! dans le cas contraire.
+
+
+
+
+
+
+
+\subsectionGetter{ocString}{bool}
+
+\begin{galgas3box}
+getter ocString -> @string
+\end{galgas3box}
+
+Retourne la chaîne \ggst!"YES"! si le booléen est vrai, et la chaîne \ggst!"NO"! dans le cas contraire.
+
+
+
+
+\section{Conversion en entier}
+
+
+\subsectionGetter{bigint}{bool}
+
+\begin{galgas3box}
+getter bigint -> @bigint
+\end{galgas3box}
+
+Retourne l'entier \ggst!1G! si le booléen est vrai, et l'entier \ggst!0G! dans le cas contraire.
+
+\begin{galgas3}
+  message [[false bigint] string] + "\n" # 0
+  message [[true bigint] string] + "\n" # 1
+\end{galgas3}
+
+
+\subsectionGetter{sint}{bool}
+
+\begin{galgas3box}
+getter sint -> @sint
+\end{galgas3box}
+
+Retourne l'entier \ggst!1S! si le booléen est vrai, et l'entier \ggst!0S! dans le cas contraire.
+
+
+
+
+\subsectionGetter{sint64}{bool}
+
+\begin{galgas3box}
+getter sint64 -> @sint64
+\end{galgas3box}
+
+Retourne l'entier \ggst!1LS! si le booléen est vrai, et l'entier \ggst!0LS! dans le cas contraire.
+
+
+
+
+\subsectionGetter{uint}{bool}
+
+\begin{galgas3box}
+getter uint -> @uint
+\end{galgas3box}
+
+Retourne l'entier \ggst!1! si le booléen est vrai, et l'entier \ggst!0! dans le cas contraire.
+
+
+
+
+\subsectionGetter{uint64}{bool}
+
+\begin{galgas3box}
+getter uint64 -> @uint64
+\end{galgas3box}
+
+Retourne l'entier \ggst!1L! si le booléen est vrai, et l'entier \ggst!0L! dans le cas contraire.
+
+
+
+
+\section{Opérateurs logiques}
+
+\begin{galgas3box}
+operator @bool & @bool -> @bool
+operator @bool | @bool -> @bool
+operator @bool ^ @bool -> @bool
+operator not @bool -> @bool
+\end{galgas3box}
+
+Le type \ggst+@bool+ accepte les trois opérateurs suivants
+\begin{itemize}
+\item l'opérateur \ggst!&! infixé qui effectue un \emph{et logique} ;
+\item l'opérateur \ggst!|! infixé qui effectue un \emph{ou logique} ;
+\item l'opérateur \ggst!^! infixé qui effectue un \emph{ou exclusif logique} ;
+\item l'opérateur \ggst!not! infixe qui effectue la\emph{négation logique}.
+\end{itemize}
+
+
+
+
+
+
+
+
+\section{Comparaison}
+
+Le type \ggst!@bool! implémente les six opérateurs de comparaison \ggst!==!, \ggst+!=+, \ggst!<!, \ggst!<=!, \ggst!>! et \ggst!>=!, avec \ggst!false < true!.

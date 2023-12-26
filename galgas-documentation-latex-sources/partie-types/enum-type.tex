@@ -1,0 +1,222 @@
+%!TEX encoding = UTF-8 Unicode
+%!TEX root = ../galgas-book.tex
+
+%--------------------------------------------------------------
+\chapterLabel{Le type \texttt{enum}}{typeEnum}
+%-------------------------------------------------------------
+
+\tableDesMatieresLocaleDeProfondeurRelative{1}
+
+
+Galgas permet à l'utilisateur de définir des types énumérés.
+
+\section{Déclaration}
+
+La déclaration d'un type \ggst+enum+ nomme l'ensemble des constantes associées à ce type.
+
+Par exemple :
+
+\begin{galgas3}
+enum @feuTricolore {
+  case vert
+  case orange
+  case rouge
+}
+\end{galgas3}
+
+Plusieurs types énumérés peuvent définir des constantes de même nom.
+
+\section{Instanciation}
+
+Chaque constante définit un constructeur de même nom. On peut ainsi écrire :
+
+\begin{galgas3}
+@feuTricolore feu = @feuTricolore.vert
+\end{galgas3}
+
+L'annotation de type peut être omise :
+
+\begin{galgas3}
+@feuTricolore feu = .vert
+\end{galgas3}
+
+\begin{galgas3}
+var feu = @feuTricolore.vert
+\end{galgas3}
+
+\section{Comparaison}
+
+Un type enuméré accepte les six opérateurs de comparaison (\ggst+==+, \ggst+!=+, \ggst+<+, \ggst+<=+, \ggst+>+ et \ggst+>+). L'ordre est celui de la déclaration, c'est-à-dire que :
+\begin{galgas3}
+  @feuTricolore.vert < @feuTricolore.orange < @feuTricolore.rouge
+\end{galgas3}
+
+
+\sectionLabel{Tester une valeur}{testerValeurEnum}
+
+Il y a deux façons de tester une valeur d'un type énuméré. La première consiste à comparer avec une valeur obtenue par un constructeur, par exemple :
+\begin{galgas3}
+  if feu == @feuTricolore.orange then ...
+\end{galgas3}
+
+La seconde possibilité est d'appeler les \emph{getter} implicitement déclarés : pour chaque constante, un \emph{getter} sans argument nommé  \texttt{is<Constante>} (le préfixe \texttt{is} suivi du nom de la constante, dont le premier caractère est en majuscule) est déclaré ; il renvoie une valeur de type \ggst+@bool+ qui est vrai si le récepteur a la valeur correspondante :
+\begin{galgas3}
+  if [feu isOrange] then ...
+\end{galgas3}
+
+\section{L'instruction \texttt{switch}}
+
+L'instruction \ggst+switch+ (\refSectionPage{instructionSwitch}) est dédiée aux types énumérés. On écrit par exemple :
+
+\begin{galgas3}
+@feuTricolore feu = ...
+switch feu
+case vert : message "vert"
+case orange : message "orange"
+case rouge : message "rouge"
+end
+\end{galgas3}
+
+
+
+
+
+
+
+
+
+
+
+\section{Valeurs associées}
+
+Il est possible d'associer des valeurs à chaque constante, ce qui permet d'alléger dans certains cas le code à écrire. Supposons par exemple que l'on ait dans un langage une construction optionnelle :
+
+\begin{galgas3}
+rule regleProduction {
+  select
+  or
+    $option$
+    $identifier$ ?let nomOption
+  end
+}
+\end{galgas3}
+
+Comment construire l'arbre syntaxique abstrait ? Il y a en fait trois possibilités.
+
+\textbf{Première solution.} La première consiste à considérer la chaîne vide comme significative de l'absence d'option :
+\begin{galgas3}
+rule regleProduction {
+  @lstring nomOption
+  select
+    nomOption = ["" nowhere]
+  or
+    $option$
+    $identifier$ ?nomOption
+  end
+}
+\end{galgas3}
+
+Évidemment, cette solution est acceptable uniquement si l'information associée est simple, et si une valeur particulière peut être considéré comme l'absence d'option.
+
+\textbf{Deuxième solution.} La deuxième solution fait appel à trois classes :
+\begin{galgas3}
+abstract class @abstractOption {}
+
+class @noOption : @abstractOption {}
+
+class @option : @abstractOption { @lstring mOptionName }
+\end{galgas3}
+
+La construction de l'arbre est réalisée par :
+\begin{galgas3}
+rule regleProduction {
+  @abstractOption optionAST
+  select
+    optionAST = @noOption.new
+  or
+    $option$
+    $identifier$ ?let nomOption
+    optionAST = @option.new {!nomOption}
+  end
+}
+\end{galgas3}
+
+Cette solution, plus générale, est plus lourde à mettre en œuvre : trois classes, et analyser l'option nécessite d'écrire un \emph{getter} abstrait ou une méthode abstraite pour la classe abstraite de base \ggst+@abstractOption+, et les redéfinir dans les deux classes héritières \ggst+@noOption+ et \ggst+@option+.
+
+\textbf{Troisième solution.} La troisième et dernière solution consiste à écrire un type énuméré possédant des valeurs associées :
+
+\begin{galgas3}
+enum @option {
+  case noOption
+  case optionPresente (@lstring optionName)
+}
+\end{galgas3}
+
+À la constante \ggst+optionPresente+ est associée une valeur de type \ggst+@lstring+, identifiée par le nom \ggst+optionName+. Ce nom est optionnel, on pourrait écrire \ggst+optionPresente (@lstring)+. La construction de l'arbre syntaxique est maintenant réalisée par :
+\begin{galgas3}
+rule regleProduction {
+  @option optionAST
+  select
+    optionAST = @option.noOption
+  or
+    $option$
+    $identifier$ ?let nomOption
+    optionAST = @option.optionPresente {!optionName:nomOption}
+  end
+}
+\end{galgas3}
+
+À la constante \ggst+optionPresente+ correspond un constructeur de même nom, avec un argument qui correspond à la valeur associée \ggst+@lstring optionName+. Le nom \ggst+optionName+ est utilisé comme sélecteur. Si on avait déclaré la valeur associée sans nom par \ggst+optionPresente (@lstring)+, alors l'appel du constructeur serait \ggst+@option.optionPresente {!nomOption}+.
+
+Pour tester un type énuméré avec des valeurs associées, on peut appliquer les \emph{getter} décrits à \refSectionPage{testerValeurEnum}, mais on n'a pas accès aux valeurs associées.
+
+Les six opérateurs de comparaison (\ggst+==+, \ggst+!=+, \ggst+<+, \ggst+<=+, \ggst+>+ et \ggst+>+) sont définis sur des types énumérés avec des valeurs associées : l'ordre est celui de la déclaration des constantes, et, en cas d'égalité, les valeurs associées sont comparées les unes après les autres, dans leur ordre de déclaration.
+
+Il n'y a qu'une façon d'extraire les valeurs associées, l'instruction \ggst+switch+ :
+
+\begin{galgas3}
+switch optionAST
+case noOption : ...
+case optionPresente (@lstring nomOption) : ...
+end
+\end{galgas3}
+
+\ggst+nomOption+ est une constante dont la portée s'étend jusqu'à la fin de la branche \ggst+case+ courante.
+
+
+
+
+
+
+
+
+
+
+
+
+\sectionLabel{Valeur par défaut}{valeurDefautTypeEnumere}
+
+Un type énuméré n'a pas de valeur par défaut, c'est-à-dire qu'appeler le constructeur \ggst=default= engendre une erreur de compilation.
+
+\begin{galgas3}
+@feuTricolore feu = .default # Erreur de compilation
+\end{galgas3}
+
+À partir de la version 3.3.3 de GALGAS, il est possible de définir une valeur par défaut, en la nommant dans une clause \ggst=default= à la fin de la déclaration du type énuméré :
+\begin{galgas3}
+enum @feuTricolore {
+  case vert
+  case orange
+  case rouge
+  default vert
+}
+\end{galgas3}
+
+La constante nommée dans la clause \ggst=default= ne doit pas avoir de valeur associée.
+
+On peut donc maintenant écrire :
+\begin{galgas3}
+@feuTricolore feu = .default # Équivalent à .vert
+\end{galgas3}
+
+Définir une valeur par défaut pour un type enuméré permet une structure qui l'utilise de posséder à son tour une valeur par défaut (\refSubsectionPage{constructeurParDefaut}).

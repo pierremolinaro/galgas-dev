@@ -1,0 +1,232 @@
+  %!TEX encoding = UTF-8 Unicode
+%!TEX root = ../galgas-book.tex
+
+%--------------------------------------------------------------
+\chapterLabel{Le type \texttt{boolset}}{typeBoolset}
+%-------------------------------------------------------------
+
+\tableDesMatieresLocaleDeProfondeurRelative{1}
+
+
+
+Le mot-clé \ggst!boolset! permet de définir des types d'ensembles d'indicateurs booléens. Un tel objet a une sémantique de valeur.
+
+La syntaxe de définition d'un type ensemble d'indicateurs booléens est de la forme~:
+
+\begin{galgas3}
+boolset @MonEnsemble {
+  # Liste de déclaration d'indicateurs, par exemple :
+  indicateur0,
+  indicateur1,
+  indicateur2
+}
+\end{galgas3}
+
+Il n'est pas possible de définir du code dans cette déclaration~: la seule possibilité est de le définir dans des extensions (\refChapterPage{chapitreExtensions}).
+
+Le nom des indicateurs doivent être différents des noms suivants~: \texttt{all}, \texttt{description}, \texttt{dynamicType}, \texttt{none}, \texttt{object}. L'implémentation actuelle limite à 64 le nombre d'indicateurs qui peuvent être définis.
+
+Pour initialiser un \ggst!boolset!, on utilise un des constructeurs définis~:
+\begin{galgas3}
+var x = @MonEnsemble.indicateur1
+log x # LOGGING x: <boolset @MonEnsemble: indicateur1>
+\end{galgas3}
+
+Si on veut un ensemble ayant plusieurs indicateurs à vrai, on utilise l'opérateur \ggst=|=, qui effectue l'union de ses opérandes~:
+\begin{galgas3}
+var x = @MonEnsemble.indicateur1 | @MonEnsemble.indicateur2
+log x # LOGGING x: <boolset @MonEnsemble: indicateur1 indicateur2>
+\end{galgas3}
+
+L'inférence de type permet d'éliminer les annotations de type non nécessaires~:
+\begin{galgas3}
+var x = @MonEnsemble.indicateur1 | .indicateur2
+\end{galgas3}
+
+Ou encore~:
+\begin{galgas3}
+@MonEnsemble x = .indicateur1 | .indicateur2
+\end{galgas3}
+
+Pour tester la valeur d'un indicateur, on utilise le \emph{getter} du même nom~:
+\begin{galgas3}
+@bool b = [x indicateur2]
+\end{galgas3}
+
+
+
+
+
+
+
+
+
+
+\section{Constructeurs}
+
+Un constructeur est défini pour chaque indicateur (\refSubsectionPage{constructeurBoolsetIndicateur}).
+
+Trois constructeurs particuliers sont implicitement définis pour tout ensemble de booléens~:
+\begin{itemize}
+  \item le constructeur \texttt{none} (\refSubsectionPage{constructeurBoolsetNone})~;
+  \item le constructeur \texttt{all} (\refSubsectionPage{constructeurBoolsetAll})~;
+  \item le constructeur \texttt{default} (\refSubsectionPage{constructeurBoolsetDefault}).
+\end{itemize}
+
+\subsectionLabel{Constructeur ayant le nom d'un indicateur}{constructeurBoolsetIndicateur}
+
+Ce constructeur définit un ensemble dont le seul booléen portant le nom de l'indicateur est vrai, les autres sont faux.
+
+\begin{galgas3}
+var x = @MonEnsemble.indicateur1
+log x # LOGGING x: <boolset @MonEnsemble: indicateur1>
+\end{galgas3}
+
+Si le contexte le permet, l'annotation de type peut être omis lors de l'appel du constructeur~:
+\begin{galgas3}
+@MonEnsemble x = .none
+\end{galgas3}
+
+
+\subsectionLabel{Constructeur \texttt{none}}{constructeurBoolsetNone}
+
+Ce constructeur définit un ensemble dont tous les booléens sont faux.
+
+\begin{galgas3}
+var x = @MonEnsemble.none
+log x # LOGGING x: <boolset @MonEnsemble:>
+\end{galgas3}
+
+Si le contexte le permet, l'annotation de type peut être omis lors de l'appel du constructeur~:
+\begin{galgas3}
+@MonEnsemble x = .none
+\end{galgas3}
+
+
+\subsectionLabel{Constructeur \texttt{all}}{constructeurBoolsetAll}
+
+Ce constructeur définit un ensemble dont tous les booléens sont vrais.
+
+\begin{galgas3}
+var x = @MonEnsemble.all
+log x # LOGGING x: <boolset @MonEnsemble: indicateur0 indicateur1 indicateur2>
+\end{galgas3}
+
+Si le contexte le permet, l'annotation de type peut être omis lors de l'appel du constructeur~:
+\begin{galgas3}
+@MonEnsemble x = .all
+\end{galgas3}
+
+
+\subsectionLabel{Constructeur \texttt{default}}{constructeurBoolsetDefault}
+
+Le constructeur \ggst=default= est défini implicitement, et a la même signification que le constructeur \texttt{none}.
+
+\begin{galgas3}
+var x = @MonEnsemble.default
+log x # LOGGING x: <boolset @MonEnsemble:>
+\end{galgas3}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Getters}
+
+Un \emph{getter} est défini pour chaque indicateur (\refSubsectionPage{getterBoolsetIndicateur})~: il permet de tester un indicateur.
+
+Deux getters particuliers sont implicitement définis pour tout ensemble de booléens~:
+\begin{itemize}
+  \item le getter \texttt{none} (\refSubsectionPage{getterBoolsetNone})~;
+  \item le getter \texttt{all} (\refSubsectionPage{getterBoolsetAll}).
+\end{itemize}
+
+\subsectionLabel{Getter ayant le nom d'un indicateur}{getterBoolsetIndicateur}
+
+Ce getter permet d'obtenir la valeur de l'indicateur nommé.
+
+\begin{galgas3}
+var x = @MonEnsemble.indicateur1
+var b = [x indicateur1]
+log b # LOGGING b: <@bool:true>
+b = [x indicateur2]
+log b # LOGGING b: <@bool:false>
+\end{galgas3}
+
+
+
+\subsectionLabel{Getter \texttt{none}}{getterBoolsetNone}
+
+Ce getter renvoie \ggst=true= si tous les indicateurs sont faux.
+
+\begin{galgas3}
+var x = @MonEnsemble.none
+var b = [x none]
+log b # LOGGING b: <@bool:true>
+\end{galgas3}
+
+
+
+
+
+\subsectionLabel{Getter \texttt{all}}{getterBoolsetAll}
+
+Ce getter renvoie \ggst=true= si tous les indicateurs sont vrais.
+
+\begin{galgas3}
+var x = @MonEnsemble.all
+var b = [x all]
+log b # LOGGING b: <@bool:true>
+\end{galgas3}
+
+
+
+
+
+\section{Opérateurs infixes}
+
+Les opérateurs infixes du \refTableau{operateursInfixesBoolset} sont définis pour tout \ggst=boolset=.
+
+\begin{table}[t]
+  \centering
+  \begin{tabular}{ll}
+    {\bf Expression} & {\bf Signification} \\
+    \ggst+a & b+ & Intersection~: ensemble des indicateurs appartenant à \ggst=a= et à \ggst=b=.\\
+    \ggst+a | b+ & Union~: ensemble des indicateurs appartenant à \ggst=a= ou à \ggst=b=. \\
+    \ggst+a ^ b+ & Exclusion~: ensemble des indicateurs appartenant soit à \ggst=a=, soit à \ggst=b=. \\
+    \ggst+a - b+ & Différence~: ensemble des indicateurs appartenant à \ggst=a= et n'appartenant pas à \ggst=b=.\\
+    \ggst+a == b+ & Test d'égalité \\
+    \ggst+a != b+ & Test d'inégalité \\
+  \end{tabular}
+  \caption{Opérateurs infixes des types \texttt{boolset}}
+  \labelTableau{operateursInfixesBoolset}
+\end{table}
+
+
+
+
+
+
+\section{Opérateur préfixe}
+
+Un seul opérateur préfixe est défini pour tout \ggst=boolset= (\refTableau{operateurPrefixeBoolset}).
+
+\begin{table}[t]
+  \centering
+  \begin{tabular}{ll}
+    {\bf Expression} & {\bf Signification} \\
+    \ggst+~ a+ & Complémentation~: est équivalent à  \ggst=.all - a=.\\
+  \end{tabular}
+  \caption{Opérateur préfixe des types \texttt{boolset}}
+  \labelTableau{operateurPrefixeBoolset}
+\end{table}
+

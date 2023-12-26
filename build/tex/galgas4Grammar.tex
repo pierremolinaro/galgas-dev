@@ -48,7 +48,7 @@
 
 \nonTerminalSection{actual\_input\_parameter\_list}{21}
 
-\ruleSubsection{galgas4InstructionsSyntax}{galgasInstructionsSyntax}{715}
+\ruleSubsection{galgas4InstructionsSyntax}{galgasInstructionsSyntax}{533}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -293,69 +293,7 @@
 
 \nonTerminalSection{declaration}{19}
 
-\ruleSubsection{galgas4InstructionsSyntax}{galgasInstructionsSyntax}{430}
-
-\begin{tikzpicture}
-  \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
-    & & & & & & & & \node (p2-8) [point] {}; & \\
-    & & & & & & & \node (p1-7) [terminal] {\verb=%=usefull}; & \\
-    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {extern}; & \node (p0-3) [terminal] {proc}; & \node (p0-4) [point] {}; & \node (p0-5) [point] {}; & \node (p0-6) [point] {}; & & & \node (p0-9) [terminal] {identifier}; & \node (p0-10) [nonterminal] {\nonTerminalSymbol{formal\_parameter\_list}{13}}; & \node (p0-11) [lastPoint] {}; & \\
-  };
-  \draw[->] (P0start) -- (p0-2) ;
-  \draw[->] (p0-2) -- (p0-3) ;
-  \draw (p0-3) -- (p0-5) ;
-  \draw[->] (p0-6) |- (p1-7) ;
-  \draw[->] (p2-8) -| (p0-4) ;
-  \draw[->] (p1-7) -| (p2-8) ;
-  \draw[->] (p0-5) -- (p0-9) ;
-  \draw[->] (p0-9) -- (p0-10) ;
-  \draw[->] (p0-10) -- (p0-11) ;
-\end{tikzpicture}
-
-\ruleSubsection{galgas4InstructionsSyntax}{galgasInstructionsSyntax}{458}
-
-\begin{tikzpicture}
-  \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
-    & & & & & & & \node (p2-7) [point] {}; & \\
-    & & & & & & \node (p1-6) [terminal] {\verb=%=usefull}; & \\
-    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {proc}; & \node (p0-3) [point] {}; & \node (p0-4) [point] {}; & \node (p0-5) [point] {}; & & & \node (p0-8) [terminal] {identifier}; & \node (p0-9) [nonterminal] {\nonTerminalSymbol{formal\_parameter\_list}{13}}; & \node (p0-10) [terminal] {\{}; & \node (p0-11) [nonterminal] {\nonTerminalSymbol{semantic\_instruction\_list}{18}}; & \node (p0-12) [terminal] {\}}; & \node (p0-13) [lastPoint] {}; & \\
-  };
-  \draw[->] (P0start) -- (p0-2) ;
-  \draw (p0-2) -- (p0-4) ;
-  \draw[->] (p0-5) |- (p1-6) ;
-  \draw[->] (p2-7) -| (p0-3) ;
-  \draw[->] (p1-6) -| (p2-7) ;
-  \draw[->] (p0-4) -- (p0-8) ;
-  \draw[->] (p0-8) -- (p0-9) ;
-  \draw[->] (p0-9) -- (p0-10) ;
-  \draw[->] (p0-10) -- (p0-11) ;
-  \draw[->] (p0-11) -- (p0-12) ;
-  \draw[->] (p0-12) -- (p0-13) ;
-\end{tikzpicture}
-
-\ruleSubsection{galgas4InstructionsSyntax}{galgasInstructionsSyntax}{489}
-
-\begin{tikzpicture}
-  \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
-    & & & & & & & & \node (p2-8) [point] {}; & \\
-    & & & & & & & \node (p1-7) [terminal] {\verb=%=usefull}; & \\
-    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {private}; & \node (p0-3) [terminal] {proc}; & \node (p0-4) [point] {}; & \node (p0-5) [point] {}; & \node (p0-6) [point] {}; & & & \node (p0-9) [terminal] {identifier}; & \node (p0-10) [nonterminal] {\nonTerminalSymbol{formal\_parameter\_list}{13}}; & \node (p0-11) [terminal] {\{}; & \node (p0-12) [nonterminal] {\nonTerminalSymbol{semantic\_instruction\_list}{18}}; & \node (p0-13) [terminal] {\}}; & \node (p0-14) [lastPoint] {}; & \\
-  };
-  \draw[->] (P0start) -- (p0-2) ;
-  \draw[->] (p0-2) -- (p0-3) ;
-  \draw (p0-3) -- (p0-5) ;
-  \draw[->] (p0-6) |- (p1-7) ;
-  \draw[->] (p2-8) -| (p0-4) ;
-  \draw[->] (p1-7) -| (p2-8) ;
-  \draw[->] (p0-5) -- (p0-9) ;
-  \draw[->] (p0-9) -- (p0-10) ;
-  \draw[->] (p0-10) -- (p0-11) ;
-  \draw[->] (p0-11) -- (p0-12) ;
-  \draw[->] (p0-12) -- (p0-13) ;
-  \draw[->] (p0-13) -- (p0-14) ;
-\end{tikzpicture}
-
-\ruleSubsection{galgas4InstructionsSyntax}{galgasInstructionsSyntax}{523}
+\ruleSubsection{galgas4InstructionsSyntax}{galgasInstructionsSyntax}{341}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -385,7 +323,7 @@
   \draw[->] (p0-17) -- (p0-18) ;
 \end{tikzpicture}
 
-\ruleSubsection{galgas4InstructionsSyntax}{galgasInstructionsSyntax}{587}
+\ruleSubsection{galgas4InstructionsSyntax}{galgasInstructionsSyntax}{405}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -416,7 +354,7 @@
   \draw[->] (p0-18) -- (p0-19) ;
 \end{tikzpicture}
 
-\ruleSubsection{galgas4InstructionsSyntax}{galgasInstructionsSyntax}{654}
+\ruleSubsection{galgas4InstructionsSyntax}{galgasInstructionsSyntax}{472}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -435,6 +373,68 @@
   \draw[->] (p0-10) -- (p0-11) ;
   \draw[->] (p0-11) -- (p0-12) ;
   \draw[->] (p0-12) -- (p0-13) ;
+\end{tikzpicture}
+
+\ruleSubsection{galgas4InstructionsSyntax}{extern-procedure-declaration}{48}
+
+\begin{tikzpicture}
+  \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
+    & & & & & & & & \node (p2-8) [point] {}; & \\
+    & & & & & & & \node (p1-7) [terminal] {\verb=%=usefull}; & \\
+    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {extern}; & \node (p0-3) [terminal] {proc}; & \node (p0-4) [point] {}; & \node (p0-5) [point] {}; & \node (p0-6) [point] {}; & & & \node (p0-9) [terminal] {identifier}; & \node (p0-10) [nonterminal] {\nonTerminalSymbol{formal\_parameter\_list}{13}}; & \node (p0-11) [lastPoint] {}; & \\
+  };
+  \draw[->] (P0start) -- (p0-2) ;
+  \draw[->] (p0-2) -- (p0-3) ;
+  \draw (p0-3) -- (p0-5) ;
+  \draw[->] (p0-6) |- (p1-7) ;
+  \draw[->] (p2-8) -| (p0-4) ;
+  \draw[->] (p1-7) -| (p2-8) ;
+  \draw[->] (p0-5) -- (p0-9) ;
+  \draw[->] (p0-9) -- (p0-10) ;
+  \draw[->] (p0-10) -- (p0-11) ;
+\end{tikzpicture}
+
+\ruleSubsection{galgas4InstructionsSyntax}{procedure-declaration}{84}
+
+\begin{tikzpicture}
+  \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
+    & & & & & & & \node (p2-7) [point] {}; & \\
+    & & & & & & \node (p1-6) [terminal] {\verb=%=usefull}; & \\
+    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {proc}; & \node (p0-3) [point] {}; & \node (p0-4) [point] {}; & \node (p0-5) [point] {}; & & & \node (p0-8) [terminal] {identifier}; & \node (p0-9) [nonterminal] {\nonTerminalSymbol{formal\_parameter\_list}{13}}; & \node (p0-10) [terminal] {\{}; & \node (p0-11) [nonterminal] {\nonTerminalSymbol{semantic\_instruction\_list}{18}}; & \node (p0-12) [terminal] {\}}; & \node (p0-13) [lastPoint] {}; & \\
+  };
+  \draw[->] (P0start) -- (p0-2) ;
+  \draw (p0-2) -- (p0-4) ;
+  \draw[->] (p0-5) |- (p1-6) ;
+  \draw[->] (p2-7) -| (p0-3) ;
+  \draw[->] (p1-6) -| (p2-7) ;
+  \draw[->] (p0-4) -- (p0-8) ;
+  \draw[->] (p0-8) -- (p0-9) ;
+  \draw[->] (p0-9) -- (p0-10) ;
+  \draw[->] (p0-10) -- (p0-11) ;
+  \draw[->] (p0-11) -- (p0-12) ;
+  \draw[->] (p0-12) -- (p0-13) ;
+\end{tikzpicture}
+
+\ruleSubsection{galgas4InstructionsSyntax}{procedure-declaration}{115}
+
+\begin{tikzpicture}
+  \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
+    & & & & & & & & \node (p2-8) [point] {}; & \\
+    & & & & & & & \node (p1-7) [terminal] {\verb=%=usefull}; & \\
+    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {private}; & \node (p0-3) [terminal] {proc}; & \node (p0-4) [point] {}; & \node (p0-5) [point] {}; & \node (p0-6) [point] {}; & & & \node (p0-9) [terminal] {identifier}; & \node (p0-10) [nonterminal] {\nonTerminalSymbol{formal\_parameter\_list}{13}}; & \node (p0-11) [terminal] {\{}; & \node (p0-12) [nonterminal] {\nonTerminalSymbol{semantic\_instruction\_list}{18}}; & \node (p0-13) [terminal] {\}}; & \node (p0-14) [lastPoint] {}; & \\
+  };
+  \draw[->] (P0start) -- (p0-2) ;
+  \draw[->] (p0-2) -- (p0-3) ;
+  \draw (p0-3) -- (p0-5) ;
+  \draw[->] (p0-6) |- (p1-7) ;
+  \draw[->] (p2-8) -| (p0-4) ;
+  \draw[->] (p1-7) -| (p2-8) ;
+  \draw[->] (p0-5) -- (p0-9) ;
+  \draw[->] (p0-9) -- (p0-10) ;
+  \draw[->] (p0-10) -- (p0-11) ;
+  \draw[->] (p0-11) -- (p0-12) ;
+  \draw[->] (p0-12) -- (p0-13) ;
+  \draw[->] (p0-13) -- (p0-14) ;
 \end{tikzpicture}
 
 \ruleSubsection{galgas4DeclarationsSyntax}{galgasDeclarationsSyntax}{315}
@@ -752,7 +752,7 @@
   \draw[->] (p0-17) -- (p0-18) ;
 \end{tikzpicture}
 
-\ruleSubsection{galgas4DeclarationsSyntax}{type-struct}{49}
+\ruleSubsection{galgas4DeclarationsSyntax}{type-struct}{37}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -1375,7 +1375,7 @@
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
     & & & & & & & & & & \node (p2-10) [point] {}; & \\
     & & & & & & & \node (p1-7) [terminal] {?}; & \node (p1-8) [terminal] {@type}; & \node (p1-9) [terminal] {identifier}; & \\
-    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {constructor}; & \node (p0-3) [terminal] {identifier}; & \node (p0-4) [point] {}; & \node (p0-5) [point] {}; & \node (p0-6) [point] {}; & & & & & \node (p0-11) [terminal] {->}; & \node (p0-12) [nonterminal] {\nonTerminalSymbol{type\_definition}{12}}; & \node (p0-13) [lastPoint] {}; & \\
+    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {init}; & \node (p0-3) [terminal] {identifier}; & \node (p0-4) [point] {}; & \node (p0-5) [point] {}; & \node (p0-6) [point] {}; & & & & & \node (p0-11) [terminal] {->}; & \node (p0-12) [nonterminal] {\nonTerminalSymbol{type\_definition}{12}}; & \node (p0-13) [lastPoint] {}; & \\
   };
   \draw[->] (P0start) -- (p0-2) ;
   \draw[->] (p0-2) -- (p0-3) ;
@@ -3930,7 +3930,7 @@
 
 \nonTerminalSection{semantic\_instruction\_list}{18}
 
-\ruleSubsection{galgas4InstructionsSyntax}{galgasInstructionsSyntax}{404}
+\ruleSubsection{galgas4InstructionsSyntax}{galgasInstructionsSyntax}{315}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -4086,7 +4086,7 @@
 
 \nonTerminalSection{syntax\_directed\_translation\_result}{20}
 
-\ruleSubsection{galgas4InstructionsSyntax}{galgasInstructionsSyntax}{688}
+\ruleSubsection{galgas4InstructionsSyntax}{galgasInstructionsSyntax}{506}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {

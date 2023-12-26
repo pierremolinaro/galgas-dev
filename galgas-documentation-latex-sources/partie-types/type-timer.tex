@@ -1,0 +1,104 @@
+%!TEX encoding = UTF-8 Unicode
+%!TEX root = ../galgas-book.tex
+
+\chapitreTypePredefiniLabelIndex{timer}
+
+\tableDesMatieresLocaleDeProfondeurRelative{1}
+
+
+Le type \ggst!@timer! permet de mesurer des durées d'exécution de portions de code ; une utilisation typique est :
+
+\begin{galgas3}
+var @timer t = .start
+  # instructions
+message "Durée : " + [t string] + "\n" # Affiche la durée d'exécution des instructions
+\end{galgas3}
+
+
+\section{Constructeurs}
+
+Le type \ggst!@timer! accepte deux constructeurs :
+\begin{itemize}
+  \item le contructeur \ggst!start! ;
+  \item le constructeur \ggst!default! (\refSubsectionPage{constructeurParDefaut}), qui a le même effet que le constructeur \ggst!start!.
+\end{itemize}
+
+
+\subsectionConstructor{start}{timer}
+
+\begin{galgas3box}
+constructor @timer start -> @timer
+\end{galgas3box}
+
+Appeler le constructeur \ggst!start! est la seule façon d'instancier un objet \ggst!@timer!. Le chronomètre est enclenché, c'est-à-dire qu'il compte la durée à partir de laquelle le constructeur \ggst!start! a été appelé.
+
+
+
+
+
+
+
+\section{Setters}
+
+Le type \ggst!@timer! accepte deux \emph{setters} :
+\begin{itemize}
+  \item le \emph{setter} \ggst!resume! ;
+  \item le \emph{setter} \ggst!stop!.
+\end{itemize}
+
+\subsectionSetter{resume}{timer}
+
+\begin{galgas3box}
+setter @timer resume
+\end{galgas3box}
+
+Le \emph{setter} \ggst!resume! redémarre le chronomètre si il est arrêté, et le réinitialise si il est en marche.
+\subsectionSetter{stop}{timer}
+
+\begin{galgas3box}
+setter @timer stop
+\end{galgas3box}
+
+Le \emph{setter} \ggst!stop! arrête le chronomètre. Si il est déjà arrêté, appeler ce \emph{setter} n'a aucun effet.
+
+
+
+
+
+
+
+\section{Getters}
+
+Le type \ggst!@timer! accepte trois \emph{getters} :
+\begin{itemize}
+  \item le \emph{getter} \ggst!isRunning! ;
+  \item le \emph{getter} \ggst!msFromStart! ;
+  \item le \emph{getter} \ggst!string!.
+\end{itemize}
+
+\subsectionGetter{isRunning}{timer}
+
+\begin{galgas3box}
+getter @timer isRunning -> @bool
+\end{galgas3box}
+
+Ce \emph{getter} renvoie  \ggst!true! si le récepteur décompte le temps, ou \ggst!false! si il a été arrêté par un appel au \emph{setter} \ggst!stop!.
+
+
+\subsectionGetter{msFromStart}{timer}
+
+\begin{galgas3box}
+getter @timer msFromStart -> @uint
+\end{galgas3box}
+
+La valeur obtenue par le \emph{getter} \ggst!msFromStart! est la durée écoulée depuis son instanciation (par le constructeur \ggst!start!) ou depuis le dernier appel au \emph{setter} \ggst!resume!. La durée est exprimée en millisecondes.
+
+
+\subsectionGetter{string}{timer}
+
+\begin{galgas3box}
+getter @timer string -> @string
+\end{galgas3box}
+
+La valeur obtenue par le \emph{getter} \ggst!string! est la durée écoulée depuis son instanciation (par le constructeur \ggst!start!) ou depuis le dernier appel au \emph{setter} \ggst!resume!. La durée est exprimée sous la forme d'une chaîne de caractères.
+

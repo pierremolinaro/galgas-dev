@@ -1,0 +1,143 @@
+%!TEX encoding = UTF-8 Unicode
+%!TEX root = ../galgas-book.tex
+
+\chapitreTypePredefiniLabelIndex{filewrapper}
+
+\tableDesMatieresLocaleDeProfondeurRelative{1}
+
+
+Le type \ggst+@filewrapper+ permet d'accéder à un \emph{filewrapper}, c'est à dire à des fichiers embarqués dans l'exécutable (voir \refChapterPage{filewrapper}).
+
+\section{Constructor}
+
+\section{Setter}
+
+\subsection{Setter \texttt{setCurrentDirectory}}
+
+\begin{galgas3}
+setter setCurrentDirectory ?@string inDirectory ;
+\end{galgas3}
+
+
+\section{Getters}
+
+
+
+
+\subsection{Getter \texttt{allTextFilePathes}}
+
+\begin{galgas3}
+getter allTextFilePathes -> @stringlist ;
+\end{galgas3}
+
+
+
+
+
+
+\subsection{Getter \texttt{allDirectoryPathes}}
+
+\begin{galgas3}
+getter allDirectoryPathes -> @stringlist ;
+\end{galgas3}
+
+
+
+
+
+
+\subsection{Getter \texttt{currentDirectory}}
+
+\begin{galgas3}
+getter currentDirectory -> @string ;
+\end{galgas3}
+
+
+
+
+
+
+
+
+\subsection{Getter \texttt{allFilePathesWithExtension}}
+
+\begin{galgas3}
+getter allFilePathesWithExtension ?@string inExtension -> @stringlist ;
+\end{galgas3}
+
+
+
+
+
+
+
+
+
+
+\subsection{Getter \texttt{directoryExistsAtPath}}
+
+\begin{galgas3}
+getter directoryExistsAtPath ?@string inPath -> @bool ;
+\end{galgas3}
+
+
+
+
+
+
+
+
+
+
+\subsection{Getter \texttt{fileExistsAtPath}}
+
+\begin{galgas3}
+getter fileExistsAtPath ?@string inPath -> @bool ;
+\end{galgas3}
+
+
+
+
+
+
+
+
+
+
+\subsection{Getter \texttt{textFileContentsAtPath}}
+
+\begin{galgas3}
+getter textFileContentsAtPath ?@string inPath -> @string ;
+\end{galgas3}
+
+
+
+
+
+
+
+
+
+
+\subsection{Getter \texttt{binaryFileContentsAtPath}}
+
+\begin{galgas3}
+getter binaryFileContentsAtPath ?@string inPath -> @data ;
+\end{galgas3}
+
+
+
+
+
+
+
+
+
+
+\subsection{Getter \texttt{absolutePathForPath}}
+
+\begin{galgas3}
+getter absolutePathForPath ?@string inPath -> @string ;
+\end{galgas3}
+
+

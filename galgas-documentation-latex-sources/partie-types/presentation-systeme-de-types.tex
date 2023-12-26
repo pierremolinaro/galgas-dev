@@ -1,0 +1,203 @@
+%!TEX encoding = UTF-8 Unicode
+%!TEX root = ../galgas-book.tex
+
+\chapter{Présentation du système de types}
+
+\tableDesMatieresLocaleDeProfondeurRelative{1}
+
+
+GALGAS définit :
+\begin{itemize}
+\item des types de base, définis en dur dans le langage (\refSectionPage{typeBase}) ;
+\item des constructions permettant de construire de nouveaux types (\refSectionPage{typeConstruits}).
+\end{itemize}
+
+
+
+
+\sectionLabel{Types de base}{typeBase}
+
+Les types de base sont :
+\begin{itemize}
+\item \refTypePredefini{application}, accès aux informations relatives à l'application ;
+\item \refTypePredefini{bigint}, entiers de taille illimitée ;
+\item \refTypePredefini{binaryset}, fonctions booléennes, implementées par des \emph{Binary Decision Diagrams} ;
+\item \refTypePredefini{bool}, les booléens ;
+\item \refTypePredefini{char}, les caractères Unicode ;
+\item \refTypePredefini{data}, les séquences d'octets ;
+\item \refTypePredefini{double}, les nombres flottants correspondant au type \texttt{double} du C ;
+\item \refTypePredefini{filewrapper}, dont les objets permettent d'explorer les \emph{filewrappers} ;
+\item \refTypePredefini{location}, objets dont la valeur désigne un texte source et un indice dans ce texte source ;
+\item \refTypePredefini{object}, dont une instance peut encapsuler toute valeur ;
+%\item \refTypePredefini{range}, intervalle d'entiers 32 bits non signés ;
+\item \refTypePredefini{sint}, entiers 32 bits signés ;
+\item \refTypePredefini{sint64}, entiers 64 bits signés ;
+\item \refTypePredefini{string}, chaînes de caractères Unicode ;
+\item \refTypePredefini{stringset}, ensembles de chaînes de caractères Unicode ;
+\item \refTypePredefini{timer} ;
+\item \refTypePredefini{type}, dont une instance représente un type ;
+\item \refTypePredefini{uint}, entiers 32 bits non signés ;
+\item \refTypePredefini{uint64}, entiers 64 bits non signés.
+\end{itemize}
+
+
+
+
+
+\sectionLabel{Constructions de nouveaux types}{typeConstruits}
+
+Les nouveaux types qui peuvent être construits sont :
+\begin{itemize}
+  \item des \emph{types de listes}, \refChapterPage{typeList} ;
+  \item des \emph{types de listes ordonnées}, \refChapterPage{typeSortedList} ;
+  \item des \emph{types de tableaux}, \refChapterPage{typeArray} ;
+  \item des \emph{types de classes}, \refChapterPage{typeClass} ;
+  \item des \emph{types énumérés}, \refChapterPage{typeEnum} ;
+  \item des \emph{types de graphes}, \refChapterPage{typeGraph} ;
+  \item des \emph{types de tables}, \refChapterPage{typeMap} ;
+  \item des \emph{types de dictionnaires}, \refChapterPage{typeDict} ;
+  \item des \emph{types de structures}, \refChapterPage{typeStructure} ;
+  \item des \emph{types externes}, \refChapterPage{typeExtern}.
+\end{itemize}
+
+
+
+
+
+
+
+
+
+\section{Types prédéfinis}
+
+Les types prédéfinis sont :
+\begin{itemize}
+  \item les types de base (\refSectionPage{typeBase}) ;
+  \item les types de structure suivants :
+  \begin{itemize}
+    \item \refTypePredefini{lbool} ;
+    \item \refTypePredefini{lbigint} ;
+    \item \refTypePredefini{lchar} ;
+    \item \refTypePredefini{ldouble} ;
+    \item \refTypePredefini{lsint} ;
+    \item \refTypePredefini{lsint64} ;
+    \item \refTypePredefini{lstring} ;
+    \item \refTypePredefini{luint} ;
+    \item \refTypePredefini{luint64} ;
+    \item \refTypePredefini{range} ;
+  \end{itemize}
+  \item les types de listes suivants :
+  \begin{itemize}
+    \item \refTypePredefini{2stringlist} ;
+    \item \refTypePredefini{2lstringlist} ;
+    \item \refTypePredefini{bigintlist} ;
+    \item \refTypePredefini{functionlist} ;
+    \item \refTypePredefini{lbigintlist} ;
+    \item \refTypePredefini{lstringlist} ;
+    \item \refTypePredefini{luintlist} ;
+    \item \refTypePredefini{objectlist} ;
+    \item \refTypePredefini{stringlist} ;
+    \item \refTypePredefini{typelist} ;
+    \item \refTypePredefini{uintlist} ;
+    \item \refTypePredefini{uint64list}.
+  \end{itemize}
+\end{itemize}
+
+
+
+
+
+
+
+
+\section{Opérations définies pour tous les types}
+
+Tout type implémente implicitement :
+\begin{itemize}
+  \item l'opérateur \ggst+==+ ;
+  \item l'opérateur \ggst+!=+ ;
+  \item le \emph{getter} \ggst+description+ ;
+  \item le \emph{getter} \ggst+dynamicType+ ;
+  \item le \emph{getter} \ggst+object+.
+\end{itemize}
+
+La plupart des types implémentent le constructeur par défaut \ggst+default+ (voir \refSubsectionPage{constructeurParDefaut}).
+
+
+\subsection{L'opérateur \texttt{==}}
+
+\begin{galgas3}
+func == ?@T ?@T -> @bool
+\end{galgas3}
+
+Cet opérateur permet de tester l'identité entre de deux objets de même type.
+
+\subsection{L'opérateur \texttt{!=}}
+
+\begin{galgas3}
+func != ?@T ?@T -> @bool
+\end{galgas3}
+
+Cet opérateur permet de tester la non identité entre de deux objets de même type. Il renvoie le complément logique du résultat de l'application de l'opérateur \ggst+==+.
+
+
+
+
+
+\subsection{Le getter \texttt{description}}
+
+\begin{galgas3}
+getter @T description -> @string
+\end{galgas3}
+
+Le \emph{getter} \ggst+description+ retourne une description textuelle du receveur, la même que celle affichée par l'instruction \ggst+log+ (\refSectionPage{instructionLog}).
+
+
+
+\subsection{Le getter \texttt{dynamicType}}
+
+\begin{galgas3}
+getter @T dynamicType -> @type
+\end{galgas3}
+
+Le \emph{getter} \ggst+dynamicType+ retourne un objet de type \ggst+@type+, dont la valeur représente le type dynamique du receveur (voir aussi la définition du type \refTypePredefini{type}).
+
+Pour tous les types sauf les classes, leurs instances sont du même type que le type statique :
+
+\begin{galgas3}
+@uint n = 2
+@type t = [n dynamicType]
+log t # Affiche @uint
+\end{galgas3}
+
+Pour les instances de classes, le jeu des affectations polymorphiques peut entraîner que le type dynamique soit une classe héritière du type statique.
+
+Par exemple, en déclarant :
+\begin{galgas3}
+class @A { }
+class @B : @A { }
+\end{galgas3}
+
+Et avec la séquence d'instructions suivante :
+\begin{galgas3}
+@B b = .new
+@type t = [b dynamicType]
+log t # Affiche @B, type statique de b : @B
+@A a = b # Affectation polymorphique
+t = [a dynamicType]
+log t # Affiche @B, type statique de a : @A
+\end{galgas3}
+
+
+
+
+
+\subsection{Le getter \texttt{object}}
+
+\begin{galgas3}
+getter @T object -> @object
+\end{galgas3}
+
+
+Le \emph{getter} \ggst+object+ retourne un objet de type \ggst+@object+. Une variable de type \refTypePredefini{object} peut encapsuler tout type de valeur.
+

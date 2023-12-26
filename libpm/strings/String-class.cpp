@@ -91,6 +91,9 @@ mUTF32String (nullptr) {
   macroMyNewPODArray (mUTF32String, utf32, newCapacity) ;
   mUTF32String [0] = TO_UNICODE ('\0') ;
   mCapacity = newCapacity ;
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkEmbeddedString (HERE) ;
+  #endif
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -115,6 +118,9 @@ mUTF32String (nullptr) {
     mUTF32String [i] = inEmbeddedString->mUTF32String [i] ;
   }
   mLength = inEmbeddedString->mLength ;
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkEmbeddedString (HERE) ;
+  #endif
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -135,8 +141,8 @@ cEmbeddedString::~cEmbeddedString (void) {
     }else{
       macroAssertThere (mLength <= mCapacity, "mLength (%ld) > mCapacity (%ld)", mLength, mCapacity) ;
       macroAssertThere (UNICODE_VALUE (mUTF32String [mLength]) == '\0',
-                        "mUTF32String [mLength] == %ld != '\\0'",
-                        int32_t (UNICODE_VALUE (mUTF32String [mLength])), 0) ;
+                        "mUTF32String [mLength (%ld)] == %ld != '\\0'",
+                        mLength, int32_t (UNICODE_VALUE (mUTF32String [mLength]))) ;
       if (mEncodedCString != nullptr) {
         macroValidPointer (mEncodedCString) ;
         for (uint32_t i=0 ; i<=mLength ; i++) {
@@ -541,12 +547,12 @@ void String::performActualUnicodeArrayOutput (const utf32 * inUTF32CharArray,
     for (int32_t i=0 ; i<inArrayCount ; i++) {
       mEmbeddedString->mUTF32String [mEmbeddedString->mLength + (uint32_t) i] = inUTF32CharArray [i] ;
     }
-    mEmbeddedString->mLength = (uint32_t) kNewLength ;
+    mEmbeddedString->mLength = uint32_t (kNewLength) ;
     mEmbeddedString->mUTF32String [kNewLength] = TO_UNICODE ('\0') ;
     #ifndef DO_NOT_GENERATE_CHECKINGS
       checkString (HERE) ;
     #endif
-    macroAssert (capacity () > (uint32_t) kNewLength, "capacity (%lld) <= kNewLength (%lld)", capacity (), kNewLength) ;
+    macroAssert (capacity () > uint32_t (kNewLength), "capacity (%lld) <= kNewLength (%lld)", capacity (), kNewLength) ;
     macroUniqueSharedObject (mEmbeddedString) ;
   }
 }
@@ -573,7 +579,7 @@ void String::performActualCharArrayOutput (const char * inCharArray,
         mEmbeddedString->mUTF32String [newLength] = unicodeChar ;
         newLength ++ ;
       }
-      mEmbeddedString->mLength = (uint32_t) newLength ;
+      mEmbeddedString->mLength = uint32_t (newLength) ;
       mEmbeddedString->mUTF32String [newLength] = TO_UNICODE ('\0') ;
     }
     #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -600,7 +606,7 @@ void String::setUnicodeCharacterAtIndex (const utf32 inCharacter,
   macroValidPointerThere (mEmbeddedString) ;
   macroAssertThere (inIndex >= 0, "inIndex (%ld) < 0", inIndex, 0) ;
   if (nullptr != mEmbeddedString) {
-    macroAssertThere ((uint32_t) inIndex < mEmbeddedString->mLength,
+    macroAssertThere (uint32_t (inIndex) < mEmbeddedString->mLength,
                     "inIndex (%ld) >= string length (%ld)",
                     inIndex, mEmbeddedString->mLength) ;
     insulateEmbeddedString (mEmbeddedString->mCapacity) ;
@@ -616,8 +622,8 @@ void String::setUnicodeCharacterAtIndex (const utf32 inCharacter,
 //--------------------------------------------------------------------------------------------------
 
 void String::suppress (const int32_t inLocation,
-                         const int32_t inLength
-                         COMMA_LOCATION_ARGS) {
+                       const int32_t inLength
+                       COMMA_LOCATION_ARGS) {
   if (inLength > 0) {
     insulateEmbeddedString (mEmbeddedString->mCapacity) ;
     #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -625,21 +631,21 @@ void String::suppress (const int32_t inLocation,
     #endif
     macroValidPointerThere (mEmbeddedString) ;
     macroAssertThere (inLocation >= 0, "inLocation (%ld) < 0", inLocation, 0) ;
-    macroAssertThere ((uint32_t) inLocation <= mEmbeddedString->mLength,
-                   "inLocation (%ld) > mLength (%ld)",
-                    inLocation, mEmbeddedString->mLength) ;
-    macroAssertThere ((uint32_t) inLength <= mEmbeddedString->mLength,
-                   "inLength (%ld) > string length (%ld)",
-                    inLength, mEmbeddedString->mLength) ;
+    macroAssertThere (uint32_t (inLocation) <= mEmbeddedString->mLength,
+                      "inLocation (%ld) > mLength (%ld)",
+                      inLocation, mEmbeddedString->mLength) ;
+    macroAssertThere (uint32_t (inLength) <= mEmbeddedString->mLength,
+                      "inLength (%ld) > string length (%ld)",
+                      inLength, mEmbeddedString->mLength) ;
     const int32_t bytesToMove = 1 + ((int32_t) mEmbeddedString->mLength) - inLength - inLocation ;
     if ((inLocation >= 0) && (bytesToMove > 0)) {
       for (int32_t i=0 ; i<bytesToMove ; i++) {
         mEmbeddedString->mUTF32String [inLocation + i] = mEmbeddedString->mUTF32String [inLocation + i + inLength] ;
       }
-      macroAssert (mEmbeddedString->mLength >= (uint32_t) inLength,
-                 "mLength (%lld) < inLength (%lld)",
-                 mEmbeddedString->mLength, inLength) ;
-      mEmbeddedString->mLength -= (uint32_t) inLength ;
+      macroAssert (mEmbeddedString->mLength >= uint32_t (inLength),
+                   "mLength (%lld) < inLength (%lld)",
+                   mEmbeddedString->mLength, inLength) ;
+      mEmbeddedString->mLength -= uint32_t (inLength) ;
       #ifndef DO_NOT_GENERATE_CHECKINGS
         checkString (HERE) ;
       #endif
@@ -655,9 +661,9 @@ void String::suppress (const int32_t inLocation,
 //--------------------------------------------------------------------------------------------------
 
 void String::insertCharacterAtIndex (const utf32 inChar,
-                                       const int32_t inIndex
-                                       COMMA_LOCATION_ARGS) {
-  const uint32_t kNewLength = uint32_t (length ()) + 1 ;
+                                     const int32_t inIndex
+                                     COMMA_LOCATION_ARGS) {
+  const uint32_t kNewLength = uint32_t (length ()) + 2 ; // inserted character, zero termination
   insulateEmbeddedString (kNewLength) ;
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkString (THERE) ;

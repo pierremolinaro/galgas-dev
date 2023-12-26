@@ -1,0 +1,330 @@
+%!TEX encoding = UTF-8 Unicode
+%!TEX root = ../galgas-book.tex
+
+%--------------------------------------------------------------
+\chapterLabel{Le type \texttt{sortedlist}}{typeSortedList}
+%-------------------------------------------------------------
+
+\tableDesMatieresLocaleDeProfondeurRelative{1}
+
+
+Le type \ggst+sortedlist+ permet de construire des listes ordonnées de valeurs.
+
+
+
+
+\section{Déclaration}
+
+La déclaration d'une \ggst+sortedlist+ nomme tous les attributs qui composent un élément de liste et la description du tri. Par Exemple :
+
+\begin{galgas3}
+sortedlist @MaListeOrdonnee {
+  @char mCaractere ;
+  @uint mEntier ;
+}{
+  mCaractere <, mEntier >
+}
+\end{galgas3}
+
+La description du tri est exprimée par la liste ordonnée des attributs qui interviennent dans le tri, chacun d'eux étant suivi de l'ordre du tri (\ggst+<+ pour croissant, et \ggst+>+ pour décroissant). Ainsi, les élements des instances du type liste ordonnée ci-dessus sont triés par ordre croissant du champ caractère, puis par ordre décroissant du champ entier.
+
+Déclarer une \ggst+sortedlist+ définit implicitement :
+\begin{itemize}
+  \item le constructeur \ggst+emptySortedList+ qui construit une liste vide (\refSubsectionPage{constructeurSortedlistEmptySortedList}) ;
+  \item le constructeur \ggst+sortedListWithValue+ qui construit une liste contenant un élément (\refSubsectionPage{constructeurSortedlistSortedListWithValue}) ;
+  \item la construction \ggst+{...}+ qui permet de construire explicitement une liste ordonnée (\refSubsectionPage{constructeurSortedlistAccolades}) ;
+  \item l'opérateur \ggst*+=* pour ajouter un élément à une liste ordonnée (\refSubsectionPage{operateurSortedListPlusEgal}) ;
+  \item l'opérateur \ggst*+=* pour ajouter tous les éléments d'une liste à une liste ordonnée (\refSubsectionPage{operateurSortedListPointEgal}) ;
+  \item l'opérateur \ggst*+* pour construire une liste ordonnée à partir de deux listes ordonnées (\refSubsectionPage{operateurSortedListPoint}) ;
+  \item le \emph{getter} \ggst+length+, qui retourne le nombre d'éléments d'une liste (\refSectionPage{readerSortedListLength}) ;
+  \item le \emph{setter} \ggst+popGreatest+, qui retourne les champs du plus grand élément d'une liste, et retire cet élément de cette liste (\refSubsectionPage{modifierSortedListPopGreatest}) ;
+  \item le \emph{setter} \ggst+popSmallest+, qui retourne les champs du plus grand élément d'une liste, et retire cet élément de cette liste (\refSubsectionPage{modifierSortedListPopSmallest}) ;
+  \item la \emph{méthode} \ggst+greatest+, qui retourne les champs du plus grand élément d'une liste sans la modifier (\refSubsectionPage{methodeSortedListGreatest}) ;
+  \item la \emph{méthode} \ggst+smallest+, qui retourne les champs du plus petit élément d'une liste sans la modifier (\refSubsectionPage{methodeSortedListSmallest}).
+\end{itemize}
+
+
+
+
+
+
+
+
+\section{Constructeurs}
+
+\subsectionLabel{Constructeur \texttt{emptySortedList}}{constructeurSortedlistEmptySortedList}
+
+Le constructeur \ggst+emptySortedList+ construit et retourne une liste vide. Par exemple :
+\begin{galgas3}
+@MaListeOrdonnee uneListe = @MaListeOrdonnee.emptySortedList
+\end{galgas3}
+
+L'inférence de type permet de mentionner le type de liste une seule fois. On peut écrire :
+\begin{galgas3}
+var uneListe = @MaListeOrdonnee.emptySortedList
+\end{galgas3}
+
+Ou bien
+\begin{galgas3}
+@MaListeOrdonnee uneListe = .emptySortedList
+\end{galgas3}
+
+
+\subsectionLabel{Constructeur \texttt{sortedListWithValue}}{constructeurSortedlistSortedListWithValue}
+
+Le constructeur \ggst+sortedListWithValue+ construit et retourne une liste comprenant un élément. Cet élément est spécifié par les arguments effectifs de l'appel : ce constructeur présente une séquence d'arguments en entrée correspondant aux champs de l'élément. Par exemple :
+
+\begin{galgas3}
+@MaListeOrdonnee uneListe = @MaListeOrdonnee.sortedListWithValue {
+  !'a' # Affecte au champ mCaractere
+  !10  # Affecte au champ mEntier
+}
+\end{galgas3}
+
+Ici aussi, l'inférence de type permet de mentionner le type de liste une seule fois. On peut écrire :
+\begin{galgas3}
+var uneListe = @MaListeOrdonnee.sortedListWithValue {!'a' !10}
+
+\end{galgas3}
+
+Ou bien
+\begin{galgas3}
+@MaListeOrdonnee uneListe = .sortedListWithValue {!'a' !10}
+\end{galgas3}
+
+
+
+
+
+
+
+
+
+\section{Opérateurs}
+
+
+
+
+
+
+
+\subsectionLabel{Opérateur \texttt{\{...\}}}{constructeurSortedlistAccolades}
+
+Cette construction permet de s'affranchir des constructeurs \ggst+emptySortedList+ et \ggst+sortedListWithValue+. Pour initialiser une liste ordonnée vide, on peut écrire :
+
+\begin{galgas3}
+@MaListeOrdonnee uneListe = @MaListeOrdonnee {}
+\end{galgas3}
+
+L'inférence de type permet de mentionner le type de liste une seule fois. On peut écrire :
+\begin{galgas3}
+var uneListe = @MaListeOrdonnee {}
+\end{galgas3}
+
+Ou bien
+\begin{galgas3}
+@MaListeOrdonnee uneListe = {}
+\end{galgas3}
+
+
+Pour initialiser une liste contenant un élément (en exploitant l'inférence de type) :
+\begin{galgas3}
+@MaListeOrdonnee uneListe = {!'a' !10}
+\end{galgas3}
+
+On peut mentionner un nombre quelconque d'éléments, en les séparant par des virgules :
+\begin{galgas3}
+@MaListeOrdonnee uneListe = {!'a' !10, !'c' !5, !'b' !20}
+\end{galgas3}
+
+
+
+
+\subsectionLabel{L'opérateur \texttt{+=}}{operateurSortedListPlusEgal}
+
+L'opérateur \ggst*+=* ajoute un élément à la liste ordonnée, en maintenant la relation d'ordre. L'élément ajouté est spécifié par la séquences des valeurs à affecter à ses champs. Si il y a un ou plusieurs éléments égaux à l'élément ajouté, ce dernier est placé après les éléments existants.
+
+
+Cette opération est effectuée en $O(log (n))$ où $n$ est le nombre d'éléments de la liste.
+
+Exemple :
+
+\begin{galgas3}
+@MaListeOrdonnee uneListe = {}
+uneListe += !'b' ! 1 # b1
+uneListe += !'b' ! 2 # b2
+uneListe += !'d' ! 1 # d1
+uneListe += !'f' ! 1 # f1
+uneListe += !'a' ! 1 # a1
+uneListe += !'c' ! 1 # c1
+uneListe += !'f' ! 2 # f2
+\end{galgas3}
+
+\subsectionLabel{L'opérateur \texttt{+=}}{operateurSortedListPointEgal}
+
+L'opérateur \ggst*+=* ajoute tous les éléments de l'expression à la liste ordonnée, en maintenant la relation d'ordre. Si il y a un ou plusieurs éléments égaux à chaque élément ajouté, ce dernier est placé après les éléments existants.
+
+Exemple :
+\begin{galgas3}
+@MaListeOrdonnee uneListe = ... ;
+@MaListeOrdonnee autreListe = ... ;
+uneListe += autreListe ;
+\end{galgas3}
+
+\subsectionLabel{L'opérateur \texttt{.}}{operateurSortedListPoint}
+
+L'opérateur \ggst*+* combine deux listes ordonnées. Les éléments de la seconde liste égaux à ceux de la première liste sont placés après ceux de la première liste.
+
+Exemple :
+\begin{galgas3}
+@MaListeOrdonnee uneListe = ... ;
+@MaListeOrdonnee autreListe = ... ;
+@MaListeOrdonnee troisiemeListe = uneListe + autreListe ;
+\end{galgas3}
+
+
+
+
+
+
+
+\sectionLabel{Getter \texttt{count}}{readerSortedListCount}
+
+Le getter \ggst+count+ retourne un \ggst+@uint+ contenant le nombre d'éléments de la liste ordonnée.
+
+
+
+
+
+
+
+
+\sectionLabel{Getter \texttt{length}}{readerSortedListLength}
+
+Le getter \ggst+length+ retourne un \ggst+@uint+ contenant le nombre d'éléments de la liste ordonnée. Obsolète, utiliser \ggst+count+.
+
+
+
+
+
+
+\section{Setters}
+
+\subsectionLabel{Setter \texttt{popGreatest}}{modifierSortedListPopGreatest}
+
+Ce \emph{setter} retourne les champs du plus grand élément de la liste ordonnée, et le retire. Si la liste est vide, un message d'erreur est affiché, et les variables destinées à recevoir les valeurs des champs sont placées dans l'état \emph{invalide}. Par exemple :
+
+\begin{galgas3}
+@MaListeOrdonnee uneListe = ...
+...
+[!?uneListe popGreatest
+  ?@char c
+  ?@uint n
+]
+\end{galgas3}
+
+Si \ggst+uneListe+ est vide, les variables \ggst+c+ et \ggst+n+ sont placées dans l'état \emph{invalide}.
+
+
+\subsectionLabel{Setter \texttt{popSmallest}}{modifierSortedListPopSmallest}
+
+Ce \emph{setter} retourne les champs du plus petit élément de la liste ordonnée, et le retire. Si la liste est vide, un message d'erreur est affiché, et les variables destinées à recevoir les valeurs des champs sont placées dans l'état \emph{invalide}. Par exemple :
+
+\begin{galgas3}
+@MaListeOrdonnee uneListe = ...
+...
+[!?uneListe popSmallest
+  ?@char c
+  ?@uint n
+]
+\end{galgas3}
+
+Si \ggst+uneListe+ est vide, les variables \ggst+c+ et \ggst+n+ sont placées dans l'état \emph{invalide}.
+
+
+
+
+
+
+
+
+
+
+\section{Méthodes}
+
+\subsectionLabel{La méthode \texttt{greatest}}{methodeSortedListGreatest}
+
+Cette méthode retourne les champs du plus grand élément de la liste ordonnée, sans le retirer. La liste n'est donc pas modifiée. Si elle est vide, un message d'erreur est affiché, et les variables destinées à recevoir les valeurs des champs sont placées dans l'état \emph{invalide}. Par exemple :
+
+\begin{galgas3}
+@MaListeOrdonnee uneListe = ...
+...
+[uneListe greatest
+  ?@char c
+  ?@uint n
+]
+\end{galgas3}
+
+Si \ggst+uneListe+ est vide, les variables \ggst+c+ et \ggst+n+ sont placées dans l'état \emph{invalide}.
+
+
+\subsectionLabel{La méthode \texttt{smallest}}{methodeSortedListSmallest}
+
+Cette méthode retourne les champs du plus petit élément de la liste ordonnée, sans le retirer. La liste n'est donc pas modifiée. Si elle est vide, un message d'erreur est affiché, et les variables destinées à recevoir les valeurs des champs sont placées dans l'état \emph{invalide}. Par exemple :
+
+\begin{galgas3}
+@MaListeOrdonnee uneListe = ...
+...
+[uneListe smallest
+  ?@char c
+  ?@uint n
+]
+\end{galgas3}
+
+Si \ggst+uneListe+ est vide, les variables \ggst+c+ et \ggst+n+ sont placées dans l'état \emph{invalide}.
+
+
+
+
+\section{Énumération avec l'instruction \texttt{for}}
+
+L'instruction \ggst+for+ (\refSectionPage{instructionFor}) permet d'énumérer les éléments d'une liste ordonnée, par ordre croissant ou décroissant.
+
+Pour effectuer l'énumération par ordre croissant, écrire :
+\begin{galgas3}
+for () in uneListe do
+  ...
+end
+\end{galgas3}
+
+Pour effectuer l'énumération par ordre décroissant, écrire :
+\begin{galgas3}
+for > () in uneListe do
+  ...
+end
+\end{galgas3}
+
+À l'intérieur de la boucle, pour chaque champ des éléments de la liste, un constante dont le nom est celui du champ est définie et prend la valeur du champ correspondant de l'élément courant.
+
+Par exemple :
+
+\begin{galgas3}
+@MaListeOrdonnee uneListe = {}
+uneListe += !'b' ! 1 # b1
+uneListe += !'b' ! 2 # b2
+uneListe += !'d' ! 1 # d1
+uneListe += !'f' ! 1 # f1
+uneListe += !'a' ! 1 # a1
+uneListe += !'c' ! 1 # c1
+uneListe += !'f' ! 2 # f2
+var s = "" ;
+for () in uneListe do
+  s += [mCaractere string] + [mEntier string] + " "
+end
+message s + "\n" ; # Affiche "a1 b2 b1 c1 d1 f2 f1"
+s = ""
+for > () in uneListe do
+  s += [mCaractere string] + [mEntier string] + " "
+end
+message s + "\n" # Affiche "f1 f2 d1 c1 b1 b2 a1"
+\end{galgas3}

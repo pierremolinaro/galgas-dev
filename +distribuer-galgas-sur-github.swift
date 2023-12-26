@@ -216,7 +216,7 @@ print ("ANNÉE : \(ANNÉE)")
   remplacerAnneeEtVersionGALGAS (ANNÉE, VERSION_GALGAS, directory: DISTRIBUTION_DIR + "/galgas-dev/libpm/command_line_interface")
   remplacerAnneeEtVersionGALGAS (ANNÉE, VERSION_GALGAS, directory: DISTRIBUTION_DIR + "/galgas-dev/build")
 //-------------------- Construire la documentation Latex
-  let latexDir = DISTRIBUTION_DIR + "/galgas-dev/galgas-3-documentation-latex-sources"
+  let latexDir = DISTRIBUTION_DIR + "/galgas-dev/galgas-documentation-latex-sources"
   let directoryEnumerator = fm.enumerator (atPath: latexDir)
   while let filename = directoryEnumerator?.nextObject () as? String {
     if filename.hasSuffix (".tex") {

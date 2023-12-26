@@ -1,0 +1,318 @@
+%!TEX encoding = UTF-8 Unicode
+%!TEX root = ../galgas-book.tex
+
+%--------------------------------------------------------------
+\chapterLabel{Le type structure}{typeStructure}
+%-------------------------------------------------------------
+
+\tableDesMatieresLocaleDeProfondeurRelative{1}
+
+
+
+Le mot-clé \ggst!struct! permet de définir des types de structure. Un objet de type structure a une sémantique de valeur.
+
+La syntaxe de définition d'un type structure est de la forme~:
+
+\begin{galgas3}
+struct @MaStructure {
+  # Liste de déclaration de propriétés, par exemple :
+  @uint mProp1
+  @bool mProp2
+}
+\end{galgas3}
+
+Il n'est pas possible de définir du code dans une déclaration de structure~: la seule possibilité est de le définir dans des \ggst=extension= (\refChapterPage{chapitreExtensions}).
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Constructeurs}
+
+\subsection{Constructeur \texttt{new}}
+
+Tout type structure définit implicitement le constructeur \ggst!new!. Son appel comprend une valeur par propriété déclarée par le type structure.
+
+Par exemple, pour la déclaration~:
+\begin{galgas3}
+struct @maStructure {
+  @uint mProp1
+  @bool mProp2
+}
+\end{galgas3}
+
+L'appel du constructeur \ggst!new! est~:
+\begin{galgas3}
+var aVariable = @maStructure.new {!123 !true}
+\end{galgas3}
+
+Si le contexte le permet, l'annotation de type peut être omis lors de l'appel du constructeur~:
+\begin{galgas3}
+@maStructure aVariable = .new {!123 !true}
+\end{galgas3}
+
+À partir de la version 3.3.8, il est possible d'ajouter l'attribut \ggst=%selector= à la déclaration d'une propriété de structure. Le faire impose d'utiliser le sélecteur portant le nom de la propriété dans l'appel du constructeur \ggst=new=. Par exemple, si on déclare~:
+\begin{galgas3}
+struct @maStructure {
+  @uint mProp1 %selector
+  @bool mProp2
+}
+\end{galgas3}
+
+Alors l'appel du constructeur \ggst!new! devient~:
+\begin{galgas3}
+var aVariable = @maStructure.new {!mProp1:123 !true}
+\end{galgas3}
+
+
+\subsection{Constructeur \texttt{default}}
+
+Si chacune des propriétés accepte le constructeur par défaut, alors le type structure accepte le constructeur pas défaut. C'est le cas de la structure \ggst!@maStructure! définie au dessus~: \ggst!@uint! accepte le constructeur par défaut (initialisation à \ggst!0!), ainsi que \ggst!@bool! (initialisation à \ggst!false!). Donc~:
+\begin{galgas3}
+var aVariable = @maStructure.default
+\end{galgas3}
+Initialise les propriétés de \ggst!aVariable! respectivement à \ggst!0! et \ggst!false!. On peut aussi écrire~:
+\begin{galgas3}
+@maStructure aVariable = .default
+\end{galgas3}
+
+
+\section{Accès aux propriétés}
+
+La notation pointée \ggst!variable.propriété! permet d'accéder à une propriété d'une structure, aussi bien en lecture, en écriture et en lecture/écriture.
+
+Exemple d'accès en lecture~:
+\begin{galgas3}
+@uint v = aVariable.mProp1
+\end{galgas3}
+
+Exemple d'accès en écriture~:
+\begin{galgas3}
+aVariable.mProp1 = 10
+\end{galgas3}
+
+
+Exemple d'accès en lecture/écriture~:
+\begin{galgas3}
+aVariable.mProp1 ++
+\end{galgas3}
+
+
+
+
+
+\section{Getters}
+
+Un type structure définit un \emph{getter} sans argument par propriété, qui permet d'accéder en lecture à cette propriété. Son nom est celui de la propriété. Par exemple, à la place de~:
+\begin{galgas3}
+@uint v = aVariable.mProp1
+\end{galgas3}
+
+On peut écrire~:
+\begin{galgas3}
+@uint v = [aVariable mProp1]
+\end{galgas3}
+
+
+
+\section{Types structure prédéfinis}
+
+Plusieurs types préféfinis GALGAS sont des structures.
+
+\subsectionTypePredefiniLabelIndex{lbigint}
+
+\begin{galgas3}
+struct @lbigint {
+  @bigint bigint
+  @location location
+}
+\end{galgas3}
+
+
+
+\subsectionTypePredefiniLabelIndex{lbool}
+
+\begin{galgas3}
+struct @lbool {
+  @bool bool
+  @location location
+}
+\end{galgas3}
+
+
+
+\subsectionTypePredefiniLabelIndex{lchar}
+
+\begin{galgas3}
+struct @lchar {
+  @char char
+  @location location
+}
+\end{galgas3}
+
+
+\subsectionTypePredefiniLabelIndex{ldouble}
+
+\begin{galgas3}
+struct @ldouble {
+  @double double
+  @location location
+}
+\end{galgas3}
+
+
+
+
+
+
+
+\subsectionTypePredefiniLabelIndex{lsint}
+
+\begin{galgas3}
+struct @lsint {
+  @sint sint
+  @location location
+}
+\end{galgas3}
+
+
+
+
+
+
+
+
+\subsectionTypePredefiniLabelIndex{lsint64}
+
+\begin{galgas3}
+struct @lsint64 {
+  @sint64 sint64
+  @location location
+}
+\end{galgas3}
+
+
+
+
+
+
+
+\subsectionTypePredefiniLabelIndex{lstring}
+
+\begin{galgas3}
+struct @lstring {
+  @string string
+  @location location
+}
+\end{galgas3}
+
+
+
+
+
+
+
+\subsectionTypePredefiniLabelIndex{luint}
+
+\begin{galgas3}
+struct @luint {
+  @uint uint
+  @location location
+}
+\end{galgas3}
+
+
+
+
+
+\subsectionTypePredefiniLabelIndex{luint64}
+
+
+\begin{galgas3}
+struct @luint64 {
+  @uint64 uint64
+  @location location
+}
+\end{galgas3}
+
+
+\subsectionTypePredefiniLabelIndex{range}
+
+Le type \ggst!@range! définit les intervalles d'entiers non signés 32 bits (\ggst!@uint!).
+
+\begin{galgas3}
+struct @range {
+  @uint start
+  @uint length
+}
+\end{galgas3}
+
+La plupart des propriétés du type \ggst!@range! découle de cette définition (\refChapterPage{typeStructure}).
+
+\ggst+@range.new {!a !b}+, où \ggst!a! et \ggst!b! sont des expressions de type \ggst!@uint!, représente~:
+\begin{itemize}
+  \item un intervalle vide si \ggst!b! est égal à zéro ;
+  \item l'intervalle $[a, a+b-1]$ si \ggst!b! est strictement positif.
+\end{itemize}
+
+
+
+\subsubsectionLabel{Opérateurs \texttt{...} et \texttt{..<}}{operateurIntervalleRange}
+
+Deux opérateurs permettent de construire plus facilement des objets de type \ggst!@range!.
+
+L'opérateur \ggst!...! permet de définir un intervalle fermé à partir de sa borne inférieure et de sa borne supérieure~: si \ggst!a! et \ggst!b! sont des expressions de type \ggst!@uint!, l'expression \ggst!a ... b! est équivalente à la construction \ggst*@range.new {!a !b - a + 1}*. Une exception est levée si $b < a$.
+
+L'opérateur \ggst!..<! permet de définir un intervalle ouvert à gauche à partir de sa borne inférieure et de sa borne supérieure~: si \ggst!a! et \ggst!b! sont des expressions de type \ggst!@uint!, l'expression \ggst!a ..< b! est équivalente à \ggst*@range.new {!a !b - a}*. Une exception est levée si $b < a$.
+
+\subsubsection{Type \texttt{@range} et instruction \texttt{for}}
+
+On peut utiliser une expression de type \ggst!@range! avec l'instruction \ggst!for!~:
+
+\begin{galgas3}
+for i in @range.new {!12 !5} do
+  # i prend successivement les valeurs 12, 13, 14, 15, 16
+end
+\end{galgas3}
+
+Et, avec l'opérateur \ggst!...!~:
+\begin{galgas3}
+for i in 12 ... 16 do
+  # i prend successivement les valeurs 12, 13, 14, 15, 16
+end
+\end{galgas3}
+
+Et l'opérateur \ggst!..<!~:
+\begin{galgas3}
+for i in 12 ..< 17 do
+  # i prend successivement les valeurs 12, 13, 14, 15, 16
+end
+\end{galgas3}
+
+Si l'on veut parcourir l'énumération à partir de la dernière valeur, on utilise le modificateur \ggst!>! après le mot-clé \ggst!for!~:
+\begin{galgas3}
+for > i in @range.new {!12 !5} do
+  # i prend successivement les valeurs 16, 15, 14, 13, 12
+end
+\end{galgas3}
+
+\begin{galgas3}
+for > i in 12 ... 16 do
+  # i prend successivement les valeurs 16, 15, 14, 13, 12
+end
+\end{galgas3}
+
+\begin{galgas3}
+for > i in 12 ..< 17 do
+  # i prend successivement les valeurs 16, 15, 14, 13, 12
+end
+\end{galgas3}
+
+

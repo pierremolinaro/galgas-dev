@@ -1,0 +1,215 @@
+%!TEX encoding = UTF-8 Unicode
+%!TEX root = ../galgas-book.tex
+
+\chapitreTypePredefiniLabelIndex{location}
+
+\tableDesMatieresLocaleDeProfondeurRelative{1}
+
+
+Un objet de type \ggst+@location+ a pour valeur une position dans un texte source. Les objets de ce types sont utilisés dans les messages d'erreurs et les messages d'alerte pour indiquer à l'utilisateur la position de l'erreur ou de l'alerte.
+
+
+
+
+
+
+
+
+
+
+
+\section{Constructeurs}
+
+
+\subsectionConstructor{here}{location}
+
+\begin{galgas3}
+constructor here -> @location
+\end{galgas3}
+
+Le constructeur \ggst+here+ crée un objet de type \ggst=@location= qui désigne le dernier \emph{token} analysé. Ainsi, si l'on écrit :
+
+\begin{galgas3}
+  $token$
+  ...
+  let currentLocation = @location.here
+\end{galgas3}
+
+La position capturée est le token correspondant à \ggst+$token$+. Si \ggst+here+ est appelé avant que le premier token soit analysé, la position capturée est le premier caractère du texte source.
+
+
+
+
+
+
+\subsectionConstructor{next}{location}
+
+\begin{galgas3}
+constructor next -> @location
+\end{galgas3}
+
+Le constructeur \ggst+next+ crée un objet de type \ggst=@location= qui désigne le prochain \emph{token} analysé. Ainsi, si l'on écrit :
+
+\begin{galgas3}
+  let currentLocation = @location.next
+  ...
+  $token$
+  ...
+\end{galgas3}
+
+La position capturée est le token correspondant à \ggst+$token$+. Si \ggst+next+ est appelé alors que la chaîne source est complètement analysée, la position capturée est le dernier caractère du texte source.
+
+
+
+
+
+
+\subsectionConstructor{nowhere}{location}
+
+\begin{galgas3}
+constructor nowhere -> @location
+\end{galgas3}
+
+
+Returns an \ggst+@location+ that does not point out any location.
+
+The returned object responds \ggst+true+ to the \refGetterPage{location}{isNowhere}.
+
+
+
+
+
+\section{Getters}
+
+\tableDesMatieresLocaleDeProfondeurRelative{1}
+
+\subsectionGetter{column}{location}
+
+\begin{galgas3}
+getter column -> @uint # Obsolete, use endColumn
+\end{galgas3}
+
+Returns an \ggst+@uint+ value containing the column of the receiver's value ; this getter raises a run-time error if the receiver's value responds \ggst+true+ to the \refGetterPage{location}{isNowhere}.
+
+\subsectionGetter{endColumn}{location}
+
+\begin{galgas3}
+getter endColumn -> @uint
+\end{galgas3}
+
+Returns an \ggst+@uint+ value containing the column of the receiver's end location ; this getter raises a run-time error if the receiver's value responds \ggst+true+ to the \refGetterPage{location}{isNowhere}.
+
+
+\subsectionGetter{endLine}{location}
+
+\begin{galgas3}
+getter endLine -> @uint
+\end{galgas3}
+
+Returns an \ggst+@uint+ value containing the end line of the receiver's end location. This getter raises a run-time error if the receiver's value responds \ggst+true+ to the \refGetterPage{location}{isNowhere}.
+
+
+\subsectionGetter{endLocationIndex}{location}
+
+\begin{galgas3}
+getter endLocationIndex -> @uint
+\end{galgas3}
+
+Returns an \ggst+@uint+ value containing the the offset from the the end of the source of the location defined by receiver's value. This getter raises a run-time error if the receiver's value responds \ggst+true+ to the \refGetterPage{location}{isNowhere}.
+
+
+
+\subsectionGetter{endLocationString}{location}
+
+\begin{galgas3}
+getter endLocationString -> @string
+\end{galgas3}
+
+Returns an \ggst+@string+ object that contains a string representation of the end location defined by receiver's value. This getter raises a run-time error if the receiver's value responds \ggst+true+ to the \refGetterPage{location}{isNowhere}.
+
+
+\subsectionGetter{isNowhere}{location}
+
+\begin{galgas3}
+getter isNowhere -> @bool
+\end{galgas3}
+
+Returns an \ggst+@bool+ value indicating whether the receiver'value points out a source location or does not. This getter returns \ggst+true+ if the receiver's value does not point out an actual location in a text source (i.e. it has been constructed using the nowhere constructor), and \ggst+false+ if the receiver's value points out an actual location in a text source (i.e. it has been constructed using the \ggst+here+ keyword.
+
+
+\subsectionGetter{line}{location}
+
+\begin{galgas3}
+getter line -> @uint  # Obsolete, use endLine
+\end{galgas3}
+
+Returns an \ggst+@uint+ value containing the end line of the receiver's value. This getter raises a run-time error if the receiver's value responds \ggst+true+ to the \refGetterPage{location}{isNowhere}.
+
+
+
+\subsectionGetter{locationIndex}{location}
+
+\begin{galgas3}
+getter locationIndex -> @uint # Obsolete, use endLocationIndex
+\end{galgas3}
+
+Returns an \ggst+@uint+ value containing the the offset from the the beginning of the source of the location defined by receiver's value. This getter raises a run-time error if the receiver's value responds \ggst+true+ to the \refGetterPage{location}{isNowhere}.
+
+
+
+\subsectionGetter{locationString}{location}
+
+\begin{galgas3}
+getter locationString -> @string # Obsolete use endLocationString
+\end{galgas3}
+
+Returns an \ggst+@string+ object that contains a string representation of the end location defined by receiver's value. This getter raises a run-time error if the receiver's value responds \ggst+true+ to the \refGetterPage{location}{isNowhere}.
+
+
+
+\subsectionGetter{startColumn}{location}
+
+\begin{galgas3}
+getter startColumn -> @uint
+\end{galgas3}
+
+Returns an \ggst+@uint+ value containing the column of the receiver's start location ; this getter raises a run-time error if the receiver's value responds \ggst+true+ to the \refGetterPage{location}{isNowhere}.
+
+
+\subsectionGetter{startLine}{location}
+
+\begin{galgas3}
+getter startLine -> @uint
+\end{galgas3}
+
+Returns an \ggst+@uint+ value containing the start line of the receiver's value. This getter raises a run-time error if the receiver's value responds \ggst+true+ to the \refGetterPage{location}{isNowhere}.
+
+
+
+\subsectionGetter{startLocationIndex}{location}
+
+\begin{galgas3}
+getter startLocationIndex -> @uint
+\end{galgas3}
+
+Returns an \ggst+@uint+ value containing the the offset from the the end of the source of the location defined by receiver's value. This getter raises a run-time error if the receiver's value responds \ggst+true+ to the \refGetterPage{location}{isNowhere}.
+
+
+\subsectionGetter{startLocationString}{location}
+
+\begin{galgas3}
+getter startLocationString -> @string
+\end{galgas3}
+
+
+Returns an \ggst+@string+ object that contains a string representation of the start location defined by receiver's value. This getter raises a run-time error if the receiver's value responds \ggst+true+ to the \refGetterPage{location}{isNowhere}.
+
+
+\subsectionGetter{union}{location}
+
+\begin{galgas3}
+getter union ?@location inOther -> @location
+\end{galgas3}
+
+L'objet courant et l'argument doivent concerner le même source. Sinon, une erreur d'exécution est déclenchée. Cette fonction retourne l'union des intervalles définis par l'objet courant et l'argument.
+

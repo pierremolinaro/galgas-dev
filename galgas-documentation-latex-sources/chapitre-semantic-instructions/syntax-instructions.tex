@@ -1,0 +1,135 @@
+%!TEX encoding = UTF-8 Unicode
+%!TEX root = ../galgas-book.tex
+
+%--------------------------------------------------------------
+\chapter{Instructions syntaxiques}
+%-------------------------------------------------------------
+
+\tableDesMatieresLocaleDeProfondeurRelative{1}
+
+
+Les six instructions décrites dans ce chapitre ne peuvent être utilisées qu'à l'intérieur des règles de production, elles-mêmes obligatoirement placées dans un composant \ggst+syntax+.
+
+
+\sectionLabel{Instruction d'appel de terminal}{instruction-appel-terminal}
+
+
+Cette instruction permet de vérifier l'occurrence d'un terminal. Sa syntaxe présente deux options :
+\begin{galgas3}
+$terminal$
+parametres_entree # Optionnels
+indexing nom_index # Optionnel
+traduction_dirigee_par_la_syntaxe # Optionnel
+\end{galgas3}
+
+Où :
+\begin{itemize}
+  \item \ggst+$terminal$+ est le nom du terminal à vérifier ; il doit être l'un des terminaux déclarés par le lexique importé par le composant syntaxique ;
+  \item \ggst+parametres_entree+ est une liste de zéro, un ou plusieurs paramètres effectifs en entrée, en accord avec la déclaration du \ggst+$terminal$+ dans le lexique ; comment écrire une liste de paramètres en entrée est présenté à la \refSectionPage{listeParametresEffectifsEntree} ;
+  \item \ggst+nom_index+ est le nom d'un index, tel que déclaré dans le lexique ; cet index sert à peupler le menu contextual de cross référence en Cocoa (\refSectionPage{indexingYourSourceFiles}) ;
+  \item \ggst+traduction_dirigee_par_la_syntaxe+ permet de préciser les options de \emph{traduction dirigée par la syntaxe} ; celle-ci est présentée en détail au \refChapterPage{chapitreTraductionDirigeeParSyntaxe}.
+\end{itemize}
+
+
+
+
+
+
+\section{Instruction d'appel de non terminal}
+
+
+
+
+
+\sectionLabel{Instruction \texttt{select}}{instructionSelectSyntaxique}
+
+La syntaxe de l'instruction \ggst+select+ syntaxique\footnote{Ne pas confondre avec l'instruction de sélection lexicale, qui ne peut être utilisée que dans les analyseurs lexicaux (\refSubsectionPage{instructionSelectLexical}).} est la suivante :
+\begin{galgas3}
+A
+select
+  I0
+or
+  I1
+or
+  I2
+end
+B
+\end{galgas3}
+
+L'instruction est présentée avec trois branches \ggst+or+ : l'instruction doit comporter au moins deux branches.
+
+Sa signification est la suivante : l'occurrence de chaque \ggst+select+ syntaxique peut être remplacée par un nouvel non-terminal particulier, que l'on va nommer \ggst+T+. La séquence précédente devient donc :
+\begin{galgas3}
+A
+<T>
+B
+\end{galgas3}
+
+Le non-terminal \ggst+T+ se dérive de la façon suivante :
+\begin{galgas3}
+rule <T> { I0 }
+
+rule <T> { I1 }
+
+rule <T> { I2 }
+\end{galgas3}
+
+
+
+
+
+
+
+\sectionLabel{Instruction \texttt{repeat}}{instructionRepeatSyntaxique}
+
+La syntaxe de l'instruction \ggst+repeat+ syntaxique\footnote{Ne pas confondre avec l'instruction de répétition lexicale, qui ne peut être utilisée que dans les analyseurs lexicaux (\refSubsectionPage{instructionRepeatLexical}).} est la suivante :
+\begin{galgas3}
+A
+repeat
+  I0
+while
+  I1
+while
+  I2
+end
+B
+\end{galgas3}
+
+L'instruction est présentée avec deux branches \ggst+while+ : l'instruction doit comporter au moins une branche.
+
+Sa signification est la suivante : l'occurrence de chaque \ggst+repeat+ syntaxique peut être remplacée par un nouvel non-terminal particulier, que l'on va nommer \ggst+T+. La séquence précédente devient donc :
+\begin{galgas3}
+A
+I0
+<T>
+B
+\end{galgas3}
+
+Le non-terminal \ggst+T+ se dérive de la façon suivante :
+\begin{galgas3}
+rule <T> { I1 I0 <T> }
+
+rule <T> { I2 I0 <T> }
+
+rule <T> {  }
+\end{galgas3}
+
+
+
+
+
+
+
+\section{Instruction \texttt{parse}}
+
+
+
+
+
+
+
+\sectionLabel{Instruction \texttt{send}}{instruction-send-syntaxique}
+
+
+
+

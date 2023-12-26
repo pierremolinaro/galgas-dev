@@ -1,0 +1,377 @@
+%!TEX encoding = UTF-8 Unicode
+%!TEX root = ../galgas-book.tex
+
+%--------------------------------------------------------------
+\chapterLabel{Le type \texttt{refclass}}{typeRefClass}
+
+\tableDesMatieresLocaleDeProfondeurRelative{1}
+
+
+Le type \ggst=refclass= est un type de classe classique -- il inclut l'\emph{héritage simple} et les \emph{classes abstraites} -- et a une sémantique de référence (\refSectionPage{semantiqueReference}).
+
+Les instances d'une \ggst=refclass= sont des \emph{pointeurs forts}, c'est-à-dire que le nombre de pointeurs forts qui désignent un objet est maintenu à jour en permanence. La déallocation est fait automatiquement lorsque le nombre de pointeurs forts tombe à zéro.
+
+Pour chaque type \ggst=refclass @T= déclaré, est implicitement déclaré le type \ggst=@T-weak=, qui implémente un \emph{pointeur faible} sur les objets de type \ggst=@T= (\refSectionPage{pointeurFaible}). Un pointeur faible n'est pas compté dans le comptage de références, et est mis automatiquement à \ggst=nil= lorsque l'objet disparaît.
+
+Il n'est pas possible de définir des méthodes dans une classe : on peut le faire uniquement via des \emph{extensions}~: \refChapterPage{chapitreExtensions}.
+
+
+
+
+
+\sectionLabel{Déclaration d'une classe}{declarationClasseReference}
+
+
+Voici différents exemples de déclaration de classes :
+
+\begin{galgas3}
+abstract refclass @A {
+  @uint mA
+}
+refclass @B : @A {
+  @string mB
+}
+refclass @C : @B {
+  @data mC
+}
+\end{galgas3}
+
+La classe \ggst+@A+ est abstraite (c'est-à-dire qu'elle ne peut pas être instanciée), la classe \ggst+@B+ hérite de \ggst+@A+. Une classe déclare zéro, un ou plusieurs propriétés. L'héritage multiple n'est pas implémenté en GALGAS.
+
+Une classe qui hérite d'une autre peut être abstraite :
+\begin{galgas3}
+abstract refclass @D : @C {
+  ...
+ }
+\end{galgas3}
+
+Une classe non abstraite définit implicitement le constructeur \ggst+new+, et des \emph{getters} pour lire les propriétés, et des \emph{setters} pour les écrire. On ne peut pas définir explicitement d'autres constructeurs, \emph{getters} ou \emph{setters} à l'intérieur de la classe. Cependant,  les extensions (\refChapterPage{chapitreExtensions}) permettent de définir \emph{getters}, \emph{méthodes} et \emph{setters} associés à une classe.
+
+
+
+
+
+
+
+
+
+
+
+\sectionLabel{Sémantique de référence}{semantiqueReference}
+
+Une classe déclarée par \ggst=refclass= a une \emph{sémantique de référence}, c'est-à-dire qu'une affectation entre instances provoque un partage de données~:
+
+\begin{galgas3}
+shared refclass @classeSemantiqueDeReference {
+  @uint propriété
+}
+\end{galgas3}
+
+Et l'exécution devient :
+
+\begin{galgas3}
+@classeSemantiqueDeReference a = .new {!10}
+@classeSemantiqueDeReference b = a # Partage
+[!?a setPropriété !5]
+message "Propriété de a " + [a propriété] + "\n" # Propriété de a 5
+message "Propriété de b " + [b propriété] + "\n" # Propriété de b 5
+\end{galgas3}
+
+L'affectation \ggst+b=a+ provoque un partage de données, \ggst=a= et \ggst=b= désigne le même objet~: l'affectation de sa \ggst=propriété= via \ggst=a= est visible via \ggst=b=.
+
+
+
+
+
+
+
+
+\section{Le constructeur \texttt{new}}
+
+Le constructeur \ggst+new+ est implicitement défini pour toute classe non abstraite (c'est à dire les classes \ggst+@B+ et \ggst+@C+ de la \refSectionPage{declarationClasseReference}). Ce constructeur présente un argument par propriété déclaré dans la classe instanciée et dans toutes ses super classes. L'ordre des arguments est celui obtenu en parcourant la hiérarchie de classes, en commençant par la classe de base. Par exemple on écrira~:
+
+\begin{galgas3}
+@B b = @B.new {
+  !0 # Propriété mA de @A
+  !"Hello" # Propriété mB de @B
+}
+@C c = @C.new {
+  !0 # Propriété mA de @A
+  !"Hello" # Propriété mB de @B
+  !@data.emptyData # Propriété mC de @C
+}
+\end{galgas3}
+
+Dans les exemples ci-dessus, les annotations de type apparaissent deux fois, à la déclaration de la variable et devant le constructeur \ggst=new=. Si ces deux annotations nomment le même type, l'une d'entre elles peut être omise. Par exemple~:
+
+\begin{galgas3}
+@B b = .new {
+  !0 # Propriété mA de @A
+  !"Hello" # Propriété mB de @B
+}
+\end{galgas3}
+
+Ou bien :
+\begin{galgas3}
+var b = @B.new {
+  !0 # Propriété mA de @A
+  !"Hello" # Propriété mB de @B
+}
+\end{galgas3}
+
+Aucune des deux annotations ne peut être omise si elles nomment des types différents, comme lorsque l'on réalise une affectation polymorphique~:
+
+\begin{galgas3}
+@A b = @B.new {
+  !0 # Propriété mA de @A
+  !"Hello" # Propriété mB de @B
+}
+\end{galgas3}
+
+
+
+
+
+
+
+
+\section{Lecture d'une propriété}
+
+Par défaut, la lecture d'une propriété est activée par la définition implicite d'un \emph{getter}, dont le nom est le nom de la propriété. Ainsi, pour une classe \ggst=@C=~:
+
+\begin{galgas3}
+refclass @C {
+  @uint prop
+}
+\end{galgas3}
+
+Et pour une variable \ggst+c+ de type \ggst+@C+, on peut écrire~:
+
+\begin{galgas3}
+@uint v = [c prop]
+\end{galgas3}
+
+À partir de la version 3.3.0, il est possible d'utiliser la notation pointée~:
+\begin{galgas3}
+@uint v = c.prop
+\end{galgas3}
+
+Si la propriété a été déclarée \ggst+private+, seules les \emph{méthodes}, \emph{getters} et \emph{setters} de cette classe peuvent accéder cette propriété.
+
+
+
+
+
+
+
+
+\section{Écriture d'une propriété}
+
+Par défaut, une propriété est publique et un \emph{setter} est engendré implicitement. Ce \emph{setter} porte le nom \texttt{set<Propriété>}, c'est-à-dire le nom de la propriété avec sa première lettre en majuscule, précédé par \texttt{set}. Par exemple :
+
+\begin{galgas3}
+refclass @C {
+  @uint prop
+}
+\end{galgas3}
+
+
+Pour modifier la propriété \ggst+prop+ d'un objet \ggst=c= instance de \ggst=@C=, on écrira :
+
+\begin{galgas3}
+[!?c setProp !12]
+\end{galgas3}
+
+Si la propriété a été déclarée \ggst+private+, seules les \emph{méthodes}, \emph{getters} et \emph{setters} de cette classe peuvent accéder cette propriété.
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Conversions entre objets de classes différentes}
+
+Pour toute cette section, nous illustrons les constructions décrites en nous basant sur les trois classes suivantes~:
+\begin{galgas3}
+refclass @A {
+  ...
+}
+refclass @B : @A {
+  ...
+}
+refclass @C : @B {
+  ...
+}
+\end{galgas3}
+
+Nous considérons trois variables \ggst=@a=, \ggst=b= et \ggst=c= respectivement de types \ggst=@A=, \ggst=@B= et \ggst=@C=.
+
+
+\subsection{Affectation polymorphique}
+
+GALGAS accepte l'affectation polymorphique qui est par exemple \ggst+a = b+. Elle est autorisée aussi lors de l'affectation d'une expression effective à un paramètre formel dans une instruction d'appel (de routine, de fonction, de méthode, ...)
+
+
+\subsection{Affectation polymorphique inverse}
+
+L'affectation polymorphique inverse (qui consisterait à écrire \ggst+b = a+) est logiquement refusée par le compilateur.
+
+Il y a trois constructions qui permettent d'effectuer cette opération :
+\begin{itemize}
+  \item l'expression de conversion polymorphique inverse (\refSubsectionPage{expConversionPolymorphiqueInverse}) ;
+  \item l'expression de test du type dynamique (\refSubsectionPage{testTypeDynamiqueExpression}) ;
+  \item l'instruction \ggst+cast+ (\refSectionPage{instructionCast}).
+\end{itemize}
+
+%\section{Comparaison}
+%
+%La comparaison implémentée est une comparaison de références. Chaque référence est convertie en un entier non signé. Autrement dit, l'égalité entre deux références signifie qu'elles désignent le même objet.
+
+%Note~: comme l'adresse d'allocation peut varier d'une exécution à une autre, la relation d'ordre entre les objets n'est pas stable d'une exécution à l'autre.
+
+\subsection{Comparaison}
+
+Les opérateurs de comparaison (\ggst@=@, \ggst@!=@, \ggst@<@, \ggst@<=@, \ggst@>@ et \ggst@>=@) ne sont pas disponibles pour un pointeur fort. Les opérateurs \ggst@===@ et \ggst@!==@ permettent de tester si deux pointeurs forts désignent la même instance.
+
+
+On peut donc écrire~:
+\begin{galgas3}
+  @A a = @A.new
+  var aa = a
+  if a === aa then
+    message "same instance\n"
+  else
+    message "different instances\n"
+  end
+\end{galgas3}
+
+
+
+
+\sectionLabel{Pointeur faible}{pointeurFaible}
+
+Il est possible de définir un \emph{pointeur faible} sur une instance d'une \ggst=refclass=. Un pointeur faible ne change pas le comptage de références, et est mis automatiquement à \ggst=nil= lorsque l'objet disparaît.
+
+Pour une classe est déclarée par \ggst=refclass @T=, le type de référence faible sur les instances de cette classe est \ggst=@T-weak= ; ce type est implicitement déclaré.
+
+
+
+
+
+
+
+\subsection{Constructeurs}
+
+Il y a deux constructeurs : \ggst=default= et \ggst=nil=. Ceux-ci ont le même effet, initialisé un pointeur faible à \texttt{nil}.
+
+\begin{galgas3}
+  var weak1 = @A-weak.nil
+  @A-weak weak2 = .nil
+  var weak3 = @A-weak.default
+\end{galgas3}
+
+
+\subsection{Initialisation à partir d'une instance de \texttt{refclass @T}}
+
+Un objet de type \ggst=refclass @T-weak= peut être diectement initialisé à partir d'un objet de type \ggst=refclass @T=~:
+\begin{galgas3}
+  var a = @A.new
+  @A-weak weakA = a
+\end{galgas3}
+
+Dès que l'objet \ggst=a= disparaît, \ggst=weakA= est mis à \ggst=nil=.
+
+Cette initialisation est polymorphique~: si \ggst=refclass @B= est une héritière de \ggst=refclass @A=, on peut écrire~:
+\begin{galgas3}
+  var b = @B.new
+  @A-weak weakA = b
+\end{galgas3}
+
+Attention, si on écrit~:
+\begin{galgas3}
+  @A-weak weakA = @A.new
+\end{galgas3}
+L'objet créé disparaît aussitôt (il n'a pas de pointeur fort qui le référencie)~: \ggst=weakA= est mis à \ggst=nil= à la fin de l'exécution de l'instruction.
+
+
+\subsection{Extraction de l'objet}
+
+Si un pointeur faible n'est pas \ggst=nil=, l'opérateur \ggst=bang= permet d'obtenir un pointeur fort sur cet objet.
+\begin{galgas3}
+  var a = @A.new
+  @A-weak weakA = a
+  var @A b = weakA.bang
+\end{galgas3}
+Si le pointeur faible est \ggst=nil=, une erreur d'exécution est déclenchée.
+
+
+
+\subsection{Comparaison}
+
+Les opérateurs de comparaison (\ggst@=@, \ggst@!=@, \ggst@<@, \ggst@<=@, \ggst@>@ et \ggst@>=@) ne sont pas disponibles pour un pointeur faible. Les opérateurs \ggst@===@ et \ggst@!==@ permettent de tester si deux pointeurs faibles désignent la même instance, ou si ils sont \ggst=nil= tous les deux. La valeur \ggst=nil= est toujours différente de la valeur qui désigne une instance.
+
+
+On peut donc écrire~:
+\begin{galgas3}
+  @A-weak weakA = ...
+  if weakA === .nil then
+    message "weakA is nil\n"
+  else
+    message "weakA is not nil\n"
+  end
+\end{galgas3}
+
+
+Note~: comme l'adresse d'allocation peut varier d'une exécution à une autre, la relation d'ordre entre les objets n'est pas stable d'une exécution à l'autre.
+
+
+
+
+\subsection{Affectation conditionnelle}
+
+Trois formes d'affection conditionnelle sont possibles.
+
+{\bf Affectation polymorphique inverse conditionnelle vers un pointeur fort, type explicite.}  Dans l'exemple suivant, \ggst=weakA= est un pointeur faible de type \ggst=@A-weak= qui désigne un objet de type \ggst=@B=. La condition teste la valeur de \ggst=weakA=~: si elle est non nil et désigne un objet de type \ggst=@B= (ou d'une classe héritière de \ggst=@B=), l'affectation de \ggst=b= a lieu et la condition est vraie. La constante \ggst=b= a pour type \ggst=@B=. Sinon, la condition est fausse et la constante \ggst=b= est inaccessible.
+
+\begin{galgas3}
+  let b = @B.new
+  @A-weak weakA = b
+  if let b = weakA as @B then
+    log b # Affiche : LOGGING b: <@B: [@B]>
+  else
+    message "weakA is nil\n"
+  end
+\end{galgas3}
+
+
+{\bf Affectation polymorphique inverse conditionnelle vers un pointeur fort, type implicite.}  Dans l'exemple suivant, \ggst=weakA= est un pointeur faible de type \ggst=@A-weak= qui désigne un objet de type \ggst=@B=. La condition teste la valeur de \ggst=weakA=~: si elle est non nil et désigne un objet de type \ggst=@A= (ou d'une classe héritière, comme \ggst=@B=), l'affectation de \ggst=a= a lieu et la condition est vraie. La constante \ggst=a= a pour type \ggst=@A=. Sinon, la condition est fausse et la constante \ggst=a= est inaccessible.
+
+\begin{galgas3}
+  let b = @B.new
+  @A-weak weakA = b
+  if let a = weakA then
+    log a # Affiche : LOGGING a: <@A: [@B]>
+  else
+    message "weakA is nil\n"
+  end
+\end{galgas3}
+
+
+{\bf Affectation polymorphique inverse conditionnelle vers un pointeur faible.} Dans l'exemple suivant, \ggst=weakA= est un pointeur faible de type \ggst=@A-weak= qui désigne un objet de type \ggst=@B=. La condition teste la valeur de \ggst=weakA=~: si elle est non nil et désigne un objet de type \ggst=@B= (ou d'une classe héritière de \ggst=@B=), l'affectation de \ggst=b= a lieu et la condition est vraie. La constante \ggst=b= a pour type \ggst=@B-weak=. Sinon, la condition est fausse et la constante \ggst=b= est inaccessible.
+
+\begin{galgas3}
+  let b = @B.new
+  @A-weak weakA = b
+  if let b = weakA as @B-weak then
+    log b # Affiche : LOGGING b: <@B-weak:instance of @B>
+  else
+    message "weakA is nil\n"
+  end
+\end{galgas3}
+

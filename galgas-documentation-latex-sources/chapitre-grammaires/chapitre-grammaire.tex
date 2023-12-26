@@ -1,0 +1,94 @@
+%!TEX encoding = UTF-8 Unicode
+%!TEX root = ../galgas-book.tex
+
+
+Le langage GALGAS définit trois grammaires :
+\begin{itemize}
+\item la grammaire du fichier projet GALGAS d'extension \texttt{.galgasProject} (\refChapterPage{grammaireProjet}) ;
+\item la grammaire des sources GALGAS d'extension \texttt{.galgas} (\refChapterPage{grammaireSource}) ;
+\item la grammaire des fichiers \emph{template} d'extension \texttt{.galgasTemplate} (\refChapterPage{grammaireTemplate}).
+\end{itemize}
+
+Ces chapitres listent l'ensemble des règles de production de ces trois grammaires.
+
+
+
+
+{
+\tikzset{
+  nonterminal/.style={
+    % The shape:
+    rectangle,
+    % The size:
+    minimum size=5mm,
+    % The border:
+    very thick,
+    draw=red!50!black!50,         % 50% red and 50% black,
+                                  % and that mixed with 50% white
+    % The filling:
+    top color=white,              % a shading that is white at the top...
+    bottom color=red!50!black!20, % and something else at the bottom
+    % Font
+    font=\itshape\tiny
+  },
+  terminal/.style={
+    % The shape:
+    rounded rectangle,
+    minimum size=5mm,
+    % The rest
+    very thick,draw=black!50,
+    top color=white,bottom color=black!20,
+    font=\ttfamily\tiny
+  },
+  firstPoint/.style={circle,>=stealth',thick,draw=black!50},
+  point/.style={coordinate,>=stealth',thick,draw=black!50},
+  tip/.style={->,shorten >=0.007pt},
+  lastPoint/.style={rectangle,>=stealth',thick,draw=black!50},
+  every join/.style={rounded corners}
+}
+
+\newcommand\nonTerminalSummaryStart{Voici la liste alphabétique des non terminaux: }
+\newcommand\ruleSubsection[3]{} % \subsection{Component \texttt{#1}, in file \texttt{#2}, line #3}}
+\newcommand\ruleMatrixColumnSeparation{1.5mm}
+\newcommand\ruleMatrixRowSeparation{1mm}
+\newcommand\nonTerminalSummarySeparator{, }
+\newcommand\nonTerminalSummaryEnd{.\\}
+
+\newcommand\nonTerminalSection[2]{\section{Non terminal \texttt{\it#1}}\label{nt:#2}}
+\newcommand\nonTerminalSymbol[2]{\hyperref[nt:#2]{#1}}
+\newcommand\startSymbol[2]{L'axiome de la grammaire est \hyperref[nt:#2]{#1}.}
+\newcommand\nonTerminalSummary[2]{\hyperref[nt:#2]{#1}}
+
+\chapterLabel{Grammaire du projet GALGAS}{grammaireProjet}
+
+\tableDesMatieresLocaleDeProfondeurRelative{1}
+
+
+\input{chapitre-grammaires/galgas3ProjectGrammar.tex}
+
+
+\renewcommand\nonTerminalSection[2]{\section{Non terminal \texttt{\it#1}}\label{nt1:#2}}
+\renewcommand\nonTerminalSymbol[2]{\hyperref[nt1:#2]{#1}}
+\renewcommand\startSymbol[2]{L'axiome de la grammaire est \hyperref[nt1:#2]{#1}.}
+\renewcommand\nonTerminalSummary[2]{\hyperref[nt1:#2]{#1}}
+
+\chapterLabel{Grammaire des sources GALGAS}{grammaireSource}
+
+\tableDesMatieresLocaleDeProfondeurRelative{1}
+
+
+\input{chapitre-grammaires/galgas3Grammar.tex}
+
+
+\renewcommand\nonTerminalSection[2]{\section{Non terminal \texttt{\it#1}}\label{nt2:#2}}
+\renewcommand\nonTerminalSymbol[2]{\hyperref[nt2:#2]{#1}}
+\renewcommand\startSymbol[2]{L'axiome de la grammaire est \hyperref[nt2:#2]{#1}.}
+\renewcommand\nonTerminalSummary[2]{\hyperref[nt2:#2]{#1}}
+
+\chapterLabel{Grammaire des fichiers de template}{grammaireTemplate}
+
+\tableDesMatieresLocaleDeProfondeurRelative{1}
+
+
+\input{chapitre-grammaires/templateGrammar.tex}
+}

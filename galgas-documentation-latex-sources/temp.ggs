@@ -1,0 +1,1 @@
+%removeSetter nom %errorMessage "message_erreur"
