@@ -295,145 +295,145 @@
     settings = {ATTRIBUTES = (); };
   };
 
-  C279E471F4D180B08D62B00A /* proc-bug-4D-ap-28--29-.cpp */ = {
+  C279E471F4D180B08D62B00A /* proc-bug-4D-ap.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 18FCB43975065399B0D1E48E ;
     settings = {ATTRIBUTES = (); };
   };
 
-  226AF2F3114485AA4E0A23B4 /* proc-my-49-nit-50-roc-28--21--2C--3F--29-.cpp */ = {
+  226AF2F3114485AA4E0A23B4 /* proc-my-49-nit-50-roc-21--3F-.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 28B734FE93831E3FB400CE87 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  30F5513206B999EC0D90D1FB /* proc-print-28--3F--29-.cpp */ = {
+  30F5513206B999EC0D90D1FB /* proc-print-3F-.cpp */ = {
     isa = PBXBuildFile;
     fileRef = C39F506AF761D2277D853A92 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  1A5AAF8370EBEDA47A1FF1C3 /* proc-println-28--3F--29-.cpp */ = {
+  1A5AAF8370EBEDA47A1FF1C3 /* proc-println-3F-.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 7D4066B82AB86DFF8A46AF6F ;
     settings = {ATTRIBUTES = (); };
   };
 
-  84FB43402106C575658472FA /* proc-testsuite-5F-bigint-5F-type-28--29-.cpp */ = {
+  84FB43402106C575658472FA /* proc-testsuite-5F-bigint-5F-type.cpp */ = {
     isa = PBXBuildFile;
     fileRef = E12ABCB736AB9A754FFB617A ;
     settings = {ATTRIBUTES = (); };
   };
 
-  A5989FD342AE44213DF68868 /* proc-testsuite-5F-extension-5F-methods-28--29-.cpp */ = {
+  A5989FD342AE44213DF68868 /* proc-testsuite-5F-extension-5F-methods.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 17772E42B59D74CFF571FBB3 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  04CE6E82442C770F7C8606F0 /* proc-testsuite-5F-extension-5F-mutating-5F-proc-28--29-.cpp */ = {
+  04CE6E82442C770F7C8606F0 /* proc-testsuite-5F-extension-5F-mutating-5F-proc.cpp */ = {
     isa = PBXBuildFile;
     fileRef = DC7A7D1F0ED65AAA29C04B1E ;
     settings = {ATTRIBUTES = (); };
   };
 
-  4B65D0F10FE33D30DD76442E /* proc-testsuite-5F-extension-5F-readers-28--29-.cpp */ = {
+  4B65D0F10FE33D30DD76442E /* proc-testsuite-5F-extension-5F-readers.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 827B703E6ACF9C726942A1E4 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  73878494E9BC8DD6C3C7104F /* proc-testsuite-5F-extension-5F-setters-28--29-.cpp */ = {
+  73878494E9BC8DD6C3C7104F /* proc-testsuite-5F-extension-5F-setters.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 67795EEEF66C225F7883BDCB ;
     settings = {ATTRIBUTES = (); };
   };
 
-  A8F110656874902F07378009 /* proc-testsuite-5F-extern-5F-type-28--29-.cpp */ = {
+  A8F110656874902F07378009 /* proc-testsuite-5F-extern-5F-type.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 746013AC554571FBD180E1C8 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  365D9607EE5A9D336962C534 /* proc-testsuite-5F-for-5F-instruction-28--29-.cpp */ = {
+  365D9607EE5A9D336962C534 /* proc-testsuite-5F-for-5F-instruction.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 0045EB7A6EC44C54D29ED402 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  137649590B755372B040AFAD /* proc-testsuite-5F-foreach-5F-instruction-28--29-.cpp */ = {
+  137649590B755372B040AFAD /* proc-testsuite-5F-foreach-5F-instruction.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 570CB3860F2A6D4B38C6490D ;
     settings = {ATTRIBUTES = (); };
   };
 
-  6411F7873CB83DACB17B0AFC /* proc-testsuite-5F-functions-28--29-.cpp */ = {
+  6411F7873CB83DACB17B0AFC /* proc-testsuite-5F-functions.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 6F634854F3EF915E2E980C31 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  02F5FF68E3E25B9114205D4A /* proc-testsuite-5F-hand-5F-coded-28--29-.cpp */ = {
+  02F5FF68E3E25B9114205D4A /* proc-testsuite-5F-hand-5F-coded.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 40BE98EFAAE0091FA301E613 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  0AD8981CA2C8286F79F59954 /* proc-testsuite-5F-introspection-28--29-.cpp */ = {
+  0AD8981CA2C8286F79F59954 /* proc-testsuite-5F-introspection.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 10729ED4DA8C3D3F5A3AE7C9 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  F98EA8FE223C713B77189A77 /* proc-testsuite-5F-list-28--29-.cpp */ = {
+  F98EA8FE223C713B77189A77 /* proc-testsuite-5F-list.cpp */ = {
     isa = PBXBuildFile;
     fileRef = E457DDEF7F2C4F25DC8FA865 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  560D78C5E599C2A9C9D0BBD2 /* proc-testsuite-5F-listmap-28--29-.cpp */ = {
+  560D78C5E599C2A9C9D0BBD2 /* proc-testsuite-5F-listmap.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 5EE42911677C739EE1734486 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  649FFA2B3FF8C02EBFD5659F /* proc-testsuite-5F-map-28--29-.cpp */ = {
+  649FFA2B3FF8C02EBFD5659F /* proc-testsuite-5F-map.cpp */ = {
     isa = PBXBuildFile;
     fileRef = CA20DB309E056E3D2DCD7D69 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  AFA4421218A51B1E1F1B0BA2 /* proc-testsuite-5F-range-28--29-.cpp */ = {
+  AFA4421218A51B1E1F1B0BA2 /* proc-testsuite-5F-range.cpp */ = {
     isa = PBXBuildFile;
     fileRef = CED301B442654DD8C23B3FC9 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  325A8F591B52D302E7181331 /* proc-testsuite-5F-sortedlist-28--29-.cpp */ = {
+  325A8F591B52D302E7181331 /* proc-testsuite-5F-sortedlist.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 917CBBA1EEA208541A643E74 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  26A953A8CD9526FCA6FE9BA5 /* proc-testsuite-5F-strings-28--29-.cpp */ = {
+  26A953A8CD9526FCA6FE9BA5 /* proc-testsuite-5F-strings.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 512A7A8315FA3C5A946E8265 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  DAB8595A7DBDA4CBCBEE168F /* proc-testsuite-5F-struct-28--29-.cpp */ = {
+  DAB8595A7DBDA4CBCBEE168F /* proc-testsuite-5F-struct.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 010D3C3B8269FAF0BA7491D4 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  89947D410D897474079C1477 /* proc-testsuite-5F-type-5F-categories-28--29-.cpp */ = {
+  89947D410D897474079C1477 /* proc-testsuite-5F-type-5F-categories.cpp */ = {
     isa = PBXBuildFile;
     fileRef = B3E952A85B8551BA726A1227 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  310E77F13A6D184DBF1232F3 /* proc-type-43-ast-49-n-53-etter-43-all-28--29-.cpp */ = {
+  310E77F13A6D184DBF1232F3 /* proc-type-43-ast-49-n-53-etter-43-all.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 3138416A242F40FB7D7F338E ;
     settings = {ATTRIBUTES = (); };
@@ -2024,219 +2024,219 @@
     sourceTree = "<group>";
   };
 
-  18FCB43975065399B0D1E48E /* proc-bug-4D-ap-28--29-.cpp */ = {
+  18FCB43975065399B0D1E48E /* proc-bug-4D-ap.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "proc-bug-4D-ap-28--29-.cpp";
-    path = "proc-bug-4D-ap-28--29-.cpp";
+    name = "proc-bug-4D-ap.cpp";
+    path = "proc-bug-4D-ap.cpp";
     sourceTree = "<group>";
   };
 
-  28B734FE93831E3FB400CE87 /* proc-my-49-nit-50-roc-28--21--2C--3F--29-.cpp */ = {
+  28B734FE93831E3FB400CE87 /* proc-my-49-nit-50-roc-21--3F-.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "proc-my-49-nit-50-roc-28--21--2C--3F--29-.cpp";
-    path = "proc-my-49-nit-50-roc-28--21--2C--3F--29-.cpp";
+    name = "proc-my-49-nit-50-roc-21--3F-.cpp";
+    path = "proc-my-49-nit-50-roc-21--3F-.cpp";
     sourceTree = "<group>";
   };
 
-  C39F506AF761D2277D853A92 /* proc-print-28--3F--29-.cpp */ = {
+  C39F506AF761D2277D853A92 /* proc-print-3F-.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "proc-print-28--3F--29-.cpp";
-    path = "proc-print-28--3F--29-.cpp";
+    name = "proc-print-3F-.cpp";
+    path = "proc-print-3F-.cpp";
     sourceTree = "<group>";
   };
 
-  7D4066B82AB86DFF8A46AF6F /* proc-println-28--3F--29-.cpp */ = {
+  7D4066B82AB86DFF8A46AF6F /* proc-println-3F-.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "proc-println-28--3F--29-.cpp";
-    path = "proc-println-28--3F--29-.cpp";
+    name = "proc-println-3F-.cpp";
+    path = "proc-println-3F-.cpp";
     sourceTree = "<group>";
   };
 
-  E12ABCB736AB9A754FFB617A /* proc-testsuite-5F-bigint-5F-type-28--29-.cpp */ = {
+  E12ABCB736AB9A754FFB617A /* proc-testsuite-5F-bigint-5F-type.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "proc-testsuite-5F-bigint-5F-type-28--29-.cpp";
-    path = "proc-testsuite-5F-bigint-5F-type-28--29-.cpp";
+    name = "proc-testsuite-5F-bigint-5F-type.cpp";
+    path = "proc-testsuite-5F-bigint-5F-type.cpp";
     sourceTree = "<group>";
   };
 
-  17772E42B59D74CFF571FBB3 /* proc-testsuite-5F-extension-5F-methods-28--29-.cpp */ = {
+  17772E42B59D74CFF571FBB3 /* proc-testsuite-5F-extension-5F-methods.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "proc-testsuite-5F-extension-5F-methods-28--29-.cpp";
-    path = "proc-testsuite-5F-extension-5F-methods-28--29-.cpp";
+    name = "proc-testsuite-5F-extension-5F-methods.cpp";
+    path = "proc-testsuite-5F-extension-5F-methods.cpp";
     sourceTree = "<group>";
   };
 
-  DC7A7D1F0ED65AAA29C04B1E /* proc-testsuite-5F-extension-5F-mutating-5F-proc-28--29-.cpp */ = {
+  DC7A7D1F0ED65AAA29C04B1E /* proc-testsuite-5F-extension-5F-mutating-5F-proc.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "proc-testsuite-5F-extension-5F-mutating-5F-proc-28--29-.cpp";
-    path = "proc-testsuite-5F-extension-5F-mutating-5F-proc-28--29-.cpp";
+    name = "proc-testsuite-5F-extension-5F-mutating-5F-proc.cpp";
+    path = "proc-testsuite-5F-extension-5F-mutating-5F-proc.cpp";
     sourceTree = "<group>";
   };
 
-  827B703E6ACF9C726942A1E4 /* proc-testsuite-5F-extension-5F-readers-28--29-.cpp */ = {
+  827B703E6ACF9C726942A1E4 /* proc-testsuite-5F-extension-5F-readers.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "proc-testsuite-5F-extension-5F-readers-28--29-.cpp";
-    path = "proc-testsuite-5F-extension-5F-readers-28--29-.cpp";
+    name = "proc-testsuite-5F-extension-5F-readers.cpp";
+    path = "proc-testsuite-5F-extension-5F-readers.cpp";
     sourceTree = "<group>";
   };
 
-  67795EEEF66C225F7883BDCB /* proc-testsuite-5F-extension-5F-setters-28--29-.cpp */ = {
+  67795EEEF66C225F7883BDCB /* proc-testsuite-5F-extension-5F-setters.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "proc-testsuite-5F-extension-5F-setters-28--29-.cpp";
-    path = "proc-testsuite-5F-extension-5F-setters-28--29-.cpp";
+    name = "proc-testsuite-5F-extension-5F-setters.cpp";
+    path = "proc-testsuite-5F-extension-5F-setters.cpp";
     sourceTree = "<group>";
   };
 
-  746013AC554571FBD180E1C8 /* proc-testsuite-5F-extern-5F-type-28--29-.cpp */ = {
+  746013AC554571FBD180E1C8 /* proc-testsuite-5F-extern-5F-type.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "proc-testsuite-5F-extern-5F-type-28--29-.cpp";
-    path = "proc-testsuite-5F-extern-5F-type-28--29-.cpp";
+    name = "proc-testsuite-5F-extern-5F-type.cpp";
+    path = "proc-testsuite-5F-extern-5F-type.cpp";
     sourceTree = "<group>";
   };
 
-  0045EB7A6EC44C54D29ED402 /* proc-testsuite-5F-for-5F-instruction-28--29-.cpp */ = {
+  0045EB7A6EC44C54D29ED402 /* proc-testsuite-5F-for-5F-instruction.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "proc-testsuite-5F-for-5F-instruction-28--29-.cpp";
-    path = "proc-testsuite-5F-for-5F-instruction-28--29-.cpp";
+    name = "proc-testsuite-5F-for-5F-instruction.cpp";
+    path = "proc-testsuite-5F-for-5F-instruction.cpp";
     sourceTree = "<group>";
   };
 
-  570CB3860F2A6D4B38C6490D /* proc-testsuite-5F-foreach-5F-instruction-28--29-.cpp */ = {
+  570CB3860F2A6D4B38C6490D /* proc-testsuite-5F-foreach-5F-instruction.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "proc-testsuite-5F-foreach-5F-instruction-28--29-.cpp";
-    path = "proc-testsuite-5F-foreach-5F-instruction-28--29-.cpp";
+    name = "proc-testsuite-5F-foreach-5F-instruction.cpp";
+    path = "proc-testsuite-5F-foreach-5F-instruction.cpp";
     sourceTree = "<group>";
   };
 
-  6F634854F3EF915E2E980C31 /* proc-testsuite-5F-functions-28--29-.cpp */ = {
+  6F634854F3EF915E2E980C31 /* proc-testsuite-5F-functions.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "proc-testsuite-5F-functions-28--29-.cpp";
-    path = "proc-testsuite-5F-functions-28--29-.cpp";
+    name = "proc-testsuite-5F-functions.cpp";
+    path = "proc-testsuite-5F-functions.cpp";
     sourceTree = "<group>";
   };
 
-  40BE98EFAAE0091FA301E613 /* proc-testsuite-5F-hand-5F-coded-28--29-.cpp */ = {
+  40BE98EFAAE0091FA301E613 /* proc-testsuite-5F-hand-5F-coded.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "proc-testsuite-5F-hand-5F-coded-28--29-.cpp";
-    path = "proc-testsuite-5F-hand-5F-coded-28--29-.cpp";
+    name = "proc-testsuite-5F-hand-5F-coded.cpp";
+    path = "proc-testsuite-5F-hand-5F-coded.cpp";
     sourceTree = "<group>";
   };
 
-  10729ED4DA8C3D3F5A3AE7C9 /* proc-testsuite-5F-introspection-28--29-.cpp */ = {
+  10729ED4DA8C3D3F5A3AE7C9 /* proc-testsuite-5F-introspection.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "proc-testsuite-5F-introspection-28--29-.cpp";
-    path = "proc-testsuite-5F-introspection-28--29-.cpp";
+    name = "proc-testsuite-5F-introspection.cpp";
+    path = "proc-testsuite-5F-introspection.cpp";
     sourceTree = "<group>";
   };
 
-  E457DDEF7F2C4F25DC8FA865 /* proc-testsuite-5F-list-28--29-.cpp */ = {
+  E457DDEF7F2C4F25DC8FA865 /* proc-testsuite-5F-list.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "proc-testsuite-5F-list-28--29-.cpp";
-    path = "proc-testsuite-5F-list-28--29-.cpp";
+    name = "proc-testsuite-5F-list.cpp";
+    path = "proc-testsuite-5F-list.cpp";
     sourceTree = "<group>";
   };
 
-  5EE42911677C739EE1734486 /* proc-testsuite-5F-listmap-28--29-.cpp */ = {
+  5EE42911677C739EE1734486 /* proc-testsuite-5F-listmap.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "proc-testsuite-5F-listmap-28--29-.cpp";
-    path = "proc-testsuite-5F-listmap-28--29-.cpp";
+    name = "proc-testsuite-5F-listmap.cpp";
+    path = "proc-testsuite-5F-listmap.cpp";
     sourceTree = "<group>";
   };
 
-  CA20DB309E056E3D2DCD7D69 /* proc-testsuite-5F-map-28--29-.cpp */ = {
+  CA20DB309E056E3D2DCD7D69 /* proc-testsuite-5F-map.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "proc-testsuite-5F-map-28--29-.cpp";
-    path = "proc-testsuite-5F-map-28--29-.cpp";
+    name = "proc-testsuite-5F-map.cpp";
+    path = "proc-testsuite-5F-map.cpp";
     sourceTree = "<group>";
   };
 
-  CED301B442654DD8C23B3FC9 /* proc-testsuite-5F-range-28--29-.cpp */ = {
+  CED301B442654DD8C23B3FC9 /* proc-testsuite-5F-range.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "proc-testsuite-5F-range-28--29-.cpp";
-    path = "proc-testsuite-5F-range-28--29-.cpp";
+    name = "proc-testsuite-5F-range.cpp";
+    path = "proc-testsuite-5F-range.cpp";
     sourceTree = "<group>";
   };
 
-  917CBBA1EEA208541A643E74 /* proc-testsuite-5F-sortedlist-28--29-.cpp */ = {
+  917CBBA1EEA208541A643E74 /* proc-testsuite-5F-sortedlist.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "proc-testsuite-5F-sortedlist-28--29-.cpp";
-    path = "proc-testsuite-5F-sortedlist-28--29-.cpp";
+    name = "proc-testsuite-5F-sortedlist.cpp";
+    path = "proc-testsuite-5F-sortedlist.cpp";
     sourceTree = "<group>";
   };
 
-  512A7A8315FA3C5A946E8265 /* proc-testsuite-5F-strings-28--29-.cpp */ = {
+  512A7A8315FA3C5A946E8265 /* proc-testsuite-5F-strings.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "proc-testsuite-5F-strings-28--29-.cpp";
-    path = "proc-testsuite-5F-strings-28--29-.cpp";
+    name = "proc-testsuite-5F-strings.cpp";
+    path = "proc-testsuite-5F-strings.cpp";
     sourceTree = "<group>";
   };
 
-  010D3C3B8269FAF0BA7491D4 /* proc-testsuite-5F-struct-28--29-.cpp */ = {
+  010D3C3B8269FAF0BA7491D4 /* proc-testsuite-5F-struct.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "proc-testsuite-5F-struct-28--29-.cpp";
-    path = "proc-testsuite-5F-struct-28--29-.cpp";
+    name = "proc-testsuite-5F-struct.cpp";
+    path = "proc-testsuite-5F-struct.cpp";
     sourceTree = "<group>";
   };
 
-  B3E952A85B8551BA726A1227 /* proc-testsuite-5F-type-5F-categories-28--29-.cpp */ = {
+  B3E952A85B8551BA726A1227 /* proc-testsuite-5F-type-5F-categories.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "proc-testsuite-5F-type-5F-categories-28--29-.cpp";
-    path = "proc-testsuite-5F-type-5F-categories-28--29-.cpp";
+    name = "proc-testsuite-5F-type-5F-categories.cpp";
+    path = "proc-testsuite-5F-type-5F-categories.cpp";
     sourceTree = "<group>";
   };
 
-  3138416A242F40FB7D7F338E /* proc-type-43-ast-49-n-53-etter-43-all-28--29-.cpp */ = {
+  3138416A242F40FB7D7F338E /* proc-type-43-ast-49-n-53-etter-43-all.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "proc-type-43-ast-49-n-53-etter-43-all-28--29-.cpp";
-    path = "proc-type-43-ast-49-n-53-etter-43-all-28--29-.cpp";
+    name = "proc-type-43-ast-49-n-53-etter-43-all.cpp";
+    path = "proc-type-43-ast-49-n-53-etter-43-all.cpp";
     sourceTree = "<group>";
   };
 
@@ -4409,219 +4409,219 @@
     sourceTree = "<group>";
   };
 
-  9C94D8D0CBEDC973445AF2DA /* proc-bug-4D-ap-28--29-.h */ = {
+  9C94D8D0CBEDC973445AF2DA /* proc-bug-4D-ap.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "proc-bug-4D-ap-28--29-.h";
-    path = "proc-bug-4D-ap-28--29-.h";
+    name = "proc-bug-4D-ap.h";
+    path = "proc-bug-4D-ap.h";
     sourceTree = "<group>";
   };
 
-  D5213FD0ECE03148E62E461E /* proc-my-49-nit-50-roc-28--21--2C--3F--29-.h */ = {
+  D5213FD0ECE03148E62E461E /* proc-my-49-nit-50-roc-21--3F-.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "proc-my-49-nit-50-roc-28--21--2C--3F--29-.h";
-    path = "proc-my-49-nit-50-roc-28--21--2C--3F--29-.h";
+    name = "proc-my-49-nit-50-roc-21--3F-.h";
+    path = "proc-my-49-nit-50-roc-21--3F-.h";
     sourceTree = "<group>";
   };
 
-  F34C2313A562076992E50AA3 /* proc-print-28--3F--29-.h */ = {
+  F34C2313A562076992E50AA3 /* proc-print-3F-.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "proc-print-28--3F--29-.h";
-    path = "proc-print-28--3F--29-.h";
+    name = "proc-print-3F-.h";
+    path = "proc-print-3F-.h";
     sourceTree = "<group>";
   };
 
-  2B5D3E95D4A733FCFB77BD7E /* proc-println-28--3F--29-.h */ = {
+  2B5D3E95D4A733FCFB77BD7E /* proc-println-3F-.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "proc-println-28--3F--29-.h";
-    path = "proc-println-28--3F--29-.h";
+    name = "proc-println-3F-.h";
+    path = "proc-println-3F-.h";
     sourceTree = "<group>";
   };
 
-  102A8D3BE2FE5614F42BA989 /* proc-testsuite-5F-bigint-5F-type-28--29-.h */ = {
+  102A8D3BE2FE5614F42BA989 /* proc-testsuite-5F-bigint-5F-type.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "proc-testsuite-5F-bigint-5F-type-28--29-.h";
-    path = "proc-testsuite-5F-bigint-5F-type-28--29-.h";
+    name = "proc-testsuite-5F-bigint-5F-type.h";
+    path = "proc-testsuite-5F-bigint-5F-type.h";
     sourceTree = "<group>";
   };
 
-  4FD6BFB47701CBC8A1653ADA /* proc-testsuite-5F-extension-5F-methods-28--29-.h */ = {
+  4FD6BFB47701CBC8A1653ADA /* proc-testsuite-5F-extension-5F-methods.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "proc-testsuite-5F-extension-5F-methods-28--29-.h";
-    path = "proc-testsuite-5F-extension-5F-methods-28--29-.h";
+    name = "proc-testsuite-5F-extension-5F-methods.h";
+    path = "proc-testsuite-5F-extension-5F-methods.h";
     sourceTree = "<group>";
   };
 
-  6F7A3BB4700CFDDEF19FA23F /* proc-testsuite-5F-extension-5F-mutating-5F-proc-28--29-.h */ = {
+  6F7A3BB4700CFDDEF19FA23F /* proc-testsuite-5F-extension-5F-mutating-5F-proc.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "proc-testsuite-5F-extension-5F-mutating-5F-proc-28--29-.h";
-    path = "proc-testsuite-5F-extension-5F-mutating-5F-proc-28--29-.h";
+    name = "proc-testsuite-5F-extension-5F-mutating-5F-proc.h";
+    path = "proc-testsuite-5F-extension-5F-mutating-5F-proc.h";
     sourceTree = "<group>";
   };
 
-  0CD7246BBDE0051047B0D6F7 /* proc-testsuite-5F-extension-5F-readers-28--29-.h */ = {
+  0CD7246BBDE0051047B0D6F7 /* proc-testsuite-5F-extension-5F-readers.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "proc-testsuite-5F-extension-5F-readers-28--29-.h";
-    path = "proc-testsuite-5F-extension-5F-readers-28--29-.h";
+    name = "proc-testsuite-5F-extension-5F-readers.h";
+    path = "proc-testsuite-5F-extension-5F-readers.h";
     sourceTree = "<group>";
   };
 
-  E0A11A242B9765E79CBF113F /* proc-testsuite-5F-extension-5F-setters-28--29-.h */ = {
+  E0A11A242B9765E79CBF113F /* proc-testsuite-5F-extension-5F-setters.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "proc-testsuite-5F-extension-5F-setters-28--29-.h";
-    path = "proc-testsuite-5F-extension-5F-setters-28--29-.h";
+    name = "proc-testsuite-5F-extension-5F-setters.h";
+    path = "proc-testsuite-5F-extension-5F-setters.h";
     sourceTree = "<group>";
   };
 
-  872F539BEF8C3F919874E9D7 /* proc-testsuite-5F-extern-5F-type-28--29-.h */ = {
+  872F539BEF8C3F919874E9D7 /* proc-testsuite-5F-extern-5F-type.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "proc-testsuite-5F-extern-5F-type-28--29-.h";
-    path = "proc-testsuite-5F-extern-5F-type-28--29-.h";
+    name = "proc-testsuite-5F-extern-5F-type.h";
+    path = "proc-testsuite-5F-extern-5F-type.h";
     sourceTree = "<group>";
   };
 
-  C22FC182D371C3E9ED316094 /* proc-testsuite-5F-for-5F-instruction-28--29-.h */ = {
+  C22FC182D371C3E9ED316094 /* proc-testsuite-5F-for-5F-instruction.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "proc-testsuite-5F-for-5F-instruction-28--29-.h";
-    path = "proc-testsuite-5F-for-5F-instruction-28--29-.h";
+    name = "proc-testsuite-5F-for-5F-instruction.h";
+    path = "proc-testsuite-5F-for-5F-instruction.h";
     sourceTree = "<group>";
   };
 
-  2E94197FF767970B67041697 /* proc-testsuite-5F-foreach-5F-instruction-28--29-.h */ = {
+  2E94197FF767970B67041697 /* proc-testsuite-5F-foreach-5F-instruction.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "proc-testsuite-5F-foreach-5F-instruction-28--29-.h";
-    path = "proc-testsuite-5F-foreach-5F-instruction-28--29-.h";
+    name = "proc-testsuite-5F-foreach-5F-instruction.h";
+    path = "proc-testsuite-5F-foreach-5F-instruction.h";
     sourceTree = "<group>";
   };
 
-  D39FD083F55D4182BF88826D /* proc-testsuite-5F-functions-28--29-.h */ = {
+  D39FD083F55D4182BF88826D /* proc-testsuite-5F-functions.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "proc-testsuite-5F-functions-28--29-.h";
-    path = "proc-testsuite-5F-functions-28--29-.h";
+    name = "proc-testsuite-5F-functions.h";
+    path = "proc-testsuite-5F-functions.h";
     sourceTree = "<group>";
   };
 
-  B05B9D5AD24F4333C7658A0E /* proc-testsuite-5F-hand-5F-coded-28--29-.h */ = {
+  B05B9D5AD24F4333C7658A0E /* proc-testsuite-5F-hand-5F-coded.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "proc-testsuite-5F-hand-5F-coded-28--29-.h";
-    path = "proc-testsuite-5F-hand-5F-coded-28--29-.h";
+    name = "proc-testsuite-5F-hand-5F-coded.h";
+    path = "proc-testsuite-5F-hand-5F-coded.h";
     sourceTree = "<group>";
   };
 
-  CE68DAD4D52D063967F0A705 /* proc-testsuite-5F-introspection-28--29-.h */ = {
+  CE68DAD4D52D063967F0A705 /* proc-testsuite-5F-introspection.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "proc-testsuite-5F-introspection-28--29-.h";
-    path = "proc-testsuite-5F-introspection-28--29-.h";
+    name = "proc-testsuite-5F-introspection.h";
+    path = "proc-testsuite-5F-introspection.h";
     sourceTree = "<group>";
   };
 
-  FD34C64C85CA5B5690EE5293 /* proc-testsuite-5F-list-28--29-.h */ = {
+  FD34C64C85CA5B5690EE5293 /* proc-testsuite-5F-list.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "proc-testsuite-5F-list-28--29-.h";
-    path = "proc-testsuite-5F-list-28--29-.h";
+    name = "proc-testsuite-5F-list.h";
+    path = "proc-testsuite-5F-list.h";
     sourceTree = "<group>";
   };
 
-  6C3ABCA69FA097B85867D9A4 /* proc-testsuite-5F-listmap-28--29-.h */ = {
+  6C3ABCA69FA097B85867D9A4 /* proc-testsuite-5F-listmap.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "proc-testsuite-5F-listmap-28--29-.h";
-    path = "proc-testsuite-5F-listmap-28--29-.h";
+    name = "proc-testsuite-5F-listmap.h";
+    path = "proc-testsuite-5F-listmap.h";
     sourceTree = "<group>";
   };
 
-  07F7F7D035D7BAF04342E1CA /* proc-testsuite-5F-map-28--29-.h */ = {
+  07F7F7D035D7BAF04342E1CA /* proc-testsuite-5F-map.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "proc-testsuite-5F-map-28--29-.h";
-    path = "proc-testsuite-5F-map-28--29-.h";
+    name = "proc-testsuite-5F-map.h";
+    path = "proc-testsuite-5F-map.h";
     sourceTree = "<group>";
   };
 
-  C0E3619E98159E9B6FEBF557 /* proc-testsuite-5F-range-28--29-.h */ = {
+  C0E3619E98159E9B6FEBF557 /* proc-testsuite-5F-range.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "proc-testsuite-5F-range-28--29-.h";
-    path = "proc-testsuite-5F-range-28--29-.h";
+    name = "proc-testsuite-5F-range.h";
+    path = "proc-testsuite-5F-range.h";
     sourceTree = "<group>";
   };
 
-  84804B9F647BC185A877A8B5 /* proc-testsuite-5F-sortedlist-28--29-.h */ = {
+  84804B9F647BC185A877A8B5 /* proc-testsuite-5F-sortedlist.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "proc-testsuite-5F-sortedlist-28--29-.h";
-    path = "proc-testsuite-5F-sortedlist-28--29-.h";
+    name = "proc-testsuite-5F-sortedlist.h";
+    path = "proc-testsuite-5F-sortedlist.h";
     sourceTree = "<group>";
   };
 
-  E05EBD93369CE542E8F2322D /* proc-testsuite-5F-strings-28--29-.h */ = {
+  E05EBD93369CE542E8F2322D /* proc-testsuite-5F-strings.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "proc-testsuite-5F-strings-28--29-.h";
-    path = "proc-testsuite-5F-strings-28--29-.h";
+    name = "proc-testsuite-5F-strings.h";
+    path = "proc-testsuite-5F-strings.h";
     sourceTree = "<group>";
   };
 
-  267E36708F955D7AB048990D /* proc-testsuite-5F-struct-28--29-.h */ = {
+  267E36708F955D7AB048990D /* proc-testsuite-5F-struct.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "proc-testsuite-5F-struct-28--29-.h";
-    path = "proc-testsuite-5F-struct-28--29-.h";
+    name = "proc-testsuite-5F-struct.h";
+    path = "proc-testsuite-5F-struct.h";
     sourceTree = "<group>";
   };
 
-  E6AC95EA2C0343A2395834DD /* proc-testsuite-5F-type-5F-categories-28--29-.h */ = {
+  E6AC95EA2C0343A2395834DD /* proc-testsuite-5F-type-5F-categories.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "proc-testsuite-5F-type-5F-categories-28--29-.h";
-    path = "proc-testsuite-5F-type-5F-categories-28--29-.h";
+    name = "proc-testsuite-5F-type-5F-categories.h";
+    path = "proc-testsuite-5F-type-5F-categories.h";
     sourceTree = "<group>";
   };
 
-  ACC34845C6BE3A127A5AACAF /* proc-type-43-ast-49-n-53-etter-43-all-28--29-.h */ = {
+  ACC34845C6BE3A127A5AACAF /* proc-type-43-ast-49-n-53-etter-43-all.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "proc-type-43-ast-49-n-53-etter-43-all-28--29-.h";
-    path = "proc-type-43-ast-49-n-53-etter-43-all-28--29-.h";
+    name = "proc-type-43-ast-49-n-53-etter-43-all.h";
+    path = "proc-type-43-ast-49-n-53-etter-43-all.h";
     sourceTree = "<group>";
   };
 

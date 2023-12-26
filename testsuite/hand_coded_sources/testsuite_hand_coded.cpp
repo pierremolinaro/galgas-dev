@@ -34,8 +34,8 @@ static void routine_test_dictionary (void) {
 
 //---------------------------------------------------------------------------*
 
-void routine_testsuite_5F_hand_5F_coded_28__29_ (Compiler * /* inCompiler */
-                                                 COMMA_UNUSED_LOCATION_ARGS) {
+void routine_testsuite_5F_hand_5F_coded (Compiler * /* inCompiler */
+                                         COMMA_UNUSED_LOCATION_ARGS) {
   routine_test_dictionary () ;
 }
 
