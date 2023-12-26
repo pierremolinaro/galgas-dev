@@ -693,10 +693,19 @@ String String::fileNameRepresentation (void) const {
     const int nc = int (UNICODE_VALUE (c)) ;
     if (isdigit (nc) || islower (nc)) {
       s.addUnicodeChar (c COMMA_HERE) ;
+    }else if (isupper (nc)) {
+      s.addUnicodeChar (TO_UNICODE ('+') COMMA_HERE) ;
+      s.addUnicodeChar (TO_UNICODE (uint32_t (tolower (nc))) COMMA_HERE) ;
     }else{
-      s.addUnicodeChar (TO_UNICODE ('-') COMMA_HERE) ;
-      s.addUnsignedHex (UNICODE_VALUE (c)) ;
-//      s.addUnicodeChar (TO_UNICODE ('-') COMMA_HERE) ;
+      const uint32_t unicodePoint = UNICODE_VALUE (c) ;
+      if (unicodePoint < 0x100) {
+        s.addUnicodeChar (TO_UNICODE ('-') COMMA_HERE) ;
+        s.addUnsignedHex (unicodePoint) ;
+      }else{
+        s.addUnicodeChar (TO_UNICODE ('(') COMMA_HERE) ;
+        s.addUnsignedHex (unicodePoint) ;
+        s.addUnicodeChar (TO_UNICODE (')') COMMA_HERE) ;
+      }
     }
   }
   return s ;

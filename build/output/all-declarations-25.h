@@ -148,17 +148,6 @@ void routine_grammarAnalysisAndGeneration_3F__3F__3F__3F__3F__3F__3F__3F__3F__3F
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'handleNonTerminalDeclarations&?'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_handleNonTerminalDeclarations_26__3F_ (class GALGAS_nonTerminalSymbolMapForGrammarAnalysis & ioArgument0,
-                                                    const class GALGAS_nonterminalDeclarationListAST constinArgument1,
-                                                    class Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Routine 'handleNonTerminalDeclarationsFromRuleList&?'
 //
 //--------------------------------------------------------------------------------------------------
@@ -167,6 +156,17 @@ void routine_handleNonTerminalDeclarationsFromRuleList_26__3F_ (class GALGAS_non
                                                                 const class GALGAS_syntaxRuleListAST constinArgument1,
                                                                 class Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'handleNonTerminalDeclarations&?'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_handleNonTerminalDeclarations_26__3F_ (class GALGAS_nonTerminalSymbolMapForGrammarAnalysis & ioArgument0,
+                                                    const class GALGAS_nonterminalDeclarationListAST constinArgument1,
+                                                    class Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

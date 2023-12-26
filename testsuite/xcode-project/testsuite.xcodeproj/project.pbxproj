@@ -19,7 +19,7 @@
     settings = {ATTRIBUTES = (); };
   };
 
-  D9CAA6E02C990B0A82652DCA /* -sortedlist-my-53orted-4Cist.cpp */ = {
+  D9CAA6E02C990B0A82652DCA /* -sortedlist-my+sorted+list.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 02A44259755D38E6D163E820 ;
     settings = {ATTRIBUTES = (); };
@@ -31,55 +31,55 @@
     settings = {ATTRIBUTES = (); };
   };
 
-  99908345F7439F8FFABDFFC4 /* class--41-5F-41.cpp */ = {
+  99908345F7439F8FFABDFFC4 /* class-+a-5F+a.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 5568161A8CDF4AD2299F6D23 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  748049E45D87B8C7D8B9AACD /* class--42-5F-42.cpp */ = {
+  748049E45D87B8C7D8B9AACD /* class-+b-5F+b.cpp */ = {
     isa = PBXBuildFile;
     fileRef = F8ED5D21A44B0E5886680CB9 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  E0327AD868D138F2B4FDD6F0 /* class--54est-45xtension-4Dethod.cpp */ = {
+  E0327AD868D138F2B4FDD6F0 /* class-+test+extension+method.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 3463D06DE0CA9A15B6153677 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  FA475530D9583C34FD356EF5 /* class--54est-45xtension-53etter.cpp */ = {
+  FA475530D9583C34FD356EF5 /* class-+test+extension+setter.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 8F07F89DDBEBC2AC9128303F ;
     settings = {ATTRIBUTES = (); };
   };
 
-  0B7C298AB50293ADFECB7B18 /* class-abstract-4Fverriding-54est-45xtension-53etter.cpp */ = {
+  0B7C298AB50293ADFECB7B18 /* class-abstract+overriding+test+extension+setter.cpp */ = {
     isa = PBXBuildFile;
     fileRef = F766FA44E1ED0FF613F563BD ;
     settings = {ATTRIBUTES = (); };
   };
 
-  F4C10BF22AA353E27879133C /* class-abstract-54est-45xtension-53etter.cpp */ = {
+  F4C10BF22AA353E27879133C /* class-abstract+test+extension+setter.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 93E200C36F7CD9DFD0E5DEAA ;
     settings = {ATTRIBUTES = (); };
   };
 
-  FC8586DFA4D1BC0E1742C08B /* class-base-43lass-46or-54ype-43ast-49n-53etter-43all.cpp */ = {
+  FC8586DFA4D1BC0E1742C08B /* class-base+class+for+type+cast+in+setter+call.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 3F027327D8461063F4AC58A6 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  CE56D3D6FA748AB6D9AF3FD7 /* class-inherited-43lass-46or-54ype-43ast-49n-53etter-43all.cpp */ = {
+  CE56D3D6FA748AB6D9AF3FD7 /* class-inherited+class+for+type+cast+in+setter+call.cpp */ = {
     isa = PBXBuildFile;
     fileRef = E875A2E075A1A4A6E1B9770F ;
     settings = {ATTRIBUTES = (); };
   };
 
-  778DFAECDC212708F721B788 /* class-overriding-54est-45xtension-53etter.cpp */ = {
+  778DFAECDC212708F721B788 /* class-overriding+test+extension+setter.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 30BD3DCAEFC96F40275BDC0A ;
     settings = {ATTRIBUTES = (); };
@@ -91,49 +91,49 @@
     settings = {ATTRIBUTES = (); };
   };
 
-  754BA1C09B3695E0CB6CDE7F /* func-extern-54est-46unction.cpp */ = {
+  754BA1C09B3695E0CB6CDE7F /* func-extern+test+function.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 3AFB633E50CDF1B20DE6F466 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  A126B2F4B2374F342BE9ED44 /* func-function-54est.cpp */ = {
+  A126B2F4B2374F342BE9ED44 /* func-function+test.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 80A295F8076B1C5722A46AA2 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  6E7929B125F8597834FA83A4 /* getter--41-5F-41-a-52eader.cpp */ = {
+  6E7929B125F8597834FA83A4 /* getter-+a-5F+a-a+reader.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 4163B3523AFE57C2E008BC8C ;
     settings = {ATTRIBUTES = (); };
   };
 
-  CBF4CAAED33C36B1B5FC2CB1 /* getter--41-5F-41-location.cpp */ = {
+  CBF4CAAED33C36B1B5FC2CB1 /* getter-+a-5F+a-location.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 5C00B1249BBE3554A4FDF6FB ;
     settings = {ATTRIBUTES = (); };
   };
 
-  14875E45BBA028A21ED38046 /* getter--42-5F-42-a-52eader.cpp */ = {
+  14875E45BBA028A21ED38046 /* getter-+b-5F+b-a+reader.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 8E4C41F2747BFA2F1B5F87DB ;
     settings = {ATTRIBUTES = (); };
   };
 
-  28D4BF8CE0FF2EC19B371514 /* getter--42-5F-42-location.cpp */ = {
+  28D4BF8CE0FF2EC19B371514 /* getter-+b-5F+b-location.cpp */ = {
     isa = PBXBuildFile;
     fileRef = EC990F19C78C75BD1E06F215 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  F00665CE8623E36BD4E3C7C5 /* getter--42-5F-42-other-52eader.cpp */ = {
+  F00665CE8623E36BD4E3C7C5 /* getter-+b-5F+b-other+reader.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 976AAB5298D5DA10FE66F21D ;
     settings = {ATTRIBUTES = (); };
   };
 
-  674997CDB4692D34DE8633C4 /* getter--54est-45xtension-4Dethod-reader1.cpp */ = {
+  674997CDB4692D34DE8633C4 /* getter-+test+extension+method-reader1.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 44A3365A46C9077EBB5E35C3 ;
     settings = {ATTRIBUTES = (); };
@@ -193,79 +193,79 @@
     settings = {ATTRIBUTES = (); };
   };
 
-  5B3F9FC8EA15D152ADD07294 /* list-a-4Cist.cpp */ = {
+  5B3F9FC8EA15D152ADD07294 /* list-a+list.cpp */ = {
     isa = PBXBuildFile;
     fileRef = C660610B44D9B9FED0FF9548 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  B098B75C294DFFDC3E463904 /* list-my-4Cist.cpp */ = {
+  B098B75C294DFFDC3E463904 /* list-my+list.cpp */ = {
     isa = PBXBuildFile;
     fileRef = D5920AA6C7C996A5EE53A70F ;
     settings = {ATTRIBUTES = (); };
   };
 
-  524DEF3DCA464469D2CF9F3E /* listmap-my-4Cist-4Dap.cpp */ = {
+  524DEF3DCA464469D2CF9F3E /* listmap-my+list+map.cpp */ = {
     isa = PBXBuildFile;
     fileRef = B63885E0D7C260CC007E8B9D ;
     settings = {ATTRIBUTES = (); };
   };
 
-  D7DBBB00F97BA6CE92BF5ADD /* map-a-4Dap.cpp */ = {
+  D7DBBB00F97BA6CE92BF5ADD /* map-a+map.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 86960EEB576A8FD4C9EC6997 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  8BA799AAA845E1C2E8A762BD /* map-my-4Dap.cpp */ = {
+  8BA799AAA845E1C2E8A762BD /* map-my+map.cpp */ = {
     isa = PBXBuildFile;
     fileRef = DE89D9058FCB0B968DBBBD68 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  E4AAF9573AA5DFF913DF997A /* method--54est-45xtension-4Dethod-method1.cpp */ = {
+  E4AAF9573AA5DFF913DF997A /* method-+test+extension+method-method1.cpp */ = {
     isa = PBXBuildFile;
     fileRef = E93E74D3DF8527599FA62642 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  87B126F152ED3D89A146B445 /* method--54est-45xtension-4Dethod-method2.cpp */ = {
+  87B126F152ED3D89A146B445 /* method-+test+extension+method-method2.cpp */ = {
     isa = PBXBuildFile;
     fileRef = AC59075B964B07152D234B70 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  5ED3D6B8079E2E7E7BACC9F2 /* method--54est-45xtension-53etter-m.cpp */ = {
+  5ED3D6B8079E2E7E7BACC9F2 /* method-+test+extension+setter-m.cpp */ = {
     isa = PBXBuildFile;
     fileRef = EF840F0C74A814EC9237B6EC ;
     settings = {ATTRIBUTES = (); };
   };
 
-  04D6854880943E5C3CD9CA25 /* method--54est-45xtension-53etter-setter1.cpp */ = {
+  04D6854880943E5C3CD9CA25 /* method-+test+extension+setter-setter1.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 6EBAAFC66CC0879C71B5DB5C ;
     settings = {ATTRIBUTES = (); };
   };
 
-  3C5EE48D0B7D48C591B8F430 /* method--54est-45xtension-53etter-setter2.cpp */ = {
+  3C5EE48D0B7D48C591B8F430 /* method-+test+extension+setter-setter2.cpp */ = {
     isa = PBXBuildFile;
     fileRef = F984EEABDBB0A7D494132EE5 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  6DA19D22B51C68001E7E0E54 /* method--54est-45xtension-53etter-setter3.cpp */ = {
+  6DA19D22B51C68001E7E0E54 /* method-+test+extension+setter-setter3.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 2726FB0A03BB19F2D8D9524D ;
     settings = {ATTRIBUTES = (); };
   };
 
-  66EC4FA56EB1E1F8CBE183B9 /* method-abstract-54est-45xtension-53etter-m.cpp */ = {
+  66EC4FA56EB1E1F8CBE183B9 /* method-abstract+test+extension+setter-m.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 8EBCB58C6CE932B957B6F332 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  9B3020AFEECD95B4009ADF4C /* method-inherited-43lass-46or-54ype-43ast-49n-53etter-43all-un-53etter.cpp */ = {
+  9B3020AFEECD95B4009ADF4C /* method-inherited+class+for+type+cast+in+setter+call-un+setter.cpp */ = {
     isa = PBXBuildFile;
     fileRef = D5904A438616FF7BDB3F7439 ;
     settings = {ATTRIBUTES = (); };
@@ -277,7 +277,7 @@
     settings = {ATTRIBUTES = (); };
   };
 
-  297893487BD98FA830FA6413 /* method-overriding-54est-45xtension-53etter-m.cpp */ = {
+  297893487BD98FA830FA6413 /* method-overriding+test+extension+setter-m.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 373A7031000FD987A3C9F87B ;
     settings = {ATTRIBUTES = (); };
@@ -295,13 +295,13 @@
     settings = {ATTRIBUTES = (); };
   };
 
-  C279E471F4D180B08D62B00A /* proc-bug-4Dap.cpp */ = {
+  C279E471F4D180B08D62B00A /* proc-bug+map.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 18FCB43975065399B0D1E48E ;
     settings = {ATTRIBUTES = (); };
   };
 
-  226AF2F3114485AA4E0A23B4 /* proc-my-49nit-50roc-21-3F.cpp */ = {
+  226AF2F3114485AA4E0A23B4 /* proc-my+init+proc-21-3F.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 28B734FE93831E3FB400CE87 ;
     settings = {ATTRIBUTES = (); };
@@ -433,7 +433,7 @@
     settings = {ATTRIBUTES = (); };
   };
 
-  310E77F13A6D184DBF1232F3 /* proc-type-43ast-49n-53etter-43all.cpp */ = {
+  310E77F13A6D184DBF1232F3 /* proc-type+cast+in+setter+call.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 3138416A242F40FB7D7F338E ;
     settings = {ATTRIBUTES = (); };
@@ -445,19 +445,19 @@
     settings = {ATTRIBUTES = (); };
   };
 
-  C98205091E18D1140E9F38CF /* setter-lstring-append-49nt.cpp */ = {
+  C98205091E18D1140E9F38CF /* setter-lstring-append+int.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 0A8E5646EF5A30154E9F6DEB ;
     settings = {ATTRIBUTES = (); };
   };
 
-  CD0DB773EB2DC1B0A17836A1 /* setter-string-concat-4Cist.cpp */ = {
+  CD0DB773EB2DC1B0A17836A1 /* setter-string-concat+list.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 845EC0A378394003C96DA594 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  4F3240AD5B9B413AA7346A1E /* setter-uint-autre-49nit.cpp */ = {
+  4F3240AD5B9B413AA7346A1E /* setter-uint-autre+init.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 669D7A23DE0EF88D2F7129E7 ;
     settings = {ATTRIBUTES = (); };
@@ -481,13 +481,13 @@
     settings = {ATTRIBUTES = (); };
   };
 
-  BA5F5BB252D13F5F431E4BBB /* setter-uint64list-prepend-53quare.cpp */ = {
+  BA5F5BB252D13F5F431E4BBB /* setter-uint64list-prepend+square.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 920CF82AB059BFCCBD02BE6A ;
     settings = {ATTRIBUTES = (); };
   };
 
-  AC1C7093BD25041881277658 /* setter-uintlist-append-53quare.cpp */ = {
+  AC1C7093BD25041881277658 /* setter-uintlist-append+square.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 1BE80AB57E1A2ECABB7DA330 ;
     settings = {ATTRIBUTES = (); };
@@ -499,43 +499,43 @@
     settings = {ATTRIBUTES = (); };
   };
 
-  1C8CEF6730F9FD03C8125CAB /* struct-a-4Cist-2Delement.cpp */ = {
+  1C8CEF6730F9FD03C8125CAB /* struct-a+list-2Delement.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 5A6B38B23CC967316C13DAE2 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  83A4C3A763A7E62D825349F7 /* struct-a-4Dap-2Delement.cpp */ = {
+  83A4C3A763A7E62D825349F7 /* struct-a+map-2Delement.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 930E414107EE22B6198C578F ;
     settings = {ATTRIBUTES = (); };
   };
 
-  856B4DE58A219BCF4E27EBA3 /* struct-my-4Cist-2Delement.cpp */ = {
+  856B4DE58A219BCF4E27EBA3 /* struct-my+list+map-2Delement.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 5FC9A3002CE38BBE070EC3F5 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  F6347E897F954495EAB16A88 /* struct-my-4Cist-4Dap-2Delement.cpp */ = {
+  F6347E897F954495EAB16A88 /* struct-my+list-2Delement.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 0B240CE177CF70DA146C8DC8 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  7D74717E0B1F21D122E04521 /* struct-my-4Dap-2Delement.cpp */ = {
+  7D74717E0B1F21D122E04521 /* struct-my+map-2Delement.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 5B344BC40F3BC04F65B7A357 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  36092FB9B06DFB4FAC360931 /* struct-my-53orted-4Cist-2Delement.cpp */ = {
+  36092FB9B06DFB4FAC360931 /* struct-my+sorted+list-2Delement.cpp */ = {
     isa = PBXBuildFile;
     fileRef = F73A9969845DFE4146C5660E ;
     settings = {ATTRIBUTES = (); };
   };
 
-  A885DB0D477D707121934FF8 /* struct-struct-54est.cpp */ = {
+  A885DB0D477D707121934FF8 /* struct-struct+test.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 3DE83D861C3176A6273CAC6D ;
     settings = {ATTRIBUTES = (); };
@@ -547,55 +547,55 @@
     settings = {ATTRIBUTES = (); };
   };
 
-  4C37100777C7190B76D28233 /* weak-reference--41-5F-41-2Dweak.cpp */ = {
+  4C37100777C7190B76D28233 /* weak-reference-+a-5F+a-2Dweak.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 85AAB05244A4FB8FD91BF4EE ;
     settings = {ATTRIBUTES = (); };
   };
 
-  1E7298BB9930789C8ED59D48 /* weak-reference--42-5F-42-2Dweak.cpp */ = {
+  1E7298BB9930789C8ED59D48 /* weak-reference-+b-5F+b-2Dweak.cpp */ = {
     isa = PBXBuildFile;
     fileRef = C689C1D0E3B9CCC3AB651BC5 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  362B8D27A1D8F8C7B78B4330 /* weak-reference--54est-45xtension-4Dethod-2Dweak.cpp */ = {
+  362B8D27A1D8F8C7B78B4330 /* weak-reference-+test+extension+method-2Dweak.cpp */ = {
     isa = PBXBuildFile;
     fileRef = C48A2CFB5F2217FBFB00722D ;
     settings = {ATTRIBUTES = (); };
   };
 
-  20B524AFDA05122893C2FE8E /* weak-reference--54est-45xtension-53etter-2Dweak.cpp */ = {
+  20B524AFDA05122893C2FE8E /* weak-reference-+test+extension+setter-2Dweak.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 80CAB8C45637ABC7493ECDDD ;
     settings = {ATTRIBUTES = (); };
   };
 
-  63A49DA13542E0726B7BB758 /* weak-reference-abstract-4Fverriding-54est-45xtension-53etter-2Dweak.cpp */ = {
+  63A49DA13542E0726B7BB758 /* weak-reference-abstract+overriding+test+extension+setter-2Dweak.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 45B2AD1094D42F4EF36764F6 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  E6A13CF5EAA496D51FEA6406 /* weak-reference-abstract-54est-45xtension-53etter-2Dweak.cpp */ = {
+  E6A13CF5EAA496D51FEA6406 /* weak-reference-abstract+test+extension+setter-2Dweak.cpp */ = {
     isa = PBXBuildFile;
     fileRef = D8F918A4AA29BE29D2C386FB ;
     settings = {ATTRIBUTES = (); };
   };
 
-  3860DB1D11B6ACCA57D8EA88 /* weak-reference-base-43lass-46or-54ype-43ast-49n-53etter-43all-2Dweak.cpp */ = {
+  3860DB1D11B6ACCA57D8EA88 /* weak-reference-base+class+for+type+cast+in+setter+call-2Dweak.cpp */ = {
     isa = PBXBuildFile;
     fileRef = AD7F202F26C1A174C7357585 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  F378EFACC9B924EC161E7639 /* weak-reference-inherited-43lass-46or-54ype-43ast-49n-53etter-43all-2Dweak.cpp */ = {
+  F378EFACC9B924EC161E7639 /* weak-reference-inherited+class+for+type+cast+in+setter+call-2Dweak.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 4A4D452035300F18B984988C ;
     settings = {ATTRIBUTES = (); };
   };
 
-  BF1BCFE8450A1A41C200364C /* weak-reference-overriding-54est-45xtension-53etter-2Dweak.cpp */ = {
+  BF1BCFE8450A1A41C200364C /* weak-reference-overriding+test+extension+setter-2Dweak.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 0A271FF252C1903E7132CD68 ;
     settings = {ATTRIBUTES = (); };
@@ -1628,12 +1628,12 @@
     sourceTree = "<group>";
   };
 
-  02A44259755D38E6D163E820 /* -sortedlist-my-53orted-4Cist.cpp */ = {
+  02A44259755D38E6D163E820 /* -sortedlist-my+sorted+list.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "-sortedlist-my-53orted-4Cist.cpp";
-    path = "-sortedlist-my-53orted-4Cist.cpp";
+    name = "-sortedlist-my+sorted+list.cpp";
+    path = "-sortedlist-my+sorted+list.cpp";
     sourceTree = "<group>";
   };
 
@@ -1646,84 +1646,84 @@
     sourceTree = "<group>";
   };
 
-  5568161A8CDF4AD2299F6D23 /* class--41-5F-41.cpp */ = {
+  5568161A8CDF4AD2299F6D23 /* class-+a-5F+a.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "class--41-5F-41.cpp";
-    path = "class--41-5F-41.cpp";
+    name = "class-+a-5F+a.cpp";
+    path = "class-+a-5F+a.cpp";
     sourceTree = "<group>";
   };
 
-  F8ED5D21A44B0E5886680CB9 /* class--42-5F-42.cpp */ = {
+  F8ED5D21A44B0E5886680CB9 /* class-+b-5F+b.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "class--42-5F-42.cpp";
-    path = "class--42-5F-42.cpp";
+    name = "class-+b-5F+b.cpp";
+    path = "class-+b-5F+b.cpp";
     sourceTree = "<group>";
   };
 
-  3463D06DE0CA9A15B6153677 /* class--54est-45xtension-4Dethod.cpp */ = {
+  3463D06DE0CA9A15B6153677 /* class-+test+extension+method.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "class--54est-45xtension-4Dethod.cpp";
-    path = "class--54est-45xtension-4Dethod.cpp";
+    name = "class-+test+extension+method.cpp";
+    path = "class-+test+extension+method.cpp";
     sourceTree = "<group>";
   };
 
-  8F07F89DDBEBC2AC9128303F /* class--54est-45xtension-53etter.cpp */ = {
+  8F07F89DDBEBC2AC9128303F /* class-+test+extension+setter.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "class--54est-45xtension-53etter.cpp";
-    path = "class--54est-45xtension-53etter.cpp";
+    name = "class-+test+extension+setter.cpp";
+    path = "class-+test+extension+setter.cpp";
     sourceTree = "<group>";
   };
 
-  F766FA44E1ED0FF613F563BD /* class-abstract-4Fverriding-54est-45xtension-53etter.cpp */ = {
+  F766FA44E1ED0FF613F563BD /* class-abstract+overriding+test+extension+setter.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "class-abstract-4Fverriding-54est-45xtension-53etter.cpp";
-    path = "class-abstract-4Fverriding-54est-45xtension-53etter.cpp";
+    name = "class-abstract+overriding+test+extension+setter.cpp";
+    path = "class-abstract+overriding+test+extension+setter.cpp";
     sourceTree = "<group>";
   };
 
-  93E200C36F7CD9DFD0E5DEAA /* class-abstract-54est-45xtension-53etter.cpp */ = {
+  93E200C36F7CD9DFD0E5DEAA /* class-abstract+test+extension+setter.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "class-abstract-54est-45xtension-53etter.cpp";
-    path = "class-abstract-54est-45xtension-53etter.cpp";
+    name = "class-abstract+test+extension+setter.cpp";
+    path = "class-abstract+test+extension+setter.cpp";
     sourceTree = "<group>";
   };
 
-  3F027327D8461063F4AC58A6 /* class-base-43lass-46or-54ype-43ast-49n-53etter-43all.cpp */ = {
+  3F027327D8461063F4AC58A6 /* class-base+class+for+type+cast+in+setter+call.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "class-base-43lass-46or-54ype-43ast-49n-53etter-43all.cpp";
-    path = "class-base-43lass-46or-54ype-43ast-49n-53etter-43all.cpp";
+    name = "class-base+class+for+type+cast+in+setter+call.cpp";
+    path = "class-base+class+for+type+cast+in+setter+call.cpp";
     sourceTree = "<group>";
   };
 
-  E875A2E075A1A4A6E1B9770F /* class-inherited-43lass-46or-54ype-43ast-49n-53etter-43all.cpp */ = {
+  E875A2E075A1A4A6E1B9770F /* class-inherited+class+for+type+cast+in+setter+call.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "class-inherited-43lass-46or-54ype-43ast-49n-53etter-43all.cpp";
-    path = "class-inherited-43lass-46or-54ype-43ast-49n-53etter-43all.cpp";
+    name = "class-inherited+class+for+type+cast+in+setter+call.cpp";
+    path = "class-inherited+class+for+type+cast+in+setter+call.cpp";
     sourceTree = "<group>";
   };
 
-  30BD3DCAEFC96F40275BDC0A /* class-overriding-54est-45xtension-53etter.cpp */ = {
+  30BD3DCAEFC96F40275BDC0A /* class-overriding+test+extension+setter.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "class-overriding-54est-45xtension-53etter.cpp";
-    path = "class-overriding-54est-45xtension-53etter.cpp";
+    name = "class-overriding+test+extension+setter.cpp";
+    path = "class-overriding+test+extension+setter.cpp";
     sourceTree = "<group>";
   };
 
@@ -1736,75 +1736,75 @@
     sourceTree = "<group>";
   };
 
-  3AFB633E50CDF1B20DE6F466 /* func-extern-54est-46unction.cpp */ = {
+  3AFB633E50CDF1B20DE6F466 /* func-extern+test+function.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "func-extern-54est-46unction.cpp";
-    path = "func-extern-54est-46unction.cpp";
+    name = "func-extern+test+function.cpp";
+    path = "func-extern+test+function.cpp";
     sourceTree = "<group>";
   };
 
-  80A295F8076B1C5722A46AA2 /* func-function-54est.cpp */ = {
+  80A295F8076B1C5722A46AA2 /* func-function+test.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "func-function-54est.cpp";
-    path = "func-function-54est.cpp";
+    name = "func-function+test.cpp";
+    path = "func-function+test.cpp";
     sourceTree = "<group>";
   };
 
-  4163B3523AFE57C2E008BC8C /* getter--41-5F-41-a-52eader.cpp */ = {
+  4163B3523AFE57C2E008BC8C /* getter-+a-5F+a-a+reader.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "getter--41-5F-41-a-52eader.cpp";
-    path = "getter--41-5F-41-a-52eader.cpp";
+    name = "getter-+a-5F+a-a+reader.cpp";
+    path = "getter-+a-5F+a-a+reader.cpp";
     sourceTree = "<group>";
   };
 
-  5C00B1249BBE3554A4FDF6FB /* getter--41-5F-41-location.cpp */ = {
+  5C00B1249BBE3554A4FDF6FB /* getter-+a-5F+a-location.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "getter--41-5F-41-location.cpp";
-    path = "getter--41-5F-41-location.cpp";
+    name = "getter-+a-5F+a-location.cpp";
+    path = "getter-+a-5F+a-location.cpp";
     sourceTree = "<group>";
   };
 
-  8E4C41F2747BFA2F1B5F87DB /* getter--42-5F-42-a-52eader.cpp */ = {
+  8E4C41F2747BFA2F1B5F87DB /* getter-+b-5F+b-a+reader.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "getter--42-5F-42-a-52eader.cpp";
-    path = "getter--42-5F-42-a-52eader.cpp";
+    name = "getter-+b-5F+b-a+reader.cpp";
+    path = "getter-+b-5F+b-a+reader.cpp";
     sourceTree = "<group>";
   };
 
-  EC990F19C78C75BD1E06F215 /* getter--42-5F-42-location.cpp */ = {
+  EC990F19C78C75BD1E06F215 /* getter-+b-5F+b-location.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "getter--42-5F-42-location.cpp";
-    path = "getter--42-5F-42-location.cpp";
+    name = "getter-+b-5F+b-location.cpp";
+    path = "getter-+b-5F+b-location.cpp";
     sourceTree = "<group>";
   };
 
-  976AAB5298D5DA10FE66F21D /* getter--42-5F-42-other-52eader.cpp */ = {
+  976AAB5298D5DA10FE66F21D /* getter-+b-5F+b-other+reader.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "getter--42-5F-42-other-52eader.cpp";
-    path = "getter--42-5F-42-other-52eader.cpp";
+    name = "getter-+b-5F+b-other+reader.cpp";
+    path = "getter-+b-5F+b-other+reader.cpp";
     sourceTree = "<group>";
   };
 
-  44A3365A46C9077EBB5E35C3 /* getter--54est-45xtension-4Dethod-reader1.cpp */ = {
+  44A3365A46C9077EBB5E35C3 /* getter-+test+extension+method-reader1.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "getter--54est-45xtension-4Dethod-reader1.cpp";
-    path = "getter--54est-45xtension-4Dethod-reader1.cpp";
+    name = "getter-+test+extension+method-reader1.cpp";
+    path = "getter-+test+extension+method-reader1.cpp";
     sourceTree = "<group>";
   };
 
@@ -1871,120 +1871,120 @@
     sourceTree = "<group>";
   };
 
-  C660610B44D9B9FED0FF9548 /* list-a-4Cist.cpp */ = {
+  C660610B44D9B9FED0FF9548 /* list-a+list.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "list-a-4Cist.cpp";
-    path = "list-a-4Cist.cpp";
+    name = "list-a+list.cpp";
+    path = "list-a+list.cpp";
     sourceTree = "<group>";
   };
 
-  D5920AA6C7C996A5EE53A70F /* list-my-4Cist.cpp */ = {
+  D5920AA6C7C996A5EE53A70F /* list-my+list.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "list-my-4Cist.cpp";
-    path = "list-my-4Cist.cpp";
+    name = "list-my+list.cpp";
+    path = "list-my+list.cpp";
     sourceTree = "<group>";
   };
 
-  B63885E0D7C260CC007E8B9D /* listmap-my-4Cist-4Dap.cpp */ = {
+  B63885E0D7C260CC007E8B9D /* listmap-my+list+map.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "listmap-my-4Cist-4Dap.cpp";
-    path = "listmap-my-4Cist-4Dap.cpp";
+    name = "listmap-my+list+map.cpp";
+    path = "listmap-my+list+map.cpp";
     sourceTree = "<group>";
   };
 
-  86960EEB576A8FD4C9EC6997 /* map-a-4Dap.cpp */ = {
+  86960EEB576A8FD4C9EC6997 /* map-a+map.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "map-a-4Dap.cpp";
-    path = "map-a-4Dap.cpp";
+    name = "map-a+map.cpp";
+    path = "map-a+map.cpp";
     sourceTree = "<group>";
   };
 
-  DE89D9058FCB0B968DBBBD68 /* map-my-4Dap.cpp */ = {
+  DE89D9058FCB0B968DBBBD68 /* map-my+map.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "map-my-4Dap.cpp";
-    path = "map-my-4Dap.cpp";
+    name = "map-my+map.cpp";
+    path = "map-my+map.cpp";
     sourceTree = "<group>";
   };
 
-  E93E74D3DF8527599FA62642 /* method--54est-45xtension-4Dethod-method1.cpp */ = {
+  E93E74D3DF8527599FA62642 /* method-+test+extension+method-method1.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "method--54est-45xtension-4Dethod-method1.cpp";
-    path = "method--54est-45xtension-4Dethod-method1.cpp";
+    name = "method-+test+extension+method-method1.cpp";
+    path = "method-+test+extension+method-method1.cpp";
     sourceTree = "<group>";
   };
 
-  AC59075B964B07152D234B70 /* method--54est-45xtension-4Dethod-method2.cpp */ = {
+  AC59075B964B07152D234B70 /* method-+test+extension+method-method2.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "method--54est-45xtension-4Dethod-method2.cpp";
-    path = "method--54est-45xtension-4Dethod-method2.cpp";
+    name = "method-+test+extension+method-method2.cpp";
+    path = "method-+test+extension+method-method2.cpp";
     sourceTree = "<group>";
   };
 
-  EF840F0C74A814EC9237B6EC /* method--54est-45xtension-53etter-m.cpp */ = {
+  EF840F0C74A814EC9237B6EC /* method-+test+extension+setter-m.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "method--54est-45xtension-53etter-m.cpp";
-    path = "method--54est-45xtension-53etter-m.cpp";
+    name = "method-+test+extension+setter-m.cpp";
+    path = "method-+test+extension+setter-m.cpp";
     sourceTree = "<group>";
   };
 
-  6EBAAFC66CC0879C71B5DB5C /* method--54est-45xtension-53etter-setter1.cpp */ = {
+  6EBAAFC66CC0879C71B5DB5C /* method-+test+extension+setter-setter1.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "method--54est-45xtension-53etter-setter1.cpp";
-    path = "method--54est-45xtension-53etter-setter1.cpp";
+    name = "method-+test+extension+setter-setter1.cpp";
+    path = "method-+test+extension+setter-setter1.cpp";
     sourceTree = "<group>";
   };
 
-  F984EEABDBB0A7D494132EE5 /* method--54est-45xtension-53etter-setter2.cpp */ = {
+  F984EEABDBB0A7D494132EE5 /* method-+test+extension+setter-setter2.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "method--54est-45xtension-53etter-setter2.cpp";
-    path = "method--54est-45xtension-53etter-setter2.cpp";
+    name = "method-+test+extension+setter-setter2.cpp";
+    path = "method-+test+extension+setter-setter2.cpp";
     sourceTree = "<group>";
   };
 
-  2726FB0A03BB19F2D8D9524D /* method--54est-45xtension-53etter-setter3.cpp */ = {
+  2726FB0A03BB19F2D8D9524D /* method-+test+extension+setter-setter3.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "method--54est-45xtension-53etter-setter3.cpp";
-    path = "method--54est-45xtension-53etter-setter3.cpp";
+    name = "method-+test+extension+setter-setter3.cpp";
+    path = "method-+test+extension+setter-setter3.cpp";
     sourceTree = "<group>";
   };
 
-  8EBCB58C6CE932B957B6F332 /* method-abstract-54est-45xtension-53etter-m.cpp */ = {
+  8EBCB58C6CE932B957B6F332 /* method-abstract+test+extension+setter-m.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "method-abstract-54est-45xtension-53etter-m.cpp";
-    path = "method-abstract-54est-45xtension-53etter-m.cpp";
+    name = "method-abstract+test+extension+setter-m.cpp";
+    path = "method-abstract+test+extension+setter-m.cpp";
     sourceTree = "<group>";
   };
 
-  D5904A438616FF7BDB3F7439 /* method-inherited-43lass-46or-54ype-43ast-49n-53etter-43all-un-53etter.cpp */ = {
+  D5904A438616FF7BDB3F7439 /* method-inherited+class+for+type+cast+in+setter+call-un+setter.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "method-inherited-43lass-46or-54ype-43ast-49n-53etter-43all-un-53etter.cpp";
-    path = "method-inherited-43lass-46or-54ype-43ast-49n-53etter-43all-un-53etter.cpp";
+    name = "method-inherited+class+for+type+cast+in+setter+call-un+setter.cpp";
+    path = "method-inherited+class+for+type+cast+in+setter+call-un+setter.cpp";
     sourceTree = "<group>";
   };
 
@@ -1997,12 +1997,12 @@
     sourceTree = "<group>";
   };
 
-  373A7031000FD987A3C9F87B /* method-overriding-54est-45xtension-53etter-m.cpp */ = {
+  373A7031000FD987A3C9F87B /* method-overriding+test+extension+setter-m.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "method-overriding-54est-45xtension-53etter-m.cpp";
-    path = "method-overriding-54est-45xtension-53etter-m.cpp";
+    name = "method-overriding+test+extension+setter-m.cpp";
+    path = "method-overriding+test+extension+setter-m.cpp";
     sourceTree = "<group>";
   };
 
@@ -2024,21 +2024,21 @@
     sourceTree = "<group>";
   };
 
-  18FCB43975065399B0D1E48E /* proc-bug-4Dap.cpp */ = {
+  18FCB43975065399B0D1E48E /* proc-bug+map.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "proc-bug-4Dap.cpp";
-    path = "proc-bug-4Dap.cpp";
+    name = "proc-bug+map.cpp";
+    path = "proc-bug+map.cpp";
     sourceTree = "<group>";
   };
 
-  28B734FE93831E3FB400CE87 /* proc-my-49nit-50roc-21-3F.cpp */ = {
+  28B734FE93831E3FB400CE87 /* proc-my+init+proc-21-3F.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "proc-my-49nit-50roc-21-3F.cpp";
-    path = "proc-my-49nit-50roc-21-3F.cpp";
+    name = "proc-my+init+proc-21-3F.cpp";
+    path = "proc-my+init+proc-21-3F.cpp";
     sourceTree = "<group>";
   };
 
@@ -2231,12 +2231,12 @@
     sourceTree = "<group>";
   };
 
-  3138416A242F40FB7D7F338E /* proc-type-43ast-49n-53etter-43all.cpp */ = {
+  3138416A242F40FB7D7F338E /* proc-type+cast+in+setter+call.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "proc-type-43ast-49n-53etter-43all.cpp";
-    path = "proc-type-43ast-49n-53etter-43all.cpp";
+    name = "proc-type+cast+in+setter+call.cpp";
+    path = "proc-type+cast+in+setter+call.cpp";
     sourceTree = "<group>";
   };
 
@@ -2249,30 +2249,30 @@
     sourceTree = "<group>";
   };
 
-  0A8E5646EF5A30154E9F6DEB /* setter-lstring-append-49nt.cpp */ = {
+  0A8E5646EF5A30154E9F6DEB /* setter-lstring-append+int.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "setter-lstring-append-49nt.cpp";
-    path = "setter-lstring-append-49nt.cpp";
+    name = "setter-lstring-append+int.cpp";
+    path = "setter-lstring-append+int.cpp";
     sourceTree = "<group>";
   };
 
-  845EC0A378394003C96DA594 /* setter-string-concat-4Cist.cpp */ = {
+  845EC0A378394003C96DA594 /* setter-string-concat+list.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "setter-string-concat-4Cist.cpp";
-    path = "setter-string-concat-4Cist.cpp";
+    name = "setter-string-concat+list.cpp";
+    path = "setter-string-concat+list.cpp";
     sourceTree = "<group>";
   };
 
-  669D7A23DE0EF88D2F7129E7 /* setter-uint-autre-49nit.cpp */ = {
+  669D7A23DE0EF88D2F7129E7 /* setter-uint-autre+init.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "setter-uint-autre-49nit.cpp";
-    path = "setter-uint-autre-49nit.cpp";
+    name = "setter-uint-autre+init.cpp";
+    path = "setter-uint-autre+init.cpp";
     sourceTree = "<group>";
   };
 
@@ -2303,21 +2303,21 @@
     sourceTree = "<group>";
   };
 
-  920CF82AB059BFCCBD02BE6A /* setter-uint64list-prepend-53quare.cpp */ = {
+  920CF82AB059BFCCBD02BE6A /* setter-uint64list-prepend+square.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "setter-uint64list-prepend-53quare.cpp";
-    path = "setter-uint64list-prepend-53quare.cpp";
+    name = "setter-uint64list-prepend+square.cpp";
+    path = "setter-uint64list-prepend+square.cpp";
     sourceTree = "<group>";
   };
 
-  1BE80AB57E1A2ECABB7DA330 /* setter-uintlist-append-53quare.cpp */ = {
+  1BE80AB57E1A2ECABB7DA330 /* setter-uintlist-append+square.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "setter-uintlist-append-53quare.cpp";
-    path = "setter-uintlist-append-53quare.cpp";
+    name = "setter-uintlist-append+square.cpp";
+    path = "setter-uintlist-append+square.cpp";
     sourceTree = "<group>";
   };
 
@@ -2330,66 +2330,66 @@
     sourceTree = "<group>";
   };
 
-  5A6B38B23CC967316C13DAE2 /* struct-a-4Cist-2Delement.cpp */ = {
+  5A6B38B23CC967316C13DAE2 /* struct-a+list-2Delement.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "struct-a-4Cist-2Delement.cpp";
-    path = "struct-a-4Cist-2Delement.cpp";
+    name = "struct-a+list-2Delement.cpp";
+    path = "struct-a+list-2Delement.cpp";
     sourceTree = "<group>";
   };
 
-  930E414107EE22B6198C578F /* struct-a-4Dap-2Delement.cpp */ = {
+  930E414107EE22B6198C578F /* struct-a+map-2Delement.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "struct-a-4Dap-2Delement.cpp";
-    path = "struct-a-4Dap-2Delement.cpp";
+    name = "struct-a+map-2Delement.cpp";
+    path = "struct-a+map-2Delement.cpp";
     sourceTree = "<group>";
   };
 
-  5FC9A3002CE38BBE070EC3F5 /* struct-my-4Cist-2Delement.cpp */ = {
+  5FC9A3002CE38BBE070EC3F5 /* struct-my+list+map-2Delement.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "struct-my-4Cist-2Delement.cpp";
-    path = "struct-my-4Cist-2Delement.cpp";
+    name = "struct-my+list+map-2Delement.cpp";
+    path = "struct-my+list+map-2Delement.cpp";
     sourceTree = "<group>";
   };
 
-  0B240CE177CF70DA146C8DC8 /* struct-my-4Cist-4Dap-2Delement.cpp */ = {
+  0B240CE177CF70DA146C8DC8 /* struct-my+list-2Delement.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "struct-my-4Cist-4Dap-2Delement.cpp";
-    path = "struct-my-4Cist-4Dap-2Delement.cpp";
+    name = "struct-my+list-2Delement.cpp";
+    path = "struct-my+list-2Delement.cpp";
     sourceTree = "<group>";
   };
 
-  5B344BC40F3BC04F65B7A357 /* struct-my-4Dap-2Delement.cpp */ = {
+  5B344BC40F3BC04F65B7A357 /* struct-my+map-2Delement.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "struct-my-4Dap-2Delement.cpp";
-    path = "struct-my-4Dap-2Delement.cpp";
+    name = "struct-my+map-2Delement.cpp";
+    path = "struct-my+map-2Delement.cpp";
     sourceTree = "<group>";
   };
 
-  F73A9969845DFE4146C5660E /* struct-my-53orted-4Cist-2Delement.cpp */ = {
+  F73A9969845DFE4146C5660E /* struct-my+sorted+list-2Delement.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "struct-my-53orted-4Cist-2Delement.cpp";
-    path = "struct-my-53orted-4Cist-2Delement.cpp";
+    name = "struct-my+sorted+list-2Delement.cpp";
+    path = "struct-my+sorted+list-2Delement.cpp";
     sourceTree = "<group>";
   };
 
-  3DE83D861C3176A6273CAC6D /* struct-struct-54est.cpp */ = {
+  3DE83D861C3176A6273CAC6D /* struct-struct+test.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "struct-struct-54est.cpp";
-    path = "struct-struct-54est.cpp";
+    name = "struct-struct+test.cpp";
+    path = "struct-struct+test.cpp";
     sourceTree = "<group>";
   };
 
@@ -2402,84 +2402,84 @@
     sourceTree = "<group>";
   };
 
-  85AAB05244A4FB8FD91BF4EE /* weak-reference--41-5F-41-2Dweak.cpp */ = {
+  85AAB05244A4FB8FD91BF4EE /* weak-reference-+a-5F+a-2Dweak.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "weak-reference--41-5F-41-2Dweak.cpp";
-    path = "weak-reference--41-5F-41-2Dweak.cpp";
+    name = "weak-reference-+a-5F+a-2Dweak.cpp";
+    path = "weak-reference-+a-5F+a-2Dweak.cpp";
     sourceTree = "<group>";
   };
 
-  C689C1D0E3B9CCC3AB651BC5 /* weak-reference--42-5F-42-2Dweak.cpp */ = {
+  C689C1D0E3B9CCC3AB651BC5 /* weak-reference-+b-5F+b-2Dweak.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "weak-reference--42-5F-42-2Dweak.cpp";
-    path = "weak-reference--42-5F-42-2Dweak.cpp";
+    name = "weak-reference-+b-5F+b-2Dweak.cpp";
+    path = "weak-reference-+b-5F+b-2Dweak.cpp";
     sourceTree = "<group>";
   };
 
-  C48A2CFB5F2217FBFB00722D /* weak-reference--54est-45xtension-4Dethod-2Dweak.cpp */ = {
+  C48A2CFB5F2217FBFB00722D /* weak-reference-+test+extension+method-2Dweak.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "weak-reference--54est-45xtension-4Dethod-2Dweak.cpp";
-    path = "weak-reference--54est-45xtension-4Dethod-2Dweak.cpp";
+    name = "weak-reference-+test+extension+method-2Dweak.cpp";
+    path = "weak-reference-+test+extension+method-2Dweak.cpp";
     sourceTree = "<group>";
   };
 
-  80CAB8C45637ABC7493ECDDD /* weak-reference--54est-45xtension-53etter-2Dweak.cpp */ = {
+  80CAB8C45637ABC7493ECDDD /* weak-reference-+test+extension+setter-2Dweak.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "weak-reference--54est-45xtension-53etter-2Dweak.cpp";
-    path = "weak-reference--54est-45xtension-53etter-2Dweak.cpp";
+    name = "weak-reference-+test+extension+setter-2Dweak.cpp";
+    path = "weak-reference-+test+extension+setter-2Dweak.cpp";
     sourceTree = "<group>";
   };
 
-  45B2AD1094D42F4EF36764F6 /* weak-reference-abstract-4Fverriding-54est-45xtension-53etter-2Dweak.cpp */ = {
+  45B2AD1094D42F4EF36764F6 /* weak-reference-abstract+overriding+test+extension+setter-2Dweak.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "weak-reference-abstract-4Fverriding-54est-45xtension-53etter-2Dweak.cpp";
-    path = "weak-reference-abstract-4Fverriding-54est-45xtension-53etter-2Dweak.cpp";
+    name = "weak-reference-abstract+overriding+test+extension+setter-2Dweak.cpp";
+    path = "weak-reference-abstract+overriding+test+extension+setter-2Dweak.cpp";
     sourceTree = "<group>";
   };
 
-  D8F918A4AA29BE29D2C386FB /* weak-reference-abstract-54est-45xtension-53etter-2Dweak.cpp */ = {
+  D8F918A4AA29BE29D2C386FB /* weak-reference-abstract+test+extension+setter-2Dweak.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "weak-reference-abstract-54est-45xtension-53etter-2Dweak.cpp";
-    path = "weak-reference-abstract-54est-45xtension-53etter-2Dweak.cpp";
+    name = "weak-reference-abstract+test+extension+setter-2Dweak.cpp";
+    path = "weak-reference-abstract+test+extension+setter-2Dweak.cpp";
     sourceTree = "<group>";
   };
 
-  AD7F202F26C1A174C7357585 /* weak-reference-base-43lass-46or-54ype-43ast-49n-53etter-43all-2Dweak.cpp */ = {
+  AD7F202F26C1A174C7357585 /* weak-reference-base+class+for+type+cast+in+setter+call-2Dweak.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "weak-reference-base-43lass-46or-54ype-43ast-49n-53etter-43all-2Dweak.cpp";
-    path = "weak-reference-base-43lass-46or-54ype-43ast-49n-53etter-43all-2Dweak.cpp";
+    name = "weak-reference-base+class+for+type+cast+in+setter+call-2Dweak.cpp";
+    path = "weak-reference-base+class+for+type+cast+in+setter+call-2Dweak.cpp";
     sourceTree = "<group>";
   };
 
-  4A4D452035300F18B984988C /* weak-reference-inherited-43lass-46or-54ype-43ast-49n-53etter-43all-2Dweak.cpp */ = {
+  4A4D452035300F18B984988C /* weak-reference-inherited+class+for+type+cast+in+setter+call-2Dweak.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "weak-reference-inherited-43lass-46or-54ype-43ast-49n-53etter-43all-2Dweak.cpp";
-    path = "weak-reference-inherited-43lass-46or-54ype-43ast-49n-53etter-43all-2Dweak.cpp";
+    name = "weak-reference-inherited+class+for+type+cast+in+setter+call-2Dweak.cpp";
+    path = "weak-reference-inherited+class+for+type+cast+in+setter+call-2Dweak.cpp";
     sourceTree = "<group>";
   };
 
-  0A271FF252C1903E7132CD68 /* weak-reference-overriding-54est-45xtension-53etter-2Dweak.cpp */ = {
+  0A271FF252C1903E7132CD68 /* weak-reference-overriding+test+extension+setter-2Dweak.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "weak-reference-overriding-54est-45xtension-53etter-2Dweak.cpp";
-    path = "weak-reference-overriding-54est-45xtension-53etter-2Dweak.cpp";
+    name = "weak-reference-overriding+test+extension+setter-2Dweak.cpp";
+    path = "weak-reference-overriding+test+extension+setter-2Dweak.cpp";
     sourceTree = "<group>";
   };
 
@@ -3941,12 +3941,12 @@
     sourceTree = "<group>";
   };
 
-  6FE97759AA27A0C99BFF6710 /* -sortedlist-my-53orted-4Cist.h */ = {
+  6FE97759AA27A0C99BFF6710 /* -sortedlist-my+sorted+list.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "-sortedlist-my-53orted-4Cist.h";
-    path = "-sortedlist-my-53orted-4Cist.h";
+    name = "-sortedlist-my+sorted+list.h";
+    path = "-sortedlist-my+sorted+list.h";
     sourceTree = "<group>";
   };
 
@@ -3968,165 +3968,165 @@
     sourceTree = "<group>";
   };
 
-  C9B086079795C442636B55FB /* class--41-5F-41-1.h */ = {
+  C9B086079795C442636B55FB /* class-+a-5F+a-1.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "class--41-5F-41-1.h";
-    path = "class--41-5F-41-1.h";
+    name = "class-+a-5F+a-1.h";
+    path = "class-+a-5F+a-1.h";
     sourceTree = "<group>";
   };
 
-  210194C475687BE6106A3B84 /* class--41-5F-41.h */ = {
+  210194C475687BE6106A3B84 /* class-+a-5F+a.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "class--41-5F-41.h";
-    path = "class--41-5F-41.h";
+    name = "class-+a-5F+a.h";
+    path = "class-+a-5F+a.h";
     sourceTree = "<group>";
   };
 
-  8E8850243BE8079A5C74D079 /* class--42-5F-42-1.h */ = {
+  8E8850243BE8079A5C74D079 /* class-+b-5F+b-1.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "class--42-5F-42-1.h";
-    path = "class--42-5F-42-1.h";
+    name = "class-+b-5F+b-1.h";
+    path = "class-+b-5F+b-1.h";
     sourceTree = "<group>";
   };
 
-  4005F8DA13F42943881C655F /* class--42-5F-42.h */ = {
+  4005F8DA13F42943881C655F /* class-+b-5F+b.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "class--42-5F-42.h";
-    path = "class--42-5F-42.h";
+    name = "class-+b-5F+b.h";
+    path = "class-+b-5F+b.h";
     sourceTree = "<group>";
   };
 
-  7A37563370DED05F5A3BF3EC /* class--54est-45xtension-4Dethod-1.h */ = {
+  7A37563370DED05F5A3BF3EC /* class-+test+extension+method-1.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "class--54est-45xtension-4Dethod-1.h";
-    path = "class--54est-45xtension-4Dethod-1.h";
+    name = "class-+test+extension+method-1.h";
+    path = "class-+test+extension+method-1.h";
     sourceTree = "<group>";
   };
 
-  9DD601BBE69F351039152189 /* class--54est-45xtension-4Dethod.h */ = {
+  9DD601BBE69F351039152189 /* class-+test+extension+method.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "class--54est-45xtension-4Dethod.h";
-    path = "class--54est-45xtension-4Dethod.h";
+    name = "class-+test+extension+method.h";
+    path = "class-+test+extension+method.h";
     sourceTree = "<group>";
   };
 
-  AA0EFB9E19094440C317E21B /* class--54est-45xtension-53etter-1.h */ = {
+  AA0EFB9E19094440C317E21B /* class-+test+extension+setter-1.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "class--54est-45xtension-53etter-1.h";
-    path = "class--54est-45xtension-53etter-1.h";
+    name = "class-+test+extension+setter-1.h";
+    path = "class-+test+extension+setter-1.h";
     sourceTree = "<group>";
   };
 
-  F495B6AB9DCF8D3B5C6E0B01 /* class--54est-45xtension-53etter.h */ = {
+  F495B6AB9DCF8D3B5C6E0B01 /* class-+test+extension+setter.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "class--54est-45xtension-53etter.h";
-    path = "class--54est-45xtension-53etter.h";
+    name = "class-+test+extension+setter.h";
+    path = "class-+test+extension+setter.h";
     sourceTree = "<group>";
   };
 
-  CDCD5072BB1864CDEE4D3D6E /* class-abstract-4Fverriding-54est-45xtension-53etter-1.h */ = {
+  CDCD5072BB1864CDEE4D3D6E /* class-abstract+overriding+test+extension+setter-1.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "class-abstract-4Fverriding-54est-45xtension-53etter-1.h";
-    path = "class-abstract-4Fverriding-54est-45xtension-53etter-1.h";
+    name = "class-abstract+overriding+test+extension+setter-1.h";
+    path = "class-abstract+overriding+test+extension+setter-1.h";
     sourceTree = "<group>";
   };
 
-  EA6328A42E0EB13D585E4C22 /* class-abstract-4Fverriding-54est-45xtension-53etter.h */ = {
+  EA6328A42E0EB13D585E4C22 /* class-abstract+overriding+test+extension+setter.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "class-abstract-4Fverriding-54est-45xtension-53etter.h";
-    path = "class-abstract-4Fverriding-54est-45xtension-53etter.h";
+    name = "class-abstract+overriding+test+extension+setter.h";
+    path = "class-abstract+overriding+test+extension+setter.h";
     sourceTree = "<group>";
   };
 
-  7964F8DDDEB95FC584CD965D /* class-abstract-54est-45xtension-53etter-1.h */ = {
+  7964F8DDDEB95FC584CD965D /* class-abstract+test+extension+setter-1.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "class-abstract-54est-45xtension-53etter-1.h";
-    path = "class-abstract-54est-45xtension-53etter-1.h";
+    name = "class-abstract+test+extension+setter-1.h";
+    path = "class-abstract+test+extension+setter-1.h";
     sourceTree = "<group>";
   };
 
-  395FEDAD7BBBED0ECA3FE2E0 /* class-abstract-54est-45xtension-53etter.h */ = {
+  395FEDAD7BBBED0ECA3FE2E0 /* class-abstract+test+extension+setter.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "class-abstract-54est-45xtension-53etter.h";
-    path = "class-abstract-54est-45xtension-53etter.h";
+    name = "class-abstract+test+extension+setter.h";
+    path = "class-abstract+test+extension+setter.h";
     sourceTree = "<group>";
   };
 
-  4CEA9109507CACD8E2F2AEFC /* class-base-43lass-46or-54ype-43ast-49n-53etter-43all-1.h */ = {
+  4CEA9109507CACD8E2F2AEFC /* class-base+class+for+type+cast+in+setter+call-1.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "class-base-43lass-46or-54ype-43ast-49n-53etter-43all-1.h";
-    path = "class-base-43lass-46or-54ype-43ast-49n-53etter-43all-1.h";
+    name = "class-base+class+for+type+cast+in+setter+call-1.h";
+    path = "class-base+class+for+type+cast+in+setter+call-1.h";
     sourceTree = "<group>";
   };
 
-  C833DFF4B38FC8D2872F1EC6 /* class-base-43lass-46or-54ype-43ast-49n-53etter-43all.h */ = {
+  C833DFF4B38FC8D2872F1EC6 /* class-base+class+for+type+cast+in+setter+call.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "class-base-43lass-46or-54ype-43ast-49n-53etter-43all.h";
-    path = "class-base-43lass-46or-54ype-43ast-49n-53etter-43all.h";
+    name = "class-base+class+for+type+cast+in+setter+call.h";
+    path = "class-base+class+for+type+cast+in+setter+call.h";
     sourceTree = "<group>";
   };
 
-  7260AE62E3B1396831A8398F /* class-inherited-43lass-46or-54ype-43ast-49n-53etter-43all-1.h */ = {
+  7260AE62E3B1396831A8398F /* class-inherited+class+for+type+cast+in+setter+call-1.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "class-inherited-43lass-46or-54ype-43ast-49n-53etter-43all-1.h";
-    path = "class-inherited-43lass-46or-54ype-43ast-49n-53etter-43all-1.h";
+    name = "class-inherited+class+for+type+cast+in+setter+call-1.h";
+    path = "class-inherited+class+for+type+cast+in+setter+call-1.h";
     sourceTree = "<group>";
   };
 
-  B79421734881B53E1E1B18B6 /* class-inherited-43lass-46or-54ype-43ast-49n-53etter-43all.h */ = {
+  B79421734881B53E1E1B18B6 /* class-inherited+class+for+type+cast+in+setter+call.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "class-inherited-43lass-46or-54ype-43ast-49n-53etter-43all.h";
-    path = "class-inherited-43lass-46or-54ype-43ast-49n-53etter-43all.h";
+    name = "class-inherited+class+for+type+cast+in+setter+call.h";
+    path = "class-inherited+class+for+type+cast+in+setter+call.h";
     sourceTree = "<group>";
   };
 
-  A9DED88F18ECEE47145A72C0 /* class-overriding-54est-45xtension-53etter-1.h */ = {
+  A9DED88F18ECEE47145A72C0 /* class-overriding+test+extension+setter-1.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "class-overriding-54est-45xtension-53etter-1.h";
-    path = "class-overriding-54est-45xtension-53etter-1.h";
+    name = "class-overriding+test+extension+setter-1.h";
+    path = "class-overriding+test+extension+setter-1.h";
     sourceTree = "<group>";
   };
 
-  4DFA42CADDBD0694A4E9BDC8 /* class-overriding-54est-45xtension-53etter.h */ = {
+  4DFA42CADDBD0694A4E9BDC8 /* class-overriding+test+extension+setter.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "class-overriding-54est-45xtension-53etter.h";
-    path = "class-overriding-54est-45xtension-53etter.h";
+    name = "class-overriding+test+extension+setter.h";
+    path = "class-overriding+test+extension+setter.h";
     sourceTree = "<group>";
   };
 
@@ -4139,57 +4139,57 @@
     sourceTree = "<group>";
   };
 
-  6A60928B05A7E228A89C3799 /* func-extern-54est-46unction.h */ = {
+  6A60928B05A7E228A89C3799 /* func-extern+test+function.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "func-extern-54est-46unction.h";
-    path = "func-extern-54est-46unction.h";
+    name = "func-extern+test+function.h";
+    path = "func-extern+test+function.h";
     sourceTree = "<group>";
   };
 
-  7FBDB1988EF4C628EBA02591 /* func-function-54est.h */ = {
+  7FBDB1988EF4C628EBA02591 /* func-function+test.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "func-function-54est.h";
-    path = "func-function-54est.h";
+    name = "func-function+test.h";
+    path = "func-function+test.h";
     sourceTree = "<group>";
   };
 
-  4608232E07D3AA3D998E5135 /* getter--41-5F-41-a-52eader.h */ = {
+  4608232E07D3AA3D998E5135 /* getter-+a-5F+a-a+reader.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "getter--41-5F-41-a-52eader.h";
-    path = "getter--41-5F-41-a-52eader.h";
+    name = "getter-+a-5F+a-a+reader.h";
+    path = "getter-+a-5F+a-a+reader.h";
     sourceTree = "<group>";
   };
 
-  568125ED6C3F678819B6E058 /* getter--41-5F-41-location.h */ = {
+  568125ED6C3F678819B6E058 /* getter-+a-5F+a-location.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "getter--41-5F-41-location.h";
-    path = "getter--41-5F-41-location.h";
+    name = "getter-+a-5F+a-location.h";
+    path = "getter-+a-5F+a-location.h";
     sourceTree = "<group>";
   };
 
-  3223EFBC24C7D2583BE69251 /* getter--42-5F-42-other-52eader.h */ = {
+  3223EFBC24C7D2583BE69251 /* getter-+b-5F+b-other+reader.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "getter--42-5F-42-other-52eader.h";
-    path = "getter--42-5F-42-other-52eader.h";
+    name = "getter-+b-5F+b-other+reader.h";
+    path = "getter-+b-5F+b-other+reader.h";
     sourceTree = "<group>";
   };
 
-  55CE926456240B2FF0100BDE /* getter--54est-45xtension-4Dethod-reader1.h */ = {
+  55CE926456240B2FF0100BDE /* getter-+test+extension+method-reader1.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "getter--54est-45xtension-4Dethod-reader1.h";
-    path = "getter--54est-45xtension-4Dethod-reader1.h";
+    name = "getter-+test+extension+method-reader1.h";
+    path = "getter-+test+extension+method-reader1.h";
     sourceTree = "<group>";
   };
 
@@ -4256,129 +4256,129 @@
     sourceTree = "<group>";
   };
 
-  E1CC6BB9F0CD2A47751A186F /* list-a-4Cist.h */ = {
+  E1CC6BB9F0CD2A47751A186F /* list-a+list.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "list-a-4Cist.h";
-    path = "list-a-4Cist.h";
+    name = "list-a+list.h";
+    path = "list-a+list.h";
     sourceTree = "<group>";
   };
 
-  74270FD093EE8A9BF8AE7D0B /* list-my-4Cist.h */ = {
+  74270FD093EE8A9BF8AE7D0B /* list-my+list.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "list-my-4Cist.h";
-    path = "list-my-4Cist.h";
+    name = "list-my+list.h";
+    path = "list-my+list.h";
     sourceTree = "<group>";
   };
 
-  9D8A121CE581499D7B701668 /* listmap-my-4Cist-4Dap.h */ = {
+  9D8A121CE581499D7B701668 /* listmap-my+list+map.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "listmap-my-4Cist-4Dap.h";
-    path = "listmap-my-4Cist-4Dap.h";
+    name = "listmap-my+list+map.h";
+    path = "listmap-my+list+map.h";
     sourceTree = "<group>";
   };
 
-  BB0B408017B62254211691B5 /* map-a-4Dap-1.h */ = {
+  BB0B408017B62254211691B5 /* map-a+map-1.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "map-a-4Dap-1.h";
-    path = "map-a-4Dap-1.h";
+    name = "map-a+map-1.h";
+    path = "map-a+map-1.h";
     sourceTree = "<group>";
   };
 
-  E11FB9384C4CF38708677C48 /* map-a-4Dap.h */ = {
+  E11FB9384C4CF38708677C48 /* map-a+map.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "map-a-4Dap.h";
-    path = "map-a-4Dap.h";
+    name = "map-a+map.h";
+    path = "map-a+map.h";
     sourceTree = "<group>";
   };
 
-  E729311EF5B5C3003946C48F /* map-my-4Dap-1.h */ = {
+  E729311EF5B5C3003946C48F /* map-my+map-1.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "map-my-4Dap-1.h";
-    path = "map-my-4Dap-1.h";
+    name = "map-my+map-1.h";
+    path = "map-my+map-1.h";
     sourceTree = "<group>";
   };
 
-  CA89A1678042477183B7AC3F /* map-my-4Dap.h */ = {
+  CA89A1678042477183B7AC3F /* map-my+map.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "map-my-4Dap.h";
-    path = "map-my-4Dap.h";
+    name = "map-my+map.h";
+    path = "map-my+map.h";
     sourceTree = "<group>";
   };
 
-  2E6F13B3A2DF133F073095DD /* method--54est-45xtension-4Dethod-method1.h */ = {
+  2E6F13B3A2DF133F073095DD /* method-+test+extension+method-method1.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "method--54est-45xtension-4Dethod-method1.h";
-    path = "method--54est-45xtension-4Dethod-method1.h";
+    name = "method-+test+extension+method-method1.h";
+    path = "method-+test+extension+method-method1.h";
     sourceTree = "<group>";
   };
 
-  D8F4755FF269862EA77393DD /* method--54est-45xtension-4Dethod-method2.h */ = {
+  D8F4755FF269862EA77393DD /* method-+test+extension+method-method2.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "method--54est-45xtension-4Dethod-method2.h";
-    path = "method--54est-45xtension-4Dethod-method2.h";
+    name = "method-+test+extension+method-method2.h";
+    path = "method-+test+extension+method-method2.h";
     sourceTree = "<group>";
   };
 
-  1A19057CFF70779273E95AA6 /* method--54est-45xtension-53etter-setter1.h */ = {
+  1A19057CFF70779273E95AA6 /* method-+test+extension+setter-setter1.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "method--54est-45xtension-53etter-setter1.h";
-    path = "method--54est-45xtension-53etter-setter1.h";
+    name = "method-+test+extension+setter-setter1.h";
+    path = "method-+test+extension+setter-setter1.h";
     sourceTree = "<group>";
   };
 
-  2BA9336A670E36D0ED79BC43 /* method--54est-45xtension-53etter-setter2.h */ = {
+  2BA9336A670E36D0ED79BC43 /* method-+test+extension+setter-setter2.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "method--54est-45xtension-53etter-setter2.h";
-    path = "method--54est-45xtension-53etter-setter2.h";
+    name = "method-+test+extension+setter-setter2.h";
+    path = "method-+test+extension+setter-setter2.h";
     sourceTree = "<group>";
   };
 
-  F5033BC65BF8D78622277C4E /* method--54est-45xtension-53etter-setter3.h */ = {
+  F5033BC65BF8D78622277C4E /* method-+test+extension+setter-setter3.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "method--54est-45xtension-53etter-setter3.h";
-    path = "method--54est-45xtension-53etter-setter3.h";
+    name = "method-+test+extension+setter-setter3.h";
+    path = "method-+test+extension+setter-setter3.h";
     sourceTree = "<group>";
   };
 
-  685A0DD18FB6A08AF0923DE0 /* method-abstract-54est-45xtension-53etter-m.h */ = {
+  685A0DD18FB6A08AF0923DE0 /* method-abstract+test+extension+setter-m.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "method-abstract-54est-45xtension-53etter-m.h";
-    path = "method-abstract-54est-45xtension-53etter-m.h";
+    name = "method-abstract+test+extension+setter-m.h";
+    path = "method-abstract+test+extension+setter-m.h";
     sourceTree = "<group>";
   };
 
-  54F96369AB93E4F3BB068C22 /* method-inherited-43lass-46or-54ype-43ast-49n-53etter-43all-un-53etter.h */ = {
+  54F96369AB93E4F3BB068C22 /* method-inherited+class+for+type+cast+in+setter+call-un+setter.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "method-inherited-43lass-46or-54ype-43ast-49n-53etter-43all-un-53etter.h";
-    path = "method-inherited-43lass-46or-54ype-43ast-49n-53etter-43all-un-53etter.h";
+    name = "method-inherited+class+for+type+cast+in+setter+call-un+setter.h";
+    path = "method-inherited+class+for+type+cast+in+setter+call-un+setter.h";
     sourceTree = "<group>";
   };
 
@@ -4409,21 +4409,21 @@
     sourceTree = "<group>";
   };
 
-  9C94D8D0CBEDC973445AF2DA /* proc-bug-4Dap.h */ = {
+  9C94D8D0CBEDC973445AF2DA /* proc-bug+map.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "proc-bug-4Dap.h";
-    path = "proc-bug-4Dap.h";
+    name = "proc-bug+map.h";
+    path = "proc-bug+map.h";
     sourceTree = "<group>";
   };
 
-  D5213FD0ECE03148E62E461E /* proc-my-49nit-50roc-21-3F.h */ = {
+  D5213FD0ECE03148E62E461E /* proc-my+init+proc-21-3F.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "proc-my-49nit-50roc-21-3F.h";
-    path = "proc-my-49nit-50roc-21-3F.h";
+    name = "proc-my+init+proc-21-3F.h";
+    path = "proc-my+init+proc-21-3F.h";
     sourceTree = "<group>";
   };
 
@@ -4616,39 +4616,39 @@
     sourceTree = "<group>";
   };
 
-  ACC34845C6BE3A127A5AACAF /* proc-type-43ast-49n-53etter-43all.h */ = {
+  ACC34845C6BE3A127A5AACAF /* proc-type+cast+in+setter+call.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "proc-type-43ast-49n-53etter-43all.h";
-    path = "proc-type-43ast-49n-53etter-43all.h";
+    name = "proc-type+cast+in+setter+call.h";
+    path = "proc-type+cast+in+setter+call.h";
     sourceTree = "<group>";
   };
 
-  743B65F4C0CCD295CC484E57 /* setter-lstring-append-49nt.h */ = {
+  743B65F4C0CCD295CC484E57 /* setter-lstring-append+int.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "setter-lstring-append-49nt.h";
-    path = "setter-lstring-append-49nt.h";
+    name = "setter-lstring-append+int.h";
+    path = "setter-lstring-append+int.h";
     sourceTree = "<group>";
   };
 
-  10BA03099A1C0393373C5B43 /* setter-string-concat-4Cist.h */ = {
+  10BA03099A1C0393373C5B43 /* setter-string-concat+list.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "setter-string-concat-4Cist.h";
-    path = "setter-string-concat-4Cist.h";
+    name = "setter-string-concat+list.h";
+    path = "setter-string-concat+list.h";
     sourceTree = "<group>";
   };
 
-  0B6D1345DD8FE4E481144D84 /* setter-uint-autre-49nit.h */ = {
+  0B6D1345DD8FE4E481144D84 /* setter-uint-autre+init.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "setter-uint-autre-49nit.h";
-    path = "setter-uint-autre-49nit.h";
+    name = "setter-uint-autre+init.h";
+    path = "setter-uint-autre+init.h";
     sourceTree = "<group>";
   };
 
@@ -4679,21 +4679,21 @@
     sourceTree = "<group>";
   };
 
-  DB7C962AA0D22AC97D69B793 /* setter-uint64list-prepend-53quare.h */ = {
+  DB7C962AA0D22AC97D69B793 /* setter-uint64list-prepend+square.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "setter-uint64list-prepend-53quare.h";
-    path = "setter-uint64list-prepend-53quare.h";
+    name = "setter-uint64list-prepend+square.h";
+    path = "setter-uint64list-prepend+square.h";
     sourceTree = "<group>";
   };
 
-  8F1455B3FA09A282E0D496F4 /* setter-uintlist-append-53quare.h */ = {
+  8F1455B3FA09A282E0D496F4 /* setter-uintlist-append+square.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "setter-uintlist-append-53quare.h";
-    path = "setter-uintlist-append-53quare.h";
+    name = "setter-uintlist-append+square.h";
+    path = "setter-uintlist-append+square.h";
     sourceTree = "<group>";
   };
 
@@ -4706,66 +4706,66 @@
     sourceTree = "<group>";
   };
 
-  894217686BA124D7356686C9 /* struct-a-4Cist-2Delement.h */ = {
+  894217686BA124D7356686C9 /* struct-a+list-2Delement.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "struct-a-4Cist-2Delement.h";
-    path = "struct-a-4Cist-2Delement.h";
+    name = "struct-a+list-2Delement.h";
+    path = "struct-a+list-2Delement.h";
     sourceTree = "<group>";
   };
 
-  E1833F3FDB077CA70BBD5D66 /* struct-a-4Dap-2Delement.h */ = {
+  E1833F3FDB077CA70BBD5D66 /* struct-a+map-2Delement.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "struct-a-4Dap-2Delement.h";
-    path = "struct-a-4Dap-2Delement.h";
+    name = "struct-a+map-2Delement.h";
+    path = "struct-a+map-2Delement.h";
     sourceTree = "<group>";
   };
 
-  E251E61CB8DD3612F26D5ECF /* struct-my-4Cist-2Delement.h */ = {
+  E251E61CB8DD3612F26D5ECF /* struct-my+list+map-2Delement.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "struct-my-4Cist-2Delement.h";
-    path = "struct-my-4Cist-2Delement.h";
+    name = "struct-my+list+map-2Delement.h";
+    path = "struct-my+list+map-2Delement.h";
     sourceTree = "<group>";
   };
 
-  CC52BC6F3D620BCEDC94A4B6 /* struct-my-4Cist-4Dap-2Delement.h */ = {
+  CC52BC6F3D620BCEDC94A4B6 /* struct-my+list-2Delement.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "struct-my-4Cist-4Dap-2Delement.h";
-    path = "struct-my-4Cist-4Dap-2Delement.h";
+    name = "struct-my+list-2Delement.h";
+    path = "struct-my+list-2Delement.h";
     sourceTree = "<group>";
   };
 
-  AF6023646EDE0E1F7C1EAC75 /* struct-my-4Dap-2Delement.h */ = {
+  AF6023646EDE0E1F7C1EAC75 /* struct-my+map-2Delement.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "struct-my-4Dap-2Delement.h";
-    path = "struct-my-4Dap-2Delement.h";
+    name = "struct-my+map-2Delement.h";
+    path = "struct-my+map-2Delement.h";
     sourceTree = "<group>";
   };
 
-  6C325499F1680B9896BEEDEB /* struct-my-53orted-4Cist-2Delement.h */ = {
+  6C325499F1680B9896BEEDEB /* struct-my+sorted+list-2Delement.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "struct-my-53orted-4Cist-2Delement.h";
-    path = "struct-my-53orted-4Cist-2Delement.h";
+    name = "struct-my+sorted+list-2Delement.h";
+    path = "struct-my+sorted+list-2Delement.h";
     sourceTree = "<group>";
   };
 
-  E5241343AA7ACB6A06A751E7 /* struct-struct-54est.h */ = {
+  E5241343AA7ACB6A06A751E7 /* struct-struct+test.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "struct-struct-54est.h";
-    path = "struct-struct-54est.h";
+    name = "struct-struct+test.h";
+    path = "struct-struct+test.h";
     sourceTree = "<group>";
   };
 
@@ -4778,84 +4778,84 @@
     sourceTree = "<group>";
   };
 
-  38835DA0B6F6EA37BCF8BCB7 /* weak-reference--41-5F-41-2Dweak.h */ = {
+  38835DA0B6F6EA37BCF8BCB7 /* weak-reference-+a-5F+a-2Dweak.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "weak-reference--41-5F-41-2Dweak.h";
-    path = "weak-reference--41-5F-41-2Dweak.h";
+    name = "weak-reference-+a-5F+a-2Dweak.h";
+    path = "weak-reference-+a-5F+a-2Dweak.h";
     sourceTree = "<group>";
   };
 
-  6976570B0353203EC4474217 /* weak-reference--42-5F-42-2Dweak.h */ = {
+  6976570B0353203EC4474217 /* weak-reference-+b-5F+b-2Dweak.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "weak-reference--42-5F-42-2Dweak.h";
-    path = "weak-reference--42-5F-42-2Dweak.h";
+    name = "weak-reference-+b-5F+b-2Dweak.h";
+    path = "weak-reference-+b-5F+b-2Dweak.h";
     sourceTree = "<group>";
   };
 
-  7931B6B7A7D29490FE5EC9F9 /* weak-reference--54est-45xtension-4Dethod-2Dweak.h */ = {
+  7931B6B7A7D29490FE5EC9F9 /* weak-reference-+test+extension+method-2Dweak.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "weak-reference--54est-45xtension-4Dethod-2Dweak.h";
-    path = "weak-reference--54est-45xtension-4Dethod-2Dweak.h";
+    name = "weak-reference-+test+extension+method-2Dweak.h";
+    path = "weak-reference-+test+extension+method-2Dweak.h";
     sourceTree = "<group>";
   };
 
-  5C640289D0A29417BCB63A37 /* weak-reference--54est-45xtension-53etter-2Dweak.h */ = {
+  5C640289D0A29417BCB63A37 /* weak-reference-+test+extension+setter-2Dweak.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "weak-reference--54est-45xtension-53etter-2Dweak.h";
-    path = "weak-reference--54est-45xtension-53etter-2Dweak.h";
+    name = "weak-reference-+test+extension+setter-2Dweak.h";
+    path = "weak-reference-+test+extension+setter-2Dweak.h";
     sourceTree = "<group>";
   };
 
-  6E43BE4F209556518C2FCB54 /* weak-reference-abstract-4Fverriding-54est-45xtension-53etter-2Dweak.h */ = {
+  6E43BE4F209556518C2FCB54 /* weak-reference-abstract+overriding+test+extension+setter-2Dweak.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "weak-reference-abstract-4Fverriding-54est-45xtension-53etter-2Dweak.h";
-    path = "weak-reference-abstract-4Fverriding-54est-45xtension-53etter-2Dweak.h";
+    name = "weak-reference-abstract+overriding+test+extension+setter-2Dweak.h";
+    path = "weak-reference-abstract+overriding+test+extension+setter-2Dweak.h";
     sourceTree = "<group>";
   };
 
-  DAA88A51F6CA8CFC1AC79B50 /* weak-reference-abstract-54est-45xtension-53etter-2Dweak.h */ = {
+  DAA88A51F6CA8CFC1AC79B50 /* weak-reference-abstract+test+extension+setter-2Dweak.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "weak-reference-abstract-54est-45xtension-53etter-2Dweak.h";
-    path = "weak-reference-abstract-54est-45xtension-53etter-2Dweak.h";
+    name = "weak-reference-abstract+test+extension+setter-2Dweak.h";
+    path = "weak-reference-abstract+test+extension+setter-2Dweak.h";
     sourceTree = "<group>";
   };
 
-  A7B6C95BD2B32ED45989C61F /* weak-reference-base-43lass-46or-54ype-43ast-49n-53etter-43all-2Dweak.h */ = {
+  A7B6C95BD2B32ED45989C61F /* weak-reference-base+class+for+type+cast+in+setter+call-2Dweak.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "weak-reference-base-43lass-46or-54ype-43ast-49n-53etter-43all-2Dweak.h";
-    path = "weak-reference-base-43lass-46or-54ype-43ast-49n-53etter-43all-2Dweak.h";
+    name = "weak-reference-base+class+for+type+cast+in+setter+call-2Dweak.h";
+    path = "weak-reference-base+class+for+type+cast+in+setter+call-2Dweak.h";
     sourceTree = "<group>";
   };
 
-  4F9E55D5E4E4F82F9F00E7D4 /* weak-reference-inherited-43lass-46or-54ype-43ast-49n-53etter-43all-2Dweak.h */ = {
+  4F9E55D5E4E4F82F9F00E7D4 /* weak-reference-inherited+class+for+type+cast+in+setter+call-2Dweak.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "weak-reference-inherited-43lass-46or-54ype-43ast-49n-53etter-43all-2Dweak.h";
-    path = "weak-reference-inherited-43lass-46or-54ype-43ast-49n-53etter-43all-2Dweak.h";
+    name = "weak-reference-inherited+class+for+type+cast+in+setter+call-2Dweak.h";
+    path = "weak-reference-inherited+class+for+type+cast+in+setter+call-2Dweak.h";
     sourceTree = "<group>";
   };
 
-  AEA0A9C4655800E8A7B9EA28 /* weak-reference-overriding-54est-45xtension-53etter-2Dweak.h */ = {
+  AEA0A9C4655800E8A7B9EA28 /* weak-reference-overriding+test+extension+setter-2Dweak.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "weak-reference-overriding-54est-45xtension-53etter-2Dweak.h";
-    path = "weak-reference-overriding-54est-45xtension-53etter-2Dweak.h";
+    name = "weak-reference-overriding+test+extension+setter-2Dweak.h";
+    path = "weak-reference-overriding+test+extension+setter-2Dweak.h";
     sourceTree = "<group>";
   };
 

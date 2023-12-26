@@ -6,9 +6,9 @@
 #import "OC_Token.h"
 #import "F_CocoaWrapperForGalgas.h"
 #import "OC_GGS_CommandLineOption.h"
-#import "lexique-galgas-53canner3-cocoa.h"
-#import "lexique-galgas-53canner4-cocoa.h"
-#import "lexique-galgas-54emplate-53canner-cocoa.h"
+#import "lexique-galgas+scanner3-cocoa.h"
+#import "lexique-galgas+scanner4-cocoa.h"
+#import "lexique-galgas+template+scanner-cocoa.h"
 #import "GGSUpdateCocoaGalgas.h"
 
 #ifdef USER_DEFAULT_COLORS_DEFINED

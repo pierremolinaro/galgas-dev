@@ -35,20 +35,6 @@ void routine_buildGalgasSemanticContext_3F__3F__3F_galgas_34__21__21__21_ (const
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'generateFewImplementationFiles???&&'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_generateFewImplementationFiles_3F__3F__3F__26__26_ (const class GALGAS_unifiedTypeMap constinArgument0,
-                                                                 const class GALGAS_string constinArgument1,
-                                                                 const class GALGAS_semanticDeclarationListForGeneration constinArgument2,
-                                                                 class GALGAS_stringlist & ioArgument3,
-                                                                 class GALGAS_stringset & ioArgument4,
-                                                                 class Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Routine 'generateFewImplementationFilesWithFewHeaders???&&&'
 //
 //--------------------------------------------------------------------------------------------------
@@ -61,6 +47,20 @@ void routine_generateFewImplementationFilesWithFewHeaders_3F__3F__3F__26__26__26
                                                                                    class GALGAS_stringlist & ioArgument5,
                                                                                    class Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'generateFewImplementationFiles???&&'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_generateFewImplementationFiles_3F__3F__3F__26__26_ (const class GALGAS_unifiedTypeMap constinArgument0,
+                                                                 const class GALGAS_string constinArgument1,
+                                                                 const class GALGAS_semanticDeclarationListForGeneration constinArgument2,
+                                                                 class GALGAS_stringlist & ioArgument3,
+                                                                 class GALGAS_stringset & ioArgument4,
+                                                                 class Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
