@@ -156,7 +156,6 @@ void cEmbeddedString::reallocEmbeddedString (const uint32_t inCapacity) {
   #endif
   if (inCapacity > mCapacity) {
     const uint32_t newCapacity = stringGoodSize (mCapacity, inCapacity) ;
-    macroValidPointer (mUTF32String) ;
     macroMyReallocPODArray (mUTF32String, utf32, newCapacity) ;
     mCapacity = newCapacity ;
     #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -382,7 +381,7 @@ const char * String::cString (UNUSED_LOCATION_ARGS) const {
     macroValidSharedObject (mEmbeddedString, cEmbeddedString) ;
     if (nullptr == mEmbeddedString->mEncodedCString) {
       uint32_t allocatedSize = mEmbeddedString->mLength + 1 ;
-      macroMyReallocPODArray (mEmbeddedString->mEncodedCString, char, allocatedSize) ;
+      macroMyNewPODArray (mEmbeddedString->mEncodedCString, char, allocatedSize) ;
       uint32_t idx = 0 ;
       for (uint32_t i=0 ; i<mEmbeddedString->mLength ; i++) {
         char buffer [5] ;

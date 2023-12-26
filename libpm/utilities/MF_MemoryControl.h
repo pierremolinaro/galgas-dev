@@ -74,6 +74,7 @@
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   #define macroMyReallocPODArray(inPointer,type,size) { \
+    macroValidPointer (inPointer) ; \
     inPointer = (type *) reallocAndRegisterPODArray (inPointer, (size) * sizeof (type) COMMA_HERE) ; \
   }
 #else
