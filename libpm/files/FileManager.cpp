@@ -234,7 +234,7 @@ static bool parseUTF32LE (const C_Data & inDataString,
     outString.addUnicodeChar (TO_UNICODE (n) COMMA_HERE) ;
   }
   if (! ok) {
-    outString.setLengthToZero () ;
+    outString.removeAllKeepingCapacity () ;
   }
   return ok ;
 }
@@ -257,7 +257,7 @@ static bool parseUTF32BE (const C_Data & inDataString,
     outString.addUnicodeChar (TO_UNICODE (n) COMMA_HERE) ;
   }
   if (! ok) {
-    outString.setLengthToZero () ;
+    outString.removeAllKeepingCapacity () ;
   }
   return ok ;
 }
@@ -287,7 +287,7 @@ static bool parseUTF16LE (const C_Data & inDataString,
   }
   ok &= ! foundUTF16prefix ;
   if (! ok) {
-    outString.setLengthToZero () ;
+    outString.removeAllKeepingCapacity () ;
   }
   return ok ;
 }
@@ -317,7 +317,7 @@ static bool parseUTF16BE (const C_Data & inDataString,
   }
   ok &= ! foundUTF16prefix ;
   if (! ok) {
-    outString.setLengthToZero () ;
+    outString.removeAllKeepingCapacity () ;
   }
   return ok ;
 }

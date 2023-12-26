@@ -58,8 +58,8 @@ class cEmbeddedString : public SharedObject {
   public: virtual ~cEmbeddedString (void) ;
 
 //--- No copy
-  private: cEmbeddedString (const cEmbeddedString &) ;
-  private: cEmbeddedString & operator = (const cEmbeddedString &) ;
+  private: cEmbeddedString (const cEmbeddedString &) = delete ;
+  private: cEmbeddedString & operator = (const cEmbeddedString &) = delete ;
 
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: void checkEmbeddedString (LOCATION_ARGS) const ;
@@ -89,8 +89,8 @@ mEncodedCString (nullptr),
 mUTF32String (nullptr) {
   const uint32_t newCapacity = stringGoodSize (0, inCapacity) ;
   macroMyNewPODArray (mUTF32String, utf32, newCapacity) ;
-  mCapacity = newCapacity ;
   mUTF32String [0] = TO_UNICODE ('\0') ;
+  mCapacity = newCapacity ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -108,6 +108,7 @@ mUTF32String (nullptr) {
   macroAssert (inCapacity > inEmbeddedString->mLength, "inCapacity (%lld) < inEmbeddedString->mLength (%lld)", inCapacity, inEmbeddedString->mLength) ;
   const uint32_t newCapacity = stringGoodSize (inEmbeddedString->mCapacity, inCapacity) ;
   macroMyNewPODArray (mUTF32String, utf32, newCapacity) ;
+  mUTF32String [0] = TO_UNICODE ('\0') ;
   mCapacity = newCapacity ;
   macroAssert (inEmbeddedString->mLength < mCapacity, "inEmbeddedString->mLength (%lld) >= mCapacity (%lld)", inEmbeddedString->mLength, mCapacity) ;
   for (uint32_t i=0 ; i<=inEmbeddedString->mLength ; i++) {
@@ -258,7 +259,7 @@ String & String::operator = (const String & inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-void String::releaseString (void) {
+void String::removeAll (void) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkString (HERE) ;
   #endif
@@ -347,7 +348,7 @@ bool String::containsCharacter (const utf32 inCharacter) const {
 //--------------------------------------------------------------------------------------------------
 
 bool String::containsCharacterInRange (const utf32 inFirstCharacter,
-                                         const utf32 inLastCharacter) const {
+                                       const utf32 inLastCharacter) const {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkString (HERE) ;
   #endif
@@ -450,7 +451,7 @@ void String::insulateEmbeddedString (const uint32_t inNewCapacity) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void String::setLengthToZero (void) {
+void String::removeAllKeepingCapacity (void) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkString (HERE) ;
   #endif
@@ -472,7 +473,7 @@ void String::setLengthToZero (void) {
 //--------------------------------------------------------------------------------------------------
 
 void String::insulate (void) const {
-  insulateEmbeddedString ((uint32_t) length ()) ;
+  insulateEmbeddedString (uint32_t (length ())) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -795,7 +796,7 @@ String String::operator + (const char * inOperand) const {
 //--------------------------------------------------------------------------------------------------
 
 String & String::operator = (const char * inSource) {
-  setLengthToZero () ;
+  removeAllKeepingCapacity () ;
   if (inSource != nullptr) {
     genericCharArrayOutput (inSource, int32_t (strlen (inSource) & UINT32_MAX)) ;
   }
@@ -809,7 +810,7 @@ String & String::operator = (const char * inSource) {
 //--------------------------------------------------------------------------------------------------
 
 void String::setFromCstring (const char * inCstring) {
-  setLengthToZero () ;
+  removeAllKeepingCapacity () ;
   addString (inCstring) ;
 }
 

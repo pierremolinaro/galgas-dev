@@ -696,7 +696,7 @@ void scanner_routine_convertHTMLSequenceToUnicodeCharacter (C_Lexique & inLexiqu
   if (UNICODE_VALUE (outUnicodeCharacter) == 0) {
     inLexique.lexicalError (inUnassignedHTMLSequenceError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
   }
-  ioStringValue.setLengthToZero () ;
+  ioStringValue.removeAllKeepingCapacity () ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -759,7 +759,7 @@ void scanner_routine_codePointToUnicode (C_Lexique & inLexique,
 
 void scanner_routine_resetString (C_Lexique & /* inLexique */,
                                   String & ioString) {
-  ioString.setLengthToZero () ;
+  ioString.removeAllKeepingCapacity () ;
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -154,14 +154,14 @@ GALGAS_string Compiler::sentString (void) const {
 
 GALGAS_string Compiler::retrieveAndResetTemplateString (void) {
   const String s = mTemplateString ;
-  mTemplateString.setLengthToZero () ;
+  mTemplateString.removeAllKeepingCapacity () ;
   return GALGAS_string (s) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void Compiler::resetTemplateString (void) {
-  mTemplateString.setLengthToZero () ;
+  mTemplateString.removeAllKeepingCapacity () ;
 }
 
 //--------------------------------------------------------------------------------------------------

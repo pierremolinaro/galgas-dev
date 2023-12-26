@@ -9433,7 +9433,7 @@ GALGAS_string extensionGetter_initialization (const GALGAS_lexicalTypeEnum & inO
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_string:
     {
-      result_result = GALGAS_string (".setLengthToZero ()") ;
+      result_result = GALGAS_string (".removeAllKeepingCapacity ()") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_char:

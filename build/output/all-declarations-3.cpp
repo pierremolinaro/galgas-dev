@@ -8321,10 +8321,10 @@ void C_Lexique_galgasScanner_34_::internalParseLexicalToken (cTokenFor_galgasSca
   token.mLexicalAttribute_bigintValue = BigSigned () ;
   token.mLexicalAttribute_charValue = TO_UNICODE (0) ;
   token.mLexicalAttribute_floatValue = 0.0 ;
-  token.mLexicalAttribute_identifierString.setLengthToZero () ;
+  token.mLexicalAttribute_identifierString.removeAllKeepingCapacity () ;
   token.mLexicalAttribute_sint_33__32_value = 0 ;
   token.mLexicalAttribute_sint_36__34_value = 0 ;
-  token.mLexicalAttribute_tokenString.setLengthToZero () ;
+  token.mLexicalAttribute_tokenString.removeAllKeepingCapacity () ;
   token.mLexicalAttribute_uint_33__32_value = 0 ;
   token.mLexicalAttribute_uint_36__34_value = 0 ;
   mTokenStartLocation = mCurrentLocation ;

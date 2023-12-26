@@ -62,7 +62,7 @@ getter @lexicalTypeEnum appendArgumentOfMethod -> @string {
 
 getter @lexicalTypeEnum initialization -> @string {
   switch self
-    case lexicalType_string : result = ".setLengthToZero ()"
+    case lexicalType_string : result = ".removeAllKeepingCapacity ()"
     case lexicalType_char   : result = " = TO_UNICODE (0)"
     case lexicalType_uint   : result = " = 0"
     case lexicalType_uint64 : result = " = 0"

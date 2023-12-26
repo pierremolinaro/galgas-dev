@@ -190,7 +190,7 @@ String indexingModeOutputFilePath (void) {
 //--------------------------------------------------------------------------------------------------
 
 static void epilogueAction (void) {
-  gModeLatexSuffixString.releaseString () ;
+  gModeLatexSuffixString.removeAll () ;
 }
 
 //--------------------------------------------------------------------------------------------------

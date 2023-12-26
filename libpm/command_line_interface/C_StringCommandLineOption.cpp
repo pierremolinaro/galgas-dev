@@ -62,7 +62,7 @@ void C_StringCommandLineOption::setStringOptionForCommandChar (const char * inCo
     while ((p != nullptr) && ! outFound) {
       outFound = inCommandString [0] == p->mCommandChar ;
       if (outFound) {
-        p->mValue.setLengthToZero () ;
+        p->mValue.removeAllKeepingCapacity () ;
         p->mValue.addString (& inCommandString [2]) ;
       }
       p = p->mNext ;
@@ -97,7 +97,7 @@ void C_StringCommandLineOption::setStringOptionForCommandString (const char * in
       outFound = (strlen (p->mCommandString) == equalSignIndex) &&
                  (strncmp (p->mCommandString, inCommandString, equalSignIndex) == 0) ;
       if (outFound) {
-        p->mValue.setLengthToZero () ;
+        p->mValue.removeAllKeepingCapacity () ;
         p->mValue.addString (& inCommandString [strlen (p->mCommandString) + 1]) ;
       }
       p = p->mNext ;
@@ -159,7 +159,7 @@ void C_StringCommandLineOption::printStringOptions (void) {
 void C_StringCommandLineOption::releaseStrings (void) {
   C_StringCommandLineOption * p = gFirstStringOption ;
   while (p != nullptr) {
-    p->mValue.releaseString () ;
+    p->mValue.removeAll () ;
     p = p->mNext ;
   }
 }

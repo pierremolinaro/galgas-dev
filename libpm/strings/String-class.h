@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 1997, ..., 2020 Pierre Molinaro.
+//  Copyright (C) 1997, ..., 2023 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -123,10 +123,10 @@ class String : public AC_OutputStream {
   public: uint32_t hash (void) const ;
 
 //--- Set length to 0 ; do not release memory
-  public: void setLengthToZero (void) ;
+  public: void removeAllKeepingCapacity (void) ;
 
 //--- Release memory
-  public: void releaseString (void) ;
+  public: void removeAll (void) ;
 
 //--- Get dynamic array allocated size
   public: uint32_t capacity (void) const ;

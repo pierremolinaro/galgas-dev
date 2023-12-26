@@ -79,7 +79,7 @@ mString (inString) {
 
 void GALGAS_string::drop (void) {
   mIsValid = false ;
-  mString.releaseString () ;
+  mString.removeAll () ;
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -173,7 +173,7 @@ String String::stringByDeletingTailFromString (const String & inSearchedString) 
     const utf32 * p = ::utf32_strstr (sourcePtr,
                                       inSearchedString.utf32String (HERE)) ;
     if (p != nullptr) {
-      result.setLengthToZero () ;
+      result.removeAllKeepingCapacity () ;
       result.genericUnicodeArrayOutput (sourcePtr, (int32_t) ((p - sourcePtr) & INT32_MAX)) ;
     }
   }
