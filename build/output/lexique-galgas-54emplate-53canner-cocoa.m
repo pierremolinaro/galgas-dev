@@ -3,7 +3,7 @@
 
 //--- END OF USER ZONE 1
 
-#import "lexique-galgas-54-emplate-53-canner-cocoa.h"
+#import "lexique-galgas-54emplate-53canner-cocoa.h"
 #import "PMDebug.h"
 
 //--------------------------------------------------------------------------------------------------

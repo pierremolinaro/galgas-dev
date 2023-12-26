@@ -685,18 +685,18 @@ String String::nameRepresentation (void) const {
 
 String String::fileNameRepresentation (void) const {
   String s ;
-  const int32_t receiver_length = length () ;
-  s.setCapacity ((uint32_t) receiver_length) ;
+  const int32_t receiverLength = length () ;
+  s.setCapacity (uint32_t (receiverLength)) ;
   const utf32 * ptr = utf32String (HERE) ;
-  for (int32_t i=0 ; i<receiver_length ; i++) {
+  for (int32_t i=0 ; i<receiverLength ; i++) {
     const utf32 c = ptr [i] ;
-    const int nc = (int) UNICODE_VALUE (c) ;
+    const int nc = int (UNICODE_VALUE (c)) ;
     if (isdigit (nc) || islower (nc)) {
       s.addUnicodeChar (c COMMA_HERE) ;
     }else{
       s.addUnicodeChar (TO_UNICODE ('-') COMMA_HERE) ;
       s.addUnsignedHex (UNICODE_VALUE (c)) ;
-      s.addUnicodeChar (TO_UNICODE ('-') COMMA_HERE) ;
+//      s.addUnicodeChar (TO_UNICODE ('-') COMMA_HERE) ;
     }
   }
   return s ;

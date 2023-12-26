@@ -3,7 +3,7 @@
 
 //--- END OF USER ZONE 1
 
-#import "lexique-galgas-53-canner3-cocoa.h"
+#import "lexique-galgas-53canner3-cocoa.h"
 
 //--------------------------------------------------------------------------------------------------
 //

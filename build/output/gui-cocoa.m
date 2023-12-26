@@ -6,9 +6,9 @@
 #import "OC_Token.h"
 #import "F_CocoaWrapperForGalgas.h"
 #import "OC_GGS_CommandLineOption.h"
-#import "lexique-galgas-53-canner3-cocoa.h"
-#import "lexique-galgas-53-canner4-cocoa.h"
-#import "lexique-galgas-54-emplate-53-canner-cocoa.h"
+#import "lexique-galgas-53canner3-cocoa.h"
+#import "lexique-galgas-53canner4-cocoa.h"
+#import "lexique-galgas-54emplate-53canner-cocoa.h"
 #import "GGSUpdateCocoaGalgas.h"
 
 #ifdef USER_DEFAULT_COLORS_DEFINED
@@ -46,7 +46,7 @@ NSDictionary * indexingDescriptorDictionary (void) {
 //                       Command Line Options                                                    
 //--------------------------------------------------------------------------------------------------
 
-#import "option-galgas-5F-cli-5F-options-cocoa.h"
+#import "option-galgas-5Fcli-5Foptions-cocoa.h"
 
 //--------------------------------------------------------------------------------------------------
 

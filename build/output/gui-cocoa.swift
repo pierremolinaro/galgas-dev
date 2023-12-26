@@ -33,7 +33,7 @@ NSDictionary * indexingDescriptorDictionary (void) {
 //
 //--------------------------------------------------------------------------------------------------
 
-// #import "option-galgas-5F-cli-5F-options-cocoa.h"
+// #import "option-galgas-5Fcli-5Foptions-cocoa.h"
 
 //--------------------------------------------------------------------------------------------------
 
