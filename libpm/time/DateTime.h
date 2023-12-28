@@ -30,13 +30,13 @@
 
 //--------------------------------------------------------------------------------------------------
 
-class C_DateTime final {
+class DateTime final {
   private: std::chrono::time_point<std::chrono::system_clock> mDate ;
 
 //--- Constructors et destructor
-  public: C_DateTime (void) ; // Current date
-  public: C_DateTime (const time_t inTimeInSeconds) ;
-  public: ~C_DateTime (void) ;
+  public: DateTime (void) ; // Current date
+  public: DateTime (const time_t inTimeInSeconds) ;
+  public: ~DateTime (void) ;
 
 //--- Get date components
   public: int32_t getYearCount (void) const ; // (1900, ...)
@@ -51,17 +51,17 @@ class C_DateTime final {
   public: String string (void) const ;
 
 //--- Date comparisons
-  public: int32_t compare (const C_DateTime & inDate) const ;
-  public: bool operator == (const C_DateTime & inDate) const ;
-  public: bool operator != (const C_DateTime & inDate) const ;
-  public: bool operator <= (const C_DateTime & inDate) const ;
-  public: bool operator >= (const C_DateTime & inDate) const ;
-  public: bool operator <  (const C_DateTime & inDate) const ;
-  public: bool operator >  (const C_DateTime & inDate) const ;
+  public: int32_t compare (const DateTime & inDate) const ;
+  public: bool operator == (const DateTime & inDate) const ;
+  public: bool operator != (const DateTime & inDate) const ;
+  public: bool operator <= (const DateTime & inDate) const ;
+  public: bool operator >= (const DateTime & inDate) const ;
+  public: bool operator <  (const DateTime & inDate) const ;
+  public: bool operator >  (const DateTime & inDate) const ;
 
 //--- Modification date of current tool
   public: static void enterCurrentToolModificationTime (const char * inMainRoutineFirstArgument) ;
-  public: static C_DateTime currentToolModificationTime (void) ;
+  public: static DateTime currentToolModificationTime (void) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

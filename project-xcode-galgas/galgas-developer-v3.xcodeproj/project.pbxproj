@@ -164,8 +164,8 @@
 		CF6DF16C09E3F23700506859 /* C_TextFileWrite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8259DA08536A7E0077AEAF /* C_TextFileWrite.cpp */; };
 		CF6DF16E09E3F23700506859 /* AC_OutputStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A2C08536B150077AEAF /* AC_OutputStream.cpp */; };
 		CF6DF16F09E3F23700506859 /* C_ConsoleOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A2E08536B150077AEAF /* C_ConsoleOut.cpp */; };
-		CF6DF17009E3F23700506859 /* C_DateTime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A4808536B350077AEAF /* C_DateTime.cpp */; };
-		CF6DF17109E3F23700506859 /* C_Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A4A08536B350077AEAF /* C_Timer.cpp */; };
+		CF6DF17009E3F23700506859 /* DateTime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A4808536B350077AEAF /* DateTime.cpp */; };
+		CF6DF17109E3F23700506859 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A4A08536B350077AEAF /* Timer.cpp */; };
 		CF6DF17409E3F23700506859 /* F_DisplayException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A6D08536B780077AEAF /* F_DisplayException.cpp */; };
 		CF6DF17509E3F23700506859 /* F_GetPrime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A6F08536B780077AEAF /* F_GetPrime.cpp */; };
 		CF6DF17609E3F23700506859 /* macroAssert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A7308536B780077AEAF /* macroAssert.cpp */; };
@@ -177,8 +177,8 @@
 		CF6DF1E609E3F30400506859 /* C_TextFileWrite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8259DA08536A7E0077AEAF /* C_TextFileWrite.cpp */; };
 		CF6DF1E809E3F30400506859 /* AC_OutputStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A2C08536B150077AEAF /* AC_OutputStream.cpp */; };
 		CF6DF1E909E3F30400506859 /* C_ConsoleOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A2E08536B150077AEAF /* C_ConsoleOut.cpp */; };
-		CF6DF1EA09E3F30400506859 /* C_DateTime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A4808536B350077AEAF /* C_DateTime.cpp */; };
-		CF6DF1EB09E3F30400506859 /* C_Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A4A08536B350077AEAF /* C_Timer.cpp */; };
+		CF6DF1EA09E3F30400506859 /* DateTime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A4808536B350077AEAF /* DateTime.cpp */; };
+		CF6DF1EB09E3F30400506859 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A4A08536B350077AEAF /* Timer.cpp */; };
 		CF6DF1EE09E3F30400506859 /* F_DisplayException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A6D08536B780077AEAF /* F_DisplayException.cpp */; };
 		CF6DF1EF09E3F30400506859 /* F_GetPrime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A6F08536B780077AEAF /* F_GetPrime.cpp */; };
 		CF6DF1F009E3F30400506859 /* macroAssert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A7308536B780077AEAF /* macroAssert.cpp */; };
@@ -667,10 +667,10 @@
 		CF825A2D08536B150077AEAF /* AC_OutputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AC_OutputStream.h; sourceTree = "<group>"; };
 		CF825A2E08536B150077AEAF /* C_ConsoleOut.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = C_ConsoleOut.cpp; sourceTree = "<group>"; };
 		CF825A2F08536B150077AEAF /* C_ConsoleOut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = C_ConsoleOut.h; sourceTree = "<group>"; };
-		CF825A4808536B350077AEAF /* C_DateTime.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = C_DateTime.cpp; sourceTree = "<group>"; };
-		CF825A4908536B350077AEAF /* C_DateTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = C_DateTime.h; sourceTree = "<group>"; };
-		CF825A4A08536B350077AEAF /* C_Timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = C_Timer.cpp; sourceTree = "<group>"; };
-		CF825A4B08536B350077AEAF /* C_Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = C_Timer.h; sourceTree = "<group>"; };
+		CF825A4808536B350077AEAF /* DateTime.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = DateTime.cpp; sourceTree = "<group>"; };
+		CF825A4908536B350077AEAF /* DateTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = DateTime.h; sourceTree = "<group>"; };
+		CF825A4A08536B350077AEAF /* Timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = Timer.cpp; sourceTree = "<group>"; };
+		CF825A4B08536B350077AEAF /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Timer.h; sourceTree = "<group>"; };
 		CF825A6D08536B780077AEAF /* F_DisplayException.cpp */ = {isa = PBXFileReference; fileEncoding = 4; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = F_DisplayException.cpp; sourceTree = "<group>"; };
 		CF825A6E08536B780077AEAF /* F_DisplayException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = F_DisplayException.h; sourceTree = "<group>"; };
 		CF825A6F08536B780077AEAF /* F_GetPrime.cpp */ = {isa = PBXFileReference; fileEncoding = 4; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = F_GetPrime.cpp; sourceTree = "<group>"; };
@@ -1466,10 +1466,10 @@
 		CFF53846057A54DF00854C83 /* time */ = {
 			isa = PBXGroup;
 			children = (
-				CF825A4808536B350077AEAF /* C_DateTime.cpp */,
-				CF825A4908536B350077AEAF /* C_DateTime.h */,
-				CF825A4A08536B350077AEAF /* C_Timer.cpp */,
-				CF825A4B08536B350077AEAF /* C_Timer.h */,
+				CF825A4808536B350077AEAF /* DateTime.cpp */,
+				CF825A4908536B350077AEAF /* DateTime.h */,
+				CF825A4A08536B350077AEAF /* Timer.cpp */,
+				CF825A4B08536B350077AEAF /* Timer.h */,
 			);
 			path = time;
 			sourceTree = "<group>";
@@ -1673,9 +1673,9 @@
 				CF6DF16E09E3F23700506859 /* AC_OutputStream.cpp in Sources */,
 				CF6DF16F09E3F23700506859 /* C_ConsoleOut.cpp in Sources */,
 				CF1AA5911979A9240095B745 /* HTMLString.cpp in Sources */,
-				CF6DF17009E3F23700506859 /* C_DateTime.cpp in Sources */,
+				CF6DF17009E3F23700506859 /* DateTime.cpp in Sources */,
 				CFB02C8419F3FC2F0011D03D /* all-declarations-24.cpp in Sources */,
-				CF6DF17109E3F23700506859 /* C_Timer.cpp in Sources */,
+				CF6DF17109E3F23700506859 /* Timer.cpp in Sources */,
 				CF873F6A1A32333C0014C45A /* C_StringListCommandLineOption.cpp in Sources */,
 				CF6DF17409E3F23700506859 /* F_DisplayException.cpp in Sources */,
 				CFA113AE2B31C8CD00C17B20 /* GALGAS_string-getters.cpp in Sources */,
@@ -1860,10 +1860,10 @@
 				CF6DF1E809E3F30400506859 /* AC_OutputStream.cpp in Sources */,
 				CF6DF1E909E3F30400506859 /* C_ConsoleOut.cpp in Sources */,
 				CF1AA5921979A9240095B745 /* HTMLString.cpp in Sources */,
-				CF6DF1EA09E3F30400506859 /* C_DateTime.cpp in Sources */,
+				CF6DF1EA09E3F30400506859 /* DateTime.cpp in Sources */,
 				CFB02C8519F3FC2F0011D03D /* all-declarations-24.cpp in Sources */,
 				CFCB7A1C2B2DAECF008DD653 /* BigUnsigned-divide-naive.cpp in Sources */,
-				CF6DF1EB09E3F30400506859 /* C_Timer.cpp in Sources */,
+				CF6DF1EB09E3F30400506859 /* Timer.cpp in Sources */,
 				CF873F6B1A32333C0014C45A /* C_StringListCommandLineOption.cpp in Sources */,
 				CFA113AF2B31C8CD00C17B20 /* GALGAS_string-getters.cpp in Sources */,
 				CF34D95C1E52203100CD0245 /* cIssueDescriptor.cpp in Sources */,

@@ -67,7 +67,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
-  class utf32 {
+  class utf32 final {
     private: uint32_t mCode ;
     public: inline uint32_t value (void) const { return mCode ; }
     public: inline utf32 (void) :

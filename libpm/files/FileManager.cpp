@@ -1087,7 +1087,7 @@ void FileManager::findAllFilesInDirectoryFromExtension (const String & inDirecto
 
 //--------------------------------------------------------------------------------------------------
 
-C_DateTime FileManager::fileModificationTime (const String & inFilePath) {
+DateTime FileManager::fileModificationTime (const String & inFilePath) {
   const String nativePath = nativePathWithUnixPath (inFilePath) ;
 //--- Get file properties
   time_t modificationTime = 0 ;
@@ -1099,7 +1099,7 @@ C_DateTime FileManager::fileModificationTime (const String & inFilePath) {
     }
   }
 //--- Return modification date
-  return C_DateTime (modificationTime)  ;
+  return DateTime (modificationTime)  ;
 }
 
 

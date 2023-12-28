@@ -62,7 +62,7 @@ void GALGAS_timer::setter_stop (UNUSED_LOCATION_ARGS) {
 
 void GALGAS_timer::setter_resume (UNUSED_LOCATION_ARGS) {
   if (isValid ()) {
-    mTimer = C_Timer () ;
+    mTimer = Timer () ;
   }
 }
 

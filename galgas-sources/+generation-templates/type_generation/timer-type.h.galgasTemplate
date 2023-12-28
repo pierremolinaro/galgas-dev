@@ -7,7 +7,7 @@
 class GALGAS_timer : public AC_GALGAS_root {
 //--------------------------------- Private properties
   private: bool mIsValid ;
-  private: C_Timer mTimer ;
+  private: Timer mTimer ;
 
 //--------------------------------- Accessors
   public: inline bool isValid (void) const override { return mIsValid ; }

@@ -23,7 +23,7 @@
 #include "utilities/C_PrologueEpilogue.h"
 #include "strings/String-class.h"
 #include "bdd/C_BDD-node.h"
-#include "time/C_Timer.h"
+#include "time/Timer.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -335,7 +335,7 @@ void C_BDD::markAllBDDnodes (void) {
 //--------------------------------------------------------------------------------------------------
 
 void C_BDD::markAndSweepUnusedNodes (void) {
-  C_Timer timer ;
+  Timer timer ;
 //--- Clear operation caches
   clearANDOperationCache () ;
 //--- Effacer tous les champs marquage des elements BDD existants

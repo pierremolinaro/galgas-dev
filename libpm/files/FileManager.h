@@ -114,7 +114,7 @@ class FileManager final {
                                                   const int32_t inNewFilePosixPermissions) ;
 
 //--- File modification time
-  public: static C_DateTime fileModificationTime (const String & inFilePath) ;
+  public: static DateTime fileModificationTime (const String & inFilePath) ;
 
 //--- File size
   public: static uint64_t fileSize (const String & inFilePath) ;

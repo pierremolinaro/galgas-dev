@@ -33,13 +33,13 @@ class String ;
 
 //--------------------------------------------------------------------------------------------------
 
-class C_Timer final {
+class Timer final {
   private: clock_t mStart ;
   private: clock_t mEnd ;
   
   private: bool mRunning ;
   
-  public: C_Timer (void) ;
+  public: Timer (void) ;
 
   public: void stopTimer (void) ;
 

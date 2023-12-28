@@ -175,8 +175,8 @@
    <Unit filename="../libpm/strings/String-class.cpp" />
    <Unit filename="../libpm/strings/HTMLString.cpp" />
    <Unit filename="../libpm/strings/print.cpp" />
-   <Unit filename="../libpm/time/C_Timer.cpp" />
-   <Unit filename="../libpm/time/C_DateTime.cpp" />
+   <Unit filename="../libpm/time/Timer.cpp" />
+   <Unit filename="../libpm/time/DateTime.cpp" />
    <Unit filename="../libpm/utilities/C_PrologueEpilogue.cpp" />
    <Unit filename="../libpm/utilities/SharedObject.cpp" />
    <Unit filename="../libpm/utilities/C_Data.cpp" />

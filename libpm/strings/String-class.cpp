@@ -637,7 +637,7 @@ void String::suppress (const int32_t inLocation,
     macroAssertThere (uint32_t (inLength) <= mEmbeddedString->mLength,
                       "inLength (%ld) > string length (%ld)",
                       inLength, mEmbeddedString->mLength) ;
-    const int32_t bytesToMove = 1 + ((int32_t) mEmbeddedString->mLength) - inLength - inLocation ;
+    const int32_t bytesToMove = 1 + int32_t (mEmbeddedString->mLength) - inLength - inLocation ;
     if ((inLocation >= 0) && (bytesToMove > 0)) {
       for (int32_t i=0 ; i<bytesToMove ; i++) {
         mEmbeddedString->mUTF32String [inLocation + i] = mEmbeddedString->mUTF32String [inLocation + i + inLength] ;

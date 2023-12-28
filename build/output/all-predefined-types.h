@@ -8,7 +8,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "strings/String-class.h"
-#include "time/C_Timer.h"
+#include "time/Timer.h"
 #include "galgas2/AC_GALGAS_root.h"
 #include "galgas2/C_galgas_type_descriptor.h"
 #include "galgas2/typeComparisonResult.h"
@@ -3095,7 +3095,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_object ;
 class GALGAS_timer : public AC_GALGAS_root {
 //--------------------------------- Private properties
   private: bool mIsValid ;
-  private: C_Timer mTimer ;
+  private: Timer mTimer ;
 
 //--------------------------------- Accessors
   public: inline bool isValid (void) const override { return mIsValid ; }

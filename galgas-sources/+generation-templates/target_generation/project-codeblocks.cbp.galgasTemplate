@@ -142,8 +142,8 @@ end
    <Unit filename="%!LIBPM_PATH%/strings/String-class.cpp" />
    <Unit filename="%!LIBPM_PATH%/strings/HTMLString.cpp" />
    <Unit filename="%!LIBPM_PATH%/strings/print.cpp" />
-   <Unit filename="%!LIBPM_PATH%/time/C_Timer.cpp" />
-   <Unit filename="%!LIBPM_PATH%/time/C_DateTime.cpp" />
+   <Unit filename="%!LIBPM_PATH%/time/Timer.cpp" />
+   <Unit filename="%!LIBPM_PATH%/time/DateTime.cpp" />
    <Unit filename="%!LIBPM_PATH%/utilities/C_PrologueEpilogue.cpp" />
    <Unit filename="%!LIBPM_PATH%/utilities/SharedObject.cpp" />
    <Unit filename="%!LIBPM_PATH%/utilities/C_Data.cpp" />

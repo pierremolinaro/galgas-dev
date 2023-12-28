@@ -18,13 +18,13 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "time/C_Timer.h"
+#include "time/Timer.h"
 #include "utilities/M_machine.h"
 #include "strings/String-class.h"
 
 //--------------------------------------------------------------------------------------------------
 
-C_Timer::C_Timer (void) :
+Timer::Timer (void) :
 mStart (::clock ()),
 mEnd (::clock ()),
 mRunning (true) {
@@ -33,7 +33,7 @@ mRunning (true) {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Timer::stopTimer (void) {
+void Timer::stopTimer (void) {
   if (mRunning) {
     mEnd = ::clock () ;
     mRunning = false ;
@@ -42,7 +42,7 @@ void C_Timer::stopTimer (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Timer::startTimer (void) {
+void Timer::startTimer (void) {
   mStart = ::clock () ;
   mEnd = mStart ;
   mRunning = true ;
@@ -50,7 +50,7 @@ void C_Timer::startTimer (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-uint32_t C_Timer::msFromStart (void) const {
+uint32_t Timer::msFromStart (void) const {
   clock_t duration ;
   if (mRunning) {
     duration = ::clock () - mStart ;
@@ -63,7 +63,7 @@ uint32_t C_Timer::msFromStart (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-String C_Timer::timeString (void) const {
+String Timer::timeString (void) const {
   const uint32_t d = msFromStart () ;
   const uint32_t ms = d % 1000 ;
   const uint32_t secondes = (d / 1000) % 60 ;

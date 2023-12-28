@@ -23,7 +23,7 @@
 #include "utilities/MF_MemoryControl.h"
 #include "utilities/F_DisplayException.h"
 #include "streams/C_ConsoleOut.h"
-#include "time/C_DateTime.h"
+#include "time/DateTime.h"
 #include "utilities/SharedObject.h"
 #include "utilities/cpp-allocation.h"
 #include "utilities/basic-allocation.h"
@@ -62,7 +62,7 @@ String commandLineArgumentAtIndex (const uint32_t inIndex) {
 int main (int argc, const char * argv []) {
   gArgc = (uint32_t) argc ;
   gArgv = argv ;
-  C_DateTime::enterCurrentToolModificationTime (argv [0]) ;
+  DateTime::enterCurrentToolModificationTime (argv [0]) ;
   int returnCode = 0 ; // No error
 //---
   if (returnCode == 0) {

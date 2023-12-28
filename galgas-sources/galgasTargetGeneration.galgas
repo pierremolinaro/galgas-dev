@@ -1113,10 +1113,10 @@ proc updateGalgasTargets
       !groupName:"Time"
       !groupPath:"time"
       !fileNames:{
-        !"C_DateTime.cpp",
-        !"C_DateTime.h",
-        !"C_Timer.cpp",
-        !"C_Timer.h"
+        !"DateTime.cpp",
+        !"DateTime.h",
+        !"Timer.cpp",
+        !"Timer.h"
       }
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
