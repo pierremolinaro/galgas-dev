@@ -28,7 +28,7 @@
 #include "command_line_interface/C_UIntCommandLineOption.h"
 #include "command_line_interface/C_StringCommandLineOption.h"
 #include "command_line_interface/C_StringListCommandLineOption.h"
-#include "utilities/C_PrologueEpilogue.h"
+#include "utilities/PrologueEpilogue.h"
 #include "big-integers/BigSigned.h"
 
 //--------------------------------------------------------------------------------------------------

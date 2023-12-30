@@ -1,7 +1,7 @@
 #include "galgas2/Compiler.h"
 #include "galgas2/C_galgas_io.h"
 #include "galgas2/C_galgas_CLI_Options.h"
-#include "utilities/C_PrologueEpilogue.h"
+#include "utilities/PrologueEpilogue.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3193,8 +3193,8 @@ static void releaseOnceFunctionResult_buildLexicalTypeMap (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-C_PrologueEpilogue gEpilogueForOnceFunction_buildLexicalTypeMap (nullptr,
-                                                                 releaseOnceFunctionResult_buildLexicalTypeMap) ;
+PrologueEpilogue gEpilogueForOnceFunction_buildLexicalTypeMap (nullptr,
+                                                               releaseOnceFunctionResult_buildLexicalTypeMap) ;
 
 //--------------------------------------------------------------------------------------------------
 //  Function introspection                                                                       
@@ -8392,8 +8392,8 @@ static void releaseOnceFunctionResult_forbiddenKeysForBoolset (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-C_PrologueEpilogue gEpilogueForOnceFunction_forbiddenKeysForBoolset (nullptr,
-                                                                     releaseOnceFunctionResult_forbiddenKeysForBoolset) ;
+PrologueEpilogue gEpilogueForOnceFunction_forbiddenKeysForBoolset (nullptr,
+                                                                   releaseOnceFunctionResult_forbiddenKeysForBoolset) ;
 
 //--------------------------------------------------------------------------------------------------
 //  Function introspection                                                                       

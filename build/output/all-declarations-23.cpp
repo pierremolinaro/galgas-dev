@@ -1,7 +1,7 @@
 #include "galgas2/Compiler.h"
 #include "galgas2/C_galgas_io.h"
 #include "galgas2/C_galgas_CLI_Options.h"
-#include "utilities/C_PrologueEpilogue.h"
+#include "utilities/PrologueEpilogue.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4565,8 +4565,8 @@ static void releaseOnceFunctionResult_forbiddenKeysForMapAndDict (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-C_PrologueEpilogue gEpilogueForOnceFunction_forbiddenKeysForMapAndDict (nullptr,
-                                                                        releaseOnceFunctionResult_forbiddenKeysForMapAndDict) ;
+PrologueEpilogue gEpilogueForOnceFunction_forbiddenKeysForMapAndDict (nullptr,
+                                                                      releaseOnceFunctionResult_forbiddenKeysForMapAndDict) ;
 
 //--------------------------------------------------------------------------------------------------
 //  Function introspection                                                                       
@@ -6095,8 +6095,8 @@ static void releaseOnceFunctionResult_forbiddenKeysForStruct (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-C_PrologueEpilogue gEpilogueForOnceFunction_forbiddenKeysForStruct (nullptr,
-                                                                    releaseOnceFunctionResult_forbiddenKeysForStruct) ;
+PrologueEpilogue gEpilogueForOnceFunction_forbiddenKeysForStruct (nullptr,
+                                                                  releaseOnceFunctionResult_forbiddenKeysForStruct) ;
 
 //--------------------------------------------------------------------------------------------------
 //  Function introspection                                                                       

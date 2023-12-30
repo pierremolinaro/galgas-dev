@@ -1,7 +1,7 @@
 #include "galgas2/Compiler.h"
 #include "galgas2/C_galgas_io.h"
 #include "galgas2/C_galgas_CLI_Options.h"
-#include "utilities/C_PrologueEpilogue.h"
+#include "utilities/PrologueEpilogue.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3103,8 +3103,8 @@ static void releaseOnceFunctionResult_generateFewHeaderFiles (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-C_PrologueEpilogue gEpilogueForOnceFunction_generateFewHeaderFiles (nullptr,
-                                                                    releaseOnceFunctionResult_generateFewHeaderFiles) ;
+PrologueEpilogue gEpilogueForOnceFunction_generateFewHeaderFiles (nullptr,
+                                                                  releaseOnceFunctionResult_generateFewHeaderFiles) ;
 
 //--------------------------------------------------------------------------------------------------
 //  Function introspection                                                                       
@@ -6411,8 +6411,8 @@ static void releaseOnceFunctionResult_compilerCppName (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-C_PrologueEpilogue gEpilogueForOnceFunction_compilerCppName (nullptr,
-                                                             releaseOnceFunctionResult_compilerCppName) ;
+PrologueEpilogue gEpilogueForOnceFunction_compilerCppName (nullptr,
+                                                           releaseOnceFunctionResult_compilerCppName) ;
 
 //--------------------------------------------------------------------------------------------------
 //  Function introspection                                                                       
@@ -6481,8 +6481,8 @@ static void releaseOnceFunctionResult_syntaxDirectedTranslationResultVarName (vo
 
 //--------------------------------------------------------------------------------------------------
 
-C_PrologueEpilogue gEpilogueForOnceFunction_syntaxDirectedTranslationResultVarName (nullptr,
-                                                                                    releaseOnceFunctionResult_syntaxDirectedTranslationResultVarName) ;
+PrologueEpilogue gEpilogueForOnceFunction_syntaxDirectedTranslationResultVarName (nullptr,
+                                                                                  releaseOnceFunctionResult_syntaxDirectedTranslationResultVarName) ;
 
 //--------------------------------------------------------------------------------------------------
 //  Function introspection                                                                       
@@ -6958,8 +6958,8 @@ static void releaseOnceFunctionResult_elementTypeNameSuffix (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-C_PrologueEpilogue gEpilogueForOnceFunction_elementTypeNameSuffix (nullptr,
-                                                                   releaseOnceFunctionResult_elementTypeNameSuffix) ;
+PrologueEpilogue gEpilogueForOnceFunction_elementTypeNameSuffix (nullptr,
+                                                                 releaseOnceFunctionResult_elementTypeNameSuffix) ;
 
 //--------------------------------------------------------------------------------------------------
 //  Function introspection                                                                       

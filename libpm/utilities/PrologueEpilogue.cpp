@@ -18,7 +18,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "utilities/C_PrologueEpilogue.h"
+#include "utilities/PrologueEpilogue.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -30,13 +30,13 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-static C_PrologueEpilogue * gPrologueEpilogueActionList = nullptr ;
+static PrologueEpilogue * gPrologueEpilogueActionList = nullptr ;
 
 //--------------------------------------------------------------------------------------------------
 
-C_PrologueEpilogue::C_PrologueEpilogue (void (* inPrologueAction) (void),
+PrologueEpilogue::PrologueEpilogue (void (* inPrologueAction) (void),
                                         void (* inEpilogueAction) (void)) :
-mNextObjectLink (gPrologueEpilogueActionList),
+mNextObject (gPrologueEpilogueActionList),
 mPrologueAction (inPrologueAction),
 mEpilogueAction (inEpilogueAction) {
   gPrologueEpilogueActionList = this ;
@@ -44,25 +44,25 @@ mEpilogueAction (inEpilogueAction) {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_PrologueEpilogue::runPrologueActions (void) {
-  const C_PrologueEpilogue * p = gPrologueEpilogueActionList ;
+void PrologueEpilogue::runPrologueActions (void) {
+  const PrologueEpilogue * p = gPrologueEpilogueActionList ;
   while (p != nullptr) {
     if (p->mPrologueAction != nullptr) {
       p->mPrologueAction () ;
     }
-    p = p->mNextObjectLink ;
+    p = p->mNextObject ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void C_PrologueEpilogue::runEpilogueActions (void) {
-  const C_PrologueEpilogue * p = gPrologueEpilogueActionList ;
+void PrologueEpilogue::runEpilogueActions (void) {
+  const PrologueEpilogue * p = gPrologueEpilogueActionList ;
   while (p != nullptr) {
     if (p->mEpilogueAction != nullptr) {
       p->mEpilogueAction () ;
     }
-    p = p->mNextObjectLink ;
+    p = p->mNextObject ;
   }
 }
 

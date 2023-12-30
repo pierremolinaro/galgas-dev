@@ -20,7 +20,7 @@
 
 #include "galgas2/C_galgas_CLI_Options.h"
 #include "galgas2/C_galgas_CLI_Options.h"
-#include "utilities/C_PrologueEpilogue.h"
+#include "utilities/PrologueEpilogue.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -195,7 +195,7 @@ static void epilogueAction (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-C_PrologueEpilogue prologueEpilogue (nullptr, epilogueAction) ;
+PrologueEpilogue prologueEpilogue (nullptr, epilogueAction) ;
 
 //--------------------------------------------------------------------------------------------------
 

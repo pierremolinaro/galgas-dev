@@ -91,6 +91,6 @@ static void freeExtensionModifier_%![CLASS_NAME identifierRepresentation]%_%![MO
 
 //--------------------------------------------------------------------------------------------------
 
-C_PrologueEpilogue gSetter_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% (%?^%defineExtensionSetter_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%,
+PrologueEpilogue gSetter_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% (%?^%defineExtensionSetter_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%,
        %!^%freeExtensionModifier_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%) ;
 

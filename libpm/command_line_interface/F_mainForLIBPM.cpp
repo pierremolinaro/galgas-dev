@@ -27,7 +27,7 @@
 #include "utilities/SharedObject.h"
 #include "utilities/cpp-allocation.h"
 #include "utilities/basic-allocation.h"
-#include "utilities/C_PrologueEpilogue.h"
+#include "utilities/PrologueEpilogue.h"
 #include "command_line_interface/F_Analyze_CLI_Options.h"
 #include "strings/unicode_character_base.h"
 #include "galgas2/acStrongPtr_class.h"
@@ -67,9 +67,9 @@ int main (int argc, const char * argv []) {
 //---
   if (returnCode == 0) {
     try{
-      C_PrologueEpilogue::runPrologueActions () ;
+      PrologueEpilogue::runPrologueActions () ;
       returnCode = mainForLIBPM (argc, argv) ;
-      C_PrologueEpilogue::runEpilogueActions () ;
+      PrologueEpilogue::runEpilogueActions () ;
       C_BDD::freeBDDStataStructures () ;
       #ifndef DO_NOT_GENERATE_CHECKINGS
         acStrongPtr_class::printExistingClassInstances () ;

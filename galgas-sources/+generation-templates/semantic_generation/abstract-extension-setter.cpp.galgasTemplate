@@ -21,7 +21,7 @@ static void freeExtensionModifier_%![CLASS_NAME identifierRepresentation]%_%![MO
 
 //--------------------------------------------------------------------------------------------------
 
-C_PrologueEpilogue gSetter_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% (%?^%nullptr,
+PrologueEpilogue gSetter_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% (%?^%nullptr,
        %!^%freeExtensionModifier_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%) ;
 
 //--------------------------------------------------------------------------------------------------

@@ -19,7 +19,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "command_line_interface/C_StringListCommandLineOption.h"
-#include "utilities/C_PrologueEpilogue.h"
+#include "utilities/PrologueEpilogue.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -170,7 +170,7 @@ void C_StringListCommandLineOption::releaseStrings (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-C_PrologueEpilogue gReleaseStringList (nullptr, C_StringListCommandLineOption::releaseStrings) ;
+PrologueEpilogue gReleaseStringList (nullptr, C_StringListCommandLineOption::releaseStrings) ;
 
 //--------------------------------------------------------------------------------------------------
 
