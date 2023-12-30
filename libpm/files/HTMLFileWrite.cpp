@@ -51,8 +51,7 @@ TextFileWrite (inFileName) {
     addRawData (inCSSContents.cString (HERE)) ;
     addRawData ("</style>") ;
   }
-  addRawData ("</head>"
-                 "<body><div>\n") ;
+  addRawData ("</head>\n<body><div>\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------

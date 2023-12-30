@@ -30,92 +30,30 @@
 //--------------------------------------------------------------------------------------------------
 
 TextFileWrite::TextFileWrite (const String & inFileName) :
-AbstractFileHandle (inFileName, "wt"),
-mBufferLength (0) {
+AbstractFileHandle (inFileName, "wt") {
 }
-
-//--------------------------------------------------------------------------------------------------
-//                                Close
-//--------------------------------------------------------------------------------------------------
-
-//bool TextFileWrite::close (void) {
-//  bool ok = true ;
-//  if (mFilePtr != nullptr) {
-//    if (mBufferLength > 0) {
-//      ::fprintf (mFilePtr, "%.*s", (int) mBufferLength, mBuffer) ;
-//      mBufferLength = 0 ;
-//    }
-//    ok = ::fclose (mFilePtr) == 0 ; // Flushes the file, then closes it
-//    mFilePtr = nullptr ;
-//  }
-//  return ok ;
-//}
-
-//--------------------------------------------------------------------------------------------------
-//                             Destructor
-// Cannot call the virtual 'close' method in destructor
-//--------------------------------------------------------------------------------------------------
-
-//TextFileWrite::~TextFileWrite (void) {
-//  if ((mFilePtr != nullptr) && (mBufferLength > 0)) {
-//    ::fprintf (mFilePtr, "%.*s", (int) mBufferLength, mBuffer) ;
-//    mBufferLength = 0 ;
-//  }
-//}
 
 //--------------------------------------------------------------------------------------------------
 //                  Write a character string into the file
 //--------------------------------------------------------------------------------------------------
 
 void TextFileWrite::performActualCharArrayOutput (const char * inCharArray,
-                                                    const int32_t inArrayCount) {
+                                                  const int32_t inArrayCount) {
   if (isOpened () && (inArrayCount > 0)) {
-    if ((mBufferLength + inArrayCount) < kFileBufferSize) {
-      ::memcpy (& mBuffer [mBufferLength], inCharArray, (size_t) inArrayCount) ;
-      mBufferLength += inArrayCount ;
-    }else{
-      if (mBufferLength > 0) {
-        appendUTF8String (size_t (mBufferLength), mBuffer) ;
-//        ::fprintf (mFilePtr, "%.*s", (int) mBufferLength, mBuffer) ;
-        mBufferLength = 0 ;
-      }
-      appendUTF8String (size_t (inArrayCount), inCharArray) ;
-//      ::fprintf (mFilePtr, "%.*s", (int) inArrayCount, inCharArray) ;
-    }
+    appendUTF8String (size_t (inArrayCount), inCharArray) ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void TextFileWrite::performActualUnicodeArrayOutput (const utf32 * inCharArray,
-                                                       const int32_t inArrayCount) {
-  if (isOpened () && (inArrayCount > 0)) {
-    for (int32_t i=0 ; i<inArrayCount ; i++) {
-      char buffer [5] ;
-      const int32_t length = UTF8StringFromUTF32Character (inCharArray [i], buffer) ;
-      if ((mBufferLength + length) > kFileBufferSize) {
-        appendUTF8String (size_t (mBufferLength), mBuffer) ;
-//        ::fprintf (mFilePtr, "%.*s", (int) mBufferLength, mBuffer) ;
-        mBufferLength = 0 ;
-      }
-      ::memcpy (& mBuffer [mBufferLength], buffer, (size_t) length) ;
-      mBufferLength += length ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//                   Flush print
-//--------------------------------------------------------------------------------------------------
-
-void TextFileWrite::flush (void) {
+                                                     const int32_t inArrayCount) {
   if (isOpened ()) {
-    if (mBufferLength > 0) {
-      appendUTF8String (size_t (mBufferLength), mBuffer) ;
-//      ::fprintf (mFilePtr, "%.*s", (int) mBufferLength, mBuffer) ;
-      mBufferLength = 0 ;
+    for (int32_t i=0 ; i<inArrayCount ; i++) {
+      char buffer [8] ;
+      const int32_t length = UTF8StringFromUTF32Character (inCharArray [i], buffer) ;
+      appendUTF8String (size_t (length), buffer) ;
     }
-    Super::flush () ;
   }
 }
 

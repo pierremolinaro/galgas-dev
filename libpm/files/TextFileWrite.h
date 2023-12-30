@@ -32,10 +32,6 @@
 
 //--------------------------------------------------------------------------------------------------
 
-const int32_t kFileBufferSize = 10000 ;
-
-//--------------------------------------------------------------------------------------------------
-
 class TextFileWrite : public AC_OutputStream, public AbstractFileHandle {
   typedef AbstractFileHandle Super ;
 //--- Constructor : if inFileName is the empty string, no file is opened.
@@ -53,13 +49,6 @@ class TextFileWrite : public AC_OutputStream, public AbstractFileHandle {
 
   protected: virtual void performActualUnicodeArrayOutput (const utf32 * inCharArray,
                                                            const int32_t inArrayCount) override ;
-
-//--- Flush print
-  public: virtual void flush (void) override ;
-
-//--- Private attributes
-  private: int32_t mBufferLength ;
-  private: char mBuffer [kFileBufferSize + 1] ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
