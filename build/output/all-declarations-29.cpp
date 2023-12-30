@@ -2510,20 +2510,38 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codebloc
   }
   result.addString ("    </Compiler>\n   </Target>\n  </Build>\n  <VirtualTargets>\n   <Add alias=\"All\" targets=\"Release;Debug;\" />\n  </VirtualTargets>\n  <Compiler>\n   <Add directory=\"") ;
   result.addString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.addString ("\" />\n   <Add directory=\"../") ;
+  result.addString ("\"/bdd />\n   <Add directory=\"") ;
+  result.addString (in_LIBPM_5F_PATH.stringValue ()) ;
+  result.addString ("\"/big-integers />\n   <Add directory=\"") ;
+  result.addString (in_LIBPM_5F_PATH.stringValue ()) ;
+  result.addString ("\"/command_line_interface />\n   <Add directory=\"") ;
+  result.addString (in_LIBPM_5F_PATH.stringValue ()) ;
+  result.addString ("\"/files />\n   <Add directory=\"") ;
+  result.addString (in_LIBPM_5F_PATH.stringValue ()) ;
+  result.addString ("\"/galgas2 />\n   <Add directory=\"") ;
+  result.addString (in_LIBPM_5F_PATH.stringValue ()) ;
+  result.addString ("\"/generic-arraies />\n   <Add directory=\"") ;
+  result.addString (in_LIBPM_5F_PATH.stringValue ()) ;
+  result.addString ("\"/streams />\n   <Add directory=\"") ;
+  result.addString (in_LIBPM_5F_PATH.stringValue ()) ;
+  result.addString ("\"/strings />\n   <Add directory=\"") ;
+  result.addString (in_LIBPM_5F_PATH.stringValue ()) ;
+  result.addString ("\"/time />\n   <Add directory=\"") ;
+  result.addString (in_LIBPM_5F_PATH.stringValue ()) ;
+  result.addString ("\"/utilities />\n   <Add directory=\"../") ;
   result.addString (in_BUILD_5F_DIR_5F_NAME.stringValue ()) ;
   result.addString ("/user-headers\" />\n   <Add directory=\"../") ;
   result.addString (in_BUILD_5F_DIR_5F_NAME.stringValue ()) ;
   result.addString ("/output\" />\n") ;
-  GALGAS_uint index_2386_ (0) ;
+  GALGAS_uint index_2820_ (0) ;
   if (in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_DIRECTORY_5F_SET.isValid ()) {
-    cEnumerator_stringset enumerator_2386 (in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_DIRECTORY_5F_SET, kENUMERATION_UP) ;
-    while (enumerator_2386.hasCurrentObject ()) {
+    cEnumerator_stringset enumerator_2820 (in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_DIRECTORY_5F_SET, kENUMERATION_UP) ;
+    while (enumerator_2820.hasCurrentObject ()) {
       result.addString ("  <Add directory=\"") ;
-      result.addString (enumerator_2386.current_key (HERE).stringValue ()) ;
+      result.addString (enumerator_2820.current_key (HERE).stringValue ()) ;
       result.addString ("\" />\n") ;
-      index_2386_.increment () ;
-      enumerator_2386.gotoNextObject () ;
+      index_2820_.increment () ;
+      enumerator_2820.gotoNextObject () ;
     }
   }
   result.addString ("  </Compiler>\n  <Linker>\n") ;
@@ -2553,28 +2571,28 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codebloc
   default :
     break ;
   }
-  GALGAS_uint index_2787_ (0) ;
+  GALGAS_uint index_3221_ (0) ;
   if (in_TOOL_5F_CPP_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_2787 (in_TOOL_5F_CPP_5F_FILE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_2787.hasCurrentObject ()) {
+    cEnumerator_stringlist enumerator_3221 (in_TOOL_5F_CPP_5F_FILE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_3221.hasCurrentObject ()) {
       result.addString ("  <Unit filename=\"../") ;
       result.addString (in_BUILD_5F_DIR_5F_NAME.stringValue ()) ;
       result.addString ("/output/") ;
-      result.addString (enumerator_2787.current_mValue (HERE).stringValue ()) ;
+      result.addString (enumerator_3221.current_mValue (HERE).stringValue ()) ;
       result.addString ("\" />\n") ;
-      index_2787_.increment () ;
-      enumerator_2787.gotoNextObject () ;
+      index_3221_.increment () ;
+      enumerator_3221.gotoNextObject () ;
     }
   }
-  GALGAS_uint index_2907_ (0) ;
+  GALGAS_uint index_3341_ (0) ;
   if (in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_2907 (in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_FILE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_2907.hasCurrentObject ()) {
+    cEnumerator_stringlist enumerator_3341 (in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_FILE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_3341.hasCurrentObject ()) {
       result.addString ("  <Unit filename=\"../") ;
-      result.addString (enumerator_2907.current_mValue (HERE).stringValue ()) ;
+      result.addString (enumerator_3341.current_mValue (HERE).stringValue ()) ;
       result.addString ("\" />\n") ;
-      index_2907_.increment () ;
-      enumerator_2907.gotoNextObject () ;
+      index_3341_.increment () ;
+      enumerator_3341.gotoNextObject () ;
     }
   }
   result.addString ("   <Unit filename=\"") ;
