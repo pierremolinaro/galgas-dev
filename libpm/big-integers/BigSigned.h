@@ -33,11 +33,11 @@ class BigSigned final {
 
   public: explicit BigSigned (const bool inPositive,
                               const size_t inByteCount,
-                              const uint8_t inSourceByteArray []) ;
+                              const uint8_t * inSourceByteArray) ;
 
   public: explicit BigSigned (const bool inPositive,
                               const size_t inU64Count,
-                              const uint64_t inSourceU64Array []) ;
+                              const uint64_t * inSourceU64Array) ;
 
   public: explicit BigSigned (const char * inString, const uint8_t inSeparator) ;
 

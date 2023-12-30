@@ -39,7 +39,7 @@ class cAffichagePremiersProduction : public C_bdd_value_traversing {
                                          const cVocabulary & inVocabulary) ;
 
 //--- Methode virtelle appelee pour chaque valeur
-  public: virtual void action (const bool tableauDesValeurs [],
+  public: virtual void action (const bool * tableauDesValeurs,
                                 const uint32_t nombreVariables) ;
 } ;
 
@@ -53,7 +53,7 @@ mVocabulary (inVocabulary) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cAffichagePremiersProduction::action (const bool tableauDesValeurs [],
+void cAffichagePremiersProduction::action (const bool * tableauDesValeurs,
                                            const uint32_t nombreVariables) {
   int32_t element = 0 ;
   for (int32_t i=((int32_t) nombreVariables) - 1 ; i>=0 ; i--) {
@@ -210,7 +210,7 @@ class cEcrireNonTerminal : public C_bdd_value_traversing {
                                const String & nomClasseLexique) ;
 
 //--- Methode virtuelle appelee pour chaque valeur
-  public: virtual void action (const bool tableauDesValeurs [],
+  public: virtual void action (const bool * tableauDesValeurs,
                                 const uint32_t nombreVariables) ;
 } ;
 
@@ -228,7 +228,7 @@ aIndice (0) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cEcrireNonTerminal::action (const bool tableauDesValeurs [],
+void cEcrireNonTerminal::action (const bool * tableauDesValeurs,
                                  const uint32_t nombreVariables) {
   int32_t element = 0 ;
   for (int32_t i=((int32_t) nombreVariables) - 1 ; i>=0 ; i--) {

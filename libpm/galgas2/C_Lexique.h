@@ -63,7 +63,7 @@ class C_Lexique : public Compiler {
   protected: cIndexingDictionary * mIndexingDictionary ;
 
 //--- Template String
-  protected: int32_t findTemplateDelimiterIndex (const cTemplateDelimiter inTemplateDelimiterArray [],
+  protected: int32_t findTemplateDelimiterIndex (const cTemplateDelimiter * inTemplateDelimiterArray,
                                                  const int32_t inTemplateDelimiterArrayLength) ;
 
 //--- Token list
@@ -146,7 +146,7 @@ class C_Lexique : public Compiler {
 //--- Static method for searching a string in an ordered list
 //    returns -1 if not found, and associated code if found
   protected: static int32_t searchInList (const String & inString,
-                                          const C_unicode_lexique_table_entry inTable [],
+                                          const C_unicode_lexique_table_entry * inTableArray,
                                           const int32_t inTableSize) ;
 
 //--- Get Token String
@@ -179,40 +179,40 @@ class C_Lexique : public Compiler {
   public: virtual int32_t terminalVocabularyCount (void) const = 0 ;
 
 //--- Perform top down parsing (called by LL (1) parser)
-  public: bool performTopDownParsing (const int32_t inProductions [],
-                                      const cProductionNameDescriptor inProductionNames [],
-                                      const int32_t inProductionIndexes [],
-                                      const int32_t inFirstProductionIndex [],
-                                      const int32_t inDecisionTable [],
-                                      const int32_t inDecisionTableIndexes [],
+  public: bool performTopDownParsing (const int32_t * inProductionArray,
+                                      const cProductionNameDescriptor * inProductionNameArray,
+                                      const int32_t * inProductionIndexnArray,
+                                      const int32_t * inFirstProductionIndexArray,
+                                      const int32_t * inDecisionTableArray,
+                                      const int32_t * inDecisionTableIndexArray,
                                       const int32_t inProgramCounterInitialValue) ;
 
   private: void buildExpectedTerminalsArrayOnSyntaxError (const int32_t inErrorProgramCounter,
                                                           const int32_t inErrorStackCount,
                                                           const TC_Array <int32_t> & inCurrentStack,
                                                           const TC_Array <int32_t> & inErrorStack,
-                                                          const int32_t inProductions [],
-                                                          const int32_t inProductionIndexes [],
-                                                          const int32_t inFirstProductionIndex [],
-                                                          const int32_t inDecisionTable [],
-                                                          const int32_t inDecisionTableIndexes [],
+                                                          const int32_t * inProductionArray,
+                                                          const int32_t * inProductionIndexArray,
+                                                          const int32_t * inFirstProductionIndexArray,
+                                                          const int32_t * inDecisionTableArray,
+                                                          const int32_t * inDecisionTableIndexArray,
                                                           TC_UniqueArray <int32_t> & outExpectedTerminalsArray) ;
 
   private: bool acceptTerminalForErrorSignaling (const int32_t inTerminal,
-                                                 const int32_t inProductions [],
-                                                 const int32_t inProductionIndexes [],
-                                                 const int32_t inFirstProductionIndex [],
-                                                 const int32_t inDecisionTable [],
-                                                 const int32_t inDecisionTableIndexes [],
+                                                 const int32_t * inProductionArray,
+                                                 const int32_t * inProductionIndexArray,
+                                                 const int32_t * inFirstProductionIndexArray,
+                                                 const int32_t * inDecisionTableArray,
+                                                 const int32_t * inDecisionTableIndexArray,
                                                  const TC_Array <int32_t> & inErrorStack,
                                                  const int32_t inErrorProgramCounter) ;
 
 //--- Perform bottom up parsing (called by SLR and LR(1) parsers)
-  public: bool performBottomUpParsing (const int32_t inActionTable [],
-                                       const char * inNonTerminalSymbolNames [],
-                                       const uint32_t inActionTableIndex [],
-                                       const int32_t * inSuccessorTable [],
-                                       const int32_t inProductionsTable []) ;
+  public: bool performBottomUpParsing (const int32_t * inActionTableArray,
+                                       const char * * inNonTerminalSymbolNameArray,
+                                       const uint32_t * inActionTableIndexArray,
+                                       const int32_t * * inSuccessorTableArray,
+                                       const int32_t * inProductionsTableArray) ;
 
 //--- Scanner pure virtual methods
   protected: virtual bool parseLexicalToken (void) = 0 ;

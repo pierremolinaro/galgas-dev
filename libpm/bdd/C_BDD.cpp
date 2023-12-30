@@ -131,8 +131,8 @@ bool C_BDD::isComplemented (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-C_BDD C_BDD::bddWithConstants (const uint32_t inValues [],
-                               const uint32_t inBitCount [],
+C_BDD C_BDD::bddWithConstants (const uint32_t * inValues,
+                               const uint32_t * inBitCount,
                                const int32_t inEntryCount) {
   uint32_t result = 1 ; // true
   uint32_t idx = 0 ;
@@ -540,20 +540,19 @@ class cBuildArrayForSet : public C_bdd_value_traversing {
   public: cBuildArrayForSet (TC_UniqueArray <bool> & outArray) ;
 
 //--- Methode virtuelle appelee pour chaque valeur
-  public: virtual void action (const bool inValuesArray [],
-                                const uint32_t inBDDbitsSize) ;
+  public: virtual void action (const bool * inValuesArray,
+                               const uint32_t inBDDbitsSize) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-cBuildArrayForSet::
-cBuildArrayForSet (TC_UniqueArray <bool> & outArray) :
+cBuildArrayForSet::cBuildArrayForSet (TC_UniqueArray <bool> & outArray) :
 mArray (outArray) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void cBuildArrayForSet::action (const bool inValuesArray [],
+void cBuildArrayForSet::action (const bool * inValuesArray,
                                 const uint32_t inBDDbitsSize) {
   int32_t element = 0 ;
   for (int32_t i=((int32_t) inBDDbitsSize) - 1 ; i>=0 ; i--) {
@@ -588,7 +587,7 @@ void C_BDD::getBoolArray (TC_UniqueArray <bool> & outArray,
 
 static uint32_t
 internalRecursiveUpdateRelation (const uint32_t inValue,
-                                 const uint32_t inTranslationVector []) {
+                                 const uint32_t * inTranslationVector) {
   uint32_t result = inValue ;
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
   if (bothBranches (gNodeArray [nodeIndex]) != 0) {
@@ -612,10 +611,9 @@ internalRecursiveUpdateRelation (const uint32_t inValue,
 
 //--------------------------------------------------------------------------------------------------
 
-C_BDD C_BDD::
-updateRelation (const uint32_t inRelationBitNeededCount [],
-                uint32_t * inRelationBitCurrentCount [],
-                const int32_t inRelationCardinality) const {
+C_BDD C_BDD::updateRelation (const uint32_t * inRelationBitNeededCount,
+                             uint32_t* * inRelationBitCurrentCount,
+                             const int32_t inRelationCardinality) const {
   uint32_t result = mBDDvalue ;
 //--- Check if update is needed
   bool updateIsNeeded = false ;
@@ -758,22 +756,21 @@ class cBuildArrayForRelation2 : public C_bdd_value_traversing {
                            const uint32_t inBitsSize1) ;
 
 //--- Virtual method called for every value
-  public: virtual void action (const bool inValuesArray [],
-                                const uint32_t inBDDbitsSize) ;
+  public: virtual void action (const bool * inValuesArray,
+                               const uint32_t inBDDbitsSize) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-cBuildArrayForRelation2::
-cBuildArrayForRelation2 (TC_UniqueArray <TC_UniqueArray <uint64_t> > & outArray,
-                         const uint32_t inBitsSize1) :
+cBuildArrayForRelation2::cBuildArrayForRelation2 (TC_UniqueArray <TC_UniqueArray <uint64_t> > & outArray,
+                                                  const uint32_t inBitsSize1) :
 mArray (outArray),
 mBitsSize1 (inBitsSize1) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void cBuildArrayForRelation2::action (const bool inValuesArray [],
+void cBuildArrayForRelation2::action (const bool * inValuesArray,
                                       const uint32_t inBDDbitsSize) {
   int32_t index1 = 0 ;
   uint64_t index2 = 0 ;
@@ -1443,7 +1440,7 @@ buildCompressedBigEndianStringValueArray (TC_UniqueArray <String> & outStringArr
   #pragma mark Build BDD from value list
 #endif
 
-static inline void swapValueArray (uint64_t ioValueArray [],
+static inline void swapValueArray (uint64_t * ioValueArray,
                                    const int32_t inIndex1,
                                    const int32_t inIndex2) {
   const uint64_t v = ioValueArray [inIndex1] ;
@@ -1453,7 +1450,7 @@ static inline void swapValueArray (uint64_t ioValueArray [],
 
 //--------------------------------------------------------------------------------------------------
 
-static void sortValueArray (uint64_t ioValueArray [],
+static void sortValueArray (uint64_t * ioValueArray,
                             const int32_t inLeftIndex,
                             const int32_t inRightIndex) {
   if (inLeftIndex < inRightIndex) {
@@ -1478,7 +1475,7 @@ static void sortValueArray (uint64_t ioValueArray [],
 
 //--------------------------------------------------------------------------------------------------
 
-C_BDD C_BDD::buildBDDFromValueList (uint64_t ioValueList [],
+C_BDD C_BDD::buildBDDFromValueList (uint64_t * ioValueList,
                                     const uint32_t inValueCount,
                                     const uint32_t inBitCount) {
 //---

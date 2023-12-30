@@ -25,10 +25,10 @@ class BigUnsigned final {
   public: explicit BigUnsigned (const uint64_t inValue) ;
 
   public: explicit BigUnsigned (const size_t inU8Count,
-                                const uint8_t inSourceU8Array []) ;
+                                const uint8_t * inSourceU8Array) ;
 
   public: explicit BigUnsigned (const size_t inU64Count,
-                                const uint64_t inSourceU64Array []) ;
+                                const uint64_t * inSourceU64Array) ;
 
   public: explicit BigUnsigned (const char * inString, const uint8_t inSeparator) ;
 

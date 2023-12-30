@@ -58,7 +58,7 @@ mUnsigned (BigUnsigned ((inValue >= 0) ? uint64_t (inValue) : uint64_t (-inValue
 
 BigSigned::BigSigned (const bool inPositive,
                       const size_t inByteCount,
-                      const uint8_t inSourceByteArray []) :
+                      const uint8_t * inSourceByteArray) :
 mIsPositive (inPositive),
 mUnsigned (inByteCount, inSourceByteArray) {
   if (mUnsigned.isZero ()) {
@@ -70,7 +70,7 @@ mUnsigned (inByteCount, inSourceByteArray) {
 
 BigSigned::BigSigned (const bool inPositive,
                       const size_t inU64Count,
-                      const uint64_t inSourceU64Array []) :
+                      const uint64_t * inSourceU64Array) :
 mIsPositive (inPositive),
 mUnsigned (inU64Count, inSourceU64Array) {
   if (mUnsigned.isZero ()) {

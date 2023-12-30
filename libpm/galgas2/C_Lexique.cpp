@@ -275,7 +275,7 @@ void C_Lexique::resetForSecondPass (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-int32_t C_Lexique::findTemplateDelimiterIndex (const cTemplateDelimiter inTemplateDelimiterArray [],
+int32_t C_Lexique::findTemplateDelimiterIndex (const cTemplateDelimiter * inTemplateDelimiterArray,
                                                const int32_t inTemplateDelimiterArrayLength) {
   int32_t templateIndex = 0 ;
   bool found = false ;
@@ -435,7 +435,7 @@ void C_Lexique::lexicalLog (LOCATION_ARGS) {
 //--------------------------------------------------------------------------------------------------
 
 int32_t C_Lexique::searchInList (const String & inString,
-                                 const C_unicode_lexique_table_entry inTable [],
+                                 const C_unicode_lexique_table_entry * inTableArray,
                                  const int32_t inTableSize) {
   const int32_t searchedStringLength = inString.length () ;
   int32_t code = -1 ; // -1 means 'not found'
@@ -444,16 +444,16 @@ int32_t C_Lexique::searchInList (const String & inString,
 
   while ((code < 0) && (top >= bottom)) {
     const int32_t index = (bottom + top) / 2 ;
-    int32_t result = searchedStringLength - inTable [index].mEntryStringLength ;
+    int32_t result = searchedStringLength - inTableArray [index].mEntryStringLength ;
     if (result == 0) {
-      result = inString.compare (String (inTable [index].mEntryString)) ;
+      result = inString.compare (String (inTableArray [index].mEntryString)) ;
     }
     if (result < 0) { // <
       top = index - 1 ;
     }else if (result > 0) { // >
       bottom = index + 1 ;
     }else{
-      code = inTable [index].mTokenCode ;
+      code = inTableArray [index].mTokenCode ;
     }
   }
   return code ;

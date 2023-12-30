@@ -26,7 +26,7 @@
 static void
 parcoursBDDinterneParValeur (const uint32_t inValue,
                              C_bdd_value_traversing & inTraversing,
-                             bool tableauDesValeurs [],
+                             bool * tableauDesValeurs,
                              uint32_t variableCourante,
                              const uint32_t inVariableCount) {
   if (variableCourante != 0) {
@@ -87,14 +87,14 @@ class C_build_values64_array : public C_bdd_value_traversing {
   private: C_build_values64_array & operator = (const C_build_values64_array &) ;
 
 //--- Virtual method called for every value
-  public: virtual void action (const bool tableauDesValeurs [],
-                                const uint32_t inVariableCount) ;
+  public: virtual void action (const bool * tableauDesValeurs,
+                               const uint32_t inVariableCount) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-void C_build_values64_array::action (const bool tableauDesValeurs [],
-                                   const uint32_t inVariableCount) {
+void C_build_values64_array::action (const bool * tableauDesValeurs,
+                                     const uint32_t inVariableCount) {
   uint64_t value = 0 ;
   for (uint32_t i=1 ; i<=inVariableCount ; i++) {
     value = (value << 1) | tableauDesValeurs [inVariableCount - i] ;
@@ -135,13 +135,13 @@ class C_build_values_array : public C_bdd_value_traversing {
   private: C_build_values_array & operator = (const C_build_values_array &) ;
 
 //--- Virtual method called for every value
-  public: virtual void action (const bool tableauDesValeurs [],
-                                const uint32_t inVariableCount) ;
+  public: virtual void action (const bool * tableauDesValeurs,
+                               const uint32_t inVariableCount) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-void C_build_values_array::action (const bool tableauDesValeurs [],
+void C_build_values_array::action (const bool * tableauDesValeurs,
                                    const uint32_t inVariableCount) {
   TC_Array <bool> value ;
   for (uint32_t i=0 ; i<inVariableCount ; i++) {
@@ -182,14 +182,14 @@ class cLittleEndianStringValueBuilder : public C_bdd_value_traversing {
   private: cLittleEndianStringValueBuilder & operator = (const cLittleEndianStringValueBuilder &) ;
 
 //--- Virtual method called for every value
-  public: virtual void action (const bool tableauDesValeurs [],
-                                const uint32_t inVariableCount) ;
+  public: virtual void action (const bool * tableauDesValeurs,
+                               const uint32_t inVariableCount) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
 void cLittleEndianStringValueBuilder::
-action (const bool tableauDesValeurs [],
+action (const bool * tableauDesValeurs,
         const uint32_t inVariableCount) {
   String value ;
   for (uint32_t i=0 ; i<inVariableCount ; i++) {
@@ -225,15 +225,14 @@ class cBuildBigEndianStringValueArray : public C_bdd_value_traversing {
   private: cBuildBigEndianStringValueArray & operator = (const cBuildBigEndianStringValueArray &) ;
 
 //--- Virtual method called for every value
-  public: virtual void action (const bool tableauDesValeurs [],
+  public: virtual void action (const bool * tableauDesValeurs,
                                 const uint32_t inVariableCount) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-void cBuildBigEndianStringValueArray::
-action (const bool tableauDesValeurs [],
-        const uint32_t inVariableCount) {
+void cBuildBigEndianStringValueArray::action (const bool * tableauDesValeurs,
+                                              const uint32_t inVariableCount) {
   String value ;
   for (uint32_t i=inVariableCount ; i>0 ; i--) {
     value.addChar ((char) ('0' + tableauDesValeurs [i-1])) ;
@@ -269,15 +268,14 @@ class cBuildQueryString : public C_bdd_value_traversing {
 
 
 //--- Virtual method called for every value
-  public: virtual void action (const bool tableauDesValeurs [],
-                                const uint32_t inVariableCount) ;
+  public: virtual void action (const bool * tableauDesValeurs,
+                               const uint32_t inVariableCount) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-void cBuildQueryString::
-action (const bool tableauDesValeurs [],
-        const uint32_t inVariableCount) {
+void cBuildQueryString::action (const bool * tableauDesValeurs,
+                                const uint32_t inVariableCount) {
   String value ;
   if (mStringPtr->length () > 0) {
     mStringPtr->addString ("|") ;

@@ -105,10 +105,10 @@ static void print_option_list (void) {
 //
 //--------------------------------------------------------------------------------------------------
 
-static void print_help (int argv,
-                        const char * argc [],
-                        const char * inExtensions [],
-                        const char * inHelpMessages [],
+static void print_help (const int argv,
+                        const char* * argc,
+                        const char* * inExtensionArray,
+                        const char* * inHelpMessageArray,
                         void print_tool_help_message (void)) {
   #ifdef __LP64__
     gCout.addString ("Compiled in 64 bits mode") ;
@@ -120,14 +120,6 @@ static void print_help (int argv,
   #endif
   gCout.addString (".\n") ;
   print_tool_help_message () ;
-/*  #ifndef DO_NOT_GENERATE_CHECKINGS
-    gCout.addString ("sizeof (short)=" + ((uint32_t) sizeof (short))
-       + ", sizeof (int)=" + ((uint32_t) sizeof (int))
-       + ", sizeof (long)=" + ((uint32_t) sizeof (long))
-       + ", sizeof (long long)=" + ((uint32_t) sizeof (long long))
-       + ", sizeof (wchar_t)=" + ((uint32_t) sizeof (wchar_t))
-       + "\n" ;
-  #endif */
   print_usage (argv, argc) ;
   gCout.setForeColor (kMagentaForeColor) ;
   gCout.setTextAttribute (kBoldTextAttribute) ;
@@ -140,7 +132,7 @@ static void print_help (int argv,
   C_StringListCommandLineOption::printStringOptions () ;
 
   int32_t extensionIndex = 0 ;
-  while (inExtensions [extensionIndex] != nullptr) {
+  while (inExtensionArray [extensionIndex] != nullptr) {
     extensionIndex ++ ;
   }
   gCout.setForeColor (kMagentaForeColor) ;
@@ -150,13 +142,13 @@ static void print_help (int argv,
   gCout.addString (":\n") ;
   gCout.setTextAttribute (kAllAttributesOff) ;
   extensionIndex = 0 ;
-  while (inExtensions [extensionIndex] != nullptr) {
+  while (inExtensionArray [extensionIndex] != nullptr) {
     gCout.setForeColor (kBlueForeColor) ;
     gCout.setTextAttribute (kBoldTextAttribute) ;
     gCout.addString (".") ;
-    gCout.addString (inExtensions [extensionIndex]) ;
+    gCout.addString (inExtensionArray [extensionIndex]) ;
     gCout.setTextAttribute (kAllAttributesOff) ;
-    const uint32_t extensionLength = (uint32_t) (strlen (inExtensions [extensionIndex]) & UINT32_MAX) ;
+    const uint32_t extensionLength = (uint32_t) (strlen (inExtensionArray [extensionIndex]) & UINT32_MAX) ;
     const uint32_t kDisplayLength = 20 ;
     if (extensionLength < kDisplayLength) {
       for (uint32_t i=extensionLength ; i<kDisplayLength ; i++) {
@@ -166,7 +158,7 @@ static void print_help (int argv,
       gCout.addNL () ; ;
       gCout.addSpaces (kDisplayLength+2) ;
     }
-    gCout.addString (inHelpMessages [extensionIndex]) ;
+    gCout.addString (inHelpMessageArray [extensionIndex]) ;
     gCout.addNL () ; ;
     extensionIndex ++ ;
   }
@@ -313,7 +305,7 @@ static void analyze_one_option (const char * inCommand,
 
 #if COMPILE_FOR_WINDOWS == 1
   static void getSourceFileFromWin32OpenDialog (TC_UniqueArray <String> & outSourceFileArray,
-                                                const char * inExtensions []) {
+                                                const char * * inExtensionArray) {
     char szFile[260] ;       // buffer for file name
     OPENFILENAME ofn ;
   //--- Initialize OPENFILENAME
@@ -327,12 +319,12 @@ static void analyze_one_option (const char * inCommand,
     ofn.nMaxFile = sizeof (szFile) ;
     char filterString [1000] = "";
     int32_t filterIndex = 0 ;
-    while (inExtensions [filterIndex] != nullptr) {
+    while (inExtensionArray [filterIndex] != nullptr) {
       if (filterIndex != 0) {
         strcat (filterString, ";") ;
       }
       strcat (filterString, "*.") ;
-      strcat (filterString, inExtensions [filterIndex]) ;
+      strcat (filterString, inExtensionArray [filterIndex]) ;
       filterIndex ++ ;
     }
     char filter [1000] ;
@@ -375,10 +367,10 @@ static void analyze_one_option (const char * inCommand,
 //--------------------------------------------------------------------------------------------------
 
 void F_Analyze_CLI_Options (const int argv,
-                            const char * argc [],
+                            const char* * argc,
                             TC_UniqueArray <String> & outSourceFileArray,
-                            const char * inExtensions [],
-                            const char * inHelpMessages [],
+                            const char* * inExtensionArray,
+                            const char* * inHelpMessageArray,
                             void print_tool_help_message (void)) {
 //--- Analyze command
   bool errorFound = false ;
@@ -414,12 +406,12 @@ void F_Analyze_CLI_Options (const int argv,
   }
 //--- Print Help ?
   if (gOption_generic_5F_cli_5F_options_display_5F_help.mValue) {
-    print_help (argv, argc, inExtensions, inHelpMessages, print_tool_help_message) ;
+    print_help (argv, argc, inExtensionArray, inHelpMessageArray, print_tool_help_message) ;
   }
 //--- WIN32 : if got no file, display file open dialog
   #if COMPILE_FOR_WINDOWS == 1
     if ((outSourceFileArray.count () == 0) && !gOption_generic_5F_cli_5F_options_nodialog.mValue) {
-      getSourceFileFromWin32OpenDialog (outSourceFileArray, inExtensions) ;
+      getSourceFileFromWin32OpenDialog (outSourceFileArray, inExtensionArray) ;
     }
   #endif
 }

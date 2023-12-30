@@ -293,7 +293,7 @@ C_BDD C_BDD::existsOnBitsAfterNumber (const uint32_t numeroBit) const {
 //--------------------------------------------------------------------------------------------------
 
 static uint32_t internalRecursiveSubstitution (const uint32_t inValue,
-                                               const uint32_t vecteurSubstitutionBool [],
+                                               const uint32_t * vecteurSubstitutionBool,
                                                const uint32_t inNoChangeIndex,
                                                const uint32_t inBDDvariablesCount
                                                COMMA_LOCATION_ARGS) {
@@ -322,7 +322,7 @@ static uint32_t internalRecursiveSubstitution (const uint32_t inValue,
 
 //--------------------------------------------------------------------------------------------------
 
-C_BDD C_BDD::substitution (const uint32_t inSubstitutionArray [],
+C_BDD C_BDD::substitution (const uint32_t * inSubstitutionArray,
                            const uint32_t inBDDvariablesCount
                            COMMA_LOCATION_ARGS) const {
   clearSingleOperandOperationCache () ;

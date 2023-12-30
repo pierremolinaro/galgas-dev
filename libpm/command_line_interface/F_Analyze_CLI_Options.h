@@ -32,10 +32,10 @@
 //--------------------------------------------------------------------------------------------------
 
 void F_Analyze_CLI_Options (const int argv,
-                            const char * argc [],
+                            const char* * argc,
                             TC_UniqueArray <String> & outSourceFileArray,
-                            const char * inExtensions [],
-                            const char * inHelpMessages [],
+                            const char* * inExtensions,
+                            const char* * inHelpMessages,
                             void print_tool_help_message (void)) ;
 
 //--------------------------------------------------------------------------------------------------
