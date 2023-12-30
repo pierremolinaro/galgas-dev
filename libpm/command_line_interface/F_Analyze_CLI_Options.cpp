@@ -299,7 +299,7 @@ static void analyze_one_option (const char * inCommand,
       #else
         fileName = inCommand ;
       #endif
-      outSourceFileArray.appendObject (FileManager::absolutePathFromPath (fileName, "")) ;
+      outSourceFileArray.appendObject (FileManager::absolutePathFromPath (fileName, String (""))) ;
       found = true ;
     }
   }

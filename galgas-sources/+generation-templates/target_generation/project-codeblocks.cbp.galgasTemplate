@@ -153,7 +153,7 @@ end
    <Unit filename="%!LIBPM_PATH%/utilities/MF_MemoryControl.cpp" />
    <Unit filename="%!LIBPM_PATH%/utilities/cpp-allocation.cpp" />
    <Unit filename="%!LIBPM_PATH%/utilities/basic-allocation.cpp" />
-   <Unit filename="%!LIBPM_PATH%/utilities/C_UIntSet.cpp" />
+   <Unit filename="%!LIBPM_PATH%/utilities/UInt32Set.cpp" />
    <Unit filename="%!LIBPM_PATH%/utilities/C_DirectedGraph.cpp" />
    <Unit filename="%!LIBPM_PATH%/utilities/md5.cpp" />
    <Unit filename="%!LIBPM_PATH%/utilities/galgas-random.cpp" />

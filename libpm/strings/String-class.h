@@ -91,7 +91,7 @@ class String : public AC_OutputStream {
   public: static String spaces (const int32_t inSpaceCount) ;
   
 //--- Virtual destructor
-  public: virtual ~String (void) ;
+  public: virtual ~ String (void) ;
 
 //--- Handling copy
   public: String (const String & inSource) ;
@@ -106,8 +106,8 @@ class String : public AC_OutputStream {
 //--- Set capacity (does nothing if length >= inCapacity)
   public: void setCapacity (const uint32_t inCapacity) ;
   
-//--- Suppress 'inLength' characters from 'inIndex' index
-  public: void suppress (const int32_t inIndex, const int32_t inLength COMMA_LOCATION_ARGS) ;
+//--- Remove 'inCount' characters from 'inIndex' index
+  public: void removeCountFromIndex (const int32_t inCount, const int32_t inIndex COMMA_LOCATION_ARGS) ;
 
 //--- Insert 'inChar' character at 'inIndex' index
   public: void insertCharacterAtIndex (const utf32 inChar, const int32_t inIndex COMMA_LOCATION_ARGS) ;

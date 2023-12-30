@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  C_UIntSet : algorithms on sets of uint32_t                                                   
+//  UInt32Set : algorithms on sets of uint32_t                                                   
 //
 //  This file is part of libpm library                                                           
 //
@@ -26,27 +26,27 @@
 
 //--------------------------------------------------------------------------------------------------
 
-class C_UIntSet final {
+class UInt32Set final {
 //--- Default constructor
-  public: C_UIntSet (void) ;
+  public: UInt32Set (void) ;
 
 //--- Singleton
-  public: C_UIntSet (const uint32_t inValue) ;
+  public: UInt32Set (const uint32_t inValue) ;
 
 //--- Methods
   public: void add (const uint32_t inNodeIndex) ;
 
   public: void remove (const uint32_t inNodeIndex) ;
 
-  public: void operator &= (const C_UIntSet & inOther) ;
+  public: void operator &= (const UInt32Set & inOther) ;
 
-  public: void operator |= (const C_UIntSet & inOther) ;
+  public: void operator |= (const UInt32Set & inOther) ;
 
-  public: void operator -= (const C_UIntSet & inOther) ;
+  public: void operator -= (const UInt32Set & inOther) ;
 
-  public: bool operator == (const C_UIntSet & inOther) const ;
+  public: bool operator == (const UInt32Set & inOther) const ;
 
-  public: bool operator != (const C_UIntSet & inOther) const ;
+  public: bool operator != (const UInt32Set & inOther) const ;
 
 //--- Accessors
   public: void getBoolValueArray (TC_UniqueArray <bool> & outBoolValueArray) const ;

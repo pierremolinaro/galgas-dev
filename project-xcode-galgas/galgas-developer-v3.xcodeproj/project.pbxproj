@@ -281,8 +281,8 @@
 		CFB02CA119F3FCE70011D03D /* NSString+identifierRepresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB02CA019F3FCE70011D03D /* NSString+identifierRepresentation.m */; };
 		CFB3190417B38D98009424C2 /* C_DirectedGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB3190317B38D98009424C2 /* C_DirectedGraph.cpp */; };
 		CFB3190517B38D98009424C2 /* C_DirectedGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB3190317B38D98009424C2 /* C_DirectedGraph.cpp */; };
-		CFB3190817B3C553009424C2 /* C_UIntSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB3190717B3C553009424C2 /* C_UIntSet.cpp */; };
-		CFB3190917B3C553009424C2 /* C_UIntSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB3190717B3C553009424C2 /* C_UIntSet.cpp */; };
+		CFB3190817B3C553009424C2 /* UInt32Set.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB3190717B3C553009424C2 /* UInt32Set.cpp */; };
+		CFB3190917B3C553009424C2 /* UInt32Set.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB3190717B3C553009424C2 /* UInt32Set.cpp */; };
 		CFB339331DAA4D5C00C0563C /* cGenericAbstractEnumerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB339311DAA4D5C00C0563C /* cGenericAbstractEnumerator.cpp */; };
 		CFB339341DAA4D7200C0563C /* cGenericAbstractEnumerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB339311DAA4D5C00C0563C /* cGenericAbstractEnumerator.cpp */; };
 		CFB697DF1483D47900BCAE41 /* PMIssueInRuler.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB697DE1483D47900BCAE41 /* PMIssueInRuler.m */; };
@@ -745,8 +745,8 @@
 		CFB02CA019F3FCE70011D03D /* NSString+identifierRepresentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+identifierRepresentation.m"; sourceTree = "<group>"; };
 		CFB3190217B38D76009424C2 /* C_DirectedGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_DirectedGraph.h; sourceTree = "<group>"; };
 		CFB3190317B38D98009424C2 /* C_DirectedGraph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_DirectedGraph.cpp; sourceTree = "<group>"; };
-		CFB3190617B3C545009424C2 /* C_UIntSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_UIntSet.h; sourceTree = "<group>"; };
-		CFB3190717B3C553009424C2 /* C_UIntSet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_UIntSet.cpp; sourceTree = "<group>"; };
+		CFB3190617B3C545009424C2 /* UInt32Set.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UInt32Set.h; sourceTree = "<group>"; };
+		CFB3190717B3C553009424C2 /* UInt32Set.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UInt32Set.cpp; sourceTree = "<group>"; };
 		CFB339311DAA4D5C00C0563C /* cGenericAbstractEnumerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cGenericAbstractEnumerator.cpp; sourceTree = "<group>"; };
 		CFB339321DAA4D5C00C0563C /* cGenericAbstractEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cGenericAbstractEnumerator.h; sourceTree = "<group>"; };
 		CFB697DD1483D47900BCAE41 /* PMIssueInRuler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = PMIssueInRuler.h; sourceTree = "<group>"; };
@@ -1437,8 +1437,6 @@
 				CFB3190217B38D76009424C2 /* C_DirectedGraph.h */,
 				CF63B54F10FC6A5E00B5E41F /* C_PrologueEpilogue.cpp */,
 				CF63B55010FC6A5E00B5E41F /* C_PrologueEpilogue.h */,
-				CFB3190717B3C553009424C2 /* C_UIntSet.cpp */,
-				CFB3190617B3C545009424C2 /* C_UIntSet.h */,
 				CFD396EF110E1EAF001549E6 /* cpp-allocation.cpp */,
 				CFD39712110E2912001549E6 /* cpp-allocation.h */,
 				CF825A6D08536B780077AEAF /* F_DisplayException.cpp */,
@@ -1459,6 +1457,8 @@
 				CFF991A9110B6CA40055EE27 /* SharedObject.h */,
 				CF4C28B91EC227F700DE807B /* switch-fallthrough.h */,
 				CF825A7908536B780077AEAF /* TF_Swap.h */,
+				CFB3190717B3C553009424C2 /* UInt32Set.cpp */,
+				CFB3190617B3C545009424C2 /* UInt32Set.h */,
 			);
 			path = utilities;
 			sourceTree = "<group>";
@@ -1839,7 +1839,7 @@
 				CFCB7A452B2DAECF008DD653 /* BigSigned-divide.cpp in Sources */,
 				CFCB7A2B2B2DAECF008DD653 /* BigUnsigned-logic-operations.cpp in Sources */,
 				CFB3190417B38D98009424C2 /* C_DirectedGraph.cpp in Sources */,
-				CFB3190817B3C553009424C2 /* C_UIntSet.cpp in Sources */,
+				CFB3190817B3C553009424C2 /* UInt32Set.cpp in Sources */,
 				CF485326272469250063154F /* cPtr_weakReference_proxy.cpp in Sources */,
 				CF079F9D192E418B008FEFF6 /* C_Relation.cpp in Sources */,
 				CF079F9F192E418B008FEFF6 /* C_RelationSingleType.cpp in Sources */,
@@ -2026,7 +2026,7 @@
 				CFCB7A462B2DAECF008DD653 /* BigSigned-divide.cpp in Sources */,
 				CFCB7A2C2B2DAECF008DD653 /* BigUnsigned-logic-operations.cpp in Sources */,
 				CFB3190517B38D98009424C2 /* C_DirectedGraph.cpp in Sources */,
-				CFB3190917B3C553009424C2 /* C_UIntSet.cpp in Sources */,
+				CFB3190917B3C553009424C2 /* UInt32Set.cpp in Sources */,
 				CF485327272469250063154F /* cPtr_weakReference_proxy.cpp in Sources */,
 				CF079F9E192E418B008FEFF6 /* C_Relation.cpp in Sources */,
 				CF079FA0192E418B008FEFF6 /* C_RelationSingleType.cpp in Sources */,

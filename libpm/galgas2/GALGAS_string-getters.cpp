@@ -550,7 +550,7 @@ GALGAS_string GALGAS_string::getter_stringByRemovingCharacterAtIndex (const GALG
   if (inIndex.isValid ()) {
     if (inIndex.uintValue () < (uint32_t) mString.length ()) {
       String s = mString ;
-      s.suppress ((int32_t) inIndex.uintValue (), 1 COMMA_THERE) ;
+      s.removeCountFromIndex (1, int32_t (inIndex.uintValue ()) COMMA_THERE) ;
       result = GALGAS_string (s) ;
     }else{
       inCompiler->onTheFlyRunTimeError (

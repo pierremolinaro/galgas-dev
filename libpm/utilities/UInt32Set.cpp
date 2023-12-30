@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  C_UIntSet : algorithms on sets of uint32_t                                                   
+//  UInt32Set : algorithms on sets of uint32_t                                                   
 //
 //  This file is part of libpm library                                                           
 //
@@ -18,24 +18,24 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "C_UIntSet.h"
+#include "UInt32Set.h"
 
 //--------------------------------------------------------------------------------------------------
 
-C_UIntSet::C_UIntSet (void) :
+UInt32Set::UInt32Set (void) :
 mDefinition () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-C_UIntSet::C_UIntSet (const uint32_t inValue) :
+UInt32Set::UInt32Set (const uint32_t inValue) :
 mDefinition () {
   add (inValue) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void C_UIntSet::add (const uint32_t inNodeIndex) {
+void UInt32Set::add (const uint32_t inNodeIndex) {
   const int32_t idx = (int32_t) (inNodeIndex >> 6) ;
   while (idx >= mDefinition.count ()) {
     mDefinition.appendObject (0) ;
@@ -48,7 +48,7 @@ void C_UIntSet::add (const uint32_t inNodeIndex) {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_UIntSet::remove (const uint32_t inNodeIndex) {
+void UInt32Set::remove (const uint32_t inNodeIndex) {
   const int32_t idx = (int32_t) (inNodeIndex >> 6) ;
   if (idx < mDefinition.count ()) {
     mDefinition (idx COMMA_HERE) &= ~ (((uint64_t) 1) << (inNodeIndex & 63)) ;
@@ -63,7 +63,7 @@ void C_UIntSet::remove (const uint32_t inNodeIndex) {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_UIntSet::getBoolValueArray (TC_UniqueArray <bool> & outBoolValueArray) const {
+void UInt32Set::getBoolValueArray (TC_UniqueArray <bool> & outBoolValueArray) const {
   outBoolValueArray.removeAllKeepingCapacity () ;
   for (int32_t i=0 ; i<mDefinition.count () ; i++) {
     for (uint32_t j=0 ; j<64 ; j++) {
@@ -78,7 +78,7 @@ void C_UIntSet::getBoolValueArray (TC_UniqueArray <bool> & outBoolValueArray) co
   
 //--------------------------------------------------------------------------------------------------
 
-void C_UIntSet::getValueArray (TC_UniqueArray <uint32_t> & outValueArray) const {
+void UInt32Set::getValueArray (TC_UniqueArray <uint32_t> & outValueArray) const {
   outValueArray.removeAllKeepingCapacity () ;
   uint32_t idx = 0 ;
   for (int32_t i=0 ; i<mDefinition.count () ; i++) {
@@ -94,7 +94,7 @@ void C_UIntSet::getValueArray (TC_UniqueArray <uint32_t> & outValueArray) const 
   
 //--------------------------------------------------------------------------------------------------
 
-bool C_UIntSet::contains (const uint32_t inNodeIndex) const {
+bool UInt32Set::contains (const uint32_t inNodeIndex) const {
   const int32_t idx = (int32_t) (inNodeIndex >> 6) ;
   bool result = idx < mDefinition.count () ;
   if (result) {
@@ -105,7 +105,7 @@ bool C_UIntSet::contains (const uint32_t inNodeIndex) const {
 
 //--------------------------------------------------------------------------------------------------
 
-uint32_t C_UIntSet::firstValueNotIsSet (void) const {
+uint32_t UInt32Set::firstValueNotIsSet (void) const {
   uint32_t result = 0 ;
   if (mDefinition.count () > 0) {
     result = 64 * (((uint32_t) mDefinition.count ()) - 1) ;
@@ -120,7 +120,7 @@ uint32_t C_UIntSet::firstValueNotIsSet (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-uint32_t C_UIntSet::count (void) const {
+uint32_t UInt32Set::count (void) const {
   uint32_t result = 0 ;
   for (int32_t i=0 ; i<mDefinition.count () ; i++) {
     uint64_t v = mDefinition (i COMMA_HERE) ;
@@ -134,7 +134,7 @@ uint32_t C_UIntSet::count (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_UIntSet::operator &= (const C_UIntSet & inOther) {
+void UInt32Set::operator &= (const UInt32Set & inOther) {
   while (mDefinition.count () > inOther.mDefinition.count ()) {
     mDefinition.removeLastObject (HERE) ;
   }
@@ -151,7 +151,7 @@ void C_UIntSet::operator &= (const C_UIntSet & inOther) {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_UIntSet::operator |= (const C_UIntSet & inOther) {
+void UInt32Set::operator |= (const UInt32Set & inOther) {
   while (mDefinition.count () < inOther.mDefinition.count ()) {
     mDefinition.appendObject (0) ;
   }
@@ -171,7 +171,7 @@ static inline int32_t minSInt32 (const int32_t inA, const int32_t inB) {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_UIntSet::operator -= (const C_UIntSet & inOther) {
+void UInt32Set::operator -= (const UInt32Set & inOther) {
   const int32_t n = minSInt32 (mDefinition.count (), inOther.mDefinition.count ()) ;
   for (int32_t i=0 ; i<n ; i++) {
     mDefinition (i COMMA_HERE) &= ~ inOther.mDefinition (i COMMA_HERE) ;
@@ -186,7 +186,7 @@ void C_UIntSet::operator -= (const C_UIntSet & inOther) {
 
 //--------------------------------------------------------------------------------------------------
 
-bool C_UIntSet::operator == (const C_UIntSet & inOther) const {
+bool UInt32Set::operator == (const UInt32Set & inOther) const {
   bool result = mDefinition.count () == inOther.mDefinition.count () ;
   for (int32_t i=0 ; (i<mDefinition.count ()) && result ; i++) {
     result = mDefinition (i COMMA_HERE) == inOther.mDefinition (i COMMA_HERE) ;
@@ -196,16 +196,16 @@ bool C_UIntSet::operator == (const C_UIntSet & inOther) const {
 
 //--------------------------------------------------------------------------------------------------
 
-bool C_UIntSet::operator != (const C_UIntSet & inOther) const {
+bool UInt32Set::operator != (const UInt32Set & inOther) const {
   return ! (*this == inOther) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
-  void C_UIntSet::check (void) const {
+  void UInt32Set::check (void) const {
     if (mDefinition.count () > 0) {
-      macroAssert (mDefinition.lastObject (HERE) != 0, "last entry of C_UIntSet is 0", 0, 0) ;
+      macroAssert (mDefinition.lastObject (HERE) != 0, "last entry of UInt32Set is 0", 0, 0) ;
     }
   }
 #endif

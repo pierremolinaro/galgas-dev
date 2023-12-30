@@ -772,7 +772,7 @@ void GALGAS_string::setter_removeCharacterAtIndex (GALGAS_char & outChar,
       inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
     }else{
       outChar = GALGAS_char (mString (idx COMMA_HERE)) ;
-      mString.suppress (idx, 1 COMMA_THERE) ;
+      mString.removeCountFromIndex (1, idx COMMA_THERE) ;
     }
   }
 }

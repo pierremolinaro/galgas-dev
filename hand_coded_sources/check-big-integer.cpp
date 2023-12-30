@@ -56,7 +56,7 @@ static void testBigUnsignedDecimalStringConstructor (void) {
     }
   //--- Remove leading zeros
     while ((refString.length () > 1) && (refString (0 COMMA_HERE) == '0')) {
-      refString.suppress (0, 1 COMMA_HERE) ;
+      refString.removeCountFromIndex (1, 0 COMMA_HERE) ;
     }
   //---
     bool ok = false ;
@@ -103,7 +103,7 @@ static void testBigUnsignedBinaryStringConstructor (void) {
     }
   //--- Remove leading zeros
     while ((refString.length () > 1) && (refString (0 COMMA_HERE) == '0')) {
-      refString.suppress (0, 1 COMMA_HERE) ; // Remove first character
+      refString.removeCountFromIndex (1, 0 COMMA_HERE) ; // Remove first character
     }
   //---
     bool ok = false ;
@@ -149,7 +149,7 @@ static void testBigUnsignedHexadecimalStringConstructor (void) {
     }
   //--- Remove leading zeros
     while ((refString.length () > 1) && (refString (0 COMMA_HERE) == '0')) {
-      refString.suppress (0, 1 COMMA_HERE) ; // Remove first character
+      refString.removeCountFromIndex (1, 0 COMMA_HERE) ; // Remove first character
     }
   //---
     bool ok = false ;
@@ -197,7 +197,7 @@ static void testBigUnsignedU8ArrayConstructor (void) {
     }
   //--- Remove leading zeros
     while ((refString.length () > 1) && (refString (0 COMMA_HERE) == '0')) {
-      refString.suppress (0, 1 COMMA_HERE) ; // Remove first character
+      refString.removeCountFromIndex (1, 0 COMMA_HERE) ; // Remove first character
     }
   //---
     const BigUnsigned big (u8Count, u8Array) ;

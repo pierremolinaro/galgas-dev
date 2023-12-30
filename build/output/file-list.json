@@ -121,7 +121,7 @@
        "MF_MemoryControl.cpp",
        "cpp-allocation.cpp",
        "basic-allocation.cpp",
-       "C_UIntSet.cpp",
+       "UInt32Set.cpp",
        "C_DirectedGraph.cpp",
        "md5.cpp",
        "galgas-random.cpp",

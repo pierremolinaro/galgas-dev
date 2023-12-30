@@ -117,7 +117,7 @@ String BigUnsigned::bitString (void) const {
       }
     }
     while ((result.length () > 0) && (result (0 COMMA_HERE) == '0')) {
-      result.suppress (0, 1 COMMA_HERE) ; // Remove first character
+      result.removeCountFromIndex (1, 0 COMMA_HERE) ; // Remove first character
     }
   }
   return result ;

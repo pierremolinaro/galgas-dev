@@ -182,7 +182,7 @@
    <Unit filename="../libpm/utilities/MF_MemoryControl.cpp" />
    <Unit filename="../libpm/utilities/cpp-allocation.cpp" />
    <Unit filename="../libpm/utilities/basic-allocation.cpp" />
-   <Unit filename="../libpm/utilities/C_UIntSet.cpp" />
+   <Unit filename="../libpm/utilities/UInt32Set.cpp" />
    <Unit filename="../libpm/utilities/C_DirectedGraph.cpp" />
    <Unit filename="../libpm/utilities/md5.cpp" />
    <Unit filename="../libpm/utilities/galgas-random.cpp" />
