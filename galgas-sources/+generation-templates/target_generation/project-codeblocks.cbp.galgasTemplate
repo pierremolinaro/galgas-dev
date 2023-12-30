@@ -128,11 +128,6 @@ end
    <Unit filename="%!LIBPM_PATH%/big-integers/ChunkSharedArray.cpp" />
    <Unit filename="%!LIBPM_PATH%/big-integers/UInt128.cpp" />
    <Unit filename="%!LIBPM_PATH%/bdd/C_BDD.cpp" />
-   <Unit filename="%!LIBPM_PATH%/bdd/C_BDD-value-count.cpp" />
-   <Unit filename="%!LIBPM_PATH%/bdd/C_BDD-build-value-array.cpp" />
-   <Unit filename="%!LIBPM_PATH%/bdd/C_BDD-operators.cpp" />
-   <Unit filename="%!LIBPM_PATH%/bdd/C_BDD-single-operand-ops.cpp" />
-   <Unit filename="%!LIBPM_PATH%/bdd/C_BDD-and-operation.cpp" />
    <Unit filename="%!LIBPM_PATH%/bdd/C_RelationSingleType.cpp" />
    <Unit filename="%!LIBPM_PATH%/bdd/C_RelationConfiguration.cpp" />
    <Unit filename="%!LIBPM_PATH%/bdd/C_Relation.cpp" />

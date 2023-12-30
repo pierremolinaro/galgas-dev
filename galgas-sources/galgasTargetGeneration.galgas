@@ -705,13 +705,7 @@ proc updateGalgasTargets
         !"C_Relation.h",
         !"C_RelationSingleType.cpp",
         !"C_RelationSingleType.h",
-        !"C_BDD-and-operation.cpp",
-        !"C_BDD-build-value-array.cpp",
-        !"C_BDD-find-or-add.cpp",
         !"C_BDD-node.h",
-        !"C_BDD-operators.cpp",
-        !"C_BDD-single-operand-ops.cpp",
-        !"C_BDD-value-count.cpp",
         !"C_BDD.cpp",
         !"C_BDD.h"
       }

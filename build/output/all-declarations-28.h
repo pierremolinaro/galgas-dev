@@ -391,21 +391,15 @@ void routine_checkExtensionGetterDefinitionForClass_3F__3F__3F__3F__3F__3F_ (con
 //
 //--------------------------------------------------------------------------------------------------
 
-extern const char * gWrapperFileContent_293_libpmFileWrapper ;
-extern const char * gWrapperFileContent_298_libpmFileWrapper ;
-extern const char * gWrapperFileContent_289_libpmFileWrapper ;
-extern const char * gWrapperFileContent_291_libpmFileWrapper ;
-extern const char * gWrapperFileContent_299_libpmFileWrapper ;
-extern const char * gWrapperFileContent_301_libpmFileWrapper ;
-extern const char * gWrapperFileContent_292_libpmFileWrapper ;
-extern const char * gWrapperFileContent_302_libpmFileWrapper ;
-extern const char * gWrapperFileContent_296_libpmFileWrapper ;
-extern const char * gWrapperFileContent_300_libpmFileWrapper ;
 extern const char * gWrapperFileContent_290_libpmFileWrapper ;
-extern const char * gWrapperFileContent_297_libpmFileWrapper ;
-extern const char * gWrapperFileContent_303_libpmFileWrapper ;
-extern const char * gWrapperFileContent_294_libpmFileWrapper ;
+extern const char * gWrapperFileContent_296_libpmFileWrapper ;
+extern const char * gWrapperFileContent_293_libpmFileWrapper ;
 extern const char * gWrapperFileContent_295_libpmFileWrapper ;
+extern const char * gWrapperFileContent_289_libpmFileWrapper ;
+extern const char * gWrapperFileContent_294_libpmFileWrapper ;
+extern const char * gWrapperFileContent_297_libpmFileWrapper ;
+extern const char * gWrapperFileContent_291_libpmFileWrapper ;
+extern const char * gWrapperFileContent_292_libpmFileWrapper ;
 extern const char * gWrapperFileContent_280_libpmFileWrapper ;
 extern const char * gWrapperFileContent_271_libpmFileWrapper ;
 extern const char * gWrapperFileContent_282_libpmFileWrapper ;
@@ -999,12 +993,6 @@ extern const cRegularFileWrapper gWrapperFile_294_libpmFileWrapper ;
 extern const cRegularFileWrapper gWrapperFile_295_libpmFileWrapper ;
 extern const cRegularFileWrapper gWrapperFile_296_libpmFileWrapper ;
 extern const cRegularFileWrapper gWrapperFile_297_libpmFileWrapper ;
-extern const cRegularFileWrapper gWrapperFile_298_libpmFileWrapper ;
-extern const cRegularFileWrapper gWrapperFile_299_libpmFileWrapper ;
-extern const cRegularFileWrapper gWrapperFile_300_libpmFileWrapper ;
-extern const cRegularFileWrapper gWrapperFile_301_libpmFileWrapper ;
-extern const cRegularFileWrapper gWrapperFile_302_libpmFileWrapper ;
-extern const cRegularFileWrapper gWrapperFile_303_libpmFileWrapper ;
 
 //--------------------------------------------------------------------------------------------------
 
