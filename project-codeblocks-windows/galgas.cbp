@@ -179,7 +179,7 @@
    <Unit filename="../libpm/time/DateTime.cpp" />
    <Unit filename="../libpm/utilities/C_PrologueEpilogue.cpp" />
    <Unit filename="../libpm/utilities/SharedObject.cpp" />
-   <Unit filename="../libpm/utilities/C_Data.cpp" />
+   <Unit filename="../libpm/utilities/U8Data.cpp" />
    <Unit filename="../libpm/utilities/F_DisplayException.cpp" />
    <Unit filename="../libpm/utilities/macroAssert.cpp" />
    <Unit filename="../libpm/utilities/F_GetPrime.cpp" />
@@ -187,7 +187,7 @@
    <Unit filename="../libpm/utilities/cpp-allocation.cpp" />
    <Unit filename="../libpm/utilities/basic-allocation.cpp" />
    <Unit filename="../libpm/utilities/UInt32Set.cpp" />
-   <Unit filename="../libpm/utilities/C_DirectedGraph.cpp" />
+   <Unit filename="../libpm/utilities/DirectedGraph.cpp" />
    <Unit filename="../libpm/utilities/md5.cpp" />
    <Unit filename="../libpm/utilities/galgas-random.cpp" />
    <Unit filename="../libpm/galgas2/C_galgas_CLI_Options.cpp" />

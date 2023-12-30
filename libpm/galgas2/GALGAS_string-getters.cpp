@@ -192,8 +192,8 @@ GALGAS_string GALGAS_string::getter_utf_38_RepresentationEnclosedWithin (const G
 GALGAS_uint GALGAS_string::getter_utf_38_Length (UNUSED_LOCATION_ARGS) const {
   GALGAS_uint result ;
   if (isValid ()) {
-    C_Data data ;
-    data.addString (mString) ;
+    U8Data data ;
+    data.appendString (mString) ;
     result = GALGAS_uint (uint32_t (data.count ())) ;
   }
   return result ;
@@ -1281,7 +1281,7 @@ GALGAS_bool GALGAS_string::getter_isSymbolicLink (UNUSED_LOCATION_ARGS) const {
       if (! ok) {
         inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
       }else{
-        C_Data response ;
+        U8Data response ;
         bool loop = true ;
         while (loop) {
           const size_t kBufferSize = 1000 ;
@@ -1310,7 +1310,7 @@ GALGAS_bool GALGAS_string::getter_isSymbolicLink (UNUSED_LOCATION_ARGS) const {
     GALGAS_string result ;
     if (isValid ()) {
       FILE * f = popen (mString.cString (HERE), "r") ;
-      C_Data response ;
+      U8Data response ;
       bool loop = true ;
       while (loop) {
         const size_t kBufferSize = 1000 ;

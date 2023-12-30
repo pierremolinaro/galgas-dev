@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  C_Data : a class for handling arbitrary data array                                           
+//  U8Data : a class for handling arbitrary data array                                           
 //
 //  This file is part of libpm library                                                           
 //
@@ -26,15 +26,15 @@
 
 //--------------------------------------------------------------------------------------------------
 
-class C_Data final {
+class U8Data final {
 //--- Data
   private: TC_Array <uint8_t> mBinaryData ;
 
 //--- Constructors
-  public: C_Data (void) ;
+  public: U8Data (void) ;
 
 //--- Destructor
-  public: ~C_Data (void) ;
+  public: ~U8Data (void) ;
   
 //--- Length
   public: inline int32_t count (void) const { return mBinaryData.count () ; }
@@ -50,8 +50,8 @@ class C_Data final {
   public: void free (void) ;
 
 //--- Append data
-  public: void appendData (const C_Data & inData) ;
-  public: void addString (const class String & inString) ;
+  public: void appendData (const U8Data & inData) ;
+  public: void appendString (const class String & inString) ;
   public: void appendUTF32Character (const utf32 inUnicodeChar) ;
   
 //---
@@ -68,7 +68,7 @@ class C_Data final {
 
   public: void appendByte (const uint8_t inByte) ;
 
-  public: int32_t compareWithData (const C_Data & inData) const ;
+  public: int32_t compareWithData (const U8Data & inData) const ;
 
 //---
   public: void removeLengthFromStart (const uint32_t inLength COMMA_LOCATION_ARGS) ;
@@ -77,8 +77,8 @@ class C_Data final {
   public: void removeLastByte (LOCATION_ARGS) ;
 
 //---
-  public: bool operator == (const C_Data & inData) const ;
-  public: bool operator != (const C_Data & inData) const ;
+  public: bool operator == (const U8Data & inData) const ;
+  public: bool operator != (const U8Data & inData) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

@@ -47,7 +47,7 @@ class C_BinaryFileWrite final : public AC_FileHandle {
   private: C_BinaryFileWrite & operator = (C_BinaryFileWrite &) ;
   
 //--- 
-  public: void appendData (const C_Data & inData) ;
+  public: void appendData (const U8Data & inData) ;
 
 //--- Flush print
   public: virtual void flush (void) ;

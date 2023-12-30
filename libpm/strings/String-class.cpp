@@ -822,7 +822,7 @@ void String::setFromCstring (const char * inCstring) {
 
 //--------------------------------------------------------------------------------------------------
 
-bool String::parseUTF8 (const C_Data & inDataString,
+bool String::parseUTF8 (const U8Data & inDataString,
                         const int32_t inOffset,
                         String & outString) {
   bool ok = true ;

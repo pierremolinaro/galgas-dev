@@ -23,7 +23,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "strings/String-class.h"
-#include "utilities/C_Data.h"
+#include "utilities/U8Data.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -45,7 +45,7 @@ class FileManager final {
 
 //--- Read binary file at once
   public: static bool binaryDataWithContentOfFile (const String & inFilePath,
-                                                    C_Data & outBinaryData) ;
+                                                    U8Data & outBinaryData) ;
 
 //--- Read text file at once
   public: static String stringWithContentOfFile (const String & inFilePath) ;
@@ -62,10 +62,10 @@ class FileManager final {
                                                     const String & inFilePath) ;
 
 //--- Write data to file
-  public: static bool writeBinaryDataToFile (const C_Data & inBinaryData,
+  public: static bool writeBinaryDataToFile (const U8Data & inBinaryData,
                                               const String & inFilePath) ;
 
-  public: static bool writeBinaryDataToExecutableFile (const C_Data & inBinaryData,
+  public: static bool writeBinaryDataToExecutableFile (const U8Data & inBinaryData,
                                                         const String & inFilePath) ;
 
 //--- Delete file (returns an empty string on success, or a string describing the error)

@@ -166,7 +166,7 @@ FILE * FileManager::openBinaryFileForReading (const String & inFilePath) {
 //--------------------------------------------------------------------------------------------------
 
 bool FileManager::binaryDataWithContentOfFile (const String & inFilePath,
-                                                 C_Data & outBinaryData) {
+                                                 U8Data & outBinaryData) {
   outBinaryData.free () ;
 //--- Open file for binary reading
   const String nativePath = nativePathWithUnixPath (inFilePath) ;
@@ -218,7 +218,7 @@ bool FileManager::binaryDataWithContentOfFile (const String & inFilePath,
 
 //--------------------------------------------------------------------------------------------------
 
-static bool parseUTF32LE (const C_Data & inDataString,
+static bool parseUTF32LE (const U8Data & inDataString,
                           const int32_t inOffset,
                           String & outString) {
   bool ok = (inDataString.count () % 4) == 0 ;
@@ -241,7 +241,7 @@ static bool parseUTF32LE (const C_Data & inDataString,
 
 //--------------------------------------------------------------------------------------------------
 
-static bool parseUTF32BE (const C_Data & inDataString,
+static bool parseUTF32BE (const U8Data & inDataString,
                           const int32_t inOffset,
                           String & outString) {
   bool ok = (inDataString.count () % 4) == 0 ;
@@ -265,7 +265,7 @@ static bool parseUTF32BE (const C_Data & inDataString,
 //--------------------------------------------------------------------------------------------------
 // UTF-16 http://fr.wikipedia.org/wiki/UTF-16
 
-static bool parseUTF16LE (const C_Data & inDataString,
+static bool parseUTF16LE (const U8Data & inDataString,
                           const int32_t inOffset,
                           String & outString) {
   bool ok = (inDataString.count () % 2) == 0 ;
@@ -294,7 +294,7 @@ static bool parseUTF16LE (const C_Data & inDataString,
 
 //--------------------------------------------------------------------------------------------------
 
-static bool parseUTF16BE (const C_Data & inDataString,
+static bool parseUTF16BE (const U8Data & inDataString,
                           const int32_t inOffset,
                           String & outString) {
   bool ok = (inDataString.count () % 2) == 0 ;
@@ -324,7 +324,7 @@ static bool parseUTF16BE (const C_Data & inDataString,
 
 //--------------------------------------------------------------------------------------------------
 
-static bool searchBOMandParse (const C_Data & inDataString,
+static bool searchBOMandParse (const U8Data & inDataString,
                                const int32_t inLength,
                                PMTextFileEncoding & outTextFileEncoding,
                                String & outResultString) {
@@ -370,7 +370,7 @@ static bool searchBOMandParse (const C_Data & inDataString,
 
 //--------------------------------------------------------------------------------------------------
 
-static bool sniffUTFEncodingAndParse (const C_Data & inDataString,
+static bool sniffUTFEncodingAndParse (const U8Data & inDataString,
                                       PMTextFileEncoding & outTextFileEncoding,
                                       String & outResultString) {
 //--- Try UTF-8
@@ -460,7 +460,7 @@ static const encodingStruct kEncodings [kEncodingCount] = {
 
 //--------------------------------------------------------------------------------------------------
 
-static bool parseWithEncoding (const C_Data & inDataString,
+static bool parseWithEncoding (const U8Data & inDataString,
                                const PMStringEncoding inTextFileEncoding,
                                String & outString) {
   bool foundCR = false ;
@@ -493,7 +493,7 @@ static bool parseWithEncoding (const C_Data & inDataString,
 
 //--------------------------------------------------------------------------------------------------
 
-static bool searchForEncodingTagAndParse (const C_Data & inDataString,
+static bool searchForEncodingTagAndParse (const U8Data & inDataString,
                                           PMTextFileEncoding & outTextFileEncoding,
                                           String & outResultString) {
 //--- Copy first line
@@ -538,7 +538,7 @@ static bool searchForEncodingTagAndParse (const C_Data & inDataString,
 
 //--------------------------------------------------------------------------------------------------
 
-static void parseASCIIWithReplacementCharacter (const C_Data & inDataString,
+static void parseASCIIWithReplacementCharacter (const U8Data & inDataString,
                                                 String & outString) {
   bool foundCR = false ;
   int32_t index = 0 ;
@@ -572,7 +572,7 @@ String FileManager::stringWithContentOfFile (const String & inFilePath,
     printf ("** SNIFF ENCODING for '%s': ", inFilePath.cString (HERE)) ;
   #endif
 //--- Read file
-  C_Data stringData ;
+  U8Data stringData ;
   outOk = binaryDataWithContentOfFile (inFilePath, stringData) ;
   const int32_t length = stringData.count () ;
 //--- Assign C string to String
@@ -656,7 +656,7 @@ bool FileManager::writeStringToExecutableFile (const String & inString,
 
 //--------------------------------------------------------------------------------------------------
 
-bool FileManager::writeBinaryDataToFile (const C_Data & inBinaryData,
+bool FileManager::writeBinaryDataToFile (const U8Data & inBinaryData,
                                            const String & inFilePath) {
   makeDirectoryIfDoesNotExist (inFilePath.stringByDeletingLastPathComponent()) ;
 //---
@@ -673,7 +673,7 @@ bool FileManager::writeBinaryDataToFile (const C_Data & inBinaryData,
 
 //--------------------------------------------------------------------------------------------------
 
-bool FileManager::writeBinaryDataToExecutableFile (const C_Data & inBinaryData,
+bool FileManager::writeBinaryDataToExecutableFile (const U8Data & inBinaryData,
                                                      const String & inFilePath) {
   makeDirectoryIfDoesNotExist (inFilePath.stringByDeletingLastPathComponent()) ;
 //---

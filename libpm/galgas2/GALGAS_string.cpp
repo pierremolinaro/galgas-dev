@@ -898,7 +898,7 @@ void GALGAS_string::class_method_removeDirectoryRecursively (GALGAS_string inDir
 
 static bool writeFile (const String & inMessage,
                        const String & inFullPathName,
-                       const C_Data & inCurrentData,
+                       const U8Data & inCurrentData,
                        Compiler * inCompiler) {
   bool ok = true ;
   if (inCompiler->performGeneration ()) {
@@ -932,14 +932,14 @@ static bool writeFile (const String & inMessage,
 static bool updateFile (const String & inFullPathName,
                         const String & inContents,
                         Compiler * inCompiler) {
-  C_Data currentData ; currentData.addString (inContents) ;
+  U8Data currentData ; currentData.appendString (inContents) ;
 //--- Compare file length
   const uint64_t fileSize = FileManager::fileSize (inFullPathName) ;
   bool needsToWriteFile = fileSize != (uint64_t) currentData.count () ;
   bool ok = true ;
 //--- Read file
   if (! needsToWriteFile) {
-    C_Data fileData ;
+    U8Data fileData ;
     ok = FileManager::binaryDataWithContentOfFile (inFullPathName, fileData) ;
     if (ok) {
       needsToWriteFile = fileData != currentData ;
@@ -964,7 +964,7 @@ static void generateFile (const String & inStartPath,
   const TC_UniqueArray <String> directoriesToExclude ;
   const String fullPathName = FileManager::findFileInDirectory (inStartPath, inFileName, directoriesToExclude) ;
   if (fullPathName.length () == 0) { // No, does not exist
-    C_Data currentData ; currentData.addString (inContents) ;
+    U8Data currentData ; currentData.appendString (inContents) ;
     ok = writeFile ("Created", inStartPath + "/" + inFileName, currentData, inCompiler) ;
   }else{ //--- File exists: read it
     ok = updateFile (fullPathName, inContents, inCompiler) ;

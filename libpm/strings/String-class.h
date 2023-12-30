@@ -26,7 +26,7 @@
 #include "generic-arraies/TC_UniqueArray.h"
 #include "utilities/M_machine.h"
 #include "streams/C_ConsoleOut.h"
-#include "utilities/C_Data.h"
+#include "utilities/U8Data.h"
 #include "utilities/TF_Swap.h"
 #include "time/DateTime.h"
 
@@ -331,7 +331,7 @@ class String : public AC_OutputStream {
     private: void checkString (LOCATION_ARGS) const ;
   #endif
 
-  public: static bool parseUTF8 (const C_Data & inDataString,
+  public: static bool parseUTF8 (const U8Data & inDataString,
                                  const int32_t inOffset,
                                  String & outString) ;
 

@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  C_DirectedGraph : algorithms on ordered graphs                                               
+//  DirectedGraph : algorithms on ordered graphs                                               
 //
 //  This file is part of libpm library                                                           
 //
@@ -18,11 +18,11 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "utilities/C_DirectedGraph.h"
+#include "utilities/DirectedGraph.h"
 
 //--------------------------------------------------------------------------------------------------
 
-C_DirectedGraph::C_DirectedGraph (void) :
+DirectedGraph::DirectedGraph (void) :
 mNodes (),
 mEdges (),
 mReverseEdges () {
@@ -30,8 +30,8 @@ mReverseEdges () {
 
 //--------------------------------------------------------------------------------------------------
 
-C_DirectedGraph C_DirectedGraph::reversedGraph (void) const {
-  C_DirectedGraph result ;
+DirectedGraph DirectedGraph::reversedGraph (void) const {
+  DirectedGraph result ;
   result.mNodes = mNodes ;
   result.mEdges = mReverseEdges ;
   result.mReverseEdges = mEdges ;
@@ -43,7 +43,7 @@ C_DirectedGraph C_DirectedGraph::reversedGraph (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_DirectedGraph::addNode (const uint32_t inNodeIndex) {
+void DirectedGraph::addNode (const uint32_t inNodeIndex) {
   mNodes.add (inNodeIndex) ;
   while (((int32_t) inNodeIndex) >= mEdges.count ()) {
     mEdges.appendObject (UInt32Set ()) ;
@@ -56,7 +56,7 @@ void C_DirectedGraph::addNode (const uint32_t inNodeIndex) {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_DirectedGraph::addNodes (const UInt32Set inNodes) {
+void DirectedGraph::addNodes (const UInt32Set inNodes) {
   mNodes |= inNodes ;
   const uint32_t lastPlusOne = mNodes.firstValueNotIsSet () ;
   while (lastPlusOne > (uint32_t) mEdges.count ()) {
@@ -70,7 +70,7 @@ void C_DirectedGraph::addNodes (const UInt32Set inNodes) {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_DirectedGraph::removeNode (const uint32_t inNodeIndex) {
+void DirectedGraph::removeNode (const uint32_t inNodeIndex) {
   if (inNodeIndex < (uint32_t) mEdges.count ()) {
     mNodes.remove (inNodeIndex) ;
     const UInt32Set targetSet = mEdges ((int32_t) inNodeIndex COMMA_HERE) ;
@@ -93,31 +93,31 @@ void C_DirectedGraph::removeNode (const uint32_t inNodeIndex) {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_DirectedGraph::getNodeBoolArray (TC_UniqueArray <bool> & outNodes) const {
+void DirectedGraph::getNodeBoolArray (TC_UniqueArray <bool> & outNodes) const {
   mNodes.getBoolValueArray (outNodes) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void C_DirectedGraph::getNodeValueArray (TC_UniqueArray <uint32_t> & outNodes) const {
+void DirectedGraph::getNodeValueArray (TC_UniqueArray <uint32_t> & outNodes) const {
   mNodes.getValueArray (outNodes) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool C_DirectedGraph::isNodeDefined (const uint32_t inNodeIndex) const {
+bool DirectedGraph::isNodeDefined (const uint32_t inNodeIndex) const {
   return mNodes.contains (inNodeIndex) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-uint32_t C_DirectedGraph::nodeCount (void) const {
+uint32_t DirectedGraph::nodeCount (void) const {
   return mNodes.count () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-uint32_t C_DirectedGraph::edgeCount (void) const {
+uint32_t DirectedGraph::edgeCount (void) const {
   uint32_t result = 0 ;
   for (int32_t i=0 ; i<mEdges.count () ; i++) {
     if (isNodeDefined ((uint32_t) i)) {
@@ -129,7 +129,7 @@ uint32_t C_DirectedGraph::edgeCount (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-uint32_t C_DirectedGraph::unusedNodeIndex (void) const {
+uint32_t DirectedGraph::unusedNodeIndex (void) const {
   uint32_t result = nodeCount () ;
   while (isNodeDefined (result)) {
     result ++ ;
@@ -139,7 +139,7 @@ uint32_t C_DirectedGraph::unusedNodeIndex (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-String C_DirectedGraph::graphvizString (const TC_UniqueArray <String> & inNodeNameArray) const {
+String DirectedGraph::graphvizString (const TC_UniqueArray <String> & inNodeNameArray) const {
   String s = "digraph G {\n" ;
   for (int32_t i=0 ; i<mEdges.count () ; i++) {
     if (isNodeDefined (uint32_t (i))) {
@@ -165,7 +165,7 @@ String C_DirectedGraph::graphvizString (const TC_UniqueArray <String> & inNodeNa
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
-  void C_DirectedGraph::checkGraph (LOCATION_ARGS) const {
+  void DirectedGraph::checkGraph (LOCATION_ARGS) const {
     macroAssertThere (mEdges.count () == mReverseEdges.count (), "mEdges.count () %lld != mReverseEdges.count () %lld", mEdges.count (), mReverseEdges.count ()) ;
     macroAssertThere (mNodes.firstValueNotIsSet () == (uint32_t) (mEdges.count ()), "mNodes.firstValueNotIsSet () %lld != mEdges.count () %lld", mNodes.firstValueNotIsSet (), mEdges.count ()) ;
   //---
@@ -189,7 +189,7 @@ String C_DirectedGraph::graphvizString (const TC_UniqueArray <String> & inNodeNa
 
 //--------------------------------------------------------------------------------------------------
 
-void C_DirectedGraph::getEdges (TC_UniqueArray <cEdge> & outEdges) const {
+void DirectedGraph::getEdges (TC_UniqueArray <cEdge> & outEdges) const {
   outEdges.removeAllKeepingCapacity () ;
   for (int32_t i=0 ; i<mEdges.count () ; i++) {
     TC_UniqueArray <uint32_t> targetList ; mEdges (i COMMA_HERE).getValueArray (targetList) ;
@@ -202,7 +202,7 @@ void C_DirectedGraph::getEdges (TC_UniqueArray <cEdge> & outEdges) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_DirectedGraph::getNodesWithNoPredecessor (TC_UniqueArray <uint32_t> & outNodes) const {
+void DirectedGraph::getNodesWithNoPredecessor (TC_UniqueArray <uint32_t> & outNodes) const {
   outNodes.removeAllKeepingCapacity () ;
   for (uint32_t i=0 ; i<(uint32_t) mReverseEdges.count () ; i++) {
     if (isNodeDefined (i) && mReverseEdges ((int32_t) i COMMA_HERE).isEmpty ()) {
@@ -213,7 +213,7 @@ void C_DirectedGraph::getNodesWithNoPredecessor (TC_UniqueArray <uint32_t> & out
 
 //--------------------------------------------------------------------------------------------------
 
-void C_DirectedGraph::getNodesWithNoSuccessor (TC_UniqueArray <uint32_t> & outNodes) const {
+void DirectedGraph::getNodesWithNoSuccessor (TC_UniqueArray <uint32_t> & outNodes) const {
   outNodes.removeAllKeepingCapacity () ;
   for (uint32_t i=0 ; i<(uint32_t) mEdges.count () ; i++) {
     if (isNodeDefined (i) && mEdges ((int32_t) i COMMA_HERE).isEmpty ()) {
@@ -224,7 +224,7 @@ void C_DirectedGraph::getNodesWithNoSuccessor (TC_UniqueArray <uint32_t> & outNo
 
 //--------------------------------------------------------------------------------------------------
 
-void C_DirectedGraph::getNodesInvolvedInCircularities (TC_UniqueArray <uint32_t> & outNodes) const {
+void DirectedGraph::getNodesInvolvedInCircularities (TC_UniqueArray <uint32_t> & outNodes) const {
   outNodes.removeAllKeepingCapacity () ;
 //--- Get working copies
   TC_UniqueArray <bool> nodes ; getNodeBoolArray (nodes) ;
@@ -266,10 +266,10 @@ void C_DirectedGraph::getNodesInvolvedInCircularities (TC_UniqueArray <uint32_t>
 
 //--------------------------------------------------------------------------------------------------
 
-C_DirectedGraph C_DirectedGraph::subGraphFromNodes (const UInt32Set & inStartNodes,
+DirectedGraph DirectedGraph::subGraphFromNodes (const UInt32Set & inStartNodes,
                                                     const UInt32Set & inNodesToExclude) const {
   TC_UniqueArray <bool> nodeBoolArray ; mNodes.getBoolValueArray (nodeBoolArray) ;
-  C_DirectedGraph result ;
+  DirectedGraph result ;
   { UInt32Set nodeSet = inStartNodes ;
     nodeSet -= inNodesToExclude ;
     result.addNodes (nodeSet) ;
@@ -297,7 +297,7 @@ C_DirectedGraph C_DirectedGraph::subGraphFromNodes (const UInt32Set & inStartNod
 
 //--------------------------------------------------------------------------------------------------
 
-void C_DirectedGraph::removeEdgesToNode (const uint32_t inNodeIndex
+void DirectedGraph::removeEdgesToNode (const uint32_t inNodeIndex
                                          COMMA_LOCATION_ARGS) {
 //--- get nodes that have edges to this node
   const UInt32Set nodeSet = mReverseEdges ((int32_t) inNodeIndex COMMA_THERE) ;
@@ -317,7 +317,7 @@ void C_DirectedGraph::removeEdgesToNode (const uint32_t inNodeIndex
 
 //--------------------------------------------------------------------------------------------------
 
-void C_DirectedGraph::addEdge (const uint32_t inSourceNodeIndex,
+void DirectedGraph::addEdge (const uint32_t inSourceNodeIndex,
                               const uint32_t inTargetNodeIndex) {
   addNode (inSourceNodeIndex) ;
   addNode (inTargetNodeIndex) ;
@@ -330,7 +330,7 @@ void C_DirectedGraph::addEdge (const uint32_t inSourceNodeIndex,
 
 //--------------------------------------------------------------------------------------------------
 
-void C_DirectedGraph::print (void) const {
+void DirectedGraph::print (void) const {
   for (int32_t i=0 ; i<mEdges.count () ; i++) {
     if (isNodeDefined ((uint32_t) i)) {
       printf ("Node %d:\n", i) ;
@@ -344,7 +344,7 @@ void C_DirectedGraph::print (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_DirectedGraph::topologicalSort (TC_UniqueArray <uint32_t> & outSortedNodes,
+void DirectedGraph::topologicalSort (TC_UniqueArray <uint32_t> & outSortedNodes,
                                        TC_UniqueArray <uint32_t> & outUnsortedNodes) const {
   outSortedNodes.removeAllKeepingCapacity () ;
   outUnsortedNodes.removeAllKeepingCapacity () ;
@@ -384,7 +384,7 @@ void C_DirectedGraph::topologicalSort (TC_UniqueArray <uint32_t> & outSortedNode
 
 //--------------------------------------------------------------------------------------------------
 
-void C_DirectedGraph::depthFirstTopologicalSort (TC_UniqueArray <uint32_t> & outSortedNodes,
+void DirectedGraph::depthFirstTopologicalSort (TC_UniqueArray <uint32_t> & outSortedNodes,
                                                  TC_UniqueArray <uint32_t> & outUnsortedNodes) const {
   outSortedNodes.removeAllKeepingCapacity () ;
   outUnsortedNodes.removeAllKeepingCapacity () ;
@@ -437,7 +437,7 @@ void C_DirectedGraph::depthFirstTopologicalSort (TC_UniqueArray <uint32_t> & out
 // http://en.wikipedia.org/wiki/Dominator_(graph_theory)
 // a node d dominates a node n if every path from the start node to n must go through d
 
-void C_DirectedGraph::getDominators (TC_UniqueArray <UInt32Set> & outDominators
+void DirectedGraph::getDominators (TC_UniqueArray <UInt32Set> & outDominators
                                      COMMA_LOCATION_ARGS) const {
   outDominators.removeAllKeepingCapacity () ;
 //--- Enter initial dominators
@@ -482,7 +482,7 @@ void C_DirectedGraph::getDominators (TC_UniqueArray <UInt32Set> & outDominators
 
 //--------------------------------------------------------------------------------------------------
 
-void C_DirectedGraph::removeEdgesToDominator (LOCATION_ARGS) {
+void DirectedGraph::removeEdgesToDominator (LOCATION_ARGS) {
   TC_UniqueArray <UInt32Set> dominators ; getDominators (dominators COMMA_THERE) ;
   for (int32_t node=0 ; node<mEdges.count () ; node++) {
     if (isNodeDefined ((uint32_t) node)) {
@@ -508,8 +508,8 @@ void C_DirectedGraph::removeEdgesToDominator (LOCATION_ARGS) {
 //
 //--------------------------------------------------------------------------------------------------
 
-void C_DirectedGraph::example (void) {
-  C_DirectedGraph g ;
+void DirectedGraph::example (void) {
+  DirectedGraph g ;
 
   g.addEdge (17, 33) ;
   g.addEdge (17, 35) ;

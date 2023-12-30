@@ -21,7 +21,7 @@
 #include "all-predefined-types.h"
 #include "utilities/MF_MemoryControl.h"
 #include "galgas2/Compiler.h"
-#include "utilities/C_DirectedGraph.h"
+#include "utilities/DirectedGraph.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -65,7 +65,7 @@ class cSharedGraph : public SharedObject {
 //--------------------------------- Attributes
   private: cGraphNode * mRoot ;
   public: inline const cGraphNode * root (void) const { return mRoot ; }
-  private: C_DirectedGraph mDirectedGraph ;
+  private: DirectedGraph mDirectedGraph ;
   private: TC_UniqueArray <cGraphNode *> mNodeArray ;
 
 //--- Constructor
@@ -586,7 +586,7 @@ void cSharedGraph::subGraph (AC_GALGAS_graph & outResultingGraph,
     enumerator2.gotoNextObject () ;
   }
 //--- Build sub graph
-  const C_DirectedGraph theSubGraph = mDirectedGraph.subGraphFromNodes (
+  const DirectedGraph theSubGraph = mDirectedGraph.subGraphFromNodes (
     startNodeSet,
     nodesToExcludeSet
   ) ;

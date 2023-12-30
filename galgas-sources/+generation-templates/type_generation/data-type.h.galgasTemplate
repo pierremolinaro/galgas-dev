@@ -7,18 +7,18 @@
 class GALGAS_data : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private: bool mIsValid ;
-  private: C_Data mData ;
+  private: U8Data mData ;
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }
   public: VIRTUAL_IN_DEBUG inline void drop (void) override { mIsValid = false ; }
-  public: inline C_Data dataValue (void) const { return mData ; }
+  public: inline U8Data dataValue (void) const { return mData ; }
 
 //--------------------------------- Default constructor
   public: GALGAS_data (void) ;
 
 //--------------------------------- Native constructors
-  public: GALGAS_data (const C_Data & inData) ;
+  public: GALGAS_data (const U8Data & inData) ;
 
 %
 

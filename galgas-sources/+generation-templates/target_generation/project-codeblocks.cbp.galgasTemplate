@@ -146,7 +146,7 @@ end
    <Unit filename="%!LIBPM_PATH%/time/DateTime.cpp" />
    <Unit filename="%!LIBPM_PATH%/utilities/C_PrologueEpilogue.cpp" />
    <Unit filename="%!LIBPM_PATH%/utilities/SharedObject.cpp" />
-   <Unit filename="%!LIBPM_PATH%/utilities/C_Data.cpp" />
+   <Unit filename="%!LIBPM_PATH%/utilities/U8Data.cpp" />
    <Unit filename="%!LIBPM_PATH%/utilities/F_DisplayException.cpp" />
    <Unit filename="%!LIBPM_PATH%/utilities/macroAssert.cpp" />
    <Unit filename="%!LIBPM_PATH%/utilities/F_GetPrime.cpp" />
@@ -154,7 +154,7 @@ end
    <Unit filename="%!LIBPM_PATH%/utilities/cpp-allocation.cpp" />
    <Unit filename="%!LIBPM_PATH%/utilities/basic-allocation.cpp" />
    <Unit filename="%!LIBPM_PATH%/utilities/UInt32Set.cpp" />
-   <Unit filename="%!LIBPM_PATH%/utilities/C_DirectedGraph.cpp" />
+   <Unit filename="%!LIBPM_PATH%/utilities/DirectedGraph.cpp" />
    <Unit filename="%!LIBPM_PATH%/utilities/md5.cpp" />
    <Unit filename="%!LIBPM_PATH%/utilities/galgas-random.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas2/C_galgas_CLI_Options.cpp" />

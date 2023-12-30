@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  C_DirectedGraph : algorithms on ordered graphs                                               
+//  DirectedGraph : algorithms on ordered graphs                                               
 //
 //  This file is part of libpm library                                                           
 //
@@ -35,9 +35,9 @@ typedef struct {
 
 //--------------------------------------------------------------------------------------------------
 
-class C_DirectedGraph final {
+class DirectedGraph final {
 //--- Default constructor
-  public: C_DirectedGraph (void) ;
+  public: DirectedGraph (void) ;
 
 //--- Example
   public: static void example (void) ;
@@ -90,9 +90,9 @@ class C_DirectedGraph final {
   public: void depthFirstTopologicalSort (TC_UniqueArray <uint32_t> & outSortedNodes,
                                            TC_UniqueArray <uint32_t> & outUnsortedNodes) const ;
   
-  public: C_DirectedGraph reversedGraph (void) const ;
+  public: DirectedGraph reversedGraph (void) const ;
   
-  public: C_DirectedGraph subGraphFromNodes (const UInt32Set & inStartNodes,
+  public: DirectedGraph subGraphFromNodes (const UInt32Set & inStartNodes,
                                               const UInt32Set & inNodesToExclude) const ;
   
   #ifndef DO_NOT_GENERATE_CHECKINGS

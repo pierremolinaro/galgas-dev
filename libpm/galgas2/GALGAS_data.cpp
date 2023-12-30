@@ -40,7 +40,7 @@ mData () {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_data::GALGAS_data (const C_Data & inData) :
+GALGAS_data::GALGAS_data (const U8Data & inData) :
 AC_GALGAS_root (),
 mIsValid (true),
 mData (inData) {
@@ -49,7 +49,7 @@ mData (inData) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_data GALGAS_data::constructor_emptyData (UNUSED_LOCATION_ARGS) {
-  return GALGAS_data (C_Data ()) ;
+  return GALGAS_data (U8Data ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -59,7 +59,7 @@ GALGAS_data GALGAS_data::constructor_dataWithContentsOfFile (const GALGAS_string
                                                              COMMA_LOCATION_ARGS) {
   GALGAS_data result ;
   if (inFilePath.isValid()){
-    C_Data binaryData ;
+    U8Data binaryData ;
     const bool ok = FileManager::binaryDataWithContentOfFile (inFilePath.stringValue (), binaryData) ;
     if (ok) {
 
@@ -246,7 +246,7 @@ void GALGAS_data::method_writeToFileWhenDifferentContents (GALGAS_string inFileP
     const bool fileAlreadyExists = FileManager::fileExistsAtPath (inFilePath.stringValue ()) ;
     if (fileAlreadyExists) {
       inCompiler->logFileRead (inFilePath.stringValue ()) ;
-      C_Data binaryData ;
+      U8Data binaryData ;
       FileManager::binaryDataWithContentOfFile (inFilePath.stringValue (), binaryData) ;
       needToWrite = mData != binaryData ;
     }
