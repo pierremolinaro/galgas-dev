@@ -5,8 +5,8 @@
 //  Created by Pierre Molinaro on 22/05/14.
 //--------------------------------------------------------------------------------------------------
 
-#include "bdd/C_Relation.h"
-#include "utilities/SharedObject.h"
+#include "C_Relation.h"
+#include "SharedObject.h"
 
 //--------------------------------------------------------------------------------------------------
 

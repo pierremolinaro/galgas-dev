@@ -18,10 +18,10 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "galgas2/cLexiqueIntrospection.h"
-#include "galgas2/C_galgas_CLI_Options.h"
-#include "galgas2/Compiler.h"
-#include "files/FileManager.h"
+#include "cLexiqueIntrospection.h"
+#include "C_galgas_CLI_Options.h"
+#include "Compiler.h"
+#include "FileManager.h"
 
 //--------------------------------------------------------------------------------------------------
 

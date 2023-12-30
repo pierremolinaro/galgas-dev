@@ -18,8 +18,8 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "command_line_interface/C_UIntCommandLineOption.h"
-#include "strings/String-class.h"
+#include "C_UIntCommandLineOption.h"
+#include "String-class.h"
 
 //--------------------------------------------------------------------------------------------------
 

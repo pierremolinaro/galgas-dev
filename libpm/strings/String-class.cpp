@@ -18,12 +18,12 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "utilities/MF_MemoryControl.h"
-#include "utilities/md5.h"
-#include "utilities/SharedObject.h"
-#include "strings/unicode_string_routines.h"
-#include "strings/unicode_character_cpp.h"
-#include "generic-arraies/TC_UniqueArray2.h"
+#include "MF_MemoryControl.h"
+#include "md5.h"
+#include "SharedObject.h"
+#include "unicode_string_routines.h"
+#include "unicode_character_cpp.h"
+#include "TC_UniqueArray2.h"
 
 //--------------------------------------------------------------------------------------------------
 

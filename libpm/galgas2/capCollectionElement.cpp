@@ -18,9 +18,9 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "galgas2/capCollectionElement.h"
-#include "galgas2/cCollectionElement.h"
-#include "strings/String-class.h"
+#include "capCollectionElement.h"
+#include "cCollectionElement.h"
+#include "String-class.h"
 
 //--------------------------------------------------------------------------------------------------
 

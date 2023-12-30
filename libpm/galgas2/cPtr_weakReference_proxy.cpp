@@ -18,9 +18,9 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "galgas2/cPtr_weakReference_proxy.h"
-#include "galgas2/acStrongPtr_class.h"
-#include "strings/String-class.h"
+#include "cPtr_weakReference_proxy.h"
+#include "acStrongPtr_class.h"
+#include "String-class.h"
 
 //--------------------------------------------------------------------------------------------------
 

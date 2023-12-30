@@ -18,9 +18,9 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "time/Timer.h"
-#include "utilities/M_machine.h"
-#include "strings/String-class.h"
+#include "Timer.h"
+#include "M_machine.h"
+#include "String-class.h"
 
 //--------------------------------------------------------------------------------------------------
 

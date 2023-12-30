@@ -19,10 +19,10 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "all-predefined-types.h"
-#include "galgas2/Compiler.h"
-#include "galgas2/C_galgas_io.h"
-#include "strings/unicode_character_cpp.h"
-#include "utilities/galgas-random.h"
+#include "Compiler.h"
+#include "C_galgas_io.h"
+#include "unicode_character_cpp.h"
+#include "galgas-random.h"
 
 //--------------------------------------------------------------------------------------------------
 

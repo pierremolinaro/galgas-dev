@@ -16,9 +16,9 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "all-declarations.h"
-#include "time/Timer.h"
-#include "utilities/M_machine.h"
-#include "utilities/galgas-random.h"
+#include "Timer.h"
+#include "M_machine.h"
+#include "galgas-random.h"
 
 //--------------------------------------------------------------------------------------------------
 

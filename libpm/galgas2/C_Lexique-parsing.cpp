@@ -19,15 +19,15 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "galgas2/C_Lexique.h"
+#include "C_Lexique.h"
 #include "all-predefined-types.h"
-#include "utilities/MF_MemoryControl.h"
-#include "strings/unicode_character_cpp.h"
-#include "strings/unicode_string_routines.h"
-#include "galgas2/C_galgas_CLI_Options.h"
-#include "galgas2/cIndexingDictionary.h"
-#include "files/FileManager.h"
-#include "galgas2/F_verbose_output.h"
+#include "MF_MemoryControl.h"
+#include "unicode_character_cpp.h"
+#include "unicode_string_routines.h"
+#include "C_galgas_CLI_Options.h"
+#include "cIndexingDictionary.h"
+#include "FileManager.h"
+#include "F_verbose_output.h"
 
 //--------------------------------------------------------------------------------------------------
 

@@ -23,10 +23,10 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "galgas2/Compiler.h"
-#include "galgas2/cProductionNameDescriptor.h"
-#include "galgas2/cTemplateDelimiter.h"
-#include "galgas2/C_galgas_io.h"
+#include "Compiler.h"
+#include "cProductionNameDescriptor.h"
+#include "cTemplateDelimiter.h"
+#include "C_galgas_io.h"
 
 //--------------------------------------------------------------------------------------------------
 

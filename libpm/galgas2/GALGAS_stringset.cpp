@@ -19,9 +19,9 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "all-predefined-types.h"
-#include "utilities/MF_MemoryControl.h"
-#include "galgas2/cCollectionElement.h"
-#include "galgas2/Compiler.h"
+#include "MF_MemoryControl.h"
+#include "cCollectionElement.h"
+#include "Compiler.h"
 
 //--------------------------------------------------------------------------------------------------
 //   cCollectionElement_stringset

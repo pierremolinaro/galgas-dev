@@ -18,8 +18,8 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "command_line_interface/C_BoolCommandLineOption.h"
-#include "strings/String-class.h"
+#include "C_BoolCommandLineOption.h"
+#include "String-class.h"
 
 //--------------------------------------------------------------------------------------------------
 

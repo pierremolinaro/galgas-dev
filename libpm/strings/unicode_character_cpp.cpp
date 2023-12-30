@@ -18,9 +18,9 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "strings/unicode_character_cpp.h"
+#include "unicode_character_cpp.h"
 #include "cUnicodeData.h"
-#include "strings/String-class.h"
+#include "String-class.h"
 
 //--------------------------------------------------------------------------------------------------
 

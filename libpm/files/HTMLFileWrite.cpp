@@ -19,9 +19,9 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "files/HTMLFileWrite.h"
-#include "strings/String-class.h"
-#include "time/DateTime.h"
+#include "HTMLFileWrite.h"
+#include "String-class.h"
+#include "DateTime.h"
 
 //--------------------------------------------------------------------------------------------------
 

@@ -18,9 +18,9 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "utilities/M_machine.h"
-#include "utilities/MF_MemoryControl.h"
-#include "utilities/basic-allocation.h"
+#include "M_machine.h"
+#include "MF_MemoryControl.h"
+#include "basic-allocation.h"
 
 //--------------------------------------------------------------------------------------------------
 

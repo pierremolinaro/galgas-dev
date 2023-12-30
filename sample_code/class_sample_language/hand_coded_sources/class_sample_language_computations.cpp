@@ -7,7 +7,7 @@
 //---------------------------------------------------------------------------*
 
 #include "class_sample_language_semantics.h"
-#include "utilities/MF_MemoryControl.h"
+#include "MF_MemoryControl.h"
 
 //---------------------------------------------------------------------------*
 

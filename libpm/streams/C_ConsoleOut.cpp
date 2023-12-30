@@ -18,8 +18,8 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "streams/C_ConsoleOut.h"
-#include "strings/unicode_character_cpp.h"
+#include "C_ConsoleOut.h"
+#include "unicode_character_cpp.h"
 
 //--------------------------------------------------------------------------------------------------
 

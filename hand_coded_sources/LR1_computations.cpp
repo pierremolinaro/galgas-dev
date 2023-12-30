@@ -15,10 +15,10 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "strings/HTMLString.h"
-#include "utilities/MF_MemoryControl.h"
-#include "galgas2/Compiler.h"
-#include "generic-arraies/TC_UniqueArray2.h"
+#include "HTMLString.h"
+#include "MF_MemoryControl.h"
+#include "Compiler.h"
+#include "TC_UniqueArray2.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1124,9 +1124,9 @@ generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
                                String & ioCppFileContents,
                                const String & inSyntaxDirectedTranslationVarName) {
 //--- Generate header file inclusion -----------------------------------------
-  ioCppFileContents.addString ("#include \"utilities/MF_MemoryControl.h\"\n") ;
-  ioCppFileContents.addString ("#include \"galgas2/C_galgas_CLI_Options.h\"\n\n") ;
-  ioCppFileContents.addString ("#include \"files/FileManager.h\"\n\n") ;
+  ioCppFileContents.addString ("#include \"MF_MemoryControl.h\"\n") ;
+  ioCppFileContents.addString ("#include \"C_galgas_CLI_Options.h\"\n\n") ;
+  ioCppFileContents.addString ("#include \"FileManager.h\"\n\n") ;
 
   ioCppFileContents.addCppHyphenLineComment () ;
   ioCppFileContents.addNL () ;

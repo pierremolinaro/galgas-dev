@@ -15,16 +15,16 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "files/FileManager.h"
-#include "bdd/C_Relation.h"
-#include "utilities/MF_MemoryControl.h"
-#include "streams/C_ConsoleOut.h"
-#include "galgas2/C_galgas_CLI_Options.h"
-#include "galgas2/Compiler.h"
+#include "FileManager.h"
+#include "C_Relation.h"
+#include "MF_MemoryControl.h"
+#include "C_ConsoleOut.h"
+#include "C_galgas_CLI_Options.h"
+#include "Compiler.h"
 #include "galgas_cli_options.h"
-#include "galgas2/C_galgas_io.h"
-#include "strings/HTMLString.h"
-#include "galgas2/F_verbose_output.h"
+#include "C_galgas_io.h"
+#include "HTMLString.h"
+#include "F_verbose_output.h"
 
 //--------------------------------------------------------------------------------------------------
 

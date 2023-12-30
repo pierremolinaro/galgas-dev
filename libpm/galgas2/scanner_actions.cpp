@@ -18,9 +18,9 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "galgas2/scanner_actions.h"
-#include "strings/unicode_character_cpp.h"
-#include "big-integers/BigSigned.h"
+#include "scanner_actions.h"
+#include "unicode_character_cpp.h"
+#include "BigSigned.h"
 
 //--------------------------------------------------------------------------------------------------
 

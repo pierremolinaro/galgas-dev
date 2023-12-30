@@ -18,9 +18,9 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "galgas2/C_galgas_CLI_Options.h"
-#include "galgas2/C_galgas_CLI_Options.h"
-#include "utilities/PrologueEpilogue.h"
+#include "C_galgas_CLI_Options.h"
+#include "C_galgas_CLI_Options.h"
+#include "PrologueEpilogue.h"
 
 //--------------------------------------------------------------------------------------------------
 

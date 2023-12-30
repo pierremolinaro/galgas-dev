@@ -19,8 +19,8 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "all-predefined-types.h"
-#include "galgas2/Compiler.h"
-#include "strings/unicode_character_cpp.h"
+#include "Compiler.h"
+#include "unicode_character_cpp.h"
 
 //--------------------------------------------------------------------------------------------------
 

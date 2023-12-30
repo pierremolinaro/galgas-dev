@@ -1,7 +1,7 @@
-#include "galgas2/Compiler.h"
-#include "galgas2/C_galgas_io.h"
-#include "galgas2/C_galgas_CLI_Options.h"
-#include "utilities/PrologueEpilogue.h"
+#include "Compiler.h"
+#include "C_galgas_io.h"
+#include "C_galgas_CLI_Options.h"
+#include "PrologueEpilogue.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2963,62 +2963,80 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_json_5F_
                                                                                               const GALGAS_string & in_RELATIVE_5F_BUILD_5F_DIR
                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
-  result.addString ("{\n    \"LIBPM_DIRECTORY_PATH\"  :  \"") ;
+  result.addString ("{   \"LIBPM_DIRECTORY_PATH\" : \"") ;
   result.addString (in_LIBPM_5F_DIRECTORY_5F_PATH.stringValue ()) ;
   result.addString ("\",\n    \"SOURCES_DIR\"  :  [\"../") ;
   result.addString (in_RELATIVE_5F_BUILD_5F_DIR.stringValue ()) ;
-  result.addString ("/output\",  \"../") ;
+  result.addString ("/output\",\n                       \"../") ;
   result.addString (in_RELATIVE_5F_BUILD_5F_DIR.stringValue ()) ;
-  result.addString ("/user-headers\",  \"") ;
+  result.addString ("/user-headers\",\n                       \"") ;
   result.addString (in_LIBPM_5F_DIRECTORY_5F_PATH.stringValue ()) ;
-  result.addString ("\"") ;
-  GALGAS_uint index_231_ (0) ;
+  result.addString ("/bdd\",\n                       \"") ;
+  result.addString (in_LIBPM_5F_DIRECTORY_5F_PATH.stringValue ()) ;
+  result.addString ("/big-integers\",\n                       \"") ;
+  result.addString (in_LIBPM_5F_DIRECTORY_5F_PATH.stringValue ()) ;
+  result.addString ("/command_line_interface\",\n                       \"") ;
+  result.addString (in_LIBPM_5F_DIRECTORY_5F_PATH.stringValue ()) ;
+  result.addString ("/files\",\n                       \"") ;
+  result.addString (in_LIBPM_5F_DIRECTORY_5F_PATH.stringValue ()) ;
+  result.addString ("/galgas2\",\n                       \"") ;
+  result.addString (in_LIBPM_5F_DIRECTORY_5F_PATH.stringValue ()) ;
+  result.addString ("/generic-arraies\",\n                       \"") ;
+  result.addString (in_LIBPM_5F_DIRECTORY_5F_PATH.stringValue ()) ;
+  result.addString ("/streams\",\n                       \"") ;
+  result.addString (in_LIBPM_5F_DIRECTORY_5F_PATH.stringValue ()) ;
+  result.addString ("/strings\",\n                       \"") ;
+  result.addString (in_LIBPM_5F_DIRECTORY_5F_PATH.stringValue ()) ;
+  result.addString ("/time\",\n                       \"") ;
+  result.addString (in_LIBPM_5F_DIRECTORY_5F_PATH.stringValue ()) ;
+  result.addString ("/utilities\"") ;
+  GALGAS_uint index_822_ (0) ;
   if (in_HAND_5F_CODED_5F_SOURCE_5F_DIR_5F_SET.isValid ()) {
-    cEnumerator_stringset enumerator_231 (in_HAND_5F_CODED_5F_SOURCE_5F_DIR_5F_SET, kENUMERATION_UP) ;
-    while (enumerator_231.hasCurrentObject ()) {
-      result.addString (",  \"") ;
-      result.addString (enumerator_231.current_key (HERE).stringValue ()) ;
+    cEnumerator_stringset enumerator_822 (in_HAND_5F_CODED_5F_SOURCE_5F_DIR_5F_SET, kENUMERATION_UP) ;
+    while (enumerator_822.hasCurrentObject ()) {
+      result.addString (",\n                       \"") ;
+      result.addString (enumerator_822.current_key (HERE).stringValue ()) ;
       result.addString ("\"") ;
-      index_231_.increment () ;
-      enumerator_231.gotoNextObject () ;
+      index_822_.increment () ;
+      enumerator_822.gotoNextObject () ;
     }
   }
   result.addString ("],\n    \"SOURCES\"  :  [\n") ;
-  GALGAS_uint index_321_ (0) ;
+  GALGAS_uint index_935_ (0) ;
   if (in_MAKEFILE_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_321 (in_MAKEFILE_5F_FILE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_321.hasCurrentObject ()) {
+    cEnumerator_stringlist enumerator_935 (in_MAKEFILE_5F_FILE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_935.hasCurrentObject ()) {
       result.addString ("        \"") ;
-      result.addString (enumerator_321.current_mValue (HERE).stringValue ()) ;
+      result.addString (enumerator_935.current_mValue (HERE).stringValue ()) ;
       result.addString ("\",\n") ;
-      index_321_.increment () ;
-      enumerator_321.gotoNextObject () ;
+      index_935_.increment () ;
+      enumerator_935.gotoNextObject () ;
     }
   }
-  GALGAS_uint index_405_ (0) ;
+  GALGAS_uint index_1019_ (0) ;
   if (in_HAND_5F_CODED_5F_SOURCE_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_405 (in_HAND_5F_CODED_5F_SOURCE_5F_FILE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_405.hasCurrentObject ()) {
+    cEnumerator_stringlist enumerator_1019 (in_HAND_5F_CODED_5F_SOURCE_5F_FILE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_1019.hasCurrentObject ()) {
       result.addString ("        \"") ;
-      result.addString (enumerator_405.current_mValue (HERE).stringValue ()) ;
+      result.addString (enumerator_1019.current_mValue (HERE).stringValue ()) ;
       result.addString ("\",\n") ;
-      index_405_.increment () ;
-      enumerator_405.gotoNextObject () ;
+      index_1019_.increment () ;
+      enumerator_1019.gotoNextObject () ;
     }
   }
   result.addString ("       \"C_CommandLineOption.cpp\",\n       \"C_BoolCommandLineOption.cpp\",\n       \"C_UIntCommandLineOption.cpp\",\n       \"C_StringCommandLineOption.cpp\",\n       \"C_StringListCommandLineOption.cpp\",\n       \"C_builtin_CLI_Options.cpp\",\n       \"F_Analyze_CLI_Options.cpp\",\n       \"F_mainForLIBPM.cpp\",\n       \"C_BDD.cpp\",\n       \"C_BDD-find-or-add.cpp\",\n       \"C_BDD-build-value-array.cpp\",\n       \"C_BDD-value-count.cpp\",\n       \"C_BDD-operators.cpp\",\n       \"C_BDD-single-operand-ops.cpp\",\n       \"C_BDD-and-operation.cpp\",\n       \"C_RelationSingleType.cpp\",\n       \"C_RelationConfiguration.cpp\",\n       \"C_Relation.cpp\",\n       \"FileManager.cpp\",\n       \"AbstractFileHandle.cpp\",\n       \"TextFileWrite.cpp\",\n       \"HTMLFileWrite.cpp\",\n       \"BinaryFileWrite.cpp\",\n       \"AbstractOutputStream.cpp\",\n       \"C_ColoredConsole.cpp\",\n       \"C_ConsoleOut.cpp\",\n       \"C_ErrorOut.cpp\",\n       \"unicode_character_cpp.cpp\",\n       \"unicode_string_routines.cpp\",\n       \"String-class-getters.cpp\",\n       \"String-class.cpp\",\n       \"HTMLString.cpp\",\n       \"print.cpp\",\n       \"Timer.cpp\",\n       \"DateTime.cpp\",\n       \"PrologueEpilogue.cpp\",\n       \"SharedObject.cpp\",\n       \"BigSigned-add.cpp\",\n       \"BigSigned-bit.cpp\",\n       \"BigSigned-chunk-operations.cpp\",\n       \"BigSigned-constructors.cpp\",\n       \"BigSigned-conversions.cpp\",\n       \"BigSigned-divide.cpp\",\n       \"BigSigned-logic-operations.cpp\",\n       \"BigSigned-multiply.cpp\",\n       \"BigSigned-print.cpp\",\n       \"BigSigned-shifts.cpp\",\n       \"BigSigned-subtract.cpp\",\n       \"BigSigned-utilities.cpp\",\n       \"BigSigned.cpp\",\n       \"BigUnsigned-add.cpp\",\n       \"BigUnsigned-bit.cpp\",\n       \"BigUnsigned-chunk-operations.cpp\",\n       \"BigUnsigned-constructors.cpp\",\n       \"BigUnsigned-conversions.cpp\",\n       \"BigUnsigned-divide-naive.cpp\",\n       \"BigUnsigned-divide.cpp\",\n       \"BigUnsigned-logic-operations.cpp\",\n       \"BigUnsigned-multiply.cpp\",\n       \"BigUnsigned-print.cpp\",\n       \"BigUnsigned-shifts.cpp\",\n       \"BigUnsigned-subtract.cpp\",\n       \"BigUnsigned-utilities.cpp\",\n       \"ChunkSharedArray.cpp\",\n       \"UInt128.cpp\",\n       \"U8Data.cpp\",\n       \"F_DisplayException.cpp\",\n       \"macroAssert.cpp\",\n       \"F_GetPrime.cpp\",\n       \"MF_MemoryControl.cpp\",\n       \"cpp-allocation.cpp\",\n       \"basic-allocation.cpp\",\n       \"UInt32Set.cpp\",\n       \"DirectedGraph.cpp\",\n       \"md5.cpp\",\n       \"galgas-random.cpp\",\n       \"C_galgas_CLI_Options.cpp\",\n       \"typeComparisonResult.cpp\",\n       \"Compiler.cpp\",\n       \"C_Lexique.cpp\",\n       \"C_Lexique-parsing.cpp\",\n       \"LocationInSource.cpp\",\n       \"SourceTextInString.cpp\",\n       \"C_galgas_type_descriptor.cpp\",\n       \"C_galgas_function_descriptor.cpp\",\n       \"C_galgas_io.cpp\",\n       \"C_galgas_class_inspector.cpp\",\n       \"C_IssueWithFixIt.cpp\",\n       \"cObjectArray.cpp\",\n       \"cCollectionElement.cpp\",\n       \"capCollectionElement.cpp\",\n       \"capCollectionElementArray.cpp\",\n       \"cSortedListElement.cpp\",\n       \"capSortedListElement.cpp\",\n       \"cGenericAbstractEnumerator.cpp\",\n       \"cEnumerator_range.cpp\",\n       \"cIndexingDictionary.cpp\",\n       \"cIssueDescriptor.cpp\",\n       \"cLexiqueIntrospection.cpp\",\n       \"AC_GALGAS_root.cpp\",\n       \"AC_GALGAS_list.cpp\",\n       \"AC_GALGAS_sortedlist.cpp\",\n       \"AC_GALGAS_map.cpp\",\n       \"AC_GALGAS_reference_class.cpp\",\n       \"AC_GALGAS_value_class.cpp\",\n       \"AC_GALGAS_graph.cpp\",\n       \"AC_GALGAS_enumAssociatedValues.cpp\",\n       \"acPtr_class.cpp\",\n       \"acStrongPtr_class.cpp\",\n       \"cPtr_weakReference_proxy.cpp\",\n       \"AC_GALGAS_weak_reference.cpp\",\n       \"cPtr_object.cpp\",\n       \"scanner_actions.cpp\",\n       \"GALGAS_application.cpp\",\n       \"GALGAS_bigint.cpp\",\n       \"GALGAS_binaryset.cpp\",\n       \"GALGAS_bool.cpp\",\n       \"GALGAS_char.cpp\",\n       \"GALGAS_data.cpp\",\n       \"GALGAS_double.cpp\",\n       \"GALGAS_filewrapper.cpp\",\n       \"GALGAS_function.cpp\",\n       \"GALGAS_location.cpp\",\n       \"GALGAS_sint.cpp\",\n       \"GALGAS_sint_36__34_.cpp\",\n       \"GALGAS_string.cpp\",\n       \"GALGAS_string-getters.cpp\",\n       \"GALGAS_stringset.cpp\",\n       \"GALGAS_type.cpp\",\n       \"GALGAS_object.cpp\",\n       \"GALGAS_uint.cpp\",\n       \"GALGAS_timer.cpp\",\n       \"GALGAS_uint_36__34_.cpp\"\n    ],\n    \"USER_LINK_OPTIONS\"  :  [") ;
-  GALGAS_uint index_4739_ (0) ;
+  GALGAS_uint index_5353_ (0) ;
   if (in_TOOL_5F_LINK_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_4739 (in_TOOL_5F_LINK_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_4739.hasCurrentObject ()) {
+    cEnumerator_stringlist enumerator_5353 (in_TOOL_5F_LINK_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_5353.hasCurrentObject ()) {
       result.addString ("\n        \"") ;
-      result.addString (enumerator_4739.current_mValue (HERE).stringValue ()) ;
+      result.addString (enumerator_5353.current_mValue (HERE).stringValue ()) ;
       result.addString ("\"") ;
-      if (enumerator_4739.hasNextObject ()) {
+      if (enumerator_5353.hasNextObject ()) {
         result.addString (",") ;
       }
-      index_4739_.increment () ;
-      enumerator_4739.gotoNextObject () ;
+      index_5353_.increment () ;
+      enumerator_5353.gotoNextObject () ;
     }
   }
   result.addString ("\n    ]\n}\n\n") ;
@@ -4305,13 +4323,13 @@ void routine_updateGalgasTargets_3F_absoluteBuildDir_3F_buildDirName_3F__3F__3F_
 
 
 #include "project_header.h"
-#include "command_line_interface/F_mainForLIBPM.h"
-#include "command_line_interface/F_Analyze_CLI_Options.h"
-#include "command_line_interface/C_builtin_CLI_Options.h"
-#include "galgas2/C_galgas_CLI_Options.h"
-#include "galgas2/F_verbose_output.h"
-#include "galgas2/cLexiqueIntrospection.h"
-#include "utilities/F_DisplayException.h"
+#include "F_mainForLIBPM.h"
+#include "F_Analyze_CLI_Options.h"
+#include "C_builtin_CLI_Options.h"
+#include "C_galgas_CLI_Options.h"
+#include "F_verbose_output.h"
+#include "cLexiqueIntrospection.h"
+#include "F_DisplayException.h"
 
 //--------------------------------------------------------------------------------------------------
 //

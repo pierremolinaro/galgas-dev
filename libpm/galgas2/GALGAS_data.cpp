@@ -19,14 +19,14 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "all-predefined-types.h"
-#include "galgas2/capCollectionElement.h"
-#include "galgas2/cCollectionElement.h"
-#include "galgas2/Compiler.h"
-#include "galgas2/C_galgas_io.h"
-#include "strings/unicode_character_cpp.h"
-#include "galgas2/C_galgas_CLI_Options.h"
-#include "files/BinaryFileWrite.h"
-#include "galgas2/F_verbose_output.h"
+#include "capCollectionElement.h"
+#include "cCollectionElement.h"
+#include "Compiler.h"
+#include "C_galgas_io.h"
+#include "unicode_character_cpp.h"
+#include "C_galgas_CLI_Options.h"
+#include "BinaryFileWrite.h"
+#include "F_verbose_output.h"
 
 //--------------------------------------------------------------------------------------------------
 //   GALGAS_data

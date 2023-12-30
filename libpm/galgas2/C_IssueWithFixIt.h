@@ -22,9 +22,9 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "galgas2/LocationInSource.h"
-#include "strings/String-class.h"
-#include "generic-arraies/TC_Array.h"
+#include "LocationInSource.h"
+#include "String-class.h"
+#include "TC_Array.h"
 
 //--------------------------------------------------------------------------------------------------
 

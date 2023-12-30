@@ -18,14 +18,14 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "command_line_interface/F_Analyze_CLI_Options.h"
-#include "command_line_interface/C_BoolCommandLineOption.h"
-#include "command_line_interface/C_UIntCommandLineOption.h"
-#include "command_line_interface/C_StringCommandLineOption.h"
-#include "command_line_interface/C_StringListCommandLineOption.h"
-#include "command_line_interface/C_builtin_CLI_Options.h"
-#include "streams/C_ConsoleOut.h"
-#include "files/FileManager.h"
+#include "F_Analyze_CLI_Options.h"
+#include "C_BoolCommandLineOption.h"
+#include "C_UIntCommandLineOption.h"
+#include "C_StringCommandLineOption.h"
+#include "C_StringListCommandLineOption.h"
+#include "C_builtin_CLI_Options.h"
+#include "C_ConsoleOut.h"
+#include "FileManager.h"
 
 //--------------------------------------------------------------------------------------------------
 

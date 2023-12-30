@@ -19,11 +19,11 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "all-predefined-types.h"
-#include "galgas2/Compiler.h"
-#include "galgas2/C_galgas_io.h"
-#include "files/FileManager.h"
-#include "files/BinaryFileWrite.h"
-#include "galgas2/F_verbose_output.h"
+#include "Compiler.h"
+#include "C_galgas_io.h"
+#include "FileManager.h"
+#include "BinaryFileWrite.h"
+#include "F_verbose_output.h"
 
 //--------------------------------------------------------------------------------------------------
 

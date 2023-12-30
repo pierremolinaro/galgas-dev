@@ -19,15 +19,15 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "all-predefined-types.h"
-#include "galgas2/C_galgas_CLI_Options.h"
-#include "galgas2/Compiler.h"
-#include "command_line_interface/F_mainForLIBPM.h"
-#include "command_line_interface/F_Analyze_CLI_Options.h"
-#include "strings/unicode_character_cpp.h"
-#include "galgas2/C_galgas_io.h"
-#include "files/FileManager.h"
-#include "files/BinaryFileWrite.h"
-#include "galgas2/F_verbose_output.h"
+#include "C_galgas_CLI_Options.h"
+#include "Compiler.h"
+#include "F_mainForLIBPM.h"
+#include "F_Analyze_CLI_Options.h"
+#include "unicode_character_cpp.h"
+#include "C_galgas_io.h"
+#include "FileManager.h"
+#include "BinaryFileWrite.h"
+#include "F_verbose_output.h"
 
 //--------------------------------------------------------------------------------------------------
 

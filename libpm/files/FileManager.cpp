@@ -18,10 +18,10 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "files/FileManager.h"
-#include "files/TextFileWrite.h"
-#include "files/BinaryFileWrite.h"
-#include "strings/unicode_character_base.h"
+#include "FileManager.h"
+#include "TextFileWrite.h"
+#include "BinaryFileWrite.h"
+#include "unicode_character_base.h"
 
 //--------------------------------------------------------------------------------------------------
 

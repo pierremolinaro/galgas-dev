@@ -22,11 +22,11 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "utilities/M_machine.h"
-#include "big-integers/UInt128.h"
-#include "generic-arraies/TC_UniqueArray.h"
-#include "generic-arraies/TC_Array.h"
-#include "big-integers/BigSigned.h"
+#include "M_machine.h"
+#include "UInt128.h"
+#include "TC_UniqueArray.h"
+#include "TC_Array.h"
+#include "BigSigned.h"
 
 //--------------------------------------------------------------------------------------------------
 

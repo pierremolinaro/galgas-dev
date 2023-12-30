@@ -18,9 +18,9 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "files/BinaryFileWrite.h"
-#include "time/DateTime.h"
-#include "files/FileManager.h"
+#include "BinaryFileWrite.h"
+#include "DateTime.h"
+#include "FileManager.h"
 
 //--------------------------------------------------------------------------------------------------
 

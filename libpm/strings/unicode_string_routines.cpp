@@ -20,7 +20,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "strings/unicode_string_routines.h"
+#include "unicode_string_routines.h"
 
 //--------------------------------------------------------------------------------------------------
 //--- From GLIBC, version 2.7 http://ftp.gnu.org/gnu/glibc/glibc-2.7.tar.bz2

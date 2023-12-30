@@ -18,10 +18,10 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "galgas2/capCollectionElementArray.h"
-#include "utilities/MF_MemoryControl.h"
-#include "strings/String-class.h"
-#include "galgas2/Compiler.h"
+#include "capCollectionElementArray.h"
+#include "MF_MemoryControl.h"
+#include "String-class.h"
+#include "Compiler.h"
 
 //--------------------------------------------------------------------------------------------------
 //   capCollectionRoot

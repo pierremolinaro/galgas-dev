@@ -326,7 +326,7 @@ override method @predefinedTypeAST enterDeclarationInSemanticContext
     !false # Do not generate header in separate file
     !enumeratedTypeEntry
     !defaultConstructorName: [self.mKind defaultConstructorName]
-    !"galgas2/predefined-types"
+    !"predefined-types"
     !@headerKind.twoHeaders
   }
   [!?ioTypeMap insertType !typeDefinition.mTypeName !typeDefinition]

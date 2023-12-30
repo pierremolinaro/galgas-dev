@@ -5,10 +5,10 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "all-predefined-types.h"
-#include "galgas2/cCollectionElement.h"
-#include "galgas2/cSortedListElement.h"
-#include "galgas2/capSortedListElement.h"
-#include "galgas2/Compiler.h"
+#include "cCollectionElement.h"
+#include "cSortedListElement.h"
+#include "capSortedListElement.h"
+#include "Compiler.h"
 
 //--------------------------------------------------------------------------------------------------
 

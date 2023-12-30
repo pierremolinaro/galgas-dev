@@ -18,9 +18,9 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "galgas2/cIndexingDictionary.h"
-#include "strings/String-class.h"
-#include "files/FileManager.h"
+#include "cIndexingDictionary.h"
+#include "String-class.h"
+#include "FileManager.h"
 
 //--------------------------------------------------------------------------------------------------
 

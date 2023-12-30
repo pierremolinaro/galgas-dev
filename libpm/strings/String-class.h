@@ -22,13 +22,13 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "utilities/M_SourceLocation.h"
-#include "generic-arraies/TC_UniqueArray.h"
-#include "utilities/M_machine.h"
-#include "streams/C_ConsoleOut.h"
-#include "utilities/U8Data.h"
-#include "utilities/TF_Swap.h"
-#include "time/DateTime.h"
+#include "M_SourceLocation.h"
+#include "TC_UniqueArray.h"
+#include "M_machine.h"
+#include "C_ConsoleOut.h"
+#include "U8Data.h"
+#include "TF_Swap.h"
+#include "DateTime.h"
 
 //--------------------------------------------------------------------------------------------------
 

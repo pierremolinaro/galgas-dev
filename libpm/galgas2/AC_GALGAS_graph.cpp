@@ -19,9 +19,9 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "all-predefined-types.h"
-#include "utilities/MF_MemoryControl.h"
-#include "galgas2/Compiler.h"
-#include "utilities/DirectedGraph.h"
+#include "MF_MemoryControl.h"
+#include "Compiler.h"
+#include "DirectedGraph.h"
 
 //--------------------------------------------------------------------------------------------------
 

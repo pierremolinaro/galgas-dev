@@ -5,9 +5,9 @@
 //  Created by Pierre Molinaro on 22/05/14.
 //--------------------------------------------------------------------------------------------------
 
-#include "bdd/C_RelationSingleType.h"
-#include "utilities/SharedObject.h"
-#include "strings/String-class.h"
+#include "C_RelationSingleType.h"
+#include "SharedObject.h"
+#include "String-class.h"
 
 //--------------------------------------------------------------------------------------------------
 

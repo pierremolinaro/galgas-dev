@@ -22,9 +22,9 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "strings/String-class.h"
-#include "streams/AbstractOutputStream.h"
-#include "files/AbstractFileHandle.h"
+#include "String-class.h"
+#include "AbstractOutputStream.h"
+#include "AbstractFileHandle.h"
 
 //--------------------------------------------------------------------------------------------------
 

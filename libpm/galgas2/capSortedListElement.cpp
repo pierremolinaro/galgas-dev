@@ -18,9 +18,9 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "galgas2/capSortedListElement.h"
-#include "galgas2/cSortedListElement.h"
-#include "strings/String-class.h"
+#include "capSortedListElement.h"
+#include "cSortedListElement.h"
+#include "String-class.h"
 
 //--------------------------------------------------------------------------------------------------
 

@@ -19,9 +19,9 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "bdd/C_Relation.h"
-#include "strings/String-class.h"
-#include "utilities/TF_Swap.h"
+#include "C_Relation.h"
+#include "String-class.h"
+#include "TF_Swap.h"
 
 //--------------------------------------------------------------------------------------------------
 

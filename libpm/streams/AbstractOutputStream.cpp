@@ -18,11 +18,11 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "streams/AbstractOutputStream.h"
-#include "strings/String-class.h"
-#include "time/DateTime.h"
-#include "strings/unicode_character_cpp.h"
-#include "strings/unicode_string_routines.h"
+#include "AbstractOutputStream.h"
+#include "String-class.h"
+#include "DateTime.h"
+#include "unicode_character_cpp.h"
+#include "unicode_string_routines.h"
 
 //--------------------------------------------------------------------------------------------------
 

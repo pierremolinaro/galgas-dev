@@ -281,7 +281,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_BuildFileList_2D_el
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "galgas2/C_Lexique.h"
+#include "C_Lexique.h"
 
 //--------------------------------------------------------------------------------------------------
 //                       T O K E N    C L A S S

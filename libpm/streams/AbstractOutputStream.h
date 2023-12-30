@@ -22,9 +22,9 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "utilities/macroAssert.h"
-#include "utilities/M_machine.h"
-#include "strings/string_encodings.h"
+#include "macroAssert.h"
+#include "M_machine.h"
+#include "string_encodings.h"
 
 //--------------------------------------------------------------------------------------------------
 

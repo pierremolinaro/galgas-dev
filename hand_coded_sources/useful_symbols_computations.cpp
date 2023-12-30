@@ -15,11 +15,11 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "strings/HTMLString.h"
-#include "bdd/C_Relation.h"
-#include "bdd/C_RelationSingleType.h"
-#include "utilities/MF_MemoryControl.h"
-#include "galgas2/Compiler.h"
+#include "HTMLString.h"
+#include "C_Relation.h"
+#include "C_RelationSingleType.h"
+#include "MF_MemoryControl.h"
+#include "Compiler.h"
 
 //--------------------------------------------------------------------------------------------------
 

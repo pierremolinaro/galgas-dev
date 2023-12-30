@@ -18,10 +18,10 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "bdd/C_BDD.h"
-#include "utilities/F_GetPrime.h"
-#include "strings/String-class.h"
-#include "bdd/C_BDD-node.h"
+#include "C_BDD.h"
+#include "F_GetPrime.h"
+#include "String-class.h"
+#include "C_BDD-node.h"
 
 //--------------------------------------------------------------------------------------------------
 

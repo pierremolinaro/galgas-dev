@@ -18,10 +18,10 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "files/TextFileWrite.h"
-#include "time/DateTime.h"
-#include "strings/unicode_character_cpp.h"
-#include "files/FileManager.h"
+#include "TextFileWrite.h"
+#include "DateTime.h"
+#include "unicode_character_cpp.h"
+#include "FileManager.h"
 
 //--------------------------------------------------------------------------------------------------
 

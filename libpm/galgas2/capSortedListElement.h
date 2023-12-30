@@ -22,8 +22,8 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "utilities/SharedObject.h"
-#include "galgas2/typeComparisonResult.h"
+#include "SharedObject.h"
+#include "typeComparisonResult.h"
 
 //--------------------------------------------------------------------------------------------------
 

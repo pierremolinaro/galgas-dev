@@ -23,8 +23,8 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "C_CommandLineOption.h"
-#include "utilities/M_machine.h"
-#include "strings/String-class.h"
+#include "M_machine.h"
+#include "String-class.h"
 
 //--------------------------------------------------------------------------------------------------
 

@@ -9,9 +9,9 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "bdd/C_BDD.h"
-#include "bdd/C_RelationSingleType.h"
-#include "bdd/C_RelationConfiguration.h"
+#include "C_BDD.h"
+#include "C_RelationSingleType.h"
+#include "C_RelationConfiguration.h"
 
 //--------------------------------------------------------------------------------------------------
 

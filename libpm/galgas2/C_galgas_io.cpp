@@ -18,16 +18,16 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "galgas2/C_galgas_io.h"
-#include "streams/C_ConsoleOut.h"
-#include "streams/C_ErrorOut.h"
-#include "command_line_interface/C_builtin_CLI_Options.h"
-#include "command_line_interface/F_Analyze_CLI_Options.h"
-#include "galgas2/C_galgas_CLI_Options.h"
-#include "galgas2/C_galgas_class_inspector.h"
-#include "galgas2/F_verbose_output.h"
-#include "galgas2/cIssueDescriptor.h"
-#include "galgas2/Compiler.h"
+#include "C_galgas_io.h"
+#include "C_ConsoleOut.h"
+#include "C_ErrorOut.h"
+#include "C_builtin_CLI_Options.h"
+#include "F_Analyze_CLI_Options.h"
+#include "C_galgas_CLI_Options.h"
+#include "C_galgas_class_inspector.h"
+#include "F_verbose_output.h"
+#include "cIssueDescriptor.h"
+#include "Compiler.h"
 
 //--------------------------------------------------------------------------------------------------
 

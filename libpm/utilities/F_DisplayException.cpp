@@ -18,9 +18,9 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "utilities/F_DisplayException.h"
-#include "streams/C_ConsoleOut.h"
-#include "streams/C_ErrorOut.h"
+#include "F_DisplayException.h"
+#include "C_ConsoleOut.h"
+#include "C_ErrorOut.h"
 
 //--------------------------------------------------------------------------------------------------
 

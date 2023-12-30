@@ -18,10 +18,10 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "galgas2/AC_GALGAS_value_class.h"
-#include "galgas2/acPtr_class.h"
-#include "galgas2/C_galgas_type_descriptor.h"
-#include "strings/String-class.h"
+#include "AC_GALGAS_value_class.h"
+#include "acPtr_class.h"
+#include "C_galgas_type_descriptor.h"
+#include "String-class.h"
 
 //--------------------------------------------------------------------------------------------------
 

@@ -22,9 +22,9 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "command_line_interface/C_BoolCommandLineOption.h"
-#include "command_line_interface/C_UIntCommandLineOption.h"
-#include "command_line_interface/C_StringCommandLineOption.h"
+#include "C_BoolCommandLineOption.h"
+#include "C_UIntCommandLineOption.h"
+#include "C_StringCommandLineOption.h"
 
 //--------------------------------------------------------------------------------------------------
 

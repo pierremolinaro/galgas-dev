@@ -18,10 +18,10 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "utilities/SharedObject.h"
-#include "utilities/MF_MemoryControl.h"
-#include "streams/C_ConsoleOut.h"
-#include "strings/String-class.h"
+#include "SharedObject.h"
+#include "MF_MemoryControl.h"
+#include "C_ConsoleOut.h"
+#include "String-class.h"
 
 //--------------------------------------------------------------------------------------------------
 

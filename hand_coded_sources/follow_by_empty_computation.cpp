@@ -16,8 +16,8 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "follow_by_empty_computation.h"
-#include "strings/HTMLString.h"
-#include "bdd/C_Relation.h"
+#include "HTMLString.h"
+#include "C_Relation.h"
 
 //--------------------------------------------------------------------------------------------------
 

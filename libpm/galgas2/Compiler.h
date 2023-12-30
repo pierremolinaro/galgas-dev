@@ -22,13 +22,13 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "generic-arraies/TC_UniqueArray.h"
-#include "strings/String-class.h"
-#include "utilities/SharedObject.h"
-#include "galgas2/LocationInSource.h"
-#include "galgas2/SourceTextInString.h"
-#include "galgas2/C_IssueWithFixIt.h"
-#include "galgas2/cIssueDescriptor.h"
+#include "TC_UniqueArray.h"
+#include "String-class.h"
+#include "SharedObject.h"
+#include "LocationInSource.h"
+#include "SourceTextInString.h"
+#include "C_IssueWithFixIt.h"
+#include "cIssueDescriptor.h"
 
 //--------------------------------------------------------------------------------------------------
 

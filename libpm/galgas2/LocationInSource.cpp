@@ -18,9 +18,9 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "galgas2/LocationInSource.h"
-#include "galgas2/SourceTextInString.h"
-#include "strings/String-class.h"
+#include "LocationInSource.h"
+#include "SourceTextInString.h"
+#include "String-class.h"
 
 //--------------------------------------------------------------------------------------------------
 

@@ -7,29 +7,29 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "strings/String-class.h"
-#include "time/Timer.h"
-#include "galgas2/AC_GALGAS_root.h"
-#include "galgas2/C_galgas_type_descriptor.h"
-#include "galgas2/typeComparisonResult.h"
-#include "galgas2/cGenericAbstractEnumerator.h"
-#include "galgas2/cEnumerator_range.h"
-#include "galgas2/AC_GALGAS_list.h"
-#include "galgas2/AC_GALGAS_sortedlist.h"
-#include "galgas2/AC_GALGAS_map.h"
-#include "galgas2/AC_GALGAS_reference_class.h"
-#include "galgas2/AC_GALGAS_value_class.h"
-#include "galgas2/AC_GALGAS_enumAssociatedValues.h"
-#include "galgas2/AC_GALGAS_graph.h"
-#include "galgas2/acStrongPtr_class.h"
-#include "galgas2/cPtr_weakReference_proxy.h"
-#include "galgas2/AC_GALGAS_weak_reference.h"
-#include "command_line_interface/C_BoolCommandLineOption.h"
-#include "command_line_interface/C_UIntCommandLineOption.h"
-#include "command_line_interface/C_StringCommandLineOption.h"
-#include "command_line_interface/C_StringListCommandLineOption.h"
-#include "utilities/PrologueEpilogue.h"
-#include "big-integers/BigSigned.h"
+#include "String-class.h"
+#include "Timer.h"
+#include "AC_GALGAS_root.h"
+#include "C_galgas_type_descriptor.h"
+#include "typeComparisonResult.h"
+#include "cGenericAbstractEnumerator.h"
+#include "cEnumerator_range.h"
+#include "AC_GALGAS_list.h"
+#include "AC_GALGAS_sortedlist.h"
+#include "AC_GALGAS_map.h"
+#include "AC_GALGAS_reference_class.h"
+#include "AC_GALGAS_value_class.h"
+#include "AC_GALGAS_enumAssociatedValues.h"
+#include "AC_GALGAS_graph.h"
+#include "acStrongPtr_class.h"
+#include "cPtr_weakReference_proxy.h"
+#include "AC_GALGAS_weak_reference.h"
+#include "C_BoolCommandLineOption.h"
+#include "C_UIntCommandLineOption.h"
+#include "C_StringCommandLineOption.h"
+#include "C_StringListCommandLineOption.h"
+#include "PrologueEpilogue.h"
+#include "BigSigned.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -60,8 +60,8 @@ class GALGAS_type ;
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "galgas2/LocationInSource.h"
-#include "galgas2/SourceTextInString.h"
+#include "LocationInSource.h"
+#include "SourceTextInString.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2337,7 +2337,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_application ;
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "bdd/C_BDD.h"
+#include "C_BDD.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6333,7 +6333,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lbigintlist_2D_elem
 
 //--------------------------------------------------------------------------------------------------
 
-#include "galgas2/cCollectionElement.h"
+#include "cCollectionElement.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6352,10 +6352,10 @@ class cMapElement : public cCollectionElement {
 
 //--------------------------------------------------------------------------------------------------
 
-#include "galgas2/cSortedListElement.h"
-#include "galgas2/capSortedListElement.h"
-#include "galgas2/C_galgas_function_descriptor.h"
-#include "galgas2/cObjectArray.h"
+#include "cSortedListElement.h"
+#include "capSortedListElement.h"
+#include "C_galgas_function_descriptor.h"
+#include "cObjectArray.h"
 
 
 //--- START OF USER ZONE 2

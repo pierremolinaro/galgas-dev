@@ -18,12 +18,12 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "galgas2/AC_GALGAS_weak_reference.h"
-#include "galgas2/cPtr_weakReference_proxy.h"
-#include "galgas2/AC_GALGAS_reference_class.h"
-#include "galgas2/acStrongPtr_class.h"
-#include "galgas2/C_galgas_type_descriptor.h"
-#include "strings/String-class.h"
+#include "AC_GALGAS_weak_reference.h"
+#include "cPtr_weakReference_proxy.h"
+#include "AC_GALGAS_reference_class.h"
+#include "acStrongPtr_class.h"
+#include "C_galgas_type_descriptor.h"
+#include "String-class.h"
 
 //--------------------------------------------------------------------------------------------------
 

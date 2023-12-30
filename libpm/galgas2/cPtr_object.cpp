@@ -18,9 +18,9 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "galgas2/cPtr_object.h"
+#include "cPtr_object.h"
 #include "all-predefined-types.h"
-#include "utilities/MF_MemoryControl.h"
+#include "MF_MemoryControl.h"
 
 //--------------------------------------------------------------------------------------------------
 

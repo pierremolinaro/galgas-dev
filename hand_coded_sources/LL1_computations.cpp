@@ -15,10 +15,10 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "strings/HTMLString.h"
-#include "utilities/MF_MemoryControl.h"
-#include "galgas2/Compiler.h"
-#include "bdd/C_Relation.h"
+#include "HTMLString.h"
+#include "MF_MemoryControl.h"
+#include "Compiler.h"
+#include "C_Relation.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -444,9 +444,9 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
                                const String & inSyntaxDirectedTranslationVarName) {
 //--- Generate header file inclusion --------------------------------------------------------------
   ioCppFileContents.addCppHyphenLineComment () ;
-  ioCppFileContents.addString ("#include \"utilities/MF_MemoryControl.h\"\n") ;
-  ioCppFileContents.addString ("#include \"galgas2/C_galgas_CLI_Options.h\"\n\n") ;
-  ioCppFileContents.addString ("#include \"files/FileManager.h\"\n\n") ;
+  ioCppFileContents.addString ("#include \"MF_MemoryControl.h\"\n") ;
+  ioCppFileContents.addString ("#include \"C_galgas_CLI_Options.h\"\n\n") ;
+  ioCppFileContents.addString ("#include \"FileManager.h\"\n\n") ;
 
   ioCppFileContents.addCppHyphenLineComment () ;
   ioCppFileContents.addString ("\n") ;

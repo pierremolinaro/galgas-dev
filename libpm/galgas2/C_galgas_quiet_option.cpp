@@ -18,8 +18,8 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "galgas2/C_galgas_quiet_option.h"
-#include "galgas2/F_verbose_output.h"
+#include "C_galgas_quiet_option.h"
+#include "F_verbose_output.h"
 
 //--------------------------------------------------------------------------------------------------
 

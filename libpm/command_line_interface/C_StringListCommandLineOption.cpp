@@ -18,8 +18,8 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "command_line_interface/C_StringListCommandLineOption.h"
-#include "utilities/PrologueEpilogue.h"
+#include "C_StringListCommandLineOption.h"
+#include "PrologueEpilogue.h"
 
 //--------------------------------------------------------------------------------------------------
 

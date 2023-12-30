@@ -22,9 +22,9 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "utilities/M_machine.h"
-#include "utilities/macroAssert.h"
-#include "galgas2/SourceTextInString.h"
+#include "M_machine.h"
+#include "macroAssert.h"
+#include "SourceTextInString.h"
 
 //--------------------------------------------------------------------------------------------------
 

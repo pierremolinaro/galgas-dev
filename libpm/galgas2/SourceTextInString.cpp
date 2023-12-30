@@ -18,8 +18,8 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "galgas2/SourceTextInString.h"
-#include "galgas2/LocationInSource.h"
+#include "SourceTextInString.h"
+#include "LocationInSource.h"
 
 //--------------------------------------------------------------------------------------------------
 

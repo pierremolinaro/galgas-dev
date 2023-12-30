@@ -18,12 +18,12 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "galgas2/AC_GALGAS_sortedlist.h"
-#include "galgas2/capSortedListElement.h"
-#include "galgas2/cSortedListElement.h"
+#include "AC_GALGAS_sortedlist.h"
+#include "capSortedListElement.h"
+#include "cSortedListElement.h"
 #include "all-predefined-types.h"
-#include "utilities/MF_MemoryControl.h"
-#include "galgas2/Compiler.h"
+#include "MF_MemoryControl.h"
+#include "Compiler.h"
 
 //--------------------------------------------------------------------------------------------------
 //

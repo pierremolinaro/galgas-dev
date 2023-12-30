@@ -27,7 +27,7 @@ bool isUnicodeCharacterAssigned (const utf32 inUnicodeCharacterCode) ;
 
 //--- Returns character name, or empty string if not assigned
 #ifdef __cplusplus
-  #include "strings/String-class.h"
+  #include "String-class.h"
   String unicodeName (const utf32 inUnicodeCharacter) ;
 #endif
 #ifdef __OBJC__
