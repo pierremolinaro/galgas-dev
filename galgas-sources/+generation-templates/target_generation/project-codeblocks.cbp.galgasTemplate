@@ -59,16 +59,16 @@
    <Add alias="All" targets="Release;Debug;" />
   </VirtualTargets>
   <Compiler>
-   <Add directory="%!LIBPM_PATH%"/bdd />
-   <Add directory="%!LIBPM_PATH%"/big-integers />
-   <Add directory="%!LIBPM_PATH%"/command_line_interface />
-   <Add directory="%!LIBPM_PATH%"/files />
-   <Add directory="%!LIBPM_PATH%"/galgas2 />
-   <Add directory="%!LIBPM_PATH%"/generic-arraies />
-   <Add directory="%!LIBPM_PATH%"/streams />
-   <Add directory="%!LIBPM_PATH%"/strings />
-   <Add directory="%!LIBPM_PATH%"/time />
-   <Add directory="%!LIBPM_PATH%"/utilities />
+   <Add directory="%!LIBPM_PATH%/bdd" />
+   <Add directory="%!LIBPM_PATH%/big-integers" />
+   <Add directory="%!LIBPM_PATH%/command_line_interface" />
+   <Add directory="%!LIBPM_PATH%/files" />
+   <Add directory="%!LIBPM_PATH%/galgas2" />
+   <Add directory="%!LIBPM_PATH%/generic-arraies" />
+   <Add directory="%!LIBPM_PATH%/streams" />
+   <Add directory="%!LIBPM_PATH%/strings" />
+   <Add directory="%!LIBPM_PATH%/time" />
+   <Add directory="%!LIBPM_PATH%/utilities" />
    <Add directory="../%!BUILD_DIR_NAME%/user-headers" />
    <Add directory="../%!BUILD_DIR_NAME%/output" />
 %

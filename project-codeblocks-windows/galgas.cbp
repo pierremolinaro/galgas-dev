@@ -59,16 +59,16 @@
    <Add alias="All" targets="Release;Debug;" />
   </VirtualTargets>
   <Compiler>
-   <Add directory="../libpm"/bdd />
-   <Add directory="../libpm"/big-integers />
-   <Add directory="../libpm"/command_line_interface />
-   <Add directory="../libpm"/files />
-   <Add directory="../libpm"/galgas2 />
-   <Add directory="../libpm"/generic-arraies />
-   <Add directory="../libpm"/streams />
-   <Add directory="../libpm"/strings />
-   <Add directory="../libpm"/time />
-   <Add directory="../libpm"/utilities />
+   <Add directory="../libpm/bdd" />
+   <Add directory="../libpm/big-integers" />
+   <Add directory="../libpm/command_line_interface" />
+   <Add directory="../libpm/files" />
+   <Add directory="../libpm/galgas2" />
+   <Add directory="../libpm/generic-arraies" />
+   <Add directory="../libpm/streams" />
+   <Add directory="../libpm/strings" />
+   <Add directory="../libpm/time" />
+   <Add directory="../libpm/utilities" />
    <Add directory="../build/user-headers" />
    <Add directory="../build/output" />
   <Add directory="../hand_coded_sources" />
