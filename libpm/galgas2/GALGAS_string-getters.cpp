@@ -26,7 +26,7 @@
 #include "strings/unicode_character_cpp.h"
 #include "galgas2/C_galgas_io.h"
 #include "files/FileManager.h"
-#include "files/C_BinaryFileWrite.h"
+#include "files/BinaryFileWrite.h"
 #include "galgas2/F_verbose_output.h"
 
 //--------------------------------------------------------------------------------------------------

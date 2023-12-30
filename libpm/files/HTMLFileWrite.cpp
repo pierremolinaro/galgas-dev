@@ -33,7 +33,7 @@ HTMLFileWrite::HTMLFileWrite (const String & inFileName,
                                     const String & inWindowTitle,
                                     const String & inCSSFileName,
                                     const String & inCSSContents) :
-C_TextFileWrite (inFileName) {
+TextFileWrite (inFileName) {
   addRawData ("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">\n"
                  "<html>"
                  "<head>\n"
@@ -61,11 +61,11 @@ C_TextFileWrite (inFileName) {
 
 bool HTMLFileWrite::close (void) {
   addRawData ("</div></body></html>\n") ;
-  return super::close () ;
+  return Super::close () ;
 }
 
 //--------------------------------------------------------------------------------------------------
-//  Destructor writes html ending code, the closes the file                    *
+//  Destructor writes html ending code, the closes the file
 //--------------------------------------------------------------------------------------------------
 
 HTMLFileWrite::~HTMLFileWrite (void) {
@@ -73,34 +73,34 @@ HTMLFileWrite::~HTMLFileWrite (void) {
 }
 
 //--------------------------------------------------------------------------------------------------
-//  Write a character string into the file WITHOUT any translation             *
+//  Write a character string into the file WITHOUT any translation
 //--------------------------------------------------------------------------------------------------
 
 void HTMLFileWrite::addRawData (const char * in_Cstring) {
-  super::performActualCharArrayOutput (in_Cstring, (int32_t) (strlen (in_Cstring) & UINT32_MAX)) ;
+  Super::performActualCharArrayOutput (in_Cstring, (int32_t) (strlen (in_Cstring) & UINT32_MAX)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
-//                  Write a character string into the file                     *
-//  Performs HTML character translation (i.e. '<' --> '&lt;', ...)             *
+//                  Write a character string into the file
+//  Performs HTML character translation (i.e. '<' --> '&lt;', ...)
 //--------------------------------------------------------------------------------------------------
 
 void HTMLFileWrite::performActualCharArrayOutput (const char * inCharArray,
-                                                     const int32_t inArrayCount) {
+                                                  const int32_t inArrayCount) {
   for (int32_t i=0 ; i<inArrayCount ; i++) {
     const char c = inCharArray [i] ;
     switch (c) {
     case '<' :
-      super::performActualCharArrayOutput ("&lt;", 4) ;
+      Super::performActualCharArrayOutput ("&lt;", 4) ;
       break ;
     case '>' :
-      super::performActualCharArrayOutput ("&gt;", 4) ;
+      Super::performActualCharArrayOutput ("&gt;", 4) ;
       break ;
     case '&' :
-      super::performActualCharArrayOutput ("&amp;", 5) ;
+      Super::performActualCharArrayOutput ("&amp;", 5) ;
       break ;
     default :
-      super::performActualCharArrayOutput (& c, 1) ;
+      Super::performActualCharArrayOutput (& c, 1) ;
       break ;
     }
   }
@@ -109,21 +109,21 @@ void HTMLFileWrite::performActualCharArrayOutput (const char * inCharArray,
 //--------------------------------------------------------------------------------------------------
 
 void HTMLFileWrite::performActualUnicodeArrayOutput (const utf32 * inCharArray,
-                                                        const int32_t inArrayCount) {
+                                                     const int32_t inArrayCount) {
   for (int32_t i=0 ; i<inArrayCount ; i++) {
     const utf32 codePoint = inCharArray [i] ;
     switch (UNICODE_VALUE (codePoint)) {
     case '<' :
-      super::performActualCharArrayOutput ("&lt;", 4) ;
+      Super::performActualCharArrayOutput ("&lt;", 4) ;
       break ;
     case '>' :
-      super::performActualCharArrayOutput ("&gt;", 4) ;
+      Super::performActualCharArrayOutput ("&gt;", 4) ;
       break ;
     case '&' :
-      super::performActualCharArrayOutput ("&amp;", 5) ;
+      Super::performActualCharArrayOutput ("&amp;", 5) ;
       break ;
     default :
-      super::performActualUnicodeArrayOutput (& codePoint, 1) ;
+      Super::performActualUnicodeArrayOutput (& codePoint, 1) ;
       break ;
     }
   }
@@ -134,7 +134,7 @@ void HTMLFileWrite::performActualUnicodeArrayOutput (const utf32 * inCharArray,
 //--------------------------------------------------------------------------------------------------
 
 void HTMLFileWrite::addCppTitleComment (const String & inCommentString,
-                                              const String & inTableStyleClass) {
+                                        const String & inTableStyleClass) {
   addRawData ("<table") ;
   if (inTableStyleClass.length () > 0) {
     addRawData (" class=\"") ;

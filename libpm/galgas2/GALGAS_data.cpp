@@ -25,7 +25,7 @@
 #include "galgas2/C_galgas_io.h"
 #include "strings/unicode_character_cpp.h"
 #include "galgas2/C_galgas_CLI_Options.h"
-#include "files/C_BinaryFileWrite.h"
+#include "files/BinaryFileWrite.h"
 #include "galgas2/F_verbose_output.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -299,7 +299,7 @@ void GALGAS_data::method_writeToFile (GALGAS_string inFilePath,
       const bool fileAlreadyExists = FileManager::fileExistsAtPath (filePath) ;
       const bool verboseOptionOn = verboseOutput () ;
       FileManager::makeDirectoryIfDoesNotExist (filePath.stringByDeletingLastPathComponent()) ;
-      C_BinaryFileWrite binaryFile (filePath) ;
+      BinaryFileWrite binaryFile (filePath) ;
       if (! binaryFile.isOpened ()) {
         String s ;
         s.addString ("'@data writeToFile': cannot open '") ;
@@ -340,7 +340,7 @@ void GALGAS_data::method_writeToExecutableFile (GALGAS_string inFilePath,
       const bool fileAlreadyExists = FileManager::fileExistsAtPath (filePath) ;
       const bool verboseOptionOn = verboseOutput () ;
       FileManager::makeDirectoryIfDoesNotExist (filePath.stringByDeletingLastPathComponent()) ;
-      C_BinaryFileWrite binaryFile (filePath) ;
+      BinaryFileWrite binaryFile (filePath) ;
       if (! binaryFile.isOpened ()) {
         String s ;
         s.addString ("'@data writeToExecutableFile': cannot open '") ;

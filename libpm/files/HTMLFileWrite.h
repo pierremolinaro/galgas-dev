@@ -23,7 +23,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "files/C_TextFileWrite.h"
+#include "files/TextFileWrite.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -31,7 +31,7 @@ class String ;
 
 //--------------------------------------------------------------------------------------------------
 
-class HTMLFileWrite final : public C_TextFileWrite {
+class HTMLFileWrite final : public TextFileWrite {
 //--- Constructor : if inFileName is the empty string, no file is opened.
 //    Otherwise, it tries to open the file for writing;
 //    The destructor will close the file (is successfully opened)
@@ -65,7 +65,7 @@ class HTMLFileWrite final : public C_TextFileWrite {
   public: virtual bool close (void) ;
 
 //--- Private attributes
-  private: typedef C_TextFileWrite super ;
+  private: typedef TextFileWrite Super ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

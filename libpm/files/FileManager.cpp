@@ -19,8 +19,8 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "files/FileManager.h"
-#include "files/C_TextFileWrite.h"
-#include "files/C_BinaryFileWrite.h"
+#include "files/TextFileWrite.h"
+#include "files/BinaryFileWrite.h"
 #include "strings/unicode_character_base.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -626,7 +626,7 @@ String FileManager::stringWithContentOfFile (const String & inFilePath) {
 bool FileManager::writeStringToFile (const String & inString,
                                        const String & inFilePath) {
   makeDirectoryIfDoesNotExist (inFilePath.stringByDeletingLastPathComponent ()) ;
-  C_TextFileWrite file (inFilePath) ;
+  TextFileWrite file (inFilePath) ;
   bool success = file.isOpened () ;
   file.addString (inString) ;
   if (success) {
@@ -640,7 +640,7 @@ bool FileManager::writeStringToFile (const String & inString,
 bool FileManager::writeStringToExecutableFile (const String & inString,
                                                  const String & inFilePath) {
   makeDirectoryIfDoesNotExist (inFilePath.stringByDeletingLastPathComponent()) ;
-  C_TextFileWrite file (inFilePath) ;
+  TextFileWrite file (inFilePath) ;
   file.addString (inString) ;
   bool success = file.isOpened () ;
   if (success) {
@@ -660,7 +660,7 @@ bool FileManager::writeBinaryDataToFile (const U8Data & inBinaryData,
                                            const String & inFilePath) {
   makeDirectoryIfDoesNotExist (inFilePath.stringByDeletingLastPathComponent()) ;
 //---
-  C_BinaryFileWrite binaryFile (inFilePath) ;
+  BinaryFileWrite binaryFile (inFilePath) ;
   bool success = binaryFile.isOpened () ;
   binaryFile.appendData (inBinaryData) ;
 //--- Close file
@@ -677,7 +677,7 @@ bool FileManager::writeBinaryDataToExecutableFile (const U8Data & inBinaryData,
                                                      const String & inFilePath) {
   makeDirectoryIfDoesNotExist (inFilePath.stringByDeletingLastPathComponent()) ;
 //---
-  C_BinaryFileWrite binaryFile (inFilePath) ;
+  BinaryFileWrite binaryFile (inFilePath) ;
   bool success = binaryFile.isOpened () ;
   binaryFile.appendData (inBinaryData) ;
 //--- Close file

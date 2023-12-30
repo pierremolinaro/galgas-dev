@@ -918,12 +918,12 @@ proc updateGalgasTargets
       !fileNames:{
         !"FileManager.cpp",
         !"FileManager.h",
-        !"AC_FileHandle.cpp",
-        !"AC_FileHandle.h",
-        !"C_BinaryFileWrite.cpp",
-        !"C_BinaryFileWrite.h",
-        !"C_TextFileWrite.cpp",
-        !"C_TextFileWrite.h",
+        !"AbstractFileHandle.cpp",
+        !"AbstractFileHandle.h",
+        !"BinaryFileWrite.cpp",
+        !"BinaryFileWrite.h",
+        !"TextFileWrite.cpp",
+        !"TextFileWrite.h",
         !"HTMLFileWrite.cpp",
         !"HTMLFileWrite.h"
       }

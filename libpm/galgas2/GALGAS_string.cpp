@@ -22,7 +22,7 @@
 #include "galgas2/Compiler.h"
 #include "galgas2/C_galgas_io.h"
 #include "files/FileManager.h"
-#include "files/C_BinaryFileWrite.h"
+#include "files/BinaryFileWrite.h"
 #include "galgas2/F_verbose_output.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -905,7 +905,7 @@ static bool writeFile (const String & inMessage,
     const bool verboseOptionOn = verboseOutput () ;
     const String directory = inFullPathName.stringByDeletingLastPathComponent () ;
     FileManager::makeDirectoryIfDoesNotExist (directory) ;
-    C_BinaryFileWrite binaryFile (inFullPathName) ;
+    BinaryFileWrite binaryFile (inFullPathName) ;
     ok = binaryFile.isOpened () ;
     if (! ok) {
       String message = "Cannot open '" ;

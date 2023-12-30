@@ -128,10 +128,10 @@ end
    <Unit filename="%!LIBPM_PATH%/bdd/C_RelationConfiguration.cpp" />
    <Unit filename="%!LIBPM_PATH%/bdd/C_Relation.cpp" />
    <Unit filename="%!LIBPM_PATH%/files/FileManager.cpp" />
-   <Unit filename="%!LIBPM_PATH%/files/AC_FileHandle.cpp" />
-   <Unit filename="%!LIBPM_PATH%/files/C_TextFileWrite.cpp" />
+   <Unit filename="%!LIBPM_PATH%/files/AbstractFileHandle.cpp" />
+   <Unit filename="%!LIBPM_PATH%/files/TextFileWrite.cpp" />
    <Unit filename="%!LIBPM_PATH%/files/HTMLFileWrite.cpp" />
-   <Unit filename="%!LIBPM_PATH%/files/C_BinaryFileWrite.cpp" />
+   <Unit filename="%!LIBPM_PATH%/files/BinaryFileWrite.cpp" />
    <Unit filename="%!LIBPM_PATH%/streams/AC_OutputStream.cpp" />
    <Unit filename="%!LIBPM_PATH%/streams/C_ColoredConsole.cpp" />
    <Unit filename="%!LIBPM_PATH%/streams/C_ConsoleOut.cpp" />

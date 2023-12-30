@@ -19,7 +19,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "command_line_interface/F_Analyze_CLI_Options.h"
-#include "files/C_TextFileWrite.h"
+#include "files/TextFileWrite.h"
 #include "files/FileManager.h"
 #include "galgas2/Compiler.h"
 #include "galgas2/C_galgas_io.h"
@@ -570,7 +570,7 @@ void Compiler::generateFileFromPathes (const String & inStartPath,
     const String directory = fileName.stringByDeletingLastPathComponent () ;
     FileManager::makeDirectoryIfDoesNotExist (directory) ;
     if (performGeneration ()) {
-      C_TextFileWrite f (fileName) ;
+      TextFileWrite f (fileName) ;
       bool ok = f.isOpened () ;
       if (! ok) {
         String message = "Cannot open '" ;
@@ -590,7 +590,7 @@ void Compiler::generateFileFromPathes (const String & inStartPath,
     const bool same = previousContents == inContents ;
     if (! same) {
       if (performGeneration ()) {
-        C_TextFileWrite f (fullPathName) ;
+        TextFileWrite f (fullPathName) ;
         if (! f.isOpened ()) {
           String message = "Cannot open '" ;
           message.addString (fullPathName) ;
@@ -645,7 +645,7 @@ void Compiler::generateFileWithPatternFromPathes (
     const String directory = fileName.stringByDeletingLastPathComponent () ;
     FileManager::makeDirectoryIfDoesNotExist (directory) ;
     if (performGeneration ()) {
-      C_TextFileWrite f (fileName) ;
+      TextFileWrite f (fileName) ;
       bool ok = f.isOpened () ;
       if (! ok) {
         String message = "Cannot open '" ;
@@ -714,7 +714,7 @@ void Compiler::generateFileWithPatternFromPathes (
       ggs_printError (this, SourceTextInString (), C_IssueWithFixIt (), String ("BAD FILE '") + fullPathName + "'.\n" COMMA_HERE) ;
     }else if ((header == inHeader) && (firstGeneratedPart == inGeneratedZone2) && (secondGeneratedPart == inGeneratedZone3)) {
     }else if (performGeneration ()) {
-      C_TextFileWrite f (fullPathName) ;
+      TextFileWrite f (fullPathName) ;
       ok = f.isOpened () ;
       if (! ok) {
         String message = "Cannot open '" ;
