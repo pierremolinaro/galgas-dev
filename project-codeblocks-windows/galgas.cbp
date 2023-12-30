@@ -150,7 +150,7 @@
    <Unit filename="../libpm/big-integers/BigUnsigned-subtract.cpp" />
    <Unit filename="../libpm/big-integers/BigUnsigned-utilities.cpp" />
    <Unit filename="../libpm/big-integers/ChunkSharedArray.cpp" />
-   <Unit filename="../libpm/big-integers/PMUInt128.cpp" />
+   <Unit filename="../libpm/big-integers/UInt128.cpp" />
    <Unit filename="../libpm/bdd/C_BDD.cpp" />
    <Unit filename="../libpm/bdd/C_BDD-value-count.cpp" />
    <Unit filename="../libpm/bdd/C_BDD-build-value-array.cpp" />

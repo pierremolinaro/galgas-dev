@@ -23,7 +23,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "utilities/M_machine.h"
-#include "big-integers/PMUInt128.h"
+#include "big-integers/UInt128.h"
 #include "generic-arraies/TC_UniqueArray.h"
 #include "generic-arraies/TC_Array.h"
 #include "big-integers/BigSigned.h"
@@ -129,7 +129,7 @@ class C_BDD final {
 //--- Get BDD values count
   public: uint64_t valueCount64 (const uint32_t inVariableCount) const ;
 
-  public: PMUInt128 valueCount128 (const uint32_t inVariableCount) const ;
+  public: UInt128 valueCount128 (const uint32_t inVariableCount) const ;
 
   public: BigSigned valueCount (const uint32_t inVariableCount) const ;
 
@@ -137,9 +137,9 @@ class C_BDD final {
                                             TC_UniqueArray <uint64_t> & ioDirectCacheArray,
                                             TC_UniqueArray <uint64_t> & ioComplementCacheArray) const ;
 
-  public: PMUInt128 valueCount128UsingCache (const uint32_t inVariableCount,
-                                              TC_UniqueArray <PMUInt128> & ioDirectCacheArray,
-                                              TC_UniqueArray <PMUInt128> & ioComplementCacheArray) const ;
+  public: UInt128 valueCount128UsingCache (const uint32_t inVariableCount,
+                                              TC_UniqueArray <UInt128> & ioDirectCacheArray,
+                                              TC_UniqueArray <UInt128> & ioComplementCacheArray) const ;
 
   public: BigSigned valueCountUsingCache (const uint32_t inVariableCount,
                                           TC_UniqueArray <BigSigned> & ioDirectCacheArray,

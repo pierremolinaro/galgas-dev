@@ -18,31 +18,38 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "big-integers/PMUInt128.h"
+#include "big-integers/UInt128.h"
 
 //--------------------------------------------------------------------------------------------------
 
-PMUInt128::PMUInt128 (void) :
+UInt128::UInt128 (void) :
 mLow (0),
 mHigh (0) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-PMUInt128::PMUInt128 (const uint64_t inValue) :
-mLow (inValue),
+UInt128::UInt128 (const uint64_t inLow) :
+mLow (inLow),
 mHigh (0) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool PMUInt128::isZero (void) const {
+UInt128::UInt128 (const uint64_t inHigh, const uint64_t inLow) :
+mLow (inLow),
+mHigh (inHigh) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool UInt128::isZero (void) const {
   return (mLow | mHigh) == 0 ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool PMUInt128::valueAtBitIndex (const uint32_t inIndex) const {
+bool UInt128::bitAtIndex (const uint32_t inIndex) const {
   bool result = false ;
   if (inIndex < 64) {
     result = ((mLow >> inIndex) & 1) != 0 ;
@@ -54,7 +61,7 @@ bool PMUInt128::valueAtBitIndex (const uint32_t inIndex) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void PMUInt128::setValueAtBitIndex (const bool inValue, const uint32_t inIndex) {
+void UInt128::setBitAtIndex (const bool inValue, const uint32_t inIndex) {
   if (inIndex < 64) {
     const uint64_t mask = ((uint64_t) 1) << inIndex ;
     if (inValue) {
@@ -74,7 +81,7 @@ void PMUInt128::setValueAtBitIndex (const bool inValue, const uint32_t inIndex) 
 
 //--------------------------------------------------------------------------------------------------
 
-PMUInt128 & PMUInt128::operator ++ (void) {
+UInt128 & UInt128::operator ++ (void) {
   mLow ++ ;
   if (0 == mLow) {
     mHigh ++ ;
@@ -84,7 +91,7 @@ PMUInt128 & PMUInt128::operator ++ (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-PMUInt128 & PMUInt128::operator -- (void) {
+UInt128 & UInt128::operator -- (void) {
   if (0 == mLow) {
     mHigh -- ;
   }
@@ -94,7 +101,7 @@ PMUInt128 & PMUInt128::operator -- (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void PMUInt128::operator += (const PMUInt128 & inValue) {
+void UInt128::operator += (const UInt128 & inValue) {
   const uint64_t previousLow = mLow ;
   mLow += inValue.mLow ;
   const uint64_t carry = mLow < previousLow ;
@@ -103,27 +110,27 @@ void PMUInt128::operator += (const PMUInt128 & inValue) {
 
 //--------------------------------------------------------------------------------------------------
 
-PMUInt128 PMUInt128::operator + (const PMUInt128 & inValue) const {
-  PMUInt128 result = *this ;
+UInt128 UInt128::operator + (const UInt128 & inValue) const {
+  UInt128 result = *this ;
   result += inValue ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool PMUInt128::operator == (const PMUInt128 & inValue) const {
+bool UInt128::operator == (const UInt128 & inValue) const {
   return (mLow == inValue.mLow) && (mHigh == inValue.mHigh) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool PMUInt128::operator != (const PMUInt128 & inValue) const {
+bool UInt128::operator != (const UInt128 & inValue) const {
   return ! (*this == inValue) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool PMUInt128::operator > (const uint32_t inOperand) const {
+bool UInt128::operator > (const uint32_t inOperand) const {
   bool result = mHigh > 0 ;
   if (! result) {
     result = mLow > inOperand ;
@@ -133,7 +140,7 @@ bool PMUInt128::operator > (const uint32_t inOperand) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void PMUInt128::operator *= (const uint32_t inMultiplicand) {
+void UInt128::operator *= (const uint32_t inMultiplicand) {
   const uint64_t p0 = (mLow & UINT32_MAX) * inMultiplicand ;
   const uint64_t p1 = (mLow >> 32) * inMultiplicand + (p0 >> 32) ;
   const uint64_t p2 = (mHigh & UINT32_MAX) * inMultiplicand + (p1 >> 32) ;
@@ -144,7 +151,7 @@ void PMUInt128::operator *= (const uint32_t inMultiplicand) {
 
 //--------------------------------------------------------------------------------------------------
 
-void PMUInt128::divideBy (const uint32_t inDivisor,
+void UInt128::divideBy (const uint32_t inDivisor,
                           uint32_t & outRemainder) {
   const uint64_t d3 = mHigh >> 32 ;
   const uint64_t q3 = d3 / inDivisor ; 
@@ -165,19 +172,19 @@ void PMUInt128::divideBy (const uint32_t inDivisor,
 
 //--------------------------------------------------------------------------------------------------
 
-void PMUInt128::operator /= (const uint32_t inDivisor) {
+void UInt128::operator /= (const uint32_t inDivisor) {
   uint32_t unusedRemainder ;
   divideBy (inDivisor, unusedRemainder) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-String PMUInt128::decimalString (void) const {
+String UInt128::decimalString (void) const {
   String result ;
   if (isZero()) {
     result.addString ("0") ;
   }else{
-    PMUInt128 value = *this ;
+    UInt128 value = *this ;
     TC_UniqueArray <uint32_t> values ;
     while (! value.isZero ()) {
       uint32_t remainder = 0 ;
@@ -196,8 +203,8 @@ String PMUInt128::decimalString (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void PMUInt128::example (void) {
-  PMUInt128 v (1000000) ;
+void UInt128::example (void) {
+  UInt128 v (1000000) ;
   printf ("%s\n", v.decimalString ().cString (HERE)) ;
   v *= 1000000 ;
   printf ("%s\n", v.decimalString ().cString (HERE)) ;

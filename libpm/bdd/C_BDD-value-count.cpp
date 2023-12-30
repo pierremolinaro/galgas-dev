@@ -128,8 +128,8 @@ uint64_t C_BDD::valueCount64UsingCache (const uint32_t inVariableCount,
 
 static void internalValueCount128 (const uint32_t inValue,
                                    const uint32_t inVariableCount,
-                                   PMUInt128 & nombreDirect,
-                                   PMUInt128 & nombreComplement
+                                   UInt128 & nombreDirect,
+                                   UInt128 & nombreComplement
                                    COMMA_LOCATION_ARGS) {
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_THERE) ;
   if (bothBranches (gNodeArray [nodeIndex]) == 0) {
@@ -140,7 +140,7 @@ static void internalValueCount128 (const uint32_t inValue,
     }
   }else{
     const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
-    PMUInt128 nd0, nc0, nd1, nc1 ;
+    UInt128 nd0, nc0, nd1, nc1 ;
     internalValueCount128 (gNodeArray [nodeIndex].mELSE, var, nd0, nc0 COMMA_THERE) ;
     internalValueCount128 (gNodeArray [nodeIndex].mTHEN, var, nd1, nc1 COMMA_THERE) ;
     nombreDirect = nd0 + nd1 ;
@@ -151,7 +151,7 @@ static void internalValueCount128 (const uint32_t inValue,
     }
   }
   if ((inValue & 1) != 0) {
-    const PMUInt128 tempo = nombreDirect ;
+    const UInt128 tempo = nombreDirect ;
     nombreDirect = nombreComplement ;
     nombreComplement = tempo ;
   }
@@ -159,9 +159,9 @@ static void internalValueCount128 (const uint32_t inValue,
 
 //--------------------------------------------------------------------------------------------------
 
-PMUInt128 C_BDD::valueCount128 (const uint32_t inVariableCount) const {
-  PMUInt128 nombreDirect = 0 ;
-  PMUInt128 nombreComplement = 0 ;
+UInt128 C_BDD::valueCount128 (const uint32_t inVariableCount) const {
+  UInt128 nombreDirect = 0 ;
+  UInt128 nombreComplement = 0 ;
   internalValueCount128 (mBDDvalue, inVariableCount, nombreDirect, nombreComplement COMMA_HERE) ;
   return nombreDirect ;
 }
@@ -170,10 +170,10 @@ PMUInt128 C_BDD::valueCount128 (const uint32_t inVariableCount) const {
 
 static void internalValueCount128UsingCache (const uint32_t inValue,
                                              const uint32_t inVariableCount,
-                                             PMUInt128 & nombreDirect,
-                                             PMUInt128 & nombreComplement,
-                                             TC_UniqueArray <PMUInt128> & ioDirectCacheArray,
-                                             TC_UniqueArray <PMUInt128> & ioComplementCacheArray
+                                             UInt128 & nombreDirect,
+                                             UInt128 & nombreComplement,
+                                             TC_UniqueArray <UInt128> & ioDirectCacheArray,
+                                             TC_UniqueArray <UInt128> & ioComplementCacheArray
                                              COMMA_LOCATION_ARGS) {
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_THERE) ;
   if (bothBranches (gNodeArray [nodeIndex]) == 0) {
@@ -185,7 +185,7 @@ static void internalValueCount128UsingCache (const uint32_t inValue,
     nombreComplement = ioComplementCacheArray (inValue / 2 COMMA_HERE) ;
   }else{
     const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
-    PMUInt128 nd0, nc0, nd1, nc1 ;
+    UInt128 nd0, nc0, nd1, nc1 ;
     internalValueCount128UsingCache (gNodeArray [nodeIndex].mELSE, var, nd0, nc0, ioDirectCacheArray, ioComplementCacheArray COMMA_THERE) ;
     internalValueCount128UsingCache (gNodeArray [nodeIndex].mTHEN, var, nd1, nc1, ioDirectCacheArray, ioComplementCacheArray COMMA_THERE) ;
     nombreDirect = nd0 + nd1 ;
@@ -198,7 +198,7 @@ static void internalValueCount128UsingCache (const uint32_t inValue,
     ioComplementCacheArray.forceObjectAtIndex (int32_t (inValue / 2), nombreComplement, 0 COMMA_HERE) ;
   }
   if ((inValue & 1) != 0) {
-    const PMUInt128 tempo = nombreDirect ;
+    const UInt128 tempo = nombreDirect ;
     nombreDirect = nombreComplement ;
     nombreComplement = tempo ;
   }
@@ -206,11 +206,11 @@ static void internalValueCount128UsingCache (const uint32_t inValue,
 
 //--------------------------------------------------------------------------------------------------
 
-PMUInt128 C_BDD::valueCount128UsingCache (const uint32_t inVariableCount,
-                                          TC_UniqueArray <PMUInt128> & ioDirectCacheArray,
-                                          TC_UniqueArray <PMUInt128> & ioComplementCacheArray) const {
-  PMUInt128 nombreDirect = 0 ;
-  PMUInt128 nombreComplement = 0 ;
+UInt128 C_BDD::valueCount128UsingCache (const uint32_t inVariableCount,
+                                          TC_UniqueArray <UInt128> & ioDirectCacheArray,
+                                          TC_UniqueArray <UInt128> & ioComplementCacheArray) const {
+  UInt128 nombreDirect = 0 ;
+  UInt128 nombreComplement = 0 ;
   internalValueCount128UsingCache (mBDDvalue, inVariableCount, nombreDirect, nombreComplement, ioDirectCacheArray, ioComplementCacheArray COMMA_HERE) ;
   return nombreDirect ;
 }

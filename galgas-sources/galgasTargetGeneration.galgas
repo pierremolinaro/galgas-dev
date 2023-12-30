@@ -757,21 +757,15 @@ proc updateGalgasTargets
         !"BigUnsigned-subtract.cpp",
         !"BigUnsigned-utilities.cpp",
         !"BigUnsigned.h",
-#        !"C_BigInt.cpp",
-#        !"C_BigInt.h",
         !"ChunkSelectSize.h",
         !"ChunkSharedArray.cpp",
         !"ChunkSharedArray.h",
-        !"PMUInt128.cpp",
-        !"PMUInt128.h",
+        !"UInt128.cpp",
+        !"UInt128.h",
         !"chunk-U16.h",
         !"chunk-U32.h",
         !"chunk-U64.h",
         !"chunk-U8.h"
-#        !"C_BigInt.cpp",
-#        !"C_BigInt.h",
-#        !"PMUInt128.cpp",
-#        !"PMUInt128.h"
      }
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
