@@ -142,7 +142,7 @@ bool cVocabulary::needToGenerateChoice (const int32_t inSymbolIndex
 
 //--------------------------------------------------------------------------------------------------
 
-void cVocabulary::printInFile (AC_OutputStream & inHTMLfile,
+void cVocabulary::printInFile (AbstractOutputStream & inHTMLfile,
                                const int32_t inSymbolIndex
                                COMMA_LOCATION_ARGS) const {
   if (inSymbolIndex < mTerminalSymbolsCount) {

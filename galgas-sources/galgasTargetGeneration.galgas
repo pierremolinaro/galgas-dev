@@ -1056,8 +1056,8 @@ proc updateGalgasTargets
       !fileNames:{
         !"C_ErrorOut.cpp",
         !"C_ErrorOut.h",
-        !"AC_OutputStream.cpp",
-        !"AC_OutputStream.h",
+        !"AbstractOutputStream.cpp",
+        !"AbstractOutputStream.h",
         !"C_ConsoleOut.cpp",
         !"C_ConsoleOut.h",
         !"C_ColoredConsole.cpp",

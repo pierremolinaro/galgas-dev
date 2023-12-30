@@ -83,7 +83,7 @@ typedef enum {
 //
 //--------------------------------------------------------------------------------------------------
 
-class String : public AC_OutputStream {
+class String : public AbstractOutputStream {
 //--- Constructors
   public: explicit String (void) ; // Empty string
   public: String (const char * inCString) ; // From a C string

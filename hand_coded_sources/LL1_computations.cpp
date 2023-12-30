@@ -252,7 +252,7 @@ engendrerAiguillageNonTerminaux (const cVocabulary & inVocabulary,
                                  const int32_t inOriginalGrammarProductionLeftNonTerminalIndex,
                                  const int16_t nombreDeParametres,
                                  const cPureBNFproductionsList & inPureBNFproductions,
-                                 AC_OutputStream & fichierCPP,
+                                 AbstractOutputStream & fichierCPP,
                                  const String & inAltName,
                                  const String & inSyntaxDirectedTranslationVarName) {
   const int32_t first = inPureBNFproductions.tableauIndicePremiereProduction (inOriginalGrammarProductionLeftNonTerminalIndex COMMA_HERE) ;
@@ -323,7 +323,7 @@ printProductions (const cPureBNFproductionsList & inPureBNFproductions,
                   TC_UniqueArray <String> & ioProductionRulesTitle,
                   TC_UniqueArray <C_ProductionNameDescriptor> & ioProductionRuleDescription,
                   TC_UniqueArray <int16_t> & ioFirstProductionRuleIndex,
-                  AC_OutputStream & inCppFile) {
+                  AbstractOutputStream & inCppFile) {
   ioFirstProductionRuleIndex.appendObject ((int16_t) ioProductionRulesIndex.count ()) ;
   const int32_t firstProduction = inPureBNFproductions.tableauIndicePremiereProduction (inNonterminalIndex COMMA_HERE) ;
   if (firstProduction >= 0) {
@@ -389,7 +389,7 @@ printDecisionTable (const cPureBNFproductionsList & inPureBNFproductions,
                     const int32_t inNonterminalIndex,
                     int16_t & ioDecisionTableIndex,
                     TC_UniqueArray <int16_t> & ioProductionDecisionTableIndex,
-                    AC_OutputStream & inCppFile) {
+                    AbstractOutputStream & inCppFile) {
   ioProductionDecisionTableIndex.appendObject (ioDecisionTableIndex) ;
   inCppFile.addString ("// At index ") ;
   inCppFile.addSigned (ioDecisionTableIndex) ;

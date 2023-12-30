@@ -53,7 +53,7 @@ class cVocabulary {
   public: void addAugmentedSymbol (void) ;
 
 //--- Print symbol in file
-  public: void printInFile (AC_OutputStream & inHTMLfile,
+  public: void printInFile (AbstractOutputStream & inHTMLfile,
                              const int32_t inSymbolIndex
                              COMMA_LOCATION_ARGS) const ;
 

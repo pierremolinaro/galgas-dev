@@ -930,7 +930,7 @@ swap201 (const uint32_t inBitSize1,
 
 //--------------------------------------------------------------------------------------------------
 
-static void printLineWithSeparator (AC_OutputStream & outputStream,
+static void printLineWithSeparator (AbstractOutputStream & outputStream,
                                     const TC_UniqueArray <char> & inValueArray) {
   for (int32_t i=inValueArray.count () - 1 ; i>=0 ; i--) {
     if ((i % 4) == 3) {
@@ -943,7 +943,7 @@ static void printLineWithSeparator (AC_OutputStream & outputStream,
 
 //--------------------------------------------------------------------------------------------------
 
-static void internalPrintWithSeparator (AC_OutputStream & outputStream,
+static void internalPrintWithSeparator (AbstractOutputStream & outputStream,
                                         const uint32_t inValue,
                                         TC_UniqueArray <char> & inDisplayString,
                                         uint32_t inVariableIndex) {
@@ -990,7 +990,7 @@ static void internalPrintWithSeparator (AC_OutputStream & outputStream,
 
 //--------------------------------------------------------------------------------------------------
 
-void C_BDD::print (AC_OutputStream & outputStream) const {
+void C_BDD::print (AbstractOutputStream & outputStream) const {
   if (mBDDvalue == 0) {
     outputStream.addString ("(false)\n") ;
   }else if (mBDDvalue == 1) {
@@ -1008,7 +1008,7 @@ void C_BDD::print (AC_OutputStream & outputStream) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_BDD::printHeader (AC_OutputStream & outputStream) const {
+void C_BDD::printHeader (AbstractOutputStream & outputStream) const {
   if (mBDDvalue > 1) {
     const uint32_t nodeIndex = nodeIndexForRoot (mBDDvalue COMMA_HERE) ;
     const int32_t var = (int32_t) gNodeArray [nodeIndex].mVariableIndex ;
@@ -1045,7 +1045,7 @@ void C_BDD::printHeader (AC_OutputStream & outputStream) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_BDD::printWithHeader (AC_OutputStream & outputStream) const {
+void C_BDD::printWithHeader (AbstractOutputStream & outputStream) const {
   printHeader (outputStream) ;
   print (outputStream) ;
 }
@@ -1058,7 +1058,7 @@ void C_BDD::printWithHeader (AC_OutputStream & outputStream) const {
 
 //--------------------------------------------------------------------------------------------------
 
-static void printLineWithSeparator (AC_OutputStream & outputStream,
+static void printLineWithSeparator (AbstractOutputStream & outputStream,
                                     const TC_UniqueArray <int32_t> & inValueSeparation,
                                     const TC_UniqueArray <int32_t> & inBitCounts,
                                     const TC_UniqueArray <char> & inValueArray) {
@@ -1076,7 +1076,7 @@ static void printLineWithSeparator (AC_OutputStream & outputStream,
 
 //--------------------------------------------------------------------------------------------------
 
-static void internalPrintWithSeparator (AC_OutputStream & outputStream,
+static void internalPrintWithSeparator (AbstractOutputStream & outputStream,
                                         const TC_UniqueArray <int32_t> & inValueSeparation,
                                         const TC_UniqueArray <int32_t> & inBitCounts,
                                         const uint32_t inValue,
@@ -1125,7 +1125,7 @@ static void internalPrintWithSeparator (AC_OutputStream & outputStream,
 
 //--------------------------------------------------------------------------------------------------
 
-void C_BDD::print (AC_OutputStream & outputStream,
+void C_BDD::print (AbstractOutputStream & outputStream,
                    const TC_UniqueArray <String> & inVariablesNames,
                    const TC_UniqueArray <int32_t> & inBitCounts) const {
 //--- Build separators
@@ -1151,7 +1151,7 @@ void C_BDD::print (AC_OutputStream & outputStream,
 
 //--------------------------------------------------------------------------------------------------
 
-void C_BDD::print (AC_OutputStream & outputStream,
+void C_BDD::print (AbstractOutputStream & outputStream,
                    const TC_UniqueArray <int32_t> & inValueSeparation,
                    const TC_UniqueArray <int32_t> & inBitCounts,
                    const int32_t inPrefixedSpaceCount) const {

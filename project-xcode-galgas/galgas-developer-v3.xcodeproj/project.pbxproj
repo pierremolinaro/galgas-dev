@@ -162,7 +162,7 @@
 		CF6DF16909E3F23700506859 /* F_Analyze_CLI_Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF82599808536A5B0077AEAF /* F_Analyze_CLI_Options.cpp */; };
 		CF6DF16B09E3F23700506859 /* HTMLFileWrite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8259D808536A7E0077AEAF /* HTMLFileWrite.cpp */; };
 		CF6DF16C09E3F23700506859 /* TextFileWrite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8259DA08536A7E0077AEAF /* TextFileWrite.cpp */; };
-		CF6DF16E09E3F23700506859 /* AC_OutputStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A2C08536B150077AEAF /* AC_OutputStream.cpp */; };
+		CF6DF16E09E3F23700506859 /* AbstractOutputStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A2C08536B150077AEAF /* AbstractOutputStream.cpp */; };
 		CF6DF16F09E3F23700506859 /* C_ConsoleOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A2E08536B150077AEAF /* C_ConsoleOut.cpp */; };
 		CF6DF17009E3F23700506859 /* DateTime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A4808536B350077AEAF /* DateTime.cpp */; };
 		CF6DF17109E3F23700506859 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A4A08536B350077AEAF /* Timer.cpp */; };
@@ -175,7 +175,7 @@
 		CF6DF1E309E3F30400506859 /* F_Analyze_CLI_Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF82599808536A5B0077AEAF /* F_Analyze_CLI_Options.cpp */; };
 		CF6DF1E509E3F30400506859 /* HTMLFileWrite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8259D808536A7E0077AEAF /* HTMLFileWrite.cpp */; };
 		CF6DF1E609E3F30400506859 /* TextFileWrite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8259DA08536A7E0077AEAF /* TextFileWrite.cpp */; };
-		CF6DF1E809E3F30400506859 /* AC_OutputStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A2C08536B150077AEAF /* AC_OutputStream.cpp */; };
+		CF6DF1E809E3F30400506859 /* AbstractOutputStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A2C08536B150077AEAF /* AbstractOutputStream.cpp */; };
 		CF6DF1E909E3F30400506859 /* C_ConsoleOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A2E08536B150077AEAF /* C_ConsoleOut.cpp */; };
 		CF6DF1EA09E3F30400506859 /* DateTime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A4808536B350077AEAF /* DateTime.cpp */; };
 		CF6DF1EB09E3F30400506859 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A4A08536B350077AEAF /* Timer.cpp */; };
@@ -663,8 +663,8 @@
 		CF8259D908536A7E0077AEAF /* HTMLFileWrite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HTMLFileWrite.h; sourceTree = "<group>"; };
 		CF8259DA08536A7E0077AEAF /* TextFileWrite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = TextFileWrite.cpp; sourceTree = "<group>"; };
 		CF8259DB08536A7E0077AEAF /* TextFileWrite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TextFileWrite.h; sourceTree = "<group>"; };
-		CF825A2C08536B150077AEAF /* AC_OutputStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = AC_OutputStream.cpp; sourceTree = "<group>"; };
-		CF825A2D08536B150077AEAF /* AC_OutputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AC_OutputStream.h; sourceTree = "<group>"; };
+		CF825A2C08536B150077AEAF /* AbstractOutputStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = AbstractOutputStream.cpp; sourceTree = "<group>"; };
+		CF825A2D08536B150077AEAF /* AbstractOutputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AbstractOutputStream.h; sourceTree = "<group>"; };
 		CF825A2E08536B150077AEAF /* C_ConsoleOut.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = C_ConsoleOut.cpp; sourceTree = "<group>"; };
 		CF825A2F08536B150077AEAF /* C_ConsoleOut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = C_ConsoleOut.h; sourceTree = "<group>"; };
 		CF825A4808536B350077AEAF /* DateTime.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = DateTime.cpp; sourceTree = "<group>"; };
@@ -1479,8 +1479,8 @@
 			children = (
 				CF69B2800A31EFF0002AE337 /* C_ErrorOut.cpp */,
 				CF69B2810A31EFF0002AE337 /* C_ErrorOut.h */,
-				CF825A2C08536B150077AEAF /* AC_OutputStream.cpp */,
-				CF825A2D08536B150077AEAF /* AC_OutputStream.h */,
+				CF825A2C08536B150077AEAF /* AbstractOutputStream.cpp */,
+				CF825A2D08536B150077AEAF /* AbstractOutputStream.h */,
 				CF825A2E08536B150077AEAF /* C_ConsoleOut.cpp */,
 				CF825A2F08536B150077AEAF /* C_ConsoleOut.h */,
 				CF70273E137C53D600FA7C3E /* C_ColoredConsole.cpp */,
@@ -1670,7 +1670,7 @@
 				CF6DF16909E3F23700506859 /* F_Analyze_CLI_Options.cpp in Sources */,
 				CF6DF16B09E3F23700506859 /* HTMLFileWrite.cpp in Sources */,
 				CF6DF16C09E3F23700506859 /* TextFileWrite.cpp in Sources */,
-				CF6DF16E09E3F23700506859 /* AC_OutputStream.cpp in Sources */,
+				CF6DF16E09E3F23700506859 /* AbstractOutputStream.cpp in Sources */,
 				CF6DF16F09E3F23700506859 /* C_ConsoleOut.cpp in Sources */,
 				CF1AA5911979A9240095B745 /* HTMLString.cpp in Sources */,
 				CF6DF17009E3F23700506859 /* DateTime.cpp in Sources */,
@@ -1857,7 +1857,7 @@
 				CF6DF1E309E3F30400506859 /* F_Analyze_CLI_Options.cpp in Sources */,
 				CF6DF1E509E3F30400506859 /* HTMLFileWrite.cpp in Sources */,
 				CF6DF1E609E3F30400506859 /* TextFileWrite.cpp in Sources */,
-				CF6DF1E809E3F30400506859 /* AC_OutputStream.cpp in Sources */,
+				CF6DF1E809E3F30400506859 /* AbstractOutputStream.cpp in Sources */,
 				CF6DF1E909E3F30400506859 /* C_ConsoleOut.cpp in Sources */,
 				CF1AA5921979A9240095B745 /* HTMLString.cpp in Sources */,
 				CF6DF1EA09E3F30400506859 /* DateTime.cpp in Sources */,

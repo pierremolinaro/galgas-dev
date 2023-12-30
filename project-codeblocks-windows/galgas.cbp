@@ -165,7 +165,7 @@
    <Unit filename="../libpm/files/TextFileWrite.cpp" />
    <Unit filename="../libpm/files/HTMLFileWrite.cpp" />
    <Unit filename="../libpm/files/BinaryFileWrite.cpp" />
-   <Unit filename="../libpm/streams/AC_OutputStream.cpp" />
+   <Unit filename="../libpm/streams/AbstractOutputStream.cpp" />
    <Unit filename="../libpm/streams/C_ColoredConsole.cpp" />
    <Unit filename="../libpm/streams/C_ConsoleOut.cpp" />
    <Unit filename="../libpm/streams/C_ErrorOut.cpp" />

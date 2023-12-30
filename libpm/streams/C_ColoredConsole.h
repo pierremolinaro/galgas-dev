@@ -64,11 +64,11 @@ typedef enum {
 
 //--------------------------------------------------------------------------------------------------
 
-#include "streams/AC_OutputStream.h"
+#include "streams/AbstractOutputStream.h"
 
 //--------------------------------------------------------------------------------------------------
 
-class C_ColoredConsole : public AC_OutputStream {
+class C_ColoredConsole : public AbstractOutputStream {
 //--- Set fore color
   public: void setForeColor (const consoleForeColorEnum inForeColor) ;
 

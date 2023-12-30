@@ -106,7 +106,7 @@ void cProduction::
 engendrerAppelProduction (const int16_t nombreDeParametres,
                           const cVocabulary & inVocabulary,
                           const String & inAltName,
-                          AC_OutputStream & fichierCPP,
+                          AbstractOutputStream & fichierCPP,
                           const String & inSyntaxDirectedTranslationVarName) const {
   fichierCPP.addString ("  rule_") ;
   fichierCPP.addString (mSourceFileName.identifierRepresentation ()) ;

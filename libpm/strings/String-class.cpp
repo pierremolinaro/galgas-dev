@@ -208,7 +208,7 @@ mEmbeddedString (nullptr) {
 //--------------------------------------------------------------------------------------------------
 
 String::String (const String & inSource) : // Copy constructor
-AC_OutputStream (inSource),
+AbstractOutputStream (inSource),
 mEmbeddedString (nullptr) {
   macroAssignSharedObject (mEmbeddedString, inSource.mEmbeddedString) ;
 }

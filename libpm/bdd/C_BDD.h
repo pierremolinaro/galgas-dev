@@ -36,7 +36,7 @@
 
 class C_bdd_value_traversing ;
 class String ;
-class AC_OutputStream ;
+class AbstractOutputStream ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -238,17 +238,17 @@ class C_BDD final {
   public: String graphvizRepresentation (void) const ;
   public: String graphvizRepresentationWithNames (const TC_UniqueArray <String> & inBitNames) const ;
 
-  public: void print (AC_OutputStream & outputStream) const ;
+  public: void print (AbstractOutputStream & outputStream) const ;
 
-  public: void printHeader (AC_OutputStream & outputStream) const ;
+  public: void printHeader (AbstractOutputStream & outputStream) const ;
 
-  public: void printWithHeader (AC_OutputStream & outputStream) const ;
+  public: void printWithHeader (AbstractOutputStream & outputStream) const ;
 
-  public: void print (AC_OutputStream & outputStream,
+  public: void print (AbstractOutputStream & outputStream,
                        const TC_UniqueArray <String> & inVariablesNames,
                        const TC_UniqueArray <int32_t> & inBitCounts) const ;
 
-  public: void print (AC_OutputStream & outputStream,
+  public: void print (AbstractOutputStream & outputStream,
                        const TC_UniqueArray <int32_t> & inValueSeparation,
                        const TC_UniqueArray <int32_t> & inBitCounts,
                        const int32_t inPrefixedSpaceCount) const ;
@@ -337,7 +337,7 @@ class C_BDD final {
   public: static uint32_t getCreatedNodesCount (void)  ;
 
 //--- Print BDD package statistics 
-  public: static void printBDDpackageOperationsSummary (AC_OutputStream & inStream) ;
+  public: static void printBDDpackageOperationsSummary (AbstractOutputStream & inStream) ;
 
 //--- Free BDD data structures
   public: static void freeBDDStataStructures (void) ;

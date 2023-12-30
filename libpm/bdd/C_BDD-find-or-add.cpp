@@ -581,7 +581,7 @@ void C_BDD::setMaximumMemoryUsage (const uint32_t inMaxMemoryUsage) { // In MB
 
 //--------------------------------------------------------------------------------------------------
 
-void C_BDD::printBDDpackageOperationsSummary (AC_OutputStream & inStream) {
+void C_BDD::printBDDpackageOperationsSummary (AbstractOutputStream & inStream) {
   #ifdef __LP64__
     const uint32_t mode = 64 ;
   #else

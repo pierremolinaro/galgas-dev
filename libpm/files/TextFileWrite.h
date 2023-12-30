@@ -23,7 +23,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "strings/String-class.h"
-#include "streams/AC_OutputStream.h"
+#include "streams/AbstractOutputStream.h"
 #include "files/AbstractFileHandle.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -32,8 +32,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-class TextFileWrite : public AC_OutputStream, public AbstractFileHandle {
-  typedef AbstractFileHandle Super ;
+class TextFileWrite : public AbstractOutputStream, public AbstractFileHandle {
 //--- Constructor : if inFileName is the empty string, no file is opened.
 //    Otherwise, it tries to open the file for writing;
 //    The destructor will close the file (is successfully opened)
