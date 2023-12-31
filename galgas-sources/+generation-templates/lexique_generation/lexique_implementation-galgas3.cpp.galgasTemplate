@@ -21,7 +21,7 @@ cTokenFor_%!LEXIQUE_IDENTIFIER%::cTokenFor_%!LEXIQUE_IDENTIFIER% (void)%
 
 //--------------------------------------------------------------------------------------------------
 
-C_Lexique_%!LEXIQUE_IDENTIFIER%::C_Lexique_%!LEXIQUE_IDENTIFIER% (%?^%Compiler * inCallerCompiler,
+Lexique_%!LEXIQUE_IDENTIFIER%::Lexique_%!LEXIQUE_IDENTIFIER% (%?^%Compiler * inCallerCompiler,
                 %!^%const String & inSourceFileName
                 %!^%COMMA_LOCATION_ARGS) :
 Lexique (inCallerCompiler, inSourceFileName COMMA_THERE)%
@@ -33,7 +33,7 @@ Lexique (inCallerCompiler, inSourceFileName COMMA_THERE)%
 
 //--------------------------------------------------------------------------------------------------
 
-C_Lexique_%!LEXIQUE_IDENTIFIER%::C_Lexique_%!LEXIQUE_IDENTIFIER% (%?^%Compiler * inCallerCompiler,
+Lexique_%!LEXIQUE_IDENTIFIER%::Lexique_%!LEXIQUE_IDENTIFIER% (%?^%Compiler * inCallerCompiler,
                 %!^%const String & inSourceString,
                 %!^%const String & inStringForError
                 %!^%COMMA_LOCATION_ARGS) :
@@ -56,7 +56,7 @@ Lexique (inCallerCompiler, inSourceString, inStringForError COMMA_THERE)%
 //                getMessageForTerminal                                                          
 //--------------------------------------------------------------------------------------------------
 
-String C_Lexique_%!LEXIQUE_IDENTIFIER%::getMessageForTerminal (const int32_t inTerminalIndex) const {
+String Lexique_%!LEXIQUE_IDENTIFIER%::getMessageForTerminal (const int32_t inTerminalIndex) const {
   String result = "<unknown>" ;
   if ((inTerminalIndex >= 0) && (inTerminalIndex < %![[TERMINAL_LIST count] + 1 string]%)) {
     static const char * syntaxErrorMessageArray [%![[TERMINAL_LIST count] + 1 string]%] = {kEndOfSourceLexicalErrorMessage%
@@ -88,11 +88,11 @@ String C_Lexique_%!LEXIQUE_IDENTIFIER%::getMessageForTerminal (const int32_t inT
     %\nstatic const int32_t ktable_size_%!LEXIQUE_IDENTIFIER%_%!tokenList_lkey.string% = %![[tokenList_mExplicitTokenListMap count] string]% ;\n\n%
     %static const C_unicode_lexique_table_entry ktable_for_%!LEXIQUE_IDENTIFIER%_%!tokenList_lkey.string% [ktable_size_%!LEXIQUE_IDENTIFIER%_%!tokenList_lkey.string%] = {\n%
       for (mLength mName mTerminalName) in tokenList_mTokenSortedList
-      do %  C_unicode_lexique_table_entry (kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![mName identifierRepresentation]%, %![mLength string]%, C_Lexique_%!LEXIQUE_IDENTIFIER%::kToken_%![mTerminalName identifierRepresentation]%)%
+      do %  C_unicode_lexique_table_entry (kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![mName identifierRepresentation]%, %![mLength string]%, Lexique_%!LEXIQUE_IDENTIFIER%::kToken_%![mTerminalName identifierRepresentation]%)%
       between %,\n%
       end
     %\n} ;\n\n%
-    %int32_t C_Lexique_%!LEXIQUE_IDENTIFIER%::search_into_%!tokenList_lkey.string% (const String & inSearchedString) {\n%
+    %int32_t Lexique_%!LEXIQUE_IDENTIFIER%::search_into_%!tokenList_lkey.string% (const String & inSearchedString) {\n%
     %  return searchInList (inSearchedString, ktable_for_%!LEXIQUE_IDENTIFIER%_%!tokenList_lkey.string%, ktable_size_%!LEXIQUE_IDENTIFIER%_%!tokenList_lkey.string%) ;\n%
     %}\n\n%
   end
@@ -101,7 +101,7 @@ String C_Lexique_%!LEXIQUE_IDENTIFIER%::getMessageForTerminal (const int32_t inT
 //                          getCurrentTokenString                                                
 //--------------------------------------------------------------------------------------------------
 
-String C_Lexique_%!LEXIQUE_IDENTIFIER%::getCurrentTokenString (const cToken * inTokenPtr) const {
+String Lexique_%!LEXIQUE_IDENTIFIER%::getCurrentTokenString (const cToken * inTokenPtr) const {
   const cTokenFor_%!LEXIQUE_IDENTIFIER% * ptr = (const cTokenFor_%!LEXIQUE_IDENTIFIER% *) inTokenPtr ;
   String s ;
   if (ptr == nullptr) {
@@ -184,7 +184,7 @@ end
 //               INTERNAL PARSE LEXICAL TOKEN                                         
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique_%!LEXIQUE_IDENTIFIER%::internalParseLexicalToken (cTokenFor_%!LEXIQUE_IDENTIFIER% & token) {
+void Lexique_%!LEXIQUE_IDENTIFIER%::internalParseLexicalToken (cTokenFor_%!LEXIQUE_IDENTIFIER% & token) {
 %IF USE_LOOP_LOCAL_VARIABLE THEN
 %  bool loop = true ;
 %
@@ -217,7 +217,7 @@ void C_Lexique_%!LEXIQUE_IDENTIFIER%::internalParseLexicalToken (cTokenFor_%!LEX
 //               P A R S E    L E X I C A L    T O K E N                                         
 //--------------------------------------------------------------------------------------------------
 
-bool C_Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
+bool Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
   cTokenFor_%!LEXIQUE_IDENTIFIER% token ;
   token.mTokenCode = -1 ;
   while ((token.mTokenCode < 0) && (UNICODE_VALUE (mCurrentChar) != '\0')) {
@@ -279,7 +279,7 @@ bool C_Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
 //                         E N T E R    T O K E N                                                
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique_%!LEXIQUE_IDENTIFIER%::enterToken (cTokenFor_%!LEXIQUE_IDENTIFIER% & ioToken) {
+void Lexique_%!LEXIQUE_IDENTIFIER%::enterToken (cTokenFor_%!LEXIQUE_IDENTIFIER% & ioToken) {
   cTokenFor_%!LEXIQUE_IDENTIFIER% * ptr = nullptr ;
   macroMyNew (ptr, cTokenFor_%!LEXIQUE_IDENTIFIER% ()) ;
   ptr->mTokenCode = ioToken.mTokenCode ;
@@ -299,7 +299,7 @@ void C_Lexique_%!LEXIQUE_IDENTIFIER%::enterToken (cTokenFor_%!LEXIQUE_IDENTIFIER
 %
   for (lkey mLexicalType) in LEXICAL_ATTRIBUTE_MAP do
     %//--------------------------------------------------------------------------------------------------\n\n%
-    ![mLexicalType cppTypeName]% C_Lexique_%!LEXIQUE_IDENTIFIER%::attributeValue_%![lkey identifierRepresentation]% (void) const {\n%
+    ![mLexicalType cppTypeName]% Lexique_%!LEXIQUE_IDENTIFIER%::attributeValue_%![lkey identifierRepresentation]% (void) const {\n%
     %  cTokenFor_%!LEXIQUE_IDENTIFIER% * ptr = (cTokenFor_%!LEXIQUE_IDENTIFIER% *) currentTokenPtr (HERE) ;\n%
     %  return ptr->mLexicalAttribute_%![lkey identifierRepresentation]% ;\n%
     %}\n\n%
@@ -309,7 +309,7 @@ void C_Lexique_%!LEXIQUE_IDENTIFIER%::enterToken (cTokenFor_%!LEXIQUE_IDENTIFIER
 %
   for (lkey mLexicalType) in LEXICAL_ATTRIBUTE_MAP do
     %//--------------------------------------------------------------------------------------------------\n\n%
-    %GALGAS_l%![[mLexicalType lexicalTypeBaseName] identifierRepresentation]% C_Lexique_%!LEXIQUE_IDENTIFIER%::synthetizedAttribute_%![lkey identifierRepresentation]% (void) const {\n%
+    %GALGAS_l%![[mLexicalType lexicalTypeBaseName] identifierRepresentation]% Lexique_%!LEXIQUE_IDENTIFIER%::synthetizedAttribute_%![lkey identifierRepresentation]% (void) const {\n%
     %  cTokenFor_%!LEXIQUE_IDENTIFIER% * ptr = (cTokenFor_%!LEXIQUE_IDENTIFIER% *) currentTokenPtr (HERE) ;\n%
     %  macroValidSharedObject (ptr, cTokenFor_%!LEXIQUE_IDENTIFIER%) ;\n%
     %  GALGAS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;\n%
@@ -322,7 +322,7 @@ void C_Lexique_%!LEXIQUE_IDENTIFIER%::enterToken (cTokenFor_%!LEXIQUE_IDENTIFIER
 //                         I N T R O S P E C T I O N                                             
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_stringlist C_Lexique_%!LEXIQUE_IDENTIFIER%::symbols (LOCATION_ARGS) {
+GALGAS_stringlist Lexique_%!LEXIQUE_IDENTIFIER%::symbols (LOCATION_ARGS) {
   GALGAS_stringlist result = GALGAS_stringlist::constructor_emptyList (THERE) ;
 %for (mTerminalName mSentAttributeList mSyntaxErrorMessage mIsEndOfTemplateMark mAtomicSelection mStyleIndex) in LEXIQUE_ANALYSIS_CONTEXT.mTerminalList
   do %  result.addAssign_operation (GALGAS_string (%![mTerminalName utf8RepresentationEscapingQuestionMark]%) COMMA_HERE) ;\n%
@@ -369,7 +369,7 @@ __attribute__ ((unused)) (getKeywordLists_%!LEXIQUE_IDENTIFIER%, getKeywordsForI
 //   S T Y L E   I N D E X    F O R    T E R M I N A L                                           
 //--------------------------------------------------------------------------------------------------
 
-uint32_t C_Lexique_%!LEXIQUE_IDENTIFIER%::styleIndexForTerminal (const int32_t inTerminalIndex) const {
+uint32_t Lexique_%!LEXIQUE_IDENTIFIER%::styleIndexForTerminal (const int32_t inTerminalIndex) const {
   static const uint32_t kTerminalSymbolStyles [%![[TERMINAL_LIST count] + 1 string]%] = {0%
 for (mTerminalName mSentAttributeList mSyntaxErrorMessage mIsEndOfTemplateMark mAtomicSelection mStyleIndex) in TERMINAL_LIST do
   %,\n    %![mStyleIndex string]% /* %!LEXIQUE_COMPONENT_NAME%_1_%![mTerminalName.string identifierRepresentation]% */%
@@ -381,7 +381,7 @@ end%\n  } ;
 //   S T Y L E   N A M E    F O R    S T Y L E    I N D E X                                      
 //--------------------------------------------------------------------------------------------------
 
-String C_Lexique_%!LEXIQUE_IDENTIFIER%::styleNameForIndex (const uint32_t inStyleIndex) const {
+String Lexique_%!LEXIQUE_IDENTIFIER%::styleNameForIndex (const uint32_t inStyleIndex) const {
   String result ;
   if (inStyleIndex < %![[LEXICAL_STYLE_LIST count] + 1 string]%) {
     static const char * kStyleArray [%![[LEXICAL_STYLE_LIST count] + 1 string]%] = {

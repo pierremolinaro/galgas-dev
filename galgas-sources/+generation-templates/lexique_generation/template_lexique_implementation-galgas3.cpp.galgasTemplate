@@ -10,20 +10,20 @@
 
 //--------------------------------------------------------------------------------------------------
 
-C_Lexique_%!LEXIQUE_IDENTIFIER%::C_Lexique_%!LEXIQUE_IDENTIFIER% (%?^%Compiler * inCallerCompiler,
+Lexique_%!LEXIQUE_IDENTIFIER%::Lexique_%!LEXIQUE_IDENTIFIER% (%?^%Compiler * inCallerCompiler,
                 %!^%const String & inSourceFileName
                 %!^%COMMA_LOCATION_ARGS) :
-C_Lexique_%!SUPER_LEXIQUE_IDENTIFIER% (inCallerCompiler, inSourceFileName COMMA_THERE),
+Lexique_%!SUPER_LEXIQUE_IDENTIFIER% (inCallerCompiler, inSourceFileName COMMA_THERE),
 mMatchedTemplateDelimiterIndex (-1) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-C_Lexique_%!LEXIQUE_IDENTIFIER%::C_Lexique_%!LEXIQUE_IDENTIFIER% (%?^%Compiler * inCallerCompiler,
+Lexique_%!LEXIQUE_IDENTIFIER%::Lexique_%!LEXIQUE_IDENTIFIER% (%?^%Compiler * inCallerCompiler,
                 %!^%const String & inSourceString,
                 %!^%const String & inStringForError
                 %!^%COMMA_LOCATION_ARGS) :
-C_Lexique_%!SUPER_LEXIQUE_IDENTIFIER% (inCallerCompiler, inSourceString, inStringForError COMMA_THERE),
+Lexique_%!SUPER_LEXIQUE_IDENTIFIER% (inCallerCompiler, inSourceString, inStringForError COMMA_THERE),
 mMatchedTemplateDelimiterIndex (-1) {
 }
 
@@ -91,7 +91,7 @@ mMatchedTemplateDelimiterIndex (-1) {
 //               P A R S E    L E X I C A L    T O K E N
 //--------------------------------------------------------------------------------------------------
 
-bool C_Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
+bool Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
   cTokenFor_%!LEXIQUE_IDENTIFIER% token ;
   token.mTokenCode = -1 ;
   while ((token.mTokenCode < 0) && (UNICODE_VALUE (mCurrentChar) != '\0')) {
@@ -148,7 +148,7 @@ bool C_Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
 //                         I N T R O S P E C T I O N
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_stringlist C_Lexique_%!LEXIQUE_IDENTIFIER%::symbols (LOCATION_ARGS) {
+GALGAS_stringlist Lexique_%!LEXIQUE_IDENTIFIER%::symbols (LOCATION_ARGS) {
   GALGAS_stringlist result = GALGAS_stringlist::constructor_emptyList (THERE) ;
 %for (mTerminalName * * * * *) in TERMINAL_LIST
   do %  result.addAssign_operation (GALGAS_string (%![mTerminalName utf8RepresentationEscapingQuestionMark]%) COMMA_HERE) ;\n%

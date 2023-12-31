@@ -356,8 +356,8 @@ printProductions (const cPureBNFproductionsList & inPureBNFproductions,
         if (item < derivationLength) {
           const int32_t v = p.derivationAtIndex (item COMMA_HERE) ;
           if (v < inVocabulary.getTerminalSymbolsCount ()) {
-            inCppFile.addString ("TERMINAL (") ;
-            inCppFile.addString ("C_Lexique_") ;
+            inCppFile.addString ("TOP_DOWN_TERMINAL (") ;
+            inCppFile.addString ("Lexique_") ;
             inCppFile.addString (inLexiqueName.identifierRepresentation ()) ;
             inCppFile.addString ("::kToken_") ;
             inCppFile.addString (inVocabulary.getSymbol (v COMMA_HERE).identifierRepresentation ()) ;
@@ -365,14 +365,14 @@ printProductions (const cPureBNFproductionsList & inPureBNFproductions,
             inCppFile.addString (inVocabulary.getSymbol (v COMMA_HERE)) ;
             inCppFile.addString ("$\n") ;
           }else{
-            inCppFile.addString ("NONTERMINAL (") ;
+            inCppFile.addString ("TOP_DOWN_NONTERMINAL (") ;
             inCppFile.addSigned ((int32_t) (v - inVocabulary.getTerminalSymbolsCount ())) ;
             inCppFile.addString (") // <") ;
             inCppFile.addString (inVocabulary.getSymbol (v COMMA_HERE)) ;
             inCppFile.addString (">\n") ;
           }
         }else{
-          inCppFile.addString ("END_PRODUCTION\n") ;
+          inCppFile.addString ("TOP_DOWN_END_PRODUCTION ()\n") ;
         }
       }
       ioProductionIndex = (int16_t) (ioProductionIndex + derivationLength + 1) ;
@@ -411,7 +411,7 @@ printDecisionTable (const cPureBNFproductionsList & inPureBNFproductions,
         p.derivationFirst ().getValueArray (array) ;
         for (int32_t i=0 ; i < array.count () ; i++) {
           const uint64_t symbol = array (i COMMA_HERE) ;
-          inCppFile.addString ("C_Lexique_") ;
+          inCppFile.addString ("Lexique_") ;
           inCppFile.addString (inLexiqueName.identifierRepresentation ()) ;
           inCppFile.addString ("::kToken_") ;
           inCppFile.addString (inVocabulary.getSymbol ((int32_t) symbol COMMA_HERE).identifierRepresentation ()) ;
@@ -458,11 +458,8 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
   TC_UniqueArray <C_ProductionNameDescriptor> productionRuleDescription ;
   TC_UniqueArray <String> productionRulesTitle (500 COMMA_HERE) ;
 
-  ioCppFileContents.addCppTitleComment ("L L ( 1 )    P R O D U C T I O N    R U L E S") ;
-  ioCppFileContents.addString ("#define TERMINAL(t)     ((t)+1)\n"
-                       "#define NONTERMINAL(nt) ((-nt)-1)\n"
-                       "#define END_PRODUCTION  (0)\n\n"
-                       "static const int32_t gProductions_") ;
+  ioCppFileContents.addCppTitleComment ("LL(1) PRODUCTION RULES") ;
+  ioCppFileContents.addString ("static const int32_t gProductions_") ;
   ioCppFileContents.addString (inTargetFileName) ;
   ioCppFileContents.addString (" [] = {\n") ;
   cEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis nonTerminal (inNonTerminalSymbolSortedListForGrammarAnalysis, kENUMERATION_UP) ;
@@ -601,7 +598,7 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
         ioCppFileContents.addString (inSyntaxDirectedTranslationVarName) ;
         ioCppFileContents.addString (", ") ;
       }
-      ioCppFileContents.addString ("C_Lexique_") ;
+      ioCppFileContents.addString ("Lexique_") ;
       ioCppFileContents.addString (inLexiqueName.identifierRepresentation ()) ;
       ioCppFileContents.addString (" * ") ;
       ioCppFileContents.addString (existeProduction ? "inLexique" : "") ;
@@ -616,7 +613,7 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
     ioCppFileContents.addString (inTargetFileName.identifierRepresentation ()) ;
     ioCppFileContents.addString ("::nt_") ;
     ioCppFileContents.addString (nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
-    ioCppFileContents.addString ("_indexing (C_Lexique_") ;
+    ioCppFileContents.addString ("_indexing (Lexique_") ;
     ioCppFileContents.addString (inLexiqueName.identifierRepresentation ()) ;
     ioCppFileContents.addString (" * ") ;
     ioCppFileContents.addString (existeProduction ? "inLexique" : "");
@@ -669,7 +666,7 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
         ioCppFileContents.addString (inSyntaxDirectedTranslationVarName) ;
         ioCppFileContents.addString (",\n                                ") ;
       }
-      ioCppFileContents.addString ("C_Lexique_") ;
+      ioCppFileContents.addString ("Lexique_") ;
       ioCppFileContents.addString (inLexiqueName.identifierRepresentation ()) ;
       ioCppFileContents.addString (" * ") ;
       ioCppFileContents.addString (existeProduction ? "inLexique" : "") ;
@@ -687,10 +684,10 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
       ioCppFileContents.addString (inTargetFileName.identifierRepresentation ()) ;
       ioCppFileContents.addString ("::performIndexing (Compiler * inCompiler,\n"
                                    "             const String & inSourceFilePath) {\n"
-                                   "  C_Lexique_") ;
+                                   "  Lexique_") ;
       ioCppFileContents.addString (inLexiqueName.identifierRepresentation ()) ;
       ioCppFileContents.addString (" * scanner = nullptr ;\n"
-                           "  macroMyNew (scanner, C_Lexique_") ;
+                           "  macroMyNew (scanner, Lexique_") ;
       ioCppFileContents.addString (inLexiqueName.identifierRepresentation ()) ;
       ioCppFileContents.addString (" (inCompiler, inSourceFilePath COMMA_HERE)) ;\n"
                            "  scanner->enableIndexing () ;\n"
@@ -726,10 +723,10 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
       ioCppFileContents.addString (inTargetFileName.identifierRepresentation ());
       ioCppFileContents.addString ("::performOnlyLexicalAnalysis (Compiler * inCompiler,\n"
                            "             const String & inSourceFilePath) {\n"
-                           "  C_Lexique_") ;
+                           "  Lexique_") ;
       ioCppFileContents.addString (inLexiqueName.identifierRepresentation ()) ;
       ioCppFileContents.addString (" * scanner = nullptr ;\n"
-                           "  macroMyNew (scanner, C_Lexique_") ;
+                           "  macroMyNew (scanner, Lexique_") ;
       ioCppFileContents.addString (inLexiqueName.identifierRepresentation ()) ;
       ioCppFileContents.addString (" (inCompiler, inSourceFilePath COMMA_HERE)) ;\n"
                            "  if (scanner->sourceText ().isValid ()) {\n"
@@ -741,10 +738,10 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
       ioCppFileContents.addString (inTargetFileName.identifierRepresentation ()) ;
       ioCppFileContents.addString ("::performOnlySyntaxAnalysis (Compiler * inCompiler,\n"
                            "             const String & inSourceFilePath) {\n"
-                           "  C_Lexique_") ;
+                           "  Lexique_") ;
       ioCppFileContents.addString (inLexiqueName.identifierRepresentation ()) ;
       ioCppFileContents.addString (" * scanner = nullptr ;\n"
-                           "  macroMyNew (scanner, C_Lexique_") ;
+                           "  macroMyNew (scanner, Lexique_") ;
       ioCppFileContents.addString (inLexiqueName.identifierRepresentation ()) ;
       ioCppFileContents.addString (" (inCompiler, inSourceFilePath COMMA_HERE)) ;\n"
                            "  if (scanner->sourceText ().isValid ()) {\n"
@@ -819,10 +816,10 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
                             "      filePath = inCompiler->sourceFilePath ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (filePath) ;\n"
                             "    }\n"
                             "    if (FileManager::fileExistsAtPath (filePath)) {\n"
-                            "    C_Lexique_") ;
+                            "    Lexique_") ;
         ioCppFileContents.addString (inLexiqueName.identifierRepresentation ()) ;
         ioCppFileContents.addString (" * scanner = nullptr ;\n"
-                            "    macroMyNew (scanner, C_Lexique_") ;
+                            "    macroMyNew (scanner, Lexique_") ;
         ioCppFileContents.addString (inLexiqueName.identifierRepresentation ()) ;
         ioCppFileContents.addString (" (inCompiler, filePath COMMA_HERE)) ;\n"
                             "    if (scanner->sourceText ().isValid ()) {\n"
@@ -937,10 +934,10 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
                             "  if (inSourceString.isValid () && inNameString.isValid ()) {\n"
                             "    const String sourceString = inSourceString.stringValue () ;\n"
                             "    const String nameString = inNameString.stringValue () ;\n"
-                            "    C_Lexique_") ;
+                            "    Lexique_") ;
         ioCppFileContents.addString (inLexiqueName.identifierRepresentation ()) ;
         ioCppFileContents.addString (" * scanner = nullptr ;\n"
-                             "    macroMyNew (scanner, C_Lexique_") ;
+                             "    macroMyNew (scanner, Lexique_") ;
         ioCppFileContents.addString (inLexiqueName.identifierRepresentation ()) ;
         ioCppFileContents.addString (" (inCompiler, sourceString, nameString COMMA_HERE)) ;\n"
                              "    const bool ok = scanner->performTopDownParsing (gProductions_") ;
@@ -999,7 +996,7 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
       ioCppFileContents.addString (inTargetFileName.identifierRepresentation ());
       ioCppFileContents.addString ("::") ;
       ioCppFileContents.addString (inVocabulary.getSymbol (nt COMMA_HERE));
-      ioCppFileContents.addString (" (C_Lexique_") ;
+      ioCppFileContents.addString (" (Lexique_") ;
       ioCppFileContents.addString (inLexiqueName.identifierRepresentation ()) ;
       ioCppFileContents.addString (" * inLexique) {\n"
                            "  return inLexique->nextProductionIndex () ;\n"

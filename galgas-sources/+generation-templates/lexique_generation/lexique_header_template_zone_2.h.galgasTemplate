@@ -57,13 +57,13 @@ class cTokenFor_%!LEXIQUE_IDENTIFIER% : public cToken {
 //                     S C A N N E R    C L A S S
 //--------------------------------------------------------------------------------------------------
 
-class C_Lexique_%!LEXIQUE_IDENTIFIER% : public Lexique {
+class Lexique_%!LEXIQUE_IDENTIFIER% : public Lexique {
 //--- Constructors
-  public: C_Lexique_%!LEXIQUE_IDENTIFIER% (Compiler * inCallerCompiler,
+  public: Lexique_%!LEXIQUE_IDENTIFIER% (Compiler * inCallerCompiler,
                        const String & inSourceFileName
                        COMMA_LOCATION_ARGS) ;
 
-  public: C_Lexique_%!LEXIQUE_IDENTIFIER% (Compiler * inCallerCompiler,
+  public: Lexique_%!LEXIQUE_IDENTIFIER% (Compiler * inCallerCompiler,
                        const String & inSourceString,
                        const String & inStringForError
                        COMMA_LOCATION_ARGS) ;
@@ -75,7 +75,7 @@ class C_Lexique_%!LEXIQUE_IDENTIFIER% : public Lexique {
 //    an error if a direct delete is performed; only the static method
 //    SharedObject::detachPointer may invoke delete.
   #ifndef DO_NOT_GENERATE_CHECKINGS
-    protected: virtual ~ C_Lexique_%!LEXIQUE_IDENTIFIER% (void) {}
+    protected: virtual ~ Lexique_%!LEXIQUE_IDENTIFIER% (void) {}
   #endif
 %if [TEMPLATE_DELIMITOR_LIST count] > 0 then%
 //--- Scanner mode for template scanner

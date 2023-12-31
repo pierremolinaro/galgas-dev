@@ -281,13 +281,13 @@ class cTokenFor_galgasScanner_33_ : public cToken {
 //                     S C A N N E R    C L A S S
 //--------------------------------------------------------------------------------------------------
 
-class C_Lexique_galgasScanner_33_ : public Lexique {
+class Lexique_galgasScanner_33_ : public Lexique {
 //--- Constructors
-  public: C_Lexique_galgasScanner_33_ (Compiler * inCallerCompiler,
+  public: Lexique_galgasScanner_33_ (Compiler * inCallerCompiler,
                        const String & inSourceFileName
                        COMMA_LOCATION_ARGS) ;
 
-  public: C_Lexique_galgasScanner_33_ (Compiler * inCallerCompiler,
+  public: Lexique_galgasScanner_33_ (Compiler * inCallerCompiler,
                        const String & inSourceString,
                        const String & inStringForError
                        COMMA_LOCATION_ARGS) ;
@@ -299,7 +299,7 @@ class C_Lexique_galgasScanner_33_ : public Lexique {
 //    an error if a direct delete is performed; only the static method
 //    SharedObject::detachPointer may invoke delete.
   #ifndef DO_NOT_GENERATE_CHECKINGS
-    protected: virtual ~ C_Lexique_galgasScanner_33_ (void) {}
+    protected: virtual ~ Lexique_galgasScanner_33_ (void) {}
   #endif
 
 

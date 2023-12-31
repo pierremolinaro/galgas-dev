@@ -309,7 +309,7 @@ override method @terminalCheckInstructionForGeneration generateInstruction
 #--- Indexing
   for (mValue0 mValue1) in self.mIndexingKeyList do
     ioGeneratedCode += compilerCppName ()
-    ioGeneratedCode += "->enterIndexing (C_Lexique_" + self.mLexiqueIdentifier + "::kIndexing_"
+    ioGeneratedCode += "->enterIndexing (Lexique_" + self.mLexiqueIdentifier + "::kIndexing_"
     ioGeneratedCode += [mValue0 identifierRepresentation]
     ioGeneratedCode += ", " + [mValue1 utf8RepresentationEscapingQuestionMark] + ") ;\n"
   end
@@ -328,7 +328,7 @@ override method @terminalCheckInstructionForGeneration generateInstruction
   ]
 #--- Check terminal symbol
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
-  ioGeneratedCode += compilerCppName () + "->acceptTerminal (C_Lexique_"
+  ioGeneratedCode += compilerCppName () + "->acceptTerminal (Lexique_"
   ioGeneratedCode += self.mLexiqueIdentifier + "::kToken_" + [self.mTerminalName identifierRepresentation]
   ioGeneratedCode += [self.mInstructionLocation commaSourceFile] + ") ;\n"
 }

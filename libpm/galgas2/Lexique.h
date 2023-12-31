@@ -33,9 +33,29 @@
 class cIndexingDictionary ;
 
 //--------------------------------------------------------------------------------------------------
-//
-//                 Lexique class                                                                 
-//
+//                 Top Down parsing utilities
+//--------------------------------------------------------------------------------------------------
+
+inline int32_t TOP_DOWN_TERMINAL (const int32_t inSymbol) { return inSymbol + 1 ; }
+
+inline int32_t TOP_DOWN_NONTERMINAL (const int32_t inSymbol) { return - inSymbol - 1 ; }
+
+inline int32_t TOP_DOWN_END_PRODUCTION (void) { return 0 ; }
+
+//--------------------------------------------------------------------------------------------------
+//                 Bottom Up parsing utilities
+//--------------------------------------------------------------------------------------------------
+
+inline int32_t BOTTOM_UP_SHIFT (const int32_t inSymbol) { return inSymbol + 2 ; }
+
+inline int32_t BOTTOM_UP_REDUCE (const int32_t inSymbol) { return - inSymbol - 1 ; }
+
+inline int32_t BOTTOM_UP_ACCEPT (void) { return 1 ; }
+
+inline int32_t BOTTOM_UP_END (void) { return -1 ; }
+
+//--------------------------------------------------------------------------------------------------
+//                 Lexique class
 //--------------------------------------------------------------------------------------------------
 
 class Lexique : public Compiler {

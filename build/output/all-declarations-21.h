@@ -15,137 +15,137 @@
 class cGrammar_templateGrammar : public cParser_templateSyntax {
 //------------------------------------- 'expression_tpl' non terminal
 //--- 'parse' label
-  public: virtual void nt_expression_5F_tpl_parse (C_Lexique_galgasTemplateScanner * inCompiler) ;
+  public: virtual void nt_expression_5F_tpl_parse (Lexique_galgasTemplateScanner * inCompiler) ;
 
 //--- indexing
-  public: virtual void nt_expression_5F_tpl_indexing (C_Lexique_galgasTemplateScanner * inCompiler) ;
+  public: virtual void nt_expression_5F_tpl_indexing (Lexique_galgasTemplateScanner * inCompiler) ;
 
 //----------- '' label
   public: virtual void nt_expression_5F_tpl_ (GALGAS_templateExpressionAST & outArgument0,
-                                              C_Lexique_galgasTemplateScanner * inCompiler) ;
+                                              Lexique_galgasTemplateScanner * inCompiler) ;
 
 //------------------------------------- 'factor_tpl' non terminal
 //--- 'parse' label
-  public: virtual void nt_factor_5F_tpl_parse (C_Lexique_galgasTemplateScanner * inCompiler) ;
+  public: virtual void nt_factor_5F_tpl_parse (Lexique_galgasTemplateScanner * inCompiler) ;
 
 //--- indexing
-  public: virtual void nt_factor_5F_tpl_indexing (C_Lexique_galgasTemplateScanner * inCompiler) ;
+  public: virtual void nt_factor_5F_tpl_indexing (Lexique_galgasTemplateScanner * inCompiler) ;
 
 //----------- '' label
   public: virtual void nt_factor_5F_tpl_ (GALGAS_templateExpressionAST & outArgument0,
-                                          C_Lexique_galgasTemplateScanner * inCompiler) ;
+                                          Lexique_galgasTemplateScanner * inCompiler) ;
 
 //------------------------------------- 'for_instruction_element' non terminal
 //--- 'parse' label
-  public: virtual void nt_for_5F_instruction_5F_element_parse (C_Lexique_galgasTemplateScanner * inCompiler) ;
+  public: virtual void nt_for_5F_instruction_5F_element_parse (Lexique_galgasTemplateScanner * inCompiler) ;
 
 //--- indexing
-  public: virtual void nt_for_5F_instruction_5F_element_indexing (C_Lexique_galgasTemplateScanner * inCompiler) ;
+  public: virtual void nt_for_5F_instruction_5F_element_indexing (Lexique_galgasTemplateScanner * inCompiler) ;
 
 //----------- '' label
   public: virtual void nt_for_5F_instruction_5F_element_ (GALGAS_lstringlist & ioArgument0,
-                                                          C_Lexique_galgasTemplateScanner * inCompiler) ;
+                                                          Lexique_galgasTemplateScanner * inCompiler) ;
 
 //------------------------------------- 'for_instruction_enumerated_object' non terminal
 //--- 'parse' label
-  public: virtual void nt_for_5F_instruction_5F_enumerated_5F_object_parse (C_Lexique_galgasTemplateScanner * inCompiler) ;
+  public: virtual void nt_for_5F_instruction_5F_enumerated_5F_object_parse (Lexique_galgasTemplateScanner * inCompiler) ;
 
 //--- indexing
-  public: virtual void nt_for_5F_instruction_5F_enumerated_5F_object_indexing (C_Lexique_galgasTemplateScanner * inCompiler) ;
+  public: virtual void nt_for_5F_instruction_5F_enumerated_5F_object_indexing (Lexique_galgasTemplateScanner * inCompiler) ;
 
 //----------- '' label
   public: virtual void nt_for_5F_instruction_5F_enumerated_5F_object_ (GALGAS_templateInstructionForEnumerationAST & outArgument0,
                                                                        GALGAS_templateExpressionAST & outArgument1,
-                                                                       C_Lexique_galgasTemplateScanner * inCompiler) ;
+                                                                       Lexique_galgasTemplateScanner * inCompiler) ;
 
 //------------------------------------- 'output_expression_list_tpl' non terminal
 //--- 'parse' label
-  public: virtual void nt_output_5F_expression_5F_list_5F_tpl_parse (C_Lexique_galgasTemplateScanner * inCompiler) ;
+  public: virtual void nt_output_5F_expression_5F_list_5F_tpl_parse (Lexique_galgasTemplateScanner * inCompiler) ;
 
 //--- indexing
-  public: virtual void nt_output_5F_expression_5F_list_5F_tpl_indexing (C_Lexique_galgasTemplateScanner * inCompiler) ;
+  public: virtual void nt_output_5F_expression_5F_list_5F_tpl_indexing (Lexique_galgasTemplateScanner * inCompiler) ;
 
 //----------- '' label
   public: virtual void nt_output_5F_expression_5F_list_5F_tpl_ (GALGAS_templateExpressionListAST & outArgument0,
-                                                                C_Lexique_galgasTemplateScanner * inCompiler) ;
+                                                                Lexique_galgasTemplateScanner * inCompiler) ;
 
 //------------------------------------- 'primary_tpl' non terminal
 //--- 'parse' label
-  public: virtual void nt_primary_5F_tpl_parse (C_Lexique_galgasTemplateScanner * inCompiler) ;
+  public: virtual void nt_primary_5F_tpl_parse (Lexique_galgasTemplateScanner * inCompiler) ;
 
 //--- indexing
-  public: virtual void nt_primary_5F_tpl_indexing (C_Lexique_galgasTemplateScanner * inCompiler) ;
+  public: virtual void nt_primary_5F_tpl_indexing (Lexique_galgasTemplateScanner * inCompiler) ;
 
 //----------- '' label
   public: virtual void nt_primary_5F_tpl_ (GALGAS_templateExpressionAST & outArgument0,
-                                           C_Lexique_galgasTemplateScanner * inCompiler) ;
+                                           Lexique_galgasTemplateScanner * inCompiler) ;
 
 //------------------------------------- 'relation_factor_tpl' non terminal
 //--- 'parse' label
-  public: virtual void nt_relation_5F_factor_5F_tpl_parse (C_Lexique_galgasTemplateScanner * inCompiler) ;
+  public: virtual void nt_relation_5F_factor_5F_tpl_parse (Lexique_galgasTemplateScanner * inCompiler) ;
 
 //--- indexing
-  public: virtual void nt_relation_5F_factor_5F_tpl_indexing (C_Lexique_galgasTemplateScanner * inCompiler) ;
+  public: virtual void nt_relation_5F_factor_5F_tpl_indexing (Lexique_galgasTemplateScanner * inCompiler) ;
 
 //----------- '' label
   public: virtual void nt_relation_5F_factor_5F_tpl_ (GALGAS_templateExpressionAST & outArgument0,
-                                                      C_Lexique_galgasTemplateScanner * inCompiler) ;
+                                                      Lexique_galgasTemplateScanner * inCompiler) ;
 
 //------------------------------------- 'relation_term_tpl' non terminal
 //--- 'parse' label
-  public: virtual void nt_relation_5F_term_5F_tpl_parse (C_Lexique_galgasTemplateScanner * inCompiler) ;
+  public: virtual void nt_relation_5F_term_5F_tpl_parse (Lexique_galgasTemplateScanner * inCompiler) ;
 
 //--- indexing
-  public: virtual void nt_relation_5F_term_5F_tpl_indexing (C_Lexique_galgasTemplateScanner * inCompiler) ;
+  public: virtual void nt_relation_5F_term_5F_tpl_indexing (Lexique_galgasTemplateScanner * inCompiler) ;
 
 //----------- '' label
   public: virtual void nt_relation_5F_term_5F_tpl_ (GALGAS_templateExpressionAST & outArgument0,
-                                                    C_Lexique_galgasTemplateScanner * inCompiler) ;
+                                                    Lexique_galgasTemplateScanner * inCompiler) ;
 
 //------------------------------------- 'simple_expression_tpl' non terminal
 //--- 'parse' label
-  public: virtual void nt_simple_5F_expression_5F_tpl_parse (C_Lexique_galgasTemplateScanner * inCompiler) ;
+  public: virtual void nt_simple_5F_expression_5F_tpl_parse (Lexique_galgasTemplateScanner * inCompiler) ;
 
 //--- indexing
-  public: virtual void nt_simple_5F_expression_5F_tpl_indexing (C_Lexique_galgasTemplateScanner * inCompiler) ;
+  public: virtual void nt_simple_5F_expression_5F_tpl_indexing (Lexique_galgasTemplateScanner * inCompiler) ;
 
 //----------- '' label
   public: virtual void nt_simple_5F_expression_5F_tpl_ (GALGAS_templateExpressionAST & outArgument0,
-                                                        C_Lexique_galgasTemplateScanner * inCompiler) ;
+                                                        Lexique_galgasTemplateScanner * inCompiler) ;
 
 //------------------------------------- 'switch_case' non terminal
 //--- 'parse' label
-  public: virtual void nt_switch_5F_case_parse (C_Lexique_galgasTemplateScanner * inCompiler) ;
+  public: virtual void nt_switch_5F_case_parse (Lexique_galgasTemplateScanner * inCompiler) ;
 
 //--- indexing
-  public: virtual void nt_switch_5F_case_indexing (C_Lexique_galgasTemplateScanner * inCompiler) ;
+  public: virtual void nt_switch_5F_case_indexing (Lexique_galgasTemplateScanner * inCompiler) ;
 
 //----------- '' label
   public: virtual void nt_switch_5F_case_ (GALGAS_lstringlist & outArgument0,
                                            GALGAS_switchExtractedValuesListAST & outArgument1,
-                                           C_Lexique_galgasTemplateScanner * inCompiler) ;
+                                           Lexique_galgasTemplateScanner * inCompiler) ;
 
 //------------------------------------- 'template_instruction' non terminal
 //--- 'parse' label
-  public: virtual void nt_template_5F_instruction_parse (C_Lexique_galgasTemplateScanner * inCompiler) ;
+  public: virtual void nt_template_5F_instruction_parse (Lexique_galgasTemplateScanner * inCompiler) ;
 
 //--- indexing
-  public: virtual void nt_template_5F_instruction_indexing (C_Lexique_galgasTemplateScanner * inCompiler) ;
+  public: virtual void nt_template_5F_instruction_indexing (Lexique_galgasTemplateScanner * inCompiler) ;
 
 //----------- '' label
   public: virtual void nt_template_5F_instruction_ (GALGAS_templateInstructionListAST & ioArgument0,
-                                                    C_Lexique_galgasTemplateScanner * inCompiler) ;
+                                                    Lexique_galgasTemplateScanner * inCompiler) ;
 
 //------------------------------------- 'template_parser_start_symbol' non terminal
 //--- 'parse' label
-  public: virtual void nt_template_5F_parser_5F_start_5F_symbol_parse (C_Lexique_galgasTemplateScanner * inCompiler) ;
+  public: virtual void nt_template_5F_parser_5F_start_5F_symbol_parse (Lexique_galgasTemplateScanner * inCompiler) ;
 
 //--- indexing
-  public: virtual void nt_template_5F_parser_5F_start_5F_symbol_indexing (C_Lexique_galgasTemplateScanner * inCompiler) ;
+  public: virtual void nt_template_5F_parser_5F_start_5F_symbol_indexing (Lexique_galgasTemplateScanner * inCompiler) ;
 
 //----------- '' label
   public: virtual void nt_template_5F_parser_5F_start_5F_symbol_ (GALGAS_templateInstructionListAST & outArgument0,
-                                                                  C_Lexique_galgasTemplateScanner * inCompiler) ;
+                                                                  Lexique_galgasTemplateScanner * inCompiler) ;
 
 //--- Start symbol
   public: static void _performSourceFileParsing_ (Compiler * inCompiler,
@@ -173,88 +173,88 @@ class cGrammar_templateGrammar : public cParser_templateSyntax {
 
 //------------------------------------- 'term_tpl' non terminal
 //--- 'parse' label
-  public: virtual void nt_term_5F_tpl_parse (C_Lexique_galgasTemplateScanner * inCompiler) ;
+  public: virtual void nt_term_5F_tpl_parse (Lexique_galgasTemplateScanner * inCompiler) ;
 
 //--- indexing
-  public: virtual void nt_term_5F_tpl_indexing (C_Lexique_galgasTemplateScanner * inCompiler) ;
+  public: virtual void nt_term_5F_tpl_indexing (Lexique_galgasTemplateScanner * inCompiler) ;
 
 //----------- '' label
   public: virtual void nt_term_5F_tpl_ (GALGAS_templateExpressionAST & outArgument0,
-                                        C_Lexique_galgasTemplateScanner * inCompiler) ;
+                                        Lexique_galgasTemplateScanner * inCompiler) ;
 
-  public: virtual int32_t select_templateSyntax_0 (C_Lexique_galgasTemplateScanner *) ;
+  public: virtual int32_t select_templateSyntax_0 (Lexique_galgasTemplateScanner *) ;
 
-  public: virtual int32_t select_templateSyntax_1 (C_Lexique_galgasTemplateScanner *) ;
+  public: virtual int32_t select_templateSyntax_1 (Lexique_galgasTemplateScanner *) ;
 
-  public: virtual int32_t select_templateSyntax_2 (C_Lexique_galgasTemplateScanner *) ;
+  public: virtual int32_t select_templateSyntax_2 (Lexique_galgasTemplateScanner *) ;
 
-  public: virtual int32_t select_templateSyntax_3 (C_Lexique_galgasTemplateScanner *) ;
+  public: virtual int32_t select_templateSyntax_3 (Lexique_galgasTemplateScanner *) ;
 
-  public: virtual int32_t select_templateSyntax_4 (C_Lexique_galgasTemplateScanner *) ;
+  public: virtual int32_t select_templateSyntax_4 (Lexique_galgasTemplateScanner *) ;
 
-  public: virtual int32_t select_templateSyntax_5 (C_Lexique_galgasTemplateScanner *) ;
+  public: virtual int32_t select_templateSyntax_5 (Lexique_galgasTemplateScanner *) ;
 
-  public: virtual int32_t select_templateSyntax_6 (C_Lexique_galgasTemplateScanner *) ;
+  public: virtual int32_t select_templateSyntax_6 (Lexique_galgasTemplateScanner *) ;
 
-  public: virtual int32_t select_templateSyntax_7 (C_Lexique_galgasTemplateScanner *) ;
+  public: virtual int32_t select_templateSyntax_7 (Lexique_galgasTemplateScanner *) ;
 
-  public: virtual int32_t select_templateSyntax_8 (C_Lexique_galgasTemplateScanner *) ;
+  public: virtual int32_t select_templateSyntax_8 (Lexique_galgasTemplateScanner *) ;
 
-  public: virtual int32_t select_templateSyntax_9 (C_Lexique_galgasTemplateScanner *) ;
+  public: virtual int32_t select_templateSyntax_9 (Lexique_galgasTemplateScanner *) ;
 
-  public: virtual int32_t select_templateSyntax_10 (C_Lexique_galgasTemplateScanner *) ;
+  public: virtual int32_t select_templateSyntax_10 (Lexique_galgasTemplateScanner *) ;
 
-  public: virtual int32_t select_templateSyntax_11 (C_Lexique_galgasTemplateScanner *) ;
+  public: virtual int32_t select_templateSyntax_11 (Lexique_galgasTemplateScanner *) ;
 
-  public: virtual int32_t select_templateSyntax_12 (C_Lexique_galgasTemplateScanner *) ;
+  public: virtual int32_t select_templateSyntax_12 (Lexique_galgasTemplateScanner *) ;
 
-  public: virtual int32_t select_templateSyntax_13 (C_Lexique_galgasTemplateScanner *) ;
+  public: virtual int32_t select_templateSyntax_13 (Lexique_galgasTemplateScanner *) ;
 
-  public: virtual int32_t select_templateSyntax_14 (C_Lexique_galgasTemplateScanner *) ;
+  public: virtual int32_t select_templateSyntax_14 (Lexique_galgasTemplateScanner *) ;
 
-  public: virtual int32_t select_templateSyntax_15 (C_Lexique_galgasTemplateScanner *) ;
+  public: virtual int32_t select_templateSyntax_15 (Lexique_galgasTemplateScanner *) ;
 
-  public: virtual int32_t select_templateSyntax_16 (C_Lexique_galgasTemplateScanner *) ;
+  public: virtual int32_t select_templateSyntax_16 (Lexique_galgasTemplateScanner *) ;
 
-  public: virtual int32_t select_templateSyntax_17 (C_Lexique_galgasTemplateScanner *) ;
+  public: virtual int32_t select_templateSyntax_17 (Lexique_galgasTemplateScanner *) ;
 
-  public: virtual int32_t select_templateSyntax_18 (C_Lexique_galgasTemplateScanner *) ;
+  public: virtual int32_t select_templateSyntax_18 (Lexique_galgasTemplateScanner *) ;
 
-  public: virtual int32_t select_templateSyntax_19 (C_Lexique_galgasTemplateScanner *) ;
+  public: virtual int32_t select_templateSyntax_19 (Lexique_galgasTemplateScanner *) ;
 
-  public: virtual int32_t select_templateSyntax_20 (C_Lexique_galgasTemplateScanner *) ;
+  public: virtual int32_t select_templateSyntax_20 (Lexique_galgasTemplateScanner *) ;
 
-  public: virtual int32_t select_templateSyntax_21 (C_Lexique_galgasTemplateScanner *) ;
+  public: virtual int32_t select_templateSyntax_21 (Lexique_galgasTemplateScanner *) ;
 
-  public: virtual int32_t select_templateSyntax_22 (C_Lexique_galgasTemplateScanner *) ;
+  public: virtual int32_t select_templateSyntax_22 (Lexique_galgasTemplateScanner *) ;
 
-  public: virtual int32_t select_templateSyntax_23 (C_Lexique_galgasTemplateScanner *) ;
+  public: virtual int32_t select_templateSyntax_23 (Lexique_galgasTemplateScanner *) ;
 
-  public: virtual int32_t select_templateSyntax_24 (C_Lexique_galgasTemplateScanner *) ;
+  public: virtual int32_t select_templateSyntax_24 (Lexique_galgasTemplateScanner *) ;
 
-  public: virtual int32_t select_templateSyntax_25 (C_Lexique_galgasTemplateScanner *) ;
+  public: virtual int32_t select_templateSyntax_25 (Lexique_galgasTemplateScanner *) ;
 
-  public: virtual int32_t select_templateSyntax_26 (C_Lexique_galgasTemplateScanner *) ;
+  public: virtual int32_t select_templateSyntax_26 (Lexique_galgasTemplateScanner *) ;
 
-  public: virtual int32_t select_templateSyntax_27 (C_Lexique_galgasTemplateScanner *) ;
+  public: virtual int32_t select_templateSyntax_27 (Lexique_galgasTemplateScanner *) ;
 
-  public: virtual int32_t select_templateSyntax_28 (C_Lexique_galgasTemplateScanner *) ;
+  public: virtual int32_t select_templateSyntax_28 (Lexique_galgasTemplateScanner *) ;
 
-  public: virtual int32_t select_templateSyntax_29 (C_Lexique_galgasTemplateScanner *) ;
+  public: virtual int32_t select_templateSyntax_29 (Lexique_galgasTemplateScanner *) ;
 
-  public: virtual int32_t select_templateSyntax_30 (C_Lexique_galgasTemplateScanner *) ;
+  public: virtual int32_t select_templateSyntax_30 (Lexique_galgasTemplateScanner *) ;
 
-  public: virtual int32_t select_templateSyntax_31 (C_Lexique_galgasTemplateScanner *) ;
+  public: virtual int32_t select_templateSyntax_31 (Lexique_galgasTemplateScanner *) ;
 
-  public: virtual int32_t select_templateSyntax_32 (C_Lexique_galgasTemplateScanner *) ;
+  public: virtual int32_t select_templateSyntax_32 (Lexique_galgasTemplateScanner *) ;
 
-  public: virtual int32_t select_templateSyntax_33 (C_Lexique_galgasTemplateScanner *) ;
+  public: virtual int32_t select_templateSyntax_33 (Lexique_galgasTemplateScanner *) ;
 
-  public: virtual int32_t select_templateSyntax_34 (C_Lexique_galgasTemplateScanner *) ;
+  public: virtual int32_t select_templateSyntax_34 (Lexique_galgasTemplateScanner *) ;
 
-  public: virtual int32_t select_templateSyntax_35 (C_Lexique_galgasTemplateScanner *) ;
+  public: virtual int32_t select_templateSyntax_35 (Lexique_galgasTemplateScanner *) ;
 
-  public: virtual int32_t select_templateSyntax_36 (C_Lexique_galgasTemplateScanner *) ;
+  public: virtual int32_t select_templateSyntax_36 (Lexique_galgasTemplateScanner *) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

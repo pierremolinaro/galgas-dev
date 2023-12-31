@@ -315,16 +315,16 @@ void AbstractOutputStream::addStringMultiple (const String & inString, const int
 //                          Comments
 //--------------------------------------------------------------------------------------------------
 
-static const int32_t kCommentMaxLength = 119 ;
+static const int32_t kCommentMaxLength = 99 ;
 
 //--------------------------------------------------------------------------------------------------
 
 void AbstractOutputStream::addHyphenLineCommentWithoutExtraBlankLine (const String & inLineCommentPrefix) {
   addString (inLineCommentPrefix) ;
-  for (int32_t i=2 ; i<kCommentMaxLength ; i++) {
+  for (int32_t i=1 ; i<kCommentMaxLength ; i++) {
     addString ("-") ;
   }
-  addString ("*\n") ;
+  addString ("\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -351,7 +351,7 @@ void AbstractOutputStream::addComment (const String & inLineCommentPrefix,
 //--------------------------------------------------------------------------------------------------
 
 void AbstractOutputStream::addCenterJustifiedComment (const String & inLineCommentPrefix,
-                                                    const String & inCommentString) {
+                                                      const String & inCommentString) {
   const int32_t commentLength = inCommentString.length () ;
   const int32_t n = (kCommentMaxLength - 3 - commentLength) / 2 ;
 
@@ -371,9 +371,9 @@ void AbstractOutputStream::addCenterJustifiedComment (const String & inLineComme
 
 void AbstractOutputStream::addSpaceLineComment (const String & inLineCommentPrefix) {
   addString (inLineCommentPrefix) ;
-  for (int32_t i=1 ; i<kCommentMaxLength ; i++) {
-    addString (" ") ;
-  }
+//  for (int32_t i=1 ; i<kCommentMaxLength ; i++) {
+//    addString (" ") ;
+//  }
   addString ("\n") ;
 }
 

@@ -143,7 +143,7 @@ override method @syntaxDeclarationForGeneration appendSpecificImplementation
     !{}
   ]
 #---
-  let lexiqueCppName = "C_Lexique_" + [self.mLexiqueName identifierRepresentation]
+  let lexiqueCppName = "Lexique_" + [self.mLexiqueName identifierRepresentation]
   for (mNonterminalName mRuleIndex mLabelImplementationList) in self.mRuleDeclarationList do
   #--- Generate rule label implementation
     for (mLabelName mSignatureForGeneration * * mInstructionListForGeneration) in mLabelImplementationList do
