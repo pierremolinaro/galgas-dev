@@ -179,7 +179,7 @@ private proc analyzeConstructorInvocation
 {
   outConstructorType = inType
   if inTypeName.string != "" then
-    outConstructorType = [ioTypeMap searchKey !inTypeName]
+    outConstructorType = [ioTypeMap typeMapEntryForLKey !inTypeName]
   end
   if [outConstructorType isNull] then
     error inTypeName

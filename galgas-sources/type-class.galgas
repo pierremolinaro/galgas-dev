@@ -221,14 +221,9 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
       inheritedTypedPropertyList = {}
       attributeMap = {}
       generateHeaderInSeparateFile = self.mGenerateInSeparateFile
-#      for (mValue) in self.mClassFeatureList do
-#        if mValue.string == "generatedInSeparateFile" then
-#          generateHeaderInSeparateFile = true
-#        end
-#      end
     else
       [!?ioTypeMap makeEntry !self.mSuperClassName ?superClassIndex]
-      [ioTypeMap searchType !self.mSuperClassName ?let superTypeDefinition]
+      let superTypeDefinition = [ioTypeMap typeDefinition !self.mSuperClassName]
       inheritedTypedPropertyList = superTypeDefinition.mAllTypedPropertyList
       attributeMap = superTypeDefinition.mPropertyMap
       generateHeaderInSeparateFile = superTypeDefinition.mGenerateHeaderInSeparateFile
@@ -416,11 +411,11 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
       [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !weakRefTypeNameForUsefulness]
     end
   #------ Self type
-    let @unifiedTypeMapEntry selfType = [ioTypeMap searchKey !self.mClassTypeName]
+    let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mClassTypeName]
   #--- Super class type
     let @unifiedTypeMapEntry superClassEntry = if self.mSuperClassName.string == ""
       then @unifiedTypeMapEntry.null
-      else [ioTypeMap searchKey !self.mSuperClassName]
+      else [ioTypeMap typeMapEntryForLKey !self.mSuperClassName]
     end
   #------ check "reference" status:
   # a base class can be freely declared as shared or not
@@ -469,7 +464,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
       end
       let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!propertyTypeName)
       [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !propertyTypeNameForUsefulness]
-      let t = [ioTypeMap searchKey !propertyTypeName]
+      let t = [ioTypeMap typeMapEntryForLKey !propertyTypeName]
       typedAttributeList +=
         !t
         !mPropertyName

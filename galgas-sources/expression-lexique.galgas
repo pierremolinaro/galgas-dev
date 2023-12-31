@@ -82,7 +82,7 @@ override method @lexiqueIntrospectionExpressionAST analyzeSemanticExpression
   end
 #---
   outExpression = @lexiqueIntrospectionForGeneration.new {
-    ![ioTypeMap searchKey !["stringlist" nowhere]]
+    ![ioTypeMap typeMapEntryForLKey !["stringlist" nowhere]]
     !self.mLexiqueComponentName.location
     !self.mLexiqueComponentName.string
     !self.mLexiqueGetterName.string}

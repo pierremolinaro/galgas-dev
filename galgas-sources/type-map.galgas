@@ -636,7 +636,7 @@ override method @mapDeclarationAST semanticAnalysis
   for (* propertyTypeName mPropertyName 3*) in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!propertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
-    let @unifiedTypeMapEntry t = [ioTypeMap searchKey !propertyTypeName]
+    let @unifiedTypeMapEntry t = [ioTypeMap typeMapEntryForLKey !propertyTypeName]
     let hasSelector = false
     typedAttributeList +=
       !t
@@ -687,8 +687,8 @@ override method @mapDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "map " + self.mMapTypeName
     !@mapTypeForGeneration.new {
-      ![ioTypeMap searchKey !self.mMapTypeName]
-      ![ioTypeMap searchKey !.new {!self.mMapTypeName.string + elementTypeNameSuffix () !self.mMapTypeName}]
+      ![ioTypeMap typeMapEntryForLKey !self.mMapTypeName]
+      ![ioTypeMap typeMapEntryForLKey !.new {!self.mMapTypeName.string + elementTypeNameSuffix () !self.mMapTypeName}]
       !self.mMapTypeName
       !typedAttributeList
       !self.mInsertMethodList

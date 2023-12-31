@@ -231,7 +231,7 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
     for (isConstant propertyTypeName mPropertyName * hasSelector initExpression) in self.mStructurePropertyList do
       let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!propertyTypeName)
       [!?ioUsefulEntitiesGraph addEdge !structNameForUsefulness !propertyTypeNameForUsefulness]
-      let t = [ioTypeMap searchKey !propertyTypeName]
+      let t = [ioTypeMap typeMapEntryForLKey !propertyTypeName]
       if [forbiddenKeysForStruct () hasKey !mPropertyName.string] then
         var @string m = "an property cannot be named:"
         for s in forbiddenKeysForStruct () do
@@ -275,7 +275,7 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
           !""
           !requiresSelfForAccessingProperty: true
         }
-        let propertyType = [ioTypeMap searchKey !propertyTypeName]
+        let propertyType = [ioTypeMap typeMapEntryForLKey !propertyTypeName]
         [expressionAST analyzeSemanticExpression
           !["" nowhere]
           !?usefulEntitiesGraph
@@ -309,7 +309,7 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: "struct " + self.mStructTypeName
       !@structTypeForGeneration.new {
-        ![ioTypeMap searchKey !self.mStructTypeName]
+        ![ioTypeMap typeMapEntryForLKey !self.mStructTypeName]
         !typedPropertyList
         !constructorArgumentList
         !initializationCode

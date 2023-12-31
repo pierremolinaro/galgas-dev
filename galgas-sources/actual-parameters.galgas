@@ -853,7 +853,7 @@ refclass @inputActualNewVariableParameterAST : @actualParameterAST {
     end
   #--- Analyze or infer type
     if self.mInputOptionalActualTypeName.string != "" then
-      let parameterType = [ioTypeMap searchKey !self.mInputOptionalActualTypeName]
+      let parameterType = [ioTypeMap typeMapEntryForLKey !self.mInputOptionalActualTypeName]
       if inFormalArgumentType != parameterType then
         error self.mInputActualParameterName
         :"the parameter object has the '@" + [parameterType definition].mTypeName.string
@@ -959,7 +959,7 @@ refclass @inputActualNewConstantParameterAST : @actualParameterAST {
     end
   #--- Analyze or infer type
     if self.mInputOptionalActualTypeName.string != "" then
-      let parameterType = [ioTypeMap searchKey !self.mInputOptionalActualTypeName]
+      let parameterType = [ioTypeMap typeMapEntryForLKey !self.mInputOptionalActualTypeName]
       if inFormalArgumentType != parameterType then
         error self.mInputActualParameterName
         :"the parameter object has the '@" + [parameterType definition].mTypeName.string

@@ -217,7 +217,7 @@ proc performGalgas3ProjectGlobalCheckings
      if not [superType isNull] then
        descendantClassListMap +=
          ![superType definition].mTypeName.string
-         ![ioTypeMap searchKey !lkey]
+         ![ioTypeMap typeMapEntryForLKey !lkey]
      end
   end
 #--- Build Extension method listmaps

@@ -194,7 +194,7 @@ override method @extensionMethodAST semanticAnalysis
   let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (! self.mTypeName)
   [!?ioUsefulEntitiesGraph addEdge !typeNameForUsefulness !nameForUsefulness]
 #--- Self type
-  let @unifiedTypeMapEntry selfType = [ioTypeMap searchKey ! self.mTypeName]
+  let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey ! self.mTypeName]
   let @string selfObjectNameNew
   let @string selfObjectAccessorNew
   let @bool implementedAsFunction

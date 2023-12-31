@@ -284,7 +284,7 @@ class GALGAS_optionComponentForGeneration : public GALGAS_semanticDeclarationWit
 
   public: class GALGAS_commandLineOptionMap readProperty_mStringListOptionMap (void) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -412,7 +412,7 @@ class GALGAS_optionComponentForGeneration_2D_weak : public GALGAS_semanticDeclar
 //--------------------------------- Bang operator
   public: GALGAS_optionComponentForGeneration bang_optionComponentForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -463,7 +463,7 @@ class GALGAS_boolsetTypeForGeneration : public GALGAS_semanticTypeForGeneration 
 //--------------------------------- Property read access
   public: class GALGAS_lstringlist readProperty_mFlagList (void) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -562,7 +562,7 @@ class GALGAS_boolsetTypeForGeneration_2D_weak : public GALGAS_semanticTypeForGen
 //--------------------------------- Bang operator
   public: GALGAS_boolsetTypeForGeneration bang_boolsetTypeForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -596,18 +596,6 @@ class GALGAS_boolsetTypeForGeneration_2D_weak : public GALGAS_semanticTypeForGen
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_boolsetTypeForGeneration_2D_weak ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension method '@predefinedTypeAST getConstructorMap'
-//
-//--------------------------------------------------------------------------------------------------
-
-void callExtensionMethod_getConstructorMap (class cPtr_predefinedTypeAST * inObject,
-                                            class GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
-                                            class GALGAS_constructorMap & out_outConstructorMap,
-                                            Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

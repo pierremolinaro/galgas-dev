@@ -10,6 +10,19 @@
 
 //--------------------------------------------------------------------------------------------------
 //
+//Routine 'checkExpressionIsBoolean???!'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_checkExpressionIsBoolean_3F__3F__3F__21_ (const class GALGAS_analysisContext constinArgument0,
+                                                       const class GALGAS_location constinArgument1,
+                                                       const class GALGAS_semanticExpressionForGeneration constinArgument2,
+                                                       class GALGAS_semanticExpressionForGeneration & outArgument3,
+                                                       class Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Function 'filewrapperNameForUsefulEntitiesGraph'
 //
 //--------------------------------------------------------------------------------------------------

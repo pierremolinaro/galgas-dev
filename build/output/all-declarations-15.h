@@ -26,7 +26,7 @@ class GALGAS_semanticDeclarationWithHeaderForGeneration : public GALGAS_semantic
 
   public: class GALGAS_string readProperty_mImplementationCppFileName (void) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -119,7 +119,7 @@ class GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak : public GALGAS_
 //--------------------------------- Bang operator
   public: GALGAS_semanticDeclarationWithHeaderForGeneration bang_semanticDeclarationWithHeaderForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -170,7 +170,7 @@ class GALGAS_semanticTypeForGeneration : public GALGAS_semanticDeclarationForGen
 //--------------------------------- Property read access
   public: class GALGAS_unifiedTypeMapEntry readProperty_mSelfTypeEntry (void) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -264,7 +264,7 @@ class GALGAS_semanticTypeForGeneration_2D_weak : public GALGAS_semanticDeclarati
 //--------------------------------- Bang operator
   public: GALGAS_semanticTypeForGeneration bang_semanticTypeForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -325,7 +325,7 @@ class GALGAS_classTypeForGeneration : public GALGAS_semanticTypeForGeneration {
 
   public: class GALGAS_bool readProperty_mGenerateHeaderInSeparateFile (void) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -445,7 +445,7 @@ class GALGAS_classTypeForGeneration_2D_weak : public GALGAS_semanticTypeForGener
 //--------------------------------- Bang operator
   public: GALGAS_classTypeForGeneration bang_classTypeForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -504,7 +504,7 @@ class GALGAS_weakReferenceTypeForGeneration : public GALGAS_semanticTypeForGener
 
   public: class GALGAS_bool readProperty_mGenerateHeaderInSeparateFile (void) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -615,7 +615,7 @@ class GALGAS_weakReferenceTypeForGeneration_2D_weak : public GALGAS_semanticType
 //--------------------------------- Bang operator
   public: GALGAS_weakReferenceTypeForGeneration bang_weakReferenceTypeForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -666,7 +666,7 @@ class GALGAS_enumTypeForGeneration : public GALGAS_semanticTypeForGeneration {
 //--------------------------------- Property read access
   public: class GALGAS_enumConstantListForGeneration readProperty_mConstantList (void) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -771,7 +771,7 @@ class GALGAS_enumTypeForGeneration_2D_weak : public GALGAS_semanticTypeForGenera
 //--------------------------------- Bang operator
   public: GALGAS_enumTypeForGeneration bang_enumTypeForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -826,7 +826,7 @@ class GALGAS_externTypeDeclarationForGeneration : public GALGAS_semanticTypeForG
 
   public: class GALGAS_string readProperty_mCppClassCode (void) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -925,7 +925,7 @@ class GALGAS_externTypeDeclarationForGeneration_2D_weak : public GALGAS_semantic
 //--------------------------------- Bang operator
   public: GALGAS_externTypeDeclarationForGeneration bang_externTypeDeclarationForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -980,7 +980,7 @@ class GALGAS_graphDeclarationForGeneration : public GALGAS_semanticTypeForGenera
 
   public: class GALGAS_graphInsertModifierList readProperty_mInsertModifierList (void) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1085,7 +1085,7 @@ class GALGAS_graphDeclarationForGeneration_2D_weak : public GALGAS_semanticTypeF
 //--------------------------------- Bang operator
   public: GALGAS_graphDeclarationForGeneration bang_graphDeclarationForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1138,7 +1138,7 @@ class GALGAS_listTypeForGeneration : public GALGAS_semanticTypeForGeneration {
 
   public: class GALGAS_typedPropertyList readProperty_mTypedAttributeList (void) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1240,7 +1240,7 @@ class GALGAS_listTypeForGeneration_2D_weak : public GALGAS_semanticTypeForGenera
 //--------------------------------- Bang operator
   public: GALGAS_listTypeForGeneration bang_listTypeForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1295,7 +1295,7 @@ class GALGAS_listmapTypeForGeneration : public GALGAS_semanticTypeForGeneration 
 
   public: class GALGAS_unifiedTypeMapEntry readProperty_mAssociatedListMapElementTypeIndex (void) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1400,7 +1400,7 @@ class GALGAS_listmapTypeForGeneration_2D_weak : public GALGAS_semanticTypeForGen
 //--------------------------------- Bang operator
   public: GALGAS_listmapTypeForGeneration bang_listmapTypeForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1457,7 +1457,7 @@ class GALGAS_dictTypeForGeneration : public GALGAS_semanticTypeForGeneration {
 
   public: class GALGAS_lstring readProperty_mKeyTypeName (void) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1565,7 +1565,7 @@ class GALGAS_dictTypeForGeneration_2D_weak : public GALGAS_semanticTypeForGenera
 //--------------------------------- Bang operator
   public: GALGAS_dictTypeForGeneration bang_dictTypeForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1628,7 +1628,7 @@ class GALGAS_mapTypeForGeneration : public GALGAS_semanticTypeForGeneration {
 
   public: class GALGAS_bool readProperty_mHasInsertOrReplaceModifier (void) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1751,7 +1751,7 @@ class GALGAS_mapTypeForGeneration_2D_weak : public GALGAS_semanticTypeForGenerat
 //--------------------------------- Bang operator
   public: GALGAS_mapTypeForGeneration bang_mapTypeForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1806,7 +1806,7 @@ class GALGAS_sortedListTypeForGeneration : public GALGAS_semanticTypeForGenerati
 
   public: class GALGAS_sortDescriptorListForGeneration readProperty_mSortDescriptorList (void) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1911,7 +1911,7 @@ class GALGAS_sortedListTypeForGeneration_2D_weak : public GALGAS_semanticTypeFor
 //--------------------------------- Bang operator
   public: GALGAS_sortedListTypeForGeneration bang_sortedListTypeForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1968,7 +1968,7 @@ class GALGAS_structTypeForGeneration : public GALGAS_semanticTypeForGeneration {
 
   public: class GALGAS_bool readProperty_mConstructorNeedsCompilerVar (void) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2076,7 +2076,7 @@ class GALGAS_structTypeForGeneration_2D_weak : public GALGAS_semanticTypeForGene
 //--------------------------------- Bang operator
   public: GALGAS_structTypeForGeneration bang_structTypeForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2129,7 +2129,7 @@ class GALGAS_aliasTypeForGeneration : public GALGAS_semanticTypeForGeneration {
 
   public: class GALGAS_unifiedTypeMapEntry readProperty_mReferencedType (void) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2234,7 +2234,7 @@ class GALGAS_aliasTypeForGeneration_2D_weak : public GALGAS_semanticTypeForGener
 //--------------------------------- Bang operator
   public: GALGAS_aliasTypeForGeneration bang_aliasTypeForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2291,7 +2291,7 @@ class GALGAS_abstractExtensionGetterForGeneration : public GALGAS_semanticDeclar
 
   public: class GALGAS_formalInputParameterListForGeneration readProperty_mAbstractExtensionGetterFormalParameterList (void) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2404,7 +2404,7 @@ class GALGAS_abstractExtensionGetterForGeneration_2D_weak : public GALGAS_semant
 //--------------------------------- Bang operator
   public: GALGAS_abstractExtensionGetterForGeneration bang_abstractExtensionGetterForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2459,7 +2459,7 @@ class GALGAS_abstractExtensionMethodForGeneration : public GALGAS_semanticDeclar
 
   public: class GALGAS_formalParameterListForGeneration readProperty_mAbstractExtensionMethodFormalParameterList (void) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2569,7 +2569,7 @@ class GALGAS_abstractExtensionMethodForGeneration_2D_weak : public GALGAS_semant
 //--------------------------------- Bang operator
   public: GALGAS_abstractExtensionMethodForGeneration bang_abstractExtensionMethodForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2624,7 +2624,7 @@ class GALGAS_abstractExtensionSetterForGeneration : public GALGAS_semanticDeclar
 
   public: class GALGAS_formalParameterListForGeneration readProperty_mAbstractExtensionSetterFormalParameterList (void) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2734,7 +2734,7 @@ class GALGAS_abstractExtensionSetterForGeneration_2D_weak : public GALGAS_semant
 //--------------------------------- Bang operator
   public: GALGAS_abstractExtensionSetterForGeneration bang_abstractExtensionSetterForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2799,7 +2799,7 @@ class GALGAS_extensionGetterForGeneration : public GALGAS_semanticDeclarationWit
 
   public: class GALGAS_semanticInstructionListForGeneration readProperty_mSemanticInstructionListForGeneration (void) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2924,7 +2924,7 @@ class GALGAS_extensionGetterForGeneration_2D_weak : public GALGAS_semanticDeclar
 //--------------------------------- Bang operator
   public: GALGAS_extensionGetterForGeneration bang_extensionGetterForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2985,7 +2985,7 @@ class GALGAS_extensionMethodForGeneration : public GALGAS_semanticDeclarationWit
 
   public: class GALGAS_semanticInstructionListForGeneration readProperty_mSemanticInstructionListForGeneration (void) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3104,7 +3104,7 @@ class GALGAS_extensionMethodForGeneration_2D_weak : public GALGAS_semanticDeclar
 //--------------------------------- Bang operator
   public: GALGAS_extensionMethodForGeneration bang_extensionMethodForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3165,7 +3165,7 @@ class GALGAS_extensionSetterForGeneration : public GALGAS_semanticDeclarationWit
 
   public: class GALGAS_semanticInstructionListForGeneration readProperty_mSemanticInstructionListForGeneration (void) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3284,7 +3284,7 @@ class GALGAS_extensionSetterForGeneration_2D_weak : public GALGAS_semanticDeclar
 //--------------------------------- Bang operator
   public: GALGAS_extensionSetterForGeneration bang_extensionSetterForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3349,7 +3349,7 @@ class GALGAS_overrideExtensionGetterForGeneration : public GALGAS_semanticDeclar
 
   public: class GALGAS_semanticInstructionListForGeneration readProperty_mSemanticInstructionListForGeneration (void) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3469,7 +3469,7 @@ class GALGAS_overrideExtensionGetterForGeneration_2D_weak : public GALGAS_semant
 //--------------------------------- Bang operator
   public: GALGAS_overrideExtensionGetterForGeneration bang_overrideExtensionGetterForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;

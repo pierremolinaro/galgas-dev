@@ -82,9 +82,9 @@ end
     case boolsetType : %boolset%
     case structType : %struct%
     case graphType : %graph%
-    case arrayType : %array%
     case externType : %extern%
-    case predefinedType : %predefined type%
+    case otherType : %other type%
+    case packageType : %package type%
     case weakReferenceType (*) : %weak reference%
     end%
 </td></tr>

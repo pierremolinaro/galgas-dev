@@ -171,7 +171,7 @@ override method @collectionValueAST analyzeSemanticExpression
   if self.mTypeName.string == "" then
     targetType = inType
   else
-    targetType = [ioTypeMap searchKey !self.mTypeName]
+    targetType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
   end
 #---
   if targetType == .null then

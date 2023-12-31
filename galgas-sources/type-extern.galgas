@@ -471,7 +471,7 @@ override method @externTypeDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "extern type " + self.mExternTypeName
     !@externTypeDeclarationForGeneration.new {
-      ![ioTypeMap searchKey !self.mExternTypeName]
+      ![ioTypeMap typeMapEntryForLKey !self.mExternTypeName]
       !self.mExternTypeName.string
       !self.mCppPreDeclarationCode
       !self.mCppClassCode

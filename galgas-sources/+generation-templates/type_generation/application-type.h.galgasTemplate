@@ -1,23 +1,8 @@
 //--------------------------------------------------------------------------------------------------
 //
-//%!"@application type"%
+//%!"@application package"%
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_application : public AC_GALGAS_root {
-//--------------------------------- Accessors
-  public: inline bool isValid (void) const override { return false ; }
-  public: inline void drop (void) override { }
-
-//--------------------------------- Default constructor
-  public: GALGAS_application (void) ;
-
-//--------------------------------- Destructor (virtual in debug mode)
-  public: virtual ~ GALGAS_application (void) ;
-
-//--------------------------------- Handle copy
-  public: GALGAS_application (const GALGAS_application & inSource) ;
-  public: GALGAS_application & operator = (const GALGAS_application & inSource) ;
-
-%
+class GALGAS_application final {
 

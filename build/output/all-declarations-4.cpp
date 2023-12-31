@@ -8846,452 +8846,28 @@ GALGAS_overridingExtensionSetterAST_2D_weak GALGAS_overridingExtensionSetterAST_
 }
 
 //--------------------------------------------------------------------------------------------------
+// @predefinedTypeAST reference class
+//--------------------------------------------------------------------------------------------------
 
-GALGAS_predefinedTypeKindEnum::GALGAS_predefinedTypeKindEnum (void) :
-mEnum (kNotBuilt) {
-}
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_predefinedTypeAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
+    mProperty_mPredefinedTypeName.printNonNullClassInstanceProperties ("mPredefinedTypeName") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_predefinedTypeKindEnum GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_uint (UNUSED_LOCATION_ARGS) {
-  GALGAS_predefinedTypeKindEnum result ;
-  result.mEnum = kEnum_predefined_5F_uint ;
-  return result ;
-}
 
-//--------------------------------------------------------------------------------------------------
 
-GALGAS_predefinedTypeKindEnum GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_uint_36__34_ (UNUSED_LOCATION_ARGS) {
-  GALGAS_predefinedTypeKindEnum result ;
-  result.mEnum = kEnum_predefined_5F_uint_36__34_ ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_predefinedTypeKindEnum GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_sint (UNUSED_LOCATION_ARGS) {
-  GALGAS_predefinedTypeKindEnum result ;
-  result.mEnum = kEnum_predefined_5F_sint ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_predefinedTypeKindEnum GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_sint_36__34_ (UNUSED_LOCATION_ARGS) {
-  GALGAS_predefinedTypeKindEnum result ;
-  result.mEnum = kEnum_predefined_5F_sint_36__34_ ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_predefinedTypeKindEnum GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_char (UNUSED_LOCATION_ARGS) {
-  GALGAS_predefinedTypeKindEnum result ;
-  result.mEnum = kEnum_predefined_5F_char ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_predefinedTypeKindEnum GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_double (UNUSED_LOCATION_ARGS) {
-  GALGAS_predefinedTypeKindEnum result ;
-  result.mEnum = kEnum_predefined_5F_double ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_predefinedTypeKindEnum GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_string (UNUSED_LOCATION_ARGS) {
-  GALGAS_predefinedTypeKindEnum result ;
-  result.mEnum = kEnum_predefined_5F_string ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_predefinedTypeKindEnum GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_stringset (UNUSED_LOCATION_ARGS) {
-  GALGAS_predefinedTypeKindEnum result ;
-  result.mEnum = kEnum_predefined_5F_stringset ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_predefinedTypeKindEnum GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_bool (UNUSED_LOCATION_ARGS) {
-  GALGAS_predefinedTypeKindEnum result ;
-  result.mEnum = kEnum_predefined_5F_bool ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_predefinedTypeKindEnum GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_binaryset (UNUSED_LOCATION_ARGS) {
-  GALGAS_predefinedTypeKindEnum result ;
-  result.mEnum = kEnum_predefined_5F_binaryset ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_predefinedTypeKindEnum GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_function (UNUSED_LOCATION_ARGS) {
-  GALGAS_predefinedTypeKindEnum result ;
-  result.mEnum = kEnum_predefined_5F_function ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_predefinedTypeKindEnum GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_location (UNUSED_LOCATION_ARGS) {
-  GALGAS_predefinedTypeKindEnum result ;
-  result.mEnum = kEnum_predefined_5F_location ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_predefinedTypeKindEnum GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_type (UNUSED_LOCATION_ARGS) {
-  GALGAS_predefinedTypeKindEnum result ;
-  result.mEnum = kEnum_predefined_5F_type ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_predefinedTypeKindEnum GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_object (UNUSED_LOCATION_ARGS) {
-  GALGAS_predefinedTypeKindEnum result ;
-  result.mEnum = kEnum_predefined_5F_object ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_predefinedTypeKindEnum GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_data (UNUSED_LOCATION_ARGS) {
-  GALGAS_predefinedTypeKindEnum result ;
-  result.mEnum = kEnum_predefined_5F_data ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_predefinedTypeKindEnum GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_filewrapper (UNUSED_LOCATION_ARGS) {
-  GALGAS_predefinedTypeKindEnum result ;
-  result.mEnum = kEnum_predefined_5F_filewrapper ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_predefinedTypeKindEnum GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_application (UNUSED_LOCATION_ARGS) {
-  GALGAS_predefinedTypeKindEnum result ;
-  result.mEnum = kEnum_predefined_5F_application ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_predefinedTypeKindEnum GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_bigint (UNUSED_LOCATION_ARGS) {
-  GALGAS_predefinedTypeKindEnum result ;
-  result.mEnum = kEnum_predefined_5F_bigint ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_predefinedTypeKindEnum GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_timer (UNUSED_LOCATION_ARGS) {
-  GALGAS_predefinedTypeKindEnum result ;
-  result.mEnum = kEnum_predefined_5F_timer ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_uint () const {
-  const bool ok = mEnum == kEnum_predefined_5F_uint ;
-  return ok ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_uint_36__34_ () const {
-  const bool ok = mEnum == kEnum_predefined_5F_uint_36__34_ ;
-  return ok ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_sint () const {
-  const bool ok = mEnum == kEnum_predefined_5F_sint ;
-  return ok ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_sint_36__34_ () const {
-  const bool ok = mEnum == kEnum_predefined_5F_sint_36__34_ ;
-  return ok ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_char () const {
-  const bool ok = mEnum == kEnum_predefined_5F_char ;
-  return ok ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_double () const {
-  const bool ok = mEnum == kEnum_predefined_5F_double ;
-  return ok ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_string () const {
-  const bool ok = mEnum == kEnum_predefined_5F_string ;
-  return ok ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_stringset () const {
-  const bool ok = mEnum == kEnum_predefined_5F_stringset ;
-  return ok ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_bool () const {
-  const bool ok = mEnum == kEnum_predefined_5F_bool ;
-  return ok ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_binaryset () const {
-  const bool ok = mEnum == kEnum_predefined_5F_binaryset ;
-  return ok ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_function () const {
-  const bool ok = mEnum == kEnum_predefined_5F_function ;
-  return ok ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_location () const {
-  const bool ok = mEnum == kEnum_predefined_5F_location ;
-  return ok ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_type () const {
-  const bool ok = mEnum == kEnum_predefined_5F_type ;
-  return ok ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_object () const {
-  const bool ok = mEnum == kEnum_predefined_5F_object ;
-  return ok ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_data () const {
-  const bool ok = mEnum == kEnum_predefined_5F_data ;
-  return ok ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_filewrapper () const {
-  const bool ok = mEnum == kEnum_predefined_5F_filewrapper ;
-  return ok ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_application () const {
-  const bool ok = mEnum == kEnum_predefined_5F_application ;
-  return ok ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_bigint () const {
-  const bool ok = mEnum == kEnum_predefined_5F_bigint ;
-  return ok ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_timer () const {
-  const bool ok = mEnum == kEnum_predefined_5F_timer ;
-  return ok ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-static const char * gEnumNameArrayFor_predefinedTypeKindEnum [20] = {
-  "(not built)",
-  "predefined_uint",
-  "predefined_uint64",
-  "predefined_sint",
-  "predefined_sint64",
-  "predefined_char",
-  "predefined_double",
-  "predefined_string",
-  "predefined_stringset",
-  "predefined_bool",
-  "predefined_binaryset",
-  "predefined_function",
-  "predefined_location",
-  "predefined_type",
-  "predefined_object",
-  "predefined_data",
-  "predefined_filewrapper",
-  "predefined_application",
-  "predefined_bigint",
-  "predefined_timer"
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_predefinedTypeKindEnum::getter_isPredefined_5F_uint (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_predefined_5F_uint == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_predefinedTypeKindEnum::getter_isPredefined_5F_uint_36__34_ (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_predefined_5F_uint_36__34_ == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_predefinedTypeKindEnum::getter_isPredefined_5F_sint (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_predefined_5F_sint == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_predefinedTypeKindEnum::getter_isPredefined_5F_sint_36__34_ (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_predefined_5F_sint_36__34_ == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_predefinedTypeKindEnum::getter_isPredefined_5F_char (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_predefined_5F_char == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_predefinedTypeKindEnum::getter_isPredefined_5F_double (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_predefined_5F_double == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_predefinedTypeKindEnum::getter_isPredefined_5F_string (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_predefined_5F_string == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_predefinedTypeKindEnum::getter_isPredefined_5F_stringset (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_predefined_5F_stringset == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_predefinedTypeKindEnum::getter_isPredefined_5F_bool (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_predefined_5F_bool == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_predefinedTypeKindEnum::getter_isPredefined_5F_binaryset (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_predefined_5F_binaryset == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_predefinedTypeKindEnum::getter_isPredefined_5F_function (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_predefined_5F_function == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_predefinedTypeKindEnum::getter_isPredefined_5F_location (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_predefined_5F_location == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_predefinedTypeKindEnum::getter_isPredefined_5F_type (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_predefined_5F_type == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_predefinedTypeKindEnum::getter_isPredefined_5F_object (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_predefined_5F_object == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_predefinedTypeKindEnum::getter_isPredefined_5F_data (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_predefined_5F_data == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_predefinedTypeKindEnum::getter_isPredefined_5F_filewrapper (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_predefined_5F_filewrapper == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_predefinedTypeKindEnum::getter_isPredefined_5F_application (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_predefined_5F_application == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_predefinedTypeKindEnum::getter_isPredefined_5F_bigint (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_predefined_5F_bigint == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_predefinedTypeKindEnum::getter_isPredefined_5F_timer (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_predefined_5F_timer == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_predefinedTypeKindEnum::description (String & ioString,
-                                                 const int32_t /* inIndentation */) const {
-  ioString.addString ("<enum @predefinedTypeKindEnum: ") ;
-  ioString.addString (gEnumNameArrayFor_predefinedTypeKindEnum [mEnum]) ;
-  ioString.addString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-typeComparisonResult GALGAS_predefinedTypeKindEnum::objectCompare (const GALGAS_predefinedTypeKindEnum & inOperand) const {
+typeComparisonResult GALGAS_predefinedTypeAST::objectCompare (const GALGAS_predefinedTypeAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    if (mEnum < inOperand.mEnum) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
       result = kFirstOperandLowerThanSecond ;
-    }else if (mEnum > inOperand.mEnum) {
+    }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
       result = kOperandEqual ;
@@ -9301,47 +8877,383 @@ typeComparisonResult GALGAS_predefinedTypeKindEnum::objectCompare (const GALGAS_
 }
 
 //--------------------------------------------------------------------------------------------------
-//
-//     @predefinedTypeKindEnum generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_predefinedTypeKindEnum ("predefinedTypeKindEnum",
-                                                                              nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_predefinedTypeKindEnum::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_predefinedTypeKindEnum ;
+GALGAS_predefinedTypeAST::GALGAS_predefinedTypeAST (void) :
+GALGAS_semanticDeclarationAST () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_predefinedTypeKindEnum::clonedObject (void) const {
+GALGAS_predefinedTypeAST::GALGAS_predefinedTypeAST (const cPtr_predefinedTypeAST * inSourcePtr) :
+GALGAS_semanticDeclarationAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_predefinedTypeAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_string GALGAS_predefinedTypeAST::readProperty_mPredefinedTypeName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_string () ;
+  }else{
+    cPtr_predefinedTypeAST * p = (cPtr_predefinedTypeAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_predefinedTypeAST) ;
+    return p->mProperty_mPredefinedTypeName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @predefinedTypeAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_predefinedTypeAST::cPtr_predefinedTypeAST (const GALGAS_bool & in_isPredefined,
+                                                const GALGAS_string & in_mPredefinedTypeName
+                                                COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (in_isPredefined COMMA_THERE),
+mProperty_mPredefinedTypeName (in_mPredefinedTypeName) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @predefinedTypeAST generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_predefinedTypeAST ("predefinedTypeAST",
+                                                                         & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_predefinedTypeAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_predefinedTypeAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_predefinedTypeAST::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_predefinedTypeKindEnum (*this)) ;
+    macroMyNew (result, GALGAS_predefinedTypeAST (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_predefinedTypeKindEnum GALGAS_predefinedTypeKindEnum::extractObject (const GALGAS_object & inObject,
-                                                                            Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) {
-  GALGAS_predefinedTypeKindEnum result ;
-  const GALGAS_predefinedTypeKindEnum * p = (const GALGAS_predefinedTypeKindEnum *) inObject.embeddedObject () ;
+GALGAS_predefinedTypeAST GALGAS_predefinedTypeAST::extractObject (const GALGAS_object & inObject,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) {
+  GALGAS_predefinedTypeAST result ;
+  const GALGAS_predefinedTypeAST * p = (const GALGAS_predefinedTypeAST *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_predefinedTypeKindEnum *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_predefinedTypeAST *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("predefinedTypeKindEnum", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("predefinedTypeAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
 }
 
+//--------------------------------------------------------------------------------------------------
+//
+//Abstract extension getter '@predefinedTypeAST cppDeclarationString'
+//
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_string callExtensionGetter_cppDeclarationString (const cPtr_predefinedTypeAST * inObject,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) {
+  GALGAS_string result ;
+  if (nullptr != inObject) {
+    result = inObject->getter_cppDeclarationString (inCompiler COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//Abstract extension getter '@predefinedTypeAST defaultInitializerName'
+//
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_string callExtensionGetter_defaultInitializerName (const cPtr_predefinedTypeAST * inObject,
+                                                          Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_string result ;
+  if (nullptr != inObject) {
+    result = inObject->getter_defaultInitializerName (inCompiler COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension method '@predefinedTypeAST getConstructorMap'
+//
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_predefinedTypeAST::method_getConstructorMap (GALGAS_unifiedTypeMap & /* ioArgument_ioUnifiedTypeMap */,
+                                                       GALGAS_constructorMap & outArgument_outConstructorMap,
+                                                       Compiler * /* inCompiler */
+                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  outArgument_outConstructorMap = GALGAS_constructorMap::constructor_emptyMap (SOURCE_FILE ("predefinedTypeAST.galgas", 149)) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_getConstructorMap (cPtr_predefinedTypeAST * inObject,
+                                            GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
+                                            GALGAS_constructorMap & out_outConstructorMap,
+                                            Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) {
+  out_outConstructorMap.drop () ;
+  if (nullptr != inObject) {
+    macroValidSharedObject (inObject, cPtr_predefinedTypeAST) ;
+    inObject->method_getConstructorMap  (io_ioUnifiedTypeMap, out_outConstructorMap, inCompiler COMMA_THERE) ;
+  }
+}
+//--------------------------------------------------------------------------------------------------
+//
+//Extension method '@predefinedTypeAST getGetterMap'
+//
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_predefinedTypeAST::method_getGetterMap (GALGAS_unifiedTypeMap & /* ioArgument_ioUnifiedTypeMap */,
+                                                  GALGAS_getterMap & outArgument_outGetterMap,
+                                                  Compiler * /* inCompiler */
+                                                  COMMA_UNUSED_LOCATION_ARGS) {
+  outArgument_outGetterMap = GALGAS_getterMap::constructor_emptyMap (SOURCE_FILE ("predefinedTypeAST.galgas", 156)) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_getGetterMap (cPtr_predefinedTypeAST * inObject,
+                                       GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
+                                       GALGAS_getterMap & out_outGetterMap,
+                                       Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) {
+  out_outGetterMap.drop () ;
+  if (nullptr != inObject) {
+    macroValidSharedObject (inObject, cPtr_predefinedTypeAST) ;
+    inObject->method_getGetterMap  (io_ioUnifiedTypeMap, out_outGetterMap, inCompiler COMMA_THERE) ;
+  }
+}
+//--------------------------------------------------------------------------------------------------
+//
+//Extension method '@predefinedTypeAST getSetterMap'
+//
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_predefinedTypeAST::method_getSetterMap (GALGAS_unifiedTypeMap & /* ioArgument_ioUnifiedTypeMap */,
+                                                  GALGAS_setterMap & outArgument_outSetterMap,
+                                                  Compiler * /* inCompiler */
+                                                  COMMA_UNUSED_LOCATION_ARGS) {
+  outArgument_outSetterMap = GALGAS_setterMap::constructor_emptyMap (SOURCE_FILE ("predefinedTypeAST.galgas", 163)) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_getSetterMap (cPtr_predefinedTypeAST * inObject,
+                                       GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
+                                       GALGAS_setterMap & out_outSetterMap,
+                                       Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) {
+  out_outSetterMap.drop () ;
+  if (nullptr != inObject) {
+    macroValidSharedObject (inObject, cPtr_predefinedTypeAST) ;
+    inObject->method_getSetterMap  (io_ioUnifiedTypeMap, out_outSetterMap, inCompiler COMMA_THERE) ;
+  }
+}
+//--------------------------------------------------------------------------------------------------
+//
+//Extension method '@predefinedTypeAST getInstanceMethodMap'
+//
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_predefinedTypeAST::method_getInstanceMethodMap (GALGAS_unifiedTypeMap & /* ioArgument_ioUnifiedTypeMap */,
+                                                          GALGAS_instanceMethodMap & outArgument_outInstanceMethodMap,
+                                                          Compiler * /* inCompiler */
+                                                          COMMA_UNUSED_LOCATION_ARGS) {
+  outArgument_outInstanceMethodMap = GALGAS_instanceMethodMap::constructor_emptyMap (SOURCE_FILE ("predefinedTypeAST.galgas", 170)) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_getInstanceMethodMap (cPtr_predefinedTypeAST * inObject,
+                                               GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
+                                               GALGAS_instanceMethodMap & out_outInstanceMethodMap,
+                                               Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) {
+  out_outInstanceMethodMap.drop () ;
+  if (nullptr != inObject) {
+    macroValidSharedObject (inObject, cPtr_predefinedTypeAST) ;
+    inObject->method_getInstanceMethodMap  (io_ioUnifiedTypeMap, out_outInstanceMethodMap, inCompiler COMMA_THERE) ;
+  }
+}
+//--------------------------------------------------------------------------------------------------
+//
+//Extension method '@predefinedTypeAST getClassMethodMap'
+//
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_predefinedTypeAST::method_getClassMethodMap (GALGAS_unifiedTypeMap & /* ioArgument_ioUnifiedTypeMap */,
+                                                       GALGAS_classMethodMap & outArgument_outClassMethodMap,
+                                                       Compiler * /* inCompiler */
+                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  outArgument_outClassMethodMap = GALGAS_classMethodMap::constructor_emptyMap (SOURCE_FILE ("predefinedTypeAST.galgas", 177)) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_getClassMethodMap (cPtr_predefinedTypeAST * inObject,
+                                            GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
+                                            GALGAS_classMethodMap & out_outClassMethodMap,
+                                            Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) {
+  out_outClassMethodMap.drop () ;
+  if (nullptr != inObject) {
+    macroValidSharedObject (inObject, cPtr_predefinedTypeAST) ;
+    inObject->method_getClassMethodMap  (io_ioUnifiedTypeMap, out_outClassMethodMap, inCompiler COMMA_THERE) ;
+  }
+}
+//--------------------------------------------------------------------------------------------------
+//
+//Extension method '@predefinedTypeAST getOptionalMethodMap'
+//
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_predefinedTypeAST::method_getOptionalMethodMap (GALGAS_unifiedTypeMap & /* ioArgument_ioUnifiedTypeMap */,
+                                                          GALGAS_optionalMethodMap & outArgument_outMap,
+                                                          Compiler * /* inCompiler */
+                                                          COMMA_UNUSED_LOCATION_ARGS) {
+  outArgument_outMap = GALGAS_optionalMethodMap::constructor_emptyMap (SOURCE_FILE ("predefinedTypeAST.galgas", 184)) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_getOptionalMethodMap (cPtr_predefinedTypeAST * inObject,
+                                               GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
+                                               GALGAS_optionalMethodMap & out_outMap,
+                                               Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) {
+  out_outMap.drop () ;
+  if (nullptr != inObject) {
+    macroValidSharedObject (inObject, cPtr_predefinedTypeAST) ;
+    inObject->method_getOptionalMethodMap  (io_ioUnifiedTypeMap, out_outMap, inCompiler COMMA_THERE) ;
+  }
+}
+//--------------------------------------------------------------------------------------------------
+//
+//Extension getter '@predefinedTypeAST getSupportedOperatorFlags'
+//
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_operators cPtr_predefinedTypeAST::getter_getSupportedOperatorFlags (Compiler */* inCompiler */
+                                                                           COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_operators result_outFlags ; // Returned variable
+  result_outFlags = GALGAS_operators::constructor_none (SOURCE_FILE ("predefinedTypeAST.galgas", 190)) ;
+//---
+  return result_outFlags ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_operators callExtensionGetter_getSupportedOperatorFlags (const cPtr_predefinedTypeAST * inObject,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) {
+  GALGAS_operators result ;
+  if (nullptr != inObject) {
+    result = inObject->getter_getSupportedOperatorFlags (inCompiler COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension getter '@predefinedTypeAST supportsCollectionValue'
+//
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool cPtr_predefinedTypeAST::getter_supportsCollectionValue (Compiler */* inCompiler */
+                                                                    COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result_result ; // Returned variable
+  result_result = GALGAS_bool (false) ;
+//---
+  return result_result ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool callExtensionGetter_supportsCollectionValue (const cPtr_predefinedTypeAST * inObject,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) {
+  GALGAS_bool result ;
+  if (nullptr != inObject) {
+    result = inObject->getter_supportsCollectionValue (inCompiler COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension method '@predefinedTypeAST getAddAssignArgumentList'
+//
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_predefinedTypeAST::method_getAddAssignArgumentList (GALGAS_unifiedTypeMap & /* ioArgument_ioUnifiedTypeMap */,
+                                                              GALGAS_functionSignature & outArgument_outAddAssignArgumentList,
+                                                              Compiler * /* inCompiler */
+                                                              COMMA_UNUSED_LOCATION_ARGS) {
+  outArgument_outAddAssignArgumentList = GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("predefinedTypeAST.galgas", 203)) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_getAddAssignArgumentList (cPtr_predefinedTypeAST * inObject,
+                                                   GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
+                                                   GALGAS_functionSignature & out_outAddAssignArgumentList,
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) {
+  out_outAddAssignArgumentList.drop () ;
+  if (nullptr != inObject) {
+    macroValidSharedObject (inObject, cPtr_predefinedTypeAST) ;
+    inObject->method_getAddAssignArgumentList  (io_ioUnifiedTypeMap, out_outAddAssignArgumentList, inCompiler COMMA_THERE) ;
+  }
+}
+//--------------------------------------------------------------------------------------------------
+//
+//Extension method '@predefinedTypeAST getEnumerationList'
+//
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_predefinedTypeAST::method_getEnumerationList (GALGAS_unifiedTypeMap & /* ioArgument_ioUnifiedTypeMap */,
+                                                        GALGAS_enumerationDescriptorList & outArgument_outEnumerationList,
+                                                        GALGAS_string & outArgument_outEnumeratedType,
+                                                        Compiler * /* inCompiler */
+                                                        COMMA_UNUSED_LOCATION_ARGS) {
+  outArgument_outEnumerationList = GALGAS_enumerationDescriptorList::constructor_emptyList (SOURCE_FILE ("predefinedTypeAST.galgas", 211)) ;
+  outArgument_outEnumeratedType = GALGAS_string::makeEmptyString () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_getEnumerationList (cPtr_predefinedTypeAST * inObject,
+                                             GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
+                                             GALGAS_enumerationDescriptorList & out_outEnumerationList,
+                                             GALGAS_string & out_outEnumeratedType,
+                                             Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) {
+  out_outEnumerationList.drop () ;
+  out_outEnumeratedType.drop () ;
+  if (nullptr != inObject) {
+    macroValidSharedObject (inObject, cPtr_predefinedTypeAST) ;
+    inObject->method_getEnumerationList  (io_ioUnifiedTypeMap, out_outEnumerationList, out_outEnumeratedType, inCompiler COMMA_THERE) ;
+  }
+}
 //--------------------------------------------------------------------------------------------------
 
 typeComparisonResult GALGAS_predefinedTypeAST_2D_weak::objectCompare (const GALGAS_predefinedTypeAST_2D_weak & inOperand) const {
@@ -9447,6 +9359,150 @@ GALGAS_predefinedTypeAST_2D_weak GALGAS_predefinedTypeAST_2D_weak::extractObject
       result = *p ;
     }else{
       inCompiler->castError ("predefinedTypeAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @applicationPredefinedTypeAST reference class
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_applicationPredefinedTypeAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_predefinedTypeAST::printNonNullClassInstanceProperties () ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+typeComparisonResult cPtr_applicationPredefinedTypeAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_applicationPredefinedTypeAST * p = (const cPtr_applicationPredefinedTypeAST *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_applicationPredefinedTypeAST) ;
+  if (kOperandEqual == result) {
+    result = mProperty_isPredefined.objectCompare (p->mProperty_isPredefined) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mPredefinedTypeName.objectCompare (p->mProperty_mPredefinedTypeName) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+
+typeComparisonResult GALGAS_applicationPredefinedTypeAST::objectCompare (const GALGAS_applicationPredefinedTypeAST & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = kOperandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_applicationPredefinedTypeAST::GALGAS_applicationPredefinedTypeAST (void) :
+GALGAS_predefinedTypeAST () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_applicationPredefinedTypeAST::GALGAS_applicationPredefinedTypeAST (const cPtr_applicationPredefinedTypeAST * inSourcePtr) :
+GALGAS_predefinedTypeAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_applicationPredefinedTypeAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_applicationPredefinedTypeAST GALGAS_applicationPredefinedTypeAST::constructor_new (const GALGAS_bool & inAttribute_isPredefined,
+                                                                                          const GALGAS_string & inAttribute_mPredefinedTypeName
+                                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_applicationPredefinedTypeAST result ;
+  if (inAttribute_isPredefined.isValid () && inAttribute_mPredefinedTypeName.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_applicationPredefinedTypeAST (inAttribute_isPredefined, inAttribute_mPredefinedTypeName COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @applicationPredefinedTypeAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_applicationPredefinedTypeAST::cPtr_applicationPredefinedTypeAST (const GALGAS_bool & in_isPredefined,
+                                                                      const GALGAS_string & in_mPredefinedTypeName
+                                                                      COMMA_LOCATION_ARGS) :
+cPtr_predefinedTypeAST (in_isPredefined, in_mPredefinedTypeName COMMA_THERE) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * cPtr_applicationPredefinedTypeAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_applicationPredefinedTypeAST ;
+}
+
+void cPtr_applicationPredefinedTypeAST::description (String & ioString,
+                                                     const int32_t inIndentation) const {
+  ioString.addString ("[@applicationPredefinedTypeAST:") ;
+  mProperty_isPredefined.description (ioString, inIndentation+1) ;
+  ioString.addString (", ") ;
+  mProperty_mPredefinedTypeName.description (ioString, inIndentation+1) ;
+  ioString.addString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_applicationPredefinedTypeAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_applicationPredefinedTypeAST (mProperty_isPredefined, mProperty_mPredefinedTypeName COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @applicationPredefinedTypeAST generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_applicationPredefinedTypeAST ("applicationPredefinedTypeAST",
+                                                                                    & kTypeDescriptor_GALGAS_predefinedTypeAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_applicationPredefinedTypeAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_applicationPredefinedTypeAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_applicationPredefinedTypeAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_applicationPredefinedTypeAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_applicationPredefinedTypeAST GALGAS_applicationPredefinedTypeAST::extractObject (const GALGAS_object & inObject,
+                                                                                        Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) {
+  GALGAS_applicationPredefinedTypeAST result ;
+  const GALGAS_applicationPredefinedTypeAST * p = (const GALGAS_applicationPredefinedTypeAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_applicationPredefinedTypeAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("applicationPredefinedTypeAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

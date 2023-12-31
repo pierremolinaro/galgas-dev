@@ -1888,7 +1888,7 @@ class GALGAS_headerCompositionMap : public AC_GALGAS_map {
   public: GALGAS_headerCompositionMap (const GALGAS_headerCompositionMap & inSource) ;
   public: GALGAS_headerCompositionMap & operator = (const GALGAS_headerCompositionMap & inSource) ;
   
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2075,7 +2075,7 @@ class GALGAS_headerCompositionMap_2D_element : public AC_GALGAS_root {
                                                   const GALGAS_stringset & in_mInclusion,
                                                   const GALGAS_string & in_mHeaderString) ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2139,7 +2139,7 @@ class GALGAS_headerRepartitionMap : public AC_GALGAS_map {
   public: GALGAS_headerRepartitionMap (const GALGAS_headerRepartitionMap & inSource) ;
   public: GALGAS_headerRepartitionMap & operator = (const GALGAS_headerRepartitionMap & inSource) ;
   
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2300,7 +2300,7 @@ class GALGAS_headerRepartitionMap_2D_element : public AC_GALGAS_root {
   public: GALGAS_headerRepartitionMap_2D_element (const GALGAS_lstring & in_lkey,
                                                   const GALGAS_string & in_mHeaderFileName) ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2363,7 +2363,7 @@ class GALGAS_projectQualifiedFeatureMap : public AC_GALGAS_map {
   public: GALGAS_projectQualifiedFeatureMap (const GALGAS_projectQualifiedFeatureMap & inSource) ;
   public: GALGAS_projectQualifiedFeatureMap & operator = (const GALGAS_projectQualifiedFeatureMap & inSource) ;
   
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2524,7 +2524,7 @@ class GALGAS_projectQualifiedFeatureMap_2D_element : public AC_GALGAS_root {
   public: GALGAS_projectQualifiedFeatureMap_2D_element (const GALGAS_lstring & in_lkey,
                                                         const GALGAS_lstring & in_mFeatureValue) ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2586,7 +2586,7 @@ class GALGAS_XCodeGroupList : public AC_GALGAS_list {
                                                  const class GALGAS_stringlist & in_mChildrenRefs
                                                  COMMA_LOCATION_ARGS) ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2820,7 +2820,7 @@ class GALGAS_XCodeGroupList_2D_element : public AC_GALGAS_root {
                                             const GALGAS_string & in_mGroupPath,
                                             const GALGAS_stringlist & in_mChildrenRefs) ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2891,7 +2891,7 @@ class GALGAS_XCodeToolTargetList : public AC_GALGAS_list {
                                                  const class GALGAS_string & in_mFrameworkBuildPhaseRef
                                                  COMMA_LOCATION_ARGS) ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3328,7 +3328,7 @@ class GALGAS_XCodeToolTargetList_2D_element : public AC_GALGAS_root {
                                                  const GALGAS_stringlist & in_mFrameworksFileRefList,
                                                  const GALGAS_string & in_mFrameworkBuildPhaseRef) ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3409,7 +3409,7 @@ class GALGAS_XCodeAppTargetList : public AC_GALGAS_list {
                                                  const class GALGAS_stringlist & in_mResourceFileBuildRefs
                                                  COMMA_LOCATION_ARGS) ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3933,7 +3933,7 @@ class GALGAS_XCodeAppTargetList_2D_element : public AC_GALGAS_root {
                                                 const GALGAS_string & in_mResourceBuildRef,
                                                 const GALGAS_stringlist & in_mResourceFileBuildRefs) ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;

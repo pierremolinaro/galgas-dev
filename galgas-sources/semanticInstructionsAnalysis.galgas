@@ -276,7 +276,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar 
     error self.mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature"
   end
   let cppName = "var_" + [self.mActualParameterName identifierRepresentation] + "_" + [self.mActualParameterName.location startLocationIndex]
-  let type = [ioTypeMap searchKey !self.mActualParameterTypeName]
+  let type = [ioTypeMap typeMapEntryForLKey !self.mActualParameterTypeName]
   [!?ioVariableMap insertInitializedLocalVariable !self.mActualParameterName !warnsIfNotMutated: true !type !cppName !cppName]
   let expectedType = inAnalysisContext.mPredefinedTypes.mStringType
   if expectedType != type then
@@ -300,7 +300,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredCons
     error self.mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature"
   end
   let cppName = "var_" + [self.mActualParameterName identifierRepresentation] + "_" + [self.mActualParameterName.location startLocationIndex]
-  let type = [ioTypeMap searchKey !self.mActualParameterTypeName]
+  let type = [ioTypeMap typeMapEntryForLKey !self.mActualParameterTypeName]
   [!?ioVariableMap insertInitializedLocalConstant !self.mActualParameterName !type !cppName !cppName]
   let expectedType = inAnalysisContext.mPredefinedTypes.mStringType
   if expectedType != type then

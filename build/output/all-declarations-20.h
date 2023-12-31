@@ -259,7 +259,7 @@ class GALGAS_XcodeProjectDescriptor : public AC_GALGAS_root {
                                          const GALGAS_string & in_mApplicationBundleName,
                                          const GALGAS_string & in_mProjectName) ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;

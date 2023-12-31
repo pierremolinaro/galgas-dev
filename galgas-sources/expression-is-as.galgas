@@ -156,7 +156,7 @@ override method @testDynamicClassInExpressionAST analyzeSemanticExpression
     ?let expression
   ]
 #--- Get type information
-   let castType = [ioTypeMap searchKey !self.mTypeName]
+   let castType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
 #--- This type is either a class
   if [[expression.mResultType definition].mTypeKindEnum isClassType] then
   #--- Check expression type is a descendant of named type
@@ -214,7 +214,7 @@ override method @castInExpressionAST analyzeSemanticExpression
     ?let @semanticExpressionForGeneration expression
    ]
 #--- Get type information
-   let type = [ioTypeMap searchKey !self.mTypeName]
+   let type = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
 #--- This type is an @object type
   if [[expression.mResultType definition].mTypeKindEnum isClassType]then
   #--- Check expression type is a descendant of named type

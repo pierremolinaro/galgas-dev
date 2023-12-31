@@ -226,7 +226,7 @@ override method @extensionGetterAST semanticAnalysis
   let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mTypeName)
   [!?ioUsefulEntitiesGraph addEdge !typeNameForUsefulness !nameForUsefulness]
 #--- Self type
-  let @unifiedTypeMapEntry selfType = [ioTypeMap searchKey !self.mTypeName]
+  let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
 #--- Check self type is a class (new)
   let @string selfObjectNameNew
   let @string selfObjectAccessorNew

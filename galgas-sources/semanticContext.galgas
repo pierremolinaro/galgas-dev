@@ -515,29 +515,6 @@ abstract method @semanticDeclarationAST enterDeclarationInSemanticContext
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-getter @predefinedTypeKindEnum defaultConstructorName
-  -> @string {
-  switch self
-  case predefined_bool, predefined_char,
-       predefined_double, predefined_sint, predefined_sint64,
-       predefined_string, predefined_uint, predefined_uint64
-    : result = "default"
-  case predefined_binaryset : result = "emptyBinarySet"
-  case predefined_stringset : result = "emptySet"
-  case predefined_type : result = ""
-  case predefined_application : result = ""
-  case predefined_data : result = "emptyData"
-  case predefined_location : result = "nowhere"
-  case predefined_function : result = ""
-  case predefined_object : result = ""
-  case predefined_filewrapper : result = ""
-  case predefined_bigint : result = "zero"
-  case predefined_timer : result = "start"
-  end
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 func %once elementTypeNameSuffix -> @string {
   result = "-element"
 }

@@ -226,10 +226,10 @@ refclass @typealiasDeclarationAST : @semanticDeclarationAST {
     let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mDefinedTypeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !elementTypeNameForUsefulness]
   #--- Enter type alias declaration
-    let @unifiedTypeMapEntry t = [ioTypeMap searchKey !self.mDefinedTypeName]
+    let @unifiedTypeMapEntry t = [ioTypeMap typeMapEntryForLKey !self.mDefinedTypeName]
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: "typealias " + self.mAliasTypeName
-      !@aliasTypeForGeneration.new {![ioTypeMap searchKey !self.mAliasTypeName] !self.mAliasTypeName !t}
+      !@aliasTypeForGeneration.new {![ioTypeMap typeMapEntryForLKey !self.mAliasTypeName] !self.mAliasTypeName !t}
   }
 
   #·················································································································

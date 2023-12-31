@@ -1,9 +1,8 @@
 //--------------------------------------------------------------------------------------------------
 //
-//
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2010, ..., 2016 Pierre Molinaro.
+//  Copyright (C) 2010, ..., 2023 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -27,45 +26,7 @@
 #include "cLexiqueIntrospection.h"
 
 //--------------------------------------------------------------------------------------------------
-//
-//                     'GALGAS_application' class                                                
-//
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_application::GALGAS_application (void) :
-AC_GALGAS_root () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_application::GALGAS_application (const GALGAS_application & inSource) :
-AC_GALGAS_root (inSource) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_application::~GALGAS_application (void) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_application & GALGAS_application::operator = (const GALGAS_application & /* inSource */) {
-  return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-typeComparisonResult GALGAS_application::objectCompare (const GALGAS_application & /* inOperand */) const {
-  return kOperandNotValid ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_application::description (String & ioString,
-                                      const int32_t /* inIndentation */) const {
-  ioString.addString ("<@application:not built>") ;
-}
-
+//                     'GALGAS_application' class
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_application::constructor_verboseOutput (UNUSED_LOCATION_ARGS) {

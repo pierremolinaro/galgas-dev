@@ -243,7 +243,7 @@ override method @boolsetDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "boolset " + self.mBoolsetTypeName
     !@boolsetTypeForGeneration.new {
-      ![ioTypeMap searchKey !self.mBoolsetTypeName]
+      ![ioTypeMap typeMapEntryForLKey !self.mBoolsetTypeName]
       !self.mFlagList
     }
 }

@@ -15,6 +15,209 @@
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
+  public let @string mPredefinedTypeName
+
+  #-----------------------------------------------------------------------------------------------------------------
+  
+  getter typeKind -> @typeKindEnum {
+    result = .otherType
+  }
+  
+  #-----------------------------------------------------------------------------------------------------------------
+  
+  abstract getter cppDeclarationString -> @string
+  
+  #-----------------------------------------------------------------------------------------------------------------
+  
+  abstract getter defaultInitializerName -> @string // Empty string: no default initializer name
+  
+  #-----------------------------------------------------------------------------------------------------------------
+  
+  override method enterDeclarationInGraph
+                              ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+                              ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
+                              ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
+                              ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
+                              ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
+    let key = @lstring.new {!"@" + self.mPredefinedTypeName !@location.here}
+    [!?ioSemanticTypePrecedenceGraph addNode !key !self]
+  }
+
+  #-----------------------------------------------------------------------------------------------------------------
+
+  override method enterDeclarationInSemanticContext
+                                  ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
+                                  ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
+                                  ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
+                                  ?!@unifiedTypeMap ioTypeMap
+                                  ?!@semanticContext ioSemanticContext {
+    [self getOptionalMethodMap !?ioTypeMap ?let @optionalMethodMap optionalMethodMap]
+    [self getConstructorMap !?ioTypeMap ?let @constructorMap constructorMap]
+    [self getGetterMap !?ioTypeMap ?var @getterMap getterMap]
+    [self getSetterMap !?ioTypeMap ?var @setterMap setterMap]
+    [self getInstanceMethodMap !?ioTypeMap ?var @instanceMethodMap instanceMethodMap]
+    [self getClassMethodMap !?ioTypeMap ?let @classMethodMap classMethodMap]
+    [self getAddAssignArgumentList !?ioTypeMap ?let @functionSignature addAssignArgumentList]
+    [self getEnumerationList
+      !?ioTypeMap
+      ?let @enumerationDescriptorList enumerationList
+      ?let @string enumeratedTypeName
+    ]
+    [!?ioTypeMap makeEntryFromString !self.mPredefinedTypeName ?*]
+  #--- Enumeration
+    let @unifiedTypeMapEntry enumeratedTypeEntry
+    if enumeratedTypeName == "" then
+      enumeratedTypeEntry = @unifiedTypeMapEntry.null
+    else
+      [!?ioTypeMap makeEntryFromString!enumeratedTypeName ?enumeratedTypeEntry]
+    end
+  #--- Add Extensions
+    addExtensions (
+      !inExtensionMethodMapForBuildingContext
+      !inExtensionGetterMapForBuildingContext
+      !inExtensionSetterMapForBuildingContext
+      !?ioSemanticContext
+      !?ioTypeMap
+      !@lstring.new {!self.mPredefinedTypeName !@location.here}
+      !isClass: false
+      !?getterMap
+      !?setterMap
+      !?instanceMethodMap
+      !acceptSetters: true
+    )
+  #---
+    let typeDefinition = @unifiedTypeDefinition.new {
+      !@lstring.new {!self.mPredefinedTypeName !.nowhere}
+      !self.isPredefined
+      !true # Concrete Type
+      !@unifiedTypeMapEntry.null
+      ![self typeKind]
+      ![self supportsCollectionValue]
+      !@typedPropertyList {}
+      !{}
+      !@typedPropertyList {}
+      !constructorMap
+      !getterMap
+      !setterMap
+      !instanceMethodMap
+      !classMethodMap
+      !optionalMethodMap
+      !enumerationList
+      ![self getSupportedOperatorFlags]
+      !addAssignArgumentList
+      !{}
+      !{}
+      !@mapSearchMethodListAST {}
+      !@mapSearchMethodListAST {}
+      !false # Do not generate header in separate file
+      !enumeratedTypeEntry
+      !defaultConstructorName: [self defaultInitializerName]
+      !"predefined-types"
+      !@headerKind.twoHeaders
+    }
+    [!?ioTypeMap insertType !typeDefinition.mTypeName !typeDefinition]
+  }
+
+  #-----------------------------------------------------------------------------------------------------------------
+
+  override method semanticAnalysis ?!@lstringlist unused ioUsefulnessRootEntities 
+                                    ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+                                    ?let @string unused inProductDirectory
+                                    ?let @semanticContext unused inSemanticContext
+                                    ?!@unifiedTypeMap ioTypeMap
+                                    ?let @predefinedTypes unused inPredefinedTypes
+                                    ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration {
+  #--- Useful entities graph
+    let nameForUsefulness = typeNameForUsefulEntitiesGraph (!.new {!self.mPredefinedTypeName !.here})
+    [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+  #---
+    ioSemanticDeclarationListForGeneration +=
+      !infoMessage: "Predefined type " + self.mPredefinedTypeName
+      !@primitiveTypeForGeneration.new {
+        ![ioTypeMap typeMapEntryForLKey !.new {!self.mPredefinedTypeName !.here}]
+        !self.mPredefinedTypeName
+        ![self cppDeclarationString]
+        !isPackage: [self typeKind] == .packageType
+      }
+  }
+
+  #-----------------------------------------------------------------------------------------------------------------
+
+  method getConstructorMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
+                           !@constructorMap outConstructorMap {
+    outConstructorMap = {}
+  }
+
+  #-----------------------------------------------------------------------------------------------------------------
+
+  method getGetterMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
+                      !@getterMap outGetterMap {
+    outGetterMap = {}
+  }
+
+  #-----------------------------------------------------------------------------------------------------------------
+
+  method getSetterMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
+                      !@setterMap outSetterMap {
+    outSetterMap = {}
+  }
+
+  #-----------------------------------------------------------------------------------------------------------------
+
+  method getInstanceMethodMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
+                              !@instanceMethodMap outInstanceMethodMap {
+    outInstanceMethodMap = {}
+  }
+
+  #-----------------------------------------------------------------------------------------------------------------
+
+  method getClassMethodMap  ?!@unifiedTypeMap unused ioUnifiedTypeMap
+                            !@classMethodMap outClassMethodMap {
+    outClassMethodMap = {}
+  }
+
+  #-----------------------------------------------------------------------------------------------------------------
+
+  method getOptionalMethodMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
+                               !@optionalMethodMap outMap {
+    outMap = {}
+  }
+
+  #-----------------------------------------------------------------------------------------------------------------
+
+  getter getSupportedOperatorFlags -> @operators outFlags {
+    outFlags = .none # No supported operator
+  }
+
+  #-----------------------------------------------------------------------------------------------------------------
+
+  getter supportsCollectionValue -> @bool {
+    result = false # Does not support collection value
+  }
+
+  #-----------------------------------------------------------------------------------------------------------------
+
+  method getAddAssignArgumentList ?!@unifiedTypeMap unused ioUnifiedTypeMap
+                                  !@functionSignature outAddAssignArgumentList {
+    outAddAssignArgumentList = {}
+  }
+
+  #-----------------------------------------------------------------------------------------------------------------
+
+  method getEnumerationList ?!@unifiedTypeMap unused ioUnifiedTypeMap
+                            !@enumerationDescriptorList outEnumerationList
+                            !@string outEnumeratedType {
+    outEnumerationList = {} # Enumeration is not supported
+    outEnumeratedType = "" # Enumeration is not supported
+  }
+
+  #-----------------------------------------------------------------------------------------------------------------
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 private proc appendPredefinedListTypeAST
   ?!@semanticDeclarationListAST ioDeclarationListASTs
   ?let @string inElementTypeName
@@ -169,43 +372,43 @@ private proc insertInUsefulnessEntities ?!@lstringlist ioUsefulnessRootEntities 
 
 proc appendPredefinedTypesASTs ?!@semanticDeclarationListAST ioDeclarationListASTs
                                ?!@lstringlist ioUsefulnessRootEntities {
-  ioDeclarationListASTs += !@applicationPredefinedTypeAST.new {!isPredefined: true !"application" !.predefined_application}
+  ioDeclarationListASTs += !@applicationPredefinedTypeAST.new {!isPredefined: true !"application"}
   insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"application")
-  ioDeclarationListASTs += !@bigintPredefinedTypeAST.new {!isPredefined: true !"bigint" !.predefined_bigint}
+  ioDeclarationListASTs += !@bigintPredefinedTypeAST.new {!isPredefined: true !"bigint"}
   insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"bigint")
-  ioDeclarationListASTs += !@binarysetPredefinedTypeAST.new {!isPredefined: true !"binaryset" !.predefined_binaryset}
+  ioDeclarationListASTs += !@binarysetPredefinedTypeAST.new {!isPredefined: true !"binaryset"}
   insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"binaryset")
-  ioDeclarationListASTs += !@boolPredefinedTypeAST.new {!isPredefined: true !"bool" !.predefined_bool}
+  ioDeclarationListASTs += !@boolPredefinedTypeAST.new {!isPredefined: true !"bool"}
   insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"bool")
-  ioDeclarationListASTs += !@charPredefinedTypeAST.new {!isPredefined: true !"char" !.predefined_char}
+  ioDeclarationListASTs += !@charPredefinedTypeAST.new {!isPredefined: true !"char"}
   insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"char")
-  ioDeclarationListASTs += !@dataPredefinedTypeAST.new {!isPredefined: true !"data" !.predefined_data}
+  ioDeclarationListASTs += !@dataPredefinedTypeAST.new {!isPredefined: true !"data"}
   insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"data")
-  ioDeclarationListASTs += !@doublePredefinedTypeAST.new {!isPredefined: true !"double" !.predefined_double}
+  ioDeclarationListASTs += !@doublePredefinedTypeAST.new {!isPredefined: true !"double"}
   insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"double")
-  ioDeclarationListASTs += !@filewrapperPredefinedTypeAST.new {!isPredefined: true !"filewrapper" !.predefined_filewrapper}
+  ioDeclarationListASTs += !@filewrapperPredefinedTypeAST.new {!isPredefined: true !"filewrapper"}
   insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"filewrapper")
-  ioDeclarationListASTs += !@functionPredefinedTypeAST.new {!isPredefined: true !"function" !.predefined_function}
+  ioDeclarationListASTs += !@functionPredefinedTypeAST.new {!isPredefined: true !"function"}
   insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"function")
-  ioDeclarationListASTs += !@locationPredefinedTypeAST.new {!isPredefined: true !"location" !.predefined_location}
+  ioDeclarationListASTs += !@locationPredefinedTypeAST.new {!isPredefined: true !"location"}
   insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"location")
-  ioDeclarationListASTs += !@objectPredefinedTypeAST.new {!isPredefined: true !"object" !.predefined_object}
+  ioDeclarationListASTs += !@objectPredefinedTypeAST.new {!isPredefined: true !"object"}
   insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"object")
-  ioDeclarationListASTs += !@sintPredefinedTypeAST.new {!isPredefined: true !"sint" !.predefined_sint}
+  ioDeclarationListASTs += !@sintPredefinedTypeAST.new {!isPredefined: true !"sint"}
   insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"sint")
-  ioDeclarationListASTs += !@sint64PredefinedTypeAST.new {!isPredefined: true !"sint64" !.predefined_sint64}
+  ioDeclarationListASTs += !@sint64PredefinedTypeAST.new {!isPredefined: true !"sint64"}
   insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"sint64")
-  ioDeclarationListASTs += !@stringPredefinedTypeAST.new {!isPredefined: true !"string" !.predefined_string}
+  ioDeclarationListASTs += !@stringPredefinedTypeAST.new {!isPredefined: true !"string"}
   insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"string")
-  ioDeclarationListASTs += !@stringsetPredefinedTypeAST.new {!isPredefined: true !"stringset" !.predefined_stringset}
+  ioDeclarationListASTs += !@stringsetPredefinedTypeAST.new {!isPredefined: true !"stringset"}
   insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"stringset")
-  ioDeclarationListASTs += !@timerPredefinedTypeAST.new {!isPredefined: true !"timer" !.predefined_timer}
+  ioDeclarationListASTs += !@timerPredefinedTypeAST.new {!isPredefined: true !"timer"}
   insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"timer")
-  ioDeclarationListASTs += !@typePredefinedTypeAST.new {!isPredefined: true !"type" !.predefined_type}
+  ioDeclarationListASTs += !@typePredefinedTypeAST.new {!isPredefined: true !"type"}
   insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"type")
-  ioDeclarationListASTs += !@uintPredefinedTypeAST.new {!isPredefined: true !"uint" !.predefined_uint}
+  ioDeclarationListASTs += !@uintPredefinedTypeAST.new {!isPredefined: true !"uint"}
   insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"uint")
-  ioDeclarationListASTs += !@uint64PredefinedTypeAST.new {!isPredefined: true !"uint64" !.predefined_uint64}
+  ioDeclarationListASTs += !@uint64PredefinedTypeAST.new {!isPredefined: true !"uint64"}
   insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"uint64")
 
   appendPredefinedListTypeAST (!?ioDeclarationListASTs !"function" !?ioUsefulnessRootEntities)
@@ -233,191 +436,6 @@ proc appendPredefinedTypesASTs ?!@semanticDeclarationListAST ioDeclarationListAS
 #  appendPredefined2LStringListTypeAST (!?ioDeclarationListASTs !?ioUsefulnessRootEntities)
 
   appendStructASTForRangeType (!?ioDeclarationListASTs !?ioUsefulnessRootEntities)
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   ENTER IN GRAPH                          
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
-  public let @string mPredefinedTypeName
-  public let @predefinedTypeKindEnum mKind
-
-  #-----------------------------------------------------------------------------------------------------------------
-  
-  override method enterDeclarationInGraph
-                              ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
-                              ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
-                              ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
-                              ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
-                              ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-    let key = @lstring.new {!"@" + self.mPredefinedTypeName !@location.here}
-    [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  }
-
-  #-----------------------------------------------------------------------------------------------------------------
-
-  override method enterDeclarationInSemanticContext
-                                  ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
-                                  ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
-                                  ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
-                                  ?!@unifiedTypeMap ioTypeMap
-                                  ?!@semanticContext ioSemanticContext {
-    [self getOptionalMethodMap !?ioTypeMap ?let @optionalMethodMap optionalMethodMap]
-    [self getConstructorMap !?ioTypeMap ?let @constructorMap constructorMap]
-    [self getGetterMap !?ioTypeMap ?var @getterMap getterMap]
-    [self getSetterMap !?ioTypeMap ?var @setterMap setterMap]
-    [self getInstanceMethodMap !?ioTypeMap ?var @instanceMethodMap instanceMethodMap]
-    [self getClassMethodMap !?ioTypeMap ?let @classMethodMap classMethodMap]
-    [self getAddAssignArgumentList !?ioTypeMap ?let @functionSignature addAssignArgumentList]
-    [self getEnumerationList
-      !?ioTypeMap
-      ?let @enumerationDescriptorList enumerationList
-      ?let @string enumeratedTypeName
-    ]
-    [!?ioTypeMap makeEntryFromString !self.mPredefinedTypeName ?*]
-  #--- Enumeration
-    let @unifiedTypeMapEntry enumeratedTypeEntry
-    if enumeratedTypeName == "" then
-      enumeratedTypeEntry = @unifiedTypeMapEntry.null
-    else
-      [!?ioTypeMap makeEntryFromString!enumeratedTypeName ?enumeratedTypeEntry]
-    end
-  #--- Add Extensions
-    addExtensions (
-      !inExtensionMethodMapForBuildingContext
-      !inExtensionGetterMapForBuildingContext
-      !inExtensionSetterMapForBuildingContext
-      !?ioSemanticContext
-      !?ioTypeMap
-      !@lstring.new {!self.mPredefinedTypeName !@location.here}
-      !isClass: false
-      !?getterMap
-      !?setterMap
-      !?instanceMethodMap
-      !acceptSetters: true
-    )
-  #---
-    let typeDefinition = @unifiedTypeDefinition.new {
-      !@lstring.new {!self.mPredefinedTypeName !.nowhere}
-      !self.isPredefined
-      !true # Concrete Type
-      !@unifiedTypeMapEntry.null
-      !@typeKindEnum. predefinedType
-      !self.mPredefinedTypeName == "stringset" # Only @stringset supports collection value
-      !@typedPropertyList {}
-      !{}
-      !@typedPropertyList {}
-      !constructorMap
-      !getterMap
-      !setterMap
-      !instanceMethodMap
-      !classMethodMap
-      !optionalMethodMap
-      !enumerationList
-      ![self getSupportedOperatorFlags]
-      !addAssignArgumentList
-      !{}
-      !{}
-      !@mapSearchMethodListAST {}
-      !@mapSearchMethodListAST {}
-      !false # Do not generate header in separate file
-      !enumeratedTypeEntry
-      !defaultConstructorName: [self.mKind defaultConstructorName]
-      !"predefined-types"
-      !@headerKind.twoHeaders
-    }
-    [!?ioTypeMap insertType !typeDefinition.mTypeName !typeDefinition]
-  }
-
-  #-----------------------------------------------------------------------------------------------------------------
-
-  override method semanticAnalysis ?!@lstringlist unused ioUsefulnessRootEntities 
-                                    ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-                                    ?let @string unused inProductDirectory
-                                    ?let @semanticContext unused inSemanticContext
-                                    ?!@unifiedTypeMap ioTypeMap
-                                    ?let @predefinedTypes unused inPredefinedTypes
-                                    ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration {
-  #--- Useful entities graph
-    let nameForUsefulness = typeNameForUsefulEntitiesGraph (!.new {!self.mPredefinedTypeName !.here})
-    [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
-  #---
-    ioSemanticDeclarationListForGeneration +=
-      !infoMessage: "Predefined type " + self.mPredefinedTypeName
-      !@primitiveTypeForGeneration.new {
-        ![ioTypeMap searchKey !.new {!self.mPredefinedTypeName !.here}]
-        !self.mPredefinedTypeName
-        !self.mKind
-      }
-  }
-
-  #-----------------------------------------------------------------------------------------------------------------
-
-  method getConstructorMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
-                           !@constructorMap outConstructorMap {
-    outConstructorMap = {}
-  }
-
-  #-----------------------------------------------------------------------------------------------------------------
-
-  method getGetterMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
-                      !@getterMap outGetterMap {
-    outGetterMap = {}
-  }
-
-  #-----------------------------------------------------------------------------------------------------------------
-
-  method getSetterMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
-                      !@setterMap outSetterMap {
-    outSetterMap = {}
-  }
-
-  #-----------------------------------------------------------------------------------------------------------------
-
-  method getInstanceMethodMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
-                              !@instanceMethodMap outInstanceMethodMap {
-    outInstanceMethodMap = {}
-  }
-
-  #-----------------------------------------------------------------------------------------------------------------
-
-  method getClassMethodMap  ?!@unifiedTypeMap unused ioUnifiedTypeMap
-                            !@classMethodMap outClassMethodMap {
-    outClassMethodMap = {}
-  }
-
-  #-----------------------------------------------------------------------------------------------------------------
-
-  method getOptionalMethodMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
-                               !@optionalMethodMap outMap {
-    outMap = {}
-  }
-
-  #-----------------------------------------------------------------------------------------------------------------
-
-  getter getSupportedOperatorFlags -> @operators outFlags {
-    outFlags = .none # No supported operator
-  }
-
-  #-----------------------------------------------------------------------------------------------------------------
-
-  method getAddAssignArgumentList ?!@unifiedTypeMap unused ioUnifiedTypeMap
-                                 !@functionSignature outAddAssignArgumentList {
-    outAddAssignArgumentList = {}
-  }
-
-  #-----------------------------------------------------------------------------------------------------------------
-
-  method getEnumerationList ?!@unifiedTypeMap unused ioUnifiedTypeMap
-                            !@enumerationDescriptorList outEnumerationList
-                            !@string outEnumeratedType {
-    outEnumerationList = {} # Enumeration is not supported
-    outEnumeratedType = "" # Enumeration is not supported
-  }
-
-  #-----------------------------------------------------------------------------------------------------------------
-
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————

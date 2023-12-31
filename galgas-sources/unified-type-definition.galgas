@@ -46,48 +46,50 @@ struct @unifiedTypeDefinition {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-getter @unifiedTypeMapEntry identifierRepresentation -> @string {
-  result = [[self definition].mTypeName.string identifierRepresentation]
-}
-
+#  T Y P E    K I N D    E N U M E R A T I O N   
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-getter @unifiedTypeMapEntry typeName -> @string {
-  result = [self definition].mTypeName.string
-}
+enum @typeKindEnum {
+  case classType (@bool isReference)
+  case weakReferenceType (@unifiedTypeMapEntry referenceType)
+  case enumType 
+  case listType 
+  case sortedListType 
+  case mapType 
+  case sharedMapType 
+  case sharedMapEntryType 
+  case listMapType 
+  case boolsetType 
+  case structType 
+  case graphType 
+  case externType 
+  case otherType
+  case packageType
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+  #-----------------------------------------------------------------------------------------------------------------
 
-getter @unifiedTypeMapEntry baseType -> @unifiedTypeMapEntry outBaseType {
-  outBaseType = self
-  loop while not [[outBaseType definition].mSuperType isNull] do
-    outBaseType = [outBaseType definition].mSuperType
-  end
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-method @unifiedTypeMapEntry addHeaderFileName ?!@stringset ioInclusions {
-  let typeDefinition = [self definition]
-  if (not typeDefinition.mIsPredefined) & (typeDefinition.mHeaderKind != .noHeader) then
-    ioInclusions += !typeDefinition.mHeaderFileName
-  end
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-method @unifiedTypeMapEntry addHeaderFileName1 ?!@stringset ioInclusions {
-  let typeDefinition = [self definition]
-  if not typeDefinition.mIsPredefined then
-    switch typeDefinition.mHeaderKind
-    case noHeader :
-    case oneHeader :
-      ioInclusions += !typeDefinition.mHeaderFileName
-    case twoHeaders :
-      ioInclusions += !typeDefinition.mHeaderFileName + "-1"
+  getter string -> @string {
+    switch self
+      case classType (isReference) : result = if isReference then "reference class" else "value class" end
+      case enumType : result = "enumeration"
+      case listType : result = "list"
+      case sortedListType : result = "sorted list"
+      case mapType : result = "map"
+      case sharedMapType : result = "shared map"
+      case sharedMapEntryType : result = "shared map entry"
+      case listMapType : result = "list map"
+      case structType : result = "struct"
+      case boolsetType : result = "boolset"
+      case graphType : result = "graph"
+      case otherType : result = "other"
+      case externType : result = "extern"
+      case packageType : result = "package"
+      case weakReferenceType (*) : result = "weak reference"
     end
-  end
+  }
+
+  #-----------------------------------------------------------------------------------------------------------------
+
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————

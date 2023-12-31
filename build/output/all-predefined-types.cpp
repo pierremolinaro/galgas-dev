@@ -1888,48 +1888,6 @@ GALGAS_bigint GALGAS_bigint::extractObject (const GALGAS_object & inObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @application generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_application ("application",
-                                                                   nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_application::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_application ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_application::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_application (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_application GALGAS_application::extractObject (const GALGAS_object & inObject,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) {
-  GALGAS_application result ;
-  const GALGAS_application * p = (const GALGAS_application *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_application *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("application", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
 //     @binaryset generic code implementation
 //
 //--------------------------------------------------------------------------------------------------

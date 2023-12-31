@@ -425,6 +425,19 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
 
 //--------------------------------------------------------------------------------------------------
 //
+//Filewrapper template 'typeGenerationTemplate unifiedClassBodyForPackage'
+//
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForPackage (class Compiler * inCompiler,
+                                                                                     const class GALGAS_string & in_TYPE_5F_NAME,
+                                                                                     const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                     const class GALGAS_constructorMap & in_CONSTRUCTOR_5F_MAP,
+                                                                                     const class GALGAS_classMethodMap & in_CLASS_5F_METHOD_5F_MAP
+                                                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Filewrapper template 'typeGenerationTemplate genericTypeImplementation'
 //
 //--------------------------------------------------------------------------------------------------
@@ -432,8 +445,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
 GALGAS_string filewrapperTemplate_typeGenerationTemplate_genericTypeImplementation (class Compiler * inCompiler,
                                                                                     const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                     const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                    const class GALGAS_unifiedTypeMapEntry & in_SUPER_5F_TYPE_5F_INDEX,
-                                                                                    const class GALGAS_operators & in_SUPPORTED_5F_OPERATORS
+                                                                                    const class GALGAS_unifiedTypeMapEntry & in_SUPER_5F_TYPE_5F_INDEX
                                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------

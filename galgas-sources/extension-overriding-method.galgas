@@ -189,7 +189,7 @@ override method @overridingExtensionMethodAST semanticAnalysis
   let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mTypeName)
   [!?ioUsefulEntitiesGraph addEdge !typeNameForUsefulness !nameForUsefulness]
 #--- Self type
-  let @unifiedTypeMapEntry selfType = [ioTypeMap searchKey !self.mTypeName]
+  let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
 #--- Check self type is a class
   if not [[selfType definition].mTypeKindEnum isClassType] then
     error self.mOverridingExtensionMethodName: "cannot declare a extension method: '@" + [selfType definition].mTypeName.string + "' is not a class"

@@ -135,7 +135,7 @@ proc buildLocalVariableMapAndSignature ?let @semanticContext unused inSemanticCo
                                        !@formalParameterListForGeneration outRoutineSignature {
   outRoutineSignature = @formalParameterListForGeneration {}
   for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName mIsUnused) in inRoutineSignatureAST do
-    let type = [ioTypeMap searchKey !mFormalArgumentTypeName]
+    let type = [ioTypeMap typeMapEntryForLKey !mFormalArgumentTypeName]
     let @string formalArgumentCppName
     switch mFormalArgumentPassingMode
     case argumentIn :
@@ -269,7 +269,7 @@ override method @externFunctionDeclarationAST semanticAnalysis
   for (mFormalSelector mFormalArgumentTypeName mFormalArgumentName * mIsConstant) in self.mFormalArgumentList do
     formalArgumentList +=
       !mFormalSelector
-      ![ioTypeMap searchKey !mFormalArgumentTypeName]
+      ![ioTypeMap typeMapEntryForLKey !mFormalArgumentTypeName]
       !mFormalArgumentName.string
       !mFormalArgumentName
       !mIsConstant
@@ -281,7 +281,7 @@ override method @externFunctionDeclarationAST semanticAnalysis
       !mImplementationCppFileName: "func-" + [self.mFunctionName fileNameRepresentation]
       !self.mFunctionName.string
       !formalArgumentList
-      ![ioTypeMap searchKey !self.mResultTypeName]
+      ![ioTypeMap typeMapEntryForLKey !self.mResultTypeName]
    }
 }
 
@@ -320,7 +320,7 @@ proc analyzeFunctionBody
 #--- Enter formal parameters
   outSignatureForGeneration = @formalInputParameterListForGeneration {}
   for (mFormalSelector mFormalArgumentTypeName mFormalArgumentName mIsUnused mIsConstant) in inFunctionSignature do
-    let parameterType = [ioTypeMap searchKey !mFormalArgumentTypeName]
+    let parameterType = [ioTypeMap typeMapEntryForLKey !mFormalArgumentTypeName]
     if mIsConstant then
       let @string cppName = "constinArgument_" + [mFormalArgumentName.string identifierRepresentation]
       outSignatureForGeneration +=
@@ -350,7 +350,7 @@ proc analyzeFunctionBody
     end
   end
 #--- Enter return variable
-  outReturnedType = [ioTypeMap searchKey !inResultTypeName]
+  outReturnedType = [ioTypeMap typeMapEntryForLKey !inResultTypeName]
   outResultVariableCppName = "result_" + [inReturnVariableName identifierRepresentation]
   [!?variableMap insertOutputFormalArgument !inReturnVariableName !outReturnedType !outResultVariableCppName !outResultVariableCppName]
 #---  Analyze instruction list
@@ -538,7 +538,7 @@ override method @filewrapperDeclarationAST semanticAnalysis
       var @templateVariableMap templateVariableMap = {}
       var @formalInputParameterListForGeneration filewrapperTemplateFormalInputParameters = {}
       for (mFormalTemplateSelector mFormalArgumentTypeName mFormalArgumentName *) in mFilewrapperTemplateFormalInputParameters do
-        let type = [ioTypeMap searchKey !mFormalArgumentTypeName]
+        let type = [ioTypeMap typeMapEntryForLKey !mFormalArgumentTypeName]
         let @string cppVarName = "in_" + [mFormalArgumentName.string identifierRepresentation]
         [!?templateVariableMap insertKey !mFormalArgumentName !type !cppVarName]
         filewrapperTemplateFormalInputParameters += !mFormalTemplateSelector !type !cppVarName !mFormalArgumentName !true
@@ -637,14 +637,13 @@ override method @galgas3SyntaxComponentAST semanticAnalysis
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @galgas3GrammarComponentAST semanticAnalysis
-  ?!@lstringlist unused ioUsefulnessRootEntities 
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @string inProductDirectory
-  ?let @semanticContext inSemanticContext
+                                ?!@lstringlist unused ioUsefulnessRootEntities 
+                                ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+                                ?let @string inProductDirectory
+                                ?let @semanticContext inSemanticContext
                                 ?!@unifiedTypeMap ioTypeMap
-  ?let @predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
-{
+                                ?let @predefinedTypes unused inPredefinedTypes
+                                ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration {
   if @application.verboseOutput then
     println (!"*** Analyzing '" + self.mGrammarComponentName + "' grammar")
   end
@@ -779,7 +778,7 @@ override method @galgas3GrammarComponentAST semanticAnalysis
       for (mFormalArgumentPassingModeForGrammarAnalysis mGalgasTypeNameForGrammarAnalysis) in mFormalParametersList do
         switch mFormalArgumentPassingModeForGrammarAnalysis
         case argumentIn, argumentConstantIn :
-          let t = [ioTypeMap searchKey !mGalgasTypeNameForGrammarAnalysis]
+          let t = [ioTypeMap typeMapEntryForLKey !mGalgasTypeNameForGrammarAnalysis]
           [t addHeaderFileName !?implementationFileHeader]
         case argumentInOut, argumentOut :
         end
@@ -839,28 +838,28 @@ override method @galgas3GrammarComponentAST semanticAnalysis
 
 func buildPredefinedTypes ?let @unifiedTypeMap inTypeMap -> @predefinedTypes outPredefinedTypes {
   outPredefinedTypes = .new {
-    ![inTypeMap searchKey !.new {!"location"   !.here}]
-    ![inTypeMap searchKey !.new {!"bool"       !.here}]
-    ![inTypeMap searchKey !.new {!"char"       !.here}]
-    ![inTypeMap searchKey !.new {!"string"     !.here}]
-    ![inTypeMap searchKey !.new {!"uint"       !.here}]
-    ![inTypeMap searchKey !.new {!"sint"       !.here}]
-    ![inTypeMap searchKey !.new {!"uint64"     !.here}]
-    ![inTypeMap searchKey !.new {!"sint64"     !.here}]
-    ![inTypeMap searchKey !.new {!"double"     !.here}]
-    ![inTypeMap searchKey !.new {!"lbool"      !.here}]
-    ![inTypeMap searchKey !.new {!"lchar"      !.here}]
-    ![inTypeMap searchKey !.new {!"lstring"    !.here}]
-    ![inTypeMap searchKey !.new {!"luint"      !.here}]
-    ![inTypeMap searchKey !.new {!"lsint"      !.here}]
-    ![inTypeMap searchKey !.new {!"luint64"    !.here}]
-    ![inTypeMap searchKey !.new {!"lsint64"    !.here}]
-    ![inTypeMap searchKey !.new {!"ldouble"    !.here}]
-    ![inTypeMap searchKey !.new {!"stringlist" !.here}]
-    ![inTypeMap searchKey !.new {!"lbigint"    !.here}]
-    ![inTypeMap searchKey !.new {!"bigint"     !.here}]
-    ![inTypeMap searchKey !.new {!"stringset"  !.here}]
-    ![inTypeMap searchKey !.new {!"lstringlist"!.here}]
+    ![inTypeMap typeMapEntryForLKey !.new {!"location"   !.here}]
+    ![inTypeMap typeMapEntryForLKey !.new {!"bool"       !.here}]
+    ![inTypeMap typeMapEntryForLKey !.new {!"char"       !.here}]
+    ![inTypeMap typeMapEntryForLKey !.new {!"string"     !.here}]
+    ![inTypeMap typeMapEntryForLKey !.new {!"uint"       !.here}]
+    ![inTypeMap typeMapEntryForLKey !.new {!"sint"       !.here}]
+    ![inTypeMap typeMapEntryForLKey !.new {!"uint64"     !.here}]
+    ![inTypeMap typeMapEntryForLKey !.new {!"sint64"     !.here}]
+    ![inTypeMap typeMapEntryForLKey !.new {!"double"     !.here}]
+    ![inTypeMap typeMapEntryForLKey !.new {!"lbool"      !.here}]
+    ![inTypeMap typeMapEntryForLKey !.new {!"lchar"      !.here}]
+    ![inTypeMap typeMapEntryForLKey !.new {!"lstring"    !.here}]
+    ![inTypeMap typeMapEntryForLKey !.new {!"luint"      !.here}]
+    ![inTypeMap typeMapEntryForLKey !.new {!"lsint"      !.here}]
+    ![inTypeMap typeMapEntryForLKey !.new {!"luint64"    !.here}]
+    ![inTypeMap typeMapEntryForLKey !.new {!"lsint64"    !.here}]
+    ![inTypeMap typeMapEntryForLKey !.new {!"ldouble"    !.here}]
+    ![inTypeMap typeMapEntryForLKey !.new {!"stringlist" !.here}]
+    ![inTypeMap typeMapEntryForLKey !.new {!"lbigint"    !.here}]
+    ![inTypeMap typeMapEntryForLKey !.new {!"bigint"     !.here}]
+    ![inTypeMap typeMapEntryForLKey !.new {!"stringset"  !.here}]
+    ![inTypeMap typeMapEntryForLKey !.new {!"lstringlist"!.here}]
   }
 }
 
@@ -1003,7 +1002,7 @@ proc buildNonterminalDeclarationsMap
       var signatureForGeneration = @formalParameterListForGeneration {}
       var signature = @formalParameterSignature {}
       for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in mFormalArgumentList do
-        let t = [ioTypeMap searchKey !mFormalArgumentTypeName]
+        let t = [ioTypeMap typeMapEntryForLKey !mFormalArgumentTypeName]
         signatureForGeneration += !mFormalSelector !mFormalArgumentPassingMode !t !mFormalArgumentName !mFormalArgumentName.string
         signature += !mFormalSelector !t !mFormalArgumentPassingMode !mFormalArgumentName.string
       end
@@ -1137,7 +1136,7 @@ override method @inputParameterDeclaredVariable analyzeInputParameter
   end
 #--- Type is named, or should be infered ?
   if self.mActualParameterTypeName.string != "" then
-    let type = [ioTypeMap searchKey !self.mActualParameterTypeName]
+    let type = [ioTypeMap typeMapEntryForLKey !self.mActualParameterTypeName]
     if expectedType != type then
       error self.mActualParameterName
       : "the '" + self.mActualParameterName + "' formal argument has the '@" + [type definition].mTypeName.string
@@ -1182,7 +1181,7 @@ override method @inputParameterDeclaredConstant analyzeInputParameter
   end
 #--- Type is named, or should be infered ?
   if self.mActualParameterTypeName.string != "" then
-    let type = [ioTypeMap searchKey !self.mActualParameterTypeName]
+    let type = [ioTypeMap typeMapEntryForLKey !self.mActualParameterTypeName]
     if expectedType != type then
       error self.mActualParameterName
       : "the '" + self.mActualParameterName + "' formal argument has the '@" + [type definition].mTypeName.string
@@ -1258,7 +1257,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar 
     error self.mActualParameterName : "the ':>' construct requires the syntax component to be declared with 'translate' feature"
   end
   let cppName = "var_" + [self.mActualParameterName identifierRepresentation] + "_" + [self.mActualParameterName.location startLocationIndex]
-  let type = [ioTypeMap searchKey !self.mActualParameterTypeName]
+  let type = [ioTypeMap typeMapEntryForLKey !self.mActualParameterTypeName]
   [!?ioVariableMap insertInitializedLocalVariable
     !self.mActualParameterName
     !warnsIfNotMutated: true
@@ -1285,7 +1284,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredCons
     error self.mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature"
   end
   let cppName = "var_" + [self.mActualParameterName identifierRepresentation] + "_" + [self.mActualParameterName.location startLocationIndex]
-  let type = [ioTypeMap searchKey !self.mActualParameterTypeName]
+  let type = [ioTypeMap typeMapEntryForLKey !self.mActualParameterTypeName]
   [!?ioVariableMap insertInitializedLocalConstant !self.mActualParameterName !type !cppName !cppName]
   let expectedType = inAnalysisContext.mPredefinedTypes.mStringType
   if expectedType != type then
@@ -1499,7 +1498,7 @@ private proc semanticAnalysisOfSyntaxComponent
       var @formalParameterListForGeneration signatureForGeneration = {}
       var @formalParameterSignature signature = {}
       for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in mFormalArguments do
-        let type = [ioTypeMap searchKey !mFormalArgumentTypeName]
+        let type = [ioTypeMap typeMapEntryForLKey !mFormalArgumentTypeName]
         signatureForGeneration +=
           !mFormalSelector
           !mFormalArgumentPassingMode

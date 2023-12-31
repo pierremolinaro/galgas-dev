@@ -450,7 +450,7 @@ override method @ifInstructionAST analyzeSemanticInstruction
         if typeName.string == "" then
           error typeName.location : "on a class object, the 'as' clause is required" : castType, testType
         else
-          castType = [ioTypeMap searchKey !typeName]
+          castType = [ioTypeMap typeMapEntryForLKey !typeName]
           testType = castType
         #--- Check expression type is a descendant of named type
           var @unifiedTypeMapEntry t = castType
@@ -470,7 +470,7 @@ override method @ifInstructionAST analyzeSemanticInstruction
         if typeName.string == "" then
           castType = classType
         else
-          castType = [ioTypeMap searchKey !typeName]
+          castType = [ioTypeMap typeMapEntryForLKey !typeName]
         end
         testType = castType
         var @unifiedTypeMapEntry t = castType

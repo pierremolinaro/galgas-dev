@@ -18,6 +18,24 @@
 refclass @applicationPredefinedTypeAST : @predefinedTypeAST {
 
   #-----------------------------------------------------------------------------------------------------------------
+  
+  override getter typeKind -> @typeKindEnum {
+    result = .packageType
+  }
+  
+  #-----------------------------------------------------------------------------------------------------------------
+
+  override getter cppDeclarationString -> @string {
+    result = [filewrapper predefinedTypeGenerationTemplate.application_type]
+  }
+
+  #-----------------------------------------------------------------------------------------------------------------
+
+  override getter defaultInitializerName -> @string {
+    result = "" // No default initializer
+  }
+
+  #-----------------------------------------------------------------------------------------------------------------
 
   override getter getSupportedOperatorFlags -> @operators {
     result = .generateDescriptionGetterUtilityMethod

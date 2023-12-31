@@ -511,7 +511,7 @@ class GALGAS_lexiqueComponentAST : public GALGAS_semanticDeclarationAST {
 
   public: class GALGAS_indexingListAST readProperty_mIndexingListAST (void) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;

@@ -110,7 +110,7 @@ override method @listmapDeclarationAST enterDeclarationInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
   ?!@semanticContext ioSemanticContext {
 #--- Check associated map is really a list
-  [ioTypeMap searchType !self.mAssociatedListTypeName ?let associatedTypeDefinition]
+  let associatedTypeDefinition = [ioTypeMap typeDefinition !self.mAssociatedListTypeName]
   var @typedPropertyList listTypedAttributeList = associatedTypeDefinition.mAllTypedPropertyList
   if associatedTypeDefinition.mTypeKindEnum != @typeKindEnum.listType then
     error self.mAssociatedListTypeName : "the '@" + self.mAssociatedListTypeName + "' type should be a list type"
@@ -220,7 +220,7 @@ override method @listmapDeclarationAST enterDeclarationInSemanticContext
     !self.isPredefined
     !true # Concrete Type
     !@unifiedTypeMapEntry.null
-    !@typeKindEnum. arrayType
+    !@typeKindEnum.listMapType
     !true # Support collection value
     !@typedPropertyList {}
     !{}
@@ -268,7 +268,7 @@ override method @listmapDeclarationAST semanticAnalysis
   let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.new{!self.mListmapTypeName.string + "-element" !self.mListmapTypeName})
   [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !elementTypeNameForUsefulness]
 #--- Check associated list is actually a list
-  [ioTypeMap searchType !self.mAssociatedListTypeName ?let associatedTypeDefinition]
+  let associatedTypeDefinition = [ioTypeMap typeDefinition !self.mAssociatedListTypeName]
 #  [ioTypeMap searchKey
 #    !self.mAssociatedListTypeName
 #    ?3*
@@ -285,10 +285,10 @@ override method @listmapDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "list map " + self.mListmapTypeName
     !@listmapTypeForGeneration.new {
-      ![ioTypeMap searchKey !self.mListmapTypeName]
-      ![ioTypeMap searchKey !self.mAssociatedListTypeName]
+      ![ioTypeMap typeMapEntryForLKey !self.mListmapTypeName]
+      ![ioTypeMap typeMapEntryForLKey !self.mAssociatedListTypeName]
       !associatedTypeDefinition.mAllTypedPropertyList
-      ![ioTypeMap searchKey !@lstring.new {!self.mListmapTypeName.string + elementTypeNameSuffix () !self.mListmapTypeName.location}]
+      ![ioTypeMap typeMapEntryForLKey !@lstring.new {!self.mListmapTypeName.string + elementTypeNameSuffix () !self.mListmapTypeName.location}]
     }
 }
 

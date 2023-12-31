@@ -440,17 +440,6 @@ abstract refclass @syntaxInstructionForGeneration : @semanticInstructionForGener
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#    P R I M I T I V E    T Y P E           
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @primitiveTypeForGeneration : @semanticTypeForGeneration {
-  public let @string mPredefinedTypeName
-  public let @predefinedTypeKindEnum mKind
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
 #    F I L E W R A P P E R    D E C L A R A T I O N     
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————

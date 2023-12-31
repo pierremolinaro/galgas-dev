@@ -239,7 +239,7 @@ override method @switchInstructionAST analyzeSemanticInstruction
     ?let switchExpression
   ]
 #--- Check switch expression type is and enum instance
-  if [switchExpression.mResultType definition].mTypeKindEnum != @typeKindEnum. enumType then
+  if [switchExpression.mResultType definition].mTypeKindEnum != @typeKindEnum.enumType then
     error self.mEndOfSwitchExpression
     : "the switch expression type should be an instance of an enumeration type (the '@"
       + [switchExpression.mResultType definition].mTypeName.string + "' type is not an enumeration type)"

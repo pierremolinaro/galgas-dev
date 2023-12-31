@@ -402,7 +402,7 @@ override method @dictDeclarationAST semanticAnalysis
   for (* typeName mPropertyName * hasSelector *) in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!typeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
-    let @unifiedTypeMapEntry t = [ioTypeMap searchKey !typeName]
+    let @unifiedTypeMapEntry t = [ioTypeMap typeMapEntryForLKey !typeName]
     let hasSetter = true
     typedAttributeList +=
       !t
@@ -423,8 +423,8 @@ override method @dictDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "dict " + self.mDictTypeName
     !@dictTypeForGeneration.new {
-      ![ioTypeMap searchKey !self.mDictTypeName]
-      ![ioTypeMap searchKey !@lstring.new {!self.mDictTypeName.string + elementTypeNameSuffix () !self.mDictTypeName.location}]
+      ![ioTypeMap typeMapEntryForLKey !self.mDictTypeName]
+      ![ioTypeMap typeMapEntryForLKey !@lstring.new {!self.mDictTypeName.string + elementTypeNameSuffix () !self.mDictTypeName.location}]
       !self.mDictTypeName
       !typedAttributeList
       !self.mKeyTypeName

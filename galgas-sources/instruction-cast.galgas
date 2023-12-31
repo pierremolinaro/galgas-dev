@@ -153,7 +153,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
   var castBranchList = @castInstructionBranchListForGeneration {}
   for (mTypeName mConstantVarName mInstructionList mTypeComparisonKind mEndOfInstructions) in self.mCastInstructionBranchList do
   #--- Get named type
-    let type = [ioTypeMap searchKey !mTypeName]
+    let type = [ioTypeMap typeMapEntryForLKey !mTypeName]
   #--- Check named type is a descendant of receiver type
     var @unifiedTypeMapEntry t = type
     var @bool found = t == castExpression.mResultType

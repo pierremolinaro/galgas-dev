@@ -1,0 +1,61 @@
+//-- Start of package generic part
+
+%
+if [CONSTRUCTOR_MAP count] > 0 then
+  %//--------------------------------- GALGAS class getters\n%
+  for (lkey mArgumentTypeList mHasCompilerArgument mReturnedType) in CONSTRUCTOR_MAP do
+    %  public: static class GALGAS_%![mReturnedType identifierRepresentation]% constructor_%![lkey.string identifierRepresentation]% (%?^
+    for (mFormalSelector mFormalArgumentType mFormalArgumentName) in mArgumentTypeList
+      do (IDX) %const class GALGAS_% ![mFormalArgumentType identifierRepresentation] % & inOperand%![IDX string]
+      between %,\n%!^
+    end
+    if mHasCompilerArgument & ([mArgumentTypeList count] > 0) then
+      %,\n%!^%class Compiler * inCompiler%
+      %\n%!^%COMMA_LOCATION_ARGS) ;\n\n%
+    elsif mHasCompilerArgument then
+      %Compiler * inCompiler%
+      %\n%!^ %COMMA_LOCATION_ARGS) ;\n\n%
+    elsif [mArgumentTypeList count] > 0 then
+      %\n%!^ %COMMA_LOCATION_ARGS) ;\n\n%
+    else
+      %LOCATION_ARGS) ;\n\n%
+    end
+  end
+end
+
+%//--------------------------------- Class Methods
+%
+for (lkey mParameterList mHasCompilerArgument) in CLASS_METHOD_MAP do
+  %  public: static void class_method_%![lkey.string identifierRepresentation]% (%?^
+  for (mFormalSelector mFormalArgumentType mFormalArgumentPassingMode mFormalArgumentName) in mParameterList do (IDX)
+    if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
+      %class GALGAS_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
+    elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
+      %class GALGAS_% ![mFormalArgumentType identifierRepresentation] % & ioArgument% ![IDX string]
+    elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
+      %class GALGAS_% ![mFormalArgumentType identifierRepresentation] % & outArgument% ![IDX string]
+    else # argumentIn
+      %class GALGAS_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
+    end
+  between %,\n%!^
+  end
+  if [mParameterList count] == 0 then
+    if mHasCompilerArgument then
+      %Compiler * inCompiler\n%
+      !^%COMMA_LOCATION_ARGS%
+    else
+      !^%LOCATION_ARGS%
+    end  
+  else
+    if mHasCompilerArgument then
+      %,\n%!^%Compiler * inCompiler\n%
+      !^%COMMA_LOCATION_ARGS%
+    else
+      %\n%!^%COMMA_LOCATION_ARGS%
+    end  
+  end
+  %) ;\n\n%
+end
+%
+} ;
+

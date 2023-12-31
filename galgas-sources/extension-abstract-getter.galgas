@@ -194,7 +194,7 @@ override method @abstractExtensionGetterAST semanticAnalysis
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Self type
-  let @unifiedTypeMapEntry selfType = [ioTypeMap searchKey !self.mTypeName]
+  let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
 #--- Check self type is an abstract class
   if not [[selfType definition].mTypeKindEnum isClassType] then
     error self.mAbstractExtensionGetterName
@@ -208,7 +208,7 @@ override method @abstractExtensionGetterAST semanticAnalysis
   for (mFormalSelector mFormalArgumentTypeName mFormalArgumentName * mIsConstant) in self.mAbstractExtensionGetterFormalInputParameterList do
     formalParameterListForGeneration +=
       !mFormalSelector
-      ![ioTypeMap searchKey !mFormalArgumentTypeName]
+      ![ioTypeMap typeMapEntryForLKey !mFormalArgumentTypeName]
       !mFormalArgumentName.string
       !mFormalArgumentName
       !mIsConstant
@@ -221,7 +221,7 @@ override method @abstractExtensionGetterAST semanticAnalysis
       !mImplementationCppFileName: "getter-" + [self.mTypeName fileNameRepresentation] + "-" + [self.mAbstractExtensionGetterName fileNameRepresentation]
       !selfType
       !self.mAbstractExtensionGetterName.string
-      ![ioTypeMap searchKey !self.mAbstractExtensionGetterReturnedTypeName]
+      ![ioTypeMap typeMapEntryForLKey !self.mAbstractExtensionGetterReturnedTypeName]
       !formalParameterListForGeneration
     }
 }

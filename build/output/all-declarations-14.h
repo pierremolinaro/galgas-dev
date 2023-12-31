@@ -28,7 +28,7 @@ class GALGAS_BuildFileList : public AC_GALGAS_list {
                                                  const class GALGAS_string & in_mBuildReference
                                                  COMMA_LOCATION_ARGS) ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -233,7 +233,7 @@ class GALGAS_BuildFileList_2D_element : public AC_GALGAS_root {
                                            const GALGAS_string & in_mFileName,
                                            const GALGAS_string & in_mBuildReference) ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -780,7 +780,7 @@ class GALGAS_templateInstructionStringForGeneration : public GALGAS_templateInst
 //--------------------------------- Property read access
   public: class GALGAS_string readProperty_mTemplateString (void) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -874,7 +874,7 @@ class GALGAS_templateInstructionStringForGeneration_2D_weak : public GALGAS_temp
 //--------------------------------- Bang operator
   public: GALGAS_templateInstructionStringForGeneration bang_templateInstructionStringForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -927,7 +927,7 @@ class GALGAS_lexiqueComponentAST_2D_weak : public GALGAS_semanticDeclarationAST_
 //--------------------------------- Bang operator
   public: GALGAS_lexiqueComponentAST bang_lexiqueComponentAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;

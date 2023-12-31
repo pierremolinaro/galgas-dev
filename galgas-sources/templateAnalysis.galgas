@@ -221,7 +221,7 @@ override method @templateConstructorAST templateExpressionAnalysis
   ?!@unifiedTypeMap ioTypeMap
   !@semanticExpressionForGeneration outExpression
 {
-  let @unifiedTypeMapEntry constructorType = [ioTypeMap searchKey !self.mTypeName]
+  let @unifiedTypeMapEntry constructorType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
 #--- Get constructor map from type map
   let @constructorMap constructorMap = [constructorType definition].mConstructorMap
 #--- Search contructor
@@ -638,8 +638,7 @@ override method @templateTestDynamicClassAST templateExpressionAnalysis
     ?let expression
   ]
 #--- Get type information
-#   let castType = @unifiedTypeMapEntry. searchKey {!ioTypeMap !self.mTypeName}
-   let castType = [ioTypeMap searchKey !self.mTypeName]
+   let castType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
 #--- This type is either a class
   if [[expression.mResultType definition].mTypeKindEnum isClassType] then
   #--- Check expression type is a descendant of named type

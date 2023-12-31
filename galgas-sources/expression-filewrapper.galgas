@@ -138,7 +138,7 @@ override method @filewrapperObjectInstanciationInExpressionAST analyzeSemanticEx
   end
 #---
   outExpression = @filewrapperInExpressionForGeneration.new {
-    ![ioTypeMap searchKey !@lstring.new {!"filewrapper" !self.mFilewrapperName.location}]
+    ![ioTypeMap typeMapEntryForLKey !@lstring.new {!"filewrapper" !self.mFilewrapperName.location}]
     !self.mFilewrapperName.location
     !self.mFilewrapperName.string
     !filewrapperPath.string}
@@ -300,7 +300,7 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
   outExpression = @filewrapperStaticPathInExpressionForGeneration.new {
     !if isTextFile
       then inAnalysisContext.mPredefinedTypes.mStringType
-      else [ioTypeMap searchKey !@lstring.new {!"data" !@location.here}]
+      else [ioTypeMap typeMapEntryForLKey !@lstring.new {!"data" !@location.here}]
      end
     !self.mFilewrapperName.location
     !self.mFilewrapperName.string

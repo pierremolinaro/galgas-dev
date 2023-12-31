@@ -115,6 +115,7 @@ project (3:7:0) -> "galgas" {
 #--- Predefined types
   "galgas-sources/predefinedTypeAST.galgas"
   "galgas-sources/predefinedType-application.galgas"
+
 #--- Semantics Component`
   "galgas-sources/actual-parameters.galgas"
   "galgas-sources/extern-procedure-declaration.galgas"

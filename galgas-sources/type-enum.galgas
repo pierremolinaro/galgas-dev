@@ -304,7 +304,7 @@ override method @enumDeclarationAST semanticAnalysis
     for (mValue0 mValue1) in mAssociatedValueDefinitionList do
       let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mValue0)
       [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
-      let associatedTypeEntry = [ioTypeMap searchKey !mValue0]
+      let associatedTypeEntry = [ioTypeMap typeMapEntryForLKey !mValue0]
       associatedTypeList += !associatedTypeEntry
       if [associatedValueNameSet hasKey !mValue1.string] then
         error mValue1 : "duplicated name"
@@ -315,7 +315,7 @@ override method @enumDeclarationAST semanticAnalysis
     enumConstantListForGeneration += !mConstantName.string !associatedTypeList
   end
 #---
-  let selfType = [ioTypeMap searchKey !self.mEnumTypeName]
+  let selfType = [ioTypeMap typeMapEntryForLKey !self.mEnumTypeName]
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "enum " + self.mEnumTypeName
     !@enumTypeForGeneration.new {

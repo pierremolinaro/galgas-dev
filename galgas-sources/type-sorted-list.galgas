@@ -336,7 +336,7 @@ override method @sortedListDeclarationAST semanticAnalysis
   for (* propertyTypeName mPropertyName 3*) in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!propertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !sortedListNameForUsefulness !propertyTypeNameForUsefulness]
-    let t = [ioTypeMap searchKey !propertyTypeName]
+    let t = [ioTypeMap typeMapEntryForLKey !propertyTypeName]
     let hasSelector = true
     typedAttributeList +=
       !t
@@ -360,8 +360,8 @@ override method @sortedListDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "sorted list " + self.mSortedListTypeName
     !@sortedListTypeForGeneration.new {
-      ![ioTypeMap searchKey !self.mSortedListTypeName]
-      ![ioTypeMap searchKey !.new {!self.mSortedListTypeName.string + elementTypeNameSuffix () !self.mSortedListTypeName}]
+      ![ioTypeMap typeMapEntryForLKey !self.mSortedListTypeName]
+      ![ioTypeMap typeMapEntryForLKey !.new {!self.mSortedListTypeName.string + elementTypeNameSuffix () !self.mSortedListTypeName}]
       !typedAttributeList
       !sortDescriptorList
     }

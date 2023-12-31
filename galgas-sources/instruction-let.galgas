@@ -164,7 +164,7 @@ override method @undefinedLocalConstantDeclarationAST analyzeSemanticInstruction
                                 ?!@unifiedTypeMap ioTypeMap
                                           ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
                                           ?!@localVarManager ioVariableMap {
-  let targetType = [ioTypeMap searchKey !self.mConstantTypeName]
+  let targetType = [ioTypeMap typeMapEntryForLKey !self.mConstantTypeName]
   let targetVariableCppName = "var_" + [self.mConstantName identifierRepresentation]
                             + "_" + [self.mConstantName.location startLocationIndex]
   [!?ioVariableMap insertDeclaredLocalConstant
@@ -225,7 +225,7 @@ override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSema
                                 ?!@unifiedTypeMap ioTypeMap
                             ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
                             ?!@localVarManager ioVariableMap {
-  let targetType = [ioTypeMap searchKey !self.mOptionalTypeName]
+  let targetType = [ioTypeMap typeMapEntryForLKey !self.mOptionalTypeName]
 #--- Analyze source expression
   [self.mSourceExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName

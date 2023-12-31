@@ -161,7 +161,7 @@ override method @abstractExtensionMethodAST semanticAnalysis
 #  let nameForUsefulness = methodNameForUsefulEntitiesGraph (!self.mTypeName !self.mAbstractExtensionMethodName)
 #  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
 #--- Self type
-  let @unifiedTypeMapEntry selfType = [ioTypeMap searchKey !self.mTypeName]
+  let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
 #--- Check self type is an abstract class
   if not [[selfType definition].mTypeKindEnum isClassType]then
     error self.mAbstractExtensionMethodName: "cannot declare a extension method: '@" + [selfType definition].mTypeName.string + "' is not a class"
@@ -174,7 +174,7 @@ override method @abstractExtensionMethodAST semanticAnalysis
     formalParameterListForGeneration +=
       !mFormalSelector
       !mFormalArgumentPassingMode
-      ![ioTypeMap searchKey !mFormalArgumentTypeName]
+      ![ioTypeMap typeMapEntryForLKey !mFormalArgumentTypeName]
       !mFormalArgumentName
       !mFormalArgumentName.string
   end

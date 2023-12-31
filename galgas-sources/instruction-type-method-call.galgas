@@ -81,7 +81,7 @@ override method @typeMethodCallInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
 #--- Get type method map for the named type
-  let type = [ioTypeMap searchKey !self.mTypeName]
+  let type = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
 #--- Get type method signature
   [[type definition].mClassMethodMap searchKey !self.mMethodName ?let routineSignature ?let hasCompilerArgument]
 #--- Check effective parameters

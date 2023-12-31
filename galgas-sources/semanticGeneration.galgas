@@ -48,7 +48,7 @@ override method @grammarForGeneration appendSpecificImplementation
       for (mFormalArgumentPassingModeForGrammarAnalysis mGalgasTypeNameForGrammarAnalysis) in mFormalParametersList do
         switch mFormalArgumentPassingModeForGrammarAnalysis
         case argumentConstantIn, argumentIn :
-          let t = [inUnifiedTypeMap searchKey !mGalgasTypeNameForGrammarAnalysis]
+          let t = [inUnifiedTypeMap typeMapEntryForLKey !mGalgasTypeNameForGrammarAnalysis]
           [t addHeaderFileName !?ioInclusionSet]
         case argumentInOut, argumentOut :
         end     
@@ -710,11 +710,16 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?@functionSignature ADD_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
     ?@unifiedTypeMapEntry ENUMERATED_OBJECT_TYPE
 
+  template unifiedClassBodyForPackage "unified-class-body-for-package.h.galgasTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@constructorMap CONSTRUCTOR_MAP
+    ?@classMethodMap CLASS_METHOD_MAP
+
   template genericTypeImplementation "generic-type.cpp.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@unifiedTypeMapEntry SUPER_TYPE_INDEX
-    ?@operators SUPPORTED_OPERATORS
 
 #---------- Extern Type
   template externTypeHeader1 "GALGAS_extern_type.h1.galgasTemplate"
@@ -1103,13 +1108,16 @@ override method @onceFunctionDeclarationForGeneration appendDeclaration1
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @semanticTypeForGeneration appendTypeGenericImplementation -> @string {
-  let selfTypeDefinition = [self.mSelfTypeEntry  definition]
-  result = [filewrapper typeGenerationTemplate.genericTypeImplementation
-    !selfTypeDefinition.mTypeName.string
-    ![self.mSelfTypeEntry identifierRepresentation]
-    !selfTypeDefinition.mSuperType
-    !selfTypeDefinition.mHandledOperatorFlags
-  ]
+  let selfTypeDefinition = [self.mSelfTypeEntry definition]
+  if [selfTypeDefinition mTypeKindEnum] == .packageType then
+    result = ""
+  else
+    result = [filewrapper typeGenerationTemplate.genericTypeImplementation
+      !selfTypeDefinition.mTypeName.string
+      ![self.mSelfTypeEntry identifierRepresentation]
+      !selfTypeDefinition.mSuperType
+    ]
+  end
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -1555,70 +1563,126 @@ filewrapper predefinedTypeGenerationTemplate in "+generation-templates/type_gene
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @primitiveTypeForGeneration appendPrimitiveTypeDeclaration -> @string outHeader {
-  switch self.mKind
-  case predefined_object :
-    outHeader = [filewrapper predefinedTypeGenerationTemplate.object_type]
-  case predefined_uint :
-    outHeader = [filewrapper predefinedTypeGenerationTemplate.uint_type]
-  case predefined_uint64 :
-    outHeader = [filewrapper predefinedTypeGenerationTemplate.uint64_type]
-  case predefined_sint :
-    outHeader = [filewrapper predefinedTypeGenerationTemplate.sint_type]
-  case predefined_sint64 :
-    outHeader = [filewrapper predefinedTypeGenerationTemplate.sint64_type]
-  case predefined_char :
-    outHeader = [filewrapper predefinedTypeGenerationTemplate.char_type]
-  case predefined_double :
-    outHeader = [filewrapper predefinedTypeGenerationTemplate.double_type]
-  case predefined_string :
-    outHeader = [filewrapper predefinedTypeGenerationTemplate.string_type]
-  case predefined_stringset :
-    outHeader = [filewrapper predefinedTypeGenerationTemplate.stringset_type]
-  case predefined_bool :
-    outHeader = [filewrapper predefinedTypeGenerationTemplate.bool_type]
-  case predefined_binaryset :
-    outHeader = [filewrapper predefinedTypeGenerationTemplate.binaryset_type]
-  case predefined_function :
-    outHeader = [filewrapper predefinedTypeGenerationTemplate.function_type]
-  case predefined_location :
-    outHeader = [filewrapper predefinedTypeGenerationTemplate.location_type]
-  case predefined_type :
-    outHeader = [filewrapper predefinedTypeGenerationTemplate.type_type]
-  case predefined_data :
-    outHeader = [filewrapper predefinedTypeGenerationTemplate.data_type]
-  case predefined_filewrapper :
-    outHeader = [filewrapper predefinedTypeGenerationTemplate.filewrapper_type]
-  case predefined_application :
-    outHeader = [filewrapper predefinedTypeGenerationTemplate.application_type]
-  case predefined_bigint :
-    outHeader = [filewrapper predefinedTypeGenerationTemplate.bigint_type]
-  case predefined_timer :
-    outHeader = [filewrapper predefinedTypeGenerationTemplate.timer_type]
-  end
-  let selfTypeDefinition = [self.mSelfTypeEntry definition]
-  outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    !selfTypeDefinition.mTypeName.string
-    ![self.mSelfTypeEntry identifierRepresentation]
-    !selfTypeDefinition.mIsConcrete
-    !selfTypeDefinition.mConstructorMap
-    !selfTypeDefinition.mGetterMap
-    !selfTypeDefinition.mSetterMap
-    !selfTypeDefinition.mInstanceMethodMap
-    !selfTypeDefinition.mClassMethodMap
-    !selfTypeDefinition.mOptionalMethodMap
-    !selfTypeDefinition.mEnumerationDescriptor
-    !selfTypeDefinition.mHandledOperatorFlags
-    !selfTypeDefinition.mAddAssignOperatorArguments
-    !selfTypeDefinition.mTypeForEnumeratedElement
-  ]
+override getter @bigintPredefinedTypeAST cppDeclarationString -> @string {
+  result = [filewrapper predefinedTypeGenerationTemplate.bigint_type]
+}
+
+override getter @objectPredefinedTypeAST cppDeclarationString -> @string {
+  result = [filewrapper predefinedTypeGenerationTemplate.object_type]
+}
+
+override getter @filewrapperPredefinedTypeAST cppDeclarationString -> @string {
+  result = [filewrapper predefinedTypeGenerationTemplate.filewrapper_type]
+}
+
+override getter @binarysetPredefinedTypeAST cppDeclarationString -> @string {
+  result = [filewrapper predefinedTypeGenerationTemplate.binaryset_type]
+}
+
+override getter @boolPredefinedTypeAST cppDeclarationString -> @string {
+  result = [filewrapper predefinedTypeGenerationTemplate.bool_type]
+}
+
+override getter @uintPredefinedTypeAST cppDeclarationString -> @string {
+  result = [filewrapper predefinedTypeGenerationTemplate.uint_type]
+}
+
+override getter @uint64PredefinedTypeAST cppDeclarationString -> @string {
+  result = [filewrapper predefinedTypeGenerationTemplate.uint64_type]
+}
+
+override getter @sintPredefinedTypeAST cppDeclarationString -> @string {
+  result = [filewrapper predefinedTypeGenerationTemplate.sint_type]
+}
+
+override getter @sint64PredefinedTypeAST cppDeclarationString -> @string {
+  result = [filewrapper predefinedTypeGenerationTemplate.sint64_type]
+}
+
+override getter @timerPredefinedTypeAST cppDeclarationString -> @string {
+  result = [filewrapper predefinedTypeGenerationTemplate.timer_type]
+}
+
+override getter @charPredefinedTypeAST cppDeclarationString -> @string {
+  result = [filewrapper predefinedTypeGenerationTemplate.char_type]
+}
+
+override getter @doublePredefinedTypeAST cppDeclarationString -> @string {
+  result = [filewrapper predefinedTypeGenerationTemplate.double_type]
+}
+
+override getter @stringPredefinedTypeAST cppDeclarationString -> @string {
+  result = [filewrapper predefinedTypeGenerationTemplate.string_type]
+}
+
+override getter @locationPredefinedTypeAST cppDeclarationString -> @string {
+  result = [filewrapper predefinedTypeGenerationTemplate.location_type]
+}
+
+override getter @stringsetPredefinedTypeAST cppDeclarationString -> @string {
+  result = [filewrapper predefinedTypeGenerationTemplate.stringset_type]
+}
+
+override getter @functionPredefinedTypeAST cppDeclarationString -> @string {
+  result = [filewrapper predefinedTypeGenerationTemplate.function_type]
+}
+
+override getter @typePredefinedTypeAST cppDeclarationString -> @string {
+  result = [filewrapper predefinedTypeGenerationTemplate.type_type]
+}
+
+override getter @dataPredefinedTypeAST cppDeclarationString -> @string {
+  result = [filewrapper predefinedTypeGenerationTemplate.data_type]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#    P R I M I T I V E    T Y P E           
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @primitiveTypeForGeneration appendPrimitiveTypePreDeclaration ?!@string ioHeader {
-#  message "PREDEFINED @" + mPredefinedTypeName + "\n"
-  ioHeader += "class GALGAS_" + self.mPredefinedTypeName + " ;\n"
+refclass @primitiveTypeForGeneration : @semanticTypeForGeneration {
+  public let @string mPredefinedTypeName
+  public let @string mCppDeclarationString
+  public let @bool isPackage %selector
+
+  #-----------------------------------------------------------------------------------------------------------------
+
+  override method appendPrimitiveTypePreDeclaration ?!@string ioHeader {
+    ioHeader += "class GALGAS_" + self.mPredefinedTypeName + " ;\n"
+  }
+
+  #-----------------------------------------------------------------------------------------------------------------
+
+  override getter appendPrimitiveTypeDeclaration -> @string {
+    result = self.mCppDeclarationString
+    let selfTypeDefinition = [self.mSelfTypeEntry definition]
+    if [self isPackage] then
+      result += [filewrapper typeGenerationTemplate.unifiedClassBodyForPackage
+        !selfTypeDefinition.mTypeName.string
+        ![self.mSelfTypeEntry identifierRepresentation]
+        !selfTypeDefinition.mConstructorMap
+        !selfTypeDefinition.mClassMethodMap
+      ]
+    else
+      result += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
+        !selfTypeDefinition.mTypeName.string
+        ![self.mSelfTypeEntry identifierRepresentation]
+        !selfTypeDefinition.mIsConcrete
+        !selfTypeDefinition.mConstructorMap
+        !selfTypeDefinition.mGetterMap
+        !selfTypeDefinition.mSetterMap
+        !selfTypeDefinition.mInstanceMethodMap
+        !selfTypeDefinition.mClassMethodMap
+        !selfTypeDefinition.mOptionalMethodMap
+        !selfTypeDefinition.mEnumerationDescriptor
+        !selfTypeDefinition.mHandledOperatorFlags
+        !selfTypeDefinition.mAddAssignOperatorArguments
+        !selfTypeDefinition.mTypeForEnumeratedElement
+      ]
+    end
+  }
+
+  #-----------------------------------------------------------------------------------------------------------------
+
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————

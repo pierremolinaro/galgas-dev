@@ -214,7 +214,7 @@ override method @localVariableDeclarationNoAssignmentAST analyzeSemanticInstruct
   ?!@localVarManager ioVariableMap
 {
 #--- Check target variable
-  let targetType = [ioTypeMap searchKey !self.mTypeName]
+  let targetType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
   let targetVariableCppName = "var_" + [self.mVariableName identifierRepresentation] + "_" + [self.mVariableName.location startLocationIndex]
   [!?ioVariableMap insertDeclaredLocalVariable
     !self.mVariableName

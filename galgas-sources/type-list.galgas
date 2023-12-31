@@ -411,7 +411,7 @@ override method @listDeclarationAST semanticAnalysis
     end
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!propertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
-    let t = [ioTypeMap searchKey !propertyTypeName]
+    let t = [ioTypeMap typeMapEntryForLKey !propertyTypeName]
     typedAttributeList +=
       !t
       !propertyName
@@ -420,12 +420,12 @@ override method @listDeclarationAST semanticAnalysis
     [!?attributeMap insertKey !propertyName !t]
   end
 #---
-  let selfType = [ioTypeMap searchKey !self.mListTypeName]
+  let selfType = [ioTypeMap typeMapEntryForLKey !self.mListTypeName]
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "list type " + self.mListTypeName
     !@listTypeForGeneration.new {
       !selfType
-      ![ioTypeMap searchKey !.new {!self.mListTypeName.string + elementTypeNameSuffix () !self.mListTypeName.location}]
+      ![ioTypeMap typeMapEntryForLKey !.new {!self.mListTypeName.string + elementTypeNameSuffix () !self.mListTypeName.location}]
       !typedAttributeList
     }
 }

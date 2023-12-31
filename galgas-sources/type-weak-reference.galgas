@@ -65,7 +65,7 @@ override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
 #    end
   else
     [!?ioTypeMap makeEntry !self.mSuperWeakReferenceTypeName ?superClassIndex]
-    [ioTypeMap searchType !self.mSuperWeakReferenceTypeName ?let superTypeDefinition]
+    let superTypeDefinition = [ioTypeMap typeDefinition !self.mSuperWeakReferenceTypeName]
     generateHeaderInSeparateFile = superTypeDefinition.mGenerateHeaderInSeparateFile
 #    [ioTypeMap searchKey
 #      !self.mSuperWeakReferenceTypeName
@@ -174,11 +174,11 @@ override method @weakReferenceDeclarationAST semanticAnalysis
     [!?ioUsefulEntitiesGraph addEdge !weakRefTypeNameForUsefulness !superWeakRefNameForUsefulness]
   end
 #------ Self type
-  let @unifiedTypeMapEntry selfType = [ioTypeMap searchKey !self.mWeakReferenceTypeName]
+  let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mWeakReferenceTypeName]
 #--- Super class type
   let @unifiedTypeMapEntry superClassEntry = if self.mSuperWeakReferenceTypeName.string == ""
     then @unifiedTypeMapEntry.null
-    else [ioTypeMap searchKey !self.mSuperWeakReferenceTypeName]
+    else [ioTypeMap typeMapEntryForLKey !self.mSuperWeakReferenceTypeName]
   end
 #------ Super type, and class features
 # A class that has a super may not have any feature
@@ -209,7 +209,7 @@ override method @weakReferenceDeclarationAST semanticAnalysis
   var @typedPropertyList typedAttributeList = {}
   var @propertyIndexMap attributeMap = {}
   for (isConstant propertyTypeName mPropertyName unused accessControl hasSelector *) in self.mPropertyList do
-    let t = [ioTypeMap searchKey !propertyTypeName]
+    let t = [ioTypeMap typeMapEntryForLKey !propertyTypeName]
     typedAttributeList +=
       !t
       !mPropertyName
@@ -223,7 +223,7 @@ override method @weakReferenceDeclarationAST semanticAnalysis
     [!?attributeMap insertKey !mPropertyName !t]
   end
 #------
-  let @unifiedTypeMapEntry referenceClassType = [ioTypeMap searchKey
+  let @unifiedTypeMapEntry referenceClassType = [ioTypeMap typeMapEntryForLKey
     !self.mClassTypeName
   ]
   ioSemanticDeclarationListForGeneration +=
