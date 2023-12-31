@@ -2706,7 +2706,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionComponentMapF
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "C_Lexique.h"
+#include "Lexique.h"
 
 //--------------------------------------------------------------------------------------------------
 //                    E X T E R N    R O U T I N E S
@@ -2738,7 +2738,7 @@ class cTokenFor_galgasScanner_34_ : public cToken {
 //                     S C A N N E R    C L A S S
 //--------------------------------------------------------------------------------------------------
 
-class C_Lexique_galgasScanner_34_ : public C_Lexique {
+class C_Lexique_galgasScanner_34_ : public Lexique {
 //--- Constructors
   public: C_Lexique_galgasScanner_34_ (Compiler * inCallerCompiler,
                        const String & inSourceFileName

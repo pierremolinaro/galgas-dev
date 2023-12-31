@@ -25,7 +25,7 @@
 
 class cPureBNFproductionsList ;
 class HTMLString ;
-class C_Lexique ;
+class Lexique ;
 class C_Relation ;
 class C_RelationConfiguration ;
 

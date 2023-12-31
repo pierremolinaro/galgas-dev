@@ -511,7 +511,7 @@ mLexicalAttribute_uint_36__34_value () {
 C_Lexique_galgasScanner_33_::C_Lexique_galgasScanner_33_ (Compiler * inCallerCompiler,
                                                           const String & inSourceFileName
                                                           COMMA_LOCATION_ARGS) :
-C_Lexique (inCallerCompiler, inSourceFileName COMMA_THERE) {
+Lexique (inCallerCompiler, inSourceFileName COMMA_THERE) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -520,7 +520,7 @@ C_Lexique_galgasScanner_33_::C_Lexique_galgasScanner_33_ (Compiler * inCallerCom
                                                           const String & inSourceString,
                                                           const String & inStringForError
                                                           COMMA_LOCATION_ARGS) :
-C_Lexique (inCallerCompiler, inSourceString, inStringForError COMMA_THERE) {
+Lexique (inCallerCompiler, inSourceString, inStringForError COMMA_THERE) {
 }
 
 //--------------------------------------------------------------------------------------------------

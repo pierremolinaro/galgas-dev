@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  'C_Lexique' : an abstract lexique class ;
+//  'Lexique' : an abstract lexique class ;
 //  Galgas generated scanner classes inherit from this class.
 //
 //  This file is part of libpm library
@@ -19,7 +19,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "C_Lexique.h"
+#include "Lexique.h"
 #include "all-predefined-types.h"
 #include "MF_MemoryControl.h"
 #include "unicode_character_cpp.h"
@@ -49,7 +49,7 @@ cTemplateDelimiter (const utf32 * inStartString,
                     const int32_t inStartStringLength,
                     const utf32 * inEndString,
                     const int32_t inEndStringLength,
-                    void (* inReplacementFunction) (C_Lexique & inLexique, const String & inElementString, String & ioTemplateString),
+                    void (* inReplacementFunction) (Lexique & inLexique, const String & inElementString, String & ioTemplateString),
                     const bool inDiscardStartString) :
 mStartString (inStartString),
 mStartStringLength (inStartStringLength),
@@ -72,7 +72,7 @@ mDiscardStartString (inOperand.mDiscardStartString) {
 
 //--------------------------------------------------------------------------------------------------
 
-C_Lexique::C_Lexique (Compiler * inCallerCompiler,
+Lexique::Lexique (Compiler * inCallerCompiler,
                       const String & inSourceFileName
                       COMMA_LOCATION_ARGS) :
 Compiler (inCallerCompiler COMMA_THERE),
@@ -117,7 +117,7 @@ mLatexNextCharacterToEnterIndex (0) {
 
 //--------------------------------------------------------------------------------------------------
 
-C_Lexique::C_Lexique (Compiler * inCallerCompiler,
+Lexique::Lexique (Compiler * inCallerCompiler,
                       const String & inSourceString,
                       const String & inStringForError
                       COMMA_LOCATION_ARGS) :
@@ -147,7 +147,7 @@ mLatexNextCharacterToEnterIndex (0) {
 
 //--------------------------------------------------------------------------------------------------
 
-C_Lexique::~C_Lexique (void) {
+Lexique::~Lexique (void) {
   macroMyDelete (mIndexingDictionary) ;
   mLastToken = nullptr ;
   mCurrentTokenPtr = nullptr ;
@@ -166,7 +166,7 @@ C_Lexique::~C_Lexique (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::appendLastSeparatorTo (String & ioString) const {
+void Lexique::appendLastSeparatorTo (String & ioString) const {
   if (nullptr != mLastToken) {
     const int32_t lastSeparatorStart = mLastToken->mEndLocation.index () + 1 ;
     const String lastSeparatorString = sourceText ().sourceString ().subStringFromIndex (lastSeparatorStart) ;
@@ -176,7 +176,7 @@ void C_Lexique::appendLastSeparatorTo (String & ioString) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::enterTokenFromPointer (cToken * inToken) {
+void Lexique::enterTokenFromPointer (cToken * inToken) {
   macroValidPointer (inToken) ;
 //--- Append separator and comments
   const int32_t tokenStart = mTokenStartLocation.index () ;
@@ -252,7 +252,7 @@ void C_Lexique::enterTokenFromPointer (cToken * inToken) {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::resetForSecondPass (void) {
+void Lexique::resetForSecondPass (void) {
   mCurrentLocation.resetWithSourceText (sourceText ()) ;
   mCurrentChar = sourceText ().readCharOrNul (0 COMMA_HERE) ;
   mPreviousChar = TO_UNICODE ('\0') ;
@@ -275,7 +275,7 @@ void C_Lexique::resetForSecondPass (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-int32_t C_Lexique::findTemplateDelimiterIndex (const cTemplateDelimiter * inTemplateDelimiterArray,
+int32_t Lexique::findTemplateDelimiterIndex (const cTemplateDelimiter * inTemplateDelimiterArray,
                                                const int32_t inTemplateDelimiterArrayLength) {
   int32_t templateIndex = 0 ;
   bool found = false ;
@@ -305,7 +305,7 @@ int32_t C_Lexique::findTemplateDelimiterIndex (const cTemplateDelimiter * inTemp
 //
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::performLexicalAnalysis (void) {
+void Lexique::performLexicalAnalysis (void) {
   if (executionModeIsLexicalAnalysisOnly ()) {
     gCout.addString ("*** PERFORM LEXICAL ANALYSIS ONLY (--mode=lexical-only option) ***\n") ;
   }
@@ -326,7 +326,7 @@ void C_Lexique::performLexicalAnalysis (void) {
 //
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::advance (void) {
+void Lexique::advance (void) {
   mTokenEndLocation = mCurrentLocation ;
   mPreviousChar = mCurrentChar ;
   if (UNICODE_VALUE (mCurrentChar) != '\0') {
@@ -337,7 +337,7 @@ void C_Lexique::advance (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::advance (const int32_t inCount) {
+void Lexique::advance (const int32_t inCount) {
   for (int32_t i=0 ; i<inCount ; i++) {
     advance () ;
   }
@@ -345,7 +345,7 @@ void C_Lexique::advance (const int32_t inCount) {
 
 //--------------------------------------------------------------------------------------------------
 
-bool C_Lexique::testForInputUTF32CharRange (const utf32 inLowBound,
+bool Lexique::testForInputUTF32CharRange (const utf32 inLowBound,
                                             const utf32 inHighBound) {
   const bool ok = (UNICODE_VALUE (inLowBound) <= UNICODE_VALUE (mCurrentChar))
      && (UNICODE_VALUE (mCurrentChar) <= UNICODE_VALUE (inHighBound)) ;
@@ -357,7 +357,7 @@ bool C_Lexique::testForInputUTF32CharRange (const utf32 inLowBound,
 
 //--------------------------------------------------------------------------------------------------
 
-bool C_Lexique::testForInputUTF32Char (const utf32 inChar) {
+bool Lexique::testForInputUTF32Char (const utf32 inChar) {
   const bool ok = UNICODE_VALUE (inChar) == UNICODE_VALUE (mCurrentChar) ;
   if (ok) {
     advance () ;
@@ -367,7 +367,7 @@ bool C_Lexique::testForInputUTF32Char (const utf32 inChar) {
 
 //--------------------------------------------------------------------------------------------------
 
-bool C_Lexique::testForCharWithFunction (bool (*inFunction) (const utf32 inUnicodeCharacter)) {
+bool Lexique::testForCharWithFunction (bool (*inFunction) (const utf32 inUnicodeCharacter)) {
   const bool ok = inFunction (mCurrentChar) ;
   if (ok) {
     advance () ;
@@ -377,7 +377,7 @@ bool C_Lexique::testForCharWithFunction (bool (*inFunction) (const utf32 inUnico
 
 //--------------------------------------------------------------------------------------------------
 
-bool C_Lexique::testForInputUTF32String (const utf32 * inTestCstring,
+bool Lexique::testForInputUTF32String (const utf32 * inTestCstring,
                                          const int32_t inStringLength,
                                          const bool inAdvanceOnMatch) {
 //--- Test
@@ -394,7 +394,7 @@ bool C_Lexique::testForInputUTF32String (const utf32 * inTestCstring,
 
 //--------------------------------------------------------------------------------------------------
 
-bool C_Lexique::notTestForInputUTF32String (const utf32 * inTestCstring,
+bool Lexique::notTestForInputUTF32String (const utf32 * inTestCstring,
                                             const int32_t inStringLength,
                                             const char * inEndOfFileErrorMessage
                                             COMMA_LOCATION_ARGS) {
@@ -420,7 +420,7 @@ bool C_Lexique::notTestForInputUTF32String (const utf32 * inTestCstring,
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::lexicalLog (LOCATION_ARGS) {
+void Lexique::lexicalLog (LOCATION_ARGS) {
   String message ;
   message.addString ("LEXICAL LOG:'") ;
   message.addStringAsCLiteralCharConstant (mCurrentChar) ;
@@ -434,7 +434,7 @@ void C_Lexique::lexicalLog (LOCATION_ARGS) {
 //
 //--------------------------------------------------------------------------------------------------
 
-int32_t C_Lexique::searchInList (const String & inString,
+int32_t Lexique::searchInList (const String & inString,
                                  const C_unicode_lexique_table_entry * inTableArray,
                                  const int32_t inTableSize) {
   const int32_t searchedStringLength = inString.length () ;
@@ -467,7 +467,7 @@ int32_t C_Lexique::searchInList (const String & inString,
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::internalBottomUpParserError (LOCATION_ARGS) {
+void Lexique::internalBottomUpParserError (LOCATION_ARGS) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     printf ("*** Fatal error: Internal bottom-up parser error at line %d of file '%s'.\n", IN_SOURCE_LINE, IN_SOURCE_FILE) ;
   #else
@@ -482,7 +482,7 @@ void C_Lexique::internalBottomUpParserError (LOCATION_ARGS) {
 //
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::unknownCharacterLexicalError (LOCATION_ARGS) {
+void Lexique::unknownCharacterLexicalError (LOCATION_ARGS) {
   String errorMessage ;
   errorMessage.addString ("Unknown character: ") ;
   errorMessage.addString (unicodeName (mCurrentChar)) ;
@@ -494,7 +494,7 @@ void C_Lexique::unknownCharacterLexicalError (LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::lexicalError (const String & inLexicalErrorMessage
+void Lexique::lexicalError (const String & inLexicalErrorMessage
                               COMMA_LOCATION_ARGS) {
   signalLexicalError (this, sourceText (), C_IssueWithFixIt (mCurrentLocation, mCurrentLocation, TC_Array <C_FixItDescription> ()), inLexicalErrorMessage COMMA_THERE) ;
   if (executionModeIsLatex ()) {
@@ -509,7 +509,7 @@ void C_Lexique::lexicalError (const String & inLexicalErrorMessage
 //
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::parsingError (const TC_UniqueArray <int32_t> & inExpectedTerminalsArray,
+void Lexique::parsingError (const TC_UniqueArray <int32_t> & inExpectedTerminalsArray,
                               const cToken * inPreviousTokenPtr,
                               const cToken * inCurrentTokenPtr,
                               const int32_t inCurrentTokenCode
@@ -540,7 +540,7 @@ void C_Lexique::parsingError (const TC_UniqueArray <int32_t> & inExpectedTermina
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::lexicalWarning (const String & inLexicalWarningMessage
+void Lexique::lexicalWarning (const String & inLexicalWarningMessage
                                 COMMA_LOCATION_ARGS) { // §
   signalLexicalWarning (this, sourceText (), C_IssueWithFixIt (mCurrentLocation, mCurrentLocation, TC_Array <C_FixItDescription> ()), inLexicalWarningMessage COMMA_THERE) ;
 }
@@ -558,7 +558,7 @@ void C_Lexique::lexicalWarning (const String & inLexicalWarningMessage
 //
 //--------------------------------------------------------------------------------------------------
 
-int32_t C_Lexique::nextProductionIndex (void) {
+int32_t Lexique::nextProductionIndex (void) {
   int32_t result = 0 ;
   if (mIndexForSecondPassParsing < mArrayForSecondPassParsing.count ()) {
     result = mArrayForSecondPassParsing (mIndexForSecondPassParsing COMMA_HERE) ;
@@ -569,7 +569,7 @@ int32_t C_Lexique::nextProductionIndex (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-String C_Lexique::separatorString (void) const {
+String Lexique::separatorString (void) const {
   String result ;
   if (mCurrentTokenPtr != nullptr) {
     result = mCurrentTokenPtr->mSeparatorStringBeforeToken ;
@@ -579,7 +579,7 @@ String C_Lexique::separatorString (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-String C_Lexique::tokenString (void) const {
+String Lexique::tokenString (void) const {
   String result ;
   if (mCurrentTokenPtr != nullptr) {
     const int32_t tokenStart = mCurrentTokenPtr->mStartLocation.index () ;
@@ -603,7 +603,7 @@ String C_Lexique::tokenString (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::acceptTerminal (const int32_t IN_EXPECTED_TERMINAL COMMA_LOCATION_ARGS) {
+void Lexique::acceptTerminal (const int32_t IN_EXPECTED_TERMINAL COMMA_LOCATION_ARGS) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     int32_t currentTokenCode = 0 ;
   #endif
@@ -637,7 +637,7 @@ void C_Lexique::acceptTerminal (const int32_t IN_EXPECTED_TERMINAL COMMA_LOCATIO
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::enterIndexing (const uint32_t inIndexingKind,
+void Lexique::enterIndexing (const uint32_t inIndexingKind,
                                const char * inIndexedKeyPosfix) {
   if ((nullptr != mIndexingDictionary) && (sourceText ().sourceFilePath ().length () > 0)) {
     const uint32_t tokenStartLocation = (uint32_t) mCurrentTokenPtr->mStartLocation.index () ;
@@ -655,13 +655,13 @@ void C_Lexique::enterIndexing (const uint32_t inIndexingKind,
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::enableIndexing (void) {
+void Lexique::enableIndexing (void) {
   macroMyNew (mIndexingDictionary, cIndexingDictionary) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::generateIndexFile (void) {
+void Lexique::generateIndexFile (void) {
   if (nullptr != mIndexingDictionary) {
     mIndexingDictionary->generateIndexFile (indexingModeOutputFilePath ()) ;
   }
@@ -675,7 +675,7 @@ void C_Lexique::generateIndexFile (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-C_parsingContext C_Lexique::parsingContext (void) const {
+C_parsingContext Lexique::parsingContext (void) const {
   C_parsingContext context ;
   context.mParsingArrayIndex = mIndexForSecondPassParsing ;
   context.mLocation = mCurrentLocation ;
@@ -688,7 +688,7 @@ C_parsingContext C_Lexique::parsingContext (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::setParsingContext (const C_parsingContext & inContext) {
+void Lexique::setParsingContext (const C_parsingContext & inContext) {
   mIndexForSecondPassParsing = inContext.mParsingArrayIndex ;
   mCurrentTokenPtr = inContext.mCurrentTokenPtr ;
   mCurrentLocation = inContext.mLocation ;
@@ -709,7 +709,7 @@ void C_Lexique::setParsingContext (const C_parsingContext & inContext) {
 //
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::enterProduction (const char * inProductionName,
+void Lexique::enterProduction (const char * inProductionName,
                                  const char * inLabel,
                                  const char * inTag) {
 //--- If Debug is not running, check if trigger list contains non terminal
@@ -743,7 +743,7 @@ void C_Lexique::enterProduction (const char * inProductionName,
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::exitProduction (void) {
+void Lexique::exitProduction (void) {
   if (mDebugIsRunning) {
     mDebugDepthCounter -- ;
     mDebugIsRunning = mDebugDepthCounter > 0 ;
@@ -752,7 +752,7 @@ void C_Lexique::exitProduction (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::didParseTerminal (const char * inTerminalName,
+void Lexique::didParseTerminal (const char * inTerminalName,
                                   const String & inValue) {
   if (mDebugIsRunning) {
     String message ;
@@ -777,7 +777,7 @@ void C_Lexique::didParseTerminal (const char * inTerminalName,
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::enterDroppedTerminal (const int32_t inTerminalIndex) {
+void Lexique::enterDroppedTerminal (const int32_t inTerminalIndex) {
   if (executionModeIsLatex ()) {
     while (mLatexNextCharacterToEnterIndex < mTokenStartLocation.index ()) {
       const utf32 c = sourceText ().readCharOrNul (mLatexNextCharacterToEnterIndex COMMA_HERE) ;
@@ -807,7 +807,7 @@ void C_Lexique::enterDroppedTerminal (const int32_t inTerminalIndex) {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::appendCharacterToLatexFile (const utf32 inUnicodeCharacter) {
+void Lexique::appendCharacterToLatexFile (const utf32 inUnicodeCharacter) {
   switch (UNICODE_VALUE (inUnicodeCharacter)) {
   case '>' : mLatexOutputString.addString ("\\textgreater{}") ; break ;
   case '<' : mLatexOutputString.addString ("\\textless{}") ; break ;
@@ -835,14 +835,14 @@ void C_Lexique::appendCharacterToLatexFile (const utf32 inUnicodeCharacter) {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::signalLexicalErrorInLatexOutput (void) {
+void Lexique::signalLexicalErrorInLatexOutput (void) {
   mLatexOutputString.addString ("\\lexicalError") ;
   mLatexOutputString.addString (latexModeStyleSuffixString ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::generateLatexFile (void) {
+void Lexique::generateLatexFile (void) {
   const String latexFilePath = sourceText ().sourceFilePath () + ".tex" ;
 //--- Suppress last '\newline'
   const String newLine = "\\newline\n" ;

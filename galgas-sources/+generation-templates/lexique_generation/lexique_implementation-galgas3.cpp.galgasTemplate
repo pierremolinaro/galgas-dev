@@ -24,7 +24,7 @@ cTokenFor_%!LEXIQUE_IDENTIFIER%::cTokenFor_%!LEXIQUE_IDENTIFIER% (void)%
 C_Lexique_%!LEXIQUE_IDENTIFIER%::C_Lexique_%!LEXIQUE_IDENTIFIER% (%?^%Compiler * inCallerCompiler,
                 %!^%const String & inSourceFileName
                 %!^%COMMA_LOCATION_ARGS) :
-C_Lexique (inCallerCompiler, inSourceFileName COMMA_THERE)%
+Lexique (inCallerCompiler, inSourceFileName COMMA_THERE)%
   if [TEMPLATE_DELIMITOR_LIST count] > 0 then
     %,\nmMatchedTemplateDelimiterIndex (-1)%
   end
@@ -37,7 +37,7 @@ C_Lexique_%!LEXIQUE_IDENTIFIER%::C_Lexique_%!LEXIQUE_IDENTIFIER% (%?^%Compiler *
                 %!^%const String & inSourceString,
                 %!^%const String & inStringForError
                 %!^%COMMA_LOCATION_ARGS) :
-C_Lexique (inCallerCompiler, inSourceString, inStringForError COMMA_THERE)%
+Lexique (inCallerCompiler, inSourceString, inStringForError COMMA_THERE)%
   if [TEMPLATE_DELIMITOR_LIST count] > 0 then
     %,\nmMatchedTemplateDelimiterIndex (-1)%
   end

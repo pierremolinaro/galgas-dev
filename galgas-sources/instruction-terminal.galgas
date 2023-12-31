@@ -329,8 +329,8 @@ override method @terminalCheckInstructionForGeneration generateInstruction
 #--- Check terminal symbol
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
   ioGeneratedCode += compilerCppName () + "->acceptTerminal (C_Lexique_"
-                  + self.mLexiqueIdentifier + "::kToken_" + [self.mTerminalName identifierRepresentation]
-                  + [self.mInstructionLocation commaSourceFile] + ") ;\n"
+  ioGeneratedCode += self.mLexiqueIdentifier + "::kToken_" + [self.mTerminalName identifierRepresentation]
+  ioGeneratedCode += [self.mInstructionLocation commaSourceFile] + ") ;\n"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————

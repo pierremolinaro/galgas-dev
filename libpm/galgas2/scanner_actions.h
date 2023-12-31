@@ -22,7 +22,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "C_Lexique.h"
+#include "Lexique.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -40,36 +40,36 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-void scanner_routine_multiplyUInt (C_Lexique & inLexique,
+void scanner_routine_multiplyUInt (Lexique & inLexique,
                                   const uint32_t inFactor,
                                   uint32_t & ioValue,
                                   const char * inResultTooLargeError) ;
 
-void scanner_routine_multiplyUInt64 (C_Lexique & inLexique,
+void scanner_routine_multiplyUInt64 (Lexique & inLexique,
                                     const uint64_t inFactor,
                                     uint64_t & ioValue,
                                     const char * inResultTooLargeError) ;
 
-void scanner_routine_enterCharacterIntoCharacter (C_Lexique & inLexique,
+void scanner_routine_enterCharacterIntoCharacter (Lexique & inLexique,
                                                  utf32 & outCharacter,
                                                  const utf32 inCharacter) ;
 
-void scanner_routine_convertStringToDouble (C_Lexique & inLexique,
+void scanner_routine_convertStringToDouble (Lexique & inLexique,
                                            const String & inString,
                                            double & outValue,
                                            const char * inConversionError) ;
 
-void scanner_routine_enterCharacterIntoString (C_Lexique & inLexique,
+void scanner_routine_enterCharacterIntoString (Lexique & inLexique,
                                               String & ioString,
                                               const utf32 inCharacter) ;
 
-void scanner_routine_enterHexDigitIntoASCIIcharacter (C_Lexique & inLexique,
+void scanner_routine_enterHexDigitIntoASCIIcharacter (Lexique & inLexique,
                                                      utf32 & ioValue,
                                                      const utf32 inCharacter,
                                                      const char * inNumberTooLargeError,
                                                      const char * inCharacterIsNotHexDigitError) ;
 
-void scanner_routine_enterDigitIntoASCIIcharacter (C_Lexique & inLexique,
+void scanner_routine_enterDigitIntoASCIIcharacter (Lexique & inLexique,
                                                   utf32 & ioValue,
                                                   const utf32 inCharacter,
                                                   const char * inNumberTooLargeError,
@@ -77,81 +77,81 @@ void scanner_routine_enterDigitIntoASCIIcharacter (C_Lexique & inLexique,
 
 //--- Methods introduced in GALGAS 1.4.0
 
-void scanner_routine_convertDecimalStringIntoUInt (C_Lexique & inLexique,
+void scanner_routine_convertDecimalStringIntoUInt (Lexique & inLexique,
                                                   const String & inDecimalString,
                                                   uint32_t & outValue,
                                                   const char * inNumberTooLargeError,
                                                   const char * inCharacterIsNotDecimalDigitError) ;
 
-void scanner_routine_convertDecimalStringIntoSInt (C_Lexique & inLexique,
+void scanner_routine_convertDecimalStringIntoSInt (Lexique & inLexique,
                                                   const String & inDecimalString,
                                                   int32_t & outValue,
                                                   const char * inNumberTooLargeError,
                                                   const char * inCharacterIsNotDecimalDigitError) ;
 
-void scanner_routine_convertDecimalStringIntoUInt64 (C_Lexique & inLexique,
+void scanner_routine_convertDecimalStringIntoUInt64 (Lexique & inLexique,
                                                     const String & inDecimalString,
                                                     uint64_t & outValue,
                                                     const char * inNumberTooLargeError,
                                                     const char * inCharacterIsNotDecimalDigitError) ;
 
-void scanner_routine_convertDecimalStringIntoSInt64 (C_Lexique & inLexique,
+void scanner_routine_convertDecimalStringIntoSInt64 (Lexique & inLexique,
                                                     const String & inDecimalString,
                                                     int64_t & outValue,
                                                     const char * inNumberTooLargeError,
                                                     const char * inCharacterIsNotDecimalDigitError) ;
 
-void scanner_routine_enterDigitIntoUInt (C_Lexique & inLexique,
+void scanner_routine_enterDigitIntoUInt (Lexique & inLexique,
                                         const utf32 inCharacter,
                                         uint32_t & ioValue,
                                         const char * inNumberTooLargeError,
                                         const char * inCharacterIsNotDecimalDigitError) ;
 
-void scanner_routine_enterDigitIntoUInt64 (C_Lexique & inLexique,
+void scanner_routine_enterDigitIntoUInt64 (Lexique & inLexique,
                                           const utf32 inCharacter,
                                           uint64_t & ioValue,
                                           const char * inNumberTooLargeError,
                                           const char * inCharacterIsNotDecimalDigitError) ;
 
-void scanner_routine_enterHexDigitIntoUInt (C_Lexique & inLexique,
+void scanner_routine_enterHexDigitIntoUInt (Lexique & inLexique,
                                            const utf32 inCharacter,
                                            uint32_t & ioValue,
                                            const char * inNumberTooLargeError,
                                            const char * inCharacterIsNotHexDigitError) ;
                              
-void scanner_routine_enterHexDigitIntoUInt64 (C_Lexique & inLexique,
+void scanner_routine_enterHexDigitIntoUInt64 (Lexique & inLexique,
                                              const utf32 inCharacter,
                                              uint64_t & ioValue,
                                              const char * inNumberTooLargeError,
                                              const char * inCharacterIsNotHexDigitError) ;
                                
-void scanner_routine_convertUIntToSInt (C_Lexique & inLexique,
+void scanner_routine_convertUIntToSInt (Lexique & inLexique,
                                         const uint32_t inValue,
                                         int32_t & outValue,
                                         const char * inNumberTooLargeError) ;
 
-void scanner_routine_convertUInt64ToSInt64 (C_Lexique & inLexique,
+void scanner_routine_convertUInt64ToSInt64 (Lexique & inLexique,
                                            const uint64_t inValue,
                                            int64_t & outValue,
                                            const char * inNumberTooLargeError) ;
 
-void scanner_routine_negateSInt (C_Lexique & inLexique,
+void scanner_routine_negateSInt (Lexique & inLexique,
                                 int32_t & ioValue,
                                 const char * inNumberTooLargeError) ;
 
-void scanner_routine_negateSInt64 (C_Lexique & inLexique,
+void scanner_routine_negateSInt64 (Lexique & inLexique,
                                   int64_t & ioValue,
                                   const char * inNumberTooLargeError) ;
 
 //--- Methods introduced in GALGAS 1.4.3 (thanks to Mikael Briday)
 
-void scanner_routine_enterBinDigitIntoUInt (C_Lexique & inLexique,
+void scanner_routine_enterBinDigitIntoUInt (Lexique & inLexique,
                                            const utf32 inCharacter,
                                            uint32_t & ioValue,
                                            const char * inNumberTooLargeError,
                                            const char * inCharacterIsNotBinDigitError) ;
                             
-void scanner_routine_enterBinDigitIntoUInt64 (C_Lexique & inLexique,
+void scanner_routine_enterBinDigitIntoUInt64 (Lexique & inLexique,
                                               const utf32 inCharacter,
                                               uint64_t & ioValue,
                                               const char * inNumberTooLargeError,
@@ -159,91 +159,91 @@ void scanner_routine_enterBinDigitIntoUInt64 (C_Lexique & inLexique,
 
 //--- Methods introduced in GALGAS 1.4.7 (thanks to Mikael Briday)
 
-void scanner_routine_enterOctDigitIntoUInt (C_Lexique & inLexique,
+void scanner_routine_enterOctDigitIntoUInt (Lexique & inLexique,
                                            const utf32 inCharacter,
                                            uint32_t & ioValue,
                                            const char * inNumberTooLargeError,
                                            const char * inCharacterIsNotOctDigitError) ;
                             
-void scanner_routine_enterOctDigitIntoUInt64 (C_Lexique & inLexique,
+void scanner_routine_enterOctDigitIntoUInt64 (Lexique & inLexique,
                                              const utf32 inCharacter,
                                              uint64_t & ioValue,
                                              const char * inNumberTooLargeError,
                                              const char * inCharacterIsNotOctDigitError) ;
 
 //--- Methods introduced in GALGAS 1.7.7
-void scanner_routine_convertHexStringIntoUInt (C_Lexique & inLexique,
+void scanner_routine_convertHexStringIntoUInt (Lexique & inLexique,
                                               const String & inDecimalString,
                                               uint32_t & outValue,
                                               const char * inNumberTooLargeError,
                                               const char * inCharacterIsNotHexDigitError) ;
 
-void scanner_routine_convertHexStringIntoUInt64 (C_Lexique & inLexique,
+void scanner_routine_convertHexStringIntoUInt64 (Lexique & inLexique,
                                                 const String & inDecimalString,
                                                 uint64_t & outValue,
                                                 const char * inNumberTooLargeError,
                                                 const char * inCharacterIsNotHexDigitError) ;
 
-void scanner_routine_convertHexStringIntoSInt (C_Lexique & inLexique,
+void scanner_routine_convertHexStringIntoSInt (Lexique & inLexique,
                                               const String & inDecimalString,
                                               int32_t & outValue,
                                               const char * inNumberTooLargeError,
                                               const char * inCharacterIsNotHexDigitError) ;
 
-void scanner_routine_convertHexStringIntoSInt64 (C_Lexique & inLexique,
+void scanner_routine_convertHexStringIntoSInt64 (Lexique & inLexique,
                                                 const String & inHexString,
                                                 int64_t & outValue,
                                                 const char * inNumberTooLargeError,
                                                 const char * inCharacterIsNotHexDigitError) ;
 
 //--- Methods introduced in GALGAS 1.8.3
-void scanner_routine_convertUnsignedNumberToUnicodeChar (C_Lexique & inLexique,
+void scanner_routine_convertUnsignedNumberToUnicodeChar (Lexique & inLexique,
                                                         uint32_t & ioValue,
                                                         utf32 & outUnicodeCharacter,
                                                         const char * inUnassignedUnicodeValueError) ;
 
-void scanner_routine_convertHTMLSequenceToUnicodeCharacter (C_Lexique & inLexique,
+void scanner_routine_convertHTMLSequenceToUnicodeCharacter (Lexique & inLexique,
                                                           String & ioStringValue,
                                                           utf32 & outUnicodeCharacter,
                                                           const char * inUnassignedHTMLSequenceError) ;
 
 void
-scanner_routine_codePointToUnicode (C_Lexique & inLexique, 
+scanner_routine_codePointToUnicode (Lexique & inLexique, 
                                    const String & inElementString,
                                    String & ioTemplateString) ;
 
 //--- Methods introduced in GALGAS 3.0.0
-void scanner_routine_resetString (C_Lexique & inLexique,
+void scanner_routine_resetString (Lexique & inLexique,
                                   String & ioString) ;
 
 //--- Methods introduced in GALGAS 3.1.0
-void scanner_routine_enterDecimalDigitIntoBigInt (C_Lexique & inLexique,
+void scanner_routine_enterDecimalDigitIntoBigInt (Lexique & inLexique,
                                                   const utf32 inCharacter,
                                                   class BigSigned & ioBigInt,
                                                   const char * inCharacterIsNotDecimalDigitError) ;
 
-void scanner_routine_enterHexDigitIntoBigInt (C_Lexique & inLexique,
+void scanner_routine_enterHexDigitIntoBigInt (Lexique & inLexique,
                                               const utf32 inCharacter,
                                               class BigSigned & ioBigInt,
                                               const char * inCharacterIsNotDecimalDigitError) ;
 
-void scanner_routine_convertDecimalStringIntoBigInt (C_Lexique & inLexique,
+void scanner_routine_convertDecimalStringIntoBigInt (Lexique & inLexique,
                                                      const String & inDecimalString,
                                                      BigSigned & outValue,
                                                      const char * inCharacterIsNotDecimalDigitError) ;
 
-void scanner_routine_convertHexStringIntoBigInt (C_Lexique & inLexique,
+void scanner_routine_convertHexStringIntoBigInt (Lexique & inLexique,
                                                  const String & inHexString,
                                                  BigSigned & outValue,
                                                  const char * inCharacterIsNotHexDigitError) ;
 
 //--- Methods introduced in GALGAS 3.1.6
-void scanner_routine_enterBinaryDigitIntoBigInt (C_Lexique & inLexique,
+void scanner_routine_enterBinaryDigitIntoBigInt (Lexique & inLexique,
                                                  const utf32 inCharacter,
                                                  class BigSigned & ioBigInt,
                                                  const char * inCharacterIsNotBinaryDigitError) ;
 
-void scanner_routine_convertBinaryStringIntoBigInt (C_Lexique & inLexique,
+void scanner_routine_convertBinaryStringIntoBigInt (Lexique & inLexique,
                                                     const String & inBinaryString,
                                                     BigSigned & outValue,
                                                     const char * inCharacterIsNotBinaryDigitError) ;
@@ -251,11 +251,11 @@ void scanner_routine_convertBinaryStringIntoBigInt (C_Lexique & inLexique,
 
 //--------------------------------------------------------------------------------------------------
 
-utf32 scanner_function_toLower (C_Lexique & inLexique, const utf32 inCharacter) ;
+utf32 scanner_function_toLower (Lexique & inLexique, const utf32 inCharacter) ;
 
-utf32 scanner_function_toUpper (C_Lexique & inLexique, const utf32 inCharacter) ;
+utf32 scanner_function_toUpper (Lexique & inLexique, const utf32 inCharacter) ;
 
-void scanner_routine_negateBigInt (C_Lexique & inLexique,
+void scanner_routine_negateBigInt (Lexique & inLexique,
                                    BigSigned & ioValue) ;
 
 //--------------------------------------------------------------------------------------------------

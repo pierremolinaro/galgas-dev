@@ -123,7 +123,7 @@ class C_parsingContext {
   private: utf32 mPreviousChar ;
   private: String mTemplateString ;
 
-  friend class C_Lexique ;
+  friend class Lexique ;
   
   public: C_parsingContext (void) ;
 

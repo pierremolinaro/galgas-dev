@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  'C_Lexique' : an abstract lexique class ;
+//  'Lexique' : an abstract lexique class ;
 //  Galgas generated scanner classes inherit from this class.
 //
 //  This file is part of libpm library
@@ -19,7 +19,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "C_Lexique.h"
+#include "Lexique.h"
 #include "all-predefined-types.h"
 #include "MF_MemoryControl.h"
 #include "unicode_character_cpp.h"
@@ -60,7 +60,7 @@ static bool TRACE_LL1_PARSING (void) { return false ; }
 //
 //--------------------------------------------------------------------------------------------------
 
-bool C_Lexique::acceptTerminalForErrorSignaling (const int32_t inTerminal,
+bool Lexique::acceptTerminalForErrorSignaling (const int32_t inTerminal,
                                                  const int32_t* inProductionArray,
                                                  const int32_t* inProductionIndexArray,
                                                  const int32_t* inFirstProductionIndexArray,
@@ -174,7 +174,7 @@ bool C_Lexique::acceptTerminalForErrorSignaling (const int32_t inTerminal,
 //
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int32_t inErrorProgramCounter,
+void Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int32_t inErrorProgramCounter,
                                                           const int32_t inErrorStackCount,
                                                           const TC_Array <int32_t> & inStack,
                                                           const TC_Array <int32_t> & inErrorStack,
@@ -332,7 +332,7 @@ static void indentForParseOnly (const int32_t inIndentation) {
 
 //--------------------------------------------------------------------------------------------------
 
-bool C_Lexique::performTopDownParsing (const int32_t * inProductionArray,
+bool Lexique::performTopDownParsing (const int32_t * inProductionArray,
                                        const cProductionNameDescriptor * inProductionNameArray,
                                        const int32_t * inProductionIndexArray,
                                        const int32_t * inFirstProductionIndexArray,
@@ -705,7 +705,7 @@ static bool acceptExpectedTerminalForBottomUpParsingError (const int32_t inExpec
 //
 //--------------------------------------------------------------------------------------------------
 
-bool C_Lexique::performBottomUpParsing (const int32_t * inActionTableArray,
+bool Lexique::performBottomUpParsing (const int32_t * inActionTableArray,
                                         const char * * inNonTerminalSymbolNameArray,
                                         const uint32_t * inActionTableIndexArray,
                                         const int32_t * * inSuccessorTableArray,
