@@ -8846,9 +8846,8 @@ bool GALGAS_headerCompositionMap::optional_searchKey (const GALGAS_string & inKe
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_headerCompositionMap ("headerCompositionMap",
-                                             nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_headerCompositionMap ("headerCompositionMap",
+                                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9131,9 +9130,8 @@ bool GALGAS_headerRepartitionMap::optional_searchKey (const GALGAS_string & inKe
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_headerRepartitionMap ("headerRepartitionMap",
-                                             nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_headerRepartitionMap ("headerRepartitionMap",
+                                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9416,9 +9414,8 @@ bool GALGAS_projectQualifiedFeatureMap::optional_searchKey (const GALGAS_string 
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_projectQualifiedFeatureMap ("projectQualifiedFeatureMap",
-                                                   nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_projectQualifiedFeatureMap ("projectQualifiedFeatureMap",
+                                                                                  nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10023,9 +10020,8 @@ GALGAS_stringlist cEnumerator_XCodeGroupList::current_mChildrenRefs (LOCATION_AR
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_XCodeGroupList ("XCodeGroupList",
-                                       nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_XCodeGroupList ("XCodeGroupList",
+                                                                      nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11092,9 +11088,8 @@ GALGAS_string cEnumerator_XCodeToolTargetList::current_mFrameworkBuildPhaseRef (
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_XCodeToolTargetList ("XCodeToolTargetList",
-                                            nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_XCodeToolTargetList ("XCodeToolTargetList",
+                                                                           nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12359,9 +12354,8 @@ GALGAS_stringlist cEnumerator_XCodeAppTargetList::current_mResourceFileBuildRefs
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_XCodeAppTargetList ("XCodeAppTargetList",
-                                           nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_XCodeAppTargetList ("XCodeAppTargetList",
+                                                                          nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 

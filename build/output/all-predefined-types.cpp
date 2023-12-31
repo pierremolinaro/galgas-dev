@@ -24,9 +24,8 @@ mProperty_lkey (inLKey) {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_location ("location",
-                                 nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_location ("location",
+                                                                nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -67,9 +66,8 @@ GALGAS_location GALGAS_location::extractObject (const GALGAS_object & inObject,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_stringlist ("stringlist",
-                                   nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_stringlist ("stringlist",
+                                                                  nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -476,9 +474,8 @@ GALGAS_string cEnumerator_stringlist::current_mValue (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_string ("string",
-                               nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_string ("string",
+                                                              nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -519,9 +516,8 @@ GALGAS_string GALGAS_string::extractObject (const GALGAS_object & inObject,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_bool ("bool",
-                             nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bool ("bool",
+                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -562,9 +558,8 @@ GALGAS_bool GALGAS_bool::extractObject (const GALGAS_object & inObject,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lstringlist ("lstringlist",
-                                    nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lstringlist ("lstringlist",
+                                                                   nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -971,9 +966,8 @@ GALGAS_lstring cEnumerator_lstringlist::current_mValue (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_uint ("uint",
-                             nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uint ("uint",
+                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1014,9 +1008,8 @@ GALGAS_uint GALGAS_uint::extractObject (const GALGAS_object & inObject,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_stringset ("stringset",
-                                  nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_stringset ("stringset",
+                                                                 nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1057,9 +1050,8 @@ GALGAS_stringset GALGAS_stringset::extractObject (const GALGAS_object & inObject
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_char ("char",
-                             nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_char ("char",
+                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1100,9 +1092,8 @@ GALGAS_char GALGAS_char::extractObject (const GALGAS_object & inObject,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lbool ("lbool",
-                              nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lbool ("lbool",
+                                                             nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1217,9 +1208,8 @@ void GALGAS_lbool::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS__32_stringlist ("2stringlist",
-                                       nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS__32_stringlist ("2stringlist",
+                                                                      nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1692,9 +1682,8 @@ GALGAS_string cEnumerator__32_stringlist::current_mValue_31_ (LOCATION_ARGS) con
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_double ("double",
-                               nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_double ("double",
+                                                              nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1735,9 +1724,8 @@ GALGAS_double GALGAS_double::extractObject (const GALGAS_object & inObject,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_uint_36__34_ ("uint64",
-                                     nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uint_36__34_ ("uint64",
+                                                                    nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1778,9 +1766,8 @@ GALGAS_uint_36__34_ GALGAS_uint_36__34_::extractObject (const GALGAS_object & in
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_sint ("sint",
-                             nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sint ("sint",
+                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1821,9 +1808,8 @@ GALGAS_sint GALGAS_sint::extractObject (const GALGAS_object & inObject,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_sint_36__34_ ("sint64",
-                                     nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sint_36__34_ ("sint64",
+                                                                    nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1864,9 +1850,8 @@ GALGAS_sint_36__34_ GALGAS_sint_36__34_::extractObject (const GALGAS_object & in
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_bigint ("bigint",
-                               nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bigint ("bigint",
+                                                              nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1907,9 +1892,8 @@ GALGAS_bigint GALGAS_bigint::extractObject (const GALGAS_object & inObject,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_application ("application",
-                                    nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_application ("application",
+                                                                   nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1950,9 +1934,8 @@ GALGAS_application GALGAS_application::extractObject (const GALGAS_object & inOb
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_binaryset ("binaryset",
-                                  nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_binaryset ("binaryset",
+                                                                 nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1993,9 +1976,8 @@ GALGAS_binaryset GALGAS_binaryset::extractObject (const GALGAS_object & inObject
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_data ("data",
-                             nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_data ("data",
+                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2036,9 +2018,8 @@ GALGAS_data GALGAS_data::extractObject (const GALGAS_object & inObject,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_filewrapper ("filewrapper",
-                                    nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapper ("filewrapper",
+                                                                   nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2079,9 +2060,8 @@ GALGAS_filewrapper GALGAS_filewrapper::extractObject (const GALGAS_object & inOb
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_function ("function",
-                                 nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_function ("function",
+                                                                nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2122,9 +2102,8 @@ GALGAS_function GALGAS_function::extractObject (const GALGAS_object & inObject,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_object ("object",
-                               nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_object ("object",
+                                                              nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2165,9 +2144,8 @@ GALGAS_object GALGAS_object::extractObject (const GALGAS_object & inObject,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_timer ("timer",
-                              nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_timer ("timer",
+                                                             nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2208,9 +2186,8 @@ GALGAS_timer GALGAS_timer::extractObject (const GALGAS_object & inObject,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_type ("type",
-                             nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_type ("type",
+                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2251,9 +2228,8 @@ GALGAS_type GALGAS_type::extractObject (const GALGAS_object & inObject,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_functionlist ("functionlist",
-                                     nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionlist ("functionlist",
+                                                                    nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2660,9 +2636,8 @@ GALGAS_function cEnumerator_functionlist::current_mValue (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_luintlist ("luintlist",
-                                  nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_luintlist ("luintlist",
+                                                                 nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3069,9 +3044,8 @@ GALGAS_luint cEnumerator_luintlist::current_mValue (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_luint ("luint",
-                              nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_luint ("luint",
+                                                             nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3186,9 +3160,8 @@ void GALGAS_luint::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_objectlist ("objectlist",
-                                   nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_objectlist ("objectlist",
+                                                                  nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3595,9 +3568,8 @@ GALGAS_object cEnumerator_objectlist::current_mValue (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_typelist ("typelist",
-                                 nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typelist ("typelist",
+                                                                nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4004,9 +3976,8 @@ GALGAS_type cEnumerator_typelist::current_mValue (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_uintlist ("uintlist",
-                                 nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uintlist ("uintlist",
+                                                                nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4413,9 +4384,8 @@ GALGAS_uint cEnumerator_uintlist::current_mValue (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_uint_36__34_list ("uint64list",
-                                         nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uint_36__34_list ("uint64list",
+                                                                        nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4822,9 +4792,8 @@ GALGAS_uint_36__34_ cEnumerator_uint_36__34_list::current_mValue (LOCATION_ARGS)
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_bigintlist ("bigintlist",
-                                   nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bigintlist ("bigintlist",
+                                                                  nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5231,9 +5200,8 @@ GALGAS_bigint cEnumerator_bigintlist::current_mValue (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lbigintlist ("lbigintlist",
-                                    nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lbigintlist ("lbigintlist",
+                                                                   nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5640,9 +5608,8 @@ GALGAS_lbigint cEnumerator_lbigintlist::current_mValue (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lsint ("lsint",
-                              nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lsint ("lsint",
+                                                             nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5757,9 +5724,8 @@ void GALGAS_lsint::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lsint_36__34_ ("lsint64",
-                                      nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lsint_36__34_ ("lsint64",
+                                                                     nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5874,9 +5840,8 @@ void GALGAS_lsint_36__34_::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_luint_36__34_ ("luint64",
-                                      nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_luint_36__34_ ("luint64",
+                                                                     nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5991,9 +5956,8 @@ void GALGAS_luint_36__34_::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_range ("range",
-                              nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_range ("range",
+                                                             nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6108,9 +6072,8 @@ void GALGAS_range::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_functionlist_2D_element ("functionlist-element",
-                                                nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionlist_2D_element ("functionlist-element",
+                                                                               nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6215,9 +6178,8 @@ void GALGAS_functionlist_2D_element::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_luintlist_2D_element ("luintlist-element",
-                                             nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_luintlist_2D_element ("luintlist-element",
+                                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6322,9 +6284,8 @@ void GALGAS_luintlist_2D_element::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_objectlist_2D_element ("objectlist-element",
-                                              nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_objectlist_2D_element ("objectlist-element",
+                                                                             nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6429,9 +6390,8 @@ void GALGAS_objectlist_2D_element::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_stringlist_2D_element ("stringlist-element",
-                                              nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_stringlist_2D_element ("stringlist-element",
+                                                                             nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6536,9 +6496,8 @@ void GALGAS_stringlist_2D_element::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_typelist_2D_element ("typelist-element",
-                                            nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typelist_2D_element ("typelist-element",
+                                                                           nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6643,9 +6602,8 @@ void GALGAS_typelist_2D_element::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_uintlist_2D_element ("uintlist-element",
-                                            nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uintlist_2D_element ("uintlist-element",
+                                                                           nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6750,9 +6708,8 @@ void GALGAS_uintlist_2D_element::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_uint_36__34_list_2D_element ("uint64list-element",
-                                                    nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uint_36__34_list_2D_element ("uint64list-element",
+                                                                                   nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6857,9 +6814,8 @@ void GALGAS_uint_36__34_list_2D_element::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_bigintlist_2D_element ("bigintlist-element",
-                                              nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bigintlist_2D_element ("bigintlist-element",
+                                                                             nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6964,9 +6920,8 @@ void GALGAS_bigintlist_2D_element::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS__32_stringlist_2D_element ("2stringlist-element",
-                                                  nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS__32_stringlist_2D_element ("2stringlist-element",
+                                                                                 nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7081,9 +7036,8 @@ void GALGAS__32_stringlist_2D_element::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lstring ("lstring",
-                                nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lstring ("lstring",
+                                                               nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7198,9 +7152,8 @@ void GALGAS_lstring::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lbigint ("lbigint",
-                                nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lbigint ("lbigint",
+                                                               nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7315,9 +7268,8 @@ void GALGAS_lbigint::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lchar ("lchar",
-                              nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lchar ("lchar",
+                                                             nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7432,9 +7384,8 @@ void GALGAS_lchar::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_ldouble ("ldouble",
-                                nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ldouble ("ldouble",
+                                                               nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7549,9 +7500,8 @@ void GALGAS_ldouble::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lstringlist_2D_element ("lstringlist-element",
-                                               nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lstringlist_2D_element ("lstringlist-element",
+                                                                              nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7656,9 +7606,8 @@ void GALGAS_lstringlist_2D_element::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lbigintlist_2D_element ("lbigintlist-element",
-                                               nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lbigintlist_2D_element ("lbigintlist-element",
+                                                                              nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 

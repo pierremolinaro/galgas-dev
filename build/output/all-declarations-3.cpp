@@ -511,9 +511,8 @@ GALGAS_location cEnumerator_guiLabelListAST::current_mLocation (LOCATION_ARGS) c
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_guiLabelListAST ("guiLabelListAST",
-                                        nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_guiLabelListAST ("guiLabelListAST",
+                                                                       nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1118,9 +1117,8 @@ GALGAS_guiCompoundAttributeListAST cEnumerator_withLexiqueListAST::current_mComp
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_withLexiqueListAST ("withLexiqueListAST",
-                                           nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_withLexiqueListAST ("withLexiqueListAST",
+                                                                          nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1791,9 +1789,8 @@ GALGAS_string cEnumerator_guiCommandLineOptionList::current_mComment (LOCATION_A
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_guiCommandLineOptionList ("guiCommandLineOptionList",
-                                                 nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_guiCommandLineOptionList ("guiCommandLineOptionList",
+                                                                                nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2105,9 +2102,8 @@ bool GALGAS_extensionMap::optional_searchKey (const GALGAS_string & inKey,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_extensionMap ("extensionMap",
-                                     nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMap ("extensionMap",
+                                                                    nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2580,9 +2576,8 @@ GALGAS_string cEnumerator_textMacroList::current_mContents (LOCATION_ARGS) const
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_textMacroList ("textMacroList",
-                                      nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_textMacroList ("textMacroList",
+                                                                     nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3385,9 +3380,8 @@ GALGAS_lexicalStyleListAST cEnumerator_importedLexiqueList::current_mLexicalStyl
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_importedLexiqueList ("importedLexiqueList",
-                                            nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_importedLexiqueList ("importedLexiqueList",
+                                                                           nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3860,9 +3854,8 @@ GALGAS_lstring cEnumerator_projectIndexingDescriptorList::current_indexingPathSu
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_projectIndexingDescriptorList ("projectIndexingDescriptorList",
-                                                      nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_projectIndexingDescriptorList ("projectIndexingDescriptorList",
+                                                                                     nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4533,9 +4526,8 @@ GALGAS_projectIndexingDescriptorList cEnumerator_galgasGUIComponentListAST::curr
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_galgasGUIComponentListAST ("galgasGUIComponentListAST",
-                                                  nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_galgasGUIComponentListAST ("galgasGUIComponentListAST",
+                                                                                 nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4720,9 +4712,8 @@ void GALGAS_guiAnalysisContext::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_guiAnalysisContext ("guiAnalysisContext",
-                                           nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_guiAnalysisContext ("guiAnalysisContext",
+                                                                          nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4983,9 +4974,8 @@ bool GALGAS_optionComponentMapForGeneration::optional_searchKey (const GALGAS_st
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_optionComponentMapForGeneration ("optionComponentMapForGeneration",
-                                                        nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionComponentMapForGeneration ("optionComponentMapForGeneration",
+                                                                                       nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9941,9 +9931,8 @@ GALGAS_boolsetDeclarationAST GALGAS_boolsetDeclarationAST_2D_weak::bang_boolsetD
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_boolsetDeclarationAST_2D_weak ("boolsetDeclarationAST-weak",
-                                                      & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_boolsetDeclarationAST_2D_weak ("boolsetDeclarationAST-weak",
+                                                                                     & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10680,9 +10669,8 @@ GALGAS_propertyInCollectionInitializationAST cEnumerator_propertyInCollectionLis
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_propertyInCollectionListAST ("propertyInCollectionListAST",
-                                                    nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyInCollectionListAST ("propertyInCollectionListAST",
+                                                                                   nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10791,9 +10779,8 @@ GALGAS_classDeclarationAST GALGAS_classDeclarationAST_2D_weak::bang_classDeclara
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_classDeclarationAST_2D_weak ("classDeclarationAST-weak",
-                                                    & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classDeclarationAST_2D_weak ("classDeclarationAST-weak",
+                                                                                   & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11398,9 +11385,8 @@ GALGAS_bool cEnumerator_typedPropertyList::current_hasSelector (LOCATION_ARGS) c
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_typedPropertyList ("typedPropertyList",
-                                          nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typedPropertyList ("typedPropertyList",
+                                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11509,9 +11495,8 @@ GALGAS_weakReferenceDeclarationAST GALGAS_weakReferenceDeclarationAST_2D_weak::b
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_weakReferenceDeclarationAST_2D_weak ("weakReferenceDeclarationAST-weak",
-                                                            & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_weakReferenceDeclarationAST_2D_weak ("weakReferenceDeclarationAST-weak",
+                                                                                           & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11984,9 +11969,8 @@ GALGAS__32_lstringlist cEnumerator_enumConstantList::current_mAssociatedValueDef
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_enumConstantList ("enumConstantList",
-                                         nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumConstantList ("enumConstantList",
+                                                                        nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12095,9 +12079,8 @@ GALGAS_enumDeclarationAST GALGAS_enumDeclarationAST_2D_weak::bang_enumDeclaratio
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_enumDeclarationAST_2D_weak ("enumDeclarationAST-weak",
-                                                   & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumDeclarationAST_2D_weak ("enumDeclarationAST-weak",
+                                                                                  & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12570,9 +12553,8 @@ GALGAS_unifiedTypeMapEntryList cEnumerator_enumConstantListForGeneration::curren
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_enumConstantListForGeneration ("enumConstantListForGeneration",
-                                                      nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumConstantListForGeneration ("enumConstantListForGeneration",
+                                                                                     nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12979,9 +12961,8 @@ GALGAS_unifiedTypeMapEntry cEnumerator_unifiedTypeMapEntryList::current_mEntry (
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_unifiedTypeMapEntryList ("unifiedTypeMapEntryList",
-                                                nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unifiedTypeMapEntryList ("unifiedTypeMapEntryList",
+                                                                               nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13520,9 +13501,8 @@ GALGAS_typeNameFormalParameterNameList cEnumerator_externTypeConstructorList::cu
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_externTypeConstructorList ("externTypeConstructorList",
-                                                  nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeConstructorList ("externTypeConstructorList",
+                                                                                 nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14061,9 +14041,8 @@ GALGAS_typeNameFormalParameterNameList cEnumerator_externTypeGetterList::current
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_externTypeGetterList ("externTypeGetterList",
-                                             nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeGetterList ("externTypeGetterList",
+                                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14536,9 +14515,8 @@ GALGAS_formalParameterListAST cEnumerator_externTypeSetterList::current_mFormalP
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_externTypeSetterList ("externTypeSetterList",
-                                             nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeSetterList ("externTypeSetterList",
+                                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -15077,9 +15055,8 @@ GALGAS_location cEnumerator_externTypeMethodList::current_mDeclarationLocation (
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_externTypeMethodList ("externTypeMethodList",
-                                             nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeMethodList ("externTypeMethodList",
+                                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -15188,9 +15165,8 @@ GALGAS_externTypeDeclarationAST GALGAS_externTypeDeclarationAST_2D_weak::bang_ex
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_externTypeDeclarationAST_2D_weak ("externTypeDeclarationAST-weak",
-                                                         & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeDeclarationAST_2D_weak ("externTypeDeclarationAST-weak",
+                                                                                        & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -15729,9 +15705,8 @@ GALGAS_lstring cEnumerator_typeNameFormalParameterNameList::current_mFormalParam
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_typeNameFormalParameterNameList ("typeNameFormalParameterNameList",
-                                                        nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeNameFormalParameterNameList ("typeNameFormalParameterNameList",
+                                                                                       nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -16402,9 +16377,8 @@ GALGAS_bool cEnumerator_formalParameterListAST::current_mIsUnused (LOCATION_ARGS
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_formalParameterListAST ("formalParameterListAST",
-                                               nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalParameterListAST ("formalParameterListAST",
+                                                                              nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 

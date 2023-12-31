@@ -350,15 +350,10 @@ static const char * gNonTerminalNames_galgas4Grammar [318] = {
 //
 //--------------------------------------------------------------------------------------------------
 
-// Action tables handle shift and reduce actions ;
-//  - a shift action is (terminal_symbol, SHIFT (n)) : if shifts to state n ;
-//  - the accept action is (terminal_symbol, ACCEPT) ;
-//  - a reduce action is (terminal_symbol, REDUCE (n)) ; if reduces to state n.
-
-#define SHIFT(a) ((a) + 2)
-#define REDUCE(a) (-(a) - 1)
-#define ACCEPT (1)
-#define END (-1)
+// Action tables handle shift and reduce actions:
+//  - a shift action is (terminal_symbol, SHIFT (n)): if shifts to state n;
+//  - the accept action is (terminal_symbol, ACCEPT);
+//  - a reduce action is (terminal_symbol, REDUCE (n)); if reduces to state n.
 
 static const int32_t gActionTable_galgas4Grammar [] = {
 // State S0 (index = 0)

@@ -112,6 +112,9 @@ project (3:7:0) -> "galgas" {
   "galgas-sources/extension-overriding-method.galgas"
   "galgas-sources/extension-overriding-setter.galgas"
 
+#--- Predefined types
+  "galgas-sources/predefinedTypeAST.galgas"
+  "galgas-sources/predefinedType-application.galgas"
 #--- Semantics Component`
   "galgas-sources/actual-parameters.galgas"
   "galgas-sources/extern-procedure-declaration.galgas"
@@ -132,7 +135,6 @@ project (3:7:0) -> "galgas" {
   "galgas-sources/semanticAnalysis.galgas"
   "galgas-sources/semanticInstructionGeneration.galgas"
   "galgas-sources/semanticGeneration.galgas"
-  "galgas-sources/predefinedTypes.galgas"
   "galgas-sources/useful-entities-computation.galgas"
   "galgas-sources/variable-manager.galgas"
   "galgas-sources/unified-type-definition.galgas"

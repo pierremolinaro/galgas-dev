@@ -15,7 +15,7 @@
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private proc enterClassMethodWithInputArgument
+proc enterClassMethodWithInputArgument
   ?!@classMethodMap ioClassMethodMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ?methodName:let @string inClassMethodName
@@ -35,7 +35,7 @@ private proc enterClassMethodWithInputArgument
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private proc enterClassMethodWith3InputArguments
+proc enterClassMethodWith3InputArguments
   ?!@classMethodMap ioClassMethodMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ?methodName:let @string inClassMethodName
@@ -93,57 +93,6 @@ override method @uintPredefinedTypeAST getClassMethodMap
     !methodName:"setRandomSeed"
     !argType:"uint"
     !argName:"inSeed"
-    !compilerArgument:false
-  )
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-override method @applicationPredefinedTypeAST getClassMethodMap ?!@unifiedTypeMap ioUnifiedTypeMap
-                                                                !@classMethodMap outClassMethodMap {
-  outClassMethodMap = {}
-  enterClassMethodWithInputArgument (
-    !?outClassMethodMap
-    !?ioUnifiedTypeMap
-    !methodName: "exit"
-    !argType: "uint"
-    !argName: "inErrorCode"
-    !compilerArgument:false
-  )
-  enterClassMethodWith3InputArguments (
-    !?outClassMethodMap
-    !?ioUnifiedTypeMap
-    !methodName:"setBoolOptionValue"
-    !argType1:"string"
-    !argName1:"inDomain"
-    !argType2:"string"
-    !argName2:"inIdentifier"
-    !argType3:"bool"
-    !argName3:"inValue"
-    !compilerArgument:false
-  )
-  enterClassMethodWith3InputArguments (
-    !?outClassMethodMap
-    !?ioUnifiedTypeMap
-    !methodName:"setUIntOptionValue"
-    !argType1:"string"
-    !argName1:"inDomain"
-    !argType2:"string"
-    !argName2:"inIdentifier"
-    !argType3:"uint"
-    !argName3:"inValue"
-    !compilerArgument:false
-  )
-  enterClassMethodWith3InputArguments (
-    !?outClassMethodMap
-    !?ioUnifiedTypeMap
-    !methodName:"setStringOptionValue"
-    !argType1:"string"
-    !argName1:"inDomain"
-    !argType2:"string"
-    !argName2:"inIdentifier"
-    !argType3:"string"
-    !argName3:"inValue"
     !compilerArgument:false
   )
 }

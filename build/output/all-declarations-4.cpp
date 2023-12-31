@@ -445,9 +445,8 @@ GALGAS_lstring cEnumerator_graphInsertModifierList::current_mInsertErrorMessage 
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_graphInsertModifierList ("graphInsertModifierList",
-                                                nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_graphInsertModifierList ("graphInsertModifierList",
+                                                                               nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -556,9 +555,8 @@ GALGAS_graphDeclarationAST GALGAS_graphDeclarationAST_2D_weak::bang_graphDeclara
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_graphDeclarationAST_2D_weak ("graphDeclarationAST-weak",
-                                                    & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_graphDeclarationAST_2D_weak ("graphDeclarationAST-weak",
+                                                                                   & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -667,9 +665,8 @@ GALGAS_listDeclarationAST GALGAS_listDeclarationAST_2D_weak::bang_listDeclaratio
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_listDeclarationAST_2D_weak ("listDeclarationAST-weak",
-                                                   & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_listDeclarationAST_2D_weak ("listDeclarationAST-weak",
+                                                                                  & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -778,9 +775,8 @@ GALGAS_listmapDeclarationAST GALGAS_listmapDeclarationAST_2D_weak::bang_listmapD
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_listmapDeclarationAST_2D_weak ("listmapDeclarationAST-weak",
-                                                      & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_listmapDeclarationAST_2D_weak ("listmapDeclarationAST-weak",
+                                                                                     & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -889,9 +885,8 @@ GALGAS_dictDeclarationAST GALGAS_dictDeclarationAST_2D_weak::bang_dictDeclaratio
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_dictDeclarationAST_2D_weak ("dictDeclarationAST-weak",
-                                                   & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_dictDeclarationAST_2D_weak ("dictDeclarationAST-weak",
+                                                                                  & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1430,9 +1425,8 @@ GALGAS_lstring cEnumerator_insertMethodListAST::current_mShadowErrorMessage (LOC
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_insertMethodListAST ("insertMethodListAST",
-                                            nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_insertMethodListAST ("insertMethodListAST",
+                                                                           nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1905,9 +1899,8 @@ GALGAS_lstring cEnumerator_mapSearchMethodListAST::current_mErrorMessage (LOCATI
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_mapSearchMethodListAST ("mapSearchMethodListAST",
-                                               nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapSearchMethodListAST ("mapSearchMethodListAST",
+                                                                              nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2380,9 +2373,8 @@ GALGAS_lstring cEnumerator_mapRemoveMethodListAST::current_mErrorMessage (LOCATI
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_mapRemoveMethodListAST ("mapRemoveMethodListAST",
-                                               nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapRemoveMethodListAST ("mapRemoveMethodListAST",
+                                                                              nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2789,9 +2781,8 @@ GALGAS_location cEnumerator_insertOrReplaceDeclarationListAST::current_mInsertOr
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_insertOrReplaceDeclarationListAST ("insertOrReplaceDeclarationListAST",
-                                                          nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_insertOrReplaceDeclarationListAST ("insertOrReplaceDeclarationListAST",
+                                                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2900,9 +2891,8 @@ GALGAS_mapDeclarationAST GALGAS_mapDeclarationAST_2D_weak::bang_mapDeclarationAS
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_mapDeclarationAST_2D_weak ("mapDeclarationAST-weak",
-                                                  & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapDeclarationAST_2D_weak ("mapDeclarationAST-weak",
+                                                                                 & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3112,9 +3102,8 @@ bool GALGAS_insertMethodMap::optional_searchKey (const GALGAS_string & inKey) co
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_insertMethodMap ("insertMethodMap",
-                                        nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_insertMethodMap ("insertMethodMap",
+                                                                       nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3324,9 +3313,8 @@ bool GALGAS_searchMethodMap::optional_searchKey (const GALGAS_string & inKey) co
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_searchMethodMap ("searchMethodMap",
-                                        nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_searchMethodMap ("searchMethodMap",
+                                                                       nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3799,9 +3787,8 @@ GALGAS_bool cEnumerator_sortedListSortDescriptorListAST::current_mAscending (LOC
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_sortedListSortDescriptorListAST ("sortedListSortDescriptorListAST",
-                                                        nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sortedListSortDescriptorListAST ("sortedListSortDescriptorListAST",
+                                                                                       nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3910,9 +3897,8 @@ GALGAS_sortedListDeclarationAST GALGAS_sortedListDeclarationAST_2D_weak::bang_so
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_sortedListDeclarationAST_2D_weak ("sortedListDeclarationAST-weak",
-                                                         & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sortedListDeclarationAST_2D_weak ("sortedListDeclarationAST-weak",
+                                                                                        & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4451,9 +4437,8 @@ GALGAS_bool cEnumerator_sortDescriptorListForGeneration::current_mAscendingOrder
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_sortDescriptorListForGeneration ("sortDescriptorListForGeneration",
-                                                        nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sortDescriptorListForGeneration ("sortDescriptorListForGeneration",
+                                                                                       nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4562,9 +4547,8 @@ GALGAS_structDeclarationAST GALGAS_structDeclarationAST_2D_weak::bang_structDecl
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_structDeclarationAST_2D_weak ("structDeclarationAST-weak",
-                                                     & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_structDeclarationAST_2D_weak ("structDeclarationAST-weak",
+                                                                                    & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4673,9 +4657,8 @@ GALGAS_typealiasDeclarationAST GALGAS_typealiasDeclarationAST_2D_weak::bang_type
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_typealiasDeclarationAST_2D_weak ("typealiasDeclarationAST-weak",
-                                                        & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typealiasDeclarationAST_2D_weak ("typealiasDeclarationAST-weak",
+                                                                                       & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5346,9 +5329,8 @@ GALGAS_bool cEnumerator_formalInputParameterListAST::current_mIsConstant (LOCATI
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_formalInputParameterListAST ("formalInputParameterListAST",
-                                                    nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalInputParameterListAST ("formalInputParameterListAST",
+                                                                                   nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5457,9 +5439,8 @@ GALGAS_abstractExtensionGetterAST GALGAS_abstractExtensionGetterAST_2D_weak::ban
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_abstractExtensionGetterAST_2D_weak ("abstractExtensionGetterAST-weak",
-                                                           & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractExtensionGetterAST_2D_weak ("abstractExtensionGetterAST-weak",
+                                                                                          & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6130,9 +6111,8 @@ GALGAS_bool cEnumerator_formalInputParameterListForGeneration::current_mIsConsta
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_formalInputParameterListForGeneration ("formalInputParameterListForGeneration",
-                                                              nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalInputParameterListForGeneration ("formalInputParameterListForGeneration",
+                                                                                             nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6241,9 +6221,8 @@ GALGAS_abstractExtensionMethodAST GALGAS_abstractExtensionMethodAST_2D_weak::ban
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_abstractExtensionMethodAST_2D_weak ("abstractExtensionMethodAST-weak",
-                                                           & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractExtensionMethodAST_2D_weak ("abstractExtensionMethodAST-weak",
+                                                                                          & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6914,9 +6893,8 @@ GALGAS_string cEnumerator_formalParameterListForGeneration::current_mFormalArgum
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_formalParameterListForGeneration ("formalParameterListForGeneration",
-                                                         nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalParameterListForGeneration ("formalParameterListForGeneration",
+                                                                                        nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7025,9 +7003,8 @@ GALGAS_abstractExtensionSetterAST GALGAS_abstractExtensionSetterAST_2D_weak::ban
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_abstractExtensionSetterAST_2D_weak ("abstractExtensionSetterAST-weak",
-                                                           & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractExtensionSetterAST_2D_weak ("abstractExtensionSetterAST-weak",
+                                                                                          & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7434,9 +7411,8 @@ GALGAS_semanticInstructionAST cEnumerator_semanticInstructionListAST::current_mI
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_semanticInstructionListAST ("semanticInstructionListAST",
-                                                   nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticInstructionListAST ("semanticInstructionListAST",
+                                                                                  nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7545,9 +7521,8 @@ GALGAS_extensionGetterAST GALGAS_extensionGetterAST_2D_weak::bang_extensionGette
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_extensionGetterAST_2D_weak ("extensionGetterAST-weak",
-                                                   & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionGetterAST_2D_weak ("extensionGetterAST-weak",
+                                                                                  & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7954,9 +7929,8 @@ GALGAS_semanticInstructionForGeneration cEnumerator_semanticInstructionListForGe
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_semanticInstructionListForGeneration ("semanticInstructionListForGeneration",
-                                                             nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticInstructionListForGeneration ("semanticInstructionListForGeneration",
+                                                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8065,9 +8039,8 @@ GALGAS_extensionMethodAST GALGAS_extensionMethodAST_2D_weak::bang_extensionMetho
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_extensionMethodAST_2D_weak ("extensionMethodAST-weak",
-                                                   & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMethodAST_2D_weak ("extensionMethodAST-weak",
+                                                                                  & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8176,9 +8149,8 @@ GALGAS_extensionSetterAST GALGAS_extensionSetterAST_2D_weak::bang_extensionSette
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_extensionSetterAST_2D_weak ("extensionSetterAST-weak",
-                                                   & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionSetterAST_2D_weak ("extensionSetterAST-weak",
+                                                                                  & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8287,9 +8259,8 @@ GALGAS_overridingAbstractExtensionGetterAST GALGAS_overridingAbstractExtensionGe
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_overridingAbstractExtensionGetterAST_2D_weak ("overridingAbstractExtensionGetterAST-weak",
-                                                                     & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingAbstractExtensionGetterAST_2D_weak ("overridingAbstractExtensionGetterAST-weak",
+                                                                                                    & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8398,9 +8369,8 @@ GALGAS_overridingAbstractExtensionMethodAST GALGAS_overridingAbstractExtensionMe
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_overridingAbstractExtensionMethodAST_2D_weak ("overridingAbstractExtensionMethodAST-weak",
-                                                                     & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingAbstractExtensionMethodAST_2D_weak ("overridingAbstractExtensionMethodAST-weak",
+                                                                                                    & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8509,9 +8479,8 @@ GALGAS_overridingAbstractExtensionSetterAST GALGAS_overridingAbstractExtensionSe
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_overridingAbstractExtensionSetterAST_2D_weak ("overridingAbstractExtensionSetterAST-weak",
-                                                                     & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingAbstractExtensionSetterAST_2D_weak ("overridingAbstractExtensionSetterAST-weak",
+                                                                                                    & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8620,9 +8589,8 @@ GALGAS_overridingExtensionGetterAST GALGAS_overridingExtensionGetterAST_2D_weak:
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_overridingExtensionGetterAST_2D_weak ("overridingExtensionGetterAST-weak",
-                                                             & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtensionGetterAST_2D_weak ("overridingExtensionGetterAST-weak",
+                                                                                            & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8731,9 +8699,8 @@ GALGAS_overridingExtensionMethodAST GALGAS_overridingExtensionMethodAST_2D_weak:
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_overridingExtensionMethodAST_2D_weak ("overridingExtensionMethodAST-weak",
-                                                             & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtensionMethodAST_2D_weak ("overridingExtensionMethodAST-weak",
+                                                                                            & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8842,9 +8809,8 @@ GALGAS_overridingExtensionSetterAST GALGAS_overridingExtensionSetterAST_2D_weak:
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_overridingExtensionSetterAST_2D_weak ("overridingExtensionSetterAST-weak",
-                                                             & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtensionSetterAST_2D_weak ("overridingExtensionSetterAST-weak",
+                                                                                            & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8874,6 +8840,723 @@ GALGAS_overridingExtensionSetterAST_2D_weak GALGAS_overridingExtensionSetterAST_
       result = *p ;
     }else{
       inCompiler->castError ("overridingExtensionSetterAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_predefinedTypeKindEnum::GALGAS_predefinedTypeKindEnum (void) :
+mEnum (kNotBuilt) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_predefinedTypeKindEnum GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_uint (UNUSED_LOCATION_ARGS) {
+  GALGAS_predefinedTypeKindEnum result ;
+  result.mEnum = kEnum_predefined_5F_uint ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_predefinedTypeKindEnum GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_uint_36__34_ (UNUSED_LOCATION_ARGS) {
+  GALGAS_predefinedTypeKindEnum result ;
+  result.mEnum = kEnum_predefined_5F_uint_36__34_ ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_predefinedTypeKindEnum GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_sint (UNUSED_LOCATION_ARGS) {
+  GALGAS_predefinedTypeKindEnum result ;
+  result.mEnum = kEnum_predefined_5F_sint ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_predefinedTypeKindEnum GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_sint_36__34_ (UNUSED_LOCATION_ARGS) {
+  GALGAS_predefinedTypeKindEnum result ;
+  result.mEnum = kEnum_predefined_5F_sint_36__34_ ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_predefinedTypeKindEnum GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_char (UNUSED_LOCATION_ARGS) {
+  GALGAS_predefinedTypeKindEnum result ;
+  result.mEnum = kEnum_predefined_5F_char ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_predefinedTypeKindEnum GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_double (UNUSED_LOCATION_ARGS) {
+  GALGAS_predefinedTypeKindEnum result ;
+  result.mEnum = kEnum_predefined_5F_double ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_predefinedTypeKindEnum GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_string (UNUSED_LOCATION_ARGS) {
+  GALGAS_predefinedTypeKindEnum result ;
+  result.mEnum = kEnum_predefined_5F_string ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_predefinedTypeKindEnum GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_stringset (UNUSED_LOCATION_ARGS) {
+  GALGAS_predefinedTypeKindEnum result ;
+  result.mEnum = kEnum_predefined_5F_stringset ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_predefinedTypeKindEnum GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_bool (UNUSED_LOCATION_ARGS) {
+  GALGAS_predefinedTypeKindEnum result ;
+  result.mEnum = kEnum_predefined_5F_bool ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_predefinedTypeKindEnum GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_binaryset (UNUSED_LOCATION_ARGS) {
+  GALGAS_predefinedTypeKindEnum result ;
+  result.mEnum = kEnum_predefined_5F_binaryset ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_predefinedTypeKindEnum GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_function (UNUSED_LOCATION_ARGS) {
+  GALGAS_predefinedTypeKindEnum result ;
+  result.mEnum = kEnum_predefined_5F_function ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_predefinedTypeKindEnum GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_location (UNUSED_LOCATION_ARGS) {
+  GALGAS_predefinedTypeKindEnum result ;
+  result.mEnum = kEnum_predefined_5F_location ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_predefinedTypeKindEnum GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_type (UNUSED_LOCATION_ARGS) {
+  GALGAS_predefinedTypeKindEnum result ;
+  result.mEnum = kEnum_predefined_5F_type ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_predefinedTypeKindEnum GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_object (UNUSED_LOCATION_ARGS) {
+  GALGAS_predefinedTypeKindEnum result ;
+  result.mEnum = kEnum_predefined_5F_object ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_predefinedTypeKindEnum GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_data (UNUSED_LOCATION_ARGS) {
+  GALGAS_predefinedTypeKindEnum result ;
+  result.mEnum = kEnum_predefined_5F_data ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_predefinedTypeKindEnum GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_filewrapper (UNUSED_LOCATION_ARGS) {
+  GALGAS_predefinedTypeKindEnum result ;
+  result.mEnum = kEnum_predefined_5F_filewrapper ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_predefinedTypeKindEnum GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_application (UNUSED_LOCATION_ARGS) {
+  GALGAS_predefinedTypeKindEnum result ;
+  result.mEnum = kEnum_predefined_5F_application ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_predefinedTypeKindEnum GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_bigint (UNUSED_LOCATION_ARGS) {
+  GALGAS_predefinedTypeKindEnum result ;
+  result.mEnum = kEnum_predefined_5F_bigint ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_predefinedTypeKindEnum GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_timer (UNUSED_LOCATION_ARGS) {
+  GALGAS_predefinedTypeKindEnum result ;
+  result.mEnum = kEnum_predefined_5F_timer ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_uint () const {
+  const bool ok = mEnum == kEnum_predefined_5F_uint ;
+  return ok ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_uint_36__34_ () const {
+  const bool ok = mEnum == kEnum_predefined_5F_uint_36__34_ ;
+  return ok ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_sint () const {
+  const bool ok = mEnum == kEnum_predefined_5F_sint ;
+  return ok ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_sint_36__34_ () const {
+  const bool ok = mEnum == kEnum_predefined_5F_sint_36__34_ ;
+  return ok ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_char () const {
+  const bool ok = mEnum == kEnum_predefined_5F_char ;
+  return ok ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_double () const {
+  const bool ok = mEnum == kEnum_predefined_5F_double ;
+  return ok ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_string () const {
+  const bool ok = mEnum == kEnum_predefined_5F_string ;
+  return ok ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_stringset () const {
+  const bool ok = mEnum == kEnum_predefined_5F_stringset ;
+  return ok ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_bool () const {
+  const bool ok = mEnum == kEnum_predefined_5F_bool ;
+  return ok ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_binaryset () const {
+  const bool ok = mEnum == kEnum_predefined_5F_binaryset ;
+  return ok ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_function () const {
+  const bool ok = mEnum == kEnum_predefined_5F_function ;
+  return ok ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_location () const {
+  const bool ok = mEnum == kEnum_predefined_5F_location ;
+  return ok ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_type () const {
+  const bool ok = mEnum == kEnum_predefined_5F_type ;
+  return ok ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_object () const {
+  const bool ok = mEnum == kEnum_predefined_5F_object ;
+  return ok ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_data () const {
+  const bool ok = mEnum == kEnum_predefined_5F_data ;
+  return ok ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_filewrapper () const {
+  const bool ok = mEnum == kEnum_predefined_5F_filewrapper ;
+  return ok ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_application () const {
+  const bool ok = mEnum == kEnum_predefined_5F_application ;
+  return ok ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_bigint () const {
+  const bool ok = mEnum == kEnum_predefined_5F_bigint ;
+  return ok ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_timer () const {
+  const bool ok = mEnum == kEnum_predefined_5F_timer ;
+  return ok ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+static const char * gEnumNameArrayFor_predefinedTypeKindEnum [20] = {
+  "(not built)",
+  "predefined_uint",
+  "predefined_uint64",
+  "predefined_sint",
+  "predefined_sint64",
+  "predefined_char",
+  "predefined_double",
+  "predefined_string",
+  "predefined_stringset",
+  "predefined_bool",
+  "predefined_binaryset",
+  "predefined_function",
+  "predefined_location",
+  "predefined_type",
+  "predefined_object",
+  "predefined_data",
+  "predefined_filewrapper",
+  "predefined_application",
+  "predefined_bigint",
+  "predefined_timer"
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_predefinedTypeKindEnum::getter_isPredefined_5F_uint (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_predefined_5F_uint == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_predefinedTypeKindEnum::getter_isPredefined_5F_uint_36__34_ (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_predefined_5F_uint_36__34_ == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_predefinedTypeKindEnum::getter_isPredefined_5F_sint (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_predefined_5F_sint == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_predefinedTypeKindEnum::getter_isPredefined_5F_sint_36__34_ (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_predefined_5F_sint_36__34_ == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_predefinedTypeKindEnum::getter_isPredefined_5F_char (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_predefined_5F_char == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_predefinedTypeKindEnum::getter_isPredefined_5F_double (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_predefined_5F_double == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_predefinedTypeKindEnum::getter_isPredefined_5F_string (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_predefined_5F_string == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_predefinedTypeKindEnum::getter_isPredefined_5F_stringset (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_predefined_5F_stringset == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_predefinedTypeKindEnum::getter_isPredefined_5F_bool (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_predefined_5F_bool == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_predefinedTypeKindEnum::getter_isPredefined_5F_binaryset (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_predefined_5F_binaryset == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_predefinedTypeKindEnum::getter_isPredefined_5F_function (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_predefined_5F_function == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_predefinedTypeKindEnum::getter_isPredefined_5F_location (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_predefined_5F_location == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_predefinedTypeKindEnum::getter_isPredefined_5F_type (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_predefined_5F_type == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_predefinedTypeKindEnum::getter_isPredefined_5F_object (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_predefined_5F_object == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_predefinedTypeKindEnum::getter_isPredefined_5F_data (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_predefined_5F_data == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_predefinedTypeKindEnum::getter_isPredefined_5F_filewrapper (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_predefined_5F_filewrapper == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_predefinedTypeKindEnum::getter_isPredefined_5F_application (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_predefined_5F_application == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_predefinedTypeKindEnum::getter_isPredefined_5F_bigint (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_predefined_5F_bigint == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_predefinedTypeKindEnum::getter_isPredefined_5F_timer (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_predefined_5F_timer == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_predefinedTypeKindEnum::description (String & ioString,
+                                                 const int32_t /* inIndentation */) const {
+  ioString.addString ("<enum @predefinedTypeKindEnum: ") ;
+  ioString.addString (gEnumNameArrayFor_predefinedTypeKindEnum [mEnum]) ;
+  ioString.addString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+typeComparisonResult GALGAS_predefinedTypeKindEnum::objectCompare (const GALGAS_predefinedTypeKindEnum & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    if (mEnum < inOperand.mEnum) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mEnum > inOperand.mEnum) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = kOperandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @predefinedTypeKindEnum generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_predefinedTypeKindEnum ("predefinedTypeKindEnum",
+                                                                              nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_predefinedTypeKindEnum::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_predefinedTypeKindEnum ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_predefinedTypeKindEnum::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_predefinedTypeKindEnum (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_predefinedTypeKindEnum GALGAS_predefinedTypeKindEnum::extractObject (const GALGAS_object & inObject,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) {
+  GALGAS_predefinedTypeKindEnum result ;
+  const GALGAS_predefinedTypeKindEnum * p = (const GALGAS_predefinedTypeKindEnum *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_predefinedTypeKindEnum *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("predefinedTypeKindEnum", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+typeComparisonResult GALGAS_predefinedTypeAST_2D_weak::objectCompare (const GALGAS_predefinedTypeAST_2D_weak & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = kOperandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_predefinedTypeAST_2D_weak::GALGAS_predefinedTypeAST_2D_weak (void) :
+GALGAS_semanticDeclarationAST_2D_weak () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_predefinedTypeAST_2D_weak & GALGAS_predefinedTypeAST_2D_weak::operator = (const GALGAS_predefinedTypeAST & inSource) {
+  cPtr_weakReference_proxy * proxyPtr = nullptr ;
+  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_predefinedTypeAST_2D_weak::GALGAS_predefinedTypeAST_2D_weak (const GALGAS_predefinedTypeAST & inSource) :
+GALGAS_semanticDeclarationAST_2D_weak (inSource) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_predefinedTypeAST_2D_weak GALGAS_predefinedTypeAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+  GALGAS_predefinedTypeAST_2D_weak result ;
+  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_predefinedTypeAST GALGAS_predefinedTypeAST_2D_weak::bang_predefinedTypeAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GALGAS_predefinedTypeAST result ;
+  if (mProxyPtr != nullptr) {
+    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_predefinedTypeAST) ;
+      result = GALGAS_predefinedTypeAST ((cPtr_predefinedTypeAST *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @predefinedTypeAST-weak generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_predefinedTypeAST_2D_weak ("predefinedTypeAST-weak",
+                                                                                 & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_predefinedTypeAST_2D_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_predefinedTypeAST_2D_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_predefinedTypeAST_2D_weak::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_predefinedTypeAST_2D_weak (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_predefinedTypeAST_2D_weak GALGAS_predefinedTypeAST_2D_weak::extractObject (const GALGAS_object & inObject,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) {
+  GALGAS_predefinedTypeAST_2D_weak result ;
+  const GALGAS_predefinedTypeAST_2D_weak * p = (const GALGAS_predefinedTypeAST_2D_weak *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_predefinedTypeAST_2D_weak *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("predefinedTypeAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+typeComparisonResult GALGAS_applicationPredefinedTypeAST_2D_weak::objectCompare (const GALGAS_applicationPredefinedTypeAST_2D_weak & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = kOperandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_applicationPredefinedTypeAST_2D_weak::GALGAS_applicationPredefinedTypeAST_2D_weak (void) :
+GALGAS_predefinedTypeAST_2D_weak () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_applicationPredefinedTypeAST_2D_weak & GALGAS_applicationPredefinedTypeAST_2D_weak::operator = (const GALGAS_applicationPredefinedTypeAST & inSource) {
+  cPtr_weakReference_proxy * proxyPtr = nullptr ;
+  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_applicationPredefinedTypeAST_2D_weak::GALGAS_applicationPredefinedTypeAST_2D_weak (const GALGAS_applicationPredefinedTypeAST & inSource) :
+GALGAS_predefinedTypeAST_2D_weak (inSource) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_applicationPredefinedTypeAST_2D_weak GALGAS_applicationPredefinedTypeAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+  GALGAS_applicationPredefinedTypeAST_2D_weak result ;
+  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_applicationPredefinedTypeAST GALGAS_applicationPredefinedTypeAST_2D_weak::bang_applicationPredefinedTypeAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GALGAS_applicationPredefinedTypeAST result ;
+  if (mProxyPtr != nullptr) {
+    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_applicationPredefinedTypeAST) ;
+      result = GALGAS_applicationPredefinedTypeAST ((cPtr_applicationPredefinedTypeAST *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @applicationPredefinedTypeAST-weak generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_applicationPredefinedTypeAST_2D_weak ("applicationPredefinedTypeAST-weak",
+                                                                                            & kTypeDescriptor_GALGAS_predefinedTypeAST_2D_weak) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_applicationPredefinedTypeAST_2D_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_applicationPredefinedTypeAST_2D_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_applicationPredefinedTypeAST_2D_weak::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_applicationPredefinedTypeAST_2D_weak (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_applicationPredefinedTypeAST_2D_weak GALGAS_applicationPredefinedTypeAST_2D_weak::extractObject (const GALGAS_object & inObject,
+                                                                                                        Compiler * inCompiler
+                                                                                                        COMMA_LOCATION_ARGS) {
+  GALGAS_applicationPredefinedTypeAST_2D_weak result ;
+  const GALGAS_applicationPredefinedTypeAST_2D_weak * p = (const GALGAS_applicationPredefinedTypeAST_2D_weak *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_applicationPredefinedTypeAST_2D_weak *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("applicationPredefinedTypeAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -9251,9 +9934,8 @@ GALGAS_actualParameterAST cEnumerator_actualParameterListAST::current_mActualPar
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_actualParameterListAST ("actualParameterListAST",
-                                               nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_actualParameterListAST ("actualParameterListAST",
+                                                                              nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9345,9 +10027,8 @@ acStrongPtr_class (THERE) {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_actualParameterAST ("actualParameterAST",
-                                           nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_actualParameterAST ("actualParameterAST",
+                                                                          nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9535,9 +10216,8 @@ GALGAS_actualParameterAST GALGAS_actualParameterAST_2D_weak::bang_actualParamete
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_actualParameterAST_2D_weak ("actualParameterAST-weak",
-                                                   nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_actualParameterAST_2D_weak ("actualParameterAST-weak",
+                                                                                  nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9629,9 +10309,8 @@ acStrongPtr_class (THERE) {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_semanticExpressionAST ("semanticExpressionAST",
-                                              nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticExpressionAST ("semanticExpressionAST",
+                                                                             nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9740,9 +10419,8 @@ GALGAS_outputActualParameterAST GALGAS_outputActualParameterAST_2D_weak::bang_ou
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_outputActualParameterAST_2D_weak ("outputActualParameterAST-weak",
-                                                         & kTypeDescriptor_GALGAS_actualParameterAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputActualParameterAST_2D_weak ("outputActualParameterAST-weak",
+                                                                                        & kTypeDescriptor_GALGAS_actualParameterAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9851,9 +10529,8 @@ GALGAS_outputInputActualParameterAST GALGAS_outputInputActualParameterAST_2D_wea
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_outputInputActualParameterAST_2D_weak ("outputInputActualParameterAST-weak",
-                                                              & kTypeDescriptor_GALGAS_actualParameterAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputInputActualParameterAST_2D_weak ("outputInputActualParameterAST-weak",
+                                                                                             & kTypeDescriptor_GALGAS_actualParameterAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9962,9 +10639,8 @@ GALGAS_outputInputSingleJokerParameterAST GALGAS_outputInputSingleJokerParameter
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_outputInputSingleJokerParameterAST_2D_weak ("outputInputSingleJokerParameterAST-weak",
-                                                                   & kTypeDescriptor_GALGAS_actualParameterAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputInputSingleJokerParameterAST_2D_weak ("outputInputSingleJokerParameterAST-weak",
+                                                                                                  & kTypeDescriptor_GALGAS_actualParameterAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10073,9 +10749,8 @@ GALGAS_outputInputSelfParameterAST GALGAS_outputInputSelfParameterAST_2D_weak::b
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_outputInputSelfParameterAST_2D_weak ("outputInputSelfParameterAST-weak",
-                                                            & kTypeDescriptor_GALGAS_actualParameterAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputInputSelfParameterAST_2D_weak ("outputInputSelfParameterAST-weak",
+                                                                                           & kTypeDescriptor_GALGAS_actualParameterAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10246,9 +10921,8 @@ acPtr_class * cPtr_outputInputJokerParameterAST::duplicate (LOCATION_ARGS) const
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_outputInputJokerParameterAST ("outputInputJokerParameterAST",
-                                                     & kTypeDescriptor_GALGAS_actualParameterAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputInputJokerParameterAST ("outputInputJokerParameterAST",
+                                                                                    & kTypeDescriptor_GALGAS_actualParameterAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10357,9 +11031,8 @@ GALGAS_outputInputJokerParameterAST GALGAS_outputInputJokerParameterAST_2D_weak:
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_outputInputJokerParameterAST_2D_weak ("outputInputJokerParameterAST-weak",
-                                                             & kTypeDescriptor_GALGAS_actualParameterAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputInputJokerParameterAST_2D_weak ("outputInputJokerParameterAST-weak",
+                                                                                            & kTypeDescriptor_GALGAS_actualParameterAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10468,9 +11141,8 @@ GALGAS_inputActualExistingVariableParameterAST GALGAS_inputActualExistingVariabl
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_inputActualExistingVariableParameterAST_2D_weak ("inputActualExistingVariableParameterAST-weak",
-                                                                        & kTypeDescriptor_GALGAS_actualParameterAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualExistingVariableParameterAST_2D_weak ("inputActualExistingVariableParameterAST-weak",
+                                                                                                       & kTypeDescriptor_GALGAS_actualParameterAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10579,9 +11251,8 @@ GALGAS_inputActualSelfPropertyParameterAST GALGAS_inputActualSelfPropertyParamet
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_inputActualSelfPropertyParameterAST_2D_weak ("inputActualSelfPropertyParameterAST-weak",
-                                                                    & kTypeDescriptor_GALGAS_actualParameterAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualSelfPropertyParameterAST_2D_weak ("inputActualSelfPropertyParameterAST-weak",
+                                                                                                   & kTypeDescriptor_GALGAS_actualParameterAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10690,9 +11361,8 @@ GALGAS_inputActualSelfParameterAST GALGAS_inputActualSelfParameterAST_2D_weak::b
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_inputActualSelfParameterAST_2D_weak ("inputActualSelfParameterAST-weak",
-                                                            & kTypeDescriptor_GALGAS_actualParameterAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualSelfParameterAST_2D_weak ("inputActualSelfParameterAST-weak",
+                                                                                           & kTypeDescriptor_GALGAS_actualParameterAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10801,9 +11471,8 @@ GALGAS_inputActualNewVariableParameterAST GALGAS_inputActualNewVariableParameter
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_inputActualNewVariableParameterAST_2D_weak ("inputActualNewVariableParameterAST-weak",
-                                                                   & kTypeDescriptor_GALGAS_actualParameterAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualNewVariableParameterAST_2D_weak ("inputActualNewVariableParameterAST-weak",
+                                                                                                  & kTypeDescriptor_GALGAS_actualParameterAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10912,9 +11581,8 @@ GALGAS_inputActualNewConstantParameterAST GALGAS_inputActualNewConstantParameter
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_inputActualNewConstantParameterAST_2D_weak ("inputActualNewConstantParameterAST-weak",
-                                                                   & kTypeDescriptor_GALGAS_actualParameterAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualNewConstantParameterAST_2D_weak ("inputActualNewConstantParameterAST-weak",
+                                                                                                  & kTypeDescriptor_GALGAS_actualParameterAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11023,9 +11691,8 @@ GALGAS_inputSingleJokerActualParameterAST GALGAS_inputSingleJokerActualParameter
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_inputSingleJokerActualParameterAST_2D_weak ("inputSingleJokerActualParameterAST-weak",
-                                                                   & kTypeDescriptor_GALGAS_actualParameterAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputSingleJokerActualParameterAST_2D_weak ("inputSingleJokerActualParameterAST-weak",
+                                                                                                  & kTypeDescriptor_GALGAS_actualParameterAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11196,9 +11863,8 @@ acPtr_class * cPtr_inputJokerActualParameterAST::duplicate (LOCATION_ARGS) const
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_inputJokerActualParameterAST ("inputJokerActualParameterAST",
-                                                     & kTypeDescriptor_GALGAS_actualParameterAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputJokerActualParameterAST ("inputJokerActualParameterAST",
+                                                                                    & kTypeDescriptor_GALGAS_actualParameterAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11307,9 +11973,8 @@ GALGAS_inputJokerActualParameterAST GALGAS_inputJokerActualParameterAST_2D_weak:
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_inputJokerActualParameterAST_2D_weak ("inputJokerActualParameterAST-weak",
-                                                             & kTypeDescriptor_GALGAS_actualParameterAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputJokerActualParameterAST_2D_weak ("inputJokerActualParameterAST-weak",
+                                                                                            & kTypeDescriptor_GALGAS_actualParameterAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11418,9 +12083,8 @@ GALGAS_externProcedureDeclarationAST GALGAS_externProcedureDeclarationAST_2D_wea
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_externProcedureDeclarationAST_2D_weak ("externProcedureDeclarationAST-weak",
-                                                              & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externProcedureDeclarationAST_2D_weak ("externProcedureDeclarationAST-weak",
+                                                                                             & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11529,9 +12193,8 @@ GALGAS_procDeclarationAST GALGAS_procDeclarationAST_2D_weak::bang_procDeclaratio
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_procDeclarationAST_2D_weak ("procDeclarationAST-weak",
-                                                   & kTypeDescriptor_GALGAS_externProcedureDeclarationAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_procDeclarationAST_2D_weak ("procDeclarationAST-weak",
+                                                                                  & kTypeDescriptor_GALGAS_externProcedureDeclarationAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11640,9 +12303,8 @@ GALGAS_semanticExpressionAST GALGAS_semanticExpressionAST_2D_weak::bang_semantic
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_semanticExpressionAST_2D_weak ("semanticExpressionAST-weak",
-                                                      nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticExpressionAST_2D_weak ("semanticExpressionAST-weak",
+                                                                                     nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11808,9 +12470,8 @@ typeComparisonResult GALGAS_formalArgumentPassingModeAST::objectCompare (const G
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_formalArgumentPassingModeAST ("formalArgumentPassingModeAST",
-                                                     nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalArgumentPassingModeAST ("formalArgumentPassingModeAST",
+                                                                                    nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11986,9 +12647,8 @@ acStrongPtr_class (THERE) {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_abstractInputParameter ("abstractInputParameter",
-                                               nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractInputParameter ("abstractInputParameter",
+                                                                              nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12097,9 +12757,8 @@ GALGAS_abstractInputParameter GALGAS_abstractInputParameter_2D_weak::bang_abstra
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_abstractInputParameter_2D_weak ("abstractInputParameter-weak",
-                                                       nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractInputParameter_2D_weak ("abstractInputParameter-weak",
+                                                                                      nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12223,9 +12882,8 @@ acPtr_class * cPtr_inputParameterAnonymousVariable::duplicate (LOCATION_ARGS) co
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_inputParameterAnonymousVariable ("inputParameterAnonymousVariable",
-                                                        & kTypeDescriptor_GALGAS_abstractInputParameter) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputParameterAnonymousVariable ("inputParameterAnonymousVariable",
+                                                                                       & kTypeDescriptor_GALGAS_abstractInputParameter) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12334,9 +12992,8 @@ GALGAS_inputParameterAnonymousVariable GALGAS_inputParameterAnonymousVariable_2D
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_inputParameterAnonymousVariable_2D_weak ("inputParameterAnonymousVariable-weak",
-                                                                & kTypeDescriptor_GALGAS_abstractInputParameter_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputParameterAnonymousVariable_2D_weak ("inputParameterAnonymousVariable-weak",
+                                                                                               & kTypeDescriptor_GALGAS_abstractInputParameter_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12445,9 +13102,8 @@ GALGAS_inputParameterVariable GALGAS_inputParameterVariable_2D_weak::bang_inputP
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_inputParameterVariable_2D_weak ("inputParameterVariable-weak",
-                                                       & kTypeDescriptor_GALGAS_abstractInputParameter_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputParameterVariable_2D_weak ("inputParameterVariable-weak",
+                                                                                      & kTypeDescriptor_GALGAS_abstractInputParameter_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12556,9 +13212,8 @@ GALGAS_inputParameterDeclaredVariable GALGAS_inputParameterDeclaredVariable_2D_w
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_inputParameterDeclaredVariable_2D_weak ("inputParameterDeclaredVariable-weak",
-                                                               & kTypeDescriptor_GALGAS_abstractInputParameter_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputParameterDeclaredVariable_2D_weak ("inputParameterDeclaredVariable-weak",
+                                                                                              & kTypeDescriptor_GALGAS_abstractInputParameter_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12667,9 +13322,8 @@ GALGAS_inputParameterDeclaredConstant GALGAS_inputParameterDeclaredConstant_2D_w
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_inputParameterDeclaredConstant_2D_weak ("inputParameterDeclaredConstant-weak",
-                                                               & kTypeDescriptor_GALGAS_abstractInputParameter_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputParameterDeclaredConstant_2D_weak ("inputParameterDeclaredConstant-weak",
+                                                                                              & kTypeDescriptor_GALGAS_abstractInputParameter_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13142,9 +13796,8 @@ GALGAS_abstractInputParameter cEnumerator_actualInputParameterListAST::current_m
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_actualInputParameterListAST ("actualInputParameterListAST",
-                                                    nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_actualInputParameterListAST ("actualInputParameterListAST",
+                                                                                   nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13251,9 +13904,8 @@ mProperty_mInstructionLocation (in_mInstructionLocation) {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_syntaxInstructionAST ("syntaxInstructionAST",
-                                             nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxInstructionAST ("syntaxInstructionAST",
+                                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13362,9 +14014,8 @@ GALGAS_syntaxInstructionAST GALGAS_syntaxInstructionAST_2D_weak::bang_syntaxInst
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_syntaxInstructionAST_2D_weak ("syntaxInstructionAST-weak",
-                                                     nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxInstructionAST_2D_weak ("syntaxInstructionAST-weak",
+                                                                                    nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13457,9 +14108,8 @@ cPtr_syntaxInstructionAST (in_mInstructionLocation COMMA_THERE) {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_semanticInstructionAST ("semanticInstructionAST",
-                                               & kTypeDescriptor_GALGAS_syntaxInstructionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticInstructionAST ("semanticInstructionAST",
+                                                                              & kTypeDescriptor_GALGAS_syntaxInstructionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13568,9 +14218,8 @@ GALGAS_semanticInstructionAST GALGAS_semanticInstructionAST_2D_weak::bang_semant
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_semanticInstructionAST_2D_weak ("semanticInstructionAST-weak",
-                                                       & kTypeDescriptor_GALGAS_syntaxInstructionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticInstructionAST_2D_weak ("semanticInstructionAST-weak",
+                                                                                      & kTypeDescriptor_GALGAS_syntaxInstructionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13977,9 +14626,8 @@ GALGAS_semanticDeclarationAST cEnumerator_semanticDeclarationListAST::current_mS
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_semanticDeclarationListAST ("semanticDeclarationListAST",
-                                                   nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticDeclarationListAST ("semanticDeclarationListAST",
+                                                                                  nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14088,9 +14736,8 @@ GALGAS_externFunctionDeclarationAST GALGAS_externFunctionDeclarationAST_2D_weak:
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_externFunctionDeclarationAST_2D_weak ("externFunctionDeclarationAST-weak",
-                                                             & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externFunctionDeclarationAST_2D_weak ("externFunctionDeclarationAST-weak",
+                                                                                            & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14199,9 +14846,8 @@ GALGAS_functionDeclarationAST GALGAS_functionDeclarationAST_2D_weak::bang_functi
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_functionDeclarationAST_2D_weak ("functionDeclarationAST-weak",
-                                                       & kTypeDescriptor_GALGAS_externFunctionDeclarationAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionDeclarationAST_2D_weak ("functionDeclarationAST-weak",
+                                                                                      & kTypeDescriptor_GALGAS_externFunctionDeclarationAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14310,9 +14956,8 @@ GALGAS_onceFunctionDeclarationAST GALGAS_onceFunctionDeclarationAST_2D_weak::ban
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_onceFunctionDeclarationAST_2D_weak ("onceFunctionDeclarationAST-weak",
-                                                           & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_onceFunctionDeclarationAST_2D_weak ("onceFunctionDeclarationAST-weak",
+                                                                                          & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14658,9 +15303,8 @@ typeComparisonResult GALGAS_AccessControlAST::objectCompare (const GALGAS_Access
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_AccessControlAST ("AccessControlAST",
-                                         nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_AccessControlAST ("AccessControlAST",
+                                                                        nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14840,9 +15484,8 @@ typeComparisonResult GALGAS_propertyInCollectionInitializationAST::objectCompare
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_propertyInCollectionInitializationAST ("propertyInCollectionInitializationAST",
-                                                              nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyInCollectionInitializationAST ("propertyInCollectionInitializationAST",
+                                                                                             nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -15447,9 +16090,8 @@ GALGAS_bool cEnumerator_formalTemplateInputParameterListAST::current_mIsUnused (
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_formalTemplateInputParameterListAST ("formalTemplateInputParameterListAST",
-                                                            nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalTemplateInputParameterListAST ("formalTemplateInputParameterListAST",
+                                                                                           nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -15479,547 +16121,6 @@ GALGAS_formalTemplateInputParameterListAST GALGAS_formalTemplateInputParameterLi
       result = *p ;
     }else{
       inCompiler->castError ("formalTemplateInputParameterListAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//Class for element of '@filewrapperTemplateListAST' list
-//
-//--------------------------------------------------------------------------------------------------
-
-class cCollectionElement_filewrapperTemplateListAST : public cCollectionElement {
-  public: GALGAS_filewrapperTemplateListAST_2D_element mObject ;
-
-//--- Constructors
-  public: cCollectionElement_filewrapperTemplateListAST (const GALGAS_lstring & in_mFilewrapperTemplateName,
-                                                         const GALGAS_lstring & in_mFilewrapperTemplatePath,
-                                                         const GALGAS_formalTemplateInputParameterListAST & in_mFilewrapperTemplateFormalInputParameters
-                                                         COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_filewrapperTemplateListAST (const GALGAS_filewrapperTemplateListAST_2D_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
-  public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
-
-//--- Virtual method that checks that all attributes are valid
-  public: virtual bool isValid (void) const ;
-
-//--- Virtual method that returns a copy of current object
-  public: virtual cCollectionElement * copy (void) ;
-
-//--- Description
-  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-cCollectionElement_filewrapperTemplateListAST::cCollectionElement_filewrapperTemplateListAST (const GALGAS_lstring & in_mFilewrapperTemplateName,
-                                                                                              const GALGAS_lstring & in_mFilewrapperTemplatePath,
-                                                                                              const GALGAS_formalTemplateInputParameterListAST & in_mFilewrapperTemplateFormalInputParameters
-                                                                                              COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
-mObject (in_mFilewrapperTemplateName, in_mFilewrapperTemplatePath, in_mFilewrapperTemplateFormalInputParameters) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cCollectionElement_filewrapperTemplateListAST::cCollectionElement_filewrapperTemplateListAST (const GALGAS_filewrapperTemplateListAST_2D_element & inElement COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
-mObject (inElement.mProperty_mFilewrapperTemplateName, inElement.mProperty_mFilewrapperTemplatePath, inElement.mProperty_mFilewrapperTemplateFormalInputParameters) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool cCollectionElement_filewrapperTemplateListAST::isValid (void) const {
-  return true ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cCollectionElement * cCollectionElement_filewrapperTemplateListAST::copy (void) {
-  cCollectionElement * result = nullptr ;
-  macroMyNew (result, cCollectionElement_filewrapperTemplateListAST (mObject.mProperty_mFilewrapperTemplateName, mObject.mProperty_mFilewrapperTemplatePath, mObject.mProperty_mFilewrapperTemplateFormalInputParameters COMMA_HERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cCollectionElement_filewrapperTemplateListAST::description (String & ioString, const int32_t inIndentation) const {
-  ioString.addNL () ;
-  ioString.addStringMultiple ("| ", inIndentation) ;
-  ioString.addString ("mFilewrapperTemplateName" ":") ;
-  mObject.mProperty_mFilewrapperTemplateName.description (ioString, inIndentation) ;
-  ioString.addNL () ;
-  ioString.addStringMultiple ("| ", inIndentation) ;
-  ioString.addString ("mFilewrapperTemplatePath" ":") ;
-  mObject.mProperty_mFilewrapperTemplatePath.description (ioString, inIndentation) ;
-  ioString.addNL () ;
-  ioString.addStringMultiple ("| ", inIndentation) ;
-  ioString.addString ("mFilewrapperTemplateFormalInputParameters" ":") ;
-  mObject.mProperty_mFilewrapperTemplateFormalInputParameters.description (ioString, inIndentation) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-typeComparisonResult cCollectionElement_filewrapperTemplateListAST::compare (const cCollectionElement * inOperand) const {
-  cCollectionElement_filewrapperTemplateListAST * operand = (cCollectionElement_filewrapperTemplateListAST *) inOperand ;
-  macroValidSharedObject (operand, cCollectionElement_filewrapperTemplateListAST) ;
-  return mObject.objectCompare (operand->mObject) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_filewrapperTemplateListAST::GALGAS_filewrapperTemplateListAST (void) :
-AC_GALGAS_list () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_filewrapperTemplateListAST::GALGAS_filewrapperTemplateListAST (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list (inSharedArray) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_filewrapperTemplateListAST GALGAS_filewrapperTemplateListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_filewrapperTemplateListAST (capCollectionElementArray ()) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_filewrapperTemplateListAST GALGAS_filewrapperTemplateListAST::constructor_listWithValue (const GALGAS_lstring & inOperand0,
-                                                                                                const GALGAS_lstring & inOperand1,
-                                                                                                const GALGAS_formalTemplateInputParameterListAST & inOperand2
-                                                                                                COMMA_LOCATION_ARGS) {
-  GALGAS_filewrapperTemplateListAST result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result = GALGAS_filewrapperTemplateListAST (capCollectionElementArray ()) ;
-    capCollectionElement attributes ;
-    GALGAS_filewrapperTemplateListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
-    result.appendObject (attributes) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_filewrapperTemplateListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
-                                                                   const GALGAS_lstring & in_mFilewrapperTemplateName,
-                                                                   const GALGAS_lstring & in_mFilewrapperTemplatePath,
-                                                                   const GALGAS_formalTemplateInputParameterListAST & in_mFilewrapperTemplateFormalInputParameters
-                                                                   COMMA_LOCATION_ARGS) {
-  cCollectionElement_filewrapperTemplateListAST * p = nullptr ;
-  macroMyNew (p, cCollectionElement_filewrapperTemplateListAST (in_mFilewrapperTemplateName,
-                                                                in_mFilewrapperTemplatePath,
-                                                                in_mFilewrapperTemplateFormalInputParameters COMMA_THERE)) ;
-  outAttributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_filewrapperTemplateListAST::addAssign_operation (const GALGAS_lstring & inOperand0,
-                                                             const GALGAS_lstring & inOperand1,
-                                                             const GALGAS_formalTemplateInputParameterListAST & inOperand2
-                                                             COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_filewrapperTemplateListAST (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    appendObject (attributes) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_filewrapperTemplateListAST::setter_append (const GALGAS_lstring inOperand0,
-                                                       const GALGAS_lstring inOperand1,
-                                                       const GALGAS_formalTemplateInputParameterListAST inOperand2,
-                                                       Compiler * /* inCompiler */
-                                                       COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_filewrapperTemplateListAST (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    appendObject (attributes) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_filewrapperTemplateListAST::setter_insertAtIndex (const GALGAS_lstring inOperand0,
-                                                              const GALGAS_lstring inOperand1,
-                                                              const GALGAS_formalTemplateInputParameterListAST inOperand2,
-                                                              const GALGAS_uint inInsertionIndex,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-      cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_filewrapperTemplateListAST (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
-      capCollectionElement attributes ;
-      attributes.setPointer (p) ;
-      macroDetachSharedObject (p) ;
-      insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
-    }else{
-      drop () ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_filewrapperTemplateListAST::setter_removeAtIndex (GALGAS_lstring & outOperand0,
-                                                              GALGAS_lstring & outOperand1,
-                                                              GALGAS_formalTemplateInputParameterListAST & outOperand2,
-                                                              const GALGAS_uint inRemoveIndex,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (inRemoveIndex.isValid ()) {
-      capCollectionElement attributes ;
-      removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-      cCollectionElement_filewrapperTemplateListAST * p = (cCollectionElement_filewrapperTemplateListAST *) attributes.ptr () ;
-      if (nullptr == p) {
-        outOperand0.drop () ;
-        outOperand1.drop () ;
-        outOperand2.drop () ;
-        drop () ;
-      }else{
-        macroValidSharedObject (p, cCollectionElement_filewrapperTemplateListAST) ;
-        outOperand0 = p->mObject.mProperty_mFilewrapperTemplateName ;
-        outOperand1 = p->mObject.mProperty_mFilewrapperTemplatePath ;
-        outOperand2 = p->mObject.mProperty_mFilewrapperTemplateFormalInputParameters ;
-      }
-    }else{
-      outOperand0.drop () ;
-      outOperand1.drop () ;
-      outOperand2.drop () ;
-      drop () ;    
-    }
-  }else{
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_filewrapperTemplateListAST::setter_popFirst (GALGAS_lstring & outOperand0,
-                                                         GALGAS_lstring & outOperand1,
-                                                         GALGAS_formalTemplateInputParameterListAST & outOperand2,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_filewrapperTemplateListAST * p = (cCollectionElement_filewrapperTemplateListAST *) attributes.ptr () ;
-  if (nullptr == p) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_filewrapperTemplateListAST) ;
-    outOperand0 = p->mObject.mProperty_mFilewrapperTemplateName ;
-    outOperand1 = p->mObject.mProperty_mFilewrapperTemplatePath ;
-    outOperand2 = p->mObject.mProperty_mFilewrapperTemplateFormalInputParameters ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_filewrapperTemplateListAST::setter_popLast (GALGAS_lstring & outOperand0,
-                                                        GALGAS_lstring & outOperand1,
-                                                        GALGAS_formalTemplateInputParameterListAST & outOperand2,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  removeLastObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_filewrapperTemplateListAST * p = (cCollectionElement_filewrapperTemplateListAST *) attributes.ptr () ;
-  if (nullptr == p) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_filewrapperTemplateListAST) ;
-    outOperand0 = p->mObject.mProperty_mFilewrapperTemplateName ;
-    outOperand1 = p->mObject.mProperty_mFilewrapperTemplatePath ;
-    outOperand2 = p->mObject.mProperty_mFilewrapperTemplateFormalInputParameters ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_filewrapperTemplateListAST::method_first (GALGAS_lstring & outOperand0,
-                                                      GALGAS_lstring & outOperand1,
-                                                      GALGAS_formalTemplateInputParameterListAST & outOperand2,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes ;
-  readFirst (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_filewrapperTemplateListAST * p = (cCollectionElement_filewrapperTemplateListAST *) attributes.ptr () ;
-  if (nullptr == p) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_filewrapperTemplateListAST) ;
-    outOperand0 = p->mObject.mProperty_mFilewrapperTemplateName ;
-    outOperand1 = p->mObject.mProperty_mFilewrapperTemplatePath ;
-    outOperand2 = p->mObject.mProperty_mFilewrapperTemplateFormalInputParameters ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_filewrapperTemplateListAST::method_last (GALGAS_lstring & outOperand0,
-                                                     GALGAS_lstring & outOperand1,
-                                                     GALGAS_formalTemplateInputParameterListAST & outOperand2,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes ;
-  readLast (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_filewrapperTemplateListAST * p = (cCollectionElement_filewrapperTemplateListAST *) attributes.ptr () ;
-  if (nullptr == p) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_filewrapperTemplateListAST) ;
-    outOperand0 = p->mObject.mProperty_mFilewrapperTemplateName ;
-    outOperand1 = p->mObject.mProperty_mFilewrapperTemplatePath ;
-    outOperand2 = p->mObject.mProperty_mFilewrapperTemplateFormalInputParameters ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_filewrapperTemplateListAST GALGAS_filewrapperTemplateListAST::add_operation (const GALGAS_filewrapperTemplateListAST & inOperand,
-                                                                                    Compiler * /* inCompiler */
-                                                                                    COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_filewrapperTemplateListAST result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_filewrapperTemplateListAST GALGAS_filewrapperTemplateListAST::getter_subListWithRange (const GALGAS_range & inRange,
-                                                                                              Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) const {
-  GALGAS_filewrapperTemplateListAST result = GALGAS_filewrapperTemplateListAST::constructor_emptyList (THERE) ;
-  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_filewrapperTemplateListAST GALGAS_filewrapperTemplateListAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
-                                                                                              Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) const {
-  GALGAS_filewrapperTemplateListAST result = GALGAS_filewrapperTemplateListAST::constructor_emptyList (THERE) ;
-  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_filewrapperTemplateListAST GALGAS_filewrapperTemplateListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
-                                                                                            Compiler * inCompiler
-                                                                                            COMMA_LOCATION_ARGS) const {
-  GALGAS_filewrapperTemplateListAST result = GALGAS_filewrapperTemplateListAST::constructor_emptyList (THERE) ;
-  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_filewrapperTemplateListAST::plusAssign_operation (const GALGAS_filewrapperTemplateListAST inOperand,
-                                                              Compiler * /* inCompiler */
-                                                              COMMA_UNUSED_LOCATION_ARGS) {
-  appendList (inOperand) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_filewrapperTemplateListAST::setter_setMFilewrapperTemplateNameAtIndex (GALGAS_lstring inOperand,
-                                                                                   GALGAS_uint inIndex,
-                                                                                   Compiler * inCompiler
-                                                                                   COMMA_LOCATION_ARGS) {
-  cCollectionElement_filewrapperTemplateListAST * p = (cCollectionElement_filewrapperTemplateListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement_filewrapperTemplateListAST) ;
-    macroUniqueSharedObject (p) ;
-    p->mObject.mProperty_mFilewrapperTemplateName = inOperand ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_lstring GALGAS_filewrapperTemplateListAST::getter_mFilewrapperTemplateNameAtIndex (const GALGAS_uint & inIndex,
-                                                                                          Compiler * inCompiler
-                                                                                          COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_filewrapperTemplateListAST * p = (cCollectionElement_filewrapperTemplateListAST *) attributes.ptr () ;
-  GALGAS_lstring result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement_filewrapperTemplateListAST) ;
-    result = p->mObject.mProperty_mFilewrapperTemplateName ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_filewrapperTemplateListAST::setter_setMFilewrapperTemplatePathAtIndex (GALGAS_lstring inOperand,
-                                                                                   GALGAS_uint inIndex,
-                                                                                   Compiler * inCompiler
-                                                                                   COMMA_LOCATION_ARGS) {
-  cCollectionElement_filewrapperTemplateListAST * p = (cCollectionElement_filewrapperTemplateListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement_filewrapperTemplateListAST) ;
-    macroUniqueSharedObject (p) ;
-    p->mObject.mProperty_mFilewrapperTemplatePath = inOperand ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_lstring GALGAS_filewrapperTemplateListAST::getter_mFilewrapperTemplatePathAtIndex (const GALGAS_uint & inIndex,
-                                                                                          Compiler * inCompiler
-                                                                                          COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_filewrapperTemplateListAST * p = (cCollectionElement_filewrapperTemplateListAST *) attributes.ptr () ;
-  GALGAS_lstring result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement_filewrapperTemplateListAST) ;
-    result = p->mObject.mProperty_mFilewrapperTemplatePath ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_filewrapperTemplateListAST::setter_setMFilewrapperTemplateFormalInputParametersAtIndex (GALGAS_formalTemplateInputParameterListAST inOperand,
-                                                                                                    GALGAS_uint inIndex,
-                                                                                                    Compiler * inCompiler
-                                                                                                    COMMA_LOCATION_ARGS) {
-  cCollectionElement_filewrapperTemplateListAST * p = (cCollectionElement_filewrapperTemplateListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement_filewrapperTemplateListAST) ;
-    macroUniqueSharedObject (p) ;
-    p->mObject.mProperty_mFilewrapperTemplateFormalInputParameters = inOperand ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_formalTemplateInputParameterListAST GALGAS_filewrapperTemplateListAST::getter_mFilewrapperTemplateFormalInputParametersAtIndex (const GALGAS_uint & inIndex,
-                                                                                                                                       Compiler * inCompiler
-                                                                                                                                       COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_filewrapperTemplateListAST * p = (cCollectionElement_filewrapperTemplateListAST *) attributes.ptr () ;
-  GALGAS_formalTemplateInputParameterListAST result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement_filewrapperTemplateListAST) ;
-    result = p->mObject.mProperty_mFilewrapperTemplateFormalInputParameters ;
-  }
-  return result ;
-}
-
-
-
-//--------------------------------------------------------------------------------------------------
-
-cEnumerator_filewrapperTemplateListAST::cEnumerator_filewrapperTemplateListAST (const GALGAS_filewrapperTemplateListAST & inEnumeratedObject,
-                                                                                const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator (inOrder) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_filewrapperTemplateListAST_2D_element cEnumerator_filewrapperTemplateListAST::current (LOCATION_ARGS) const {
-  const cCollectionElement_filewrapperTemplateListAST * p = (const cCollectionElement_filewrapperTemplateListAST *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_filewrapperTemplateListAST) ;
-  return p->mObject ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_lstring cEnumerator_filewrapperTemplateListAST::current_mFilewrapperTemplateName (LOCATION_ARGS) const {
-  const cCollectionElement_filewrapperTemplateListAST * p = (const cCollectionElement_filewrapperTemplateListAST *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_filewrapperTemplateListAST) ;
-  return p->mObject.mProperty_mFilewrapperTemplateName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_lstring cEnumerator_filewrapperTemplateListAST::current_mFilewrapperTemplatePath (LOCATION_ARGS) const {
-  const cCollectionElement_filewrapperTemplateListAST * p = (const cCollectionElement_filewrapperTemplateListAST *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_filewrapperTemplateListAST) ;
-  return p->mObject.mProperty_mFilewrapperTemplatePath ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_formalTemplateInputParameterListAST cEnumerator_filewrapperTemplateListAST::current_mFilewrapperTemplateFormalInputParameters (LOCATION_ARGS) const {
-  const cCollectionElement_filewrapperTemplateListAST * p = (const cCollectionElement_filewrapperTemplateListAST *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_filewrapperTemplateListAST) ;
-  return p->mObject.mProperty_mFilewrapperTemplateFormalInputParameters ;
-}
-
-
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @filewrapperTemplateListAST generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_filewrapperTemplateListAST ("filewrapperTemplateListAST",
-                                                   nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_filewrapperTemplateListAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_filewrapperTemplateListAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_filewrapperTemplateListAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_filewrapperTemplateListAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_filewrapperTemplateListAST GALGAS_filewrapperTemplateListAST::extractObject (const GALGAS_object & inObject,
-                                                                                    Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) {
-  GALGAS_filewrapperTemplateListAST result ;
-  const GALGAS_filewrapperTemplateListAST * p = (const GALGAS_filewrapperTemplateListAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_filewrapperTemplateListAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("filewrapperTemplateListAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

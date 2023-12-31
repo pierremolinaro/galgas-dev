@@ -360,6 +360,101 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtension
 
 //--------------------------------------------------------------------------------------------------
 //
+//Extension method '@predefinedTypeAST getGetterMap'
+//
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_getGetterMap (class cPtr_predefinedTypeAST * inObject,
+                                       class GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
+                                       class GALGAS_getterMap & out_outGetterMap,
+                                       Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension method '@predefinedTypeAST getSetterMap'
+//
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_getSetterMap (class cPtr_predefinedTypeAST * inObject,
+                                       class GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
+                                       class GALGAS_setterMap & out_outSetterMap,
+                                       Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension method '@predefinedTypeAST getInstanceMethodMap'
+//
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_getInstanceMethodMap (class cPtr_predefinedTypeAST * inObject,
+                                               class GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
+                                               class GALGAS_instanceMethodMap & out_outInstanceMethodMap,
+                                               Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension method '@predefinedTypeAST getClassMethodMap'
+//
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_getClassMethodMap (class cPtr_predefinedTypeAST * inObject,
+                                            class GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
+                                            class GALGAS_classMethodMap & out_outClassMethodMap,
+                                            Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension method '@predefinedTypeAST getOptionalMethodMap'
+//
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_getOptionalMethodMap (class cPtr_predefinedTypeAST * inObject,
+                                               class GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
+                                               class GALGAS_optionalMethodMap & out_outMap,
+                                               Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension getter '@predefinedTypeAST getSupportedOperatorFlags'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_operators callExtensionGetter_getSupportedOperatorFlags (const cPtr_predefinedTypeAST * inObject,
+                                                                      class Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension method '@predefinedTypeAST getAddAssignArgumentList'
+//
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_getAddAssignArgumentList (class cPtr_predefinedTypeAST * inObject,
+                                                   class GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
+                                                   class GALGAS_functionSignature & out_outAddAssignArgumentList,
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension method '@predefinedTypeAST getEnumerationList'
+//
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_getEnumerationList (class cPtr_predefinedTypeAST * inObject,
+                                             class GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
+                                             class GALGAS_enumerationDescriptorList & out_outEnumerationList,
+                                             class GALGAS_string & out_outEnumeratedType,
+                                             Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Extension method '@actualParameterListAST analyzeRoutineArguments'
 //
 //--------------------------------------------------------------------------------------------------
@@ -2441,14 +2536,4 @@ class GALGAS_lstringlist extensionGetter_unsolvedEntryList (const class GALGAS_u
 class GALGAS_unifiedTypeDefinition callExtensionGetter_definition (const cPtr_unifiedTypeMapElementClass * inObject,
                                                                    class Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension getter '@semanticExpressionForGeneration isTrueExpression'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_bool callExtensionGetter_isTrueExpression (const cPtr_semanticExpressionForGeneration * inObject,
-                                                        class Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) ;
 

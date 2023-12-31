@@ -29,8 +29,8 @@
 
 //--------------------------------------------------------------------------------------------------
 
-//#define REGISTER_ALLOCATION_STATS
-//#define REDEFINE_NEW_DELETE_OPERATORS
+// define REGISTER_ALLOCATION_STATS
+// define REDEFINE_NEW_DELETE_OPERATORS
 
 //--------------------------------------------------------------------------------------------------
 // Include this header is required for safely compile allocation operators.

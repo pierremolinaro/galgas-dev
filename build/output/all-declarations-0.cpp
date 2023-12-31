@@ -445,9 +445,8 @@ GALGAS_lstring cEnumerator__32_lstringlist::current_mValue_31_ (LOCATION_ARGS) c
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS__32_lstringlist ("2lstringlist",
-                                        nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS__32_lstringlist ("2lstringlist",
+                                                                       nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5315,9 +5314,8 @@ acStrongPtr_class (THERE) {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateInstructionAST ("templateInstructionAST",
-                                               nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionAST ("templateInstructionAST",
+                                                                              nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5426,9 +5424,8 @@ GALGAS_templateInstructionAST GALGAS_templateInstructionAST_2D_weak::bang_templa
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateInstructionAST_2D_weak ("templateInstructionAST-weak",
-                                                       nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionAST_2D_weak ("templateInstructionAST-weak",
+                                                                                      nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5835,9 +5832,8 @@ GALGAS_templateInstructionAST cEnumerator_templateInstructionListAST::current_mI
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateInstructionListAST ("templateInstructionListAST",
-                                                   nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionListAST ("templateInstructionListAST",
+                                                                                  nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5929,9 +5925,8 @@ acStrongPtr_class (THERE) {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateExpressionAST ("templateExpressionAST",
-                                              nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateExpressionAST ("templateExpressionAST",
+                                                                             nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6040,9 +6035,8 @@ GALGAS_templateExpressionAST GALGAS_templateExpressionAST_2D_weak::bang_template
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak ("templateExpressionAST-weak",
-                                                      nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak ("templateExpressionAST-weak",
+                                                                                     nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6581,9 +6575,8 @@ GALGAS_location cEnumerator_templateExpressionListAST::current_mEndOfExpressionL
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateExpressionListAST ("templateExpressionListAST",
-                                                  nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateExpressionListAST ("templateExpressionListAST",
+                                                                                 nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6692,9 +6685,8 @@ GALGAS_templateConstructorAST GALGAS_templateConstructorAST_2D_weak::bang_templa
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateConstructorAST_2D_weak ("templateConstructorAST-weak",
-                                                       & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateConstructorAST_2D_weak ("templateConstructorAST-weak",
+                                                                                      & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6803,9 +6795,8 @@ GALGAS_templateFileWrapperTemplateCallAST GALGAS_templateFileWrapperTemplateCall
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateFileWrapperTemplateCallAST_2D_weak ("templateFileWrapperTemplateCallAST-weak",
-                                                                   & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateFileWrapperTemplateCallAST_2D_weak ("templateFileWrapperTemplateCallAST-weak",
+                                                                                                  & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6914,9 +6905,8 @@ GALGAS_templateExtensionTemplateCallAST GALGAS_templateExtensionTemplateCallAST_
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateExtensionTemplateCallAST_2D_weak ("templateExtensionTemplateCallAST-weak",
-                                                                 & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateExtensionTemplateCallAST_2D_weak ("templateExtensionTemplateCallAST-weak",
+                                                                                                & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7108,9 +7098,8 @@ acPtr_class * cPtr_templateAndOperationAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateAndOperationAST ("templateAndOperationAST",
-                                                & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateAndOperationAST ("templateAndOperationAST",
+                                                                               & kTypeDescriptor_GALGAS_templateExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7219,9 +7208,8 @@ GALGAS_templateAndOperationAST GALGAS_templateAndOperationAST_2D_weak::bang_temp
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateAndOperationAST_2D_weak ("templateAndOperationAST-weak",
-                                                        & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateAndOperationAST_2D_weak ("templateAndOperationAST-weak",
+                                                                                       & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7413,9 +7401,8 @@ acPtr_class * cPtr_templateOrOperationAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateOrOperationAST ("templateOrOperationAST",
-                                               & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateOrOperationAST ("templateOrOperationAST",
+                                                                              & kTypeDescriptor_GALGAS_templateExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7524,9 +7511,8 @@ GALGAS_templateOrOperationAST GALGAS_templateOrOperationAST_2D_weak::bang_templa
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateOrOperationAST_2D_weak ("templateOrOperationAST-weak",
-                                                       & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateOrOperationAST_2D_weak ("templateOrOperationAST-weak",
+                                                                                      & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7718,9 +7704,8 @@ acPtr_class * cPtr_templateXorOperationAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateXorOperationAST ("templateXorOperationAST",
-                                                & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateXorOperationAST ("templateXorOperationAST",
+                                                                               & kTypeDescriptor_GALGAS_templateExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7829,9 +7814,8 @@ GALGAS_templateXorOperationAST GALGAS_templateXorOperationAST_2D_weak::bang_temp
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateXorOperationAST_2D_weak ("templateXorOperationAST-weak",
-                                                        & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateXorOperationAST_2D_weak ("templateXorOperationAST-weak",
+                                                                                       & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7981,9 +7965,8 @@ acPtr_class * cPtr_templateTrueBoolAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateTrueBoolAST ("templateTrueBoolAST",
-                                            & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateTrueBoolAST ("templateTrueBoolAST",
+                                                                           & kTypeDescriptor_GALGAS_templateExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8092,9 +8075,8 @@ GALGAS_templateTrueBoolAST GALGAS_templateTrueBoolAST_2D_weak::bang_templateTrue
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateTrueBoolAST_2D_weak ("templateTrueBoolAST-weak",
-                                                    & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateTrueBoolAST_2D_weak ("templateTrueBoolAST-weak",
+                                                                                   & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8244,9 +8226,8 @@ acPtr_class * cPtr_templateFalseBoolAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateFalseBoolAST ("templateFalseBoolAST",
-                                             & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateFalseBoolAST ("templateFalseBoolAST",
+                                                                            & kTypeDescriptor_GALGAS_templateExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8355,9 +8336,8 @@ GALGAS_templateFalseBoolAST GALGAS_templateFalseBoolAST_2D_weak::bang_templateFa
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateFalseBoolAST_2D_weak ("templateFalseBoolAST-weak",
-                                                     & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateFalseBoolAST_2D_weak ("templateFalseBoolAST-weak",
+                                                                                    & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8466,9 +8446,8 @@ GALGAS_templateLiteralStringExpressionAST GALGAS_templateLiteralStringExpression
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateLiteralStringExpressionAST_2D_weak ("templateLiteralStringExpressionAST-weak",
-                                                                   & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateLiteralStringExpressionAST_2D_weak ("templateLiteralStringExpressionAST-weak",
+                                                                                                  & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8577,9 +8556,8 @@ GALGAS_templateLiteralUIntExpressionAST GALGAS_templateLiteralUIntExpressionAST_
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateLiteralUIntExpressionAST_2D_weak ("templateLiteralUIntExpressionAST-weak",
-                                                                 & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateLiteralUIntExpressionAST_2D_weak ("templateLiteralUIntExpressionAST-weak",
+                                                                                                & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8688,9 +8666,8 @@ GALGAS_templateLiteralCharExpressionAST GALGAS_templateLiteralCharExpressionAST_
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateLiteralCharExpressionAST_2D_weak ("templateLiteralCharExpressionAST-weak",
-                                                                 & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateLiteralCharExpressionAST_2D_weak ("templateLiteralCharExpressionAST-weak",
+                                                                                                & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8799,9 +8776,8 @@ GALGAS_templateLiteralDoubleExpressionAST GALGAS_templateLiteralDoubleExpression
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateLiteralDoubleExpressionAST_2D_weak ("templateLiteralDoubleExpressionAST-weak",
-                                                                   & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateLiteralDoubleExpressionAST_2D_weak ("templateLiteralDoubleExpressionAST-weak",
+                                                                                                  & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8910,9 +8886,8 @@ GALGAS_structFieldAccessTemplateExpressionAST GALGAS_structFieldAccessTemplateEx
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_structFieldAccessTemplateExpressionAST_2D_weak ("structFieldAccessTemplateExpressionAST-weak",
-                                                                       & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_structFieldAccessTemplateExpressionAST_2D_weak ("structFieldAccessTemplateExpressionAST-weak",
+                                                                                                      & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9083,9 +9058,8 @@ acPtr_class * cPtr_templateNotOperatorAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateNotOperatorAST ("templateNotOperatorAST",
-                                               & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateNotOperatorAST ("templateNotOperatorAST",
+                                                                              & kTypeDescriptor_GALGAS_templateExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9194,9 +9168,8 @@ GALGAS_templateNotOperatorAST GALGAS_templateNotOperatorAST_2D_weak::bang_templa
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateNotOperatorAST_2D_weak ("templateNotOperatorAST-weak",
-                                                       & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateNotOperatorAST_2D_weak ("templateNotOperatorAST-weak",
+                                                                                      & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9367,9 +9340,8 @@ acPtr_class * cPtr_templateLogicalNegateAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateLogicalNegateAST ("templateLogicalNegateAST",
-                                                 & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateLogicalNegateAST ("templateLogicalNegateAST",
+                                                                                & kTypeDescriptor_GALGAS_templateExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9478,9 +9450,8 @@ GALGAS_templateLogicalNegateAST GALGAS_templateLogicalNegateAST_2D_weak::bang_te
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateLogicalNegateAST_2D_weak ("templateLogicalNegateAST-weak",
-                                                         & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateLogicalNegateAST_2D_weak ("templateLogicalNegateAST-weak",
+                                                                                        & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9589,9 +9560,8 @@ GALGAS_templateOptionAccessAST GALGAS_templateOptionAccessAST_2D_weak::bang_temp
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateOptionAccessAST_2D_weak ("templateOptionAccessAST-weak",
-                                                        & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateOptionAccessAST_2D_weak ("templateOptionAccessAST-weak",
+                                                                                       & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9735,9 +9705,8 @@ typeComparisonResult GALGAS_dynamicTypeComparisonKind::objectCompare (const GALG
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_dynamicTypeComparisonKind ("dynamicTypeComparisonKind",
-                                                  nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_dynamicTypeComparisonKind ("dynamicTypeComparisonKind",
+                                                                                 nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9846,9 +9815,8 @@ GALGAS_templateTestDynamicClassAST GALGAS_templateTestDynamicClassAST_2D_weak::b
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateTestDynamicClassAST_2D_weak ("templateTestDynamicClassAST-weak",
-                                                            & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateTestDynamicClassAST_2D_weak ("templateTestDynamicClassAST-weak",
+                                                                                           & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9957,9 +9925,8 @@ GALGAS_templateFunctionCallAST GALGAS_templateFunctionCallAST_2D_weak::bang_temp
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateFunctionCallAST_2D_weak ("templateFunctionCallAST-weak",
-                                                        & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateFunctionCallAST_2D_weak ("templateFunctionCallAST-weak",
+                                                                                       & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10068,9 +10035,8 @@ GALGAS_templateVarInExpressionAST GALGAS_templateVarInExpressionAST_2D_weak::ban
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateVarInExpressionAST_2D_weak ("templateVarInExpressionAST-weak",
-                                                           & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateVarInExpressionAST_2D_weak ("templateVarInExpressionAST-weak",
+                                                                                          & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10262,9 +10228,8 @@ acPtr_class * cPtr_templateAddOperationAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateAddOperationAST ("templateAddOperationAST",
-                                                & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateAddOperationAST ("templateAddOperationAST",
+                                                                               & kTypeDescriptor_GALGAS_templateExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10373,9 +10338,8 @@ GALGAS_templateAddOperationAST GALGAS_templateAddOperationAST_2D_weak::bang_temp
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateAddOperationAST_2D_weak ("templateAddOperationAST-weak",
-                                                        & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateAddOperationAST_2D_weak ("templateAddOperationAST-weak",
+                                                                                       & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10567,9 +10531,8 @@ acPtr_class * cPtr_templateSubOperationAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateSubOperationAST ("templateSubOperationAST",
-                                                & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateSubOperationAST ("templateSubOperationAST",
+                                                                               & kTypeDescriptor_GALGAS_templateExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10678,9 +10641,8 @@ GALGAS_templateSubOperationAST GALGAS_templateSubOperationAST_2D_weak::bang_temp
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateSubOperationAST_2D_weak ("templateSubOperationAST-weak",
-                                                        & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateSubOperationAST_2D_weak ("templateSubOperationAST-weak",
+                                                                                       & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10872,9 +10834,8 @@ acPtr_class * cPtr_templateMultiplyOperationAST::duplicate (LOCATION_ARGS) const
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateMultiplyOperationAST ("templateMultiplyOperationAST",
-                                                     & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateMultiplyOperationAST ("templateMultiplyOperationAST",
+                                                                                    & kTypeDescriptor_GALGAS_templateExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10983,9 +10944,8 @@ GALGAS_templateMultiplyOperationAST GALGAS_templateMultiplyOperationAST_2D_weak:
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateMultiplyOperationAST_2D_weak ("templateMultiplyOperationAST-weak",
-                                                             & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateMultiplyOperationAST_2D_weak ("templateMultiplyOperationAST-weak",
+                                                                                            & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11177,9 +11137,8 @@ acPtr_class * cPtr_templateDivideOperationAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateDivideOperationAST ("templateDivideOperationAST",
-                                                   & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateDivideOperationAST ("templateDivideOperationAST",
+                                                                                  & kTypeDescriptor_GALGAS_templateExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11288,9 +11247,8 @@ GALGAS_templateDivideOperationAST GALGAS_templateDivideOperationAST_2D_weak::ban
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateDivideOperationAST_2D_weak ("templateDivideOperationAST-weak",
-                                                           & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateDivideOperationAST_2D_weak ("templateDivideOperationAST-weak",
+                                                                                          & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11482,9 +11440,8 @@ acPtr_class * cPtr_templateModuloOperationAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateModuloOperationAST ("templateModuloOperationAST",
-                                                   & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateModuloOperationAST ("templateModuloOperationAST",
+                                                                                  & kTypeDescriptor_GALGAS_templateExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11593,9 +11550,8 @@ GALGAS_templateModuloOperationAST GALGAS_templateModuloOperationAST_2D_weak::ban
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateModuloOperationAST_2D_weak ("templateModuloOperationAST-weak",
-                                                           & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateModuloOperationAST_2D_weak ("templateModuloOperationAST-weak",
+                                                                                          & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11766,9 +11722,8 @@ acPtr_class * cPtr_templateUnaryMinusOperationAST::duplicate (LOCATION_ARGS) con
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateUnaryMinusOperationAST ("templateUnaryMinusOperationAST",
-                                                       & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateUnaryMinusOperationAST ("templateUnaryMinusOperationAST",
+                                                                                      & kTypeDescriptor_GALGAS_templateExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11877,9 +11832,8 @@ GALGAS_templateUnaryMinusOperationAST GALGAS_templateUnaryMinusOperationAST_2D_w
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateUnaryMinusOperationAST_2D_weak ("templateUnaryMinusOperationAST-weak",
-                                                               & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateUnaryMinusOperationAST_2D_weak ("templateUnaryMinusOperationAST-weak",
+                                                                                              & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12071,9 +12025,8 @@ acPtr_class * cPtr_templateEqualTestAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateEqualTestAST ("templateEqualTestAST",
-                                             & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateEqualTestAST ("templateEqualTestAST",
+                                                                            & kTypeDescriptor_GALGAS_templateExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12182,9 +12135,8 @@ GALGAS_templateEqualTestAST GALGAS_templateEqualTestAST_2D_weak::bang_templateEq
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateEqualTestAST_2D_weak ("templateEqualTestAST-weak",
-                                                     & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateEqualTestAST_2D_weak ("templateEqualTestAST-weak",
+                                                                                    & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12376,9 +12328,8 @@ acPtr_class * cPtr_templateNonEqualTestAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateNonEqualTestAST ("templateNonEqualTestAST",
-                                                & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateNonEqualTestAST ("templateNonEqualTestAST",
+                                                                               & kTypeDescriptor_GALGAS_templateExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12487,9 +12438,8 @@ GALGAS_templateNonEqualTestAST GALGAS_templateNonEqualTestAST_2D_weak::bang_temp
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateNonEqualTestAST_2D_weak ("templateNonEqualTestAST-weak",
-                                                        & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateNonEqualTestAST_2D_weak ("templateNonEqualTestAST-weak",
+                                                                                       & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12681,9 +12631,8 @@ acPtr_class * cPtr_templateStrictInfTestAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateStrictInfTestAST ("templateStrictInfTestAST",
-                                                 & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateStrictInfTestAST ("templateStrictInfTestAST",
+                                                                                & kTypeDescriptor_GALGAS_templateExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12792,9 +12741,8 @@ GALGAS_templateStrictInfTestAST GALGAS_templateStrictInfTestAST_2D_weak::bang_te
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateStrictInfTestAST_2D_weak ("templateStrictInfTestAST-weak",
-                                                         & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateStrictInfTestAST_2D_weak ("templateStrictInfTestAST-weak",
+                                                                                        & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12986,9 +12934,8 @@ acPtr_class * cPtr_templateInfOrEqualTestAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateInfOrEqualTestAST ("templateInfOrEqualTestAST",
-                                                  & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInfOrEqualTestAST ("templateInfOrEqualTestAST",
+                                                                                 & kTypeDescriptor_GALGAS_templateExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13097,9 +13044,8 @@ GALGAS_templateInfOrEqualTestAST GALGAS_templateInfOrEqualTestAST_2D_weak::bang_
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateInfOrEqualTestAST_2D_weak ("templateInfOrEqualTestAST-weak",
-                                                          & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInfOrEqualTestAST_2D_weak ("templateInfOrEqualTestAST-weak",
+                                                                                         & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13291,9 +13237,8 @@ acPtr_class * cPtr_templateStrictSupTestAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateStrictSupTestAST ("templateStrictSupTestAST",
-                                                 & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateStrictSupTestAST ("templateStrictSupTestAST",
+                                                                                & kTypeDescriptor_GALGAS_templateExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13402,9 +13347,8 @@ GALGAS_templateStrictSupTestAST GALGAS_templateStrictSupTestAST_2D_weak::bang_te
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateStrictSupTestAST_2D_weak ("templateStrictSupTestAST-weak",
-                                                         & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateStrictSupTestAST_2D_weak ("templateStrictSupTestAST-weak",
+                                                                                        & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13596,9 +13540,8 @@ acPtr_class * cPtr_templateSupOrEqualTestAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateSupOrEqualTestAST ("templateSupOrEqualTestAST",
-                                                  & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateSupOrEqualTestAST ("templateSupOrEqualTestAST",
+                                                                                 & kTypeDescriptor_GALGAS_templateExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13707,9 +13650,8 @@ GALGAS_templateSupOrEqualTestAST GALGAS_templateSupOrEqualTestAST_2D_weak::bang_
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateSupOrEqualTestAST_2D_weak ("templateSupOrEqualTestAST-weak",
-                                                          & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateSupOrEqualTestAST_2D_weak ("templateSupOrEqualTestAST-weak",
+                                                                                         & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13901,9 +13843,8 @@ acPtr_class * cPtr_templateLeftShiftOperationAST::duplicate (LOCATION_ARGS) cons
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateLeftShiftOperationAST ("templateLeftShiftOperationAST",
-                                                      & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateLeftShiftOperationAST ("templateLeftShiftOperationAST",
+                                                                                     & kTypeDescriptor_GALGAS_templateExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14012,9 +13953,8 @@ GALGAS_templateLeftShiftOperationAST GALGAS_templateLeftShiftOperationAST_2D_wea
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateLeftShiftOperationAST_2D_weak ("templateLeftShiftOperationAST-weak",
-                                                              & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateLeftShiftOperationAST_2D_weak ("templateLeftShiftOperationAST-weak",
+                                                                                             & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14206,9 +14146,8 @@ acPtr_class * cPtr_templateRightShiftOperationAST::duplicate (LOCATION_ARGS) con
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateRightShiftOperationAST ("templateRightShiftOperationAST",
-                                                       & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateRightShiftOperationAST ("templateRightShiftOperationAST",
+                                                                                      & kTypeDescriptor_GALGAS_templateExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14317,9 +14256,8 @@ GALGAS_templateRightShiftOperationAST GALGAS_templateRightShiftOperationAST_2D_w
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateRightShiftOperationAST_2D_weak ("templateRightShiftOperationAST-weak",
-                                                               & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateRightShiftOperationAST_2D_weak ("templateRightShiftOperationAST-weak",
+                                                                                              & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14428,9 +14366,8 @@ GALGAS_templateInstructionStringAST GALGAS_templateInstructionStringAST_2D_weak:
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateInstructionStringAST_2D_weak ("templateInstructionStringAST-weak",
-                                                             & kTypeDescriptor_GALGAS_templateInstructionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionStringAST_2D_weak ("templateInstructionStringAST-weak",
+                                                                                            & kTypeDescriptor_GALGAS_templateInstructionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14601,9 +14538,8 @@ acPtr_class * cPtr_templateInstructionExpressionAST::duplicate (LOCATION_ARGS) c
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateInstructionExpressionAST ("templateInstructionExpressionAST",
-                                                         & kTypeDescriptor_GALGAS_templateInstructionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionExpressionAST ("templateInstructionExpressionAST",
+                                                                                        & kTypeDescriptor_GALGAS_templateInstructionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14712,9 +14648,8 @@ GALGAS_templateInstructionExpressionAST GALGAS_templateInstructionExpressionAST_
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateInstructionExpressionAST_2D_weak ("templateInstructionExpressionAST-weak",
-                                                                 & kTypeDescriptor_GALGAS_templateInstructionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionExpressionAST_2D_weak ("templateInstructionExpressionAST-weak",
+                                                                                                & kTypeDescriptor_GALGAS_templateInstructionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14906,9 +14841,8 @@ acPtr_class * cPtr_templateBlockInstructionAST::duplicate (LOCATION_ARGS) const 
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateBlockInstructionAST ("templateBlockInstructionAST",
-                                                    & kTypeDescriptor_GALGAS_templateInstructionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateBlockInstructionAST ("templateBlockInstructionAST",
+                                                                                   & kTypeDescriptor_GALGAS_templateInstructionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -15017,9 +14951,8 @@ GALGAS_templateBlockInstructionAST GALGAS_templateBlockInstructionAST_2D_weak::b
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateBlockInstructionAST_2D_weak ("templateBlockInstructionAST-weak",
-                                                            & kTypeDescriptor_GALGAS_templateInstructionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateBlockInstructionAST_2D_weak ("templateBlockInstructionAST-weak",
+                                                                                           & kTypeDescriptor_GALGAS_templateInstructionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -15143,9 +15076,8 @@ acPtr_class * cPtr_templateInstructionGetColumnLocationAST::duplicate (LOCATION_
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateInstructionGetColumnLocationAST ("templateInstructionGetColumnLocationAST",
-                                                                & kTypeDescriptor_GALGAS_templateInstructionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionGetColumnLocationAST ("templateInstructionGetColumnLocationAST",
+                                                                                               & kTypeDescriptor_GALGAS_templateInstructionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -15254,9 +15186,8 @@ GALGAS_templateInstructionGetColumnLocationAST GALGAS_templateInstructionGetColu
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateInstructionGetColumnLocationAST_2D_weak ("templateInstructionGetColumnLocationAST-weak",
-                                                                        & kTypeDescriptor_GALGAS_templateInstructionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionGetColumnLocationAST_2D_weak ("templateInstructionGetColumnLocationAST-weak",
+                                                                                                       & kTypeDescriptor_GALGAS_templateInstructionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -15380,9 +15311,8 @@ acPtr_class * cPtr_templateInstructionGotoColumnLocationAST::duplicate (LOCATION
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateInstructionGotoColumnLocationAST ("templateInstructionGotoColumnLocationAST",
-                                                                 & kTypeDescriptor_GALGAS_templateInstructionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionGotoColumnLocationAST ("templateInstructionGotoColumnLocationAST",
+                                                                                                & kTypeDescriptor_GALGAS_templateInstructionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -15491,9 +15421,8 @@ GALGAS_templateInstructionGotoColumnLocationAST GALGAS_templateInstructionGotoCo
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateInstructionGotoColumnLocationAST_2D_weak ("templateInstructionGotoColumnLocationAST-weak",
-                                                                         & kTypeDescriptor_GALGAS_templateInstructionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionGotoColumnLocationAST_2D_weak ("templateInstructionGotoColumnLocationAST-weak",
+                                                                                                        & kTypeDescriptor_GALGAS_templateInstructionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -15966,9 +15895,8 @@ GALGAS_templateInstructionListAST cEnumerator_templateInstructionIfBranchListAST
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateInstructionIfBranchListAST ("templateInstructionIfBranchListAST",
-                                                           nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionIfBranchListAST ("templateInstructionIfBranchListAST",
+                                                                                          nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -16139,9 +16067,8 @@ acPtr_class * cPtr_templateInstructionIfAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateInstructionIfAST ("templateInstructionIfAST",
-                                                 & kTypeDescriptor_GALGAS_templateInstructionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionIfAST ("templateInstructionIfAST",
+                                                                                & kTypeDescriptor_GALGAS_templateInstructionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -16250,9 +16177,8 @@ GALGAS_templateInstructionIfAST GALGAS_templateInstructionIfAST_2D_weak::bang_te
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateInstructionIfAST_2D_weak ("templateInstructionIfAST-weak",
-                                                         & kTypeDescriptor_GALGAS_templateInstructionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionIfAST_2D_weak ("templateInstructionIfAST-weak",
+                                                                                        & kTypeDescriptor_GALGAS_templateInstructionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -16344,9 +16270,8 @@ acStrongPtr_class (THERE) {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateInstructionForGeneration ("templateInstructionForGeneration",
-                                                         nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionForGeneration ("templateInstructionForGeneration",
+                                                                                        nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -16455,9 +16380,8 @@ GALGAS_templateInstructionForGeneration GALGAS_templateInstructionForGeneration_
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateInstructionForGeneration_2D_weak ("templateInstructionForGeneration-weak",
-                                                                 nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionForGeneration_2D_weak ("templateInstructionForGeneration-weak",
+                                                                                                nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -16566,9 +16490,8 @@ GALGAS_templateInstructionExpressionForGeneration GALGAS_templateInstructionExpr
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateInstructionExpressionForGeneration_2D_weak ("templateInstructionExpressionForGeneration-weak",
-                                                                           & kTypeDescriptor_GALGAS_templateInstructionForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionExpressionForGeneration_2D_weak ("templateInstructionExpressionForGeneration-weak",
+                                                                                                          & kTypeDescriptor_GALGAS_templateInstructionForGeneration_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -16975,9 +16898,8 @@ GALGAS_templateInstructionForGeneration cEnumerator_templateInstructionListForGe
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateInstructionListForGeneration ("templateInstructionListForGeneration",
-                                                             nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionListForGeneration ("templateInstructionListForGeneration",
+                                                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -17086,9 +17008,8 @@ GALGAS_templateBlockInstructionForGeneration GALGAS_templateBlockInstructionForG
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateBlockInstructionForGeneration_2D_weak ("templateBlockInstructionForGeneration-weak",
-                                                                      & kTypeDescriptor_GALGAS_templateInstructionForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateBlockInstructionForGeneration_2D_weak ("templateBlockInstructionForGeneration-weak",
+                                                                                                     & kTypeDescriptor_GALGAS_templateInstructionForGeneration_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 

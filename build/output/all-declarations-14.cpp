@@ -511,9 +511,8 @@ GALGAS_string cEnumerator_BuildFileList::current_mBuildReference (LOCATION_ARGS)
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_BuildFileList ("BuildFileList",
-                                      nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_BuildFileList ("BuildFileList",
+                                                                     nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -618,9 +617,8 @@ void GALGAS_templateInstructionListAST_2D_element::description (String & ioStrin
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateInstructionListAST_2D_element ("templateInstructionListAST-element",
-                                                              nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionListAST_2D_element ("templateInstructionListAST-element",
+                                                                                             nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -735,9 +733,8 @@ void GALGAS_templateInstructionIfBranchListAST_2D_element::description (String &
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateInstructionIfBranchListAST_2D_element ("templateInstructionIfBranchListAST-element",
-                                                                      nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionIfBranchListAST_2D_element ("templateInstructionIfBranchListAST-element",
+                                                                                                     nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -872,9 +869,8 @@ void GALGAS_templateInstructionSwitchBranchListAST_2D_element::description (Stri
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateInstructionSwitchBranchListAST_2D_element ("templateInstructionSwitchBranchListAST-element",
-                                                                          nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionSwitchBranchListAST_2D_element ("templateInstructionSwitchBranchListAST-element",
+                                                                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1009,9 +1005,8 @@ void GALGAS_templateInstructionSwitchBranchListForGeneration_2D_element::descrip
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateInstructionSwitchBranchListForGeneration_2D_element ("templateInstructionSwitchBranchListForGeneration-element",
-                                                                                    nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionSwitchBranchListForGeneration_2D_element ("templateInstructionSwitchBranchListForGeneration-element",
+                                                                                                                   nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1116,9 +1111,8 @@ void GALGAS_lexicalInstructionListAST_2D_element::description (String & ioString
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalInstructionListAST_2D_element ("lexicalInstructionListAST-element",
-                                                             nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalInstructionListAST_2D_element ("lexicalInstructionListAST-element",
+                                                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1223,9 +1217,8 @@ void GALGAS_lexicalRuleListAST_2D_element::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalRuleListAST_2D_element ("lexicalRuleListAST-element",
-                                                      nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRuleListAST_2D_element ("lexicalRuleListAST-element",
+                                                                                     nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1340,9 +1333,8 @@ void GALGAS_lexicalWhileBranchListAST_2D_element::description (String & ioString
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalWhileBranchListAST_2D_element ("lexicalWhileBranchListAST-element",
-                                                             nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalWhileBranchListAST_2D_element ("lexicalWhileBranchListAST-element",
+                                                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1457,9 +1449,8 @@ void GALGAS_lexicalSelectBranchListAST_2D_element::description (String & ioStrin
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalSelectBranchListAST_2D_element ("lexicalSelectBranchListAST-element",
-                                                              nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSelectBranchListAST_2D_element ("lexicalSelectBranchListAST-element",
+                                                                                             nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1564,9 +1555,8 @@ void GALGAS_lexicalFunctionCallActualArgumentListAST_2D_element::description (St
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalFunctionCallActualArgumentListAST_2D_element ("lexicalFunctionCallActualArgumentListAST-element",
-                                                                            nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionCallActualArgumentListAST_2D_element ("lexicalFunctionCallActualArgumentListAST-element",
+                                                                                                           nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1691,9 +1681,8 @@ void GALGAS_tokenSortedlist_2D_element::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_tokenSortedlist_2D_element ("tokenSortedlist-element",
-                                                   nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_tokenSortedlist_2D_element ("tokenSortedlist-element",
+                                                                                  nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1818,9 +1807,8 @@ void GALGAS_lexicalRoutineFormalArgumentList_2D_element::description (String & i
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalRoutineFormalArgumentList_2D_element ("lexicalRoutineFormalArgumentList-element",
-                                                                    nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineFormalArgumentList_2D_element ("lexicalRoutineFormalArgumentList-element",
+                                                                                                   nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1935,9 +1923,8 @@ void GALGAS_lexicalFunctionFormalArgumentList_2D_element::description (String & 
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalFunctionFormalArgumentList_2D_element ("lexicalFunctionFormalArgumentList-element",
-                                                                     nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionFormalArgumentList_2D_element ("lexicalFunctionFormalArgumentList-element",
+                                                                                                    nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2042,9 +2029,8 @@ void GALGAS_lexicalRoutineCallActualArgumentListAST_2D_element::description (Str
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalRoutineCallActualArgumentListAST_2D_element ("lexicalRoutineCallActualArgumentListAST-element",
-                                                                           nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineCallActualArgumentListAST_2D_element ("lexicalRoutineCallActualArgumentListAST-element",
+                                                                                                          nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2169,9 +2155,8 @@ void GALGAS_guiLabelListAST_2D_element::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_guiLabelListAST_2D_element ("guiLabelListAST-element",
-                                                   nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_guiLabelListAST_2D_element ("guiLabelListAST-element",
+                                                                                  nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2316,9 +2301,8 @@ void GALGAS_guiCommandLineOptionList_2D_element::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_guiCommandLineOptionList_2D_element ("guiCommandLineOptionList-element",
-                                                            nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_guiCommandLineOptionList_2D_element ("guiCommandLineOptionList-element",
+                                                                                           nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2433,9 +2417,8 @@ void GALGAS_textMacroList_2D_element::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_textMacroList_2D_element ("textMacroList-element",
-                                                 nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_textMacroList_2D_element ("textMacroList-element",
+                                                                                nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2600,9 +2583,8 @@ void GALGAS_importedLexiqueList_2D_element::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_importedLexiqueList_2D_element ("importedLexiqueList-element",
-                                                       nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_importedLexiqueList_2D_element ("importedLexiqueList-element",
+                                                                                      nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2717,9 +2699,8 @@ void GALGAS_enumConstantListForGeneration_2D_element::description (String & ioSt
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_enumConstantListForGeneration_2D_element ("enumConstantListForGeneration-element",
-                                                                 nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumConstantListForGeneration_2D_element ("enumConstantListForGeneration-element",
+                                                                                                nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2824,9 +2805,8 @@ void GALGAS_insertOrReplaceDeclarationListAST_2D_element::description (String & 
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_insertOrReplaceDeclarationListAST_2D_element ("insertOrReplaceDeclarationListAST-element",
-                                                                     nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_insertOrReplaceDeclarationListAST_2D_element ("insertOrReplaceDeclarationListAST-element",
+                                                                                                    nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2951,9 +2931,8 @@ void GALGAS_sortDescriptorListForGeneration_2D_element::description (String & io
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_sortDescriptorListForGeneration_2D_element ("sortDescriptorListForGeneration-element",
-                                                                   nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sortDescriptorListForGeneration_2D_element ("sortDescriptorListForGeneration-element",
+                                                                                                  nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3058,9 +3037,8 @@ void GALGAS_actualParameterListAST_2D_element::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_actualParameterListAST_2D_element ("actualParameterListAST-element",
-                                                          nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_actualParameterListAST_2D_element ("actualParameterListAST-element",
+                                                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3165,9 +3143,8 @@ void GALGAS_semanticInstructionListAST_2D_element::description (String & ioStrin
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_semanticInstructionListAST_2D_element ("semanticInstructionListAST-element",
-                                                              nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticInstructionListAST_2D_element ("semanticInstructionListAST-element",
+                                                                                             nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3272,9 +3249,8 @@ void GALGAS_semanticDeclarationListAST_2D_element::description (String & ioStrin
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_semanticDeclarationListAST_2D_element ("semanticDeclarationListAST-element",
-                                                              nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticDeclarationListAST_2D_element ("semanticDeclarationListAST-element",
+                                                                                             nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3379,9 +3355,8 @@ void GALGAS_syntaxInstructionList_2D_element::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_syntaxInstructionList_2D_element ("syntaxInstructionList-element",
-                                                         nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxInstructionList_2D_element ("syntaxInstructionList-element",
+                                                                                        nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3496,9 +3471,8 @@ void GALGAS_listOfSyntaxInstructionList_2D_element::description (String & ioStri
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_listOfSyntaxInstructionList_2D_element ("listOfSyntaxInstructionList-element",
-                                                               nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_listOfSyntaxInstructionList_2D_element ("listOfSyntaxInstructionList-element",
+                                                                                              nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3613,9 +3587,8 @@ void GALGAS_syntaxExtensions_2D_element::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_syntaxExtensions_2D_element ("syntaxExtensions-element",
-                                                    nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxExtensions_2D_element ("syntaxExtensions-element",
+                                                                                   nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3730,9 +3703,8 @@ void GALGAS_prologueEpilogueList_2D_element::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_prologueEpilogueList_2D_element ("prologueEpilogueList-element",
-                                                        nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_prologueEpilogueList_2D_element ("prologueEpilogueList-element",
+                                                                                       nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3847,9 +3819,8 @@ void GALGAS_enumerationDescriptorList_2D_element::description (String & ioString
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_enumerationDescriptorList_2D_element ("enumerationDescriptorList-element",
-                                                             nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumerationDescriptorList_2D_element ("enumerationDescriptorList-element",
+                                                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3964,9 +3935,8 @@ void GALGAS_acceptableParameterList_2D_element::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_acceptableParameterList_2D_element ("acceptableParameterList-element",
-                                                           nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_acceptableParameterList_2D_element ("acceptableParameterList-element",
+                                                                                          nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4071,9 +4041,8 @@ void GALGAS_templateInstructionListForGeneration_2D_element::description (String
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateInstructionListForGeneration_2D_element ("templateInstructionListForGeneration-element",
-                                                                        nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionListForGeneration_2D_element ("templateInstructionListForGeneration-element",
+                                                                                                       nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4178,9 +4147,8 @@ void GALGAS_actualParameterListForGeneration_2D_element::description (String & i
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_actualParameterListForGeneration_2D_element ("actualParameterListForGeneration-element",
-                                                                    nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_actualParameterListForGeneration_2D_element ("actualParameterListForGeneration-element",
+                                                                                                   nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4285,9 +4253,8 @@ void GALGAS_semanticInstructionListForGeneration_2D_element::description (String
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_semanticInstructionListForGeneration_2D_element ("semanticInstructionListForGeneration-element",
-                                                                        nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticInstructionListForGeneration_2D_element ("semanticInstructionListForGeneration-element",
+                                                                                                       nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4402,9 +4369,8 @@ void GALGAS_listOfSemanticInstructionListForGeneration_2D_element::description (
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_listOfSemanticInstructionListForGeneration_2D_element ("listOfSemanticInstructionListForGeneration-element",
-                                                                              nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_listOfSemanticInstructionListForGeneration_2D_element ("listOfSemanticInstructionListForGeneration-element",
+                                                                                                             nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4519,9 +4485,8 @@ void GALGAS_semanticDeclarationListForGeneration_2D_element::description (String
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_semanticDeclarationListForGeneration_2D_element ("semanticDeclarationListForGeneration-element",
-                                                                        nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticDeclarationListForGeneration_2D_element ("semanticDeclarationListForGeneration-element",
+                                                                                                       nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4636,9 +4601,8 @@ void GALGAS_nonTerminalToAddList_2D_element::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_nonTerminalToAddList_2D_element ("nonTerminalToAddList-element",
-                                                        nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonTerminalToAddList_2D_element ("nonTerminalToAddList-element",
+                                                                                       nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4763,9 +4727,8 @@ void GALGAS_terminalCheckAssignementList_2D_element::description (String & ioStr
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_terminalCheckAssignementList_2D_element ("terminalCheckAssignementList-element",
-                                                                nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalCheckAssignementList_2D_element ("terminalCheckAssignementList-element",
+                                                                                               nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4890,9 +4853,8 @@ void GALGAS_filewrapperTemplateListForGeneration_2D_element::description (String
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_filewrapperTemplateListForGeneration_2D_element ("filewrapperTemplateListForGeneration-element",
-                                                                        nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperTemplateListForGeneration_2D_element ("filewrapperTemplateListForGeneration-element",
+                                                                                                       nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5017,9 +4979,8 @@ void GALGAS_ruleDeclarationList_2D_element::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_ruleDeclarationList_2D_element ("ruleDeclarationList-element",
-                                                       nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ruleDeclarationList_2D_element ("ruleDeclarationList-element",
+                                                                                      nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5124,9 +5085,8 @@ void GALGAS_localVarMapListForLLVM_2D_element::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_localVarMapListForLLVM_2D_element ("localVarMapListForLLVM-element",
-                                                          nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localVarMapListForLLVM_2D_element ("localVarMapListForLLVM-element",
+                                                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5231,9 +5191,8 @@ void GALGAS_openedOverrideList_2D_element::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_openedOverrideList_2D_element ("openedOverrideList-element",
-                                                      nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_openedOverrideList_2D_element ("openedOverrideList-element",
+                                                                                     nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5338,9 +5297,8 @@ void GALGAS_collectionValueElementList_2D_element::description (String & ioStrin
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_collectionValueElementList_2D_element ("collectionValueElementList-element",
-                                                              nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_collectionValueElementList_2D_element ("collectionValueElementList-element",
+                                                                                             nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5445,9 +5403,8 @@ void GALGAS_collectionValueElementListForGeneration_2D_element::description (Str
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_collectionValueElementListForGeneration_2D_element ("collectionValueElementListForGeneration-element",
-                                                                           nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_collectionValueElementListForGeneration_2D_element ("collectionValueElementListForGeneration-element",
+                                                                                                          nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5582,9 +5539,8 @@ void GALGAS_castInstructionBranchListForGeneration_2D_element::description (Stri
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_castInstructionBranchListForGeneration_2D_element ("castInstructionBranchListForGeneration-element",
-                                                                          nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_castInstructionBranchListForGeneration_2D_element ("castInstructionBranchListForGeneration-element",
+                                                                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5689,9 +5645,8 @@ void GALGAS_fixitListAST_2D_element::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_fixitListAST_2D_element ("fixitListAST-element",
-                                                nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitListAST_2D_element ("fixitListAST-element",
+                                                                               nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5796,9 +5751,8 @@ void GALGAS_fixitListForGeneration_2D_element::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_fixitListForGeneration_2D_element ("fixitListForGeneration-element",
-                                                          nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitListForGeneration_2D_element ("fixitListForGeneration-element",
+                                                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5913,9 +5867,8 @@ void GALGAS_forInstructionEnumeratedObjectListAST_2D_element::description (Strin
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_forInstructionEnumeratedObjectListAST_2D_element ("forInstructionEnumeratedObjectListAST-element",
-                                                                         nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_forInstructionEnumeratedObjectListAST_2D_element ("forInstructionEnumeratedObjectListAST-element",
+                                                                                                        nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6020,9 +5973,8 @@ void GALGAS_ifExpressionList_2D_element::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_ifExpressionList_2D_element ("ifExpressionList-element",
-                                                    nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifExpressionList_2D_element ("ifExpressionList-element",
+                                                                                   nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6127,9 +6079,8 @@ void GALGAS_optionalMethodActualArgumentListForGeneration_2D_element::descriptio
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_optionalMethodActualArgumentListForGeneration_2D_element ("optionalMethodActualArgumentListForGeneration-element",
-                                                                                 nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionalMethodActualArgumentListForGeneration_2D_element ("optionalMethodActualArgumentListForGeneration-element",
+                                                                                                                nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6234,9 +6185,8 @@ void GALGAS_ifTestListForGeneration_2D_element::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_ifTestListForGeneration_2D_element ("ifTestListForGeneration-element",
-                                                           nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifTestListForGeneration_2D_element ("ifTestListForGeneration-element",
+                                                                                          nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6371,9 +6321,8 @@ void GALGAS_switchBranchesAST_2D_element::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_switchBranchesAST_2D_element ("switchBranchesAST-element",
-                                                     nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_switchBranchesAST_2D_element ("switchBranchesAST-element",
+                                                                                    nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6498,9 +6447,8 @@ void GALGAS_extractedAssociatedValuesForGeneration_2D_element::description (Stri
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_extractedAssociatedValuesForGeneration_2D_element ("extractedAssociatedValuesForGeneration-element",
-                                                                          nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extractedAssociatedValuesForGeneration_2D_element ("extractedAssociatedValuesForGeneration-element",
+                                                                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6635,9 +6583,8 @@ void GALGAS_switchBranchesForGeneration_2D_element::description (String & ioStri
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_switchBranchesForGeneration_2D_element ("switchBranchesForGeneration-element",
-                                                               nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_switchBranchesForGeneration_2D_element ("switchBranchesForGeneration-element",
+                                                                                              nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6742,9 +6689,8 @@ void GALGAS_syntaxInstructionListForGrammarAnalysis_2D_element::description (Str
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_syntaxInstructionListForGrammarAnalysis_2D_element ("syntaxInstructionListForGrammarAnalysis-element",
-                                                                           nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxInstructionListForGrammarAnalysis_2D_element ("syntaxInstructionListForGrammarAnalysis-element",
+                                                                                                          nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6849,9 +6795,8 @@ void GALGAS_branchListForGrammarAnalysis_2D_element::description (String & ioStr
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_branchListForGrammarAnalysis_2D_element ("branchListForGrammarAnalysis-element",
-                                                                nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_branchListForGrammarAnalysis_2D_element ("branchListForGrammarAnalysis-element",
+                                                                                               nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6956,9 +6901,8 @@ void GALGAS_rowList_2D_element::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_rowList_2D_element ("rowList-element",
-                                           nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_rowList_2D_element ("rowList-element",
+                                                                          nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7063,9 +7007,8 @@ void GALGAS_programListForGeneration_2D_element::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_programListForGeneration_2D_element ("programListForGeneration-element",
-                                                            nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_programListForGeneration_2D_element ("programListForGeneration-element",
+                                                                                           nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7180,9 +7123,8 @@ void GALGAS_genericExtensionMethodListMap_2D_element::description (String & ioSt
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_genericExtensionMethodListMap_2D_element ("genericExtensionMethodListMap-element",
-                                                                 nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_genericExtensionMethodListMap_2D_element ("genericExtensionMethodListMap-element",
+                                                                                                nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7287,9 +7229,8 @@ void GALGAS_unifiedTypeMapEntryList_2D_element::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_unifiedTypeMapEntryList_2D_element ("unifiedTypeMapEntryList-element",
-                                                           nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unifiedTypeMapEntryList_2D_element ("unifiedTypeMapEntryList-element",
+                                                                                          nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7404,9 +7345,8 @@ void GALGAS_descendantClassListMap_2D_element::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_descendantClassListMap_2D_element ("descendantClassListMap-element",
-                                                          nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_descendantClassListMap_2D_element ("descendantClassListMap-element",
+                                                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7541,9 +7481,8 @@ void GALGAS_XCodeGroupList_2D_element::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_XCodeGroupList_2D_element ("XCodeGroupList-element",
-                                                  nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_XCodeGroupList_2D_element ("XCodeGroupList-element",
+                                                                                 nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7748,9 +7687,8 @@ void GALGAS_XCodeToolTargetList_2D_element::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_XCodeToolTargetList_2D_element ("XCodeToolTargetList-element",
-                                                       nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_XCodeToolTargetList_2D_element ("XCodeToolTargetList-element",
+                                                                                      nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7985,9 +7923,8 @@ void GALGAS_XCodeAppTargetList_2D_element::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_XCodeAppTargetList_2D_element ("XCodeAppTargetList-element",
-                                                      nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_XCodeAppTargetList_2D_element ("XCodeAppTargetList-element",
+                                                                                     nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8112,9 +8049,8 @@ void GALGAS_BuildFileList_2D_element::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_BuildFileList_2D_element ("BuildFileList-element",
-                                                 nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_BuildFileList_2D_element ("BuildFileList-element",
+                                                                                nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8849,9 +8785,8 @@ acPtr_class * cPtr_templateConstructorAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateConstructorAST ("templateConstructorAST",
-                                               & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateConstructorAST ("templateConstructorAST",
+                                                                              & kTypeDescriptor_GALGAS_templateExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9043,9 +8978,8 @@ acPtr_class * cPtr_templateFileWrapperTemplateCallAST::duplicate (LOCATION_ARGS)
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateFileWrapperTemplateCallAST ("templateFileWrapperTemplateCallAST",
-                                                           & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateFileWrapperTemplateCallAST ("templateFileWrapperTemplateCallAST",
+                                                                                          & kTypeDescriptor_GALGAS_templateExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9237,9 +9171,8 @@ acPtr_class * cPtr_templateExtensionTemplateCallAST::duplicate (LOCATION_ARGS) c
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateExtensionTemplateCallAST ("templateExtensionTemplateCallAST",
-                                                         & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateExtensionTemplateCallAST ("templateExtensionTemplateCallAST",
+                                                                                        & kTypeDescriptor_GALGAS_templateExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9410,9 +9343,8 @@ acPtr_class * cPtr_templateLiteralStringExpressionAST::duplicate (LOCATION_ARGS)
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateLiteralStringExpressionAST ("templateLiteralStringExpressionAST",
-                                                           & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateLiteralStringExpressionAST ("templateLiteralStringExpressionAST",
+                                                                                          & kTypeDescriptor_GALGAS_templateExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9604,9 +9536,8 @@ acPtr_class * cPtr_structFieldAccessTemplateExpressionAST::duplicate (LOCATION_A
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_structFieldAccessTemplateExpressionAST ("structFieldAccessTemplateExpressionAST",
-                                                               & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_structFieldAccessTemplateExpressionAST ("structFieldAccessTemplateExpressionAST",
+                                                                                              & kTypeDescriptor_GALGAS_templateExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9798,9 +9729,8 @@ acPtr_class * cPtr_templateOptionAccessAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateOptionAccessAST ("templateOptionAccessAST",
-                                                & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateOptionAccessAST ("templateOptionAccessAST",
+                                                                               & kTypeDescriptor_GALGAS_templateExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10013,9 +9943,8 @@ acPtr_class * cPtr_templateTestDynamicClassAST::duplicate (LOCATION_ARGS) const 
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateTestDynamicClassAST ("templateTestDynamicClassAST",
-                                                    & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateTestDynamicClassAST ("templateTestDynamicClassAST",
+                                                                                   & kTypeDescriptor_GALGAS_templateExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10186,9 +10115,8 @@ acPtr_class * cPtr_templateFunctionCallAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateFunctionCallAST ("templateFunctionCallAST",
-                                                & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateFunctionCallAST ("templateFunctionCallAST",
+                                                                               & kTypeDescriptor_GALGAS_templateExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10338,9 +10266,8 @@ acPtr_class * cPtr_templateVarInExpressionAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateVarInExpressionAST ("templateVarInExpressionAST",
-                                                   & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateVarInExpressionAST ("templateVarInExpressionAST",
+                                                                                  & kTypeDescriptor_GALGAS_templateExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10490,9 +10417,8 @@ acPtr_class * cPtr_templateInstructionStringAST::duplicate (LOCATION_ARGS) const
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateInstructionStringAST ("templateInstructionStringAST",
-                                                     & kTypeDescriptor_GALGAS_templateInstructionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionStringAST ("templateInstructionStringAST",
+                                                                                    & kTypeDescriptor_GALGAS_templateInstructionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12987,9 +12913,8 @@ acPtr_class * cPtr_templateInstructionStringForGeneration::duplicate (LOCATION_A
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateInstructionStringForGeneration ("templateInstructionStringForGeneration",
-                                                               & kTypeDescriptor_GALGAS_templateInstructionForGeneration) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionStringForGeneration ("templateInstructionStringForGeneration",
+                                                                                              & kTypeDescriptor_GALGAS_templateInstructionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13098,9 +13023,8 @@ GALGAS_templateInstructionStringForGeneration GALGAS_templateInstructionStringFo
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateInstructionStringForGeneration_2D_weak ("templateInstructionStringForGeneration-weak",
-                                                                       & kTypeDescriptor_GALGAS_templateInstructionForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionStringForGeneration_2D_weak ("templateInstructionStringForGeneration-weak",
+                                                                                                      & kTypeDescriptor_GALGAS_templateInstructionForGeneration_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13222,9 +13146,8 @@ mProperty_mLocation (in_mLocation) {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_semanticExpressionForGeneration ("semanticExpressionForGeneration",
-                                                        nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticExpressionForGeneration ("semanticExpressionForGeneration",
+                                                                                       nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13416,9 +13339,8 @@ acPtr_class * cPtr_templateBlockInstructionForGeneration::duplicate (LOCATION_AR
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateBlockInstructionForGeneration ("templateBlockInstructionForGeneration",
-                                                              & kTypeDescriptor_GALGAS_templateInstructionForGeneration) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateBlockInstructionForGeneration ("templateBlockInstructionForGeneration",
+                                                                                             & kTypeDescriptor_GALGAS_templateInstructionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13631,9 +13553,8 @@ acPtr_class * cPtr_templateGetterCallInExpressionAST::duplicate (LOCATION_ARGS) 
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateGetterCallInExpressionAST ("templateGetterCallInExpressionAST",
-                                                          & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateGetterCallInExpressionAST ("templateGetterCallInExpressionAST",
+                                                                                         & kTypeDescriptor_GALGAS_templateExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13930,9 +13851,8 @@ acPtr_class * cPtr_templateInstructionForeachAST::duplicate (LOCATION_ARGS) cons
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateInstructionForeachAST ("templateInstructionForeachAST",
-                                                      & kTypeDescriptor_GALGAS_templateInstructionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionForeachAST ("templateInstructionForeachAST",
+                                                                                     & kTypeDescriptor_GALGAS_templateInstructionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14229,9 +14149,8 @@ acPtr_class * cPtr_templateInstructionForeachForGeneration::duplicate (LOCATION_
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateInstructionForeachForGeneration ("templateInstructionForeachForGeneration",
-                                                                & kTypeDescriptor_GALGAS_templateInstructionForGeneration) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionForeachForGeneration ("templateInstructionForeachForGeneration",
+                                                                                               & kTypeDescriptor_GALGAS_templateInstructionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14423,9 +14342,8 @@ acPtr_class * cPtr_templateInstructionSwitchForGeneration::duplicate (LOCATION_A
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateInstructionSwitchForGeneration ("templateInstructionSwitchForGeneration",
-                                                               & kTypeDescriptor_GALGAS_templateInstructionForGeneration) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionSwitchForGeneration ("templateInstructionSwitchForGeneration",
+                                                                                              & kTypeDescriptor_GALGAS_templateInstructionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14792,9 +14710,8 @@ acPtr_class * cPtr_lexiqueComponentAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexiqueComponentAST ("lexiqueComponentAST",
-                                            & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexiqueComponentAST ("lexiqueComponentAST",
+                                                                           & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14903,9 +14820,8 @@ GALGAS_lexiqueComponentAST GALGAS_lexiqueComponentAST_2D_weak::bang_lexiqueCompo
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexiqueComponentAST_2D_weak ("lexiqueComponentAST-weak",
-                                                    & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexiqueComponentAST_2D_weak ("lexiqueComponentAST-weak",
+                                                                                   & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -15125,9 +15041,8 @@ acPtr_class * cPtr_templateLexiqueComponentAST::duplicate (LOCATION_ARGS) const 
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateLexiqueComponentAST ("templateLexiqueComponentAST",
-                                                    & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateLexiqueComponentAST ("templateLexiqueComponentAST",
+                                                                                   & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -15277,9 +15192,8 @@ acPtr_class * cPtr_lexicalImplicitRuleAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalImplicitRuleAST ("lexicalImplicitRuleAST",
-                                               & kTypeDescriptor_GALGAS_abstractLexicalRuleAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalImplicitRuleAST ("lexicalImplicitRuleAST",
+                                                                              & kTypeDescriptor_GALGAS_abstractLexicalRuleAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -15309,158 +15223,6 @@ GALGAS_lexicalImplicitRuleAST GALGAS_lexicalImplicitRuleAST::extractObject (cons
       result = *p ;
     }else{
       inCompiler->castError ("lexicalImplicitRuleAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @lexicalCharacterSetMatchAST reference class
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_lexicalCharacterSetMatchAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_lexicalExpressionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mCharacterSetName.printNonNullClassInstanceProperties ("mCharacterSetName") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
-typeComparisonResult cPtr_lexicalCharacterSetMatchAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_lexicalCharacterSetMatchAST * p = (const cPtr_lexicalCharacterSetMatchAST *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_lexicalCharacterSetMatchAST) ;
-  if (kOperandEqual == result) {
-    result = mProperty_mCharacterSetName.objectCompare (p->mProperty_mCharacterSetName) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-
-typeComparisonResult GALGAS_lexicalCharacterSetMatchAST::objectCompare (const GALGAS_lexicalCharacterSetMatchAST & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = kOperandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_lexicalCharacterSetMatchAST::GALGAS_lexicalCharacterSetMatchAST (void) :
-GALGAS_lexicalExpressionAST () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_lexicalCharacterSetMatchAST::GALGAS_lexicalCharacterSetMatchAST (const cPtr_lexicalCharacterSetMatchAST * inSourcePtr) :
-GALGAS_lexicalExpressionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_lexicalCharacterSetMatchAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_lexicalCharacterSetMatchAST GALGAS_lexicalCharacterSetMatchAST::constructor_new (const GALGAS_lstring & inAttribute_mCharacterSetName
-                                                                                        COMMA_LOCATION_ARGS) {
-  GALGAS_lexicalCharacterSetMatchAST result ;
-  if (inAttribute_mCharacterSetName.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_lexicalCharacterSetMatchAST (inAttribute_mCharacterSetName COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_lstring GALGAS_lexicalCharacterSetMatchAST::readProperty_mCharacterSetName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GALGAS_lstring () ;
-  }else{
-    cPtr_lexicalCharacterSetMatchAST * p = (cPtr_lexicalCharacterSetMatchAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexicalCharacterSetMatchAST) ;
-    return p->mProperty_mCharacterSetName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @lexicalCharacterSetMatchAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_lexicalCharacterSetMatchAST::cPtr_lexicalCharacterSetMatchAST (const GALGAS_lstring & in_mCharacterSetName
-                                                                    COMMA_LOCATION_ARGS) :
-cPtr_lexicalExpressionAST (THERE),
-mProperty_mCharacterSetName (in_mCharacterSetName) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * cPtr_lexicalCharacterSetMatchAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalCharacterSetMatchAST ;
-}
-
-void cPtr_lexicalCharacterSetMatchAST::description (String & ioString,
-                                                    const int32_t inIndentation) const {
-  ioString.addString ("[@lexicalCharacterSetMatchAST:") ;
-  mProperty_mCharacterSetName.description (ioString, inIndentation+1) ;
-  ioString.addString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_lexicalCharacterSetMatchAST::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_lexicalCharacterSetMatchAST (mProperty_mCharacterSetName COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @lexicalCharacterSetMatchAST generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalCharacterSetMatchAST ("lexicalCharacterSetMatchAST",
-                                                    & kTypeDescriptor_GALGAS_lexicalExpressionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_lexicalCharacterSetMatchAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalCharacterSetMatchAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_lexicalCharacterSetMatchAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_lexicalCharacterSetMatchAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_lexicalCharacterSetMatchAST GALGAS_lexicalCharacterSetMatchAST::extractObject (const GALGAS_object & inObject,
-                                                                                      Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) {
-  GALGAS_lexicalCharacterSetMatchAST result ;
-  const GALGAS_lexicalCharacterSetMatchAST * p = (const GALGAS_lexicalCharacterSetMatchAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_lexicalCharacterSetMatchAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("lexicalCharacterSetMatchAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

@@ -27,9 +27,9 @@
 
 //--------------------------------------------------------------------------------------------------
 
-//#define GENERATE_BLOCK_SIZE_STATS
-//#define USE_SMALL_BLOCK_FREE_LIST
-//#define USE_MALLOC_GOOD_SIZE
+// define GENERATE_BLOCK_SIZE_STATS
+// define USE_SMALL_BLOCK_FREE_LIST
+// define USE_MALLOC_GOOD_SIZE
 
 //--------------------------------------------------------------------------------------------------
 

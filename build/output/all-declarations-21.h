@@ -599,6 +599,18 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_boolsetTypeForGener
 
 //--------------------------------------------------------------------------------------------------
 //
+//Extension method '@predefinedTypeAST getConstructorMap'
+//
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_getConstructorMap (class cPtr_predefinedTypeAST * inObject,
+                                            class GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
+                                            class GALGAS_constructorMap & out_outConstructorMap,
+                                            Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Extension setter '@routineMap insertKey'
 //
 //--------------------------------------------------------------------------------------------------

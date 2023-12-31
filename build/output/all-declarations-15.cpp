@@ -8,6 +8,157 @@
 #include "all-declarations-15.h"
 
 //--------------------------------------------------------------------------------------------------
+// @lexicalCharacterSetMatchAST reference class
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_lexicalCharacterSetMatchAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_lexicalExpressionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mCharacterSetName.printNonNullClassInstanceProperties ("mCharacterSetName") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+typeComparisonResult cPtr_lexicalCharacterSetMatchAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_lexicalCharacterSetMatchAST * p = (const cPtr_lexicalCharacterSetMatchAST *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_lexicalCharacterSetMatchAST) ;
+  if (kOperandEqual == result) {
+    result = mProperty_mCharacterSetName.objectCompare (p->mProperty_mCharacterSetName) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+
+typeComparisonResult GALGAS_lexicalCharacterSetMatchAST::objectCompare (const GALGAS_lexicalCharacterSetMatchAST & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = kOperandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalCharacterSetMatchAST::GALGAS_lexicalCharacterSetMatchAST (void) :
+GALGAS_lexicalExpressionAST () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalCharacterSetMatchAST::GALGAS_lexicalCharacterSetMatchAST (const cPtr_lexicalCharacterSetMatchAST * inSourcePtr) :
+GALGAS_lexicalExpressionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_lexicalCharacterSetMatchAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalCharacterSetMatchAST GALGAS_lexicalCharacterSetMatchAST::constructor_new (const GALGAS_lstring & inAttribute_mCharacterSetName
+                                                                                        COMMA_LOCATION_ARGS) {
+  GALGAS_lexicalCharacterSetMatchAST result ;
+  if (inAttribute_mCharacterSetName.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_lexicalCharacterSetMatchAST (inAttribute_mCharacterSetName COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lstring GALGAS_lexicalCharacterSetMatchAST::readProperty_mCharacterSetName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_lstring () ;
+  }else{
+    cPtr_lexicalCharacterSetMatchAST * p = (cPtr_lexicalCharacterSetMatchAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_lexicalCharacterSetMatchAST) ;
+    return p->mProperty_mCharacterSetName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @lexicalCharacterSetMatchAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_lexicalCharacterSetMatchAST::cPtr_lexicalCharacterSetMatchAST (const GALGAS_lstring & in_mCharacterSetName
+                                                                    COMMA_LOCATION_ARGS) :
+cPtr_lexicalExpressionAST (THERE),
+mProperty_mCharacterSetName (in_mCharacterSetName) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * cPtr_lexicalCharacterSetMatchAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalCharacterSetMatchAST ;
+}
+
+void cPtr_lexicalCharacterSetMatchAST::description (String & ioString,
+                                                    const int32_t inIndentation) const {
+  ioString.addString ("[@lexicalCharacterSetMatchAST:") ;
+  mProperty_mCharacterSetName.description (ioString, inIndentation+1) ;
+  ioString.addString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_lexicalCharacterSetMatchAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_lexicalCharacterSetMatchAST (mProperty_mCharacterSetName COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @lexicalCharacterSetMatchAST generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalCharacterSetMatchAST ("lexicalCharacterSetMatchAST",
+                                                                                   & kTypeDescriptor_GALGAS_lexicalExpressionAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_lexicalCharacterSetMatchAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalCharacterSetMatchAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_lexicalCharacterSetMatchAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_lexicalCharacterSetMatchAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalCharacterSetMatchAST GALGAS_lexicalCharacterSetMatchAST::extractObject (const GALGAS_object & inObject,
+                                                                                      Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) {
+  GALGAS_lexicalCharacterSetMatchAST result ;
+  const GALGAS_lexicalCharacterSetMatchAST * p = (const GALGAS_lexicalCharacterSetMatchAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_lexicalCharacterSetMatchAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("lexicalCharacterSetMatchAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
 // @lexicalCharacterMatchAST reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -122,9 +273,8 @@ acPtr_class * cPtr_lexicalCharacterMatchAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalCharacterMatchAST ("lexicalCharacterMatchAST",
-                                                 & kTypeDescriptor_GALGAS_lexicalExpressionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalCharacterMatchAST ("lexicalCharacterMatchAST",
+                                                                                & kTypeDescriptor_GALGAS_lexicalExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -295,9 +445,8 @@ acPtr_class * cPtr_lexicalCharacterIntervalMatchAST::duplicate (LOCATION_ARGS) c
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalCharacterIntervalMatchAST ("lexicalCharacterIntervalMatchAST",
-                                                         & kTypeDescriptor_GALGAS_lexicalExpressionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalCharacterIntervalMatchAST ("lexicalCharacterIntervalMatchAST",
+                                                                                        & kTypeDescriptor_GALGAS_lexicalExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -447,9 +596,8 @@ acPtr_class * cPtr_lexicalStringMatchAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalStringMatchAST ("lexicalStringMatchAST",
-                                              & kTypeDescriptor_GALGAS_lexicalExpressionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalStringMatchAST ("lexicalStringMatchAST",
+                                                                             & kTypeDescriptor_GALGAS_lexicalExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -620,9 +768,8 @@ acPtr_class * cPtr_lexicalStringNotMatchAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalStringNotMatchAST ("lexicalStringNotMatchAST",
-                                                 & kTypeDescriptor_GALGAS_lexicalExpressionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalStringNotMatchAST ("lexicalStringNotMatchAST",
+                                                                                & kTypeDescriptor_GALGAS_lexicalExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -772,9 +919,8 @@ acPtr_class * cPtr_lexicalSendTerminalByDefaultAST::duplicate (LOCATION_ARGS) co
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalSendTerminalByDefaultAST ("lexicalSendTerminalByDefaultAST",
-                                                        & kTypeDescriptor_GALGAS_lexicalSendDefaultActionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSendTerminalByDefaultAST ("lexicalSendTerminalByDefaultAST",
+                                                                                       & kTypeDescriptor_GALGAS_lexicalSendDefaultActionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -924,9 +1070,8 @@ acPtr_class * cPtr_lexicalErrorByDefaultAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalErrorByDefaultAST ("lexicalErrorByDefaultAST",
-                                                 & kTypeDescriptor_GALGAS_lexicalSendDefaultActionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalErrorByDefaultAST ("lexicalErrorByDefaultAST",
+                                                                                & kTypeDescriptor_GALGAS_lexicalSendDefaultActionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1076,9 +1221,8 @@ acPtr_class * cPtr_lexicalAttributeInputArgumentAST::duplicate (LOCATION_ARGS) c
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalAttributeInputArgumentAST ("lexicalAttributeInputArgumentAST",
-                                                         & kTypeDescriptor_GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalAttributeInputArgumentAST ("lexicalAttributeInputArgumentAST",
+                                                                                        & kTypeDescriptor_GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1228,9 +1372,8 @@ acPtr_class * cPtr_lexicalCharacterInputArgumentAST::duplicate (LOCATION_ARGS) c
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalCharacterInputArgumentAST ("lexicalCharacterInputArgumentAST",
-                                                         & kTypeDescriptor_GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalCharacterInputArgumentAST ("lexicalCharacterInputArgumentAST",
+                                                                                        & kTypeDescriptor_GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1380,9 +1523,8 @@ acPtr_class * cPtr_lexicalUnsignedInputArgumentAST::duplicate (LOCATION_ARGS) co
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalUnsignedInputArgumentAST ("lexicalUnsignedInputArgumentAST",
-                                                        & kTypeDescriptor_GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalUnsignedInputArgumentAST ("lexicalUnsignedInputArgumentAST",
+                                                                                       & kTypeDescriptor_GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1553,9 +1695,8 @@ acPtr_class * cPtr_lexicalFunctionInputArgumentAST::duplicate (LOCATION_ARGS) co
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalFunctionInputArgumentAST ("lexicalFunctionInputArgumentAST",
-                                                        & kTypeDescriptor_GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionInputArgumentAST ("lexicalFunctionInputArgumentAST",
+                                                                                       & kTypeDescriptor_GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1770,9 +1911,8 @@ void GALGAS_lexiqueAnalysisContext::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexiqueAnalysisContext ("lexiqueAnalysisContext",
-                                               nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexiqueAnalysisContext ("lexiqueAnalysisContext",
+                                                                              nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1922,9 +2062,8 @@ acPtr_class * cPtr_lexicalDropInstructionAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalDropInstructionAST ("lexicalDropInstructionAST",
-                                                  & kTypeDescriptor_GALGAS_lexicalInstructionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalDropInstructionAST ("lexicalDropInstructionAST",
+                                                                                 & kTypeDescriptor_GALGAS_lexicalInstructionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2074,9 +2213,8 @@ acPtr_class * cPtr_lexicalErrorInstructionAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalErrorInstructionAST ("lexicalErrorInstructionAST",
-                                                   & kTypeDescriptor_GALGAS_lexicalInstructionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalErrorInstructionAST ("lexicalErrorInstructionAST",
+                                                                                  & kTypeDescriptor_GALGAS_lexicalInstructionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2247,9 +2385,8 @@ acPtr_class * cPtr_lexicalRewindInstructionAST::duplicate (LOCATION_ARGS) const 
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalRewindInstructionAST ("lexicalRewindInstructionAST",
-                                                    & kTypeDescriptor_GALGAS_lexicalInstructionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRewindInstructionAST ("lexicalRewindInstructionAST",
+                                                                                   & kTypeDescriptor_GALGAS_lexicalInstructionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2406,9 +2543,8 @@ acPtr_class * cPtr_lexicalAttributeInputOutputArgumentAST::duplicate (LOCATION_A
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalAttributeInputOutputArgumentAST ("lexicalAttributeInputOutputArgumentAST",
-                                                               & kTypeDescriptor_GALGAS_abstractLexicalRoutineActualArgumentAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalAttributeInputOutputArgumentAST ("lexicalAttributeInputOutputArgumentAST",
+                                                                                              & kTypeDescriptor_GALGAS_abstractLexicalRoutineActualArgumentAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2600,9 +2736,8 @@ acPtr_class * cPtr_lexicalRoutineCallInstructionAST::duplicate (LOCATION_ARGS) c
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalRoutineCallInstructionAST ("lexicalRoutineCallInstructionAST",
-                                                         & kTypeDescriptor_GALGAS_lexicalInstructionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineCallInstructionAST ("lexicalRoutineCallInstructionAST",
+                                                                                        & kTypeDescriptor_GALGAS_lexicalInstructionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2752,9 +2887,8 @@ acPtr_class * cPtr_lexicalSimpleSendInstructionAST::duplicate (LOCATION_ARGS) co
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalSimpleSendInstructionAST ("lexicalSimpleSendInstructionAST",
-                                                        & kTypeDescriptor_GALGAS_lexicalInstructionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSimpleSendInstructionAST ("lexicalSimpleSendInstructionAST",
+                                                                                       & kTypeDescriptor_GALGAS_lexicalInstructionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2904,9 +3038,8 @@ acPtr_class * cPtr_lexicalTagInstructionAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalTagInstructionAST ("lexicalTagInstructionAST",
-                                                 & kTypeDescriptor_GALGAS_lexicalInstructionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalTagInstructionAST ("lexicalTagInstructionAST",
+                                                                                & kTypeDescriptor_GALGAS_lexicalInstructionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3056,9 +3189,8 @@ acPtr_class * cPtr_lexicalWarningInstructionAST::duplicate (LOCATION_ARGS) const
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalWarningInstructionAST ("lexicalWarningInstructionAST",
-                                                     & kTypeDescriptor_GALGAS_lexicalInstructionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalWarningInstructionAST ("lexicalWarningInstructionAST",
+                                                                                    & kTypeDescriptor_GALGAS_lexicalInstructionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3236,9 +3368,8 @@ acPtr_class * cPtr_optionComponentDeclarationAST::duplicate (LOCATION_ARGS) cons
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_optionComponentDeclarationAST ("optionComponentDeclarationAST",
-                                                      & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionComponentDeclarationAST ("optionComponentDeclarationAST",
+                                                                                     & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3360,9 +3491,8 @@ mProperty_mImplementationCppFileName (in_mImplementationCppFileName) {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration ("semanticDeclarationWithHeaderForGeneration",
-                                                                   & kTypeDescriptor_GALGAS_semanticDeclarationForGeneration) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration ("semanticDeclarationWithHeaderForGeneration",
+                                                                                                  & kTypeDescriptor_GALGAS_semanticDeclarationForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3471,9 +3601,8 @@ GALGAS_semanticDeclarationWithHeaderForGeneration GALGAS_semanticDeclarationWith
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak ("semanticDeclarationWithHeaderForGeneration-weak",
-                                                                           & kTypeDescriptor_GALGAS_semanticDeclarationForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak ("semanticDeclarationWithHeaderForGeneration-weak",
+                                                                                                          & kTypeDescriptor_GALGAS_semanticDeclarationForGeneration_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3651,9 +3780,8 @@ acPtr_class * cPtr_boolsetDeclarationAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_boolsetDeclarationAST ("boolsetDeclarationAST",
-                                              & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_boolsetDeclarationAST ("boolsetDeclarationAST",
+                                                                             & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3760,9 +3888,8 @@ mProperty_mSelfTypeEntry (in_mSelfTypeEntry) {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_semanticTypeForGeneration ("semanticTypeForGeneration",
-                                                  & kTypeDescriptor_GALGAS_semanticDeclarationForGeneration) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticTypeForGeneration ("semanticTypeForGeneration",
+                                                                                 & kTypeDescriptor_GALGAS_semanticDeclarationForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3871,9 +3998,8 @@ GALGAS_semanticTypeForGeneration GALGAS_semanticTypeForGeneration_2D_weak::bang_
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_semanticTypeForGeneration_2D_weak ("semanticTypeForGeneration-weak",
-                                                          & kTypeDescriptor_GALGAS_semanticDeclarationForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticTypeForGeneration_2D_weak ("semanticTypeForGeneration-weak",
+                                                                                         & kTypeDescriptor_GALGAS_semanticDeclarationForGeneration_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4135,9 +4261,8 @@ acPtr_class * cPtr_classDeclarationAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_classDeclarationAST ("classDeclarationAST",
-                                            & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classDeclarationAST ("classDeclarationAST",
+                                                                           & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4399,9 +4524,8 @@ acPtr_class * cPtr_classTypeForGeneration::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_classTypeForGeneration ("classTypeForGeneration",
-                                               & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classTypeForGeneration ("classTypeForGeneration",
+                                                                              & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4510,9 +4634,8 @@ GALGAS_classTypeForGeneration GALGAS_classTypeForGeneration_2D_weak::bang_classT
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_classTypeForGeneration_2D_weak ("classTypeForGeneration-weak",
-                                                       & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classTypeForGeneration_2D_weak ("classTypeForGeneration-weak",
+                                                                                      & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4753,9 +4876,8 @@ acPtr_class * cPtr_weakReferenceDeclarationAST::duplicate (LOCATION_ARGS) const 
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_weakReferenceDeclarationAST ("weakReferenceDeclarationAST",
-                                                    & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_weakReferenceDeclarationAST ("weakReferenceDeclarationAST",
+                                                                                   & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4996,9 +5118,8 @@ acPtr_class * cPtr_weakReferenceTypeForGeneration::duplicate (LOCATION_ARGS) con
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_weakReferenceTypeForGeneration ("weakReferenceTypeForGeneration",
-                                                       & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_weakReferenceTypeForGeneration ("weakReferenceTypeForGeneration",
+                                                                                      & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5107,9 +5228,8 @@ GALGAS_weakReferenceTypeForGeneration GALGAS_weakReferenceTypeForGeneration_2D_w
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_weakReferenceTypeForGeneration_2D_weak ("weakReferenceTypeForGeneration-weak",
-                                                               & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_weakReferenceTypeForGeneration_2D_weak ("weakReferenceTypeForGeneration-weak",
+                                                                                              & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5287,9 +5407,8 @@ acPtr_class * cPtr_enumDeclarationAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_enumDeclarationAST ("enumDeclarationAST",
-                                           & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumDeclarationAST ("enumDeclarationAST",
+                                                                          & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5446,9 +5565,8 @@ acPtr_class * cPtr_enumTypeForGeneration::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_enumTypeForGeneration ("enumTypeForGeneration",
-                                              & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumTypeForGeneration ("enumTypeForGeneration",
+                                                                             & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5557,9 +5675,8 @@ GALGAS_enumTypeForGeneration GALGAS_enumTypeForGeneration_2D_weak::bang_enumType
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_enumTypeForGeneration_2D_weak ("enumTypeForGeneration-weak",
-                                                      & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumTypeForGeneration_2D_weak ("enumTypeForGeneration-weak",
+                                                                                     & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5842,9 +5959,8 @@ acPtr_class * cPtr_externTypeDeclarationAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_externTypeDeclarationAST ("externTypeDeclarationAST",
-                                                 & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeDeclarationAST ("externTypeDeclarationAST",
+                                                                                & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6043,9 +6159,8 @@ acPtr_class * cPtr_externTypeDeclarationForGeneration::duplicate (LOCATION_ARGS)
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_externTypeDeclarationForGeneration ("externTypeDeclarationForGeneration",
-                                                           & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeDeclarationForGeneration ("externTypeDeclarationForGeneration",
+                                                                                          & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6154,9 +6269,8 @@ GALGAS_externTypeDeclarationForGeneration GALGAS_externTypeDeclarationForGenerat
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_externTypeDeclarationForGeneration_2D_weak ("externTypeDeclarationForGeneration-weak",
-                                                                   & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeDeclarationForGeneration_2D_weak ("externTypeDeclarationForGeneration-weak",
+                                                                                                  & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6355,9 +6469,8 @@ acPtr_class * cPtr_graphDeclarationAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_graphDeclarationAST ("graphDeclarationAST",
-                                            & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_graphDeclarationAST ("graphDeclarationAST",
+                                                                           & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6556,9 +6669,8 @@ acPtr_class * cPtr_graphDeclarationForGeneration::duplicate (LOCATION_ARGS) cons
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_graphDeclarationForGeneration ("graphDeclarationForGeneration",
-                                                      & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_graphDeclarationForGeneration ("graphDeclarationForGeneration",
+                                                                                     & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6667,9 +6779,8 @@ GALGAS_graphDeclarationForGeneration GALGAS_graphDeclarationForGeneration_2D_wea
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_graphDeclarationForGeneration_2D_weak ("graphDeclarationForGeneration-weak",
-                                                              & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_graphDeclarationForGeneration_2D_weak ("graphDeclarationForGeneration-weak",
+                                                                                             & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6868,9 +6979,8 @@ acPtr_class * cPtr_listDeclarationAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_listDeclarationAST ("listDeclarationAST",
-                                           & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_listDeclarationAST ("listDeclarationAST",
+                                                                          & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7048,9 +7158,8 @@ acPtr_class * cPtr_listTypeForGeneration::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_listTypeForGeneration ("listTypeForGeneration",
-                                              & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_listTypeForGeneration ("listTypeForGeneration",
+                                                                             & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7159,9 +7268,8 @@ GALGAS_listTypeForGeneration GALGAS_listTypeForGeneration_2D_weak::bang_listType
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_listTypeForGeneration_2D_weak ("listTypeForGeneration-weak",
-                                                      & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_listTypeForGeneration_2D_weak ("listTypeForGeneration-weak",
+                                                                                     & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7339,9 +7447,8 @@ acPtr_class * cPtr_listmapDeclarationAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_listmapDeclarationAST ("listmapDeclarationAST",
-                                              & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_listmapDeclarationAST ("listmapDeclarationAST",
+                                                                             & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7540,9 +7647,8 @@ acPtr_class * cPtr_listmapTypeForGeneration::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_listmapTypeForGeneration ("listmapTypeForGeneration",
-                                                 & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_listmapTypeForGeneration ("listmapTypeForGeneration",
+                                                                                & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7651,9 +7757,8 @@ GALGAS_listmapTypeForGeneration GALGAS_listmapTypeForGeneration_2D_weak::bang_li
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_listmapTypeForGeneration_2D_weak ("listmapTypeForGeneration-weak",
-                                                         & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_listmapTypeForGeneration_2D_weak ("listmapTypeForGeneration-weak",
+                                                                                        & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7852,9 +7957,8 @@ acPtr_class * cPtr_dictDeclarationAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_dictDeclarationAST ("dictDeclarationAST",
-                                           & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_dictDeclarationAST ("dictDeclarationAST",
+                                                                          & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8074,9 +8178,8 @@ acPtr_class * cPtr_dictTypeForGeneration::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_dictTypeForGeneration ("dictTypeForGeneration",
-                                              & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_dictTypeForGeneration ("dictTypeForGeneration",
+                                                                             & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8185,9 +8288,8 @@ GALGAS_dictTypeForGeneration GALGAS_dictTypeForGeneration_2D_weak::bang_dictType
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_dictTypeForGeneration_2D_weak ("dictTypeForGeneration-weak",
-                                                      & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_dictTypeForGeneration_2D_weak ("dictTypeForGeneration-weak",
+                                                                                     & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8449,9 +8551,8 @@ acPtr_class * cPtr_mapDeclarationAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_mapDeclarationAST ("mapDeclarationAST",
-                                          & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapDeclarationAST ("mapDeclarationAST",
+                                                                         & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8734,9 +8835,8 @@ acPtr_class * cPtr_mapTypeForGeneration::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_mapTypeForGeneration ("mapTypeForGeneration",
-                                             & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapTypeForGeneration ("mapTypeForGeneration",
+                                                                            & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8845,9 +8945,8 @@ GALGAS_mapTypeForGeneration GALGAS_mapTypeForGeneration_2D_weak::bang_mapTypeFor
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_mapTypeForGeneration_2D_weak ("mapTypeForGeneration-weak",
-                                                     & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapTypeForGeneration_2D_weak ("mapTypeForGeneration-weak",
+                                                                                    & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9046,9 +9145,8 @@ acPtr_class * cPtr_sortedListDeclarationAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_sortedListDeclarationAST ("sortedListDeclarationAST",
-                                                 & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sortedListDeclarationAST ("sortedListDeclarationAST",
+                                                                                & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9247,9 +9345,8 @@ acPtr_class * cPtr_sortedListTypeForGeneration::duplicate (LOCATION_ARGS) const 
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_sortedListTypeForGeneration ("sortedListTypeForGeneration",
-                                                    & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sortedListTypeForGeneration ("sortedListTypeForGeneration",
+                                                                                   & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9358,9 +9455,8 @@ GALGAS_sortedListTypeForGeneration GALGAS_sortedListTypeForGeneration_2D_weak::b
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_sortedListTypeForGeneration_2D_weak ("sortedListTypeForGeneration-weak",
-                                                            & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sortedListTypeForGeneration_2D_weak ("sortedListTypeForGeneration-weak",
+                                                                                           & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9559,9 +9655,8 @@ acPtr_class * cPtr_structDeclarationAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_structDeclarationAST ("structDeclarationAST",
-                                             & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_structDeclarationAST ("structDeclarationAST",
+                                                                            & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9781,9 +9876,8 @@ acPtr_class * cPtr_structTypeForGeneration::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_structTypeForGeneration ("structTypeForGeneration",
-                                                & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_structTypeForGeneration ("structTypeForGeneration",
+                                                                               & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9892,9 +9986,8 @@ GALGAS_structTypeForGeneration GALGAS_structTypeForGeneration_2D_weak::bang_stru
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_structTypeForGeneration_2D_weak ("structTypeForGeneration-weak",
-                                                        & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_structTypeForGeneration_2D_weak ("structTypeForGeneration-weak",
+                                                                                       & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10072,9 +10165,8 @@ acPtr_class * cPtr_typealiasDeclarationAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_typealiasDeclarationAST ("typealiasDeclarationAST",
-                                                & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typealiasDeclarationAST ("typealiasDeclarationAST",
+                                                                               & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10252,9 +10344,8 @@ acPtr_class * cPtr_aliasTypeForGeneration::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_aliasTypeForGeneration ("aliasTypeForGeneration",
-                                               & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_aliasTypeForGeneration ("aliasTypeForGeneration",
+                                                                              & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10363,9 +10454,8 @@ GALGAS_aliasTypeForGeneration GALGAS_aliasTypeForGeneration_2D_weak::bang_aliasT
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_aliasTypeForGeneration_2D_weak ("aliasTypeForGeneration-weak",
-                                                       & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_aliasTypeForGeneration_2D_weak ("aliasTypeForGeneration-weak",
+                                                                                      & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10585,9 +10675,8 @@ acPtr_class * cPtr_abstractExtensionGetterAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_abstractExtensionGetterAST ("abstractExtensionGetterAST",
-                                                   & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractExtensionGetterAST ("abstractExtensionGetterAST",
+                                                                                  & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10814,9 +10903,8 @@ acPtr_class * cPtr_abstractExtensionGetterForGeneration::duplicate (LOCATION_ARG
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_abstractExtensionGetterForGeneration ("abstractExtensionGetterForGeneration",
-                                                             & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractExtensionGetterForGeneration ("abstractExtensionGetterForGeneration",
+                                                                                            & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10925,9 +11013,8 @@ GALGAS_abstractExtensionGetterForGeneration GALGAS_abstractExtensionGetterForGen
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_abstractExtensionGetterForGeneration_2D_weak ("abstractExtensionGetterForGeneration-weak",
-                                                                     & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractExtensionGetterForGeneration_2D_weak ("abstractExtensionGetterForGeneration-weak",
+                                                                                                    & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11126,9 +11213,8 @@ acPtr_class * cPtr_abstractExtensionMethodAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_abstractExtensionMethodAST ("abstractExtensionMethodAST",
-                                                   & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractExtensionMethodAST ("abstractExtensionMethodAST",
+                                                                                  & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11334,9 +11420,8 @@ acPtr_class * cPtr_abstractExtensionMethodForGeneration::duplicate (LOCATION_ARG
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_abstractExtensionMethodForGeneration ("abstractExtensionMethodForGeneration",
-                                                             & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractExtensionMethodForGeneration ("abstractExtensionMethodForGeneration",
+                                                                                            & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11445,9 +11530,8 @@ GALGAS_abstractExtensionMethodForGeneration GALGAS_abstractExtensionMethodForGen
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_abstractExtensionMethodForGeneration_2D_weak ("abstractExtensionMethodForGeneration-weak",
-                                                                     & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractExtensionMethodForGeneration_2D_weak ("abstractExtensionMethodForGeneration-weak",
+                                                                                                    & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11646,9 +11730,8 @@ acPtr_class * cPtr_abstractExtensionSetterAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_abstractExtensionSetterAST ("abstractExtensionSetterAST",
-                                                   & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractExtensionSetterAST ("abstractExtensionSetterAST",
+                                                                                  & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11854,9 +11937,8 @@ acPtr_class * cPtr_abstractExtensionSetterForGeneration::duplicate (LOCATION_ARG
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_abstractExtensionSetterForGeneration ("abstractExtensionSetterForGeneration",
-                                                             & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractExtensionSetterForGeneration ("abstractExtensionSetterForGeneration",
+                                                                                            & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11965,9 +12047,8 @@ GALGAS_abstractExtensionSetterForGeneration GALGAS_abstractExtensionSetterForGen
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_abstractExtensionSetterForGeneration_2D_weak ("abstractExtensionSetterForGeneration-weak",
-                                                                     & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractExtensionSetterForGeneration_2D_weak ("abstractExtensionSetterForGeneration-weak",
+                                                                                                    & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12271,9 +12352,8 @@ acPtr_class * cPtr_extensionGetterAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_extensionGetterAST ("extensionGetterAST",
-                                           & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionGetterAST ("extensionGetterAST",
+                                                                          & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12584,9 +12664,8 @@ acPtr_class * cPtr_extensionGetterForGeneration::duplicate (LOCATION_ARGS) const
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_extensionGetterForGeneration ("extensionGetterForGeneration",
-                                                     & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionGetterForGeneration ("extensionGetterForGeneration",
+                                                                                    & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12695,9 +12774,8 @@ GALGAS_extensionGetterForGeneration GALGAS_extensionGetterForGeneration_2D_weak:
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_extensionGetterForGeneration_2D_weak ("extensionGetterForGeneration-weak",
-                                                             & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionGetterForGeneration_2D_weak ("extensionGetterForGeneration-weak",
+                                                                                            & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12959,9 +13037,8 @@ acPtr_class * cPtr_extensionMethodAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_extensionMethodAST ("extensionMethodAST",
-                                           & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMethodAST ("extensionMethodAST",
+                                                                          & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13230,9 +13307,8 @@ acPtr_class * cPtr_extensionMethodForGeneration::duplicate (LOCATION_ARGS) const
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_extensionMethodForGeneration ("extensionMethodForGeneration",
-                                                     & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMethodForGeneration ("extensionMethodForGeneration",
+                                                                                    & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13341,9 +13417,8 @@ GALGAS_extensionMethodForGeneration GALGAS_extensionMethodForGeneration_2D_weak:
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_extensionMethodForGeneration_2D_weak ("extensionMethodForGeneration-weak",
-                                                             & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMethodForGeneration_2D_weak ("extensionMethodForGeneration-weak",
+                                                                                            & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13605,9 +13680,8 @@ acPtr_class * cPtr_extensionSetterAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_extensionSetterAST ("extensionSetterAST",
-                                           & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionSetterAST ("extensionSetterAST",
+                                                                          & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13876,9 +13950,8 @@ acPtr_class * cPtr_extensionSetterForGeneration::duplicate (LOCATION_ARGS) const
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_extensionSetterForGeneration ("extensionSetterForGeneration",
-                                                     & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionSetterForGeneration ("extensionSetterForGeneration",
+                                                                                    & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13987,9 +14060,8 @@ GALGAS_extensionSetterForGeneration GALGAS_extensionSetterForGeneration_2D_weak:
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_extensionSetterForGeneration_2D_weak ("extensionSetterForGeneration-weak",
-                                                             & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionSetterForGeneration_2D_weak ("extensionSetterForGeneration-weak",
+                                                                                            & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14209,9 +14281,8 @@ acPtr_class * cPtr_overridingAbstractExtensionGetterAST::duplicate (LOCATION_ARG
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_overridingAbstractExtensionGetterAST ("overridingAbstractExtensionGetterAST",
-                                                             & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingAbstractExtensionGetterAST ("overridingAbstractExtensionGetterAST",
+                                                                                            & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14410,9 +14481,8 @@ acPtr_class * cPtr_overridingAbstractExtensionMethodAST::duplicate (LOCATION_ARG
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_overridingAbstractExtensionMethodAST ("overridingAbstractExtensionMethodAST",
-                                                             & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingAbstractExtensionMethodAST ("overridingAbstractExtensionMethodAST",
+                                                                                            & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14611,9 +14681,8 @@ acPtr_class * cPtr_overridingAbstractExtensionSetterAST::duplicate (LOCATION_ARG
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_overridingAbstractExtensionSetterAST ("overridingAbstractExtensionSetterAST",
-                                                             & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingAbstractExtensionSetterAST ("overridingAbstractExtensionSetterAST",
+                                                                                            & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14917,9 +14986,8 @@ acPtr_class * cPtr_overridingExtensionGetterAST::duplicate (LOCATION_ARGS) const
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_overridingExtensionGetterAST ("overridingExtensionGetterAST",
-                                                     & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtensionGetterAST ("overridingExtensionGetterAST",
+                                                                                    & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -15230,9 +15298,8 @@ acPtr_class * cPtr_overrideExtensionGetterForGeneration::duplicate (LOCATION_ARG
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_overrideExtensionGetterForGeneration ("overrideExtensionGetterForGeneration",
-                                                             & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overrideExtensionGetterForGeneration ("overrideExtensionGetterForGeneration",
+                                                                                            & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -15341,9 +15408,8 @@ GALGAS_overrideExtensionGetterForGeneration GALGAS_overrideExtensionGetterForGen
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_overrideExtensionGetterForGeneration_2D_weak ("overrideExtensionGetterForGeneration-weak",
-                                                                     & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overrideExtensionGetterForGeneration_2D_weak ("overrideExtensionGetterForGeneration-weak",
+                                                                                                    & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -15605,9 +15671,8 @@ acPtr_class * cPtr_overridingExtensionMethodAST::duplicate (LOCATION_ARGS) const
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_overridingExtensionMethodAST ("overridingExtensionMethodAST",
-                                                     & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtensionMethodAST ("overridingExtensionMethodAST",
+                                                                                    & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 

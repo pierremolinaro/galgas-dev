@@ -445,9 +445,8 @@ GALGAS_lexicalInstructionListAST cEnumerator_lexicalSelectBranchListAST::current
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalSelectBranchListAST ("lexicalSelectBranchListAST",
-                                                   nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSelectBranchListAST ("lexicalSelectBranchListAST",
+                                                                                  nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -539,9 +538,8 @@ acStrongPtr_class (THERE) {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST ("lexicalRoutineOrFunctionFormalInputArgumentAST",
-                                                                       nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST ("lexicalRoutineOrFunctionFormalInputArgumentAST",
+                                                                                                      nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -650,9 +648,8 @@ GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST GALGAS_lexicalRoutineOrFun
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak ("lexicalRoutineOrFunctionFormalInputArgumentAST-weak",
-                                                                               nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak ("lexicalRoutineOrFunctionFormalInputArgumentAST-weak",
+                                                                                                              nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1059,9 +1056,8 @@ GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST cEnumerator_lexicalFunctio
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalFunctionCallActualArgumentListAST ("lexicalFunctionCallActualArgumentListAST",
-                                                                 nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionCallActualArgumentListAST ("lexicalFunctionCallActualArgumentListAST",
+                                                                                                nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1170,9 +1166,8 @@ GALGAS_lexicalAttributeInputArgumentAST GALGAS_lexicalAttributeInputArgumentAST_
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalAttributeInputArgumentAST_2D_weak ("lexicalAttributeInputArgumentAST-weak",
-                                                                 & kTypeDescriptor_GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalAttributeInputArgumentAST_2D_weak ("lexicalAttributeInputArgumentAST-weak",
+                                                                                                & kTypeDescriptor_GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1281,9 +1276,8 @@ GALGAS_lexicalCharacterInputArgumentAST GALGAS_lexicalCharacterInputArgumentAST_
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalCharacterInputArgumentAST_2D_weak ("lexicalCharacterInputArgumentAST-weak",
-                                                                 & kTypeDescriptor_GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalCharacterInputArgumentAST_2D_weak ("lexicalCharacterInputArgumentAST-weak",
+                                                                                                & kTypeDescriptor_GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1392,9 +1386,8 @@ GALGAS_lexicalUnsignedInputArgumentAST GALGAS_lexicalUnsignedInputArgumentAST_2D
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalUnsignedInputArgumentAST_2D_weak ("lexicalUnsignedInputArgumentAST-weak",
-                                                                & kTypeDescriptor_GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalUnsignedInputArgumentAST_2D_weak ("lexicalUnsignedInputArgumentAST-weak",
+                                                                                               & kTypeDescriptor_GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1544,9 +1537,8 @@ acPtr_class * cPtr_lexicalCurrentCharacterInputArgumentAST::duplicate (LOCATION_
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalCurrentCharacterInputArgumentAST ("lexicalCurrentCharacterInputArgumentAST",
-                                                                & kTypeDescriptor_GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalCurrentCharacterInputArgumentAST ("lexicalCurrentCharacterInputArgumentAST",
+                                                                                               & kTypeDescriptor_GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1655,9 +1647,8 @@ GALGAS_lexicalCurrentCharacterInputArgumentAST GALGAS_lexicalCurrentCharacterInp
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalCurrentCharacterInputArgumentAST_2D_weak ("lexicalCurrentCharacterInputArgumentAST-weak",
-                                                                        & kTypeDescriptor_GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalCurrentCharacterInputArgumentAST_2D_weak ("lexicalCurrentCharacterInputArgumentAST-weak",
+                                                                                                       & kTypeDescriptor_GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1766,9 +1757,8 @@ GALGAS_lexicalFunctionInputArgumentAST GALGAS_lexicalFunctionInputArgumentAST_2D
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalFunctionInputArgumentAST_2D_weak ("lexicalFunctionInputArgumentAST-weak",
-                                                                & kTypeDescriptor_GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionInputArgumentAST_2D_weak ("lexicalFunctionInputArgumentAST-weak",
+                                                                                               & kTypeDescriptor_GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1890,9 +1880,8 @@ typeComparisonResult GALGAS_lexicalArgumentModeAST::objectCompare (const GALGAS_
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalArgumentModeAST ("lexicalArgumentModeAST",
-                                               nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalArgumentModeAST ("lexicalArgumentModeAST",
+                                                                              nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2274,9 +2263,8 @@ typeComparisonResult GALGAS_lexicalTypeEnum::objectCompare (const GALGAS_lexical
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalTypeEnum ("lexicalTypeEnum",
-                                        nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalTypeEnum ("lexicalTypeEnum",
+                                                                       nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2815,9 +2803,8 @@ GALGAS_lexicalTypeEnum cEnumerator_lexicalSentValueList::current_mLexicalType (L
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalSentValueList ("lexicalSentValueList",
-                                             nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSentValueList ("lexicalSentValueList",
+                                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3100,9 +3087,8 @@ bool GALGAS_terminalMap::optional_searchKey (const GALGAS_string & inKey,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_terminalMap ("terminalMap",
-                                    nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalMap ("terminalMap",
+                                                                   nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3385,9 +3371,8 @@ bool GALGAS_lexicalTypeMap::optional_searchKey (const GALGAS_string & inKey,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalTypeMap ("lexicalTypeMap",
-                                       nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalTypeMap ("lexicalTypeMap",
+                                                                      nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3670,9 +3655,8 @@ bool GALGAS_lexicalAttributeMap::optional_searchKey (const GALGAS_string & inKey
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalAttributeMap ("lexicalAttributeMap",
-                                            nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalAttributeMap ("lexicalAttributeMap",
+                                                                           nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4409,9 +4393,8 @@ GALGAS_uint cEnumerator_terminalList::current_mStyleIndex (LOCATION_ARGS) const 
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_terminalList ("terminalList",
-                                     nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalList ("terminalList",
+                                                                    nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4802,9 +4785,8 @@ bool GALGAS_lexicalExplicitTokenListMap::optional_searchKey (const GALGAS_string
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalExplicitTokenListMap ("lexicalExplicitTokenListMap",
-                                                    nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExplicitTokenListMap ("lexicalExplicitTokenListMap",
+                                                                                   nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5143,9 +5125,8 @@ GALGAS_string cEnumerator_tokenSortedlist::current_mTerminalName (LOCATION_ARGS)
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_tokenSortedlist ("tokenSortedlist",
-                                        nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_tokenSortedlist ("tokenSortedlist",
+                                                                       nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5536,9 +5517,8 @@ bool GALGAS_lexicalExplicitTokenListMapMap::optional_searchKey (const GALGAS_str
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalExplicitTokenListMapMap ("lexicalExplicitTokenListMapMap",
-                                                       nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExplicitTokenListMapMap ("lexicalExplicitTokenListMapMap",
+                                                                                      nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5875,9 +5855,8 @@ bool GALGAS_lexicalMessageMap::optional_searchKey (const GALGAS_string & inKey,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalMessageMap ("lexicalMessageMap",
-                                          nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalMessageMap ("lexicalMessageMap",
+                                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6416,9 +6395,8 @@ GALGAS_string cEnumerator_lexicalRoutineFormalArgumentList::current_mArgumentNam
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalRoutineFormalArgumentList ("lexicalRoutineFormalArgumentList",
-                                                         nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineFormalArgumentList ("lexicalRoutineFormalArgumentList",
+                                                                                        nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6809,9 +6787,8 @@ bool GALGAS_lexicalRoutineMap::optional_searchKey (const GALGAS_string & inKey,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalRoutineMap ("lexicalRoutineMap",
-                                          nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineMap ("lexicalRoutineMap",
+                                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7284,9 +7261,8 @@ GALGAS_string cEnumerator_lexicalFunctionFormalArgumentList::current_mArgumentNa
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalFunctionFormalArgumentList ("lexicalFunctionFormalArgumentList",
-                                                          nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionFormalArgumentList ("lexicalFunctionFormalArgumentList",
+                                                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7731,9 +7707,8 @@ bool GALGAS_lexicalFunctionMap::optional_searchKey (const GALGAS_string & inKey,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalFunctionMap ("lexicalFunctionMap",
-                                           nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionMap ("lexicalFunctionMap",
+                                                                          nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8272,9 +8247,8 @@ GALGAS_bool cEnumerator_templateDelimitorList::current_mPreservesStartDelimiter 
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateDelimitorList ("templateDelimitorList",
-                                              nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateDelimitorList ("templateDelimitorList",
+                                                                             nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8611,9 +8585,8 @@ bool GALGAS_styleMap::optional_searchKey (const GALGAS_string & inKey,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_styleMap ("styleMap",
-                                 nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_styleMap ("styleMap",
+                                                                nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8842,9 +8815,8 @@ bool GALGAS_lexicalTagMap::optional_searchKey (const GALGAS_string & inKey) cons
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalTagMap ("lexicalTagMap",
-                                      nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalTagMap ("lexicalTagMap",
+                                                                     nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10154,9 +10126,8 @@ acPtr_class * cPtr_lexicalStructuredSendInstructionAST::duplicate (LOCATION_ARGS
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalStructuredSendInstructionAST ("lexicalStructuredSendInstructionAST",
-                                                            & kTypeDescriptor_GALGAS_lexicalInstructionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalStructuredSendInstructionAST ("lexicalStructuredSendInstructionAST",
+                                                                                           & kTypeDescriptor_GALGAS_lexicalInstructionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10265,9 +10236,8 @@ GALGAS_lexicalStructuredSendInstructionAST GALGAS_lexicalStructuredSendInstructi
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalStructuredSendInstructionAST_2D_weak ("lexicalStructuredSendInstructionAST-weak",
-                                                                    & kTypeDescriptor_GALGAS_lexicalInstructionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalStructuredSendInstructionAST_2D_weak ("lexicalStructuredSendInstructionAST-weak",
+                                                                                                   & kTypeDescriptor_GALGAS_lexicalInstructionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10376,9 +10346,8 @@ GALGAS_lexicalDropInstructionAST GALGAS_lexicalDropInstructionAST_2D_weak::bang_
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalDropInstructionAST_2D_weak ("lexicalDropInstructionAST-weak",
-                                                          & kTypeDescriptor_GALGAS_lexicalInstructionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalDropInstructionAST_2D_weak ("lexicalDropInstructionAST-weak",
+                                                                                         & kTypeDescriptor_GALGAS_lexicalInstructionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10487,9 +10456,8 @@ GALGAS_lexicalErrorInstructionAST GALGAS_lexicalErrorInstructionAST_2D_weak::ban
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalErrorInstructionAST_2D_weak ("lexicalErrorInstructionAST-weak",
-                                                           & kTypeDescriptor_GALGAS_lexicalInstructionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalErrorInstructionAST_2D_weak ("lexicalErrorInstructionAST-weak",
+                                                                                          & kTypeDescriptor_GALGAS_lexicalInstructionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10613,9 +10581,8 @@ acPtr_class * cPtr_lexicalLogInstructionAST::duplicate (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalLogInstructionAST ("lexicalLogInstructionAST",
-                                                 & kTypeDescriptor_GALGAS_lexicalInstructionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalLogInstructionAST ("lexicalLogInstructionAST",
+                                                                                & kTypeDescriptor_GALGAS_lexicalInstructionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10724,9 +10691,8 @@ GALGAS_lexicalLogInstructionAST GALGAS_lexicalLogInstructionAST_2D_weak::bang_le
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalLogInstructionAST_2D_weak ("lexicalLogInstructionAST-weak",
-                                                         & kTypeDescriptor_GALGAS_lexicalInstructionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalLogInstructionAST_2D_weak ("lexicalLogInstructionAST-weak",
+                                                                                        & kTypeDescriptor_GALGAS_lexicalInstructionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10918,9 +10884,8 @@ acPtr_class * cPtr_lexicalRepeatInstructionAST::duplicate (LOCATION_ARGS) const 
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalRepeatInstructionAST ("lexicalRepeatInstructionAST",
-                                                    & kTypeDescriptor_GALGAS_lexicalInstructionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRepeatInstructionAST ("lexicalRepeatInstructionAST",
+                                                                                   & kTypeDescriptor_GALGAS_lexicalInstructionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11029,9 +10994,8 @@ GALGAS_lexicalRepeatInstructionAST GALGAS_lexicalRepeatInstructionAST_2D_weak::b
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalRepeatInstructionAST_2D_weak ("lexicalRepeatInstructionAST-weak",
-                                                            & kTypeDescriptor_GALGAS_lexicalInstructionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRepeatInstructionAST_2D_weak ("lexicalRepeatInstructionAST-weak",
+                                                                                           & kTypeDescriptor_GALGAS_lexicalInstructionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11140,9 +11104,8 @@ GALGAS_lexicalRewindInstructionAST GALGAS_lexicalRewindInstructionAST_2D_weak::b
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalRewindInstructionAST_2D_weak ("lexicalRewindInstructionAST-weak",
-                                                            & kTypeDescriptor_GALGAS_lexicalInstructionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRewindInstructionAST_2D_weak ("lexicalRewindInstructionAST-weak",
+                                                                                           & kTypeDescriptor_GALGAS_lexicalInstructionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11249,9 +11212,8 @@ mProperty_mActualPassingModeLocation (in_mActualPassingModeLocation) {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_abstractLexicalRoutineActualArgumentAST ("abstractLexicalRoutineActualArgumentAST",
-                                                                nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractLexicalRoutineActualArgumentAST ("abstractLexicalRoutineActualArgumentAST",
+                                                                                               nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11360,9 +11322,8 @@ GALGAS_abstractLexicalRoutineActualArgumentAST GALGAS_abstractLexicalRoutineActu
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak ("abstractLexicalRoutineActualArgumentAST-weak",
-                                                                        nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak ("abstractLexicalRoutineActualArgumentAST-weak",
+                                                                                                       nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11471,9 +11432,8 @@ GALGAS_lexicalAttributeInputOutputArgumentAST GALGAS_lexicalAttributeInputOutput
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalAttributeInputOutputArgumentAST_2D_weak ("lexicalAttributeInputOutputArgumentAST-weak",
-                                                                       & kTypeDescriptor_GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalAttributeInputOutputArgumentAST_2D_weak ("lexicalAttributeInputOutputArgumentAST-weak",
+                                                                                                      & kTypeDescriptor_GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11630,9 +11590,8 @@ acPtr_class * cPtr_lexicalFormalInputArgumentAST::duplicate (LOCATION_ARGS) cons
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalFormalInputArgumentAST ("lexicalFormalInputArgumentAST",
-                                                      & kTypeDescriptor_GALGAS_abstractLexicalRoutineActualArgumentAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFormalInputArgumentAST ("lexicalFormalInputArgumentAST",
+                                                                                     & kTypeDescriptor_GALGAS_abstractLexicalRoutineActualArgumentAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11741,9 +11700,8 @@ GALGAS_lexicalFormalInputArgumentAST GALGAS_lexicalFormalInputArgumentAST_2D_wea
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalFormalInputArgumentAST_2D_weak ("lexicalFormalInputArgumentAST-weak",
-                                                              & kTypeDescriptor_GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFormalInputArgumentAST_2D_weak ("lexicalFormalInputArgumentAST-weak",
+                                                                                             & kTypeDescriptor_GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12150,9 +12108,8 @@ GALGAS_abstractLexicalRoutineActualArgumentAST cEnumerator_lexicalRoutineCallAct
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalRoutineCallActualArgumentListAST ("lexicalRoutineCallActualArgumentListAST",
-                                                                nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineCallActualArgumentListAST ("lexicalRoutineCallActualArgumentListAST",
+                                                                                               nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12261,9 +12218,8 @@ GALGAS_lexicalRoutineCallInstructionAST GALGAS_lexicalRoutineCallInstructionAST_
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalRoutineCallInstructionAST_2D_weak ("lexicalRoutineCallInstructionAST-weak",
-                                                                 & kTypeDescriptor_GALGAS_lexicalInstructionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineCallInstructionAST_2D_weak ("lexicalRoutineCallInstructionAST-weak",
+                                                                                                & kTypeDescriptor_GALGAS_lexicalInstructionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12503,9 +12459,8 @@ acPtr_class * cPtr_lexicalSelectInstructionAST::duplicate (LOCATION_ARGS) const 
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalSelectInstructionAST ("lexicalSelectInstructionAST",
-                                                    & kTypeDescriptor_GALGAS_lexicalInstructionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSelectInstructionAST ("lexicalSelectInstructionAST",
+                                                                                   & kTypeDescriptor_GALGAS_lexicalInstructionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12614,9 +12569,8 @@ GALGAS_lexicalSelectInstructionAST GALGAS_lexicalSelectInstructionAST_2D_weak::b
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalSelectInstructionAST_2D_weak ("lexicalSelectInstructionAST-weak",
-                                                            & kTypeDescriptor_GALGAS_lexicalInstructionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSelectInstructionAST_2D_weak ("lexicalSelectInstructionAST-weak",
+                                                                                           & kTypeDescriptor_GALGAS_lexicalInstructionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12725,9 +12679,8 @@ GALGAS_lexicalSimpleSendInstructionAST GALGAS_lexicalSimpleSendInstructionAST_2D
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalSimpleSendInstructionAST_2D_weak ("lexicalSimpleSendInstructionAST-weak",
-                                                                & kTypeDescriptor_GALGAS_lexicalInstructionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSimpleSendInstructionAST_2D_weak ("lexicalSimpleSendInstructionAST-weak",
+                                                                                               & kTypeDescriptor_GALGAS_lexicalInstructionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12836,9 +12789,8 @@ GALGAS_lexicalTagInstructionAST GALGAS_lexicalTagInstructionAST_2D_weak::bang_le
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalTagInstructionAST_2D_weak ("lexicalTagInstructionAST-weak",
-                                                         & kTypeDescriptor_GALGAS_lexicalInstructionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalTagInstructionAST_2D_weak ("lexicalTagInstructionAST-weak",
+                                                                                        & kTypeDescriptor_GALGAS_lexicalInstructionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12947,9 +12899,8 @@ GALGAS_lexicalWarningInstructionAST GALGAS_lexicalWarningInstructionAST_2D_weak:
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalWarningInstructionAST_2D_weak ("lexicalWarningInstructionAST-weak",
-                                                             & kTypeDescriptor_GALGAS_lexicalInstructionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalWarningInstructionAST_2D_weak ("lexicalWarningInstructionAST-weak",
+                                                                                            & kTypeDescriptor_GALGAS_lexicalInstructionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13093,9 +13044,8 @@ typeComparisonResult GALGAS_optionDefaultValueEnumAST::objectCompare (const GALG
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_optionDefaultValueEnumAST ("optionDefaultValueEnumAST",
-                                                  nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionDefaultValueEnumAST ("optionDefaultValueEnumAST",
+                                                                                 nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13898,9 +13848,8 @@ GALGAS_optionDefaultValueEnumAST cEnumerator_commandLineOptionListAST::current_m
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_commandLineOptionListAST ("commandLineOptionListAST",
-                                                 nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_commandLineOptionListAST ("commandLineOptionListAST",
+                                                                                nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14009,9 +13958,8 @@ GALGAS_optionComponentDeclarationAST GALGAS_optionComponentDeclarationAST_2D_wea
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_optionComponentDeclarationAST_2D_weak ("optionComponentDeclarationAST-weak",
-                                                              & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionComponentDeclarationAST_2D_weak ("optionComponentDeclarationAST-weak",
+                                                                                             & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14456,9 +14404,8 @@ bool GALGAS_commandLineOptionMap::optional_searchKey (const GALGAS_string & inKe
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_commandLineOptionMap ("commandLineOptionMap",
-                                             nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_commandLineOptionMap ("commandLineOptionMap",
+                                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14931,9 +14878,8 @@ GALGAS_lstring cEnumerator_guiSimpleAttributeListAST::current_mValue (LOCATION_A
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_guiSimpleAttributeListAST ("guiSimpleAttributeListAST",
-                                                  nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_guiSimpleAttributeListAST ("guiSimpleAttributeListAST",
+                                                                                 nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -15472,9 +15418,8 @@ GALGAS_lstring cEnumerator_guiCompoundAttributeListAST::current_mValue (LOCATION
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_guiCompoundAttributeListAST ("guiCompoundAttributeListAST",
-                                                    nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_guiCompoundAttributeListAST ("guiCompoundAttributeListAST",
+                                                                                   nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -15947,9 +15892,8 @@ GALGAS_uint cEnumerator_terminalLabelListAST::current_mDisplayFlags (LOCATION_AR
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_terminalLabelListAST ("terminalLabelListAST",
-                                             nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalLabelListAST ("terminalLabelListAST",
+                                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 

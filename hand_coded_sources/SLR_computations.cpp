@@ -696,14 +696,10 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
   const int32_t columnsCount = inSLRdecisionTable.columnCount () ; // Number of terminal symbols
 //--- State action tables
   TC_UniqueArray <int32_t> startIndexArray (rowsCount COMMA_HERE) ;
-  ioCppFileContents.addString ("// Action tables handle shift and reduce actions ;\n"
-                    "//  - a shift action is (terminal_symbol, SHIFT (n)) : if shifts to state n ;\n"
-                    "//  - the accept action is (terminal_symbol, ACCEPT) ;\n"
-                    "//  - a reduce action is (terminal_symbol, REDUCE (n)) ; if reduces to state n.\n\n"
-                    "#define SHIFT(a) ((a) + 2)\n"
-                    "#define REDUCE(a) (-(a) - 1)\n"
-                    "#define ACCEPT (1)\n"
-                    "#define END (-1)\n\n") ;
+  ioCppFileContents.addString ("// Action tables handle shift and reduce actions:\n"
+                    "//  - a shift action is (terminal_symbol, SHIFT (n)): if shifts to state n;\n"
+                    "//  - the accept action is (terminal_symbol, ACCEPT);\n"
+                    "//  - a reduce action is (terminal_symbol, REDUCE (n)); if reduces to state n.\n\n") ;
   ioCppFileContents.addString ("static const int32_t gActionTable_") ;
   ioCppFileContents.addString (inTargetFileName) ;
   ioCppFileContents.addString (" [] = {") ;

@@ -47,12 +47,6 @@ override method @dataPredefinedTypeAST getEnumerationList
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @applicationPredefinedTypeAST getSupportedOperatorFlags -> @operators {
-  result = .generateDescriptionGetterUtilityMethod
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 override getter @bigintPredefinedTypeAST getSupportedOperatorFlags -> @operators {
   result = .generateDescriptionGetterUtilityMethod | .prefixPlusOperator | .prefixMinusOperator |
              .infixAddOperator | .infixSubOperator | .infixMulOperator | .infixDivOperator |

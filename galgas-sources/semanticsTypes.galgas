@@ -341,14 +341,6 @@ map @constantIndexMap {
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
-  public let @string mPredefinedTypeName
-  public let @predefinedTypeKindEnum mKind
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @applicationPredefinedTypeAST : @predefinedTypeAST {}
 
 refclass @bigintPredefinedTypeAST : @predefinedTypeAST {}
 
@@ -385,82 +377,6 @@ refclass @typePredefinedTypeAST : @predefinedTypeAST {}
 refclass @dataPredefinedTypeAST : @predefinedTypeAST {}
 
 refclass @timerPredefinedTypeAST : @predefinedTypeAST {}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-method @predefinedTypeAST getConstructorMap
-  ?!@unifiedTypeMap unused ioUnifiedTypeMap
-  !@constructorMap outConstructorMap {
-  outConstructorMap = {}
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-method @predefinedTypeAST getGetterMap
-  ?!@unifiedTypeMap unused ioUnifiedTypeMap
-  !@getterMap outGetterMap {
-  outGetterMap = {}
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-method @predefinedTypeAST getSetterMap
-  ?!@unifiedTypeMap unused ioUnifiedTypeMap
-  !@setterMap outSetterMap {
-  outSetterMap = {}
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-method @predefinedTypeAST getInstanceMethodMap
-  ?!@unifiedTypeMap unused ioUnifiedTypeMap
-  !@instanceMethodMap outInstanceMethodMap {
-  outInstanceMethodMap = {}
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-method @predefinedTypeAST getClassMethodMap
-  ?!@unifiedTypeMap unused ioUnifiedTypeMap
-  !@classMethodMap outClassMethodMap {
-  outClassMethodMap = {}
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-method @predefinedTypeAST getOptionalMethodMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
-                                               !@optionalMethodMap outMap {
-  outMap = {}
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-getter @predefinedTypeAST getSupportedOperatorFlags -> @operators outFlags {
-  outFlags = .none # No supported operator
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-method @predefinedTypeAST getAddAssignArgumentList
-  ?!@unifiedTypeMap unused ioUnifiedTypeMap
-  !@functionSignature outAddAssignArgumentList {
-  outAddAssignArgumentList = {} # += is not supported
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#  G E T    E N U M E R A T I O N    L I S T     
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-method @predefinedTypeAST getEnumerationList
-  ?!@unifiedTypeMap unused ioUnifiedTypeMap
-  !@enumerationDescriptorList outEnumerationList
-  !@string outEnumeratedType
-{
-  outEnumerationList = {} # Enumeration is not supported
-  outEnumeratedType = "" # Enumeration is not supported
-}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

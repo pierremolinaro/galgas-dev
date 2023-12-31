@@ -10,22 +10,71 @@
 
 //--------------------------------------------------------------------------------------------------
 //
-//Function 'procedureNameForUsefulEntitiesGraph'
+//Routine 'appendPredefinedListTypeAST&?&'
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_lstring function_procedureNameForUsefulEntitiesGraph (const class GALGAS_lstring & constinArgument0,
-                                                                   class Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) ;
+void routine_appendPredefinedListTypeAST_26__3F__26_ (class GALGAS_semanticDeclarationListAST & ioArgument0,
+                                                      const class GALGAS_string constinArgument1,
+                                                      class GALGAS_lstringlist & ioArgument2,
+                                                      class Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Function 'generateFewHeaderFiles'
+//Routine 'insertInUsefulnessEntities&?'
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_bool function_generateFewHeaderFiles (class Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) ;
+void routine_insertInUsefulnessEntities_26__3F_ (class GALGAS_lstringlist & ioArgument0,
+                                                 const class GALGAS_string constinArgument1,
+                                                 class Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'appendPredefined2StringListTypeAST&&'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_appendPredefined_32_StringListTypeAST_26__26_ (class GALGAS_semanticDeclarationListAST & ioArgument0,
+                                                            class GALGAS_lstringlist & ioArgument1,
+                                                            class Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'appendStructASTForTypeWithLocation&?&'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_appendStructASTForTypeWithLocation_26__3F__26_ (class GALGAS_semanticDeclarationListAST & ioArgument0,
+                                                             const class GALGAS_string constinArgument1,
+                                                             class GALGAS_lstringlist & ioArgument2,
+                                                             class Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'appendStructASTForRangeType&&'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_appendStructASTForRangeType_26__26_ (class GALGAS_semanticDeclarationListAST & ioArgument0,
+                                                  class GALGAS_lstringlist & ioArgument1,
+                                                  class Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'appendPredefinedTypesASTs&&'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_appendPredefinedTypesASTs_26__26_ (class GALGAS_semanticDeclarationListAST & ioArgument0,
+                                                class GALGAS_lstringlist & ioArgument1,
+                                                class Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -44,6 +93,59 @@ void routine_enterConstructorWith_32_Arguments_26__26__3F_name_3F_argTypeName_31
                                                                                                                                                                        const class GALGAS_bool constinArgument8,
                                                                                                                                                                        class Compiler * inCompiler
                                                                                                                                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'enterClassMethodWithInputArgument&&?methodName?argType?argName?compilerArgument'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_enterClassMethodWithInputArgument_26__26__3F_methodName_3F_argType_3F_argName_3F_compilerArgument (class GALGAS_classMethodMap & ioArgument0,
+                                                                                                                class GALGAS_unifiedTypeMap & ioArgument1,
+                                                                                                                const class GALGAS_string constinArgument2,
+                                                                                                                const class GALGAS_string constinArgument3,
+                                                                                                                const class GALGAS_string constinArgument4,
+                                                                                                                const class GALGAS_bool constinArgument5,
+                                                                                                                class Compiler * inCompiler
+                                                                                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'enterClassMethodWith3InputArguments&&?methodName?argType1?argName1?argType2?argName2?argType3?argName3?compilerArgument'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_enterClassMethodWith_33_InputArguments_26__26__3F_methodName_3F_argType_31__3F_argName_31__3F_argType_32__3F_argName_32__3F_argType_33__3F_argName_33__3F_compilerArgument (class GALGAS_classMethodMap & ioArgument0,
+                                                                                                                                                                                         class GALGAS_unifiedTypeMap & ioArgument1,
+                                                                                                                                                                                         const class GALGAS_string constinArgument2,
+                                                                                                                                                                                         const class GALGAS_string constinArgument3,
+                                                                                                                                                                                         const class GALGAS_string constinArgument4,
+                                                                                                                                                                                         const class GALGAS_string constinArgument5,
+                                                                                                                                                                                         const class GALGAS_string constinArgument6,
+                                                                                                                                                                                         const class GALGAS_string constinArgument7,
+                                                                                                                                                                                         const class GALGAS_string constinArgument8,
+                                                                                                                                                                                         const class GALGAS_bool constinArgument9,
+                                                                                                                                                                                         class Compiler * inCompiler
+                                                                                                                                                                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'procedureNameForUsefulEntitiesGraph'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_lstring function_procedureNameForUsefulEntitiesGraph (const class GALGAS_lstring & constinArgument0,
+                                                                   class Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'generateFewHeaderFiles'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_bool function_generateFewHeaderFiles (class Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -206,40 +308,6 @@ void routine_enterInstanceMethodWithInputArgument_26__26__3F_inputArgTypeName_3F
                                                                                                                  const class GALGAS_bool constinArgument5,
                                                                                                                  class Compiler * inCompiler
                                                                                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'enterClassMethodWithInputArgument&&?methodName?argType?argName?compilerArgument'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_enterClassMethodWithInputArgument_26__26__3F_methodName_3F_argType_3F_argName_3F_compilerArgument (class GALGAS_classMethodMap & ioArgument0,
-                                                                                                                class GALGAS_unifiedTypeMap & ioArgument1,
-                                                                                                                const class GALGAS_string constinArgument2,
-                                                                                                                const class GALGAS_string constinArgument3,
-                                                                                                                const class GALGAS_string constinArgument4,
-                                                                                                                const class GALGAS_bool constinArgument5,
-                                                                                                                class Compiler * inCompiler
-                                                                                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'enterClassMethodWith3InputArguments&&?methodName?argType1?argName1?argType2?argName2?argType3?argName3?compilerArgument'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_enterClassMethodWith_33_InputArguments_26__26__3F_methodName_3F_argType_31__3F_argName_31__3F_argType_32__3F_argName_32__3F_argType_33__3F_argName_33__3F_compilerArgument (class GALGAS_classMethodMap & ioArgument0,
-                                                                                                                                                                                         class GALGAS_unifiedTypeMap & ioArgument1,
-                                                                                                                                                                                         const class GALGAS_string constinArgument2,
-                                                                                                                                                                                         const class GALGAS_string constinArgument3,
-                                                                                                                                                                                         const class GALGAS_string constinArgument4,
-                                                                                                                                                                                         const class GALGAS_string constinArgument5,
-                                                                                                                                                                                         const class GALGAS_string constinArgument6,
-                                                                                                                                                                                         const class GALGAS_string constinArgument7,
-                                                                                                                                                                                         const class GALGAS_string constinArgument8,
-                                                                                                                                                                                         const class GALGAS_bool constinArgument9,
-                                                                                                                                                                                         class Compiler * inCompiler
-                                                                                                                                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
