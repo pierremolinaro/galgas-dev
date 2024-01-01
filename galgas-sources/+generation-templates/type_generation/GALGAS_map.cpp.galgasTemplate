@@ -80,7 +80,7 @@ GALGAS_%!TYPE_IDENTIFIER% & GALGAS_%!TYPE_IDENTIFIER%::operator = (const GALGAS_
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyMap (LOCATION_ARGS) {
+GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::class_func_emptyMap (LOCATION_ARGS) {
   GALGAS_%!TYPE_IDENTIFIER% result ;
   result.makeNewEmptyMap (THERE) ;
   return result ;
@@ -88,7 +88,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyMap (LOCAT
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_mapWithMapToOverride (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inMapToOverride
+GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::class_func_mapWithMapToOverride (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inMapToOverride
                                                    %!^%COMMA_LOCATION_ARGS) {
   GALGAS_%!TYPE_IDENTIFIER% result ;
   result.makeNewEmptyMapWithMapToOverride (inMapToOverride COMMA_THERE) ;

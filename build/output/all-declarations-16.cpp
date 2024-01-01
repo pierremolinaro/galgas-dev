@@ -89,15 +89,15 @@ GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_overridingExtensionMethodForGeneration GALGAS_overridingExtensionMethodForGeneration::constructor_new (const GALGAS_bool & inAttribute_generateHeader,
-                                                                                                              const GALGAS_string & inAttribute_mImplementationCppFileName,
-                                                                                                              const GALGAS_unifiedTypeMapEntry & inAttribute_mReceiverType,
-                                                                                                              const GALGAS_string & inAttribute_mBaseTypeName,
-                                                                                                              const GALGAS_string & inAttribute_mExtensionMethodName,
-                                                                                                              const GALGAS_formalParameterListForGeneration & inAttribute_mExtensionMethodFormalParameterList,
-                                                                                                              const GALGAS_typedPropertyList & inAttribute_mTypedAttributeList,
-                                                                                                              const GALGAS_semanticInstructionListForGeneration & inAttribute_mSemanticInstructionListForGeneration
-                                                                                                              COMMA_LOCATION_ARGS) {
+GALGAS_overridingExtensionMethodForGeneration GALGAS_overridingExtensionMethodForGeneration::class_func_new (const GALGAS_bool & inAttribute_generateHeader,
+                                                                                                             const GALGAS_string & inAttribute_mImplementationCppFileName,
+                                                                                                             const GALGAS_unifiedTypeMapEntry & inAttribute_mReceiverType,
+                                                                                                             const GALGAS_string & inAttribute_mBaseTypeName,
+                                                                                                             const GALGAS_string & inAttribute_mExtensionMethodName,
+                                                                                                             const GALGAS_formalParameterListForGeneration & inAttribute_mExtensionMethodFormalParameterList,
+                                                                                                             const GALGAS_typedPropertyList & inAttribute_mTypedAttributeList,
+                                                                                                             const GALGAS_semanticInstructionListForGeneration & inAttribute_mSemanticInstructionListForGeneration
+                                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_overridingExtensionMethodForGeneration result ;
   if (inAttribute_generateHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mReceiverType.isValid () && inAttribute_mBaseTypeName.isValid () && inAttribute_mExtensionMethodName.isValid () && inAttribute_mExtensionMethodFormalParameterList.isValid () && inAttribute_mTypedAttributeList.isValid () && inAttribute_mSemanticInstructionListForGeneration.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_overridingExtensionMethodForGeneration (inAttribute_generateHeader, inAttribute_mImplementationCppFileName, inAttribute_mReceiverType, inAttribute_mBaseTypeName, inAttribute_mExtensionMethodName, inAttribute_mExtensionMethodFormalParameterList, inAttribute_mTypedAttributeList, inAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
@@ -323,7 +323,7 @@ GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_overridingExtensionMethodForGeneration_2D_weak GALGAS_overridingExtensionMethodForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_overridingExtensionMethodForGeneration_2D_weak GALGAS_overridingExtensionMethodForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_overridingExtensionMethodForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -466,14 +466,14 @@ GALGAS_semanticDeclarationAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_overridingExtensionSetterAST GALGAS_overridingExtensionSetterAST::constructor_new (const GALGAS_bool & inAttribute_isPredefined,
-                                                                                          const GALGAS_bool & inAttribute_requiresSelfForAccessingProperty,
-                                                                                          const GALGAS_lstring & inAttribute_mTypeName,
-                                                                                          const GALGAS_lstring & inAttribute_mOverridingExtensionSetterName,
-                                                                                          const GALGAS_formalParameterListAST & inAttribute_mOverridingExtensionSetterFormalParameterList,
-                                                                                          const GALGAS_semanticInstructionListAST & inAttribute_mOverridingExtensionSetterInstructionList,
-                                                                                          const GALGAS_location & inAttribute_mEndOfSetterDeclarationLocation
-                                                                                          COMMA_LOCATION_ARGS) {
+GALGAS_overridingExtensionSetterAST GALGAS_overridingExtensionSetterAST::class_func_new (const GALGAS_bool & inAttribute_isPredefined,
+                                                                                         const GALGAS_bool & inAttribute_requiresSelfForAccessingProperty,
+                                                                                         const GALGAS_lstring & inAttribute_mTypeName,
+                                                                                         const GALGAS_lstring & inAttribute_mOverridingExtensionSetterName,
+                                                                                         const GALGAS_formalParameterListAST & inAttribute_mOverridingExtensionSetterFormalParameterList,
+                                                                                         const GALGAS_semanticInstructionListAST & inAttribute_mOverridingExtensionSetterInstructionList,
+                                                                                         const GALGAS_location & inAttribute_mEndOfSetterDeclarationLocation
+                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_overridingExtensionSetterAST result ;
   if (inAttribute_isPredefined.isValid () && inAttribute_requiresSelfForAccessingProperty.isValid () && inAttribute_mTypeName.isValid () && inAttribute_mOverridingExtensionSetterName.isValid () && inAttribute_mOverridingExtensionSetterFormalParameterList.isValid () && inAttribute_mOverridingExtensionSetterInstructionList.isValid () && inAttribute_mEndOfSetterDeclarationLocation.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_overridingExtensionSetterAST (inAttribute_isPredefined, inAttribute_requiresSelfForAccessingProperty, inAttribute_mTypeName, inAttribute_mOverridingExtensionSetterName, inAttribute_mOverridingExtensionSetterFormalParameterList, inAttribute_mOverridingExtensionSetterInstructionList, inAttribute_mEndOfSetterDeclarationLocation COMMA_THERE)) ;
@@ -732,15 +732,15 @@ GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_overridingExtensionSetterForGeneration GALGAS_overridingExtensionSetterForGeneration::constructor_new (const GALGAS_bool & inAttribute_generateHeader,
-                                                                                                              const GALGAS_string & inAttribute_mImplementationCppFileName,
-                                                                                                              const GALGAS_unifiedTypeMapEntry & inAttribute_mReceiverType,
-                                                                                                              const GALGAS_string & inAttribute_mBaseTypeName,
-                                                                                                              const GALGAS_string & inAttribute_mExtensionSetterName,
-                                                                                                              const GALGAS_formalParameterListForGeneration & inAttribute_mExtensionSetterFormalParameterList,
-                                                                                                              const GALGAS_typedPropertyList & inAttribute_mTypedAttributeList,
-                                                                                                              const GALGAS_semanticInstructionListForGeneration & inAttribute_mSemanticInstructionListForGeneration
-                                                                                                              COMMA_LOCATION_ARGS) {
+GALGAS_overridingExtensionSetterForGeneration GALGAS_overridingExtensionSetterForGeneration::class_func_new (const GALGAS_bool & inAttribute_generateHeader,
+                                                                                                             const GALGAS_string & inAttribute_mImplementationCppFileName,
+                                                                                                             const GALGAS_unifiedTypeMapEntry & inAttribute_mReceiverType,
+                                                                                                             const GALGAS_string & inAttribute_mBaseTypeName,
+                                                                                                             const GALGAS_string & inAttribute_mExtensionSetterName,
+                                                                                                             const GALGAS_formalParameterListForGeneration & inAttribute_mExtensionSetterFormalParameterList,
+                                                                                                             const GALGAS_typedPropertyList & inAttribute_mTypedAttributeList,
+                                                                                                             const GALGAS_semanticInstructionListForGeneration & inAttribute_mSemanticInstructionListForGeneration
+                                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_overridingExtensionSetterForGeneration result ;
   if (inAttribute_generateHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mReceiverType.isValid () && inAttribute_mBaseTypeName.isValid () && inAttribute_mExtensionSetterName.isValid () && inAttribute_mExtensionSetterFormalParameterList.isValid () && inAttribute_mTypedAttributeList.isValid () && inAttribute_mSemanticInstructionListForGeneration.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_overridingExtensionSetterForGeneration (inAttribute_generateHeader, inAttribute_mImplementationCppFileName, inAttribute_mReceiverType, inAttribute_mBaseTypeName, inAttribute_mExtensionSetterName, inAttribute_mExtensionSetterFormalParameterList, inAttribute_mTypedAttributeList, inAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
@@ -966,7 +966,7 @@ GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_overridingExtensionSetterForGeneration_2D_weak GALGAS_overridingExtensionSetterForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_overridingExtensionSetterForGeneration_2D_weak GALGAS_overridingExtensionSetterForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_overridingExtensionSetterForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -1039,7 +1039,7 @@ GALGAS_overridingExtensionSetterForGeneration_2D_weak GALGAS_overridingExtension
 GALGAS_typeKindEnum cPtr_predefinedTypeAST::getter_typeKind (Compiler */* inCompiler */
                                                              COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_typeKindEnum result_result ; // Returned variable
-  result_result = GALGAS_typeKindEnum::constructor_otherType (SOURCE_FILE ("predefinedTypeAST.galgas", 24)) ;
+  result_result = GALGAS_typeKindEnum::class_func_otherType (SOURCE_FILE ("predefinedTypeAST.galgas", 24)) ;
 //---
   return result_result ;
 }
@@ -1090,8 +1090,8 @@ void extensionMethod_analyzeRoutineArguments (const GALGAS_actualParameterListAS
     }
   }
   if (kBoolFalse == test_0) {
-    outArgument_outActualParameterListForGeneration = GALGAS_actualParameterListForGeneration::constructor_emptyList (SOURCE_FILE ("actual-parameters.galgas", 29)) ;
-    GALGAS_stringset var_exclusiveVariableSet_1768 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("actual-parameters.galgas", 30)) ;
+    outArgument_outActualParameterListForGeneration = GALGAS_actualParameterListForGeneration::class_func_emptyList (SOURCE_FILE ("actual-parameters.galgas", 29)) ;
+    GALGAS_stringset var_exclusiveVariableSet_1768 = GALGAS_stringset::class_func_emptySet (SOURCE_FILE ("actual-parameters.galgas", 30)) ;
     const GALGAS_actualParameterListAST temp_4 = inObject ;
     cEnumerator_formalParameterSignature enumerator_1822 (constinArgument_inRoutineSignature, kENUMERATION_UP) ;
     cEnumerator_actualParameterListAST enumerator_1843 (temp_4, kENUMERATION_UP) ;
@@ -1168,10 +1168,10 @@ GALGAS_actualParameterAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_outputActualParameterAST GALGAS_outputActualParameterAST::constructor_new (const GALGAS_lstring & inAttribute_mActualSelector,
-                                                                                  const GALGAS_semanticExpressionAST & inAttribute_mOutputActualParameterExpression,
-                                                                                  const GALGAS_location & inAttribute_mEndOfExpressionLocation
-                                                                                  COMMA_LOCATION_ARGS) {
+GALGAS_outputActualParameterAST GALGAS_outputActualParameterAST::class_func_new (const GALGAS_lstring & inAttribute_mActualSelector,
+                                                                                 const GALGAS_semanticExpressionAST & inAttribute_mOutputActualParameterExpression,
+                                                                                 const GALGAS_location & inAttribute_mEndOfExpressionLocation
+                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_outputActualParameterAST result ;
   if (inAttribute_mActualSelector.isValid () && inAttribute_mOutputActualParameterExpression.isValid () && inAttribute_mEndOfExpressionLocation.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_outputActualParameterAST (inAttribute_mActualSelector, inAttribute_mOutputActualParameterExpression, inAttribute_mEndOfExpressionLocation COMMA_THERE)) ;
@@ -1361,10 +1361,10 @@ GALGAS_actualParameterAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_outputInputActualParameterAST GALGAS_outputInputActualParameterAST::constructor_new (const GALGAS_lstring & inAttribute_mActualSelector,
-                                                                                            const GALGAS_lstring & inAttribute_mOutputInputActualParameterName,
-                                                                                            const GALGAS_lstringlist & inAttribute_mStructAttributeList
-                                                                                            COMMA_LOCATION_ARGS) {
+GALGAS_outputInputActualParameterAST GALGAS_outputInputActualParameterAST::class_func_new (const GALGAS_lstring & inAttribute_mActualSelector,
+                                                                                           const GALGAS_lstring & inAttribute_mOutputInputActualParameterName,
+                                                                                           const GALGAS_lstringlist & inAttribute_mStructAttributeList
+                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_outputInputActualParameterAST result ;
   if (inAttribute_mActualSelector.isValid () && inAttribute_mOutputInputActualParameterName.isValid () && inAttribute_mStructAttributeList.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_outputInputActualParameterAST (inAttribute_mActualSelector, inAttribute_mOutputInputActualParameterName, inAttribute_mStructAttributeList COMMA_THERE)) ;
@@ -1546,8 +1546,8 @@ GALGAS_actualParameterAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_outputInputSingleJokerParameterAST GALGAS_outputInputSingleJokerParameterAST::constructor_new (const GALGAS_lstring & inAttribute_mActualSelector
-                                                                                                      COMMA_LOCATION_ARGS) {
+GALGAS_outputInputSingleJokerParameterAST GALGAS_outputInputSingleJokerParameterAST::class_func_new (const GALGAS_lstring & inAttribute_mActualSelector
+                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_outputInputSingleJokerParameterAST result ;
   if (inAttribute_mActualSelector.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_outputInputSingleJokerParameterAST (inAttribute_mActualSelector COMMA_THERE)) ;
@@ -1697,8 +1697,8 @@ GALGAS_actualParameterAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_outputInputSelfParameterAST GALGAS_outputInputSelfParameterAST::constructor_new (const GALGAS_lstring & inAttribute_mActualSelector
-                                                                                        COMMA_LOCATION_ARGS) {
+GALGAS_outputInputSelfParameterAST GALGAS_outputInputSelfParameterAST::class_func_new (const GALGAS_lstring & inAttribute_mActualSelector
+                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_outputInputSelfParameterAST result ;
   if (inAttribute_mActualSelector.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_outputInputSelfParameterAST (inAttribute_mActualSelector COMMA_THERE)) ;
@@ -1856,10 +1856,10 @@ GALGAS_actualParameterAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_inputActualExistingVariableParameterAST GALGAS_inputActualExistingVariableParameterAST::constructor_new (const GALGAS_lstring & inAttribute_mActualSelector,
-                                                                                                                const GALGAS_lstring & inAttribute_mInputActualParameterName,
-                                                                                                                const GALGAS_lstringlist & inAttribute_mPoisonedVarNameList
-                                                                                                                COMMA_LOCATION_ARGS) {
+GALGAS_inputActualExistingVariableParameterAST GALGAS_inputActualExistingVariableParameterAST::class_func_new (const GALGAS_lstring & inAttribute_mActualSelector,
+                                                                                                               const GALGAS_lstring & inAttribute_mInputActualParameterName,
+                                                                                                               const GALGAS_lstringlist & inAttribute_mPoisonedVarNameList
+                                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_inputActualExistingVariableParameterAST result ;
   if (inAttribute_mActualSelector.isValid () && inAttribute_mInputActualParameterName.isValid () && inAttribute_mPoisonedVarNameList.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_inputActualExistingVariableParameterAST (inAttribute_mActualSelector, inAttribute_mInputActualParameterName, inAttribute_mPoisonedVarNameList COMMA_THERE)) ;
@@ -2049,10 +2049,10 @@ GALGAS_actualParameterAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_inputActualSelfPropertyParameterAST GALGAS_inputActualSelfPropertyParameterAST::constructor_new (const GALGAS_lstring & inAttribute_mActualSelector,
-                                                                                                        const GALGAS_lstring & inAttribute_mInputActualSelfPropertyName,
-                                                                                                        const GALGAS_lstringlist & inAttribute_mPoisonedVarNameList
-                                                                                                        COMMA_LOCATION_ARGS) {
+GALGAS_inputActualSelfPropertyParameterAST GALGAS_inputActualSelfPropertyParameterAST::class_func_new (const GALGAS_lstring & inAttribute_mActualSelector,
+                                                                                                       const GALGAS_lstring & inAttribute_mInputActualSelfPropertyName,
+                                                                                                       const GALGAS_lstringlist & inAttribute_mPoisonedVarNameList
+                                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_inputActualSelfPropertyParameterAST result ;
   if (inAttribute_mActualSelector.isValid () && inAttribute_mInputActualSelfPropertyName.isValid () && inAttribute_mPoisonedVarNameList.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_inputActualSelfPropertyParameterAST (inAttribute_mActualSelector, inAttribute_mInputActualSelfPropertyName, inAttribute_mPoisonedVarNameList COMMA_THERE)) ;
@@ -2242,10 +2242,10 @@ GALGAS_actualParameterAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_inputActualSelfParameterAST GALGAS_inputActualSelfParameterAST::constructor_new (const GALGAS_lstring & inAttribute_mActualSelector,
-                                                                                        const GALGAS_location & inAttribute_mSelfLocation,
-                                                                                        const GALGAS_lstringlist & inAttribute_mPoisonedVarNameList
-                                                                                        COMMA_LOCATION_ARGS) {
+GALGAS_inputActualSelfParameterAST GALGAS_inputActualSelfParameterAST::class_func_new (const GALGAS_lstring & inAttribute_mActualSelector,
+                                                                                       const GALGAS_location & inAttribute_mSelfLocation,
+                                                                                       const GALGAS_lstringlist & inAttribute_mPoisonedVarNameList
+                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_inputActualSelfParameterAST result ;
   if (inAttribute_mActualSelector.isValid () && inAttribute_mSelfLocation.isValid () && inAttribute_mPoisonedVarNameList.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_inputActualSelfParameterAST (inAttribute_mActualSelector, inAttribute_mSelfLocation, inAttribute_mPoisonedVarNameList COMMA_THERE)) ;
@@ -2439,11 +2439,11 @@ GALGAS_actualParameterAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_inputActualNewVariableParameterAST GALGAS_inputActualNewVariableParameterAST::constructor_new (const GALGAS_lstring & inAttribute_mActualSelector,
-                                                                                                      const GALGAS_lstring & inAttribute_mInputOptionalActualTypeName,
-                                                                                                      const GALGAS_lstring & inAttribute_mInputActualParameterName,
-                                                                                                      const GALGAS_lstringlist & inAttribute_mPoisonedVarNameList
-                                                                                                      COMMA_LOCATION_ARGS) {
+GALGAS_inputActualNewVariableParameterAST GALGAS_inputActualNewVariableParameterAST::class_func_new (const GALGAS_lstring & inAttribute_mActualSelector,
+                                                                                                     const GALGAS_lstring & inAttribute_mInputOptionalActualTypeName,
+                                                                                                     const GALGAS_lstring & inAttribute_mInputActualParameterName,
+                                                                                                     const GALGAS_lstringlist & inAttribute_mPoisonedVarNameList
+                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_inputActualNewVariableParameterAST result ;
   if (inAttribute_mActualSelector.isValid () && inAttribute_mInputOptionalActualTypeName.isValid () && inAttribute_mInputActualParameterName.isValid () && inAttribute_mPoisonedVarNameList.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_inputActualNewVariableParameterAST (inAttribute_mActualSelector, inAttribute_mInputOptionalActualTypeName, inAttribute_mInputActualParameterName, inAttribute_mPoisonedVarNameList COMMA_THERE)) ;
@@ -2657,12 +2657,12 @@ GALGAS_actualParameterAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_inputActualNewConstantParameterAST GALGAS_inputActualNewConstantParameterAST::constructor_new (const GALGAS_lstring & inAttribute_mActualSelector,
-                                                                                                      const GALGAS_lstring & inAttribute_mInputOptionalActualTypeName,
-                                                                                                      const GALGAS_lstring & inAttribute_mInputActualParameterName,
-                                                                                                      const GALGAS_bool & inAttribute_mMarkedAsUnused,
-                                                                                                      const GALGAS_lstringlist & inAttribute_mPoisonedVarNameList
-                                                                                                      COMMA_LOCATION_ARGS) {
+GALGAS_inputActualNewConstantParameterAST GALGAS_inputActualNewConstantParameterAST::class_func_new (const GALGAS_lstring & inAttribute_mActualSelector,
+                                                                                                     const GALGAS_lstring & inAttribute_mInputOptionalActualTypeName,
+                                                                                                     const GALGAS_lstring & inAttribute_mInputActualParameterName,
+                                                                                                     const GALGAS_bool & inAttribute_mMarkedAsUnused,
+                                                                                                     const GALGAS_lstringlist & inAttribute_mPoisonedVarNameList
+                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_inputActualNewConstantParameterAST result ;
   if (inAttribute_mActualSelector.isValid () && inAttribute_mInputOptionalActualTypeName.isValid () && inAttribute_mInputActualParameterName.isValid () && inAttribute_mMarkedAsUnused.isValid () && inAttribute_mPoisonedVarNameList.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_inputActualNewConstantParameterAST (inAttribute_mActualSelector, inAttribute_mInputOptionalActualTypeName, inAttribute_mInputActualParameterName, inAttribute_mMarkedAsUnused, inAttribute_mPoisonedVarNameList COMMA_THERE)) ;
@@ -2880,9 +2880,9 @@ GALGAS_actualParameterAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_inputSingleJokerActualParameterAST GALGAS_inputSingleJokerActualParameterAST::constructor_new (const GALGAS_lstring & inAttribute_mActualSelector,
-                                                                                                      const GALGAS_lstringlist & inAttribute_mPoisonedVarNameList
-                                                                                                      COMMA_LOCATION_ARGS) {
+GALGAS_inputSingleJokerActualParameterAST GALGAS_inputSingleJokerActualParameterAST::class_func_new (const GALGAS_lstring & inAttribute_mActualSelector,
+                                                                                                     const GALGAS_lstringlist & inAttribute_mPoisonedVarNameList
+                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_inputSingleJokerActualParameterAST result ;
   if (inAttribute_mActualSelector.isValid () && inAttribute_mPoisonedVarNameList.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_inputSingleJokerActualParameterAST (inAttribute_mActualSelector, inAttribute_mPoisonedVarNameList COMMA_THERE)) ;
@@ -3063,12 +3063,12 @@ GALGAS_semanticDeclarationAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_externProcedureDeclarationAST GALGAS_externProcedureDeclarationAST::constructor_new (const GALGAS_bool & inAttribute_isPredefined,
-                                                                                            const GALGAS_bool & inAttribute_isFilePrivate,
-                                                                                            const GALGAS_lstring & inAttribute_mRoutineName,
-                                                                                            const GALGAS_formalParameterListAST & inAttribute_mFormalArgumentListAST,
-                                                                                            const GALGAS_bool & inAttribute_usefullProcedure
-                                                                                            COMMA_LOCATION_ARGS) {
+GALGAS_externProcedureDeclarationAST GALGAS_externProcedureDeclarationAST::class_func_new (const GALGAS_bool & inAttribute_isPredefined,
+                                                                                           const GALGAS_bool & inAttribute_isFilePrivate,
+                                                                                           const GALGAS_lstring & inAttribute_mRoutineName,
+                                                                                           const GALGAS_formalParameterListAST & inAttribute_mFormalArgumentListAST,
+                                                                                           const GALGAS_bool & inAttribute_usefullProcedure
+                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_externProcedureDeclarationAST result ;
   if (inAttribute_isPredefined.isValid () && inAttribute_isFilePrivate.isValid () && inAttribute_mRoutineName.isValid () && inAttribute_mFormalArgumentListAST.isValid () && inAttribute_usefullProcedure.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_externProcedureDeclarationAST (inAttribute_isPredefined, inAttribute_isFilePrivate, inAttribute_mRoutineName, inAttribute_mFormalArgumentListAST, inAttribute_usefullProcedure COMMA_THERE)) ;
@@ -3279,11 +3279,11 @@ GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_routinePrototypeDeclarationForGeneration GALGAS_routinePrototypeDeclarationForGeneration::constructor_new (const GALGAS_bool & inAttribute_generateHeader,
-                                                                                                                  const GALGAS_string & inAttribute_mImplementationCppFileName,
-                                                                                                                  const GALGAS_string & inAttribute_routineMangledName,
-                                                                                                                  const GALGAS_formalParameterListForGeneration & inAttribute_mFormalArgumentList
-                                                                                                                  COMMA_LOCATION_ARGS) {
+GALGAS_routinePrototypeDeclarationForGeneration GALGAS_routinePrototypeDeclarationForGeneration::class_func_new (const GALGAS_bool & inAttribute_generateHeader,
+                                                                                                                 const GALGAS_string & inAttribute_mImplementationCppFileName,
+                                                                                                                 const GALGAS_string & inAttribute_routineMangledName,
+                                                                                                                 const GALGAS_formalParameterListForGeneration & inAttribute_mFormalArgumentList
+                                                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_routinePrototypeDeclarationForGeneration result ;
   if (inAttribute_generateHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_routineMangledName.isValid () && inAttribute_mFormalArgumentList.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_routinePrototypeDeclarationForGeneration (inAttribute_generateHeader, inAttribute_mImplementationCppFileName, inAttribute_routineMangledName, inAttribute_mFormalArgumentList COMMA_THERE)) ;
@@ -3445,7 +3445,7 @@ GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_routinePrototypeDeclarationForGeneration_2D_weak GALGAS_routinePrototypeDeclarationForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_routinePrototypeDeclarationForGeneration_2D_weak GALGAS_routinePrototypeDeclarationForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_routinePrototypeDeclarationForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -3584,14 +3584,14 @@ GALGAS_externProcedureDeclarationAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_procDeclarationAST GALGAS_procDeclarationAST::constructor_new (const GALGAS_bool & inAttribute_isPredefined,
-                                                                      const GALGAS_bool & inAttribute_isFilePrivate,
-                                                                      const GALGAS_lstring & inAttribute_mRoutineName,
-                                                                      const GALGAS_formalParameterListAST & inAttribute_mFormalArgumentListAST,
-                                                                      const GALGAS_bool & inAttribute_usefullProcedure,
-                                                                      const GALGAS_semanticInstructionListAST & inAttribute_mRoutineInstructionList,
-                                                                      const GALGAS_location & inAttribute_mEndOfRoutineInstructionList
-                                                                      COMMA_LOCATION_ARGS) {
+GALGAS_procDeclarationAST GALGAS_procDeclarationAST::class_func_new (const GALGAS_bool & inAttribute_isPredefined,
+                                                                     const GALGAS_bool & inAttribute_isFilePrivate,
+                                                                     const GALGAS_lstring & inAttribute_mRoutineName,
+                                                                     const GALGAS_formalParameterListAST & inAttribute_mFormalArgumentListAST,
+                                                                     const GALGAS_bool & inAttribute_usefullProcedure,
+                                                                     const GALGAS_semanticInstructionListAST & inAttribute_mRoutineInstructionList,
+                                                                     const GALGAS_location & inAttribute_mEndOfRoutineInstructionList
+                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_procDeclarationAST result ;
   if (inAttribute_isPredefined.isValid () && inAttribute_isFilePrivate.isValid () && inAttribute_mRoutineName.isValid () && inAttribute_mFormalArgumentListAST.isValid () && inAttribute_usefullProcedure.isValid () && inAttribute_mRoutineInstructionList.isValid () && inAttribute_mEndOfRoutineInstructionList.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_procDeclarationAST (inAttribute_isPredefined, inAttribute_isFilePrivate, inAttribute_mRoutineName, inAttribute_mFormalArgumentListAST, inAttribute_usefullProcedure, inAttribute_mRoutineInstructionList, inAttribute_mEndOfRoutineInstructionList COMMA_THERE)) ;
@@ -3788,13 +3788,13 @@ GALGAS_routinePrototypeDeclarationForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_routineImplementationForGeneration GALGAS_routineImplementationForGeneration::constructor_new (const GALGAS_bool & inAttribute_generateHeader,
-                                                                                                      const GALGAS_string & inAttribute_mImplementationCppFileName,
-                                                                                                      const GALGAS_string & inAttribute_routineMangledName,
-                                                                                                      const GALGAS_formalParameterListForGeneration & inAttribute_mFormalArgumentList,
-                                                                                                      const GALGAS_bool & inAttribute_mGenerateStatic,
-                                                                                                      const GALGAS_semanticInstructionListForGeneration & inAttribute_mRoutineInstructionList
-                                                                                                      COMMA_LOCATION_ARGS) {
+GALGAS_routineImplementationForGeneration GALGAS_routineImplementationForGeneration::class_func_new (const GALGAS_bool & inAttribute_generateHeader,
+                                                                                                     const GALGAS_string & inAttribute_mImplementationCppFileName,
+                                                                                                     const GALGAS_string & inAttribute_routineMangledName,
+                                                                                                     const GALGAS_formalParameterListForGeneration & inAttribute_mFormalArgumentList,
+                                                                                                     const GALGAS_bool & inAttribute_mGenerateStatic,
+                                                                                                     const GALGAS_semanticInstructionListForGeneration & inAttribute_mRoutineInstructionList
+                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_routineImplementationForGeneration result ;
   if (inAttribute_generateHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_routineMangledName.isValid () && inAttribute_mFormalArgumentList.isValid () && inAttribute_mGenerateStatic.isValid () && inAttribute_mRoutineInstructionList.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_routineImplementationForGeneration (inAttribute_generateHeader, inAttribute_mImplementationCppFileName, inAttribute_routineMangledName, inAttribute_mFormalArgumentList, inAttribute_mGenerateStatic, inAttribute_mRoutineInstructionList COMMA_THERE)) ;
@@ -3962,7 +3962,7 @@ GALGAS_routinePrototypeDeclarationForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_routineImplementationForGeneration_2D_weak GALGAS_routineImplementationForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_routineImplementationForGeneration_2D_weak GALGAS_routineImplementationForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_routineImplementationForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -4082,8 +4082,8 @@ GALGAS_abstractInputParameter (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_inputParameterVariable GALGAS_inputParameterVariable::constructor_new (const GALGAS_lstring & inAttribute_mActualParameterName
-                                                                              COMMA_LOCATION_ARGS) {
+GALGAS_inputParameterVariable GALGAS_inputParameterVariable::class_func_new (const GALGAS_lstring & inAttribute_mActualParameterName
+                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_inputParameterVariable result ;
   if (inAttribute_mActualParameterName.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_inputParameterVariable (inAttribute_mActualParameterName COMMA_THERE)) ;
@@ -4237,9 +4237,9 @@ GALGAS_abstractInputParameter (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_inputParameterDeclaredVariable GALGAS_inputParameterDeclaredVariable::constructor_new (const GALGAS_lstring & inAttribute_mActualParameterTypeName,
-                                                                                              const GALGAS_lstring & inAttribute_mActualParameterName
-                                                                                              COMMA_LOCATION_ARGS) {
+GALGAS_inputParameterDeclaredVariable GALGAS_inputParameterDeclaredVariable::class_func_new (const GALGAS_lstring & inAttribute_mActualParameterTypeName,
+                                                                                             const GALGAS_lstring & inAttribute_mActualParameterName
+                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_inputParameterDeclaredVariable result ;
   if (inAttribute_mActualParameterTypeName.isValid () && inAttribute_mActualParameterName.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_inputParameterDeclaredVariable (inAttribute_mActualParameterTypeName, inAttribute_mActualParameterName COMMA_THERE)) ;
@@ -4409,9 +4409,9 @@ GALGAS_abstractInputParameter (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_inputParameterDeclaredConstant GALGAS_inputParameterDeclaredConstant::constructor_new (const GALGAS_lstring & inAttribute_mActualParameterTypeName,
-                                                                                              const GALGAS_lstring & inAttribute_mActualParameterName
-                                                                                              COMMA_LOCATION_ARGS) {
+GALGAS_inputParameterDeclaredConstant GALGAS_inputParameterDeclaredConstant::class_func_new (const GALGAS_lstring & inAttribute_mActualParameterTypeName,
+                                                                                             const GALGAS_lstring & inAttribute_mActualParameterName
+                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_inputParameterDeclaredConstant result ;
   if (inAttribute_mActualParameterTypeName.isValid () && inAttribute_mActualParameterName.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_inputParameterDeclaredConstant (inAttribute_mActualParameterTypeName, inAttribute_mActualParameterName COMMA_THERE)) ;
@@ -4592,12 +4592,12 @@ GALGAS_semanticDeclarationAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_externFunctionDeclarationAST GALGAS_externFunctionDeclarationAST::constructor_new (const GALGAS_bool & inAttribute_isPredefined,
-                                                                                          const GALGAS_lstring & inAttribute_mFunctionName,
-                                                                                          const GALGAS_formalInputParameterListAST & inAttribute_mFormalArgumentList,
-                                                                                          const GALGAS_lstring & inAttribute_mResultTypeName,
-                                                                                          const GALGAS_bool & inAttribute_usefullFunc
-                                                                                          COMMA_LOCATION_ARGS) {
+GALGAS_externFunctionDeclarationAST GALGAS_externFunctionDeclarationAST::class_func_new (const GALGAS_bool & inAttribute_isPredefined,
+                                                                                         const GALGAS_lstring & inAttribute_mFunctionName,
+                                                                                         const GALGAS_formalInputParameterListAST & inAttribute_mFormalArgumentList,
+                                                                                         const GALGAS_lstring & inAttribute_mResultTypeName,
+                                                                                         const GALGAS_bool & inAttribute_usefullFunc
+                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_externFunctionDeclarationAST result ;
   if (inAttribute_isPredefined.isValid () && inAttribute_mFunctionName.isValid () && inAttribute_mFormalArgumentList.isValid () && inAttribute_mResultTypeName.isValid () && inAttribute_usefullFunc.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_externFunctionDeclarationAST (inAttribute_isPredefined, inAttribute_mFunctionName, inAttribute_mFormalArgumentList, inAttribute_mResultTypeName, inAttribute_usefullFunc COMMA_THERE)) ;
@@ -4825,16 +4825,16 @@ GALGAS_externFunctionDeclarationAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_functionDeclarationAST GALGAS_functionDeclarationAST::constructor_new (const GALGAS_bool & inAttribute_isPredefined,
-                                                                              const GALGAS_lstring & inAttribute_mFunctionName,
-                                                                              const GALGAS_formalInputParameterListAST & inAttribute_mFormalArgumentList,
-                                                                              const GALGAS_lstring & inAttribute_mResultTypeName,
-                                                                              const GALGAS_bool & inAttribute_usefullFunc,
-                                                                              const GALGAS_lstring & inAttribute_mResultVariableName,
-                                                                              const GALGAS_semanticInstructionListAST & inAttribute_mFunctionInstructionList,
-                                                                              const GALGAS_location & inAttribute_mEndOfFunctionInstructionList,
-                                                                              const GALGAS_bool & inAttribute_mIsInternal
-                                                                              COMMA_LOCATION_ARGS) {
+GALGAS_functionDeclarationAST GALGAS_functionDeclarationAST::class_func_new (const GALGAS_bool & inAttribute_isPredefined,
+                                                                             const GALGAS_lstring & inAttribute_mFunctionName,
+                                                                             const GALGAS_formalInputParameterListAST & inAttribute_mFormalArgumentList,
+                                                                             const GALGAS_lstring & inAttribute_mResultTypeName,
+                                                                             const GALGAS_bool & inAttribute_usefullFunc,
+                                                                             const GALGAS_lstring & inAttribute_mResultVariableName,
+                                                                             const GALGAS_semanticInstructionListAST & inAttribute_mFunctionInstructionList,
+                                                                             const GALGAS_location & inAttribute_mEndOfFunctionInstructionList,
+                                                                             const GALGAS_bool & inAttribute_mIsInternal
+                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_functionDeclarationAST result ;
   if (inAttribute_isPredefined.isValid () && inAttribute_mFunctionName.isValid () && inAttribute_mFormalArgumentList.isValid () && inAttribute_mResultTypeName.isValid () && inAttribute_usefullFunc.isValid () && inAttribute_mResultVariableName.isValid () && inAttribute_mFunctionInstructionList.isValid () && inAttribute_mEndOfFunctionInstructionList.isValid () && inAttribute_mIsInternal.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_functionDeclarationAST (inAttribute_isPredefined, inAttribute_mFunctionName, inAttribute_mFormalArgumentList, inAttribute_mResultTypeName, inAttribute_usefullFunc, inAttribute_mResultVariableName, inAttribute_mFunctionInstructionList, inAttribute_mEndOfFunctionInstructionList, inAttribute_mIsInternal COMMA_THERE)) ;
@@ -5074,15 +5074,15 @@ GALGAS_semanticDeclarationAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_onceFunctionDeclarationAST GALGAS_onceFunctionDeclarationAST::constructor_new (const GALGAS_bool & inAttribute_isPredefined,
-                                                                                      const GALGAS_lstring & inAttribute_mFunctionName,
-                                                                                      const GALGAS_lstring & inAttribute_mResultTypeName,
-                                                                                      const GALGAS_lstring & inAttribute_mResultVariableName,
-                                                                                      const GALGAS_semanticInstructionListAST & inAttribute_mFunctionInstructionList,
-                                                                                      const GALGAS_location & inAttribute_mEndOfFunctionInstructionList,
-                                                                                      const GALGAS_bool & inAttribute_mIsInternal,
-                                                                                      const GALGAS_bool & inAttribute_mIsUsefull
-                                                                                      COMMA_LOCATION_ARGS) {
+GALGAS_onceFunctionDeclarationAST GALGAS_onceFunctionDeclarationAST::class_func_new (const GALGAS_bool & inAttribute_isPredefined,
+                                                                                     const GALGAS_lstring & inAttribute_mFunctionName,
+                                                                                     const GALGAS_lstring & inAttribute_mResultTypeName,
+                                                                                     const GALGAS_lstring & inAttribute_mResultVariableName,
+                                                                                     const GALGAS_semanticInstructionListAST & inAttribute_mFunctionInstructionList,
+                                                                                     const GALGAS_location & inAttribute_mEndOfFunctionInstructionList,
+                                                                                     const GALGAS_bool & inAttribute_mIsInternal,
+                                                                                     const GALGAS_bool & inAttribute_mIsUsefull
+                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_onceFunctionDeclarationAST result ;
   if (inAttribute_isPredefined.isValid () && inAttribute_mFunctionName.isValid () && inAttribute_mResultTypeName.isValid () && inAttribute_mResultVariableName.isValid () && inAttribute_mFunctionInstructionList.isValid () && inAttribute_mEndOfFunctionInstructionList.isValid () && inAttribute_mIsInternal.isValid () && inAttribute_mIsUsefull.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_onceFunctionDeclarationAST (inAttribute_isPredefined, inAttribute_mFunctionName, inAttribute_mResultTypeName, inAttribute_mResultVariableName, inAttribute_mFunctionInstructionList, inAttribute_mEndOfFunctionInstructionList, inAttribute_mIsInternal, inAttribute_mIsUsefull COMMA_THERE)) ;
@@ -5358,15 +5358,15 @@ GALGAS_semanticDeclarationAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperDeclarationAST GALGAS_filewrapperDeclarationAST::constructor_new (const GALGAS_bool & inAttribute_isPredefined,
-                                                                                    const GALGAS_bool & inAttribute_mIsInternal,
-                                                                                    const GALGAS_string & inAttribute_mSourceFileAbsolutePath,
-                                                                                    const GALGAS_lstring & inAttribute_mFilewrapperName,
-                                                                                    const GALGAS_lstring & inAttribute_mFilewrapperPath,
-                                                                                    const GALGAS_lstringlist & inAttribute_mFilewrapperTextFileExtensionList,
-                                                                                    const GALGAS_lstringlist & inAttribute_mFilewrapperBinaryFileExtensionList,
-                                                                                    const GALGAS_filewrapperTemplateListAST & inAttribute_mFilewrapperTemplateList
-                                                                                    COMMA_LOCATION_ARGS) {
+GALGAS_filewrapperDeclarationAST GALGAS_filewrapperDeclarationAST::class_func_new (const GALGAS_bool & inAttribute_isPredefined,
+                                                                                   const GALGAS_bool & inAttribute_mIsInternal,
+                                                                                   const GALGAS_string & inAttribute_mSourceFileAbsolutePath,
+                                                                                   const GALGAS_lstring & inAttribute_mFilewrapperName,
+                                                                                   const GALGAS_lstring & inAttribute_mFilewrapperPath,
+                                                                                   const GALGAS_lstringlist & inAttribute_mFilewrapperTextFileExtensionList,
+                                                                                   const GALGAS_lstringlist & inAttribute_mFilewrapperBinaryFileExtensionList,
+                                                                                   const GALGAS_filewrapperTemplateListAST & inAttribute_mFilewrapperTemplateList
+                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_filewrapperDeclarationAST result ;
   if (inAttribute_isPredefined.isValid () && inAttribute_mIsInternal.isValid () && inAttribute_mSourceFileAbsolutePath.isValid () && inAttribute_mFilewrapperName.isValid () && inAttribute_mFilewrapperPath.isValid () && inAttribute_mFilewrapperTextFileExtensionList.isValid () && inAttribute_mFilewrapperBinaryFileExtensionList.isValid () && inAttribute_mFilewrapperTemplateList.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_filewrapperDeclarationAST (inAttribute_isPredefined, inAttribute_mIsInternal, inAttribute_mSourceFileAbsolutePath, inAttribute_mFilewrapperName, inAttribute_mFilewrapperPath, inAttribute_mFilewrapperTextFileExtensionList, inAttribute_mFilewrapperBinaryFileExtensionList, inAttribute_mFilewrapperTemplateList COMMA_THERE)) ;
@@ -5634,13 +5634,13 @@ GALGAS_semanticDeclarationAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_galgas_33_SyntaxComponentAST GALGAS_galgas_33_SyntaxComponentAST::constructor_new (const GALGAS_bool & inAttribute_isPredefined,
-                                                                                          const GALGAS_lstring & inAttribute_mSyntaxComponentName,
-                                                                                          const GALGAS_lstring & inAttribute_mLexiqueName,
-                                                                                          const GALGAS_nonterminalDeclarationListAST & inAttribute_mNonterminalDeclarationList,
-                                                                                          const GALGAS_syntaxRuleListAST & inAttribute_mRuleList,
-                                                                                          const GALGAS_bool & inAttribute_mHasTranslateFeature
-                                                                                          COMMA_LOCATION_ARGS) {
+GALGAS_galgas_33_SyntaxComponentAST GALGAS_galgas_33_SyntaxComponentAST::class_func_new (const GALGAS_bool & inAttribute_isPredefined,
+                                                                                         const GALGAS_lstring & inAttribute_mSyntaxComponentName,
+                                                                                         const GALGAS_lstring & inAttribute_mLexiqueName,
+                                                                                         const GALGAS_nonterminalDeclarationListAST & inAttribute_mNonterminalDeclarationList,
+                                                                                         const GALGAS_syntaxRuleListAST & inAttribute_mRuleList,
+                                                                                         const GALGAS_bool & inAttribute_mHasTranslateFeature
+                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_galgas_33_SyntaxComponentAST result ;
   if (inAttribute_isPredefined.isValid () && inAttribute_mSyntaxComponentName.isValid () && inAttribute_mLexiqueName.isValid () && inAttribute_mNonterminalDeclarationList.isValid () && inAttribute_mRuleList.isValid () && inAttribute_mHasTranslateFeature.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_galgas_33_SyntaxComponentAST (inAttribute_isPredefined, inAttribute_mSyntaxComponentName, inAttribute_mLexiqueName, inAttribute_mNonterminalDeclarationList, inAttribute_mRuleList, inAttribute_mHasTranslateFeature COMMA_THERE)) ;
@@ -5888,16 +5888,16 @@ GALGAS_semanticDeclarationAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_galgas_33_GrammarComponentAST GALGAS_galgas_33_GrammarComponentAST::constructor_new (const GALGAS_bool & inAttribute_isPredefined,
-                                                                                            const GALGAS_lbool & inAttribute_mHasIndexing,
-                                                                                            const GALGAS_lstring & inAttribute_mGrammarComponentName,
-                                                                                            const GALGAS_lstring & inAttribute_mGrammarClass,
-                                                                                            const GALGAS_lstringlist & inAttribute_mSyntaxComponents,
-                                                                                            const GALGAS_lstring & inAttribute_mStartSymbolName,
-                                                                                            const GALGAS_nonTerminalLabelListAST & inAttribute_mStartSymbolLabelList,
-                                                                                            const GALGAS_lstringlist & inAttribute_mUnusedNonterminalList,
-                                                                                            const GALGAS_bool & inAttribute_mHasTranslateFeature
-                                                                                            COMMA_LOCATION_ARGS) {
+GALGAS_galgas_33_GrammarComponentAST GALGAS_galgas_33_GrammarComponentAST::class_func_new (const GALGAS_bool & inAttribute_isPredefined,
+                                                                                           const GALGAS_lbool & inAttribute_mHasIndexing,
+                                                                                           const GALGAS_lstring & inAttribute_mGrammarComponentName,
+                                                                                           const GALGAS_lstring & inAttribute_mGrammarClass,
+                                                                                           const GALGAS_lstringlist & inAttribute_mSyntaxComponents,
+                                                                                           const GALGAS_lstring & inAttribute_mStartSymbolName,
+                                                                                           const GALGAS_nonTerminalLabelListAST & inAttribute_mStartSymbolLabelList,
+                                                                                           const GALGAS_lstringlist & inAttribute_mUnusedNonterminalList,
+                                                                                           const GALGAS_bool & inAttribute_mHasTranslateFeature
+                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_galgas_33_GrammarComponentAST result ;
   if (inAttribute_isPredefined.isValid () && inAttribute_mHasIndexing.isValid () && inAttribute_mGrammarComponentName.isValid () && inAttribute_mGrammarClass.isValid () && inAttribute_mSyntaxComponents.isValid () && inAttribute_mStartSymbolName.isValid () && inAttribute_mStartSymbolLabelList.isValid () && inAttribute_mUnusedNonterminalList.isValid () && inAttribute_mHasTranslateFeature.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_galgas_33_GrammarComponentAST (inAttribute_isPredefined, inAttribute_mHasIndexing, inAttribute_mGrammarComponentName, inAttribute_mGrammarClass, inAttribute_mSyntaxComponents, inAttribute_mStartSymbolName, inAttribute_mStartSymbolLabelList, inAttribute_mUnusedNonterminalList, inAttribute_mHasTranslateFeature COMMA_THERE)) ;
@@ -6125,9 +6125,9 @@ mProperty_mInternalRoutineMap (inOperand0) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_routineMap GALGAS_routineMap::constructor_new (Compiler * /* inCompiler */
-                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  const GALGAS_internalRoutineMap in_mInternalRoutineMap = GALGAS_internalRoutineMap::constructor_emptyMap (SOURCE_FILE ("routineMap.galgas", 59)) ;
+GALGAS_routineMap GALGAS_routineMap::class_func_new (Compiler * /* inCompiler */
+                                                     COMMA_UNUSED_LOCATION_ARGS) {
+  const GALGAS_internalRoutineMap in_mInternalRoutineMap = GALGAS_internalRoutineMap::class_func_emptyMap (SOURCE_FILE ("routineMap.galgas", 59)) ;
   GALGAS_routineMap result ;
   if (in_mInternalRoutineMap.isValid ()) {
     result = GALGAS_routineMap (in_mInternalRoutineMap) ;
@@ -6233,14 +6233,14 @@ void extensionMethod_searchKey (const GALGAS_routineMap inObject,
   const GALGAS_routineMap temp_0 = inObject ;
   temp_0.readProperty_mInternalRoutineMap ().method_searchKey (constinArgument_inRoutineName, var_routineArgumentMap_3948, inCompiler COMMA_SOURCE_FILE ("routineMap.galgas", 92)) ;
   outArgument_outIsFilePrivate = GALGAS_bool (false) ;
-  outArgument_outRoutineSignature = GALGAS_formalParameterSignature::constructor_emptyList (SOURCE_FILE ("routineMap.galgas", 94)) ;
+  outArgument_outRoutineSignature = GALGAS_formalParameterSignature::class_func_emptyList (SOURCE_FILE ("routineMap.galgas", 94)) ;
   cEnumerator_routineArgumentMap enumerator_4043 (var_routineArgumentMap_3948, kENUMERATION_UP) ;
   while (enumerator_4043.hasCurrentObject ()) {
     outArgument_outIsFilePrivate = enumerator_4043.current (HERE).readProperty_mIsFilePrivate () ;
     outArgument_outRoutineSignature = enumerator_4043.current (HERE).readProperty_mRoutineSignature () ;
     enumerator_4043.gotoNextObject () ;
   }
-  GALGAS_acceptableParameterList var_acceptableParameterList_4204 = GALGAS_acceptableParameterList::constructor_emptyList (SOURCE_FILE ("routineMap.galgas", 99)) ;
+  GALGAS_acceptableParameterList var_acceptableParameterList_4204 = GALGAS_acceptableParameterList::class_func_emptyList (SOURCE_FILE ("routineMap.galgas", 99)) ;
   cEnumerator_routineArgumentMap enumerator_4250 (var_routineArgumentMap_3948, kENUMERATION_UP) ;
   while (enumerator_4250.hasCurrentObject ()) {
     GALGAS_bool var_accept_4282 = GALGAS_bool (kIsEqual, inArgument_inActualParameterList.getter_count (SOURCE_FILE ("routineMap.galgas", 101)).objectCompare (enumerator_4250.current (HERE).readProperty_mRoutineSignature ().getter_count (SOURCE_FILE ("routineMap.galgas", 101)))) ;
@@ -6415,12 +6415,12 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_castInExpressionForGeneration GALGAS_castInExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mResultType,
-                                                                                            const GALGAS_location & inAttribute_mLocation,
-                                                                                            const GALGAS_semanticExpressionForGeneration & inAttribute_mReceiverExpression,
-                                                                                            const GALGAS_string & inAttribute_mTypeName,
-                                                                                            const GALGAS_unifiedTypeMapEntry & inAttribute_mCastType
-                                                                                            COMMA_LOCATION_ARGS) {
+GALGAS_castInExpressionForGeneration GALGAS_castInExpressionForGeneration::class_func_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mResultType,
+                                                                                           const GALGAS_location & inAttribute_mLocation,
+                                                                                           const GALGAS_semanticExpressionForGeneration & inAttribute_mReceiverExpression,
+                                                                                           const GALGAS_string & inAttribute_mTypeName,
+                                                                                           const GALGAS_unifiedTypeMapEntry & inAttribute_mCastType
+                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_castInExpressionForGeneration result ;
   if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mReceiverExpression.isValid () && inAttribute_mTypeName.isValid () && inAttribute_mCastType.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_castInExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mReceiverExpression, inAttribute_mTypeName, inAttribute_mCastType COMMA_THERE)) ;
@@ -6611,9 +6611,9 @@ GALGAS_actualParameterForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_outputActualParameterForGeneration GALGAS_outputActualParameterForGeneration::constructor_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mFormalArgumentType,
-                                                                                                      const GALGAS_semanticExpressionForGeneration & inAttribute_mOutputActualParameterExpression
-                                                                                                      COMMA_LOCATION_ARGS) {
+GALGAS_outputActualParameterForGeneration GALGAS_outputActualParameterForGeneration::class_func_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mFormalArgumentType,
+                                                                                                     const GALGAS_semanticExpressionForGeneration & inAttribute_mOutputActualParameterExpression
+                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_outputActualParameterForGeneration result ;
   if (inAttribute_mFormalArgumentType.isValid () && inAttribute_mOutputActualParameterExpression.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_outputActualParameterForGeneration (inAttribute_mFormalArgumentType, inAttribute_mOutputActualParameterExpression COMMA_THERE)) ;
@@ -6773,10 +6773,10 @@ GALGAS_actualParameterForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_inputActualParameterForGeneration GALGAS_inputActualParameterForGeneration::constructor_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mFormalArgumentType,
-                                                                                                    const GALGAS_string & inAttribute_mInputActualCppName,
-                                                                                                    const GALGAS__32_stringlist & inAttribute_mPoisonedVarNameList
-                                                                                                    COMMA_LOCATION_ARGS) {
+GALGAS_inputActualParameterForGeneration GALGAS_inputActualParameterForGeneration::class_func_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mFormalArgumentType,
+                                                                                                   const GALGAS_string & inAttribute_mInputActualCppName,
+                                                                                                   const GALGAS__32_stringlist & inAttribute_mPoisonedVarNameList
+                                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_inputActualParameterForGeneration result ;
   if (inAttribute_mFormalArgumentType.isValid () && inAttribute_mInputActualCppName.isValid () && inAttribute_mPoisonedVarNameList.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_inputActualParameterForGeneration (inAttribute_mFormalArgumentType, inAttribute_mInputActualCppName, inAttribute_mPoisonedVarNameList COMMA_THERE)) ;
@@ -6975,16 +6975,16 @@ GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexiqueDeclarationForGeneration GALGAS_lexiqueDeclarationForGeneration::constructor_new (const GALGAS_bool & inAttribute_generateHeader,
-                                                                                                const GALGAS_string & inAttribute_mImplementationCppFileName,
-                                                                                                const GALGAS_string & inAttribute_mLexiqueName,
-                                                                                                const GALGAS_string & inAttribute_mSuperLexiqueName,
-                                                                                                const GALGAS_string & inAttribute_mHeaderContents,
-                                                                                                const GALGAS_string & inAttribute_mCppContents,
-                                                                                                const GALGAS_string & inAttribute_mObjcCocoaHeader,
-                                                                                                const GALGAS_string & inAttribute_mObjcCocoaImplementation,
-                                                                                                const GALGAS_string & inAttribute_mSwiftCocoaImplementation
-                                                                                                COMMA_LOCATION_ARGS) {
+GALGAS_lexiqueDeclarationForGeneration GALGAS_lexiqueDeclarationForGeneration::class_func_new (const GALGAS_bool & inAttribute_generateHeader,
+                                                                                               const GALGAS_string & inAttribute_mImplementationCppFileName,
+                                                                                               const GALGAS_string & inAttribute_mLexiqueName,
+                                                                                               const GALGAS_string & inAttribute_mSuperLexiqueName,
+                                                                                               const GALGAS_string & inAttribute_mHeaderContents,
+                                                                                               const GALGAS_string & inAttribute_mCppContents,
+                                                                                               const GALGAS_string & inAttribute_mObjcCocoaHeader,
+                                                                                               const GALGAS_string & inAttribute_mObjcCocoaImplementation,
+                                                                                               const GALGAS_string & inAttribute_mSwiftCocoaImplementation
+                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_lexiqueDeclarationForGeneration result ;
   if (inAttribute_generateHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mLexiqueName.isValid () && inAttribute_mSuperLexiqueName.isValid () && inAttribute_mHeaderContents.isValid () && inAttribute_mCppContents.isValid () && inAttribute_mObjcCocoaHeader.isValid () && inAttribute_mObjcCocoaImplementation.isValid () && inAttribute_mSwiftCocoaImplementation.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_lexiqueDeclarationForGeneration (inAttribute_generateHeader, inAttribute_mImplementationCppFileName, inAttribute_mLexiqueName, inAttribute_mSuperLexiqueName, inAttribute_mHeaderContents, inAttribute_mCppContents, inAttribute_mObjcCocoaHeader, inAttribute_mObjcCocoaImplementation, inAttribute_mSwiftCocoaImplementation COMMA_THERE)) ;
@@ -7226,7 +7226,7 @@ GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexiqueDeclarationForGeneration_2D_weak GALGAS_lexiqueDeclarationForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_lexiqueDeclarationForGeneration_2D_weak GALGAS_lexiqueDeclarationForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_lexiqueDeclarationForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -7380,17 +7380,17 @@ GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_grammarForGeneration GALGAS_grammarForGeneration::constructor_new (const GALGAS_bool & inAttribute_generateHeader,
-                                                                          const GALGAS_string & inAttribute_mImplementationCppFileName,
-                                                                          const GALGAS_string & inAttribute_mGrammarName,
-                                                                          const GALGAS_string & inAttribute_mLexiqueName,
-                                                                          const GALGAS_nonTerminalSymbolMapForGrammarAnalysis & inAttribute_mNonTerminalMapForGrammarAnalysis,
-                                                                          const GALGAS_nonTerminalToAddList & inAttribute_mNonTerminalToAddList,
-                                                                          const GALGAS_lstringlist & inAttribute_mSyntaxComponents,
-                                                                          const GALGAS_string & inAttribute_mStartSymbolName,
-                                                                          const GALGAS_bool & inAttribute_mHasTranslateFeature,
-                                                                          const GALGAS_string & inAttribute_mCppFileContents
-                                                                          COMMA_LOCATION_ARGS) {
+GALGAS_grammarForGeneration GALGAS_grammarForGeneration::class_func_new (const GALGAS_bool & inAttribute_generateHeader,
+                                                                         const GALGAS_string & inAttribute_mImplementationCppFileName,
+                                                                         const GALGAS_string & inAttribute_mGrammarName,
+                                                                         const GALGAS_string & inAttribute_mLexiqueName,
+                                                                         const GALGAS_nonTerminalSymbolMapForGrammarAnalysis & inAttribute_mNonTerminalMapForGrammarAnalysis,
+                                                                         const GALGAS_nonTerminalToAddList & inAttribute_mNonTerminalToAddList,
+                                                                         const GALGAS_lstringlist & inAttribute_mSyntaxComponents,
+                                                                         const GALGAS_string & inAttribute_mStartSymbolName,
+                                                                         const GALGAS_bool & inAttribute_mHasTranslateFeature,
+                                                                         const GALGAS_string & inAttribute_mCppFileContents
+                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_grammarForGeneration result ;
   if (inAttribute_generateHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mGrammarName.isValid () && inAttribute_mLexiqueName.isValid () && inAttribute_mNonTerminalMapForGrammarAnalysis.isValid () && inAttribute_mNonTerminalToAddList.isValid () && inAttribute_mSyntaxComponents.isValid () && inAttribute_mStartSymbolName.isValid () && inAttribute_mHasTranslateFeature.isValid () && inAttribute_mCppFileContents.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_grammarForGeneration (inAttribute_generateHeader, inAttribute_mImplementationCppFileName, inAttribute_mGrammarName, inAttribute_mLexiqueName, inAttribute_mNonTerminalMapForGrammarAnalysis, inAttribute_mNonTerminalToAddList, inAttribute_mSyntaxComponents, inAttribute_mStartSymbolName, inAttribute_mHasTranslateFeature, inAttribute_mCppFileContents COMMA_THERE)) ;
@@ -7648,7 +7648,7 @@ GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_grammarForGeneration_2D_weak GALGAS_grammarForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_grammarForGeneration_2D_weak GALGAS_grammarForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_grammarForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -7782,12 +7782,12 @@ GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_functionPrototypeDeclarationForGeneration GALGAS_functionPrototypeDeclarationForGeneration::constructor_new (const GALGAS_bool & inAttribute_generateHeader,
-                                                                                                                    const GALGAS_string & inAttribute_mImplementationCppFileName,
-                                                                                                                    const GALGAS_string & inAttribute_mFunctionName,
-                                                                                                                    const GALGAS_formalInputParameterListForGeneration & inAttribute_mFormalArgumentList,
-                                                                                                                    const GALGAS_unifiedTypeMapEntry & inAttribute_mReturnType
-                                                                                                                    COMMA_LOCATION_ARGS) {
+GALGAS_functionPrototypeDeclarationForGeneration GALGAS_functionPrototypeDeclarationForGeneration::class_func_new (const GALGAS_bool & inAttribute_generateHeader,
+                                                                                                                   const GALGAS_string & inAttribute_mImplementationCppFileName,
+                                                                                                                   const GALGAS_string & inAttribute_mFunctionName,
+                                                                                                                   const GALGAS_formalInputParameterListForGeneration & inAttribute_mFormalArgumentList,
+                                                                                                                   const GALGAS_unifiedTypeMapEntry & inAttribute_mReturnType
+                                                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_functionPrototypeDeclarationForGeneration result ;
   if (inAttribute_generateHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mFunctionName.isValid () && inAttribute_mFormalArgumentList.isValid () && inAttribute_mReturnType.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_functionPrototypeDeclarationForGeneration (inAttribute_generateHeader, inAttribute_mImplementationCppFileName, inAttribute_mFunctionName, inAttribute_mFormalArgumentList, inAttribute_mReturnType COMMA_THERE)) ;
@@ -7965,7 +7965,7 @@ GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_functionPrototypeDeclarationForGeneration_2D_weak GALGAS_functionPrototypeDeclarationForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_functionPrototypeDeclarationForGeneration_2D_weak GALGAS_functionPrototypeDeclarationForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_functionPrototypeDeclarationForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -8104,14 +8104,14 @@ GALGAS_functionPrototypeDeclarationForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_functionImplementationForGeneration GALGAS_functionImplementationForGeneration::constructor_new (const GALGAS_bool & inAttribute_generateHeader,
-                                                                                                        const GALGAS_string & inAttribute_mImplementationCppFileName,
-                                                                                                        const GALGAS_string & inAttribute_mFunctionName,
-                                                                                                        const GALGAS_formalInputParameterListForGeneration & inAttribute_mFormalArgumentList,
-                                                                                                        const GALGAS_unifiedTypeMapEntry & inAttribute_mReturnType,
-                                                                                                        const GALGAS_string & inAttribute_mResultVariableCppName,
-                                                                                                        const GALGAS_semanticInstructionListForGeneration & inAttribute_mFunctionInstructionList
-                                                                                                        COMMA_LOCATION_ARGS) {
+GALGAS_functionImplementationForGeneration GALGAS_functionImplementationForGeneration::class_func_new (const GALGAS_bool & inAttribute_generateHeader,
+                                                                                                       const GALGAS_string & inAttribute_mImplementationCppFileName,
+                                                                                                       const GALGAS_string & inAttribute_mFunctionName,
+                                                                                                       const GALGAS_formalInputParameterListForGeneration & inAttribute_mFormalArgumentList,
+                                                                                                       const GALGAS_unifiedTypeMapEntry & inAttribute_mReturnType,
+                                                                                                       const GALGAS_string & inAttribute_mResultVariableCppName,
+                                                                                                       const GALGAS_semanticInstructionListForGeneration & inAttribute_mFunctionInstructionList
+                                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_functionImplementationForGeneration result ;
   if (inAttribute_generateHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mFunctionName.isValid () && inAttribute_mFormalArgumentList.isValid () && inAttribute_mReturnType.isValid () && inAttribute_mResultVariableCppName.isValid () && inAttribute_mFunctionInstructionList.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_functionImplementationForGeneration (inAttribute_generateHeader, inAttribute_mImplementationCppFileName, inAttribute_mFunctionName, inAttribute_mFormalArgumentList, inAttribute_mReturnType, inAttribute_mResultVariableCppName, inAttribute_mFunctionInstructionList COMMA_THERE)) ;
@@ -8282,7 +8282,7 @@ GALGAS_functionPrototypeDeclarationForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_functionImplementationForGeneration_2D_weak GALGAS_functionImplementationForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_functionImplementationForGeneration_2D_weak GALGAS_functionImplementationForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_functionImplementationForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -8420,13 +8420,13 @@ GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_onceFunctionDeclarationForGeneration GALGAS_onceFunctionDeclarationForGeneration::constructor_new (const GALGAS_bool & inAttribute_generateHeader,
-                                                                                                          const GALGAS_string & inAttribute_mImplementationCppFileName,
-                                                                                                          const GALGAS_string & inAttribute_mFunctionName,
-                                                                                                          const GALGAS_unifiedTypeMapEntry & inAttribute_mReturnType,
-                                                                                                          const GALGAS_string & inAttribute_mResultVariableCppName,
-                                                                                                          const GALGAS_semanticInstructionListForGeneration & inAttribute_mFunctionInstructionList
-                                                                                                          COMMA_LOCATION_ARGS) {
+GALGAS_onceFunctionDeclarationForGeneration GALGAS_onceFunctionDeclarationForGeneration::class_func_new (const GALGAS_bool & inAttribute_generateHeader,
+                                                                                                         const GALGAS_string & inAttribute_mImplementationCppFileName,
+                                                                                                         const GALGAS_string & inAttribute_mFunctionName,
+                                                                                                         const GALGAS_unifiedTypeMapEntry & inAttribute_mReturnType,
+                                                                                                         const GALGAS_string & inAttribute_mResultVariableCppName,
+                                                                                                         const GALGAS_semanticInstructionListForGeneration & inAttribute_mFunctionInstructionList
+                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_onceFunctionDeclarationForGeneration result ;
   if (inAttribute_generateHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mFunctionName.isValid () && inAttribute_mReturnType.isValid () && inAttribute_mResultVariableCppName.isValid () && inAttribute_mFunctionInstructionList.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_onceFunctionDeclarationForGeneration (inAttribute_generateHeader, inAttribute_mImplementationCppFileName, inAttribute_mFunctionName, inAttribute_mReturnType, inAttribute_mResultVariableCppName, inAttribute_mFunctionInstructionList COMMA_THERE)) ;
@@ -8620,7 +8620,7 @@ GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_onceFunctionDeclarationForGeneration_2D_weak GALGAS_onceFunctionDeclarationForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_onceFunctionDeclarationForGeneration_2D_weak GALGAS_onceFunctionDeclarationForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_onceFunctionDeclarationForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -8762,14 +8762,14 @@ GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperDeclarationForGeneration GALGAS_filewrapperDeclarationForGeneration::constructor_new (const GALGAS_bool & inAttribute_generateHeader,
-                                                                                                        const GALGAS_string & inAttribute_mImplementationCppFileName,
-                                                                                                        const GALGAS_string & inAttribute_mFilewrapperName,
-                                                                                                        const GALGAS_string & inAttribute_mFilewrapperAbsolutePath,
-                                                                                                        const GALGAS_wrapperFileMap & inAttribute_mFilewrapperFileMap,
-                                                                                                        const GALGAS_wrapperDirectoryMap & inAttribute_mFilewrapperDirectoryMap,
-                                                                                                        const GALGAS_filewrapperTemplateListForGeneration & inAttribute_mFilewrapperTemplateListForGeneration
-                                                                                                        COMMA_LOCATION_ARGS) {
+GALGAS_filewrapperDeclarationForGeneration GALGAS_filewrapperDeclarationForGeneration::class_func_new (const GALGAS_bool & inAttribute_generateHeader,
+                                                                                                       const GALGAS_string & inAttribute_mImplementationCppFileName,
+                                                                                                       const GALGAS_string & inAttribute_mFilewrapperName,
+                                                                                                       const GALGAS_string & inAttribute_mFilewrapperAbsolutePath,
+                                                                                                       const GALGAS_wrapperFileMap & inAttribute_mFilewrapperFileMap,
+                                                                                                       const GALGAS_wrapperDirectoryMap & inAttribute_mFilewrapperDirectoryMap,
+                                                                                                       const GALGAS_filewrapperTemplateListForGeneration & inAttribute_mFilewrapperTemplateListForGeneration
+                                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_filewrapperDeclarationForGeneration result ;
   if (inAttribute_generateHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mFilewrapperName.isValid () && inAttribute_mFilewrapperAbsolutePath.isValid () && inAttribute_mFilewrapperFileMap.isValid () && inAttribute_mFilewrapperDirectoryMap.isValid () && inAttribute_mFilewrapperTemplateListForGeneration.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_filewrapperDeclarationForGeneration (inAttribute_generateHeader, inAttribute_mImplementationCppFileName, inAttribute_mFilewrapperName, inAttribute_mFilewrapperAbsolutePath, inAttribute_mFilewrapperFileMap, inAttribute_mFilewrapperDirectoryMap, inAttribute_mFilewrapperTemplateListForGeneration COMMA_THERE)) ;
@@ -8979,7 +8979,7 @@ GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperDeclarationForGeneration_2D_weak GALGAS_filewrapperDeclarationForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_filewrapperDeclarationForGeneration_2D_weak GALGAS_filewrapperDeclarationForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_filewrapperDeclarationForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -9109,11 +9109,11 @@ GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_programComponentForGeneration GALGAS_programComponentForGeneration::constructor_new (const GALGAS_bool & inAttribute_generateHeader,
-                                                                                            const GALGAS_string & inAttribute_mImplementationCppFileName,
-                                                                                            const GALGAS_stringset & inAttribute_mInclusionSet,
-                                                                                            const GALGAS_string & inAttribute_mImplementationString
-                                                                                            COMMA_LOCATION_ARGS) {
+GALGAS_programComponentForGeneration GALGAS_programComponentForGeneration::class_func_new (const GALGAS_bool & inAttribute_generateHeader,
+                                                                                           const GALGAS_string & inAttribute_mImplementationCppFileName,
+                                                                                           const GALGAS_stringset & inAttribute_mInclusionSet,
+                                                                                           const GALGAS_string & inAttribute_mImplementationString
+                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_programComponentForGeneration result ;
   if (inAttribute_generateHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mInclusionSet.isValid () && inAttribute_mImplementationString.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_programComponentForGeneration (inAttribute_generateHeader, inAttribute_mImplementationCppFileName, inAttribute_mInclusionSet, inAttribute_mImplementationString COMMA_THERE)) ;
@@ -9275,7 +9275,7 @@ GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_programComponentForGeneration_2D_weak GALGAS_programComponentForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_programComponentForGeneration_2D_weak GALGAS_programComponentForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_programComponentForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -9428,11 +9428,11 @@ GALGAS_semanticTypeForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_primitiveTypeForGeneration GALGAS_primitiveTypeForGeneration::constructor_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mSelfTypeEntry,
-                                                                                      const GALGAS_string & inAttribute_mPredefinedTypeName,
-                                                                                      const GALGAS_string & inAttribute_mCppDeclarationString,
-                                                                                      const GALGAS_bool & inAttribute_isPackage
-                                                                                      COMMA_LOCATION_ARGS) {
+GALGAS_primitiveTypeForGeneration GALGAS_primitiveTypeForGeneration::class_func_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mSelfTypeEntry,
+                                                                                     const GALGAS_string & inAttribute_mPredefinedTypeName,
+                                                                                     const GALGAS_string & inAttribute_mCppDeclarationString,
+                                                                                     const GALGAS_bool & inAttribute_isPackage
+                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_primitiveTypeForGeneration result ;
   if (inAttribute_mSelfTypeEntry.isValid () && inAttribute_mPredefinedTypeName.isValid () && inAttribute_mCppDeclarationString.isValid () && inAttribute_isPackage.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_primitiveTypeForGeneration (inAttribute_mSelfTypeEntry, inAttribute_mPredefinedTypeName, inAttribute_mCppDeclarationString, inAttribute_isPackage COMMA_THERE)) ;
@@ -9607,7 +9607,7 @@ GALGAS_semanticTypeForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_primitiveTypeForGeneration_2D_weak GALGAS_primitiveTypeForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_primitiveTypeForGeneration_2D_weak GALGAS_primitiveTypeForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_primitiveTypeForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -9693,10 +9693,10 @@ mProperty_mOverridenManagers (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_localVarManager GALGAS_localVarManager::constructor_new (Compiler * inCompiler
-                                                                COMMA_UNUSED_LOCATION_ARGS) {
-  const GALGAS_currentVarManager in_mCurrentManager = GALGAS_currentVarManager::constructor_new (inCompiler  COMMA_SOURCE_FILE ("variable-manager.galgas", 368)) ;
-  const GALGAS_openedOverrideList in_mOverridenManagers = GALGAS_openedOverrideList::constructor_emptyList (SOURCE_FILE ("variable-manager.galgas", 369)) ;
+GALGAS_localVarManager GALGAS_localVarManager::class_func_new (Compiler * inCompiler
+                                                               COMMA_UNUSED_LOCATION_ARGS) {
+  const GALGAS_currentVarManager in_mCurrentManager = GALGAS_currentVarManager::class_func_new (inCompiler  COMMA_SOURCE_FILE ("variable-manager.galgas", 368)) ;
+  const GALGAS_openedOverrideList in_mOverridenManagers = GALGAS_openedOverrideList::class_func_emptyList (SOURCE_FILE ("variable-manager.galgas", 369)) ;
   GALGAS_localVarManager result ;
   if (in_mCurrentManager.isValid () && in_mOverridenManagers.isValid ()) {
     result = GALGAS_localVarManager (in_mCurrentManager, in_mOverridenManagers) ;
@@ -9805,11 +9805,11 @@ void extensionSetter_insertInitializedLocalVariable (GALGAS_localVarManager & io
   GALGAS_localVariableAttributes temp_0 ;
   const enumGalgasBool test_1 = constinArgument_inWarnsIfNotMutated.boolEnum () ;
   if (kBoolTrue == test_1) {
-    temp_0 = GALGAS_localVariableAttributes::constructor_none (SOURCE_FILE ("variable-manager.galgas", 46)) ;
+    temp_0 = GALGAS_localVariableAttributes::class_func_none (SOURCE_FILE ("variable-manager.galgas", 46)) ;
   }else if (kBoolFalse == test_1) {
-    temp_0 = GALGAS_localVariableAttributes::constructor_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 46)).operator_or (GALGAS_localVariableAttributes::constructor_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 46)) COMMA_SOURCE_FILE ("variable-manager.galgas", 46)) ;
+    temp_0 = GALGAS_localVariableAttributes::class_func_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 46)).operator_or (GALGAS_localVariableAttributes::class_func_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 46)) COMMA_SOURCE_FILE ("variable-manager.galgas", 46)) ;
   }
-  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, temp_0, GALGAS_localVarValuation::constructor_initialized (SOURCE_FILE ("variable-manager.galgas", 47)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 41)) ;
+  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, temp_0, GALGAS_localVarValuation::class_func_initialized (SOURCE_FILE ("variable-manager.galgas", 47)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 41)) ;
   }
 }
 
@@ -9828,7 +9828,7 @@ void extensionSetter_insertUsedLocalConstant (GALGAS_localVarManager & ioObject,
                                               Compiler * inCompiler
                                               COMMA_UNUSED_LOCATION_ARGS) {
   {
-  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_rejectWriteInInitializedAndReadStates (SOURCE_FILE ("variable-manager.galgas", 64)).operator_or (GALGAS_localVariableAttributes::constructor_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 64)) COMMA_SOURCE_FILE ("variable-manager.galgas", 64)), GALGAS_localVarValuation::constructor_read (SOURCE_FILE ("variable-manager.galgas", 65)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 59)) ;
+  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::class_func_rejectWriteInInitializedAndReadStates (SOURCE_FILE ("variable-manager.galgas", 64)).operator_or (GALGAS_localVariableAttributes::class_func_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 64)) COMMA_SOURCE_FILE ("variable-manager.galgas", 64)), GALGAS_localVarValuation::class_func_read (SOURCE_FILE ("variable-manager.galgas", 65)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 59)) ;
   }
 }
 
@@ -9847,7 +9847,7 @@ void extensionSetter_insertInitializedLocalConstant (GALGAS_localVarManager & io
                                                      Compiler * inCompiler
                                                      COMMA_UNUSED_LOCATION_ARGS) {
   {
-  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_rejectWriteInInitializedAndReadStates (SOURCE_FILE ("variable-manager.galgas", 80)).operator_or (GALGAS_localVariableAttributes::constructor_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 80)) COMMA_SOURCE_FILE ("variable-manager.galgas", 80)), GALGAS_localVarValuation::constructor_initialized (SOURCE_FILE ("variable-manager.galgas", 81)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 75)) ;
+  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::class_func_rejectWriteInInitializedAndReadStates (SOURCE_FILE ("variable-manager.galgas", 80)).operator_or (GALGAS_localVariableAttributes::class_func_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 80)) COMMA_SOURCE_FILE ("variable-manager.galgas", 80)), GALGAS_localVarValuation::class_func_initialized (SOURCE_FILE ("variable-manager.galgas", 81)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 75)) ;
   }
 }
 
@@ -9866,7 +9866,7 @@ void extensionSetter_insertDeclaredLocalConstant (GALGAS_localVarManager & ioObj
                                                   Compiler * inCompiler
                                                   COMMA_UNUSED_LOCATION_ARGS) {
   {
-  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_rejectWriteInInitializedAndReadStates (SOURCE_FILE ("variable-manager.galgas", 96)).operator_or (GALGAS_localVariableAttributes::constructor_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 96)) COMMA_SOURCE_FILE ("variable-manager.galgas", 96)), GALGAS_localVarValuation::constructor_declared (GALGAS_bool (false)  COMMA_SOURCE_FILE ("variable-manager.galgas", 97)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 91)) ;
+  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::class_func_rejectWriteInInitializedAndReadStates (SOURCE_FILE ("variable-manager.galgas", 96)).operator_or (GALGAS_localVariableAttributes::class_func_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 96)) COMMA_SOURCE_FILE ("variable-manager.galgas", 96)), GALGAS_localVarValuation::class_func_declared (GALGAS_bool (false)  COMMA_SOURCE_FILE ("variable-manager.galgas", 97)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 91)) ;
   }
 }
 
@@ -9885,7 +9885,7 @@ void extensionSetter_insertInputFormalArgumentDeclaredAsUnused (GALGAS_localVarM
                                                                 Compiler * inCompiler
                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   {
-  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 114)).operator_or (GALGAS_localVariableAttributes::constructor_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 114)) COMMA_SOURCE_FILE ("variable-manager.galgas", 114)).operator_or (GALGAS_localVariableAttributes::constructor_warnsOnAnyAcces (SOURCE_FILE ("variable-manager.galgas", 114)) COMMA_SOURCE_FILE ("variable-manager.galgas", 114)), GALGAS_localVarValuation::constructor_initialized (SOURCE_FILE ("variable-manager.galgas", 115)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 109)) ;
+  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::class_func_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 114)).operator_or (GALGAS_localVariableAttributes::class_func_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 114)) COMMA_SOURCE_FILE ("variable-manager.galgas", 114)).operator_or (GALGAS_localVariableAttributes::class_func_warnsOnAnyAcces (SOURCE_FILE ("variable-manager.galgas", 114)) COMMA_SOURCE_FILE ("variable-manager.galgas", 114)), GALGAS_localVarValuation::class_func_initialized (SOURCE_FILE ("variable-manager.galgas", 115)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 109)) ;
   }
 }
 
@@ -9904,7 +9904,7 @@ void extensionSetter_insertInputFormalArgument (GALGAS_localVarManager & ioObjec
                                                 Compiler * inCompiler
                                                 COMMA_UNUSED_LOCATION_ARGS) {
   {
-  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 130)).operator_or (GALGAS_localVariableAttributes::constructor_suggestDeclareUnusedParameterAsUnused (SOURCE_FILE ("variable-manager.galgas", 130)) COMMA_SOURCE_FILE ("variable-manager.galgas", 130)), GALGAS_localVarValuation::constructor_initialized (SOURCE_FILE ("variable-manager.galgas", 131)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 125)) ;
+  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::class_func_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 130)).operator_or (GALGAS_localVariableAttributes::class_func_suggestDeclareUnusedParameterAsUnused (SOURCE_FILE ("variable-manager.galgas", 130)) COMMA_SOURCE_FILE ("variable-manager.galgas", 130)), GALGAS_localVarValuation::class_func_initialized (SOURCE_FILE ("variable-manager.galgas", 131)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 125)) ;
   }
 }
 
@@ -9923,7 +9923,7 @@ void extensionSetter_insertConstantInputFormalArgumentDeclaredAsUnused (GALGAS_l
                                                                         Compiler * inCompiler
                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   {
-  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_rejectWriteInInitializedAndReadStates (SOURCE_FILE ("variable-manager.galgas", 146)).operator_or (GALGAS_localVariableAttributes::constructor_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 146)) COMMA_SOURCE_FILE ("variable-manager.galgas", 146)).operator_or (GALGAS_localVariableAttributes::constructor_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 146)) COMMA_SOURCE_FILE ("variable-manager.galgas", 146)).operator_or (GALGAS_localVariableAttributes::constructor_warnsOnAnyAcces (SOURCE_FILE ("variable-manager.galgas", 146)) COMMA_SOURCE_FILE ("variable-manager.galgas", 146)), GALGAS_localVarValuation::constructor_initialized (SOURCE_FILE ("variable-manager.galgas", 147)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 141)) ;
+  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::class_func_rejectWriteInInitializedAndReadStates (SOURCE_FILE ("variable-manager.galgas", 146)).operator_or (GALGAS_localVariableAttributes::class_func_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 146)) COMMA_SOURCE_FILE ("variable-manager.galgas", 146)).operator_or (GALGAS_localVariableAttributes::class_func_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 146)) COMMA_SOURCE_FILE ("variable-manager.galgas", 146)).operator_or (GALGAS_localVariableAttributes::class_func_warnsOnAnyAcces (SOURCE_FILE ("variable-manager.galgas", 146)) COMMA_SOURCE_FILE ("variable-manager.galgas", 146)), GALGAS_localVarValuation::class_func_initialized (SOURCE_FILE ("variable-manager.galgas", 147)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 141)) ;
   }
 }
 
@@ -9942,7 +9942,7 @@ void extensionSetter_insertConstantInputFormalArgument (GALGAS_localVarManager &
                                                         Compiler * inCompiler
                                                         COMMA_UNUSED_LOCATION_ARGS) {
   {
-  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_rejectWriteInInitializedAndReadStates (SOURCE_FILE ("variable-manager.galgas", 162)).operator_or (GALGAS_localVariableAttributes::constructor_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 162)) COMMA_SOURCE_FILE ("variable-manager.galgas", 162)).operator_or (GALGAS_localVariableAttributes::constructor_suggestDeclareUnusedParameterAsUnused (SOURCE_FILE ("variable-manager.galgas", 162)) COMMA_SOURCE_FILE ("variable-manager.galgas", 162)), GALGAS_localVarValuation::constructor_initialized (SOURCE_FILE ("variable-manager.galgas", 163)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 157)) ;
+  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::class_func_rejectWriteInInitializedAndReadStates (SOURCE_FILE ("variable-manager.galgas", 162)).operator_or (GALGAS_localVariableAttributes::class_func_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 162)) COMMA_SOURCE_FILE ("variable-manager.galgas", 162)).operator_or (GALGAS_localVariableAttributes::class_func_suggestDeclareUnusedParameterAsUnused (SOURCE_FILE ("variable-manager.galgas", 162)) COMMA_SOURCE_FILE ("variable-manager.galgas", 162)), GALGAS_localVarValuation::class_func_initialized (SOURCE_FILE ("variable-manager.galgas", 163)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 157)) ;
   }
 }
 
@@ -9961,7 +9961,7 @@ void extensionSetter_insertOutputFormalArgument (GALGAS_localVarManager & ioObje
                                                  Compiler * inCompiler
                                                  COMMA_UNUSED_LOCATION_ARGS) {
   {
-  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_rejectDeclaredStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 180)).operator_or (GALGAS_localVariableAttributes::constructor_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 180)) COMMA_SOURCE_FILE ("variable-manager.galgas", 180)).operator_or (GALGAS_localVariableAttributes::constructor_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 180)) COMMA_SOURCE_FILE ("variable-manager.galgas", 180)), GALGAS_localVarValuation::constructor_declared (GALGAS_bool (false)  COMMA_SOURCE_FILE ("variable-manager.galgas", 181)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 175)) ;
+  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::class_func_rejectDeclaredStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 180)).operator_or (GALGAS_localVariableAttributes::class_func_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 180)) COMMA_SOURCE_FILE ("variable-manager.galgas", 180)).operator_or (GALGAS_localVariableAttributes::class_func_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 180)) COMMA_SOURCE_FILE ("variable-manager.galgas", 180)), GALGAS_localVarValuation::class_func_declared (GALGAS_bool (false)  COMMA_SOURCE_FILE ("variable-manager.galgas", 181)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 175)) ;
   }
 }
 
@@ -9980,7 +9980,7 @@ void extensionSetter_insertInputOutputFormalArgumentDeclaredAsUnused (GALGAS_loc
                                                                       Compiler * inCompiler
                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   {
-  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 198)).operator_or (GALGAS_localVariableAttributes::constructor_warnsOnAnyAcces (SOURCE_FILE ("variable-manager.galgas", 198)) COMMA_SOURCE_FILE ("variable-manager.galgas", 198)), GALGAS_localVarValuation::constructor_initialized (SOURCE_FILE ("variable-manager.galgas", 199)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 193)) ;
+  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::class_func_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 198)).operator_or (GALGAS_localVariableAttributes::class_func_warnsOnAnyAcces (SOURCE_FILE ("variable-manager.galgas", 198)) COMMA_SOURCE_FILE ("variable-manager.galgas", 198)), GALGAS_localVarValuation::class_func_initialized (SOURCE_FILE ("variable-manager.galgas", 199)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 193)) ;
   }
 }
 
@@ -9999,7 +9999,7 @@ void extensionSetter_insertInputOutputFormalArgument (GALGAS_localVarManager & i
                                                       Compiler * inCompiler
                                                       COMMA_UNUSED_LOCATION_ARGS) {
   {
-  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 214)).operator_or (GALGAS_localVariableAttributes::constructor_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 214)) COMMA_SOURCE_FILE ("variable-manager.galgas", 214)).operator_or (GALGAS_localVariableAttributes::constructor_suggestDeclareUnusedParameterAsUnused (SOURCE_FILE ("variable-manager.galgas", 214)) COMMA_SOURCE_FILE ("variable-manager.galgas", 214)), GALGAS_localVarValuation::constructor_initialized (SOURCE_FILE ("variable-manager.galgas", 215)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 209)) ;
+  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::class_func_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 214)).operator_or (GALGAS_localVariableAttributes::class_func_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 214)) COMMA_SOURCE_FILE ("variable-manager.galgas", 214)).operator_or (GALGAS_localVariableAttributes::class_func_suggestDeclareUnusedParameterAsUnused (SOURCE_FILE ("variable-manager.galgas", 214)) COMMA_SOURCE_FILE ("variable-manager.galgas", 214)), GALGAS_localVarValuation::class_func_initialized (SOURCE_FILE ("variable-manager.galgas", 215)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 209)) ;
   }
 }
 
@@ -10018,7 +10018,7 @@ void extensionSetter_insertNonMutableProperty (GALGAS_localVarManager & ioObject
                                                Compiler * inCompiler
                                                COMMA_UNUSED_LOCATION_ARGS) {
   {
-  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_rejectWriteInInitializedAndReadStates (SOURCE_FILE ("variable-manager.galgas", 232)).operator_or (GALGAS_localVariableAttributes::constructor_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 232)) COMMA_SOURCE_FILE ("variable-manager.galgas", 232)).operator_or (GALGAS_localVariableAttributes::constructor_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 232)) COMMA_SOURCE_FILE ("variable-manager.galgas", 232)), GALGAS_localVarValuation::constructor_initialized (SOURCE_FILE ("variable-manager.galgas", 233)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 227)) ;
+  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::class_func_rejectWriteInInitializedAndReadStates (SOURCE_FILE ("variable-manager.galgas", 232)).operator_or (GALGAS_localVariableAttributes::class_func_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 232)) COMMA_SOURCE_FILE ("variable-manager.galgas", 232)).operator_or (GALGAS_localVariableAttributes::class_func_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 232)) COMMA_SOURCE_FILE ("variable-manager.galgas", 232)), GALGAS_localVarValuation::class_func_initialized (SOURCE_FILE ("variable-manager.galgas", 233)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 227)) ;
   }
 }
 
@@ -10037,7 +10037,7 @@ void extensionSetter_insertMutableProperty (GALGAS_localVarManager & ioObject,
                                             Compiler * inCompiler
                                             COMMA_UNUSED_LOCATION_ARGS) {
   {
-  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 248)).operator_or (GALGAS_localVariableAttributes::constructor_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 248)) COMMA_SOURCE_FILE ("variable-manager.galgas", 248)), GALGAS_localVarValuation::constructor_initialized (SOURCE_FILE ("variable-manager.galgas", 249)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 243)) ;
+  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::class_func_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 248)).operator_or (GALGAS_localVariableAttributes::class_func_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 248)) COMMA_SOURCE_FILE ("variable-manager.galgas", 248)), GALGAS_localVarValuation::class_func_initialized (SOURCE_FILE ("variable-manager.galgas", 249)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 243)) ;
   }
 }
 
@@ -10052,7 +10052,7 @@ void extensionSetter_openOverrideForSelectBlock (GALGAS_localVarManager & ioObje
                                                  Compiler * /* inCompiler */
                                                  COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_localVarManager temp_0 = ioObject ;
-  ioObject.mProperty_mOverridenManagers.addAssign_operation (GALGAS_overrideKind::constructor_selectOverrideFirstBranch (temp_0.readProperty_mCurrentManager ()  COMMA_SOURCE_FILE ("variable-manager.galgas", 258))  COMMA_SOURCE_FILE ("variable-manager.galgas", 258)) ;
+  ioObject.mProperty_mOverridenManagers.addAssign_operation (GALGAS_overrideKind::class_func_selectOverrideFirstBranch (temp_0.readProperty_mCurrentManager ()  COMMA_SOURCE_FILE ("variable-manager.galgas", 258))  COMMA_SOURCE_FILE ("variable-manager.galgas", 258)) ;
 }
 
 
@@ -10065,7 +10065,7 @@ void extensionSetter_openOverrideForSelectBlock (GALGAS_localVarManager & ioObje
 void extensionSetter_openOverrideForRepeatBlock (GALGAS_localVarManager & ioObject,
                                                  Compiler * /* inCompiler */
                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  ioObject.mProperty_mOverridenManagers.addAssign_operation (GALGAS_overrideKind::constructor_repeatOverride (SOURCE_FILE ("variable-manager.galgas", 264))  COMMA_SOURCE_FILE ("variable-manager.galgas", 264)) ;
+  ioObject.mProperty_mOverridenManagers.addAssign_operation (GALGAS_overrideKind::class_func_repeatOverride (SOURCE_FILE ("variable-manager.galgas", 264))  COMMA_SOURCE_FILE ("variable-manager.galgas", 264)) ;
 }
 
 
@@ -10160,7 +10160,7 @@ void extensionSetter_closeBranch (GALGAS_localVarManager & ioObject,
           const cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch * extractPtr_13967 = (const cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch *) (var_savedManager_13697.unsafePointer ()) ;
           const GALGAS_currentVarManager extractedValue_13790_savedManager = extractPtr_13967->mAssociatedValue0 ;
           const GALGAS_localVarManager temp_2 = ioObject ;
-          ioObject.mProperty_mOverridenManagers.addAssign_operation (GALGAS_overrideKind::constructor_selectOverrideNextBranches (extractedValue_13790_savedManager, temp_2.readProperty_mCurrentManager ()  COMMA_SOURCE_FILE ("variable-manager.galgas", 296))  COMMA_SOURCE_FILE ("variable-manager.galgas", 296)) ;
+          ioObject.mProperty_mOverridenManagers.addAssign_operation (GALGAS_overrideKind::class_func_selectOverrideNextBranches (extractedValue_13790_savedManager, temp_2.readProperty_mCurrentManager ()  COMMA_SOURCE_FILE ("variable-manager.galgas", 296))  COMMA_SOURCE_FILE ("variable-manager.galgas", 296)) ;
           ioObject.mProperty_mCurrentManager = extractedValue_13790_savedManager ;
         }
         break ;
@@ -10174,7 +10174,7 @@ void extensionSetter_closeBranch (GALGAS_localVarManager & ioObject,
           {
           extensionSetter_combineManagerWith (var_newReferenceManager_14098, extractedValue_14068_referenceManager, constinArgument_inEndOfBranchLocation, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 300)) ;
           }
-          ioObject.mProperty_mOverridenManagers.addAssign_operation (GALGAS_overrideKind::constructor_selectOverrideNextBranches (extractedValue_14036_savedManager, var_newReferenceManager_14098  COMMA_SOURCE_FILE ("variable-manager.galgas", 301))  COMMA_SOURCE_FILE ("variable-manager.galgas", 301)) ;
+          ioObject.mProperty_mOverridenManagers.addAssign_operation (GALGAS_overrideKind::class_func_selectOverrideNextBranches (extractedValue_14036_savedManager, var_newReferenceManager_14098  COMMA_SOURCE_FILE ("variable-manager.galgas", 301))  COMMA_SOURCE_FILE ("variable-manager.galgas", 301)) ;
           ioObject.mProperty_mCurrentManager = extractedValue_14036_savedManager ;
         }
         break ;
@@ -10405,35 +10405,35 @@ mProperty_mHeaderKind (inOperand26) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeDefinition GALGAS_unifiedTypeDefinition::constructor_new (const GALGAS_lstring & in_mTypeName,
-                                                                            const GALGAS_bool & in_mIsPredefined,
-                                                                            const GALGAS_bool & in_mIsConcrete,
-                                                                            const GALGAS_unifiedTypeMapEntry & in_mSuperType,
-                                                                            const GALGAS_typeKindEnum & in_mTypeKindEnum,
-                                                                            const GALGAS_bool & in_mSupportCollectionValue,
-                                                                            const GALGAS_typedPropertyList & in_mAllTypedPropertyList,
-                                                                            const GALGAS_propertyMap & in_mPropertyMap,
-                                                                            const GALGAS_typedPropertyList & in_mCurrentTypedPropertyList,
-                                                                            const GALGAS_constructorMap & in_mConstructorMap,
-                                                                            const GALGAS_getterMap & in_mGetterMap,
-                                                                            const GALGAS_setterMap & in_mSetterMap,
-                                                                            const GALGAS_instanceMethodMap & in_mInstanceMethodMap,
-                                                                            const GALGAS_classMethodMap & in_mClassMethodMap,
-                                                                            const GALGAS_optionalMethodMap & in_mOptionalMethodMap,
-                                                                            const GALGAS_enumerationDescriptorList & in_mEnumerationDescriptor,
-                                                                            const GALGAS_operators & in_mHandledOperatorFlags,
-                                                                            const GALGAS_functionSignature & in_mAddAssignOperatorArguments,
-                                                                            const GALGAS_constantIndexMap & in_mEnumConstantMap,
-                                                                            const GALGAS_enumConstantList & in_mEnumConstantList,
-                                                                            const GALGAS_mapSearchMethodListAST & in_mMapSearchMethodList,
-                                                                            const GALGAS_mapSearchMethodListAST & in_mMapEntrySearchConstructorList,
-                                                                            const GALGAS_bool & in_mGenerateHeaderInSeparateFile,
-                                                                            const GALGAS_unifiedTypeMapEntry & in_mTypeForEnumeratedElement,
-                                                                            const GALGAS_string & in_defaultConstructorName,
-                                                                            const GALGAS_string & in_mHeaderFileName,
-                                                                            const GALGAS_headerKind & in_mHeaderKind,
-                                                                            Compiler * /* inCompiler */
-                                                                            COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_unifiedTypeDefinition GALGAS_unifiedTypeDefinition::class_func_new (const GALGAS_lstring & in_mTypeName,
+                                                                           const GALGAS_bool & in_mIsPredefined,
+                                                                           const GALGAS_bool & in_mIsConcrete,
+                                                                           const GALGAS_unifiedTypeMapEntry & in_mSuperType,
+                                                                           const GALGAS_typeKindEnum & in_mTypeKindEnum,
+                                                                           const GALGAS_bool & in_mSupportCollectionValue,
+                                                                           const GALGAS_typedPropertyList & in_mAllTypedPropertyList,
+                                                                           const GALGAS_propertyMap & in_mPropertyMap,
+                                                                           const GALGAS_typedPropertyList & in_mCurrentTypedPropertyList,
+                                                                           const GALGAS_constructorMap & in_mConstructorMap,
+                                                                           const GALGAS_getterMap & in_mGetterMap,
+                                                                           const GALGAS_setterMap & in_mSetterMap,
+                                                                           const GALGAS_instanceMethodMap & in_mInstanceMethodMap,
+                                                                           const GALGAS_classMethodMap & in_mClassMethodMap,
+                                                                           const GALGAS_optionalMethodMap & in_mOptionalMethodMap,
+                                                                           const GALGAS_enumerationDescriptorList & in_mEnumerationDescriptor,
+                                                                           const GALGAS_operators & in_mHandledOperatorFlags,
+                                                                           const GALGAS_functionSignature & in_mAddAssignOperatorArguments,
+                                                                           const GALGAS_constantIndexMap & in_mEnumConstantMap,
+                                                                           const GALGAS_enumConstantList & in_mEnumConstantList,
+                                                                           const GALGAS_mapSearchMethodListAST & in_mMapSearchMethodList,
+                                                                           const GALGAS_mapSearchMethodListAST & in_mMapEntrySearchConstructorList,
+                                                                           const GALGAS_bool & in_mGenerateHeaderInSeparateFile,
+                                                                           const GALGAS_unifiedTypeMapEntry & in_mTypeForEnumeratedElement,
+                                                                           const GALGAS_string & in_defaultConstructorName,
+                                                                           const GALGAS_string & in_mHeaderFileName,
+                                                                           const GALGAS_headerKind & in_mHeaderKind,
+                                                                           Compiler * /* inCompiler */
+                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_unifiedTypeDefinition result ;
   if (in_mTypeName.isValid () && in_mIsPredefined.isValid () && in_mIsConcrete.isValid () && in_mSuperType.isValid () && in_mTypeKindEnum.isValid () && in_mSupportCollectionValue.isValid () && in_mAllTypedPropertyList.isValid () && in_mPropertyMap.isValid () && in_mCurrentTypedPropertyList.isValid () && in_mConstructorMap.isValid () && in_mGetterMap.isValid () && in_mSetterMap.isValid () && in_mInstanceMethodMap.isValid () && in_mClassMethodMap.isValid () && in_mOptionalMethodMap.isValid () && in_mEnumerationDescriptor.isValid () && in_mHandledOperatorFlags.isValid () && in_mAddAssignOperatorArguments.isValid () && in_mEnumConstantMap.isValid () && in_mEnumConstantList.isValid () && in_mMapSearchMethodList.isValid () && in_mMapEntrySearchConstructorList.isValid () && in_mGenerateHeaderInSeparateFile.isValid () && in_mTypeForEnumeratedElement.isValid () && in_defaultConstructorName.isValid () && in_mHeaderFileName.isValid () && in_mHeaderKind.isValid ()) {
     result = GALGAS_unifiedTypeDefinition (in_mTypeName, in_mIsPredefined, in_mIsConcrete, in_mSuperType, in_mTypeKindEnum, in_mSupportCollectionValue, in_mAllTypedPropertyList, in_mPropertyMap, in_mCurrentTypedPropertyList, in_mConstructorMap, in_mGetterMap, in_mSetterMap, in_mInstanceMethodMap, in_mClassMethodMap, in_mOptionalMethodMap, in_mEnumerationDescriptor, in_mHandledOperatorFlags, in_mAddAssignOperatorArguments, in_mEnumConstantMap, in_mEnumConstantList, in_mMapSearchMethodList, in_mMapEntrySearchConstructorList, in_mGenerateHeaderInSeparateFile, in_mTypeForEnumeratedElement, in_defaultConstructorName, in_mHeaderFileName, in_mHeaderKind) ;
@@ -10684,7 +10684,7 @@ GALGAS_lstringlist extensionGetter_unsolvedEntryList (const GALGAS_unifiedTypeMa
                                                       Compiler *
                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lstringlist result_result ; // Returned variable
-  result_result = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("unified-type-map.galgas", 27)) ;
+  result_result = GALGAS_lstringlist::class_func_emptyList (SOURCE_FILE ("unified-type-map.galgas", 27)) ;
   const GALGAS_unifiedTypeMap temp_0 = inObject ;
   cEnumerator_unifiedTypeMap enumerator_1579 (temp_0, kENUMERATION_UP) ;
   while (enumerator_1579.hasCurrentObject ()) {
@@ -10760,8 +10760,8 @@ AC_GALGAS_reference_class (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMapElementClass GALGAS_unifiedTypeMapElementClass::constructor_new (const GALGAS_typeDefinition & inAttribute_mDefinition
-                                                                                      COMMA_LOCATION_ARGS) {
+GALGAS_unifiedTypeMapElementClass GALGAS_unifiedTypeMapElementClass::class_func_new (const GALGAS_typeDefinition & inAttribute_mDefinition
+                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_unifiedTypeMapElementClass result ;
   if (inAttribute_mDefinition.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_unifiedTypeMapElementClass (inAttribute_mDefinition COMMA_THERE)) ;
@@ -10882,7 +10882,7 @@ GALGAS_unifiedTypeDefinition cPtr_unifiedTypeMapElementClass::getter_definition 
   case GALGAS_typeDefinition::kEnum_unsolved:
     {
       TC_Array <C_FixItDescription> fixItArray1 ;
-      inCompiler->emitSemanticError (GALGAS_location::constructor_nowhere (SOURCE_FILE ("unified-type-map.galgas", 152)), GALGAS_string ("unsolved type"), fixItArray1  COMMA_SOURCE_FILE ("unified-type-map.galgas", 152)) ;
+      inCompiler->emitSemanticError (GALGAS_location::class_func_nowhere (SOURCE_FILE ("unified-type-map.galgas", 152)), GALGAS_string ("unsolved type"), fixItArray1  COMMA_SOURCE_FILE ("unified-type-map.galgas", 152)) ;
       result_result.drop () ; // Release error dropped variable
     }
     break ;
@@ -10982,12 +10982,12 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_ifExpressionForGeneration GALGAS_ifExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mResultType,
-                                                                                    const GALGAS_location & inAttribute_mLocation,
-                                                                                    const GALGAS_semanticExpressionForGeneration & inAttribute_mIfExpression,
-                                                                                    const GALGAS_semanticExpressionForGeneration & inAttribute_mThenExpression,
-                                                                                    const GALGAS_semanticExpressionForGeneration & inAttribute_mElseExpression
-                                                                                    COMMA_LOCATION_ARGS) {
+GALGAS_ifExpressionForGeneration GALGAS_ifExpressionForGeneration::class_func_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mResultType,
+                                                                                   const GALGAS_location & inAttribute_mLocation,
+                                                                                   const GALGAS_semanticExpressionForGeneration & inAttribute_mIfExpression,
+                                                                                   const GALGAS_semanticExpressionForGeneration & inAttribute_mThenExpression,
+                                                                                   const GALGAS_semanticExpressionForGeneration & inAttribute_mElseExpression
+                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_ifExpressionForGeneration result ;
   if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mIfExpression.isValid () && inAttribute_mThenExpression.isValid () && inAttribute_mElseExpression.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_ifExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mIfExpression, inAttribute_mThenExpression, inAttribute_mElseExpression COMMA_THERE)) ;
@@ -11181,10 +11181,10 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_unaryMinusExpressionForGeneration GALGAS_unaryMinusExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mResultType,
-                                                                                                    const GALGAS_location & inAttribute_mLocation,
-                                                                                                    const GALGAS_semanticExpressionForGeneration & inAttribute_mExpression
-                                                                                                    COMMA_LOCATION_ARGS) {
+GALGAS_unaryMinusExpressionForGeneration GALGAS_unaryMinusExpressionForGeneration::class_func_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mResultType,
+                                                                                                   const GALGAS_location & inAttribute_mLocation,
+                                                                                                   const GALGAS_semanticExpressionForGeneration & inAttribute_mExpression
+                                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_unaryMinusExpressionForGeneration result ;
   if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mExpression.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_unaryMinusExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mExpression COMMA_THERE)) ;
@@ -11340,8 +11340,8 @@ GALGAS_semanticExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_varInExpressionAST GALGAS_varInExpressionAST::constructor_new (const GALGAS_lstring & inAttribute_mVarName
-                                                                      COMMA_LOCATION_ARGS) {
+GALGAS_varInExpressionAST GALGAS_varInExpressionAST::class_func_new (const GALGAS_lstring & inAttribute_mVarName
+                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_varInExpressionAST result ;
   if (inAttribute_mVarName.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_varInExpressionAST (inAttribute_mVarName COMMA_THERE)) ;
@@ -11501,11 +11501,11 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_varInExpressionForGeneration GALGAS_varInExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mResultType,
-                                                                                          const GALGAS_location & inAttribute_mLocation,
-                                                                                          const GALGAS_string & inAttribute_mCppVarName,
-                                                                                          const GALGAS_string & inAttribute_mNameForCheckingFormalParameterUsing
-                                                                                          COMMA_LOCATION_ARGS) {
+GALGAS_varInExpressionForGeneration GALGAS_varInExpressionForGeneration::class_func_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mResultType,
+                                                                                         const GALGAS_location & inAttribute_mLocation,
+                                                                                         const GALGAS_string & inAttribute_mCppVarName,
+                                                                                         const GALGAS_string & inAttribute_mNameForCheckingFormalParameterUsing
+                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_varInExpressionForGeneration result ;
   if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mCppVarName.isValid () && inAttribute_mNameForCheckingFormalParameterUsing.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_varInExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mCppVarName, inAttribute_mNameForCheckingFormalParameterUsing COMMA_THERE)) ;
@@ -11679,9 +11679,9 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_trueExpressionForGeneration GALGAS_trueExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mResultType,
-                                                                                        const GALGAS_location & inAttribute_mLocation
-                                                                                        COMMA_LOCATION_ARGS) {
+GALGAS_trueExpressionForGeneration GALGAS_trueExpressionForGeneration::class_func_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mResultType,
+                                                                                       const GALGAS_location & inAttribute_mLocation
+                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_trueExpressionForGeneration result ;
   if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_trueExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation COMMA_THERE)) ;
@@ -11823,9 +11823,9 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_falseExpressionForGeneration GALGAS_falseExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mResultType,
-                                                                                          const GALGAS_location & inAttribute_mLocation
-                                                                                          COMMA_LOCATION_ARGS) {
+GALGAS_falseExpressionForGeneration GALGAS_falseExpressionForGeneration::class_func_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mResultType,
+                                                                                         const GALGAS_location & inAttribute_mLocation
+                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_falseExpressionForGeneration result ;
   if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_falseExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation COMMA_THERE)) ;
@@ -11999,10 +11999,10 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalStringExpressionForGeneration GALGAS_literalStringExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mResultType,
-                                                                                                          const GALGAS_location & inAttribute_mLocation,
-                                                                                                          const GALGAS_string & inAttribute_mString
-                                                                                                          COMMA_LOCATION_ARGS) {
+GALGAS_literalStringExpressionForGeneration GALGAS_literalStringExpressionForGeneration::class_func_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mResultType,
+                                                                                                         const GALGAS_location & inAttribute_mLocation,
+                                                                                                         const GALGAS_string & inAttribute_mString
+                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_literalStringExpressionForGeneration result ;
   if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mString.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_literalStringExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mString COMMA_THERE)) ;
@@ -12158,8 +12158,8 @@ GALGAS_semanticExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalCharExpressionAST GALGAS_literalCharExpressionAST::constructor_new (const GALGAS_lchar & inAttribute_mCharacter
-                                                                                  COMMA_LOCATION_ARGS) {
+GALGAS_literalCharExpressionAST GALGAS_literalCharExpressionAST::class_func_new (const GALGAS_lchar & inAttribute_mCharacter
+                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_literalCharExpressionAST result ;
   if (inAttribute_mCharacter.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_literalCharExpressionAST (inAttribute_mCharacter COMMA_THERE)) ;
@@ -12315,10 +12315,10 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalCharExpressionForGeneration GALGAS_literalCharExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mResultType,
-                                                                                                      const GALGAS_location & inAttribute_mLocation,
-                                                                                                      const GALGAS_char & inAttribute_mCharacter
-                                                                                                      COMMA_LOCATION_ARGS) {
+GALGAS_literalCharExpressionForGeneration GALGAS_literalCharExpressionForGeneration::class_func_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mResultType,
+                                                                                                     const GALGAS_location & inAttribute_mLocation,
+                                                                                                     const GALGAS_char & inAttribute_mCharacter
+                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_literalCharExpressionForGeneration result ;
   if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mCharacter.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_literalCharExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mCharacter COMMA_THERE)) ;
@@ -12474,8 +12474,8 @@ GALGAS_semanticExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalDoubleExpressionAST GALGAS_literalDoubleExpressionAST::constructor_new (const GALGAS_ldouble & inAttribute_mValue
-                                                                                      COMMA_LOCATION_ARGS) {
+GALGAS_literalDoubleExpressionAST GALGAS_literalDoubleExpressionAST::class_func_new (const GALGAS_ldouble & inAttribute_mValue
+                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_literalDoubleExpressionAST result ;
   if (inAttribute_mValue.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_literalDoubleExpressionAST (inAttribute_mValue COMMA_THERE)) ;
@@ -12631,10 +12631,10 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalDoubleExpressionForGeneration GALGAS_literalDoubleExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mResultType,
-                                                                                                          const GALGAS_location & inAttribute_mLocation,
-                                                                                                          const GALGAS_double & inAttribute_mValue
-                                                                                                          COMMA_LOCATION_ARGS) {
+GALGAS_literalDoubleExpressionForGeneration GALGAS_literalDoubleExpressionForGeneration::class_func_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mResultType,
+                                                                                                         const GALGAS_location & inAttribute_mLocation,
+                                                                                                         const GALGAS_double & inAttribute_mValue
+                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_literalDoubleExpressionForGeneration result ;
   if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mValue.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_literalDoubleExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mValue COMMA_THERE)) ;
@@ -12790,8 +12790,8 @@ GALGAS_semanticExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalBigIntExpressionAST GALGAS_literalBigIntExpressionAST::constructor_new (const GALGAS_lbigint & inAttribute_mValue
-                                                                                      COMMA_LOCATION_ARGS) {
+GALGAS_literalBigIntExpressionAST GALGAS_literalBigIntExpressionAST::class_func_new (const GALGAS_lbigint & inAttribute_mValue
+                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_literalBigIntExpressionAST result ;
   if (inAttribute_mValue.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_literalBigIntExpressionAST (inAttribute_mValue COMMA_THERE)) ;
@@ -12947,10 +12947,10 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalUIntExpressionForGeneration GALGAS_literalUIntExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mResultType,
-                                                                                                      const GALGAS_location & inAttribute_mLocation,
-                                                                                                      const GALGAS_uint & inAttribute_mValue
-                                                                                                      COMMA_LOCATION_ARGS) {
+GALGAS_literalUIntExpressionForGeneration GALGAS_literalUIntExpressionForGeneration::class_func_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mResultType,
+                                                                                                     const GALGAS_location & inAttribute_mLocation,
+                                                                                                     const GALGAS_uint & inAttribute_mValue
+                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_literalUIntExpressionForGeneration result ;
   if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mValue.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_literalUIntExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mValue COMMA_THERE)) ;
@@ -13112,10 +13112,10 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalUInt_36__34_ExpressionForGeneration GALGAS_literalUInt_36__34_ExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mResultType,
-                                                                                                                      const GALGAS_location & inAttribute_mLocation,
-                                                                                                                      const GALGAS_uint_36__34_ & inAttribute_mValue
-                                                                                                                      COMMA_LOCATION_ARGS) {
+GALGAS_literalUInt_36__34_ExpressionForGeneration GALGAS_literalUInt_36__34_ExpressionForGeneration::class_func_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mResultType,
+                                                                                                                     const GALGAS_location & inAttribute_mLocation,
+                                                                                                                     const GALGAS_uint_36__34_ & inAttribute_mValue
+                                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_literalUInt_36__34_ExpressionForGeneration result ;
   if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mValue.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_literalUInt_36__34_ExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mValue COMMA_THERE)) ;
@@ -13277,10 +13277,10 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalSIntExpressionForGeneration GALGAS_literalSIntExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mResultType,
-                                                                                                      const GALGAS_location & inAttribute_mLocation,
-                                                                                                      const GALGAS_sint & inAttribute_mValue
-                                                                                                      COMMA_LOCATION_ARGS) {
+GALGAS_literalSIntExpressionForGeneration GALGAS_literalSIntExpressionForGeneration::class_func_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mResultType,
+                                                                                                     const GALGAS_location & inAttribute_mLocation,
+                                                                                                     const GALGAS_sint & inAttribute_mValue
+                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_literalSIntExpressionForGeneration result ;
   if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mValue.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_literalSIntExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mValue COMMA_THERE)) ;
@@ -13442,10 +13442,10 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalSInt_36__34_ExpressionForGeneration GALGAS_literalSInt_36__34_ExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mResultType,
-                                                                                                                      const GALGAS_location & inAttribute_mLocation,
-                                                                                                                      const GALGAS_sint_36__34_ & inAttribute_mValue
-                                                                                                                      COMMA_LOCATION_ARGS) {
+GALGAS_literalSInt_36__34_ExpressionForGeneration GALGAS_literalSInt_36__34_ExpressionForGeneration::class_func_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mResultType,
+                                                                                                                     const GALGAS_location & inAttribute_mLocation,
+                                                                                                                     const GALGAS_sint_36__34_ & inAttribute_mValue
+                                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_literalSInt_36__34_ExpressionForGeneration result ;
   if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mValue.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_literalSInt_36__34_ExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mValue COMMA_THERE)) ;
@@ -13607,10 +13607,10 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalBigIntExpressionForGeneration GALGAS_literalBigIntExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mResultType,
-                                                                                                          const GALGAS_location & inAttribute_mLocation,
-                                                                                                          const GALGAS_bigint & inAttribute_mValue
-                                                                                                          COMMA_LOCATION_ARGS) {
+GALGAS_literalBigIntExpressionForGeneration GALGAS_literalBigIntExpressionForGeneration::class_func_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mResultType,
+                                                                                                         const GALGAS_location & inAttribute_mLocation,
+                                                                                                         const GALGAS_bigint & inAttribute_mValue
+                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_literalBigIntExpressionForGeneration result ;
   if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mValue.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_literalBigIntExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mValue COMMA_THERE)) ;
@@ -13780,12 +13780,12 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_comparisonExpressionForGeneration GALGAS_comparisonExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mResultType,
-                                                                                                    const GALGAS_location & inAttribute_mLocation,
-                                                                                                    const GALGAS_semanticExpressionForGeneration & inAttribute_mLeftExpression,
-                                                                                                    const GALGAS_comparison & inAttribute_mComparison,
-                                                                                                    const GALGAS_semanticExpressionForGeneration & inAttribute_mRightExpression
-                                                                                                    COMMA_LOCATION_ARGS) {
+GALGAS_comparisonExpressionForGeneration GALGAS_comparisonExpressionForGeneration::class_func_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mResultType,
+                                                                                                   const GALGAS_location & inAttribute_mLocation,
+                                                                                                   const GALGAS_semanticExpressionForGeneration & inAttribute_mLeftExpression,
+                                                                                                   const GALGAS_comparison & inAttribute_mComparison,
+                                                                                                   const GALGAS_semanticExpressionForGeneration & inAttribute_mRightExpression
+                                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_comparisonExpressionForGeneration result ;
   if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mComparison.isValid () && inAttribute_mRightExpression.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_comparisonExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mLeftExpression, inAttribute_mComparison, inAttribute_mRightExpression COMMA_THERE)) ;
@@ -13987,12 +13987,12 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_binaryOperatorExpressionForGeneration GALGAS_binaryOperatorExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mResultType,
-                                                                                                            const GALGAS_location & inAttribute_mLocation,
-                                                                                                            const GALGAS_semanticExpressionForGeneration & inAttribute_mLeftExpression,
-                                                                                                            const GALGAS_binaryOperator & inAttribute_mOperator,
-                                                                                                            const GALGAS_semanticExpressionForGeneration & inAttribute_mRightExpression
-                                                                                                            COMMA_LOCATION_ARGS) {
+GALGAS_binaryOperatorExpressionForGeneration GALGAS_binaryOperatorExpressionForGeneration::class_func_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mResultType,
+                                                                                                           const GALGAS_location & inAttribute_mLocation,
+                                                                                                           const GALGAS_semanticExpressionForGeneration & inAttribute_mLeftExpression,
+                                                                                                           const GALGAS_binaryOperator & inAttribute_mOperator,
+                                                                                                           const GALGAS_semanticExpressionForGeneration & inAttribute_mRightExpression
+                                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_binaryOperatorExpressionForGeneration result ;
   if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mOperator.isValid () && inAttribute_mRightExpression.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_binaryOperatorExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mLeftExpression, inAttribute_mOperator, inAttribute_mRightExpression COMMA_THERE)) ;
@@ -14192,11 +14192,11 @@ GALGAS_semanticExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_testDynamicClassInExpressionAST GALGAS_testDynamicClassInExpressionAST::constructor_new (const GALGAS_semanticExpressionAST & inAttribute_mReceiverExpression,
-                                                                                                const GALGAS_location & inAttribute_mEndOfReceiverExpression,
-                                                                                                const GALGAS_dynamicTypeComparisonKind & inAttribute_mTypeComparisonKind,
-                                                                                                const GALGAS_lstring & inAttribute_mTypeName
-                                                                                                COMMA_LOCATION_ARGS) {
+GALGAS_testDynamicClassInExpressionAST GALGAS_testDynamicClassInExpressionAST::class_func_new (const GALGAS_semanticExpressionAST & inAttribute_mReceiverExpression,
+                                                                                               const GALGAS_location & inAttribute_mEndOfReceiverExpression,
+                                                                                               const GALGAS_dynamicTypeComparisonKind & inAttribute_mTypeComparisonKind,
+                                                                                               const GALGAS_lstring & inAttribute_mTypeName
+                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_testDynamicClassInExpressionAST result ;
   if (inAttribute_mReceiverExpression.isValid () && inAttribute_mEndOfReceiverExpression.isValid () && inAttribute_mTypeComparisonKind.isValid () && inAttribute_mTypeName.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_testDynamicClassInExpressionAST (inAttribute_mReceiverExpression, inAttribute_mEndOfReceiverExpression, inAttribute_mTypeComparisonKind, inAttribute_mTypeName COMMA_THERE)) ;
@@ -14402,10 +14402,10 @@ GALGAS_semanticExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_castInExpressionAST GALGAS_castInExpressionAST::constructor_new (const GALGAS_semanticExpressionAST & inAttribute_mReceiverExpression,
-                                                                        const GALGAS_location & inAttribute_mEndOfReceiverExpression,
-                                                                        const GALGAS_lstring & inAttribute_mTypeName
-                                                                        COMMA_LOCATION_ARGS) {
+GALGAS_castInExpressionAST GALGAS_castInExpressionAST::class_func_new (const GALGAS_semanticExpressionAST & inAttribute_mReceiverExpression,
+                                                                       const GALGAS_location & inAttribute_mEndOfReceiverExpression,
+                                                                       const GALGAS_lstring & inAttribute_mTypeName
+                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_castInExpressionAST result ;
   if (inAttribute_mReceiverExpression.isValid () && inAttribute_mEndOfReceiverExpression.isValid () && inAttribute_mTypeName.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_castInExpressionAST (inAttribute_mReceiverExpression, inAttribute_mEndOfReceiverExpression, inAttribute_mTypeName COMMA_THERE)) ;
@@ -14601,12 +14601,12 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_testDynamicClassInExpressionForGeneration GALGAS_testDynamicClassInExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mResultType,
-                                                                                                                    const GALGAS_location & inAttribute_mLocation,
-                                                                                                                    const GALGAS_semanticExpressionForGeneration & inAttribute_mReceiverExpression,
-                                                                                                                    const GALGAS_dynamicTypeComparisonKind & inAttribute_mTypeComparisonKind,
-                                                                                                                    const GALGAS_unifiedTypeMapEntry & inAttribute_mCastType
-                                                                                                                    COMMA_LOCATION_ARGS) {
+GALGAS_testDynamicClassInExpressionForGeneration GALGAS_testDynamicClassInExpressionForGeneration::class_func_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mResultType,
+                                                                                                                   const GALGAS_location & inAttribute_mLocation,
+                                                                                                                   const GALGAS_semanticExpressionForGeneration & inAttribute_mReceiverExpression,
+                                                                                                                   const GALGAS_dynamicTypeComparisonKind & inAttribute_mTypeComparisonKind,
+                                                                                                                   const GALGAS_unifiedTypeMapEntry & inAttribute_mCastType
+                                                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_testDynamicClassInExpressionForGeneration result ;
   if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mReceiverExpression.isValid () && inAttribute_mTypeComparisonKind.isValid () && inAttribute_mCastType.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_testDynamicClassInExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mReceiverExpression, inAttribute_mTypeComparisonKind, inAttribute_mCastType COMMA_THERE)) ;
@@ -14804,11 +14804,11 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_extractObjectInExpressionForGeneration GALGAS_extractObjectInExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mResultType,
-                                                                                                              const GALGAS_location & inAttribute_mLocation,
-                                                                                                              const GALGAS_semanticExpressionForGeneration & inAttribute_mReceiverExpression,
-                                                                                                              const GALGAS_string & inAttribute_mTypeName
-                                                                                                              COMMA_LOCATION_ARGS) {
+GALGAS_extractObjectInExpressionForGeneration GALGAS_extractObjectInExpressionForGeneration::class_func_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mResultType,
+                                                                                                             const GALGAS_location & inAttribute_mLocation,
+                                                                                                             const GALGAS_semanticExpressionForGeneration & inAttribute_mReceiverExpression,
+                                                                                                             const GALGAS_string & inAttribute_mTypeName
+                                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_extractObjectInExpressionForGeneration result ;
   if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mReceiverExpression.isValid () && inAttribute_mTypeName.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_extractObjectInExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mReceiverExpression, inAttribute_mTypeName COMMA_THERE)) ;

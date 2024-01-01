@@ -100,15 +100,15 @@ AC_GALGAS_list (inSharedArray) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS__32_lstringlist GALGAS__32_lstringlist::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+GALGAS__32_lstringlist GALGAS__32_lstringlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS__32_lstringlist (capCollectionElementArray ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS__32_lstringlist GALGAS__32_lstringlist::constructor_listWithValue (const GALGAS_lstring & inOperand0,
-                                                                          const GALGAS_lstring & inOperand1
-                                                                          COMMA_LOCATION_ARGS) {
+GALGAS__32_lstringlist GALGAS__32_lstringlist::class_func_listWithValue (const GALGAS_lstring & inOperand0,
+                                                                         const GALGAS_lstring & inOperand1
+                                                                         COMMA_LOCATION_ARGS) {
   GALGAS__32_lstringlist result ;
   if (inOperand0.isValid () && inOperand1.isValid ()) {
     result = GALGAS__32_lstringlist (capCollectionElementArray ()) ;
@@ -310,7 +310,7 @@ GALGAS__32_lstringlist GALGAS__32_lstringlist::add_operation (const GALGAS__32_l
 GALGAS__32_lstringlist GALGAS__32_lstringlist::getter_subListWithRange (const GALGAS_range & inRange,
                                                                         Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) const {
-  GALGAS__32_lstringlist result = GALGAS__32_lstringlist::constructor_emptyList (THERE) ;
+  GALGAS__32_lstringlist result = GALGAS__32_lstringlist::class_func_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -320,7 +320,7 @@ GALGAS__32_lstringlist GALGAS__32_lstringlist::getter_subListWithRange (const GA
 GALGAS__32_lstringlist GALGAS__32_lstringlist::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                         Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) const {
-  GALGAS__32_lstringlist result = GALGAS__32_lstringlist::constructor_emptyList (THERE) ;
+  GALGAS__32_lstringlist result = GALGAS__32_lstringlist::class_func_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -330,7 +330,7 @@ GALGAS__32_lstringlist GALGAS__32_lstringlist::getter_subListFromIndex (const GA
 GALGAS__32_lstringlist GALGAS__32_lstringlist::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                       Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) const {
-  GALGAS__32_lstringlist result = GALGAS__32_lstringlist::constructor_emptyList (THERE) ;
+  GALGAS__32_lstringlist result = GALGAS__32_lstringlist::class_func_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -4659,7 +4659,7 @@ GALGAS_luint_36__34_ Lexique_galgasScanner_33_::synthetizedAttribute_uint_36__34
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_stringlist Lexique_galgasScanner_33_::symbols (LOCATION_ARGS) {
-  GALGAS_stringlist result = GALGAS_stringlist::constructor_emptyList (THERE) ;
+  GALGAS_stringlist result = GALGAS_stringlist::class_func_emptyList (THERE) ;
   result.addAssign_operation (GALGAS_string ("identifier") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("double.xxx") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("literalInt") COMMA_HERE) ;
@@ -5396,7 +5396,7 @@ AC_GALGAS_weak_reference (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionAST_2D_weak GALGAS_templateInstructionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_templateInstructionAST_2D_weak GALGAS_templateInstructionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_templateInstructionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -5547,14 +5547,14 @@ AC_GALGAS_list (inSharedArray) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionListAST GALGAS_templateInstructionListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+GALGAS_templateInstructionListAST GALGAS_templateInstructionListAST::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_templateInstructionListAST (capCollectionElementArray ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionListAST GALGAS_templateInstructionListAST::constructor_listWithValue (const GALGAS_templateInstructionAST & inOperand0
-                                                                                                COMMA_LOCATION_ARGS) {
+GALGAS_templateInstructionListAST GALGAS_templateInstructionListAST::class_func_listWithValue (const GALGAS_templateInstructionAST & inOperand0
+                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_templateInstructionListAST result ;
   if (inOperand0.isValid ()) {
     result = GALGAS_templateInstructionListAST (capCollectionElementArray ()) ;
@@ -5734,7 +5734,7 @@ GALGAS_templateInstructionListAST GALGAS_templateInstructionListAST::add_operati
 GALGAS_templateInstructionListAST GALGAS_templateInstructionListAST::getter_subListWithRange (const GALGAS_range & inRange,
                                                                                               Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) const {
-  GALGAS_templateInstructionListAST result = GALGAS_templateInstructionListAST::constructor_emptyList (THERE) ;
+  GALGAS_templateInstructionListAST result = GALGAS_templateInstructionListAST::class_func_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -5744,7 +5744,7 @@ GALGAS_templateInstructionListAST GALGAS_templateInstructionListAST::getter_subL
 GALGAS_templateInstructionListAST GALGAS_templateInstructionListAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                                               Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) const {
-  GALGAS_templateInstructionListAST result = GALGAS_templateInstructionListAST::constructor_emptyList (THERE) ;
+  GALGAS_templateInstructionListAST result = GALGAS_templateInstructionListAST::class_func_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -5754,7 +5754,7 @@ GALGAS_templateInstructionListAST GALGAS_templateInstructionListAST::getter_subL
 GALGAS_templateInstructionListAST GALGAS_templateInstructionListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                                             Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) const {
-  GALGAS_templateInstructionListAST result = GALGAS_templateInstructionListAST::constructor_emptyList (THERE) ;
+  GALGAS_templateInstructionListAST result = GALGAS_templateInstructionListAST::class_func_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -6007,7 +6007,7 @@ AC_GALGAS_weak_reference (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionAST_2D_weak GALGAS_templateExpressionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_templateExpressionAST_2D_weak GALGAS_templateExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_templateExpressionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -6170,16 +6170,16 @@ AC_GALGAS_list (inSharedArray) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionListAST GALGAS_templateExpressionListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+GALGAS_templateExpressionListAST GALGAS_templateExpressionListAST::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_templateExpressionListAST (capCollectionElementArray ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionListAST GALGAS_templateExpressionListAST::constructor_listWithValue (const GALGAS_lstring & inOperand0,
-                                                                                              const GALGAS_templateExpressionAST & inOperand1,
-                                                                                              const GALGAS_location & inOperand2
-                                                                                              COMMA_LOCATION_ARGS) {
+GALGAS_templateExpressionListAST GALGAS_templateExpressionListAST::class_func_listWithValue (const GALGAS_lstring & inOperand0,
+                                                                                             const GALGAS_templateExpressionAST & inOperand1,
+                                                                                             const GALGAS_location & inOperand2
+                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_templateExpressionListAST result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
     result = GALGAS_templateExpressionListAST (capCollectionElementArray ()) ;
@@ -6403,7 +6403,7 @@ GALGAS_templateExpressionListAST GALGAS_templateExpressionListAST::add_operation
 GALGAS_templateExpressionListAST GALGAS_templateExpressionListAST::getter_subListWithRange (const GALGAS_range & inRange,
                                                                                             Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) const {
-  GALGAS_templateExpressionListAST result = GALGAS_templateExpressionListAST::constructor_emptyList (THERE) ;
+  GALGAS_templateExpressionListAST result = GALGAS_templateExpressionListAST::class_func_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -6413,7 +6413,7 @@ GALGAS_templateExpressionListAST GALGAS_templateExpressionListAST::getter_subLis
 GALGAS_templateExpressionListAST GALGAS_templateExpressionListAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                                             Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) const {
-  GALGAS_templateExpressionListAST result = GALGAS_templateExpressionListAST::constructor_emptyList (THERE) ;
+  GALGAS_templateExpressionListAST result = GALGAS_templateExpressionListAST::class_func_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -6423,7 +6423,7 @@ GALGAS_templateExpressionListAST GALGAS_templateExpressionListAST::getter_subLis
 GALGAS_templateExpressionListAST GALGAS_templateExpressionListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                                           Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) const {
-  GALGAS_templateExpressionListAST result = GALGAS_templateExpressionListAST::constructor_emptyList (THERE) ;
+  GALGAS_templateExpressionListAST result = GALGAS_templateExpressionListAST::class_func_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -6657,7 +6657,7 @@ GALGAS_templateExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateConstructorAST_2D_weak GALGAS_templateConstructorAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_templateConstructorAST_2D_weak GALGAS_templateConstructorAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_templateConstructorAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -6767,7 +6767,7 @@ GALGAS_templateExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateFileWrapperTemplateCallAST_2D_weak GALGAS_templateFileWrapperTemplateCallAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_templateFileWrapperTemplateCallAST_2D_weak GALGAS_templateFileWrapperTemplateCallAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_templateFileWrapperTemplateCallAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -6877,7 +6877,7 @@ GALGAS_templateExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateExtensionTemplateCallAST_2D_weak GALGAS_templateExtensionTemplateCallAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_templateExtensionTemplateCallAST_2D_weak GALGAS_templateExtensionTemplateCallAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_templateExtensionTemplateCallAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -7005,10 +7005,10 @@ GALGAS_templateExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateAndOperationAST GALGAS_templateAndOperationAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                                const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
-                                                                                const GALGAS_templateExpressionAST & inAttribute_mRightExpression
-                                                                                COMMA_LOCATION_ARGS) {
+GALGAS_templateAndOperationAST GALGAS_templateAndOperationAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
+                                                                               const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
+                                                                               const GALGAS_templateExpressionAST & inAttribute_mRightExpression
+                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_templateAndOperationAST result ;
   if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_templateAndOperationAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
@@ -7180,7 +7180,7 @@ GALGAS_templateExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateAndOperationAST_2D_weak GALGAS_templateAndOperationAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_templateAndOperationAST_2D_weak GALGAS_templateAndOperationAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_templateAndOperationAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -7308,10 +7308,10 @@ GALGAS_templateExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateOrOperationAST GALGAS_templateOrOperationAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                              const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
-                                                                              const GALGAS_templateExpressionAST & inAttribute_mRightExpression
-                                                                              COMMA_LOCATION_ARGS) {
+GALGAS_templateOrOperationAST GALGAS_templateOrOperationAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
+                                                                             const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
+                                                                             const GALGAS_templateExpressionAST & inAttribute_mRightExpression
+                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_templateOrOperationAST result ;
   if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_templateOrOperationAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
@@ -7483,7 +7483,7 @@ GALGAS_templateExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateOrOperationAST_2D_weak GALGAS_templateOrOperationAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_templateOrOperationAST_2D_weak GALGAS_templateOrOperationAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_templateOrOperationAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -7611,10 +7611,10 @@ GALGAS_templateExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateXorOperationAST GALGAS_templateXorOperationAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                                const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
-                                                                                const GALGAS_templateExpressionAST & inAttribute_mRightExpression
-                                                                                COMMA_LOCATION_ARGS) {
+GALGAS_templateXorOperationAST GALGAS_templateXorOperationAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
+                                                                               const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
+                                                                               const GALGAS_templateExpressionAST & inAttribute_mRightExpression
+                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_templateXorOperationAST result ;
   if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_templateXorOperationAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
@@ -7786,7 +7786,7 @@ GALGAS_templateExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateXorOperationAST_2D_weak GALGAS_templateXorOperationAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_templateXorOperationAST_2D_weak GALGAS_templateXorOperationAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_templateXorOperationAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -7906,8 +7906,8 @@ GALGAS_templateExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateTrueBoolAST GALGAS_templateTrueBoolAST::constructor_new (const GALGAS_location & inAttribute_mLocation
-                                                                        COMMA_LOCATION_ARGS) {
+GALGAS_templateTrueBoolAST GALGAS_templateTrueBoolAST::class_func_new (const GALGAS_location & inAttribute_mLocation
+                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_templateTrueBoolAST result ;
   if (inAttribute_mLocation.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_templateTrueBoolAST (inAttribute_mLocation COMMA_THERE)) ;
@@ -8047,7 +8047,7 @@ GALGAS_templateExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateTrueBoolAST_2D_weak GALGAS_templateTrueBoolAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_templateTrueBoolAST_2D_weak GALGAS_templateTrueBoolAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_templateTrueBoolAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -8167,8 +8167,8 @@ GALGAS_templateExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateFalseBoolAST GALGAS_templateFalseBoolAST::constructor_new (const GALGAS_location & inAttribute_mLocation
-                                                                          COMMA_LOCATION_ARGS) {
+GALGAS_templateFalseBoolAST GALGAS_templateFalseBoolAST::class_func_new (const GALGAS_location & inAttribute_mLocation
+                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_templateFalseBoolAST result ;
   if (inAttribute_mLocation.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_templateFalseBoolAST (inAttribute_mLocation COMMA_THERE)) ;
@@ -8308,7 +8308,7 @@ GALGAS_templateExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateFalseBoolAST_2D_weak GALGAS_templateFalseBoolAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_templateFalseBoolAST_2D_weak GALGAS_templateFalseBoolAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_templateFalseBoolAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -8418,7 +8418,7 @@ GALGAS_templateExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateLiteralStringExpressionAST_2D_weak GALGAS_templateLiteralStringExpressionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_templateLiteralStringExpressionAST_2D_weak GALGAS_templateLiteralStringExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_templateLiteralStringExpressionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -8528,7 +8528,7 @@ GALGAS_templateExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateLiteralUIntExpressionAST_2D_weak GALGAS_templateLiteralUIntExpressionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_templateLiteralUIntExpressionAST_2D_weak GALGAS_templateLiteralUIntExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_templateLiteralUIntExpressionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -8638,7 +8638,7 @@ GALGAS_templateExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateLiteralCharExpressionAST_2D_weak GALGAS_templateLiteralCharExpressionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_templateLiteralCharExpressionAST_2D_weak GALGAS_templateLiteralCharExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_templateLiteralCharExpressionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -8748,7 +8748,7 @@ GALGAS_templateExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateLiteralDoubleExpressionAST_2D_weak GALGAS_templateLiteralDoubleExpressionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_templateLiteralDoubleExpressionAST_2D_weak GALGAS_templateLiteralDoubleExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_templateLiteralDoubleExpressionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -8858,7 +8858,7 @@ GALGAS_templateExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_structFieldAccessTemplateExpressionAST_2D_weak GALGAS_structFieldAccessTemplateExpressionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_structFieldAccessTemplateExpressionAST_2D_weak GALGAS_structFieldAccessTemplateExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_structFieldAccessTemplateExpressionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -8982,9 +8982,9 @@ GALGAS_templateExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateNotOperatorAST GALGAS_templateNotOperatorAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                              const GALGAS_templateExpressionAST & inAttribute_mExpression
-                                                                              COMMA_LOCATION_ARGS) {
+GALGAS_templateNotOperatorAST GALGAS_templateNotOperatorAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
+                                                                             const GALGAS_templateExpressionAST & inAttribute_mExpression
+                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_templateNotOperatorAST result ;
   if (inAttribute_mOperatorLocation.isValid () && inAttribute_mExpression.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_templateNotOperatorAST (inAttribute_mOperatorLocation, inAttribute_mExpression COMMA_THERE)) ;
@@ -9140,7 +9140,7 @@ GALGAS_templateExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateNotOperatorAST_2D_weak GALGAS_templateNotOperatorAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_templateNotOperatorAST_2D_weak GALGAS_templateNotOperatorAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_templateNotOperatorAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -9264,9 +9264,9 @@ GALGAS_templateExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateLogicalNegateAST GALGAS_templateLogicalNegateAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                                  const GALGAS_templateExpressionAST & inAttribute_mExpression
-                                                                                  COMMA_LOCATION_ARGS) {
+GALGAS_templateLogicalNegateAST GALGAS_templateLogicalNegateAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
+                                                                                 const GALGAS_templateExpressionAST & inAttribute_mExpression
+                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_templateLogicalNegateAST result ;
   if (inAttribute_mOperatorLocation.isValid () && inAttribute_mExpression.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_templateLogicalNegateAST (inAttribute_mOperatorLocation, inAttribute_mExpression COMMA_THERE)) ;
@@ -9422,7 +9422,7 @@ GALGAS_templateExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateLogicalNegateAST_2D_weak GALGAS_templateLogicalNegateAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_templateLogicalNegateAST_2D_weak GALGAS_templateLogicalNegateAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_templateLogicalNegateAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -9532,7 +9532,7 @@ GALGAS_templateExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateOptionAccessAST_2D_weak GALGAS_templateOptionAccessAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_templateOptionAccessAST_2D_weak GALGAS_templateOptionAccessAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_templateOptionAccessAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -9604,7 +9604,7 @@ mEnum (kNotBuilt) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_dynamicTypeComparisonKind GALGAS_dynamicTypeComparisonKind::constructor_equal (UNUSED_LOCATION_ARGS) {
+GALGAS_dynamicTypeComparisonKind GALGAS_dynamicTypeComparisonKind::class_func_equal (UNUSED_LOCATION_ARGS) {
   GALGAS_dynamicTypeComparisonKind result ;
   result.mEnum = kEnum_equal ;
   return result ;
@@ -9612,7 +9612,7 @@ GALGAS_dynamicTypeComparisonKind GALGAS_dynamicTypeComparisonKind::constructor_e
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_dynamicTypeComparisonKind GALGAS_dynamicTypeComparisonKind::constructor_inherited (UNUSED_LOCATION_ARGS) {
+GALGAS_dynamicTypeComparisonKind GALGAS_dynamicTypeComparisonKind::class_func_inherited (UNUSED_LOCATION_ARGS) {
   GALGAS_dynamicTypeComparisonKind result ;
   result.mEnum = kEnum_inherited ;
   return result ;
@@ -9620,7 +9620,7 @@ GALGAS_dynamicTypeComparisonKind GALGAS_dynamicTypeComparisonKind::constructor_i
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_dynamicTypeComparisonKind GALGAS_dynamicTypeComparisonKind::constructor_strictlyInherited (UNUSED_LOCATION_ARGS) {
+GALGAS_dynamicTypeComparisonKind GALGAS_dynamicTypeComparisonKind::class_func_strictlyInherited (UNUSED_LOCATION_ARGS) {
   GALGAS_dynamicTypeComparisonKind result ;
   result.mEnum = kEnum_strictlyInherited ;
   return result ;
@@ -9787,7 +9787,7 @@ GALGAS_templateExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateTestDynamicClassAST_2D_weak GALGAS_templateTestDynamicClassAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_templateTestDynamicClassAST_2D_weak GALGAS_templateTestDynamicClassAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_templateTestDynamicClassAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -9897,7 +9897,7 @@ GALGAS_templateExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateFunctionCallAST_2D_weak GALGAS_templateFunctionCallAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_templateFunctionCallAST_2D_weak GALGAS_templateFunctionCallAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_templateFunctionCallAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -10007,7 +10007,7 @@ GALGAS_templateExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateVarInExpressionAST_2D_weak GALGAS_templateVarInExpressionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_templateVarInExpressionAST_2D_weak GALGAS_templateVarInExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_templateVarInExpressionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -10135,10 +10135,10 @@ GALGAS_templateExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateAddOperationAST GALGAS_templateAddOperationAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                                const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
-                                                                                const GALGAS_templateExpressionAST & inAttribute_mRightExpression
-                                                                                COMMA_LOCATION_ARGS) {
+GALGAS_templateAddOperationAST GALGAS_templateAddOperationAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
+                                                                               const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
+                                                                               const GALGAS_templateExpressionAST & inAttribute_mRightExpression
+                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_templateAddOperationAST result ;
   if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_templateAddOperationAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
@@ -10310,7 +10310,7 @@ GALGAS_templateExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateAddOperationAST_2D_weak GALGAS_templateAddOperationAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_templateAddOperationAST_2D_weak GALGAS_templateAddOperationAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_templateAddOperationAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -10438,10 +10438,10 @@ GALGAS_templateExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateSubOperationAST GALGAS_templateSubOperationAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                                const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
-                                                                                const GALGAS_templateExpressionAST & inAttribute_mRightExpression
-                                                                                COMMA_LOCATION_ARGS) {
+GALGAS_templateSubOperationAST GALGAS_templateSubOperationAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
+                                                                               const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
+                                                                               const GALGAS_templateExpressionAST & inAttribute_mRightExpression
+                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_templateSubOperationAST result ;
   if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_templateSubOperationAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
@@ -10613,7 +10613,7 @@ GALGAS_templateExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateSubOperationAST_2D_weak GALGAS_templateSubOperationAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_templateSubOperationAST_2D_weak GALGAS_templateSubOperationAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_templateSubOperationAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -10741,10 +10741,10 @@ GALGAS_templateExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateMultiplyOperationAST GALGAS_templateMultiplyOperationAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                                          const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
-                                                                                          const GALGAS_templateExpressionAST & inAttribute_mRightExpression
-                                                                                          COMMA_LOCATION_ARGS) {
+GALGAS_templateMultiplyOperationAST GALGAS_templateMultiplyOperationAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
+                                                                                         const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
+                                                                                         const GALGAS_templateExpressionAST & inAttribute_mRightExpression
+                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_templateMultiplyOperationAST result ;
   if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_templateMultiplyOperationAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
@@ -10916,7 +10916,7 @@ GALGAS_templateExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateMultiplyOperationAST_2D_weak GALGAS_templateMultiplyOperationAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_templateMultiplyOperationAST_2D_weak GALGAS_templateMultiplyOperationAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_templateMultiplyOperationAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -11044,10 +11044,10 @@ GALGAS_templateExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateDivideOperationAST GALGAS_templateDivideOperationAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                                      const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
-                                                                                      const GALGAS_templateExpressionAST & inAttribute_mRightExpression
-                                                                                      COMMA_LOCATION_ARGS) {
+GALGAS_templateDivideOperationAST GALGAS_templateDivideOperationAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
+                                                                                     const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
+                                                                                     const GALGAS_templateExpressionAST & inAttribute_mRightExpression
+                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_templateDivideOperationAST result ;
   if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_templateDivideOperationAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
@@ -11219,7 +11219,7 @@ GALGAS_templateExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateDivideOperationAST_2D_weak GALGAS_templateDivideOperationAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_templateDivideOperationAST_2D_weak GALGAS_templateDivideOperationAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_templateDivideOperationAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -11347,10 +11347,10 @@ GALGAS_templateExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateModuloOperationAST GALGAS_templateModuloOperationAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                                      const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
-                                                                                      const GALGAS_templateExpressionAST & inAttribute_mRightExpression
-                                                                                      COMMA_LOCATION_ARGS) {
+GALGAS_templateModuloOperationAST GALGAS_templateModuloOperationAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
+                                                                                     const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
+                                                                                     const GALGAS_templateExpressionAST & inAttribute_mRightExpression
+                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_templateModuloOperationAST result ;
   if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_templateModuloOperationAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
@@ -11522,7 +11522,7 @@ GALGAS_templateExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateModuloOperationAST_2D_weak GALGAS_templateModuloOperationAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_templateModuloOperationAST_2D_weak GALGAS_templateModuloOperationAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_templateModuloOperationAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -11646,9 +11646,9 @@ GALGAS_templateExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateUnaryMinusOperationAST GALGAS_templateUnaryMinusOperationAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                                              const GALGAS_templateExpressionAST & inAttribute_mExpression
-                                                                                              COMMA_LOCATION_ARGS) {
+GALGAS_templateUnaryMinusOperationAST GALGAS_templateUnaryMinusOperationAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
+                                                                                             const GALGAS_templateExpressionAST & inAttribute_mExpression
+                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_templateUnaryMinusOperationAST result ;
   if (inAttribute_mOperatorLocation.isValid () && inAttribute_mExpression.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_templateUnaryMinusOperationAST (inAttribute_mOperatorLocation, inAttribute_mExpression COMMA_THERE)) ;
@@ -11804,7 +11804,7 @@ GALGAS_templateExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateUnaryMinusOperationAST_2D_weak GALGAS_templateUnaryMinusOperationAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_templateUnaryMinusOperationAST_2D_weak GALGAS_templateUnaryMinusOperationAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_templateUnaryMinusOperationAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -11932,10 +11932,10 @@ GALGAS_templateExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateEqualTestAST GALGAS_templateEqualTestAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                          const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
-                                                                          const GALGAS_templateExpressionAST & inAttribute_mRightExpression
-                                                                          COMMA_LOCATION_ARGS) {
+GALGAS_templateEqualTestAST GALGAS_templateEqualTestAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
+                                                                         const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
+                                                                         const GALGAS_templateExpressionAST & inAttribute_mRightExpression
+                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_templateEqualTestAST result ;
   if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_templateEqualTestAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
@@ -12107,7 +12107,7 @@ GALGAS_templateExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateEqualTestAST_2D_weak GALGAS_templateEqualTestAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_templateEqualTestAST_2D_weak GALGAS_templateEqualTestAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_templateEqualTestAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -12235,10 +12235,10 @@ GALGAS_templateExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateNonEqualTestAST GALGAS_templateNonEqualTestAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                                const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
-                                                                                const GALGAS_templateExpressionAST & inAttribute_mRightExpression
-                                                                                COMMA_LOCATION_ARGS) {
+GALGAS_templateNonEqualTestAST GALGAS_templateNonEqualTestAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
+                                                                               const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
+                                                                               const GALGAS_templateExpressionAST & inAttribute_mRightExpression
+                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_templateNonEqualTestAST result ;
   if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_templateNonEqualTestAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
@@ -12410,7 +12410,7 @@ GALGAS_templateExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateNonEqualTestAST_2D_weak GALGAS_templateNonEqualTestAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_templateNonEqualTestAST_2D_weak GALGAS_templateNonEqualTestAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_templateNonEqualTestAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -12538,10 +12538,10 @@ GALGAS_templateExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateStrictInfTestAST GALGAS_templateStrictInfTestAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                                  const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
-                                                                                  const GALGAS_templateExpressionAST & inAttribute_mRightExpression
-                                                                                  COMMA_LOCATION_ARGS) {
+GALGAS_templateStrictInfTestAST GALGAS_templateStrictInfTestAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
+                                                                                 const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
+                                                                                 const GALGAS_templateExpressionAST & inAttribute_mRightExpression
+                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_templateStrictInfTestAST result ;
   if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_templateStrictInfTestAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
@@ -12713,7 +12713,7 @@ GALGAS_templateExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateStrictInfTestAST_2D_weak GALGAS_templateStrictInfTestAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_templateStrictInfTestAST_2D_weak GALGAS_templateStrictInfTestAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_templateStrictInfTestAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -12841,10 +12841,10 @@ GALGAS_templateExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateInfOrEqualTestAST GALGAS_templateInfOrEqualTestAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                                    const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
-                                                                                    const GALGAS_templateExpressionAST & inAttribute_mRightExpression
-                                                                                    COMMA_LOCATION_ARGS) {
+GALGAS_templateInfOrEqualTestAST GALGAS_templateInfOrEqualTestAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
+                                                                                   const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
+                                                                                   const GALGAS_templateExpressionAST & inAttribute_mRightExpression
+                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_templateInfOrEqualTestAST result ;
   if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_templateInfOrEqualTestAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
@@ -13016,7 +13016,7 @@ GALGAS_templateExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateInfOrEqualTestAST_2D_weak GALGAS_templateInfOrEqualTestAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_templateInfOrEqualTestAST_2D_weak GALGAS_templateInfOrEqualTestAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_templateInfOrEqualTestAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -13144,10 +13144,10 @@ GALGAS_templateExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateStrictSupTestAST GALGAS_templateStrictSupTestAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                                  const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
-                                                                                  const GALGAS_templateExpressionAST & inAttribute_mRightExpression
-                                                                                  COMMA_LOCATION_ARGS) {
+GALGAS_templateStrictSupTestAST GALGAS_templateStrictSupTestAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
+                                                                                 const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
+                                                                                 const GALGAS_templateExpressionAST & inAttribute_mRightExpression
+                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_templateStrictSupTestAST result ;
   if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_templateStrictSupTestAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
@@ -13319,7 +13319,7 @@ GALGAS_templateExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateStrictSupTestAST_2D_weak GALGAS_templateStrictSupTestAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_templateStrictSupTestAST_2D_weak GALGAS_templateStrictSupTestAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_templateStrictSupTestAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -13447,10 +13447,10 @@ GALGAS_templateExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateSupOrEqualTestAST GALGAS_templateSupOrEqualTestAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                                    const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
-                                                                                    const GALGAS_templateExpressionAST & inAttribute_mRightExpression
-                                                                                    COMMA_LOCATION_ARGS) {
+GALGAS_templateSupOrEqualTestAST GALGAS_templateSupOrEqualTestAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
+                                                                                   const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
+                                                                                   const GALGAS_templateExpressionAST & inAttribute_mRightExpression
+                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_templateSupOrEqualTestAST result ;
   if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_templateSupOrEqualTestAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
@@ -13622,7 +13622,7 @@ GALGAS_templateExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateSupOrEqualTestAST_2D_weak GALGAS_templateSupOrEqualTestAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_templateSupOrEqualTestAST_2D_weak GALGAS_templateSupOrEqualTestAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_templateSupOrEqualTestAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -13750,10 +13750,10 @@ GALGAS_templateExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateLeftShiftOperationAST GALGAS_templateLeftShiftOperationAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                                            const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
-                                                                                            const GALGAS_templateExpressionAST & inAttribute_mRightExpression
-                                                                                            COMMA_LOCATION_ARGS) {
+GALGAS_templateLeftShiftOperationAST GALGAS_templateLeftShiftOperationAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
+                                                                                           const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
+                                                                                           const GALGAS_templateExpressionAST & inAttribute_mRightExpression
+                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_templateLeftShiftOperationAST result ;
   if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_templateLeftShiftOperationAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
@@ -13925,7 +13925,7 @@ GALGAS_templateExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateLeftShiftOperationAST_2D_weak GALGAS_templateLeftShiftOperationAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_templateLeftShiftOperationAST_2D_weak GALGAS_templateLeftShiftOperationAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_templateLeftShiftOperationAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -14053,10 +14053,10 @@ GALGAS_templateExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateRightShiftOperationAST GALGAS_templateRightShiftOperationAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                                              const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
-                                                                                              const GALGAS_templateExpressionAST & inAttribute_mRightExpression
-                                                                                              COMMA_LOCATION_ARGS) {
+GALGAS_templateRightShiftOperationAST GALGAS_templateRightShiftOperationAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
+                                                                                             const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
+                                                                                             const GALGAS_templateExpressionAST & inAttribute_mRightExpression
+                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_templateRightShiftOperationAST result ;
   if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_templateRightShiftOperationAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
@@ -14228,7 +14228,7 @@ GALGAS_templateExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateRightShiftOperationAST_2D_weak GALGAS_templateRightShiftOperationAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_templateRightShiftOperationAST_2D_weak GALGAS_templateRightShiftOperationAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_templateRightShiftOperationAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -14338,7 +14338,7 @@ GALGAS_templateInstructionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionStringAST_2D_weak GALGAS_templateInstructionStringAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_templateInstructionStringAST_2D_weak GALGAS_templateInstructionStringAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_templateInstructionStringAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -14462,9 +14462,9 @@ GALGAS_templateInstructionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionExpressionAST GALGAS_templateInstructionExpressionAST::constructor_new (const GALGAS_templateExpressionAST & inAttribute_mExpression,
-                                                                                                  const GALGAS_location & inAttribute_mLocation
-                                                                                                  COMMA_LOCATION_ARGS) {
+GALGAS_templateInstructionExpressionAST GALGAS_templateInstructionExpressionAST::class_func_new (const GALGAS_templateExpressionAST & inAttribute_mExpression,
+                                                                                                 const GALGAS_location & inAttribute_mLocation
+                                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_templateInstructionExpressionAST result ;
   if (inAttribute_mExpression.isValid () && inAttribute_mLocation.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_templateInstructionExpressionAST (inAttribute_mExpression, inAttribute_mLocation COMMA_THERE)) ;
@@ -14620,7 +14620,7 @@ GALGAS_templateInstructionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionExpressionAST_2D_weak GALGAS_templateInstructionExpressionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_templateInstructionExpressionAST_2D_weak GALGAS_templateInstructionExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_templateInstructionExpressionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -14748,10 +14748,10 @@ GALGAS_templateInstructionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateBlockInstructionAST GALGAS_templateBlockInstructionAST::constructor_new (const GALGAS_templateExpressionAST & inAttribute_mExpression,
-                                                                                        const GALGAS_location & inAttribute_mLocation,
-                                                                                        const GALGAS_templateInstructionListAST & inAttribute_mBlockInstructionList
-                                                                                        COMMA_LOCATION_ARGS) {
+GALGAS_templateBlockInstructionAST GALGAS_templateBlockInstructionAST::class_func_new (const GALGAS_templateExpressionAST & inAttribute_mExpression,
+                                                                                       const GALGAS_location & inAttribute_mLocation,
+                                                                                       const GALGAS_templateInstructionListAST & inAttribute_mBlockInstructionList
+                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_templateBlockInstructionAST result ;
   if (inAttribute_mExpression.isValid () && inAttribute_mLocation.isValid () && inAttribute_mBlockInstructionList.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_templateBlockInstructionAST (inAttribute_mExpression, inAttribute_mLocation, inAttribute_mBlockInstructionList COMMA_THERE)) ;
@@ -14923,7 +14923,7 @@ GALGAS_templateInstructionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateBlockInstructionAST_2D_weak GALGAS_templateBlockInstructionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_templateBlockInstructionAST_2D_weak GALGAS_templateBlockInstructionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_templateBlockInstructionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -15036,7 +15036,7 @@ GALGAS_templateInstructionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionGetColumnLocationAST GALGAS_templateInstructionGetColumnLocationAST::constructor_new (LOCATION_ARGS) {
+GALGAS_templateInstructionGetColumnLocationAST GALGAS_templateInstructionGetColumnLocationAST::class_func_new (LOCATION_ARGS) {
   GALGAS_templateInstructionGetColumnLocationAST result ;
   macroMyNew (result.mObjectPtr, cPtr_templateInstructionGetColumnLocationAST (THERE)) ;
   return result ;
@@ -15158,7 +15158,7 @@ GALGAS_templateInstructionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionGetColumnLocationAST_2D_weak GALGAS_templateInstructionGetColumnLocationAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_templateInstructionGetColumnLocationAST_2D_weak GALGAS_templateInstructionGetColumnLocationAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_templateInstructionGetColumnLocationAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -15271,7 +15271,7 @@ GALGAS_templateInstructionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionGotoColumnLocationAST GALGAS_templateInstructionGotoColumnLocationAST::constructor_new (LOCATION_ARGS) {
+GALGAS_templateInstructionGotoColumnLocationAST GALGAS_templateInstructionGotoColumnLocationAST::class_func_new (LOCATION_ARGS) {
   GALGAS_templateInstructionGotoColumnLocationAST result ;
   macroMyNew (result.mObjectPtr, cPtr_templateInstructionGotoColumnLocationAST (THERE)) ;
   return result ;
@@ -15393,7 +15393,7 @@ GALGAS_templateInstructionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionGotoColumnLocationAST_2D_weak GALGAS_templateInstructionGotoColumnLocationAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_templateInstructionGotoColumnLocationAST_2D_weak GALGAS_templateInstructionGotoColumnLocationAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_templateInstructionGotoColumnLocationAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -15550,15 +15550,15 @@ AC_GALGAS_list (inSharedArray) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionIfBranchListAST GALGAS_templateInstructionIfBranchListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+GALGAS_templateInstructionIfBranchListAST GALGAS_templateInstructionIfBranchListAST::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_templateInstructionIfBranchListAST (capCollectionElementArray ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionIfBranchListAST GALGAS_templateInstructionIfBranchListAST::constructor_listWithValue (const GALGAS_templateExpressionAST & inOperand0,
-                                                                                                                const GALGAS_templateInstructionListAST & inOperand1
-                                                                                                                COMMA_LOCATION_ARGS) {
+GALGAS_templateInstructionIfBranchListAST GALGAS_templateInstructionIfBranchListAST::class_func_listWithValue (const GALGAS_templateExpressionAST & inOperand0,
+                                                                                                               const GALGAS_templateInstructionListAST & inOperand1
+                                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_templateInstructionIfBranchListAST result ;
   if (inOperand0.isValid () && inOperand1.isValid ()) {
     result = GALGAS_templateInstructionIfBranchListAST (capCollectionElementArray ()) ;
@@ -15760,7 +15760,7 @@ GALGAS_templateInstructionIfBranchListAST GALGAS_templateInstructionIfBranchList
 GALGAS_templateInstructionIfBranchListAST GALGAS_templateInstructionIfBranchListAST::getter_subListWithRange (const GALGAS_range & inRange,
                                                                                                               Compiler * inCompiler
                                                                                                               COMMA_LOCATION_ARGS) const {
-  GALGAS_templateInstructionIfBranchListAST result = GALGAS_templateInstructionIfBranchListAST::constructor_emptyList (THERE) ;
+  GALGAS_templateInstructionIfBranchListAST result = GALGAS_templateInstructionIfBranchListAST::class_func_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -15770,7 +15770,7 @@ GALGAS_templateInstructionIfBranchListAST GALGAS_templateInstructionIfBranchList
 GALGAS_templateInstructionIfBranchListAST GALGAS_templateInstructionIfBranchListAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                                                               Compiler * inCompiler
                                                                                                               COMMA_LOCATION_ARGS) const {
-  GALGAS_templateInstructionIfBranchListAST result = GALGAS_templateInstructionIfBranchListAST::constructor_emptyList (THERE) ;
+  GALGAS_templateInstructionIfBranchListAST result = GALGAS_templateInstructionIfBranchListAST::class_func_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -15780,7 +15780,7 @@ GALGAS_templateInstructionIfBranchListAST GALGAS_templateInstructionIfBranchList
 GALGAS_templateInstructionIfBranchListAST GALGAS_templateInstructionIfBranchListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                                                             Compiler * inCompiler
                                                                                                             COMMA_LOCATION_ARGS) const {
-  GALGAS_templateInstructionIfBranchListAST result = GALGAS_templateInstructionIfBranchListAST::constructor_emptyList (THERE) ;
+  GALGAS_templateInstructionIfBranchListAST result = GALGAS_templateInstructionIfBranchListAST::class_func_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -15991,9 +15991,9 @@ GALGAS_templateInstructionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionIfAST GALGAS_templateInstructionIfAST::constructor_new (const GALGAS_templateInstructionIfBranchListAST & inAttribute_mTemplateInstructionIfBranchList,
-                                                                                  const GALGAS_templateInstructionListAST & inAttribute_mElseInstructionList
-                                                                                  COMMA_LOCATION_ARGS) {
+GALGAS_templateInstructionIfAST GALGAS_templateInstructionIfAST::class_func_new (const GALGAS_templateInstructionIfBranchListAST & inAttribute_mTemplateInstructionIfBranchList,
+                                                                                 const GALGAS_templateInstructionListAST & inAttribute_mElseInstructionList
+                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_templateInstructionIfAST result ;
   if (inAttribute_mTemplateInstructionIfBranchList.isValid () && inAttribute_mElseInstructionList.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_templateInstructionIfAST (inAttribute_mTemplateInstructionIfBranchList, inAttribute_mElseInstructionList COMMA_THERE)) ;
@@ -16149,7 +16149,7 @@ GALGAS_templateInstructionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionIfAST_2D_weak GALGAS_templateInstructionIfAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_templateInstructionIfAST_2D_weak GALGAS_templateInstructionIfAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_templateInstructionIfAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -16352,7 +16352,7 @@ AC_GALGAS_weak_reference (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionForGeneration_2D_weak GALGAS_templateInstructionForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_templateInstructionForGeneration_2D_weak GALGAS_templateInstructionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_templateInstructionForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -16462,7 +16462,7 @@ GALGAS_templateInstructionForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionExpressionForGeneration_2D_weak GALGAS_templateInstructionExpressionForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_templateInstructionExpressionForGeneration_2D_weak GALGAS_templateInstructionExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_templateInstructionExpressionForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -16613,14 +16613,14 @@ AC_GALGAS_list (inSharedArray) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionListForGeneration::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionListForGeneration::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_templateInstructionListForGeneration (capCollectionElementArray ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionListForGeneration::constructor_listWithValue (const GALGAS_templateInstructionForGeneration & inOperand0
-                                                                                                                    COMMA_LOCATION_ARGS) {
+GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionListForGeneration::class_func_listWithValue (const GALGAS_templateInstructionForGeneration & inOperand0
+                                                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_templateInstructionListForGeneration result ;
   if (inOperand0.isValid ()) {
     result = GALGAS_templateInstructionListForGeneration (capCollectionElementArray ()) ;
@@ -16800,7 +16800,7 @@ GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionListForGen
 GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionListForGeneration::getter_subListWithRange (const GALGAS_range & inRange,
                                                                                                                   Compiler * inCompiler
                                                                                                                   COMMA_LOCATION_ARGS) const {
-  GALGAS_templateInstructionListForGeneration result = GALGAS_templateInstructionListForGeneration::constructor_emptyList (THERE) ;
+  GALGAS_templateInstructionListForGeneration result = GALGAS_templateInstructionListForGeneration::class_func_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -16810,7 +16810,7 @@ GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionListForGen
 GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionListForGeneration::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                                                                   Compiler * inCompiler
                                                                                                                   COMMA_LOCATION_ARGS) const {
-  GALGAS_templateInstructionListForGeneration result = GALGAS_templateInstructionListForGeneration::constructor_emptyList (THERE) ;
+  GALGAS_templateInstructionListForGeneration result = GALGAS_templateInstructionListForGeneration::class_func_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -16820,7 +16820,7 @@ GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionListForGen
 GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionListForGeneration::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                                                                 Compiler * inCompiler
                                                                                                                 COMMA_LOCATION_ARGS) const {
-  GALGAS_templateInstructionListForGeneration result = GALGAS_templateInstructionListForGeneration::constructor_emptyList (THERE) ;
+  GALGAS_templateInstructionListForGeneration result = GALGAS_templateInstructionListForGeneration::class_func_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -16980,7 +16980,7 @@ GALGAS_templateInstructionForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateBlockInstructionForGeneration_2D_weak GALGAS_templateBlockInstructionForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_templateBlockInstructionForGeneration_2D_weak GALGAS_templateBlockInstructionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_templateBlockInstructionForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;

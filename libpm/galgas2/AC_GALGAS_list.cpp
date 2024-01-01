@@ -491,7 +491,7 @@ static void enterAllKeys (const cListMapNode * inNode, GALGAS_stringset & ioResu
 GALGAS_stringset AC_GALGAS_listmap::getter_allKeys (LOCATION_ARGS) const {
   GALGAS_stringset result ;
   if (isValid ()) {
-    result = GALGAS_stringset::constructor_emptySet (THERE) ;
+    result = GALGAS_stringset::class_func_emptySet (THERE) ;
     enterAllKeys (mSharedListMap->root (), result) ;
   }
   return result ;
@@ -512,7 +512,7 @@ static void enterKeyList (const cListMapNode * inNode, GALGAS_stringlist & ioRes
 GALGAS_stringlist AC_GALGAS_listmap::getter_keyList (LOCATION_ARGS) const {
   GALGAS_stringlist result ;
   if (isValid ()) {
-    result = GALGAS_stringlist::constructor_emptyList (THERE) ;
+    result = GALGAS_stringlist::class_func_emptyList (THERE) ;
     enterKeyList (mSharedListMap->root (), result) ;
   }
   return result ;

@@ -100,15 +100,15 @@ AC_GALGAS_list (inSharedArray) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalSelectBranchListAST GALGAS_lexicalSelectBranchListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+GALGAS_lexicalSelectBranchListAST GALGAS_lexicalSelectBranchListAST::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_lexicalSelectBranchListAST (capCollectionElementArray ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalSelectBranchListAST GALGAS_lexicalSelectBranchListAST::constructor_listWithValue (const GALGAS_lexicalExpressionAST & inOperand0,
-                                                                                                const GALGAS_lexicalInstructionListAST & inOperand1
-                                                                                                COMMA_LOCATION_ARGS) {
+GALGAS_lexicalSelectBranchListAST GALGAS_lexicalSelectBranchListAST::class_func_listWithValue (const GALGAS_lexicalExpressionAST & inOperand0,
+                                                                                               const GALGAS_lexicalInstructionListAST & inOperand1
+                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_lexicalSelectBranchListAST result ;
   if (inOperand0.isValid () && inOperand1.isValid ()) {
     result = GALGAS_lexicalSelectBranchListAST (capCollectionElementArray ()) ;
@@ -310,7 +310,7 @@ GALGAS_lexicalSelectBranchListAST GALGAS_lexicalSelectBranchListAST::add_operati
 GALGAS_lexicalSelectBranchListAST GALGAS_lexicalSelectBranchListAST::getter_subListWithRange (const GALGAS_range & inRange,
                                                                                               Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) const {
-  GALGAS_lexicalSelectBranchListAST result = GALGAS_lexicalSelectBranchListAST::constructor_emptyList (THERE) ;
+  GALGAS_lexicalSelectBranchListAST result = GALGAS_lexicalSelectBranchListAST::class_func_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -320,7 +320,7 @@ GALGAS_lexicalSelectBranchListAST GALGAS_lexicalSelectBranchListAST::getter_subL
 GALGAS_lexicalSelectBranchListAST GALGAS_lexicalSelectBranchListAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                                               Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) const {
-  GALGAS_lexicalSelectBranchListAST result = GALGAS_lexicalSelectBranchListAST::constructor_emptyList (THERE) ;
+  GALGAS_lexicalSelectBranchListAST result = GALGAS_lexicalSelectBranchListAST::class_func_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -330,7 +330,7 @@ GALGAS_lexicalSelectBranchListAST GALGAS_lexicalSelectBranchListAST::getter_subL
 GALGAS_lexicalSelectBranchListAST GALGAS_lexicalSelectBranchListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                                             Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) const {
-  GALGAS_lexicalSelectBranchListAST result = GALGAS_lexicalSelectBranchListAST::constructor_emptyList (THERE) ;
+  GALGAS_lexicalSelectBranchListAST result = GALGAS_lexicalSelectBranchListAST::class_func_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -620,7 +620,7 @@ AC_GALGAS_weak_reference (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -771,14 +771,14 @@ AC_GALGAS_list (inSharedArray) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalFunctionCallActualArgumentListAST GALGAS_lexicalFunctionCallActualArgumentListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+GALGAS_lexicalFunctionCallActualArgumentListAST GALGAS_lexicalFunctionCallActualArgumentListAST::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_lexicalFunctionCallActualArgumentListAST (capCollectionElementArray ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalFunctionCallActualArgumentListAST GALGAS_lexicalFunctionCallActualArgumentListAST::constructor_listWithValue (const GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST & inOperand0
-                                                                                                                            COMMA_LOCATION_ARGS) {
+GALGAS_lexicalFunctionCallActualArgumentListAST GALGAS_lexicalFunctionCallActualArgumentListAST::class_func_listWithValue (const GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST & inOperand0
+                                                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_lexicalFunctionCallActualArgumentListAST result ;
   if (inOperand0.isValid ()) {
     result = GALGAS_lexicalFunctionCallActualArgumentListAST (capCollectionElementArray ()) ;
@@ -958,7 +958,7 @@ GALGAS_lexicalFunctionCallActualArgumentListAST GALGAS_lexicalFunctionCallActual
 GALGAS_lexicalFunctionCallActualArgumentListAST GALGAS_lexicalFunctionCallActualArgumentListAST::getter_subListWithRange (const GALGAS_range & inRange,
                                                                                                                           Compiler * inCompiler
                                                                                                                           COMMA_LOCATION_ARGS) const {
-  GALGAS_lexicalFunctionCallActualArgumentListAST result = GALGAS_lexicalFunctionCallActualArgumentListAST::constructor_emptyList (THERE) ;
+  GALGAS_lexicalFunctionCallActualArgumentListAST result = GALGAS_lexicalFunctionCallActualArgumentListAST::class_func_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -968,7 +968,7 @@ GALGAS_lexicalFunctionCallActualArgumentListAST GALGAS_lexicalFunctionCallActual
 GALGAS_lexicalFunctionCallActualArgumentListAST GALGAS_lexicalFunctionCallActualArgumentListAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                                                                           Compiler * inCompiler
                                                                                                                           COMMA_LOCATION_ARGS) const {
-  GALGAS_lexicalFunctionCallActualArgumentListAST result = GALGAS_lexicalFunctionCallActualArgumentListAST::constructor_emptyList (THERE) ;
+  GALGAS_lexicalFunctionCallActualArgumentListAST result = GALGAS_lexicalFunctionCallActualArgumentListAST::class_func_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -978,7 +978,7 @@ GALGAS_lexicalFunctionCallActualArgumentListAST GALGAS_lexicalFunctionCallActual
 GALGAS_lexicalFunctionCallActualArgumentListAST GALGAS_lexicalFunctionCallActualArgumentListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                                                                         Compiler * inCompiler
                                                                                                                         COMMA_LOCATION_ARGS) const {
-  GALGAS_lexicalFunctionCallActualArgumentListAST result = GALGAS_lexicalFunctionCallActualArgumentListAST::constructor_emptyList (THERE) ;
+  GALGAS_lexicalFunctionCallActualArgumentListAST result = GALGAS_lexicalFunctionCallActualArgumentListAST::class_func_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -1138,7 +1138,7 @@ GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalAttributeInputArgumentAST_2D_weak GALGAS_lexicalAttributeInputArgumentAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_lexicalAttributeInputArgumentAST_2D_weak GALGAS_lexicalAttributeInputArgumentAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_lexicalAttributeInputArgumentAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -1248,7 +1248,7 @@ GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalCharacterInputArgumentAST_2D_weak GALGAS_lexicalCharacterInputArgumentAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_lexicalCharacterInputArgumentAST_2D_weak GALGAS_lexicalCharacterInputArgumentAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_lexicalCharacterInputArgumentAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -1358,7 +1358,7 @@ GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalUnsignedInputArgumentAST_2D_weak GALGAS_lexicalUnsignedInputArgumentAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_lexicalUnsignedInputArgumentAST_2D_weak GALGAS_lexicalUnsignedInputArgumentAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_lexicalUnsignedInputArgumentAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -1478,8 +1478,8 @@ GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalCurrentCharacterInputArgumentAST GALGAS_lexicalCurrentCharacterInputArgumentAST::constructor_new (const GALGAS_location & inAttribute_mLocation
-                                                                                                                COMMA_LOCATION_ARGS) {
+GALGAS_lexicalCurrentCharacterInputArgumentAST GALGAS_lexicalCurrentCharacterInputArgumentAST::class_func_new (const GALGAS_location & inAttribute_mLocation
+                                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_lexicalCurrentCharacterInputArgumentAST result ;
   if (inAttribute_mLocation.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_lexicalCurrentCharacterInputArgumentAST (inAttribute_mLocation COMMA_THERE)) ;
@@ -1619,7 +1619,7 @@ GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalCurrentCharacterInputArgumentAST_2D_weak GALGAS_lexicalCurrentCharacterInputArgumentAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_lexicalCurrentCharacterInputArgumentAST_2D_weak GALGAS_lexicalCurrentCharacterInputArgumentAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_lexicalCurrentCharacterInputArgumentAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -1729,7 +1729,7 @@ GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalFunctionInputArgumentAST_2D_weak GALGAS_lexicalFunctionInputArgumentAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_lexicalFunctionInputArgumentAST_2D_weak GALGAS_lexicalFunctionInputArgumentAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_lexicalFunctionInputArgumentAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -1801,7 +1801,7 @@ mEnum (kNotBuilt) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalArgumentModeAST GALGAS_lexicalArgumentModeAST::constructor_lexicalInputMode (UNUSED_LOCATION_ARGS) {
+GALGAS_lexicalArgumentModeAST GALGAS_lexicalArgumentModeAST::class_func_lexicalInputMode (UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalArgumentModeAST result ;
   result.mEnum = kEnum_lexicalInputMode ;
   return result ;
@@ -1809,7 +1809,7 @@ GALGAS_lexicalArgumentModeAST GALGAS_lexicalArgumentModeAST::constructor_lexical
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalArgumentModeAST GALGAS_lexicalArgumentModeAST::constructor_lexicalInputOutputMode (UNUSED_LOCATION_ARGS) {
+GALGAS_lexicalArgumentModeAST GALGAS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalArgumentModeAST result ;
   result.mEnum = kEnum_lexicalInputOutputMode ;
   return result ;
@@ -2052,7 +2052,7 @@ mEnum (kNotBuilt) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_string (UNUSED_LOCATION_ARGS) {
+GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::class_func_lexicalType_5F_string (UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalTypeEnum result ;
   result.mEnum = kEnum_lexicalType_5F_string ;
   return result ;
@@ -2060,7 +2060,7 @@ GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_string
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_char (UNUSED_LOCATION_ARGS) {
+GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::class_func_lexicalType_5F_char (UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalTypeEnum result ;
   result.mEnum = kEnum_lexicalType_5F_char ;
   return result ;
@@ -2068,7 +2068,7 @@ GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_char (
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_uint (UNUSED_LOCATION_ARGS) {
+GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::class_func_lexicalType_5F_uint (UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalTypeEnum result ;
   result.mEnum = kEnum_lexicalType_5F_uint ;
   return result ;
@@ -2076,7 +2076,7 @@ GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_uint (
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_uint_36__34_ (UNUSED_LOCATION_ARGS) {
+GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::class_func_lexicalType_5F_uint_36__34_ (UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalTypeEnum result ;
   result.mEnum = kEnum_lexicalType_5F_uint_36__34_ ;
   return result ;
@@ -2084,7 +2084,7 @@ GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_uint_3
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_sint (UNUSED_LOCATION_ARGS) {
+GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::class_func_lexicalType_5F_sint (UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalTypeEnum result ;
   result.mEnum = kEnum_lexicalType_5F_sint ;
   return result ;
@@ -2092,7 +2092,7 @@ GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_sint (
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_sint_36__34_ (UNUSED_LOCATION_ARGS) {
+GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::class_func_lexicalType_5F_sint_36__34_ (UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalTypeEnum result ;
   result.mEnum = kEnum_lexicalType_5F_sint_36__34_ ;
   return result ;
@@ -2100,7 +2100,7 @@ GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_sint_3
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_double (UNUSED_LOCATION_ARGS) {
+GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::class_func_lexicalType_5F_double (UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalTypeEnum result ;
   result.mEnum = kEnum_lexicalType_5F_double ;
   return result ;
@@ -2108,7 +2108,7 @@ GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_double
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_bigint (UNUSED_LOCATION_ARGS) {
+GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::class_func_lexicalType_5F_bigint (UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalTypeEnum result ;
   result.mEnum = kEnum_lexicalType_5F_bigint ;
   return result ;
@@ -2398,16 +2398,16 @@ AC_GALGAS_list (inSharedArray) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalSentValueList GALGAS_lexicalSentValueList::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+GALGAS_lexicalSentValueList GALGAS_lexicalSentValueList::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_lexicalSentValueList (capCollectionElementArray ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalSentValueList GALGAS_lexicalSentValueList::constructor_listWithValue (const GALGAS_lstring & inOperand0,
-                                                                                    const GALGAS_string & inOperand1,
-                                                                                    const GALGAS_lexicalTypeEnum & inOperand2
-                                                                                    COMMA_LOCATION_ARGS) {
+GALGAS_lexicalSentValueList GALGAS_lexicalSentValueList::class_func_listWithValue (const GALGAS_lstring & inOperand0,
+                                                                                   const GALGAS_string & inOperand1,
+                                                                                   const GALGAS_lexicalTypeEnum & inOperand2
+                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_lexicalSentValueList result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
     result = GALGAS_lexicalSentValueList (capCollectionElementArray ()) ;
@@ -2631,7 +2631,7 @@ GALGAS_lexicalSentValueList GALGAS_lexicalSentValueList::add_operation (const GA
 GALGAS_lexicalSentValueList GALGAS_lexicalSentValueList::getter_subListWithRange (const GALGAS_range & inRange,
                                                                                   Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) const {
-  GALGAS_lexicalSentValueList result = GALGAS_lexicalSentValueList::constructor_emptyList (THERE) ;
+  GALGAS_lexicalSentValueList result = GALGAS_lexicalSentValueList::class_func_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -2641,7 +2641,7 @@ GALGAS_lexicalSentValueList GALGAS_lexicalSentValueList::getter_subListWithRange
 GALGAS_lexicalSentValueList GALGAS_lexicalSentValueList::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                                   Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) const {
-  GALGAS_lexicalSentValueList result = GALGAS_lexicalSentValueList::constructor_emptyList (THERE) ;
+  GALGAS_lexicalSentValueList result = GALGAS_lexicalSentValueList::class_func_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -2651,7 +2651,7 @@ GALGAS_lexicalSentValueList GALGAS_lexicalSentValueList::getter_subListFromIndex
 GALGAS_lexicalSentValueList GALGAS_lexicalSentValueList::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                                 Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) const {
-  GALGAS_lexicalSentValueList result = GALGAS_lexicalSentValueList::constructor_emptyList (THERE) ;
+  GALGAS_lexicalSentValueList result = GALGAS_lexicalSentValueList::class_func_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -2903,7 +2903,7 @@ GALGAS_terminalMap & GALGAS_terminalMap::operator = (const GALGAS_terminalMap & 
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_terminalMap GALGAS_terminalMap::constructor_emptyMap (LOCATION_ARGS) {
+GALGAS_terminalMap GALGAS_terminalMap::class_func_emptyMap (LOCATION_ARGS) {
   GALGAS_terminalMap result ;
   result.makeNewEmptyMap (THERE) ;
   return result ;
@@ -2911,8 +2911,8 @@ GALGAS_terminalMap GALGAS_terminalMap::constructor_emptyMap (LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_terminalMap GALGAS_terminalMap::constructor_mapWithMapToOverride (const GALGAS_terminalMap & inMapToOverride
-                                                                         COMMA_LOCATION_ARGS) {
+GALGAS_terminalMap GALGAS_terminalMap::class_func_mapWithMapToOverride (const GALGAS_terminalMap & inMapToOverride
+                                                                        COMMA_LOCATION_ARGS) {
   GALGAS_terminalMap result ;
   result.makeNewEmptyMapWithMapToOverride (inMapToOverride COMMA_THERE) ;
   return result ;
@@ -3187,7 +3187,7 @@ GALGAS_lexicalTypeMap & GALGAS_lexicalTypeMap::operator = (const GALGAS_lexicalT
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalTypeMap GALGAS_lexicalTypeMap::constructor_emptyMap (LOCATION_ARGS) {
+GALGAS_lexicalTypeMap GALGAS_lexicalTypeMap::class_func_emptyMap (LOCATION_ARGS) {
   GALGAS_lexicalTypeMap result ;
   result.makeNewEmptyMap (THERE) ;
   return result ;
@@ -3195,8 +3195,8 @@ GALGAS_lexicalTypeMap GALGAS_lexicalTypeMap::constructor_emptyMap (LOCATION_ARGS
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalTypeMap GALGAS_lexicalTypeMap::constructor_mapWithMapToOverride (const GALGAS_lexicalTypeMap & inMapToOverride
-                                                                               COMMA_LOCATION_ARGS) {
+GALGAS_lexicalTypeMap GALGAS_lexicalTypeMap::class_func_mapWithMapToOverride (const GALGAS_lexicalTypeMap & inMapToOverride
+                                                                              COMMA_LOCATION_ARGS) {
   GALGAS_lexicalTypeMap result ;
   result.makeNewEmptyMapWithMapToOverride (inMapToOverride COMMA_THERE) ;
   return result ;
@@ -3471,7 +3471,7 @@ GALGAS_lexicalAttributeMap & GALGAS_lexicalAttributeMap::operator = (const GALGA
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalAttributeMap GALGAS_lexicalAttributeMap::constructor_emptyMap (LOCATION_ARGS) {
+GALGAS_lexicalAttributeMap GALGAS_lexicalAttributeMap::class_func_emptyMap (LOCATION_ARGS) {
   GALGAS_lexicalAttributeMap result ;
   result.makeNewEmptyMap (THERE) ;
   return result ;
@@ -3479,8 +3479,8 @@ GALGAS_lexicalAttributeMap GALGAS_lexicalAttributeMap::constructor_emptyMap (LOC
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalAttributeMap GALGAS_lexicalAttributeMap::constructor_mapWithMapToOverride (const GALGAS_lexicalAttributeMap & inMapToOverride
-                                                                                         COMMA_LOCATION_ARGS) {
+GALGAS_lexicalAttributeMap GALGAS_lexicalAttributeMap::class_func_mapWithMapToOverride (const GALGAS_lexicalAttributeMap & inMapToOverride
+                                                                                        COMMA_LOCATION_ARGS) {
   GALGAS_lexicalAttributeMap result ;
   result.makeNewEmptyMapWithMapToOverride (inMapToOverride COMMA_THERE) ;
   return result ;
@@ -3808,19 +3808,19 @@ AC_GALGAS_list (inSharedArray) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_terminalList GALGAS_terminalList::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+GALGAS_terminalList GALGAS_terminalList::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_terminalList (capCollectionElementArray ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_terminalList GALGAS_terminalList::constructor_listWithValue (const GALGAS_lstring & inOperand0,
-                                                                    const GALGAS_lexicalSentValueList & inOperand1,
-                                                                    const GALGAS_string & inOperand2,
-                                                                    const GALGAS_bool & inOperand3,
-                                                                    const GALGAS_bool & inOperand4,
-                                                                    const GALGAS_uint & inOperand5
-                                                                    COMMA_LOCATION_ARGS) {
+GALGAS_terminalList GALGAS_terminalList::class_func_listWithValue (const GALGAS_lstring & inOperand0,
+                                                                   const GALGAS_lexicalSentValueList & inOperand1,
+                                                                   const GALGAS_string & inOperand2,
+                                                                   const GALGAS_bool & inOperand3,
+                                                                   const GALGAS_bool & inOperand4,
+                                                                   const GALGAS_uint & inOperand5
+                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_terminalList result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid ()) {
     result = GALGAS_terminalList (capCollectionElementArray ()) ;
@@ -4110,7 +4110,7 @@ GALGAS_terminalList GALGAS_terminalList::add_operation (const GALGAS_terminalLis
 GALGAS_terminalList GALGAS_terminalList::getter_subListWithRange (const GALGAS_range & inRange,
                                                                   Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) const {
-  GALGAS_terminalList result = GALGAS_terminalList::constructor_emptyList (THERE) ;
+  GALGAS_terminalList result = GALGAS_terminalList::class_func_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -4120,7 +4120,7 @@ GALGAS_terminalList GALGAS_terminalList::getter_subListWithRange (const GALGAS_r
 GALGAS_terminalList GALGAS_terminalList::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                   Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) const {
-  GALGAS_terminalList result = GALGAS_terminalList::constructor_emptyList (THERE) ;
+  GALGAS_terminalList result = GALGAS_terminalList::class_func_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -4130,7 +4130,7 @@ GALGAS_terminalList GALGAS_terminalList::getter_subListFromIndex (const GALGAS_u
 GALGAS_terminalList GALGAS_terminalList::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                 Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) const {
-  GALGAS_terminalList result = GALGAS_terminalList::constructor_emptyList (THERE) ;
+  GALGAS_terminalList result = GALGAS_terminalList::class_func_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -4511,7 +4511,7 @@ GALGAS_lexicalExplicitTokenListMap & GALGAS_lexicalExplicitTokenListMap::operato
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalExplicitTokenListMap GALGAS_lexicalExplicitTokenListMap::constructor_emptyMap (LOCATION_ARGS) {
+GALGAS_lexicalExplicitTokenListMap GALGAS_lexicalExplicitTokenListMap::class_func_emptyMap (LOCATION_ARGS) {
   GALGAS_lexicalExplicitTokenListMap result ;
   result.makeNewEmptyMap (THERE) ;
   return result ;
@@ -4519,8 +4519,8 @@ GALGAS_lexicalExplicitTokenListMap GALGAS_lexicalExplicitTokenListMap::construct
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalExplicitTokenListMap GALGAS_lexicalExplicitTokenListMap::constructor_mapWithMapToOverride (const GALGAS_lexicalExplicitTokenListMap & inMapToOverride
-                                                                                                         COMMA_LOCATION_ARGS) {
+GALGAS_lexicalExplicitTokenListMap GALGAS_lexicalExplicitTokenListMap::class_func_mapWithMapToOverride (const GALGAS_lexicalExplicitTokenListMap & inMapToOverride
+                                                                                                        COMMA_LOCATION_ARGS) {
   GALGAS_lexicalExplicitTokenListMap result ;
   result.makeNewEmptyMapWithMapToOverride (inMapToOverride COMMA_THERE) ;
   return result ;
@@ -4924,7 +4924,7 @@ typeComparisonResult cSortedListElement_tokenSortedlist::compareForSorting (cons
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_tokenSortedlist GALGAS_tokenSortedlist::constructor_emptySortedList (LOCATION_ARGS) {
+GALGAS_tokenSortedlist GALGAS_tokenSortedlist::class_func_emptySortedList (LOCATION_ARGS) {
   GALGAS_tokenSortedlist result ;
   result.createNewEmptySortedList (THERE) ;
   return result ;
@@ -4932,11 +4932,11 @@ GALGAS_tokenSortedlist GALGAS_tokenSortedlist::constructor_emptySortedList (LOCA
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_tokenSortedlist GALGAS_tokenSortedlist::constructor_sortedListWithValue (const GALGAS_uint & inOperand0,
-                                                                                const GALGAS_string & inOperand1,
-                                                                                const GALGAS_string & inOperand2
-                                                                                COMMA_LOCATION_ARGS) {
-  GALGAS_tokenSortedlist result = constructor_emptySortedList (THERE) ;
+GALGAS_tokenSortedlist GALGAS_tokenSortedlist::class_func_sortedListWithValue (const GALGAS_uint & inOperand0,
+                                                                               const GALGAS_string & inOperand1,
+                                                                               const GALGAS_string & inOperand2
+                                                                               COMMA_LOCATION_ARGS) {
+  GALGAS_tokenSortedlist result = class_func_emptySortedList (THERE) ;
   cSortedListElement * p = nullptr ;
   macroMyNew (p, cSortedListElement_tokenSortedlist (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
   capSortedListElement attributes ;
@@ -5243,7 +5243,7 @@ GALGAS_lexicalExplicitTokenListMapMap & GALGAS_lexicalExplicitTokenListMapMap::o
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalExplicitTokenListMapMap GALGAS_lexicalExplicitTokenListMapMap::constructor_emptyMap (LOCATION_ARGS) {
+GALGAS_lexicalExplicitTokenListMapMap GALGAS_lexicalExplicitTokenListMapMap::class_func_emptyMap (LOCATION_ARGS) {
   GALGAS_lexicalExplicitTokenListMapMap result ;
   result.makeNewEmptyMap (THERE) ;
   return result ;
@@ -5251,8 +5251,8 @@ GALGAS_lexicalExplicitTokenListMapMap GALGAS_lexicalExplicitTokenListMapMap::con
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalExplicitTokenListMapMap GALGAS_lexicalExplicitTokenListMapMap::constructor_mapWithMapToOverride (const GALGAS_lexicalExplicitTokenListMapMap & inMapToOverride
-                                                                                                               COMMA_LOCATION_ARGS) {
+GALGAS_lexicalExplicitTokenListMapMap GALGAS_lexicalExplicitTokenListMapMap::class_func_mapWithMapToOverride (const GALGAS_lexicalExplicitTokenListMapMap & inMapToOverride
+                                                                                                              COMMA_LOCATION_ARGS) {
   GALGAS_lexicalExplicitTokenListMapMap result ;
   result.makeNewEmptyMapWithMapToOverride (inMapToOverride COMMA_THERE) ;
   return result ;
@@ -5626,7 +5626,7 @@ GALGAS_lexicalMessageMap & GALGAS_lexicalMessageMap::operator = (const GALGAS_le
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalMessageMap GALGAS_lexicalMessageMap::constructor_emptyMap (LOCATION_ARGS) {
+GALGAS_lexicalMessageMap GALGAS_lexicalMessageMap::class_func_emptyMap (LOCATION_ARGS) {
   GALGAS_lexicalMessageMap result ;
   result.makeNewEmptyMap (THERE) ;
   return result ;
@@ -5634,8 +5634,8 @@ GALGAS_lexicalMessageMap GALGAS_lexicalMessageMap::constructor_emptyMap (LOCATIO
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalMessageMap GALGAS_lexicalMessageMap::constructor_mapWithMapToOverride (const GALGAS_lexicalMessageMap & inMapToOverride
-                                                                                     COMMA_LOCATION_ARGS) {
+GALGAS_lexicalMessageMap GALGAS_lexicalMessageMap::class_func_mapWithMapToOverride (const GALGAS_lexicalMessageMap & inMapToOverride
+                                                                                    COMMA_LOCATION_ARGS) {
   GALGAS_lexicalMessageMap result ;
   result.makeNewEmptyMapWithMapToOverride (inMapToOverride COMMA_THERE) ;
   return result ;
@@ -5990,16 +5990,16 @@ AC_GALGAS_list (inSharedArray) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalRoutineFormalArgumentList GALGAS_lexicalRoutineFormalArgumentList::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+GALGAS_lexicalRoutineFormalArgumentList GALGAS_lexicalRoutineFormalArgumentList::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_lexicalRoutineFormalArgumentList (capCollectionElementArray ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalRoutineFormalArgumentList GALGAS_lexicalRoutineFormalArgumentList::constructor_listWithValue (const GALGAS_lexicalArgumentModeAST & inOperand0,
-                                                                                                            const GALGAS_lexicalTypeEnum & inOperand1,
-                                                                                                            const GALGAS_string & inOperand2
-                                                                                                            COMMA_LOCATION_ARGS) {
+GALGAS_lexicalRoutineFormalArgumentList GALGAS_lexicalRoutineFormalArgumentList::class_func_listWithValue (const GALGAS_lexicalArgumentModeAST & inOperand0,
+                                                                                                           const GALGAS_lexicalTypeEnum & inOperand1,
+                                                                                                           const GALGAS_string & inOperand2
+                                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_lexicalRoutineFormalArgumentList result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
     result = GALGAS_lexicalRoutineFormalArgumentList (capCollectionElementArray ()) ;
@@ -6223,7 +6223,7 @@ GALGAS_lexicalRoutineFormalArgumentList GALGAS_lexicalRoutineFormalArgumentList:
 GALGAS_lexicalRoutineFormalArgumentList GALGAS_lexicalRoutineFormalArgumentList::getter_subListWithRange (const GALGAS_range & inRange,
                                                                                                           Compiler * inCompiler
                                                                                                           COMMA_LOCATION_ARGS) const {
-  GALGAS_lexicalRoutineFormalArgumentList result = GALGAS_lexicalRoutineFormalArgumentList::constructor_emptyList (THERE) ;
+  GALGAS_lexicalRoutineFormalArgumentList result = GALGAS_lexicalRoutineFormalArgumentList::class_func_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -6233,7 +6233,7 @@ GALGAS_lexicalRoutineFormalArgumentList GALGAS_lexicalRoutineFormalArgumentList:
 GALGAS_lexicalRoutineFormalArgumentList GALGAS_lexicalRoutineFormalArgumentList::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                                                           Compiler * inCompiler
                                                                                                           COMMA_LOCATION_ARGS) const {
-  GALGAS_lexicalRoutineFormalArgumentList result = GALGAS_lexicalRoutineFormalArgumentList::constructor_emptyList (THERE) ;
+  GALGAS_lexicalRoutineFormalArgumentList result = GALGAS_lexicalRoutineFormalArgumentList::class_func_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -6243,7 +6243,7 @@ GALGAS_lexicalRoutineFormalArgumentList GALGAS_lexicalRoutineFormalArgumentList:
 GALGAS_lexicalRoutineFormalArgumentList GALGAS_lexicalRoutineFormalArgumentList::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                                                         Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) const {
-  GALGAS_lexicalRoutineFormalArgumentList result = GALGAS_lexicalRoutineFormalArgumentList::constructor_emptyList (THERE) ;
+  GALGAS_lexicalRoutineFormalArgumentList result = GALGAS_lexicalRoutineFormalArgumentList::class_func_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -6513,7 +6513,7 @@ GALGAS_lexicalRoutineMap & GALGAS_lexicalRoutineMap::operator = (const GALGAS_le
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalRoutineMap GALGAS_lexicalRoutineMap::constructor_emptyMap (LOCATION_ARGS) {
+GALGAS_lexicalRoutineMap GALGAS_lexicalRoutineMap::class_func_emptyMap (LOCATION_ARGS) {
   GALGAS_lexicalRoutineMap result ;
   result.makeNewEmptyMap (THERE) ;
   return result ;
@@ -6521,8 +6521,8 @@ GALGAS_lexicalRoutineMap GALGAS_lexicalRoutineMap::constructor_emptyMap (LOCATIO
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalRoutineMap GALGAS_lexicalRoutineMap::constructor_mapWithMapToOverride (const GALGAS_lexicalRoutineMap & inMapToOverride
-                                                                                     COMMA_LOCATION_ARGS) {
+GALGAS_lexicalRoutineMap GALGAS_lexicalRoutineMap::class_func_mapWithMapToOverride (const GALGAS_lexicalRoutineMap & inMapToOverride
+                                                                                    COMMA_LOCATION_ARGS) {
   GALGAS_lexicalRoutineMap result ;
   result.makeNewEmptyMapWithMapToOverride (inMapToOverride COMMA_THERE) ;
   return result ;
@@ -6916,15 +6916,15 @@ AC_GALGAS_list (inSharedArray) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalFunctionFormalArgumentList GALGAS_lexicalFunctionFormalArgumentList::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+GALGAS_lexicalFunctionFormalArgumentList GALGAS_lexicalFunctionFormalArgumentList::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_lexicalFunctionFormalArgumentList (capCollectionElementArray ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalFunctionFormalArgumentList GALGAS_lexicalFunctionFormalArgumentList::constructor_listWithValue (const GALGAS_lexicalTypeEnum & inOperand0,
-                                                                                                              const GALGAS_string & inOperand1
-                                                                                                              COMMA_LOCATION_ARGS) {
+GALGAS_lexicalFunctionFormalArgumentList GALGAS_lexicalFunctionFormalArgumentList::class_func_listWithValue (const GALGAS_lexicalTypeEnum & inOperand0,
+                                                                                                             const GALGAS_string & inOperand1
+                                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_lexicalFunctionFormalArgumentList result ;
   if (inOperand0.isValid () && inOperand1.isValid ()) {
     result = GALGAS_lexicalFunctionFormalArgumentList (capCollectionElementArray ()) ;
@@ -7126,7 +7126,7 @@ GALGAS_lexicalFunctionFormalArgumentList GALGAS_lexicalFunctionFormalArgumentLis
 GALGAS_lexicalFunctionFormalArgumentList GALGAS_lexicalFunctionFormalArgumentList::getter_subListWithRange (const GALGAS_range & inRange,
                                                                                                             Compiler * inCompiler
                                                                                                             COMMA_LOCATION_ARGS) const {
-  GALGAS_lexicalFunctionFormalArgumentList result = GALGAS_lexicalFunctionFormalArgumentList::constructor_emptyList (THERE) ;
+  GALGAS_lexicalFunctionFormalArgumentList result = GALGAS_lexicalFunctionFormalArgumentList::class_func_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -7136,7 +7136,7 @@ GALGAS_lexicalFunctionFormalArgumentList GALGAS_lexicalFunctionFormalArgumentLis
 GALGAS_lexicalFunctionFormalArgumentList GALGAS_lexicalFunctionFormalArgumentList::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                                                             Compiler * inCompiler
                                                                                                             COMMA_LOCATION_ARGS) const {
-  GALGAS_lexicalFunctionFormalArgumentList result = GALGAS_lexicalFunctionFormalArgumentList::constructor_emptyList (THERE) ;
+  GALGAS_lexicalFunctionFormalArgumentList result = GALGAS_lexicalFunctionFormalArgumentList::class_func_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -7146,7 +7146,7 @@ GALGAS_lexicalFunctionFormalArgumentList GALGAS_lexicalFunctionFormalArgumentLis
 GALGAS_lexicalFunctionFormalArgumentList GALGAS_lexicalFunctionFormalArgumentList::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                                                           Compiler * inCompiler
                                                                                                           COMMA_LOCATION_ARGS) const {
-  GALGAS_lexicalFunctionFormalArgumentList result = GALGAS_lexicalFunctionFormalArgumentList::constructor_emptyList (THERE) ;
+  GALGAS_lexicalFunctionFormalArgumentList result = GALGAS_lexicalFunctionFormalArgumentList::class_func_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -7388,7 +7388,7 @@ GALGAS_lexicalFunctionMap & GALGAS_lexicalFunctionMap::operator = (const GALGAS_
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalFunctionMap GALGAS_lexicalFunctionMap::constructor_emptyMap (LOCATION_ARGS) {
+GALGAS_lexicalFunctionMap GALGAS_lexicalFunctionMap::class_func_emptyMap (LOCATION_ARGS) {
   GALGAS_lexicalFunctionMap result ;
   result.makeNewEmptyMap (THERE) ;
   return result ;
@@ -7396,8 +7396,8 @@ GALGAS_lexicalFunctionMap GALGAS_lexicalFunctionMap::constructor_emptyMap (LOCAT
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalFunctionMap GALGAS_lexicalFunctionMap::constructor_mapWithMapToOverride (const GALGAS_lexicalFunctionMap & inMapToOverride
-                                                                                       COMMA_LOCATION_ARGS) {
+GALGAS_lexicalFunctionMap GALGAS_lexicalFunctionMap::class_func_mapWithMapToOverride (const GALGAS_lexicalFunctionMap & inMapToOverride
+                                                                                      COMMA_LOCATION_ARGS) {
   GALGAS_lexicalFunctionMap result ;
   result.makeNewEmptyMapWithMapToOverride (inMapToOverride COMMA_THERE) ;
   return result ;
@@ -7842,16 +7842,16 @@ AC_GALGAS_list (inSharedArray) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateDelimitorList GALGAS_templateDelimitorList::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+GALGAS_templateDelimitorList GALGAS_templateDelimitorList::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_templateDelimitorList (capCollectionElementArray ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateDelimitorList GALGAS_templateDelimitorList::constructor_listWithValue (const GALGAS_lstring & inOperand0,
-                                                                                      const GALGAS_lstring & inOperand1,
-                                                                                      const GALGAS_bool & inOperand2
-                                                                                      COMMA_LOCATION_ARGS) {
+GALGAS_templateDelimitorList GALGAS_templateDelimitorList::class_func_listWithValue (const GALGAS_lstring & inOperand0,
+                                                                                     const GALGAS_lstring & inOperand1,
+                                                                                     const GALGAS_bool & inOperand2
+                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_templateDelimitorList result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
     result = GALGAS_templateDelimitorList (capCollectionElementArray ()) ;
@@ -8075,7 +8075,7 @@ GALGAS_templateDelimitorList GALGAS_templateDelimitorList::add_operation (const 
 GALGAS_templateDelimitorList GALGAS_templateDelimitorList::getter_subListWithRange (const GALGAS_range & inRange,
                                                                                     Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) const {
-  GALGAS_templateDelimitorList result = GALGAS_templateDelimitorList::constructor_emptyList (THERE) ;
+  GALGAS_templateDelimitorList result = GALGAS_templateDelimitorList::class_func_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -8085,7 +8085,7 @@ GALGAS_templateDelimitorList GALGAS_templateDelimitorList::getter_subListWithRan
 GALGAS_templateDelimitorList GALGAS_templateDelimitorList::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                                     Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) const {
-  GALGAS_templateDelimitorList result = GALGAS_templateDelimitorList::constructor_emptyList (THERE) ;
+  GALGAS_templateDelimitorList result = GALGAS_templateDelimitorList::class_func_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -8095,7 +8095,7 @@ GALGAS_templateDelimitorList GALGAS_templateDelimitorList::getter_subListFromInd
 GALGAS_templateDelimitorList GALGAS_templateDelimitorList::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                                   Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) const {
-  GALGAS_templateDelimitorList result = GALGAS_templateDelimitorList::constructor_emptyList (THERE) ;
+  GALGAS_templateDelimitorList result = GALGAS_templateDelimitorList::class_func_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -8356,7 +8356,7 @@ GALGAS_styleMap & GALGAS_styleMap::operator = (const GALGAS_styleMap & inSource)
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_styleMap GALGAS_styleMap::constructor_emptyMap (LOCATION_ARGS) {
+GALGAS_styleMap GALGAS_styleMap::class_func_emptyMap (LOCATION_ARGS) {
   GALGAS_styleMap result ;
   result.makeNewEmptyMap (THERE) ;
   return result ;
@@ -8364,8 +8364,8 @@ GALGAS_styleMap GALGAS_styleMap::constructor_emptyMap (LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_styleMap GALGAS_styleMap::constructor_mapWithMapToOverride (const GALGAS_styleMap & inMapToOverride
-                                                                   COMMA_LOCATION_ARGS) {
+GALGAS_styleMap GALGAS_styleMap::class_func_mapWithMapToOverride (const GALGAS_styleMap & inMapToOverride
+                                                                  COMMA_LOCATION_ARGS) {
   GALGAS_styleMap result ;
   result.makeNewEmptyMapWithMapToOverride (inMapToOverride COMMA_THERE) ;
   return result ;
@@ -8676,7 +8676,7 @@ GALGAS_lexicalTagMap & GALGAS_lexicalTagMap::operator = (const GALGAS_lexicalTag
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalTagMap GALGAS_lexicalTagMap::constructor_emptyMap (LOCATION_ARGS) {
+GALGAS_lexicalTagMap GALGAS_lexicalTagMap::class_func_emptyMap (LOCATION_ARGS) {
   GALGAS_lexicalTagMap result ;
   result.makeNewEmptyMap (THERE) ;
   return result ;
@@ -8684,8 +8684,8 @@ GALGAS_lexicalTagMap GALGAS_lexicalTagMap::constructor_emptyMap (LOCATION_ARGS) 
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalTagMap GALGAS_lexicalTagMap::constructor_mapWithMapToOverride (const GALGAS_lexicalTagMap & inMapToOverride
-                                                                             COMMA_LOCATION_ARGS) {
+GALGAS_lexicalTagMap GALGAS_lexicalTagMap::class_func_mapWithMapToOverride (const GALGAS_lexicalTagMap & inMapToOverride
+                                                                            COMMA_LOCATION_ARGS) {
   GALGAS_lexicalTagMap result ;
   result.makeNewEmptyMapWithMapToOverride (inMapToOverride COMMA_THERE) ;
   return result ;
@@ -10050,9 +10050,9 @@ GALGAS_lexicalInstructionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalStructuredSendInstructionAST GALGAS_lexicalStructuredSendInstructionAST::constructor_new (const GALGAS_lexicalSendSearchListAST & inAttribute_mLexicalSendSearchList,
-                                                                                                        const GALGAS_lexicalSendDefaultActionAST & inAttribute_mLexicalSendDefaultAction
-                                                                                                        COMMA_LOCATION_ARGS) {
+GALGAS_lexicalStructuredSendInstructionAST GALGAS_lexicalStructuredSendInstructionAST::class_func_new (const GALGAS_lexicalSendSearchListAST & inAttribute_mLexicalSendSearchList,
+                                                                                                       const GALGAS_lexicalSendDefaultActionAST & inAttribute_mLexicalSendDefaultAction
+                                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_lexicalStructuredSendInstructionAST result ;
   if (inAttribute_mLexicalSendSearchList.isValid () && inAttribute_mLexicalSendDefaultAction.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_lexicalStructuredSendInstructionAST (inAttribute_mLexicalSendSearchList, inAttribute_mLexicalSendDefaultAction COMMA_THERE)) ;
@@ -10208,7 +10208,7 @@ GALGAS_lexicalInstructionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalStructuredSendInstructionAST_2D_weak GALGAS_lexicalStructuredSendInstructionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_lexicalStructuredSendInstructionAST_2D_weak GALGAS_lexicalStructuredSendInstructionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_lexicalStructuredSendInstructionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -10318,7 +10318,7 @@ GALGAS_lexicalInstructionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalDropInstructionAST_2D_weak GALGAS_lexicalDropInstructionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_lexicalDropInstructionAST_2D_weak GALGAS_lexicalDropInstructionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_lexicalDropInstructionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -10428,7 +10428,7 @@ GALGAS_lexicalInstructionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalErrorInstructionAST_2D_weak GALGAS_lexicalErrorInstructionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_lexicalErrorInstructionAST_2D_weak GALGAS_lexicalErrorInstructionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_lexicalErrorInstructionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -10541,7 +10541,7 @@ GALGAS_lexicalInstructionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalLogInstructionAST GALGAS_lexicalLogInstructionAST::constructor_new (LOCATION_ARGS) {
+GALGAS_lexicalLogInstructionAST GALGAS_lexicalLogInstructionAST::class_func_new (LOCATION_ARGS) {
   GALGAS_lexicalLogInstructionAST result ;
   macroMyNew (result.mObjectPtr, cPtr_lexicalLogInstructionAST (THERE)) ;
   return result ;
@@ -10663,7 +10663,7 @@ GALGAS_lexicalInstructionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalLogInstructionAST_2D_weak GALGAS_lexicalLogInstructionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_lexicalLogInstructionAST_2D_weak GALGAS_lexicalLogInstructionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_lexicalLogInstructionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -10791,10 +10791,10 @@ GALGAS_lexicalInstructionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalRepeatInstructionAST GALGAS_lexicalRepeatInstructionAST::constructor_new (const GALGAS_lexicalInstructionListAST & inAttribute_mRepeatedInstructionList,
-                                                                                        const GALGAS_lexicalWhileBranchListAST & inAttribute_mLexicalWhileBranchList,
-                                                                                        const GALGAS_location & inAttribute_mLocation
-                                                                                        COMMA_LOCATION_ARGS) {
+GALGAS_lexicalRepeatInstructionAST GALGAS_lexicalRepeatInstructionAST::class_func_new (const GALGAS_lexicalInstructionListAST & inAttribute_mRepeatedInstructionList,
+                                                                                       const GALGAS_lexicalWhileBranchListAST & inAttribute_mLexicalWhileBranchList,
+                                                                                       const GALGAS_location & inAttribute_mLocation
+                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_lexicalRepeatInstructionAST result ;
   if (inAttribute_mRepeatedInstructionList.isValid () && inAttribute_mLexicalWhileBranchList.isValid () && inAttribute_mLocation.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_lexicalRepeatInstructionAST (inAttribute_mRepeatedInstructionList, inAttribute_mLexicalWhileBranchList, inAttribute_mLocation COMMA_THERE)) ;
@@ -10966,7 +10966,7 @@ GALGAS_lexicalInstructionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalRepeatInstructionAST_2D_weak GALGAS_lexicalRepeatInstructionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_lexicalRepeatInstructionAST_2D_weak GALGAS_lexicalRepeatInstructionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_lexicalRepeatInstructionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -11076,7 +11076,7 @@ GALGAS_lexicalInstructionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalRewindInstructionAST_2D_weak GALGAS_lexicalRewindInstructionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_lexicalRewindInstructionAST_2D_weak GALGAS_lexicalRewindInstructionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_lexicalRewindInstructionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -11294,7 +11294,7 @@ AC_GALGAS_weak_reference (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -11404,7 +11404,7 @@ GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalAttributeInputOutputArgumentAST_2D_weak GALGAS_lexicalAttributeInputOutputArgumentAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_lexicalAttributeInputOutputArgumentAST_2D_weak GALGAS_lexicalAttributeInputOutputArgumentAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_lexicalAttributeInputOutputArgumentAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -11527,9 +11527,9 @@ GALGAS_abstractLexicalRoutineActualArgumentAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalFormalInputArgumentAST GALGAS_lexicalFormalInputArgumentAST::constructor_new (const GALGAS_location & inAttribute_mActualPassingModeLocation,
-                                                                                            const GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST & inAttribute_mRoutineOrFunctionFormalInputArgument
-                                                                                            COMMA_LOCATION_ARGS) {
+GALGAS_lexicalFormalInputArgumentAST GALGAS_lexicalFormalInputArgumentAST::class_func_new (const GALGAS_location & inAttribute_mActualPassingModeLocation,
+                                                                                           const GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST & inAttribute_mRoutineOrFunctionFormalInputArgument
+                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_lexicalFormalInputArgumentAST result ;
   if (inAttribute_mActualPassingModeLocation.isValid () && inAttribute_mRoutineOrFunctionFormalInputArgument.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_lexicalFormalInputArgumentAST (inAttribute_mActualPassingModeLocation, inAttribute_mRoutineOrFunctionFormalInputArgument COMMA_THERE)) ;
@@ -11672,7 +11672,7 @@ GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalFormalInputArgumentAST_2D_weak GALGAS_lexicalFormalInputArgumentAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_lexicalFormalInputArgumentAST_2D_weak GALGAS_lexicalFormalInputArgumentAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_lexicalFormalInputArgumentAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -11823,14 +11823,14 @@ AC_GALGAS_list (inSharedArray) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalRoutineCallActualArgumentListAST GALGAS_lexicalRoutineCallActualArgumentListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+GALGAS_lexicalRoutineCallActualArgumentListAST GALGAS_lexicalRoutineCallActualArgumentListAST::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_lexicalRoutineCallActualArgumentListAST (capCollectionElementArray ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalRoutineCallActualArgumentListAST GALGAS_lexicalRoutineCallActualArgumentListAST::constructor_listWithValue (const GALGAS_abstractLexicalRoutineActualArgumentAST & inOperand0
-                                                                                                                          COMMA_LOCATION_ARGS) {
+GALGAS_lexicalRoutineCallActualArgumentListAST GALGAS_lexicalRoutineCallActualArgumentListAST::class_func_listWithValue (const GALGAS_abstractLexicalRoutineActualArgumentAST & inOperand0
+                                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_lexicalRoutineCallActualArgumentListAST result ;
   if (inOperand0.isValid ()) {
     result = GALGAS_lexicalRoutineCallActualArgumentListAST (capCollectionElementArray ()) ;
@@ -12010,7 +12010,7 @@ GALGAS_lexicalRoutineCallActualArgumentListAST GALGAS_lexicalRoutineCallActualAr
 GALGAS_lexicalRoutineCallActualArgumentListAST GALGAS_lexicalRoutineCallActualArgumentListAST::getter_subListWithRange (const GALGAS_range & inRange,
                                                                                                                         Compiler * inCompiler
                                                                                                                         COMMA_LOCATION_ARGS) const {
-  GALGAS_lexicalRoutineCallActualArgumentListAST result = GALGAS_lexicalRoutineCallActualArgumentListAST::constructor_emptyList (THERE) ;
+  GALGAS_lexicalRoutineCallActualArgumentListAST result = GALGAS_lexicalRoutineCallActualArgumentListAST::class_func_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -12020,7 +12020,7 @@ GALGAS_lexicalRoutineCallActualArgumentListAST GALGAS_lexicalRoutineCallActualAr
 GALGAS_lexicalRoutineCallActualArgumentListAST GALGAS_lexicalRoutineCallActualArgumentListAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                                                                         Compiler * inCompiler
                                                                                                                         COMMA_LOCATION_ARGS) const {
-  GALGAS_lexicalRoutineCallActualArgumentListAST result = GALGAS_lexicalRoutineCallActualArgumentListAST::constructor_emptyList (THERE) ;
+  GALGAS_lexicalRoutineCallActualArgumentListAST result = GALGAS_lexicalRoutineCallActualArgumentListAST::class_func_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -12030,7 +12030,7 @@ GALGAS_lexicalRoutineCallActualArgumentListAST GALGAS_lexicalRoutineCallActualAr
 GALGAS_lexicalRoutineCallActualArgumentListAST GALGAS_lexicalRoutineCallActualArgumentListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                                                                       Compiler * inCompiler
                                                                                                                       COMMA_LOCATION_ARGS) const {
-  GALGAS_lexicalRoutineCallActualArgumentListAST result = GALGAS_lexicalRoutineCallActualArgumentListAST::constructor_emptyList (THERE) ;
+  GALGAS_lexicalRoutineCallActualArgumentListAST result = GALGAS_lexicalRoutineCallActualArgumentListAST::class_func_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -12190,7 +12190,7 @@ GALGAS_lexicalInstructionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalRoutineCallInstructionAST_2D_weak GALGAS_lexicalRoutineCallInstructionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_lexicalRoutineCallInstructionAST_2D_weak GALGAS_lexicalRoutineCallInstructionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_lexicalRoutineCallInstructionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -12383,9 +12383,9 @@ GALGAS_lexicalInstructionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalSelectInstructionAST GALGAS_lexicalSelectInstructionAST::constructor_new (const GALGAS_lexicalSelectBranchListAST & inAttribute_mLexicalSelectBranchList,
-                                                                                        const GALGAS_lexicalInstructionListAST & inAttribute_mDefaultInstructionList
-                                                                                        COMMA_LOCATION_ARGS) {
+GALGAS_lexicalSelectInstructionAST GALGAS_lexicalSelectInstructionAST::class_func_new (const GALGAS_lexicalSelectBranchListAST & inAttribute_mLexicalSelectBranchList,
+                                                                                       const GALGAS_lexicalInstructionListAST & inAttribute_mDefaultInstructionList
+                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_lexicalSelectInstructionAST result ;
   if (inAttribute_mLexicalSelectBranchList.isValid () && inAttribute_mDefaultInstructionList.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_lexicalSelectInstructionAST (inAttribute_mLexicalSelectBranchList, inAttribute_mDefaultInstructionList COMMA_THERE)) ;
@@ -12541,7 +12541,7 @@ GALGAS_lexicalInstructionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalSelectInstructionAST_2D_weak GALGAS_lexicalSelectInstructionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_lexicalSelectInstructionAST_2D_weak GALGAS_lexicalSelectInstructionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_lexicalSelectInstructionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -12651,7 +12651,7 @@ GALGAS_lexicalInstructionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalSimpleSendInstructionAST_2D_weak GALGAS_lexicalSimpleSendInstructionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_lexicalSimpleSendInstructionAST_2D_weak GALGAS_lexicalSimpleSendInstructionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_lexicalSimpleSendInstructionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -12761,7 +12761,7 @@ GALGAS_lexicalInstructionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalTagInstructionAST_2D_weak GALGAS_lexicalTagInstructionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_lexicalTagInstructionAST_2D_weak GALGAS_lexicalTagInstructionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_lexicalTagInstructionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -12871,7 +12871,7 @@ GALGAS_lexicalInstructionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalWarningInstructionAST_2D_weak GALGAS_lexicalWarningInstructionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_lexicalWarningInstructionAST_2D_weak GALGAS_lexicalWarningInstructionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_lexicalWarningInstructionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -12943,7 +12943,7 @@ mEnum (kNotBuilt) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionDefaultValueEnumAST GALGAS_optionDefaultValueEnumAST::constructor_noDefaultValue (UNUSED_LOCATION_ARGS) {
+GALGAS_optionDefaultValueEnumAST GALGAS_optionDefaultValueEnumAST::class_func_noDefaultValue (UNUSED_LOCATION_ARGS) {
   GALGAS_optionDefaultValueEnumAST result ;
   result.mEnum = kEnum_noDefaultValue ;
   return result ;
@@ -12951,7 +12951,7 @@ GALGAS_optionDefaultValueEnumAST GALGAS_optionDefaultValueEnumAST::constructor_n
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionDefaultValueEnumAST GALGAS_optionDefaultValueEnumAST::constructor_unsignedDefaultValue (UNUSED_LOCATION_ARGS) {
+GALGAS_optionDefaultValueEnumAST GALGAS_optionDefaultValueEnumAST::class_func_unsignedDefaultValue (UNUSED_LOCATION_ARGS) {
   GALGAS_optionDefaultValueEnumAST result ;
   result.mEnum = kEnum_unsignedDefaultValue ;
   return result ;
@@ -12959,7 +12959,7 @@ GALGAS_optionDefaultValueEnumAST GALGAS_optionDefaultValueEnumAST::constructor_u
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionDefaultValueEnumAST GALGAS_optionDefaultValueEnumAST::constructor_stringDefaultValue (UNUSED_LOCATION_ARGS) {
+GALGAS_optionDefaultValueEnumAST GALGAS_optionDefaultValueEnumAST::class_func_stringDefaultValue (UNUSED_LOCATION_ARGS) {
   GALGAS_optionDefaultValueEnumAST result ;
   result.mEnum = kEnum_stringDefaultValue ;
   return result ;
@@ -13203,20 +13203,20 @@ AC_GALGAS_list (inSharedArray) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_commandLineOptionListAST GALGAS_commandLineOptionListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+GALGAS_commandLineOptionListAST GALGAS_commandLineOptionListAST::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_commandLineOptionListAST (capCollectionElementArray ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_commandLineOptionListAST GALGAS_commandLineOptionListAST::constructor_listWithValue (const GALGAS_lstring & inOperand0,
-                                                                                            const GALGAS_lstring & inOperand1,
-                                                                                            const GALGAS_lchar & inOperand2,
-                                                                                            const GALGAS_lstring & inOperand3,
-                                                                                            const GALGAS_lstring & inOperand4,
-                                                                                            const GALGAS_lstring & inOperand5,
-                                                                                            const GALGAS_optionDefaultValueEnumAST & inOperand6
-                                                                                            COMMA_LOCATION_ARGS) {
+GALGAS_commandLineOptionListAST GALGAS_commandLineOptionListAST::class_func_listWithValue (const GALGAS_lstring & inOperand0,
+                                                                                           const GALGAS_lstring & inOperand1,
+                                                                                           const GALGAS_lchar & inOperand2,
+                                                                                           const GALGAS_lstring & inOperand3,
+                                                                                           const GALGAS_lstring & inOperand4,
+                                                                                           const GALGAS_lstring & inOperand5,
+                                                                                           const GALGAS_optionDefaultValueEnumAST & inOperand6
+                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_commandLineOptionListAST result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid ()) {
     result = GALGAS_commandLineOptionListAST (capCollectionElementArray ()) ;
@@ -13528,7 +13528,7 @@ GALGAS_commandLineOptionListAST GALGAS_commandLineOptionListAST::add_operation (
 GALGAS_commandLineOptionListAST GALGAS_commandLineOptionListAST::getter_subListWithRange (const GALGAS_range & inRange,
                                                                                           Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) const {
-  GALGAS_commandLineOptionListAST result = GALGAS_commandLineOptionListAST::constructor_emptyList (THERE) ;
+  GALGAS_commandLineOptionListAST result = GALGAS_commandLineOptionListAST::class_func_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -13538,7 +13538,7 @@ GALGAS_commandLineOptionListAST GALGAS_commandLineOptionListAST::getter_subListW
 GALGAS_commandLineOptionListAST GALGAS_commandLineOptionListAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                                           Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) const {
-  GALGAS_commandLineOptionListAST result = GALGAS_commandLineOptionListAST::constructor_emptyList (THERE) ;
+  GALGAS_commandLineOptionListAST result = GALGAS_commandLineOptionListAST::class_func_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -13548,7 +13548,7 @@ GALGAS_commandLineOptionListAST GALGAS_commandLineOptionListAST::getter_subListF
 GALGAS_commandLineOptionListAST GALGAS_commandLineOptionListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                                         Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) const {
-  GALGAS_commandLineOptionListAST result = GALGAS_commandLineOptionListAST::constructor_emptyList (THERE) ;
+  GALGAS_commandLineOptionListAST result = GALGAS_commandLineOptionListAST::class_func_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -13930,7 +13930,7 @@ GALGAS_semanticDeclarationAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionComponentDeclarationAST_2D_weak GALGAS_optionComponentDeclarationAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_optionComponentDeclarationAST_2D_weak GALGAS_optionComponentDeclarationAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_optionComponentDeclarationAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -14085,7 +14085,7 @@ GALGAS_commandLineOptionMap & GALGAS_commandLineOptionMap::operator = (const GAL
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_commandLineOptionMap GALGAS_commandLineOptionMap::constructor_emptyMap (LOCATION_ARGS) {
+GALGAS_commandLineOptionMap GALGAS_commandLineOptionMap::class_func_emptyMap (LOCATION_ARGS) {
   GALGAS_commandLineOptionMap result ;
   result.makeNewEmptyMap (THERE) ;
   return result ;
@@ -14093,8 +14093,8 @@ GALGAS_commandLineOptionMap GALGAS_commandLineOptionMap::constructor_emptyMap (L
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_commandLineOptionMap GALGAS_commandLineOptionMap::constructor_mapWithMapToOverride (const GALGAS_commandLineOptionMap & inMapToOverride
-                                                                                           COMMA_LOCATION_ARGS) {
+GALGAS_commandLineOptionMap GALGAS_commandLineOptionMap::class_func_mapWithMapToOverride (const GALGAS_commandLineOptionMap & inMapToOverride
+                                                                                          COMMA_LOCATION_ARGS) {
   GALGAS_commandLineOptionMap result ;
   result.makeNewEmptyMapWithMapToOverride (inMapToOverride COMMA_THERE) ;
   return result ;
@@ -14533,15 +14533,15 @@ AC_GALGAS_list (inSharedArray) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_guiSimpleAttributeListAST GALGAS_guiSimpleAttributeListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+GALGAS_guiSimpleAttributeListAST GALGAS_guiSimpleAttributeListAST::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_guiSimpleAttributeListAST (capCollectionElementArray ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_guiSimpleAttributeListAST GALGAS_guiSimpleAttributeListAST::constructor_listWithValue (const GALGAS_lstring & inOperand0,
-                                                                                              const GALGAS_lstring & inOperand1
-                                                                                              COMMA_LOCATION_ARGS) {
+GALGAS_guiSimpleAttributeListAST GALGAS_guiSimpleAttributeListAST::class_func_listWithValue (const GALGAS_lstring & inOperand0,
+                                                                                             const GALGAS_lstring & inOperand1
+                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_guiSimpleAttributeListAST result ;
   if (inOperand0.isValid () && inOperand1.isValid ()) {
     result = GALGAS_guiSimpleAttributeListAST (capCollectionElementArray ()) ;
@@ -14743,7 +14743,7 @@ GALGAS_guiSimpleAttributeListAST GALGAS_guiSimpleAttributeListAST::add_operation
 GALGAS_guiSimpleAttributeListAST GALGAS_guiSimpleAttributeListAST::getter_subListWithRange (const GALGAS_range & inRange,
                                                                                             Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) const {
-  GALGAS_guiSimpleAttributeListAST result = GALGAS_guiSimpleAttributeListAST::constructor_emptyList (THERE) ;
+  GALGAS_guiSimpleAttributeListAST result = GALGAS_guiSimpleAttributeListAST::class_func_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -14753,7 +14753,7 @@ GALGAS_guiSimpleAttributeListAST GALGAS_guiSimpleAttributeListAST::getter_subLis
 GALGAS_guiSimpleAttributeListAST GALGAS_guiSimpleAttributeListAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                                             Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) const {
-  GALGAS_guiSimpleAttributeListAST result = GALGAS_guiSimpleAttributeListAST::constructor_emptyList (THERE) ;
+  GALGAS_guiSimpleAttributeListAST result = GALGAS_guiSimpleAttributeListAST::class_func_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -14763,7 +14763,7 @@ GALGAS_guiSimpleAttributeListAST GALGAS_guiSimpleAttributeListAST::getter_subLis
 GALGAS_guiSimpleAttributeListAST GALGAS_guiSimpleAttributeListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                                           Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) const {
-  GALGAS_guiSimpleAttributeListAST result = GALGAS_guiSimpleAttributeListAST::constructor_emptyList (THERE) ;
+  GALGAS_guiSimpleAttributeListAST result = GALGAS_guiSimpleAttributeListAST::class_func_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -15013,16 +15013,16 @@ AC_GALGAS_list (inSharedArray) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_guiCompoundAttributeListAST GALGAS_guiCompoundAttributeListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+GALGAS_guiCompoundAttributeListAST GALGAS_guiCompoundAttributeListAST::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_guiCompoundAttributeListAST (capCollectionElementArray ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_guiCompoundAttributeListAST GALGAS_guiCompoundAttributeListAST::constructor_listWithValue (const GALGAS_lstring & inOperand0,
-                                                                                                  const GALGAS_lstring & inOperand1,
-                                                                                                  const GALGAS_lstring & inOperand2
-                                                                                                  COMMA_LOCATION_ARGS) {
+GALGAS_guiCompoundAttributeListAST GALGAS_guiCompoundAttributeListAST::class_func_listWithValue (const GALGAS_lstring & inOperand0,
+                                                                                                 const GALGAS_lstring & inOperand1,
+                                                                                                 const GALGAS_lstring & inOperand2
+                                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_guiCompoundAttributeListAST result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
     result = GALGAS_guiCompoundAttributeListAST (capCollectionElementArray ()) ;
@@ -15246,7 +15246,7 @@ GALGAS_guiCompoundAttributeListAST GALGAS_guiCompoundAttributeListAST::add_opera
 GALGAS_guiCompoundAttributeListAST GALGAS_guiCompoundAttributeListAST::getter_subListWithRange (const GALGAS_range & inRange,
                                                                                                 Compiler * inCompiler
                                                                                                 COMMA_LOCATION_ARGS) const {
-  GALGAS_guiCompoundAttributeListAST result = GALGAS_guiCompoundAttributeListAST::constructor_emptyList (THERE) ;
+  GALGAS_guiCompoundAttributeListAST result = GALGAS_guiCompoundAttributeListAST::class_func_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -15256,7 +15256,7 @@ GALGAS_guiCompoundAttributeListAST GALGAS_guiCompoundAttributeListAST::getter_su
 GALGAS_guiCompoundAttributeListAST GALGAS_guiCompoundAttributeListAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                                                 Compiler * inCompiler
                                                                                                 COMMA_LOCATION_ARGS) const {
-  GALGAS_guiCompoundAttributeListAST result = GALGAS_guiCompoundAttributeListAST::constructor_emptyList (THERE) ;
+  GALGAS_guiCompoundAttributeListAST result = GALGAS_guiCompoundAttributeListAST::class_func_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -15266,7 +15266,7 @@ GALGAS_guiCompoundAttributeListAST GALGAS_guiCompoundAttributeListAST::getter_su
 GALGAS_guiCompoundAttributeListAST GALGAS_guiCompoundAttributeListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                                               Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) const {
-  GALGAS_guiCompoundAttributeListAST result = GALGAS_guiCompoundAttributeListAST::constructor_emptyList (THERE) ;
+  GALGAS_guiCompoundAttributeListAST result = GALGAS_guiCompoundAttributeListAST::class_func_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -15547,15 +15547,15 @@ AC_GALGAS_list (inSharedArray) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_terminalLabelListAST GALGAS_terminalLabelListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+GALGAS_terminalLabelListAST GALGAS_terminalLabelListAST::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_terminalLabelListAST (capCollectionElementArray ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_terminalLabelListAST GALGAS_terminalLabelListAST::constructor_listWithValue (const GALGAS_lstring & inOperand0,
-                                                                                    const GALGAS_uint & inOperand1
-                                                                                    COMMA_LOCATION_ARGS) {
+GALGAS_terminalLabelListAST GALGAS_terminalLabelListAST::class_func_listWithValue (const GALGAS_lstring & inOperand0,
+                                                                                   const GALGAS_uint & inOperand1
+                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_terminalLabelListAST result ;
   if (inOperand0.isValid () && inOperand1.isValid ()) {
     result = GALGAS_terminalLabelListAST (capCollectionElementArray ()) ;
@@ -15757,7 +15757,7 @@ GALGAS_terminalLabelListAST GALGAS_terminalLabelListAST::add_operation (const GA
 GALGAS_terminalLabelListAST GALGAS_terminalLabelListAST::getter_subListWithRange (const GALGAS_range & inRange,
                                                                                   Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) const {
-  GALGAS_terminalLabelListAST result = GALGAS_terminalLabelListAST::constructor_emptyList (THERE) ;
+  GALGAS_terminalLabelListAST result = GALGAS_terminalLabelListAST::class_func_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -15767,7 +15767,7 @@ GALGAS_terminalLabelListAST GALGAS_terminalLabelListAST::getter_subListWithRange
 GALGAS_terminalLabelListAST GALGAS_terminalLabelListAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                                   Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) const {
-  GALGAS_terminalLabelListAST result = GALGAS_terminalLabelListAST::constructor_emptyList (THERE) ;
+  GALGAS_terminalLabelListAST result = GALGAS_terminalLabelListAST::class_func_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -15777,7 +15777,7 @@ GALGAS_terminalLabelListAST GALGAS_terminalLabelListAST::getter_subListFromIndex
 GALGAS_terminalLabelListAST GALGAS_terminalLabelListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                                 Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) const {
-  GALGAS_terminalLabelListAST result = GALGAS_terminalLabelListAST::constructor_emptyList (THERE) ;
+  GALGAS_terminalLabelListAST result = GALGAS_terminalLabelListAST::class_func_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }

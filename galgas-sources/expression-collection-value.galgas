@@ -442,7 +442,7 @@ override method @expressionCollectionForGeneration generateExpression
   ioTemporaryVariableIndex += 1
 #--- Declare variable and apply default constructor
   ioGeneratedCode += "GALGAS_" + [self.mResultType identifierRepresentation] + " " + outCppExpression
-     + " = GALGAS_" +  [self.mResultType identifierRepresentation] + "::constructor_" + [[self.mResultType definition].defaultConstructorName identifierRepresentation] + " (" + [self.mLocation sourceFile] + ") ;\n"
+     + " = GALGAS_" +  [self.mResultType identifierRepresentation] + "::class_func_" + [[self.mResultType definition].defaultConstructorName identifierRepresentation] + " (" + [self.mLocation sourceFile] + ") ;\n"
 #--- Add Elements
   for (mElement) in self.mElementList do
     [mElement generateCollectionElementCode

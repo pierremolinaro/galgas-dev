@@ -45,13 +45,13 @@ mUInt64Value (0) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint_36__34_ GALGAS_uint_36__34_::constructor_max (UNUSED_LOCATION_ARGS) {
+GALGAS_uint_36__34_ GALGAS_uint_36__34_::class_func_max (UNUSED_LOCATION_ARGS) {
   return GALGAS_uint_36__34_ (UINT64_MAX) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint_36__34_ GALGAS_uint_36__34_::constructor_uint_36__34_MaskWithCompressedBitString (const GALGAS_string & inBitString,
+GALGAS_uint_36__34_ GALGAS_uint_36__34_::class_func_uint_36__34_MaskWithCompressedBitString (const GALGAS_string & inBitString,
                                                                                               Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_uint_36__34_ result ;
@@ -79,7 +79,7 @@ GALGAS_uint_36__34_ GALGAS_uint_36__34_::constructor_uint_36__34_MaskWithCompres
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint_36__34_ GALGAS_uint_36__34_::constructor_uint_36__34_BaseValueWithCompressedBitString (const GALGAS_string & inBitString,
+GALGAS_uint_36__34_ GALGAS_uint_36__34_::class_func_uint_36__34_BaseValueWithCompressedBitString (const GALGAS_string & inBitString,
                                                                                                    Compiler * inCompiler
                                                                                                    COMMA_LOCATION_ARGS) {
   GALGAS_uint_36__34_ result ;
@@ -107,7 +107,7 @@ GALGAS_uint_36__34_ GALGAS_uint_36__34_::constructor_uint_36__34_BaseValueWithCo
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint_36__34_ GALGAS_uint_36__34_::constructor_uint_36__34_WithBitString (const GALGAS_string & inBitString,
+GALGAS_uint_36__34_ GALGAS_uint_36__34_::class_func_uint_36__34_WithBitString (const GALGAS_string & inBitString,
                                                                                 Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_uint_36__34_ result ;

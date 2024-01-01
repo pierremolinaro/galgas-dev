@@ -92,29 +92,29 @@ mProperty_mProjectName (inOperand22) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_XcodeProjectDescriptor GALGAS_XcodeProjectDescriptor::constructor_new (Compiler * /* inCompiler */
-                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_XcodeProjectDescriptor GALGAS_XcodeProjectDescriptor::class_func_new (Compiler * /* inCompiler */
+                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_uint in_mSequenceNumber = GALGAS_uint (uint32_t (0U)) ;
   const GALGAS_string in_mMainGroupReference = GALGAS_string::makeEmptyString () ;
-  const GALGAS_stringlist in_mMainGroupChildrenRefs = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 377)) ;
+  const GALGAS_stringlist in_mMainGroupChildrenRefs = GALGAS_stringlist::class_func_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 377)) ;
   const GALGAS_string in_mProjectObjectReference = GALGAS_string::makeEmptyString () ;
-  const GALGAS_XCodeGroupList in_mGroupList = GALGAS_XCodeGroupList::constructor_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 379)) ;
-  const GALGAS_XCodeToolTargetList in_mToolTargetList = GALGAS_XCodeToolTargetList::constructor_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 380)) ;
-  const GALGAS_XCodeAppTargetList in_mAppTargetList = GALGAS_XCodeAppTargetList::constructor_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 381)) ;
-  const GALGAS__32_stringlist in_mCFileList = GALGAS__32_stringlist::constructor_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 382)) ;
-  const GALGAS__32_stringlist in_mCppFileList = GALGAS__32_stringlist::constructor_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 383)) ;
-  const GALGAS__32_stringlist in_m_M_FileList = GALGAS__32_stringlist::constructor_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 384)) ;
-  const GALGAS__32_stringlist in_m_MM_FileList = GALGAS__32_stringlist::constructor_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 385)) ;
-  const GALGAS__32_stringlist in_mFrameworkFileList = GALGAS__32_stringlist::constructor_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 386)) ;
-  const GALGAS__32_stringlist in_mHeaderFileList = GALGAS__32_stringlist::constructor_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 387)) ;
-  const GALGAS_BuildFileList in_mBuildFileList = GALGAS_BuildFileList::constructor_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 388)) ;
+  const GALGAS_XCodeGroupList in_mGroupList = GALGAS_XCodeGroupList::class_func_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 379)) ;
+  const GALGAS_XCodeToolTargetList in_mToolTargetList = GALGAS_XCodeToolTargetList::class_func_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 380)) ;
+  const GALGAS_XCodeAppTargetList in_mAppTargetList = GALGAS_XCodeAppTargetList::class_func_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 381)) ;
+  const GALGAS__32_stringlist in_mCFileList = GALGAS__32_stringlist::class_func_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 382)) ;
+  const GALGAS__32_stringlist in_mCppFileList = GALGAS__32_stringlist::class_func_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 383)) ;
+  const GALGAS__32_stringlist in_m_M_FileList = GALGAS__32_stringlist::class_func_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 384)) ;
+  const GALGAS__32_stringlist in_m_MM_FileList = GALGAS__32_stringlist::class_func_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 385)) ;
+  const GALGAS__32_stringlist in_mFrameworkFileList = GALGAS__32_stringlist::class_func_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 386)) ;
+  const GALGAS__32_stringlist in_mHeaderFileList = GALGAS__32_stringlist::class_func_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 387)) ;
+  const GALGAS_BuildFileList in_mBuildFileList = GALGAS_BuildFileList::class_func_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 388)) ;
   const GALGAS_string in_mDefaultConfigurationRef = GALGAS_string::makeEmptyString () ;
-  const GALGAS_stringlist in_mDefaultConfigurationSettingList = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 391)) ;
+  const GALGAS_stringlist in_mDefaultConfigurationSettingList = GALGAS_stringlist::class_func_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 391)) ;
   const GALGAS_string in_mProjectBuildConfigurationRef = GALGAS_string::makeEmptyString () ;
-  const GALGAS__32_stringlist in_mInfoPlistFileList = GALGAS__32_stringlist::constructor_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 394)) ;
-  const GALGAS__32_stringlist in_mXIB_fileList = GALGAS__32_stringlist::constructor_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 395)) ;
-  const GALGAS__32_stringlist in_mTIFF_fileList = GALGAS__32_stringlist::constructor_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 396)) ;
-  const GALGAS__32_stringlist in_mICNS_fileList = GALGAS__32_stringlist::constructor_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 397)) ;
+  const GALGAS__32_stringlist in_mInfoPlistFileList = GALGAS__32_stringlist::class_func_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 394)) ;
+  const GALGAS__32_stringlist in_mXIB_fileList = GALGAS__32_stringlist::class_func_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 395)) ;
+  const GALGAS__32_stringlist in_mTIFF_fileList = GALGAS__32_stringlist::class_func_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 396)) ;
+  const GALGAS__32_stringlist in_mICNS_fileList = GALGAS__32_stringlist::class_func_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 397)) ;
   const GALGAS_string in_mApplicationBundleName = GALGAS_string::makeEmptyString () ;
   const GALGAS_string in_mProjectName = GALGAS_string::makeEmptyString () ;
   GALGAS_XcodeProjectDescriptor result ;
@@ -614,7 +614,7 @@ void extensionSetter_addAppTarget (GALGAS_XcodeProjectDescriptor & ioObject,
   {
   extensionSetter_getReferenceKey (ioObject, var_resourceBuildRef_6585, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 164)) ;
   }
-  GALGAS__32_stringlist var_dependentTargets_6622 = GALGAS__32_stringlist::constructor_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 165)) ;
+  GALGAS__32_stringlist var_dependentTargets_6622 = GALGAS__32_stringlist::class_func_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 165)) ;
   cEnumerator_stringlist enumerator_6651 (constinArgument_inDependentTargetRefList, kENUMERATION_UP) ;
   while (enumerator_6651.hasCurrentObject ()) {
     GALGAS_string var_dependencyBuildRef_6724 ;
@@ -742,7 +742,7 @@ void extensionSetter_addGroupWithFiles (GALGAS_XcodeProjectDescriptor & ioObject
   {
   extensionSetter_getReferenceKey (ioObject, outArgument_outGroupRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 235)) ;
   }
-  GALGAS_stringlist var_childrenRefs_9207 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 237)) ;
+  GALGAS_stringlist var_childrenRefs_9207 = GALGAS_stringlist::class_func_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 237)) ;
   cEnumerator_stringset enumerator_9232 (constinArgument_inFileNames, kENUMERATION_UP) ;
   while (enumerator_9232.hasCurrentObject ()) {
     enumGalgasBool test_6 = kBoolTrue ;
@@ -913,7 +913,7 @@ void extensionSetter_addGroupWithFiles (GALGAS_XcodeProjectDescriptor & ioObject
                         }
                         if (kBoolFalse == test_16) {
                           TC_Array <C_FixItDescription> fixItArray17 ;
-                          inCompiler->emitSemanticError (GALGAS_location::constructor_nowhere (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 288)), GALGAS_string ("unhandled extension for file '").add_operation (enumerator_9232.current_key (HERE), inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 288)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 288)), fixItArray17  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 288)) ;
+                          inCompiler->emitSemanticError (GALGAS_location::class_func_nowhere (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 288)), GALGAS_string ("unhandled extension for file '").add_operation (enumerator_9232.current_key (HERE), inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 288)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 288)), fixItArray17  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 288)) ;
                         }
                       }
                     }
@@ -1029,7 +1029,7 @@ void extensionMethod_generateAtPath (const GALGAS_XcodeProjectDescriptor inObjec
     }
     GALGAS_bool test_24 = test_23 ;
     if (kBoolTrue != test_24.boolEnum ()) {
-      test_24 = GALGAS_bool (kIsNotEqual, GALGAS_string::constructor_stringWithContentsOfFile (constinArgument_inCacheFilePath, inCompiler  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 463)).objectCompare (var_contents_17647)) ;
+      test_24 = GALGAS_bool (kIsNotEqual, GALGAS_string::class_func_stringWithContentsOfFile (constinArgument_inCacheFilePath, inCompiler  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 463)).objectCompare (var_contents_17647)) ;
     }
     test_22 = test_24.boolEnum () ;
     if (kBoolTrue == test_22) {
@@ -1063,10 +1063,10 @@ mProperty_mValue_31_ (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS__32_lstringlist_2D_element GALGAS__32_lstringlist_2D_element::constructor_new (const GALGAS_lstring & in_mValue0,
-                                                                                      const GALGAS_lstring & in_mValue1,
-                                                                                      Compiler * /* inCompiler */
-                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS__32_lstringlist_2D_element GALGAS__32_lstringlist_2D_element::class_func_new (const GALGAS_lstring & in_mValue0,
+                                                                                     const GALGAS_lstring & in_mValue1,
+                                                                                     Compiler * /* inCompiler */
+                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS__32_lstringlist_2D_element result ;
   if (in_mValue0.isValid () && in_mValue1.isValid ()) {
     result = GALGAS__32_lstringlist_2D_element (in_mValue0, in_mValue1) ;
@@ -1182,11 +1182,11 @@ mProperty_mEndOfExpressionLocation (inOperand2) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionListAST_2D_element GALGAS_templateExpressionListAST_2D_element::constructor_new (const GALGAS_lstring & in_mActualSelector,
-                                                                                                          const GALGAS_templateExpressionAST & in_mExpression,
-                                                                                                          const GALGAS_location & in_mEndOfExpressionLocation,
-                                                                                                          Compiler * /* inCompiler */
-                                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_templateExpressionListAST_2D_element GALGAS_templateExpressionListAST_2D_element::class_func_new (const GALGAS_lstring & in_mActualSelector,
+                                                                                                         const GALGAS_templateExpressionAST & in_mExpression,
+                                                                                                         const GALGAS_location & in_mEndOfExpressionLocation,
+                                                                                                         Compiler * /* inCompiler */
+                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_templateExpressionListAST_2D_element result ;
   if (in_mActualSelector.isValid () && in_mExpression.isValid () && in_mEndOfExpressionLocation.isValid ()) {
     result = GALGAS_templateExpressionListAST_2D_element (in_mActualSelector, in_mExpression, in_mEndOfExpressionLocation) ;
@@ -1305,10 +1305,10 @@ mProperty_mInstructionList (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionIfBranchListForGeneration_2D_element GALGAS_templateInstructionIfBranchListForGeneration_2D_element::constructor_new (const GALGAS_semanticExpressionForGeneration & in_mExpression,
-                                                                                                                                                const GALGAS_templateInstructionListForGeneration & in_mInstructionList,
-                                                                                                                                                Compiler * /* inCompiler */
-                                                                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_templateInstructionIfBranchListForGeneration_2D_element GALGAS_templateInstructionIfBranchListForGeneration_2D_element::class_func_new (const GALGAS_semanticExpressionForGeneration & in_mExpression,
+                                                                                                                                               const GALGAS_templateInstructionListForGeneration & in_mInstructionList,
+                                                                                                                                               Compiler * /* inCompiler */
+                                                                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_templateInstructionIfBranchListForGeneration_2D_element result ;
   if (in_mExpression.isValid () && in_mInstructionList.isValid ()) {
     result = GALGAS_templateInstructionIfBranchListForGeneration_2D_element (in_mExpression, in_mInstructionList) ;
@@ -1424,11 +1424,11 @@ mProperty_mCppName (inOperand2) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateVariableMap_2D_element GALGAS_templateVariableMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                                              const GALGAS_unifiedTypeMapEntry & in_mType,
-                                                                                              const GALGAS_string & in_mCppName,
-                                                                                              Compiler * /* inCompiler */
-                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_templateVariableMap_2D_element GALGAS_templateVariableMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                             const GALGAS_unifiedTypeMapEntry & in_mType,
+                                                                                             const GALGAS_string & in_mCppName,
+                                                                                             Compiler * /* inCompiler */
+                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_templateVariableMap_2D_element result ;
   if (in_lkey.isValid () && in_mType.isValid () && in_mCppName.isValid ()) {
     result = GALGAS_templateVariableMap_2D_element (in_lkey, in_mType, in_mCppName) ;
@@ -1556,13 +1556,13 @@ mProperty_mEndString (inOperand4) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateDelimitorListAST_2D_element GALGAS_templateDelimitorListAST_2D_element::constructor_new (const GALGAS_lstring & in_mStartString,
-                                                                                                        const GALGAS_bool & in_nonAtomicSelection,
-                                                                                                        const GALGAS_bool & in_mTemplateEndMark,
-                                                                                                        const GALGAS_bool & in_mPreserved,
-                                                                                                        const GALGAS_lstring & in_mEndString,
-                                                                                                        Compiler * /* inCompiler */
-                                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_templateDelimitorListAST_2D_element GALGAS_templateDelimitorListAST_2D_element::class_func_new (const GALGAS_lstring & in_mStartString,
+                                                                                                       const GALGAS_bool & in_nonAtomicSelection,
+                                                                                                       const GALGAS_bool & in_mTemplateEndMark,
+                                                                                                       const GALGAS_bool & in_mPreserved,
+                                                                                                       const GALGAS_lstring & in_mEndString,
+                                                                                                       Compiler * /* inCompiler */
+                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_templateDelimitorListAST_2D_element result ;
   if (in_mStartString.isValid () && in_nonAtomicSelection.isValid () && in_mTemplateEndMark.isValid () && in_mPreserved.isValid () && in_mEndString.isValid ()) {
     result = GALGAS_templateDelimitorListAST_2D_element (in_mStartString, in_nonAtomicSelection, in_mTemplateEndMark, in_mPreserved, in_mEndString) ;
@@ -1696,11 +1696,11 @@ mProperty_mReplacementFunction (inOperand2) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateReplacementListAST_2D_element GALGAS_templateReplacementListAST_2D_element::constructor_new (const GALGAS_lstring & in_mMatchString,
-                                                                                                            const GALGAS_lstring & in_mReplacementString,
-                                                                                                            const GALGAS_lstring & in_mReplacementFunction,
-                                                                                                            Compiler * /* inCompiler */
-                                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_templateReplacementListAST_2D_element GALGAS_templateReplacementListAST_2D_element::class_func_new (const GALGAS_lstring & in_mMatchString,
+                                                                                                           const GALGAS_lstring & in_mReplacementString,
+                                                                                                           const GALGAS_lstring & in_mReplacementFunction,
+                                                                                                           Compiler * /* inCompiler */
+                                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_templateReplacementListAST_2D_element result ;
   if (in_mMatchString.isValid () && in_mReplacementString.isValid () && in_mReplacementFunction.isValid ()) {
     result = GALGAS_templateReplacementListAST_2D_element (in_mMatchString, in_mReplacementString, in_mReplacementFunction) ;
@@ -1819,10 +1819,10 @@ mProperty_mMessageValue (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalMessageDeclarationListAST_2D_element GALGAS_lexicalMessageDeclarationListAST_2D_element::constructor_new (const GALGAS_lstring & in_mMessageName,
-                                                                                                                        const GALGAS_lstring & in_mMessageValue,
-                                                                                                                        Compiler * /* inCompiler */
-                                                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lexicalMessageDeclarationListAST_2D_element GALGAS_lexicalMessageDeclarationListAST_2D_element::class_func_new (const GALGAS_lstring & in_mMessageName,
+                                                                                                                       const GALGAS_lstring & in_mMessageValue,
+                                                                                                                       Compiler * /* inCompiler */
+                                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalMessageDeclarationListAST_2D_element result ;
   if (in_mMessageName.isValid () && in_mMessageValue.isValid ()) {
     result = GALGAS_lexicalMessageDeclarationListAST_2D_element (in_mMessageName, in_mMessageValue) ;
@@ -1935,10 +1935,10 @@ mProperty_mName (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalAttributeListAST_2D_element GALGAS_lexicalAttributeListAST_2D_element::constructor_new (const GALGAS_lstring & in_mTypeName,
-                                                                                                      const GALGAS_lstring & in_mName,
-                                                                                                      Compiler * /* inCompiler */
-                                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lexicalAttributeListAST_2D_element GALGAS_lexicalAttributeListAST_2D_element::class_func_new (const GALGAS_lstring & in_mTypeName,
+                                                                                                     const GALGAS_lstring & in_mName,
+                                                                                                     Compiler * /* inCompiler */
+                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalAttributeListAST_2D_element result ;
   if (in_mTypeName.isValid () && in_mName.isValid ()) {
     result = GALGAS_lexicalAttributeListAST_2D_element (in_mTypeName, in_mName) ;
@@ -2051,10 +2051,10 @@ mProperty_mComment (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalStyleListAST_2D_element GALGAS_lexicalStyleListAST_2D_element::constructor_new (const GALGAS_lstring & in_mName,
-                                                                                              const GALGAS_lstring & in_mComment,
-                                                                                              Compiler * /* inCompiler */
-                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lexicalStyleListAST_2D_element GALGAS_lexicalStyleListAST_2D_element::class_func_new (const GALGAS_lstring & in_mName,
+                                                                                             const GALGAS_lstring & in_mComment,
+                                                                                             Compiler * /* inCompiler */
+                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalStyleListAST_2D_element result ;
   if (in_mName.isValid () && in_mComment.isValid ()) {
     result = GALGAS_lexicalStyleListAST_2D_element (in_mName, in_mComment) ;
@@ -2179,14 +2179,14 @@ mProperty_isEndOfTemplateMark (inOperand5) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_terminalDeclarationListAST_2D_element GALGAS_terminalDeclarationListAST_2D_element::constructor_new (const GALGAS_lstring & in_mName,
-                                                                                                            const GALGAS_sentLexicalAttributeListAST & in_mSentAttributeList,
-                                                                                                            const GALGAS_lstring & in_mSyntaxErrorMessage,
-                                                                                                            const GALGAS_lstring & in_mStyle,
-                                                                                                            const GALGAS_bool & in_nonAtomicSelection,
-                                                                                                            const GALGAS_bool & in_isEndOfTemplateMark,
-                                                                                                            Compiler * /* inCompiler */
-                                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_terminalDeclarationListAST_2D_element GALGAS_terminalDeclarationListAST_2D_element::class_func_new (const GALGAS_lstring & in_mName,
+                                                                                                           const GALGAS_sentLexicalAttributeListAST & in_mSentAttributeList,
+                                                                                                           const GALGAS_lstring & in_mSyntaxErrorMessage,
+                                                                                                           const GALGAS_lstring & in_mStyle,
+                                                                                                           const GALGAS_bool & in_nonAtomicSelection,
+                                                                                                           const GALGAS_bool & in_isEndOfTemplateMark,
+                                                                                                           Compiler * /* inCompiler */
+                                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_terminalDeclarationListAST_2D_element result ;
   if (in_mName.isValid () && in_mSentAttributeList.isValid () && in_mSyntaxErrorMessage.isValid () && in_mStyle.isValid () && in_nonAtomicSelection.isValid () && in_isEndOfTemplateMark.isValid ()) {
     result = GALGAS_terminalDeclarationListAST_2D_element (in_mName, in_mSentAttributeList, in_mSyntaxErrorMessage, in_mStyle, in_nonAtomicSelection, in_isEndOfTemplateMark) ;
@@ -2329,12 +2329,12 @@ mProperty_isEndOfTemplateMark (inOperand3) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalListEntryListAST_2D_element GALGAS_lexicalListEntryListAST_2D_element::constructor_new (const GALGAS_lstring & in_mEntrySpelling,
-                                                                                                      const GALGAS_lstring & in_mTerminalSpelling,
-                                                                                                      const GALGAS_bool & in_nonAtomicSelection,
-                                                                                                      const GALGAS_bool & in_isEndOfTemplateMark,
-                                                                                                      Compiler * /* inCompiler */
-                                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lexicalListEntryListAST_2D_element GALGAS_lexicalListEntryListAST_2D_element::class_func_new (const GALGAS_lstring & in_mEntrySpelling,
+                                                                                                     const GALGAS_lstring & in_mTerminalSpelling,
+                                                                                                     const GALGAS_bool & in_nonAtomicSelection,
+                                                                                                     const GALGAS_bool & in_isEndOfTemplateMark,
+                                                                                                     Compiler * /* inCompiler */
+                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalListEntryListAST_2D_element result ;
   if (in_mEntrySpelling.isValid () && in_mTerminalSpelling.isValid () && in_nonAtomicSelection.isValid () && in_isEndOfTemplateMark.isValid ()) {
     result = GALGAS_lexicalListEntryListAST_2D_element (in_mEntrySpelling, in_mTerminalSpelling, in_nonAtomicSelection, in_isEndOfTemplateMark) ;
@@ -2459,10 +2459,10 @@ mProperty_mAttributeName (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_sentLexicalAttributeListAST_2D_element GALGAS_sentLexicalAttributeListAST_2D_element::constructor_new (const GALGAS_lstring & in_mFormalSelector,
-                                                                                                              const GALGAS_lstring & in_mAttributeName,
-                                                                                                              Compiler * /* inCompiler */
-                                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_sentLexicalAttributeListAST_2D_element GALGAS_sentLexicalAttributeListAST_2D_element::class_func_new (const GALGAS_lstring & in_mFormalSelector,
+                                                                                                             const GALGAS_lstring & in_mAttributeName,
+                                                                                                             Compiler * /* inCompiler */
+                                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_sentLexicalAttributeListAST_2D_element result ;
   if (in_mFormalSelector.isValid () && in_mAttributeName.isValid ()) {
     result = GALGAS_sentLexicalAttributeListAST_2D_element (in_mFormalSelector, in_mAttributeName) ;
@@ -2584,13 +2584,13 @@ mProperty_mEntryList (inOperand4) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalListDeclarationListAST_2D_element GALGAS_lexicalListDeclarationListAST_2D_element::constructor_new (const GALGAS_lstring & in_mName,
-                                                                                                                  const GALGAS_lstring & in_mStyle,
-                                                                                                                  const GALGAS_lstring & in_mSyntaxErrorMessage,
-                                                                                                                  const GALGAS_sentLexicalAttributeListAST & in_mSentAttributeList,
-                                                                                                                  const GALGAS_lexicalListEntryListAST & in_mEntryList,
-                                                                                                                  Compiler * /* inCompiler */
-                                                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lexicalListDeclarationListAST_2D_element GALGAS_lexicalListDeclarationListAST_2D_element::class_func_new (const GALGAS_lstring & in_mName,
+                                                                                                                 const GALGAS_lstring & in_mStyle,
+                                                                                                                 const GALGAS_lstring & in_mSyntaxErrorMessage,
+                                                                                                                 const GALGAS_sentLexicalAttributeListAST & in_mSentAttributeList,
+                                                                                                                 const GALGAS_lexicalListEntryListAST & in_mEntryList,
+                                                                                                                 Compiler * /* inCompiler */
+                                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalListDeclarationListAST_2D_element result ;
   if (in_mName.isValid () && in_mStyle.isValid () && in_mSyntaxErrorMessage.isValid () && in_mSentAttributeList.isValid () && in_mEntryList.isValid ()) {
     result = GALGAS_lexicalListDeclarationListAST_2D_element (in_mName, in_mStyle, in_mSyntaxErrorMessage, in_mSentAttributeList, in_mEntryList) ;
@@ -2721,10 +2721,10 @@ mProperty_mSearchListName (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalSendSearchListAST_2D_element GALGAS_lexicalSendSearchListAST_2D_element::constructor_new (const GALGAS_lstring & in_mAttributeName,
-                                                                                                        const GALGAS_lstring & in_mSearchListName,
-                                                                                                        Compiler * /* inCompiler */
-                                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lexicalSendSearchListAST_2D_element GALGAS_lexicalSendSearchListAST_2D_element::class_func_new (const GALGAS_lstring & in_mAttributeName,
+                                                                                                       const GALGAS_lstring & in_mSearchListName,
+                                                                                                       Compiler * /* inCompiler */
+                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalSendSearchListAST_2D_element result ;
   if (in_mAttributeName.isValid () && in_mSearchListName.isValid ()) {
     result = GALGAS_lexicalSendSearchListAST_2D_element (in_mAttributeName, in_mSearchListName) ;
@@ -2837,10 +2837,10 @@ mProperty_mIndexComment (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_indexingListAST_2D_element GALGAS_indexingListAST_2D_element::constructor_new (const GALGAS_lstring & in_mIndexName,
-                                                                                      const GALGAS_lstring & in_mIndexComment,
-                                                                                      Compiler * /* inCompiler */
-                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_indexingListAST_2D_element GALGAS_indexingListAST_2D_element::class_func_new (const GALGAS_lstring & in_mIndexName,
+                                                                                     const GALGAS_lstring & in_mIndexComment,
+                                                                                     Compiler * /* inCompiler */
+                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_indexingListAST_2D_element result ;
   if (in_mIndexName.isValid () && in_mIndexComment.isValid ()) {
     result = GALGAS_indexingListAST_2D_element (in_mIndexName, in_mIndexComment) ;
@@ -2956,11 +2956,11 @@ mProperty_mLexicalType (inOperand2) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalSentValueList_2D_element GALGAS_lexicalSentValueList_2D_element::constructor_new (const GALGAS_lstring & in_mLexicalFormalSelector,
-                                                                                                const GALGAS_string & in_mLexicalAttributeName,
-                                                                                                const GALGAS_lexicalTypeEnum & in_mLexicalType,
-                                                                                                Compiler * /* inCompiler */
-                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lexicalSentValueList_2D_element GALGAS_lexicalSentValueList_2D_element::class_func_new (const GALGAS_lstring & in_mLexicalFormalSelector,
+                                                                                               const GALGAS_string & in_mLexicalAttributeName,
+                                                                                               const GALGAS_lexicalTypeEnum & in_mLexicalType,
+                                                                                               Compiler * /* inCompiler */
+                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalSentValueList_2D_element result ;
   if (in_mLexicalFormalSelector.isValid () && in_mLexicalAttributeName.isValid () && in_mLexicalType.isValid ()) {
     result = GALGAS_lexicalSentValueList_2D_element (in_mLexicalFormalSelector, in_mLexicalAttributeName, in_mLexicalType) ;
@@ -3079,10 +3079,10 @@ mProperty_mSentAttributeList (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_terminalMap_2D_element GALGAS_terminalMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                              const GALGAS_lexicalSentValueList & in_mSentAttributeList,
-                                                                              Compiler * /* inCompiler */
-                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_terminalMap_2D_element GALGAS_terminalMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                             const GALGAS_lexicalSentValueList & in_mSentAttributeList,
+                                                                             Compiler * /* inCompiler */
+                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_terminalMap_2D_element result ;
   if (in_lkey.isValid () && in_mSentAttributeList.isValid ()) {
     result = GALGAS_terminalMap_2D_element (in_lkey, in_mSentAttributeList) ;
@@ -3195,10 +3195,10 @@ mProperty_mLexicalType (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalTypeMap_2D_element GALGAS_lexicalTypeMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                                    const GALGAS_lexicalTypeEnum & in_mLexicalType,
-                                                                                    Compiler * /* inCompiler */
-                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lexicalTypeMap_2D_element GALGAS_lexicalTypeMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                   const GALGAS_lexicalTypeEnum & in_mLexicalType,
+                                                                                   Compiler * /* inCompiler */
+                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalTypeMap_2D_element result ;
   if (in_lkey.isValid () && in_mLexicalType.isValid ()) {
     result = GALGAS_lexicalTypeMap_2D_element (in_lkey, in_mLexicalType) ;
@@ -3311,10 +3311,10 @@ mProperty_mLexicalType (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalAttributeMap_2D_element GALGAS_lexicalAttributeMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                                              const GALGAS_lexicalTypeEnum & in_mLexicalType,
-                                                                                              Compiler * /* inCompiler */
-                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lexicalAttributeMap_2D_element GALGAS_lexicalAttributeMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                             const GALGAS_lexicalTypeEnum & in_mLexicalType,
+                                                                                             Compiler * /* inCompiler */
+                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalAttributeMap_2D_element result ;
   if (in_lkey.isValid () && in_mLexicalType.isValid ()) {
     result = GALGAS_lexicalAttributeMap_2D_element (in_lkey, in_mLexicalType) ;
@@ -3439,14 +3439,14 @@ mProperty_mStyleIndex (inOperand5) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_terminalList_2D_element GALGAS_terminalList_2D_element::constructor_new (const GALGAS_lstring & in_mTerminalName,
-                                                                                const GALGAS_lexicalSentValueList & in_mSentAttributeList,
-                                                                                const GALGAS_string & in_mSyntaxErrorMessage,
-                                                                                const GALGAS_bool & in_isEndOfTemplateMark,
-                                                                                const GALGAS_bool & in_atomicSelection,
-                                                                                const GALGAS_uint & in_mStyleIndex,
-                                                                                Compiler * /* inCompiler */
-                                                                                COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_terminalList_2D_element GALGAS_terminalList_2D_element::class_func_new (const GALGAS_lstring & in_mTerminalName,
+                                                                               const GALGAS_lexicalSentValueList & in_mSentAttributeList,
+                                                                               const GALGAS_string & in_mSyntaxErrorMessage,
+                                                                               const GALGAS_bool & in_isEndOfTemplateMark,
+                                                                               const GALGAS_bool & in_atomicSelection,
+                                                                               const GALGAS_uint & in_mStyleIndex,
+                                                                               Compiler * /* inCompiler */
+                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_terminalList_2D_element result ;
   if (in_mTerminalName.isValid () && in_mSentAttributeList.isValid () && in_mSyntaxErrorMessage.isValid () && in_isEndOfTemplateMark.isValid () && in_atomicSelection.isValid () && in_mStyleIndex.isValid ()) {
     result = GALGAS_terminalList_2D_element (in_mTerminalName, in_mSentAttributeList, in_mSyntaxErrorMessage, in_isEndOfTemplateMark, in_atomicSelection, in_mStyleIndex) ;
@@ -3589,12 +3589,12 @@ mProperty_isEndOfTemplateMark (inOperand3) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalExplicitTokenListMap_2D_element GALGAS_lexicalExplicitTokenListMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                                                              const GALGAS_lstring & in_mTerminal,
-                                                                                                              const GALGAS_bool & in_atomicSelection,
-                                                                                                              const GALGAS_bool & in_isEndOfTemplateMark,
-                                                                                                              Compiler * /* inCompiler */
-                                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lexicalExplicitTokenListMap_2D_element GALGAS_lexicalExplicitTokenListMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                                             const GALGAS_lstring & in_mTerminal,
+                                                                                                             const GALGAS_bool & in_atomicSelection,
+                                                                                                             const GALGAS_bool & in_isEndOfTemplateMark,
+                                                                                                             Compiler * /* inCompiler */
+                                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalExplicitTokenListMap_2D_element result ;
   if (in_lkey.isValid () && in_mTerminal.isValid () && in_atomicSelection.isValid () && in_isEndOfTemplateMark.isValid ()) {
     result = GALGAS_lexicalExplicitTokenListMap_2D_element (in_lkey, in_mTerminal, in_atomicSelection, in_isEndOfTemplateMark) ;
@@ -3725,12 +3725,12 @@ mProperty_mShouldBeGenerated (inOperand3) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalExplicitTokenListMapMap_2D_element GALGAS_lexicalExplicitTokenListMapMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                                                                    const GALGAS_lexicalExplicitTokenListMap & in_mExplicitTokenListMap,
-                                                                                                                    const GALGAS_tokenSortedlist & in_mTokenSortedList,
-                                                                                                                    const GALGAS_bool & in_mShouldBeGenerated,
-                                                                                                                    Compiler * /* inCompiler */
-                                                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lexicalExplicitTokenListMapMap_2D_element GALGAS_lexicalExplicitTokenListMapMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                                                   const GALGAS_lexicalExplicitTokenListMap & in_mExplicitTokenListMap,
+                                                                                                                   const GALGAS_tokenSortedlist & in_mTokenSortedList,
+                                                                                                                   const GALGAS_bool & in_mShouldBeGenerated,
+                                                                                                                   Compiler * /* inCompiler */
+                                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalExplicitTokenListMapMap_2D_element result ;
   if (in_lkey.isValid () && in_mExplicitTokenListMap.isValid () && in_mTokenSortedList.isValid () && in_mShouldBeGenerated.isValid ()) {
     result = GALGAS_lexicalExplicitTokenListMapMap_2D_element (in_lkey, in_mExplicitTokenListMap, in_mTokenSortedList, in_mShouldBeGenerated) ;
@@ -3858,11 +3858,11 @@ mProperty_mMessageIsUsed (inOperand2) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalMessageMap_2D_element GALGAS_lexicalMessageMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                                          const GALGAS_lstring & in_mLexicalMessage,
-                                                                                          const GALGAS_bool & in_mMessageIsUsed,
-                                                                                          Compiler * /* inCompiler */
-                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lexicalMessageMap_2D_element GALGAS_lexicalMessageMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                         const GALGAS_lstring & in_mLexicalMessage,
+                                                                                         const GALGAS_bool & in_mMessageIsUsed,
+                                                                                         Compiler * /* inCompiler */
+                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalMessageMap_2D_element result ;
   if (in_lkey.isValid () && in_mLexicalMessage.isValid () && in_mMessageIsUsed.isValid ()) {
     result = GALGAS_lexicalMessageMap_2D_element (in_lkey, in_mLexicalMessage, in_mMessageIsUsed) ;
@@ -3987,12 +3987,12 @@ mProperty_mIsExtern (inOperand3) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalRoutineMap_2D_element GALGAS_lexicalRoutineMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                                          const GALGAS_lexicalRoutineFormalArgumentList & in_mLexicalRoutineFormalArgumentList,
-                                                                                          const GALGAS_stringlist & in_mErrorMessageList,
-                                                                                          const GALGAS_bool & in_mIsExtern,
-                                                                                          Compiler * /* inCompiler */
-                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lexicalRoutineMap_2D_element GALGAS_lexicalRoutineMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                         const GALGAS_lexicalRoutineFormalArgumentList & in_mLexicalRoutineFormalArgumentList,
+                                                                                         const GALGAS_stringlist & in_mErrorMessageList,
+                                                                                         const GALGAS_bool & in_mIsExtern,
+                                                                                         Compiler * /* inCompiler */
+                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalRoutineMap_2D_element result ;
   if (in_lkey.isValid () && in_mLexicalRoutineFormalArgumentList.isValid () && in_mErrorMessageList.isValid () && in_mIsExtern.isValid ()) {
     result = GALGAS_lexicalRoutineMap_2D_element (in_lkey, in_mLexicalRoutineFormalArgumentList, in_mErrorMessageList, in_mIsExtern) ;
@@ -4126,13 +4126,13 @@ mProperty_mIsExtern (inOperand4) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalFunctionMap_2D_element GALGAS_lexicalFunctionMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                                            const GALGAS_lexicalFunctionFormalArgumentList & in_mLexicalTypeList,
-                                                                                            const GALGAS_lexicalTypeEnum & in_mReturnedLexicalType,
-                                                                                            const GALGAS_string & in_mReplacementFunctionName,
-                                                                                            const GALGAS_bool & in_mIsExtern,
-                                                                                            Compiler * /* inCompiler */
-                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lexicalFunctionMap_2D_element GALGAS_lexicalFunctionMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                           const GALGAS_lexicalFunctionFormalArgumentList & in_mLexicalTypeList,
+                                                                                           const GALGAS_lexicalTypeEnum & in_mReturnedLexicalType,
+                                                                                           const GALGAS_string & in_mReplacementFunctionName,
+                                                                                           const GALGAS_bool & in_mIsExtern,
+                                                                                           Compiler * /* inCompiler */
+                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalFunctionMap_2D_element result ;
   if (in_lkey.isValid () && in_mLexicalTypeList.isValid () && in_mReturnedLexicalType.isValid () && in_mReplacementFunctionName.isValid () && in_mIsExtern.isValid ()) {
     result = GALGAS_lexicalFunctionMap_2D_element (in_lkey, in_mLexicalTypeList, in_mReturnedLexicalType, in_mReplacementFunctionName, in_mIsExtern) ;
@@ -4266,11 +4266,11 @@ mProperty_mPreservesStartDelimiter (inOperand2) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateDelimitorList_2D_element GALGAS_templateDelimitorList_2D_element::constructor_new (const GALGAS_lstring & in_mStartString,
-                                                                                                  const GALGAS_lstring & in_mEndString,
-                                                                                                  const GALGAS_bool & in_mPreservesStartDelimiter,
-                                                                                                  Compiler * /* inCompiler */
-                                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_templateDelimitorList_2D_element GALGAS_templateDelimitorList_2D_element::class_func_new (const GALGAS_lstring & in_mStartString,
+                                                                                                 const GALGAS_lstring & in_mEndString,
+                                                                                                 const GALGAS_bool & in_mPreservesStartDelimiter,
+                                                                                                 Compiler * /* inCompiler */
+                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_templateDelimitorList_2D_element result ;
   if (in_mStartString.isValid () && in_mEndString.isValid () && in_mPreservesStartDelimiter.isValid ()) {
     result = GALGAS_templateDelimitorList_2D_element (in_mStartString, in_mEndString, in_mPreservesStartDelimiter) ;
@@ -4392,11 +4392,11 @@ mProperty_mStyleIndex (inOperand2) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_styleMap_2D_element GALGAS_styleMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                        const GALGAS_lstring & in_mComment,
-                                                                        const GALGAS_uint & in_mStyleIndex,
-                                                                        Compiler * /* inCompiler */
-                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_styleMap_2D_element GALGAS_styleMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                       const GALGAS_lstring & in_mComment,
+                                                                       const GALGAS_uint & in_mStyleIndex,
+                                                                       Compiler * /* inCompiler */
+                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_styleMap_2D_element result ;
   if (in_lkey.isValid () && in_mComment.isValid () && in_mStyleIndex.isValid ()) {
     result = GALGAS_styleMap_2D_element (in_lkey, in_mComment, in_mStyleIndex) ;
@@ -4512,9 +4512,9 @@ mProperty_lkey (inOperand0) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalTagMap_2D_element GALGAS_lexicalTagMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                                  Compiler * /* inCompiler */
-                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lexicalTagMap_2D_element GALGAS_lexicalTagMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                 Compiler * /* inCompiler */
+                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalTagMap_2D_element result ;
   if (in_lkey.isValid ()) {
     result = GALGAS_lexicalTagMap_2D_element (in_lkey) ;
@@ -4636,15 +4636,15 @@ mProperty_mOptionDefaultValueKind (inOperand6) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_commandLineOptionListAST_2D_element GALGAS_commandLineOptionListAST_2D_element::constructor_new (const GALGAS_lstring & in_mOptionTypeName,
-                                                                                                        const GALGAS_lstring & in_mOptionInternalName,
-                                                                                                        const GALGAS_lchar & in_mOptionInvocationLetter,
-                                                                                                        const GALGAS_lstring & in_mOptionInvocationString,
-                                                                                                        const GALGAS_lstring & in_mOptionComment,
-                                                                                                        const GALGAS_lstring & in_mOptionDefaultValue,
-                                                                                                        const GALGAS_optionDefaultValueEnumAST & in_mOptionDefaultValueKind,
-                                                                                                        Compiler * /* inCompiler */
-                                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_commandLineOptionListAST_2D_element GALGAS_commandLineOptionListAST_2D_element::class_func_new (const GALGAS_lstring & in_mOptionTypeName,
+                                                                                                       const GALGAS_lstring & in_mOptionInternalName,
+                                                                                                       const GALGAS_lchar & in_mOptionInvocationLetter,
+                                                                                                       const GALGAS_lstring & in_mOptionInvocationString,
+                                                                                                       const GALGAS_lstring & in_mOptionComment,
+                                                                                                       const GALGAS_lstring & in_mOptionDefaultValue,
+                                                                                                       const GALGAS_optionDefaultValueEnumAST & in_mOptionDefaultValueKind,
+                                                                                                       Compiler * /* inCompiler */
+                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_commandLineOptionListAST_2D_element result ;
   if (in_mOptionTypeName.isValid () && in_mOptionInternalName.isValid () && in_mOptionInvocationLetter.isValid () && in_mOptionInvocationString.isValid () && in_mOptionComment.isValid () && in_mOptionDefaultValue.isValid () && in_mOptionDefaultValueKind.isValid ()) {
     result = GALGAS_commandLineOptionListAST_2D_element (in_mOptionTypeName, in_mOptionInternalName, in_mOptionInvocationLetter, in_mOptionInvocationString, in_mOptionComment, in_mOptionDefaultValue, in_mOptionDefaultValueKind) ;
@@ -4796,13 +4796,13 @@ mProperty_mDefaultValue (inOperand4) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_commandLineOptionMap_2D_element GALGAS_commandLineOptionMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                                                const GALGAS_char & in_mOptionChar,
-                                                                                                const GALGAS_string & in_mOptionString,
-                                                                                                const GALGAS_string & in_mComment,
-                                                                                                const GALGAS_string & in_mDefaultValue,
-                                                                                                Compiler * /* inCompiler */
-                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_commandLineOptionMap_2D_element GALGAS_commandLineOptionMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                               const GALGAS_char & in_mOptionChar,
+                                                                                               const GALGAS_string & in_mOptionString,
+                                                                                               const GALGAS_string & in_mComment,
+                                                                                               const GALGAS_string & in_mDefaultValue,
+                                                                                               Compiler * /* inCompiler */
+                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_commandLineOptionMap_2D_element result ;
   if (in_lkey.isValid () && in_mOptionChar.isValid () && in_mOptionString.isValid () && in_mComment.isValid () && in_mDefaultValue.isValid ()) {
     result = GALGAS_commandLineOptionMap_2D_element (in_lkey, in_mOptionChar, in_mOptionString, in_mComment, in_mDefaultValue) ;
@@ -4933,10 +4933,10 @@ mProperty_mValue (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_guiSimpleAttributeListAST_2D_element GALGAS_guiSimpleAttributeListAST_2D_element::constructor_new (const GALGAS_lstring & in_mKey,
-                                                                                                          const GALGAS_lstring & in_mValue,
-                                                                                                          Compiler * /* inCompiler */
-                                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_guiSimpleAttributeListAST_2D_element GALGAS_guiSimpleAttributeListAST_2D_element::class_func_new (const GALGAS_lstring & in_mKey,
+                                                                                                         const GALGAS_lstring & in_mValue,
+                                                                                                         Compiler * /* inCompiler */
+                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_guiSimpleAttributeListAST_2D_element result ;
   if (in_mKey.isValid () && in_mValue.isValid ()) {
     result = GALGAS_guiSimpleAttributeListAST_2D_element (in_mKey, in_mValue) ;
@@ -5052,11 +5052,11 @@ mProperty_mValue (inOperand2) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_guiCompoundAttributeListAST_2D_element GALGAS_guiCompoundAttributeListAST_2D_element::constructor_new (const GALGAS_lstring & in_mKey,
-                                                                                                              const GALGAS_lstring & in_mAttributeName,
-                                                                                                              const GALGAS_lstring & in_mValue,
-                                                                                                              Compiler * /* inCompiler */
-                                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_guiCompoundAttributeListAST_2D_element GALGAS_guiCompoundAttributeListAST_2D_element::class_func_new (const GALGAS_lstring & in_mKey,
+                                                                                                             const GALGAS_lstring & in_mAttributeName,
+                                                                                                             const GALGAS_lstring & in_mValue,
+                                                                                                             Compiler * /* inCompiler */
+                                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_guiCompoundAttributeListAST_2D_element result ;
   if (in_mKey.isValid () && in_mAttributeName.isValid () && in_mValue.isValid ()) {
     result = GALGAS_guiCompoundAttributeListAST_2D_element (in_mKey, in_mAttributeName, in_mValue) ;
@@ -5175,10 +5175,10 @@ mProperty_mDisplayFlags (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_terminalLabelListAST_2D_element GALGAS_terminalLabelListAST_2D_element::constructor_new (const GALGAS_lstring & in_mTerminal,
-                                                                                                const GALGAS_uint & in_mDisplayFlags,
-                                                                                                Compiler * /* inCompiler */
-                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_terminalLabelListAST_2D_element GALGAS_terminalLabelListAST_2D_element::class_func_new (const GALGAS_lstring & in_mTerminal,
+                                                                                               const GALGAS_uint & in_mDisplayFlags,
+                                                                                               Compiler * /* inCompiler */
+                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_terminalLabelListAST_2D_element result ;
   if (in_mTerminal.isValid () && in_mDisplayFlags.isValid ()) {
     result = GALGAS_terminalLabelListAST_2D_element (in_mTerminal, in_mDisplayFlags) ;
@@ -5297,12 +5297,12 @@ mProperty_mCompoundAttributes (inOperand3) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_withLexiqueListAST_2D_element GALGAS_withLexiqueListAST_2D_element::constructor_new (const GALGAS_lstring & in_mLexiqueFileName,
-                                                                                            const GALGAS_guiLabelListAST & in_mLabels,
-                                                                                            const GALGAS_guiSimpleAttributeListAST & in_mSimpleAttributes,
-                                                                                            const GALGAS_guiCompoundAttributeListAST & in_mCompoundAttributes,
-                                                                                            Compiler * /* inCompiler */
-                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_withLexiqueListAST_2D_element GALGAS_withLexiqueListAST_2D_element::class_func_new (const GALGAS_lstring & in_mLexiqueFileName,
+                                                                                           const GALGAS_guiLabelListAST & in_mLabels,
+                                                                                           const GALGAS_guiSimpleAttributeListAST & in_mSimpleAttributes,
+                                                                                           const GALGAS_guiCompoundAttributeListAST & in_mCompoundAttributes,
+                                                                                           Compiler * /* inCompiler */
+                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_withLexiqueListAST_2D_element result ;
   if (in_mLexiqueFileName.isValid () && in_mLabels.isValid () && in_mSimpleAttributes.isValid () && in_mCompoundAttributes.isValid ()) {
     result = GALGAS_withLexiqueListAST_2D_element (in_mLexiqueFileName, in_mLabels, in_mSimpleAttributes, in_mCompoundAttributes) ;
@@ -5430,11 +5430,11 @@ mProperty_mIndex (inOperand2) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_extensionMap_2D_element GALGAS_extensionMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                                const GALGAS_string & in_mLexiqueName,
-                                                                                const GALGAS_uint & in_mIndex,
-                                                                                Compiler * /* inCompiler */
-                                                                                COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_extensionMap_2D_element GALGAS_extensionMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                               const GALGAS_string & in_mLexiqueName,
+                                                                               const GALGAS_uint & in_mIndex,
+                                                                               Compiler * /* inCompiler */
+                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_extensionMap_2D_element result ;
   if (in_lkey.isValid () && in_mLexiqueName.isValid () && in_mIndex.isValid ()) {
     result = GALGAS_extensionMap_2D_element (in_lkey, in_mLexiqueName, in_mIndex) ;
@@ -5553,10 +5553,10 @@ mProperty_indexingPathSuffix (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_projectIndexingDescriptorList_2D_element GALGAS_projectIndexingDescriptorList_2D_element::constructor_new (const GALGAS_lstring & in_mProjectFileExtension,
-                                                                                                                  const GALGAS_lstring & in_indexingPathSuffix,
-                                                                                                                  Compiler * /* inCompiler */
-                                                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_projectIndexingDescriptorList_2D_element GALGAS_projectIndexingDescriptorList_2D_element::class_func_new (const GALGAS_lstring & in_mProjectFileExtension,
+                                                                                                                 const GALGAS_lstring & in_indexingPathSuffix,
+                                                                                                                 Compiler * /* inCompiler */
+                                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_projectIndexingDescriptorList_2D_element result ;
   if (in_mProjectFileExtension.isValid () && in_indexingPathSuffix.isValid ()) {
     result = GALGAS_projectIndexingDescriptorList_2D_element (in_mProjectFileExtension, in_indexingPathSuffix) ;
@@ -5678,13 +5678,13 @@ mProperty_mProjectIndexingDescriptorList (inOperand4) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_galgasGUIComponentListAST_2D_element GALGAS_galgasGUIComponentListAST_2D_element::constructor_new (const GALGAS_lstring & in_mGUIComponentName,
-                                                                                                          const GALGAS_lstringlist & in_mImportedOptionList,
-                                                                                                          const GALGAS_guiSimpleAttributeListAST & in_mGlobalSimpleAttributeList,
-                                                                                                          const GALGAS_withLexiqueListAST & in_mWithLexiqueList,
-                                                                                                          const GALGAS_projectIndexingDescriptorList & in_mProjectIndexingDescriptorList,
-                                                                                                          Compiler * /* inCompiler */
-                                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_galgasGUIComponentListAST_2D_element GALGAS_galgasGUIComponentListAST_2D_element::class_func_new (const GALGAS_lstring & in_mGUIComponentName,
+                                                                                                         const GALGAS_lstringlist & in_mImportedOptionList,
+                                                                                                         const GALGAS_guiSimpleAttributeListAST & in_mGlobalSimpleAttributeList,
+                                                                                                         const GALGAS_withLexiqueListAST & in_mWithLexiqueList,
+                                                                                                         const GALGAS_projectIndexingDescriptorList & in_mProjectIndexingDescriptorList,
+                                                                                                         Compiler * /* inCompiler */
+                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_galgasGUIComponentListAST_2D_element result ;
   if (in_mGUIComponentName.isValid () && in_mImportedOptionList.isValid () && in_mGlobalSimpleAttributeList.isValid () && in_mWithLexiqueList.isValid () && in_mProjectIndexingDescriptorList.isValid ()) {
     result = GALGAS_galgasGUIComponentListAST_2D_element (in_mGUIComponentName, in_mImportedOptionList, in_mGlobalSimpleAttributeList, in_mWithLexiqueList, in_mProjectIndexingDescriptorList) ;
@@ -5815,10 +5815,10 @@ mProperty_mGuiComponentContext (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionComponentMapForGeneration_2D_element GALGAS_optionComponentMapForGeneration_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                                                                      const GALGAS_guiAnalysisContext & in_mGuiComponentContext,
-                                                                                                                      Compiler * /* inCompiler */
-                                                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_optionComponentMapForGeneration_2D_element GALGAS_optionComponentMapForGeneration_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                                                     const GALGAS_guiAnalysisContext & in_mGuiComponentContext,
+                                                                                                                     Compiler * /* inCompiler */
+                                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_optionComponentMapForGeneration_2D_element result ;
   if (in_lkey.isValid () && in_mGuiComponentContext.isValid ()) {
     result = GALGAS_optionComponentMapForGeneration_2D_element (in_lkey, in_mGuiComponentContext) ;
@@ -5931,10 +5931,10 @@ mProperty_mAssociatedValueDefinitionList (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_enumConstantList_2D_element GALGAS_enumConstantList_2D_element::constructor_new (const GALGAS_lstring & in_mConstantName,
-                                                                                        const GALGAS__32_lstringlist & in_mAssociatedValueDefinitionList,
-                                                                                        Compiler * /* inCompiler */
-                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_enumConstantList_2D_element GALGAS_enumConstantList_2D_element::class_func_new (const GALGAS_lstring & in_mConstantName,
+                                                                                       const GALGAS__32_lstringlist & in_mAssociatedValueDefinitionList,
+                                                                                       Compiler * /* inCompiler */
+                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_enumConstantList_2D_element result ;
   if (in_mConstantName.isValid () && in_mAssociatedValueDefinitionList.isValid ()) {
     result = GALGAS_enumConstantList_2D_element (in_mConstantName, in_mAssociatedValueDefinitionList) ;
@@ -6050,11 +6050,11 @@ mProperty_mFormalParameterName (inOperand2) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typeNameFormalParameterNameList_2D_element GALGAS_typeNameFormalParameterNameList_2D_element::constructor_new (const GALGAS_lstring & in_mFormalSelector,
-                                                                                                                      const GALGAS_lstring & in_mFormalParameterTypeName,
-                                                                                                                      const GALGAS_lstring & in_mFormalParameterName,
-                                                                                                                      Compiler * /* inCompiler */
-                                                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_typeNameFormalParameterNameList_2D_element GALGAS_typeNameFormalParameterNameList_2D_element::class_func_new (const GALGAS_lstring & in_mFormalSelector,
+                                                                                                                     const GALGAS_lstring & in_mFormalParameterTypeName,
+                                                                                                                     const GALGAS_lstring & in_mFormalParameterName,
+                                                                                                                     Compiler * /* inCompiler */
+                                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_typeNameFormalParameterNameList_2D_element result ;
   if (in_mFormalSelector.isValid () && in_mFormalParameterTypeName.isValid () && in_mFormalParameterName.isValid ()) {
     result = GALGAS_typeNameFormalParameterNameList_2D_element (in_mFormalSelector, in_mFormalParameterTypeName, in_mFormalParameterName) ;
@@ -6176,11 +6176,11 @@ mProperty_mParameterList (inOperand2) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_externTypeConstructorList_2D_element GALGAS_externTypeConstructorList_2D_element::constructor_new (const GALGAS_lstring & in_mConstructorName,
-                                                                                                          const GALGAS_lstring & in_mResultTypeName,
-                                                                                                          const GALGAS_typeNameFormalParameterNameList & in_mParameterList,
-                                                                                                          Compiler * /* inCompiler */
-                                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_externTypeConstructorList_2D_element GALGAS_externTypeConstructorList_2D_element::class_func_new (const GALGAS_lstring & in_mConstructorName,
+                                                                                                         const GALGAS_lstring & in_mResultTypeName,
+                                                                                                         const GALGAS_typeNameFormalParameterNameList & in_mParameterList,
+                                                                                                         Compiler * /* inCompiler */
+                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_externTypeConstructorList_2D_element result ;
   if (in_mConstructorName.isValid () && in_mResultTypeName.isValid () && in_mParameterList.isValid ()) {
     result = GALGAS_externTypeConstructorList_2D_element (in_mConstructorName, in_mResultTypeName, in_mParameterList) ;
@@ -6302,11 +6302,11 @@ mProperty_mParameterList (inOperand2) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_externTypeGetterList_2D_element GALGAS_externTypeGetterList_2D_element::constructor_new (const GALGAS_lstring & in_mGetterName,
-                                                                                                const GALGAS_lstring & in_mResultTypeName,
-                                                                                                const GALGAS_typeNameFormalParameterNameList & in_mParameterList,
-                                                                                                Compiler * /* inCompiler */
-                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_externTypeGetterList_2D_element GALGAS_externTypeGetterList_2D_element::class_func_new (const GALGAS_lstring & in_mGetterName,
+                                                                                               const GALGAS_lstring & in_mResultTypeName,
+                                                                                               const GALGAS_typeNameFormalParameterNameList & in_mParameterList,
+                                                                                               Compiler * /* inCompiler */
+                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_externTypeGetterList_2D_element result ;
   if (in_mGetterName.isValid () && in_mResultTypeName.isValid () && in_mParameterList.isValid ()) {
     result = GALGAS_externTypeGetterList_2D_element (in_mGetterName, in_mResultTypeName, in_mParameterList) ;
@@ -6425,10 +6425,10 @@ mProperty_mFormalParameterList (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_externTypeSetterList_2D_element GALGAS_externTypeSetterList_2D_element::constructor_new (const GALGAS_lstring & in_mSetterName,
-                                                                                                const GALGAS_formalParameterListAST & in_mFormalParameterList,
-                                                                                                Compiler * /* inCompiler */
-                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_externTypeSetterList_2D_element GALGAS_externTypeSetterList_2D_element::class_func_new (const GALGAS_lstring & in_mSetterName,
+                                                                                               const GALGAS_formalParameterListAST & in_mFormalParameterList,
+                                                                                               Compiler * /* inCompiler */
+                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_externTypeSetterList_2D_element result ;
   if (in_mSetterName.isValid () && in_mFormalParameterList.isValid ()) {
     result = GALGAS_externTypeSetterList_2D_element (in_mSetterName, in_mFormalParameterList) ;
@@ -6544,11 +6544,11 @@ mProperty_mDeclarationLocation (inOperand2) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_externTypeMethodList_2D_element GALGAS_externTypeMethodList_2D_element::constructor_new (const GALGAS_lstring & in_mMethodName,
-                                                                                                const GALGAS_formalParameterListAST & in_mFormalParameterList,
-                                                                                                const GALGAS_location & in_mDeclarationLocation,
-                                                                                                Compiler * /* inCompiler */
-                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_externTypeMethodList_2D_element GALGAS_externTypeMethodList_2D_element::class_func_new (const GALGAS_lstring & in_mMethodName,
+                                                                                               const GALGAS_formalParameterListAST & in_mFormalParameterList,
+                                                                                               const GALGAS_location & in_mDeclarationLocation,
+                                                                                               Compiler * /* inCompiler */
+                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_externTypeMethodList_2D_element result ;
   if (in_mMethodName.isValid () && in_mFormalParameterList.isValid () && in_mDeclarationLocation.isValid ()) {
     result = GALGAS_externTypeMethodList_2D_element (in_mMethodName, in_mFormalParameterList, in_mDeclarationLocation) ;
@@ -6667,10 +6667,10 @@ mProperty_mInsertErrorMessage (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_graphInsertModifierList_2D_element GALGAS_graphInsertModifierList_2D_element::constructor_new (const GALGAS_lstring & in_mInsertModifierName,
-                                                                                                      const GALGAS_lstring & in_mInsertErrorMessage,
-                                                                                                      Compiler * /* inCompiler */
-                                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_graphInsertModifierList_2D_element GALGAS_graphInsertModifierList_2D_element::class_func_new (const GALGAS_lstring & in_mInsertModifierName,
+                                                                                                     const GALGAS_lstring & in_mInsertErrorMessage,
+                                                                                                     Compiler * /* inCompiler */
+                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_graphInsertModifierList_2D_element result ;
   if (in_mInsertModifierName.isValid () && in_mInsertErrorMessage.isValid ()) {
     result = GALGAS_graphInsertModifierList_2D_element (in_mInsertModifierName, in_mInsertErrorMessage) ;
@@ -6786,11 +6786,11 @@ mProperty_mShadowErrorMessage (inOperand2) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_insertMethodListAST_2D_element GALGAS_insertMethodListAST_2D_element::constructor_new (const GALGAS_lstring & in_mInsertMethodName,
-                                                                                              const GALGAS_lstring & in_mErrorMessage,
-                                                                                              const GALGAS_lstring & in_mShadowErrorMessage,
-                                                                                              Compiler * /* inCompiler */
-                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_insertMethodListAST_2D_element GALGAS_insertMethodListAST_2D_element::class_func_new (const GALGAS_lstring & in_mInsertMethodName,
+                                                                                             const GALGAS_lstring & in_mErrorMessage,
+                                                                                             const GALGAS_lstring & in_mShadowErrorMessage,
+                                                                                             Compiler * /* inCompiler */
+                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_insertMethodListAST_2D_element result ;
   if (in_mInsertMethodName.isValid () && in_mErrorMessage.isValid () && in_mShadowErrorMessage.isValid ()) {
     result = GALGAS_insertMethodListAST_2D_element (in_mInsertMethodName, in_mErrorMessage, in_mShadowErrorMessage) ;
@@ -6909,10 +6909,10 @@ mProperty_mErrorMessage (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_mapSearchMethodListAST_2D_element GALGAS_mapSearchMethodListAST_2D_element::constructor_new (const GALGAS_lstring & in_mSearchMethodName,
-                                                                                                    const GALGAS_lstring & in_mErrorMessage,
-                                                                                                    Compiler * /* inCompiler */
-                                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_mapSearchMethodListAST_2D_element GALGAS_mapSearchMethodListAST_2D_element::class_func_new (const GALGAS_lstring & in_mSearchMethodName,
+                                                                                                   const GALGAS_lstring & in_mErrorMessage,
+                                                                                                   Compiler * /* inCompiler */
+                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_mapSearchMethodListAST_2D_element result ;
   if (in_mSearchMethodName.isValid () && in_mErrorMessage.isValid ()) {
     result = GALGAS_mapSearchMethodListAST_2D_element (in_mSearchMethodName, in_mErrorMessage) ;
@@ -7025,10 +7025,10 @@ mProperty_mErrorMessage (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_mapRemoveMethodListAST_2D_element GALGAS_mapRemoveMethodListAST_2D_element::constructor_new (const GALGAS_lstring & in_mMethodName,
-                                                                                                    const GALGAS_lstring & in_mErrorMessage,
-                                                                                                    Compiler * /* inCompiler */
-                                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_mapRemoveMethodListAST_2D_element GALGAS_mapRemoveMethodListAST_2D_element::class_func_new (const GALGAS_lstring & in_mMethodName,
+                                                                                                   const GALGAS_lstring & in_mErrorMessage,
+                                                                                                   Compiler * /* inCompiler */
+                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_mapRemoveMethodListAST_2D_element result ;
   if (in_mMethodName.isValid () && in_mErrorMessage.isValid ()) {
     result = GALGAS_mapRemoveMethodListAST_2D_element (in_mMethodName, in_mErrorMessage) ;
@@ -7138,9 +7138,9 @@ mProperty_lkey (inOperand0) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_insertMethodMap_2D_element GALGAS_insertMethodMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                                      Compiler * /* inCompiler */
-                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_insertMethodMap_2D_element GALGAS_insertMethodMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                     Compiler * /* inCompiler */
+                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_insertMethodMap_2D_element result ;
   if (in_lkey.isValid ()) {
     result = GALGAS_insertMethodMap_2D_element (in_lkey) ;
@@ -7244,9 +7244,9 @@ mProperty_lkey (inOperand0) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_searchMethodMap_2D_element GALGAS_searchMethodMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                                      Compiler * /* inCompiler */
-                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_searchMethodMap_2D_element GALGAS_searchMethodMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                     Compiler * /* inCompiler */
+                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_searchMethodMap_2D_element result ;
   if (in_lkey.isValid ()) {
     result = GALGAS_searchMethodMap_2D_element (in_lkey) ;
@@ -7353,10 +7353,10 @@ mProperty_mAscending (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_sortedListSortDescriptorListAST_2D_element GALGAS_sortedListSortDescriptorListAST_2D_element::constructor_new (const GALGAS_lstring & in_mSortedAttributeName,
-                                                                                                                      const GALGAS_bool & in_mAscending,
-                                                                                                                      Compiler * /* inCompiler */
-                                                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_sortedListSortDescriptorListAST_2D_element GALGAS_sortedListSortDescriptorListAST_2D_element::class_func_new (const GALGAS_lstring & in_mSortedAttributeName,
+                                                                                                                     const GALGAS_bool & in_mAscending,
+                                                                                                                     Compiler * /* inCompiler */
+                                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_sortedListSortDescriptorListAST_2D_element result ;
   if (in_mSortedAttributeName.isValid () && in_mAscending.isValid ()) {
     result = GALGAS_sortedListSortDescriptorListAST_2D_element (in_mSortedAttributeName, in_mAscending) ;
@@ -7478,13 +7478,13 @@ mProperty_mIsUnused (inOperand4) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_formalParameterListAST_2D_element GALGAS_formalParameterListAST_2D_element::constructor_new (const GALGAS_lstring & in_mFormalSelector,
-                                                                                                    const GALGAS_formalArgumentPassingModeAST & in_mFormalArgumentPassingMode,
-                                                                                                    const GALGAS_lstring & in_mFormalArgumentTypeName,
-                                                                                                    const GALGAS_lstring & in_mFormalArgumentName,
-                                                                                                    const GALGAS_bool & in_mIsUnused,
-                                                                                                    Compiler * /* inCompiler */
-                                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_formalParameterListAST_2D_element GALGAS_formalParameterListAST_2D_element::class_func_new (const GALGAS_lstring & in_mFormalSelector,
+                                                                                                   const GALGAS_formalArgumentPassingModeAST & in_mFormalArgumentPassingMode,
+                                                                                                   const GALGAS_lstring & in_mFormalArgumentTypeName,
+                                                                                                   const GALGAS_lstring & in_mFormalArgumentName,
+                                                                                                   const GALGAS_bool & in_mIsUnused,
+                                                                                                   Compiler * /* inCompiler */
+                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_formalParameterListAST_2D_element result ;
   if (in_mFormalSelector.isValid () && in_mFormalArgumentPassingMode.isValid () && in_mFormalArgumentTypeName.isValid () && in_mFormalArgumentName.isValid () && in_mIsUnused.isValid ()) {
     result = GALGAS_formalParameterListAST_2D_element (in_mFormalSelector, in_mFormalArgumentPassingMode, in_mFormalArgumentTypeName, in_mFormalArgumentName, in_mIsUnused) ;
@@ -7624,13 +7624,13 @@ mProperty_mIsConstant (inOperand4) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_formalInputParameterListAST_2D_element GALGAS_formalInputParameterListAST_2D_element::constructor_new (const GALGAS_lstring & in_mFormalSelector,
-                                                                                                              const GALGAS_lstring & in_mFormalArgumentTypeName,
-                                                                                                              const GALGAS_lstring & in_mFormalArgumentName,
-                                                                                                              const GALGAS_bool & in_mIsUnused,
-                                                                                                              const GALGAS_bool & in_mIsConstant,
-                                                                                                              Compiler * /* inCompiler */
-                                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_formalInputParameterListAST_2D_element GALGAS_formalInputParameterListAST_2D_element::class_func_new (const GALGAS_lstring & in_mFormalSelector,
+                                                                                                             const GALGAS_lstring & in_mFormalArgumentTypeName,
+                                                                                                             const GALGAS_lstring & in_mFormalArgumentName,
+                                                                                                             const GALGAS_bool & in_mIsUnused,
+                                                                                                             const GALGAS_bool & in_mIsConstant,
+                                                                                                             Compiler * /* inCompiler */
+                                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_formalInputParameterListAST_2D_element result ;
   if (in_mFormalSelector.isValid () && in_mFormalArgumentTypeName.isValid () && in_mFormalArgumentName.isValid () && in_mIsUnused.isValid () && in_mIsConstant.isValid ()) {
     result = GALGAS_formalInputParameterListAST_2D_element (in_mFormalSelector, in_mFormalArgumentTypeName, in_mFormalArgumentName, in_mIsUnused, in_mIsConstant) ;
@@ -7761,10 +7761,10 @@ mProperty_mInputParameter (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_actualInputParameterListAST_2D_element GALGAS_actualInputParameterListAST_2D_element::constructor_new (const GALGAS_lstring & in_mActualSelector,
-                                                                                                              const GALGAS_abstractInputParameter & in_mInputParameter,
-                                                                                                              Compiler * /* inCompiler */
-                                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_actualInputParameterListAST_2D_element GALGAS_actualInputParameterListAST_2D_element::class_func_new (const GALGAS_lstring & in_mActualSelector,
+                                                                                                             const GALGAS_abstractInputParameter & in_mInputParameter,
+                                                                                                             Compiler * /* inCompiler */
+                                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_actualInputParameterListAST_2D_element result ;
   if (in_mActualSelector.isValid () && in_mInputParameter.isValid ()) {
     result = GALGAS_actualInputParameterListAST_2D_element (in_mActualSelector, in_mInputParameter) ;
@@ -7889,14 +7889,14 @@ mProperty_mInitialization (inOperand5) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_propertyInCollectionListAST_2D_element GALGAS_propertyInCollectionListAST_2D_element::constructor_new (const GALGAS_bool & in_isConstant,
-                                                                                                              const GALGAS_lstring & in_mPropertyTypeName,
-                                                                                                              const GALGAS_lstring & in_mPropertyName,
-                                                                                                              const GALGAS_AccessControlAST & in_mAccessControl,
-                                                                                                              const GALGAS_bool & in_selector,
-                                                                                                              const GALGAS_propertyInCollectionInitializationAST & in_mInitialization,
-                                                                                                              Compiler * /* inCompiler */
-                                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_propertyInCollectionListAST_2D_element GALGAS_propertyInCollectionListAST_2D_element::class_func_new (const GALGAS_bool & in_isConstant,
+                                                                                                             const GALGAS_lstring & in_mPropertyTypeName,
+                                                                                                             const GALGAS_lstring & in_mPropertyName,
+                                                                                                             const GALGAS_AccessControlAST & in_mAccessControl,
+                                                                                                             const GALGAS_bool & in_selector,
+                                                                                                             const GALGAS_propertyInCollectionInitializationAST & in_mInitialization,
+                                                                                                             Compiler * /* inCompiler */
+                                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_propertyInCollectionListAST_2D_element result ;
   if (in_isConstant.isValid () && in_mPropertyTypeName.isValid () && in_mPropertyName.isValid () && in_mAccessControl.isValid () && in_selector.isValid () && in_mInitialization.isValid ()) {
     result = GALGAS_propertyInCollectionListAST_2D_element (in_isConstant, in_mPropertyTypeName, in_mPropertyName, in_mAccessControl, in_selector, in_mInitialization) ;
@@ -8039,12 +8039,12 @@ mProperty_mIsUnused (inOperand3) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_formalTemplateInputParameterListAST_2D_element GALGAS_formalTemplateInputParameterListAST_2D_element::constructor_new (const GALGAS_lstring & in_mFormalTemplateSelector,
-                                                                                                                              const GALGAS_lstring & in_mFormalArgumentTypeName,
-                                                                                                                              const GALGAS_lstring & in_mFormalArgumentName,
-                                                                                                                              const GALGAS_bool & in_mIsUnused,
-                                                                                                                              Compiler * /* inCompiler */
-                                                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_formalTemplateInputParameterListAST_2D_element GALGAS_formalTemplateInputParameterListAST_2D_element::class_func_new (const GALGAS_lstring & in_mFormalTemplateSelector,
+                                                                                                                             const GALGAS_lstring & in_mFormalArgumentTypeName,
+                                                                                                                             const GALGAS_lstring & in_mFormalArgumentName,
+                                                                                                                             const GALGAS_bool & in_mIsUnused,
+                                                                                                                             Compiler * /* inCompiler */
+                                                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_formalTemplateInputParameterListAST_2D_element result ;
   if (in_mFormalTemplateSelector.isValid () && in_mFormalArgumentTypeName.isValid () && in_mFormalArgumentName.isValid () && in_mIsUnused.isValid ()) {
     result = GALGAS_formalTemplateInputParameterListAST_2D_element (in_mFormalTemplateSelector, in_mFormalArgumentTypeName, in_mFormalArgumentName, in_mIsUnused) ;
@@ -8172,11 +8172,11 @@ mProperty_mFilewrapperTemplateFormalInputParameters (inOperand2) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperTemplateListAST_2D_element GALGAS_filewrapperTemplateListAST_2D_element::constructor_new (const GALGAS_lstring & in_mFilewrapperTemplateName,
-                                                                                                            const GALGAS_lstring & in_mFilewrapperTemplatePath,
-                                                                                                            const GALGAS_formalTemplateInputParameterListAST & in_mFilewrapperTemplateFormalInputParameters,
-                                                                                                            Compiler * /* inCompiler */
-                                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_filewrapperTemplateListAST_2D_element GALGAS_filewrapperTemplateListAST_2D_element::class_func_new (const GALGAS_lstring & in_mFilewrapperTemplateName,
+                                                                                                           const GALGAS_lstring & in_mFilewrapperTemplatePath,
+                                                                                                           const GALGAS_formalTemplateInputParameterListAST & in_mFilewrapperTemplateFormalInputParameters,
+                                                                                                           Compiler * /* inCompiler */
+                                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_filewrapperTemplateListAST_2D_element result ;
   if (in_mFilewrapperTemplateName.isValid () && in_mFilewrapperTemplatePath.isValid () && in_mFilewrapperTemplateFormalInputParameters.isValid ()) {
     result = GALGAS_filewrapperTemplateListAST_2D_element (in_mFilewrapperTemplateName, in_mFilewrapperTemplatePath, in_mFilewrapperTemplateFormalInputParameters) ;
@@ -8298,11 +8298,11 @@ mProperty_mEndOfArgumentLocation (inOperand2) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_nonTerminalLabelListAST_2D_element GALGAS_nonTerminalLabelListAST_2D_element::constructor_new (const GALGAS_lstring & in_mLabelName,
-                                                                                                      const GALGAS_formalParameterListAST & in_mFormalArgumentList,
-                                                                                                      const GALGAS_location & in_mEndOfArgumentLocation,
-                                                                                                      Compiler * /* inCompiler */
-                                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_nonTerminalLabelListAST_2D_element GALGAS_nonTerminalLabelListAST_2D_element::class_func_new (const GALGAS_lstring & in_mLabelName,
+                                                                                                     const GALGAS_formalParameterListAST & in_mFormalArgumentList,
+                                                                                                     const GALGAS_location & in_mEndOfArgumentLocation,
+                                                                                                     Compiler * /* inCompiler */
+                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_nonTerminalLabelListAST_2D_element result ;
   if (in_mLabelName.isValid () && in_mFormalArgumentList.isValid () && in_mEndOfArgumentLocation.isValid ()) {
     result = GALGAS_nonTerminalLabelListAST_2D_element (in_mLabelName, in_mFormalArgumentList, in_mEndOfArgumentLocation) ;
@@ -8421,10 +8421,10 @@ mProperty_mLabels (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_nonterminalDeclarationListAST_2D_element GALGAS_nonterminalDeclarationListAST_2D_element::constructor_new (const GALGAS_lstring & in_mNonterminalName,
-                                                                                                                  const GALGAS_nonTerminalLabelListAST & in_mLabels,
-                                                                                                                  Compiler * /* inCompiler */
-                                                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_nonterminalDeclarationListAST_2D_element GALGAS_nonterminalDeclarationListAST_2D_element::class_func_new (const GALGAS_lstring & in_mNonterminalName,
+                                                                                                                 const GALGAS_nonTerminalLabelListAST & in_mLabels,
+                                                                                                                 Compiler * /* inCompiler */
+                                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_nonterminalDeclarationListAST_2D_element result ;
   if (in_mNonterminalName.isValid () && in_mLabels.isValid ()) {
     result = GALGAS_nonterminalDeclarationListAST_2D_element (in_mNonterminalName, in_mLabels) ;
@@ -8546,13 +8546,13 @@ mProperty_mEndOfInstructionList (inOperand4) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_syntaxRuleLabelListAST_2D_element GALGAS_syntaxRuleLabelListAST_2D_element::constructor_new (const GALGAS_lstring & in_mLabelName,
-                                                                                                    const GALGAS_formalParameterListAST & in_mFormalArguments,
-                                                                                                    const GALGAS_location & in_mEndOfArgumentLocation,
-                                                                                                    const GALGAS_syntaxInstructionList & in_mSyntaxInstructionList,
-                                                                                                    const GALGAS_location & in_mEndOfInstructionList,
-                                                                                                    Compiler * /* inCompiler */
-                                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_syntaxRuleLabelListAST_2D_element GALGAS_syntaxRuleLabelListAST_2D_element::class_func_new (const GALGAS_lstring & in_mLabelName,
+                                                                                                   const GALGAS_formalParameterListAST & in_mFormalArguments,
+                                                                                                   const GALGAS_location & in_mEndOfArgumentLocation,
+                                                                                                   const GALGAS_syntaxInstructionList & in_mSyntaxInstructionList,
+                                                                                                   const GALGAS_location & in_mEndOfInstructionList,
+                                                                                                   Compiler * /* inCompiler */
+                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_syntaxRuleLabelListAST_2D_element result ;
   if (in_mLabelName.isValid () && in_mFormalArguments.isValid () && in_mEndOfArgumentLocation.isValid () && in_mSyntaxInstructionList.isValid () && in_mEndOfInstructionList.isValid ()) {
     result = GALGAS_syntaxRuleLabelListAST_2D_element (in_mLabelName, in_mFormalArguments, in_mEndOfArgumentLocation, in_mSyntaxInstructionList, in_mEndOfInstructionList) ;
@@ -8683,10 +8683,10 @@ mProperty_mLabelList (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_syntaxRuleListAST_2D_element GALGAS_syntaxRuleListAST_2D_element::constructor_new (const GALGAS_lstring & in_mNonterminalName,
-                                                                                          const GALGAS_syntaxRuleLabelListAST & in_mLabelList,
-                                                                                          Compiler * /* inCompiler */
-                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_syntaxRuleListAST_2D_element GALGAS_syntaxRuleListAST_2D_element::class_func_new (const GALGAS_lstring & in_mNonterminalName,
+                                                                                         const GALGAS_syntaxRuleLabelListAST & in_mLabelList,
+                                                                                         Compiler * /* inCompiler */
+                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_syntaxRuleListAST_2D_element result ;
   if (in_mNonterminalName.isValid () && in_mLabelList.isValid ()) {
     result = GALGAS_syntaxRuleListAST_2D_element (in_mNonterminalName, in_mLabelList) ;
@@ -8808,13 +8808,13 @@ mProperty_mHasTranslateFeature (inOperand4) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_galgas_33_SyntaxComponentListAST_2D_element GALGAS_galgas_33_SyntaxComponentListAST_2D_element::constructor_new (const GALGAS_lstring & in_mSyntaxComponentName,
-                                                                                                                        const GALGAS_lstring & in_mImportedLexiqueFilePath,
-                                                                                                                        const GALGAS_nonterminalDeclarationListAST & in_mNonterminalDeclarationList,
-                                                                                                                        const GALGAS_syntaxRuleListAST & in_mRuleList,
-                                                                                                                        const GALGAS_bool & in_mHasTranslateFeature,
-                                                                                                                        Compiler * /* inCompiler */
-                                                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_galgas_33_SyntaxComponentListAST_2D_element GALGAS_galgas_33_SyntaxComponentListAST_2D_element::class_func_new (const GALGAS_lstring & in_mSyntaxComponentName,
+                                                                                                                       const GALGAS_lstring & in_mImportedLexiqueFilePath,
+                                                                                                                       const GALGAS_nonterminalDeclarationListAST & in_mNonterminalDeclarationList,
+                                                                                                                       const GALGAS_syntaxRuleListAST & in_mRuleList,
+                                                                                                                       const GALGAS_bool & in_mHasTranslateFeature,
+                                                                                                                       Compiler * /* inCompiler */
+                                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_galgas_33_SyntaxComponentListAST_2D_element result ;
   if (in_mSyntaxComponentName.isValid () && in_mImportedLexiqueFilePath.isValid () && in_mNonterminalDeclarationList.isValid () && in_mRuleList.isValid () && in_mHasTranslateFeature.isValid ()) {
     result = GALGAS_galgas_33_SyntaxComponentListAST_2D_element (in_mSyntaxComponentName, in_mImportedLexiqueFilePath, in_mNonterminalDeclarationList, in_mRuleList, in_mHasTranslateFeature) ;
@@ -8948,11 +8948,11 @@ mProperty_mRuleList (inOperand2) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_galgas_33_SyntaxExtensionListAST_2D_element GALGAS_galgas_33_SyntaxExtensionListAST_2D_element::constructor_new (const GALGAS_lstring & in_mSyntaxComponentName,
-                                                                                                                        const GALGAS_nonterminalDeclarationListAST & in_mNonterminalDeclarationList,
-                                                                                                                        const GALGAS_syntaxRuleListAST & in_mRuleList,
-                                                                                                                        Compiler * /* inCompiler */
-                                                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_galgas_33_SyntaxExtensionListAST_2D_element GALGAS_galgas_33_SyntaxExtensionListAST_2D_element::class_func_new (const GALGAS_lstring & in_mSyntaxComponentName,
+                                                                                                                       const GALGAS_nonterminalDeclarationListAST & in_mNonterminalDeclarationList,
+                                                                                                                       const GALGAS_syntaxRuleListAST & in_mRuleList,
+                                                                                                                       Compiler * /* inCompiler */
+                                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_galgas_33_SyntaxExtensionListAST_2D_element result ;
   if (in_mSyntaxComponentName.isValid () && in_mNonterminalDeclarationList.isValid () && in_mRuleList.isValid ()) {
     result = GALGAS_galgas_33_SyntaxExtensionListAST_2D_element (in_mSyntaxComponentName, in_mNonterminalDeclarationList, in_mRuleList) ;
@@ -9086,15 +9086,15 @@ mProperty_mEndOfInstructionList (inOperand6) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_programRuleList_2D_element GALGAS_programRuleList_2D_element::constructor_new (const GALGAS_lstring & in_mSourceFileExtension,
-                                                                                      const GALGAS_lstring & in_mSourceFileHelp,
-                                                                                      const GALGAS_lstring & in_mSourceFileVariableName,
-                                                                                      const GALGAS_bool & in_mSourceFileVariableNameIsUnused,
-                                                                                      const GALGAS_lstring & in_mReferenceGrammar,
-                                                                                      const GALGAS_semanticInstructionListAST & in_mInstructionList,
-                                                                                      const GALGAS_location & in_mEndOfInstructionList,
-                                                                                      Compiler * /* inCompiler */
-                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_programRuleList_2D_element GALGAS_programRuleList_2D_element::class_func_new (const GALGAS_lstring & in_mSourceFileExtension,
+                                                                                     const GALGAS_lstring & in_mSourceFileHelp,
+                                                                                     const GALGAS_lstring & in_mSourceFileVariableName,
+                                                                                     const GALGAS_bool & in_mSourceFileVariableNameIsUnused,
+                                                                                     const GALGAS_lstring & in_mReferenceGrammar,
+                                                                                     const GALGAS_semanticInstructionListAST & in_mInstructionList,
+                                                                                     const GALGAS_location & in_mEndOfInstructionList,
+                                                                                     Compiler * /* inCompiler */
+                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_programRuleList_2D_element result ;
   if (in_mSourceFileExtension.isValid () && in_mSourceFileHelp.isValid () && in_mSourceFileVariableName.isValid () && in_mSourceFileVariableNameIsUnused.isValid () && in_mReferenceGrammar.isValid () && in_mInstructionList.isValid () && in_mEndOfInstructionList.isValid ()) {
     result = GALGAS_programRuleList_2D_element (in_mSourceFileExtension, in_mSourceFileHelp, in_mSourceFileVariableName, in_mSourceFileVariableNameIsUnused, in_mReferenceGrammar, in_mInstructionList, in_mEndOfInstructionList) ;
@@ -9240,11 +9240,11 @@ mProperty_mFormalArgumentName (inOperand2) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_functionSignature_2D_element GALGAS_functionSignature_2D_element::constructor_new (const GALGAS_lstring & in_mFormalSelector,
-                                                                                          const GALGAS_unifiedTypeMapEntry & in_mFormalArgumentType,
-                                                                                          const GALGAS_string & in_mFormalArgumentName,
-                                                                                          Compiler * /* inCompiler */
-                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_functionSignature_2D_element GALGAS_functionSignature_2D_element::class_func_new (const GALGAS_lstring & in_mFormalSelector,
+                                                                                         const GALGAS_unifiedTypeMapEntry & in_mFormalArgumentType,
+                                                                                         const GALGAS_string & in_mFormalArgumentName,
+                                                                                         Compiler * /* inCompiler */
+                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_functionSignature_2D_element result ;
   if (in_mFormalSelector.isValid () && in_mFormalArgumentType.isValid () && in_mFormalArgumentName.isValid ()) {
     result = GALGAS_functionSignature_2D_element (in_mFormalSelector, in_mFormalArgumentType, in_mFormalArgumentName) ;
@@ -9369,12 +9369,12 @@ mProperty_mReturnedType (inOperand3) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_constructorMap_2D_element GALGAS_constructorMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                                    const GALGAS_functionSignature & in_mArgumentTypeList,
-                                                                                    const GALGAS_bool & in_mHasCompilerArgument,
-                                                                                    const GALGAS_unifiedTypeMapEntry & in_mReturnedType,
-                                                                                    Compiler * /* inCompiler */
-                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_constructorMap_2D_element GALGAS_constructorMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                   const GALGAS_functionSignature & in_mArgumentTypeList,
+                                                                                   const GALGAS_bool & in_mHasCompilerArgument,
+                                                                                   const GALGAS_unifiedTypeMapEntry & in_mReturnedType,
+                                                                                   Compiler * /* inCompiler */
+                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_constructorMap_2D_element result ;
   if (in_lkey.isValid () && in_mArgumentTypeList.isValid () && in_mHasCompilerArgument.isValid () && in_mReturnedType.isValid ()) {
     result = GALGAS_constructorMap_2D_element (in_lkey, in_mArgumentTypeList, in_mHasCompilerArgument, in_mReturnedType) ;
@@ -9505,12 +9505,12 @@ mProperty_mFormalArgumentName (inOperand3) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionalMethodSignature_2D_element GALGAS_optionalMethodSignature_2D_element::constructor_new (const GALGAS_bool & in_mInputArgument,
-                                                                                                      const GALGAS_lstring & in_mFormalSelector,
-                                                                                                      const GALGAS_unifiedTypeMapEntry & in_mFormalArgumentType,
-                                                                                                      const GALGAS_string & in_mFormalArgumentName,
-                                                                                                      Compiler * /* inCompiler */
-                                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_optionalMethodSignature_2D_element GALGAS_optionalMethodSignature_2D_element::class_func_new (const GALGAS_bool & in_mInputArgument,
+                                                                                                     const GALGAS_lstring & in_mFormalSelector,
+                                                                                                     const GALGAS_unifiedTypeMapEntry & in_mFormalArgumentType,
+                                                                                                     const GALGAS_string & in_mFormalArgumentName,
+                                                                                                     Compiler * /* inCompiler */
+                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_optionalMethodSignature_2D_element result ;
   if (in_mInputArgument.isValid () && in_mFormalSelector.isValid () && in_mFormalArgumentType.isValid () && in_mFormalArgumentName.isValid ()) {
     result = GALGAS_optionalMethodSignature_2D_element (in_mInputArgument, in_mFormalSelector, in_mFormalArgumentType, in_mFormalArgumentName) ;
@@ -9635,10 +9635,10 @@ mProperty_mArgumentTypeList (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionalMethodMap_2D_element GALGAS_optionalMethodMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                                          const GALGAS_optionalMethodSignature & in_mArgumentTypeList,
-                                                                                          Compiler * /* inCompiler */
-                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_optionalMethodMap_2D_element GALGAS_optionalMethodMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                         const GALGAS_optionalMethodSignature & in_mArgumentTypeList,
+                                                                                         Compiler * /* inCompiler */
+                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_optionalMethodMap_2D_element result ;
   if (in_lkey.isValid () && in_mArgumentTypeList.isValid ()) {
     result = GALGAS_optionalMethodMap_2D_element (in_lkey, in_mArgumentTypeList) ;
@@ -9769,16 +9769,16 @@ mProperty_mGetterNameThatObsoletesInvokationName (inOperand7) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_getterMap_2D_element GALGAS_getterMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                          const GALGAS_methodKind & in_mKind,
-                                                                          const GALGAS_functionSignature & in_mArgumentTypeList,
-                                                                          const GALGAS_location & in_mDeclarationLocation,
-                                                                          const GALGAS_bool & in_mHasCompilerArgument,
-                                                                          const GALGAS_unifiedTypeMapEntry & in_mReturnedType,
-                                                                          const GALGAS_methodQualifier & in_mQualifier,
-                                                                          const GALGAS_string & in_mGetterNameThatObsoletesInvokationName,
-                                                                          Compiler * /* inCompiler */
-                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_getterMap_2D_element GALGAS_getterMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                         const GALGAS_methodKind & in_mKind,
+                                                                         const GALGAS_functionSignature & in_mArgumentTypeList,
+                                                                         const GALGAS_location & in_mDeclarationLocation,
+                                                                         const GALGAS_bool & in_mHasCompilerArgument,
+                                                                         const GALGAS_unifiedTypeMapEntry & in_mReturnedType,
+                                                                         const GALGAS_methodQualifier & in_mQualifier,
+                                                                         const GALGAS_string & in_mGetterNameThatObsoletesInvokationName,
+                                                                         Compiler * /* inCompiler */
+                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_getterMap_2D_element result ;
   if (in_lkey.isValid () && in_mKind.isValid () && in_mArgumentTypeList.isValid () && in_mDeclarationLocation.isValid () && in_mHasCompilerArgument.isValid () && in_mReturnedType.isValid () && in_mQualifier.isValid () && in_mGetterNameThatObsoletesInvokationName.isValid ()) {
     result = GALGAS_getterMap_2D_element (in_lkey, in_mKind, in_mArgumentTypeList, in_mDeclarationLocation, in_mHasCompilerArgument, in_mReturnedType, in_mQualifier, in_mGetterNameThatObsoletesInvokationName) ;
@@ -9933,12 +9933,12 @@ mProperty_mFormalArgumentName (inOperand3) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_formalParameterSignature_2D_element GALGAS_formalParameterSignature_2D_element::constructor_new (const GALGAS_lstring & in_mFormalSelector,
-                                                                                                        const GALGAS_unifiedTypeMapEntry & in_mFormalArgumentType,
-                                                                                                        const GALGAS_formalArgumentPassingModeAST & in_mFormalArgumentPassingMode,
-                                                                                                        const GALGAS_string & in_mFormalArgumentName,
-                                                                                                        Compiler * /* inCompiler */
-                                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_formalParameterSignature_2D_element GALGAS_formalParameterSignature_2D_element::class_func_new (const GALGAS_lstring & in_mFormalSelector,
+                                                                                                       const GALGAS_unifiedTypeMapEntry & in_mFormalArgumentType,
+                                                                                                       const GALGAS_formalArgumentPassingModeAST & in_mFormalArgumentPassingMode,
+                                                                                                       const GALGAS_string & in_mFormalArgumentName,
+                                                                                                       Compiler * /* inCompiler */
+                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_formalParameterSignature_2D_element result ;
   if (in_mFormalSelector.isValid () && in_mFormalArgumentType.isValid () && in_mFormalArgumentPassingMode.isValid () && in_mFormalArgumentName.isValid ()) {
     result = GALGAS_formalParameterSignature_2D_element (in_mFormalSelector, in_mFormalArgumentType, in_mFormalArgumentPassingMode, in_mFormalArgumentName) ;
@@ -10075,14 +10075,14 @@ mProperty_mErrorMessage (inOperand5) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_setterMap_2D_element GALGAS_setterMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                          const GALGAS_methodKind & in_mKind,
-                                                                          const GALGAS_formalParameterSignature & in_mParameterList,
-                                                                          const GALGAS_bool & in_mHasCompilerArgument,
-                                                                          const GALGAS_methodQualifier & in_mQualifier,
-                                                                          const GALGAS_string & in_mErrorMessage,
-                                                                          Compiler * /* inCompiler */
-                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_setterMap_2D_element GALGAS_setterMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                         const GALGAS_methodKind & in_mKind,
+                                                                         const GALGAS_formalParameterSignature & in_mParameterList,
+                                                                         const GALGAS_bool & in_mHasCompilerArgument,
+                                                                         const GALGAS_methodQualifier & in_mQualifier,
+                                                                         const GALGAS_string & in_mErrorMessage,
+                                                                         Compiler * /* inCompiler */
+                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_setterMap_2D_element result ;
   if (in_lkey.isValid () && in_mKind.isValid () && in_mParameterList.isValid () && in_mHasCompilerArgument.isValid () && in_mQualifier.isValid () && in_mErrorMessage.isValid ()) {
     result = GALGAS_setterMap_2D_element (in_lkey, in_mKind, in_mParameterList, in_mHasCompilerArgument, in_mQualifier, in_mErrorMessage) ;
@@ -10234,15 +10234,15 @@ mProperty_mErrorMessage (inOperand6) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_instanceMethodMap_2D_element GALGAS_instanceMethodMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                                          const GALGAS_methodKind & in_mKind,
-                                                                                          const GALGAS_formalParameterSignature & in_mParameterList,
-                                                                                          const GALGAS_location & in_mDeclarationLocation,
-                                                                                          const GALGAS_bool & in_mHasCompilerArgument,
-                                                                                          const GALGAS_methodQualifier & in_mQualifier,
-                                                                                          const GALGAS_string & in_mErrorMessage,
-                                                                                          Compiler * /* inCompiler */
-                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_instanceMethodMap_2D_element GALGAS_instanceMethodMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                         const GALGAS_methodKind & in_mKind,
+                                                                                         const GALGAS_formalParameterSignature & in_mParameterList,
+                                                                                         const GALGAS_location & in_mDeclarationLocation,
+                                                                                         const GALGAS_bool & in_mHasCompilerArgument,
+                                                                                         const GALGAS_methodQualifier & in_mQualifier,
+                                                                                         const GALGAS_string & in_mErrorMessage,
+                                                                                         Compiler * /* inCompiler */
+                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_instanceMethodMap_2D_element result ;
   if (in_lkey.isValid () && in_mKind.isValid () && in_mParameterList.isValid () && in_mDeclarationLocation.isValid () && in_mHasCompilerArgument.isValid () && in_mQualifier.isValid () && in_mErrorMessage.isValid ()) {
     result = GALGAS_instanceMethodMap_2D_element (in_lkey, in_mKind, in_mParameterList, in_mDeclarationLocation, in_mHasCompilerArgument, in_mQualifier, in_mErrorMessage) ;
@@ -10388,11 +10388,11 @@ mProperty_mHasCompilerArgument (inOperand2) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_classMethodMap_2D_element GALGAS_classMethodMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                                    const GALGAS_formalParameterSignature & in_mParameterList,
-                                                                                    const GALGAS_bool & in_mHasCompilerArgument,
-                                                                                    Compiler * /* inCompiler */
-                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_classMethodMap_2D_element GALGAS_classMethodMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                   const GALGAS_formalParameterSignature & in_mParameterList,
+                                                                                   const GALGAS_bool & in_mHasCompilerArgument,
+                                                                                   Compiler * /* inCompiler */
+                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_classMethodMap_2D_element result ;
   if (in_lkey.isValid () && in_mParameterList.isValid () && in_mHasCompilerArgument.isValid ()) {
     result = GALGAS_classMethodMap_2D_element (in_lkey, in_mParameterList, in_mHasCompilerArgument) ;
@@ -10517,12 +10517,12 @@ mProperty_hasSelector (inOperand3) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typedPropertyList_2D_element GALGAS_typedPropertyList_2D_element::constructor_new (const GALGAS_unifiedTypeMapEntry & in_mPropertyTypeEntry,
-                                                                                          const GALGAS_lstring & in_mPropertyName,
-                                                                                          const GALGAS_bool & in_hasSetter,
-                                                                                          const GALGAS_bool & in_hasSelector,
-                                                                                          Compiler * /* inCompiler */
-                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_typedPropertyList_2D_element GALGAS_typedPropertyList_2D_element::class_func_new (const GALGAS_unifiedTypeMapEntry & in_mPropertyTypeEntry,
+                                                                                         const GALGAS_lstring & in_mPropertyName,
+                                                                                         const GALGAS_bool & in_hasSetter,
+                                                                                         const GALGAS_bool & in_hasSelector,
+                                                                                         Compiler * /* inCompiler */
+                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_typedPropertyList_2D_element result ;
   if (in_mPropertyTypeEntry.isValid () && in_mPropertyName.isValid () && in_hasSetter.isValid () && in_hasSelector.isValid ()) {
     result = GALGAS_typedPropertyList_2D_element (in_mPropertyTypeEntry, in_mPropertyName, in_hasSetter, in_hasSelector) ;
@@ -10653,12 +10653,12 @@ mProperty_mPropertyType (inOperand3) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_propertyMap_2D_element GALGAS_propertyMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                              const GALGAS_AccessControl & in_mAccessControl,
-                                                                              const GALGAS_bool & in_mIsConstant,
-                                                                              const GALGAS_unifiedTypeMapEntry & in_mPropertyType,
-                                                                              Compiler * /* inCompiler */
-                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_propertyMap_2D_element GALGAS_propertyMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                             const GALGAS_AccessControl & in_mAccessControl,
+                                                                             const GALGAS_bool & in_mIsConstant,
+                                                                             const GALGAS_unifiedTypeMapEntry & in_mPropertyType,
+                                                                             Compiler * /* inCompiler */
+                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_propertyMap_2D_element result ;
   if (in_lkey.isValid () && in_mAccessControl.isValid () && in_mIsConstant.isValid () && in_mPropertyType.isValid ()) {
     result = GALGAS_propertyMap_2D_element (in_lkey, in_mAccessControl, in_mIsConstant, in_mPropertyType) ;
@@ -10786,11 +10786,11 @@ mProperty_mAssociatedTypeList (inOperand2) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_constantIndexMap_2D_element GALGAS_constantIndexMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                                        const GALGAS_uint & in_mIndex,
-                                                                                        const GALGAS_unifiedTypeMapEntryList & in_mAssociatedTypeList,
-                                                                                        Compiler * /* inCompiler */
-                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_constantIndexMap_2D_element GALGAS_constantIndexMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                       const GALGAS_uint & in_mIndex,
+                                                                                       const GALGAS_unifiedTypeMapEntryList & in_mAssociatedTypeList,
+                                                                                       Compiler * /* inCompiler */
+                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_constantIndexMap_2D_element result ;
   if (in_lkey.isValid () && in_mIndex.isValid () && in_mAssociatedTypeList.isValid ()) {
     result = GALGAS_constantIndexMap_2D_element (in_lkey, in_mIndex, in_mAssociatedTypeList) ;
@@ -10909,10 +10909,10 @@ mProperty_mArgumentMap (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_internalRoutineMap_2D_element GALGAS_internalRoutineMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                                            const GALGAS_routineArgumentMap & in_mArgumentMap,
-                                                                                            Compiler * /* inCompiler */
-                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_internalRoutineMap_2D_element GALGAS_internalRoutineMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                           const GALGAS_routineArgumentMap & in_mArgumentMap,
+                                                                                           Compiler * /* inCompiler */
+                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_internalRoutineMap_2D_element result ;
   if (in_lkey.isValid () && in_mArgumentMap.isValid ()) {
     result = GALGAS_internalRoutineMap_2D_element (in_lkey, in_mArgumentMap) ;
@@ -11028,11 +11028,11 @@ mProperty_mIsFilePrivate (inOperand2) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_routineArgumentMap_2D_element GALGAS_routineArgumentMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                                            const GALGAS_formalParameterSignature & in_mRoutineSignature,
-                                                                                            const GALGAS_bool & in_mIsFilePrivate,
-                                                                                            Compiler * /* inCompiler */
-                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_routineArgumentMap_2D_element GALGAS_routineArgumentMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                           const GALGAS_formalParameterSignature & in_mRoutineSignature,
+                                                                                           const GALGAS_bool & in_mIsFilePrivate,
+                                                                                           Compiler * /* inCompiler */
+                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_routineArgumentMap_2D_element result ;
   if (in_lkey.isValid () && in_mRoutineSignature.isValid () && in_mIsFilePrivate.isValid ()) {
     result = GALGAS_routineArgumentMap_2D_element (in_lkey, in_mRoutineSignature, in_mIsFilePrivate) ;
@@ -11151,10 +11151,10 @@ mProperty_mLabelSignature (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_grammarLabelMap_2D_element GALGAS_grammarLabelMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                                      const GALGAS_formalParameterSignature & in_mLabelSignature,
-                                                                                      Compiler * /* inCompiler */
-                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_grammarLabelMap_2D_element GALGAS_grammarLabelMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                     const GALGAS_formalParameterSignature & in_mLabelSignature,
+                                                                                     Compiler * /* inCompiler */
+                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_grammarLabelMap_2D_element result ;
   if (in_lkey.isValid () && in_mLabelSignature.isValid ()) {
     result = GALGAS_grammarLabelMap_2D_element (in_lkey, in_mLabelSignature) ;
@@ -11273,12 +11273,12 @@ mProperty_mHasTranslateFeature (inOperand3) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_grammarMap_2D_element GALGAS_grammarMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                            const GALGAS_grammarLabelMap & in_mLabelMap,
-                                                                            const GALGAS_bool & in_mHasIndexing,
-                                                                            const GALGAS_bool & in_mHasTranslateFeature,
-                                                                            Compiler * /* inCompiler */
-                                                                            COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_grammarMap_2D_element GALGAS_grammarMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                           const GALGAS_grammarLabelMap & in_mLabelMap,
+                                                                           const GALGAS_bool & in_mHasIndexing,
+                                                                           const GALGAS_bool & in_mHasTranslateFeature,
+                                                                           Compiler * /* inCompiler */
+                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_grammarMap_2D_element result ;
   if (in_lkey.isValid () && in_mLabelMap.isValid () && in_mHasIndexing.isValid () && in_mHasTranslateFeature.isValid ()) {
     result = GALGAS_grammarMap_2D_element (in_lkey, in_mLabelMap, in_mHasIndexing, in_mHasTranslateFeature) ;
@@ -11409,12 +11409,12 @@ mProperty_mIsInternal (inOperand3) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_functionMap_2D_element GALGAS_functionMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                              const GALGAS_functionSignature & in_mFunctionSignature,
-                                                                              const GALGAS_unifiedTypeMapEntry & in_mResultType,
-                                                                              const GALGAS_bool & in_mIsInternal,
-                                                                              Compiler * /* inCompiler */
-                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_functionMap_2D_element GALGAS_functionMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                             const GALGAS_functionSignature & in_mFunctionSignature,
+                                                                             const GALGAS_unifiedTypeMapEntry & in_mResultType,
+                                                                             const GALGAS_bool & in_mIsInternal,
+                                                                             Compiler * /* inCompiler */
+                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_functionMap_2D_element result ;
   if (in_lkey.isValid () && in_mFunctionSignature.isValid () && in_mResultType.isValid () && in_mIsInternal.isValid ()) {
     result = GALGAS_functionMap_2D_element (in_lkey, in_mFunctionSignature, in_mResultType, in_mIsInternal) ;
@@ -11548,13 +11548,13 @@ mProperty_mWrapperFileIndex (inOperand4) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_wrapperFileMap_2D_element GALGAS_wrapperFileMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                                    const GALGAS_string & in_mAbsoluteFilePath,
-                                                                                    const GALGAS_bool & in_mIsTextFile,
-                                                                                    const GALGAS_uint & in_mWrapperDirectoryIndex,
-                                                                                    const GALGAS_uint & in_mWrapperFileIndex,
-                                                                                    Compiler * /* inCompiler */
-                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_wrapperFileMap_2D_element GALGAS_wrapperFileMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                   const GALGAS_string & in_mAbsoluteFilePath,
+                                                                                   const GALGAS_bool & in_mIsTextFile,
+                                                                                   const GALGAS_uint & in_mWrapperDirectoryIndex,
+                                                                                   const GALGAS_uint & in_mWrapperFileIndex,
+                                                                                   Compiler * /* inCompiler */
+                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_wrapperFileMap_2D_element result ;
   if (in_lkey.isValid () && in_mAbsoluteFilePath.isValid () && in_mIsTextFile.isValid () && in_mWrapperDirectoryIndex.isValid () && in_mWrapperFileIndex.isValid ()) {
     result = GALGAS_wrapperFileMap_2D_element (in_lkey, in_mAbsoluteFilePath, in_mIsTextFile, in_mWrapperDirectoryIndex, in_mWrapperFileIndex) ;
@@ -11691,12 +11691,12 @@ mProperty_mWrapperDirectoryIndex (inOperand3) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_wrapperDirectoryMap_2D_element GALGAS_wrapperDirectoryMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                                              const GALGAS_wrapperFileMap & in_mRegularFileMap,
-                                                                                              const GALGAS_wrapperDirectoryMap & in_mDirectoryMap,
-                                                                                              const GALGAS_uint & in_mWrapperDirectoryIndex,
-                                                                                              Compiler * /* inCompiler */
-                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_wrapperDirectoryMap_2D_element GALGAS_wrapperDirectoryMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                             const GALGAS_wrapperFileMap & in_mRegularFileMap,
+                                                                                             const GALGAS_wrapperDirectoryMap & in_mDirectoryMap,
+                                                                                             const GALGAS_uint & in_mWrapperDirectoryIndex,
+                                                                                             Compiler * /* inCompiler */
+                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_wrapperDirectoryMap_2D_element result ;
   if (in_lkey.isValid () && in_mRegularFileMap.isValid () && in_mDirectoryMap.isValid () && in_mWrapperDirectoryIndex.isValid ()) {
     result = GALGAS_wrapperDirectoryMap_2D_element (in_lkey, in_mRegularFileMap, in_mDirectoryMap, in_mWrapperDirectoryIndex) ;
@@ -11824,11 +11824,11 @@ mProperty_mFilewrapperTemplatePath (inOperand2) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperTemplateMap_2D_element GALGAS_filewrapperTemplateMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                                                    const GALGAS_functionSignature & in_mTemplateSignature,
-                                                                                                    const GALGAS_lstring & in_mFilewrapperTemplatePath,
-                                                                                                    Compiler * /* inCompiler */
-                                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_filewrapperTemplateMap_2D_element GALGAS_filewrapperTemplateMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                                   const GALGAS_functionSignature & in_mTemplateSignature,
+                                                                                                   const GALGAS_lstring & in_mFilewrapperTemplatePath,
+                                                                                                   Compiler * /* inCompiler */
+                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_filewrapperTemplateMap_2D_element result ;
   if (in_lkey.isValid () && in_mTemplateSignature.isValid () && in_mFilewrapperTemplatePath.isValid ()) {
     result = GALGAS_filewrapperTemplateMap_2D_element (in_lkey, in_mTemplateSignature, in_mFilewrapperTemplatePath) ;
@@ -11962,15 +11962,15 @@ mProperty_mIsInternal (inOperand6) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperMap_2D_element GALGAS_filewrapperMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                                    const GALGAS_lstring & in_mFilewrapperPath,
-                                                                                    const GALGAS_lstringlist & in_mFilewrapperExtensionList,
-                                                                                    const GALGAS_wrapperFileMap & in_mFilewrapperFileMap,
-                                                                                    const GALGAS_wrapperDirectoryMap & in_mFilewrapperDirectoryMap,
-                                                                                    const GALGAS_filewrapperTemplateMap & in_mFilewrapperTemplateMap,
-                                                                                    const GALGAS_bool & in_mIsInternal,
-                                                                                    Compiler * /* inCompiler */
-                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_filewrapperMap_2D_element GALGAS_filewrapperMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                   const GALGAS_lstring & in_mFilewrapperPath,
+                                                                                   const GALGAS_lstringlist & in_mFilewrapperExtensionList,
+                                                                                   const GALGAS_wrapperFileMap & in_mFilewrapperFileMap,
+                                                                                   const GALGAS_wrapperDirectoryMap & in_mFilewrapperDirectoryMap,
+                                                                                   const GALGAS_filewrapperTemplateMap & in_mFilewrapperTemplateMap,
+                                                                                   const GALGAS_bool & in_mIsInternal,
+                                                                                   Compiler * /* inCompiler */
+                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_filewrapperMap_2D_element result ;
   if (in_lkey.isValid () && in_mFilewrapperPath.isValid () && in_mFilewrapperExtensionList.isValid () && in_mFilewrapperFileMap.isValid () && in_mFilewrapperDirectoryMap.isValid () && in_mFilewrapperTemplateMap.isValid () && in_mIsInternal.isValid ()) {
     result = GALGAS_filewrapperMap_2D_element (in_lkey, in_mFilewrapperPath, in_mFilewrapperExtensionList, in_mFilewrapperFileMap, in_mFilewrapperDirectoryMap, in_mFilewrapperTemplateMap, in_mIsInternal) ;
@@ -12125,14 +12125,14 @@ mProperty_mStringListOptionMap (inOperand5) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionComponentMapForSemanticAnalysis_2D_element GALGAS_optionComponentMapForSemanticAnalysis_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                                                                                  const GALGAS_bool & in_mIsPredefined,
-                                                                                                                                  const GALGAS_commandLineOptionMap & in_mBoolOptionMap,
-                                                                                                                                  const GALGAS_commandLineOptionMap & in_mUIntOptionMap,
-                                                                                                                                  const GALGAS_commandLineOptionMap & in_mStringOptionMap,
-                                                                                                                                  const GALGAS_commandLineOptionMap & in_mStringListOptionMap,
-                                                                                                                                  Compiler * /* inCompiler */
-                                                                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_optionComponentMapForSemanticAnalysis_2D_element GALGAS_optionComponentMapForSemanticAnalysis_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                                                                 const GALGAS_bool & in_mIsPredefined,
+                                                                                                                                 const GALGAS_commandLineOptionMap & in_mBoolOptionMap,
+                                                                                                                                 const GALGAS_commandLineOptionMap & in_mUIntOptionMap,
+                                                                                                                                 const GALGAS_commandLineOptionMap & in_mStringOptionMap,
+                                                                                                                                 const GALGAS_commandLineOptionMap & in_mStringListOptionMap,
+                                                                                                                                 Compiler * /* inCompiler */
+                                                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_optionComponentMapForSemanticAnalysis_2D_element result ;
   if (in_lkey.isValid () && in_mIsPredefined.isValid () && in_mBoolOptionMap.isValid () && in_mUIntOptionMap.isValid () && in_mStringOptionMap.isValid () && in_mStringListOptionMap.isValid ()) {
     result = GALGAS_optionComponentMapForSemanticAnalysis_2D_element (in_lkey, in_mIsPredefined, in_mBoolOptionMap, in_mUIntOptionMap, in_mStringOptionMap, in_mStringListOptionMap) ;
@@ -12287,16 +12287,16 @@ mProperty_mLexicalListDeclarationListAST (inOperand7) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                                                                                    const GALGAS_bool & in_mIsTemplate,
-                                                                                                                                    const GALGAS_terminalMap & in_mTerminalMap,
-                                                                                                                                    const GALGAS_indexingListAST & in_mIndexingListAST,
-                                                                                                                                    const GALGAS_terminalDeclarationListAST & in_mTerminalListAST,
-                                                                                                                                    const GALGAS_lexicalAttributeListAST & in_mLexicalAttributeListAST,
-                                                                                                                                    const GALGAS_lexicalStyleListAST & in_mLexicalStyleListAST,
-                                                                                                                                    const GALGAS_lexicalListDeclarationListAST & in_mLexicalListDeclarationListAST,
-                                                                                                                                    Compiler * /* inCompiler */
-                                                                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                                                                   const GALGAS_bool & in_mIsTemplate,
+                                                                                                                                   const GALGAS_terminalMap & in_mTerminalMap,
+                                                                                                                                   const GALGAS_indexingListAST & in_mIndexingListAST,
+                                                                                                                                   const GALGAS_terminalDeclarationListAST & in_mTerminalListAST,
+                                                                                                                                   const GALGAS_lexicalAttributeListAST & in_mLexicalAttributeListAST,
+                                                                                                                                   const GALGAS_lexicalStyleListAST & in_mLexicalStyleListAST,
+                                                                                                                                   const GALGAS_lexicalListDeclarationListAST & in_mLexicalListDeclarationListAST,
+                                                                                                                                   Compiler * /* inCompiler */
+                                                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element result ;
   if (in_lkey.isValid () && in_mIsTemplate.isValid () && in_mTerminalMap.isValid () && in_mIndexingListAST.isValid () && in_mTerminalListAST.isValid () && in_mLexicalAttributeListAST.isValid () && in_mLexicalStyleListAST.isValid () && in_mLexicalListDeclarationListAST.isValid ()) {
     result = GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element (in_lkey, in_mIsTemplate, in_mTerminalMap, in_mIndexingListAST, in_mTerminalListAST, in_mLexicalAttributeListAST, in_mLexicalStyleListAST, in_mLexicalListDeclarationListAST) ;
@@ -12454,13 +12454,13 @@ mProperty_mHasTranslateFeature (inOperand4) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_syntaxComponentMap_2D_element GALGAS_syntaxComponentMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                                            const GALGAS_lstring & in_mLexiqueName,
-                                                                                            const GALGAS_nonterminalDeclarationListAST & in_mNonterminalDeclarationList,
-                                                                                            const GALGAS_syntaxRuleListAST & in_mRuleList,
-                                                                                            const GALGAS_bool & in_mHasTranslateFeature,
-                                                                                            Compiler * /* inCompiler */
-                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_syntaxComponentMap_2D_element GALGAS_syntaxComponentMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                           const GALGAS_lstring & in_mLexiqueName,
+                                                                                           const GALGAS_nonterminalDeclarationListAST & in_mNonterminalDeclarationList,
+                                                                                           const GALGAS_syntaxRuleListAST & in_mRuleList,
+                                                                                           const GALGAS_bool & in_mHasTranslateFeature,
+                                                                                           Compiler * /* inCompiler */
+                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_syntaxComponentMap_2D_element result ;
   if (in_lkey.isValid () && in_mLexiqueName.isValid () && in_mNonterminalDeclarationList.isValid () && in_mRuleList.isValid () && in_mHasTranslateFeature.isValid ()) {
     result = GALGAS_syntaxComponentMap_2D_element (in_lkey, in_mLexiqueName, in_mNonterminalDeclarationList, in_mRuleList, in_mHasTranslateFeature) ;
@@ -12594,11 +12594,11 @@ mProperty_mQualifier (inOperand2) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_extensionMethodMapForType_2D_element GALGAS_extensionMethodMapForType_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                                                          const GALGAS_formalParameterListAST & in_mFormalParameterList,
-                                                                                                          const GALGAS_methodQualifier & in_mQualifier,
-                                                                                                          Compiler * /* inCompiler */
-                                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_extensionMethodMapForType_2D_element GALGAS_extensionMethodMapForType_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                                         const GALGAS_formalParameterListAST & in_mFormalParameterList,
+                                                                                                         const GALGAS_methodQualifier & in_mQualifier,
+                                                                                                         Compiler * /* inCompiler */
+                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_extensionMethodMapForType_2D_element result ;
   if (in_lkey.isValid () && in_mFormalParameterList.isValid () && in_mQualifier.isValid ()) {
     result = GALGAS_extensionMethodMapForType_2D_element (in_lkey, in_mFormalParameterList, in_mQualifier) ;
@@ -12717,10 +12717,10 @@ mProperty_mExtensionMethodMapForType (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_extensionMethodMapForBuildingContext_2D_element GALGAS_extensionMethodMapForBuildingContext_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                                                                                const GALGAS_extensionMethodMapForType & in_mExtensionMethodMapForType,
-                                                                                                                                Compiler * /* inCompiler */
-                                                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_extensionMethodMapForBuildingContext_2D_element GALGAS_extensionMethodMapForBuildingContext_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                                                               const GALGAS_extensionMethodMapForType & in_mExtensionMethodMapForType,
+                                                                                                                               Compiler * /* inCompiler */
+                                                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_extensionMethodMapForBuildingContext_2D_element result ;
   if (in_lkey.isValid () && in_mExtensionMethodMapForType.isValid ()) {
     result = GALGAS_extensionMethodMapForBuildingContext_2D_element (in_lkey, in_mExtensionMethodMapForType) ;
@@ -12833,10 +12833,10 @@ mProperty_mFormalParameterList (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_extensionSetterMapForType_2D_element GALGAS_extensionSetterMapForType_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                                                          const GALGAS_formalParameterListAST & in_mFormalParameterList,
-                                                                                                          Compiler * /* inCompiler */
-                                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_extensionSetterMapForType_2D_element GALGAS_extensionSetterMapForType_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                                         const GALGAS_formalParameterListAST & in_mFormalParameterList,
+                                                                                                         Compiler * /* inCompiler */
+                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_extensionSetterMapForType_2D_element result ;
   if (in_lkey.isValid () && in_mFormalParameterList.isValid ()) {
     result = GALGAS_extensionSetterMapForType_2D_element (in_lkey, in_mFormalParameterList) ;
@@ -12949,10 +12949,10 @@ mProperty_mExtensionSetterMapForType (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_extensionSetterMapForBuildingContext_2D_element GALGAS_extensionSetterMapForBuildingContext_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                                                                                const GALGAS_extensionSetterMapForType & in_mExtensionSetterMapForType,
-                                                                                                                                Compiler * /* inCompiler */
-                                                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_extensionSetterMapForBuildingContext_2D_element GALGAS_extensionSetterMapForBuildingContext_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                                                               const GALGAS_extensionSetterMapForType & in_mExtensionSetterMapForType,
+                                                                                                                               Compiler * /* inCompiler */
+                                                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_extensionSetterMapForBuildingContext_2D_element result ;
   if (in_lkey.isValid () && in_mExtensionSetterMapForType.isValid ()) {
     result = GALGAS_extensionSetterMapForBuildingContext_2D_element (in_lkey, in_mExtensionSetterMapForType) ;
@@ -13071,12 +13071,12 @@ mProperty_mQualifier (inOperand3) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_extensionGetterMapForType_2D_element GALGAS_extensionGetterMapForType_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                                                          const GALGAS_lstring & in_mResultTypeName,
-                                                                                                          const GALGAS_formalInputParameterListAST & in_mInputFormalParameterList,
-                                                                                                          const GALGAS_methodQualifier & in_mQualifier,
-                                                                                                          Compiler * /* inCompiler */
-                                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_extensionGetterMapForType_2D_element GALGAS_extensionGetterMapForType_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                                         const GALGAS_lstring & in_mResultTypeName,
+                                                                                                         const GALGAS_formalInputParameterListAST & in_mInputFormalParameterList,
+                                                                                                         const GALGAS_methodQualifier & in_mQualifier,
+                                                                                                         Compiler * /* inCompiler */
+                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_extensionGetterMapForType_2D_element result ;
   if (in_lkey.isValid () && in_mResultTypeName.isValid () && in_mInputFormalParameterList.isValid () && in_mQualifier.isValid ()) {
     result = GALGAS_extensionGetterMapForType_2D_element (in_lkey, in_mResultTypeName, in_mInputFormalParameterList, in_mQualifier) ;
@@ -13201,10 +13201,10 @@ mProperty_mExtensionGetterMapForType (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_extensionGetterMapForBuildingContext_2D_element GALGAS_extensionGetterMapForBuildingContext_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                                                                                const GALGAS_extensionGetterMapForType & in_mExtensionGetterMapForType,
-                                                                                                                                Compiler * /* inCompiler */
-                                                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_extensionGetterMapForBuildingContext_2D_element GALGAS_extensionGetterMapForBuildingContext_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                                                               const GALGAS_extensionGetterMapForType & in_mExtensionGetterMapForType,
+                                                                                                                               Compiler * /* inCompiler */
+                                                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_extensionGetterMapForBuildingContext_2D_element result ;
   if (in_lkey.isValid () && in_mExtensionGetterMapForType.isValid ()) {
     result = GALGAS_extensionGetterMapForBuildingContext_2D_element (in_lkey, in_mExtensionGetterMapForType) ;
@@ -13314,9 +13314,9 @@ mProperty_lkey (inOperand0) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_wrapperExtensionMap_2D_element GALGAS_wrapperExtensionMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                                              Compiler * /* inCompiler */
-                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_wrapperExtensionMap_2D_element GALGAS_wrapperExtensionMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                             Compiler * /* inCompiler */
+                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_wrapperExtensionMap_2D_element result ;
   if (in_lkey.isValid ()) {
     result = GALGAS_wrapperExtensionMap_2D_element (in_lkey) ;
@@ -13420,9 +13420,9 @@ mProperty_mExpression (inOperand0) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionListForGeneration_2D_element GALGAS_semanticExpressionListForGeneration_2D_element::constructor_new (const GALGAS_semanticExpressionForGeneration & in_mExpression,
-                                                                                                                              Compiler * /* inCompiler */
-                                                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_semanticExpressionListForGeneration_2D_element GALGAS_semanticExpressionListForGeneration_2D_element::class_func_new (const GALGAS_semanticExpressionForGeneration & in_mExpression,
+                                                                                                                             Compiler * /* inCompiler */
+                                                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_semanticExpressionListForGeneration_2D_element result ;
   if (in_mExpression.isValid ()) {
     result = GALGAS_semanticExpressionListForGeneration_2D_element (in_mExpression) ;
@@ -13538,13 +13538,13 @@ mProperty_mFormalArgumentCppName (inOperand4) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_formalParameterListForGeneration_2D_element GALGAS_formalParameterListForGeneration_2D_element::constructor_new (const GALGAS_lstring & in_mFormalSelector,
-                                                                                                                        const GALGAS_formalArgumentPassingModeAST & in_mFormalArgumentPassingMode,
-                                                                                                                        const GALGAS_unifiedTypeMapEntry & in_mFormalArgumentType,
-                                                                                                                        const GALGAS_lstring & in_mFormalArgumentName,
-                                                                                                                        const GALGAS_string & in_mFormalArgumentCppName,
-                                                                                                                        Compiler * /* inCompiler */
-                                                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_formalParameterListForGeneration_2D_element GALGAS_formalParameterListForGeneration_2D_element::class_func_new (const GALGAS_lstring & in_mFormalSelector,
+                                                                                                                       const GALGAS_formalArgumentPassingModeAST & in_mFormalArgumentPassingMode,
+                                                                                                                       const GALGAS_unifiedTypeMapEntry & in_mFormalArgumentType,
+                                                                                                                       const GALGAS_lstring & in_mFormalArgumentName,
+                                                                                                                       const GALGAS_string & in_mFormalArgumentCppName,
+                                                                                                                       Compiler * /* inCompiler */
+                                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_formalParameterListForGeneration_2D_element result ;
   if (in_mFormalSelector.isValid () && in_mFormalArgumentPassingMode.isValid () && in_mFormalArgumentType.isValid () && in_mFormalArgumentName.isValid () && in_mFormalArgumentCppName.isValid ()) {
     result = GALGAS_formalParameterListForGeneration_2D_element (in_mFormalSelector, in_mFormalArgumentPassingMode, in_mFormalArgumentType, in_mFormalArgumentName, in_mFormalArgumentCppName) ;
@@ -13684,13 +13684,13 @@ mProperty_mIsConstant (inOperand4) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_formalInputParameterListForGeneration_2D_element GALGAS_formalInputParameterListForGeneration_2D_element::constructor_new (const GALGAS_lstring & in_mFormalSelector,
-                                                                                                                                  const GALGAS_unifiedTypeMapEntry & in_mFormalArgumentType,
-                                                                                                                                  const GALGAS_string & in_mFormalArgumentCppName,
-                                                                                                                                  const GALGAS_lstring & in_mFormalArgumentName,
-                                                                                                                                  const GALGAS_bool & in_mIsConstant,
-                                                                                                                                  Compiler * /* inCompiler */
-                                                                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_formalInputParameterListForGeneration_2D_element GALGAS_formalInputParameterListForGeneration_2D_element::class_func_new (const GALGAS_lstring & in_mFormalSelector,
+                                                                                                                                 const GALGAS_unifiedTypeMapEntry & in_mFormalArgumentType,
+                                                                                                                                 const GALGAS_string & in_mFormalArgumentCppName,
+                                                                                                                                 const GALGAS_lstring & in_mFormalArgumentName,
+                                                                                                                                 const GALGAS_bool & in_mIsConstant,
+                                                                                                                                 Compiler * /* inCompiler */
+                                                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_formalInputParameterListForGeneration_2D_element result ;
   if (in_mFormalSelector.isValid () && in_mFormalArgumentType.isValid () && in_mFormalArgumentCppName.isValid () && in_mFormalArgumentName.isValid () && in_mIsConstant.isValid ()) {
     result = GALGAS_formalInputParameterListForGeneration_2D_element (in_mFormalSelector, in_mFormalArgumentType, in_mFormalArgumentCppName, in_mFormalArgumentName, in_mIsConstant) ;
@@ -13821,10 +13821,10 @@ mProperty_mGalgasTypeNameForGrammarAnalysis (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_signatureForGrammarAnalysis_2D_element GALGAS_signatureForGrammarAnalysis_2D_element::constructor_new (const GALGAS_formalArgumentPassingModeAST & in_mFormalArgumentPassingModeForGrammarAnalysis,
-                                                                                                              const GALGAS_lstring & in_mGalgasTypeNameForGrammarAnalysis,
-                                                                                                              Compiler * /* inCompiler */
-                                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_signatureForGrammarAnalysis_2D_element GALGAS_signatureForGrammarAnalysis_2D_element::class_func_new (const GALGAS_formalArgumentPassingModeAST & in_mFormalArgumentPassingModeForGrammarAnalysis,
+                                                                                                             const GALGAS_lstring & in_mGalgasTypeNameForGrammarAnalysis,
+                                                                                                             Compiler * /* inCompiler */
+                                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_signatureForGrammarAnalysis_2D_element result ;
   if (in_mFormalArgumentPassingModeForGrammarAnalysis.isValid () && in_mGalgasTypeNameForGrammarAnalysis.isValid ()) {
     result = GALGAS_signatureForGrammarAnalysis_2D_element (in_mFormalArgumentPassingModeForGrammarAnalysis, in_mGalgasTypeNameForGrammarAnalysis) ;
@@ -13937,10 +13937,10 @@ mProperty_mFormalParametersList (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis_2D_element GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                                                                                              const GALGAS_signatureForGrammarAnalysis & in_mFormalParametersList,
-                                                                                                                                              Compiler * /* inCompiler */
-                                                                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis_2D_element GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                                                                             const GALGAS_signatureForGrammarAnalysis & in_mFormalParametersList,
+                                                                                                                                             Compiler * /* inCompiler */
+                                                                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis_2D_element result ;
   if (in_lkey.isValid () && in_mFormalParametersList.isValid ()) {
     result = GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis_2D_element (in_lkey, in_mFormalParametersList) ;
@@ -14056,11 +14056,11 @@ mProperty_mNonterminalSymbolParametersMap (inOperand2) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_nonTerminalSymbolMapForGrammarAnalysis_2D_element GALGAS_nonTerminalSymbolMapForGrammarAnalysis_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                                                                                    const GALGAS_uint & in_mNonTerminalIndex,
-                                                                                                                                    const GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis & in_mNonterminalSymbolParametersMap,
-                                                                                                                                    Compiler * /* inCompiler */
-                                                                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_nonTerminalSymbolMapForGrammarAnalysis_2D_element GALGAS_nonTerminalSymbolMapForGrammarAnalysis_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                                                                   const GALGAS_uint & in_mNonTerminalIndex,
+                                                                                                                                   const GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis & in_mNonterminalSymbolParametersMap,
+                                                                                                                                   Compiler * /* inCompiler */
+                                                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_nonTerminalSymbolMapForGrammarAnalysis_2D_element result ;
   if (in_lkey.isValid () && in_mNonTerminalIndex.isValid () && in_mNonterminalSymbolParametersMap.isValid ()) {
     result = GALGAS_nonTerminalSymbolMapForGrammarAnalysis_2D_element (in_lkey, in_mNonTerminalIndex, in_mNonterminalSymbolParametersMap) ;
@@ -14185,12 +14185,12 @@ mProperty_mCppName (inOperand3) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_localConstantList_2D_element GALGAS_localConstantList_2D_element::constructor_new (const GALGAS_unifiedTypeMapEntry & in_mType,
-                                                                                          const GALGAS_lstring & in_mName,
-                                                                                          const GALGAS_bool & in_mNoWarningIfUnused,
-                                                                                          const GALGAS_string & in_mCppName,
-                                                                                          Compiler * /* inCompiler */
-                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_localConstantList_2D_element GALGAS_localConstantList_2D_element::class_func_new (const GALGAS_unifiedTypeMapEntry & in_mType,
+                                                                                         const GALGAS_lstring & in_mName,
+                                                                                         const GALGAS_bool & in_mNoWarningIfUnused,
+                                                                                         const GALGAS_string & in_mCppName,
+                                                                                         Compiler * /* inCompiler */
+                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_localConstantList_2D_element result ;
   if (in_mType.isValid () && in_mName.isValid () && in_mNoWarningIfUnused.isValid () && in_mCppName.isValid ()) {
     result = GALGAS_localConstantList_2D_element (in_mType, in_mName, in_mNoWarningIfUnused, in_mCppName) ;
@@ -14318,11 +14318,11 @@ mProperty_mCppName (inOperand2) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_localInitializedVariableList_2D_element GALGAS_localInitializedVariableList_2D_element::constructor_new (const GALGAS_unifiedTypeMapEntry & in_mType,
-                                                                                                                const GALGAS_lstring & in_mName,
-                                                                                                                const GALGAS_string & in_mCppName,
-                                                                                                                Compiler * /* inCompiler */
-                                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_localInitializedVariableList_2D_element GALGAS_localInitializedVariableList_2D_element::class_func_new (const GALGAS_unifiedTypeMapEntry & in_mType,
+                                                                                                               const GALGAS_lstring & in_mName,
+                                                                                                               const GALGAS_string & in_mCppName,
+                                                                                                               Compiler * /* inCompiler */
+                                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_localInitializedVariableList_2D_element result ;
   if (in_mType.isValid () && in_mName.isValid () && in_mCppName.isValid ()) {
     result = GALGAS_localInitializedVariableList_2D_element (in_mType, in_mName, in_mCppName) ;
@@ -14441,10 +14441,10 @@ mProperty_mPropertyTypeIndex (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_propertyIndexMap_2D_element GALGAS_propertyIndexMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                                        const GALGAS_unifiedTypeMapEntry & in_mPropertyTypeIndex,
-                                                                                        Compiler * /* inCompiler */
-                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_propertyIndexMap_2D_element GALGAS_propertyIndexMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                       const GALGAS_unifiedTypeMapEntry & in_mPropertyTypeIndex,
+                                                                                       Compiler * /* inCompiler */
+                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_propertyIndexMap_2D_element result ;
   if (in_lkey.isValid () && in_mPropertyTypeIndex.isValid ()) {
     result = GALGAS_propertyIndexMap_2D_element (in_lkey, in_mPropertyTypeIndex) ;
@@ -14563,12 +14563,12 @@ mProperty_mEndOfArgumentLocation (inOperand3) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_nonterminalLabelMap_2D_element GALGAS_nonterminalLabelMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                                              const GALGAS_formalParameterListForGeneration & in_mSignatureForGeneration,
-                                                                                              const GALGAS_formalParameterSignature & in_mSignature,
-                                                                                              const GALGAS_location & in_mEndOfArgumentLocation,
-                                                                                              Compiler * /* inCompiler */
-                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_nonterminalLabelMap_2D_element GALGAS_nonterminalLabelMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                             const GALGAS_formalParameterListForGeneration & in_mSignatureForGeneration,
+                                                                                             const GALGAS_formalParameterSignature & in_mSignature,
+                                                                                             const GALGAS_location & in_mEndOfArgumentLocation,
+                                                                                             Compiler * /* inCompiler */
+                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_nonterminalLabelMap_2D_element result ;
   if (in_lkey.isValid () && in_mSignatureForGeneration.isValid () && in_mSignature.isValid () && in_mEndOfArgumentLocation.isValid ()) {
     result = GALGAS_nonterminalLabelMap_2D_element (in_lkey, in_mSignatureForGeneration, in_mSignature, in_mEndOfArgumentLocation) ;
@@ -14693,10 +14693,10 @@ mProperty_mLabelMap (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_nonterminalMap_2D_element GALGAS_nonterminalMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                                    const GALGAS_nonterminalLabelMap & in_mLabelMap,
-                                                                                    Compiler * /* inCompiler */
-                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_nonterminalMap_2D_element GALGAS_nonterminalMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                   const GALGAS_nonterminalLabelMap & in_mLabelMap,
+                                                                                   Compiler * /* inCompiler */
+                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_nonterminalMap_2D_element result ;
   if (in_lkey.isValid () && in_mLabelMap.isValid ()) {
     result = GALGAS_nonterminalMap_2D_element (in_lkey, in_mLabelMap) ;
@@ -14818,13 +14818,13 @@ mProperty_mInstructionListForGeneration (inOperand4) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_ruleLabelImplementationList_2D_element GALGAS_ruleLabelImplementationList_2D_element::constructor_new (const GALGAS_lstring & in_mLabelName,
-                                                                                                              const GALGAS_formalParameterListForGeneration & in_mSignatureForGeneration,
-                                                                                                              const GALGAS_formalParameterSignature & in_mSignature,
-                                                                                                              const GALGAS_location & in_mEndOfArgumentLocation,
-                                                                                                              const GALGAS_semanticInstructionListForGeneration & in_mInstructionListForGeneration,
-                                                                                                              Compiler * /* inCompiler */
-                                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_ruleLabelImplementationList_2D_element GALGAS_ruleLabelImplementationList_2D_element::class_func_new (const GALGAS_lstring & in_mLabelName,
+                                                                                                             const GALGAS_formalParameterListForGeneration & in_mSignatureForGeneration,
+                                                                                                             const GALGAS_formalParameterSignature & in_mSignature,
+                                                                                                             const GALGAS_location & in_mEndOfArgumentLocation,
+                                                                                                             const GALGAS_semanticInstructionListForGeneration & in_mInstructionListForGeneration,
+                                                                                                             Compiler * /* inCompiler */
+                                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_ruleLabelImplementationList_2D_element result ;
   if (in_mLabelName.isValid () && in_mSignatureForGeneration.isValid () && in_mSignature.isValid () && in_mEndOfArgumentLocation.isValid () && in_mInstructionListForGeneration.isValid ()) {
     result = GALGAS_ruleLabelImplementationList_2D_element (in_mLabelName, in_mSignatureForGeneration, in_mSignature, in_mEndOfArgumentLocation, in_mInstructionListForGeneration) ;
@@ -14955,10 +14955,10 @@ mProperty_mLocation (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uselessEntityLocationMap_2D_element GALGAS_uselessEntityLocationMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                                                        const GALGAS_location & in_mLocation,
-                                                                                                        Compiler * /* inCompiler */
-                                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_uselessEntityLocationMap_2D_element GALGAS_uselessEntityLocationMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                                       const GALGAS_location & in_mLocation,
+                                                                                                       Compiler * /* inCompiler */
+                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_uselessEntityLocationMap_2D_element result ;
   if (in_lkey.isValid () && in_mLocation.isValid ()) {
     result = GALGAS_uselessEntityLocationMap_2D_element (in_lkey, in_mLocation) ;
@@ -15083,14 +15083,14 @@ mProperty_mState (inOperand5) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_scopeLocalVarMap_2D_element GALGAS_scopeLocalVarMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                                        const GALGAS_unifiedTypeMapEntry & in_mType,
-                                                                                        const GALGAS_string & in_mCppName,
-                                                                                        const GALGAS_string & in_mNameForCheckingFormalParameterUsing,
-                                                                                        const GALGAS_localVariableAttributes & in_mAttributes,
-                                                                                        const GALGAS_localVarValuation & in_mState,
-                                                                                        Compiler * /* inCompiler */
-                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_scopeLocalVarMap_2D_element GALGAS_scopeLocalVarMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                       const GALGAS_unifiedTypeMapEntry & in_mType,
+                                                                                       const GALGAS_string & in_mCppName,
+                                                                                       const GALGAS_string & in_mNameForCheckingFormalParameterUsing,
+                                                                                       const GALGAS_localVariableAttributes & in_mAttributes,
+                                                                                       const GALGAS_localVarValuation & in_mState,
+                                                                                       Compiler * /* inCompiler */
+                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_scopeLocalVarMap_2D_element result ;
   if (in_lkey.isValid () && in_mType.isValid () && in_mCppName.isValid () && in_mNameForCheckingFormalParameterUsing.isValid () && in_mAttributes.isValid () && in_mState.isValid ()) {
     result = GALGAS_scopeLocalVarMap_2D_element (in_lkey, in_mType, in_mCppName, in_mNameForCheckingFormalParameterUsing, in_mAttributes, in_mState) ;
@@ -15227,10 +15227,10 @@ mProperty_mElement (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_element GALGAS_unifiedTypeMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                                    const GALGAS_unifiedTypeMapElementClass & in_mElement,
-                                                                                    Compiler * /* inCompiler */
-                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_unifiedTypeMap_2D_element GALGAS_unifiedTypeMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                   const GALGAS_unifiedTypeMapElementClass & in_mElement,
+                                                                                   Compiler * /* inCompiler */
+                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_unifiedTypeMap_2D_element result ;
   if (in_lkey.isValid () && in_mElement.isValid ()) {
     result = GALGAS_unifiedTypeMap_2D_element (in_lkey, in_mElement) ;
@@ -15346,11 +15346,11 @@ mProperty_mEndOfExpressionLocation (inOperand2) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_actualOutputExpressionList_2D_element GALGAS_actualOutputExpressionList_2D_element::constructor_new (const GALGAS_lstring & in_mActualSelector,
-                                                                                                            const GALGAS_semanticExpressionAST & in_mExpression,
-                                                                                                            const GALGAS_location & in_mEndOfExpressionLocation,
-                                                                                                            Compiler * /* inCompiler */
-                                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_actualOutputExpressionList_2D_element GALGAS_actualOutputExpressionList_2D_element::class_func_new (const GALGAS_lstring & in_mActualSelector,
+                                                                                                           const GALGAS_semanticExpressionAST & in_mExpression,
+                                                                                                           const GALGAS_location & in_mEndOfExpressionLocation,
+                                                                                                           Compiler * /* inCompiler */
+                                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_actualOutputExpressionList_2D_element result ;
   if (in_mActualSelector.isValid () && in_mExpression.isValid () && in_mEndOfExpressionLocation.isValid ()) {
     result = GALGAS_actualOutputExpressionList_2D_element (in_mActualSelector, in_mExpression, in_mEndOfExpressionLocation) ;

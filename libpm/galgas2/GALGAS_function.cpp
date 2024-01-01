@@ -86,8 +86,8 @@ void GALGAS_function::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_functionlist GALGAS_function::constructor_functionList (LOCATION_ARGS) {
-  GALGAS_functionlist result = GALGAS_functionlist::constructor_emptyList (THERE) ;
+GALGAS_functionlist GALGAS_function::class_func_functionList (LOCATION_ARGS) {
+  GALGAS_functionlist result = GALGAS_functionlist::class_func_emptyList (THERE) ;
   const C_galgas_function_descriptor * p = C_galgas_function_descriptor::functionListRoot () ;
   while (nullptr != p) {
     result.addAssign_operation (GALGAS_function (p) COMMA_HERE) ;
@@ -98,7 +98,7 @@ GALGAS_functionlist GALGAS_function::constructor_functionList (LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_function::constructor_isFunctionDefined (const GALGAS_string & inFunctionName
+GALGAS_bool GALGAS_function::class_func_isFunctionDefined (const GALGAS_string & inFunctionName
                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_bool result ;
   if (inFunctionName.isValid ()) {
@@ -116,7 +116,7 @@ GALGAS_bool GALGAS_function::constructor_isFunctionDefined (const GALGAS_string 
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_function GALGAS_function::constructor_functionWithName (const GALGAS_string & inFunctionName
+GALGAS_function GALGAS_function::class_func_functionWithName (const GALGAS_string & inFunctionName
                                                                COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_function result ;
   if (inFunctionName.isValid ()) {
@@ -135,7 +135,7 @@ GALGAS_function GALGAS_function::constructor_functionWithName (const GALGAS_stri
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_typelist GALGAS_function::getter_formalParameterTypeList (LOCATION_ARGS) const {
-  GALGAS_typelist result = GALGAS_typelist::constructor_emptyList (THERE) ;
+  GALGAS_typelist result = GALGAS_typelist::class_func_emptyList (THERE) ;
   for (uint32_t i=0 ; i<mFunctionDescriptor->mParameterCount ; i++) {
     result.addAssign_operation (GALGAS_type (mFunctionDescriptor->mFormalParameterTypeList [i]) COMMA_HERE) ;
   }

@@ -93,31 +93,31 @@ void GALGAS_uint::class_method_setRandomSeed (class GALGAS_uint inSeed
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint GALGAS_uint::constructor_random (UNUSED_LOCATION_ARGS) {
+GALGAS_uint GALGAS_uint::class_func_random (UNUSED_LOCATION_ARGS) {
   return GALGAS_uint (uint32_t (galgas_random ())) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint GALGAS_uint::constructor_max (UNUSED_LOCATION_ARGS) {
+GALGAS_uint GALGAS_uint::class_func_max (UNUSED_LOCATION_ARGS) {
   return GALGAS_uint (UINT32_MAX) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint GALGAS_uint::constructor_errorCount (UNUSED_LOCATION_ARGS) {
+GALGAS_uint GALGAS_uint::class_func_errorCount (UNUSED_LOCATION_ARGS) {
   return GALGAS_uint (uint32_t (totalErrorCount ())) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint GALGAS_uint::constructor_warningCount (UNUSED_LOCATION_ARGS) {
+GALGAS_uint GALGAS_uint::class_func_warningCount (UNUSED_LOCATION_ARGS) {
   return GALGAS_uint (uint32_t (totalWarningCount ())) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint GALGAS_uint::constructor_valueWithMask (const GALGAS_uint & inLowerIndex,
+GALGAS_uint GALGAS_uint::class_func_valueWithMask (const GALGAS_uint & inLowerIndex,
                                                     const GALGAS_uint & inUpperIndex,
                                                     Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) {
@@ -139,7 +139,7 @@ GALGAS_uint GALGAS_uint::constructor_valueWithMask (const GALGAS_uint & inLowerI
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint GALGAS_uint::constructor_compilationMode (UNUSED_LOCATION_ARGS) {
+GALGAS_uint GALGAS_uint::class_func_compilationMode (UNUSED_LOCATION_ARGS) {
   #ifdef __LP64__
     return GALGAS_uint (64) ;
   #else

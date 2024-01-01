@@ -112,7 +112,7 @@ typeComparisonResult GALGAS_bigint::objectCompare (const GALGAS_bigint & inOpera
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bigint GALGAS_bigint::constructor_zero (UNUSED_LOCATION_ARGS) {
+GALGAS_bigint GALGAS_bigint::class_func_zero (UNUSED_LOCATION_ARGS) {
   GALGAS_bigint result ;
   result.mIsValid = true ;
   return result ;
@@ -211,7 +211,7 @@ GALGAS_uintlist GALGAS_bigint::getter_extract_38_ForUnsignedRepresentation (LOCA
   if (isValid ()) {
     TC_UniqueArray <uint8_t> valueArray ;
     mValue.extractBytesForUnsignedRepresentation (valueArray) ;
-    result = GALGAS_uintlist::constructor_emptyList (THERE) ;
+    result = GALGAS_uintlist::class_func_emptyList (THERE) ;
     for (int32_t i=0 ; i<valueArray.count () ; i++) {
       result.addAssign_operation (GALGAS_uint (valueArray (i COMMA_HERE)) COMMA_HERE) ;
     }
@@ -226,7 +226,7 @@ GALGAS_uintlist GALGAS_bigint::getter_extract_38_ForSignedRepresentation (LOCATI
   if (isValid ()) {
     TC_UniqueArray <uint8_t> valueArray ;
     mValue.extractBytesForSignedRepresentation (valueArray) ;
-    result = GALGAS_uintlist::constructor_emptyList (THERE) ;
+    result = GALGAS_uintlist::class_func_emptyList (THERE) ;
     for (int32_t i=0 ; i<valueArray.count () ; i++) {
       result.addAssign_operation (GALGAS_uint (valueArray (i COMMA_HERE)) COMMA_HERE) ;
     }
@@ -243,7 +243,7 @@ GALGAS_uintlist GALGAS_bigint::getter_extract_33__32_ForUnsignedRepresentation (
     mValue.extractBytesForUnsignedRepresentation (valueArray) ;
     const int32_t paddingCount = (4 - (valueArray.count () % 4)) % 4 ;
     valueArray.appendObjects (paddingCount, 0) ;
-    result = GALGAS_uintlist::constructor_emptyList (THERE) ;
+    result = GALGAS_uintlist::class_func_emptyList (THERE) ;
     for (int32_t i=0 ; i<valueArray.count () ; i+=4) {
       uint32_t v = valueArray (i+3 COMMA_HERE) ;
       v <<= 8 ;
@@ -267,7 +267,7 @@ GALGAS_uintlist GALGAS_bigint::getter_extract_33__32_ForSignedRepresentation (LO
     mValue.extractBytesForSignedRepresentation (valueArray) ;
     const int32_t paddingCount = (4 - (valueArray.count () % 4)) % 4 ;
     valueArray.appendObjects (paddingCount, ((valueArray.lastObject (HERE) & 0x80) != 0) ? 0xFF : 0) ;
-    result = GALGAS_uintlist::constructor_emptyList (THERE) ;
+    result = GALGAS_uintlist::class_func_emptyList (THERE) ;
     for (int32_t i=0 ; i<valueArray.count () ; i+=4) {
       uint32_t v = valueArray (i+3 COMMA_HERE) ;
       v <<= 8 ;
@@ -291,7 +291,7 @@ GALGAS_uint_36__34_list GALGAS_bigint::getter_extract_36__34_ForUnsignedRepresen
     mValue.extractBytesForUnsignedRepresentation (valueArray) ;
     const int32_t paddingCount = (8 - (valueArray.count () % 8)) % 8 ;
     valueArray.appendObjects (paddingCount, 0) ;
-    result = GALGAS_uint_36__34_list::constructor_emptyList (THERE) ;
+    result = GALGAS_uint_36__34_list::class_func_emptyList (THERE) ;
     for (int32_t i=0 ; i<valueArray.count () ; i+=8) {
       uint64_t v = 0 ;
       for (int32_t j=7 ; j>=0 ; j--) {
@@ -313,7 +313,7 @@ GALGAS_uint_36__34_list GALGAS_bigint::getter_extract_36__34_ForSignedRepresenta
     mValue.extractBytesForSignedRepresentation (valueArray) ;
     const int32_t paddingCount = (8 - (valueArray.count () % 8)) % 8 ;
     valueArray.appendObjects (paddingCount, ((valueArray.lastObject (HERE) & 0x80) != 0) ? 0xFF : 0) ;
-    result = GALGAS_uint_36__34_list::constructor_emptyList (THERE) ;
+    result = GALGAS_uint_36__34_list::class_func_emptyList (THERE) ;
     for (int32_t i=0 ; i<valueArray.count () ; i+=8) {
       uint64_t v = 0 ;
       for (int32_t j=7 ; j>=0 ; j--) {

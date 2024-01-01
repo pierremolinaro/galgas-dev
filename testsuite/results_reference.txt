@@ -309,7 +309,7 @@ LOGGING loc: <@location:nowhere:1:1>
 LOGGING r: <@uint:5>
 LOGGING r: <@uint:5>
 *************************************** begin of introspection test
---- Type list (85 types)
+--- Type list (84 types)
   @2lstringlist
   @2lstringlist-element
   @2stringlist
@@ -330,7 +330,6 @@ LOGGING r: <@uint:5>
   @abstractOverridingTestExtensionSetter-weak
   @abstractTestExtensionSetter
   @abstractTestExtensionSetter-weak
-  @application
   @baseClassForTypeCastInSetterCall
   @baseClassForTypeCastInSetterCall-weak
   @bigint

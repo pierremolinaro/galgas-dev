@@ -6,7 +6,7 @@ AC_GALGAS_listmap () {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyMap (LOCATION_ARGS) {
+GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::class_func_emptyMap (LOCATION_ARGS) {
   GALGAS_%!TYPE_IDENTIFIER% result ;
   result.makeNewEmptyListMap (THERE) ;
   return result ;

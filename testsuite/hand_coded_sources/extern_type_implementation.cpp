@@ -60,10 +60,10 @@ typeComparisonResult GALGAS_complex::objectCompare (const GALGAS_complex & inOpe
 
 //---------------------------------------------------------------------------*
 
-GALGAS_complex GALGAS_complex::constructor_new (const GALGAS_double & inReal,
-                                                const GALGAS_double & inImaginary,
-                                                Compiler * /* inCompiler */
-                                                COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_complex GALGAS_complex::class_func_new (const GALGAS_double & inReal,
+                                               const GALGAS_double & inImaginary,
+                                               Compiler * /* inCompiler */
+                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_complex result ;
   if (inReal.isValid () && inImaginary.isValid ()) {
     result.mIsValid = true ;

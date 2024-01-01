@@ -53,7 +53,7 @@ GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalUIntExpressionForGeneration_2D_weak GALGAS_literalUIntExpressionForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_literalUIntExpressionForGeneration_2D_weak GALGAS_literalUIntExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_literalUIntExpressionForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -163,7 +163,7 @@ GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalUInt_36__34_ExpressionForGeneration_2D_weak GALGAS_literalUInt_36__34_ExpressionForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_literalUInt_36__34_ExpressionForGeneration_2D_weak GALGAS_literalUInt_36__34_ExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_literalUInt_36__34_ExpressionForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -273,7 +273,7 @@ GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalSIntExpressionForGeneration_2D_weak GALGAS_literalSIntExpressionForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_literalSIntExpressionForGeneration_2D_weak GALGAS_literalSIntExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_literalSIntExpressionForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -383,7 +383,7 @@ GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalSInt_36__34_ExpressionForGeneration_2D_weak GALGAS_literalSInt_36__34_ExpressionForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_literalSInt_36__34_ExpressionForGeneration_2D_weak GALGAS_literalSInt_36__34_ExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_literalSInt_36__34_ExpressionForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -493,7 +493,7 @@ GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalBigIntExpressionForGeneration_2D_weak GALGAS_literalBigIntExpressionForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_literalBigIntExpressionForGeneration_2D_weak GALGAS_literalBigIntExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_literalBigIntExpressionForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -565,7 +565,7 @@ mEnum (kNotBuilt) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_comparison GALGAS_comparison::constructor_equal (UNUSED_LOCATION_ARGS) {
+GALGAS_comparison GALGAS_comparison::class_func_equal (UNUSED_LOCATION_ARGS) {
   GALGAS_comparison result ;
   result.mEnum = kEnum_equal ;
   return result ;
@@ -573,7 +573,7 @@ GALGAS_comparison GALGAS_comparison::constructor_equal (UNUSED_LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_comparison GALGAS_comparison::constructor_notEqual (UNUSED_LOCATION_ARGS) {
+GALGAS_comparison GALGAS_comparison::class_func_notEqual (UNUSED_LOCATION_ARGS) {
   GALGAS_comparison result ;
   result.mEnum = kEnum_notEqual ;
   return result ;
@@ -581,7 +581,7 @@ GALGAS_comparison GALGAS_comparison::constructor_notEqual (UNUSED_LOCATION_ARGS)
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_comparison GALGAS_comparison::constructor_lowerOrEqual (UNUSED_LOCATION_ARGS) {
+GALGAS_comparison GALGAS_comparison::class_func_lowerOrEqual (UNUSED_LOCATION_ARGS) {
   GALGAS_comparison result ;
   result.mEnum = kEnum_lowerOrEqual ;
   return result ;
@@ -589,7 +589,7 @@ GALGAS_comparison GALGAS_comparison::constructor_lowerOrEqual (UNUSED_LOCATION_A
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_comparison GALGAS_comparison::constructor_lowerThan (UNUSED_LOCATION_ARGS) {
+GALGAS_comparison GALGAS_comparison::class_func_lowerThan (UNUSED_LOCATION_ARGS) {
   GALGAS_comparison result ;
   result.mEnum = kEnum_lowerThan ;
   return result ;
@@ -597,7 +597,7 @@ GALGAS_comparison GALGAS_comparison::constructor_lowerThan (UNUSED_LOCATION_ARGS
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_comparison GALGAS_comparison::constructor_greaterOrEqual (UNUSED_LOCATION_ARGS) {
+GALGAS_comparison GALGAS_comparison::class_func_greaterOrEqual (UNUSED_LOCATION_ARGS) {
   GALGAS_comparison result ;
   result.mEnum = kEnum_greaterOrEqual ;
   return result ;
@@ -605,7 +605,7 @@ GALGAS_comparison GALGAS_comparison::constructor_greaterOrEqual (UNUSED_LOCATION
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_comparison GALGAS_comparison::constructor_greaterThan (UNUSED_LOCATION_ARGS) {
+GALGAS_comparison GALGAS_comparison::class_func_greaterThan (UNUSED_LOCATION_ARGS) {
   GALGAS_comparison result ;
   result.mEnum = kEnum_greaterThan ;
   return result ;
@@ -613,7 +613,7 @@ GALGAS_comparison GALGAS_comparison::constructor_greaterThan (UNUSED_LOCATION_AR
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_comparison GALGAS_comparison::constructor_sameInstance (UNUSED_LOCATION_ARGS) {
+GALGAS_comparison GALGAS_comparison::class_func_sameInstance (UNUSED_LOCATION_ARGS) {
   GALGAS_comparison result ;
   result.mEnum = kEnum_sameInstance ;
   return result ;
@@ -621,7 +621,7 @@ GALGAS_comparison GALGAS_comparison::constructor_sameInstance (UNUSED_LOCATION_A
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_comparison GALGAS_comparison::constructor_differentInstances (UNUSED_LOCATION_ARGS) {
+GALGAS_comparison GALGAS_comparison::class_func_differentInstances (UNUSED_LOCATION_ARGS) {
   GALGAS_comparison result ;
   result.mEnum = kEnum_differentInstances ;
   return result ;
@@ -880,11 +880,11 @@ GALGAS_semanticExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_comparisonExpressionAST GALGAS_comparisonExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                                const GALGAS_semanticExpressionAST & inAttribute_mLeftExpression,
-                                                                                const GALGAS_comparison & inAttribute_mComparison,
-                                                                                const GALGAS_semanticExpressionAST & inAttribute_mRightExpression
-                                                                                COMMA_LOCATION_ARGS) {
+GALGAS_comparisonExpressionAST GALGAS_comparisonExpressionAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
+                                                                               const GALGAS_semanticExpressionAST & inAttribute_mLeftExpression,
+                                                                               const GALGAS_comparison & inAttribute_mComparison,
+                                                                               const GALGAS_semanticExpressionAST & inAttribute_mRightExpression
+                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_comparisonExpressionAST result ;
   if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mComparison.isValid () && inAttribute_mRightExpression.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_comparisonExpressionAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mComparison, inAttribute_mRightExpression COMMA_THERE)) ;
@@ -1072,7 +1072,7 @@ GALGAS_semanticExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_comparisonExpressionAST_2D_weak GALGAS_comparisonExpressionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_comparisonExpressionAST_2D_weak GALGAS_comparisonExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_comparisonExpressionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -1182,7 +1182,7 @@ GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_comparisonExpressionForGeneration_2D_weak GALGAS_comparisonExpressionForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_comparisonExpressionForGeneration_2D_weak GALGAS_comparisonExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_comparisonExpressionForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -1310,10 +1310,10 @@ GALGAS_semanticExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_rightShiftExpressionAST GALGAS_rightShiftExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                                const GALGAS_semanticExpressionAST & inAttribute_mLeftExpression,
-                                                                                const GALGAS_semanticExpressionAST & inAttribute_mRightExpression
-                                                                                COMMA_LOCATION_ARGS) {
+GALGAS_rightShiftExpressionAST GALGAS_rightShiftExpressionAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
+                                                                               const GALGAS_semanticExpressionAST & inAttribute_mLeftExpression,
+                                                                               const GALGAS_semanticExpressionAST & inAttribute_mRightExpression
+                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_rightShiftExpressionAST result ;
   if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_rightShiftExpressionAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
@@ -1485,7 +1485,7 @@ GALGAS_semanticExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_rightShiftExpressionAST_2D_weak GALGAS_rightShiftExpressionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_rightShiftExpressionAST_2D_weak GALGAS_rightShiftExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_rightShiftExpressionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -1613,10 +1613,10 @@ GALGAS_semanticExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_leftShiftExpressionAST GALGAS_leftShiftExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                              const GALGAS_semanticExpressionAST & inAttribute_mLeftExpression,
-                                                                              const GALGAS_semanticExpressionAST & inAttribute_mRightExpression
-                                                                              COMMA_LOCATION_ARGS) {
+GALGAS_leftShiftExpressionAST GALGAS_leftShiftExpressionAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
+                                                                             const GALGAS_semanticExpressionAST & inAttribute_mLeftExpression,
+                                                                             const GALGAS_semanticExpressionAST & inAttribute_mRightExpression
+                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_leftShiftExpressionAST result ;
   if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_leftShiftExpressionAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
@@ -1788,7 +1788,7 @@ GALGAS_semanticExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_leftShiftExpressionAST_2D_weak GALGAS_leftShiftExpressionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_leftShiftExpressionAST_2D_weak GALGAS_leftShiftExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_leftShiftExpressionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -1916,10 +1916,10 @@ GALGAS_semanticExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_addExpressionAST GALGAS_addExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                  const GALGAS_semanticExpressionAST & inAttribute_mLeftExpression,
-                                                                  const GALGAS_semanticExpressionAST & inAttribute_mRightExpression
-                                                                  COMMA_LOCATION_ARGS) {
+GALGAS_addExpressionAST GALGAS_addExpressionAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
+                                                                 const GALGAS_semanticExpressionAST & inAttribute_mLeftExpression,
+                                                                 const GALGAS_semanticExpressionAST & inAttribute_mRightExpression
+                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_addExpressionAST result ;
   if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_addExpressionAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
@@ -2091,7 +2091,7 @@ GALGAS_semanticExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_addExpressionAST_2D_weak GALGAS_addExpressionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_addExpressionAST_2D_weak GALGAS_addExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_addExpressionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -2219,10 +2219,10 @@ GALGAS_semanticExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_addExpressionNoOverflowAST GALGAS_addExpressionNoOverflowAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                                      const GALGAS_semanticExpressionAST & inAttribute_mLeftExpression,
-                                                                                      const GALGAS_semanticExpressionAST & inAttribute_mRightExpression
-                                                                                      COMMA_LOCATION_ARGS) {
+GALGAS_addExpressionNoOverflowAST GALGAS_addExpressionNoOverflowAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
+                                                                                     const GALGAS_semanticExpressionAST & inAttribute_mLeftExpression,
+                                                                                     const GALGAS_semanticExpressionAST & inAttribute_mRightExpression
+                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_addExpressionNoOverflowAST result ;
   if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_addExpressionNoOverflowAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
@@ -2394,7 +2394,7 @@ GALGAS_semanticExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_addExpressionNoOverflowAST_2D_weak GALGAS_addExpressionNoOverflowAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_addExpressionNoOverflowAST_2D_weak GALGAS_addExpressionNoOverflowAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_addExpressionNoOverflowAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -2522,10 +2522,10 @@ GALGAS_semanticExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_subExpressionAST GALGAS_subExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                  const GALGAS_semanticExpressionAST & inAttribute_mLeftExpression,
-                                                                  const GALGAS_semanticExpressionAST & inAttribute_mRightExpression
-                                                                  COMMA_LOCATION_ARGS) {
+GALGAS_subExpressionAST GALGAS_subExpressionAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
+                                                                 const GALGAS_semanticExpressionAST & inAttribute_mLeftExpression,
+                                                                 const GALGAS_semanticExpressionAST & inAttribute_mRightExpression
+                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_subExpressionAST result ;
   if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_subExpressionAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
@@ -2697,7 +2697,7 @@ GALGAS_semanticExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_subExpressionAST_2D_weak GALGAS_subExpressionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_subExpressionAST_2D_weak GALGAS_subExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_subExpressionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -2825,10 +2825,10 @@ GALGAS_semanticExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_subExpressionNoOverflowAST GALGAS_subExpressionNoOverflowAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                                      const GALGAS_semanticExpressionAST & inAttribute_mLeftExpression,
-                                                                                      const GALGAS_semanticExpressionAST & inAttribute_mRightExpression
-                                                                                      COMMA_LOCATION_ARGS) {
+GALGAS_subExpressionNoOverflowAST GALGAS_subExpressionNoOverflowAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
+                                                                                     const GALGAS_semanticExpressionAST & inAttribute_mLeftExpression,
+                                                                                     const GALGAS_semanticExpressionAST & inAttribute_mRightExpression
+                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_subExpressionNoOverflowAST result ;
   if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_subExpressionNoOverflowAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
@@ -3000,7 +3000,7 @@ GALGAS_semanticExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_subExpressionNoOverflowAST_2D_weak GALGAS_subExpressionNoOverflowAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_subExpressionNoOverflowAST_2D_weak GALGAS_subExpressionNoOverflowAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_subExpressionNoOverflowAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -3072,7 +3072,7 @@ mEnum (kNotBuilt) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_binaryOperator GALGAS_binaryOperator::constructor_rightShift (UNUSED_LOCATION_ARGS) {
+GALGAS_binaryOperator GALGAS_binaryOperator::class_func_rightShift (UNUSED_LOCATION_ARGS) {
   GALGAS_binaryOperator result ;
   result.mEnum = kEnum_rightShift ;
   return result ;
@@ -3080,7 +3080,7 @@ GALGAS_binaryOperator GALGAS_binaryOperator::constructor_rightShift (UNUSED_LOCA
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_binaryOperator GALGAS_binaryOperator::constructor_leftShift (UNUSED_LOCATION_ARGS) {
+GALGAS_binaryOperator GALGAS_binaryOperator::class_func_leftShift (UNUSED_LOCATION_ARGS) {
   GALGAS_binaryOperator result ;
   result.mEnum = kEnum_leftShift ;
   return result ;
@@ -3088,7 +3088,7 @@ GALGAS_binaryOperator GALGAS_binaryOperator::constructor_leftShift (UNUSED_LOCAT
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_binaryOperator GALGAS_binaryOperator::constructor_add (UNUSED_LOCATION_ARGS) {
+GALGAS_binaryOperator GALGAS_binaryOperator::class_func_add (UNUSED_LOCATION_ARGS) {
   GALGAS_binaryOperator result ;
   result.mEnum = kEnum_add ;
   return result ;
@@ -3096,7 +3096,7 @@ GALGAS_binaryOperator GALGAS_binaryOperator::constructor_add (UNUSED_LOCATION_AR
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_binaryOperator GALGAS_binaryOperator::constructor_addNoOverflow (UNUSED_LOCATION_ARGS) {
+GALGAS_binaryOperator GALGAS_binaryOperator::class_func_addNoOverflow (UNUSED_LOCATION_ARGS) {
   GALGAS_binaryOperator result ;
   result.mEnum = kEnum_addNoOverflow ;
   return result ;
@@ -3104,7 +3104,7 @@ GALGAS_binaryOperator GALGAS_binaryOperator::constructor_addNoOverflow (UNUSED_L
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_binaryOperator GALGAS_binaryOperator::constructor_sub (UNUSED_LOCATION_ARGS) {
+GALGAS_binaryOperator GALGAS_binaryOperator::class_func_sub (UNUSED_LOCATION_ARGS) {
   GALGAS_binaryOperator result ;
   result.mEnum = kEnum_sub ;
   return result ;
@@ -3112,7 +3112,7 @@ GALGAS_binaryOperator GALGAS_binaryOperator::constructor_sub (UNUSED_LOCATION_AR
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_binaryOperator GALGAS_binaryOperator::constructor_subNoOverflow (UNUSED_LOCATION_ARGS) {
+GALGAS_binaryOperator GALGAS_binaryOperator::class_func_subNoOverflow (UNUSED_LOCATION_ARGS) {
   GALGAS_binaryOperator result ;
   result.mEnum = kEnum_subNoOverflow ;
   return result ;
@@ -3120,7 +3120,7 @@ GALGAS_binaryOperator GALGAS_binaryOperator::constructor_subNoOverflow (UNUSED_L
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_binaryOperator GALGAS_binaryOperator::constructor_operator_5F_and (UNUSED_LOCATION_ARGS) {
+GALGAS_binaryOperator GALGAS_binaryOperator::class_func_operator_5F_and (UNUSED_LOCATION_ARGS) {
   GALGAS_binaryOperator result ;
   result.mEnum = kEnum_operator_5F_and ;
   return result ;
@@ -3128,7 +3128,7 @@ GALGAS_binaryOperator GALGAS_binaryOperator::constructor_operator_5F_and (UNUSED
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_binaryOperator GALGAS_binaryOperator::constructor_operator_5F_or (UNUSED_LOCATION_ARGS) {
+GALGAS_binaryOperator GALGAS_binaryOperator::class_func_operator_5F_or (UNUSED_LOCATION_ARGS) {
   GALGAS_binaryOperator result ;
   result.mEnum = kEnum_operator_5F_or ;
   return result ;
@@ -3136,7 +3136,7 @@ GALGAS_binaryOperator GALGAS_binaryOperator::constructor_operator_5F_or (UNUSED_
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_binaryOperator GALGAS_binaryOperator::constructor_operator_5F_xor (UNUSED_LOCATION_ARGS) {
+GALGAS_binaryOperator GALGAS_binaryOperator::class_func_operator_5F_xor (UNUSED_LOCATION_ARGS) {
   GALGAS_binaryOperator result ;
   result.mEnum = kEnum_operator_5F_xor ;
   return result ;
@@ -3144,7 +3144,7 @@ GALGAS_binaryOperator GALGAS_binaryOperator::constructor_operator_5F_xor (UNUSED
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_binaryOperator GALGAS_binaryOperator::constructor_multiply_5F_operation_5F_no_5F_ovf (UNUSED_LOCATION_ARGS) {
+GALGAS_binaryOperator GALGAS_binaryOperator::class_func_multiply_5F_operation_5F_no_5F_ovf (UNUSED_LOCATION_ARGS) {
   GALGAS_binaryOperator result ;
   result.mEnum = kEnum_multiply_5F_operation_5F_no_5F_ovf ;
   return result ;
@@ -3152,7 +3152,7 @@ GALGAS_binaryOperator GALGAS_binaryOperator::constructor_multiply_5F_operation_5
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_binaryOperator GALGAS_binaryOperator::constructor_multiply_5F_operation (UNUSED_LOCATION_ARGS) {
+GALGAS_binaryOperator GALGAS_binaryOperator::class_func_multiply_5F_operation (UNUSED_LOCATION_ARGS) {
   GALGAS_binaryOperator result ;
   result.mEnum = kEnum_multiply_5F_operation ;
   return result ;
@@ -3160,7 +3160,7 @@ GALGAS_binaryOperator GALGAS_binaryOperator::constructor_multiply_5F_operation (
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_binaryOperator GALGAS_binaryOperator::constructor_divide_5F_operation (UNUSED_LOCATION_ARGS) {
+GALGAS_binaryOperator GALGAS_binaryOperator::class_func_divide_5F_operation (UNUSED_LOCATION_ARGS) {
   GALGAS_binaryOperator result ;
   result.mEnum = kEnum_divide_5F_operation ;
   return result ;
@@ -3168,7 +3168,7 @@ GALGAS_binaryOperator GALGAS_binaryOperator::constructor_divide_5F_operation (UN
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_binaryOperator GALGAS_binaryOperator::constructor_divide_5F_operation_5F_no_5F_ovf (UNUSED_LOCATION_ARGS) {
+GALGAS_binaryOperator GALGAS_binaryOperator::class_func_divide_5F_operation_5F_no_5F_ovf (UNUSED_LOCATION_ARGS) {
   GALGAS_binaryOperator result ;
   result.mEnum = kEnum_divide_5F_operation_5F_no_5F_ovf ;
   return result ;
@@ -3176,7 +3176,7 @@ GALGAS_binaryOperator GALGAS_binaryOperator::constructor_divide_5F_operation_5F_
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_binaryOperator GALGAS_binaryOperator::constructor_modulo_5F_operation (UNUSED_LOCATION_ARGS) {
+GALGAS_binaryOperator GALGAS_binaryOperator::class_func_modulo_5F_operation (UNUSED_LOCATION_ARGS) {
   GALGAS_binaryOperator result ;
   result.mEnum = kEnum_modulo_5F_operation ;
   return result ;
@@ -3497,7 +3497,7 @@ GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_binaryOperatorExpressionForGeneration_2D_weak GALGAS_binaryOperatorExpressionForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_binaryOperatorExpressionForGeneration_2D_weak GALGAS_binaryOperatorExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_binaryOperatorExpressionForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -3625,10 +3625,10 @@ GALGAS_semanticExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_multiplicationExpressionAST GALGAS_multiplicationExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                                        const GALGAS_semanticExpressionAST & inAttribute_mLeftExpression,
-                                                                                        const GALGAS_semanticExpressionAST & inAttribute_mRightExpression
-                                                                                        COMMA_LOCATION_ARGS) {
+GALGAS_multiplicationExpressionAST GALGAS_multiplicationExpressionAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
+                                                                                       const GALGAS_semanticExpressionAST & inAttribute_mLeftExpression,
+                                                                                       const GALGAS_semanticExpressionAST & inAttribute_mRightExpression
+                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_multiplicationExpressionAST result ;
   if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_multiplicationExpressionAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
@@ -3800,7 +3800,7 @@ GALGAS_semanticExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_multiplicationExpressionAST_2D_weak GALGAS_multiplicationExpressionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_multiplicationExpressionAST_2D_weak GALGAS_multiplicationExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_multiplicationExpressionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -3928,10 +3928,10 @@ GALGAS_semanticExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_multiplicationExpressionNoOverflowAST GALGAS_multiplicationExpressionNoOverflowAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                                                            const GALGAS_semanticExpressionAST & inAttribute_mLeftExpression,
-                                                                                                            const GALGAS_semanticExpressionAST & inAttribute_mRightExpression
-                                                                                                            COMMA_LOCATION_ARGS) {
+GALGAS_multiplicationExpressionNoOverflowAST GALGAS_multiplicationExpressionNoOverflowAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
+                                                                                                           const GALGAS_semanticExpressionAST & inAttribute_mLeftExpression,
+                                                                                                           const GALGAS_semanticExpressionAST & inAttribute_mRightExpression
+                                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_multiplicationExpressionNoOverflowAST result ;
   if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_multiplicationExpressionNoOverflowAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
@@ -4103,7 +4103,7 @@ GALGAS_semanticExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_multiplicationExpressionNoOverflowAST_2D_weak GALGAS_multiplicationExpressionNoOverflowAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_multiplicationExpressionNoOverflowAST_2D_weak GALGAS_multiplicationExpressionNoOverflowAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_multiplicationExpressionNoOverflowAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -4231,10 +4231,10 @@ GALGAS_semanticExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_divisionExpressionAST GALGAS_divisionExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                            const GALGAS_semanticExpressionAST & inAttribute_mLeftExpression,
-                                                                            const GALGAS_semanticExpressionAST & inAttribute_mRightExpression
-                                                                            COMMA_LOCATION_ARGS) {
+GALGAS_divisionExpressionAST GALGAS_divisionExpressionAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
+                                                                           const GALGAS_semanticExpressionAST & inAttribute_mLeftExpression,
+                                                                           const GALGAS_semanticExpressionAST & inAttribute_mRightExpression
+                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_divisionExpressionAST result ;
   if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_divisionExpressionAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
@@ -4406,7 +4406,7 @@ GALGAS_semanticExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_divisionExpressionAST_2D_weak GALGAS_divisionExpressionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_divisionExpressionAST_2D_weak GALGAS_divisionExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_divisionExpressionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -4534,10 +4534,10 @@ GALGAS_semanticExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_divisionExpressionNoOverflowAST GALGAS_divisionExpressionNoOverflowAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                                                const GALGAS_semanticExpressionAST & inAttribute_mLeftExpression,
-                                                                                                const GALGAS_semanticExpressionAST & inAttribute_mRightExpression
-                                                                                                COMMA_LOCATION_ARGS) {
+GALGAS_divisionExpressionNoOverflowAST GALGAS_divisionExpressionNoOverflowAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
+                                                                                               const GALGAS_semanticExpressionAST & inAttribute_mLeftExpression,
+                                                                                               const GALGAS_semanticExpressionAST & inAttribute_mRightExpression
+                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_divisionExpressionNoOverflowAST result ;
   if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_divisionExpressionNoOverflowAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
@@ -4709,7 +4709,7 @@ GALGAS_semanticExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_divisionExpressionNoOverflowAST_2D_weak GALGAS_divisionExpressionNoOverflowAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_divisionExpressionNoOverflowAST_2D_weak GALGAS_divisionExpressionNoOverflowAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_divisionExpressionNoOverflowAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -4837,10 +4837,10 @@ GALGAS_semanticExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_moduloExpressionAST GALGAS_moduloExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                        const GALGAS_semanticExpressionAST & inAttribute_mLeftExpression,
-                                                                        const GALGAS_semanticExpressionAST & inAttribute_mRightExpression
-                                                                        COMMA_LOCATION_ARGS) {
+GALGAS_moduloExpressionAST GALGAS_moduloExpressionAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
+                                                                       const GALGAS_semanticExpressionAST & inAttribute_mLeftExpression,
+                                                                       const GALGAS_semanticExpressionAST & inAttribute_mRightExpression
+                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_moduloExpressionAST result ;
   if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_moduloExpressionAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
@@ -5012,7 +5012,7 @@ GALGAS_semanticExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_moduloExpressionAST_2D_weak GALGAS_moduloExpressionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_moduloExpressionAST_2D_weak GALGAS_moduloExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_moduloExpressionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -5122,7 +5122,7 @@ GALGAS_semanticExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_testDynamicClassInExpressionAST_2D_weak GALGAS_testDynamicClassInExpressionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_testDynamicClassInExpressionAST_2D_weak GALGAS_testDynamicClassInExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_testDynamicClassInExpressionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -5232,7 +5232,7 @@ GALGAS_semanticExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_castInExpressionAST_2D_weak GALGAS_castInExpressionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_castInExpressionAST_2D_weak GALGAS_castInExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_castInExpressionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -5342,7 +5342,7 @@ GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_testDynamicClassInExpressionForGeneration_2D_weak GALGAS_testDynamicClassInExpressionForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_testDynamicClassInExpressionForGeneration_2D_weak GALGAS_testDynamicClassInExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_testDynamicClassInExpressionForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -5452,7 +5452,7 @@ GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_extractObjectInExpressionForGeneration_2D_weak GALGAS_extractObjectInExpressionForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_extractObjectInExpressionForGeneration_2D_weak GALGAS_extractObjectInExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_extractObjectInExpressionForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -5562,7 +5562,7 @@ GALGAS_semanticExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionExpressionAST_2D_weak GALGAS_optionExpressionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_optionExpressionAST_2D_weak GALGAS_optionExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_optionExpressionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -5672,7 +5672,7 @@ GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionValueExpressionForGeneration_2D_weak GALGAS_optionValueExpressionForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_optionValueExpressionForGeneration_2D_weak GALGAS_optionValueExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_optionValueExpressionForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -5782,7 +5782,7 @@ GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionCharExpressionForGeneration_2D_weak GALGAS_optionCharExpressionForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_optionCharExpressionForGeneration_2D_weak GALGAS_optionCharExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_optionCharExpressionForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -5892,7 +5892,7 @@ GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionStringExpressionForGeneration_2D_weak GALGAS_optionStringExpressionForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_optionStringExpressionForGeneration_2D_weak GALGAS_optionStringExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_optionStringExpressionForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -6002,7 +6002,7 @@ GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionCommentExpressionForGeneration_2D_weak GALGAS_optionCommentExpressionForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_optionCommentExpressionForGeneration_2D_weak GALGAS_optionCommentExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_optionCommentExpressionForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -6112,7 +6112,7 @@ GALGAS_semanticExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexiqueIntrospectionExpressionAST_2D_weak GALGAS_lexiqueIntrospectionExpressionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_lexiqueIntrospectionExpressionAST_2D_weak GALGAS_lexiqueIntrospectionExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_lexiqueIntrospectionExpressionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -6222,7 +6222,7 @@ GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexiqueIntrospectionForGeneration_2D_weak GALGAS_lexiqueIntrospectionForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_lexiqueIntrospectionForGeneration_2D_weak GALGAS_lexiqueIntrospectionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_lexiqueIntrospectionForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -6332,7 +6332,7 @@ GALGAS_semanticExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperObjectInstanciationInExpressionAST_2D_weak GALGAS_filewrapperObjectInstanciationInExpressionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_filewrapperObjectInstanciationInExpressionAST_2D_weak GALGAS_filewrapperObjectInstanciationInExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_filewrapperObjectInstanciationInExpressionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -6442,7 +6442,7 @@ GALGAS_semanticExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperInExpressionAST_2D_weak GALGAS_filewrapperInExpressionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_filewrapperInExpressionAST_2D_weak GALGAS_filewrapperInExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_filewrapperInExpressionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -6552,7 +6552,7 @@ GALGAS_semanticExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperTemplateInExpressionAST_2D_weak GALGAS_filewrapperTemplateInExpressionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_filewrapperTemplateInExpressionAST_2D_weak GALGAS_filewrapperTemplateInExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_filewrapperTemplateInExpressionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -6662,7 +6662,7 @@ GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperInExpressionForGeneration_2D_weak GALGAS_filewrapperInExpressionForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_filewrapperInExpressionForGeneration_2D_weak GALGAS_filewrapperInExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_filewrapperInExpressionForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -6772,7 +6772,7 @@ GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperTemplateInExpressionForGeneration_2D_weak GALGAS_filewrapperTemplateInExpressionForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_filewrapperTemplateInExpressionForGeneration_2D_weak GALGAS_filewrapperTemplateInExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_filewrapperTemplateInExpressionForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -6882,7 +6882,7 @@ GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperStaticPathInExpressionForGeneration_2D_weak GALGAS_filewrapperStaticPathInExpressionForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_filewrapperStaticPathInExpressionForGeneration_2D_weak GALGAS_filewrapperStaticPathInExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_filewrapperStaticPathInExpressionForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -6992,7 +6992,7 @@ GALGAS_semanticExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_getterCallExpressionAST_2D_weak GALGAS_getterCallExpressionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_getterCallExpressionAST_2D_weak GALGAS_getterCallExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_getterCallExpressionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -7102,7 +7102,7 @@ GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_getterCallExpressionForGeneration_2D_weak GALGAS_getterCallExpressionForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_getterCallExpressionForGeneration_2D_weak GALGAS_getterCallExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_getterCallExpressionForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -7212,7 +7212,7 @@ GALGAS_semanticExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_constructorExpressionAST_2D_weak GALGAS_constructorExpressionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_constructorExpressionAST_2D_weak GALGAS_constructorExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_constructorExpressionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -7322,7 +7322,7 @@ GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_constructorExpressionForGeneration_2D_weak GALGAS_constructorExpressionForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_constructorExpressionForGeneration_2D_weak GALGAS_constructorExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_constructorExpressionForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -7432,7 +7432,7 @@ GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_defaultConstructorExpressionForGeneration_2D_weak GALGAS_defaultConstructorExpressionForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_defaultConstructorExpressionForGeneration_2D_weak GALGAS_defaultConstructorExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_defaultConstructorExpressionForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -7542,7 +7542,7 @@ GALGAS_semanticExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_functionCallExpressionAST_2D_weak GALGAS_functionCallExpressionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_functionCallExpressionAST_2D_weak GALGAS_functionCallExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_functionCallExpressionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -7652,7 +7652,7 @@ GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_functionCallExpressionForGeneration_2D_weak GALGAS_functionCallExpressionForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_functionCallExpressionForGeneration_2D_weak GALGAS_functionCallExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_functionCallExpressionForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -7762,7 +7762,7 @@ GALGAS_semanticExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalTypeInExpressionAST_2D_weak GALGAS_literalTypeInExpressionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_literalTypeInExpressionAST_2D_weak GALGAS_literalTypeInExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_literalTypeInExpressionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -7872,7 +7872,7 @@ GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalTypeInExpressionForGeneration_2D_weak GALGAS_literalTypeInExpressionForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_literalTypeInExpressionForGeneration_2D_weak GALGAS_literalTypeInExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_literalTypeInExpressionForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -8023,14 +8023,14 @@ AC_GALGAS_list (inSharedArray) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_collectionValueElementList GALGAS_collectionValueElementList::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+GALGAS_collectionValueElementList GALGAS_collectionValueElementList::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_collectionValueElementList (capCollectionElementArray ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_collectionValueElementList GALGAS_collectionValueElementList::constructor_listWithValue (const GALGAS_abstractCollectionValueElement & inOperand0
-                                                                                                COMMA_LOCATION_ARGS) {
+GALGAS_collectionValueElementList GALGAS_collectionValueElementList::class_func_listWithValue (const GALGAS_abstractCollectionValueElement & inOperand0
+                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_collectionValueElementList result ;
   if (inOperand0.isValid ()) {
     result = GALGAS_collectionValueElementList (capCollectionElementArray ()) ;
@@ -8210,7 +8210,7 @@ GALGAS_collectionValueElementList GALGAS_collectionValueElementList::add_operati
 GALGAS_collectionValueElementList GALGAS_collectionValueElementList::getter_subListWithRange (const GALGAS_range & inRange,
                                                                                               Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) const {
-  GALGAS_collectionValueElementList result = GALGAS_collectionValueElementList::constructor_emptyList (THERE) ;
+  GALGAS_collectionValueElementList result = GALGAS_collectionValueElementList::class_func_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -8220,7 +8220,7 @@ GALGAS_collectionValueElementList GALGAS_collectionValueElementList::getter_subL
 GALGAS_collectionValueElementList GALGAS_collectionValueElementList::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                                               Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) const {
-  GALGAS_collectionValueElementList result = GALGAS_collectionValueElementList::constructor_emptyList (THERE) ;
+  GALGAS_collectionValueElementList result = GALGAS_collectionValueElementList::class_func_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -8230,7 +8230,7 @@ GALGAS_collectionValueElementList GALGAS_collectionValueElementList::getter_subL
 GALGAS_collectionValueElementList GALGAS_collectionValueElementList::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                                             Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) const {
-  GALGAS_collectionValueElementList result = GALGAS_collectionValueElementList::constructor_emptyList (THERE) ;
+  GALGAS_collectionValueElementList result = GALGAS_collectionValueElementList::class_func_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -8483,7 +8483,7 @@ AC_GALGAS_weak_reference (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_abstractCollectionValueElement_2D_weak GALGAS_abstractCollectionValueElement_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_abstractCollectionValueElement_2D_weak GALGAS_abstractCollectionValueElement_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_abstractCollectionValueElement_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -8607,9 +8607,9 @@ GALGAS_abstractCollectionValueElement (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_expressionCollectionValue GALGAS_expressionCollectionValue::constructor_new (const GALGAS_semanticExpressionAST & inAttribute_mExpression,
-                                                                                    const GALGAS_location & inAttribute_mExpressionLocation
-                                                                                    COMMA_LOCATION_ARGS) {
+GALGAS_expressionCollectionValue GALGAS_expressionCollectionValue::class_func_new (const GALGAS_semanticExpressionAST & inAttribute_mExpression,
+                                                                                   const GALGAS_location & inAttribute_mExpressionLocation
+                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_expressionCollectionValue result ;
   if (inAttribute_mExpression.isValid () && inAttribute_mExpressionLocation.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_expressionCollectionValue (inAttribute_mExpression, inAttribute_mExpressionLocation COMMA_THERE)) ;
@@ -8765,7 +8765,7 @@ GALGAS_abstractCollectionValueElement_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_expressionCollectionValue_2D_weak GALGAS_expressionCollectionValue_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_expressionCollectionValue_2D_weak GALGAS_expressionCollectionValue_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_expressionCollectionValue_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -8889,9 +8889,9 @@ GALGAS_abstractCollectionValueElement (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_expressionListCollectionValue GALGAS_expressionListCollectionValue::constructor_new (const GALGAS_actualOutputExpressionList & inAttribute_mExpressionList,
-                                                                                            const GALGAS_location & inAttribute_mEndOfExpressionLocation
-                                                                                            COMMA_LOCATION_ARGS) {
+GALGAS_expressionListCollectionValue GALGAS_expressionListCollectionValue::class_func_new (const GALGAS_actualOutputExpressionList & inAttribute_mExpressionList,
+                                                                                           const GALGAS_location & inAttribute_mEndOfExpressionLocation
+                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_expressionListCollectionValue result ;
   if (inAttribute_mExpressionList.isValid () && inAttribute_mEndOfExpressionLocation.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_expressionListCollectionValue (inAttribute_mExpressionList, inAttribute_mEndOfExpressionLocation COMMA_THERE)) ;
@@ -9047,7 +9047,7 @@ GALGAS_abstractCollectionValueElement_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_expressionListCollectionValue_2D_weak GALGAS_expressionListCollectionValue_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_expressionListCollectionValue_2D_weak GALGAS_expressionListCollectionValue_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_expressionListCollectionValue_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -9157,7 +9157,7 @@ GALGAS_semanticExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_collectionValueAST_2D_weak GALGAS_collectionValueAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_collectionValueAST_2D_weak GALGAS_collectionValueAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_collectionValueAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -9348,14 +9348,14 @@ AC_GALGAS_list (inSharedArray) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_collectionValueElementListForGeneration GALGAS_collectionValueElementListForGeneration::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+GALGAS_collectionValueElementListForGeneration GALGAS_collectionValueElementListForGeneration::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_collectionValueElementListForGeneration (capCollectionElementArray ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_collectionValueElementListForGeneration GALGAS_collectionValueElementListForGeneration::constructor_listWithValue (const GALGAS_abstractCollectionValueElementForGeneration & inOperand0
-                                                                                                                          COMMA_LOCATION_ARGS) {
+GALGAS_collectionValueElementListForGeneration GALGAS_collectionValueElementListForGeneration::class_func_listWithValue (const GALGAS_abstractCollectionValueElementForGeneration & inOperand0
+                                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_collectionValueElementListForGeneration result ;
   if (inOperand0.isValid ()) {
     result = GALGAS_collectionValueElementListForGeneration (capCollectionElementArray ()) ;
@@ -9535,7 +9535,7 @@ GALGAS_collectionValueElementListForGeneration GALGAS_collectionValueElementList
 GALGAS_collectionValueElementListForGeneration GALGAS_collectionValueElementListForGeneration::getter_subListWithRange (const GALGAS_range & inRange,
                                                                                                                         Compiler * inCompiler
                                                                                                                         COMMA_LOCATION_ARGS) const {
-  GALGAS_collectionValueElementListForGeneration result = GALGAS_collectionValueElementListForGeneration::constructor_emptyList (THERE) ;
+  GALGAS_collectionValueElementListForGeneration result = GALGAS_collectionValueElementListForGeneration::class_func_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -9545,7 +9545,7 @@ GALGAS_collectionValueElementListForGeneration GALGAS_collectionValueElementList
 GALGAS_collectionValueElementListForGeneration GALGAS_collectionValueElementListForGeneration::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                                                                         Compiler * inCompiler
                                                                                                                         COMMA_LOCATION_ARGS) const {
-  GALGAS_collectionValueElementListForGeneration result = GALGAS_collectionValueElementListForGeneration::constructor_emptyList (THERE) ;
+  GALGAS_collectionValueElementListForGeneration result = GALGAS_collectionValueElementListForGeneration::class_func_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -9555,7 +9555,7 @@ GALGAS_collectionValueElementListForGeneration GALGAS_collectionValueElementList
 GALGAS_collectionValueElementListForGeneration GALGAS_collectionValueElementListForGeneration::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                                                                       Compiler * inCompiler
                                                                                                                       COMMA_LOCATION_ARGS) const {
-  GALGAS_collectionValueElementListForGeneration result = GALGAS_collectionValueElementListForGeneration::constructor_emptyList (THERE) ;
+  GALGAS_collectionValueElementListForGeneration result = GALGAS_collectionValueElementListForGeneration::class_func_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -9823,7 +9823,7 @@ AC_GALGAS_weak_reference (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_abstractCollectionValueElementForGeneration_2D_weak GALGAS_abstractCollectionValueElementForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_abstractCollectionValueElementForGeneration_2D_weak GALGAS_abstractCollectionValueElementForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_abstractCollectionValueElementForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -9955,7 +9955,7 @@ GALGAS_abstractCollectionValueElementForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_expressionCollectionValueForGeneration_2D_weak GALGAS_expressionCollectionValueForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_expressionCollectionValueForGeneration_2D_weak GALGAS_expressionCollectionValueForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_expressionCollectionValueForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -10078,9 +10078,9 @@ GALGAS_abstractCollectionValueElementForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_expressionListCollectionForGeneration GALGAS_expressionListCollectionForGeneration::constructor_new (const GALGAS_location & inAttribute_mExpressionLocation,
-                                                                                                            const GALGAS_semanticExpressionListForGeneration & inAttribute_mExpressionList
-                                                                                                            COMMA_LOCATION_ARGS) {
+GALGAS_expressionListCollectionForGeneration GALGAS_expressionListCollectionForGeneration::class_func_new (const GALGAS_location & inAttribute_mExpressionLocation,
+                                                                                                           const GALGAS_semanticExpressionListForGeneration & inAttribute_mExpressionList
+                                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_expressionListCollectionForGeneration result ;
   if (inAttribute_mExpressionLocation.isValid () && inAttribute_mExpressionList.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_expressionListCollectionForGeneration (inAttribute_mExpressionLocation, inAttribute_mExpressionList COMMA_THERE)) ;
@@ -10223,7 +10223,7 @@ GALGAS_abstractCollectionValueElementForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_expressionListCollectionForGeneration_2D_weak GALGAS_expressionListCollectionForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_expressionListCollectionForGeneration_2D_weak GALGAS_expressionListCollectionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_expressionListCollectionForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -10333,7 +10333,7 @@ GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_expressionCollectionForGeneration_2D_weak GALGAS_expressionCollectionForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_expressionCollectionForGeneration_2D_weak GALGAS_expressionCollectionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_expressionCollectionForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -10453,8 +10453,8 @@ GALGAS_semanticExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_selfInExpressionAST GALGAS_selfInExpressionAST::constructor_new (const GALGAS_location & inAttribute_mSelfLocation
-                                                                        COMMA_LOCATION_ARGS) {
+GALGAS_selfInExpressionAST GALGAS_selfInExpressionAST::class_func_new (const GALGAS_location & inAttribute_mSelfLocation
+                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_selfInExpressionAST result ;
   if (inAttribute_mSelfLocation.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_selfInExpressionAST (inAttribute_mSelfLocation COMMA_THERE)) ;
@@ -10594,7 +10594,7 @@ GALGAS_semanticExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_selfInExpressionAST_2D_weak GALGAS_selfInExpressionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_selfInExpressionAST_2D_weak GALGAS_selfInExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_selfInExpressionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -10704,7 +10704,7 @@ GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_selfInExpressionForGeneration_2D_weak GALGAS_selfInExpressionForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_selfInExpressionForGeneration_2D_weak GALGAS_selfInExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_selfInExpressionForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -10814,7 +10814,7 @@ GALGAS_semanticExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_structPropertyAccessExpressionAST_2D_weak GALGAS_structPropertyAccessExpressionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_structPropertyAccessExpressionAST_2D_weak GALGAS_structPropertyAccessExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_structPropertyAccessExpressionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -10924,7 +10924,7 @@ GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_structPropertyAccessExpressionForGeneration_2D_weak GALGAS_structPropertyAccessExpressionForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_structPropertyAccessExpressionForGeneration_2D_weak GALGAS_structPropertyAccessExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_structPropertyAccessExpressionForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -11048,9 +11048,9 @@ GALGAS_semanticExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_notExpressionAST GALGAS_notExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                  const GALGAS_semanticExpressionAST & inAttribute_mExpression
-                                                                  COMMA_LOCATION_ARGS) {
+GALGAS_notExpressionAST GALGAS_notExpressionAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
+                                                                 const GALGAS_semanticExpressionAST & inAttribute_mExpression
+                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_notExpressionAST result ;
   if (inAttribute_mOperatorLocation.isValid () && inAttribute_mExpression.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_notExpressionAST (inAttribute_mOperatorLocation, inAttribute_mExpression COMMA_THERE)) ;
@@ -11206,7 +11206,7 @@ GALGAS_semanticExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_notExpressionAST_2D_weak GALGAS_notExpressionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_notExpressionAST_2D_weak GALGAS_notExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_notExpressionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -11316,7 +11316,7 @@ GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_notExpressionForGeneration_2D_weak GALGAS_notExpressionForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_notExpressionForGeneration_2D_weak GALGAS_notExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_notExpressionForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -11440,9 +11440,9 @@ GALGAS_semanticExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_tildeExpressionAST GALGAS_tildeExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                      const GALGAS_semanticExpressionAST & inAttribute_mExpression
-                                                                      COMMA_LOCATION_ARGS) {
+GALGAS_tildeExpressionAST GALGAS_tildeExpressionAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
+                                                                     const GALGAS_semanticExpressionAST & inAttribute_mExpression
+                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_tildeExpressionAST result ;
   if (inAttribute_mOperatorLocation.isValid () && inAttribute_mExpression.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_tildeExpressionAST (inAttribute_mOperatorLocation, inAttribute_mExpression COMMA_THERE)) ;
@@ -11598,7 +11598,7 @@ GALGAS_semanticExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_tildeExpressionAST_2D_weak GALGAS_tildeExpressionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_tildeExpressionAST_2D_weak GALGAS_tildeExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_tildeExpressionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -11708,7 +11708,7 @@ GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_tildeExpressionForGeneration_2D_weak GALGAS_tildeExpressionForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_tildeExpressionForGeneration_2D_weak GALGAS_tildeExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_tildeExpressionForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -11832,9 +11832,9 @@ GALGAS_semanticExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bangExpressionAST GALGAS_bangExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                    const GALGAS_semanticExpressionAST & inAttribute_mExpression
-                                                                    COMMA_LOCATION_ARGS) {
+GALGAS_bangExpressionAST GALGAS_bangExpressionAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
+                                                                   const GALGAS_semanticExpressionAST & inAttribute_mExpression
+                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_bangExpressionAST result ;
   if (inAttribute_mOperatorLocation.isValid () && inAttribute_mExpression.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_bangExpressionAST (inAttribute_mOperatorLocation, inAttribute_mExpression COMMA_THERE)) ;
@@ -11990,7 +11990,7 @@ GALGAS_semanticExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bangExpressionAST_2D_weak GALGAS_bangExpressionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_bangExpressionAST_2D_weak GALGAS_bangExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_bangExpressionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -12100,7 +12100,7 @@ GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bangExpressionForGeneration_2D_weak GALGAS_bangExpressionForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_bangExpressionForGeneration_2D_weak GALGAS_bangExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_bangExpressionForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -12224,9 +12224,9 @@ GALGAS_semanticExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_unaryWrappingMinusExpressionAST GALGAS_unaryWrappingMinusExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                                                const GALGAS_semanticExpressionAST & inAttribute_mExpression
-                                                                                                COMMA_LOCATION_ARGS) {
+GALGAS_unaryWrappingMinusExpressionAST GALGAS_unaryWrappingMinusExpressionAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
+                                                                                               const GALGAS_semanticExpressionAST & inAttribute_mExpression
+                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_unaryWrappingMinusExpressionAST result ;
   if (inAttribute_mOperatorLocation.isValid () && inAttribute_mExpression.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_unaryWrappingMinusExpressionAST (inAttribute_mOperatorLocation, inAttribute_mExpression COMMA_THERE)) ;
@@ -12382,7 +12382,7 @@ GALGAS_semanticExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_unaryWrappingMinusExpressionAST_2D_weak GALGAS_unaryWrappingMinusExpressionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_unaryWrappingMinusExpressionAST_2D_weak GALGAS_unaryWrappingMinusExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_unaryWrappingMinusExpressionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -12492,7 +12492,7 @@ GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_unaryWrappingMinusExpressionForGeneration_2D_weak GALGAS_unaryWrappingMinusExpressionForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_unaryWrappingMinusExpressionForGeneration_2D_weak GALGAS_unaryWrappingMinusExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_unaryWrappingMinusExpressionForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -12620,10 +12620,10 @@ GALGAS_semanticExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_orExpressionAST GALGAS_orExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                const GALGAS_semanticExpressionAST & inAttribute_mLeftExpression,
-                                                                const GALGAS_semanticExpressionAST & inAttribute_mRightExpression
-                                                                COMMA_LOCATION_ARGS) {
+GALGAS_orExpressionAST GALGAS_orExpressionAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
+                                                               const GALGAS_semanticExpressionAST & inAttribute_mLeftExpression,
+                                                               const GALGAS_semanticExpressionAST & inAttribute_mRightExpression
+                                                               COMMA_LOCATION_ARGS) {
   GALGAS_orExpressionAST result ;
   if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_orExpressionAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
@@ -12795,7 +12795,7 @@ GALGAS_semanticExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_orExpressionAST_2D_weak GALGAS_orExpressionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_orExpressionAST_2D_weak GALGAS_orExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_orExpressionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -12923,10 +12923,10 @@ GALGAS_semanticExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_orShortExpressionAST GALGAS_orShortExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                          const GALGAS_semanticExpressionAST & inAttribute_mLeftExpression,
-                                                                          const GALGAS_semanticExpressionAST & inAttribute_mRightExpression
-                                                                          COMMA_LOCATION_ARGS) {
+GALGAS_orShortExpressionAST GALGAS_orShortExpressionAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
+                                                                         const GALGAS_semanticExpressionAST & inAttribute_mLeftExpression,
+                                                                         const GALGAS_semanticExpressionAST & inAttribute_mRightExpression
+                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_orShortExpressionAST result ;
   if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_orShortExpressionAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
@@ -13098,7 +13098,7 @@ GALGAS_semanticExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_orShortExpressionAST_2D_weak GALGAS_orShortExpressionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_orShortExpressionAST_2D_weak GALGAS_orShortExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_orShortExpressionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -13226,10 +13226,10 @@ GALGAS_semanticExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_xorExpressionAST GALGAS_xorExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                  const GALGAS_semanticExpressionAST & inAttribute_mLeftExpression,
-                                                                  const GALGAS_semanticExpressionAST & inAttribute_mRightExpression
-                                                                  COMMA_LOCATION_ARGS) {
+GALGAS_xorExpressionAST GALGAS_xorExpressionAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
+                                                                 const GALGAS_semanticExpressionAST & inAttribute_mLeftExpression,
+                                                                 const GALGAS_semanticExpressionAST & inAttribute_mRightExpression
+                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_xorExpressionAST result ;
   if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_xorExpressionAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
@@ -13401,7 +13401,7 @@ GALGAS_semanticExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_xorExpressionAST_2D_weak GALGAS_xorExpressionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_xorExpressionAST_2D_weak GALGAS_xorExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_xorExpressionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -13529,10 +13529,10 @@ GALGAS_semanticExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_closedSliceExpressionAST GALGAS_closedSliceExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                                  const GALGAS_semanticExpressionAST & inAttribute_mLeftExpression,
-                                                                                  const GALGAS_semanticExpressionAST & inAttribute_mRightExpression
-                                                                                  COMMA_LOCATION_ARGS) {
+GALGAS_closedSliceExpressionAST GALGAS_closedSliceExpressionAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
+                                                                                 const GALGAS_semanticExpressionAST & inAttribute_mLeftExpression,
+                                                                                 const GALGAS_semanticExpressionAST & inAttribute_mRightExpression
+                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_closedSliceExpressionAST result ;
   if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_closedSliceExpressionAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
@@ -13704,7 +13704,7 @@ GALGAS_semanticExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_closedSliceExpressionAST_2D_weak GALGAS_closedSliceExpressionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_closedSliceExpressionAST_2D_weak GALGAS_closedSliceExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_closedSliceExpressionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -13832,10 +13832,10 @@ GALGAS_semanticExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_openedSliceExpressionAST GALGAS_openedSliceExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                                  const GALGAS_semanticExpressionAST & inAttribute_mLeftExpression,
-                                                                                  const GALGAS_semanticExpressionAST & inAttribute_mRightExpression
-                                                                                  COMMA_LOCATION_ARGS) {
+GALGAS_openedSliceExpressionAST GALGAS_openedSliceExpressionAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
+                                                                                 const GALGAS_semanticExpressionAST & inAttribute_mLeftExpression,
+                                                                                 const GALGAS_semanticExpressionAST & inAttribute_mRightExpression
+                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_openedSliceExpressionAST result ;
   if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_openedSliceExpressionAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
@@ -14007,7 +14007,7 @@ GALGAS_semanticExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_openedSliceExpressionAST_2D_weak GALGAS_openedSliceExpressionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_openedSliceExpressionAST_2D_weak GALGAS_openedSliceExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_openedSliceExpressionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -14117,7 +14117,7 @@ GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_orShortExpressionForGeneration_2D_weak GALGAS_orShortExpressionForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_orShortExpressionForGeneration_2D_weak GALGAS_orShortExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_orShortExpressionForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -14227,7 +14227,7 @@ GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_openedSliceExpressionForGeneration_2D_weak GALGAS_openedSliceExpressionForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_openedSliceExpressionForGeneration_2D_weak GALGAS_openedSliceExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_openedSliceExpressionForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -14337,7 +14337,7 @@ GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_closedSliceExpressionForGeneration_2D_weak GALGAS_closedSliceExpressionForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_closedSliceExpressionForGeneration_2D_weak GALGAS_closedSliceExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_closedSliceExpressionForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -14465,10 +14465,10 @@ GALGAS_semanticExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_andShortExpressionAST GALGAS_andShortExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                            const GALGAS_semanticExpressionAST & inAttribute_mLeftExpression,
-                                                                            const GALGAS_semanticExpressionAST & inAttribute_mRightExpression
-                                                                            COMMA_LOCATION_ARGS) {
+GALGAS_andShortExpressionAST GALGAS_andShortExpressionAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
+                                                                           const GALGAS_semanticExpressionAST & inAttribute_mLeftExpression,
+                                                                           const GALGAS_semanticExpressionAST & inAttribute_mRightExpression
+                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_andShortExpressionAST result ;
   if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_andShortExpressionAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
@@ -14640,7 +14640,7 @@ GALGAS_semanticExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_andShortExpressionAST_2D_weak GALGAS_andShortExpressionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_andShortExpressionAST_2D_weak GALGAS_andShortExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_andShortExpressionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -14768,10 +14768,10 @@ GALGAS_semanticExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_andExpressionAST GALGAS_andExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                  const GALGAS_semanticExpressionAST & inAttribute_mLeftExpression,
-                                                                  const GALGAS_semanticExpressionAST & inAttribute_mRightExpression
-                                                                  COMMA_LOCATION_ARGS) {
+GALGAS_andExpressionAST GALGAS_andExpressionAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
+                                                                 const GALGAS_semanticExpressionAST & inAttribute_mLeftExpression,
+                                                                 const GALGAS_semanticExpressionAST & inAttribute_mRightExpression
+                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_andExpressionAST result ;
   if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_andExpressionAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
@@ -14943,7 +14943,7 @@ GALGAS_semanticExpressionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_andExpressionAST_2D_weak GALGAS_andExpressionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_andExpressionAST_2D_weak GALGAS_andExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_andExpressionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -15053,7 +15053,7 @@ GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_andShortExpressionForGeneration_2D_weak GALGAS_andShortExpressionForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_andShortExpressionForGeneration_2D_weak GALGAS_andShortExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_andShortExpressionForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -15167,7 +15167,7 @@ mEnum (kNotBuilt) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_selfAvailability GALGAS_selfAvailability::constructor_none (UNUSED_LOCATION_ARGS) {
+GALGAS_selfAvailability GALGAS_selfAvailability::class_func_none (UNUSED_LOCATION_ARGS) {
   GALGAS_selfAvailability result ;
   result.mEnum = kEnum_none ;
   return result ;
@@ -15175,10 +15175,10 @@ GALGAS_selfAvailability GALGAS_selfAvailability::constructor_none (UNUSED_LOCATI
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_selfAvailability GALGAS_selfAvailability::constructor_available (const GALGAS_unifiedTypeMapEntry & inAssociatedValue0,
-                                                                        const GALGAS_bool & inAssociatedValue1,
-                                                                        const GALGAS_bool & inAssociatedValue2
-                                                                        COMMA_LOCATION_ARGS) {
+GALGAS_selfAvailability GALGAS_selfAvailability::class_func_available (const GALGAS_unifiedTypeMapEntry & inAssociatedValue0,
+                                                                       const GALGAS_bool & inAssociatedValue1,
+                                                                       const GALGAS_bool & inAssociatedValue2
+                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_selfAvailability result ;
   if (inAssociatedValue0.isValid () && inAssociatedValue1.isValid () && inAssociatedValue2.isValid ()) {
     result.mEnum = kEnum_available ;
@@ -15392,7 +15392,7 @@ GALGAS_semanticInstructionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_assignmentInstructionAST_2D_weak GALGAS_assignmentInstructionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_assignmentInstructionAST_2D_weak GALGAS_assignmentInstructionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_assignmentInstructionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -15502,7 +15502,7 @@ GALGAS_semanticInstructionAST_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_selfPropertyAssignmentInstructionAST_2D_weak GALGAS_selfPropertyAssignmentInstructionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_selfPropertyAssignmentInstructionAST_2D_weak GALGAS_selfPropertyAssignmentInstructionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_selfPropertyAssignmentInstructionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -15612,7 +15612,7 @@ GALGAS_semanticInstructionForGeneration_2D_weak (inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_assignmentInstructionForGeneration_2D_weak GALGAS_assignmentInstructionForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+GALGAS_assignmentInstructionForGeneration_2D_weak GALGAS_assignmentInstructionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
   GALGAS_assignmentInstructionForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
@@ -15787,18 +15787,18 @@ AC_GALGAS_list (inSharedArray) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_castInstructionBranchListAST GALGAS_castInstructionBranchListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+GALGAS_castInstructionBranchListAST GALGAS_castInstructionBranchListAST::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_castInstructionBranchListAST (capCollectionElementArray ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_castInstructionBranchListAST GALGAS_castInstructionBranchListAST::constructor_listWithValue (const GALGAS_lstring & inOperand0,
-                                                                                                    const GALGAS_lstring & inOperand1,
-                                                                                                    const GALGAS_semanticInstructionListAST & inOperand2,
-                                                                                                    const GALGAS_dynamicTypeComparisonKind & inOperand3,
-                                                                                                    const GALGAS_location & inOperand4
-                                                                                                    COMMA_LOCATION_ARGS) {
+GALGAS_castInstructionBranchListAST GALGAS_castInstructionBranchListAST::class_func_listWithValue (const GALGAS_lstring & inOperand0,
+                                                                                                   const GALGAS_lstring & inOperand1,
+                                                                                                   const GALGAS_semanticInstructionListAST & inOperand2,
+                                                                                                   const GALGAS_dynamicTypeComparisonKind & inOperand3,
+                                                                                                   const GALGAS_location & inOperand4
+                                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_castInstructionBranchListAST result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
     result = GALGAS_castInstructionBranchListAST (capCollectionElementArray ()) ;
@@ -16066,7 +16066,7 @@ GALGAS_castInstructionBranchListAST GALGAS_castInstructionBranchListAST::add_ope
 GALGAS_castInstructionBranchListAST GALGAS_castInstructionBranchListAST::getter_subListWithRange (const GALGAS_range & inRange,
                                                                                                   Compiler * inCompiler
                                                                                                   COMMA_LOCATION_ARGS) const {
-  GALGAS_castInstructionBranchListAST result = GALGAS_castInstructionBranchListAST::constructor_emptyList (THERE) ;
+  GALGAS_castInstructionBranchListAST result = GALGAS_castInstructionBranchListAST::class_func_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -16076,7 +16076,7 @@ GALGAS_castInstructionBranchListAST GALGAS_castInstructionBranchListAST::getter_
 GALGAS_castInstructionBranchListAST GALGAS_castInstructionBranchListAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                                                   Compiler * inCompiler
                                                                                                   COMMA_LOCATION_ARGS) const {
-  GALGAS_castInstructionBranchListAST result = GALGAS_castInstructionBranchListAST::constructor_emptyList (THERE) ;
+  GALGAS_castInstructionBranchListAST result = GALGAS_castInstructionBranchListAST::class_func_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -16086,7 +16086,7 @@ GALGAS_castInstructionBranchListAST GALGAS_castInstructionBranchListAST::getter_
 GALGAS_castInstructionBranchListAST GALGAS_castInstructionBranchListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                                                 Compiler * inCompiler
                                                                                                 COMMA_LOCATION_ARGS) const {
-  GALGAS_castInstructionBranchListAST result = GALGAS_castInstructionBranchListAST::constructor_emptyList (THERE) ;
+  GALGAS_castInstructionBranchListAST result = GALGAS_castInstructionBranchListAST::class_func_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -16419,12 +16419,12 @@ GALGAS_semanticInstructionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_structuredCastInstructionAST GALGAS_structuredCastInstructionAST::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,
-                                                                                          const GALGAS_semanticExpressionAST & inAttribute_mCastExpression,
-                                                                                          const GALGAS_castInstructionBranchListAST & inAttribute_mCastInstructionBranchList,
-                                                                                          const GALGAS_semanticInstructionListAST & inAttribute_mElseInstructionList,
-                                                                                          const GALGAS_location & inAttribute_mEndOfCastInstruction
-                                                                                          COMMA_LOCATION_ARGS) {
+GALGAS_structuredCastInstructionAST GALGAS_structuredCastInstructionAST::class_func_new (const GALGAS_location & inAttribute_mInstructionLocation,
+                                                                                         const GALGAS_semanticExpressionAST & inAttribute_mCastExpression,
+                                                                                         const GALGAS_castInstructionBranchListAST & inAttribute_mCastInstructionBranchList,
+                                                                                         const GALGAS_semanticInstructionListAST & inAttribute_mElseInstructionList,
+                                                                                         const GALGAS_location & inAttribute_mEndOfCastInstruction
+                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_structuredCastInstructionAST result ;
   if (inAttribute_mInstructionLocation.isValid () && inAttribute_mCastExpression.isValid () && inAttribute_mCastInstructionBranchList.isValid () && inAttribute_mElseInstructionList.isValid () && inAttribute_mEndOfCastInstruction.isValid ()) {
     macroMyNew (result.mObjectPtr, cPtr_structuredCastInstructionAST (inAttribute_mInstructionLocation, inAttribute_mCastExpression, inAttribute_mCastInstructionBranchList, inAttribute_mElseInstructionList, inAttribute_mEndOfCastInstruction COMMA_THERE)) ;

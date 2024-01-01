@@ -47,13 +47,13 @@ mDoubleValue (inValue) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_double GALGAS_double::constructor_pi (UNUSED_LOCATION_ARGS) {
+GALGAS_double GALGAS_double::class_func_pi (UNUSED_LOCATION_ARGS) {
   return GALGAS_double (PI_CONSTANT) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_double GALGAS_double::constructor_doubleWithBinaryImage (const GALGAS_uint_36__34_ & inImage
+GALGAS_double GALGAS_double::class_func_doubleWithBinaryImage (const GALGAS_uint_36__34_ & inImage
                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_double result ;
   if (inImage.isValid ()) {

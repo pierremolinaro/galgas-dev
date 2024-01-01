@@ -106,7 +106,7 @@ SourceTextInString GALGAS_location::sourceText (void) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_location::constructor_nowhere (UNUSED_LOCATION_ARGS) {
+GALGAS_location GALGAS_location::class_func_nowhere (UNUSED_LOCATION_ARGS) {
   GALGAS_location result ;
   macroMyNew (result.mInternalLocation, InternalLocation (SourceTextInString (), LocationInSource (), LocationInSource ()))
   return result ;
@@ -122,22 +122,22 @@ bool GALGAS_location::isValid (void) const {
 //   CONSTRUCTORS
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_location::constructor_here (Compiler * inCompiler
+GALGAS_location GALGAS_location::class_func_here (Compiler * inCompiler
                                                    COMMA_UNUSED_LOCATION_ARGS) {
   return inCompiler->here () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_location::constructor_next (Compiler * inCompiler
-                                                   COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_location GALGAS_location::class_func_next (Compiler * inCompiler
+                                                  COMMA_UNUSED_LOCATION_ARGS) {
   return inCompiler->next () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_location::constructor_separator (Compiler * inCompiler
-                                                        COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_location GALGAS_location::class_func_separator (Compiler * inCompiler
+                                                       COMMA_UNUSED_LOCATION_ARGS) {
   return inCompiler->separator () ;
 }
 

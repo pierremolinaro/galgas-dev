@@ -113,13 +113,13 @@ AC_GALGAS_list (inSharedArray) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_%!TYPE_IDENTIFIER% (capCollectionElementArray ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_listWithValue (%?^
+GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::class_func_listWithValue (%?^
   for (propertyTypeEntry propertyName * *) in ATTRIBUTE_LIST
   do (IDX) %const GALGAS_%![propertyTypeEntry identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^
@@ -402,7 +402,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::add_operation (%?^%const GA
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::getter_subListWithRange (%?^%const GALGAS_range & inRange,
                                                %!^%Compiler * inCompiler
                                                %!^%COMMA_LOCATION_ARGS) const {
-  GALGAS_%!TYPE_IDENTIFIER% result = GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyList (THERE) ;
+  GALGAS_%!TYPE_IDENTIFIER% result = GALGAS_%!TYPE_IDENTIFIER%::class_func_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -412,7 +412,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::getter_subListWithRange (%?
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::getter_subListFromIndex (%?^%const GALGAS_uint & inIndex,
                                                %!^%Compiler * inCompiler
                                                %!^%COMMA_LOCATION_ARGS) const {
-  GALGAS_%!TYPE_IDENTIFIER% result = GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyList (THERE) ;
+  GALGAS_%!TYPE_IDENTIFIER% result = GALGAS_%!TYPE_IDENTIFIER%::class_func_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -422,7 +422,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::getter_subListFromIndex (%?
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::getter_subListToIndex (%?^%const GALGAS_uint & inIndex,
                                                %!^%Compiler * inCompiler
                                                %!^%COMMA_LOCATION_ARGS) const {
-  GALGAS_%!TYPE_IDENTIFIER% result = GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyList (THERE) ;
+  GALGAS_%!TYPE_IDENTIFIER% result = GALGAS_%!TYPE_IDENTIFIER%::class_func_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }

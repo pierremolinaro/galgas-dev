@@ -135,7 +135,7 @@ void GALGAS_string::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_string::constructor_stringByRepeatingString (const GALGAS_string & inString,
+GALGAS_string GALGAS_string::class_func_stringByRepeatingString (const GALGAS_string & inString,
                                                                   const GALGAS_uint & inCount
                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result ;
@@ -151,13 +151,13 @@ GALGAS_string GALGAS_string::constructor_stringByRepeatingString (const GALGAS_s
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_string::constructor_newWithStdIn (UNUSED_LOCATION_ARGS) {
+GALGAS_string GALGAS_string::class_func_newWithStdIn (UNUSED_LOCATION_ARGS) {
   return GALGAS_string (String::newWithStdIn ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_string::constructor_CppChar (const GALGAS_char & inCharacter
+GALGAS_string GALGAS_string::class_func_CppChar (const GALGAS_char & inCharacter
                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result ;
   if (inCharacter.isValid ()) {
@@ -170,14 +170,14 @@ GALGAS_string GALGAS_string::constructor_CppChar (const GALGAS_char & inCharacte
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_string::constructor_CppLineComment (UNUSED_LOCATION_ARGS) {
+GALGAS_string GALGAS_string::class_func_CppLineComment (UNUSED_LOCATION_ARGS) {
   String s ; s.addCppHyphenLineComment () ;
   return GALGAS_string (s) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_string::constructor_CppTitleComment (const GALGAS_string & inTitle
+GALGAS_string GALGAS_string::class_func_CppTitleComment (const GALGAS_string & inTitle
                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result ;
   if (inTitle.isValid ()) {
@@ -190,14 +190,14 @@ GALGAS_string GALGAS_string::constructor_CppTitleComment (const GALGAS_string & 
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_string::constructor_CppSpaceComment (UNUSED_LOCATION_ARGS) {
+GALGAS_string GALGAS_string::class_func_CppSpaceComment (UNUSED_LOCATION_ARGS) {
   String s ; s.addCppSpaceLineComment () ;
   return GALGAS_string (s) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_string::constructor_CppString (const GALGAS_string & inString
+GALGAS_string GALGAS_string::class_func_CppString (const GALGAS_string & inString
                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result ;
   if (inString.isValid ()) {
@@ -211,13 +211,13 @@ GALGAS_string GALGAS_string::constructor_CppString (const GALGAS_string & inStri
 //--------------------------------------------------------------------------------------------------
 
 #if COMPILE_FOR_WINDOWS == 0
-  GALGAS_string GALGAS_string::constructor_homeDirectory (UNUSED_LOCATION_ARGS) {
+  GALGAS_string GALGAS_string::class_func_homeDirectory (UNUSED_LOCATION_ARGS) {
     return GALGAS_string (getpwuid (getuid ())->pw_dir) ;
   }
 #endif
 
 #if COMPILE_FOR_WINDOWS == 1
-  GALGAS_string GALGAS_string::constructor_homeDirectory (UNUSED_LOCATION_ARGS) {
+  GALGAS_string GALGAS_string::class_func_homeDirectory (UNUSED_LOCATION_ARGS) {
     char path [MAX_PATH] ;
     SHGetFolderPath (nullptr, CSIDL_PROFILE, nullptr, 0, path) ;
     return GALGAS_string (path).getter_unixPathWithNativePath (HERE) ;
@@ -226,7 +226,7 @@ GALGAS_string GALGAS_string::constructor_CppString (const GALGAS_string & inStri
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_string::constructor_stringWithSequenceOfCharacters (const GALGAS_char & inCharacter,
+GALGAS_string GALGAS_string::class_func_stringWithSequenceOfCharacters (const GALGAS_char & inCharacter,
                                                                          const GALGAS_uint & inCount
                                                                          COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result ;
@@ -243,14 +243,14 @@ GALGAS_string GALGAS_string::constructor_stringWithSequenceOfCharacters (const G
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_string::constructor_stringWithSourceFilePath (Compiler * inCompiler
+GALGAS_string GALGAS_string::class_func_stringWithSourceFilePath (Compiler * inCompiler
                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS_string (inCompiler->sourceFilePath ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_string::constructor_stringWithContentsOfFile (const GALGAS_string & inFilePath,
+GALGAS_string GALGAS_string::class_func_stringWithContentsOfFile (const GALGAS_string & inFilePath,
                                                                    Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) {
   GALGAS_string result ;
@@ -270,13 +270,13 @@ GALGAS_string GALGAS_string::constructor_stringWithContentsOfFile (const GALGAS_
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_string::constructor_stringWithCurrentDirectory (UNUSED_LOCATION_ARGS) {
+GALGAS_string GALGAS_string::class_func_stringWithCurrentDirectory (UNUSED_LOCATION_ARGS) {
   return GALGAS_string (FileManager::currentDirectory ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_string::constructor_stringWithEnvironmentVariable (const GALGAS_string & inEnvironmentVariableName,
+GALGAS_string GALGAS_string::class_func_stringWithEnvironmentVariable (const GALGAS_string & inEnvironmentVariableName,
                                                                         Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_string result ;
@@ -296,7 +296,7 @@ GALGAS_string GALGAS_string::constructor_stringWithEnvironmentVariable (const GA
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_string::constructor_stringWithEnvironmentVariableOrEmpty (const GALGAS_string & inEnvironmentVariableName
+GALGAS_string GALGAS_string::class_func_stringWithEnvironmentVariableOrEmpty (const GALGAS_string & inEnvironmentVariableName
                                                                                COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result ;
   if (inEnvironmentVariableName.isValid ()) {
@@ -308,7 +308,7 @@ GALGAS_string GALGAS_string::constructor_stringWithEnvironmentVariableOrEmpty (c
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_string::constructor_componentsJoinedByString (const GALGAS_stringlist & inComponents,
+GALGAS_string GALGAS_string::class_func_componentsJoinedByString (const GALGAS_stringlist & inComponents,
                                                                    const GALGAS_string & inSeparator
                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result ;
@@ -332,7 +332,7 @@ GALGAS_string GALGAS_string::constructor_componentsJoinedByString (const GALGAS_
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_string::constructor_stringWithCurrentDateTime (UNUSED_LOCATION_ARGS) {
+GALGAS_string GALGAS_string::class_func_stringWithCurrentDateTime (UNUSED_LOCATION_ARGS) {
   time_t currentTime = ::time (nullptr) ;
   struct tm currentTimeTM ;
   #if COMPILE_FOR_WINDOWS == 0
@@ -350,21 +350,21 @@ GALGAS_string GALGAS_string::constructor_stringWithCurrentDateTime (UNUSED_LOCAT
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_string::constructor_retrieveAndResetTemplateString (Compiler * inCompiler
+GALGAS_string GALGAS_string::class_func_retrieveAndResetTemplateString (Compiler * inCompiler
                                                                          COMMA_UNUSED_LOCATION_ARGS) {
   return inCompiler->retrieveAndResetTemplateString () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_string::constructor_separatorString (Compiler * inCompiler
+GALGAS_string GALGAS_string::class_func_separatorString (Compiler * inCompiler
                                                           COMMA_UNUSED_LOCATION_ARGS) {
   return inCompiler->separatorString () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_string::constructor_stringWithSymbolicLinkContents (const GALGAS_string & inSymbolicLink,
+GALGAS_string GALGAS_string::class_func_stringWithSymbolicLinkContents (const GALGAS_string & inSymbolicLink,
                                                                          Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) {
   GALGAS_string result ;

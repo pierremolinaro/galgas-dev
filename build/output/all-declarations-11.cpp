@@ -29,7 +29,7 @@ void extensionSetter_appendRow (GALGAS_rowList & ioObject,
     if (kBoolTrue == test_1) {
       cEnumerator_range enumerator_10300 (GALGAS_range (var_length_10228, constinArgument_inRow.substract_operation (var_length_10228, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 276)).add_operation (GALGAS_uint (1), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 276))), kENUMERATION_UP) ;
       while (enumerator_10300.hasCurrentObject ()) {
-        ioObject.addAssign_operation (GALGAS__32_stringlist::constructor_emptyList (SOURCE_FILE ("production-rules-in-tex.galgas", 277))  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 277)) ;
+        ioObject.addAssign_operation (GALGAS__32_stringlist::class_func_emptyList (SOURCE_FILE ("production-rules-in-tex.galgas", 277))  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 277)) ;
         enumerator_10300.gotoNextObject () ;
       }
     }
@@ -213,14 +213,14 @@ AC_GALGAS_list (inSharedArray) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_programListForGeneration GALGAS_programListForGeneration::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+GALGAS_programListForGeneration GALGAS_programListForGeneration::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_programListForGeneration (capCollectionElementArray ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_programListForGeneration GALGAS_programListForGeneration::constructor_listWithValue (const GALGAS_semanticDeclarationForGeneration & inOperand0
-                                                                                            COMMA_LOCATION_ARGS) {
+GALGAS_programListForGeneration GALGAS_programListForGeneration::class_func_listWithValue (const GALGAS_semanticDeclarationForGeneration & inOperand0
+                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_programListForGeneration result ;
   if (inOperand0.isValid ()) {
     result = GALGAS_programListForGeneration (capCollectionElementArray ()) ;
@@ -400,7 +400,7 @@ GALGAS_programListForGeneration GALGAS_programListForGeneration::add_operation (
 GALGAS_programListForGeneration GALGAS_programListForGeneration::getter_subListWithRange (const GALGAS_range & inRange,
                                                                                           Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) const {
-  GALGAS_programListForGeneration result = GALGAS_programListForGeneration::constructor_emptyList (THERE) ;
+  GALGAS_programListForGeneration result = GALGAS_programListForGeneration::class_func_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -410,7 +410,7 @@ GALGAS_programListForGeneration GALGAS_programListForGeneration::getter_subListW
 GALGAS_programListForGeneration GALGAS_programListForGeneration::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                                           Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) const {
-  GALGAS_programListForGeneration result = GALGAS_programListForGeneration::constructor_emptyList (THERE) ;
+  GALGAS_programListForGeneration result = GALGAS_programListForGeneration::class_func_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -420,7 +420,7 @@ GALGAS_programListForGeneration GALGAS_programListForGeneration::getter_subListF
 GALGAS_programListForGeneration GALGAS_programListForGeneration::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                                         Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) const {
-  GALGAS_programListForGeneration result = GALGAS_programListForGeneration::constructor_emptyList (THERE) ;
+  GALGAS_programListForGeneration result = GALGAS_programListForGeneration::class_func_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -542,7 +542,7 @@ AC_GALGAS_listmap () {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_genericExtensionMethodListMap GALGAS_genericExtensionMethodListMap::constructor_emptyMap (LOCATION_ARGS) {
+GALGAS_genericExtensionMethodListMap GALGAS_genericExtensionMethodListMap::class_func_emptyMap (LOCATION_ARGS) {
   GALGAS_genericExtensionMethodListMap result ;
   result.makeNewEmptyListMap (THERE) ;
   return result ;
@@ -706,7 +706,7 @@ AC_GALGAS_listmap () {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_descendantClassListMap GALGAS_descendantClassListMap::constructor_emptyMap (LOCATION_ARGS) {
+GALGAS_descendantClassListMap GALGAS_descendantClassListMap::class_func_emptyMap (LOCATION_ARGS) {
   GALGAS_descendantClassListMap result ;
   result.makeNewEmptyListMap (THERE) ;
   return result ;
@@ -873,7 +873,7 @@ GALGAS_extensionMethodMapForGlobalCheckings & GALGAS_extensionMethodMapForGlobal
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_extensionMethodMapForGlobalCheckings GALGAS_extensionMethodMapForGlobalCheckings::constructor_emptyMap (LOCATION_ARGS) {
+GALGAS_extensionMethodMapForGlobalCheckings GALGAS_extensionMethodMapForGlobalCheckings::class_func_emptyMap (LOCATION_ARGS) {
   GALGAS_extensionMethodMapForGlobalCheckings result ;
   result.makeNewEmptyMap (THERE) ;
   return result ;
@@ -881,8 +881,8 @@ GALGAS_extensionMethodMapForGlobalCheckings GALGAS_extensionMethodMapForGlobalCh
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_extensionMethodMapForGlobalCheckings GALGAS_extensionMethodMapForGlobalCheckings::constructor_mapWithMapToOverride (const GALGAS_extensionMethodMapForGlobalCheckings & inMapToOverride
-                                                                                                                           COMMA_LOCATION_ARGS) {
+GALGAS_extensionMethodMapForGlobalCheckings GALGAS_extensionMethodMapForGlobalCheckings::class_func_mapWithMapToOverride (const GALGAS_extensionMethodMapForGlobalCheckings & inMapToOverride
+                                                                                                                          COMMA_LOCATION_ARGS) {
   GALGAS_extensionMethodMapForGlobalCheckings result ;
   result.makeNewEmptyMapWithMapToOverride (inMapToOverride COMMA_THERE) ;
   return result ;
@@ -1084,7 +1084,7 @@ GALGAS_extensionSetterMapForGlobalCheckings & GALGAS_extensionSetterMapForGlobal
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_extensionSetterMapForGlobalCheckings GALGAS_extensionSetterMapForGlobalCheckings::constructor_emptyMap (LOCATION_ARGS) {
+GALGAS_extensionSetterMapForGlobalCheckings GALGAS_extensionSetterMapForGlobalCheckings::class_func_emptyMap (LOCATION_ARGS) {
   GALGAS_extensionSetterMapForGlobalCheckings result ;
   result.makeNewEmptyMap (THERE) ;
   return result ;
@@ -1092,8 +1092,8 @@ GALGAS_extensionSetterMapForGlobalCheckings GALGAS_extensionSetterMapForGlobalCh
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_extensionSetterMapForGlobalCheckings GALGAS_extensionSetterMapForGlobalCheckings::constructor_mapWithMapToOverride (const GALGAS_extensionSetterMapForGlobalCheckings & inMapToOverride
-                                                                                                                           COMMA_LOCATION_ARGS) {
+GALGAS_extensionSetterMapForGlobalCheckings GALGAS_extensionSetterMapForGlobalCheckings::class_func_mapWithMapToOverride (const GALGAS_extensionSetterMapForGlobalCheckings & inMapToOverride
+                                                                                                                          COMMA_LOCATION_ARGS) {
   GALGAS_extensionSetterMapForGlobalCheckings result ;
   result.makeNewEmptyMapWithMapToOverride (inMapToOverride COMMA_THERE) ;
   return result ;
@@ -1295,7 +1295,7 @@ GALGAS_extensionGetterMapForGlobalCheckings & GALGAS_extensionGetterMapForGlobal
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_extensionGetterMapForGlobalCheckings GALGAS_extensionGetterMapForGlobalCheckings::constructor_emptyMap (LOCATION_ARGS) {
+GALGAS_extensionGetterMapForGlobalCheckings GALGAS_extensionGetterMapForGlobalCheckings::class_func_emptyMap (LOCATION_ARGS) {
   GALGAS_extensionGetterMapForGlobalCheckings result ;
   result.makeNewEmptyMap (THERE) ;
   return result ;
@@ -1303,8 +1303,8 @@ GALGAS_extensionGetterMapForGlobalCheckings GALGAS_extensionGetterMapForGlobalCh
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_extensionGetterMapForGlobalCheckings GALGAS_extensionGetterMapForGlobalCheckings::constructor_mapWithMapToOverride (const GALGAS_extensionGetterMapForGlobalCheckings & inMapToOverride
-                                                                                                                           COMMA_LOCATION_ARGS) {
+GALGAS_extensionGetterMapForGlobalCheckings GALGAS_extensionGetterMapForGlobalCheckings::class_func_mapWithMapToOverride (const GALGAS_extensionGetterMapForGlobalCheckings & inMapToOverride
+                                                                                                                          COMMA_LOCATION_ARGS) {
   GALGAS_extensionGetterMapForGlobalCheckings result ;
   result.makeNewEmptyMapWithMapToOverride (inMapToOverride COMMA_THERE) ;
   return result ;
@@ -1544,15 +1544,15 @@ AC_GALGAS_list (inSharedArray) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_galgas_33_QualifiedFeatureList GALGAS_galgas_33_QualifiedFeatureList::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+GALGAS_galgas_33_QualifiedFeatureList GALGAS_galgas_33_QualifiedFeatureList::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_galgas_33_QualifiedFeatureList (capCollectionElementArray ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_galgas_33_QualifiedFeatureList GALGAS_galgas_33_QualifiedFeatureList::constructor_listWithValue (const GALGAS_lstring & inOperand0,
-                                                                                                        const GALGAS_lstring & inOperand1
-                                                                                                        COMMA_LOCATION_ARGS) {
+GALGAS_galgas_33_QualifiedFeatureList GALGAS_galgas_33_QualifiedFeatureList::class_func_listWithValue (const GALGAS_lstring & inOperand0,
+                                                                                                       const GALGAS_lstring & inOperand1
+                                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_galgas_33_QualifiedFeatureList result ;
   if (inOperand0.isValid () && inOperand1.isValid ()) {
     result = GALGAS_galgas_33_QualifiedFeatureList (capCollectionElementArray ()) ;
@@ -1754,7 +1754,7 @@ GALGAS_galgas_33_QualifiedFeatureList GALGAS_galgas_33_QualifiedFeatureList::add
 GALGAS_galgas_33_QualifiedFeatureList GALGAS_galgas_33_QualifiedFeatureList::getter_subListWithRange (const GALGAS_range & inRange,
                                                                                                       Compiler * inCompiler
                                                                                                       COMMA_LOCATION_ARGS) const {
-  GALGAS_galgas_33_QualifiedFeatureList result = GALGAS_galgas_33_QualifiedFeatureList::constructor_emptyList (THERE) ;
+  GALGAS_galgas_33_QualifiedFeatureList result = GALGAS_galgas_33_QualifiedFeatureList::class_func_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -1764,7 +1764,7 @@ GALGAS_galgas_33_QualifiedFeatureList GALGAS_galgas_33_QualifiedFeatureList::get
 GALGAS_galgas_33_QualifiedFeatureList GALGAS_galgas_33_QualifiedFeatureList::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                                                       Compiler * inCompiler
                                                                                                       COMMA_LOCATION_ARGS) const {
-  GALGAS_galgas_33_QualifiedFeatureList result = GALGAS_galgas_33_QualifiedFeatureList::constructor_emptyList (THERE) ;
+  GALGAS_galgas_33_QualifiedFeatureList result = GALGAS_galgas_33_QualifiedFeatureList::class_func_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -1774,7 +1774,7 @@ GALGAS_galgas_33_QualifiedFeatureList GALGAS_galgas_33_QualifiedFeatureList::get
 GALGAS_galgas_33_QualifiedFeatureList GALGAS_galgas_33_QualifiedFeatureList::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                                                     Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) const {
-  GALGAS_galgas_33_QualifiedFeatureList result = GALGAS_galgas_33_QualifiedFeatureList::constructor_emptyList (THERE) ;
+  GALGAS_galgas_33_QualifiedFeatureList result = GALGAS_galgas_33_QualifiedFeatureList::class_func_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -1996,9 +1996,9 @@ void cParser_galgas_33_ProjectSyntax::rule_galgas_33_ProjectSyntax_project_5F_co
   GALGAS_lstring var_targetName_2764 ;
   nt_project_5F_header_ (var_majorVersion_2668, var_minorVersion_2699, var_revisionVersion_2730, var_targetName_2764, inCompiler) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7B_ COMMA_SOURCE_FILE ("galgasProject.galgas", 70)) ;
-  GALGAS_lstringlist var_projectSourceList_2800 = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("galgasProject.galgas", 71)) ;
-  GALGAS_lstringlist var_generateFeatureList_2842 = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("galgasProject.galgas", 72)) ;
-  GALGAS_galgas_33_QualifiedFeatureList var_qualifiedFeatureList_2902 = GALGAS_galgas_33_QualifiedFeatureList::constructor_emptyList (SOURCE_FILE ("galgasProject.galgas", 73)) ;
+  GALGAS_lstringlist var_projectSourceList_2800 = GALGAS_lstringlist::class_func_emptyList (SOURCE_FILE ("galgasProject.galgas", 71)) ;
+  GALGAS_lstringlist var_generateFeatureList_2842 = GALGAS_lstringlist::class_func_emptyList (SOURCE_FILE ("galgasProject.galgas", 72)) ;
+  GALGAS_galgas_33_QualifiedFeatureList var_qualifiedFeatureList_2902 = GALGAS_galgas_33_QualifiedFeatureList::class_func_emptyList (SOURCE_FILE ("galgasProject.galgas", 73)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     switch (select_galgas_33_ProjectSyntax_0 (inCompiler)) {
@@ -2102,7 +2102,7 @@ void cParser_galgas_33_ProjectSyntax::rule_galgas_33_ProjectSyntax_project_5F_co
     }
   }
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7D_ COMMA_SOURCE_FILE ("galgasProject.galgas", 144)) ;
-  outArgument_outProjectComponentAST = GALGAS_galgas_33_ProjectComponentAST::constructor_new (var_projectSourceList_2800, var_majorVersion_2668, var_minorVersion_2699, var_revisionVersion_2730, var_generateFeatureList_2842, var_qualifiedFeatureList_2902, var_targetName_2764, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgasProject.galgas", 153)), inCompiler  COMMA_SOURCE_FILE ("galgasProject.galgas", 145)) ;
+  outArgument_outProjectComponentAST = GALGAS_galgas_33_ProjectComponentAST::class_func_new (var_projectSourceList_2800, var_majorVersion_2668, var_minorVersion_2699, var_revisionVersion_2730, var_generateFeatureList_2842, var_qualifiedFeatureList_2902, var_targetName_2764, GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("galgasProject.galgas", 153)), inCompiler  COMMA_SOURCE_FILE ("galgasProject.galgas", 145)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2343,41 +2343,41 @@ GALGAS_AccessControl extensionGetter_accessControl (const GALGAS_AccessControlAS
     break ;
   case GALGAS_AccessControlAST::kEnum_publicAccess:
     {
-      result_result = GALGAS_AccessControl::constructor_publicAccess (SOURCE_FILE ("accessControl.galgas", 163)) ;
+      result_result = GALGAS_AccessControl::class_func_publicAccess (SOURCE_FILE ("accessControl.galgas", 163)) ;
     }
     break ;
   case GALGAS_AccessControlAST::kEnum_protectedAccess:
     {
-      result_result = GALGAS_AccessControl::constructor_protectedAccess (constinArgument_inDeclaringType  COMMA_SOURCE_FILE ("accessControl.galgas", 165)) ;
+      result_result = GALGAS_AccessControl::class_func_protectedAccess (constinArgument_inDeclaringType  COMMA_SOURCE_FILE ("accessControl.galgas", 165)) ;
     }
     break ;
   case GALGAS_AccessControlAST::kEnum_protectedSetAccess:
     {
-      result_result = GALGAS_AccessControl::constructor_protectedSetAccess (constinArgument_inDeclaringType  COMMA_SOURCE_FILE ("accessControl.galgas", 167)) ;
+      result_result = GALGAS_AccessControl::class_func_protectedSetAccess (constinArgument_inDeclaringType  COMMA_SOURCE_FILE ("accessControl.galgas", 167)) ;
     }
     break ;
   case GALGAS_AccessControlAST::kEnum_privateAccess:
     {
-      result_result = GALGAS_AccessControl::constructor_privateAccess (constinArgument_inDeclaringType  COMMA_SOURCE_FILE ("accessControl.galgas", 169)) ;
+      result_result = GALGAS_AccessControl::class_func_privateAccess (constinArgument_inDeclaringType  COMMA_SOURCE_FILE ("accessControl.galgas", 169)) ;
     }
     break ;
   case GALGAS_AccessControlAST::kEnum_privateSetAccess:
     {
-      result_result = GALGAS_AccessControl::constructor_privateSetAccess (constinArgument_inDeclaringType  COMMA_SOURCE_FILE ("accessControl.galgas", 171)) ;
+      result_result = GALGAS_AccessControl::class_func_privateSetAccess (constinArgument_inDeclaringType  COMMA_SOURCE_FILE ("accessControl.galgas", 171)) ;
     }
     break ;
   case GALGAS_AccessControlAST::kEnum_fileprivateAccess:
     {
       const cEnumAssociatedValues_AccessControlAST_fileprivateAccess * extractPtr_5872 = (const cEnumAssociatedValues_AccessControlAST_fileprivateAccess *) (temp_0.unsafePointer ()) ;
       const GALGAS_location extractedValue_5773_declarationLocation = extractPtr_5872->mAssociatedValue0 ;
-      result_result = GALGAS_AccessControl::constructor_fileprivateAccess (extractedValue_5773_declarationLocation  COMMA_SOURCE_FILE ("accessControl.galgas", 173)) ;
+      result_result = GALGAS_AccessControl::class_func_fileprivateAccess (extractedValue_5773_declarationLocation  COMMA_SOURCE_FILE ("accessControl.galgas", 173)) ;
     }
     break ;
   case GALGAS_AccessControlAST::kEnum_fileprivateSetAccess:
     {
       const cEnumAssociatedValues_AccessControlAST_fileprivateSetAccess * extractPtr_6007 = (const cEnumAssociatedValues_AccessControlAST_fileprivateSetAccess *) (temp_0.unsafePointer ()) ;
       const GALGAS_location extractedValue_5905_declarationLocation = extractPtr_6007->mAssociatedValue0 ;
-      result_result = GALGAS_AccessControl::constructor_fileprivateSetAccess (extractedValue_5905_declarationLocation  COMMA_SOURCE_FILE ("accessControl.galgas", 175)) ;
+      result_result = GALGAS_AccessControl::class_func_fileprivateSetAccess (extractedValue_5905_declarationLocation  COMMA_SOURCE_FILE ("accessControl.galgas", 175)) ;
     }
     break ;
   }
@@ -2756,7 +2756,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_if COMMA_SOURCE_FILE ("expression-if.galgas", 21)) ;
   GALGAS_semanticExpressionAST var_ifExpression_1000 ;
   nt_expression_5F_ggs_33__ (var_ifExpression_1000, inCompiler) ;
-  GALGAS_location var_operatorLocation_1021 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-if.galgas", 23)) ;
+  GALGAS_location var_operatorLocation_1021 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-if.galgas", 23)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_then COMMA_SOURCE_FILE ("expression-if.galgas", 24)) ;
   GALGAS_semanticExpressionAST var_thenExpression_1093 ;
   nt_expression_5F_ggs_33__ (var_thenExpression_1093, inCompiler) ;
@@ -2764,7 +2764,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
   GALGAS_semanticExpressionAST var_elseExpression_1146 ;
   nt_expression_5F_ggs_33__ (var_elseExpression_1146, inCompiler) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_end COMMA_SOURCE_FILE ("expression-if.galgas", 28)) ;
-  outArgument_outExpression = GALGAS_ifExpressionAST::constructor_new (var_operatorLocation_1021, var_ifExpression_1000, var_thenExpression_1093, var_elseExpression_1146  COMMA_SOURCE_FILE ("expression-if.galgas", 29)) ;
+  outArgument_outExpression = GALGAS_ifExpressionAST::class_func_new (var_operatorLocation_1021, var_ifExpression_1000, var_thenExpression_1093, var_elseExpression_1146  COMMA_SOURCE_FILE ("expression-if.galgas", 29)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2797,10 +2797,10 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i2_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
                                                                                                 Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
-  GALGAS_location var_operatorLocation_874 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-unary-plus.galgas", 19)) ;
+  GALGAS_location var_operatorLocation_874 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-unary-plus.galgas", 19)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2B_ COMMA_SOURCE_FILE ("expression-unary-plus.galgas", 20)) ;
   nt_factor_5F_ggs_33__ (outArgument_outExpression, inCompiler) ;
-  outArgument_outExpression = GALGAS_unaryPlusExpressionAST::constructor_new (var_operatorLocation_874, outArgument_outExpression  COMMA_SOURCE_FILE ("expression-unary-plus.galgas", 22)) ;
+  outArgument_outExpression = GALGAS_unaryPlusExpressionAST::class_func_new (var_operatorLocation_874, outArgument_outExpression  COMMA_SOURCE_FILE ("expression-unary-plus.galgas", 22)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2823,10 +2823,10 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_
 void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i3_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
                                                                                                 Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
-  GALGAS_location var_operatorLocation_875 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-unary-minus.galgas", 19)) ;
+  GALGAS_location var_operatorLocation_875 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-unary-minus.galgas", 19)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2D_ COMMA_SOURCE_FILE ("expression-unary-minus.galgas", 20)) ;
   nt_factor_5F_ggs_33__ (outArgument_outExpression, inCompiler) ;
-  outArgument_outExpression = GALGAS_unaryMinusExpressionAST::constructor_new (var_operatorLocation_875, outArgument_outExpression  COMMA_SOURCE_FILE ("expression-unary-minus.galgas", 22)) ;
+  outArgument_outExpression = GALGAS_unaryMinusExpressionAST::class_func_new (var_operatorLocation_875, outArgument_outExpression  COMMA_SOURCE_FILE ("expression-unary-minus.galgas", 22)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2851,7 +2851,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
   outArgument_outExpression.drop () ; // Release 'out' argument
   GALGAS_lstring var_identifier_827 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("expression-var.galgas", 18)) ;
-  outArgument_outExpression = GALGAS_varInExpressionAST::constructor_new (var_identifier_827  COMMA_SOURCE_FILE ("expression-var.galgas", 19)) ;
+  outArgument_outExpression = GALGAS_varInExpressionAST::class_func_new (var_identifier_827  COMMA_SOURCE_FILE ("expression-var.galgas", 19)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2872,7 +2872,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_output_5F_expression_5F_list_5F_ggs_33__i5_ (GALGAS_actualOutputExpressionList & outArgument_outExpressionList,
                                                                                                                       Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outExpressionList.drop () ; // Release 'out' argument
-  outArgument_outExpressionList = GALGAS_actualOutputExpressionList::constructor_emptyList (SOURCE_FILE ("expression-output-expression-list.galgas", 20)) ;
+  outArgument_outExpressionList = GALGAS_actualOutputExpressionList::class_func_emptyList (SOURCE_FILE ("expression-output-expression-list.galgas", 20)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     if (select_galgas_33_ExpressionSyntax_0 (inCompiler) == 2) {
@@ -2880,7 +2880,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_output_
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__21_ COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 23)) ;
       GALGAS_semanticExpressionAST var_expression_1035 ;
       nt_expression_5F_ggs_33__ (var_expression_1035, inCompiler) ;
-      outArgument_outExpressionList.addAssign_operation (var_selector_974, var_expression_1035, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 25))  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 25)) ;
+      outArgument_outExpressionList.addAssign_operation (var_selector_974, var_expression_1035, GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 25))  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 25)) ;
     }else{
       repeatFlag_0 = false ;
     }
@@ -2922,7 +2922,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
                                                                                                  Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_true COMMA_SOURCE_FILE ("expression-true-false.galgas", 24)) ;
-  outArgument_outExpression = GALGAS_trueExpressionAST::constructor_new (GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-true-false.galgas", 25))  COMMA_SOURCE_FILE ("expression-true-false.galgas", 25)) ;
+  outArgument_outExpression = GALGAS_trueExpressionAST::class_func_new (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-true-false.galgas", 25))  COMMA_SOURCE_FILE ("expression-true-false.galgas", 25)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2944,7 +2944,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
                                                                                                  Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_false COMMA_SOURCE_FILE ("expression-true-false.galgas", 31)) ;
-  outArgument_outExpression = GALGAS_falseExpressionAST::constructor_new (GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-true-false.galgas", 32))  COMMA_SOURCE_FILE ("expression-true-false.galgas", 32)) ;
+  outArgument_outExpression = GALGAS_falseExpressionAST::class_func_new (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-true-false.galgas", 32))  COMMA_SOURCE_FILE ("expression-true-false.galgas", 32)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2965,7 +2965,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i8_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
                                                                                                  Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
-  GALGAS_stringlist var_literalStringList_878 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("expression-literal-string.galgas", 19)) ;
+  GALGAS_stringlist var_literalStringList_878 = GALGAS_stringlist::class_func_emptyList (SOURCE_FILE ("expression-literal-string.galgas", 19)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     GALGAS_lstring var_literalString_934 = inCompiler->synthetizedAttribute_tokenString () ;
@@ -2976,7 +2976,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
       repeatFlag_0 = false ;
     }
   }
-  outArgument_outExpression = GALGAS_literalStringExpressionAST::constructor_new (GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-literal-string.galgas", 25)), var_literalStringList_878  COMMA_SOURCE_FILE ("expression-literal-string.galgas", 25)) ;
+  outArgument_outExpression = GALGAS_literalStringExpressionAST::class_func_new (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-literal-string.galgas", 25)), var_literalStringList_878  COMMA_SOURCE_FILE ("expression-literal-string.galgas", 25)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3013,7 +3013,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
   outArgument_outExpression.drop () ; // Release 'out' argument
   GALGAS_lchar var_literalChar_837 = inCompiler->synthetizedAttribute_charValue () ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__27_char_27_ COMMA_SOURCE_FILE ("expression-literal-char.galgas", 18)) ;
-  outArgument_outExpression = GALGAS_literalCharExpressionAST::constructor_new (var_literalChar_837  COMMA_SOURCE_FILE ("expression-literal-char.galgas", 19)) ;
+  outArgument_outExpression = GALGAS_literalCharExpressionAST::class_func_new (var_literalChar_837  COMMA_SOURCE_FILE ("expression-literal-char.galgas", 19)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3036,7 +3036,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
   outArgument_outExpression.drop () ; // Release 'out' argument
   GALGAS_ldouble var_literalDouble_843 = inCompiler->synthetizedAttribute_floatValue () ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_double_2E_xxx COMMA_SOURCE_FILE ("expression-literal-double.galgas", 18)) ;
-  outArgument_outExpression = GALGAS_literalDoubleExpressionAST::constructor_new (var_literalDouble_843  COMMA_SOURCE_FILE ("expression-literal-double.galgas", 19)) ;
+  outArgument_outExpression = GALGAS_literalDoubleExpressionAST::class_func_new (var_literalDouble_843  COMMA_SOURCE_FILE ("expression-literal-double.galgas", 19)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3059,7 +3059,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
   outArgument_outExpression.drop () ; // Release 'out' argument
   GALGAS_lbigint var_literalInt_1715 = inCompiler->synthetizedAttribute_bigintValue () ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_literalInt COMMA_SOURCE_FILE ("expression-literal-integer.galgas", 42)) ;
-  outArgument_outExpression = GALGAS_literalBigIntExpressionAST::constructor_new (var_literalInt_1715  COMMA_SOURCE_FILE ("expression-literal-integer.galgas", 43)) ;
+  outArgument_outExpression = GALGAS_literalBigIntExpressionAST::class_func_new (var_literalInt_1715  COMMA_SOURCE_FILE ("expression-literal-integer.galgas", 43)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3085,68 +3085,68 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_relatio
   while (repeatFlag_0) {
     switch (select_galgas_33_ExpressionSyntax_2 (inCompiler)) {
     case 2: {
-      GALGAS_location var_operatorLocation_1365 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-comparison.galgas", 37)) ;
+      GALGAS_location var_operatorLocation_1365 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-comparison.galgas", 37)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3D__3D_ COMMA_SOURCE_FILE ("expression-comparison.galgas", 38)) ;
       GALGAS_semanticExpressionAST var_leftOperand_1420 = outArgument_outExpression ;
       GALGAS_semanticExpressionAST var_rightOperand_1484 ;
       nt_simple_5F_expression_5F_ggs_33__ (var_rightOperand_1484, inCompiler) ;
-      outArgument_outExpression = GALGAS_comparisonExpressionAST::constructor_new (var_operatorLocation_1365, var_leftOperand_1420, GALGAS_comparison::constructor_equal (SOURCE_FILE ("expression-comparison.galgas", 41)), var_rightOperand_1484  COMMA_SOURCE_FILE ("expression-comparison.galgas", 41)) ;
+      outArgument_outExpression = GALGAS_comparisonExpressionAST::class_func_new (var_operatorLocation_1365, var_leftOperand_1420, GALGAS_comparison::class_func_equal (SOURCE_FILE ("expression-comparison.galgas", 41)), var_rightOperand_1484  COMMA_SOURCE_FILE ("expression-comparison.galgas", 41)) ;
     } break ;
     case 3: {
-      GALGAS_location var_operatorLocation_1623 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-comparison.galgas", 43)) ;
+      GALGAS_location var_operatorLocation_1623 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-comparison.galgas", 43)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__21__3D_ COMMA_SOURCE_FILE ("expression-comparison.galgas", 44)) ;
       GALGAS_semanticExpressionAST var_leftOperand_1678 = outArgument_outExpression ;
       GALGAS_semanticExpressionAST var_rightOperand_1742 ;
       nt_simple_5F_expression_5F_ggs_33__ (var_rightOperand_1742, inCompiler) ;
-      outArgument_outExpression = GALGAS_comparisonExpressionAST::constructor_new (var_operatorLocation_1623, var_leftOperand_1678, GALGAS_comparison::constructor_notEqual (SOURCE_FILE ("expression-comparison.galgas", 47)), var_rightOperand_1742  COMMA_SOURCE_FILE ("expression-comparison.galgas", 47)) ;
+      outArgument_outExpression = GALGAS_comparisonExpressionAST::class_func_new (var_operatorLocation_1623, var_leftOperand_1678, GALGAS_comparison::class_func_notEqual (SOURCE_FILE ("expression-comparison.galgas", 47)), var_rightOperand_1742  COMMA_SOURCE_FILE ("expression-comparison.galgas", 47)) ;
     } break ;
     case 4: {
-      GALGAS_location var_operatorLocation_1884 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-comparison.galgas", 49)) ;
+      GALGAS_location var_operatorLocation_1884 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-comparison.galgas", 49)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3C__3D_ COMMA_SOURCE_FILE ("expression-comparison.galgas", 50)) ;
       GALGAS_semanticExpressionAST var_leftOperand_1939 = outArgument_outExpression ;
       GALGAS_semanticExpressionAST var_rightOperand_2003 ;
       nt_simple_5F_expression_5F_ggs_33__ (var_rightOperand_2003, inCompiler) ;
-      outArgument_outExpression = GALGAS_comparisonExpressionAST::constructor_new (var_operatorLocation_1884, var_leftOperand_1939, GALGAS_comparison::constructor_lowerOrEqual (SOURCE_FILE ("expression-comparison.galgas", 53)), var_rightOperand_2003  COMMA_SOURCE_FILE ("expression-comparison.galgas", 53)) ;
+      outArgument_outExpression = GALGAS_comparisonExpressionAST::class_func_new (var_operatorLocation_1884, var_leftOperand_1939, GALGAS_comparison::class_func_lowerOrEqual (SOURCE_FILE ("expression-comparison.galgas", 53)), var_rightOperand_2003  COMMA_SOURCE_FILE ("expression-comparison.galgas", 53)) ;
     } break ;
     case 5: {
-      GALGAS_location var_operatorLocation_2149 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-comparison.galgas", 55)) ;
+      GALGAS_location var_operatorLocation_2149 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-comparison.galgas", 55)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3E__3D_ COMMA_SOURCE_FILE ("expression-comparison.galgas", 56)) ;
       GALGAS_semanticExpressionAST var_leftOperand_2204 = outArgument_outExpression ;
       GALGAS_semanticExpressionAST var_rightOperand_2268 ;
       nt_simple_5F_expression_5F_ggs_33__ (var_rightOperand_2268, inCompiler) ;
-      outArgument_outExpression = GALGAS_comparisonExpressionAST::constructor_new (var_operatorLocation_2149, var_leftOperand_2204, GALGAS_comparison::constructor_greaterOrEqual (SOURCE_FILE ("expression-comparison.galgas", 59)), var_rightOperand_2268  COMMA_SOURCE_FILE ("expression-comparison.galgas", 59)) ;
+      outArgument_outExpression = GALGAS_comparisonExpressionAST::class_func_new (var_operatorLocation_2149, var_leftOperand_2204, GALGAS_comparison::class_func_greaterOrEqual (SOURCE_FILE ("expression-comparison.galgas", 59)), var_rightOperand_2268  COMMA_SOURCE_FILE ("expression-comparison.galgas", 59)) ;
     } break ;
     case 6: {
-      GALGAS_location var_operatorLocation_2416 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-comparison.galgas", 61)) ;
+      GALGAS_location var_operatorLocation_2416 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-comparison.galgas", 61)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3E_ COMMA_SOURCE_FILE ("expression-comparison.galgas", 62)) ;
       GALGAS_semanticExpressionAST var_leftOperand_2470 = outArgument_outExpression ;
       GALGAS_semanticExpressionAST var_rightOperand_2534 ;
       nt_simple_5F_expression_5F_ggs_33__ (var_rightOperand_2534, inCompiler) ;
-      outArgument_outExpression = GALGAS_comparisonExpressionAST::constructor_new (var_operatorLocation_2416, var_leftOperand_2470, GALGAS_comparison::constructor_greaterThan (SOURCE_FILE ("expression-comparison.galgas", 65)), var_rightOperand_2534  COMMA_SOURCE_FILE ("expression-comparison.galgas", 65)) ;
+      outArgument_outExpression = GALGAS_comparisonExpressionAST::class_func_new (var_operatorLocation_2416, var_leftOperand_2470, GALGAS_comparison::class_func_greaterThan (SOURCE_FILE ("expression-comparison.galgas", 65)), var_rightOperand_2534  COMMA_SOURCE_FILE ("expression-comparison.galgas", 65)) ;
     } break ;
     case 7: {
-      GALGAS_location var_operatorLocation_2679 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-comparison.galgas", 67)) ;
+      GALGAS_location var_operatorLocation_2679 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-comparison.galgas", 67)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3C_ COMMA_SOURCE_FILE ("expression-comparison.galgas", 68)) ;
       GALGAS_semanticExpressionAST var_leftOperand_2733 = outArgument_outExpression ;
       GALGAS_semanticExpressionAST var_rightOperand_2797 ;
       nt_simple_5F_expression_5F_ggs_33__ (var_rightOperand_2797, inCompiler) ;
-      outArgument_outExpression = GALGAS_comparisonExpressionAST::constructor_new (var_operatorLocation_2679, var_leftOperand_2733, GALGAS_comparison::constructor_lowerThan (SOURCE_FILE ("expression-comparison.galgas", 71)), var_rightOperand_2797  COMMA_SOURCE_FILE ("expression-comparison.galgas", 71)) ;
+      outArgument_outExpression = GALGAS_comparisonExpressionAST::class_func_new (var_operatorLocation_2679, var_leftOperand_2733, GALGAS_comparison::class_func_lowerThan (SOURCE_FILE ("expression-comparison.galgas", 71)), var_rightOperand_2797  COMMA_SOURCE_FILE ("expression-comparison.galgas", 71)) ;
     } break ;
     case 8: {
-      GALGAS_location var_operatorLocation_2940 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-comparison.galgas", 73)) ;
+      GALGAS_location var_operatorLocation_2940 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-comparison.galgas", 73)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3D__3D__3D_ COMMA_SOURCE_FILE ("expression-comparison.galgas", 74)) ;
       GALGAS_semanticExpressionAST var_leftOperand_2996 = outArgument_outExpression ;
       GALGAS_semanticExpressionAST var_rightOperand_3060 ;
       nt_simple_5F_expression_5F_ggs_33__ (var_rightOperand_3060, inCompiler) ;
-      outArgument_outExpression = GALGAS_comparisonExpressionAST::constructor_new (var_operatorLocation_2940, var_leftOperand_2996, GALGAS_comparison::constructor_sameInstance (SOURCE_FILE ("expression-comparison.galgas", 77)), var_rightOperand_3060  COMMA_SOURCE_FILE ("expression-comparison.galgas", 77)) ;
+      outArgument_outExpression = GALGAS_comparisonExpressionAST::class_func_new (var_operatorLocation_2940, var_leftOperand_2996, GALGAS_comparison::class_func_sameInstance (SOURCE_FILE ("expression-comparison.galgas", 77)), var_rightOperand_3060  COMMA_SOURCE_FILE ("expression-comparison.galgas", 77)) ;
     } break ;
     case 9: {
-      GALGAS_location var_operatorLocation_3206 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-comparison.galgas", 79)) ;
+      GALGAS_location var_operatorLocation_3206 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-comparison.galgas", 79)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__21__3D__3D_ COMMA_SOURCE_FILE ("expression-comparison.galgas", 80)) ;
       GALGAS_semanticExpressionAST var_leftOperand_3262 = outArgument_outExpression ;
       GALGAS_semanticExpressionAST var_rightOperand_3326 ;
       nt_simple_5F_expression_5F_ggs_33__ (var_rightOperand_3326, inCompiler) ;
-      outArgument_outExpression = GALGAS_comparisonExpressionAST::constructor_new (var_operatorLocation_3206, var_leftOperand_3262, GALGAS_comparison::constructor_differentInstances (SOURCE_FILE ("expression-comparison.galgas", 83)), var_rightOperand_3326  COMMA_SOURCE_FILE ("expression-comparison.galgas", 83)) ;
+      outArgument_outExpression = GALGAS_comparisonExpressionAST::class_func_new (var_operatorLocation_3206, var_leftOperand_3262, GALGAS_comparison::class_func_differentInstances (SOURCE_FILE ("expression-comparison.galgas", 83)), var_rightOperand_3326  COMMA_SOURCE_FILE ("expression-comparison.galgas", 83)) ;
     } break ;
     default:
       repeatFlag_0 = false ;
@@ -3258,52 +3258,52 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_simple_
   while (repeatFlag_0) {
     switch (select_galgas_33_ExpressionSyntax_3 (inCompiler)) {
     case 2: {
-      GALGAS_location var_operatorLocation_2667 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-additive.galgas", 63)) ;
+      GALGAS_location var_operatorLocation_2667 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-additive.galgas", 63)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3C__3C_ COMMA_SOURCE_FILE ("expression-additive.galgas", 64)) ;
       GALGAS_semanticExpressionAST var_leftOperand_2722 = outArgument_outExpression ;
       GALGAS_semanticExpressionAST var_rightOperand_2773 ;
       nt_term_5F_ggs_33__ (var_rightOperand_2773, inCompiler) ;
-      outArgument_outExpression = GALGAS_leftShiftExpressionAST::constructor_new (var_operatorLocation_2667, var_leftOperand_2722, var_rightOperand_2773  COMMA_SOURCE_FILE ("expression-additive.galgas", 67)) ;
+      outArgument_outExpression = GALGAS_leftShiftExpressionAST::class_func_new (var_operatorLocation_2667, var_leftOperand_2722, var_rightOperand_2773  COMMA_SOURCE_FILE ("expression-additive.galgas", 67)) ;
     } break ;
     case 3: {
-      GALGAS_location var_operatorLocation_2903 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-additive.galgas", 69)) ;
+      GALGAS_location var_operatorLocation_2903 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-additive.galgas", 69)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3E__3E_ COMMA_SOURCE_FILE ("expression-additive.galgas", 70)) ;
       GALGAS_semanticExpressionAST var_leftOperand_2958 = outArgument_outExpression ;
       GALGAS_semanticExpressionAST var_rightOperand_3009 ;
       nt_term_5F_ggs_33__ (var_rightOperand_3009, inCompiler) ;
-      outArgument_outExpression = GALGAS_rightShiftExpressionAST::constructor_new (var_operatorLocation_2903, var_leftOperand_2958, var_rightOperand_3009  COMMA_SOURCE_FILE ("expression-additive.galgas", 73)) ;
+      outArgument_outExpression = GALGAS_rightShiftExpressionAST::class_func_new (var_operatorLocation_2903, var_leftOperand_2958, var_rightOperand_3009  COMMA_SOURCE_FILE ("expression-additive.galgas", 73)) ;
     } break ;
     case 4: {
-      GALGAS_location var_operatorLocation_3140 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-additive.galgas", 75)) ;
+      GALGAS_location var_operatorLocation_3140 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-additive.galgas", 75)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2B_ COMMA_SOURCE_FILE ("expression-additive.galgas", 76)) ;
       GALGAS_semanticExpressionAST var_leftOperand_3194 = outArgument_outExpression ;
       GALGAS_semanticExpressionAST var_rightOperand_3245 ;
       nt_term_5F_ggs_33__ (var_rightOperand_3245, inCompiler) ;
-      outArgument_outExpression = GALGAS_addExpressionAST::constructor_new (var_operatorLocation_3140, var_leftOperand_3194, var_rightOperand_3245  COMMA_SOURCE_FILE ("expression-additive.galgas", 79)) ;
+      outArgument_outExpression = GALGAS_addExpressionAST::class_func_new (var_operatorLocation_3140, var_leftOperand_3194, var_rightOperand_3245  COMMA_SOURCE_FILE ("expression-additive.galgas", 79)) ;
     } break ;
     case 5: {
-      GALGAS_location var_operatorLocation_3369 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-additive.galgas", 81)) ;
+      GALGAS_location var_operatorLocation_3369 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-additive.galgas", 81)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__26__2B_ COMMA_SOURCE_FILE ("expression-additive.galgas", 82)) ;
       GALGAS_semanticExpressionAST var_leftOperand_3424 = outArgument_outExpression ;
       GALGAS_semanticExpressionAST var_rightOperand_3475 ;
       nt_term_5F_ggs_33__ (var_rightOperand_3475, inCompiler) ;
-      outArgument_outExpression = GALGAS_addExpressionNoOverflowAST::constructor_new (var_operatorLocation_3369, var_leftOperand_3424, var_rightOperand_3475  COMMA_SOURCE_FILE ("expression-additive.galgas", 85)) ;
+      outArgument_outExpression = GALGAS_addExpressionNoOverflowAST::class_func_new (var_operatorLocation_3369, var_leftOperand_3424, var_rightOperand_3475  COMMA_SOURCE_FILE ("expression-additive.galgas", 85)) ;
     } break ;
     case 6: {
-      GALGAS_location var_operatorLocation_3609 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-additive.galgas", 87)) ;
+      GALGAS_location var_operatorLocation_3609 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-additive.galgas", 87)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2D_ COMMA_SOURCE_FILE ("expression-additive.galgas", 88)) ;
       GALGAS_semanticExpressionAST var_leftOperand_3663 = outArgument_outExpression ;
       GALGAS_semanticExpressionAST var_rightOperand_3714 ;
       nt_term_5F_ggs_33__ (var_rightOperand_3714, inCompiler) ;
-      outArgument_outExpression = GALGAS_subExpressionAST::constructor_new (var_operatorLocation_3609, var_leftOperand_3663, var_rightOperand_3714  COMMA_SOURCE_FILE ("expression-additive.galgas", 91)) ;
+      outArgument_outExpression = GALGAS_subExpressionAST::class_func_new (var_operatorLocation_3609, var_leftOperand_3663, var_rightOperand_3714  COMMA_SOURCE_FILE ("expression-additive.galgas", 91)) ;
     } break ;
     case 7: {
-      GALGAS_location var_operatorLocation_3838 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-additive.galgas", 93)) ;
+      GALGAS_location var_operatorLocation_3838 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-additive.galgas", 93)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__26__2D_ COMMA_SOURCE_FILE ("expression-additive.galgas", 94)) ;
       GALGAS_semanticExpressionAST var_leftOperand_3893 = outArgument_outExpression ;
       GALGAS_semanticExpressionAST var_rightOperand_3944 ;
       nt_term_5F_ggs_33__ (var_rightOperand_3944, inCompiler) ;
-      outArgument_outExpression = GALGAS_subExpressionNoOverflowAST::constructor_new (var_operatorLocation_3838, var_leftOperand_3893, var_rightOperand_3944  COMMA_SOURCE_FILE ("expression-additive.galgas", 97)) ;
+      outArgument_outExpression = GALGAS_subExpressionNoOverflowAST::class_func_new (var_operatorLocation_3838, var_leftOperand_3893, var_rightOperand_3944  COMMA_SOURCE_FILE ("expression-additive.galgas", 97)) ;
     } break ;
     default:
       repeatFlag_0 = false ;
@@ -3399,44 +3399,44 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_term_5F
   while (repeatFlag_0) {
     switch (select_galgas_33_ExpressionSyntax_4 (inCompiler)) {
     case 2: {
-      GALGAS_location var_operatorLocation_2335 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 55)) ;
+      GALGAS_location var_operatorLocation_2335 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 55)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2A_ COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 56)) ;
       GALGAS_semanticExpressionAST var_leftOperand_2389 = outArgument_outExpression ;
       GALGAS_semanticExpressionAST var_rightOperand_2465 ;
       nt_factor_5F_ggs_33__ (var_rightOperand_2465, inCompiler) ;
-      outArgument_outExpression = GALGAS_multiplicationExpressionAST::constructor_new (var_operatorLocation_2335, var_leftOperand_2389, var_rightOperand_2465  COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 59)) ;
+      outArgument_outExpression = GALGAS_multiplicationExpressionAST::class_func_new (var_operatorLocation_2335, var_leftOperand_2389, var_rightOperand_2465  COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 59)) ;
     } break ;
     case 3: {
-      GALGAS_location var_operatorLocation_2600 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 61)) ;
+      GALGAS_location var_operatorLocation_2600 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 61)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__26__2A_ COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 62)) ;
       GALGAS_semanticExpressionAST var_leftOperand_2655 = outArgument_outExpression ;
       GALGAS_semanticExpressionAST var_rightOperand_2731 ;
       nt_factor_5F_ggs_33__ (var_rightOperand_2731, inCompiler) ;
-      outArgument_outExpression = GALGAS_multiplicationExpressionNoOverflowAST::constructor_new (var_operatorLocation_2600, var_leftOperand_2655, var_rightOperand_2731  COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 65)) ;
+      outArgument_outExpression = GALGAS_multiplicationExpressionNoOverflowAST::class_func_new (var_operatorLocation_2600, var_leftOperand_2655, var_rightOperand_2731  COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 65)) ;
     } break ;
     case 4: {
-      GALGAS_location var_operatorLocation_2876 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 67)) ;
+      GALGAS_location var_operatorLocation_2876 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 67)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2F_ COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 68)) ;
       GALGAS_semanticExpressionAST var_leftOperand_2930 = outArgument_outExpression ;
       GALGAS_semanticExpressionAST var_rightOperand_2983 ;
       nt_factor_5F_ggs_33__ (var_rightOperand_2983, inCompiler) ;
-      outArgument_outExpression = GALGAS_divisionExpressionAST::constructor_new (var_operatorLocation_2876, var_leftOperand_2930, var_rightOperand_2983  COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 71)) ;
+      outArgument_outExpression = GALGAS_divisionExpressionAST::class_func_new (var_operatorLocation_2876, var_leftOperand_2930, var_rightOperand_2983  COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 71)) ;
     } break ;
     case 5: {
-      GALGAS_location var_operatorLocation_3112 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 73)) ;
+      GALGAS_location var_operatorLocation_3112 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 73)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__26__2F_ COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 74)) ;
       GALGAS_semanticExpressionAST var_leftOperand_3167 = outArgument_outExpression ;
       GALGAS_semanticExpressionAST var_rightOperand_3220 ;
       nt_factor_5F_ggs_33__ (var_rightOperand_3220, inCompiler) ;
-      outArgument_outExpression = GALGAS_divisionExpressionNoOverflowAST::constructor_new (var_operatorLocation_3112, var_leftOperand_3167, var_rightOperand_3220  COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 77)) ;
+      outArgument_outExpression = GALGAS_divisionExpressionNoOverflowAST::class_func_new (var_operatorLocation_3112, var_leftOperand_3167, var_rightOperand_3220  COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 77)) ;
     } break ;
     case 6: {
-      GALGAS_location var_operatorLocation_3359 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 79)) ;
+      GALGAS_location var_operatorLocation_3359 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 79)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_mod COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 80)) ;
       GALGAS_semanticExpressionAST var_leftOperand_3415 = outArgument_outExpression ;
       GALGAS_semanticExpressionAST var_rightOperand_3468 ;
       nt_factor_5F_ggs_33__ (var_rightOperand_3468, inCompiler) ;
-      outArgument_outExpression = GALGAS_moduloExpressionAST::constructor_new (var_operatorLocation_3359, var_leftOperand_3415, var_rightOperand_3468  COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 83)) ;
+      outArgument_outExpression = GALGAS_moduloExpressionAST::class_func_new (var_operatorLocation_3359, var_leftOperand_3415, var_rightOperand_3468  COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 83)) ;
     } break ;
     default:
       repeatFlag_0 = false ;
@@ -3524,38 +3524,38 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_express
   case 1: {
   } break ;
   case 2: {
-    GALGAS_location var_endOfReceiverExpression_1606 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-is-as.galgas", 41)) ;
+    GALGAS_location var_endOfReceiverExpression_1606 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-is-as.galgas", 41)) ;
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_is COMMA_SOURCE_FILE ("expression-is-as.galgas", 42)) ;
     GALGAS_dynamicTypeComparisonKind var_kind_1695 ;
     switch (select_galgas_33_ExpressionSyntax_6 (inCompiler)) {
     case 1: {
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3D__3D_ COMMA_SOURCE_FILE ("expression-is-as.galgas", 45)) ;
-      var_kind_1695 = GALGAS_dynamicTypeComparisonKind::constructor_equal (SOURCE_FILE ("expression-is-as.galgas", 46)) ;
+      var_kind_1695 = GALGAS_dynamicTypeComparisonKind::class_func_equal (SOURCE_FILE ("expression-is-as.galgas", 46)) ;
     } break ;
     case 2: {
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3E__3D_ COMMA_SOURCE_FILE ("expression-is-as.galgas", 48)) ;
-      var_kind_1695 = GALGAS_dynamicTypeComparisonKind::constructor_inherited (SOURCE_FILE ("expression-is-as.galgas", 49)) ;
+      var_kind_1695 = GALGAS_dynamicTypeComparisonKind::class_func_inherited (SOURCE_FILE ("expression-is-as.galgas", 49)) ;
     } break ;
     case 3: {
-      var_kind_1695 = GALGAS_dynamicTypeComparisonKind::constructor_inherited (SOURCE_FILE ("expression-is-as.galgas", 51)) ;
+      var_kind_1695 = GALGAS_dynamicTypeComparisonKind::class_func_inherited (SOURCE_FILE ("expression-is-as.galgas", 51)) ;
     } break ;
     case 4: {
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3E_ COMMA_SOURCE_FILE ("expression-is-as.galgas", 53)) ;
-      var_kind_1695 = GALGAS_dynamicTypeComparisonKind::constructor_strictlyInherited (SOURCE_FILE ("expression-is-as.galgas", 54)) ;
+      var_kind_1695 = GALGAS_dynamicTypeComparisonKind::class_func_strictlyInherited (SOURCE_FILE ("expression-is-as.galgas", 54)) ;
     } break ;
     default:
       break ;
     }
     GALGAS_lstring var_typeName_1915 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__40_type COMMA_SOURCE_FILE ("expression-is-as.galgas", 56)) ;
-    outArgument_outExpression = GALGAS_testDynamicClassInExpressionAST::constructor_new (outArgument_outExpression, var_endOfReceiverExpression_1606, var_kind_1695, var_typeName_1915  COMMA_SOURCE_FILE ("expression-is-as.galgas", 57)) ;
+    outArgument_outExpression = GALGAS_testDynamicClassInExpressionAST::class_func_new (outArgument_outExpression, var_endOfReceiverExpression_1606, var_kind_1695, var_typeName_1915  COMMA_SOURCE_FILE ("expression-is-as.galgas", 57)) ;
   } break ;
   case 3: {
-    GALGAS_location var_endOfReceiverExpression_2098 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-is-as.galgas", 64)) ;
+    GALGAS_location var_endOfReceiverExpression_2098 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-is-as.galgas", 64)) ;
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_as COMMA_SOURCE_FILE ("expression-is-as.galgas", 65)) ;
     GALGAS_lstring var_typeName_2169 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__40_type COMMA_SOURCE_FILE ("expression-is-as.galgas", 66)) ;
-    outArgument_outExpression = GALGAS_castInExpressionAST::constructor_new (outArgument_outExpression, var_endOfReceiverExpression_2098, var_typeName_2169  COMMA_SOURCE_FILE ("expression-is-as.galgas", 67)) ;
+    outArgument_outExpression = GALGAS_castInExpressionAST::class_func_new (outArgument_outExpression, var_endOfReceiverExpression_2098, var_typeName_2169  COMMA_SOURCE_FILE ("expression-is-as.galgas", 67)) ;
   } break ;
   default:
     break ;
@@ -3648,7 +3648,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("expression-option.galgas", 24)) ;
   GALGAS_lstring var_getterName_1058 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("expression-option.galgas", 25)) ;
-  outArgument_outExpression = GALGAS_optionExpressionAST::constructor_new (var_optionComponentName_941, var_optionName_1025, var_getterName_1058  COMMA_SOURCE_FILE ("expression-option.galgas", 26)) ;
+  outArgument_outExpression = GALGAS_optionExpressionAST::class_func_new (var_optionComponentName_941, var_optionName_1025, var_getterName_1058  COMMA_SOURCE_FILE ("expression-option.galgas", 26)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__5D_ COMMA_SOURCE_FILE ("expression-option.galgas", 27)) ;
 }
 
@@ -3691,7 +3691,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("expression-option.galgas", 36)) ;
   GALGAS_lstring var_getterName_1442 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("expression-option.galgas", 37)) ;
-  outArgument_outExpression = GALGAS_optionExpressionAST::constructor_new (GALGAS_lstring::constructor_new (GALGAS_string ("galgas_builtin_options"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-option.galgas", 38)), inCompiler  COMMA_SOURCE_FILE ("expression-option.galgas", 38)), var_optionName_1409, var_getterName_1442  COMMA_SOURCE_FILE ("expression-option.galgas", 38)) ;
+  outArgument_outExpression = GALGAS_optionExpressionAST::class_func_new (GALGAS_lstring::class_func_new (GALGAS_string ("galgas_builtin_options"), GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-option.galgas", 38)), inCompiler  COMMA_SOURCE_FILE ("expression-option.galgas", 38)), var_optionName_1409, var_getterName_1442  COMMA_SOURCE_FILE ("expression-option.galgas", 38)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__5D_ COMMA_SOURCE_FILE ("expression-option.galgas", 39)) ;
 }
 
@@ -3730,7 +3730,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3A_ COMMA_SOURCE_FILE ("expression-lexique.galgas", 22)) ;
   GALGAS_lstring var_getterName_962 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("expression-lexique.galgas", 23)) ;
-  outArgument_outExpression = GALGAS_lexiqueIntrospectionExpressionAST::constructor_new (var_lexiqueName_920, var_getterName_962  COMMA_SOURCE_FILE ("expression-lexique.galgas", 24)) ;
+  outArgument_outExpression = GALGAS_lexiqueIntrospectionExpressionAST::class_func_new (var_lexiqueName_920, var_getterName_962  COMMA_SOURCE_FILE ("expression-lexique.galgas", 24)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__5D_ COMMA_SOURCE_FILE ("expression-lexique.galgas", 25)) ;
 }
 
@@ -3769,7 +3769,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("expression-filewrapper.galgas", 35)) ;
   switch (select_galgas_33_ExpressionSyntax_7 (inCompiler)) {
   case 1: {
-    outArgument_outExpression = GALGAS_filewrapperObjectInstanciationInExpressionAST::constructor_new (var_filewrapperName_1484  COMMA_SOURCE_FILE ("expression-filewrapper.galgas", 37)) ;
+    outArgument_outExpression = GALGAS_filewrapperObjectInstanciationInExpressionAST::class_func_new (var_filewrapperName_1484  COMMA_SOURCE_FILE ("expression-filewrapper.galgas", 37)) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2E_ COMMA_SOURCE_FILE ("expression-filewrapper.galgas", 41)) ;
@@ -3777,14 +3777,14 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
     case 1: {
       GALGAS_lstring var_filePath_1712 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__22_string_22_ COMMA_SOURCE_FILE ("expression-filewrapper.galgas", 43)) ;
-      outArgument_outExpression = GALGAS_filewrapperInExpressionAST::constructor_new (var_filewrapperName_1484, var_filePath_1712  COMMA_SOURCE_FILE ("expression-filewrapper.galgas", 44)) ;
+      outArgument_outExpression = GALGAS_filewrapperInExpressionAST::class_func_new (var_filewrapperName_1484, var_filePath_1712  COMMA_SOURCE_FILE ("expression-filewrapper.galgas", 44)) ;
     } break ;
     case 2: {
       GALGAS_lstring var_filewrapperTemplateName_1880 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("expression-filewrapper.galgas", 49)) ;
       GALGAS_actualOutputExpressionList var_expressionList_1975 ;
       nt_output_5F_expression_5F_list_5F_ggs_33__ (var_expressionList_1975, inCompiler) ;
-      outArgument_outExpression = GALGAS_filewrapperTemplateInExpressionAST::constructor_new (var_filewrapperName_1484, var_filewrapperTemplateName_1880, var_expressionList_1975  COMMA_SOURCE_FILE ("expression-filewrapper.galgas", 51)) ;
+      outArgument_outExpression = GALGAS_filewrapperTemplateInExpressionAST::class_func_new (var_filewrapperName_1484, var_filewrapperTemplateName_1880, var_expressionList_1975  COMMA_SOURCE_FILE ("expression-filewrapper.galgas", 51)) ;
     } break ;
     default:
       break ;
@@ -3863,7 +3863,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
                                                                                                   Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__5B_ COMMA_SOURCE_FILE ("expression-getter-call.galgas", 10)) ;
-  GALGAS_location var_startLocation_530 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 12)) ;
+  GALGAS_location var_startLocation_530 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 12)) ;
   GALGAS_semanticExpressionAST var_receiverExpression_611 ;
   nt_expression_5F_ggs_33__ (var_receiverExpression_611, inCompiler) ;
   GALGAS_lstring var_getterName_684 = inCompiler->synthetizedAttribute_tokenString () ;
@@ -3871,8 +3871,8 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
   GALGAS_actualOutputExpressionList var_expressionList_787 ;
   nt_output_5F_expression_5F_list_5F_ggs_33__ (var_expressionList_787, inCompiler) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__5D_ COMMA_SOURCE_FILE ("expression-getter-call.galgas", 18)) ;
-  GALGAS_location var_endLocation_818 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 19)) ;
-  outArgument_outExpression = GALGAS_getterCallExpressionAST::constructor_new (GALGAS_bool (gOption_galgas_5F_cli_5F_options_errorPropertyGetterCall.readProperty_value ()), var_receiverExpression_611, var_getterName_684, var_expressionList_787, var_startLocation_530.getter_union (var_endLocation_818, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 25))  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 20)) ;
+  GALGAS_location var_endLocation_818 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 19)) ;
+  outArgument_outExpression = GALGAS_getterCallExpressionAST::class_func_new (GALGAS_bool (gOption_galgas_5F_cli_5F_options_errorPropertyGetterCall.readProperty_value ()), var_receiverExpression_611, var_getterName_684, var_expressionList_787, var_startLocation_530.getter_union (var_endLocation_818, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 25))  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 20)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3903,7 +3903,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_optiona
   outArgument_outTypeName.drop () ; // Release 'out' argument
   switch (select_galgas_33_ExpressionSyntax_9 (inCompiler)) {
   case 1: {
-    outArgument_outTypeName = GALGAS_lstring::constructor_new (GALGAS_string::makeEmptyString (), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-constructor.galgas", 28)), inCompiler  COMMA_SOURCE_FILE ("expression-constructor.galgas", 28)) ;
+    outArgument_outTypeName = GALGAS_lstring::class_func_new (GALGAS_string::makeEmptyString (), GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-constructor.galgas", 28)), inCompiler  COMMA_SOURCE_FILE ("expression-constructor.galgas", 28)) ;
   } break ;
   case 2: {
     outArgument_outTypeName = inCompiler->synthetizedAttribute_tokenString () ;
@@ -3954,13 +3954,13 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
   GALGAS_lstring var_typeName_1554 ;
   nt_optional_5F_type_ (var_typeName_1554, inCompiler) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2E_ COMMA_SOURCE_FILE ("expression-constructor.galgas", 39)) ;
-  GALGAS_location var_startOfExpression_1579 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-constructor.galgas", 40)) ;
+  GALGAS_location var_startOfExpression_1579 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-constructor.galgas", 40)) ;
   GALGAS_lstring var_constructorName_1669 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("expression-constructor.galgas", 42)) ;
   GALGAS_actualOutputExpressionList var_expressionList_1745 ;
   switch (select_galgas_33_ExpressionSyntax_10 (inCompiler)) {
   case 1: {
-    var_expressionList_1745 = GALGAS_actualOutputExpressionList::constructor_emptyList (SOURCE_FILE ("expression-constructor.galgas", 46)) ;
+    var_expressionList_1745 = GALGAS_actualOutputExpressionList::class_func_emptyList (SOURCE_FILE ("expression-constructor.galgas", 46)) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7B_ COMMA_SOURCE_FILE ("expression-constructor.galgas", 48)) ;
@@ -3970,8 +3970,8 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
   default:
     break ;
   }
-  GALGAS_location var_endOfExpression_1892 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-constructor.galgas", 52)) ;
-  outArgument_outExpression = GALGAS_constructorExpressionAST::constructor_new (var_typeName_1554, var_constructorName_1669, var_expressionList_1745, var_startOfExpression_1579.getter_union (var_endOfExpression_1892, inCompiler COMMA_SOURCE_FILE ("expression-constructor.galgas", 57))  COMMA_SOURCE_FILE ("expression-constructor.galgas", 53)) ;
+  GALGAS_location var_endOfExpression_1892 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-constructor.galgas", 52)) ;
+  outArgument_outExpression = GALGAS_constructorExpressionAST::class_func_new (var_typeName_1554, var_constructorName_1669, var_expressionList_1745, var_startOfExpression_1579.getter_union (var_endOfExpression_1892, inCompiler COMMA_SOURCE_FILE ("expression-constructor.galgas", 57))  COMMA_SOURCE_FILE ("expression-constructor.galgas", 53)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4025,7 +4025,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
   GALGAS_actualOutputExpressionList var_expressionList_1017 ;
   nt_output_5F_expression_5F_list_5F_ggs_33__ (var_expressionList_1017, inCompiler) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__29_ COMMA_SOURCE_FILE ("expression-function-call.galgas", 22)) ;
-  outArgument_outExpression = GALGAS_functionCallExpressionAST::constructor_new (var_functionName_907, var_expressionList_1017  COMMA_SOURCE_FILE ("expression-function-call.galgas", 23)) ;
+  outArgument_outExpression = GALGAS_functionCallExpressionAST::class_func_new (var_functionName_907, var_expressionList_1017  COMMA_SOURCE_FILE ("expression-function-call.galgas", 23)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4057,7 +4057,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__60_ COMMA_SOURCE_FILE ("expression-literal-type.galgas", 18)) ;
   GALGAS_lstring var_typeName_854 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__40_type COMMA_SOURCE_FILE ("expression-literal-type.galgas", 19)) ;
-  outArgument_outExpression = GALGAS_literalTypeInExpressionAST::constructor_new (var_typeName_854  COMMA_SOURCE_FILE ("expression-literal-type.galgas", 20)) ;
+  outArgument_outExpression = GALGAS_literalTypeInExpressionAST::class_func_new (var_typeName_854  COMMA_SOURCE_FILE ("expression-literal-type.galgas", 20)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4083,7 +4083,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
   GALGAS_lstring var_typeName_1937 ;
   nt_optional_5F_type_ (var_typeName_1937, inCompiler) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7B_ COMMA_SOURCE_FILE ("expression-collection-value.galgas", 45)) ;
-  GALGAS_collectionValueElementList var_elementList_1990 = GALGAS_collectionValueElementList::constructor_emptyList (SOURCE_FILE ("expression-collection-value.galgas", 46)) ;
+  GALGAS_collectionValueElementList var_elementList_1990 = GALGAS_collectionValueElementList::class_func_emptyList (SOURCE_FILE ("expression-collection-value.galgas", 46)) ;
   switch (select_galgas_33_ExpressionSyntax_11 (inCompiler)) {
   case 1: {
   } break ;
@@ -4103,7 +4103,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
   default:
     break ;
   }
-  outArgument_outExpression = GALGAS_collectionValueAST::constructor_new (var_typeName_1937, var_elementList_1990, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-collection-value.galgas", 59))  COMMA_SOURCE_FILE ("expression-collection-value.galgas", 56)) ;
+  outArgument_outExpression = GALGAS_collectionValueAST::class_func_new (var_typeName_1937, var_elementList_1990, GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-collection-value.galgas", 59))  COMMA_SOURCE_FILE ("expression-collection-value.galgas", 56)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7D_ COMMA_SOURCE_FILE ("expression-collection-value.galgas", 61)) ;
 }
 
@@ -4163,20 +4163,20 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_collection_5F_value_5F_element_i26_ (GALGAS_abstractCollectionValueElement & outArgument_outValueElement,
                                                                                                               Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outValueElement.drop () ; // Release 'out' argument
-  GALGAS_actualOutputExpressionList var_expressionList_2550 = GALGAS_actualOutputExpressionList::constructor_emptyList (SOURCE_FILE ("expression-collection-value.galgas", 67)) ;
+  GALGAS_actualOutputExpressionList var_expressionList_2550 = GALGAS_actualOutputExpressionList::class_func_emptyList (SOURCE_FILE ("expression-collection-value.galgas", 67)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     GALGAS_lstring var_selector_2596 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__21_ COMMA_SOURCE_FILE ("expression-collection-value.galgas", 69)) ;
     GALGAS_semanticExpressionAST var_expression_2657 ;
     nt_expression_5F_ggs_33__ (var_expression_2657, inCompiler) ;
-    var_expressionList_2550.addAssign_operation (var_selector_2596, var_expression_2657, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-collection-value.galgas", 71))  COMMA_SOURCE_FILE ("expression-collection-value.galgas", 71)) ;
+    var_expressionList_2550.addAssign_operation (var_selector_2596, var_expression_2657, GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-collection-value.galgas", 71))  COMMA_SOURCE_FILE ("expression-collection-value.galgas", 71)) ;
     if (select_galgas_33_ExpressionSyntax_13 (inCompiler) == 2) {
     }else{
       repeatFlag_0 = false ;
     }
   }
-  outArgument_outValueElement = GALGAS_expressionListCollectionValue::constructor_new (var_expressionList_2550, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-collection-value.galgas", 74))  COMMA_SOURCE_FILE ("expression-collection-value.galgas", 74)) ;
+  outArgument_outValueElement = GALGAS_expressionListCollectionValue::class_func_new (var_expressionList_2550, GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-collection-value.galgas", 74))  COMMA_SOURCE_FILE ("expression-collection-value.galgas", 74)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4215,7 +4215,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_collect
   outArgument_outValueElement.drop () ; // Release 'out' argument
   GALGAS_semanticExpressionAST var_expression_3101 ;
   nt_expression_5F_ggs_33__ (var_expression_3101, inCompiler) ;
-  outArgument_outValueElement = GALGAS_expressionCollectionValue::constructor_new (var_expression_3101, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-collection-value.galgas", 81))  COMMA_SOURCE_FILE ("expression-collection-value.galgas", 81)) ;
+  outArgument_outValueElement = GALGAS_expressionCollectionValue::class_func_new (var_expression_3101, GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-collection-value.galgas", 81))  COMMA_SOURCE_FILE ("expression-collection-value.galgas", 81)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4237,7 +4237,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
                                                                                                   Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_self COMMA_SOURCE_FILE ("expression-self.galgas", 18)) ;
-  outArgument_outExpression = GALGAS_selfInExpressionAST::constructor_new (GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-self.galgas", 19))  COMMA_SOURCE_FILE ("expression-self.galgas", 19)) ;
+  outArgument_outExpression = GALGAS_selfInExpressionAST::class_func_new (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-self.galgas", 19))  COMMA_SOURCE_FILE ("expression-self.galgas", 19)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4265,7 +4265,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2E_ COMMA_SOURCE_FILE ("expression-property-access.galgas", 23)) ;
       GALGAS_lstring var_structFieldName_1003 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("expression-property-access.galgas", 24)) ;
-      outArgument_outExpression = GALGAS_structPropertyAccessExpressionAST::constructor_new (var_structFieldName_1003.readProperty_location (), outArgument_outExpression, var_structFieldName_1003  COMMA_SOURCE_FILE ("expression-property-access.galgas", 25)) ;
+      outArgument_outExpression = GALGAS_structPropertyAccessExpressionAST::class_func_new (var_structFieldName_1003.readProperty_location (), outArgument_outExpression, var_structFieldName_1003  COMMA_SOURCE_FILE ("expression-property-access.galgas", 25)) ;
     }else{
       repeatFlag_0 = false ;
     }
@@ -4308,10 +4308,10 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_
 void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i30_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
                                                                                                  Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
-  GALGAS_location var_operatorLocation_870 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-not.galgas", 19)) ;
+  GALGAS_location var_operatorLocation_870 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-not.galgas", 19)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_not COMMA_SOURCE_FILE ("expression-not.galgas", 20)) ;
   nt_factor_5F_ggs_33__ (outArgument_outExpression, inCompiler) ;
-  outArgument_outExpression = GALGAS_notExpressionAST::constructor_new (var_operatorLocation_870, outArgument_outExpression  COMMA_SOURCE_FILE ("expression-not.galgas", 22)) ;
+  outArgument_outExpression = GALGAS_notExpressionAST::class_func_new (var_operatorLocation_870, outArgument_outExpression  COMMA_SOURCE_FILE ("expression-not.galgas", 22)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4334,10 +4334,10 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_
 void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i31_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
                                                                                                  Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
-  GALGAS_location var_operatorLocation_872 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-tilde.galgas", 19)) ;
+  GALGAS_location var_operatorLocation_872 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-tilde.galgas", 19)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7E_ COMMA_SOURCE_FILE ("expression-tilde.galgas", 20)) ;
   nt_factor_5F_ggs_33__ (outArgument_outExpression, inCompiler) ;
-  outArgument_outExpression = GALGAS_tildeExpressionAST::constructor_new (var_operatorLocation_872, outArgument_outExpression  COMMA_SOURCE_FILE ("expression-tilde.galgas", 22)) ;
+  outArgument_outExpression = GALGAS_tildeExpressionAST::class_func_new (var_operatorLocation_872, outArgument_outExpression  COMMA_SOURCE_FILE ("expression-tilde.galgas", 22)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4360,11 +4360,11 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_
 void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i32_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
                                                                                                   Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
-  GALGAS_location var_operatorLocation_870 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-bang.galgas", 19)) ;
+  GALGAS_location var_operatorLocation_870 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-bang.galgas", 19)) ;
   nt_primary_5F_ggs_33__ (outArgument_outExpression, inCompiler) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2E_ COMMA_SOURCE_FILE ("expression-bang.galgas", 22)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_bang COMMA_SOURCE_FILE ("expression-bang.galgas", 23)) ;
-  outArgument_outExpression = GALGAS_bangExpressionAST::constructor_new (var_operatorLocation_870, outArgument_outExpression  COMMA_SOURCE_FILE ("expression-bang.galgas", 24)) ;
+  outArgument_outExpression = GALGAS_bangExpressionAST::class_func_new (var_operatorLocation_870, outArgument_outExpression  COMMA_SOURCE_FILE ("expression-bang.galgas", 24)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4389,10 +4389,10 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i33_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
                                                                                                  Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
-  GALGAS_location var_operatorLocation_885 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-unary-wrapping-minus.galgas", 19)) ;
+  GALGAS_location var_operatorLocation_885 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-unary-wrapping-minus.galgas", 19)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__26__2D_ COMMA_SOURCE_FILE ("expression-unary-wrapping-minus.galgas", 20)) ;
   nt_factor_5F_ggs_33__ (outArgument_outExpression, inCompiler) ;
-  outArgument_outExpression = GALGAS_unaryWrappingMinusExpressionAST::constructor_new (var_operatorLocation_885, outArgument_outExpression  COMMA_SOURCE_FILE ("expression-unary-wrapping-minus.galgas", 22)) ;
+  outArgument_outExpression = GALGAS_unaryWrappingMinusExpressionAST::class_func_new (var_operatorLocation_885, outArgument_outExpression  COMMA_SOURCE_FILE ("expression-unary-wrapping-minus.galgas", 22)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4420,44 +4420,44 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_express
   while (repeatFlag_0) {
     switch (select_galgas_33_ExpressionSyntax_15 (inCompiler)) {
     case 2: {
-      GALGAS_location var_operatorLocation_2323 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas", 55)) ;
+      GALGAS_location var_operatorLocation_2323 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas", 55)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7C_ COMMA_SOURCE_FILE ("expression-or.galgas", 56)) ;
       GALGAS_semanticExpressionAST var_leftOperand_2377 = outArgument_outExpression ;
       GALGAS_semanticExpressionAST var_rightOperand_2438 ;
       nt_expression_5F_and_5F_ggs_33__ (var_rightOperand_2438, inCompiler) ;
-      outArgument_outExpression = GALGAS_orExpressionAST::constructor_new (var_operatorLocation_2323, var_leftOperand_2377, var_rightOperand_2438  COMMA_SOURCE_FILE ("expression-or.galgas", 59)) ;
+      outArgument_outExpression = GALGAS_orExpressionAST::class_func_new (var_operatorLocation_2323, var_leftOperand_2377, var_rightOperand_2438  COMMA_SOURCE_FILE ("expression-or.galgas", 59)) ;
     } break ;
     case 3: {
-      GALGAS_location var_operatorLocation_2561 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas", 61)) ;
+      GALGAS_location var_operatorLocation_2561 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas", 61)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7C__7C_ COMMA_SOURCE_FILE ("expression-or.galgas", 62)) ;
       GALGAS_semanticExpressionAST var_leftOperand_2616 = outArgument_outExpression ;
       GALGAS_semanticExpressionAST var_rightOperand_2677 ;
       nt_expression_5F_and_5F_ggs_33__ (var_rightOperand_2677, inCompiler) ;
-      outArgument_outExpression = GALGAS_orShortExpressionAST::constructor_new (var_operatorLocation_2561, var_leftOperand_2616, var_rightOperand_2677  COMMA_SOURCE_FILE ("expression-or.galgas", 65)) ;
+      outArgument_outExpression = GALGAS_orShortExpressionAST::class_func_new (var_operatorLocation_2561, var_leftOperand_2616, var_rightOperand_2677  COMMA_SOURCE_FILE ("expression-or.galgas", 65)) ;
     } break ;
     case 4: {
-      GALGAS_location var_operatorLocation_2805 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas", 67)) ;
+      GALGAS_location var_operatorLocation_2805 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas", 67)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__5E_ COMMA_SOURCE_FILE ("expression-or.galgas", 68)) ;
       GALGAS_semanticExpressionAST var_leftOperand_2859 = outArgument_outExpression ;
       GALGAS_semanticExpressionAST var_rightOperand_2920 ;
       nt_expression_5F_and_5F_ggs_33__ (var_rightOperand_2920, inCompiler) ;
-      outArgument_outExpression = GALGAS_xorExpressionAST::constructor_new (var_operatorLocation_2805, var_leftOperand_2859, var_rightOperand_2920  COMMA_SOURCE_FILE ("expression-or.galgas", 71)) ;
+      outArgument_outExpression = GALGAS_xorExpressionAST::class_func_new (var_operatorLocation_2805, var_leftOperand_2859, var_rightOperand_2920  COMMA_SOURCE_FILE ("expression-or.galgas", 71)) ;
     } break ;
     case 5: {
-      GALGAS_location var_operatorLocation_3044 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas", 73)) ;
+      GALGAS_location var_operatorLocation_3044 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas", 73)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2E__2E__2E_ COMMA_SOURCE_FILE ("expression-or.galgas", 74)) ;
       GALGAS_semanticExpressionAST var_leftOperand_3100 = outArgument_outExpression ;
       GALGAS_semanticExpressionAST var_rightOperand_3161 ;
       nt_expression_5F_and_5F_ggs_33__ (var_rightOperand_3161, inCompiler) ;
-      outArgument_outExpression = GALGAS_closedSliceExpressionAST::constructor_new (var_operatorLocation_3044, var_leftOperand_3100, var_rightOperand_3161  COMMA_SOURCE_FILE ("expression-or.galgas", 77)) ;
+      outArgument_outExpression = GALGAS_closedSliceExpressionAST::class_func_new (var_operatorLocation_3044, var_leftOperand_3100, var_rightOperand_3161  COMMA_SOURCE_FILE ("expression-or.galgas", 77)) ;
     } break ;
     case 6: {
-      GALGAS_location var_operatorLocation_3293 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas", 79)) ;
+      GALGAS_location var_operatorLocation_3293 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas", 79)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2E__2E__3C_ COMMA_SOURCE_FILE ("expression-or.galgas", 80)) ;
       GALGAS_semanticExpressionAST var_leftOperand_3349 = outArgument_outExpression ;
       GALGAS_semanticExpressionAST var_rightOperand_3410 ;
       nt_expression_5F_and_5F_ggs_33__ (var_rightOperand_3410, inCompiler) ;
-      outArgument_outExpression = GALGAS_openedSliceExpressionAST::constructor_new (var_operatorLocation_3293, var_leftOperand_3349, var_rightOperand_3410  COMMA_SOURCE_FILE ("expression-or.galgas", 83)) ;
+      outArgument_outExpression = GALGAS_openedSliceExpressionAST::class_func_new (var_operatorLocation_3293, var_leftOperand_3349, var_rightOperand_3410  COMMA_SOURCE_FILE ("expression-or.galgas", 83)) ;
     } break ;
     default:
       repeatFlag_0 = false ;
@@ -4545,20 +4545,20 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_express
   while (repeatFlag_0) {
     switch (select_galgas_33_ExpressionSyntax_16 (inCompiler)) {
     case 2: {
-      GALGAS_location var_operatorLocation_1329 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-and.galgas", 31)) ;
+      GALGAS_location var_operatorLocation_1329 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-and.galgas", 31)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__26_ COMMA_SOURCE_FILE ("expression-and.galgas", 32)) ;
       GALGAS_semanticExpressionAST var_leftOperand_1383 = outArgument_outExpression ;
       GALGAS_semanticExpressionAST var_rightOperand_1468 ;
       nt_relation_5F_factor_5F_ggs_33__ (var_rightOperand_1468, inCompiler) ;
-      outArgument_outExpression = GALGAS_andExpressionAST::constructor_new (var_operatorLocation_1329, var_leftOperand_1383, var_rightOperand_1468  COMMA_SOURCE_FILE ("expression-and.galgas", 35)) ;
+      outArgument_outExpression = GALGAS_andExpressionAST::class_func_new (var_operatorLocation_1329, var_leftOperand_1383, var_rightOperand_1468  COMMA_SOURCE_FILE ("expression-and.galgas", 35)) ;
     } break ;
     case 3: {
-      GALGAS_location var_operatorLocation_1592 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-and.galgas", 37)) ;
+      GALGAS_location var_operatorLocation_1592 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-and.galgas", 37)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__26__26_ COMMA_SOURCE_FILE ("expression-and.galgas", 38)) ;
       GALGAS_semanticExpressionAST var_leftOperand_1647 = outArgument_outExpression ;
       GALGAS_semanticExpressionAST var_rightOperand_1732 ;
       nt_relation_5F_factor_5F_ggs_33__ (var_rightOperand_1732, inCompiler) ;
-      outArgument_outExpression = GALGAS_andShortExpressionAST::constructor_new (var_operatorLocation_1592, var_leftOperand_1647, var_rightOperand_1732  COMMA_SOURCE_FILE ("expression-and.galgas", 41)) ;
+      outArgument_outExpression = GALGAS_andShortExpressionAST::class_func_new (var_operatorLocation_1592, var_leftOperand_1647, var_rightOperand_1732  COMMA_SOURCE_FILE ("expression-and.galgas", 41)) ;
     } break ;
     default:
       repeatFlag_0 = false ;
@@ -4619,7 +4619,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_express
 void cParser_galgas_33_ParameterArgumentSyntax::rule_galgas_33_ParameterArgumentSyntax_formal_5F_parameter_5F_list_5F_ggs_33__i0_ (GALGAS_formalParameterListAST & outArgument_outFormalParameterList,
                                                                                                                                    Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outFormalParameterList.drop () ; // Release 'out' argument
-  outArgument_outFormalParameterList = GALGAS_formalParameterListAST::constructor_emptyList (SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 27)) ;
+  outArgument_outFormalParameterList = GALGAS_formalParameterListAST::class_func_emptyList (SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 27)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     if (select_galgas_33_ParameterArgumentSyntax_0 (inCompiler) == 2) {
@@ -4629,23 +4629,23 @@ void cParser_galgas_33_ParameterArgumentSyntax::rule_galgas_33_ParameterArgument
       case 1: {
         var_selector_1692 = inCompiler->synthetizedAttribute_tokenString () ;
         inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3F_ COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 33)) ;
-        var_mFormalParameterPassingMode_1741 = GALGAS_formalArgumentPassingModeAST::constructor_argumentIn (SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 34)) ;
+        var_mFormalParameterPassingMode_1741 = GALGAS_formalArgumentPassingModeAST::class_func_argumentIn (SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 34)) ;
       } break ;
       case 2: {
         var_selector_1692 = inCompiler->synthetizedAttribute_tokenString () ;
         inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3F_ COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 36)) ;
         inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_let COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 37)) ;
-        var_mFormalParameterPassingMode_1741 = GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 38)) ;
+        var_mFormalParameterPassingMode_1741 = GALGAS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 38)) ;
       } break ;
       case 3: {
         var_selector_1692 = inCompiler->synthetizedAttribute_tokenString () ;
         inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3F__21_ COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 40)) ;
-        var_mFormalParameterPassingMode_1741 = GALGAS_formalArgumentPassingModeAST::constructor_argumentInOut (SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 41)) ;
+        var_mFormalParameterPassingMode_1741 = GALGAS_formalArgumentPassingModeAST::class_func_argumentInOut (SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 41)) ;
       } break ;
       case 4: {
         var_selector_1692 = inCompiler->synthetizedAttribute_tokenString () ;
         inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__21_ COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 43)) ;
-        var_mFormalParameterPassingMode_1741 = GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 44)) ;
+        var_mFormalParameterPassingMode_1741 = GALGAS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 44)) ;
       } break ;
       default:
         break ;
@@ -4759,7 +4759,7 @@ void cParser_galgas_33_ParameterArgumentSyntax::rule_galgas_33_ParameterArgument
 void cParser_galgas_33_ParameterArgumentSyntax::rule_galgas_33_ParameterArgumentSyntax_actual_5F_parameter_5F_list_5F_ggs_33__i1_ (GALGAS_actualParameterListAST & outArgument_outActualParameterList,
                                                                                                                                    Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outActualParameterList.drop () ; // Release 'out' argument
-  outArgument_outActualParameterList = GALGAS_actualParameterListAST::constructor_emptyList (SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 69)) ;
+  outArgument_outActualParameterList = GALGAS_actualParameterListAST::class_func_emptyList (SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 69)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     switch (select_galgas_33_ParameterArgumentSyntax_3 (inCompiler)) {
@@ -4768,8 +4768,8 @@ void cParser_galgas_33_ParameterArgumentSyntax::rule_galgas_33_ParameterArgument
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__21_ COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 72)) ;
       GALGAS_semanticExpressionAST var_e_3167 ;
       nt_expression_5F_ggs_33__ (var_e_3167, inCompiler) ;
-      GALGAS_location var_endOfExpressionLocation_3189 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 74)) ;
-      outArgument_outActualParameterList.addAssign_operation (GALGAS_outputActualParameterAST::constructor_new (var_selector_3106, var_e_3167, var_endOfExpressionLocation_3189  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 75))  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 75)) ;
+      GALGAS_location var_endOfExpressionLocation_3189 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 74)) ;
+      outArgument_outActualParameterList.addAssign_operation (GALGAS_outputActualParameterAST::class_func_new (var_selector_3106, var_e_3167, var_endOfExpressionLocation_3189  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 75))  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 75)) ;
     } break ;
     case 3: {
       GALGAS_lstring var_selector_3390 = inCompiler->synthetizedAttribute_tokenString () ;
@@ -4779,7 +4779,7 @@ void cParser_galgas_33_ParameterArgumentSyntax::rule_galgas_33_ParameterArgument
         inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2A_ COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 83)) ;
         GALGAS_lstringlist var_poisonedVarNameList_3462 ;
         nt_poisoned_5F_var_5F_list_5F_ggs_33__ (var_poisonedVarNameList_3462, inCompiler) ;
-        outArgument_outActualParameterList.addAssign_operation (GALGAS_inputSingleJokerActualParameterAST::constructor_new (var_selector_3390, var_poisonedVarNameList_3462  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 85))  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 85)) ;
+        outArgument_outActualParameterList.addAssign_operation (GALGAS_inputSingleJokerActualParameterAST::class_func_new (var_selector_3390, var_poisonedVarNameList_3462  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 85))  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 85)) ;
       } break ;
       case 2: {
         GALGAS_lbigint var_count_3625 = inCompiler->synthetizedAttribute_bigintValue () ;
@@ -4818,7 +4818,7 @@ void cParser_galgas_33_ParameterArgumentSyntax::rule_galgas_33_ParameterArgument
               }
               if (loop_3907) {
                 variant_3907 -- ;
-                outArgument_outActualParameterList.addAssign_operation (GALGAS_inputJokerActualParameterAST::constructor_new (var_selector_3390.readProperty_location (), var_n_3655  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 98))  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 98)) ;
+                outArgument_outActualParameterList.addAssign_operation (GALGAS_inputJokerActualParameterAST::class_func_new (var_selector_3390.readProperty_location (), var_n_3655  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 98))  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 98)) ;
                 var_n_3655.minusAssign_operation(GALGAS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 99)) ;
               }
             }
@@ -4833,14 +4833,14 @@ void cParser_galgas_33_ParameterArgumentSyntax::rule_galgas_33_ParameterArgument
       GALGAS_lstring var_selector_4119 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__21__3F_ COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 104)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_self COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 105)) ;
-      outArgument_outActualParameterList.addAssign_operation (GALGAS_outputInputSelfParameterAST::constructor_new (var_selector_4119  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 106))  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 106)) ;
+      outArgument_outActualParameterList.addAssign_operation (GALGAS_outputInputSelfParameterAST::class_func_new (var_selector_4119  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 106))  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 106)) ;
     } break ;
     case 5: {
       GALGAS_lstring var_selector_4245 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__21__3F_ COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 108)) ;
       GALGAS_lstring var_outputInputActualParameterName_4278 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 109)) ;
-      GALGAS_lstringlist var_structAttributeList_4319 = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 110)) ;
+      GALGAS_lstringlist var_structAttributeList_4319 = GALGAS_lstringlist::class_func_emptyList (SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 110)) ;
       bool repeatFlag_5 = true ;
       while (repeatFlag_5) {
         if (select_galgas_33_ParameterArgumentSyntax_5 (inCompiler) == 2) {
@@ -4852,13 +4852,13 @@ void cParser_galgas_33_ParameterArgumentSyntax::rule_galgas_33_ParameterArgument
           repeatFlag_5 = false ;
         }
       }
-      outArgument_outActualParameterList.addAssign_operation (GALGAS_outputInputActualParameterAST::constructor_new (var_selector_4245, var_outputInputActualParameterName_4278, var_structAttributeList_4319  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 117))  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 117)) ;
+      outArgument_outActualParameterList.addAssign_operation (GALGAS_outputInputActualParameterAST::class_func_new (var_selector_4245, var_outputInputActualParameterName_4278, var_structAttributeList_4319  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 117))  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 117)) ;
     } break ;
     case 6: {
       GALGAS_lstring var_selector_4694 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__21__3F_ COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 123)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2A_ COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 124)) ;
-      outArgument_outActualParameterList.addAssign_operation (GALGAS_outputInputSingleJokerParameterAST::constructor_new (var_selector_4694  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 125))  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 125)) ;
+      outArgument_outActualParameterList.addAssign_operation (GALGAS_outputInputSingleJokerParameterAST::class_func_new (var_selector_4694  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 125))  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 125)) ;
     } break ;
     case 7: {
       GALGAS_lstring var_selector_4824 = inCompiler->synthetizedAttribute_tokenString () ;
@@ -4899,7 +4899,7 @@ void cParser_galgas_33_ParameterArgumentSyntax::rule_galgas_33_ParameterArgument
             }
             if (loop_5124) {
               variant_5124 -- ;
-              outArgument_outActualParameterList.addAssign_operation (GALGAS_outputInputJokerParameterAST::constructor_new (var_selector_4824.readProperty_location (), var_n_4883  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 139))  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 139)) ;
+              outArgument_outActualParameterList.addAssign_operation (GALGAS_outputInputJokerParameterAST::class_func_new (var_selector_4824.readProperty_location (), var_n_4883  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 139))  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 139)) ;
               var_n_4883.minusAssign_operation(GALGAS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 140)) ;
             }
           }
@@ -4913,7 +4913,7 @@ void cParser_galgas_33_ParameterArgumentSyntax::rule_galgas_33_ParameterArgument
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 145)) ;
       GALGAS_lstringlist var_poisonedVarNameList_5446 ;
       nt_poisoned_5F_var_5F_list_5F_ggs_33__ (var_poisonedVarNameList_5446, inCompiler) ;
-      outArgument_outActualParameterList.addAssign_operation (GALGAS_inputActualExistingVariableParameterAST::constructor_new (var_selector_5352, var_inputActualParameterName_5385, var_poisonedVarNameList_5446  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 147))  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 147)) ;
+      outArgument_outActualParameterList.addAssign_operation (GALGAS_inputActualExistingVariableParameterAST::class_func_new (var_selector_5352, var_inputActualParameterName_5385, var_poisonedVarNameList_5446  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 147))  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 147)) ;
     } break ;
     case 9: {
       GALGAS_lstring var_selector_5693 = inCompiler->synthetizedAttribute_tokenString () ;
@@ -4924,7 +4924,7 @@ void cParser_galgas_33_ParameterArgumentSyntax::rule_galgas_33_ParameterArgument
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 156)) ;
       GALGAS_lstringlist var_poisonedVarNameList_5810 ;
       nt_poisoned_5F_var_5F_list_5F_ggs_33__ (var_poisonedVarNameList_5810, inCompiler) ;
-      outArgument_outActualParameterList.addAssign_operation (GALGAS_inputActualSelfPropertyParameterAST::constructor_new (var_selector_5693, var_inputActualParameterName_5749, var_poisonedVarNameList_5810  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 158))  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 158)) ;
+      outArgument_outActualParameterList.addAssign_operation (GALGAS_inputActualSelfPropertyParameterAST::class_func_new (var_selector_5693, var_inputActualParameterName_5749, var_poisonedVarNameList_5810  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 158))  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 158)) ;
     } break ;
     case 10: {
       GALGAS_lstring var_selector_6044 = inCompiler->synthetizedAttribute_tokenString () ;
@@ -4932,7 +4932,7 @@ void cParser_galgas_33_ParameterArgumentSyntax::rule_galgas_33_ParameterArgument
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_self COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 165)) ;
       GALGAS_lstringlist var_poisonedVarNameList_6102 ;
       nt_poisoned_5F_var_5F_list_5F_ggs_33__ (var_poisonedVarNameList_6102, inCompiler) ;
-      outArgument_outActualParameterList.addAssign_operation (GALGAS_inputActualSelfParameterAST::constructor_new (var_selector_6044, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 169)), var_poisonedVarNameList_6102  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 167))  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 167)) ;
+      outArgument_outActualParameterList.addAssign_operation (GALGAS_inputActualSelfParameterAST::class_func_new (var_selector_6044, GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 169)), var_poisonedVarNameList_6102  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 167))  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 167)) ;
     } break ;
     case 11: {
       GALGAS_lstring var_selector_6318 = inCompiler->synthetizedAttribute_tokenString () ;
@@ -4954,7 +4954,7 @@ void cParser_galgas_33_ParameterArgumentSyntax::rule_galgas_33_ParameterArgument
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 181)) ;
       GALGAS_lstringlist var_poisonedVarNameList_6575 ;
       nt_poisoned_5F_var_5F_list_5F_ggs_33__ (var_poisonedVarNameList_6575, inCompiler) ;
-      outArgument_outActualParameterList.addAssign_operation (GALGAS_inputActualNewVariableParameterAST::constructor_new (var_selector_6318, var_declarationTypeName_6358, var_inputActualParameterName_6514, var_poisonedVarNameList_6575  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 183))  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 183)) ;
+      outArgument_outActualParameterList.addAssign_operation (GALGAS_inputActualNewVariableParameterAST::class_func_new (var_selector_6318, var_declarationTypeName_6358, var_inputActualParameterName_6514, var_poisonedVarNameList_6575  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 183))  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 183)) ;
     } break ;
     case 12: {
       GALGAS_lstring var_selector_6861 = inCompiler->synthetizedAttribute_tokenString () ;
@@ -4965,7 +4965,7 @@ void cParser_galgas_33_ParameterArgumentSyntax::rule_galgas_33_ParameterArgument
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 192)) ;
       GALGAS_lstringlist var_poisonedVarNameList_7003 ;
       nt_poisoned_5F_var_5F_list_5F_ggs_33__ (var_poisonedVarNameList_7003, inCompiler) ;
-      outArgument_outActualParameterList.addAssign_operation (GALGAS_inputActualNewVariableParameterAST::constructor_new (var_selector_6861, var_declarationTypeName_6898, var_inputActualParameterName_6942, var_poisonedVarNameList_7003  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 194))  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 194)) ;
+      outArgument_outActualParameterList.addAssign_operation (GALGAS_inputActualNewVariableParameterAST::class_func_new (var_selector_6861, var_declarationTypeName_6898, var_inputActualParameterName_6942, var_poisonedVarNameList_7003  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 194))  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 194)) ;
     } break ;
     case 13: {
       GALGAS_lstring var_selector_7273 = inCompiler->synthetizedAttribute_tokenString () ;
@@ -4999,7 +4999,7 @@ void cParser_galgas_33_ParameterArgumentSyntax::rule_galgas_33_ParameterArgument
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 216)) ;
       GALGAS_lstringlist var_poisonedVarNameList_7671 ;
       nt_poisoned_5F_var_5F_list_5F_ggs_33__ (var_poisonedVarNameList_7671, inCompiler) ;
-      outArgument_outActualParameterList.addAssign_operation (GALGAS_inputActualNewConstantParameterAST::constructor_new (var_selector_7273, var_declarationTypeName_7313, var_inputActualParameterName_7610, var_markedAsUnused_7461, var_poisonedVarNameList_7671  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 218))  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 218)) ;
+      outArgument_outActualParameterList.addAssign_operation (GALGAS_inputActualNewConstantParameterAST::class_func_new (var_selector_7273, var_declarationTypeName_7313, var_inputActualParameterName_7610, var_markedAsUnused_7461, var_poisonedVarNameList_7671  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 218))  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 218)) ;
     } break ;
     default:
       repeatFlag_0 = false ;
@@ -5254,7 +5254,7 @@ void cParser_galgas_33_ParameterArgumentSyntax::rule_galgas_33_ParameterArgument
 void cParser_galgas_33_ParameterArgumentSyntax::rule_galgas_33_ParameterArgumentSyntax_formal_5F_input_5F_parameter_5F_list_5F_ggs_33__i2_ (GALGAS_formalInputParameterListAST & outArgument_outFormalInputParameterList,
                                                                                                                                             Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outFormalInputParameterList.drop () ; // Release 'out' argument
-  outArgument_outFormalInputParameterList = GALGAS_formalInputParameterListAST::constructor_emptyList (SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 233)) ;
+  outArgument_outFormalInputParameterList = GALGAS_formalInputParameterListAST::class_func_emptyList (SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 233)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     if (select_galgas_33_ParameterArgumentSyntax_9 (inCompiler) == 2) {
@@ -5367,7 +5367,7 @@ void cParser_galgas_33_ParameterArgumentSyntax::rule_galgas_33_ParameterArgument
 void cParser_galgas_33_ParameterArgumentSyntax::rule_galgas_33_ParameterArgumentSyntax_poisoned_5F_var_5F_list_5F_ggs_33__i3_ (GALGAS_lstringlist & outArgument_outPoisonedVarNameList,
                                                                                                                                Lexique_galgasScanner_33_ * /* inCompiler */) {
   outArgument_outPoisonedVarNameList.drop () ; // Release 'out' argument
-  outArgument_outPoisonedVarNameList = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 265)) ;
+  outArgument_outPoisonedVarNameList = GALGAS_lstringlist::class_func_emptyList (SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 265)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5386,7 +5386,7 @@ void cParser_galgas_33_ParameterArgumentSyntax::rule_galgas_33_ParameterArgument
 void cParser_galgas_33_ParameterArgumentSyntax::rule_galgas_33_ParameterArgumentSyntax_poisoned_5F_var_5F_list_5F_ggs_33__i4_ (GALGAS_lstringlist & outArgument_outPoisonedVarNameList,
                                                                                                                                Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outPoisonedVarNameList.drop () ; // Release 'out' argument
-  outArgument_outPoisonedVarNameList = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 271)) ;
+  outArgument_outPoisonedVarNameList = GALGAS_lstringlist::class_func_emptyList (SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 271)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_spoil COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 272)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
@@ -5439,7 +5439,7 @@ void cParser_galgas_33_ParameterArgumentSyntax::rule_galgas_33_ParameterArgument
 void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_list_5F_ggs_33__i0_ (GALGAS_semanticInstructionListAST & outArgument_outInstructionsList,
                                                                                                                              Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outInstructionsList.drop () ; // Release 'out' argument
-  outArgument_outInstructionsList = GALGAS_semanticInstructionListAST::constructor_emptyList (SOURCE_FILE ("galgasInstructionsSyntax.galgas", 35)) ;
+  outArgument_outInstructionsList = GALGAS_semanticInstructionListAST::class_func_emptyList (SOURCE_FILE ("galgasInstructionsSyntax.galgas", 35)) ;
   switch (select_galgas_33_InstructionsSyntax_0 (inCompiler)) {
   case 1: {
   } break ;
@@ -5455,13 +5455,13 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
           inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3B_ COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 43)) ;
         } break ;
         case 2: {
-          GALGAS_string var_separator_2316 = GALGAS_string::constructor_separatorString (inCompiler  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 45)) ;
+          GALGAS_string var_separator_2316 = GALGAS_string::class_func_separatorString (inCompiler  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 45)) ;
           enumGalgasBool test_1 = kBoolTrue ;
           if (kBoolTrue == test_1) {
             test_1 = var_separator_2316.getter_containsCharacter (GALGAS_char (TO_UNICODE (10)) COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 46)).operator_not (SOURCE_FILE ("galgasInstructionsSyntax.galgas", 46)).boolEnum () ;
             if (kBoolTrue == test_1) {
               TC_Array <C_FixItDescription> fixItArray2 ;
-              inCompiler->emitSemanticError (GALGAS_location::constructor_separator (inCompiler  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 47)), GALGAS_string ("instructions on same line should be separated by ';'"), fixItArray2  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 47)) ;
+              inCompiler->emitSemanticError (GALGAS_location::class_func_separator (inCompiler  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 47)), GALGAS_string ("instructions on same line should be separated by ';'"), fixItArray2  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 47)) ;
             }
           }
         } break ;
@@ -5557,7 +5557,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_dec
         if (kBoolTrue == test_1) {
           TC_Array <C_FixItDescription> fixItArray2 ;
           fixItArray2.appendObject (C_FixItDescription (kFixItRemove, "")) ;
-          inCompiler->emitSemanticError (GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 66)), GALGAS_string ("duplicate attribute"), fixItArray2  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 66)) ;
+          inCompiler->emitSemanticError (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 66)), GALGAS_string ("duplicate attribute"), fixItArray2  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 66)) ;
         }
       }
       var_isOnce_2918 = GALGAS_bool (true) ;
@@ -5570,7 +5570,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_dec
         if (kBoolTrue == test_3) {
           TC_Array <C_FixItDescription> fixItArray4 ;
           fixItArray4.appendObject (C_FixItDescription (kFixItRemove, "")) ;
-          inCompiler->emitSemanticError (GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 72)), GALGAS_string ("duplicate attribute"), fixItArray4  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 72)) ;
+          inCompiler->emitSemanticError (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 72)), GALGAS_string ("duplicate attribute"), fixItArray4  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 72)) ;
         }
       }
       var_isUsefull_2941 = GALGAS_bool (true) ;
@@ -5606,7 +5606,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_dec
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 85)) ;
   } break ;
   case 2: {
-    var_resultVariableName_3615 = GALGAS_lstring::constructor_new (GALGAS_string ("result"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 87)), inCompiler  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 87)) ;
+    var_resultVariableName_3615 = GALGAS_lstring::class_func_new (GALGAS_string ("result"), GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 87)), inCompiler  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 87)) ;
   } break ;
   default:
     break ;
@@ -5615,16 +5615,16 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_dec
   GALGAS_semanticInstructionListAST var_functionInstructionList_3828 ;
   nt_semantic_5F_instruction_5F_list_5F_ggs_33__ (var_functionInstructionList_3828, inCompiler) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7D_ COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 91)) ;
-  GALGAS_location var_endOfFunctionInstructionList_3868 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 92)) ;
+  GALGAS_location var_endOfFunctionInstructionList_3868 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 92)) ;
   enumGalgasBool test_7 = kBoolTrue ;
   if (kBoolTrue == test_7) {
     test_7 = var_isOnce_2918.boolEnum () ;
     if (kBoolTrue == test_7) {
-      ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_onceFunctionDeclarationAST::constructor_new (GALGAS_bool (false), var_functionName_3281, var_resultTypeName_3583, var_resultVariableName_3615, var_functionInstructionList_3828, var_endOfFunctionInstructionList_3868, GALGAS_bool (false), var_isUsefull_2941  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 94))  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 94)) ;
+      ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_onceFunctionDeclarationAST::class_func_new (GALGAS_bool (false), var_functionName_3281, var_resultTypeName_3583, var_resultVariableName_3615, var_functionInstructionList_3828, var_endOfFunctionInstructionList_3868, GALGAS_bool (false), var_isUsefull_2941  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 94))  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 94)) ;
     }
   }
   if (kBoolFalse == test_7) {
-    ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_functionDeclarationAST::constructor_new (GALGAS_bool (false), var_functionName_3281, var_formalInputParameterList_3395, var_resultTypeName_3583, var_isUsefull_2941, var_resultVariableName_3615, var_functionInstructionList_3828, var_endOfFunctionInstructionList_3868, GALGAS_bool (false)  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 105))  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 105)) ;
+    ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_functionDeclarationAST::class_func_new (GALGAS_bool (false), var_functionName_3281, var_formalInputParameterList_3395, var_resultTypeName_3583, var_isUsefull_2941, var_resultVariableName_3615, var_functionInstructionList_3828, var_endOfFunctionInstructionList_3868, GALGAS_bool (false)  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 105))  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 105)) ;
   }
 }
 
@@ -5722,7 +5722,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_dec
         if (kBoolTrue == test_1) {
           TC_Array <C_FixItDescription> fixItArray2 ;
           fixItArray2.appendObject (C_FixItDescription (kFixItRemove, "")) ;
-          inCompiler->emitSemanticError (GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 130)), GALGAS_string ("duplicate attribute"), fixItArray2  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 130)) ;
+          inCompiler->emitSemanticError (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 130)), GALGAS_string ("duplicate attribute"), fixItArray2  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 130)) ;
         }
       }
       var_isOnce_4860 = GALGAS_bool (true) ;
@@ -5735,7 +5735,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_dec
         if (kBoolTrue == test_3) {
           TC_Array <C_FixItDescription> fixItArray4 ;
           fixItArray4.appendObject (C_FixItDescription (kFixItRemove, "")) ;
-          inCompiler->emitSemanticError (GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 136)), GALGAS_string ("duplicate attribute"), fixItArray4  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 136)) ;
+          inCompiler->emitSemanticError (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 136)), GALGAS_string ("duplicate attribute"), fixItArray4  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 136)) ;
         }
       }
       var_isUsefull_4883 = GALGAS_bool (true) ;
@@ -5771,7 +5771,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_dec
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 149)) ;
   } break ;
   case 2: {
-    var_resultVariableName_5557 = GALGAS_lstring::constructor_new (GALGAS_string ("result"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 151)), inCompiler  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 151)) ;
+    var_resultVariableName_5557 = GALGAS_lstring::class_func_new (GALGAS_string ("result"), GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 151)), inCompiler  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 151)) ;
   } break ;
   default:
     break ;
@@ -5780,16 +5780,16 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_dec
   GALGAS_semanticInstructionListAST var_functionInstructionList_5770 ;
   nt_semantic_5F_instruction_5F_list_5F_ggs_33__ (var_functionInstructionList_5770, inCompiler) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7D_ COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 155)) ;
-  GALGAS_location var_endOfFunctionInstructionList_5810 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 156)) ;
+  GALGAS_location var_endOfFunctionInstructionList_5810 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 156)) ;
   enumGalgasBool test_7 = kBoolTrue ;
   if (kBoolTrue == test_7) {
     test_7 = var_isOnce_4860.boolEnum () ;
     if (kBoolTrue == test_7) {
-      ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_onceFunctionDeclarationAST::constructor_new (GALGAS_bool (false), var_functionName_5223, var_resultTypeName_5525, var_resultVariableName_5557, var_functionInstructionList_5770, var_endOfFunctionInstructionList_5810, GALGAS_bool (true), var_isUsefull_4883  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 158))  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 158)) ;
+      ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_onceFunctionDeclarationAST::class_func_new (GALGAS_bool (false), var_functionName_5223, var_resultTypeName_5525, var_resultVariableName_5557, var_functionInstructionList_5770, var_endOfFunctionInstructionList_5810, GALGAS_bool (true), var_isUsefull_4883  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 158))  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 158)) ;
     }
   }
   if (kBoolFalse == test_7) {
-    ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_functionDeclarationAST::constructor_new (GALGAS_bool (false), var_functionName_5223, var_formalInputParameterList_5337, var_resultTypeName_5525, var_isUsefull_4883, var_resultVariableName_5557, var_functionInstructionList_5770, var_endOfFunctionInstructionList_5810, GALGAS_bool (true)  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 169))  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 169)) ;
+    ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_functionDeclarationAST::class_func_new (GALGAS_bool (false), var_functionName_5223, var_formalInputParameterList_5337, var_resultTypeName_5525, var_isUsefull_4883, var_resultVariableName_5557, var_functionInstructionList_5770, var_endOfFunctionInstructionList_5810, GALGAS_bool (true)  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 169))  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 169)) ;
   }
 }
 
@@ -5887,7 +5887,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_dec
         if (kBoolTrue == test_1) {
           TC_Array <C_FixItDescription> fixItArray2 ;
           fixItArray2.appendObject (C_FixItDescription (kFixItRemove, "")) ;
-          inCompiler->emitSemanticError (GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 195)), GALGAS_string ("duplicate attribute"), fixItArray2  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 195)) ;
+          inCompiler->emitSemanticError (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 195)), GALGAS_string ("duplicate attribute"), fixItArray2  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 195)) ;
         }
       }
       var_isUsefull_7030 = GALGAS_bool (true) ;
@@ -5903,7 +5903,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_dec
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2D__3E_ COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 201)) ;
   GALGAS_lstring var_resultTypeName_7398 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__40_type COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 202)) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_externFunctionDeclarationAST::constructor_new (GALGAS_bool (false), var_mActionName_7234, var_formalInputParameterList_7347, var_resultTypeName_7398, var_isUsefull_7030  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 203))  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 203)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_externFunctionDeclarationAST::class_func_new (GALGAS_bool (false), var_mActionName_7234, var_formalInputParameterList_7347, var_resultTypeName_7398, var_isUsefull_7030  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 203))  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 203)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5966,14 +5966,14 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_syn
   switch (select_galgas_33_InstructionsSyntax_8 (inCompiler)) {
   case 1: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2A_ COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 226)) ;
-    outArgument_result = GALGAS_grammarInstructionSyntaxDirectedTranslationDropResult::constructor_new (GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 227))  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 227)) ;
+    outArgument_result = GALGAS_grammarInstructionSyntaxDirectedTranslationDropResult::class_func_new (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 227))  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 227)) ;
   } break ;
   case 2: {
     GALGAS_lstring var_actualParameterTypeName_8533 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__40_type COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 229)) ;
     GALGAS_lstring var_actualParameterName_8581 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 230)) ;
-    outArgument_result = GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar::constructor_new (var_actualParameterTypeName_8533, var_actualParameterName_8581  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 231)) ;
+    outArgument_result = GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar::class_func_new (var_actualParameterTypeName_8533, var_actualParameterName_8581  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 231)) ;
   } break ;
   case 3: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_let COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 233)) ;
@@ -5981,12 +5981,12 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_syn
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__40_type COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 234)) ;
     GALGAS_lstring var_actualParameterName_8818 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 235)) ;
-    outArgument_result = GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst::constructor_new (var_actualParameterTypeName_8770, var_actualParameterName_8818  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 236)) ;
+    outArgument_result = GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst::class_func_new (var_actualParameterTypeName_8770, var_actualParameterName_8818  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 236)) ;
   } break ;
   case 4: {
     GALGAS_lstring var_actualParameterName_9002 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 238)) ;
-    outArgument_result = GALGAS_grammarInstructionSyntaxDirectedTranslationResultInVar::constructor_new (var_actualParameterName_9002  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 239)) ;
+    outArgument_result = GALGAS_grammarInstructionSyntaxDirectedTranslationResultInVar::class_func_new (var_actualParameterName_9002  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 239)) ;
   } break ;
   default:
     break ;
@@ -6049,7 +6049,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_syn
 void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_actual_5F_input_5F_parameter_5F_list_5F_ggs_33__i5_ (GALGAS_actualInputParameterListAST & outArgument_outActualInputParameterList,
                                                                                                                                   Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outActualInputParameterList.drop () ; // Release 'out' argument
-  outArgument_outActualInputParameterList = GALGAS_actualInputParameterListAST::constructor_emptyList (SOURCE_FILE ("galgasInstructionsSyntax.galgas", 246)) ;
+  outArgument_outActualInputParameterList = GALGAS_actualInputParameterListAST::class_func_emptyList (SOURCE_FILE ("galgasInstructionsSyntax.galgas", 246)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     switch (select_galgas_33_InstructionsSyntax_9 (inCompiler)) {
@@ -6057,7 +6057,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_act
       GALGAS_lstring var_selector_9455 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3F_ COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 249)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2A_ COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 250)) ;
-      outArgument_outActualInputParameterList.addAssign_operation (var_selector_9455, GALGAS_inputParameterAnonymousVariable::constructor_new (SOURCE_FILE ("galgasInstructionsSyntax.galgas", 251))  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 251)) ;
+      outArgument_outActualInputParameterList.addAssign_operation (var_selector_9455, GALGAS_inputParameterAnonymousVariable::class_func_new (SOURCE_FILE ("galgasInstructionsSyntax.galgas", 251))  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 251)) ;
     } break ;
     case 3: {
       GALGAS_lstring var_selector_9584 = inCompiler->synthetizedAttribute_tokenString () ;
@@ -6077,7 +6077,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_act
       }
       GALGAS_lstring var_actualParameterName_9792 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 261)) ;
-      outArgument_outActualInputParameterList.addAssign_operation (var_selector_9584, GALGAS_inputParameterDeclaredVariable::constructor_new (var_actualParameterTypeName_9624, var_actualParameterName_9792  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 264))  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 262)) ;
+      outArgument_outActualInputParameterList.addAssign_operation (var_selector_9584, GALGAS_inputParameterDeclaredVariable::class_func_new (var_actualParameterTypeName_9624, var_actualParameterName_9792  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 264))  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 262)) ;
     } break ;
     case 4: {
       GALGAS_lstring var_selector_9985 = inCompiler->synthetizedAttribute_tokenString () ;
@@ -6097,14 +6097,14 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_act
       }
       GALGAS_lstring var_actualParameterName_10193 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 274)) ;
-      outArgument_outActualInputParameterList.addAssign_operation (var_selector_9985, GALGAS_inputParameterDeclaredConstant::constructor_new (var_actualParameterTypeName_10025, var_actualParameterName_10193  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 277))  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 275)) ;
+      outArgument_outActualInputParameterList.addAssign_operation (var_selector_9985, GALGAS_inputParameterDeclaredConstant::class_func_new (var_actualParameterTypeName_10025, var_actualParameterName_10193  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 277))  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 275)) ;
     } break ;
     case 5: {
       GALGAS_lstring var_selector_10386 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3F_ COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 279)) ;
       GALGAS_lstring var_actualParameterName_10419 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 280)) ;
-      outArgument_outActualInputParameterList.addAssign_operation (var_selector_10386, GALGAS_inputParameterVariable::constructor_new (var_actualParameterName_10419  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 281))  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 281)) ;
+      outArgument_outActualInputParameterList.addAssign_operation (var_selector_10386, GALGAS_inputParameterVariable::class_func_new (var_actualParameterName_10419  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 281))  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 281)) ;
     } break ;
     default:
       repeatFlag_0 = false ;
@@ -6229,7 +6229,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_dec
         if (kBoolTrue == test_1) {
           TC_Array <C_FixItDescription> fixItArray2 ;
           fixItArray2.appendObject (C_FixItDescription (kFixItRemove, "")) ;
-          inCompiler->emitSemanticError (GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas", 21)), GALGAS_string ("duplicate attribute"), fixItArray2  COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas", 21)) ;
+          inCompiler->emitSemanticError (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas", 21)), GALGAS_string ("duplicate attribute"), fixItArray2  COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas", 21)) ;
         }
       }
       var_isUsefull_878 = GALGAS_bool (true) ;
@@ -6242,7 +6242,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_dec
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas", 25)) ;
   GALGAS_formalParameterListAST var_mFormalParameterList_1192 ;
   nt_formal_5F_parameter_5F_list_5F_ggs_33__ (var_mFormalParameterList_1192, inCompiler) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_externProcedureDeclarationAST::constructor_new (GALGAS_bool (false), GALGAS_bool (false), var_mActionName_1091, var_mFormalParameterList_1192, var_isUsefull_878  COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas", 27))  COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas", 27)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_externProcedureDeclarationAST::class_func_new (GALGAS_bool (false), GALGAS_bool (false), var_mActionName_1091, var_mFormalParameterList_1192, var_isUsefull_878  COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas", 27))  COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas", 27)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6298,7 +6298,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_dec
         if (kBoolTrue == test_1) {
           TC_Array <C_FixItDescription> fixItArray2 ;
           fixItArray2.appendObject (C_FixItDescription (kFixItRemove, "")) ;
-          inCompiler->emitSemanticError (GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("procedure-declaration.galgas", 20)), GALGAS_string ("duplicate attribute"), fixItArray2  COMMA_SOURCE_FILE ("procedure-declaration.galgas", 20)) ;
+          inCompiler->emitSemanticError (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("procedure-declaration.galgas", 20)), GALGAS_string ("duplicate attribute"), fixItArray2  COMMA_SOURCE_FILE ("procedure-declaration.galgas", 20)) ;
         }
       }
       var_isUsefull_784 = GALGAS_bool (true) ;
@@ -6315,8 +6315,8 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_dec
   GALGAS_semanticInstructionListAST var_mRoutineInstructionList_1189 ;
   nt_semantic_5F_instruction_5F_list_5F_ggs_33__ (var_mRoutineInstructionList_1189, inCompiler) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7D_ COMMA_SOURCE_FILE ("procedure-declaration.galgas", 28)) ;
-  GALGAS_location var_endOfInstructionList_1229 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("procedure-declaration.galgas", 29)) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_procDeclarationAST::constructor_new (GALGAS_bool (false), GALGAS_bool (false), var_mRoutineName_988, var_mFormalParameterList_1090, var_isUsefull_784, var_mRoutineInstructionList_1189, var_endOfInstructionList_1229  COMMA_SOURCE_FILE ("procedure-declaration.galgas", 30))  COMMA_SOURCE_FILE ("procedure-declaration.galgas", 30)) ;
+  GALGAS_location var_endOfInstructionList_1229 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("procedure-declaration.galgas", 29)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_procDeclarationAST::class_func_new (GALGAS_bool (false), GALGAS_bool (false), var_mRoutineName_988, var_mFormalParameterList_1090, var_isUsefull_784, var_mRoutineInstructionList_1189, var_endOfInstructionList_1229  COMMA_SOURCE_FILE ("procedure-declaration.galgas", 30))  COMMA_SOURCE_FILE ("procedure-declaration.galgas", 30)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6377,7 +6377,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_dec
         if (kBoolTrue == test_1) {
           TC_Array <C_FixItDescription> fixItArray2 ;
           fixItArray2.appendObject (C_FixItDescription (kFixItRemove, "")) ;
-          inCompiler->emitSemanticError (GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("procedure-declaration.galgas", 51)), GALGAS_string ("duplicate attribute"), fixItArray2  COMMA_SOURCE_FILE ("procedure-declaration.galgas", 51)) ;
+          inCompiler->emitSemanticError (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("procedure-declaration.galgas", 51)), GALGAS_string ("duplicate attribute"), fixItArray2  COMMA_SOURCE_FILE ("procedure-declaration.galgas", 51)) ;
         }
       }
       var_isUsefull_1789 = GALGAS_bool (true) ;
@@ -6394,8 +6394,8 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_dec
   GALGAS_semanticInstructionListAST var_mRoutineInstructionList_2194 ;
   nt_semantic_5F_instruction_5F_list_5F_ggs_33__ (var_mRoutineInstructionList_2194, inCompiler) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7D_ COMMA_SOURCE_FILE ("procedure-declaration.galgas", 59)) ;
-  GALGAS_location var_endOfInstructionList_2234 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("procedure-declaration.galgas", 60)) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_procDeclarationAST::constructor_new (GALGAS_bool (false), GALGAS_bool (true), var_mRoutineName_1993, var_mFormalParameterList_2095, var_isUsefull_1789, var_mRoutineInstructionList_2194, var_endOfInstructionList_2234  COMMA_SOURCE_FILE ("procedure-declaration.galgas", 61))  COMMA_SOURCE_FILE ("procedure-declaration.galgas", 61)) ;
+  GALGAS_location var_endOfInstructionList_2234 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("procedure-declaration.galgas", 60)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_procDeclarationAST::class_func_new (GALGAS_bool (false), GALGAS_bool (true), var_mRoutineName_1993, var_mFormalParameterList_2095, var_isUsefull_1789, var_mRoutineInstructionList_2194, var_endOfInstructionList_2234  COMMA_SOURCE_FILE ("procedure-declaration.galgas", 61))  COMMA_SOURCE_FILE ("procedure-declaration.galgas", 61)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6465,7 +6465,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3D_ COMMA_SOURCE_FILE ("instruction-assignment.galgas", 37)) ;
   GALGAS_semanticExpressionAST var_mSourceExpression_1557 ;
   nt_expression_5F_ggs_33__ (var_mSourceExpression_1557, inCompiler) ;
-  outArgument_outInstruction = GALGAS_assignmentInstructionAST::constructor_new (var_mTargetVariableName_1294.readProperty_location (), var_mTargetVariableName_1294, var_optionalProperty_1331, var_mSourceExpression_1557  COMMA_SOURCE_FILE ("instruction-assignment.galgas", 39)) ;
+  outArgument_outInstruction = GALGAS_assignmentInstructionAST::class_func_new (var_mTargetVariableName_1294.readProperty_location (), var_mTargetVariableName_1294, var_optionalProperty_1331, var_mSourceExpression_1557  COMMA_SOURCE_FILE ("instruction-assignment.galgas", 39)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6531,7 +6531,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3D_ COMMA_SOURCE_FILE ("instruction-assignment.galgas", 61)) ;
   GALGAS_semanticExpressionAST var_mSourceExpression_2251 ;
   nt_expression_5F_ggs_33__ (var_mSourceExpression_2251, inCompiler) ;
-  outArgument_outInstruction = GALGAS_selfPropertyAssignmentInstructionAST::constructor_new (var_mTargetVariableName_1988.readProperty_location (), var_mTargetVariableName_1988, var_optionalProperty_2025, var_mSourceExpression_2251  COMMA_SOURCE_FILE ("instruction-assignment.galgas", 63)) ;
+  outArgument_outInstruction = GALGAS_selfPropertyAssignmentInstructionAST::class_func_new (var_mTargetVariableName_1988.readProperty_location (), var_mTargetVariableName_1988, var_optionalProperty_2025, var_mSourceExpression_2251  COMMA_SOURCE_FILE ("instruction-assignment.galgas", 63)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6584,15 +6584,15 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_cas
   switch (select_galgas_33_InstructionsSyntax_17 (inCompiler)) {
   case 1: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3D__3D_ COMMA_SOURCE_FILE ("instruction-cast.galgas", 34)) ;
-    var_kind_1523 = GALGAS_dynamicTypeComparisonKind::constructor_equal (SOURCE_FILE ("instruction-cast.galgas", 35)) ;
+    var_kind_1523 = GALGAS_dynamicTypeComparisonKind::class_func_equal (SOURCE_FILE ("instruction-cast.galgas", 35)) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3E__3D_ COMMA_SOURCE_FILE ("instruction-cast.galgas", 37)) ;
-    var_kind_1523 = GALGAS_dynamicTypeComparisonKind::constructor_inherited (SOURCE_FILE ("instruction-cast.galgas", 38)) ;
+    var_kind_1523 = GALGAS_dynamicTypeComparisonKind::class_func_inherited (SOURCE_FILE ("instruction-cast.galgas", 38)) ;
   } break ;
   case 3: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3E_ COMMA_SOURCE_FILE ("instruction-cast.galgas", 40)) ;
-    var_kind_1523 = GALGAS_dynamicTypeComparisonKind::constructor_strictlyInherited (SOURCE_FILE ("instruction-cast.galgas", 41)) ;
+    var_kind_1523 = GALGAS_dynamicTypeComparisonKind::class_func_strictlyInherited (SOURCE_FILE ("instruction-cast.galgas", 41)) ;
   } break ;
   default:
     break ;
@@ -6606,7 +6606,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_cas
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("instruction-cast.galgas", 46)) ;
   } break ;
   case 2: {
-    var_mConstantVarName_1713 = GALGAS_lstring::constructor_new (GALGAS_string::makeEmptyString (), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-cast.galgas", 48)), inCompiler  COMMA_SOURCE_FILE ("instruction-cast.galgas", 48)) ;
+    var_mConstantVarName_1713 = GALGAS_lstring::class_func_new (GALGAS_string::makeEmptyString (), GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-cast.galgas", 48)), inCompiler  COMMA_SOURCE_FILE ("instruction-cast.galgas", 48)) ;
   } break ;
   default:
     break ;
@@ -6614,7 +6614,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_cas
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3A_ COMMA_SOURCE_FILE ("instruction-cast.galgas", 50)) ;
   GALGAS_semanticInstructionListAST var_mCastBranchInstructionList_1965 ;
   nt_semantic_5F_instruction_5F_list_5F_ggs_33__ (var_mCastBranchInstructionList_1965, inCompiler) ;
-  ioArgument_ioCastInstructionBranchList.addAssign_operation (var_mTypeName_1686, var_mConstantVarName_1713, var_mCastBranchInstructionList_1965, var_kind_1523, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-cast.galgas", 57))  COMMA_SOURCE_FILE ("instruction-cast.galgas", 52)) ;
+  ioArgument_ioCastInstructionBranchList.addAssign_operation (var_mTypeName_1686, var_mConstantVarName_1713, var_mCastBranchInstructionList_1965, var_kind_1523, GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-cast.galgas", 57))  COMMA_SOURCE_FILE ("instruction-cast.galgas", 52)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6687,7 +6687,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_cas
   outArgument_outElseOrDefault.drop () ; // Release 'out' argument
   switch (select_galgas_33_InstructionsSyntax_19 (inCompiler)) {
   case 1: {
-    outArgument_outElseOrDefault = GALGAS_semanticInstructionListAST::constructor_emptyList (SOURCE_FILE ("instruction-cast.galgas", 64)) ;
+    outArgument_outElseOrDefault = GALGAS_semanticInstructionListAST::class_func_emptyList (SOURCE_FILE ("instruction-cast.galgas", 64)) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_else COMMA_SOURCE_FILE ("instruction-cast.galgas", 66)) ;
@@ -6695,14 +6695,14 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_cas
   } break ;
   case 3: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_default COMMA_SOURCE_FILE ("instruction-cast.galgas", 69)) ;
-    GALGAS_location var_instructionLocation_2491 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-cast.galgas", 70)) ;
+    GALGAS_location var_instructionLocation_2491 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-cast.galgas", 70)) ;
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_error COMMA_SOURCE_FILE ("instruction-cast.galgas", 71)) ;
     GALGAS_semanticExpressionAST var_errorLocationExpression_2594 ;
     nt_expression_5F_ggs_33__ (var_errorLocationExpression_2594, inCompiler) ;
-    outArgument_outElseOrDefault = GALGAS_semanticInstructionListAST::constructor_emptyList (SOURCE_FILE ("instruction-cast.galgas", 73)) ;
-    GALGAS_stringlist temp_0 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("instruction-cast.galgas", 77)) ;
+    outArgument_outElseOrDefault = GALGAS_semanticInstructionListAST::class_func_emptyList (SOURCE_FILE ("instruction-cast.galgas", 73)) ;
+    GALGAS_stringlist temp_0 = GALGAS_stringlist::class_func_emptyList (SOURCE_FILE ("instruction-cast.galgas", 77)) ;
     temp_0.addAssign_operation (GALGAS_string ("cast instruction run-time error")  COMMA_SOURCE_FILE ("instruction-cast.galgas", 77)) ;
-    outArgument_outElseOrDefault.addAssign_operation (GALGAS_errorInstructionAST::constructor_new (var_instructionLocation_2491, var_errorLocationExpression_2594, GALGAS_literalStringExpressionAST::constructor_new (var_instructionLocation_2491, temp_0  COMMA_SOURCE_FILE ("instruction-cast.galgas", 77)), GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("instruction-cast.galgas", 78)), GALGAS_fixitListAST::constructor_emptyList (SOURCE_FILE ("instruction-cast.galgas", 79))  COMMA_SOURCE_FILE ("instruction-cast.galgas", 74))  COMMA_SOURCE_FILE ("instruction-cast.galgas", 74)) ;
+    outArgument_outElseOrDefault.addAssign_operation (GALGAS_errorInstructionAST::class_func_new (var_instructionLocation_2491, var_errorLocationExpression_2594, GALGAS_literalStringExpressionAST::class_func_new (var_instructionLocation_2491, temp_0  COMMA_SOURCE_FILE ("instruction-cast.galgas", 77)), GALGAS_lstringlist::class_func_emptyList (SOURCE_FILE ("instruction-cast.galgas", 78)), GALGAS_fixitListAST::class_func_emptyList (SOURCE_FILE ("instruction-cast.galgas", 79))  COMMA_SOURCE_FILE ("instruction-cast.galgas", 74))  COMMA_SOURCE_FILE ("instruction-cast.galgas", 74)) ;
   } break ;
   default:
     break ;
@@ -6761,13 +6761,13 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
     test_0 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_errorOldStylePropertyDeclaration.readProperty_value ()).boolEnum () ;
     if (kBoolTrue == test_0) {
       TC_Array <C_FixItDescription> fixItArray1 ;
-      inCompiler->emitSemanticWarning (GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-cast.galgas", 89)), GALGAS_string ("This instruction is not handled in GALGAS 4"), fixItArray1  COMMA_SOURCE_FILE ("instruction-cast.galgas", 89)) ;
+      inCompiler->emitSemanticWarning (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-cast.galgas", 89)), GALGAS_string ("This instruction is not handled in GALGAS 4"), fixItArray1  COMMA_SOURCE_FILE ("instruction-cast.galgas", 89)) ;
     }
   }
-  GALGAS_location var_instructionLocation_3281 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-cast.galgas", 91)) ;
+  GALGAS_location var_instructionLocation_3281 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-cast.galgas", 91)) ;
   GALGAS_semanticExpressionAST var_expression_3368 ;
   nt_expression_5F_ggs_33__ (var_expression_3368, inCompiler) ;
-  GALGAS_castInstructionBranchListAST var_mCastInstructionBranchList_3387 = GALGAS_castInstructionBranchListAST::constructor_emptyList (SOURCE_FILE ("instruction-cast.galgas", 93)) ;
+  GALGAS_castInstructionBranchListAST var_mCastInstructionBranchList_3387 = GALGAS_castInstructionBranchListAST::class_func_emptyList (SOURCE_FILE ("instruction-cast.galgas", 93)) ;
   bool repeatFlag_2 = true ;
   while (repeatFlag_2) {
     nt_cast_5F_instruction_5F_branch_ (var_mCastInstructionBranchList_3387, inCompiler) ;
@@ -6779,8 +6779,8 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
   GALGAS_semanticInstructionListAST var_mElseOrDefault_3600 ;
   nt_cast_5F_else_5F_or_5F_default_ (var_mElseOrDefault_3600, inCompiler) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_end COMMA_SOURCE_FILE ("instruction-cast.galgas", 99)) ;
-  GALGAS_location var_endOfInstructionLocation_3633 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-cast.galgas", 100)) ;
-  outArgument_outInstruction = GALGAS_structuredCastInstructionAST::constructor_new (var_instructionLocation_3281, var_expression_3368, var_mCastInstructionBranchList_3387, var_mElseOrDefault_3600, var_endOfInstructionLocation_3633  COMMA_SOURCE_FILE ("instruction-cast.galgas", 101)) ;
+  GALGAS_location var_endOfInstructionLocation_3633 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-cast.galgas", 100)) ;
+  outArgument_outInstruction = GALGAS_structuredCastInstructionAST::class_func_new (var_instructionLocation_3281, var_expression_3368, var_mCastInstructionBranchList_3387, var_mElseOrDefault_3600, var_endOfInstructionLocation_3633  COMMA_SOURCE_FILE ("instruction-cast.galgas", 101)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6874,8 +6874,8 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
   outArgument_outInstruction.drop () ; // Release 'out' argument
   GALGAS_lstring var_receiverName_3152 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("instruction-concat.galgas", 72)) ;
-  GALGAS_location var_instructionLocation_3173 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-concat.galgas", 73)) ;
-  GALGAS_lstringlist var_mStructAttributeList_3231 = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("instruction-concat.galgas", 74)) ;
+  GALGAS_location var_instructionLocation_3173 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-concat.galgas", 73)) ;
+  GALGAS_lstringlist var_mStructAttributeList_3231 = GALGAS_lstringlist::class_func_emptyList (SOURCE_FILE ("instruction-concat.galgas", 74)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     if (select_galgas_33_InstructionsSyntax_21 (inCompiler) == 2) {
@@ -6892,7 +6892,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2D__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 82)) ;
     GALGAS_semanticExpressionAST var_expression_3453 ;
     nt_expression_5F_ggs_33__ (var_expression_3453, inCompiler) ;
-    outArgument_outInstruction = GALGAS_minusEqualExpressionInstructionAST::constructor_new (var_instructionLocation_3173, constinArgument_inHasSelfPrefix, var_receiverName_3152, var_mStructAttributeList_3231, var_expression_3453  COMMA_SOURCE_FILE ("instruction-concat.galgas", 84)) ;
+    outArgument_outInstruction = GALGAS_minusEqualExpressionInstructionAST::class_func_new (var_instructionLocation_3173, constinArgument_inHasSelfPrefix, var_receiverName_3152, var_mStructAttributeList_3231, var_expression_3453  COMMA_SOURCE_FILE ("instruction-concat.galgas", 84)) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2B__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 92)) ;
@@ -6900,12 +6900,12 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
     case 1: {
       GALGAS_actualOutputExpressionList var_expressionList_3775 ;
       nt_non_5F_empty_5F_output_5F_expression_5F_list_5F_ggs_33__ (var_expressionList_3775, inCompiler) ;
-      outArgument_outInstruction = GALGAS_plusEqualElementsInstructionAST::constructor_new (var_instructionLocation_3173, constinArgument_inHasSelfPrefix, var_receiverName_3152, var_mStructAttributeList_3231, var_expressionList_3775  COMMA_SOURCE_FILE ("instruction-concat.galgas", 95)) ;
+      outArgument_outInstruction = GALGAS_plusEqualElementsInstructionAST::class_func_new (var_instructionLocation_3173, constinArgument_inHasSelfPrefix, var_receiverName_3152, var_mStructAttributeList_3231, var_expressionList_3775  COMMA_SOURCE_FILE ("instruction-concat.galgas", 95)) ;
     } break ;
     case 2: {
       GALGAS_semanticExpressionAST var_expression_4067 ;
       nt_expression_5F_ggs_33__ (var_expression_4067, inCompiler) ;
-      outArgument_outInstruction = GALGAS_plusEqualExpressionInstructionAST::constructor_new (var_instructionLocation_3173, constinArgument_inHasSelfPrefix, var_receiverName_3152, var_mStructAttributeList_3231, var_expression_4067  COMMA_SOURCE_FILE ("instruction-concat.galgas", 104)) ;
+      outArgument_outInstruction = GALGAS_plusEqualExpressionInstructionAST::class_func_new (var_instructionLocation_3173, constinArgument_inHasSelfPrefix, var_receiverName_3152, var_mStructAttributeList_3231, var_expression_4067  COMMA_SOURCE_FILE ("instruction-concat.galgas", 104)) ;
     } break ;
     default:
       break ;
@@ -6915,13 +6915,13 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2A__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 113)) ;
     GALGAS_semanticExpressionAST var_expression_4370 ;
     nt_expression_5F_ggs_33__ (var_expression_4370, inCompiler) ;
-    outArgument_outInstruction = GALGAS_mulEqualExpressionInstructionAST::constructor_new (var_instructionLocation_3173, constinArgument_inHasSelfPrefix, var_receiverName_3152, var_mStructAttributeList_3231, var_expression_4370  COMMA_SOURCE_FILE ("instruction-concat.galgas", 115)) ;
+    outArgument_outInstruction = GALGAS_mulEqualExpressionInstructionAST::class_func_new (var_instructionLocation_3173, constinArgument_inHasSelfPrefix, var_receiverName_3152, var_mStructAttributeList_3231, var_expression_4370  COMMA_SOURCE_FILE ("instruction-concat.galgas", 115)) ;
   } break ;
   case 4: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2F__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 123)) ;
     GALGAS_semanticExpressionAST var_expression_4648 ;
     nt_expression_5F_ggs_33__ (var_expression_4648, inCompiler) ;
-    outArgument_outInstruction = GALGAS_divEqualExpressionInstructionAST::constructor_new (var_instructionLocation_3173, constinArgument_inHasSelfPrefix, var_receiverName_3152, var_mStructAttributeList_3231, var_expression_4648  COMMA_SOURCE_FILE ("instruction-concat.galgas", 125)) ;
+    outArgument_outInstruction = GALGAS_divEqualExpressionInstructionAST::class_func_new (var_instructionLocation_3173, constinArgument_inHasSelfPrefix, var_receiverName_3152, var_mStructAttributeList_3231, var_expression_4648  COMMA_SOURCE_FILE ("instruction-concat.galgas", 125)) ;
   } break ;
   default:
     break ;
@@ -7022,14 +7022,14 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
 void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_non_5F_empty_5F_output_5F_expression_5F_list_5F_ggs_33__i17_ (GALGAS_actualOutputExpressionList & outArgument_outExpressionList,
                                                                                                                                            Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outExpressionList.drop () ; // Release 'out' argument
-  outArgument_outExpressionList = GALGAS_actualOutputExpressionList::constructor_emptyList (SOURCE_FILE ("instruction-concat.galgas", 138)) ;
+  outArgument_outExpressionList = GALGAS_actualOutputExpressionList::class_func_emptyList (SOURCE_FILE ("instruction-concat.galgas", 138)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     GALGAS_lstring var_selector_5138 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__21_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 140)) ;
     GALGAS_semanticExpressionAST var_expression_5199 ;
     nt_expression_5F_ggs_33__ (var_expression_5199, inCompiler) ;
-    outArgument_outExpressionList.addAssign_operation (var_selector_5138, var_expression_5199, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-concat.galgas", 142))  COMMA_SOURCE_FILE ("instruction-concat.galgas", 142)) ;
+    outArgument_outExpressionList.addAssign_operation (var_selector_5138, var_expression_5199, GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-concat.galgas", 142))  COMMA_SOURCE_FILE ("instruction-concat.galgas", 142)) ;
     if (select_galgas_33_InstructionsSyntax_24 (inCompiler) == 2) {
     }else{
       repeatFlag_0 = false ;
@@ -7072,8 +7072,8 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
                                                                                                                       Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outInstruction.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_drop COMMA_SOURCE_FILE ("instruction-drop.galgas", 18)) ;
-  GALGAS_location var_instructionLocation_844 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-drop.galgas", 19)) ;
-  GALGAS_lstringlist var_dropList_902 = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("instruction-drop.galgas", 20)) ;
+  GALGAS_location var_instructionLocation_844 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-drop.galgas", 19)) ;
+  GALGAS_lstringlist var_dropList_902 = GALGAS_lstringlist::class_func_emptyList (SOURCE_FILE ("instruction-drop.galgas", 20)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     GALGAS_lstring var_variableName_951 = inCompiler->synthetizedAttribute_tokenString () ;
@@ -7085,7 +7085,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
       repeatFlag_0 = false ;
     }
   }
-  outArgument_outInstruction = GALGAS_dropInstructionAST::constructor_new (var_instructionLocation_844, var_dropList_902  COMMA_SOURCE_FILE ("instruction-drop.galgas", 27)) ;
+  outArgument_outInstruction = GALGAS_dropInstructionAST::class_func_new (var_instructionLocation_844, var_dropList_902  COMMA_SOURCE_FILE ("instruction-drop.galgas", 27)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7124,7 +7124,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
 void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_issue_5F_fixit_i19_ (GALGAS_fixitListAST & outArgument_outFixitListAST,
                                                                                                   Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outFixitListAST.drop () ; // Release 'out' argument
-  outArgument_outFixitListAST = GALGAS_fixitListAST::constructor_emptyList (SOURCE_FILE ("instruction-error.galgas", 36)) ;
+  outArgument_outFixitListAST = GALGAS_fixitListAST::class_func_emptyList (SOURCE_FILE ("instruction-error.galgas", 36)) ;
   switch (select_galgas_33_InstructionsSyntax_26 (inCompiler)) {
   case 1: {
   } break ;
@@ -7143,36 +7143,36 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_iss
           if (kBoolTrue == test_1) {
             TC_Array <C_FixItDescription> fixItArray2 ;
             fixItArray2.appendObject (C_FixItDescription (kFixItRemove, "")) ;
-            inCompiler->emitSemanticWarning (GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas", 46)), GALGAS_string ("duplicated action"), fixItArray2  COMMA_SOURCE_FILE ("instruction-error.galgas", 46)) ;
+            inCompiler->emitSemanticWarning (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas", 46)), GALGAS_string ("duplicated action"), fixItArray2  COMMA_SOURCE_FILE ("instruction-error.galgas", 46)) ;
           }
         }
         if (kBoolFalse == test_1) {
-          outArgument_outFixitListAST.addAssign_operation (GALGAS_fixitElementAST::constructor_fixItRemove (SOURCE_FILE ("instruction-error.galgas", 48))  COMMA_SOURCE_FILE ("instruction-error.galgas", 48)) ;
+          outArgument_outFixitListAST.addAssign_operation (GALGAS_fixitElementAST::class_func_fixItRemove (SOURCE_FILE ("instruction-error.galgas", 48))  COMMA_SOURCE_FILE ("instruction-error.galgas", 48)) ;
           var_hasFixItRemove_1617 = GALGAS_bool (true) ;
         }
       } break ;
       case 3: {
         inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_replace COMMA_SOURCE_FILE ("instruction-error.galgas", 52)) ;
-        GALGAS_location var_errorLocation_1918 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas", 53)) ;
+        GALGAS_location var_errorLocation_1918 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas", 53)) ;
         GALGAS_semanticExpressionAST var_expression_2003 ;
         nt_expression_5F_ggs_33__ (var_expression_2003, inCompiler) ;
-        outArgument_outFixitListAST.addAssign_operation (GALGAS_fixitElementAST::constructor_fixItReplace (var_expression_2003, var_errorLocation_1918  COMMA_SOURCE_FILE ("instruction-error.galgas", 55))  COMMA_SOURCE_FILE ("instruction-error.galgas", 55)) ;
+        outArgument_outFixitListAST.addAssign_operation (GALGAS_fixitElementAST::class_func_fixItReplace (var_expression_2003, var_errorLocation_1918  COMMA_SOURCE_FILE ("instruction-error.galgas", 55))  COMMA_SOURCE_FILE ("instruction-error.galgas", 55)) ;
       } break ;
       case 4: {
         inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_insert COMMA_SOURCE_FILE ("instruction-error.galgas", 57)) ;
         inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_after COMMA_SOURCE_FILE ("instruction-error.galgas", 57)) ;
-        GALGAS_location var_errorLocation_2154 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas", 58)) ;
+        GALGAS_location var_errorLocation_2154 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas", 58)) ;
         GALGAS_semanticExpressionAST var_expression_2239 ;
         nt_expression_5F_ggs_33__ (var_expression_2239, inCompiler) ;
-        outArgument_outFixitListAST.addAssign_operation (GALGAS_fixitElementAST::constructor_fixItInsertAfter (var_expression_2239, var_errorLocation_2154  COMMA_SOURCE_FILE ("instruction-error.galgas", 60))  COMMA_SOURCE_FILE ("instruction-error.galgas", 60)) ;
+        outArgument_outFixitListAST.addAssign_operation (GALGAS_fixitElementAST::class_func_fixItInsertAfter (var_expression_2239, var_errorLocation_2154  COMMA_SOURCE_FILE ("instruction-error.galgas", 60))  COMMA_SOURCE_FILE ("instruction-error.galgas", 60)) ;
       } break ;
       case 5: {
         inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_insert COMMA_SOURCE_FILE ("instruction-error.galgas", 62)) ;
         inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_before COMMA_SOURCE_FILE ("instruction-error.galgas", 62)) ;
-        GALGAS_location var_errorLocation_2395 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas", 63)) ;
+        GALGAS_location var_errorLocation_2395 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas", 63)) ;
         GALGAS_semanticExpressionAST var_expression_2480 ;
         nt_expression_5F_ggs_33__ (var_expression_2480, inCompiler) ;
-        outArgument_outFixitListAST.addAssign_operation (GALGAS_fixitElementAST::constructor_fixItInsertBefore (var_expression_2480, var_errorLocation_2395  COMMA_SOURCE_FILE ("instruction-error.galgas", 65))  COMMA_SOURCE_FILE ("instruction-error.galgas", 65)) ;
+        outArgument_outFixitListAST.addAssign_operation (GALGAS_fixitElementAST::class_func_fixItInsertBefore (var_expression_2480, var_errorLocation_2395  COMMA_SOURCE_FILE ("instruction-error.galgas", 65))  COMMA_SOURCE_FILE ("instruction-error.galgas", 65)) ;
       } break ;
       default:
         repeatFlag_0 = false ;
@@ -7275,13 +7275,13 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
                                                                                                                       Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outInstruction.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_error COMMA_SOURCE_FILE ("instruction-error.galgas", 74)) ;
-  GALGAS_location var_instructionLocation_2833 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas", 75)) ;
+  GALGAS_location var_instructionLocation_2833 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas", 75)) ;
   GALGAS_semanticExpressionAST var_mReceiverExpression_2920 ;
   nt_expression_5F_ggs_33__ (var_mReceiverExpression_2920, inCompiler) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3A_ COMMA_SOURCE_FILE ("instruction-error.galgas", 77)) ;
   GALGAS_semanticExpressionAST var_mErrorExpression_2998 ;
   nt_expression_5F_ggs_33__ (var_mErrorExpression_2998, inCompiler) ;
-  GALGAS_lstringlist var_mBuiltVariableList_3023 = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("instruction-error.galgas", 79)) ;
+  GALGAS_lstringlist var_mBuiltVariableList_3023 = GALGAS_lstringlist::class_func_emptyList (SOURCE_FILE ("instruction-error.galgas", 79)) ;
   switch (select_galgas_33_InstructionsSyntax_28 (inCompiler)) {
   case 1: {
   } break ;
@@ -7304,7 +7304,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
   }
   GALGAS_fixitListAST var_fixitListAST_3271 ;
   nt_issue_5F_fixit_ (var_fixitListAST_3271, inCompiler) ;
-  outArgument_outInstruction = GALGAS_errorInstructionAST::constructor_new (var_instructionLocation_2833, var_mReceiverExpression_2920, var_mErrorExpression_2998, var_mBuiltVariableList_3023, var_fixitListAST_3271  COMMA_SOURCE_FILE ("instruction-error.galgas", 91)) ;
+  outArgument_outInstruction = GALGAS_errorInstructionAST::class_func_new (var_instructionLocation_2833, var_mReceiverExpression_2920, var_mErrorExpression_2998, var_mBuiltVariableList_3023, var_fixitListAST_3271  COMMA_SOURCE_FILE ("instruction-error.galgas", 91)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7532,7 +7532,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_for
                                                                                                                               Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outEnumeratedObject.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__28_ COMMA_SOURCE_FILE ("instruction-for.galgas", 116)) ;
-  GALGAS_forInstructionEnumeratedObjectElementListAST var_elementList_4705 = GALGAS_forInstructionEnumeratedObjectElementListAST::constructor_emptyList (SOURCE_FILE ("instruction-for.galgas", 117)) ;
+  GALGAS_forInstructionEnumeratedObjectElementListAST var_elementList_4705 = GALGAS_forInstructionEnumeratedObjectElementListAST::class_func_emptyList (SOURCE_FILE ("instruction-for.galgas", 117)) ;
   GALGAS_bool var_endsWithEllipsis_4782 ;
   switch (select_galgas_33_InstructionsSyntax_33 (inCompiler)) {
   case 1: {
@@ -7563,12 +7563,12 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_for
   default:
     break ;
   }
-  GALGAS_location var_location_5069 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-for.galgas", 134)) ;
+  GALGAS_location var_location_5069 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-for.galgas", 134)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__29_ COMMA_SOURCE_FILE ("instruction-for.galgas", 135)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_in COMMA_SOURCE_FILE ("instruction-for.galgas", 136)) ;
   GALGAS_semanticExpressionAST var_enumeratedExpression_5162 ;
   nt_expression_5F_ggs_33__ (var_enumeratedExpression_5162, inCompiler) ;
-  outArgument_outEnumeratedObject = GALGAS_enumeratedCollectionCstListInExpAST::constructor_new (var_elementList_4705, var_endsWithEllipsis_4782, var_enumeratedExpression_5162, var_location_5069  COMMA_SOURCE_FILE ("instruction-for.galgas", 138)) ;
+  outArgument_outEnumeratedObject = GALGAS_enumeratedCollectionCstListInExpAST::class_func_new (var_elementList_4705, var_endsWithEllipsis_4782, var_enumeratedExpression_5162, var_location_5069  COMMA_SOURCE_FILE ("instruction-for.galgas", 138)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7675,7 +7675,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_for
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_in COMMA_SOURCE_FILE ("instruction-for.galgas", 162)) ;
   GALGAS_semanticExpressionAST var_enumeratedExpression_5906 ;
   nt_expression_5F_ggs_33__ (var_enumeratedExpression_5906, inCompiler) ;
-  outArgument_outEnumeratedObject = GALGAS_enumeratedCollectionVarInExpAST::constructor_new (var_typeName_5607, var_enumerationVariable_5713, var_enumeratedExpression_5906, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-for.galgas", 168))  COMMA_SOURCE_FILE ("instruction-for.galgas", 164)) ;
+  outArgument_outEnumeratedObject = GALGAS_enumeratedCollectionVarInExpAST::class_func_new (var_typeName_5607, var_enumerationVariable_5713, var_enumeratedExpression_5906, GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-for.galgas", 168))  COMMA_SOURCE_FILE ("instruction-for.galgas", 164)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7737,7 +7737,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_for
                                                                                                                               Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outEnumeratedObject.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__28_ COMMA_SOURCE_FILE ("instruction-for.galgas", 175)) ;
-  GALGAS_location var_startLocation_6333 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-for.galgas", 176)) ;
+  GALGAS_location var_startLocation_6333 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-for.galgas", 176)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__29_ COMMA_SOURCE_FILE ("instruction-for.galgas", 177)) ;
   GALGAS_lstring var_prefix_6389 ;
   switch (select_galgas_33_InstructionsSyntax_38 (inCompiler)) {
@@ -7751,11 +7751,11 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_for
   default:
     break ;
   }
-  GALGAS_location var_endLocation_6485 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-for.galgas", 184)) ;
+  GALGAS_location var_endLocation_6485 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-for.galgas", 184)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_in COMMA_SOURCE_FILE ("instruction-for.galgas", 185)) ;
   GALGAS_semanticExpressionAST var_enumeratedExpression_6573 ;
   nt_expression_5F_ggs_33__ (var_enumeratedExpression_6573, inCompiler) ;
-  outArgument_outEnumeratedObject = GALGAS_enumeratedCollectionImplicitVarInExpAST::constructor_new (var_prefix_6389, var_enumeratedExpression_6573, var_startLocation_6333.getter_union (var_endLocation_6485, inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas", 190))  COMMA_SOURCE_FILE ("instruction-for.galgas", 187)) ;
+  outArgument_outEnumeratedObject = GALGAS_enumeratedCollectionImplicitVarInExpAST::class_func_new (var_prefix_6389, var_enumeratedExpression_6573, var_startLocation_6333.getter_union (var_endLocation_6485, inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas", 190))  COMMA_SOURCE_FILE ("instruction-for.galgas", 187)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7801,8 +7801,8 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
                                                                                                                       Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outInstruction.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_for COMMA_SOURCE_FILE ("instruction-for.galgas", 197)) ;
-  GALGAS_location var_instructionLocation_6979 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-for.galgas", 198)) ;
-  GALGAS_forInstructionEnumeratedObjectListAST var_mEnumeratedObjectList_7024 = GALGAS_forInstructionEnumeratedObjectListAST::constructor_emptyList (SOURCE_FILE ("instruction-for.galgas", 199)) ;
+  GALGAS_location var_instructionLocation_6979 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-for.galgas", 198)) ;
+  GALGAS_forInstructionEnumeratedObjectListAST var_mEnumeratedObjectList_7024 = GALGAS_forInstructionEnumeratedObjectListAST::class_func_emptyList (SOURCE_FILE ("instruction-for.galgas", 199)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     GALGAS_bool var_ascending_7117 ;
@@ -7829,7 +7829,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
   GALGAS_semanticExpressionAST var_mWhileExpression_7438 ;
   switch (select_galgas_33_InstructionsSyntax_41 (inCompiler)) {
   case 1: {
-    var_mWhileExpression_7438 = GALGAS_trueExpressionAST::constructor_new (GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-for.galgas", 215))  COMMA_SOURCE_FILE ("instruction-for.galgas", 215)) ;
+    var_mWhileExpression_7438 = GALGAS_trueExpressionAST::class_func_new (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-for.galgas", 215))  COMMA_SOURCE_FILE ("instruction-for.galgas", 215)) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_while COMMA_SOURCE_FILE ("instruction-for.galgas", 217)) ;
@@ -7838,11 +7838,11 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
   default:
     break ;
   }
-  GALGAS_location var_endof_5F_while_5F_expression_7612 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-for.galgas", 220)) ;
+  GALGAS_location var_endof_5F_while_5F_expression_7612 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-for.galgas", 220)) ;
   GALGAS_semanticInstructionListAST var_mBeforeInstructionList_7688 ;
   switch (select_galgas_33_InstructionsSyntax_42 (inCompiler)) {
   case 1: {
-    var_mBeforeInstructionList_7688 = GALGAS_semanticInstructionListAST::constructor_emptyList (SOURCE_FILE ("instruction-for.galgas", 223)) ;
+    var_mBeforeInstructionList_7688 = GALGAS_semanticInstructionListAST::class_func_emptyList (SOURCE_FILE ("instruction-for.galgas", 223)) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_before COMMA_SOURCE_FILE ("instruction-for.galgas", 225)) ;
@@ -7851,12 +7851,12 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
   default:
     break ;
   }
-  GALGAS_location var_endof_5F_before_5F_branch_7886 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-for.galgas", 228)) ;
+  GALGAS_location var_endof_5F_before_5F_branch_7886 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-for.galgas", 228)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_do COMMA_SOURCE_FILE ("instruction-for.galgas", 229)) ;
   GALGAS_lstring var_indexVariableName_7949 ;
   switch (select_galgas_33_InstructionsSyntax_43 (inCompiler)) {
   case 1: {
-    var_indexVariableName_7949 = GALGAS_lstring::constructor_new (GALGAS_string::makeEmptyString (), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-for.galgas", 232)), inCompiler  COMMA_SOURCE_FILE ("instruction-for.galgas", 232)) ;
+    var_indexVariableName_7949 = GALGAS_lstring::class_func_new (GALGAS_string::makeEmptyString (), GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-for.galgas", 232)), inCompiler  COMMA_SOURCE_FILE ("instruction-for.galgas", 232)) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__28_ COMMA_SOURCE_FILE ("instruction-for.galgas", 234)) ;
@@ -7869,11 +7869,11 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
   }
   GALGAS_semanticInstructionListAST var_mDoInstructionList_8155 ;
   nt_semantic_5F_instruction_5F_list_5F_ggs_33__ (var_mDoInstructionList_8155, inCompiler) ;
-  GALGAS_location var_endof_5F_do_5F_branch_8182 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-for.galgas", 239)) ;
+  GALGAS_location var_endof_5F_do_5F_branch_8182 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-for.galgas", 239)) ;
   GALGAS_semanticInstructionListAST var_mBetweenInstructionList_8251 ;
   switch (select_galgas_33_InstructionsSyntax_44 (inCompiler)) {
   case 1: {
-    var_mBetweenInstructionList_8251 = GALGAS_semanticInstructionListAST::constructor_emptyList (SOURCE_FILE ("instruction-for.galgas", 242)) ;
+    var_mBetweenInstructionList_8251 = GALGAS_semanticInstructionListAST::class_func_emptyList (SOURCE_FILE ("instruction-for.galgas", 242)) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_between COMMA_SOURCE_FILE ("instruction-for.galgas", 244)) ;
@@ -7882,11 +7882,11 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
   default:
     break ;
   }
-  GALGAS_location var_endof_5F_between_5F_branch_8453 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-for.galgas", 247)) ;
+  GALGAS_location var_endof_5F_between_5F_branch_8453 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-for.galgas", 247)) ;
   GALGAS_semanticInstructionListAST var_mAfterInstructionList_8527 ;
   switch (select_galgas_33_InstructionsSyntax_45 (inCompiler)) {
   case 1: {
-    var_mAfterInstructionList_8527 = GALGAS_semanticInstructionListAST::constructor_emptyList (SOURCE_FILE ("instruction-for.galgas", 250)) ;
+    var_mAfterInstructionList_8527 = GALGAS_semanticInstructionListAST::class_func_emptyList (SOURCE_FILE ("instruction-for.galgas", 250)) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_after COMMA_SOURCE_FILE ("instruction-for.galgas", 252)) ;
@@ -7895,10 +7895,10 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
   default:
     break ;
   }
-  GALGAS_location var_endof_5F_after_5F_branch_8721 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-for.galgas", 255)) ;
+  GALGAS_location var_endof_5F_after_5F_branch_8721 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-for.galgas", 255)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_end COMMA_SOURCE_FILE ("instruction-for.galgas", 256)) ;
-  GALGAS_location var_endof_5F_foreach_5F_instruction_8775 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-for.galgas", 257)) ;
-  outArgument_outInstruction = GALGAS_forInstructionAST::constructor_new (var_instructionLocation_6979, var_mEnumeratedObjectList_7024, var_indexVariableName_7949, var_mWhileExpression_7438, var_endof_5F_while_5F_expression_7612, var_mBeforeInstructionList_7688, var_endof_5F_before_5F_branch_7886, var_mBetweenInstructionList_8251, var_endof_5F_between_5F_branch_8453, var_mDoInstructionList_8155, var_endof_5F_do_5F_branch_8182, var_mAfterInstructionList_8527, var_endof_5F_after_5F_branch_8721, var_endof_5F_foreach_5F_instruction_8775  COMMA_SOURCE_FILE ("instruction-for.galgas", 258)) ;
+  GALGAS_location var_endof_5F_foreach_5F_instruction_8775 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-for.galgas", 257)) ;
+  outArgument_outInstruction = GALGAS_forInstructionAST::class_func_new (var_instructionLocation_6979, var_mEnumeratedObjectList_7024, var_indexVariableName_7949, var_mWhileExpression_7438, var_endof_5F_while_5F_expression_7612, var_mBeforeInstructionList_7688, var_endof_5F_before_5F_branch_7886, var_mBetweenInstructionList_8251, var_endof_5F_between_5F_branch_8453, var_mDoInstructionList_8155, var_endof_5F_do_5F_branch_8182, var_mAfterInstructionList_8527, var_endof_5F_after_5F_branch_8721, var_endof_5F_foreach_5F_instruction_8775  COMMA_SOURCE_FILE ("instruction-for.galgas", 258)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8064,14 +8064,14 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
                                                                                                                       Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outInstruction.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_grammar COMMA_SOURCE_FILE ("instruction-grammar.galgas", 79)) ;
-  GALGAS_location var_instructionLocation_3836 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-grammar.galgas", 80)) ;
+  GALGAS_location var_instructionLocation_3836 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-grammar.galgas", 80)) ;
   GALGAS_lstring var_grammarComponentName_3904 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->enterIndexing (Lexique_galgasScanner_33_::kIndexing_grammarComponentReference, "") ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("instruction-grammar.galgas", 81)) ;
   GALGAS_lstring var_labelName_3977 ;
   switch (select_galgas_33_InstructionsSyntax_46 (inCompiler)) {
   case 1: {
-    var_labelName_3977 = GALGAS_lstring::constructor_new (GALGAS_string::makeEmptyString (), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-grammar.galgas", 84)), inCompiler  COMMA_SOURCE_FILE ("instruction-grammar.galgas", 84)) ;
+    var_labelName_3977 = GALGAS_lstring::class_func_new (GALGAS_string::makeEmptyString (), GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-grammar.galgas", 84)), inCompiler  COMMA_SOURCE_FILE ("instruction-grammar.galgas", 84)) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_label COMMA_SOURCE_FILE ("instruction-grammar.galgas", 86)) ;
@@ -8145,11 +8145,11 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_gra
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_in COMMA_SOURCE_FILE ("instruction-grammar.galgas", 102)) ;
   GALGAS_semanticExpressionAST var_sourceExpression_4875 ;
   nt_expression_5F_ggs_33__ (var_sourceExpression_4875, inCompiler) ;
-  GALGAS_location var_endOfSourceExpression_4900 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-grammar.galgas", 104)) ;
+  GALGAS_location var_endOfSourceExpression_4900 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-grammar.galgas", 104)) ;
   GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult var_grammarInstructionSyntaxDirectedTranslationResult_5059 ;
   switch (select_galgas_33_InstructionsSyntax_47 (inCompiler)) {
   case 1: {
-    var_grammarInstructionSyntaxDirectedTranslationResult_5059 = GALGAS_grammarInstructionSyntaxDirectedTranslationResultNone::constructor_new (SOURCE_FILE ("instruction-grammar.galgas", 108)) ;
+    var_grammarInstructionSyntaxDirectedTranslationResult_5059 = GALGAS_grammarInstructionSyntaxDirectedTranslationResultNone::class_func_new (SOURCE_FILE ("instruction-grammar.galgas", 108)) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3A__3E_ COMMA_SOURCE_FILE ("instruction-grammar.galgas", 110)) ;
@@ -8158,7 +8158,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_gra
   default:
     break ;
   }
-  outArgument_outInstruction = GALGAS_grammarInFileInstructionAST::constructor_new (constinArgument_inInstructionLocation, constinArgument_inGrammarComponentName, constinArgument_inLabelName, var_sourceExpression_4875, var_endOfSourceExpression_4900, constinArgument_actualParameterList, var_grammarInstructionSyntaxDirectedTranslationResult_5059  COMMA_SOURCE_FILE ("instruction-grammar.galgas", 113)) ;
+  outArgument_outInstruction = GALGAS_grammarInFileInstructionAST::class_func_new (constinArgument_inInstructionLocation, constinArgument_inGrammarComponentName, constinArgument_inLabelName, var_sourceExpression_4875, var_endOfSourceExpression_4900, constinArgument_actualParameterList, var_grammarInstructionSyntaxDirectedTranslationResult_5059  COMMA_SOURCE_FILE ("instruction-grammar.galgas", 113)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8208,15 +8208,15 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_gra
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_on COMMA_SOURCE_FILE ("instruction-grammar.galgas", 131)) ;
   GALGAS_semanticExpressionAST var_sourceExpression_6177 ;
   nt_expression_5F_ggs_33__ (var_sourceExpression_6177, inCompiler) ;
-  GALGAS_location var_endOfSourceExpression_6212 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-grammar.galgas", 133)) ;
+  GALGAS_location var_endOfSourceExpression_6212 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-grammar.galgas", 133)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3A_ COMMA_SOURCE_FILE ("instruction-grammar.galgas", 134)) ;
   GALGAS_semanticExpressionAST var_nameExpression_6300 ;
   nt_expression_5F_ggs_33__ (var_nameExpression_6300, inCompiler) ;
-  GALGAS_location var_endOfNameExpression_6333 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-grammar.galgas", 136)) ;
+  GALGAS_location var_endOfNameExpression_6333 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-grammar.galgas", 136)) ;
   GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult var_grammarInstructionSyntaxDirectedTranslationResult_6481 ;
   switch (select_galgas_33_InstructionsSyntax_48 (inCompiler)) {
   case 1: {
-    var_grammarInstructionSyntaxDirectedTranslationResult_6481 = GALGAS_grammarInstructionSyntaxDirectedTranslationResultNone::constructor_new (SOURCE_FILE ("instruction-grammar.galgas", 140)) ;
+    var_grammarInstructionSyntaxDirectedTranslationResult_6481 = GALGAS_grammarInstructionSyntaxDirectedTranslationResultNone::class_func_new (SOURCE_FILE ("instruction-grammar.galgas", 140)) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3A__3E_ COMMA_SOURCE_FILE ("instruction-grammar.galgas", 142)) ;
@@ -8225,7 +8225,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_gra
   default:
     break ;
   }
-  outArgument_outInstruction = GALGAS_grammarInStringInstructionAST::constructor_new (constinArgument_inInstructionLocation, constinArgument_inGrammarComponentName, constinArgument_inLabelName, var_sourceExpression_6177, var_endOfSourceExpression_6212, var_nameExpression_6300, var_endOfNameExpression_6333, constinArgument_actualParameterList, var_grammarInstructionSyntaxDirectedTranslationResult_6481  COMMA_SOURCE_FILE ("instruction-grammar.galgas", 145)) ;
+  outArgument_outInstruction = GALGAS_grammarInStringInstructionAST::class_func_new (constinArgument_inInstructionLocation, constinArgument_inGrammarComponentName, constinArgument_inLabelName, var_sourceExpression_6177, var_endOfSourceExpression_6212, var_nameExpression_6300, var_endOfNameExpression_6333, constinArgument_actualParameterList, var_grammarInstructionSyntaxDirectedTranslationResult_6481  COMMA_SOURCE_FILE ("instruction-grammar.galgas", 145)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8273,7 +8273,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
                                                                                                                       Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outInstruction.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_grammar COMMA_SOURCE_FILE ("instruction-grammar.galgas", 163)) ;
-  GALGAS_location var_instructionLocation_7519 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-grammar.galgas", 164)) ;
+  GALGAS_location var_instructionLocation_7519 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-grammar.galgas", 164)) ;
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
     test_0 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_errorOldStyleCollectionInitializer.readProperty_value ()).boolEnum () ;
@@ -8288,7 +8288,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
   GALGAS_lstring var_labelName_7825 ;
   switch (select_galgas_33_InstructionsSyntax_49 (inCompiler)) {
   case 1: {
-    var_labelName_7825 = GALGAS_lstring::constructor_new (GALGAS_string::makeEmptyString (), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-grammar.galgas", 171)), inCompiler  COMMA_SOURCE_FILE ("instruction-grammar.galgas", 171)) ;
+    var_labelName_7825 = GALGAS_lstring::class_func_new (GALGAS_string::makeEmptyString (), GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-grammar.galgas", 171)), inCompiler  COMMA_SOURCE_FILE ("instruction-grammar.galgas", 171)) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_label COMMA_SOURCE_FILE ("instruction-grammar.galgas", 173)) ;
@@ -8351,13 +8351,13 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_gra
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_in COMMA_SOURCE_FILE ("instruction-grammar.galgas", 185)) ;
   GALGAS_semanticExpressionAST var_mSourceExpression_8566 ;
   nt_expression_5F_ggs_33__ (var_mSourceExpression_8566, inCompiler) ;
-  GALGAS_location var_endOfSourceExpression_8592 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-grammar.galgas", 187)) ;
+  GALGAS_location var_endOfSourceExpression_8592 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-grammar.galgas", 187)) ;
   GALGAS_actualParameterListAST var_actualParameterList_8693 ;
   nt_actual_5F_parameter_5F_list_5F_ggs_33__ (var_actualParameterList_8693, inCompiler) ;
   GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult var_grammarInstructionSyntaxDirectedTranslationResult_8833 ;
   switch (select_galgas_33_InstructionsSyntax_50 (inCompiler)) {
   case 1: {
-    var_grammarInstructionSyntaxDirectedTranslationResult_8833 = GALGAS_grammarInstructionSyntaxDirectedTranslationResultNone::constructor_new (SOURCE_FILE ("instruction-grammar.galgas", 192)) ;
+    var_grammarInstructionSyntaxDirectedTranslationResult_8833 = GALGAS_grammarInstructionSyntaxDirectedTranslationResultNone::class_func_new (SOURCE_FILE ("instruction-grammar.galgas", 192)) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3A__3E_ COMMA_SOURCE_FILE ("instruction-grammar.galgas", 194)) ;
@@ -8366,7 +8366,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_gra
   default:
     break ;
   }
-  outArgument_outInstruction = GALGAS_grammarInFileInstructionAST::constructor_new (constinArgument_inInstructionLocation, constinArgument_inGrammarComponentName, constinArgument_inLabelName, var_mSourceExpression_8566, var_endOfSourceExpression_8592, var_actualParameterList_8693, var_grammarInstructionSyntaxDirectedTranslationResult_8833  COMMA_SOURCE_FILE ("instruction-grammar.galgas", 197)) ;
+  outArgument_outInstruction = GALGAS_grammarInFileInstructionAST::class_func_new (constinArgument_inInstructionLocation, constinArgument_inGrammarComponentName, constinArgument_inLabelName, var_mSourceExpression_8566, var_endOfSourceExpression_8592, var_actualParameterList_8693, var_grammarInstructionSyntaxDirectedTranslationResult_8833  COMMA_SOURCE_FILE ("instruction-grammar.galgas", 197)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8418,18 +8418,18 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_gra
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__28_ COMMA_SOURCE_FILE ("instruction-grammar.galgas", 215)) ;
   GALGAS_semanticExpressionAST var_sourceExpression_9913 ;
   nt_expression_5F_ggs_33__ (var_sourceExpression_9913, inCompiler) ;
-  GALGAS_location var_endOfSourceExpression_9948 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-grammar.galgas", 217)) ;
+  GALGAS_location var_endOfSourceExpression_9948 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-grammar.galgas", 217)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2C_ COMMA_SOURCE_FILE ("instruction-grammar.galgas", 218)) ;
   GALGAS_semanticExpressionAST var_nameExpression_10036 ;
   nt_expression_5F_ggs_33__ (var_nameExpression_10036, inCompiler) ;
-  GALGAS_location var_endOfNameExpression_10069 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-grammar.galgas", 220)) ;
+  GALGAS_location var_endOfNameExpression_10069 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-grammar.galgas", 220)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__29_ COMMA_SOURCE_FILE ("instruction-grammar.galgas", 221)) ;
   GALGAS_actualParameterListAST var_actualParameterList_10167 ;
   nt_actual_5F_parameter_5F_list_5F_ggs_33__ (var_actualParameterList_10167, inCompiler) ;
   GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult var_grammarInstructionSyntaxDirectedTranslationResult_10307 ;
   switch (select_galgas_33_InstructionsSyntax_51 (inCompiler)) {
   case 1: {
-    var_grammarInstructionSyntaxDirectedTranslationResult_10307 = GALGAS_grammarInstructionSyntaxDirectedTranslationResultNone::constructor_new (SOURCE_FILE ("instruction-grammar.galgas", 226)) ;
+    var_grammarInstructionSyntaxDirectedTranslationResult_10307 = GALGAS_grammarInstructionSyntaxDirectedTranslationResultNone::class_func_new (SOURCE_FILE ("instruction-grammar.galgas", 226)) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3A__3E_ COMMA_SOURCE_FILE ("instruction-grammar.galgas", 228)) ;
@@ -8438,7 +8438,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_gra
   default:
     break ;
   }
-  outArgument_outInstruction = GALGAS_grammarInStringInstructionAST::constructor_new (constinArgument_inInstructionLocation, constinArgument_inGrammarComponentName, constinArgument_inLabelName, var_sourceExpression_9913, var_endOfSourceExpression_9948, var_nameExpression_10036, var_endOfNameExpression_10069, var_actualParameterList_10167, var_grammarInstructionSyntaxDirectedTranslationResult_10307  COMMA_SOURCE_FILE ("instruction-grammar.galgas", 231)) ;
+  outArgument_outInstruction = GALGAS_grammarInStringInstructionAST::class_func_new (constinArgument_inInstructionLocation, constinArgument_inGrammarComponentName, constinArgument_inLabelName, var_sourceExpression_9913, var_endOfSourceExpression_9948, var_nameExpression_10036, var_endOfNameExpression_10069, var_actualParameterList_10167, var_grammarInstructionSyntaxDirectedTranslationResult_10307  COMMA_SOURCE_FILE ("instruction-grammar.galgas", 231)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8542,7 +8542,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
   outArgument_outInstruction.drop () ; // Release 'out' argument
   GALGAS_lstring var_mReceiverName_2537 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("instruction-inc-dec.galgas", 64)) ;
-  GALGAS_lstringlist var_mStructAttributeList_2559 = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("instruction-inc-dec.galgas", 65)) ;
+  GALGAS_lstringlist var_mStructAttributeList_2559 = GALGAS_lstringlist::class_func_emptyList (SOURCE_FILE ("instruction-inc-dec.galgas", 65)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     if (select_galgas_33_InstructionsSyntax_52 (inCompiler) == 2) {
@@ -8557,19 +8557,19 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
   switch (select_galgas_33_InstructionsSyntax_53 (inCompiler)) {
   case 1: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2B__2B_ COMMA_SOURCE_FILE ("instruction-inc-dec.galgas", 73)) ;
-    outArgument_outInstruction = GALGAS_incDecInstructionAST::constructor_new (var_mReceiverName_2537.readProperty_location (), constinArgument_inPrefixedBySelf, var_mReceiverName_2537, var_mStructAttributeList_2559, GALGAS_incDecKind::constructor_increment (SOURCE_FILE ("instruction-inc-dec.galgas", 79))  COMMA_SOURCE_FILE ("instruction-inc-dec.galgas", 74)) ;
+    outArgument_outInstruction = GALGAS_incDecInstructionAST::class_func_new (var_mReceiverName_2537.readProperty_location (), constinArgument_inPrefixedBySelf, var_mReceiverName_2537, var_mStructAttributeList_2559, GALGAS_incDecKind::class_func_increment (SOURCE_FILE ("instruction-inc-dec.galgas", 79))  COMMA_SOURCE_FILE ("instruction-inc-dec.galgas", 74)) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__26__2B__2B_ COMMA_SOURCE_FILE ("instruction-inc-dec.galgas", 82)) ;
-    outArgument_outInstruction = GALGAS_incDecNoOVFInstructionAST::constructor_new (var_mReceiverName_2537.readProperty_location (), constinArgument_inPrefixedBySelf, var_mReceiverName_2537, var_mStructAttributeList_2559, GALGAS_incDecKind::constructor_increment (SOURCE_FILE ("instruction-inc-dec.galgas", 88))  COMMA_SOURCE_FILE ("instruction-inc-dec.galgas", 83)) ;
+    outArgument_outInstruction = GALGAS_incDecNoOVFInstructionAST::class_func_new (var_mReceiverName_2537.readProperty_location (), constinArgument_inPrefixedBySelf, var_mReceiverName_2537, var_mStructAttributeList_2559, GALGAS_incDecKind::class_func_increment (SOURCE_FILE ("instruction-inc-dec.galgas", 88))  COMMA_SOURCE_FILE ("instruction-inc-dec.galgas", 83)) ;
   } break ;
   case 3: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__26__2D__2D_ COMMA_SOURCE_FILE ("instruction-inc-dec.galgas", 91)) ;
-    outArgument_outInstruction = GALGAS_incDecNoOVFInstructionAST::constructor_new (var_mReceiverName_2537.readProperty_location (), constinArgument_inPrefixedBySelf, var_mReceiverName_2537, var_mStructAttributeList_2559, GALGAS_incDecKind::constructor_decrement (SOURCE_FILE ("instruction-inc-dec.galgas", 97))  COMMA_SOURCE_FILE ("instruction-inc-dec.galgas", 92)) ;
+    outArgument_outInstruction = GALGAS_incDecNoOVFInstructionAST::class_func_new (var_mReceiverName_2537.readProperty_location (), constinArgument_inPrefixedBySelf, var_mReceiverName_2537, var_mStructAttributeList_2559, GALGAS_incDecKind::class_func_decrement (SOURCE_FILE ("instruction-inc-dec.galgas", 97))  COMMA_SOURCE_FILE ("instruction-inc-dec.galgas", 92)) ;
   } break ;
   case 4: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2D__2D_ COMMA_SOURCE_FILE ("instruction-inc-dec.galgas", 100)) ;
-    outArgument_outInstruction = GALGAS_incDecInstructionAST::constructor_new (var_mReceiverName_2537.readProperty_location (), constinArgument_inPrefixedBySelf, var_mReceiverName_2537, var_mStructAttributeList_2559, GALGAS_incDecKind::constructor_decrement (SOURCE_FILE ("instruction-inc-dec.galgas", 106))  COMMA_SOURCE_FILE ("instruction-inc-dec.galgas", 101)) ;
+    outArgument_outInstruction = GALGAS_incDecInstructionAST::class_func_new (var_mReceiverName_2537.readProperty_location (), constinArgument_inPrefixedBySelf, var_mReceiverName_2537, var_mStructAttributeList_2559, GALGAS_incDecKind::class_func_decrement (SOURCE_FILE ("instruction-inc-dec.galgas", 106))  COMMA_SOURCE_FILE ("instruction-inc-dec.galgas", 101)) ;
   } break ;
   default:
     break ;
@@ -8645,23 +8645,23 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
                                                                                                                       Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outInstruction.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_self COMMA_SOURCE_FILE ("instruction-inc-dec.galgas", 114)) ;
-  GALGAS_location var_instructionLocation_3795 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-inc-dec.galgas", 115)) ;
+  GALGAS_location var_instructionLocation_3795 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-inc-dec.galgas", 115)) ;
   switch (select_galgas_33_InstructionsSyntax_54 (inCompiler)) {
   case 1: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2B__2B_ COMMA_SOURCE_FILE ("instruction-inc-dec.galgas", 117)) ;
-    outArgument_outInstruction = GALGAS_selfIncDecInstructionAST::constructor_new (var_instructionLocation_3795, GALGAS_incDecKind::constructor_increment (SOURCE_FILE ("instruction-inc-dec.galgas", 120))  COMMA_SOURCE_FILE ("instruction-inc-dec.galgas", 118)) ;
+    outArgument_outInstruction = GALGAS_selfIncDecInstructionAST::class_func_new (var_instructionLocation_3795, GALGAS_incDecKind::class_func_increment (SOURCE_FILE ("instruction-inc-dec.galgas", 120))  COMMA_SOURCE_FILE ("instruction-inc-dec.galgas", 118)) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2D__2D_ COMMA_SOURCE_FILE ("instruction-inc-dec.galgas", 123)) ;
-    outArgument_outInstruction = GALGAS_selfIncDecInstructionAST::constructor_new (var_instructionLocation_3795, GALGAS_incDecKind::constructor_decrement (SOURCE_FILE ("instruction-inc-dec.galgas", 126))  COMMA_SOURCE_FILE ("instruction-inc-dec.galgas", 124)) ;
+    outArgument_outInstruction = GALGAS_selfIncDecInstructionAST::class_func_new (var_instructionLocation_3795, GALGAS_incDecKind::class_func_decrement (SOURCE_FILE ("instruction-inc-dec.galgas", 126))  COMMA_SOURCE_FILE ("instruction-inc-dec.galgas", 124)) ;
   } break ;
   case 3: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__26__2B__2B_ COMMA_SOURCE_FILE ("instruction-inc-dec.galgas", 129)) ;
-    outArgument_outInstruction = GALGAS_selfIncDecNoOVFInstructionAST::constructor_new (var_instructionLocation_3795, GALGAS_incDecKind::constructor_increment (SOURCE_FILE ("instruction-inc-dec.galgas", 132))  COMMA_SOURCE_FILE ("instruction-inc-dec.galgas", 130)) ;
+    outArgument_outInstruction = GALGAS_selfIncDecNoOVFInstructionAST::class_func_new (var_instructionLocation_3795, GALGAS_incDecKind::class_func_increment (SOURCE_FILE ("instruction-inc-dec.galgas", 132))  COMMA_SOURCE_FILE ("instruction-inc-dec.galgas", 130)) ;
   } break ;
   case 4: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__26__2D__2D_ COMMA_SOURCE_FILE ("instruction-inc-dec.galgas", 135)) ;
-    outArgument_outInstruction = GALGAS_selfIncDecNoOVFInstructionAST::constructor_new (var_instructionLocation_3795, GALGAS_incDecKind::constructor_decrement (SOURCE_FILE ("instruction-inc-dec.galgas", 138))  COMMA_SOURCE_FILE ("instruction-inc-dec.galgas", 136)) ;
+    outArgument_outInstruction = GALGAS_selfIncDecNoOVFInstructionAST::class_func_new (var_instructionLocation_3795, GALGAS_incDecKind::class_func_decrement (SOURCE_FILE ("instruction-inc-dec.galgas", 138))  COMMA_SOURCE_FILE ("instruction-inc-dec.galgas", 136)) ;
   } break ;
   default:
     break ;
@@ -8718,17 +8718,17 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
 void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_if_5F_instruction_5F_core_i37_ (GALGAS_semanticInstructionAST & outArgument_outInstruction,
                                                                                                              Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outInstruction.drop () ; // Release 'out' argument
-  GALGAS_location var_instructionLocation_2554 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 60)) ;
+  GALGAS_location var_instructionLocation_2554 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 60)) ;
   GALGAS_ifExpressionList var_testExpression_2621 ;
   nt_if_5F_expression_5F_ggs_33__ (var_testExpression_2621, inCompiler) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_then COMMA_SOURCE_FILE ("instruction-if.galgas", 62)) ;
   GALGAS_semanticInstructionListAST var_then_5F_instructionList_2689 ;
   nt_semantic_5F_instruction_5F_list_5F_ggs_33__ (var_then_5F_instructionList_2689, inCompiler) ;
-  GALGAS_location var_endOf_5F_then_5F_branchLocation_2718 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 64)) ;
+  GALGAS_location var_endOf_5F_then_5F_branchLocation_2718 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 64)) ;
   GALGAS_semanticInstructionListAST var_else_5F_instructionList_2797 ;
   switch (select_galgas_33_InstructionsSyntax_55 (inCompiler)) {
   case 1: {
-    var_else_5F_instructionList_2797 = GALGAS_semanticInstructionListAST::constructor_emptyList (SOURCE_FILE ("instruction-if.galgas", 67)) ;
+    var_else_5F_instructionList_2797 = GALGAS_semanticInstructionListAST::class_func_emptyList (SOURCE_FILE ("instruction-if.galgas", 67)) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_else COMMA_SOURCE_FILE ("instruction-if.galgas", 69)) ;
@@ -8738,14 +8738,14 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_if_
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_elsif COMMA_SOURCE_FILE ("instruction-if.galgas", 72)) ;
     GALGAS_semanticInstructionAST var_instruction_3025 ;
     nt_if_5F_instruction_5F_core_ (var_instruction_3025, inCompiler) ;
-    GALGAS_semanticInstructionListAST temp_0 = GALGAS_semanticInstructionListAST::constructor_emptyList (SOURCE_FILE ("instruction-if.galgas", 74)) ;
+    GALGAS_semanticInstructionListAST temp_0 = GALGAS_semanticInstructionListAST::class_func_emptyList (SOURCE_FILE ("instruction-if.galgas", 74)) ;
     temp_0.addAssign_operation (var_instruction_3025  COMMA_SOURCE_FILE ("instruction-if.galgas", 74)) ;
     var_else_5F_instructionList_2797 = temp_0 ;
   } break ;
   default:
     break ;
   }
-  outArgument_outInstruction = GALGAS_ifInstructionAST::constructor_new (var_instructionLocation_2554, var_testExpression_2621, var_then_5F_instructionList_2689, var_endOf_5F_then_5F_branchLocation_2718, var_else_5F_instructionList_2797, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 82))  COMMA_SOURCE_FILE ("instruction-if.galgas", 76)) ;
+  outArgument_outInstruction = GALGAS_ifInstructionAST::class_func_new (var_instructionLocation_2554, var_testExpression_2621, var_then_5F_instructionList_2689, var_endOf_5F_then_5F_branchLocation_2718, var_else_5F_instructionList_2797, GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 82))  COMMA_SOURCE_FILE ("instruction-if.galgas", 76)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8825,7 +8825,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
 void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_if_5F_expression_5F_ggs_33__i39_ (GALGAS_ifExpressionList & outArgument_outExpressionList,
                                                                                                                Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outExpressionList.drop () ; // Release 'out' argument
-  outArgument_outExpressionList = GALGAS_ifExpressionList::constructor_emptyList (SOURCE_FILE ("instruction-if.galgas", 97)) ;
+  outArgument_outExpressionList = GALGAS_ifExpressionList::class_func_emptyList (SOURCE_FILE ("instruction-if.galgas", 97)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     switch (select_galgas_33_InstructionsSyntax_57 (inCompiler)) {
@@ -8847,16 +8847,16 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_if_
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3D_ COMMA_SOURCE_FILE ("instruction-if.galgas", 108)) ;
       GALGAS_semanticExpressionAST var_expression_4024 ;
       nt_expression_5F_or_5F_ggs_33__ (var_expression_4024, inCompiler) ;
-      GALGAS_location var_endOfReceiverExpression_4047 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 110)) ;
+      GALGAS_location var_endOfReceiverExpression_4047 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 110)) ;
       switch (select_galgas_33_InstructionsSyntax_59 (inCompiler)) {
       case 1: {
-        outArgument_outExpressionList.addAssign_operation (GALGAS_ifExpressionKind::constructor_letExp (var_constantName_3841, var_expression_4024, var_endOfReceiverExpression_4047, GALGAS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 116))  COMMA_SOURCE_FILE ("instruction-if.galgas", 112))  COMMA_SOURCE_FILE ("instruction-if.galgas", 112)) ;
+        outArgument_outExpressionList.addAssign_operation (GALGAS_ifExpressionKind::class_func_letExp (var_constantName_3841, var_expression_4024, var_endOfReceiverExpression_4047, GALGAS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 116))  COMMA_SOURCE_FILE ("instruction-if.galgas", 112))  COMMA_SOURCE_FILE ("instruction-if.galgas", 112)) ;
       } break ;
       case 2: {
         inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_as COMMA_SOURCE_FILE ("instruction-if.galgas", 119)) ;
         GALGAS_lstring var_typeName_4364 = inCompiler->synthetizedAttribute_tokenString () ;
         inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__40_type COMMA_SOURCE_FILE ("instruction-if.galgas", 120)) ;
-        outArgument_outExpressionList.addAssign_operation (GALGAS_ifExpressionKind::constructor_letExp (var_constantName_3841, var_expression_4024, var_endOfReceiverExpression_4047, var_typeName_4364  COMMA_SOURCE_FILE ("instruction-if.galgas", 121))  COMMA_SOURCE_FILE ("instruction-if.galgas", 121)) ;
+        outArgument_outExpressionList.addAssign_operation (GALGAS_ifExpressionKind::class_func_letExp (var_constantName_3841, var_expression_4024, var_endOfReceiverExpression_4047, var_typeName_4364  COMMA_SOURCE_FILE ("instruction-if.galgas", 121))  COMMA_SOURCE_FILE ("instruction-if.galgas", 121)) ;
       } break ;
       default:
         break ;
@@ -8869,7 +8869,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_if_
       nt_expression_5F_ggs_33__ (var_receiverExpression_4676, inCompiler) ;
       GALGAS_lstring var_optionalMethodName_4730 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("instruction-if.galgas", 132)) ;
-      GALGAS_optionalMethodActualArgumentList var_optionalMethodActualArgumentList_4795 = GALGAS_optionalMethodActualArgumentList::constructor_emptyList (SOURCE_FILE ("instruction-if.galgas", 133)) ;
+      GALGAS_optionalMethodActualArgumentList var_optionalMethodActualArgumentList_4795 = GALGAS_optionalMethodActualArgumentList::class_func_emptyList (SOURCE_FILE ("instruction-if.galgas", 133)) ;
       bool repeatFlag_1 = true ;
       while (repeatFlag_1) {
         switch (select_galgas_33_InstructionsSyntax_60 (inCompiler)) {
@@ -8878,7 +8878,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_if_
           inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__21_ COMMA_SOURCE_FILE ("instruction-if.galgas", 136)) ;
           GALGAS_semanticExpressionAST var_expression_4923 ;
           nt_expression_5F_ggs_33__ (var_expression_4923, inCompiler) ;
-          var_optionalMethodActualArgumentList_4795.addAssign_operation (var_selector_4881, GALGAS_optionalMethodActualArgument::constructor_actualOutput (var_expression_4923, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 138))  COMMA_SOURCE_FILE ("instruction-if.galgas", 138))  COMMA_SOURCE_FILE ("instruction-if.galgas", 138)) ;
+          var_optionalMethodActualArgumentList_4795.addAssign_operation (var_selector_4881, GALGAS_optionalMethodActualArgument::class_func_actualOutput (var_expression_4923, GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 138))  COMMA_SOURCE_FILE ("instruction-if.galgas", 138))  COMMA_SOURCE_FILE ("instruction-if.galgas", 138)) ;
         } break ;
         case 3: {
           GALGAS_lstring var_selector_5081 = inCompiler->synthetizedAttribute_tokenString () ;
@@ -8900,7 +8900,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_if_
             }
             GALGAS_lstring var_constantName_5312 = inCompiler->synthetizedAttribute_tokenString () ;
             inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("instruction-if.galgas", 149)) ;
-            var_optionalMethodActualArgumentList_4795.addAssign_operation (var_selector_5081, GALGAS_optionalMethodActualArgument::constructor_actualLetInput (var_typeName_5150, var_constantName_5312  COMMA_SOURCE_FILE ("instruction-if.galgas", 150))  COMMA_SOURCE_FILE ("instruction-if.galgas", 150)) ;
+            var_optionalMethodActualArgumentList_4795.addAssign_operation (var_selector_5081, GALGAS_optionalMethodActualArgument::class_func_actualLetInput (var_typeName_5150, var_constantName_5312  COMMA_SOURCE_FILE ("instruction-if.galgas", 150))  COMMA_SOURCE_FILE ("instruction-if.galgas", 150)) ;
           } break ;
           case 2: {
             inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_var COMMA_SOURCE_FILE ("instruction-if.galgas", 152)) ;
@@ -8918,11 +8918,11 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_if_
             }
             GALGAS_lstring var_variableName_5667 = inCompiler->synthetizedAttribute_tokenString () ;
             inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("instruction-if.galgas", 159)) ;
-            var_optionalMethodActualArgumentList_4795.addAssign_operation (var_selector_5081, GALGAS_optionalMethodActualArgument::constructor_actualVarInput (var_typeName_5506, var_variableName_5667  COMMA_SOURCE_FILE ("instruction-if.galgas", 160))  COMMA_SOURCE_FILE ("instruction-if.galgas", 160)) ;
+            var_optionalMethodActualArgumentList_4795.addAssign_operation (var_selector_5081, GALGAS_optionalMethodActualArgument::class_func_actualVarInput (var_typeName_5506, var_variableName_5667  COMMA_SOURCE_FILE ("instruction-if.galgas", 160))  COMMA_SOURCE_FILE ("instruction-if.galgas", 160)) ;
           } break ;
           case 3: {
             inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2A_ COMMA_SOURCE_FILE ("instruction-if.galgas", 162)) ;
-            var_optionalMethodActualArgumentList_4795.addAssign_operation (var_selector_5081, GALGAS_optionalMethodActualArgument::constructor_actualInputJoker (GALGAS_bool (true), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 163)), GALGAS_uint (uint32_t (0U))  COMMA_SOURCE_FILE ("instruction-if.galgas", 163))  COMMA_SOURCE_FILE ("instruction-if.galgas", 163)) ;
+            var_optionalMethodActualArgumentList_4795.addAssign_operation (var_selector_5081, GALGAS_optionalMethodActualArgument::class_func_actualInputJoker (GALGAS_bool (true), GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 163)), GALGAS_uint (uint32_t (0U))  COMMA_SOURCE_FILE ("instruction-if.galgas", 163))  COMMA_SOURCE_FILE ("instruction-if.galgas", 163)) ;
           } break ;
           case 4: {
             GALGAS_lbigint var_repetitionCount_6002 = inCompiler->synthetizedAttribute_bigintValue () ;
@@ -8947,7 +8947,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_if_
             }
             cEnumerator_range enumerator_6357 (GALGAS_range (GALGAS_uint (uint32_t (0U)), var_repetitionCount_6002.readProperty_bigint ().getter_uint (inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 173)).substract_operation (GALGAS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 173))), kENUMERATION_UP) ;
             while (enumerator_6357.hasCurrentObject ()) {
-              var_optionalMethodActualArgumentList_4795.addAssign_operation (var_selector_5081, GALGAS_optionalMethodActualArgument::constructor_actualInputJoker (GALGAS_bool (false), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 174)), enumerator_6357.current (HERE)  COMMA_SOURCE_FILE ("instruction-if.galgas", 174))  COMMA_SOURCE_FILE ("instruction-if.galgas", 174)) ;
+              var_optionalMethodActualArgumentList_4795.addAssign_operation (var_selector_5081, GALGAS_optionalMethodActualArgument::class_func_actualInputJoker (GALGAS_bool (false), GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 174)), enumerator_6357.current (HERE)  COMMA_SOURCE_FILE ("instruction-if.galgas", 174))  COMMA_SOURCE_FILE ("instruction-if.galgas", 174)) ;
               enumerator_6357.gotoNextObject () ;
             }
           } break ;
@@ -8961,12 +8961,12 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_if_
         }
       }
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__5D_ COMMA_SOURCE_FILE ("instruction-if.galgas", 178)) ;
-      outArgument_outExpressionList.addAssign_operation (GALGAS_ifExpressionKind::constructor_optionalMethodCall (var_receiverExpression_4676, var_optionalMethodName_4730, var_optionalMethodActualArgumentList_4795  COMMA_SOURCE_FILE ("instruction-if.galgas", 179))  COMMA_SOURCE_FILE ("instruction-if.galgas", 179)) ;
+      outArgument_outExpressionList.addAssign_operation (GALGAS_ifExpressionKind::class_func_optionalMethodCall (var_receiverExpression_4676, var_optionalMethodName_4730, var_optionalMethodActualArgumentList_4795  COMMA_SOURCE_FILE ("instruction-if.galgas", 179))  COMMA_SOURCE_FILE ("instruction-if.galgas", 179)) ;
     } break ;
     case 3: {
       GALGAS_semanticExpressionAST var_expression_6798 ;
       nt_expression_5F_ggs_33__ (var_expression_6798, inCompiler) ;
-      outArgument_outExpressionList.addAssign_operation (GALGAS_ifExpressionKind::constructor_regularExp (var_expression_6798  COMMA_SOURCE_FILE ("instruction-if.galgas", 186))  COMMA_SOURCE_FILE ("instruction-if.galgas", 186)) ;
+      outArgument_outExpressionList.addAssign_operation (GALGAS_ifExpressionKind::class_func_regularExp (var_expression_6798  COMMA_SOURCE_FILE ("instruction-if.galgas", 186))  COMMA_SOURCE_FILE ("instruction-if.galgas", 186)) ;
     } break ;
     default:
       break ;
@@ -9198,7 +9198,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__40_type COMMA_SOURCE_FILE ("instruction-let.galgas", 36)) ;
   GALGAS_lstring var_constantName_1614 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("instruction-let.galgas", 37)) ;
-  outArgument_outInstruction = GALGAS_undefinedLocalConstantDeclarationAST::constructor_new (var_typeName_1583.readProperty_location (), var_typeName_1583, var_constantName_1614  COMMA_SOURCE_FILE ("instruction-let.galgas", 38)) ;
+  outArgument_outInstruction = GALGAS_undefinedLocalConstantDeclarationAST::class_func_new (var_typeName_1583.readProperty_location (), var_typeName_1583, var_constantName_1614  COMMA_SOURCE_FILE ("instruction-let.galgas", 38)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9231,7 +9231,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3D_ COMMA_SOURCE_FILE ("instruction-let.galgas", 51)) ;
   GALGAS_semanticExpressionAST var_sourceExpression_2087 ;
   nt_expression_5F_ggs_33__ (var_sourceExpression_2087, inCompiler) ;
-  outArgument_outInstruction = GALGAS_localVariableOrConstantDeclarationWithAssignmentAST::constructor_new (var_typeName_1985.readProperty_location (), GALGAS_bool (true), var_typeName_1985, var_variableName_2016, var_sourceExpression_2087  COMMA_SOURCE_FILE ("instruction-let.galgas", 53)) ;
+  outArgument_outInstruction = GALGAS_localVariableOrConstantDeclarationWithAssignmentAST::class_func_new (var_typeName_1985.readProperty_location (), GALGAS_bool (true), var_typeName_1985, var_variableName_2016, var_sourceExpression_2087  COMMA_SOURCE_FILE ("instruction-let.galgas", 53)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9266,7 +9266,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3D_ COMMA_SOURCE_FILE ("instruction-let.galgas", 66)) ;
   GALGAS_semanticExpressionAST var_sourceExpression_2599 ;
   nt_expression_5F_ggs_33__ (var_sourceExpression_2599, inCompiler) ;
-  outArgument_outInstruction = GALGAS_localConstantDeclarationWithAssignmentAST::constructor_new (var_variableName_2528.readProperty_location (), var_variableName_2528, var_sourceExpression_2599  COMMA_SOURCE_FILE ("instruction-let.galgas", 68)) ;
+  outArgument_outInstruction = GALGAS_localConstantDeclarationWithAssignmentAST::class_func_new (var_variableName_2528.readProperty_location (), var_variableName_2528, var_sourceExpression_2599  COMMA_SOURCE_FILE ("instruction-let.galgas", 68)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9294,22 +9294,22 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
                                                                                                                       Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outInstruction.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_log COMMA_SOURCE_FILE ("instruction-log.galgas", 26)) ;
-  GALGAS_location var_instructionLocation_1068 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-log.galgas", 27)) ;
-  GALGAS_logListAST var_logList_1125 = GALGAS_logListAST::constructor_emptyList (SOURCE_FILE ("instruction-log.galgas", 28)) ;
+  GALGAS_location var_instructionLocation_1068 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-log.galgas", 27)) ;
+  GALGAS_logListAST var_logList_1125 = GALGAS_logListAST::class_func_emptyList (SOURCE_FILE ("instruction-log.galgas", 28)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     switch (select_galgas_33_InstructionsSyntax_65 (inCompiler)) {
     case 1: {
       GALGAS_lstring var_loggedVariableName_1188 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("instruction-log.galgas", 31)) ;
-      var_logList_1125.addAssign_operation (var_loggedVariableName_1188, GALGAS_varInExpressionAST::constructor_new (var_loggedVariableName_1188  COMMA_SOURCE_FILE ("instruction-log.galgas", 32))  COMMA_SOURCE_FILE ("instruction-log.galgas", 32)) ;
+      var_logList_1125.addAssign_operation (var_loggedVariableName_1188, GALGAS_varInExpressionAST::class_func_new (var_loggedVariableName_1188  COMMA_SOURCE_FILE ("instruction-log.galgas", 32))  COMMA_SOURCE_FILE ("instruction-log.galgas", 32)) ;
     } break ;
     case 2: {
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_self COMMA_SOURCE_FILE ("instruction-log.galgas", 34)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2E_ COMMA_SOURCE_FILE ("instruction-log.galgas", 35)) ;
       GALGAS_lstring var_propertyName_1355 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("instruction-log.galgas", 36)) ;
-      var_logList_1125.addAssign_operation (var_propertyName_1355, GALGAS_structPropertyAccessExpressionAST::constructor_new (var_propertyName_1355.readProperty_location (), GALGAS_selfInExpressionAST::constructor_new (var_propertyName_1355.readProperty_location ()  COMMA_SOURCE_FILE ("instruction-log.galgas", 39)), var_propertyName_1355  COMMA_SOURCE_FILE ("instruction-log.galgas", 39))  COMMA_SOURCE_FILE ("instruction-log.galgas", 37)) ;
+      var_logList_1125.addAssign_operation (var_propertyName_1355, GALGAS_structPropertyAccessExpressionAST::class_func_new (var_propertyName_1355.readProperty_location (), GALGAS_selfInExpressionAST::class_func_new (var_propertyName_1355.readProperty_location ()  COMMA_SOURCE_FILE ("instruction-log.galgas", 39)), var_propertyName_1355  COMMA_SOURCE_FILE ("instruction-log.galgas", 39))  COMMA_SOURCE_FILE ("instruction-log.galgas", 37)) ;
     } break ;
     case 3: {
       GALGAS_lstring var_logMessage_1582 = inCompiler->synthetizedAttribute_tokenString () ;
@@ -9328,7 +9328,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
       repeatFlag_0 = false ;
     }
   }
-  outArgument_outInstruction = GALGAS_logInstructionAST::constructor_new (var_instructionLocation_1068, var_logList_1125  COMMA_SOURCE_FILE ("instruction-log.galgas", 49)) ;
+  outArgument_outInstruction = GALGAS_logInstructionAST::class_func_new (var_instructionLocation_1068, var_logList_1125  COMMA_SOURCE_FILE ("instruction-log.galgas", 49)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9400,26 +9400,26 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
                                                                                                                       Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outInstruction.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_loop COMMA_SOURCE_FILE ("instruction-loop-with-variant.galgas", 26)) ;
-  GALGAS_location var_instructionLocation_1277 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-loop-with-variant.galgas", 27)) ;
+  GALGAS_location var_instructionLocation_1277 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-loop-with-variant.galgas", 27)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__28_ COMMA_SOURCE_FILE ("instruction-loop-with-variant.galgas", 29)) ;
   GALGAS_semanticExpressionAST var_variantExpression_1387 ;
   nt_expression_5F_ggs_33__ (var_variantExpression_1387, inCompiler) ;
-  GALGAS_location var_endOfVariantExpression_1413 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-loop-with-variant.galgas", 31)) ;
+  GALGAS_location var_endOfVariantExpression_1413 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-loop-with-variant.galgas", 31)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__29_ COMMA_SOURCE_FILE ("instruction-loop-with-variant.galgas", 32)) ;
   GALGAS_semanticInstructionListAST var_firstInstructions_1538 ;
   nt_semantic_5F_instruction_5F_list_5F_ggs_33__ (var_firstInstructions_1538, inCompiler) ;
-  GALGAS_location var_endOfFirstInstructions_1571 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-loop-with-variant.galgas", 36)) ;
+  GALGAS_location var_endOfFirstInstructions_1571 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-loop-with-variant.galgas", 36)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_while COMMA_SOURCE_FILE ("instruction-loop-with-variant.galgas", 37)) ;
   GALGAS_semanticExpressionAST var_loopExpression_1673 ;
   nt_expression_5F_ggs_33__ (var_loopExpression_1673, inCompiler) ;
-  GALGAS_location var_endOfLoopExpression_1696 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-loop-with-variant.galgas", 39)) ;
+  GALGAS_location var_endOfLoopExpression_1696 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-loop-with-variant.galgas", 39)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_do COMMA_SOURCE_FILE ("instruction-loop-with-variant.galgas", 40)) ;
   GALGAS_semanticInstructionListAST var_secondInstructions_1812 ;
   nt_semantic_5F_instruction_5F_list_5F_ggs_33__ (var_secondInstructions_1812, inCompiler) ;
-  GALGAS_location var_endOfSecondInstructions_1839 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-loop-with-variant.galgas", 42)) ;
+  GALGAS_location var_endOfSecondInstructions_1839 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-loop-with-variant.galgas", 42)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_end COMMA_SOURCE_FILE ("instruction-loop-with-variant.galgas", 43)) ;
-  GALGAS_location var_endOfLoopInstruction_1898 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-loop-with-variant.galgas", 44)) ;
-  outArgument_outInstruction = GALGAS_loopInstructionWithVariantAST::constructor_new (var_instructionLocation_1277, var_variantExpression_1387, var_endOfVariantExpression_1413, var_firstInstructions_1538, var_endOfFirstInstructions_1571, var_loopExpression_1673, var_endOfLoopExpression_1696, var_secondInstructions_1812, var_endOfSecondInstructions_1839, var_endOfLoopInstruction_1898  COMMA_SOURCE_FILE ("instruction-loop-with-variant.galgas", 45)) ;
+  GALGAS_location var_endOfLoopInstruction_1898 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-loop-with-variant.galgas", 44)) ;
+  outArgument_outInstruction = GALGAS_loopInstructionWithVariantAST::class_func_new (var_instructionLocation_1277, var_variantExpression_1387, var_endOfVariantExpression_1413, var_firstInstructions_1538, var_endOfFirstInstructions_1571, var_loopExpression_1673, var_endOfLoopExpression_1696, var_secondInstructions_1812, var_endOfSecondInstructions_1839, var_endOfLoopInstruction_1898  COMMA_SOURCE_FILE ("instruction-loop-with-variant.galgas", 45)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9459,21 +9459,21 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
                                                                                                                       Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outInstruction.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_loop COMMA_SOURCE_FILE ("instruction-loop-without-variant.galgas", 24)) ;
-  GALGAS_location var_instructionLocation_1178 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-loop-without-variant.galgas", 25)) ;
+  GALGAS_location var_instructionLocation_1178 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-loop-without-variant.galgas", 25)) ;
   GALGAS_semanticInstructionListAST var_firstInstructions_1285 ;
   nt_semantic_5F_instruction_5F_list_5F_ggs_33__ (var_firstInstructions_1285, inCompiler) ;
-  GALGAS_location var_endOfFirstInstructions_1318 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-loop-without-variant.galgas", 28)) ;
+  GALGAS_location var_endOfFirstInstructions_1318 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-loop-without-variant.galgas", 28)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_while COMMA_SOURCE_FILE ("instruction-loop-without-variant.galgas", 29)) ;
   GALGAS_semanticExpressionAST var_loopExpression_1420 ;
   nt_expression_5F_ggs_33__ (var_loopExpression_1420, inCompiler) ;
-  GALGAS_location var_endOfLoopExpression_1443 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-loop-without-variant.galgas", 31)) ;
+  GALGAS_location var_endOfLoopExpression_1443 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-loop-without-variant.galgas", 31)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_do COMMA_SOURCE_FILE ("instruction-loop-without-variant.galgas", 32)) ;
   GALGAS_semanticInstructionListAST var_secondInstructions_1559 ;
   nt_semantic_5F_instruction_5F_list_5F_ggs_33__ (var_secondInstructions_1559, inCompiler) ;
-  GALGAS_location var_endOfSecondInstructions_1586 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-loop-without-variant.galgas", 34)) ;
+  GALGAS_location var_endOfSecondInstructions_1586 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-loop-without-variant.galgas", 34)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_end COMMA_SOURCE_FILE ("instruction-loop-without-variant.galgas", 35)) ;
-  GALGAS_location var_endOfLoopInstruction_1645 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-loop-without-variant.galgas", 36)) ;
-  outArgument_outInstruction = GALGAS_loopInstructionWithoutVariantAST::constructor_new (var_instructionLocation_1178, var_firstInstructions_1285, var_endOfFirstInstructions_1318, var_loopExpression_1420, var_endOfLoopExpression_1443, var_secondInstructions_1559, var_endOfSecondInstructions_1586, var_endOfLoopInstruction_1645  COMMA_SOURCE_FILE ("instruction-loop-without-variant.galgas", 37)) ;
+  GALGAS_location var_endOfLoopInstruction_1645 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-loop-without-variant.galgas", 36)) ;
+  outArgument_outInstruction = GALGAS_loopInstructionWithoutVariantAST::class_func_new (var_instructionLocation_1178, var_firstInstructions_1285, var_endOfFirstInstructions_1318, var_loopExpression_1420, var_endOfLoopExpression_1443, var_secondInstructions_1559, var_endOfSecondInstructions_1586, var_endOfLoopInstruction_1645  COMMA_SOURCE_FILE ("instruction-loop-without-variant.galgas", 37)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9507,10 +9507,10 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
                                                                                                                       Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outInstruction.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_message COMMA_SOURCE_FILE ("instruction-message.galgas", 18)) ;
-  GALGAS_location var_instructionLocation_862 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-message.galgas", 19)) ;
+  GALGAS_location var_instructionLocation_862 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-message.galgas", 19)) ;
   GALGAS_semanticExpressionAST var_expression_949 ;
   nt_expression_5F_ggs_33__ (var_expression_949, inCompiler) ;
-  outArgument_outInstruction = GALGAS_messageInstructionAST::constructor_new (var_instructionLocation_862, var_expression_949  COMMA_SOURCE_FILE ("instruction-message.galgas", 21)) ;
+  outArgument_outInstruction = GALGAS_messageInstructionAST::class_func_new (var_instructionLocation_862, var_expression_949  COMMA_SOURCE_FILE ("instruction-message.galgas", 21)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9534,7 +9534,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
                                                                                                                       Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outInstruction.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__5B_ COMMA_SOURCE_FILE ("instruction-method-call.galgas", 20)) ;
-  GALGAS_location var_instructionLocation_961 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-method-call.galgas", 21)) ;
+  GALGAS_location var_instructionLocation_961 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-method-call.galgas", 21)) ;
   GALGAS_semanticExpressionAST var_mReceiverExpression_1048 ;
   nt_expression_5F_ggs_33__ (var_mReceiverExpression_1048, inCompiler) ;
   GALGAS_lstring var_mMethodName_1090 = inCompiler->synthetizedAttribute_tokenString () ;
@@ -9542,7 +9542,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
   GALGAS_actualParameterListAST var_actualParameterList_1164 ;
   nt_actual_5F_parameter_5F_list_5F_ggs_33__ (var_actualParameterList_1164, inCompiler) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__5D_ COMMA_SOURCE_FILE ("instruction-method-call.galgas", 25)) ;
-  outArgument_outInstruction = GALGAS_methodCallInstructionAST::constructor_new (var_instructionLocation_961, var_mReceiverExpression_1048, var_mMethodName_1090, var_actualParameterList_1164  COMMA_SOURCE_FILE ("instruction-method-call.galgas", 26)) ;
+  outArgument_outInstruction = GALGAS_methodCallInstructionAST::class_func_new (var_instructionLocation_961, var_mReceiverExpression_1048, var_mMethodName_1090, var_actualParameterList_1164  COMMA_SOURCE_FILE ("instruction-method-call.galgas", 26)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9578,7 +9578,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
   GALGAS_actualParameterListAST var_actualParameterList_612 ;
   nt_actual_5F_parameter_5F_list_5F_ggs_33__ (var_actualParameterList_612, inCompiler) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__29_ COMMA_SOURCE_FILE ("instruction-proc-call.galgas", 13)) ;
-  outArgument_outInstruction = GALGAS_procCallInstructionAST::constructor_new (var_mRoutineName_508.readProperty_location (), var_mRoutineName_508, var_actualParameterList_612  COMMA_SOURCE_FILE ("instruction-proc-call.galgas", 14)) ;
+  outArgument_outInstruction = GALGAS_procCallInstructionAST::class_func_new (var_mRoutineName_508.readProperty_location (), var_mRoutineName_508, var_actualParameterList_612  COMMA_SOURCE_FILE ("instruction-proc-call.galgas", 14)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9608,11 +9608,11 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
                                                                                                                       Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outInstruction.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_self COMMA_SOURCE_FILE ("instruction-self-assignment.galgas", 19)) ;
-  GALGAS_location var_instructionLocation_876 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-self-assignment.galgas", 20)) ;
+  GALGAS_location var_instructionLocation_876 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-self-assignment.galgas", 20)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3D_ COMMA_SOURCE_FILE ("instruction-self-assignment.galgas", 21)) ;
   GALGAS_semanticExpressionAST var_sourceExpression_971 ;
   nt_expression_5F_ggs_33__ (var_sourceExpression_971, inCompiler) ;
-  outArgument_outInstruction = GALGAS_selfAssignmentInstructionAST::constructor_new (var_instructionLocation_876, var_sourceExpression_971  COMMA_SOURCE_FILE ("instruction-self-assignment.galgas", 23)) ;
+  outArgument_outInstruction = GALGAS_selfAssignmentInstructionAST::class_func_new (var_instructionLocation_876, var_sourceExpression_971  COMMA_SOURCE_FILE ("instruction-self-assignment.galgas", 23)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9638,11 +9638,11 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
                                                                                                                       Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outInstruction.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_self COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 42)) ;
-  GALGAS_location var_instructionLocation_1874 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 43)) ;
+  GALGAS_location var_instructionLocation_1874 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 43)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2B__3D_ COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 44)) ;
   GALGAS_actualOutputExpressionList var_expressionList_1997 ;
   nt_non_5F_empty_5F_output_5F_expression_5F_list_5F_ggs_33__ (var_expressionList_1997, inCompiler) ;
-  outArgument_outInstruction = GALGAS_selfPlusEqualElementsInstructionAST::constructor_new (var_instructionLocation_1874, var_expressionList_1997  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 46)) ;
+  outArgument_outInstruction = GALGAS_selfPlusEqualElementsInstructionAST::class_func_new (var_instructionLocation_1874, var_expressionList_1997  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 46)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9668,11 +9668,11 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
                                                                                                                       Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outInstruction.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_self COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 55)) ;
-  GALGAS_location var_instructionLocation_2354 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 56)) ;
+  GALGAS_location var_instructionLocation_2354 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 56)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2B__3D_ COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 57)) ;
   GALGAS_semanticExpressionAST var_expression_2450 ;
   nt_expression_5F_ggs_33__ (var_expression_2450, inCompiler) ;
-  outArgument_outInstruction = GALGAS_selfPlusEqualExpressionInstructionAST::constructor_new (var_instructionLocation_2354, var_expression_2450  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 59)) ;
+  outArgument_outInstruction = GALGAS_selfPlusEqualExpressionInstructionAST::class_func_new (var_instructionLocation_2354, var_expression_2450  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 59)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9698,11 +9698,11 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
                                                                                                                       Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outInstruction.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_self COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 68)) ;
-  GALGAS_location var_instructionLocation_2801 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 69)) ;
+  GALGAS_location var_instructionLocation_2801 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 69)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2D__3D_ COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 70)) ;
   GALGAS_semanticExpressionAST var_expression_2897 ;
   nt_expression_5F_ggs_33__ (var_expression_2897, inCompiler) ;
-  outArgument_outInstruction = GALGAS_selfMinusEqualExpressionInstructionAST::constructor_new (var_instructionLocation_2801, var_expression_2897  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 72)) ;
+  outArgument_outInstruction = GALGAS_selfMinusEqualExpressionInstructionAST::class_func_new (var_instructionLocation_2801, var_expression_2897  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 72)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9728,11 +9728,11 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
                                                                                                                       Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outInstruction.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_self COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 81)) ;
-  GALGAS_location var_instructionLocation_3249 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 82)) ;
+  GALGAS_location var_instructionLocation_3249 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 82)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2A__3D_ COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 83)) ;
   GALGAS_semanticExpressionAST var_expression_3345 ;
   nt_expression_5F_ggs_33__ (var_expression_3345, inCompiler) ;
-  outArgument_outInstruction = GALGAS_selfMulEqualExpressionInstructionAST::constructor_new (var_instructionLocation_3249, var_expression_3345  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 85)) ;
+  outArgument_outInstruction = GALGAS_selfMulEqualExpressionInstructionAST::class_func_new (var_instructionLocation_3249, var_expression_3345  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 85)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9758,11 +9758,11 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
                                                                                                                       Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outInstruction.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_self COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 94)) ;
-  GALGAS_location var_instructionLocation_3695 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 95)) ;
+  GALGAS_location var_instructionLocation_3695 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 95)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2F__3D_ COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 96)) ;
   GALGAS_semanticExpressionAST var_expression_3791 ;
   nt_expression_5F_ggs_33__ (var_expression_3791, inCompiler) ;
-  outArgument_outInstruction = GALGAS_selfDivEqualExpressionInstructionAST::constructor_new (var_instructionLocation_3695, var_expression_3791  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 98)) ;
+  outArgument_outInstruction = GALGAS_selfDivEqualExpressionInstructionAST::class_func_new (var_instructionLocation_3695, var_expression_3791  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 98)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9788,7 +9788,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
                                                                                                                       Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outInstruction.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__5B_ COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 30)) ;
-  GALGAS_location var_instructionLocation_1358 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 31)) ;
+  GALGAS_location var_instructionLocation_1358 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 31)) ;
   GALGAS_lstring var_selector_1409 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__21__3F_ COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 32)) ;
   enumGalgasBool test_0 = kBoolTrue ;
@@ -9814,7 +9814,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
   }
   GALGAS_lstring var_mReceiverName_1682 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 44)) ;
-  GALGAS_lstringlist var_mReceiverStructAttributes_1704 = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("instruction-setter-call.galgas", 45)) ;
+  GALGAS_lstringlist var_mReceiverStructAttributes_1704 = GALGAS_lstringlist::class_func_emptyList (SOURCE_FILE ("instruction-setter-call.galgas", 45)) ;
   bool repeatFlag_2 = true ;
   while (repeatFlag_2) {
     if (select_galgas_33_InstructionsSyntax_67 (inCompiler) == 2) {
@@ -9844,7 +9844,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
   GALGAS_actualParameterListAST var_actualParameterList_2122 ;
   nt_actual_5F_parameter_5F_list_5F_ggs_33__ (var_actualParameterList_2122, inCompiler) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__5D_ COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 61)) ;
-  outArgument_outInstruction = GALGAS_setterCallInstructionAST::constructor_new (var_instructionLocation_1358, var_prefixedBySelf_1539, var_mReceiverName_1682, var_mReceiverStructAttributes_1704, var_typeNameForCasting_1896, var_mSetterName_2048, var_actualParameterList_2122  COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 62)) ;
+  outArgument_outInstruction = GALGAS_setterCallInstructionAST::class_func_new (var_instructionLocation_1358, var_prefixedBySelf_1539, var_mReceiverName_1682, var_mReceiverStructAttributes_1704, var_typeNameForCasting_1896, var_mSetterName_2048, var_actualParameterList_2122  COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 62)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9934,7 +9934,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
                                                                                                                       Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outInstruction.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__5B_ COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 76)) ;
-  GALGAS_location var_instructionLocation_2600 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 77)) ;
+  GALGAS_location var_instructionLocation_2600 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 77)) ;
   GALGAS_lstring var_selector_2651 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__21__3F_ COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 78)) ;
   enumGalgasBool test_0 = kBoolTrue ;
@@ -9951,7 +9951,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
   GALGAS_actualParameterListAST var_actualParameterList_2874 ;
   nt_actual_5F_parameter_5F_list_5F_ggs_33__ (var_actualParameterList_2874, inCompiler) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__5D_ COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 85)) ;
-  outArgument_outInstruction = GALGAS_selfSetterCallInstructionAST::constructor_new (var_instructionLocation_2600, var_mSetterName_2800, var_actualParameterList_2874  COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 86)) ;
+  outArgument_outInstruction = GALGAS_selfSetterCallInstructionAST::class_func_new (var_instructionLocation_2600, var_mSetterName_2800, var_actualParameterList_2874  COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 86)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9983,11 +9983,11 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
                                                                                                                       Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outInstruction.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_switch COMMA_SOURCE_FILE ("instruction-switch.galgas", 38)) ;
-  GALGAS_location var_instructionLocation_1650 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas", 39)) ;
+  GALGAS_location var_instructionLocation_1650 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas", 39)) ;
   GALGAS_semanticExpressionAST var_switchExpression_1714 ;
   nt_expression_5F_ggs_33__ (var_switchExpression_1714, inCompiler) ;
-  GALGAS_location var_endOfSwitchExpression_1739 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas", 41)) ;
-  GALGAS_switchBranchesAST var_switchBranches_1805 = GALGAS_switchBranchesAST::constructor_emptyList (SOURCE_FILE ("instruction-switch.galgas", 42)) ;
+  GALGAS_location var_endOfSwitchExpression_1739 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas", 41)) ;
+  GALGAS_switchBranchesAST var_switchBranches_1805 = GALGAS_switchBranchesAST::class_func_emptyList (SOURCE_FILE ("instruction-switch.galgas", 42)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_case COMMA_SOURCE_FILE ("instruction-switch.galgas", 44)) ;
@@ -9997,15 +9997,15 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3A_ COMMA_SOURCE_FILE ("instruction-switch.galgas", 48)) ;
     GALGAS_semanticInstructionListAST var_instructions_2036 ;
     nt_semantic_5F_instruction_5F_list_5F_ggs_33__ (var_instructions_2036, inCompiler) ;
-    var_switchBranches_1805.addAssign_operation (var_constantNameList_1895, var_associatedValuesExtraction_1955, var_instructions_2036, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas", 50))  COMMA_SOURCE_FILE ("instruction-switch.galgas", 50)) ;
+    var_switchBranches_1805.addAssign_operation (var_constantNameList_1895, var_associatedValuesExtraction_1955, var_instructions_2036, GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas", 50))  COMMA_SOURCE_FILE ("instruction-switch.galgas", 50)) ;
     if (select_galgas_33_InstructionsSyntax_69 (inCompiler) == 2) {
     }else{
       repeatFlag_0 = false ;
     }
   }
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_end COMMA_SOURCE_FILE ("instruction-switch.galgas", 53)) ;
-  GALGAS_location var_endOfSwitchInstruction_2185 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas", 54)) ;
-  outArgument_outInstruction = GALGAS_switchInstructionAST::constructor_new (var_instructionLocation_1650, var_switchExpression_1714, var_endOfSwitchExpression_1739, var_switchBranches_1805, var_endOfSwitchInstruction_2185  COMMA_SOURCE_FILE ("instruction-switch.galgas", 55)) ;
+  GALGAS_location var_endOfSwitchInstruction_2185 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas", 54)) ;
+  outArgument_outInstruction = GALGAS_switchInstructionAST::class_func_new (var_instructionLocation_1650, var_switchExpression_1714, var_endOfSwitchExpression_1739, var_switchBranches_1805, var_endOfSwitchInstruction_2185  COMMA_SOURCE_FILE ("instruction-switch.galgas", 55)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10054,7 +10054,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_swi
                                                                                                   Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outConstantNameList.drop () ; // Release 'out' argument
   outArgument_outAssociatedValuesExtraction.drop () ; // Release 'out' argument
-  outArgument_outConstantNameList = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("instruction-switch.galgas", 70)) ;
+  outArgument_outConstantNameList = GALGAS_lstringlist::class_func_emptyList (SOURCE_FILE ("instruction-switch.galgas", 70)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     GALGAS_lstring var_constantName_2736 = inCompiler->synthetizedAttribute_tokenString () ;
@@ -10066,7 +10066,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_swi
       repeatFlag_0 = false ;
     }
   }
-  outArgument_outAssociatedValuesExtraction = GALGAS_switchExtractedValuesListAST::constructor_emptyList (SOURCE_FILE ("instruction-switch.galgas", 77)) ;
+  outArgument_outAssociatedValuesExtraction = GALGAS_switchExtractedValuesListAST::class_func_emptyList (SOURCE_FILE ("instruction-switch.galgas", 77)) ;
   switch (select_galgas_33_InstructionsSyntax_71 (inCompiler)) {
   case 1: {
   } break ;
@@ -10266,7 +10266,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
                                                                                                                       Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outInstruction.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__5B_ COMMA_SOURCE_FILE ("instruction-type-method-call.galgas", 20)) ;
-  GALGAS_location var_instructionLocation_941 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-type-method-call.galgas", 21)) ;
+  GALGAS_location var_instructionLocation_941 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-type-method-call.galgas", 21)) ;
   GALGAS_lstring var_mTypeName_1004 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->enterIndexing (Lexique_galgasScanner_33_::kIndexing_typeReferenceInTypeMethod, "") ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__40_type COMMA_SOURCE_FILE ("instruction-type-method-call.galgas", 22)) ;
@@ -10275,7 +10275,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
   GALGAS_actualParameterListAST var_actualParameterList_1154 ;
   nt_actual_5F_parameter_5F_list_5F_ggs_33__ (var_actualParameterList_1154, inCompiler) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__5D_ COMMA_SOURCE_FILE ("instruction-type-method-call.galgas", 25)) ;
-  outArgument_outInstruction = GALGAS_typeMethodCallInstructionAST::constructor_new (var_instructionLocation_941, var_mTypeName_1004, var_mMethodName_1080, var_actualParameterList_1154  COMMA_SOURCE_FILE ("instruction-type-method-call.galgas", 26)) ;
+  outArgument_outInstruction = GALGAS_typeMethodCallInstructionAST::class_func_new (var_instructionLocation_941, var_mTypeName_1004, var_mMethodName_1080, var_actualParameterList_1154  COMMA_SOURCE_FILE ("instruction-type-method-call.galgas", 26)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10311,7 +10311,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__40_type COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 27)) ;
   GALGAS_lstring var_variableName_1230 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 28)) ;
-  outArgument_outInstruction = GALGAS_localVariableDeclarationNoAssignmentAST::constructor_new (var_typeName_1199.readProperty_location (), var_typeName_1199, var_variableName_1230  COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 29)) ;
+  outArgument_outInstruction = GALGAS_localVariableDeclarationNoAssignmentAST::class_func_new (var_typeName_1199.readProperty_location (), var_typeName_1199, var_variableName_1230  COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 29)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10340,7 +10340,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__40_type COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 35)) ;
   GALGAS_lstring var_variableName_1602 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 36)) ;
-  outArgument_outInstruction = GALGAS_localVariableDeclarationNoAssignmentAST::constructor_new (var_typeName_1571.readProperty_location (), var_typeName_1571, var_variableName_1602  COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 37)) ;
+  outArgument_outInstruction = GALGAS_localVariableDeclarationNoAssignmentAST::class_func_new (var_typeName_1571.readProperty_location (), var_typeName_1571, var_variableName_1602  COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 37)) ;
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
     test_0 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_errorOldStyleLocalVarDeclaration.readProperty_value ()).boolEnum () ;
@@ -10378,7 +10378,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3D_ COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 49)) ;
   GALGAS_semanticExpressionAST var_sourceExpression_2279 ;
   nt_expression_5F_ggs_33__ (var_sourceExpression_2279, inCompiler) ;
-  outArgument_outInstruction = GALGAS_localVariableDeclarationWithAssignmentAST::constructor_new (var_variableName_2208.readProperty_location (), var_variableName_2208, var_sourceExpression_2279  COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 51)) ;
+  outArgument_outInstruction = GALGAS_localVariableDeclarationWithAssignmentAST::class_func_new (var_variableName_2208.readProperty_location (), var_variableName_2208, var_sourceExpression_2279  COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 51)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10413,7 +10413,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3D_ COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 64)) ;
   GALGAS_semanticExpressionAST var_sourceExpression_2774 ;
   nt_expression_5F_ggs_33__ (var_sourceExpression_2774, inCompiler) ;
-  outArgument_outInstruction = GALGAS_localVariableOrConstantDeclarationWithAssignmentAST::constructor_new (var_typeName_2672.readProperty_location (), GALGAS_bool (false), var_typeName_2672, var_variableName_2703, var_sourceExpression_2774  COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 66)) ;
+  outArgument_outInstruction = GALGAS_localVariableOrConstantDeclarationWithAssignmentAST::class_func_new (var_typeName_2672.readProperty_location (), GALGAS_bool (false), var_typeName_2672, var_variableName_2703, var_sourceExpression_2774  COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 66)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10449,7 +10449,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3D_ COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 80)) ;
   GALGAS_semanticExpressionAST var_sourceExpression_3294 ;
   nt_expression_5F_ggs_33__ (var_sourceExpression_3294, inCompiler) ;
-  outArgument_outInstruction = GALGAS_localVariableOrConstantDeclarationWithAssignmentAST::constructor_new (var_typeName_3192.readProperty_location (), GALGAS_bool (false), var_typeName_3192, var_variableName_3223, var_sourceExpression_3294  COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 82)) ;
+  outArgument_outInstruction = GALGAS_localVariableOrConstantDeclarationWithAssignmentAST::class_func_new (var_typeName_3192.readProperty_location (), GALGAS_bool (false), var_typeName_3192, var_variableName_3223, var_sourceExpression_3294  COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 82)) ;
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
     test_0 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_errorOldStyleLocalVarDeclaration.readProperty_value ()).boolEnum () ;
@@ -10486,7 +10486,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
                                                                                                                       Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outInstruction.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_warning COMMA_SOURCE_FILE ("instruction-warning.galgas", 21)) ;
-  GALGAS_location var_instructionLocation_969 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-warning.galgas", 22)) ;
+  GALGAS_location var_instructionLocation_969 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-warning.galgas", 22)) ;
   GALGAS_semanticExpressionAST var_mReceiverExpression_1056 ;
   nt_expression_5F_ggs_33__ (var_mReceiverExpression_1056, inCompiler) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3A_ COMMA_SOURCE_FILE ("instruction-warning.galgas", 24)) ;
@@ -10494,7 +10494,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
   nt_expression_5F_ggs_33__ (var_mWarningExpression_1134, inCompiler) ;
   GALGAS_fixitListAST var_fixitListAST_1190 ;
   nt_issue_5F_fixit_ (var_fixitListAST_1190, inCompiler) ;
-  outArgument_outInstruction = GALGAS_warningInstructionAST::constructor_new (var_instructionLocation_969, var_mReceiverExpression_1056, var_mWarningExpression_1134, var_fixitListAST_1190  COMMA_SOURCE_FILE ("instruction-warning.galgas", 27)) ;
+  outArgument_outInstruction = GALGAS_warningInstructionAST::class_func_new (var_instructionLocation_969, var_mReceiverExpression_1056, var_mWarningExpression_1134, var_fixitListAST_1190  COMMA_SOURCE_FILE ("instruction-warning.galgas", 27)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10524,14 +10524,14 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
                                                                                                                       Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outInstruction.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_with COMMA_SOURCE_FILE ("instruction-with.galgas", 44)) ;
-  GALGAS_location var_instructionLocation_2081 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-with.galgas", 45)) ;
+  GALGAS_location var_instructionLocation_2081 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-with.galgas", 45)) ;
   GALGAS_semanticExpressionAST var_keyExpression_2168 ;
   nt_expression_5F_ggs_33__ (var_keyExpression_2168, inCompiler) ;
-  GALGAS_location var_endOfKeyExpression_2190 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-with.galgas", 47)) ;
+  GALGAS_location var_endOfKeyExpression_2190 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-with.galgas", 47)) ;
   GALGAS_lstring var_withPrefix_2243 ;
   switch (select_galgas_33_InstructionsSyntax_76 (inCompiler)) {
   case 1: {
-    var_withPrefix_2243 = GALGAS_lstring::constructor_new (GALGAS_string::makeEmptyString (), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-with.galgas", 50)), inCompiler  COMMA_SOURCE_FILE ("instruction-with.galgas", 50)) ;
+    var_withPrefix_2243 = GALGAS_lstring::class_func_new (GALGAS_string::makeEmptyString (), GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-with.galgas", 50)), inCompiler  COMMA_SOURCE_FILE ("instruction-with.galgas", 50)) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3A_ COMMA_SOURCE_FILE ("instruction-with.galgas", 52)) ;
@@ -10598,7 +10598,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_wit
   outArgument_outInstruction.drop () ; // Release 'out' argument
   GALGAS_semanticExpressionAST var_receiverExpression_2920 ;
   nt_expression_5F_ggs_33__ (var_receiverExpression_2920, inCompiler) ;
-  GALGAS_location var_endOfReceiverExpression_2947 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-with.galgas", 70)) ;
+  GALGAS_location var_endOfReceiverExpression_2947 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-with.galgas", 70)) ;
   GALGAS_lstring var_searchMethodNameForErrorSignaling_3005 ;
   switch (select_galgas_33_InstructionsSyntax_77 (inCompiler)) {
   case 1: {
@@ -10616,11 +10616,11 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_wit
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_do COMMA_SOURCE_FILE ("instruction-with.galgas", 79)) ;
   GALGAS_semanticInstructionListAST var_mDoBranchInstructions_3283 ;
   nt_semantic_5F_instruction_5F_list_5F_ggs_33__ (var_mDoBranchInstructions_3283, inCompiler) ;
-  GALGAS_location var_endOfDoInstructions_3313 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-with.galgas", 81)) ;
+  GALGAS_location var_endOfDoInstructions_3313 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-with.galgas", 81)) ;
   GALGAS_semanticInstructionListAST var_mElseBranchInstructions_3386 ;
   switch (select_galgas_33_InstructionsSyntax_78 (inCompiler)) {
   case 1: {
-    var_mElseBranchInstructions_3386 = GALGAS_semanticInstructionListAST::constructor_emptyList (SOURCE_FILE ("instruction-with.galgas", 84)) ;
+    var_mElseBranchInstructions_3386 = GALGAS_semanticInstructionListAST::class_func_emptyList (SOURCE_FILE ("instruction-with.galgas", 84)) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_else COMMA_SOURCE_FILE ("instruction-with.galgas", 86)) ;
@@ -10637,7 +10637,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_wit
   default:
     break ;
   }
-  outArgument_outInstruction = GALGAS_readAccessWithInstructionAST::constructor_new (constinArgument_inInstructionLocation, constinArgument_inWithPrefix, var_receiverExpression_2920, var_endOfReceiverExpression_2947, constinArgument_inKeyExpression, constinArgument_inEndOfKeyExpression, var_searchMethodNameForErrorSignaling_3005, var_mDoBranchInstructions_3283, var_endOfDoInstructions_3313, var_mElseBranchInstructions_3386, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-with.galgas", 103))  COMMA_SOURCE_FILE ("instruction-with.galgas", 92)) ;
+  outArgument_outInstruction = GALGAS_readAccessWithInstructionAST::class_func_new (constinArgument_inInstructionLocation, constinArgument_inWithPrefix, var_receiverExpression_2920, var_endOfReceiverExpression_2947, constinArgument_inKeyExpression, constinArgument_inEndOfKeyExpression, var_searchMethodNameForErrorSignaling_3005, var_mDoBranchInstructions_3283, var_endOfDoInstructions_3313, var_mElseBranchInstructions_3386, GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-with.galgas", 103))  COMMA_SOURCE_FILE ("instruction-with.galgas", 92)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10718,7 +10718,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_wit
       inCompiler->emitSemanticError (var_selector_4463.readProperty_location (), GALGAS_string ("an empty selector '!\?' is required here"), fixItArray1  COMMA_SOURCE_FILE ("instruction-with.galgas", 118)) ;
     }
   }
-  GALGAS_lstringlist var_structAttributeList_4587 = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("instruction-with.galgas", 120)) ;
+  GALGAS_lstringlist var_structAttributeList_4587 = GALGAS_lstringlist::class_func_emptyList (SOURCE_FILE ("instruction-with.galgas", 120)) ;
   GALGAS_bool var_targetIsPrefixedBySelf_4639 ;
   GALGAS_lstring var_targetObjectName_4679 ;
   switch (select_galgas_33_InstructionsSyntax_79 (inCompiler)) {
@@ -10768,7 +10768,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_wit
   default:
     break ;
   }
-  GALGAS_location var_endOfReceiverExpression_5263 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-with.galgas", 148)) ;
+  GALGAS_location var_endOfReceiverExpression_5263 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-with.galgas", 148)) ;
   GALGAS_lstring var_searchMethodNameForErrorSignaling_5321 ;
   switch (select_galgas_33_InstructionsSyntax_83 (inCompiler)) {
   case 1: {
@@ -10786,11 +10786,11 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_wit
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_do COMMA_SOURCE_FILE ("instruction-with.galgas", 157)) ;
   GALGAS_semanticInstructionListAST var_mDoBranchInstructions_5599 ;
   nt_semantic_5F_instruction_5F_list_5F_ggs_33__ (var_mDoBranchInstructions_5599, inCompiler) ;
-  GALGAS_location var_endOf_5F_do_5F_instructions_5629 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-with.galgas", 159)) ;
+  GALGAS_location var_endOf_5F_do_5F_instructions_5629 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-with.galgas", 159)) ;
   GALGAS_semanticInstructionListAST var_mElseBranchInstructions_5704 ;
   switch (select_galgas_33_InstructionsSyntax_84 (inCompiler)) {
   case 1: {
-    var_mElseBranchInstructions_5704 = GALGAS_semanticInstructionListAST::constructor_emptyList (SOURCE_FILE ("instruction-with.galgas", 162)) ;
+    var_mElseBranchInstructions_5704 = GALGAS_semanticInstructionListAST::class_func_emptyList (SOURCE_FILE ("instruction-with.galgas", 162)) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_else COMMA_SOURCE_FILE ("instruction-with.galgas", 164)) ;
@@ -10807,8 +10807,8 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_wit
   default:
     break ;
   }
-  GALGAS_location var_endOf_5F_else_5F_instructions_6045 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-with.galgas", 170)) ;
-  outArgument_outInstruction = GALGAS_readWriteAccessWithInstructionAST::constructor_new (constinArgument_inInstructionLocation, constinArgument_inWithPrefix, var_targetObjectName_4679, var_targetIsPrefixedBySelf_4639, var_structAttributeList_4587, var_endOfReceiverExpression_5263, constinArgument_inKeyExpression, constinArgument_inEndOfKeyExpression, var_searchMethodNameForErrorSignaling_5321, var_mDoBranchInstructions_5599, var_endOf_5F_do_5F_instructions_5629, var_mElseBranchInstructions_5704, var_endOf_5F_else_5F_instructions_6045  COMMA_SOURCE_FILE ("instruction-with.galgas", 171)) ;
+  GALGAS_location var_endOf_5F_else_5F_instructions_6045 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-with.galgas", 170)) ;
+  outArgument_outInstruction = GALGAS_readWriteAccessWithInstructionAST::class_func_new (constinArgument_inInstructionLocation, constinArgument_inWithPrefix, var_targetObjectName_4679, var_targetIsPrefixedBySelf_4639, var_structAttributeList_4587, var_endOfReceiverExpression_5263, constinArgument_inKeyExpression, constinArgument_inEndOfKeyExpression, var_searchMethodNameForErrorSignaling_5321, var_mDoBranchInstructions_5599, var_endOf_5F_do_5F_instructions_5629, var_mElseBranchInstructions_5704, var_endOf_5F_else_5F_instructions_6045  COMMA_SOURCE_FILE ("instruction-with.galgas", 171)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11003,7 +11003,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_pro
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_let COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 52)) ;
-    extensionMethod_checkCompatibilityWithLet (var_accessControl_2510, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 53)), inCompiler COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 53)) ;
+    extensionMethod_checkCompatibilityWithLet (var_accessControl_2510, GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 53)), inCompiler COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 53)) ;
     var_isConstant_2538 = GALGAS_bool (true) ;
   } break ;
   default:
@@ -11026,13 +11026,13 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_pro
   GALGAS_propertyInCollectionInitializationAST var_initialization_2931 ;
   switch (select_galgas_33_DeclarationsSyntax_3 (inCompiler)) {
   case 1: {
-    var_initialization_2931 = GALGAS_propertyInCollectionInitializationAST::constructor_none (SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 66)) ;
+    var_initialization_2931 = GALGAS_propertyInCollectionInitializationAST::class_func_none (SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 66)) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3D_ COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 68)) ;
     GALGAS_semanticExpressionAST var_expression_3032 ;
     nt_expression_5F_ggs_33__ (var_expression_3032, inCompiler) ;
-    var_initialization_2931 = GALGAS_propertyInCollectionInitializationAST::constructor_some (var_expression_3032  COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 70)) ;
+    var_initialization_2931 = GALGAS_propertyInCollectionInitializationAST::class_func_some (var_expression_3032  COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 70)) ;
   } break ;
   default:
     break ;
@@ -11136,18 +11136,18 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_pro
   GALGAS_propertyInCollectionInitializationAST var_initialization_3767 ;
   switch (select_galgas_33_DeclarationsSyntax_5 (inCompiler)) {
   case 1: {
-    var_initialization_3767 = GALGAS_propertyInCollectionInitializationAST::constructor_none (SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 95)) ;
+    var_initialization_3767 = GALGAS_propertyInCollectionInitializationAST::class_func_none (SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 95)) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3D_ COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 97)) ;
     GALGAS_semanticExpressionAST var_expression_3868 ;
     nt_expression_5F_ggs_33__ (var_expression_3868, inCompiler) ;
-    var_initialization_3767 = GALGAS_propertyInCollectionInitializationAST::constructor_some (var_expression_3868  COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 99)) ;
+    var_initialization_3767 = GALGAS_propertyInCollectionInitializationAST::class_func_some (var_expression_3868  COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 99)) ;
   } break ;
   default:
     break ;
   }
-  ioArgument_ioAttributeInCollectionList.addAssign_operation (GALGAS_bool (false), var_propertyTypeName_3529, var_propertyName_3568, GALGAS_AccessControlAST::constructor_publicAccess (SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 105)), var_selectorAttribute_3595, var_initialization_3767  COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 101)) ;
+  ioArgument_ioAttributeInCollectionList.addAssign_operation (GALGAS_bool (false), var_propertyTypeName_3529, var_propertyName_3568, GALGAS_AccessControlAST::class_func_publicAccess (SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 105)), var_selectorAttribute_3595, var_initialization_3767  COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 101)) ;
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
     test_0 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_errorOldStylePropertyDeclaration.readProperty_value ()).boolEnum () ;
@@ -11229,7 +11229,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
   nt_filewrapper_5F_binary_5F_files_ (var_filewrapperBinaryFileExtensionList_5090, inCompiler) ;
   GALGAS_filewrapperTemplateListAST var_filewrapperTemplateList_5158 ;
   nt_filewrapper_5F_templates_ (var_filewrapperTemplateList_5158, inCompiler) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_filewrapperDeclarationAST::constructor_new (GALGAS_bool (false), GALGAS_bool (false), GALGAS_string::constructor_stringWithSourceFilePath (inCompiler  COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 132)), var_mFilewrapperName_4884, var_mFilewrapperPath_4970, var_filewrapperTextFileExtensionList_5021, var_filewrapperBinaryFileExtensionList_5090, var_filewrapperTemplateList_5158  COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 129))  COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 129)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_filewrapperDeclarationAST::class_func_new (GALGAS_bool (false), GALGAS_bool (false), GALGAS_string::class_func_stringWithSourceFilePath (inCompiler  COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 132)), var_mFilewrapperName_4884, var_mFilewrapperPath_4970, var_filewrapperTextFileExtensionList_5021, var_filewrapperBinaryFileExtensionList_5090, var_filewrapperTemplateList_5158  COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 129))  COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 129)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11277,7 +11277,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
   nt_filewrapper_5F_binary_5F_files_ (var_filewrapperBinaryFileExtensionList_5990, inCompiler) ;
   GALGAS_filewrapperTemplateListAST var_filewrapperTemplateList_6058 ;
   nt_filewrapper_5F_templates_ (var_filewrapperTemplateList_6058, inCompiler) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_filewrapperDeclarationAST::constructor_new (GALGAS_bool (false), GALGAS_bool (true), GALGAS_string::constructor_stringWithSourceFilePath (inCompiler  COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 154)), var_mFilewrapperName_5784, var_mFilewrapperPath_5870, var_filewrapperTextFileExtensionList_5921, var_filewrapperBinaryFileExtensionList_5990, var_filewrapperTemplateList_6058  COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 151))  COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 151)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_filewrapperDeclarationAST::class_func_new (GALGAS_bool (false), GALGAS_bool (true), GALGAS_string::class_func_stringWithSourceFilePath (inCompiler  COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 154)), var_mFilewrapperName_5784, var_mFilewrapperPath_5870, var_filewrapperTextFileExtensionList_5921, var_filewrapperBinaryFileExtensionList_5990, var_filewrapperTemplateList_6058  COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 151))  COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 151)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11314,7 +11314,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
 void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_filewrapper_5F_text_5F_files_i5_ (GALGAS_lstringlist & outArgument_outFilewrapperTextFileExtensionList,
                                                                                                                Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outFilewrapperTextFileExtensionList.drop () ; // Release 'out' argument
-  outArgument_outFilewrapperTextFileExtensionList = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 166)) ;
+  outArgument_outFilewrapperTextFileExtensionList = GALGAS_lstringlist::class_func_emptyList (SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 166)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7B_ COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 167)) ;
   switch (select_galgas_33_DeclarationsSyntax_6 (inCompiler)) {
   case 1: {
@@ -11392,7 +11392,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_fil
 void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_filewrapper_5F_binary_5F_files_i6_ (GALGAS_lstringlist & outArgument_outFilewrapperBinaryFileExtensionList,
                                                                                                                  Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outFilewrapperBinaryFileExtensionList.drop () ; // Release 'out' argument
-  outArgument_outFilewrapperBinaryFileExtensionList = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 183)) ;
+  outArgument_outFilewrapperBinaryFileExtensionList = GALGAS_lstringlist::class_func_emptyList (SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 183)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7B_ COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 184)) ;
   switch (select_galgas_33_DeclarationsSyntax_8 (inCompiler)) {
   case 1: {
@@ -11471,7 +11471,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_fil
                                                                                                            Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outFilewrapperTemplateList.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7B_ COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 200)) ;
-  outArgument_outFilewrapperTemplateList = GALGAS_filewrapperTemplateListAST::constructor_emptyList (SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 201)) ;
+  outArgument_outFilewrapperTemplateList = GALGAS_filewrapperTemplateListAST::class_func_emptyList (SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 201)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     if (select_galgas_33_DeclarationsSyntax_10 (inCompiler) == 2) {
@@ -11480,7 +11480,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_fil
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 205)) ;
       GALGAS_lstring var_mFilewrapperTemplatePath_7704 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__22_string_22_ COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 206)) ;
-      GALGAS_formalTemplateInputParameterListAST var_filewrapperTemplateFormalInputParameters_7776 = GALGAS_formalTemplateInputParameterListAST::constructor_emptyList (SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 207)) ;
+      GALGAS_formalTemplateInputParameterListAST var_filewrapperTemplateFormalInputParameters_7776 = GALGAS_formalTemplateInputParameterListAST::class_func_emptyList (SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 207)) ;
       bool repeatFlag_1 = true ;
       while (repeatFlag_1) {
         if (select_galgas_33_DeclarationsSyntax_11 (inCompiler) == 2) {
@@ -11597,7 +11597,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
   inCompiler->enterIndexing (Lexique_galgasScanner_33_::kIndexing_structDefinition, "") ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__40_type COMMA_SOURCE_FILE ("type-boolset.galgas", 20)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7B_ COMMA_SOURCE_FILE ("type-boolset.galgas", 21)) ;
-  GALGAS_lstringlist var_slotList_1042 = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("type-boolset.galgas", 22)) ;
+  GALGAS_lstringlist var_slotList_1042 = GALGAS_lstringlist::class_func_emptyList (SOURCE_FILE ("type-boolset.galgas", 22)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     GALGAS_lstring var_slotName_1091 = inCompiler->synthetizedAttribute_tokenString () ;
@@ -11610,7 +11610,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
     }
   }
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7D_ COMMA_SOURCE_FILE ("type-boolset.galgas", 29)) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_boolsetDeclarationAST::constructor_new (GALGAS_bool (false), var_boolsetTypeName_971, var_slotList_1042  COMMA_SOURCE_FILE ("type-boolset.galgas", 30))  COMMA_SOURCE_FILE ("type-boolset.galgas", 30)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_boolsetDeclarationAST::class_func_new (GALGAS_bool (false), var_boolsetTypeName_971, var_slotList_1042  COMMA_SOURCE_FILE ("type-boolset.galgas", 30))  COMMA_SOURCE_FILE ("type-boolset.galgas", 30)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11677,7 +11677,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
       test_0 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_errorClassDeclaration.readProperty_value ()).boolEnum () ;
       if (kBoolTrue == test_0) {
         TC_Array <C_FixItDescription> fixItArray1 ;
-        inCompiler->emitSemanticError (GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 25)), GALGAS_string ("'class' declaration is obsolete, use 'valueclass'"), fixItArray1  COMMA_SOURCE_FILE ("type-class.galgas", 25)) ;
+        inCompiler->emitSemanticError (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 25)), GALGAS_string ("'class' declaration is obsolete, use 'valueclass'"), fixItArray1  COMMA_SOURCE_FILE ("type-class.galgas", 25)) ;
       }
     }
     var_isReference_809 = GALGAS_bool (false) ;
@@ -11698,7 +11698,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
     test_2 = test_3.boolEnum () ;
     if (kBoolTrue == test_2) {
       TC_Array <C_FixItDescription> fixItArray4 ;
-      inCompiler->emitSemanticError (GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 33)), GALGAS_string ("'value class' is obsolete, use 'refclass'"), fixItArray4  COMMA_SOURCE_FILE ("type-class.galgas", 33)) ;
+      inCompiler->emitSemanticError (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 33)), GALGAS_string ("'value class' is obsolete, use 'refclass'"), fixItArray4  COMMA_SOURCE_FILE ("type-class.galgas", 33)) ;
     }
   }
   GALGAS_lstring var_className_1273 = inCompiler->synthetizedAttribute_tokenString () ;
@@ -11731,7 +11731,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
     break ;
   }
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7B_ COMMA_SOURCE_FILE ("type-class.galgas", 50)) ;
-  GALGAS_propertyInCollectionListAST var_propertyList_1744 = GALGAS_propertyInCollectionListAST::constructor_emptyList (SOURCE_FILE ("type-class.galgas", 52)) ;
+  GALGAS_propertyInCollectionListAST var_propertyList_1744 = GALGAS_propertyInCollectionListAST::class_func_emptyList (SOURCE_FILE ("type-class.galgas", 52)) ;
   bool repeatFlag_5 = true ;
   while (repeatFlag_5) {
     switch (select_galgas_33_DeclarationsSyntax_18 (inCompiler)) {
@@ -11747,7 +11747,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
     }
   }
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7D_ COMMA_SOURCE_FILE ("type-class.galgas", 59)) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_classDeclarationAST::constructor_new (GALGAS_bool (false), var_isAbstract_692, var_isReference_809, var_className_1273, var_superClassName_1325, var_generateInSeparateFile_1520, var_propertyList_1744  COMMA_SOURCE_FILE ("type-class.galgas", 60))  COMMA_SOURCE_FILE ("type-class.galgas", 60)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_classDeclarationAST::class_func_new (GALGAS_bool (false), var_isAbstract_692, var_isReference_809, var_className_1273, var_superClassName_1325, var_generateInSeparateFile_1520, var_propertyList_1744  COMMA_SOURCE_FILE ("type-class.galgas", 60))  COMMA_SOURCE_FILE ("type-class.galgas", 60)) ;
   enumGalgasBool test_6 = kBoolTrue ;
   if (kBoolTrue == test_6) {
     test_6 = var_isReference_809.boolEnum () ;
@@ -11757,9 +11757,9 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
       if (kBoolTrue == test_8) {
         temp_7 = var_superClassName_1325 ;
       }else if (kBoolFalse == test_8) {
-        temp_7 = GALGAS_lstring::constructor_new (var_superClassName_1325.readProperty_string ().add_operation (GALGAS_string ("-weak"), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 76)), var_superClassName_1325.readProperty_location (), inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 76)) ;
+        temp_7 = GALGAS_lstring::class_func_new (var_superClassName_1325.readProperty_string ().add_operation (GALGAS_string ("-weak"), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 76)), var_superClassName_1325.readProperty_location (), inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 76)) ;
       }
-      ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_weakReferenceDeclarationAST::constructor_new (GALGAS_bool (false), var_className_1273, GALGAS_lstring::constructor_new (var_className_1273.readProperty_string ().add_operation (function_weakSuffix (inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 73)), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 73)), var_className_1273.readProperty_location (), inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 73)), temp_7, var_generateInSeparateFile_1520, var_propertyList_1744  COMMA_SOURCE_FILE ("type-class.galgas", 70))  COMMA_SOURCE_FILE ("type-class.galgas", 70)) ;
+      ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_weakReferenceDeclarationAST::class_func_new (GALGAS_bool (false), var_className_1273, GALGAS_lstring::class_func_new (var_className_1273.readProperty_string ().add_operation (function_weakSuffix (inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 73)), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 73)), var_className_1273.readProperty_location (), inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 73)), temp_7, var_generateInSeparateFile_1520, var_propertyList_1744  COMMA_SOURCE_FILE ("type-class.galgas", 70))  COMMA_SOURCE_FILE ("type-class.galgas", 70)) ;
     }
   }
 }
@@ -11898,13 +11898,13 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
   inCompiler->enterIndexing (Lexique_galgasScanner_33_::kIndexing_enumDefinition, "") ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__40_type COMMA_SOURCE_FILE ("type-enum.galgas", 27)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7B_ COMMA_SOURCE_FILE ("type-enum.galgas", 28)) ;
-  GALGAS_enumConstantList var_mConstantList_1278 = GALGAS_enumConstantList::constructor_emptyList (SOURCE_FILE ("type-enum.galgas", 29)) ;
+  GALGAS_enumConstantList var_mConstantList_1278 = GALGAS_enumConstantList::class_func_emptyList (SOURCE_FILE ("type-enum.galgas", 29)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_case COMMA_SOURCE_FILE ("type-enum.galgas", 31)) ;
     GALGAS_lstring var_constantName_1345 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("type-enum.galgas", 32)) ;
-    GALGAS__32_lstringlist var_associatedValueTypeList_1382 = GALGAS__32_lstringlist::constructor_emptyList (SOURCE_FILE ("type-enum.galgas", 33)) ;
+    GALGAS__32_lstringlist var_associatedValueTypeList_1382 = GALGAS__32_lstringlist::class_func_emptyList (SOURCE_FILE ("type-enum.galgas", 33)) ;
     switch (select_galgas_33_DeclarationsSyntax_20 (inCompiler)) {
     case 1: {
     } break ;
@@ -11942,7 +11942,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
     }
   }
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7D_ COMMA_SOURCE_FILE ("type-enum.galgas", 52)) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_enumDeclarationAST::constructor_new (GALGAS_bool (false), var_mEnumTypeName_1206, var_mConstantList_1278  COMMA_SOURCE_FILE ("type-enum.galgas", 53))  COMMA_SOURCE_FILE ("type-enum.galgas", 53)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_enumDeclarationAST::class_func_new (GALGAS_bool (false), var_mEnumTypeName_1206, var_mConstantList_1278  COMMA_SOURCE_FILE ("type-enum.galgas", 53))  COMMA_SOURCE_FILE ("type-enum.galgas", 53)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12051,10 +12051,10 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
   GALGAS_string var_cppClassCode_2803 ;
   nt_externtype_5F_cpp_5F_classdeclaration_ (var_cppClassCode_2803, inCompiler) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7B_ COMMA_SOURCE_FILE ("type-extern.galgas", 68)) ;
-  GALGAS_externTypeConstructorList var_externTypeConstructorList_2859 = GALGAS_externTypeConstructorList::constructor_emptyList (SOURCE_FILE ("type-extern.galgas", 69)) ;
-  GALGAS_externTypeGetterList var_externTypeGetterList_2921 = GALGAS_externTypeGetterList::constructor_emptyList (SOURCE_FILE ("type-extern.galgas", 70)) ;
-  GALGAS_externTypeSetterList var_externTypeSetterList_2977 = GALGAS_externTypeSetterList::constructor_emptyList (SOURCE_FILE ("type-extern.galgas", 71)) ;
-  GALGAS_externTypeMethodList var_externTypeMethodList_3033 = GALGAS_externTypeMethodList::constructor_emptyList (SOURCE_FILE ("type-extern.galgas", 72)) ;
+  GALGAS_externTypeConstructorList var_externTypeConstructorList_2859 = GALGAS_externTypeConstructorList::class_func_emptyList (SOURCE_FILE ("type-extern.galgas", 69)) ;
+  GALGAS_externTypeGetterList var_externTypeGetterList_2921 = GALGAS_externTypeGetterList::class_func_emptyList (SOURCE_FILE ("type-extern.galgas", 70)) ;
+  GALGAS_externTypeSetterList var_externTypeSetterList_2977 = GALGAS_externTypeSetterList::class_func_emptyList (SOURCE_FILE ("type-extern.galgas", 71)) ;
+  GALGAS_externTypeMethodList var_externTypeMethodList_3033 = GALGAS_externTypeMethodList::class_func_emptyList (SOURCE_FILE ("type-extern.galgas", 72)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     switch (select_galgas_33_DeclarationsSyntax_23 (inCompiler)) {
@@ -12076,7 +12076,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
     }
   }
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7D_ COMMA_SOURCE_FILE ("type-extern.galgas", 83)) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_externTypeDeclarationAST::constructor_new (GALGAS_bool (false), var_externTypeName_2652, var_cppPredeclarationCode_2738, var_cppClassCode_2803, var_externTypeConstructorList_2859, var_externTypeGetterList_2921, var_externTypeSetterList_2977, var_externTypeMethodList_3033  COMMA_SOURCE_FILE ("type-extern.galgas", 84))  COMMA_SOURCE_FILE ("type-extern.galgas", 84)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_externTypeDeclarationAST::class_func_new (GALGAS_bool (false), var_externTypeName_2652, var_cppPredeclarationCode_2738, var_cppClassCode_2803, var_externTypeConstructorList_2859, var_externTypeGetterList_2921, var_externTypeSetterList_2977, var_externTypeMethodList_3033  COMMA_SOURCE_FILE ("type-extern.galgas", 84))  COMMA_SOURCE_FILE ("type-extern.galgas", 84)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12253,7 +12253,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_ext
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_init COMMA_SOURCE_FILE ("type-extern.galgas", 125)) ;
   GALGAS_lstring var_constructorName_4692 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("type-extern.galgas", 126)) ;
-  GALGAS_typeNameFormalParameterNameList var_argumentTypeList_4749 = GALGAS_typeNameFormalParameterNameList::constructor_emptyList (SOURCE_FILE ("type-extern.galgas", 127)) ;
+  GALGAS_typeNameFormalParameterNameList var_argumentTypeList_4749 = GALGAS_typeNameFormalParameterNameList::class_func_emptyList (SOURCE_FILE ("type-extern.galgas", 127)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     if (select_galgas_33_DeclarationsSyntax_26 (inCompiler) == 2) {
@@ -12320,7 +12320,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_ext
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_getter COMMA_SOURCE_FILE ("type-extern.galgas", 143)) ;
   GALGAS_lstring var_getterName_5362 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("type-extern.galgas", 144)) ;
-  GALGAS_typeNameFormalParameterNameList var_argumentTypeList_5414 = GALGAS_typeNameFormalParameterNameList::constructor_emptyList (SOURCE_FILE ("type-extern.galgas", 145)) ;
+  GALGAS_typeNameFormalParameterNameList var_argumentTypeList_5414 = GALGAS_typeNameFormalParameterNameList::class_func_emptyList (SOURCE_FILE ("type-extern.galgas", 145)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     if (select_galgas_33_DeclarationsSyntax_27 (inCompiler) == 2) {
@@ -12418,7 +12418,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_ext
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("type-extern.galgas", 171)) ;
   GALGAS_formalParameterListAST var_formalParameterList_6489 ;
   nt_formal_5F_parameter_5F_list_5F_ggs_33__ (var_formalParameterList_6489, inCompiler) ;
-  ioArgument_ioExternTypeMethodList.addAssign_operation (var_methodName_6416, var_formalParameterList_6489, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("type-extern.galgas", 173))  COMMA_SOURCE_FILE ("type-extern.galgas", 173)) ;
+  ioArgument_ioExternTypeMethodList.addAssign_operation (var_methodName_6416, var_formalParameterList_6489, GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("type-extern.galgas", 173))  COMMA_SOURCE_FILE ("type-extern.galgas", 173)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12451,7 +12451,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__40_type COMMA_SOURCE_FILE ("type-graph.galgas", 30)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__29_ COMMA_SOURCE_FILE ("type-graph.galgas", 31)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7B_ COMMA_SOURCE_FILE ("type-graph.galgas", 32)) ;
-  GALGAS_graphInsertModifierList var_graphInsertModifierList_1388 = GALGAS_graphInsertModifierList::constructor_emptyList (SOURCE_FILE ("type-graph.galgas", 33)) ;
+  GALGAS_graphInsertModifierList var_graphInsertModifierList_1388 = GALGAS_graphInsertModifierList::class_func_emptyList (SOURCE_FILE ("type-graph.galgas", 33)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     if (select_galgas_33_DeclarationsSyntax_28 (inCompiler) == 2) {
@@ -12468,7 +12468,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
     }
   }
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7D_ COMMA_SOURCE_FILE ("type-graph.galgas", 42)) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_graphDeclarationAST::constructor_new (GALGAS_bool (false), var_graphTypeName_1268, var_associatedListTypeName_1341, var_graphInsertModifierList_1388  COMMA_SOURCE_FILE ("type-graph.galgas", 43))  COMMA_SOURCE_FILE ("type-graph.galgas", 43)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_graphDeclarationAST::class_func_new (GALGAS_bool (false), var_graphTypeName_1268, var_associatedListTypeName_1341, var_graphInsertModifierList_1388  COMMA_SOURCE_FILE ("type-graph.galgas", 43))  COMMA_SOURCE_FILE ("type-graph.galgas", 43)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12542,7 +12542,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
         if (kBoolTrue == test_1) {
           TC_Array <C_FixItDescription> fixItArray2 ;
           fixItArray2.appendObject (C_FixItDescription (kFixItRemove, "")) ;
-          inCompiler->emitSemanticError (GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("type-list.galgas", 27)), GALGAS_string ("duplicate attribute"), fixItArray2  COMMA_SOURCE_FILE ("type-list.galgas", 27)) ;
+          inCompiler->emitSemanticError (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("type-list.galgas", 27)), GALGAS_string ("duplicate attribute"), fixItArray2  COMMA_SOURCE_FILE ("type-list.galgas", 27)) ;
         }
       }
       var_isUsefull_1098 = GALGAS_bool (true) ;
@@ -12551,7 +12551,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
     }
   }
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7B_ COMMA_SOURCE_FILE ("type-list.galgas", 31)) ;
-  GALGAS_propertyInCollectionListAST var_propertyList_1325 = GALGAS_propertyInCollectionListAST::constructor_emptyList (SOURCE_FILE ("type-list.galgas", 32)) ;
+  GALGAS_propertyInCollectionListAST var_propertyList_1325 = GALGAS_propertyInCollectionListAST::class_func_emptyList (SOURCE_FILE ("type-list.galgas", 32)) ;
   bool repeatFlag_3 = true ;
   while (repeatFlag_3) {
     switch (select_galgas_33_DeclarationsSyntax_30 (inCompiler)) {
@@ -12571,11 +12571,11 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
     test_4 = GALGAS_bool (kIsEqual, var_propertyList_1325.getter_count (SOURCE_FILE ("type-list.galgas", 39)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
     if (kBoolTrue == test_4) {
       TC_Array <C_FixItDescription> fixItArray5 ;
-      inCompiler->emitSemanticError (GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("type-list.galgas", 40)), GALGAS_string ("a list declaration must declare at least one property"), fixItArray5  COMMA_SOURCE_FILE ("type-list.galgas", 40)) ;
+      inCompiler->emitSemanticError (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("type-list.galgas", 40)), GALGAS_string ("a list declaration must declare at least one property"), fixItArray5  COMMA_SOURCE_FILE ("type-list.galgas", 40)) ;
     }
   }
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7D_ COMMA_SOURCE_FILE ("type-list.galgas", 42)) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_listDeclarationAST::constructor_new (GALGAS_bool (false), var_listTypeName_1024, var_propertyList_1325, var_isUsefull_1098  COMMA_SOURCE_FILE ("type-list.galgas", 43))  COMMA_SOURCE_FILE ("type-list.galgas", 43)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_listDeclarationAST::class_func_new (GALGAS_bool (false), var_listTypeName_1024, var_propertyList_1325, var_isUsefull_1098  COMMA_SOURCE_FILE ("type-list.galgas", 43))  COMMA_SOURCE_FILE ("type-list.galgas", 43)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12657,7 +12657,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
   GALGAS_lstring var_mAssociatedListTypeName_1059 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__40_type COMMA_SOURCE_FILE ("type-listmap.galgas", 22)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__29_ COMMA_SOURCE_FILE ("type-listmap.galgas", 23)) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_listmapDeclarationAST::constructor_new (GALGAS_bool (false), var_mListmapTypeName_981, var_mAssociatedListTypeName_1059  COMMA_SOURCE_FILE ("type-listmap.galgas", 24))  COMMA_SOURCE_FILE ("type-listmap.galgas", 24)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_listmapDeclarationAST::class_func_new (GALGAS_bool (false), var_mListmapTypeName_981, var_mAssociatedListTypeName_1059  COMMA_SOURCE_FILE ("type-listmap.galgas", 24))  COMMA_SOURCE_FILE ("type-listmap.galgas", 24)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12696,7 +12696,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
   GALGAS_lstring var_keyTypeName_1378 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__40_type COMMA_SOURCE_FILE ("type-dict.galgas", 31)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7B_ COMMA_SOURCE_FILE ("type-dict.galgas", 33)) ;
-  GALGAS_propertyInCollectionListAST var_propertyList_1428 = GALGAS_propertyInCollectionListAST::constructor_emptyList (SOURCE_FILE ("type-dict.galgas", 34)) ;
+  GALGAS_propertyInCollectionListAST var_propertyList_1428 = GALGAS_propertyInCollectionListAST::class_func_emptyList (SOURCE_FILE ("type-dict.galgas", 34)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     switch (select_galgas_33_DeclarationsSyntax_31 (inCompiler)) {
@@ -12712,7 +12712,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
     }
   }
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7D_ COMMA_SOURCE_FILE ("type-dict.galgas", 41)) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_dictDeclarationAST::constructor_new (GALGAS_bool (false), var_mDictTypeName_1261, var_keyTypeName_1378, var_propertyList_1428  COMMA_SOURCE_FILE ("type-dict.galgas", 42))  COMMA_SOURCE_FILE ("type-dict.galgas", 42)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_dictDeclarationAST::class_func_new (GALGAS_bool (false), var_mDictTypeName_1261, var_keyTypeName_1378, var_propertyList_1428  COMMA_SOURCE_FILE ("type-dict.galgas", 42))  COMMA_SOURCE_FILE ("type-dict.galgas", 42)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12780,11 +12780,11 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
   inCompiler->enterIndexing (Lexique_galgasScanner_33_::kIndexing_structDefinition, "-element") ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__40_type COMMA_SOURCE_FILE ("type-map.galgas", 59)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7B_ COMMA_SOURCE_FILE ("type-map.galgas", 61)) ;
-  GALGAS_propertyInCollectionListAST var_propertyList_2541 = GALGAS_propertyInCollectionListAST::constructor_emptyList (SOURCE_FILE ("type-map.galgas", 62)) ;
-  GALGAS_insertMethodListAST var_mInsertMethodList_2596 = GALGAS_insertMethodListAST::constructor_emptyList (SOURCE_FILE ("type-map.galgas", 63)) ;
-  GALGAS_mapSearchMethodListAST var_mSearchMethodList_2672 = GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("type-map.galgas", 64)) ;
-  GALGAS_mapRemoveMethodListAST var_mRemoveMethodList_2727 = GALGAS_mapRemoveMethodListAST::constructor_emptyList (SOURCE_FILE ("type-map.galgas", 65)) ;
-  GALGAS_insertOrReplaceDeclarationListAST var_insertOrReplaceDeclarationListAST_2793 = GALGAS_insertOrReplaceDeclarationListAST::constructor_emptyList (SOURCE_FILE ("type-map.galgas", 66)) ;
+  GALGAS_propertyInCollectionListAST var_propertyList_2541 = GALGAS_propertyInCollectionListAST::class_func_emptyList (SOURCE_FILE ("type-map.galgas", 62)) ;
+  GALGAS_insertMethodListAST var_mInsertMethodList_2596 = GALGAS_insertMethodListAST::class_func_emptyList (SOURCE_FILE ("type-map.galgas", 63)) ;
+  GALGAS_mapSearchMethodListAST var_mSearchMethodList_2672 = GALGAS_mapSearchMethodListAST::class_func_emptyList (SOURCE_FILE ("type-map.galgas", 64)) ;
+  GALGAS_mapRemoveMethodListAST var_mRemoveMethodList_2727 = GALGAS_mapRemoveMethodListAST::class_func_emptyList (SOURCE_FILE ("type-map.galgas", 65)) ;
+  GALGAS_insertOrReplaceDeclarationListAST var_insertOrReplaceDeclarationListAST_2793 = GALGAS_insertOrReplaceDeclarationListAST::class_func_emptyList (SOURCE_FILE ("type-map.galgas", 66)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     switch (select_galgas_33_DeclarationsSyntax_32 (inCompiler)) {
@@ -12812,7 +12812,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
     }
   }
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7D_ COMMA_SOURCE_FILE ("type-map.galgas", 81)) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_mapDeclarationAST::constructor_new (GALGAS_bool (false), var_mMapTypeName_2438, var_propertyList_2541, var_mInsertMethodList_2596, var_mSearchMethodList_2672, var_mRemoveMethodList_2727, var_insertOrReplaceDeclarationListAST_2793  COMMA_SOURCE_FILE ("type-map.galgas", 82))  COMMA_SOURCE_FILE ("type-map.galgas", 82)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_mapDeclarationAST::class_func_new (GALGAS_bool (false), var_mMapTypeName_2438, var_propertyList_2541, var_mInsertMethodList_2596, var_mSearchMethodList_2672, var_mRemoveMethodList_2727, var_insertOrReplaceDeclarationListAST_2793  COMMA_SOURCE_FILE ("type-map.galgas", 82))  COMMA_SOURCE_FILE ("type-map.galgas", 82)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12967,7 +12967,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_ins
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_insert COMMA_SOURCE_FILE ("type-map.galgas", 117)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_or COMMA_SOURCE_FILE ("type-map.galgas", 118)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_replace COMMA_SOURCE_FILE ("type-map.galgas", 119)) ;
-  ioArgument_ioInsertOrReplaceDeclarationListAST.addAssign_operation (GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("type-map.galgas", 120))  COMMA_SOURCE_FILE ("type-map.galgas", 120)) ;
+  ioArgument_ioInsertOrReplaceDeclarationListAST.addAssign_operation (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("type-map.galgas", 120))  COMMA_SOURCE_FILE ("type-map.galgas", 120)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13001,7 +13001,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_map
   GALGAS_lstring var_mShadowErrorMessage_5005 ;
   switch (select_galgas_33_DeclarationsSyntax_33 (inCompiler)) {
   case 1: {
-    var_mShadowErrorMessage_5005 = GALGAS_lstring::constructor_new (GALGAS_string::makeEmptyString (), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("type-map.galgas", 133)), inCompiler  COMMA_SOURCE_FILE ("type-map.galgas", 133)) ;
+    var_mShadowErrorMessage_5005 = GALGAS_lstring::class_func_new (GALGAS_string::makeEmptyString (), GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("type-map.galgas", 133)), inCompiler  COMMA_SOURCE_FILE ("type-map.galgas", 133)) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2C_ COMMA_SOURCE_FILE ("type-map.galgas", 135)) ;
@@ -13065,7 +13065,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
   inCompiler->enterIndexing (Lexique_galgasScanner_33_::kIndexing_structDefinition, "-element") ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__40_type COMMA_SOURCE_FILE ("type-sorted-list.galgas", 30)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7B_ COMMA_SOURCE_FILE ("type-sorted-list.galgas", 31)) ;
-  GALGAS_propertyInCollectionListAST var_attributeList_1421 = GALGAS_propertyInCollectionListAST::constructor_emptyList (SOURCE_FILE ("type-sorted-list.galgas", 32)) ;
+  GALGAS_propertyInCollectionListAST var_attributeList_1421 = GALGAS_propertyInCollectionListAST::class_func_emptyList (SOURCE_FILE ("type-sorted-list.galgas", 32)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     if (select_galgas_33_DeclarationsSyntax_34 (inCompiler) == 2) {
@@ -13076,7 +13076,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
   }
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7D_ COMMA_SOURCE_FILE ("type-sorted-list.galgas", 37)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7B_ COMMA_SOURCE_FILE ("type-sorted-list.galgas", 38)) ;
-  GALGAS_sortedListSortDescriptorListAST var_sortDescriptorList_1577 = GALGAS_sortedListSortDescriptorListAST::constructor_emptyList (SOURCE_FILE ("type-sorted-list.galgas", 39)) ;
+  GALGAS_sortedListSortDescriptorListAST var_sortDescriptorList_1577 = GALGAS_sortedListSortDescriptorListAST::class_func_emptyList (SOURCE_FILE ("type-sorted-list.galgas", 39)) ;
   bool repeatFlag_1 = true ;
   while (repeatFlag_1) {
     nt_sortedlist_5F_sort_5F_descriptor_ (var_sortDescriptorList_1577, inCompiler) ;
@@ -13087,7 +13087,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
     }
   }
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7D_ COMMA_SOURCE_FILE ("type-sorted-list.galgas", 45)) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_sortedListDeclarationAST::constructor_new (GALGAS_bool (false), var_sortedListTypeName_1298, var_attributeList_1421, var_sortDescriptorList_1577  COMMA_SOURCE_FILE ("type-sorted-list.galgas", 46))  COMMA_SOURCE_FILE ("type-sorted-list.galgas", 46)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_sortedListDeclarationAST::class_func_new (GALGAS_bool (false), var_sortedListTypeName_1298, var_attributeList_1421, var_sortDescriptorList_1577  COMMA_SOURCE_FILE ("type-sorted-list.galgas", 46))  COMMA_SOURCE_FILE ("type-sorted-list.galgas", 46)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13215,7 +13215,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
   inCompiler->enterIndexing (Lexique_galgasScanner_33_::kIndexing_structDefinition, "") ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__40_type COMMA_SOURCE_FILE ("type-struct.galgas", 9)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7B_ COMMA_SOURCE_FILE ("type-struct.galgas", 10)) ;
-  GALGAS_propertyInCollectionListAST var_propertyList_474 = GALGAS_propertyInCollectionListAST::constructor_emptyList (SOURCE_FILE ("type-struct.galgas", 11)) ;
+  GALGAS_propertyInCollectionListAST var_propertyList_474 = GALGAS_propertyInCollectionListAST::class_func_emptyList (SOURCE_FILE ("type-struct.galgas", 11)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     switch (select_galgas_33_DeclarationsSyntax_37 (inCompiler)) {
@@ -13231,7 +13231,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
     }
   }
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7D_ COMMA_SOURCE_FILE ("type-struct.galgas", 18)) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_structDeclarationAST::constructor_new (GALGAS_bool (false), var_structTypeName_388, var_propertyList_474, GALGAS_string::makeEmptyString ()  COMMA_SOURCE_FILE ("type-struct.galgas", 19))  COMMA_SOURCE_FILE ("type-struct.galgas", 19)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_structDeclarationAST::class_func_new (GALGAS_bool (false), var_structTypeName_388, var_propertyList_474, GALGAS_string::makeEmptyString ()  COMMA_SOURCE_FILE ("type-struct.galgas", 19))  COMMA_SOURCE_FILE ("type-struct.galgas", 19)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13294,7 +13294,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3D_ COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 12)) ;
   GALGAS_lstring var_definedTypeName_656 ;
   nt_type_5F_definition_5F_ggs_33__ (ioArgument_ioDeclarations, var_definedTypeName_656, inCompiler) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_typealiasDeclarationAST::constructor_new (GALGAS_bool (false), var_aliasTypeName_546, var_definedTypeName_656  COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 14))  COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 14)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_typealiasDeclarationAST::class_func_new (GALGAS_bool (false), var_aliasTypeName_546, var_definedTypeName_656  COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 14))  COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 14)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13371,7 +13371,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
   default:
     break ;
   }
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_abstractExtensionGetterAST::constructor_new (GALGAS_bool (false), var_className_1145, var_mGetterName_1223, var_mFormalInputParameterList_1351, var_mReturnedTypeName_1412  COMMA_SOURCE_FILE ("extension-abstract-getter.galgas", 33))  COMMA_SOURCE_FILE ("extension-abstract-getter.galgas", 33)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_abstractExtensionGetterAST::class_func_new (GALGAS_bool (false), var_className_1145, var_mGetterName_1223, var_mFormalInputParameterList_1351, var_mReturnedTypeName_1412  COMMA_SOURCE_FILE ("extension-abstract-getter.galgas", 33))  COMMA_SOURCE_FILE ("extension-abstract-getter.galgas", 33)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13449,7 +13449,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_met
   default:
     break ;
   }
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_abstractExtensionGetterAST::constructor_new (GALGAS_bool (false), constinArgument_inClassName, var_mGetterName_2059, var_mFormalInputParameterList_2187, var_mReturnedTypeName_2248  COMMA_SOURCE_FILE ("extension-abstract-getter.galgas", 56))  COMMA_SOURCE_FILE ("extension-abstract-getter.galgas", 56)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_abstractExtensionGetterAST::class_func_new (GALGAS_bool (false), constinArgument_inClassName, var_mGetterName_2059, var_mFormalInputParameterList_2187, var_mReturnedTypeName_2248  COMMA_SOURCE_FILE ("extension-abstract-getter.galgas", 56))  COMMA_SOURCE_FILE ("extension-abstract-getter.galgas", 56)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13509,7 +13509,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("extension-abstract-method.galgas", 23)) ;
   GALGAS_formalParameterListAST var_formalParameterList_1281 ;
   nt_formal_5F_parameter_5F_list_5F_ggs_33__ (var_formalParameterList_1281, inCompiler) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_abstractExtensionMethodAST::constructor_new (GALGAS_bool (false), var_className_1077, var_mMethodName_1164, var_formalParameterList_1281  COMMA_SOURCE_FILE ("extension-abstract-method.galgas", 25))  COMMA_SOURCE_FILE ("extension-abstract-method.galgas", 25)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_abstractExtensionMethodAST::class_func_new (GALGAS_bool (false), var_className_1077, var_mMethodName_1164, var_formalParameterList_1281  COMMA_SOURCE_FILE ("extension-abstract-method.galgas", 25))  COMMA_SOURCE_FILE ("extension-abstract-method.galgas", 25)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13549,7 +13549,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_met
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("extension-abstract-method.galgas", 38)) ;
   GALGAS_formalParameterListAST var_formalParameterList_1890 ;
   nt_formal_5F_parameter_5F_list_5F_ggs_33__ (var_formalParameterList_1890, inCompiler) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_abstractExtensionMethodAST::constructor_new (GALGAS_bool (false), constinArgument_inClassName, var_mMethodName_1773, var_formalParameterList_1890  COMMA_SOURCE_FILE ("extension-abstract-method.galgas", 40))  COMMA_SOURCE_FILE ("extension-abstract-method.galgas", 40)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_abstractExtensionMethodAST::class_func_new (GALGAS_bool (false), constinArgument_inClassName, var_mMethodName_1773, var_formalParameterList_1890  COMMA_SOURCE_FILE ("extension-abstract-method.galgas", 40))  COMMA_SOURCE_FILE ("extension-abstract-method.galgas", 40)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13587,7 +13587,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 23)) ;
   GALGAS_formalParameterListAST var_formalParameterList_1283 ;
   nt_formal_5F_parameter_5F_list_5F_ggs_33__ (var_formalParameterList_1283, inCompiler) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_abstractExtensionSetterAST::constructor_new (GALGAS_bool (false), var_className_1080, var_setterName_1167, var_formalParameterList_1283  COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 25))  COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 25)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_abstractExtensionSetterAST::class_func_new (GALGAS_bool (false), var_className_1080, var_setterName_1167, var_formalParameterList_1283  COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 25))  COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 25)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13627,7 +13627,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_met
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 38)) ;
   GALGAS_formalParameterListAST var_formalParameterList_1890 ;
   nt_formal_5F_parameter_5F_list_5F_ggs_33__ (var_formalParameterList_1890, inCompiler) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_abstractExtensionSetterAST::constructor_new (GALGAS_bool (false), constinArgument_inClassName, var_setterName_1774, var_formalParameterList_1890  COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 40))  COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 40)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_abstractExtensionSetterAST::class_func_new (GALGAS_bool (false), constinArgument_inClassName, var_setterName_1774, var_formalParameterList_1890  COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 40))  COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 40)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13674,7 +13674,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("extension-getter.galgas", 33)) ;
   } break ;
   case 2: {
-    var_resultVariableName_1615 = GALGAS_lstring::constructor_new (GALGAS_string ("result"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("extension-getter.galgas", 35)), inCompiler  COMMA_SOURCE_FILE ("extension-getter.galgas", 35)) ;
+    var_resultVariableName_1615 = GALGAS_lstring::class_func_new (GALGAS_string ("result"), GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("extension-getter.galgas", 35)), inCompiler  COMMA_SOURCE_FILE ("extension-getter.galgas", 35)) ;
   } break ;
   default:
     break ;
@@ -13682,9 +13682,9 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7B_ COMMA_SOURCE_FILE ("extension-getter.galgas", 37)) ;
   GALGAS_semanticInstructionListAST var_routineInstructionList_1828 ;
   nt_semantic_5F_instruction_5F_list_5F_ggs_33__ (var_routineInstructionList_1828, inCompiler) ;
-  GALGAS_location var_endOfInstructionList_1869 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("extension-getter.galgas", 39)) ;
+  GALGAS_location var_endOfInstructionList_1869 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("extension-getter.galgas", 39)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7D_ COMMA_SOURCE_FILE ("extension-getter.galgas", 40)) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_extensionGetterAST::constructor_new (GALGAS_bool (false), GALGAS_bool (gOption_galgas_5F_cli_5F_options_propertyAccessRequiresSelf.readProperty_value ()), var_className_1349, var_mMethodName_1428, var_mFormalInputParameterList_1519, var_mReturnedTypeName_1580, var_resultVariableName_1615, var_routineInstructionList_1828, var_endOfInstructionList_1869  COMMA_SOURCE_FILE ("extension-getter.galgas", 41))  COMMA_SOURCE_FILE ("extension-getter.galgas", 41)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_extensionGetterAST::class_func_new (GALGAS_bool (false), GALGAS_bool (gOption_galgas_5F_cli_5F_options_propertyAccessRequiresSelf.readProperty_value ()), var_className_1349, var_mMethodName_1428, var_mFormalInputParameterList_1519, var_mReturnedTypeName_1580, var_resultVariableName_1615, var_routineInstructionList_1828, var_endOfInstructionList_1869  COMMA_SOURCE_FILE ("extension-getter.galgas", 41))  COMMA_SOURCE_FILE ("extension-getter.galgas", 41)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13759,7 +13759,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_met
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("extension-getter.galgas", 64)) ;
   } break ;
   case 2: {
-    var_resultVariableName_2768 = GALGAS_lstring::constructor_new (GALGAS_string ("result"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("extension-getter.galgas", 66)), inCompiler  COMMA_SOURCE_FILE ("extension-getter.galgas", 66)) ;
+    var_resultVariableName_2768 = GALGAS_lstring::class_func_new (GALGAS_string ("result"), GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("extension-getter.galgas", 66)), inCompiler  COMMA_SOURCE_FILE ("extension-getter.galgas", 66)) ;
   } break ;
   default:
     break ;
@@ -13767,9 +13767,9 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_met
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7B_ COMMA_SOURCE_FILE ("extension-getter.galgas", 68)) ;
   GALGAS_semanticInstructionListAST var_routineInstructionList_2981 ;
   nt_semantic_5F_instruction_5F_list_5F_ggs_33__ (var_routineInstructionList_2981, inCompiler) ;
-  GALGAS_location var_endOfInstructionList_3022 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("extension-getter.galgas", 70)) ;
+  GALGAS_location var_endOfInstructionList_3022 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("extension-getter.galgas", 70)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7D_ COMMA_SOURCE_FILE ("extension-getter.galgas", 71)) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_extensionGetterAST::constructor_new (GALGAS_bool (false), GALGAS_bool (gOption_galgas_5F_cli_5F_options_propertyAccessRequiresSelf.readProperty_value ()), constinArgument_inClassName, var_mMethodName_2581, var_mFormalInputParameterList_2672, var_mReturnedTypeName_2733, var_resultVariableName_2768, var_routineInstructionList_2981, var_endOfInstructionList_3022  COMMA_SOURCE_FILE ("extension-getter.galgas", 72))  COMMA_SOURCE_FILE ("extension-getter.galgas", 72)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_extensionGetterAST::class_func_new (GALGAS_bool (false), GALGAS_bool (gOption_galgas_5F_cli_5F_options_propertyAccessRequiresSelf.readProperty_value ()), constinArgument_inClassName, var_mMethodName_2581, var_mFormalInputParameterList_2672, var_mReturnedTypeName_2733, var_resultVariableName_2768, var_routineInstructionList_2981, var_endOfInstructionList_3022  COMMA_SOURCE_FILE ("extension-getter.galgas", 72))  COMMA_SOURCE_FILE ("extension-getter.galgas", 72)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13835,9 +13835,9 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7B_ COMMA_SOURCE_FILE ("extension-method.galgas", 28)) ;
   GALGAS_semanticInstructionListAST var_routineInstructionList_1510 ;
   nt_semantic_5F_instruction_5F_list_5F_ggs_33__ (var_routineInstructionList_1510, inCompiler) ;
-  GALGAS_location var_endOfMethodLocation_1541 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("extension-method.galgas", 30)) ;
+  GALGAS_location var_endOfMethodLocation_1541 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("extension-method.galgas", 30)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7D_ COMMA_SOURCE_FILE ("extension-method.galgas", 31)) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_extensionMethodAST::constructor_new (GALGAS_bool (false), GALGAS_bool (gOption_galgas_5F_cli_5F_options_propertyAccessRequiresSelf.readProperty_value ()), var_className_1224, var_mMethodName_1303, var_formalParameterList_1412, var_routineInstructionList_1510, var_endOfMethodLocation_1541  COMMA_SOURCE_FILE ("extension-method.galgas", 32))  COMMA_SOURCE_FILE ("extension-method.galgas", 32)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_extensionMethodAST::class_func_new (GALGAS_bool (false), GALGAS_bool (gOption_galgas_5F_cli_5F_options_propertyAccessRequiresSelf.readProperty_value ()), var_className_1224, var_mMethodName_1303, var_formalParameterList_1412, var_routineInstructionList_1510, var_endOfMethodLocation_1541  COMMA_SOURCE_FILE ("extension-method.galgas", 32))  COMMA_SOURCE_FILE ("extension-method.galgas", 32)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13883,9 +13883,9 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_met
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7B_ COMMA_SOURCE_FILE ("extension-method.galgas", 50)) ;
   GALGAS_semanticInstructionListAST var_routineInstructionList_2434 ;
   nt_semantic_5F_instruction_5F_list_5F_ggs_33__ (var_routineInstructionList_2434, inCompiler) ;
-  GALGAS_location var_endOfMethodLocation_2465 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("extension-method.galgas", 52)) ;
+  GALGAS_location var_endOfMethodLocation_2465 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("extension-method.galgas", 52)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7D_ COMMA_SOURCE_FILE ("extension-method.galgas", 53)) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_extensionMethodAST::constructor_new (GALGAS_bool (false), GALGAS_bool (gOption_galgas_5F_cli_5F_options_propertyAccessRequiresSelf.readProperty_value ()), constinArgument_inClassName, var_mMethodName_2227, var_formalParameterList_2336, var_routineInstructionList_2434, var_endOfMethodLocation_2465  COMMA_SOURCE_FILE ("extension-method.galgas", 54))  COMMA_SOURCE_FILE ("extension-method.galgas", 54)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_extensionMethodAST::class_func_new (GALGAS_bool (false), GALGAS_bool (gOption_galgas_5F_cli_5F_options_propertyAccessRequiresSelf.readProperty_value ()), constinArgument_inClassName, var_mMethodName_2227, var_formalParameterList_2336, var_routineInstructionList_2434, var_endOfMethodLocation_2465  COMMA_SOURCE_FILE ("extension-method.galgas", 54))  COMMA_SOURCE_FILE ("extension-method.galgas", 54)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13929,9 +13929,9 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7B_ COMMA_SOURCE_FILE ("extension-setter.galgas", 27)) ;
   GALGAS_semanticInstructionListAST var_routineInstructionList_1519 ;
   nt_semantic_5F_instruction_5F_list_5F_ggs_33__ (var_routineInstructionList_1519, inCompiler) ;
-  GALGAS_location var_endOfSetterLocation_1560 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("extension-setter.galgas", 29)) ;
+  GALGAS_location var_endOfSetterLocation_1560 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("extension-setter.galgas", 29)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7D_ COMMA_SOURCE_FILE ("extension-setter.galgas", 30)) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_extensionSetterAST::constructor_new (GALGAS_bool (false), GALGAS_bool (gOption_galgas_5F_cli_5F_options_propertyAccessRequiresSelf.readProperty_value ()), var_className_1234, var_setterName_1313, var_formalParameterList_1421, var_routineInstructionList_1519, var_endOfSetterLocation_1560  COMMA_SOURCE_FILE ("extension-setter.galgas", 31))  COMMA_SOURCE_FILE ("extension-setter.galgas", 31)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_extensionSetterAST::class_func_new (GALGAS_bool (false), GALGAS_bool (gOption_galgas_5F_cli_5F_options_propertyAccessRequiresSelf.readProperty_value ()), var_className_1234, var_setterName_1313, var_formalParameterList_1421, var_routineInstructionList_1519, var_endOfSetterLocation_1560  COMMA_SOURCE_FILE ("extension-setter.galgas", 31))  COMMA_SOURCE_FILE ("extension-setter.galgas", 31)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13977,9 +13977,9 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_met
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7B_ COMMA_SOURCE_FILE ("extension-setter.galgas", 48)) ;
   GALGAS_semanticInstructionListAST var_routineInstructionList_2418 ;
   nt_semantic_5F_instruction_5F_list_5F_ggs_33__ (var_routineInstructionList_2418, inCompiler) ;
-  GALGAS_location var_endOfSetterLocation_2459 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("extension-setter.galgas", 50)) ;
+  GALGAS_location var_endOfSetterLocation_2459 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("extension-setter.galgas", 50)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7D_ COMMA_SOURCE_FILE ("extension-setter.galgas", 51)) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_extensionSetterAST::constructor_new (GALGAS_bool (false), GALGAS_bool (gOption_galgas_5F_cli_5F_options_propertyAccessRequiresSelf.readProperty_value ()), constinArgument_inClassName, var_setterName_2212, var_formalParameterList_2320, var_routineInstructionList_2418, var_endOfSetterLocation_2459  COMMA_SOURCE_FILE ("extension-setter.galgas", 52))  COMMA_SOURCE_FILE ("extension-setter.galgas", 52)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_extensionSetterAST::class_func_new (GALGAS_bool (false), GALGAS_bool (gOption_galgas_5F_cli_5F_options_propertyAccessRequiresSelf.readProperty_value ()), constinArgument_inClassName, var_setterName_2212, var_formalParameterList_2320, var_routineInstructionList_2418, var_endOfSetterLocation_2459  COMMA_SOURCE_FILE ("extension-setter.galgas", 52))  COMMA_SOURCE_FILE ("extension-setter.galgas", 52)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -14038,7 +14038,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
   default:
     break ;
   }
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_overridingAbstractExtensionGetterAST::constructor_new (GALGAS_bool (false), var_className_1170, var_mGetterName_1256, var_mFormalInputParameterList_1392, var_mReturnedTypeName_1453  COMMA_SOURCE_FILE ("extension-overriding-abstract-getter.galgas", 34))  COMMA_SOURCE_FILE ("extension-overriding-abstract-getter.galgas", 34)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_overridingAbstractExtensionGetterAST::class_func_new (GALGAS_bool (false), var_className_1170, var_mGetterName_1256, var_mFormalInputParameterList_1392, var_mReturnedTypeName_1453  COMMA_SOURCE_FILE ("extension-overriding-abstract-getter.galgas", 34))  COMMA_SOURCE_FILE ("extension-overriding-abstract-getter.galgas", 34)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -14119,7 +14119,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_met
   default:
     break ;
   }
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_overridingAbstractExtensionGetterAST::constructor_new (GALGAS_bool (false), constinArgument_inClassName, var_mGetterName_2125, var_mFormalInputParameterList_2261, var_mReturnedTypeName_2322  COMMA_SOURCE_FILE ("extension-overriding-abstract-getter.galgas", 58))  COMMA_SOURCE_FILE ("extension-overriding-abstract-getter.galgas", 58)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_overridingAbstractExtensionGetterAST::class_func_new (GALGAS_bool (false), constinArgument_inClassName, var_mGetterName_2125, var_mFormalInputParameterList_2261, var_mReturnedTypeName_2322  COMMA_SOURCE_FILE ("extension-overriding-abstract-getter.galgas", 58))  COMMA_SOURCE_FILE ("extension-overriding-abstract-getter.galgas", 58)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -14182,7 +14182,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas", 24)) ;
   GALGAS_formalParameterListAST var_formalParameterList_1326 ;
   nt_formal_5F_parameter_5F_list_5F_ggs_33__ (var_formalParameterList_1326, inCompiler) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_overridingAbstractExtensionMethodAST::constructor_new (GALGAS_bool (false), var_className_1106, var_mMethodName_1201, var_formalParameterList_1326  COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas", 26))  COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas", 26)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_overridingAbstractExtensionMethodAST::class_func_new (GALGAS_bool (false), var_className_1106, var_mMethodName_1201, var_formalParameterList_1326  COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas", 26))  COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas", 26)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -14225,7 +14225,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_met
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas", 40)) ;
   GALGAS_formalParameterListAST var_formalParameterList_1968 ;
   nt_formal_5F_parameter_5F_list_5F_ggs_33__ (var_formalParameterList_1968, inCompiler) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_overridingAbstractExtensionMethodAST::constructor_new (GALGAS_bool (false), constinArgument_inClassName, var_mMethodName_1843, var_formalParameterList_1968  COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas", 42))  COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas", 42)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_overridingAbstractExtensionMethodAST::class_func_new (GALGAS_bool (false), constinArgument_inClassName, var_mMethodName_1843, var_formalParameterList_1968  COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas", 42))  COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas", 42)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -14266,7 +14266,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 24)) ;
   GALGAS_formalParameterListAST var_formalParameterList_1328 ;
   nt_formal_5F_parameter_5F_list_5F_ggs_33__ (var_formalParameterList_1328, inCompiler) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_overridingAbstractExtensionSetterAST::constructor_new (GALGAS_bool (false), var_className_1109, var_setterName_1204, var_formalParameterList_1328  COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 26))  COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 26)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_overridingAbstractExtensionSetterAST::class_func_new (GALGAS_bool (false), var_className_1109, var_setterName_1204, var_formalParameterList_1328  COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 26))  COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 26)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -14309,7 +14309,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_met
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 39)) ;
   GALGAS_formalParameterListAST var_formalParameterList_1963 ;
   nt_formal_5F_parameter_5F_list_5F_ggs_33__ (var_formalParameterList_1963, inCompiler) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_overridingAbstractExtensionSetterAST::constructor_new (GALGAS_bool (false), constinArgument_inClassName, var_setterName_1839, var_formalParameterList_1963  COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 41))  COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 41)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_overridingAbstractExtensionSetterAST::class_func_new (GALGAS_bool (false), constinArgument_inClassName, var_setterName_1839, var_formalParameterList_1963  COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 41))  COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 41)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -14359,7 +14359,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 34)) ;
   } break ;
   case 2: {
-    var_resultVariableName_1705 = GALGAS_lstring::constructor_new (GALGAS_string ("result"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 36)), inCompiler  COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 36)) ;
+    var_resultVariableName_1705 = GALGAS_lstring::class_func_new (GALGAS_string ("result"), GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 36)), inCompiler  COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 36)) ;
   } break ;
   default:
     break ;
@@ -14367,9 +14367,9 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7B_ COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 38)) ;
   GALGAS_semanticInstructionListAST var_routineInstructionList_1918 ;
   nt_semantic_5F_instruction_5F_list_5F_ggs_33__ (var_routineInstructionList_1918, inCompiler) ;
-  GALGAS_location var_endOfInstructionList_1959 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 40)) ;
+  GALGAS_location var_endOfInstructionList_1959 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 40)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7D_ COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 41)) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_overridingExtensionGetterAST::constructor_new (GALGAS_bool (false), GALGAS_bool (gOption_galgas_5F_cli_5F_options_propertyAccessRequiresSelf.readProperty_value ()), var_className_1424, var_mMethodName_1511, var_formalInputParameterList_1610, var_mReturnedTypeName_1670, var_resultVariableName_1705, var_routineInstructionList_1918, var_endOfInstructionList_1959  COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 42))  COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 42)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_overridingExtensionGetterAST::class_func_new (GALGAS_bool (false), GALGAS_bool (gOption_galgas_5F_cli_5F_options_propertyAccessRequiresSelf.readProperty_value ()), var_className_1424, var_mMethodName_1511, var_formalInputParameterList_1610, var_mReturnedTypeName_1670, var_resultVariableName_1705, var_routineInstructionList_1918, var_endOfInstructionList_1959  COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 42))  COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 42)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -14447,7 +14447,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_met
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 66)) ;
   } break ;
   case 2: {
-    var_resultVariableName_2889 = GALGAS_lstring::constructor_new (GALGAS_string ("result"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 68)), inCompiler  COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 68)) ;
+    var_resultVariableName_2889 = GALGAS_lstring::class_func_new (GALGAS_string ("result"), GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 68)), inCompiler  COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 68)) ;
   } break ;
   default:
     break ;
@@ -14455,9 +14455,9 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_met
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7B_ COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 70)) ;
   GALGAS_semanticInstructionListAST var_routineInstructionList_3102 ;
   nt_semantic_5F_instruction_5F_list_5F_ggs_33__ (var_routineInstructionList_3102, inCompiler) ;
-  GALGAS_location var_endOfInstructionList_3143 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 72)) ;
+  GALGAS_location var_endOfInstructionList_3143 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 72)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7D_ COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 73)) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_overridingExtensionGetterAST::constructor_new (GALGAS_bool (false), GALGAS_bool (gOption_galgas_5F_cli_5F_options_propertyAccessRequiresSelf.readProperty_value ()), constinArgument_inClassName, var_mMethodName_2695, var_formalInputParameterList_2794, var_mReturnedTypeName_2854, var_resultVariableName_2889, var_routineInstructionList_3102, var_endOfInstructionList_3143  COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 74))  COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 74)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_overridingExtensionGetterAST::class_func_new (GALGAS_bool (false), GALGAS_bool (gOption_galgas_5F_cli_5F_options_propertyAccessRequiresSelf.readProperty_value ()), constinArgument_inClassName, var_mMethodName_2695, var_formalInputParameterList_2794, var_mReturnedTypeName_2854, var_resultVariableName_2889, var_routineInstructionList_3102, var_endOfInstructionList_3143  COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 74))  COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 74)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -14526,9 +14526,9 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7B_ COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 15)) ;
   GALGAS_semanticInstructionListAST var_routineInstructionList_877 ;
   nt_semantic_5F_instruction_5F_list_5F_ggs_33__ (var_routineInstructionList_877, inCompiler) ;
-  GALGAS_location var_endOfMethodLocation_918 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 17)) ;
+  GALGAS_location var_endOfMethodLocation_918 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 17)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7D_ COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 18)) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_overridingExtensionMethodAST::constructor_new (GALGAS_bool (false), GALGAS_bool (gOption_galgas_5F_cli_5F_options_propertyAccessRequiresSelf.readProperty_value ()), var_className_565, var_mMethodName_662, var_formalParameterList_779, var_routineInstructionList_877, var_endOfMethodLocation_918  COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 19))  COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 19)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_overridingExtensionMethodAST::class_func_new (GALGAS_bool (false), GALGAS_bool (gOption_galgas_5F_cli_5F_options_propertyAccessRequiresSelf.readProperty_value ()), var_className_565, var_mMethodName_662, var_formalParameterList_779, var_routineInstructionList_877, var_endOfMethodLocation_918  COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 19))  COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 19)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -14577,9 +14577,9 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_met
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7B_ COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 37)) ;
   GALGAS_semanticInstructionListAST var_routineInstructionList_1811 ;
   nt_semantic_5F_instruction_5F_list_5F_ggs_33__ (var_routineInstructionList_1811, inCompiler) ;
-  GALGAS_location var_endOfMethodLocation_1852 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 39)) ;
+  GALGAS_location var_endOfMethodLocation_1852 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 39)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7D_ COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 40)) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_overridingExtensionMethodAST::constructor_new (GALGAS_bool (false), GALGAS_bool (gOption_galgas_5F_cli_5F_options_propertyAccessRequiresSelf.readProperty_value ()), constinArgument_inClassName, var_mMethodName_1596, var_formalParameterList_1713, var_routineInstructionList_1811, var_endOfMethodLocation_1852  COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 41))  COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 41)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_overridingExtensionMethodAST::class_func_new (GALGAS_bool (false), GALGAS_bool (gOption_galgas_5F_cli_5F_options_propertyAccessRequiresSelf.readProperty_value ()), constinArgument_inClassName, var_mMethodName_1596, var_formalParameterList_1713, var_routineInstructionList_1811, var_endOfMethodLocation_1852  COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 41))  COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 41)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -14626,9 +14626,9 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7B_ COMMA_SOURCE_FILE ("extension-overriding-setter.galgas", 28)) ;
   GALGAS_semanticInstructionListAST var_routineInstructionList_1600 ;
   nt_semantic_5F_instruction_5F_list_5F_ggs_33__ (var_routineInstructionList_1600, inCompiler) ;
-  GALGAS_location var_endOfSetterLocation_1641 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("extension-overriding-setter.galgas", 30)) ;
+  GALGAS_location var_endOfSetterLocation_1641 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("extension-overriding-setter.galgas", 30)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7D_ COMMA_SOURCE_FILE ("extension-overriding-setter.galgas", 31)) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_overridingExtensionSetterAST::constructor_new (GALGAS_bool (false), GALGAS_bool (gOption_galgas_5F_cli_5F_options_propertyAccessRequiresSelf.readProperty_value ()), var_className_1289, var_setterName_1386, var_formalParameterList_1502, var_routineInstructionList_1600, var_endOfSetterLocation_1641  COMMA_SOURCE_FILE ("extension-overriding-setter.galgas", 32))  COMMA_SOURCE_FILE ("extension-overriding-setter.galgas", 32)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_overridingExtensionSetterAST::class_func_new (GALGAS_bool (false), GALGAS_bool (gOption_galgas_5F_cli_5F_options_propertyAccessRequiresSelf.readProperty_value ()), var_className_1289, var_setterName_1386, var_formalParameterList_1502, var_routineInstructionList_1600, var_endOfSetterLocation_1641  COMMA_SOURCE_FILE ("extension-overriding-setter.galgas", 32))  COMMA_SOURCE_FILE ("extension-overriding-setter.galgas", 32)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -14677,9 +14677,9 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_met
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7B_ COMMA_SOURCE_FILE ("extension-overriding-setter.galgas", 51)) ;
   GALGAS_semanticInstructionListAST var_routineInstructionList_2560 ;
   nt_semantic_5F_instruction_5F_list_5F_ggs_33__ (var_routineInstructionList_2560, inCompiler) ;
-  GALGAS_location var_endOfSetterLocation_2601 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("extension-overriding-setter.galgas", 53)) ;
+  GALGAS_location var_endOfSetterLocation_2601 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("extension-overriding-setter.galgas", 53)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7D_ COMMA_SOURCE_FILE ("extension-overriding-setter.galgas", 54)) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_overridingExtensionSetterAST::constructor_new (GALGAS_bool (false), GALGAS_bool (gOption_galgas_5F_cli_5F_options_propertyAccessRequiresSelf.readProperty_value ()), constinArgument_inClassName, var_setterName_2346, var_formalParameterList_2462, var_routineInstructionList_2560, var_endOfSetterLocation_2601  COMMA_SOURCE_FILE ("extension-overriding-setter.galgas", 55))  COMMA_SOURCE_FILE ("extension-overriding-setter.galgas", 55)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_overridingExtensionSetterAST::class_func_new (GALGAS_bool (false), GALGAS_bool (gOption_galgas_5F_cli_5F_options_propertyAccessRequiresSelf.readProperty_value ()), constinArgument_inClassName, var_setterName_2346, var_formalParameterList_2462, var_routineInstructionList_2560, var_endOfSetterLocation_2601  COMMA_SOURCE_FILE ("extension-overriding-setter.galgas", 55))  COMMA_SOURCE_FILE ("extension-overriding-setter.galgas", 55)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -14716,17 +14716,17 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_acc
   outArgument_outAccessControl.drop () ; // Release 'out' argument
   switch (select_galgas_33_DeclarationsSyntax_46 (inCompiler)) {
   case 1: {
-    outArgument_outAccessControl = GALGAS_AccessControlAST::constructor_publicAccess (SOURCE_FILE ("accessControl.galgas", 22)) ;
+    outArgument_outAccessControl = GALGAS_AccessControlAST::class_func_publicAccess (SOURCE_FILE ("accessControl.galgas", 22)) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_public COMMA_SOURCE_FILE ("accessControl.galgas", 24)) ;
-    outArgument_outAccessControl = GALGAS_AccessControlAST::constructor_publicAccess (SOURCE_FILE ("accessControl.galgas", 25)) ;
+    outArgument_outAccessControl = GALGAS_AccessControlAST::class_func_publicAccess (SOURCE_FILE ("accessControl.galgas", 25)) ;
   } break ;
   case 3: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_protected COMMA_SOURCE_FILE ("accessControl.galgas", 27)) ;
     switch (select_galgas_33_DeclarationsSyntax_47 (inCompiler)) {
     case 1: {
-      outArgument_outAccessControl = GALGAS_AccessControlAST::constructor_protectedAccess (SOURCE_FILE ("accessControl.galgas", 29)) ;
+      outArgument_outAccessControl = GALGAS_AccessControlAST::class_func_protectedAccess (SOURCE_FILE ("accessControl.galgas", 29)) ;
     } break ;
     case 2: {
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__28_ COMMA_SOURCE_FILE ("accessControl.galgas", 31)) ;
@@ -14741,7 +14741,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_acc
         }
       }
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__29_ COMMA_SOURCE_FILE ("accessControl.galgas", 36)) ;
-      outArgument_outAccessControl = GALGAS_AccessControlAST::constructor_protectedSetAccess (SOURCE_FILE ("accessControl.galgas", 37)) ;
+      outArgument_outAccessControl = GALGAS_AccessControlAST::class_func_protectedSetAccess (SOURCE_FILE ("accessControl.galgas", 37)) ;
     } break ;
     default:
       break ;
@@ -14751,7 +14751,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_acc
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_private COMMA_SOURCE_FILE ("accessControl.galgas", 40)) ;
     switch (select_galgas_33_DeclarationsSyntax_48 (inCompiler)) {
     case 1: {
-      outArgument_outAccessControl = GALGAS_AccessControlAST::constructor_privateAccess (SOURCE_FILE ("accessControl.galgas", 42)) ;
+      outArgument_outAccessControl = GALGAS_AccessControlAST::class_func_privateAccess (SOURCE_FILE ("accessControl.galgas", 42)) ;
     } break ;
     case 2: {
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__28_ COMMA_SOURCE_FILE ("accessControl.galgas", 44)) ;
@@ -14766,7 +14766,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_acc
         }
       }
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__29_ COMMA_SOURCE_FILE ("accessControl.galgas", 49)) ;
-      outArgument_outAccessControl = GALGAS_AccessControlAST::constructor_privateSetAccess (SOURCE_FILE ("accessControl.galgas", 50)) ;
+      outArgument_outAccessControl = GALGAS_AccessControlAST::class_func_privateSetAccess (SOURCE_FILE ("accessControl.galgas", 50)) ;
     } break ;
     default:
       break ;
@@ -14776,11 +14776,11 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_acc
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_fileprivate COMMA_SOURCE_FILE ("accessControl.galgas", 53)) ;
     switch (select_galgas_33_DeclarationsSyntax_49 (inCompiler)) {
     case 1: {
-      outArgument_outAccessControl = GALGAS_AccessControlAST::constructor_fileprivateAccess (GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("accessControl.galgas", 55))  COMMA_SOURCE_FILE ("accessControl.galgas", 55)) ;
+      outArgument_outAccessControl = GALGAS_AccessControlAST::class_func_fileprivateAccess (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("accessControl.galgas", 55))  COMMA_SOURCE_FILE ("accessControl.galgas", 55)) ;
     } break ;
     case 2: {
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__28_ COMMA_SOURCE_FILE ("accessControl.galgas", 57)) ;
-      outArgument_outAccessControl = GALGAS_AccessControlAST::constructor_fileprivateSetAccess (GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("accessControl.galgas", 58))  COMMA_SOURCE_FILE ("accessControl.galgas", 58)) ;
+      outArgument_outAccessControl = GALGAS_AccessControlAST::class_func_fileprivateSetAccess (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("accessControl.galgas", 58))  COMMA_SOURCE_FILE ("accessControl.galgas", 58)) ;
       GALGAS_lstring var_value_2203 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("accessControl.galgas", 59)) ;
       enumGalgasBool test_4 = kBoolTrue ;

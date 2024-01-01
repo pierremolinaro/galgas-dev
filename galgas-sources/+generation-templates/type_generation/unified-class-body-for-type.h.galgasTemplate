@@ -12,7 +12,7 @@
 if [CONSTRUCTOR_MAP count] > 0 then
   %//--------------------------------- GALGAS constructors\n%
   for (lkey mArgumentTypeList mHasCompilerArgument mReturnedType) in CONSTRUCTOR_MAP do
-    %  public: static class GALGAS_%![mReturnedType identifierRepresentation]% constructor_%![lkey.string identifierRepresentation]% (%?^
+    %  public: static class GALGAS_%![mReturnedType identifierRepresentation]% class_func_%![lkey.string identifierRepresentation]% (%?^
     for (mFormalSelector mFormalArgumentType mFormalArgumentName) in mArgumentTypeList
       do (IDX) %const class GALGAS_% ![mFormalArgumentType identifierRepresentation] % & inOperand%![IDX string]
       between %,\n%!^

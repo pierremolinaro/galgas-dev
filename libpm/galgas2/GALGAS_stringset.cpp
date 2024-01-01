@@ -749,7 +749,7 @@ GALGAS_stringset GALGAS_stringset::operator_and (const GALGAS_stringset & inOper
       checkStringset (HERE) ;
       inOperand2.checkStringset (HERE) ;
     #endif
-    result = constructor_emptySet (THERE) ;
+    result = class_func_emptySet (THERE) ;
     if (nullptr != mSharedRoot) {
       const uint32_t leftCount = mSharedRoot->count () ;
       TC_UniqueArray <String> leftList ((int32_t) leftCount COMMA_THERE) ;
@@ -852,7 +852,7 @@ GALGAS_stringset GALGAS_stringset::substract_operation (const GALGAS_stringset &
       checkStringset (HERE) ;
       inOperand2.checkStringset (HERE) ;
     #endif
-    result = constructor_emptySet (THERE) ;
+    result = class_func_emptySet (THERE) ;
     const int32_t leftCount = (int32_t) mSharedRoot->count () ;
     TC_UniqueArray <String> leftList (leftCount COMMA_THERE) ;
     mSharedRoot->buildOrderedKeyList (leftList) ;
@@ -879,7 +879,7 @@ GALGAS_stringset GALGAS_stringset::substract_operation (const GALGAS_stringset &
 GALGAS_stringlist GALGAS_stringset::getter_stringList (LOCATION_ARGS) const {
   GALGAS_stringlist result ;
   if (isValid ()) {
-    result = GALGAS_stringlist::constructor_emptyList (THERE) ;
+    result = GALGAS_stringlist::class_func_emptyList (THERE) ;
     mSharedRoot->addToStringList (result) ;
   }
   return result ;
@@ -1033,7 +1033,7 @@ typeComparisonResult GALGAS_stringset::objectCompare (const GALGAS_stringset & i
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_stringset GALGAS_stringset::constructor_emptySet (LOCATION_ARGS) {
+GALGAS_stringset GALGAS_stringset::class_func_emptySet (LOCATION_ARGS) {
   GALGAS_stringset result ;
   macroMyNew (result.mSharedRoot, cSharedStringsetRoot (THERE)) ;
   return result ;
@@ -1041,11 +1041,11 @@ GALGAS_stringset GALGAS_stringset::constructor_emptySet (LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_stringset GALGAS_stringset::constructor_setWithString (const GALGAS_string & inString
+GALGAS_stringset GALGAS_stringset::class_func_setWithString (const GALGAS_string & inString
                                                               COMMA_LOCATION_ARGS) {
   GALGAS_stringset result ;
   if (inString.isValid ()) {
-    result = constructor_emptySet (THERE) ;
+    result = class_func_emptySet (THERE) ;
     result.addAssign_operation (inString COMMA_HERE) ;
     #ifndef DO_NOT_GENERATE_CHECKINGS
       result.checkStringset (HERE) ;
@@ -1056,11 +1056,11 @@ GALGAS_stringset GALGAS_stringset::constructor_setWithString (const GALGAS_strin
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_stringset GALGAS_stringset::constructor_setWithStringList (const GALGAS_stringlist & inStringList
+GALGAS_stringset GALGAS_stringset::class_func_setWithStringList (const GALGAS_stringlist & inStringList
                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_stringset result ;
   if (inStringList.isValid ()) {
-    result = constructor_emptySet (THERE) ;
+    result = class_func_emptySet (THERE) ;
     cEnumerator_stringlist enumerator (inStringList, kENUMERATION_UP) ;
     while (enumerator.hasCurrentObject ()) {
       result.addAssign_operation (enumerator.current_mValue (THERE) COMMA_THERE) ;
@@ -1075,11 +1075,11 @@ GALGAS_stringset GALGAS_stringset::constructor_setWithStringList (const GALGAS_s
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_stringset GALGAS_stringset::constructor_setWithLStringList (const GALGAS_lstringlist & inStringList
+GALGAS_stringset GALGAS_stringset::class_func_setWithLStringList (const GALGAS_lstringlist & inStringList
                                                                    COMMA_LOCATION_ARGS) {
   GALGAS_stringset result ;
   if (inStringList.isValid ()) {
-    result = constructor_emptySet (THERE) ;
+    result = class_func_emptySet (THERE) ;
     cEnumerator_lstringlist enumerator (inStringList, kENUMERATION_UP) ;
     while (enumerator.hasCurrentObject ()) {
       result.addAssign_operation (enumerator.current_mValue (THERE).mProperty_string COMMA_THERE) ;

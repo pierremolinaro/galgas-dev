@@ -48,13 +48,13 @@ mData (inData) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_data GALGAS_data::constructor_emptyData (UNUSED_LOCATION_ARGS) {
+GALGAS_data GALGAS_data::class_func_emptyData (UNUSED_LOCATION_ARGS) {
   return GALGAS_data (U8Data ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_data GALGAS_data::constructor_dataWithContentsOfFile (const GALGAS_string & inFilePath,
+GALGAS_data GALGAS_data::class_func_dataWithContentsOfFile (const GALGAS_string & inFilePath,
                                                              Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) {
   GALGAS_data result ;

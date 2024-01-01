@@ -37,7 +37,7 @@ class GALGAS_uintPredefinedTypeAST_2D_weak : public GALGAS_predefinedTypeAST_2D_
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_uintPredefinedTypeAST_2D_weak constructor_nil (LOCATION_ARGS) ;
+  public: static class GALGAS_uintPredefinedTypeAST_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: typeComparisonResult objectCompare (const GALGAS_uintPredefinedTypeAST_2D_weak & inOperand) const ;
@@ -86,9 +86,9 @@ class GALGAS_uint_36__34_PredefinedTypeAST : public GALGAS_predefinedTypeAST {
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_uint_36__34_PredefinedTypeAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                                             const class GALGAS_string & inOperand1
-                                                                             COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_uint_36__34_PredefinedTypeAST class_func_new (const class GALGAS_bool & inOperand0,
+                                                                            const class GALGAS_string & inOperand1
+                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: typeComparisonResult objectCompare (const GALGAS_uint_36__34_PredefinedTypeAST & inOperand) const ;
@@ -192,7 +192,7 @@ class GALGAS_uint_36__34_PredefinedTypeAST_2D_weak : public GALGAS_predefinedTyp
                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_uint_36__34_PredefinedTypeAST_2D_weak constructor_nil (LOCATION_ARGS) ;
+  public: static class GALGAS_uint_36__34_PredefinedTypeAST_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: typeComparisonResult objectCompare (const GALGAS_uint_36__34_PredefinedTypeAST_2D_weak & inOperand) const ;
@@ -241,9 +241,9 @@ class GALGAS_sintPredefinedTypeAST : public GALGAS_predefinedTypeAST {
                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_sintPredefinedTypeAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                                     const class GALGAS_string & inOperand1
-                                                                     COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_sintPredefinedTypeAST class_func_new (const class GALGAS_bool & inOperand0,
+                                                                    const class GALGAS_string & inOperand1
+                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: typeComparisonResult objectCompare (const GALGAS_sintPredefinedTypeAST & inOperand) const ;
@@ -347,7 +347,7 @@ class GALGAS_sintPredefinedTypeAST_2D_weak : public GALGAS_predefinedTypeAST_2D_
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_sintPredefinedTypeAST_2D_weak constructor_nil (LOCATION_ARGS) ;
+  public: static class GALGAS_sintPredefinedTypeAST_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: typeComparisonResult objectCompare (const GALGAS_sintPredefinedTypeAST_2D_weak & inOperand) const ;
@@ -396,9 +396,9 @@ class GALGAS_sint_36__34_PredefinedTypeAST : public GALGAS_predefinedTypeAST {
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_sint_36__34_PredefinedTypeAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                                             const class GALGAS_string & inOperand1
-                                                                             COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_sint_36__34_PredefinedTypeAST class_func_new (const class GALGAS_bool & inOperand0,
+                                                                            const class GALGAS_string & inOperand1
+                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: typeComparisonResult objectCompare (const GALGAS_sint_36__34_PredefinedTypeAST & inOperand) const ;
@@ -502,7 +502,7 @@ class GALGAS_sint_36__34_PredefinedTypeAST_2D_weak : public GALGAS_predefinedTyp
                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_sint_36__34_PredefinedTypeAST_2D_weak constructor_nil (LOCATION_ARGS) ;
+  public: static class GALGAS_sint_36__34_PredefinedTypeAST_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: typeComparisonResult objectCompare (const GALGAS_sint_36__34_PredefinedTypeAST_2D_weak & inOperand) const ;
@@ -551,9 +551,9 @@ class GALGAS_charPredefinedTypeAST : public GALGAS_predefinedTypeAST {
                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_charPredefinedTypeAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                                     const class GALGAS_string & inOperand1
-                                                                     COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_charPredefinedTypeAST class_func_new (const class GALGAS_bool & inOperand0,
+                                                                    const class GALGAS_string & inOperand1
+                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: typeComparisonResult objectCompare (const GALGAS_charPredefinedTypeAST & inOperand) const ;
@@ -657,7 +657,7 @@ class GALGAS_charPredefinedTypeAST_2D_weak : public GALGAS_predefinedTypeAST_2D_
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_charPredefinedTypeAST_2D_weak constructor_nil (LOCATION_ARGS) ;
+  public: static class GALGAS_charPredefinedTypeAST_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: typeComparisonResult objectCompare (const GALGAS_charPredefinedTypeAST_2D_weak & inOperand) const ;
@@ -706,9 +706,9 @@ class GALGAS_doublePredefinedTypeAST : public GALGAS_predefinedTypeAST {
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_doublePredefinedTypeAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                                       const class GALGAS_string & inOperand1
-                                                                       COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_doublePredefinedTypeAST class_func_new (const class GALGAS_bool & inOperand0,
+                                                                      const class GALGAS_string & inOperand1
+                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: typeComparisonResult objectCompare (const GALGAS_doublePredefinedTypeAST & inOperand) const ;
@@ -812,7 +812,7 @@ class GALGAS_doublePredefinedTypeAST_2D_weak : public GALGAS_predefinedTypeAST_2
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_doublePredefinedTypeAST_2D_weak constructor_nil (LOCATION_ARGS) ;
+  public: static class GALGAS_doublePredefinedTypeAST_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: typeComparisonResult objectCompare (const GALGAS_doublePredefinedTypeAST_2D_weak & inOperand) const ;
@@ -861,9 +861,9 @@ class GALGAS_stringPredefinedTypeAST : public GALGAS_predefinedTypeAST {
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_stringPredefinedTypeAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                                       const class GALGAS_string & inOperand1
-                                                                       COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_stringPredefinedTypeAST class_func_new (const class GALGAS_bool & inOperand0,
+                                                                      const class GALGAS_string & inOperand1
+                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: typeComparisonResult objectCompare (const GALGAS_stringPredefinedTypeAST & inOperand) const ;
@@ -987,7 +987,7 @@ class GALGAS_stringPredefinedTypeAST_2D_weak : public GALGAS_predefinedTypeAST_2
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_stringPredefinedTypeAST_2D_weak constructor_nil (LOCATION_ARGS) ;
+  public: static class GALGAS_stringPredefinedTypeAST_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: typeComparisonResult objectCompare (const GALGAS_stringPredefinedTypeAST_2D_weak & inOperand) const ;
@@ -1036,9 +1036,9 @@ class GALGAS_locationPredefinedTypeAST : public GALGAS_predefinedTypeAST {
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_locationPredefinedTypeAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                                         const class GALGAS_string & inOperand1
-                                                                         COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_locationPredefinedTypeAST class_func_new (const class GALGAS_bool & inOperand0,
+                                                                        const class GALGAS_string & inOperand1
+                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: typeComparisonResult objectCompare (const GALGAS_locationPredefinedTypeAST & inOperand) const ;
@@ -1142,7 +1142,7 @@ class GALGAS_locationPredefinedTypeAST_2D_weak : public GALGAS_predefinedTypeAST
                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_locationPredefinedTypeAST_2D_weak constructor_nil (LOCATION_ARGS) ;
+  public: static class GALGAS_locationPredefinedTypeAST_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: typeComparisonResult objectCompare (const GALGAS_locationPredefinedTypeAST_2D_weak & inOperand) const ;
@@ -1191,9 +1191,9 @@ class GALGAS_stringsetPredefinedTypeAST : public GALGAS_predefinedTypeAST {
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_stringsetPredefinedTypeAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                                          const class GALGAS_string & inOperand1
-                                                                          COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_stringsetPredefinedTypeAST class_func_new (const class GALGAS_bool & inOperand0,
+                                                                         const class GALGAS_string & inOperand1
+                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: typeComparisonResult objectCompare (const GALGAS_stringsetPredefinedTypeAST & inOperand) const ;
@@ -1316,7 +1316,7 @@ class GALGAS_stringsetPredefinedTypeAST_2D_weak : public GALGAS_predefinedTypeAS
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_stringsetPredefinedTypeAST_2D_weak constructor_nil (LOCATION_ARGS) ;
+  public: static class GALGAS_stringsetPredefinedTypeAST_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: typeComparisonResult objectCompare (const GALGAS_stringsetPredefinedTypeAST_2D_weak & inOperand) const ;
@@ -1365,9 +1365,9 @@ class GALGAS_functionPredefinedTypeAST : public GALGAS_predefinedTypeAST {
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_functionPredefinedTypeAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                                         const class GALGAS_string & inOperand1
-                                                                         COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_functionPredefinedTypeAST class_func_new (const class GALGAS_bool & inOperand0,
+                                                                        const class GALGAS_string & inOperand1
+                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: typeComparisonResult objectCompare (const GALGAS_functionPredefinedTypeAST & inOperand) const ;
@@ -1471,7 +1471,7 @@ class GALGAS_functionPredefinedTypeAST_2D_weak : public GALGAS_predefinedTypeAST
                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_functionPredefinedTypeAST_2D_weak constructor_nil (LOCATION_ARGS) ;
+  public: static class GALGAS_functionPredefinedTypeAST_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: typeComparisonResult objectCompare (const GALGAS_functionPredefinedTypeAST_2D_weak & inOperand) const ;
@@ -1520,9 +1520,9 @@ class GALGAS_typePredefinedTypeAST : public GALGAS_predefinedTypeAST {
                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_typePredefinedTypeAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                                     const class GALGAS_string & inOperand1
-                                                                     COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_typePredefinedTypeAST class_func_new (const class GALGAS_bool & inOperand0,
+                                                                    const class GALGAS_string & inOperand1
+                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: typeComparisonResult objectCompare (const GALGAS_typePredefinedTypeAST & inOperand) const ;
@@ -1626,7 +1626,7 @@ class GALGAS_typePredefinedTypeAST_2D_weak : public GALGAS_predefinedTypeAST_2D_
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_typePredefinedTypeAST_2D_weak constructor_nil (LOCATION_ARGS) ;
+  public: static class GALGAS_typePredefinedTypeAST_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: typeComparisonResult objectCompare (const GALGAS_typePredefinedTypeAST_2D_weak & inOperand) const ;
@@ -1675,9 +1675,9 @@ class GALGAS_dataPredefinedTypeAST : public GALGAS_predefinedTypeAST {
                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_dataPredefinedTypeAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                                     const class GALGAS_string & inOperand1
-                                                                     COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_dataPredefinedTypeAST class_func_new (const class GALGAS_bool & inOperand0,
+                                                                    const class GALGAS_string & inOperand1
+                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: typeComparisonResult objectCompare (const GALGAS_dataPredefinedTypeAST & inOperand) const ;
@@ -1797,7 +1797,7 @@ class GALGAS_dataPredefinedTypeAST_2D_weak : public GALGAS_predefinedTypeAST_2D_
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_dataPredefinedTypeAST_2D_weak constructor_nil (LOCATION_ARGS) ;
+  public: static class GALGAS_dataPredefinedTypeAST_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: typeComparisonResult objectCompare (const GALGAS_dataPredefinedTypeAST_2D_weak & inOperand) const ;
@@ -1846,9 +1846,9 @@ class GALGAS_timerPredefinedTypeAST : public GALGAS_predefinedTypeAST {
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_timerPredefinedTypeAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                                      const class GALGAS_string & inOperand1
-                                                                      COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_timerPredefinedTypeAST class_func_new (const class GALGAS_bool & inOperand0,
+                                                                     const class GALGAS_string & inOperand1
+                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: typeComparisonResult objectCompare (const GALGAS_timerPredefinedTypeAST & inOperand) const ;
@@ -1957,7 +1957,7 @@ class GALGAS_timerPredefinedTypeAST_2D_weak : public GALGAS_predefinedTypeAST_2D
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_timerPredefinedTypeAST_2D_weak constructor_nil (LOCATION_ARGS) ;
+  public: static class GALGAS_timerPredefinedTypeAST_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: typeComparisonResult objectCompare (const GALGAS_timerPredefinedTypeAST_2D_weak & inOperand) const ;
@@ -2014,10 +2014,10 @@ class GALGAS_routineArgumentMap : public AC_GALGAS_map {
                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_routineArgumentMap constructor_emptyMap (LOCATION_ARGS) ;
+  public: static class GALGAS_routineArgumentMap class_func_emptyMap (LOCATION_ARGS) ;
 
-  public: static class GALGAS_routineArgumentMap constructor_mapWithMapToOverride (const class GALGAS_routineArgumentMap & inOperand0
-                                                                                   COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_routineArgumentMap class_func_mapWithMapToOverride (const class GALGAS_routineArgumentMap & inOperand0
+                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
   public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
@@ -2189,10 +2189,10 @@ class GALGAS_internalRoutineMap_2D_element : public AC_GALGAS_root {
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_internalRoutineMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                             const class GALGAS_routineArgumentMap & inOperand1,
-                                                                             class Compiler * inCompiler
-                                                                             COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_internalRoutineMap_2D_element class_func_new (const class GALGAS_lstring & inOperand0,
+                                                                            const class GALGAS_routineArgumentMap & inOperand1,
+                                                                            class Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
@@ -2311,11 +2311,11 @@ class GALGAS_routineArgumentMap_2D_element : public AC_GALGAS_root {
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_routineArgumentMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                             const class GALGAS_formalParameterSignature & inOperand1,
-                                                                             const class GALGAS_bool & inOperand2,
-                                                                             class Compiler * inCompiler
-                                                                             COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_routineArgumentMap_2D_element class_func_new (const class GALGAS_lstring & inOperand0,
+                                                                            const class GALGAS_formalParameterSignature & inOperand1,
+                                                                            const class GALGAS_bool & inOperand2,
+                                                                            class Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
@@ -2372,11 +2372,11 @@ class GALGAS_acceptableParameterList : public AC_GALGAS_list {
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_acceptableParameterList constructor_emptyList (LOCATION_ARGS) ;
+  public: static class GALGAS_acceptableParameterList class_func_emptyList (LOCATION_ARGS) ;
 
-  public: static class GALGAS_acceptableParameterList constructor_listWithValue (const class GALGAS_formalParameterSignature & inOperand0,
-                                                                                 const class GALGAS_bool & inOperand1
-                                                                                 COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_acceptableParameterList class_func_listWithValue (const class GALGAS_formalParameterSignature & inOperand0,
+                                                                                const class GALGAS_bool & inOperand1
+                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
   public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_acceptableParameterList inOperand,
@@ -2548,10 +2548,10 @@ class GALGAS_acceptableParameterList_2D_element : public AC_GALGAS_root {
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_acceptableParameterList_2D_element constructor_new (const class GALGAS_formalParameterSignature & inOperand0,
-                                                                                  const class GALGAS_bool & inOperand1,
-                                                                                  class Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_acceptableParameterList_2D_element class_func_new (const class GALGAS_formalParameterSignature & inOperand0,
+                                                                                 const class GALGAS_bool & inOperand1,
+                                                                                 class Compiler * inCompiler
+                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
@@ -2664,10 +2664,10 @@ class GALGAS_grammarLabelMap : public AC_GALGAS_map {
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_grammarLabelMap constructor_emptyMap (LOCATION_ARGS) ;
+  public: static class GALGAS_grammarLabelMap class_func_emptyMap (LOCATION_ARGS) ;
 
-  public: static class GALGAS_grammarLabelMap constructor_mapWithMapToOverride (const class GALGAS_grammarLabelMap & inOperand0
-                                                                                COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_grammarLabelMap class_func_mapWithMapToOverride (const class GALGAS_grammarLabelMap & inOperand0
+                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
   public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
@@ -2825,10 +2825,10 @@ class GALGAS_grammarLabelMap_2D_element : public AC_GALGAS_root {
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_grammarLabelMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                          const class GALGAS_formalParameterSignature & inOperand1,
-                                                                          class Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_grammarLabelMap_2D_element class_func_new (const class GALGAS_lstring & inOperand0,
+                                                                         const class GALGAS_formalParameterSignature & inOperand1,
+                                                                         class Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
@@ -2959,12 +2959,12 @@ class GALGAS_grammarMap_2D_element : public AC_GALGAS_root {
                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_grammarMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                     const class GALGAS_grammarLabelMap & inOperand1,
-                                                                     const class GALGAS_bool & inOperand2,
-                                                                     const class GALGAS_bool & inOperand3,
-                                                                     class Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_grammarMap_2D_element class_func_new (const class GALGAS_lstring & inOperand0,
+                                                                    const class GALGAS_grammarLabelMap & inOperand1,
+                                                                    const class GALGAS_bool & inOperand2,
+                                                                    const class GALGAS_bool & inOperand3,
+                                                                    class Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
@@ -3095,12 +3095,12 @@ class GALGAS_functionMap_2D_element : public AC_GALGAS_root {
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_functionMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                      const class GALGAS_functionSignature & inOperand1,
-                                                                      const class GALGAS_unifiedTypeMapEntry & inOperand2,
-                                                                      const class GALGAS_bool & inOperand3,
-                                                                      class Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_functionMap_2D_element class_func_new (const class GALGAS_lstring & inOperand0,
+                                                                     const class GALGAS_functionSignature & inOperand1,
+                                                                     const class GALGAS_unifiedTypeMapEntry & inOperand2,
+                                                                     const class GALGAS_bool & inOperand3,
+                                                                     class Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
@@ -3160,10 +3160,10 @@ class GALGAS_wrapperFileMap : public AC_GALGAS_map {
                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_wrapperFileMap constructor_emptyMap (LOCATION_ARGS) ;
+  public: static class GALGAS_wrapperFileMap class_func_emptyMap (LOCATION_ARGS) ;
 
-  public: static class GALGAS_wrapperFileMap constructor_mapWithMapToOverride (const class GALGAS_wrapperFileMap & inOperand0
-                                                                               COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_wrapperFileMap class_func_mapWithMapToOverride (const class GALGAS_wrapperFileMap & inOperand0
+                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
   public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
@@ -3399,13 +3399,13 @@ class GALGAS_wrapperFileMap_2D_element : public AC_GALGAS_root {
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_wrapperFileMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                         const class GALGAS_string & inOperand1,
-                                                                         const class GALGAS_bool & inOperand2,
-                                                                         const class GALGAS_uint & inOperand3,
-                                                                         const class GALGAS_uint & inOperand4,
-                                                                         class Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_wrapperFileMap_2D_element class_func_new (const class GALGAS_lstring & inOperand0,
+                                                                        const class GALGAS_string & inOperand1,
+                                                                        const class GALGAS_bool & inOperand2,
+                                                                        const class GALGAS_uint & inOperand3,
+                                                                        const class GALGAS_uint & inOperand4,
+                                                                        class Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
@@ -3465,10 +3465,10 @@ class GALGAS_wrapperDirectoryMap : public AC_GALGAS_map {
                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_wrapperDirectoryMap constructor_emptyMap (LOCATION_ARGS) ;
+  public: static class GALGAS_wrapperDirectoryMap class_func_emptyMap (LOCATION_ARGS) ;
 
-  public: static class GALGAS_wrapperDirectoryMap constructor_mapWithMapToOverride (const class GALGAS_wrapperDirectoryMap & inOperand0
-                                                                                    COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_wrapperDirectoryMap class_func_mapWithMapToOverride (const class GALGAS_wrapperDirectoryMap & inOperand0
+                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
   public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
@@ -3678,12 +3678,12 @@ class GALGAS_wrapperDirectoryMap_2D_element : public AC_GALGAS_root {
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_wrapperDirectoryMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                              const class GALGAS_wrapperFileMap & inOperand1,
-                                                                              const class GALGAS_wrapperDirectoryMap & inOperand2,
-                                                                              const class GALGAS_uint & inOperand3,
-                                                                              class Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_wrapperDirectoryMap_2D_element class_func_new (const class GALGAS_lstring & inOperand0,
+                                                                             const class GALGAS_wrapperFileMap & inOperand1,
+                                                                             const class GALGAS_wrapperDirectoryMap & inOperand2,
+                                                                             const class GALGAS_uint & inOperand3,
+                                                                             class Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
@@ -3743,10 +3743,10 @@ class GALGAS_filewrapperTemplateMap : public AC_GALGAS_map {
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_filewrapperTemplateMap constructor_emptyMap (LOCATION_ARGS) ;
+  public: static class GALGAS_filewrapperTemplateMap class_func_emptyMap (LOCATION_ARGS) ;
 
-  public: static class GALGAS_filewrapperTemplateMap constructor_mapWithMapToOverride (const class GALGAS_filewrapperTemplateMap & inOperand0
-                                                                                       COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_filewrapperTemplateMap class_func_mapWithMapToOverride (const class GALGAS_filewrapperTemplateMap & inOperand0
+                                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
   public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
@@ -3930,11 +3930,11 @@ class GALGAS_filewrapperTemplateMap_2D_element : public AC_GALGAS_root {
                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_filewrapperTemplateMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                                 const class GALGAS_functionSignature & inOperand1,
-                                                                                 const class GALGAS_lstring & inOperand2,
-                                                                                 class Compiler * inCompiler
-                                                                                 COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_filewrapperTemplateMap_2D_element class_func_new (const class GALGAS_lstring & inOperand0,
+                                                                                const class GALGAS_functionSignature & inOperand1,
+                                                                                const class GALGAS_lstring & inOperand2,
+                                                                                class Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
@@ -4101,15 +4101,15 @@ class GALGAS_filewrapperMap_2D_element : public AC_GALGAS_root {
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_filewrapperMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                         const class GALGAS_lstring & inOperand1,
-                                                                         const class GALGAS_lstringlist & inOperand2,
-                                                                         const class GALGAS_wrapperFileMap & inOperand3,
-                                                                         const class GALGAS_wrapperDirectoryMap & inOperand4,
-                                                                         const class GALGAS_filewrapperTemplateMap & inOperand5,
-                                                                         const class GALGAS_bool & inOperand6,
-                                                                         class Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_filewrapperMap_2D_element class_func_new (const class GALGAS_lstring & inOperand0,
+                                                                        const class GALGAS_lstring & inOperand1,
+                                                                        const class GALGAS_lstringlist & inOperand2,
+                                                                        const class GALGAS_wrapperFileMap & inOperand3,
+                                                                        const class GALGAS_wrapperDirectoryMap & inOperand4,
+                                                                        const class GALGAS_filewrapperTemplateMap & inOperand5,
+                                                                        const class GALGAS_bool & inOperand6,
+                                                                        class Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
@@ -4264,14 +4264,14 @@ class GALGAS_optionComponentMapForSemanticAnalysis_2D_element : public AC_GALGAS
                                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_optionComponentMapForSemanticAnalysis_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                                                const class GALGAS_bool & inOperand1,
-                                                                                                const class GALGAS_commandLineOptionMap & inOperand2,
-                                                                                                const class GALGAS_commandLineOptionMap & inOperand3,
-                                                                                                const class GALGAS_commandLineOptionMap & inOperand4,
-                                                                                                const class GALGAS_commandLineOptionMap & inOperand5,
-                                                                                                class Compiler * inCompiler
-                                                                                                COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_optionComponentMapForSemanticAnalysis_2D_element class_func_new (const class GALGAS_lstring & inOperand0,
+                                                                                               const class GALGAS_bool & inOperand1,
+                                                                                               const class GALGAS_commandLineOptionMap & inOperand2,
+                                                                                               const class GALGAS_commandLineOptionMap & inOperand3,
+                                                                                               const class GALGAS_commandLineOptionMap & inOperand4,
+                                                                                               const class GALGAS_commandLineOptionMap & inOperand5,
+                                                                                               class Compiler * inCompiler
+                                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
@@ -4450,16 +4450,16 @@ class GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element : public AC_GALGA
                                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                                                 const class GALGAS_bool & inOperand1,
-                                                                                                 const class GALGAS_terminalMap & inOperand2,
-                                                                                                 const class GALGAS_indexingListAST & inOperand3,
-                                                                                                 const class GALGAS_terminalDeclarationListAST & inOperand4,
-                                                                                                 const class GALGAS_lexicalAttributeListAST & inOperand5,
-                                                                                                 const class GALGAS_lexicalStyleListAST & inOperand6,
-                                                                                                 const class GALGAS_lexicalListDeclarationListAST & inOperand7,
-                                                                                                 class Compiler * inCompiler
-                                                                                                 COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element class_func_new (const class GALGAS_lstring & inOperand0,
+                                                                                                const class GALGAS_bool & inOperand1,
+                                                                                                const class GALGAS_terminalMap & inOperand2,
+                                                                                                const class GALGAS_indexingListAST & inOperand3,
+                                                                                                const class GALGAS_terminalDeclarationListAST & inOperand4,
+                                                                                                const class GALGAS_lexicalAttributeListAST & inOperand5,
+                                                                                                const class GALGAS_lexicalStyleListAST & inOperand6,
+                                                                                                const class GALGAS_lexicalListDeclarationListAST & inOperand7,
+                                                                                                class Compiler * inCompiler
+                                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
@@ -4602,13 +4602,13 @@ class GALGAS_syntaxComponentMap_2D_element : public AC_GALGAS_root {
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_syntaxComponentMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                             const class GALGAS_lstring & inOperand1,
-                                                                             const class GALGAS_nonterminalDeclarationListAST & inOperand2,
-                                                                             const class GALGAS_syntaxRuleListAST & inOperand3,
-                                                                             const class GALGAS_bool & inOperand4,
-                                                                             class Compiler * inCompiler
-                                                                             COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_syntaxComponentMap_2D_element class_func_new (const class GALGAS_lstring & inOperand0,
+                                                                            const class GALGAS_lstring & inOperand1,
+                                                                            const class GALGAS_nonterminalDeclarationListAST & inOperand2,
+                                                                            const class GALGAS_syntaxRuleListAST & inOperand3,
+                                                                            const class GALGAS_bool & inOperand4,
+                                                                            class Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
@@ -4664,10 +4664,10 @@ class GALGAS_extensionMethodMapForType : public AC_GALGAS_map {
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_extensionMethodMapForType constructor_emptyMap (LOCATION_ARGS) ;
+  public: static class GALGAS_extensionMethodMapForType class_func_emptyMap (LOCATION_ARGS) ;
 
-  public: static class GALGAS_extensionMethodMapForType constructor_mapWithMapToOverride (const class GALGAS_extensionMethodMapForType & inOperand0
-                                                                                          COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_extensionMethodMapForType class_func_mapWithMapToOverride (const class GALGAS_extensionMethodMapForType & inOperand0
+                                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
   public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
@@ -4845,11 +4845,11 @@ class GALGAS_extensionMethodMapForType_2D_element : public AC_GALGAS_root {
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_extensionMethodMapForType_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                                    const class GALGAS_formalParameterListAST & inOperand1,
-                                                                                    const class GALGAS_methodQualifier & inOperand2,
-                                                                                    class Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_extensionMethodMapForType_2D_element class_func_new (const class GALGAS_lstring & inOperand0,
+                                                                                   const class GALGAS_formalParameterListAST & inOperand1,
+                                                                                   const class GALGAS_methodQualifier & inOperand2,
+                                                                                   class Compiler * inCompiler
+                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
@@ -4909,10 +4909,10 @@ class GALGAS_extensionMethodMapForBuildingContext : public AC_GALGAS_map {
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_extensionMethodMapForBuildingContext constructor_emptyMap (LOCATION_ARGS) ;
+  public: static class GALGAS_extensionMethodMapForBuildingContext class_func_emptyMap (LOCATION_ARGS) ;
 
-  public: static class GALGAS_extensionMethodMapForBuildingContext constructor_mapWithMapToOverride (const class GALGAS_extensionMethodMapForBuildingContext & inOperand0
-                                                                                                     COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_extensionMethodMapForBuildingContext class_func_mapWithMapToOverride (const class GALGAS_extensionMethodMapForBuildingContext & inOperand0
+                                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
   public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
@@ -5070,10 +5070,10 @@ class GALGAS_extensionMethodMapForBuildingContext_2D_element : public AC_GALGAS_
                                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_extensionMethodMapForBuildingContext_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                                               const class GALGAS_extensionMethodMapForType & inOperand1,
-                                                                                               class Compiler * inCompiler
-                                                                                               COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_extensionMethodMapForBuildingContext_2D_element class_func_new (const class GALGAS_lstring & inOperand0,
+                                                                                              const class GALGAS_extensionMethodMapForType & inOperand1,
+                                                                                              class Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
@@ -5129,10 +5129,10 @@ class GALGAS_extensionSetterMapForType : public AC_GALGAS_map {
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_extensionSetterMapForType constructor_emptyMap (LOCATION_ARGS) ;
+  public: static class GALGAS_extensionSetterMapForType class_func_emptyMap (LOCATION_ARGS) ;
 
-  public: static class GALGAS_extensionSetterMapForType constructor_mapWithMapToOverride (const class GALGAS_extensionSetterMapForType & inOperand0
-                                                                                          COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_extensionSetterMapForType class_func_mapWithMapToOverride (const class GALGAS_extensionSetterMapForType & inOperand0
+                                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
   public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
@@ -5285,10 +5285,10 @@ class GALGAS_extensionSetterMapForType_2D_element : public AC_GALGAS_root {
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_extensionSetterMapForType_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                                    const class GALGAS_formalParameterListAST & inOperand1,
-                                                                                    class Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_extensionSetterMapForType_2D_element class_func_new (const class GALGAS_lstring & inOperand0,
+                                                                                   const class GALGAS_formalParameterListAST & inOperand1,
+                                                                                   class Compiler * inCompiler
+                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
@@ -5348,10 +5348,10 @@ class GALGAS_extensionSetterMapForBuildingContext : public AC_GALGAS_map {
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_extensionSetterMapForBuildingContext constructor_emptyMap (LOCATION_ARGS) ;
+  public: static class GALGAS_extensionSetterMapForBuildingContext class_func_emptyMap (LOCATION_ARGS) ;
 
-  public: static class GALGAS_extensionSetterMapForBuildingContext constructor_mapWithMapToOverride (const class GALGAS_extensionSetterMapForBuildingContext & inOperand0
-                                                                                                     COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_extensionSetterMapForBuildingContext class_func_mapWithMapToOverride (const class GALGAS_extensionSetterMapForBuildingContext & inOperand0
+                                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
   public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
@@ -5509,10 +5509,10 @@ class GALGAS_extensionSetterMapForBuildingContext_2D_element : public AC_GALGAS_
                                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_extensionSetterMapForBuildingContext_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                                               const class GALGAS_extensionSetterMapForType & inOperand1,
-                                                                                               class Compiler * inCompiler
-                                                                                               COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_extensionSetterMapForBuildingContext_2D_element class_func_new (const class GALGAS_lstring & inOperand0,
+                                                                                              const class GALGAS_extensionSetterMapForType & inOperand1,
+                                                                                              class Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
@@ -5568,10 +5568,10 @@ class GALGAS_extensionGetterMapForType : public AC_GALGAS_map {
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_extensionGetterMapForType constructor_emptyMap (LOCATION_ARGS) ;
+  public: static class GALGAS_extensionGetterMapForType class_func_emptyMap (LOCATION_ARGS) ;
 
-  public: static class GALGAS_extensionGetterMapForType constructor_mapWithMapToOverride (const class GALGAS_extensionGetterMapForType & inOperand0
-                                                                                          COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_extensionGetterMapForType class_func_mapWithMapToOverride (const class GALGAS_extensionGetterMapForType & inOperand0
+                                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
   public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
@@ -5774,12 +5774,12 @@ class GALGAS_extensionGetterMapForType_2D_element : public AC_GALGAS_root {
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_extensionGetterMapForType_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                                    const class GALGAS_lstring & inOperand1,
-                                                                                    const class GALGAS_formalInputParameterListAST & inOperand2,
-                                                                                    const class GALGAS_methodQualifier & inOperand3,
-                                                                                    class Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_extensionGetterMapForType_2D_element class_func_new (const class GALGAS_lstring & inOperand0,
+                                                                                   const class GALGAS_lstring & inOperand1,
+                                                                                   const class GALGAS_formalInputParameterListAST & inOperand2,
+                                                                                   const class GALGAS_methodQualifier & inOperand3,
+                                                                                   class Compiler * inCompiler
+                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
@@ -5839,10 +5839,10 @@ class GALGAS_extensionGetterMapForBuildingContext : public AC_GALGAS_map {
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_extensionGetterMapForBuildingContext constructor_emptyMap (LOCATION_ARGS) ;
+  public: static class GALGAS_extensionGetterMapForBuildingContext class_func_emptyMap (LOCATION_ARGS) ;
 
-  public: static class GALGAS_extensionGetterMapForBuildingContext constructor_mapWithMapToOverride (const class GALGAS_extensionGetterMapForBuildingContext & inOperand0
-                                                                                                     COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_extensionGetterMapForBuildingContext class_func_mapWithMapToOverride (const class GALGAS_extensionGetterMapForBuildingContext & inOperand0
+                                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
   public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
@@ -6000,10 +6000,10 @@ class GALGAS_extensionGetterMapForBuildingContext_2D_element : public AC_GALGAS_
                                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_extensionGetterMapForBuildingContext_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                                               const class GALGAS_extensionGetterMapForType & inOperand1,
-                                                                                               class Compiler * inCompiler
-                                                                                               COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_extensionGetterMapForBuildingContext_2D_element class_func_new (const class GALGAS_lstring & inOperand0,
+                                                                                              const class GALGAS_extensionGetterMapForType & inOperand1,
+                                                                                              class Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
@@ -6084,10 +6084,10 @@ class GALGAS_wrapperExtensionMap : public AC_GALGAS_map {
                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_wrapperExtensionMap constructor_emptyMap (LOCATION_ARGS) ;
+  public: static class GALGAS_wrapperExtensionMap class_func_emptyMap (LOCATION_ARGS) ;
 
-  public: static class GALGAS_wrapperExtensionMap constructor_mapWithMapToOverride (const class GALGAS_wrapperExtensionMap & inOperand0
-                                                                                    COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_wrapperExtensionMap class_func_mapWithMapToOverride (const class GALGAS_wrapperExtensionMap & inOperand0
+                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
   public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
@@ -6215,9 +6215,9 @@ class GALGAS_wrapperExtensionMap_2D_element : public AC_GALGAS_root {
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_wrapperExtensionMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                              class Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_wrapperExtensionMap_2D_element class_func_new (const class GALGAS_lstring & inOperand0,
+                                                                             class Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
@@ -6265,7 +6265,7 @@ class GALGAS_semanticTypePrecedenceGraph : public AC_GALGAS_graph {
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_semanticTypePrecedenceGraph constructor_emptyGraph (LOCATION_ARGS) ;
+  public: static class GALGAS_semanticTypePrecedenceGraph class_func_emptyGraph (LOCATION_ARGS) ;
 
 
 //--------------------------------- Setters
@@ -6387,7 +6387,7 @@ class GALGAS_semanticExpressionForGeneration_2D_weak : public AC_GALGAS_weak_ref
                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_semanticExpressionForGeneration_2D_weak constructor_nil (LOCATION_ARGS) ;
+  public: static class GALGAS_semanticExpressionForGeneration_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: typeComparisonResult objectCompare (const GALGAS_semanticExpressionForGeneration_2D_weak & inOperand) const ;
@@ -6440,10 +6440,10 @@ class GALGAS_semanticExpressionListForGeneration : public AC_GALGAS_list {
                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_semanticExpressionListForGeneration constructor_emptyList (LOCATION_ARGS) ;
+  public: static class GALGAS_semanticExpressionListForGeneration class_func_emptyList (LOCATION_ARGS) ;
 
-  public: static class GALGAS_semanticExpressionListForGeneration constructor_listWithValue (const class GALGAS_semanticExpressionForGeneration & inOperand0
-                                                                                             COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_semanticExpressionListForGeneration class_func_listWithValue (const class GALGAS_semanticExpressionForGeneration & inOperand0
+                                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
   public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_semanticExpressionListForGeneration inOperand,
@@ -6587,9 +6587,9 @@ class GALGAS_semanticExpressionListForGeneration_2D_element : public AC_GALGAS_r
                                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_semanticExpressionListForGeneration_2D_element constructor_new (const class GALGAS_semanticExpressionForGeneration & inOperand0,
-                                                                                              class Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_semanticExpressionListForGeneration_2D_element class_func_new (const class GALGAS_semanticExpressionForGeneration & inOperand0,
+                                                                                             class Compiler * inCompiler
+                                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
@@ -6647,12 +6647,12 @@ class GALGAS_castInExpressionForGeneration : public GALGAS_semanticExpressionFor
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_castInExpressionForGeneration constructor_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                             const class GALGAS_location & inOperand1,
-                                                                             const class GALGAS_semanticExpressionForGeneration & inOperand2,
-                                                                             const class GALGAS_string & inOperand3,
-                                                                             const class GALGAS_unifiedTypeMapEntry & inOperand4
-                                                                             COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_castInExpressionForGeneration class_func_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                            const class GALGAS_location & inOperand1,
+                                                                            const class GALGAS_semanticExpressionForGeneration & inOperand2,
+                                                                            const class GALGAS_string & inOperand3,
+                                                                            const class GALGAS_unifiedTypeMapEntry & inOperand4
+                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: typeComparisonResult objectCompare (const GALGAS_castInExpressionForGeneration & inOperand) const ;
@@ -6751,7 +6751,7 @@ class GALGAS_castInExpressionForGeneration_2D_weak : public GALGAS_semanticExpre
                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_castInExpressionForGeneration_2D_weak constructor_nil (LOCATION_ARGS) ;
+  public: static class GALGAS_castInExpressionForGeneration_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: typeComparisonResult objectCompare (const GALGAS_castInExpressionForGeneration_2D_weak & inOperand) const ;
@@ -6896,7 +6896,7 @@ class GALGAS_actualParameterForGeneration_2D_weak : public AC_GALGAS_weak_refere
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_actualParameterForGeneration_2D_weak constructor_nil (LOCATION_ARGS) ;
+  public: static class GALGAS_actualParameterForGeneration_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: typeComparisonResult objectCompare (const GALGAS_actualParameterForGeneration_2D_weak & inOperand) const ;
@@ -6976,9 +6976,9 @@ class GALGAS_outputActualParameterForGeneration : public GALGAS_actualParameterF
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_outputActualParameterForGeneration constructor_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                  const class GALGAS_semanticExpressionForGeneration & inOperand1
-                                                                                  COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_outputActualParameterForGeneration class_func_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                                 const class GALGAS_semanticExpressionForGeneration & inOperand1
+                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: typeComparisonResult objectCompare (const GALGAS_outputActualParameterForGeneration & inOperand) const ;
@@ -7079,7 +7079,7 @@ class GALGAS_outputActualParameterForGeneration_2D_weak : public GALGAS_actualPa
                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_outputActualParameterForGeneration_2D_weak constructor_nil (LOCATION_ARGS) ;
+  public: static class GALGAS_outputActualParameterForGeneration_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: typeComparisonResult objectCompare (const GALGAS_outputActualParameterForGeneration_2D_weak & inOperand) const ;
@@ -7134,11 +7134,11 @@ class GALGAS_outputInputActualParameterForGeneration : public GALGAS_actualParam
                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_outputInputActualParameterForGeneration constructor_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                       const class GALGAS_string & inOperand1,
-                                                                                       const class GALGAS_lstringlist & inOperand2,
-                                                                                       const class GALGAS_unifiedTypeMapEntryList & inOperand3
-                                                                                       COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_outputInputActualParameterForGeneration class_func_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                                      const class GALGAS_string & inOperand1,
+                                                                                      const class GALGAS_lstringlist & inOperand2,
+                                                                                      const class GALGAS_unifiedTypeMapEntryList & inOperand3
+                                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: typeComparisonResult objectCompare (const GALGAS_outputInputActualParameterForGeneration & inOperand) const ;
@@ -7243,7 +7243,7 @@ class GALGAS_outputInputActualParameterForGeneration_2D_weak : public GALGAS_act
                                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_outputInputActualParameterForGeneration_2D_weak constructor_nil (LOCATION_ARGS) ;
+  public: static class GALGAS_outputInputActualParameterForGeneration_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: typeComparisonResult objectCompare (const GALGAS_outputInputActualParameterForGeneration_2D_weak & inOperand) const ;
@@ -7296,10 +7296,10 @@ class GALGAS_inputActualParameterForGeneration : public GALGAS_actualParameterFo
                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_inputActualParameterForGeneration constructor_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                 const class GALGAS_string & inOperand1,
-                                                                                 const class GALGAS__32_stringlist & inOperand2
-                                                                                 COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_inputActualParameterForGeneration class_func_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                                const class GALGAS_string & inOperand1,
+                                                                                const class GALGAS__32_stringlist & inOperand2
+                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: typeComparisonResult objectCompare (const GALGAS_inputActualParameterForGeneration & inOperand) const ;
@@ -7402,7 +7402,7 @@ class GALGAS_inputActualParameterForGeneration_2D_weak : public GALGAS_actualPar
                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_inputActualParameterForGeneration_2D_weak constructor_nil (LOCATION_ARGS) ;
+  public: static class GALGAS_inputActualParameterForGeneration_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: typeComparisonResult objectCompare (const GALGAS_inputActualParameterForGeneration_2D_weak & inOperand) const ;
@@ -7455,10 +7455,10 @@ class GALGAS_inputJokerParameterForGeneration : public GALGAS_actualParameterFor
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_inputJokerParameterForGeneration constructor_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                const class GALGAS_string & inOperand1,
-                                                                                const class GALGAS__32_stringlist & inOperand2
-                                                                                COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_inputJokerParameterForGeneration class_func_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                               const class GALGAS_string & inOperand1,
+                                                                               const class GALGAS__32_stringlist & inOperand2
+                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: typeComparisonResult objectCompare (const GALGAS_inputJokerParameterForGeneration & inOperand) const ;
@@ -7561,7 +7561,7 @@ class GALGAS_inputJokerParameterForGeneration_2D_weak : public GALGAS_actualPara
                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_inputJokerParameterForGeneration_2D_weak constructor_nil (LOCATION_ARGS) ;
+  public: static class GALGAS_inputJokerParameterForGeneration_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: typeComparisonResult objectCompare (const GALGAS_inputJokerParameterForGeneration_2D_weak & inOperand) const ;
@@ -7627,9 +7627,9 @@ class GALGAS_actualParameterListForGeneration_2D_element : public AC_GALGAS_root
                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_actualParameterListForGeneration_2D_element constructor_new (const class GALGAS_actualParameterForGeneration & inOperand0,
-                                                                                           class Compiler * inCompiler
-                                                                                           COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_actualParameterListForGeneration_2D_element class_func_new (const class GALGAS_actualParameterForGeneration & inOperand0,
+                                                                                          class Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
@@ -7685,7 +7685,7 @@ class GALGAS_semanticInstructionForGeneration_2D_weak : public AC_GALGAS_weak_re
                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_semanticInstructionForGeneration_2D_weak constructor_nil (LOCATION_ARGS) ;
+  public: static class GALGAS_semanticInstructionForGeneration_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: typeComparisonResult objectCompare (const GALGAS_semanticInstructionForGeneration_2D_weak & inOperand) const ;
@@ -7751,8 +7751,8 @@ class GALGAS_semanticBlockInstructionForGeneration : public GALGAS_semanticInstr
                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_semanticBlockInstructionForGeneration constructor_new (const class GALGAS_semanticInstructionListForGeneration & inOperand0
-                                                                                     COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_semanticBlockInstructionForGeneration class_func_new (const class GALGAS_semanticInstructionListForGeneration & inOperand0
+                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: typeComparisonResult objectCompare (const GALGAS_semanticBlockInstructionForGeneration & inOperand) const ;
@@ -7845,7 +7845,7 @@ class GALGAS_semanticBlockInstructionForGeneration_2D_weak : public GALGAS_seman
                                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_semanticBlockInstructionForGeneration_2D_weak constructor_nil (LOCATION_ARGS) ;
+  public: static class GALGAS_semanticBlockInstructionForGeneration_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: typeComparisonResult objectCompare (const GALGAS_semanticBlockInstructionForGeneration_2D_weak & inOperand) const ;
@@ -7899,11 +7899,11 @@ class GALGAS_listOfSemanticInstructionListForGeneration : public AC_GALGAS_list 
                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_listOfSemanticInstructionListForGeneration constructor_emptyList (LOCATION_ARGS) ;
+  public: static class GALGAS_listOfSemanticInstructionListForGeneration class_func_emptyList (LOCATION_ARGS) ;
 
-  public: static class GALGAS_listOfSemanticInstructionListForGeneration constructor_listWithValue (const class GALGAS_semanticInstructionListForGeneration & inOperand0,
-                                                                                                    const class GALGAS_location & inOperand1
-                                                                                                    COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_listOfSemanticInstructionListForGeneration class_func_listWithValue (const class GALGAS_semanticInstructionListForGeneration & inOperand0,
+                                                                                                   const class GALGAS_location & inOperand1
+                                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
   public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_listOfSemanticInstructionListForGeneration inOperand,
@@ -8075,10 +8075,10 @@ class GALGAS_listOfSemanticInstructionListForGeneration_2D_element : public AC_G
                                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_listOfSemanticInstructionListForGeneration_2D_element constructor_new (const class GALGAS_semanticInstructionListForGeneration & inOperand0,
-                                                                                                     const class GALGAS_location & inOperand1,
-                                                                                                     class Compiler * inCompiler
-                                                                                                     COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_listOfSemanticInstructionListForGeneration_2D_element class_func_new (const class GALGAS_semanticInstructionListForGeneration & inOperand0,
+                                                                                                    const class GALGAS_location & inOperand1,
+                                                                                                    class Compiler * inCompiler
+                                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
@@ -8252,7 +8252,7 @@ class GALGAS_semanticDeclarationForGeneration_2D_weak : public AC_GALGAS_weak_re
                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_semanticDeclarationForGeneration_2D_weak constructor_nil (LOCATION_ARGS) ;
+  public: static class GALGAS_semanticDeclarationForGeneration_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: typeComparisonResult objectCompare (const GALGAS_semanticDeclarationForGeneration_2D_weak & inOperand) const ;
@@ -8367,11 +8367,11 @@ class GALGAS_semanticDeclarationListForGeneration : public AC_GALGAS_list {
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_semanticDeclarationListForGeneration constructor_emptyList (LOCATION_ARGS) ;
+  public: static class GALGAS_semanticDeclarationListForGeneration class_func_emptyList (LOCATION_ARGS) ;
 
-  public: static class GALGAS_semanticDeclarationListForGeneration constructor_listWithValue (const class GALGAS_string & inOperand0,
-                                                                                              const class GALGAS_semanticDeclarationForGeneration & inOperand1
-                                                                                              COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_semanticDeclarationListForGeneration class_func_listWithValue (const class GALGAS_string & inOperand0,
+                                                                                             const class GALGAS_semanticDeclarationForGeneration & inOperand1
+                                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
   public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_semanticDeclarationListForGeneration inOperand,
@@ -8543,10 +8543,10 @@ class GALGAS_semanticDeclarationListForGeneration_2D_element : public AC_GALGAS_
                                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_semanticDeclarationListForGeneration_2D_element constructor_new (const class GALGAS_string & inOperand0,
-                                                                                               const class GALGAS_semanticDeclarationForGeneration & inOperand1,
-                                                                                               class Compiler * inCompiler
-                                                                                               COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_semanticDeclarationListForGeneration_2D_element class_func_new (const class GALGAS_string & inOperand0,
+                                                                                              const class GALGAS_semanticDeclarationForGeneration & inOperand1,
+                                                                                              class Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
@@ -8603,11 +8603,11 @@ class GALGAS_signatureForGrammarAnalysis : public AC_GALGAS_list {
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_signatureForGrammarAnalysis constructor_emptyList (LOCATION_ARGS) ;
+  public: static class GALGAS_signatureForGrammarAnalysis class_func_emptyList (LOCATION_ARGS) ;
 
-  public: static class GALGAS_signatureForGrammarAnalysis constructor_listWithValue (const class GALGAS_formalArgumentPassingModeAST & inOperand0,
-                                                                                     const class GALGAS_lstring & inOperand1
-                                                                                     COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_signatureForGrammarAnalysis class_func_listWithValue (const class GALGAS_formalArgumentPassingModeAST & inOperand0,
+                                                                                    const class GALGAS_lstring & inOperand1
+                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
   public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_signatureForGrammarAnalysis inOperand,
@@ -8779,10 +8779,10 @@ class GALGAS_signatureForGrammarAnalysis_2D_element : public AC_GALGAS_root {
                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_signatureForGrammarAnalysis_2D_element constructor_new (const class GALGAS_formalArgumentPassingModeAST & inOperand0,
-                                                                                      const class GALGAS_lstring & inOperand1,
-                                                                                      class Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_signatureForGrammarAnalysis_2D_element class_func_new (const class GALGAS_formalArgumentPassingModeAST & inOperand0,
+                                                                                     const class GALGAS_lstring & inOperand1,
+                                                                                     class Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,

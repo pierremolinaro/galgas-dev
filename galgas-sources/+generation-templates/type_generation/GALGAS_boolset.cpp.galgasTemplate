@@ -16,20 +16,20 @@ mIsValid (true) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_none (UNUSED_LOCATION_ARGS) {
+GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::class_func_none (UNUSED_LOCATION_ARGS) {
   return GALGAS_%!TYPE_IDENTIFIER% (0) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_all (UNUSED_LOCATION_ARGS) {
+GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::class_func_all (UNUSED_LOCATION_ARGS) {
   return GALGAS_%!TYPE_IDENTIFIER% (uint64_t (%![FULL_SET hexString]%)) ;
 }
 
 %for (mValue) in SLOT_LIST do (idx)
 %//--------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_%![mValue identifierRepresentation]% (UNUSED_LOCATION_ARGS) {
+GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::class_func_%![mValue identifierRepresentation]% (UNUSED_LOCATION_ARGS) {
   return GALGAS_%!TYPE_IDENTIFIER% (uint64_t (1) << %![idx string]%) ;
 }
 

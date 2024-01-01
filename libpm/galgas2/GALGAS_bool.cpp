@@ -52,7 +52,7 @@ mBoolValue (inValue) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_bool::constructor_default (UNUSED_LOCATION_ARGS) {
+GALGAS_bool GALGAS_bool::class_func_default (UNUSED_LOCATION_ARGS) {
   return GALGAS_bool (false) ;
 }
 

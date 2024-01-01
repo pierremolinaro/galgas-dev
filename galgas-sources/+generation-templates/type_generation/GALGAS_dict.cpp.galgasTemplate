@@ -388,7 +388,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyDict (LOCATION_ARGS) {
+GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::class_func_emptyDict (LOCATION_ARGS) {
   GALGAS_%!TYPE_IDENTIFIER% result ;
   macroMyNew (result.mSharedDict, cSharedDictRoot_%!TYPE_IDENTIFIER% (THERE)) ;
   return result ;

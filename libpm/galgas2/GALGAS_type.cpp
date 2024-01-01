@@ -74,10 +74,10 @@ void GALGAS_type::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typelist GALGAS_type::constructor_typeList (LOCATION_ARGS) {
+GALGAS_typelist GALGAS_type::class_func_typeList (LOCATION_ARGS) {
   TC_UniqueArray <C_galgas_type_descriptor *> typeList ;
   C_galgas_type_descriptor::typeListRoot (typeList) ;
-  GALGAS_typelist result = GALGAS_typelist::constructor_emptyList (THERE) ;
+  GALGAS_typelist result = GALGAS_typelist::class_func_emptyList (THERE) ;
   for (int32_t i=0 ; i<typeList.count () ; i++) {
     result.addAssign_operation (GALGAS_type (typeList (i COMMA_THERE)) COMMA_HERE) ;
   }

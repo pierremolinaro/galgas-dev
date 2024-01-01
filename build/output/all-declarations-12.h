@@ -522,19 +522,19 @@ class GALGAS_lexiqueComponentAST : public GALGAS_semanticDeclarationAST {
                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_lexiqueComponentAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                                   const class GALGAS_lstring & inOperand1,
-                                                                   const class GALGAS_bool & inOperand2,
-                                                                   const class GALGAS_templateDelimitorListAST & inOperand3,
-                                                                   const class GALGAS_templateReplacementListAST & inOperand4,
-                                                                   const class GALGAS_lexicalAttributeListAST & inOperand5,
-                                                                   const class GALGAS_lexicalStyleListAST & inOperand6,
-                                                                   const class GALGAS_terminalDeclarationListAST & inOperand7,
-                                                                   const class GALGAS_lexicalMessageDeclarationListAST & inOperand8,
-                                                                   const class GALGAS_lexicalListDeclarationListAST & inOperand9,
-                                                                   const class GALGAS_lexicalRuleListAST & inOperand10,
-                                                                   const class GALGAS_indexingListAST & inOperand11
-                                                                   COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_lexiqueComponentAST class_func_new (const class GALGAS_bool & inOperand0,
+                                                                  const class GALGAS_lstring & inOperand1,
+                                                                  const class GALGAS_bool & inOperand2,
+                                                                  const class GALGAS_templateDelimitorListAST & inOperand3,
+                                                                  const class GALGAS_templateReplacementListAST & inOperand4,
+                                                                  const class GALGAS_lexicalAttributeListAST & inOperand5,
+                                                                  const class GALGAS_lexicalStyleListAST & inOperand6,
+                                                                  const class GALGAS_terminalDeclarationListAST & inOperand7,
+                                                                  const class GALGAS_lexicalMessageDeclarationListAST & inOperand8,
+                                                                  const class GALGAS_lexicalListDeclarationListAST & inOperand9,
+                                                                  const class GALGAS_lexicalRuleListAST & inOperand10,
+                                                                  const class GALGAS_indexingListAST & inOperand11
+                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: typeComparisonResult objectCompare (const GALGAS_lexiqueComponentAST & inOperand) const ;

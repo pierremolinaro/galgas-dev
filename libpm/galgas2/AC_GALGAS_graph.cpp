@@ -431,7 +431,7 @@ GALGAS_location cSharedGraph::locationForKey (const String & inKey,
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_stringlist cSharedGraph::keyList (void) const {
-  GALGAS_stringlist result = GALGAS_stringlist::constructor_emptyList (HERE) ;
+  GALGAS_stringlist result = GALGAS_stringlist::class_func_emptyList (HERE) ;
   for (int32_t i=0 ; i<mNodeArray.count () ; i++) {
     result.addAssign_operation (mNodeArray (i COMMA_HERE)->mKey COMMA_HERE) ;
   }
@@ -457,12 +457,12 @@ GALGAS_stringlist AC_GALGAS_graph::getter_keyList (UNUSED_LOCATION_ARGS) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lstringlist cSharedGraph::lkeyList (void) const {
-  GALGAS_lstringlist result = GALGAS_lstringlist::constructor_emptyList (HERE) ;
+  GALGAS_lstringlist result = GALGAS_lstringlist::class_func_emptyList (HERE) ;
   for (int32_t i=0 ; i<mNodeArray.count () ; i++) {
     const cGraphNode * p = mNodeArray (i COMMA_HERE) ;
     GALGAS_location loc = p->mDefinitionLocation ;
     if (! loc.isValid ()) {
-      loc = GALGAS_location::constructor_nowhere (HERE) ;
+      loc = GALGAS_location::class_func_nowhere (HERE) ;
     }
     result.addAssign_operation (GALGAS_lstring (p->mKey, loc) COMMA_HERE) ;
   }
@@ -983,7 +983,7 @@ void cSharedGraph::edges (GALGAS__32_stringlist & ioList) const {
 GALGAS__32_stringlist AC_GALGAS_graph::getter_edges (LOCATION_ARGS) const {
   GALGAS__32_stringlist result ;
   if (isValid ()) {
-    result = GALGAS__32_stringlist::constructor_emptyList (THERE) ;
+    result = GALGAS__32_stringlist::class_func_emptyList (THERE) ;
     mSharedGraph->edges (result) ;
   }
   return result ;
@@ -1042,7 +1042,7 @@ static void buildUndefinedNodeKeyList (const cGraphNode * inNode, GALGAS_stringl
 GALGAS_stringlist AC_GALGAS_graph::getter_undefinedNodeKeyList (LOCATION_ARGS) const {
   GALGAS_stringlist result ;
   if (isValid ()) {
-    result = GALGAS_stringlist::constructor_emptyList (THERE) ;
+    result = GALGAS_stringlist::class_func_emptyList (THERE) ;
     buildUndefinedNodeKeyList (mSharedGraph->root (), result) ;
   }
   return result ;
@@ -1061,7 +1061,7 @@ void cSharedGraph::internalFindCircularities (capCollectionElementArray & outInf
   TC_UniqueArray <uint32_t> nodeArray ; mDirectedGraph.getNodesInvolvedInCircularities (nodeArray) ;
 //--- Add nodes
   outInfoList.removeAllObjects() ;
-  outNodeKeyList = GALGAS_lstringlist::constructor_emptyList (HERE) ;
+  outNodeKeyList = GALGAS_lstringlist::class_func_emptyList (HERE) ;
   for (int32_t i=0 ; i<nodeArray.count () ; i++) {
     const uint32_t nodeIndex = nodeArray (i COMMA_HERE) ;
     const cGraphNode * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_HERE) ;
@@ -1097,7 +1097,7 @@ void cSharedGraph::internalNodesWithNoPredecessor (capCollectionElementArray & o
   TC_UniqueArray <uint32_t> nodeArray ; mDirectedGraph.getNodesWithNoPredecessor (nodeArray) ;
 //--- Add nodes
   outInfoList.removeAllObjects() ;
-  outNodeKeyList = GALGAS_lstringlist::constructor_emptyList (HERE) ;
+  outNodeKeyList = GALGAS_lstringlist::class_func_emptyList (HERE) ;
   for (int32_t i=0 ; i<nodeArray.count () ; i++) {
     const uint32_t nodeIndex = nodeArray (i COMMA_HERE) ;
     const cGraphNode * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_HERE) ;
@@ -1133,7 +1133,7 @@ void cSharedGraph::internalNodesWithNoSuccessor (capCollectionElementArray & out
   TC_UniqueArray <uint32_t> nodeArray ; mDirectedGraph.getNodesWithNoSuccessor (nodeArray) ;
 //--- Add nodes
   outInfoList.removeAllObjects() ;
-  outNodeKeyList = GALGAS_lstringlist::constructor_emptyList (HERE) ;
+  outNodeKeyList = GALGAS_lstringlist::class_func_emptyList (HERE) ;
   for (int32_t i=0 ; i<nodeArray.count () ; i++) {
     const uint32_t nodeIndex = nodeArray (i COMMA_HERE) ;
     const cGraphNode * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_HERE) ;
@@ -1173,7 +1173,7 @@ void cSharedGraph::internalTopologicalSort (capCollectionElementArray & outSorte
   mDirectedGraph.topologicalSort (sortedNodes, unsortedNodes) ;
 //--- Add sorted nodes
   outSortedList.removeAllObjects() ;
-  outSortedNodeKeyList = GALGAS_lstringlist::constructor_emptyList (HERE) ;
+  outSortedNodeKeyList = GALGAS_lstringlist::class_func_emptyList (HERE) ;
   for (int32_t i=0 ; i<sortedNodes.count () ; i++) {
     const uint32_t nodeIndex = sortedNodes (i COMMA_HERE) ;
     const cGraphNode * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_HERE) ;
@@ -1185,7 +1185,7 @@ void cSharedGraph::internalTopologicalSort (capCollectionElementArray & outSorte
   }
 //--- Add unsorted nodes
   outUnsortedList.removeAllObjects() ;
-  outUnsortedNodeKeyList = GALGAS_lstringlist::constructor_emptyList (HERE) ;
+  outUnsortedNodeKeyList = GALGAS_lstringlist::class_func_emptyList (HERE) ;
   for (int32_t i=0 ; i<unsortedNodes.count () ; i++) {
     const uint32_t nodeIndex = unsortedNodes (i COMMA_HERE) ;
     const cGraphNode * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_HERE) ;
@@ -1243,7 +1243,7 @@ void cSharedGraph::internalDepthFirstTopologicalSort (capCollectionElementArray 
   mDirectedGraph.depthFirstTopologicalSort (sortedNodes, unsortedNodes) ;
 //--- Add sorted nodes
   outSortedList.removeAllObjects() ;
-  outSortedNodeKeyList = GALGAS_lstringlist::constructor_emptyList (HERE) ;
+  outSortedNodeKeyList = GALGAS_lstringlist::class_func_emptyList (HERE) ;
   for (int32_t i=0 ; i<sortedNodes.count () ; i++) {
     const uint32_t nodeIndex = sortedNodes (i COMMA_HERE) ;
     const cGraphNode * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_HERE) ;
@@ -1255,7 +1255,7 @@ void cSharedGraph::internalDepthFirstTopologicalSort (capCollectionElementArray 
   }
 //--- Add unsorted nodes
   outUnsortedList.removeAllObjects() ;
-  outUnsortedNodeKeyList = GALGAS_lstringlist::constructor_emptyList (HERE) ;
+  outUnsortedNodeKeyList = GALGAS_lstringlist::class_func_emptyList (HERE) ;
   for (int32_t i=0 ; i<unsortedNodes.count () ; i++) {
     const uint32_t nodeIndex = unsortedNodes (i COMMA_HERE) ;
     const cGraphNode * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_HERE) ;
@@ -1325,7 +1325,7 @@ static void buildUndefinedNodeReferenceList (const cGraphNode * inNode,
 GALGAS_lstringlist AC_GALGAS_graph::getter_undefinedNodeReferenceList (LOCATION_ARGS) const {
   GALGAS_lstringlist result ;
   if (isValid ()) {
-    result = GALGAS_lstringlist::constructor_emptyList (THERE) ;
+    result = GALGAS_lstringlist::class_func_emptyList (THERE) ;
     buildUndefinedNodeReferenceList (mSharedGraph->root (), result) ;
   }
   return result ;

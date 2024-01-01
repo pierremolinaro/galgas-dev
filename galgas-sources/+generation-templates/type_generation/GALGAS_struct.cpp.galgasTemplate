@@ -29,7 +29,7 @@ end
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_new (%?^
+GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::class_func_new (%?^
 if [CONSTRUCTOR_ARGUMENT_LIST count] == 0 then
 if CONSTRUCTOR_NEEDS_COMPILER_VAR then
   %Compiler * inCompiler\n%

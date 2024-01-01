@@ -55,13 +55,13 @@ typeComparisonResult GALGAS_sint::objectCompare (const GALGAS_sint & inOperand) 
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_sint GALGAS_sint::constructor_max (UNUSED_LOCATION_ARGS) {
+GALGAS_sint GALGAS_sint::class_func_max (UNUSED_LOCATION_ARGS) {
   return GALGAS_sint (INT32_MAX) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_sint GALGAS_sint::constructor_min (UNUSED_LOCATION_ARGS) {
+GALGAS_sint GALGAS_sint::class_func_min (UNUSED_LOCATION_ARGS) {
   return GALGAS_sint (INT32_MIN) ;
 }
 

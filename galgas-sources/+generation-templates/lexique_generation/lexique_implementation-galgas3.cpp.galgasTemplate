@@ -323,7 +323,7 @@ void Lexique_%!LEXIQUE_IDENTIFIER%::enterToken (cTokenFor_%!LEXIQUE_IDENTIFIER% 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_stringlist Lexique_%!LEXIQUE_IDENTIFIER%::symbols (LOCATION_ARGS) {
-  GALGAS_stringlist result = GALGAS_stringlist::constructor_emptyList (THERE) ;
+  GALGAS_stringlist result = GALGAS_stringlist::class_func_emptyList (THERE) ;
 %for (mTerminalName mSentAttributeList mSyntaxErrorMessage mIsEndOfTemplateMark mAtomicSelection mStyleIndex) in LEXIQUE_ANALYSIS_CONTEXT.mTerminalList
   do %  result.addAssign_operation (GALGAS_string (%![mTerminalName utf8RepresentationEscapingQuestionMark]%) COMMA_HERE) ;\n%
   end

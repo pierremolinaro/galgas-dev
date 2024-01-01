@@ -189,14 +189,14 @@ AC_GALGAS_list (inSharedArray) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_stringlist GALGAS_stringlist::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+GALGAS_stringlist GALGAS_stringlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_stringlist (capCollectionElementArray ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_stringlist GALGAS_stringlist::constructor_listWithValue (const GALGAS_string & inOperand0
-                                                                COMMA_LOCATION_ARGS) {
+GALGAS_stringlist GALGAS_stringlist::class_func_listWithValue (const GALGAS_string & inOperand0
+                                                               COMMA_LOCATION_ARGS) {
   GALGAS_stringlist result ;
   if (inOperand0.isValid ()) {
     result = GALGAS_stringlist (capCollectionElementArray ()) ;
@@ -376,7 +376,7 @@ GALGAS_stringlist GALGAS_stringlist::add_operation (const GALGAS_stringlist & in
 GALGAS_stringlist GALGAS_stringlist::getter_subListWithRange (const GALGAS_range & inRange,
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) const {
-  GALGAS_stringlist result = GALGAS_stringlist::constructor_emptyList (THERE) ;
+  GALGAS_stringlist result = GALGAS_stringlist::class_func_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -386,7 +386,7 @@ GALGAS_stringlist GALGAS_stringlist::getter_subListWithRange (const GALGAS_range
 GALGAS_stringlist GALGAS_stringlist::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) const {
-  GALGAS_stringlist result = GALGAS_stringlist::constructor_emptyList (THERE) ;
+  GALGAS_stringlist result = GALGAS_stringlist::class_func_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -396,7 +396,7 @@ GALGAS_stringlist GALGAS_stringlist::getter_subListFromIndex (const GALGAS_uint 
 GALGAS_stringlist GALGAS_stringlist::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) const {
-  GALGAS_stringlist result = GALGAS_stringlist::constructor_emptyList (THERE) ;
+  GALGAS_stringlist result = GALGAS_stringlist::class_func_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -681,14 +681,14 @@ AC_GALGAS_list (inSharedArray) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lstringlist GALGAS_lstringlist::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+GALGAS_lstringlist GALGAS_lstringlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_lstringlist (capCollectionElementArray ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lstringlist GALGAS_lstringlist::constructor_listWithValue (const GALGAS_lstring & inOperand0
-                                                                  COMMA_LOCATION_ARGS) {
+GALGAS_lstringlist GALGAS_lstringlist::class_func_listWithValue (const GALGAS_lstring & inOperand0
+                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_lstringlist result ;
   if (inOperand0.isValid ()) {
     result = GALGAS_lstringlist (capCollectionElementArray ()) ;
@@ -868,7 +868,7 @@ GALGAS_lstringlist GALGAS_lstringlist::add_operation (const GALGAS_lstringlist &
 GALGAS_lstringlist GALGAS_lstringlist::getter_subListWithRange (const GALGAS_range & inRange,
                                                                 Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) const {
-  GALGAS_lstringlist result = GALGAS_lstringlist::constructor_emptyList (THERE) ;
+  GALGAS_lstringlist result = GALGAS_lstringlist::class_func_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -878,7 +878,7 @@ GALGAS_lstringlist GALGAS_lstringlist::getter_subListWithRange (const GALGAS_ran
 GALGAS_lstringlist GALGAS_lstringlist::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                 Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) const {
-  GALGAS_lstringlist result = GALGAS_lstringlist::constructor_emptyList (THERE) ;
+  GALGAS_lstringlist result = GALGAS_lstringlist::class_func_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -888,7 +888,7 @@ GALGAS_lstringlist GALGAS_lstringlist::getter_subListFromIndex (const GALGAS_uin
 GALGAS_lstringlist GALGAS_lstringlist::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) const {
-  GALGAS_lstringlist result = GALGAS_lstringlist::constructor_emptyList (THERE) ;
+  GALGAS_lstringlist result = GALGAS_lstringlist::class_func_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -1150,10 +1150,10 @@ mProperty_location (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lbool GALGAS_lbool::constructor_new (const GALGAS_bool & in_bool,
-                                            const GALGAS_location & in_location,
-                                            Compiler * /* inCompiler */
-                                            COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lbool GALGAS_lbool::class_func_new (const GALGAS_bool & in_bool,
+                                           const GALGAS_location & in_location,
+                                           Compiler * /* inCompiler */
+                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lbool result ;
   if (in_bool.isValid () && in_location.isValid ()) {
     result = GALGAS_lbool (in_bool, in_location) ;
@@ -1337,15 +1337,15 @@ AC_GALGAS_list (inSharedArray) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS__32_stringlist GALGAS__32_stringlist::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+GALGAS__32_stringlist GALGAS__32_stringlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS__32_stringlist (capCollectionElementArray ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS__32_stringlist GALGAS__32_stringlist::constructor_listWithValue (const GALGAS_string & inOperand0,
-                                                                        const GALGAS_string & inOperand1
-                                                                        COMMA_LOCATION_ARGS) {
+GALGAS__32_stringlist GALGAS__32_stringlist::class_func_listWithValue (const GALGAS_string & inOperand0,
+                                                                       const GALGAS_string & inOperand1
+                                                                       COMMA_LOCATION_ARGS) {
   GALGAS__32_stringlist result ;
   if (inOperand0.isValid () && inOperand1.isValid ()) {
     result = GALGAS__32_stringlist (capCollectionElementArray ()) ;
@@ -1547,7 +1547,7 @@ GALGAS__32_stringlist GALGAS__32_stringlist::add_operation (const GALGAS__32_str
 GALGAS__32_stringlist GALGAS__32_stringlist::getter_subListWithRange (const GALGAS_range & inRange,
                                                                       Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) const {
-  GALGAS__32_stringlist result = GALGAS__32_stringlist::constructor_emptyList (THERE) ;
+  GALGAS__32_stringlist result = GALGAS__32_stringlist::class_func_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -1557,7 +1557,7 @@ GALGAS__32_stringlist GALGAS__32_stringlist::getter_subListWithRange (const GALG
 GALGAS__32_stringlist GALGAS__32_stringlist::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                       Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) const {
-  GALGAS__32_stringlist result = GALGAS__32_stringlist::constructor_emptyList (THERE) ;
+  GALGAS__32_stringlist result = GALGAS__32_stringlist::class_func_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -1567,7 +1567,7 @@ GALGAS__32_stringlist GALGAS__32_stringlist::getter_subListFromIndex (const GALG
 GALGAS__32_stringlist GALGAS__32_stringlist::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                     Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) const {
-  GALGAS__32_stringlist result = GALGAS__32_stringlist::constructor_emptyList (THERE) ;
+  GALGAS__32_stringlist result = GALGAS__32_stringlist::class_func_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -2309,14 +2309,14 @@ AC_GALGAS_list (inSharedArray) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_functionlist GALGAS_functionlist::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+GALGAS_functionlist GALGAS_functionlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_functionlist (capCollectionElementArray ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_functionlist GALGAS_functionlist::constructor_listWithValue (const GALGAS_function & inOperand0
-                                                                    COMMA_LOCATION_ARGS) {
+GALGAS_functionlist GALGAS_functionlist::class_func_listWithValue (const GALGAS_function & inOperand0
+                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_functionlist result ;
   if (inOperand0.isValid ()) {
     result = GALGAS_functionlist (capCollectionElementArray ()) ;
@@ -2496,7 +2496,7 @@ GALGAS_functionlist GALGAS_functionlist::add_operation (const GALGAS_functionlis
 GALGAS_functionlist GALGAS_functionlist::getter_subListWithRange (const GALGAS_range & inRange,
                                                                   Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) const {
-  GALGAS_functionlist result = GALGAS_functionlist::constructor_emptyList (THERE) ;
+  GALGAS_functionlist result = GALGAS_functionlist::class_func_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -2506,7 +2506,7 @@ GALGAS_functionlist GALGAS_functionlist::getter_subListWithRange (const GALGAS_r
 GALGAS_functionlist GALGAS_functionlist::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                   Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) const {
-  GALGAS_functionlist result = GALGAS_functionlist::constructor_emptyList (THERE) ;
+  GALGAS_functionlist result = GALGAS_functionlist::class_func_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -2516,7 +2516,7 @@ GALGAS_functionlist GALGAS_functionlist::getter_subListFromIndex (const GALGAS_u
 GALGAS_functionlist GALGAS_functionlist::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                 Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) const {
-  GALGAS_functionlist result = GALGAS_functionlist::constructor_emptyList (THERE) ;
+  GALGAS_functionlist result = GALGAS_functionlist::class_func_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -2717,14 +2717,14 @@ AC_GALGAS_list (inSharedArray) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_luintlist GALGAS_luintlist::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+GALGAS_luintlist GALGAS_luintlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_luintlist (capCollectionElementArray ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_luintlist GALGAS_luintlist::constructor_listWithValue (const GALGAS_luint & inOperand0
-                                                              COMMA_LOCATION_ARGS) {
+GALGAS_luintlist GALGAS_luintlist::class_func_listWithValue (const GALGAS_luint & inOperand0
+                                                             COMMA_LOCATION_ARGS) {
   GALGAS_luintlist result ;
   if (inOperand0.isValid ()) {
     result = GALGAS_luintlist (capCollectionElementArray ()) ;
@@ -2904,7 +2904,7 @@ GALGAS_luintlist GALGAS_luintlist::add_operation (const GALGAS_luintlist & inOpe
 GALGAS_luintlist GALGAS_luintlist::getter_subListWithRange (const GALGAS_range & inRange,
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) const {
-  GALGAS_luintlist result = GALGAS_luintlist::constructor_emptyList (THERE) ;
+  GALGAS_luintlist result = GALGAS_luintlist::class_func_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -2914,7 +2914,7 @@ GALGAS_luintlist GALGAS_luintlist::getter_subListWithRange (const GALGAS_range &
 GALGAS_luintlist GALGAS_luintlist::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) const {
-  GALGAS_luintlist result = GALGAS_luintlist::constructor_emptyList (THERE) ;
+  GALGAS_luintlist result = GALGAS_luintlist::class_func_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -2924,7 +2924,7 @@ GALGAS_luintlist GALGAS_luintlist::getter_subListFromIndex (const GALGAS_uint & 
 GALGAS_luintlist GALGAS_luintlist::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) const {
-  GALGAS_luintlist result = GALGAS_luintlist::constructor_emptyList (THERE) ;
+  GALGAS_luintlist result = GALGAS_luintlist::class_func_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -3060,10 +3060,10 @@ mProperty_location (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_luint GALGAS_luint::constructor_new (const GALGAS_uint & in_uint,
-                                            const GALGAS_location & in_location,
-                                            Compiler * /* inCompiler */
-                                            COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_luint GALGAS_luint::class_func_new (const GALGAS_uint & in_uint,
+                                           const GALGAS_location & in_location,
+                                           Compiler * /* inCompiler */
+                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_luint result ;
   if (in_uint.isValid () && in_location.isValid ()) {
     result = GALGAS_luint (in_uint, in_location) ;
@@ -3241,14 +3241,14 @@ AC_GALGAS_list (inSharedArray) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_objectlist GALGAS_objectlist::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+GALGAS_objectlist GALGAS_objectlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_objectlist (capCollectionElementArray ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_objectlist GALGAS_objectlist::constructor_listWithValue (const GALGAS_object & inOperand0
-                                                                COMMA_LOCATION_ARGS) {
+GALGAS_objectlist GALGAS_objectlist::class_func_listWithValue (const GALGAS_object & inOperand0
+                                                               COMMA_LOCATION_ARGS) {
   GALGAS_objectlist result ;
   if (inOperand0.isValid ()) {
     result = GALGAS_objectlist (capCollectionElementArray ()) ;
@@ -3428,7 +3428,7 @@ GALGAS_objectlist GALGAS_objectlist::add_operation (const GALGAS_objectlist & in
 GALGAS_objectlist GALGAS_objectlist::getter_subListWithRange (const GALGAS_range & inRange,
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) const {
-  GALGAS_objectlist result = GALGAS_objectlist::constructor_emptyList (THERE) ;
+  GALGAS_objectlist result = GALGAS_objectlist::class_func_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -3438,7 +3438,7 @@ GALGAS_objectlist GALGAS_objectlist::getter_subListWithRange (const GALGAS_range
 GALGAS_objectlist GALGAS_objectlist::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) const {
-  GALGAS_objectlist result = GALGAS_objectlist::constructor_emptyList (THERE) ;
+  GALGAS_objectlist result = GALGAS_objectlist::class_func_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -3448,7 +3448,7 @@ GALGAS_objectlist GALGAS_objectlist::getter_subListFromIndex (const GALGAS_uint 
 GALGAS_objectlist GALGAS_objectlist::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) const {
-  GALGAS_objectlist result = GALGAS_objectlist::constructor_emptyList (THERE) ;
+  GALGAS_objectlist result = GALGAS_objectlist::class_func_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -3649,14 +3649,14 @@ AC_GALGAS_list (inSharedArray) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typelist GALGAS_typelist::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+GALGAS_typelist GALGAS_typelist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_typelist (capCollectionElementArray ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typelist GALGAS_typelist::constructor_listWithValue (const GALGAS_type & inOperand0
-                                                            COMMA_LOCATION_ARGS) {
+GALGAS_typelist GALGAS_typelist::class_func_listWithValue (const GALGAS_type & inOperand0
+                                                           COMMA_LOCATION_ARGS) {
   GALGAS_typelist result ;
   if (inOperand0.isValid ()) {
     result = GALGAS_typelist (capCollectionElementArray ()) ;
@@ -3836,7 +3836,7 @@ GALGAS_typelist GALGAS_typelist::add_operation (const GALGAS_typelist & inOperan
 GALGAS_typelist GALGAS_typelist::getter_subListWithRange (const GALGAS_range & inRange,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) const {
-  GALGAS_typelist result = GALGAS_typelist::constructor_emptyList (THERE) ;
+  GALGAS_typelist result = GALGAS_typelist::class_func_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -3846,7 +3846,7 @@ GALGAS_typelist GALGAS_typelist::getter_subListWithRange (const GALGAS_range & i
 GALGAS_typelist GALGAS_typelist::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) const {
-  GALGAS_typelist result = GALGAS_typelist::constructor_emptyList (THERE) ;
+  GALGAS_typelist result = GALGAS_typelist::class_func_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -3856,7 +3856,7 @@ GALGAS_typelist GALGAS_typelist::getter_subListFromIndex (const GALGAS_uint & in
 GALGAS_typelist GALGAS_typelist::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
-  GALGAS_typelist result = GALGAS_typelist::constructor_emptyList (THERE) ;
+  GALGAS_typelist result = GALGAS_typelist::class_func_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -4057,14 +4057,14 @@ AC_GALGAS_list (inSharedArray) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uintlist GALGAS_uintlist::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+GALGAS_uintlist GALGAS_uintlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_uintlist (capCollectionElementArray ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uintlist GALGAS_uintlist::constructor_listWithValue (const GALGAS_uint & inOperand0
-                                                            COMMA_LOCATION_ARGS) {
+GALGAS_uintlist GALGAS_uintlist::class_func_listWithValue (const GALGAS_uint & inOperand0
+                                                           COMMA_LOCATION_ARGS) {
   GALGAS_uintlist result ;
   if (inOperand0.isValid ()) {
     result = GALGAS_uintlist (capCollectionElementArray ()) ;
@@ -4244,7 +4244,7 @@ GALGAS_uintlist GALGAS_uintlist::add_operation (const GALGAS_uintlist & inOperan
 GALGAS_uintlist GALGAS_uintlist::getter_subListWithRange (const GALGAS_range & inRange,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) const {
-  GALGAS_uintlist result = GALGAS_uintlist::constructor_emptyList (THERE) ;
+  GALGAS_uintlist result = GALGAS_uintlist::class_func_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -4254,7 +4254,7 @@ GALGAS_uintlist GALGAS_uintlist::getter_subListWithRange (const GALGAS_range & i
 GALGAS_uintlist GALGAS_uintlist::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) const {
-  GALGAS_uintlist result = GALGAS_uintlist::constructor_emptyList (THERE) ;
+  GALGAS_uintlist result = GALGAS_uintlist::class_func_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -4264,7 +4264,7 @@ GALGAS_uintlist GALGAS_uintlist::getter_subListFromIndex (const GALGAS_uint & in
 GALGAS_uintlist GALGAS_uintlist::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
-  GALGAS_uintlist result = GALGAS_uintlist::constructor_emptyList (THERE) ;
+  GALGAS_uintlist result = GALGAS_uintlist::class_func_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -4465,14 +4465,14 @@ AC_GALGAS_list (inSharedArray) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint_36__34_list GALGAS_uint_36__34_list::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+GALGAS_uint_36__34_list GALGAS_uint_36__34_list::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_uint_36__34_list (capCollectionElementArray ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint_36__34_list GALGAS_uint_36__34_list::constructor_listWithValue (const GALGAS_uint_36__34_ & inOperand0
-                                                                            COMMA_LOCATION_ARGS) {
+GALGAS_uint_36__34_list GALGAS_uint_36__34_list::class_func_listWithValue (const GALGAS_uint_36__34_ & inOperand0
+                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_uint_36__34_list result ;
   if (inOperand0.isValid ()) {
     result = GALGAS_uint_36__34_list (capCollectionElementArray ()) ;
@@ -4652,7 +4652,7 @@ GALGAS_uint_36__34_list GALGAS_uint_36__34_list::add_operation (const GALGAS_uin
 GALGAS_uint_36__34_list GALGAS_uint_36__34_list::getter_subListWithRange (const GALGAS_range & inRange,
                                                                           Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) const {
-  GALGAS_uint_36__34_list result = GALGAS_uint_36__34_list::constructor_emptyList (THERE) ;
+  GALGAS_uint_36__34_list result = GALGAS_uint_36__34_list::class_func_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -4662,7 +4662,7 @@ GALGAS_uint_36__34_list GALGAS_uint_36__34_list::getter_subListWithRange (const 
 GALGAS_uint_36__34_list GALGAS_uint_36__34_list::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                           Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) const {
-  GALGAS_uint_36__34_list result = GALGAS_uint_36__34_list::constructor_emptyList (THERE) ;
+  GALGAS_uint_36__34_list result = GALGAS_uint_36__34_list::class_func_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -4672,7 +4672,7 @@ GALGAS_uint_36__34_list GALGAS_uint_36__34_list::getter_subListFromIndex (const 
 GALGAS_uint_36__34_list GALGAS_uint_36__34_list::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                         Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) const {
-  GALGAS_uint_36__34_list result = GALGAS_uint_36__34_list::constructor_emptyList (THERE) ;
+  GALGAS_uint_36__34_list result = GALGAS_uint_36__34_list::class_func_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -4873,14 +4873,14 @@ AC_GALGAS_list (inSharedArray) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bigintlist GALGAS_bigintlist::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+GALGAS_bigintlist GALGAS_bigintlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_bigintlist (capCollectionElementArray ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bigintlist GALGAS_bigintlist::constructor_listWithValue (const GALGAS_bigint & inOperand0
-                                                                COMMA_LOCATION_ARGS) {
+GALGAS_bigintlist GALGAS_bigintlist::class_func_listWithValue (const GALGAS_bigint & inOperand0
+                                                               COMMA_LOCATION_ARGS) {
   GALGAS_bigintlist result ;
   if (inOperand0.isValid ()) {
     result = GALGAS_bigintlist (capCollectionElementArray ()) ;
@@ -5060,7 +5060,7 @@ GALGAS_bigintlist GALGAS_bigintlist::add_operation (const GALGAS_bigintlist & in
 GALGAS_bigintlist GALGAS_bigintlist::getter_subListWithRange (const GALGAS_range & inRange,
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) const {
-  GALGAS_bigintlist result = GALGAS_bigintlist::constructor_emptyList (THERE) ;
+  GALGAS_bigintlist result = GALGAS_bigintlist::class_func_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -5070,7 +5070,7 @@ GALGAS_bigintlist GALGAS_bigintlist::getter_subListWithRange (const GALGAS_range
 GALGAS_bigintlist GALGAS_bigintlist::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) const {
-  GALGAS_bigintlist result = GALGAS_bigintlist::constructor_emptyList (THERE) ;
+  GALGAS_bigintlist result = GALGAS_bigintlist::class_func_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -5080,7 +5080,7 @@ GALGAS_bigintlist GALGAS_bigintlist::getter_subListFromIndex (const GALGAS_uint 
 GALGAS_bigintlist GALGAS_bigintlist::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) const {
-  GALGAS_bigintlist result = GALGAS_bigintlist::constructor_emptyList (THERE) ;
+  GALGAS_bigintlist result = GALGAS_bigintlist::class_func_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -5281,14 +5281,14 @@ AC_GALGAS_list (inSharedArray) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lbigintlist GALGAS_lbigintlist::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+GALGAS_lbigintlist GALGAS_lbigintlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_lbigintlist (capCollectionElementArray ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lbigintlist GALGAS_lbigintlist::constructor_listWithValue (const GALGAS_lbigint & inOperand0
-                                                                  COMMA_LOCATION_ARGS) {
+GALGAS_lbigintlist GALGAS_lbigintlist::class_func_listWithValue (const GALGAS_lbigint & inOperand0
+                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_lbigintlist result ;
   if (inOperand0.isValid ()) {
     result = GALGAS_lbigintlist (capCollectionElementArray ()) ;
@@ -5468,7 +5468,7 @@ GALGAS_lbigintlist GALGAS_lbigintlist::add_operation (const GALGAS_lbigintlist &
 GALGAS_lbigintlist GALGAS_lbigintlist::getter_subListWithRange (const GALGAS_range & inRange,
                                                                 Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) const {
-  GALGAS_lbigintlist result = GALGAS_lbigintlist::constructor_emptyList (THERE) ;
+  GALGAS_lbigintlist result = GALGAS_lbigintlist::class_func_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -5478,7 +5478,7 @@ GALGAS_lbigintlist GALGAS_lbigintlist::getter_subListWithRange (const GALGAS_ran
 GALGAS_lbigintlist GALGAS_lbigintlist::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                 Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) const {
-  GALGAS_lbigintlist result = GALGAS_lbigintlist::constructor_emptyList (THERE) ;
+  GALGAS_lbigintlist result = GALGAS_lbigintlist::class_func_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -5488,7 +5488,7 @@ GALGAS_lbigintlist GALGAS_lbigintlist::getter_subListFromIndex (const GALGAS_uin
 GALGAS_lbigintlist GALGAS_lbigintlist::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) const {
-  GALGAS_lbigintlist result = GALGAS_lbigintlist::constructor_emptyList (THERE) ;
+  GALGAS_lbigintlist result = GALGAS_lbigintlist::class_func_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -5624,10 +5624,10 @@ mProperty_location (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lsint GALGAS_lsint::constructor_new (const GALGAS_sint & in_sint,
-                                            const GALGAS_location & in_location,
-                                            Compiler * /* inCompiler */
-                                            COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lsint GALGAS_lsint::class_func_new (const GALGAS_sint & in_sint,
+                                           const GALGAS_location & in_location,
+                                           Compiler * /* inCompiler */
+                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lsint result ;
   if (in_sint.isValid () && in_location.isValid ()) {
     result = GALGAS_lsint (in_sint, in_location) ;
@@ -5740,10 +5740,10 @@ mProperty_location (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lsint_36__34_ GALGAS_lsint_36__34_::constructor_new (const GALGAS_sint_36__34_ & in_sint64,
-                                                            const GALGAS_location & in_location,
-                                                            Compiler * /* inCompiler */
-                                                            COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lsint_36__34_ GALGAS_lsint_36__34_::class_func_new (const GALGAS_sint_36__34_ & in_sint64,
+                                                           const GALGAS_location & in_location,
+                                                           Compiler * /* inCompiler */
+                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lsint_36__34_ result ;
   if (in_sint64.isValid () && in_location.isValid ()) {
     result = GALGAS_lsint_36__34_ (in_sint64, in_location) ;
@@ -5856,10 +5856,10 @@ mProperty_location (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_luint_36__34_ GALGAS_luint_36__34_::constructor_new (const GALGAS_uint_36__34_ & in_uint64,
-                                                            const GALGAS_location & in_location,
-                                                            Compiler * /* inCompiler */
-                                                            COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_luint_36__34_ GALGAS_luint_36__34_::class_func_new (const GALGAS_uint_36__34_ & in_uint64,
+                                                           const GALGAS_location & in_location,
+                                                           Compiler * /* inCompiler */
+                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_luint_36__34_ result ;
   if (in_uint64.isValid () && in_location.isValid ()) {
     result = GALGAS_luint_36__34_ (in_uint64, in_location) ;
@@ -5972,10 +5972,10 @@ mProperty_length (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_range GALGAS_range::constructor_new (const GALGAS_uint & in_start,
-                                            const GALGAS_uint & in_length,
-                                            Compiler * /* inCompiler */
-                                            COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_range GALGAS_range::class_func_new (const GALGAS_uint & in_start,
+                                           const GALGAS_uint & in_length,
+                                           Compiler * /* inCompiler */
+                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_range result ;
   if (in_start.isValid () && in_length.isValid ()) {
     result = GALGAS_range (in_start, in_length) ;
@@ -6085,9 +6085,9 @@ mProperty_mValue (inOperand0) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_functionlist_2D_element GALGAS_functionlist_2D_element::constructor_new (const GALGAS_function & in_mValue,
-                                                                                Compiler * /* inCompiler */
-                                                                                COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_functionlist_2D_element GALGAS_functionlist_2D_element::class_func_new (const GALGAS_function & in_mValue,
+                                                                               Compiler * /* inCompiler */
+                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_functionlist_2D_element result ;
   if (in_mValue.isValid ()) {
     result = GALGAS_functionlist_2D_element (in_mValue) ;
@@ -6191,9 +6191,9 @@ mProperty_mValue (inOperand0) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_luintlist_2D_element GALGAS_luintlist_2D_element::constructor_new (const GALGAS_luint & in_mValue,
-                                                                          Compiler * /* inCompiler */
-                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_luintlist_2D_element GALGAS_luintlist_2D_element::class_func_new (const GALGAS_luint & in_mValue,
+                                                                         Compiler * /* inCompiler */
+                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_luintlist_2D_element result ;
   if (in_mValue.isValid ()) {
     result = GALGAS_luintlist_2D_element (in_mValue) ;
@@ -6297,9 +6297,9 @@ mProperty_mValue (inOperand0) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_objectlist_2D_element GALGAS_objectlist_2D_element::constructor_new (const GALGAS_object & in_mValue,
-                                                                            Compiler * /* inCompiler */
-                                                                            COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_objectlist_2D_element GALGAS_objectlist_2D_element::class_func_new (const GALGAS_object & in_mValue,
+                                                                           Compiler * /* inCompiler */
+                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_objectlist_2D_element result ;
   if (in_mValue.isValid ()) {
     result = GALGAS_objectlist_2D_element (in_mValue) ;
@@ -6403,9 +6403,9 @@ mProperty_mValue (inOperand0) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_stringlist_2D_element GALGAS_stringlist_2D_element::constructor_new (const GALGAS_string & in_mValue,
-                                                                            Compiler * /* inCompiler */
-                                                                            COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_stringlist_2D_element GALGAS_stringlist_2D_element::class_func_new (const GALGAS_string & in_mValue,
+                                                                           Compiler * /* inCompiler */
+                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_stringlist_2D_element result ;
   if (in_mValue.isValid ()) {
     result = GALGAS_stringlist_2D_element (in_mValue) ;
@@ -6509,9 +6509,9 @@ mProperty_mValue (inOperand0) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typelist_2D_element GALGAS_typelist_2D_element::constructor_new (const GALGAS_type & in_mValue,
-                                                                        Compiler * /* inCompiler */
-                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_typelist_2D_element GALGAS_typelist_2D_element::class_func_new (const GALGAS_type & in_mValue,
+                                                                       Compiler * /* inCompiler */
+                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_typelist_2D_element result ;
   if (in_mValue.isValid ()) {
     result = GALGAS_typelist_2D_element (in_mValue) ;
@@ -6615,9 +6615,9 @@ mProperty_mValue (inOperand0) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uintlist_2D_element GALGAS_uintlist_2D_element::constructor_new (const GALGAS_uint & in_mValue,
-                                                                        Compiler * /* inCompiler */
-                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_uintlist_2D_element GALGAS_uintlist_2D_element::class_func_new (const GALGAS_uint & in_mValue,
+                                                                       Compiler * /* inCompiler */
+                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_uintlist_2D_element result ;
   if (in_mValue.isValid ()) {
     result = GALGAS_uintlist_2D_element (in_mValue) ;
@@ -6721,9 +6721,9 @@ mProperty_mValue (inOperand0) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint_36__34_list_2D_element GALGAS_uint_36__34_list_2D_element::constructor_new (const GALGAS_uint_36__34_ & in_mValue,
-                                                                                        Compiler * /* inCompiler */
-                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_uint_36__34_list_2D_element GALGAS_uint_36__34_list_2D_element::class_func_new (const GALGAS_uint_36__34_ & in_mValue,
+                                                                                       Compiler * /* inCompiler */
+                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_uint_36__34_list_2D_element result ;
   if (in_mValue.isValid ()) {
     result = GALGAS_uint_36__34_list_2D_element (in_mValue) ;
@@ -6827,9 +6827,9 @@ mProperty_mValue (inOperand0) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bigintlist_2D_element GALGAS_bigintlist_2D_element::constructor_new (const GALGAS_bigint & in_mValue,
-                                                                            Compiler * /* inCompiler */
-                                                                            COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_bigintlist_2D_element GALGAS_bigintlist_2D_element::class_func_new (const GALGAS_bigint & in_mValue,
+                                                                           Compiler * /* inCompiler */
+                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_bigintlist_2D_element result ;
   if (in_mValue.isValid ()) {
     result = GALGAS_bigintlist_2D_element (in_mValue) ;
@@ -6936,10 +6936,10 @@ mProperty_mValue_31_ (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS__32_stringlist_2D_element GALGAS__32_stringlist_2D_element::constructor_new (const GALGAS_string & in_mValue0,
-                                                                                    const GALGAS_string & in_mValue1,
-                                                                                    Compiler * /* inCompiler */
-                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS__32_stringlist_2D_element GALGAS__32_stringlist_2D_element::class_func_new (const GALGAS_string & in_mValue0,
+                                                                                   const GALGAS_string & in_mValue1,
+                                                                                   Compiler * /* inCompiler */
+                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS__32_stringlist_2D_element result ;
   if (in_mValue0.isValid () && in_mValue1.isValid ()) {
     result = GALGAS__32_stringlist_2D_element (in_mValue0, in_mValue1) ;
@@ -7052,10 +7052,10 @@ mProperty_location (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_lstring::constructor_new (const GALGAS_string & in_string,
-                                                const GALGAS_location & in_location,
-                                                Compiler * /* inCompiler */
-                                                COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lstring GALGAS_lstring::class_func_new (const GALGAS_string & in_string,
+                                               const GALGAS_location & in_location,
+                                               Compiler * /* inCompiler */
+                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lstring result ;
   if (in_string.isValid () && in_location.isValid ()) {
     result = GALGAS_lstring (in_string, in_location) ;
@@ -7168,10 +7168,10 @@ mProperty_location (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lbigint GALGAS_lbigint::constructor_new (const GALGAS_bigint & in_bigint,
-                                                const GALGAS_location & in_location,
-                                                Compiler * /* inCompiler */
-                                                COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lbigint GALGAS_lbigint::class_func_new (const GALGAS_bigint & in_bigint,
+                                               const GALGAS_location & in_location,
+                                               Compiler * /* inCompiler */
+                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lbigint result ;
   if (in_bigint.isValid () && in_location.isValid ()) {
     result = GALGAS_lbigint (in_bigint, in_location) ;
@@ -7284,10 +7284,10 @@ mProperty_location (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lchar GALGAS_lchar::constructor_new (const GALGAS_char & in_char,
-                                            const GALGAS_location & in_location,
-                                            Compiler * /* inCompiler */
-                                            COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lchar GALGAS_lchar::class_func_new (const GALGAS_char & in_char,
+                                           const GALGAS_location & in_location,
+                                           Compiler * /* inCompiler */
+                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lchar result ;
   if (in_char.isValid () && in_location.isValid ()) {
     result = GALGAS_lchar (in_char, in_location) ;
@@ -7400,10 +7400,10 @@ mProperty_location (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_ldouble GALGAS_ldouble::constructor_new (const GALGAS_double & in_double,
-                                                const GALGAS_location & in_location,
-                                                Compiler * /* inCompiler */
-                                                COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_ldouble GALGAS_ldouble::class_func_new (const GALGAS_double & in_double,
+                                               const GALGAS_location & in_location,
+                                               Compiler * /* inCompiler */
+                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_ldouble result ;
   if (in_double.isValid () && in_location.isValid ()) {
     result = GALGAS_ldouble (in_double, in_location) ;
@@ -7513,9 +7513,9 @@ mProperty_mValue (inOperand0) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lstringlist_2D_element GALGAS_lstringlist_2D_element::constructor_new (const GALGAS_lstring & in_mValue,
-                                                                              Compiler * /* inCompiler */
-                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lstringlist_2D_element GALGAS_lstringlist_2D_element::class_func_new (const GALGAS_lstring & in_mValue,
+                                                                             Compiler * /* inCompiler */
+                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lstringlist_2D_element result ;
   if (in_mValue.isValid ()) {
     result = GALGAS_lstringlist_2D_element (in_mValue) ;
@@ -7619,9 +7619,9 @@ mProperty_mValue (inOperand0) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lbigintlist_2D_element GALGAS_lbigintlist_2D_element::constructor_new (const GALGAS_lbigint & in_mValue,
-                                                                              Compiler * /* inCompiler */
-                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lbigintlist_2D_element GALGAS_lbigintlist_2D_element::class_func_new (const GALGAS_lbigint & in_mValue,
+                                                                             Compiler * /* inCompiler */
+                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lbigintlist_2D_element result ;
   if (in_mValue.isValid ()) {
     result = GALGAS_lbigintlist_2D_element (in_mValue) ;
