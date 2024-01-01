@@ -110,9 +110,9 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
     let optionalMethodMap = @optionalMethodMap {}
   #--- Struct type index
     [!?ioTypeMap makeEntry  !self.mStructTypeName ?let structTypeIndex]
-  #--- Constructors and property map
+  #--- Class functions and property map
     var @propertyMap propertyMap = {}
-    var @constructorMap constructorMap = {}
+    var @classFunctionMap classFunctionMap = {}
     var @functionSignature constructorPropertyTypeList = {}
     var @typedPropertyList typedPropertyList = {}
     var @unifiedTypeMapEntryList typesToIncludeInHeaderCompilation = {}
@@ -131,7 +131,7 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
         !propertyTypeEntry
       ]
     end
-    [!?constructorMap insertKey
+    [!?classFunctionMap insertKey
       !@lstring.new {!"new" !.here}
       !constructorPropertyTypeList
       !true
@@ -185,7 +185,7 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
       !typedPropertyList
       !propertyMap
       !typedPropertyList
-      !constructorMap
+      !classFunctionMap
       !getterMap
       !setterMap
       !instanceMethodMap
@@ -371,7 +371,7 @@ refclass @structTypeForGeneration : @semanticTypeForGeneration {
       !selfTypedefinition.mTypeName.string
       ![self.mSelfTypeEntry identifierRepresentation]
       !selfTypedefinition.mIsConcrete
-      !selfTypedefinition.mConstructorMap
+      !selfTypedefinition.mClassFunctionMap
       !selfTypedefinition.mGetterMap
       !selfTypedefinition.mSetterMap
       !selfTypedefinition.mInstanceMethodMap

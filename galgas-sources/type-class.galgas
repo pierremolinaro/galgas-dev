@@ -302,10 +302,10 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
         error mPropertyName: "'" + mPropertyName + "' is the name of a prefefined or a user defined getter"
       end
     end
-  #--- Constructors
-    var @constructorMap constructorMap = {}
+  #--- Class functions
+    var @classFunctionMap classFunctionMap = {}
     if not self.mIsAbstract then
-      [!?constructorMap insertKey
+      [!?classFunctionMap insertKey
         !@lstring.new {!"new" !@location.here}
         !constructorPropertyTypeList
         !false
@@ -368,7 +368,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
       !allTypedAttributeList
       !attributeMap
       !currentClassTypedPropertyList
-      !constructorMap
+      !classFunctionMap
       !getterMap
       !setterMap
       !instanceMethodMap
@@ -537,7 +537,7 @@ override method @classTypeForGeneration appendDeclaration1 ?!@stringset ioInclus
     !selfTypeDefinition.mTypeName.string
     ![self.mSelfTypeEntry identifierRepresentation]
     !selfTypeDefinition.mIsConcrete
-    !selfTypeDefinition.mConstructorMap
+    !selfTypeDefinition.mClassFunctionMap
     !selfTypeDefinition.mGetterMap
     !selfTypeDefinition.mSetterMap
     !selfTypeDefinition.mInstanceMethodMap

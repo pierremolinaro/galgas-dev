@@ -1,0 +1,343 @@
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#                                           
+#  Generate predefined types                
+#                                           
+#  Copyright (C) 2010, ..., 2023 Pierre Molinaro.
+#                                           
+#  e-mail : pierre@pcmolinaro.name          
+#                                           
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
+#  License as published by the Free Software Foundation.
+#                                           
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+#  details.                                 
+#                                           
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+refclass @bigintPredefinedTypeAST : @predefinedTypeAST {
+
+  #-----------------------------------------------------------------------------------------------------------------
+
+  override getter defaultInitializerName -> @string {
+    result = "zero"
+  }
+
+  #-----------------------------------------------------------------------------------------------------------------
+
+  override getter cppDeclarationString -> @string {
+    result = [filewrapper predefinedTypeGenerationTemplate.bigint_type]
+  }
+
+  #-----------------------------------------------------------------------------------------------------------------
+
+  override method getClassFunctionMap
+    ?!@unifiedTypeMap ioUnifiedTypeMap
+    !@classFunctionMap outMap {
+    outMap = {}
+    enterClassFunctionWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !name:"zero"
+      !resultTypeName:"bigint"
+      !hasLexiqueArg:false
+    )
+  }
+
+  #-----------------------------------------------------------------------------------------------------------------
+
+  override method getInstanceMethodMap
+    ?!@unifiedTypeMap ioUnifiedTypeMap
+    !@instanceMethodMap outInstanceMethodMap {
+    outInstanceMethodMap = {}
+  #--- divide, floorDivide, ceilDivide
+    [!?ioUnifiedTypeMap makeEntryFromString !"bigint" ?let bigIntType]
+    var @formalParameterSignature argList = {}
+    argList += !["" nowhere] !bigIntType !.argumentConstantIn !"inDivisor"
+    argList += !["quotient" nowhere] !bigIntType !.argumentOut !"outQuotient"
+    argList += !["remainder" nowhere] !bigIntType !.argumentOut !"outRemainder"
+    [!?outInstanceMethodMap insertKey
+      !.new {!"divideBy" !.here}
+      !.definedAsMember
+      !argList
+      !.here
+      !true
+      !.isBasic
+      !"" # No error message
+    ]
+  #  [!?outInstanceMethodMap insertKey
+  #    !.new {!"floorDivideBy" !.here}
+  #    !.definedAsMember
+  #    !argList
+  #    !.here
+  #    !true
+  #    !.isBasic
+  #    !"" # No error message
+  #  ]
+  #  [!?outInstanceMethodMap insertKey
+  #    !.new {!"ceilDivideBy" !.here}
+  #    !.definedAsMember
+  #    !argList
+  #    !.here
+  #    !true
+  #    !.isBasic
+  #    !"" # No error message
+  #  ]
+  }
+
+  #-----------------------------------------------------------------------------------------------------------------
+
+  override method getSetterMap
+    ?!@unifiedTypeMap ioUnifiedTypeMap
+    !@setterMap outSetterMap
+  {
+    outSetterMap = {}
+    enterModifierWith2InputArguments (
+      !?outSetterMap
+      !?ioUnifiedTypeMap
+      !arg1TypeName:"bool"
+      !arg1Name:"inBit"
+      !arg2TypeName:"uint"
+      !arg2Name:"inIndex"
+      !setterName:"setBitAtIndex"
+      !compilerArg:false
+    )
+    enterModifierWithInputArgument (
+      !?outSetterMap
+      !?ioUnifiedTypeMap
+      !argTypeName:"uint"
+      !argName:"inIndex"
+      !setterName:"complementBitAtIndex"
+      !compilerArg:false
+    )
+  }
+
+  #-----------------------------------------------------------------------------------------------------------------
+
+  override method getGetterMap
+    ?!@unifiedTypeMap ioUnifiedTypeMap
+    !@getterMap outMap {
+    commonGetterMapForAllTypes (!?ioUnifiedTypeMap ?outMap)
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"fitsInUInt"
+      !obsoleteName: ""
+      !returnedTypeName:"bool"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"fitsInSInt"
+      !obsoleteName: ""
+      !returnedTypeName:"bool"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"fitsInUInt64"
+      !obsoleteName: ""
+      !returnedTypeName:"bool"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"fitsInSInt64"
+      !obsoleteName: ""
+      !returnedTypeName:"bool"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"string"
+      !obsoleteName: ""
+      !returnedTypeName:"string"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"spacedString"
+      !"uint" !"inSeparation"
+      !returnedTypeName:"string"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"hexString"
+      !obsoleteName: ""
+      !returnedTypeName:"string"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWith2Arguments (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"hexStringSeparatedBy"
+      !"char"
+      !"inSeparator"
+      !"uint"
+      !"inGroupCount"
+      !returnedTypeName:"string"
+      !hasCompilerArgument:true
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"xString"
+      !obsoleteName: ""
+      !returnedTypeName:"string"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"bitCountForSignedRepresentation"
+      !obsoleteName: ""
+      !returnedTypeName:"uint"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"bitCountForUnsignedRepresentation"
+      !obsoleteName: ""
+      !returnedTypeName:"uint"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"uint"
+      !obsoleteName: ""
+      !returnedTypeName:"uint"
+      !hasCompilerArgument:true
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"sint"
+      !obsoleteName: ""
+      !returnedTypeName:"sint"
+      !hasCompilerArgument:true
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"uint64"
+      !obsoleteName: ""
+      !returnedTypeName:"uint64"
+      !hasCompilerArgument:true
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"sint64"
+      !obsoleteName: ""
+      !returnedTypeName:"sint64"
+      !hasCompilerArgument:true
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"abs"
+      !obsoleteName: ""
+      !returnedTypeName:"bigint"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"bitAtIndex"
+      !"uint" !"inBitIndex"
+      !returnedTypeName:"bool"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"isZero"
+      !obsoleteName: ""
+      !returnedTypeName:"bool"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"sign"
+      !obsoleteName: ""
+      !returnedTypeName:"sint"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"extract8ForUnsignedRepresentation"
+      !obsoleteName: ""
+      !returnedTypeName:"uintlist"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"extract8ForSignedRepresentation"
+      !obsoleteName: ""
+      !returnedTypeName:"uintlist"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"extract32ForUnsignedRepresentation"
+      !obsoleteName: ""
+      !returnedTypeName:"uintlist"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"extract32ForSignedRepresentation"
+      !obsoleteName: ""
+      !returnedTypeName:"uintlist"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"extract64ForUnsignedRepresentation"
+      !obsoleteName: ""
+      !returnedTypeName:"uint64list"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"extract64ForSignedRepresentation"
+      !obsoleteName: ""
+      !returnedTypeName:"uint64list"
+      !hasCompilerArgument:false
+    )
+  }
+
+  #-----------------------------------------------------------------------------------------------------------------
+
+  override getter getSupportedOperatorFlags -> @operators {
+    result = .generateDescriptionGetterUtilityMethod | .prefixPlusOperator | .prefixMinusOperator |
+               .infixAddOperator | .infixSubOperator | .infixMulOperator | .infixDivOperator |
+               .infixShiftOperator | .infixModOperator |
+               .infixAndOperator | .infixOrOperator | .infixXorOperator | .prefixTildeOperator |
+               .incDecOperator | .isComparable |
+               .plusEqualOperatorWithExpression | .minusEqualOperatorWithExpression |
+               .mulEqualOperatorWithExpression | .divEqualOperatorWithExpression
+  }
+
+  #-----------------------------------------------------------------------------------------------------------------
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

@@ -16,7 +16,7 @@
 class cCollectionElement__32_lstringlist : public cCollectionElement {
   public: GALGAS__32_lstringlist_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement__32_lstringlist (const GALGAS_lstring & in_mValue_30_,
                                               const GALGAS_lstring & in_mValue_31_
                                               COMMA_LOCATION_ARGS) ;
@@ -5469,7 +5469,7 @@ GALGAS_templateInstructionAST_2D_weak GALGAS_templateInstructionAST_2D_weak::ext
 class cCollectionElement_templateInstructionListAST : public cCollectionElement {
   public: GALGAS_templateInstructionListAST_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_templateInstructionListAST (const GALGAS_templateInstructionAST & in_mInstruction
                                                          COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_templateInstructionListAST (const GALGAS_templateInstructionListAST_2D_element & inElement COMMA_LOCATION_ARGS) ;
@@ -6080,7 +6080,7 @@ GALGAS_templateExpressionAST_2D_weak GALGAS_templateExpressionAST_2D_weak::extra
 class cCollectionElement_templateExpressionListAST : public cCollectionElement {
   public: GALGAS_templateExpressionListAST_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_templateExpressionListAST (const GALGAS_lstring & in_mActualSelector,
                                                         const GALGAS_templateExpressionAST & in_mExpression,
                                                         const GALGAS_location & in_mEndOfExpressionLocation
@@ -6613,7 +6613,7 @@ GALGAS_templateExpressionListAST GALGAS_templateExpressionListAST::extractObject
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult GALGAS_templateConstructorAST_2D_weak::objectCompare (const GALGAS_templateConstructorAST_2D_weak & inOperand) const {
+typeComparisonResult GALGAS_templateClassFunctionAST_2D_weak::objectCompare (const GALGAS_templateClassFunctionAST_2D_weak & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -6633,13 +6633,13 @@ typeComparisonResult GALGAS_templateConstructorAST_2D_weak::objectCompare (const
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateConstructorAST_2D_weak::GALGAS_templateConstructorAST_2D_weak (void) :
+GALGAS_templateClassFunctionAST_2D_weak::GALGAS_templateClassFunctionAST_2D_weak (void) :
 GALGAS_templateExpressionAST_2D_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateConstructorAST_2D_weak & GALGAS_templateConstructorAST_2D_weak::operator = (const GALGAS_templateConstructorAST & inSource) {
+GALGAS_templateClassFunctionAST_2D_weak & GALGAS_templateClassFunctionAST_2D_weak::operator = (const GALGAS_templateClassFunctionAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -6651,29 +6651,29 @@ GALGAS_templateConstructorAST_2D_weak & GALGAS_templateConstructorAST_2D_weak::o
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateConstructorAST_2D_weak::GALGAS_templateConstructorAST_2D_weak (const GALGAS_templateConstructorAST & inSource) :
+GALGAS_templateClassFunctionAST_2D_weak::GALGAS_templateClassFunctionAST_2D_weak (const GALGAS_templateClassFunctionAST & inSource) :
 GALGAS_templateExpressionAST_2D_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateConstructorAST_2D_weak GALGAS_templateConstructorAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_templateConstructorAST_2D_weak result ;
+GALGAS_templateClassFunctionAST_2D_weak GALGAS_templateClassFunctionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_templateClassFunctionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateConstructorAST GALGAS_templateConstructorAST_2D_weak::bang_templateConstructorAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GALGAS_templateConstructorAST result ;
+GALGAS_templateClassFunctionAST GALGAS_templateClassFunctionAST_2D_weak::bang_templateClassFunctionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GALGAS_templateClassFunctionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
     if (strongPtr == nullptr) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
-      macroValidSharedObject (strongPtr, cPtr_templateConstructorAST) ;
-      result = GALGAS_templateConstructorAST ((cPtr_templateConstructorAST *) strongPtr) ;
+      macroValidSharedObject (strongPtr, cPtr_templateClassFunctionAST) ;
+      result = GALGAS_templateClassFunctionAST ((cPtr_templateClassFunctionAST *) strongPtr) ;
     }
   }
   return result ;
@@ -6681,41 +6681,41 @@ GALGAS_templateConstructorAST GALGAS_templateConstructorAST_2D_weak::bang_templa
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @templateConstructorAST-weak generic code implementation
+//     @templateClassFunctionAST-weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateConstructorAST_2D_weak ("templateConstructorAST-weak",
-                                                                                      & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateClassFunctionAST_2D_weak ("templateClassFunctionAST-weak",
+                                                                                        & kTypeDescriptor_GALGAS_templateExpressionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_templateConstructorAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateConstructorAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_templateClassFunctionAST_2D_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateClassFunctionAST_2D_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_templateConstructorAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_templateClassFunctionAST_2D_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_templateConstructorAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_templateClassFunctionAST_2D_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateConstructorAST_2D_weak GALGAS_templateConstructorAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                            Compiler * inCompiler
-                                                                                            COMMA_LOCATION_ARGS) {
-  GALGAS_templateConstructorAST_2D_weak result ;
-  const GALGAS_templateConstructorAST_2D_weak * p = (const GALGAS_templateConstructorAST_2D_weak *) inObject.embeddedObject () ;
+GALGAS_templateClassFunctionAST_2D_weak GALGAS_templateClassFunctionAST_2D_weak::extractObject (const GALGAS_object & inObject,
+                                                                                                Compiler * inCompiler
+                                                                                                COMMA_LOCATION_ARGS) {
+  GALGAS_templateClassFunctionAST_2D_weak result ;
+  const GALGAS_templateClassFunctionAST_2D_weak * p = (const GALGAS_templateClassFunctionAST_2D_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_templateConstructorAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_templateClassFunctionAST_2D_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("templateConstructorAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("templateClassFunctionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -15466,7 +15466,7 @@ GALGAS_templateInstructionGotoColumnLocationAST_2D_weak GALGAS_templateInstructi
 class cCollectionElement_templateInstructionIfBranchListAST : public cCollectionElement {
   public: GALGAS_templateInstructionIfBranchListAST_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_templateInstructionIfBranchListAST (const GALGAS_templateExpressionAST & in_mExpression,
                                                                  const GALGAS_templateInstructionListAST & in_mInstructionList
                                                                  COMMA_LOCATION_ARGS) ;
@@ -16535,7 +16535,7 @@ GALGAS_templateInstructionExpressionForGeneration_2D_weak GALGAS_templateInstruc
 class cCollectionElement_templateInstructionListForGeneration : public cCollectionElement {
   public: GALGAS_templateInstructionListForGeneration_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_templateInstructionListForGeneration (const GALGAS_templateInstructionForGeneration & in_mInstruction
                                                                    COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_templateInstructionListForGeneration (const GALGAS_templateInstructionListForGeneration_2D_element & inElement COMMA_LOCATION_ARGS) ;

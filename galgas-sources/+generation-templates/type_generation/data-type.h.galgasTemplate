@@ -17,7 +17,7 @@ class GALGAS_data : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public: GALGAS_data (void) ;
 
-//--------------------------------- Native constructors
+//--------------------------------- Native constructor
   public: GALGAS_data (const U8Data & inData) ;
 
 %

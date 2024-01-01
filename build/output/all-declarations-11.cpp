@@ -135,7 +135,7 @@ GALGAS_bool callExtensionGetter_isLinear (const cPtr_abstractSyntaxInstructionFo
 class cCollectionElement_programListForGeneration : public cCollectionElement {
   public: GALGAS_programListForGeneration_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_programListForGeneration (const GALGAS_semanticDeclarationForGeneration & in_mDeclaration
                                                        COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_programListForGeneration (const GALGAS_programListForGeneration_2D_element & inElement COMMA_LOCATION_ARGS) ;
@@ -1460,7 +1460,7 @@ GALGAS_extensionGetterMapForGlobalCheckings GALGAS_extensionGetterMapForGlobalCh
 class cCollectionElement_galgas_33_QualifiedFeatureList : public cCollectionElement {
   public: GALGAS_galgas_33_QualifiedFeatureList_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_galgas_33_QualifiedFeatureList (const GALGAS_lstring & in_mFeatureName,
                                                              const GALGAS_lstring & in_mFeatureValue
                                                              COMMA_LOCATION_ARGS) ;

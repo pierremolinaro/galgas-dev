@@ -194,16 +194,16 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
     setterFormalOutputArgumentList += !["" nowhere] !attributeTypeIndex !.argumentOut !mPropertyName.string
     setterFormalInputArgumentList += !["" nowhere] !attributeTypeIndex !.argumentIn !mPropertyName.string
   end
-#--- Constructors
-  var @constructorMap constructorMap = {}
-  enterConstructorWithoutArgument (
-    !?constructorMap
+#--- Class functions
+  var @classFunctionMap classFunctionMap = {}
+  enterClassFunctionWithoutArgument (
+    !?classFunctionMap
     !?ioTypeMap
     !name:"emptySortedList"
     !resultTypeName:self.mSortedListTypeName.string
     !hasLexiqueArg:false
   )
-  [!?constructorMap insertKey
+  [!?classFunctionMap insertKey
     !@lstring.new {!"sortedListWithValue" !@location.here}
     !constructorAttributeTypeList
     !false
@@ -290,7 +290,7 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
     !typedAttributeList
     !{}
     !{}
-    !constructorMap
+    !classFunctionMap
     !getterMap
     !setterMap
     !instanceMethodMap
@@ -416,7 +416,7 @@ override method @sortedListTypeForGeneration appendDeclaration1
     !selfTypedefinition.mTypeName.string
     ![self.mSelfTypeEntry  identifierRepresentation]
     !selfTypedefinition.mIsConcrete
-    !selfTypedefinition.mConstructorMap
+    !selfTypedefinition.mClassFunctionMap
     !selfTypedefinition.mGetterMap
     !selfTypedefinition.mSetterMap
     !selfTypedefinition.mInstanceMethodMap

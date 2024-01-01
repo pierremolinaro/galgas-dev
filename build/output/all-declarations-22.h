@@ -411,7 +411,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
                                                                                   const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                   const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                                   const class GALGAS_bool & in_IS_5F_CONCRETE,
-                                                                                  const class GALGAS_constructorMap & in_CONSTRUCTOR_5F_MAP,
+                                                                                  const class GALGAS_classFunctionMap & in_CLASS_5F_FUNC_5F_MAP,
                                                                                   const class GALGAS_getterMap & in_GETTER_5F_MAP,
                                                                                   const class GALGAS_setterMap & in_MODIFIER_5F_MAP,
                                                                                   const class GALGAS_instanceMethodMap & in_INSTANCE_5F_METHOD_5F_MAP,
@@ -432,7 +432,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
 GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForPackage (class Compiler * inCompiler,
                                                                                      const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                      const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                     const class GALGAS_constructorMap & in_CONSTRUCTOR_5F_MAP,
+                                                                                     const class GALGAS_classFunctionMap & in_CLASS_5F_FUNC_5F_MAP,
                                                                                      const class GALGAS_classMethodMap & in_CLASS_5F_METHOD_5F_MAP
                                                                                      COMMA_LOCATION_ARGS) ;
 

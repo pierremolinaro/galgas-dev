@@ -486,7 +486,7 @@ GALGAS_templateInstructionGotoColumnLocationForGeneration_2D_weak GALGAS_templat
 class cCollectionElement_templateInstructionIfBranchListForGeneration : public cCollectionElement {
   public: GALGAS_templateInstructionIfBranchListForGeneration_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_templateInstructionIfBranchListForGeneration (const GALGAS_semanticExpressionForGeneration & in_mExpression,
                                                                            const GALGAS_templateInstructionListForGeneration & in_mInstructionList
                                                                            COMMA_LOCATION_ARGS) ;
@@ -2732,7 +2732,7 @@ GALGAS_templateInstructionForeachForGeneration_2D_weak GALGAS_templateInstructio
 class cCollectionElement_templateInstructionSwitchBranchListAST : public cCollectionElement {
   public: GALGAS_templateInstructionSwitchBranchListAST_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_templateInstructionSwitchBranchListAST (const GALGAS_lstringlist & in_mConstantList,
                                                                      const GALGAS_switchExtractedValuesListAST & in_mAssociatedValuesExtraction,
                                                                      const GALGAS_templateInstructionListAST & in_mInstructionList,
@@ -3338,7 +3338,7 @@ GALGAS_templateInstructionSwitchBranchListAST GALGAS_templateInstructionSwitchBr
 class cCollectionElement_switchExtractedValuesListAST : public cCollectionElement {
   public: GALGAS_switchExtractedValuesListAST_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_switchExtractedValuesListAST (const GALGAS_lstring & in_mExtractedValueTypeName,
                                                            const GALGAS_lstring & in_mExtractedValueName,
                                                            const GALGAS_bool & in_mMarkedAsUnused
@@ -4181,7 +4181,7 @@ GALGAS_templateInstructionSwitchAST_2D_weak GALGAS_templateInstructionSwitchAST_
 class cCollectionElement_templateInstructionSwitchBranchListForGeneration : public cCollectionElement {
   public: GALGAS_templateInstructionSwitchBranchListForGeneration_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_templateInstructionSwitchBranchListForGeneration (const GALGAS_lstringlist & in_mConstantList,
                                                                                const GALGAS_extractedAssociatedValuesForGeneration & in_mExtractedAssociatedValuesForGeneration,
                                                                                const GALGAS_uint & in_mEndOfBranchLocationIndex,
@@ -4787,7 +4787,7 @@ GALGAS_templateInstructionSwitchBranchListForGeneration GALGAS_templateInstructi
 class cCollectionElement_extractedAssociatedValuesForGeneration : public cCollectionElement {
   public: GALGAS_extractedAssociatedValuesForGeneration_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_extractedAssociatedValuesForGeneration (const GALGAS_unifiedTypeMapEntry & in_mType,
                                                                      const GALGAS_string & in_mCppName,
                                                                      const GALGAS_uint & in_mIndex
@@ -5545,7 +5545,7 @@ GALGAS_semanticDeclarationAST GALGAS_semanticDeclarationAST::extractObject (cons
 class cCollectionElement_templateDelimitorListAST : public cCollectionElement {
   public: GALGAS_templateDelimitorListAST_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_templateDelimitorListAST (const GALGAS_lstring & in_mStartString,
                                                        const GALGAS_bool & in_nonAtomicSelection,
                                                        const GALGAS_bool & in_mTemplateEndMark,
@@ -6217,7 +6217,7 @@ GALGAS_templateDelimitorListAST GALGAS_templateDelimitorListAST::extractObject (
 class cCollectionElement_templateReplacementListAST : public cCollectionElement {
   public: GALGAS_templateReplacementListAST_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_templateReplacementListAST (const GALGAS_lstring & in_mMatchString,
                                                          const GALGAS_lstring & in_mReplacementString,
                                                          const GALGAS_lstring & in_mReplacementFunction
@@ -6757,7 +6757,7 @@ GALGAS_templateReplacementListAST GALGAS_templateReplacementListAST::extractObje
 class cCollectionElement_lexicalAttributeListAST : public cCollectionElement {
   public: GALGAS_lexicalAttributeListAST_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_lexicalAttributeListAST (const GALGAS_lstring & in_mTypeName,
                                                       const GALGAS_lstring & in_mName
                                                       COMMA_LOCATION_ARGS) ;
@@ -7231,7 +7231,7 @@ GALGAS_lexicalAttributeListAST GALGAS_lexicalAttributeListAST::extractObject (co
 class cCollectionElement_lexicalStyleListAST : public cCollectionElement {
   public: GALGAS_lexicalStyleListAST_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_lexicalStyleListAST (const GALGAS_lstring & in_mName,
                                                   const GALGAS_lstring & in_mComment
                                                   COMMA_LOCATION_ARGS) ;
@@ -7705,7 +7705,7 @@ GALGAS_lexicalStyleListAST GALGAS_lexicalStyleListAST::extractObject (const GALG
 class cCollectionElement_terminalDeclarationListAST : public cCollectionElement {
   public: GALGAS_terminalDeclarationListAST_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_terminalDeclarationListAST (const GALGAS_lstring & in_mName,
                                                          const GALGAS_sentLexicalAttributeListAST & in_mSentAttributeList,
                                                          const GALGAS_lstring & in_mSyntaxErrorMessage,
@@ -8443,7 +8443,7 @@ GALGAS_terminalDeclarationListAST GALGAS_terminalDeclarationListAST::extractObje
 class cCollectionElement_lexicalMessageDeclarationListAST : public cCollectionElement {
   public: GALGAS_lexicalMessageDeclarationListAST_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_lexicalMessageDeclarationListAST (const GALGAS_lstring & in_mMessageName,
                                                                const GALGAS_lstring & in_mMessageValue
                                                                COMMA_LOCATION_ARGS) ;
@@ -8917,7 +8917,7 @@ GALGAS_lexicalMessageDeclarationListAST GALGAS_lexicalMessageDeclarationListAST:
 class cCollectionElement_lexicalListDeclarationListAST : public cCollectionElement {
   public: GALGAS_lexicalListDeclarationListAST_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_lexicalListDeclarationListAST (const GALGAS_lstring & in_mName,
                                                             const GALGAS_lstring & in_mStyle,
                                                             const GALGAS_lstring & in_mSyntaxErrorMessage,
@@ -9589,7 +9589,7 @@ GALGAS_lexicalListDeclarationListAST GALGAS_lexicalListDeclarationListAST::extra
 class cCollectionElement_lexicalRuleListAST : public cCollectionElement {
   public: GALGAS_lexicalRuleListAST_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_lexicalRuleListAST (const GALGAS_abstractLexicalRuleAST & in_mLexicalRule
                                                  COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_lexicalRuleListAST (const GALGAS_lexicalRuleListAST_2D_element & inElement COMMA_LOCATION_ARGS) ;
@@ -9997,7 +9997,7 @@ GALGAS_lexicalRuleListAST GALGAS_lexicalRuleListAST::extractObject (const GALGAS
 class cCollectionElement_indexingListAST : public cCollectionElement {
   public: GALGAS_indexingListAST_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_indexingListAST (const GALGAS_lstring & in_mIndexName,
                                               const GALGAS_lstring & in_mIndexComment
                                               COMMA_LOCATION_ARGS) ;
@@ -11097,7 +11097,7 @@ GALGAS_lexicalInstructionAST_2D_weak GALGAS_lexicalInstructionAST_2D_weak::extra
 class cCollectionElement_lexicalInstructionListAST : public cCollectionElement {
   public: GALGAS_lexicalInstructionListAST_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_lexicalInstructionListAST (const GALGAS_lexicalInstructionAST & in_mInstruction
                                                         COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_lexicalInstructionListAST (const GALGAS_lexicalInstructionListAST_2D_element & inElement COMMA_LOCATION_ARGS) ;
@@ -12130,7 +12130,7 @@ GALGAS_lexicalExplicitRuleAST_2D_weak GALGAS_lexicalExplicitRuleAST_2D_weak::ext
 class cCollectionElement_sentLexicalAttributeListAST : public cCollectionElement {
   public: GALGAS_sentLexicalAttributeListAST_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_sentLexicalAttributeListAST (const GALGAS_lstring & in_mFormalSelector,
                                                           const GALGAS_lstring & in_mAttributeName
                                                           COMMA_LOCATION_ARGS) ;
@@ -12604,7 +12604,7 @@ GALGAS_sentLexicalAttributeListAST GALGAS_sentLexicalAttributeListAST::extractOb
 class cCollectionElement_lexicalListEntryListAST : public cCollectionElement {
   public: GALGAS_lexicalListEntryListAST_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_lexicalListEntryListAST (const GALGAS_lstring & in_mEntrySpelling,
                                                       const GALGAS_lstring & in_mTerminalSpelling,
                                                       const GALGAS_bool & in_nonAtomicSelection,
@@ -14042,7 +14042,7 @@ GALGAS_lexicalStringNotMatchAST_2D_weak GALGAS_lexicalStringNotMatchAST_2D_weak:
 class cCollectionElement_lexicalSendSearchListAST : public cCollectionElement {
   public: GALGAS_lexicalSendSearchListAST_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_lexicalSendSearchListAST (const GALGAS_lstring & in_mAttributeName,
                                                        const GALGAS_lstring & in_mSearchListName
                                                        COMMA_LOCATION_ARGS) ;
@@ -14939,7 +14939,7 @@ GALGAS_lexicalErrorByDefaultAST_2D_weak GALGAS_lexicalErrorByDefaultAST_2D_weak:
 class cCollectionElement_lexicalWhileBranchListAST : public cCollectionElement {
   public: GALGAS_lexicalWhileBranchListAST_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_lexicalWhileBranchListAST (const GALGAS_lexicalExpressionAST & in_mWhileExpression,
                                                         const GALGAS_lexicalInstructionListAST & in_mWhileInstructionList
                                                         COMMA_LOCATION_ARGS) ;

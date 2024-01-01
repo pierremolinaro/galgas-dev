@@ -195,17 +195,17 @@ void routine_enterBaseGetterWithArgument_26__26__3F_getterName_3F_argSelector_3F
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'enterConstructorWithoutArgument&&?name?resultTypeName?hasLexiqueArg'
+//Routine 'enterClassFunctionWithoutArgument&&?name?resultTypeName?hasLexiqueArg'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_enterConstructorWithoutArgument_26__26__3F_name_3F_resultTypeName_3F_hasLexiqueArg (class GALGAS_constructorMap & ioArgument0,
-                                                                                                 class GALGAS_unifiedTypeMap & ioArgument1,
-                                                                                                 const class GALGAS_string constinArgument2,
-                                                                                                 const class GALGAS_string constinArgument3,
-                                                                                                 const class GALGAS_bool constinArgument4,
-                                                                                                 class Compiler * inCompiler
-                                                                                                 COMMA_LOCATION_ARGS) ;
+void routine_enterClassFunctionWithoutArgument_26__26__3F_name_3F_resultTypeName_3F_hasLexiqueArg (class GALGAS_classFunctionMap & ioArgument0,
+                                                                                                   class GALGAS_unifiedTypeMap & ioArgument1,
+                                                                                                   const class GALGAS_string constinArgument2,
+                                                                                                   const class GALGAS_string constinArgument3,
+                                                                                                   const class GALGAS_bool constinArgument4,
+                                                                                                   class Compiler * inCompiler
+                                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -270,19 +270,19 @@ class GALGAS_stringset function_forbiddenKeysForMapAndDict (class Compiler * inC
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'enterConstructorWithArgument&&?name?argTypeName?argName?resultTypeName?hasLexiqueArg'
+//Routine 'enterClassFunctionWithArgument&&?name?argTypeName?argName?resultTypeName?hasLexiqueArg'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_enterConstructorWithArgument_26__26__3F_name_3F_argTypeName_3F_argName_3F_resultTypeName_3F_hasLexiqueArg (class GALGAS_constructorMap & ioArgument0,
-                                                                                                                        class GALGAS_unifiedTypeMap & ioArgument1,
-                                                                                                                        const class GALGAS_string constinArgument2,
-                                                                                                                        const class GALGAS_string constinArgument3,
-                                                                                                                        const class GALGAS_string constinArgument4,
-                                                                                                                        const class GALGAS_string constinArgument5,
-                                                                                                                        const class GALGAS_bool constinArgument6,
-                                                                                                                        class Compiler * inCompiler
-                                                                                                                        COMMA_LOCATION_ARGS) ;
+void routine_enterClassFunctionWithArgument_26__26__3F_name_3F_argTypeName_3F_argName_3F_resultTypeName_3F_hasLexiqueArg (class GALGAS_classFunctionMap & ioArgument0,
+                                                                                                                          class GALGAS_unifiedTypeMap & ioArgument1,
+                                                                                                                          const class GALGAS_string constinArgument2,
+                                                                                                                          const class GALGAS_string constinArgument3,
+                                                                                                                          const class GALGAS_string constinArgument4,
+                                                                                                                          const class GALGAS_string constinArgument5,
+                                                                                                                          const class GALGAS_bool constinArgument6,
+                                                                                                                          class Compiler * inCompiler
+                                                                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

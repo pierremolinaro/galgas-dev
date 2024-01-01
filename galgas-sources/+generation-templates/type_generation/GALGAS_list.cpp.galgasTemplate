@@ -7,7 +7,7 @@
 class cCollectionElement_%!TYPE_IDENTIFIER% : public cCollectionElement {
   public: GALGAS_%!TYPE_IDENTIFIER%_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_%!TYPE_IDENTIFIER% (%?^
   for (propertyTypeEntry propertyName * *) in ATTRIBUTE_LIST
     do %const GALGAS_%![propertyTypeEntry identifierRepresentation]% & in_%![propertyName identifierRepresentation]

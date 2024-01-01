@@ -8470,53 +8470,53 @@ void cPtr_boolsetDeclarationAST::method_enterDeclarationInSemanticContext (const
   const GALGAS_boolsetDeclarationAST temp_5 = this ;
   extensionSetter_makeEntry (ioArgument_ioTypeMap, temp_5.readProperty_mBoolsetTypeName (), var_boolsetTypeIndex_5269, inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 132)) ;
   }
-  GALGAS_getterMap var_getterMap_5377 ;
+  GALGAS_getterMap var_getterMap_5380 ;
   {
-  routine_commonGetterMapForAllTypes_26__21_ (ioArgument_ioTypeMap, var_getterMap_5377, inCompiler  COMMA_SOURCE_FILE ("type-boolset.galgas", 134)) ;
+  routine_commonGetterMapForAllTypes_26__21_ (ioArgument_ioTypeMap, var_getterMap_5380, inCompiler  COMMA_SOURCE_FILE ("type-boolset.galgas", 134)) ;
   }
-  GALGAS_constructorMap var_constructorMap_5410 = GALGAS_constructorMap::class_func_emptyMap (SOURCE_FILE ("type-boolset.galgas", 135)) ;
+  GALGAS_classFunctionMap var_classFunctionMap_5415 = GALGAS_classFunctionMap::class_func_emptyMap (SOURCE_FILE ("type-boolset.galgas", 135)) ;
   {
-  var_constructorMap_5410.setter_insertKey (GALGAS_string ("none").getter_nowhere (SOURCE_FILE ("type-boolset.galgas", 136)), GALGAS_functionSignature::class_func_emptyList (SOURCE_FILE ("type-boolset.galgas", 136)), GALGAS_bool (false), var_boolsetTypeIndex_5269, inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 136)) ;
-  }
-  {
-  var_constructorMap_5410.setter_insertKey (GALGAS_string ("all").getter_nowhere (SOURCE_FILE ("type-boolset.galgas", 137)), GALGAS_functionSignature::class_func_emptyList (SOURCE_FILE ("type-boolset.galgas", 137)), GALGAS_bool (false), var_boolsetTypeIndex_5269, inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 137)) ;
+  var_classFunctionMap_5415.setter_insertKey (GALGAS_string ("none").getter_nowhere (SOURCE_FILE ("type-boolset.galgas", 136)), GALGAS_functionSignature::class_func_emptyList (SOURCE_FILE ("type-boolset.galgas", 136)), GALGAS_bool (false), var_boolsetTypeIndex_5269, inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 136)) ;
   }
   {
-  routine_enterBaseFinalGetterWithoutArgument_26__26__3F_getterName_3F_obsoleteName_3F_returnedTypeName_3F_hasCompilerArgument (var_getterMap_5377, ioArgument_ioTypeMap, GALGAS_string ("none"), GALGAS_string::makeEmptyString (), GALGAS_string ("bool"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("type-boolset.galgas", 138)) ;
+  var_classFunctionMap_5415.setter_insertKey (GALGAS_string ("all").getter_nowhere (SOURCE_FILE ("type-boolset.galgas", 137)), GALGAS_functionSignature::class_func_emptyList (SOURCE_FILE ("type-boolset.galgas", 137)), GALGAS_bool (false), var_boolsetTypeIndex_5269, inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 137)) ;
   }
   {
-  routine_enterBaseFinalGetterWithoutArgument_26__26__3F_getterName_3F_obsoleteName_3F_returnedTypeName_3F_hasCompilerArgument (var_getterMap_5377, ioArgument_ioTypeMap, GALGAS_string ("all"), GALGAS_string::makeEmptyString (), GALGAS_string ("bool"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("type-boolset.galgas", 146)) ;
+  routine_enterBaseFinalGetterWithoutArgument_26__26__3F_getterName_3F_obsoleteName_3F_returnedTypeName_3F_hasCompilerArgument (var_getterMap_5380, ioArgument_ioTypeMap, GALGAS_string ("none"), GALGAS_string::makeEmptyString (), GALGAS_string ("bool"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("type-boolset.galgas", 138)) ;
+  }
+  {
+  routine_enterBaseFinalGetterWithoutArgument_26__26__3F_getterName_3F_obsoleteName_3F_returnedTypeName_3F_hasCompilerArgument (var_getterMap_5380, ioArgument_ioTypeMap, GALGAS_string ("all"), GALGAS_string::makeEmptyString (), GALGAS_string ("bool"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("type-boolset.galgas", 146)) ;
   }
   const GALGAS_boolsetDeclarationAST temp_6 = this ;
-  cEnumerator_lstringlist enumerator_5957 (temp_6.readProperty_mFlagList (), kENUMERATION_UP) ;
-  while (enumerator_5957.hasCurrentObject ()) {
+  cEnumerator_lstringlist enumerator_5968 (temp_6.readProperty_mFlagList (), kENUMERATION_UP) ;
+  while (enumerator_5968.hasCurrentObject ()) {
     enumGalgasBool test_7 = kBoolTrue ;
     if (kBoolTrue == test_7) {
-      test_7 = var_constructorMap_5410.getter_hasKey (enumerator_5957.current_mValue (HERE).readProperty_string () COMMA_SOURCE_FILE ("type-boolset.galgas", 155)).operator_not (SOURCE_FILE ("type-boolset.galgas", 155)).boolEnum () ;
+      test_7 = var_classFunctionMap_5415.getter_hasKey (enumerator_5968.current_mValue (HERE).readProperty_string () COMMA_SOURCE_FILE ("type-boolset.galgas", 155)).operator_not (SOURCE_FILE ("type-boolset.galgas", 155)).boolEnum () ;
       if (kBoolTrue == test_7) {
         {
-        var_constructorMap_5410.setter_insertKey (enumerator_5957.current_mValue (HERE), GALGAS_functionSignature::class_func_emptyList (SOURCE_FILE ("type-boolset.galgas", 156)), GALGAS_bool (false), var_boolsetTypeIndex_5269, inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 156)) ;
+        var_classFunctionMap_5415.setter_insertKey (enumerator_5968.current_mValue (HERE), GALGAS_functionSignature::class_func_emptyList (SOURCE_FILE ("type-boolset.galgas", 156)), GALGAS_bool (false), var_boolsetTypeIndex_5269, inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 156)) ;
         }
         {
-        routine_enterBaseFinalGetterWithoutArgument_26__26__3F_getterName_3F_obsoleteName_3F_returnedTypeName_3F_hasCompilerArgument (var_getterMap_5377, ioArgument_ioTypeMap, enumerator_5957.current_mValue (HERE).readProperty_string (), GALGAS_string::makeEmptyString (), GALGAS_string ("bool"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("type-boolset.galgas", 157)) ;
+        routine_enterBaseFinalGetterWithoutArgument_26__26__3F_getterName_3F_obsoleteName_3F_returnedTypeName_3F_hasCompilerArgument (var_getterMap_5380, ioArgument_ioTypeMap, enumerator_5968.current_mValue (HERE).readProperty_string (), GALGAS_string::makeEmptyString (), GALGAS_string ("bool"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("type-boolset.galgas", 157)) ;
         }
       }
     }
-    enumerator_5957.gotoNextObject () ;
+    enumerator_5968.gotoNextObject () ;
   }
-  GALGAS_setterMap var_setterMap_6380 = GALGAS_setterMap::class_func_emptyMap (SOURCE_FILE ("type-boolset.galgas", 168)) ;
-  GALGAS_instanceMethodMap var_instanceMethodMap_6442 = GALGAS_instanceMethodMap::class_func_emptyMap (SOURCE_FILE ("type-boolset.galgas", 170)) ;
+  GALGAS_setterMap var_setterMap_6395 = GALGAS_setterMap::class_func_emptyMap (SOURCE_FILE ("type-boolset.galgas", 168)) ;
+  GALGAS_instanceMethodMap var_instanceMethodMap_6457 = GALGAS_instanceMethodMap::class_func_emptyMap (SOURCE_FILE ("type-boolset.galgas", 170)) ;
   {
   const GALGAS_boolsetDeclarationAST temp_8 = this ;
-  routine_addExtensions_3F__3F__3F__26__26__3F__3F_isClass_26__26__26__3F_acceptSetters (constinArgument_inExtensionMethodMapForBuildingContext, constinArgument_inExtensionGetterMapForBuildingContext, constinArgument_inExtensionSetterMapForBuildingContext, ioArgument_ioSemanticContext, ioArgument_ioTypeMap, temp_8.readProperty_mBoolsetTypeName (), GALGAS_bool (false), var_getterMap_5377, var_setterMap_6380, var_instanceMethodMap_6442, GALGAS_bool (true), inCompiler  COMMA_SOURCE_FILE ("type-boolset.galgas", 172)) ;
+  routine_addExtensions_3F__3F__3F__26__26__3F__3F_isClass_26__26__26__3F_acceptSetters (constinArgument_inExtensionMethodMapForBuildingContext, constinArgument_inExtensionGetterMapForBuildingContext, constinArgument_inExtensionSetterMapForBuildingContext, ioArgument_ioSemanticContext, ioArgument_ioTypeMap, temp_8.readProperty_mBoolsetTypeName (), GALGAS_bool (false), var_getterMap_5380, var_setterMap_6395, var_instanceMethodMap_6457, GALGAS_bool (true), inCompiler  COMMA_SOURCE_FILE ("type-boolset.galgas", 172)) ;
   }
-  GALGAS_operators var_operators_6828 = GALGAS_operators::class_func_infixAndOperator (SOURCE_FILE ("type-boolset.galgas", 186)).operator_or (GALGAS_operators::class_func_infixOrOperator (SOURCE_FILE ("type-boolset.galgas", 186)) COMMA_SOURCE_FILE ("type-boolset.galgas", 186)).operator_or (GALGAS_operators::class_func_infixXorOperator (SOURCE_FILE ("type-boolset.galgas", 186)) COMMA_SOURCE_FILE ("type-boolset.galgas", 186)).operator_or (GALGAS_operators::class_func_prefixTildeOperator (SOURCE_FILE ("type-boolset.galgas", 186)) COMMA_SOURCE_FILE ("type-boolset.galgas", 186)).operator_or (GALGAS_operators::class_func_generateDescriptionGetterUtilityMethod (SOURCE_FILE ("type-boolset.galgas", 187)) COMMA_SOURCE_FILE ("type-boolset.galgas", 186)).operator_or (GALGAS_operators::class_func_infixSubOperator (SOURCE_FILE ("type-boolset.galgas", 187)) COMMA_SOURCE_FILE ("type-boolset.galgas", 187)).operator_or (GALGAS_operators::class_func_isComparable (SOURCE_FILE ("type-boolset.galgas", 187)) COMMA_SOURCE_FILE ("type-boolset.galgas", 187)) ;
+  GALGAS_operators var_operators_6843 = GALGAS_operators::class_func_infixAndOperator (SOURCE_FILE ("type-boolset.galgas", 186)).operator_or (GALGAS_operators::class_func_infixOrOperator (SOURCE_FILE ("type-boolset.galgas", 186)) COMMA_SOURCE_FILE ("type-boolset.galgas", 186)).operator_or (GALGAS_operators::class_func_infixXorOperator (SOURCE_FILE ("type-boolset.galgas", 186)) COMMA_SOURCE_FILE ("type-boolset.galgas", 186)).operator_or (GALGAS_operators::class_func_prefixTildeOperator (SOURCE_FILE ("type-boolset.galgas", 186)) COMMA_SOURCE_FILE ("type-boolset.galgas", 186)).operator_or (GALGAS_operators::class_func_generateDescriptionGetterUtilityMethod (SOURCE_FILE ("type-boolset.galgas", 187)) COMMA_SOURCE_FILE ("type-boolset.galgas", 186)).operator_or (GALGAS_operators::class_func_infixSubOperator (SOURCE_FILE ("type-boolset.galgas", 187)) COMMA_SOURCE_FILE ("type-boolset.galgas", 187)).operator_or (GALGAS_operators::class_func_isComparable (SOURCE_FILE ("type-boolset.galgas", 187)) COMMA_SOURCE_FILE ("type-boolset.galgas", 187)) ;
   const GALGAS_boolsetDeclarationAST temp_9 = this ;
   const GALGAS_boolsetDeclarationAST temp_10 = this ;
   const GALGAS_boolsetDeclarationAST temp_11 = this ;
-  GALGAS_unifiedTypeDefinition var_typeDefinition_7041 = GALGAS_unifiedTypeDefinition::class_func_new (temp_9.readProperty_mBoolsetTypeName (), temp_10.readProperty_isPredefined (), GALGAS_bool (true), GALGAS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("type-boolset.galgas", 193)), GALGAS_typeKindEnum::class_func_boolsetType (SOURCE_FILE ("type-boolset.galgas", 194)), GALGAS_bool (false), GALGAS_typedPropertyList::class_func_emptyList (SOURCE_FILE ("type-boolset.galgas", 196)), GALGAS_propertyMap::class_func_emptyMap (SOURCE_FILE ("type-boolset.galgas", 197)), GALGAS_typedPropertyList::class_func_emptyList (SOURCE_FILE ("type-boolset.galgas", 198)), var_constructorMap_5410, var_getterMap_5377, var_setterMap_6380, var_instanceMethodMap_6442, GALGAS_classMethodMap::class_func_emptyMap (SOURCE_FILE ("type-boolset.galgas", 203)), GALGAS_optionalMethodMap::class_func_emptyMap (SOURCE_FILE ("type-boolset.galgas", 204)), GALGAS_enumerationDescriptorList::class_func_emptyList (SOURCE_FILE ("type-boolset.galgas", 205)), var_operators_6828, GALGAS_functionSignature::class_func_emptyList (SOURCE_FILE ("type-boolset.galgas", 207)), GALGAS_constantIndexMap::class_func_emptyMap (SOURCE_FILE ("type-boolset.galgas", 208)), GALGAS_enumConstantList::class_func_emptyList (SOURCE_FILE ("type-boolset.galgas", 209)), GALGAS_mapSearchMethodListAST::class_func_emptyList (SOURCE_FILE ("type-boolset.galgas", 210)), GALGAS_mapSearchMethodListAST::class_func_emptyList (SOURCE_FILE ("type-boolset.galgas", 211)), GALGAS_bool (false), GALGAS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("type-boolset.galgas", 213)), GALGAS_string ("none"), GALGAS_string ("boolset-").add_operation (temp_11.readProperty_mBoolsetTypeName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("type-boolset.galgas", 215)), inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 215)), GALGAS_headerKind::class_func_oneHeader (SOURCE_FILE ("type-boolset.galgas", 216)), inCompiler  COMMA_SOURCE_FILE ("type-boolset.galgas", 189)) ;
+  GALGAS_unifiedTypeDefinition var_typeDefinition_7056 = GALGAS_unifiedTypeDefinition::class_func_new (temp_9.readProperty_mBoolsetTypeName (), temp_10.readProperty_isPredefined (), GALGAS_bool (true), GALGAS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("type-boolset.galgas", 193)), GALGAS_typeKindEnum::class_func_boolsetType (SOURCE_FILE ("type-boolset.galgas", 194)), GALGAS_bool (false), GALGAS_typedPropertyList::class_func_emptyList (SOURCE_FILE ("type-boolset.galgas", 196)), GALGAS_propertyMap::class_func_emptyMap (SOURCE_FILE ("type-boolset.galgas", 197)), GALGAS_typedPropertyList::class_func_emptyList (SOURCE_FILE ("type-boolset.galgas", 198)), var_classFunctionMap_5415, var_getterMap_5380, var_setterMap_6395, var_instanceMethodMap_6457, GALGAS_classMethodMap::class_func_emptyMap (SOURCE_FILE ("type-boolset.galgas", 203)), GALGAS_optionalMethodMap::class_func_emptyMap (SOURCE_FILE ("type-boolset.galgas", 204)), GALGAS_enumerationDescriptorList::class_func_emptyList (SOURCE_FILE ("type-boolset.galgas", 205)), var_operators_6843, GALGAS_functionSignature::class_func_emptyList (SOURCE_FILE ("type-boolset.galgas", 207)), GALGAS_constantIndexMap::class_func_emptyMap (SOURCE_FILE ("type-boolset.galgas", 208)), GALGAS_enumConstantList::class_func_emptyList (SOURCE_FILE ("type-boolset.galgas", 209)), GALGAS_mapSearchMethodListAST::class_func_emptyList (SOURCE_FILE ("type-boolset.galgas", 210)), GALGAS_mapSearchMethodListAST::class_func_emptyList (SOURCE_FILE ("type-boolset.galgas", 211)), GALGAS_bool (false), GALGAS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("type-boolset.galgas", 213)), GALGAS_string ("none"), GALGAS_string ("boolset-").add_operation (temp_11.readProperty_mBoolsetTypeName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("type-boolset.galgas", 215)), inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 215)), GALGAS_headerKind::class_func_oneHeader (SOURCE_FILE ("type-boolset.galgas", 216)), inCompiler  COMMA_SOURCE_FILE ("type-boolset.galgas", 189)) ;
   {
-  extensionSetter_insertType (ioArgument_ioTypeMap, var_typeDefinition_7041.readProperty_mTypeName (), var_typeDefinition_7041, inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 218)) ;
+  extensionSetter_insertType (ioArgument_ioTypeMap, var_typeDefinition_7056.readProperty_mTypeName (), var_typeDefinition_7056, inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 218)) ;
   }
 }
 //--------------------------------------------------------------------------------------------------
@@ -8540,16 +8540,16 @@ void cPtr_boolsetDeclarationAST::method_semanticAnalysis (GALGAS_lstringlist & /
     test_0 = GALGAS_bool (kIsStrictSup, temp_1.readProperty_mFlagList ().getter_count (SOURCE_FILE ("type-boolset.galgas", 236)).objectCompare (GALGAS_uint (uint32_t (64U)))).boolEnum () ;
     if (kBoolTrue == test_0) {
       const GALGAS_boolsetDeclarationAST temp_2 = this ;
-      GALGAS_location var_s_8568 = temp_2.readProperty_mFlagList ().getter_mValueAtIndex (GALGAS_uint (uint32_t (64U)), inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 237)).readProperty_location () ;
+      GALGAS_location var_s_8585 = temp_2.readProperty_mFlagList ().getter_mValueAtIndex (GALGAS_uint (uint32_t (64U)), inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 237)).readProperty_location () ;
       const GALGAS_boolsetDeclarationAST temp_3 = this ;
       TC_Array <C_FixItDescription> fixItArray4 ;
-      inCompiler->emitSemanticError (var_s_8568, GALGAS_string ("max flags count is 64 (here: ").add_operation (temp_3.readProperty_mFlagList ().getter_count (SOURCE_FILE ("type-boolset.galgas", 238)).getter_string (SOURCE_FILE ("type-boolset.galgas", 238)), inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 238)).add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 238)), fixItArray4  COMMA_SOURCE_FILE ("type-boolset.galgas", 238)) ;
+      inCompiler->emitSemanticError (var_s_8585, GALGAS_string ("max flags count is 64 (here: ").add_operation (temp_3.readProperty_mFlagList ().getter_count (SOURCE_FILE ("type-boolset.galgas", 238)).getter_string (SOURCE_FILE ("type-boolset.galgas", 238)), inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 238)).add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 238)), fixItArray4  COMMA_SOURCE_FILE ("type-boolset.galgas", 238)) ;
     }
   }
   const GALGAS_boolsetDeclarationAST temp_5 = this ;
-  GALGAS_lstring var_boolsetNameForUsefulness_8723 = function_typeNameForUsefulEntitiesGraph (temp_5.readProperty_mBoolsetTypeName (), inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 241)) ;
+  GALGAS_lstring var_boolsetNameForUsefulness_8740 = function_typeNameForUsefulEntitiesGraph (temp_5.readProperty_mBoolsetTypeName (), inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 241)) ;
   {
-  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_boolsetNameForUsefulness_8723, var_boolsetNameForUsefulness_8723, inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 242)) ;
+  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_boolsetNameForUsefulness_8740, var_boolsetNameForUsefulness_8740, inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 242)) ;
   }
   const GALGAS_boolsetDeclarationAST temp_6 = this ;
   const GALGAS_boolsetDeclarationAST temp_7 = this ;
@@ -8797,10 +8797,10 @@ void cPtr_boolsetTypeForGeneration::method_appendDeclaration_31_ (GALGAS_strings
                                                                   Compiler * inCompiler
                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_boolsetTypeForGeneration temp_0 = this ;
-  GALGAS_unifiedTypeDefinition var_typedefinition_10298 = extensionGetter_definition (temp_0.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 282)) ;
+  GALGAS_unifiedTypeDefinition var_typedefinition_10315 = extensionGetter_definition (temp_0.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 282)) ;
   const GALGAS_boolsetTypeForGeneration temp_1 = this ;
-  outArgument_outHeader = GALGAS_string (filewrapperTemplate_structGenerationTemplate_boolsetTypeHeader_31_ (inCompiler, var_typedefinition_10298.readProperty_mTypeName ().readProperty_string (), var_typedefinition_10298.readProperty_mTypeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("type-boolset.galgas", 285)), temp_1.readProperty_mFlagList () COMMA_SOURCE_FILE ("type-boolset.galgas", 283))) ;
-  outArgument_outHeader.plusAssign_operation(GALGAS_string (filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (inCompiler, var_typedefinition_10298.readProperty_mTypeName ().readProperty_string (), var_typedefinition_10298.readProperty_mTypeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("type-boolset.galgas", 290)), var_typedefinition_10298.readProperty_mIsConcrete (), var_typedefinition_10298.readProperty_mConstructorMap (), var_typedefinition_10298.readProperty_mGetterMap (), var_typedefinition_10298.readProperty_mSetterMap (), var_typedefinition_10298.readProperty_mInstanceMethodMap (), var_typedefinition_10298.readProperty_mClassMethodMap (), var_typedefinition_10298.readProperty_mOptionalMethodMap (), var_typedefinition_10298.readProperty_mEnumerationDescriptor (), var_typedefinition_10298.readProperty_mHandledOperatorFlags (), var_typedefinition_10298.readProperty_mAddAssignOperatorArguments (), var_typedefinition_10298.readProperty_mTypeForEnumeratedElement () COMMA_SOURCE_FILE ("type-boolset.galgas", 288))), inCompiler  COMMA_SOURCE_FILE ("type-boolset.galgas", 288)) ;
+  outArgument_outHeader = GALGAS_string (filewrapperTemplate_structGenerationTemplate_boolsetTypeHeader_31_ (inCompiler, var_typedefinition_10315.readProperty_mTypeName ().readProperty_string (), var_typedefinition_10315.readProperty_mTypeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("type-boolset.galgas", 285)), temp_1.readProperty_mFlagList () COMMA_SOURCE_FILE ("type-boolset.galgas", 283))) ;
+  outArgument_outHeader.plusAssign_operation(GALGAS_string (filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (inCompiler, var_typedefinition_10315.readProperty_mTypeName ().readProperty_string (), var_typedefinition_10315.readProperty_mTypeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("type-boolset.galgas", 290)), var_typedefinition_10315.readProperty_mIsConcrete (), var_typedefinition_10315.readProperty_mClassFunctionMap (), var_typedefinition_10315.readProperty_mGetterMap (), var_typedefinition_10315.readProperty_mSetterMap (), var_typedefinition_10315.readProperty_mInstanceMethodMap (), var_typedefinition_10315.readProperty_mClassMethodMap (), var_typedefinition_10315.readProperty_mOptionalMethodMap (), var_typedefinition_10315.readProperty_mEnumerationDescriptor (), var_typedefinition_10315.readProperty_mHandledOperatorFlags (), var_typedefinition_10315.readProperty_mAddAssignOperatorArguments (), var_typedefinition_10315.readProperty_mTypeForEnumeratedElement () COMMA_SOURCE_FILE ("type-boolset.galgas", 288))), inCompiler  COMMA_SOURCE_FILE ("type-boolset.galgas", 288)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -9055,52 +9055,52 @@ void cPtr_classDeclarationAST::method_enterDeclarationInSemanticContext (const G
     }
     enumerator_10845.gotoNextObject () ;
   }
-  GALGAS_constructorMap var_constructorMap_11658 = GALGAS_constructorMap::class_func_emptyMap (SOURCE_FILE ("type-class.galgas", 306)) ;
+  GALGAS_classFunctionMap var_classFunctionMap_11663 = GALGAS_classFunctionMap::class_func_emptyMap (SOURCE_FILE ("type-class.galgas", 306)) ;
   enumGalgasBool test_19 = kBoolTrue ;
   if (kBoolTrue == test_19) {
     const GALGAS_classDeclarationAST temp_20 = this ;
     test_19 = temp_20.readProperty_mIsAbstract ().operator_not (SOURCE_FILE ("type-class.galgas", 307)).boolEnum () ;
     if (kBoolTrue == test_19) {
       {
-      var_constructorMap_11658.setter_insertKey (GALGAS_lstring::class_func_new (GALGAS_string ("new"), GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 309)), inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 309)), var_constructorPropertyTypeList_10472, GALGAS_bool (false), var_classIndex_10376, inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 308)) ;
+      var_classFunctionMap_11663.setter_insertKey (GALGAS_lstring::class_func_new (GALGAS_string ("new"), GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 309)), inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 309)), var_constructorPropertyTypeList_10472, GALGAS_bool (false), var_classIndex_10376, inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 308)) ;
       }
     }
   }
-  GALGAS_typedPropertyList var_currentClassTypedPropertyList_11935 = GALGAS_typedPropertyList::class_func_emptyList (SOURCE_FILE ("type-class.galgas", 316)) ;
-  GALGAS_typedPropertyList var_allTypedAttributeList_11997 = var_inheritedTypedPropertyList_7905 ;
+  GALGAS_typedPropertyList var_currentClassTypedPropertyList_11944 = GALGAS_typedPropertyList::class_func_emptyList (SOURCE_FILE ("type-class.galgas", 316)) ;
+  GALGAS_typedPropertyList var_allTypedAttributeList_12006 = var_inheritedTypedPropertyList_7905 ;
   const GALGAS_classDeclarationAST temp_21 = this ;
-  cEnumerator_propertyInCollectionListAST enumerator_12132 (temp_21.readProperty_mPropertyList (), kENUMERATION_UP) ;
-  while (enumerator_12132.hasCurrentObject ()) {
+  cEnumerator_propertyInCollectionListAST enumerator_12141 (temp_21.readProperty_mPropertyList (), kENUMERATION_UP) ;
+  while (enumerator_12141.hasCurrentObject ()) {
     enumGalgasBool test_22 = kBoolTrue ;
     if (kBoolTrue == test_22) {
-      test_22 = enumerator_12132.current_mInitialization (HERE).getter_isSome (SOURCE_FILE ("type-class.galgas", 319)).boolEnum () ;
+      test_22 = enumerator_12141.current_mInitialization (HERE).getter_isSome (SOURCE_FILE ("type-class.galgas", 319)).boolEnum () ;
       if (kBoolTrue == test_22) {
         TC_Array <C_FixItDescription> fixItArray23 ;
-        inCompiler->emitSemanticError (enumerator_12132.current_mPropertyName (HERE).readProperty_location (), GALGAS_string ("property initialization is not handled for a class"), fixItArray23  COMMA_SOURCE_FILE ("type-class.galgas", 320)) ;
+        inCompiler->emitSemanticError (enumerator_12141.current_mPropertyName (HERE).readProperty_location (), GALGAS_string ("property initialization is not handled for a class"), fixItArray23  COMMA_SOURCE_FILE ("type-class.galgas", 320)) ;
       }
     }
-    GALGAS_unifiedTypeMapEntry var_attributeTypeIndex_12356 ;
+    GALGAS_unifiedTypeMapEntry var_attributeTypeIndex_12365 ;
     {
-    extensionSetter_makeEntry (ioArgument_ioTypeMap, enumerator_12132.current_mPropertyTypeName (HERE), var_attributeTypeIndex_12356, inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 322)) ;
+    extensionSetter_makeEntry (ioArgument_ioTypeMap, enumerator_12141.current_mPropertyTypeName (HERE), var_attributeTypeIndex_12365, inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 322)) ;
     }
-    var_currentClassTypedPropertyList_11935.addAssign_operation (var_attributeTypeIndex_12356, enumerator_12132.current_mPropertyName (HERE), enumerator_12132.current_isConstant (HERE).operator_not (SOURCE_FILE ("type-class.galgas", 323)), enumerator_12132.current_selector (HERE)  COMMA_SOURCE_FILE ("type-class.galgas", 323)) ;
-    var_allTypedAttributeList_11997.addAssign_operation (var_attributeTypeIndex_12356, enumerator_12132.current_mPropertyName (HERE), enumerator_12132.current_isConstant (HERE).operator_not (SOURCE_FILE ("type-class.galgas", 324)), enumerator_12132.current_selector (HERE)  COMMA_SOURCE_FILE ("type-class.galgas", 324)) ;
-    enumerator_12132.gotoNextObject () ;
+    var_currentClassTypedPropertyList_11944.addAssign_operation (var_attributeTypeIndex_12365, enumerator_12141.current_mPropertyName (HERE), enumerator_12141.current_isConstant (HERE).operator_not (SOURCE_FILE ("type-class.galgas", 323)), enumerator_12141.current_selector (HERE)  COMMA_SOURCE_FILE ("type-class.galgas", 323)) ;
+    var_allTypedAttributeList_12006.addAssign_operation (var_attributeTypeIndex_12365, enumerator_12141.current_mPropertyName (HERE), enumerator_12141.current_isConstant (HERE).operator_not (SOURCE_FILE ("type-class.galgas", 324)), enumerator_12141.current_selector (HERE)  COMMA_SOURCE_FILE ("type-class.galgas", 324)) ;
+    enumerator_12141.gotoNextObject () ;
   }
-  cEnumerator_typedPropertyList enumerator_12713 (var_currentClassTypedPropertyList_11935, kENUMERATION_UP) ;
-  while (enumerator_12713.hasCurrentObject ()) {
+  cEnumerator_typedPropertyList enumerator_12722 (var_currentClassTypedPropertyList_11944, kENUMERATION_UP) ;
+  while (enumerator_12722.hasCurrentObject ()) {
     enumGalgasBool test_24 = kBoolTrue ;
     if (kBoolTrue == test_24) {
-      test_24 = enumerator_12713.current_hasSetter (HERE).boolEnum () ;
+      test_24 = enumerator_12722.current_hasSetter (HERE).boolEnum () ;
       if (kBoolTrue == test_24) {
         {
         GALGAS_formalParameterSignature temp_25 = GALGAS_formalParameterSignature::class_func_emptyList (SOURCE_FILE ("type-class.galgas", 332)) ;
-        temp_25.addAssign_operation (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("type-class.galgas", 332)), enumerator_12713.current_mPropertyTypeEntry (HERE), GALGAS_formalArgumentPassingModeAST::class_func_argumentIn (SOURCE_FILE ("type-class.galgas", 332)), enumerator_12713.current_mPropertyName (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("type-class.galgas", 332)) ;
-        var_setterMap_7823.setter_insertKey (GALGAS_lstring::class_func_new (GALGAS_string ("set").add_operation (enumerator_12713.current_mPropertyName (HERE).readProperty_string ().getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("type-class.galgas", 330)), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 330)), GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 330)), inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 330)), GALGAS_methodKind::class_func_definedAsMember (SOURCE_FILE ("type-class.galgas", 331)), temp_25, GALGAS_bool (false), GALGAS_methodQualifier::class_func_isBasicFinal (SOURCE_FILE ("type-class.galgas", 334)), GALGAS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 329)) ;
+        temp_25.addAssign_operation (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("type-class.galgas", 332)), enumerator_12722.current_mPropertyTypeEntry (HERE), GALGAS_formalArgumentPassingModeAST::class_func_argumentIn (SOURCE_FILE ("type-class.galgas", 332)), enumerator_12722.current_mPropertyName (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("type-class.galgas", 332)) ;
+        var_setterMap_7823.setter_insertKey (GALGAS_lstring::class_func_new (GALGAS_string ("set").add_operation (enumerator_12722.current_mPropertyName (HERE).readProperty_string ().getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("type-class.galgas", 330)), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 330)), GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 330)), inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 330)), GALGAS_methodKind::class_func_definedAsMember (SOURCE_FILE ("type-class.galgas", 331)), temp_25, GALGAS_bool (false), GALGAS_methodQualifier::class_func_isBasicFinal (SOURCE_FILE ("type-class.galgas", 334)), GALGAS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 329)) ;
         }
       }
     }
-    enumerator_12713.gotoNextObject () ;
+    enumerator_12722.gotoNextObject () ;
   }
   {
   const GALGAS_classDeclarationAST temp_26 = this ;
@@ -9115,21 +9115,21 @@ void cPtr_classDeclarationAST::method_enterDeclarationInSemanticContext (const G
   }else if (kBoolFalse == test_30) {
     temp_29 = GALGAS_string ("default") ;
   }
-  GALGAS_string var_defaultConstructorName_13647 = temp_29 ;
-  cEnumerator_typedPropertyList enumerator_13747 (var_allTypedAttributeList_11997, kENUMERATION_UP) ;
-  bool bool_31 = GALGAS_bool (kIsNotEqual, var_defaultConstructorName_13647.objectCompare (GALGAS_string::makeEmptyString ())).isValidAndTrue () ;
-  if (enumerator_13747.hasCurrentObject () && bool_31) {
-    while (enumerator_13747.hasCurrentObject () && bool_31) {
+  GALGAS_string var_defaultConstructorName_13656 = temp_29 ;
+  cEnumerator_typedPropertyList enumerator_13756 (var_allTypedAttributeList_12006, kENUMERATION_UP) ;
+  bool bool_31 = GALGAS_bool (kIsNotEqual, var_defaultConstructorName_13656.objectCompare (GALGAS_string::makeEmptyString ())).isValidAndTrue () ;
+  if (enumerator_13756.hasCurrentObject () && bool_31) {
+    while (enumerator_13756.hasCurrentObject () && bool_31) {
       enumGalgasBool test_32 = kBoolTrue ;
       if (kBoolTrue == test_32) {
-        test_32 = GALGAS_bool (kIsEqual, extensionGetter_definition (enumerator_13747.current_mPropertyTypeEntry (HERE), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 356)).readProperty_defaultConstructorName ().objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+        test_32 = GALGAS_bool (kIsEqual, extensionGetter_definition (enumerator_13756.current_mPropertyTypeEntry (HERE), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 356)).readProperty_defaultConstructorName ().objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
         if (kBoolTrue == test_32) {
-          var_defaultConstructorName_13647 = GALGAS_string::makeEmptyString () ;
+          var_defaultConstructorName_13656 = GALGAS_string::makeEmptyString () ;
         }
       }
-      enumerator_13747.gotoNextObject () ;
-      if (enumerator_13747.hasCurrentObject ()) {
-        bool_31 = GALGAS_bool (kIsNotEqual, var_defaultConstructorName_13647.objectCompare (GALGAS_string::makeEmptyString ())).isValidAndTrue () ;
+      enumerator_13756.gotoNextObject () ;
+      if (enumerator_13756.hasCurrentObject ()) {
+        bool_31 = GALGAS_bool (kIsNotEqual, var_defaultConstructorName_13656.objectCompare (GALGAS_string::makeEmptyString ())).isValidAndTrue () ;
       }
     }
   }
@@ -9146,8 +9146,8 @@ void cPtr_classDeclarationAST::method_enterDeclarationInSemanticContext (const G
     temp_38 = GALGAS_operators::class_func_isComparable (SOURCE_FILE ("type-class.galgas", 378)) ;
   }
   const GALGAS_classDeclarationAST temp_40 = this ;
-  GALGAS_unifiedTypeDefinition var_typeDefinition_13975 = GALGAS_unifiedTypeDefinition::class_func_new (temp_33.readProperty_mClassTypeName (), temp_34.readProperty_isPredefined (), temp_35.readProperty_mIsAbstract ().operator_not (SOURCE_FILE ("type-class.galgas", 364)), var_superClassIndex_8026, GALGAS_typeKindEnum::class_func_classType (temp_36.readProperty_mIsReference ()  COMMA_SOURCE_FILE ("type-class.galgas", 366)), GALGAS_bool (false), var_allTypedAttributeList_11997, var_attributeMap_7953, var_currentClassTypedPropertyList_11935, var_constructorMap_11658, var_getterMap_7794, var_setterMap_7823, var_instanceMethodMap_7860, GALGAS_classMethodMap::class_func_emptyMap (SOURCE_FILE ("type-class.galgas", 375)), GALGAS_optionalMethodMap::class_func_emptyMap (SOURCE_FILE ("type-class.galgas", 376)), GALGAS_enumerationDescriptorList::class_func_emptyList (SOURCE_FILE ("type-class.galgas", 377)), temp_38, GALGAS_functionSignature::class_func_emptyList (SOURCE_FILE ("type-class.galgas", 379)), GALGAS_constantIndexMap::class_func_emptyMap (SOURCE_FILE ("type-class.galgas", 380)), GALGAS_enumConstantList::class_func_emptyList (SOURCE_FILE ("type-class.galgas", 381)), GALGAS_mapSearchMethodListAST::class_func_emptyList (SOURCE_FILE ("type-class.galgas", 382)), GALGAS_mapSearchMethodListAST::class_func_emptyList (SOURCE_FILE ("type-class.galgas", 383)), var_generateHeaderInSeparateFile_8056, GALGAS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("type-class.galgas", 385)), var_defaultConstructorName_13647, GALGAS_string ("class-").add_operation (temp_40.readProperty_mClassTypeName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("type-class.galgas", 387)), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 387)), GALGAS_headerKind::class_func_twoHeaders (SOURCE_FILE ("type-class.galgas", 388)), inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 361)) ;
+  GALGAS_unifiedTypeDefinition var_typeDefinition_13984 = GALGAS_unifiedTypeDefinition::class_func_new (temp_33.readProperty_mClassTypeName (), temp_34.readProperty_isPredefined (), temp_35.readProperty_mIsAbstract ().operator_not (SOURCE_FILE ("type-class.galgas", 364)), var_superClassIndex_8026, GALGAS_typeKindEnum::class_func_classType (temp_36.readProperty_mIsReference ()  COMMA_SOURCE_FILE ("type-class.galgas", 366)), GALGAS_bool (false), var_allTypedAttributeList_12006, var_attributeMap_7953, var_currentClassTypedPropertyList_11944, var_classFunctionMap_11663, var_getterMap_7794, var_setterMap_7823, var_instanceMethodMap_7860, GALGAS_classMethodMap::class_func_emptyMap (SOURCE_FILE ("type-class.galgas", 375)), GALGAS_optionalMethodMap::class_func_emptyMap (SOURCE_FILE ("type-class.galgas", 376)), GALGAS_enumerationDescriptorList::class_func_emptyList (SOURCE_FILE ("type-class.galgas", 377)), temp_38, GALGAS_functionSignature::class_func_emptyList (SOURCE_FILE ("type-class.galgas", 379)), GALGAS_constantIndexMap::class_func_emptyMap (SOURCE_FILE ("type-class.galgas", 380)), GALGAS_enumConstantList::class_func_emptyList (SOURCE_FILE ("type-class.galgas", 381)), GALGAS_mapSearchMethodListAST::class_func_emptyList (SOURCE_FILE ("type-class.galgas", 382)), GALGAS_mapSearchMethodListAST::class_func_emptyList (SOURCE_FILE ("type-class.galgas", 383)), var_generateHeaderInSeparateFile_8056, GALGAS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("type-class.galgas", 385)), var_defaultConstructorName_13656, GALGAS_string ("class-").add_operation (temp_40.readProperty_mClassTypeName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("type-class.galgas", 387)), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 387)), GALGAS_headerKind::class_func_twoHeaders (SOURCE_FILE ("type-class.galgas", 388)), inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 361)) ;
   {
-  extensionSetter_insertType (ioArgument_ioTypeMap, var_typeDefinition_13975.readProperty_mTypeName (), var_typeDefinition_13975, inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 390)) ;
+  extensionSetter_insertType (ioArgument_ioTypeMap, var_typeDefinition_13984.readProperty_mTypeName (), var_typeDefinition_13984, inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 390)) ;
   }
 }

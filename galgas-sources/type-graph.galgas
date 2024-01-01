@@ -141,7 +141,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
   ]
 #---
   commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap )
-  var @constructorMap constructorMap = {}
+  var @classFunctionMap classFunctionMap = {}
   var @setterMap setterMap = {}
   var @instanceMethodMap instanceMethodMap = {}
 #--- Methods 'topologicalSort', 'depthFirstTopologicalSort'
@@ -351,7 +351,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !hasCompilerArgument:true # has compiler argument
   )
 #--- Constructor 'emptyGraph'
-  [!?constructorMap insertKey
+  [!?classFunctionMap insertKey
     !@lstring.new {!"emptyGraph" !@location.here}
     !{}
     !false # No compiler argument
@@ -453,7 +453,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !@typedPropertyList {}
     !{}
     !@typedPropertyList {}
-    !constructorMap
+    !classFunctionMap
     !getterMap
     !setterMap
     !instanceMethodMap
@@ -545,7 +545,7 @@ override method @graphDeclarationForGeneration appendDeclaration1
     !selfTypedefinition.mTypeName.string
     ![self.mSelfTypeEntry identifierRepresentation]
     !selfTypedefinition.mIsConcrete
-    !selfTypedefinition.mConstructorMap
+    !selfTypedefinition.mClassFunctionMap
     !selfTypedefinition.mGetterMap
     !selfTypedefinition.mSetterMap
     !selfTypedefinition.mInstanceMethodMap

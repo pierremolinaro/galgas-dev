@@ -33,7 +33,7 @@ list @functionSignature {
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-map @constructorMap {
+map @classFunctionMap {
   public let @functionSignature mArgumentTypeList
   public let @bool mHasCompilerArgument
   public let @unifiedTypeMapEntry mReturnedType
@@ -262,59 +262,7 @@ map @constantIndexMap {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#  A S T   C L A S S E S    F O R    P R E D E F I N E D   T Y P E S                                           
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-
-refclass @bigintPredefinedTypeAST : @predefinedTypeAST {}
-
-refclass @objectPredefinedTypeAST : @predefinedTypeAST {}
-
-refclass @filewrapperPredefinedTypeAST : @predefinedTypeAST {}
-
-refclass @binarysetPredefinedTypeAST : @predefinedTypeAST {}
-
-refclass @boolPredefinedTypeAST : @predefinedTypeAST {}
-
-refclass @uintPredefinedTypeAST : @predefinedTypeAST {}
-
-refclass @uint64PredefinedTypeAST : @predefinedTypeAST {}
-
-refclass @sintPredefinedTypeAST : @predefinedTypeAST {}
-
-refclass @sint64PredefinedTypeAST : @predefinedTypeAST {}
-
-refclass @charPredefinedTypeAST : @predefinedTypeAST {}
-
-refclass @doublePredefinedTypeAST : @predefinedTypeAST {}
-
-refclass @stringPredefinedTypeAST : @predefinedTypeAST {}
-
-refclass @locationPredefinedTypeAST : @predefinedTypeAST {}
-
-refclass @stringsetPredefinedTypeAST : @predefinedTypeAST {}
-
-refclass @functionPredefinedTypeAST : @predefinedTypeAST {}
-
-refclass @typePredefinedTypeAST : @predefinedTypeAST {}
-
-refclass @dataPredefinedTypeAST : @predefinedTypeAST {}
-
-refclass @timerPredefinedTypeAST : @predefinedTypeAST {}
-
-  #-----------------------------------------------------------------------------------------------------------------
-
-  override getter @stringsetPredefinedTypeAST supportsCollectionValue -> @bool {
-    result = true # Support collection value
-  }
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-override getter @bigintPredefinedTypeAST defaultInitializerName -> @string {
-  result = "zero"
-}
 
 override getter @objectPredefinedTypeAST defaultInitializerName -> @string {
   result = "" // No default initializer
@@ -366,10 +314,6 @@ override getter @stringPredefinedTypeAST defaultInitializerName -> @string {
 
 override getter @locationPredefinedTypeAST defaultInitializerName -> @string {
   result = "nowhere"
-}
-
-override getter @stringsetPredefinedTypeAST defaultInitializerName -> @string {
-  result = "emptySet"
 }
 
 override getter @functionPredefinedTypeAST defaultInitializerName -> @string {

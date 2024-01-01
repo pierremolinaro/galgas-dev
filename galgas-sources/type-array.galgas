@@ -80,7 +80,7 @@ override method @arrayDeclarationAST enterDeclarationInSemanticContext
   [!?ioTypeMap makeEntry !self.mElementTypeName ?let elementTypeIndex]
 #  [!?ioTypeMap makeEntry  !self.mElementTypeName ?let elementTypeIndex]
 #---
-  var @constructorMap constructorMap = {}
+  var @classFunctionMap classFunctionMap = {}
   commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap )
   var @setterMap setterMap ={}
   let @instanceMethodMap instanceMethodMap = {}
@@ -98,7 +98,7 @@ override method @arrayDeclarationAST enterDeclarationInSemanticContext
     idx += 1
   end
 #--- Constructor
-  [!?constructorMap insertKey
+  [!?classFunctionMap insertKey
     !@lstring.new {!"new" !@location.here}
     !uintArgs
     !false

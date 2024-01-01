@@ -9459,7 +9459,7 @@ GALGAS_projectQualifiedFeatureMap GALGAS_projectQualifiedFeatureMap::extractObje
 class cCollectionElement_XCodeGroupList : public cCollectionElement {
   public: GALGAS_XCodeGroupList_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_XCodeGroupList (const GALGAS_string & in_mGroupReference,
                                              const GALGAS_string & in_mGroupName,
                                              const GALGAS_string & in_mGroupPath,
@@ -10065,7 +10065,7 @@ GALGAS_XCodeGroupList GALGAS_XCodeGroupList::extractObject (const GALGAS_object 
 class cCollectionElement_XCodeToolTargetList : public cCollectionElement {
   public: GALGAS_XCodeToolTargetList_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_XCodeToolTargetList (const GALGAS_string & in_mTargetRef,
                                                   const GALGAS_string & in_mTargetName,
                                                   const GALGAS_string & in_mProductFileReference,
@@ -11133,7 +11133,7 @@ GALGAS_XCodeToolTargetList GALGAS_XCodeToolTargetList::extractObject (const GALG
 class cCollectionElement_XCodeAppTargetList : public cCollectionElement {
   public: GALGAS_XCodeAppTargetList_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_XCodeAppTargetList (const GALGAS_string & in_mTargetRef,
                                                  const GALGAS_string & in_mTargetName,
                                                  const GALGAS_string & in_mProductFileReference,

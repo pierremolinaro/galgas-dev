@@ -1,6 +1,6 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#  Type constructors                        
+#  Class function                       
 #                                           
 #  Copyright (C) 2009, ..., 2017 Pierre Molinaro.
 #  e-mail : pierre@pcmolinaro.name          
@@ -14,10 +14,10 @@
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-proc enterConstructorWithoutArgument
-  ?!@constructorMap ioConstructorMap
+proc enterClassFunctionWithoutArgument
+  ?!@classFunctionMap ioClassFunctionMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  ?name:let @string inConstructorName
+  ?name:let @string inClassFunctionName
   ?resultTypeName:let @string inReturnedTypeName
   ?hasLexiqueArg:let @bool inHasLexiqueArgument
 {
@@ -25,8 +25,8 @@ proc enterConstructorWithoutArgument
     !inReturnedTypeName
     ?let @unifiedTypeMapEntry returnedTypeIndex
   ]
-  [!?ioConstructorMap insertOrReplace
-    !@lstring.new {!inConstructorName !@location.here}
+  [!?ioClassFunctionMap insertOrReplace
+    !@lstring.new {!inClassFunctionName !@location.here}
     !@functionSignature {}
     !inHasLexiqueArgument
     !returnedTypeIndex
@@ -35,10 +35,10 @@ proc enterConstructorWithoutArgument
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-proc enterConstructorWithArgument
-  ?!@constructorMap ioConstructorMap
+proc enterClassFunctionWithArgument
+  ?!@classFunctionMap ioClassFunctionMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  ?name:let @string inConstructorName
+  ?name:let @string inClassFunctionName
   ?argTypeName:let @string inArgument1TypeName
   ?argName:let @string inArgument1Name
   ?resultTypeName:let @string inReturnedTypeName
@@ -46,8 +46,8 @@ proc enterConstructorWithArgument
 {
   [!?ioUnifiedTypeMap makeEntryFromString !inReturnedTypeName ?let returnedTypeIndex]
   [!?ioUnifiedTypeMap makeEntryFromString !inArgument1TypeName ?let t]
-  [!?ioConstructorMap insertOrReplace
-    !@lstring.new {!inConstructorName !@location.here}
+  [!?ioClassFunctionMap insertOrReplace
+    !@lstring.new {!inClassFunctionName !@location.here}
     !@functionSignature {!["" nowhere] !t !inArgument1Name}
     !inHasLexiqueArgument
     !returnedTypeIndex
@@ -56,10 +56,10 @@ proc enterConstructorWithArgument
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-proc enterConstructorWith2Arguments
-  ?!@constructorMap ioConstructorMap
+proc enterClassFunctionWith2Arguments
+  ?!@classFunctionMap ioClassFunctionMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  ?name:let @string inConstructorName
+  ?name:let @string inClassFunctionName
   ?argTypeName1:let @string inArgument1TypeName
   ?argName1:let @string inArgument1Name
   ?argTypeName2:let @string inArgument2TypeName
@@ -74,8 +74,8 @@ proc enterConstructorWith2Arguments
   argumentTypeList += !["" nowhere] !t !inArgument1Name
   [!?ioUnifiedTypeMap makeEntryFromString !inArgument2TypeName ?t]
   argumentTypeList += !["" nowhere] !t !inArgument2Name
-  [!?ioConstructorMap insertOrReplace
-    !@lstring.new {!inConstructorName !@location.here}
+  [!?ioClassFunctionMap insertOrReplace
+    !@lstring.new {!inClassFunctionName !@location.here}
     !argumentTypeList
     !inHasLexiqueArgument
     !returnedTypeIndex
@@ -84,10 +84,10 @@ proc enterConstructorWith2Arguments
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-proc enterConstructorWith3Arguments
-  ?!@constructorMap ioConstructorMap
+proc enterClassFunctionWith3Arguments
+  ?!@classFunctionMap ioClassFunctionMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  ?name:let @string inConstructorName
+  ?name:let @string inClassFunctionName
   ?argTypeName1:let @string inArgument1TypeName
   ?argName1:let @string inArgument1Name
   ?argTypeName2:let @string inArgument2TypeName
@@ -105,8 +105,8 @@ proc enterConstructorWith3Arguments
   argumentTypeList += !["" nowhere] !t !inArgument2Name
   [!?ioUnifiedTypeMap makeEntryFromString !inArgument3TypeName ?t]
   argumentTypeList += !["" nowhere] !t !inArgument3Name
-  [!?ioConstructorMap insertOrReplace
-    !@lstring.new {!inConstructorName !@location.here}
+  [!?ioClassFunctionMap insertOrReplace
+    !@lstring.new {!inClassFunctionName !@location.here}
     !argumentTypeList
     !inHasLexiqueArgument
     !returnedTypeIndex
@@ -116,9 +116,9 @@ proc enterConstructorWith3Arguments
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #proc enterConstructorWith4Arguments
-#  ?!@constructorMap ioConstructorMap
+#  ?!@classFunctionMap ioConstructorMap
 #  ?!@unifiedTypeMap ioUnifiedTypeMap
-#  ?name:let @string inConstructorName
+#  ?name:let @string inClassFunctionName
 #  ?argSelector1:let @string inArgument1SelectorName
 #  ?argTypeName1:let @string inArgument1TypeName
 #  ?argName1:let @string inArgument1Name
@@ -144,8 +144,8 @@ proc enterConstructorWith3Arguments
 #  argumentTypeList += ![inArgument3SelectorName nowhere] !t !inArgument3Name
 #  [!?ioUnifiedTypeMap makeEntryFromString !inArgument4TypeName ?t]
 #  argumentTypeList += ![inArgument4SelectorName nowhere] !t !inArgument4Name
-#  [!?ioConstructorMap insertOrReplace
-#    !@lstring.new {!inConstructorName !@location.here}
+#  [!?ioclassFunctionMap insertOrReplace
+#    !@lstring.new {!inClassFunctionName !@location.here}
 #    !argumentTypeList
 #    !inHasLexiqueArgument
 #    !returnedTypeIndex
@@ -154,33 +154,33 @@ proc enterConstructorWith3Arguments
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @locationPredefinedTypeAST getConstructorMap
+override method @locationPredefinedTypeAST getClassFunctionMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@constructorMap outMap
+  !@classFunctionMap outMap
 {
   outMap = {}
-  enterConstructorWithoutArgument (
+  enterClassFunctionWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"nowhere"
     !resultTypeName:"location"
     !hasLexiqueArg:false
   )
-  enterConstructorWithoutArgument (
+  enterClassFunctionWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"here"
     !resultTypeName:"location"
     !hasLexiqueArg:true
   )
-  enterConstructorWithoutArgument (
+  enterClassFunctionWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name: "next"
     !resultTypeName: "location"
     !hasLexiqueArg: true
   )
-  enterConstructorWithoutArgument (
+  enterClassFunctionWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name: "separator"
@@ -210,12 +210,12 @@ override method @locationPredefinedTypeAST getConstructorMap
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @boolPredefinedTypeAST getConstructorMap
+override method @boolPredefinedTypeAST getClassFunctionMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@constructorMap outMap
+  !@classFunctionMap outMap
 {
   outMap = {}
-  enterConstructorWithoutArgument (
+  enterClassFunctionWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name: "default"
@@ -226,40 +226,40 @@ override method @boolPredefinedTypeAST getConstructorMap
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @stringPredefinedTypeAST getConstructorMap
+override method @stringPredefinedTypeAST getClassFunctionMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@constructorMap outMap
+  !@classFunctionMap outMap
 {
   outMap = {}
-  enterConstructorWithoutArgument (
+  enterClassFunctionWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"homeDirectory"
     !resultTypeName:"string"
     !hasLexiqueArg:false
   )
-  enterConstructorWithoutArgument (
+  enterClassFunctionWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"newWithStdIn"
     !resultTypeName:"string"
     !hasLexiqueArg:false
   )
-  enterConstructorWithoutArgument (
+  enterClassFunctionWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"retrieveAndResetTemplateString"
     !resultTypeName:"string"
     !hasLexiqueArg:true
   )
-  enterConstructorWithoutArgument (
+  enterClassFunctionWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"separatorString"
     !resultTypeName:"string"
     !hasLexiqueArg:true
   )
-  enterConstructorWithArgument (
+  enterClassFunctionWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"stringWithSymbolicLinkContents"
@@ -268,21 +268,21 @@ override method @stringPredefinedTypeAST getConstructorMap
     !resultTypeName:"string"
     !hasLexiqueArg:true
   )
-  enterConstructorWithoutArgument (
+  enterClassFunctionWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"stringWithSourceFilePath"
     !resultTypeName:"string"
     !hasLexiqueArg:true
   )
-  enterConstructorWithoutArgument (
+  enterClassFunctionWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"stringWithCurrentDirectory"
     !resultTypeName:"string"
     !hasLexiqueArg:false
   )
-  enterConstructorWithArgument (
+  enterClassFunctionWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"stringWithContentsOfFile"
@@ -291,14 +291,14 @@ override method @stringPredefinedTypeAST getConstructorMap
     !resultTypeName:"string"
     !hasLexiqueArg:true
   )
-  enterConstructorWithoutArgument (
+  enterClassFunctionWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"stringWithCurrentDateTime"
     !resultTypeName:"string"
     !hasLexiqueArg:false
   )
-  enterConstructorWithArgument (
+  enterClassFunctionWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"stringWithEnvironmentVariable"
@@ -307,7 +307,7 @@ override method @stringPredefinedTypeAST getConstructorMap
     !resultTypeName:"string"
     !hasLexiqueArg:true
   )
-  enterConstructorWithArgument (
+  enterClassFunctionWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"stringWithEnvironmentVariableOrEmpty"
@@ -316,21 +316,21 @@ override method @stringPredefinedTypeAST getConstructorMap
     !resultTypeName:"string"
     !hasLexiqueArg:false
   )
-  enterConstructorWithoutArgument (
+  enterClassFunctionWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"CppLineComment"
     !resultTypeName:"string"
     !hasLexiqueArg:false
   )
-  enterConstructorWithoutArgument (
+  enterClassFunctionWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"CppSpaceComment"
     !resultTypeName:"string"
     !hasLexiqueArg:false
   )
-  enterConstructorWithArgument (
+  enterClassFunctionWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"CppTitleComment"
@@ -339,7 +339,7 @@ override method @stringPredefinedTypeAST getConstructorMap
     !resultTypeName:"string"
     !hasLexiqueArg:false
   )
-  enterConstructorWithArgument (
+  enterClassFunctionWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"CppString"
@@ -348,7 +348,7 @@ override method @stringPredefinedTypeAST getConstructorMap
     !resultTypeName:"string"
     !hasLexiqueArg:false
   )
-  enterConstructorWithArgument (
+  enterClassFunctionWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"CppChar"
@@ -357,7 +357,7 @@ override method @stringPredefinedTypeAST getConstructorMap
     !resultTypeName:"string"
     !hasLexiqueArg:false
   )
-  enterConstructorWith2Arguments (
+  enterClassFunctionWith2Arguments (
     !?outMap
     !?ioUnifiedTypeMap 
     !name:"componentsJoinedByString"
@@ -368,7 +368,7 @@ override method @stringPredefinedTypeAST getConstructorMap
     !resultTypeName:"string"
     !hasLexiqueArg:false
   )
-  enterConstructorWith2Arguments (
+  enterClassFunctionWith2Arguments (
     !?outMap
     !?ioUnifiedTypeMap 
     !name:"stringByRepeatingString"
@@ -379,7 +379,7 @@ override method @stringPredefinedTypeAST getConstructorMap
     !resultTypeName:"string"
     !hasLexiqueArg:false
   )
-  enterConstructorWith2Arguments (
+  enterClassFunctionWith2Arguments (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"stringWithSequenceOfCharacters" 
@@ -394,19 +394,19 @@ override method @stringPredefinedTypeAST getConstructorMap
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @charPredefinedTypeAST getConstructorMap
+override method @charPredefinedTypeAST getClassFunctionMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@constructorMap outMap
+  !@classFunctionMap outMap
 {
   outMap = {}
-  enterConstructorWithoutArgument (
+  enterClassFunctionWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"replacementCharacter"
     !resultTypeName:"char"
     !hasLexiqueArg:false
   )
-  enterConstructorWithArgument (
+  enterClassFunctionWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"unicodeCharacterWithUnsigned"
@@ -415,7 +415,7 @@ override method @charPredefinedTypeAST getConstructorMap
     !resultTypeName:"char"
     !hasLexiqueArg:false
   )
-  enterConstructorWithoutArgument (
+  enterClassFunctionWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"unicodeCharacterFromRawKeyboard"
@@ -426,46 +426,46 @@ override method @charPredefinedTypeAST getConstructorMap
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @uintPredefinedTypeAST getConstructorMap
+override method @uintPredefinedTypeAST getClassFunctionMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@constructorMap outMap {
+  !@classFunctionMap outMap {
   outMap = {}
-  enterConstructorWithoutArgument (
+  enterClassFunctionWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"compilationMode"
     !resultTypeName:"uint"
     !hasLexiqueArg:false
   )
-  enterConstructorWithoutArgument (
+  enterClassFunctionWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"random"
     !resultTypeName:"uint"
     !hasLexiqueArg:false
   )
-  enterConstructorWithoutArgument (
+  enterClassFunctionWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"max"
     !resultTypeName:"uint"
     !hasLexiqueArg:false
   )
-  enterConstructorWithoutArgument (
+  enterClassFunctionWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"errorCount"
     !resultTypeName:"uint"
     !hasLexiqueArg:false
   )
-  enterConstructorWithoutArgument (
+  enterClassFunctionWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"warningCount"
     !resultTypeName:"uint"
     !hasLexiqueArg:false
   )
-  enterConstructorWith2Arguments (
+  enterClassFunctionWith2Arguments (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"valueWithMask"
@@ -480,18 +480,18 @@ override method @uintPredefinedTypeAST getConstructorMap
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @sintPredefinedTypeAST getConstructorMap
+override method @sintPredefinedTypeAST getClassFunctionMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@constructorMap outMap {
+  !@classFunctionMap outMap {
   outMap = {}
-  enterConstructorWithoutArgument (
+  enterClassFunctionWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"max"
     !resultTypeName:"sint"
     !hasLexiqueArg:false
   )
-  enterConstructorWithoutArgument (
+  enterClassFunctionWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"min"
@@ -502,18 +502,18 @@ override method @sintPredefinedTypeAST getConstructorMap
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @uint64PredefinedTypeAST getConstructorMap
+override method @uint64PredefinedTypeAST getClassFunctionMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@constructorMap outMap {
+  !@classFunctionMap outMap {
   outMap = {}
-  enterConstructorWithoutArgument (
+  enterClassFunctionWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"max"
     !resultTypeName:"uint64"
     !hasLexiqueArg:false
   )
-  enterConstructorWithArgument (
+  enterClassFunctionWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"uint64MaskWithCompressedBitString"
@@ -522,7 +522,7 @@ override method @uint64PredefinedTypeAST getConstructorMap
     !resultTypeName:"uint64"
     !hasLexiqueArg:true
   )
-  enterConstructorWithArgument (
+  enterClassFunctionWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"uint64BaseValueWithCompressedBitString"
@@ -531,7 +531,7 @@ override method @uint64PredefinedTypeAST getConstructorMap
     !resultTypeName:"uint64"
     !hasLexiqueArg:true
   )
-  enterConstructorWithArgument (
+  enterClassFunctionWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"uint64WithBitString"
@@ -544,18 +544,18 @@ override method @uint64PredefinedTypeAST getConstructorMap
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @sint64PredefinedTypeAST getConstructorMap
+override method @sint64PredefinedTypeAST getClassFunctionMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@constructorMap outMap {
+  !@classFunctionMap outMap {
   outMap = {}
-  enterConstructorWithoutArgument (
+  enterClassFunctionWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"max"
     !resultTypeName:"sint64"
     !hasLexiqueArg:false
   )
-  enterConstructorWithoutArgument (
+  enterClassFunctionWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"min"
@@ -566,53 +566,11 @@ override method @sint64PredefinedTypeAST getConstructorMap
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @stringsetPredefinedTypeAST getConstructorMap
+override method @binarysetPredefinedTypeAST getClassFunctionMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@constructorMap outMap {
+  !@classFunctionMap outMap {
   outMap = {}
-  enterConstructorWithoutArgument (
-    !?outMap
-    !?ioUnifiedTypeMap
-    !name:"emptySet"
-    !resultTypeName:"stringset"
-    !hasLexiqueArg:false
-  )
-  enterConstructorWithArgument (
-    !?outMap
-    !?ioUnifiedTypeMap
-    !name:"setWithString"
-    !argTypeName:"string"
-    !argName:"inString"
-    !resultTypeName:"stringset"
-    !hasLexiqueArg:false
-  )
-  enterConstructorWithArgument (
-    !?outMap
-    !?ioUnifiedTypeMap
-    !name:"setWithStringList"
-    !argTypeName:"stringlist"
-    !argName:"inStringList"
-    !resultTypeName:"stringset"
-    !hasLexiqueArg:false
-  )
-  enterConstructorWithArgument (
-    !?outMap
-    !?ioUnifiedTypeMap
-    !name:"setWithLStringList"
-    !argTypeName:"lstringlist"
-    !argName:"inLStringList"
-    !resultTypeName:"stringset"
-    !hasLexiqueArg:false
-  )
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-override method @binarysetPredefinedTypeAST getConstructorMap
-  ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@constructorMap outMap {
-  outMap = {}
-  enterConstructorWithArgument (
+  enterClassFunctionWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"binarySetWithBit"
@@ -621,21 +579,21 @@ override method @binarysetPredefinedTypeAST getConstructorMap
     !resultTypeName:"binaryset"
     !hasLexiqueArg:true
   )
-  enterConstructorWithoutArgument (
+  enterClassFunctionWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"emptyBinarySet"
     !resultTypeName:"binaryset"
     !hasLexiqueArg:false
   )
-  enterConstructorWithoutArgument (
+  enterClassFunctionWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"fullBinarySet"
     !resultTypeName:"binaryset"
     !hasLexiqueArg:false
   )
-  enterConstructorWithArgument (
+  enterClassFunctionWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"binarySetWithPredicateString"
@@ -644,7 +602,7 @@ override method @binarysetPredefinedTypeAST getConstructorMap
     !resultTypeName:"binaryset"
     !hasLexiqueArg:true
   )
-  enterConstructorWith3Arguments (
+  enterClassFunctionWith3Arguments (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"binarySetWithNotEqualComparison"
@@ -657,7 +615,7 @@ override method @binarysetPredefinedTypeAST getConstructorMap
     !resultTypeName:"binaryset"
     !hasLexiqueArg:true
   )
-  enterConstructorWith3Arguments (
+  enterClassFunctionWith3Arguments (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"binarySetWithEqualComparison"
@@ -670,7 +628,7 @@ override method @binarysetPredefinedTypeAST getConstructorMap
     !resultTypeName:"binaryset"
     !hasLexiqueArg:true
   )
-  enterConstructorWith3Arguments (
+  enterClassFunctionWith3Arguments (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"binarySetWithStrictLowerComparison"
@@ -683,7 +641,7 @@ override method @binarysetPredefinedTypeAST getConstructorMap
     !resultTypeName:"binaryset"
     !hasLexiqueArg:true
   )
-  enterConstructorWith3Arguments (
+  enterClassFunctionWith3Arguments (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"binarySetWithStrictGreaterComparison"
@@ -696,7 +654,7 @@ override method @binarysetPredefinedTypeAST getConstructorMap
     !resultTypeName:"binaryset"
     !hasLexiqueArg:true
   )
-  enterConstructorWith3Arguments (
+  enterClassFunctionWith3Arguments (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"binarySetWithLowerOrEqualComparison"
@@ -709,7 +667,7 @@ override method @binarysetPredefinedTypeAST getConstructorMap
     !resultTypeName:"binaryset"
     !hasLexiqueArg:true
   )
-  enterConstructorWith3Arguments (
+  enterClassFunctionWith3Arguments (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"binarySetWithGreaterOrEqualComparison"
@@ -722,7 +680,7 @@ override method @binarysetPredefinedTypeAST getConstructorMap
     !resultTypeName:"binaryset"
     !hasLexiqueArg:true
   )
-  enterConstructorWith3Arguments (
+  enterClassFunctionWith3Arguments (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"binarySetWithEqualToConstant"
@@ -735,7 +693,7 @@ override method @binarysetPredefinedTypeAST getConstructorMap
     !resultTypeName:"binaryset"
     !hasLexiqueArg:true
   )
-  enterConstructorWith3Arguments (
+  enterClassFunctionWith3Arguments (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"binarySetWithNotEqualToConstant"
@@ -748,7 +706,7 @@ override method @binarysetPredefinedTypeAST getConstructorMap
     !resultTypeName:"binaryset"
     !hasLexiqueArg:true
   )
-  enterConstructorWith3Arguments (
+  enterClassFunctionWith3Arguments (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"binarySetWithStrictLowerThanConstant"
@@ -761,7 +719,7 @@ override method @binarysetPredefinedTypeAST getConstructorMap
     !resultTypeName:"binaryset"
     !hasLexiqueArg:true
   )
-  enterConstructorWith3Arguments (
+  enterClassFunctionWith3Arguments (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"binarySetWithStrictGreaterThanConstant"
@@ -774,7 +732,7 @@ override method @binarysetPredefinedTypeAST getConstructorMap
     !resultTypeName:"binaryset"
     !hasLexiqueArg:true
   )
-  enterConstructorWith3Arguments (
+  enterClassFunctionWith3Arguments (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"binarySetWithLowerOrEqualToConstant"
@@ -787,7 +745,7 @@ override method @binarysetPredefinedTypeAST getConstructorMap
     !resultTypeName:"binaryset"
     !hasLexiqueArg:true
   )
-  enterConstructorWith3Arguments (
+  enterClassFunctionWith3Arguments (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"binarySetWithGreaterOrEqualToConstant"
@@ -804,11 +762,11 @@ override method @binarysetPredefinedTypeAST getConstructorMap
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @typePredefinedTypeAST getConstructorMap
+override method @typePredefinedTypeAST getClassFunctionMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@constructorMap outMap {
+  !@classFunctionMap outMap {
   outMap = {}
-  enterConstructorWithoutArgument (
+  enterClassFunctionWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"typeList"
@@ -819,35 +777,19 @@ override method @typePredefinedTypeAST getConstructorMap
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @bigintPredefinedTypeAST getConstructorMap
+override method @dataPredefinedTypeAST getClassFunctionMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@constructorMap outMap
+  !@classFunctionMap outMap
 {
   outMap = {}
-  enterConstructorWithoutArgument (
-    !?outMap
-    !?ioUnifiedTypeMap
-    !name:"zero"
-    !resultTypeName:"bigint"
-    !hasLexiqueArg:false
-  )
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-override method @dataPredefinedTypeAST getConstructorMap
-  ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@constructorMap outMap
-{
-  outMap = {}
-  enterConstructorWithoutArgument (
+  enterClassFunctionWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"emptyData"
     !resultTypeName:"data"
     !hasLexiqueArg:false
   )
-  enterConstructorWithArgument (
+  enterClassFunctionWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"dataWithContentsOfFile"
@@ -860,18 +802,18 @@ override method @dataPredefinedTypeAST getConstructorMap
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @functionPredefinedTypeAST getConstructorMap
+override method @functionPredefinedTypeAST getClassFunctionMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@constructorMap outMap {
+  !@classFunctionMap outMap {
   outMap = {}
-  enterConstructorWithoutArgument (
+  enterClassFunctionWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"functionList"
     !resultTypeName:"functionlist"
     !hasLexiqueArg:false
   )
-  enterConstructorWithArgument (
+  enterClassFunctionWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"functionWithName"
@@ -880,7 +822,7 @@ override method @functionPredefinedTypeAST getConstructorMap
     !resultTypeName:"function"
     !hasLexiqueArg:false
   )
-  enterConstructorWithArgument (
+  enterClassFunctionWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"isFunctionDefined"
@@ -893,19 +835,19 @@ override method @functionPredefinedTypeAST getConstructorMap
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @doublePredefinedTypeAST getConstructorMap
+override method @doublePredefinedTypeAST getClassFunctionMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@constructorMap outMap
+  !@classFunctionMap outMap
 {
   outMap = {}
-  enterConstructorWithoutArgument (
+  enterClassFunctionWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"pi"
     !resultTypeName:"double"
     !hasLexiqueArg:false
   )
-  enterConstructorWithArgument (
+  enterClassFunctionWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"doubleWithBinaryImage"
@@ -918,12 +860,12 @@ override method @doublePredefinedTypeAST getConstructorMap
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @timerPredefinedTypeAST getConstructorMap
+override method @timerPredefinedTypeAST getClassFunctionMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@constructorMap outMap
+  !@classFunctionMap outMap
 {
   outMap = {}
-  enterConstructorWithoutArgument (
+  enterClassFunctionWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"start"

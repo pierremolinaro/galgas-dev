@@ -16,7 +16,7 @@
 class cCollectionElement_guiLabelListAST : public cCollectionElement {
   public: GALGAS_guiLabelListAST_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_guiLabelListAST (const GALGAS_uint & in_mLeadingCharacterStrippedCount,
                                               const GALGAS_terminalLabelListAST & in_mTerminalList,
                                               const GALGAS_location & in_mLocation
@@ -556,7 +556,7 @@ GALGAS_guiLabelListAST GALGAS_guiLabelListAST::extractObject (const GALGAS_objec
 class cCollectionElement_withLexiqueListAST : public cCollectionElement {
   public: GALGAS_withLexiqueListAST_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_withLexiqueListAST (const GALGAS_lstring & in_mLexiqueFileName,
                                                  const GALGAS_guiLabelListAST & in_mLabels,
                                                  const GALGAS_guiSimpleAttributeListAST & in_mSimpleAttributes,
@@ -1162,7 +1162,7 @@ GALGAS_withLexiqueListAST GALGAS_withLexiqueListAST::extractObject (const GALGAS
 class cCollectionElement_guiCommandLineOptionList : public cCollectionElement {
   public: GALGAS_guiCommandLineOptionList_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_guiCommandLineOptionList (const GALGAS_string & in_mOptionComponent,
                                                        const GALGAS_string & in_mOptionIdentifier,
                                                        const GALGAS_char & in_mOptionChar,
@@ -2147,7 +2147,7 @@ GALGAS_extensionMap GALGAS_extensionMap::extractObject (const GALGAS_object & in
 class cCollectionElement_textMacroList : public cCollectionElement {
   public: GALGAS_textMacroList_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_textMacroList (const GALGAS_string & in_mKey,
                                             const GALGAS_string & in_mContents
                                             COMMA_LOCATION_ARGS) ;
@@ -2621,7 +2621,7 @@ GALGAS_textMacroList GALGAS_textMacroList::extractObject (const GALGAS_object & 
 class cCollectionElement_importedLexiqueList : public cCollectionElement {
   public: GALGAS_importedLexiqueList_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_importedLexiqueList (const GALGAS_string & in_mLexiqueClassName,
                                                   const GALGAS_uint & in_mIndex,
                                                   const GALGAS_string & in_mBlockComment,
@@ -3425,7 +3425,7 @@ GALGAS_importedLexiqueList GALGAS_importedLexiqueList::extractObject (const GALG
 class cCollectionElement_projectIndexingDescriptorList : public cCollectionElement {
   public: GALGAS_projectIndexingDescriptorList_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_projectIndexingDescriptorList (const GALGAS_lstring & in_mProjectFileExtension,
                                                             const GALGAS_lstring & in_indexingPathSuffix
                                                             COMMA_LOCATION_ARGS) ;
@@ -3899,7 +3899,7 @@ GALGAS_projectIndexingDescriptorList GALGAS_projectIndexingDescriptorList::extra
 class cCollectionElement_galgasGUIComponentListAST : public cCollectionElement {
   public: GALGAS_galgasGUIComponentListAST_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_galgasGUIComponentListAST (const GALGAS_lstring & in_mGUIComponentName,
                                                         const GALGAS_lstringlist & in_mImportedOptionList,
                                                         const GALGAS_guiSimpleAttributeListAST & in_mGlobalSimpleAttributeList,
@@ -9976,7 +9976,7 @@ GALGAS_boolsetDeclarationAST_2D_weak GALGAS_boolsetDeclarationAST_2D_weak::extra
 class cCollectionElement_propertyInCollectionListAST : public cCollectionElement {
   public: GALGAS_propertyInCollectionListAST_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_propertyInCollectionListAST (const GALGAS_bool & in_isConstant,
                                                           const GALGAS_lstring & in_mPropertyTypeName,
                                                           const GALGAS_lstring & in_mPropertyName,
@@ -10824,7 +10824,7 @@ GALGAS_classDeclarationAST_2D_weak GALGAS_classDeclarationAST_2D_weak::extractOb
 class cCollectionElement_typedPropertyList : public cCollectionElement {
   public: GALGAS_typedPropertyList_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_typedPropertyList (const GALGAS_unifiedTypeMapEntry & in_mPropertyTypeEntry,
                                                 const GALGAS_lstring & in_mPropertyName,
                                                 const GALGAS_bool & in_hasSetter,
@@ -11540,7 +11540,7 @@ GALGAS_weakReferenceDeclarationAST_2D_weak GALGAS_weakReferenceDeclarationAST_2D
 class cCollectionElement_enumConstantList : public cCollectionElement {
   public: GALGAS_enumConstantList_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_enumConstantList (const GALGAS_lstring & in_mConstantName,
                                                const GALGAS__32_lstringlist & in_mAssociatedValueDefinitionList
                                                COMMA_LOCATION_ARGS) ;
@@ -12124,7 +12124,7 @@ GALGAS_enumDeclarationAST_2D_weak GALGAS_enumDeclarationAST_2D_weak::extractObje
 class cCollectionElement_enumConstantListForGeneration : public cCollectionElement {
   public: GALGAS_enumConstantListForGeneration_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_enumConstantListForGeneration (const GALGAS_string & in_mConstantName,
                                                             const GALGAS_unifiedTypeMapEntryList & in_mAssociatedValueTypeList
                                                             COMMA_LOCATION_ARGS) ;
@@ -12598,7 +12598,7 @@ GALGAS_enumConstantListForGeneration GALGAS_enumConstantListForGeneration::extra
 class cCollectionElement_unifiedTypeMapEntryList : public cCollectionElement {
   public: GALGAS_unifiedTypeMapEntryList_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_unifiedTypeMapEntryList (const GALGAS_unifiedTypeMapEntry & in_mEntry
                                                       COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_unifiedTypeMapEntryList (const GALGAS_unifiedTypeMapEntryList_2D_element & inElement COMMA_LOCATION_ARGS) ;
@@ -13006,7 +13006,7 @@ GALGAS_unifiedTypeMapEntryList GALGAS_unifiedTypeMapEntryList::extractObject (co
 class cCollectionElement_externTypeConstructorList : public cCollectionElement {
   public: GALGAS_externTypeConstructorList_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_externTypeConstructorList (const GALGAS_lstring & in_mConstructorName,
                                                         const GALGAS_lstring & in_mResultTypeName,
                                                         const GALGAS_typeNameFormalParameterNameList & in_mParameterList
@@ -13546,7 +13546,7 @@ GALGAS_externTypeConstructorList GALGAS_externTypeConstructorList::extractObject
 class cCollectionElement_externTypeGetterList : public cCollectionElement {
   public: GALGAS_externTypeGetterList_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_externTypeGetterList (const GALGAS_lstring & in_mGetterName,
                                                    const GALGAS_lstring & in_mResultTypeName,
                                                    const GALGAS_typeNameFormalParameterNameList & in_mParameterList
@@ -14086,7 +14086,7 @@ GALGAS_externTypeGetterList GALGAS_externTypeGetterList::extractObject (const GA
 class cCollectionElement_externTypeSetterList : public cCollectionElement {
   public: GALGAS_externTypeSetterList_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_externTypeSetterList (const GALGAS_lstring & in_mSetterName,
                                                    const GALGAS_formalParameterListAST & in_mFormalParameterList
                                                    COMMA_LOCATION_ARGS) ;
@@ -14560,7 +14560,7 @@ GALGAS_externTypeSetterList GALGAS_externTypeSetterList::extractObject (const GA
 class cCollectionElement_externTypeMethodList : public cCollectionElement {
   public: GALGAS_externTypeMethodList_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_externTypeMethodList (const GALGAS_lstring & in_mMethodName,
                                                    const GALGAS_formalParameterListAST & in_mFormalParameterList,
                                                    const GALGAS_location & in_mDeclarationLocation
@@ -15210,7 +15210,7 @@ GALGAS_externTypeDeclarationAST_2D_weak GALGAS_externTypeDeclarationAST_2D_weak:
 class cCollectionElement_typeNameFormalParameterNameList : public cCollectionElement {
   public: GALGAS_typeNameFormalParameterNameList_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_typeNameFormalParameterNameList (const GALGAS_lstring & in_mFormalSelector,
                                                               const GALGAS_lstring & in_mFormalParameterTypeName,
                                                               const GALGAS_lstring & in_mFormalParameterName
@@ -15750,7 +15750,7 @@ GALGAS_typeNameFormalParameterNameList GALGAS_typeNameFormalParameterNameList::e
 class cCollectionElement_formalParameterListAST : public cCollectionElement {
   public: GALGAS_formalParameterListAST_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_formalParameterListAST (const GALGAS_lstring & in_mFormalSelector,
                                                      const GALGAS_formalArgumentPassingModeAST & in_mFormalArgumentPassingMode,
                                                      const GALGAS_lstring & in_mFormalArgumentTypeName,

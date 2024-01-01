@@ -3932,7 +3932,7 @@ GALGAS_selfSetterCallInstructionForGeneration_2D_weak GALGAS_selfSetterCallInstr
 class cCollectionElement_switchBranchesAST : public cCollectionElement {
   public: GALGAS_switchBranchesAST_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_switchBranchesAST (const GALGAS_lstringlist & in_mSwitchConstantList,
                                                 const GALGAS_switchExtractedValuesListAST & in_mAssociatedValuesExtraction,
                                                 const GALGAS_semanticInstructionListAST & in_mInstructions,
@@ -4869,7 +4869,7 @@ GALGAS_switchInstructionAST_2D_weak GALGAS_switchInstructionAST_2D_weak::extract
 class cCollectionElement_switchBranchesForGeneration : public cCollectionElement {
   public: GALGAS_switchBranchesForGeneration_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_switchBranchesForGeneration (const GALGAS_lstringlist & in_mSwitchConstantList,
                                                           const GALGAS_extractedAssociatedValuesForGeneration & in_mExtractedAssociatedValuesForGeneration,
                                                           const GALGAS_uint & in_mEndOfBranchLocationIndex,
@@ -11283,7 +11283,7 @@ GALGAS_abstractSyntaxInstructionForGrammarAnalysis_2D_weak GALGAS_abstractSyntax
 class cCollectionElement_syntaxInstructionListForGrammarAnalysis : public cCollectionElement {
   public: GALGAS_syntaxInstructionListForGrammarAnalysis_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_syntaxInstructionListForGrammarAnalysis (const GALGAS_abstractSyntaxInstructionForGrammarAnalysis & in_mInstruction
                                                                       COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_syntaxInstructionListForGrammarAnalysis (const GALGAS_syntaxInstructionListForGrammarAnalysis_2D_element & inElement COMMA_LOCATION_ARGS) ;
@@ -11691,7 +11691,7 @@ GALGAS_syntaxInstructionListForGrammarAnalysis GALGAS_syntaxInstructionListForGr
 class cCollectionElement_productionRuleListForGrammarAnalysis : public cCollectionElement {
   public: GALGAS_productionRuleListForGrammarAnalysis_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_productionRuleListForGrammarAnalysis (const GALGAS_lstring & in_mLeftNonterminalSymbol,
                                                                    const GALGAS_uint & in_mLeftNonterminalSymbolIndex,
                                                                    const GALGAS_syntaxInstructionListForGrammarAnalysis & in_mInstructionList,
@@ -13116,7 +13116,7 @@ GALGAS_nonTerminalInstructionForGrammarAnalysis_2D_weak GALGAS_nonTerminalInstru
 class cCollectionElement_branchListForGrammarAnalysis : public cCollectionElement {
   public: GALGAS_branchListForGrammarAnalysis_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_branchListForGrammarAnalysis (const GALGAS_syntaxInstructionListForGrammarAnalysis & in_mSyntaxInstructionList
                                                            COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_branchListForGrammarAnalysis (const GALGAS_branchListForGrammarAnalysis_2D_element & inElement COMMA_LOCATION_ARGS) ;
@@ -14102,7 +14102,7 @@ GALGAS_repeatInstructionForGrammarAnalysis_2D_weak GALGAS_repeatInstructionForGr
 class cCollectionElement_syntaxComponentListForGrammarAnalysis : public cCollectionElement {
   public: GALGAS_syntaxComponentListForGrammarAnalysis_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_syntaxComponentListForGrammarAnalysis (const GALGAS_productionRuleListForGrammarAnalysis & in_mProductionRulesList,
                                                                     const GALGAS_lstring & in_mSyntaxComponentName
                                                                     COMMA_LOCATION_ARGS) ;
@@ -14923,7 +14923,7 @@ void extensionMethod_tikzNodeForSyntaxInstruction (const GALGAS_syntaxInstructio
 class cCollectionElement_rowList : public cCollectionElement {
   public: GALGAS_rowList_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_rowList (const GALGAS__32_stringlist & in_columns
                                       COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_rowList (const GALGAS_rowList_2D_element & inElement COMMA_LOCATION_ARGS) ;

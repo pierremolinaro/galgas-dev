@@ -42,12 +42,12 @@ list @templateExpressionListAST {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   C O N S T R U C T O R                   
+#   Class Function                   
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @templateConstructorAST : @templateExpressionAST {
+refclass @templateClassFunctionAST : @templateExpressionAST {
   private let @lstring mTypeName
-  private let @lstring mConstructorName
+  private let @lstring mClassFunctionName
   private let @templateExpressionListAST mExpressionList
 }
  

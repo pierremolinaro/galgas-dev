@@ -180,11 +180,11 @@ override method @collectionValueAST analyzeSemanticExpression
     error self.mTypeName
     : "the @" + [targetType definition].mTypeName.string + " type does not support collection value" : outExpression
   else
-    let constructorMap = [targetType definition].mConstructorMap
+    let classFunctionMap = [targetType definition].mClassFunctionMap
     var @bool hasCompilerArgument = false
     var @string constructorName = ""
     var found = false
-    for c in constructorMap while not found do
+    for c in classFunctionMap while not found do
       if ([c.mArgumentTypeList length] == 0) && (c.mReturnedType == targetType) then
         hasCompilerArgument = c.mHasCompilerArgument
         constructorName = c.lkey.string

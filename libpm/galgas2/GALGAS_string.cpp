@@ -227,8 +227,8 @@ GALGAS_string GALGAS_string::class_func_CppString (const GALGAS_string & inStrin
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_string::class_func_stringWithSequenceOfCharacters (const GALGAS_char & inCharacter,
-                                                                         const GALGAS_uint & inCount
-                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+                                                                        const GALGAS_uint & inCount
+                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result ;
   if ((inCount.isValid ()) && (inCharacter.isValid ())) {
     const utf32 character = inCharacter.charValue () ;
@@ -244,15 +244,15 @@ GALGAS_string GALGAS_string::class_func_stringWithSequenceOfCharacters (const GA
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_string::class_func_stringWithSourceFilePath (Compiler * inCompiler
-                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS_string (inCompiler->sourceFilePath ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_string::class_func_stringWithContentsOfFile (const GALGAS_string & inFilePath,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) {
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) {
   GALGAS_string result ;
   if (inFilePath.isValid ()) {
     inCompiler->logFileRead (inFilePath.mString) ;
@@ -277,8 +277,8 @@ GALGAS_string GALGAS_string::class_func_stringWithCurrentDirectory (UNUSED_LOCAT
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_string::class_func_stringWithEnvironmentVariable (const GALGAS_string & inEnvironmentVariableName,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) {
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_string result ;
   if (inEnvironmentVariableName.isValid ()) {
     const char * value = ::getenv (inEnvironmentVariableName.mString.cString (HERE)) ;
@@ -297,7 +297,7 @@ GALGAS_string GALGAS_string::class_func_stringWithEnvironmentVariable (const GAL
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_string::class_func_stringWithEnvironmentVariableOrEmpty (const GALGAS_string & inEnvironmentVariableName
-                                                                               COMMA_UNUSED_LOCATION_ARGS) {
+                                                                              COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result ;
   if (inEnvironmentVariableName.isValid ()) {
     const char * value = ::getenv (inEnvironmentVariableName.mString.cString (HERE)) ;
@@ -309,8 +309,8 @@ GALGAS_string GALGAS_string::class_func_stringWithEnvironmentVariableOrEmpty (co
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_string::class_func_componentsJoinedByString (const GALGAS_stringlist & inComponents,
-                                                                   const GALGAS_string & inSeparator
-                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+                                                                  const GALGAS_string & inSeparator
+                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result ;
   if ((inComponents.isValid ()) && (inSeparator.isValid ())) {
     bool first = true ;
@@ -351,22 +351,22 @@ GALGAS_string GALGAS_string::class_func_stringWithCurrentDateTime (UNUSED_LOCATI
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_string::class_func_retrieveAndResetTemplateString (Compiler * inCompiler
-                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   return inCompiler->retrieveAndResetTemplateString () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_string::class_func_separatorString (Compiler * inCompiler
-                                                          COMMA_UNUSED_LOCATION_ARGS) {
+                                                         COMMA_UNUSED_LOCATION_ARGS) {
   return inCompiler->separatorString () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_string::class_func_stringWithSymbolicLinkContents (const GALGAS_string & inSymbolicLink,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) {
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) {
   GALGAS_string result ;
   if (inSymbolicLink.isValid ()) {
     bool ok = false ;

@@ -214,7 +214,7 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
 #   C O N S T R U C T O R                   
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @templateConstructorAST templateExpressionAnalysis
+override method @templateClassFunctionAST templateExpressionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
@@ -222,39 +222,39 @@ override method @templateConstructorAST templateExpressionAnalysis
   !@semanticExpressionForGeneration outExpression
 {
   let @unifiedTypeMapEntry constructorType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
-#--- Get constructor map from type map
-  let @constructorMap constructorMap = [constructorType definition].mConstructorMap
-#--- Search contructor
+#--- Get class function map from type map
+  let @classFunctionMap classFunctionMap = [constructorType definition].mClassFunctionMap
+#--- Search class function
   let @unifiedTypeMapEntry returnedType
   let @bool hasCompilerArgument
-  let @functionSignature constructorFormalArgumentTypeList
-  with self.mConstructorName.string in constructorMap  do
-    constructorFormalArgumentTypeList = mArgumentTypeList
+  let @functionSignature classFuncFormalArgumentTypeList
+  with self.mClassFunctionName.string in classFunctionMap  do
+    classFuncFormalArgumentTypeList = mArgumentTypeList
     hasCompilerArgument = mHasCompilerArgument
     returnedType = mReturnedType
   else
-    if [constructorMap count] == 0 then
-      error self.mConstructorName
+    if [classFunctionMap count] == 0 then
+      error self.mClassFunctionName
       : "the '@"+ self.mTypeName + "' type does not define any constructor"
-      : constructorFormalArgumentTypeList, hasCompilerArgument, returnedType
+      : classFuncFormalArgumentTypeList, hasCompilerArgument, returnedType
     else
-      error self.mConstructorName
-      : "the '@"+ self.mTypeName + "' type does not define the '" + self.mConstructorName + "' constructor"
-      : constructorFormalArgumentTypeList, hasCompilerArgument, returnedType
-      fixit { replace [constructorMap keyList] }
+      error self.mClassFunctionName
+      : "the '@"+ self.mTypeName + "' type does not define the '" + self.mClassFunctionName + "' constructor"
+      : classFuncFormalArgumentTypeList, hasCompilerArgument, returnedType
+      fixit { replace [classFunctionMap keyList] }
     end
   end
 #--- Analysis arguments
-  var @semanticExpressionListForGeneration constructorEffectiveParameterList
-  if [self.mExpressionList count] != [constructorFormalArgumentTypeList count] then
-    error self.mConstructorName
-    : "calling the '" + self.mConstructorName + "' constructor of '@" + [constructorType definition].mTypeName.string + "' requires "
-    + [[constructorFormalArgumentTypeList count] string] + " parameter(s), while this call has "
+  var @semanticExpressionListForGeneration classFunctionEffectiveParameterList
+  if [self.mExpressionList count] != [classFuncFormalArgumentTypeList count] then
+    error self.mClassFunctionName
+    : "calling the '" + self.mClassFunctionName + "' constructor of '@" + [constructorType definition].mTypeName.string + "' requires "
+    + [[classFuncFormalArgumentTypeList count] string] + " parameter(s), while this call has "
     + [[self.mExpressionList count] string] + " parameter(s)" 
-    : constructorEffectiveParameterList
+    : classFunctionEffectiveParameterList
   else
-    constructorEffectiveParameterList = @semanticExpressionListForGeneration {}
-    for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressionList, (mFormalSelector mFormalArgumentType *) in constructorFormalArgumentTypeList do
+    classFunctionEffectiveParameterList = @semanticExpressionListForGeneration {}
+    for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressionList, (mFormalSelector mFormalArgumentType *) in classFuncFormalArgumentTypeList do
       if mFormalSelector.string != mActualSelector.string then
         let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
         error mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
@@ -269,17 +269,18 @@ override method @templateConstructorAST templateExpressionAnalysis
         ?@semanticExpressionForGeneration exp
       ]
       checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType !exp.mResultType !mEndOfExpressionLocation !?exp)
-      constructorEffectiveParameterList += !exp
+      classFunctionEffectiveParameterList += !exp
     end
   end
 #---
   outExpression = @constructorExpressionForGeneration.new {
     !returnedType
-    !self.mConstructorName.location
+    !self.mClassFunctionName.location
     !constructorType
-    !self.mConstructorName.string
-    !constructorEffectiveParameterList
-    !hasCompilerArgument}
+    !self.mClassFunctionName.string
+    !classFunctionEffectiveParameterList
+    !hasCompilerArgument
+  }
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -109,32 +109,6 @@ proc enterModifierWithoutArgument
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @stringsetPredefinedTypeAST getSetterMap
-  ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@setterMap outSetterMap
-{
-  [!?ioUnifiedTypeMap makeEntryFromString !"string" ?let stringType]
-  outSetterMap = {}
-  [!?outSetterMap insertKey
-    !@lstring.new {!"removeKey" !@location.here}
-    !@methodKind. definedAsMember
-    !@formalParameterSignature.listWithValue {!["" nowhere] !stringType !.argumentIn !"inKey"}
-    !false # No Compiler argument
-    !@methodQualifier. isBasic
-    !""
-  ]
-  enterModifierWithInputArgument (
-    !?outSetterMap
-    !?ioUnifiedTypeMap
-    !argTypeName: "string" 
-    !argName: "inValue"
-    !setterName: "insert"
-    !compilerArg: true
-  )
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 override method @stringPredefinedTypeAST getSetterMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@setterMap outSetterMap
@@ -282,33 +256,6 @@ override method @filewrapperPredefinedTypeAST getSetterMap
     !argName:"inDirectoryPath"
     !setterName:"setCurrentDirectory"
     !compilerArg:true
-  )
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-override method @bigintPredefinedTypeAST getSetterMap
-  ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@setterMap outSetterMap
-{
-  outSetterMap = {}
-  enterModifierWith2InputArguments (
-    !?outSetterMap
-    !?ioUnifiedTypeMap
-    !arg1TypeName:"bool"
-    !arg1Name:"inBit"
-    !arg2TypeName:"uint"
-    !arg2Name:"inIndex"
-    !setterName:"setBitAtIndex"
-    !compilerArg:false
-  )
-  enterModifierWithInputArgument (
-    !?outSetterMap
-    !?ioUnifiedTypeMap
-    !argTypeName:"uint"
-    !argName:"inIndex"
-    !setterName:"complementBitAtIndex"
-    !compilerArg:false
   )
 }
 

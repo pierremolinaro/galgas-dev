@@ -157,14 +157,14 @@ override method @enumDeclarationAST enterDeclarationInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
   ?!@semanticContext ioSemanticContext {
 #---
-  var @constructorMap constructorMap = {}
+  var @classFunctionMap classFunctionMap = {}
   var @setterMap setterMap = {}
   var @instanceMethodMap instanceMethodMap = {}
 #  let @classMethodMap classMethodMap = {}
   var @optionalMethodMap optionalMethodMap = {}
 #--- currentType type index
   [!?ioTypeMap makeEntry  !self.mEnumTypeName ?let enumTypeEntry]
-#--- Constructors
+#--- Class functions
   var @constantIndexMap constantMap = {}
   var @bool hasAssociatedValues = false
   for (mConstantName mAssociatedValueDefinitionList) in self.mConstantList do
@@ -177,7 +177,7 @@ override method @enumDeclarationAST enterDeclarationInSemanticContext
       hasAssociatedValues = true
     end
     [!?constantMap insertKey !mConstantName ![constantMap count] !associatedTypeList]
-    [!?constructorMap insertOrReplace
+    [!?classFunctionMap insertOrReplace
       !mConstantName
       !argumentTypeList
       !false
@@ -255,7 +255,7 @@ override method @enumDeclarationAST enterDeclarationInSemanticContext
     !{}
     !{}
     !{}
-    !constructorMap
+    !classFunctionMap
     !getterMap
     !setterMap
     !instanceMethodMap
@@ -385,7 +385,7 @@ override method @enumTypeForGeneration appendDeclaration1
     !selfTypedefinition.mTypeName.string
     ![selfTypedefinition.mTypeName.string identifierRepresentation]
     !selfTypedefinition.mIsConcrete
-    !selfTypedefinition.mConstructorMap
+    !selfTypedefinition.mClassFunctionMap
     !selfTypedefinition.mGetterMap
     !selfTypedefinition.mSetterMap
     !selfTypedefinition.mInstanceMethodMap

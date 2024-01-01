@@ -1898,7 +1898,7 @@ class GALGAS_headerCompositionMap : public AC_GALGAS_map {
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- GALGAS constructors
+//--------------------------------- GALGAS class functions
   public: static class GALGAS_headerCompositionMap class_func_emptyMap (LOCATION_ARGS) ;
 
   public: static class GALGAS_headerCompositionMap class_func_mapWithMapToOverride (const class GALGAS_headerCompositionMap & inOperand0
@@ -2085,7 +2085,7 @@ class GALGAS_headerCompositionMap_2D_element : public AC_GALGAS_root {
                                                                        Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- GALGAS constructors
+//--------------------------------- GALGAS class functions
   public: static class GALGAS_headerCompositionMap_2D_element class_func_new (const class GALGAS_lstring & inOperand0,
                                                                               const class GALGAS_stringset & inOperand1,
                                                                               const class GALGAS_string & inOperand2,
@@ -2149,7 +2149,7 @@ class GALGAS_headerRepartitionMap : public AC_GALGAS_map {
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- GALGAS constructors
+//--------------------------------- GALGAS class functions
   public: static class GALGAS_headerRepartitionMap class_func_emptyMap (LOCATION_ARGS) ;
 
   public: static class GALGAS_headerRepartitionMap class_func_mapWithMapToOverride (const class GALGAS_headerRepartitionMap & inOperand0
@@ -2310,7 +2310,7 @@ class GALGAS_headerRepartitionMap_2D_element : public AC_GALGAS_root {
                                                                        Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- GALGAS constructors
+//--------------------------------- GALGAS class functions
   public: static class GALGAS_headerRepartitionMap_2D_element class_func_new (const class GALGAS_lstring & inOperand0,
                                                                               const class GALGAS_string & inOperand1,
                                                                               class Compiler * inCompiler
@@ -2373,7 +2373,7 @@ class GALGAS_projectQualifiedFeatureMap : public AC_GALGAS_map {
                                                                   Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- GALGAS constructors
+//--------------------------------- GALGAS class functions
   public: static class GALGAS_projectQualifiedFeatureMap class_func_emptyMap (LOCATION_ARGS) ;
 
   public: static class GALGAS_projectQualifiedFeatureMap class_func_mapWithMapToOverride (const class GALGAS_projectQualifiedFeatureMap & inOperand0
@@ -2534,7 +2534,7 @@ class GALGAS_projectQualifiedFeatureMap_2D_element : public AC_GALGAS_root {
                                                                              Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- GALGAS constructors
+//--------------------------------- GALGAS class functions
   public: static class GALGAS_projectQualifiedFeatureMap_2D_element class_func_new (const class GALGAS_lstring & inOperand0,
                                                                                     const class GALGAS_lstring & inOperand1,
                                                                                     class Compiler * inCompiler
@@ -2596,7 +2596,7 @@ class GALGAS_XCodeGroupList : public AC_GALGAS_list {
                                                       Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- GALGAS constructors
+//--------------------------------- GALGAS class functions
   public: static class GALGAS_XCodeGroupList class_func_emptyList (LOCATION_ARGS) ;
 
   public: static class GALGAS_XCodeGroupList class_func_listWithValue (const class GALGAS_string & inOperand0,
@@ -2830,7 +2830,7 @@ class GALGAS_XCodeGroupList_2D_element : public AC_GALGAS_root {
                                                                  Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- GALGAS constructors
+//--------------------------------- GALGAS class functions
   public: static class GALGAS_XCodeGroupList_2D_element class_func_new (const class GALGAS_string & inOperand0,
                                                                         const class GALGAS_string & inOperand1,
                                                                         const class GALGAS_string & inOperand2,
@@ -2901,7 +2901,7 @@ class GALGAS_XCodeToolTargetList : public AC_GALGAS_list {
                                                            Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- GALGAS constructors
+//--------------------------------- GALGAS class functions
   public: static class GALGAS_XCodeToolTargetList class_func_emptyList (LOCATION_ARGS) ;
 
   public: static class GALGAS_XCodeToolTargetList class_func_listWithValue (const class GALGAS_string & inOperand0,
@@ -3338,7 +3338,7 @@ class GALGAS_XCodeToolTargetList_2D_element : public AC_GALGAS_root {
                                                                       Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- GALGAS constructors
+//--------------------------------- GALGAS class functions
   public: static class GALGAS_XCodeToolTargetList_2D_element class_func_new (const class GALGAS_string & inOperand0,
                                                                              const class GALGAS_string & inOperand1,
                                                                              const class GALGAS_string & inOperand2,
@@ -3419,7 +3419,7 @@ class GALGAS_XCodeAppTargetList : public AC_GALGAS_list {
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- GALGAS constructors
+//--------------------------------- GALGAS class functions
   public: static class GALGAS_XCodeAppTargetList class_func_emptyList (LOCATION_ARGS) ;
 
   public: static class GALGAS_XCodeAppTargetList class_func_listWithValue (const class GALGAS_string & inOperand0,
@@ -3943,7 +3943,7 @@ class GALGAS_XCodeAppTargetList_2D_element : public AC_GALGAS_root {
                                                                      Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- GALGAS constructors
+//--------------------------------- GALGAS class functions
   public: static class GALGAS_XCodeAppTargetList_2D_element class_func_new (const class GALGAS_string & inOperand0,
                                                                             const class GALGAS_string & inOperand1,
                                                                             const class GALGAS_string & inOperand2,

@@ -9343,7 +9343,7 @@ GALGAS_functionSignature_2D_element GALGAS_functionSignature_2D_element::extract
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_constructorMap_2D_element::GALGAS_constructorMap_2D_element (void) :
+GALGAS_classFunctionMap_2D_element::GALGAS_classFunctionMap_2D_element (void) :
 mProperty_lkey (),
 mProperty_mArgumentTypeList (),
 mProperty_mHasCompilerArgument (),
@@ -9352,15 +9352,15 @@ mProperty_mReturnedType () {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_constructorMap_2D_element::~ GALGAS_constructorMap_2D_element (void) {
+GALGAS_classFunctionMap_2D_element::~ GALGAS_classFunctionMap_2D_element (void) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_constructorMap_2D_element::GALGAS_constructorMap_2D_element (const GALGAS_lstring & inOperand0,
-                                                                    const GALGAS_functionSignature & inOperand1,
-                                                                    const GALGAS_bool & inOperand2,
-                                                                    const GALGAS_unifiedTypeMapEntry & inOperand3) :
+GALGAS_classFunctionMap_2D_element::GALGAS_classFunctionMap_2D_element (const GALGAS_lstring & inOperand0,
+                                                                        const GALGAS_functionSignature & inOperand1,
+                                                                        const GALGAS_bool & inOperand2,
+                                                                        const GALGAS_unifiedTypeMapEntry & inOperand3) :
 mProperty_lkey (inOperand0),
 mProperty_mArgumentTypeList (inOperand1),
 mProperty_mHasCompilerArgument (inOperand2),
@@ -9369,22 +9369,22 @@ mProperty_mReturnedType (inOperand3) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_constructorMap_2D_element GALGAS_constructorMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
-                                                                                   const GALGAS_functionSignature & in_mArgumentTypeList,
-                                                                                   const GALGAS_bool & in_mHasCompilerArgument,
-                                                                                   const GALGAS_unifiedTypeMapEntry & in_mReturnedType,
-                                                                                   Compiler * /* inCompiler */
-                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_constructorMap_2D_element result ;
+GALGAS_classFunctionMap_2D_element GALGAS_classFunctionMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                       const GALGAS_functionSignature & in_mArgumentTypeList,
+                                                                                       const GALGAS_bool & in_mHasCompilerArgument,
+                                                                                       const GALGAS_unifiedTypeMapEntry & in_mReturnedType,
+                                                                                       Compiler * /* inCompiler */
+                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_classFunctionMap_2D_element result ;
   if (in_lkey.isValid () && in_mArgumentTypeList.isValid () && in_mHasCompilerArgument.isValid () && in_mReturnedType.isValid ()) {
-    result = GALGAS_constructorMap_2D_element (in_lkey, in_mArgumentTypeList, in_mHasCompilerArgument, in_mReturnedType) ;
+    result = GALGAS_classFunctionMap_2D_element (in_lkey, in_mArgumentTypeList, in_mHasCompilerArgument, in_mReturnedType) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult GALGAS_constructorMap_2D_element::objectCompare (const GALGAS_constructorMap_2D_element & inOperand) const {
+typeComparisonResult GALGAS_classFunctionMap_2D_element::objectCompare (const GALGAS_classFunctionMap_2D_element & inOperand) const {
    typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
     result = mProperty_lkey.objectCompare (inOperand.mProperty_lkey) ;
@@ -9403,13 +9403,13 @@ typeComparisonResult GALGAS_constructorMap_2D_element::objectCompare (const GALG
 
 //--------------------------------------------------------------------------------------------------
 
-bool GALGAS_constructorMap_2D_element::isValid (void) const {
+bool GALGAS_classFunctionMap_2D_element::isValid (void) const {
   return mProperty_lkey.isValid () && mProperty_mArgumentTypeList.isValid () && mProperty_mHasCompilerArgument.isValid () && mProperty_mReturnedType.isValid () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_constructorMap_2D_element::drop (void) {
+void GALGAS_classFunctionMap_2D_element::drop (void) {
   mProperty_lkey.drop () ;
   mProperty_mArgumentTypeList.drop () ;
   mProperty_mHasCompilerArgument.drop () ;
@@ -9418,9 +9418,9 @@ void GALGAS_constructorMap_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_constructorMap_2D_element::description (String & ioString,
-                                                    const int32_t inIndentation) const {
-  ioString.addString ("<struct @constructorMap-element:") ;
+void GALGAS_classFunctionMap_2D_element::description (String & ioString,
+                                                      const int32_t inIndentation) const {
+  ioString.addString ("<struct @classFunctionMap-element:") ;
   if (! isValid ()) {
     ioString.addString (" not built") ;
   }else{
@@ -9437,41 +9437,41 @@ void GALGAS_constructorMap_2D_element::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @constructorMap-element generic code implementation
+//     @classFunctionMap-element generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_constructorMap_2D_element ("constructorMap-element",
-                                                                                 nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classFunctionMap_2D_element ("classFunctionMap-element",
+                                                                                   nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_constructorMap_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_constructorMap_2D_element ;
+const C_galgas_type_descriptor * GALGAS_classFunctionMap_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_classFunctionMap_2D_element ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_constructorMap_2D_element::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_classFunctionMap_2D_element::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_constructorMap_2D_element (*this)) ;
+    macroMyNew (result, GALGAS_classFunctionMap_2D_element (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_constructorMap_2D_element GALGAS_constructorMap_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                                  Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) {
-  GALGAS_constructorMap_2D_element result ;
-  const GALGAS_constructorMap_2D_element * p = (const GALGAS_constructorMap_2D_element *) inObject.embeddedObject () ;
+GALGAS_classFunctionMap_2D_element GALGAS_classFunctionMap_2D_element::extractObject (const GALGAS_object & inObject,
+                                                                                      Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) {
+  GALGAS_classFunctionMap_2D_element result ;
+  const GALGAS_classFunctionMap_2D_element * p = (const GALGAS_classFunctionMap_2D_element *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_constructorMap_2D_element *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_classFunctionMap_2D_element *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("constructorMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("classFunctionMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

@@ -25,7 +25,7 @@ struct @unifiedTypeDefinition {
   public let @typedPropertyList mAllTypedPropertyList
   public let @propertyMap mPropertyMap # struct, class
   public let @typedPropertyList mCurrentTypedPropertyList
-  public let @constructorMap mConstructorMap
+  public let @classFunctionMap mClassFunctionMap
   public let @getterMap mGetterMap
   public let @setterMap mSetterMap
   public let @instanceMethodMap mInstanceMethodMap
@@ -40,7 +40,7 @@ struct @unifiedTypeDefinition {
   public let @mapSearchMethodListAST mMapEntrySearchConstructorList # For a map entry, the list of search methods of the associated map
   public let @bool mGenerateHeaderInSeparateFile # Significant only for classes
   public let @unifiedTypeMapEntry mTypeForEnumeratedElement
-  public let @string defaultConstructorName %selector # Used in [@xxx default] (empty string if no default constructor)
+  public let @string defaultConstructorName %selector # Used in [@xxx default] (empty string if no default initializer)
   public let @string mHeaderFileName # Name of C++ header file that contains type declaration
   public let @headerKind mHeaderKind
 }

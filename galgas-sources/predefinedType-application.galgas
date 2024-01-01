@@ -43,45 +43,45 @@ refclass @applicationPredefinedTypeAST : @predefinedTypeAST {
 
   #-----------------------------------------------------------------------------------------------------------------
 
-  override method getConstructorMap ?!@unifiedTypeMap ioUnifiedTypeMap
-                                    !@constructorMap outMap {
+  override method getClassFunctionMap ?!@unifiedTypeMap ioUnifiedTypeMap
+                                      !@classFunctionMap outMap {
     outMap = {}
-    enterConstructorWithoutArgument (
+    enterClassFunctionWithoutArgument (
       !?outMap
       !?ioUnifiedTypeMap
       !name:"system"
       !resultTypeName:"string"
       !hasLexiqueArg:false
     )
-    enterConstructorWithoutArgument (
+    enterClassFunctionWithoutArgument (
       !?outMap
       !?ioUnifiedTypeMap
       !name:"verboseOutput"
       !resultTypeName:"bool"
       !hasLexiqueArg:false
     )
-    enterConstructorWithoutArgument (
+    enterClassFunctionWithoutArgument (
       !?outMap
       !?ioUnifiedTypeMap
       !name:"projectVersionString"
       !resultTypeName:"string"
       !hasLexiqueArg:false
     )
-    enterConstructorWithoutArgument (
+    enterClassFunctionWithoutArgument (
       !?outMap
       !?ioUnifiedTypeMap
       !name:"galgasVersionString"
       !resultTypeName:"string"
       !hasLexiqueArg:false
     )
-    enterConstructorWithoutArgument (
+    enterClassFunctionWithoutArgument (
       !?outMap
       !?ioUnifiedTypeMap
       !name:"commandLineArgumentCount"
       !resultTypeName:"uint"
       !hasLexiqueArg:false
     )
-    enterConstructorWithArgument (
+    enterClassFunctionWithArgument (
       !?outMap
       !?ioUnifiedTypeMap
       !name:"commandLineArgumentAtIndex"
@@ -90,15 +90,15 @@ refclass @applicationPredefinedTypeAST : @predefinedTypeAST {
       !resultTypeName:"string"
       !hasLexiqueArg:true
     )
-  #--- Constructors for "bool" options
-    enterConstructorWithoutArgument (
+  #--- Class functions for "bool" options
+    enterClassFunctionWithoutArgument (
       !?outMap
       !?ioUnifiedTypeMap
       !name:"boolOptionNameList"
       !resultTypeName:"2stringlist"
       !hasLexiqueArg:false
     )
-    enterConstructorWith2Arguments (
+    enterClassFunctionWith2Arguments (
       !?outMap
       !?ioUnifiedTypeMap
       !name:"boolOptionInvocationCharacter"
@@ -109,7 +109,7 @@ refclass @applicationPredefinedTypeAST : @predefinedTypeAST {
       !resultTypeName:"char"
       !hasLexiqueArg:false
     )
-    enterConstructorWith2Arguments (
+    enterClassFunctionWith2Arguments (
       !?outMap
       !?ioUnifiedTypeMap
       !name:"boolOptionInvocationString"
@@ -120,7 +120,7 @@ refclass @applicationPredefinedTypeAST : @predefinedTypeAST {
       !resultTypeName:"string"
       !hasLexiqueArg:false
     )
-    enterConstructorWith2Arguments (
+    enterClassFunctionWith2Arguments (
       !?outMap
       !?ioUnifiedTypeMap
       !name:"boolOptionCommentString"
@@ -131,7 +131,7 @@ refclass @applicationPredefinedTypeAST : @predefinedTypeAST {
       !resultTypeName:"string"
       !hasLexiqueArg:false
     )
-    enterConstructorWith2Arguments (
+    enterClassFunctionWith2Arguments (
       !?outMap
       !?ioUnifiedTypeMap
       !name:"boolOptionValue"
@@ -142,15 +142,15 @@ refclass @applicationPredefinedTypeAST : @predefinedTypeAST {
       !resultTypeName:"bool"
       !hasLexiqueArg:false
     )
-  #--- Constructors for "uint" options
-    enterConstructorWithoutArgument (
+  #--- Class functions for "uint" options
+    enterClassFunctionWithoutArgument (
       !?outMap
       !?ioUnifiedTypeMap
       !name:"uintOptionNameList"
       !resultTypeName:"2stringlist"
       !hasLexiqueArg:false
     )
-    enterConstructorWith2Arguments (
+    enterClassFunctionWith2Arguments (
       !?outMap
       !?ioUnifiedTypeMap
       !name:"uintOptionInvocationCharacter"
@@ -161,7 +161,7 @@ refclass @applicationPredefinedTypeAST : @predefinedTypeAST {
       !resultTypeName:"char"
       !hasLexiqueArg:false
     )
-    enterConstructorWith2Arguments (
+    enterClassFunctionWith2Arguments (
       !?outMap
       !?ioUnifiedTypeMap
       !name:"uintOptionInvocationString"
@@ -172,7 +172,7 @@ refclass @applicationPredefinedTypeAST : @predefinedTypeAST {
       !resultTypeName:"string"
       !hasLexiqueArg:false
     )
-    enterConstructorWith2Arguments (
+    enterClassFunctionWith2Arguments (
       !?outMap
       !?ioUnifiedTypeMap
       !name:"uintOptionCommentString"
@@ -183,7 +183,7 @@ refclass @applicationPredefinedTypeAST : @predefinedTypeAST {
       !resultTypeName:"string"
       !hasLexiqueArg:false
     )
-    enterConstructorWith2Arguments (
+    enterClassFunctionWith2Arguments (
       !?outMap
       !?ioUnifiedTypeMap
       !name:"uintOptionValue"
@@ -194,15 +194,15 @@ refclass @applicationPredefinedTypeAST : @predefinedTypeAST {
       !resultTypeName:"uint"
       !hasLexiqueArg:false
     )
-  #--- Constructors for "string" options
-    enterConstructorWithoutArgument (
+  #--- Class functions for "string" options
+    enterClassFunctionWithoutArgument (
       !?outMap
       !?ioUnifiedTypeMap
       !name:"stringOptionNameList"
       !resultTypeName:"2stringlist"
       !hasLexiqueArg:false
     )
-    enterConstructorWith2Arguments (
+    enterClassFunctionWith2Arguments (
       !?outMap
       !?ioUnifiedTypeMap
       !name:"stringOptionInvocationCharacter"
@@ -213,7 +213,7 @@ refclass @applicationPredefinedTypeAST : @predefinedTypeAST {
       !resultTypeName:"char"
       !hasLexiqueArg:false
     )
-    enterConstructorWith2Arguments (
+    enterClassFunctionWith2Arguments (
       !?outMap
       !?ioUnifiedTypeMap
       !name:"stringOptionInvocationString"
@@ -224,7 +224,7 @@ refclass @applicationPredefinedTypeAST : @predefinedTypeAST {
       !resultTypeName:"string"
       !hasLexiqueArg:false
     )
-    enterConstructorWith2Arguments (
+    enterClassFunctionWith2Arguments (
       !?outMap
       !?ioUnifiedTypeMap
       !name:"stringOptionCommentString"
@@ -235,7 +235,7 @@ refclass @applicationPredefinedTypeAST : @predefinedTypeAST {
       !resultTypeName:"string"
       !hasLexiqueArg:false
     )
-    enterConstructorWith2Arguments (
+    enterClassFunctionWith2Arguments (
       !?outMap
       !?ioUnifiedTypeMap
       !name:"stringOptionValue"
@@ -246,15 +246,15 @@ refclass @applicationPredefinedTypeAST : @predefinedTypeAST {
       !resultTypeName:"string"
       !hasLexiqueArg:false
     )
-  #--- Constructors for lexical keyword lists
-    enterConstructorWithoutArgument (
+  #--- Class functions for lexical keyword lists
+    enterClassFunctionWithoutArgument (
       !?outMap
       !?ioUnifiedTypeMap
       !name:"keywordIdentifierSet"
       !resultTypeName:"stringset"
       !hasLexiqueArg:false
     )
-    enterConstructorWithArgument (
+    enterClassFunctionWithArgument (
       !?outMap
       !?ioUnifiedTypeMap
       !name:"keywordListForIdentifier"

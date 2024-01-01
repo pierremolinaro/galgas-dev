@@ -115,6 +115,8 @@ project (3:7:0) -> "galgas" {
 #--- Predefined types
   "galgas-sources/predefinedTypeAST.galgas"
   "galgas-sources/predefinedType-application.galgas"
+  "galgas-sources/predefinedType-bigint.galgas"
+  "galgas-sources/predefinedType-stringset.galgas"
 
 #--- Semantics Component`
   "galgas-sources/actual-parameters.galgas"

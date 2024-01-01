@@ -699,7 +699,7 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@bool IS_CONCRETE # false if abstract class
-    ?@constructorMap CONSTRUCTOR_MAP
+    ?@classFunctionMap CLASS_FUNC_MAP
     ?@getterMap GETTER_MAP
     ?@setterMap MODIFIER_MAP
     ?@instanceMethodMap INSTANCE_METHOD_MAP
@@ -713,7 +713,7 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
   template unifiedClassBodyForPackage "unified-class-body-for-package.h.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
-    ?@constructorMap CONSTRUCTOR_MAP
+    ?@classFunctionMap CLASS_FUNC_MAP
     ?@classMethodMap CLASS_METHOD_MAP
 
   template genericTypeImplementation "generic-type.cpp.galgasTemplate"
@@ -1563,10 +1563,6 @@ filewrapper predefinedTypeGenerationTemplate in "+generation-templates/type_gene
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @bigintPredefinedTypeAST cppDeclarationString -> @string {
-  result = [filewrapper predefinedTypeGenerationTemplate.bigint_type]
-}
-
 override getter @objectPredefinedTypeAST cppDeclarationString -> @string {
   result = [filewrapper predefinedTypeGenerationTemplate.object_type]
 }
@@ -1619,10 +1615,6 @@ override getter @locationPredefinedTypeAST cppDeclarationString -> @string {
   result = [filewrapper predefinedTypeGenerationTemplate.location_type]
 }
 
-override getter @stringsetPredefinedTypeAST cppDeclarationString -> @string {
-  result = [filewrapper predefinedTypeGenerationTemplate.stringset_type]
-}
-
 override getter @functionPredefinedTypeAST cppDeclarationString -> @string {
   result = [filewrapper predefinedTypeGenerationTemplate.function_type]
 }
@@ -1659,7 +1651,7 @@ refclass @primitiveTypeForGeneration : @semanticTypeForGeneration {
       result += [filewrapper typeGenerationTemplate.unifiedClassBodyForPackage
         !selfTypeDefinition.mTypeName.string
         ![self.mSelfTypeEntry identifierRepresentation]
-        !selfTypeDefinition.mConstructorMap
+        !selfTypeDefinition.mClassFunctionMap
         !selfTypeDefinition.mClassMethodMap
       ]
     else
@@ -1667,7 +1659,7 @@ refclass @primitiveTypeForGeneration : @semanticTypeForGeneration {
         !selfTypeDefinition.mTypeName.string
         ![self.mSelfTypeEntry identifierRepresentation]
         !selfTypeDefinition.mIsConcrete
-        !selfTypeDefinition.mConstructorMap
+        !selfTypeDefinition.mClassFunctionMap
         !selfTypeDefinition.mGetterMap
         !selfTypeDefinition.mSetterMap
         !selfTypeDefinition.mInstanceMethodMap

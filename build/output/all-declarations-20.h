@@ -269,7 +269,7 @@ class GALGAS_XcodeProjectDescriptor : public AC_GALGAS_root {
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- GALGAS constructors
+//--------------------------------- GALGAS class functions
   public: static class GALGAS_XcodeProjectDescriptor class_func_new (Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) ;
 

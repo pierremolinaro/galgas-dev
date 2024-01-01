@@ -306,20 +306,20 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
 #--- Enumeration description
   var @enumerationDescriptorList enumerationDescriptor = {!lstringTypeIndex !"lkey"}
 #---
-  var @constructorMap constructorMap = {}
+  var @classFunctionMap classFunctionMap = {}
   commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap)
   var @setterMap setterMap = {}
   var @instanceMethodMap instanceMethodMap = {}
-#--- Constructors
-  enterConstructorWithoutArgument (
-    !?constructorMap
+#--- Class functions
+  enterClassFunctionWithoutArgument (
+    !?classFunctionMap
     !?ioTypeMap
     !name:"emptyMap"
     !resultTypeName:self.mMapTypeName.string
     !hasLexiqueArg:false
   )
-  enterConstructorWithArgument (
-    !?constructorMap
+  enterClassFunctionWithArgument (
+    !?classFunctionMap
     !?ioTypeMap
     !name:"mapWithMapToOverride"
     !argTypeName:self.mMapTypeName.string
@@ -578,7 +578,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     !{}
     !{}
     !typedPropertyList
-    !constructorMap
+    !classFunctionMap
     !getterMap
     !setterMap
     !instanceMethodMap
@@ -729,7 +729,7 @@ override method @mapTypeForGeneration appendDeclaration1
     !selfTypedefinition.mTypeName.string
     ![self.mSelfTypeEntry identifierRepresentation]
     !selfTypedefinition.mIsConcrete
-    !selfTypedefinition.mConstructorMap
+    !selfTypedefinition.mClassFunctionMap
     !selfTypedefinition.mGetterMap
     !selfTypedefinition.mSetterMap
     !selfTypedefinition.mInstanceMethodMap

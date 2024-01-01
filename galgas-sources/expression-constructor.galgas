@@ -187,15 +187,15 @@ private proc analyzeConstructorInvocation
     : outReturnedType, outConstructorType, outConstructorEffectiveParameterList, outHasCompilerArgument
   else
   #--- Get constructor map from type map
-    let @constructorMap constructorMap = [outConstructorType definition].mConstructorMap
+    let @classFunctionMap classFunctionMap = [outConstructorType definition].mClassFunctionMap
   #--- Search contructor
     let @functionSignature constructorFormalArgumentTypeList
-    with inConstructorName.string in constructorMap  do
+    with inConstructorName.string in classFunctionMap  do
       constructorFormalArgumentTypeList = mArgumentTypeList
       outHasCompilerArgument = mHasCompilerArgument
       outReturnedType = mReturnedType
     else
-      if [constructorMap count] == 0 then
+      if [classFunctionMap count] == 0 then
         error inConstructorName
         : "the '@"+ [outConstructorType definition].mTypeName.string + "' type does not define any constructor"
         : constructorFormalArgumentTypeList, outHasCompilerArgument, outReturnedType
@@ -203,7 +203,7 @@ private proc analyzeConstructorInvocation
         error inConstructorName
         : "the '@"+ [outConstructorType definition].mTypeName.string + "' type does not define the '" + inConstructorName + "' constructor"
         : constructorFormalArgumentTypeList, outHasCompilerArgument, outReturnedType
-        fixit { replace [constructorMap keyList] }
+        fixit { replace [classFunctionMap keyList] }
       end
     end
   #--- Analysis arguments

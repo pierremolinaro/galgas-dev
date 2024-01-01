@@ -19,17 +19,6 @@
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @stringsetPredefinedTypeAST getEnumerationList ?!@unifiedTypeMap ioUnifiedTypeMap
-                                                               !@enumerationDescriptorList outEnumerationList
-                                                               !@string outEnumeratedType {
-  [!?ioUnifiedTypeMap makeEntryFromString !"string" ?let stringTypeIndex]
-  outEnumerationList = {}
-  outEnumerationList += !stringTypeIndex !"key"
-  outEnumeratedType = "string"
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 override method @dataPredefinedTypeAST getEnumerationList
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@enumerationDescriptorList outEnumerationList
@@ -39,22 +28,6 @@ override method @dataPredefinedTypeAST getEnumerationList
   outEnumerationList = {}
   outEnumerationList += !uintTypeIndex !"data"
   outEnumeratedType = "uint"
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#  G E T    S U P P O R T E D    O P E R A T O R    F L A G S                                                  
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-override getter @bigintPredefinedTypeAST getSupportedOperatorFlags -> @operators {
-  result = .generateDescriptionGetterUtilityMethod | .prefixPlusOperator | .prefixMinusOperator |
-             .infixAddOperator | .infixSubOperator | .infixMulOperator | .infixDivOperator |
-             .infixShiftOperator | .infixModOperator |
-             .infixAndOperator | .infixOrOperator | .infixXorOperator | .prefixTildeOperator |
-             .incDecOperator | .isComparable |
-             .plusEqualOperatorWithExpression | .minusEqualOperatorWithExpression |
-             .mulEqualOperatorWithExpression | .divEqualOperatorWithExpression
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -151,16 +124,6 @@ override getter @doublePredefinedTypeAST getSupportedOperatorFlags -> @operators
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @stringsetPredefinedTypeAST getSupportedOperatorFlags -> @operators {
-  result = .infixSubOperator
-    | .infixAndOperator | .infixOrOperator
-    | .generateDescriptionGetterUtilityMethod | .plusEqualOperatorWithExpression
-    | .generateEnumerationHelperMethods | .isComparable
-    | .generateCopyConstructorAndAssignmentOperator
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 override getter @binarysetPredefinedTypeAST getSupportedOperatorFlags -> @operators {
   result = .infixAndOperator | .infixOrOperator | .infixXorOperator
     | .prefixTildeOperator | .infixShiftOperator
@@ -195,16 +158,6 @@ override getter @locationPredefinedTypeAST getSupportedOperatorFlags -> @operato
 
 override getter @filewrapperPredefinedTypeAST getSupportedOperatorFlags -> @operators {
   result = .generateDescriptionGetterUtilityMethod
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-override method @stringsetPredefinedTypeAST getAddAssignArgumentList
-  ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@functionSignature outAddAssignArgumentList
-{
-  [!?ioUnifiedTypeMap makeEntryFromString !"string" ?let @unifiedTypeMapEntry stringTypeIndex]
-  outAddAssignArgumentList = {!["" nowhere] !stringTypeIndex !"inString"}
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————

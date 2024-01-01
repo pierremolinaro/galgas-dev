@@ -126,7 +126,7 @@ GALGAS_structuredCastInstructionAST_2D_weak GALGAS_structuredCastInstructionAST_
 class cCollectionElement_castInstructionBranchListForGeneration : public cCollectionElement {
   public: GALGAS_castInstructionBranchListForGeneration_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_castInstructionBranchListForGeneration (const GALGAS_dynamicTypeComparisonKind & in_mTypeComparisonKind,
                                                                      const GALGAS_unifiedTypeMapEntry & in_mType,
                                                                      const GALGAS_string & in_mCastedVarCppName,
@@ -2509,7 +2509,7 @@ GALGAS_fixitElementAST GALGAS_fixitElementAST::extractObject (const GALGAS_objec
 class cCollectionElement_fixitListAST : public cCollectionElement {
   public: GALGAS_fixitListAST_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_fixitListAST (const GALGAS_fixitElementAST & in_mElement
                                            COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_fixitListAST (const GALGAS_fixitListAST_2D_element & inElement COMMA_LOCATION_ARGS) ;
@@ -3632,7 +3632,7 @@ GALGAS_fixitElementForGeneration GALGAS_fixitElementForGeneration::extractObject
 class cCollectionElement_fixitListForGeneration : public cCollectionElement {
   public: GALGAS_fixitListForGeneration_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_fixitListForGeneration (const GALGAS_fixitElementForGeneration & in_mElement
                                                      COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_fixitListForGeneration (const GALGAS_fixitListForGeneration_2D_element & inElement COMMA_LOCATION_ARGS) ;
@@ -4213,7 +4213,7 @@ GALGAS_errorInstructionForGeneration_2D_weak GALGAS_errorInstructionForGeneratio
 class cCollectionElement_forInstructionEnumeratedObjectElementListAST : public cCollectionElement {
   public: GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_forInstructionEnumeratedObjectElementListAST (const GALGAS_lstring & in_mOptionalTypeName,
                                                                            const GALGAS_bool & in_mDeclaredAsUnused,
                                                                            const GALGAS_lstring & in_mOptionalConstantName
@@ -5500,7 +5500,7 @@ GALGAS_enumeratedCollectionCstListInExpAST_2D_weak GALGAS_enumeratedCollectionCs
 class cCollectionElement_forInstructionEnumeratedObjectListAST : public cCollectionElement {
   public: GALGAS_forInstructionEnumeratedObjectListAST_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_forInstructionEnumeratedObjectListAST (const GALGAS_bool & in_mAscending,
                                                                     const GALGAS_abstractEnumeratedCollectionAST & in_mEnumeratedCollection
                                                                     COMMA_LOCATION_ARGS) ;
@@ -6127,7 +6127,7 @@ void callExtensionMethod_analyzeEnumeration (cPtr_abstractEnumeratedCollectionAS
 class cCollectionElement_forInstructionEnumeratedObjectListForGeneration : public cCollectionElement {
   public: GALGAS_forInstructionEnumeratedObjectListForGeneration_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_forInstructionEnumeratedObjectListForGeneration (const GALGAS_string & in_mEnumerationOrder,
                                                                               const GALGAS_semanticExpressionForGeneration & in_mEnumeratedExpression,
                                                                               const GALGAS_string & in_mEnumeratorCppName
@@ -10550,7 +10550,7 @@ GALGAS_optionalMethodActualArgument GALGAS_optionalMethodActualArgument::extract
 class cCollectionElement_optionalMethodActualArgumentList : public cCollectionElement {
   public: GALGAS_optionalMethodActualArgumentList_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_optionalMethodActualArgumentList (const GALGAS_lstring & in_mSelector,
                                                                const GALGAS_optionalMethodActualArgument & in_mActualArgument
                                                                COMMA_LOCATION_ARGS) ;
@@ -11024,7 +11024,7 @@ GALGAS_optionalMethodActualArgumentList GALGAS_optionalMethodActualArgumentList:
 class cCollectionElement_ifExpressionList : public cCollectionElement {
   public: GALGAS_ifExpressionList_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_ifExpressionList (const GALGAS_ifExpressionKind & in_mExpression
                                                COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_ifExpressionList (const GALGAS_ifExpressionList_2D_element & inElement COMMA_LOCATION_ARGS) ;
@@ -12498,7 +12498,7 @@ GALGAS_optionalMethodActualArgumentForGeneration GALGAS_optionalMethodActualArgu
 class cCollectionElement_optionalMethodActualArgumentListForGeneration : public cCollectionElement {
   public: GALGAS_optionalMethodActualArgumentListForGeneration_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_optionalMethodActualArgumentListForGeneration (const GALGAS_optionalMethodActualArgumentForGeneration & in_mParameter
                                                                             COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_optionalMethodActualArgumentListForGeneration (const GALGAS_optionalMethodActualArgumentListForGeneration_2D_element & inElement COMMA_LOCATION_ARGS) ;
@@ -12906,7 +12906,7 @@ GALGAS_optionalMethodActualArgumentListForGeneration GALGAS_optionalMethodActual
 class cCollectionElement_ifTestListForGeneration : public cCollectionElement {
   public: GALGAS_ifTestListForGeneration_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_ifTestListForGeneration (const GALGAS_ifTestForGeneration & in_mExpression
                                                       COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_ifTestListForGeneration (const GALGAS_ifTestListForGeneration_2D_element & inElement COMMA_LOCATION_ARGS) ;
@@ -14360,7 +14360,7 @@ GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration_2D_we
 class cCollectionElement_logListAST : public cCollectionElement {
   public: GALGAS_logListAST_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_logListAST (const GALGAS_lstring & in_mLogMessage,
                                          const GALGAS_semanticExpressionAST & in_mLogExpression
                                          COMMA_LOCATION_ARGS) ;

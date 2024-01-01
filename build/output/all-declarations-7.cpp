@@ -638,7 +638,7 @@ GALGAS_nonTerminalSymbolMapForGrammarAnalysis GALGAS_nonTerminalSymbolMapForGram
 class cCollectionElement_nonTerminalToAddList : public cCollectionElement {
   public: GALGAS_nonTerminalToAddList_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_nonTerminalToAddList (const GALGAS_string & in_mSyntaxComponentName,
                                                    const GALGAS_uint & in_mNonTerminalToAddCount
                                                    COMMA_LOCATION_ARGS) ;
@@ -1112,7 +1112,7 @@ GALGAS_nonTerminalToAddList GALGAS_nonTerminalToAddList::extractObject (const GA
 class cCollectionElement_terminalCheckAssignementList : public cCollectionElement {
   public: GALGAS_terminalCheckAssignementList_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_terminalCheckAssignementList (const GALGAS_string & in_mTypeName,
                                                            const GALGAS_string & in_mTargetVarCppName,
                                                            const GALGAS_string & in_mSourceLexicalAttributeName
@@ -1870,7 +1870,7 @@ GALGAS_syntaxInstructionForGeneration_2D_weak GALGAS_syntaxInstructionForGenerat
 class cCollectionElement_filewrapperTemplateListForGeneration : public cCollectionElement {
   public: GALGAS_filewrapperTemplateListForGeneration_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_filewrapperTemplateListForGeneration (const GALGAS_string & in_mFilewrapperTemplateName,
                                                                    const GALGAS_formalInputParameterListForGeneration & in_mFilewrapperTemplateFormalInputParameters,
                                                                    const GALGAS_templateInstructionListForGeneration & in_mTemplateInstructionListForGeneration
@@ -2568,7 +2568,7 @@ void callExtensionMethod_analyzeSemanticInstruction (cPtr_semanticInstructionAST
 class cCollectionElement_localConstantList : public cCollectionElement {
   public: GALGAS_localConstantList_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_localConstantList (const GALGAS_unifiedTypeMapEntry & in_mType,
                                                 const GALGAS_lstring & in_mName,
                                                 const GALGAS_bool & in_mNoWarningIfUnused,
@@ -3174,7 +3174,7 @@ GALGAS_localConstantList GALGAS_localConstantList::extractObject (const GALGAS_o
 class cCollectionElement_localInitializedVariableList : public cCollectionElement {
   public: GALGAS_localInitializedVariableList_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_localInitializedVariableList (const GALGAS_unifiedTypeMapEntry & in_mType,
                                                            const GALGAS_lstring & in_mName,
                                                            const GALGAS_string & in_mCppName
@@ -4832,7 +4832,7 @@ GALGAS_nonterminalMap GALGAS_nonterminalMap::extractObject (const GALGAS_object 
 class cCollectionElement_ruleLabelImplementationList : public cCollectionElement {
   public: GALGAS_ruleLabelImplementationList_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_ruleLabelImplementationList (const GALGAS_lstring & in_mLabelName,
                                                           const GALGAS_formalParameterListForGeneration & in_mSignatureForGeneration,
                                                           const GALGAS_formalParameterSignature & in_mSignature,
@@ -5504,7 +5504,7 @@ GALGAS_ruleLabelImplementationList GALGAS_ruleLabelImplementationList::extractOb
 class cCollectionElement_ruleDeclarationList : public cCollectionElement {
   public: GALGAS_ruleDeclarationList_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_ruleDeclarationList (const GALGAS_string & in_mNonterminalName,
                                                   const GALGAS_uint & in_mRuleIndex,
                                                   const GALGAS_ruleLabelImplementationList & in_mLabelImplementationList
@@ -8035,7 +8035,7 @@ GALGAS_scopeLocalVarMap GALGAS_scopeLocalVarMap::extractObject (const GALGAS_obj
 class cCollectionElement_localVarMapListForLLVM : public cCollectionElement {
   public: GALGAS_localVarMapListForLLVM_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_localVarMapListForLLVM (const GALGAS_scopeLocalVarMap & in_mMap
                                                      COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_localVarMapListForLLVM (const GALGAS_localVarMapListForLLVM_2D_element & inElement COMMA_LOCATION_ARGS) ;
@@ -8714,7 +8714,7 @@ GALGAS_overrideKind GALGAS_overrideKind::extractObject (const GALGAS_object & in
 class cCollectionElement_openedOverrideList : public cCollectionElement {
   public: GALGAS_openedOverrideList_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_openedOverrideList (const GALGAS_overrideKind & in_mOverrideKind
                                                  COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_openedOverrideList (const GALGAS_openedOverrideList_2D_element & inElement COMMA_LOCATION_ARGS) ;
@@ -10947,10 +10947,10 @@ GALGAS_string extensionGetter_string (const GALGAS_typeKindEnum & inObject,
     break ;
   case GALGAS_typeKindEnum::kEnum_classType:
     {
-      const cEnumAssociatedValues_typeKindEnum_classType * extractPtr_3708 = (const cEnumAssociatedValues_typeKindEnum_classType *) (temp_0.unsafePointer ()) ;
-      const GALGAS_bool extractedValue_3627_isReference = extractPtr_3708->mAssociatedValue0 ;
+      const cEnumAssociatedValues_typeKindEnum_classType * extractPtr_3712 = (const cEnumAssociatedValues_typeKindEnum_classType *) (temp_0.unsafePointer ()) ;
+      const GALGAS_bool extractedValue_3631_isReference = extractPtr_3712->mAssociatedValue0 ;
       GALGAS_string temp_1 ;
-      const enumGalgasBool test_2 = extractedValue_3627_isReference.boolEnum () ;
+      const enumGalgasBool test_2 = extractedValue_3631_isReference.boolEnum () ;
       if (kBoolTrue == test_2) {
         temp_1 = GALGAS_string ("reference class") ;
       }else if (kBoolFalse == test_2) {
@@ -13351,7 +13351,7 @@ GALGAS_varInExpressionForGeneration_2D_weak GALGAS_varInExpressionForGeneration_
 class cCollectionElement_actualOutputExpressionList : public cCollectionElement {
   public: GALGAS_actualOutputExpressionList_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_actualOutputExpressionList (const GALGAS_lstring & in_mActualSelector,
                                                          const GALGAS_semanticExpressionAST & in_mExpression,
                                                          const GALGAS_location & in_mEndOfExpressionLocation

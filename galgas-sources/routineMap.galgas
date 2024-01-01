@@ -89,40 +89,45 @@ struct @routineMap {
                    !@formalParameterSignature outRoutineSignature
                    !isFilePrivate: @bool outIsFilePrivate
                    !routineMangledName: @lstring outRoutineMangledName {
-    [self.mInternalRoutineMap searchKey !inRoutineName ?let routineArgumentMap]
-    outIsFilePrivate = false
-    outRoutineSignature = {}
-    for entry in routineArgumentMap do
-      outIsFilePrivate = entry.mIsFilePrivate
-      outRoutineSignature = entry.mRoutineSignature
-    end
-    var @acceptableParameterList acceptableParameterList = {}
-    for entry in routineArgumentMap do
-      var accept = [inActualParameterList length] == [entry.mRoutineSignature length]
-      for formalParameter in entry.mRoutineSignature, (actualParameter) in inActualParameterList while accept do
-        accept = [actualParameter isCompatibleWith
-          !formalParameter.mFormalArgumentPassingMode
-          !formalParameter.mFormalSelector
-        ]
+    if let [self.mInternalRoutineMap searchKey !inRoutineName ?let routineArgumentMap] then
+      outIsFilePrivate = false
+      outRoutineSignature = {}
+      for entry in routineArgumentMap do
+        outIsFilePrivate = entry.mIsFilePrivate
+        outRoutineSignature = entry.mRoutineSignature
       end
-      if accept then
-        acceptableParameterList += !entry.mRoutineSignature !entry.mIsFilePrivate
+      var @acceptableParameterList acceptableParameterList = {}
+      for entry in routineArgumentMap do
+        var accept = [inActualParameterList length] == [entry.mRoutineSignature length]
+        for formalParameter in entry.mRoutineSignature, (actualParameter) in inActualParameterList while accept do
+          accept = [actualParameter isCompatibleWith
+            !formalParameter.mFormalArgumentPassingMode
+            !formalParameter.mFormalSelector
+          ]
+        end
+        if accept then
+          acceptableParameterList += !entry.mRoutineSignature !entry.mIsFilePrivate
+        end
       end
-    end
-    if [acceptableParameterList count] == 1 then
-      [acceptableParameterList first ?outRoutineSignature ?outIsFilePrivate]
-      outRoutineMangledName = routineMangledName (!inRoutineName !outRoutineSignature)
-    elsif [acceptableParameterList count] == 0 then
-      error inRoutineName
-      : "cannot find any procedure with compatible formal argument list"
-      : outRoutineSignature, outIsFilePrivate, outRoutineMangledName
+      if [acceptableParameterList count] == 1 then
+        [acceptableParameterList first ?outRoutineSignature ?outIsFilePrivate]
+        outRoutineMangledName = routineMangledName (!inRoutineName !outRoutineSignature)
+      elsif [acceptableParameterList count] == 0 then
+        error inRoutineName
+        : "cannot find any procedure with compatible formal argument list"
+        : outRoutineSignature, outIsFilePrivate, outRoutineMangledName
+      else
+        var s = "ambiguity, several procedures with compatible formal argument list:"
+        for element in acceptableParameterList do
+          s += "\n  - " + routineArgumentFromFormalParameters (!element.mRoutineSignature)
+        end
+        error inRoutineName
+        : s
+        : outRoutineSignature, outIsFilePrivate, outRoutineMangledName
+      end
     else
-      var s = "ambiguity, several procedures with compatible formal argument list:"
-      for element in acceptableParameterList do
-        s += "\n  - " + routineArgumentFromFormalParameters (!element.mRoutineSignature)
-      end
       error inRoutineName
-      : s
+      : "the '" + inRoutineName + "' routine is not declared"
       : outRoutineSignature, outIsFilePrivate, outRoutineMangledName
     end
   }

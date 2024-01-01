@@ -161,16 +161,16 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
       !.argumentConstantIn
       !mPropertyName.string
   end
-#--- Constructors
-  var @constructorMap constructorMap = {}
-  enterConstructorWithoutArgument (
-    !?constructorMap
+#--- Class functions
+  var @classFunctionMap classFunctionMap = {}
+  enterClassFunctionWithoutArgument (
+    !?classFunctionMap
     !?ioTypeMap 
     !name:"emptyList"
     !resultTypeName:self.mListTypeName.string
     !hasLexiqueArg:false
   )
-  [!?constructorMap insertKey
+  [!?classFunctionMap insertKey
     !@lstring.new {!"listWithValue" !@location.here}
     !constructorAttributeTypeList
     !false
@@ -335,7 +335,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !typedAttributeList
     !{}
     !{}
-    !constructorMap
+    !classFunctionMap
     !getterMap
     !setterMap
     !instanceMethodMap
@@ -472,7 +472,7 @@ override method @listTypeForGeneration appendDeclaration1
     !selfTypedefinition.mTypeName.string
     ![self.mSelfTypeEntry identifierRepresentation]
     !selfTypedefinition.mIsConcrete
-    !selfTypedefinition.mConstructorMap
+    !selfTypedefinition.mClassFunctionMap
     !selfTypedefinition.mGetterMap
     !selfTypedefinition.mSetterMap
     !selfTypedefinition.mInstanceMethodMap

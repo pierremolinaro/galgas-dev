@@ -130,11 +130,11 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
   end  
 #--- boolset type index
   [!?ioTypeMap makeEntry !self.mBoolsetTypeName ?let boolsetTypeIndex]
-#--- Constructors and attribute map
+#--- Class functions and attribute map
   commonGetterMapForAllTypes (!?ioTypeMap ?@getterMap getterMap)
-  var @constructorMap constructorMap = {}
-  [!?constructorMap insertKey !["none" nowhere] !{} !false !boolsetTypeIndex] 
-  [!?constructorMap insertKey !["all" nowhere] !{} !false !boolsetTypeIndex] 
+  var @classFunctionMap classFunctionMap = {}
+  [!?classFunctionMap insertKey !["none" nowhere] !{} !false !boolsetTypeIndex] 
+  [!?classFunctionMap insertKey !["all" nowhere] !{} !false !boolsetTypeIndex] 
   enterBaseFinalGetterWithoutArgument (
     !?getterMap
     !?ioTypeMap 
@@ -152,8 +152,8 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
     !hasCompilerArgument:false
   )
   for (slotName) in self.mFlagList do
-    if not [constructorMap hasKey !slotName] then
-      [!?constructorMap insertKey !slotName !{} !false !boolsetTypeIndex] 
+    if not [classFunctionMap hasKey !slotName] then
+      [!?classFunctionMap insertKey !slotName !{} !false !boolsetTypeIndex] 
       enterBaseFinalGetterWithoutArgument (
         !?getterMap
         !?ioTypeMap 
@@ -196,7 +196,7 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
     !{}
     !{}
     !{}
-    !constructorMap
+    !classFunctionMap
     !getterMap
     !setterMap
     !instanceMethodMap
@@ -289,7 +289,7 @@ override method @boolsetTypeForGeneration appendDeclaration1
     !typedefinition.mTypeName.string
     ![typedefinition.mTypeName.string identifierRepresentation]
     !typedefinition.mIsConcrete
-    !typedefinition.mConstructorMap
+    !typedefinition.mClassFunctionMap
     !typedefinition.mGetterMap
     !typedefinition.mSetterMap
     !typedefinition.mInstanceMethodMap

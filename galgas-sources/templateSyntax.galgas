@@ -379,7 +379,7 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
     $@type$ ?let @lstring typeName
     $identifier$ ?let @lstring constructorName
     <output_expression_list_tpl> ?let @templateExpressionListAST expressionList
-    outExpression = @templateConstructorAST.new {
+    outExpression = @templateClassFunctionAST.new {
       !typeName
       !constructorName
       !expressionList

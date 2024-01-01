@@ -117,7 +117,7 @@ override method @listmapDeclarationAST enterDeclarationInSemanticContext
     listTypedAttributeList = @typedPropertyList {}
   end
 #---
-  var @constructorMap constructorMap ={}
+  var @classFunctionMap classFunctionMap ={}
   commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap )
   var @setterMap setterMap = {}
   var @instanceMethodMap instanceMethodMap = {}
@@ -158,9 +158,9 @@ override method @listmapDeclarationAST enterDeclarationInSemanticContext
     !returnedTypeName:self.mAssociatedListTypeName.string
     !hasCompilerArgument:false
   )
-#--- Constructors
-  enterConstructorWithoutArgument (
-    !?constructorMap
+#--- Class functions
+  enterClassFunctionWithoutArgument (
+    !?classFunctionMap
     !?ioTypeMap
     !name:"emptyMap"
     !resultTypeName:self.mListmapTypeName.string
@@ -225,7 +225,7 @@ override method @listmapDeclarationAST enterDeclarationInSemanticContext
     !@typedPropertyList {}
     !{}
     !listTypedAttributeList
-    !constructorMap
+    !classFunctionMap
     !getterMap
     !setterMap
     !instanceMethodMap
@@ -319,7 +319,7 @@ override method @listmapTypeForGeneration appendDeclaration1
     !selfTypedefinition.mTypeName.string
     ![self.mSelfTypeEntry identifierRepresentation]
     !selfTypedefinition.mIsConcrete
-    !selfTypedefinition.mConstructorMap
+    !selfTypedefinition.mClassFunctionMap
     !selfTypedefinition.mGetterMap
     !selfTypedefinition.mSetterMap
     !selfTypedefinition.mInstanceMethodMap

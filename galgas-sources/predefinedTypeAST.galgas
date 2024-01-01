@@ -2,7 +2,7 @@
 #                                           
 #  Generate predefined types                
 #                                           
-#  Copyright (C) 2010, ..., 2015 Pierre Molinaro.
+#  Copyright (C) 2010, ..., 2023 Pierre Molinaro.
 #                                           
 #  e-mail : pierre@pcmolinaro.name          
 #                                           
@@ -13,6 +13,46 @@
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
 #  details.                                 
 #                                           
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#                                           
+#  A S T   C L A S S E S    F O R    P R E D E F I N E D   T Y P E S                                           
+#                                           
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+
+refclass @objectPredefinedTypeAST : @predefinedTypeAST {}
+
+refclass @filewrapperPredefinedTypeAST : @predefinedTypeAST {}
+
+refclass @binarysetPredefinedTypeAST : @predefinedTypeAST {}
+
+refclass @boolPredefinedTypeAST : @predefinedTypeAST {}
+
+refclass @uintPredefinedTypeAST : @predefinedTypeAST {}
+
+refclass @uint64PredefinedTypeAST : @predefinedTypeAST {}
+
+refclass @sintPredefinedTypeAST : @predefinedTypeAST {}
+
+refclass @sint64PredefinedTypeAST : @predefinedTypeAST {}
+
+refclass @charPredefinedTypeAST : @predefinedTypeAST {}
+
+refclass @doublePredefinedTypeAST : @predefinedTypeAST {}
+
+refclass @stringPredefinedTypeAST : @predefinedTypeAST {}
+
+refclass @locationPredefinedTypeAST : @predefinedTypeAST {}
+
+
+refclass @functionPredefinedTypeAST : @predefinedTypeAST {}
+
+refclass @typePredefinedTypeAST : @predefinedTypeAST {}
+
+refclass @dataPredefinedTypeAST : @predefinedTypeAST {}
+
+refclass @timerPredefinedTypeAST : @predefinedTypeAST {}
+
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
@@ -53,7 +93,7 @@ abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
                                   ?!@unifiedTypeMap ioTypeMap
                                   ?!@semanticContext ioSemanticContext {
     [self getOptionalMethodMap !?ioTypeMap ?let @optionalMethodMap optionalMethodMap]
-    [self getConstructorMap !?ioTypeMap ?let @constructorMap constructorMap]
+    [self getClassFunctionMap !?ioTypeMap ?let @classFunctionMap constructorMap]
     [self getGetterMap !?ioTypeMap ?var @getterMap getterMap]
     [self getSetterMap !?ioTypeMap ?var @setterMap setterMap]
     [self getInstanceMethodMap !?ioTypeMap ?var @instanceMethodMap instanceMethodMap]
@@ -144,9 +184,9 @@ abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
 
   #-----------------------------------------------------------------------------------------------------------------
 
-  method getConstructorMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
-                           !@constructorMap outConstructorMap {
-    outConstructorMap = {}
+  method getClassFunctionMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
+                             !@classFunctionMap outClassFunctionMap {
+    outClassFunctionMap = {}
   }
 
   #-----------------------------------------------------------------------------------------------------------------
@@ -218,11 +258,9 @@ abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private proc appendPredefinedListTypeAST
-  ?!@semanticDeclarationListAST ioDeclarationListASTs
-  ?let @string inElementTypeName
-  ?!@lstringlist ioUsefulnessRootEntities 
- {
+private proc appendPredefinedListTypeAST ?!@semanticDeclarationListAST ioDeclarationListASTs
+                                          ?let @string inElementTypeName
+                                          ?!@lstringlist ioUsefulnessRootEntities {
   var @propertyInCollectionListAST attributeList = {}
   attributeList +=
     !isConstant: false 
@@ -242,10 +280,8 @@ private proc appendPredefinedListTypeAST
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private proc appendPredefined2StringListTypeAST
-  ?!@semanticDeclarationListAST ioDeclarationListASTs
-  ?!@lstringlist ioUsefulnessRootEntities 
-{
+private proc appendPredefined2StringListTypeAST ?!@semanticDeclarationListAST ioDeclarationListASTs
+                                                ?!@lstringlist ioUsefulnessRootEntities {
   var attributeList = @propertyInCollectionListAST {}
   attributeList +=
     !isConstant: false 
@@ -302,11 +338,9 @@ private proc appendPredefined2StringListTypeAST
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private proc appendStructASTForTypeWithLocation
-  ?!@semanticDeclarationListAST ioDeclarationListASTs
-  ?let @string inElementTypeName
-  ?!@lstringlist ioUsefulnessRootEntities 
-{
+private proc appendStructASTForTypeWithLocation ?!@semanticDeclarationListAST ioDeclarationListASTs
+                                                ?let @string inElementTypeName
+                                                ?!@lstringlist ioUsefulnessRootEntities {
   var attributeList = @propertyInCollectionListAST {}
   attributeList += 
     !isConstant: false 
@@ -333,10 +367,8 @@ private proc appendStructASTForTypeWithLocation
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private proc appendStructASTForRangeType
-  ?!@semanticDeclarationListAST ioDeclarationListASTs
-  ?!@lstringlist ioUsefulnessRootEntities 
-{
+private proc appendStructASTForRangeType ?!@semanticDeclarationListAST ioDeclarationListASTs
+                                         ?!@lstringlist ioUsefulnessRootEntities {
   var @propertyInCollectionListAST attributeList = {}
   attributeList +=
     !isConstant: false 

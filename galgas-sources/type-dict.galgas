@@ -139,13 +139,13 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
 #--- Enumeration description
   var enumerationDescriptor = @enumerationDescriptorList.listWithValue {!keyTypeIndex !"key"}
 #---
-  var @constructorMap constructorMap = {}
+  var @classFunctionMap classFunctionMap = {}
   commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap )
   var @setterMap setterMap = {}
   var @instanceMethodMap instanceMethodMap = {}
-#--- Constructors
-  enterConstructorWithoutArgument (
-    !?constructorMap
+#--- Class functions
+  enterClassFunctionWithoutArgument (
+    !?classFunctionMap
     !?ioTypeMap
     !name:"emptyDict"
     !resultTypeName:self.mDictTypeName.string
@@ -313,7 +313,7 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
     !@typedPropertyList {}
     !{}
     !typedPropertyList
-    !constructorMap
+    !classFunctionMap
     !getterMap
     !setterMap
     !instanceMethodMap
@@ -458,7 +458,7 @@ override method @dictTypeForGeneration appendDeclaration1
     !selfTypedefinition.mTypeName.string
     ![self.mSelfTypeEntry identifierRepresentation]
     !selfTypedefinition.mIsConcrete
-    !selfTypedefinition.mConstructorMap
+    !selfTypedefinition.mClassFunctionMap
     !selfTypedefinition.mGetterMap
     !selfTypedefinition.mSetterMap
     !selfTypedefinition.mInstanceMethodMap

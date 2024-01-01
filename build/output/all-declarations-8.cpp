@@ -7945,7 +7945,7 @@ GALGAS_literalTypeInExpressionForGeneration_2D_weak GALGAS_literalTypeInExpressi
 class cCollectionElement_collectionValueElementList : public cCollectionElement {
   public: GALGAS_collectionValueElementList_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_collectionValueElementList (const GALGAS_abstractCollectionValueElement & in_mElement
                                                          COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_collectionValueElementList (const GALGAS_collectionValueElementList_2D_element & inElement COMMA_LOCATION_ARGS) ;
@@ -9270,7 +9270,7 @@ void callExtensionMethod_analyze (cPtr_abstractCollectionValueElement * inObject
 class cCollectionElement_collectionValueElementListForGeneration : public cCollectionElement {
   public: GALGAS_collectionValueElementListForGeneration_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_collectionValueElementListForGeneration (const GALGAS_abstractCollectionValueElementForGeneration & in_mElement
                                                                       COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_collectionValueElementListForGeneration (const GALGAS_collectionValueElementListForGeneration_2D_element & inElement COMMA_LOCATION_ARGS) ;
@@ -15685,7 +15685,7 @@ GALGAS_assignmentInstructionForGeneration_2D_weak GALGAS_assignmentInstructionFo
 class cCollectionElement_castInstructionBranchListAST : public cCollectionElement {
   public: GALGAS_castInstructionBranchListAST_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_castInstructionBranchListAST (const GALGAS_lstring & in_mTypeName,
                                                            const GALGAS_lstring & in_mConstantVarName,
                                                            const GALGAS_semanticInstructionListAST & in_mInstructionList,

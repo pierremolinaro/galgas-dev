@@ -1,0 +1,175 @@
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#                                           
+#  Generate predefined types                
+#                                           
+#  Copyright (C) 2010, ..., 2023 Pierre Molinaro.
+#                                           
+#  e-mail : pierre@pcmolinaro.name          
+#                                           
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
+#  License as published by the Free Software Foundation.
+#                                           
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+#  details.                                 
+#                                           
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+refclass @stringsetPredefinedTypeAST : @predefinedTypeAST {
+
+  #-----------------------------------------------------------------------------------------------------------------
+
+  override getter supportsCollectionValue -> @bool {
+    result = true # Support collection value
+  }
+
+  #-----------------------------------------------------------------------------------------------------------------
+
+  override getter defaultInitializerName -> @string {
+    result = "emptySet"
+  }
+
+  #-----------------------------------------------------------------------------------------------------------------
+
+
+  override getter cppDeclarationString -> @string {
+    result = [filewrapper predefinedTypeGenerationTemplate.stringset_type]
+  }
+
+  #-----------------------------------------------------------------------------------------------------------------
+
+  override getter getSupportedOperatorFlags -> @operators {
+    result = .infixSubOperator
+      | .infixAndOperator | .infixOrOperator
+      | .generateDescriptionGetterUtilityMethod | .plusEqualOperatorWithExpression
+      | .generateEnumerationHelperMethods | .isComparable
+      | .generateCopyConstructorAndAssignmentOperator
+  }
+
+  #-----------------------------------------------------------------------------------------------------------------
+
+  override method getClassFunctionMap ?!@unifiedTypeMap ioUnifiedTypeMap
+                                      !@classFunctionMap outMap {
+    outMap = {}
+    enterClassFunctionWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !name:"emptySet"
+      !resultTypeName:"stringset"
+      !hasLexiqueArg:false
+    )
+    enterClassFunctionWithArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !name:"setWithString"
+      !argTypeName:"string"
+      !argName:"inString"
+      !resultTypeName:"stringset"
+      !hasLexiqueArg:false
+    )
+    enterClassFunctionWithArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !name:"setWithStringList"
+      !argTypeName:"stringlist"
+      !argName:"inStringList"
+      !resultTypeName:"stringset"
+      !hasLexiqueArg:false
+    )
+    enterClassFunctionWithArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !name:"setWithLStringList"
+      !argTypeName:"lstringlist"
+      !argName:"inLStringList"
+      !resultTypeName:"stringset"
+      !hasLexiqueArg:false
+    )
+  }
+
+  #-----------------------------------------------------------------------------------------------------------------
+
+  override method getSetterMap ?!@unifiedTypeMap ioUnifiedTypeMap
+                               !@setterMap outSetterMap {
+    [!?ioUnifiedTypeMap makeEntryFromString !"string" ?let stringType]
+    outSetterMap = {}
+    [!?outSetterMap insertKey
+      !@lstring.new {!"removeKey" !@location.here}
+      !@methodKind. definedAsMember
+      !@formalParameterSignature.listWithValue {!["" nowhere] !stringType !.argumentIn !"inKey"}
+      !false # No Compiler argument
+      !@methodQualifier. isBasic
+      !""
+    ]
+    enterModifierWithInputArgument (
+      !?outSetterMap
+      !?ioUnifiedTypeMap
+      !argTypeName: "string" 
+      !argName: "inValue"
+      !setterName: "insert"
+      !compilerArg: true
+    )
+  }
+
+  #-----------------------------------------------------------------------------------------------------------------
+
+  override method getEnumerationList ?!@unifiedTypeMap ioUnifiedTypeMap
+                                     !@enumerationDescriptorList outEnumerationList
+                                     !@string outEnumeratedType {
+    [!?ioUnifiedTypeMap makeEntryFromString !"string" ?let stringTypeIndex]
+    outEnumerationList = {}
+    outEnumerationList += !stringTypeIndex !"key"
+    outEnumeratedType = "string"
+  }
+
+  #-----------------------------------------------------------------------------------------------------------------
+
+  override method getAddAssignArgumentList ?!@unifiedTypeMap ioUnifiedTypeMap
+                                           !@functionSignature outAddAssignArgumentList {
+    [!?ioUnifiedTypeMap makeEntryFromString !"string" ?let @unifiedTypeMapEntry stringTypeIndex]
+    outAddAssignArgumentList = {!["" nowhere] !stringTypeIndex !"inString"}
+  }
+
+  #-----------------------------------------------------------------------------------------------------------------
+
+  override method getGetterMap ?!@unifiedTypeMap ioUnifiedTypeMap
+                               !@getterMap outMap {
+    commonGetterMapForAllTypes (!?ioUnifiedTypeMap ?outMap)
+    enterBaseFinalGetterWithArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"hasKey" !"string" !"inString"
+      !returnedTypeName:"bool"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"count"
+      !obsoleteName: ""
+      !returnedTypeName:"uint"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"anyString"
+      !obsoleteName: ""
+      !returnedTypeName:"string"
+      !hasCompilerArgument:true
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"stringList"
+      !obsoleteName: ""
+      !returnedTypeName:"stringlist"
+      !hasCompilerArgument:false
+    )
+  }
+
+  #-----------------------------------------------------------------------------------------------------------------
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————

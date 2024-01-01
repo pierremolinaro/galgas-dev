@@ -323,11 +323,11 @@ refclass @outputInputSingleJokerParameterAST : @actualParameterAST {
       error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
     end
   #--- Find a constructor without any argument
-    let constructorMap = [inFormalArgumentType definition].mConstructorMap
+    let classFunctionMap = [inFormalArgumentType definition].mClassFunctionMap
     var @bool hasCompilerArgument = false
     var @string constructorName = ""
     var found = false
-    for c in constructorMap while not found do
+    for c in classFunctionMap while not found do
       if ([c.mArgumentTypeList length] == 0) && (c.mReturnedType == inFormalArgumentType) then
         hasCompilerArgument = c.mHasCompilerArgument
         constructorName = c.lkey.string
@@ -487,11 +487,11 @@ refclass @outputInputJokerParameterAST : @actualParameterAST {
         + "' passing mode: this parameter should be passed with '" + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
       end
     #--- Find a constructor without any argument
-      let constructorMap = [inFormalArgumentType definition].mConstructorMap
+      let classFunctionMap = [inFormalArgumentType definition].mClassFunctionMap
       var @bool hasCompilerArgument = false
       var @string constructorName = ""
       var found = false
-      for c in constructorMap while not found do
+      for c in classFunctionMap while not found do
         if ([c.mArgumentTypeList length] == 0) && (c.mReturnedType == inFormalArgumentType) then
           hasCompilerArgument = c.mHasCompilerArgument
           constructorName = c.lkey.string

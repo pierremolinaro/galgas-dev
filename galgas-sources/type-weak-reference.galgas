@@ -85,9 +85,9 @@ override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
      !self.mWeakReferenceTypeName
      ?let @unifiedTypeMapEntry weakReferenceIndex
   ]
-#--- Constructors
-  var @constructorMap constructorMap = {}
-  [!?constructorMap insertKey
+#--- Class functions
+  var @classFunctionMap classFunctionMap = {}
+  [!?classFunctionMap insertKey
     !@lstring.new {!"nil" !self.mWeakReferenceTypeName.location}
     !{}
     !false
@@ -131,7 +131,7 @@ override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
     !{} # allTypedPropertyList
     !{} # attributeMap
     !{} # currentClassTypedPropertyList
-    !constructorMap
+    !classFunctionMap
     !{} # getterMap
     !{} # setterMap
     !{} # instanceMethodMap
@@ -268,7 +268,7 @@ override method @weakReferenceTypeForGeneration appendDeclaration1 ?!@stringset 
     !typedefinition.mTypeName.string
     ![typedefinition.mTypeName.string identifierRepresentation]
     !typedefinition.mIsConcrete
-    !typedefinition.mConstructorMap
+    !typedefinition.mClassFunctionMap
     !typedefinition.mGetterMap
     !typedefinition.mSetterMap
     !typedefinition.mInstanceMethodMap

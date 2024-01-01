@@ -336,10 +336,10 @@ override method @externTypeDeclarationAST enterDeclarationInSemanticContext
   ?!@semanticContext unused ioSemanticContext {
 #---
   commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap )
-  var @constructorMap constructorMap = {}
+  var @classFunctionMap classFunctionMap = {}
   var @setterMap setterMap = {}
   var @instanceMethodMap instanceMethodMap = {}
-#--- Constructors
+#--- Class functions
   for (mConstructorName mResultTypeName mParameterList) in self.mExternTypeConstructorList do
     [!?ioTypeMap makeEntry !mResultTypeName ?let returnedTypeEntry]
   #---
@@ -349,7 +349,7 @@ override method @externTypeDeclarationAST enterDeclarationInSemanticContext
       arguments += !mFormalSelector !argumentTypeEntry !mFormalParameterName.string
     end
   #---
-    [!?constructorMap insertKey
+    [!?classFunctionMap insertKey
       !mConstructorName
       !arguments
       !true #inHasLexiqueAndLocationArguments
@@ -429,7 +429,7 @@ override method @externTypeDeclarationAST enterDeclarationInSemanticContext
     !{}
     !{}
     !{}
-    !constructorMap
+    !classFunctionMap
     !getterMap
     !setterMap
     !instanceMethodMap
@@ -504,7 +504,7 @@ override method @externTypeDeclarationForGeneration appendDeclaration1
     !selfTypedefinition.mTypeName.string
     ![self.mSelfTypeEntry identifierRepresentation]
     !selfTypedefinition.mIsConcrete
-    !selfTypedefinition.mConstructorMap
+    !selfTypedefinition.mClassFunctionMap
     !selfTypedefinition.mGetterMap
     !selfTypedefinition.mSetterMap
     !selfTypedefinition.mInstanceMethodMap
