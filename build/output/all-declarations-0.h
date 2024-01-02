@@ -353,6 +353,7 @@ class Lexique_galgasScanner_33_ : public Lexique {
    kToken_fileprivate,
    kToken_filewrapper,
    kToken_for,
+   kToken_final,
    kToken_fixit,
    kToken_func,
    kToken_getter,
@@ -590,7 +591,7 @@ class Lexique_galgasScanner_33_ : public Lexique {
   protected: virtual String getMessageForTerminal (const int32_t inTerminalSymbol) const override ;
 
 //--- Get terminal count
-  public: virtual int32_t terminalVocabularyCount (void) const override { return 181 ; }
+  public: virtual int32_t terminalVocabularyCount (void) const override { return 182 ; }
 
 //--- Get Token String
   public: virtual String getCurrentTokenString (const cToken * inTokenPtr) const override ;

@@ -13,8 +13,6 @@ static const ChunkUInt ChunkUIntMax = UINT64_MAX ;
 static const ChunkUInt greatestPowerOf10 = 1'000'000'000'000'000'000 ; // 10**18
 static const size_t greatestPowerOf10DigitCount = 18 ;
 
-inline const char * ChunkUIntDecimalFormatSpecifierWithLeadingZeros (void) { return "%018" PRIu64 ; }
-
 //--------------------------------------------------------------------------------------------------
 
 inline uint32_t countLeadingZeros (const ChunkUInt inValue) {

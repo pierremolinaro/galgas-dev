@@ -33,9 +33,10 @@ String BigUnsigned::decimalString (void) const {
     }
     const int32_t n = decimalValueArray.count () ;
     result.addUnsigned (decimalValueArray (n - 1 COMMA_HERE)) ;
-    for (int32_t i = n - 2 ; i >= 0 ; i--) {
-      char s [32] ;
-      snprintf (s, 32, ChunkUIntDecimalFormatSpecifierWithLeadingZeros (), decimalValueArray (i COMMA_HERE)) ;
+    char s [32] ;
+    for (int32_t i = n - 1 ; i > 0 ; i--) {
+      const uint64_t v = decimalValueArray (i-1 COMMA_HERE) ;
+      snprintf (s, 32, "%0*" PRIu64, int (greatestPowerOf10DigitCount), v) ;
       result.addString (s) ;
     }
   }
