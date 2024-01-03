@@ -1,3 +1,20 @@
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #!   AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -47,7 +64,7 @@ refclass @openedSliceExpressionAST : @semanticExpressionAST {
 syntax extension galgas3ExpressionSyntax {
 
   #·················································································································
-  
+
   rule <expression_or_ggs3> !@semanticExpressionAST outExpression {
     <expression_and_ggs3> ? outExpression
     repeat
@@ -93,7 +110,7 @@ syntax extension galgas3ExpressionSyntax {
 syntax extension galgas4ExpressionSyntax {
 
   #·················································································································
-  
+
   rule <expression_or> !@semanticExpressionAST outExpression {
     <expression_and> ? outExpression
     repeat
@@ -182,7 +199,7 @@ override method @orExpressionAST analyzeSemanticExpression
     !self.mOperatorLocation
     !?leftExpression
     !?rightExpression
-  )  
+  )
   outExpression = @binaryOperatorExpressionForGeneration.new {
     !leftExpression.mResultType
     !self.mOperatorLocation
@@ -238,7 +255,7 @@ override method @orShortExpressionAST analyzeSemanticExpression
     !self.mOperatorLocation
     !?leftExpression
     !?rightExpression
-  )  
+  )
 #--- Generate expression
   outExpression = @orShortExpressionForGeneration.new {
     !leftExpression.mResultType
@@ -293,7 +310,7 @@ override method @xorExpressionAST analyzeSemanticExpression
     !self.mOperatorLocation
     !?leftExpression
     !?rightExpression
-  )  
+  )
 #--- Generate expression
   outExpression = @binaryOperatorExpressionForGeneration.new {
     !leftExpression.mResultType
@@ -517,7 +534,7 @@ override method @closedSliceExpressionForGeneration generateExpression
     ?let rightTemporaryOperand
   ]
 #--- Generate Comparison
-  outCppExpression = 
+  outCppExpression =
    "GALGAS_range (" + leftTemporaryOperand + ", "
    +  rightTemporaryOperand + ".substract_operation (" + leftTemporaryOperand + ", " + compilerCppName () + [self.mLocation commaSourceFile] + ").add_operation (GALGAS_uint (1), " + compilerCppName () + [self.mLocation commaSourceFile] + "))"
 }
@@ -550,7 +567,7 @@ override method @openedSliceExpressionForGeneration generateExpression
   ]
 #--- Generate Comparison
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
-  outCppExpression = 
+  outCppExpression =
    "GALGAS_range (" + leftTemporaryOperand + ", "
    +  rightTemporaryOperand + ".substract_operation (" + leftTemporaryOperand + ", " + compilerCppName ()
    + [self.mLocation commaSourceFile] + "))"

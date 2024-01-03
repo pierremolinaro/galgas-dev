@@ -1,3 +1,20 @@
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
@@ -173,7 +190,7 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
       if ([mPropertyTypeEntry definition].defaultConstructorName == "") | not [mPropertyTypeEntry definition].mIsConcrete then
         defaultConstructorName = ""
       end
-    end  
+    end
   #--- Enter in type map
     let typeDefinition = @unifiedTypeDefinition.new {
       !self.mStructTypeName
@@ -210,7 +227,7 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
   #·················································································································
 
   override method semanticAnalysis
-    ?!@lstringlist unused ioUsefulnessRootEntities 
+    ?!@lstringlist unused ioUsefulnessRootEntities
     ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
     ?let @string unused inProductDirectory
     ?let @semanticContext inSemanticContext
@@ -223,7 +240,7 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
     [!?ioUsefulEntitiesGraph addNode !structNameForUsefulness !structNameForUsefulness]
   #---
     if [self.mStructurePropertyList count] == 0 then
-      error self.mStructTypeName: "a structure cannot be empty: it must have at least one property" 
+      error self.mStructTypeName: "a structure cannot be empty: it must have at least one property"
     end
     var @typedPropertyList typedPropertyList = {}
     var @typedPropertyList constructorArgumentList = {}
@@ -302,7 +319,7 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
         initializationCode += "  const GALGAS_" + [propertyType identifierRepresentation]
         initializationCode += " in_" + [propertyName string] + " = " + sourceVar + " ;\n"
       end
-  
+
     end
   #---
     let constructorNeedsCompilerVar = not [unusedVariableCppNameSet hasKey !compilerCppName ()]
@@ -322,7 +339,7 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   CODE GENERATION                         
+#   CODE GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper structureGenerationTemplate in "+generation-templates/type_generation" {

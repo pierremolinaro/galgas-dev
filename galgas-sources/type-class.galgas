@@ -1,9 +1,26 @@
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func weakSuffix -> @string { result = "-weak" }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SYNTAX                                  
+#   SYNTAX
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
@@ -154,7 +171,7 @@ syntax extension galgas4DeclarationsSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   AST                                     
+#   AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @classDeclarationAST : @semanticDeclarationAST {
@@ -241,7 +258,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
           !mHasCompilerArgument
           !.isInherited
           !"" # No error message
-        ] 
+        ]
       end
     #--- Mark all getters as inherited
       getterMap = {}
@@ -256,7 +273,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
           !mReturnedType
           !.isInherited
           !replacementGetter
-        ] 
+        ]
       end
     #--- Mark all methods as inherited
       instanceMethodMap = {}
@@ -270,7 +287,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
           !mHasCompilerArgument
           !.isInherited
           !mErrorMessage
-        ] 
+        ]
       end
     end
   #--- Current class Index
@@ -288,7 +305,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
         error mPropertyName : "property initialization is not handled for a class"
       end
       [!?ioTypeMap makeEntry !propertyTypeName ?let attributeTypeIndex]
-      constructorPropertyTypeList += 
+      constructorPropertyTypeList +=
         !if hasSelector then mPropertyName else ["" nowhere] end
         !attributeTypeIndex
         !mPropertyName.string
@@ -353,7 +370,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
   #--- Generate a "default" constructor ?
     var @string defaultConstructorName = if self.mIsAbstract then "" else "default" end
     for (propertyTypeEntry 3*) in allTypedAttributeList while defaultConstructorName != "" do
-      if [propertyTypeEntry definition].defaultConstructorName == "" then 
+      if [propertyTypeEntry definition].defaultConstructorName == "" then
         defaultConstructorName = ""
       end
     end
@@ -392,7 +409,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
 
   #·················································································································
 
-  override method semanticAnalysis ?!@lstringlist unused ioUsefulnessRootEntities 
+  override method semanticAnalysis ?!@lstringlist unused ioUsefulnessRootEntities
                                     ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
                                     ?let @string unused inProductDirectory
                                     ?let @semanticContext unused inSemanticContext
@@ -496,7 +513,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   CODE GENERATION                         
+#   CODE GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @classTypeForGeneration : @semanticTypeForGeneration {
@@ -531,7 +548,7 @@ override method @classTypeForGeneration appendDeclaration1 ?!@stringset ioInclus
       !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
       !self.mIsAbstract
       !self.mCurrentTypedAttributeList
-    ]  
+    ]
   end
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
     !selfTypeDefinition.mTypeName.string
@@ -731,14 +748,14 @@ func generateClassGetterDeclaration ?let @lstring inGetterName
     result += "  public: virtual class GALGAS_" + [inReturnedType identifierRepresentation]
     result += " getter_" + [inGetterName identifierRepresentation] + " ("
     var first = true
-    for formalArgument in inArgumentTypeList 
+    for formalArgument in inArgumentTypeList
     do
       if first then
         first = false
       else
         result += ",\n           "
       end
-      result += "const class GALGAS_" + [formalArgument.mFormalArgumentType identifierRepresentation] 
+      result += "const class GALGAS_" + [formalArgument.mFormalArgumentType identifierRepresentation]
       result += " " + formalArgument.mFormalArgumentName
     end
     if inHasCompilerArgument then
@@ -781,14 +798,14 @@ func generateClassInstanceMethodDeclaration ?let @lstring inMethodName
     result += "//--- Extension method " + inMethodName + "\n"
     result += "  public: virtual void method_" + [inMethodName identifierRepresentation] + " ("
     var first = true
-    for formalArgument in inArgumentTypeList 
+    for formalArgument in inArgumentTypeList
     do
       if first then
         first = false
       else
         result += ",\n           "
       end
-      switch formalArgument.mFormalArgumentPassingMode 
+      switch formalArgument.mFormalArgumentPassingMode
       case argumentConstantIn :
         result += "const class GALGAS_" + [formalArgument.mFormalArgumentType identifierRepresentation]
       case argumentInOut :

@@ -1,5 +1,22 @@
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   AST                                     
+#   AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @graphInsertModifierList {
@@ -16,7 +33,7 @@ refclass @graphDeclarationAST : @semanticDeclarationAST {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SYNTAX                                  
+#   SYNTAX
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
@@ -89,7 +106,7 @@ syntax extension galgas4DeclarationsSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   ENTER IN GRAPH                          
+#   ENTER IN GRAPH
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @graphDeclarationAST enterDeclarationInGraph
@@ -105,7 +122,7 @@ override method @graphDeclarationAST enterDeclarationInGraph
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC CONTEXT                        
+#   SEMANTIC CONTEXT
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @graphDeclarationAST enterDeclarationInSemanticContext
@@ -146,7 +163,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
   var @instanceMethodMap instanceMethodMap = {}
 #--- Methods 'topologicalSort', 'depthFirstTopologicalSort'
   var formalParameterList = @formalParameterSignature {}
-  formalParameterList += 
+  formalParameterList +=
     !["" nowhere]
     !associatedListTypeEntry
     !@formalArgumentPassingModeAST.argumentOut
@@ -164,7 +181,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
   formalParameterList +=
     !["" nowhere]
     !lstringListTypeEntry
-    !@formalArgumentPassingModeAST.argumentOut 
+    !@formalArgumentPassingModeAST.argumentOut
     !"outUnsortedLKeyList"
   [!?instanceMethodMap insertKey
     !@lstring.new {!"topologicalSort" !@location.here}
@@ -334,7 +351,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !arg1Selector: ""
     !arg1TypeName: "lstringlist"
     !arg1Name: "inStartNodeLStringList"
-    !arg2Selector: "" 
+    !arg2Selector: ""
     !arg2TypeName: "stringset"
     !arg2Name: "inNodesToExclude"
     !returnedTypeName: self.mGraphTypeName.string
@@ -476,11 +493,11 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC ANALYSIS                       
+#   SEMANTIC ANALYSIS
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @graphDeclarationAST semanticAnalysis
-  ?!@lstringlist unused ioUsefulnessRootEntities 
+  ?!@lstringlist unused ioUsefulnessRootEntities
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext unused inSemanticContext
@@ -522,7 +539,7 @@ override method @graphDeclarationAST semanticAnalysis
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   CODE GENERATION                         
+#   CODE GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @graphDeclarationForGeneration : @semanticTypeForGeneration {

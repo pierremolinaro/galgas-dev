@@ -1,26 +1,33 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#  Grammar Semantics                        
-#                                           
+#
+#  Grammar Semantics
+#
 #  Copyright (C) 2009, ..., 2011 Pierre Molinaro.
-#                                           
-#  e-mail : pierre@pcmolinaro.name          
-#                                           
-#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
-#  License as published by the Free Software Foundation.
-#                                           
-#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
-#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
-#  details.                                 
-#                                           
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#         Instruction abstract class for grammar component                                                     
-#                                           
+#
+#         Instruction abstract class for grammar component
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract refclass @abstractSyntaxInstructionForGrammarAnalysis %generatedInSeparateFile {
@@ -28,10 +35,10 @@ abstract refclass @abstractSyntaxInstructionForGrammarAnalysis %generatedInSepar
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#        Syntax signature                   
-#      (sequence of terminal, nonterminal, select and repeat)                                                  
-#                                           
+#
+#        Syntax signature
+#      (sequence of terminal, nonterminal, select and repeat)
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @syntaxInstructionListForGrammarAnalysis {
@@ -39,9 +46,9 @@ list @syntaxInstructionListForGrammarAnalysis {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#   Production rules list (for a grammar component)     
-#                                           
+#
+#   Production rules list (for a grammar component)
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @productionRuleListForGrammarAnalysis {
@@ -59,9 +66,9 @@ map @unusedNonTerminalSymbolMapForGrammarAnalysis {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#             nonterminal symbols sorted list    
-#                                           
+#
+#             nonterminal symbols sorted list
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 sortedlist @nonTerminalSymbolSortedListForGrammarAnalysis {
@@ -73,9 +80,9 @@ sortedlist @nonTerminalSymbolSortedListForGrammarAnalysis {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#   Terminal call instruction               
-#                                           
+#
+#   Terminal call instruction
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @terminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
@@ -84,9 +91,9 @@ refclass @terminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionForG
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#   Nonterminal call instruction            
-#                                           
+#
+#   Nonterminal call instruction
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @nonTerminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
@@ -95,9 +102,9 @@ refclass @nonTerminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionF
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-# Liste of branches of a 'select' or 'repeat' instruction                                                      
-#                                           
+#
+# Liste of branches of a 'select' or 'repeat' instruction
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @branchListForGrammarAnalysis {
@@ -105,9 +112,9 @@ list @branchListForGrammarAnalysis {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#   select instruction (for a grammar component) 
-#                                           
+#
+#   select instruction (for a grammar component)
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @selectInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
@@ -116,9 +123,9 @@ refclass @selectInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGra
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#   repeat instruction                      
-#                                           
+#
+#   repeat instruction
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @repeatInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
@@ -127,9 +134,9 @@ refclass @repeatInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGra
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#    List of syntax components For Grammar  
-#                                           
+#
+#    List of syntax components For Grammar
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @syntaxComponentListForGrammarAnalysis {
@@ -138,9 +145,9 @@ list @syntaxComponentListForGrammarAnalysis {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#      Terminal symbol map                  
-#                                           
+#
+#      Terminal symbol map
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @terminalSymbolsMapForGrammarAnalysis {

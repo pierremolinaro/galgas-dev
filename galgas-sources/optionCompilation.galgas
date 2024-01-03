@@ -1,3 +1,20 @@
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -40,7 +57,7 @@ syntax galgas3OptionComponentSyntax (galgasScanner3) {
     ${$
     var @commandLineOptionListAST options = {}
     repeat
-    while 
+    while
       <option_declaration_ggs3> !?options
     end
     $}$
@@ -104,7 +121,7 @@ syntax galgas4OptionComponentSyntax (galgasScanner4) {
     ${$
     var @commandLineOptionListAST options = {}
     repeat
-    while 
+    while
       <option_declaration_ggs3> !?options
     end
     $}$
@@ -196,7 +213,7 @@ override method @optionComponentDeclarationAST enterDeclarationInSemanticContext
         !"false"
       ]
       if mOptionDefaultValueKind != @optionDefaultValueEnumAST. noDefaultValue then
-        error mOptionDefaultValue:"an @bool option cannot have a default value (default value is always false)"      
+        error mOptionDefaultValue:"an @bool option cannot have a default value (default value is always false)"
       end
     elsif mOptionTypeName.string == "uint" then
       [!?uintOptionMap insertKey
@@ -207,7 +224,7 @@ override method @optionComponentDeclarationAST enterDeclarationInSemanticContext
         !if mOptionDefaultValue.string == "" then "0" else mOptionDefaultValue.string end
       ]
       if mOptionDefaultValueKind == @optionDefaultValueEnumAST. stringDefaultValue then
-        error mOptionDefaultValue:"an @uint option default value cannot be an @string value"      
+        error mOptionDefaultValue:"an @uint option default value cannot be an @string value"
       end
     elsif mOptionTypeName.string == "string" then
       [!?stringOptionMap insertKey
@@ -218,7 +235,7 @@ override method @optionComponentDeclarationAST enterDeclarationInSemanticContext
         !mOptionDefaultValue.string
       ]
       if mOptionDefaultValueKind == @optionDefaultValueEnumAST. unsignedDefaultValue then
-        error mOptionDefaultValue:"an @string option default value cannot be an @uint value"      
+        error mOptionDefaultValue:"an @string option default value cannot be an @uint value"
       end
     elsif mOptionTypeName.string == "stringlist" then
       [!?stringListOptionMap insertKey
@@ -229,7 +246,7 @@ override method @optionComponentDeclarationAST enterDeclarationInSemanticContext
         !mOptionDefaultValue.string
       ]
       if mOptionDefaultValueKind != .noDefaultValue then
-        error mOptionDefaultValue:"an @stringlist option cannot accept default value"      
+        error mOptionDefaultValue:"an @stringlist option cannot accept default value"
       end
     else
       error mOptionTypeName: "only the @bool, @uint or @string types are allowed here"
@@ -252,7 +269,7 @@ override method @optionComponentDeclarationAST enterDeclarationInSemanticContext
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @optionComponentDeclarationAST semanticAnalysis
-  ?!@lstringlist unused ioUsefulnessRootEntities 
+  ?!@lstringlist unused ioUsefulnessRootEntities
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
@@ -271,7 +288,7 @@ override method @optionComponentDeclarationAST semanticAnalysis
     ?let @commandLineOptionMap uintOptionMap
     ?let @commandLineOptionMap stringOptionMap
     ?let @commandLineOptionMap stringListOptionMap
-  ] 
+  ]
 #---- Enter filewrapper in generated list
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "option " + self.mOptionComponentName
@@ -434,7 +451,7 @@ map @commandLineOptionMap { # the key is the option identifier
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#         G E N E R A T I O N    T E M P L A T E S      
+#         G E N E R A T I O N    T E M P L A T E S
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper optionGenerationTemplates in "+generation-templates/option_generation" {

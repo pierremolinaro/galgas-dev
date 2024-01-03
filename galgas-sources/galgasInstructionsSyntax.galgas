@@ -1,30 +1,37 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
+#
 #  Copyright (C) 2014, ..., 2014 Pierre Molinaro.
-#                                           
-#  e-mail : pierre@pcmolinaro.name          
-#                                           
-#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
-#  License as published by the Free Software Foundation.
-#                                           
-#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
-#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
-#  details.                                 
-#                                           
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax galgas3InstructionsSyntax (galgasScanner3) {
 
   #·················································································································
-  #          Rules prototypes                 
+  #          Rules prototypes
   #·················································································································
 
   rule <expression_ggs3> !@semanticExpressionAST outExpression
-  
+
   rule <if_expression_ggs3> !@ifExpressionList outExpressionList
-  
+
   rule <formal_parameter_list_ggs3> !@formalParameterListAST outFormalParameterList
-  
+
   rule <formal_input_parameter_list_ggs3> !@formalInputParameterListAST outFormalInputParameterList
 
   #·················································································································
@@ -52,7 +59,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
   }
 
   #·················································································································
-  #    F U N C T I O N    D E C L A R A T I O N    
+  #    F U N C T I O N    D E C L A R A T I O N
   #·················································································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
@@ -181,7 +188,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
   }
 
   #·················································································································
-  #    E X T E R N    F U N C T I O N    D E C L A R A T I O N                                                   
+  #    E X T E R N    F U N C T I O N    D E C L A R A T I O N
   #·················································································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
@@ -280,7 +287,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
       $identifier$ ?let actualParameterName
       outActualInputParameterList += !selector !@inputParameterVariable.new {!actualParameterName}
     end
-  }  
+  }
 
   #·················································································································
 
@@ -291,17 +298,17 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
 syntax galgas4InstructionsSyntax (galgasScanner4) {
 
   #·················································································································
-  #          Rules prototypes                 
+  #          Rules prototypes
   #·················································································································
 
   rule <expression> !@semanticExpressionAST outExpression
-  
+
   rule <if_expression> !@ifExpressionList outExpressionList
-  
+
   rule <formal_parameter_list> ?!@galgasDeclarationAST ioDeclarations
                                ?!@stringset ioUserImplicitDeclaredTypeSet
                                !@formalParameterListAST outFormalParameterList
-  
+
   rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputParameterList
 
   rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
@@ -335,7 +342,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
   }
 
   #·················································································································
-  #    F U N C T I O N    D E C L A R A T I O N    
+  #    F U N C T I O N    D E C L A R A T I O N
   #·················································································································
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations
@@ -466,7 +473,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
   }
 
   #·················································································································
-  #    E X T E R N    F U N C T I O N    D E C L A R A T I O N                                                   
+  #    E X T E R N    F U N C T I O N    D E C L A R A T I O N
   #·················································································································
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations
@@ -576,7 +583,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
       end
       $)$
     end
-  }  
+  }
 
   #·················································································································
 

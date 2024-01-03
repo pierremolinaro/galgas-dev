@@ -1,5 +1,22 @@
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   AST                                     
+#   AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @listmapDeclarationAST : @semanticDeclarationAST {
@@ -8,7 +25,7 @@ refclass @listmapDeclarationAST : @semanticDeclarationAST {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SYNTAX                                  
+#   SYNTAX
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
@@ -55,7 +72,7 @@ syntax extension galgas4DeclarationsSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   ASSOCIATED ELEMENT                      
+#   ASSOCIATED ELEMENT
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @listmapDeclarationAST addAssociatedElement
@@ -85,7 +102,7 @@ override method @listmapDeclarationAST addAssociatedElement
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   ENTER IN GRAPH                          
+#   ENTER IN GRAPH
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @listmapDeclarationAST enterDeclarationInGraph
@@ -100,7 +117,7 @@ override method @listmapDeclarationAST enterDeclarationInGraph
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC CONTEXT                        
+#   SEMANTIC CONTEXT
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @listmapDeclarationAST enterDeclarationInSemanticContext
@@ -128,7 +145,7 @@ override method @listmapDeclarationAST enterDeclarationInSemanticContext
 #--- Getters
   enterInheritedGetterWithoutArgument (
     !?getterMap
-    !?ioTypeMap 
+    !?ioTypeMap
     !getterName:"count"
     !obsoleteName: ""
     !returnedTypeName:"uint"
@@ -248,11 +265,11 @@ override method @listmapDeclarationAST enterDeclarationInSemanticContext
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC ANALYSIS                       
+#   SEMANTIC ANALYSIS
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @listmapDeclarationAST semanticAnalysis
-  ?!@lstringlist unused ioUsefulnessRootEntities 
+  ?!@lstringlist unused ioUsefulnessRootEntities
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext unused inSemanticContext
@@ -293,7 +310,7 @@ override method @listmapDeclarationAST semanticAnalysis
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   CODE GENERATION                         
+#   CODE GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @listmapTypeForGeneration : @semanticTypeForGeneration {

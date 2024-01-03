@@ -1,16 +1,23 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
+#
 #  Copyright (C) 2014, ..., 2022 Pierre Molinaro.
-#                                           
-#  e-mail : pierre@pcmolinaro.name          
-#                                           
-#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
-#  License as published by the Free Software Foundation.
-#                                           
-#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
-#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
-#  details.                                 
-#                                           
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexiqueComponentAST : @semanticDeclarationAST {
@@ -49,17 +56,17 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
     var @lexicalRuleListAST lexicalRuleList = {}
     var @indexingListAST indexingListAST = {}
     repeat
-    while 
+    while
       <template_delimitor_ggs3> !? templateDelimitorList
-    while 
+    while
       <template_replacement_ggs3> !? templateReplacementList
-    while 
+    while
       <lexical_attribute_declaration_ggs3> !? lexicalAttributeList
-    while 
+    while
       <style_declaration_ggs3> !? lexicalStyleList
-    while 
+    while
       <terminal_declaration_ggs3> !? terminalDeclarationList
-    while 
+    while
       <lexical_list_declaration_ggs3> !? lexicalListDeclarationList
     while
       <lexical_explicit_rule_ggs3> !? lexicalRuleList
@@ -106,17 +113,17 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
     var @lexicalRuleListAST lexicalRuleList = {}
     var @indexingListAST indexingListAST = {}
     repeat
-    while 
+    while
       <template_delimitor_ggs3> !? templateDelimitorList
-    while 
+    while
       <template_replacement_ggs3> !? templateReplacementList
-    while 
+    while
       <lexical_attribute_declaration_ggs3> !? lexicalAttributeList
-    while 
+    while
       <style_declaration_ggs3> !? lexicalStyleList
-    while 
+    while
       <terminal_declaration_ggs3> !? terminalDeclarationList
-    while 
+    while
       <lexical_list_declaration_ggs3> !? lexicalListDeclarationList
     while
       <lexical_explicit_rule_ggs3> !? lexicalRuleList
@@ -423,10 +430,10 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
   rule <style_declaration_ggs3> ?!@lexicalStyleListAST ioLexicalStyleList {
     $style$
     $identifier$ ?let @lstring styleIdentifier
-    if [styleIdentifier.string containsCharacter !'_'] then 
+    if [styleIdentifier.string containsCharacter !'_'] then
       error styleIdentifier : "for compatibility with latex formatting, a style name should not contain '_' character"
     end
-    if [styleIdentifier.string containsCharacterInRange !'0' !'9'] then 
+    if [styleIdentifier.string containsCharacterInRange !'0' !'9'] then
       error styleIdentifier : "for compatibility with latex formatting, a style name should not contain any digit"
     end
     $->$
@@ -461,17 +468,17 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     var @lexicalRuleListAST lexicalRuleList = {}
     var @indexingListAST indexingListAST = {}
     repeat
-    while 
+    while
       <template_delimitor> !? templateDelimitorList
-    while 
+    while
       <template_replacement> !? templateReplacementList
-    while 
+    while
       <lexical_attribute_declaration> !? lexicalAttributeList
-    while 
+    while
       <style_declaration> !? lexicalStyleList
-    while 
+    while
       <terminal_declaration> !? terminalDeclarationList
-    while 
+    while
       <lexical_list_declaration> !? lexicalListDeclarationList
     while
       <lexical_explicit_rule> !? lexicalRuleList
@@ -722,7 +729,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     ioLexicalListEntryList +=
       !entrySpelling
       !terminalSpelling
-      !nonAtomicSelection: nonAtomicSelection 
+      !nonAtomicSelection: nonAtomicSelection
       !isEndOfTemplateMark: isTemplateEndMark
   }
 
@@ -759,7 +766,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
       $%nonAtomicSelection$
       nonAtomicSelection = true
     while
-      $%templateEndMark$ 
+      $%templateEndMark$
       templateEndMark = true
     end
     $%errorMessage$
@@ -778,10 +785,10 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
   rule <style_declaration> ?!@lexicalStyleListAST ioLexicalStyleList {
     $style$
     $identifier$ ?let @lstring styleIdentifier
-    if [styleIdentifier.string containsCharacter !'_'] then 
+    if [styleIdentifier.string containsCharacter !'_'] then
       error styleIdentifier : "for compatibility with latex formatting, a style name should not contain '_' character"
     end
-    if [styleIdentifier.string containsCharacterInRange !'0' !'9'] then 
+    if [styleIdentifier.string containsCharacterInRange !'0' !'9'] then
       error styleIdentifier : "for compatibility with latex formatting, a style name should not contain any digit"
     end
     $->$
@@ -827,7 +834,7 @@ override method @lexiqueComponentAST enterDeclarationInSemanticContext
    !self.mLexicalAttributeListAST
    !?lexicalAttributeMap
   )
-#--------------------------------------- 
+#---------------------------------------
   var @terminalMap terminalMap = {}
   for (name sentAttributeList 4*) in self.mTerminalDeclarationListAST do
     var argumentTypeList = @lexicalSentValueList {}
@@ -864,7 +871,7 @@ override method @lexiqueComponentAST enterDeclarationInSemanticContext
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexiqueComponentAST semanticAnalysis
-                                      ?!@lstringlist unused ioUsefulnessRootEntities 
+                                      ?!@lstringlist unused ioUsefulnessRootEntities
                                       ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
                                       ?let @string unused inProductDirectory
                                       ?let @semanticContext unused inSemanticContext
@@ -1032,7 +1039,7 @@ override method @lexiqueComponentAST semanticAnalysis
 #--------------------------------------- Build header and Cpp contents
   if @uint.errorCount == 0 then
   #--- Header
-    let headerContents = [filewrapper lexiqueGenerationTemplates.headerZone2     
+    let headerContents = [filewrapper lexiqueGenerationTemplates.headerZone2
       ![self.mLexiqueComponentName.string identifierRepresentation]
       !self.mLexicalListDeclarationListAST
       !lexiqueAnalysisContext
@@ -1108,7 +1115,7 @@ override method @lexiqueComponentAST semanticAnalysis
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#         G E N E R A T I O N    T E M P L A T E S      
+#         G E N E R A T I O N    T E M P L A T E S
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper lexiqueGenerationTemplates in "+generation-templates/lexique_generation" {

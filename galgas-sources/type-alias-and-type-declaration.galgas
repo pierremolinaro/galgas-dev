@@ -1,11 +1,28 @@
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SYNTAX                                  
+#   SYNTAX
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
 
   #·················································································································
-  
+
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $typealias$
     $@type$ ?let aliasTypeName indexing dictionaryDefinition
@@ -17,11 +34,11 @@ syntax extension galgas3DeclarationsSyntax {
       !definedTypeName
     }
   }
-  
+
   #·················································································································
   # SIMPLE ALIAS
   #·················································································································
-  
+
   rule <type_definition_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
                               !@lstring outTypeName {
     $@type$ ?outTypeName
@@ -36,7 +53,7 @@ syntax extension galgas3DeclarationsSyntax {
 syntax extension galgas4DeclarationsSyntax {
 
    #·················································································································
-  
+
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations
                      ?!@stringset ioUserImplicitDeclaredTypeSet {
     $typealias$
@@ -49,11 +66,11 @@ syntax extension galgas4DeclarationsSyntax {
       !definedTypeName
     }
   }
-  
+
   #·················································································································
   # SIMPLE ALIAS
   #·················································································································
-  
+
   rule <type_definition> ?!@galgasDeclarationAST unused ioDeclarations
                          ?!@stringset unused ioUserImplicitDeclaredTypeSet
                          !@lstring outTypeName {
@@ -61,7 +78,7 @@ syntax extension galgas4DeclarationsSyntax {
   }
 
   #·················································································································
-  
+
   rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
                          ?!@stringset ioUserImplicitDeclaredTypeSet
                          !@lstring outTypeName {
@@ -72,7 +89,7 @@ syntax extension galgas4DeclarationsSyntax {
   }
 
   #·················································································································
-  
+
   rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
                          ?!@stringset ioUserImplicitDeclaredTypeSet
                          !@lstring outTypeName {
@@ -85,7 +102,7 @@ syntax extension galgas4DeclarationsSyntax {
   }
 
   #·················································································································
-  
+
   rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
                          ?!@stringset ioUserImplicitDeclaredTypeSet
                          !@lstring outTypeName {
@@ -128,7 +145,7 @@ syntax extension galgas4DeclarationsSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   AST                                     
+#   AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @typealiasDeclarationAST : @semanticDeclarationAST {
@@ -205,7 +222,7 @@ refclass @typealiasDeclarationAST : @semanticDeclarationAST {
           !defaultConstructorName: def.defaultConstructorName # Used in [@xxx default] (empty string if no default constructor)
           !"typealias-" + [self.mAliasTypeName fileNameRepresentation]
           !.oneHeader
-        }  
+        }
         [!?ioTypeMap insertType !self.mAliasTypeName !definition]
       end
     end
@@ -213,7 +230,7 @@ refclass @typealiasDeclarationAST : @semanticDeclarationAST {
 
   #·················································································································
 
-  override method semanticAnalysis  ?!@lstringlist unused ioUsefulnessRootEntities 
+  override method semanticAnalysis  ?!@lstringlist unused ioUsefulnessRootEntities
                                     ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
                                     ?let @string unused inProductDirectory
                                     ?let @semanticContext unused inSemanticContext
@@ -235,9 +252,9 @@ refclass @typealiasDeclarationAST : @semanticDeclarationAST {
   #·················································································································
 
 }
- 
+
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   CODE GENERATION                         
+#   CODE GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @aliasTypeForGeneration : @semanticTypeForGeneration {
@@ -268,7 +285,7 @@ refclass @aliasTypeForGeneration : @semanticTypeForGeneration {
   override getter appendTypeGenericImplementation -> @string {
     result = ""
   }
-  
+
   #·················································································································
 
 }

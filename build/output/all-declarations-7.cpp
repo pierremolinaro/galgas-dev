@@ -9137,8 +9137,8 @@ mProperty_mSubMaps (inOperand1) {
 
 GALGAS_currentVarManager GALGAS_currentVarManager::class_func_new (Compiler * /* inCompiler */
                                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  const GALGAS_scopeLocalVarMap in_mLocalVarMap = GALGAS_scopeLocalVarMap::class_func_emptyMap (SOURCE_FILE ("variable-manager.galgas", 375)) ;
-  const GALGAS_localVarMapListForLLVM in_mSubMaps = GALGAS_localVarMapListForLLVM::class_func_emptyList (SOURCE_FILE ("variable-manager.galgas", 376)) ;
+  const GALGAS_scopeLocalVarMap in_mLocalVarMap = GALGAS_scopeLocalVarMap::class_func_emptyMap (SOURCE_FILE ("variable-manager.galgas", 381)) ;
+  const GALGAS_localVarMapListForLLVM in_mSubMaps = GALGAS_localVarMapListForLLVM::class_func_emptyList (SOURCE_FILE ("variable-manager.galgas", 382)) ;
   GALGAS_currentVarManager result ;
   if (in_mLocalVarMap.isValid () && in_mSubMaps.isValid ()) {
     result = GALGAS_currentVarManager (in_mLocalVarMap, in_mSubMaps) ;
@@ -9248,24 +9248,24 @@ void extensionSetter_neutralAccess (GALGAS_currentVarManager & ioObject,
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
     const GALGAS_currentVarManager temp_1 = ioObject ;
-    GALGAS_unifiedTypeMapEntry var_type_18359 ;
-    GALGAS_string var_cppName_18369 ;
-    GALGAS_string var_nameForCheckingFormalParameterUsing_18382 ;
-    GALGAS_localVariableAttributes var_unused_0_18420 ;
-    GALGAS_localVarValuation var_unused_1_18420 ;
-    const bool optionalResult18333 = temp_1.readProperty_mLocalVarMap ().optional_searchKey (constinArgument_inVarName.readProperty_string (), var_type_18359, var_cppName_18369, var_nameForCheckingFormalParameterUsing_18382, var_unused_0_18420, var_unused_1_18420) ;
-    if (!optionalResult18333) {
+    GALGAS_unifiedTypeMapEntry var_type_18518 ;
+    GALGAS_string var_cppName_18528 ;
+    GALGAS_string var_nameForCheckingFormalParameterUsing_18541 ;
+    GALGAS_localVariableAttributes var_unused_0_18579 ;
+    GALGAS_localVarValuation var_unused_1_18579 ;
+    const bool optionalResult18492 = temp_1.readProperty_mLocalVarMap ().optional_searchKey (constinArgument_inVarName.readProperty_string (), var_type_18518, var_cppName_18528, var_nameForCheckingFormalParameterUsing_18541, var_unused_0_18579, var_unused_1_18579) ;
+    if (!optionalResult18492) {
       test_0 = kBoolFalse ;
     }
     if (kBoolTrue == test_0) {
-      outArgument_outType = var_type_18359 ;
-      outArgument_outCppName = var_cppName_18369 ;
-      outArgument_outNameForCheckingFormalParameterUsing = var_nameForCheckingFormalParameterUsing_18382 ;
+      outArgument_outType = var_type_18518 ;
+      outArgument_outCppName = var_cppName_18528 ;
+      outArgument_outNameForCheckingFormalParameterUsing = var_nameForCheckingFormalParameterUsing_18541 ;
     }
   }
   if (kBoolFalse == test_0) {
     {
-    extensionSetter_neutralAccess (ioObject.mProperty_mSubMaps, constinArgument_inVarName, GALGAS_uint (uint32_t (0U)), outArgument_outType, outArgument_outCppName, outArgument_outNameForCheckingFormalParameterUsing, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 401)) ;
+    extensionSetter_neutralAccess (ioObject.mProperty_mSubMaps, constinArgument_inVarName, GALGAS_uint (uint32_t (0U)), outArgument_outType, outArgument_outCppName, outArgument_outNameForCheckingFormalParameterUsing, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 407)) ;
     }
   }
 }
@@ -9291,10 +9291,10 @@ void extensionSetter_neutralAccess (GALGAS_localVarMapListForLLVM & ioObject,
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
     const GALGAS_localVarMapListForLLVM temp_1 = ioObject ;
-    test_0 = GALGAS_bool (kIsSupOrEqual, constinArgument_inIndex.objectCompare (temp_1.getter_count (SOURCE_FILE ("variable-manager.galgas", 412)))).boolEnum () ;
+    test_0 = GALGAS_bool (kIsSupOrEqual, constinArgument_inIndex.objectCompare (temp_1.getter_count (SOURCE_FILE ("variable-manager.galgas", 418)))).boolEnum () ;
     if (kBoolTrue == test_0) {
       TC_Array <C_FixItDescription> fixItArray2 ;
-      inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GALGAS_string ("Undefined variable"), fixItArray2  COMMA_SOURCE_FILE ("variable-manager.galgas", 413)) ;
+      inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GALGAS_string ("Undefined variable"), fixItArray2  COMMA_SOURCE_FILE ("variable-manager.galgas", 419)) ;
       outArgument_outType.drop () ; // Release error dropped variable
       outArgument_outCppName.drop () ; // Release error dropped variable
       outArgument_outNameForCheckingFormalParameterUsing.drop () ; // Release error dropped variable
@@ -9302,27 +9302,27 @@ void extensionSetter_neutralAccess (GALGAS_localVarMapListForLLVM & ioObject,
   }
   if (kBoolFalse == test_0) {
     const GALGAS_localVarMapListForLLVM temp_3 = ioObject ;
-    GALGAS_scopeLocalVarMap var_localMap_19320 = temp_3.getter_mMapAtIndex (constinArgument_inIndex, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 415)) ;
+    GALGAS_scopeLocalVarMap var_localMap_19479 = temp_3.getter_mMapAtIndex (constinArgument_inIndex, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 421)) ;
     enumGalgasBool test_4 = kBoolTrue ;
     if (kBoolTrue == test_4) {
-      GALGAS_unifiedTypeMapEntry var_type_19406 ;
-      GALGAS_string var_cppName_19416 ;
-      GALGAS_string var_nameForCheckingFormalParameterUsing_19429 ;
-      GALGAS_localVariableAttributes var_unused_0_19467 ;
-      GALGAS_localVarValuation var_unused_1_19467 ;
-      const bool optionalResult19380 = var_localMap_19320.optional_searchKey (constinArgument_inVarName.readProperty_string (), var_type_19406, var_cppName_19416, var_nameForCheckingFormalParameterUsing_19429, var_unused_0_19467, var_unused_1_19467) ;
-      if (!optionalResult19380) {
+      GALGAS_unifiedTypeMapEntry var_type_19565 ;
+      GALGAS_string var_cppName_19575 ;
+      GALGAS_string var_nameForCheckingFormalParameterUsing_19588 ;
+      GALGAS_localVariableAttributes var_unused_0_19626 ;
+      GALGAS_localVarValuation var_unused_1_19626 ;
+      const bool optionalResult19539 = var_localMap_19479.optional_searchKey (constinArgument_inVarName.readProperty_string (), var_type_19565, var_cppName_19575, var_nameForCheckingFormalParameterUsing_19588, var_unused_0_19626, var_unused_1_19626) ;
+      if (!optionalResult19539) {
         test_4 = kBoolFalse ;
       }
       if (kBoolTrue == test_4) {
-        outArgument_outType = var_type_19406 ;
-        outArgument_outCppName = var_cppName_19416 ;
-        outArgument_outNameForCheckingFormalParameterUsing = var_nameForCheckingFormalParameterUsing_19429 ;
+        outArgument_outType = var_type_19565 ;
+        outArgument_outCppName = var_cppName_19575 ;
+        outArgument_outNameForCheckingFormalParameterUsing = var_nameForCheckingFormalParameterUsing_19588 ;
       }
     }
     if (kBoolFalse == test_4) {
       {
-      extensionSetter_neutralAccess (ioObject, constinArgument_inVarName, constinArgument_inIndex.add_operation (GALGAS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 421)), outArgument_outType, outArgument_outCppName, outArgument_outNameForCheckingFormalParameterUsing, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 421)) ;
+      extensionSetter_neutralAccess (ioObject, constinArgument_inVarName, constinArgument_inIndex.add_operation (GALGAS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 427)), outArgument_outType, outArgument_outCppName, outArgument_outNameForCheckingFormalParameterUsing, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 427)) ;
       }
     }
   }
@@ -9342,52 +9342,52 @@ void extensionSetter_searchForDropAccess (GALGAS_currentVarManager & ioObject,
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
     const GALGAS_currentVarManager temp_1 = ioObject ;
-    GALGAS_unifiedTypeMapEntry var_unused_0_20400 ;
-    GALGAS_string var_unused_1_20400 ;
-    GALGAS_string var_unused_2_20400 ;
-    GALGAS_localVariableAttributes var_attributes_20423 ;
-    GALGAS_localVarValuation var_valuation_20455 ;
-    const bool optionalResult20345 = temp_1.readProperty_mLocalVarMap ().optional_searchKey (constinArgument_inVarName.readProperty_string (), var_unused_0_20400, var_unused_1_20400, var_unused_2_20400, var_attributes_20423, var_valuation_20455) ;
-    if (!optionalResult20345) {
+    GALGAS_unifiedTypeMapEntry var_unused_0_20559 ;
+    GALGAS_string var_unused_1_20559 ;
+    GALGAS_string var_unused_2_20559 ;
+    GALGAS_localVariableAttributes var_attributes_20582 ;
+    GALGAS_localVarValuation var_valuation_20614 ;
+    const bool optionalResult20504 = temp_1.readProperty_mLocalVarMap ().optional_searchKey (constinArgument_inVarName.readProperty_string (), var_unused_0_20559, var_unused_1_20559, var_unused_2_20559, var_attributes_20582, var_valuation_20614) ;
+    if (!optionalResult20504) {
       test_0 = kBoolFalse ;
     }
     if (kBoolTrue == test_0) {
-      extensionMethod_checkFinalState (var_valuation_20455, constinArgument_inVarName, var_attributes_20423, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 442)) ;
+      extensionMethod_checkFinalState (var_valuation_20614, constinArgument_inVarName, var_attributes_20582, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 448)) ;
       {
-      GALGAS_unifiedTypeMapEntry joker_20572_5 ; // Joker input parameter
-      GALGAS_string joker_20572_4 ; // Joker input parameter
-      GALGAS_string joker_20572_3 ; // Joker input parameter
-      GALGAS_localVariableAttributes joker_20572_2 ; // Joker input parameter
-      GALGAS_localVarValuation joker_20572_1 ; // Joker input parameter
-      ioObject.mProperty_mLocalVarMap.setter_removeKey (constinArgument_inVarName, joker_20572_5, joker_20572_4, joker_20572_3, joker_20572_2, joker_20572_1, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 443)) ;
+      GALGAS_unifiedTypeMapEntry joker_20731_5 ; // Joker input parameter
+      GALGAS_string joker_20731_4 ; // Joker input parameter
+      GALGAS_string joker_20731_3 ; // Joker input parameter
+      GALGAS_localVariableAttributes joker_20731_2 ; // Joker input parameter
+      GALGAS_localVarValuation joker_20731_1 ; // Joker input parameter
+      ioObject.mProperty_mLocalVarMap.setter_removeKey (constinArgument_inVarName, joker_20731_5, joker_20731_4, joker_20731_3, joker_20731_2, joker_20731_1, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 449)) ;
       }
     }
   }
   if (kBoolFalse == test_0) {
-    GALGAS_bool var_found_20592 = GALGAS_bool (false) ;
+    GALGAS_bool var_found_20751 = GALGAS_bool (false) ;
     const GALGAS_currentVarManager temp_2 = ioObject ;
-    cEnumerator_localVarMapListForLLVM enumerator_20615 (temp_2.readProperty_mSubMaps (), kENUMERATION_UP) ;
-    bool bool_3 = var_found_20592.operator_not (SOURCE_FILE ("variable-manager.galgas", 446)).isValidAndTrue () ;
-    if (enumerator_20615.hasCurrentObject () && bool_3) {
-      while (enumerator_20615.hasCurrentObject () && bool_3) {
-        var_found_20592 = enumerator_20615.current_mMap (HERE).getter_hasKey (constinArgument_inVarName.readProperty_string () COMMA_SOURCE_FILE ("variable-manager.galgas", 447)) ;
-        enumerator_20615.gotoNextObject () ;
-        if (enumerator_20615.hasCurrentObject ()) {
-          bool_3 = var_found_20592.operator_not (SOURCE_FILE ("variable-manager.galgas", 446)).isValidAndTrue () ;
+    cEnumerator_localVarMapListForLLVM enumerator_20774 (temp_2.readProperty_mSubMaps (), kENUMERATION_UP) ;
+    bool bool_3 = var_found_20751.operator_not (SOURCE_FILE ("variable-manager.galgas", 452)).isValidAndTrue () ;
+    if (enumerator_20774.hasCurrentObject () && bool_3) {
+      while (enumerator_20774.hasCurrentObject () && bool_3) {
+        var_found_20751 = enumerator_20774.current_mMap (HERE).getter_hasKey (constinArgument_inVarName.readProperty_string () COMMA_SOURCE_FILE ("variable-manager.galgas", 453)) ;
+        enumerator_20774.gotoNextObject () ;
+        if (enumerator_20774.hasCurrentObject ()) {
+          bool_3 = var_found_20751.operator_not (SOURCE_FILE ("variable-manager.galgas", 452)).isValidAndTrue () ;
         }
       }
     }
     enumGalgasBool test_4 = kBoolTrue ;
     if (kBoolTrue == test_4) {
-      test_4 = var_found_20592.boolEnum () ;
+      test_4 = var_found_20751.boolEnum () ;
       if (kBoolTrue == test_4) {
         TC_Array <C_FixItDescription> fixItArray5 ;
-        inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GALGAS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 450)).add_operation (GALGAS_string ("' is not declared in current scope, but in an overrided scope"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 450)), fixItArray5  COMMA_SOURCE_FILE ("variable-manager.galgas", 450)) ;
+        inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GALGAS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 456)).add_operation (GALGAS_string ("' is not declared in current scope, but in an overrided scope"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 456)), fixItArray5  COMMA_SOURCE_FILE ("variable-manager.galgas", 456)) ;
       }
     }
     if (kBoolFalse == test_4) {
       TC_Array <C_FixItDescription> fixItArray6 ;
-      inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GALGAS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 452)).add_operation (GALGAS_string ("' is not declared"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 452)), fixItArray6  COMMA_SOURCE_FILE ("variable-manager.galgas", 452)) ;
+      inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GALGAS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 458)).add_operation (GALGAS_string ("' is not declared"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 458)), fixItArray6  COMMA_SOURCE_FILE ("variable-manager.galgas", 458)) ;
     }
   }
 }
@@ -9412,37 +9412,37 @@ void extensionSetter_searchForWriteAccess (GALGAS_currentVarManager & ioObject,
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
     const GALGAS_currentVarManager temp_1 = ioObject ;
-    GALGAS_unifiedTypeMapEntry var_type_22134 ;
-    GALGAS_string var_cppName_22156 ;
-    GALGAS_string var_nameForCheckingFormalParameterUsing_22181 ;
-    GALGAS_localVariableAttributes var_attributes_22234 ;
-    GALGAS_localVarValuation var_valuation_22262 ;
-    const bool optionalResult22084 = temp_1.readProperty_mLocalVarMap ().optional_searchKey (constinArgument_inVarName.readProperty_string (), var_type_22134, var_cppName_22156, var_nameForCheckingFormalParameterUsing_22181, var_attributes_22234, var_valuation_22262) ;
-    if (!optionalResult22084) {
+    GALGAS_unifiedTypeMapEntry var_type_22290 ;
+    GALGAS_string var_cppName_22312 ;
+    GALGAS_string var_nameForCheckingFormalParameterUsing_22337 ;
+    GALGAS_localVariableAttributes var_attributes_22390 ;
+    GALGAS_localVarValuation var_valuation_22418 ;
+    const bool optionalResult22240 = temp_1.readProperty_mLocalVarMap ().optional_searchKey (constinArgument_inVarName.readProperty_string (), var_type_22290, var_cppName_22312, var_nameForCheckingFormalParameterUsing_22337, var_attributes_22390, var_valuation_22418) ;
+    if (!optionalResult22240) {
       test_0 = kBoolFalse ;
     }
     if (kBoolTrue == test_0) {
-      GALGAS_localVarValuation var_newValuation_22286 = var_valuation_22262 ;
+      GALGAS_localVarValuation var_newValuation_22442 = var_valuation_22418 ;
       {
-      extensionSetter_writeTransition (var_newValuation_22286, constinArgument_inVarName, GALGAS_bool (false), var_attributes_22234, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 482)) ;
+      extensionSetter_writeTransition (var_newValuation_22442, constinArgument_inVarName, GALGAS_bool (false), var_attributes_22390, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 488)) ;
       }
       enumGalgasBool test_2 = kBoolTrue ;
       if (kBoolTrue == test_2) {
-        test_2 = GALGAS_bool (kIsNotEqual, var_newValuation_22286.objectCompare (var_valuation_22262)).boolEnum () ;
+        test_2 = GALGAS_bool (kIsNotEqual, var_newValuation_22442.objectCompare (var_valuation_22418)).boolEnum () ;
         if (kBoolTrue == test_2) {
           {
-          ioObject.mProperty_mLocalVarMap.setter_setMStateForKey (var_newValuation_22286, constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 484)) ;
+          ioObject.mProperty_mLocalVarMap.setter_setMStateForKey (var_newValuation_22442, constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 490)) ;
           }
         }
       }
-      outArgument_outType = var_type_22134 ;
-      outArgument_outCppName = var_cppName_22156 ;
-      outArgument_outNameForCheckingFormalParameterUsing = var_nameForCheckingFormalParameterUsing_22181 ;
+      outArgument_outType = var_type_22290 ;
+      outArgument_outCppName = var_cppName_22312 ;
+      outArgument_outNameForCheckingFormalParameterUsing = var_nameForCheckingFormalParameterUsing_22337 ;
     }
   }
   if (kBoolFalse == test_0) {
     {
-    extensionSetter_writeAccessInSubMap (ioObject.mProperty_mSubMaps, constinArgument_inVarName, GALGAS_uint (uint32_t (0U)), outArgument_outType, outArgument_outCppName, outArgument_outNameForCheckingFormalParameterUsing, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 490)) ;
+    extensionSetter_writeAccessInSubMap (ioObject.mProperty_mSubMaps, constinArgument_inVarName, GALGAS_uint (uint32_t (0U)), outArgument_outType, outArgument_outCppName, outArgument_outNameForCheckingFormalParameterUsing, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 496)) ;
     }
   }
 }
@@ -9468,10 +9468,10 @@ void extensionSetter_writeAccessInSubMap (GALGAS_localVarMapListForLLVM & ioObje
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
     const GALGAS_localVarMapListForLLVM temp_1 = ioObject ;
-    test_0 = GALGAS_bool (kIsSupOrEqual, constinArgument_inIndex.objectCompare (temp_1.getter_count (SOURCE_FILE ("variable-manager.galgas", 501)))).boolEnum () ;
+    test_0 = GALGAS_bool (kIsSupOrEqual, constinArgument_inIndex.objectCompare (temp_1.getter_count (SOURCE_FILE ("variable-manager.galgas", 507)))).boolEnum () ;
     if (kBoolTrue == test_0) {
       TC_Array <C_FixItDescription> fixItArray2 ;
-      inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GALGAS_string ("Undefined variable"), fixItArray2  COMMA_SOURCE_FILE ("variable-manager.galgas", 502)) ;
+      inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GALGAS_string ("Undefined variable"), fixItArray2  COMMA_SOURCE_FILE ("variable-manager.galgas", 508)) ;
       outArgument_outType.drop () ; // Release error dropped variable
       outArgument_outCppName.drop () ; // Release error dropped variable
       outArgument_outNameForCheckingFormalParameterUsing.drop () ; // Release error dropped variable
@@ -9479,43 +9479,43 @@ void extensionSetter_writeAccessInSubMap (GALGAS_localVarMapListForLLVM & ioObje
   }
   if (kBoolFalse == test_0) {
     const GALGAS_localVarMapListForLLVM temp_3 = ioObject ;
-    GALGAS_scopeLocalVarMap var_localMap_23437 = temp_3.getter_mMapAtIndex (constinArgument_inIndex, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 504)) ;
+    GALGAS_scopeLocalVarMap var_localMap_23593 = temp_3.getter_mMapAtIndex (constinArgument_inIndex, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 510)) ;
     enumGalgasBool test_4 = kBoolTrue ;
     if (kBoolTrue == test_4) {
-      GALGAS_unifiedTypeMapEntry var_type_23549 ;
-      GALGAS_string var_cppName_23572 ;
-      GALGAS_string var_nameForCheckingFormalParameterUsing_23598 ;
-      GALGAS_localVariableAttributes var_attributes_23652 ;
-      GALGAS_localVarValuation var_valuation_23681 ;
-      const bool optionalResult23497 = var_localMap_23437.optional_searchKey (constinArgument_inVarName.readProperty_string (), var_type_23549, var_cppName_23572, var_nameForCheckingFormalParameterUsing_23598, var_attributes_23652, var_valuation_23681) ;
-      if (!optionalResult23497) {
+      GALGAS_unifiedTypeMapEntry var_type_23705 ;
+      GALGAS_string var_cppName_23728 ;
+      GALGAS_string var_nameForCheckingFormalParameterUsing_23754 ;
+      GALGAS_localVariableAttributes var_attributes_23808 ;
+      GALGAS_localVarValuation var_valuation_23837 ;
+      const bool optionalResult23653 = var_localMap_23593.optional_searchKey (constinArgument_inVarName.readProperty_string (), var_type_23705, var_cppName_23728, var_nameForCheckingFormalParameterUsing_23754, var_attributes_23808, var_valuation_23837) ;
+      if (!optionalResult23653) {
         test_4 = kBoolFalse ;
       }
       if (kBoolTrue == test_4) {
-        GALGAS_localVarValuation var_newValuation_23719 = var_valuation_23681 ;
+        GALGAS_localVarValuation var_newValuation_23875 = var_valuation_23837 ;
         {
-        extensionSetter_writeTransition (var_newValuation_23719, constinArgument_inVarName, GALGAS_bool (true), var_attributes_23652, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 514)) ;
+        extensionSetter_writeTransition (var_newValuation_23875, constinArgument_inVarName, GALGAS_bool (true), var_attributes_23808, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 520)) ;
         }
         enumGalgasBool test_5 = kBoolTrue ;
         if (kBoolTrue == test_5) {
-          test_5 = GALGAS_bool (kIsNotEqual, var_newValuation_23719.objectCompare (var_valuation_23681)).boolEnum () ;
+          test_5 = GALGAS_bool (kIsNotEqual, var_newValuation_23875.objectCompare (var_valuation_23837)).boolEnum () ;
           if (kBoolTrue == test_5) {
             {
-            var_localMap_23437.setter_setMStateForKey (var_newValuation_23719, constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 516)) ;
+            var_localMap_23593.setter_setMStateForKey (var_newValuation_23875, constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 522)) ;
             }
             {
-            ioObject.setter_setMMapAtIndex (var_localMap_23437, constinArgument_inIndex, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 517)) ;
+            ioObject.setter_setMMapAtIndex (var_localMap_23593, constinArgument_inIndex, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 523)) ;
             }
           }
         }
-        outArgument_outType = var_type_23549 ;
-        outArgument_outCppName = var_cppName_23572 ;
-        outArgument_outNameForCheckingFormalParameterUsing = var_nameForCheckingFormalParameterUsing_23598 ;
+        outArgument_outType = var_type_23705 ;
+        outArgument_outCppName = var_cppName_23728 ;
+        outArgument_outNameForCheckingFormalParameterUsing = var_nameForCheckingFormalParameterUsing_23754 ;
       }
     }
     if (kBoolFalse == test_4) {
       {
-      extensionSetter_writeAccessInSubMap (ioObject, constinArgument_inVarName, constinArgument_inIndex.add_operation (GALGAS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 526)), outArgument_outType, outArgument_outCppName, outArgument_outNameForCheckingFormalParameterUsing, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 526)) ;
+      extensionSetter_writeAccessInSubMap (ioObject, constinArgument_inVarName, constinArgument_inIndex.add_operation (GALGAS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 532)), outArgument_outType, outArgument_outCppName, outArgument_outNameForCheckingFormalParameterUsing, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 532)) ;
       }
     }
   }
@@ -9544,43 +9544,43 @@ void extensionSetter_writeTransition (GALGAS_localVarValuation & ioObject,
     break ;
   case GALGAS_localVarValuation::kEnum_declared:
     {
-      ioObject = GALGAS_localVarValuation::class_func_initialized (SOURCE_FILE ("variable-manager.galgas", 539)) ;
+      ioObject = GALGAS_localVarValuation::class_func_initialized (SOURCE_FILE ("variable-manager.galgas", 545)) ;
     }
     break ;
   case GALGAS_localVarValuation::kEnum_initialized:
     {
       enumGalgasBool test_1 = kBoolTrue ;
       if (kBoolTrue == test_1) {
-        test_1 = constinArgument_inAttributes.getter_warnsOnAnyAcces (SOURCE_FILE ("variable-manager.galgas", 541)).boolEnum () ;
+        test_1 = constinArgument_inAttributes.getter_warnsOnAnyAcces (SOURCE_FILE ("variable-manager.galgas", 547)).boolEnum () ;
         if (kBoolTrue == test_1) {
           TC_Array <C_FixItDescription> fixItArray2 ;
-          inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GALGAS_string ("formal parameter has been declared as unused"), fixItArray2  COMMA_SOURCE_FILE ("variable-manager.galgas", 542)) ;
+          inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GALGAS_string ("formal parameter has been declared as unused"), fixItArray2  COMMA_SOURCE_FILE ("variable-manager.galgas", 548)) ;
         }
       }
       enumGalgasBool test_3 = kBoolTrue ;
       if (kBoolTrue == test_3) {
-        test_3 = constinArgument_inAttributes.getter_rejectWriteInInitializedAndReadStates (SOURCE_FILE ("variable-manager.galgas", 544)).boolEnum () ;
+        test_3 = constinArgument_inAttributes.getter_rejectWriteInInitializedAndReadStates (SOURCE_FILE ("variable-manager.galgas", 550)).boolEnum () ;
         if (kBoolTrue == test_3) {
           TC_Array <C_FixItDescription> fixItArray4 ;
-          inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GALGAS_string ("constant '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 545)).add_operation (GALGAS_string ("' cannot be mutated"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 545)), fixItArray4  COMMA_SOURCE_FILE ("variable-manager.galgas", 545)) ;
-          ioObject = GALGAS_localVarValuation::class_func_invalid (SOURCE_FILE ("variable-manager.galgas", 546)) ;
+          inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GALGAS_string ("constant '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 551)).add_operation (GALGAS_string ("' cannot be mutated"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 551)), fixItArray4  COMMA_SOURCE_FILE ("variable-manager.galgas", 551)) ;
+          ioObject = GALGAS_localVarValuation::class_func_invalid (SOURCE_FILE ("variable-manager.galgas", 552)) ;
         }
       }
       if (kBoolFalse == test_3) {
         enumGalgasBool test_5 = kBoolTrue ;
         if (kBoolTrue == test_5) {
-          GALGAS_bool test_6 = constinArgument_inAttributes.getter_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 547)).operator_not (SOURCE_FILE ("variable-manager.galgas", 547)) ;
+          GALGAS_bool test_6 = constinArgument_inAttributes.getter_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 553)).operator_not (SOURCE_FILE ("variable-manager.galgas", 553)) ;
           if (kBoolTrue == test_6.boolEnum ()) {
-            test_6 = constinArgument_inOverridenMap.operator_not (SOURCE_FILE ("variable-manager.galgas", 547)) ;
+            test_6 = constinArgument_inOverridenMap.operator_not (SOURCE_FILE ("variable-manager.galgas", 553)) ;
           }
           test_5 = test_6.boolEnum () ;
           if (kBoolTrue == test_5) {
             TC_Array <C_FixItDescription> fixItArray7 ;
-            inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GALGAS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 548)).add_operation (GALGAS_string ("' was written to, but never read"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 548)), fixItArray7  COMMA_SOURCE_FILE ("variable-manager.galgas", 548)) ;
+            inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GALGAS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 554)).add_operation (GALGAS_string ("' was written to, but never read"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 554)), fixItArray7  COMMA_SOURCE_FILE ("variable-manager.galgas", 554)) ;
           }
         }
         if (kBoolFalse == test_5) {
-          ioObject = GALGAS_localVarValuation::class_func_mutated (SOURCE_FILE ("variable-manager.galgas", 550)) ;
+          ioObject = GALGAS_localVarValuation::class_func_mutated (SOURCE_FILE ("variable-manager.galgas", 556)) ;
         }
       }
     }
@@ -9589,15 +9589,15 @@ void extensionSetter_writeTransition (GALGAS_localVarValuation & ioObject,
     {
       enumGalgasBool test_8 = kBoolTrue ;
       if (kBoolTrue == test_8) {
-        test_8 = constinArgument_inAttributes.getter_rejectWriteInInitializedAndReadStates (SOURCE_FILE ("variable-manager.galgas", 553)).boolEnum () ;
+        test_8 = constinArgument_inAttributes.getter_rejectWriteInInitializedAndReadStates (SOURCE_FILE ("variable-manager.galgas", 559)).boolEnum () ;
         if (kBoolTrue == test_8) {
           TC_Array <C_FixItDescription> fixItArray9 ;
-          inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GALGAS_string ("constant '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 554)).add_operation (GALGAS_string ("' cannot be mutated"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 554)), fixItArray9  COMMA_SOURCE_FILE ("variable-manager.galgas", 554)) ;
-          ioObject = GALGAS_localVarValuation::class_func_invalid (SOURCE_FILE ("variable-manager.galgas", 555)) ;
+          inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GALGAS_string ("constant '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 560)).add_operation (GALGAS_string ("' cannot be mutated"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 560)), fixItArray9  COMMA_SOURCE_FILE ("variable-manager.galgas", 560)) ;
+          ioObject = GALGAS_localVarValuation::class_func_invalid (SOURCE_FILE ("variable-manager.galgas", 561)) ;
         }
       }
       if (kBoolFalse == test_8) {
-        ioObject = GALGAS_localVarValuation::class_func_mutated (SOURCE_FILE ("variable-manager.galgas", 557)) ;
+        ioObject = GALGAS_localVarValuation::class_func_mutated (SOURCE_FILE ("variable-manager.galgas", 563)) ;
       }
     }
     break ;
@@ -9628,29 +9628,29 @@ void extensionSetter_searchForReadAccess (GALGAS_currentVarManager & ioObject,
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
     const GALGAS_currentVarManager temp_1 = ioObject ;
-    GALGAS_unifiedTypeMapEntry var_type_26988 ;
-    GALGAS_string var_cppName_27017 ;
-    GALGAS_string var_nameForCheckingFormalParameterUsing_27049 ;
-    GALGAS_localVariableAttributes var_attributes_27109 ;
-    GALGAS_localVarValuation var_valuation_27144 ;
-    const bool optionalResult26924 = temp_1.readProperty_mLocalVarMap ().optional_searchKey (constinArgument_inVarName.readProperty_string (), var_type_26988, var_cppName_27017, var_nameForCheckingFormalParameterUsing_27049, var_attributes_27109, var_valuation_27144) ;
-    if (!optionalResult26924) {
+    GALGAS_unifiedTypeMapEntry var_type_27143 ;
+    GALGAS_string var_cppName_27172 ;
+    GALGAS_string var_nameForCheckingFormalParameterUsing_27204 ;
+    GALGAS_localVariableAttributes var_attributes_27264 ;
+    GALGAS_localVarValuation var_valuation_27299 ;
+    const bool optionalResult27079 = temp_1.readProperty_mLocalVarMap ().optional_searchKey (constinArgument_inVarName.readProperty_string (), var_type_27143, var_cppName_27172, var_nameForCheckingFormalParameterUsing_27204, var_attributes_27264, var_valuation_27299) ;
+    if (!optionalResult27079) {
       test_0 = kBoolFalse ;
     }
     if (kBoolTrue == test_0) {
-      GALGAS_localVarValuation var_newValuation_27168 = var_valuation_27144 ;
+      GALGAS_localVarValuation var_newValuation_27323 = var_valuation_27299 ;
       {
-      extensionSetter_readTransition (var_newValuation_27168, constinArgument_inVarName, var_attributes_27109, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 589)) ;
+      extensionSetter_readTransition (var_newValuation_27323, constinArgument_inVarName, var_attributes_27264, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 595)) ;
       }
-      outArgument_outType = var_type_26988 ;
-      outArgument_outCppName = var_cppName_27017 ;
-      outArgument_outNameForCheckingFormalParameterUsing = var_nameForCheckingFormalParameterUsing_27049 ;
+      outArgument_outType = var_type_27143 ;
+      outArgument_outCppName = var_cppName_27172 ;
+      outArgument_outNameForCheckingFormalParameterUsing = var_nameForCheckingFormalParameterUsing_27204 ;
       enumGalgasBool test_2 = kBoolTrue ;
       if (kBoolTrue == test_2) {
-        test_2 = GALGAS_bool (kIsNotEqual, var_newValuation_27168.objectCompare (var_valuation_27144)).boolEnum () ;
+        test_2 = GALGAS_bool (kIsNotEqual, var_newValuation_27323.objectCompare (var_valuation_27299)).boolEnum () ;
         if (kBoolTrue == test_2) {
           {
-          ioObject.mProperty_mLocalVarMap.setter_setMStateForKey (var_newValuation_27168, constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 594)) ;
+          ioObject.mProperty_mLocalVarMap.setter_setMStateForKey (var_newValuation_27323, constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 600)) ;
           }
         }
       }
@@ -9658,7 +9658,7 @@ void extensionSetter_searchForReadAccess (GALGAS_currentVarManager & ioObject,
   }
   if (kBoolFalse == test_0) {
     {
-    extensionSetter_readAccess (ioObject.mProperty_mSubMaps, constinArgument_inVarName, GALGAS_uint (uint32_t (0U)), outArgument_outType, outArgument_outCppName, outArgument_outNameForCheckingFormalParameterUsing, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 600)) ;
+    extensionSetter_readAccess (ioObject.mProperty_mSubMaps, constinArgument_inVarName, GALGAS_uint (uint32_t (0U)), outArgument_outType, outArgument_outCppName, outArgument_outNameForCheckingFormalParameterUsing, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 606)) ;
     }
   }
 }
@@ -9684,10 +9684,10 @@ void extensionSetter_readAccess (GALGAS_localVarMapListForLLVM & ioObject,
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
     const GALGAS_localVarMapListForLLVM temp_1 = ioObject ;
-    test_0 = GALGAS_bool (kIsSupOrEqual, constinArgument_inIndex.objectCompare (temp_1.getter_count (SOURCE_FILE ("variable-manager.galgas", 611)))).boolEnum () ;
+    test_0 = GALGAS_bool (kIsSupOrEqual, constinArgument_inIndex.objectCompare (temp_1.getter_count (SOURCE_FILE ("variable-manager.galgas", 617)))).boolEnum () ;
     if (kBoolTrue == test_0) {
       TC_Array <C_FixItDescription> fixItArray2 ;
-      inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GALGAS_string ("Undefined variable"), fixItArray2  COMMA_SOURCE_FILE ("variable-manager.galgas", 612)) ;
+      inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GALGAS_string ("Undefined variable"), fixItArray2  COMMA_SOURCE_FILE ("variable-manager.galgas", 618)) ;
       outArgument_outType.drop () ; // Release error dropped variable
       outArgument_outCppName.drop () ; // Release error dropped variable
       outArgument_outNameForCheckingFormalParameterUsing.drop () ; // Release error dropped variable
@@ -9695,35 +9695,35 @@ void extensionSetter_readAccess (GALGAS_localVarMapListForLLVM & ioObject,
   }
   if (kBoolFalse == test_0) {
     const GALGAS_localVarMapListForLLVM temp_3 = ioObject ;
-    GALGAS_scopeLocalVarMap var_localMap_28366 = temp_3.getter_mMapAtIndex (constinArgument_inIndex, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 614)) ;
+    GALGAS_scopeLocalVarMap var_localMap_28521 = temp_3.getter_mMapAtIndex (constinArgument_inIndex, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 620)) ;
     enumGalgasBool test_4 = kBoolTrue ;
     if (kBoolTrue == test_4) {
-      GALGAS_unifiedTypeMapEntry var_type_28500 ;
-      GALGAS_string var_cppName_28534 ;
-      GALGAS_string var_nameForCheckingFormalParameterUsing_28571 ;
-      GALGAS_localVariableAttributes var_attributes_28636 ;
-      GALGAS_localVarValuation var_valuation_28676 ;
-      const bool optionalResult28426 = var_localMap_28366.optional_searchKey (constinArgument_inVarName.readProperty_string (), var_type_28500, var_cppName_28534, var_nameForCheckingFormalParameterUsing_28571, var_attributes_28636, var_valuation_28676) ;
-      if (!optionalResult28426) {
+      GALGAS_unifiedTypeMapEntry var_type_28655 ;
+      GALGAS_string var_cppName_28689 ;
+      GALGAS_string var_nameForCheckingFormalParameterUsing_28726 ;
+      GALGAS_localVariableAttributes var_attributes_28791 ;
+      GALGAS_localVarValuation var_valuation_28831 ;
+      const bool optionalResult28581 = var_localMap_28521.optional_searchKey (constinArgument_inVarName.readProperty_string (), var_type_28655, var_cppName_28689, var_nameForCheckingFormalParameterUsing_28726, var_attributes_28791, var_valuation_28831) ;
+      if (!optionalResult28581) {
         test_4 = kBoolFalse ;
       }
       if (kBoolTrue == test_4) {
-        GALGAS_localVarValuation var_newValuation_28702 = var_valuation_28676 ;
+        GALGAS_localVarValuation var_newValuation_28857 = var_valuation_28831 ;
         {
-        extensionSetter_readTransition (var_newValuation_28702, constinArgument_inVarName, var_attributes_28636, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 623)) ;
+        extensionSetter_readTransition (var_newValuation_28857, constinArgument_inVarName, var_attributes_28791, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 629)) ;
         }
-        outArgument_outType = var_type_28500 ;
-        outArgument_outCppName = var_cppName_28534 ;
-        outArgument_outNameForCheckingFormalParameterUsing = var_nameForCheckingFormalParameterUsing_28571 ;
+        outArgument_outType = var_type_28655 ;
+        outArgument_outCppName = var_cppName_28689 ;
+        outArgument_outNameForCheckingFormalParameterUsing = var_nameForCheckingFormalParameterUsing_28726 ;
         enumGalgasBool test_5 = kBoolTrue ;
         if (kBoolTrue == test_5) {
-          test_5 = GALGAS_bool (kIsNotEqual, var_newValuation_28702.objectCompare (var_valuation_28676)).boolEnum () ;
+          test_5 = GALGAS_bool (kIsNotEqual, var_newValuation_28857.objectCompare (var_valuation_28831)).boolEnum () ;
           if (kBoolTrue == test_5) {
             {
-            var_localMap_28366.setter_setMStateForKey (var_newValuation_28702, constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 628)) ;
+            var_localMap_28521.setter_setMStateForKey (var_newValuation_28857, constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 634)) ;
             }
             {
-            ioObject.setter_setMMapAtIndex (var_localMap_28366, constinArgument_inIndex, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 629)) ;
+            ioObject.setter_setMMapAtIndex (var_localMap_28521, constinArgument_inIndex, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 635)) ;
             }
           }
         }
@@ -9731,7 +9731,7 @@ void extensionSetter_readAccess (GALGAS_localVarMapListForLLVM & ioObject,
     }
     if (kBoolFalse == test_4) {
       {
-      extensionSetter_readAccess (ioObject, constinArgument_inVarName, constinArgument_inIndex.add_operation (GALGAS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 632)), outArgument_outType, outArgument_outCppName, outArgument_outNameForCheckingFormalParameterUsing, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 632)) ;
+      extensionSetter_readAccess (ioObject, constinArgument_inVarName, constinArgument_inIndex.add_operation (GALGAS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 638)), outArgument_outType, outArgument_outCppName, outArgument_outNameForCheckingFormalParameterUsing, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 638)) ;
       }
     }
   }
@@ -9760,19 +9760,19 @@ void extensionSetter_readTransition (GALGAS_localVarValuation & ioObject,
   case GALGAS_localVarValuation::kEnum_declared:
     {
       TC_Array <C_FixItDescription> fixItArray1 ;
-      inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GALGAS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 644)).add_operation (GALGAS_string ("' used before being initialized"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 644)), fixItArray1  COMMA_SOURCE_FILE ("variable-manager.galgas", 644)) ;
-      ioObject = GALGAS_localVarValuation::class_func_invalid (SOURCE_FILE ("variable-manager.galgas", 645)) ;
+      inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GALGAS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 650)).add_operation (GALGAS_string ("' used before being initialized"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 650)), fixItArray1  COMMA_SOURCE_FILE ("variable-manager.galgas", 650)) ;
+      ioObject = GALGAS_localVarValuation::class_func_invalid (SOURCE_FILE ("variable-manager.galgas", 651)) ;
     }
     break ;
   case GALGAS_localVarValuation::kEnum_initialized:
     {
-      ioObject = GALGAS_localVarValuation::class_func_read (SOURCE_FILE ("variable-manager.galgas", 647)) ;
+      ioObject = GALGAS_localVarValuation::class_func_read (SOURCE_FILE ("variable-manager.galgas", 653)) ;
       enumGalgasBool test_2 = kBoolTrue ;
       if (kBoolTrue == test_2) {
-        test_2 = constinArgument_inAttributes.getter_warnsOnAnyAcces (SOURCE_FILE ("variable-manager.galgas", 648)).boolEnum () ;
+        test_2 = constinArgument_inAttributes.getter_warnsOnAnyAcces (SOURCE_FILE ("variable-manager.galgas", 654)).boolEnum () ;
         if (kBoolTrue == test_2) {
           TC_Array <C_FixItDescription> fixItArray3 ;
-          inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GALGAS_string ("formal parameter has been declared as unused"), fixItArray3  COMMA_SOURCE_FILE ("variable-manager.galgas", 649)) ;
+          inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GALGAS_string ("formal parameter has been declared as unused"), fixItArray3  COMMA_SOURCE_FILE ("variable-manager.galgas", 655)) ;
         }
       }
     }
@@ -9781,10 +9781,10 @@ void extensionSetter_readTransition (GALGAS_localVarValuation & ioObject,
     {
       enumGalgasBool test_4 = kBoolTrue ;
       if (kBoolTrue == test_4) {
-        test_4 = constinArgument_inAttributes.getter_warnsOnAnyAcces (SOURCE_FILE ("variable-manager.galgas", 652)).boolEnum () ;
+        test_4 = constinArgument_inAttributes.getter_warnsOnAnyAcces (SOURCE_FILE ("variable-manager.galgas", 658)).boolEnum () ;
         if (kBoolTrue == test_4) {
           TC_Array <C_FixItDescription> fixItArray5 ;
-          inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GALGAS_string ("formal parameter has been declared as unused"), fixItArray5  COMMA_SOURCE_FILE ("variable-manager.galgas", 653)) ;
+          inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GALGAS_string ("formal parameter has been declared as unused"), fixItArray5  COMMA_SOURCE_FILE ("variable-manager.galgas", 659)) ;
         }
       }
     }
@@ -9793,10 +9793,10 @@ void extensionSetter_readTransition (GALGAS_localVarValuation & ioObject,
     {
       enumGalgasBool test_6 = kBoolTrue ;
       if (kBoolTrue == test_6) {
-        test_6 = constinArgument_inAttributes.getter_warnsOnAnyAcces (SOURCE_FILE ("variable-manager.galgas", 656)).boolEnum () ;
+        test_6 = constinArgument_inAttributes.getter_warnsOnAnyAcces (SOURCE_FILE ("variable-manager.galgas", 662)).boolEnum () ;
         if (kBoolTrue == test_6) {
           TC_Array <C_FixItDescription> fixItArray7 ;
-          inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GALGAS_string ("formal parameter has been declared as unused"), fixItArray7  COMMA_SOURCE_FILE ("variable-manager.galgas", 657)) ;
+          inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GALGAS_string ("formal parameter has been declared as unused"), fixItArray7  COMMA_SOURCE_FILE ("variable-manager.galgas", 663)) ;
         }
       }
     }
@@ -9824,37 +9824,37 @@ void extensionSetter_searchForReadWriteAccess (GALGAS_currentVarManager & ioObje
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
     const GALGAS_currentVarManager temp_1 = ioObject ;
-    GALGAS_unifiedTypeMapEntry var_type_31459 ;
-    GALGAS_string var_cppName_31480 ;
-    GALGAS_string var_nameForCheckingFormalParameterUsing_31504 ;
-    GALGAS_localVariableAttributes var_inAttributes_31556 ;
-    GALGAS_localVarValuation var_valuation_31585 ;
-    const bool optionalResult31411 = temp_1.readProperty_mLocalVarMap ().optional_searchKey (constinArgument_inVarName.readProperty_string (), var_type_31459, var_cppName_31480, var_nameForCheckingFormalParameterUsing_31504, var_inAttributes_31556, var_valuation_31585) ;
-    if (!optionalResult31411) {
+    GALGAS_unifiedTypeMapEntry var_type_31614 ;
+    GALGAS_string var_cppName_31635 ;
+    GALGAS_string var_nameForCheckingFormalParameterUsing_31659 ;
+    GALGAS_localVariableAttributes var_inAttributes_31711 ;
+    GALGAS_localVarValuation var_valuation_31740 ;
+    const bool optionalResult31566 = temp_1.readProperty_mLocalVarMap ().optional_searchKey (constinArgument_inVarName.readProperty_string (), var_type_31614, var_cppName_31635, var_nameForCheckingFormalParameterUsing_31659, var_inAttributes_31711, var_valuation_31740) ;
+    if (!optionalResult31566) {
       test_0 = kBoolFalse ;
     }
     if (kBoolTrue == test_0) {
-      GALGAS_localVarValuation var_newValuation_31609 = var_valuation_31585 ;
+      GALGAS_localVarValuation var_newValuation_31764 = var_valuation_31740 ;
       {
-      extensionSetter_readWriteTransition (var_newValuation_31609, constinArgument_inVarName, GALGAS_bool (false), var_inAttributes_31556, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 687)) ;
+      extensionSetter_readWriteTransition (var_newValuation_31764, constinArgument_inVarName, GALGAS_bool (false), var_inAttributes_31711, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 693)) ;
       }
       enumGalgasBool test_2 = kBoolTrue ;
       if (kBoolTrue == test_2) {
-        test_2 = GALGAS_bool (kIsNotEqual, var_newValuation_31609.objectCompare (var_valuation_31585)).boolEnum () ;
+        test_2 = GALGAS_bool (kIsNotEqual, var_newValuation_31764.objectCompare (var_valuation_31740)).boolEnum () ;
         if (kBoolTrue == test_2) {
           {
-          ioObject.mProperty_mLocalVarMap.setter_setMStateForKey (var_newValuation_31609, constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 689)) ;
+          ioObject.mProperty_mLocalVarMap.setter_setMStateForKey (var_newValuation_31764, constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 695)) ;
           }
         }
       }
-      outArgument_outType = var_type_31459 ;
-      outArgument_outCppName = var_cppName_31480 ;
-      outArgument_outNameForCheckingFormalParameterUsing = var_nameForCheckingFormalParameterUsing_31504 ;
+      outArgument_outType = var_type_31614 ;
+      outArgument_outCppName = var_cppName_31635 ;
+      outArgument_outNameForCheckingFormalParameterUsing = var_nameForCheckingFormalParameterUsing_31659 ;
     }
   }
   if (kBoolFalse == test_0) {
     {
-    extensionSetter_readWriteAccess (ioObject.mProperty_mSubMaps, constinArgument_inVarName, GALGAS_uint (uint32_t (0U)), outArgument_outType, outArgument_outCppName, outArgument_outNameForCheckingFormalParameterUsing, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 695)) ;
+    extensionSetter_readWriteAccess (ioObject.mProperty_mSubMaps, constinArgument_inVarName, GALGAS_uint (uint32_t (0U)), outArgument_outType, outArgument_outCppName, outArgument_outNameForCheckingFormalParameterUsing, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 701)) ;
     }
   }
 }
@@ -9880,10 +9880,10 @@ void extensionSetter_readWriteAccess (GALGAS_localVarMapListForLLVM & ioObject,
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
     const GALGAS_localVarMapListForLLVM temp_1 = ioObject ;
-    test_0 = GALGAS_bool (kIsSupOrEqual, constinArgument_inIndex.objectCompare (temp_1.getter_count (SOURCE_FILE ("variable-manager.galgas", 706)))).boolEnum () ;
+    test_0 = GALGAS_bool (kIsSupOrEqual, constinArgument_inIndex.objectCompare (temp_1.getter_count (SOURCE_FILE ("variable-manager.galgas", 712)))).boolEnum () ;
     if (kBoolTrue == test_0) {
       TC_Array <C_FixItDescription> fixItArray2 ;
-      inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GALGAS_string ("Undefined variable"), fixItArray2  COMMA_SOURCE_FILE ("variable-manager.galgas", 707)) ;
+      inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GALGAS_string ("Undefined variable"), fixItArray2  COMMA_SOURCE_FILE ("variable-manager.galgas", 713)) ;
       outArgument_outType.drop () ; // Release error dropped variable
       outArgument_outCppName.drop () ; // Release error dropped variable
       outArgument_outNameForCheckingFormalParameterUsing.drop () ; // Release error dropped variable
@@ -9891,43 +9891,43 @@ void extensionSetter_readWriteAccess (GALGAS_localVarMapListForLLVM & ioObject,
   }
   if (kBoolFalse == test_0) {
     const GALGAS_localVarMapListForLLVM temp_3 = ioObject ;
-    GALGAS_scopeLocalVarMap var_localMap_32742 = temp_3.getter_mMapAtIndex (constinArgument_inIndex, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 709)) ;
+    GALGAS_scopeLocalVarMap var_localMap_32897 = temp_3.getter_mMapAtIndex (constinArgument_inIndex, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 715)) ;
     enumGalgasBool test_4 = kBoolTrue ;
     if (kBoolTrue == test_4) {
-      GALGAS_unifiedTypeMapEntry var_type_32856 ;
-      GALGAS_string var_cppName_32880 ;
-      GALGAS_string var_nameForCheckingFormalParameterUsing_32907 ;
-      GALGAS_localVariableAttributes var_inAttributes_32962 ;
-      GALGAS_localVarValuation var_valuation_32994 ;
-      const bool optionalResult32802 = var_localMap_32742.optional_searchKey (constinArgument_inVarName.readProperty_string (), var_type_32856, var_cppName_32880, var_nameForCheckingFormalParameterUsing_32907, var_inAttributes_32962, var_valuation_32994) ;
-      if (!optionalResult32802) {
+      GALGAS_unifiedTypeMapEntry var_type_33011 ;
+      GALGAS_string var_cppName_33035 ;
+      GALGAS_string var_nameForCheckingFormalParameterUsing_33062 ;
+      GALGAS_localVariableAttributes var_inAttributes_33117 ;
+      GALGAS_localVarValuation var_valuation_33149 ;
+      const bool optionalResult32957 = var_localMap_32897.optional_searchKey (constinArgument_inVarName.readProperty_string (), var_type_33011, var_cppName_33035, var_nameForCheckingFormalParameterUsing_33062, var_inAttributes_33117, var_valuation_33149) ;
+      if (!optionalResult32957) {
         test_4 = kBoolFalse ;
       }
       if (kBoolTrue == test_4) {
-        GALGAS_localVarValuation var_newValuation_33020 = var_valuation_32994 ;
+        GALGAS_localVarValuation var_newValuation_33175 = var_valuation_33149 ;
         {
-        extensionSetter_readWriteTransition (var_newValuation_33020, constinArgument_inVarName, GALGAS_bool (true), var_inAttributes_32962, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 718)) ;
+        extensionSetter_readWriteTransition (var_newValuation_33175, constinArgument_inVarName, GALGAS_bool (true), var_inAttributes_33117, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 724)) ;
         }
         enumGalgasBool test_5 = kBoolTrue ;
         if (kBoolTrue == test_5) {
-          test_5 = GALGAS_bool (kIsNotEqual, var_newValuation_33020.objectCompare (var_valuation_32994)).boolEnum () ;
+          test_5 = GALGAS_bool (kIsNotEqual, var_newValuation_33175.objectCompare (var_valuation_33149)).boolEnum () ;
           if (kBoolTrue == test_5) {
             {
-            var_localMap_32742.setter_setMStateForKey (var_newValuation_33020, constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 720)) ;
+            var_localMap_32897.setter_setMStateForKey (var_newValuation_33175, constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 726)) ;
             }
             {
-            ioObject.setter_setMMapAtIndex (var_localMap_32742, constinArgument_inIndex, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 721)) ;
+            ioObject.setter_setMMapAtIndex (var_localMap_32897, constinArgument_inIndex, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 727)) ;
             }
           }
         }
-        outArgument_outType = var_type_32856 ;
-        outArgument_outCppName = var_cppName_32880 ;
-        outArgument_outNameForCheckingFormalParameterUsing = var_nameForCheckingFormalParameterUsing_32907 ;
+        outArgument_outType = var_type_33011 ;
+        outArgument_outCppName = var_cppName_33035 ;
+        outArgument_outNameForCheckingFormalParameterUsing = var_nameForCheckingFormalParameterUsing_33062 ;
       }
     }
     if (kBoolFalse == test_4) {
       {
-      extensionSetter_readWriteAccess (ioObject, constinArgument_inVarName, constinArgument_inIndex.add_operation (GALGAS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 727)), outArgument_outType, outArgument_outCppName, outArgument_outNameForCheckingFormalParameterUsing, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 727)) ;
+      extensionSetter_readWriteAccess (ioObject, constinArgument_inVarName, constinArgument_inIndex.add_operation (GALGAS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 733)), outArgument_outType, outArgument_outCppName, outArgument_outNameForCheckingFormalParameterUsing, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 733)) ;
       }
     }
   }
@@ -9947,10 +9947,10 @@ void extensionSetter_readWriteTransition (GALGAS_localVarValuation & ioObject,
                                           Compiler * inCompiler
                                           COMMA_UNUSED_LOCATION_ARGS) {
   {
-  extensionSetter_readTransition (ioObject, constinArgument_inVarName, constinArgument_inAttributes, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 737)) ;
+  extensionSetter_readTransition (ioObject, constinArgument_inVarName, constinArgument_inAttributes, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 743)) ;
   }
   {
-  extensionSetter_writeTransition (ioObject, constinArgument_inVarName, constinArgument_inOverridenMap, constinArgument_inAttributes, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 738)) ;
+  extensionSetter_writeTransition (ioObject, constinArgument_inVarName, constinArgument_inOverridenMap, constinArgument_inAttributes, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 744)) ;
   }
 }
 
@@ -9966,9 +9966,9 @@ void extensionSetter_openScope (GALGAS_currentVarManager & ioObject,
                                 COMMA_UNUSED_LOCATION_ARGS) {
   {
   const GALGAS_currentVarManager temp_0 = ioObject ;
-  ioObject.mProperty_mSubMaps.setter_insertAtIndex (temp_0.readProperty_mLocalVarMap (), GALGAS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 746)) ;
+  ioObject.mProperty_mSubMaps.setter_insertAtIndex (temp_0.readProperty_mLocalVarMap (), GALGAS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 752)) ;
   }
-  ioObject.mProperty_mLocalVarMap = GALGAS_scopeLocalVarMap::class_func_emptyMap (SOURCE_FILE ("variable-manager.galgas", 747)) ;
+  ioObject.mProperty_mLocalVarMap = GALGAS_scopeLocalVarMap::class_func_emptyMap (SOURCE_FILE ("variable-manager.galgas", 753)) ;
 }
 
 
@@ -9983,23 +9983,23 @@ void extensionSetter_closeScope (GALGAS_currentVarManager & ioObject,
                                  Compiler * inCompiler
                                  COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_currentVarManager temp_0 = ioObject ;
-  extensionMethod_checkFinalStates (temp_0.readProperty_mLocalVarMap (), constinArgument_inErrorLocation, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 753)) ;
+  extensionMethod_checkFinalStates (temp_0.readProperty_mLocalVarMap (), constinArgument_inErrorLocation, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 759)) ;
   enumGalgasBool test_1 = kBoolTrue ;
   if (kBoolTrue == test_1) {
     const GALGAS_currentVarManager temp_2 = ioObject ;
-    test_1 = GALGAS_bool (kIsEqual, temp_2.readProperty_mSubMaps ().getter_count (SOURCE_FILE ("variable-manager.galgas", 754)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
+    test_1 = GALGAS_bool (kIsEqual, temp_2.readProperty_mSubMaps ().getter_count (SOURCE_FILE ("variable-manager.galgas", 760)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
     if (kBoolTrue == test_1) {
       TC_Array <C_FixItDescription> fixItArray3 ;
-      inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("EMPTY SUBMAPS"), fixItArray3  COMMA_SOURCE_FILE ("variable-manager.galgas", 755)) ;
+      inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("EMPTY SUBMAPS"), fixItArray3  COMMA_SOURCE_FILE ("variable-manager.galgas", 761)) ;
     }
   }
   enumGalgasBool test_4 = kBoolTrue ;
   if (kBoolTrue == test_4) {
     const GALGAS_currentVarManager temp_5 = ioObject ;
-    test_4 = GALGAS_bool (kIsStrictSup, temp_5.readProperty_mSubMaps ().getter_count (SOURCE_FILE ("variable-manager.galgas", 757)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
+    test_4 = GALGAS_bool (kIsStrictSup, temp_5.readProperty_mSubMaps ().getter_count (SOURCE_FILE ("variable-manager.galgas", 763)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
     if (kBoolTrue == test_4) {
       {
-      ioObject.mProperty_mSubMaps.setter_popFirst (ioObject.mProperty_mLocalVarMap, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 758)) ;
+      ioObject.mProperty_mSubMaps.setter_popFirst (ioObject.mProperty_mLocalVarMap, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 764)) ;
       }
     }
   }
@@ -10022,7 +10022,7 @@ void extensionSetter_insertKey (GALGAS_currentVarManager & ioObject,
                                 Compiler * inCompiler
                                 COMMA_UNUSED_LOCATION_ARGS) {
   {
-  ioObject.mProperty_mLocalVarMap.setter_insertKey (constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, constinArgument_inAttributes, constinArgument_inState, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 772)) ;
+  ioObject.mProperty_mLocalVarMap.setter_insertKey (constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, constinArgument_inAttributes, constinArgument_inState, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 778)) ;
   }
 }
 
@@ -10048,28 +10048,28 @@ void extensionMethod_checkFinalState (const GALGAS_localVarValuation inObject,
     break ;
   case GALGAS_localVarValuation::kEnum_declared:
     {
-      const cEnumAssociatedValues_localVarValuation_declared * extractPtr_36540 = (const cEnumAssociatedValues_localVarValuation_declared *) (temp_0.unsafePointer ()) ;
-      const GALGAS_bool extractedValue_36113_usedInOtherBlock = extractPtr_36540->mAssociatedValue0 ;
+      const cEnumAssociatedValues_localVarValuation_declared * extractPtr_36694 = (const cEnumAssociatedValues_localVarValuation_declared *) (temp_0.unsafePointer ()) ;
+      const GALGAS_bool extractedValue_36267_usedInOtherBlock = extractPtr_36694->mAssociatedValue0 ;
       enumGalgasBool test_1 = kBoolTrue ;
       if (kBoolTrue == test_1) {
-        test_1 = constinArgument_inAttributes.getter_rejectDeclaredStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 790)).boolEnum () ;
+        test_1 = constinArgument_inAttributes.getter_rejectDeclaredStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 796)).boolEnum () ;
         if (kBoolTrue == test_1) {
           TC_Array <C_FixItDescription> fixItArray2 ;
-          inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GALGAS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 791)).add_operation (GALGAS_string ("' should be initialized"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 791)), fixItArray2  COMMA_SOURCE_FILE ("variable-manager.galgas", 791)) ;
+          inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GALGAS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 797)).add_operation (GALGAS_string ("' should be initialized"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 797)), fixItArray2  COMMA_SOURCE_FILE ("variable-manager.galgas", 797)) ;
         }
       }
       if (kBoolFalse == test_1) {
         enumGalgasBool test_3 = kBoolTrue ;
         if (kBoolTrue == test_3) {
-          test_3 = extractedValue_36113_usedInOtherBlock.boolEnum () ;
+          test_3 = extractedValue_36267_usedInOtherBlock.boolEnum () ;
           if (kBoolTrue == test_3) {
             TC_Array <C_FixItDescription> fixItArray4 ;
-            inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GALGAS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 793)).add_operation (GALGAS_string ("' is only used  in sub scope; consider moving it"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 793)), fixItArray4  COMMA_SOURCE_FILE ("variable-manager.galgas", 793)) ;
+            inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GALGAS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 799)).add_operation (GALGAS_string ("' is only used  in sub scope; consider moving it"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 799)), fixItArray4  COMMA_SOURCE_FILE ("variable-manager.galgas", 799)) ;
           }
         }
         if (kBoolFalse == test_3) {
           TC_Array <C_FixItDescription> fixItArray5 ;
-          inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GALGAS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 795)).add_operation (GALGAS_string ("' was never used; consider removing it"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 795)), fixItArray5  COMMA_SOURCE_FILE ("variable-manager.galgas", 795)) ;
+          inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GALGAS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 801)).add_operation (GALGAS_string ("' was never used; consider removing it"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 801)), fixItArray5  COMMA_SOURCE_FILE ("variable-manager.galgas", 801)) ;
         }
       }
     }
@@ -10078,19 +10078,19 @@ void extensionMethod_checkFinalState (const GALGAS_localVarValuation inObject,
     {
       enumGalgasBool test_6 = kBoolTrue ;
       if (kBoolTrue == test_6) {
-        test_6 = constinArgument_inAttributes.getter_suggestDeclareUnusedParameterAsUnused (SOURCE_FILE ("variable-manager.galgas", 798)).boolEnum () ;
+        test_6 = constinArgument_inAttributes.getter_suggestDeclareUnusedParameterAsUnused (SOURCE_FILE ("variable-manager.galgas", 804)).boolEnum () ;
         if (kBoolTrue == test_6) {
           TC_Array <C_FixItDescription> fixItArray7 ;
-          inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GALGAS_string ("parameter '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 799)).add_operation (GALGAS_string ("' was never read; consider declaring it as unused"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 799)), fixItArray7  COMMA_SOURCE_FILE ("variable-manager.galgas", 799)) ;
+          inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GALGAS_string ("parameter '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 805)).add_operation (GALGAS_string ("' was never read; consider declaring it as unused"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 805)), fixItArray7  COMMA_SOURCE_FILE ("variable-manager.galgas", 805)) ;
         }
       }
       if (kBoolFalse == test_6) {
         enumGalgasBool test_8 = kBoolTrue ;
         if (kBoolTrue == test_8) {
-          test_8 = constinArgument_inAttributes.getter_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 800)).operator_not (SOURCE_FILE ("variable-manager.galgas", 800)).boolEnum () ;
+          test_8 = constinArgument_inAttributes.getter_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 806)).operator_not (SOURCE_FILE ("variable-manager.galgas", 806)).boolEnum () ;
           if (kBoolTrue == test_8) {
             TC_Array <C_FixItDescription> fixItArray9 ;
-            inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GALGAS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 801)).add_operation (GALGAS_string ("' was never read; consider removing it"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 801)), fixItArray9  COMMA_SOURCE_FILE ("variable-manager.galgas", 801)) ;
+            inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GALGAS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 807)).add_operation (GALGAS_string ("' was never read; consider removing it"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 807)), fixItArray9  COMMA_SOURCE_FILE ("variable-manager.galgas", 807)) ;
           }
         }
       }
@@ -10100,10 +10100,10 @@ void extensionMethod_checkFinalState (const GALGAS_localVarValuation inObject,
     {
       enumGalgasBool test_10 = kBoolTrue ;
       if (kBoolTrue == test_10) {
-        test_10 = constinArgument_inAttributes.getter_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 804)).operator_not (SOURCE_FILE ("variable-manager.galgas", 804)).boolEnum () ;
+        test_10 = constinArgument_inAttributes.getter_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 810)).operator_not (SOURCE_FILE ("variable-manager.galgas", 810)).boolEnum () ;
         if (kBoolTrue == test_10) {
           TC_Array <C_FixItDescription> fixItArray11 ;
-          inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GALGAS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 805)).add_operation (GALGAS_string ("' was never mutated; consider declaring it as 'let'"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 805)), fixItArray11  COMMA_SOURCE_FILE ("variable-manager.galgas", 805)) ;
+          inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GALGAS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 811)).add_operation (GALGAS_string ("' was never mutated; consider declaring it as 'let'"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 811)), fixItArray11  COMMA_SOURCE_FILE ("variable-manager.galgas", 811)) ;
         }
       }
     }
@@ -10127,10 +10127,10 @@ void extensionMethod_checkFinalStates (const GALGAS_scopeLocalVarMap inObject,
                                        Compiler * inCompiler
                                        COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_scopeLocalVarMap temp_0 = inObject ;
-  cEnumerator_scopeLocalVarMap enumerator_37397 (temp_0, kENUMERATION_UP) ;
-  while (enumerator_37397.hasCurrentObject ()) {
-    extensionMethod_checkFinalState (enumerator_37397.current_mState (HERE), enumerator_37397.current_lkey (HERE), enumerator_37397.current_mAttributes (HERE), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 816)) ;
-    enumerator_37397.gotoNextObject () ;
+  cEnumerator_scopeLocalVarMap enumerator_37550 (temp_0, kENUMERATION_UP) ;
+  while (enumerator_37550.hasCurrentObject ()) {
+    extensionMethod_checkFinalState (enumerator_37550.current_mState (HERE), enumerator_37550.current_lkey (HERE), enumerator_37550.current_mAttributes (HERE), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 822)) ;
+    enumerator_37550.gotoNextObject () ;
   }
 }
 
@@ -10146,7 +10146,7 @@ void extensionMethod_checkAutomatonStates (const GALGAS_currentVarManager inObje
                                            Compiler * inCompiler
                                            COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_currentVarManager temp_0 = inObject ;
-  extensionMethod_checkFinalStates (temp_0.readProperty_mLocalVarMap (), constinArgument_inErrorLocation, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 829)) ;
+  extensionMethod_checkFinalStates (temp_0.readProperty_mLocalVarMap (), constinArgument_inErrorLocation, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 835)) ;
 }
 
 
@@ -10175,8 +10175,8 @@ void extensionMethod_combineValuationWith (const GALGAS_localVarValuation inObje
     break ;
   case GALGAS_localVarValuation::kEnum_declared:
     {
-      const cEnumAssociatedValues_localVarValuation_declared * extractPtr_38864 = (const cEnumAssociatedValues_localVarValuation_declared *) (temp_0.unsafePointer ()) ;
-      const GALGAS_bool extractedValue_38562_usedInSubscope = extractPtr_38864->mAssociatedValue0 ;
+      const cEnumAssociatedValues_localVarValuation_declared * extractPtr_39016 = (const cEnumAssociatedValues_localVarValuation_declared *) (temp_0.unsafePointer ()) ;
+      const GALGAS_bool extractedValue_38714_usedInSubscope = extractPtr_39016->mAssociatedValue0 ;
       switch (constinArgument_inOther.enumValue ()) {
       case GALGAS_localVarValuation::kNotBuilt:
         break ;
@@ -10187,16 +10187,16 @@ void extensionMethod_combineValuationWith (const GALGAS_localVarValuation inObje
         break ;
       case GALGAS_localVarValuation::kEnum_declared:
         {
-          const cEnumAssociatedValues_localVarValuation_declared * extractPtr_38768 = (const cEnumAssociatedValues_localVarValuation_declared *) (constinArgument_inOther.unsafePointer ()) ;
-          const GALGAS_bool extractedValue_38663_otherUsedInSubscope = extractPtr_38768->mAssociatedValue0 ;
-          outArgument_outResult = GALGAS_localVarValuation::class_func_declared (extractedValue_38562_usedInSubscope.operator_or (extractedValue_38663_otherUsedInSubscope COMMA_SOURCE_FILE ("variable-manager.galgas", 847))  COMMA_SOURCE_FILE ("variable-manager.galgas", 847)) ;
+          const cEnumAssociatedValues_localVarValuation_declared * extractPtr_38920 = (const cEnumAssociatedValues_localVarValuation_declared *) (constinArgument_inOther.unsafePointer ()) ;
+          const GALGAS_bool extractedValue_38815_otherUsedInSubscope = extractPtr_38920->mAssociatedValue0 ;
+          outArgument_outResult = GALGAS_localVarValuation::class_func_declared (extractedValue_38714_usedInSubscope.operator_or (extractedValue_38815_otherUsedInSubscope COMMA_SOURCE_FILE ("variable-manager.galgas", 853))  COMMA_SOURCE_FILE ("variable-manager.galgas", 853)) ;
         }
         break ;
       case GALGAS_localVarValuation::kEnum_initialized:
       case GALGAS_localVarValuation::kEnum_read:
       case GALGAS_localVarValuation::kEnum_mutated:
         {
-          outArgument_outResult = GALGAS_localVarValuation::class_func_declared (GALGAS_bool (true)  COMMA_SOURCE_FILE ("variable-manager.galgas", 849)) ;
+          outArgument_outResult = GALGAS_localVarValuation::class_func_declared (GALGAS_bool (true)  COMMA_SOURCE_FILE ("variable-manager.galgas", 855)) ;
         }
         break ;
       }
@@ -10214,9 +10214,9 @@ void extensionMethod_combineValuationWith (const GALGAS_localVarValuation inObje
         break ;
       case GALGAS_localVarValuation::kEnum_declared:
         {
-          const cEnumAssociatedValues_localVarValuation_declared * extractPtr_39060 = (const cEnumAssociatedValues_localVarValuation_declared *) (constinArgument_inOther.unsafePointer ()) ;
-          const GALGAS_bool extractedValue_38972_otherUsedInSubscope = extractPtr_39060->mAssociatedValue0 ;
-          outArgument_outResult = GALGAS_localVarValuation::class_func_declared (extractedValue_38972_otherUsedInSubscope  COMMA_SOURCE_FILE ("variable-manager.galgas", 856)) ;
+          const cEnumAssociatedValues_localVarValuation_declared * extractPtr_39212 = (const cEnumAssociatedValues_localVarValuation_declared *) (constinArgument_inOther.unsafePointer ()) ;
+          const GALGAS_bool extractedValue_39124_otherUsedInSubscope = extractPtr_39212->mAssociatedValue0 ;
+          outArgument_outResult = GALGAS_localVarValuation::class_func_declared (extractedValue_39124_otherUsedInSubscope  COMMA_SOURCE_FILE ("variable-manager.galgas", 862)) ;
         }
         break ;
       case GALGAS_localVarValuation::kEnum_initialized:
@@ -10241,7 +10241,7 @@ void extensionMethod_combineValuationWith (const GALGAS_localVarValuation inObje
         break ;
       case GALGAS_localVarValuation::kEnum_declared:
         {
-          outArgument_outResult = GALGAS_localVarValuation::class_func_declared (GALGAS_bool (true)  COMMA_SOURCE_FILE ("variable-manager.galgas", 865)) ;
+          outArgument_outResult = GALGAS_localVarValuation::class_func_declared (GALGAS_bool (true)  COMMA_SOURCE_FILE ("variable-manager.galgas", 871)) ;
         }
         break ;
       case GALGAS_localVarValuation::kEnum_initialized:
@@ -10271,7 +10271,7 @@ void extensionMethod_combineValuationWith (const GALGAS_localVarValuation inObje
         break ;
       case GALGAS_localVarValuation::kEnum_declared:
         {
-          outArgument_outResult = GALGAS_localVarValuation::class_func_declared (GALGAS_bool (true)  COMMA_SOURCE_FILE ("variable-manager.galgas", 876)) ;
+          outArgument_outResult = GALGAS_localVarValuation::class_func_declared (GALGAS_bool (true)  COMMA_SOURCE_FILE ("variable-manager.galgas", 882)) ;
         }
         break ;
       case GALGAS_localVarValuation::kEnum_initialized:
@@ -10301,36 +10301,36 @@ void extensionSetter_combineMapWith (GALGAS_scopeLocalVarMap & ioObject,
                                      Compiler * inCompiler
                                      COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_scopeLocalVarMap temp_0 = ioObject ;
-  cEnumerator_scopeLocalVarMap enumerator_40001 (temp_0, kENUMERATION_UP) ;
-  while (enumerator_40001.hasCurrentObject ()) {
+  cEnumerator_scopeLocalVarMap enumerator_40153 (temp_0, kENUMERATION_UP) ;
+  while (enumerator_40153.hasCurrentObject ()) {
     enumGalgasBool test_1 = kBoolTrue ;
     if (kBoolTrue == test_1) {
-      GALGAS_unifiedTypeMapEntry var_unused_0_40066 ;
-      GALGAS_string var_otherCppName_40073 ;
-      GALGAS_string var_unused_0_40088 ;
-      GALGAS_localVariableAttributes var_unused_1_40088 ;
-      GALGAS_localVarValuation var_otherValuation_40095 ;
-      const bool optionalResult40046 = constinArgument_inOtherMap.optional_searchKey (enumerator_40001.current_lkey (HERE).readProperty_string (), var_unused_0_40066, var_otherCppName_40073, var_unused_0_40088, var_unused_1_40088, var_otherValuation_40095) ;
-      if (!optionalResult40046) {
+      GALGAS_unifiedTypeMapEntry var_unused_0_40218 ;
+      GALGAS_string var_otherCppName_40225 ;
+      GALGAS_string var_unused_0_40240 ;
+      GALGAS_localVariableAttributes var_unused_1_40240 ;
+      GALGAS_localVarValuation var_otherValuation_40247 ;
+      const bool optionalResult40198 = constinArgument_inOtherMap.optional_searchKey (enumerator_40153.current_lkey (HERE).readProperty_string (), var_unused_0_40218, var_otherCppName_40225, var_unused_0_40240, var_unused_1_40240, var_otherValuation_40247) ;
+      if (!optionalResult40198) {
         test_1 = kBoolFalse ;
       }
       if (kBoolTrue == test_1) {
         enumGalgasBool test_2 = kBoolTrue ;
         if (kBoolTrue == test_2) {
-          test_2 = GALGAS_bool (kIsNotEqual, enumerator_40001.current_mCppName (HERE).objectCompare (var_otherCppName_40073)).boolEnum () ;
+          test_2 = GALGAS_bool (kIsNotEqual, enumerator_40153.current_mCppName (HERE).objectCompare (var_otherCppName_40225)).boolEnum () ;
           if (kBoolTrue == test_2) {
-            ioArgument_ioErrorMessage.plusAssign_operation(GALGAS_string ("\n  - 'internal error type 1 for '").add_operation (enumerator_40001.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 890)).add_operation (GALGAS_string ("' local variable"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 890)), inCompiler  COMMA_SOURCE_FILE ("variable-manager.galgas", 890)) ;
+            ioArgument_ioErrorMessage.plusAssign_operation(GALGAS_string ("\n  - 'internal error type 1 for '").add_operation (enumerator_40153.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 896)).add_operation (GALGAS_string ("' local variable"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 896)), inCompiler  COMMA_SOURCE_FILE ("variable-manager.galgas", 896)) ;
           }
         }
         if (kBoolFalse == test_2) {
-          GALGAS_localVarValuation var_newValuation_40320 ;
-          extensionMethod_combineValuationWith (enumerator_40001.current_mState (HERE), var_otherValuation_40095, var_newValuation_40320, ioArgument_ioErrorMessage, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 892)) ;
+          GALGAS_localVarValuation var_newValuation_40472 ;
+          extensionMethod_combineValuationWith (enumerator_40153.current_mState (HERE), var_otherValuation_40247, var_newValuation_40472, ioArgument_ioErrorMessage, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 898)) ;
           enumGalgasBool test_3 = kBoolTrue ;
           if (kBoolTrue == test_3) {
-            test_3 = GALGAS_bool (kIsNotEqual, var_newValuation_40320.objectCompare (enumerator_40001.current_mState (HERE))).boolEnum () ;
+            test_3 = GALGAS_bool (kIsNotEqual, var_newValuation_40472.objectCompare (enumerator_40153.current_mState (HERE))).boolEnum () ;
             if (kBoolTrue == test_3) {
               {
-              ioObject.setter_setMStateForKey (var_newValuation_40320, enumerator_40001.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 894)) ;
+              ioObject.setter_setMStateForKey (var_newValuation_40472, enumerator_40153.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 900)) ;
               }
             }
           }
@@ -10338,21 +10338,21 @@ void extensionSetter_combineMapWith (GALGAS_scopeLocalVarMap & ioObject,
       }
     }
     if (kBoolFalse == test_1) {
-      ioArgument_ioErrorMessage.plusAssign_operation(GALGAS_string ("\n  - 'internal error type 2 for '").add_operation (enumerator_40001.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 898)).add_operation (GALGAS_string ("' local variable"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 898)), inCompiler  COMMA_SOURCE_FILE ("variable-manager.galgas", 898)) ;
+      ioArgument_ioErrorMessage.plusAssign_operation(GALGAS_string ("\n  - 'internal error type 2 for '").add_operation (enumerator_40153.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 904)).add_operation (GALGAS_string ("' local variable"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 904)), inCompiler  COMMA_SOURCE_FILE ("variable-manager.galgas", 904)) ;
     }
-    enumerator_40001.gotoNextObject () ;
+    enumerator_40153.gotoNextObject () ;
   }
-  cEnumerator_scopeLocalVarMap enumerator_40607 (constinArgument_inOtherMap, kENUMERATION_UP) ;
-  while (enumerator_40607.hasCurrentObject ()) {
+  cEnumerator_scopeLocalVarMap enumerator_40757 (constinArgument_inOtherMap, kENUMERATION_UP) ;
+  while (enumerator_40757.hasCurrentObject ()) {
     enumGalgasBool test_4 = kBoolTrue ;
     if (kBoolTrue == test_4) {
       const GALGAS_scopeLocalVarMap temp_5 = ioObject ;
-      test_4 = temp_5.getter_hasKey (enumerator_40607.current_lkey (HERE).readProperty_string () COMMA_SOURCE_FILE ("variable-manager.galgas", 903)).operator_not (SOURCE_FILE ("variable-manager.galgas", 903)).boolEnum () ;
+      test_4 = temp_5.getter_hasKey (enumerator_40757.current_lkey (HERE).readProperty_string () COMMA_SOURCE_FILE ("variable-manager.galgas", 909)).operator_not (SOURCE_FILE ("variable-manager.galgas", 909)).boolEnum () ;
       if (kBoolTrue == test_4) {
-        ioArgument_ioErrorMessage.plusAssign_operation(GALGAS_string ("\n  - 'internal error type 3 for '").add_operation (enumerator_40607.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 904)).add_operation (GALGAS_string ("' local variable"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 904)), inCompiler  COMMA_SOURCE_FILE ("variable-manager.galgas", 904)) ;
+        ioArgument_ioErrorMessage.plusAssign_operation(GALGAS_string ("\n  - 'internal error type 3 for '").add_operation (enumerator_40757.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 910)).add_operation (GALGAS_string ("' local variable"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 910)), inCompiler  COMMA_SOURCE_FILE ("variable-manager.galgas", 910)) ;
       }
     }
-    enumerator_40607.gotoNextObject () ;
+    enumerator_40757.gotoNextObject () ;
   }
 }
 
@@ -10368,41 +10368,41 @@ void extensionSetter_combineManagerWith (GALGAS_currentVarManager & ioObject,
                                          const GALGAS_location constinArgument_inErrorLocation,
                                          Compiler * inCompiler
                                          COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string var_s_41090 = GALGAS_string::makeEmptyString () ;
+  GALGAS_string var_s_41240 = GALGAS_string::makeEmptyString () ;
   {
-  extensionSetter_combineMapWith (ioObject.mProperty_mLocalVarMap, constinArgument_inOtherManager.readProperty_mLocalVarMap (), var_s_41090, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 914)) ;
+  extensionSetter_combineMapWith (ioObject.mProperty_mLocalVarMap, constinArgument_inOtherManager.readProperty_mLocalVarMap (), var_s_41240, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 920)) ;
   }
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
     const GALGAS_currentVarManager temp_1 = ioObject ;
-    test_0 = GALGAS_bool (kIsNotEqual, temp_1.readProperty_mSubMaps ().getter_count (SOURCE_FILE ("variable-manager.galgas", 918)).objectCompare (constinArgument_inOtherManager.readProperty_mSubMaps ().getter_count (SOURCE_FILE ("variable-manager.galgas", 918)))).boolEnum () ;
+    test_0 = GALGAS_bool (kIsNotEqual, temp_1.readProperty_mSubMaps ().getter_count (SOURCE_FILE ("variable-manager.galgas", 924)).objectCompare (constinArgument_inOtherManager.readProperty_mSubMaps ().getter_count (SOURCE_FILE ("variable-manager.galgas", 924)))).boolEnum () ;
     if (kBoolTrue == test_0) {
       const GALGAS_currentVarManager temp_2 = ioObject ;
-      var_s_41090.plusAssign_operation(GALGAS_string ("Scope deepth error, ").add_operation (temp_2.readProperty_mSubMaps ().getter_count (SOURCE_FILE ("variable-manager.galgas", 919)).getter_string (SOURCE_FILE ("variable-manager.galgas", 919)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 919)).add_operation (GALGAS_string (" != "), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 919)).add_operation (constinArgument_inOtherManager.readProperty_mSubMaps ().getter_count (SOURCE_FILE ("variable-manager.galgas", 919)).getter_string (SOURCE_FILE ("variable-manager.galgas", 919)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 919)), inCompiler  COMMA_SOURCE_FILE ("variable-manager.galgas", 919)) ;
+      var_s_41240.plusAssign_operation(GALGAS_string ("Scope deepth error, ").add_operation (temp_2.readProperty_mSubMaps ().getter_count (SOURCE_FILE ("variable-manager.galgas", 925)).getter_string (SOURCE_FILE ("variable-manager.galgas", 925)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 925)).add_operation (GALGAS_string (" != "), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 925)).add_operation (constinArgument_inOtherManager.readProperty_mSubMaps ().getter_count (SOURCE_FILE ("variable-manager.galgas", 925)).getter_string (SOURCE_FILE ("variable-manager.galgas", 925)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 925)), inCompiler  COMMA_SOURCE_FILE ("variable-manager.galgas", 925)) ;
     }
   }
   if (kBoolFalse == test_0) {
-    GALGAS_localVarMapListForLLVM var_newSubMapList_41395 = GALGAS_localVarMapListForLLVM::class_func_emptyList (SOURCE_FILE ("variable-manager.galgas", 921)) ;
+    GALGAS_localVarMapListForLLVM var_newSubMapList_41545 = GALGAS_localVarMapListForLLVM::class_func_emptyList (SOURCE_FILE ("variable-manager.galgas", 927)) ;
     const GALGAS_currentVarManager temp_3 = ioObject ;
-    cEnumerator_localVarMapListForLLVM enumerator_41423 (temp_3.readProperty_mSubMaps (), kENUMERATION_UP) ;
-    cEnumerator_localVarMapListForLLVM enumerator_41450 (constinArgument_inOtherManager.readProperty_mSubMaps (), kENUMERATION_UP) ;
-    while (enumerator_41423.hasCurrentObject () && enumerator_41450.hasCurrentObject ()) {
-      GALGAS_scopeLocalVarMap var_mutableSubMap_41503 = enumerator_41423.current_mMap (HERE) ;
+    cEnumerator_localVarMapListForLLVM enumerator_41573 (temp_3.readProperty_mSubMaps (), kENUMERATION_UP) ;
+    cEnumerator_localVarMapListForLLVM enumerator_41600 (constinArgument_inOtherManager.readProperty_mSubMaps (), kENUMERATION_UP) ;
+    while (enumerator_41573.hasCurrentObject () && enumerator_41600.hasCurrentObject ()) {
+      GALGAS_scopeLocalVarMap var_mutableSubMap_41653 = enumerator_41573.current_mMap (HERE) ;
       {
-      extensionSetter_combineMapWith (var_mutableSubMap_41503, enumerator_41450.current_mMap (HERE), var_s_41090, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 924)) ;
+      extensionSetter_combineMapWith (var_mutableSubMap_41653, enumerator_41600.current_mMap (HERE), var_s_41240, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 930)) ;
       }
-      var_newSubMapList_41395.addAssign_operation (var_mutableSubMap_41503  COMMA_SOURCE_FILE ("variable-manager.galgas", 928)) ;
-      enumerator_41423.gotoNextObject () ;
-      enumerator_41450.gotoNextObject () ;
+      var_newSubMapList_41545.addAssign_operation (var_mutableSubMap_41653  COMMA_SOURCE_FILE ("variable-manager.galgas", 934)) ;
+      enumerator_41573.gotoNextObject () ;
+      enumerator_41600.gotoNextObject () ;
     }
-    ioObject.mProperty_mSubMaps = var_newSubMapList_41395 ;
+    ioObject.mProperty_mSubMaps = var_newSubMapList_41545 ;
   }
   enumGalgasBool test_4 = kBoolTrue ;
   if (kBoolTrue == test_4) {
-    test_4 = GALGAS_bool (kIsNotEqual, var_s_41090.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+    test_4 = GALGAS_bool (kIsNotEqual, var_s_41240.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
     if (kBoolTrue == test_4) {
       TC_Array <C_FixItDescription> fixItArray5 ;
-      inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("convergence error:").add_operation (var_s_41090, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 934)), fixItArray5  COMMA_SOURCE_FILE ("variable-manager.galgas", 934)) ;
+      inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("convergence error:").add_operation (var_s_41240, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 940)), fixItArray5  COMMA_SOURCE_FILE ("variable-manager.galgas", 940)) ;
     }
   }
 }
@@ -10947,10 +10947,10 @@ GALGAS_string extensionGetter_string (const GALGAS_typeKindEnum & inObject,
     break ;
   case GALGAS_typeKindEnum::kEnum_classType:
     {
-      const cEnumAssociatedValues_typeKindEnum_classType * extractPtr_3712 = (const cEnumAssociatedValues_typeKindEnum_classType *) (temp_0.unsafePointer ()) ;
-      const GALGAS_bool extractedValue_3631_isReference = extractPtr_3712->mAssociatedValue0 ;
+      const cEnumAssociatedValues_typeKindEnum_classType * extractPtr_4010 = (const cEnumAssociatedValues_typeKindEnum_classType *) (temp_0.unsafePointer ()) ;
+      const GALGAS_bool extractedValue_3929_isReference = extractPtr_4010->mAssociatedValue0 ;
       GALGAS_string temp_1 ;
-      const enumGalgasBool test_2 = extractedValue_3631_isReference.boolEnum () ;
+      const enumGalgasBool test_2 = extractedValue_3929_isReference.boolEnum () ;
       if (kBoolTrue == test_2) {
         temp_1 = GALGAS_string ("reference class") ;
       }else if (kBoolFalse == test_2) {
@@ -11315,28 +11315,28 @@ void extensionSetter_makeEntry (GALGAS_unifiedTypeMap & ioObject,
   if (kBoolTrue == test_0) {
     test_0 = GALGAS_bool (kIsEqual, constinArgument_inLKey.readProperty_string ().objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
     if (kBoolTrue == test_0) {
-      outArgument_outEntry = GALGAS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("unified-type-map.galgas", 39)) ;
+      outArgument_outEntry = GALGAS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("unified-type-map.galgas", 46)) ;
     }
   }
   if (kBoolFalse == test_0) {
     enumGalgasBool test_1 = kBoolTrue ;
     if (kBoolTrue == test_1) {
       const GALGAS_unifiedTypeMap temp_2 = ioObject ;
-      GALGAS_unifiedTypeMapElementClass var_element_2010 ;
-      const bool optionalResult1959 = temp_2.optional_searchKey (constinArgument_inLKey.readProperty_string (), var_element_2010) ;
-      if (!optionalResult1959) {
+      GALGAS_unifiedTypeMapElementClass var_element_2322 ;
+      const bool optionalResult2271 = temp_2.optional_searchKey (constinArgument_inLKey.readProperty_string (), var_element_2322) ;
+      if (!optionalResult2271) {
         test_1 = kBoolFalse ;
       }
       if (kBoolTrue == test_1) {
-        outArgument_outEntry = GALGAS_unifiedTypeMapEntry::class_func_element (var_element_2010  COMMA_SOURCE_FILE ("unified-type-map.galgas", 41)) ;
+        outArgument_outEntry = GALGAS_unifiedTypeMapEntry::class_func_element (var_element_2322  COMMA_SOURCE_FILE ("unified-type-map.galgas", 48)) ;
       }
     }
     if (kBoolFalse == test_1) {
-      GALGAS_unifiedTypeMapElementClass var_newElement_2093 = GALGAS_unifiedTypeMapElementClass::class_func_new (GALGAS_typeDefinition::class_func_unsolved (SOURCE_FILE ("unified-type-map.galgas", 43))  COMMA_SOURCE_FILE ("unified-type-map.galgas", 43)) ;
+      GALGAS_unifiedTypeMapElementClass var_newElement_2405 = GALGAS_unifiedTypeMapElementClass::class_func_new (GALGAS_typeDefinition::class_func_unsolved (SOURCE_FILE ("unified-type-map.galgas", 50))  COMMA_SOURCE_FILE ("unified-type-map.galgas", 50)) ;
       {
-      ioObject.setter_internalInsertKey (constinArgument_inLKey, var_newElement_2093, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 44)) ;
+      ioObject.setter_internalInsertKey (constinArgument_inLKey, var_newElement_2405, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 51)) ;
       }
-      outArgument_outEntry = GALGAS_unifiedTypeMapEntry::class_func_element (var_newElement_2093  COMMA_SOURCE_FILE ("unified-type-map.galgas", 45)) ;
+      outArgument_outEntry = GALGAS_unifiedTypeMapEntry::class_func_element (var_newElement_2405  COMMA_SOURCE_FILE ("unified-type-map.galgas", 52)) ;
     }
   }
 }
@@ -11358,28 +11358,28 @@ void extensionSetter_makeEntryFromString (GALGAS_unifiedTypeMap & ioObject,
   if (kBoolTrue == test_0) {
     test_0 = GALGAS_bool (kIsEqual, constinArgument_inKey.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
     if (kBoolTrue == test_0) {
-      outArgument_outEntry = GALGAS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("unified-type-map.galgas", 53)) ;
+      outArgument_outEntry = GALGAS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("unified-type-map.galgas", 60)) ;
     }
   }
   if (kBoolFalse == test_0) {
     enumGalgasBool test_1 = kBoolTrue ;
     if (kBoolTrue == test_1) {
       const GALGAS_unifiedTypeMap temp_2 = ioObject ;
-      GALGAS_unifiedTypeMapElementClass var_element_2586 ;
-      const bool optionalResult2536 = temp_2.optional_searchKey (constinArgument_inKey, var_element_2586) ;
-      if (!optionalResult2536) {
+      GALGAS_unifiedTypeMapElementClass var_element_2898 ;
+      const bool optionalResult2848 = temp_2.optional_searchKey (constinArgument_inKey, var_element_2898) ;
+      if (!optionalResult2848) {
         test_1 = kBoolFalse ;
       }
       if (kBoolTrue == test_1) {
-        outArgument_outEntry = GALGAS_unifiedTypeMapEntry::class_func_element (var_element_2586  COMMA_SOURCE_FILE ("unified-type-map.galgas", 55)) ;
+        outArgument_outEntry = GALGAS_unifiedTypeMapEntry::class_func_element (var_element_2898  COMMA_SOURCE_FILE ("unified-type-map.galgas", 62)) ;
       }
     }
     if (kBoolFalse == test_1) {
-      GALGAS_unifiedTypeMapElementClass var_newElement_2669 = GALGAS_unifiedTypeMapElementClass::class_func_new (GALGAS_typeDefinition::class_func_unsolved (SOURCE_FILE ("unified-type-map.galgas", 57))  COMMA_SOURCE_FILE ("unified-type-map.galgas", 57)) ;
+      GALGAS_unifiedTypeMapElementClass var_newElement_2981 = GALGAS_unifiedTypeMapElementClass::class_func_new (GALGAS_typeDefinition::class_func_unsolved (SOURCE_FILE ("unified-type-map.galgas", 64))  COMMA_SOURCE_FILE ("unified-type-map.galgas", 64)) ;
       {
-      ioObject.setter_internalInsertKey (GALGAS_lstring::class_func_new (constinArgument_inKey, GALGAS_location::class_func_nowhere (SOURCE_FILE ("unified-type-map.galgas", 58)), inCompiler  COMMA_SOURCE_FILE ("unified-type-map.galgas", 58)), var_newElement_2669, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 58)) ;
+      ioObject.setter_internalInsertKey (GALGAS_lstring::class_func_new (constinArgument_inKey, GALGAS_location::class_func_nowhere (SOURCE_FILE ("unified-type-map.galgas", 65)), inCompiler  COMMA_SOURCE_FILE ("unified-type-map.galgas", 65)), var_newElement_2981, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 65)) ;
       }
-      outArgument_outEntry = GALGAS_unifiedTypeMapEntry::class_func_element (var_newElement_2669  COMMA_SOURCE_FILE ("unified-type-map.galgas", 59)) ;
+      outArgument_outEntry = GALGAS_unifiedTypeMapEntry::class_func_element (var_newElement_2981  COMMA_SOURCE_FILE ("unified-type-map.galgas", 66)) ;
     }
   }
 }
@@ -11400,25 +11400,25 @@ GALGAS_unifiedTypeMapEntry extensionGetter_typeMapEntryForLKey (const GALGAS_uni
   if (kBoolTrue == test_0) {
     test_0 = GALGAS_bool (kIsEqual, constinArgument_inLKey.readProperty_string ().objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
     if (kBoolTrue == test_0) {
-      result_result = GALGAS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("unified-type-map.galgas", 67)) ;
+      result_result = GALGAS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("unified-type-map.galgas", 74)) ;
     }
   }
   if (kBoolFalse == test_0) {
     enumGalgasBool test_1 = kBoolTrue ;
     if (kBoolTrue == test_1) {
       const GALGAS_unifiedTypeMap temp_2 = inObject ;
-      GALGAS_unifiedTypeMapElementClass var_element_3181 ;
-      const bool optionalResult3130 = temp_2.optional_searchKey (constinArgument_inLKey.readProperty_string (), var_element_3181) ;
-      if (!optionalResult3130) {
+      GALGAS_unifiedTypeMapElementClass var_element_3493 ;
+      const bool optionalResult3442 = temp_2.optional_searchKey (constinArgument_inLKey.readProperty_string (), var_element_3493) ;
+      if (!optionalResult3442) {
         test_1 = kBoolFalse ;
       }
       if (kBoolTrue == test_1) {
-        result_result = GALGAS_unifiedTypeMapEntry::class_func_element (var_element_3181  COMMA_SOURCE_FILE ("unified-type-map.galgas", 69)) ;
+        result_result = GALGAS_unifiedTypeMapEntry::class_func_element (var_element_3493  COMMA_SOURCE_FILE ("unified-type-map.galgas", 76)) ;
       }
     }
     if (kBoolFalse == test_1) {
       TC_Array <C_FixItDescription> fixItArray3 ;
-      inCompiler->emitSemanticError (constinArgument_inLKey.readProperty_location (), GALGAS_string ("there is no '@").add_operation (constinArgument_inLKey.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 71)).add_operation (GALGAS_string ("' type"), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 71)), fixItArray3  COMMA_SOURCE_FILE ("unified-type-map.galgas", 71)) ;
+      inCompiler->emitSemanticError (constinArgument_inLKey.readProperty_location (), GALGAS_string ("there is no '@").add_operation (constinArgument_inLKey.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 78)).add_operation (GALGAS_string ("' type"), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 78)), fixItArray3  COMMA_SOURCE_FILE ("unified-type-map.galgas", 78)) ;
       result_result.drop () ; // Release error dropped variable
     }
   }
@@ -11443,34 +11443,34 @@ void extensionSetter_insertType (GALGAS_unifiedTypeMap & ioObject,
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
     const GALGAS_unifiedTypeMap temp_1 = ioObject ;
-    GALGAS_unifiedTypeMapElementClass var_element_3614 ;
-    const bool optionalResult3559 = temp_1.optional_searchKey (constinArgument_inTypeName.readProperty_string (), var_element_3614) ;
-    if (!optionalResult3559) {
+    GALGAS_unifiedTypeMapElementClass var_element_3926 ;
+    const bool optionalResult3871 = temp_1.optional_searchKey (constinArgument_inTypeName.readProperty_string (), var_element_3926) ;
+    if (!optionalResult3871) {
       test_0 = kBoolFalse ;
     }
     if (kBoolTrue == test_0) {
-      switch (var_element_3614.readProperty_mDefinition ().enumValue ()) {
+      switch (var_element_3926.readProperty_mDefinition ().enumValue ()) {
       case GALGAS_typeDefinition::kNotBuilt:
         break ;
       case GALGAS_typeDefinition::kEnum_solved:
         {
           TC_Array <C_FixItDescription> fixItArray2 ;
-          inCompiler->emitSemanticError (constinArgument_inTypeName.readProperty_location (), GALGAS_string ("type already defined"), fixItArray2  COMMA_SOURCE_FILE ("unified-type-map.galgas", 81)) ;
+          inCompiler->emitSemanticError (constinArgument_inTypeName.readProperty_location (), GALGAS_string ("type already defined"), fixItArray2  COMMA_SOURCE_FILE ("unified-type-map.galgas", 88)) ;
         }
         break ;
       case GALGAS_typeDefinition::kEnum_unsolved:
         {
-          GALGAS_unifiedTypeMapElementClass var_e_3769 = var_element_3614 ;
-          var_e_3769.setter_setMDefinition (GALGAS_typeDefinition::class_func_solved (constinArgument_inTypeDefinition  COMMA_SOURCE_FILE ("unified-type-map.galgas", 84)) COMMA_SOURCE_FILE ("unified-type-map.galgas", 84)) ;
+          GALGAS_unifiedTypeMapElementClass var_e_4081 = var_element_3926 ;
+          var_e_4081.setter_setMDefinition (GALGAS_typeDefinition::class_func_solved (constinArgument_inTypeDefinition  COMMA_SOURCE_FILE ("unified-type-map.galgas", 91)) COMMA_SOURCE_FILE ("unified-type-map.galgas", 91)) ;
         }
         break ;
       }
     }
   }
   if (kBoolFalse == test_0) {
-    GALGAS_unifiedTypeMapElementClass var_newElement_3874 = GALGAS_unifiedTypeMapElementClass::class_func_new (GALGAS_typeDefinition::class_func_solved (constinArgument_inTypeDefinition  COMMA_SOURCE_FILE ("unified-type-map.galgas", 87))  COMMA_SOURCE_FILE ("unified-type-map.galgas", 87)) ;
+    GALGAS_unifiedTypeMapElementClass var_newElement_4186 = GALGAS_unifiedTypeMapElementClass::class_func_new (GALGAS_typeDefinition::class_func_solved (constinArgument_inTypeDefinition  COMMA_SOURCE_FILE ("unified-type-map.galgas", 94))  COMMA_SOURCE_FILE ("unified-type-map.galgas", 94)) ;
     {
-    ioObject.setter_internalInsertKey (constinArgument_inTypeName, var_newElement_3874, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 88)) ;
+    ioObject.setter_internalInsertKey (constinArgument_inTypeName, var_newElement_4186, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 95)) ;
     }
   }
 }
@@ -11490,26 +11490,26 @@ GALGAS_unifiedTypeDefinition extensionGetter_typeDefinition (const GALGAS_unifie
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
     const GALGAS_unifiedTypeMap temp_1 = inObject ;
-    GALGAS_unifiedTypeMapElementClass var_element_4291 ;
-    const bool optionalResult4240 = temp_1.optional_searchKey (constinArgument_inLKey.readProperty_string (), var_element_4291) ;
-    if (!optionalResult4240) {
+    GALGAS_unifiedTypeMapElementClass var_element_4603 ;
+    const bool optionalResult4552 = temp_1.optional_searchKey (constinArgument_inLKey.readProperty_string (), var_element_4603) ;
+    if (!optionalResult4552) {
       test_0 = kBoolFalse ;
     }
     if (kBoolTrue == test_0) {
-      switch (var_element_4291.readProperty_mDefinition ().enumValue ()) {
+      switch (var_element_4603.readProperty_mDefinition ().enumValue ()) {
       case GALGAS_typeDefinition::kNotBuilt:
         break ;
       case GALGAS_typeDefinition::kEnum_solved:
         {
-          const cEnumAssociatedValues_typeDefinition_solved * extractPtr_4605 = (const cEnumAssociatedValues_typeDefinition_solved *) (var_element_4291.readProperty_mDefinition ().unsafePointer ()) ;
-          const GALGAS_unifiedTypeDefinition extractedValue_4357_definition = extractPtr_4605->mAssociatedValue0 ;
-          result_result = extractedValue_4357_definition ;
+          const cEnumAssociatedValues_typeDefinition_solved * extractPtr_4917 = (const cEnumAssociatedValues_typeDefinition_solved *) (var_element_4603.readProperty_mDefinition ().unsafePointer ()) ;
+          const GALGAS_unifiedTypeDefinition extractedValue_4669_definition = extractPtr_4917->mAssociatedValue0 ;
+          result_result = extractedValue_4669_definition ;
         }
         break ;
       case GALGAS_typeDefinition::kEnum_unsolved:
         {
           TC_Array <C_FixItDescription> fixItArray2 ;
-          inCompiler->emitSemanticError (constinArgument_inLKey.readProperty_location (), GALGAS_string ("unsolved type"), fixItArray2  COMMA_SOURCE_FILE ("unified-type-map.galgas", 105)) ;
+          inCompiler->emitSemanticError (constinArgument_inLKey.readProperty_location (), GALGAS_string ("unsolved type"), fixItArray2  COMMA_SOURCE_FILE ("unified-type-map.galgas", 112)) ;
           result_result.drop () ; // Release error dropped variable
         }
         break ;
@@ -11518,7 +11518,7 @@ GALGAS_unifiedTypeDefinition extensionGetter_typeDefinition (const GALGAS_unifie
   }
   if (kBoolFalse == test_0) {
     TC_Array <C_FixItDescription> fixItArray3 ;
-    inCompiler->emitSemanticError (constinArgument_inLKey.readProperty_location (), GALGAS_string ("there is no '@").add_operation (constinArgument_inLKey.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 108)).add_operation (GALGAS_string ("' type"), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 108)), fixItArray3  COMMA_SOURCE_FILE ("unified-type-map.galgas", 108)) ;
+    inCompiler->emitSemanticError (constinArgument_inLKey.readProperty_location (), GALGAS_string ("there is no '@").add_operation (constinArgument_inLKey.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 115)).add_operation (GALGAS_string ("' type"), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 115)), fixItArray3  COMMA_SOURCE_FILE ("unified-type-map.galgas", 115)) ;
     result_result.drop () ; // Release error dropped variable
   }
 //---
@@ -11836,36 +11836,36 @@ GALGAS_unifiedTypeDefinition extensionGetter_definition (const GALGAS_unifiedTyp
   case GALGAS_unifiedTypeMapEntry::kEnum_null:
     {
       TC_Array <C_FixItDescription> fixItArray1 ;
-      inCompiler->emitSemanticError (GALGAS_location::class_func_nowhere (SOURCE_FILE ("unified-type-map.galgas", 175)), GALGAS_string ("null type"), fixItArray1  COMMA_SOURCE_FILE ("unified-type-map.galgas", 175)) ;
+      inCompiler->emitSemanticError (GALGAS_location::class_func_nowhere (SOURCE_FILE ("unified-type-map.galgas", 182)), GALGAS_string ("null type"), fixItArray1  COMMA_SOURCE_FILE ("unified-type-map.galgas", 182)) ;
       result_result.drop () ; // Release error dropped variable
     }
     break ;
   case GALGAS_unifiedTypeMapEntry::kEnum_element:
     {
-      const cEnumAssociatedValues_unifiedTypeMapEntry_element * extractPtr_7529 = (const cEnumAssociatedValues_unifiedTypeMapEntry_element *) (temp_0.unsafePointer ()) ;
-      const GALGAS_unifiedTypeMapElementClass_2D_weak extractedValue_7230_weakElement = extractPtr_7529->mAssociatedValue0 ;
+      const cEnumAssociatedValues_unifiedTypeMapEntry_element * extractPtr_7841 = (const cEnumAssociatedValues_unifiedTypeMapEntry_element *) (temp_0.unsafePointer ()) ;
+      const GALGAS_unifiedTypeMapElementClass_2D_weak extractedValue_7542_weakElement = extractPtr_7841->mAssociatedValue0 ;
       enumGalgasBool test_2 = kBoolTrue ;
       if (kBoolTrue == test_2) {
-        GALGAS_unifiedTypeMapElementClass var_type_7258 (dynamic_cast <const cPtr_unifiedTypeMapElementClass *> (extractedValue_7230_weakElement.ptr ())) ;
-        if (nullptr == var_type_7258.ptr ()) {
+        GALGAS_unifiedTypeMapElementClass var_type_7570 (dynamic_cast <const cPtr_unifiedTypeMapElementClass *> (extractedValue_7542_weakElement.ptr ())) ;
+        if (nullptr == var_type_7570.ptr ()) {
           test_2 = kBoolFalse ;
         }
         if (kBoolTrue == test_2) {
-          switch (var_type_7258.readProperty_mDefinition ().enumValue ()) {
+          switch (var_type_7570.readProperty_mDefinition ().enumValue ()) {
           case GALGAS_typeDefinition::kNotBuilt:
             break ;
           case GALGAS_typeDefinition::kEnum_unsolved:
             {
               TC_Array <C_FixItDescription> fixItArray3 ;
-              inCompiler->emitSemanticError (GALGAS_location::class_func_nowhere (SOURCE_FILE ("unified-type-map.galgas", 180)), GALGAS_string ("unsolved type"), fixItArray3  COMMA_SOURCE_FILE ("unified-type-map.galgas", 180)) ;
+              inCompiler->emitSemanticError (GALGAS_location::class_func_nowhere (SOURCE_FILE ("unified-type-map.galgas", 187)), GALGAS_string ("unsolved type"), fixItArray3  COMMA_SOURCE_FILE ("unified-type-map.galgas", 187)) ;
               result_result.drop () ; // Release error dropped variable
             }
             break ;
           case GALGAS_typeDefinition::kEnum_solved:
             {
-              const cEnumAssociatedValues_typeDefinition_solved * extractPtr_7444 = (const cEnumAssociatedValues_typeDefinition_solved *) (var_type_7258.readProperty_mDefinition ().unsafePointer ()) ;
-              const GALGAS_unifiedTypeDefinition extractedValue_7411_definition = extractPtr_7444->mAssociatedValue0 ;
-              result_result = extractedValue_7411_definition ;
+              const cEnumAssociatedValues_typeDefinition_solved * extractPtr_7756 = (const cEnumAssociatedValues_typeDefinition_solved *) (var_type_7570.readProperty_mDefinition ().unsafePointer ()) ;
+              const GALGAS_unifiedTypeDefinition extractedValue_7723_definition = extractPtr_7756->mAssociatedValue0 ;
+              result_result = extractedValue_7723_definition ;
             }
             break ;
           }
@@ -11873,7 +11873,7 @@ GALGAS_unifiedTypeDefinition extensionGetter_definition (const GALGAS_unifiedTyp
       }
       if (kBoolFalse == test_2) {
         TC_Array <C_FixItDescription> fixItArray4 ;
-        inCompiler->emitSemanticError (GALGAS_location::class_func_nowhere (SOURCE_FILE ("unified-type-map.galgas", 185)), GALGAS_string ("nil type"), fixItArray4  COMMA_SOURCE_FILE ("unified-type-map.galgas", 185)) ;
+        inCompiler->emitSemanticError (GALGAS_location::class_func_nowhere (SOURCE_FILE ("unified-type-map.galgas", 192)), GALGAS_string ("nil type"), fixItArray4  COMMA_SOURCE_FILE ("unified-type-map.galgas", 192)) ;
         result_result.drop () ; // Release error dropped variable
       }
     }
@@ -11897,7 +11897,7 @@ GALGAS_string extensionGetter_identifierRepresentation (const GALGAS_unifiedType
                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_unifiedTypeMapEntry temp_0 = inObject ;
-  result_result = extensionGetter_definition (temp_0, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 193)).readProperty_mTypeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-type-map.galgas", 193)) ;
+  result_result = extensionGetter_definition (temp_0, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 200)).readProperty_mTypeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-type-map.galgas", 200)) ;
 //---
   return result_result ;
 }
@@ -11916,7 +11916,7 @@ GALGAS_string extensionGetter_typeName (const GALGAS_unifiedTypeMapEntry & inObj
                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_unifiedTypeMapEntry temp_0 = inObject ;
-  result_result = extensionGetter_definition (temp_0, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 199)).readProperty_mTypeName ().readProperty_string () ;
+  result_result = extensionGetter_definition (temp_0, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 206)).readProperty_mTypeName ().readProperty_string () ;
 //---
   return result_result ;
 }
@@ -11936,14 +11936,14 @@ GALGAS_unifiedTypeMapEntry extensionGetter_baseType (const GALGAS_unifiedTypeMap
   GALGAS_unifiedTypeMapEntry result_outBaseType ; // Returned variable
   const GALGAS_unifiedTypeMapEntry temp_0 = inObject ;
   result_outBaseType = temp_0 ;
-  bool loop_8194 = true ;
-  while (loop_8194) {
-    loop_8194 = extensionGetter_definition (result_outBaseType, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 206)).readProperty_mSuperType ().getter_isNull (SOURCE_FILE ("unified-type-map.galgas", 206)).operator_not (SOURCE_FILE ("unified-type-map.galgas", 206)).isValid () ;
-    if (loop_8194) {
-      loop_8194 = extensionGetter_definition (result_outBaseType, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 206)).readProperty_mSuperType ().getter_isNull (SOURCE_FILE ("unified-type-map.galgas", 206)).operator_not (SOURCE_FILE ("unified-type-map.galgas", 206)).boolValue () ;
+  bool loop_8506 = true ;
+  while (loop_8506) {
+    loop_8506 = extensionGetter_definition (result_outBaseType, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 213)).readProperty_mSuperType ().getter_isNull (SOURCE_FILE ("unified-type-map.galgas", 213)).operator_not (SOURCE_FILE ("unified-type-map.galgas", 213)).isValid () ;
+    if (loop_8506) {
+      loop_8506 = extensionGetter_definition (result_outBaseType, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 213)).readProperty_mSuperType ().getter_isNull (SOURCE_FILE ("unified-type-map.galgas", 213)).operator_not (SOURCE_FILE ("unified-type-map.galgas", 213)).boolValue () ;
     }
-    if (loop_8194) {
-      result_outBaseType = extensionGetter_definition (result_outBaseType, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 207)).readProperty_mSuperType () ;
+    if (loop_8506) {
+      result_outBaseType = extensionGetter_definition (result_outBaseType, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 214)).readProperty_mSuperType () ;
     }
   }
 //---
@@ -11964,12 +11964,12 @@ void extensionMethod_addHeaderFileName (const GALGAS_unifiedTypeMapEntry inObjec
                                         Compiler * inCompiler
                                         COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_unifiedTypeMapEntry temp_0 = inObject ;
-  GALGAS_unifiedTypeDefinition var_typeDefinition_8507 = extensionGetter_definition (temp_0, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 214)) ;
+  GALGAS_unifiedTypeDefinition var_typeDefinition_8819 = extensionGetter_definition (temp_0, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 221)) ;
   enumGalgasBool test_1 = kBoolTrue ;
   if (kBoolTrue == test_1) {
-    test_1 = var_typeDefinition_8507.readProperty_mIsPredefined ().operator_not (SOURCE_FILE ("unified-type-map.galgas", 215)).operator_and (GALGAS_bool (kIsNotEqual, var_typeDefinition_8507.readProperty_mHeaderKind ().objectCompare (GALGAS_headerKind::class_func_noHeader (SOURCE_FILE ("unified-type-map.galgas", 215)))) COMMA_SOURCE_FILE ("unified-type-map.galgas", 215)).boolEnum () ;
+    test_1 = var_typeDefinition_8819.readProperty_mIsPredefined ().operator_not (SOURCE_FILE ("unified-type-map.galgas", 222)).operator_and (GALGAS_bool (kIsNotEqual, var_typeDefinition_8819.readProperty_mHeaderKind ().objectCompare (GALGAS_headerKind::class_func_noHeader (SOURCE_FILE ("unified-type-map.galgas", 222)))) COMMA_SOURCE_FILE ("unified-type-map.galgas", 222)).boolEnum () ;
     if (kBoolTrue == test_1) {
-      ioArgument_ioInclusions.addAssign_operation (var_typeDefinition_8507.readProperty_mHeaderFileName ()  COMMA_SOURCE_FILE ("unified-type-map.galgas", 216)) ;
+      ioArgument_ioInclusions.addAssign_operation (var_typeDefinition_8819.readProperty_mHeaderFileName ()  COMMA_SOURCE_FILE ("unified-type-map.galgas", 223)) ;
     }
   }
 }
@@ -11986,12 +11986,12 @@ void extensionMethod_addHeaderFileName_31_ (const GALGAS_unifiedTypeMapEntry inO
                                             Compiler * inCompiler
                                             COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_unifiedTypeMapEntry temp_0 = inObject ;
-  GALGAS_unifiedTypeDefinition var_typeDefinition_8882 = extensionGetter_definition (temp_0, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 223)) ;
+  GALGAS_unifiedTypeDefinition var_typeDefinition_9194 = extensionGetter_definition (temp_0, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 230)) ;
   enumGalgasBool test_1 = kBoolTrue ;
   if (kBoolTrue == test_1) {
-    test_1 = var_typeDefinition_8882.readProperty_mIsPredefined ().operator_not (SOURCE_FILE ("unified-type-map.galgas", 224)).boolEnum () ;
+    test_1 = var_typeDefinition_9194.readProperty_mIsPredefined ().operator_not (SOURCE_FILE ("unified-type-map.galgas", 231)).boolEnum () ;
     if (kBoolTrue == test_1) {
-      switch (var_typeDefinition_8882.readProperty_mHeaderKind ().enumValue ()) {
+      switch (var_typeDefinition_9194.readProperty_mHeaderKind ().enumValue ()) {
       case GALGAS_headerKind::kNotBuilt:
         break ;
       case GALGAS_headerKind::kEnum_noHeader:
@@ -12000,12 +12000,12 @@ void extensionMethod_addHeaderFileName_31_ (const GALGAS_unifiedTypeMapEntry inO
         break ;
       case GALGAS_headerKind::kEnum_oneHeader:
         {
-          ioArgument_ioInclusions.addAssign_operation (var_typeDefinition_8882.readProperty_mHeaderFileName ()  COMMA_SOURCE_FILE ("unified-type-map.galgas", 228)) ;
+          ioArgument_ioInclusions.addAssign_operation (var_typeDefinition_9194.readProperty_mHeaderFileName ()  COMMA_SOURCE_FILE ("unified-type-map.galgas", 235)) ;
         }
         break ;
       case GALGAS_headerKind::kEnum_twoHeaders:
         {
-          ioArgument_ioInclusions.addAssign_operation (var_typeDefinition_8882.readProperty_mHeaderFileName ().add_operation (GALGAS_string ("-1"), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 230))  COMMA_SOURCE_FILE ("unified-type-map.galgas", 230)) ;
+          ioArgument_ioInclusions.addAssign_operation (var_typeDefinition_9194.readProperty_mHeaderFileName ().add_operation (GALGAS_string ("-1"), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 237))  COMMA_SOURCE_FILE ("unified-type-map.galgas", 237)) ;
         }
         break ;
       }
@@ -13893,10 +13893,10 @@ void extensionMethod_enterInSemanticContext (const GALGAS_actualOutputExpression
                                              Compiler * inCompiler
                                              COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_actualOutputExpressionList temp_0 = inObject ;
-  cEnumerator_actualOutputExpressionList enumerator_2641 (temp_0, kENUMERATION_UP) ;
-  while (enumerator_2641.hasCurrentObject ()) {
-    callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) enumerator_2641.current_mExpression (HERE).ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 73)) ;
-    enumerator_2641.gotoNextObject () ;
+  cEnumerator_actualOutputExpressionList enumerator_3704 (temp_0, kENUMERATION_UP) ;
+  while (enumerator_3704.hasCurrentObject ()) {
+    callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) enumerator_3704.current_mExpression (HERE).ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 90)) ;
+    enumerator_3704.gotoNextObject () ;
   }
 }
 

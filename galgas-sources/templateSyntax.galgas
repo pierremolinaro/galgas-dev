@@ -1,26 +1,33 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#  Template parser                          
-#                                           
+#
+#  Template parser
+#
 #  Copyright (C) 2010, ..., 2023 Pierre Molinaro.
-#                                           
-#  e-mail : pierre@pcmolinaro.name          
-#                                           
-#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
-#  License as published by the Free Software Foundation.
-#                                           
-#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
-#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
-#  details.                                 
-#                                           
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax templateSyntax (galgasTemplateScanner) {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#   E X P R E S S I O N                     
-#                                           
+#
+#   E X P R E S S I O N
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <expression_tpl>
@@ -45,9 +52,9 @@ rule <expression_tpl>
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#   R E L A T I O N    T E R M              
-#                                           
+#
+#   R E L A T I O N    T E R M
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <relation_term_tpl>
@@ -65,9 +72,9 @@ rule <relation_term_tpl>
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#   R E L A T I O N    F A C T O R          
-#                                           
+#
+#   R E L A T I O N    F A C T O R
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <relation_factor_tpl>
@@ -120,36 +127,36 @@ rule <relation_factor_tpl>
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#   S I M P L E    E X P R E S S I O N      
-#                                           
+#
+#   S I M P L E    E X P R E S S I O N
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <simple_expression_tpl> !@templateExpressionAST outExpression {
   <term_tpl> ?outExpression
   repeat
-  while 
+  while
     let @location operatorLocation = @location.here
     $<<$
     let @templateExpressionAST leftExpression = outExpression
     let @templateExpressionAST rightExpression
     <term_tpl> ?rightExpression
     outExpression = @templateLeftShiftOperationAST.new {!operatorLocation !leftExpression !rightExpression}
-  while 
+  while
     let @location operatorLocation = @location.here
     $>>$
     let @templateExpressionAST leftExpression = outExpression
     let @templateExpressionAST rightExpression
     <term_tpl> ?rightExpression
     outExpression = @templateRightShiftOperationAST.new {!operatorLocation !leftExpression !rightExpression}
-  while 
+  while
     let @location operatorLocation = @location.here
     $+$
     let @templateExpressionAST leftExpression = outExpression
     let @templateExpressionAST rightExpression
     <term_tpl> ?rightExpression
     outExpression = @templateAddOperationAST.new {!operatorLocation !leftExpression !rightExpression}
-  while 
+  while
     let @location operatorLocation = @location.here
     $-$
     let @templateExpressionAST leftExpression = outExpression
@@ -160,30 +167,30 @@ rule <simple_expression_tpl> !@templateExpressionAST outExpression {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#   T E R M                                 
-#                                           
+#
+#   T E R M
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <term_tpl>
   !@templateExpressionAST outExpression {
   <factor_tpl> ?outExpression
   repeat
-  while 
+  while
     let @location operatorLocation = @location.here
     $*$
     let @templateExpressionAST leftExpression = outExpression
     let @templateExpressionAST rightExpression
     <factor_tpl> ?rightExpression
     outExpression = @templateMultiplyOperationAST.new {!operatorLocation !leftExpression !rightExpression}
-  while 
+  while
     let @location operatorLocation = @location.here
     $/$
     let @templateExpressionAST leftExpression = outExpression
     let @templateExpressionAST rightExpression
     <factor_tpl> ?rightExpression
     outExpression = @templateDivideOperationAST.new {!operatorLocation !leftExpression !rightExpression}
-  while 
+  while
     let @location operatorLocation = @location.here
     $mod$
     let @templateExpressionAST leftExpression = outExpression
@@ -194,9 +201,9 @@ rule <term_tpl>
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#   F A C T O R    :    struct field access 
-#                                           
+#
+#   F A C T O R    :    struct field access
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <factor_tpl> !@templateExpressionAST outExpression {
@@ -210,9 +217,9 @@ rule <factor_tpl> !@templateExpressionAST outExpression {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#   F A C T O R    :    - factor            
-#                                           
+#
+#   F A C T O R    :    - factor
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <factor_tpl> !@templateExpressionAST outExpression {
@@ -224,9 +231,9 @@ rule <factor_tpl> !@templateExpressionAST outExpression {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#   F A C T O R    :    not FACTOR          
-#                                           
+#
+#   F A C T O R    :    not FACTOR
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <factor_tpl> !@templateExpressionAST outExpression {
@@ -238,9 +245,9 @@ rule <factor_tpl> !@templateExpressionAST outExpression {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#   F A C T O R    :    ~ FACTOR            
-#                                           
+#
+#   F A C T O R    :    ~ FACTOR
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <factor_tpl>
@@ -253,9 +260,9 @@ rule <factor_tpl>
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#   P R I M A R Y  :    <var>               
-#                                           
+#
+#   P R I M A R Y  :    <var>
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <primary_tpl> !@templateExpressionAST outExpression {
@@ -264,9 +271,9 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#   P R I M A R Y  :    ( EXPRESSION )      
-#                                           
+#
+#   P R I M A R Y  :    ( EXPRESSION )
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <primary_tpl> !@templateExpressionAST outExpression {
@@ -276,9 +283,9 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#   P R I M A R Y  :    true                
-#                                           
+#
+#   P R I M A R Y  :    true
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <primary_tpl> !@templateExpressionAST outExpression {
@@ -287,9 +294,9 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#   P R I M A R Y  :    false               
-#                                           
+#
+#   P R I M A R Y  :    false
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <primary_tpl> !@templateExpressionAST outExpression {
@@ -298,9 +305,9 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#   P R I M A R Y  :    a literal integer value                                                
-#                                           
+#
+#   P R I M A R Y  :    a literal integer value
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <primary_tpl> !@templateExpressionAST outExpression {
@@ -309,9 +316,9 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#   P R I M A R Y  :    a double value      
-#                                           
+#
+#   P R I M A R Y  :    a double value
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <primary_tpl> !@templateExpressionAST outExpression {
@@ -321,9 +328,9 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
+#
 #   P R I M A R Y  :    a literal character value
-#                                           
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <primary_tpl> !@templateExpressionAST outExpression {
@@ -332,9 +339,9 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
+#
 #   P R I M A R Y  :    a literal character value
-#                                           
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <primary_tpl> !@templateExpressionAST outExpression {
@@ -348,15 +355,15 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#                         F A C T O R       
-#   description          :   [expression description]   
-#   getter call          :   [expression getter !... ]  
-#   constructor call     :   [@class constructor !... ] 
-#   option value         :   [option option_component_name.option_name]                                        
-#   filewrapper template :   [filewrapper fw.template_name !...]                                               
-#   extension template   :   [template expression template_name !...]                                          
-#                                           
+#
+#                         F A C T O R
+#   description          :   [expression description]
+#   getter call          :   [expression getter !... ]
+#   constructor call     :   [@class constructor !... ]
+#   option value         :   [option option_component_name.option_name]
+#   filewrapper template :   [filewrapper fw.template_name !...]
+#   extension template   :   [template expression template_name !...]
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <primary_tpl> !@templateExpressionAST outExpression {
@@ -428,10 +435,10 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#                         F A C T O R       
-#   function call        :   function_name (!... )      
-#                                           
+#
+#                         F A C T O R
+#   function call        :   function_name (!... )
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <primary_tpl> !@templateExpressionAST outExpression {
@@ -469,9 +476,9 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
+#
 #   O U T P U T    E X P R E S S I O N    L I S T
-#                                           
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <output_expression_list_tpl> !@templateExpressionListAST outExpressionList {
@@ -485,9 +492,9 @@ rule <output_expression_list_tpl> !@templateExpressionListAST outExpressionList 
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#    I N S T R U C T I O N S                
-#                                           
+#
+#    I N S T R U C T I O N S
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <template_instruction> ?!@templateInstructionListAST ioResultingInstructionList {

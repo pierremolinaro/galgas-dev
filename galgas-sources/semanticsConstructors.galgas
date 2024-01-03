@@ -1,17 +1,25 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#  Class function                       
-#                                           
-#  Copyright (C) 2009, ..., 2017 Pierre Molinaro.
-#  e-mail : pierre@pcmolinaro.name          
-#                                           
-#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
-#  License as published by the Free Software Foundation.
-#                                           
-#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
-#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
-#  details.                                 
-#                                           
+#
+#  Class function
+#
+#  Copyright (C) 2009, ..., 2023 Pierre Molinaro.
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc enterClassFunctionWithoutArgument
@@ -210,22 +218,6 @@ override method @locationPredefinedTypeAST getClassFunctionMap
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @boolPredefinedTypeAST getClassFunctionMap
-  ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@classFunctionMap outMap
-{
-  outMap = {}
-  enterClassFunctionWithoutArgument (
-    !?outMap
-    !?ioUnifiedTypeMap
-    !name: "default"
-    !resultTypeName: "bool"
-    !hasLexiqueArg: false
-  )
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 override method @stringPredefinedTypeAST getClassFunctionMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@classFunctionMap outMap
@@ -359,7 +351,7 @@ override method @stringPredefinedTypeAST getClassFunctionMap
   )
   enterClassFunctionWith2Arguments (
     !?outMap
-    !?ioUnifiedTypeMap 
+    !?ioUnifiedTypeMap
     !name:"componentsJoinedByString"
     !argTypeName1:"stringlist"
     !argName1:"inComponents"
@@ -370,7 +362,7 @@ override method @stringPredefinedTypeAST getClassFunctionMap
   )
   enterClassFunctionWith2Arguments (
     !?outMap
-    !?ioUnifiedTypeMap 
+    !?ioUnifiedTypeMap
     !name:"stringByRepeatingString"
     !argTypeName1:"string"
     !argName1:"inString"
@@ -382,7 +374,7 @@ override method @stringPredefinedTypeAST getClassFunctionMap
   enterClassFunctionWith2Arguments (
     !?outMap
     !?ioUnifiedTypeMap
-    !name:"stringWithSequenceOfCharacters" 
+    !name:"stringWithSequenceOfCharacters"
     !argTypeName1:"char"
     !argName1:"inChar"
     !argTypeName2:"uint"
@@ -426,60 +418,6 @@ override method @charPredefinedTypeAST getClassFunctionMap
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @uintPredefinedTypeAST getClassFunctionMap
-  ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@classFunctionMap outMap {
-  outMap = {}
-  enterClassFunctionWithoutArgument (
-    !?outMap
-    !?ioUnifiedTypeMap
-    !name:"compilationMode"
-    !resultTypeName:"uint"
-    !hasLexiqueArg:false
-  )
-  enterClassFunctionWithoutArgument (
-    !?outMap
-    !?ioUnifiedTypeMap
-    !name:"random"
-    !resultTypeName:"uint"
-    !hasLexiqueArg:false
-  )
-  enterClassFunctionWithoutArgument (
-    !?outMap
-    !?ioUnifiedTypeMap
-    !name:"max"
-    !resultTypeName:"uint"
-    !hasLexiqueArg:false
-  )
-  enterClassFunctionWithoutArgument (
-    !?outMap
-    !?ioUnifiedTypeMap
-    !name:"errorCount"
-    !resultTypeName:"uint"
-    !hasLexiqueArg:false
-  )
-  enterClassFunctionWithoutArgument (
-    !?outMap
-    !?ioUnifiedTypeMap
-    !name:"warningCount"
-    !resultTypeName:"uint"
-    !hasLexiqueArg:false
-  )
-  enterClassFunctionWith2Arguments (
-    !?outMap
-    !?ioUnifiedTypeMap
-    !name:"valueWithMask"
-    !argTypeName1:"uint"
-    !argName1:"inLowerIndex"
-    !argTypeName2:"uint"
-    !argName2:"inUpperIndex"
-    !resultTypeName:"uint"
-    !hasLexiqueArg:true
-  )
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 override method @sintPredefinedTypeAST getClassFunctionMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@classFunctionMap outMap {
@@ -502,48 +440,6 @@ override method @sintPredefinedTypeAST getClassFunctionMap
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @uint64PredefinedTypeAST getClassFunctionMap
-  ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@classFunctionMap outMap {
-  outMap = {}
-  enterClassFunctionWithoutArgument (
-    !?outMap
-    !?ioUnifiedTypeMap
-    !name:"max"
-    !resultTypeName:"uint64"
-    !hasLexiqueArg:false
-  )
-  enterClassFunctionWithArgument (
-    !?outMap
-    !?ioUnifiedTypeMap
-    !name:"uint64MaskWithCompressedBitString"
-    !argTypeName:"string"
-    !argName:"inBitString"
-    !resultTypeName:"uint64"
-    !hasLexiqueArg:true
-  )
-  enterClassFunctionWithArgument (
-    !?outMap
-    !?ioUnifiedTypeMap
-    !name:"uint64BaseValueWithCompressedBitString"
-    !argTypeName:"string"
-    !argName:"inBitString"
-    !resultTypeName:"uint64"
-    !hasLexiqueArg:true
-  )
-  enterClassFunctionWithArgument (
-    !?outMap
-    !?ioUnifiedTypeMap
-    !name:"uint64WithBitString"
-    !argTypeName:"string"
-    !argName:"inBitString"
-    !resultTypeName:"uint64"
-    !hasLexiqueArg:true
-  )
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 override method @sint64PredefinedTypeAST getClassFunctionMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@classFunctionMap outMap {
@@ -561,202 +457,6 @@ override method @sint64PredefinedTypeAST getClassFunctionMap
     !name:"min"
     !resultTypeName:"sint64"
     !hasLexiqueArg:false
-  )
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-override method @binarysetPredefinedTypeAST getClassFunctionMap
-  ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@classFunctionMap outMap {
-  outMap = {}
-  enterClassFunctionWithArgument (
-    !?outMap
-    !?ioUnifiedTypeMap
-    !name:"binarySetWithBit"
-    !argTypeName:"uint"
-    !argName:"inBitIndex"
-    !resultTypeName:"binaryset"
-    !hasLexiqueArg:true
-  )
-  enterClassFunctionWithoutArgument (
-    !?outMap
-    !?ioUnifiedTypeMap
-    !name:"emptyBinarySet"
-    !resultTypeName:"binaryset"
-    !hasLexiqueArg:false
-  )
-  enterClassFunctionWithoutArgument (
-    !?outMap
-    !?ioUnifiedTypeMap
-    !name:"fullBinarySet"
-    !resultTypeName:"binaryset"
-    !hasLexiqueArg:false
-  )
-  enterClassFunctionWithArgument (
-    !?outMap
-    !?ioUnifiedTypeMap
-    !name:"binarySetWithPredicateString"
-    !argTypeName:"string"
-    !argName:"inPredicateString"
-    !resultTypeName:"binaryset"
-    !hasLexiqueArg:true
-  )
-  enterClassFunctionWith3Arguments (
-    !?outMap
-    !?ioUnifiedTypeMap
-    !name:"binarySetWithNotEqualComparison"
-    !argTypeName1:"uint"
-    !argName1:"inLeftFirstIndex"
-    !argTypeName2:"uint"
-    !argName2:"inBitCount"
-    !argTypeName3:"uint"
-    !argName3:"inRightFirstIndex"
-    !resultTypeName:"binaryset"
-    !hasLexiqueArg:true
-  )
-  enterClassFunctionWith3Arguments (
-    !?outMap
-    !?ioUnifiedTypeMap
-    !name:"binarySetWithEqualComparison"
-    !argTypeName1:"uint"
-    !argName1:"inLeftFirstIndex"
-    !argTypeName2:"uint"
-    !argName2:"inBitCount"
-    !argTypeName3:"uint"
-    !argName3:"inRightFirstIndex"
-    !resultTypeName:"binaryset"
-    !hasLexiqueArg:true
-  )
-  enterClassFunctionWith3Arguments (
-    !?outMap
-    !?ioUnifiedTypeMap
-    !name:"binarySetWithStrictLowerComparison"
-    !argTypeName1:"uint"
-    !argName1:"inLeftFirstIndex"
-    !argTypeName2:"uint"
-    !argName2:"inBitCount"
-    !argTypeName3:"uint"
-    !argName3:"inRightFirstIndex"
-    !resultTypeName:"binaryset"
-    !hasLexiqueArg:true
-  )
-  enterClassFunctionWith3Arguments (
-    !?outMap
-    !?ioUnifiedTypeMap
-    !name:"binarySetWithStrictGreaterComparison"
-    !argTypeName1:"uint"
-    !argName1:"inLeftFirstIndex"
-    !argTypeName2:"uint"
-    !argName2:"inBitCount"
-    !argTypeName3:"uint"
-    !argName3:"inRightFirstIndex"
-    !resultTypeName:"binaryset"
-    !hasLexiqueArg:true
-  )
-  enterClassFunctionWith3Arguments (
-    !?outMap
-    !?ioUnifiedTypeMap
-    !name:"binarySetWithLowerOrEqualComparison"
-    !argTypeName1:"uint"
-    !argName1:"inLeftFirstIndex"
-    !argTypeName2:"uint"
-    !argName2:"inBitCount"
-    !argTypeName3:"uint"
-    !argName3:"inRightFirstIndex"
-    !resultTypeName:"binaryset"
-    !hasLexiqueArg:true
-  )
-  enterClassFunctionWith3Arguments (
-    !?outMap
-    !?ioUnifiedTypeMap
-    !name:"binarySetWithGreaterOrEqualComparison"
-    !argTypeName1:"uint"
-    !argName1:"inLeftFirstIndex"
-    !argTypeName2:"uint"
-    !argName2:"inBitCount"
-    !argTypeName3:"uint"
-    !argName3:"inRightFirstIndex"
-    !resultTypeName:"binaryset"
-    !hasLexiqueArg:true
-  )
-  enterClassFunctionWith3Arguments (
-    !?outMap
-    !?ioUnifiedTypeMap
-    !name:"binarySetWithEqualToConstant"
-    !argTypeName1:"uint"
-    !argName1:"inBitIndex"
-    !argTypeName2:"uint"
-    !argName2:"inBitCount"
-    !argTypeName3:"uint64"
-    !argName3:"inConstant"
-    !resultTypeName:"binaryset"
-    !hasLexiqueArg:true
-  )
-  enterClassFunctionWith3Arguments (
-    !?outMap
-    !?ioUnifiedTypeMap
-    !name:"binarySetWithNotEqualToConstant"
-    !argTypeName1:"uint"
-    !argName1:"inBitIndex"
-    !argTypeName2:"uint"
-    !argName2:"inBitCount"
-    !argTypeName3:"uint64"
-    !argName3:"inConstant"
-    !resultTypeName:"binaryset"
-    !hasLexiqueArg:true
-  )
-  enterClassFunctionWith3Arguments (
-    !?outMap
-    !?ioUnifiedTypeMap
-    !name:"binarySetWithStrictLowerThanConstant"
-    !argTypeName1:"uint"
-    !argName1:"inBitIndex"
-    !argTypeName2:"uint"
-    !argName2:"inBitCount"
-    !argTypeName3:"uint64"
-    !argName3:"inConstant"
-    !resultTypeName:"binaryset"
-    !hasLexiqueArg:true
-  )
-  enterClassFunctionWith3Arguments (
-    !?outMap
-    !?ioUnifiedTypeMap
-    !name:"binarySetWithStrictGreaterThanConstant"
-    !argTypeName1:"uint"
-    !argName1:"inBitIndex"
-    !argTypeName2:"uint"
-    !argName2:"inBitCount"
-    !argTypeName3:"uint64"
-    !argName3:"inConstant"
-    !resultTypeName:"binaryset"
-    !hasLexiqueArg:true
-  )
-  enterClassFunctionWith3Arguments (
-    !?outMap
-    !?ioUnifiedTypeMap
-    !name:"binarySetWithLowerOrEqualToConstant"
-    !argTypeName1:"uint"
-    !argName1:"inBitIndex"
-    !argTypeName2:"uint"
-    !argName2:"inBitCount"
-    !argTypeName3:"uint64"
-    !argName3:"inConstant"
-    !resultTypeName:"binaryset"
-    !hasLexiqueArg:true
-  )
-  enterClassFunctionWith3Arguments (
-    !?outMap
-    !?ioUnifiedTypeMap
-    !name:"binarySetWithGreaterOrEqualToConstant"
-    !argTypeName1:"uint"
-    !argName1:"inBitIndex"
-    !argTypeName2:"uint"
-    !argName2:"inBitCount"
-    !argTypeName3:"uint64"
-    !argName3:"inConstant"
-    !resultTypeName:"binaryset"
-    !hasLexiqueArg:true
   )
 }
 

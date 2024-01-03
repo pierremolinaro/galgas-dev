@@ -1,18 +1,25 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#  semantics definitions for semantics component 
-#                                           
+#
+#  semantics definitions for semantics component
+#
 #  Copyright (C) 2010, ..., 2022 Pierre Molinaro.
-#                                           
-#  e-mail : pierre@pcmolinaro.name          
-#                                           
-#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
-#  License as published by the Free Software Foundation.
-#                                           
-#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
-#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
-#  details.                                 
-#                                           
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 getter @location sourceFile -> @string {
@@ -51,7 +58,7 @@ abstract method @semanticExpressionAST enterExpressionInSemanticContext ?!@unifi
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-method @semanticInstructionListAST enterInstructionListInSemanticContext 
+method @semanticInstructionListAST enterInstructionListInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
   for (mInstruction) in self do
@@ -60,9 +67,9 @@ method @semanticInstructionListAST enterInstructionListInSemanticContext
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#  G R A M M A R   M A P                    
-#                                           
+#
+#  G R A M M A R   M A P
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @grammarLabelMap {
@@ -82,9 +89,9 @@ map @grammarMap {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#  F U N C T I O N   M A P                  
-#                                           
+#
+#  F U N C T I O N   M A P
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @functionMap {
@@ -96,9 +103,9 @@ map @functionMap {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#  F I L E W R A P P E R   M A P            
-#                                           
+#
+#  F I L E W R A P P E R   M A P
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @wrapperFileMap { # Key is file name
@@ -143,9 +150,9 @@ map @filewrapperMap {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#  O P T I O N   M A P                      
-#                                           
+#
+#  O P T I O N   M A P
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @optionComponentMapForSemanticAnalysis {
@@ -159,9 +166,9 @@ map @optionComponentMapForSemanticAnalysis {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#  L E X I Q U E   M A P                    
-#                                           
+#
+#  L E X I Q U E   M A P
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @lexiqueComponentMapForSemanticAnalysis {
@@ -178,13 +185,13 @@ map @lexiqueComponentMapForSemanticAnalysis {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#  S Y N T A X   M A P                      
-#                                           
+#
+#  S Y N T A X   M A P
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @syntaxComponentMap {
-  public let @lstring mLexiqueName 
+  public let @lstring mLexiqueName
   public let @nonterminalDeclarationListAST mNonterminalDeclarationList
   public let @syntaxRuleListAST mRuleList
   public let @bool mHasTranslateFeature
@@ -193,9 +200,9 @@ map @syntaxComponentMap {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#    S E M A N T I C    C O N T E X T       
-#                                           
+#
+#    S E M A N T I C    C O N T E X T
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @semanticContext {
@@ -210,9 +217,9 @@ struct @semanticContext {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
+#
 #    E X T E N S I O N    M E T H O D    M A P
-#                                           
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @extensionMethodMapForType {
@@ -230,9 +237,9 @@ map @extensionMethodMapForBuildingContext {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#    E X T E N S I O N    M O D I F I E R    M A P 
-#                                           
+#
+#    E X T E N S I O N    M O D I F I E R    M A P
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @extensionSetterMapForType {
@@ -249,9 +256,9 @@ map @extensionSetterMapForBuildingContext {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#    E X T E N S I O N    G E T T E R    M A P     
-#                                           
+#
+#    E X T E N S I O N    G E T T E R    M A P
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @extensionGetterMapForType {
@@ -270,9 +277,9 @@ map @extensionGetterMapForBuildingContext {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#    D I S P L A Y                          
-#                                           
+#
+#    D I S P L A Y
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract getter @semanticDeclarationAST keyRepresentation -> @string
@@ -368,9 +375,9 @@ override getter @externFunctionDeclarationAST keyRepresentation -> @string {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#    E N T E R    T Y P E S                 
-#                                           
+#
+#    E N T E R    T Y P E S
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc addExtensions ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
@@ -635,7 +642,7 @@ override method @filewrapperDeclarationAST enterDeclarationInSemanticContext
     absoluteSourcePath = [self.mSourceFileAbsolutePath stringByDeletingLastPathComponent] + "/" + self.mFilewrapperPath.string
   end
   if not [absoluteSourcePath directoryExists] then
-    error self.mFilewrapperPath: "The '" + absoluteSourcePath + "' directory does not exist" 
+    error self.mFilewrapperPath: "The '" + absoluteSourcePath + "' directory does not exist"
     : regularRootFileMap, wrapperDirectoryMap
   else
   #--- Enumerate pathes
@@ -758,9 +765,9 @@ override method @galgas3GrammarComponentAST enterDeclarationInSemanticContext
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#    B U I L D    O R D E R E D     S E M A N T I C    L I S T                                                 
-#                                           
+#
+#    B U I L D    O R D E R E D     S E M A N T I C    L I S T
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #! enterDeclarationInGraph

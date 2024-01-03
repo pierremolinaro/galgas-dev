@@ -346,6 +346,42 @@ proc testsuite_bigint_type() {
   b = -0x1234
   !?b.complementBitAtIndex (40)
   println (b.hexString) # -0x10000005234
+//--- Calculs divers
+  println ("2**127 - 1 = " + ((1 << 127) - 1))
+  println ("(2**148 + 1) / 17 = " + (((1 << 148) + 1) / 17))
+  println ("2**607 - 1 = " + ((1 << 607) - 1))
+  println ("2**4423 - 1 = " + ((1 << 4423) - 1))
+  println ("2**44497 - 1 = " + ((1 << 44497) - 1))
+//---
+  let n = 8_424_432_925_592_889_329_288_197_322_308_900_672_459_420_460_792_433
+  println ("n = " + n)
+  let n2 = n * n
+  let n4 = n2 * n2
+  let n8 = n4 * n4
+  let n16 = n8 * n8
+  let n17plus9 = n16 * n + 9
+  println ("n**17 + 9 = " + n17plus9)
+  let nPlus1 = n + 1
+  let nPlus1_2 = nPlus1 * nPlus1
+  let nPlus1_4 = nPlus1_2 * nPlus1_2
+  let nPlus1_8 = nPlus1_4 * nPlus1_4
+  let nPlus1_16 = nPlus1_8 * nPlus1_8
+  let nPlus1_17plus9 = nPlus1_16 * nPlus1 + 9
+  println ("(n+1)**17 + 9 = " + nPlus1_17plus9)
+//--- Calcul du PGCD
+  var a = nPlus1_17plus9
+  var bb = n17plus9
+  var continue = true
+  loop while continue do
+    let remainder = a mod bb
+    if remainder == 0 then
+      continue = false
+      println ("PGCD = " + bb)
+    else
+      a = bb
+      bb = remainder
+    end
+  end
 }
 
 

@@ -1,16 +1,20 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! AST
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @nonterminalCallInstruction : @syntaxInstructionAST {
-  private let @lstring mNonterminalName
-  private let @lstring mLabelName # No label : empty string
-  private let @actualParameterListAST mActualParameterList
-  private let @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationResult
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! SYNTAX
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3SyntaxComponentSyntax {
@@ -94,76 +98,84 @@ syntax extension galgas4SyntaxComponentSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! TRANSFORM
+#! AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @nonterminalCallInstruction transformInstruction
-  ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis unused ioActuallyUsedTerminalSymbolMap
-  ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
-  ?!addedTerminalIndex:@uint unused ioAddedNonTerminalIndex
-  ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList {
-  [inNonTerminalSymbolMap searchKey !self.mNonterminalName ?let nonTerminalSymbolIndex ?*]
-  ioSyntaxInstructionList += !@nonTerminalInstructionForGrammarAnalysis.new {
-    !self.mInstructionLocation
-    !self.mNonterminalName
-    !nonTerminalSymbolIndex
-  }
-}
+refclass @nonterminalCallInstruction : @syntaxInstructionAST {
+  private let @lstring mNonterminalName
+  private let @lstring mLabelName # No label : empty string
+  private let @actualParameterListAST mActualParameterList
+  private let @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationResult
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! SEMANTICS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-  
-override method @nonterminalCallInstruction analyzeSyntaxInstruction
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?let @bool inHasTranslateFeature
-  ?let @terminalMap unused inTerminalMap
-  ?let @string unused inLexiqueName
-  ?let @nonterminalMap inNonterminalMap
-  ?let @string unused inComponentName
-  ?let @stringset unused inIndexNameSet
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@localVarManager ioVariableMap
-  ?!@uint unused ioSelectMethodCount
-{
-  [inNonterminalMap searchKey !self.mNonterminalName ?let @nonterminalLabelMap labelMap]
-  let @formalParameterSignature signature
-  if self.mLabelName.string == "parse" then
-    signature = {}
-  else
-    [labelMap searchKey !self.mLabelName ?* ?signature ?*]
-  end
-#--- call arguments
-  [self.mActualParameterList analyzeRoutineArguments
-    !inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
-    !self.mNonterminalName
-    !invokedEntityNameForErrorSignaling: "'<" + self.mNonterminalName + ">' nonterminal declaration"
-    !signature
-    !?ioVariableMap
-    !?ioInstructionListForGeneration
-    ?let @actualParameterListForGeneration actualParameterListForGeneration
-  ]
-#--- Check syntax directed translation destination variable
-  [self.mGrammarInstructionSyntaxDirectedTranslationResult analyzeSDT
-    !inAnalysisContext
-    !?ioTypeMap
-    !inHasTranslateFeature
-    !?ioVariableMap
-  ]
-#--- Generate instructions
-  ioInstructionListForGeneration += !@nonterminalInstructionForGeneration.new {
-    !self.mInstructionLocation
-    !self.mNonterminalName.string
-    !self.mLabelName.string
-    !actualParameterListForGeneration
-    !self.mGrammarInstructionSyntaxDirectedTranslationResult
+  #·················································································································
+
+  override method transformInstruction
+                    ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis unused ioActuallyUsedTerminalSymbolMap
+                    ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
+                    ?!addedTerminalIndex:@uint unused ioAddedNonTerminalIndex
+                    ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList {
+    [inNonTerminalSymbolMap searchKey !self.mNonterminalName ?let nonTerminalSymbolIndex ?*]
+    ioSyntaxInstructionList += !@nonTerminalInstructionForGrammarAnalysis.new {
+      !self.mInstructionLocation
+      !self.mNonterminalName
+      !nonTerminalSymbolIndex
+    }
   }
+
+  #·················································································································
+
+  override method analyzeSyntaxInstruction ?let @lstring inUsefulnessCallerEntityName
+                                           ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+                                           ?let @analysisContext inAnalysisContext
+                                           ?!@unifiedTypeMap ioTypeMap
+                                            ?let @bool inHasTranslateFeature
+                                            ?let @terminalMap unused inTerminalMap
+                                            ?let @string unused inLexiqueName
+                                            ?let @nonterminalMap inNonterminalMap
+                                            ?let @string unused inComponentName
+                                            ?let @stringset unused inIndexNameSet
+                                            ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+                                            ?!@localVarManager ioVariableMap
+                                            ?!@uint unused ioSelectMethodCount {
+    [inNonterminalMap searchKey !self.mNonterminalName ?let @nonterminalLabelMap labelMap]
+    let @formalParameterSignature signature
+    if self.mLabelName.string == "parse" then
+      signature = {}
+    else
+      [labelMap searchKey !self.mLabelName ?* ?signature ?*]
+    end
+  #--- call arguments
+    [self.mActualParameterList analyzeRoutineArguments
+      !inUsefulnessCallerEntityName
+      !?ioUsefulEntitiesGraph
+      !inAnalysisContext
+      !?ioTypeMap
+      !self.mNonterminalName
+      !invokedEntityNameForErrorSignaling: "'<" + self.mNonterminalName + ">' nonterminal declaration"
+      !signature
+      !?ioVariableMap
+      !?ioInstructionListForGeneration
+      ?let @actualParameterListForGeneration actualParameterListForGeneration
+    ]
+  #--- Check syntax directed translation destination variable
+    [self.mGrammarInstructionSyntaxDirectedTranslationResult analyzeSDT
+      !inAnalysisContext
+      !?ioTypeMap
+      !inHasTranslateFeature
+      !?ioVariableMap
+    ]
+  #--- Generate instructions
+    ioInstructionListForGeneration += !@nonterminalInstructionForGeneration.new {
+      !self.mInstructionLocation
+      !self.mNonterminalName.string
+      !self.mLabelName.string
+      !actualParameterListForGeneration
+      !self.mGrammarInstructionSyntaxDirectedTranslationResult
+    }
+  }
+
+  #·················································································································
+
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -218,7 +230,7 @@ override getter @nonterminalInstructionForGeneration compareInstructionSyntaxSig
   if not result then
     error self.mInstructionLocation
     :"reference syntax instruction is here"
-  end  
+  end
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————

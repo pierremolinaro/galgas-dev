@@ -1,23 +1,29 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#  Variable New Manager.                        
-#                                           
+#
+#  Variable New Manager.
+#
 #  Copyright (C) 2022, ..., 2022 Pierre Molinaro.
-#                                           
-#  e-mail : pierre@pcmolinaro.name          
-#                                           
-#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
-#  License as published by the Free Software Foundation.
-#                                           
-#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
-#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
-#  details.                                 
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
 #! LOCAL VARIABLE
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-setter @localVarManager insertDeclaredLocalVariable ?let @lstring inVarName 
+setter @localVarManager insertDeclaredLocalVariable ?let @lstring inVarName
                                                     ?let @unifiedTypeMapEntry inType
                                                     ?let @string inCppName
                                                     ?let @string inNameForCheckingFormalParameterUsing {
@@ -52,7 +58,7 @@ setter @localVarManager insertInitializedLocalVariable ?let @lstring inVarName
 #! LOCAL CONSTANT
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-setter @localVarManager insertUsedLocalConstant ?let @lstring inVarName 
+setter @localVarManager insertUsedLocalConstant ?let @lstring inVarName
                                                 ?let @unifiedTypeMapEntry inType
                                                 ?let @string inCppName
                                                 ?let @string inNameForCheckingFormalParameterUsing {
@@ -68,7 +74,7 @@ setter @localVarManager insertUsedLocalConstant ?let @lstring inVarName
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-setter @localVarManager insertInitializedLocalConstant ?let @lstring inVarName 
+setter @localVarManager insertInitializedLocalConstant ?let @lstring inVarName
                                                        ?let @unifiedTypeMapEntry inType
                                                        ?let @string inCppName
                                                        ?let @string inNameForCheckingFormalParameterUsing {
@@ -84,7 +90,7 @@ setter @localVarManager insertInitializedLocalConstant ?let @lstring inVarName
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-setter @localVarManager insertDeclaredLocalConstant ?let @lstring inVarName 
+setter @localVarManager insertDeclaredLocalConstant ?let @lstring inVarName
                                                     ?let @unifiedTypeMapEntry inType
                                                     ?let @string inCppName
                                                     ?let @string inNameForCheckingFormalParameterUsing {
@@ -102,7 +108,7 @@ setter @localVarManager insertDeclaredLocalConstant ?let @lstring inVarName
 #! INPUT FORMAL ARGUMENT
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-setter @localVarManager insertInputFormalArgumentDeclaredAsUnused ?let @lstring inVarName 
+setter @localVarManager insertInputFormalArgumentDeclaredAsUnused ?let @lstring inVarName
                                                                   ?let @unifiedTypeMapEntry inType
                                                                   ?let @string inCppName
                                                                   ?let @string inNameForCheckingFormalParameterUsing {
@@ -118,7 +124,7 @@ setter @localVarManager insertInputFormalArgumentDeclaredAsUnused ?let @lstring 
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-setter @localVarManager insertInputFormalArgument ?let @lstring inVarName 
+setter @localVarManager insertInputFormalArgument ?let @lstring inVarName
                                                   ?let @unifiedTypeMapEntry inType
                                                   ?let @string inCppName
                                                   ?let @string inNameForCheckingFormalParameterUsing {
@@ -134,7 +140,7 @@ setter @localVarManager insertInputFormalArgument ?let @lstring inVarName
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-setter @localVarManager insertConstantInputFormalArgumentDeclaredAsUnused ?let @lstring inVarName 
+setter @localVarManager insertConstantInputFormalArgumentDeclaredAsUnused ?let @lstring inVarName
                                                                           ?let @unifiedTypeMapEntry inType
                                                                           ?let @string inCppName
                                                                           ?let @string inNameForCheckingFormalParameterUsing {
@@ -150,7 +156,7 @@ setter @localVarManager insertConstantInputFormalArgumentDeclaredAsUnused ?let @
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-setter @localVarManager insertConstantInputFormalArgument ?let @lstring inVarName 
+setter @localVarManager insertConstantInputFormalArgument ?let @lstring inVarName
                                                           ?let @unifiedTypeMapEntry inType
                                                           ?let @string inCppName
                                                           ?let @string inNameForCheckingFormalParameterUsing {
@@ -168,7 +174,7 @@ setter @localVarManager insertConstantInputFormalArgument ?let @lstring inVarNam
 #! OUTPUT FORMAL ARGUMENT
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-setter @localVarManager insertOutputFormalArgument ?let @lstring inVarName 
+setter @localVarManager insertOutputFormalArgument ?let @lstring inVarName
                                                    ?let @unifiedTypeMapEntry inType
                                                    ?let @string inCppName
                                                    ?let @string inNameForCheckingFormalParameterUsing {
@@ -186,7 +192,7 @@ setter @localVarManager insertOutputFormalArgument ?let @lstring inVarName
 #! INPUT OUTPUT FORMAL ARGUMENT
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-setter @localVarManager insertInputOutputFormalArgumentDeclaredAsUnused ?let @lstring inVarName 
+setter @localVarManager insertInputOutputFormalArgumentDeclaredAsUnused ?let @lstring inVarName
                                                                         ?let @unifiedTypeMapEntry inType
                                                                         ?let @string inCppName
                                                                         ?let @string inNameForCheckingFormalParameterUsing {
@@ -202,7 +208,7 @@ setter @localVarManager insertInputOutputFormalArgumentDeclaredAsUnused ?let @ls
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-setter @localVarManager insertInputOutputFormalArgument ?let @lstring inVarName 
+setter @localVarManager insertInputOutputFormalArgument ?let @lstring inVarName
                                                         ?let @unifiedTypeMapEntry inType
                                                         ?let @string inCppName
                                                         ?let @string inNameForCheckingFormalParameterUsing {
@@ -220,7 +226,7 @@ setter @localVarManager insertInputOutputFormalArgument ?let @lstring inVarName
 #! PROPERTY
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-setter @localVarManager insertNonMutableProperty ?let @lstring inVarName 
+setter @localVarManager insertNonMutableProperty ?let @lstring inVarName
                                                  ?let @unifiedTypeMapEntry inType
                                                  ?let @string inCppName
                                                  ?let @string inNameForCheckingFormalParameterUsing {
@@ -236,7 +242,7 @@ setter @localVarManager insertNonMutableProperty ?let @lstring inVarName
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-setter @localVarManager insertMutableProperty ?let @lstring inVarName 
+setter @localVarManager insertMutableProperty ?let @lstring inVarName
                                               ?let @unifiedTypeMapEntry inType
                                               ?let @string inCppName
                                               ?let @string inNameForCheckingFormalParameterUsing {
@@ -447,7 +453,7 @@ setter @currentVarManager searchForDropAccess ?let @lstring inVarName {
       found = [subMap hasKey !inVarName.string]
     end
     if found then
-      error inVarName : "variable '" + inVarName + "' is not declared in current scope, but in an overrided scope"   
+      error inVarName : "variable '" + inVarName + "' is not declared in current scope, but in an overrided scope"
     else
       error inVarName : "variable '" + inVarName + "' is not declared"
     end
@@ -565,7 +571,7 @@ setter @localVarValuation writeTransition ?let @lstring inVarName
 #! READ ACCESS
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-setter @localVarManager searchForReadAccess ?let @lstring inVarName 
+setter @localVarManager searchForReadAccess ?let @lstring inVarName
                                             !@unifiedTypeMapEntry outType
                                             !@string outCppName
                                             !@string outNameForCheckingFormalParameterUsing {
@@ -763,7 +769,7 @@ setter @currentVarManager closeScope ?let @location inErrorLocation {
 #! INSERT KEY
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-setter @currentVarManager insertKey ?let @lstring inVarName 
+setter @currentVarManager insertKey ?let @lstring inVarName
                                     ?let @unifiedTypeMapEntry inType
                                     ?let @string inCppName
                                     ?let @string inNameForCheckingFormalParameterUsing
@@ -797,7 +803,7 @@ method @localVarValuation checkFinalState ?let @lstring inVarName ?let @localVar
   case initialized : # The variable has been written once
     if [inAttributes suggestDeclareUnusedParameterAsUnused] then
       warning inVarName : "parameter '" + inVarName + "' was never read; consider declaring it as unused"
-    elsif not [inAttributes acceptInitializedStateAsFinalState] then 
+    elsif not [inAttributes acceptInitializedStateAsFinalState] then
       warning inVarName : "variable '" + inVarName + "' was never read; consider removing it"
     end
   case read :
@@ -833,7 +839,7 @@ method @currentVarManager checkAutomatonStates ?let @location inErrorLocation {
 #! COMBINE MANAGERS
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-method @localVarValuation combineValuationWith ?let @localVarValuation inOther 
+method @localVarValuation combineValuationWith ?let @localVarValuation inOther
                                                !@localVarValuation outResult
                                                ?!@string unused ioErrorMessage {
   switch self
@@ -898,7 +904,7 @@ setter @scopeLocalVarMap combineMapWith ?otherMap: let @scopeLocalVarMap inOther
       ioErrorMessage += "\n  - 'internal error type 2 for '" + varName + "' local variable"
     end
   end
-  
+
   for (varName 5*) in inOtherMap do
     if not [self hasKey !varName] then
       ioErrorMessage += "\n  - 'internal error type 3 for '" + varName + "' local variable"

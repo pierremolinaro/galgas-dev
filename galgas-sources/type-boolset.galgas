@@ -1,5 +1,22 @@
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   AST                                     
+#   AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @boolsetDeclarationAST : @semanticDeclarationAST {
@@ -8,7 +25,7 @@ refclass @boolsetDeclarationAST : @semanticDeclarationAST {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SYNTAX                                  
+#   SYNTAX
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
@@ -69,7 +86,7 @@ syntax extension galgas4DeclarationsSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   ENTER IN GRAPH                          
+#   ENTER IN GRAPH
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @boolsetDeclarationAST enterDeclarationInGraph
@@ -84,7 +101,7 @@ override method @boolsetDeclarationAST enterDeclarationInGraph
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   KEY REPRESENTATION                      
+#   KEY REPRESENTATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @boolsetDeclarationAST keyRepresentation -> @string {
@@ -92,7 +109,7 @@ override getter @boolsetDeclarationAST keyRepresentation -> @string {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC CONTEXT                        
+#   SEMANTIC CONTEXT
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private func %once forbiddenKeysForBoolset -> @stringset {
@@ -127,17 +144,17 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
       error slotName : "duplicated slot name"
     end
     slotNameSet += !slotName
-  end  
+  end
 #--- boolset type index
   [!?ioTypeMap makeEntry !self.mBoolsetTypeName ?let boolsetTypeIndex]
 #--- Class functions and attribute map
   commonGetterMapForAllTypes (!?ioTypeMap ?@getterMap getterMap)
   var @classFunctionMap classFunctionMap = {}
-  [!?classFunctionMap insertKey !["none" nowhere] !{} !false !boolsetTypeIndex] 
-  [!?classFunctionMap insertKey !["all" nowhere] !{} !false !boolsetTypeIndex] 
+  [!?classFunctionMap insertKey !["none" nowhere] !{} !false !boolsetTypeIndex]
+  [!?classFunctionMap insertKey !["all" nowhere] !{} !false !boolsetTypeIndex]
   enterBaseFinalGetterWithoutArgument (
     !?getterMap
-    !?ioTypeMap 
+    !?ioTypeMap
     !getterName:"none"
     !obsoleteName: ""
     !returnedTypeName:"bool"
@@ -145,7 +162,7 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
   )
   enterBaseFinalGetterWithoutArgument (
     !?getterMap
-    !?ioTypeMap 
+    !?ioTypeMap
     !getterName:"all"
     !obsoleteName: ""
     !returnedTypeName:"bool"
@@ -153,10 +170,10 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
   )
   for (slotName) in self.mFlagList do
     if not [classFunctionMap hasKey !slotName] then
-      [!?classFunctionMap insertKey !slotName !{} !false !boolsetTypeIndex] 
+      [!?classFunctionMap insertKey !slotName !{} !false !boolsetTypeIndex]
       enterBaseFinalGetterWithoutArgument (
         !?getterMap
-        !?ioTypeMap 
+        !?ioTypeMap
         !getterName:slotName.string
         !obsoleteName: ""
         !returnedTypeName:"bool"
@@ -220,11 +237,11 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
 
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC ANALYSIS                       
+#   SEMANTIC ANALYSIS
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @boolsetDeclarationAST semanticAnalysis
-  ?!@lstringlist unused ioUsefulnessRootEntities 
+  ?!@lstringlist unused ioUsefulnessRootEntities
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext unused inSemanticContext
@@ -249,7 +266,7 @@ override method @boolsetDeclarationAST semanticAnalysis
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   CODE GENERATION                         
+#   CODE GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @boolsetTypeForGeneration : @semanticTypeForGeneration {

@@ -1,3 +1,20 @@
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #!   AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -39,7 +56,7 @@ refclass @collectionValueAST : @semanticExpressionAST {
 syntax extension galgas3ExpressionSyntax {
 
   #·················································································································
-  
+
   rule <primary_ggs3> !@semanticExpressionAST outExpression {
     <optional_type> ?let @lstring typeName
     ${$
@@ -57,12 +74,12 @@ syntax extension galgas3ExpressionSyntax {
       !typeName
       !elementList
       !.here
-    }  
+    }
     $}$
   }
-  
+
   #·················································································································
-  
+
   rule <collection_value_element> !@abstractCollectionValueElement outValueElement {
     var @actualOutputExpressionList expressionList = {}
     repeat
@@ -73,9 +90,9 @@ syntax extension galgas3ExpressionSyntax {
     end
     outValueElement = @expressionListCollectionValue.new {!expressionList !@location.here}
   }
-  
+
   #·················································································································
-  
+
   rule <collection_value_element> !@abstractCollectionValueElement outValueElement {
     <expression_ggs3> ?let @semanticExpressionAST expression
     outValueElement = @expressionCollectionValue.new {!expression !@location.here}
@@ -90,7 +107,7 @@ syntax extension galgas3ExpressionSyntax {
 syntax extension galgas4ExpressionSyntax {
 
   #·················································································································
-  
+
   rule <primary> !@semanticExpressionAST outExpression {
     <optional_type> ?let @lstring typeName
     $[$
@@ -108,12 +125,12 @@ syntax extension galgas4ExpressionSyntax {
       !typeName
       !elementList
       !.here
-    }  
+    }
     $]$
   }
-  
+
   #·················································································································
-  
+
   rule <collection_value_element> !@abstractCollectionValueElement outValueElement {
     var @actualOutputExpressionList expressionList = {}
     repeat
@@ -134,9 +151,9 @@ syntax extension galgas4ExpressionSyntax {
     end
     outValueElement = @expressionListCollectionValue.new {!expressionList !@location.here}
   }
-  
+
   #·················································································································
-  
+
 #  rule <collection_value_element> !@abstractCollectionValueElement outValueElement {
 #    <expression> ?let @semanticExpressionAST expression
 #    outValueElement = @expressionCollectionValue.new {!expression !@location.here}
@@ -404,7 +421,7 @@ override method @expressionListCollectionForGeneration generateCollectionElement
       !?ioUnusedVariableCppNameSet
       ?let @string parameter
     ]
-    parameterList += !parameter  
+    parameterList += !parameter
   end
 #--- Receiver
   ioGeneratedCode += inCppTargetVar
@@ -452,7 +469,7 @@ override method @expressionCollectionForGeneration generateExpression
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
       !outCppExpression
-    ]    
+    ]
   end
 }
 

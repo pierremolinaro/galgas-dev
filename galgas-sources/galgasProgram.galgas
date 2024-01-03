@@ -1,18 +1,25 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#  GALGAS main program definition           
-#                                           
+#
+#  GALGAS main program definition
+#
 #  Copyright (C) 2007, ..., 2014 Pierre Molinaro.
-#                                           
-#  e-mail : pierre@pcmolinaro.name          
-#                                           
-#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
-#  License as published by the Free Software Foundation.
-#                                           
-#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
-#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
-#  details.                                 
-#                                           
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 before { #--- Generate project
@@ -50,16 +57,16 @@ before { #--- Extract LIBPM
 
 extern proc displayUnicodeLexicalTestFunctions
 
-before { 
+before {
   if [option galgas_cli_options.displayUnicodeLexicalTestFunctions value] then
     displayUnicodeLexicalTestFunctions ()
   end
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#          galgas                           
-#                                           
+#
+#          galgas
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 case . "galgas"
@@ -84,9 +91,9 @@ message "a GALGAS 3 source file"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#          ggs                           
-#                                           
+#
+#          ggs
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 case . "ggs"
@@ -110,9 +117,9 @@ message "a GALGAS 4 source file"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#          Template                         
-#                                           
+#
+#          Template
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 case . "galgasTemplate"
@@ -123,9 +130,9 @@ message "a GALGAS Template source file"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#          galgasProject                    
-#                                           
+#
+#          galgasProject
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 case . "galgasProject"
@@ -145,9 +152,9 @@ message "a GALGAS project source file"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#          compileProject                   
-#                                           
+#
+#          compileProject
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc parseAndAnalyzeProject ?let @lstring inProjectSourceFile
@@ -403,9 +410,9 @@ private proc compileProject ?let @lstring inProjectSourceFile
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#          projectGeneration                
-#                                           
+#
+#          projectGeneration
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc projectGeneration
@@ -529,9 +536,9 @@ private proc projectGeneration
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#           G E N E R A T I O N    F I L E W R A P P E R S                                                     
-#                                           
+#
+#           G E N E R A T I O N    F I L E W R A P P E R S
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper typeDumpGenerationTemplate in "+generation-templates/target_generation" {

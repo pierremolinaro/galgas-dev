@@ -1,12 +1,28 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#  A C T U A L    P A R A M E T E R         
-#                                           
+#
+#  A C T U A L    P A R A M E T E R
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @actualParameterListAST {
   public let @actualParameterAST mActualParameter
- 
+
   #·················································································································
 
   method analyzeRoutineArguments?let @lstring inUsefulnessCallerEntityName
@@ -21,7 +37,7 @@ list @actualParameterListAST {
                                 !@actualParameterListForGeneration outActualParameterListForGeneration {
     if [inRoutineSignature count] != [self count] then
       error inRoutineName
-      : "the " + inInvokedEntityName + " defines " + [[inRoutineSignature count] string] 
+      : "the " + inInvokedEntityName + " defines " + [[inRoutineSignature count] string]
       + " formal argument(s), but this invocation names "
       + [[self count] string] + " argument(s)"
       : outActualParameterListForGeneration
@@ -62,7 +78,7 @@ abstract refclass @actualParameterAST {
 
   abstract getter isCompatibleWith ?let @formalArgumentPassingModeAST unused inFormalPassingMode
                                    ?let @string unused inSelector -> @bool
-  
+
   #·················································································································
 
   abstract method enterInActualOutputParameterList ?!@actualOutputExpressionList ioActualOutputArgumentList
@@ -108,7 +124,7 @@ refclass @outputActualParameterAST : @actualParameterAST {
       result = self.mActualSelector.string == inSelector
     end
   }
-  
+
   #·················································································································
 
   override method enterInActualOutputParameterList ?!@actualOutputExpressionList ioActualOutputArgumentList {
@@ -192,7 +208,7 @@ refclass @outputInputActualParameterAST : @actualParameterAST {
       result = self.mActualSelector.string == inSelector
     end
   }
-  
+
   #·················································································································
 
   override method enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
@@ -292,7 +308,7 @@ refclass @outputInputSingleJokerParameterAST : @actualParameterAST {
       result = self.mActualSelector.string == inSelector
     end
   }
-  
+
   #·················································································································
 
   override method enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
@@ -377,7 +393,7 @@ refclass @outputInputSelfParameterAST : @actualParameterAST {
       result = self.mActualSelector.string == inSelector
     end
   }
-  
+
   #·················································································································
 
   override method enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
@@ -460,7 +476,7 @@ refclass @outputInputJokerParameterAST : @actualParameterAST {
 #      result = self.mActualSelector.string == inSelector
 #    end
   }
-  
+
   #·················································································································
 
   override method enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
@@ -542,7 +558,7 @@ refclass @inputActualExistingVariableParameterAST : @actualParameterAST {
       result = self.mActualSelector.string == inSelector
     end
   }
-  
+
   #·················································································································
 
   override method enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
@@ -633,7 +649,7 @@ refclass @inputActualSelfPropertyParameterAST : @actualParameterAST {
       result = self.mActualSelector.string == inSelector
     end
   }
-  
+
   #·················································································································
 
   override method enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
@@ -663,7 +679,7 @@ refclass @inputActualSelfPropertyParameterAST : @actualParameterAST {
       let @string s = "?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
       error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
     end
-    
+
     if let [inAnalysisContext.selfType available ?type: let selfType ?mutable: let selfIsMutable ?mutableproperties: *] then
       if not selfIsMutable then
         error self.mInputActualSelfPropertyName : "'self' not mutable in this context"
@@ -694,7 +710,7 @@ refclass @inputActualSelfPropertyParameterAST : @actualParameterAST {
         !targetVariableCppName
         !poisonedVarCppNameList
       }
-  
+
     else
       error self.mInputActualSelfPropertyName : "'self' not available in this context"
     end
@@ -725,7 +741,7 @@ refclass @inputActualSelfParameterAST : @actualParameterAST {
       result = self.mActualSelector.string == inSelector
     end
   }
-  
+
   #·················································································································
 
   override method enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
@@ -755,7 +771,7 @@ refclass @inputActualSelfParameterAST : @actualParameterAST {
       let @string s = "?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
       error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
     end
-    
+
     if let [inAnalysisContext.selfType available ?type: let selfType ?mutable: let selfIsMutable ?mutableproperties: *] then
       if not selfIsMutable then
         error self.mSelfLocation : "'self' not mutable in this context"
@@ -787,7 +803,7 @@ refclass @inputActualSelfParameterAST : @actualParameterAST {
         !targetVariableCppName
         !poisonedVarCppNameList
       }
-  
+
     else
       error self.mSelfLocation : "'self' not available in this context"
     end
@@ -819,7 +835,7 @@ refclass @inputActualNewVariableParameterAST : @actualParameterAST {
       result = self.mActualSelector.string == inSelector
     end
   }
-  
+
   #·················································································································
 
   override method enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
@@ -925,7 +941,7 @@ refclass @inputActualNewConstantParameterAST : @actualParameterAST {
       result = self.mActualSelector.string == inSelector
     end
   }
-  
+
   #·················································································································
 
   override method enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
@@ -1036,7 +1052,7 @@ refclass @inputSingleJokerActualParameterAST : @actualParameterAST {
       result = self.mActualSelector.string == inSelector
     end
   }
-  
+
   #·················································································································
 
   override method enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
@@ -1060,7 +1076,7 @@ refclass @inputSingleJokerActualParameterAST : @actualParameterAST {
     if inFormalArgumentPassingMode != @formalArgumentPassingModeAST. argumentOut then
       error self.mActualSelector
       :"the corresponding formal argument has the '" + [inFormalArgumentPassingMode string]
-      + "' passing mode: this parameter should be passed with '" 
+      + "' passing mode: this parameter should be passed with '"
       + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
     elsif inFormalSelector.string != self.mActualSelector.string then
       let @string s = "?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
@@ -1110,7 +1126,7 @@ refclass @inputJokerActualParameterAST : @actualParameterAST {
 #      result = self.mActualSelector.string == inSelector
 #    end
   }
-  
+
   #·················································································································
 
   override method enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {

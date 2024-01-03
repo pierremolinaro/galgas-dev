@@ -1,3 +1,20 @@
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -429,7 +446,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
 #--- Check this type handle 'with' access
   if not [[receiverType definition].mHandledOperatorFlags supportWithAccessor] then
     error self.mEndOfReceiverExpression : "the '@"+ [receiverType definition].mTypeName.string + "' type cannot be used in a 'with' instruction"
-  end  
+  end
 #--- Enter in a select block
   [!?ioVariableMap openOverrideForSelectBlock]
 #--- 'do' branch : add attributes as constant
@@ -565,7 +582,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
 #--- Check this type handle 'with' access
   if not [[targetType definition].mHandledOperatorFlags supportWithAccessor] then
     error self.mEndOfReceiverExpression : "the '@"+ [targetType definition].mTypeName.string + "' type cannot be used in a 'with' instruction"
-  end  
+  end
 #--- Check search method
   if self.mSearchMethodNameForErrorSignaling.string != "" then
     var @bool found = false
@@ -683,7 +700,7 @@ override method @readOnlyWithInstructionForGeneration generateInstruction
   let receiverType = self.mReceiverExpression.mResultType
 #--- key expression
   [self.mKeyExpression generateExpression
-    !?ioGeneratedCode 
+    !?ioGeneratedCode
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet

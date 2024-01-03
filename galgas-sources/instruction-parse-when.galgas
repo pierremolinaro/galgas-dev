@@ -1,3 +1,20 @@
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -18,14 +35,14 @@ refclass @parseWhenInstruction : @syntaxInstructionAST {
 syntax extension galgas3SyntaxComponentSyntax {
 
   #·················································································································
-  
+
   rule <branchOfParseWhithInstruction> !@syntaxInstructionList outElseInstructionList {
     $else$
     <syntax_instruction_list_ggs3> ? outElseInstructionList
   }
-  
+
   #·················································································································
-  
+
   rule <branchOfParseWhithInstruction> !@syntaxInstructionList outElseInstructionList {
     $case$
     let instructionLocation = @location.here
@@ -48,9 +65,9 @@ syntax extension galgas3SyntaxComponentSyntax {
       !endOfElseInstructions
     }
   }
-  
+
   #·················································································································
-  
+
   rule <syntax_instruction_ggs3> !@syntaxInstructionAST outInstruction {
     $parse$
     let instructionLocation = @location.here
@@ -74,7 +91,7 @@ syntax extension galgas3SyntaxComponentSyntax {
       !endOfElseInstructions
     }
   }
-  
+
   #·················································································································
 
 }
@@ -84,16 +101,16 @@ syntax extension galgas3SyntaxComponentSyntax {
 syntax extension galgas4SyntaxComponentSyntax {
 
   #·················································································································
-  
+
   rule <branchOfParseWhithInstruction> ?!@galgasDeclarationAST ioDeclarations
                                        ?!@stringset ioUserImplicitDeclaredTypeSet
                                        !@syntaxInstructionList outElseInstructionList {
     $else$
     <syntax_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ? outElseInstructionList
   }
-  
+
   #·················································································································
-  
+
   rule <branchOfParseWhithInstruction> ?!@galgasDeclarationAST ioDeclarations
                                        ?!@stringset ioUserImplicitDeclaredTypeSet
                                        !@syntaxInstructionList outElseInstructionList {
@@ -118,9 +135,9 @@ syntax extension galgas4SyntaxComponentSyntax {
       !endOfElseInstructions
     }
   }
-  
+
   #·················································································································
-  
+
   rule <syntax_instruction> ?!@galgasDeclarationAST ioDeclarations
                             ?!@stringset ioUserImplicitDeclaredTypeSet
                             !@syntaxInstructionAST outInstruction {
@@ -146,7 +163,7 @@ syntax extension galgas4SyntaxComponentSyntax {
       !endOfElseInstructions
     }
   }
-  
+
   #·················································································································
 
 }
@@ -173,7 +190,7 @@ override method @parseWhenInstruction transformInstruction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-  
+
 override method @parseWhenInstruction analyzeSyntaxInstruction
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph

@@ -1,17 +1,20 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! AST
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @terminalCheckInstruction : @syntaxInstructionAST {
-  private let @lstring mTerminalName
-  private let @actualInputParameterListAST mActualInputParameterList
-  private let @2lstringlist mIndexingKeyList # Empty list if no index
-  private let @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
-  private let @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationToken
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! SYNTAX
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3SyntaxComponentSyntax {
@@ -131,101 +134,112 @@ syntax extension galgas4SyntaxComponentSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! TRANSFORM
+#! AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @terminalCheckInstruction transformInstruction
-  ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
-  ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis unused inNonTerminalSymbolMap
-  ?!addedTerminalIndex:@uint unused ioAddedNonTerminalIndex
-  ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList {
-  let @uint terminalSymbolIndex
-  with self.mTerminalName.string in ioActuallyUsedTerminalSymbolMap  do
-    terminalSymbolIndex = mTerminalIndex
-  else
-    terminalSymbolIndex = [ioActuallyUsedTerminalSymbolMap count]
-    [!?ioActuallyUsedTerminalSymbolMap insertKey !self.mTerminalName !terminalSymbolIndex]
-  end
-  ioSyntaxInstructionList += !@terminalInstructionForGrammarAnalysis.new {
-    !self.mInstructionLocation
-    !self.mTerminalName
-    !terminalSymbolIndex
+refclass @terminalCheckInstruction : @syntaxInstructionAST {
+  private let @lstring mTerminalName
+  private let @actualInputParameterListAST mActualInputParameterList
+  private let @2lstringlist mIndexingKeyList # Empty list if no index
+  private let @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
+  private let @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationToken
+
+  #·················································································································
+
+  override method  transformInstruction
+    ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
+    ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis unused inNonTerminalSymbolMap
+    ?!addedTerminalIndex:@uint unused ioAddedNonTerminalIndex
+    ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList {
+    let @uint terminalSymbolIndex
+    with self.mTerminalName.string in ioActuallyUsedTerminalSymbolMap  do
+      terminalSymbolIndex = mTerminalIndex
+    else
+      terminalSymbolIndex = [ioActuallyUsedTerminalSymbolMap count]
+      [!?ioActuallyUsedTerminalSymbolMap insertKey !self.mTerminalName !terminalSymbolIndex]
+    end
+    ioSyntaxInstructionList += !@terminalInstructionForGrammarAnalysis.new {
+      !self.mInstructionLocation
+      !self.mTerminalName
+      !terminalSymbolIndex
+    }
   }
-}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! SEMANTICS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-  
-override method @terminalCheckInstruction analyzeSyntaxInstruction
-  ?let @lstring unused inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
-  ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?let @bool inHasTranslateFeature
-  ?let @terminalMap inTerminalMap
-  ?let @string inLexiqueName
-  ?let @nonterminalMap unused inNonterminalMap
-  ?let @string unused inComponentName
-  ?let @stringset inIndexNameSet
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@localVarManager ioVariableMap
-  ?!@uint unused ioSelectMethodCount {
-  [inTerminalMap searchKey !self.mTerminalName ?let @lexicalSentValueList sentAttributeList]
-#---
-  if [self.mActualInputParameterList count] != [sentAttributeList count] then
-    error self.mTerminalName
-    : "naming the '$" + self.mTerminalName + "$' terminal requires " + [[sentAttributeList count] string]
-    + " input parameter" + if [sentAttributeList count] > 1 then "s" else "" end
-    + ", but this instruction names "
-    + [[self.mActualInputParameterList count] string] + " input parameter" 
-    + if [self.mActualInputParameterList count] > 1 then "s" else "" end
-  end
-#---
-  var terminalCheckAssignementList = @terminalCheckAssignementList {}
-  for (mActualSelector mInputParameter) in self.mActualInputParameterList, (mLexicalFormalSelector mLexicalAttributeName mLexicalType) in sentAttributeList do
-    [mInputParameter analyzeInputParameter
+  #·················································································································
+
+  override method analyzeSyntaxInstruction
+    ?let @lstring unused inUsefulnessCallerEntityName
+    ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
+    ?let @analysisContext inAnalysisContext
+                                  ?!@unifiedTypeMap ioTypeMap
+    ?let @bool inHasTranslateFeature
+    ?let @terminalMap inTerminalMap
+    ?let @string inLexiqueName
+    ?let @nonterminalMap unused inNonterminalMap
+    ?let @string unused inComponentName
+    ?let @stringset inIndexNameSet
+    ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+    ?!@localVarManager ioVariableMap
+    ?!@uint unused ioSelectMethodCount {
+    [inTerminalMap searchKey !self.mTerminalName ?let @lexicalSentValueList sentAttributeList]
+  #---
+    if [self.mActualInputParameterList count] != [sentAttributeList count] then
+      error self.mTerminalName
+      : "naming the '$" + self.mTerminalName + "$' terminal requires " + [[sentAttributeList count] string]
+      + " input parameter" + if [sentAttributeList count] > 1 then "s" else "" end
+      + ", but this instruction names "
+      + [[self.mActualInputParameterList count] string] + " input parameter"
+      + if [self.mActualInputParameterList count] > 1 then "s" else "" end
+    end
+  #---
+    var terminalCheckAssignementList = @terminalCheckAssignementList {}
+    for (mActualSelector mInputParameter) in self.mActualInputParameterList, (mLexicalFormalSelector mLexicalAttributeName mLexicalType) in sentAttributeList do
+      [mInputParameter analyzeInputParameter
+        !inAnalysisContext
+        !?ioTypeMap
+        !mLexicalType
+        !mLexicalAttributeName
+        !?terminalCheckAssignementList
+        !?ioVariableMap
+      ]
+      if mLexicalFormalSelector.string != mActualSelector.string then
+        error mActualSelector : "the actual selector should be '?" + mLexicalFormalSelector + if mLexicalFormalSelector.string != "" then ":" else "" end + "'"
+        warning mLexicalFormalSelector : "the formal selector is declared here"
+      end
+    end
+  #---
+    for (mValue0 *) in self.mIndexingKeyList do
+      if not [inIndexNameSet hasKey !mValue0.string] then
+        error mValue0 : "the '" + mValue0 + "' indexing name is not declared by the lexique" fixit { replace inIndexNameSet }
+      end
+    end
+  #--- Check syntax directed translation destination variable
+    [self.mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor analyzeSDT
       !inAnalysisContext
       !?ioTypeMap
-      !mLexicalType
-      !mLexicalAttributeName
-      !?terminalCheckAssignementList
+      !inHasTranslateFeature
       !?ioVariableMap
     ]
-    if mLexicalFormalSelector.string != mActualSelector.string then
-      error mActualSelector : "the actual selector should be '?" + mLexicalFormalSelector + if mLexicalFormalSelector.string != "" then ":" else "" end + "'"
-      warning mLexicalFormalSelector : "the formal selector is declared here"
-    end
-  end
-#---
-  for (mValue0 *) in self.mIndexingKeyList do
-    if not [inIndexNameSet hasKey !mValue0.string] then
-      error mValue0 : "the '" + mValue0 + "' indexing name is not declared by the lexique" fixit { replace inIndexNameSet }
-    end
-  end
-#--- Check syntax directed translation destination variable
-  [self.mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor analyzeSDT
-    !inAnalysisContext
-    !?ioTypeMap
-    !inHasTranslateFeature
-    !?ioVariableMap
-  ]
-  [self.mGrammarInstructionSyntaxDirectedTranslationToken analyzeSDT
-    !inAnalysisContext
-    !?ioTypeMap
-    !inHasTranslateFeature
-    !?ioVariableMap
-  ]
-#---
-  ioInstructionListForGeneration += !@terminalCheckInstructionForGeneration.new {
-    !self.mInstructionLocation
-    !self.mTerminalName
-    !inLexiqueName
-    !terminalCheckAssignementList
-    !self.mIndexingKeyList
-    !self.mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
-    !self.mGrammarInstructionSyntaxDirectedTranslationToken
+    [self.mGrammarInstructionSyntaxDirectedTranslationToken analyzeSDT
+      !inAnalysisContext
+      !?ioTypeMap
+      !inHasTranslateFeature
+      !?ioVariableMap
+    ]
+  #---
+    ioInstructionListForGeneration += !@terminalCheckInstructionForGeneration.new {
+      !self.mInstructionLocation
+      !self.mTerminalName
+      !inLexiqueName
+      !terminalCheckAssignementList
+      !self.mIndexingKeyList
+      !self.mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
+      !self.mGrammarInstructionSyntaxDirectedTranslationToken
+    }
   }
+
+  #·················································································································
+
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -283,7 +297,7 @@ override getter @terminalCheckInstructionForGeneration compareInstructionSyntaxS
   if not result then
     error self.mInstructionLocation
     :"reference syntax instruction is here"
-  end  
+  end
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -303,8 +317,8 @@ override method @terminalCheckInstructionForGeneration generateInstruction
     else
     end
     ioGeneratedCode += mTargetVarCppName + " = " + compilerCppName () + "->synthetizedAttribute_"
-                    + [mSourceLexicalAttributeName identifierRepresentation]
-                    + " () ;\n"
+    ioGeneratedCode += [mSourceLexicalAttributeName identifierRepresentation]
+    ioGeneratedCode += " () ;\n"
   end
 #--- Indexing
   for (mValue0 mValue1) in self.mIndexingKeyList do
