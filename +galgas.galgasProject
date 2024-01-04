@@ -131,7 +131,7 @@ project (3:7:0) -> "galgas" {
   "galgas-sources/predefinedType-uint.galgas"
   "galgas-sources/predefinedType-uint64.galgas"
 
-#--- Semantics Component`
+#--- Semantics Component
   "galgas-sources/actual-parameters.galgas"
   "galgas-sources/extern-procedure-declaration.galgas"
   "galgas-sources/procedure-declaration.galgas"

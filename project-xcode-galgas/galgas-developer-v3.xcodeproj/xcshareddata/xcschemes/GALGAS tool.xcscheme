@@ -85,6 +85,10 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "--check-big-int"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "--mode=indexing:/Volumes/dev-git/galgas-dev/galgas-sources/predefinedType-application.galgas"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

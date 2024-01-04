@@ -212,41 +212,41 @@ String UInt128::decimalString (void) const {
 
 void UInt128::example (void) {
   UInt128 v (1000000) ;
-  printf ("%s\n", v.decimalString ().cString (HERE)) ;
+  printf ("%s\n", v.decimalString ().cString ()) ;
   v *= 1000000 ;
-  printf ("%s\n", v.decimalString ().cString (HERE)) ;
+  printf ("%s\n", v.decimalString ().cString ()) ;
   v *= 1000000 ;
-  printf ("%s\n", v.decimalString ().cString (HERE)) ;
+  printf ("%s\n", v.decimalString ().cString ()) ;
   v *= 1000000 ;
-  printf ("%s\n", v.decimalString ().cString (HERE)) ;
+  printf ("%s\n", v.decimalString ().cString ()) ;
   v *= 1000000 ;
-  printf ("%s\n", v.decimalString ().cString (HERE)) ;
+  printf ("%s\n", v.decimalString ().cString ()) ;
   v *= 1000000 ;
-  printf ("%s\n", v.decimalString ().cString (HERE)) ;
+  printf ("%s\n", v.decimalString ().cString ()) ;
   v /= 1000 ;
-  printf ("%s\n", v.decimalString ().cString (HERE)) ;
+  printf ("%s\n", v.decimalString ().cString ()) ;
   v /= 1000 ;
-  printf ("%s\n", v.decimalString ().cString (HERE)) ;
+  printf ("%s\n", v.decimalString ().cString ()) ;
   v /= 1000 ;
-  printf ("%s\n", v.decimalString ().cString (HERE)) ;
+  printf ("%s\n", v.decimalString ().cString ()) ;
   v /= 1000 ;
-  printf ("%s\n", v.decimalString ().cString (HERE)) ;
+  printf ("%s\n", v.decimalString ().cString ()) ;
   v /= 1000 ;
-  printf ("%s\n", v.decimalString ().cString (HERE)) ;
+  printf ("%s\n", v.decimalString ().cString ()) ;
   v /= 1000 ;
-  printf ("%s\n", v.decimalString ().cString (HERE)) ;
+  printf ("%s\n", v.decimalString ().cString ()) ;
   v /= 1000 ;
-  printf ("%s\n", v.decimalString ().cString (HERE)) ;
+  printf ("%s\n", v.decimalString ().cString ()) ;
   v /= 1000 ;
-  printf ("%s\n", v.decimalString ().cString (HERE)) ;
+  printf ("%s\n", v.decimalString ().cString ()) ;
   v /= 1000 ;
-  printf ("%s\n", v.decimalString ().cString (HERE)) ;
+  printf ("%s\n", v.decimalString ().cString ()) ;
   v /= 1000 ;
-  printf ("%s\n", v.decimalString ().cString (HERE)) ;
+  printf ("%s\n", v.decimalString ().cString ()) ;
   v /= 1000 ;
-  printf ("%s\n", v.decimalString ().cString (HERE)) ;
+  printf ("%s\n", v.decimalString ().cString ()) ;
   v /= 1000 ;
-  printf ("%s\n", v.decimalString ().cString (HERE)) ;
+  printf ("%s\n", v.decimalString ().cString ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------

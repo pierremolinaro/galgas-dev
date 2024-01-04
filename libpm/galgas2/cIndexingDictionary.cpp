@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library
 //
-//  Copyright (C) 2010, ..., 2012 Pierre Molinaro.
+//  Copyright (C) 2010, ..., 2023 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -29,12 +29,10 @@
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
-//  c I n d e x E n t r y N o d e
-//
+//  cIndexEntryNode
 //--------------------------------------------------------------------------------------------------
 
-class cIndexEntryNode {
+class cIndexEntryNode final {
   public: cIndexEntryNode * mInfPtr ;
   public: cIndexEntryNode * mSupPtr ;
   public: int32_t mBalance ;
@@ -45,11 +43,11 @@ class cIndexEntryNode {
   public: cIndexEntryNode (const String & inKey) ;
 
 //--- Destructor
-  public: virtual ~ cIndexEntryNode (void) ;
+  public: ~ cIndexEntryNode (void) ;
 
 //--- No copy
-  private: cIndexEntryNode (const cIndexEntryNode &) ;
-  private: cIndexEntryNode & operator = (const cIndexEntryNode &) ;
+  private: cIndexEntryNode (const cIndexEntryNode &) = delete ;
+  private: cIndexEntryNode & operator = (const cIndexEntryNode &) = delete ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -90,7 +88,7 @@ static void rotateLeft (cIndexEntryNode * & ioRootPtr) {
   ioRootPtr = b ;
 }
 
-//---------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static void rotateRight (cIndexEntryNode * & ioRootPtr) {
   cIndexEntryNode * b = ioRootPtr->mInfPtr ;
@@ -166,9 +164,7 @@ cIndexEntryNode * cIndexingDictionary::findOrAddEntry (cIndexEntryNode * & ioRoo
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //                 cIndexingDictionary
-//
 //--------------------------------------------------------------------------------------------------
 
 cIndexingDictionary::cIndexingDictionary (void) :
@@ -184,18 +180,14 @@ cIndexingDictionary::~ cIndexingDictionary (void) {
 //--------------------------------------------------------------------------------------------------
 
 void cIndexingDictionary::addIndexedKey (const uint32_t inIndexingKind,
-                                         const String & inIndexedKey,
+                                         const String & inIndexedString,
                                          const String & inSourceFilePath,
                                          const uint32_t inTokenLineInSource,
                                          const uint32_t inTokenLocationInSource,
                                          const uint32_t inTokenLengthInSource) {
-  // printf ("INDEXING '%s', kind %d, file '%s' at [%d, %d]\n", inIndexedKey.cString (HERE), inIndexingKind, inSourceFilePath.cString (HERE), inTokenLocationInSource, inTokenLocationInSource + inTokenLengthInSource) ;
-//--- File Path registering
-//  bool extension = false ; // Unused here
-//  const uint32_t filePathID = findOrAddFilePath (mFilePathRoot, inSourceFilePath, extension) ;
 //--- Entry registering
   bool extension = false ;
-  cIndexEntryNode * entryNode = findOrAddEntry (mEntryRoot, inIndexedKey, extension) ;
+  cIndexEntryNode * entryNode = findOrAddEntry (mEntryRoot, inIndexedString, extension) ;
 //--- Register index
   String entryDescriptor ;
   entryDescriptor.addUnsigned (inIndexingKind) ;
@@ -210,7 +202,7 @@ void cIndexingDictionary::addIndexedKey (const uint32_t inIndexingKind,
   entryNode->mDescriptorArray.appendObject (entryDescriptor) ;
 }
 
-//---------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static void enumerateEntries (const cIndexEntryNode * inNode,
                               String & ioContents) {
@@ -234,8 +226,8 @@ static void enumerateEntries (const cIndexEntryNode * inNode,
 
 void cIndexingDictionary::generateIndexFile (const String & inOutputIndexFilePath) const {
   String contents = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
-                      "<!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">"
-                      "<plist version=\"1.0\">" ;
+                    "<!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">"
+                    "<plist version=\"1.0\">" ;
 //--- Write entries as dictionary
   contents.addString ("<dict>") ;
   enumerateEntries (mEntryRoot, contents) ;

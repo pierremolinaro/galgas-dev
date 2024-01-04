@@ -4688,7 +4688,7 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
             break ;
           }
         }else{
-          printf ("*** Error: unhandled extension for file '%s' ***\n", sourceFilesArray (i COMMA_HERE).cString (HERE)) ;
+          printf ("*** Error: unhandled extension for file '%s' ***\n", sourceFilesArray (i COMMA_HERE).cString ()) ;
           r = 1 ;
         }
         if (r != 0) {

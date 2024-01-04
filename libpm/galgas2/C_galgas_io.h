@@ -115,7 +115,7 @@ class cToken {
 //
 //--------------------------------------------------------------------------------------------------
 
-class C_parsingContext {
+class ParsingContext final {
   private: int32_t mParsingArrayIndex ;
   private: LocationInSource mLocation ;
   private: cToken * mCurrentTokenPtr ;
@@ -125,11 +125,11 @@ class C_parsingContext {
 
   friend class Lexique ;
   
-  public: C_parsingContext (void) ;
+  public: ParsingContext (void) ;
 
-//--- No copy
-  public: C_parsingContext (const C_parsingContext & inSource) ;
-  public: C_parsingContext & operator = (const C_parsingContext & inSource) ;
+//--- Copy
+  public: ParsingContext (const ParsingContext & inSource) ;
+  public: ParsingContext & operator = (const ParsingContext & inSource) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

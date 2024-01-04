@@ -641,7 +641,7 @@ GALGAS_stringlist GALGAS_string::getter_componentsSeparatedByString (const GALGA
 GALGAS_sint GALGAS_string::getter_system (UNUSED_LOCATION_ARGS) const {
   GALGAS_sint result ;
   if (isValid ()) {
-    result = GALGAS_sint (::system (mString.cString (HERE))) ;
+    result = GALGAS_sint (::system (mString.cString ())) ;
   }
   return result ;
 }
@@ -659,7 +659,7 @@ GALGAS_sint GALGAS_string::getter_commandWithArguments (const GALGAS_stringlist 
       command.addString (inArguments.getter_mValueAtIndex (GALGAS_uint (i), inCompiler COMMA_THERE).stringValue ()) ;
       command.addString ("'") ;
     }
-    result = GALGAS_sint (::system (command.cString (HERE))) ;
+    result = GALGAS_sint (::system (command.cString ())) ;
   }
   return result ;
 }
@@ -689,7 +689,7 @@ static void recursiveSearchForRegularFiles (const String & inUnixStartPath,
                                             const String & inRelativePath,
                                             GALGAS_stringlist & ioResult) {
   const String nativeStartPath = FileManager::nativePathWithUnixPath (inUnixStartPath) ;
-  DIR * dir = ::opendir (nativeStartPath.cString (HERE)) ;
+  DIR * dir = ::opendir (nativeStartPath.cString ()) ;
   if (dir != nullptr) {
     struct dirent  * current = readdir (dir) ;
     while (current != nullptr) {
@@ -737,7 +737,7 @@ static void recursiveSearchForHiddenFiles (const String & inUnixStartPath,
                                            const String & inRelativePath,
                                            GALGAS_stringlist & ioResult) {
   const String nativeStartPath = FileManager::nativePathWithUnixPath (inUnixStartPath) ;
-  DIR * dir = ::opendir (nativeStartPath.cString (HERE)) ;
+  DIR * dir = ::opendir (nativeStartPath.cString ()) ;
   if (dir != nullptr) {
     struct dirent  * current = readdir (dir) ;
     while (current != nullptr) {
@@ -785,7 +785,7 @@ static void recursiveSearchForDirectories (const String & inUnixStartPath,
                                            const String & inRelativePath,
                                            GALGAS_stringlist & ioResult) {
   const String nativeStartPath = FileManager::nativePathWithUnixPath (inUnixStartPath) ;
-  DIR * dir = ::opendir (nativeStartPath.cString (HERE)) ;
+  DIR * dir = ::opendir (nativeStartPath.cString ()) ;
   if (dir != nullptr) {
     struct dirent  * current = readdir (dir) ;
     while (current != nullptr) {
@@ -835,7 +835,7 @@ static void recursiveSearchForRegularFiles (const String & inUnixStartPath,
                                             const String & inRelativePath,
                                             GALGAS_stringlist & ioResult) {
   const String nativeStartPath = FileManager::nativePathWithUnixPath (inUnixStartPath) ;
-  DIR * dir = ::opendir (nativeStartPath.cString (HERE)) ;
+  DIR * dir = ::opendir (nativeStartPath.cString ()) ;
   if (dir != nullptr) {
     struct dirent  * current = readdir (dir) ;
     while (current != nullptr) {
@@ -898,7 +898,7 @@ static void recursiveSearchForDirectories (const String & inUnixStartPath,
                                            const String & inRelativePath,
                                            GALGAS_stringlist & ioResult) {
   const String nativeStartPath = FileManager::nativePathWithUnixPath (inUnixStartPath) ;
-  DIR * dir = ::opendir (nativeStartPath.cString (HERE)) ;
+  DIR * dir = ::opendir (nativeStartPath.cString ()) ;
   if (dir != nullptr) {
     struct dirent  * current = readdir (dir) ;
     while (current != nullptr) {
@@ -959,7 +959,7 @@ GALGAS_stringlist GALGAS_string::getter_directoriesWithExtensions (const GALGAS_
 GALGAS_bool GALGAS_string::getter_doesEnvironmentVariableExist (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (isValid ()) {
-    result = GALGAS_bool (::getenv (mString.cString (HERE)) != nullptr) ;
+    result = GALGAS_bool (::getenv (mString.cString ()) != nullptr) ;
   }
   return result ;
 }
@@ -1129,7 +1129,7 @@ GALGAS_bigint GALGAS_string::getter_decimalSignedBigInt (Compiler * inCompiler
   GALGAS_bigint result ;
   if (isValid ()) {
     bool ok = false ;
-    BigSigned bigint (mString.cString (HERE), BigUnsignedBase::ten, ok) ;
+    BigSigned bigint (mString.cString (), BigUnsignedBase::ten, ok) ;
     if (ok) {
       result = GALGAS_bigint (bigint) ;
     }else{
@@ -1273,7 +1273,7 @@ GALGAS_bool GALGAS_string::getter_isSymbolicLink (UNUSED_LOCATION_ARGS) const {
         }
       }
       if (ok) {
-        ok = CreateChildProcess (g_hChildStd_OUT_Wr, g_hChildStd_IN_Rd, mString.cString (HERE)) ;
+        ok = CreateChildProcess (g_hChildStd_OUT_Wr, g_hChildStd_IN_Rd, mString.cString ()) ;
         if (! ok) {
           errorMessage.addString ("@string popen: 'CreateChildProcess' error") ;
         }
@@ -1309,7 +1309,7 @@ GALGAS_bool GALGAS_string::getter_isSymbolicLink (UNUSED_LOCATION_ARGS) const {
                                              COMMA_UNUSED_LOCATION_ARGS) const {
     GALGAS_string result ;
     if (isValid ()) {
-      FILE * f = popen (mString.cString (HERE), "r") ;
+      FILE * f = popen (mString.cString (), "r") ;
       U8Data response ;
       bool loop = true ;
       while (loop) {

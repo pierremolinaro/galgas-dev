@@ -49,7 +49,7 @@ template <typename TYPE> class TC_UniqueArray2 {
 
 //--- Constructor
   public: TC_UniqueArray2 (const int32_t inRowCount,
-                            const int32_t inColumnCount) ;
+                           const int32_t inColumnCount) ;
 
 //--- Destructor
   public: virtual ~TC_UniqueArray2 (void) ;
@@ -88,9 +88,9 @@ template <typename TYPE> class TC_UniqueArray2 {
   }
 
   public: void setObjectAtIndexes (const TYPE & inObject,
-                                    const int32_t inRowIndex,
-                                    const int32_t inColumnIndex
-                                    COMMA_LOCATION_ARGS) ;
+                                   const int32_t inRowIndex,
+                                   const int32_t inColumnIndex
+                                   COMMA_LOCATION_ARGS) ;
 
 //--- Exchange
   friend void swap <TYPE> (TC_UniqueArray2 <TYPE> & ioOperand1,

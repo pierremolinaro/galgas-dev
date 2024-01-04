@@ -2981,7 +2981,7 @@ class Lexique_galgasScanner_34_ : public Lexique {
   public: uint64_t attributeValue_uint_36__34_value (void) const ;
 
 
-//--- Indexing keys
+//--- indexing keys
   public: enum {
     kIndexing_classDefinition,
     kIndexing_enumDefinition,

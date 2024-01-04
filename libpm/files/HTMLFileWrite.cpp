@@ -43,12 +43,12 @@ TextFileWrite (inFileName) {
   addRawData ("</title>") ;
   if (inCSSFileName.length () > 0) {
     addRawData ("<link rel=stylesheet type=\"text/css\" href=\"") ;
-    addRawData (inCSSFileName.cString (HERE)) ;
+    addRawData (inCSSFileName.cString ()) ;
     addRawData ("\">") ;
   }  
   if (inCSSContents.length () > 0) {
     addRawData ("<style type=\"text/css\">") ;
-    addRawData (inCSSContents.cString (HERE)) ;
+    addRawData (inCSSContents.cString ()) ;
     addRawData ("</style>") ;
   }
   addRawData ("</head>\n<body><div>\n") ;
@@ -137,7 +137,7 @@ void HTMLFileWrite::addCppTitleComment (const String & inCommentString,
   addRawData ("<table") ;
   if (inTableStyleClass.length () > 0) {
     addRawData (" class=\"") ;
-    addRawData (inTableStyleClass.cString (HERE)) ;
+    addRawData (inTableStyleClass.cString ()) ;
     addRawData ("\"") ;
   }
   addRawData ("><tr><td>\n") ;

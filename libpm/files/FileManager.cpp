@@ -142,7 +142,7 @@
 //--------------------------------------------------------------------------------------------------
 
 FILE * FileManager::openTextFileForReading (const String & inFilePath) {
-  return ::fopen (nativePathWithUnixPath (inFilePath).cString (HERE), "rt") ;
+  return ::fopen (nativePathWithUnixPath (inFilePath).cString (), "rt") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -154,7 +154,7 @@ FILE * FileManager::openTextFileForReading (const String & inFilePath) {
 //--------------------------------------------------------------------------------------------------
 
 FILE * FileManager::openBinaryFileForReading (const String & inFilePath) {
-  return ::fopen (nativePathWithUnixPath (inFilePath).cString (HERE), "rb") ;
+  return ::fopen (nativePathWithUnixPath (inFilePath).cString (), "rb") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -170,7 +170,7 @@ bool FileManager::binaryDataWithContentOfFile (const String & inFilePath,
   outBinaryData.free () ;
 //--- Open file for binary reading
   const String nativePath = nativePathWithUnixPath (inFilePath) ;
-  FILE * inputFile = ::fopen (nativePath.cString (HERE), "rb") ;
+  FILE * inputFile = ::fopen (nativePath.cString (), "rb") ;
   bool ok = inputFile != nullptr ;
 //--- Go to the end of the file
   if (ok) {
@@ -569,7 +569,7 @@ String FileManager::stringWithContentOfFile (const String & inFilePath,
                                                  PMTextFileEncoding & outTextFileEncoding,
                                                  bool & outOk) {
   #ifdef PRINT_SNIFF_ENCODING
-    printf ("** SNIFF ENCODING for '%s': ", inFilePath.cString (HERE)) ;
+    printf ("** SNIFF ENCODING for '%s': ", inFilePath.cString ()) ;
   #endif
 //--- Read file
   U8Data stringData ;
@@ -610,7 +610,7 @@ String FileManager::stringWithContentOfFile (const String & inFilePath) {
   String result_string = stringWithContentOfFile (inFilePath, textFileEncoding, ok) ;
 //--- Assign C string to String
   if (! ok) {
-    throw C_TextReadException (inFilePath.cString (HERE)) ;
+    throw C_TextReadException (inFilePath.cString ()) ;
   }
   return result_string ;
 }
@@ -647,8 +647,8 @@ bool FileManager::writeStringToExecutableFile (const String & inString,
     success = file.close () ;
     #if COMPILE_FOR_WINDOWS == 0
       struct stat fileStat ;
-      ::stat (inFilePath.cString (HERE), & fileStat) ;
-      ::chmod (inFilePath.cString (HERE), fileStat.st_mode | S_IXUSR | S_IXGRP | S_IXOTH) ;
+      ::stat (inFilePath.cString (), & fileStat) ;
+      ::chmod (inFilePath.cString (), fileStat.st_mode | S_IXUSR | S_IXGRP | S_IXOTH) ;
     #endif
   }
   return success ;
@@ -685,8 +685,8 @@ bool FileManager::writeBinaryDataToExecutableFile (const U8Data & inBinaryData,
     success = binaryFile.close () ;
     #if COMPILE_FOR_WINDOWS == 0
       struct stat fileStat ;
-      ::stat (inFilePath.cString (HERE), & fileStat) ;
-      ::chmod (inFilePath.cString (HERE), fileStat.st_mode | S_IXUSR | S_IXGRP | S_IXOTH) ;
+      ::stat (inFilePath.cString (), & fileStat) ;
+      ::chmod (inFilePath.cString (), fileStat.st_mode | S_IXUSR | S_IXGRP | S_IXOTH) ;
     #endif
   }
 //---
@@ -706,8 +706,8 @@ bool FileManager::makeFileExecutable (const String & inFilePath) {
   #if COMPILE_FOR_WINDOWS == 0
     if (result) {
       struct stat fileStat ;
-      ::stat (inFilePath.cString (HERE), & fileStat) ;
-      ::chmod (inFilePath.cString (HERE), fileStat.st_mode | S_IXUSR | S_IXGRP | S_IXOTH) ;
+      ::stat (inFilePath.cString (), & fileStat) ;
+      ::chmod (inFilePath.cString (), fileStat.st_mode | S_IXUSR | S_IXGRP | S_IXOTH) ;
     }
   #endif
   return result ;
@@ -741,7 +741,7 @@ bool FileManager::directoryExistsWithNativePath (const String & inDirectoryNativ
   bool exists = directoryNativePath.length () > 0 ;
   if (exists) {
     struct stat fileProperties ;
-    const int err = ::stat (directoryNativePath.cString (HERE), & fileProperties) ;
+    const int err = ::stat (directoryNativePath.cString (), & fileProperties) ;
     exists = (err == 0) && ((fileProperties.st_mode & S_IFDIR) != 0) ;
   }
  //--- Return result
@@ -783,9 +783,9 @@ bool FileManager::makeDirectoryIfDoesNotExist (const String & inDirectoryPath) {
       const String nativePath = nativePathWithUnixPath (directoryPath) ;
     //--- Create directory (mkdir returns 0 if creation is ok)
       #if COMPILE_FOR_WINDOWS == 1
-        const int result = ::mkdir (nativePath.cString (HERE)) ;
+        const int result = ::mkdir (nativePath.cString ()) ;
       #else
-        const int result = ::mkdir (nativePath.cString (HERE), 0770) ;
+        const int result = ::mkdir (nativePath.cString (), 0770) ;
       #endif
       ok = result == 0 ;
     }
@@ -798,7 +798,7 @@ bool FileManager::makeDirectoryIfDoesNotExist (const String & inDirectoryPath) {
 String FileManager::removeDirectory (const String & inDirectoryPath) {
  String errorString ;
   const String nativePath = nativePathWithUnixPath (inDirectoryPath) ;
-  const int result = rmdir (nativePath.cString (HERE)) ;
+  const int result = rmdir (nativePath.cString ()) ;
   if (result < 0) {
     errorString.addString (::strerror (errno)) ;
   }
@@ -894,7 +894,7 @@ String FileManager::relativePathFromPath (const String & inPath,
 #else
   bool FileManager::makeSymbolicLinkWithPath (const String & inPath,
                                                 const String & inLinkPath) {
-    const int r = symlink (inPath.cString (HERE), inLinkPath.cString (HERE)) ;
+    const int r = symlink (inPath.cString (), inLinkPath.cString ()) ;
     return r >= 0 ;
   }
 #endif
@@ -915,7 +915,7 @@ String FileManager::relativePathFromPath (const String & inPath,
 #else
   bool FileManager::isSymbolicLink (const String & inLinkPath) {
     char buffer [8] ; // Any value
-    return readlink (inLinkPath.cString (HERE), buffer, 8) >= 0 ;
+    return readlink (inLinkPath.cString (), buffer, 8) >= 0 ;
   }
 #endif
 
@@ -937,7 +937,7 @@ String FileManager::relativePathFromPath (const String & inPath,
     size_t bufferSize = 128 ;
     while (loop) {
       macroMyReallocPODArray (buffer, char, bufferSize) ;
-      const int64_t r = readlink (inLinkPath.cString (HERE), buffer, bufferSize) ;
+      const int64_t r = readlink (inLinkPath.cString (), buffer, bufferSize) ;
       if (r < 0) { // Error
         outOk = false ;
         loop = false ;
@@ -969,7 +969,7 @@ String FileManager::relativePathFromPath (const String & inPath,
 String FileManager::deleteFile (const String & inFilePath) {
   String returnValue ;
   const String nativePath = nativePathWithUnixPath (inFilePath) ;
-  const int result = unlink (nativePath.cString (HERE)) ;
+  const int result = unlink (nativePath.cString ()) ;
   if (result < 0) {
     returnValue.addString (::strerror (errno)) ;
   }
@@ -990,7 +990,7 @@ static String recursiveSearchInDirectory (const String & inStartSearchPath,
                                             const TC_UniqueArray <String> & inDirectoriesToExclude) {
   String result ;
   const String nativeStartSearchPath = FileManager::nativePathWithUnixPath (inStartSearchPath) ;
-  DIR * dir = ::opendir (nativeStartSearchPath.cString (HERE)) ;
+  DIR * dir = ::opendir (nativeStartSearchPath.cString ()) ;
   if (dir != nullptr) {
     String fileName = inStartSearchPath ;
     fileName.addString ("/") ;
@@ -1049,7 +1049,7 @@ static void recursiveFindAllFilesInDirectory (const String & inStartSearchPath,
                                               TC_UniqueArray <String> & outFoundFilePathes) {
 //--- Iterate throught directory
   const String nativeStartSearchPath = FileManager::nativePathWithUnixPath (inStartSearchPath) ;
-  DIR * dir = ::opendir (nativeStartSearchPath.cString (HERE)) ;
+  DIR * dir = ::opendir (nativeStartSearchPath.cString ()) ;
   if (dir != nullptr) {
     struct dirent  * current = readdir (dir) ;
     while (current != nullptr) {
@@ -1093,7 +1093,7 @@ DateTime FileManager::fileModificationTime (const String & inFilePath) {
   time_t modificationTime = 0 ;
   if (nativePath.length () > 0) {
     struct stat fileProperties ;
-    const int err = ::stat (nativePath.cString (HERE), & fileProperties) ;
+    const int err = ::stat (nativePath.cString (), & fileProperties) ;
     if ((err == 0) && ((fileProperties.st_mode & S_IFREG) != 0)) {
       modificationTime = fileProperties.st_mtime ;
     }
@@ -1116,7 +1116,7 @@ uint64_t FileManager::fileSize (const String & inFilePath) {
   const String nativePath = nativePathWithUnixPath (inFilePath) ;
   if (nativePath.length () > 0) {
     struct stat fileProperties ;
-    const int err = ::stat (nativePath.cString (HERE), & fileProperties) ;
+    const int err = ::stat (nativePath.cString (), & fileProperties) ;
     if ((err == 0) && ((fileProperties.st_mode & S_IFREG) != 0)) {
       result = (uint64_t) fileProperties.st_size ;
     }
@@ -1137,7 +1137,7 @@ int32_t FileManager::filePosixPermissions (const String & inFilePath) {
 //--- Get file properties
   int32_t permissions = -1 ;
   struct stat fileProperties ;
-  const int err = ::stat (nativePath.cString (HERE), & fileProperties) ;
+  const int err = ::stat (nativePath.cString (), & fileProperties) ;
   if (err == 0) {
     permissions = ((int32_t) fileProperties.st_mode) & 0xFFF ;
   }
@@ -1153,7 +1153,7 @@ int32_t FileManager::setFilePosixPermissions (const String & inFilePath,
   const int32_t v = inNewFilePosixPermissions & (int32_t) 0xFFFFF000 ;
   if (v == 0) {
     const String nativePath = nativePathWithUnixPath (inFilePath) ;
-    newMode = ::chmod (nativePath.cString (HERE), (uint16_t) (inNewFilePosixPermissions & UINT16_MAX)) ;
+    newMode = ::chmod (nativePath.cString (), (uint16_t) (inNewFilePosixPermissions & UINT16_MAX)) ;
   }
   return newMode ;
 }
@@ -1172,7 +1172,7 @@ bool FileManager::fileExistsAtPath (const String & inFilePath) {
   bool exists = nativePath.length () > 0 ;
   if (exists) {
     struct stat fileProperties ;
-    const int err = ::stat (nativePath.cString (HERE), & fileProperties) ;
+    const int err = ::stat (nativePath.cString (), & fileProperties) ;
     exists = (err == 0) && ((fileProperties.st_mode & S_IFREG) != 0) ;
   }
  //--- Return result

@@ -802,12 +802,12 @@ cToken::~cToken (void) {
 //--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark C_parsingContext
+  #pragma mark ParsingContext
 #endif
 
 //--------------------------------------------------------------------------------------------------
 
-C_parsingContext::C_parsingContext (void) :
+ParsingContext::ParsingContext (void) :
 mParsingArrayIndex (0),
 mLocation (),
 mCurrentTokenPtr (nullptr),
@@ -818,7 +818,7 @@ mTemplateString () {
 
 //--------------------------------------------------------------------------------------------------
 
-C_parsingContext::C_parsingContext (const C_parsingContext & inSource) :
+ParsingContext::ParsingContext (const ParsingContext & inSource) :
 mParsingArrayIndex (inSource.mParsingArrayIndex),
 mLocation (inSource.mLocation),
 mCurrentTokenPtr (inSource.mCurrentTokenPtr),
@@ -829,7 +829,7 @@ mTemplateString (inSource.mTemplateString) {
 
 //--------------------------------------------------------------------------------------------------
 
-C_parsingContext & C_parsingContext::operator = (const C_parsingContext & inSource) {
+ParsingContext & ParsingContext::operator = (const ParsingContext & inSource) {
   mParsingArrayIndex = inSource.mParsingArrayIndex ;
   mLocation = inSource.mLocation ;
   mCurrentTokenPtr = inSource.mCurrentTokenPtr ;

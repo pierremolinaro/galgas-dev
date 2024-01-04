@@ -182,7 +182,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
-  class cPointerDescriptor {
+  class cPointerDescriptor final {
     public: const void * mPointer ;
     public: cPointerDescriptor * mInfPtr ;
     public: cPointerDescriptor * mSupPtr ;

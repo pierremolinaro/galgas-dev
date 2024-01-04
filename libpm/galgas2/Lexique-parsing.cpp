@@ -39,7 +39,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
-  #define LINE_AND_SOURCE_FILE_FOR_LEXIQUE , sourceText ().sourceFilePath ().cString (HERE), lineNumber ()
+  #define LINE_AND_SOURCE_FILE_FOR_LEXIQUE , sourceText ().sourceFilePath ().cString (), lineNumber ()
 #else
   #define LINE_AND_SOURCE_FILE_FOR_LEXIQUE
 #endif
@@ -706,10 +706,10 @@ static bool acceptExpectedTerminalForBottomUpParsingError (const int32_t inExpec
 //--------------------------------------------------------------------------------------------------
 
 bool Lexique::performBottomUpParsing (const int32_t * inActionTableArray,
-                                        const char * * inNonTerminalSymbolNameArray,
-                                        const uint32_t * inActionTableIndexArray,
-                                        const int32_t * * inSuccessorTableArray,
-                                        const int32_t * inProductionsTableArray) {
+                                      const char * * inNonTerminalSymbolNameArray,
+                                      const uint32_t * inActionTableIndexArray,
+                                      const int32_t * * inSuccessorTableArray,
+                                      const int32_t * inProductionsTableArray) {
   bool result = false ;
   performLexicalAnalysis () ;
   if (! executionModeIsLexicalAnalysisOnly ()) {
@@ -727,7 +727,7 @@ bool Lexique::performBottomUpParsing (const int32_t * inActionTableArray,
     uint32_t currentProductionName = 0 ;
     if (produceSyntaxTree) {
       syntaxTreeDescriptionString.addString ("digraph G {\n"
-                                     "  size =\"4,4\";\n") ;
+                                             "  size =\"4,4\";\n") ;
     }
   //--- Perform first pass
     TC_UniqueArray <TC_UniqueArray <int32_t> > executionList (100 COMMA_HERE) ;

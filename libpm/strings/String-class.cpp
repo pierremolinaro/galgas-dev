@@ -43,7 +43,7 @@ static const utf32 kEmptyUTF32String [1] = {TO_UNICODE (0)} ;
 
 //--------------------------------------------------------------------------------------------------
 
-class cEmbeddedString : public SharedObject {
+class cEmbeddedString final : public SharedObject {
   public: uint32_t mCapacity ; // Maximun allowed length of the following C string
   public: uint32_t mLength ; // Current length of the following C string
   public: char * mEncodedCString ;
@@ -382,7 +382,7 @@ int32_t String::length (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-const char * String::cString (UNUSED_LOCATION_ARGS) const {
+const char * String::cString (void) const {
   const char * result = "" ;
   if (nullptr != mEmbeddedString) {
     macroValidSharedObject (mEmbeddedString, cEmbeddedString) ;

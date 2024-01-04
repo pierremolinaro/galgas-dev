@@ -174,7 +174,7 @@ class String : public AbstractOutputStream {
   public: String md5 (void) const ;
 
 //--- Get a string pointer
-  public: const char * cString (LOCATION_ARGS) const ;
+  public: const char * cString (void) const ;
 
 //--- Get a UTF32 string pointer
   public: const utf32 * utf32String (LOCATION_ARGS) const ;

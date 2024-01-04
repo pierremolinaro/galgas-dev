@@ -337,16 +337,14 @@
           keyEquivalent:@""
         ] ;
         if (displayFlags == 0) {
-          [item setAttributedTitle:[[NSAttributedString alloc]
-            initWithString:title
-            attributes:defaultAttributes
-          ]] ;
+          [item setAttributedTitle:
+            [[NSAttributedString alloc] initWithString:title attributes:defaultAttributes]
+          ] ;
         }else{
           NSMutableAttributedString * s = prefixString.mutableCopy ;
-          [s appendAttributedString:[[NSAttributedString alloc]
-            initWithString:title
-            attributes:specialAttributes
-          ]] ;
+          [s appendAttributedString:
+            [[NSAttributedString alloc] initWithString: title attributes: specialAttributes]
+          ] ;
           [item setAttributedTitle:s] ;
         }
         [item setTag:(NSInteger) [[inTokenArray objectAtIndex:tokenIndex] range].location] ;

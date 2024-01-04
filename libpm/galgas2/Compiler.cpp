@@ -243,7 +243,7 @@ void Compiler::printMessage (const String & inMessage
 
 void Compiler::logFileRead (const String & inFilePath) {
   if (performLogFileRead ()) {
-    printf ("Reading '%s' file.\n", inFilePath.cString (HERE)) ;
+    printf ("Reading '%s' file.\n", inFilePath.cString ()) ;
   }
 }
 
@@ -670,8 +670,8 @@ void Compiler::generateFileWithPatternFromPathes (
       if (inMakeExecutable) {
         #if COMPILE_FOR_WINDOWS == 0
           struct stat fileStat ;
-          ::stat (fileName.cString (HERE), & fileStat) ;
-          ::chmod (fileName.cString (HERE), fileStat.st_mode | S_IXUSR | S_IXGRP | S_IXOTH) ;
+          ::stat (fileName.cString (), & fileStat) ;
+          ::chmod (fileName.cString (), fileStat.st_mode | S_IXUSR | S_IXGRP | S_IXOTH) ;
         #endif
       }
     }else{
@@ -738,8 +738,8 @@ void Compiler::generateFileWithPatternFromPathes (
       if (inMakeExecutable) {
         #if COMPILE_FOR_WINDOWS == 0
           struct stat fileStat ;
-          ::stat (fullPathName.cString (HERE), & fileStat) ;
-          ::chmod (fullPathName.cString (HERE), fileStat.st_mode | S_IXUSR | S_IXGRP | S_IXOTH) ;
+          ::stat (fullPathName.cString (), & fileStat) ;
+          ::chmod (fullPathName.cString (), fileStat.st_mode | S_IXUSR | S_IXGRP | S_IXOTH) ;
         #endif
       }
     }else{

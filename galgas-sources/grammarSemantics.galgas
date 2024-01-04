@@ -81,17 +81,6 @@ sortedlist @nonTerminalSymbolSortedListForGrammarAnalysis {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #
-#   Terminal call instruction
-#
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @terminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
-  public let @lstring mTerminalSymbolName
-  public let @uint mTerminalSymbolIndex
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#
 #   Nonterminal call instruction
 #
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————

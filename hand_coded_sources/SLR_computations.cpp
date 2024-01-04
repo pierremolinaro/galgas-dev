@@ -960,9 +960,9 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
           ioCppFileContents.addString ("    break ;\n") ;
         }
         ioCppFileContents.addString ("  default :\n"
-                             "    inLexique->internalBottomUpParserError (HERE) ;\n"
-                             "    break ;\n"
-                             "  }\n") ;
+                                     "    inLexique->internalBottomUpParserError (HERE) ;\n"
+                                     "    break ;\n"
+                                     "  }\n") ;
       }
     }
     ioCppFileContents.addString ("}\n\n") ;

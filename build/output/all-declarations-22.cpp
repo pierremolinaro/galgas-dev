@@ -224,7 +224,7 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_headerZone_32_ (Com
       enumerator_4799.gotoNextObject () ;
     }
   }
-  result.addString ("\n\n//--- Indexing keys\n") ;
+  result.addString ("\n\n//--- indexing keys\n") ;
   GALGAS_uint index_5026_ (0) ;
   if (in_INDEXING_5F_LIST.isValid ()) {
     cEnumerator_indexingListAST enumerator_5026 (in_INDEXING_5F_LIST, kENUMERATION_UP) ;

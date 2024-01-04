@@ -276,7 +276,7 @@ void Lexique::resetForSecondPass (void) {
 //--------------------------------------------------------------------------------------------------
 
 int32_t Lexique::findTemplateDelimiterIndex (const cTemplateDelimiter * inTemplateDelimiterArray,
-                                               const int32_t inTemplateDelimiterArrayLength) {
+                                             const int32_t inTemplateDelimiterArrayLength) {
   int32_t templateIndex = 0 ;
   bool found = false ;
 
@@ -346,7 +346,7 @@ void Lexique::advance (const int32_t inCount) {
 //--------------------------------------------------------------------------------------------------
 
 bool Lexique::testForInputUTF32CharRange (const utf32 inLowBound,
-                                            const utf32 inHighBound) {
+                                          const utf32 inHighBound) {
   const bool ok = (UNICODE_VALUE (inLowBound) <= UNICODE_VALUE (mCurrentChar))
      && (UNICODE_VALUE (mCurrentChar) <= UNICODE_VALUE (inHighBound)) ;
   if (ok) {
@@ -378,8 +378,8 @@ bool Lexique::testForCharWithFunction (bool (*inFunction) (const utf32 inUnicode
 //--------------------------------------------------------------------------------------------------
 
 bool Lexique::testForInputUTF32String (const utf32 * inTestCstring,
-                                         const int32_t inStringLength,
-                                         const bool inAdvanceOnMatch) {
+                                       const int32_t inStringLength,
+                                       const bool inAdvanceOnMatch) {
 //--- Test
   bool ok = utf32_strncmp (sourceText ().temporaryUTF32StringAtIndex (mCurrentLocation.index () COMMA_HERE),
                            inTestCstring,
@@ -395,9 +395,9 @@ bool Lexique::testForInputUTF32String (const utf32 * inTestCstring,
 //--------------------------------------------------------------------------------------------------
 
 bool Lexique::notTestForInputUTF32String (const utf32 * inTestCstring,
-                                            const int32_t inStringLength,
-                                            const char * inEndOfFileErrorMessage
-                                            COMMA_LOCATION_ARGS) {
+                                          const int32_t inStringLength,
+                                          const char * inEndOfFileErrorMessage
+                                          COMMA_LOCATION_ARGS) {
   bool ok = UNICODE_VALUE (sourceText ().readCharOrNul (mCurrentLocation.index () COMMA_HERE)) != '\0' ;
   if (! ok) { // End of input file reached
     lexicalError (inEndOfFileErrorMessage COMMA_THERE) ;
@@ -495,7 +495,7 @@ void Lexique::unknownCharacterLexicalError (LOCATION_ARGS) {
 //--------------------------------------------------------------------------------------------------
 
 void Lexique::lexicalError (const String & inLexicalErrorMessage
-                              COMMA_LOCATION_ARGS) {
+                            COMMA_LOCATION_ARGS) {
   signalLexicalError (this, sourceText (), C_IssueWithFixIt (mCurrentLocation, mCurrentLocation, TC_Array <C_FixItDescription> ()), inLexicalErrorMessage COMMA_THERE) ;
   if (executionModeIsLatex ()) {
     signalLexicalErrorInLatexOutput () ;
@@ -510,10 +510,10 @@ void Lexique::lexicalError (const String & inLexicalErrorMessage
 //--------------------------------------------------------------------------------------------------
 
 void Lexique::parsingError (const TC_UniqueArray <int32_t> & inExpectedTerminalsArray,
-                              const cToken * inPreviousTokenPtr,
-                              const cToken * inCurrentTokenPtr,
-                              const int32_t inCurrentTokenCode
-                              COMMA_LOCATION_ARGS) {
+                            const cToken * inPreviousTokenPtr,
+                            const cToken * inCurrentTokenPtr,
+                            const int32_t inCurrentTokenCode
+                            COMMA_LOCATION_ARGS) {
 //--- Build error message
   String foundTokenMessage = getMessageForTerminal (inCurrentTokenCode) ;
   const int32_t expectedTerminalsCount = inExpectedTerminalsArray.count () ;
@@ -524,12 +524,15 @@ void Lexique::parsingError (const TC_UniqueArray <int32_t> & inExpectedTerminals
 //--- Sort expected token name array
   expectedTokenNames.sortArrayUsingCompareMethod () ;
 //--- Signal error
-  signalParsingError (this,
-                      sourceText (),
-                      (inPreviousTokenPtr == nullptr) ? LocationInSource () : inPreviousTokenPtr->mEndLocation,
-                      C_IssueWithFixIt (inCurrentTokenPtr->mStartLocation, inCurrentTokenPtr->mEndLocation, TC_Array <C_FixItDescription> ()),
-                      foundTokenMessage,
-                      expectedTokenNames COMMA_THERE) ;
+  signalParsingError (
+    this,
+    sourceText (),
+    (inPreviousTokenPtr == nullptr) ? LocationInSource () : inPreviousTokenPtr->mEndLocation,
+    C_IssueWithFixIt (inCurrentTokenPtr->mStartLocation, inCurrentTokenPtr->mEndLocation, TC_Array <C_FixItDescription> ()),
+    foundTokenMessage,
+    expectedTokenNames
+    COMMA_THERE
+  ) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -542,10 +545,15 @@ void Lexique::parsingError (const TC_UniqueArray <int32_t> & inExpectedTerminals
 
 void Lexique::lexicalWarning (const String & inLexicalWarningMessage
                                 COMMA_LOCATION_ARGS) { // §
-  signalLexicalWarning (this, sourceText (), C_IssueWithFixIt (mCurrentLocation, mCurrentLocation, TC_Array <C_FixItDescription> ()), inLexicalWarningMessage COMMA_THERE) ;
+  signalLexicalWarning (
+    this,
+    sourceText (),
+    C_IssueWithFixIt (mCurrentLocation, mCurrentLocation, TC_Array <C_FixItDescription> ()),
+    inLexicalWarningMessage
+    COMMA_THERE
+  ) ;
 }
 
-//--------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
@@ -629,11 +637,17 @@ void Lexique::acceptTerminal (const int32_t IN_EXPECTED_TERMINAL COMMA_LOCATION_
       const String expectedTokenString = getMessageForTerminal (inExpectedTerminal) ;
       macroAssertThere (false,
                       "Internal second pass parsing error (current token:%s, expected token:%s)",
-                      (intptr_t) currentTokenString.cString (HERE),
-                      (intptr_t) expectedTokenString.cString (HERE)) ;
+                      (intptr_t) currentTokenString.cString (),
+                      (intptr_t) expectedTokenString.cString ()) ;
     }
   #endif
 }
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Indexing
+#endif
 
 //--------------------------------------------------------------------------------------------------
 
@@ -652,6 +666,29 @@ void Lexique::enterIndexing (const uint32_t inIndexingKind,
                                         tokenLength) ;
   }
 }
+
+//--------------------------------------------------------------------------------------------------
+
+//void Lexique::enterIndexing (const uint32_t inIndexingKind,
+//                             const GALGAS_lstring & inIndexedKey) {
+//  if (nullptr != mIndexingDictionary) {
+//    const String sourceFilePath = inIndexedKey.mProperty_location.startLocation ().sourceFilePath () ;
+//    if (sourceFilePath.length () > 0) {
+//      const uint32_t tokenStartLocation = uint32_t (inIndexedKey.mProperty_location.startLocation ().index ()) ;
+//      const uint32_t tokenLine = uint32_t (inIndexedKey.mProperty_location.startLocation ().lineNumber ()) ;
+//      const uint32_t tokenLength = uint32_t (inIndexedKey.mProperty_location.endLocation ().index ()) - tokenStartLocation + 1 ;
+//      const String indexedKey = inIndexedKey.mProperty_string.stringValue () ;
+//      mIndexingDictionary->addIndexedKey (
+//        inIndexingKind,
+//        indexedKey,
+//        sourceFilePath,
+//        tokenLine,
+//        tokenStartLocation,
+//        tokenLength
+//      ) ;
+//    }
+//  }
+//}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -675,8 +712,8 @@ void Lexique::generateIndexFile (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-C_parsingContext Lexique::parsingContext (void) const {
-  C_parsingContext context ;
+ParsingContext Lexique::parsingContext (void) const {
+  ParsingContext context ;
   context.mParsingArrayIndex = mIndexForSecondPassParsing ;
   context.mLocation = mCurrentLocation ;
   context.mCurrentChar = mCurrentChar ;
@@ -688,7 +725,7 @@ C_parsingContext Lexique::parsingContext (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void Lexique::setParsingContext (const C_parsingContext & inContext) {
+void Lexique::setParsingContext (const ParsingContext & inContext) {
   mIndexForSecondPassParsing = inContext.mParsingArrayIndex ;
   mCurrentTokenPtr = inContext.mCurrentTokenPtr ;
   mCurrentLocation = inContext.mLocation ;
@@ -710,8 +747,8 @@ void Lexique::setParsingContext (const C_parsingContext & inContext) {
 //--------------------------------------------------------------------------------------------------
 
 void Lexique::enterProduction (const char * inProductionName,
-                                 const char * inLabel,
-                                 const char * inTag) {
+                               const char * inLabel,
+                               const char * inTag) {
 //--- If Debug is not running, check if trigger list contains non terminal
   if (! mDebugIsRunning) {
     TC_UniqueArray <String> stringArray ;

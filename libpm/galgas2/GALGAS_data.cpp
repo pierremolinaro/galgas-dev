@@ -305,7 +305,7 @@ void GALGAS_data::method_writeToFile (GALGAS_string inFilePath,
         s.addString ("'@data writeToFile': cannot open '") ;
         s.addString (filePath) ;
         s.addString ("' file in write mode") ;
-        inCompiler->onTheFlyRunTimeError (s.cString (HERE) COMMA_THERE) ;
+        inCompiler->onTheFlyRunTimeError (s.cString () COMMA_THERE) ;
       }else{
         binaryFile.appendData (mData) ;
         const bool ok = binaryFile.close () ;
@@ -346,7 +346,7 @@ void GALGAS_data::method_writeToExecutableFile (GALGAS_string inFilePath,
         s.addString ("'@data writeToExecutableFile': cannot open '") ;
         s.addString (filePath) ;
         s.addString ("' file in write mode") ;
-        inCompiler->onTheFlyRunTimeError (s.cString (HERE) COMMA_THERE) ;
+        inCompiler->onTheFlyRunTimeError (s.cString () COMMA_THERE) ;
       }else{
         binaryFile.appendData (mData) ;
         const bool ok = binaryFile.close () ;

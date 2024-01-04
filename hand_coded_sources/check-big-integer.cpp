@@ -68,7 +68,7 @@ static void testBigUnsignedDecimalStringConstructor (void) {
     }
   //---
     bool ok = false ;
-    const BigUnsigned big (refString.cString (HERE), BigUnsignedBase::ten, ok) ;
+    const BigUnsigned big (refString.cString (), BigUnsignedBase::ten, ok) ;
     const String str = big.decimalString () ;
      if ((str != refString) || !ok) {
       gCout.addString ("error (i=") ;
@@ -115,7 +115,7 @@ static void testBigUnsignedBinaryStringConstructor (void) {
     }
   //---
     bool ok = false ;
-    const BigUnsigned big (refString.cString (HERE), BigUnsignedBase::two, ok) ;
+    const BigUnsigned big (refString.cString (), BigUnsignedBase::two, ok) ;
     const String str = big.bitString () ;
     if ((str != refString) || !ok) {
       gCout.addString ("error (i=") ;
@@ -161,7 +161,7 @@ static void testBigUnsignedHexadecimalStringConstructor (void) {
     }
   //---
     bool ok = false ;
-    const BigUnsigned big (refString.cString (HERE), BigUnsignedBase::sixteen, ok) ;
+    const BigUnsigned big (refString.cString (), BigUnsignedBase::sixteen, ok) ;
     const String str = big.xString () ;
      if ((str != refString) || !ok) {
       gCout.addString ("error (i=") ;
@@ -564,7 +564,7 @@ static void pgcdComputing (void) {
   gCout.addString ("n**17 + 9 and (n+1)**17 + 9...\n") ;
   const clock_t start = ::clock () ;
   const String s ("8 424 432 925 592 889 329 288 197 322 308 900 672 459 420 460 792 433") ;
-  const BigUnsigned n (s.cString (HERE), ' ') ;
+  const BigUnsigned n (s.cString (), ' ') ;
   gCout.addString (" n ") ;
   gCout.addString (n.spacedDecimalStringWithDigitCount (3)) ;
   gCout.addNL () ; ;

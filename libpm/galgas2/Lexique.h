@@ -138,8 +138,8 @@ class Lexique : public Compiler {
   private: void resetForSecondPass (void) ;
 
 //--- Handling parsing context (for parse ... rewind ... end parse ; instruction)
-  public: C_parsingContext parsingContext (void) const ;
-  public: void setParsingContext (const C_parsingContext & inContext) ;
+  public: ParsingContext parsingContext (void) const ;
+  public: void setParsingContext (const ParsingContext & inContext) ;
 
 //--- Internal error during bottom-up parsing
   public: void internalBottomUpParserError (LOCATION_ARGS) ;

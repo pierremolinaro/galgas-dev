@@ -26,7 +26,7 @@ AbstractFileHandle::AbstractFileHandle (const String & inFilePath,
                                         const char * inMode) :
 mFilePtr ((inFilePath.length () == 0)
   ? nullptr :
-  ::fopen (FileManager::nativePathWithUnixPath (inFilePath).cString (HERE), inMode)
+  ::fopen (FileManager::nativePathWithUnixPath (inFilePath).cString (), inMode)
 ),
 mFilePath (inFilePath) {
 }

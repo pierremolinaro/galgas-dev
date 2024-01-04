@@ -281,7 +281,7 @@ GALGAS_string GALGAS_string::class_func_stringWithEnvironmentVariable (const GAL
                                                                        COMMA_LOCATION_ARGS) {
   GALGAS_string result ;
   if (inEnvironmentVariableName.isValid ()) {
-    const char * value = ::getenv (inEnvironmentVariableName.mString.cString (HERE)) ;
+    const char * value = ::getenv (inEnvironmentVariableName.mString.cString ()) ;
     if (value == nullptr) {
       String message = "the '" ;
       message.addString (inEnvironmentVariableName.mString) ;
@@ -300,7 +300,7 @@ GALGAS_string GALGAS_string::class_func_stringWithEnvironmentVariableOrEmpty (co
                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result ;
   if (inEnvironmentVariableName.isValid ()) {
-    const char * value = ::getenv (inEnvironmentVariableName.mString.cString (HERE)) ;
+    const char * value = ::getenv (inEnvironmentVariableName.mString.cString ()) ;
     result = GALGAS_string (value) ;
   }
   return result ;
@@ -849,7 +849,7 @@ void GALGAS_string::class_method_removeEmptyDirectory (GALGAS_string inDirectory
 static String recursiveRemoveDirectory (const String & inUnixDirectoryPath) {
   String result ;
   const String nativeStartPath = FileManager::nativePathWithUnixPath (inUnixDirectoryPath) ;
-  DIR * dir = ::opendir (nativeStartPath.cString (HERE)) ;
+  DIR * dir = ::opendir (nativeStartPath.cString ()) ;
   if (dir != nullptr) {
     struct dirent  * current = readdir (dir) ;
     while ((current != nullptr) && (result.length () == 0)) {
@@ -973,8 +973,8 @@ static void generateFile (const String & inStartPath,
   if (ok && inMakeExecutable) {
     #if COMPILE_FOR_WINDOWS == 0
       struct stat fileStat ;
-      ::stat (fullPathName.cString (HERE), & fileStat) ;
-      ::chmod (fullPathName.cString (HERE), fileStat.st_mode | S_IXUSR | S_IXGRP | S_IXOTH) ;
+      ::stat (fullPathName.cString (), & fileStat) ;
+      ::chmod (fullPathName.cString (), fileStat.st_mode | S_IXUSR | S_IXGRP | S_IXOTH) ;
     #endif
   }
 }
@@ -1038,7 +1038,7 @@ bool GALGAS_string::optional_extractBigInt (GALGAS_bigint & outBigInt) const {
   outBigInt.drop () ;
   if (isValid () && (mString.length () > 0)) {
     extracted = true ;
-    const BigSigned bigint (mString.cString (HERE), BigUnsignedBase::ten, extracted) ;
+    const BigSigned bigint (mString.cString (), BigUnsignedBase::ten, extracted) ;
     if (extracted) {
       outBigInt = GALGAS_bigint (bigint) ;
     }

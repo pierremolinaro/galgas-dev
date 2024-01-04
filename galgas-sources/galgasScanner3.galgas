@@ -23,7 +23,7 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 lexique galgasScanner3 {
-#--- Indexing keys
+#--- indexing keys
 indexing classDefinition : "Class Definition"
 indexing enumDefinition : "Enum Definition"
 indexing structDefinition : "Struct Definition"

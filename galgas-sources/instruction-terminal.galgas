@@ -36,7 +36,7 @@ syntax extension galgas3SyntaxComponentSyntax {
       <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
       <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationPreceedingToken
     end
-    outInstruction = @terminalCheckInstruction.new {
+    outInstruction = @terminalCheckInstructionAST.new {
       !terminalName.location
       !terminalName
       !actualInputParameterList
@@ -95,7 +95,7 @@ syntax extension galgas4SyntaxComponentSyntax {
       <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
       <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationPreceedingToken
     end
-    outInstruction = @terminalCheckInstruction.new {
+    outInstruction = @terminalCheckInstructionAST.new {
       !terminalName.location
       !terminalName
       !actualInputParameterList
@@ -134,10 +134,10 @@ syntax extension galgas4SyntaxComponentSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! AST
+#! @terminalCheckInstructionAST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @terminalCheckInstruction : @syntaxInstructionAST {
+refclass @terminalCheckInstructionAST : @syntaxInstructionAST {
   private let @lstring mTerminalName
   private let @actualInputParameterListAST mActualInputParameterList
   private let @2lstringlist mIndexingKeyList # Empty list if no index
@@ -243,7 +243,47 @@ refclass @terminalCheckInstruction : @syntaxInstructionAST {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! GENERATION TYPES
+#! @terminalCheckInstructionForGeneration
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+refclass @terminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
+  public let @lstring mTerminalSymbolName
+  public let @uint mTerminalSymbolIndex
+
+  #·················································································································
+
+  override method tikzNodeForSyntaxInstruction ?!@rowList ioRowList
+                                                ?fromRow:let @uint inRow
+                                                ?!column:@uint ioColumn
+                                                ?!node: @string ioCurrentNode
+                                                ?!arrowShape: @string ioArrowShape
+                                                ?!arrows:@string ioArrows
+                                                ?!@uint unused ioMaxUsedRowIndex
+                                                ?debug:let @bool unused inDebug {
+    [!?ioRowList appendRow
+      !nodeDefinition:"[terminal] {" + escapeForTex (!self.mTerminalSymbolName) + "}"
+      !row:inRow
+      !column:ioColumn
+      ?nodeName:let nodeName
+    ]
+    ioArrows += "  \\draw[->] (" + ioCurrentNode + ") " + ioArrowShape + " (" + nodeName + ") ;\n"
+    ioCurrentNode = nodeName
+    ioArrowShape = "--"
+    ioColumn += 1
+  }
+
+  #·················································································································
+
+  override getter isLinear -> @bool {
+    result = true
+  }
+
+  #·················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! @terminalCheckInstructionForGeneration
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @terminalCheckInstructionForGeneration : @syntaxInstructionForGeneration {

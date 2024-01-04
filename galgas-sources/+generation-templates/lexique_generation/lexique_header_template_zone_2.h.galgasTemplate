@@ -110,7 +110,7 @@ class Lexique_%!LEXIQUE_IDENTIFIER% : public Lexique {
   end
 %
 
-//--- Indexing keys
+//--- indexing keys
 %
   for (mIndexName mIndexComment) in INDEXING_LIST
   before %  public: enum {%

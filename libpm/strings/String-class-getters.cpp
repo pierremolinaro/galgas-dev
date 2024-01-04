@@ -1078,7 +1078,7 @@ String String::md5 (void) const {
   uint8_t digest [16] ;
   MD5_CTX context ;
   MD5_Init (&context) ;
-  MD5_Update(&context, (uint8_t *) cString (HERE), (uint32_t) length ()) ;
+  MD5_Update(&context, (uint8_t *) cString (), (uint32_t) length ()) ;
   MD5_Final (digest, &context);
   char s [40] ;
   for (uint32_t i=0 ; i<16 ; i++) {
@@ -1174,9 +1174,9 @@ String String::stringByStandardizingPath (void) const {
     TC_UniqueArray <String> componentArray ;
     path.componentsSeparatedByString ("/", componentArray) ;
     #ifdef TRACE_stringByStandardizingPath
-      printf ("----- Decomposition of '%s':\n", path.cString (HERE)) ;
+      printf ("----- Decomposition of '%s':\n", path.cString ()) ;
       for (int32_t i=0 ; i<componentArray.count () ; i++) {
-        printf ("  '%s'\n", componentArray (i COMMA_HERE).cString (HERE)) ;
+        printf ("  '%s'\n", componentArray (i COMMA_HERE).cString ()) ;
       }
     #endif
   //--- Remove empty components (but the first one)
@@ -1191,7 +1191,7 @@ String String::stringByStandardizingPath (void) const {
     #ifdef TRACE_stringByStandardizingPath
       printf ("-- After removing empty components:\n") ;
       for (int32_t i=0 ; i<componentArray.count () ; i++) {
-        printf ("  '%s'\n", componentArray (i COMMA_HERE).cString (HERE)) ;
+        printf ("  '%s'\n", componentArray (i COMMA_HERE).cString ()) ;
       }
     #endif
   //--- Remove '.' components
@@ -1206,7 +1206,7 @@ String String::stringByStandardizingPath (void) const {
     #ifdef TRACE_stringByStandardizingPath
       printf ("-- After removing '.' components:\n") ;
       for (int32_t i=0 ; i<componentArray.count () ; i++) {
-        printf ("  '%s'\n", componentArray (i COMMA_HERE).cString (HERE)) ;
+        printf ("  '%s'\n", componentArray (i COMMA_HERE).cString ()) ;
       }
     #endif
   //--- Remove '..' components
@@ -1226,13 +1226,13 @@ String String::stringByStandardizingPath (void) const {
     #ifdef TRACE_stringByStandardizingPath
       printf ("-- After removing '..' components:\n") ;
       for (int32_t i=0 ; i<componentArray.count () ; i++) {
-        printf ("  '%s'\n", componentArray (i COMMA_HERE).cString (HERE)) ;
+        printf ("  '%s'\n", componentArray (i COMMA_HERE).cString ()) ;
       }
     #endif
   //--- Recompose path
     path = componentsJoinedByString (componentArray, "/") ;
     #ifdef TRACE_stringByStandardizingPath
-      printf ("-- Recomposed path: '%s'\n", path.cString (HERE)) ;
+      printf ("-- Recomposed path: '%s'\n", path.cString ()) ;
     #endif
   }
 //---
