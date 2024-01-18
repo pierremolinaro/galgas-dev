@@ -30,8 +30,8 @@
 typedef uint64_t ChunkUInt ;
 static const ChunkUInt ChunkUIntMax = UINT64_MAX ;
 
-static const ChunkUInt greatestPowerOf10 = 1'000'000'000'000'000'000 ; // 10**18
-static const size_t greatestPowerOf10DigitCount = 18 ;
+static const ChunkUInt greatestPowerOf10 = 10'000'000'000'000'000'000U ; // 10**19
+static const size_t greatestPowerOf10DigitCount = 19 ;
 
 //--------------------------------------------------------------------------------------------------
 

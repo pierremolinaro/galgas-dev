@@ -20,7 +20,7 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum @ifExpressionKind {
-  case regularExp (@semanticExpressionAST exp)
+  case regularExp (@semanticExpressionAST exp @location endOfExp)
   case letExp (@lstring constantName @semanticExpressionAST exp @location endOfExp @lstring typeName)
   case optionalMethodCall (
     @semanticExpressionAST receiver
@@ -200,7 +200,7 @@ syntax extension galgas3InstructionsSyntax {
         }
       or
         <expression_ggs3> ?let expression
-        outExpressionList += !.regularExp {!exp: expression}
+        outExpressionList += !.regularExp {!exp: expression !endOfExp: .here}
       end
     while
       $,$
@@ -352,7 +352,7 @@ syntax extension galgas4InstructionsSyntax {
         }
       or
         <expression> ?let expression
-        outExpressionList += !.regularExp {!exp: expression}
+        outExpressionList += !.regularExp {!exp: expression !endOfExp: .here}
       end
     while
       $,$
@@ -370,7 +370,7 @@ syntax extension galgas4InstructionsSyntax {
 override method @ifInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   for (expression) in self.mExpressions do
     switch expression
-    case regularExp (exp) :
+    case regularExp (exp *) :
       [exp enterExpressionInSemanticContext !?ioTypeMap]
     case letExp (* exp * @lstring typeName) :
       [exp enterExpressionInSemanticContext !?ioTypeMap]
@@ -430,7 +430,7 @@ override method @ifInstructionAST analyzeSemanticInstruction
   var @ifTestListForGeneration testListForGeneration = {}
   for (expression) in self.mExpressions do
     switch expression
-    case regularExp (exp) :
+    case regularExp (exp endOfExpression) :
       [exp analyzeSemanticExpression
         !inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
@@ -442,7 +442,7 @@ override method @ifInstructionAST analyzeSemanticInstruction
       ]
       checkExpressionIsBoolean (
         !inAnalysisContext
-        !self.mEndOf_if_instruction
+        !endOfExpression
         !analyzed_if_expression
         ?let if_expression
       )

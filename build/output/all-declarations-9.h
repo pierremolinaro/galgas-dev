@@ -7472,7 +7472,8 @@ class GALGAS_ifExpressionKind : public AC_GALGAS_root {
                                                                               const class GALGAS_optionalMethodActualArgumentList & inOperand2
                                                                               COMMA_LOCATION_ARGS) ;
 
-  public: static class GALGAS_ifExpressionKind class_func_regularExp (const class GALGAS_semanticExpressionAST & inOperand0
+  public: static class GALGAS_ifExpressionKind class_func_regularExp (const class GALGAS_semanticExpressionAST & inOperand0,
+                                                                      const class GALGAS_location & inOperand1
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -7498,6 +7499,7 @@ class GALGAS_ifExpressionKind : public AC_GALGAS_root {
                                                            COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG void method_regularExp (class GALGAS_semanticExpressionAST & outArgument0,
+                                                   class GALGAS_location & outArgument1,
                                                    Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) const ;
 
@@ -7521,7 +7523,8 @@ class GALGAS_ifExpressionKind : public AC_GALGAS_root {
                                                              class GALGAS_lstring & outOperand1,
                                                              class GALGAS_optionalMethodActualArgumentList & outOperand2) const ;
 
-  public: VIRTUAL_IN_DEBUG bool optional_regularExp (class GALGAS_semanticExpressionAST & outOperand0) const ;
+  public: VIRTUAL_IN_DEBUG bool optional_regularExp (class GALGAS_semanticExpressionAST & outOperand0,
+                                                     class GALGAS_location & outOperand1) const ;
 
 
 //--------------------------------- Introspection
@@ -7696,9 +7699,11 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionalMethodActua
 
 class cEnumAssociatedValues_ifExpressionKind_regularExp : public cEnumAssociatedValues {
   public: const GALGAS_semanticExpressionAST mAssociatedValue0 ;
+  public: const GALGAS_location mAssociatedValue1 ;
 
 //--- Constructor
-  public: cEnumAssociatedValues_ifExpressionKind_regularExp (const GALGAS_semanticExpressionAST inAssociatedValue0
+  public: cEnumAssociatedValues_ifExpressionKind_regularExp (const GALGAS_semanticExpressionAST inAssociatedValue0,
+                                                             const GALGAS_location inAssociatedValue1
                                                              COMMA_LOCATION_ARGS) ;
 
   public: virtual void description (String & ioString,
