@@ -963,30 +963,3 @@ void routine_checkGetterSignatures_3F__3F__3F__3F__3F__3F_ (const class GALGAS_f
                                                             class Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) ;
 
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'buildLocalVariableMapAndSignature?&?&!'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_buildLocalVariableMapAndSignature_3F__26__3F__26__21_ (const class GALGAS_semanticContext constinArgument0,
-                                                                    class GALGAS_unifiedTypeMap & ioArgument1,
-                                                                    const class GALGAS_formalParameterListAST constinArgument2,
-                                                                    class GALGAS_localVarManager & ioArgument3,
-                                                                    class GALGAS_formalParameterListForGeneration & outArgument4,
-                                                                    class Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'checkMethodSignatures????'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_checkMethodSignatures_3F__3F__3F__3F_ (const class GALGAS_formalParameterListForGeneration constinArgument0,
-                                                    const class GALGAS_location constinArgument1,
-                                                    const class GALGAS_formalParameterSignature constinArgument2,
-                                                    const class GALGAS_location constinArgument3,
-                                                    class Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) ;
-

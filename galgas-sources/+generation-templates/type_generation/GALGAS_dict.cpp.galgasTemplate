@@ -407,7 +407,7 @@ static void internalDescription_%!TYPE_IDENTIFIER% (const cNode_%!TYPE_IDENTIFIE
                                  const int32_t inIndentation) {
   if (nullptr != inNode) {
     internalDescription_%!TYPE_IDENTIFIER% (inNode->mInfPtr, ioString, inIndentation) ;
-    ioString.addNL () ;
+    ioString.appendNewLine () ;
     inNode->description (ioString, inIndentation) ;
     internalDescription_%!TYPE_IDENTIFIER% (inNode->mSupPtr, ioString, inIndentation) ;
   }
@@ -417,15 +417,15 @@ static void internalDescription_%!TYPE_IDENTIFIER% (const cNode_%!TYPE_IDENTIFIE
 
 void GALGAS_%!TYPE_IDENTIFIER%::description (String & ioString,
                                              const int32_t inIndentation) const {
-  ioString.addString ("<dict @") ;
-  ioString.addString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.addString (":") ;
+  ioString.appendString ("<dict @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendString (":") ;
   if (isValid ()) {
     internalDescription_%!TYPE_IDENTIFIER% (mSharedDict->mRoot, ioString, inIndentation) ;
   }else{
-    ioString.addString (" not built") ;
+    ioString.appendString (" not built") ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------

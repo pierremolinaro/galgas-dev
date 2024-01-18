@@ -103,23 +103,23 @@ acStrongPtr_class * AC_GALGAS_weak_reference::ptr (void) const {
 
 void AC_GALGAS_weak_reference::description (String & ioString,
                                             const int32_t /* inIndentation */) const {
-  ioString.addString ("<@") ;
-  ioString.addString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.addString (":") ;
+  ioString.appendString ("<@") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendString (":") ;
   acStrongPtr_class * ptr = (acStrongPtr_class *) mProxyPtr ;
   if (ptr == nullptr) {
-    ioString.addString ("not built") ;
+    ioString.appendString ("not built") ;
   }else{
     cPtr_weakReference_proxy * proxy = ptr->getProxy () ;
     if (proxy == nullptr) {
-      ioString.addString ("nil") ;
+      ioString.appendString ("nil") ;
     }else{
       const C_galgas_type_descriptor * descriptor = proxy->classDescriptor () ;
-      ioString.addString ("instance of @") ;
-      ioString.addString (descriptor->mGalgasTypeName) ;
+      ioString.appendString ("instance of @") ;
+      ioString.appendString (descriptor->mGalgasTypeName) ;
     }
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------

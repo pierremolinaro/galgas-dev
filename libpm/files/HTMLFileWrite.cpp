@@ -34,24 +34,24 @@ HTMLFileWrite::HTMLFileWrite (const String & inFileName,
                                     const String & inCSSFileName,
                                     const String & inCSSContents) :
 TextFileWrite (inFileName) {
-  addRawData ("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">\n"
+  appendRawData ("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">\n"
                  "<html>"
                  "<head>\n"
                  "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n"
                  "<title>\n") ;
-  addString (inWindowTitle) ;
-  addRawData ("</title>") ;
+  appendString (inWindowTitle) ;
+  appendRawData ("</title>") ;
   if (inCSSFileName.length () > 0) {
-    addRawData ("<link rel=stylesheet type=\"text/css\" href=\"") ;
-    addRawData (inCSSFileName.cString ()) ;
-    addRawData ("\">") ;
+    appendRawData ("<link rel=stylesheet type=\"text/css\" href=\"") ;
+    appendRawData (inCSSFileName.cString ()) ;
+    appendRawData ("\">") ;
   }  
   if (inCSSContents.length () > 0) {
-    addRawData ("<style type=\"text/css\">") ;
-    addRawData (inCSSContents.cString ()) ;
-    addRawData ("</style>") ;
+    appendRawData ("<style type=\"text/css\">") ;
+    appendRawData (inCSSContents.cString ()) ;
+    appendRawData ("</style>") ;
   }
-  addRawData ("</head>\n<body><div>\n") ;
+  appendRawData ("</head>\n<body><div>\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -59,7 +59,7 @@ TextFileWrite (inFileName) {
 //--------------------------------------------------------------------------------------------------
 
 bool HTMLFileWrite::close (void) {
-  addRawData ("</div></body></html>\n") ;
+  appendRawData ("</div></body></html>\n") ;
   return Super::close () ;
 }
 
@@ -68,15 +68,15 @@ bool HTMLFileWrite::close (void) {
 //--------------------------------------------------------------------------------------------------
 
 HTMLFileWrite::~HTMLFileWrite (void) {
-  addRawData ("</div></body></html>\n") ;
+  appendRawData ("</div></body></html>\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 //  Write a character string into the file WITHOUT any translation
 //--------------------------------------------------------------------------------------------------
 
-void HTMLFileWrite::addRawData (const char * in_Cstring) {
-  Super::performActualCharArrayOutput (in_Cstring, (int32_t) (strlen (in_Cstring) & UINT32_MAX)) ;
+void HTMLFileWrite::appendRawData (const char * in_Cstring) {
+  Super::performActualCharArrayOutput (in_Cstring, int32_t (strlen (in_Cstring))) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -132,17 +132,17 @@ void HTMLFileWrite::performActualUnicodeArrayOutput (const utf32 * inCharArray,
 //                 Comments as a table                   
 //--------------------------------------------------------------------------------------------------
 
-void HTMLFileWrite::addCppTitleComment (const String & inCommentString,
-                                        const String & inTableStyleClass) {
-  addRawData ("<table") ;
+void HTMLFileWrite::appendCppTitleComment (const String & inCommentString,
+                                           const String & inTableStyleClass) {
+  appendRawData ("<table") ;
   if (inTableStyleClass.length () > 0) {
-    addRawData (" class=\"") ;
-    addRawData (inTableStyleClass.cString ()) ;
-    addRawData ("\"") ;
+    appendRawData (" class=\"") ;
+    appendRawData (inTableStyleClass.cString ()) ;
+    appendRawData ("\"") ;
   }
-  addRawData ("><tr><td>\n") ;
-  addString (inCommentString) ;
-  addRawData ("\n</td></tr></table>\n") ;
+  appendRawData ("><tr><td>\n") ;
+  appendString (inCommentString) ;
+  appendRawData ("\n</td></tr></table>\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------

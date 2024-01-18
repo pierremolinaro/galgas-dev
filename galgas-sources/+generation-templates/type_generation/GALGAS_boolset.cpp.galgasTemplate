@@ -114,18 +114,18 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::operator_tilde (UNUSED_LOCA
 
 void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%String & ioString,
                               %!^%const int32_t /* inIndentation */) const {
-  ioString.addString ("<boolset @%!TYPE_NAME%:") ;
+  ioString.appendString ("<boolset @%!TYPE_NAME%:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendString (" not built") ;
   }else{
 %
 for (mValue) in SLOT_LIST do (idx)
    %    if ((mFlags & ((uint64_t) 1) << %![idx string]%) != 0) {\n%
-   %      ioString.addString (" %!mValue.string%") ;\n%
+   %      ioString.appendString (" %!mValue.string%") ;\n%
    %    }\n%
 end
 %  }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------

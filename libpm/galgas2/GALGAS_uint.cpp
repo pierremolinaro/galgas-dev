@@ -297,7 +297,7 @@ GALGAS_string GALGAS_uint::getter_string (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
     String s ;
-    s.addUnsigned (mUIntValue) ;
+    s.appendUnsigned (mUIntValue) ;
     result = GALGAS_string (s) ;
   }
   return result ;
@@ -309,8 +309,8 @@ GALGAS_string GALGAS_uint::getter_hexString (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
     String s ;
-    s.addString ("0x") ;
-    s.addUnsignedHex (mUIntValue) ;
+    s.appendString ("0x") ;
+    s.appendUnsignedHex (mUIntValue) ;
     result = GALGAS_string (s) ;
   }
   return result ;
@@ -329,7 +329,7 @@ GALGAS_string GALGAS_uint::getter_hexStringSeparatedBy (const GALGAS_char & inSe
       inCompiler->onTheFlyRunTimeError ("last argument should be > 0" COMMA_THERE) ;
     }else{
       String s ;
-      s.addUnsignedHex (mUIntValue) ;
+      s.appendUnsignedHex (mUIntValue) ;
       const utf32 separator = inSeparator.charValue() ;
       for (int i = (int) (s.length () - group) ; i > 0 ; i -= group) {
         s.insertCharacterAtIndex (separator, i COMMA_HERE) ;
@@ -344,7 +344,7 @@ GALGAS_string GALGAS_uint::getter_hexStringSeparatedBy (const GALGAS_char & inSe
 
 GALGAS_string GALGAS_uint::getter_xString (UNUSED_LOCATION_ARGS) const {
   String s ;
-  s.addUnsignedHex (mUIntValue) ;
+  s.appendUnsignedHex (mUIntValue) ;
   return GALGAS_string (s) ;
 }
 
@@ -352,13 +352,13 @@ GALGAS_string GALGAS_uint::getter_xString (UNUSED_LOCATION_ARGS) const {
 
 void GALGAS_uint::description (String & ioString,
                                const int32_t /* inIndentation */) const {
-  ioString.addString ("<@uint:") ;
+  ioString.appendString ("<@uint:") ;
   if (isValid ()) {
-    ioString.addUnsigned (mUIntValue) ;
+    ioString.appendUnsigned (mUIntValue) ;
   }else{
-    ioString.addString ("not built") ;
+    ioString.appendString ("not built") ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------

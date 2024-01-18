@@ -9,6 +9,132 @@
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_actualOutputExpressionList_2D_element::GALGAS_actualOutputExpressionList_2D_element (void) :
+mProperty_mActualSelector (),
+mProperty_mExpression (),
+mProperty_mEndOfExpressionLocation () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_actualOutputExpressionList_2D_element::~ GALGAS_actualOutputExpressionList_2D_element (void) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_actualOutputExpressionList_2D_element::GALGAS_actualOutputExpressionList_2D_element (const GALGAS_lstring & inOperand0,
+                                                                                            const GALGAS_semanticExpressionAST & inOperand1,
+                                                                                            const GALGAS_location & inOperand2) :
+mProperty_mActualSelector (inOperand0),
+mProperty_mExpression (inOperand1),
+mProperty_mEndOfExpressionLocation (inOperand2) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_actualOutputExpressionList_2D_element GALGAS_actualOutputExpressionList_2D_element::class_func_new (const GALGAS_lstring & in_mActualSelector,
+                                                                                                           const GALGAS_semanticExpressionAST & in_mExpression,
+                                                                                                           const GALGAS_location & in_mEndOfExpressionLocation,
+                                                                                                           Compiler * /* inCompiler */
+                                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_actualOutputExpressionList_2D_element result ;
+  if (in_mActualSelector.isValid () && in_mExpression.isValid () && in_mEndOfExpressionLocation.isValid ()) {
+    result = GALGAS_actualOutputExpressionList_2D_element (in_mActualSelector, in_mExpression, in_mEndOfExpressionLocation) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+typeComparisonResult GALGAS_actualOutputExpressionList_2D_element::objectCompare (const GALGAS_actualOutputExpressionList_2D_element & inOperand) const {
+   typeComparisonResult result = kOperandEqual ;
+  if (result == kOperandEqual) {
+    result = mProperty_mActualSelector.objectCompare (inOperand.mProperty_mActualSelector) ;
+  }
+  if (result == kOperandEqual) {
+    result = mProperty_mExpression.objectCompare (inOperand.mProperty_mExpression) ;
+  }
+  if (result == kOperandEqual) {
+    result = mProperty_mEndOfExpressionLocation.objectCompare (inOperand.mProperty_mEndOfExpressionLocation) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_actualOutputExpressionList_2D_element::isValid (void) const {
+  return mProperty_mActualSelector.isValid () && mProperty_mExpression.isValid () && mProperty_mEndOfExpressionLocation.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_actualOutputExpressionList_2D_element::drop (void) {
+  mProperty_mActualSelector.drop () ;
+  mProperty_mExpression.drop () ;
+  mProperty_mEndOfExpressionLocation.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_actualOutputExpressionList_2D_element::description (String & ioString,
+                                                                const int32_t inIndentation) const {
+  ioString.appendString ("<struct @actualOutputExpressionList-element:") ;
+  if (! isValid ()) {
+    ioString.appendString (" not built") ;
+  }else{
+    mProperty_mActualSelector.description (ioString, inIndentation+1) ;
+    ioString.appendString (", ") ;
+    mProperty_mExpression.description (ioString, inIndentation+1) ;
+    ioString.appendString (", ") ;
+    mProperty_mEndOfExpressionLocation.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @actualOutputExpressionList-element generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_actualOutputExpressionList_2D_element ("actualOutputExpressionList-element",
+                                                                                             nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_actualOutputExpressionList_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_actualOutputExpressionList_2D_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_actualOutputExpressionList_2D_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_actualOutputExpressionList_2D_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_actualOutputExpressionList_2D_element GALGAS_actualOutputExpressionList_2D_element::extractObject (const GALGAS_object & inObject,
+                                                                                                          Compiler * inCompiler
+                                                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_actualOutputExpressionList_2D_element result ;
+  const GALGAS_actualOutputExpressionList_2D_element * p = (const GALGAS_actualOutputExpressionList_2D_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_actualOutputExpressionList_2D_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("actualOutputExpressionList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_castInstructionBranchListAST_2D_element::GALGAS_castInstructionBranchListAST_2D_element (void) :
 mProperty_mTypeName (),
 mProperty_mConstantVarName (),
@@ -94,21 +220,21 @@ void GALGAS_castInstructionBranchListAST_2D_element::drop (void) {
 
 void GALGAS_castInstructionBranchListAST_2D_element::description (String & ioString,
                                                                   const int32_t inIndentation) const {
-  ioString.addString ("<struct @castInstructionBranchListAST-element:") ;
+  ioString.appendString ("<struct @castInstructionBranchListAST-element:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendString (" not built") ;
   }else{
     mProperty_mTypeName.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mConstantVarName.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mInstructionList.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mTypeComparisonKind.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mEndOfInstructions.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -224,17 +350,17 @@ void GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element::drop (void)
 
 void GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element::description (String & ioString,
                                                                                   const int32_t inIndentation) const {
-  ioString.addString ("<struct @forInstructionEnumeratedObjectElementListAST-element:") ;
+  ioString.appendString ("<struct @forInstructionEnumeratedObjectElementListAST-element:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendString (" not built") ;
   }else{
     mProperty_mOptionalTypeName.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mDeclaredAsUnused.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mOptionalConstantName.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -350,17 +476,17 @@ void GALGAS_forInstructionEnumeratedObjectListForGeneration_2D_element::drop (vo
 
 void GALGAS_forInstructionEnumeratedObjectListForGeneration_2D_element::description (String & ioString,
                                                                                      const int32_t inIndentation) const {
-  ioString.addString ("<struct @forInstructionEnumeratedObjectListForGeneration-element:") ;
+  ioString.appendString ("<struct @forInstructionEnumeratedObjectListForGeneration-element:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendString (" not built") ;
   }else{
     mProperty_mEnumerationOrder.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mEnumeratedExpression.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mEnumeratorCppName.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -468,15 +594,15 @@ void GALGAS_optionalMethodActualArgumentList_2D_element::drop (void) {
 
 void GALGAS_optionalMethodActualArgumentList_2D_element::description (String & ioString,
                                                                       const int32_t inIndentation) const {
-  ioString.addString ("<struct @optionalMethodActualArgumentList-element:") ;
+  ioString.appendString ("<struct @optionalMethodActualArgumentList-element:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendString (" not built") ;
   }else{
     mProperty_mSelector.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mActualArgument.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -584,15 +710,15 @@ void GALGAS_logListAST_2D_element::drop (void) {
 
 void GALGAS_logListAST_2D_element::description (String & ioString,
                                                 const int32_t inIndentation) const {
-  ioString.addString ("<struct @logListAST-element:") ;
+  ioString.appendString ("<struct @logListAST-element:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendString (" not built") ;
   }else{
     mProperty_mLogMessage.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mLogExpression.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -708,17 +834,17 @@ void GALGAS_switchExtractedValuesListAST_2D_element::drop (void) {
 
 void GALGAS_switchExtractedValuesListAST_2D_element::description (String & ioString,
                                                                   const int32_t inIndentation) const {
-  ioString.addString ("<struct @switchExtractedValuesListAST-element:") ;
+  ioString.appendString ("<struct @switchExtractedValuesListAST-element:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendString (" not built") ;
   }else{
     mProperty_mExtractedValueTypeName.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mExtractedValueName.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mMarkedAsUnused.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -826,15 +952,15 @@ void GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis_2D_element::drop (void)
 
 void GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis_2D_element::description (String & ioString,
                                                                                   const int32_t inIndentation) const {
-  ioString.addString ("<struct @unusedNonTerminalSymbolMapForGrammarAnalysis-element:") ;
+  ioString.appendString ("<struct @unusedNonTerminalSymbolMapForGrammarAnalysis-element:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendString (" not built") ;
   }else{
     mProperty_lkey.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mNonTerminalIndex.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -950,17 +1076,17 @@ void GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis_2D_element::drop (void
 
 void GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis_2D_element::description (String & ioString,
                                                                                    const int32_t inIndentation) const {
-  ioString.addString ("<struct @nonTerminalSymbolSortedListForGrammarAnalysis-element:") ;
+  ioString.appendString ("<struct @nonTerminalSymbolSortedListForGrammarAnalysis-element:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendString (" not built") ;
   }else{
     mProperty_mNonTerminalSymbol.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mNonTerminalIndex.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mNonterminalSymbolParametersMap.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1068,15 +1194,15 @@ void GALGAS_syntaxComponentListForGrammarAnalysis_2D_element::drop (void) {
 
 void GALGAS_syntaxComponentListForGrammarAnalysis_2D_element::description (String & ioString,
                                                                            const int32_t inIndentation) const {
-  ioString.addString ("<struct @syntaxComponentListForGrammarAnalysis-element:") ;
+  ioString.appendString ("<struct @syntaxComponentListForGrammarAnalysis-element:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendString (" not built") ;
   }else{
     mProperty_mProductionRulesList.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mSyntaxComponentName.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1184,15 +1310,15 @@ void GALGAS_terminalSymbolsMapForGrammarAnalysis_2D_element::drop (void) {
 
 void GALGAS_terminalSymbolsMapForGrammarAnalysis_2D_element::description (String & ioString,
                                                                           const int32_t inIndentation) const {
-  ioString.addString ("<struct @terminalSymbolsMapForGrammarAnalysis-element:") ;
+  ioString.appendString ("<struct @terminalSymbolsMapForGrammarAnalysis-element:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendString (" not built") ;
   }else{
     mProperty_lkey.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mTerminalIndex.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1292,13 +1418,13 @@ void GALGAS_extensionMethodMapForGlobalCheckings_2D_element::drop (void) {
 
 void GALGAS_extensionMethodMapForGlobalCheckings_2D_element::description (String & ioString,
                                                                           const int32_t inIndentation) const {
-  ioString.addString ("<struct @extensionMethodMapForGlobalCheckings-element:") ;
+  ioString.appendString ("<struct @extensionMethodMapForGlobalCheckings-element:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendString (" not built") ;
   }else{
     mProperty_lkey.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1398,13 +1524,13 @@ void GALGAS_extensionSetterMapForGlobalCheckings_2D_element::drop (void) {
 
 void GALGAS_extensionSetterMapForGlobalCheckings_2D_element::description (String & ioString,
                                                                           const int32_t inIndentation) const {
-  ioString.addString ("<struct @extensionSetterMapForGlobalCheckings-element:") ;
+  ioString.appendString ("<struct @extensionSetterMapForGlobalCheckings-element:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendString (" not built") ;
   }else{
     mProperty_lkey.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1504,13 +1630,13 @@ void GALGAS_extensionGetterMapForGlobalCheckings_2D_element::drop (void) {
 
 void GALGAS_extensionGetterMapForGlobalCheckings_2D_element::description (String & ioString,
                                                                           const int32_t inIndentation) const {
-  ioString.addString ("<struct @extensionGetterMapForGlobalCheckings-element:") ;
+  ioString.appendString ("<struct @extensionGetterMapForGlobalCheckings-element:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendString (" not built") ;
   }else{
     mProperty_lkey.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1618,15 +1744,15 @@ void GALGAS_galgas_33_QualifiedFeatureList_2D_element::drop (void) {
 
 void GALGAS_galgas_33_QualifiedFeatureList_2D_element::description (String & ioString,
                                                                     const int32_t inIndentation) const {
-  ioString.addString ("<struct @galgas3QualifiedFeatureList-element:") ;
+  ioString.appendString ("<struct @galgas3QualifiedFeatureList-element:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendString (" not built") ;
   }else{
     mProperty_mFeatureName.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mFeatureValue.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1742,17 +1868,17 @@ void GALGAS_headerCompositionMap_2D_element::drop (void) {
 
 void GALGAS_headerCompositionMap_2D_element::description (String & ioString,
                                                           const int32_t inIndentation) const {
-  ioString.addString ("<struct @headerCompositionMap-element:") ;
+  ioString.appendString ("<struct @headerCompositionMap-element:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendString (" not built") ;
   }else{
     mProperty_lkey.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mInclusion.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mHeaderString.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1860,15 +1986,15 @@ void GALGAS_headerRepartitionMap_2D_element::drop (void) {
 
 void GALGAS_headerRepartitionMap_2D_element::description (String & ioString,
                                                           const int32_t inIndentation) const {
-  ioString.addString ("<struct @headerRepartitionMap-element:") ;
+  ioString.appendString ("<struct @headerRepartitionMap-element:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendString (" not built") ;
   }else{
     mProperty_lkey.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mHeaderFileName.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1976,15 +2102,15 @@ void GALGAS_projectQualifiedFeatureMap_2D_element::drop (void) {
 
 void GALGAS_projectQualifiedFeatureMap_2D_element::description (String & ioString,
                                                                 const int32_t inIndentation) const {
-  ioString.addString ("<struct @projectQualifiedFeatureMap-element:") ;
+  ioString.appendString ("<struct @projectQualifiedFeatureMap-element:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendString (" not built") ;
   }else{
     mProperty_lkey.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mFeatureValue.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2124,9 +2250,9 @@ const C_galgas_type_descriptor * cPtr_templateLiteralUIntExpressionAST::classDes
 
 void cPtr_templateLiteralUIntExpressionAST::description (String & ioString,
                                                          const int32_t inIndentation) const {
-  ioString.addString ("[@templateLiteralUIntExpressionAST:") ;
+  ioString.appendString ("[@templateLiteralUIntExpressionAST:") ;
   mProperty_mLiteralInt.description (ioString, inIndentation+1) ;
-  ioString.addString ("]") ;
+  ioString.appendString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2275,9 +2401,9 @@ const C_galgas_type_descriptor * cPtr_templateLiteralCharExpressionAST::classDes
 
 void cPtr_templateLiteralCharExpressionAST::description (String & ioString,
                                                          const int32_t inIndentation) const {
-  ioString.addString ("[@templateLiteralCharExpressionAST:") ;
+  ioString.appendString ("[@templateLiteralCharExpressionAST:") ;
   mProperty_mLiteralChar.description (ioString, inIndentation+1) ;
-  ioString.addString ("]") ;
+  ioString.appendString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2426,9 +2552,9 @@ const C_galgas_type_descriptor * cPtr_templateLiteralDoubleExpressionAST::classD
 
 void cPtr_templateLiteralDoubleExpressionAST::description (String & ioString,
                                                            const int32_t inIndentation) const {
-  ioString.addString ("[@templateLiteralDoubleExpressionAST:") ;
+  ioString.appendString ("[@templateLiteralDoubleExpressionAST:") ;
   mProperty_mLiteralDouble.description (ioString, inIndentation+1) ;
-  ioString.addString ("]") ;
+  ioString.appendString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7307,18 +7433,18 @@ void cGrammar_templateGrammar::_performSourceFileParsing_ (Compiler * inCompiler
         }
       }else{
         String message ;
-        message.addString ("the '") ;
-        message.addString (filePath) ;
-        message.addString ("' file exists, but cannot be read") ;
+        message.appendString ("the '") ;
+        message.appendString (filePath) ;
+        message.appendString ("' file exists, but cannot be read") ;
         const GALGAS_location errorLocation (inFilePath.readProperty_location ()) ;
         inCompiler->semanticErrorAtLocation (errorLocation, message, TC_Array <C_FixItDescription> () COMMA_THERE) ;
       }
       macroDetachSharedObject (scanner) ;
     }else{
       String message ;
-      message.addString ("the '") ;
-      message.addString (filePath) ;
-      message.addString ("' file does not exist") ;
+      message.appendString ("the '") ;
+      message.appendString (filePath) ;
+      message.appendString ("' file does not exist") ;
       const GALGAS_location errorLocation (inFilePath.readProperty_location ()) ;
       inCompiler->semanticErrorAtLocation (errorLocation, message, TC_Array <C_FixItDescription> () COMMA_THERE) ;
     }
@@ -7994,9 +8120,9 @@ const C_galgas_type_descriptor * cPtr_templateInstructionExpressionForGeneration
 
 void cPtr_templateInstructionExpressionForGeneration::description (String & ioString,
                                                                    const int32_t inIndentation) const {
-  ioString.addString ("[@templateInstructionExpressionForGeneration:") ;
+  ioString.appendString ("[@templateInstructionExpressionForGeneration:") ;
   mProperty_mExpression.description (ioString, inIndentation+1) ;
-  ioString.addString ("]") ;
+  ioString.appendString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8161,27 +8287,27 @@ void GALGAS_semanticContext::drop (void) {
 
 void GALGAS_semanticContext::description (String & ioString,
                                           const int32_t inIndentation) const {
-  ioString.addString ("<struct @semanticContext:") ;
+  ioString.appendString ("<struct @semanticContext:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendString (" not built") ;
   }else{
     mProperty_mRoutineMap.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mFunctionMap.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mFilewrapperMap.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mGrammarMap.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mOptionComponentMapForSemanticAnalysis.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mLexiqueComponentMapForSemanticAnalysis.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mSyntaxComponentMapForSemanticAnalysis.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_galgas_34_.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8426,23 +8552,23 @@ const C_galgas_type_descriptor * cPtr_optionComponentForGeneration::classDescrip
 
 void cPtr_optionComponentForGeneration::description (String & ioString,
                                                      const int32_t inIndentation) const {
-  ioString.addString ("[@optionComponentForGeneration:") ;
+  ioString.appendString ("[@optionComponentForGeneration:") ;
   mProperty_generateHeader.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mImplementationCppFileName.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mOptionComponentName.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mBoolOptionMap.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mUIntOptionMap.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mStringOptionMap.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mStringListOptionMap.description (ioString, inIndentation+1) ;
-  ioString.addString ("]") ;
+  ioString.appendString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8706,11 +8832,11 @@ const C_galgas_type_descriptor * cPtr_boolsetTypeForGeneration::classDescriptor 
 
 void cPtr_boolsetTypeForGeneration::description (String & ioString,
                                                  const int32_t inIndentation) const {
-  ioString.addString ("[@boolsetTypeForGeneration:") ;
+  ioString.appendString ("[@boolsetTypeForGeneration:") ;
   mProperty_mSelfTypeEntry.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mFlagList.description (ioString, inIndentation+1) ;
-  ioString.addString ("]") ;
+  ioString.appendString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9033,23 +9159,23 @@ void GALGAS_analysisContext::drop (void) {
 
 void GALGAS_analysisContext::description (String & ioString,
                                           const int32_t inIndentation) const {
-  ioString.addString ("<struct @analysisContext:") ;
+  ioString.appendString ("<struct @analysisContext:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendString (" not built") ;
   }else{
     mProperty_mSemanticContext.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mPredefinedTypes.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mSelfObjectCppName.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_selfType.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mSelfObjectCppPrefixForAccessingProperty.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_requiresSelfForAccessingProperty.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9245,17 +9371,17 @@ void GALGAS_templateAnalysisContext::drop (void) {
 
 void GALGAS_templateAnalysisContext::description (String & ioString,
                                                   const int32_t inIndentation) const {
-  ioString.addString ("<struct @templateAnalysisContext:") ;
+  ioString.appendString ("<struct @templateAnalysisContext:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendString (" not built") ;
   }else{
     mProperty_mSemanticContext.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mPredefinedTypes.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mTemplateVariableMap.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9532,23 +9658,23 @@ GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_project 
                                                                                  const GALGAS_string & in_PROJECT_5F_NAME
                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
-  result.addString ("project (0:0:1) -> ") ;
-  result.addString (in_PROJECT_5F_NAME.getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("+PROJECT.galgasProject.galgasTemplate", 1)).stringValue ()) ;
-  result.addString (" {\n#--- Targets\n  %makefile-unix\n  %makefile-macosx\n  %makefile-x86linux32-on-macosx\n  %makefile-x86linux64-on-macosx\n  %makefile-win32-on-macosx\n  %MacOS\n  %applicationBundleBase : \"fr.what\"\n  %codeblocks-windows\n  %codeblocks-linux32\n  %codeblocks-linux64\n\n#--- Source files\n  \"galgas-sources/") ;
-  result.addString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.addString ("-lexique.galgas\"\n  \"galgas-sources/") ;
-  result.addString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.addString ("-options.galgas\"\n  \"galgas-sources/") ;
-  result.addString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.addString ("-semantics.galgas\"\n  \"galgas-sources/") ;
-  result.addString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.addString ("-syntax.galgas\"\n  \"galgas-sources/") ;
-  result.addString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.addString ("-grammar.galgas\"\n  \"galgas-sources/") ;
-  result.addString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.addString ("-cocoa.galgas\"\n  \"galgas-sources/") ;
-  result.addString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.addString ("-program.galgas\"\n}\n\n") ;
+  result.appendString ("project (0:0:1) -> ") ;
+  result.appendString (in_PROJECT_5F_NAME.getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("+PROJECT.galgasProject.galgasTemplate", 1)).stringValue ()) ;
+  result.appendString (" {\n#--- Targets\n  %makefile-unix\n  %makefile-macosx\n  %makefile-x86linux32-on-macosx\n  %makefile-x86linux64-on-macosx\n  %makefile-win32-on-macosx\n  %MacOS\n  %applicationBundleBase : \"fr.what\"\n  %codeblocks-windows\n  %codeblocks-linux32\n  %codeblocks-linux64\n\n#--- Source files\n  \"galgas-sources/") ;
+  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
+  result.appendString ("-lexique.galgas\"\n  \"galgas-sources/") ;
+  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
+  result.appendString ("-options.galgas\"\n  \"galgas-sources/") ;
+  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
+  result.appendString ("-semantics.galgas\"\n  \"galgas-sources/") ;
+  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
+  result.appendString ("-syntax.galgas\"\n  \"galgas-sources/") ;
+  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
+  result.appendString ("-grammar.galgas\"\n  \"galgas-sources/") ;
+  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
+  result.appendString ("-cocoa.galgas\"\n  \"galgas-sources/") ;
+  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
+  result.appendString ("-program.galgas\"\n}\n\n") ;
   return GALGAS_string (result) ;
 }
 
@@ -9562,13 +9688,13 @@ GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_cocoa (C
                                                                                const GALGAS_string & in_PROJECT_5F_NAME
                                                                                COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
-  result.addString ("gui cocoa {\n  with option ") ;
-  result.addString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.addString ("_options\n\n  with lexique ") ;
-  result.addString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.addString ("_lexique {\n    fileExtension: \"") ;
-  result.addString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.addString ("\"\n    title: \"Source\"\n    blockComment : \"#\"\n  }\n\n}\n") ;
+  result.appendString ("gui cocoa {\n  with option ") ;
+  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
+  result.appendString ("_options\n\n  with lexique ") ;
+  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
+  result.appendString ("_lexique {\n    fileExtension: \"") ;
+  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
+  result.appendString ("\"\n    title: \"Source\"\n    blockComment : \"#\"\n  }\n\n}\n") ;
   return GALGAS_string (result) ;
 }
 
@@ -9582,11 +9708,11 @@ GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_grammar 
                                                                                  const GALGAS_string & in_PROJECT_5F_NAME
                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
-  result.addString ("grammar ") ;
-  result.addString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.addString ("_grammar \"LL1\" {\n  syntax ") ;
-  result.addString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.addString ("_syntax\n  <start_symbol>\n}\n\n") ;
+  result.appendString ("grammar ") ;
+  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
+  result.appendString ("_grammar \"LL1\" {\n  syntax ") ;
+  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
+  result.appendString ("_syntax\n  <start_symbol>\n}\n\n") ;
   return GALGAS_string (result) ;
 }
 
@@ -9600,9 +9726,9 @@ GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_lexique 
                                                                                  const GALGAS_string & in_PROJECT_5F_NAME
                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
-  result.addString ("lexique ") ;
-  result.addString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.addString ("_lexique {\n\n#-----------------------------------------------------------------------------------------------------------------------\n#   Identifiers and keywords                                                                     \n#-----------------------------------------------------------------------------------------------------------------------\n\n@string tokenString\n\nstyle keywordsStyle -> \"Keywords\"\n\n$identifier$ ! tokenString error message \"an identifier\"\n\n#--- This is the keyword list\nlist keyWordList style keywordsStyle error message \"the '%K' keyword\" {\n  \"begin\",\n  \"end\"\n}\n\nrule 'a'->'z' |  'A'->'Z' {\n  repeat\n    enterCharacterIntoString (!\?tokenString !*)\n  while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :\n  end\n  send search tokenString in keyWordList default $identifier$\n}\n\n#-----------------------------------------------------------------------------------------------------------------------\n#   Literal decimal integers                                                                     \n#-----------------------------------------------------------------------------------------------------------------------\n\nstyle integerStyle -> \"Integer Constants\"\n@uint uint32value\n$integer$ !uint32value style integerStyle error message \"a 32-bit unsigned decimal number\"\n\nmessage decimalNumberTooLarge : \"decimal number too large\"\nmessage internalError : \"internal error\"\n\nrule '0'->'9' {\n  enterCharacterIntoString (!\?tokenString !*)\n  repeat\n  while '0'->'9' :\n    enterCharacterIntoString (!\?tokenString !*)\n  while '_' :\n  end\n  convertDecimalStringIntoUInt (!tokenString !\?uint32value error decimalNumberTooLarge, internalError)\n  send $integer$\n}\n\n#-----------------------------------------------------------------------------------------------------------------------\n#   Literal character strings                                                                    \n#-----------------------------------------------------------------------------------------------------------------------\n\nstyle stringStyle -> \"String Constants\"\n$\"string\"$ ! tokenString style stringStyle %nonAtomicSelection error message \"a character string constant \\\"...\\\"\"\n\n\nmessage incorrectStringEnd : \"string does not end with '\\\"'\"\n\nrule '\"' {\n  repeat\n   while ' ' | '!' | '#'-> '\\uFFFD' :\n    enterCharacterIntoString (!\?tokenString !*)\n  end\n  select\n  case '\"' :\n    send $\"string\"$\n  default\n    error incorrectStringEnd\n  end\n}\n\n#-----------------------------------------------------------------------------------------------------------------------\n#   Delimiters                                                                                   \n#-----------------------------------------------------------------------------------------------------------------------\n\nstyle delimitersStyle -> \"Delimiters\"\nlist delimitorsList style delimitersStyle error message \"the '%K' delimitor\" {\n  \":\",    \",\",    \";\",   \"!\",  \"{\",  \"}\", \"->\", \"@\", \"*\", \"-\"\n}\n\nrule list delimitorsList\n\n#-----------------------------------------------------------------------------------------------------------------------\n#   Comments                                                                                     \n#-----------------------------------------------------------------------------------------------------------------------\n\nstyle commentStyle -> \"Comments\"\n$comment$ style commentStyle %nonAtomicSelection error message \"a comment\"\nrule '#' {\n  repeat\n  while '\\u0001' -> '\\u0009' | '\\u000B' | '\\u000C' | '\\u000E' -> '\\uFFFD' :\n  end\n  drop $comment$\n}\n\n#-----------------------------------------------------------------------------------------------------------------------\n#   Separators                                                                                   \n#-----------------------------------------------------------------------------------------------------------------------\n\nrule '\\u0001' -> ' ' {\n}\n\n#-----------------------------------------------------------------------------------------------------------------------\n\n}\n\n") ;
+  result.appendString ("lexique ") ;
+  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
+  result.appendString ("_lexique {\n\n#-----------------------------------------------------------------------------------------------------------------------\n#   Identifiers and keywords                                                                     \n#-----------------------------------------------------------------------------------------------------------------------\n\n@string tokenString\n\nstyle keywordsStyle -> \"Keywords\"\n\n$identifier$ ! tokenString error message \"an identifier\"\n\n#--- This is the keyword list\nlist keyWordList style keywordsStyle error message \"the '%K' keyword\" {\n  \"begin\",\n  \"end\"\n}\n\nrule 'a'->'z' |  'A'->'Z' {\n  repeat\n    enterCharacterIntoString (!\?tokenString !*)\n  while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :\n  end\n  send search tokenString in keyWordList default $identifier$\n}\n\n#-----------------------------------------------------------------------------------------------------------------------\n#   Literal decimal integers                                                                     \n#-----------------------------------------------------------------------------------------------------------------------\n\nstyle integerStyle -> \"Integer Constants\"\n@uint uint32value\n$integer$ !uint32value style integerStyle error message \"a 32-bit unsigned decimal number\"\n\nmessage decimalNumberTooLarge : \"decimal number too large\"\nmessage internalError : \"internal error\"\n\nrule '0'->'9' {\n  enterCharacterIntoString (!\?tokenString !*)\n  repeat\n  while '0'->'9' :\n    enterCharacterIntoString (!\?tokenString !*)\n  while '_' :\n  end\n  convertDecimalStringIntoUInt (!tokenString !\?uint32value error decimalNumberTooLarge, internalError)\n  send $integer$\n}\n\n#-----------------------------------------------------------------------------------------------------------------------\n#   Literal character strings                                                                    \n#-----------------------------------------------------------------------------------------------------------------------\n\nstyle stringStyle -> \"String Constants\"\n$\"string\"$ ! tokenString style stringStyle %nonAtomicSelection error message \"a character string constant \\\"...\\\"\"\n\n\nmessage incorrectStringEnd : \"string does not end with '\\\"'\"\n\nrule '\"' {\n  repeat\n   while ' ' | '!' | '#'-> '\\uFFFD' :\n    enterCharacterIntoString (!\?tokenString !*)\n  end\n  select\n  case '\"' :\n    send $\"string\"$\n  default\n    error incorrectStringEnd\n  end\n}\n\n#-----------------------------------------------------------------------------------------------------------------------\n#   Delimiters                                                                                   \n#-----------------------------------------------------------------------------------------------------------------------\n\nstyle delimitersStyle -> \"Delimiters\"\nlist delimitorsList style delimitersStyle error message \"the '%K' delimitor\" {\n  \":\",    \",\",    \";\",   \"!\",  \"{\",  \"}\", \"->\", \"@\", \"*\", \"-\"\n}\n\nrule list delimitorsList\n\n#-----------------------------------------------------------------------------------------------------------------------\n#   Comments                                                                                     \n#-----------------------------------------------------------------------------------------------------------------------\n\nstyle commentStyle -> \"Comments\"\n$comment$ style commentStyle %nonAtomicSelection error message \"a comment\"\nrule '#' {\n  repeat\n  while '\\u0001' -> '\\u0009' | '\\u000B' | '\\u000C' | '\\u000E' -> '\\uFFFD' :\n  end\n  drop $comment$\n}\n\n#-----------------------------------------------------------------------------------------------------------------------\n#   Separators                                                                                   \n#-----------------------------------------------------------------------------------------------------------------------\n\nrule '\\u0001' -> ' ' {\n}\n\n#-----------------------------------------------------------------------------------------------------------------------\n\n}\n\n") ;
   return GALGAS_string (result) ;
 }
 
@@ -9616,9 +9742,9 @@ GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_options 
                                                                                  const GALGAS_string & in_PROJECT_5F_NAME
                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
-  result.addString ("option ") ;
-  result.addString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.addString ("_options {\n\n# ADD YOUR CODE\n\n}\n") ;
+  result.appendString ("option ") ;
+  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
+  result.appendString ("_options {\n\n# ADD YOUR CODE\n\n}\n") ;
   return GALGAS_string (result) ;
 }
 
@@ -9632,15 +9758,15 @@ GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_program 
                                                                                  const GALGAS_string & in_PROJECT_5F_NAME
                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
-  result.addString ("#--- Prologue routine\nbefore {\n}\n\n#--- 'when' clauses\ncase . \"") ;
-  result.addString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.addString ("\"\nmessage \"a source text file with the .") ;
-  result.addString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.addString (" extension\"\n%useGrammar ") ;
-  result.addString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.addString ("_grammar\n\?sourceFilePath:@lstring inSourceFile {\n  grammar ") ;
-  result.addString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.addString ("_grammar () in inSourceFile\n}\n\n#--- Epilogue routine\nafter {\n}\n") ;
+  result.appendString ("#--- Prologue routine\nbefore {\n}\n\n#--- 'when' clauses\ncase . \"") ;
+  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
+  result.appendString ("\"\nmessage \"a source text file with the .") ;
+  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
+  result.appendString (" extension\"\n%useGrammar ") ;
+  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
+  result.appendString ("_grammar\n\?sourceFilePath:@lstring inSourceFile {\n  grammar ") ;
+  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
+  result.appendString ("_grammar () in inSourceFile\n}\n\n#--- Epilogue routine\nafter {\n}\n") ;
   return GALGAS_string (result) ;
 }
 
@@ -9654,7 +9780,7 @@ GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_semantic
                                                                                    const GALGAS_string & /* in_PROJECT_5F_NAME */
                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
-  result.addString ("\n# ADD YOUR CODE\n\n") ;
+  result.appendString ("\n# ADD YOUR CODE\n\n") ;
   return GALGAS_string (result) ;
 }
 
@@ -9668,11 +9794,11 @@ GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_syntax (
                                                                                 const GALGAS_string & in_PROJECT_5F_NAME
                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
-  result.addString ("syntax ") ;
-  result.addString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.addString ("_syntax (") ;
-  result.addString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.addString ("_lexique) {\n\nrule <start_symbol> {\n  # ADD YOUR SYNTAX INSTRUCTIONS\n}\n\n# ADD OTHER RULES\n\n}\n") ;
+  result.appendString ("syntax ") ;
+  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
+  result.appendString ("_syntax (") ;
+  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
+  result.appendString ("_lexique) {\n\nrule <start_symbol> {\n  # ADD YOUR SYNTAX INSTRUCTIONS\n}\n\n# ADD OTHER RULES\n\n}\n") ;
   return GALGAS_string (result) ;
 }
 
@@ -11434,7 +11560,7 @@ void cPtr_templateInstructionStringForGeneration::method_templateCodeGeneration 
                                                                                  Compiler * inCompiler
                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_templateInstructionStringForGeneration temp_0 = this ;
-  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("result.addString (").add_operation (temp_0.readProperty_mTemplateString ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("templateCodeGeneration.galgas", 61)), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 61)).add_operation (GALGAS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 61)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 61)) ;
+  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("result.appendString (").add_operation (temp_0.readProperty_mTemplateString ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("templateCodeGeneration.galgas", 61)), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 61)).add_operation (GALGAS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 61)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 61)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -11449,10 +11575,10 @@ void cPtr_templateInstructionExpressionForGeneration::method_templateCodeGenerat
                                                                                      GALGAS_bool & /* ioArgument_ioUseColumnMarker */,
                                                                                      Compiler * inCompiler
                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string var_cppName_3336 ;
+  GALGAS_string var_cppName_3339 ;
   const GALGAS_templateInstructionExpressionForGeneration temp_0 = this ;
-  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_0.readProperty_mExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_cppName_3336, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 73)) ;
-  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("result.addString (").add_operation (var_cppName_3336, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 74)).add_operation (GALGAS_string (".stringValue ()) ;\n"), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 74)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 74)) ;
+  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_0.readProperty_mExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_cppName_3339, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 73)) ;
+  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("result.appendString (").add_operation (var_cppName_3339, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 74)).add_operation (GALGAS_string (".stringValue ()) ;\n"), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 74)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 74)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -11467,18 +11593,18 @@ void cPtr_templateBlockInstructionForGeneration::method_templateCodeGeneration (
                                                                                 GALGAS_bool & ioArgument_ioUseColumnMarker,
                                                                                 Compiler * inCompiler
                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string var_indendationVarCppName_3937 ;
+  GALGAS_string var_indendationVarCppName_3943 ;
   const GALGAS_templateBlockInstructionForGeneration temp_0 = this ;
-  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_0.readProperty_mExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_indendationVarCppName_3937, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 86)) ;
-  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("if (").add_operation (var_indendationVarCppName_3937, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 87)).add_operation (GALGAS_string (".isValid ()) {\n"), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 87)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 87)) ;
-  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("  result.incIndentation (int32_t (").add_operation (var_indendationVarCppName_3937, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 88)).add_operation (GALGAS_string (".uintValue ())) ;\n"), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 88)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 88)) ;
+  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_0.readProperty_mExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_indendationVarCppName_3943, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 86)) ;
+  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("if (").add_operation (var_indendationVarCppName_3943, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 87)).add_operation (GALGAS_string (".isValid ()) {\n"), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 87)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 87)) ;
+  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("  result.incIndentation (int32_t (").add_operation (var_indendationVarCppName_3943, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 88)).add_operation (GALGAS_string (".uintValue ())) ;\n"), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 88)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 88)) ;
   ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 89)) ;
   {
   const GALGAS_templateBlockInstructionForGeneration temp_1 = this ;
   routine_templateCodeGenerationForListInstruction_3F__26__26__26__26__26_ (temp_1.readProperty_mBlockInstructionList (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, ioArgument_ioUseColumnMarker, inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 90)) ;
   }
-  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("if (").add_operation (var_indendationVarCppName_3937, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 98)).add_operation (GALGAS_string (".isValid ()) {\n"), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 98)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 98)) ;
-  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("  result.incIndentation (- int32_t (").add_operation (var_indendationVarCppName_3937, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 99)).add_operation (GALGAS_string (".uintValue ())) ;\n"), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 99)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 99)) ;
+  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("if (").add_operation (var_indendationVarCppName_3943, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 98)).add_operation (GALGAS_string (".isValid ()) {\n"), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 98)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 98)) ;
+  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("  result.incIndentation (- int32_t (").add_operation (var_indendationVarCppName_3943, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 99)).add_operation (GALGAS_string (".uintValue ())) ;\n"), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 99)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 99)) ;
   ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 100)) ;
 }
 //--------------------------------------------------------------------------------------------------
@@ -11527,20 +11653,20 @@ void cPtr_templateInstructionIfForGeneration::method_templateCodeGeneration (GAL
                                                                              Compiler * inCompiler
                                                                              COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_templateInstructionIfForGeneration temp_0 = this ;
-  cEnumerator_templateInstructionIfBranchListForGeneration enumerator_6223 (temp_0.readProperty_mTemplateInstructionIfBranchList (), kENUMERATION_UP) ;
-  while (enumerator_6223.hasCurrentObject ()) {
-    GALGAS_string var_ifVarCppName_6466 ;
-    callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) enumerator_6223.current_mExpression (HERE).ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_ifVarCppName_6466, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 137)) ;
-    GALGAS_string var_testVar_6493 = GALGAS_string ("test_").add_operation (ioArgument_ioTemporaryVariableIndex.getter_string (SOURCE_FILE ("templateCodeGeneration.galgas", 144)), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 144)) ;
+  cEnumerator_templateInstructionIfBranchListForGeneration enumerator_6229 (temp_0.readProperty_mTemplateInstructionIfBranchList (), kENUMERATION_UP) ;
+  while (enumerator_6229.hasCurrentObject ()) {
+    GALGAS_string var_ifVarCppName_6472 ;
+    callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) enumerator_6229.current_mExpression (HERE).ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_ifVarCppName_6472, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 137)) ;
+    GALGAS_string var_testVar_6499 = GALGAS_string ("test_").add_operation (ioArgument_ioTemporaryVariableIndex.getter_string (SOURCE_FILE ("templateCodeGeneration.galgas", 144)), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 144)) ;
     ioArgument_ioTemporaryVariableIndex.plusAssign_operation(GALGAS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 145)) ;
-    ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("const enumGalgasBool ").add_operation (var_testVar_6493, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 146)).add_operation (GALGAS_string (" = "), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 146)).add_operation (var_ifVarCppName_6466, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 146)).add_operation (GALGAS_string (".boolEnum () ;\n"), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 146)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 146)) ;
-    ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("switch (").add_operation (var_testVar_6493, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 147)).add_operation (GALGAS_string (") {\n"), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 147)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 147)) ;
+    ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("const enumGalgasBool ").add_operation (var_testVar_6499, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 146)).add_operation (GALGAS_string (" = "), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 146)).add_operation (var_ifVarCppName_6472, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 146)).add_operation (GALGAS_string (".boolEnum () ;\n"), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 146)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 146)) ;
+    ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("switch (").add_operation (var_testVar_6499, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 147)).add_operation (GALGAS_string (") {\n"), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 147)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 147)) ;
     ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("case kBoolTrue : {\n"), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 148)) ;
     {
     ioArgument_ioGeneratedCode.setter_incIndentation (GALGAS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 149)) ;
     }
     {
-    routine_templateCodeGenerationForListInstruction_3F__26__26__26__26__26_ (enumerator_6223.current_mInstructionList (HERE), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, ioArgument_ioUseColumnMarker, inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 150)) ;
+    routine_templateCodeGenerationForListInstruction_3F__26__26__26__26__26_ (enumerator_6229.current_mInstructionList (HERE), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, ioArgument_ioUseColumnMarker, inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 150)) ;
     }
     ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("} break ;\n"), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 158)) ;
     {
@@ -11550,15 +11676,15 @@ void cPtr_templateInstructionIfForGeneration::method_templateCodeGeneration (GAL
     {
     ioArgument_ioGeneratedCode.setter_incIndentation (GALGAS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 161)) ;
     }
-    enumerator_6223.gotoNextObject () ;
+    enumerator_6229.gotoNextObject () ;
   }
   {
   const GALGAS_templateInstructionIfForGeneration temp_1 = this ;
   routine_templateCodeGenerationForListInstruction_3F__26__26__26__26__26_ (temp_1.readProperty_mElseInstructionList (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, ioArgument_ioUseColumnMarker, inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 164)) ;
   }
   const GALGAS_templateInstructionIfForGeneration temp_2 = this ;
-  cEnumerator_templateInstructionIfBranchListForGeneration enumerator_7458 (temp_2.readProperty_mTemplateInstructionIfBranchList (), kENUMERATION_UP) ;
-  while (enumerator_7458.hasCurrentObject ()) {
+  cEnumerator_templateInstructionIfBranchListForGeneration enumerator_7464 (temp_2.readProperty_mTemplateInstructionIfBranchList (), kENUMERATION_UP) ;
+  while (enumerator_7464.hasCurrentObject ()) {
     {
     ioArgument_ioGeneratedCode.setter_decIndentation (GALGAS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 173)) ;
     }
@@ -11566,7 +11692,7 @@ void cPtr_templateInstructionIfForGeneration::method_templateCodeGeneration (GAL
     ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("default :\n"), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 175)) ;
     ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("  break ;\n"), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 176)) ;
     ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 177)) ;
-    enumerator_7458.gotoNextObject () ;
+    enumerator_7464.gotoNextObject () ;
   }
 }
 //--------------------------------------------------------------------------------------------------

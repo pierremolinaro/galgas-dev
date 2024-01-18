@@ -190,15 +190,15 @@ void cIndexingDictionary::addIndexedKey (const uint32_t inIndexingKind,
   cIndexEntryNode * entryNode = findOrAddEntry (mEntryRoot, inIndexedString, extension) ;
 //--- Register index
   String entryDescriptor ;
-  entryDescriptor.addUnsigned (inIndexingKind) ;
-  entryDescriptor.addString (":") ;
-  entryDescriptor.addUnsigned (inTokenLineInSource) ;
-  entryDescriptor.addString (":") ;
-  entryDescriptor.addUnsigned (inTokenLocationInSource) ;
-  entryDescriptor.addString (":") ;
-  entryDescriptor.addUnsigned (inTokenLengthInSource) ;
-  entryDescriptor.addString (":") ;
-  entryDescriptor.addString (inSourceFilePath) ;
+  entryDescriptor.appendUnsigned (inIndexingKind) ;
+  entryDescriptor.appendString (":") ;
+  entryDescriptor.appendUnsigned (inTokenLineInSource) ;
+  entryDescriptor.appendString (":") ;
+  entryDescriptor.appendUnsigned (inTokenLocationInSource) ;
+  entryDescriptor.appendString (":") ;
+  entryDescriptor.appendUnsigned (inTokenLengthInSource) ;
+  entryDescriptor.appendString (":") ;
+  entryDescriptor.appendString (inSourceFilePath) ;
   entryNode->mDescriptorArray.appendObject (entryDescriptor) ;
 }
 
@@ -208,16 +208,16 @@ static void enumerateEntries (const cIndexEntryNode * inNode,
                               String & ioContents) {
   if (nullptr != inNode) {
     enumerateEntries (inNode->mInfPtr, ioContents) ;
-    ioContents.addString ("<key>") ;
-    ioContents.addString (inNode->mKey.HTMLRepresentation ()) ;
-    ioContents.addString ("</key>") ;
-    ioContents.addString ("<array>") ;
+    ioContents.appendString ("<key>") ;
+    ioContents.appendString (inNode->mKey.HTMLRepresentation ()) ;
+    ioContents.appendString ("</key>") ;
+    ioContents.appendString ("<array>") ;
     for (int32_t i=0 ; i<inNode->mDescriptorArray.count () ; i++) {
-      ioContents.addString ("<string>") ;
-      ioContents.addString (inNode->mDescriptorArray (i COMMA_HERE).HTMLRepresentation ()) ;
-      ioContents.addString ("</string>") ;
+      ioContents.appendString ("<string>") ;
+      ioContents.appendString (inNode->mDescriptorArray (i COMMA_HERE).HTMLRepresentation ()) ;
+      ioContents.appendString ("</string>") ;
     }
-    ioContents.addString ("</array>") ;
+    ioContents.appendString ("</array>") ;
     enumerateEntries (inNode->mSupPtr, ioContents) ;
   }
 }
@@ -229,11 +229,11 @@ void cIndexingDictionary::generateIndexFile (const String & inOutputIndexFilePat
                     "<!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">"
                     "<plist version=\"1.0\">" ;
 //--- Write entries as dictionary
-  contents.addString ("<dict>") ;
+  contents.appendString ("<dict>") ;
   enumerateEntries (mEntryRoot, contents) ;
-  contents.addString ("</dict>") ;
+  contents.appendString ("</dict>") ;
 //--- End of file
-  contents.addString ("</plist>") ;
+  contents.appendString ("</plist>") ;
   FileManager::writeStringToFile (contents, inOutputIndexFilePath) ;
 }
 

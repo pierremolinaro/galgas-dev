@@ -126,34 +126,34 @@ void C_StringListCommandLineOption::printStringOptions (void) {
     if (p->mCommandChar != '\0') {
       for (uint32_t i=0 ; i<2 ; i++) {
         if (i != 0) {
-          gCout.addString (" ") ;
+          gCout.appendString (" ") ;
         }
         gCout.setForeColor (kBlueForeColor) ;
         gCout.setTextAttribute (kBoldTextAttribute) ;
-        gCout.addString ("-") ;
-        gCout.addChar (p->mCommandChar) ;
-        gCout.addString ("=string") ;
+        gCout.appendString ("-") ;
+        gCout.appendASCIIChar (p->mCommandChar) ;
+        gCout.appendString ("=string") ;
         gCout.setTextAttribute (kAllAttributesOff) ;
       }
-      gCout.addString (" ...\n") ;
+      gCout.appendString (" ...\n") ;
     }
     if (p->mCommandString [0] != '\0') {
       for (uint32_t i=0 ; i<2 ; i++) {
         if (i != 0) {
-          gCout.addString (" ") ;
+          gCout.appendString (" ") ;
         }
         gCout.setForeColor (kBlueForeColor) ;
         gCout.setTextAttribute (kBoldTextAttribute) ;
-        gCout.addString ("--") ;
-        gCout.addString (p->mCommandString) ;
-        gCout.addString ("=string") ;
+        gCout.appendString ("--") ;
+        gCout.appendString (p->mCommandString) ;
+        gCout.appendString ("=string") ;
         gCout.setTextAttribute (kAllAttributesOff) ;
       }
-      gCout.addString (" ...\n") ;
+      gCout.appendString (" ...\n") ;
     }
-    gCout.addString ("    ") ;
-    gCout.addString (p->mComment) ;
-    gCout.addNL () ; ;
+    gCout.appendString ("    ") ;
+    gCout.appendString (p->mComment) ;
+    gCout.appendNewLine () ;
     p = p->mNext ;
   }
 }

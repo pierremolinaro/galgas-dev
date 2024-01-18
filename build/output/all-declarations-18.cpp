@@ -126,13 +126,13 @@ const C_galgas_type_descriptor * cPtr_procCallInstructionAST::classDescriptor (v
 
 void cPtr_procCallInstructionAST::description (String & ioString,
                                                const int32_t inIndentation) const {
-  ioString.addString ("[@procCallInstructionAST:") ;
+  ioString.appendString ("[@procCallInstructionAST:") ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mRoutineName.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mActualParameterList.description (ioString, inIndentation+1) ;
-  ioString.addString ("]") ;
+  ioString.appendString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -300,11 +300,11 @@ const C_galgas_type_descriptor * cPtr_procCallInstructionForGeneration::classDes
 
 void cPtr_procCallInstructionForGeneration::description (String & ioString,
                                                          const int32_t inIndentation) const {
-  ioString.addString ("[@procCallInstructionForGeneration:") ;
+  ioString.appendString ("[@procCallInstructionForGeneration:") ;
   mProperty_routineMangledName.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mActualParameterList.description (ioString, inIndentation+1) ;
-  ioString.addString ("]") ;
+  ioString.appendString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -553,21 +553,21 @@ const C_galgas_type_descriptor * cPtr_setterCallInstructionAST::classDescriptor 
 
 void cPtr_setterCallInstructionAST::description (String & ioString,
                                                  const int32_t inIndentation) const {
-  ioString.addString ("[@setterCallInstructionAST:") ;
+  ioString.appendString ("[@setterCallInstructionAST:") ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mPrefixedBySelf.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mReceiverName.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mReceiverStructProperties.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mTypeNameForCasting.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mSetterName.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mActualParameterList.description (ioString, inIndentation+1) ;
-  ioString.addString ("]") ;
+  ioString.appendString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -740,13 +740,13 @@ const C_galgas_type_descriptor * cPtr_selfSetterCallInstructionAST::classDescrip
 
 void cPtr_selfSetterCallInstructionAST::description (String & ioString,
                                                      const int32_t inIndentation) const {
-  ioString.addString ("[@selfSetterCallInstructionAST:") ;
+  ioString.appendString ("[@selfSetterCallInstructionAST:") ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mSetterName.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mActualParameterList.description (ioString, inIndentation+1) ;
-  ioString.addString ("]") ;
+  ioString.appendString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1085,29 +1085,29 @@ const C_galgas_type_descriptor * cPtr_setterCallInstructionForGeneration::classD
 
 void cPtr_setterCallInstructionForGeneration::description (String & ioString,
                                                            const int32_t inIndentation) const {
-  ioString.addString ("[@setterCallInstructionForGeneration:") ;
+  ioString.appendString ("[@setterCallInstructionForGeneration:") ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mReceiverCppName.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mReceiverBaseName.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mReceiverStructAttributes.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mCastType.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mReceiverType.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mSetterName.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mKind.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mActualParameterList.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mHasCompilerArgument.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mMethodBaseType.description (ioString, inIndentation+1) ;
-  ioString.addString ("]") ;
+  ioString.appendString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1351,19 +1351,19 @@ const C_galgas_type_descriptor * cPtr_selfSetterCallInstructionForGeneration::cl
 
 void cPtr_selfSetterCallInstructionForGeneration::description (String & ioString,
                                                                const int32_t inIndentation) const {
-  ioString.addString ("[@selfSetterCallInstructionForGeneration:") ;
+  ioString.appendString ("[@selfSetterCallInstructionForGeneration:") ;
   mProperty_mSelfCppName.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mReceiverType.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mSetterName.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mKind.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mActualParameterList.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mHasCompilerArgument.description (ioString, inIndentation+1) ;
-  ioString.addString ("]") ;
+  ioString.appendString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1550,13 +1550,13 @@ const C_galgas_type_descriptor * cPtr_switchInstructionForGeneration::classDescr
 
 void cPtr_switchInstructionForGeneration::description (String & ioString,
                                                        const int32_t inIndentation) const {
-  ioString.addString ("[@switchInstructionForGeneration:") ;
+  ioString.appendString ("[@switchInstructionForGeneration:") ;
   mProperty_mEnumType.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mSwitchExpression.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mBranches.description (ioString, inIndentation+1) ;
-  ioString.addString ("]") ;
+  ioString.appendString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1748,15 +1748,15 @@ const C_galgas_type_descriptor * cPtr_typeMethodCallInstructionAST::classDescrip
 
 void cPtr_typeMethodCallInstructionAST::description (String & ioString,
                                                      const int32_t inIndentation) const {
-  ioString.addString ("[@typeMethodCallInstructionAST:") ;
+  ioString.appendString ("[@typeMethodCallInstructionAST:") ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mTypeName.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mMethodName.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mActualParameterList.description (ioString, inIndentation+1) ;
-  ioString.addString ("]") ;
+  ioString.appendString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1962,15 +1962,15 @@ const C_galgas_type_descriptor * cPtr_typeMethodCallInstructionForGeneration::cl
 
 void cPtr_typeMethodCallInstructionForGeneration::description (String & ioString,
                                                                const int32_t inIndentation) const {
-  ioString.addString ("[@typeMethodCallInstructionForGeneration:") ;
+  ioString.appendString ("[@typeMethodCallInstructionForGeneration:") ;
   mProperty_mTypeName.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mMethodName.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mActualParameterList.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mHasCompilerArgument.description (ioString, inIndentation+1) ;
-  ioString.addString ("]") ;
+  ioString.appendString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2143,13 +2143,13 @@ const C_galgas_type_descriptor * cPtr_localVariableDeclarationWithAssignmentAST:
 
 void cPtr_localVariableDeclarationWithAssignmentAST::description (String & ioString,
                                                                   const int32_t inIndentation) const {
-  ioString.addString ("[@localVariableDeclarationWithAssignmentAST:") ;
+  ioString.appendString ("[@localVariableDeclarationWithAssignmentAST:") ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mVariableName.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mSourceExpression.description (ioString, inIndentation+1) ;
-  ioString.addString ("]") ;
+  ioString.appendString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2322,13 +2322,13 @@ const C_galgas_type_descriptor * cPtr_localVariableDeclarationNoAssignmentAST::c
 
 void cPtr_localVariableDeclarationNoAssignmentAST::description (String & ioString,
                                                                 const int32_t inIndentation) const {
-  ioString.addString ("[@localVariableDeclarationNoAssignmentAST:") ;
+  ioString.appendString ("[@localVariableDeclarationNoAssignmentAST:") ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mTypeName.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mVariableName.description (ioString, inIndentation+1) ;
-  ioString.addString ("]") ;
+  ioString.appendString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2534,15 +2534,15 @@ const C_galgas_type_descriptor * cPtr_warningInstructionForGeneration::classDesc
 
 void cPtr_warningInstructionForGeneration::description (String & ioString,
                                                         const int32_t inIndentation) const {
-  ioString.addString ("[@warningInstructionForGeneration:") ;
+  ioString.appendString ("[@warningInstructionForGeneration:") ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mReceiverExpression.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mWarningExpression.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mFixitListForGeneration.description (ioString, inIndentation+1) ;
-  ioString.addString ("]") ;
+  ioString.appendString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2867,29 +2867,29 @@ const C_galgas_type_descriptor * cPtr_readAccessWithInstructionAST::classDescrip
 
 void cPtr_readAccessWithInstructionAST::description (String & ioString,
                                                      const int32_t inIndentation) const {
-  ioString.addString ("[@readAccessWithInstructionAST:") ;
+  ioString.appendString ("[@readAccessWithInstructionAST:") ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mPrefix.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mReceiverExpression.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mEndOfReceiverExpression.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mKeyExpression.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mEndOfKeyExpression.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mSearchMethodNameForErrorSignaling.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mDoBranchInstructions.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mEndOf_5F_do_5F_instructions.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mElseBranchInstructions.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mEndOf_5F_else_5F_instructions.description (ioString, inIndentation+1) ;
-  ioString.addString ("]") ;
+  ioString.appendString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3252,33 +3252,33 @@ const C_galgas_type_descriptor * cPtr_readWriteAccessWithInstructionAST::classDe
 
 void cPtr_readWriteAccessWithInstructionAST::description (String & ioString,
                                                           const int32_t inIndentation) const {
-  ioString.addString ("[@readWriteAccessWithInstructionAST:") ;
+  ioString.appendString ("[@readWriteAccessWithInstructionAST:") ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mPrefix.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mReceiverName.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mReceiverIsPrefixedBySelf.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mFieldList.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mEndOfReceiverExpression.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mKeyExpression.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mEndOfKeyExpression.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mSearchMethodNameForErrorSignaling.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_m_5F_do_5F_Instructions.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mEndOf_5F_do_5F_instructions.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_m_5F_else_5F_Instructions.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mEndOf_5F_else_5F_instructions.description (ioString, inIndentation+1) ;
-  ioString.addString ("]") ;
+  ioString.appendString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3541,21 +3541,21 @@ const C_galgas_type_descriptor * cPtr_readOnlyWithInstructionForGeneration::clas
 
 void cPtr_readOnlyWithInstructionForGeneration::description (String & ioString,
                                                              const int32_t inIndentation) const {
-  ioString.addString ("[@readOnlyWithInstructionForGeneration:") ;
+  ioString.appendString ("[@readOnlyWithInstructionForGeneration:") ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mReceiverExpression.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mObjectArrayCppName.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mKeyExpression.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mSearchMethodNameForErrorSignaling.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mDoBranchInstructions.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mElseBranchInstructions.description (ioString, inIndentation+1) ;
-  ioString.addString ("]") ;
+  ioString.appendString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3856,25 +3856,25 @@ const C_galgas_type_descriptor * cPtr_readWriteWithInstructionForGeneration::cla
 
 void cPtr_readWriteWithInstructionForGeneration::description (String & ioString,
                                                               const int32_t inIndentation) const {
-  ioString.addString ("[@readWriteWithInstructionForGeneration:") ;
+  ioString.appendString ("[@readWriteWithInstructionForGeneration:") ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mReceiverVariableCppName.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mReceiverType.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mStructAttributeList.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mObjectArrayCppName.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mKeyExpression.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mSearchMethodNameForErrorSignaling.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mDoBranchInstructions.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mElseBranchInstructions.description (ioString, inIndentation+1) ;
-  ioString.addString ("]") ;
+  ioString.appendString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4085,17 +4085,17 @@ const C_galgas_type_descriptor * cPtr_nonterminalCallInstruction::classDescripto
 
 void cPtr_nonterminalCallInstruction::description (String & ioString,
                                                    const int32_t inIndentation) const {
-  ioString.addString ("[@nonterminalCallInstruction:") ;
+  ioString.appendString ("[@nonterminalCallInstruction:") ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mNonterminalName.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mLabelName.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mActualParameterList.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mGrammarInstructionSyntaxDirectedTranslationResult.description (ioString, inIndentation+1) ;
-  ioString.addString ("]") ;
+  ioString.appendString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4325,19 +4325,19 @@ const C_galgas_type_descriptor * cPtr_terminalCheckInstructionAST::classDescript
 
 void cPtr_terminalCheckInstructionAST::description (String & ioString,
                                                     const int32_t inIndentation) const {
-  ioString.addString ("[@terminalCheckInstructionAST:") ;
+  ioString.appendString ("[@terminalCheckInstructionAST:") ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mTerminalName.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mActualInputParameterList.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mIndexingKeyList.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mGrammarInstructionSyntaxDirectedTranslationToken.description (ioString, inIndentation+1) ;
-  ioString.addString ("]") ;
+  ioString.appendString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4510,13 +4510,13 @@ const C_galgas_type_descriptor * cPtr_terminalInstructionForGrammarAnalysis::cla
 
 void cPtr_terminalInstructionForGrammarAnalysis::description (String & ioString,
                                                               const int32_t inIndentation) const {
-  ioString.addString ("[@terminalInstructionForGrammarAnalysis:") ;
+  ioString.appendString ("[@terminalInstructionForGrammarAnalysis:") ;
   mProperty_mStartLocation.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mTerminalSymbolName.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mTerminalSymbolIndex.description (ioString, inIndentation+1) ;
-  ioString.addString ("]") ;
+  ioString.appendString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4875,21 +4875,21 @@ const C_galgas_type_descriptor * cPtr_terminalCheckInstructionForGeneration::cla
 
 void cPtr_terminalCheckInstructionForGeneration::description (String & ioString,
                                                               const int32_t inIndentation) const {
-  ioString.addString ("[@terminalCheckInstructionForGeneration:") ;
+  ioString.appendString ("[@terminalCheckInstructionForGeneration:") ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mTerminalName.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mLexiqueIdentifier.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mTerminalCheckAssignementList.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mIndexingKeyList.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mGrammarInstructionSyntaxDirectedTranslationToken.description (ioString, inIndentation+1) ;
-  ioString.addString ("]") ;
+  ioString.appendString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5081,15 +5081,15 @@ const C_galgas_type_descriptor * cPtr_parseLoopInstructionForGeneration::classDe
 
 void cPtr_parseLoopInstructionForGeneration::description (String & ioString,
                                                           const int32_t inIndentation) const {
-  ioString.addString ("[@parseLoopInstructionForGeneration:") ;
+  ioString.appendString ("[@parseLoopInstructionForGeneration:") ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mVariantExpression.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mWhileExpression.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mInstructionList.description (ioString, inIndentation+1) ;
-  ioString.addString ("]") ;
+  ioString.appendString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5281,15 +5281,15 @@ const C_galgas_type_descriptor * cPtr_parseWhenInstructionForGeneration::classDe
 
 void cPtr_parseWhenInstructionForGeneration::description (String & ioString,
                                                           const int32_t inIndentation) const {
-  ioString.addString ("[@parseWhenInstructionForGeneration:") ;
+  ioString.appendString ("[@parseWhenInstructionForGeneration:") ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mWhenExpression.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mInstructionList.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mElseInstructionList.description (ioString, inIndentation+1) ;
-  ioString.addString ("]") ;
+  ioString.appendString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5443,11 +5443,11 @@ const C_galgas_type_descriptor * cPtr_syntaxSendInstructionForGeneration::classD
 
 void cPtr_syntaxSendInstructionForGeneration::description (String & ioString,
                                                            const int32_t inIndentation) const {
-  ioString.addString ("[@syntaxSendInstructionForGeneration:") ;
+  ioString.appendString ("[@syntaxSendInstructionForGeneration:") ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mExpression.description (ioString, inIndentation+1) ;
-  ioString.addString ("]") ;
+  ioString.appendString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5620,13 +5620,13 @@ const C_galgas_type_descriptor * cPtr_nonTerminalInstructionForGrammarAnalysis::
 
 void cPtr_nonTerminalInstructionForGrammarAnalysis::description (String & ioString,
                                                                  const int32_t inIndentation) const {
-  ioString.addString ("[@nonTerminalInstructionForGrammarAnalysis:") ;
+  ioString.appendString ("[@nonTerminalInstructionForGrammarAnalysis:") ;
   mProperty_mStartLocation.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mNonterminalSymbolName.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mNonterminalSymbolIndex.description (ioString, inIndentation+1) ;
-  ioString.addString ("]") ;
+  ioString.appendString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5759,19 +5759,19 @@ void GALGAS_productionRuleListForGrammarAnalysis_2D_element::drop (void) {
 
 void GALGAS_productionRuleListForGrammarAnalysis_2D_element::description (String & ioString,
                                                                           const int32_t inIndentation) const {
-  ioString.addString ("<struct @productionRuleListForGrammarAnalysis-element:") ;
+  ioString.appendString ("<struct @productionRuleListForGrammarAnalysis-element:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendString (" not built") ;
   }else{
     mProperty_mLeftNonterminalSymbol.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mLeftNonterminalSymbolIndex.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mInstructionList.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mProductionIndex.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5998,27 +5998,27 @@ void GALGAS_galgas_33_ProjectComponentAST::drop (void) {
 
 void GALGAS_galgas_33_ProjectComponentAST::description (String & ioString,
                                                         const int32_t inIndentation) const {
-  ioString.addString ("<struct @galgas3ProjectComponentAST:") ;
+  ioString.appendString ("<struct @galgas3ProjectComponentAST:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendString (" not built") ;
   }else{
     mProperty_mProjectSourceList.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mMajorVersion.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mMinorVersion.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mRevisionVersion.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mGenerationFeatureList.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mQualifiedFeatureList.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mTargetName.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mEndOfSourceFile.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6424,18 +6424,18 @@ void cGrammar_galgas_33_ProjectGrammar::_performSourceFileParsing_ (Compiler * i
         }
       }else{
         String message ;
-        message.addString ("the '") ;
-        message.addString (filePath) ;
-        message.addString ("' file exists, but cannot be read") ;
+        message.appendString ("the '") ;
+        message.appendString (filePath) ;
+        message.appendString ("' file exists, but cannot be read") ;
         const GALGAS_location errorLocation (inFilePath.readProperty_location ()) ;
         inCompiler->semanticErrorAtLocation (errorLocation, message, TC_Array <C_FixItDescription> () COMMA_THERE) ;
       }
       macroDetachSharedObject (scanner) ;
     }else{
       String message ;
-      message.addString ("the '") ;
-      message.addString (filePath) ;
-      message.addString ("' file does not exist") ;
+      message.appendString ("the '") ;
+      message.appendString (filePath) ;
+      message.appendString ("' file does not exist") ;
       const GALGAS_location errorLocation (inFilePath.readProperty_location ()) ;
       inCompiler->semanticErrorAtLocation (errorLocation, message, TC_Array <C_FixItDescription> () COMMA_THERE) ;
     }
@@ -43904,18 +43904,18 @@ void cGrammar_galgas_33_Grammar::_performSourceFileParsing_ (Compiler * inCompil
         }
       }else{
         String message ;
-        message.addString ("the '") ;
-        message.addString (filePath) ;
-        message.addString ("' file exists, but cannot be read") ;
+        message.appendString ("the '") ;
+        message.appendString (filePath) ;
+        message.appendString ("' file exists, but cannot be read") ;
         const GALGAS_location errorLocation (inFilePath.readProperty_location ()) ;
         inCompiler->semanticErrorAtLocation (errorLocation, message, TC_Array <C_FixItDescription> () COMMA_THERE) ;
       }
       macroDetachSharedObject (scanner) ;
     }else{
       String message ;
-      message.addString ("the '") ;
-      message.addString (filePath) ;
-      message.addString ("' file does not exist") ;
+      message.appendString ("the '") ;
+      message.appendString (filePath) ;
+      message.appendString ("' file does not exist") ;
       const GALGAS_location errorLocation (inFilePath.readProperty_location ()) ;
       inCompiler->semanticErrorAtLocation (errorLocation, message, TC_Array <C_FixItDescription> () COMMA_THERE) ;
     }

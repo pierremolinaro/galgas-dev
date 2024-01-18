@@ -77,25 +77,25 @@ cIssueDescriptor & cIssueDescriptor::operator = (const cIssueDescriptor & inSour
 void cIssueDescriptor::appendToJSONstring (String & ioJSONstring, const bool inIsFirstIssue) const {
   String s = mMessage.stringByReplacingStringByString("\n", "\\n") ;
   s = s.stringByReplacingStringByString("\"", "\\\"") ;
-  ioJSONstring.addString (inIsFirstIssue ? "" : ",\n") ;
-  ioJSONstring.addString ("  { \"ERROR\" : ") ;
-  ioJSONstring.addString (mIsError ? "true" : "false") ;
-  ioJSONstring.addString (",\n") ;
-  ioJSONstring.addString ("    \"SOURCE\" : \"") ;
-  ioJSONstring.addString (mFile.lastPathComponent ()) ;
-  ioJSONstring.addString ("\",\n") ;
-  ioJSONstring.addString ("    \"LINE\"  : ") ;
-  ioJSONstring.addSigned (mLine) ;
-  ioJSONstring.addString (",\n") ;
-  ioJSONstring.addString ("    \"START_COLUMN\"  : ") ;
-  ioJSONstring.addSigned (mStartColumn) ;
-  ioJSONstring.addString (",\n") ;
-  ioJSONstring.addString ("    \"END_COLUMN\"  : ") ;
-  ioJSONstring.addSigned (mEndColumn) ;
-  ioJSONstring.addString (",\n") ;
-  ioJSONstring.addString ("    \"MESSAGE\" : \"") ;
-  ioJSONstring.addString (s) ;
-  ioJSONstring.addString ("\"\n"
+  ioJSONstring.appendString (inIsFirstIssue ? "" : ",\n") ;
+  ioJSONstring.appendString ("  { \"ERROR\" : ") ;
+  ioJSONstring.appendString (mIsError ? "true" : "false") ;
+  ioJSONstring.appendString (",\n") ;
+  ioJSONstring.appendString ("    \"SOURCE\" : \"") ;
+  ioJSONstring.appendString (mFile.lastPathComponent ()) ;
+  ioJSONstring.appendString ("\",\n") ;
+  ioJSONstring.appendString ("    \"LINE\"  : ") ;
+  ioJSONstring.appendSigned (mLine) ;
+  ioJSONstring.appendString (",\n") ;
+  ioJSONstring.appendString ("    \"START_COLUMN\"  : ") ;
+  ioJSONstring.appendSigned (mStartColumn) ;
+  ioJSONstring.appendString (",\n") ;
+  ioJSONstring.appendString ("    \"END_COLUMN\"  : ") ;
+  ioJSONstring.appendSigned (mEndColumn) ;
+  ioJSONstring.appendString (",\n") ;
+  ioJSONstring.appendString ("    \"MESSAGE\" : \"") ;
+  ioJSONstring.appendString (s) ;
+  ioJSONstring.appendString ("\"\n"
                   "  }") ;
 }
 

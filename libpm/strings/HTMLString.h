@@ -45,7 +45,7 @@ class HTMLString : public String {
                                                            const int32_t inArrayCount) ;
 
 //--- Method for writing a HTML table
-  public: void addCppTitleComment (const String & inCommentString,
+  public: void appendCppTitleComment (const String & inCommentString,
                                    const String & inTableStyleClass) ;
 
 //--- Write start code

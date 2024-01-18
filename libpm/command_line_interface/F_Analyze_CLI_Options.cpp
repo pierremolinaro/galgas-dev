@@ -73,16 +73,16 @@ const char * galgasVersionString (void) {
 static void print_usage (int argv, const char * argc []) {
   gCout.setForeColor (kMagentaForeColor) ;
   gCout.setTextAttribute (kBoldTextAttribute) ;
-  gCout.addString ("Usage:\n") ;
+  gCout.appendString ("Usage:\n") ;
   gCout.setTextAttribute (kAllAttributesOff) ;
   if (argv > 0) {
-    gCout.addString (argc [0]) ;
+    gCout.appendString (argc [0]) ;
   }
   C_BoolCommandLineOption::printUsageOfBoolOptions () ;
   C_UIntCommandLineOption::printUsageOfUIntOptions () ;
   C_StringCommandLineOption::printUsageOfStringOptions () ;
   C_StringListCommandLineOption::printUsageOfStringOptions () ;
-  gCout.addString (" file...\n") ;
+  gCout.appendString (" file...\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -111,21 +111,21 @@ static void print_help (const int argv,
                         const char* * inHelpMessageArray,
                         void print_tool_help_message (void)) {
   #ifdef __LP64__
-    gCout.addString ("Compiled in 64 bits mode") ;
+    gCout.appendString ("Compiled in 64 bits mode") ;
   #else
-    gCout.addString ("Compiled in 32 bits mode") ;
+    gCout.appendString ("Compiled in 32 bits mode") ;
   #endif
   #ifndef DO_NOT_GENERATE_CHECKINGS
-    gCout.addString (" (with debug code)") ;
+    gCout.appendString (" (with debug code)") ;
   #endif
-  gCout.addString (".\n") ;
+  gCout.appendString (".\n") ;
   print_tool_help_message () ;
   print_usage (argv, argc) ;
   gCout.setForeColor (kMagentaForeColor) ;
   gCout.setTextAttribute (kBoldTextAttribute) ;
-  gCout.addString ("Options:\n") ;
+  gCout.appendString ("Options:\n") ;
   gCout.setTextAttribute (kAllAttributesOff) ;
-  gCout.addString ("You can place options anywhere in the command line: they will be executed before the files are processed.\n") ;
+  gCout.appendString ("You can place options anywhere in the command line: they will be executed before the files are processed.\n") ;
   C_BoolCommandLineOption::printBoolOptions () ;
   C_UIntCommandLineOption::printUIntOptions () ;
   C_StringCommandLineOption::printStringOptions () ;
@@ -137,29 +137,29 @@ static void print_help (const int argv,
   }
   gCout.setForeColor (kMagentaForeColor) ;
   gCout.setTextAttribute (kBoldTextAttribute) ;
-  gCout.addString ("Handled extension") ;
-  gCout.addString ((extensionIndex > 1) ? "s" : "") ;
-  gCout.addString (":\n") ;
+  gCout.appendString ("Handled extension") ;
+  gCout.appendString ((extensionIndex > 1) ? "s" : "") ;
+  gCout.appendString (":\n") ;
   gCout.setTextAttribute (kAllAttributesOff) ;
   extensionIndex = 0 ;
   while (inExtensionArray [extensionIndex] != nullptr) {
     gCout.setForeColor (kBlueForeColor) ;
     gCout.setTextAttribute (kBoldTextAttribute) ;
-    gCout.addString (".") ;
-    gCout.addString (inExtensionArray [extensionIndex]) ;
+    gCout.appendString (".") ;
+    gCout.appendString (inExtensionArray [extensionIndex]) ;
     gCout.setTextAttribute (kAllAttributesOff) ;
     const uint32_t extensionLength = (uint32_t) (strlen (inExtensionArray [extensionIndex]) & UINT32_MAX) ;
     const uint32_t kDisplayLength = 20 ;
     if (extensionLength < kDisplayLength) {
       for (uint32_t i=extensionLength ; i<kDisplayLength ; i++) {
-        gCout.addString (" ") ;
+        gCout.appendString (" ") ;
       }
     }else{
-      gCout.addNL () ; ;
-      gCout.addSpaces (kDisplayLength+2) ;
+      gCout.appendNewLine () ; ;
+      gCout.appendSpaces (kDisplayLength+2) ;
     }
-    gCout.addString (inHelpMessageArray [extensionIndex]) ;
-    gCout.addNL () ; ;
+    gCout.appendString (inHelpMessageArray [extensionIndex]) ;
+    gCout.appendNewLine () ; ;
     extensionIndex ++ ;
   }
 }
@@ -178,9 +178,9 @@ static void option_beginning_with_single_minus_sign (const char * inCommand,
   if (optionLength == 2) {
     C_BoolCommandLineOption::setBoolOptionForCommandChar (inCommand [1], outOk) ;
     if (! outOk) {
-      gCout.addString ("Error : unknown '") ;
-      gCout.addString (inCommand) ;
-      gCout.addString ("' command line option.\n") ;
+      gCout.appendString ("Error : unknown '") ;
+      gCout.appendString (inCommand) ;
+      gCout.appendString ("' command line option.\n") ;
     }
   }else if (optionLength > 2) {
   //--- Search for an UInt option
@@ -194,21 +194,21 @@ static void option_beginning_with_single_minus_sign (const char * inCommand,
       C_StringListCommandLineOption::setStringListOptionForCommandChar (& inCommand [1], outOk, correctFormat) ;
     }
     if (! outOk) {
-      gCout.addString ("Error : unknown '") ;
-      gCout.addString (inCommand) ;
-      gCout.addString ("' command line option.\n") ;
+      gCout.appendString ("Error : unknown '") ;
+      gCout.appendString (inCommand) ;
+      gCout.appendString ("' command line option.\n") ;
     }else if (! correctFormat) {
       outOk = false ;
-      gCout.addString ("Error : incorrect format for '") ;
-      gCout.addString (inCommand) ;
-      gCout.addString ("' command line option (correct format is : '-") ;
-      gCout.addString (inCommand) ;
-      gCout.addString ("=value').\n") ;
+      gCout.appendString ("Error : incorrect format for '") ;
+      gCout.appendString (inCommand) ;
+      gCout.appendString ("' command line option (correct format is : '-") ;
+      gCout.appendString (inCommand) ;
+      gCout.appendString ("=value').\n") ;
     }
   }else{
-    gCout.addString ("Error : unknown '") ;
-    gCout.addString (inCommand) ;
-    gCout.addString ("' command line option.\n") ;
+    gCout.appendString ("Error : unknown '") ;
+    gCout.appendString (inCommand) ;
+    gCout.appendString ("' command line option.\n") ;
   }
 }
 
@@ -236,14 +236,14 @@ static void option_beginning_with_double_minus_sign (const char * inCommand,
     C_StringListCommandLineOption::setStringListOptionForCommandString (& inCommand [2], outFound, correctFormat) ;
   }
   if (! outFound) {
-    gCout.addString ("Error : unknown '") ;
-    gCout.addString (inCommand) ;
-    gCout.addString ("' command line option.\n") ;
+    gCout.appendString ("Error : unknown '") ;
+    gCout.appendString (inCommand) ;
+    gCout.appendString ("' command line option.\n") ;
   }else if (! correctFormat) {
     outFound = false ;
-    gCout.addString ("Error : incorrect format for '") ;
-    gCout.addString (inCommand) ;
-    gCout.addString ("' command line option.\n") ;
+    gCout.appendString ("Error : incorrect format for '") ;
+    gCout.appendString (inCommand) ;
+    gCout.appendString ("' command line option.\n") ;
   }
 }
 
@@ -280,13 +280,13 @@ static void analyze_one_option (const char * inCommand,
          && isalpha (inCommand [0])
          && (inCommand [1] == ':')
          && (inCommand [2] == '\\')) {
-          fileName.addString ("/") ;
-          fileName.addUnicodeChar (TO_UNICODE (inCommand [0]) COMMA_HERE) ;
-          fileName.addString ("/") ;
+          fileName.appendString ("/") ;
+          fileName.appendUnicodeChar (TO_UNICODE (inCommand [0]) COMMA_HERE) ;
+          fileName.appendString ("/") ;
           firstChar = 3 ;
         }
         for (int32_t i=firstChar ; i<fileLength ; i++) {
-          fileName.addUnicodeChar (TO_UNICODE (((inCommand [i] == '\\') ? '/' : inCommand [i])) COMMA_HERE) ;
+          fileName.appendUnicodeChar (TO_UNICODE (((inCommand [i] == '\\') ? '/' : inCommand [i])) COMMA_HERE) ;
         }
       #else
         fileName = inCommand ;
@@ -346,13 +346,13 @@ static void analyze_one_option (const char * inCommand,
        && isalpha (szFile [0])
        && (szFile [1] == ':')
        && (szFile [2] == '\\')) {
-        fileName.addString ("/") ;
-        fileName.addUnicodeChar (TO_UNICODE (szFile [0]) COMMA_HERE) ;
-        fileName.addString ("/") ;
+        fileName.appendString ("/") ;
+        fileName.appendUnicodeChar (TO_UNICODE (szFile [0]) COMMA_HERE) ;
+        fileName.appendString ("/") ;
         firstChar = 3 ;
       }
       for (int32_t i=firstChar ; i<fileLength ; i++) {
-        fileName.addUnicodeChar (TO_UNICODE ((szFile [i] == '\\') ? '/' : szFile [i]) COMMA_HERE) ;
+        fileName.appendUnicodeChar (TO_UNICODE ((szFile [i] == '\\') ? '/' : szFile [i]) COMMA_HERE) ;
       }
       outSourceFileArray.appendObject (fileName) ;
     }
@@ -394,15 +394,15 @@ void F_Analyze_CLI_Options (const int argv,
   #endif
 //--- Print version ?
   if (gOption_generic_5F_cli_5F_options_display_5F_version.mValue) {
-    gCout.addString (argc [0]) ;
-    gCout.addString (" : ") ;
-    gCout.addString (projectVersionString ()) ;
+    gCout.appendString (argc [0]) ;
+    gCout.appendString (" : ") ;
+    gCout.appendString (projectVersionString ()) ;
     #ifndef DO_NOT_GENERATE_CHECKINGS
-      gCout.addString (" [DEBUG]") ;
+      gCout.appendString (" [DEBUG]") ;
     #endif
-    gCout.addString (", build with GALGAS ") ;
-    gCout.addString (galgasVersionString ()) ;
-    gCout.addNL () ; ;
+    gCout.appendString (", build with GALGAS ") ;
+    gCout.appendString (galgasVersionString ()) ;
+    gCout.appendNewLine () ;
   }
 //--- Print Help ?
   if (gOption_generic_5F_cli_5F_options_display_5F_help.mValue) {

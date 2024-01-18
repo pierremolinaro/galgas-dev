@@ -78,13 +78,13 @@ void GALGAS_bigint::drop (void) {
 
 void GALGAS_bigint::description (String & ioString,
                                  const int32_t /* inIndentation */) const {
-  ioString.addString ("<@bigint: ") ;
+  ioString.appendString ("<@bigint: ") ;
   if (!mIsValid) {
-    ioString.addString ("not built") ;
+    ioString.appendString ("not built") ;
   }else{
-    ioString.addString (mValue.decimalString ()) ;
+    ioString.appendString (mValue.decimalString ()) ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------

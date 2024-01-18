@@ -51,7 +51,7 @@ class HTMLFileWrite final : public TextFileWrite {
   private: HTMLFileWrite (HTMLFileWrite &) = delete ;
 
 //--- Output data, without HTML formatting
-  public: void addRawData (const char * inCString) ;
+  public: void appendRawData (const char * inCString) ;
 
 //--- General stream methods
   protected: virtual void performActualCharArrayOutput (const char * inCharArray,
@@ -61,8 +61,8 @@ class HTMLFileWrite final : public TextFileWrite {
                                                            const int32_t inArrayCount) ;
 
 //--- Method for writing a HTML table
-  public: void addCppTitleComment (const String & inCommentString,
-                                   const String & inTableStyleClass) ;
+  public: void appendCppTitleComment (const String & inCommentString,
+                                      const String & inTableStyleClass) ;
 
 //--- Close file (does nothing is file is not open)
   public: virtual bool close (void) ;

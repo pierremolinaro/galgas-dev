@@ -51,7 +51,7 @@ String BigSigned::decimalString (void) const {
     return mUnsigned.decimalString () ;
   }else{
     String s = "-" ;
-    s.addString (mUnsigned.decimalString ()) ;
+    s.appendString (mUnsigned.decimalString ()) ;
     return s ;
   }
 }
@@ -63,7 +63,7 @@ String BigSigned::spacedDecimalString (const uint32_t inSeparation) const {
     return mUnsigned.spacedDecimalString (inSeparation) ;
   }else{
     String s = "-" ;
-    s.addString (mUnsigned.spacedDecimalString (inSeparation)) ;
+    s.appendString (mUnsigned.spacedDecimalString (inSeparation)) ;
     return s ;
   }
 }
@@ -75,7 +75,7 @@ String BigSigned::hexString (void) const {
     return mUnsigned.hexString () ;
   }else{
     String s = "-" ;
-    s.addString (mUnsigned.hexString ()) ;
+    s.appendString (mUnsigned.hexString ()) ;
     return s ;
   }
 }
@@ -87,7 +87,7 @@ String BigSigned::xString (void) const {
     return mUnsigned.xString () ;
   }else{
     String s = "-" ;
-    s.addString (mUnsigned.xString ()) ;
+    s.appendString (mUnsigned.xString ()) ;
     return s ;
   }
 }

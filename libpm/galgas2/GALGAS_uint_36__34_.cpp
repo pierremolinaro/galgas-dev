@@ -624,7 +624,7 @@ GALGAS_string GALGAS_uint_36__34_::getter_string (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
     String s ;
-    s.addUnsigned (mUInt64Value) ;
+    s.appendUnsigned (mUInt64Value) ;
     result = GALGAS_string (s) ;
   }
   return result ;
@@ -636,8 +636,8 @@ GALGAS_string GALGAS_uint_36__34_::getter_hexString (UNUSED_LOCATION_ARGS) const
   GALGAS_string result ;
   if (isValid ()) {
     String s ;
-    s.addString ("0x") ;
-    s.addUnsignedHex16 (mUInt64Value) ;
+    s.appendString ("0x") ;
+    s.appendUnsignedHex16 (mUInt64Value) ;
     result = GALGAS_string (s) ;
   }
   return result ;
@@ -656,7 +656,7 @@ GALGAS_string GALGAS_uint_36__34_::getter_hexStringSeparatedBy (const GALGAS_cha
       inCompiler->onTheFlyRunTimeError ("last argument should be > 0" COMMA_THERE) ;
     }else{
       String s ;
-      s.addUnsignedHex16 (mUInt64Value) ;
+      s.appendUnsignedHex16 (mUInt64Value) ;
       const utf32 separator = inSeparator.charValue() ;
       for (int i = (int) (s.length () - group) ; i > 0 ; i -= group) {
         s.insertCharacterAtIndex (separator, i COMMA_HERE) ;
@@ -673,7 +673,7 @@ GALGAS_string GALGAS_uint_36__34_::getter_xString (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
     String s ;
-    s.addUnsignedHex16 (mUInt64Value) ;
+    s.appendUnsignedHex16 (mUInt64Value) ;
     result = GALGAS_string (s) ;
   }
   return result ;
@@ -683,13 +683,13 @@ GALGAS_string GALGAS_uint_36__34_::getter_xString (UNUSED_LOCATION_ARGS) const {
 
 void GALGAS_uint_36__34_::description (String & ioString,
                                        const int32_t /* inIndentation */) const {
-  ioString.addString ("<@uint64:") ;
+  ioString.appendString ("<@uint64:") ;
   if (isValid ()) {
-    ioString.addUnsigned (mUInt64Value) ;
+    ioString.appendUnsigned (mUInt64Value) ;
   }else{
-    ioString.addString ("not built") ;
+    ioString.appendString ("not built") ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------

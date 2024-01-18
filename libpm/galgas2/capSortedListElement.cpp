@@ -104,7 +104,7 @@ void capSortedListElement::insulate (void) {
 
 void capSortedListElement::description (String & ioString, const int32_t inIndentation) const {
   if (nullptr == mPtr) {
-    ioString.addString ("NULL") ;
+    ioString.appendString ("NULL") ;
   }else{
     mPtr->description (ioString, inIndentation) ;
   }

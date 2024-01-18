@@ -187,23 +187,23 @@ typeComparisonResult GALGAS_location::objectCompare (const GALGAS_location & inO
 
 void GALGAS_location::description (String & ioString,
                                    const int32_t /* inIndentation */) const {
-  ioString.addString ("<@location:") ;
+  ioString.appendString ("<@location:") ;
   if (isValid ()) {
     if (!mInternalLocation->mSourceText.isValid ()) {
-      ioString.addString ("nowhere") ;
+      ioString.appendString ("nowhere") ;
     }else{
-      ioString.addString ("'") ;
-      ioString.addString (mInternalLocation->mSourceText.sourceFilePath ()) ;
-      ioString.addString ("'") ;
+      ioString.appendString ("'") ;
+      ioString.appendString (mInternalLocation->mSourceText.sourceFilePath ()) ;
+      ioString.appendString ("'") ;
     }
-    ioString.addString (":") ;
-    ioString.addSigned (mInternalLocation->mStartLocation.lineNumber ()) ;
-    ioString.addString (":") ;
-    ioString.addSigned (mInternalLocation->mStartLocation.columnNumber ()) ;
+    ioString.appendString (":") ;
+    ioString.appendSigned (mInternalLocation->mStartLocation.lineNumber ()) ;
+    ioString.appendString (":") ;
+    ioString.appendSigned (mInternalLocation->mStartLocation.columnNumber ()) ;
   }else{
-    ioString.addString ("not built") ;
+    ioString.appendString ("not built") ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -216,12 +216,12 @@ GALGAS_string GALGAS_location::getter_startLocationString (Compiler * inCompiler
       inCompiler->onTheFlyRunTimeError ("'startLocationString' reader cannot be called on a nowhere @location object" COMMA_THERE) ;
     }else{
       String s ;
-      s.addString ("file '") ;
-      s.addString (mInternalLocation->mSourceText.sourceFilePath ()) ;
-      s.addString ("', line ") ;
-      s.addSigned (mInternalLocation->mStartLocation.lineNumber ()) ;
-      s.addString (":") ;
-      s.addSigned (mInternalLocation->mStartLocation.columnNumber ()) ;
+      s.appendString ("file '") ;
+      s.appendString (mInternalLocation->mSourceText.sourceFilePath ()) ;
+      s.appendString ("', line ") ;
+      s.appendSigned (mInternalLocation->mStartLocation.lineNumber ()) ;
+      s.appendString (":") ;
+      s.appendSigned (mInternalLocation->mStartLocation.columnNumber ()) ;
       result = GALGAS_string (s) ;
     }
   }
@@ -239,11 +239,11 @@ GALGAS_string GALGAS_location::getter_endLocationString (Compiler * inCompiler
       inCompiler->onTheFlyRunTimeError ("'endLocationString' reader cannot be called on a nowhere @location object" COMMA_THERE) ;
     }else{
       String s = "file '" ;
-      s.addString (mInternalLocation->mSourceText.sourceFilePath ()) ;
-      s.addString ("', line ") ;
-      s.addSigned (mInternalLocation->mEndLocation.lineNumber ()) ;
-      s.addString (":") ;
-      s.addSigned (mInternalLocation->mEndLocation.columnNumber ()) ;
+      s.appendString (mInternalLocation->mSourceText.sourceFilePath ()) ;
+      s.appendString ("', line ") ;
+      s.appendSigned (mInternalLocation->mEndLocation.lineNumber ()) ;
+      s.appendString (":") ;
+      s.appendSigned (mInternalLocation->mEndLocation.columnNumber ()) ;
       result = GALGAS_string (s) ;
     }
   }

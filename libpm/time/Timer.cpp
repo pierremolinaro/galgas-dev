@@ -70,14 +70,14 @@ String Timer::timeString (void) const {
   const uint32_t minutes  = d / 60000 ;
   String result ;
   if (minutes > 0) {
-    result.addUnsigned (minutes) ;
-    result.addString (" min ") ;
+    result.appendUnsigned (minutes) ;
+    result.appendString (" min ") ;
   }
-  result.addUnsigned (secondes) ;
-  result.addString (" s ") ;
-  result.addUnsigned (ms / 100) ;
-  result.addUnsigned ((ms / 10) % 10) ;
-  result.addUnsigned (ms % 10) ;
+  result.appendUnsigned (secondes) ;
+  result.appendString (" s ") ;
+  result.appendUnsigned (ms / 100) ;
+  result.appendUnsigned ((ms / 10) % 10) ;
+  result.appendUnsigned (ms % 10) ;
   return result ;
 }
 

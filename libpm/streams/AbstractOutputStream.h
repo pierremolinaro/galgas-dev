@@ -40,46 +40,46 @@ class AbstractOutputStream {
   public: virtual ~ AbstractOutputStream (void) ;
 
 //--- Appending end od line
-  public: void addNL (void) ;
+  public: void appendNewLine (void) ;
 
 //--- Appending string
-  public: void addString (const String inString) ; // Pass by copy (for handling 's.addString (s) ;' instruction)
+  public: void appendString (const String inString) ; // Pass by copy (for handling 's.appendString (s) ;' instruction)
   public: void appendUTF32LiteralStringConstant (const String & inUTF32String) ;
 
 //--- Appending C string
-  public: void addString (const char * inCstring) ;
-  public: void addString (const char * inCstring, const int32_t inCount) ;
+  public: void appendString (const char * inCstring) ;
+  public: void appendString (const char * inCstring, const int32_t inCount) ;
 
 //--- Appending UTF32 string
   public: void appendUTF32String (const utf32 * inUTF32String) ;
 
 //--- Appending character
-  public: void addChar (const char inCharacter) ;
-  public: void addUnicodeChar (const utf32 inUnicodeCharacter COMMA_LOCATION_ARGS) ;
+  public: void appendASCIIChar (const char inCharacter) ;
+  public: void appendUnicodeChar (const utf32 inUnicodeCharacter COMMA_LOCATION_ARGS) ;
 
 //--- Appending uint64_t in Hex
-  public: void adddHex0xUnsigned (const uint64_t inValue) ;
-  public: void addUnsignedHex  (const uint64_t inValue) ;
-  public: void addUnsignedHex2 (const uint64_t inValue) ;
-  public: void addUnsignedHex4 (const uint64_t inValue) ;
-  public: void addUnsignedHex8 (const uint64_t inValue) ;
-  public: void addUnsignedHex16 (const uint64_t inValue) ;
+  public: void appendUnsigned0xHex (const uint64_t inValue) ;
+  public: void appendUnsignedHex  (const uint64_t inValue) ;
+  public: void appendUnsignedHex2 (const uint64_t inValue) ;
+  public: void appendUnsignedHex4 (const uint64_t inValue) ;
+  public: void appendUnsignedHex8 (const uint64_t inValue) ;
+  public: void appendUnsignedHex16 (const uint64_t inValue) ;
 
 //--- Appending uint64_t
-  public: void addUnsignedWithZeroFill (const uint64_t inValue, const uint32_t inWidth) ;
-  public: void addUnsigned (const uint64_t inValue) ;
+  public: void appendUnsignedWithZeroFill (const uint64_t inValue, const uint32_t inWidth) ;
+  public: void appendUnsigned (const uint64_t inValue) ;
 
-//--- Appending Sint64
-  public: void addSigned (const int64_t inValue) ;
+//--- Appending int64_t
+  public: void appendSigned (const int64_t inValue) ;
 
 //--- Appending Double
-  public: void addDouble (const double inValue) ;
+  public: void appendDouble (const double inValue) ;
 
 //--- Appending bool ("true" or"false")
-  public: void addBool (const bool inValue) ;
+  public: void appendBool (const bool inValue) ;
 
 //--- Appending Pointer value (in hex)
-  public: void addPointer (const void * inValue) ;
+  public: void appendPointer (const void * inValue) ;
 
 //--- Abstract method for output single byte characters
   public: void genericCharArrayOutput (const char * inCharArray,
@@ -95,35 +95,35 @@ class AbstractOutputStream {
                                                            const int32_t inArrayCount) = 0 ;
 
 //--- Writing spaces
-  public: void addSpaces (const int32_t inSpaceCount) ;
+  public: void appendSpaces (const int32_t inSpaceCount) ;
 
 //--- Writing a string several times
-  public: void addStringMultiple (const String & inString, const int32_t inRepeatCount) ;
+  public: void appendStringMultiple (const String & inString, const int32_t inRepeatCount) ;
 
 //--- Methods for writing comment
   public: void appendTitleComment (const String & inLineCommentPrefix,
                                    const String & inCommentString) ;
-  public: void addHyphenLineCommentWithoutExtraBlankLine (const String & inLineCommentPrefix) ;
-  public: void addCppHyphenLineComment (const String & inLineCommentPrefix) ;
-  public: void addSpaceLineComment (const String & inLineCommentPrefix) ;
-  public: void addCenterJustifiedComment (const String & inLineCommentPrefix,
-                                          const String & inCommentString) ;
-  public: void addComment (const String & inLineCommentPrefix,
-                           const String & inCommentString) ;
+  public: void appendHyphenLineCommentWithoutExtraBlankLine (const String & inLineCommentPrefix) ;
+  public: void appendHyphenLineComment (const String & inLineCommentPrefix) ;
+  public: void appendSpaceLineComment (const String & inLineCommentPrefix) ;
+  public: void appendCenterJustifiedComment (const String & inLineCommentPrefix,
+                                             const String & inCommentString) ;
+  public: void appendComment (const String & inLineCommentPrefix,
+                              const String & inCommentString) ;
 
 //--- Methods for writing C and C++ code
-  public: void addStringAsCLiteralStringConstant (const String & inCstring) ;
-  public: void addStringAsCLiteralCharConstant (const utf32 c) ;
-  public: void addStringAsCLiteralStringConstantWithoutDelimiters (const String & inCstring) ;
+  public: void appendStringAsCLiteralStringConstant (const String & inCstring) ;
+  public: void appendStringAsCLiteralCharConstant (const utf32 c) ;
+  public: void appendStringAsCLiteralStringConstantWithoutDelimiters (const String & inCstring) ;
 
 //--- Writing C++ Comments (// ...)
-  public: void addCppTitleComment (const String & inCommentString) ;
-  public: void addCppTitleComment (const char * inCommentString) ;
-  public: void addCppHyphenLineCommentWithoutExtraBlankLine (void) ;
-  public: void addCppHyphenLineComment (void) ;
-  public: void addCppSpaceLineComment (void) ;
-  public: void addCppCenterJustifiedComment (const String & inCommentString) ;
-  public: void addCppComment (const String & inCommentString) ;
+  public: void appendCppTitleComment (const String & inCommentString) ;
+  public: void appendCppTitleComment (const char * inCommentString) ;
+  public: void appendCppHyphenLineCommentWithoutExtraBlankLine (void) ;
+  public: void appendCppHyphenLineComment (void) ;
+  public: void appendCppSpaceLineComment (void) ;
+  public: void appendCppCenterJustifiedComment (const String & inCommentString) ;
+  public: void appendCppComment (const String & inCommentString) ;
 
 //--- Writing C Comments (/* ... */)
   public: void append_C_HyphenLineComment (void) ;
@@ -146,7 +146,7 @@ class AbstractOutputStream {
 
 String stringWithUnsigned (const uint64_t inValue) ;
 
-String stringWithHex0xUnsigned (const uint64_t inValue) ;
+String stringWithUnsigned0xHex (const uint64_t inValue) ;
 
 String stringWithSigned (const int64_t inValue) ;
 

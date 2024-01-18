@@ -751,37 +751,37 @@ void AC_GALGAS_sortedlist::createNewEmptySortedList (LOCATION_ARGS) {
 
 void cSharedSortedListRoot::description (String & ioString,
                                          const int32_t inIndentation) const {
-  ioString.addString (" (") ;
-  ioString.addUnsigned (mCount) ;
-  ioString.addString (" object") ;
-  ioString.addString ((mCount > 1) ? "s" : "") ;
-  ioString.addString ("): ") ;
+  ioString.appendString (" (") ;
+  ioString.appendUnsigned (mCount) ;
+  ioString.appendString (" object") ;
+  ioString.appendString ((mCount > 1) ? "s" : "") ;
+  ioString.appendString ("): ") ;
   const cSortedListNode * p = mFirst ;
   uint32_t idx = 0 ;
   while (p != nullptr) {
-    ioString.addString ("\n") ;
-    ioString.addStringMultiple ("| ", inIndentation) ;
-    ioString.addString ("|-at ") ;
-    ioString.addUnsigned (idx) ;
+    ioString.appendString ("\n") ;
+    ioString.appendStringMultiple ("| ", inIndentation) ;
+    ioString.appendString ("|-at ") ;
+    ioString.appendUnsigned (idx) ;
     p->mProperties.description (ioString, inIndentation + 1) ;
     p = p->mNextPtr ;
     idx ++ ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void AC_GALGAS_sortedlist::description (String & ioString,
                                      const int32_t inIndentation) const {
-  ioString.addString ("<@") ;
-  ioString.addString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendString ("<@") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
   if (nullptr == mSharedRoot) {
-    ioString.addString (" not built") ;
+    ioString.appendString (" not built") ;
   }else{
     mSharedRoot->description (ioString, inIndentation) ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------

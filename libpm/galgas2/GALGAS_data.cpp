@@ -66,8 +66,8 @@ GALGAS_data GALGAS_data::class_func_dataWithContentsOfFile (const GALGAS_string 
       result = GALGAS_data (binaryData) ;
     }else{
       String s = "cannot read binary file at path '" ;
-      s.addString (inFilePath.stringValue ()) ;
-      s.addString ("'") ;
+      s.appendString (inFilePath.stringValue ()) ;
+      s.appendString ("'") ;
       inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
     }
   }
@@ -95,14 +95,14 @@ typeComparisonResult GALGAS_data::objectCompare (const GALGAS_data & inOperand) 
 
 void GALGAS_data::description (String & ioString,
                                const int32_t /* inIndentation */) const {
-  ioString.addString ("<@data:") ;
+  ioString.appendString ("<@data:") ;
   if (isValid ()) {
-    ioString.addString ("length=") ;
-    ioString.addSigned (mData.count ()) ;
+    ioString.appendString ("length=") ;
+    ioString.appendSigned (mData.count ()) ;
   }else{
-    ioString.addString ("not built") ;
+    ioString.appendString ("not built") ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -121,12 +121,12 @@ GALGAS_string GALGAS_data::getter_cStringRepresentation (UNUSED_LOCATION_ARGS) c
   GALGAS_string result ;
   if (isValid ()) {
     String s ;
-    s.addUnsigned (mData (0 COMMA_HERE)) ;
+    s.appendUnsigned (mData (0 COMMA_HERE)) ;
     for (int32_t i=1 ; i<mData.count () ; i++) {
-      s.addString (", ") ;
-      s.addUnsigned (mData (i COMMA_HERE)) ;
+      s.appendString (", ") ;
+      s.appendUnsigned (mData (i COMMA_HERE)) ;
       if ((i % 16) == 0) {
-        s.addString ("\n") ;
+        s.appendString ("\n") ;
       }
     }
     result = GALGAS_string (s) ;
@@ -257,9 +257,9 @@ void GALGAS_data::method_writeToFileWhenDifferentContents (GALGAS_string inFileP
         bool ok = FileManager::makeDirectoryIfDoesNotExist (inFilePath.stringValue ().stringByDeletingLastPathComponent ()) ;
         if (! ok) {
           String message ;
-          message.addString ("cannot create '") ;
-          message.addString (inFilePath.stringValue ()) ;
-          message.addString ("' directory") ;
+          message.appendString ("cannot create '") ;
+          message.appendString (inFilePath.stringValue ()) ;
+          message.appendString ("' directory") ;
           inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
           outFileWritten.drop () ;
         }else{
@@ -270,9 +270,9 @@ void GALGAS_data::method_writeToFileWhenDifferentContents (GALGAS_string inFileP
             ggs_printFileCreationSuccess (String ("Created '") + inFilePath.stringValue () + "'.\n") ;
           }else if (! ok) {
             String message ;
-            message.addString ("cannot write '") ;
-            message.addString (inFilePath.stringValue ()) ;
-            message.addString ("' file") ;
+            message.appendString ("cannot write '") ;
+            message.appendString (inFilePath.stringValue ()) ;
+            message.appendString ("' file") ;
             inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
             outFileWritten.drop () ;
           }
@@ -302,9 +302,9 @@ void GALGAS_data::method_writeToFile (GALGAS_string inFilePath,
       BinaryFileWrite binaryFile (filePath) ;
       if (! binaryFile.isOpened ()) {
         String s ;
-        s.addString ("'@data writeToFile': cannot open '") ;
-        s.addString (filePath) ;
-        s.addString ("' file in write mode") ;
+        s.appendString ("'@data writeToFile': cannot open '") ;
+        s.appendString (filePath) ;
+        s.appendString ("' file in write mode") ;
         inCompiler->onTheFlyRunTimeError (s.cString () COMMA_THERE) ;
       }else{
         binaryFile.appendData (mData) ;
@@ -315,9 +315,9 @@ void GALGAS_data::method_writeToFile (GALGAS_string inFilePath,
           ggs_printFileCreationSuccess (String ("Created '") + filePath + "'.\n") ;
         }else if (! ok) {
           String message ;
-          message.addString ("cannot write '") ;
-          message.addString (filePath) ;
-          message.addString ("' file") ;
+          message.appendString ("cannot write '") ;
+          message.appendString (filePath) ;
+          message.appendString ("' file") ;
           inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
         }
       }
@@ -343,9 +343,9 @@ void GALGAS_data::method_writeToExecutableFile (GALGAS_string inFilePath,
       BinaryFileWrite binaryFile (filePath) ;
       if (! binaryFile.isOpened ()) {
         String s ;
-        s.addString ("'@data writeToExecutableFile': cannot open '") ;
-        s.addString (filePath) ;
-        s.addString ("' file in write mode") ;
+        s.appendString ("'@data writeToExecutableFile': cannot open '") ;
+        s.appendString (filePath) ;
+        s.appendString ("' file in write mode") ;
         inCompiler->onTheFlyRunTimeError (s.cString () COMMA_THERE) ;
       }else{
         binaryFile.appendData (mData) ;
@@ -357,9 +357,9 @@ void GALGAS_data::method_writeToExecutableFile (GALGAS_string inFilePath,
           ggs_printFileOperationSuccess (String ("Created '") + filePath + "'.\n") ;
         }else if (! ok) {
           String message ;
-          message.addString ("cannot write '") ;
-          message.addString (filePath) ;
-          message.addString ("' file") ;
+          message.appendString ("cannot write '") ;
+          message.appendString (filePath) ;
+          message.appendString ("' file") ;
           inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
         }
       }

@@ -669,22 +669,22 @@ display (const cPureBNFproductionsList & inProductionRules,
     const cProduction & p = inProductionRules.mProductionArray (mItemsSet (i COMMA_HERE).mProductionRuleIndex COMMA_HERE) ;
     const int32_t location = mItemsSet (i COMMA_HERE).mLocationIndex ;
     inHTMLfile.addRawData ("<span class=\"list\">") ;
-    inHTMLfile.addString ("[") ;
+    inHTMLfile.appendString ("[") ;
     inVocabulary.printInFile (inHTMLfile, p.leftNonTerminalIndex () COMMA_HERE) ;
-    inHTMLfile.addString (" ->") ;
+    inHTMLfile.appendString (" ->") ;
     for (int32_t j=0 ; j<p.derivationLength () ; j++) {
       if (j == location) {
-        inHTMLfile.addString (" .") ;
+        inHTMLfile.appendString (" .") ;
       }
-      inHTMLfile.addString (" ") ;
+      inHTMLfile.appendString (" ") ;
       inVocabulary.printInFile (inHTMLfile, p.derivationAtIndex (j COMMA_HERE) COMMA_HERE) ;
     }
     if (location == p.derivationLength ()) {
-      inHTMLfile.addString (" .") ;
+      inHTMLfile.appendString (" .") ;
     }
-    inHTMLfile.addString (", ") ;
+    inHTMLfile.appendString (", ") ;
     inVocabulary.printInFile (inHTMLfile, mItemsSet (i COMMA_HERE).mTerminalSymbol COMMA_HERE) ;
-    inHTMLfile.addString ("]") ;
+    inHTMLfile.appendString ("]") ;
     inHTMLfile.addRawData ("</span>") ;
   }
 }
@@ -1034,8 +1034,8 @@ display (const cPureBNFproductionsList & inProductionRules,
          HTMLString & inHTMLfile) const {
   for (int32_t i=0 ; i<m_LR1_items_sets_array.count () ; i++) {
     inHTMLfile.addRawData ("<tr class=\"result_line\"><td class=\"result_line\">") ;
-    inHTMLfile.addString ("S") ;
-    inHTMLfile.addSigned (i) ;
+    inHTMLfile.appendString ("S") ;
+    inHTMLfile.appendSigned (i) ;
     inHTMLfile.addRawData ("</td><td><code>") ;
     m_LR1_items_sets_array (i COMMA_HERE).display (inProductionRules, inVocabulary, inHTMLfile) ;
     inHTMLfile.addRawData ("</code></td></tr>") ;
@@ -1132,108 +1132,108 @@ generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
                                String & ioCppFileContents,
                                const String & inSyntaxDirectedTranslationVarName) {
 //--- Generate header file inclusion -----------------------------------------
-  ioCppFileContents.addString ("#include \"MF_MemoryControl.h\"\n") ;
-  ioCppFileContents.addString ("#include \"C_galgas_CLI_Options.h\"\n\n") ;
-  ioCppFileContents.addString ("#include \"FileManager.h\"\n\n") ;
+  ioCppFileContents.appendString ("#include \"MF_MemoryControl.h\"\n") ;
+  ioCppFileContents.appendString ("#include \"C_galgas_CLI_Options.h\"\n\n") ;
+  ioCppFileContents.appendString ("#include \"FileManager.h\"\n\n") ;
 
-  ioCppFileContents.addCppHyphenLineComment () ;
-  ioCppFileContents.addNL () ;
+  ioCppFileContents.appendCppHyphenLineComment () ;
+  ioCppFileContents.appendNewLine () ;
 
 //--- Print non-terminal symbols --------------------------------------
-  ioCppFileContents.addCppTitleComment ("N O N    T E R M I N A L    N A M E S") ;
-  ioCppFileContents.addString ("static const char * gNonTerminalNames_") ;
-  ioCppFileContents.addString (inTargetFileName) ;
-  ioCppFileContents.addString (" [") ;
-  ioCppFileContents.addSigned (inVocabulary.getNonTerminalSymbolsCount ()) ;
-  ioCppFileContents.addString ("] = {\n") ;
+  ioCppFileContents.appendCppTitleComment ("N O N    T E R M I N A L    N A M E S") ;
+  ioCppFileContents.appendString ("static const char * gNonTerminalNames_") ;
+  ioCppFileContents.appendString (inTargetFileName) ;
+  ioCppFileContents.appendString (" [") ;
+  ioCppFileContents.appendSigned (inVocabulary.getNonTerminalSymbolsCount ()) ;
+  ioCppFileContents.appendString ("] = {\n") ;
   for (int32_t i=inVocabulary.getTerminalSymbolsCount () ; i<inVocabulary.getAllSymbolsCount () ; i++) {
-    ioCppFileContents.addString ("  \"<") ;
-    ioCppFileContents.addString (inVocabulary.getSymbol (i COMMA_HERE)) ;
-    ioCppFileContents.addString (">\"") ;
-    ioCppFileContents.addString (((i+1)<inVocabulary.getAllSymbolsCount ()) ? "," : "") ;
-    ioCppFileContents.addString ("// Index ") ;
-    ioCppFileContents.addSigned (i - inVocabulary.getTerminalSymbolsCount ()) ;
-    ioCppFileContents.addString ("\n") ;
+    ioCppFileContents.appendString ("  \"<") ;
+    ioCppFileContents.appendString (inVocabulary.getSymbol (i COMMA_HERE)) ;
+    ioCppFileContents.appendString (">\"") ;
+    ioCppFileContents.appendString (((i+1)<inVocabulary.getAllSymbolsCount ()) ? "," : "") ;
+    ioCppFileContents.appendString ("// Index ") ;
+    ioCppFileContents.appendSigned (i - inVocabulary.getTerminalSymbolsCount ()) ;
+    ioCppFileContents.appendString ("\n") ;
   }
-  ioCppFileContents.addString ("} ;\n\n") ;
+  ioCppFileContents.appendString ("} ;\n\n") ;
 
 //--- Generate SLR analyze action table --------------------------------------
-  ioCppFileContents.addCppTitleComment ("L R ( 1 )    A N A L Y Z E R    A C T I O N    T A B L E") ;
+  ioCppFileContents.appendCppTitleComment ("L R ( 1 )    A N A L Y Z E R    A C T I O N    T A B L E") ;
   const int32_t rowsCount = inSLRdecisionTable.rowCount () ; // Number of states
   const int32_t columnsCount = inSLRdecisionTable.columnCount () ; // Number of terminal symbols
 //--- State action tables
   TC_UniqueArray <int32_t> startIndexArray (rowsCount COMMA_HERE) ;
-  ioCppFileContents.addString ("// Action tables handle shift and reduce actions ;\n"
+  ioCppFileContents.appendString ("// Action tables handle shift and reduce actions ;\n"
                     "//  - a shift action is (terminal_symbol, SHIFT (n)) : if shifts to state n ;\n"
                     "//  - the accept action is (terminal_symbol, ACCEPT) ;\n"
                     "//  - a reduce action is (terminal_symbol, REDUCE (n)) ; if reduces to state n.\n\n") ;
-  ioCppFileContents.addString ("static const int32_t gActionTable_") ;
-  ioCppFileContents.addString (inTargetFileName) ;
-  ioCppFileContents.addString (" [] = {") ;
+  ioCppFileContents.appendString ("static const int32_t gActionTable_") ;
+  ioCppFileContents.appendString (inTargetFileName) ;
+  ioCppFileContents.appendString (" [] = {") ;
   bool isFirst = true ;
   int32_t startIndex = 0 ;
   for (int32_t i=0 ; i<rowsCount ; i++) {
     startIndexArray.appendObject (startIndex) ;
-    ioCppFileContents.addString ("\n// State S") ;
-    ioCppFileContents.addSigned (i) ;
-    ioCppFileContents.addString (" (index = ") ;
-    ioCppFileContents.addSigned (startIndex) ;
-    ioCppFileContents.addString (")") ;
+    ioCppFileContents.appendString ("\n// State S") ;
+    ioCppFileContents.appendSigned (i) ;
+    ioCppFileContents.appendString (" (index = ") ;
+    ioCppFileContents.appendSigned (startIndex) ;
+    ioCppFileContents.appendString (")") ;
     for (int32_t j=0 ; j<columnsCount ; j++) {
       const int32_t parameter = inSLRdecisionTable (i, j COMMA_HERE).parameter () ;
       const cDecisionTableElement::enumDecision decision = inSLRdecisionTable (i, j COMMA_HERE).decision () ;
       if (decision != cDecisionTableElement::kUndefinedState) {
         startIndex += 2 ;
-        ioCppFileContents.addNL () ;
+        ioCppFileContents.appendNewLine () ;
         if (isFirst) {
           isFirst = false ;
-          ioCppFileContents.addString ("  ") ;
+          ioCppFileContents.appendString ("  ") ;
         }else{
-          ioCppFileContents.addString (", ") ;
+          ioCppFileContents.appendString (", ") ;
         }
-        ioCppFileContents.addString ("Lexique_") ;
-        ioCppFileContents.addString (inLexiqueName.identifierRepresentation ()) ;
-        ioCppFileContents.addString ("::kToken_") ;
-        ioCppFileContents.addString (inVocabulary.getSymbol (j COMMA_HERE).identifierRepresentation ()) ;
-        ioCppFileContents.addString (", ") ;
+        ioCppFileContents.appendString ("Lexique_") ;
+        ioCppFileContents.appendString (inLexiqueName.identifierRepresentation ()) ;
+        ioCppFileContents.appendString ("::kToken_") ;
+        ioCppFileContents.appendString (inVocabulary.getSymbol (j COMMA_HERE).identifierRepresentation ()) ;
+        ioCppFileContents.appendString (", ") ;
         if (decision == cDecisionTableElement::kDecisionReduce) { // Reduce action
-          ioCppFileContents.addString ("BOTTOM_UP_REDUCE (") ;
-          ioCppFileContents.addSigned (parameter) ;
-          ioCppFileContents.addString (")") ;
+          ioCppFileContents.appendString ("BOTTOM_UP_REDUCE (") ;
+          ioCppFileContents.appendSigned (parameter) ;
+          ioCppFileContents.appendString (")") ;
         }else if (decision == cDecisionTableElement::kDecisionShift) { // Shift action
-          ioCppFileContents.addString ("BOTTOM_UP_SHIFT (") ;
-          ioCppFileContents.addSigned (parameter) ;
-          ioCppFileContents.addString (")") ;
+          ioCppFileContents.appendString ("BOTTOM_UP_SHIFT (") ;
+          ioCppFileContents.appendSigned (parameter) ;
+          ioCppFileContents.appendString (")") ;
         }else{ // Accept action
-          ioCppFileContents.addString ("BOTTOM_UP_ACCEPT ()") ;
+          ioCppFileContents.appendString ("BOTTOM_UP_ACCEPT ()") ;
         }
       }
     }
-    ioCppFileContents.addString ("\n, BOTTOM_UP_END ()") ;
+    ioCppFileContents.appendString ("\n, BOTTOM_UP_END ()") ;
     startIndex ++ ;
   }
-  ioCppFileContents.addString ("} ;\n\n"
+  ioCppFileContents.appendString ("} ;\n\n"
                        "static const uint32_t gActionTableIndex_") ;
-  ioCppFileContents.addString (inTargetFileName) ;
-  ioCppFileContents.addString (" [") ;
-  ioCppFileContents.addSigned (rowsCount) ;
-  ioCppFileContents.addString ("] = {") ;
+  ioCppFileContents.appendString (inTargetFileName) ;
+  ioCppFileContents.appendString (" [") ;
+  ioCppFileContents.appendSigned (rowsCount) ;
+  ioCppFileContents.appendString ("] = {") ;
   isFirst = true ;
   for (int32_t i=0 ; i<rowsCount ; i++) {
-    ioCppFileContents.addString ("\n") ;
+    ioCppFileContents.appendString ("\n") ;
     if (isFirst) {
       isFirst = false ;
-      ioCppFileContents.addString ("  ") ;
+      ioCppFileContents.appendString ("  ") ;
     }else{
-      ioCppFileContents.addString (", ") ;
+      ioCppFileContents.appendString (", ") ;
     }
-    ioCppFileContents.addSigned (startIndexArray (i COMMA_HERE)) ;
-    ioCppFileContents.addString ("  // S") ;
-    ioCppFileContents.addSigned (i) ;
+    ioCppFileContents.appendSigned (startIndexArray (i COMMA_HERE)) ;
+    ioCppFileContents.appendString ("  // S") ;
+    ioCppFileContents.appendSigned (i) ;
   }
-  ioCppFileContents.addString ("\n} ;\n\n") ;
+  ioCppFileContents.appendString ("\n} ;\n\n") ;
 //--- Generate state successor table -----------------------------------------
-  ioCppFileContents.addCppTitleComment ("SLR states successors table") ;
+  ioCppFileContents.appendCppTitleComment ("SLR states successors table") ;
 //--- Get successor count, by state
   TC_UniqueArray <int32_t> stateSuccessorsCount (rowsCount, 0 COMMA_HERE) ;
   const int32_t transitionsCount = inTransitionList.count () ;
@@ -1244,7 +1244,7 @@ generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
   }
 
 //--- Write successor table, state by state ----------------------------------
-  ioCppFileContents.addString ("// Successor tables handle non terminal successors ;\n"
+  ioCppFileContents.appendString ("// Successor tables handle non terminal successors ;\n"
                        "// an entry is (non_terminal_symbol, n) ; successor is state n.\n\n") ;
   int32_t currentSourceState = -1 ; // No state
   for (int32_t t=0 ; t<transitionsCount ; t++) {
@@ -1252,398 +1252,398 @@ generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
     if (nonterminal >= 0) {
       const int32_t sourceState = inTransitionList (t COMMA_HERE).sourceState () ;
       if (currentSourceState == sourceState) {
-        ioCppFileContents.addString (",\n  ") ;
+        ioCppFileContents.appendString (",\n  ") ;
       }else{
         if (currentSourceState >= 0) {
-          ioCppFileContents.addString (", -1} ;\n\n") ;
+          ioCppFileContents.appendString (", -1} ;\n\n") ;
         }
-        ioCppFileContents.addString ("static const int32_t gSuccessorTable_") ;
-        ioCppFileContents.addString (inTargetFileName) ;
-        ioCppFileContents.addString ("_") ;
-        ioCppFileContents.addSigned (sourceState) ;
-        ioCppFileContents.addString (" [") ;
-        ioCppFileContents.addSigned ((int32_t)(2 * stateSuccessorsCount (sourceState COMMA_HERE) + 1)) ;
-        ioCppFileContents.addString ("] = {") ;
+        ioCppFileContents.appendString ("static const int32_t gSuccessorTable_") ;
+        ioCppFileContents.appendString (inTargetFileName) ;
+        ioCppFileContents.appendString ("_") ;
+        ioCppFileContents.appendSigned (sourceState) ;
+        ioCppFileContents.appendString (" [") ;
+        ioCppFileContents.appendSigned ((int32_t)(2 * stateSuccessorsCount (sourceState COMMA_HERE) + 1)) ;
+        ioCppFileContents.appendString ("] = {") ;
         currentSourceState = sourceState ;
       }
-      ioCppFileContents.addSigned (nonterminal) ;
-      ioCppFileContents.addString (", ") ;
-      ioCppFileContents.addSigned (inTransitionList (t COMMA_HERE).targetState ()) ;
+      ioCppFileContents.appendSigned (nonterminal) ;
+      ioCppFileContents.appendString (", ") ;
+      ioCppFileContents.appendSigned (inTransitionList (t COMMA_HERE).targetState ()) ;
     }
   }
-  ioCppFileContents.addString (", -1} ;\n\n") ;
+  ioCppFileContents.appendString (", -1} ;\n\n") ;
 //--- Write global state successor table
-  ioCppFileContents.addString ("static const int32_t * gSuccessorTable_") ;
-  ioCppFileContents.addString (inTargetFileName) ;
-  ioCppFileContents.addString (" [") ;
-  ioCppFileContents.addSigned (rowsCount) ;
-  ioCppFileContents.addString ("] = {\n") ;
+  ioCppFileContents.appendString ("static const int32_t * gSuccessorTable_") ;
+  ioCppFileContents.appendString (inTargetFileName) ;
+  ioCppFileContents.appendString (" [") ;
+  ioCppFileContents.appendSigned (rowsCount) ;
+  ioCppFileContents.appendString ("] = {\n") ;
   int32_t itemInSameLineCount = 0 ;
   for (int32_t r=0 ; r<rowsCount ; r++) {
-    if (r != 0) ioCppFileContents.addString (", ") ;
+    if (r != 0) ioCppFileContents.appendString (", ") ;
     if (itemInSameLineCount == 4) {
-      ioCppFileContents.addString ("\n  ") ;
+      ioCppFileContents.appendString ("\n  ") ;
       itemInSameLineCount = 0 ;
     }
     itemInSameLineCount ++ ;
     if (stateSuccessorsCount (r COMMA_HERE) == 0) {
-      ioCppFileContents.addString ("nullptr") ;
+      ioCppFileContents.appendString ("nullptr") ;
     }else{
-      ioCppFileContents.addString ("gSuccessorTable_") ;
-      ioCppFileContents.addString (inTargetFileName) ;
-      ioCppFileContents.addString ("_") ;
-      ioCppFileContents.addSigned (r) ;
+      ioCppFileContents.appendString ("gSuccessorTable_") ;
+      ioCppFileContents.appendString (inTargetFileName) ;
+      ioCppFileContents.appendString ("_") ;
+      ioCppFileContents.appendSigned (r) ;
     }
   }
-  ioCppFileContents.addString ("} ;\n\n") ;
+  ioCppFileContents.appendString ("} ;\n\n") ;
 
 //--- Write for every production, its left non terminal, ---------------------
 //    and the size of right string
   const int32_t productionsCount = inProductionRules.mProductionArray.count () ;
-  ioCppFileContents.addCppTitleComment ("Production rules infos (left non terminal, size of right string)") ;
-  ioCppFileContents.addString ("static const int32_t gProductionsTable_") ;
-  ioCppFileContents.addString (inTargetFileName) ;
-  ioCppFileContents.addString (" [") ;
-  ioCppFileContents.addSigned (productionsCount) ;
-  ioCppFileContents.addString (" * 2] = {\n") ;
+  ioCppFileContents.appendCppTitleComment ("Production rules infos (left non terminal, size of right string)") ;
+  ioCppFileContents.appendString ("static const int32_t gProductionsTable_") ;
+  ioCppFileContents.appendString (inTargetFileName) ;
+  ioCppFileContents.appendString (" [") ;
+  ioCppFileContents.appendSigned (productionsCount) ;
+  ioCppFileContents.appendString (" * 2] = {\n") ;
   for (int32_t p=0 ; p<productionsCount ; p++) {
     if (p > 0) {
-      ioCppFileContents.addString (",\n") ;
+      ioCppFileContents.appendString (",\n") ;
     }
-    ioCppFileContents.addString ("  ") ;
-    ioCppFileContents.addSigned (inProductionRules.mProductionArray (p COMMA_HERE).leftNonTerminalIndex () - columnsCount) ;
-    ioCppFileContents.addString (", ") ;
-    ioCppFileContents.addSigned (inProductionRules.mProductionArray (p COMMA_HERE).derivationLength ()) ;
+    ioCppFileContents.appendString ("  ") ;
+    ioCppFileContents.appendSigned (inProductionRules.mProductionArray (p COMMA_HERE).leftNonTerminalIndex () - columnsCount) ;
+    ioCppFileContents.appendString (", ") ;
+    ioCppFileContents.appendSigned (inProductionRules.mProductionArray (p COMMA_HERE).derivationLength ()) ;
   }
-  ioCppFileContents.addString ("\n} ;\n\n") ;
+  ioCppFileContents.appendString ("\n} ;\n\n") ;
 
 //--- Generate methods, one by non terminal ----------------------------------
   cEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis nonTerminal (inNonTerminalSymbolSortedListForGrammarAnalysis, kENUMERATION_UP) ;
   while (nonTerminal.hasCurrentObject ()) {
     const int32_t pureBNFleftNonterminalIndex = (int32_t) nonTerminal.current_mNonTerminalIndex (HERE).uintValue () ;
     const int32_t first = inProductionRules.tableauIndicePremiereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
-    ioCppFileContents.addCppTitleComment (String ("'") + nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue () + "' non terminal implementation") ;
+    ioCppFileContents.appendCppTitleComment (String ("'") + nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue () + "' non terminal implementation") ;
   //--- Parse label
-    ioCppFileContents.addString ("void cGrammar_") ;
-    ioCppFileContents.addString (inTargetFileName.identifierRepresentation ()) ;
-    ioCppFileContents.addString ("::nt_") ;
-    ioCppFileContents.addString (nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
-    ioCppFileContents.addString ("_parse (") ;
+    ioCppFileContents.appendString ("void cGrammar_") ;
+    ioCppFileContents.appendString (inTargetFileName.identifierRepresentation ()) ;
+    ioCppFileContents.appendString ("::nt_") ;
+    ioCppFileContents.appendString (nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
+    ioCppFileContents.appendString ("_parse (") ;
     if (inSyntaxDirectedTranslationVarName.length() > 0) {
-      ioCppFileContents.addString ("String & ") ;
-      ioCppFileContents.addString (inSyntaxDirectedTranslationVarName) ;
-      ioCppFileContents.addString (",\n                                ") ;
+      ioCppFileContents.appendString ("String & ") ;
+      ioCppFileContents.appendString (inSyntaxDirectedTranslationVarName) ;
+      ioCppFileContents.appendString (",\n                                ") ;
     }
-    ioCppFileContents.addString ("Lexique_") ;
-    ioCppFileContents.addString (inLexiqueName.identifierRepresentation ()) ;
-    ioCppFileContents.addString (" * inLexique") ;
-    ioCppFileContents.addString (") {\n") ;
+    ioCppFileContents.appendString ("Lexique_") ;
+    ioCppFileContents.appendString (inLexiqueName.identifierRepresentation ()) ;
+    ioCppFileContents.appendString (" * inLexique") ;
+    ioCppFileContents.appendString (") {\n") ;
     if (first < 0) { // first<0 means the non terminal symbol is unuseful
-      ioCppFileContents.addString ("  inLexique->internalBottomUpParserError (HERE) ;\n") ;
+      ioCppFileContents.appendString ("  inLexique->internalBottomUpParserError (HERE) ;\n") ;
     }else{
       const int32_t last = inProductionRules.tableauIndiceDerniereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
       macroAssert (last >= first, "last (%ld) < first (%ld)", last, first) ;
       if (first == last) {
         const int32_t ip = inProductionRules.tableauIndirectionProduction (first COMMA_HERE) ;
-        ioCppFileContents.addString ("  if (inLexique->nextProductionIndex () == ") ;
-        ioCppFileContents.addSigned (ip) ;
-        ioCppFileContents.addString (") {\n") ;
+        ioCppFileContents.appendString ("  if (inLexique->nextProductionIndex () == ") ;
+        ioCppFileContents.appendSigned (ip) ;
+        ioCppFileContents.appendString (") {\n") ;
         inProductionRules.mProductionArray (ip COMMA_HERE).engendrerAppelProduction (0,
                                                                     inVocabulary,
                                                                     "parse",
                                                                     ioCppFileContents,
                                                                     inSyntaxDirectedTranslationVarName) ;
-        ioCppFileContents.addString ("  }else{\n"
+        ioCppFileContents.appendString ("  }else{\n"
                              "    inLexique->internalBottomUpParserError (HERE) ;\n"
                              "  }\n") ;
       }else{
-        ioCppFileContents.addString ("  switch (inLexique->nextProductionIndex ()) {\n") ;
+        ioCppFileContents.appendString ("  switch (inLexique->nextProductionIndex ()) {\n") ;
         for (int32_t j=first ; j<=last ; j++) {
           const int32_t ip = inProductionRules.tableauIndirectionProduction (j COMMA_HERE) ;
-          ioCppFileContents.addString ("  case ") ;
-          ioCppFileContents.addSigned (ip) ;
-          ioCppFileContents.addString (" :\n    ") ;
+          ioCppFileContents.appendString ("  case ") ;
+          ioCppFileContents.appendSigned (ip) ;
+          ioCppFileContents.appendString (" :\n    ") ;
           inProductionRules.mProductionArray (ip COMMA_HERE).engendrerAppelProduction (0,
                                                                       inVocabulary,
                                                                       "parse",
                                                                       ioCppFileContents,
                                                                       inSyntaxDirectedTranslationVarName) ;
-          ioCppFileContents.addString ("    break ;\n") ;
+          ioCppFileContents.appendString ("    break ;\n") ;
         }
-        ioCppFileContents.addString ("  default :\n"
+        ioCppFileContents.appendString ("  default :\n"
                              "    inLexique->internalBottomUpParserError (HERE) ;\n"
                              "    break ;\n"
                              "  }\n") ;
       }
     }
-    ioCppFileContents.addString ("}\n\n") ;
+    ioCppFileContents.appendString ("}\n\n") ;
   //--- Indexing ?
-    ioCppFileContents.addString ("void cGrammar_") ;
-    ioCppFileContents.addString (inTargetFileName.identifierRepresentation ()) ;
-    ioCppFileContents.addString ("::nt_") ;
-    ioCppFileContents.addString (nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
-    ioCppFileContents.addString ("_indexing (") ;
+    ioCppFileContents.appendString ("void cGrammar_") ;
+    ioCppFileContents.appendString (inTargetFileName.identifierRepresentation ()) ;
+    ioCppFileContents.appendString ("::nt_") ;
+    ioCppFileContents.appendString (nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
+    ioCppFileContents.appendString ("_indexing (") ;
     if (inSyntaxDirectedTranslationVarName.length() > 0) {
-      ioCppFileContents.addString ("String & ") ;
-      ioCppFileContents.addString (inSyntaxDirectedTranslationVarName) ;
-      ioCppFileContents.addString (",\n                                ") ;
+      ioCppFileContents.appendString ("String & ") ;
+      ioCppFileContents.appendString (inSyntaxDirectedTranslationVarName) ;
+      ioCppFileContents.appendString (",\n                                ") ;
     }
-    ioCppFileContents.addString ("Lexique_") ;
-    ioCppFileContents.addString (inLexiqueName.identifierRepresentation ()) ;
-    ioCppFileContents.addString (" * inLexique") ;
-    ioCppFileContents.addString (") {\n") ;
+    ioCppFileContents.appendString ("Lexique_") ;
+    ioCppFileContents.appendString (inLexiqueName.identifierRepresentation ()) ;
+    ioCppFileContents.appendString (" * inLexique") ;
+    ioCppFileContents.appendString (") {\n") ;
     if (first < 0) { // first<0 means the non terminal symbol is unuseful
-      ioCppFileContents.addString ("  inLexique->internalBottomUpParserError (HERE) ;\n") ;
+      ioCppFileContents.appendString ("  inLexique->internalBottomUpParserError (HERE) ;\n") ;
     }else{
       const int32_t last = inProductionRules.tableauIndiceDerniereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
       if (first == last) {
         const int32_t ip = inProductionRules.tableauIndirectionProduction (first COMMA_HERE) ;
-        ioCppFileContents.addString ("  if (inLexique->nextProductionIndex () == ") ;
-        ioCppFileContents.addSigned (ip) ;
-        ioCppFileContents.addString (") {\n") ;
+        ioCppFileContents.appendString ("  if (inLexique->nextProductionIndex () == ") ;
+        ioCppFileContents.appendSigned (ip) ;
+        ioCppFileContents.appendString (") {\n") ;
         inProductionRules.mProductionArray (ip COMMA_HERE).engendrerAppelProduction (0,
                                                                     inVocabulary,
                                                                     "indexing",
                                                                     ioCppFileContents,
                                                                     "") ;
-        ioCppFileContents.addString ("  }else{\n"
+        ioCppFileContents.appendString ("  }else{\n"
                              "    inLexique->internalBottomUpParserError (HERE) ;\n"
                              "  }\n") ;
       }else{
-        ioCppFileContents.addString ("  switch (inLexique->nextProductionIndex ()) {\n") ;
+        ioCppFileContents.appendString ("  switch (inLexique->nextProductionIndex ()) {\n") ;
         macroAssert (last >= first, "last (%ld) < first (%ld)", last, first) ;
         for (int32_t j=first ; j<=last ; j++) {
           const int32_t ip = inProductionRules.tableauIndirectionProduction (j COMMA_HERE) ;
-          ioCppFileContents.addString ("  case ") ;
-          ioCppFileContents.addSigned (ip) ;
-          ioCppFileContents.addString (" :\n    ") ;
+          ioCppFileContents.appendString ("  case ") ;
+          ioCppFileContents.appendSigned (ip) ;
+          ioCppFileContents.appendString (" :\n    ") ;
           inProductionRules.mProductionArray (ip COMMA_HERE).engendrerAppelProduction (0,
                                                                       inVocabulary,
                                                                       "indexing",
                                                                       ioCppFileContents,
                                                                       "") ;
-          ioCppFileContents.addString ("    break ;\n") ;
+          ioCppFileContents.appendString ("    break ;\n") ;
         }
-        ioCppFileContents.addString ("  default :\n"
+        ioCppFileContents.appendString ("  default :\n"
                              "    inLexique->internalBottomUpParserError (HERE) ;\n"
                              "    break ;\n"
                              "  }\n") ;
       }
     }
-    ioCppFileContents.addString ("}\n\n") ;
+    ioCppFileContents.appendString ("}\n\n") ;
     cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis currentAltForNonTerminal2 (nonTerminal.current_mNonterminalSymbolParametersMap (HERE), kENUMERATION_UP) ;
     while (currentAltForNonTerminal2.hasCurrentObject ()) {
-      ioCppFileContents.addString ("void cGrammar_") ;
-      ioCppFileContents.addString (inTargetFileName.identifierRepresentation ()) ;
-      ioCppFileContents.addString ("::nt_") ;
-      ioCppFileContents.addString (nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
-      ioCppFileContents.addString ("_") ;
-      ioCppFileContents.addString (currentAltForNonTerminal2.current_lkey (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
-      ioCppFileContents.addString (" (") ;
+      ioCppFileContents.appendString ("void cGrammar_") ;
+      ioCppFileContents.appendString (inTargetFileName.identifierRepresentation ()) ;
+      ioCppFileContents.appendString ("::nt_") ;
+      ioCppFileContents.appendString (nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
+      ioCppFileContents.appendString ("_") ;
+      ioCppFileContents.appendString (currentAltForNonTerminal2.current_lkey (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
+      ioCppFileContents.appendString (" (") ;
       cEnumerator_signatureForGrammarAnalysis parametre (currentAltForNonTerminal2.current_mFormalParametersList (HERE), kENUMERATION_UP) ;
       int16_t numeroParametre = 1 ;
       while (parametre.hasCurrentObject ()) {
         if (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue () == GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn) {
-          ioCppFileContents.addString ("const ") ;
+          ioCppFileContents.appendString ("const ") ;
         }
-        ioCppFileContents.addString ("GALGAS_") ;
-        ioCppFileContents.addString (parametre.current_mGalgasTypeNameForGrammarAnalysis (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
+        ioCppFileContents.appendString ("GALGAS_") ;
+        ioCppFileContents.appendString (parametre.current_mGalgasTypeNameForGrammarAnalysis (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
         switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
         case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn :
-          ioCppFileContents.addString (" ") ;
+          ioCppFileContents.appendString (" ") ;
           break ;
         case GALGAS_formalArgumentPassingModeAST::kEnum_argumentIn :
-          ioCppFileContents.addString (" ") ;
+          ioCppFileContents.appendString (" ") ;
           break ;
         case GALGAS_formalArgumentPassingModeAST::kEnum_argumentInOut :
         case GALGAS_formalArgumentPassingModeAST::kEnum_argumentOut :
-          ioCppFileContents.addString (" & ") ;
+          ioCppFileContents.appendString (" & ") ;
           break ;
         default : break ;
         }
         if (first >= 0) {
-          ioCppFileContents.addString (" parameter_") ;
-          ioCppFileContents.addSigned (numeroParametre) ;
+          ioCppFileContents.appendString (" parameter_") ;
+          ioCppFileContents.appendSigned (numeroParametre) ;
         }
         parametre.gotoNextObject () ;
-        ioCppFileContents.addString (",\n                                ") ;
+        ioCppFileContents.appendString (",\n                                ") ;
         numeroParametre ++ ;
       }
       if (inSyntaxDirectedTranslationVarName.length() > 0) {
-        ioCppFileContents.addString ("String & ") ;
-        ioCppFileContents.addString (inSyntaxDirectedTranslationVarName) ;
-        ioCppFileContents.addString (",\n                                ") ;
+        ioCppFileContents.appendString ("String & ") ;
+        ioCppFileContents.appendString (inSyntaxDirectedTranslationVarName) ;
+        ioCppFileContents.appendString (",\n                                ") ;
       }
-      ioCppFileContents.addString ("Lexique_") ;
-      ioCppFileContents.addString (inLexiqueName.identifierRepresentation ()) ;
-      ioCppFileContents.addString (" * inLexique) {\n") ;
+      ioCppFileContents.appendString ("Lexique_") ;
+      ioCppFileContents.appendString (inLexiqueName.identifierRepresentation ()) ;
+      ioCppFileContents.appendString (" * inLexique) {\n") ;
       if (first < 0) { // first<0 means the non terminal symbol is unuseful
-        ioCppFileContents.addString ("  inLexique->internalBottomUpParserError (HERE) ;\n") ;
+        ioCppFileContents.appendString ("  inLexique->internalBottomUpParserError (HERE) ;\n") ;
       }else{
         const int32_t last = inProductionRules.tableauIndiceDerniereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
         macroAssert (last >= first, "last (%ld) < first (%ld)", last, first) ;
         if (first == last) {
           const int32_t ip = inProductionRules.tableauIndirectionProduction (first COMMA_HERE) ;
-          ioCppFileContents.addString ("  if (inLexique->nextProductionIndex () == ") ;
-          ioCppFileContents.addSigned (ip) ;
-          ioCppFileContents.addString (") {\n") ;
+          ioCppFileContents.appendString ("  if (inLexique->nextProductionIndex () == ") ;
+          ioCppFileContents.appendSigned (ip) ;
+          ioCppFileContents.appendString (") {\n") ;
           inProductionRules.mProductionArray (ip COMMA_HERE).engendrerAppelProduction (numeroParametre,
                                                                       inVocabulary,
                                                                       currentAltForNonTerminal2.current_lkey (HERE).mProperty_string.stringValue (),
                                                                       ioCppFileContents,
                                                                       inSyntaxDirectedTranslationVarName) ;
-          ioCppFileContents.addString ("  }else{\n"
+          ioCppFileContents.appendString ("  }else{\n"
                                "    inLexique->internalBottomUpParserError (HERE) ;\n"
                                "  }\n") ;
         }else{
-          ioCppFileContents.addString ("  switch (inLexique->nextProductionIndex ()) {\n") ;
+          ioCppFileContents.appendString ("  switch (inLexique->nextProductionIndex ()) {\n") ;
           for (int32_t j=first ; j<=last ; j++) {
             const int32_t ip = inProductionRules.tableauIndirectionProduction (j COMMA_HERE) ;
-            ioCppFileContents.addString ("  case ") ;
-            ioCppFileContents.addSigned (ip) ;
-            ioCppFileContents.addString (" :\n    ") ;
+            ioCppFileContents.appendString ("  case ") ;
+            ioCppFileContents.appendSigned (ip) ;
+            ioCppFileContents.appendString (" :\n    ") ;
             inProductionRules.mProductionArray (ip COMMA_HERE).engendrerAppelProduction (numeroParametre,
                                                                         inVocabulary,
                                                                         currentAltForNonTerminal2.current_lkey (HERE).mProperty_string.stringValue (),
                                                                         ioCppFileContents,
                                                                         inSyntaxDirectedTranslationVarName) ;
-            ioCppFileContents.addString ("    break ;\n") ;
+            ioCppFileContents.appendString ("    break ;\n") ;
           }
-          ioCppFileContents.addString ("  default :\n"
+          ioCppFileContents.appendString ("  default :\n"
                                "    inLexique->internalBottomUpParserError (HERE) ;\n"
                                "    break ;\n"
                                "  }\n") ;
         }
       }
-      ioCppFileContents.addString ("}\n\n") ;
+      ioCppFileContents.appendString ("}\n\n") ;
       currentAltForNonTerminal2.gotoNextObject () ;
     }
     //--- Engendrer l'axiome ?
     if (nonTerminal.current_mNonTerminalIndex (HERE).uintValue () == inOriginalGrammarStartSymbol) {
-      ioCppFileContents.addString ("void cGrammar_") ;
-      ioCppFileContents.addString (inTargetFileName.identifierRepresentation ()) ;
-      ioCppFileContents.addString ("::performIndexing (Compiler * inCompiler,\n"
+      ioCppFileContents.appendString ("void cGrammar_") ;
+      ioCppFileContents.appendString (inTargetFileName.identifierRepresentation ()) ;
+      ioCppFileContents.appendString ("::performIndexing (Compiler * inCompiler,\n"
                            "             const String & inSourceFilePath) {\n"
                            "  Lexique_") ;
-      ioCppFileContents.addString (inLexiqueName.identifierRepresentation ()) ;
-      ioCppFileContents.addString (" * scanner = nullptr ;\n"
+      ioCppFileContents.appendString (inLexiqueName.identifierRepresentation ()) ;
+      ioCppFileContents.appendString (" * scanner = nullptr ;\n"
                            "  macroMyNew (scanner, Lexique_") ;
-      ioCppFileContents.addString (inLexiqueName.identifierRepresentation ()) ;
-      ioCppFileContents.addString (" (inCompiler, inSourceFilePath COMMA_HERE)) ;\n"
+      ioCppFileContents.appendString (inLexiqueName.identifierRepresentation ()) ;
+      ioCppFileContents.appendString (" (inCompiler, inSourceFilePath COMMA_HERE)) ;\n"
                            "  scanner->enableIndexing () ;\n"
                            "  if (scanner->sourceText ().isValid ()) {\n"
                            "    const bool ok = scanner->performBottomUpParsing (gActionTable_") ;
-      ioCppFileContents.addString (inTargetFileName) ;
-      ioCppFileContents.addString (", gNonTerminalNames_") ;
-      ioCppFileContents.addString (inTargetFileName) ;
-      ioCppFileContents.addString (",\n"
+      ioCppFileContents.appendString (inTargetFileName) ;
+      ioCppFileContents.appendString (", gNonTerminalNames_") ;
+      ioCppFileContents.appendString (inTargetFileName) ;
+      ioCppFileContents.appendString (",\n"
                            "                                                     gActionTableIndex_") ;
-      ioCppFileContents.addString (inTargetFileName) ;
-      ioCppFileContents.addString (", gSuccessorTable_") ;
-      ioCppFileContents.addString (inTargetFileName) ;
-      ioCppFileContents.addString (",\n"
+      ioCppFileContents.appendString (inTargetFileName) ;
+      ioCppFileContents.appendString (", gSuccessorTable_") ;
+      ioCppFileContents.appendString (inTargetFileName) ;
+      ioCppFileContents.appendString (",\n"
                            "                                                     gProductionsTable_") ;
-      ioCppFileContents.addString (inTargetFileName) ;
-      ioCppFileContents.addString (") ;\n"
+      ioCppFileContents.appendString (inTargetFileName) ;
+      ioCppFileContents.appendString (") ;\n"
                            "    if (ok) {\n"
                            "      cGrammar_") ;
-      ioCppFileContents.addString (inTargetFileName.identifierRepresentation ()) ;
-      ioCppFileContents.addString (" grammar ;\n      grammar.nt_") ;
-      ioCppFileContents.addString (nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
-      ioCppFileContents.addString ("_indexing (scanner) ;\n"
+      ioCppFileContents.appendString (inTargetFileName.identifierRepresentation ()) ;
+      ioCppFileContents.appendString (" grammar ;\n      grammar.nt_") ;
+      ioCppFileContents.appendString (nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
+      ioCppFileContents.appendString ("_indexing (scanner) ;\n"
                            "    }\n"
                            "    scanner->generateIndexFile () ;\n"
                            "  }\n"
                            "  macroDetachSharedObject (scanner) ;\n"
                            "}\n\n"
                            "void cGrammar_") ;
-      ioCppFileContents.addString (inTargetFileName.identifierRepresentation ()) ;
-      ioCppFileContents.addString ("::performOnlyLexicalAnalysis (Compiler * inCompiler,\n"
+      ioCppFileContents.appendString (inTargetFileName.identifierRepresentation ()) ;
+      ioCppFileContents.appendString ("::performOnlyLexicalAnalysis (Compiler * inCompiler,\n"
                            "             const String & inSourceFilePath) {\n"
                            "  Lexique_") ;
-      ioCppFileContents.addString (inLexiqueName.identifierRepresentation ()) ;
-      ioCppFileContents.addString (" * scanner = nullptr ;\n"
+      ioCppFileContents.appendString (inLexiqueName.identifierRepresentation ()) ;
+      ioCppFileContents.appendString (" * scanner = nullptr ;\n"
                            "  macroMyNew (scanner, Lexique_") ;
-      ioCppFileContents.addString (inLexiqueName.identifierRepresentation ()) ;
-      ioCppFileContents.addString (" (inCompiler, inSourceFilePath COMMA_HERE)) ;\n"
+      ioCppFileContents.appendString (inLexiqueName.identifierRepresentation ()) ;
+      ioCppFileContents.appendString (" (inCompiler, inSourceFilePath COMMA_HERE)) ;\n"
                            "  if (scanner->sourceText ().isValid ()) {\n"
                            "    scanner->performLexicalAnalysis () ;\n"
                            "  }\n"
                            "  macroDetachSharedObject (scanner) ;\n"
                            "}\n\n"
                            "void cGrammar_") ;
-      ioCppFileContents.addString (inTargetFileName.identifierRepresentation ()) ;
-      ioCppFileContents.addString ("::performOnlySyntaxAnalysis (Compiler * inCompiler,\n"
+      ioCppFileContents.appendString (inTargetFileName.identifierRepresentation ()) ;
+      ioCppFileContents.appendString ("::performOnlySyntaxAnalysis (Compiler * inCompiler,\n"
                            "             const String & inSourceFilePath) {\n"
                            "  Lexique_") ;
-      ioCppFileContents.addString (inLexiqueName.identifierRepresentation ()) ;
-      ioCppFileContents.addString (" * scanner = nullptr ;\n"
+      ioCppFileContents.appendString (inLexiqueName.identifierRepresentation ()) ;
+      ioCppFileContents.appendString (" * scanner = nullptr ;\n"
                            "  macroMyNew (scanner, Lexique_") ;
-      ioCppFileContents.addString (inLexiqueName.identifierRepresentation ()) ;
-      ioCppFileContents.addString (" (inCompiler, inSourceFilePath COMMA_HERE)) ;\n"
+      ioCppFileContents.appendString (inLexiqueName.identifierRepresentation ()) ;
+      ioCppFileContents.appendString (" (inCompiler, inSourceFilePath COMMA_HERE)) ;\n"
                            "  if (scanner->sourceText ().isValid ()) {\n"
                            "    scanner->performBottomUpParsing (gActionTable_") ;
-      ioCppFileContents.addString (inTargetFileName) ;
-      ioCppFileContents.addString (", gNonTerminalNames_") ;
-      ioCppFileContents.addString (inTargetFileName) ;
-      ioCppFileContents.addString (",\n"
+      ioCppFileContents.appendString (inTargetFileName) ;
+      ioCppFileContents.appendString (", gNonTerminalNames_") ;
+      ioCppFileContents.appendString (inTargetFileName) ;
+      ioCppFileContents.appendString (",\n"
                            "                                     gActionTableIndex_") ;
-      ioCppFileContents.addString (inTargetFileName) ;
-      ioCppFileContents.addString (", gSuccessorTable_") ;
-      ioCppFileContents.addString (inTargetFileName) ;
-      ioCppFileContents.addString (",\n"
+      ioCppFileContents.appendString (inTargetFileName) ;
+      ioCppFileContents.appendString (", gSuccessorTable_") ;
+      ioCppFileContents.appendString (inTargetFileName) ;
+      ioCppFileContents.appendString (",\n"
                            "                                     gProductionsTable_") ;
-      ioCppFileContents.addString (inTargetFileName) ;
-      ioCppFileContents.addString (") ;\n"
+      ioCppFileContents.appendString (inTargetFileName) ;
+      ioCppFileContents.appendString (") ;\n"
                            "  }\n"
                            "  macroDetachSharedObject (scanner) ;\n"
                            "}\n\n") ;
       cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis currentAltForNonTerminal (nonTerminal.current_mNonterminalSymbolParametersMap (HERE), kENUMERATION_UP) ;
       while (currentAltForNonTerminal.hasCurrentObject ()) {
-        ioCppFileContents.addCppTitleComment ("Grammar start symbol implementation") ;
+        ioCppFileContents.appendCppTitleComment ("Grammar start symbol implementation") ;
       //--- Define file parsing static method
-        ioCppFileContents.addCppHyphenLineComment () ;
-        ioCppFileContents.addString ("void cGrammar_") ;
-        ioCppFileContents.addString (inTargetFileName.identifierRepresentation ()) ;
-        ioCppFileContents.addString ("::_performSourceFileParsing_") ;
-        ioCppFileContents.addString (currentAltForNonTerminal.current_lkey (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
-        ioCppFileContents.addString (" (Compiler * inCompiler"
+        ioCppFileContents.appendCppHyphenLineComment () ;
+        ioCppFileContents.appendString ("void cGrammar_") ;
+        ioCppFileContents.appendString (inTargetFileName.identifierRepresentation ()) ;
+        ioCppFileContents.appendString ("::_performSourceFileParsing_") ;
+        ioCppFileContents.appendString (currentAltForNonTerminal.current_lkey (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
+        ioCppFileContents.appendString (" (Compiler * inCompiler"
                              ",\n                                ") ;
         if (inSyntaxDirectedTranslationVarName.length() > 0) {
-          ioCppFileContents.addString ("String & ") ;
-          ioCppFileContents.addString (inSyntaxDirectedTranslationVarName) ;
-          ioCppFileContents.addString (",\n                                ") ;
+          ioCppFileContents.appendString ("String & ") ;
+          ioCppFileContents.appendString (inSyntaxDirectedTranslationVarName) ;
+          ioCppFileContents.appendString (",\n                                ") ;
         }
-        ioCppFileContents.addString ("GALGAS_lstring inFilePath") ;
+        ioCppFileContents.appendString ("GALGAS_lstring inFilePath") ;
         cEnumerator_signatureForGrammarAnalysis parametre (currentAltForNonTerminal.current_mFormalParametersList (HERE), kENUMERATION_UP) ;
         int16_t numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
-          ioCppFileContents.addString (",\n                                ") ;
+          ioCppFileContents.appendString (",\n                                ") ;
           if (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue () == GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn) {
-            ioCppFileContents.addString ("const ") ;
+            ioCppFileContents.appendString ("const ") ;
           }
-          ioCppFileContents.addString ("GALGAS_") ;
-          ioCppFileContents.addString (parametre.current_mGalgasTypeNameForGrammarAnalysis (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
+          ioCppFileContents.appendString ("GALGAS_") ;
+          ioCppFileContents.appendString (parametre.current_mGalgasTypeNameForGrammarAnalysis (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
           switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
           case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn :
-            ioCppFileContents.addString (" ") ;
+            ioCppFileContents.appendString (" ") ;
             break ;
           case GALGAS_formalArgumentPassingModeAST::kEnum_argumentIn :
-            ioCppFileContents.addString (" ") ;
+            ioCppFileContents.appendString (" ") ;
             break ;
           case GALGAS_formalArgumentPassingModeAST::kEnum_argumentInOut :
           case GALGAS_formalArgumentPassingModeAST::kEnum_argumentOut :
-            ioCppFileContents.addString (" & ") ;
+            ioCppFileContents.appendString (" & ") ;
             break ;
           default : break ;
           }
-          ioCppFileContents.addString (" parameter_") ;
-          ioCppFileContents.addSigned (numeroParametre) ;
+          ioCppFileContents.appendString (" parameter_") ;
+          ioCppFileContents.appendSigned (numeroParametre) ;
           parametre.gotoNextObject () ;
           numeroParametre ++ ;
         }
-        ioCppFileContents.addString ("\n                                ");
-        ioCppFileContents.addString ("COMMA_LOCATION_ARGS) {\n"
+        ioCppFileContents.appendString ("\n                                ");
+        ioCppFileContents.appendString ("COMMA_LOCATION_ARGS) {\n"
                                "  if (inFilePath.isValid ()) {\n"
                                "    const GALGAS_string filePathAsString = inFilePath.readProperty_string () ;\n"
                                "    String filePath = filePathAsString.stringValue () ;\n"
@@ -1652,161 +1652,161 @@ generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
                                "    }\n"
                                "    if (FileManager::fileExistsAtPath (filePath)) {\n"
                                "      Lexique_") ;
-        ioCppFileContents.addString (inLexiqueName.identifierRepresentation ()) ;
-        ioCppFileContents.addString (" * scanner = nullptr ;\n"
+        ioCppFileContents.appendString (inLexiqueName.identifierRepresentation ()) ;
+        ioCppFileContents.appendString (" * scanner = nullptr ;\n"
                                "      macroMyNew (scanner, Lexique_") ;
-        ioCppFileContents.addString (inLexiqueName.identifierRepresentation ()) ;
-        ioCppFileContents.addString (" (inCompiler, filePath COMMA_HERE)) ;\n"
+        ioCppFileContents.appendString (inLexiqueName.identifierRepresentation ()) ;
+        ioCppFileContents.appendString (" (inCompiler, filePath COMMA_HERE)) ;\n"
                                "      if (scanner->sourceText ().isValid ()) {\n"
                                "        const bool ok = scanner->performBottomUpParsing (gActionTable_") ;
-        ioCppFileContents.addString (inTargetFileName) ;
-        ioCppFileContents.addString (", gNonTerminalNames_") ;
-        ioCppFileContents.addString (inTargetFileName) ;
-        ioCppFileContents.addString (",\n"
+        ioCppFileContents.appendString (inTargetFileName) ;
+        ioCppFileContents.appendString (", gNonTerminalNames_") ;
+        ioCppFileContents.appendString (inTargetFileName) ;
+        ioCppFileContents.appendString (",\n"
                                "                                                         gActionTableIndex_") ;
-        ioCppFileContents.addString (inTargetFileName) ;
-        ioCppFileContents.addString (", gSuccessorTable_") ;
-        ioCppFileContents.addString (inTargetFileName) ;
-        ioCppFileContents.addString (",\n"
+        ioCppFileContents.appendString (inTargetFileName) ;
+        ioCppFileContents.appendString (", gSuccessorTable_") ;
+        ioCppFileContents.appendString (inTargetFileName) ;
+        ioCppFileContents.appendString (",\n"
                                "                                                         gProductionsTable_") ;
-        ioCppFileContents.addString (inTargetFileName) ;
-        ioCppFileContents.addString (") ;\n"
+        ioCppFileContents.appendString (inTargetFileName) ;
+        ioCppFileContents.appendString (") ;\n"
                                "        if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {\n"
                                "          cGrammar_") ;
-        ioCppFileContents.addString (inTargetFileName.identifierRepresentation ()) ;
-        ioCppFileContents.addString (" grammar ;\n          grammar.nt_") ;
-        ioCppFileContents.addString (nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
-        ioCppFileContents.addString ("_") ;
-        ioCppFileContents.addString (currentAltForNonTerminal.current_lkey (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
-        ioCppFileContents.addString (" (") ;
+        ioCppFileContents.appendString (inTargetFileName.identifierRepresentation ()) ;
+        ioCppFileContents.appendString (" grammar ;\n          grammar.nt_") ;
+        ioCppFileContents.appendString (nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
+        ioCppFileContents.appendString ("_") ;
+        ioCppFileContents.appendString (currentAltForNonTerminal.current_lkey (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
+        ioCppFileContents.appendString (" (") ;
         parametre.rewind () ;
         numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
-          ioCppFileContents.addString ("parameter_") ;
-          ioCppFileContents.addSigned (numeroParametre) ;
-          ioCppFileContents.addString (", ") ;
+          ioCppFileContents.appendString ("parameter_") ;
+          ioCppFileContents.appendSigned (numeroParametre) ;
+          ioCppFileContents.appendString (", ") ;
           parametre.gotoNextObject () ;
           numeroParametre ++ ;
         }
         if (inSyntaxDirectedTranslationVarName.length() > 0) {
-          ioCppFileContents.addString (inSyntaxDirectedTranslationVarName) ;
-          ioCppFileContents.addString (", ") ;
+          ioCppFileContents.appendString (inSyntaxDirectedTranslationVarName) ;
+          ioCppFileContents.appendString (", ") ;
         }
-        ioCppFileContents.addString ("scanner) ;\n"
+        ioCppFileContents.appendString ("scanner) ;\n"
                              "        }\n"
                              "      }else{\n"
                              "        String message ;\n"
-                             "        message.addString (\"the '\") ;\n"
-                             "        message.addString (filePath) ;\n"
-                             "        message.addString (\"' file exists, but cannot be read\") ;\n"
+                             "        message.appendString (\"the '\") ;\n"
+                             "        message.appendString (filePath) ;\n"
+                             "        message.appendString (\"' file exists, but cannot be read\") ;\n"
                              "        const GALGAS_location errorLocation (inFilePath.readProperty_location ()) ;\n"
                              "        inCompiler->semanticErrorAtLocation (errorLocation, message, TC_Array <C_FixItDescription> () COMMA_THERE) ;\n"
                              "        }\n"
                              "        macroDetachSharedObject (scanner) ;\n"
                              "      }else{\n"
                              "        String message ;\n"
-                             "        message.addString (\"the '\") ;\n"
-                             "        message.addString (filePath) ;\n"
-                             "        message.addString (\"' file does not exist\") ;\n"
+                             "        message.appendString (\"the '\") ;\n"
+                             "        message.appendString (filePath) ;\n"
+                             "        message.appendString (\"' file does not exist\") ;\n"
                              "        const GALGAS_location errorLocation (inFilePath.readProperty_location ()) ;\n"
                              "        inCompiler->semanticErrorAtLocation (errorLocation, message, TC_Array <C_FixItDescription> () COMMA_THERE) ;\n"
                              "    }\n"
                              "  }\n"
                              "}\n\n") ;
       //--- Define string parsing static method
-        ioCppFileContents.addString ("void cGrammar_") ;
-        ioCppFileContents.addString (inTargetFileName.identifierRepresentation ()) ;
-        ioCppFileContents.addString ("::_performSourceStringParsing_") ;
-        ioCppFileContents.addString (currentAltForNonTerminal.current_lkey (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
-        ioCppFileContents.addString (" (Compiler * inCompiler"
+        ioCppFileContents.appendString ("void cGrammar_") ;
+        ioCppFileContents.appendString (inTargetFileName.identifierRepresentation ()) ;
+        ioCppFileContents.appendString ("::_performSourceStringParsing_") ;
+        ioCppFileContents.appendString (currentAltForNonTerminal.current_lkey (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
+        ioCppFileContents.appendString (" (Compiler * inCompiler"
                              ",\n                                ") ;
         if (inSyntaxDirectedTranslationVarName.length() > 0) {
-          ioCppFileContents.addString ("String & ") ;
-          ioCppFileContents.addString (inSyntaxDirectedTranslationVarName) ;
-          ioCppFileContents.addString (",\n                                ") ;
+          ioCppFileContents.appendString ("String & ") ;
+          ioCppFileContents.appendString (inSyntaxDirectedTranslationVarName) ;
+          ioCppFileContents.appendString (",\n                                ") ;
         }
-        ioCppFileContents.addString ("GALGAS_string inSourceString") ;
-        ioCppFileContents.addString (",\n                                ") ;
-        ioCppFileContents.addString ("GALGAS_string inNameString") ;
+        ioCppFileContents.appendString ("GALGAS_string inSourceString") ;
+        ioCppFileContents.appendString (",\n                                ") ;
+        ioCppFileContents.appendString ("GALGAS_string inNameString") ;
         parametre.rewind () ;
         numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
-          ioCppFileContents.addString (",\n                                ") ;
+          ioCppFileContents.appendString (",\n                                ") ;
           if (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue () == GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn) {
-            ioCppFileContents.addString ("const ") ;
+            ioCppFileContents.appendString ("const ") ;
           }
-          ioCppFileContents.addString ("GALGAS_") ;
-          ioCppFileContents.addString (parametre.current_mGalgasTypeNameForGrammarAnalysis (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
+          ioCppFileContents.appendString ("GALGAS_") ;
+          ioCppFileContents.appendString (parametre.current_mGalgasTypeNameForGrammarAnalysis (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
           switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
           case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn :
-            ioCppFileContents.addString (" ") ;
+            ioCppFileContents.appendString (" ") ;
             break ;
           case GALGAS_formalArgumentPassingModeAST::kEnum_argumentIn :
-            ioCppFileContents.addString (" ") ;
+            ioCppFileContents.appendString (" ") ;
             break ;
           case GALGAS_formalArgumentPassingModeAST::kEnum_argumentInOut :
           case GALGAS_formalArgumentPassingModeAST::kEnum_argumentOut :
-            ioCppFileContents.addString (" & ") ;
+            ioCppFileContents.appendString (" & ") ;
             break ;
           default : break ;
           }
-          ioCppFileContents.addString (" parameter_") ;
-          ioCppFileContents.addSigned (numeroParametre) ;
+          ioCppFileContents.appendString (" parameter_") ;
+          ioCppFileContents.appendSigned (numeroParametre) ;
           parametre.gotoNextObject () ;
           numeroParametre ++ ;
         }
-        ioCppFileContents.addString ("\n                                ") ;
-        ioCppFileContents.addString ("COMMA_UNUSED_LOCATION_ARGS) {\n"
+        ioCppFileContents.appendString ("\n                                ") ;
+        ioCppFileContents.appendString ("COMMA_UNUSED_LOCATION_ARGS) {\n"
                                "  if (inSourceString.isValid () && inNameString.isValid ()) {\n"
                                "    const String sourceString = inSourceString.stringValue () ;\n"
                                "    const String nameString = inNameString.stringValue () ;\n"
                                "    Lexique_") ;
-        ioCppFileContents.addString (inLexiqueName.identifierRepresentation ()) ;
-        ioCppFileContents.addString (" * scanner = nullptr ;\n"
+        ioCppFileContents.appendString (inLexiqueName.identifierRepresentation ()) ;
+        ioCppFileContents.appendString (" * scanner = nullptr ;\n"
                                "    macroMyNew (scanner, Lexique_") ;
-        ioCppFileContents.addString (inLexiqueName.identifierRepresentation ()) ;
-        ioCppFileContents.addString (" (inCompiler, sourceString, nameString COMMA_HERE)) ;\n"
+        ioCppFileContents.appendString (inLexiqueName.identifierRepresentation ()) ;
+        ioCppFileContents.appendString (" (inCompiler, sourceString, nameString COMMA_HERE)) ;\n"
                                "    const bool ok = scanner->performBottomUpParsing (gActionTable_") ;
-        ioCppFileContents.addString (inTargetFileName) ;
-        ioCppFileContents.addString (", gNonTerminalNames_") ;
-        ioCppFileContents.addString (inTargetFileName) ;
-        ioCppFileContents.addString (",\n"
+        ioCppFileContents.appendString (inTargetFileName) ;
+        ioCppFileContents.appendString (", gNonTerminalNames_") ;
+        ioCppFileContents.appendString (inTargetFileName) ;
+        ioCppFileContents.appendString (",\n"
                                "                                                     gActionTableIndex_") ;
-        ioCppFileContents.addString (inTargetFileName) ;
-        ioCppFileContents.addString (", gSuccessorTable_") ;
-        ioCppFileContents.addString (inTargetFileName) ;
-        ioCppFileContents.addString (",\n"
+        ioCppFileContents.appendString (inTargetFileName) ;
+        ioCppFileContents.appendString (", gSuccessorTable_") ;
+        ioCppFileContents.appendString (inTargetFileName) ;
+        ioCppFileContents.appendString (",\n"
                                "                                                     gProductionsTable_") ;
-        ioCppFileContents.addString (inTargetFileName) ;
-        ioCppFileContents.addString (") ;\n"
+        ioCppFileContents.appendString (inTargetFileName) ;
+        ioCppFileContents.appendString (") ;\n"
                                "    if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {\n"
                                "      cGrammar_") ;
-        ioCppFileContents.addString (inTargetFileName.identifierRepresentation ()) ;
-        ioCppFileContents.addString (" grammar ;\n      grammar.nt_") ;
-        ioCppFileContents.addString (nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
-        ioCppFileContents.addString ("_") ;
-        ioCppFileContents.addString (currentAltForNonTerminal.current_lkey (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
-        ioCppFileContents.addString (" (") ;
+        ioCppFileContents.appendString (inTargetFileName.identifierRepresentation ()) ;
+        ioCppFileContents.appendString (" grammar ;\n      grammar.nt_") ;
+        ioCppFileContents.appendString (nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
+        ioCppFileContents.appendString ("_") ;
+        ioCppFileContents.appendString (currentAltForNonTerminal.current_lkey (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
+        ioCppFileContents.appendString (" (") ;
         parametre.rewind () ;
         numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
-          ioCppFileContents.addString ("parameter_") ;
-          ioCppFileContents.addSigned (numeroParametre) ;
-          ioCppFileContents.addString (", ") ;
+          ioCppFileContents.appendString ("parameter_") ;
+          ioCppFileContents.appendSigned (numeroParametre) ;
+          ioCppFileContents.appendString (", ") ;
           parametre.gotoNextObject () ;
           numeroParametre ++ ;
         }
         if (inSyntaxDirectedTranslationVarName.length() > 0) {
-          ioCppFileContents.addString (inSyntaxDirectedTranslationVarName) ;
-          ioCppFileContents.addString (", ") ;
+          ioCppFileContents.appendString (inSyntaxDirectedTranslationVarName) ;
+          ioCppFileContents.appendString (", ") ;
         }
-        ioCppFileContents.addString ("scanner) ;\n") ;
+        ioCppFileContents.appendString ("scanner) ;\n") ;
         if (inSyntaxDirectedTranslationVarName.length() > 0) {
-          ioCppFileContents.addString ("      scanner->appendLastSeparatorTo (") ;
-          ioCppFileContents.addString (inSyntaxDirectedTranslationVarName) ;
-          ioCppFileContents.addString (") ;\n") ;
+          ioCppFileContents.appendString ("      scanner->appendLastSeparatorTo (") ;
+          ioCppFileContents.appendString (inSyntaxDirectedTranslationVarName) ;
+          ioCppFileContents.appendString (") ;\n") ;
         }
-        ioCppFileContents.addString ("    }\n"
+        ioCppFileContents.appendString ("    }\n"
                                      "    macroDetachSharedObject (scanner) ;\n"
                                      "  }\n"
                                      "}\n\n") ;
@@ -1819,15 +1819,15 @@ generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
   const int32_t terminalSymbolsCount = inVocabulary.getTerminalSymbolsCount () ;
   for (int32_t ts=terminalSymbolsCount ; ts<inVocabulary.getAllSymbolsCount () ; ts++) {
     if (inVocabulary.needToGenerateChoice (ts COMMA_HERE)) {
-      ioCppFileContents.addCppTitleComment (String ("'") + inVocabulary.getSymbol (ts COMMA_HERE) + "' non terminal implementation") ;
-      ioCppFileContents.addString ("int32_t cGrammar_") ;
-      ioCppFileContents.addString (inTargetFileName.identifierRepresentation ()) ;
-      ioCppFileContents.addString ("::") ;
-      ioCppFileContents.addString (inVocabulary.getSymbol (ts COMMA_HERE)) ;
-      ioCppFileContents.addString (" (") ;
-      ioCppFileContents.addString ("Lexique_") ;
-      ioCppFileContents.addString (inLexiqueName.identifierRepresentation ()) ;
-      ioCppFileContents.addString (" * inLexique) {\n"
+      ioCppFileContents.appendCppTitleComment (String ("'") + inVocabulary.getSymbol (ts COMMA_HERE) + "' non terminal implementation") ;
+      ioCppFileContents.appendString ("int32_t cGrammar_") ;
+      ioCppFileContents.appendString (inTargetFileName.identifierRepresentation ()) ;
+      ioCppFileContents.appendString ("::") ;
+      ioCppFileContents.appendString (inVocabulary.getSymbol (ts COMMA_HERE)) ;
+      ioCppFileContents.appendString (" (") ;
+      ioCppFileContents.appendString ("Lexique_") ;
+      ioCppFileContents.appendString (inLexiqueName.identifierRepresentation ()) ;
+      ioCppFileContents.appendString (" * inLexique) {\n"
                                    "// Productions numbers :") ;
 
       const int32_t first = inProductionRules.tableauIndicePremiereProduction (ts - terminalSymbolsCount COMMA_HERE) ;
@@ -1835,18 +1835,18 @@ generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
       const int32_t last = inProductionRules.tableauIndiceDerniereProduction (ts - terminalSymbolsCount COMMA_HERE) ;
       macroAssert (last >= first, "last (%ld) < first (%ld)", last, first) ;
       for (int32_t j=first ; j<=last ; j++) {
-        ioCppFileContents.addString (" ") ;
-        ioCppFileContents.addSigned (inProductionRules.tableauIndirectionProduction (j COMMA_HERE)) ;
+        ioCppFileContents.appendString (" ") ;
+        ioCppFileContents.appendSigned (inProductionRules.tableauIndirectionProduction (j COMMA_HERE)) ;
       }
-      ioCppFileContents.addString ("\n"
+      ioCppFileContents.appendString ("\n"
                            "  return inLexique->nextProductionIndex () - ") ;
-      ioCppFileContents.addSigned ((int32_t)(first - 1)) ;
-      ioCppFileContents.addString (" ;\n"
+      ioCppFileContents.appendSigned ((int32_t)(first - 1)) ;
+      ioCppFileContents.appendString (" ;\n"
                            "}\n\n") ;
     }
   }
 //--- End of C++ file
-  ioCppFileContents.addCppHyphenLineComment () ;
+  ioCppFileContents.appendCppHyphenLineComment () ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1914,13 +1914,13 @@ LR1_computations (const cPureBNFproductionsList & inProductionRules,
                   const String & inSyntaxDirectedTranslationVarName) {
 //--- Console display
   if (inVerboseOptionOn) {
-    gCout.addString ("  LR(1) automaton... ") ;
+    gCout.appendString ("  LR(1) automaton... ") ;
     gCout.flush () ;
   }
 //--- Print in BNF file
   if (inPopulateHTMLHelperString) {
     ioHTMLFileContents.addRawData ("<p></p>") ;
-    ioHTMLFileContents.addCppTitleComment ("Building LR(1) automaton", "title") ;
+    ioHTMLFileContents.appendCppTitleComment ("Building LR(1) automaton", "title") ;
   }
 
 //--- Compute LR1 automaton
@@ -1934,46 +1934,46 @@ LR1_computations (const cPureBNFproductionsList & inProductionRules,
                           inVocabularyDerivingToEmpty_Array,
                           transitionList) ;
   if (inVerboseOptionOn) {
-    gCout.addSigned (LR1_items_sets_collection->getStateCount ()) ;
-    gCout.addString (" states, ") ;
-    gCout.addSigned (transitionList.count ()) ;
-    gCout.addString (" transitions.\n") ;
+    gCout.appendSigned (LR1_items_sets_collection->getStateCount ()) ;
+    gCout.appendString (" states, ") ;
+    gCout.appendSigned (transitionList.count ()) ;
+    gCout.appendString (" transitions.\n") ;
     gCout.flush () ;
   }
 //--- Display automaton states
   if (inPopulateHTMLHelperString) {
     ioHTMLFileContents.addRawData ("<p></p><table class=\"result\">"
                               "<tr class=\"result_line\"><td  class=\"result_line\" colspan=\"2\">") ;
-    ioHTMLFileContents.addString ("LR1 automaton states") ;
+    ioHTMLFileContents.appendString ("LR1 automaton states") ;
     LR1_items_sets_collection->display (inProductionRules, inVocabulary, ioHTMLFileContents) ;
     ioHTMLFileContents.addRawData ("</table>") ;
   }
 //--- Display automaton transitions
   if (inPopulateHTMLHelperString) {
     ioHTMLFileContents.addRawData ("<p></p><table class=\"result\"><tr><td class=\"result_title\">") ;
-    ioHTMLFileContents.addString ("LR1 automaton transitions") ;
+    ioHTMLFileContents.appendString ("LR1 automaton transitions") ;
     ioHTMLFileContents.addRawData ("</td></tr>") ;
     for (int32_t i=0 ; i<transitionList.count () ; i++) {
       ioHTMLFileContents.addRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
-      ioHTMLFileContents.addString ("S") ;
-      ioHTMLFileContents.addSigned (transitionList (i COMMA_HERE).sourceState ()) ;
-      ioHTMLFileContents.addString (" |- ") ;
+      ioHTMLFileContents.appendString ("S") ;
+      ioHTMLFileContents.appendSigned (transitionList (i COMMA_HERE).sourceState ()) ;
+      ioHTMLFileContents.appendString (" |- ") ;
       inVocabulary.printInFile (ioHTMLFileContents, transitionList (i COMMA_HERE).action () COMMA_HERE) ;
-      ioHTMLFileContents.addString (" -> S") ;
-      ioHTMLFileContents.addSigned (transitionList (i COMMA_HERE).targetState ()) ;
+      ioHTMLFileContents.appendString (" -> S") ;
+      ioHTMLFileContents.appendSigned (transitionList (i COMMA_HERE).targetState ()) ;
       ioHTMLFileContents.addRawData ("</code></td></tr>") ;
     }
     ioHTMLFileContents.addRawData ("</table>") ;
   }
 //--- Console display
   if (inVerboseOptionOn) {
-    gCout.addString ("  Checking LR(1) condition... ") ;
+    gCout.appendString ("  Checking LR(1) condition... ") ;
     gCout.flush () ;
   }
 //--- Print in BNF file
   if (inPopulateHTMLHelperString) {
     ioHTMLFileContents.addRawData ("<p></p>") ;
-    ioHTMLFileContents.addCppTitleComment ("Checking LR(1) condition", "title") ;
+    ioHTMLFileContents.appendCppTitleComment ("Checking LR(1) condition", "title") ;
   }
 
 //--- Build LR1 table... detect if grammar is not LR1
@@ -1984,7 +1984,7 @@ LR1_computations (const cPureBNFproductionsList & inProductionRules,
   int32_t successorEntries = 0 ;
   if (inPopulateHTMLHelperString) {
     ioHTMLFileContents.addRawData ("<p></p><table class=\"result\"><tr><td class=\"result_title\">") ;
-    ioHTMLFileContents.addString ("LR (1) decision table") ;
+    ioHTMLFileContents.appendString ("LR (1) decision table") ;
     ioHTMLFileContents.addRawData ("</td></tr>") ;
   }
 //--- Shift actions
@@ -1997,12 +1997,12 @@ LR1_computations (const cPureBNFproductionsList & inProductionRules,
       shiftActions ++ ;
       if (inPopulateHTMLHelperString) {
         ioHTMLFileContents.addRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
-        ioHTMLFileContents.addString ("Action [S") ;
-        ioHTMLFileContents.addSigned (sourceState) ;
-        ioHTMLFileContents.addString (", ") ;
+        ioHTMLFileContents.appendString ("Action [S") ;
+        ioHTMLFileContents.appendSigned (sourceState) ;
+        ioHTMLFileContents.appendString (", ") ;
         inVocabulary.printInFile (ioHTMLFileContents, terminal COMMA_HERE) ;
-        ioHTMLFileContents.addString ("] : shift, goto S") ;
-        ioHTMLFileContents.addSigned (targetState) ;
+        ioHTMLFileContents.appendString ("] : shift, goto S") ;
+        ioHTMLFileContents.appendSigned (targetState) ;
         ioHTMLFileContents.addRawData ("</code></td></tr>") ;
       }
     }
@@ -2023,18 +2023,18 @@ LR1_computations (const cPureBNFproductionsList & inProductionRules,
       const int32_t terminal = inVocabulary.getEmptyStringTerminalSymbolIndex () ;
       if (inPopulateHTMLHelperString) {
         ioHTMLFileContents.addRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
-        ioHTMLFileContents.addString ("Action [S") ;
-        ioHTMLFileContents.addSigned (state) ;
-        ioHTMLFileContents.addString (", ") ;
+        ioHTMLFileContents.appendString ("Action [S") ;
+        ioHTMLFileContents.appendSigned (state) ;
+        ioHTMLFileContents.appendString (", ") ;
         inVocabulary.printInFile (ioHTMLFileContents, terminal COMMA_HERE) ;
-        ioHTMLFileContents.addString ("] : accept") ;
+        ioHTMLFileContents.appendString ("] : accept") ;
         ioHTMLFileContents.addRawData ("</code>") ;
       }
       if (! SLRdecisionTable (state, terminal COMMA_HERE).isInUndefinedState ()) {
         conflictCount ++ ;
         if (inPopulateHTMLHelperString) {
           ioHTMLFileContents.addRawData ("<span class=\"error\">") ;
-          ioHTMLFileContents.addString (" *** CONFLICT ***") ;
+          ioHTMLFileContents.appendString (" *** CONFLICT ***") ;
           ioHTMLFileContents.addRawData ("</span>") ;
         }
       }
@@ -2052,11 +2052,11 @@ LR1_computations (const cPureBNFproductionsList & inProductionRules,
         reduceActions ++ ;
         if (inPopulateHTMLHelperString) {
           ioHTMLFileContents.addRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
-          ioHTMLFileContents.addString ("Action [S") ;
-          ioHTMLFileContents.addSigned (state) ;
-          ioHTMLFileContents.addString (", ") ;
+          ioHTMLFileContents.appendString ("Action [S") ;
+          ioHTMLFileContents.appendSigned (state) ;
+          ioHTMLFileContents.appendString (", ") ;
           inVocabulary.printInFile (ioHTMLFileContents, terminal COMMA_HERE) ;
-          ioHTMLFileContents.addString ("] : reduce by ") ;
+          ioHTMLFileContents.appendString ("] : reduce by ") ;
           inVocabulary.printInFile (ioHTMLFileContents, leftNonTerminal COMMA_HERE) ;
           ioHTMLFileContents.addRawData ("</code>") ;
         }
@@ -2064,7 +2064,7 @@ LR1_computations (const cPureBNFproductionsList & inProductionRules,
           conflictCount ++ ;
           if (inPopulateHTMLHelperString) {
             ioHTMLFileContents.addRawData ("<span class=\"error\">") ;
-            ioHTMLFileContents.addString (" *** CONFLICT ***") ;
+            ioHTMLFileContents.appendString (" *** CONFLICT ***") ;
             ioHTMLFileContents.addRawData ("</span>") ;
           }
         }
@@ -2076,7 +2076,7 @@ LR1_computations (const cPureBNFproductionsList & inProductionRules,
     }
   }
   if (inPopulateHTMLHelperString) {
-    ioHTMLFileContents.addString ("\n") ;
+    ioHTMLFileContents.appendString ("\n") ;
   }
 //--- Successors
   for (int32_t tr=0 ; tr<transitionList.count () ; tr++) {
@@ -2084,12 +2084,12 @@ LR1_computations (const cPureBNFproductionsList & inProductionRules,
       successorEntries ++ ;
       if (inPopulateHTMLHelperString) {
         ioHTMLFileContents.addRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
-        ioHTMLFileContents.addString ("Successor [S") ;
-        ioHTMLFileContents.addSigned (transitionList (tr COMMA_HERE).sourceState ()) ;
-        ioHTMLFileContents.addString (", ") ;
+        ioHTMLFileContents.appendString ("Successor [S") ;
+        ioHTMLFileContents.appendSigned (transitionList (tr COMMA_HERE).sourceState ()) ;
+        ioHTMLFileContents.appendString (", ") ;
         inVocabulary.printInFile (ioHTMLFileContents, transitionList (tr COMMA_HERE).action () COMMA_HERE) ;
-        ioHTMLFileContents.addString ("] = S") ;
-        ioHTMLFileContents.addSigned (transitionList (tr COMMA_HERE).targetState ()) ;
+        ioHTMLFileContents.appendString ("] = S") ;
+        ioHTMLFileContents.appendSigned (transitionList (tr COMMA_HERE).targetState ()) ;
         ioHTMLFileContents.addRawData ("</code></td></tr>") ;
       }
     }
@@ -2100,40 +2100,40 @@ LR1_computations (const cPureBNFproductionsList & inProductionRules,
 //--- Display summary
   if (inVerboseOptionOn) {
     if (conflictCount == 0) {
-      gCout.addString ("ok.\n") ;
+      gCout.appendString ("ok.\n") ;
     }else{
-      gCout.addString ("error, ") ;
-      gCout.addSigned (conflictCount) ;
-      gCout.addString (" conflict") ;
-      gCout.addString ((conflictCount > 1) ? "s" : "") ;
-      gCout.addString (".\n") ;
+      gCout.appendString ("error, ") ;
+      gCout.appendSigned (conflictCount) ;
+      gCout.appendString (" conflict") ;
+      gCout.appendString ((conflictCount > 1) ? "s" : "") ;
+      gCout.appendString (".\n") ;
     }
     gCout.flush () ;
   }
   if (inPopulateHTMLHelperString) {
-    ioHTMLFileContents.addString ("LR1 automaton has ") ;
-    ioHTMLFileContents.addSigned (LR1_items_sets_collection->getStateCount ()) ;
-    ioHTMLFileContents.addString (" states and ") ;
-    ioHTMLFileContents.addSigned (transitionList.count ()) ;
-    ioHTMLFileContents.addString (" transitions.\n\n"
+    ioHTMLFileContents.appendString ("LR1 automaton has ") ;
+    ioHTMLFileContents.appendSigned (LR1_items_sets_collection->getStateCount ()) ;
+    ioHTMLFileContents.appendString (" states and ") ;
+    ioHTMLFileContents.appendSigned (transitionList.count ()) ;
+    ioHTMLFileContents.appendString (" transitions.\n\n"
                                   "Analyze table has ") ;
-    ioHTMLFileContents.addSigned (shiftActions) ;
-    ioHTMLFileContents.addString (" shift actions, ") ;
-    ioHTMLFileContents.addSigned (reduceActions) ;
-    ioHTMLFileContents.addString (" reduce actions, and ") ;
-    ioHTMLFileContents.addSigned (successorEntries) ;
-    ioHTMLFileContents.addString (" state successor entries.\n\n") ;
+    ioHTMLFileContents.appendSigned (shiftActions) ;
+    ioHTMLFileContents.appendString (" shift actions, ") ;
+    ioHTMLFileContents.appendSigned (reduceActions) ;
+    ioHTMLFileContents.appendString (" reduce actions, and ") ;
+    ioHTMLFileContents.appendSigned (successorEntries) ;
+    ioHTMLFileContents.appendString (" state successor entries.\n\n") ;
     ioHTMLFileContents.addRawData ("</p><p>") ;
     if (conflictCount == 0) {
       ioHTMLFileContents.addRawData ("<span class=\"success\">") ;
-      ioHTMLFileContents.addString ("No conflict : grammar is LR (1).") ;
+      ioHTMLFileContents.appendString ("No conflict : grammar is LR (1).") ;
       ioHTMLFileContents.addRawData ("</span>") ;
     }else{
       ioHTMLFileContents.addRawData ("<span class=\"error\">") ;
-      ioHTMLFileContents.addSigned (conflictCount) ;
-      ioHTMLFileContents.addString (" conflict") ;
-      ioHTMLFileContents.addString ((conflictCount > 1) ? "s" : "") ;
-      ioHTMLFileContents.addString (" : grammar is not LR (1).") ;
+      ioHTMLFileContents.appendSigned (conflictCount) ;
+      ioHTMLFileContents.appendString (" conflict") ;
+      ioHTMLFileContents.appendString ((conflictCount > 1) ? "s" : "") ;
+      ioHTMLFileContents.appendString (" : grammar is not LR (1).") ;
       ioHTMLFileContents.addRawData ("</span>") ;
     }
     ioHTMLFileContents.addRawData ("</p>") ;

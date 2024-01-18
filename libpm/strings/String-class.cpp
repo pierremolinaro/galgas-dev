@@ -237,7 +237,7 @@ String::~String (void) {
 String String::spaces (const int32_t inSpaceCount) {
   String result ;
   for (int32_t i=0 ; i<inSpaceCount ; i++) {
-    result.addString (" ") ;
+    result.appendString (" ") ;
   }
   return result ;
 }
@@ -718,7 +718,7 @@ void String::linesArray (TC_UniqueArray <String> & outStringArray) const {
           state = kGotCarriageReturn ;
           break ;
         default: // Other character
-          outStringArray (index COMMA_HERE).addUnicodeChar (c COMMA_HERE) ;
+          outStringArray (index COMMA_HERE).appendUnicodeChar (c COMMA_HERE) ;
         }
         break ;
       case kGotCarriageReturn :
@@ -733,7 +733,7 @@ void String::linesArray (TC_UniqueArray <String> & outStringArray) const {
         default: // Other character
           outStringArray.appendObject (String ()) ;
           index ++ ;
-          outStringArray (index COMMA_HERE).addUnicodeChar (c COMMA_HERE) ;
+          outStringArray (index COMMA_HERE).appendUnicodeChar (c COMMA_HERE) ;
           state = kAppendToCurrentLine ;
         }
         break ;
@@ -751,7 +751,7 @@ void String::linesArray (TC_UniqueArray <String> & outStringArray) const {
         default: // Other character
           outStringArray.appendObject (String ()) ;
           index ++ ;
-          outStringArray (index COMMA_HERE).addUnicodeChar (c COMMA_HERE) ;
+          outStringArray (index COMMA_HERE).appendUnicodeChar (c COMMA_HERE) ;
           state = kAppendToCurrentLine ;
         }
         break ;
@@ -783,7 +783,7 @@ void String::reverseStringInPlace (void) {
 
 String String::operator + (const String & inOperand) const {
   String s = *this ;
-  s.addString (inOperand) ;
+  s.appendString (inOperand) ;
   return s ;
 }
 
@@ -791,7 +791,7 @@ String String::operator + (const String & inOperand) const {
 
 String String::operator + (const char * inOperand) const {
   String s = *this ;
-  s.addString (inOperand) ;
+  s.appendString (inOperand) ;
   return s ;
 }
 
@@ -817,7 +817,7 @@ String & String::operator = (const char * inSource) {
 
 void String::setFromCstring (const char * inCstring) {
   removeAllKeepingCapacity () ;
-  addString (inCstring) ;
+  appendString (inCstring) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -834,16 +834,16 @@ bool String::parseUTF8 (const U8Data & inDataString,
       idx = inDataString.count () ; // For exiting loop
     }else if (c == 0x0A) { // LF
       if (! foundCR) {
-        outString.addUnicodeChar (TO_UNICODE ('\n') COMMA_HERE) ;
+        outString.appendUnicodeChar (TO_UNICODE ('\n') COMMA_HERE) ;
       }
       foundCR = false ;
       idx ++ ;
     }else if (c == 0x0D) { // CR
-      outString.addUnicodeChar (TO_UNICODE ('\n') COMMA_HERE) ;
+      outString.appendUnicodeChar (TO_UNICODE ('\n') COMMA_HERE) ;
       foundCR = true ;
       idx ++ ;
     }else if ((c & 0x80) == 0) { // ASCII Character
-      outString.addUnicodeChar (TO_UNICODE (c) COMMA_HERE) ;
+      outString.appendUnicodeChar (TO_UNICODE (c) COMMA_HERE) ;
       foundCR = false ;
       idx ++ ;
     }else{
@@ -854,17 +854,17 @@ bool String::parseUTF8 (const U8Data & inDataString,
       case 0x0085 : // NEL: Next Line
       case 0x2028 : // LS: Line Separator
       case 0x2029 : // PS: Paragraph Separator
-        outString.addUnicodeChar ('\n' COMMA_HERE) ;
+        outString.appendUnicodeChar ('\n' COMMA_HERE) ;
         break ;
       default :
-        outString.addUnicodeChar (uc COMMA_HERE) ;
+        outString.appendUnicodeChar (uc COMMA_HERE) ;
         foundCR = false ;
         break ;
       }
     }
   }
   if (foundCR) {
-    outString.addUnicodeChar (TO_UNICODE ('\n') COMMA_HERE) ;
+    outString.appendUnicodeChar (TO_UNICODE ('\n') COMMA_HERE) ;
   }
   return ok ;
 }

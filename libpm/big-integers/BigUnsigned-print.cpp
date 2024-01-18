@@ -50,12 +50,12 @@ String BigUnsigned::decimalString (void) const {
       number = r.quotient () ;
     }
     const int32_t n = decimalValueArray.count () ;
-    result.addUnsigned (decimalValueArray (n - 1 COMMA_HERE)) ;
+    result.appendUnsigned (decimalValueArray (n - 1 COMMA_HERE)) ;
     char s [32] ;
     for (int32_t i = n - 1 ; i > 0 ; i--) {
       const uint64_t v = decimalValueArray (i-1 COMMA_HERE) ;
       snprintf (s, 32, "%0*" PRIu64, int (greatestPowerOf10DigitCount), v) ;
-      result.addString (s) ;
+      result.appendString (s) ;
     }
   }
   return result ;
@@ -84,9 +84,9 @@ String BigUnsigned::spacedDecimalStringWithDigitCount (const uint32_t inSeparati
     }
   }
   String result = "[" ;
-  result.addSigned (length) ;
-  result.addString ("] ") ;
-  result.addString (s) ;
+  result.appendSigned (length) ;
+  result.appendString ("] ") ;
+  result.appendString (s) ;
   return result ;
 }
 
@@ -98,9 +98,9 @@ String BigUnsigned::hexString (void) const {
     result = "0" ;
   }else{
     result = "0x" ;
-    result.addUnsignedHex (u64AtIndex (u64Count () - 1)) ;
+    result.appendUnsignedHex (u64AtIndex (u64Count () - 1)) ;
     for (size_t i = u64Count () - 1 ; i > 0 ; i--) {
-      result.addUnsignedHex16 (u64AtIndex (i - 1)) ;
+      result.appendUnsignedHex16 (u64AtIndex (i - 1)) ;
     }
   }
   return result ;
@@ -113,9 +113,9 @@ String BigUnsigned::xString (void) const {
   if (u64Count () == 0) {
     result = "0" ;
   }else{
-    result.addUnsignedHex (u64AtIndex (u64Count () - 1)) ;
+    result.appendUnsignedHex (u64AtIndex (u64Count () - 1)) ;
     for (size_t i = u64Count () - 1 ; i > 0 ; i--) {
-      result.addUnsignedHex16 (u64AtIndex (i - 1)) ;
+      result.appendUnsignedHex16 (u64AtIndex (i - 1)) ;
     }
   }
   return result ;
@@ -131,7 +131,7 @@ String BigUnsigned::bitString (void) const {
     for (size_t i = u64Count () ; i > 0 ; i--) {
       uint64_t v = u64AtIndex (i-1) ;
       for (size_t bit = 0 ; bit < 64 ; bit++) {
-        result.addString (((v & (uint64_t (1) << 63)) != 0) ? "1" : "0") ;
+        result.appendString (((v & (uint64_t (1) << 63)) != 0) ? "1" : "0") ;
         v <<= 1 ;
       }
     }

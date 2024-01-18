@@ -475,9 +475,9 @@ void cSharedStringsetRoot::displayEntries (const cStringsetNode * inNode,
                                            String & ioString) const {
   if (inNode != nullptr) {
     displayEntries (inNode->mInfPtr, ioString) ;
-    ioString.addString (" '") ;
-    ioString.addString (inNode->mKey) ;
-    ioString.addString ("'") ;
+    ioString.appendString (" '") ;
+    ioString.appendString (inNode->mKey) ;
+    ioString.appendString ("'") ;
     displayEntries (inNode->mSupPtr, ioString) ;
   }
 }
@@ -485,11 +485,11 @@ void cSharedStringsetRoot::displayEntries (const cStringsetNode * inNode,
 //--------------------------------------------------------------------------------------------------
 
 void cSharedStringsetRoot::description (String & ioString) const {
-  ioString.addUnsigned (mEntryCount) ;
+  ioString.appendUnsigned (mEntryCount) ;
   if (mEntryCount > 1) {
-    ioString.addString (" entries") ;
+    ioString.appendString (" entries") ;
   }else{
-    ioString.addString (" entry") ;
+    ioString.appendString (" entry") ;
   }
   displayEntries (mRoot, ioString) ;
 }
@@ -645,13 +645,13 @@ GALGAS_stringset & GALGAS_stringset::operator = (const GALGAS_stringset & inSour
 
 void GALGAS_stringset::description (String & ioString,
                                     const int32_t /* inIndentation */) const {
-  ioString.addString ("<@stringset:") ;
+  ioString.appendString ("<@stringset:") ;
   if (nullptr == mSharedRoot) {
-    ioString.addString ("not built") ;
+    ioString.appendString ("not built") ;
   }else{
     mSharedRoot->description (ioString) ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------

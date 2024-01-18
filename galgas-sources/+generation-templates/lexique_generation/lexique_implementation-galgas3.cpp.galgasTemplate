@@ -105,19 +105,19 @@ String Lexique_%!LEXIQUE_IDENTIFIER%::getCurrentTokenString (const cToken * inTo
   const cTokenFor_%!LEXIQUE_IDENTIFIER% * ptr = (const cTokenFor_%!LEXIQUE_IDENTIFIER% *) inTokenPtr ;
   String s ;
   if (ptr == nullptr) {
-    s.addString ("$$") ;
+    s.appendString ("$$") ;
   }else{
     switch (ptr->mTokenCode) {
     case kToken_:
-      s.addString ("$$") ;
+      s.appendString ("$$") ;
       break ;
 %for (mTerminalName mSentAttributeList mSyntaxErrorMessage mIsEndOfTemplateMark mAtomicSelection mStyleIndex) in TERMINAL_LIST do
    %    case kToken_%![mTerminalName.string identifierRepresentation]%:\n%
-   %      s.addUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;\n%
-   %      s.addString (%![mTerminalName.string utf8RepresentationEscapingQuestionMark]%) ;\n%
-   %      s.addUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;\n%
+   %      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;\n%
+   %      s.appendString (%![mTerminalName.string utf8RepresentationEscapingQuestionMark]%) ;\n%
+   %      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;\n%
    for (mLexicalFormalSelector mLexicalAttributeName mLexicalType) in mSentAttributeList do
-     %      s.addUnicodeChar (TO_UNICODE (' ') COMMA_HERE) ;\n%
+     %      s.appendUnicodeChar (TO_UNICODE (' ') COMMA_HERE) ;\n%
      %      s.%![mLexicalType appendMethodName]% (ptr->mLexicalAttribute_%![mLexicalAttributeName identifierRepresentation] ![mLexicalType appendArgumentOfMethod]%) ;\n%
    end
    %      break ;\n%
@@ -239,14 +239,14 @@ bool Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
         replacementIndex = findTemplateDelimiterIndex (%!LEXIQUE_IDENTIFIER%_kTemplateReplacementArray, %![[TEMPLATE_REPLACEMENT_LIST count] string]%) ;
         if (replacementIndex >= 0) {
           if (%!LEXIQUE_IDENTIFIER%_kTemplateReplacementArray [replacementIndex].mReplacementFunction == nullptr) {
-            token.mTemplateStringBeforeToken.addString (String (%!LEXIQUE_IDENTIFIER%_kTemplateReplacementArray [replacementIndex].mEndString)) ;
+            token.mTemplateStringBeforeToken.appendString (String (%!LEXIQUE_IDENTIFIER%_kTemplateReplacementArray [replacementIndex].mEndString)) ;
           }else{
             String s ;
             while (notTestForInputUTF32String (%!LEXIQUE_IDENTIFIER%_kTemplateReplacementArray [replacementIndex].mEndString,
                                                %!LEXIQUE_IDENTIFIER%_kTemplateReplacementArray [replacementIndex].mEndStringLength,
                                                kEndOfSourceLexicalErrorMessage
                                                COMMA_HERE)) {
-              s.addUnicodeChar (previousChar () COMMA_HERE) ;
+              s.appendUnicodeChar (previousChar () COMMA_HERE) ;
             }
             %!LEXIQUE_IDENTIFIER%_kTemplateReplacementArray [replacementIndex].mReplacementFunction (*this, s, token.mTemplateStringBeforeToken) ;
           }
@@ -254,7 +254,7 @@ bool Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
       }
       mMatchedTemplateDelimiterIndex = findTemplateDelimiterIndex (%!LEXIQUE_IDENTIFIER%_kTemplateDefinitionArray, %![[TEMPLATE_DELIMITOR_LIST count] string]%) ;
       if (mMatchedTemplateDelimiterIndex < 0) {
-        token.mTemplateStringBeforeToken.addUnicodeChar (mCurrentChar COMMA_HERE) ;
+        token.mTemplateStringBeforeToken.appendUnicodeChar (mCurrentChar COMMA_HERE) ;
         advance () ;
       }
     }

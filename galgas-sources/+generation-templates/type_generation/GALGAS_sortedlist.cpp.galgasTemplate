@@ -74,9 +74,9 @@ cSortedListElement * cSortedListElement_%!TYPE_IDENTIFIER%::copy (void) {
 void cSortedListElement_%!TYPE_IDENTIFIER%::description (String & ioString, const int32_t inIndentation) const {
 %
   for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST do
-    %  ioString.addNL () ;\n%
-    %  ioString.addStringMultiple ("| ", inIndentation) ;\n%
-    %  ioString.addString (%![mPropertyName utf8RepresentationEscapingQuestionMark]% ":") ;\n%
+    %  ioString.appendNewLine () ;\n%
+    %  ioString.appendStringMultiple ("| ", inIndentation) ;\n%
+    %  ioString.appendString (%![mPropertyName utf8RepresentationEscapingQuestionMark]% ":") ;\n%
     %  mObject.mProperty_%![mPropertyName identifierRepresentation]%.description (ioString, inIndentation) ;\n%
   end
 %}

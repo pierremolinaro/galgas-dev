@@ -112,15 +112,15 @@ typeComparisonResult GALGAS_string::objectCompare (const GALGAS_string & inOpera
 
 void GALGAS_string::description (String & ioString,
                                  const int32_t /* inIndentation */) const {
-  ioString.addString ("<@string:") ;
+  ioString.appendString ("<@string:") ;
   if (isValid ()) {
-    ioString.addString ("\"") ;
-    ioString.addString (mString) ;
-    ioString.addString ("\"") ;
+    ioString.appendString ("\"") ;
+    ioString.appendString (mString) ;
+    ioString.appendString ("\"") ;
   }else{
-    ioString.addString ("not built") ;
+    ioString.appendString ("not built") ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -142,7 +142,7 @@ GALGAS_string GALGAS_string::class_func_stringByRepeatingString (const GALGAS_st
   if (inString.isValid () && inCount.isValid ()) {
     String s ;
     for (uint32_t i=0 ; i<inCount.uintValue () ; i++) {
-      s.addString (inString.stringValue ()) ;
+      s.appendString (inString.stringValue ()) ;
     }
     result = GALGAS_string (s) ;
   }
@@ -162,7 +162,7 @@ GALGAS_string GALGAS_string::class_func_CppChar (const GALGAS_char & inCharacter
   GALGAS_string result ;
   if (inCharacter.isValid ()) {
     String s ;
-    s.addStringAsCLiteralCharConstant (inCharacter.charValue ()) ;
+    s.appendStringAsCLiteralCharConstant (inCharacter.charValue ()) ;
     result = GALGAS_string (s) ;
   }
   return result ;
@@ -171,7 +171,7 @@ GALGAS_string GALGAS_string::class_func_CppChar (const GALGAS_char & inCharacter
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_string::class_func_CppLineComment (UNUSED_LOCATION_ARGS) {
-  String s ; s.addCppHyphenLineComment () ;
+  String s ; s.appendCppHyphenLineComment () ;
   return GALGAS_string (s) ;
 }
 
@@ -182,7 +182,7 @@ GALGAS_string GALGAS_string::class_func_CppTitleComment (const GALGAS_string & i
   GALGAS_string result ;
   if (inTitle.isValid ()) {
     String s ;
-    s.addCppTitleComment (inTitle.mString) ;
+    s.appendCppTitleComment (inTitle.mString) ;
     result = GALGAS_string (s) ;
   }
   return result ;
@@ -191,7 +191,7 @@ GALGAS_string GALGAS_string::class_func_CppTitleComment (const GALGAS_string & i
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_string::class_func_CppSpaceComment (UNUSED_LOCATION_ARGS) {
-  String s ; s.addCppSpaceLineComment () ;
+  String s ; s.appendCppSpaceLineComment () ;
   return GALGAS_string (s) ;
 }
 
@@ -202,7 +202,7 @@ GALGAS_string GALGAS_string::class_func_CppString (const GALGAS_string & inStrin
   GALGAS_string result ;
   if (inString.isValid ()) {
     String s ;
-    s.addStringAsCLiteralStringConstant (inString.mString) ;
+    s.appendStringAsCLiteralStringConstant (inString.mString) ;
     result = GALGAS_string (s) ;
   }
   return result ;
@@ -234,7 +234,7 @@ GALGAS_string GALGAS_string::class_func_stringWithSequenceOfCharacters (const GA
     const utf32 character = inCharacter.charValue () ;
     String s ;
     for (uint32_t i=0 ; i<inCount.uintValue () ; i++) {
-      s.addUnicodeChar (character COMMA_HERE) ;
+      s.appendUnicodeChar (character COMMA_HERE) ;
     }
     result = GALGAS_string (s) ;
   }
@@ -260,8 +260,8 @@ GALGAS_string GALGAS_string::class_func_stringWithContentsOfFile (const GALGAS_s
       result = GALGAS_string (FileManager::stringWithContentOfFile (inFilePath.mString)) ;
     }else{
       String message = "cannot read '" ;
-      message.addString (inFilePath.mString) ;
-      message.addString ("' file (does not exist)") ;
+      message.appendString (inFilePath.mString) ;
+      message.appendString ("' file (does not exist)") ;
       inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
     }
   }
@@ -284,8 +284,8 @@ GALGAS_string GALGAS_string::class_func_stringWithEnvironmentVariable (const GAL
     const char * value = ::getenv (inEnvironmentVariableName.mString.cString ()) ;
     if (value == nullptr) {
       String message = "the '" ;
-      message.addString (inEnvironmentVariableName.mString) ;
-      message.addString ("' environment variable does not exist") ;
+      message.appendString (inEnvironmentVariableName.mString) ;
+      message.appendString ("' environment variable does not exist") ;
       inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
     }else{
       result = GALGAS_string (value) ;
@@ -320,9 +320,9 @@ GALGAS_string GALGAS_string::class_func_componentsJoinedByString (const GALGAS_s
       if (first) {
         first = false ;
       }else{
-        s.addString (inSeparator.mString) ;
+        s.appendString (inSeparator.mString) ;
       }
-      s.addString (current.current_mValue (HERE).mString) ;
+      s.appendString (current.current_mValue (HERE).mString) ;
       current.gotoNextObject () ;
     }
     result = GALGAS_string (s) ;
@@ -375,8 +375,8 @@ GALGAS_string GALGAS_string::class_func_stringWithSymbolicLinkContents (const GA
       result = GALGAS_string (r) ;
     }else{
       String s = "'@string stringWithSymbolicLinkContents' error; receiver's value '" ;
-      s.addString (inSymbolicLink.mString) ;
-      s.addString ("' is not a symbolic link") ;
+      s.appendString (inSymbolicLink.mString) ;
+      s.appendString ("' is not a symbolic link") ;
       inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
     }
   }
@@ -411,7 +411,7 @@ void GALGAS_string::plusAssign_operation (GALGAS_string inOperand,
                                           Compiler *
                                           COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
-    mString.addString (inOperand.mString) ;
+    mString.appendString (inOperand.mString) ;
   }else{
     drop () ;
   }
@@ -444,8 +444,8 @@ void GALGAS_string::method_makeDirectory (Compiler * inCompiler
   const bool ok = FileManager::makeDirectoryIfDoesNotExist (mString) ;
   if (! ok) {
     String message = "cannot create '" ;
-    message.addString (mString) ;
-    message.addString ("' directory") ;
+    message.appendString (mString) ;
+    message.appendString ("' directory") ;
     inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
   }
 }
@@ -461,8 +461,8 @@ void GALGAS_string::method_makeDirectoryAndWriteToFile (GALGAS_string inFilePath
     bool ok = FileManager::makeDirectoryIfDoesNotExist (directory) ;
     if (! ok) {
       String message = "cannot create '" ;
-      message.addString (directory) ;
-      message.addString ("' directory") ;
+      message.appendString (directory) ;
+      message.appendString ("' directory") ;
       inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
     }else{
       method_writeToFile (inFilePath, inCompiler COMMA_THERE) ;
@@ -481,8 +481,8 @@ void GALGAS_string::method_makeDirectoryAndWriteToExecutableFile (GALGAS_string 
     bool ok = FileManager::makeDirectoryIfDoesNotExist (directory) ;
     if (! ok) {
       String message = "cannot create '" ;
-      message.addString (directory) ;
-      message.addString ("' directory") ;
+      message.appendString (directory) ;
+      message.appendString ("' directory") ;
       inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
     }else{
       method_writeToExecutableFile (inFilePath, inCompiler COMMA_THERE) ;
@@ -506,8 +506,8 @@ void GALGAS_string::method_writeToFile (GALGAS_string inFilePath,
         ggs_printFileCreationSuccess (String ("Created '") + inFilePath.mString + "'.\n") ;
       }else if (! ok) {
         String message = "cannot write '" ;
-        message.addString (inFilePath.mString) ;
-        message.addString ("' file") ;
+        message.appendString (inFilePath.mString) ;
+        message.appendString ("' file") ;
         inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
       }
     }else{
@@ -537,8 +537,8 @@ void GALGAS_string::method_writeToFileWhenDifferentContents (GALGAS_string inFil
         bool ok = FileManager::makeDirectoryIfDoesNotExist (inFilePath.mString.stringByDeletingLastPathComponent ()) ;
         if (! ok) {
           String message = "cannot create '" ;
-          message.addString (inFilePath.mString) ;
-          message.addString ("' directory") ;
+          message.appendString (inFilePath.mString) ;
+          message.appendString ("' directory") ;
           inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
           outFileWritten.drop () ;
         }else{
@@ -549,8 +549,8 @@ void GALGAS_string::method_writeToFileWhenDifferentContents (GALGAS_string inFil
             ggs_printFileCreationSuccess (String ("Created '") + inFilePath.mString + "'.\n") ;
           }else if (! ok) {
             String message = "cannot write '" ;
-            message.addString (inFilePath.mString) ;
-            message.addString ("' file") ;
+            message.appendString (inFilePath.mString) ;
+            message.appendString ("' file") ;
             inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
             outFileWritten.drop () ;
           }
@@ -578,8 +578,8 @@ void GALGAS_string::method_writeToExecutableFile (GALGAS_string inFilePath,
         ggs_printFileCreationSuccess (String ("Created '") + inFilePath.mString + "'.\n") ;
       }else if (! ok) {
         String message = "cannot write '" ;
-        message.addString (inFilePath.mString) ;
-        message.addString ("' file") ;
+        message.appendString (inFilePath.mString) ;
+        message.appendString ("' file") ;
         inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
       }
     }else{
@@ -609,8 +609,8 @@ void GALGAS_string::method_writeToExecutableFileWhenDifferentContents (GALGAS_st
         bool ok = FileManager::makeDirectoryIfDoesNotExist (inFilePath.mString.stringByDeletingLastPathComponent ()) ;
         if (! ok) {
           String message = "cannot create '" ;
-          message.addString (inFilePath.mString) ;
-          message.addString ("' directory") ;
+          message.appendString (inFilePath.mString) ;
+          message.appendString ("' directory") ;
           inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
           outFileWritten.drop () ;
         }else{
@@ -621,8 +621,8 @@ void GALGAS_string::method_writeToExecutableFileWhenDifferentContents (GALGAS_st
             ggs_printFileCreationSuccess (String ("Created '") + inFilePath.mString + "'.\n") ;
           }else if (! ok) {
             String message = "cannot write '" ;
-            message.addString (inFilePath.mString) ;
-            message.addString ("' file") ;
+            message.appendString (inFilePath.mString) ;
+            message.appendString ("' file") ;
             inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
             outFileWritten.drop () ;
           }
@@ -643,10 +643,10 @@ void GALGAS_string::method_makeSymbolicLinkWithPath (GALGAS_string inPath,
     const bool ok = FileManager::makeSymbolicLinkWithPath (inPath.mString, mString) ;
     if (! ok) {
         String s = "'@string makeSymbolicLinkWithPath' error; cannot make a symbolic link with receiver's value '" ;
-        s.addString (mString) ;
-        s.addString ("' and path given '") ;
-        s.addString (inPath.mString) ;
-        s.addString ("' by argument's value") ;
+        s.appendString (mString) ;
+        s.appendString ("' and path given '") ;
+        s.appendString (inPath.mString) ;
+        s.appendString ("' by argument's value") ;
         inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
     }
   }
@@ -682,8 +682,8 @@ void GALGAS_string::setter_setCapacity (GALGAS_uint inNewCapacity,
       mString.setCapacity (inNewCapacity.uintValue ()) ;
     }else{
       String message = "setCapacity argument value (" ;
-      message.addUnsigned (inNewCapacity.uintValue ()) ;
-      message.addString (") too large (should be <= 2**31-1)") ;
+      message.appendUnsigned (inNewCapacity.uintValue ()) ;
+      message.appendString (") too large (should be <= 2**31-1)") ;
       inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
     }
   }
@@ -720,10 +720,10 @@ void GALGAS_string::setter_setCharacterAtIndex (GALGAS_char inCharacter,
     const int32_t stringLength = mString.length () ;
     if (idx >= stringLength) {
       String message = "string index (" ;
-      message.addSigned (idx) ;
-      message.addString (") too large (string length: ") ;
-      message.addSigned (stringLength) ;
-      message.addString (")") ;
+      message.appendSigned (idx) ;
+      message.appendString (") too large (string length: ") ;
+      message.appendSigned (stringLength) ;
+      message.appendString (")") ;
       inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
     }else{
       mString.setUnicodeCharacterAtIndex (inCharacter.charValue (), idx COMMA_THERE) ;
@@ -742,10 +742,10 @@ void GALGAS_string::setter_insertCharacterAtIndex (GALGAS_char inCharacter,
     const int32_t stringLength = mString.length () ;
     if (idx > stringLength) {
       String message = "string index (" ;
-      message.addSigned (idx) ;
-      message.addString (") too large (string length: ") ;
-      message.addSigned (stringLength) ;
-      message.addString (")") ;
+      message.appendSigned (idx) ;
+      message.appendString (") too large (string length: ") ;
+      message.appendSigned (stringLength) ;
+      message.appendString (")") ;
       inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
     }else{
       mString.insertCharacterAtIndex (inCharacter.charValue (), idx COMMA_THERE) ;
@@ -765,10 +765,10 @@ void GALGAS_string::setter_removeCharacterAtIndex (GALGAS_char & outChar,
     const int32_t stringLength = mString.length () ;
     if (idx >= stringLength) {
       String message = "string index (" ;
-      message.addSigned (idx) ;
-      message.addString (") too large (string length: ") ;
-      message.addSigned (stringLength) ;
-      message.addString (")") ;
+      message.appendSigned (idx) ;
+      message.appendString (") too large (string length: ") ;
+      message.appendSigned (stringLength) ;
+      message.appendString (")") ;
       inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
     }else{
       outChar = GALGAS_char (mString (idx COMMA_HERE)) ;
@@ -804,9 +804,9 @@ void GALGAS_string::class_method_deleteFile (GALGAS_string inFilePath,
         ggs_printFileOperationSuccess (String ("Deleted '") + inFilePath.mString + "'.\n") ;
       }else{
         String message = "cannot perform delete '" ;
-        message.addString (inFilePath.mString) ;
-        message.addString ("' file: ") ;
-        message.addString (errorMessage) ;
+        message.appendString (inFilePath.mString) ;
+        message.appendString ("' file: ") ;
+        message.appendString (errorMessage) ;
         inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
       }
     }
@@ -837,7 +837,7 @@ void GALGAS_string::class_method_removeEmptyDirectory (GALGAS_string inDirectory
       const String errorMessage = FileManager::removeDirectory (inDirectoryPath.mString) ;
       if (errorMessage.length () > 0) {
         String message = "cannot perform directory removing: " ;
-        message.addString (errorMessage) ;
+        message.appendString (errorMessage) ;
         inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
       }
     }
@@ -855,8 +855,8 @@ static String recursiveRemoveDirectory (const String & inUnixDirectoryPath) {
     while ((current != nullptr) && (result.length () == 0)) {
       if ((strcmp (current->d_name, ".") != 0) && (strcmp (current->d_name, "..") != 0)) {
         String name = nativeStartPath ;
-        name.addString ("/") ;
-        name.addString (current->d_name) ;
+        name.appendString ("/") ;
+        name.appendString (current->d_name) ;
         if (FileManager::directoryExistsWithNativePath (name)) {
           recursiveRemoveDirectory (name) ;
         }else if (FileManager::fileExistsAtPath (name)) {
@@ -887,7 +887,7 @@ void GALGAS_string::class_method_removeDirectoryRecursively (GALGAS_string inDir
       String errorMessage = recursiveRemoveDirectory (inDirectoryPath.mString) ;
       if (errorMessage.length () > 0) {
         String message = "cannot perform directory removing: " ;
-        message.addString (errorMessage) ;
+        message.appendString (errorMessage) ;
         inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
       }
     }
@@ -909,8 +909,8 @@ static bool writeFile (const String & inMessage,
     ok = binaryFile.isOpened () ;
     if (! ok) {
       String message = "Cannot open '" ;
-      message.addString (inFullPathName) ;
-      message.addString ("' file in write mode.") ;
+      message.appendString (inFullPathName) ;
+      message.appendString ("' file in write mode.") ;
       inCompiler->onTheFlySemanticError (message COMMA_HERE) ;
     }
     binaryFile.appendData (inCurrentData) ;
@@ -1051,11 +1051,11 @@ bool GALGAS_string::optional_extractBigInt (GALGAS_bigint & outBigInt) const {
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void GALGAS_string::printNonNullClassInstanceProperties (const char * inPropertyName) const {
     if (isValid ()) {
-      gCout.addString ("    ") ;
-      gCout.addString (inPropertyName) ;
-      gCout.addString (" : ") ;
-      gCout.addString (mString) ;
-      gCout.addNL () ; ;
+      gCout.appendString ("    ") ;
+      gCout.appendString (inPropertyName) ;
+      gCout.appendString (" : ") ;
+      gCout.appendString (mString) ;
+      gCout.appendNewLine () ; ;
     }
   }
 #endif

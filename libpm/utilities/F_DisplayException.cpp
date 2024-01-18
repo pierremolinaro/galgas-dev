@@ -60,9 +60,9 @@
 #if COMPILE_FOR_WINDOWS == 0
   void F_default_display_exception (const ::std:: exception & inException) {
     gCout.flush () ;
-    gCout.addString ("\n*** Exception: ") ;
-    gCout.addString (inException.what ()) ;
-    gCout.addString (" ***\n") ;
+    gCout.appendString ("\n*** Exception: ") ;
+    gCout.appendString (inException.what ()) ;
+    gCout.appendString (" ***\n") ;
   }
 #endif
 

@@ -10,6 +10,208 @@
 
 //--------------------------------------------------------------------------------------------------
 //
+//                                     Phase 1: @formalArgumentPassingModeAST enum                                     *
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_formalArgumentPassingModeAST : public AC_GALGAS_root {
+//--------------------------------- Default constructor
+  public: GALGAS_formalArgumentPassingModeAST (void) ;
+
+//--------------------------------- Enumeration
+  public: typedef enum {
+    kNotBuilt,
+    kEnum_argumentIn,
+    kEnum_argumentOut,
+    kEnum_argumentInOut,
+    kEnum_argumentConstantIn
+  } enumeration ;
+  
+//--------------------------------- Private data member
+  private: enumeration mEnum ;
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return kNotBuilt != mEnum ; }
+  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mEnum = kNotBuilt ; }
+  public: inline enumeration enumValue (void) const { return mEnum ; }
+
+//-- Start of type generic part
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_formalArgumentPassingModeAST extractObject (const GALGAS_object & inObject,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GALGAS_formalArgumentPassingModeAST class_func_argumentConstantIn (LOCATION_ARGS) ;
+
+  public: static class GALGAS_formalArgumentPassingModeAST class_func_argumentIn (LOCATION_ARGS) ;
+
+  public: static class GALGAS_formalArgumentPassingModeAST class_func_argumentInOut (LOCATION_ARGS) ;
+
+  public: static class GALGAS_formalArgumentPassingModeAST class_func_argumentOut (LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of getter 'description'
+  public: VIRTUAL_IN_DEBUG void description (String & ioString,
+                                             const int32_t inIndentation) const override ;
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_formalArgumentPassingModeAST & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isArgumentConstantIn (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isArgumentIn (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isArgumentInOut (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isArgumentOut (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Optional Methods
+  public: VIRTUAL_IN_DEBUG bool optional_argumentConstantIn () const ;
+
+  public: VIRTUAL_IN_DEBUG bool optional_argumentIn () const ;
+
+  public: VIRTUAL_IN_DEBUG bool optional_argumentInOut () const ;
+
+  public: VIRTUAL_IN_DEBUG bool optional_argumentOut () const ;
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_formalArgumentPassingModeAST class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalArgumentPassingModeAST ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: @formalParameterListAST_2D_element struct
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_formalParameterListAST_2D_element : public AC_GALGAS_root {
+//--------------------------------- Properties
+  public: GALGAS_lstring mProperty_mFormalSelector ;
+  public: inline GALGAS_lstring readProperty_mFormalSelector (void) const {
+    return mProperty_mFormalSelector ;
+  }
+
+  public: GALGAS_formalArgumentPassingModeAST mProperty_mFormalArgumentPassingMode ;
+  public: inline GALGAS_formalArgumentPassingModeAST readProperty_mFormalArgumentPassingMode (void) const {
+    return mProperty_mFormalArgumentPassingMode ;
+  }
+
+  public: GALGAS_lstring mProperty_mFormalArgumentTypeName ;
+  public: inline GALGAS_lstring readProperty_mFormalArgumentTypeName (void) const {
+    return mProperty_mFormalArgumentTypeName ;
+  }
+
+  public: GALGAS_lstring mProperty_mFormalArgumentName ;
+  public: inline GALGAS_lstring readProperty_mFormalArgumentName (void) const {
+    return mProperty_mFormalArgumentName ;
+  }
+
+  public: GALGAS_bool mProperty_mIsUnused ;
+  public: inline GALGAS_bool readProperty_mIsUnused (void) const {
+    return mProperty_mIsUnused ;
+  }
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
+  public: VIRTUAL_IN_DEBUG void drop (void) override ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_formalParameterListAST_2D_element (void) ;
+
+//--------------------------------- Property setters
+  public: inline void setter_setMFormalSelector (const GALGAS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mFormalSelector = inValue ;
+  }
+
+  public: inline void setter_setMFormalArgumentPassingMode (const GALGAS_formalArgumentPassingModeAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mFormalArgumentPassingMode = inValue ;
+  }
+
+  public: inline void setter_setMFormalArgumentTypeName (const GALGAS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mFormalArgumentTypeName = inValue ;
+  }
+
+  public: inline void setter_setMFormalArgumentName (const GALGAS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mFormalArgumentName = inValue ;
+  }
+
+  public: inline void setter_setMIsUnused (const GALGAS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mIsUnused = inValue ;
+  }
+
+//--------------------------------- Virtual destructor (in debug mode)
+  public: virtual ~ GALGAS_formalParameterListAST_2D_element (void) ;
+
+//--------------------------------- Native constructor
+  public: GALGAS_formalParameterListAST_2D_element (const GALGAS_lstring & in_mFormalSelector,
+                                                    const GALGAS_formalArgumentPassingModeAST & in_mFormalArgumentPassingMode,
+                                                    const GALGAS_lstring & in_mFormalArgumentTypeName,
+                                                    const GALGAS_lstring & in_mFormalArgumentName,
+                                                    const GALGAS_bool & in_mIsUnused) ;
+
+//-- Start of type generic part
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_formalParameterListAST_2D_element extractObject (const GALGAS_object & inObject,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GALGAS_formalParameterListAST_2D_element class_func_new (const class GALGAS_lstring & inOperand0,
+                                                                                const class GALGAS_formalArgumentPassingModeAST & inOperand1,
+                                                                                const class GALGAS_lstring & inOperand2,
+                                                                                const class GALGAS_lstring & inOperand3,
+                                                                                const class GALGAS_bool & inOperand4,
+                                                                                class Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of getter 'description'
+  public: VIRTUAL_IN_DEBUG void description (String & ioString,
+                                             const int32_t inIndentation) const override ;
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_formalParameterListAST_2D_element & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_formalParameterListAST_2D_element class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalParameterListAST_2D_element ;
+
+//--------------------------------------------------------------------------------------------------
+//
 // Phase 1: @graphInsertModifierList list
 //
 //--------------------------------------------------------------------------------------------------
@@ -13800,874 +14002,4 @@ class GALGAS_outputInputSelfParameterAST_2D_weak : public GALGAS_actualParameter
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputInputSelfParameterAST_2D_weak ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @outputInputJokerParameterAST reference class
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_outputInputJokerParameterAST : public GALGAS_actualParameterAST {
-//--------------------------------- Default constructor
-  public: GALGAS_outputInputJokerParameterAST (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GALGAS_outputInputJokerParameterAST (const class cPtr_outputInputJokerParameterAST * inSourcePtr) ;
-
-//--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mQualifierLocation (void) const ;
-
-  public: class GALGAS_uint readProperty_mJokerIndex (void) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_outputInputJokerParameterAST extractObject (const GALGAS_object & inObject,
-                                                                    Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_outputInputJokerParameterAST class_func_new (const class GALGAS_location & inOperand0,
-                                                                           const class GALGAS_uint & inOperand1
-                                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_outputInputJokerParameterAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GALGAS_outputInputJokerParameterAST class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputInputJokerParameterAST ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 2: pointer class for @outputInputJokerParameterAST class
-//
-//--------------------------------------------------------------------------------------------------
-
-class cPtr_outputInputJokerParameterAST : public cPtr_actualParameterAST {
-
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const override ;
-  #endif
-//--- Extension getter isCompatibleWith
-  public: virtual class GALGAS_bool getter_isCompatibleWith (const class GALGAS_formalArgumentPassingModeAST inFormalPassingMode,
-           const class GALGAS_string inSelector,
-           Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension method checkAgainstFormalArgument
-  public: virtual void method_checkAgainstFormalArgument (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           const class GALGAS_lstring inFormalSelector,
-           const class GALGAS_unifiedTypeMapEntry inFormalArgumentType,
-           const class GALGAS_formalArgumentPassingModeAST inFormalArgumentPassingMode,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_actualParameterListForGeneration & ioActualParameterListForGeneration,
-           class GALGAS_stringset & ioExclusiveVariableSet,
-           class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Extension method enterInActualOutputParameterList
-  public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & ioActualOutputArgumentList,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Extension method enterParameterInSemanticContext
-  public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Properties
-  public: GALGAS_location mProperty_mQualifierLocation ;
-  public: GALGAS_uint mProperty_mJokerIndex ;
-
-//--- Constructor
-  public: cPtr_outputInputJokerParameterAST (const GALGAS_location & in_mQualifierLocation,
-                                             const GALGAS_uint & in_mJokerIndex
-                                             COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
-
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @outputInputJokerParameterAST_2D_weak weak reference class
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_outputInputJokerParameterAST_2D_weak : public GALGAS_actualParameterAST_2D_weak {
-//--------------------------------- Default constructor
-  public: GALGAS_outputInputJokerParameterAST_2D_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_outputInputJokerParameterAST_2D_weak (const class GALGAS_outputInputJokerParameterAST & inSource) ;
-
-  public: GALGAS_outputInputJokerParameterAST_2D_weak & operator = (const class GALGAS_outputInputJokerParameterAST & inSource) ;
-
-//--------------------------------- Bang operator
-  public: GALGAS_outputInputJokerParameterAST bang_outputInputJokerParameterAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_outputInputJokerParameterAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                            Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_outputInputJokerParameterAST_2D_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_outputInputJokerParameterAST_2D_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GALGAS_outputInputJokerParameterAST_2D_weak class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputInputJokerParameterAST_2D_weak ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @inputActualExistingVariableParameterAST reference class
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_inputActualExistingVariableParameterAST : public GALGAS_actualParameterAST {
-//--------------------------------- Default constructor
-  public: GALGAS_inputActualExistingVariableParameterAST (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GALGAS_inputActualExistingVariableParameterAST (const class cPtr_inputActualExistingVariableParameterAST * inSourcePtr) ;
-
-//--------------------------------- Property read access
-  public: class GALGAS_lstring readProperty_mActualSelector (void) const ;
-
-  public: class GALGAS_lstring readProperty_mInputActualParameterName (void) const ;
-
-  public: class GALGAS_lstringlist readProperty_mPoisonedVarNameList (void) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_inputActualExistingVariableParameterAST extractObject (const GALGAS_object & inObject,
-                                                                               Compiler * inCompiler
-                                                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_inputActualExistingVariableParameterAST class_func_new (const class GALGAS_lstring & inOperand0,
-                                                                                      const class GALGAS_lstring & inOperand1,
-                                                                                      const class GALGAS_lstringlist & inOperand2
-                                                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_inputActualExistingVariableParameterAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GALGAS_inputActualExistingVariableParameterAST class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualExistingVariableParameterAST ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 2: pointer class for @inputActualExistingVariableParameterAST class
-//
-//--------------------------------------------------------------------------------------------------
-
-class cPtr_inputActualExistingVariableParameterAST : public cPtr_actualParameterAST {
-
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const override ;
-  #endif
-//--- Extension getter isCompatibleWith
-  public: virtual class GALGAS_bool getter_isCompatibleWith (const class GALGAS_formalArgumentPassingModeAST inFormalPassingMode,
-           const class GALGAS_string inSelector,
-           Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension method checkAgainstFormalArgument
-  public: virtual void method_checkAgainstFormalArgument (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           const class GALGAS_lstring inFormalSelector,
-           const class GALGAS_unifiedTypeMapEntry inFormalArgumentType,
-           const class GALGAS_formalArgumentPassingModeAST inFormalArgumentPassingMode,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_actualParameterListForGeneration & ioActualParameterListForGeneration,
-           class GALGAS_stringset & ioExclusiveVariableSet,
-           class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Extension method enterInActualOutputParameterList
-  public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & ioActualOutputArgumentList,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Extension method enterParameterInSemanticContext
-  public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Properties
-  public: GALGAS_lstring mProperty_mActualSelector ;
-  public: GALGAS_lstring mProperty_mInputActualParameterName ;
-  public: GALGAS_lstringlist mProperty_mPoisonedVarNameList ;
-
-//--- Constructor
-  public: cPtr_inputActualExistingVariableParameterAST (const GALGAS_lstring & in_mActualSelector,
-                                                        const GALGAS_lstring & in_mInputActualParameterName,
-                                                        const GALGAS_lstringlist & in_mPoisonedVarNameList
-                                                        COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
-
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @inputActualExistingVariableParameterAST_2D_weak weak reference class
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_inputActualExistingVariableParameterAST_2D_weak : public GALGAS_actualParameterAST_2D_weak {
-//--------------------------------- Default constructor
-  public: GALGAS_inputActualExistingVariableParameterAST_2D_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_inputActualExistingVariableParameterAST_2D_weak (const class GALGAS_inputActualExistingVariableParameterAST & inSource) ;
-
-  public: GALGAS_inputActualExistingVariableParameterAST_2D_weak & operator = (const class GALGAS_inputActualExistingVariableParameterAST & inSource) ;
-
-//--------------------------------- Bang operator
-  public: GALGAS_inputActualExistingVariableParameterAST bang_inputActualExistingVariableParameterAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_inputActualExistingVariableParameterAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                                       Compiler * inCompiler
-                                                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_inputActualExistingVariableParameterAST_2D_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_inputActualExistingVariableParameterAST_2D_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GALGAS_inputActualExistingVariableParameterAST_2D_weak class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualExistingVariableParameterAST_2D_weak ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @inputActualSelfPropertyParameterAST reference class
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_inputActualSelfPropertyParameterAST : public GALGAS_actualParameterAST {
-//--------------------------------- Default constructor
-  public: GALGAS_inputActualSelfPropertyParameterAST (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GALGAS_inputActualSelfPropertyParameterAST (const class cPtr_inputActualSelfPropertyParameterAST * inSourcePtr) ;
-
-//--------------------------------- Property read access
-  public: class GALGAS_lstring readProperty_mActualSelector (void) const ;
-
-  public: class GALGAS_lstring readProperty_mInputActualSelfPropertyName (void) const ;
-
-  public: class GALGAS_lstringlist readProperty_mPoisonedVarNameList (void) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_inputActualSelfPropertyParameterAST extractObject (const GALGAS_object & inObject,
-                                                                           Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_inputActualSelfPropertyParameterAST class_func_new (const class GALGAS_lstring & inOperand0,
-                                                                                  const class GALGAS_lstring & inOperand1,
-                                                                                  const class GALGAS_lstringlist & inOperand2
-                                                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_inputActualSelfPropertyParameterAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GALGAS_inputActualSelfPropertyParameterAST class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualSelfPropertyParameterAST ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 2: pointer class for @inputActualSelfPropertyParameterAST class
-//
-//--------------------------------------------------------------------------------------------------
-
-class cPtr_inputActualSelfPropertyParameterAST : public cPtr_actualParameterAST {
-
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const override ;
-  #endif
-//--- Extension getter isCompatibleWith
-  public: virtual class GALGAS_bool getter_isCompatibleWith (const class GALGAS_formalArgumentPassingModeAST inFormalPassingMode,
-           const class GALGAS_string inSelector,
-           Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension method checkAgainstFormalArgument
-  public: virtual void method_checkAgainstFormalArgument (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           const class GALGAS_lstring inFormalSelector,
-           const class GALGAS_unifiedTypeMapEntry inFormalArgumentType,
-           const class GALGAS_formalArgumentPassingModeAST inFormalArgumentPassingMode,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_actualParameterListForGeneration & ioActualParameterListForGeneration,
-           class GALGAS_stringset & ioExclusiveVariableSet,
-           class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Extension method enterInActualOutputParameterList
-  public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & ioActualOutputArgumentList,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Extension method enterParameterInSemanticContext
-  public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Properties
-  public: GALGAS_lstring mProperty_mActualSelector ;
-  public: GALGAS_lstring mProperty_mInputActualSelfPropertyName ;
-  public: GALGAS_lstringlist mProperty_mPoisonedVarNameList ;
-
-//--- Constructor
-  public: cPtr_inputActualSelfPropertyParameterAST (const GALGAS_lstring & in_mActualSelector,
-                                                    const GALGAS_lstring & in_mInputActualSelfPropertyName,
-                                                    const GALGAS_lstringlist & in_mPoisonedVarNameList
-                                                    COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
-
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @inputActualSelfPropertyParameterAST_2D_weak weak reference class
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_inputActualSelfPropertyParameterAST_2D_weak : public GALGAS_actualParameterAST_2D_weak {
-//--------------------------------- Default constructor
-  public: GALGAS_inputActualSelfPropertyParameterAST_2D_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_inputActualSelfPropertyParameterAST_2D_weak (const class GALGAS_inputActualSelfPropertyParameterAST & inSource) ;
-
-  public: GALGAS_inputActualSelfPropertyParameterAST_2D_weak & operator = (const class GALGAS_inputActualSelfPropertyParameterAST & inSource) ;
-
-//--------------------------------- Bang operator
-  public: GALGAS_inputActualSelfPropertyParameterAST bang_inputActualSelfPropertyParameterAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_inputActualSelfPropertyParameterAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                                   Compiler * inCompiler
-                                                                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_inputActualSelfPropertyParameterAST_2D_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_inputActualSelfPropertyParameterAST_2D_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GALGAS_inputActualSelfPropertyParameterAST_2D_weak class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualSelfPropertyParameterAST_2D_weak ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @inputActualSelfParameterAST reference class
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_inputActualSelfParameterAST : public GALGAS_actualParameterAST {
-//--------------------------------- Default constructor
-  public: GALGAS_inputActualSelfParameterAST (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GALGAS_inputActualSelfParameterAST (const class cPtr_inputActualSelfParameterAST * inSourcePtr) ;
-
-//--------------------------------- Property read access
-  public: class GALGAS_lstring readProperty_mActualSelector (void) const ;
-
-  public: class GALGAS_location readProperty_mSelfLocation (void) const ;
-
-  public: class GALGAS_lstringlist readProperty_mPoisonedVarNameList (void) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_inputActualSelfParameterAST extractObject (const GALGAS_object & inObject,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_inputActualSelfParameterAST class_func_new (const class GALGAS_lstring & inOperand0,
-                                                                          const class GALGAS_location & inOperand1,
-                                                                          const class GALGAS_lstringlist & inOperand2
-                                                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_inputActualSelfParameterAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GALGAS_inputActualSelfParameterAST class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualSelfParameterAST ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 2: pointer class for @inputActualSelfParameterAST class
-//
-//--------------------------------------------------------------------------------------------------
-
-class cPtr_inputActualSelfParameterAST : public cPtr_actualParameterAST {
-
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const override ;
-  #endif
-//--- Extension getter isCompatibleWith
-  public: virtual class GALGAS_bool getter_isCompatibleWith (const class GALGAS_formalArgumentPassingModeAST inFormalPassingMode,
-           const class GALGAS_string inSelector,
-           Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension method checkAgainstFormalArgument
-  public: virtual void method_checkAgainstFormalArgument (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           const class GALGAS_lstring inFormalSelector,
-           const class GALGAS_unifiedTypeMapEntry inFormalArgumentType,
-           const class GALGAS_formalArgumentPassingModeAST inFormalArgumentPassingMode,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_actualParameterListForGeneration & ioActualParameterListForGeneration,
-           class GALGAS_stringset & ioExclusiveVariableSet,
-           class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Extension method enterInActualOutputParameterList
-  public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & ioActualOutputArgumentList,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Extension method enterParameterInSemanticContext
-  public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Properties
-  public: GALGAS_lstring mProperty_mActualSelector ;
-  public: GALGAS_location mProperty_mSelfLocation ;
-  public: GALGAS_lstringlist mProperty_mPoisonedVarNameList ;
-
-//--- Constructor
-  public: cPtr_inputActualSelfParameterAST (const GALGAS_lstring & in_mActualSelector,
-                                            const GALGAS_location & in_mSelfLocation,
-                                            const GALGAS_lstringlist & in_mPoisonedVarNameList
-                                            COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
-
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @inputActualSelfParameterAST_2D_weak weak reference class
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_inputActualSelfParameterAST_2D_weak : public GALGAS_actualParameterAST_2D_weak {
-//--------------------------------- Default constructor
-  public: GALGAS_inputActualSelfParameterAST_2D_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_inputActualSelfParameterAST_2D_weak (const class GALGAS_inputActualSelfParameterAST & inSource) ;
-
-  public: GALGAS_inputActualSelfParameterAST_2D_weak & operator = (const class GALGAS_inputActualSelfParameterAST & inSource) ;
-
-//--------------------------------- Bang operator
-  public: GALGAS_inputActualSelfParameterAST bang_inputActualSelfParameterAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_inputActualSelfParameterAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                           Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_inputActualSelfParameterAST_2D_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_inputActualSelfParameterAST_2D_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GALGAS_inputActualSelfParameterAST_2D_weak class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualSelfParameterAST_2D_weak ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @inputActualNewVariableParameterAST reference class
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_inputActualNewVariableParameterAST : public GALGAS_actualParameterAST {
-//--------------------------------- Default constructor
-  public: GALGAS_inputActualNewVariableParameterAST (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GALGAS_inputActualNewVariableParameterAST (const class cPtr_inputActualNewVariableParameterAST * inSourcePtr) ;
-
-//--------------------------------- Property read access
-  public: class GALGAS_lstring readProperty_mActualSelector (void) const ;
-
-  public: class GALGAS_lstring readProperty_mInputOptionalActualTypeName (void) const ;
-
-  public: class GALGAS_lstring readProperty_mInputActualParameterName (void) const ;
-
-  public: class GALGAS_lstringlist readProperty_mPoisonedVarNameList (void) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_inputActualNewVariableParameterAST extractObject (const GALGAS_object & inObject,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_inputActualNewVariableParameterAST class_func_new (const class GALGAS_lstring & inOperand0,
-                                                                                 const class GALGAS_lstring & inOperand1,
-                                                                                 const class GALGAS_lstring & inOperand2,
-                                                                                 const class GALGAS_lstringlist & inOperand3
-                                                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_inputActualNewVariableParameterAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GALGAS_inputActualNewVariableParameterAST class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualNewVariableParameterAST ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 2: pointer class for @inputActualNewVariableParameterAST class
-//
-//--------------------------------------------------------------------------------------------------
-
-class cPtr_inputActualNewVariableParameterAST : public cPtr_actualParameterAST {
-
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const override ;
-  #endif
-//--- Extension getter isCompatibleWith
-  public: virtual class GALGAS_bool getter_isCompatibleWith (const class GALGAS_formalArgumentPassingModeAST inFormalPassingMode,
-           const class GALGAS_string inSelector,
-           Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension method checkAgainstFormalArgument
-  public: virtual void method_checkAgainstFormalArgument (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           const class GALGAS_lstring inFormalSelector,
-           const class GALGAS_unifiedTypeMapEntry inFormalArgumentType,
-           const class GALGAS_formalArgumentPassingModeAST inFormalArgumentPassingMode,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_actualParameterListForGeneration & ioActualParameterListForGeneration,
-           class GALGAS_stringset & ioExclusiveVariableSet,
-           class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Extension method enterInActualOutputParameterList
-  public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & ioActualOutputArgumentList,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Extension method enterParameterInSemanticContext
-  public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Properties
-  public: GALGAS_lstring mProperty_mActualSelector ;
-  public: GALGAS_lstring mProperty_mInputOptionalActualTypeName ;
-  public: GALGAS_lstring mProperty_mInputActualParameterName ;
-  public: GALGAS_lstringlist mProperty_mPoisonedVarNameList ;
-
-//--- Constructor
-  public: cPtr_inputActualNewVariableParameterAST (const GALGAS_lstring & in_mActualSelector,
-                                                   const GALGAS_lstring & in_mInputOptionalActualTypeName,
-                                                   const GALGAS_lstring & in_mInputActualParameterName,
-                                                   const GALGAS_lstringlist & in_mPoisonedVarNameList
-                                                   COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
-
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @inputActualNewVariableParameterAST_2D_weak weak reference class
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_inputActualNewVariableParameterAST_2D_weak : public GALGAS_actualParameterAST_2D_weak {
-//--------------------------------- Default constructor
-  public: GALGAS_inputActualNewVariableParameterAST_2D_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_inputActualNewVariableParameterAST_2D_weak (const class GALGAS_inputActualNewVariableParameterAST & inSource) ;
-
-  public: GALGAS_inputActualNewVariableParameterAST_2D_weak & operator = (const class GALGAS_inputActualNewVariableParameterAST & inSource) ;
-
-//--------------------------------- Bang operator
-  public: GALGAS_inputActualNewVariableParameterAST bang_inputActualNewVariableParameterAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_inputActualNewVariableParameterAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                                  Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_inputActualNewVariableParameterAST_2D_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_inputActualNewVariableParameterAST_2D_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GALGAS_inputActualNewVariableParameterAST_2D_weak class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualNewVariableParameterAST_2D_weak ;
 

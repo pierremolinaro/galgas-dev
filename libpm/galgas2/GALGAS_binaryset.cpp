@@ -81,7 +81,7 @@ GALGAS_binaryset GALGAS_binaryset::class_func_binarySetWithPredicateString (cons
       utf32 cc = bitString (stringIndex COMMA_HERE) ;
       String s ;
       while ((stringIndex < stringLength) && ((UNICODE_VALUE (cc) == '0') || (UNICODE_VALUE (cc) == '1') || (UNICODE_VALUE (cc) == 'X') || (UNICODE_VALUE (cc) == ' '))) {
-        s.addUnicodeChar (cc COMMA_HERE) ;
+        s.appendUnicodeChar (cc COMMA_HERE) ;
         stringIndex ++ ;
         if (stringIndex < stringLength) {
           cc = bitString (stringIndex COMMA_HERE) ;
@@ -113,7 +113,7 @@ GALGAS_binaryset GALGAS_binaryset::class_func_binarySetWithPredicateString (cons
       result = GALGAS_binaryset (resultBDD) ;
     }else{
       String message ("invalid query string near index ") ;
-      message.addSigned (stringIndex) ;
+      message.appendSigned (stringIndex) ;
       inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
     }
   }
@@ -402,26 +402,26 @@ GALGAS_binaryset GALGAS_binaryset::operator_tilde (UNUSED_LOCATION_ARGS) const {
 
 void GALGAS_binaryset::description (String & ioString,
                                     const int32_t /* inIndentation */) const {
-  ioString.addString ("<@binaryset: ") ;
+  ioString.appendString ("<@binaryset: ") ;
   if (isValid ()) {
     if (mBDD.isFalse ()){
-      ioString.addString ("false") ;
+      ioString.appendString ("false") ;
     }else if (mBDD.isTrue ()){
-      ioString.addString ("true") ;
+      ioString.appendString ("true") ;
     }else{
       TC_UniqueArray <String> stringArray ;
       mBDD.buildCompressedBigEndianStringValueArray (stringArray COMMA_HERE) ;
       for (int32_t i=0 ; i<stringArray.count () ; i++) {
         if (i != 0) {
-          ioString.addString (", ") ;
+          ioString.appendString (", ") ;
         }
-        ioString.addString (stringArray (i COMMA_HERE)) ;
+        ioString.appendString (stringArray (i COMMA_HERE)) ;
       }
     }
   }else{
-    ioString.addString ("not built") ;
+    ioString.appendString ("not built") ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -649,11 +649,11 @@ GALGAS_stringlist GALGAS_binaryset::getter_compressedStringValueList (const GALG
     const uint32_t actualVariableCount = mBDD.significantVariableCount () ;
     if (actualVariableCount > variableCount) {
       String message ;
-      message.addString ("variable count argument (") ;
-      message.addSigned (variableCount) ;
-      message.addString (") is lower than actual variable count (") ;
-      message.addSigned (actualVariableCount) ;
-      message.addString ("); it should be greater or equal") ;
+      message.appendString ("variable count argument (") ;
+      message.appendSigned (variableCount) ;
+      message.appendString (") is lower than actual variable count (") ;
+      message.appendSigned (actualVariableCount) ;
+      message.appendString ("); it should be greater or equal") ;
       inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
     }else{
       TC_UniqueArray <String> valuesArray ;
