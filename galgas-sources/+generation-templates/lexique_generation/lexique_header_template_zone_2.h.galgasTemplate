@@ -85,8 +85,8 @@ class Lexique_%!LEXIQUE_IDENTIFIER% : public Lexique {
 
 //--- Terminal symbols enumeration
   public: enum {kToken_%
-    for (mTerminalName mSentAttributeList mSyntaxErrorMessage mIsEndOfTemplateMark mAtomicSelection mStyleIndex) in LEXIQUE_ANALYSIS_CONTEXT.mTerminalList do
-      %,\n   kToken_% ![mTerminalName.string identifierRepresentation]
+    for (mTerminalName mSentAttributeList mSyntaxErrorMessage mIsEndOfTemplateMark mAtomicSelection mStyleIndex) in LEXIQUE_ANALYSIS_CONTEXT.mTerminalList do (idx)
+      %,\n   kToken_%![mTerminalName.string identifierRepresentation]% /* %![idx + 1 string]% */ %
     end
   %} ;
 %

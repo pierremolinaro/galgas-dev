@@ -172,76 +172,79 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_headerZone_32_ (Com
     break ;
   }
   result.appendString ("\n\n\n//--- Terminal symbols enumeration\n  public: enum {kToken_") ;
-  GALGAS_uint index_4074_ (0) ;
+  GALGAS_uint index_4078_idx (0) ;
   if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ().isValid ()) {
-    cEnumerator_terminalList enumerator_4074 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList (), kENUMERATION_UP) ;
-    while (enumerator_4074.hasCurrentObject ()) {
+    cEnumerator_terminalList enumerator_4078 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList (), kENUMERATION_UP) ;
+    while (enumerator_4078.hasCurrentObject ()) {
       result.appendString (",\n   kToken_") ;
-      result.appendString (enumerator_4074.current_mTerminalName (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique_header_template_zone_2.h.galgasTemplate", 89)).stringValue ()) ;
-      index_4074_.increment () ;
-      enumerator_4074.gotoNextObject () ;
+      result.appendString (enumerator_4078.current_mTerminalName (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique_header_template_zone_2.h.galgasTemplate", 89)).stringValue ()) ;
+      result.appendString (" /* ") ;
+      result.appendString (index_4078_idx.add_operation (GALGAS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("lexique_header_template_zone_2.h.galgasTemplate", 89)).getter_string (SOURCE_FILE ("lexique_header_template_zone_2.h.galgasTemplate", 89)).stringValue ()) ;
+      result.appendString (" */ ") ;
+      index_4078_idx.increment () ;
+      enumerator_4078.gotoNextObject () ;
     }
   }
   result.appendString ("} ;\n") ;
-  GALGAS_uint index_4259_ (0) ;
+  GALGAS_uint index_4293_ (0) ;
   if (in_DELIMITOR_5F_LIST_5F_LIST.isValid ()) {
-    cEnumerator_lexicalListDeclarationListAST enumerator_4259 (in_DELIMITOR_5F_LIST_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_4259.hasCurrentObject ()) {
+    cEnumerator_lexicalListDeclarationListAST enumerator_4293 (in_DELIMITOR_5F_LIST_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_4293.hasCurrentObject ()) {
       result.appendString ("\n//--- Key words table '") ;
-      result.appendString (enumerator_4259.current_mName (HERE).readProperty_string ().stringValue ()) ;
+      result.appendString (enumerator_4293.current_mName (HERE).readProperty_string ().stringValue ()) ;
       result.appendString ("'\n  public: static int32_t search_into_") ;
-      result.appendString (enumerator_4259.current_mName (HERE).readProperty_string ().stringValue ()) ;
+      result.appendString (enumerator_4293.current_mName (HERE).readProperty_string ().stringValue ()) ;
       result.appendString (" (const String & inSearchedString) ;\n") ;
-      index_4259_.increment () ;
-      enumerator_4259.gotoNextObject () ;
+      index_4293_.increment () ;
+      enumerator_4293.gotoNextObject () ;
     }
   }
   result.appendString ("  \n\n//--- Assign from attribute\n") ;
-  GALGAS_uint index_4525_ (0) ;
+  GALGAS_uint index_4559_ (0) ;
   if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mLexicalAttributeMap ().isValid ()) {
-    cEnumerator_lexicalAttributeMap enumerator_4525 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mLexicalAttributeMap (), kENUMERATION_UP) ;
-    while (enumerator_4525.hasCurrentObject ()) {
+    cEnumerator_lexicalAttributeMap enumerator_4559 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mLexicalAttributeMap (), kENUMERATION_UP) ;
+    while (enumerator_4559.hasCurrentObject ()) {
       result.appendString ("  public: GALGAS_l") ;
-      result.appendString (extensionGetter_lexicalTypeBaseName (enumerator_4525.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique_header_template_zone_2.h.galgasTemplate", 102)).getter_identifierRepresentation (SOURCE_FILE ("lexique_header_template_zone_2.h.galgasTemplate", 102)).stringValue ()) ;
+      result.appendString (extensionGetter_lexicalTypeBaseName (enumerator_4559.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique_header_template_zone_2.h.galgasTemplate", 102)).getter_identifierRepresentation (SOURCE_FILE ("lexique_header_template_zone_2.h.galgasTemplate", 102)).stringValue ()) ;
       result.appendString (" synthetizedAttribute_") ;
-      result.appendString (enumerator_4525.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique_header_template_zone_2.h.galgasTemplate", 102)).stringValue ()) ;
+      result.appendString (enumerator_4559.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique_header_template_zone_2.h.galgasTemplate", 102)).stringValue ()) ;
       result.appendString (" (void) const ;\n") ;
-      index_4525_.increment () ;
-      enumerator_4525.gotoNextObject () ;
+      index_4559_.increment () ;
+      enumerator_4559.gotoNextObject () ;
     }
   }
   result.appendString ("\n\n//--- Attribute access\n") ;
-  GALGAS_uint index_4799_ (0) ;
+  GALGAS_uint index_4833_ (0) ;
   if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mLexicalAttributeMap ().isValid ()) {
-    cEnumerator_lexicalAttributeMap enumerator_4799 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mLexicalAttributeMap (), kENUMERATION_UP) ;
-    while (enumerator_4799.hasCurrentObject ()) {
+    cEnumerator_lexicalAttributeMap enumerator_4833 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mLexicalAttributeMap (), kENUMERATION_UP) ;
+    while (enumerator_4833.hasCurrentObject ()) {
       result.appendString ("  public: ") ;
-      result.appendString (extensionGetter_cppTypeName (enumerator_4799.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique_header_template_zone_2.h.galgasTemplate", 109)).stringValue ()) ;
+      result.appendString (extensionGetter_cppTypeName (enumerator_4833.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique_header_template_zone_2.h.galgasTemplate", 109)).stringValue ()) ;
       result.appendString (" attributeValue_") ;
-      result.appendString (enumerator_4799.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique_header_template_zone_2.h.galgasTemplate", 109)).stringValue ()) ;
+      result.appendString (enumerator_4833.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique_header_template_zone_2.h.galgasTemplate", 109)).stringValue ()) ;
       result.appendString (" (void) const ;\n") ;
-      index_4799_.increment () ;
-      enumerator_4799.gotoNextObject () ;
+      index_4833_.increment () ;
+      enumerator_4833.gotoNextObject () ;
     }
   }
   result.appendString ("\n\n//--- indexing keys\n") ;
-  GALGAS_uint index_5026_ (0) ;
+  GALGAS_uint index_5060_ (0) ;
   if (in_INDEXING_5F_LIST.isValid ()) {
-    cEnumerator_indexingListAST enumerator_5026 (in_INDEXING_5F_LIST, kENUMERATION_UP) ;
-    const bool nonEmpty_enumerator_5026 = enumerator_5026.hasCurrentObject () ;
-    if (nonEmpty_enumerator_5026) {
+    cEnumerator_indexingListAST enumerator_5060 (in_INDEXING_5F_LIST, kENUMERATION_UP) ;
+    const bool nonEmpty_enumerator_5060 = enumerator_5060.hasCurrentObject () ;
+    if (nonEmpty_enumerator_5060) {
       result.appendString ("  public: enum {") ;
     }
-    while (enumerator_5026.hasCurrentObject ()) {
+    while (enumerator_5060.hasCurrentObject ()) {
       result.appendString ("\n    kIndexing_") ;
-      result.appendString (enumerator_5026.current_mIndexName (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique_header_template_zone_2.h.galgasTemplate", 117)).stringValue ()) ;
-      if (enumerator_5026.hasNextObject ()) {
+      result.appendString (enumerator_5060.current_mIndexName (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique_header_template_zone_2.h.galgasTemplate", 117)).stringValue ()) ;
+      if (enumerator_5060.hasNextObject ()) {
         result.appendString (",") ;
       }
-      index_5026_.increment () ;
-      enumerator_5026.gotoNextObject () ;
+      index_5060_.increment () ;
+      enumerator_5060.gotoNextObject () ;
     }
-    if (nonEmpty_enumerator_5026) {
+    if (nonEmpty_enumerator_5060) {
       result.appendString ("\n  } ;\n") ;
     }
   }

@@ -5,7 +5,7 @@
 //
 //  This file is part of libpm library
 //
-//  Copyright (C) 1996, ..., 2023 Pierre Molinaro.
+//  Copyright (C) 1996, ..., 2024 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -61,13 +61,13 @@ static bool TRACE_LL1_PARSING (void) { return false ; }
 //--------------------------------------------------------------------------------------------------
 
 bool Lexique::acceptTerminalForErrorSignaling (const int32_t inTerminal,
-                                                 const int32_t* inProductionArray,
-                                                 const int32_t* inProductionIndexArray,
-                                                 const int32_t* inFirstProductionIndexArray,
-                                                 const int32_t* inDecisionTableArray,
-                                                 const int32_t* inDecisionTableIndexArray,
-                                                 const TC_Array <int32_t> & inErrorStack,
-                                                 const int32_t inErrorProgramCounter) {
+                                               const int32_t* inProductionArray,
+                                               const int32_t* inProductionIndexArray,
+                                               const int32_t* inFirstProductionIndexArray,
+                                               const int32_t* inDecisionTableArray,
+                                               const int32_t* inDecisionTableIndexArray,
+                                               const TC_Array <int32_t> & inErrorStack,
+                                               const int32_t inErrorProgramCounter) {
   if (TRACE_LL1_PARSING ()) {
     String m = getMessageForTerminal (inTerminal) ;
     gCout.appendString ("------ Enter 'acceptTerminalForErrorSignaling' with '") ;
@@ -175,15 +175,15 @@ bool Lexique::acceptTerminalForErrorSignaling (const int32_t inTerminal,
 //--------------------------------------------------------------------------------------------------
 
 void Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int32_t inErrorProgramCounter,
-                                                          const int32_t inErrorStackCount,
-                                                          const TC_Array <int32_t> & inStack,
-                                                          const TC_Array <int32_t> & inErrorStack,
-                                                          const int32_t* inProductionArray,
-                                                          const int32_t* inProductionIndexArray,
-                                                          const int32_t* inFirstProductionIndexArray,
-                                                          const int32_t* inDecisionTableArray,
-                                                          const int32_t* inDecisionTableIndexArray,
-                                                          TC_UniqueArray <int32_t> & outExpectedTerminalsArray) {
+                                                        const int32_t inErrorStackCount,
+                                                        const TC_Array <int32_t> & inStack,
+                                                        const TC_Array <int32_t> & inErrorStack,
+                                                        const int32_t* inProductionArray,
+                                                        const int32_t* inProductionIndexArray,
+                                                        const int32_t* inFirstProductionIndexArray,
+                                                        const int32_t* inDecisionTableArray,
+                                                        const int32_t* inDecisionTableIndexArray,
+                                                        TC_UniqueArray <int32_t> & outExpectedTerminalsArray) {
 //--- First, go to the next non terminal, terminal or end of productions rules
   int32_t programCounter = inErrorProgramCounter ;
   const int32_t countToCopy = inErrorStackCount - inErrorStack.count () ;
@@ -333,12 +333,12 @@ static void indentForParseOnly (const int32_t inIndentation) {
 //--------------------------------------------------------------------------------------------------
 
 bool Lexique::performTopDownParsing (const int32_t * inProductionArray,
-                                       const cProductionNameDescriptor * inProductionNameArray,
-                                       const int32_t * inProductionIndexArray,
-                                       const int32_t * inFirstProductionIndexArray,
-                                       const int32_t * inDecisionTableArray,
-                                       const int32_t * inDecisionTableIndexArray,
-                                       const int32_t inProgramCounterInitialValue) {
+                                     const cProductionNameDescriptor * inProductionNameArray,
+                                     const int32_t * inProductionIndexArray,
+                                     const int32_t * inFirstProductionIndexArray,
+                                     const int32_t * inDecisionTableArray,
+                                     const int32_t * inDecisionTableIndexArray,
+                                     const int32_t inProgramCounterInitialValue) {
   bool result = false ;
 //--- Lexical analysis
   performLexicalAnalysis () ;
@@ -352,8 +352,7 @@ bool Lexique::performTopDownParsing (const int32_t * inProductionArray,
     uint32_t uniqueTerminalIndex = 0 ;
     uint32_t currentProductionName = 0 ;
     if (produceSyntaxTree) {
-      syntaxTreeDescriptionString.appendString ("digraph G {\n"
-                                     "  size =\"4,4\";\n") ;
+      syntaxTreeDescriptionString.appendString ("digraph G {\n  size =\"4,4\";\n") ;
     }
   //---
     int32_t indentationForParseOnly = 0 ;
@@ -670,8 +669,7 @@ static bool acceptExpectedTerminalForBottomUpParsingError (const int32_t inExpec
           successorTable ++ ;
           newCurrentState = (* successorTable) ;
         }
-        successorTable ++ ;
-        successorTable ++ ;
+        successorTable += 2 ;
       }
       macroAssert (newCurrentState >= 0, "newCurrentState (%lld) < 0", newCurrentState, 0) ;
       stack.appendObject (-1) ; // Enter any value
@@ -686,8 +684,7 @@ static bool acceptExpectedTerminalForBottomUpParsingError (const int32_t inExpec
           actionTable ++ ;
           actionCode = (* actionTable) ;
         }
-        actionTable ++ ;
-        actionTable ++ ;
+        actionTable += 2 ;
       }
     //--- action == 0 means the terminal is not expected : exit from loop, and return false
     //--- actionCode > 0 means a shift action is done : so the terminal is accepted : exit and return true
@@ -740,7 +737,7 @@ bool Lexique::performBottomUpParsing (const int32_t * inActionTableArray,
     cToken * previousTokenPtr = nullptr ;
     cToken * tokenPtr = mFirstToken ;
 
-    int32_t currentToken = int32_t (-1) ;
+    int32_t currentToken = -1 ;
     if (tokenPtr == nullptr) {
       mCurrentLocation.resetLocation () ;
     }else{
@@ -811,7 +808,7 @@ bool Lexique::performBottomUpParsing (const int32_t * inActionTableArray,
         }
       }else if (actionCode < 0) {
       //--- Reduce action ------------------------------------
-        actionCode = int32_t (- actionCode - 1) ;
+        actionCode = - actionCode - 1 ;
         macroAssert (actionCode >= 0, "actionCode (%lld) < 0", actionCode, 0) ;
         const int32_t nonTerminal = inProductionsTableArray [2 * actionCode] ;
         const int32_t reduceSize = inProductionsTableArray [2 * actionCode + 1] ;
@@ -852,8 +849,7 @@ bool Lexique::performBottomUpParsing (const int32_t * inActionTableArray,
             successorTable ++ ;
             newCurrentState = (* successorTable) ;
           }
-          successorTable ++ ;
-          successorTable ++ ;
+          successorTable += 2 ;
         }
         macroAssert (newCurrentState >= 0, "newCurrentState (%lld) < 0", newCurrentState, 0) ;
         stack.appendObject (-1) ; // Enter any value
