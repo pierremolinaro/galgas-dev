@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library
 //
-//  Copyright (C) 1997, ..., 2023 Pierre Molinaro.
+//  Copyright (C) 1997, ..., 2024 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -536,7 +536,7 @@ void String::setCapacity (const uint32_t inNewCapacity) {
 //--------------------------------------------------------------------------------------------------
 
 void String::performActualUnicodeArrayOutput (const utf32 * inUTF32CharArray,
-                                                const int32_t inArrayCount) {
+                                              const int32_t inArrayCount) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkString (HERE) ;
   #endif
@@ -560,24 +560,24 @@ void String::performActualUnicodeArrayOutput (const utf32 * inUTF32CharArray,
 //--------------------------------------------------------------------------------------------------
 
 void String::performActualCharArrayOutput (const char * inCharArray,
-                                             const int32_t inArrayCount) {
+                                           const int32_t inArrayCount) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkString (HERE) ;
   #endif
   if (inArrayCount != 0) {
-    insulateEmbeddedString ((uint32_t) (length () + inArrayCount + 1)) ;
-    int32_t newLength = (int32_t) mEmbeddedString->mLength ;
+    insulateEmbeddedString (uint32_t (length () + inArrayCount + 1)) ;
+    int32_t newLength = int32_t (mEmbeddedString->mLength) ;
     int32_t idx = 0 ;
     bool ok = true ;
     while ((idx < inArrayCount) && ok) {
       if ((inCharArray [idx] & 0x80) == 0) { // ASCII
-        mEmbeddedString->mUTF32String [newLength] = TO_UNICODE ((uint32_t) inCharArray [idx]) ;
-        idx ++ ;
-        newLength ++ ;
+        mEmbeddedString->mUTF32String [newLength] = TO_UNICODE (uint32_t (inCharArray [idx])) ;
+        idx += 1 ;
+        newLength += 1 ;
       }else{
         const utf32 unicodeChar = utf32CharacterForPointer ((const uint8_t *) inCharArray, idx, inArrayCount, ok) ;
         mEmbeddedString->mUTF32String [newLength] = unicodeChar ;
-        newLength ++ ;
+        newLength += 1 ;
       }
       mEmbeddedString->mLength = uint32_t (newLength) ;
       mEmbeddedString->mUTF32String [newLength] = TO_UNICODE ('\0') ;
@@ -585,7 +585,7 @@ void String::performActualCharArrayOutput (const char * inCharArray,
     #ifndef DO_NOT_GENERATE_CHECKINGS
       checkString (HERE) ;
     #endif
-    macroAssert (capacity () > (uint32_t) newLength, "capacity (%lld) <= kNewLength (%lld)", capacity (), newLength) ;
+    macroAssert (capacity () > uint32_t (newLength), "capacity (%lld) <= kNewLength (%lld)", capacity (), newLength) ;
     macroUniqueSharedObject (mEmbeddedString) ;
   }
 }
@@ -598,8 +598,8 @@ void String::performActualCharArrayOutput (const char * inCharArray,
 
 
 void String::setUnicodeCharacterAtIndex (const utf32 inCharacter,
-                                           const int32_t inIndex
-                                           COMMA_LOCATION_ARGS) {
+                                         const int32_t inIndex
+                                         COMMA_LOCATION_ARGS) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkString (HERE) ;
   #endif

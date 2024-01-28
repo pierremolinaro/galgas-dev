@@ -227,7 +227,7 @@ void Lexique::enterTokenFromPointer (cToken * inToken) {
     while (mLatexNextCharacterToEnterIndex < inToken->mStartLocation.index ()) {
       const utf32 c = sourceText ().readCharOrNul (mLatexNextCharacterToEnterIndex COMMA_HERE) ;
       appendCharacterToLatexFile (c) ;
-      mLatexNextCharacterToEnterIndex ++ ;
+      mLatexNextCharacterToEnterIndex += 1 ;
     }
     const String styleName = styleNameForIndex (styleIndexForTerminal (inToken->mTokenCode)) ;
     if (styleName.length () > 0) {
