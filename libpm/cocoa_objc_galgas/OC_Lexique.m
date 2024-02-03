@@ -283,19 +283,19 @@
       NSUInteger idx = 0 ;
       NSUInteger labelLength = 0 ;
       const UInt16 * p = popUpListData [idx] ;
-      while ((p != NULL) && ! found) {
-        p++ ; // Pass display flags
+      while (!found && (p != NULL) && (*p != 0)) {
+        p += 1 ; // Pass display flags
         if (*p == terminal) {
           found = YES ;
           p += 2 ;
           labelLength = 0 ;
-          while ((*p != 0) && found) {
-            labelLength ++ ;
+          while (found && (*p != 0)) {
+            labelLength += 1 ;
             found = ((tokenIndex+labelLength) < tokenCount) && ([[inTokenArray objectAtIndex:tokenIndex+labelLength] tokenCode] == *p) ;
             p += 2 ;
           }
         }else{
-          idx ++ ;
+          idx += 1 ;
           p = popUpListData [idx] ;
         }
       }

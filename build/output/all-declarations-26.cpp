@@ -2264,15 +2264,15 @@ void cPtr_varInExpressionAST::method_analyzeSemanticExpression (const GALGAS_lst
                                                                 GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
                                                                 Compiler * inCompiler
                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_unifiedTypeMapEntry var_type_3665 ;
-  GALGAS_string var_sourceVariableCppName_3687 ;
-  GALGAS_string var_nameForCheckingFormalParameterUsing_3726 ;
+  GALGAS_unifiedTypeMapEntry var_type_3598 ;
+  GALGAS_string var_sourceVariableCppName_3620 ;
+  GALGAS_string var_nameForCheckingFormalParameterUsing_3659 ;
   {
   const GALGAS_varInExpressionAST temp_0 = this ;
-  extensionSetter_searchForReadAccess (ioArgument_ioVariableMap, temp_0.readProperty_mVarName (), var_type_3665, var_sourceVariableCppName_3687, var_nameForCheckingFormalParameterUsing_3726, inCompiler COMMA_SOURCE_FILE ("expression-var.galgas", 78)) ;
+  extensionSetter_searchForReadAccess (ioArgument_ioVariableMap, temp_0.readProperty_mVarName (), var_type_3598, var_sourceVariableCppName_3620, var_nameForCheckingFormalParameterUsing_3659, inCompiler COMMA_SOURCE_FILE ("expression-var.galgas", 72)) ;
   }
   const GALGAS_varInExpressionAST temp_1 = this ;
-  outArgument_outExpression = GALGAS_varInExpressionForGeneration::class_func_new (var_type_3665, temp_1.readProperty_mVarName ().readProperty_location (), var_sourceVariableCppName_3687, var_nameForCheckingFormalParameterUsing_3726  COMMA_SOURCE_FILE ("expression-var.galgas", 84)) ;
+  outArgument_outExpression = GALGAS_varInExpressionForGeneration::class_func_new (var_type_3598, temp_1.readProperty_mVarName ().readProperty_location (), var_sourceVariableCppName_3620, var_nameForCheckingFormalParameterUsing_3659  COMMA_SOURCE_FILE ("expression-var.galgas", 78)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -2288,12 +2288,12 @@ void cPtr_varInExpressionForGeneration::method_generateExpression (GALGAS_string
                                                                    Compiler * inCompiler
                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_varInExpressionForGeneration temp_0 = this ;
-  extensionMethod_addHeaderFileName (temp_0.readProperty_mResultType (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("expression-var.galgas", 110)) ;
+  extensionMethod_addHeaderFileName (temp_0.readProperty_mResultType (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("expression-var.galgas", 104)) ;
   const GALGAS_varInExpressionForGeneration temp_1 = this ;
   outArgument_outCppExpression = temp_1.readProperty_mCppVarName () ;
   {
   const GALGAS_varInExpressionForGeneration temp_2 = this ;
-  ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (temp_2.readProperty_mNameForCheckingFormalParameterUsing () COMMA_SOURCE_FILE ("expression-var.galgas", 112)) ;
+  ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (temp_2.readProperty_mNameForCheckingFormalParameterUsing () COMMA_SOURCE_FILE ("expression-var.galgas", 106)) ;
   }
 }
 //--------------------------------------------------------------------------------------------------
