@@ -401,7 +401,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
   ?!@localVarManager ioVariableMap {
 #--- Analyze receiver expression
   [self.mReceiverExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
@@ -423,7 +423,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
   end
 #--- Analyze key expression
   [self.mKeyExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
@@ -515,7 +515,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
                                 ?!@localVarManager ioVariableMap {
 #--- Analyze source expression
   [self.mKeyExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext

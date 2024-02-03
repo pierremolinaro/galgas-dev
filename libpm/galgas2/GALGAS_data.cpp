@@ -55,8 +55,8 @@ GALGAS_data GALGAS_data::class_func_emptyData (UNUSED_LOCATION_ARGS) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_data GALGAS_data::class_func_dataWithContentsOfFile (const GALGAS_string & inFilePath,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) {
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) {
   GALGAS_data result ;
   if (inFilePath.isValid()){
     U8Data binaryData ;
@@ -378,7 +378,7 @@ class cCollectionElement_data : public cCollectionElement {
 
 //--- Default constructor
   public: cCollectionElement_data (const GALGAS_uint & inData
-                                    COMMA_LOCATION_ARGS) ;
+                                   COMMA_LOCATION_ARGS) ;
 
 //--- No copy
   private: cCollectionElement_data (const cCollectionElement_data &) ;

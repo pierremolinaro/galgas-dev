@@ -207,7 +207,7 @@ override method @parseWhenInstruction analyzeSyntaxInstruction
   ?!@uint ioSelectMethodCount {
 #--- When expression
   [self.mWhenExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext

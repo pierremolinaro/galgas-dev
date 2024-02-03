@@ -137,7 +137,7 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
   ?!@uint ioSelectMethodCount {
 #--- Variant expression
   [self.mVariantExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
@@ -152,7 +152,7 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
   end
 #--- While expression
   [self.mWhileExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext

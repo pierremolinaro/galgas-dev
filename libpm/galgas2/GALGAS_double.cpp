@@ -22,12 +22,15 @@
 #include "Compiler.h"
 
 //--------------------------------------------------------------------------------------------------
+// https://stackoverflow.com/questions/1727881/how-to-use-the-pi-constant-in-c
+//--------------------------------------------------------------------------------------------------
 
+#define _USE_MATH_DEFINES
 #include <math.h>
 
 //--------------------------------------------------------------------------------------------------
 
-static const double PI_CONSTANT = 3.14159265358979323846 ;
+static const double PI_CONSTANT = M_PI ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -54,7 +57,7 @@ GALGAS_double GALGAS_double::class_func_pi (UNUSED_LOCATION_ARGS) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_double GALGAS_double::class_func_doubleWithBinaryImage (const GALGAS_uint_36__34_ & inImage
-                                                                COMMA_UNUSED_LOCATION_ARGS) {
+                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_double result ;
   if (inImage.isValid ()) {
     union {

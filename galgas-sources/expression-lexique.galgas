@@ -78,7 +78,7 @@ override method @lexiqueIntrospectionExpressionAST enterExpressionInSemanticCont
 #·····················································································································
 
 override method @lexiqueIntrospectionExpressionAST analyzeSemanticExpression
-  ?let @lstring inUsefulnessCallerEntityName
+  ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry unused inType
   ?let @analysisContext inAnalysisContext

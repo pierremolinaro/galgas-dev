@@ -417,7 +417,7 @@ override method @grammarInFileInstructionAST analyzeSemanticInstruction
   ]
 #--- Parse source expression
   [self.mSourceExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
@@ -494,7 +494,7 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
   ]
 #--- Parse source expression
   [self.mSourceExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
@@ -510,7 +510,7 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
   end
 #--- Parse name expression
   [self.mNameExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext

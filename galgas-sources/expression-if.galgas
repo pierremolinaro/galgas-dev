@@ -118,7 +118,7 @@ override method @ifExpressionAST enterExpressionInSemanticContext
 #·······················································································································
 
 override method @ifExpressionAST analyzeSemanticExpression
-  ?let @lstring inUsefulnessCallerEntityName
+  ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry inType
   ?let @analysisContext inAnalysisContext
@@ -128,7 +128,7 @@ override method @ifExpressionAST analyzeSemanticExpression
 {
 #--- 'if' expression analysis
   [self.mIfExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: inAnalysisContext.mPredefinedTypes.mBoolType
     !inAnalysisContext
@@ -138,7 +138,7 @@ override method @ifExpressionAST analyzeSemanticExpression
   ]
 #--- 'then' expression analysis
   [self.mThenExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: inType
     !inAnalysisContext
@@ -148,7 +148,7 @@ override method @ifExpressionAST analyzeSemanticExpression
   ]
 #--- 'else' expression analysis
   [self.mElseExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: inType
     !inAnalysisContext

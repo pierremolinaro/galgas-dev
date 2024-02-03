@@ -65,7 +65,7 @@ refclass @getterCallExpressionAST : @semanticExpressionAST {
 
   #·················································································································
 
-  override method analyzeSemanticExpression ?let @lstring inUsefulnessCallerEntityName
+  override method analyzeSemanticExpression ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
                                             ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
                                             ?inferenceType: let @unifiedTypeMapEntry unused inType
                                             ?let @analysisContext inAnalysisContext
@@ -74,7 +74,7 @@ refclass @getterCallExpressionAST : @semanticExpressionAST {
                                             !@semanticExpressionForGeneration outExpression {
   #--------------------------------------- Expression analysis
     [self.mReceiver analyzeSemanticExpression
-      !inUsefulnessCallerEntityName
+      !usefulnessCallerEntityName: inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inferenceType: @unifiedTypeMapEntry.null
       !inAnalysisContext
@@ -111,7 +111,7 @@ refclass @getterCallExpressionAST : @semanticExpressionAST {
         for (mActualSelector mExpression mEndOfExpressionLocation) in self.mActualArgumentList,
             (mFormalSelector mFormalArgumentType *) in getterFormalArgumentTypeList do
           [mExpression analyzeSemanticExpression
-            !inUsefulnessCallerEntityName
+            !usefulnessCallerEntityName: inUsefulnessCallerEntityName
             !?ioUsefulEntitiesGraph
             !inferenceType: mFormalArgumentType
             !inAnalysisContext
@@ -213,7 +213,7 @@ refclass @getterCallExpressionAST : @semanticExpressionAST {
           for (mActualSelector mExpression mEndOfExpressionLocation) in self.mActualArgumentList,
               (mFormalSelector mFormalArgumentType *) in getterFormalArgumentTypeList do
             [mExpression analyzeSemanticExpression
-              !inUsefulnessCallerEntityName
+              !usefulnessCallerEntityName: inUsefulnessCallerEntityName
               !?ioUsefulEntitiesGraph
               !inferenceType: mFormalArgumentType
               !inAnalysisContext

@@ -95,7 +95,7 @@ refclass @syntaxSendInstructionAST : @syntaxInstructionAST {
     end
   #--- Analyze source expression
     [self.mExpression analyzeSemanticExpression
-      !inUsefulnessCallerEntityName
+      !usefulnessCallerEntityName: inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inferenceType: @unifiedTypeMapEntry.null
       !inAnalysisContext

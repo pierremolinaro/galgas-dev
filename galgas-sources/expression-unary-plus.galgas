@@ -73,7 +73,7 @@ override method @unaryPlusExpressionAST enterExpressionInSemanticContext
 #·······················································································································
 
 override method @unaryPlusExpressionAST analyzeSemanticExpression
-  ?let @lstring inUsefulnessCallerEntityName
+  ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry unused inType
   ?let @analysisContext inAnalysisContext
@@ -82,7 +82,7 @@ override method @unaryPlusExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression {
 #--- Expression analysis
   [self.mExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: .null
     !inAnalysisContext

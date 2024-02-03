@@ -281,7 +281,7 @@ override method @selfPlusEqualElementsInstructionAST analyzeSemanticInstruction
       var effectiveParameterList = @semanticExpressionListForGeneration {}
       for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressions, (mFormalSelector mFormalArgumentType *) in addAssignOperatorArguments do
         [mExpression analyzeSemanticExpression
-          !inUsefulnessCallerEntityName
+          !usefulnessCallerEntityName: inUsefulnessCallerEntityName
           !?ioUsefulEntitiesGraph
           !inferenceType: mFormalArgumentType
           !inAnalysisContext
@@ -330,13 +330,6 @@ override method @selfPlusEqualExpressionInstructionAST analyzeSemanticInstructio
     if not selfIsMutable then
       error self.mInstructionLocation : "'self' not mutable in this context"
     end
-
-#  if [inAnalysisContext.mutableSelfType isNull] then
-#    error self.mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeEntry
-#  else
-#    selfObjectCppName = inAnalysisContext.mSelfObjectCppName
-#    selfTypeEntry = inAnalysisContext.mutableSelfType
-#  end
   #--- Check target variable type support '+= exp' operator
     if not [[selfType definition].mHandledOperatorFlags plusEqualOperatorWithExpression] then
       error self.mInstructionLocation
@@ -344,7 +337,7 @@ override method @selfPlusEqualExpressionInstructionAST analyzeSemanticInstructio
     end
   #--- Analyze source expression
     [self.mExpression analyzeSemanticExpression
-      !inUsefulnessCallerEntityName
+      !usefulnessCallerEntityName: inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inferenceType: selfType
       !inAnalysisContext
@@ -402,7 +395,7 @@ override method @selfMinusEqualExpressionInstructionAST analyzeSemanticInstructi
     end
   #--- Analyze source expression
     [self.mExpression analyzeSemanticExpression
-      !inUsefulnessCallerEntityName
+      !usefulnessCallerEntityName: inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inferenceType: selfType
       !inAnalysisContext
@@ -446,13 +439,6 @@ override method @selfMulEqualExpressionInstructionAST analyzeSemanticInstruction
     if not selfIsMutable then
       error self.mInstructionLocation : "'self' not mutable in this context"
     end
-
-#  if [inAnalysisContext.mutableSelfType isNull] then
-#    error self.mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeEntry
-#  else
-#    selfObjectCppName = inAnalysisContext.mSelfObjectCppName
-#    selfTypeEntry = inAnalysisContext.mutableSelfType
-#  end
   #--- Check target variable type support '*= exp' operator
     if [[selfType definition].mHandledOperatorFlags mulEqualOperatorWithExpression] then
       error self.mInstructionLocation
@@ -460,7 +446,7 @@ override method @selfMulEqualExpressionInstructionAST analyzeSemanticInstruction
     end
   #--- Analyze source expression
     [self.mExpression analyzeSemanticExpression
-      !inUsefulnessCallerEntityName
+      !usefulnessCallerEntityName: inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inferenceType: selfType
       !inAnalysisContext
@@ -504,13 +490,6 @@ override method @selfDivEqualExpressionInstructionAST analyzeSemanticInstruction
     if not selfIsMutable then
       error self.mInstructionLocation : "'self' not mutable in this context"
     end
-
-#  if [inAnalysisContext.mutableSelfType isNull] then
-#    error self.mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeEntry
-#  else
-#    selfObjectCppName = inAnalysisContext.mSelfObjectCppName
-#    selfTypeEntry = inAnalysisContext.mutableSelfType
-#  end
   #--- Check target variable type support '/= exp' operator
     if [[selfType definition].mHandledOperatorFlags divEqualOperatorWithExpression] then
       error self.mInstructionLocation
@@ -518,7 +497,7 @@ override method @selfDivEqualExpressionInstructionAST analyzeSemanticInstruction
     end
   #--- Analyze source expression
     [self.mExpression analyzeSemanticExpression
-      !inUsefulnessCallerEntityName
+      !usefulnessCallerEntityName: inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inferenceType: selfType
       !inAnalysisContext

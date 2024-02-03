@@ -84,7 +84,7 @@ override method @messageInstructionAST analyzeSemanticInstruction
   ?!@localVarManager ioVariableMap {
 #--- Analyze source expression
   [self.mExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext

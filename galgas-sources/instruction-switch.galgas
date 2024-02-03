@@ -247,7 +247,7 @@ override method @switchInstructionAST analyzeSemanticInstruction
 {
 #--- Analyze switch expression
   [self.mSwitchExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext

@@ -147,7 +147,7 @@ override method @loopInstructionWithVariantAST analyzeSemanticInstruction
   ?!@localVarManager ioVariableMap {
 #--- Variant expression
   [self.mVariantExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
@@ -162,13 +162,9 @@ override method @loopInstructionWithVariantAST analyzeSemanticInstruction
     !variantExpression.mLocation
     !?variantExpression
   )
-#  if variantExpression.mResultType != inAnalysisContext.mPredefinedTypes.mUIntType then
-#    error self.mEndOfVariantExpression
-#    : "the variant expression type should be '@" + [inAnalysisContext.mPredefinedTypes.mUIntType definition].mTypeName.string + "', but it has '@" + [variantExpression.mResultType definition].mTypeName.string + "' type"
-#  end
 #--- Loop expression
   [self.mLoopExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext

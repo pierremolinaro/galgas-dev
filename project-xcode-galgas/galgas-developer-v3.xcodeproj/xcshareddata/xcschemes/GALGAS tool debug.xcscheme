@@ -59,6 +59,10 @@
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
+            argument = "--check-usefulness"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
             argument = "--check-big-int"
             isEnabled = "NO">
          </CommandLineArgument>

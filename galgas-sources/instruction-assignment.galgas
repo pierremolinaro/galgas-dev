@@ -213,7 +213,7 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
   end
 #--- Analyze source expression
   [self.mSourceExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType:  targetType
     !inAnalysisContext
@@ -292,7 +292,7 @@ override method @selfPropertyAssignmentInstructionAST analyzeSemanticInstruction
     end
   #--- Analyze source expression
     [self.mSourceExpression analyzeSemanticExpression
-      !inUsefulnessCallerEntityName
+      !usefulnessCallerEntityName: inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inferenceType:  targetType
       !inAnalysisContext

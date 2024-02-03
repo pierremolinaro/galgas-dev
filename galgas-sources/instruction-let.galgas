@@ -208,7 +208,7 @@ override method @localConstantDeclarationWithAssignmentAST analyzeSemanticInstru
                             ?!@localVarManager ioVariableMap {
 #--- Analyze source expression
   [self.mSourceExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: .null
     !inAnalysisContext
@@ -245,7 +245,7 @@ override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSema
   let targetType = [ioTypeMap typeMapEntryForLKey !self.mOptionalTypeName]
 #--- Analyze source expression
   [self.mSourceExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: targetType
     !inAnalysisContext

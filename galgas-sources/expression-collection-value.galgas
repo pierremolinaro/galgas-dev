@@ -176,7 +176,7 @@ override method @collectionValueAST enterExpressionInSemanticContext ?!@unifiedT
 #·····················································································································
 
 override method @collectionValueAST analyzeSemanticExpression
-  ?let @lstring inUsefulnessCallerEntityName
+  ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry inType
   ?let @analysisContext inAnalysisContext
@@ -286,7 +286,7 @@ override method @expressionCollectionValue analyze
   ?!@collectionValueElementListForGeneration ioCollectionValueElementListForGeneration
 {
   [self.mExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: inElementType
     !inAnalysisContext
@@ -320,7 +320,7 @@ override method @expressionListCollectionValue analyze
     semanticExpressionListForGeneration = @semanticExpressionListForGeneration {}
     for expression in self.mExpressionList, (mFormalSelector mFormalArgumentType *) in formalParameterTypeList do
       [expression.mExpression analyzeSemanticExpression
-        !inUsefulnessCallerEntityName
+        !usefulnessCallerEntityName: inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
         !inferenceType: mFormalArgumentType
         !inAnalysisContext

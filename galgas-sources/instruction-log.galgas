@@ -141,7 +141,7 @@ override method @logInstructionAST analyzeSemanticInstruction
   for (mLogMessage mLogExpression) in self.mLogList do
   #--- Analyze source expression
     [mLogExpression analyzeSemanticExpression
-      !inUsefulnessCallerEntityName
+      !usefulnessCallerEntityName: inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inferenceType: @unifiedTypeMapEntry.null
       !inAnalysisContext

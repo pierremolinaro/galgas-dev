@@ -340,7 +340,7 @@ struct @predefinedTypes {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @semanticExpressionAST analyzeSemanticExpression
-  ?let @lstring inUsefulnessCallerEntityName
+  ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry inType
   ?let @analysisContext inAnalysisContext

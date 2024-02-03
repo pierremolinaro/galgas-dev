@@ -242,7 +242,7 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
   if self.mIndexIdentifier.string != "" then
     [!?doVariableMap insertKey !self.mIndexIdentifier !inAnalysisContext.mPredefinedTypes.mUIntType !cppIndexVarName]
   end
-  switch mEnumeratedObjectProperties
+  switch self.mEnumeratedObjectProperties
   case implicit (@string prefix @location remplacementRange) :
     var suggestion = "("
     for (enumeratedType enumerationName) in enumerationDescriptor

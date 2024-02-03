@@ -98,7 +98,7 @@ override method @selfAssignmentInstructionAST analyzeSemanticInstruction
     end
   #--- Analyze source expression
     [self.mSourceExpression analyzeSemanticExpression
-      !inUsefulnessCallerEntityName
+      !usefulnessCallerEntityName: inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inferenceType: selfType
       !inAnalysisContext

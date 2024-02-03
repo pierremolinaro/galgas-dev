@@ -160,7 +160,7 @@ refclass @outputActualParameterAST : @actualParameterAST {
         error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
        end
       [self.mOutputActualParameterExpression analyzeSemanticExpression
-        !inUsefulnessCallerEntityName
+        !usefulnessCallerEntityName: inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
         !inferenceType: inFormalArgumentType
         !inAnalysisContext

@@ -858,7 +858,7 @@ override method @lexiqueComponentAST enterDeclarationInSemanticContext
 #---
   [!?ioSemanticContext.mLexiqueComponentMapForSemanticAnalysis insertKey
      !self.mLexiqueComponentName
-     !mIsTemplate
+     !self.mIsTemplate
      !terminalMap
      !self.mIndexingListAST
      !self.mTerminalDeclarationListAST

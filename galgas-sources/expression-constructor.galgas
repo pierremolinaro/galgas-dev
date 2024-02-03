@@ -234,7 +234,7 @@ private proc analyzeConstructorInvocation
     for (mActualSelector mExpression mEndOfExpressionLocation) in inInitializerEffectiveParameterExpressions,
         (mFormalSelector mFormalArgumentType *) in constructorFormalArgumentTypeList do
       [mExpression analyzeSemanticExpression
-        !inUsefulnessCallerEntityName
+        !usefulnessCallerEntityName: inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
         !inferenceType: mFormalArgumentType
         !inAnalysisContext
@@ -264,7 +264,7 @@ private proc analyzeConstructorInvocation
 #·····················································································································
 
 override method @constructorExpressionAST analyzeSemanticExpression
-  ?let @lstring inUsefulnessCallerEntityName
+  ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry inType
   ?let @analysisContext inAnalysisContext

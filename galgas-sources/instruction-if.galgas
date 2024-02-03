@@ -432,7 +432,7 @@ override method @ifInstructionAST analyzeSemanticInstruction
     switch expression
     case regularExp (exp endOfExpression) :
       [exp analyzeSemanticExpression
-        !inUsefulnessCallerEntityName
+        !usefulnessCallerEntityName: inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
         !inferenceType: .null
         !inAnalysisContext
@@ -451,7 +451,7 @@ override method @ifInstructionAST analyzeSemanticInstruction
       [!?ioVariableMap openBranch]
     case letExp (constantName exp * @lstring typeName) :
       [exp analyzeSemanticExpression
-        !inUsefulnessCallerEntityName
+        !usefulnessCallerEntityName: inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
         !inferenceType: .null
         !inAnalysisContext
@@ -606,7 +606,7 @@ private proc analyzeOptionalMethodCall ?let @lstring inUsefulnessCallerEntityNam
                                        ?!@ifTestListForGeneration ioTestListForGeneration {
 #--- Expression analysis
   [inReceiverExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
@@ -643,7 +643,7 @@ private proc analyzeOptionalMethodCall ?let @lstring inUsefulnessCallerEntityNam
       switch actualParameter
       case actualOutput (expression location) :
         [expression analyzeSemanticExpression
-          !inUsefulnessCallerEntityName
+          !usefulnessCallerEntityName: inUsefulnessCallerEntityName
           !?ioUsefulEntitiesGraph
           !inferenceType: formalType
           !inAnalysisContext

@@ -262,7 +262,7 @@ proc analyzeErrorOrWarningInstruction
 {
 #--- Analyze location expression
   [inLocationExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: inAnalysisContext.mPredefinedTypes.mLocationType
     !inAnalysisContext
@@ -279,7 +279,7 @@ proc analyzeErrorOrWarningInstruction
   )
 #--- Analyze message expression
   [inMessageExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: .null
     !inAnalysisContext
@@ -295,7 +295,7 @@ proc analyzeErrorOrWarningInstruction
       outFixitListForGeneration += !.fixItRemove
     case fixItReplace (exp errorLocation) :
       [exp analyzeSemanticExpression
-        !inUsefulnessCallerEntityName
+        !usefulnessCallerEntityName: inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
         !inferenceType: inAnalysisContext.mPredefinedTypes.mStringListType
         !inAnalysisContext
@@ -313,7 +313,7 @@ proc analyzeErrorOrWarningInstruction
       outFixitListForGeneration += !.fixItReplace {!exp:expression}
     case fixItInsertBefore (exp errorLocation) :
       [exp analyzeSemanticExpression
-        !inUsefulnessCallerEntityName
+        !usefulnessCallerEntityName: inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
         !inferenceType: inAnalysisContext.mPredefinedTypes.mStringListType
         !inAnalysisContext
@@ -331,7 +331,7 @@ proc analyzeErrorOrWarningInstruction
       outFixitListForGeneration += !.fixItInsertBefore {!exp:expression}
     case fixItInsertAfter (exp errorLocation) :
       [exp analyzeSemanticExpression
-        !inUsefulnessCallerEntityName
+        !usefulnessCallerEntityName: inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
         !inferenceType: inAnalysisContext.mPredefinedTypes.mStringListType
         !inAnalysisContext

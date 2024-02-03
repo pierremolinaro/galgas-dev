@@ -87,7 +87,7 @@ override method @trueExpressionAST enterExpressionInSemanticContext
 #·····················································································································
 
 override method @trueExpressionAST analyzeSemanticExpression
-  ?let @lstring unused inUsefulnessCallerEntityName
+  ?usefulnessCallerEntityName: let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry unused inType
   ?let @analysisContext inAnalysisContext
@@ -108,7 +108,7 @@ override method @falseExpressionAST enterExpressionInSemanticContext
 #·····················································································································
 
 override method @falseExpressionAST analyzeSemanticExpression
-  ?let @lstring unused inUsefulnessCallerEntityName
+  ?usefulnessCallerEntityName: let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry unused inType
   ?let @analysisContext inAnalysisContext

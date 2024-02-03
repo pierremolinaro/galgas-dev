@@ -121,7 +121,7 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
 {
 #--- Analyze receiver expression
   [self.mReceiverExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: .null
     !inAnalysisContext

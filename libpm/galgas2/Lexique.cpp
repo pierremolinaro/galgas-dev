@@ -5,7 +5,7 @@
 //
 //  This file is part of libpm library
 //
-//  Copyright (C) 1996, ..., 2023 Pierre Molinaro.
+//  Copyright (C) 1996, ..., 2024 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -44,13 +44,12 @@
 
 //--------------------------------------------------------------------------------------------------
 
-cTemplateDelimiter::
-cTemplateDelimiter (const utf32 * inStartString,
-                    const int32_t inStartStringLength,
-                    const utf32 * inEndString,
-                    const int32_t inEndStringLength,
-                    void (* inReplacementFunction) (Lexique & inLexique, const String & inElementString, String & ioTemplateString),
-                    const bool inDiscardStartString) :
+cTemplateDelimiter::cTemplateDelimiter (const utf32 * inStartString,
+    const int32_t inStartStringLength,
+    const utf32 * inEndString,
+    const int32_t inEndStringLength,
+    void (* inReplacementFunction) (Lexique & inLexique, const String & inElementString, String & ioTemplateString),
+    const bool inDiscardStartString) :
 mStartString (inStartString),
 mStartStringLength (inStartStringLength),
 mEndString (inEndString),
@@ -73,8 +72,8 @@ mDiscardStartString (inOperand.mDiscardStartString) {
 //--------------------------------------------------------------------------------------------------
 
 Lexique::Lexique (Compiler * inCallerCompiler,
-                      const String & inSourceFileName
-                      COMMA_LOCATION_ARGS) :
+                  const String & inSourceFileName
+                  COMMA_LOCATION_ARGS) :
 Compiler (inCallerCompiler COMMA_THERE),
 mIndexingDictionary (nullptr),
 mFirstToken (nullptr),
@@ -118,9 +117,9 @@ mLatexNextCharacterToEnterIndex (0) {
 //--------------------------------------------------------------------------------------------------
 
 Lexique::Lexique (Compiler * inCallerCompiler,
-                      const String & inSourceString,
-                      const String & inStringForError
-                      COMMA_LOCATION_ARGS) :
+                  const String & inSourceString,
+                  const String & inStringForError
+                  COMMA_LOCATION_ARGS) :
 Compiler (inCallerCompiler COMMA_THERE),
 mIndexingDictionary (nullptr),
 mFirstToken (nullptr),
@@ -435,8 +434,8 @@ void Lexique::lexicalLog (LOCATION_ARGS) {
 //--------------------------------------------------------------------------------------------------
 
 int32_t Lexique::searchInList (const String & inString,
-                                 const C_unicode_lexique_table_entry * inTableArray,
-                                 const int32_t inTableSize) {
+                               const C_unicode_lexique_table_entry * inTableArray,
+                               const int32_t inTableSize) {
   const int32_t searchedStringLength = inString.length () ;
   int32_t code = -1 ; // -1 means 'not found'
   int32_t bottom = 0 ;
@@ -544,7 +543,7 @@ void Lexique::parsingError (const TC_UniqueArray <int32_t> & inExpectedTerminals
 //--------------------------------------------------------------------------------------------------
 
 void Lexique::lexicalWarning (const String & inLexicalWarningMessage
-                                COMMA_LOCATION_ARGS) { // §
+                              COMMA_LOCATION_ARGS) {
   signalLexicalWarning (
     this,
     sourceText (),
@@ -611,7 +610,8 @@ String Lexique::tokenString (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void Lexique::acceptTerminal (const int32_t IN_EXPECTED_TERMINAL COMMA_LOCATION_ARGS) {
+void Lexique::acceptTerminal (const int32_t IN_EXPECTED_TERMINAL
+                              COMMA_LOCATION_ARGS) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     int32_t currentTokenCode = 0 ;
   #endif
@@ -652,7 +652,7 @@ void Lexique::acceptTerminal (const int32_t IN_EXPECTED_TERMINAL COMMA_LOCATION_
 //--------------------------------------------------------------------------------------------------
 
 void Lexique::enterIndexing (const uint32_t inIndexingKind,
-                               const char * inIndexedKeyPosfix) {
+                             const char * inIndexedKeyPosfix) {
   if ((nullptr != mIndexingDictionary) && (sourceText ().sourceFilePath ().length () > 0)) {
     const uint32_t tokenStartLocation = (uint32_t) mCurrentTokenPtr->mStartLocation.index () ;
     const uint32_t tokenLine = (uint32_t) mCurrentTokenPtr->mStartLocation.lineNumber () ;
@@ -666,29 +666,6 @@ void Lexique::enterIndexing (const uint32_t inIndexingKind,
                                         tokenLength) ;
   }
 }
-
-//--------------------------------------------------------------------------------------------------
-
-//void Lexique::enterIndexing (const uint32_t inIndexingKind,
-//                             const GALGAS_lstring & inIndexedKey) {
-//  if (nullptr != mIndexingDictionary) {
-//    const String sourceFilePath = inIndexedKey.mProperty_location.startLocation ().sourceFilePath () ;
-//    if (sourceFilePath.length () > 0) {
-//      const uint32_t tokenStartLocation = uint32_t (inIndexedKey.mProperty_location.startLocation ().index ()) ;
-//      const uint32_t tokenLine = uint32_t (inIndexedKey.mProperty_location.startLocation ().lineNumber ()) ;
-//      const uint32_t tokenLength = uint32_t (inIndexedKey.mProperty_location.endLocation ().index ()) - tokenStartLocation + 1 ;
-//      const String indexedKey = inIndexedKey.mProperty_string.stringValue () ;
-//      mIndexingDictionary->addIndexedKey (
-//        inIndexingKind,
-//        indexedKey,
-//        sourceFilePath,
-//        tokenLine,
-//        tokenStartLocation,
-//        tokenLength
-//      ) ;
-//    }
-//  }
-//}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -790,7 +767,7 @@ void Lexique::exitProduction (void) {
 //--------------------------------------------------------------------------------------------------
 
 void Lexique::didParseTerminal (const char * inTerminalName,
-                                  const String & inValue) {
+                                const String & inValue) {
   if (mDebugIsRunning) {
     String message ;
     for (uint16_t i=1 ; i<mDebugDepthCounter ; i++) {

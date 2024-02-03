@@ -154,7 +154,7 @@ override method @testDynamicClassInExpressionAST enterExpressionInSemanticContex
 #·····················································································································
 
 override method @testDynamicClassInExpressionAST analyzeSemanticExpression
-  ?let @lstring inUsefulnessCallerEntityName
+  ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry unused inType
   ?let @analysisContext inAnalysisContext
@@ -164,7 +164,7 @@ override method @testDynamicClassInExpressionAST analyzeSemanticExpression
 {
 #--- Receiver expression analysis
   [self.mReceiverExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
@@ -212,7 +212,7 @@ override method @castInExpressionAST enterExpressionInSemanticContext
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @castInExpressionAST analyzeSemanticExpression
-  ?let @lstring inUsefulnessCallerEntityName
+  ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry unused inType
   ?let @analysisContext inAnalysisContext
@@ -222,7 +222,7 @@ override method @castInExpressionAST analyzeSemanticExpression
 {
 #--- Receiver expression analysis
   [self.mReceiverExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext

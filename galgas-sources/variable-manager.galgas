@@ -20,6 +20,7 @@
 # CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 # DEALINGS IN THE SOFTWARE.
 #
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! LOCAL VARIABLE
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -468,7 +469,12 @@ setter @localVarManager searchForWriteAccess ?let @lstring inVarName
                                              !@unifiedTypeMapEntry outType
                                              !@string outCppName
                                              !@string outNameForCheckingFormalParameterUsing {
-  [!?self.mCurrentManager searchForWriteAccess !inVarName ?outType ?outCppName ?outNameForCheckingFormalParameterUsing]
+  [!?self.mCurrentManager searchForWriteAccess
+    !inVarName
+    ?outType
+    ?outCppName
+    ?outNameForCheckingFormalParameterUsing
+  ]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————

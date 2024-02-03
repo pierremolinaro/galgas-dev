@@ -385,7 +385,7 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
   end
 #--- Analyze source expression
   [self.mExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType:  targetType
     !inAnalysisContext
@@ -467,7 +467,7 @@ override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction #
   end
 #--- Analyze source expression
   [self.mExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType:  targetType
     !inAnalysisContext
@@ -550,7 +550,7 @@ override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *
   end
 #--- Analyze source expression
   [self.mExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType:  targetType
     !inAnalysisContext
@@ -633,7 +633,7 @@ override method @divEqualExpressionInstructionAST analyzeSemanticInstruction # /
   end
 #--- Analyze source expression
   [self.mExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType:  targetType
     !inAnalysisContext
@@ -732,7 +732,7 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction
     var @semanticExpressionListForGeneration effectiveParameterList = {}
     for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressions, (mFormalSelector mFormalArgumentType *) in addAssignOperatorArguments do
       [mExpression analyzeSemanticExpression
-        !inUsefulnessCallerEntityName
+        !usefulnessCallerEntityName: inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
         !inferenceType: mFormalArgumentType
         !inAnalysisContext

@@ -67,7 +67,7 @@ override method @varInExpressionAST enterExpressionInSemanticContext
 #·····················································································································
 
 override method @varInExpressionAST analyzeSemanticExpression
-  ?let @lstring unused inUsefulnessCallerEntityName
+  ?usefulnessCallerEntityName: let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry unused inType
   ?let @analysisContext unused inAnalysisContext

@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library
 //
-//  Copyright (C) 2008, ..., 2023 Pierre Molinaro.
+//  Copyright (C) 2008, ..., 2024 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -82,12 +82,12 @@ class cSharedGraph : public SharedObject {
 
 //--- locationForKey
   public: GALGAS_location locationForKey (const String & inKey,
-                                           Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) const ;
+                                          Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) const ;
 
 //--- Internal methods
   public: void description (String & ioString,
-                             const int32_t inIndentation) const ;
+                            const int32_t inIndentation) const ;
 
   public: void copyFrom (const cSharedGraph * inSource) ;
 
@@ -98,51 +98,51 @@ class cSharedGraph : public SharedObject {
   public: cGraphNode * findOrAddNodeForKey (const String & inKey) ;
 
   protected: cGraphNode * internalInsert (cGraphNode * & ioRootPtr,
-                                           const String & inKey,
-                                           bool & ioExtension) ;
+                                          const String & inKey,
+                                          bool & ioExtension) ;
 
   public: void internalAddNode (const GALGAS_lstring & inKey,
-                                 const char * inErrorMessage,
-                                 const capCollectionElement & inAttributes,
-                                 Compiler * inCompiler
-                                 COMMA_LOCATION_ARGS) ;
+                                const char * inErrorMessage,
+                                const capCollectionElement & inAttributes,
+                                Compiler * inCompiler
+                                COMMA_LOCATION_ARGS) ;
 
   public: void addEdge (const String & inSourceNodeKey,
-                         const GALGAS_location & inSourceNodeLocation,
-                         const String & inTargetNodeKey,
-                         const GALGAS_location & inTargetNodeLocation) ;
+                        const GALGAS_location & inSourceNodeLocation,
+                        const String & inTargetNodeKey,
+                        const GALGAS_location & inTargetNodeLocation) ;
 
   public: void removeEdgesToDominators (LOCATION_ARGS) ;
 
   public: void removeEdgesToNode (const String & inNodeName,
-                                   Compiler * inCompiler
-                                   COMMA_LOCATION_ARGS) ;
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
 
   public: void internalTopologicalSort (capCollectionElementArray & outSortedList,
-                                         GALGAS_lstringlist & outSortedNodeKeyList,
-                                         capCollectionElementArray & outUnsortedList,
-                                         GALGAS_lstringlist & outUnsortedNodeKeyList) const ;
+                                        GALGAS_lstringlist & outSortedNodeKeyList,
+                                        capCollectionElementArray & outUnsortedList,
+                                        GALGAS_lstringlist & outUnsortedNodeKeyList) const ;
 
 
   public: void internalFindCircularities (capCollectionElementArray & outInfoList,
-                                           GALGAS_lstringlist & outNodeKeyList) const ;
+                                          GALGAS_lstringlist & outNodeKeyList) const ;
 
   public: void internalNodesWithNoPredecessor (capCollectionElementArray & outInfoList,
-                                                GALGAS_lstringlist & outNodeKeyList) const ;
+                                               GALGAS_lstringlist & outNodeKeyList) const ;
 
   public: void internalNodesWithNoSuccessor (capCollectionElementArray & outInfoList,
-                                              GALGAS_lstringlist & outNodeKeyList) const ;
+                                             GALGAS_lstringlist & outNodeKeyList) const ;
 
   public: void internalDepthFirstTopologicalSort (capCollectionElementArray & outSortedList,
-                                                   GALGAS_lstringlist & outSortedNodeKeyList,
-                                                   capCollectionElementArray & outUnsortedList,
-                                                   GALGAS_lstringlist & outUnsortedNodeKeyList) const ;
+                                                  GALGAS_lstringlist & outSortedNodeKeyList,
+                                                  capCollectionElementArray & outUnsortedList,
+                                                  GALGAS_lstringlist & outUnsortedNodeKeyList) const ;
 
   public: void subGraph (AC_GALGAS_graph & outResultingGraph,
-                          const GALGAS_lstringlist & inStartNodes,
-                          const GALGAS_stringset & inNodesToExclude,
-                          Compiler * inCompiler
-                          COMMA_LOCATION_ARGS) const ;
+                         const GALGAS_lstringlist & inStartNodes,
+                         const GALGAS_stringset & inNodesToExclude,
+                         Compiler * inCompiler
+                         COMMA_LOCATION_ARGS) const ;
 
   public: void graph (capCollectionElementArray & outNodeList) const ;
 
@@ -159,8 +159,8 @@ class cSharedGraph : public SharedObject {
   #endif
 
 //--- No copy
-  private: cSharedGraph (const cSharedGraph &) ;
-  private: cSharedGraph & operator = (const cSharedGraph &) ;
+  private: cSharedGraph (const cSharedGraph &) = delete ;
+  private: cSharedGraph & operator = (const cSharedGraph &) = delete ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -303,7 +303,7 @@ void AC_GALGAS_graph::makeNewEmptyGraph (LOCATION_ARGS) {
 //--------------------------------------------------------------------------------------------------
 
 void AC_GALGAS_graph::description (String & ioString,
-                                  const int32_t inIndentation) const {
+                                   const int32_t inIndentation) const {
   ioString.appendString ("<graph @") ;
   ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
   if (isValid ()) {
@@ -875,7 +875,7 @@ void AC_GALGAS_graph::internalAddNode (const GALGAS_lstring & inKey,
 //--------------------------------------------------------------------------------------------------
 
 void AC_GALGAS_graph::setter_noteNode (const GALGAS_lstring & inKey
-                                         COMMA_LOCATION_ARGS) {
+                                       COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
     insulateGraph (THERE) ;
     macroAssert (nullptr != mSharedGraph, "mSharedGraph == nullptr", 0, 0) ;
@@ -1340,8 +1340,8 @@ GALGAS_lstringlist AC_GALGAS_graph::getter_undefinedNodeReferenceList (LOCATION_
 //--------------------------------------------------------------------------------------------------
 
 void AC_GALGAS_graph::setter_removeEdgesToNode (const GALGAS_string & inNodeName,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) {
+                                                Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) {
   if (isValid () && inNodeName.isValid ()) {
     insulateGraph (HERE) ;
     macroAssert (nullptr != mSharedGraph, "mSharedGraph == nullptr", 0, 0) ;

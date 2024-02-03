@@ -128,7 +128,7 @@ override method @loopInstructionWithoutVariantAST analyzeSemanticInstruction
   ?!@localVarManager ioVariableMap {
 #--- Loop expression
   [self.mLoopExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext

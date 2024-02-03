@@ -95,7 +95,7 @@ override method @structPropertyAccessExpressionAST enterExpressionInSemanticCont
 #·····················································································································
 
 override method @structPropertyAccessExpressionAST analyzeSemanticExpression
-                                ?let @lstring inUsefulnessCallerEntityName
+                                ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
                                 ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
                                 ?inferenceType: let @unifiedTypeMapEntry unused inType
                                 ?let @analysisContext inAnalysisContext
@@ -104,7 +104,7 @@ override method @structPropertyAccessExpressionAST analyzeSemanticExpression
                                 !@semanticExpressionForGeneration outExpression {
 #--- Expression analysis
   [self.mExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: .null
     !inAnalysisContext

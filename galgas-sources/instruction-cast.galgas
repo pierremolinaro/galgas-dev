@@ -154,7 +154,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
   ?!@localVarManager ioVariableMap {
 #--- Expression
   [self.mCastExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext

@@ -159,7 +159,7 @@ override method @literalBigIntExpressionAST enterExpressionInSemanticContext
 #·····················································································································
 
 override method @literalBigIntExpressionAST analyzeSemanticExpression
-  ?let @lstring unused inUsefulnessCallerEntityName
+  ?usefulnessCallerEntityName: let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry unused inType
   ?let @analysisContext inAnalysisContext
