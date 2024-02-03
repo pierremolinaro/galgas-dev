@@ -1,4 +1,4 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  semantics definitions for semantics component
 #
@@ -20,11 +20,11 @@
 # CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 # DEALINGS IN THE SOFTWARE.
 #
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  G E T    E N U M E R A T I O N    L I S T
 #
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @dataPredefinedTypeAST getEnumerationList
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -37,26 +37,26 @@ override method @dataPredefinedTypeAST getEnumerationList
   outEnumeratedType = "uint"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @timerPredefinedTypeAST getSupportedOperatorFlags -> @operators {
   result = .generateDescriptionGetterUtilityMethod
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @stringPredefinedTypeAST getSupportedOperatorFlags -> @operators {
   result = .plusEqualOperatorWithExpression | .infixAddOperator
     | .generateDescriptionGetterUtilityMethod | .isComparable
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @charPredefinedTypeAST getSupportedOperatorFlags -> @operators {
   result = .generateDescriptionGetterUtilityMethod | .isComparable
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @sintPredefinedTypeAST getSupportedOperatorFlags -> @operators {
   result = .infixAddOperator | .infixSubOperator | .infixMulOperator | .infixDivOperator
@@ -69,7 +69,7 @@ override getter @sintPredefinedTypeAST getSupportedOperatorFlags -> @operators {
     | .mulEqualOperatorWithExpression | .divEqualOperatorWithExpression
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @sint64PredefinedTypeAST getSupportedOperatorFlags -> @operators {
   result = .infixAddOperator | .infixSubOperator | .infixMulOperator | .infixDivOperator
@@ -82,7 +82,7 @@ override getter @sint64PredefinedTypeAST getSupportedOperatorFlags -> @operators
     | .mulEqualOperatorWithExpression | .divEqualOperatorWithExpression
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @doublePredefinedTypeAST getSupportedOperatorFlags -> @operators {
   result = .infixAddOperator | .infixSubOperator | .infixMulOperator | .infixDivOperator
@@ -92,29 +92,29 @@ override getter @doublePredefinedTypeAST getSupportedOperatorFlags -> @operators
     | .mulEqualOperatorWithExpression | .divEqualOperatorWithExpression
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @typePredefinedTypeAST getSupportedOperatorFlags -> @operators {
   result = .generateDescriptionGetterUtilityMethod | .isComparable
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @dataPredefinedTypeAST getSupportedOperatorFlags -> @operators {
   result = .generateDescriptionGetterUtilityMethod | .generateEnumerationHelperMethods
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @functionPredefinedTypeAST getSupportedOperatorFlags -> @operators {
   result = .generateDescriptionGetterUtilityMethod
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @locationPredefinedTypeAST getSupportedOperatorFlags -> @operators {
   result = .generateDescriptionGetterUtilityMethod | .isComparable
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 

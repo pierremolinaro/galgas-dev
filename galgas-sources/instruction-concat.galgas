@@ -15,9 +15,9 @@
 # CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 # DEALINGS IN THE SOFTWARE.
 #
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @plusEqualElementsInstructionAST : @semanticInstructionAST {
   private let @bool mPrefixedBySelf
@@ -62,19 +62,19 @@ refclass @divEqualExpressionInstructionAST : @semanticInstructionAST {
   private let @semanticExpressionAST mExpression
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3InstructionsSyntax {
 
-  #·················································································································
+  #·······························································································
 
   rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
     <semantic_instruction_beginning_with_identifier> !prefixedBySelf: false ?outInstruction
   }
   
-  #·················································································································
+  #·······························································································
 
   rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
     $self$
@@ -82,7 +82,7 @@ syntax extension galgas3InstructionsSyntax {
     <semantic_instruction_beginning_with_identifier> !prefixedBySelf: true ?outInstruction
   }
 
-  #·················································································································
+  #·······························································································
 
   rule <semantic_instruction_beginning_with_identifier>
         ?prefixedBySelf: let @bool inHasSelfPrefix
@@ -150,7 +150,7 @@ syntax extension galgas3InstructionsSyntax {
     end
   }
 
-  #·················································································································
+  #·······························································································
 
   rule <non_empty_output_expression_list_ggs3> !@actualOutputExpressionList outExpressionList {
     outExpressionList = {}
@@ -164,11 +164,11 @@ syntax extension galgas3InstructionsSyntax {
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4InstructionsSyntax {
 
-  #·················································································································
+  #·······························································································
 
   rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations
                               ?!@stringset unused ioUserImplicitDeclaredTypeSet
@@ -176,7 +176,7 @@ syntax extension galgas4InstructionsSyntax {
     <semantic_instruction_beginning_with_identifier> !prefixedBySelf: false ?outInstruction
   }
   
-  #·················································································································
+  #·······························································································
 
   rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations
                               ?!@stringset unused ioUserImplicitDeclaredTypeSet
@@ -186,7 +186,7 @@ syntax extension galgas4InstructionsSyntax {
     <semantic_instruction_beginning_with_identifier> !prefixedBySelf: true ?outInstruction
   }
 
-  #·················································································································
+  #·······························································································
 
   rule <semantic_instruction_beginning_with_identifier>
         ?prefixedBySelf: let @bool inHasSelfPrefix
@@ -287,31 +287,31 @@ syntax extension galgas4InstructionsSyntax {
     end
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! CONTEXT
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @plusEqualExpressionInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @minusEqualExpressionInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @mulEqualExpressionInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @divEqualExpressionInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
@@ -323,9 +323,9 @@ override method @plusEqualElementsInstructionAST enterInstructionInSemanticConte
   [self.mExpressions enterInSemanticContext !?ioTypeMap]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # += exp
   ?let @lstring inUsefulnessCallerEntityName
@@ -407,7 +407,7 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
   }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction # -= exp
   ?let @lstring inUsefulnessCallerEntityName
@@ -489,7 +489,7 @@ override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction #
   }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *= exp
   ?let @lstring inUsefulnessCallerEntityName
@@ -572,7 +572,7 @@ override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *
   }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @divEqualExpressionInstructionAST analyzeSemanticInstruction # /= exp
   ?let @lstring inUsefulnessCallerEntityName
@@ -760,9 +760,9 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! GENERATION
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @plusEqualnstructionForGeneration : @semanticInstructionForGeneration {
   private let @string mReceiverCppName
@@ -854,4 +854,4 @@ override method @opEqualInstructionForGeneration generateInstruction
   [!?ioUnusedVariableCppNameSet removeKey !self.mTargetVariableCppName]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

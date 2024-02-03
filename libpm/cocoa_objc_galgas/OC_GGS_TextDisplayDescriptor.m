@@ -180,13 +180,14 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
   NSString * key = [NSString stringWithFormat:@"SELECTION:%@:%@", mDocumentUsedForDisplaying.fileURL.path, documentData.fileURL.path] ;
-  NSString * selectionRangeString = [[NSUserDefaults standardUserDefaults] objectForKey:key] ;
-  // NSLog (@"READ '%@' -> %@", key, selectionRangeString) ;
-  const NSRange selectionRange = NSRangeFromString (selectionRangeString) ;
-  const NSUInteger sourceTextLength = documentData.sourceString.length ;
-  if (NSMaxRange (selectionRange) <= sourceTextLength) {
-    [self setSelectionRangeAndMakeItVisible:selectionRange] ;
-  } 
+  NSString * selectionRangeString = [[NSUserDefaults standardUserDefaults] objectForKey: key] ;
+  if (selectionRangeString != NULL) {
+    const NSRange selectionRange = NSRangeFromString (selectionRangeString) ;
+    const NSUInteger sourceTextLength = documentData.sourceString.length ;
+    if (NSMaxRange (selectionRange) <= sourceTextLength) {
+      [self setSelectionRangeAndMakeItVisible:selectionRange] ;
+    }
+  }
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s:DONE", __PRETTY_FUNCTION__) ;
   #endif

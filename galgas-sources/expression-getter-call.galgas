@@ -15,13 +15,13 @@
 # CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 # DEALINGS IN THE SOFTWARE.
 #
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3ExpressionSyntax {
 
-  #·················································································································
+  #·······························································································
 
   rule <primary_ggs3> !@semanticExpressionAST outExpression {
     $[$
@@ -43,11 +43,11 @@ syntax extension galgas3ExpressionSyntax {
     }
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @getterCallExpressionAST : @semanticExpressionAST {
   private let @bool errorOnGetterCallInsteadOfPropertyRead %selector
@@ -56,14 +56,14 @@ refclass @getterCallExpressionAST : @semanticExpressionAST {
   private let @actualOutputExpressionList mActualArgumentList
   private let @location mExpressionLocation
 
-  #·················································································································
+  #·······························································································
 
   override method enterExpressionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
     [self.mReceiver enterExpressionInSemanticContext !?ioTypeMap]
     [self.mActualArgumentList enterInSemanticContext !?ioTypeMap]
   }
 
-  #·················································································································
+  #·······························································································
 
   override method analyzeSemanticExpression ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
                                             ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
@@ -255,13 +255,13 @@ refclass @getterCallExpressionAST : @semanticExpressionAST {
     end
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @getterCallExpressionForGeneration : @semanticExpressionForGeneration {
   public let @methodKind mKind
@@ -271,7 +271,7 @@ refclass @getterCallExpressionForGeneration : @semanticExpressionForGeneration {
   public let @semanticExpressionListForGeneration mActualArgumentList
   public let @bool mHasCompilerArgument
 
-  #·················································································································
+  #·······························································································
 
   override method generateExpression
     ?!@string ioGeneratedCode
@@ -354,8 +354,8 @@ refclass @getterCallExpressionForGeneration : @semanticExpressionForGeneration {
     outCppExpression += [self.mLocation sourceFile] + ")"
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

@@ -1,4 +1,4 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  metamodel that defines expression
 #
@@ -20,11 +20,11 @@
 # CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 # DEALINGS IN THE SOFTWARE.
 #
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #    I N S T R U C T I O N    A N A L Y S I S
 #
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @semanticInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
@@ -34,7 +34,7 @@ abstract method @semanticInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @localConstantList {
   public let @unifiedTypeMapEntry mType
@@ -43,7 +43,7 @@ list @localConstantList {
   public let @string mCppName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @localInitializedVariableList {
   public let @unifiedTypeMapEntry mType
@@ -51,7 +51,7 @@ list @localInitializedVariableList {
   public let @string mCppName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc analyzeSemanticInstructionList
   ?let @lstring inUsefulnessCallerEntityName
@@ -85,7 +85,7 @@ proc analyzeSemanticInstructionList
   [!?ioVariableMap closeBranch !inEndOfBranchLocation]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc analyzeSemanticInstructionListWithoutBranch
   ?let @lstring inUsefulnessCallerEntityName
@@ -128,7 +128,7 @@ proc analyzeSemanticInstructionListWithoutBranch
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 getter @formalArgumentPassingModeAST correspondingEffectiveParameterString -> @string {
   switch self
@@ -139,7 +139,7 @@ getter @formalArgumentPassingModeAST correspondingEffectiveParameterString -> @s
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc checkExpressionIsBoolean
   ?let @analysisContext inAnalysisContext
@@ -213,7 +213,7 @@ proc checkExpressionIsBoolean
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @abstractGrammarInstructionSyntaxDirectedTranslationResult analyzeGrammarInstructionSDT
   ?let @analysisContext inAnalysisContext
@@ -223,7 +223,7 @@ abstract method @abstractGrammarInstructionSyntaxDirectedTranslationResult analy
   ?!@stringlist ioAssignementList
   ?!@localVarManager ioVariableMap
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @grammarInstructionSyntaxDirectedTranslationResultNone analyzeGrammarInstructionSDT
   ?let @analysisContext unused inAnalysisContext
@@ -234,7 +234,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultNone analyzeGr
   ?!@localVarManager unused ioVariableMap {
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @grammarInstructionSyntaxDirectedTranslationDropResult  analyzeGrammarInstructionSDT
   ?let @analysisContext unused inAnalysisContext
@@ -248,7 +248,7 @@ override method @grammarInstructionSyntaxDirectedTranslationDropResult  analyzeG
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @grammarInstructionSyntaxDirectedTranslationResultInVar  analyzeGrammarInstructionSDT
   ?let @analysisContext inAnalysisContext
@@ -270,7 +270,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInVar  analyze
   ioAssignementList += !cppName + " = GALGAS_string (" + inSyntaxDirectedTranslationResultVarName + ") ;"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar  analyzeGrammarInstructionSDT
   ?let @analysisContext inAnalysisContext
@@ -294,7 +294,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar 
   ioAssignementList += !"GALGAS_string " + cppName + " (" + inSyntaxDirectedTranslationResultVarName + ") ;"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst  analyzeGrammarInstructionSDT
   ?let @analysisContext inAnalysisContext
@@ -318,5 +318,5 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredCons
   ioAssignementList += !"const GALGAS_string " + cppName + " (" + inSyntaxDirectedTranslationResultVarName + ") ;"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 

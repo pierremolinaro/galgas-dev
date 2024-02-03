@@ -255,7 +255,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-- (void) buildPopupMenuItemArrayWithStyleArray:(NSArray *) inTokenArray {
+- (void) buildPopupMenuItemArrayWithStyleArray: (NSArray *) inTokenArray {
   NSDictionary * defaultAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
     [NSFont systemFontOfSize:11.0], NSFontAttributeName,
     nil
@@ -275,32 +275,32 @@
   const UInt16 ** popUpListData = [self popupListData] ;
   if (NULL != popUpListData) {
     const NSUInteger tokenCount = inTokenArray.count ;
-    for (NSUInteger tokenIndex=0 ; tokenIndex<tokenCount ; tokenIndex++) {
-      OC_Token * token = [inTokenArray objectAtIndex:tokenIndex] ;
+    for (NSUInteger tokenIndex = 0 ; tokenIndex < tokenCount ; tokenIndex++) {
+      OC_Token * token = [inTokenArray objectAtIndex: tokenIndex] ;
       const NSUInteger terminal = token.tokenCode ;
-      // printf ("terminal %u\n", terminal) ;
       BOOL found = NO ;
       NSUInteger idx = 0 ;
       NSUInteger labelLength = 0 ;
-      const UInt16 * p = popUpListData [idx] ;
-      while (!found && (p != NULL) && (*p != 0)) {
-        p += 1 ; // Pass display flags
-        if (*p == terminal) {
+      const UInt16 * ptr = popUpListData [idx] ;
+      while (!found && (ptr != NULL)) {
+        ptr += 1 ; // Pass display flags
+        if (*ptr == terminal) {
           found = YES ;
-          p += 2 ;
+          ptr += 2 ;
           labelLength = 0 ;
-          while (found && (*p != 0)) {
+          while (found && (*ptr != 0)) {
             labelLength += 1 ;
-            found = ((tokenIndex+labelLength) < tokenCount) && ([[inTokenArray objectAtIndex:tokenIndex+labelLength] tokenCode] == *p) ;
-            p += 2 ;
+            found = ((tokenIndex+labelLength) < tokenCount) && ([[inTokenArray objectAtIndex:tokenIndex+labelLength] tokenCode] == *ptr) ;
+            ptr += 2 ;
           }
-        }else{
+        }
+        if (!found) {
           idx += 1 ;
-          p = popUpListData [idx] ;
+          ptr = popUpListData [idx] ;
         }
       }
       if (found) {
-        p = popUpListData [idx] ;
+        const UInt16 * p = popUpListData [idx] ;
         const UInt16 displayFlags = *p ;
         p += 2 ; // Goto display strip description
         NSMutableString * title = [NSMutableString new] ;
@@ -609,7 +609,7 @@
   #ifdef DEBUG_MESSAGES
     NSLog (@"build popup") ;
   #endif
-  [self buildPopupMenuItemArrayWithStyleArray:ioStyledRangeArray] ;
+  [self buildPopupMenuItemArrayWithStyleArray: ioStyledRangeArray] ;
 //---
   #ifdef DEBUG_MESSAGES
     NSLog (@"tokenizeForSourceString:tokenArray:... DONE") ;

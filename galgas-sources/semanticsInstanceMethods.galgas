@@ -1,4 +1,4 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  semantics definitions for semantics component
 #
@@ -20,7 +20,7 @@
 # CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 # DEALINGS IN THE SOFTWARE.
 #
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc enterInstanceMethodWithoutArgument
   ?!@instanceMethodMap ioInstanceMethodMap
@@ -38,7 +38,7 @@ private proc enterInstanceMethodWithoutArgument
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc enterInstanceMethodWithInputArgument
   ?!@instanceMethodMap ioInstanceMethodMap
@@ -62,7 +62,7 @@ private proc enterInstanceMethodWithInputArgument
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @dataPredefinedTypeAST getInstanceMethodMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -100,7 +100,7 @@ override method @dataPredefinedTypeAST getInstanceMethodMap
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @stringPredefinedTypeAST getInstanceMethodMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -179,5 +179,5 @@ override method @stringPredefinedTypeAST getInstanceMethodMap
 }
 
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 

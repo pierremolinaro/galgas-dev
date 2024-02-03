@@ -1,4 +1,4 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  Generate predefined types
 #
@@ -20,9 +20,9 @@
 # CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 # DEALINGS IN THE SOFTWARE.
 #
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! Grammar
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @grammarForGeneration appendDeclaration1
   ?!@stringset ioInclusionSet
@@ -42,7 +42,7 @@ override method @grammarForGeneration appendDeclaration1
    ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @grammarForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap inUnifiedTypeMap
@@ -65,57 +65,57 @@ override method @grammarForGeneration appendSpecificImplementation
   outImplementation = self.mCppFileContents
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @grammarForGeneration implementationCppFileName -> @string {
   result = "grammar-" + [self.mGrammarName fileNameRepresentation]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @grammarForGeneration hasCppHeaderFile -> @bool {
   result = false
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @grammarForGeneration headerKind -> @headerKind {
   result = @headerKind.oneHeader
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @grammarForGeneration isPredefined -> @bool {
   result = false
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! Syntax
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @syntaxDeclarationForGeneration implementationCppFileName -> @string {
   result = "syntax-" + [self.mSyntaxComponentName fileNameRepresentation]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @syntaxDeclarationForGeneration hasCppHeaderFile -> @bool {
   result = false
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @syntaxDeclarationForGeneration headerKind -> @headerKind {
   result = @headerKind.oneHeader
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @syntaxDeclarationForGeneration isPredefined -> @bool {
   result = false
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @syntaxDeclarationForGeneration appendDeclaration1 ?!@stringset ioInclusionSet
                                                                    !@string outHeader {
@@ -138,7 +138,7 @@ override method @syntaxDeclarationForGeneration appendDeclaration1 ?!@stringset 
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @syntaxDeclarationForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -221,11 +221,11 @@ override method @syntaxDeclarationForGeneration appendSpecificImplementation
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #
 # P R O C E D U R E    I M P L E M E N T A T I O N
 #
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc generateProcedure
   ?static:let @bool inGenerateStatic
@@ -342,11 +342,11 @@ proc generateProcedure
   outGeneratedCode += "}\n\n"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #
 # F U N C T I O N    I M P L E M E N A T I O N
 #
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc generateFunction ?let @string inFunctionCppRepresentationName
                       ?!@stringset ioInclusionSet
@@ -430,7 +430,7 @@ proc generateFunction ?let @string inFunctionCppRepresentationName
   outGeneratedCode += "}\n\n"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc generateExtensionGetterNew ?let @string inFunctionCppRepresentationName
                                 ?!@stringset ioInclusionSet
@@ -505,11 +505,11 @@ proc generateExtensionGetterNew ?let @string inFunctionCppRepresentationName
   outGeneratedCode += "}\n\n"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #
 # E X T E N S I O N    M O D I F I E R    I M P L E M E N T A T I O N
 #
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc generateExtensionSetter
   ?let @string inClassName
@@ -601,11 +601,11 @@ proc generateExtensionSetter
   outGeneratedCode += "}"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #
 # E X T E N S I O N    M E T H O D    I M P L E M E N T A T I O N
 #
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc generateExtensionMethodNew ?let @unifiedTypeMapEntry inReceiverType
                                 ?!@stringset ioInclusionSet
@@ -694,9 +694,9 @@ proc generateExtensionMethodNew ?let @unifiedTypeMapEntry inReceiverType
   outGeneratedCode += "}"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! Generation Filewrappers
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
   "ggs"
@@ -893,11 +893,11 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?@string REFERENCED_TYPE_IDENTIFIER
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #           G E N E R A T I O N    F I L E W R A P P E R S
 #
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper semanticComponentGenerationTemplate in "+generation-templates/semantic_generation" {
 }{
@@ -1072,15 +1072,15 @@ filewrapper semanticComponentGenerationTemplate in "+generation-templates/semant
     ?@string GENERATED_INSTRUCTION_STRING
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! func
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @functionPrototypeDeclarationForGeneration headerKind ->@headerKind {
   result = @headerKind.oneHeader
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @functionPrototypeDeclarationForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
@@ -1092,13 +1092,13 @@ override method @functionPrototypeDeclarationForGeneration appendDeclaration1
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @onceFunctionDeclarationForGeneration headerKind ->@headerKind {
   result = @headerKind.oneHeader
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @onceFunctionDeclarationForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
@@ -1110,9 +1110,9 @@ override method @onceFunctionDeclarationForGeneration appendDeclaration1
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! Semantic Type
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @semanticTypeForGeneration appendTypeGenericImplementation -> @string {
   let selfTypeDefinition = [self.mSelfTypeEntry definition]
@@ -1127,9 +1127,9 @@ override getter @semanticTypeForGeneration appendTypeGenericImplementation -> @s
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! Sub programs
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @functionImplementationForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -1156,7 +1156,7 @@ override method @functionImplementationForGeneration appendSpecificImplementatio
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @onceFunctionDeclarationForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -1184,15 +1184,15 @@ override method @onceFunctionDeclarationForGeneration appendSpecificImplementati
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! Lexique
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexiqueDeclarationForGeneration headerKind ->@headerKind {
   result = @headerKind.oneHeader
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexiqueDeclarationForGeneration appendDeclaration1
   ?!@stringset ioInclusionSet
@@ -1203,7 +1203,7 @@ override method @lexiqueDeclarationForGeneration appendDeclaration1
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexiqueDeclarationForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -1213,7 +1213,7 @@ override method @lexiqueDeclarationForGeneration appendSpecificImplementation
   outHeader = self.mCppContents
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexiqueDeclarationForGeneration appendSpecificFiles
   ?let @string inProductDirectory
@@ -1261,15 +1261,15 @@ override method @lexiqueDeclarationForGeneration appendSpecificFiles
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! Program
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @programComponentForGeneration headerKind ->@headerKind {
   result = @headerKind.noHeader
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @programComponentForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -1279,17 +1279,17 @@ override method @programComponentForGeneration appendSpecificImplementation
   outImplementation = self.mImplementationString
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 #! Filewrapper
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @filewrapperDeclarationForGeneration headerKind ->@headerKind {
   result = @headerKind.oneHeader
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc recursivlyEnumerateRegularFile
   ?let @wrapperFileMap inFilewrapperFileMap
@@ -1319,7 +1319,7 @@ proc recursivlyEnumerateRegularFile
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @filewrapperDeclarationForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
@@ -1353,7 +1353,7 @@ override method @filewrapperDeclarationForGeneration appendDeclaration1
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc generateWrapperContents
   ?let @string inFilewrapperName
@@ -1463,7 +1463,7 @@ proc generateWrapperContents
   + ") ;\n\n"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @filewrapperDeclarationForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -1514,11 +1514,11 @@ override method @filewrapperDeclarationForGeneration appendSpecificImplementatio
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #           G E N E R A T I O N    F I L E W R A P P E R S
 #
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper predefinedTypeGenerationTemplate in "+generation-templates/type_generation" {
 }{
@@ -1568,7 +1568,7 @@ filewrapper predefinedTypeGenerationTemplate in "+generation-templates/type_gene
   template timer_type "timer-type.h.galgasTemplate"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @sintPredefinedTypeAST cppDeclarationString -> @string {
   result = [filewrapper predefinedTypeGenerationTemplate.sint_type]
@@ -1610,9 +1610,9 @@ override getter @dataPredefinedTypeAST cppDeclarationString -> @string {
   result = [filewrapper predefinedTypeGenerationTemplate.data_type]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #    P R I M I T I V E    T Y P E
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @primitiveTypeForGeneration : @semanticTypeForGeneration {
   public let @string mPredefinedTypeName
@@ -1660,9 +1660,9 @@ refclass @primitiveTypeForGeneration : @semanticTypeForGeneration {
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! Generate Predefined types
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc generatePredefinedTypeFiles
   ?let @string inDirectory
@@ -1738,11 +1738,11 @@ proc generatePredefinedTypeFiles
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #           G E N E R A T I O N    F I L E W R A P P E R S
 #
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper semanticFileGenerationTemplate in "+generation-templates/semantic_generation" {
 }{
@@ -1755,4 +1755,4 @@ filewrapper semanticFileGenerationTemplate in "+generation-templates/semantic_ge
     ?@stringlist IMPORTED_COMPONENT_LIST
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

@@ -15,9 +15,9 @@
 # CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 # DEALINGS IN THE SOFTWARE.
 #
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #!   AST
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 #refclass @literalUIntExpressionAST : @semanticExpressionAST {
 #  private let @luint mValue
@@ -47,41 +47,41 @@ refclass @literalBigIntExpressionAST : @semanticExpressionAST {
   private let @lbigint mValue
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3ExpressionSyntax {
 
-  #·················································································································
+  #·······························································································
 
   rule <primary_ggs3> !@semanticExpressionAST outExpression {
     $literalInt$ ?let @lbigint literalInt
     outExpression = @literalBigIntExpressionAST.new {!literalInt}
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4ExpressionSyntax {
 
-  #·················································································································
+  #·······························································································
 
   rule <primary> !@semanticExpressionAST outExpression {
     $literalInt$ ?let @lbigint literalInt
     outExpression = @literalBigIntExpressionAST.new {!literalInt}
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 #override method @literalUInt64ExpressionAST enterExpressionInSemanticContext
 #  ?!@unifiedTypeMap unused ioTypeMap
@@ -105,7 +105,7 @@ syntax extension galgas4ExpressionSyntax {
 #  }
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 #override method @literalSIntExpressionAST enterExpressionInSemanticContext
 #  ?!@unifiedTypeMap unused ioTypeMap
@@ -125,7 +125,7 @@ syntax extension galgas4ExpressionSyntax {
 #  outExpression = @literalSIntExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mSIntType !self.mValue.location !self.mValue.sint}
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 #override method @literalSInt64ExpressionAST enterExpressionInSemanticContext
 #  ?!@unifiedTypeMap unused ioTypeMap
@@ -149,7 +149,7 @@ syntax extension galgas4ExpressionSyntax {
 #  }
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @literalBigIntExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap unused ioTypeMap
@@ -174,9 +174,9 @@ override method @literalBigIntExpressionAST analyzeSemanticExpression
   }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @literalUIntExpressionForGeneration : @semanticExpressionForGeneration {
   public let @uint mValue
@@ -193,7 +193,7 @@ override method @literalUIntExpressionForGeneration generateExpression
   outCppExpression = "GALGAS_uint (uint32_t (" + [self.mValue string]+ "U))"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @literalUInt64ExpressionForGeneration : @semanticExpressionForGeneration {
   private let @uint64 mValue
@@ -210,7 +210,7 @@ override method @literalUInt64ExpressionForGeneration generateExpression
   outCppExpression = "GALGAS_uint_36__34_ (uint64_t (" + [self.mValue string]+ "ULL))"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @literalSIntExpressionForGeneration : @semanticExpressionForGeneration {
   private let @sint mValue
@@ -227,7 +227,7 @@ override method @literalSIntExpressionForGeneration generateExpression
   outCppExpression = "GALGAS_sint (int32_t (" + [self.mValue string]+ "L))"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @literalSInt64ExpressionForGeneration : @semanticExpressionForGeneration {
   private let @sint64 mValue
@@ -244,7 +244,7 @@ override method @literalSInt64ExpressionForGeneration generateExpression
   outCppExpression = "GALGAS_sint_36__34_ (int64_t (" + [self.mValue string]+ "LL))"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @literalBigIntExpressionForGeneration : @semanticExpressionForGeneration {
   public let @bigint mValue
@@ -264,4 +264,4 @@ override method @literalBigIntExpressionForGeneration generateExpression
   outCppExpression += " " + [self.mLocation commaSourceFile] + ")"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

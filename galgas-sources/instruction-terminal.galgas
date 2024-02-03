@@ -15,11 +15,11 @@
 # CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 # DEALINGS IN THE SOFTWARE.
 #
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3SyntaxComponentSyntax {
 
-  #·················································································································
+  #·······························································································
 
   rule <syntax_instruction_ggs3> !@syntaxInstructionAST outInstruction {
     $\$terminal\$$ ?let @lstring terminalName indexing terminalReference
@@ -46,7 +46,7 @@ syntax extension galgas3SyntaxComponentSyntax {
     }
   }
 
-  #·················································································································
+  #·······························································································
 
   rule <terminal_instruction_indexing> !@2lstringlist outIndexNameList {
     outIndexNameList = {}
@@ -68,15 +68,15 @@ syntax extension galgas3SyntaxComponentSyntax {
     end
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4SyntaxComponentSyntax {
 
-  #·················································································································
+  #·······························································································
 
   rule <syntax_instruction> ?!@galgasDeclarationAST unused ioDeclarations
                             ?!@stringset unused ioUserImplicitDeclaredTypeSet
@@ -105,7 +105,7 @@ syntax extension galgas4SyntaxComponentSyntax {
     }
   }
 
-  #·················································································································
+  #·······························································································
 
   rule <terminal_instruction_indexing> !@2lstringlist outIndexNameList {
     outIndexNameList = {}
@@ -129,13 +129,13 @@ syntax extension galgas4SyntaxComponentSyntax {
     end
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! @terminalCheckInstructionAST
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @terminalCheckInstructionAST : @syntaxInstructionAST {
   private let @lstring mTerminalName
@@ -144,7 +144,7 @@ refclass @terminalCheckInstructionAST : @syntaxInstructionAST {
   private let @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
   private let @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationToken
 
-  #·················································································································
+  #·······························································································
 
   override method  transformInstruction
     ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
@@ -165,7 +165,7 @@ refclass @terminalCheckInstructionAST : @syntaxInstructionAST {
     }
   }
 
-  #·················································································································
+  #·······························································································
 
   override method analyzeSyntaxInstruction
     ?let @lstring unused inUsefulnessCallerEntityName
@@ -238,19 +238,19 @@ refclass @terminalCheckInstructionAST : @syntaxInstructionAST {
     }
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! @terminalCheckInstructionForGeneration
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @terminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
   public let @lstring mTerminalSymbolName
   public let @uint mTerminalSymbolIndex
 
-  #·················································································································
+  #·······························································································
 
   override method tikzNodeForSyntaxInstruction ?!@rowList ioRowList
                                                 ?fromRow:let @uint inRow
@@ -272,19 +272,19 @@ refclass @terminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionForG
     ioColumn += 1
   }
 
-  #·················································································································
+  #·······························································································
 
   override getter isLinear -> @bool {
     result = true
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! @terminalCheckInstructionForGeneration
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @terminalCheckInstructionForGeneration : @syntaxInstructionForGeneration {
   private let @lstring mTerminalName
@@ -295,9 +295,9 @@ refclass @terminalCheckInstructionForGeneration : @syntaxInstructionForGeneratio
   private let @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationToken
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX SIGNATURE
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @terminalCheckInstructionForGeneration appendSyntaxSignature
   ?let @string unused inPosfix
@@ -314,9 +314,9 @@ override method @terminalCheckInstructionForGeneration appendSyntaxSignature
   }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! COMPARE SYNTAX SIGNATURE
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @terminalCheckInstructionForGeneration compareInstructionSyntaxSignature
   ?let @semanticInstructionForGeneration inTestedInstruction -> @bool {
@@ -340,9 +340,9 @@ override getter @terminalCheckInstructionForGeneration compareInstructionSyntaxS
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @terminalCheckInstructionForGeneration generateInstruction
   ?!@stringset unused ioInclusionSet
@@ -387,4 +387,4 @@ override method @terminalCheckInstructionForGeneration generateInstruction
   ioGeneratedCode += [self.mInstructionLocation commaSourceFile] + ") ;\n"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

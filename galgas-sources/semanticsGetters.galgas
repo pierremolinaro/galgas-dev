@@ -1,4 +1,4 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  semantics definitions for semantics component
 #
@@ -20,7 +20,7 @@
 # CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 # DEALINGS IN THE SOFTWARE.
 #
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc enterBaseFinalGetterWithoutArgument ?!@getterMap ioGetterMap
                                          ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -53,7 +53,7 @@ proc enterBaseFinalGetterWithoutArgument ?!@getterMap ioGetterMap
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc enterInheritedGetterWithoutArgument ?!@getterMap ioGetterMap
                                           ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -86,7 +86,7 @@ proc enterInheritedGetterWithoutArgument ?!@getterMap ioGetterMap
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc enterInheritedGetterWithArgument
   ?!@getterMap ioGetterMap
@@ -113,7 +113,7 @@ proc enterInheritedGetterWithArgument
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc enterInheritedGetterWith2Arguments
   ?!@getterMap ioGetterMap
@@ -144,7 +144,7 @@ proc enterInheritedGetterWith2Arguments
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc enterBaseGetterWithoutArgument ?!@getterMap ioGetterMap
                                     ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -177,7 +177,7 @@ proc enterBaseGetterWithoutArgument ?!@getterMap ioGetterMap
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc enterBaseGetterWithArgument
   ?!@getterMap ioGetterMap
@@ -205,7 +205,7 @@ proc enterBaseGetterWithArgument
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc enterBaseFinalGetterWithArgument
   ?!@getterMap ioGetterMap
@@ -232,7 +232,7 @@ proc enterBaseFinalGetterWithArgument
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc enterBaseGetterWith2Arguments
   ?!@getterMap ioGetterMap
@@ -265,7 +265,7 @@ proc enterBaseGetterWith2Arguments
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc enterBaseFinalGetterWith2Arguments
   ?!@getterMap ioGetterMap
@@ -296,7 +296,7 @@ proc enterBaseFinalGetterWith2Arguments
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc enterBaseFinalGetterWith3Arguments
   ?!@getterMap ioGetterMap
@@ -331,7 +331,7 @@ proc enterBaseFinalGetterWith3Arguments
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc commonGetterMapForAllTypes ?!@unifiedTypeMap ioUnifiedTypeMap
                                 !@getterMap outMap {
@@ -370,7 +370,7 @@ proc commonGetterMapForAllTypes ?!@unifiedTypeMap ioUnifiedTypeMap
   )
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @locationPredefinedTypeAST getGetterMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -466,7 +466,7 @@ override method @locationPredefinedTypeAST getGetterMap
   )
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @stringPredefinedTypeAST getGetterMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -1088,7 +1088,7 @@ override method @stringPredefinedTypeAST getGetterMap
   )
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @charPredefinedTypeAST getGetterMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -1264,7 +1264,7 @@ override method @charPredefinedTypeAST getGetterMap
   )
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @sintPredefinedTypeAST getGetterMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -1376,7 +1376,7 @@ override method @sintPredefinedTypeAST getGetterMap
   )
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @sint64PredefinedTypeAST getGetterMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -1488,7 +1488,7 @@ override method @sint64PredefinedTypeAST getGetterMap
   )
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @doublePredefinedTypeAST getGetterMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -1639,7 +1639,7 @@ override method @doublePredefinedTypeAST getGetterMap
   )
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @typePredefinedTypeAST getGetterMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -1671,7 +1671,7 @@ override method @typePredefinedTypeAST getGetterMap
   )
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @dataPredefinedTypeAST getGetterMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -1695,7 +1695,7 @@ override method @dataPredefinedTypeAST getGetterMap
   )
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @functionPredefinedTypeAST getGetterMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -1734,7 +1734,7 @@ override method @functionPredefinedTypeAST getGetterMap
   )
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @timerPredefinedTypeAST getGetterMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -1767,4 +1767,4 @@ override method @timerPredefinedTypeAST getGetterMap
   )
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

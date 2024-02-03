@@ -15,15 +15,15 @@
 # CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 # DEALINGS IN THE SOFTWARE.
 #
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #!   AST
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @collectionValueElementList {
   public let @abstractCollectionValueElement mElement
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract refclass @abstractCollectionValueElement {}
 
@@ -41,7 +41,7 @@ refclass @expressionListCollectionValue : @abstractCollectionValueElement {
   public let @location mEndOfExpressionLocation
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @collectionValueAST : @semanticExpressionAST {
   public let @lstring mTypeName # Empty string if infered
@@ -49,13 +49,13 @@ refclass @collectionValueAST : @semanticExpressionAST {
   public let @location mEndOfCollectionValue
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3ExpressionSyntax {
 
-  #·················································································································
+  #·······························································································
 
   rule <primary_ggs3> !@semanticExpressionAST outExpression {
     <optional_type> ?let @lstring typeName
@@ -78,7 +78,7 @@ syntax extension galgas3ExpressionSyntax {
     $}$
   }
 
-  #·················································································································
+  #·······························································································
 
   rule <collection_value_element> !@abstractCollectionValueElement outValueElement {
     var @actualOutputExpressionList expressionList = {}
@@ -91,22 +91,22 @@ syntax extension galgas3ExpressionSyntax {
     outValueElement = @expressionListCollectionValue.new {!expressionList !@location.here}
   }
 
-  #·················································································································
+  #·······························································································
 
   rule <collection_value_element> !@abstractCollectionValueElement outValueElement {
     <expression_ggs3> ?let @semanticExpressionAST expression
     outValueElement = @expressionCollectionValue.new {!expression !@location.here}
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4ExpressionSyntax {
 
-  #·················································································································
+  #·······························································································
 
   rule <primary> !@semanticExpressionAST outExpression {
     <optional_type> ?let @lstring typeName
@@ -129,7 +129,7 @@ syntax extension galgas4ExpressionSyntax {
     $]$
   }
 
-  #·················································································································
+  #·······························································································
 
   rule <collection_value_element> !@abstractCollectionValueElement outValueElement {
     var @actualOutputExpressionList expressionList = {}
@@ -152,20 +152,20 @@ syntax extension galgas4ExpressionSyntax {
     outValueElement = @expressionListCollectionValue.new {!expressionList !@location.here}
   }
 
-  #·················································································································
+  #·······························································································
 
 #  rule <collection_value_element> !@abstractCollectionValueElement outValueElement {
 #    <expression> ?let @semanticExpressionAST expression
 #    outValueElement = @expressionCollectionValue.new {!expression !@location.here}
 #  }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @collectionValueAST enterExpressionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   for (mElement) in self.mElementList do
@@ -247,23 +247,23 @@ override method @collectionValueAST analyzeSemanticExpression
 #---
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @abstractCollectionValueElement enterInSemanticContext ?!@unifiedTypeMap ioTypeMap
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @expressionCollectionValue enterInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @expressionListCollectionValue enterInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   [self.mExpressionList enterInSemanticContext !?ioTypeMap]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @abstractCollectionValueElement analyze
   ?let @lstring inUsefulnessCallerEntityName
@@ -274,7 +274,7 @@ abstract method @abstractCollectionValueElement analyze
   ?!@localVarManager ioVariableMap
   ?!@collectionValueElementListForGeneration ioCollectionValueElementListForGeneration
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @expressionCollectionValue analyze
   ?let @lstring inUsefulnessCallerEntityName
@@ -300,7 +300,7 @@ override method @expressionCollectionValue analyze
   ioCollectionValueElementListForGeneration += !@expressionCollectionValueForGeneration.new {!self.mExpressionLocation !expression}
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @expressionListCollectionValue analyze
   ?let @lstring inUsefulnessCallerEntityName
@@ -343,15 +343,15 @@ override method @expressionListCollectionValue analyze
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @collectionValueElementListForGeneration {
   public let @abstractCollectionValueElementForGeneration mElement
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract refclass @abstractCollectionValueElementForGeneration {
   public let @location mExpressionLocation
@@ -367,7 +367,7 @@ abstract method @abstractCollectionValueElementForGeneration generateCollectionE
   ?!@stringset ioUnusedVariableCppNameSet
   ?let @string inCppTargetVar
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @expressionCollectionValueForGeneration : @abstractCollectionValueElementForGeneration {
   public let @semanticExpressionForGeneration mExpression
@@ -396,7 +396,7 @@ override method @expressionCollectionValueForGeneration generateCollectionElemen
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @expressionListCollectionForGeneration : @abstractCollectionValueElementForGeneration {
   public let @semanticExpressionListForGeneration mExpressionList
@@ -438,7 +438,7 @@ override method @expressionListCollectionForGeneration generateCollectionElement
   ioGeneratedCode += " " + [self.mExpressionLocation commaSourceFile] + ") ;\n"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @expressionCollectionForGeneration : @semanticExpressionForGeneration {
   public let @collectionValueElementListForGeneration mElementList
@@ -473,4 +473,4 @@ override method @expressionCollectionForGeneration generateExpression
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

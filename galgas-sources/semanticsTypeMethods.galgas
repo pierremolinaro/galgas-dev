@@ -1,4 +1,4 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  semantics definitions for semantics component
 #
@@ -20,7 +20,7 @@
 # CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 # DEALINGS IN THE SOFTWARE.
 #
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc enterClassMethodWithInputArgument
   ?!@classMethodMap ioClassMethodMap
@@ -40,7 +40,7 @@ proc enterClassMethodWithInputArgument
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc enterClassMethodWith3InputArguments
   ?!@classMethodMap ioClassMethodMap
@@ -68,7 +68,7 @@ proc enterClassMethodWith3InputArguments
   [!?ioClassMethodMap insertOrReplace !.new {!inClassMethodName !.here} !argList !inHasCompilerArgument]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc enterClassMethodWithStringInputArgument
   ?!@classMethodMap ioClassMethodMap
@@ -87,7 +87,7 @@ private proc enterClassMethodWithStringInputArgument
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @stringPredefinedTypeAST getClassMethodMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -152,5 +152,5 @@ override method @stringPredefinedTypeAST getClassMethodMap
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 

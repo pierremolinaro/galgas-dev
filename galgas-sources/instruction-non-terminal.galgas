@@ -15,11 +15,11 @@
 # CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 # DEALINGS IN THE SOFTWARE.
 #
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3SyntaxComponentSyntax {
 
-  #·················································································································
+  #·······························································································
 
   rule <syntax_instruction_ggs3> !@syntaxInstructionAST outInstruction {
     let @lstring mLabelName # No label : empty string
@@ -51,15 +51,15 @@ syntax extension galgas3SyntaxComponentSyntax {
     }
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4SyntaxComponentSyntax {
 
-  #·················································································································
+  #·······························································································
 
   rule <syntax_instruction> ?!@galgasDeclarationAST unused ioDeclarations
                             ?!@stringset unused ioUserImplicitDeclaredTypeSet
@@ -93,13 +93,13 @@ syntax extension galgas4SyntaxComponentSyntax {
     }
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @nonterminalCallInstruction : @syntaxInstructionAST {
   private let @lstring mNonterminalName
@@ -107,7 +107,7 @@ refclass @nonterminalCallInstruction : @syntaxInstructionAST {
   private let @actualParameterListAST mActualParameterList
   private let @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationResult
 
-  #·················································································································
+  #·······························································································
 
   override method transformInstruction
                     ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis unused ioActuallyUsedTerminalSymbolMap
@@ -122,7 +122,7 @@ refclass @nonterminalCallInstruction : @syntaxInstructionAST {
     }
   }
 
-  #·················································································································
+  #·······························································································
 
   override method analyzeSyntaxInstruction ?let @lstring inUsefulnessCallerEntityName
                                            ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
@@ -174,13 +174,13 @@ refclass @nonterminalCallInstruction : @syntaxInstructionAST {
     }
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! GENERATION TYPES
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @nonterminalInstructionForGeneration : @syntaxInstructionForGeneration {
   private let @string mNonterminalName
@@ -189,9 +189,9 @@ refclass @nonterminalInstructionForGeneration : @syntaxInstructionForGeneration 
   private let @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationResult
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX SIGNATURE
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @nonterminalInstructionForGeneration appendSyntaxSignature
   ?let @string inPosfix
@@ -206,9 +206,9 @@ override method @nonterminalInstructionForGeneration appendSyntaxSignature
   }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! COMPARE SYNTAX SIGNATURE
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @nonterminalInstructionForGeneration compareInstructionSyntaxSignature
   ?let @semanticInstructionForGeneration inTestedInstruction
@@ -233,9 +233,9 @@ override getter @nonterminalInstructionForGeneration compareInstructionSyntaxSig
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @nonterminalInstructionForGeneration generateInstruction
   ?!@stringset ioInclusionSet
@@ -286,4 +286,4 @@ override method @nonterminalInstructionForGeneration generateInstruction
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

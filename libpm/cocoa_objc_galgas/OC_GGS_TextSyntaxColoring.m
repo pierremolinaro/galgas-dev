@@ -426,7 +426,7 @@
         range: allTextRange
       ] ;
       [mSourceTextStorage fixAttributesInRange: allTextRange] ;
-      for (NSUInteger i=0 ; i<[mTokenArray count] ; i++) {
+      for (NSUInteger i=0 ; i<mTokenArray.count ; i++) {
         OC_Token * token = [mTokenArray objectAtIndex:i] ;
         const NSInteger colorIndex = [token style] ;
         const NSRange range = [token range] ;
@@ -447,7 +447,7 @@
         }
       }    
     }else{
-      for (NSUInteger i=0 ; i<[mTokenArray count] ; i++) {
+      for (NSUInteger i=0 ; i<mTokenArray.count ; i++) {
         OC_Token * token = [mTokenArray objectAtIndex:i] ;
         const NSInteger colorIndex = [token style] ;
         if (colorIndex == inChangedColorIndex) {
@@ -499,7 +499,6 @@
       forRange:range
     ] ;
     range = NSMakeRange (startIndex, lineEndIndex - startIndex) ;
- //   NSLog (@"line %d: range [%u, %u]", i, range.location, range.length) ;
   }
   return range ;
 }

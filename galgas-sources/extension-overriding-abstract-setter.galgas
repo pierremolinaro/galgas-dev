@@ -15,9 +15,9 @@
 # CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 # DEALINGS IN THE SOFTWARE.
 #
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #   AST
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @overridingAbstractExtensionSetterAST : @semanticDeclarationAST {
   private let @lstring mTypeName
@@ -25,13 +25,13 @@ refclass @overridingAbstractExtensionSetterAST : @semanticDeclarationAST {
   private let @formalParameterListAST mOverridingExtensionSetterFormalParameterList
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #   SYNTAX
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
 
-  #·················································································································
+  #·······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $override$
@@ -47,7 +47,7 @@ syntax extension galgas3DeclarationsSyntax {
       !formalParameterList}
   }
 
-  #·················································································································
+  #·······························································································
 
   rule <method_declaration_ggs3> ?let @lstring inClassName ?!@galgasDeclarationAST ioDeclarations {
     $override$
@@ -62,21 +62,21 @@ syntax extension galgas3DeclarationsSyntax {
       !formalParameterList}
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #   KEY REPRESENTATION
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @overridingAbstractExtensionSetterAST keyRepresentation -> @string {
   result = "overriding extension setter @" + self.mTypeName + " " + self.mOverridingExtensionSetterName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #   ENTER IN GRAPH
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingAbstractExtensionSetterAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
@@ -88,9 +88,9 @@ override method @overridingAbstractExtensionSetterAST enterDeclarationInGraph
   ioExtensionOverrideDefinitionList += !self
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #   SEMANTIC CONTEXT
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingAbstractExtensionSetterAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
@@ -101,9 +101,9 @@ override method @overridingAbstractExtensionSetterAST enterDeclarationInSemantic
 {
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #   SEMANTIC ANALYSIS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingAbstractExtensionSetterAST semanticAnalysis
   ?!@lstringlist unused ioUsefulnessRootEntities
@@ -163,9 +163,9 @@ override method @overridingAbstractExtensionSetterAST semanticAnalysis
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #   EXTENSION LIST MAP
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingAbstractExtensionSetterAST buildExtensionListMaps
   ?!@genericExtensionMethodListMap unused ioAbstractExtensionSetterListMap
@@ -185,4 +185,4 @@ override method @overridingAbstractExtensionSetterAST buildExtensionListMaps
     !self.mOverridingExtensionSetterName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

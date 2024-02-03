@@ -15,9 +15,9 @@
 # CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 # DEALINGS IN THE SOFTWARE.
 #
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #   AST
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @weakReferenceDeclarationAST : @semanticDeclarationAST {
   private let @lstring mClassTypeName
@@ -27,15 +27,15 @@ refclass @weakReferenceDeclarationAST : @semanticDeclarationAST {
   private let @propertyInCollectionListAST mPropertyList
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #   ENTER IN GRAPH
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @weakReferenceDeclarationAST keyRepresentation -> @string {
   result = "weak reference @" + self.mWeakReferenceTypeName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @weakReferenceDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
@@ -58,9 +58,9 @@ override method @weakReferenceDeclarationAST enterDeclarationInGraph
 #  ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #   SEMANTIC CONTEXT
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
@@ -170,9 +170,9 @@ override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
   [!?ioTypeMap insertType !typeDefinition.mTypeName !typeDefinition]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #   SEMANTIC ANALYSIS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @weakReferenceDeclarationAST semanticAnalysis
   ?!@lstringlist unused ioUsefulnessRootEntities
@@ -255,9 +255,9 @@ override method @weakReferenceDeclarationAST semanticAnalysis
     }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #   CODE GENERATION
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @weakReferenceTypeForGeneration : @semanticTypeForGeneration {
   private let @unifiedTypeMapEntry mReferenceClassType
@@ -267,7 +267,7 @@ refclass @weakReferenceTypeForGeneration : @semanticTypeForGeneration {
   private let @bool mGenerateHeaderInSeparateFile # Significant only for classes
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @weakReferenceTypeForGeneration appendDeclaration1 ?!@stringset ioInclusionSet
                                                                    !@string outHeader {
@@ -298,7 +298,7 @@ override method @weakReferenceTypeForGeneration appendDeclaration1 ?!@stringset 
   ]
  }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @weakReferenceTypeForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -317,5 +317,5 @@ override method @weakReferenceTypeForGeneration appendSpecificImplementation
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 

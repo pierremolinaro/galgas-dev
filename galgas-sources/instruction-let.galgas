@@ -15,9 +15,9 @@
 # CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 # DEALINGS IN THE SOFTWARE.
 #
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @localVariableOrConstantDeclarationWithAssignmentAST : @semanticInstructionAST {
   private let @bool mIsConstant
@@ -26,7 +26,7 @@ refclass @localVariableOrConstantDeclarationWithAssignmentAST : @semanticInstruc
   private let @semanticExpressionAST mSourceExpression
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @undefinedLocalConstantDeclarationAST : @semanticInstructionAST {
   private let @lstring mConstantTypeName
@@ -40,13 +40,13 @@ refclass @localConstantDeclarationWithAssignmentAST : @semanticInstructionAST {
   private let @semanticExpressionAST mSourceExpression
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3InstructionsSyntax {
 
-  #·················································································································
+  #·······························································································
 
   rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
     $let$
@@ -59,7 +59,7 @@ syntax extension galgas3InstructionsSyntax {
    }
   }
 
-  #·················································································································
+  #·······························································································
 
   rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
     $let$
@@ -75,7 +75,7 @@ syntax extension galgas3InstructionsSyntax {
       !sourceExpression}
   }
 
-  #·················································································································
+  #·······························································································
 
   rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
     $let$
@@ -88,15 +88,15 @@ syntax extension galgas3InstructionsSyntax {
       !sourceExpression}
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4InstructionsSyntax {
 
-  #·················································································································
+  #·······························································································
 
   rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
                               ?!@stringset ioUserImplicitDeclaredTypeSet
@@ -124,7 +124,7 @@ syntax extension galgas4InstructionsSyntax {
     end
   }
 
-  #·················································································································
+  #·······························································································
 
   rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations
                               ?!@stringset unused ioUserImplicitDeclaredTypeSet
@@ -139,13 +139,13 @@ syntax extension galgas4InstructionsSyntax {
       !sourceExpression}
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! CONTEXT
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @undefinedLocalConstantDeclarationAST enterInstructionInSemanticContext
   ?!@unifiedTypeMap unused ioTypeMap
@@ -170,9 +170,9 @@ override method @localVariableOrConstantDeclarationWithAssignmentAST enterInstru
   [self.mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @undefinedLocalConstantDeclarationAST analyzeSemanticInstruction
                                           ?let @lstring unused inUsefulnessCallerEntityName
@@ -283,9 +283,9 @@ override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSema
   }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! GENERATION
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @undefinedLocalConstantDeclarationForGeneration : @semanticInstructionForGeneration {
   private let @unifiedTypeMapEntry mTargetType
@@ -333,4 +333,4 @@ override method @localVariableOrConstantDeclarationWithSourceExpressionForGenera
   ioGeneratedCode += "GALGAS_" + [self.mTargetType identifierRepresentation] + " " + self.mCppVariableName + " = " + sourceVar + " ;\n"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

@@ -1,4 +1,4 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  Variable New Manager.
 #
@@ -20,9 +20,9 @@
 # CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 # DEALINGS IN THE SOFTWARE.
 #
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! LOCAL VARIABLE
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @localVarManager insertDeclaredLocalVariable ?let @lstring inVarName
                                                     ?let @unifiedTypeMapEntry inType
@@ -38,7 +38,7 @@ setter @localVarManager insertDeclaredLocalVariable ?let @lstring inVarName
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @localVarManager insertInitializedLocalVariable ?let @lstring inVarName
                                                        ?warnsIfNotMutated: let @bool inWarnsIfNotMutated
@@ -55,9 +55,9 @@ setter @localVarManager insertInitializedLocalVariable ?let @lstring inVarName
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! LOCAL CONSTANT
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @localVarManager insertUsedLocalConstant ?let @lstring inVarName
                                                 ?let @unifiedTypeMapEntry inType
@@ -73,7 +73,7 @@ setter @localVarManager insertUsedLocalConstant ?let @lstring inVarName
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @localVarManager insertInitializedLocalConstant ?let @lstring inVarName
                                                        ?let @unifiedTypeMapEntry inType
@@ -89,7 +89,7 @@ setter @localVarManager insertInitializedLocalConstant ?let @lstring inVarName
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @localVarManager insertDeclaredLocalConstant ?let @lstring inVarName
                                                     ?let @unifiedTypeMapEntry inType
@@ -105,9 +105,9 @@ setter @localVarManager insertDeclaredLocalConstant ?let @lstring inVarName
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! INPUT FORMAL ARGUMENT
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @localVarManager insertInputFormalArgumentDeclaredAsUnused ?let @lstring inVarName
                                                                   ?let @unifiedTypeMapEntry inType
@@ -123,7 +123,7 @@ setter @localVarManager insertInputFormalArgumentDeclaredAsUnused ?let @lstring 
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @localVarManager insertInputFormalArgument ?let @lstring inVarName
                                                   ?let @unifiedTypeMapEntry inType
@@ -139,7 +139,7 @@ setter @localVarManager insertInputFormalArgument ?let @lstring inVarName
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @localVarManager insertConstantInputFormalArgumentDeclaredAsUnused ?let @lstring inVarName
                                                                           ?let @unifiedTypeMapEntry inType
@@ -155,7 +155,7 @@ setter @localVarManager insertConstantInputFormalArgumentDeclaredAsUnused ?let @
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @localVarManager insertConstantInputFormalArgument ?let @lstring inVarName
                                                           ?let @unifiedTypeMapEntry inType
@@ -171,9 +171,9 @@ setter @localVarManager insertConstantInputFormalArgument ?let @lstring inVarNam
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! OUTPUT FORMAL ARGUMENT
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @localVarManager insertOutputFormalArgument ?let @lstring inVarName
                                                    ?let @unifiedTypeMapEntry inType
@@ -189,9 +189,9 @@ setter @localVarManager insertOutputFormalArgument ?let @lstring inVarName
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! INPUT OUTPUT FORMAL ARGUMENT
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @localVarManager insertInputOutputFormalArgumentDeclaredAsUnused ?let @lstring inVarName
                                                                         ?let @unifiedTypeMapEntry inType
@@ -207,7 +207,7 @@ setter @localVarManager insertInputOutputFormalArgumentDeclaredAsUnused ?let @ls
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @localVarManager insertInputOutputFormalArgument ?let @lstring inVarName
                                                         ?let @unifiedTypeMapEntry inType
@@ -223,9 +223,9 @@ setter @localVarManager insertInputOutputFormalArgument ?let @lstring inVarName
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! PROPERTY
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @localVarManager insertNonMutableProperty ?let @lstring inVarName
                                                  ?let @unifiedTypeMapEntry inType
@@ -241,7 +241,7 @@ setter @localVarManager insertNonMutableProperty ?let @lstring inVarName
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @localVarManager insertMutableProperty ?let @lstring inVarName
                                               ?let @unifiedTypeMapEntry inType
@@ -257,21 +257,21 @@ setter @localVarManager insertMutableProperty ?let @lstring inVarName
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! OVERRIDES AND BRANCHES
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @localVarManager openOverrideForSelectBlock {
   self.mOverridenManagers += !.selectOverrideFirstBranch {!savedManager: self.mCurrentManager}
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @localVarManager openOverrideForRepeatBlock {
   self.mOverridenManagers += !.repeatOverride
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @localVarManager closeOverride ?let @location unused inEndOfBranchLocation {
   if [self.mOverridenManagers count] > 0 then
@@ -285,13 +285,13 @@ setter @localVarManager closeOverride ?let @location unused inEndOfBranchLocatio
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @localVarManager openBranch {
   [!?self.mCurrentManager openScope]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @localVarManager closeBranch ?let @location inEndOfBranchLocation {
   [!?self.mCurrentManager closeScope !inEndOfBranchLocation]
@@ -313,9 +313,9 @@ setter @localVarManager closeBranch ?let @location inEndOfBranchLocation {
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! TYPES
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 boolset @localVariableAttributes {
   rejectWriteInInitializedAndReadStates,
@@ -326,7 +326,7 @@ boolset @localVariableAttributes {
   suggestDeclareUnusedParameterAsUnused
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum @localVarValuation {
   case invalid #--- Error state, for disabled further error messages
@@ -336,7 +336,7 @@ enum @localVarValuation {
   case mutated # The variable has been rewritten
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @scopeLocalVarMap {
   private var @unifiedTypeMapEntry mType
@@ -349,13 +349,13 @@ map @scopeLocalVarMap {
   remove removeKey error message "there is no '%K' local variable"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @localVarMapListForLLVM {
   public let @scopeLocalVarMap mMap
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum @overrideKind {
   case selectOverrideFirstBranch (@currentVarManager savedManager)
@@ -363,29 +363,29 @@ enum @overrideKind {
   case repeatOverride
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @openedOverrideList {
   public let @overrideKind mOverrideKind
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @localVarManager {
   private var @currentVarManager mCurrentManager = .new {}
   private var @openedOverrideList mOverridenManagers = {}
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @currentVarManager {
   private var @scopeLocalVarMap mLocalVarMap = {}
   private var @localVarMapListForLLVM mSubMaps = {}
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! NEUTRAL ACCESS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @localVarManager neutralAccess ?let @lstring inVarName
                                       !@unifiedTypeMapEntry outType
@@ -394,7 +394,7 @@ setter @localVarManager neutralAccess ?let @lstring inVarName
   [!?self.mCurrentManager neutralAccess !inVarName ?outType ?outCppName ?outNameForCheckingFormalParameterUsing]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @currentVarManager neutralAccess ?let @lstring inVarName
                                         !@unifiedTypeMapEntry outType
@@ -409,7 +409,7 @@ setter @currentVarManager neutralAccess ?let @lstring inVarName
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @localVarMapListForLLVM neutralAccess ?let @lstring inVarName
                                              ?let @uint inIndex
@@ -430,15 +430,15 @@ setter @localVarMapListForLLVM neutralAccess ?let @lstring inVarName
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! DROP ACCESS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @localVarManager searchForDropAccess ?let @lstring inVarName {
   [!?self.mCurrentManager searchForDropAccess !inVarName]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @currentVarManager searchForDropAccess ?let @lstring inVarName {
   if let [self.mLocalVarMap searchKey
@@ -461,9 +461,9 @@ setter @currentVarManager searchForDropAccess ?let @lstring inVarName {
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! WRITE ACCESS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @localVarManager searchForWriteAccess ?let @lstring inVarName
                                              !@unifiedTypeMapEntry outType
@@ -477,7 +477,7 @@ setter @localVarManager searchForWriteAccess ?let @lstring inVarName
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @currentVarManager searchForWriteAccess ?let @lstring inVarName
                                                !@unifiedTypeMapEntry outType
@@ -503,7 +503,7 @@ setter @currentVarManager searchForWriteAccess ?let @lstring inVarName
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @localVarMapListForLLVM writeAccessInSubMap ?let @lstring inVarName
                                                    ?let @uint inIndex
@@ -540,7 +540,7 @@ setter @localVarMapListForLLVM writeAccessInSubMap ?let @lstring inVarName
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @localVarValuation writeTransition ?let @lstring inVarName
                                           ?inOverridenMap: let @bool inOverridenMap
@@ -573,9 +573,9 @@ setter @localVarValuation writeTransition ?let @lstring inVarName
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! READ ACCESS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @localVarManager searchForReadAccess ?let @lstring inVarName
                                             !@unifiedTypeMapEntry outType
@@ -584,7 +584,7 @@ setter @localVarManager searchForReadAccess ?let @lstring inVarName
   [!?self.mCurrentManager searchForReadAccess !inVarName ?outType ?outCppName ?outNameForCheckingFormalParameterUsing]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @currentVarManager searchForReadAccess ?let @lstring inVarName
                                               !@unifiedTypeMapEntry outType
@@ -613,7 +613,7 @@ setter @currentVarManager searchForReadAccess ?let @lstring inVarName
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @localVarMapListForLLVM readAccess ?let @lstring inVarName
                                           ?let @uint inIndex
@@ -646,7 +646,7 @@ setter @localVarMapListForLLVM readAccess ?let @lstring inVarName
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @localVarValuation readTransition ?let @lstring inVarName
                                          ?let @localVariableAttributes inAttributes {
@@ -671,9 +671,9 @@ setter @localVarValuation readTransition ?let @lstring inVarName
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! READ WRITE ACCESS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @localVarManager searchForReadWriteAccess ?let @lstring inVarName
                                                  !@unifiedTypeMapEntry outType
@@ -682,7 +682,7 @@ setter @localVarManager searchForReadWriteAccess ?let @lstring inVarName
   [!?self.mCurrentManager searchForReadWriteAccess !inVarName ?outType ?outCppName ?outNameForCheckingFormalParameterUsing]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @currentVarManager searchForReadWriteAccess ?let @lstring inVarName
                                                    !@unifiedTypeMapEntry outType
@@ -708,7 +708,7 @@ setter @currentVarManager searchForReadWriteAccess ?let @lstring inVarName
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @localVarMapListForLLVM readWriteAccess ?let @lstring inVarName
                                                ?let @uint inIndex
@@ -741,7 +741,7 @@ setter @localVarMapListForLLVM readWriteAccess ?let @lstring inVarName
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @localVarValuation readWriteTransition ?let @lstring inVarName
                                               ?inOverridenMap: let @bool inOverridenMap
@@ -750,16 +750,16 @@ setter @localVarValuation readWriteTransition ?let @lstring inVarName
   [!?self writeTransition !inVarName !inOverridenMap: inOverridenMap !inAttributes]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SCOPE
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @currentVarManager openScope {
   [!?self.mSubMaps insertAtIndex !self.mLocalVarMap !0]
   self.mLocalVarMap = {}
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @currentVarManager closeScope ?let @location inErrorLocation {
   [self.mLocalVarMap checkFinalStates !inErrorLocation]
@@ -771,9 +771,9 @@ setter @currentVarManager closeScope ?let @location inErrorLocation {
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! INSERT KEY
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @currentVarManager insertKey ?let @lstring inVarName
                                     ?let @unifiedTypeMapEntry inType
@@ -791,9 +791,9 @@ setter @currentVarManager insertKey ?let @lstring inVarName
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! CHECK FINAL STATE
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 method @localVarValuation checkFinalState ?let @lstring inVarName ?let @localVariableAttributes inAttributes {
   switch self
@@ -821,7 +821,7 @@ method @localVarValuation checkFinalState ?let @lstring inVarName ?let @localVar
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 method @scopeLocalVarMap checkFinalStates ?let @location unused inErrorLocation {
   for (varName 3* attributes valuation) in self do
@@ -829,21 +829,21 @@ method @scopeLocalVarMap checkFinalStates ?let @location unused inErrorLocation 
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 method @localVarManager checkAutomatonStates ?let @location inErrorLocation {
   [self.mCurrentManager checkAutomatonStates !inErrorLocation]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 method @currentVarManager checkAutomatonStates ?let @location inErrorLocation {
   [self.mLocalVarMap checkFinalStates !inErrorLocation]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! COMBINE MANAGERS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 method @localVarValuation combineValuationWith ?let @localVarValuation inOther
                                                !@localVarValuation outResult
@@ -892,7 +892,7 @@ method @localVarValuation combineValuationWith ?let @localVarValuation inOther
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @scopeLocalVarMap combineMapWith ?otherMap: let @scopeLocalVarMap inOtherMap
                                         ?!@string ioErrorMessage {
@@ -918,7 +918,7 @@ setter @scopeLocalVarMap combineMapWith ?otherMap: let @scopeLocalVarMap inOther
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @currentVarManager combineManagerWith ?otherManager: let @currentVarManager inOtherManager
                                              ?errorLocation: let @location inErrorLocation {
@@ -947,9 +947,9 @@ setter @currentVarManager combineManagerWith ?otherManager: let @currentVarManag
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 # EXAMPLES
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 #proc azerty1 ?let @bool unused ssss { message [ssss cString] }
 #proc azerty2 ?let @bool ssss { message [ssss cString] }
@@ -965,4 +965,4 @@ setter @currentVarManager combineManagerWith ?otherManager: let @currentVarManag
 #proc azertyB ?!@bool unused ssss { ssss = true }
 #proc azertyC ?!@bool ssss { ssss = true }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

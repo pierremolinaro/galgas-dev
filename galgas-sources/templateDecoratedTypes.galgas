@@ -1,4 +1,4 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  Semantic decorated types for template generation
 #
@@ -20,19 +20,19 @@
 # CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 # DEALINGS IN THE SOFTWARE.
 #
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateInstructionStringForGeneration : @templateInstructionForGeneration {
   private let @string mTemplateString
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateInstructionExpressionForGeneration : @templateInstructionForGeneration {
   private let @semanticExpressionForGeneration mExpression
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateBlockInstructionForGeneration : @templateInstructionForGeneration {
   private let @semanticExpressionForGeneration mExpression
@@ -40,29 +40,29 @@ refclass @templateBlockInstructionForGeneration : @templateInstructionForGenerat
   private let @templateInstructionListForGeneration mBlockInstructionList
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateInstructionGetColumnLocationForGeneration : @templateInstructionForGeneration {
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateInstructionGotoColumnLocationForGeneration : @templateInstructionForGeneration {
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @templateInstructionIfBranchListForGeneration {
   public let @semanticExpressionForGeneration mExpression
   public let @templateInstructionListForGeneration mInstructionList
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateInstructionIfForGeneration : @templateInstructionForGeneration {
   private let @templateInstructionIfBranchListForGeneration mTemplateInstructionIfBranchList
   private let @templateInstructionListForGeneration mElseInstructionList
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 

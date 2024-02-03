@@ -1,4 +1,4 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  Generate predefined types
 #
@@ -20,7 +20,7 @@
 # CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 # DEALINGS IN THE SOFTWARE.
 #
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @outputActualParameterForGeneration generateActualParameter
   ?!@stringset ioInclusionSet
@@ -35,7 +35,7 @@ override method @outputActualParameterForGeneration generateActualParameter
   [self.mOutputActualParameterExpression generateExpression !?ioImplementation !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?outCppName]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @outputInputActualParameterForGeneration generateActualParameter
   ?!@stringset ioInclusionSet
@@ -55,7 +55,7 @@ override method @outputInputActualParameterForGeneration generateActualParameter
   [!?ioUnusedVariableCppNameSet removeKey !self.mOutputInputVariableCppName]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @inputActualParameterForGeneration generateActualParameter
   ?!@stringset unused ioInclusionSet
@@ -70,7 +70,7 @@ override method @inputActualParameterForGeneration generateActualParameter
   [!?ioUnusedVariableCppNameSet removeKey !outCppName]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @inputJokerParameterForGeneration generateActualParameter
   ?!@stringset ioInclusionSet
@@ -87,7 +87,7 @@ override method @inputJokerParameterForGeneration generateActualParameter
   ioOutputVariableList += !self.mInputActualCppName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @semanticBlockInstructionForGeneration generateInstruction
   ?!@stringset ioInclusionSet
@@ -107,21 +107,21 @@ override method @semanticBlockInstructionForGeneration generateInstruction
   ioGeneratedCode += "}\n"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @outputInputActualParameterForGeneration generatePoisonedVariables
   ?!@string unused ioImplementation
   ?!@stringset unused ioUnusedVariableCppNameSet {
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @outputActualParameterForGeneration generatePoisonedVariables
   ?!@string unused ioImplementation
   ?!@stringset unused ioUnusedVariableCppNameSet {
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @inputJokerParameterForGeneration generatePoisonedVariables
   ?!@string ioImplementation
@@ -136,7 +136,7 @@ override method @inputJokerParameterForGeneration generatePoisonedVariables
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @inputActualParameterForGeneration generatePoisonedVariables
                         ?!@string ioImplementation
@@ -151,4 +151,4 @@ override method @inputActualParameterForGeneration generatePoisonedVariables
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

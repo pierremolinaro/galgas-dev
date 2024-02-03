@@ -15,34 +15,34 @@
 # CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 # DEALINGS IN THE SOFTWARE.
 #
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
   abstract refclass @abstractGrammarInstructionSyntaxDirectedTranslationResult {
   }
 
-  #·················································································································
+  #·······························································································
 
   refclass @grammarInstructionSyntaxDirectedTranslationResultNone :
     @abstractGrammarInstructionSyntaxDirectedTranslationResult {
   }
 
-  #·················································································································
+  #·······························································································
 
   refclass @grammarInstructionSyntaxDirectedTranslationDropResult :
     @abstractGrammarInstructionSyntaxDirectedTranslationResult {
     private let @location mLocation
   }
 
-  #·················································································································
+  #·······························································································
 
   refclass @grammarInstructionSyntaxDirectedTranslationResultInVar :
     @abstractGrammarInstructionSyntaxDirectedTranslationResult {
     private let @lstring mActualParameterName
   }
 
-  #·················································································································
+  #·······························································································
 
   refclass @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar :
     @abstractGrammarInstructionSyntaxDirectedTranslationResult {
@@ -50,7 +50,7 @@
     private let @lstring mActualParameterName
   }
 
-  #·················································································································
+  #·······························································································
 
   refclass @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst :
     @abstractGrammarInstructionSyntaxDirectedTranslationResult {
@@ -58,7 +58,7 @@
     private let @lstring mActualParameterName
   }
 
-  #·················································································································
+  #·······························································································
 
   refclass @grammarInFileInstructionAST : @semanticInstructionAST {
     private let @lstring mGrammarComponentName
@@ -69,7 +69,7 @@
     private let @abstractGrammarInstructionSyntaxDirectedTranslationResult mAbstractGrammarInstructionSyntaxDirectedTranslationResult
   }
 
-  #·················································································································
+  #·······························································································
 
   refclass @grammarInStringInstructionAST : @semanticInstructionAST {
     private let @lstring mGrammarComponentName
@@ -82,15 +82,15 @@
     private let @abstractGrammarInstructionSyntaxDirectedTranslationResult mAbstractGrammarInstructionSyntaxDirectedTranslationResult
   }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3InstructionsSyntax {
 
-  #·················································································································
+  #·······························································································
   # NEW GRAMMAR INSTRUCTION, COMPATIBLE WITH GALGAS 4
-  #·················································································································
+  #·······························································································
 
   rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
     $grammar$
@@ -109,7 +109,7 @@ syntax extension galgas3InstructionsSyntax {
     <grammar_instruction_core> !instructionLocation !actualParameterList !grammarComponentName !labelName ?outInstruction
   }
 
-  #·················································································································
+  #·······························································································
 
   rule <grammar_instruction_core> ?let @location inInstructionLocation
                                   ?let @actualParameterListAST actualParameterList
@@ -138,7 +138,7 @@ syntax extension galgas3InstructionsSyntax {
     }
   }
 
-  #·················································································································
+  #·······························································································
 
   rule <grammar_instruction_core> ?let @location inInstructionLocation
                                   ?let @actualParameterListAST actualParameterList
@@ -172,9 +172,9 @@ syntax extension galgas3InstructionsSyntax {
     }
   }
 
-  #·················································································································
+  #·······························································································
   # OBSOLETE GRAMMAR INSTRUCTION, NOT COMPATIBLE WITH GALGAS 4
-  #·················································································································
+  #·······························································································
 
   rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction { #obsolete
     $grammar$
@@ -193,7 +193,7 @@ syntax extension galgas3InstructionsSyntax {
     <grammar_instruction_core_obsolete> !instructionLocation !grammarComponentName !labelName ?outInstruction
   }
 
-  #·················································································································
+  #·······························································································
 
   rule <grammar_instruction_core_obsolete> ?let @location inInstructionLocation
                                            ?let @lstring inGrammarComponentName
@@ -222,7 +222,7 @@ syntax extension galgas3InstructionsSyntax {
     }
   }
 
-  #·················································································································
+  #·······························································································
 
   rule <grammar_instruction_core_obsolete> ?let @location inInstructionLocation
                                            ?let @lstring inGrammarComponentName
@@ -258,15 +258,15 @@ syntax extension galgas3InstructionsSyntax {
     }
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4InstructionsSyntax {
 
-  #·················································································································
+  #·······························································································
 
   rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations
                               ?!@stringset unused ioUserImplicitDeclaredTypeSet
@@ -285,7 +285,7 @@ syntax extension galgas4InstructionsSyntax {
     <grammar_instruction_core> !instructionLocation !actualParameterList !grammarComponentName !labelName ?outInstruction
   }
 
-  #·················································································································
+  #·······························································································
 
   rule <grammar_instruction_core> ?let @location inInstructionLocation
                                   ?let @actualParameterListAST actualParameterList
@@ -314,7 +314,7 @@ syntax extension galgas4InstructionsSyntax {
     }
   }
 
-  #·················································································································
+  #·······························································································
 
   rule <grammar_instruction_core> ?let @location inInstructionLocation
                                   ?let @actualParameterListAST actualParameterList
@@ -348,13 +348,13 @@ syntax extension galgas4InstructionsSyntax {
     }
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! CONTEXT
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
   override method @grammarInFileInstructionAST enterInstructionInSemanticContext
     ?!@unifiedTypeMap ioTypeMap
@@ -365,7 +365,7 @@ syntax extension galgas4InstructionsSyntax {
     end
   }
 
-  #·················································································································
+  #·······························································································
 
   override method @grammarInStringInstructionAST enterInstructionInSemanticContext
     ?!@unifiedTypeMap ioTypeMap
@@ -376,9 +376,9 @@ syntax extension galgas4InstructionsSyntax {
     end
   }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @grammarInFileInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
@@ -549,9 +549,9 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
   }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! GENERATION (source file)
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
   refclass @grammarInstructionWithSourceFileForGeneration : @semanticInstructionForGeneration {
     private let @location mInstructionLocation
@@ -564,7 +564,7 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
     private let @string mSyntaxDirectedTranslationResultVarName
   }
 
-  #·················································································································
+  #·······························································································
 
   override method @grammarInstructionWithSourceFileForGeneration generateInstruction
     ?!@stringset ioInclusionSet
@@ -620,9 +620,9 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
     end
   }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! GENERATION (source string)
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
   refclass @grammarInstructionWithSourceExpressionForGeneration : @semanticInstructionForGeneration {
     private let @location mInstructionLocation
@@ -636,7 +636,7 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
     private let @string mSyntaxDirectedTranslationResultVarName
   }
 
-  #·················································································································
+  #·······························································································
 
   override method @grammarInstructionWithSourceExpressionForGeneration generateInstruction
     ?!@stringset ioInclusionSet
@@ -699,4 +699,4 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
     end
   }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

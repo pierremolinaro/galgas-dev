@@ -1,4 +1,4 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  Class function
 #
@@ -20,7 +20,7 @@
 # CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 # DEALINGS IN THE SOFTWARE.
 #
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc enterClassFunctionWithoutArgument
   ?!@classFunctionMap ioClassFunctionMap
@@ -41,7 +41,7 @@ proc enterClassFunctionWithoutArgument
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc enterClassFunctionWithArgument
   ?!@classFunctionMap ioClassFunctionMap
@@ -62,7 +62,7 @@ proc enterClassFunctionWithArgument
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc enterClassFunctionWith2Arguments
   ?!@classFunctionMap ioClassFunctionMap
@@ -90,7 +90,7 @@ proc enterClassFunctionWith2Arguments
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc enterClassFunctionWith3Arguments
   ?!@classFunctionMap ioClassFunctionMap
@@ -121,7 +121,7 @@ proc enterClassFunctionWith3Arguments
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 #proc enterConstructorWith4Arguments
 #  ?!@classFunctionMap ioConstructorMap
@@ -160,7 +160,7 @@ proc enterClassFunctionWith3Arguments
 #  ]
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @locationPredefinedTypeAST getClassFunctionMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -216,7 +216,7 @@ override method @locationPredefinedTypeAST getClassFunctionMap
 #  )
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @stringPredefinedTypeAST getClassFunctionMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -384,7 +384,7 @@ override method @stringPredefinedTypeAST getClassFunctionMap
   )
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @charPredefinedTypeAST getClassFunctionMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -416,7 +416,7 @@ override method @charPredefinedTypeAST getClassFunctionMap
   )
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @sintPredefinedTypeAST getClassFunctionMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -438,7 +438,7 @@ override method @sintPredefinedTypeAST getClassFunctionMap
   )
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @sint64PredefinedTypeAST getClassFunctionMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -460,7 +460,7 @@ override method @sint64PredefinedTypeAST getClassFunctionMap
   )
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @typePredefinedTypeAST getClassFunctionMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -475,7 +475,7 @@ override method @typePredefinedTypeAST getClassFunctionMap
   )
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @dataPredefinedTypeAST getClassFunctionMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -500,7 +500,7 @@ override method @dataPredefinedTypeAST getClassFunctionMap
   )
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @functionPredefinedTypeAST getClassFunctionMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -533,7 +533,7 @@ override method @functionPredefinedTypeAST getClassFunctionMap
   )
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @doublePredefinedTypeAST getClassFunctionMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -558,7 +558,7 @@ override method @doublePredefinedTypeAST getClassFunctionMap
   )
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @timerPredefinedTypeAST getClassFunctionMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -574,5 +574,5 @@ override method @timerPredefinedTypeAST getClassFunctionMap
   )
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 

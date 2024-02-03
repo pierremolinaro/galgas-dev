@@ -1,4 +1,4 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  Semantic decorated types for template generation
 #
@@ -20,7 +20,7 @@
 # CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 # DEALINGS IN THE SOFTWARE.
 #
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @templateInstructionForGeneration templateCodeGeneration
   ?!@string ioGeneratedCode
@@ -29,7 +29,7 @@ abstract method @templateInstructionForGeneration templateCodeGeneration
   ?!@stringset unused ioUnusedVariableCppNameSet
   ?!@bool unused ioUseColumnMarker
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc templateCodeGenerationForListInstruction
   ?let @templateInstructionListForGeneration inInstructionList
@@ -50,7 +50,7 @@ proc templateCodeGenerationForListInstruction
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateInstructionStringForGeneration templateCodeGeneration
   ?!@string ioGeneratedCode
@@ -61,7 +61,7 @@ override method @templateInstructionStringForGeneration templateCodeGeneration
   ioGeneratedCode += "result.appendString (" + [self.mTemplateString utf8RepresentationEscapingQuestionMark] + ") ;\n"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateInstructionExpressionForGeneration templateCodeGeneration
   ?!@string ioGeneratedCode
@@ -74,7 +74,7 @@ override method @templateInstructionExpressionForGeneration templateCodeGenerati
   ioGeneratedCode += "result.appendString (" + cppName + ".stringValue ()) ;\n"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateBlockInstructionForGeneration templateCodeGeneration
   ?!@string ioGeneratedCode
@@ -100,7 +100,7 @@ override method @templateBlockInstructionForGeneration templateCodeGeneration
   ioGeneratedCode += "}\n"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateInstructionGetColumnLocationForGeneration templateCodeGeneration
   ?!@string ioGeneratedCode
@@ -112,7 +112,7 @@ override method @templateInstructionGetColumnLocationForGeneration templateCodeG
   ioGeneratedCode += "columnMarker = result.currentColumn () ;\n"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateInstructionGotoColumnLocationForGeneration templateCodeGeneration
   ?!@string ioGeneratedCode
@@ -124,7 +124,7 @@ override method @templateInstructionGotoColumnLocationForGeneration templateCode
   ioGeneratedCode += "result.appendSpacesUntilColumn (columnMarker) ;\n"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateInstructionIfForGeneration templateCodeGeneration
                                                         ?!@string ioGeneratedCode
@@ -178,5 +178,5 @@ override method @templateInstructionIfForGeneration templateCodeGeneration
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 

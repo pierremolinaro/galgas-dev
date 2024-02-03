@@ -15,7 +15,7 @@
 # CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 # DEALINGS IN THE SOFTWARE.
 #
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @terminalList {
   public let @lstring mTerminalName
@@ -26,7 +26,7 @@ list @terminalList {
   public let @uint mStyleIndex # 0 if default style
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @lexicalExplicitTokenListMap {
   public let @lstring mTerminal
@@ -36,7 +36,7 @@ map @lexicalExplicitTokenListMap {
   search searchKey error message "the '%K' terminal is not declared"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 sortedlist @tokenSortedlist {
   public let @uint mLength
@@ -46,7 +46,7 @@ sortedlist @tokenSortedlist {
   mLength <, mName <
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @lexicalExplicitTokenListMapMap {
   public let @lexicalExplicitTokenListMap mExplicitTokenListMap
@@ -56,7 +56,7 @@ map @lexicalExplicitTokenListMapMap {
   search searchKey error message "the '%K' token list is not declared"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @lexicalMessageMap {
   public let @lstring mLexicalMessage
@@ -65,7 +65,7 @@ map @lexicalMessageMap {
   search searchKey error message "the '%K' message is not declared"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @lexicalRoutineFormalArgumentList {
   public let @lexicalArgumentModeAST mLexicalFormalArgumentMode
@@ -73,7 +73,7 @@ list @lexicalRoutineFormalArgumentList {
   public let @string mArgumentNameForComment
  }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @lexicalRoutineMap {
   public let @lexicalRoutineFormalArgumentList mLexicalRoutineFormalArgumentList
@@ -83,14 +83,14 @@ map @lexicalRoutineMap {
   search searchKey error message "the '%K' lexical routine is not declared"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @lexicalFunctionFormalArgumentList {
   public let @lexicalTypeEnum mLexicalType
   public let @string mArgumentNameForComment
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @lexicalFunctionMap {
   public let @lexicalFunctionFormalArgumentList mLexicalTypeList
@@ -102,7 +102,7 @@ map @lexicalFunctionMap {
 }
 
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @templateDelimitorList {
   public let @lstring mStartString
@@ -129,7 +129,7 @@ map @lexicalTagMap {
   search searchKey error message "the '%K' tag is not declared"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @lexiqueAnalysisContext {
   public let @string mLexiqueName
@@ -146,5 +146,5 @@ struct @lexiqueAnalysisContext {
   public let @stringset mUnicodeTestFunctions
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
