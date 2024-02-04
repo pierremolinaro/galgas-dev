@@ -1725,8 +1725,8 @@ static void internalValueCount64UsingCache (const uint32_t inValue,
     internalValueCount64UsingCache (gNodeArray [nodeIndex].mTHEN, var, nd1, nc1, ioDirectCacheArray, ioComplementCacheArray COMMA_THERE) ;
     nombreDirect = nd0 + nd1 ;
     nombreComplement = nc0 + nc1 ;
-    ioDirectCacheArray.forceObjectAtIndex (inValue / 2, nombreDirect, 0 COMMA_HERE) ;
-    ioComplementCacheArray.forceObjectAtIndex (inValue / 2, nombreComplement, 0 COMMA_HERE) ;
+    ioDirectCacheArray.forceObjectAtIndex (inValue / 2, nombreDirect, 0) ;
+    ioComplementCacheArray.forceObjectAtIndex (inValue / 2, nombreComplement, 0) ;
     nombreDirect <<= (inVariableCount - var - 1) ;
     nombreComplement <<= (inVariableCount - var - 1) ;
   }
@@ -1825,8 +1825,8 @@ static void internalValueCount128UsingCache (const uint32_t inValue,
       nombreDirect += nombreDirect ;
       nombreComplement += nombreComplement ;
     }
-    ioDirectCacheArray.forceObjectAtIndex (int32_t (inValue / 2), nombreDirect, 0 COMMA_HERE) ;
-    ioComplementCacheArray.forceObjectAtIndex (int32_t (inValue / 2), nombreComplement, 0 COMMA_HERE) ;
+    ioDirectCacheArray.forceObjectAtIndex (int32_t (inValue / 2), nombreDirect, 0) ;
+    ioComplementCacheArray.forceObjectAtIndex (int32_t (inValue / 2), nombreComplement, 0) ;
   }
   if ((inValue & 1) != 0) {
     const UInt128 tempo = nombreDirect ;
@@ -1921,8 +1921,8 @@ static void internalValueCountUsingCache (const uint32_t inValue,
       nombreDirect <<= (uint32_t) shiftCount ;
       nombreComplement <<= (uint32_t) shiftCount ;
     }
-    ioDirectCacheArray.forceObjectAtIndex (inValue / 2, nombreDirect, BigSigned () COMMA_HERE) ;
-    ioComplementCacheArray.forceObjectAtIndex (inValue / 2, nombreComplement, BigSigned () COMMA_HERE) ;
+    ioDirectCacheArray.forceObjectAtIndex (inValue / 2, nombreDirect, BigSigned ()) ;
+    ioComplementCacheArray.forceObjectAtIndex (inValue / 2, nombreComplement, BigSigned ()) ;
   }
   if ((inValue & 1) != 0) {
     swap (nombreDirect, nombreComplement) ;
@@ -3166,7 +3166,7 @@ void C_BDD::printBDDpackageOperationsSummary (AbstractOutputStream & inStream) {
     if (entrySizeArray.count () > length) {
       entrySizeArray.incrementAtIndex (length COMMA_HERE) ;
     }else{
-      entrySizeArray.forceObjectAtIndex (length, 1, 0 COMMA_HERE) ;
+      entrySizeArray.forceObjectAtIndex (length, 1, 0) ;
     }
   }
   for (int32_t i=0 ; i<entrySizeArray.count () ; i++) {

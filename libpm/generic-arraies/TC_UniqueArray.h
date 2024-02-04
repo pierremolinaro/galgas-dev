@@ -175,8 +175,7 @@ template <typename TYPE> class TC_UniqueArray final {
 //--- Force entry
   public: void forceObjectAtIndex (const int32_t inIndex,
                                    const TYPE & inValue,
-                                   const TYPE & inDefaultValue
-                                   COMMA_LOCATION_ARGS) ;
+                                   const TYPE & inDefaultValue) ;
 
 //--- Prepend object
   public: void prependObject (const TYPE & inValue) ; // inValue is copied
@@ -458,8 +457,7 @@ template <typename TYPE> void TC_UniqueArray <TYPE>::setCapacity (const int32_t 
 
 template <typename TYPE> void TC_UniqueArray <TYPE>::forceObjectAtIndex (const int32_t inIndex,
                                                                          const TYPE & inValue,
-                                                                         const TYPE & inDefaultValue
-                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+                                                                         const TYPE & inDefaultValue) {
 //--- Realloc if necessary
   if (mCapacity < (inIndex + 1)) {
     setCapacity (inIndex + 1) ;
