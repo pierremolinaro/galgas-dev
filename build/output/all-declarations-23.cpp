@@ -9,6 +9,65 @@
 
 //--------------------------------------------------------------------------------------------------
 //
+//Overriding extension method '@boolsetTypeForGeneration appendSpecificImplementation'
+//
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_boolsetTypeForGeneration::method_appendSpecificImplementation (const GALGAS_unifiedTypeMap /* constinArgument_inTypeMap */,
+                                                                         GALGAS_stringset & ioArgument_ioInclusionSet,
+                                                                         GALGAS_string & outArgument_outImplementation,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+  const GALGAS_boolsetTypeForGeneration temp_0 = this ;
+  extensionMethod_addHeaderFileName (temp_0.readProperty_mSelfTypeEntry (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 329)) ;
+  const GALGAS_boolsetTypeForGeneration temp_1 = this ;
+  const GALGAS_boolsetTypeForGeneration temp_2 = this ;
+  const GALGAS_boolsetTypeForGeneration temp_3 = this ;
+  const GALGAS_boolsetTypeForGeneration temp_4 = this ;
+  outArgument_outImplementation = GALGAS_string (filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificImplementation (inCompiler, extensionGetter_definition (temp_1.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 331)).readProperty_mTypeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_2.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 332)), temp_3.readProperty_mFlagList (), GALGAS_bigint ("1", inCompiler  COMMA_SOURCE_FILE ("type-boolset.galgas", 334)).left_shift_operation (temp_4.readProperty_mFlagList ().getter_count (SOURCE_FILE ("type-boolset.galgas", 334)), inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 334)).substract_operation (GALGAS_bigint ("1", inCompiler  COMMA_SOURCE_FILE ("type-boolset.galgas", 334)), inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 334)) COMMA_SOURCE_FILE ("type-boolset.galgas", 330))) ;
+}
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'weakSuffix'
+//
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_string function_weakSuffix (Compiler *
+                                   COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_string result_result ; // Returned variable
+  result_result = GALGAS_string ("-weak") ;
+//---
+  return result_result ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//  Function introspection                                                                       
+//--------------------------------------------------------------------------------------------------
+
+static const C_galgas_type_descriptor * functionArgs_weakSuffix [1] = {
+  nullptr
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+static GALGAS_object functionWithGenericHeader_weakSuffix (Compiler * inCompiler,
+                                                           const cObjectArray & /* inEffectiveParameterArray */,
+                                                           const GALGAS_location & /* inErrorLocation */
+                                                           COMMA_LOCATION_ARGS) {
+  return function_weakSuffix (inCompiler COMMA_THERE).getter_object (THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+C_galgas_function_descriptor functionDescriptor_weakSuffix ("weakSuffix",
+                                                            functionWithGenericHeader_weakSuffix,
+                                                            & kTypeDescriptor_GALGAS_string,
+                                                            0,
+                                                            functionArgs_weakSuffix) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Overriding extension getter '@classDeclarationAST keyRepresentation'
 //
 //--------------------------------------------------------------------------------------------------

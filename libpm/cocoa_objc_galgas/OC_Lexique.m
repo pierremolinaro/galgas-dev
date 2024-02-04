@@ -501,7 +501,10 @@
     NSLog (@"  Suppress affected Tokens") ;
   #endif
   search = YES ;
-  const NSUInteger affectedRangeEndLocation = inEditedRange.location + inEditedRange.length - (NSUInteger) inChangeInLength ;
+  const NSUInteger affectedRangeEndLocation = (inChangeInLength >= 0)
+    ? (inEditedRange.location + inEditedRange.length - (NSUInteger) inChangeInLength)
+    : (inEditedRange.location + inEditedRange.length + (NSUInteger) -inChangeInLength)
+  ;
   while ((*outLowerIndexToRedrawInStyleArray < (SInt32) [ioStyledRangeArray count]) && search) {
     OC_Token * token = [ioStyledRangeArray objectAtIndex:(NSUInteger) * outLowerIndexToRedrawInStyleArray] ;
     search = [token range].location < affectedRangeEndLocation ;

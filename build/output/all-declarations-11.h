@@ -2733,9 +2733,11 @@ class cParser_galgas_33_ExpressionSyntax {
 //
 //--------------------------------------------------------------------------------------------------
 
-extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_checkEntityUsefulness ;
+extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorClassDeclaration ;
 
-extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_check_5F_big_5F_int ;
+extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_propertyAccessRequiresSelf ;
+
+extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_checkEntityUsefulness ;
 
 extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_displayUnicodeLexicalTestFunctions ;
 
@@ -2743,13 +2745,17 @@ extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_emitClassGraph ;
 
 extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_emitSyntaxDiagrams ;
 
+extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorValueClassDeclaration ;
+
 extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorAnomynousForInstructionEnumeratedObject ;
 
-extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorClassDeclaration ;
+extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorObsoleteGetterCall ;
+
+extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorPropertyGetterCall ;
 
 extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorEllipsisInEnumeratedObject ;
 
-extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorObsoleteGetterCall ;
+extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorOnGetterCallWithNoArgument ;
 
 extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorOldStyleCollectionInitializer ;
 
@@ -2757,25 +2763,19 @@ extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorOldStyleLoc
 
 extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorOldStylePropertyDeclaration ;
 
-extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorOnGetterCallWithNoArgument ;
-
 extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorOnUselessSelector ;
-
-extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorPropertyGetterCall ;
-
-extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorValueClassDeclaration ;
 
 extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_generateManyFiles ;
 
 extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_generateOneHeader ;
 
-extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_outputHTMLTypeListFile ;
-
 extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_outputHTMLgrammarFile ;
+
+extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_outputHTMLTypeListFile ;
 
 extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_printPredefinedLexicalActions ;
 
-extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_propertyAccessRequiresSelf ;
+extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_check_5F_big_5F_int ;
 
 extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_warningNotGalgas_34_Feature ;
 
@@ -2793,11 +2793,11 @@ extern C_UIntCommandLineOption gOption_galgas_5F_cli_5F_options_macosxSDK ;
 //
 //--------------------------------------------------------------------------------------------------
 
-extern C_StringCommandLineOption gOption_galgas_5F_cli_5F_options_cppCompile ;
-
 extern C_StringCommandLineOption gOption_galgas_5F_cli_5F_options_create_5F_project ;
 
 extern C_StringCommandLineOption gOption_galgas_5F_cli_5F_options_extractLIBPMOption ;
+
+extern C_StringCommandLineOption gOption_galgas_5F_cli_5F_options_cppCompile ;
 
 //--------------------------------------------------------------------------------------------------
 //

@@ -16,19 +16,28 @@ void enterOptionsFor_galgas_5F_cli_5F_options (NSMutableArray * ioBoolOptionArra
   OC_GGS_CommandLineOption * option ;
   option = [[OC_GGS_CommandLineOption alloc]
     initWithDomainName:@"galgas_cli_options"
-    identifier:@"checkEntityUsefulness"
+    identifier:@"errorClassDeclaration"
     commandChar:0
-    commandString:@"check-usefulness"
-    comment:@"Check Entity Usefulness"
+    commandString:@"error-class-declaration"
+    comment:@"'class' declaration is obsolete use 'valueclass'"
     defaultValue:@""
   ] ;
   [ioBoolOptionArray addObject:option] ;
   option = [[OC_GGS_CommandLineOption alloc]
     initWithDomainName:@"galgas_cli_options"
-    identifier:@"check_big_int"
+    identifier:@"propertyAccessRequiresSelf"
     commandChar:0
-    commandString:@"check-big-int"
-    comment:@"Run bit integers checks"
+    commandString:@"error-property-access-without-self"
+    comment:@"'self' is required for accessing properties in getter, setter and methods"
+    defaultValue:@""
+  ] ;
+  [ioBoolOptionArray addObject:option] ;
+  option = [[OC_GGS_CommandLineOption alloc]
+    initWithDomainName:@"galgas_cli_options"
+    identifier:@"checkEntityUsefulness"
+    commandChar:0
+    commandString:@"check-usefulness"
+    comment:@"Check Entity Usefulness"
     defaultValue:@""
   ] ;
   [ioBoolOptionArray addObject:option] ;
@@ -61,28 +70,19 @@ void enterOptionsFor_galgas_5F_cli_5F_options (NSMutableArray * ioBoolOptionArra
   [ioBoolOptionArray addObject:option] ;
   option = [[OC_GGS_CommandLineOption alloc]
     initWithDomainName:@"galgas_cli_options"
+    identifier:@"errorValueClassDeclaration"
+    commandChar:0
+    commandString:@"error-value-class-declaration"
+    comment:@"Error on 'value class' declaration"
+    defaultValue:@""
+  ] ;
+  [ioBoolOptionArray addObject:option] ;
+  option = [[OC_GGS_CommandLineOption alloc]
+    initWithDomainName:@"galgas_cli_options"
     identifier:@"errorAnomynousForInstructionEnumeratedObject"
     commandChar:0
     commandString:@"error-anonymous-for-instruction"
-    comment:@"error on anonymous 'for' instruction enumerated object ('for () in ...')"
-    defaultValue:@""
-  ] ;
-  [ioBoolOptionArray addObject:option] ;
-  option = [[OC_GGS_CommandLineOption alloc]
-    initWithDomainName:@"galgas_cli_options"
-    identifier:@"errorClassDeclaration"
-    commandChar:0
-    commandString:@"error-class-declaration"
-    comment:@"'class' declaration is obsolete use 'valueclass'"
-    defaultValue:@""
-  ] ;
-  [ioBoolOptionArray addObject:option] ;
-  option = [[OC_GGS_CommandLineOption alloc]
-    initWithDomainName:@"galgas_cli_options"
-    identifier:@"errorEllipsisInEnumeratedObject"
-    commandChar:0
-    commandString:@"error-ellipsis-in-for-instruction"
-    comment:@"error on ellipsis in enumerated object ('for (x y ...) in xxx')"
+    comment:@"Error on anonymous 'for' instruction enumerated object ('for () in ...')"
     defaultValue:@""
   ] ;
   [ioBoolOptionArray addObject:option] ;
@@ -91,34 +91,25 @@ void enterOptionsFor_galgas_5F_cli_5F_options (NSMutableArray * ioBoolOptionArra
     identifier:@"errorObsoleteGetterCall"
     commandChar:0
     commandString:@"error-on-obsolete-getter-call"
-    comment:@"error on call of an obsolete getter"
+    comment:@"Error on call of an obsolete getter"
     defaultValue:@""
   ] ;
   [ioBoolOptionArray addObject:option] ;
   option = [[OC_GGS_CommandLineOption alloc]
     initWithDomainName:@"galgas_cli_options"
-    identifier:@"errorOldStyleCollectionInitializer"
+    identifier:@"errorPropertyGetterCall"
     commandChar:0
-    commandString:@"error-old-syle-collection-initializer"
-    comment:@"error on old style collection initializer"
+    commandString:@"error-property-getter-call"
+    comment:@"Error on calling property getter (instead of dot notation)"
     defaultValue:@""
   ] ;
   [ioBoolOptionArray addObject:option] ;
   option = [[OC_GGS_CommandLineOption alloc]
     initWithDomainName:@"galgas_cli_options"
-    identifier:@"errorOldStyleLocalVarDeclaration"
+    identifier:@"errorEllipsisInEnumeratedObject"
     commandChar:0
-    commandString:@"error-old-style-local-var-declaration"
-    comment:@"error on old style local variable declaration"
-    defaultValue:@""
-  ] ;
-  [ioBoolOptionArray addObject:option] ;
-  option = [[OC_GGS_CommandLineOption alloc]
-    initWithDomainName:@"galgas_cli_options"
-    identifier:@"errorOldStylePropertyDeclaration"
-    commandChar:0
-    commandString:@"error-old-style-property-declaration"
-    comment:@"error on old style property declaration"
+    commandString:@"error-ellipsis-in-for-instruction"
+    comment:@"Error on ellipsis in enumerated object ('for (x y ...) in xxx')"
     defaultValue:@""
   ] ;
   [ioBoolOptionArray addObject:option] ;
@@ -133,28 +124,37 @@ void enterOptionsFor_galgas_5F_cli_5F_options (NSMutableArray * ioBoolOptionArra
   [ioBoolOptionArray addObject:option] ;
   option = [[OC_GGS_CommandLineOption alloc]
     initWithDomainName:@"galgas_cli_options"
+    identifier:@"errorOldStyleCollectionInitializer"
+    commandChar:0
+    commandString:@"error-old-syle-collection-initializer"
+    comment:@"Error on old style collection initializer"
+    defaultValue:@""
+  ] ;
+  [ioBoolOptionArray addObject:option] ;
+  option = [[OC_GGS_CommandLineOption alloc]
+    initWithDomainName:@"galgas_cli_options"
+    identifier:@"errorOldStyleLocalVarDeclaration"
+    commandChar:0
+    commandString:@"error-old-style-local-var-declaration"
+    comment:@"Error on old style local variable declaration"
+    defaultValue:@""
+  ] ;
+  [ioBoolOptionArray addObject:option] ;
+  option = [[OC_GGS_CommandLineOption alloc]
+    initWithDomainName:@"galgas_cli_options"
+    identifier:@"errorOldStylePropertyDeclaration"
+    commandChar:0
+    commandString:@"error-old-style-property-declaration"
+    comment:@"Error on old style property declaration"
+    defaultValue:@""
+  ] ;
+  [ioBoolOptionArray addObject:option] ;
+  option = [[OC_GGS_CommandLineOption alloc]
+    initWithDomainName:@"galgas_cli_options"
     identifier:@"errorOnUselessSelector"
     commandChar:0
     commandString:@"error-on-useless-selector"
     comment:@"Error on useless selector (GGS4)"
-    defaultValue:@""
-  ] ;
-  [ioBoolOptionArray addObject:option] ;
-  option = [[OC_GGS_CommandLineOption alloc]
-    initWithDomainName:@"galgas_cli_options"
-    identifier:@"errorPropertyGetterCall"
-    commandChar:0
-    commandString:@"error-property-getter-call"
-    comment:@"error on calling property getter (instead of dot notation)"
-    defaultValue:@""
-  ] ;
-  [ioBoolOptionArray addObject:option] ;
-  option = [[OC_GGS_CommandLineOption alloc]
-    initWithDomainName:@"galgas_cli_options"
-    identifier:@"errorValueClassDeclaration"
-    commandChar:0
-    commandString:@"error-value-class-declaration"
-    comment:@"error on 'value class' declaration"
     defaultValue:@""
   ] ;
   [ioBoolOptionArray addObject:option] ;
@@ -178,19 +178,19 @@ void enterOptionsFor_galgas_5F_cli_5F_options (NSMutableArray * ioBoolOptionArra
   [ioBoolOptionArray addObject:option] ;
   option = [[OC_GGS_CommandLineOption alloc]
     initWithDomainName:@"galgas_cli_options"
-    identifier:@"outputHTMLTypeListFile"
-    commandChar:84
-    commandString:@"output-html-type-dump-file"
-    comment:@"Output a HTML file that contains all defined types"
+    identifier:@"outputHTMLgrammarFile"
+    commandChar:0
+    commandString:@"output-html-grammar-file"
+    comment:@"Output a HTML file for every grammar component"
     defaultValue:@""
   ] ;
   [ioBoolOptionArray addObject:option] ;
   option = [[OC_GGS_CommandLineOption alloc]
     initWithDomainName:@"galgas_cli_options"
-    identifier:@"outputHTMLgrammarFile"
-    commandChar:0
-    commandString:@"output-html-grammar-file"
-    comment:@"Output a HTML file for every grammar component"
+    identifier:@"outputHTMLTypeListFile"
+    commandChar:84
+    commandString:@"output-html-type-dump-file"
+    comment:@"Output a HTML file that contains all defined types"
     defaultValue:@""
   ] ;
   [ioBoolOptionArray addObject:option] ;
@@ -205,10 +205,10 @@ void enterOptionsFor_galgas_5F_cli_5F_options (NSMutableArray * ioBoolOptionArra
   [ioBoolOptionArray addObject:option] ;
   option = [[OC_GGS_CommandLineOption alloc]
     initWithDomainName:@"galgas_cli_options"
-    identifier:@"propertyAccessRequiresSelf"
+    identifier:@"check_big_int"
     commandChar:0
-    commandString:@"error-property-access-without-self"
-    comment:@"'self' is required for accessing properties in getter, setter and methods"
+    commandString:@"check-big-int"
+    comment:@"Run bit integers checks"
     defaultValue:@""
   ] ;
   [ioBoolOptionArray addObject:option] ;
@@ -217,7 +217,7 @@ void enterOptionsFor_galgas_5F_cli_5F_options (NSMutableArray * ioBoolOptionArra
     identifier:@"warningNotGalgas4Feature"
     commandChar:0
     commandString:@"warns-on-feature-not-handled-in-galgas4"
-    comment:@"warns on feature not handled in galgas 4"
+    comment:@"Warns on feature not handled in galgas 4"
     defaultValue:@""
   ] ;
   [ioBoolOptionArray addObject:option] ;
@@ -230,15 +230,6 @@ void enterOptionsFor_galgas_5F_cli_5F_options (NSMutableArray * ioBoolOptionArra
     defaultValue:@"0"
   ] ;
   [ioUIntOptionArray addObject:option] ;
-  option = [[OC_GGS_CommandLineOption alloc]
-    initWithDomainName:@"galgas_cli_options"
-    identifier:@"cppCompile"
-    commandChar:0
-    commandString:@"compile"
-    comment:@"Perform C++ compilation on 'string' target"
-    defaultValue:@""
-  ] ;
-  [ioStringOptionArray addObject:option] ;
   option = [[OC_GGS_CommandLineOption alloc]
     initWithDomainName:@"galgas_cli_options"
     identifier:@"create_project"
@@ -254,6 +245,15 @@ void enterOptionsFor_galgas_5F_cli_5F_options (NSMutableArray * ioBoolOptionArra
     commandChar:0
     commandString:@"extract-libpm"
     comment:@"Extract embedded LIBPM at given path"
+    defaultValue:@""
+  ] ;
+  [ioStringOptionArray addObject:option] ;
+  option = [[OC_GGS_CommandLineOption alloc]
+    initWithDomainName:@"galgas_cli_options"
+    identifier:@"cppCompile"
+    commandChar:0
+    commandString:@"compile"
+    comment:@"Perform C++ compilation on 'string' target"
     defaultValue:@""
   ] ;
   [ioStringOptionArray addObject:option] ;

@@ -2067,6 +2067,152 @@ GALGAS_lexicalRoutineCallActualArgumentListAST_2D_element GALGAS_lexicalRoutineC
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_commandLineOptionSortedList_2D_element::GALGAS_commandLineOptionSortedList_2D_element (void) :
+mProperty_mOptionIdentifier (),
+mProperty_mOptionChar (),
+mProperty_mOptionString (),
+mProperty_mComment (),
+mProperty_mDefaultValue () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_commandLineOptionSortedList_2D_element::~ GALGAS_commandLineOptionSortedList_2D_element (void) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_commandLineOptionSortedList_2D_element::GALGAS_commandLineOptionSortedList_2D_element (const GALGAS_string & inOperand0,
+                                                                                              const GALGAS_char & inOperand1,
+                                                                                              const GALGAS_string & inOperand2,
+                                                                                              const GALGAS_string & inOperand3,
+                                                                                              const GALGAS_string & inOperand4) :
+mProperty_mOptionIdentifier (inOperand0),
+mProperty_mOptionChar (inOperand1),
+mProperty_mOptionString (inOperand2),
+mProperty_mComment (inOperand3),
+mProperty_mDefaultValue (inOperand4) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_commandLineOptionSortedList_2D_element GALGAS_commandLineOptionSortedList_2D_element::class_func_new (const GALGAS_string & in_mOptionIdentifier,
+                                                                                                             const GALGAS_char & in_mOptionChar,
+                                                                                                             const GALGAS_string & in_mOptionString,
+                                                                                                             const GALGAS_string & in_mComment,
+                                                                                                             const GALGAS_string & in_mDefaultValue,
+                                                                                                             Compiler * /* inCompiler */
+                                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_commandLineOptionSortedList_2D_element result ;
+  if (in_mOptionIdentifier.isValid () && in_mOptionChar.isValid () && in_mOptionString.isValid () && in_mComment.isValid () && in_mDefaultValue.isValid ()) {
+    result = GALGAS_commandLineOptionSortedList_2D_element (in_mOptionIdentifier, in_mOptionChar, in_mOptionString, in_mComment, in_mDefaultValue) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+typeComparisonResult GALGAS_commandLineOptionSortedList_2D_element::objectCompare (const GALGAS_commandLineOptionSortedList_2D_element & inOperand) const {
+   typeComparisonResult result = kOperandEqual ;
+  if (result == kOperandEqual) {
+    result = mProperty_mOptionIdentifier.objectCompare (inOperand.mProperty_mOptionIdentifier) ;
+  }
+  if (result == kOperandEqual) {
+    result = mProperty_mOptionChar.objectCompare (inOperand.mProperty_mOptionChar) ;
+  }
+  if (result == kOperandEqual) {
+    result = mProperty_mOptionString.objectCompare (inOperand.mProperty_mOptionString) ;
+  }
+  if (result == kOperandEqual) {
+    result = mProperty_mComment.objectCompare (inOperand.mProperty_mComment) ;
+  }
+  if (result == kOperandEqual) {
+    result = mProperty_mDefaultValue.objectCompare (inOperand.mProperty_mDefaultValue) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_commandLineOptionSortedList_2D_element::isValid (void) const {
+  return mProperty_mOptionIdentifier.isValid () && mProperty_mOptionChar.isValid () && mProperty_mOptionString.isValid () && mProperty_mComment.isValid () && mProperty_mDefaultValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_commandLineOptionSortedList_2D_element::drop (void) {
+  mProperty_mOptionIdentifier.drop () ;
+  mProperty_mOptionChar.drop () ;
+  mProperty_mOptionString.drop () ;
+  mProperty_mComment.drop () ;
+  mProperty_mDefaultValue.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_commandLineOptionSortedList_2D_element::description (String & ioString,
+                                                                 const int32_t inIndentation) const {
+  ioString.appendString ("<struct @commandLineOptionSortedList-element:") ;
+  if (! isValid ()) {
+    ioString.appendString (" not built") ;
+  }else{
+    mProperty_mOptionIdentifier.description (ioString, inIndentation+1) ;
+    ioString.appendString (", ") ;
+    mProperty_mOptionChar.description (ioString, inIndentation+1) ;
+    ioString.appendString (", ") ;
+    mProperty_mOptionString.description (ioString, inIndentation+1) ;
+    ioString.appendString (", ") ;
+    mProperty_mComment.description (ioString, inIndentation+1) ;
+    ioString.appendString (", ") ;
+    mProperty_mDefaultValue.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @commandLineOptionSortedList-element generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_commandLineOptionSortedList_2D_element ("commandLineOptionSortedList-element",
+                                                                                              nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_commandLineOptionSortedList_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_commandLineOptionSortedList_2D_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_commandLineOptionSortedList_2D_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_commandLineOptionSortedList_2D_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_commandLineOptionSortedList_2D_element GALGAS_commandLineOptionSortedList_2D_element::extractObject (const GALGAS_object & inObject,
+                                                                                                            Compiler * inCompiler
+                                                                                                            COMMA_LOCATION_ARGS) {
+  GALGAS_commandLineOptionSortedList_2D_element result ;
+  const GALGAS_commandLineOptionSortedList_2D_element * p = (const GALGAS_commandLineOptionSortedList_2D_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_commandLineOptionSortedList_2D_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("commandLineOptionSortedList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_guiLabelListAST_2D_element::GALGAS_guiLabelListAST_2D_element (void) :
 mProperty_mLeadingCharacterStrippedCount (),
 mProperty_mTerminalList (),
@@ -15074,157 +15220,6 @@ GALGAS_templateLexiqueComponentAST GALGAS_templateLexiqueComponentAST::extractOb
       result = *p ;
     }else{
       inCompiler->castError ("templateLexiqueComponentAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @lexicalImplicitRuleAST reference class
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_lexicalImplicitRuleAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_abstractLexicalRuleAST::printNonNullClassInstanceProperties () ;
-    mProperty_mListName.printNonNullClassInstanceProperties ("mListName") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
-typeComparisonResult cPtr_lexicalImplicitRuleAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_lexicalImplicitRuleAST * p = (const cPtr_lexicalImplicitRuleAST *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_lexicalImplicitRuleAST) ;
-  if (kOperandEqual == result) {
-    result = mProperty_mListName.objectCompare (p->mProperty_mListName) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-
-typeComparisonResult GALGAS_lexicalImplicitRuleAST::objectCompare (const GALGAS_lexicalImplicitRuleAST & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = kOperandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_lexicalImplicitRuleAST::GALGAS_lexicalImplicitRuleAST (void) :
-GALGAS_abstractLexicalRuleAST () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_lexicalImplicitRuleAST::GALGAS_lexicalImplicitRuleAST (const cPtr_lexicalImplicitRuleAST * inSourcePtr) :
-GALGAS_abstractLexicalRuleAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_lexicalImplicitRuleAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_lexicalImplicitRuleAST GALGAS_lexicalImplicitRuleAST::class_func_new (const GALGAS_lstring & inAttribute_mListName
-                                                                             COMMA_LOCATION_ARGS) {
-  GALGAS_lexicalImplicitRuleAST result ;
-  if (inAttribute_mListName.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_lexicalImplicitRuleAST (inAttribute_mListName COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_lstring GALGAS_lexicalImplicitRuleAST::readProperty_mListName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GALGAS_lstring () ;
-  }else{
-    cPtr_lexicalImplicitRuleAST * p = (cPtr_lexicalImplicitRuleAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexicalImplicitRuleAST) ;
-    return p->mProperty_mListName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @lexicalImplicitRuleAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_lexicalImplicitRuleAST::cPtr_lexicalImplicitRuleAST (const GALGAS_lstring & in_mListName
-                                                          COMMA_LOCATION_ARGS) :
-cPtr_abstractLexicalRuleAST (THERE),
-mProperty_mListName (in_mListName) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * cPtr_lexicalImplicitRuleAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalImplicitRuleAST ;
-}
-
-void cPtr_lexicalImplicitRuleAST::description (String & ioString,
-                                               const int32_t inIndentation) const {
-  ioString.appendString ("[@lexicalImplicitRuleAST:") ;
-  mProperty_mListName.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_lexicalImplicitRuleAST::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_lexicalImplicitRuleAST (mProperty_mListName COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @lexicalImplicitRuleAST generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalImplicitRuleAST ("lexicalImplicitRuleAST",
-                                                                              & kTypeDescriptor_GALGAS_abstractLexicalRuleAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_lexicalImplicitRuleAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalImplicitRuleAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_lexicalImplicitRuleAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_lexicalImplicitRuleAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_lexicalImplicitRuleAST GALGAS_lexicalImplicitRuleAST::extractObject (const GALGAS_object & inObject,
-                                                                            Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) {
-  GALGAS_lexicalImplicitRuleAST result ;
-  const GALGAS_lexicalImplicitRuleAST * p = (const GALGAS_lexicalImplicitRuleAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_lexicalImplicitRuleAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("lexicalImplicitRuleAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

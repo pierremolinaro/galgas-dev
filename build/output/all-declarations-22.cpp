@@ -6763,10 +6763,34 @@ void cPtr_optionComponentDeclarationAST::method_semanticAnalysis (GALGAS_lstring
   GALGAS_commandLineOptionMap var_stringListOptionMap_11700 ;
   const GALGAS_optionComponentDeclarationAST temp_1 = this ;
   constinArgument_inSemanticContext.readProperty_mOptionComponentMapForSemanticAnalysis ().method_searchKey (temp_1.readProperty_mOptionComponentName (), var_optionIsPredefined_11513, var_boolOptionMap_11563, var_uintOptionMap_11608, var_stringOptionMap_11653, var_stringListOptionMap_11700, inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 284)) ;
+  GALGAS_commandLineOptionSortedList var_boolOptionSortedList_11778 = GALGAS_commandLineOptionSortedList::class_func_emptySortedList (SOURCE_FILE ("optionCompilation.galgas", 293)) ;
+  cEnumerator_commandLineOptionMap enumerator_11822 (var_boolOptionMap_11563, kENUMERATION_UP) ;
+  while (enumerator_11822.hasCurrentObject ()) {
+    var_boolOptionSortedList_11778.addAssign_operation (enumerator_11822.current (HERE).readProperty_lkey ().readProperty_string (), enumerator_11822.current (HERE).readProperty_mOptionChar (), enumerator_11822.current (HERE).readProperty_mOptionString (), enumerator_11822.current (HERE).readProperty_mComment (), enumerator_11822.current (HERE).readProperty_mDefaultValue ()  COMMA_SOURCE_FILE ("optionCompilation.galgas", 295)) ;
+    enumerator_11822.gotoNextObject () ;
+  }
+  GALGAS_commandLineOptionSortedList var_uintOptionSortedList_12049 = GALGAS_commandLineOptionSortedList::class_func_emptySortedList (SOURCE_FILE ("optionCompilation.galgas", 302)) ;
+  cEnumerator_commandLineOptionMap enumerator_12093 (var_uintOptionMap_11608, kENUMERATION_UP) ;
+  while (enumerator_12093.hasCurrentObject ()) {
+    var_uintOptionSortedList_12049.addAssign_operation (enumerator_12093.current (HERE).readProperty_lkey ().readProperty_string (), enumerator_12093.current (HERE).readProperty_mOptionChar (), enumerator_12093.current (HERE).readProperty_mOptionString (), enumerator_12093.current (HERE).readProperty_mComment (), enumerator_12093.current (HERE).readProperty_mDefaultValue ()  COMMA_SOURCE_FILE ("optionCompilation.galgas", 304)) ;
+    enumerator_12093.gotoNextObject () ;
+  }
+  GALGAS_commandLineOptionSortedList var_stringOptionSortedList_12320 = GALGAS_commandLineOptionSortedList::class_func_emptySortedList (SOURCE_FILE ("optionCompilation.galgas", 311)) ;
+  cEnumerator_commandLineOptionMap enumerator_12366 (var_stringOptionMap_11653, kENUMERATION_UP) ;
+  while (enumerator_12366.hasCurrentObject ()) {
+    var_stringOptionSortedList_12320.addAssign_operation (enumerator_12366.current (HERE).readProperty_lkey ().readProperty_string (), enumerator_12366.current (HERE).readProperty_mOptionChar (), enumerator_12366.current (HERE).readProperty_mOptionString (), enumerator_12366.current (HERE).readProperty_mComment (), enumerator_12366.current (HERE).readProperty_mDefaultValue ()  COMMA_SOURCE_FILE ("optionCompilation.galgas", 313)) ;
+    enumerator_12366.gotoNextObject () ;
+  }
+  GALGAS_commandLineOptionSortedList var_stringListOptionSortedList_12597 = GALGAS_commandLineOptionSortedList::class_func_emptySortedList (SOURCE_FILE ("optionCompilation.galgas", 320)) ;
+  cEnumerator_commandLineOptionMap enumerator_12647 (var_stringListOptionMap_11700, kENUMERATION_UP) ;
+  while (enumerator_12647.hasCurrentObject ()) {
+    var_stringListOptionSortedList_12597.addAssign_operation (enumerator_12647.current (HERE).readProperty_lkey ().readProperty_string (), enumerator_12647.current (HERE).readProperty_mOptionChar (), enumerator_12647.current (HERE).readProperty_mOptionString (), enumerator_12647.current (HERE).readProperty_mComment (), enumerator_12647.current (HERE).readProperty_mDefaultValue ()  COMMA_SOURCE_FILE ("optionCompilation.galgas", 322)) ;
+    enumerator_12647.gotoNextObject () ;
+  }
   const GALGAS_optionComponentDeclarationAST temp_2 = this ;
   const GALGAS_optionComponentDeclarationAST temp_3 = this ;
   const GALGAS_optionComponentDeclarationAST temp_4 = this ;
-  ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GALGAS_string ("option ").add_operation (temp_2.readProperty_mOptionComponentName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 294)), GALGAS_optionComponentForGeneration::class_func_new (GALGAS_bool (true), GALGAS_string ("option-").add_operation (temp_3.readProperty_mOptionComponentName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 297)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 297)), var_optionIsPredefined_11513, temp_4.readProperty_mOptionComponentName ().readProperty_string (), var_boolOptionMap_11563, var_uintOptionMap_11608, var_stringOptionMap_11653, var_stringListOptionMap_11700  COMMA_SOURCE_FILE ("optionCompilation.galgas", 295))  COMMA_SOURCE_FILE ("optionCompilation.galgas", 293)) ;
+  ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GALGAS_string ("option ").add_operation (temp_2.readProperty_mOptionComponentName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 331)), GALGAS_optionComponentForGeneration::class_func_new (GALGAS_bool (true), GALGAS_string ("option-").add_operation (temp_3.readProperty_mOptionComponentName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 334)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 334)), var_optionIsPredefined_11513, temp_4.readProperty_mOptionComponentName ().readProperty_string (), var_boolOptionSortedList_11778, var_uintOptionSortedList_12049, var_stringOptionSortedList_12320, var_stringListOptionSortedList_12597  COMMA_SOURCE_FILE ("optionCompilation.galgas", 332))  COMMA_SOURCE_FILE ("optionCompilation.galgas", 330)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -6797,9 +6821,9 @@ GALGAS_headerKind cPtr_optionComponentForGeneration::getter_headerKind (Compiler
   GALGAS_headerKind temp_1 ;
   const enumGalgasBool test_2 = temp_0.readProperty_mIsPredefined ().boolEnum () ;
   if (kBoolTrue == test_2) {
-    temp_1 = GALGAS_headerKind::class_func_noHeader (SOURCE_FILE ("optionCompilation.galgas", 329)) ;
+    temp_1 = GALGAS_headerKind::class_func_noHeader (SOURCE_FILE ("optionCompilation.galgas", 366)) ;
   }else if (kBoolFalse == test_2) {
-    temp_1 = GALGAS_headerKind::class_func_oneHeader (SOURCE_FILE ("optionCompilation.galgas", 329)) ;
+    temp_1 = GALGAS_headerKind::class_func_oneHeader (SOURCE_FILE ("optionCompilation.galgas", 366)) ;
   }
   result_result = temp_1 ;
 //---
@@ -6831,7 +6855,7 @@ void cPtr_optionComponentForGeneration::method_appendDeclaration_31_ (GALGAS_str
     const GALGAS_optionComponentForGeneration temp_4 = this ;
     const GALGAS_optionComponentForGeneration temp_5 = this ;
     const GALGAS_optionComponentForGeneration temp_6 = this ;
-    outArgument_outHeader = GALGAS_string (filewrapperTemplate_optionGenerationTemplates_optionHeaderZone_33_ (inCompiler, temp_2.readProperty_mOptionComponentName (), temp_3.readProperty_mBoolOptionMap (), temp_4.readProperty_mUIntOptionMap (), temp_5.readProperty_mStringOptionMap (), temp_6.readProperty_mStringListOptionMap () COMMA_SOURCE_FILE ("optionCompilation.galgas", 341))) ;
+    outArgument_outHeader = GALGAS_string (filewrapperTemplate_optionGenerationTemplates_optionHeaderZone_33_ (inCompiler, temp_2.readProperty_mOptionComponentName (), temp_3.readProperty_mBoolOptionSortedList (), temp_4.readProperty_mUIntOptionSortedList (), temp_5.readProperty_mStringOptionSortedList (), temp_6.readProperty_mStringListSortedList () COMMA_SOURCE_FILE ("optionCompilation.galgas", 378))) ;
   }
 }
 //--------------------------------------------------------------------------------------------------
@@ -6855,13 +6879,13 @@ void cPtr_optionComponentForGeneration::method_appendSpecificImplementation (con
   }
   if (kBoolFalse == test_0) {
     const GALGAS_optionComponentForGeneration temp_2 = this ;
-    ioArgument_ioInclusionSet.addAssign_operation (GALGAS_string ("option-").add_operation (temp_2.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 361)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 361))  COMMA_SOURCE_FILE ("optionCompilation.galgas", 361)) ;
+    ioArgument_ioInclusionSet.addAssign_operation (GALGAS_string ("option-").add_operation (temp_2.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 398)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 398))  COMMA_SOURCE_FILE ("optionCompilation.galgas", 398)) ;
     const GALGAS_optionComponentForGeneration temp_3 = this ;
     const GALGAS_optionComponentForGeneration temp_4 = this ;
     const GALGAS_optionComponentForGeneration temp_5 = this ;
     const GALGAS_optionComponentForGeneration temp_6 = this ;
     const GALGAS_optionComponentForGeneration temp_7 = this ;
-    outArgument_outImplementation = GALGAS_string (filewrapperTemplate_optionGenerationTemplates_optionImplementationGalgas_33_ (inCompiler, temp_3.readProperty_mOptionComponentName (), temp_4.readProperty_mBoolOptionMap (), temp_5.readProperty_mUIntOptionMap (), temp_6.readProperty_mStringOptionMap (), temp_7.readProperty_mStringListOptionMap () COMMA_SOURCE_FILE ("optionCompilation.galgas", 362))) ;
+    outArgument_outImplementation = GALGAS_string (filewrapperTemplate_optionGenerationTemplates_optionImplementationGalgas_33_ (inCompiler, temp_3.readProperty_mOptionComponentName (), temp_4.readProperty_mBoolOptionSortedList (), temp_5.readProperty_mUIntOptionSortedList (), temp_6.readProperty_mStringOptionSortedList (), temp_7.readProperty_mStringListSortedList () COMMA_SOURCE_FILE ("optionCompilation.galgas", 399))) ;
   }
 }
 //--------------------------------------------------------------------------------------------------
@@ -6877,25 +6901,25 @@ void cPtr_optionComponentForGeneration::method_appendSpecificFiles (const GALGAS
                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
-    GALGAS_bool test_1 = GALGAS_bool (kIsEqual, GALGAS_uint::class_func_errorCount (SOURCE_FILE ("optionCompilation.galgas", 380)).objectCompare (GALGAS_uint (uint32_t (0U)))) ;
+    GALGAS_bool test_1 = GALGAS_bool (kIsEqual, GALGAS_uint::class_func_errorCount (SOURCE_FILE ("optionCompilation.galgas", 417)).objectCompare (GALGAS_uint (uint32_t (0U)))) ;
     if (kBoolTrue == test_1.boolEnum ()) {
       const GALGAS_optionComponentForGeneration temp_2 = this ;
-      test_1 = temp_2.readProperty_mIsPredefined ().operator_not (SOURCE_FILE ("optionCompilation.galgas", 380)) ;
+      test_1 = temp_2.readProperty_mIsPredefined ().operator_not (SOURCE_FILE ("optionCompilation.galgas", 417)) ;
     }
     test_0 = test_1.boolEnum () ;
     if (kBoolTrue == test_0) {
       const GALGAS_optionComponentForGeneration temp_3 = this ;
-      ioArgument_ioAllProductFileSet.addAssign_operation (GALGAS_string ("option-").add_operation (temp_3.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 381)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 381)).add_operation (GALGAS_string ("-cocoa.h"), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 381))  COMMA_SOURCE_FILE ("optionCompilation.galgas", 381)) ;
+      ioArgument_ioAllProductFileSet.addAssign_operation (GALGAS_string ("option-").add_operation (temp_3.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 418)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 418)).add_operation (GALGAS_string ("-cocoa.h"), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 418))  COMMA_SOURCE_FILE ("optionCompilation.galgas", 418)) ;
       {
       const GALGAS_optionComponentForGeneration temp_4 = this ;
       const GALGAS_optionComponentForGeneration temp_5 = this ;
       const GALGAS_optionComponentForGeneration temp_6 = this ;
-      GALGAS_string::class_method_generateFileWithPattern (constinArgument_inProductDirectory, GALGAS_string ("option-").add_operation (temp_4.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 384)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 384)).add_operation (GALGAS_string ("-cocoa.h"), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 384)), GALGAS_string ("//"), GALGAS_string::makeEmptyString (), GALGAS_string ("\n\n"), GALGAS_string (filewrapperTemplate_optionGenerationTemplates_optionHeaderCocoaZone_32_ (inCompiler, temp_5.readProperty_mOptionComponentName () COMMA_SOURCE_FILE ("optionCompilation.galgas", 388))), GALGAS_string ("\n\n"), GALGAS_string (filewrapperTemplate_optionGenerationTemplates_optionHeaderCocoaZone_33_ (inCompiler, temp_6.readProperty_mOptionComponentName () COMMA_SOURCE_FILE ("optionCompilation.galgas", 392))), GALGAS_bool (false), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 382)) ;
+      GALGAS_string::class_method_generateFileWithPattern (constinArgument_inProductDirectory, GALGAS_string ("option-").add_operation (temp_4.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 421)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 421)).add_operation (GALGAS_string ("-cocoa.h"), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 421)), GALGAS_string ("//"), GALGAS_string::makeEmptyString (), GALGAS_string ("\n\n"), GALGAS_string (filewrapperTemplate_optionGenerationTemplates_optionHeaderCocoaZone_32_ (inCompiler, temp_5.readProperty_mOptionComponentName () COMMA_SOURCE_FILE ("optionCompilation.galgas", 425))), GALGAS_string ("\n\n"), GALGAS_string (filewrapperTemplate_optionGenerationTemplates_optionHeaderCocoaZone_33_ (inCompiler, temp_6.readProperty_mOptionComponentName () COMMA_SOURCE_FILE ("optionCompilation.galgas", 429))), GALGAS_bool (false), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 419)) ;
       }
       const GALGAS_optionComponentForGeneration temp_7 = this ;
-      ioArgument_ioAllProductFileSet.addAssign_operation (GALGAS_string ("option-").add_operation (temp_7.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 398)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 398)).add_operation (GALGAS_string ("-cocoa.m"), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 398))  COMMA_SOURCE_FILE ("optionCompilation.galgas", 398)) ;
+      ioArgument_ioAllProductFileSet.addAssign_operation (GALGAS_string ("option-").add_operation (temp_7.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 435)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 435)).add_operation (GALGAS_string ("-cocoa.m"), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 435))  COMMA_SOURCE_FILE ("optionCompilation.galgas", 435)) ;
       const GALGAS_optionComponentForGeneration temp_8 = this ;
-      ioArgument_ioCocoaProductFileList.addAssign_operation (GALGAS_string ("option-").add_operation (temp_8.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 399)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 399)).add_operation (GALGAS_string ("-cocoa.m"), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 399))  COMMA_SOURCE_FILE ("optionCompilation.galgas", 399)) ;
+      ioArgument_ioCocoaProductFileList.addAssign_operation (GALGAS_string ("option-").add_operation (temp_8.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 436)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 436)).add_operation (GALGAS_string ("-cocoa.m"), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 436))  COMMA_SOURCE_FILE ("optionCompilation.galgas", 436)) ;
       {
       const GALGAS_optionComponentForGeneration temp_9 = this ;
       const GALGAS_optionComponentForGeneration temp_10 = this ;
@@ -6904,12 +6928,12 @@ void cPtr_optionComponentForGeneration::method_appendSpecificFiles (const GALGAS
       const GALGAS_optionComponentForGeneration temp_13 = this ;
       const GALGAS_optionComponentForGeneration temp_14 = this ;
       const GALGAS_optionComponentForGeneration temp_15 = this ;
-      GALGAS_string::class_method_generateFileWithPattern (constinArgument_inProductDirectory, GALGAS_string ("option-").add_operation (temp_9.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 402)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 402)).add_operation (GALGAS_string ("-cocoa.m"), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 402)), GALGAS_string ("//"), GALGAS_string::makeEmptyString (), GALGAS_string ("\n\n"), GALGAS_string (filewrapperTemplate_optionGenerationTemplates_optionImplementationCocoa (inCompiler, GALGAS_string ("option-").add_operation (temp_10.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 407)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 407)).add_operation (GALGAS_string ("-cocoa"), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 407)), temp_11.readProperty_mOptionComponentName (), temp_12.readProperty_mBoolOptionMap (), temp_13.readProperty_mUIntOptionMap (), temp_14.readProperty_mStringOptionMap (), temp_15.readProperty_mStringListOptionMap () COMMA_SOURCE_FILE ("optionCompilation.galgas", 406))), GALGAS_string ("\n\n"), GALGAS_string ("\n\n"), GALGAS_bool (false), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 400)) ;
+      GALGAS_string::class_method_generateFileWithPattern (constinArgument_inProductDirectory, GALGAS_string ("option-").add_operation (temp_9.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 439)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 439)).add_operation (GALGAS_string ("-cocoa.m"), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 439)), GALGAS_string ("//"), GALGAS_string::makeEmptyString (), GALGAS_string ("\n\n"), GALGAS_string (filewrapperTemplate_optionGenerationTemplates_optionImplementationCocoa (inCompiler, GALGAS_string ("option-").add_operation (temp_10.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 444)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 444)).add_operation (GALGAS_string ("-cocoa"), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 444)), temp_11.readProperty_mOptionComponentName (), temp_12.readProperty_mBoolOptionSortedList (), temp_13.readProperty_mUIntOptionSortedList (), temp_14.readProperty_mStringOptionSortedList (), temp_15.readProperty_mStringListSortedList () COMMA_SOURCE_FILE ("optionCompilation.galgas", 443))), GALGAS_string ("\n\n"), GALGAS_string ("\n\n"), GALGAS_bool (false), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 437)) ;
       }
       const GALGAS_optionComponentForGeneration temp_16 = this ;
-      ioArgument_ioAllProductFileSet.addAssign_operation (GALGAS_string ("option-").add_operation (temp_16.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 419)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 419)).add_operation (GALGAS_string ("-cocoa.swift"), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 419))  COMMA_SOURCE_FILE ("optionCompilation.galgas", 419)) ;
+      ioArgument_ioAllProductFileSet.addAssign_operation (GALGAS_string ("option-").add_operation (temp_16.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 456)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 456)).add_operation (GALGAS_string ("-cocoa.swift"), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 456))  COMMA_SOURCE_FILE ("optionCompilation.galgas", 456)) ;
       const GALGAS_optionComponentForGeneration temp_17 = this ;
-      ioArgument_ioCocoaProductFileList.addAssign_operation (GALGAS_string ("option-").add_operation (temp_17.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 420)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 420)).add_operation (GALGAS_string ("-cocoa.swift"), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 420))  COMMA_SOURCE_FILE ("optionCompilation.galgas", 420)) ;
+      ioArgument_ioCocoaProductFileList.addAssign_operation (GALGAS_string ("option-").add_operation (temp_17.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 457)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 457)).add_operation (GALGAS_string ("-cocoa.swift"), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 457))  COMMA_SOURCE_FILE ("optionCompilation.galgas", 457)) ;
       {
       const GALGAS_optionComponentForGeneration temp_18 = this ;
       const GALGAS_optionComponentForGeneration temp_19 = this ;
@@ -6918,7 +6942,7 @@ void cPtr_optionComponentForGeneration::method_appendSpecificFiles (const GALGAS
       const GALGAS_optionComponentForGeneration temp_22 = this ;
       const GALGAS_optionComponentForGeneration temp_23 = this ;
       const GALGAS_optionComponentForGeneration temp_24 = this ;
-      GALGAS_string::class_method_generateFileWithPattern (constinArgument_inProductDirectory, GALGAS_string ("option-").add_operation (temp_18.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 423)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 423)).add_operation (GALGAS_string ("-cocoa.swift"), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 423)), GALGAS_string ("//"), GALGAS_string::makeEmptyString (), GALGAS_string ("\n\n"), GALGAS_string (filewrapperTemplate_optionGenerationTemplates_optionImplementationSwiftCocoa (inCompiler, GALGAS_string ("option-").add_operation (temp_19.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 428)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 428)).add_operation (GALGAS_string ("-swift-cocoa"), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 428)), temp_20.readProperty_mOptionComponentName (), temp_21.readProperty_mBoolOptionMap (), temp_22.readProperty_mUIntOptionMap (), temp_23.readProperty_mStringOptionMap (), temp_24.readProperty_mStringListOptionMap () COMMA_SOURCE_FILE ("optionCompilation.galgas", 427))), GALGAS_string ("\n\n"), GALGAS_string ("\n\n"), GALGAS_bool (false), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 421)) ;
+      GALGAS_string::class_method_generateFileWithPattern (constinArgument_inProductDirectory, GALGAS_string ("option-").add_operation (temp_18.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 460)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 460)).add_operation (GALGAS_string ("-cocoa.swift"), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 460)), GALGAS_string ("//"), GALGAS_string::makeEmptyString (), GALGAS_string ("\n\n"), GALGAS_string (filewrapperTemplate_optionGenerationTemplates_optionImplementationSwiftCocoa (inCompiler, GALGAS_string ("option-").add_operation (temp_19.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 465)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 465)).add_operation (GALGAS_string ("-swift-cocoa"), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 465)), temp_20.readProperty_mOptionComponentName (), temp_21.readProperty_mBoolOptionSortedList (), temp_22.readProperty_mUIntOptionSortedList (), temp_23.readProperty_mStringOptionSortedList (), temp_24.readProperty_mStringListSortedList () COMMA_SOURCE_FILE ("optionCompilation.galgas", 464))), GALGAS_string ("\n\n"), GALGAS_string ("\n\n"), GALGAS_bool (false), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 458)) ;
       }
     }
   }
@@ -6960,66 +6984,66 @@ const cDirectoryWrapper gWrapperDirectory_0_optionGenerationTemplates (
 
 GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionHeaderZone_33_ (Compiler * /* inCompiler */,
                                                                                   const GALGAS_string & in_OPTION_5F_COMPONENT_5F_NAME,
-                                                                                  const GALGAS_commandLineOptionMap & in_BOOL_5F_OPTION_5F_MAP,
-                                                                                  const GALGAS_commandLineOptionMap & in_UINT_5F_OPTION_5F_MAP,
-                                                                                  const GALGAS_commandLineOptionMap & in_STRING_5F_OPTION_5F_MAP,
-                                                                                  const GALGAS_commandLineOptionMap & in_STRING_5F_LIST_5F_OPTION_5F_MAP
+                                                                                  const GALGAS_commandLineOptionSortedList & in_BOOL_5F_OPTION_5F_SORTED_5F_LIST,
+                                                                                  const GALGAS_commandLineOptionSortedList & in_UINT_5F_OPTION_5F_SORTED_5F_LIST,
+                                                                                  const GALGAS_commandLineOptionSortedList & in_STRING_5F_OPTION_5F_SORTED_5F_LIST,
+                                                                                  const GALGAS_commandLineOptionSortedList & in_STRING_5F_LIST_5F_OPTION_5F_SORTED_5F_LIST
                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
   result.appendString ("\n//--------------------------------------------------------------------------------------------------\n//\n//                               Bool options                                                    \n//\n//--------------------------------------------------------------------------------------------------\n\n") ;
-  GALGAS_uint index_388_ (0) ;
-  if (in_BOOL_5F_OPTION_5F_MAP.isValid ()) {
-    cEnumerator_commandLineOptionMap enumerator_388 (in_BOOL_5F_OPTION_5F_MAP, kENUMERATION_UP) ;
-    while (enumerator_388.hasCurrentObject ()) {
+  GALGAS_uint index_409_ (0) ;
+  if (in_BOOL_5F_OPTION_5F_SORTED_5F_LIST.isValid ()) {
+    cEnumerator_commandLineOptionSortedList enumerator_409 (in_BOOL_5F_OPTION_5F_SORTED_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_409.hasCurrentObject ()) {
       result.appendString ("extern C_BoolCommandLineOption gOption_") ;
       result.appendString (in_OPTION_5F_COMPONENT_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("option-header-zone3.galgasTemplate", 9)).stringValue ()) ;
       result.appendString ("_") ;
-      result.appendString (enumerator_388.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("option-header-zone3.galgasTemplate", 9)).stringValue ()) ;
+      result.appendString (enumerator_409.current_mOptionIdentifier (HERE).getter_identifierRepresentation (SOURCE_FILE ("option-header-zone3.galgasTemplate", 9)).stringValue ()) ;
       result.appendString (" ;\n\n") ;
-      index_388_.increment () ;
-      enumerator_388.gotoNextObject () ;
+      index_409_.increment () ;
+      enumerator_409.gotoNextObject () ;
     }
   }
   result.appendString ("//--------------------------------------------------------------------------------------------------\n//\n//                               UInt options                                                    \n//\n//--------------------------------------------------------------------------------------------------\n\n") ;
-  GALGAS_uint index_919_ (0) ;
-  if (in_UINT_5F_OPTION_5F_MAP.isValid ()) {
-    cEnumerator_commandLineOptionMap enumerator_919 (in_UINT_5F_OPTION_5F_MAP, kENUMERATION_UP) ;
-    while (enumerator_919.hasCurrentObject ()) {
+  GALGAS_uint index_974_ (0) ;
+  if (in_UINT_5F_OPTION_5F_SORTED_5F_LIST.isValid ()) {
+    cEnumerator_commandLineOptionSortedList enumerator_974 (in_UINT_5F_OPTION_5F_SORTED_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_974.hasCurrentObject ()) {
       result.appendString ("extern C_UIntCommandLineOption gOption_") ;
       result.appendString (in_OPTION_5F_COMPONENT_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("option-header-zone3.galgasTemplate", 18)).stringValue ()) ;
       result.appendString ("_") ;
-      result.appendString (enumerator_919.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("option-header-zone3.galgasTemplate", 18)).stringValue ()) ;
+      result.appendString (enumerator_974.current_mOptionIdentifier (HERE).getter_identifierRepresentation (SOURCE_FILE ("option-header-zone3.galgasTemplate", 18)).stringValue ()) ;
       result.appendString (" ;\n\n") ;
-      index_919_.increment () ;
-      enumerator_919.gotoNextObject () ;
+      index_974_.increment () ;
+      enumerator_974.gotoNextObject () ;
     }
   }
   result.appendString ("//--------------------------------------------------------------------------------------------------\n//\n//                              String options                                                   \n//\n//--------------------------------------------------------------------------------------------------\n\n") ;
-  GALGAS_uint index_1452_ (0) ;
-  if (in_STRING_5F_OPTION_5F_MAP.isValid ()) {
-    cEnumerator_commandLineOptionMap enumerator_1452 (in_STRING_5F_OPTION_5F_MAP, kENUMERATION_UP) ;
-    while (enumerator_1452.hasCurrentObject ()) {
+  GALGAS_uint index_1541_ (0) ;
+  if (in_STRING_5F_OPTION_5F_SORTED_5F_LIST.isValid ()) {
+    cEnumerator_commandLineOptionSortedList enumerator_1541 (in_STRING_5F_OPTION_5F_SORTED_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_1541.hasCurrentObject ()) {
       result.appendString ("extern C_StringCommandLineOption gOption_") ;
       result.appendString (in_OPTION_5F_COMPONENT_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("option-header-zone3.galgasTemplate", 27)).stringValue ()) ;
       result.appendString ("_") ;
-      result.appendString (enumerator_1452.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("option-header-zone3.galgasTemplate", 27)).stringValue ()) ;
+      result.appendString (enumerator_1541.current_mOptionIdentifier (HERE).getter_identifierRepresentation (SOURCE_FILE ("option-header-zone3.galgasTemplate", 27)).stringValue ()) ;
       result.appendString (" ;\n\n") ;
-      index_1452_.increment () ;
-      enumerator_1452.gotoNextObject () ;
+      index_1541_.increment () ;
+      enumerator_1541.gotoNextObject () ;
     }
   }
   result.appendString ("//--------------------------------------------------------------------------------------------------\n//\n//                              String List options                                              \n//\n//--------------------------------------------------------------------------------------------------\n\n") ;
-  GALGAS_uint index_1992_ (0) ;
-  if (in_STRING_5F_LIST_5F_OPTION_5F_MAP.isValid ()) {
-    cEnumerator_commandLineOptionMap enumerator_1992 (in_STRING_5F_LIST_5F_OPTION_5F_MAP, kENUMERATION_UP) ;
-    while (enumerator_1992.hasCurrentObject ()) {
+  GALGAS_uint index_2115_ (0) ;
+  if (in_STRING_5F_LIST_5F_OPTION_5F_SORTED_5F_LIST.isValid ()) {
+    cEnumerator_commandLineOptionSortedList enumerator_2115 (in_STRING_5F_LIST_5F_OPTION_5F_SORTED_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_2115.hasCurrentObject ()) {
       result.appendString ("extern C_StringListCommandLineOption gOption_") ;
       result.appendString (in_OPTION_5F_COMPONENT_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("option-header-zone3.galgasTemplate", 36)).stringValue ()) ;
       result.appendString ("_") ;
-      result.appendString (enumerator_1992.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("option-header-zone3.galgasTemplate", 36)).stringValue ()) ;
+      result.appendString (enumerator_2115.current_mOptionIdentifier (HERE).getter_identifierRepresentation (SOURCE_FILE ("option-header-zone3.galgasTemplate", 36)).stringValue ()) ;
       result.appendString (" ;\n\n") ;
-      index_1992_.increment () ;
-      enumerator_1992.gotoNextObject () ;
+      index_2115_.increment () ;
+      enumerator_2115.gotoNextObject () ;
     }
   }
   result.appendString ("//--------------------------------------------------------------------------------------------------\n\n") ;
@@ -7034,110 +7058,110 @@ GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionHeaderZone_33_
 
 GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementationGalgas_33_ (Compiler * /* inCompiler */,
                                                                                             const GALGAS_string & in_OPTION_5F_COMPONENT_5F_NAME,
-                                                                                            const GALGAS_commandLineOptionMap & in_BOOL_5F_OPTION_5F_MAP,
-                                                                                            const GALGAS_commandLineOptionMap & in_UINT_5F_OPTION_5F_MAP,
-                                                                                            const GALGAS_commandLineOptionMap & in_STRING_5F_OPTION_5F_MAP,
-                                                                                            const GALGAS_commandLineOptionMap & in_STRING_5F_LIST_5F_OPTION_5F_MAP
+                                                                                            const GALGAS_commandLineOptionSortedList & in_BOOL_5F_OPTION_5F_SORTED_5F_LIST,
+                                                                                            const GALGAS_commandLineOptionSortedList & in_UINT_5F_OPTION_5F_SORTED_5F_LIST,
+                                                                                            const GALGAS_commandLineOptionSortedList & in_STRING_5F_OPTION_5F_SORTED_5F_LIST,
+                                                                                            const GALGAS_commandLineOptionSortedList & in_STRING_5F_LIST_5F_OPTION_5F_SORTED_5F_LIST
                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
   result.appendString ("//--------------------------------------------------------------------------------------------------\n//\n//                               Bool options                                                    \n//\n//--------------------------------------------------------------------------------------------------\n\n") ;
-  GALGAS_uint index_387_ (0) ;
-  if (in_BOOL_5F_OPTION_5F_MAP.isValid ()) {
-    cEnumerator_commandLineOptionMap enumerator_387 (in_BOOL_5F_OPTION_5F_MAP, kENUMERATION_UP) ;
-    while (enumerator_387.hasCurrentObject ()) {
+  GALGAS_uint index_408_ (0) ;
+  if (in_BOOL_5F_OPTION_5F_SORTED_5F_LIST.isValid ()) {
+    cEnumerator_commandLineOptionSortedList enumerator_408 (in_BOOL_5F_OPTION_5F_SORTED_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_408.hasCurrentObject ()) {
       result.appendString ("C_BoolCommandLineOption gOption_") ;
       result.appendString (in_OPTION_5F_COMPONENT_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 8)).stringValue ()) ;
       result.appendString ("_") ;
-      result.appendString (enumerator_387.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 8)).stringValue ()) ;
+      result.appendString (enumerator_408.current_mOptionIdentifier (HERE).getter_identifierRepresentation (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 8)).stringValue ()) ;
       result.appendString (" (\"") ;
       result.appendString (in_OPTION_5F_COMPONENT_5F_NAME.stringValue ()) ;
       result.appendString ("\",\n                                         ") ;
-      result.appendString (enumerator_387.current_lkey (HERE).readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 9)).stringValue ()) ;
+      result.appendString (enumerator_408.current_mOptionIdentifier (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 9)).stringValue ()) ;
       result.appendString (",\n                                         ") ;
-      result.appendString (enumerator_387.current_mOptionChar (HERE).getter_uint (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 10)).getter_string (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 10)).stringValue ()) ;
+      result.appendString (enumerator_408.current_mOptionChar (HERE).getter_uint (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 10)).getter_string (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 10)).stringValue ()) ;
       result.appendString (",\n                                         ") ;
-      result.appendString (enumerator_387.current_mOptionString (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 11)).stringValue ()) ;
+      result.appendString (enumerator_408.current_mOptionString (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 11)).stringValue ()) ;
       result.appendString (",\n                                         ") ;
-      result.appendString (enumerator_387.current_mComment (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 12)).stringValue ()) ;
+      result.appendString (enumerator_408.current_mComment (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 12)).stringValue ()) ;
       result.appendString (") ;\n\n") ;
-      index_387_.increment () ;
-      enumerator_387.gotoNextObject () ;
+      index_408_.increment () ;
+      enumerator_408.gotoNextObject () ;
     }
   }
   result.appendString ("//--------------------------------------------------------------------------------------------------\n//\n//                               UInt options                                                    \n//\n//--------------------------------------------------------------------------------------------------\n\n") ;
-  GALGAS_uint index_1323_ (0) ;
-  if (in_UINT_5F_OPTION_5F_MAP.isValid ()) {
-    cEnumerator_commandLineOptionMap enumerator_1323 (in_UINT_5F_OPTION_5F_MAP, kENUMERATION_UP) ;
-    while (enumerator_1323.hasCurrentObject ()) {
+  GALGAS_uint index_1391_ (0) ;
+  if (in_UINT_5F_OPTION_5F_SORTED_5F_LIST.isValid ()) {
+    cEnumerator_commandLineOptionSortedList enumerator_1391 (in_UINT_5F_OPTION_5F_SORTED_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_1391.hasCurrentObject ()) {
       result.appendString ("C_UIntCommandLineOption gOption_") ;
       result.appendString (in_OPTION_5F_COMPONENT_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 21)).stringValue ()) ;
       result.appendString ("_") ;
-      result.appendString (enumerator_1323.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 21)).stringValue ()) ;
+      result.appendString (enumerator_1391.current_mOptionIdentifier (HERE).getter_identifierRepresentation (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 21)).stringValue ()) ;
       result.appendString (" (\"") ;
       result.appendString (in_OPTION_5F_COMPONENT_5F_NAME.stringValue ()) ;
       result.appendString ("\",\n                                         ") ;
-      result.appendString (enumerator_1323.current_lkey (HERE).readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 22)).stringValue ()) ;
+      result.appendString (enumerator_1391.current_mOptionIdentifier (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 22)).stringValue ()) ;
       result.appendString (",\n                                         ") ;
-      result.appendString (enumerator_1323.current_mOptionChar (HERE).getter_uint (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 23)).getter_string (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 23)).stringValue ()) ;
+      result.appendString (enumerator_1391.current_mOptionChar (HERE).getter_uint (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 23)).getter_string (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 23)).stringValue ()) ;
       result.appendString (",\n                                         ") ;
-      result.appendString (enumerator_1323.current_mOptionString (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 24)).stringValue ()) ;
+      result.appendString (enumerator_1391.current_mOptionString (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 24)).stringValue ()) ;
       result.appendString (",\n                                         ") ;
-      result.appendString (enumerator_1323.current_mComment (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 25)).stringValue ()) ;
+      result.appendString (enumerator_1391.current_mComment (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 25)).stringValue ()) ;
       result.appendString (",\n                                         ") ;
-      result.appendString (enumerator_1323.current_mDefaultValue (HERE).stringValue ()) ;
+      result.appendString (enumerator_1391.current_mDefaultValue (HERE).stringValue ()) ;
       result.appendString (") ;\n\n") ;
-      index_1323_.increment () ;
-      enumerator_1323.gotoNextObject () ;
+      index_1391_.increment () ;
+      enumerator_1391.gotoNextObject () ;
     }
   }
   result.appendString ("//--------------------------------------------------------------------------------------------------\n//\n//                              String options                                                   \n//\n//--------------------------------------------------------------------------------------------------\n\n") ;
-  GALGAS_uint index_2326_ (0) ;
-  if (in_STRING_5F_OPTION_5F_MAP.isValid ()) {
-    cEnumerator_commandLineOptionMap enumerator_2326 (in_STRING_5F_OPTION_5F_MAP, kENUMERATION_UP) ;
-    while (enumerator_2326.hasCurrentObject ()) {
+  GALGAS_uint index_2441_ (0) ;
+  if (in_STRING_5F_OPTION_5F_SORTED_5F_LIST.isValid ()) {
+    cEnumerator_commandLineOptionSortedList enumerator_2441 (in_STRING_5F_OPTION_5F_SORTED_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_2441.hasCurrentObject ()) {
       result.appendString ("C_StringCommandLineOption gOption_") ;
       result.appendString (in_OPTION_5F_COMPONENT_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 35)).stringValue ()) ;
       result.appendString ("_") ;
-      result.appendString (enumerator_2326.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 35)).stringValue ()) ;
+      result.appendString (enumerator_2441.current_mOptionIdentifier (HERE).getter_identifierRepresentation (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 35)).stringValue ()) ;
       result.appendString (" (\"") ;
       result.appendString (in_OPTION_5F_COMPONENT_5F_NAME.stringValue ()) ;
       result.appendString ("\",\n                                         ") ;
-      result.appendString (enumerator_2326.current_lkey (HERE).readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 36)).stringValue ()) ;
+      result.appendString (enumerator_2441.current_mOptionIdentifier (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 36)).stringValue ()) ;
       result.appendString (",\n                                         ") ;
-      result.appendString (enumerator_2326.current_mOptionChar (HERE).getter_uint (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 37)).getter_string (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 37)).stringValue ()) ;
+      result.appendString (enumerator_2441.current_mOptionChar (HERE).getter_uint (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 37)).getter_string (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 37)).stringValue ()) ;
       result.appendString (",\n                                         ") ;
-      result.appendString (enumerator_2326.current_mOptionString (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 38)).stringValue ()) ;
+      result.appendString (enumerator_2441.current_mOptionString (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 38)).stringValue ()) ;
       result.appendString (",\n                                         ") ;
-      result.appendString (enumerator_2326.current_mComment (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 39)).stringValue ()) ;
+      result.appendString (enumerator_2441.current_mComment (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 39)).stringValue ()) ;
       result.appendString (",\n                                         ") ;
-      result.appendString (enumerator_2326.current_mDefaultValue (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 40)).stringValue ()) ;
+      result.appendString (enumerator_2441.current_mDefaultValue (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 40)).stringValue ()) ;
       result.appendString (") ;\n\n") ;
-      index_2326_.increment () ;
-      enumerator_2326.gotoNextObject () ;
+      index_2441_.increment () ;
+      enumerator_2441.gotoNextObject () ;
     }
   }
   result.appendString ("//--------------------------------------------------------------------------------------------------\n//\n//                              String List options                                              \n//\n//--------------------------------------------------------------------------------------------------\n\n") ;
-  GALGAS_uint index_3377_ (0) ;
-  if (in_STRING_5F_LIST_5F_OPTION_5F_MAP.isValid ()) {
-    cEnumerator_commandLineOptionMap enumerator_3377 (in_STRING_5F_LIST_5F_OPTION_5F_MAP, kENUMERATION_UP) ;
-    while (enumerator_3377.hasCurrentObject ()) {
+  GALGAS_uint index_3539_ (0) ;
+  if (in_STRING_5F_LIST_5F_OPTION_5F_SORTED_5F_LIST.isValid ()) {
+    cEnumerator_commandLineOptionSortedList enumerator_3539 (in_STRING_5F_LIST_5F_OPTION_5F_SORTED_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_3539.hasCurrentObject ()) {
       result.appendString ("C_StringListCommandLineOption gOption_") ;
       result.appendString (in_OPTION_5F_COMPONENT_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 49)).stringValue ()) ;
       result.appendString ("_") ;
-      result.appendString (enumerator_3377.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 49)).stringValue ()) ;
+      result.appendString (enumerator_3539.current_mOptionIdentifier (HERE).getter_identifierRepresentation (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 49)).stringValue ()) ;
       result.appendString (" (\"") ;
       result.appendString (in_OPTION_5F_COMPONENT_5F_NAME.stringValue ()) ;
       result.appendString ("\",\n                                         ") ;
-      result.appendString (enumerator_3377.current_lkey (HERE).readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 50)).stringValue ()) ;
+      result.appendString (enumerator_3539.current_mOptionIdentifier (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 50)).stringValue ()) ;
       result.appendString (",\n                                         ") ;
-      result.appendString (enumerator_3377.current_mOptionChar (HERE).getter_uint (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 51)).getter_string (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 51)).stringValue ()) ;
+      result.appendString (enumerator_3539.current_mOptionChar (HERE).getter_uint (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 51)).getter_string (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 51)).stringValue ()) ;
       result.appendString (",\n                                         ") ;
-      result.appendString (enumerator_3377.current_mOptionString (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 52)).stringValue ()) ;
+      result.appendString (enumerator_3539.current_mOptionString (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 52)).stringValue ()) ;
       result.appendString (",\n                                         ") ;
-      result.appendString (enumerator_3377.current_mComment (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 53)).stringValue ()) ;
+      result.appendString (enumerator_3539.current_mComment (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 53)).stringValue ()) ;
       result.appendString (") ;\n\n") ;
-      index_3377_.increment () ;
-      enumerator_3377.gotoNextObject () ;
+      index_3539_.increment () ;
+      enumerator_3539.gotoNextObject () ;
     }
   }
   result.appendString ("//--------------------------------------------------------------------------------------------------\n\n\n") ;
@@ -7196,10 +7220,10 @@ GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionHeaderCocoaZon
 GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementationCocoa (Compiler * inCompiler,
                                                                                        const GALGAS_string & in_OPTION_5F_HEADER_5F_FILE_5F_NAME,
                                                                                        const GALGAS_string & in_OPTION_5F_COMPONENT_5F_NAME,
-                                                                                       const GALGAS_commandLineOptionMap & in_BOOL_5F_OPTION_5F_MAP,
-                                                                                       const GALGAS_commandLineOptionMap & in_UINT_5F_OPTION_5F_MAP,
-                                                                                       const GALGAS_commandLineOptionMap & in_STRING_5F_OPTION_5F_MAP,
-                                                                                       const GALGAS_commandLineOptionMap & in_STRING_5F_LIST_5F_OPTION_5F_MAP
+                                                                                       const GALGAS_commandLineOptionSortedList & in_BOOL_5F_OPTION_5F_SORTED_5F_LIST,
+                                                                                       const GALGAS_commandLineOptionSortedList & in_UINT_5F_OPTION_5F_SORTED_5F_LIST,
+                                                                                       const GALGAS_commandLineOptionSortedList & in_STRING_5F_OPTION_5F_SORTED_5F_LIST,
+                                                                                       const GALGAS_commandLineOptionSortedList & in_STRING_5F_LIST_5F_OPTION_5F_SORTED_5F_LIST
                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
   uint32_t columnMarker = 0 ;
@@ -7216,7 +7240,7 @@ GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementation
   result.appendString ("NSMutableArray * ioStringOptionArray,\n           ") ;
   result.appendSpacesUntilColumn (columnMarker) ;
   result.appendString ("NSMutableArray * ioStringListOptionArray) {\n") ;
-  const enumGalgasBool test_0 = GALGAS_bool (kIsStrictSup, in_BOOL_5F_OPTION_5F_MAP.getter_count (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 12)).add_operation (in_UINT_5F_OPTION_5F_MAP.getter_count (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 12)), inCompiler COMMA_SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 12)).add_operation (in_STRING_5F_OPTION_5F_MAP.getter_count (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 12)), inCompiler COMMA_SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 12)).add_operation (in_STRING_5F_LIST_5F_OPTION_5F_MAP.getter_count (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 12)), inCompiler COMMA_SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 12)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
+  const enumGalgasBool test_0 = GALGAS_bool (kIsStrictSup, in_BOOL_5F_OPTION_5F_SORTED_5F_LIST.getter_count (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 12)).add_operation (in_UINT_5F_OPTION_5F_SORTED_5F_LIST.getter_count (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 12)), inCompiler COMMA_SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 12)).add_operation (in_STRING_5F_OPTION_5F_SORTED_5F_LIST.getter_count (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 12)), inCompiler COMMA_SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 12)).add_operation (in_STRING_5F_LIST_5F_OPTION_5F_SORTED_5F_LIST.getter_count (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 12)), inCompiler COMMA_SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 12)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
   switch (test_0) {
   case kBoolTrue : {
     result.appendString ("  OC_GGS_CommandLineOption * option ;\n") ;
@@ -7226,86 +7250,86 @@ GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementation
   default :
     break ;
   }
-  GALGAS_uint index_811_ (0) ;
-  if (in_BOOL_5F_OPTION_5F_MAP.isValid ()) {
-    cEnumerator_commandLineOptionMap enumerator_811 (in_BOOL_5F_OPTION_5F_MAP, kENUMERATION_UP) ;
-    while (enumerator_811.hasCurrentObject ()) {
+  GALGAS_uint index_864_ (0) ;
+  if (in_BOOL_5F_OPTION_5F_SORTED_5F_LIST.isValid ()) {
+    cEnumerator_commandLineOptionSortedList enumerator_864 (in_BOOL_5F_OPTION_5F_SORTED_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_864.hasCurrentObject ()) {
       result.appendString ("  option = [[OC_GGS_CommandLineOption alloc]\n    initWithDomainName:@") ;
       result.appendString (in_OPTION_5F_COMPONENT_5F_NAME.getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 17)).stringValue ()) ;
       result.appendString ("\n    identifier:@") ;
-      result.appendString (enumerator_811.current_lkey (HERE).readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 18)).stringValue ()) ;
+      result.appendString (enumerator_864.current_mOptionIdentifier (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 18)).stringValue ()) ;
       result.appendString ("\n    commandChar:") ;
-      result.appendString (enumerator_811.current_mOptionChar (HERE).getter_uint (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 19)).getter_string (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 19)).stringValue ()) ;
+      result.appendString (enumerator_864.current_mOptionChar (HERE).getter_uint (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 19)).getter_string (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 19)).stringValue ()) ;
       result.appendString ("\n    commandString:@") ;
-      result.appendString (enumerator_811.current_mOptionString (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 20)).stringValue ()) ;
+      result.appendString (enumerator_864.current_mOptionString (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 20)).stringValue ()) ;
       result.appendString ("\n    comment:@") ;
-      result.appendString (enumerator_811.current_mComment (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 21)).stringValue ()) ;
+      result.appendString (enumerator_864.current_mComment (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 21)).stringValue ()) ;
       result.appendString ("\n    defaultValue:@\"\"\n  ] ;\n  [ioBoolOptionArray addObject:option] ;\n") ;
-      index_811_.increment () ;
-      enumerator_811.gotoNextObject () ;
+      index_864_.increment () ;
+      enumerator_864.gotoNextObject () ;
     }
   }
-  GALGAS_uint index_1409_ (0) ;
-  if (in_UINT_5F_OPTION_5F_MAP.isValid ()) {
-    cEnumerator_commandLineOptionMap enumerator_1409 (in_UINT_5F_OPTION_5F_MAP, kENUMERATION_UP) ;
-    while (enumerator_1409.hasCurrentObject ()) {
+  GALGAS_uint index_1496_ (0) ;
+  if (in_UINT_5F_OPTION_5F_SORTED_5F_LIST.isValid ()) {
+    cEnumerator_commandLineOptionSortedList enumerator_1496 (in_UINT_5F_OPTION_5F_SORTED_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_1496.hasCurrentObject ()) {
       result.appendString ("  option = [[OC_GGS_CommandLineOption alloc]\n    initWithDomainName:@") ;
       result.appendString (in_OPTION_5F_COMPONENT_5F_NAME.getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 28)).stringValue ()) ;
       result.appendString ("\n    identifier:@") ;
-      result.appendString (enumerator_1409.current_lkey (HERE).readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 29)).stringValue ()) ;
+      result.appendString (enumerator_1496.current_mOptionIdentifier (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 29)).stringValue ()) ;
       result.appendString ("\n    commandChar:") ;
-      result.appendString (enumerator_1409.current_mOptionChar (HERE).getter_uint (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 30)).getter_string (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 30)).stringValue ()) ;
+      result.appendString (enumerator_1496.current_mOptionChar (HERE).getter_uint (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 30)).getter_string (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 30)).stringValue ()) ;
       result.appendString ("\n    commandString:@") ;
-      result.appendString (enumerator_1409.current_mOptionString (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 31)).stringValue ()) ;
+      result.appendString (enumerator_1496.current_mOptionString (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 31)).stringValue ()) ;
       result.appendString ("\n    comment:@") ;
-      result.appendString (enumerator_1409.current_mComment (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 32)).stringValue ()) ;
+      result.appendString (enumerator_1496.current_mComment (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 32)).stringValue ()) ;
       result.appendString ("\n    defaultValue:@") ;
-      result.appendString (enumerator_1409.current_mDefaultValue (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 33)).stringValue ()) ;
+      result.appendString (enumerator_1496.current_mDefaultValue (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 33)).stringValue ()) ;
       result.appendString ("\n  ] ;\n  [ioUIntOptionArray addObject:option] ;\n") ;
-      index_1409_.increment () ;
-      enumerator_1409.gotoNextObject () ;
+      index_1496_.increment () ;
+      enumerator_1496.gotoNextObject () ;
     }
   }
-  GALGAS_uint index_2064_ (0) ;
-  if (in_STRING_5F_OPTION_5F_MAP.isValid ()) {
-    cEnumerator_commandLineOptionMap enumerator_2064 (in_STRING_5F_OPTION_5F_MAP, kENUMERATION_UP) ;
-    while (enumerator_2064.hasCurrentObject ()) {
+  GALGAS_uint index_2185_ (0) ;
+  if (in_STRING_5F_OPTION_5F_SORTED_5F_LIST.isValid ()) {
+    cEnumerator_commandLineOptionSortedList enumerator_2185 (in_STRING_5F_OPTION_5F_SORTED_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_2185.hasCurrentObject ()) {
       result.appendString ("  option = [[OC_GGS_CommandLineOption alloc]\n    initWithDomainName:@") ;
       result.appendString (in_OPTION_5F_COMPONENT_5F_NAME.getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 39)).stringValue ()) ;
       result.appendString ("\n    identifier:@") ;
-      result.appendString (enumerator_2064.current_lkey (HERE).readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 40)).stringValue ()) ;
+      result.appendString (enumerator_2185.current_mOptionIdentifier (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 40)).stringValue ()) ;
       result.appendString ("\n    commandChar:") ;
-      result.appendString (enumerator_2064.current_mOptionChar (HERE).getter_uint (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 41)).getter_string (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 41)).stringValue ()) ;
+      result.appendString (enumerator_2185.current_mOptionChar (HERE).getter_uint (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 41)).getter_string (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 41)).stringValue ()) ;
       result.appendString ("\n    commandString:@") ;
-      result.appendString (enumerator_2064.current_mOptionString (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 42)).stringValue ()) ;
+      result.appendString (enumerator_2185.current_mOptionString (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 42)).stringValue ()) ;
       result.appendString ("\n    comment:@") ;
-      result.appendString (enumerator_2064.current_mComment (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 43)).stringValue ()) ;
+      result.appendString (enumerator_2185.current_mComment (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 43)).stringValue ()) ;
       result.appendString ("\n    defaultValue:@") ;
-      result.appendString (enumerator_2064.current_mDefaultValue (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 44)).stringValue ()) ;
+      result.appendString (enumerator_2185.current_mDefaultValue (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 44)).stringValue ()) ;
       result.appendString ("\n  ] ;\n  [ioStringOptionArray addObject:option] ;\n") ;
-      index_2064_.increment () ;
-      enumerator_2064.gotoNextObject () ;
+      index_2185_.increment () ;
+      enumerator_2185.gotoNextObject () ;
     }
   }
-  GALGAS_uint index_2726_ (0) ;
-  if (in_STRING_5F_LIST_5F_OPTION_5F_MAP.isValid ()) {
-    cEnumerator_commandLineOptionMap enumerator_2726 (in_STRING_5F_LIST_5F_OPTION_5F_MAP, kENUMERATION_UP) ;
-    while (enumerator_2726.hasCurrentObject ()) {
+  GALGAS_uint index_2881_ (0) ;
+  if (in_STRING_5F_LIST_5F_OPTION_5F_SORTED_5F_LIST.isValid ()) {
+    cEnumerator_commandLineOptionSortedList enumerator_2881 (in_STRING_5F_LIST_5F_OPTION_5F_SORTED_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_2881.hasCurrentObject ()) {
       result.appendString ("  option = [[OC_GGS_CommandLineOption alloc]\n    initWithDomainName:@") ;
       result.appendString (in_OPTION_5F_COMPONENT_5F_NAME.getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 50)).stringValue ()) ;
       result.appendString ("\n    identifier:@") ;
-      result.appendString (enumerator_2726.current_lkey (HERE).readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 51)).stringValue ()) ;
+      result.appendString (enumerator_2881.current_mOptionIdentifier (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 51)).stringValue ()) ;
       result.appendString ("\n    commandChar:") ;
-      result.appendString (enumerator_2726.current_mOptionChar (HERE).getter_uint (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 52)).getter_string (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 52)).stringValue ()) ;
+      result.appendString (enumerator_2881.current_mOptionChar (HERE).getter_uint (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 52)).getter_string (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 52)).stringValue ()) ;
       result.appendString ("\n    commandString:@") ;
-      result.appendString (enumerator_2726.current_mOptionString (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 53)).stringValue ()) ;
+      result.appendString (enumerator_2881.current_mOptionString (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 53)).stringValue ()) ;
       result.appendString ("\n    comment:@") ;
-      result.appendString (enumerator_2726.current_mComment (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 54)).stringValue ()) ;
+      result.appendString (enumerator_2881.current_mComment (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 54)).stringValue ()) ;
       result.appendString ("\n    defaultValue:@") ;
-      result.appendString (enumerator_2726.current_mDefaultValue (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 55)).stringValue ()) ;
+      result.appendString (enumerator_2881.current_mDefaultValue (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 55)).stringValue ()) ;
       result.appendString ("\n  ] ;\n  [ioStringListOptionArray addObject:option] ;\n") ;
-      index_2726_.increment () ;
-      enumerator_2726.gotoNextObject () ;
+      index_2881_.increment () ;
+      enumerator_2881.gotoNextObject () ;
     }
   }
   result.appendString ("}\n\n//--------------------------------------------------------------------------------------------------\n\n") ;
@@ -7321,10 +7345,10 @@ GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementation
 GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementationSwiftCocoa (Compiler * inCompiler,
                                                                                             const GALGAS_string & /* in_OPTION_5F_HEADER_5F_FILE_5F_NAME */,
                                                                                             const GALGAS_string & in_OPTION_5F_COMPONENT_5F_NAME,
-                                                                                            const GALGAS_commandLineOptionMap & in_BOOL_5F_OPTION_5F_MAP,
-                                                                                            const GALGAS_commandLineOptionMap & in_UINT_5F_OPTION_5F_MAP,
-                                                                                            const GALGAS_commandLineOptionMap & in_STRING_5F_OPTION_5F_MAP,
-                                                                                            const GALGAS_commandLineOptionMap & in_STRING_5F_LIST_5F_OPTION_5F_MAP
+                                                                                            const GALGAS_commandLineOptionSortedList & in_BOOL_5F_OPTION_5F_SORTED_5F_LIST,
+                                                                                            const GALGAS_commandLineOptionSortedList & in_UINT_5F_OPTION_5F_SORTED_5F_LIST,
+                                                                                            const GALGAS_commandLineOptionSortedList & in_STRING_5F_OPTION_5F_SORTED_5F_LIST,
+                                                                                            const GALGAS_commandLineOptionSortedList & in_STRING_5F_LIST_5F_OPTION_5F_SORTED_5F_LIST
                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
   uint32_t columnMarker = 0 ;
@@ -7337,126 +7361,126 @@ GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementation
   result.appendString ("_ ioStringOptionArray : inout [SWIFT_CommandLineOption],\n           ") ;
   result.appendSpacesUntilColumn (columnMarker) ;
   result.appendString ("_ ioStringListOptionArray : inout [SWIFT_CommandLineOption]) {\n") ;
-  GALGAS_uint index_481_ (0) ;
-  if (in_BOOL_5F_OPTION_5F_MAP.isValid ()) {
-    cEnumerator_commandLineOptionMap enumerator_481 (in_BOOL_5F_OPTION_5F_MAP, kENUMERATION_UP) ;
-    while (enumerator_481.hasCurrentObject ()) {
+  GALGAS_uint index_502_ (0) ;
+  if (in_BOOL_5F_OPTION_5F_SORTED_5F_LIST.isValid ()) {
+    cEnumerator_commandLineOptionSortedList enumerator_502 (in_BOOL_5F_OPTION_5F_SORTED_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_502.hasCurrentObject ()) {
       result.appendString ("  ioBoolOptionArray.append (SWIFT_CommandLineOption (\n    domainName: ") ;
       result.appendString (in_OPTION_5F_COMPONENT_5F_NAME.getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 10)).stringValue ()) ;
       result.appendString (",\n    identifier: ") ;
-      result.appendString (enumerator_481.current_lkey (HERE).readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 11)).stringValue ()) ;
+      result.appendString (enumerator_502.current_mOptionIdentifier (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 11)).stringValue ()) ;
       result.appendString (",\n    commandChar: ") ;
-      const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, enumerator_481.current_mOptionChar (HERE).objectCompare (GALGAS_char (TO_UNICODE (0)))).boolEnum () ;
+      const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, enumerator_502.current_mOptionChar (HERE).objectCompare (GALGAS_char (TO_UNICODE (0)))).boolEnum () ;
       switch (test_0) {
       case kBoolTrue : {
         result.appendString (GALGAS_string ("\"\"").stringValue ()) ;
         } break ;
       case kBoolFalse : {
-        result.appendString (GALGAS_string ("\"").add_operation (enumerator_481.current_mOptionChar (HERE).getter_string (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 12)), inCompiler COMMA_SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 12)).add_operation (GALGAS_string ("\""), inCompiler COMMA_SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 12)).stringValue ()) ;
+        result.appendString (GALGAS_string ("\"").add_operation (enumerator_502.current_mOptionChar (HERE).getter_string (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 12)), inCompiler COMMA_SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 12)).add_operation (GALGAS_string ("\""), inCompiler COMMA_SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 12)).stringValue ()) ;
         } break ;
       default :
         break ;
       }
       result.appendString (",\n    commandString: ") ;
-      result.appendString (enumerator_481.current_mOptionString (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 13)).stringValue ()) ;
+      result.appendString (enumerator_502.current_mOptionString (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 13)).stringValue ()) ;
       result.appendString (",\n    comment: ") ;
-      result.appendString (enumerator_481.current_mComment (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 14)).stringValue ()) ;
+      result.appendString (enumerator_502.current_mComment (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 14)).stringValue ()) ;
       result.appendString (",\n    defaultValue: \"\"\n  ))\n") ;
-      index_481_.increment () ;
-      enumerator_481.gotoNextObject () ;
+      index_502_.increment () ;
+      enumerator_502.gotoNextObject () ;
     }
   }
-  GALGAS_uint index_1090_ (0) ;
-  if (in_UINT_5F_OPTION_5F_MAP.isValid ()) {
-    cEnumerator_commandLineOptionMap enumerator_1090 (in_UINT_5F_OPTION_5F_MAP, kENUMERATION_UP) ;
-    while (enumerator_1090.hasCurrentObject ()) {
+  GALGAS_uint index_1145_ (0) ;
+  if (in_UINT_5F_OPTION_5F_SORTED_5F_LIST.isValid ()) {
+    cEnumerator_commandLineOptionSortedList enumerator_1145 (in_UINT_5F_OPTION_5F_SORTED_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_1145.hasCurrentObject ()) {
       result.appendString ("  ioUIntOptionArray.append (SWIFT_CommandLineOption (\n    domainName: ") ;
       result.appendString (in_OPTION_5F_COMPONENT_5F_NAME.getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 20)).stringValue ()) ;
       result.appendString (",\n    identifier: ") ;
-      result.appendString (enumerator_1090.current_lkey (HERE).readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 21)).stringValue ()) ;
+      result.appendString (enumerator_1145.current_mOptionIdentifier (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 21)).stringValue ()) ;
       result.appendString (",\n    commandChar: ") ;
-      const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, enumerator_1090.current_mOptionChar (HERE).objectCompare (GALGAS_char (TO_UNICODE (0)))).boolEnum () ;
+      const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, enumerator_1145.current_mOptionChar (HERE).objectCompare (GALGAS_char (TO_UNICODE (0)))).boolEnum () ;
       switch (test_1) {
       case kBoolTrue : {
         result.appendString (GALGAS_string ("\"\"").stringValue ()) ;
         } break ;
       case kBoolFalse : {
-        result.appendString (GALGAS_string ("\"").add_operation (enumerator_1090.current_mOptionChar (HERE).getter_string (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 22)), inCompiler COMMA_SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 22)).add_operation (GALGAS_string ("\""), inCompiler COMMA_SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 22)).stringValue ()) ;
+        result.appendString (GALGAS_string ("\"").add_operation (enumerator_1145.current_mOptionChar (HERE).getter_string (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 22)), inCompiler COMMA_SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 22)).add_operation (GALGAS_string ("\""), inCompiler COMMA_SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 22)).stringValue ()) ;
         } break ;
       default :
         break ;
       }
       result.appendString (",\n    commandString: ") ;
-      result.appendString (enumerator_1090.current_mOptionString (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 23)).stringValue ()) ;
+      result.appendString (enumerator_1145.current_mOptionString (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 23)).stringValue ()) ;
       result.appendString (",\n    comment: ") ;
-      result.appendString (enumerator_1090.current_mComment (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 24)).stringValue ()) ;
+      result.appendString (enumerator_1145.current_mComment (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 24)).stringValue ()) ;
       result.appendString (",\n    defaultValue: ") ;
-      result.appendString (enumerator_1090.current_mDefaultValue (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 25)).stringValue ()) ;
+      result.appendString (enumerator_1145.current_mDefaultValue (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 25)).stringValue ()) ;
       result.appendString ("\n  ))\n") ;
-      index_1090_.increment () ;
-      enumerator_1090.gotoNextObject () ;
+      index_1145_.increment () ;
+      enumerator_1145.gotoNextObject () ;
     }
   }
-  GALGAS_uint index_1756_ (0) ;
-  if (in_STRING_5F_OPTION_5F_MAP.isValid ()) {
-    cEnumerator_commandLineOptionMap enumerator_1756 (in_STRING_5F_OPTION_5F_MAP, kENUMERATION_UP) ;
-    while (enumerator_1756.hasCurrentObject ()) {
+  GALGAS_uint index_1845_ (0) ;
+  if (in_STRING_5F_OPTION_5F_SORTED_5F_LIST.isValid ()) {
+    cEnumerator_commandLineOptionSortedList enumerator_1845 (in_STRING_5F_OPTION_5F_SORTED_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_1845.hasCurrentObject ()) {
       result.appendString ("  ioStringOptionArray.append (SWIFT_CommandLineOption (\n    domainName: ") ;
       result.appendString (in_OPTION_5F_COMPONENT_5F_NAME.getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 30)).stringValue ()) ;
       result.appendString (",\n    identifier: ") ;
-      result.appendString (enumerator_1756.current_lkey (HERE).readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 31)).stringValue ()) ;
+      result.appendString (enumerator_1845.current_mOptionIdentifier (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 31)).stringValue ()) ;
       result.appendString (",\n    commandChar: ") ;
-      const enumGalgasBool test_2 = GALGAS_bool (kIsEqual, enumerator_1756.current_mOptionChar (HERE).objectCompare (GALGAS_char (TO_UNICODE (0)))).boolEnum () ;
+      const enumGalgasBool test_2 = GALGAS_bool (kIsEqual, enumerator_1845.current_mOptionChar (HERE).objectCompare (GALGAS_char (TO_UNICODE (0)))).boolEnum () ;
       switch (test_2) {
       case kBoolTrue : {
         result.appendString (GALGAS_string ("\"\"").stringValue ()) ;
         } break ;
       case kBoolFalse : {
-        result.appendString (GALGAS_string ("\"").add_operation (enumerator_1756.current_mOptionChar (HERE).getter_string (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 32)), inCompiler COMMA_SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 32)).add_operation (GALGAS_string ("\""), inCompiler COMMA_SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 32)).stringValue ()) ;
+        result.appendString (GALGAS_string ("\"").add_operation (enumerator_1845.current_mOptionChar (HERE).getter_string (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 32)), inCompiler COMMA_SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 32)).add_operation (GALGAS_string ("\""), inCompiler COMMA_SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 32)).stringValue ()) ;
         } break ;
       default :
         break ;
       }
       result.appendString (",\n    commandString: ") ;
-      result.appendString (enumerator_1756.current_mOptionString (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 33)).stringValue ()) ;
+      result.appendString (enumerator_1845.current_mOptionString (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 33)).stringValue ()) ;
       result.appendString (",\n    comment: ") ;
-      result.appendString (enumerator_1756.current_mComment (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 34)).stringValue ()) ;
+      result.appendString (enumerator_1845.current_mComment (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 34)).stringValue ()) ;
       result.appendString (",\n    defaultValue: ") ;
-      result.appendString (enumerator_1756.current_mDefaultValue (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 35)).stringValue ()) ;
+      result.appendString (enumerator_1845.current_mDefaultValue (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 35)).stringValue ()) ;
       result.appendString ("\n  ))\n") ;
-      index_1756_.increment () ;
-      enumerator_1756.gotoNextObject () ;
+      index_1845_.increment () ;
+      enumerator_1845.gotoNextObject () ;
     }
   }
-  GALGAS_uint index_2429_ (0) ;
-  if (in_STRING_5F_LIST_5F_OPTION_5F_MAP.isValid ()) {
-    cEnumerator_commandLineOptionMap enumerator_2429 (in_STRING_5F_LIST_5F_OPTION_5F_MAP, kENUMERATION_UP) ;
-    while (enumerator_2429.hasCurrentObject ()) {
+  GALGAS_uint index_2552_ (0) ;
+  if (in_STRING_5F_LIST_5F_OPTION_5F_SORTED_5F_LIST.isValid ()) {
+    cEnumerator_commandLineOptionSortedList enumerator_2552 (in_STRING_5F_LIST_5F_OPTION_5F_SORTED_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_2552.hasCurrentObject ()) {
       result.appendString ("  ioStringListOptionArray.append (SWIFT_CommandLineOption (\n    domainName: ") ;
       result.appendString (in_OPTION_5F_COMPONENT_5F_NAME.getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 40)).stringValue ()) ;
       result.appendString (",\n    identifier: ") ;
-      result.appendString (enumerator_2429.current_lkey (HERE).readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 41)).stringValue ()) ;
+      result.appendString (enumerator_2552.current_mOptionIdentifier (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 41)).stringValue ()) ;
       result.appendString (",\n    commandChar: ") ;
-      const enumGalgasBool test_3 = GALGAS_bool (kIsEqual, enumerator_2429.current_mOptionChar (HERE).objectCompare (GALGAS_char (TO_UNICODE (0)))).boolEnum () ;
+      const enumGalgasBool test_3 = GALGAS_bool (kIsEqual, enumerator_2552.current_mOptionChar (HERE).objectCompare (GALGAS_char (TO_UNICODE (0)))).boolEnum () ;
       switch (test_3) {
       case kBoolTrue : {
         result.appendString (GALGAS_string ("\"\"").stringValue ()) ;
         } break ;
       case kBoolFalse : {
-        result.appendString (GALGAS_string ("\"").add_operation (enumerator_2429.current_mOptionChar (HERE).getter_string (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 42)), inCompiler COMMA_SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 42)).add_operation (GALGAS_string ("\""), inCompiler COMMA_SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 42)).stringValue ()) ;
+        result.appendString (GALGAS_string ("\"").add_operation (enumerator_2552.current_mOptionChar (HERE).getter_string (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 42)), inCompiler COMMA_SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 42)).add_operation (GALGAS_string ("\""), inCompiler COMMA_SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 42)).stringValue ()) ;
         } break ;
       default :
         break ;
       }
       result.appendString (",\n    commandString: ") ;
-      result.appendString (enumerator_2429.current_mOptionString (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 43)).stringValue ()) ;
+      result.appendString (enumerator_2552.current_mOptionString (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 43)).stringValue ()) ;
       result.appendString (",\n    comment: ") ;
-      result.appendString (enumerator_2429.current_mComment (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 44)).stringValue ()) ;
+      result.appendString (enumerator_2552.current_mComment (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 44)).stringValue ()) ;
       result.appendString (",\n    defaultValue: ") ;
-      result.appendString (enumerator_2429.current_mDefaultValue (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 45)).stringValue ()) ;
+      result.appendString (enumerator_2552.current_mDefaultValue (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 45)).stringValue ()) ;
       result.appendString ("\n  ))\n") ;
-      index_2429_.increment () ;
-      enumerator_2429.gotoNextObject () ;
+      index_2552_.increment () ;
+      enumerator_2552.gotoNextObject () ;
     }
   }
   result.appendString ("  ioBoolOptionArray.append (SWIFT_CommandLineOption (\n    domainName: \"galgas_cli_options\",\n    identifier: \"quiet_output\",\n    commandChar: \"q\",\n    commandString: \"quiet\",\n    comment: \"Quiet output\",\n    defaultValue: \"\"\n  ))\n}\n\n//--------------------------------------------------------------------------------------------------\n\n") ;
@@ -8805,62 +8829,3 @@ void cPtr_boolsetTypeForGeneration::method_appendDeclaration_31_ (GALGAS_strings
   outArgument_outHeader = GALGAS_string (filewrapperTemplate_structGenerationTemplate_boolsetTypeHeader_31_ (inCompiler, var_typedefinition_10841.readProperty_mTypeName ().readProperty_string (), var_typedefinition_10841.readProperty_mTypeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("type-boolset.galgas", 302)), temp_1.readProperty_mFlagList () COMMA_SOURCE_FILE ("type-boolset.galgas", 300))) ;
   outArgument_outHeader.plusAssign_operation(GALGAS_string (filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (inCompiler, var_typedefinition_10841.readProperty_mTypeName ().readProperty_string (), var_typedefinition_10841.readProperty_mTypeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("type-boolset.galgas", 307)), var_typedefinition_10841.readProperty_mIsConcrete (), var_typedefinition_10841.readProperty_mClassFunctionMap (), var_typedefinition_10841.readProperty_mGetterMap (), var_typedefinition_10841.readProperty_mSetterMap (), var_typedefinition_10841.readProperty_mInstanceMethodMap (), var_typedefinition_10841.readProperty_mClassMethodMap (), var_typedefinition_10841.readProperty_mOptionalMethodMap (), var_typedefinition_10841.readProperty_mEnumerationDescriptor (), var_typedefinition_10841.readProperty_mHandledOperatorFlags (), var_typedefinition_10841.readProperty_mAddAssignOperatorArguments (), var_typedefinition_10841.readProperty_mTypeForEnumeratedElement () COMMA_SOURCE_FILE ("type-boolset.galgas", 305))), inCompiler  COMMA_SOURCE_FILE ("type-boolset.galgas", 305)) ;
 }
-//--------------------------------------------------------------------------------------------------
-//
-//Overriding extension method '@boolsetTypeForGeneration appendSpecificImplementation'
-//
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_boolsetTypeForGeneration::method_appendSpecificImplementation (const GALGAS_unifiedTypeMap /* constinArgument_inTypeMap */,
-                                                                         GALGAS_stringset & ioArgument_ioInclusionSet,
-                                                                         GALGAS_string & outArgument_outImplementation,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  const GALGAS_boolsetTypeForGeneration temp_0 = this ;
-  extensionMethod_addHeaderFileName (temp_0.readProperty_mSelfTypeEntry (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 329)) ;
-  const GALGAS_boolsetTypeForGeneration temp_1 = this ;
-  const GALGAS_boolsetTypeForGeneration temp_2 = this ;
-  const GALGAS_boolsetTypeForGeneration temp_3 = this ;
-  const GALGAS_boolsetTypeForGeneration temp_4 = this ;
-  outArgument_outImplementation = GALGAS_string (filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificImplementation (inCompiler, extensionGetter_definition (temp_1.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 331)).readProperty_mTypeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_2.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 332)), temp_3.readProperty_mFlagList (), GALGAS_bigint ("1", inCompiler  COMMA_SOURCE_FILE ("type-boolset.galgas", 334)).left_shift_operation (temp_4.readProperty_mFlagList ().getter_count (SOURCE_FILE ("type-boolset.galgas", 334)), inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 334)).substract_operation (GALGAS_bigint ("1", inCompiler  COMMA_SOURCE_FILE ("type-boolset.galgas", 334)), inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 334)) COMMA_SOURCE_FILE ("type-boolset.galgas", 330))) ;
-}
-//--------------------------------------------------------------------------------------------------
-//
-//Function 'weakSuffix'
-//
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_string function_weakSuffix (Compiler *
-                                   COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result_result ; // Returned variable
-  result_result = GALGAS_string ("-weak") ;
-//---
-  return result_result ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//  Function introspection                                                                       
-//--------------------------------------------------------------------------------------------------
-
-static const C_galgas_type_descriptor * functionArgs_weakSuffix [1] = {
-  nullptr
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-static GALGAS_object functionWithGenericHeader_weakSuffix (Compiler * inCompiler,
-                                                           const cObjectArray & /* inEffectiveParameterArray */,
-                                                           const GALGAS_location & /* inErrorLocation */
-                                                           COMMA_LOCATION_ARGS) {
-  return function_weakSuffix (inCompiler COMMA_THERE).getter_object (THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-C_galgas_function_descriptor functionDescriptor_weakSuffix ("weakSuffix",
-                                                            functionWithGenericHeader_weakSuffix,
-                                                            & kTypeDescriptor_GALGAS_string,
-                                                            0,
-                                                            functionArgs_weakSuffix) ;
-

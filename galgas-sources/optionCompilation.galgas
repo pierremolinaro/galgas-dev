@@ -289,6 +289,43 @@ override method @optionComponentDeclarationAST semanticAnalysis
     ?let @commandLineOptionMap stringOptionMap
     ?let @commandLineOptionMap stringListOptionMap
   ]
+#---- Sort options
+  var @commandLineOptionSortedList boolOptionSortedList = {}
+  for anOption in boolOptionMap do
+    boolOptionSortedList +=
+      !anOption.lkey.string
+      !anOption.mOptionChar
+      !anOption.mOptionString
+      !anOption.mComment
+      !anOption.mDefaultValue
+  end
+  var @commandLineOptionSortedList uintOptionSortedList = {}
+  for anOption in uintOptionMap do
+    uintOptionSortedList +=
+      !anOption.lkey.string
+      !anOption.mOptionChar
+      !anOption.mOptionString
+      !anOption.mComment
+      !anOption.mDefaultValue
+  end
+  var @commandLineOptionSortedList stringOptionSortedList = {}
+  for anOption in stringOptionMap do
+    stringOptionSortedList +=
+      !anOption.lkey.string
+      !anOption.mOptionChar
+      !anOption.mOptionString
+      !anOption.mComment
+      !anOption.mDefaultValue
+  end
+  var @commandLineOptionSortedList stringListOptionSortedList = {}
+  for anOption in stringListOptionMap do
+    stringListOptionSortedList +=
+      !anOption.lkey.string
+      !anOption.mOptionChar
+      !anOption.mOptionString
+      !anOption.mComment
+      !anOption.mDefaultValue
+  end
 #---- Enter filewrapper in generated list
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "option " + self.mOptionComponentName
@@ -297,10 +334,10 @@ override method @optionComponentDeclarationAST semanticAnalysis
       !mImplementationCppFileName: "option-" + [self.mOptionComponentName fileNameRepresentation]
       !optionIsPredefined
       !self.mOptionComponentName.string
-      !boolOptionMap
-      !uintOptionMap
-      !stringOptionMap
-      !stringListOptionMap
+      !boolOptionSortedList
+      !uintOptionSortedList
+      !stringOptionSortedList
+      !stringListOptionSortedList
     }
 }
 
@@ -311,10 +348,10 @@ override method @optionComponentDeclarationAST semanticAnalysis
 refclass @optionComponentForGeneration : @semanticDeclarationWithHeaderForGeneration {
   public let @bool mIsPredefined
   public let @string mOptionComponentName
-  public let @commandLineOptionMap mBoolOptionMap
-  public let @commandLineOptionMap mUIntOptionMap
-  public let @commandLineOptionMap mStringOptionMap
-  public let @commandLineOptionMap mStringListOptionMap
+  public let @commandLineOptionSortedList mBoolOptionSortedList
+  public let @commandLineOptionSortedList mUIntOptionSortedList
+  public let @commandLineOptionSortedList mStringOptionSortedList
+  public let @commandLineOptionSortedList mStringListSortedList
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -340,10 +377,10 @@ override method @optionComponentForGeneration appendDeclaration1
   else
     outHeader = [filewrapper optionGenerationTemplates.optionHeaderZone3
       !self.mOptionComponentName
-      !self.mBoolOptionMap
-      !self.mUIntOptionMap
-      !self.mStringOptionMap
-      !self.mStringListOptionMap
+      !self.mBoolOptionSortedList
+      !self.mUIntOptionSortedList
+      !self.mStringOptionSortedList
+      !self.mStringListSortedList
     ]
   end
 }
@@ -361,10 +398,10 @@ override method @optionComponentForGeneration appendSpecificImplementation
     ioInclusionSet += !"option-" + [self.mOptionComponentName fileNameRepresentation]
     outImplementation = [filewrapper optionGenerationTemplates.optionImplementationGalgas3
       !self.mOptionComponentName
-      !self.mBoolOptionMap
-      !self.mUIntOptionMap
-      !self.mStringOptionMap
-      !self.mStringListOptionMap
+      !self.mBoolOptionSortedList
+      !self.mUIntOptionSortedList
+      !self.mStringOptionSortedList
+      !self.mStringListSortedList
     ]
   end
 }
@@ -406,10 +443,10 @@ override method @optionComponentForGeneration appendSpecificFiles
       !generatedZone2:[filewrapper optionGenerationTemplates.optionImplementationCocoa
         !"option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa"
         !self.mOptionComponentName
-        !self.mBoolOptionMap
-        !self.mUIntOptionMap
-        !self.mStringOptionMap
-        !self.mStringListOptionMap
+        !self.mBoolOptionSortedList
+        !self.mUIntOptionSortedList
+        !self.mStringOptionSortedList
+        !self.mStringListSortedList
       ]
       !defaultUserZone2:"\n\n" # Defaut user zone2
       !generatedZone3:"\n\n" # User Zone 3
@@ -427,10 +464,10 @@ override method @optionComponentForGeneration appendSpecificFiles
       !generatedZone2:[filewrapper optionGenerationTemplates.optionImplementationSwiftCocoa
         !"option-" + [self.mOptionComponentName fileNameRepresentation] + "-swift-cocoa"
         !self.mOptionComponentName
-        !self.mBoolOptionMap
-        !self.mUIntOptionMap
-        !self.mStringOptionMap
-        !self.mStringListOptionMap
+        !self.mBoolOptionSortedList
+        !self.mUIntOptionSortedList
+        !self.mStringOptionSortedList
+        !self.mStringListSortedList
       ]
       !defaultUserZone2:"\n\n" # Defaut user zone2
       !generatedZone3:"\n\n" # User Zone 3
@@ -451,6 +488,18 @@ map @commandLineOptionMap { # the key is the option identifier
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
+
+sortedlist @commandLineOptionSortedList {
+  public let @string mOptionIdentifier
+  public let @char mOptionChar
+  public let @string mOptionString
+  public let @string mComment
+  public let @string mDefaultValue
+}{
+  mComment <
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #         G E N E R A T I O N    T E M P L A T E S
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -459,17 +508,17 @@ filewrapper optionGenerationTemplates in "+generation-templates/option_generatio
 }{
   template optionHeaderZone3 "option-header-zone3.galgasTemplate"
     ?@string OPTION_COMPONENT_NAME
-    ?@commandLineOptionMap BOOL_OPTION_MAP
-    ?@commandLineOptionMap UINT_OPTION_MAP
-    ?@commandLineOptionMap STRING_OPTION_MAP
-    ?@commandLineOptionMap STRING_LIST_OPTION_MAP
+    ?@commandLineOptionSortedList BOOL_OPTION_SORTED_LIST
+    ?@commandLineOptionSortedList UINT_OPTION_SORTED_LIST
+    ?@commandLineOptionSortedList STRING_OPTION_SORTED_LIST
+    ?@commandLineOptionSortedList STRING_LIST_OPTION_SORTED_LIST
 
   template optionImplementationGalgas3 "option-implementation-galgas3.cpp.galgasTemplate"
     ?@string OPTION_COMPONENT_NAME
-    ?@commandLineOptionMap BOOL_OPTION_MAP
-    ?@commandLineOptionMap UINT_OPTION_MAP
-    ?@commandLineOptionMap STRING_OPTION_MAP
-    ?@commandLineOptionMap STRING_LIST_OPTION_MAP
+    ?@commandLineOptionSortedList BOOL_OPTION_SORTED_LIST
+    ?@commandLineOptionSortedList UINT_OPTION_SORTED_LIST
+    ?@commandLineOptionSortedList STRING_OPTION_SORTED_LIST
+    ?@commandLineOptionSortedList STRING_LIST_OPTION_SORTED_LIST
 
   template optionHeaderCocoaZone2 "option-header-cocoa-zone2.galgasTemplate"
     ?@string OPTION_COMPONENT_NAME
@@ -480,18 +529,18 @@ filewrapper optionGenerationTemplates in "+generation-templates/option_generatio
   template optionImplementationCocoa "option-implementation-cocoa.galgasTemplate"
     ?@string OPTION_HEADER_FILE_NAME
     ?@string OPTION_COMPONENT_NAME
-    ?@commandLineOptionMap BOOL_OPTION_MAP
-    ?@commandLineOptionMap UINT_OPTION_MAP
-    ?@commandLineOptionMap STRING_OPTION_MAP
-    ?@commandLineOptionMap STRING_LIST_OPTION_MAP
+    ?@commandLineOptionSortedList BOOL_OPTION_SORTED_LIST
+    ?@commandLineOptionSortedList UINT_OPTION_SORTED_LIST
+    ?@commandLineOptionSortedList STRING_OPTION_SORTED_LIST
+    ?@commandLineOptionSortedList STRING_LIST_OPTION_SORTED_LIST
 
   template optionImplementationSwiftCocoa "option-implementation-swift-cocoa.galgasTemplate"
     ?@string OPTION_HEADER_FILE_NAME
     ?@string OPTION_COMPONENT_NAME
-    ?@commandLineOptionMap BOOL_OPTION_MAP
-    ?@commandLineOptionMap UINT_OPTION_MAP
-    ?@commandLineOptionMap STRING_OPTION_MAP
-    ?@commandLineOptionMap STRING_LIST_OPTION_MAP
+    ?@commandLineOptionSortedList BOOL_OPTION_SORTED_LIST
+    ?@commandLineOptionSortedList UINT_OPTION_SORTED_LIST
+    ?@commandLineOptionSortedList STRING_OPTION_SORTED_LIST
+    ?@commandLineOptionSortedList STRING_LIST_OPTION_SORTED_LIST
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

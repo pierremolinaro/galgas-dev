@@ -276,13 +276,13 @@ class GALGAS_optionComponentForGeneration : public GALGAS_semanticDeclarationWit
 
   public: class GALGAS_string readProperty_mOptionComponentName (void) const ;
 
-  public: class GALGAS_commandLineOptionMap readProperty_mBoolOptionMap (void) const ;
+  public: class GALGAS_commandLineOptionSortedList readProperty_mBoolOptionSortedList (void) const ;
 
-  public: class GALGAS_commandLineOptionMap readProperty_mUIntOptionMap (void) const ;
+  public: class GALGAS_commandLineOptionSortedList readProperty_mUIntOptionSortedList (void) const ;
 
-  public: class GALGAS_commandLineOptionMap readProperty_mStringOptionMap (void) const ;
+  public: class GALGAS_commandLineOptionSortedList readProperty_mStringOptionSortedList (void) const ;
 
-  public: class GALGAS_commandLineOptionMap readProperty_mStringListOptionMap (void) const ;
+  public: class GALGAS_commandLineOptionSortedList readProperty_mStringListSortedList (void) const ;
 
 //-- Start of type generic part
 
@@ -299,10 +299,10 @@ class GALGAS_optionComponentForGeneration : public GALGAS_semanticDeclarationWit
                                                                            const class GALGAS_string & inOperand1,
                                                                            const class GALGAS_bool & inOperand2,
                                                                            const class GALGAS_string & inOperand3,
-                                                                           const class GALGAS_commandLineOptionMap & inOperand4,
-                                                                           const class GALGAS_commandLineOptionMap & inOperand5,
-                                                                           const class GALGAS_commandLineOptionMap & inOperand6,
-                                                                           const class GALGAS_commandLineOptionMap & inOperand7
+                                                                           const class GALGAS_commandLineOptionSortedList & inOperand4,
+                                                                           const class GALGAS_commandLineOptionSortedList & inOperand5,
+                                                                           const class GALGAS_commandLineOptionSortedList & inOperand6,
+                                                                           const class GALGAS_commandLineOptionSortedList & inOperand7
                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -364,20 +364,20 @@ class cPtr_optionComponentForGeneration : public cPtr_semanticDeclarationWithHea
 //--- Properties
   public: GALGAS_bool mProperty_mIsPredefined ;
   public: GALGAS_string mProperty_mOptionComponentName ;
-  public: GALGAS_commandLineOptionMap mProperty_mBoolOptionMap ;
-  public: GALGAS_commandLineOptionMap mProperty_mUIntOptionMap ;
-  public: GALGAS_commandLineOptionMap mProperty_mStringOptionMap ;
-  public: GALGAS_commandLineOptionMap mProperty_mStringListOptionMap ;
+  public: GALGAS_commandLineOptionSortedList mProperty_mBoolOptionSortedList ;
+  public: GALGAS_commandLineOptionSortedList mProperty_mUIntOptionSortedList ;
+  public: GALGAS_commandLineOptionSortedList mProperty_mStringOptionSortedList ;
+  public: GALGAS_commandLineOptionSortedList mProperty_mStringListSortedList ;
 
 //--- Constructor
   public: cPtr_optionComponentForGeneration (const GALGAS_bool & in_generateHeader,
                                              const GALGAS_string & in_mImplementationCppFileName,
                                              const GALGAS_bool & in_mIsPredefined,
                                              const GALGAS_string & in_mOptionComponentName,
-                                             const GALGAS_commandLineOptionMap & in_mBoolOptionMap,
-                                             const GALGAS_commandLineOptionMap & in_mUIntOptionMap,
-                                             const GALGAS_commandLineOptionMap & in_mStringOptionMap,
-                                             const GALGAS_commandLineOptionMap & in_mStringListOptionMap
+                                             const GALGAS_commandLineOptionSortedList & in_mBoolOptionSortedList,
+                                             const GALGAS_commandLineOptionSortedList & in_mUIntOptionSortedList,
+                                             const GALGAS_commandLineOptionSortedList & in_mStringOptionSortedList,
+                                             const GALGAS_commandLineOptionSortedList & in_mStringListSortedList
                                              COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

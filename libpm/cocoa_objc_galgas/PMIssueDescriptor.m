@@ -143,10 +143,18 @@
 - (void) updateLocationForPreviousRange: (NSRange) inEditedRange
          changeInLength: (NSInteger) inChangeInLength {
   if (mEndLocationInSourceString >= (inEditedRange.location + inEditedRange.length)) {
-    mEndLocationInSourceString += (NSUInteger) inChangeInLength ;
+    if (inChangeInLength >= 0) {
+      mEndLocationInSourceString += (NSUInteger) inChangeInLength ;
+    }else{
+      mEndLocationInSourceString -= (NSUInteger) -inChangeInLength ;
+    }
   }
   if (mStartLocationInSourceString >= (inEditedRange.location + inEditedRange.length)) {
-    mStartLocationInSourceString += (NSUInteger) inChangeInLength ;
+    if (inChangeInLength >= 0) {
+      mStartLocationInSourceString += (NSUInteger) inChangeInLength ;
+    }else{
+      mStartLocationInSourceString -= (NSUInteger) -inChangeInLength ;
+    }
   }else if (((NSUInteger) mStartLocationInSourceString) >= inEditedRange.location) {
     mLocationInSourceStringStatus = kLocationInSourceStringInvalid ;
     [mBuildOutputRuler setNeedsDisplay:YES] ;

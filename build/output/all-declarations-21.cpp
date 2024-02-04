@@ -8361,10 +8361,10 @@ GALGAS_semanticContext GALGAS_semanticContext::extractObject (const GALGAS_objec
     cPtr_semanticDeclarationWithHeaderForGeneration::printNonNullClassInstanceProperties () ;
     mProperty_mIsPredefined.printNonNullClassInstanceProperties ("mIsPredefined") ;
     mProperty_mOptionComponentName.printNonNullClassInstanceProperties ("mOptionComponentName") ;
-    mProperty_mBoolOptionMap.printNonNullClassInstanceProperties ("mBoolOptionMap") ;
-    mProperty_mUIntOptionMap.printNonNullClassInstanceProperties ("mUIntOptionMap") ;
-    mProperty_mStringOptionMap.printNonNullClassInstanceProperties ("mStringOptionMap") ;
-    mProperty_mStringListOptionMap.printNonNullClassInstanceProperties ("mStringListOptionMap") ;
+    mProperty_mBoolOptionSortedList.printNonNullClassInstanceProperties ("mBoolOptionSortedList") ;
+    mProperty_mUIntOptionSortedList.printNonNullClassInstanceProperties ("mUIntOptionSortedList") ;
+    mProperty_mStringOptionSortedList.printNonNullClassInstanceProperties ("mStringOptionSortedList") ;
+    mProperty_mStringListSortedList.printNonNullClassInstanceProperties ("mStringListSortedList") ;
   }
 #endif
 
@@ -8387,16 +8387,16 @@ typeComparisonResult cPtr_optionComponentForGeneration::dynamicObjectCompare (co
     result = mProperty_mOptionComponentName.objectCompare (p->mProperty_mOptionComponentName) ;
   }
   if (kOperandEqual == result) {
-    result = mProperty_mBoolOptionMap.objectCompare (p->mProperty_mBoolOptionMap) ;
+    result = mProperty_mBoolOptionSortedList.objectCompare (p->mProperty_mBoolOptionSortedList) ;
   }
   if (kOperandEqual == result) {
-    result = mProperty_mUIntOptionMap.objectCompare (p->mProperty_mUIntOptionMap) ;
+    result = mProperty_mUIntOptionSortedList.objectCompare (p->mProperty_mUIntOptionSortedList) ;
   }
   if (kOperandEqual == result) {
-    result = mProperty_mStringOptionMap.objectCompare (p->mProperty_mStringOptionMap) ;
+    result = mProperty_mStringOptionSortedList.objectCompare (p->mProperty_mStringOptionSortedList) ;
   }
   if (kOperandEqual == result) {
-    result = mProperty_mStringListOptionMap.objectCompare (p->mProperty_mStringListOptionMap) ;
+    result = mProperty_mStringListSortedList.objectCompare (p->mProperty_mStringListSortedList) ;
   }
   return result ;
 }
@@ -8438,14 +8438,14 @@ GALGAS_optionComponentForGeneration GALGAS_optionComponentForGeneration::class_f
                                                                                          const GALGAS_string & inAttribute_mImplementationCppFileName,
                                                                                          const GALGAS_bool & inAttribute_mIsPredefined,
                                                                                          const GALGAS_string & inAttribute_mOptionComponentName,
-                                                                                         const GALGAS_commandLineOptionMap & inAttribute_mBoolOptionMap,
-                                                                                         const GALGAS_commandLineOptionMap & inAttribute_mUIntOptionMap,
-                                                                                         const GALGAS_commandLineOptionMap & inAttribute_mStringOptionMap,
-                                                                                         const GALGAS_commandLineOptionMap & inAttribute_mStringListOptionMap
+                                                                                         const GALGAS_commandLineOptionSortedList & inAttribute_mBoolOptionSortedList,
+                                                                                         const GALGAS_commandLineOptionSortedList & inAttribute_mUIntOptionSortedList,
+                                                                                         const GALGAS_commandLineOptionSortedList & inAttribute_mStringOptionSortedList,
+                                                                                         const GALGAS_commandLineOptionSortedList & inAttribute_mStringListSortedList
                                                                                          COMMA_LOCATION_ARGS) {
   GALGAS_optionComponentForGeneration result ;
-  if (inAttribute_generateHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mIsPredefined.isValid () && inAttribute_mOptionComponentName.isValid () && inAttribute_mBoolOptionMap.isValid () && inAttribute_mUIntOptionMap.isValid () && inAttribute_mStringOptionMap.isValid () && inAttribute_mStringListOptionMap.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_optionComponentForGeneration (inAttribute_generateHeader, inAttribute_mImplementationCppFileName, inAttribute_mIsPredefined, inAttribute_mOptionComponentName, inAttribute_mBoolOptionMap, inAttribute_mUIntOptionMap, inAttribute_mStringOptionMap, inAttribute_mStringListOptionMap COMMA_THERE)) ;
+  if (inAttribute_generateHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mIsPredefined.isValid () && inAttribute_mOptionComponentName.isValid () && inAttribute_mBoolOptionSortedList.isValid () && inAttribute_mUIntOptionSortedList.isValid () && inAttribute_mStringOptionSortedList.isValid () && inAttribute_mStringListSortedList.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_optionComponentForGeneration (inAttribute_generateHeader, inAttribute_mImplementationCppFileName, inAttribute_mIsPredefined, inAttribute_mOptionComponentName, inAttribute_mBoolOptionSortedList, inAttribute_mUIntOptionSortedList, inAttribute_mStringOptionSortedList, inAttribute_mStringListSortedList COMMA_THERE)) ;
   }
   return result ;
 }
@@ -8476,49 +8476,49 @@ GALGAS_string GALGAS_optionComponentForGeneration::readProperty_mOptionComponent
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_commandLineOptionMap GALGAS_optionComponentForGeneration::readProperty_mBoolOptionMap (void) const {
+GALGAS_commandLineOptionSortedList GALGAS_optionComponentForGeneration::readProperty_mBoolOptionSortedList (void) const {
   if (nullptr == mObjectPtr) {
-    return GALGAS_commandLineOptionMap () ;
+    return GALGAS_commandLineOptionSortedList () ;
   }else{
     cPtr_optionComponentForGeneration * p = (cPtr_optionComponentForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_optionComponentForGeneration) ;
-    return p->mProperty_mBoolOptionMap ;
+    return p->mProperty_mBoolOptionSortedList ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_commandLineOptionMap GALGAS_optionComponentForGeneration::readProperty_mUIntOptionMap (void) const {
+GALGAS_commandLineOptionSortedList GALGAS_optionComponentForGeneration::readProperty_mUIntOptionSortedList (void) const {
   if (nullptr == mObjectPtr) {
-    return GALGAS_commandLineOptionMap () ;
+    return GALGAS_commandLineOptionSortedList () ;
   }else{
     cPtr_optionComponentForGeneration * p = (cPtr_optionComponentForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_optionComponentForGeneration) ;
-    return p->mProperty_mUIntOptionMap ;
+    return p->mProperty_mUIntOptionSortedList ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_commandLineOptionMap GALGAS_optionComponentForGeneration::readProperty_mStringOptionMap (void) const {
+GALGAS_commandLineOptionSortedList GALGAS_optionComponentForGeneration::readProperty_mStringOptionSortedList (void) const {
   if (nullptr == mObjectPtr) {
-    return GALGAS_commandLineOptionMap () ;
+    return GALGAS_commandLineOptionSortedList () ;
   }else{
     cPtr_optionComponentForGeneration * p = (cPtr_optionComponentForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_optionComponentForGeneration) ;
-    return p->mProperty_mStringOptionMap ;
+    return p->mProperty_mStringOptionSortedList ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_commandLineOptionMap GALGAS_optionComponentForGeneration::readProperty_mStringListOptionMap (void) const {
+GALGAS_commandLineOptionSortedList GALGAS_optionComponentForGeneration::readProperty_mStringListSortedList (void) const {
   if (nullptr == mObjectPtr) {
-    return GALGAS_commandLineOptionMap () ;
+    return GALGAS_commandLineOptionSortedList () ;
   }else{
     cPtr_optionComponentForGeneration * p = (cPtr_optionComponentForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_optionComponentForGeneration) ;
-    return p->mProperty_mStringListOptionMap ;
+    return p->mProperty_mStringListSortedList ;
   }
 }
 
@@ -8530,18 +8530,18 @@ cPtr_optionComponentForGeneration::cPtr_optionComponentForGeneration (const GALG
                                                                       const GALGAS_string & in_mImplementationCppFileName,
                                                                       const GALGAS_bool & in_mIsPredefined,
                                                                       const GALGAS_string & in_mOptionComponentName,
-                                                                      const GALGAS_commandLineOptionMap & in_mBoolOptionMap,
-                                                                      const GALGAS_commandLineOptionMap & in_mUIntOptionMap,
-                                                                      const GALGAS_commandLineOptionMap & in_mStringOptionMap,
-                                                                      const GALGAS_commandLineOptionMap & in_mStringListOptionMap
+                                                                      const GALGAS_commandLineOptionSortedList & in_mBoolOptionSortedList,
+                                                                      const GALGAS_commandLineOptionSortedList & in_mUIntOptionSortedList,
+                                                                      const GALGAS_commandLineOptionSortedList & in_mStringOptionSortedList,
+                                                                      const GALGAS_commandLineOptionSortedList & in_mStringListSortedList
                                                                       COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationWithHeaderForGeneration (in_generateHeader, in_mImplementationCppFileName COMMA_THERE),
 mProperty_mIsPredefined (in_mIsPredefined),
 mProperty_mOptionComponentName (in_mOptionComponentName),
-mProperty_mBoolOptionMap (in_mBoolOptionMap),
-mProperty_mUIntOptionMap (in_mUIntOptionMap),
-mProperty_mStringOptionMap (in_mStringOptionMap),
-mProperty_mStringListOptionMap (in_mStringListOptionMap) {
+mProperty_mBoolOptionSortedList (in_mBoolOptionSortedList),
+mProperty_mUIntOptionSortedList (in_mUIntOptionSortedList),
+mProperty_mStringOptionSortedList (in_mStringOptionSortedList),
+mProperty_mStringListSortedList (in_mStringListSortedList) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8561,13 +8561,13 @@ void cPtr_optionComponentForGeneration::description (String & ioString,
   ioString.appendString (", ") ;
   mProperty_mOptionComponentName.description (ioString, inIndentation+1) ;
   ioString.appendString (", ") ;
-  mProperty_mBoolOptionMap.description (ioString, inIndentation+1) ;
+  mProperty_mBoolOptionSortedList.description (ioString, inIndentation+1) ;
   ioString.appendString (", ") ;
-  mProperty_mUIntOptionMap.description (ioString, inIndentation+1) ;
+  mProperty_mUIntOptionSortedList.description (ioString, inIndentation+1) ;
   ioString.appendString (", ") ;
-  mProperty_mStringOptionMap.description (ioString, inIndentation+1) ;
+  mProperty_mStringOptionSortedList.description (ioString, inIndentation+1) ;
   ioString.appendString (", ") ;
-  mProperty_mStringListOptionMap.description (ioString, inIndentation+1) ;
+  mProperty_mStringListSortedList.description (ioString, inIndentation+1) ;
   ioString.appendString ("]") ;
 }
 
@@ -8575,7 +8575,7 @@ void cPtr_optionComponentForGeneration::description (String & ioString,
 
 acPtr_class * cPtr_optionComponentForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_optionComponentForGeneration (mProperty_generateHeader, mProperty_mImplementationCppFileName, mProperty_mIsPredefined, mProperty_mOptionComponentName, mProperty_mBoolOptionMap, mProperty_mUIntOptionMap, mProperty_mStringOptionMap, mProperty_mStringListOptionMap COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_optionComponentForGeneration (mProperty_generateHeader, mProperty_mImplementationCppFileName, mProperty_mIsPredefined, mProperty_mOptionComponentName, mProperty_mBoolOptionSortedList, mProperty_mUIntOptionSortedList, mProperty_mStringOptionSortedList, mProperty_mStringListSortedList COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -9432,17 +9432,23 @@ GALGAS_templateAnalysisContext GALGAS_templateAnalysisContext::extractObject (co
 //
 //--------------------------------------------------------------------------------------------------
 
+C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorClassDeclaration ("galgas_cli_options",
+                                         "errorClassDeclaration",
+                                         0,
+                                         "error-class-declaration",
+                                         "'class' declaration is obsolete use 'valueclass'") ;
+
+C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_propertyAccessRequiresSelf ("galgas_cli_options",
+                                         "propertyAccessRequiresSelf",
+                                         0,
+                                         "error-property-access-without-self",
+                                         "'self' is required for accessing properties in getter, setter and methods") ;
+
 C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_checkEntityUsefulness ("galgas_cli_options",
                                          "checkEntityUsefulness",
                                          0,
                                          "check-usefulness",
                                          "Check Entity Usefulness") ;
-
-C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_check_5F_big_5F_int ("galgas_cli_options",
-                                         "check_big_int",
-                                         0,
-                                         "check-big-int",
-                                         "Run bit integers checks") ;
 
 C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_displayUnicodeLexicalTestFunctions ("galgas_cli_options",
                                          "displayUnicodeLexicalTestFunctions",
@@ -9462,47 +9468,35 @@ C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_emitSyntaxDiagrams ("ga
                                          "emit-syntax-diagrams",
                                          "Emit grammar syntax diagrams in TEX files") ;
 
+C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorValueClassDeclaration ("galgas_cli_options",
+                                         "errorValueClassDeclaration",
+                                         0,
+                                         "error-value-class-declaration",
+                                         "Error on 'value class' declaration") ;
+
 C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorAnomynousForInstructionEnumeratedObject ("galgas_cli_options",
                                          "errorAnomynousForInstructionEnumeratedObject",
                                          0,
                                          "error-anonymous-for-instruction",
-                                         "error on anonymous 'for' instruction enumerated object ('for () in ...')") ;
-
-C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorClassDeclaration ("galgas_cli_options",
-                                         "errorClassDeclaration",
-                                         0,
-                                         "error-class-declaration",
-                                         "'class' declaration is obsolete use 'valueclass'") ;
-
-C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorEllipsisInEnumeratedObject ("galgas_cli_options",
-                                         "errorEllipsisInEnumeratedObject",
-                                         0,
-                                         "error-ellipsis-in-for-instruction",
-                                         "error on ellipsis in enumerated object ('for (x y ...) in xxx')") ;
+                                         "Error on anonymous 'for' instruction enumerated object ('for () in ...')") ;
 
 C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorObsoleteGetterCall ("galgas_cli_options",
                                          "errorObsoleteGetterCall",
                                          0,
                                          "error-on-obsolete-getter-call",
-                                         "error on call of an obsolete getter") ;
+                                         "Error on call of an obsolete getter") ;
 
-C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorOldStyleCollectionInitializer ("galgas_cli_options",
-                                         "errorOldStyleCollectionInitializer",
+C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorPropertyGetterCall ("galgas_cli_options",
+                                         "errorPropertyGetterCall",
                                          0,
-                                         "error-old-syle-collection-initializer",
-                                         "error on old style collection initializer") ;
+                                         "error-property-getter-call",
+                                         "Error on calling property getter (instead of dot notation)") ;
 
-C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorOldStyleLocalVarDeclaration ("galgas_cli_options",
-                                         "errorOldStyleLocalVarDeclaration",
+C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorEllipsisInEnumeratedObject ("galgas_cli_options",
+                                         "errorEllipsisInEnumeratedObject",
                                          0,
-                                         "error-old-style-local-var-declaration",
-                                         "error on old style local variable declaration") ;
-
-C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorOldStylePropertyDeclaration ("galgas_cli_options",
-                                         "errorOldStylePropertyDeclaration",
-                                         0,
-                                         "error-old-style-property-declaration",
-                                         "error on old style property declaration") ;
+                                         "error-ellipsis-in-for-instruction",
+                                         "Error on ellipsis in enumerated object ('for (x y ...) in xxx')") ;
 
 C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorOnGetterCallWithNoArgument ("galgas_cli_options",
                                          "errorOnGetterCallWithNoArgument",
@@ -9510,23 +9504,29 @@ C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorOnGetterCallWithNo
                                          "error-on-getter-call-with-no-argument",
                                          "Error on getter call; with no argument (GGS4, suppress parenthesis)") ;
 
+C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorOldStyleCollectionInitializer ("galgas_cli_options",
+                                         "errorOldStyleCollectionInitializer",
+                                         0,
+                                         "error-old-syle-collection-initializer",
+                                         "Error on old style collection initializer") ;
+
+C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorOldStyleLocalVarDeclaration ("galgas_cli_options",
+                                         "errorOldStyleLocalVarDeclaration",
+                                         0,
+                                         "error-old-style-local-var-declaration",
+                                         "Error on old style local variable declaration") ;
+
+C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorOldStylePropertyDeclaration ("galgas_cli_options",
+                                         "errorOldStylePropertyDeclaration",
+                                         0,
+                                         "error-old-style-property-declaration",
+                                         "Error on old style property declaration") ;
+
 C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorOnUselessSelector ("galgas_cli_options",
                                          "errorOnUselessSelector",
                                          0,
                                          "error-on-useless-selector",
                                          "Error on useless selector (GGS4)") ;
-
-C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorPropertyGetterCall ("galgas_cli_options",
-                                         "errorPropertyGetterCall",
-                                         0,
-                                         "error-property-getter-call",
-                                         "error on calling property getter (instead of dot notation)") ;
-
-C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorValueClassDeclaration ("galgas_cli_options",
-                                         "errorValueClassDeclaration",
-                                         0,
-                                         "error-value-class-declaration",
-                                         "error on 'value class' declaration") ;
 
 C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_generateManyFiles ("galgas_cli_options",
                                          "generateManyFiles",
@@ -9540,17 +9540,17 @@ C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_generateOneHeader ("gal
                                          "generate-one-cpp-header",
                                          "Generate one C++ header file for all declarations") ;
 
-C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_outputHTMLTypeListFile ("galgas_cli_options",
-                                         "outputHTMLTypeListFile",
-                                         84,
-                                         "output-html-type-dump-file",
-                                         "Output a HTML file that contains all defined types") ;
-
 C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_outputHTMLgrammarFile ("galgas_cli_options",
                                          "outputHTMLgrammarFile",
                                          0,
                                          "output-html-grammar-file",
                                          "Output a HTML file for every grammar component") ;
+
+C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_outputHTMLTypeListFile ("galgas_cli_options",
+                                         "outputHTMLTypeListFile",
+                                         84,
+                                         "output-html-type-dump-file",
+                                         "Output a HTML file that contains all defined types") ;
 
 C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_printPredefinedLexicalActions ("galgas_cli_options",
                                          "printPredefinedLexicalActions",
@@ -9558,17 +9558,17 @@ C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_printPredefinedLexicalA
                                          "print-predefined-lexical-actions",
                                          "Print the list of predefined lexical routines and functions") ;
 
-C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_propertyAccessRequiresSelf ("galgas_cli_options",
-                                         "propertyAccessRequiresSelf",
+C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_check_5F_big_5F_int ("galgas_cli_options",
+                                         "check_big_int",
                                          0,
-                                         "error-property-access-without-self",
-                                         "'self' is required for accessing properties in getter, setter and methods") ;
+                                         "check-big-int",
+                                         "Run bit integers checks") ;
 
 C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_warningNotGalgas_34_Feature ("galgas_cli_options",
                                          "warningNotGalgas4Feature",
                                          0,
                                          "warns-on-feature-not-handled-in-galgas4",
-                                         "warns on feature not handled in galgas 4") ;
+                                         "Warns on feature not handled in galgas 4") ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -9589,13 +9589,6 @@ C_UIntCommandLineOption gOption_galgas_5F_cli_5F_options_macosxSDK ("galgas_cli_
 //
 //--------------------------------------------------------------------------------------------------
 
-C_StringCommandLineOption gOption_galgas_5F_cli_5F_options_cppCompile ("galgas_cli_options",
-                                         "cppCompile",
-                                         0,
-                                         "compile",
-                                         "Perform C++ compilation on 'string' target",
-                                         "") ;
-
 C_StringCommandLineOption gOption_galgas_5F_cli_5F_options_create_5F_project ("galgas_cli_options",
                                          "create_project",
                                          0,
@@ -9608,6 +9601,13 @@ C_StringCommandLineOption gOption_galgas_5F_cli_5F_options_extractLIBPMOption ("
                                          0,
                                          "extract-libpm",
                                          "Extract embedded LIBPM at given path",
+                                         "") ;
+
+C_StringCommandLineOption gOption_galgas_5F_cli_5F_options_cppCompile ("galgas_cli_options",
+                                         "cppCompile",
+                                         0,
+                                         "compile",
+                                         "Perform C++ compilation on 'string' target",
                                          "") ;
 
 //--------------------------------------------------------------------------------------------------

@@ -507,7 +507,13 @@
 
 - (void) updateIssuesForEditedRange: (NSRange) inEditedRange
          changeInLength: (NSInteger) inChangeInLength {
-  const NSRange previousRange = {inEditedRange.location, inEditedRange.length - (NSUInteger) inChangeInLength} ;
+//  const NSRange previousRange = {inEditedRange.location, inEditedRange.length - (NSUInteger) inChangeInLength} ;
+  const NSRange previousRange = {
+    inEditedRange.location,
+    (inChangeInLength >= 0)
+      ? (inEditedRange.length - (NSUInteger) inChangeInLength)
+      : (inEditedRange.length + (NSUInteger) -inChangeInLength)
+  } ;
   for (PMIssueDescriptor * issue in mIssueArray) {
     [issue updateLocationForPreviousRange:previousRange changeInLength:inChangeInLength] ;
   }
@@ -867,10 +873,11 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
       }
       break ;
     case TAG_FOR_TEMPLATE_BACKGROUND_COLOR:
-      if (data == nil) {
+      if (data != nil) {
+        color = (NSColor *) [NSUnarchiver unarchiveObjectWithData: data] ;
+      }
+      if (color == nil) {
         color = [NSColor whiteColor] ;
-      }else{
-        color = (NSColor *) [NSUnarchiver unarchiveObjectWithData:data] ;
       }
       [mTemplateTextAttributeDictionary setObject:color forKey:NSBackgroundColorAttributeName] ;
       [self applyTextAttributeForIndex:-2] ;
@@ -1049,8 +1056,10 @@ static NSInteger numericSort (NSString * inOperand1,
 //--- Build array of all references of given token
   NSMutableArray * allReferences = [NSMutableArray new] ;
   for (NSDictionary * currentIndexDictionary in dictionaryArray) {
-    NSArray * references = [currentIndexDictionary objectForKey:token] ;
-    [allReferences addObjectsFromArray:references] ;
+    NSArray * references = [currentIndexDictionary objectForKey: token] ;
+    if (references != nil) {
+      [allReferences addObjectsFromArray: references] ;
+    }
   }
 //--- Build dictionary for the given token, organized by Kind
   NSMutableDictionary * kindDictionary = [NSMutableDictionary new] ;
