@@ -508,7 +508,7 @@ void String::setCapacity (const uint32_t inNewCapacity) {
     macroMyDeletePODArray (mEmbeddedString->mEncodedCString) ;
     if ((mEmbeddedString->mLength < inNewCapacity) && (mEmbeddedString->mCapacity < inNewCapacity)) {
       if (mEmbeddedString->isUniquelyReferenced ()) {
-        macroMyDeletePODArray (mEmbeddedString->mEncodedCString) ;
+//        macroMyDeletePODArray (mEmbeddedString->mEncodedCString) ;
         mEmbeddedString->reallocEmbeddedString (inNewCapacity) ;
       }else{
         cEmbeddedString * p = nullptr ;

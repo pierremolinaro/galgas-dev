@@ -470,7 +470,8 @@ template <typename TYPE> void TC_UniqueArray <TYPE>::forceObjectAtIndex (const i
     for (int32_t i=0 ; i<mCount ; i++) {
       newArray [i] = mArray [i] ;
     }
-    macroMyDeleteArray (mArray) ; mArray = newArray ;
+    macroMyDeleteArray (mArray) ;
+    mArray = newArray ;
     mCapacity = newCapacity ;
   }
   if (mCount <= inIndex) {
