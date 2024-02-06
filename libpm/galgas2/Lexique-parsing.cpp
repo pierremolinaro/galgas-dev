@@ -765,7 +765,7 @@ bool Lexique::performBottomUpParsing (const int32_t * inActionTableArray,
       macroAssert (currentState >= 0, "currentState (%lld) < 0", currentState, 0) ;
       const int32_t * actionTable = & (inActionTableArray [inActionTableIndexArray [currentState]]) ;
       int32_t actionCode = 0 ;
-      while (((* actionTable) >= 0) && (actionCode == 0)) {
+      while ((actionCode == 0) && ((* actionTable) >= 0)) {
         if ((* actionTable) == currentToken) {
           actionTable += 1 ;
           actionCode = (* actionTable) ;
