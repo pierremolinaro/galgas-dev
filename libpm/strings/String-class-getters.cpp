@@ -1074,15 +1074,13 @@ String String::lastPathComponentWithoutExtension (void) const {
 //--------------------------------------------------------------------------------------------------
 
 String String::md5 (void) const {
+  MD5pm md5 ;
+  md5.appendData ((uint8_t *) cString (),  size_t (length ())) ;
+  const MD5Digest digest = md5.finalizeAndGetDigest () ;
   String result ;
-  uint8_t digest [16] ;
-  MD5_CTX context ;
-  MD5_Init (&context) ;
-  MD5_Update(&context, (uint8_t *) cString (), (uint32_t) length ()) ;
-  MD5_Final (digest, &context);
-  char s [40] ;
+  char s [4] ;
   for (uint32_t i=0 ; i<16 ; i++) {
-    snprintf (s, 40, "%02X", digest [i]) ;
+    snprintf (s, 4, "%02X", digest [i]) ;
     result.appendString (s) ;
   }
   return result ;
