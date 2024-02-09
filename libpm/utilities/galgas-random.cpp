@@ -36,13 +36,30 @@ void set_galgas_random_seed (const uint64_t inSeed) {
 }
 
 //--------------------------------------------------------------------------------------------------
+
+static uint64_t multiplyIgnoringOverflow (const uint64_t inA, const uint64_t inB) {
+  uint64_t r ;
+  __builtin_mul_overflow (inA, inB, &r) ;
+  return r ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+static uint64_t addIgnoringOverflow (const uint64_t inA, const uint64_t inB) {
+  uint64_t r ;
+  __builtin_add_overflow (inA, inB, &r) ;
+  return r ;
+}
+
+//--------------------------------------------------------------------------------------------------
 // https://en.wikipedia.org/wiki/Linear_congruential_generator
 // ANSI C linear congruential PRNG : gSeed = gSeed * 1103515245 + 12345
 // Newlib : gSeed = gSeed * 6364136223846793005 + 1
 //--------------------------------------------------------------------------------------------------
 
 uint32_t galgas_random (void) {
-  gSeed = gSeed * 6364136223846793005 + 1 ;
+  gSeed = multiplyIgnoringOverflow (gSeed, 6364136223846793005) ;
+  gSeed = addIgnoringOverflow (gSeed, 1) ;
   return uint32_t (gSeed) ; // Period is 2**32
 }
 

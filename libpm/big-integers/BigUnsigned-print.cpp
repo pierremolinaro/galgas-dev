@@ -132,7 +132,7 @@ String BigUnsigned::bitString (void) const {
       uint64_t v = u64AtIndex (i-1) ;
       for (size_t bit = 0 ; bit < 64 ; bit++) {
         result.appendString (((v & (uint64_t (1) << 63)) != 0) ? "1" : "0") ;
-        v <<= 1 ;
+        v = (v & (UINT64_MAX >> 1)) << 1 ;
       }
     }
     while ((result.length () > 0) && (result (0 COMMA_HERE) == '0')) {

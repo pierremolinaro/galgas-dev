@@ -61,15 +61,15 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "/Volumes/dev-git/easy-bindings-dev/+easy-bindings.ggsproject"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "--check-usefulness"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "--check-big-int"
-            isEnabled = "NO">
+            isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "--no-file-generation"

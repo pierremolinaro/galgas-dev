@@ -1,21 +1,3 @@
-//                                           
-//  MIT License
-//                                           
-// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-// and associated documentation files (the "Software"), to deal in the Software without restriction,
-// including without limitation the rights to use, copy, modify, merge, publish, distribute,
-// sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in all copies or
-// substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//                                           
 //--------------------------------------------------------------------------------------------------
 
 #include "BigUnsigned.h"
@@ -92,8 +74,7 @@ BigUnsignedQuotientRemainder BigUnsigned::divideByBigUnsigned (const BigUnsigned
           ChunkUInt resultH ;
           ChunkUInt resultL ;
           baseMultiplication (u64Quotient, divisor.mSharedArray.chunkAtIndex (i COMMA_HERE), resultH, resultL) ;
-          resultL += currentCarry ; // Can overflow
-          resultH += resultL < currentCarry ; // Propagate Overflow, no add overflowf
+          addReportingOverflow (resultL, currentCarry, resultH) ;
           currentCarry = resultH ;
           const size_t remainderIndex = i + quotientIndex - 1 ;
           const ChunkUInt r = remainder.mSharedArray.chunkAtIndex (remainderIndex COMMA_HERE) ;
@@ -111,17 +92,18 @@ BigUnsignedQuotientRemainder BigUnsigned::divideByBigUnsigned (const BigUnsigned
           for (size_t i = 1 ; i <= divisor.mSharedArray.chunkCount () ; i++) {
             const ChunkUInt v1 = remainder.mSharedArray.chunkAtIndex (i + quotientIndex - 1 COMMA_HERE) ;
             const ChunkUInt v2 = divisor.mSharedArray.chunkAtIndex (i COMMA_HERE) ;
-            ChunkUInt sum = v1 + v2 ;
-            const ChunkUInt carry1 = sum < v1 ;
-            sum += carry ;
-            const ChunkUInt carry2 = sum < carry ;
+            ChunkUInt sum = v1 ;
+            ChunkUInt newCarry = 0 ;
+            addReportingOverflow (sum, v2, newCarry) ;
+            addReportingOverflow (sum, carry, newCarry) ;
             remainder.mSharedArray.setChunkAtIndex (sum, i + quotientIndex - 1 COMMA_HERE) ;
-            carry = carry1 + carry2 ;
+            carry = newCarry ;
             macroAssert (carry <= 1, "Invalid carry", 0, 0) ;
           }
           ChunkUInt lastRemainderValue = remainder.mSharedArray.chunkAtIndex (remainderLastIndex COMMA_HERE) ;
-          lastRemainderValue += carry ;
-          carry = lastRemainderValue < carry ;
+          ChunkUInt newCarry = 0 ;
+          addReportingOverflow (lastRemainderValue, carry, newCarry) ;
+          carry = newCarry ;
           remainder.mSharedArray.setChunkAtIndex (lastRemainderValue, remainderLastIndex COMMA_HERE) ;
           underflow = carry == 0 ;
         }

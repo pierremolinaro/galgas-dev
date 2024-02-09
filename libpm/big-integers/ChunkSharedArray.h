@@ -1,29 +1,8 @@
-//                                           
-//  MIT License
-//                                           
-// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-// and associated documentation files (the "Software"), to deal in the Software without restriction,
-// including without limitation the rights to use, copy, modify, merge, publish, distribute,
-// sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in all copies or
-// substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//                                           
-//--------------------------------------------------------------------------------------------------
-
 #pragma once
 
 //--------------------------------------------------------------------------------------------------
 
 #include "ChunkSelectSize.h"
-#include "MF_MemoryControl.h"
 #include <iostream>
 
 //--------------------------------------------------------------------------------------------------
@@ -51,7 +30,7 @@ class ChunkSharedArray final {
   mChunkArray (nullptr),
   mChunkCount (0),
   mChunkCapacity (0) {
-    macroMyNewPODArray (mChunkArray, ChunkUInt, inChunkCapacity + 1) ;
+    mChunkArray = new ChunkUInt [inChunkCapacity + 1] ;
     mChunkSharedArrayAllocationCount += 1 ;
     mChunkSharedArrayCurrentlyAllocatedCount += 1 ;
     mChunkArray [0] = 0 ; // Index 0: reference count (minus one)
@@ -62,7 +41,7 @@ class ChunkSharedArray final {
   public: ~ChunkSharedArray (void)  {
     if (mChunkArray != nullptr) {
       if (mChunkArray [0] == 0) {
-        macroMyDeletePODArray (mChunkArray) ;
+        delete [] mChunkArray ;
         macroAssert (mChunkSharedArrayCurrentlyAllocatedCount > 0, "Zero!", 0, 0) ;
         mChunkSharedArrayCurrentlyAllocatedCount -= 1 ;
       }else{
@@ -89,7 +68,7 @@ class ChunkSharedArray final {
   //--- Release
     if (mChunkArray != nullptr) {
       if (mChunkArray [0] == 0) {
-        macroMyDeletePODArray (mChunkArray) ;
+        delete [] mChunkArray ;
         macroAssert (mChunkSharedArrayCurrentlyAllocatedCount > 0, "Zero!", 0, 0) ;
         mChunkSharedArrayCurrentlyAllocatedCount -= 1 ;
       }else{
@@ -116,11 +95,8 @@ class ChunkSharedArray final {
   public: void insulateWithChunkCapacity (const size_t inChunkCapacity) {
     const size_t newChunkCapacity = std::max (mChunkCapacity, inChunkCapacity) ;
     if (!isUniquelyReferenced ()) {
-      if (mChunkArray != nullptr) {
-        mChunkArray [0] -= 1 ;
-      }
-      ChunkUInt * newChunkArray = nullptr ;
-      macroMyNewPODArray (newChunkArray, ChunkUInt, newChunkCapacity + 1) ;
+      mChunkArray [0] -= 1 ;
+      ChunkUInt * newChunkArray = new ChunkUInt [newChunkCapacity + 1] ;
       mChunkSharedArrayAllocationCount += 1 ;
       mChunkSharedArrayCurrentlyAllocatedCount += 1 ;
       newChunkArray [0] = 0 ; // Index 0: reference count (minus one)
@@ -131,14 +107,14 @@ class ChunkSharedArray final {
       mChunkCapacity = newChunkCapacity ;
     }else if (mChunkCapacity < newChunkCapacity) {
       if (mChunkArray == nullptr) {
-        macroMyNewPODArray (mChunkArray, ChunkUInt, newChunkCapacity + 1) ;
-        mChunkSharedArrayAllocationCount += 1 ;
-        mChunkSharedArrayCurrentlyAllocatedCount += 1 ;
+        mChunkArray = new ChunkUInt [newChunkCapacity + 1] ;
         mChunkArray [0] = 0 ; // Index 0: reference count (minus one)
         mChunkCount = 0 ;
         mChunkCapacity = newChunkCapacity ;
+        mChunkSharedArrayAllocationCount += 1 ;
+        mChunkSharedArrayCurrentlyAllocatedCount += 1 ;
       }else{
-        macroMyReallocPODArray (mChunkArray, ChunkUInt, newChunkCapacity + 1) ;
+        mChunkArray = (ChunkUInt *) realloc (mChunkArray, sizeof (ChunkUInt) * (newChunkCapacity + 1)) ;
         mChunkCapacity = newChunkCapacity ;
       }
     }
@@ -218,7 +194,7 @@ class ChunkSharedArray final {
     #ifndef DO_NOT_GENERATE_CHECKINGS
       checkChunkIndex (inChunkIndex COMMA_THERE) ;
     #endif
-    mChunkArray [inChunkIndex] -= inChunkValue ; // 1-Based Indexing
+    subtractIgnoringOverflow (mChunkArray [inChunkIndex], inChunkValue) ; // 1-Based Indexing
   }
 
 //--- Index checking
