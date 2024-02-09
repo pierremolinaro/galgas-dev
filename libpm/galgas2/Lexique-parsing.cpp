@@ -664,7 +664,7 @@ static bool acceptExpectedTerminalForBottomUpParsingError (const int32_t inExpec
       macroAssert (tempCurrentState >= 0, "tempCurrentState (%lld) < 0", tempCurrentState, 0) ;
       const int32_t * successorTable = inSuccessorTableArray [tempCurrentState] ;
       int32_t newCurrentState = -1 ;
-      while (((* successorTable) >= 0) && (newCurrentState < 0)) {
+      while ((newCurrentState < 0) && ((* successorTable) >= 0)) {
         if ((* successorTable) == nonTerminal) {
           successorTable ++ ;
           newCurrentState = (* successorTable) ;
