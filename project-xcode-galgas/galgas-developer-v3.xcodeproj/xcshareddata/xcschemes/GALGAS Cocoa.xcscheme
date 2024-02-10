@@ -34,9 +34,9 @@
       buildConfiguration = "Default"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      enableAddressSanitizer = "YES"
       enableASanStackUseAfterReturn = "YES"
-      enableUBSanitizer = "YES"
+      disableMainThreadChecker = "YES"
+      disablePerformanceAntipatternChecker = "YES"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -57,18 +57,6 @@
             ReferencedContainer = "container:galgas-developer-v3.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <AdditionalOptions>
-         <AdditionalOption
-            key = "NSZombieEnabled"
-            value = "YES"
-            isEnabled = "YES">
-         </AdditionalOption>
-         <AdditionalOption
-            key = "MallocScribble"
-            value = ""
-            isEnabled = "YES">
-         </AdditionalOption>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Default"

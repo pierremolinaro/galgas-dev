@@ -160,6 +160,7 @@ end
    <Unit filename="%!LIBPM_PATH%/utilities/UInt32Set.cpp" />
    <Unit filename="%!LIBPM_PATH%/utilities/DirectedGraph.cpp" />
    <Unit filename="%!LIBPM_PATH%/utilities/md5.cpp" />
+   <Unit filename="%!LIBPM_PATH%/utilities/SHA256.cpp" />
    <Unit filename="%!LIBPM_PATH%/utilities/galgas-random.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas2/C_galgas_CLI_Options.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas2/typeComparisonResult.cpp" />

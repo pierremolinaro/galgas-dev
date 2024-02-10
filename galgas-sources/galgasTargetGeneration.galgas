@@ -1153,6 +1153,8 @@ proc updateGalgasTargets
         !"M_SourceLocation.h",
         !"md5.cpp",
         !"md5.h",
+        !"SHA256.cpp",
+        !"SHA256.h",
         !"macroAssert.cpp",
         !"macroAssert.h",
         !"MF_MemoryControl.cpp",

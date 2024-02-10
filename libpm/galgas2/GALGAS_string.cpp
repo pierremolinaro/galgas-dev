@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library
 //
-//  Copyright (C) 1996, ..., 2023 Pierre Molinaro.
+//  Copyright (C) 1996, ..., 2024 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //

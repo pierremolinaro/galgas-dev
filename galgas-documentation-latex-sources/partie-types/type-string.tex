@@ -1151,6 +1151,7 @@ let x = ["Hello" md5] # "8B1A9953C4611296A827ABF8C47804D7"
 
 
 
+
 \subsectionGetter{nameRepresentation}{string}
 
 \begin{galgas3box}
@@ -1337,6 +1338,36 @@ getter @string rightSubString ?@uint inLength -> @string
 \end{galgas3box}
 
 Retourne la sous-chaîne constituée des \ggst!inLength! premiers caractères du récepteur. Si celui-ci contient moins de \ggst!inLength! caractères, une erreur d'exécution est déclenchée.
+
+
+
+\subsectionGetter{sha256}{string}
+
+\begin{galgas3box}
+getter @string sha256 -> @string
+\end{galgas3box}
+
+\begin{galgas4box}
+func @string.sha256 () -> @string
+\end{galgas4box}
+
+Retourne la somme de contrôle SHA256 du récepteur sous la forme d'une chaîne de 64 caractères hexadécimaux.
+
+Par exemple :
+\begin{galgas3}
+  let x = ["string"  sha256]
+    # x = "473287F8298DBA7163A897908958F7C0EAE733E25D2E027992EA2EDC9BED2FA8"
+  let y = ["string2" sha256]
+    # y = "B993212A26658C9077096B804CDFB92AD21CF1E199E272C44EB028E45D07B6E0"
+\end{galgas3}
+
+\begin{galgas4}
+  let x = "string".sha256
+   // x = "473287F8298DBA7163A897908958F7C0EAE733E25D2E027992EA2EDC9BED2FA8"
+  let y = "string2".sha256
+   // y = "B993212A26658C9077096B804CDFB92AD21CF1E199E272C44EB028E45D07B6E0"
+\end{galgas4}
+
 
 
 

@@ -92,6 +92,7 @@ end
        "UInt32Set.cpp",
        "DirectedGraph.cpp",
        "md5.cpp",
+       "SHA256.cpp",
        "galgas-random.cpp",
        "C_galgas_CLI_Options.cpp",
        "typeComparisonResult.cpp",

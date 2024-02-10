@@ -2,7 +2,7 @@
 #
 #  semantics definitions for semantics component
 #
-#  Copyright (C) 2009, ..., 2023 Pierre Molinaro.
+#  Copyright (C) 2009, ..., 2024 Pierre Molinaro.
 #
 #  MIT License
 #
@@ -637,8 +637,16 @@ override method @stringPredefinedTypeAST getGetterMap
     !?ioUnifiedTypeMap
     !getterName: "md5"
     !obsoleteName: ""
-    !returnedTypeName:"string"
-    !hasCompilerArgument:false
+    !returnedTypeName: "string"
+    !hasCompilerArgument: false
+  )
+  enterBaseGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName: "sha256"
+    !obsoleteName: ""
+    !returnedTypeName: "string"
+    !hasCompilerArgument: false
   )
   enterBaseGetterWithoutArgument (
     !?outMap
@@ -661,7 +669,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?ioUnifiedTypeMap
     !getterName: "decimalUnsigned64Number"
     !obsoleteName: ""
-    !returnedTypeName:"uint64"
+    !returnedTypeName: "uint64"
     !hasCompilerArgument:true
   )
   enterBaseGetterWithoutArgument (
@@ -669,7 +677,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?ioUnifiedTypeMap
     !getterName: "isDecimalUnsigned64Number"
     !obsoleteName: ""
-    !returnedTypeName:"bool"
+    !returnedTypeName: "bool"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
@@ -677,7 +685,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?ioUnifiedTypeMap
     !getterName: "decimalSignedNumber"
     !obsoleteName: ""
-    !returnedTypeName:"sint"
+    !returnedTypeName: "sint"
     !hasCompilerArgument:true
   )
   enterBaseGetterWithoutArgument (
@@ -685,7 +693,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?ioUnifiedTypeMap
     !getterName: "isDecimalSignedNumber"
     !obsoleteName: ""
-    !returnedTypeName:"bool"
+    !returnedTypeName: "bool"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
@@ -693,7 +701,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?ioUnifiedTypeMap
     !getterName: "decimalSigned64Number"
     !obsoleteName: ""
-    !returnedTypeName:"sint64"
+    !returnedTypeName: "sint64"
     !hasCompilerArgument:true
   )
   enterBaseGetterWithoutArgument (
@@ -701,7 +709,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?ioUnifiedTypeMap
     !getterName: "isDecimalSigned64Number"
     !obsoleteName: ""
-    !returnedTypeName:"bool"
+    !returnedTypeName: "bool"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
@@ -709,7 +717,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?ioUnifiedTypeMap
     !getterName: "decimalSignedBigInt"
     !obsoleteName: ""
-    !returnedTypeName:"bigint"
+    !returnedTypeName: "bigint"
     !hasCompilerArgument:true
   )
   enterBaseGetterWithoutArgument (
@@ -717,7 +725,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?ioUnifiedTypeMap
     !getterName: "isDecimalSignedBigInt"
     !obsoleteName: ""
-    !returnedTypeName:"bool"
+    !returnedTypeName: "bool"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
@@ -725,7 +733,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?ioUnifiedTypeMap
     !getterName: "isDoubleNumber"
     !obsoleteName: ""
-    !returnedTypeName:"bool"
+    !returnedTypeName: "bool"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
@@ -733,7 +741,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?ioUnifiedTypeMap
     !getterName: "doubleNumber"
     !obsoleteName: ""
-    !returnedTypeName:"double"
+    !returnedTypeName: "double"
     !hasCompilerArgument:true
   )
   enterBaseGetterWithoutArgument (
@@ -741,7 +749,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?ioUnifiedTypeMap
     !getterName: "capacity"
     !obsoleteName: ""
-    !returnedTypeName:"uint"
+    !returnedTypeName: "uint"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
@@ -749,7 +757,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?ioUnifiedTypeMap
     !getterName: "isSymbolicLink"
     !obsoleteName: ""
-    !returnedTypeName:"bool"
+    !returnedTypeName: "bool"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
@@ -757,7 +765,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?ioUnifiedTypeMap
     !getterName: "fileExists"
     !obsoleteName: ""
-    !returnedTypeName:"bool"
+    !returnedTypeName: "bool"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
@@ -765,7 +773,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?ioUnifiedTypeMap
     !getterName: "directoryExists"
     !obsoleteName: ""
-    !returnedTypeName:"bool"
+    !returnedTypeName: "bool"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (

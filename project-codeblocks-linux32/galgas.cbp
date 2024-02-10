@@ -189,6 +189,7 @@
    <Unit filename="../libpm/utilities/UInt32Set.cpp" />
    <Unit filename="../libpm/utilities/DirectedGraph.cpp" />
    <Unit filename="../libpm/utilities/md5.cpp" />
+   <Unit filename="../libpm/utilities/SHA256.cpp" />
    <Unit filename="../libpm/utilities/galgas-random.cpp" />
    <Unit filename="../libpm/galgas2/C_galgas_CLI_Options.cpp" />
    <Unit filename="../libpm/galgas2/typeComparisonResult.cpp" />

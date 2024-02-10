@@ -129,6 +129,16 @@ GALGAS_string GALGAS_string::getter_md_35_ (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_string GALGAS_string::getter_sha_32__35__36_ (UNUSED_LOCATION_ARGS) const {
+  GALGAS_string result ;
+  if (isValid ()) {
+    result = GALGAS_string (mString.sha256 ()) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_string GALGAS_string::getter_utf_33__32_Representation (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {

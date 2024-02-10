@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library
 //
-//  Copyright (C) 1997, ..., 2023 Pierre Molinaro.
+//  Copyright (C) 1997, ..., 2024 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -20,6 +20,7 @@
 
 #include "MF_MemoryControl.h"
 #include "md5.h"
+#include "SHA256.h"
 #include "SharedObject.h"
 #include "unicode_string_routines.h"
 #include "unicode_character_cpp.h"
@@ -1068,9 +1069,7 @@ String String::lastPathComponentWithoutExtension (void) const {
 }
 
 //--------------------------------------------------------------------------------------------------
-//
-//   M D 5
-//
+//   MD5
 //--------------------------------------------------------------------------------------------------
 
 String String::md5 (void) const {
@@ -1087,9 +1086,24 @@ String String::md5 (void) const {
 }
 
 //--------------------------------------------------------------------------------------------------
-//
+//   SHA256
+//--------------------------------------------------------------------------------------------------
+
+String String::sha256 (void) const {
+  SHA256 sha ;
+  sha.update ((uint8_t *) cString (), size_t (length ())) ;
+  const std::array <uint8_t, 32> digest = sha.digest () ;
+  String result ;
+  char s [4] ;
+  for (uint32_t i=0 ; i<32 ; i++) {
+    snprintf (s, 4, "%02X", digest [i]) ;
+    result.appendString (s) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
 //   S U B    S T R I N G    F R O M    I N D E X
-//
 //--------------------------------------------------------------------------------------------------
 
 String String::subStringFromIndex (const int32_t inStartIndex) const  {

@@ -140,6 +140,8 @@
 		CF5610A5137B32C30007E1BC /* typeComparisonResult.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5610A2137B32C30007E1BC /* typeComparisonResult.cpp */; };
 		CF5610A6137B32C30007E1BC /* typeComparisonResult.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5610A2137B32C30007E1BC /* typeComparisonResult.cpp */; };
 		CF59565C15C81988000E6B8B /* OC_GGS_DocumentData.m in Sources */ = {isa = PBXBuildFile; fileRef = CF59565B15C81988000E6B8B /* OC_GGS_DocumentData.m */; };
+		CF5AA8242B781626007EAF69 /* SHA256.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5AA8222B781626007EAF69 /* SHA256.cpp */; };
+		CF5AA8252B781626007EAF69 /* SHA256.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5AA8222B781626007EAF69 /* SHA256.cpp */; };
 		CF63B55310FC6A5E00B5E41F /* PrologueEpilogue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF63B54F10FC6A5E00B5E41F /* PrologueEpilogue.cpp */; };
 		CF63B55410FC6A5E00B5E41F /* PrologueEpilogue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF63B54F10FC6A5E00B5E41F /* PrologueEpilogue.cpp */; };
 		CF64D73B2062B2C80058C8CA /* all-declarations-26.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF64D73A2062B2C80058C8CA /* all-declarations-26.cpp */; };
@@ -607,6 +609,8 @@
 		CF5610A2137B32C30007E1BC /* typeComparisonResult.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = typeComparisonResult.cpp; sourceTree = "<group>"; };
 		CF59565A15C81988000E6B8B /* OC_GGS_DocumentData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = OC_GGS_DocumentData.h; sourceTree = "<group>"; };
 		CF59565B15C81988000E6B8B /* OC_GGS_DocumentData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = OC_GGS_DocumentData.m; sourceTree = "<group>"; };
+		CF5AA8222B781626007EAF69 /* SHA256.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SHA256.cpp; sourceTree = "<group>"; };
+		CF5AA8232B781626007EAF69 /* SHA256.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHA256.h; sourceTree = "<group>"; };
 		CF63B54F10FC6A5E00B5E41F /* PrologueEpilogue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = PrologueEpilogue.cpp; sourceTree = "<group>"; };
 		CF63B55010FC6A5E00B5E41F /* PrologueEpilogue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = PrologueEpilogue.h; sourceTree = "<group>"; };
 		CF64405E144EFCC000FFF664 /* Info-developer.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-developer.plist"; sourceTree = "<group>"; };
@@ -1433,6 +1437,8 @@
 				CF825A7608536B780077AEAF /* MF_MemoryControl.h */,
 				CF63B54F10FC6A5E00B5E41F /* PrologueEpilogue.cpp */,
 				CF63B55010FC6A5E00B5E41F /* PrologueEpilogue.h */,
+				CF5AA8222B781626007EAF69 /* SHA256.cpp */,
+				CF5AA8232B781626007EAF69 /* SHA256.h */,
 				CFF991A8110B6CA40055EE27 /* SharedObject.cpp */,
 				CFF991A9110B6CA40055EE27 /* SharedObject.h */,
 				CF4C28B91EC227F700DE807B /* switch-fallthrough.h */,
@@ -1668,6 +1674,7 @@
 				CF69B28E0A31EFF0002AE337 /* C_ErrorOut.cpp in Sources */,
 				CF0676460E7EE037008B9D1F /* md5.cpp in Sources */,
 				CFCB7A1F2B2DAECF008DD653 /* BigUnsigned-add.cpp in Sources */,
+				CF5AA8242B781626007EAF69 /* SHA256.cpp in Sources */,
 				CFD3E8620FA0C0F800C4995E /* String-class.cpp in Sources */,
 				CFD3E8640FA0C0F800C4995E /* unicode_string_routines.cpp in Sources */,
 				CF7FD6A40FF13C1C001EA1B7 /* unicode_character_cpp.cpp in Sources */,
@@ -1849,6 +1856,7 @@
 				CFCB7A202B2DAECF008DD653 /* BigUnsigned-add.cpp in Sources */,
 				CF69B2900A31EFF0002AE337 /* C_ErrorOut.cpp in Sources */,
 				CFD3E8650FA0C0F800C4995E /* String-class.cpp in Sources */,
+				CF5AA8252B781626007EAF69 /* SHA256.cpp in Sources */,
 				CFD3E8670FA0C0F800C4995E /* unicode_string_routines.cpp in Sources */,
 				CF7FD6A50FF13C1C001EA1B7 /* unicode_character_cpp.cpp in Sources */,
 				CF074BC71000BB6E00F45986 /* C_BoolCommandLineOption.cpp in Sources */,
@@ -2111,8 +2119,6 @@
 				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_UNDEFINED_BEHAVIOR_SANITIZER_INTEGER = YES;
-				CLANG_UNDEFINED_BEHAVIOR_SANITIZER_NULLABILITY = YES;
 				CLANG_WARN_ASSIGN_ENUM = YES;
 				CLANG_WARN_ATOMIC_IMPLICIT_SEQ_CST = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;

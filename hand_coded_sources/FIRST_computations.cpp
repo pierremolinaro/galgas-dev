@@ -2,8 +2,8 @@
 //
 //  Perform FIRST computations for pure BNF grammar.
 //
-//  Copyright (C) 1999, ..., 2014 Pierre Molinaro.
-//                                           
+//  Copyright (C) 1999, ..., 2024 Pierre Molinaro.
+//
 //  MIT License
 //                                           
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this software
@@ -88,10 +88,6 @@ displayAndCheckFIRSTsets (HTMLString & ioHTMLFileContents,
                           const bool inVerboseOptionOn) {
 //  const int32_t symbolsCountEX = inVocabulary.getAllSymbolsCount () ;
   const int32_t symbolsCount = (int32_t) inUsefulSymbols.configuration().constantCountForVariable (0 COMMA_HERE) ;
-/*  if (symbolsCountEX != symbolsCount) {
-    printf ("\n********* FIRST SET ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
-    exit (1) ;
-  }*/
   C_RelationConfiguration vocabulary2Config = inUsefulSymbols.configuration() ;
   vocabulary2Config.appendConfiguration (inUsefulSymbols.configuration()) ;
 //--- Build cartesian product 'inVocabularyDerivingInEmptyString' * 'empty string terminal symbol'

@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 1997, ..., 2023 Pierre Molinaro.
+//  Copyright (C) 1997, ..., 2024 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -172,6 +172,9 @@ class String : public AbstractOutputStream {
 
 //--- Get MD5 value
   public: String md5 (void) const ;
+
+//--- Get SHA256 value
+  public: String sha256 (void) const ;
 
 //--- Get a string pointer
   public: const char * cString (void) const ;
