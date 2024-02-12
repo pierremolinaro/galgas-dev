@@ -26,7 +26,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
   #          Start symbol
   #·······························································································
 
-  rule <start_symbol> ?!@galgasDeclarationAST ioDeclarations {
+  rule <start_symbol_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     repeat
     while
       <declaration_ggs3> !?ioDeclarations

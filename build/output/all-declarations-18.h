@@ -984,16 +984,16 @@ class cGrammar_galgas_33_Grammar : public cParser_galgas_33_ExpressionSyntax,
   public: virtual void nt_sortedlist_5F_sort_5F_descriptor_ (GALGAS_sortedListSortDescriptorListAST & ioArgument0,
                                                              Lexique_galgasScanner_33_ * inCompiler) ;
 
-//------------------------------------- 'start_symbol' non terminal
+//------------------------------------- 'start_symbol_ggs3' non terminal
 //--- 'parse' label
-  public: virtual void nt_start_5F_symbol_parse (Lexique_galgasScanner_33_ * inCompiler) ;
+  public: virtual void nt_start_5F_symbol_5F_ggs_33__parse (Lexique_galgasScanner_33_ * inCompiler) ;
 
 //--- indexing
-  public: virtual void nt_start_5F_symbol_indexing (Lexique_galgasScanner_33_ * inCompiler) ;
+  public: virtual void nt_start_5F_symbol_5F_ggs_33__indexing (Lexique_galgasScanner_33_ * inCompiler) ;
 
 //----------- '' label
-  public: virtual void nt_start_5F_symbol_ (GALGAS_galgasDeclarationAST & ioArgument0,
-                                            Lexique_galgasScanner_33_ * inCompiler) ;
+  public: virtual void nt_start_5F_symbol_5F_ggs_33__ (GALGAS_galgasDeclarationAST & ioArgument0,
+                                                       Lexique_galgasScanner_33_ * inCompiler) ;
 
 //--- Start symbol
   public: static void _performSourceFileParsing_ (Compiler * inCompiler,

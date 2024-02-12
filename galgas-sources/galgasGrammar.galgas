@@ -34,7 +34,7 @@ indexing grammar galgas3Grammar "SLR" {
   syntax galgas3GrammarComponentSyntax
   syntax galgas3ProgramDeclarations
 
-   <start_symbol> ?!@galgasDeclarationAST ioDeclarations
+  <start_symbol_ggs3> ?!@galgasDeclarationAST ioDeclarations
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

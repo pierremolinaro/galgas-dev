@@ -47,8 +47,7 @@ syntax extension galgas3DeclarationsSyntax {
   #·······························································································
 
   rule <type_definition_ggs3> ?!@galgasDeclarationAST ioDeclarations
-#                         ?!@stringset ioUserImplicitDeclaredTypeSet
-                         !@lstring outTypeName {
+                              !@lstring outTypeName {
     $[$
     <type_definition_ggs3> !?ioDeclarations ?outTypeName
     error .here : "Not handled yet"
@@ -58,7 +57,6 @@ syntax extension galgas3DeclarationsSyntax {
   #·······························································································
 
   rule <type_definition_ggs3> ?!@galgasDeclarationAST ioDeclarations
-#                              ?!@stringset ioUserImplicitDeclaredTypeSet
                               !@lstring outTypeName {
     $[$
     <type_definition_ggs3> !?ioDeclarations ?outTypeName
@@ -71,8 +69,7 @@ syntax extension galgas3DeclarationsSyntax {
   #·······························································································
 
   rule <type_definition_ggs3> ?!@galgasDeclarationAST ioDeclarations
-#                         ?!@stringset ioUserImplicitDeclaredTypeSet
-                         !@lstring outTypeName {
+                              !@lstring outTypeName {
     <type_definition_ggs3> !?ioDeclarations ?outTypeName
     select
     or
@@ -95,8 +92,7 @@ syntax extension galgas3DeclarationsSyntax {
   #·······························································································
 
   rule <type_definition_ggs3> ?!@galgasDeclarationAST ioDeclarations
-#                         ?!@stringset ioUserImplicitDeclaredTypeSet
-                         !@lstring outTypeName {
+                              !@lstring outTypeName {
     $($
     repeat
       <type_definition_ggs3> !?ioDeclarations ?outTypeName

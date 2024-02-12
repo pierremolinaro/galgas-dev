@@ -7025,7 +7025,7 @@ static const char * gNonTerminalNames_galgas3Grammar [322] = {
   "<if_instruction_core>",// Index 31
   "<switch_case>",// Index 32
   "<with_instruction_core>",// Index 33
-  "<start_symbol>",// Index 34
+  "<start_symbol_ggs3>",// Index 34
   "<property_declaration_ggs3>",// Index 35
   "<filewrapper_text_files>",// Index 36
   "<filewrapper_binary_files>",// Index 37
@@ -44636,30 +44636,30 @@ void cGrammar_galgas_33_Grammar::nt_with_5F_instruction_5F_core_ (const GALGAS_l
 
 //--------------------------------------------------------------------------------------------------
 //
-//                           'start_symbol' non terminal implementation                             
+//                        'start_symbol_ggs3' non terminal implementation                           
 //
 //--------------------------------------------------------------------------------------------------
 
-void cGrammar_galgas_33_Grammar::nt_start_5F_symbol_parse (Lexique_galgasScanner_33_ * inLexique) {
+void cGrammar_galgas_33_Grammar::nt_start_5F_symbol_5F_ggs_33__parse (Lexique_galgasScanner_33_ * inLexique) {
   if (inLexique->nextProductionIndex () == 110) {
-  rule_galgas_33_DeclarationsSyntax_start_5F_symbol_i0_parse(inLexique) ;
+  rule_galgas_33_DeclarationsSyntax_start_5F_symbol_5F_ggs_33__i0_parse(inLexique) ;
   }else{
     inLexique->internalBottomUpParserError (HERE) ;
   }
 }
 
-void cGrammar_galgas_33_Grammar::nt_start_5F_symbol_indexing (Lexique_galgasScanner_33_ * inLexique) {
+void cGrammar_galgas_33_Grammar::nt_start_5F_symbol_5F_ggs_33__indexing (Lexique_galgasScanner_33_ * inLexique) {
   if (inLexique->nextProductionIndex () == 110) {
-  rule_galgas_33_DeclarationsSyntax_start_5F_symbol_i0_indexing(inLexique) ;
+  rule_galgas_33_DeclarationsSyntax_start_5F_symbol_5F_ggs_33__i0_indexing(inLexique) ;
   }else{
     inLexique->internalBottomUpParserError (HERE) ;
   }
 }
 
-void cGrammar_galgas_33_Grammar::nt_start_5F_symbol_ (GALGAS_galgasDeclarationAST &  parameter_1,
+void cGrammar_galgas_33_Grammar::nt_start_5F_symbol_5F_ggs_33__ (GALGAS_galgasDeclarationAST &  parameter_1,
                                 Lexique_galgasScanner_33_ * inLexique) {
   if (inLexique->nextProductionIndex () == 110) {
-  rule_galgas_33_DeclarationsSyntax_start_5F_symbol_i0_(parameter_1, inLexique) ;
+  rule_galgas_33_DeclarationsSyntax_start_5F_symbol_5F_ggs_33__i0_(parameter_1, inLexique) ;
   }else{
     inLexique->internalBottomUpParserError (HERE) ;
   }
@@ -44676,7 +44676,7 @@ void cGrammar_galgas_33_Grammar::performIndexing (Compiler * inCompiler,
                                                      gProductionsTable_galgas3Grammar) ;
     if (ok) {
       cGrammar_galgas_33_Grammar grammar ;
-      grammar.nt_start_5F_symbol_indexing (scanner) ;
+      grammar.nt_start_5F_symbol_5F_ggs_33__indexing (scanner) ;
     }
     scanner->generateIndexFile () ;
   }
@@ -44730,7 +44730,7 @@ void cGrammar_galgas_33_Grammar::_performSourceFileParsing_ (Compiler * inCompil
                                                          gProductionsTable_galgas3Grammar) ;
         if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {
           cGrammar_galgas_33_Grammar grammar ;
-          grammar.nt_start_5F_symbol_ (parameter_1, scanner) ;
+          grammar.nt_start_5F_symbol_5F_ggs_33__ (parameter_1, scanner) ;
         }
       }else{
         String message ;
@@ -44770,7 +44770,7 @@ void cGrammar_galgas_33_Grammar::_performSourceStringParsing_ (Compiler * inComp
                                                        gProductionsTable_galgas3Grammar) ;
       if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {
         cGrammar_galgas_33_Grammar grammar ;
-        grammar.nt_start_5F_symbol_ (parameter_1, scanner) ;
+        grammar.nt_start_5F_symbol_5F_ggs_33__ (parameter_1, scanner) ;
       }
     }
     macroDetachSharedObject (scanner) ;
