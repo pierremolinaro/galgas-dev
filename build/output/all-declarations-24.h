@@ -478,6 +478,21 @@ void routine_enterBaseFinalGetterWith_33_Arguments_26__26__3F__3F__3F__3F__3F__3
 
 //--------------------------------------------------------------------------------------------------
 //
+//Routine 'enterInstanceMethodWithInputArgument&&?inputArgTypeName?inputArgName?methodName?'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_enterInstanceMethodWithInputArgument_26__26__3F_inputArgTypeName_3F_inputArgName_3F_methodName_3F_ (class GALGAS_instanceMethodMap & ioArgument0,
+                                                                                                                 class GALGAS_unifiedTypeMap & ioArgument1,
+                                                                                                                 const class GALGAS_string constinArgument2,
+                                                                                                                 const class GALGAS_string constinArgument3,
+                                                                                                                 const class GALGAS_string constinArgument4,
+                                                                                                                 const class GALGAS_bool constinArgument5,
+                                                                                                                 class Compiler * inCompiler
+                                                                                                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Function 'procedureNameForUsefulEntitiesGraph'
 //
 //--------------------------------------------------------------------------------------------------
@@ -535,21 +550,6 @@ void routine_enterInstanceMethodWithoutArgument_26__3F_methodName_3F_ (class GAL
                                                                        const class GALGAS_bool constinArgument2,
                                                                        class Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'enterInstanceMethodWithInputArgument&&?inputArgTypeName?inputArgName?methodName?'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_enterInstanceMethodWithInputArgument_26__26__3F_inputArgTypeName_3F_inputArgName_3F_methodName_3F_ (class GALGAS_instanceMethodMap & ioArgument0,
-                                                                                                                 class GALGAS_unifiedTypeMap & ioArgument1,
-                                                                                                                 const class GALGAS_string constinArgument2,
-                                                                                                                 const class GALGAS_string constinArgument3,
-                                                                                                                 const class GALGAS_string constinArgument4,
-                                                                                                                 const class GALGAS_bool constinArgument5,
-                                                                                                                 class Compiler * inCompiler
-                                                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

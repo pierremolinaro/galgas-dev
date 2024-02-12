@@ -40,14 +40,12 @@ private proc enterInstanceMethodWithoutArgument
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-private proc enterInstanceMethodWithInputArgument
-  ?!@instanceMethodMap ioInstanceMethodMap
-  ?!@unifiedTypeMap ioUnifiedTypeMap
-  ?inputArgTypeName:let @string inInputArgumentTypeName
-  ?inputArgName:let @string inInputArgumentName
-  ?methodName:let @string inInstanceMethodName
-  ?let @bool inHasCompilerArgument
-{
+proc enterInstanceMethodWithInputArgument ?!@instanceMethodMap ioInstanceMethodMap
+                                          ?!@unifiedTypeMap ioUnifiedTypeMap
+                                          ?inputArgTypeName:let @string inInputArgumentTypeName
+                                          ?inputArgName:let @string inInputArgumentName
+                                          ?methodName:let @string inInstanceMethodName
+                                          ?let @bool inHasCompilerArgument {
   [!?ioUnifiedTypeMap makeEntryFromString !inInputArgumentTypeName ?let argumentTypeIndex]
   var @formalParameterSignature argList = {}
   argList += !["" nowhere] !argumentTypeIndex !@formalArgumentPassingModeAST. argumentConstantIn !inInputArgumentName
@@ -57,44 +55,6 @@ private proc enterInstanceMethodWithInputArgument
     !argList
     !.nowhere
     !inHasCompilerArgument
-    !@methodQualifier. isBasic
-    !"" # No error message
-  ]
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-override method @dataPredefinedTypeAST getInstanceMethodMap
-  ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@instanceMethodMap outInstanceMethodMap {
-  outInstanceMethodMap = {}
-  enterInstanceMethodWithInputArgument (
-    !?outInstanceMethodMap
-    !?ioUnifiedTypeMap
-    !inputArgTypeName:"string"
-    !inputArgName:"inFilePath"
-    !methodName:"writeToFile"
-    !true
-  )
-  enterInstanceMethodWithInputArgument (
-    !?outInstanceMethodMap
-    !?ioUnifiedTypeMap
-    !inputArgTypeName:"string"
-    !inputArgName:"inFilePath"
-    !methodName:"writeToExecutableFile"
-    !true
-  )
-  var @formalParameterSignature argList = {}
-  [!?ioUnifiedTypeMap makeEntryFromString !"string" ?@unifiedTypeMapEntry t]
-  argList += !["" nowhere] !t !@formalArgumentPassingModeAST. argumentConstantIn !"inFilePath"
-  [!?ioUnifiedTypeMap makeEntryFromString !"bool" ?t]
-  argList += !["" nowhere] !t !@formalArgumentPassingModeAST. argumentOut !"outFileModified"
-  [!?outInstanceMethodMap insertKey
-    !@lstring.new {!"writeToFileWhenDifferentContents" !@location.here}
-    !@methodKind. definedAsMember
-    !argList
-    !@location.here
-    !true
     !@methodQualifier. isBasic
     !"" # No error message
   ]

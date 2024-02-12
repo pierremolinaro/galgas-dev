@@ -26,19 +26,6 @@
 #
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @dataPredefinedTypeAST getEnumerationList
-  ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@enumerationDescriptorList outEnumerationList
-  !@string outEnumeratedType
-{
-  [!?ioUnifiedTypeMap makeEntryFromString !"uint" ?let uintTypeIndex]
-  outEnumerationList = {}
-  outEnumerationList += !uintTypeIndex !"data"
-  outEnumeratedType = "uint"
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
 override getter @timerPredefinedTypeAST getSupportedOperatorFlags -> @operators {
   result = .generateDescriptionGetterUtilityMethod
 }
@@ -58,32 +45,6 @@ override getter @charPredefinedTypeAST getSupportedOperatorFlags -> @operators {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @sintPredefinedTypeAST getSupportedOperatorFlags -> @operators {
-  result = .infixAddOperator | .infixSubOperator | .infixMulOperator | .infixDivOperator
-    | .infixModOperator | .infixShiftOperator | .prefixPlusOperator
-    | .prefixMinusOperator | .prefixMinusOperatorNoOVF
-    | .infixAndOperator | .infixOrOperator | .infixXorOperator | .prefixTildeOperator
-    | .generateDescriptionGetterUtilityMethod  | .incDecOperator | .incDecOperatorNoOVF | .isComparable
-    | .infixAddOperatorNoOVF | .infixSubOperatorNoOVF | .infixMulOperatorNoOVF | .infixDivOperatorNoOVF
-    | .plusEqualOperatorWithExpression | .minusEqualOperatorWithExpression
-    | .mulEqualOperatorWithExpression | .divEqualOperatorWithExpression
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-override getter @sint64PredefinedTypeAST getSupportedOperatorFlags -> @operators {
-  result = .infixAddOperator | .infixSubOperator | .infixMulOperator | .infixDivOperator
-    | .infixModOperator | .infixShiftOperator | .prefixPlusOperator
-    | .prefixMinusOperator | .prefixMinusOperatorNoOVF
-    | .infixAndOperator | .infixOrOperator | .infixXorOperator | .prefixTildeOperator
-    | .incDecOperator | .incDecOperatorNoOVF | .generateDescriptionGetterUtilityMethod | .isComparable
-    | .infixAddOperatorNoOVF | .infixSubOperatorNoOVF | .infixMulOperatorNoOVF | .infixDivOperatorNoOVF
-    | .plusEqualOperatorWithExpression | .minusEqualOperatorWithExpression
-    | .mulEqualOperatorWithExpression | .divEqualOperatorWithExpression
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
 override getter @doublePredefinedTypeAST getSupportedOperatorFlags -> @operators {
   result = .infixAddOperator | .infixSubOperator | .infixMulOperator | .infixDivOperator
     | .prefixPlusOperator | .prefixMinusOperator | .infixModOperator | .infixDivOperatorNoOVF
@@ -96,12 +57,6 @@ override getter @doublePredefinedTypeAST getSupportedOperatorFlags -> @operators
 
 override getter @typePredefinedTypeAST getSupportedOperatorFlags -> @operators {
   result = .generateDescriptionGetterUtilityMethod | .isComparable
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-override getter @dataPredefinedTypeAST getSupportedOperatorFlags -> @operators {
-  result = .generateDescriptionGetterUtilityMethod | .generateEnumerationHelperMethods
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

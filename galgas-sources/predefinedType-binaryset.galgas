@@ -24,13 +24,13 @@
 
 refclass @binarysetPredefinedTypeAST : @predefinedTypeAST {
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
   override getter defaultInitializerName -> @string {
     result = "emptyBinarySet"
   }
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
   override getter getSupportedOperatorFlags -> @operators {
     result = .infixAndOperator | .infixOrOperator | .infixXorOperator
@@ -38,13 +38,13 @@ refclass @binarysetPredefinedTypeAST : @predefinedTypeAST {
       | .generateDescriptionGetterUtilityMethod | .isComparable
   }
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
   override getter cppDeclarationString -> @string {
     result = [filewrapper predefinedTypeGenerationTemplate.binaryset_type]
   }
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
   override method getClassFunctionMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                       !@classFunctionMap outMap {
@@ -239,7 +239,7 @@ refclass @binarysetPredefinedTypeAST : @predefinedTypeAST {
     )
   }
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
   override method getGetterMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                !@getterMap outMap {
@@ -544,7 +544,7 @@ refclass @binarysetPredefinedTypeAST : @predefinedTypeAST {
     )
   }
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
   override method getClassMethodMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                     !@classMethodMap outClassMethodMap {
@@ -567,7 +567,7 @@ refclass @binarysetPredefinedTypeAST : @predefinedTypeAST {
     )
   }
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
 }
 

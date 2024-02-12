@@ -360,16 +360,16 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtension
 
 //--------------------------------------------------------------------------------------------------
 //
-// Phase 1: @sintPredefinedTypeAST reference class
+// Phase 1: @charPredefinedTypeAST reference class
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_sintPredefinedTypeAST : public GALGAS_predefinedTypeAST {
+class GALGAS_charPredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Default constructor
-  public: GALGAS_sintPredefinedTypeAST (void) ;
+  public: GALGAS_charPredefinedTypeAST (void) ;
 
 //--------------------------------- Constructor from pointer
-  public: GALGAS_sintPredefinedTypeAST (const class cPtr_sintPredefinedTypeAST * inSourcePtr) ;
+  public: GALGAS_charPredefinedTypeAST (const class cPtr_charPredefinedTypeAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
 //-- Start of type generic part
@@ -378,17 +378,17 @@ class GALGAS_sintPredefinedTypeAST : public GALGAS_predefinedTypeAST {
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
-  public: static GALGAS_sintPredefinedTypeAST extractObject (const GALGAS_object & inObject,
+  public: static GALGAS_charPredefinedTypeAST extractObject (const GALGAS_object & inObject,
                                                              Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GALGAS_sintPredefinedTypeAST class_func_new (const class GALGAS_bool & inOperand0,
+  public: static class GALGAS_charPredefinedTypeAST class_func_new (const class GALGAS_bool & inOperand0,
                                                                     const class GALGAS_string & inOperand1
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_sintPredefinedTypeAST & inOperand) const ;
+  public: typeComparisonResult objectCompare (const GALGAS_charPredefinedTypeAST & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -402,20 +402,20 @@ class GALGAS_sintPredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GALGAS_sintPredefinedTypeAST class
+} ; // End of GALGAS_charPredefinedTypeAST class
 
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sintPredefinedTypeAST ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_charPredefinedTypeAST ;
 
 //--------------------------------------------------------------------------------------------------
 //
-// Phase 2: pointer class for @sintPredefinedTypeAST class
+// Phase 2: pointer class for @charPredefinedTypeAST class
 //
 //--------------------------------------------------------------------------------------------------
 
-class cPtr_sintPredefinedTypeAST : public cPtr_predefinedTypeAST {
+class cPtr_charPredefinedTypeAST : public cPtr_predefinedTypeAST {
 
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
@@ -442,7 +442,7 @@ class cPtr_sintPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Properties
 
 //--- Constructor
-  public: cPtr_sintPredefinedTypeAST (const GALGAS_bool & in_isPredefined,
+  public: cPtr_charPredefinedTypeAST (const GALGAS_bool & in_isPredefined,
                                       const GALGAS_string & in_mPredefinedTypeName
                                       COMMA_LOCATION_ARGS) ;
 
@@ -462,21 +462,21 @@ class cPtr_sintPredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //--------------------------------------------------------------------------------------------------
 //
-// Phase 1: @sintPredefinedTypeAST_2D_weak weak reference class
+// Phase 1: @charPredefinedTypeAST_2D_weak weak reference class
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_sintPredefinedTypeAST_2D_weak : public GALGAS_predefinedTypeAST_2D_weak {
+class GALGAS_charPredefinedTypeAST_2D_weak : public GALGAS_predefinedTypeAST_2D_weak {
 //--------------------------------- Default constructor
-  public: GALGAS_sintPredefinedTypeAST_2D_weak (void) ;
+  public: GALGAS_charPredefinedTypeAST_2D_weak (void) ;
 
 //--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_sintPredefinedTypeAST_2D_weak (const class GALGAS_sintPredefinedTypeAST & inSource) ;
+  public: GALGAS_charPredefinedTypeAST_2D_weak (const class GALGAS_charPredefinedTypeAST & inSource) ;
 
-  public: GALGAS_sintPredefinedTypeAST_2D_weak & operator = (const class GALGAS_sintPredefinedTypeAST & inSource) ;
+  public: GALGAS_charPredefinedTypeAST_2D_weak & operator = (const class GALGAS_charPredefinedTypeAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_sintPredefinedTypeAST bang_sintPredefinedTypeAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_charPredefinedTypeAST bang_charPredefinedTypeAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of type generic part
 
@@ -484,15 +484,15 @@ class GALGAS_sintPredefinedTypeAST_2D_weak : public GALGAS_predefinedTypeAST_2D_
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
-  public: static GALGAS_sintPredefinedTypeAST_2D_weak extractObject (const GALGAS_object & inObject,
+  public: static GALGAS_charPredefinedTypeAST_2D_weak extractObject (const GALGAS_object & inObject,
                                                                      Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GALGAS_sintPredefinedTypeAST_2D_weak class_func_nil (LOCATION_ARGS) ;
+  public: static class GALGAS_charPredefinedTypeAST_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_sintPredefinedTypeAST_2D_weak & inOperand) const ;
+  public: typeComparisonResult objectCompare (const GALGAS_charPredefinedTypeAST_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -506,12 +506,12 @@ class GALGAS_sintPredefinedTypeAST_2D_weak : public GALGAS_predefinedTypeAST_2D_
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GALGAS_sintPredefinedTypeAST_2D_weak class
+} ; // End of GALGAS_charPredefinedTypeAST_2D_weak class
 
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sintPredefinedTypeAST_2D_weak ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_charPredefinedTypeAST_2D_weak ;
 
 //--------------------------------------------------------------------------------------------------
 //

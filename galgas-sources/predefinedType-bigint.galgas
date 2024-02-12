@@ -24,19 +24,19 @@
 
 refclass @bigintPredefinedTypeAST : @predefinedTypeAST {
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
   override getter defaultInitializerName -> @string {
     result = "zero"
   }
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
   override getter cppDeclarationString -> @string {
     result = [filewrapper predefinedTypeGenerationTemplate.bigint_type]
   }
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
   override method getClassFunctionMap
     ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -51,7 +51,7 @@ refclass @bigintPredefinedTypeAST : @predefinedTypeAST {
     )
   }
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
   override method getInstanceMethodMap
     ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -92,7 +92,7 @@ refclass @bigintPredefinedTypeAST : @predefinedTypeAST {
   #  ]
   }
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
   override method getSetterMap
     ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -119,7 +119,7 @@ refclass @bigintPredefinedTypeAST : @predefinedTypeAST {
     )
   }
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
   override method getGetterMap
     ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -330,7 +330,7 @@ refclass @bigintPredefinedTypeAST : @predefinedTypeAST {
     )
   }
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
   override getter getSupportedOperatorFlags -> @operators {
     result = .generateDescriptionGetterUtilityMethod | .prefixPlusOperator | .prefixMinusOperator |
@@ -342,7 +342,7 @@ refclass @bigintPredefinedTypeAST : @predefinedTypeAST {
                .mulEqualOperatorWithExpression | .divEqualOperatorWithExpression
   }
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
 }
 

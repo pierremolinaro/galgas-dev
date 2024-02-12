@@ -26,10 +26,6 @@
 #
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @sintPredefinedTypeAST : @predefinedTypeAST {}
-
-refclass @sint64PredefinedTypeAST : @predefinedTypeAST {}
-
 refclass @charPredefinedTypeAST : @predefinedTypeAST {}
 
 refclass @doublePredefinedTypeAST : @predefinedTypeAST {}
@@ -42,8 +38,6 @@ refclass @functionPredefinedTypeAST : @predefinedTypeAST {}
 
 refclass @typePredefinedTypeAST : @predefinedTypeAST {}
 
-refclass @dataPredefinedTypeAST : @predefinedTypeAST {}
-
 refclass @timerPredefinedTypeAST : @predefinedTypeAST {}
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -51,21 +45,21 @@ refclass @timerPredefinedTypeAST : @predefinedTypeAST {}
 abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
   public let @string mPredefinedTypeName
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
   getter typeKind -> @typeKindEnum {
     result = .otherType
   }
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
   abstract getter cppDeclarationString -> @string
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
   abstract getter defaultInitializerName -> @string // Empty string: no default initializer name
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
   override method enterDeclarationInGraph
                               ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
@@ -77,7 +71,7 @@ abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   }
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
   override method enterDeclarationInSemanticContext
                                   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
@@ -103,7 +97,7 @@ abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
     if enumeratedTypeName == "" then
       enumeratedTypeEntry = @unifiedTypeMapEntry.null
     else
-      [!?ioTypeMap makeEntryFromString!enumeratedTypeName ?enumeratedTypeEntry]
+      [!?ioTypeMap makeEntryFromString !enumeratedTypeName ?enumeratedTypeEntry]
     end
   #--- Add Extensions
     addExtensions (
@@ -152,7 +146,7 @@ abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
     [!?ioTypeMap insertType !typeDefinition.mTypeName !typeDefinition]
   }
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
   override method semanticAnalysis ?!@lstringlist unused ioUsefulnessRootEntities
                                     ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
@@ -175,68 +169,68 @@ abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
       }
   }
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
   method getClassFunctionMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
                              !@classFunctionMap outClassFunctionMap {
     outClassFunctionMap = {}
   }
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
   method getGetterMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
                       !@getterMap outGetterMap {
     outGetterMap = {}
   }
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
   method getSetterMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
                       !@setterMap outSetterMap {
     outSetterMap = {}
   }
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
   method getInstanceMethodMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
                               !@instanceMethodMap outInstanceMethodMap {
     outInstanceMethodMap = {}
   }
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
   method getClassMethodMap  ?!@unifiedTypeMap unused ioUnifiedTypeMap
                             !@classMethodMap outClassMethodMap {
     outClassMethodMap = {}
   }
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
   method getOptionalMethodMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
                                !@optionalMethodMap outMap {
     outMap = {}
   }
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
   getter getSupportedOperatorFlags -> @operators outFlags {
     outFlags = .none # No supported operator
   }
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
   getter supportsCollectionValue -> @bool {
     result = false # Does not support collection value
   }
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
   method getAddAssignArgumentList ?!@unifiedTypeMap unused ioUnifiedTypeMap
                                   !@functionSignature outAddAssignArgumentList {
     outAddAssignArgumentList = {}
   }
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
   method getEnumerationList ?!@unifiedTypeMap unused ioUnifiedTypeMap
                             !@enumerationDescriptorList outEnumerationList
@@ -245,7 +239,7 @@ abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
     outEnumeratedType = "" # Enumeration is not supported
   }
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
 }
 

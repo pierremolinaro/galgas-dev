@@ -24,26 +24,26 @@
 
 refclass @stringsetPredefinedTypeAST : @predefinedTypeAST {
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
   override getter supportsCollectionValue -> @bool {
     result = true # Support collection value
   }
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
   override getter defaultInitializerName -> @string {
     result = "emptySet"
   }
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
 
   override getter cppDeclarationString -> @string {
     result = [filewrapper predefinedTypeGenerationTemplate.stringset_type]
   }
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
   override getter getSupportedOperatorFlags -> @operators {
     result = .infixSubOperator
@@ -53,7 +53,7 @@ refclass @stringsetPredefinedTypeAST : @predefinedTypeAST {
       | .generateCopyConstructorAndAssignmentOperator
   }
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
   override method getClassFunctionMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                       !@classFunctionMap outMap {
@@ -94,7 +94,7 @@ refclass @stringsetPredefinedTypeAST : @predefinedTypeAST {
     )
   }
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
   override method getSetterMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                !@setterMap outSetterMap {
@@ -118,7 +118,7 @@ refclass @stringsetPredefinedTypeAST : @predefinedTypeAST {
     )
   }
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
   override method getEnumerationList ?!@unifiedTypeMap ioUnifiedTypeMap
                                      !@enumerationDescriptorList outEnumerationList
@@ -129,7 +129,7 @@ refclass @stringsetPredefinedTypeAST : @predefinedTypeAST {
     outEnumeratedType = "string"
   }
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
   override method getAddAssignArgumentList ?!@unifiedTypeMap ioUnifiedTypeMap
                                            !@functionSignature outAddAssignArgumentList {
@@ -137,7 +137,7 @@ refclass @stringsetPredefinedTypeAST : @predefinedTypeAST {
     outAddAssignArgumentList = {!["" nowhere] !stringTypeIndex !"inString"}
   }
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
   override method getGetterMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                !@getterMap outMap {
@@ -175,7 +175,7 @@ refclass @stringsetPredefinedTypeAST : @predefinedTypeAST {
     )
   }
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
 }
 

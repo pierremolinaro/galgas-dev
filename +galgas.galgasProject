@@ -2,7 +2,7 @@
 #                                           
 #  Compile all galgas sources               
 #                                           
-#  Copyright (C) 1997, ..., 2023 Pierre Molinaro.                                                                     
+#  Copyright (C) 1997, ..., 2024 Pierre Molinaro.                                                                     
 #                                           
 #  MIT License
 #                                           
@@ -125,9 +125,12 @@ project (3:7:0) -> "galgas" {
   "galgas-sources/predefinedType-bigint.galgas"
   "galgas-sources/predefinedType-binaryset.galgas"
   "galgas-sources/predefinedType-bool.galgas"
+  "galgas-sources/predefinedType-data.galgas"
   "galgas-sources/predefinedType-filewrapper.galgas"
   "galgas-sources/predefinedType-object.galgas"
   "galgas-sources/predefinedType-stringset.galgas"
+  "galgas-sources/predefinedType-sint.galgas"
+  "galgas-sources/predefinedType-sint64.galgas"
   "galgas-sources/predefinedType-uint.galgas"
   "galgas-sources/predefinedType-uint64.galgas"
 

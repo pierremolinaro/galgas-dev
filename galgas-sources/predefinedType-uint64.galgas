@@ -22,19 +22,19 @@
 
 refclass @uint64PredefinedTypeAST : @predefinedTypeAST {
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
   override getter defaultInitializerName -> @string {
     result = "default"
   }
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
   override getter cppDeclarationString -> @string {
     result = [filewrapper predefinedTypeGenerationTemplate.uint64_type]
   }
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
   override getter getSupportedOperatorFlags ->@operators {
     result = .infixAddOperator | .infixSubOperator | .infixMulOperator | .infixDivOperator
@@ -46,7 +46,7 @@ refclass @uint64PredefinedTypeAST : @predefinedTypeAST {
       | .mulEqualOperatorWithExpression | .divEqualOperatorWithExpression
   }
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
   override method getClassFunctionMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                       !@classFunctionMap outMap {
@@ -87,7 +87,7 @@ refclass @uint64PredefinedTypeAST : @predefinedTypeAST {
     )
   }
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
   override method getGetterMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                !@getterMap outMap {
@@ -213,7 +213,7 @@ refclass @uint64PredefinedTypeAST : @predefinedTypeAST {
     )
   }
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
 }
 

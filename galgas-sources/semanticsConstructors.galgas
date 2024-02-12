@@ -418,50 +418,6 @@ override method @charPredefinedTypeAST getClassFunctionMap
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @sintPredefinedTypeAST getClassFunctionMap
-  ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@classFunctionMap outMap {
-  outMap = {}
-  enterClassFunctionWithoutArgument (
-    !?outMap
-    !?ioUnifiedTypeMap
-    !name:"max"
-    !resultTypeName:"sint"
-    !hasLexiqueArg:false
-  )
-  enterClassFunctionWithoutArgument (
-    !?outMap
-    !?ioUnifiedTypeMap
-    !name:"min"
-    !resultTypeName:"sint"
-    !hasLexiqueArg:false
-  )
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-override method @sint64PredefinedTypeAST getClassFunctionMap
-  ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@classFunctionMap outMap {
-  outMap = {}
-  enterClassFunctionWithoutArgument (
-    !?outMap
-    !?ioUnifiedTypeMap
-    !name:"max"
-    !resultTypeName:"sint64"
-    !hasLexiqueArg:false
-  )
-  enterClassFunctionWithoutArgument (
-    !?outMap
-    !?ioUnifiedTypeMap
-    !name:"min"
-    !resultTypeName:"sint64"
-    !hasLexiqueArg:false
-  )
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
 override method @typePredefinedTypeAST getClassFunctionMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@classFunctionMap outMap {
@@ -472,31 +428,6 @@ override method @typePredefinedTypeAST getClassFunctionMap
     !name:"typeList"
     !resultTypeName:"typelist"
     !hasLexiqueArg:false
-  )
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-override method @dataPredefinedTypeAST getClassFunctionMap
-  ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@classFunctionMap outMap
-{
-  outMap = {}
-  enterClassFunctionWithoutArgument (
-    !?outMap
-    !?ioUnifiedTypeMap
-    !name:"emptyData"
-    !resultTypeName:"data"
-    !hasLexiqueArg:false
-  )
-  enterClassFunctionWithArgument (
-    !?outMap
-    !?ioUnifiedTypeMap
-    !name:"dataWithContentsOfFile"
-    !argTypeName:"string"
-    !argName:"inFilePath"
-    !resultTypeName:"data"
-    !hasLexiqueArg:true
   )
 }
 

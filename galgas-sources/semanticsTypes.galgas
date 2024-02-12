@@ -270,14 +270,6 @@ map @constantIndexMap {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @sintPredefinedTypeAST defaultInitializerName -> @string {
-  result = "default"
-}
-
-override getter @sint64PredefinedTypeAST defaultInitializerName -> @string {
-  result = "default"
-}
-
 override getter @timerPredefinedTypeAST defaultInitializerName -> @string {
   result = "start"
 }
@@ -304,10 +296,6 @@ override getter @functionPredefinedTypeAST defaultInitializerName -> @string {
 
 override getter @typePredefinedTypeAST defaultInitializerName -> @string {
   result = "" // No default initializer
-}
-
-override getter @dataPredefinedTypeAST defaultInitializerName -> @string {
-  result = "emptyData"
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

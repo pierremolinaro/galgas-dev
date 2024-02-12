@@ -1570,14 +1570,6 @@ filewrapper predefinedTypeGenerationTemplate in "+generation-templates/type_gene
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @sintPredefinedTypeAST cppDeclarationString -> @string {
-  result = [filewrapper predefinedTypeGenerationTemplate.sint_type]
-}
-
-override getter @sint64PredefinedTypeAST cppDeclarationString -> @string {
-  result = [filewrapper predefinedTypeGenerationTemplate.sint64_type]
-}
-
 override getter @timerPredefinedTypeAST cppDeclarationString -> @string {
   result = [filewrapper predefinedTypeGenerationTemplate.timer_type]
 }
@@ -1606,10 +1598,6 @@ override getter @typePredefinedTypeAST cppDeclarationString -> @string {
   result = [filewrapper predefinedTypeGenerationTemplate.type_type]
 }
 
-override getter @dataPredefinedTypeAST cppDeclarationString -> @string {
-  result = [filewrapper predefinedTypeGenerationTemplate.data_type]
-}
-
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 #    P R I M I T I V E    T Y P E
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -1619,13 +1607,13 @@ refclass @primitiveTypeForGeneration : @semanticTypeForGeneration {
   public let @string mCppDeclarationString
   public let @bool isPackage %selector
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
   override method appendPrimitiveTypePreDeclaration ?!@string ioHeader {
     ioHeader += "class GALGAS_" + self.mPredefinedTypeName + " ;\n"
   }
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
   override getter appendPrimitiveTypeDeclaration -> @string {
     result = self.mCppDeclarationString
@@ -1656,7 +1644,7 @@ refclass @primitiveTypeForGeneration : @semanticTypeForGeneration {
     end
   }
 
-  #-----------------------------------------------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------------------------
 
 }
 
