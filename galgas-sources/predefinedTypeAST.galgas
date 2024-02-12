@@ -22,24 +22,8 @@
 #
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 #
-#  A S T   C L A S S E S    F O R    P R E D E F I N E D   T Y P E S
+#  A S T   C L A S S    F O R    P R E D E F I N E D   T Y P E S
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @charPredefinedTypeAST : @predefinedTypeAST {}
-
-refclass @doublePredefinedTypeAST : @predefinedTypeAST {}
-
-refclass @stringPredefinedTypeAST : @predefinedTypeAST {}
-
-refclass @locationPredefinedTypeAST : @predefinedTypeAST {}
-
-refclass @functionPredefinedTypeAST : @predefinedTypeAST {}
-
-refclass @typePredefinedTypeAST : @predefinedTypeAST {}
-
-refclass @timerPredefinedTypeAST : @predefinedTypeAST {}
-
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
@@ -296,35 +280,6 @@ private proc appendPredefined2StringListTypeAST ?!@semanticDeclarationListAST io
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-#private proc appendPredefined2LStringListTypeAST
-#  ?!@semanticDeclarationListAST ioDeclarationListASTs
-#  ?!@lstringlist ioUsefulnessRootEntities
-#{
-#  var @propertyInCollectionListAST attributeList = {}
-#  attributeList +=
-#    !isConstant: false
-#    !@lstring.new {!"lstring" !@location.here}
-#    !@lstring.new {!"mValue0" !@location.here}
-#    !.publicAccess
-#    !selector: false
-#    !.none
-#  attributeList +=
-#    !isConstant: false
-#    !@lstring.new {!"lstring" !@location.here}
-#    !@lstring.new {!"mValue1" !@location.here}
-#    !.publicAccess
-#    !selector: false
-#    !.none
-#  ioDeclarationListASTs += !@listDeclarationAST.new {
-#    !true # Is predefined
-#    !@lstring.new {!"2lstringlist" !@location.here}
-#    !attributeList
-#  }
-#  insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"2lstringlist")
-#}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
 private proc appendStructASTForTypeWithLocation ?!@semanticDeclarationListAST ioDeclarationListASTs
                                                 ?let @string inElementTypeName
                                                 ?!@lstringlist ioUsefulnessRootEntities {
@@ -452,9 +407,58 @@ proc appendPredefinedTypesASTs ?!@semanticDeclarationListAST ioDeclarationListAS
   appendStructASTForTypeWithLocation (!?ioDeclarationListASTs !"uint64" !?ioUsefulnessRootEntities)
 
   appendPredefined2StringListTypeAST (!?ioDeclarationListASTs !?ioUsefulnessRootEntities)
-#  appendPredefined2LStringListTypeAST (!?ioDeclarationListASTs !?ioUsefulnessRootEntities)
 
   appendStructASTForRangeType (!?ioDeclarationListASTs !?ioUsefulnessRootEntities)
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+filewrapper predefinedTypeGenerationTemplate in "+generation-templates/type_generation" {
+}{
+}{
+  template predefinedTypesImplementation "predefined_types.cpp.galgasTemplate"
+
+  template primitiveTypesHeaderPrologue "predefined-types-file-header.h.galgasTemplate"
+
+  template predefinedTypeSeparation "predefined-types-separation.h.galgasTemplate"
+
+  template sint_type "sint-type.h.galgasTemplate"
+
+  template sint64_type "sint64-type.h.galgasTemplate"
+
+  template object_type "object-type.h.galgasTemplate"
+
+  template uint_type "uint-type.h.galgasTemplate"
+
+  template uint64_type "uint64-type.h.galgasTemplate"
+
+  template bool_type "bool-type.h.galgasTemplate"
+
+  template binaryset_type "binaryset-type.h.galgasTemplate"
+
+  template function_type "function-type.h.galgasTemplate"
+
+  template type_type "type-type.h.galgasTemplate"
+
+  template location_type "location-type.h.galgasTemplate"
+
+  template data_type "data-type.h.galgasTemplate"
+
+  template char_type "char-type.h.galgasTemplate"
+
+  template double_type "double-type.h.galgasTemplate"
+
+  template string_type "string-type.h.galgasTemplate"
+
+  template stringset_type "stringset-type.h.galgasTemplate"
+
+  template filewrapper_type "filewrapper-type.h.galgasTemplate"
+
+  template application_type "application-type.h.galgasTemplate"
+
+  template bigint_type "bigint-type.h.galgasTemplate"
+
+  template timer_type "timer-type.h.galgasTemplate"
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

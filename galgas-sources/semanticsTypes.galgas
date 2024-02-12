@@ -270,33 +270,3 @@ map @constantIndexMap {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @timerPredefinedTypeAST defaultInitializerName -> @string {
-  result = "start"
-}
-
-override getter @charPredefinedTypeAST defaultInitializerName -> @string {
-  result = "default"
-}
-
-override getter @doublePredefinedTypeAST defaultInitializerName -> @string {
-  result = "default"
-}
-
-override getter @stringPredefinedTypeAST defaultInitializerName -> @string {
-  result = "default"
-}
-
-override getter @locationPredefinedTypeAST defaultInitializerName -> @string {
-  result = "nowhere"
-}
-
-override getter @functionPredefinedTypeAST defaultInitializerName -> @string {
-  result = "" // No default initializer
-}
-
-override getter @typePredefinedTypeAST defaultInitializerName -> @string {
-  result = "" // No default initializer
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-

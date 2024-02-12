@@ -10,6 +10,23 @@
 
 //--------------------------------------------------------------------------------------------------
 //
+//Routine 'recursivelyEnumerateDirectories????!!&&'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_recursivelyEnumerateDirectories_3F__3F__3F__3F__21__21__26__26_ (const class GALGAS_string constinArgument0,
+                                                                              const class GALGAS_string constinArgument1,
+                                                                              const class GALGAS_wrapperExtensionMap constinArgument2,
+                                                                              const class GALGAS_wrapperExtensionMap constinArgument3,
+                                                                              class GALGAS_wrapperFileMap & outArgument4,
+                                                                              class GALGAS_wrapperDirectoryMap & outArgument5,
+                                                                              class GALGAS_uint & ioArgument6,
+                                                                              class GALGAS_uint & ioArgument7,
+                                                                              class Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Routine 'generateInstructionList&?&&?&'
 //
 //--------------------------------------------------------------------------------------------------

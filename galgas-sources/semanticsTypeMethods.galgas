@@ -70,7 +70,7 @@ proc enterClassMethodWith3InputArguments
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-private proc enterClassMethodWithStringInputArgument
+proc enterClassMethodWithStringInputArgument
   ?!@classMethodMap ioClassMethodMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ?classMethod:let @string inClassMethodName
@@ -84,71 +84,6 @@ private proc enterClassMethodWithStringInputArgument
     !.new {!inClassMethodName !.here}
     !argList
     !inHasCompilerArgument
-  ]
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-override method @stringPredefinedTypeAST getClassMethodMap
-  ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@classMethodMap outClassMethodMap
-{
-  outClassMethodMap = {}
-  enterClassMethodWithStringInputArgument (
-    !?outClassMethodMap
-    !?ioUnifiedTypeMap
-    !classMethod:"deleteFile"
-    !argName:"inFilePath"
-    !compilerArg:true
-  )
-  enterClassMethodWithStringInputArgument (
-    !?outClassMethodMap
-    !?ioUnifiedTypeMap
-    !classMethod:"deleteFileIfExists"
-    !argName:"inFilePath"
-    !compilerArg:true
-  )
-  enterClassMethodWithStringInputArgument (
-    !?outClassMethodMap
-    !?ioUnifiedTypeMap
-    !classMethod:"removeEmptyDirectory"
-    !argName:"inDirectoryPath"
-    !compilerArg:true
-  )
-  enterClassMethodWithStringInputArgument (
-    !?outClassMethodMap
-    !?ioUnifiedTypeMap
-    !classMethod:"removeDirectoryRecursively"
-    !argName:"inDirectoryPath"
-    !compilerArg:true
-  )
-  [!?ioUnifiedTypeMap makeEntryFromString !"string" ?let @unifiedTypeMapEntry stringType]
-  [!?ioUnifiedTypeMap makeEntryFromString !"bool" ?let @unifiedTypeMapEntry boolType]
-#--- Generate file
-  var @formalParameterSignature argList = {}
-  argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inStartPath"
-  argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inFileName"
-  argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inContents"
-  [!?outClassMethodMap insertOrReplace
-    !.new {!"generateFile" !.here}
-    !argList
-    !true
-  ]
-#--- Generate file with pattern
-  argList = {}
-  argList += !["startPath" nowhere] !stringType !.argumentConstantIn !"inStartPath"
-  argList += !["fileName" nowhere] !stringType !.argumentConstantIn !"inFileName"
-  argList += !["lineComment" nowhere] !stringType !.argumentConstantIn !"inLineCommentPrefix"
-  argList += !["header" nowhere] !stringType !.argumentConstantIn !"inHeader"
-  argList += !["defaultUserZone1" nowhere] !stringType !.argumentConstantIn !"inDefaultUserZone1"
-  argList += !["generatedZone2" nowhere] !stringType !.argumentConstantIn !"inGeneratedZone2"
-  argList += !["defaultUserZone2" nowhere] !stringType !.argumentConstantIn !"inDefaultUserZone2"
-  argList += !["generatedZone3" nowhere] !stringType !.argumentConstantIn !"inGeneratedZone3"
-  argList += !["makeExecutable" nowhere] !boolType !.argumentConstantIn !"inMakeExecutable"
-  [!?outClassMethodMap insertOrReplace
-    !@lstring.new {!"generateFileWithPattern" !@location.here}
-    !argList
-    !true
   ]
 }
 

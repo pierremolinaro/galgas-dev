@@ -493,22 +493,29 @@ void routine_enterInstanceMethodWithInputArgument_26__26__3F_inputArgTypeName_3F
 
 //--------------------------------------------------------------------------------------------------
 //
-//Function 'procedureNameForUsefulEntitiesGraph'
+//Routine 'enterClassMethodWithStringInputArgument&&?classMethod?argName?compilerArg'
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_lstring function_procedureNameForUsefulEntitiesGraph (const class GALGAS_lstring & constinArgument0,
-                                                                   class Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) ;
+void routine_enterClassMethodWithStringInputArgument_26__26__3F_classMethod_3F_argName_3F_compilerArg (class GALGAS_classMethodMap & ioArgument0,
+                                                                                                       class GALGAS_unifiedTypeMap & ioArgument1,
+                                                                                                       const class GALGAS_string constinArgument2,
+                                                                                                       const class GALGAS_string constinArgument3,
+                                                                                                       const class GALGAS_bool constinArgument4,
+                                                                                                       class Compiler * inCompiler
+                                                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Function 'generateFewHeaderFiles'
+//Routine 'enterInstanceMethodWithoutArgument&?methodName?'
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_bool function_generateFewHeaderFiles (class Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) ;
+void routine_enterInstanceMethodWithoutArgument_26__3F_methodName_3F_ (class GALGAS_instanceMethodMap & ioArgument0,
+                                                                       const class GALGAS_string constinArgument1,
+                                                                       const class GALGAS_bool constinArgument2,
+                                                                       class Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -529,44 +536,6 @@ void routine_enterModifierWithOutputAndInputArguments_26__26__3F_outputArgTypeNa
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'enterModifierWithoutArgument&??compilerArg'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_enterModifierWithoutArgument_26__3F__3F_compilerArg (class GALGAS_setterMap & ioArgument0,
-                                                                  const class GALGAS_string constinArgument1,
-                                                                  const class GALGAS_bool constinArgument2,
-                                                                  class Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'enterInstanceMethodWithoutArgument&?methodName?'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_enterInstanceMethodWithoutArgument_26__3F_methodName_3F_ (class GALGAS_instanceMethodMap & ioArgument0,
-                                                                       const class GALGAS_string constinArgument1,
-                                                                       const class GALGAS_bool constinArgument2,
-                                                                       class Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'enterClassMethodWithStringInputArgument&&?classMethod?argName?compilerArg'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_enterClassMethodWithStringInputArgument_26__26__3F_classMethod_3F_argName_3F_compilerArg (class GALGAS_classMethodMap & ioArgument0,
-                                                                                                       class GALGAS_unifiedTypeMap & ioArgument1,
-                                                                                                       const class GALGAS_string constinArgument2,
-                                                                                                       const class GALGAS_string constinArgument3,
-                                                                                                       const class GALGAS_bool constinArgument4,
-                                                                                                       class Compiler * inCompiler
-                                                                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Routine 'enterBaseOptionalMethodWithArgument&&?optionalMethodName??'
 //
 //--------------------------------------------------------------------------------------------------
@@ -581,27 +550,41 @@ void routine_enterBaseOptionalMethodWithArgument_26__26__3F_optionalMethodName_3
 
 //--------------------------------------------------------------------------------------------------
 //
+//Routine 'enterModifierWithoutArgument&??compilerArg'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_enterModifierWithoutArgument_26__3F__3F_compilerArg (class GALGAS_setterMap & ioArgument0,
+                                                                  const class GALGAS_string constinArgument1,
+                                                                  const class GALGAS_bool constinArgument2,
+                                                                  class Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'procedureNameForUsefulEntitiesGraph'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_lstring function_procedureNameForUsefulEntitiesGraph (const class GALGAS_lstring & constinArgument0,
+                                                                   class Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'generateFewHeaderFiles'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_bool function_generateFewHeaderFiles (class Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Function 'syntaxDirectedTranslationResultVarName'
 //
 //--------------------------------------------------------------------------------------------------
 
 class GALGAS_string function_syntaxDirectedTranslationResultVarName (class Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'recursivelyEnumerateDirectories????!!&&'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_recursivelyEnumerateDirectories_3F__3F__3F__3F__21__21__26__26_ (const class GALGAS_string constinArgument0,
-                                                                              const class GALGAS_string constinArgument1,
-                                                                              const class GALGAS_wrapperExtensionMap constinArgument2,
-                                                                              const class GALGAS_wrapperExtensionMap constinArgument3,
-                                                                              class GALGAS_wrapperFileMap & outArgument4,
-                                                                              class GALGAS_wrapperDirectoryMap & outArgument5,
-                                                                              class GALGAS_uint & ioArgument6,
-                                                                              class GALGAS_uint & ioArgument7,
-                                                                              class Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) ;
 

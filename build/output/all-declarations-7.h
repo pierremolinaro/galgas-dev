@@ -5594,6 +5594,42 @@ void extensionSetter_combineManagerWith (class GALGAS_currentVarManager & ioObje
 
 //--------------------------------------------------------------------------------------------------
 //
+// Phase 2: @typeKindEnum enum, associated values
+//
+//--------------------------------------------------------------------------------------------------
+
+class cEnumAssociatedValues_typeKindEnum_classType : public cEnumAssociatedValues {
+  public: const GALGAS_bool mAssociatedValue0 ;
+
+//--- Constructor
+  public: cEnumAssociatedValues_typeKindEnum_classType (const GALGAS_bool inAssociatedValue0
+                                                        COMMA_LOCATION_ARGS) ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const ;
+  public: virtual typeComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
+
+  public: virtual ~ cEnumAssociatedValues_typeKindEnum_classType (void) {}
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class cEnumAssociatedValues_typeKindEnum_weakReferenceType : public cEnumAssociatedValues {
+  public: const GALGAS_unifiedTypeMapEntry mAssociatedValue0 ;
+
+//--- Constructor
+  public: cEnumAssociatedValues_typeKindEnum_weakReferenceType (const GALGAS_unifiedTypeMapEntry inAssociatedValue0
+                                                                COMMA_LOCATION_ARGS) ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const ;
+  public: virtual typeComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
+
+  public: virtual ~ cEnumAssociatedValues_typeKindEnum_weakReferenceType (void) {}
+} ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Extension getter '@typeKindEnum string' (as function)
 //
 //--------------------------------------------------------------------------------------------------
