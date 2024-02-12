@@ -72,14 +72,13 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·······························································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
-                     ?!@stringset ioUserImplicitDeclaredTypeSet {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $abstract$
     $proc$
     $@type$ ?let @lstring className indexing typeReferenceAbstractExtensionMethod
     $.$
     $identifier$ ?let @lstring mMethodName indexing abstractExtensionMethodDefinition
-    <formal_parameter_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @formalParameterListAST formalParameterList
+    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
     ioDeclarations.mDeclarationList += !@abstractExtensionMethodAST.new {
       !isPredefined: false # Is not predefined
       !className
@@ -91,12 +90,11 @@ syntax extension galgas4DeclarationsSyntax {
   #·······························································································
 
   rule <method_declaration> ?let @lstring inClassName
-                            ?!@galgasDeclarationAST ioDeclarations
-                            ?!@stringset ioUserImplicitDeclaredTypeSet {
+                            ?!@galgasDeclarationAST ioDeclarations {
     $abstract$
     $proc$
     $identifier$ ?let @lstring mMethodName indexing abstractExtensionMethodDefinition
-    <formal_parameter_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @formalParameterListAST formalParameterList
+    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
     ioDeclarations.mDeclarationList += !@abstractExtensionMethodAST.new {
       !isPredefined: false # Is not predefined
       !inClassName

@@ -58,7 +58,6 @@ syntax extension galgas4InstructionsSyntax {
   #·······························································································
 
   rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations
-                              ?!@stringset unused ioUserImplicitDeclaredTypeSet
                               !@semanticInstructionAST outInstruction {
     let instructionLocation = @location.here
     $@type$ ?let @lstring mTypeName indexing typeReferenceInTypeMethod

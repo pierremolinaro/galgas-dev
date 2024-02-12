@@ -79,7 +79,6 @@ syntax extension galgas4SyntaxComponentSyntax {
   #·······························································································
 
   rule <syntax_instruction> ?!@galgasDeclarationAST unused ioDeclarations
-                            ?!@stringset unused ioUserImplicitDeclaredTypeSet
                             !@syntaxInstructionAST outInstruction {
     $\$terminal\$$ ?let @lstring terminalName indexing terminalReference
     <actual_input_parameter_list> ?let actualInputParameterList

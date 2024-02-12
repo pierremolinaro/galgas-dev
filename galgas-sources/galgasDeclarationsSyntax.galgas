@@ -249,7 +249,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
   rule <start_symbol> ?!@galgasDeclarationAST ioDeclarations {
     repeat
     while
-      <declaration> !?ioDeclarations !?*
+      <declaration> !?ioDeclarations
     end
   }
 
@@ -258,11 +258,9 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
   #·······························································································
 
   rule <formal_parameter_list> ?!@galgasDeclarationAST ioDeclarations
-                               ?!@stringset ioUserImplicitDeclaredTypeSet
                                !@formalParameterListAST outFormalParameterList
 
   rule <semantic_instruction_list> ?!@galgasDeclarationAST ioDeclarations
-                                   ?!@stringset ioUserImplicitDeclaredTypeSet
                                    !@semanticInstructionListAST outInstructionsList
 
   rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputParameterList
@@ -270,7 +268,6 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
   rule <expression> !@semanticExpressionAST outExpression
 
   rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
-                         ?!@stringset ioUserImplicitDeclaredTypeSet
                          !@lstring outTypeName
 
   #·······························································································
@@ -278,7 +275,6 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
   #·······························································································
 
   rule <property_declaration> ?!@galgasDeclarationAST ioDeclarations
-                              ?!@stringset ioUserImplicitDeclaredTypeSet
                               ?!@propertyInCollectionListAST ioAttributeInCollectionList {
     <acces_control> ?let accessControl
     let @bool isConstant
@@ -290,7 +286,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
       [accessControl checkCompatibilityWithLet !.here]
       isConstant = true
     end
-    <type_definition> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let propertyTypeName
+    <type_definition> !?ioDeclarations ?let propertyTypeName
     $identifier$ ?let propertyName
     var selectorAttribute = false
     repeat
@@ -319,15 +315,14 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
   #! Filewrapper Declaration
   #·······························································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
-                     ?!@stringset ioUserImplicitDeclaredTypeSet {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $filewrapper$
     $identifier$ ?let @lstring mFilewrapperName indexing filewrapperDefinition
     $in$
     $"string"$ ?let @lstring mFilewrapperPath
     <filewrapper_text_files> ?let filewrapperTextFileExtensionList
     <filewrapper_binary_files> ?let filewrapperBinaryFileExtensionList
-    <filewrapper_templates> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let filewrapperTemplateList
+    <filewrapper_templates> !?ioDeclarations ?let filewrapperTemplateList
     ioDeclarations.mDeclarationList += !@filewrapperDeclarationAST.new {
       !isPredefined: false # Is not predefined
       !false # private
@@ -341,8 +336,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
   }
   #·······························································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
-                     ?!@stringset ioUserImplicitDeclaredTypeSet {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $private$
     $filewrapper$
     $identifier$ ?let @lstring mFilewrapperName indexing filewrapperDefinition
@@ -350,7 +344,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
     $"string"$ ?let @lstring mFilewrapperPath
     <filewrapper_text_files> ?let filewrapperTextFileExtensionList
     <filewrapper_binary_files> ?let filewrapperBinaryFileExtensionList
-    <filewrapper_templates> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let filewrapperTemplateList
+    <filewrapper_templates> !?ioDeclarations ?let filewrapperTemplateList
     ioDeclarations.mDeclarationList += !@filewrapperDeclarationAST.new {
       !isPredefined: false # Is not predefined
       !true # private
@@ -400,7 +394,6 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
   #·······························································································
 
   rule <filewrapper_templates> ?!@galgasDeclarationAST ioDeclarations
-                               ?!@stringset ioUserImplicitDeclaredTypeSet
                                !@filewrapperTemplateListAST outFilewrapperTemplateList {
     ${$
     outFilewrapperTemplateList = {}
@@ -424,7 +417,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
               error selector.location : "check no useless selector: this selector should be removed"
             end
           end
-          <type_definition> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let typeName
+          <type_definition> !?ioDeclarations ?let typeName
           let @bool isUnused
           select
             isUnused = false

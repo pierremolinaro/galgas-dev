@@ -252,8 +252,7 @@ syntax galgas4GuiComponentSyntax (galgasScanner4) {
 
   #·······························································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
-                     ?!@stringset unused ioUserImplicitDeclaredTypeSet {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $gui$
     $identifier$ ?let @lstring mGUIName
     ${$

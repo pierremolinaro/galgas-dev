@@ -98,8 +98,7 @@ syntax extension galgas4InstructionsSyntax {
   #    R O U T I N E    D E C L A R A T I O N
   #·······························································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
-                     ?!@stringset ioUserImplicitDeclaredTypeSet {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $proc$
     var isUsefull = false
     repeat
@@ -111,9 +110,9 @@ syntax extension galgas4InstructionsSyntax {
       isUsefull = true
     end
     $identifier$ ?let mRoutineName indexing routineDefinition
-    <formal_parameter_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @formalParameterListAST mFormalParameterList
+    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST mFormalParameterList
     ${$
-    <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @semanticInstructionListAST mRoutineInstructionList
+    <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST mRoutineInstructionList
     $}$
     let endOfInstructionList = @location.here
     ioDeclarations.mDeclarationList += !@procDeclarationAST.new {
@@ -129,8 +128,7 @@ syntax extension galgas4InstructionsSyntax {
 
   #·······························································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
-                     ?!@stringset ioUserImplicitDeclaredTypeSet {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $private$
     $proc$
     var isUsefull = false
@@ -143,9 +141,9 @@ syntax extension galgas4InstructionsSyntax {
       isUsefull = true
     end
     $identifier$ ?let mRoutineName indexing routineDefinition
-    <formal_parameter_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @formalParameterListAST mFormalParameterList
+    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST mFormalParameterList
     ${$
-    <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @semanticInstructionListAST mRoutineInstructionList
+    <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST mRoutineInstructionList
     $}$
     let endOfInstructionList = @location.here
     ioDeclarations.mDeclarationList += !@procDeclarationAST.new {

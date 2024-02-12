@@ -74,18 +74,17 @@ syntax extension galgas4InstructionsSyntax {
   #·······························································································
 
   rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
-                              ?!@stringset ioUserImplicitDeclaredTypeSet
                               !@semanticInstructionAST outInstruction {
     $loop$
     let instructionLocation = @location.here
-    <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @semanticInstructionListAST firstInstructions
+    <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST firstInstructions
   #---
     let endOfFirstInstructions = @location.here
     $while$
     <expression> ?let @semanticExpressionAST loopExpression
     let endOfLoopExpression = @location.here
     $do$
-    <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @semanticInstructionListAST secondInstructions
+    <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST secondInstructions
     let endOfSecondInstructions = @location.here
     $end$
     let endOfLoopInstruction = @location.here

@@ -88,15 +88,14 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·······························································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
-                     ?!@stringset ioUserImplicitDeclaredTypeSet {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $proc$
     $@type$ ?let @lstring className indexing typeReferenceExtensionMethod
     $.$
     $identifier$ ?let @lstring mMethodName indexing extensionMethodDefinition
-    <formal_parameter_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @formalParameterListAST formalParameterList
+    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
     ${$
-    <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @semanticInstructionListAST routineInstructionList
+    <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
     let endOfMethodLocation = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@extensionMethodAST.new {
@@ -113,13 +112,12 @@ syntax extension galgas4DeclarationsSyntax {
   #·······························································································
 
   rule <method_declaration> ?let @lstring inClassName
-                            ?!@galgasDeclarationAST ioDeclarations
-                            ?!@stringset ioUserImplicitDeclaredTypeSet {
+                            ?!@galgasDeclarationAST ioDeclarations {
     $proc$
     $identifier$ ?let @lstring mMethodName indexing extensionMethodDefinition
-    <formal_parameter_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @formalParameterListAST formalParameterList
+    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
     ${$
-    <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @semanticInstructionListAST routineInstructionList
+    <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
     let endOfMethodLocation = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@extensionMethodAST.new {

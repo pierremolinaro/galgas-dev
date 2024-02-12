@@ -190,8 +190,7 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
   #   G R A M M A R    C O M P O N E N T
   #·······························································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
-                     ?!@stringset unused ioUserImplicitDeclaredTypeSet {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     let @lbool hasIndexing
     select
       hasIndexing = @lbool.new {!false !@location.here}

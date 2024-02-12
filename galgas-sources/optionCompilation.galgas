@@ -114,8 +114,7 @@ syntax galgas4OptionComponentSyntax (galgasScanner4) {
 
   #·······························································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
-                     ?!@stringset unused ioUserImplicitDeclaredTypeSet {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $option$
     $identifier$ ?let @lstring optionComponentName
     ${$

@@ -111,8 +111,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·······························································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
-                     ?!@stringset ioUserImplicitDeclaredTypeSet {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $override$
     $func$
     $@type$ ?let @lstring className indexing typeReferenceOverrideExtensionGetter
@@ -120,7 +119,7 @@ syntax extension galgas4DeclarationsSyntax {
     $identifier$ ?let @lstring mMethodName indexing overrideExtensionGetterDefinition
     <formal_input_parameter_list> ?let formalInputParameterList
     $->$
-    <type_definition> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let returnedTypeName
+    <type_definition> !?ioDeclarations ?let returnedTypeName
     let @lstring resultVariableName
     select
       $identifier$ ?resultVariableName
@@ -128,7 +127,7 @@ syntax extension galgas4DeclarationsSyntax {
       resultVariableName = .new {!"result" !.here}
     end
     ${$
-    <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @semanticInstructionListAST routineInstructionList
+    <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
     let @location endOfInstructionList = .here
     $}$
     ioDeclarations.mDeclarationList += !@overridingExtensionGetterAST.new {
@@ -147,14 +146,13 @@ syntax extension galgas4DeclarationsSyntax {
   #·······························································································
 
   rule <method_declaration> ?let @lstring inClassName
-                            ?!@galgasDeclarationAST ioDeclarations
-                            ?!@stringset ioUserImplicitDeclaredTypeSet {
+                            ?!@galgasDeclarationAST ioDeclarations {
     $override$
     $func$
     $identifier$ ?let @lstring mMethodName indexing overrideExtensionGetterDefinition
     <formal_input_parameter_list> ?let formalInputParameterList
     $->$
-    <type_definition> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let returnedTypeName
+    <type_definition> !?ioDeclarations ?let returnedTypeName
     let @lstring resultVariableName
     select
       $identifier$ ?resultVariableName
@@ -162,7 +160,7 @@ syntax extension galgas4DeclarationsSyntax {
       resultVariableName = .new {!"result" !.here}
     end
     ${$
-    <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @semanticInstructionListAST routineInstructionList
+    <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
     let @location endOfInstructionList = .here
     $}$
     ioDeclarations.mDeclarationList += !@overridingExtensionGetterAST.new {

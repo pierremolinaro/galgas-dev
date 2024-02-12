@@ -62,8 +62,7 @@ syntax extension galgas4InstructionsSyntax {
   #    E X T E R N    R O U T I N E    D E C L A R A T I O N
   #·······························································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
-                     ?!@stringset ioUserImplicitDeclaredTypeSet {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $extern$
     $proc$
     var isUsefull = false
@@ -76,7 +75,7 @@ syntax extension galgas4InstructionsSyntax {
       isUsefull = true
     end
     $identifier$ ?let @lstring mActionName indexing routineDefinition
-    <formal_parameter_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @formalParameterListAST mFormalParameterList
+    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST mFormalParameterList
     ioDeclarations.mDeclarationList += !@externProcedureDeclarationAST.new {
       !isPredefined: false # Is not predefined
       !isFilePrivate: false # Is not internal

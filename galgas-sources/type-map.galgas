@@ -168,8 +168,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·······························································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
-                     ?!@stringset ioUserImplicitDeclaredTypeSet {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $map$
   #--- Map type name
     $@type$ ?let @lstring mMapTypeName indexing mapDefinition, structDefinition "-element"
@@ -182,7 +181,7 @@ syntax extension galgas4DeclarationsSyntax {
     var @insertOrReplaceDeclarationListAST insertOrReplaceDeclarationListAST = {}
     repeat
     while
-      <property_declaration> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet !? propertyList
+      <property_declaration> !?ioDeclarations !? propertyList
     while
       <map_insert_setter_declaration> !? mInsertMethodList
     while
@@ -192,7 +191,7 @@ syntax extension galgas4DeclarationsSyntax {
     while
       <insert_or_replace_declaration> !?insertOrReplaceDeclarationListAST
     while
-      <method_declaration> !mMapTypeName !?ioDeclarations !?ioUserImplicitDeclaredTypeSet
+      <method_declaration> !mMapTypeName !?ioDeclarations
     end
     $}$
     ioDeclarations.mDeclarationList += !@mapDeclarationAST.new {

@@ -451,8 +451,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
 
   #·······························································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
-                     ?!@stringset unused ioUserImplicitDeclaredTypeSet {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $lexique$
   #--- Lexique Component Name
     $identifier$ ?let @lstring lexiqueComponentName

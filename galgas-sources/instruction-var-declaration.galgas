@@ -120,7 +120,6 @@ syntax extension galgas4InstructionsSyntax {
   #·······························································································
 
   rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations
-                              ?!@stringset unused ioUserImplicitDeclaredTypeSet
                               !@semanticInstructionAST outInstruction {
     $var$
     $identifier$ ?let variableName
@@ -136,10 +135,9 @@ syntax extension galgas4InstructionsSyntax {
   #·······························································································
 
   rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
-                              ?!@stringset ioUserImplicitDeclaredTypeSet
                               !@semanticInstructionAST outInstruction {
     $var$
-    <type_definition> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let typeName
+    <type_definition> !?ioDeclarations ?let typeName
     $identifier$ ?let variableName
     select
       outInstruction = @localVariableDeclarationNoAssignmentAST.new {!typeName.location !typeName !variableName}

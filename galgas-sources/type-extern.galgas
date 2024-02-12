@@ -200,8 +200,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·······························································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
-                     ?!@stringset ioUserImplicitDeclaredTypeSet {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $extern$
     $@type$ ?let @lstring externTypeName indexing externTypeDefinition
     <externtype_cpp_predeclaration> ?let cppPredeclarationCode
@@ -213,13 +212,13 @@ syntax extension galgas4DeclarationsSyntax {
     var @externTypeMethodList externTypeMethodList = {}
     repeat
     while
-      <externtype_constructor> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet !?externTypeConstructorList
+      <externtype_constructor> !?ioDeclarations !?externTypeConstructorList
     while
-      <externtype_getter> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet !?externTypeGetterList
+      <externtype_getter> !?ioDeclarations !?externTypeGetterList
     while
-      <externtype_setter> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet !?externTypeSetterList
+      <externtype_setter> !?ioDeclarations !?externTypeSetterList
     while
-      <externtype_method> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet !?externTypeMethodList
+      <externtype_method> !?ioDeclarations !?externTypeMethodList
     end
     $}$
     ioDeclarations.mDeclarationList += !@externTypeDeclarationAST.new {
@@ -263,7 +262,6 @@ syntax extension galgas4DeclarationsSyntax {
   #·······························································································
 
   rule <externtype_constructor> ?!@galgasDeclarationAST ioDeclarations
-                                ?!@stringset ioUserImplicitDeclaredTypeSet
                                 ?!@externTypeConstructorList ioExternTypeConstructorList {
     $init$
     $identifier$ ?let @lstring constructorName
@@ -276,14 +274,13 @@ syntax extension galgas4DeclarationsSyntax {
       argumentTypeList += !selector !argumentTypeName !argumentName
     end
     $->$
-    <type_definition> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let resultTypeName
+    <type_definition> !?ioDeclarations ?let resultTypeName
     ioExternTypeConstructorList += !constructorName !resultTypeName !argumentTypeList
   }
 
   #·······························································································
 
   rule <externtype_getter> ?!@galgasDeclarationAST ioDeclarations
-                           ?!@stringset ioUserImplicitDeclaredTypeSet
                            ?!@externTypeGetterList ioExternTypeGetterList {
     $func$
     $identifier$ ?let @lstring getterName
@@ -296,30 +293,28 @@ syntax extension galgas4DeclarationsSyntax {
       argumentTypeList += !selector !argumentTypeName !argumentName
     end
     $->$
-    <type_definition> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let resultTypeName
+    <type_definition> !?ioDeclarations ?let resultTypeName
     ioExternTypeGetterList += !getterName !resultTypeName !argumentTypeList
   }
 
   #·······························································································
 
   rule <externtype_setter> ?!@galgasDeclarationAST ioDeclarations
-                           ?!@stringset ioUserImplicitDeclaredTypeSet
                            ?!@externTypeSetterList ioExternTypeSetterList {
     $mutating$
     $proc$
     $identifier$ ?let @lstring setterName
-    <formal_parameter_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @formalParameterListAST formalParameterList
+    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
     ioExternTypeSetterList += !setterName !formalParameterList
   }
 
   #·······························································································
 
   rule <externtype_method> ?!@galgasDeclarationAST ioDeclarations
-                           ?!@stringset ioUserImplicitDeclaredTypeSet
                            ?!@externTypeMethodList ioExternTypeMethodList {
     $proc$
     $identifier$ ?let @lstring methodName
-    <formal_parameter_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @formalParameterListAST formalParameterList
+    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
     ioExternTypeMethodList += !methodName !formalParameterList !.here
   }
 

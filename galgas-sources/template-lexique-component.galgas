@@ -128,8 +128,7 @@ syntax extension galgas4LexiqueComponentSyntax {
 
   #·······························································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
-                     ?!@stringset unused ioUserImplicitDeclaredTypeSet {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $template$
     $lexique$
   #--- Lexique Component Name

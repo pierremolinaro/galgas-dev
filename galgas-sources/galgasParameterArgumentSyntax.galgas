@@ -298,7 +298,6 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
   rule <expression> !@semanticExpressionAST outExpressionAST
 
   rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
-                         ?!@stringset ioUserImplicitDeclaredTypeSet
                          !@lstring outTypeName
 
   #·······························································································
@@ -306,7 +305,6 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
   #·······························································································
 
   rule <formal_parameter_list> ?!@galgasDeclarationAST ioDeclarations
-                               ?!@stringset ioUserImplicitDeclaredTypeSet
                                !@formalParameterListAST outFormalParameterList {
     outFormalParameterList = {}
     $($
@@ -342,7 +340,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
           $!$ ?selector
           mFormalParameterPassingMode = @formalArgumentPassingModeAST.argumentOut
         end
-        <type_definition> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let formalParameterTypeName
+        <type_definition> !?ioDeclarations ?let formalParameterTypeName
         let @bool mIsUnused
         select
           mIsUnused = false

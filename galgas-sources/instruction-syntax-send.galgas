@@ -42,7 +42,6 @@ syntax extension galgas4SyntaxComponentSyntax {
   #·······························································································
 
   rule <syntax_instruction> ?!@galgasDeclarationAST unused ioDeclarations
-                            ?!@stringset unused ioUserImplicitDeclaredTypeSet
                             !@syntaxInstructionAST outInstruction {
     $send$
     let instructionLocation = @location.here

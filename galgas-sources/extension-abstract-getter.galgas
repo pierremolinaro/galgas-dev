@@ -89,8 +89,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·······························································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
-                     ?!@stringset ioUserImplicitDeclaredTypeSet {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $abstract$
     $func$
     $@type$ ?let className indexing typeReferenceAbstractExtensionGetter
@@ -98,7 +97,7 @@ syntax extension galgas4DeclarationsSyntax {
     $identifier$ ?let mGetterName indexing abstractExtensionGetterDefinition
     <formal_input_parameter_list> ?let @formalInputParameterListAST mFormalInputParameterList
     $->$
-    <type_definition> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let returnedTypeName
+    <type_definition> !?ioDeclarations ?let returnedTypeName
     select
     or
       $identifier$ ? let idf
@@ -116,14 +115,13 @@ syntax extension galgas4DeclarationsSyntax {
   #·······························································································
 
   rule <method_declaration> ?let @lstring inClassName
-                            ?!@galgasDeclarationAST ioDeclarations
-                            ?!@stringset ioUserImplicitDeclaredTypeSet {
+                            ?!@galgasDeclarationAST ioDeclarations {
     $abstract$
     $func$
     $identifier$ ?let mGetterName indexing abstractExtensionGetterDefinition
     <formal_input_parameter_list> ?let @formalInputParameterListAST mFormalInputParameterList
     $->$
-    <type_definition> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let returnedTypeName
+    <type_definition> !?ioDeclarations ?let returnedTypeName
     select
     or
       $identifier$ ? let idf

@@ -108,8 +108,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·······························································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
-                     ?!@stringset ioUserImplicitDeclaredTypeSet {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     let @bool isAbstract
     select
       isAbstract = false
@@ -138,9 +137,9 @@ syntax extension galgas4DeclarationsSyntax {
     var @propertyInCollectionListAST propertyList = {}
     repeat
     while
-      <property_declaration> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet !? propertyList
+      <property_declaration> !?ioDeclarations !? propertyList
     while
-      <method_declaration> !className !?ioDeclarations !?ioUserImplicitDeclaredTypeSet
+      <method_declaration> !className !?ioDeclarations
     end
     $}$
     ioDeclarations.mDeclarationList += !@classDeclarationAST.new {

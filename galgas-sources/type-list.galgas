@@ -75,8 +75,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·······························································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
-                     ?!@stringset ioUserImplicitDeclaredTypeSet {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $list$
     $@type$ ?let @lstring listTypeName indexing listDefinition, structDefinition "-element"
     var isUsefull = false
@@ -92,9 +91,9 @@ syntax extension galgas4DeclarationsSyntax {
     var @propertyInCollectionListAST propertyList = {}
     repeat
     while
-      <property_declaration> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet !?propertyList
+      <property_declaration> !?ioDeclarations !?propertyList
     while
-      <method_declaration> !listTypeName !?ioDeclarations !?ioUserImplicitDeclaredTypeSet
+      <method_declaration> !listTypeName !?ioDeclarations
     end
     $}$
     ioDeclarations.mDeclarationList += !@listDeclarationAST.new {

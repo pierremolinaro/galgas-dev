@@ -84,8 +84,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·······························································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
-                     ?!@stringset ioUserImplicitDeclaredTypeSet {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $enum$
     $@type$ ?let mEnumTypeName indexing enumDefinition
     ${$
@@ -110,7 +109,7 @@ syntax extension galgas4DeclarationsSyntax {
     end
     repeat
     while
-      <method_declaration> !mEnumTypeName !?ioDeclarations !?ioUserImplicitDeclaredTypeSet
+      <method_declaration> !mEnumTypeName !?ioDeclarations
     end
     $}$
     ioDeclarations.mDeclarationList += !@enumDeclarationAST.new {

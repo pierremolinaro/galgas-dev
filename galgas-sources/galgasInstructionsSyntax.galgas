@@ -306,13 +306,11 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
   rule <if_expression> !@ifExpressionList outExpressionList
 
   rule <formal_parameter_list> ?!@galgasDeclarationAST ioDeclarations
-                               ?!@stringset ioUserImplicitDeclaredTypeSet
                                !@formalParameterListAST outFormalParameterList
 
   rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputParameterList
 
   rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
-                         ?!@stringset unused ioUserImplicitDeclaredTypeSet
                          !@lstring outTypeName
 
   #·······························································································
@@ -320,13 +318,12 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
   #·······························································································
 
   rule <semantic_instruction_list> ?!@galgasDeclarationAST ioDeclarations
-                                   ?!@stringset ioUserImplicitDeclaredTypeSet
                                    !@semanticInstructionListAST outInstructionsList {
     outInstructionsList = @semanticInstructionListAST {}
     select
     or
       repeat
-        <semantic_instruction> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @semanticInstructionAST instruction
+        <semantic_instruction> !?ioDeclarations ?let @semanticInstructionAST instruction
         outInstructionsList += !instruction
       while
         select
@@ -345,8 +342,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
   #    F U N C T I O N    D E C L A R A T I O N
   #·······························································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
-                     ?!@stringset ioUserImplicitDeclaredTypeSet {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $func$
     var isOnce = false
     var isUsefull = false
@@ -370,7 +366,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
       error functionName: "an 'once' function should has no argument"
     end
     $->$
-    <type_definition> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let resultTypeName
+    <type_definition> !?ioDeclarations ?let resultTypeName
     let @lstring resultVariableName
     select
       $identifier$ ?resultVariableName
@@ -378,7 +374,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
       resultVariableName = .new {!"result" !.here}
     end
     ${$
-    <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @semanticInstructionListAST functionInstructionList
+    <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST functionInstructionList
     $}$
     let endOfFunctionInstructionList = @location.here
     if isOnce then
@@ -409,8 +405,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
 
   #·······························································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
-                     ?!@stringset ioUserImplicitDeclaredTypeSet {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $private$
     $func$
     var isOnce = false
@@ -435,7 +430,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
       error functionName: "an 'once' function should has no argument"
     end
     $->$
-    <type_definition> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let resultTypeName
+    <type_definition> !?ioDeclarations ?let resultTypeName
     let @lstring resultVariableName
     select
       $identifier$ ?resultVariableName
@@ -443,7 +438,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
       resultVariableName = .new {!"result" !.here}
     end
     ${$
-    <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @semanticInstructionListAST functionInstructionList
+    <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST functionInstructionList
     $}$
     let endOfFunctionInstructionList = @location.here
     if isOnce then
@@ -476,8 +471,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
   #    E X T E R N    F U N C T I O N    D E C L A R A T I O N
   #·······························································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
-                     ?!@stringset ioUserImplicitDeclaredTypeSet {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $extern$
     $func$
     var isUsefull = false
@@ -492,7 +486,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
     $identifier$ ?let mActionName indexing functionDefinition
     <formal_input_parameter_list> ?let @formalInputParameterListAST formalInputParameterList
     $->$
-    <type_definition> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let resultTypeName
+    <type_definition> !?ioDeclarations ?let resultTypeName
     ioDeclarations.mDeclarationList += !@externFunctionDeclarationAST.new {
       !isPredefined: false # Is not predefined
       !mActionName

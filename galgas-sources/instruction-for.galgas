@@ -411,7 +411,6 @@ syntax extension galgas4InstructionsSyntax {
   #·······························································································
 
   rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
-                              ?!@stringset ioUserImplicitDeclaredTypeSet
                               !@semanticInstructionAST outInstruction {
     $for$
     let instructionLocation = @location.here
@@ -442,7 +441,7 @@ syntax extension galgas4InstructionsSyntax {
       mBeforeInstructionList = @semanticInstructionListAST {}
     or
       $before$
-      <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ? mBeforeInstructionList
+      <semantic_instruction_list> !?ioDeclarations ? mBeforeInstructionList
     end
     let endof_before_branch = @location.here
     $do$
@@ -454,14 +453,14 @@ syntax extension galgas4InstructionsSyntax {
       $identifier$ ? indexVariableName
       $)$
     end
-    <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let mDoInstructionList
+    <semantic_instruction_list> !?ioDeclarations ?let mDoInstructionList
     let endof_do_branch = @location.here
     let @semanticInstructionListAST mBetweenInstructionList
     select
       mBetweenInstructionList = @semanticInstructionListAST {}
     or
       $between$
-      <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ? mBetweenInstructionList
+      <semantic_instruction_list> !?ioDeclarations ? mBetweenInstructionList
     end
     let endof_between_branch = @location.here
     let @semanticInstructionListAST mAfterInstructionList
@@ -469,7 +468,7 @@ syntax extension galgas4InstructionsSyntax {
       mAfterInstructionList = @semanticInstructionListAST {}
     or
       $after$
-      <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ? mAfterInstructionList
+      <semantic_instruction_list> !?ioDeclarations ? mAfterInstructionList
     end
     let endof_after_branch = @location.here
     $end$

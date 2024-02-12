@@ -166,7 +166,6 @@ syntax extension galgas4InstructionsSyntax {
   #·······························································································
 
   rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations
-                              ?!@stringset unused ioUserImplicitDeclaredTypeSet
                               !@semanticInstructionAST outInstruction {
     $error$
     let instructionLocation = @location.here

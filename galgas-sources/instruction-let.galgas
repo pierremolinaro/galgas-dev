@@ -99,10 +99,9 @@ syntax extension galgas4InstructionsSyntax {
   #·······························································································
 
   rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
-                              ?!@stringset ioUserImplicitDeclaredTypeSet
                               !@semanticInstructionAST outInstruction {
     $let$
-    <type_definition> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let typeName
+    <type_definition> !?ioDeclarations ?let typeName
 #    $@type$ ?let typeName
     $identifier$ ?let constantName
     select
@@ -127,7 +126,6 @@ syntax extension galgas4InstructionsSyntax {
   #·······························································································
 
   rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations
-                              ?!@stringset unused ioUserImplicitDeclaredTypeSet
                               !@semanticInstructionAST outInstruction {
     $let$
     $identifier$ ?let variableName

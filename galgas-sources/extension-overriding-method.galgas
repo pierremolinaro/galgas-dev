@@ -76,16 +76,15 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·······························································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
-                     ?!@stringset ioUserImplicitDeclaredTypeSet {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $override$
     $proc$
     $@type$ ?let @lstring className indexing typeReferenceOverrideExtensionMethodDefinition
     $.$
     $identifier$ ?let @lstring mMethodName indexing overrideExtensionMethodDefinition
-    <formal_parameter_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @formalParameterListAST formalParameterList
+    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
     ${$
-    <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @semanticInstructionListAST routineInstructionList
+    <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
     let @location endOfMethodLocation = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@overridingExtensionMethodAST.new {
@@ -102,14 +101,13 @@ syntax extension galgas4DeclarationsSyntax {
   #·······························································································
 
   rule <method_declaration> ?let @lstring inClassName
-                            ?!@galgasDeclarationAST ioDeclarations
-                            ?!@stringset ioUserImplicitDeclaredTypeSet {
+                            ?!@galgasDeclarationAST ioDeclarations {
     $override$
     $proc$
     $identifier$ ?let @lstring mMethodName indexing overrideExtensionMethodDefinition
-    <formal_parameter_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @formalParameterListAST formalParameterList
+    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
     ${$
-    <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @semanticInstructionListAST routineInstructionList
+    <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
     let @location endOfMethodLocation = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@overridingExtensionMethodAST.new {

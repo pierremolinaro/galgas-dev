@@ -139,7 +139,6 @@ syntax extension galgas4InstructionsSyntax {
   #·······························································································
 
   rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
-                              ?!@stringset ioUserImplicitDeclaredTypeSet
                               !@semanticInstructionAST outInstruction {
     $switch$
     let instructionLocation = @location.here
@@ -152,7 +151,7 @@ syntax extension galgas4InstructionsSyntax {
         ?let @lstringlist constantNameList
         ?let @switchExtractedValuesListAST associatedValuesExtraction
       $:$
-      <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let instructions
+      <semantic_instruction_list> !?ioDeclarations ?let instructions
       switchBranches += !constantNameList !associatedValuesExtraction !instructions !@location.here
     while
     end

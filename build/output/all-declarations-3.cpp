@@ -5621,15 +5621,15 @@ mProperty_mProjectIndexingDescriptorList (inOperand8) {
 
 GALGAS_guiAnalysisContext GALGAS_guiAnalysisContext::class_func_new (Compiler * /* inCompiler */
                                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  const GALGAS_stringlist in_mImportedOptionComponentList = GALGAS_stringlist::class_func_emptyList (SOURCE_FILE ("guiCompilation.galgas", 390)) ;
-  const GALGAS_guiCommandLineOptionList in_mBoolOptionList = GALGAS_guiCommandLineOptionList::class_func_emptyList (SOURCE_FILE ("guiCompilation.galgas", 391)) ;
-  const GALGAS_guiCommandLineOptionList in_mUIntOptionList = GALGAS_guiCommandLineOptionList::class_func_emptyList (SOURCE_FILE ("guiCompilation.galgas", 392)) ;
-  const GALGAS_guiCommandLineOptionList in_mStringOptionList = GALGAS_guiCommandLineOptionList::class_func_emptyList (SOURCE_FILE ("guiCompilation.galgas", 393)) ;
-  const GALGAS_stringlist in_mNibAndClassList = GALGAS_stringlist::class_func_emptyList (SOURCE_FILE ("guiCompilation.galgas", 394)) ;
-  const GALGAS_extensionMap in_mExtensionMap = GALGAS_extensionMap::class_func_emptyMap (SOURCE_FILE ("guiCompilation.galgas", 395)) ;
-  const GALGAS_importedLexiqueList in_mWithLexiqueList = GALGAS_importedLexiqueList::class_func_emptyList (SOURCE_FILE ("guiCompilation.galgas", 396)) ;
+  const GALGAS_stringlist in_mImportedOptionComponentList = GALGAS_stringlist::class_func_emptyList (SOURCE_FILE ("guiCompilation.galgas", 389)) ;
+  const GALGAS_guiCommandLineOptionList in_mBoolOptionList = GALGAS_guiCommandLineOptionList::class_func_emptyList (SOURCE_FILE ("guiCompilation.galgas", 390)) ;
+  const GALGAS_guiCommandLineOptionList in_mUIntOptionList = GALGAS_guiCommandLineOptionList::class_func_emptyList (SOURCE_FILE ("guiCompilation.galgas", 391)) ;
+  const GALGAS_guiCommandLineOptionList in_mStringOptionList = GALGAS_guiCommandLineOptionList::class_func_emptyList (SOURCE_FILE ("guiCompilation.galgas", 392)) ;
+  const GALGAS_stringlist in_mNibAndClassList = GALGAS_stringlist::class_func_emptyList (SOURCE_FILE ("guiCompilation.galgas", 393)) ;
+  const GALGAS_extensionMap in_mExtensionMap = GALGAS_extensionMap::class_func_emptyMap (SOURCE_FILE ("guiCompilation.galgas", 394)) ;
+  const GALGAS_importedLexiqueList in_mWithLexiqueList = GALGAS_importedLexiqueList::class_func_emptyList (SOURCE_FILE ("guiCompilation.galgas", 395)) ;
   const GALGAS_string in_mBuildRunOption = GALGAS_string::makeEmptyString () ;
-  const GALGAS_projectIndexingDescriptorList in_mProjectIndexingDescriptorList = GALGAS_projectIndexingDescriptorList::class_func_emptyList (SOURCE_FILE ("guiCompilation.galgas", 398)) ;
+  const GALGAS_projectIndexingDescriptorList in_mProjectIndexingDescriptorList = GALGAS_projectIndexingDescriptorList::class_func_emptyList (SOURCE_FILE ("guiCompilation.galgas", 397)) ;
   GALGAS_guiAnalysisContext result ;
   if (in_mImportedOptionComponentList.isValid () && in_mBoolOptionList.isValid () && in_mUIntOptionList.isValid () && in_mStringOptionList.isValid () && in_mNibAndClassList.isValid () && in_mExtensionMap.isValid () && in_mWithLexiqueList.isValid () && in_mBuildRunOption.isValid () && in_mProjectIndexingDescriptorList.isValid ()) {
     result = GALGAS_guiAnalysisContext (in_mImportedOptionComponentList, in_mBoolOptionList, in_mUIntOptionList, in_mStringOptionList, in_mNibAndClassList, in_mExtensionMap, in_mWithLexiqueList, in_mBuildRunOption, in_mProjectIndexingDescriptorList) ;
