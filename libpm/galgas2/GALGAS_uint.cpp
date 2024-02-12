@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2009, ..., 2018 Pierre Molinaro.
+//  Copyright (C) 2009, ..., 2024 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -369,7 +369,7 @@ GALGAS_uint GALGAS_uint::getter_significantBitCount (UNUSED_LOCATION_ARGS) const
     uint32_t v = mUIntValue ;
     uint32_t idx = 0 ;
     while (v != 0) {
-      idx ++ ;
+      idx += 1 ;
       v >>= 1 ;
     }
     result = GALGAS_uint (idx) ;
@@ -472,8 +472,8 @@ GALGAS_uint GALGAS_uint::add_operation (const GALGAS_uint & inOperand,
                                         COMMA_LOCATION_ARGS) const {
   GALGAS_uint result ;
   if (isValid () && inOperand.isValid ()) {
-    const uint32_t r = mUIntValue + inOperand.mUIntValue ;
-    const bool ovf = r < mUIntValue ;
+    uint32_t r ;
+    const bool ovf = __builtin_add_overflow (mUIntValue, inOperand.mUIntValue, &r) ;
     if (ovf) {
       inCompiler->onTheFlyRunTimeError ("@uint + operation overflow" COMMA_THERE) ;
     }else{
@@ -489,8 +489,8 @@ GALGAS_bool GALGAS_uint::getter_canAdd (const GALGAS_uint & inOperand
                                         COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (isValid () && inOperand.isValid ()) {
-    const uint32_t r = mUIntValue + inOperand.mUIntValue ;
-    const bool ovf = r < mUIntValue ;
+    uint32_t r ;
+    const bool ovf = __builtin_add_overflow (mUIntValue, inOperand.mUIntValue, &r) ;
     result = GALGAS_bool (!ovf) ;
   }
   return result ;
@@ -502,13 +502,10 @@ void GALGAS_uint::plusAssign_operation (const GALGAS_uint inOperand,
                                         Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
-    const uint32_t r = mUIntValue + inOperand.mUIntValue ;
-    const bool ovf = r < mUIntValue ;
+    const bool ovf = __builtin_add_overflow (mUIntValue, inOperand.mUIntValue, &mUIntValue) ;
     if (ovf) {
       inCompiler->onTheFlyRunTimeError ("@uint += operation overflow" COMMA_THERE) ;
       mIsValid = false ;
-    }else{
-      mUIntValue = r ;
     }
   }
 }
@@ -519,12 +516,10 @@ void GALGAS_uint::minusAssign_operation (const GALGAS_uint inOperand,
                                          Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
-    const bool ovf = mUIntValue < inOperand.mUIntValue ;
+    const bool ovf = __builtin_sub_overflow (mUIntValue, inOperand.mUIntValue, &mUIntValue) ;
     if (ovf) {
       inCompiler->onTheFlyRunTimeError ("@uint -= operation overflow" COMMA_THERE) ;
       mIsValid = false ;
-    }else{
-      mUIntValue -= inOperand.mUIntValue ;
     }
   }
 }
@@ -536,13 +531,10 @@ void GALGAS_uint::mulAssign_operation (const GALGAS_uint inOperand,
                                        Compiler * inCompiler
                                        COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
-    const uint32_t r = mUIntValue * inOperand.mUIntValue ;
-    const bool ovf = (inOperand.mUIntValue != 0) && ((r / inOperand.mUIntValue) != mUIntValue) ;
+    const bool ovf = __builtin_mul_overflow (mUIntValue, inOperand.mUIntValue, &mUIntValue) ;
     if (ovf) {
       inCompiler->onTheFlyRunTimeError ("@uint *= operation overflow" COMMA_THERE) ;
       mIsValid = false ;
-    }else{
-      mUIntValue = r ;
     }
   }
 }
@@ -628,8 +620,8 @@ GALGAS_uint GALGAS_uint::multiply_operation (const GALGAS_uint & inOperand,
                                              COMMA_LOCATION_ARGS) const {
   GALGAS_uint result ;
   if (isValid () && inOperand.isValid ()) {
-    const uint32_t r = mUIntValue * inOperand.mUIntValue ;
-    const bool ovf = (inOperand.mUIntValue != 0) && ((r / inOperand.mUIntValue) != mUIntValue) ;
+    uint32_t r ;
+    const bool ovf = __builtin_mul_overflow (mUIntValue, inOperand.mUIntValue, &r) ;
     if (ovf) {
       inCompiler->onTheFlyRunTimeError ("@uint * operation overflow" COMMA_THERE) ;
     }else{
@@ -645,8 +637,8 @@ GALGAS_bool GALGAS_uint::getter_canMultiply (const GALGAS_uint & inOperand
                                              COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (isValid () && inOperand.isValid ()) {
-    const uint32_t r = mUIntValue * inOperand.mUIntValue ;
-    const bool ovf = (inOperand.mUIntValue != 0) && ((r / inOperand.mUIntValue) != mUIntValue) ;
+    uint32_t r ;
+    const bool ovf = __builtin_mul_overflow (mUIntValue, inOperand.mUIntValue, &r) ;
     result = GALGAS_bool (!ovf) ;
   }
   return result ;

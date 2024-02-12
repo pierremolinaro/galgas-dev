@@ -46,6 +46,69 @@ syntax extension galgas3DeclarationsSyntax {
 
   #·······························································································
 
+  rule <type_definition_ggs3> ?!@galgasDeclarationAST ioDeclarations
+#                         ?!@stringset ioUserImplicitDeclaredTypeSet
+                         !@lstring outTypeName {
+    $[$
+    <type_definition_ggs3> !?ioDeclarations ?outTypeName
+    error .here : "Not handled yet"
+    $]$
+  }
+
+  #·······························································································
+
+  rule <type_definition_ggs3> ?!@galgasDeclarationAST ioDeclarations
+#                              ?!@stringset ioUserImplicitDeclaredTypeSet
+                              !@lstring outTypeName {
+    $[$
+    <type_definition_ggs3> !?ioDeclarations ?outTypeName
+    $:$
+    <type_definition_ggs3> !?ioDeclarations ?*
+    error .here : "Not handled yet"
+    $]$
+  }
+
+  #·······························································································
+
+  rule <type_definition_ggs3> ?!@galgasDeclarationAST ioDeclarations
+#                         ?!@stringset ioUserImplicitDeclaredTypeSet
+                         !@lstring outTypeName {
+    <type_definition_ggs3> !?ioDeclarations ?outTypeName
+    select
+    or
+      $<$
+      repeat
+        <type_definition_ggs3> !?ioDeclarations ?let t
+        error t : "not handled yet"
+      while
+        $,$
+      end
+      $>$
+    end
+    $?$ ?let selector
+    error .here : "Not handled yet"
+    if selector.string != "" then
+      error selector : "only '?' is allowed here"
+    end
+  }
+
+  #·······························································································
+
+  rule <type_definition_ggs3> ?!@galgasDeclarationAST ioDeclarations
+#                         ?!@stringset ioUserImplicitDeclaredTypeSet
+                         !@lstring outTypeName {
+    $($
+    repeat
+      <type_definition_ggs3> !?ioDeclarations ?outTypeName
+    while
+      $,$
+    end
+    error .here : "Not handled yet"
+    $)$
+  }
+
+  #·······························································································
+
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
