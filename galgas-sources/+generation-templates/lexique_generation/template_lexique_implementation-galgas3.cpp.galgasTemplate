@@ -46,7 +46,7 @@ mMatchedTemplateDelimiterIndex (-1) {
     before %static const cTemplateDelimiter %!LEXIQUE_IDENTIFIER%_kTemplateDefinitionArray [%![[TEMPLATE_DELIMITOR_LIST count] string]%] = {\n%
     do %  cTemplateDelimiter (kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![mStartString identifierRepresentation]%, %![[mStartString count] string]%, %
       if [mEndString count] == 0 then
-        %nullptr, 0,%
+        %{}, 0,%
       else
         %kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![mEndString identifierRepresentation]%, %![[mEndString count] string]%,%
       end
@@ -99,8 +99,7 @@ bool Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
         && (%!LEXIQUE_IDENTIFIER%_kTemplateDefinitionArray [mMatchedTemplateDelimiterIndex].mEndStringLength > 0)
         && (UNICODE_VALUE (mCurrentChar) != '\0')) {
       const bool foundEndDelimitor = testForInputUTF32String (%!LEXIQUE_IDENTIFIER%_kTemplateDefinitionArray [mMatchedTemplateDelimiterIndex].mEndString,
-                                                              %!LEXIQUE_IDENTIFIER%_kTemplateDefinitionArray [mMatchedTemplateDelimiterIndex].mEndStringLength,
-                                                              true) ;
+                                                               true) ;
       if (foundEndDelimitor) {
         mMatchedTemplateDelimiterIndex = -1 ;
       }
@@ -115,7 +114,6 @@ bool Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
           }else{
             String s ;
             while (notTestForInputUTF32String (%!LEXIQUE_IDENTIFIER%_kTemplateReplacementArray [replacementIndex].mEndString,
-                                               %!LEXIQUE_IDENTIFIER%_kTemplateReplacementArray [replacementIndex].mEndStringLength,
                                                kEndOfSourceLexicalErrorMessage
                                                COMMA_HERE)) {
               s.appendUnicodeChar (previousChar () COMMA_HERE) ;

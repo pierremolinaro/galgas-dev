@@ -75,12 +75,10 @@ class C_lexicalErrorException {
 
 class C_unicode_lexique_table_entry final {
   public: const std::initializer_list <utf32> mEntryString ;
-  public: const int16_t mEntryStringLength ;
   public: const int16_t mTokenCode ;
 
 //--- Constructor
   public: C_unicode_lexique_table_entry (const std::initializer_list <utf32> & inEntryString,
-                                         const int16_t inEntryStringLength,
                                          const int16_t inTokenCode) ;
 //--- Handle copy
   public: C_unicode_lexique_table_entry (const C_unicode_lexique_table_entry & inOperand) ;

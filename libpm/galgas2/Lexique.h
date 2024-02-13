@@ -183,11 +183,9 @@ class Lexique : public Compiler {
   protected: bool testForInputUTF32Char (const utf32 inTestCharacter) ;
 
   protected: bool testForInputUTF32String (const std::initializer_list <utf32> & inTestString,
-                                           const int32_t inStringLength,
                                            const bool inAdvanceOnMatch) ;
 
   protected: bool notTestForInputUTF32String (const std::initializer_list <utf32> & inTestString,
-                                              const int32_t inStringLength,
                                               const char * inEndOfFileErrorMessage
                                               COMMA_LOCATION_ARGS) ;
 

@@ -38,10 +38,8 @@
 //--------------------------------------------------------------------------------------------------
 
 C_unicode_lexique_table_entry::C_unicode_lexique_table_entry (const std::initializer_list <utf32> & inEntryString,
-                                                              const int16_t inEntryStringLength,
                                                               const int16_t inTokenCode) :
 mEntryString (inEntryString),
-mEntryStringLength (inEntryStringLength),
 mTokenCode (inTokenCode) {
 }
 
@@ -49,7 +47,6 @@ mTokenCode (inTokenCode) {
 
 C_unicode_lexique_table_entry::C_unicode_lexique_table_entry (const C_unicode_lexique_table_entry & inOperand) :
 mEntryString (inOperand.mEntryString),
-mEntryStringLength (inOperand.mEntryStringLength),
 mTokenCode (inOperand.mTokenCode) {
 }
 

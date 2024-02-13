@@ -281,11 +281,10 @@ int32_t Lexique::findTemplateDelimiterIndex (const cTemplateDelimiter * inTempla
 
   while ((templateIndex < inTemplateDelimiterArrayLength) && ! found) {
     found = testForInputUTF32String (inTemplateDelimiterArray [templateIndex].mStartString,
-                                     inTemplateDelimiterArray [templateIndex].mStartStringLength,
                                      inTemplateDelimiterArray [templateIndex].mDiscardStartString) ;
-    templateIndex ++ ;
+    templateIndex += 1 ;
   }
-  templateIndex -- ;
+  templateIndex -= 1 ;
   if (! found) {
     templateIndex = -1 ;
   }
@@ -377,7 +376,6 @@ bool Lexique::testForCharWithFunction (bool (*inFunction) (const utf32 inUnicode
 //--------------------------------------------------------------------------------------------------
 
 bool Lexique::testForInputUTF32String (const std::initializer_list <utf32> & inTestCstring,
-                                       const int32_t inStringLength,
                                        const bool inAdvanceOnMatch) {
 //--- Test
   bool ok = true ;
@@ -386,13 +384,9 @@ bool Lexique::testForInputUTF32String (const std::initializer_list <utf32> & inT
     ok = UNICODE_VALUE (sourceText ().readCharOrNul (mCurrentLocation.index () + i COMMA_HERE)) == UNICODE_VALUE (* it) ;
     i += 1 ;
   }
-
-//  bool ok = utf32_strncmp (sourceText ().temporaryUTF32StringAtIndex (mCurrentLocation.index () COMMA_HERE),
-//                           inTestCstring,
-//                           inStringLength) == 0 ;
 //--- Avancer dans la lecture si test ok et fin de source non atteinte
   if (ok && inAdvanceOnMatch) {
-    advance (inStringLength) ;
+    advance (int32_t (inTestCstring.size ())) ;
   }
 //---
   return ok ;
@@ -401,7 +395,6 @@ bool Lexique::testForInputUTF32String (const std::initializer_list <utf32> & inT
 //--------------------------------------------------------------------------------------------------
 
 bool Lexique::notTestForInputUTF32String (const std::initializer_list <utf32> & inTestCstring,
-                                          const int32_t inStringLength,
                                           const char * inEndOfFileErrorMessage
                                           COMMA_LOCATION_ARGS) {
   bool ok = UNICODE_VALUE (sourceText ().readCharOrNul (mCurrentLocation.index () COMMA_HERE)) != '\0' ;
@@ -418,7 +411,7 @@ bool Lexique::notTestForInputUTF32String (const std::initializer_list <utf32> & 
     if (ok) {
       advance () ;
     }else{
-      advance (inStringLength) ;
+      advance (int32_t (inTestCstring.size ())) ;
     }
   }
 //---
@@ -451,7 +444,7 @@ int32_t Lexique::searchInList (const String & inString,
 
   while ((code < 0) && (top >= bottom)) {
     const int32_t index = (bottom + top) / 2 ;
-    int32_t result = searchedStringLength - inTableArray [index].mEntryStringLength ;
+    int32_t result = searchedStringLength - int32_t (inTableArray [index].mEntryString.size ()) ;
     if (result == 0) {
       result = inString.compareWithInitializerList (inTableArray [index].mEntryString) ;
     }

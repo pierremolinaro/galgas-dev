@@ -88,7 +88,7 @@ String Lexique_%!LEXIQUE_IDENTIFIER%::getMessageForTerminal (const int32_t inTer
     %\nstatic const int32_t ktable_size_%!LEXIQUE_IDENTIFIER%_%!tokenList_lkey.string% = %![[tokenList_mExplicitTokenListMap count] string]% ;\n\n%
     %static const C_unicode_lexique_table_entry ktable_for_%!LEXIQUE_IDENTIFIER%_%!tokenList_lkey.string% [ktable_size_%!LEXIQUE_IDENTIFIER%_%!tokenList_lkey.string%] = {\n%
       for (mLength mName mTerminalName) in tokenList_mTokenSortedList
-      do %  C_unicode_lexique_table_entry (kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![mName identifierRepresentation]%, %![mLength string]%, Lexique_%!LEXIQUE_IDENTIFIER%::kToken_%![mTerminalName identifierRepresentation]%)%
+      do %  C_unicode_lexique_table_entry (kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![mName identifierRepresentation]%, Lexique_%!LEXIQUE_IDENTIFIER%::kToken_%![mTerminalName identifierRepresentation]%)%
       between %,\n%
       end
     %\n} ;\n\n%
@@ -137,7 +137,7 @@ end
     before %static const cTemplateDelimiter %!LEXIQUE_IDENTIFIER%_kTemplateDefinitionArray [%![[TEMPLATE_DELIMITOR_LIST count] string]%] = {\n%
     do %  cTemplateDelimiter (kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![mStartString identifierRepresentation]%, %![[mStartString count] string]%, %
       if [mEndString count] == 0 then
-        %nullptr, 0,%
+        %{}, 0,%
       else
         %kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![mEndString identifierRepresentation]%, %![[mEndString count] string]%,%
       end
@@ -227,8 +227,7 @@ bool Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
      && (%!LEXIQUE_IDENTIFIER%_kTemplateDefinitionArray [mMatchedTemplateDelimiterIndex].mEndStringLength > 0)
      && (UNICODE_VALUE (mCurrentChar) != '\0')) {
       const bool foundEndDelimitor = testForInputUTF32String (%!LEXIQUE_IDENTIFIER%_kTemplateDefinitionArray [mMatchedTemplateDelimiterIndex].mEndString,
-                                                              %!LEXIQUE_IDENTIFIER%_kTemplateDefinitionArray [mMatchedTemplateDelimiterIndex].mEndStringLength,
-                                                              true) ;
+                                                               true) ;
       if (foundEndDelimitor) {
         mMatchedTemplateDelimiterIndex = -1 ;
       }
@@ -243,8 +242,7 @@ bool Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
           }else{
             String s ;
             while (notTestForInputUTF32String (%!LEXIQUE_IDENTIFIER%_kTemplateReplacementArray [replacementIndex].mEndString,
-                                               %!LEXIQUE_IDENTIFIER%_kTemplateReplacementArray [replacementIndex].mEndStringLength,
-                                               kEndOfSourceLexicalErrorMessage
+                                                kEndOfSourceLexicalErrorMessage
                                                COMMA_HERE)) {
               s.appendUnicodeChar (previousChar () COMMA_HERE) ;
             }
