@@ -528,7 +528,6 @@ char singleByteCharacterForUnicodeCharacter (const utf32 inUnicodeChar,
      }else if (UNICODE_VALUE (inUnicodeChar) < mapping [mid].mUnicode) {
        high = mid - 1 ;
      }else{ // Found
-       // printf ("found") ;
        result = mapping [mid].mSingleByteCode ;
      }
    }

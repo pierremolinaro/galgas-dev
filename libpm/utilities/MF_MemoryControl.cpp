@@ -628,15 +628,24 @@
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //             Routine garantissant la nullite d'un pointeur
-//
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
-  void routineVoidPointer (const void * inPointer COMMA_LOCATION_ARGS) {
+  void routineCheckPointerIsNull (const void * inPointer COMMA_LOCATION_ARGS) {
     if (inPointer != nullptr) {
       runtime_error_routine ("pointer (%p) not nullptr", (intptr_t) inPointer, 0 COMMA_THERE) ;
+    }
+  }
+#endif
+//--------------------------------------------------------------------------------------------------
+//             Routine garantissant qu'un pointeur est non nul
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void routineCheckPointerIsNotNull (const void * inPointer COMMA_LOCATION_ARGS) {
+    if (inPointer == nullptr) {
+      runtime_error_routine ("pointer (%p) is nullptr", 0, 0 COMMA_THERE) ;
     }
   }
 #endif

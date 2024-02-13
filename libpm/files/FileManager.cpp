@@ -166,7 +166,7 @@ FILE * FileManager::openBinaryFileForReading (const String & inFilePath) {
 //--------------------------------------------------------------------------------------------------
 
 bool FileManager::binaryDataWithContentOfFile (const String & inFilePath,
-                                                 U8Data & outBinaryData) {
+                                               U8Data & outBinaryData) {
   outBinaryData.free () ;
 //--- Open file for binary reading
   const String nativePath = nativePathWithUnixPath (inFilePath) ;
