@@ -33,6 +33,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include <exception>
+#include <initializer_list>
 #include <stdio.h> 
 #include <dirent.h> 
 
@@ -185,6 +186,7 @@ class String : public AbstractOutputStream {
 //--- Compare with an other string 
   public: int32_t compare (const char * const inCstring) const ;
   public: int32_t compare (const String & inString) const ;
+  public: int32_t compareWithInitializerList (const std::initializer_list <utf32> & inString) const ;
   public: int32_t compareStringByLength (const String & inString) const ;
   public: bool operator == (const String & inString) const { return compare (inString) == 0 ; }
   public: bool operator != (const String & inString) const { return compare (inString) != 0 ; }

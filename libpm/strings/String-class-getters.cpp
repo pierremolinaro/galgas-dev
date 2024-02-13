@@ -903,6 +903,31 @@ int32_t String::compare (const String & inString) const {
 
 //--------------------------------------------------------------------------------------------------
 
+int32_t String::compareWithInitializerList (const std::initializer_list <utf32> & inString) const {
+  const int32_t operandLength = int32_t (inString.size ()) ;
+  int32_t result = 0 ;
+  if (length () < operandLength) {
+    result = -1 ;
+  }else if (length () > operandLength) {
+    result = 1 ;
+  }else{
+    int32_t i = 0 ;
+    for (auto it = inString.begin () ; (it != inString.end ()) && (result == 0) ; it++) {
+      const uint32_t left = UNICODE_VALUE (this->operator () (i COMMA_HERE)) ;
+      i += 1 ;
+      const uint32_t right = UNICODE_VALUE (*it) ;
+      if (left < right) {
+        result = -1 ;
+      }else if (left > right) {
+        result = 1 ;
+      }
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 int32_t String::compareStringByLength (const String & inString) const {
   int32_t result ;
   const utf32 * myStringPtr = utf32String (HERE) ;
@@ -933,7 +958,6 @@ int32_t String::compareStringByLength (const String & inString) const {
 //--------------------------------------------------------------------------------------------------
 
 String String::pathExtension (void) const {
-//  const utf32 * source = utf32String (HERE) ;
   int32_t receiver_length = length ();
 //--- Suppress training '/'
   while ((receiver_length > 1) && (UNICODE_VALUE (this->operator () (receiver_length - 1 COMMA_HERE)) == '/')) {
@@ -949,7 +973,6 @@ String String::pathExtension (void) const {
   String result ;
   if (found && (lastOccurrenceIndex < (receiver_length - 1))) {
     result = subString (lastOccurrenceIndex + 1, receiver_length - 1 - lastOccurrenceIndex) ;
-//    result.genericUnicodeArrayOutput (& source [lastOccurrenceIndex + 1], receiver_length - 1 - lastOccurrenceIndex) ;
   }
   return result ;
 }
