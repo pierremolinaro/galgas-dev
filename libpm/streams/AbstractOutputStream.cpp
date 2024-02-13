@@ -128,18 +128,16 @@ void AbstractOutputStream::appendUTF32String (const utf32 * inUTF32String) {
 //--------------------------------------------------------------------------------------------------
 
 void AbstractOutputStream::appendUTF32LiteralStringConstant (const String & inString) {
-  const utf32 * str = inString.utf32String (HERE) ;
   appendUnicodeChar (TO_UNICODE ('{') COMMA_HERE) ;
-  while (UNICODE_VALUE (* str) != 0) {
-    const utf32 c = * str ;
+  for (int32_t i=0 ; i < inString.length () ; i++) {
+    const utf32 c = inString (i COMMA_HERE) ;
     appendString ("\n  TO_UNICODE (") ;
-    if (isprint ((int) UNICODE_VALUE (c))) {
+    if (isprint (int (UNICODE_VALUE (c)))) {
       appendStringAsCLiteralCharConstant (c) ;
     }else{
       appendUnsigned (UNICODE_VALUE (c)) ;
     }
     appendString ("),") ;
-    str ++ ;
   }
   appendString ("\n  TO_UNICODE (0)\n}") ;
 }

@@ -23,22 +23,6 @@
 #include "unicode_string_routines.h"
 
 //--------------------------------------------------------------------------------------------------
-//--- From GLIBC, version 2.7 http://ftp.gnu.org/gnu/glibc/glibc-2.7.tar.bz2
-// glibc/wcsmbs/wcscmp.c
-
-int32_t utf32_strcmp (const utf32 * inString1, const utf32 * inString2) {
-  int32_t c1, c2;
-  do{
-    c1 = (int32_t) UNICODE_VALUE (*inString1) ;
-    inString1 ++ ;
-    c2 = (int32_t) UNICODE_VALUE (*inString2) ;
-    inString2 ++ ;
-    if (c1 == 0) return c1 - c2 ;
-  }while (c1 == c2) ;
-  return c1 - c2 ;
-}
-
-//--------------------------------------------------------------------------------------------------
 
 int32_t utf32_char_strcmp (const utf32 * inString1, const char * inString2) {
   int32_t c1, c2;

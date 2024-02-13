@@ -57,6 +57,9 @@ class cEmbeddedString final : public SharedObject {
 
   public: virtual ~cEmbeddedString (void) ;
 
+//--- Accessor
+  public: utf32 operator () (const int32_t inIndex COMMA_LOCATION_ARGS) const ;
+
 //--- No copy
   private: cEmbeddedString (const cEmbeddedString &) = delete ;
   private: cEmbeddedString & operator = (const cEmbeddedString &) = delete ;
@@ -128,6 +131,14 @@ mUTF32String (nullptr) {
 cEmbeddedString::~cEmbeddedString (void) {
   macroMyDeletePODArray (mEncodedCString) ;
   macroMyDeletePODArray (mUTF32String) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+utf32 cEmbeddedString::operator () (const int32_t inIndex COMMA_LOCATION_ARGS) const {
+  macroAssertThere (inIndex >= 0, "String index (%lld) is < 0", inIndex, 0) ;
+  macroAssertThere (uint32_t (inIndex) < mLength, "String index (%lld) is > length (%lld)", inIndex, mLength) ;
+  return mUTF32String [inIndex] ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -308,11 +319,7 @@ utf32 String::operator () (const int32_t inIndex COMMA_LOCATION_ARGS) const {
     checkString (THERE) ;
   #endif
   macroValidSharedObjectThere (mEmbeddedString, cEmbeddedString) ;
-  macroAssertThere (inIndex >= 0, "inIndex (%ld) < 0", inIndex, 0) ;
-  macroAssertThere (uint32_t (inIndex) < mEmbeddedString->mLength,
-                    "inIndex (%ld) >= string length (%ld)",
-                    inIndex, mEmbeddedString->mLength) ;
-  return mEmbeddedString->mUTF32String [inIndex] ;
+  return mEmbeddedString->operator () (inIndex COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -399,7 +406,7 @@ const char * String::cString (void) const {
             macroMyReallocPODArray (mEmbeddedString->mEncodedCString, char, allocatedSize) ;
           }
           mEmbeddedString->mEncodedCString [idx] = buffer [j] ;
-          idx ++ ;
+          idx += 1 ;
         }
       }
     //---

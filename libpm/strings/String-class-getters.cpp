@@ -61,14 +61,13 @@ LineColumnContents String::lineAndColumnFromIndex (const int32_t inIndex) const 
   LineColumnContents result ;
   const int32_t receiverLength = length () ;
   if (inIndex < receiverLength) {
-    const utf32 * ptr = utf32String (HERE) ;
     int32_t lineNumber = 0 ;
     int32_t startOfLineIndex = 0 ;
     int32_t idx = 0 ;
     bool parseLine = true ;
     while ((idx < receiverLength) && parseLine) {
       while ((idx < receiverLength) && parseLine) {
-        parseLine = UNICODE_VALUE (ptr [idx]) != '\n' ;
+        parseLine = UNICODE_VALUE (this->operator () (idx COMMA_HERE)) != '\n' ;
         idx += parseLine ;
       }
       if (idx < inIndex) {
@@ -123,7 +122,7 @@ bool String::containsString (const String & inSearchedString) const {
 //--------------------------------------------------------------------------------------------------
 
 void String::componentsSeparatedByString (const String & inSeparatorString,
-                                            TC_UniqueArray <String> & outResult) const {
+                                          TC_UniqueArray <String> & outResult) const {
   outResult.removeAllKeepingCapacity () ;
   const utf32 * sourcePtr = utf32String (HERE) ;
   if (sourcePtr == nullptr) {
@@ -276,11 +275,10 @@ String String::stringByReplacingStringByString (const String inSearchedString,
 
 int32_t String::lastOccurrenceIndexOfChar (const utf32 inChar) const {
   int32_t result = length () ;
-  const utf32 * ptr = utf32String (HERE) ;
   bool notFound = true ;
   while ((result > 0) && notFound) {
     result -- ;
-    notFound = UNICODE_VALUE (ptr [result]) != UNICODE_VALUE (inChar) ;
+    notFound = UNICODE_VALUE (this->operator () (result COMMA_HERE)) != UNICODE_VALUE (inChar) ;
   }
   if (notFound) {
     result = -1 ;
@@ -291,7 +289,7 @@ int32_t String::lastOccurrenceIndexOfChar (const utf32 inChar) const {
 //--------------------------------------------------------------------------------------------------
 
 String String::subString (const int32_t inStartIndex,
-                              const int32_t inLength) const {
+                          const int32_t inLength) const {
   String s ;
   if (inLength > 0) {
     int32_t last = inStartIndex + inLength ;
@@ -299,9 +297,8 @@ String String::subString (const int32_t inStartIndex,
     if (last > receiver_length) {
       last = receiver_length ;
     }
-    const utf32 * ptr = utf32String (HERE) ;
     for (int32_t i=inStartIndex ; i<last ; i++) {
-      s.appendUnicodeChar (ptr [i] COMMA_HERE) ;
+      s.appendUnicodeChar (this->operator () (i COMMA_HERE) COMMA_HERE) ;
     }
   }
   return s ;
@@ -313,11 +310,10 @@ String String::stringByCapitalizingFirstCharacter (void) const {
   String s ;
   const int32_t receiver_length = length () ;
   s.setCapacity ((uint32_t) receiver_length) ;
-  const utf32 * ptr = utf32String (HERE) ;
   if (receiver_length > 0) {
-    s.appendUnicodeChar (unicodeToUpper (ptr [0]) COMMA_HERE) ;
+    s.appendUnicodeChar (unicodeToUpper (this->operator () (0 COMMA_HERE)) COMMA_HERE) ;
     for (int32_t i=1 ; i<receiver_length ; i++) {
-      s.appendUnicodeChar (ptr [i] COMMA_HERE) ;
+      s.appendUnicodeChar (this->operator () (i COMMA_HERE) COMMA_HERE) ;
     }
   }
   return s ;
@@ -329,9 +325,8 @@ String String::lowercaseString (void) const {
   String s ;
   const int32_t receiver_length = length () ;
   s.setCapacity ((uint32_t) receiver_length) ;
-  const utf32 * ptr = utf32String (HERE) ;
   for (int32_t i=0 ; i<receiver_length ; i++) {
-    s.appendUnicodeChar (unicodeToLower (ptr [i]) COMMA_HERE) ;
+    s.appendUnicodeChar (unicodeToLower (this->operator () (i COMMA_HERE)) COMMA_HERE) ;
   }
   return s ;
 }
@@ -342,16 +337,15 @@ String String::stringByTrimmingSeparators (void) const {
   String s ;
   const int32_t receiver_length = length () ;
   s.setCapacity ((uint32_t) receiver_length) ;
-  const utf32 * ptr = utf32String (HERE) ;
 //--- Trim left
   int32_t idx = 0 ;
-  while ((idx < receiver_length) && ((UNICODE_VALUE (ptr [idx]) == ' ') || (UNICODE_VALUE (ptr [idx]) == '\n'))) {
-    idx ++ ;
+  while ((idx < receiver_length) && ((UNICODE_VALUE (this->operator () (idx COMMA_HERE)) == ' ') || (UNICODE_VALUE (this->operator () (idx COMMA_HERE)) == '\n'))) {
+    idx += 1 ;
   }
 //--- Trim and replace
   bool isCurrentlyTrimming = false ;
   while (idx < receiver_length) {
-    const utf32 c = ptr [idx] ;
+    const utf32 c = this->operator () (idx COMMA_HERE) ;
     if ((UNICODE_VALUE (c) == ' ') || (UNICODE_VALUE (c) == '\n')) {
       isCurrentlyTrimming = true ;
     }else{
@@ -361,7 +355,7 @@ String String::stringByTrimmingSeparators (void) const {
       }
       s.appendUnicodeChar (c COMMA_HERE) ;
     }
-    idx ++ ;
+    idx += 1 ;
   }
   return s ;
 }
@@ -372,9 +366,8 @@ String String::uppercaseString (void) const {
   String s ;
   const int32_t receiver_length = length () ;
   s.setCapacity ((uint32_t) receiver_length) ;
-  const utf32 * ptr = utf32String (HERE) ;
   for (int32_t i=0 ; i<receiver_length ; i++) {
-    s.appendUnicodeChar (unicodeToUpper (ptr [i]) COMMA_HERE) ;
+    s.appendUnicodeChar (unicodeToUpper (this->operator () (i COMMA_HERE)) COMMA_HERE) ;
   }
   return s ;
 }
@@ -420,9 +413,8 @@ uint32_t String::currentColumn (void) const {
   uint32_t result = 0 ;
   bool found = false ;
   const int32_t receiver_length = length () ;
-  const utf32 * ptr = utf32String (HERE) ;
   for (int32_t i=receiver_length-1 ; (i>=0) && ! found ; i--) {
-    found = UNICODE_VALUE (ptr [i]) == '\n' ;
+    found = UNICODE_VALUE (this->operator () (i COMMA_HERE)) == '\n' ;
     if (! found) {
       result ++ ;
     }
@@ -648,9 +640,8 @@ String String::identifierRepresentation (void) const {
   String s ;
   const int32_t receiver_length = length () ;
   s.setCapacity ((uint32_t) receiver_length) ;
-  const utf32 * ptr = utf32String (HERE) ;
   for (int32_t i=0 ; i<receiver_length ; i++) {
-    const utf32 c = ptr [i] ;
+    const utf32 c = this->operator () (i COMMA_HERE) ;
     if (isalpha ((int) UNICODE_VALUE (c))) {
       s.appendUnicodeChar (c COMMA_HERE) ;
     }else{
@@ -668,9 +659,8 @@ String String::nameRepresentation (void) const {
   String s ;
   const int32_t receiver_length = length () ;
   s.setCapacity ((uint32_t) receiver_length) ;
-  const utf32 * ptr = utf32String (HERE) ;
   for (int32_t i=0 ; i<receiver_length ; i++) {
-    const utf32 c = ptr [i] ;
+    const utf32 c = this->operator () (i COMMA_HERE) ;
     if (isalnum ((int) UNICODE_VALUE (c))) {
       s.appendUnicodeChar (c COMMA_HERE) ;
     }else{
@@ -688,9 +678,8 @@ String String::fileNameRepresentation (void) const {
   String s ;
   const int32_t receiverLength = length () ;
   s.setCapacity (uint32_t (receiverLength)) ;
-  const utf32 * ptr = utf32String (HERE) ;
   for (int32_t i=0 ; i<receiverLength ; i++) {
-    const utf32 c = ptr [i] ;
+    const utf32 c = this->operator () (i COMMA_HERE) ;
     const int nc = int (UNICODE_VALUE (c)) ;
     if (isdigit (nc) || islower (nc)) {
       s.appendUnicodeChar (c COMMA_HERE) ;
@@ -718,9 +707,8 @@ String String::assemblerRepresentation (void) const {
   String s ;
   const int32_t receiver_length = length () ;
   s.setCapacity ((uint32_t) receiver_length) ;
-  const utf32 * ptr = utf32String (HERE) ;
   for (int32_t i=0 ; i<receiver_length ; i++) {
-    const utf32 c = ptr [i] ;
+    const utf32 c = this->operator () (i COMMA_HERE) ;
     if (isalnum ((int) UNICODE_VALUE (c)) || (UNICODE_VALUE (c) == '.')  || (UNICODE_VALUE (c) == '-') || (UNICODE_VALUE (c) == '$')) {
       s.appendUnicodeChar (c COMMA_HERE) ;
     }else{
@@ -738,10 +726,9 @@ String String::utf8RepresentationEnclosedWithin (const utf32 inCharacter, const 
   String s ;
   const int32_t receiver_length = length () ;
   s.setCapacity ((uint32_t) receiver_length) ;
-  const utf32 * ptr = utf32String (HERE) ;
   s.appendUnicodeChar  (inCharacter COMMA_HERE) ;
   for (int32_t i=0 ; i<receiver_length ; i++) {
-    const utf32 c = ptr [i] ;
+    const utf32 c = this->operator () (i COMMA_HERE) ;
     if (UNICODE_VALUE (c) == '\\') {
       s.appendUnicodeChar ('\\' COMMA_HERE) ;
       s.appendUnicodeChar ('\\' COMMA_HERE) ;
@@ -792,10 +779,9 @@ String String::utf8RepresentationWithUnicodeEscaping (void) const {
   String s ;
   const int32_t receiver_length = length () ;
   s.setCapacity ((uint32_t) receiver_length) ;
-  const utf32 * ptr = utf32String (HERE) ;
   s.appendUnicodeChar  ('\"' COMMA_HERE) ;
   for (int32_t i=0 ; i<receiver_length ; i++) {
-    const utf32 c = ptr [i] ;
+    const utf32 c = this->operator () (i COMMA_HERE) ;
     if (UNICODE_VALUE (c) == '\\') {
       s.appendUnicodeChar ('\\' COMMA_HERE) ;
       s.appendUnicodeChar ('\\' COMMA_HERE) ;
@@ -895,14 +881,22 @@ int32_t String::compare (const char * const inCstring) const {
 
 int32_t String::compare (const String & inString) const {
   int32_t result = 0 ;
-  const utf32 * myStringPtr = utf32String (HERE) ;
-  const utf32 * otherStringPtr = inString.utf32String (HERE) ;
-  if (myStringPtr == nullptr) {
-    result = 1 ;
-  }else if (otherStringPtr == nullptr) {
-    result = -1 ;
-  }else{
-    result = ::utf32_strcmp (myStringPtr, otherStringPtr) ; // Never call strcmp with nullptr pointer(s) !
+  const int32_t minLength = std::min (length (), inString.length ()) ;
+  for (int32_t i=0 ; (i < minLength) && (result == 0) ; i++) {
+    const uint32_t left = UNICODE_VALUE (this->operator () (i COMMA_HERE)) ;
+    const uint32_t right = UNICODE_VALUE (inString (i COMMA_HERE)) ;
+    if (left < right) {
+      result = -1 ;
+    }else if (left > right) {
+      result = 1 ;
+    }
+  }
+  if (result == 0) {
+    if (length () < inString.length ()) {
+      result = -1 ;
+    }else if (length () > inString.length ()) {
+      result = 1 ;
+    }
   }
   return result ;
 }
@@ -921,8 +915,14 @@ int32_t String::compareStringByLength (const String & inString) const {
     result = -1 ;
   }else{
     result = length () - inString.length () ;
-    if (result == 0) {
-      result = ::utf32_strcmp (myStringPtr, otherStringPtr) ; // Never call strcmp with nullptr pointer(s) !
+    for (int32_t i=0 ; (i < length ()) && (result == 0) ; i++) {
+      const uint32_t left = UNICODE_VALUE (this->operator () (i COMMA_HERE)) ;
+      const uint32_t right = UNICODE_VALUE (inString (i COMMA_HERE)) ;
+      if (left < right) {
+        result = -1 ;
+      }else if (left > right) {
+        result = 1 ;
+      }
     }
   }
   return result ;
@@ -937,7 +937,7 @@ String String::pathExtension (void) const {
   String result ;
   int32_t receiver_length = length ();
 //--- Suppress training '/'
-  while ((receiver_length > 1) && (UNICODE_VALUE (source [receiver_length - 1]) == '/')) {
+  while ((receiver_length > 1) && (UNICODE_VALUE (this->operator () (receiver_length - 1 COMMA_HERE)) == '/')) {
     receiver_length -- ;
   }
 //--- Search last '.'
@@ -945,7 +945,7 @@ String String::pathExtension (void) const {
   int32_t lastOccurrenceIndex = receiver_length ;
   while ((lastOccurrenceIndex > 0) && ! found) {
     lastOccurrenceIndex -- ;
-    found = UNICODE_VALUE (source [lastOccurrenceIndex]) == '.' ;
+    found = UNICODE_VALUE (this->operator () (lastOccurrenceIndex COMMA_HERE)) == '.' ;
   }
   if (found) {
     if (lastOccurrenceIndex < (receiver_length - 1)) {
@@ -961,13 +961,10 @@ String String::pathExtension (void) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-String String::
-stringByDeletingPathExtension (void) const {
-  const utf32 * source = utf32String (HERE) ;
-  String result ;
+String String::stringByDeletingPathExtension (void) const {
   int32_t receiver_length = length ();
 //--- Suppress training '/'
-  while ((receiver_length > 1) && (UNICODE_VALUE (source [receiver_length - 1]) == '/')) {
+  while ((receiver_length > 1) && (UNICODE_VALUE (this->operator () (receiver_length - 1 COMMA_HERE)) == '/')) {
     receiver_length -- ;
   }
 //--- Search last '.'
@@ -975,10 +972,11 @@ stringByDeletingPathExtension (void) const {
   int32_t lastOccurrenceIndex = receiver_length ;
   while ((lastOccurrenceIndex > 0) && ! found) {
     lastOccurrenceIndex -- ;
-    found = UNICODE_VALUE (source [lastOccurrenceIndex]) == '.' ;
+    found = UNICODE_VALUE (this->operator () (lastOccurrenceIndex COMMA_HERE)) == '.' ;
   }
+  String result ;
   if (found) {
-    result.genericUnicodeArrayOutput (source, lastOccurrenceIndex) ;
+    result = subString (0, lastOccurrenceIndex) ;
   }
   return result ;
 }
@@ -989,13 +987,11 @@ stringByDeletingPathExtension (void) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-String String::
-stringByDeletingLastPathComponent (void) const {
-  const utf32 * source = utf32String (HERE) ;
+String String::stringByDeletingLastPathComponent (void) const {
   String result ;
-  int32_t receiver_length = length ();
+  int32_t receiver_length = length () ;
 //--- Suppress training '/'
-  while ((receiver_length > 1) && (UNICODE_VALUE (source [receiver_length - 1]) == '/')) {
+  while ((receiver_length > 1) && (UNICODE_VALUE (this->operator () (receiver_length - 1 COMMA_HERE)) == '/')) {
     receiver_length -- ;
   }
 //--- Search last '/'
@@ -1003,10 +999,10 @@ stringByDeletingLastPathComponent (void) const {
   int32_t lastOccurrenceIndex = receiver_length ;
   while ((lastOccurrenceIndex > 0) && ! found) {
     lastOccurrenceIndex -- ;
-    found = UNICODE_VALUE (source [lastOccurrenceIndex]) == '/' ;
+    found = UNICODE_VALUE (this->operator () (lastOccurrenceIndex COMMA_HERE)) == '/' ;
   }
   if (found) {
-    result.genericUnicodeArrayOutput (source, lastOccurrenceIndex) ;
+    result = subString (0, lastOccurrenceIndex) ;
   }
   return result ;
 }
@@ -1037,26 +1033,24 @@ stringByAppendingPathComponent (const String & inPathComponent) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-String String::
-lastPathComponent (void) const {
-  const utf32 * source = utf32String (HERE) ;
-  String result ;
-  int32_t receiver_length = length ();
+String String::lastPathComponent (void) const {
+  int32_t usefulLength = length ();
 //--- Suppress training '/'
-  while ((receiver_length > 1) && (UNICODE_VALUE (source [receiver_length - 1]) == '/')) {
-    receiver_length -- ;
+  while ((usefulLength > 1) && (UNICODE_VALUE (this->operator () (usefulLength - 1 COMMA_HERE)) == '/')) {
+    usefulLength -= 1 ;
   }
 //--- Search last '/'
   bool found = false ;
-  int32_t lastOccurrenceIndex = receiver_length ;
+  int32_t lastOccurrenceIndex = usefulLength ;
   while ((lastOccurrenceIndex > 0) && ! found) {
-    lastOccurrenceIndex -- ;
-    found = UNICODE_VALUE (source [lastOccurrenceIndex]) == '/' ;
+    lastOccurrenceIndex -= 1 ;
+    found = UNICODE_VALUE (this->operator () (lastOccurrenceIndex COMMA_HERE)) == '/' ;
   }
+  String result ;
   if (found) {
-    result.genericUnicodeArrayOutput (& source [lastOccurrenceIndex + 1], receiver_length - lastOccurrenceIndex - 1) ;
+    result = subString (lastOccurrenceIndex + 1, usefulLength - lastOccurrenceIndex - 1) ;
   }else{
-    result.genericUnicodeArrayOutput (source, receiver_length) ;
+    result = subString (0, usefulLength) ;
   }
   return result ;
 }
