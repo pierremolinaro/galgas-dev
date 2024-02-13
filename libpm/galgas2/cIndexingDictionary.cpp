@@ -191,13 +191,13 @@ void cIndexingDictionary::addIndexedKey (const uint32_t inIndexingKind,
 //--- Register index
   String entryDescriptor ;
   entryDescriptor.appendUnsigned (inIndexingKind) ;
-  entryDescriptor.appendString (":") ;
+  entryDescriptor.appendCString (":") ;
   entryDescriptor.appendUnsigned (inTokenLineInSource) ;
-  entryDescriptor.appendString (":") ;
+  entryDescriptor.appendCString (":") ;
   entryDescriptor.appendUnsigned (inTokenLocationInSource) ;
-  entryDescriptor.appendString (":") ;
+  entryDescriptor.appendCString (":") ;
   entryDescriptor.appendUnsigned (inTokenLengthInSource) ;
-  entryDescriptor.appendString (":") ;
+  entryDescriptor.appendCString (":") ;
   entryDescriptor.appendString (inSourceFilePath) ;
   entryNode->mDescriptorArray.appendObject (entryDescriptor) ;
 }
@@ -208,16 +208,16 @@ static void enumerateEntries (const cIndexEntryNode * inNode,
                               String & ioContents) {
   if (nullptr != inNode) {
     enumerateEntries (inNode->mInfPtr, ioContents) ;
-    ioContents.appendString ("<key>") ;
+    ioContents.appendCString ("<key>") ;
     ioContents.appendString (inNode->mKey.HTMLRepresentation ()) ;
-    ioContents.appendString ("</key>") ;
-    ioContents.appendString ("<array>") ;
+    ioContents.appendCString ("</key>") ;
+    ioContents.appendCString ("<array>") ;
     for (int32_t i=0 ; i<inNode->mDescriptorArray.count () ; i++) {
-      ioContents.appendString ("<string>") ;
+      ioContents.appendCString ("<string>") ;
       ioContents.appendString (inNode->mDescriptorArray (i COMMA_HERE).HTMLRepresentation ()) ;
-      ioContents.appendString ("</string>") ;
+      ioContents.appendCString ("</string>") ;
     }
-    ioContents.appendString ("</array>") ;
+    ioContents.appendCString ("</array>") ;
     enumerateEntries (inNode->mSupPtr, ioContents) ;
   }
 }
@@ -229,11 +229,11 @@ void cIndexingDictionary::generateIndexFile (const String & inOutputIndexFilePat
                     "<!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">"
                     "<plist version=\"1.0\">" ;
 //--- Write entries as dictionary
-  contents.appendString ("<dict>") ;
+  contents.appendCString ("<dict>") ;
   enumerateEntries (mEntryRoot, contents) ;
-  contents.appendString ("</dict>") ;
+  contents.appendCString ("</dict>") ;
 //--- End of file
-  contents.appendString ("</plist>") ;
+  contents.appendCString ("</plist>") ;
   FileManager::writeStringToFile (contents, inOutputIndexFilePath) ;
 }
 

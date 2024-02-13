@@ -62,14 +62,14 @@ GALGAS_type::~ GALGAS_type (void) {
 
 void GALGAS_type::description (String & ioString,
                                const int32_t /* inIndentation */) const {
-  ioString.appendString ("<@type: ") ;
+  ioString.appendCString ("<@type: ") ;
   if (nullptr == mTypeDescriptor) {
-    ioString.appendString ("not built") ;
+    ioString.appendCString ("not built") ;
   }else{
-    ioString.appendString ("@") ;
+    ioString.appendCString ("@") ;
     ioString.appendString (mTypeDescriptor->mGalgasTypeName) ;
   }
-  ioString.appendString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -105,7 +105,7 @@ GALGAS_type GALGAS_type::getter_superclass (Compiler * inCompiler
     if (nullptr == mTypeDescriptor->mSuperclassDescriptor) {
       String s = "'superclass' reader invoked on class type value '@" ;
       s.appendString (mTypeDescriptor->mGalgasTypeName) ;
-      s.appendString ("', without super class") ;
+      s.appendCString ("', without super class") ;
       inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
     }else{
       result = GALGAS_type (mTypeDescriptor->mSuperclassDescriptor) ;

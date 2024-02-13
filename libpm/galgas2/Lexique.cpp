@@ -107,7 +107,7 @@ mLatexNextCharacterToEnterIndex (0) {
     }else if (inCallerCompiler != nullptr) {
       String errorMessage = "cannot read '" ;
       errorMessage.appendString (inSourceFileName) ;
-      errorMessage.appendString ("': this file does not exist or is not encoded in UTF8") ;
+      errorMessage.appendCString ("': this file does not exist or is not encoded in UTF8") ;
       inCallerCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE)  ;
     }
   }
@@ -200,26 +200,26 @@ void Lexique::enterTokenFromPointer (cToken * inToken) {
         s.appendUnicodeChar (c COMMA_HERE) ;
       }
     }
-    gCout.appendString ("  ") ;
+    gCout.appendCString ("  ") ;
     gCout.appendString (getCurrentTokenString (inToken)) ;
-    gCout.appendString (", from location ") ;
+    gCout.appendCString (", from location ") ;
     gCout.appendSigned (inToken->mStartLocation.index ()) ;
-    gCout.appendString (" (line ") ;
+    gCout.appendCString (" (line ") ;
     gCout.appendSigned (inToken->mStartLocation.lineNumber ()) ;
-    gCout.appendString (", column ") ;
+    gCout.appendCString (", column ") ;
     gCout.appendSigned (inToken->mStartLocation.columnNumber ()) ;
-    gCout.appendString (")") ;
-    gCout.appendString (" to location ") ;
+    gCout.appendCString (")") ;
+    gCout.appendCString (" to location ") ;
     gCout.appendSigned (inToken->mEndLocation.index ()) ;
-    gCout.appendString (" (line ") ;
+    gCout.appendCString (" (line ") ;
     gCout.appendSigned (inToken->mEndLocation.lineNumber ()) ;
-    gCout.appendString (", column ") ;
+    gCout.appendCString (", column ") ;
     gCout.appendSigned (inToken->mEndLocation.columnNumber ()) ;
-    gCout.appendString (")") ;
+    gCout.appendCString (")") ;
     if (inToken->mTemplateStringBeforeToken.length () > 0) {
-      gCout.appendString (", template '") ;
+      gCout.appendCString (", template '") ;
       gCout.appendString (inToken->mTemplateStringBeforeToken) ;
-      gCout.appendString ("'") ;
+      gCout.appendCString ("'") ;
     }
     gCout.appendNewLine () ; ;
   }else if (executionModeIsLatex ()) {
@@ -230,10 +230,10 @@ void Lexique::enterTokenFromPointer (cToken * inToken) {
     }
     const String styleName = styleNameForIndex (styleIndexForTerminal (inToken->mTokenCode)) ;
     if (styleName.length () > 0) {
-      mLatexOutputString.appendString ("\\") ;
+      mLatexOutputString.appendCString ("\\") ;
       mLatexOutputString.appendString (styleName) ;
       mLatexOutputString.appendString (latexModeStyleSuffixString ()) ;
-      mLatexOutputString.appendString ("{") ;
+      mLatexOutputString.appendCString ("{") ;
     }
     for (int32_t i=inToken->mStartLocation.index () ; i<=inToken->mEndLocation.index () ; i++) {
       const utf32 c = sourceText ().readCharOrNul (i COMMA_HERE) ;
@@ -242,7 +242,7 @@ void Lexique::enterTokenFromPointer (cToken * inToken) {
       }
     }
     if (styleName.length () > 0) {
-      mLatexOutputString.appendString ("}") ;
+      mLatexOutputString.appendCString ("}") ;
     }
   //---
     mLatexNextCharacterToEnterIndex = inToken->mEndLocation.index () + 1 ;
@@ -305,14 +305,14 @@ int32_t Lexique::findTemplateDelimiterIndex (const cTemplateDelimiter * inTempla
 
 void Lexique::performLexicalAnalysis (void) {
   if (executionModeIsLexicalAnalysisOnly ()) {
-    gCout.appendString ("*** PERFORM LEXICAL ANALYSIS ONLY (--mode=lexical-only option) ***\n") ;
+    gCout.appendCString ("*** PERFORM LEXICAL ANALYSIS ONLY (--mode=lexical-only option) ***\n") ;
   }
   bool loop = true ;
   while (loop) {
     loop = parseLexicalToken () ;
   }
   if (executionModeIsLexicalAnalysisOnly ()) {
-    gCout.appendString ("*** END OF LEXICAL ANALYSIS ***\n") ;
+    gCout.appendCString ("*** END OF LEXICAL ANALYSIS ***\n") ;
   }else if (executionModeIsLatex ()) {
     generateLatexFile () ;
   }
@@ -422,9 +422,9 @@ bool Lexique::notTestForInputUTF32String (const std::initializer_list <utf32> & 
 
 void Lexique::lexicalLog (LOCATION_ARGS) {
   String message ;
-  message.appendString ("LEXICAL LOG:'") ;
+  message.appendCString ("LEXICAL LOG:'") ;
   message.appendStringAsCLiteralCharConstant (mCurrentChar) ;
-  message.appendString ("'\n") ;
+  message.appendCString ("'\n") ;
   printMessage (message COMMA_THERE) ;
 }
 
@@ -484,11 +484,11 @@ void Lexique::internalBottomUpParserError (LOCATION_ARGS) {
 
 void Lexique::unknownCharacterLexicalError (LOCATION_ARGS) {
   String errorMessage ;
-  errorMessage.appendString ("Unknown character: ") ;
+  errorMessage.appendCString ("Unknown character: ") ;
   errorMessage.appendString (unicodeName (mCurrentChar)) ;
-  errorMessage.appendString (" (Unicode ") ;
+  errorMessage.appendCString (" (Unicode ") ;
   errorMessage.appendUnsigned0xHex (UNICODE_VALUE (mCurrentChar)) ;
-  errorMessage.appendString (")") ;
+  errorMessage.appendCString (")") ;
   lexicalError (errorMessage COMMA_THERE) ;
 }
 
@@ -736,21 +736,21 @@ void Lexique::enterProduction (const char * inProductionName,
   if (mDebugIsRunning) {
     String message ;
     for (uint16_t i=1 ; i<mDebugDepthCounter ; i++) {
-      message.appendString ("|  ") ;
+      message.appendCString ("|  ") ;
     }
     message.appendString ((mDebugDepthCounter > 0) ? "|- " : "") ;
     message.appendString (inProductionName) ;
     if (inLabel != nullptr) {
-      message.appendString (" label '") ;
+      message.appendCString (" label '") ;
       message.appendString (inLabel) ;
-      message.appendString ("'") ;
+      message.appendCString ("'") ;
     }
     if ((inTag != nullptr) && (inTag [0] != '\0')) {
-      message.appendString (" tag '") ;
+      message.appendCString (" tag '") ;
       message.appendString (inTag) ;
-      message.appendString ("'") ;
+      message.appendCString ("'") ;
     }
-    message.appendString ("\n") ;
+    message.appendCString ("\n") ;
     ggs_printMessage (message COMMA_HERE) ;
     mDebugDepthCounter ++ ;
   }
@@ -772,14 +772,14 @@ void Lexique::didParseTerminal (const char * inTerminalName,
   if (mDebugIsRunning) {
     String message ;
     for (uint16_t i=1 ; i<mDebugDepthCounter ; i++) {
-      message.appendString ("|  ") ;
+      message.appendCString ("|  ") ;
     }
     message.appendString ((mDebugDepthCounter > 0) ? "|- " : "") ;
     message.appendString (inTerminalName) ;
     if (inValue.length () > 0) {
       message.appendString (inValue) ;
     }
-    message.appendString ("\n") ;
+    message.appendCString ("\n") ;
     ggs_printMessage (message COMMA_HERE) ;
   }
 }
@@ -801,10 +801,10 @@ void Lexique::enterDroppedTerminal (const int32_t inTerminalIndex) {
     }
     const String styleName = styleNameForIndex (styleIndexForTerminal (inTerminalIndex)) ;
     if (styleName.length () > 0) {
-      mLatexOutputString.appendString ("\\") ;
+      mLatexOutputString.appendCString ("\\") ;
       mLatexOutputString.appendString (styleName) ;
       mLatexOutputString.appendString (latexModeStyleSuffixString ()) ;
-      mLatexOutputString.appendString ("{") ;
+      mLatexOutputString.appendCString ("{") ;
     }
     for (int32_t i=mTokenStartLocation.index () ; i<=mTokenEndLocation.index () ; i++) {
       const utf32 c = sourceText ().readCharOrNul (i COMMA_HERE) ;
@@ -813,7 +813,7 @@ void Lexique::enterDroppedTerminal (const int32_t inTerminalIndex) {
       }
     }
     if (styleName.length () > 0) {
-      mLatexOutputString.appendString ("}") ;
+      mLatexOutputString.appendCString ("}") ;
     }
   //---
     mLatexNextCharacterToEnterIndex = mTokenEndLocation.index () + 1 ;
@@ -824,26 +824,26 @@ void Lexique::enterDroppedTerminal (const int32_t inTerminalIndex) {
 
 void Lexique::appendCharacterToLatexFile (const utf32 inUnicodeCharacter) {
   switch (UNICODE_VALUE (inUnicodeCharacter)) {
-  case '>' : mLatexOutputString.appendString ("\\textgreater{}") ; break ;
-  case '<' : mLatexOutputString.appendString ("\\textless{}") ; break ;
-  case '~' : mLatexOutputString.appendString ("$\\sim$") ; break ;
-  case '^' : mLatexOutputString.appendString ("$\\wedge$") ; break ;
-  case '|' : mLatexOutputString.appendString ("\\textbar{}") ; break ;
-  case '&' : mLatexOutputString.appendString ("\\&") ; break ;
-  case '%' : mLatexOutputString.appendString ("\\%") ; break ;
-  case '#' : mLatexOutputString.appendString ("\\#") ; break ;
-  case '$' : mLatexOutputString.appendString ("\\$") ; break ;
-  case ' ' : mLatexOutputString.appendString ("\\hspace*{.6em}") ; break ;
-  case '\n' : mLatexOutputString.appendString ("\\newline\n") ; break ;
-  case '{' : mLatexOutputString.appendString ("\\{") ; break ;
-  case '}' : mLatexOutputString.appendString ("\\}") ; break ;
-  case '_' : mLatexOutputString.appendString ("\\_") ; break ;
-  case '\\' : mLatexOutputString.appendString ("\\textbackslash{}")  ; break ;
-  case '\'' : mLatexOutputString.appendString ("\\textquotesingle{}") ; break ;
-  case '"' : mLatexOutputString.appendString ("\"") ; break ;
+  case '>' : mLatexOutputString.appendCString ("\\textgreater{}") ; break ;
+  case '<' : mLatexOutputString.appendCString ("\\textless{}") ; break ;
+  case '~' : mLatexOutputString.appendCString ("$\\sim$") ; break ;
+  case '^' : mLatexOutputString.appendCString ("$\\wedge$") ; break ;
+  case '|' : mLatexOutputString.appendCString ("\\textbar{}") ; break ;
+  case '&' : mLatexOutputString.appendCString ("\\&") ; break ;
+  case '%' : mLatexOutputString.appendCString ("\\%") ; break ;
+  case '#' : mLatexOutputString.appendCString ("\\#") ; break ;
+  case '$' : mLatexOutputString.appendCString ("\\$") ; break ;
+  case ' ' : mLatexOutputString.appendCString ("\\hspace*{.6em}") ; break ;
+  case '\n' : mLatexOutputString.appendCString ("\\newline\n") ; break ;
+  case '{' : mLatexOutputString.appendCString ("\\{") ; break ;
+  case '}' : mLatexOutputString.appendCString ("\\}") ; break ;
+  case '_' : mLatexOutputString.appendCString ("\\_") ; break ;
+  case '\\' : mLatexOutputString.appendCString ("\\textbackslash{}")  ; break ;
+  case '\'' : mLatexOutputString.appendCString ("\\textquotesingle{}") ; break ;
+  case '"' : mLatexOutputString.appendCString ("\"") ; break ;
   default:
     mLatexOutputString.appendUnicodeChar (inUnicodeCharacter COMMA_HERE) ;
-    mLatexOutputString.appendString ("{}") ;
+    mLatexOutputString.appendCString ("{}") ;
     break ;
   }
 }
@@ -851,7 +851,7 @@ void Lexique::appendCharacterToLatexFile (const utf32 inUnicodeCharacter) {
 //--------------------------------------------------------------------------------------------------
 
 void Lexique::signalLexicalErrorInLatexOutput (void) {
-  mLatexOutputString.appendString ("\\lexicalError") ;
+  mLatexOutputString.appendCString ("\\lexicalError") ;
   mLatexOutputString.appendString (latexModeStyleSuffixString ()) ;
 }
 

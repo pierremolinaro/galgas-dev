@@ -187,23 +187,23 @@ typeComparisonResult GALGAS_location::objectCompare (const GALGAS_location & inO
 
 void GALGAS_location::description (String & ioString,
                                    const int32_t /* inIndentation */) const {
-  ioString.appendString ("<@location:") ;
+  ioString.appendCString ("<@location:") ;
   if (isValid ()) {
     if (!mInternalLocation->mSourceText.isValid ()) {
-      ioString.appendString ("nowhere") ;
+      ioString.appendCString ("nowhere") ;
     }else{
-      ioString.appendString ("'") ;
+      ioString.appendCString ("'") ;
       ioString.appendString (mInternalLocation->mSourceText.sourceFilePath ()) ;
-      ioString.appendString ("'") ;
+      ioString.appendCString ("'") ;
     }
-    ioString.appendString (":") ;
+    ioString.appendCString (":") ;
     ioString.appendSigned (mInternalLocation->mStartLocation.lineNumber ()) ;
-    ioString.appendString (":") ;
+    ioString.appendCString (":") ;
     ioString.appendSigned (mInternalLocation->mStartLocation.columnNumber ()) ;
   }else{
-    ioString.appendString ("not built") ;
+    ioString.appendCString ("not built") ;
   }
-  ioString.appendString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -216,11 +216,11 @@ GALGAS_string GALGAS_location::getter_startLocationString (Compiler * inCompiler
       inCompiler->onTheFlyRunTimeError ("'startLocationString' reader cannot be called on a nowhere @location object" COMMA_THERE) ;
     }else{
       String s ;
-      s.appendString ("file '") ;
+      s.appendCString ("file '") ;
       s.appendString (mInternalLocation->mSourceText.sourceFilePath ()) ;
-      s.appendString ("', line ") ;
+      s.appendCString ("', line ") ;
       s.appendSigned (mInternalLocation->mStartLocation.lineNumber ()) ;
-      s.appendString (":") ;
+      s.appendCString (":") ;
       s.appendSigned (mInternalLocation->mStartLocation.columnNumber ()) ;
       result = GALGAS_string (s) ;
     }
@@ -240,9 +240,9 @@ GALGAS_string GALGAS_location::getter_endLocationString (Compiler * inCompiler
     }else{
       String s = "file '" ;
       s.appendString (mInternalLocation->mSourceText.sourceFilePath ()) ;
-      s.appendString ("', line ") ;
+      s.appendCString ("', line ") ;
       s.appendSigned (mInternalLocation->mEndLocation.lineNumber ()) ;
-      s.appendString (":") ;
+      s.appendCString (":") ;
       s.appendSigned (mInternalLocation->mEndLocation.columnNumber ()) ;
       result = GALGAS_string (s) ;
     }

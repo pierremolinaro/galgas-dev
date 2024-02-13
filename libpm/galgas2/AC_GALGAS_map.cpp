@@ -315,13 +315,13 @@ static void internalDescription (cMapNode * inNode,
                                  uint32_t & ioIdx) {
   if (nullptr != inNode) {
     internalDescription (inNode->mInfPtr, ioString, inIndentation, ioIdx) ;
-    ioString.appendString ("\n") ;
+    ioString.appendCString ("\n") ;
     ioString.appendStringMultiple ("| ", inIndentation) ;
-    ioString.appendString ("|-at ") ;
+    ioString.appendCString ("|-at ") ;
     ioString.appendUnsigned (ioIdx) ;
-    ioString.appendString (": key '") ;
+    ioString.appendCString (": key '") ;
     ioString.appendString (inNode->mKey) ;
-    ioString.appendString ("' ") ;
+    ioString.appendCString ("' ") ;
     inNode->mAttributes.description (ioString, inIndentation + 2) ;
     ioIdx ++ ;
     internalDescription (inNode->mSupPtr, ioString, inIndentation, ioIdx) ;
@@ -334,16 +334,16 @@ void cSharedMapRoot::description (String & ioString,
                                   const int32_t inIndentation,
                                   const uint32_t inLevel) const {
   if (inLevel > 0) {
-    ioString.appendString ("\n") ;
+    ioString.appendCString ("\n") ;
     ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-    ioString.appendString ("override #") ;
+    ioString.appendCString ("override #") ;
     ioString.appendUnsigned (inLevel) ;
   }
-  ioString.appendString (" (") ;
+  ioString.appendCString (" (") ;
   ioString.appendUnsigned (count ()) ;
-  ioString.appendString (" object") ;
+  ioString.appendCString (" object") ;
   ioString.appendString ((count () > 1) ? "s" : "") ;
-  ioString.appendString ("): ") ;
+  ioString.appendCString ("): ") ;
   uint32_t idx = 0 ;
   internalDescription (mRoot, ioString, inIndentation, idx) ;
 }
@@ -352,7 +352,7 @@ void cSharedMapRoot::description (String & ioString,
 
 void AC_GALGAS_map::description (String & ioString,
                                  const int32_t inIndentation) const {
-  ioString.appendString ("<map @") ;
+  ioString.appendCString ("<map @") ;
   ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
   if (isValid ()) {
     const cSharedMapRoot * currentMap = mSharedMap ;
@@ -363,9 +363,9 @@ void AC_GALGAS_map::description (String & ioString,
       currentMap = currentMap->mOverridenMap ;
     }
   }else{
-    ioString.appendString (" not built") ;
+    ioString.appendCString (" not built") ;
   }
-  ioString.appendString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -438,9 +438,9 @@ const cMapNode * cSharedMapRoot::findNodeForKeyInMapOrInOverridenMaps (const GAL
     result = findEntryInMap (key, this) ;
     if (nullptr == result) {
       String errorMessage ;
-      errorMessage.appendString ("the '") ;
+      errorMessage.appendCString ("the '") ;
       errorMessage.appendString (key) ;
-      errorMessage.appendString ("' key is not defined in map") ;
+      errorMessage.appendCString ("' key is not defined in map") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
     }
   }
@@ -983,7 +983,7 @@ GALGAS_location cSharedMapRoot::locationForKey (const GALGAS_string & inKey,
     if (nullptr == node) {
       String message = "'locationForKey' map reader run-time error: the '" ;
       message.appendString (key) ;
-      message.appendString ("' does not exist in map") ;
+      message.appendCString ("' does not exist in map") ;
       inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
     }else{
       cMapElement * p = (cMapElement *) node->mAttributes.ptr () ;
@@ -1229,7 +1229,7 @@ const cMapElement * cSharedMapRoot::searchForReadingAttribute (const GALGAS_stri
     //--- Build error message
       String message = "cannot read attribute in map: the '" ;
       message.appendString (key) ;
-      message.appendString ("' key does not exist") ;
+      message.appendCString ("' key does not exist") ;
     //--- Emit error message
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }
@@ -1275,7 +1275,7 @@ cMapElement * cSharedMapRoot::searchForReadWriteAttribute (const GALGAS_string &
     //--- Build error message
       String message = "cannot read attribute in map: the '" ;
       message.appendString (key) ;
-      message.appendString ("' key does not exist") ;
+      message.appendCString ("' key does not exist") ;
     //--- Emit error message
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }

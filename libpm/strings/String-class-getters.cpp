@@ -846,13 +846,13 @@ String String::HTMLRepresentation (void) const {
   for (int32_t i=0 ; i<length () ; i++) {
     const utf32 c = this->operator () (i COMMA_HERE) ;
     if (UNICODE_VALUE (c) == '&') {
-      result.appendString ("&amp;") ;
+      result.appendCString ("&amp;") ;
     }else if (UNICODE_VALUE (c) == '"') {
-      result.appendString ("&quot;") ;
+      result.appendCString ("&quot;") ;
     }else if (UNICODE_VALUE (c) == '<') {
-      result.appendString ("&lt;") ;
+      result.appendCString ("&lt;") ;
     }else if (UNICODE_VALUE (c) == '>') {
-      result.appendString ("&gt;") ;
+      result.appendCString ("&gt;") ;
     }else{
       result.appendUnicodeChar (c COMMA_HERE) ;
     }
@@ -1174,12 +1174,12 @@ String String::XMLEscapedString (void) const {
   for (int32_t i=0 ; i<length () ; i++) {
     const utf32 c = this->operator () (i COMMA_HERE) ;
     switch (UNICODE_VALUE (c)) {
-    case '"'  : result.appendString ("&quot;") ; break ;
-    case '\'' : result.appendString ("&apos;") ; break ;
-    case '<'  : result.appendString ("&lt;")   ; break ;
-    case '>'  : result.appendString ("&gt;")   ; break ;
-    case '&'  : result.appendString ("&amp;")  ; break ;
-    case '\n' : result.appendString ("&#10;") ; break ;
+    case '"'  : result.appendCString ("&quot;") ; break ;
+    case '\'' : result.appendCString ("&apos;") ; break ;
+    case '<'  : result.appendCString ("&lt;")   ; break ;
+    case '>'  : result.appendCString ("&gt;")   ; break ;
+    case '&'  : result.appendCString ("&amp;")  ; break ;
+    case '\n' : result.appendCString ("&#10;") ; break ;
     default   : result.appendUnicodeChar (c COMMA_HERE) ; break;
     }
   }
@@ -1195,7 +1195,7 @@ String String::stringByStandardizingPath (void) const {
     String path = * this ;
   #endif
   if (path.length () == 0) {
-    path.appendString (".") ;
+    path.appendCString (".") ;
   }else{
   //#define TRACE_stringByStandardizingPath
   //--- Decompose path

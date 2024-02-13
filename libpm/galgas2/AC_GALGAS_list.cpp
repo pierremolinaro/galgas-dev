@@ -92,19 +92,19 @@ AC_GALGAS_list::~ AC_GALGAS_list (void) {
 
 void AC_GALGAS_list::description (String & ioString,
                                   const int32_t inIndentation) const {
-  ioString.appendString ("<list @") ;
+  ioString.appendCString ("<list @") ;
   ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendString (" (") ;
+  ioString.appendCString (" (") ;
   ioString.appendUnsigned (count()) ;
-  ioString.appendString (" object") ;
+  ioString.appendCString (" object") ;
   ioString.appendString ((count() > 1) ? "s" : "") ;
-  ioString.appendString ("):") ;
+  ioString.appendCString ("):") ;
   if (isValid ()) {
     mSharedArray.description (ioString, inIndentation) ;
   }else{
-    ioString.appendString (" not built") ;
+    ioString.appendCString (" not built") ;
   }
-  ioString.appendString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -253,9 +253,9 @@ capCollectionElement AC_GALGAS_list::readObjectAtIndex (const GALGAS_uint & inIn
     }else{
       String s = "objectAtIndex: index (" ;
       s.appendUnsigned (index) ;
-      s.appendString (") >= length (") ;
+      s.appendCString (") >= length (") ;
       s.appendUnsigned (count ()) ;
-      s.appendString (")") ;
+      s.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
     }
   }
@@ -277,9 +277,9 @@ cCollectionElement * AC_GALGAS_list::uniquelyReferencedPointerAtIndex (const GAL
       }else{
         String s = "objectAtIndex: index (" ;
         s.appendUnsigned (index) ;
-        s.appendString (") >= length (") ;
+        s.appendCString (") >= length (") ;
         s.appendUnsigned (count ()) ;
-        s.appendString (")") ;
+        s.appendCString (")") ;
         inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
       }
     }else{
@@ -566,13 +566,13 @@ void cSharedListMapRoot::internalDescription (cListMapNode * inNode,
                                               uint32_t & ioIdx) {
   if (nullptr != inNode) {
     internalDescription (inNode->mInfPtr, ioString, inIndentation, ioIdx) ;
-    ioString.appendString ("\n") ;
+    ioString.appendCString ("\n") ;
     ioString.appendStringMultiple ("| ", inIndentation) ;
-    ioString.appendString ("|-at ") ;
+    ioString.appendCString ("|-at ") ;
     ioString.appendUnsigned (ioIdx) ;
-    ioString.appendString (": key '") ;
+    ioString.appendCString (": key '") ;
     ioString.appendString (inNode->mKey) ;
-    ioString.appendString ("' ") ;
+    ioString.appendCString ("' ") ;
     inNode->myList.description (ioString, inIndentation + 1) ;
     ioIdx ++ ;
     internalDescription (inNode->mSupPtr, ioString, inIndentation, ioIdx) ;
@@ -583,32 +583,32 @@ void cSharedListMapRoot::internalDescription (cListMapNode * inNode,
 
 void cSharedListMapRoot::description (String & ioString,
                                       const int32_t inIndentation) const {
-  ioString.appendString (" (") ;
+  ioString.appendCString (" (") ;
   ioString.appendUnsigned (count ()) ;
-  ioString.appendString (" object") ;
+  ioString.appendCString (" object") ;
   ioString.appendString ((count () > 1) ? "s" : "") ;
-  ioString.appendString ("): ") ;
+  ioString.appendCString ("): ") ;
   uint32_t idx = 0 ;
   internalDescription (mRoot, ioString, inIndentation, idx) ;
-  ioString.appendString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void AC_GALGAS_listmap::description (String & ioString,
                                      const int32_t inIndentation) const {
-  ioString.appendString ("<@") ;
+  ioString.appendCString ("<@") ;
   ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
   if (isValid ()) {
-    ioString.appendString (": ") ;
+    ioString.appendCString (": ") ;
     ioString.appendUnsigned (count()) ;
-    ioString.appendString (" object") ;
+    ioString.appendCString (" object") ;
     ioString.appendString ((count() > 1) ? "s" : "") ;
     mSharedListMap->description (ioString, inIndentation) ;
   }else{
-    ioString.appendString (": not built") ;
+    ioString.appendCString (": not built") ;
   }
-  ioString.appendString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------

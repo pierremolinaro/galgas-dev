@@ -70,25 +70,25 @@ void cLexiqueIntrospection::handleGetKeywordListOption (Compiler * inCompiler) {
   const String option = gOption_galgas_5F_builtin_5F_options_outputKeywordList.readProperty_value () ;
   if (option != "") {
     const String optionFormat = "lexique_name:list_name:columns:prefix:postfix:path" ;
-    gCout.appendString ("Option \"--") ;
+    gCout.appendCString ("Option \"--") ;
     gCout.appendString (gOption_galgas_5F_builtin_5F_options_outputKeywordList.mCommandString) ;
-    gCout.appendString ("=") ;
+    gCout.appendCString ("=") ;
     gCout.appendString (option) ;
-    gCout.appendString ("\":\n") ;
+    gCout.appendCString ("\":\n") ;
     TC_UniqueArray <String> components ;
     option.componentsSeparatedByString (":", components) ;
     if (components.count () != 6) {
       String message = "invalid option ; should be \"--" ;
       message.appendString (gOption_galgas_5F_builtin_5F_options_outputKeywordList.mCommandString) ;
-      message.appendString ("=") ;
+      message.appendCString ("=") ;
       message.appendString (optionFormat + "\"") ;
       inCompiler->onTheFlyRunTimeError (message COMMA_HERE) ;
     }else if (!components (2 COMMA_HERE).isUnsignedInteger ()) {
       String message = "invalid option ; in \"--" ;
       message.appendString (gOption_galgas_5F_builtin_5F_options_outputKeywordList.mCommandString) ;
-      message.appendString ("=") ;
+      message.appendCString ("=") ;
       message.appendString (optionFormat + "\", ") ;
-      message.appendString ("\"columns\" should be an decimal unsigned number") ;
+      message.appendCString ("\"columns\" should be an decimal unsigned number") ;
       inCompiler->onTheFlyRunTimeError (message COMMA_HERE) ;
     }else{
       const uint32_t columns = components (2 COMMA_HERE).unsignedIntegerValue () ;
@@ -101,12 +101,12 @@ void cLexiqueIntrospection::handleGetKeywordListOption (Compiler * inCompiler) {
       if (!found) {
         String message = "invalid option ; in \"--" ;
         message.appendString (gOption_galgas_5F_builtin_5F_options_outputKeywordList.mCommandString) ;
-        message.appendString ("=") ;
+        message.appendCString ("=") ;
         message.appendString (optionFormat + "\", ") ;
-        message.appendString ("available values for \"lexique_name:list_name\" are:") ;
+        message.appendCString ("available values for \"lexique_name:list_name\" are:") ;
         TC_UniqueArray <String> keywordListNames ; getKeywordListNames (keywordListNames) ;
         for (int32_t i=0 ; i<keywordListNames.count () ; i++) {
-          message.appendString ("  - ") ;
+          message.appendCString ("  - ") ;
           message.appendString (keywordListNames (i COMMA_HERE)) ;
           message.appendNewLine () ;
         }
@@ -115,24 +115,24 @@ void cLexiqueIntrospection::handleGetKeywordListOption (Compiler * inCompiler) {
         uint32_t idx = 0 ;
         String s ;
         for (int32_t i=0 ; i<nameList.count() ; i++) {
-          s.appendString ("  ") ;
+          s.appendCString ("  ") ;
           s.appendString (prefix) ;
           s.appendString (nameList (i COMMA_HERE)) ;
           s.appendString (postfix) ;
-          s.appendString ("  ") ;
+          s.appendCString ("  ") ;
           idx += 1 ;
           if (idx < columns) {
-            s.appendString ("&") ;
+            s.appendCString ("&") ;
           }else{
-            s.appendString (" \\\\\n") ;
+            s.appendCString (" \\\\\n") ;
             idx = 0 ;
           }
         }
         if (idx > 0) {
           for (uint32_t i = idx+1 ; i<columns ; i++) {
-            s.appendString ("  &  ") ;
+            s.appendCString ("  &  ") ;
           }
-          s.appendString ("  \\\\\n") ;
+          s.appendCString ("  \\\\\n") ;
         }
         const String path = components (5 COMMA_HERE) ;
         FileManager::writeStringToFile (s, path) ;

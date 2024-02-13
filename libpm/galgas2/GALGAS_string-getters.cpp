@@ -585,9 +585,9 @@ GALGAS_char GALGAS_string::getter_characterAtIndex (const GALGAS_uint & inIndex,
     if (idx >= stringLength) {
       String message = "string index (" ;
       message.appendSigned (idx) ;
-      message.appendString (") too large (string length: ") ;
+      message.appendCString (") too large (string length: ") ;
       message.appendSigned (stringLength) ;
-      message.appendString (")") ;
+      message.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
     }else{
       result = GALGAS_char (mString (idx COMMA_HERE)) ;
@@ -666,9 +666,9 @@ GALGAS_sint GALGAS_string::getter_commandWithArguments (const GALGAS_stringlist 
   if (isValid () && inArguments.isValid ()) {
     String command = String ("'") + mString + "'" ;
     for (uint32_t i=0 ; i<inArguments.count () ; i++) {
-      command.appendString (" '") ;
+      command.appendCString (" '") ;
       command.appendString (inArguments.getter_mValueAtIndex (GALGAS_uint (i), inCompiler COMMA_THERE).stringValue ()) ;
-      command.appendString ("'") ;
+      command.appendCString ("'") ;
     }
     result = GALGAS_sint (::system (command.cString ())) ;
   }
@@ -684,9 +684,9 @@ GALGAS_string GALGAS_string::getter_hiddenCommandWithArguments (const GALGAS_str
   if (isValid () && inArguments.isValid ()) {
     String command = String ("'") + mString + "'" ;
     for (uint32_t i=0 ; i<inArguments.count () ; i++) {
-      command.appendString (" '") ;
+      command.appendCString (" '") ;
       command.appendString (inArguments.getter_mValueAtIndex (GALGAS_uint (i), inCompiler COMMA_THERE).stringValue ()) ;
-      command.appendString ("'") ;
+      command.appendCString ("'") ;
     }
     result = GALGAS_string (command).getter_popen (inCompiler COMMA_THERE) ;
   }
@@ -706,7 +706,7 @@ static void recursiveSearchForRegularFiles (const String & inUnixStartPath,
     while (current != nullptr) {
       if (current->d_name [0] != '.') {
         String name = nativeStartPath ;
-        name.appendString ("/") ;
+        name.appendCString ("/") ;
         name.appendString (current->d_name) ;
         if (FileManager::directoryExistsWithNativePath (name)) {
           if (inRecursiveSearch) {
@@ -754,7 +754,7 @@ static void recursiveSearchForHiddenFiles (const String & inUnixStartPath,
     while (current != nullptr) {
       if ((strlen (current->d_name) > 1) && (current->d_name [0] == '.') && (strcmp (current->d_name, "..") != 0)) {
         String name = nativeStartPath ;
-        name.appendString ("/") ;
+        name.appendCString ("/") ;
         name.appendString (current->d_name) ;
         if (FileManager::directoryExistsWithNativePath (name)) {
           if (inRecursiveSearch) {
@@ -802,7 +802,7 @@ static void recursiveSearchForDirectories (const String & inUnixStartPath,
     while (current != nullptr) {
       if (current->d_name [0] != '.') {
         String name = nativeStartPath ;
-        name.appendString ("/") ;
+        name.appendCString ("/") ;
         name.appendString (current->d_name) ;
         if (FileManager::directoryExistsWithNativePath (name)) {
           const String relativePath = inRelativePath + current->d_name ;
@@ -852,7 +852,7 @@ static void recursiveSearchForRegularFiles (const String & inUnixStartPath,
     while (current != nullptr) {
       if (current->d_name [0] != '.') {
         String name = nativeStartPath ;
-        name.appendString ("/") ;
+        name.appendCString ("/") ;
         name.appendString (current->d_name) ;
         if (FileManager::directoryExistsWithNativePath (name)) {
           if (inRecursiveSearch) {
@@ -915,7 +915,7 @@ static void recursiveSearchForDirectories (const String & inUnixStartPath,
     while (current != nullptr) {
       if (current->d_name [0] != '.') {
         String name = nativeStartPath ;
-        name.appendString ("/") ;
+        name.appendCString ("/") ;
         name.appendString (current->d_name) ;
         if (FileManager::directoryExistsWithNativePath (name)) {
         //--- Look for extension
@@ -1264,29 +1264,29 @@ GALGAS_bool GALGAS_string::getter_isSymbolicLink (UNUSED_LOCATION_ARGS) const {
       String errorMessage ;
       bool ok = 0 != CreatePipe (& g_hChildStd_OUT_Rd, & g_hChildStd_OUT_Wr, & saAttr, 0) ;
       if (! ok) {
-        errorMessage.appendString ("@string popen: 'CreatePipe' error") ;
+        errorMessage.appendCString ("@string popen: 'CreatePipe' error") ;
       }else{
         ok = SetHandleInformation (g_hChildStd_OUT_Rd, HANDLE_FLAG_INHERIT, 0) ;
         if (! ok) {
-          errorMessage.appendString ("@string popen: 'SetHandleInformation' error") ;
+          errorMessage.appendCString ("@string popen: 'SetHandleInformation' error") ;
         }
       }
       if (ok) {
         ok = CreatePipe (& g_hChildStd_IN_Rd, & g_hChildStd_IN_Wr, & saAttr, 0) ;
         if (! ok) {
-          errorMessage.appendString ("@string popen: 'CreatePipe (2)' error") ;
+          errorMessage.appendCString ("@string popen: 'CreatePipe (2)' error") ;
         }
       }
       if (ok) {
         ok = SetHandleInformation (g_hChildStd_IN_Wr, HANDLE_FLAG_INHERIT, 0) ;
         if (! ok) {
-          errorMessage.appendString ("@string popen: 'SetHandleInformation (2)' error") ;
+          errorMessage.appendCString ("@string popen: 'SetHandleInformation (2)' error") ;
         }
       }
       if (ok) {
         ok = CreateChildProcess (g_hChildStd_OUT_Wr, g_hChildStd_IN_Rd, mString.cString ()) ;
         if (! ok) {
-          errorMessage.appendString ("@string popen: 'CreateChildProcess' error") ;
+          errorMessage.appendCString ("@string popen: 'CreateChildProcess' error") ;
         }
       }
       if (! ok) {

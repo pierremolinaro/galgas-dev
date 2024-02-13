@@ -189,13 +189,13 @@ GALGAS_string GALGAS_sint::getter_xString (UNUSED_LOCATION_ARGS) const {
 
 void GALGAS_sint::description (String & ioString,
                                const int32_t /* inIndentation */) const {
-  ioString.appendString ("<@sint:") ;
+  ioString.appendCString ("<@sint:") ;
   if (isValid ()) {
     ioString.appendSigned (mSIntValue) ;
   }else{
-    ioString.appendString ("not built") ;
+    ioString.appendCString ("not built") ;
   }
-  ioString.appendString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------

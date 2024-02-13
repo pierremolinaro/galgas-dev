@@ -129,15 +129,15 @@ void setExecutionMode (String & outErrorMessage) {
       ok = ((c >= 'A') && (c <= 'Z')) || ((c >= 'a') && (c <= 'z')) ;
     }
     if (! ok) {
-      outErrorMessage.appendString ("** Fatal Error: invalid '--mode=latex:suffix' parameter; suffix should contain only letters\n") ;
+      outErrorMessage.appendCString ("** Fatal Error: invalid '--mode=latex:suffix' parameter; suffix should contain only letters\n") ;
     }
   }else if ((modeComponents.count () == 1) && (mode == "latex")) {
     gExecutionMode = kExecutionModeLatex ;
     gModeLatexSuffixString = "" ;
   }else{
-    outErrorMessage.appendString ("** Fatal Error: invalid '--mode=") ;
+    outErrorMessage.appendCString ("** Fatal Error: invalid '--mode=") ;
     outErrorMessage.appendString (mode) ;
-    outErrorMessage.appendString ("' parameter; it should be:\n"
+    outErrorMessage.appendCString ("' parameter; it should be:\n"
       "  --mode=                     default mode: perform compilation;\n"
       "  --mode=lexical-only         perform only lexical analysis;\n"
       "  --mode=syntax-only          perform only syntax analysis;\n"

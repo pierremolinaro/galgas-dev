@@ -189,7 +189,7 @@ void UInt128::operator /= (const uint32_t inDivisor) {
 String UInt128::decimalString (void) const {
   String result ;
   if (isZero()) {
-    result.appendString ("0") ;
+    result.appendCString ("0") ;
   }else{
     UInt128 value = *this ;
     TC_UniqueArray <uint32_t> values ;

@@ -402,26 +402,26 @@ GALGAS_binaryset GALGAS_binaryset::operator_tilde (UNUSED_LOCATION_ARGS) const {
 
 void GALGAS_binaryset::description (String & ioString,
                                     const int32_t /* inIndentation */) const {
-  ioString.appendString ("<@binaryset: ") ;
+  ioString.appendCString ("<@binaryset: ") ;
   if (isValid ()) {
     if (mBDD.isFalse ()){
-      ioString.appendString ("false") ;
+      ioString.appendCString ("false") ;
     }else if (mBDD.isTrue ()){
-      ioString.appendString ("true") ;
+      ioString.appendCString ("true") ;
     }else{
       TC_UniqueArray <String> stringArray ;
       mBDD.buildCompressedBigEndianStringValueArray (stringArray COMMA_HERE) ;
       for (int32_t i=0 ; i<stringArray.count () ; i++) {
         if (i != 0) {
-          ioString.appendString (", ") ;
+          ioString.appendCString (", ") ;
         }
         ioString.appendString (stringArray (i COMMA_HERE)) ;
       }
     }
   }else{
-    ioString.appendString ("not built") ;
+    ioString.appendCString ("not built") ;
   }
-  ioString.appendString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -649,11 +649,11 @@ GALGAS_stringlist GALGAS_binaryset::getter_compressedStringValueList (const GALG
     const uint32_t actualVariableCount = mBDD.significantVariableCount () ;
     if (actualVariableCount > variableCount) {
       String message ;
-      message.appendString ("variable count argument (") ;
+      message.appendCString ("variable count argument (") ;
       message.appendSigned (variableCount) ;
-      message.appendString (") is lower than actual variable count (") ;
+      message.appendCString (") is lower than actual variable count (") ;
       message.appendSigned (actualVariableCount) ;
-      message.appendString ("); it should be greater or equal") ;
+      message.appendCString ("); it should be greater or equal") ;
       inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
     }else{
       TC_UniqueArray <String> valuesArray ;

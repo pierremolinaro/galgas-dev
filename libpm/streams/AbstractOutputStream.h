@@ -51,6 +51,7 @@ class AbstractOutputStream {
   public: void appendUTF32LiteralStringConstant (const String & inUTF32String, const bool inAppendZeroTerminator) ;
 
 //--- Appending C string
+  public: void appendCString (const String inString) ;
   public: void appendCString (const char * inCstring) ;
   public: void appendString (const char * inCstring, const int32_t inCount) ;
   public: void appendString (const std::initializer_list <utf32> & inSource) ;

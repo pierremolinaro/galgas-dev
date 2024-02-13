@@ -143,22 +143,22 @@ String DirectedGraph::graphvizString (const TC_UniqueArray <String> & inNodeName
   String s = "digraph G {\n" ;
   for (int32_t i=0 ; i<mEdges.count () ; i++) {
     if (isNodeDefined (uint32_t (i))) {
-      s.appendString ("  ") ;
+      s.appendCString ("  ") ;
       s.appendString (inNodeNameArray (i COMMA_HERE).utf8RepresentationEnclosedWithin ('"', false)) ;
-      s.appendString (" [shape=rectangle] ;\n") ;
+      s.appendCString (" [shape=rectangle] ;\n") ;
       const UInt32Set targetSet = mEdges (i COMMA_HERE) ;
       TC_UniqueArray <uint32_t> targetList ; targetSet.getValueArray (targetList) ;
       for (int32_t j=0 ; j<targetList.count () ; j++) {
         const uint32_t targetIndex = targetList (j COMMA_HERE) ;
-        s.appendString ("  ") ;
+        s.appendCString ("  ") ;
         s.appendString (inNodeNameArray (i COMMA_HERE).utf8RepresentationEnclosedWithin ('"', false)) ;
-        s.appendString (" -> ") ;
+        s.appendCString (" -> ") ;
         s.appendString (inNodeNameArray (int32_t (targetIndex) COMMA_HERE).utf8RepresentationEnclosedWithin ('"', false)) ;
-        s.appendString (" ;\n") ;
+        s.appendCString (" ;\n") ;
       }
     }
   }
-  s.appendString ("}\n") ;
+  s.appendCString ("}\n") ;
   return s ;
 }
 

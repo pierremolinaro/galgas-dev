@@ -31,14 +31,12 @@ abstract method @templateInstructionForGeneration templateCodeGeneration
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-proc templateCodeGenerationForListInstruction
-  ?let @templateInstructionListForGeneration inInstructionList
-  ?!@string ioGeneratedCode
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  ?!@bool ioUseColumnMarker
- {
+proc templateCodeGenerationForListInstruction ?let @templateInstructionListForGeneration inInstructionList
+                                              ?!@string ioGeneratedCode
+                                              ?!@stringset ioInclusionSet
+                                              ?!@uint ioTemporaryVariableIndex
+                                              ?!@stringset ioUnusedVariableCppNameSet
+                                              ?!@bool ioUseColumnMarker {
   for (mInstruction) in inInstructionList do
     [mInstruction templateCodeGeneration
       !?ioGeneratedCode

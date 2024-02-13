@@ -128,7 +128,7 @@ void cVocabulary::addNonTerminalSymbol (const char * inPrefix,
   String nt  ;
   nt.appendString (inPrefix) ;
   nt.appendString (inClassName.identifierRepresentation ()) ;
-  nt.appendString ("_") ;
+  nt.appendCString ("_") ;
   nt.appendSigned (inOrderInSourceFile) ;
   mStringsArray.appendObject (nt) ;
   mGenerateChoiceArray.appendObject (inGenerateChoice) ;
@@ -154,13 +154,13 @@ void cVocabulary::printInFile (AbstractOutputStream & inHTMLfile,
                                const int32_t inSymbolIndex
                                COMMA_LOCATION_ARGS) const {
   if (inSymbolIndex < mTerminalSymbolsCount) {
-    inHTMLfile.appendString ("$") ;
+    inHTMLfile.appendCString ("$") ;
     inHTMLfile.appendString (mStringsArray (inSymbolIndex COMMA_THERE)) ;
-    inHTMLfile.appendString ("$") ;
+    inHTMLfile.appendCString ("$") ;
   }else{
-    inHTMLfile.appendString ("<") ;
+    inHTMLfile.appendCString ("<") ;
     inHTMLfile.appendString (mStringsArray (inSymbolIndex COMMA_THERE)) ;
-    inHTMLfile.appendString (">") ;
+    inHTMLfile.appendCString (">") ;
   }
 }
 

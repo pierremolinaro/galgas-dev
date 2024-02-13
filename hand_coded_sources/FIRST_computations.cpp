@@ -106,11 +106,11 @@ displayAndCheckFIRSTsets (HTMLString & ioHTMLFileContents,
   const uint64_t m = FIRST_with_empty_relation.value64Count() ;
   if (inPopulateHTMLHelperString) {
     ioHTMLFileContents.addRawData ("<p>") ;
-    ioHTMLFileContents.appendString ("Calculus completed in ") ;
+    ioHTMLFileContents.appendCString ("Calculus completed in ") ;
     ioHTMLFileContents.appendSigned (inIterationsCount) ;
-    ioHTMLFileContents.appendString (" iterations, ") ;
+    ioHTMLFileContents.appendCString (" iterations, ") ;
     ioHTMLFileContents.appendUnsigned (m) ;
-    ioHTMLFileContents.appendString (" values ;\n"
+    ioHTMLFileContents.appendCString (" values ;\n"
                           "'$$' means the nonterminal can be derived to empty string (see step 4).\n") ;
     ioHTMLFileContents.addRawData ("</p>") ;
     ioHTMLFileContents.addRawData ("<table class=\"result\">") ;
@@ -120,7 +120,7 @@ displayAndCheckFIRSTsets (HTMLString & ioHTMLFileContents,
       ioHTMLFileContents.addRawData ("</code></td><td><code>") ;
       const int32_t length = outFIRSTarray (symbol COMMA_HERE).count () ;
       for (int32_t e=0 ; e<length ; e++) {
-        ioHTMLFileContents.appendString (" ") ;
+        ioHTMLFileContents.appendCString (" ") ;
         inVocabulary.printInFile (ioHTMLFileContents, (int32_t) outFIRSTarray (symbol COMMA_HERE) (e COMMA_HERE) COMMA_HERE) ;
       }
       ioHTMLFileContents.addRawData ("</code></td></tr>") ;
@@ -143,7 +143,7 @@ displayAndCheckFIRSTsets (HTMLString & ioHTMLFileContents,
 //--- Display nonterminal symbols in error
   if (inPopulateHTMLHelperString) {
     ioHTMLFileContents.addRawData ("<p>") ;
-    ioHTMLFileContents.appendString ("Every useful nonterminal should"
+    ioHTMLFileContents.appendCString ("Every useful nonterminal should"
                    " either have a non empty FIRST,"
                    " either be derived to empty string,"
                    " either both."
@@ -152,21 +152,21 @@ displayAndCheckFIRSTsets (HTMLString & ioHTMLFileContents,
     ioHTMLFileContents.addRawData ("<p>") ;
     if (ntInErrorCount == 0) {
       ioHTMLFileContents.addRawData ("<span class=\"success\">") ;
-      ioHTMLFileContents.appendString ("All FIRST are correct.\n\n") ;
+      ioHTMLFileContents.appendCString ("All FIRST are correct.\n\n") ;
       ioHTMLFileContents.addRawData ("</span>") ;
     }else{
       ioHTMLFileContents.addRawData ("<span class=\"error\">") ;
-      ioHTMLFileContents.appendString ("Error : ") ;
+      ioHTMLFileContents.appendCString ("Error : ") ;
       ioHTMLFileContents.appendUnsigned (ntInErrorCount) ;
-      ioHTMLFileContents.appendString (" nonterminal symbol") ;
+      ioHTMLFileContents.appendCString (" nonterminal symbol") ;
       ioHTMLFileContents.appendString ((ntInErrorCount>1) ? " has" : "s have") ;
-      ioHTMLFileContents.appendString (" an empty FIRST :") ;
+      ioHTMLFileContents.appendCString (" an empty FIRST :") ;
       TC_UniqueArray <uint64_t> errorArray_relation ;
       ntInError_relation.getValueArray (errorArray_relation) ;
       ioHTMLFileContents.addRawData ("<code>") ;
       for (int32_t i=0 ; i<errorArray_relation.count () ; i++) {
         const uint64_t ntInError = errorArray_relation (i COMMA_HERE) ;
-        ioHTMLFileContents.appendString (" ") ;
+        ioHTMLFileContents.appendCString (" ") ;
         ioHTMLFileContents.appendString (ntInError_relation.configuration().constantNameForVariableAndValue (0, (uint32_t) ntInError COMMA_HERE)) ;
       }
       ioHTMLFileContents.addRawData ("</code>") ;
@@ -176,9 +176,9 @@ displayAndCheckFIRSTsets (HTMLString & ioHTMLFileContents,
   }
   if (inVerboseOptionOn) {
     if (ntInErrorCount == 0) {
-      gCout.appendString ("ok.\n") ;
+      gCout.appendCString ("ok.\n") ;
     }else{
-      gCout.appendString ("error.\n") ;
+      gCout.appendCString ("error.\n") ;
     }
     gCout.flush () ;
   }
@@ -202,7 +202,7 @@ FIRST_computations (const cPureBNFproductionsList & inPureBNFproductions,
   const C_RelationConfiguration vocabularyConfiguration = inUsefulSymbols.configuration () ;
 //--- Console display
   if (inVerboseOptionOn) {
-    gCout.appendString ("  FIRST sets... ") ;
+    gCout.appendCString ("  FIRST sets... ") ;
     gCout.flush () ;
   }
 //--- Print in BNF file

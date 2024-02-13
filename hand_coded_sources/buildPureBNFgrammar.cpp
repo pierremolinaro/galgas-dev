@@ -472,11 +472,11 @@ printPureBNFgrammarInBNFfile (HTMLString & inHTMLfile,
                               const cPureBNFproductionsList & inProductions) {
   const int32_t productionsCount = inProductions.mProductionArray.count () ;
   inHTMLfile.addRawData ("<p><a name=\"pure_bnf\"></a>") ;
-  inHTMLfile.appendString ("Listing of the ") ;
+  inHTMLfile.appendCString ("Listing of the ") ;
   inHTMLfile.appendSigned (productionsCount) ;
-  inHTMLfile.appendString (" BNF production") ;
+  inHTMLfile.appendCString (" BNF production") ;
   inHTMLfile.appendString ((productionsCount > 1) ? "s" : "") ;
-  inHTMLfile.appendString (" :") ;
+  inHTMLfile.appendCString (" :") ;
   inHTMLfile.addRawData ("</p>\n<table class=\"result\">") ;
   for (int32_t i=0 ; i<productionsCount ; i++) {
     const cProduction & p = inProductions.mProductionArray (i COMMA_HERE) ;
@@ -486,20 +486,20 @@ printPureBNFgrammarInBNFfile (HTMLString & inHTMLfile,
     inHTMLfile.addRawData ("\">") ;
     inHTMLfile.appendSigned (i) ;
     inHTMLfile.addRawData ("</a></td><td class=\"result_line\">") ;
-    inHTMLfile.appendString ("rule ") ;
+    inHTMLfile.appendCString ("rule ") ;
     inHTMLfile.addRawData ("<code>") ;
     inVocabulary.printInFile (inHTMLfile, p.leftNonTerminalIndex () COMMA_HERE) ;
     inHTMLfile.addRawData ("</code>") ;
     if (i == (productionsCount - 1)) {
       inHTMLfile.addRawData ("<br>") ;
-      inHTMLfile.appendString ("(added production)") ;
+      inHTMLfile.appendCString ("(added production)") ;
     }else{
       inHTMLfile.addRawData ("<br>") ;
-      inHTMLfile.appendString ("file '") ;
+      inHTMLfile.appendCString ("file '") ;
       inHTMLfile.appendString (p.sourceFileName ()) ;
-      inHTMLfile.appendString ("'") ;
+      inHTMLfile.appendCString ("'") ;
       inHTMLfile.addRawData ("<br>") ;
-      inHTMLfile.appendString ("line ") ;
+      inHTMLfile.appendCString ("line ") ;
       inHTMLfile.appendSigned (p.lineDefinition ()) ;
     }
     inHTMLfile.addRawData ("</td><td><code>") ;
@@ -515,7 +515,7 @@ printPureBNFgrammarInBNFfile (HTMLString & inHTMLfile,
   inHTMLfile.addRawData ("</table><p><a name=\"vocabulary\"></a></p>"
                             "<table class=\"result\">"
                             "<tr><td class=\"result_title\"colspan=\"2\">") ;
-  inHTMLfile.appendString ("Vocabulary") ;
+  inHTMLfile.appendCString ("Vocabulary") ;
   inHTMLfile.addRawData ("</td></tr>\n") ;
   for (int32_t s=0 ; s<inVocabulary.getAllSymbolsCount () ; s++) {
     inHTMLfile.addRawData ("<tr class=\"result_line\"><td class=\"result_line\">") ;

@@ -959,7 +959,7 @@ static void printLineWithSeparator (AbstractOutputStream & outputStream,
                                     const TC_UniqueArray <char> & inValueArray) {
   for (int32_t i=inValueArray.count () - 1 ; i>=0 ; i--) {
     if ((i % 4) == 3) {
-      outputStream.appendString (" ") ;
+      outputStream.appendCString (" ") ;
     }
     outputStream.appendASCIIChar (inValueArray (i COMMA_HERE)) ;
   }
@@ -1017,9 +1017,9 @@ static void internalPrintWithSeparator (AbstractOutputStream & outputStream,
 
 void C_BDD::print (AbstractOutputStream & outputStream) const {
   if (mBDDvalue == 0) {
-    outputStream.appendString ("(false)\n") ;
+    outputStream.appendCString ("(false)\n") ;
   }else if (mBDDvalue == 1) {
-    outputStream.appendString ("(true)\n") ;
+    outputStream.appendCString ("(true)\n") ;
   }else{
     const uint32_t nodeIndex = nodeIndexForRoot (mBDDvalue COMMA_HERE) ;
     const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
@@ -1051,7 +1051,7 @@ void C_BDD::printHeader (AbstractOutputStream & outputStream) const {
       divisor /= 10 ;
       for (int32_t i=var ; i>=0 ; i--) {
         if ((i % 4) == 3) {
-          outputStream.appendString (" ") ;
+          outputStream.appendCString (" ") ;
         }
         const int32_t v = (i / divisor) % 10 ;
         outputStream.appendSigned (v) ;
@@ -1060,9 +1060,9 @@ void C_BDD::printHeader (AbstractOutputStream & outputStream) const {
     }
     for (int32_t i=var ; i>=0 ; i--) {
       if ((i % 4) == 3) {
-        outputStream.appendString ("-") ;
+        outputStream.appendCString ("-") ;
       }
-      outputStream.appendString ("-") ;
+      outputStream.appendCString ("-") ;
     }
     outputStream.appendNewLine () ;
   }
@@ -1089,7 +1089,7 @@ static void printLineWithSeparator (AbstractOutputStream & outputStream,
                                     const TC_UniqueArray <char> & inValueArray) {
   int32_t bitIndex = inValueArray.count () - 1 ;
   for (int32_t i=0 ; i<inBitCounts.count () ; i++) {
-    outputStream.appendString (" ") ;
+    outputStream.appendCString (" ") ;
     outputStream.appendString (String::spaces (inValueSeparation (i COMMA_HERE))) ;
     for (int32_t j=0 ; j<inBitCounts (i COMMA_HERE) ; j++) {
       outputStream.appendASCIIChar (inValueArray (bitIndex COMMA_HERE)) ;
@@ -1165,7 +1165,7 @@ void C_BDD::print (AbstractOutputStream & outputStream,
   }
 //--- Print header
   for (int32_t i=0 ; i<inVariablesNames.count () ; i++) {
-    outputStream.appendString (" ") ;
+    outputStream.appendCString (" ") ;
     outputStream.appendString (String::spaces (variableNameSeparation (i COMMA_HERE))) ;
     outputStream.appendString (inVariablesNames (i COMMA_HERE)) ;
   }
@@ -1182,10 +1182,10 @@ void C_BDD::print (AbstractOutputStream & outputStream,
                    const int32_t inPrefixedSpaceCount) const {
   if (mBDDvalue == 0) {
     outputStream.appendString (String::spaces (inPrefixedSpaceCount)) ;
-    outputStream.appendString ("(false)\n") ;
+    outputStream.appendCString ("(false)\n") ;
   }else if (mBDDvalue == 1) {
     outputStream.appendString (String::spaces (inPrefixedSpaceCount)) ;
-    outputStream.appendString ("(true)\n") ;
+    outputStream.appendCString ("(true)\n") ;
   }else{
     uint32_t totalBitCount = 0 ;
     for (int32_t i=0 ; i<inBitCounts.count () ; i++) {
@@ -1220,30 +1220,30 @@ static void buildGraphvizRepresentation (String & ioString,
     const uint32_t THENbranch = gNodeArray [nodeIndex].mTHEN ;
     String THENlabel ;
     if (THENbranch == 0) {
-      THENlabel.appendString ("F") ;
+      THENlabel.appendCString ("F") ;
     }else if (THENbranch == 1) {
-      THENlabel.appendString ("T") ;
+      THENlabel.appendCString ("T") ;
     }else{
-      THENlabel.appendString ("<f1>") ;
+      THENlabel.appendCString ("<f1>") ;
     }
     const uint32_t ELSEbranch = gNodeArray [nodeIndex].mELSE ;
     String ELSElabel ;
     if (ELSEbranch == 0) {
-      ELSElabel.appendString ("F") ;
+      ELSElabel.appendCString ("F") ;
     }else if (ELSEbranch == 1) {
-      ELSElabel.appendString ("T") ;
+      ELSElabel.appendCString ("T") ;
     }else{
-      ELSElabel.appendString ("<f0>") ;
+      ELSElabel.appendCString ("<f0>") ;
     }
-    ioString.appendString ("  ") ;
+    ioString.appendCString ("  ") ;
     ioString.appendString (node) ;
-    ioString.appendString (" [label=\"{") ;
+    ioString.appendCString (" [label=\"{") ;
     ioString.appendString (inBitNames (var COMMA_HERE)) ;
-    ioString.appendString ("|{") ;
+    ioString.appendCString ("|{") ;
     ioString.appendString (ELSElabel) ;
-    ioString.appendString ("|") ;
+    ioString.appendCString ("|") ;
     ioString.appendString (THENlabel) ;
-    ioString.appendString ("}}\"]\n") ;
+    ioString.appendCString ("}}\"]\n") ;
     if (ELSEbranch > 1) {
       buildGraphvizRepresentation (ioString, node + ":f0:c", ELSEbranch, inBitNames) ;
     }
@@ -1251,15 +1251,15 @@ static void buildGraphvizRepresentation (String & ioString,
       buildGraphvizRepresentation (ioString, node + ":f1:c", THENbranch, inBitNames) ;
     }
   }
-  ioString.appendString ("  ") ;
+  ioString.appendCString ("  ") ;
   ioString.appendString (inSourceNode) ;
-  ioString.appendString (" -> ") ;
+  ioString.appendCString (" -> ") ;
   ioString.appendString (node) ;
-  ioString.appendString ("") ;
+  ioString.appendCString ("") ;
   if ((inBDDValue & 1) != 0) {
-    ioString.appendString (" [dir=both, arrowtail=dot]") ;
+    ioString.appendCString (" [dir=both, arrowtail=dot]") ;
   }
-  ioString.appendString (" ;\n") ;
+  ioString.appendCString (" ;\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1282,18 +1282,18 @@ String C_BDD::graphvizRepresentation (void) const {
 String C_BDD::graphvizRepresentationWithNames (const TC_UniqueArray <String> & inBitNames) const {
   unmarkAllExistingBDDnodes () ;
   String result ;
-  result.appendString ("digraph G {\n") ;
+  result.appendCString ("digraph G {\n") ;
   if (mBDDvalue == 0) {
-    result.appendString ("  N [label=\"F\", shape=rectangle]\n") ;
+    result.appendCString ("  N [label=\"F\", shape=rectangle]\n") ;
   }else if (mBDDvalue == 1) {
-    result.appendString ("  N [label=\"T\", shape=rectangle]\n") ;
+    result.appendCString ("  N [label=\"T\", shape=rectangle]\n") ;
   }else{
-    result.appendString ("  edge [arrowhead=vee, tailclip=false]\n"
+    result.appendCString ("  edge [arrowhead=vee, tailclip=false]\n"
                          "  node [fontname=courier, shape=record]\n"
                          "  N [label=\"\", shape=rectangle]\n") ;
     buildGraphvizRepresentation (result, "N", mBDDvalue, inBitNames) ;
   }
-  result.appendString ("}\n") ;
+  result.appendCString ("}\n") ;
   return result ;
 }
 
@@ -1360,7 +1360,7 @@ buildCompressedLittleEndianStringValueArray (TC_UniqueArray <String> & outString
   if (bothBranches (gNodeArray [nodeIndex]) != 0) {
     String displayString ;
     for (int32_t i=0 ; i<=((int32_t) gNodeArray [nodeIndex].mVariableIndex) ; i++) {
-      displayString.appendString ("X") ;
+      displayString.appendCString ("X") ;
     }
     internalPrintBDDInLittleEndianStringArray (mBDDvalue, displayString, gNodeArray [nodeIndex].mVariableIndex, outStringArray COMMA_THERE) ;
   }
@@ -1374,7 +1374,7 @@ buildCompressedLittleEndianStringValueArray (TC_UniqueArray <String> & outString
                                              COMMA_LOCATION_ARGS) const {
   String displayString ;
   for (int32_t i=0 ; i<((int32_t) inVariableCount) ; i++) {
-    displayString.appendString ("X") ;
+    displayString.appendCString ("X") ;
   }
   internalPrintBDDInLittleEndianStringArray (mBDDvalue, displayString, inVariableCount, outStringArray COMMA_THERE) ;
 }
@@ -1437,7 +1437,7 @@ buildCompressedBigEndianStringValueArray (TC_UniqueArray <String> & outStringArr
   if (bothBranches (gNodeArray [nodeIndex]) != 0) {
     String displayString ;
     for (int32_t i=0 ; i<=((int32_t) gNodeArray [nodeIndex].mVariableIndex) ; i++) {
-      displayString.appendString ("X") ;
+      displayString.appendCString ("X") ;
     }
     internalPrintBDDInBigEndianStringArray (mBDDvalue, displayString, gNodeArray [nodeIndex].mVariableIndex, gNodeArray [nodeIndex].mVariableIndex, outStringArray COMMA_THERE) ;
   }
@@ -1451,7 +1451,7 @@ buildCompressedBigEndianStringValueArray (TC_UniqueArray <String> & outStringArr
                                  COMMA_LOCATION_ARGS) const {
   String displayString ;
   for (int32_t i=0 ; i<((int32_t) inVariableCount) ; i++) {
-    displayString.appendString ("X") ;
+    displayString.appendCString ("X") ;
   }
   internalPrintBDDInBigEndianStringArray (mBDDvalue,
                                           displayString,
@@ -2947,13 +2947,13 @@ void C_BDD::markAndSweepUnusedNodes (void) {
     }
   }
   if (C_BDD::displaysInformationMessages ()) {
-    gCout.appendString ("BDD package info: mark and sweep done in ") ;
+    gCout.appendCString ("BDD package info: mark and sweep done in ") ;
     gCout.appendString (timer.timeString ()) ;
-    gCout.appendString (" (nodes ") ;
+    gCout.appendCString (" (nodes ") ;
     gCout.appendUnsigned (previousNodeCount) ;
-    gCout.appendString (" -> ") ;
+    gCout.appendCString (" -> ") ;
     gCout.appendUnsigned (gCurrentNodeCount) ;
-    gCout.appendString (")\n") ;
+    gCout.appendCString (")\n") ;
   }
 }
 
@@ -3134,27 +3134,27 @@ void C_BDD::printBDDpackageOperationsSummary (AbstractOutputStream & inStream) {
   #else
     const uint32_t mode = 32 ;
   #endif
-  inStream.appendString ("\n" "Statistics about BDD package (") ;
+  inStream.appendCString ("\n" "Statistics about BDD package (") ;
   inStream.appendUnsigned (mode) ;
-  inStream.appendString ("-bit mode, ") ;
+  inStream.appendCString ("-bit mode, ") ;
   inStream.appendUnsigned (getBDDnodeSize ()) ;
-  inStream.appendString (" bytes for a BDD node)\n") ;
-  inStream.appendString ("  Current BDD count: ") ;
+  inStream.appendCString (" bytes for a BDD node)\n") ;
+  inStream.appendCString ("  Current BDD count: ") ;
   inStream.appendUnsigned (getBDDinstancesCount ()) ;
-  inStream.appendString ("\n") ;
-  inStream.appendString ("  Created nodes count: ") ;
+  inStream.appendCString ("\n") ;
+  inStream.appendCString ("  Created nodes count: ") ;
   inStream.appendUnsigned (getCreatedNodesCount ()) ;
   inStream.appendNewLine () ;
-  inStream.appendString ("  RAM usage: ") ;
+  inStream.appendCString ("  RAM usage: ") ;
   inStream.appendUnsigned (currentMemoryUsage ()) ;
-  inStream.appendString (" MB\n") ;
+  inStream.appendCString (" MB\n") ;
 //---
-  inStream.appendString ("Unique table:\n") ;
-  inStream.appendString ("  size: ") ;
+  inStream.appendCString ("Unique table:\n") ;
+  inStream.appendCString ("  size: ") ;
   inStream.appendUnsigned (gCollisionMapSize) ;
-  inStream.appendString (" (") ;
+  inStream.appendCString (" (") ;
   inStream.appendUnsigned ((gCollisionMapSize * sizeof (uint32_t)) / 1000000) ;
-  inStream.appendString (" MB)\n") ;
+  inStream.appendCString (" MB)\n") ;
   TC_UniqueArray <uint32_t> entrySizeArray (1 COMMA_HERE) ;
   for (uint32_t i=0 ; i<gCollisionMapSize ; i++) {
     int32_t length = 0 ;
@@ -3171,13 +3171,13 @@ void C_BDD::printBDDpackageOperationsSummary (AbstractOutputStream & inStream) {
   }
   for (int32_t i=0 ; i<entrySizeArray.count () ; i++) {
     if ((entrySizeArray (i COMMA_HERE) > 0) && (gCollisionMapSize > 0)) {
-      inStream.appendString ("  ") ;
+      inStream.appendCString ("  ") ;
       inStream.appendUnsigned (entrySizeArray (i COMMA_HERE)) ;
-      inStream.appendString (" entries of size ") ;
+      inStream.appendCString (" entries of size ") ;
       inStream.appendSigned (i) ;
-      inStream.appendString (" (") ;
+      inStream.appendCString (" (") ;
       inStream.appendUnsigned ((100UL * entrySizeArray (i COMMA_HERE)) / gCollisionMapSize) ;
-      inStream.appendString ("%)\n") ;
+      inStream.appendCString ("%)\n") ;
     }
   }
 }
@@ -3457,7 +3457,7 @@ void cBuildQueryString::action (const bool * tableauDesValeurs,
                                 const uint32_t inVariableCount) {
   String value ;
   if (mStringPtr->length () > 0) {
-    mStringPtr->appendString ("|") ;
+    mStringPtr->appendCString ("|") ;
   }
   for (uint32_t i=inVariableCount ; i>0 ; i--) {
     mStringPtr->appendASCIIChar (char ('0' + tableauDesValeurs [i-1])) ;
@@ -3470,14 +3470,14 @@ String C_BDD::
 queryStringValue (LOCATION_ARGS) const {
   String s ;
   if (isTrue ()) {
-    s.appendString ("X") ;
+    s.appendCString ("X") ;
   }else if (! isFalse ()) {
     TC_UniqueArray <String> stringArray ;
     buildCompressedBigEndianStringValueArray (stringArray COMMA_THERE) ;
     if (stringArray.count () > 0) {
       s.appendString (stringArray (0 COMMA_HERE)) ;
       for (int32_t i=1 ; i<stringArray.count () ; i++) {
-        s.appendString ("|") ;
+        s.appendCString ("|") ;
         s.appendString (stringArray (i COMMA_HERE)) ;
       }
     }

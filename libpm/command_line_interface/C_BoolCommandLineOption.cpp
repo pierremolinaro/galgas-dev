@@ -108,7 +108,7 @@ void C_BoolCommandLineOption::printBoolOptions (void) {
     if (p->mCommandChar != '\0') {
       gCout.setForeColor (kBlueForeColor) ;
       gCout.setTextAttribute (kBoldTextAttribute) ;
-      gCout.appendString ("-") ;
+      gCout.appendCString ("-") ;
       gCout.appendASCIIChar (p->mCommandChar) ;
       gCout.setTextAttribute (kAllAttributesOff) ;
       gCout.appendNewLine () ;
@@ -116,12 +116,12 @@ void C_BoolCommandLineOption::printBoolOptions (void) {
     if (p->mCommandString.length () > 0) {
       gCout.setForeColor (kBlueForeColor) ;
       gCout.setTextAttribute (kBoldTextAttribute) ;
-      gCout.appendString ("--") ;
+      gCout.appendCString ("--") ;
       gCout.appendString (p->mCommandString) ;
       gCout.setTextAttribute (kAllAttributesOff) ;
       gCout.appendNewLine () ;
     }
-    gCout.appendString ("    ") ;
+    gCout.appendCString ("    ") ;
     gCout.appendString (p->mComment) ;
     gCout.appendNewLine () ;
     p = p->mNext ;

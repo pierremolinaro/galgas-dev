@@ -151,7 +151,7 @@ GALGAS_string GALGAS_sint_36__34_::getter_hexString (UNUSED_LOCATION_ARGS) const
   if (isValid ()) {
     const uint64_t v = (uint64_t) mSInt64Value ;
     String s ;
-    s.appendString ("0x") ;
+    s.appendCString ("0x") ;
     s.appendUnsignedHex16 (v) ;
     result = GALGAS_string (s) ;
   }
@@ -198,9 +198,9 @@ GALGAS_string GALGAS_sint_36__34_::getter_xString (UNUSED_LOCATION_ARGS) const {
 
 void GALGAS_sint_36__34_::description (String & ioString,
                                        const int32_t /* inIndentation */) const {
-  ioString.appendString ("<@sint64:") ;
+  ioString.appendCString ("<@sint64:") ;
   ioString.appendSigned (mSInt64Value) ;
-  ioString.appendString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------

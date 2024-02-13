@@ -73,15 +73,15 @@
      && isalpha ((int) UNICODE_VALUE (inFilePath (0 COMMA_HERE)))
      && (UNICODE_VALUE (inFilePath (1 COMMA_HERE)) == ':')
      && (UNICODE_VALUE (inFilePath (2 COMMA_HERE)) == '\\')) {
-      result.appendString ("/") ;
+      result.appendCString ("/") ;
       result.appendUnicodeChar (inFilePath (0 COMMA_HERE) COMMA_HERE) ;
-      result.appendString ("/") ;
+      result.appendCString ("/") ;
       firstChar = 3 ;
     }
     for (int32_t i=firstChar ; i<pathLength ; i++) {
       const utf32 c = inFilePath (i COMMA_HERE) ;
       if (UNICODE_VALUE (c) == '\\') {
-        result.appendString ("/") ;
+        result.appendCString ("/") ;
       }else{
         result.appendUnicodeChar (c COMMA_HERE) ;
       }
@@ -122,7 +122,7 @@
        && isalpha ((int) UNICODE_VALUE (inFilePath (1 COMMA_HERE)))
        && (UNICODE_VALUE (inFilePath (2 COMMA_HERE)) == '/')) {
         winPath.appendUnicodeChar (inFilePath (1 COMMA_HERE) COMMA_HERE) ;
-        winPath.appendString (":\\") ;
+        winPath.appendCString (":\\") ;
         firstChar = 3 ;
       }
       for (int32_t i=firstChar ; i<fileLength ; i++) {
@@ -867,11 +867,11 @@ String FileManager::relativePathFromPath (const String & inPath,
     idx ++ ;
   }
   for (int32_t i=idx ; i<absoluteReferencePathComponents.count () ; i++) {
-    result.appendString ("../") ;
+    result.appendCString ("../") ;
   }
   for (int32_t i=idx ; i<absoluteReceiverPathComponents.count () ; i++) {
     if (i > idx) {
-      result.appendString ("/") ;
+      result.appendCString ("/") ;
     }
     result.appendString (absoluteReceiverPathComponents (i COMMA_HERE)) ;
   }
@@ -993,7 +993,7 @@ static String recursiveSearchInDirectory (const String & inStartSearchPath,
   DIR * dir = ::opendir (nativeStartSearchPath.cString ()) ;
   if (dir != nullptr) {
     String fileName = inStartSearchPath ;
-    fileName.appendString ("/") ;
+    fileName.appendCString ("/") ;
     fileName.appendString (inFileName) ;
     if (FileManager::fileExistsAtPath (fileName)) {
       result = fileName ;
@@ -1002,7 +1002,7 @@ static String recursiveSearchInDirectory (const String & inStartSearchPath,
       while ((current != nullptr) && (result.length () == 0)) {
         if (current->d_name [0] != '.') {
           String name = inStartSearchPath ;
-          name.appendString ("/") ;
+          name.appendCString ("/") ;
           name.appendString (current->d_name) ;
           if (FileManager::directoryExistsWithNativePath (name)) {
             bool dirOk = true ;
@@ -1055,7 +1055,7 @@ static void recursiveFindAllFilesInDirectory (const String & inStartSearchPath,
     while (current != nullptr) {
       if (current->d_name [0] != '.') {
         String name = inStartSearchPath ;
-        name.appendString ("/") ;
+        name.appendCString ("/") ;
         name.appendString (current->d_name) ;
         if (FileManager::directoryExistsWithNativePath (name)) {
           recursiveFindAllFilesInDirectory (name, inExtension, outFoundFilePathes) ;

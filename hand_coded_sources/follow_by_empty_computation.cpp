@@ -91,15 +91,15 @@ displayNonterminalSymbolsFollowedByEmpty (const C_Relation & inVocabularyFollowe
 
   if (inPopulateHTMLHelperString) {
     ioHTMLFileContents.addRawData ("<p><a name=\"follow_by_empty\"></a>") ;
-    ioHTMLFileContents.appendString ("Calculus completed in ") ;
+    ioHTMLFileContents.appendCString ("Calculus completed in ") ;
     ioHTMLFileContents.appendSigned (inIterationsCount) ;
-    ioHTMLFileContents.appendString (" iterations.\n") ;
+    ioHTMLFileContents.appendCString (" iterations.\n") ;
     ioHTMLFileContents.addRawData ("</p><p>") ;
     if (n == 1) {
-      ioHTMLFileContents.appendString ("One nonterminal symbol (the start symbol) can be followed by the empty string.\n") ;
+      ioHTMLFileContents.appendCString ("One nonterminal symbol (the start symbol) can be followed by the empty string.\n") ;
     }else{
       ioHTMLFileContents.appendUnsigned (n) ;
-       ioHTMLFileContents.appendString (" nonterminal symbols (including the start symbol) can be followed by the empty string.\n") ;
+       ioHTMLFileContents.appendCString (" nonterminal symbols (including the start symbol) can be followed by the empty string.\n") ;
     }
     ioHTMLFileContents.addRawData ("</p>") ;
     TC_UniqueArray <uint64_t> array ;
@@ -115,7 +115,7 @@ displayNonterminalSymbolsFollowedByEmpty (const C_Relation & inVocabularyFollowe
   }
   if (inVerboseOptionOn) {
     gCout.appendUnsigned (n) ;
-    gCout.appendString (".\n") ;
+    gCout.appendCString (".\n") ;
     gCout.flush () ;
   }
 }
@@ -132,7 +132,7 @@ follow_by_empty_computations (const cPureBNFproductionsList & inPureBNFproductio
                               const bool inVerboseOptionOn) {
 //--- Console display
   if (inVerboseOptionOn) {
-    gCout.appendString ("  Nonterminal symbols followed by empty... ") ;
+    gCout.appendCString ("  Nonterminal symbols followed by empty... ") ;
     gCout.flush () ;
   }
 //--- Print in BNF file

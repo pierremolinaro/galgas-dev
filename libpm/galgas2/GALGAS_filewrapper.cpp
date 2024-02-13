@@ -103,7 +103,7 @@ static void internalEnumerateFiles (const cDirectoryWrapper & inDirectory,
   while ((* mDirs) != nullptr) {
     String path = inWrapperPath ;
     path.appendString ((* mDirs)->mDirectoryName) ;
-    path.appendString ("/") ;
+    path.appendCString ("/") ;
     internalEnumerateFiles (* * mDirs, path, inEnumerateTextFile, ioList) ;
     mDirs ++ ;
   }
@@ -143,7 +143,7 @@ static void internalEnumerateDirectories (const cDirectoryWrapper & inDirectory,
   while ((* mDirs) != nullptr) {
     String path = inWrapperPath ;
     path.appendString ((* mDirs)->mDirectoryName) ;
-    path.appendString ("/") ;
+    path.appendCString ("/") ;
     internalEnumerateDirectories (* * mDirs, path, ioList) ;
     mDirs ++ ;
   }
@@ -181,7 +181,7 @@ static void internalEnumerateFilesWithExtension (const cDirectoryWrapper & inDir
   while ((* mDirs) != nullptr) {
     String path = inWrapperPath ;
     path.appendString ((* mDirs)->mDirectoryName) ;
-    path.appendString ("/") ;
+    path.appendCString ("/") ;
     internalEnumerateFilesWithExtension (* * mDirs, path, ioList, inExtension) ;
     mDirs ++ ;
   }
@@ -223,18 +223,18 @@ static void enumerateWrapper (String & ioString,
                               const String & inPath,
                               const int32_t inIndentation) {
   const String currentPath = inPath + inDir->mDirectoryName + "/" ;
-  ioString.appendString ("\n") ;
-  for (int32_t i=0 ; i<inIndentation ; i++) { ioString.appendString (" ") ; }
-  ioString.appendString ("'") ;
+  ioString.appendCString ("\n") ;
+  for (int32_t i=0 ; i<inIndentation ; i++) { ioString.appendCString (" ") ; }
+  ioString.appendCString ("'") ;
   ioString.appendString (currentPath) ;
-  ioString.appendString ("'") ;
+  ioString.appendCString ("'") ;
   for (uint32_t i=0 ; i<inDir->mFileCount ; i++) {
-    ioString.appendString ("\n") ;
-    for (int32_t j=0 ; j<inIndentation ; j++) { ioString.appendString (" ") ; }
-    ioString.appendString ("'") ;
+    ioString.appendCString ("\n") ;
+    for (int32_t j=0 ; j<inIndentation ; j++) { ioString.appendCString (" ") ; }
+    ioString.appendCString ("'") ;
     ioString.appendString (currentPath) ;
     ioString.appendString (inDir->mFiles [i]->mName) ;
-    ioString.appendString ("'") ;
+    ioString.appendCString ("'") ;
   }
   for (uint32_t i=0 ; i<inDir->mDirectoryCount ; i++) {
     enumerateWrapper (ioString,
@@ -248,13 +248,13 @@ static void enumerateWrapper (String & ioString,
 
 void GALGAS_filewrapper::description (String & ioString,
                                       const int32_t inIndentation) const {
-  ioString.appendString ("<@filewrapper") ;
+  ioString.appendCString ("<@filewrapper") ;
   if (isValid ()) {
     enumerateWrapper (ioString, mRootDirectoryPtr, "", inIndentation + 2) ;
   }else{
-    ioString.appendString (" (not built)") ;
+    ioString.appendCString (" (not built)") ;
   }
-  ioString.appendString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -377,15 +377,15 @@ GALGAS_string GALGAS_filewrapper::getter_textFileContentsAtPath (const GALGAS_st
       const cRegularFileWrapper * file = findFileInDirectory (dir, path.stringValue ().lastPathComponent ()) ;
       if (file == nullptr) {
         String errorMessage ;
-        errorMessage.appendString ("textFileContentsAtPath: the '") ;
+        errorMessage.appendCString ("textFileContentsAtPath: the '") ;
         errorMessage.appendString (inPath.stringValue ()) ;
-        errorMessage.appendString ("' path does not exist") ;
+        errorMessage.appendCString ("' path does not exist") ;
         inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
       }else if (! file->mIsTextFile) {
         String errorMessage ;
-        errorMessage.appendString ("textFileContentsAtPath: the '") ;
+        errorMessage.appendCString ("textFileContentsAtPath: the '") ;
         errorMessage.appendString (inPath.stringValue ()) ;
-        errorMessage.appendString ("' path points on a binary file") ;
+        errorMessage.appendCString ("' path points on a binary file") ;
         inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
       }else{
         result = GALGAS_string (file->mContents) ;
@@ -410,7 +410,7 @@ GALGAS_data GALGAS_filewrapper::getter_binaryFileContentsAtPath (const GALGAS_st
       if (file == nullptr) {
         String errorMessage = "binaryFileContentsAtPath: the '" ;
         errorMessage.appendString (inPath.stringValue ()) ;
-        errorMessage.appendString ("' path does not exist") ;
+        errorMessage.appendCString ("' path does not exist") ;
         inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
       }else{
         const uint8_t * sourcePtr = (const uint8_t *) file->mContents ;
@@ -438,7 +438,7 @@ void GALGAS_filewrapper::setter_setCurrentDirectory (const GALGAS_string inNewDi
       }else{
         String errorMessage = "setCurrentDirectory: the '" ;
         errorMessage.appendString (inNewDirectory.stringValue ()) ;
-        errorMessage.appendString ("' path does not exist") ;
+        errorMessage.appendCString ("' path does not exist") ;
         inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
       }
     }
@@ -497,7 +497,7 @@ GALGAS_string GALGAS_filewrapper::getter_absolutePathForPath (const GALGAS_strin
     if (! validPath) {
       String errorMessage = "absolutePathForPath: the '" ;
       errorMessage.appendString (path) ;
-      errorMessage.appendString ("' path is mal-formed") ;
+      errorMessage.appendCString ("' path is mal-formed") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
     }else{ //--- Recompose path
       result = GALGAS_string (String::componentsJoinedByString (componentArray, "/")) ;

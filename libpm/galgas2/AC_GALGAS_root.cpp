@@ -26,9 +26,9 @@
 void AC_GALGAS_root::log (const char * inMessage COMMA_LOCATION_ARGS) const {
   String s = "LOGGING " ;
   s.appendString (inMessage) ;
-  s.appendString (": ") ;
+  s.appendCString (": ") ;
   description (s, 0) ;
-  s.appendString ("\n") ;
+  s.appendCString ("\n") ;
   ggs_printMessage (s COMMA_THERE) ;
 }
 

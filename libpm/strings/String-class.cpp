@@ -248,7 +248,7 @@ String::~String (void) {
 String String::spaces (const int32_t inSpaceCount) {
   String result ;
   for (int32_t i=0 ; i<inSpaceCount ; i++) {
-    result.appendString (" ") ;
+    result.appendCString (" ") ;
   }
   return result ;
 }

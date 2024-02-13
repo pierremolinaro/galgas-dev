@@ -50,7 +50,7 @@ static uint32_t msFromStart (const clock_t inStart) {
 
 static void testBigUnsignedDecimalStringConstructor (void) {
   set_galgas_random_seed (0) ;
-  gCout.appendString ("BigUnsigned: test decimal string constructor... ") ;
+  gCout.appendCString ("BigUnsigned: test decimal string constructor... ") ;
   gCout.flush () ;
   const size_t LENGTH = 13 ;
   String refString ;
@@ -71,30 +71,30 @@ static void testBigUnsignedDecimalStringConstructor (void) {
     const BigUnsigned big (refString.cString (), BigUnsignedBase::ten, ok) ;
     const String str = big.decimalString () ;
      if ((str != refString) || !ok) {
-      gCout.appendString ("error (i=") ;
+      gCout.appendCString ("error (i=") ;
       gCout.appendUnsigned (i) ;
-      gCout.appendString ("), ok=") ;
+      gCout.appendCString ("), ok=") ;
       gCout.appendBool (ok) ;
       gCout.appendNewLine () ; ;
-      gCout.appendString ("Reference string '") ;
+      gCout.appendCString ("Reference string '") ;
       gCout.appendString (refString) ;
-      gCout.appendString ("'\n") ;
-      gCout.appendString ("   decimalString '") ;
+      gCout.appendCString ("'\n") ;
+      gCout.appendCString ("   decimalString '") ;
       gCout.appendString (str) ;
-      gCout.appendString ("'\n") ;
+      gCout.appendCString ("'\n") ;
       exit (1) ;
     }
   }
-  gCout.appendString ("Ok ") ;
+  gCout.appendCString ("Ok ") ;
   gCout.appendUnsigned (msFromStart (start)) ;
-  gCout.appendString (" ms\n") ;
+  gCout.appendCString (" ms\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 static void testBigUnsignedBinaryStringConstructor (void) {
   set_galgas_random_seed (0) ;
-  gCout.appendString ("BigUnsigned: test binary string constructor... ") ;
+  gCout.appendCString ("BigUnsigned: test binary string constructor... ") ;
   gCout.flush () ;
   const size_t LENGTH = 13 ;
   String refString ;
@@ -118,30 +118,30 @@ static void testBigUnsignedBinaryStringConstructor (void) {
     const BigUnsigned big (refString.cString (), BigUnsignedBase::two, ok) ;
     const String str = big.bitString () ;
     if ((str != refString) || !ok) {
-      gCout.appendString ("error (i=") ;
+      gCout.appendCString ("error (i=") ;
       gCout.appendUnsigned (i) ;
-      gCout.appendString ("), ok=") ;
+      gCout.appendCString ("), ok=") ;
       gCout.appendBool (ok) ;
       gCout.appendNewLine () ; ;
-      gCout.appendString ("Reference string '") ;
+      gCout.appendCString ("Reference string '") ;
       gCout.appendString (refString) ;
-      gCout.appendString ("'\n") ;
-      gCout.appendString ("       bitString '") ;
+      gCout.appendCString ("'\n") ;
+      gCout.appendCString ("       bitString '") ;
       gCout.appendString (str) ;
-      gCout.appendString ("'\n") ;
+      gCout.appendCString ("'\n") ;
       exit (1) ;
     }
   }
-  gCout.appendString ("Ok ") ;
+  gCout.appendCString ("Ok ") ;
   gCout.appendUnsigned (msFromStart (start)) ;
-  gCout.appendString (" ms\n") ;
+  gCout.appendCString (" ms\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 static void testBigUnsignedHexadecimalStringConstructor (void) {
   set_galgas_random_seed (0) ;
-  gCout.appendString ("BigUnsigned: test hexadecimal string constructor... ") ;
+  gCout.appendCString ("BigUnsigned: test hexadecimal string constructor... ") ;
   gCout.flush () ;
   const size_t LENGTH = 13 ;
   String refString ;
@@ -164,30 +164,30 @@ static void testBigUnsignedHexadecimalStringConstructor (void) {
     const BigUnsigned big (refString.cString (), BigUnsignedBase::sixteen, ok) ;
     const String str = big.xString () ;
      if ((str != refString) || !ok) {
-      gCout.appendString ("error (i=") ;
+      gCout.appendCString ("error (i=") ;
       gCout.appendUnsigned (i) ;
-      gCout.appendString ("), ok=") ;
+      gCout.appendCString ("), ok=") ;
       gCout.appendBool (ok) ;
       gCout.appendNewLine () ;
-      gCout.appendString ("Reference string '") ;
+      gCout.appendCString ("Reference string '") ;
       gCout.appendString (refString) ;
-      gCout.appendString ("'\n") ;
-      gCout.appendString ("         xString '") ;
+      gCout.appendCString ("'\n") ;
+      gCout.appendCString ("         xString '") ;
       gCout.appendString (str) ;
-      gCout.appendString ("'\n") ;
+      gCout.appendCString ("'\n") ;
       exit (1) ;
     }
   }
-  gCout.appendString ("Ok ") ;
+  gCout.appendCString ("Ok ") ;
   gCout.appendUnsigned (msFromStart (start)) ;
-  gCout.appendString (" ms\n") ;
+  gCout.appendCString (" ms\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 static void testBigUnsignedU8ArrayConstructor (void) {
   set_galgas_random_seed (0) ;
-  gCout.appendString ("BigUnsigned: test U8 array constructor, U8 access... ") ;
+  gCout.appendCString ("BigUnsigned: test U8 array constructor, U8 access... ") ;
   gCout.flush () ;
   const size_t LENGTH = 41 ;
   uint8_t u8Array [LENGTH] ;
@@ -213,7 +213,7 @@ static void testBigUnsignedU8ArrayConstructor (void) {
   //--- Check U8 access
     String u8AccessString ;
     if (big.u8Count () == 0) {
-      u8AccessString.appendString ("0") ;
+      u8AccessString.appendCString ("0") ;
     }else{
       char s [4] ;
       snprintf (s, 3, "%" PRIX8, big.u8AtIndex (big.u8Count () - 1)) ;
@@ -225,31 +225,31 @@ static void testBigUnsignedU8ArrayConstructor (void) {
       }
     }
     if (str != refString) {
-      gCout.appendString ("error (i=") ;
+      gCout.appendCString ("error (i=") ;
       gCout.appendUnsigned (i) ;
-      gCout.appendString (")\n") ;
-      gCout.appendString ("Reference string '") ;
+      gCout.appendCString (")\n") ;
+      gCout.appendCString ("Reference string '") ;
       gCout.appendString (refString) ;
-      gCout.appendString ("'\n") ;
-      gCout.appendString ("         xString '") ;
+      gCout.appendCString ("'\n") ;
+      gCout.appendCString ("         xString '") ;
       gCout.appendString (str) ;
-      gCout.appendString ("'\n") ;
-      gCout.appendString ("U8 access string '") ;
+      gCout.appendCString ("'\n") ;
+      gCout.appendCString ("U8 access string '") ;
       gCout.appendString (u8AccessString) ;
-      gCout.appendString ("'\n") ;
+      gCout.appendCString ("'\n") ;
       exit (1) ;
     }
   }
-  gCout.appendString ("Ok ") ;
+  gCout.appendCString ("Ok ") ;
   gCout.appendUnsigned (msFromStart (start)) ;
-  gCout.appendString (" ms\n") ;
+  gCout.appendCString (" ms\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 static void testBigUnsignedU64ArrayConstructor (void) {
   set_galgas_random_seed (0) ;
-  gCout.appendString ("BigUnsigned: test U64 array constructor... ") ;
+  gCout.appendCString ("BigUnsigned: test U64 array constructor... ") ;
   gCout.flush () ;
   const size_t LENGTH = 20 ;
   uint64_t u64Array [LENGTH] ;
@@ -274,28 +274,28 @@ static void testBigUnsignedU64ArrayConstructor (void) {
     const BigUnsigned big (u64Count, u64Array) ;
     const String s = big.xString () ;
     if (s != refString) {
-      gCout.appendString ("error (i=") ;
+      gCout.appendCString ("error (i=") ;
       gCout.appendUnsigned (i) ;
-      gCout.appendString (")\n") ;
-      gCout.appendString ("Reference string '") ;
+      gCout.appendCString (")\n") ;
+      gCout.appendCString ("Reference string '") ;
       gCout.appendString (refString) ;
-      gCout.appendString ("'\n") ;
-      gCout.appendString ("Computed string  '") ;
+      gCout.appendCString ("'\n") ;
+      gCout.appendCString ("Computed string  '") ;
       gCout.appendString (s) ;
-      gCout.appendString ("'\n") ;
+      gCout.appendCString ("'\n") ;
       exit (1) ;
     }
   }
-  gCout.appendString ("Ok ") ;
+  gCout.appendCString ("Ok ") ;
   gCout.appendUnsigned (msFromStart (start)) ;
-  gCout.appendString (" ms\n") ;
+  gCout.appendCString (" ms\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 static void testBigUnsignedU64Constructor (void) {
   set_galgas_random_seed (0) ;
-  gCout.appendString ("BigUnsigned: test U64 constructor... ") ;
+  gCout.appendCString ("BigUnsigned: test U64 constructor... ") ;
   gCout.flush () ;
   const clock_t start = ::clock () ;
   for (size_t i = 0 ; i < TEST_COUNT ; i++) {
@@ -306,28 +306,28 @@ static void testBigUnsignedU64Constructor (void) {
     const BigUnsigned big (v) ;
     const String s = big.decimalString () ;
     if (s != sRef) {
-      gCout.appendString ("error (i=") ;
+      gCout.appendCString ("error (i=") ;
       gCout.appendUnsigned (i) ;
-      gCout.appendString (")\n") ;
-      gCout.appendString ("Reference string '") ;
+      gCout.appendCString (")\n") ;
+      gCout.appendCString ("Reference string '") ;
       gCout.appendString (sRef) ;
-      gCout.appendString ("'\n") ;
-      gCout.appendString ("Decimal string   '") ;
+      gCout.appendCString ("'\n") ;
+      gCout.appendCString ("Decimal string   '") ;
       gCout.appendString (s) ;
-      gCout.appendString ("'\n") ;
+      gCout.appendCString ("'\n") ;
       exit (1) ;
     }
   }
-  gCout.appendString ("Ok ") ;
+  gCout.appendCString ("Ok ") ;
   gCout.appendUnsigned (msFromStart (start)) ;
-  gCout.appendString (" ms\n") ;
+  gCout.appendCString (" ms\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 static void testLogic_and_or_complemented_BigUnsigned (void) {
   set_galgas_random_seed (0) ;
-  gCout.appendString ("BigUnsigned: and, or, complement... ") ;
+  gCout.appendCString ("BigUnsigned: and, or, complement... ") ;
   gCout.flush () ;
   const clock_t start = ::clock () ;
   for (size_t i = 0 ; i < TEST_COUNT ; i++) {
@@ -339,9 +339,9 @@ static void testLogic_and_or_complemented_BigUnsigned (void) {
     const BigUnsigned v3 = bigA & bigB ;
     const BigUnsigned v4 = (bigA.complemented (maxChunkCount) | bigB.complemented (maxChunkCount)).complemented (maxChunkCount) ;
     if ((v1 != v2) || (v3 != v4)) {
-      gCout.appendString (" error  (i=") ;
+      gCout.appendCString (" error  (i=") ;
       gCout.appendUnsigned (i) ;
-      gCout.appendString (")\n") ;
+      gCout.appendCString (")\n") ;
       bigA.printHex  ("bigA ") ;
       bigB.printHex  ("bigB ") ;
       v1.printHex    ("v1") ;
@@ -351,16 +351,16 @@ static void testLogic_and_or_complemented_BigUnsigned (void) {
       exit (1) ;
     }
   }
-  gCout.appendString ("Ok ") ;
+  gCout.appendCString ("Ok ") ;
   gCout.appendUnsigned (msFromStart (start)) ;
-  gCout.appendString (" ms\n") ;
+  gCout.appendCString (" ms\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 static void testLogic_xor_BigUnsigned (void) {
   set_galgas_random_seed (0) ;
-  gCout.appendString ("BigUnsigned: xor... ") ;
+  gCout.appendCString ("BigUnsigned: xor... ") ;
   gCout.flush () ;
   const clock_t start = ::clock () ;
   for (size_t i = 0 ; i < TEST_COUNT ; i++) {
@@ -371,7 +371,7 @@ static void testLogic_xor_BigUnsigned (void) {
     const BigUnsigned v2 = (bigA & bigB.complemented (maxChunkCount)) | (bigA.complemented (maxChunkCount) & bigB) ;
     const BigUnsigned v3 = ((bigA.complemented (maxChunkCount) & bigB.complemented (maxChunkCount)) | (bigA & bigB)).complemented (maxChunkCount) ;
     if ((v1 != v2) || (v1 != v3)) {
-      gCout.appendString (" error at index ") ;
+      gCout.appendCString (" error at index ") ;
       gCout.appendUnsigned (i) ;
       gCout.appendNewLine () ; ;
       bigA.printHex  ("bigA ") ;
@@ -382,16 +382,16 @@ static void testLogic_xor_BigUnsigned (void) {
       exit (1) ;
     }
   }
-  gCout.appendString ("Ok ") ;
+  gCout.appendCString ("Ok ") ;
   gCout.appendUnsigned (msFromStart (start)) ;
-  gCout.appendString (" ms\n") ;
+  gCout.appendCString (" ms\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 static void testMultiplyingDividingBigUnsignedByChunkUInt (void) {
   set_galgas_random_seed (0) ;
-  gCout.appendString ("BigUnsigned: test multiplying, dividing by ChunkUInt... ") ;
+  gCout.appendCString ("BigUnsigned: test multiplying, dividing by ChunkUInt... ") ;
   gCout.flush () ;
   const clock_t start = ::clock () ;
   for (size_t i = 0 ; i < TEST_COUNT ; i++) {
@@ -405,9 +405,9 @@ static void testMultiplyingDividingBigUnsignedByChunkUInt (void) {
     verif *= divisor ;
     verif += r.remainder () ;
     if (dividend != verif) {
-      gCout.appendString (" error for i=") ;
+      gCout.appendCString (" error for i=") ;
       gCout.appendUnsigned (i) ;
-      gCout.appendString (", divisor=") ;
+      gCout.appendCString (", divisor=") ;
       gCout.appendUnsigned (divisor) ;
       gCout.appendNewLine () ; ;
       dividend.printHex ("dividend") ;
@@ -415,16 +415,16 @@ static void testMultiplyingDividingBigUnsignedByChunkUInt (void) {
       exit (1) ;
     }
   }
-  gCout.appendString ("Ok ") ;
+  gCout.appendCString ("Ok ") ;
   gCout.appendUnsigned (msFromStart (start)) ;
-  gCout.appendString (" ms\n") ;
+  gCout.appendCString (" ms\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 static void testBigUnsignedMultiplyPowerOfTwo (void) {
   set_galgas_random_seed (0) ;
-  gCout.appendString ("BigUnsigned: test multiplying power of two... ") ;
+  gCout.appendCString ("BigUnsigned: test multiplying power of two... ") ;
   gCout.flush () ;
   const clock_t start = ::clock () ;
   for (uint32_t i = 0 ; i < 1000 ; i++) {
@@ -434,9 +434,9 @@ static void testBigUnsignedMultiplyPowerOfTwo (void) {
       const BigUnsigned product = bigA * bigB ;
       const BigUnsigned expectedResult = BigUnsigned::powerOfTwo (i + j) ;
       if (expectedResult.compare (product) != 0) {
-        gCout.appendString (" error for i=") ;
+        gCout.appendCString (" error for i=") ;
         gCout.appendUnsigned (i) ;
-        gCout.appendString (", j=") ;
+        gCout.appendCString (", j=") ;
         gCout.appendUnsigned (j) ;
         gCout.appendNewLine () ; ;
         bigA.printHex    ("bigA   ") ;
@@ -447,16 +447,16 @@ static void testBigUnsignedMultiplyPowerOfTwo (void) {
       }
     }
   }
-  gCout.appendString ("Ok ") ;
+  gCout.appendCString ("Ok ") ;
   gCout.appendUnsigned (msFromStart (start)) ;
-  gCout.appendString (" ms\n") ;
+  gCout.appendCString (" ms\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 static void testBigUnsignedRightAndLeftShifts (void) {
   set_galgas_random_seed (0) ;
-  gCout.appendString ("BigUnsigned: test left / right shifts... ") ;
+  gCout.appendCString ("BigUnsigned: test left / right shifts... ") ;
   gCout.flush () ;
   const clock_t start = ::clock () ;
   for (uint32_t i = 0 ; i < 100'000 ; i++) {
@@ -465,7 +465,7 @@ static void testBigUnsignedRightAndLeftShifts (void) {
       const BigUnsigned bigALeftShifted = bigA << shift ;
       const BigUnsigned bigALeftRightShifted = bigALeftShifted >> shift ;
       if (bigA != bigALeftRightShifted) {
-        gCout.appendString (" error for shift = ") ;
+        gCout.appendCString (" error for shift = ") ;
         gCout.appendUnsigned (shift) ;
         gCout.appendNewLine () ; ;
         bigA.printHex ("bigA                ") ;
@@ -475,16 +475,16 @@ static void testBigUnsignedRightAndLeftShifts (void) {
       }
     }
   }
-  gCout.appendString ("Ok ") ;
+  gCout.appendCString ("Ok ") ;
   gCout.appendUnsigned (msFromStart (start)) ;
-  gCout.appendString (" ms\n") ;
+  gCout.appendCString (" ms\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 static void test_MultiplyingDividing_BigUnsigned (void) {
   set_galgas_random_seed (0) ;
-  gCout.appendString ("BigUnsigned: test multiplying, dividing... ") ;
+  gCout.appendCString ("BigUnsigned: test multiplying, dividing... ") ;
   gCout.flush () ;
   const clock_t start = ::clock () ;
   for (size_t i = 0 ; i < TEST_COUNT ; i++) {
@@ -498,14 +498,14 @@ static void test_MultiplyingDividing_BigUnsigned (void) {
     verif *= r.quotient () ;
     verif += r.remainder () ;
     if ((dividend != verif) || (r.remainder () >= divisor)) {
-      gCout.appendString (" error (i=") ;
+      gCout.appendCString (" error (i=") ;
       gCout.appendUnsigned (i) ;
-      gCout.appendString (")") ;
+      gCout.appendCString (")") ;
       if (dividend != verif) {
-        gCout.appendString (" dividend != verif !!!") ;
+        gCout.appendCString (" dividend != verif !!!") ;
       }
       if (r.remainder () >= divisor) {
-        gCout.appendString (" Remainder > divisor !!!") ;
+        gCout.appendCString (" Remainder > divisor !!!") ;
       }
       gCout.appendNewLine () ; ;
       verif.printHex     ("Verif    ") ;
@@ -513,26 +513,26 @@ static void test_MultiplyingDividing_BigUnsigned (void) {
       divisor.printHex   ("Divisor  ") ;
       r.quotient ().printHex  ("Quotient ") ;
       r.remainder ().printHex ("remainder") ;
-      gCout.appendString ("With naive division\n") ;
+      gCout.appendCString ("With naive division\n") ;
       const BigUnsignedQuotientRemainder rr = dividend.naiveDivideByBigUnsigned (divisor) ;
       rr.quotient ().printHex  ("Quotient ") ;
       rr.remainder ().printHex ("Remainder") ;
       if (rr.remainder () >= divisor) {
-        gCout.appendString ("  Remainder > divisor !!!\n") ;
+        gCout.appendCString ("  Remainder > divisor !!!\n") ;
       }
       exit (1) ;
     }
   }
-  gCout.appendString ("Ok ") ;
+  gCout.appendCString ("Ok ") ;
   gCout.appendUnsigned (msFromStart (start)) ;
-  gCout.appendString (" ms\n") ;
+  gCout.appendCString (" ms\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 static void testAddingSubtractingBigUnsigned (void) {
   set_galgas_random_seed (0) ;
-  gCout.appendString ("BigUnsigned: test adding, subtracting... ") ;
+  gCout.appendCString ("BigUnsigned: test adding, subtracting... ") ;
   gCout.flush () ;
   const clock_t start = ::clock () ;
   for (size_t i = 0 ; i < TEST_COUNT ; i++) {
@@ -542,16 +542,16 @@ static void testAddingSubtractingBigUnsigned (void) {
     verif += bigB ;
     verif -= bigB ;
     if (bigA.compare (verif) != 0) {
-      gCout.appendString (" error\n") ;
+      gCout.appendCString (" error\n") ;
       verif.printHex ("verif") ;
       bigA.printHex  ("bigA ") ;
       bigB.printHex  ("bigB ") ;
       exit (1) ;
     }
   }
-  gCout.appendString ("Ok ") ;
+  gCout.appendCString ("Ok ") ;
   gCout.appendUnsigned (msFromStart (start)) ;
-  gCout.appendString (" ms\n") ;
+  gCout.appendCString (" ms\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -560,22 +560,22 @@ static void testAddingSubtractingBigUnsigned (void) {
 
 static void pgcdComputing (void) {
   set_galgas_random_seed (0) ;
-  gCout.appendString ("BigUnsigned: gcd computing... ") ;
-  gCout.appendString ("n**17 + 9 and (n+1)**17 + 9...\n") ;
+  gCout.appendCString ("BigUnsigned: gcd computing... ") ;
+  gCout.appendCString ("n**17 + 9 and (n+1)**17 + 9...\n") ;
   const clock_t start = ::clock () ;
   const String s ("8 424 432 925 592 889 329 288 197 322 308 900 672 459 420 460 792 433") ;
   const BigUnsigned n (s.cString (), ' ') ;
-  gCout.appendString (" n ") ;
+  gCout.appendCString (" n ") ;
   gCout.appendString (n.spacedDecimalStringWithDigitCount (3)) ;
   gCout.appendNewLine () ; ;
   { const String verif = n.spacedDecimalString (3) ;
     if (s != verif) {
-      gCout.appendString ("  Error\n" "   s     '") ;
+      gCout.appendCString ("  Error\n" "   s     '") ;
       gCout.appendString (s) ;
-      gCout.appendString ("'\n") ;
-      gCout.appendString ("   verif '") ;
+      gCout.appendCString ("'\n") ;
+      gCout.appendCString ("   verif '") ;
       gCout.appendString (verif) ;
-      gCout.appendString ("'\n") ;
+      gCout.appendCString ("'\n") ;
       exit (1) ;
     }
   }
@@ -585,7 +585,7 @@ static void pgcdComputing (void) {
     nPower17Plus9 *= n ;
   }
   nPower17Plus9 += 9 ;
-  gCout.appendString (" n**17 + 9 ") ;
+  gCout.appendCString (" n**17 + 9 ") ;
   gCout.appendString (nPower17Plus9.spacedDecimalStringWithDigitCount (3)) ;
   gCout.appendNewLine () ; ;
 //--- Computing (n+1)**17+9
@@ -595,7 +595,7 @@ static void pgcdComputing (void) {
     nPlus1Power17Plus9 *= nPlus1 ;
   }
   nPlus1Power17Plus9 += 9 ;
-  gCout.appendString (" (n+1)**17 + 9 ") ;
+  gCout.appendCString (" (n+1)**17 + 9 ") ;
   gCout.appendString (nPlus1Power17Plus9.spacedDecimalStringWithDigitCount (3)) ;
   gCout.appendNewLine () ;
 //--- Calcul du PGCD
@@ -609,7 +609,7 @@ static void pgcdComputing (void) {
         dividend = divisor ;
         divisor = r.remainder () ;
       }else{
-        gCout.appendString ("PGCD (n**17 + 9, (n+1)**17 + 9) = ") ;
+        gCout.appendCString ("PGCD (n**17 + 9, (n+1)**17 + 9) = ") ;
         gCout.appendString (divisor.spacedDecimalString (3)) ;
         gCout.appendNewLine () ; ;
       }
@@ -623,7 +623,7 @@ static void pgcdComputing (void) {
     nMinus1Power17Plus9 = v ;
   }
   nMinus1Power17Plus9 += 9 ;
-  gCout.appendString (" (n-1)**17 + 9 ") ;
+  gCout.appendCString (" (n-1)**17 + 9 ") ;
   gCout.appendString (nMinus1Power17Plus9.spacedDecimalStringWithDigitCount (3)) ;
   gCout.appendNewLine () ; ;
 //--- Calcul du PGCD
@@ -637,7 +637,7 @@ static void pgcdComputing (void) {
         dividend = divisor ;
         divisor = r.remainder () ;
       }else{
-        gCout.appendString ("PGCD (n**17 + 9, (n-1)**17 + 9) = ") ;
+        gCout.appendCString ("PGCD (n**17 + 9, (n-1)**17 + 9) = ") ;
         gCout.appendString (divisor.spacedDecimalString (3)) ;
         gCout.appendNewLine () ; ;
       }
@@ -645,21 +645,21 @@ static void pgcdComputing (void) {
   }
 //---
   gCout.appendUnsigned (msFromStart (start)) ;
-  gCout.appendString (" ms\n") ;
+  gCout.appendCString (" ms\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 static void somePrimeNumbers (void) {
   set_galgas_random_seed (0) ;
-  gCout.appendString ("BigUnsigned: some prime numbers...\n") ;
+  gCout.appendCString ("BigUnsigned: some prime numbers...\n") ;
   gCout.flush () ;
   const clock_t start = ::clock () ;
   { BigUnsigned n = BigUnsigned (1) ;
     n <<= 127 ;
     n -= 1 ;
     const String s = n.spacedDecimalString (3) ;
-    gCout.appendString ("  2**127 - 1 = ") ;
+    gCout.appendCString ("  2**127 - 1 = ") ;
     gCout.appendString (s) ;
     gCout.appendNewLine () ; ;
   }
@@ -669,7 +669,7 @@ static void somePrimeNumbers (void) {
     const BigUnsignedQuotientU64Remainder r = n.dividingByChunkUInt (17) ;
     n = r.quotient () ;
     const String s = n.spacedDecimalString (3) ;
-    gCout.appendString ("  (2**148 + 1) / 17 = ") ;
+    gCout.appendCString ("  (2**148 + 1) / 17 = ") ;
     gCout.appendString (s) ;
     gCout.appendNewLine () ; ;
   }
@@ -677,7 +677,7 @@ static void somePrimeNumbers (void) {
     n <<= 607 ;
     n -= 1 ;
     const String s = n.spacedDecimalString (3) ;
-    gCout.appendString ("  2**607 - 1 = ") ;
+    gCout.appendCString ("  2**607 - 1 = ") ;
     gCout.appendString (s) ;
     gCout.appendNewLine () ; ;
   }
@@ -685,7 +685,7 @@ static void somePrimeNumbers (void) {
     n <<= 4423 ;
     n -= 1 ;
     const String s = n.spacedDecimalString (3) ;
-    gCout.appendString ("  2**4423 - 1 = ") ;
+    gCout.appendCString ("  2**4423 - 1 = ") ;
     gCout.appendString (s) ;
     gCout.appendNewLine () ; ;
   }
@@ -693,12 +693,12 @@ static void somePrimeNumbers (void) {
     n <<= 44497 ;
     n -= 1 ;
     const String s = n.spacedDecimalString (3) ;
-    gCout.appendString ("  2**44497 - 1 = ") ;
+    gCout.appendCString ("  2**44497 - 1 = ") ;
     gCout.appendString (s) ;
     gCout.appendNewLine () ; ;
   }
   gCout.appendUnsigned (msFromStart (start)) ;
-  gCout.appendString (" ms\n") ;
+  gCout.appendCString (" ms\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -711,36 +711,36 @@ static void somePrimeNumbers (void) {
 
 static void testLogicComplementBigSigned (void) {
   set_galgas_random_seed (0) ;
-  gCout.appendString ("BigSigned: logic complement... ") ;
+  gCout.appendCString ("BigSigned: logic complement... ") ;
   gCout.flush () ;
   const clock_t start = ::clock () ;
   for (size_t i = 0 ; i < TEST_COUNT ; i++) {
     const BigSigned bigA = BigSigned::randomNumber () ;
     const BigSigned verif = ~ ( ~ bigA) ;
     if (bigA != verif) {
-      gCout.appendString (" error\n") ;
+      gCout.appendCString (" error\n") ;
       bigA.printHex  ("bigA ") ;
       verif.printHex ("verif") ;
       exit (1) ;
     }
     const BigSigned verif2 = - ((~ bigA) + 1) ;
     if (bigA != verif2) {
-      gCout.appendString (" error\n") ;
+      gCout.appendCString (" error\n") ;
       bigA.printHex  ("bigA ") ;
       verif2.printHex ("verif2") ;
       exit (1) ;
     }
   }
-  gCout.appendString ("Ok ") ;
+  gCout.appendCString ("Ok ") ;
   gCout.appendUnsigned (msFromStart (start)) ;
-  gCout.appendString (" ms\n") ;
+  gCout.appendCString (" ms\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 static void testLogic_bitSetting_BigSigned (void) {
   set_galgas_random_seed (0) ;
-  gCout.appendString ("BigSigned: bit set / reset... ") ;
+  gCout.appendCString ("BigSigned: bit set / reset... ") ;
   gCout.flush () ;
   const clock_t start = ::clock () ;
   for (size_t i = 0 ; i < TEST_COUNT ; i++) {
@@ -751,12 +751,12 @@ static void testLogic_bitSetting_BigSigned (void) {
     verif.setBitAtIndex (!bit, bitIndex) ;
     verif.complementBitAtIndex (bitIndex) ;
     if (bigA != verif) {
-      gCout.appendString (" error (i=") ;
+      gCout.appendCString (" error (i=") ;
       gCout.appendUnsigned (i) ;
-      gCout.appendString (")\n") ;
-      gCout.appendString ("at index ") ;
+      gCout.appendCString (")\n") ;
+      gCout.appendCString ("at index ") ;
       gCout.appendUnsigned (bitIndex) ;
-      gCout.appendString (", bit is ") ;
+      gCout.appendCString (", bit is ") ;
       gCout.appendUnsigned (bit) ;
       gCout.appendNewLine () ; ;
       bigA.printHex  ("bigA ") ;
@@ -764,24 +764,24 @@ static void testLogic_bitSetting_BigSigned (void) {
       BigSigned verif2 = bigA ;
       verif2.setBitAtIndex (!bit, bitIndex) ;
       verif2.printHex  ("bigA with bit complemented") ;
-      gCout.appendString (" where at index ") ;
+      gCout.appendCString (" where at index ") ;
       gCout.appendUnsigned (bitIndex) ;
-      gCout.appendString (", bit is ") ;
+      gCout.appendCString (", bit is ") ;
       gCout.appendUnsigned (verif2.bitAtIndex (bitIndex)) ;
       gCout.appendNewLine () ; ;
       exit (1) ;
     }
   }
-  gCout.appendString ("Ok ") ;
+  gCout.appendCString ("Ok ") ;
   gCout.appendUnsigned (msFromStart (start)) ;
-  gCout.appendString (" ms\n") ;
+  gCout.appendCString (" ms\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 static void testLogic_XOR_BigSigned (void) {
   set_galgas_random_seed (0) ;
-  gCout.appendString ("BigSigned: xor... ") ;
+  gCout.appendCString ("BigSigned: xor... ") ;
   gCout.flush () ;
   const clock_t start = ::clock () ;
   for (size_t i = 0 ; i < TEST_COUNT ; i++) {
@@ -791,7 +791,7 @@ static void testLogic_XOR_BigSigned (void) {
     const BigSigned v2 = (bigA & ~bigB) | (~bigA & bigB) ;
     const BigSigned v3 = ~((~bigA & ~bigB) | (bigA & bigB)) ;
     if ((v1 != v2) || (v1 != v3)) {
-      gCout.appendString (" error at index ") ;
+      gCout.appendCString (" error at index ") ;
       gCout.appendUnsigned (i) ;
       gCout.appendNewLine () ; ;
       bigA.printHex  ("bigA ") ;
@@ -802,16 +802,16 @@ static void testLogic_XOR_BigSigned (void) {
       exit (1) ;
     }
   }
-  gCout.appendString ("Ok ") ;
+  gCout.appendCString ("Ok ") ;
   gCout.appendUnsigned (msFromStart (start)) ;
-  gCout.appendString (" ms\n") ;
+  gCout.appendCString (" ms\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 static void testLogic_and_or_complement_BigSigned (void) {
   set_galgas_random_seed (0) ;
-  gCout.appendString ("BigSigned: and, or, complement... ") ;
+  gCout.appendCString ("BigSigned: and, or, complement... ") ;
   gCout.flush () ;
   const clock_t start = ::clock () ;
   for (size_t i = 0 ; i < TEST_COUNT ; i++) {
@@ -822,9 +822,9 @@ static void testLogic_and_or_complement_BigSigned (void) {
     const BigSigned v3 = bigA & bigB ;
     const BigSigned v4 = ~ ((~ bigA) | (~ bigB)) ;
     if ((v1 != v2) || (v3 != v4)) {
-      gCout.appendString (" error  (i=") ;
+      gCout.appendCString (" error  (i=") ;
       gCout.appendUnsigned (i) ;
-      gCout.appendString (")\n") ;
+      gCout.appendCString (")\n") ;
       bigA.printHex  ("bigA ") ;
       bigB.printHex  ("bigB ") ;
       v1.printHex    ("v1") ;
@@ -834,16 +834,16 @@ static void testLogic_and_or_complement_BigSigned (void) {
       exit (1) ;
     }
   }
-  gCout.appendString ("Ok ") ;
+  gCout.appendCString ("Ok ") ;
   gCout.appendUnsigned (msFromStart (start)) ;
-  gCout.appendString (" ms\n") ;
+  gCout.appendCString (" ms\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 static void testAddingSubtractingBigSigned (void) {
   set_galgas_random_seed (0) ;
-  gCout.appendString ("BigSigned: test adding, subtracting... ") ;
+  gCout.appendCString ("BigSigned: test adding, subtracting... ") ;
   gCout.flush () ;
   const clock_t start = ::clock () ;
   for (size_t i = 0 ; i < TEST_COUNT ; i++) {
@@ -853,9 +853,9 @@ static void testAddingSubtractingBigSigned (void) {
     verif += bigB ;
     verif -= bigB ;
     if (bigA != verif) {
-      gCout.appendString (" error (i=") ;
+      gCout.appendCString (" error (i=") ;
       gCout.appendUnsigned (i) ;
-      gCout.appendString (")\n") ;
+      gCout.appendCString (")\n") ;
       verif.printHex ("verif") ;
       bigA.printHex  ("bigA ") ;
       bigB.printHex  ("bigB ") ;
@@ -863,16 +863,16 @@ static void testAddingSubtractingBigSigned (void) {
       exit (1) ;
     }
   }
-  gCout.appendString ("Ok ") ;
+  gCout.appendCString ("Ok ") ;
   gCout.appendUnsigned (msFromStart (start)) ;
-  gCout.appendString (" ms\n") ;
+  gCout.appendCString (" ms\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 static void test_MultiplyingDividing_BigSigned (void) {
   set_galgas_random_seed (0) ;
-  gCout.appendString ("BigSigned: test multiplying, dividing... ") ;
+  gCout.appendCString ("BigSigned: test multiplying, dividing... ") ;
   gCout.flush () ;
   const clock_t start = ::clock () ;
   for (size_t i = 0 ; i < TEST_COUNT ; i++) {
@@ -886,9 +886,9 @@ static void test_MultiplyingDividing_BigSigned (void) {
     verif *= r.quotient () ;
     verif += r.remainder () ;
     if (dividend != verif) {
-      gCout.appendString (" error (i=") ;
+      gCout.appendCString (" error (i=") ;
       gCout.appendUnsigned (i) ;
-      gCout.appendString (")\n") ;
+      gCout.appendCString (")\n") ;
       verif.printHex     ("Verif    ") ;
       dividend.printHex  ("Dividend ") ;
       divisor.printHex   ("Divisor  ") ;
@@ -897,16 +897,16 @@ static void test_MultiplyingDividing_BigSigned (void) {
       exit (1) ;
     }
   }
-  gCout.appendString ("Ok ") ;
+  gCout.appendCString ("Ok ") ;
   gCout.appendUnsigned (msFromStart (start)) ;
-  gCout.appendString (" ms\n") ;
+  gCout.appendCString (" ms\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 static void test_LeftShift_BigSigned (void) {
   set_galgas_random_seed (0) ;
-  gCout.appendString ("BigSigned: left shift... ") ;
+  gCout.appendCString ("BigSigned: left shift... ") ;
   gCout.flush () ;
   const clock_t start = ::clock () ;
   for (size_t i = 0 ; i < TEST_COUNT ; i++) {
@@ -917,26 +917,26 @@ static void test_LeftShift_BigSigned (void) {
     multiplicand.setBitAtIndex (true, shift) ;
     const BigSigned verif = bigA * multiplicand ;
     if (bigAshifted != verif) {
-      gCout.appendString (" error\n") ;
+      gCout.appendCString (" error\n") ;
       verif.printHex       ("Verif      ") ;
       bigAshifted.printHex ("bigAshifted") ;
       bigA.printHex        ("bigA       ") ;
-      gCout.appendString ("Shift: ") ;
+      gCout.appendCString ("Shift: ") ;
       gCout.appendUnsigned (shift) ;
       gCout.appendNewLine () ; ;
       exit (1) ;
     }
   }
-  gCout.appendString ("Ok ") ;
+  gCout.appendCString ("Ok ") ;
   gCout.appendUnsigned (msFromStart (start)) ;
-  gCout.appendString (" ms\n") ;
+  gCout.appendCString (" ms\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 static void test_RightShift_BigSigned (void) {
   set_galgas_random_seed (0) ;
-  gCout.appendString ("BigSigned: right shift... ") ;
+  gCout.appendCString ("BigSigned: right shift... ") ;
   gCout.flush () ;
   const clock_t start = ::clock () ;
   for (size_t i = 0 ; i < TEST_COUNT ; i++) {
@@ -951,28 +951,28 @@ static void test_RightShift_BigSigned (void) {
       verif -= 1 ;
     }
     if (bigAshifted != verif) {
-      gCout.appendString (" error (i=") ;
+      gCout.appendCString (" error (i=") ;
       gCout.appendUnsigned (i) ;
-      gCout.appendString (")\n") ;
+      gCout.appendCString (")\n") ;
       verif.printHex       ("Verif      ") ;
       bigAshifted.printHex ("bigAshifted") ;
       bigA.printHex        ("bigA       ") ;
-      gCout.appendString ("Shift: ") ;
+      gCout.appendCString ("Shift: ") ;
       gCout.appendUnsigned (shift) ;
       gCout.appendNewLine () ; ;
       exit (1) ;
     }
   }
-  gCout.appendString ("Ok ") ;
+  gCout.appendCString ("Ok ") ;
   gCout.appendUnsigned (msFromStart (start)) ;
-  gCout.appendString (" ms\n") ;
+  gCout.appendCString (" ms\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 static void test_MultiplyingDividing_BigSignedByChunkUInt (void) {
   set_galgas_random_seed (0) ;
-  gCout.appendString ("BigSigned: test multiplying, dividing by ChunkUInt... ") ;
+  gCout.appendCString ("BigSigned: test multiplying, dividing by ChunkUInt... ") ;
   gCout.flush () ;
   const clock_t start = ::clock () ;
   for (size_t i = 0 ; i < TEST_COUNT ; i++) {
@@ -986,9 +986,9 @@ static void test_MultiplyingDividing_BigSignedByChunkUInt (void) {
     verif *= divisor ;
     verif += r.remainder () ;
     if (dividend != verif) {
-      gCout.appendString (" error for i=") ;
+      gCout.appendCString (" error for i=") ;
       gCout.appendUnsigned (i) ;
-      gCout.appendString (", divisor=") ;
+      gCout.appendCString (", divisor=") ;
       gCout.appendUnsigned (divisor) ;
       gCout.appendNewLine () ; ;
       dividend.printHex ("dividend") ;
@@ -996,9 +996,9 @@ static void test_MultiplyingDividing_BigSignedByChunkUInt (void) {
       exit (1) ;
     }
   }
-  gCout.appendString ("Ok ") ;
+  gCout.appendCString ("Ok ") ;
   gCout.appendUnsigned (msFromStart (start)) ;
-  gCout.appendString (" ms\n") ;
+  gCout.appendCString (" ms\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1011,11 +1011,11 @@ static void test_MultiplyingDividing_BigSignedByChunkUInt (void) {
 
 void routine_checkBigInteger (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   const clock_t start = ::clock () ;
-  gCout.appendString ("*** Check BigUnsigned and BigSigned (option --check-big-int) ***\n") ;
+  gCout.appendCString ("*** Check BigUnsigned and BigSigned (option --check-big-int) ***\n") ;
   gCout.flush () ;
-  gCout.appendString ("Chunk size: ") ;
+  gCout.appendCString ("Chunk size: ") ;
   gCout.appendUnsigned (ChunkUIntBitCount) ;
-  gCout.appendString (" bits\n") ;
+  gCout.appendCString (" bits\n") ;
 //--- Check ctl (count leading zeros) function
   const ChunkUInt testValue = ChunkUInt (0x10) ;
   const uint32_t computedCTL = countLeadingZeros (testValue) ;
@@ -1026,13 +1026,13 @@ void routine_checkBigInteger (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
       requiredCTL += 1 ;
     }
   }
-  gCout.appendString ("countLeadingZeros function: ") ;
+  gCout.appendCString ("countLeadingZeros function: ") ;
   if (computedCTL == requiredCTL) {
-    gCout.appendString ("ok\n") ;
+    gCout.appendCString ("ok\n") ;
   }else{
-    gCout.appendString ("error, computed ") ;
+    gCout.appendCString ("error, computed ") ;
     gCout.appendUnsigned (computedCTL) ;
-    gCout.appendString (", required ") ;
+    gCout.appendCString (", required ") ;
     gCout.appendUnsigned (requiredCTL) ;
     gCout.appendNewLine () ;
     exit (1) ;
@@ -1064,10 +1064,10 @@ void routine_checkBigInteger (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   testLogic_bitSetting_BigSigned () ;
   testLogic_XOR_BigSigned () ;
 //---
-  gCout.appendString ("ChunkSharedArray Allocation Count: ") ;
+  gCout.appendCString ("ChunkSharedArray Allocation Count: ") ;
   gCout.appendUnsigned (ChunkSharedArray::chunkSharedArrayAllocationCount ()) ;
   gCout.appendNewLine () ; ;
-  gCout.appendString ("ChunkSharedArray Currently Allocated Count: ") ;
+  gCout.appendCString ("ChunkSharedArray Currently Allocated Count: ") ;
   gCout.appendUnsigned (ChunkSharedArray::chunkSharedArrayCurrentlyAllocatedCount ()) ;
   gCout.appendNewLine () ; ;
 //---
@@ -1075,13 +1075,13 @@ void routine_checkBigInteger (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   const uint32_t milliseconds = duration % 1000 ;
   const uint32_t seconds = (duration / 1000) % 60 ;
   const uint32_t minutes = (duration / 1000) / 60 ;
-  gCout.appendString ("Done in ") ;
+  gCout.appendCString ("Done in ") ;
   gCout.appendUnsigned (minutes) ;
-  gCout.appendString (" min ") ;
+  gCout.appendCString (" min ") ;
   gCout.appendUnsigned (seconds) ;
-  gCout.appendString (" s ") ;
+  gCout.appendCString (" s ") ;
   gCout.appendUnsigned (milliseconds) ;
-  gCout.appendString (" ms\n") ;
+  gCout.appendCString (" ms\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -309,7 +309,7 @@ GALGAS_string GALGAS_uint::getter_hexString (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
     String s ;
-    s.appendString ("0x") ;
+    s.appendCString ("0x") ;
     s.appendUnsignedHex (mUIntValue) ;
     result = GALGAS_string (s) ;
   }
@@ -352,13 +352,13 @@ GALGAS_string GALGAS_uint::getter_xString (UNUSED_LOCATION_ARGS) const {
 
 void GALGAS_uint::description (String & ioString,
                                const int32_t /* inIndentation */) const {
-  ioString.appendString ("<@uint:") ;
+  ioString.appendCString ("<@uint:") ;
   if (isValid ()) {
     ioString.appendUnsigned (mUIntValue) ;
   }else{
-    ioString.appendString ("not built") ;
+    ioString.appendCString ("not built") ;
   }
-  ioString.appendString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------

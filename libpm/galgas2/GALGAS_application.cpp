@@ -324,9 +324,9 @@ GALGAS_string GALGAS_application::class_func_commandLineArgumentAtIndex (const G
       result = GALGAS_string (commandLineArgumentAtIndex (idx)) ;
     }else{
       String message ;
-      message.appendString ("@application.commandLineArgumentAtIndex: index ") ;
+      message.appendCString ("@application.commandLineArgumentAtIndex: index ") ;
       message.appendUnsigned (idx) ;
-      message.appendString (" >= argument count = ") ;
+      message.appendCString (" >= argument count = ") ;
       message.appendUnsigned (commandLineArgumentCount ()) ;
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }

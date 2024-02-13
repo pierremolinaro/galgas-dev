@@ -62,7 +62,7 @@ bool isUnicodeCharacterAssigned (const utf32 inUnicodeCharacter) {
   String unicodeName (const utf32 inUnicodeCharacter) {
     String result ;
     if (! isUnicodeCharacterAssigned (inUnicodeCharacter)) {
-      result.appendString ("invalid unicode character \\U") ;
+      result.appendCString ("invalid unicode character \\U") ;
       result.appendUnsignedHex8 (UNICODE_VALUE (inUnicodeCharacter)) ;
     }else{
       const uint32_t pageIndex = UNICODE_VALUE (inUnicodeCharacter) / gNamePageSize ;
@@ -81,12 +81,12 @@ bool isUnicodeCharacterAssigned (const utf32 inUnicodeCharacter) {
               break ;
             case 0x40 : // Enter name, append space character
               result.appendString (gPartNames [idx]) ;
-              result.appendString (" ") ;
+              result.appendCString (" ") ;
               idx = 0 ;
               break ;
             case 0x80 : // Enter name, append minus character
               result.appendString (gPartNames [idx]) ;
-              result.appendString ("-") ;
+              result.appendCString ("-") ;
               idx = 0 ;
               break ;
             default : // Enter name, exit
@@ -99,10 +99,10 @@ bool isUnicodeCharacterAssigned (const utf32 inUnicodeCharacter) {
       }
       if (result.length () == 0) {
         if (UNICODE_VALUE (inUnicodeCharacter) < 0x10000) {
-          result.appendString ("\\u") ;
+          result.appendCString ("\\u") ;
           result.appendUnsignedHex4 (UNICODE_VALUE (inUnicodeCharacter)) ;
         }else{
-          result.appendString ("\\U") ;
+          result.appendCString ("\\U") ;
           result.appendUnsignedHex8 (UNICODE_VALUE (inUnicodeCharacter)) ;
         }
       }

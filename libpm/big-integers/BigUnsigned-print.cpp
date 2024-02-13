@@ -85,7 +85,7 @@ String BigUnsigned::spacedDecimalStringWithDigitCount (const uint32_t inSeparati
   }
   String result = "[" ;
   result.appendSigned (length) ;
-  result.appendString ("] ") ;
+  result.appendCString ("] ") ;
   result.appendString (s) ;
   return result ;
 }

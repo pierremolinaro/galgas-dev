@@ -266,7 +266,6 @@ override method @templateLexiqueComponentAST enterDeclarationInSemanticContext
      !true
      !terminalMap
      !indexingListAST
-#     !indexingDirectory
      !terminalListAST
      !lexicalAttributeListAST
      !lexicalStyleListAST
