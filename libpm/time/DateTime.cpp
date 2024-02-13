@@ -223,32 +223,32 @@ bool DateTime::operator <= (const DateTime & inDate) const {
 String DateTime::string (void) const {
   String result ;
   const int32_t dayOfMonth = getDayOfMonth () ;
-  result.appendString (getMonthName ()) ;
-  result.appendString (" ") ;
+  result.appendCString (getMonthName ()) ;
+  result.appendCString (" ") ;
   result.appendSigned (dayOfMonth) ;
   switch (dayOfMonth) {
   case 1 :
-    result.appendString ("st") ;
+    result.appendCString ("st") ;
     break ;
   case 2 :
-    result.appendString ("nd") ;
+    result.appendCString ("nd") ;
     break ;
   case 3 :
-    result.appendString ("rd") ;
+    result.appendCString ("rd") ;
     break ;
   default :
-    result.appendString ("th") ;
+    result.appendCString ("th") ;
     break ;
   }
-  result.appendString (", ") ;
+  result.appendCString (", ") ;
   result.appendSigned (getYearCount ()) ;
-  result.appendString (", at ") ;
+  result.appendCString (", at ") ;
   result.appendSigned (getHourOfDay ()) ;
-  result.appendString ("h") ;
+  result.appendCString ("h") ;
   result.appendSigned (getMinuteOfHour ()) ;
-  result.appendString ("\'") ;
+  result.appendCString ("\'") ;
   result.appendSigned (getSecondOfMinute ()) ;
-  result.appendString ("\"") ;
+  result.appendCString ("\"") ;
   return result ;
 }
 

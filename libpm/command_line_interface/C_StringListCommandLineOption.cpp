@@ -60,7 +60,7 @@ void C_StringListCommandLineOption::setStringListOptionForCommandChar (const cha
     while ((p != nullptr) && ! outFound) {
       outFound = inCommandString [0] == p->mCommandChar ;
       if (outFound) {
-        p->mValue.appendObject (& inCommandString [2]) ;
+        p->mValue.appendObject (String (& inCommandString [2])) ;
       }
       p = p->mNext ;
     }
@@ -72,10 +72,10 @@ void C_StringListCommandLineOption::setStringListOptionForCommandChar (const cha
 void C_StringListCommandLineOption::setStringListOptionForCommandString (const char * inCommandString,
                                                                          bool & outFound,
                                                                          bool & outCommandLineOptionStringIsValid) {
-  const uint32_t optionLength = (uint32_t) (strlen (inCommandString) & UINT32_MAX) ;
+  const int32_t optionLength = int32_t (strlen (inCommandString)) ;
   outCommandLineOptionStringIsValid = optionLength > 4 ;
 //--- Find '=' character
-  uint32_t equalSignIndex = 0 ;
+  int32_t equalSignIndex = 0 ;
   if (outCommandLineOptionStringIsValid) {
     outFound = false ;
     while ((equalSignIndex < optionLength) && outCommandLineOptionStringIsValid && ! outFound) {
@@ -91,10 +91,10 @@ void C_StringListCommandLineOption::setStringListOptionForCommandString (const c
   if (outCommandLineOptionStringIsValid) {
     C_StringListCommandLineOption * p = gFirstStringListOption ;
     while ((p != nullptr) && ! outFound) {
-      outFound = (strlen (p->mCommandString) == equalSignIndex) &&
-                 (strncmp (p->mCommandString, inCommandString, equalSignIndex) == 0) ;
+      outFound = (p->mCommandString.length () == equalSignIndex) &&
+                 (strncmp (p->mCommandString.cString (), inCommandString, size_t (equalSignIndex)) == 0) ;
       if (outFound) {
-        p->mValue.appendObject (& inCommandString [strlen (p->mCommandString) + 1]) ;
+        p->mValue.appendObject (String (& inCommandString [p->mCommandString.length () + 1])) ;
       }
       p = p->mNext ;
     }
@@ -110,9 +110,8 @@ void C_StringListCommandLineOption::printUsageOfStringOptions (void) {
     if (c != '\0') {
       printf (" [-%c=string]", c) ;
     }
-    const char * s = p->mCommandString ;
-    if (s [0] != 0) {
-      printf (" [--%s=string]", s) ;
+    if (p->mCommandString.length () > 0) {
+      printf (" [--%s=string]", p->mCommandString.cString ()) ;
     }
     p = p->mNext ;
   }
@@ -126,32 +125,32 @@ void C_StringListCommandLineOption::printStringOptions (void) {
     if (p->mCommandChar != '\0') {
       for (uint32_t i=0 ; i<2 ; i++) {
         if (i != 0) {
-          gCout.appendString (" ") ;
+          gCout.appendCString (" ") ;
         }
         gCout.setForeColor (kBlueForeColor) ;
         gCout.setTextAttribute (kBoldTextAttribute) ;
-        gCout.appendString ("-") ;
+        gCout.appendCString ("-") ;
         gCout.appendASCIIChar (p->mCommandChar) ;
-        gCout.appendString ("=string") ;
+        gCout.appendCString ("=string") ;
         gCout.setTextAttribute (kAllAttributesOff) ;
       }
-      gCout.appendString (" ...\n") ;
+      gCout.appendCString (" ...\n") ;
     }
-    if (p->mCommandString [0] != '\0') {
+    if (p->mCommandString.length () > 0) {
       for (uint32_t i=0 ; i<2 ; i++) {
         if (i != 0) {
-          gCout.appendString (" ") ;
+          gCout.appendCString (" ") ;
         }
         gCout.setForeColor (kBlueForeColor) ;
         gCout.setTextAttribute (kBoldTextAttribute) ;
-        gCout.appendString ("--") ;
+        gCout.appendCString ("--") ;
         gCout.appendString (p->mCommandString) ;
-        gCout.appendString ("=string") ;
+        gCout.appendCString ("=string") ;
         gCout.setTextAttribute (kAllAttributesOff) ;
       }
-      gCout.appendString (" ...\n") ;
+      gCout.appendCString (" ...\n") ;
     }
-    gCout.appendString ("    ") ;
+    gCout.appendCString ("    ") ;
     gCout.appendString (p->mComment) ;
     gCout.appendNewLine () ;
     p = p->mNext ;
@@ -191,7 +190,7 @@ utf32 C_StringListCommandLineOption::getStringOptionInvocationLetter (const Stri
   C_StringListCommandLineOption * p = gFirstStringListOption ;
   bool found = false ;
   while ((p != nullptr) && not found) {
-    found = (inDomainName == p->mDomainName) && (inIdentifier == p->mIdentifier) ;
+    found = (inDomainName == String (p->mDomainName)) && (inIdentifier == String (p->mIdentifier)) ;
     result = TO_UNICODE ((uint32_t) p->mCommandChar) ;
     p = p->mNext ;
 }
@@ -201,12 +200,12 @@ utf32 C_StringListCommandLineOption::getStringOptionInvocationLetter (const Stri
 //--------------------------------------------------------------------------------------------------
 
 String C_StringListCommandLineOption::getStringOptionInvocationString (const String & inDomainName,
-                                                                         const String & inIdentifier) {
+                                                                       const String & inIdentifier) {
   String result ;
   C_StringListCommandLineOption * p = gFirstStringListOption ;
   bool found = false ;
   while ((p != nullptr) && not found) {
-    found = (inDomainName == p->mDomainName) && (inIdentifier == p->mIdentifier) ;
+    found = (inDomainName == String (p->mDomainName)) && (inIdentifier == String (p->mIdentifier)) ;
     result = p->mCommandString ;
     p = p->mNext ;
   }
@@ -221,7 +220,7 @@ String C_StringListCommandLineOption::getStringOptionCommentString (const String
   C_StringListCommandLineOption * p = gFirstStringListOption ;
   bool found = false ;
   while ((p != nullptr) && not found) {
-    found = (inDomainName == p->mDomainName) && (inIdentifier == p->mIdentifier) ;
+    found = (inDomainName == String (p->mDomainName)) && (inIdentifier == String (p->mIdentifier)) ;
     result = p->mComment ;
     p = p->mNext ;
   }

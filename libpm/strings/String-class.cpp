@@ -230,7 +230,7 @@ String String::newWithStdIn (void) {
   const size_t BUFFER_SIZE = 1000 ;
   char buffer [BUFFER_SIZE] ;
   const char * s = fgets (buffer, BUFFER_SIZE, stdin) ;
-  return (s == nullptr) ? "" : s ;
+  return String ((s == nullptr) ? "" : s) ;
 }
 
 //--------------------------------------------------------------------------------------------------

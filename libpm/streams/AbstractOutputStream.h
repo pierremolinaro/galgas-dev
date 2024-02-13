@@ -51,7 +51,7 @@ class AbstractOutputStream {
   public: void appendUTF32LiteralStringConstant (const String & inUTF32String, const bool inAppendZeroTerminator) ;
 
 //--- Appending C string
-  public: void appendString (const char * inCstring) ;
+  public: void appendCString (const char * inCstring) ;
   public: void appendString (const char * inCstring, const int32_t inCount) ;
   public: void appendString (const std::initializer_list <utf32> & inSource) ;
 
@@ -106,14 +106,14 @@ class AbstractOutputStream {
   public: void appendStringMultiple (const String & inString, const int32_t inRepeatCount) ;
 
 //--- Methods for writing comment
-  public: void appendTitleComment (const String & inLineCommentPrefix,
+  public: void appendTitleComment (const char * inLineCommentPrefix,
                                    const String & inCommentString) ;
-  public: void appendHyphenLineCommentWithoutExtraBlankLine (const String & inLineCommentPrefix) ;
-  public: void appendHyphenLineComment (const String & inLineCommentPrefix) ;
-  public: void appendSpaceLineComment (const String & inLineCommentPrefix) ;
-  public: void appendCenterJustifiedComment (const String & inLineCommentPrefix,
+  public: void appendHyphenLineCommentWithoutExtraBlankLine (const char * inLineCommentPrefix) ;
+  public: void appendHyphenLineComment (const char * inLineCommentPrefix) ;
+  public: void appendSpaceLineComment (const char * inLineCommentPrefix) ;
+  public: void appendCenterJustifiedComment (const char * inLineCommentPrefix,
                                              const String & inCommentString) ;
-  public: void appendComment (const String & inLineCommentPrefix,
+  public: void appendComment (const char * inLineCommentPrefix,
                               const String & inCommentString) ;
 
 //--- Methods for writing C and C++ code

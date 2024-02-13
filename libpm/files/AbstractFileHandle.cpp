@@ -83,11 +83,6 @@ void AbstractFileHandle::appendBinaryData (const size_t inByteCount,
 void AbstractFileHandle::appendUTF8String (const int inByteCount, const char * inByteArray) {
   if ((mFilePtr != nullptr) && (inByteCount > 0)) {
     macroCheckPointerIsNotNull (inByteArray) ;
-    for (int i=0 ; i<inByteCount ; i++) {
-      if (inByteArray [i] == '\0') {
-        printf ("ERROR\n") ;
-      }
-    }
     ::fprintf (mFilePtr, "%.*s", inByteCount, inByteArray) ;
   }
 }

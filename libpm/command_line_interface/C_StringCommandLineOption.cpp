@@ -94,11 +94,11 @@ void C_StringCommandLineOption::setStringOptionForCommandString (const char * in
   if (outCommandLineOptionStringIsValid) {
     C_StringCommandLineOption * p = gFirstStringOption ;
     while ((p != nullptr) && ! outFound) {
-      outFound = (strlen (p->mCommandString) == equalSignIndex) &&
-                 (strncmp (p->mCommandString, inCommandString, equalSignIndex) == 0) ;
+      outFound = (p->mCommandString.length () == int32_t (equalSignIndex)) &&
+                 (strncmp (p->mCommandString.cString (), inCommandString, equalSignIndex) == 0) ;
       if (outFound) {
         p->mValue.removeAllKeepingCapacity () ;
-        p->mValue.appendString (& inCommandString [strlen (p->mCommandString) + 1]) ;
+        p->mValue.appendString (& inCommandString [p->mCommandString.length () + 1]) ;
       }
       p = p->mNext ;
     }
@@ -114,9 +114,8 @@ void C_StringCommandLineOption::printUsageOfStringOptions (void) {
     if (c != '\0') {
       printf (" [-%c=string]", c) ;
     }
-    const char * s = p->mCommandString ;
-    if (s [0] != 0) {
-      printf (" [--%s=string]", s) ;
+    if (p->mCommandString.length () > 0) {
+      printf (" [--%s=string]", p->mCommandString.cString ()) ;
     }
     p = p->mNext ;
   }
@@ -136,7 +135,7 @@ void C_StringCommandLineOption::printStringOptions (void) {
       gCout.setTextAttribute (kAllAttributesOff) ;
       gCout.appendNewLine () ;
     }
-    if (p->mCommandString [0] != '\0') {
+    if (p->mCommandString.length () > 0) {
       gCout.setForeColor (kBlueForeColor) ;
       gCout.setTextAttribute (kBoldTextAttribute) ;
       gCout.appendString ("--") ;

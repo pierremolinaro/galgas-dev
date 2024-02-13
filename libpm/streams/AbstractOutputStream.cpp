@@ -46,9 +46,9 @@ AbstractOutputStream::~AbstractOutputStream (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void AbstractOutputStream::appendString (const char * inCstring) {
+void AbstractOutputStream::appendCString (const char * inCstring) {
   if (inCstring != nullptr) {
-    genericCharArrayOutput (inCstring, (int32_t) (strlen (inCstring) & UINT32_MAX)) ;
+    genericCharArrayOutput (inCstring, int32_t (strlen (inCstring))) ;
   }
 }
 
@@ -98,7 +98,7 @@ void AbstractOutputStream::genericUnicodeArrayOutput (const utf32 * inCharArray,
 //--------------------------------------------------------------------------------------------------
 
 void AbstractOutputStream::appendNewLine (void) {
-  appendString ("\n") ;
+  appendCString ("\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -140,18 +140,18 @@ void AbstractOutputStream::appendUTF32LiteralStringConstant (const String & inSt
   appendUnicodeChar (TO_UNICODE ('{') COMMA_HERE) ;
   for (int32_t i=0 ; i < inString.length () ; i++) {
     const utf32 c = inString (i COMMA_HERE) ;
-    appendString ("\n  TO_UNICODE (") ;
+    appendCString ("\n  TO_UNICODE (") ;
     if (isprint (int (UNICODE_VALUE (c)))) {
       appendStringAsCLiteralCharConstant (c) ;
     }else{
       appendUnsigned (UNICODE_VALUE (c)) ;
     }
-    appendString ("),") ;
+    appendCString ("),") ;
   }
   if (inAppendZeroTerminator) {
-    appendString ("\n  TO_UNICODE (0)") ;
+    appendCString ("\n  TO_UNICODE (0)") ;
   }
-  appendString ("\n}") ;
+  appendCString ("\n}") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -183,7 +183,7 @@ void AbstractOutputStream::appendUnicodeChar (const utf32 inUnicodeCharacter COM
 void AbstractOutputStream::appendDouble (const double inValue) {
   char s [40] ;
   snprintf (s, 40, "%g", inValue) ;
-  appendString (s) ;
+  appendCString (s) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -197,7 +197,7 @@ void AbstractOutputStream::appendDouble (const double inValue) {
 void AbstractOutputStream::appendUnsigned (const uint64_t inValue) {
   char s [32] ;
   snprintf (s, 31, "%" PRIu64, inValue) ;
-  appendString (s) ;
+  appendCString (s) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -205,7 +205,7 @@ void AbstractOutputStream::appendUnsigned (const uint64_t inValue) {
 void AbstractOutputStream::appendUnsignedHex16 (const uint64_t inValue) {
   char s [32] ;
   snprintf (s, 31, "%016" PRIX64, inValue) ;
-  appendString (s) ;
+  appendCString (s) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -219,7 +219,7 @@ void AbstractOutputStream::appendUnsignedHex16 (const uint64_t inValue) {
 void AbstractOutputStream::appendSigned (const int64_t inValue) {
   char s [32] ;
   snprintf (s, 31, "%" PRId64, inValue) ;
-  appendString (s) ;
+  appendCString (s) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -231,7 +231,7 @@ void AbstractOutputStream::appendSigned (const int64_t inValue) {
 //--------------------------------------------------------------------------------------------------
 
 void AbstractOutputStream::appendBool (const bool inValue) {
-  appendString (inValue ? "true" : "false") ;
+  appendCString (inValue ? "true" : "false") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -246,9 +246,9 @@ void AbstractOutputStream::appendUnsignedWithZeroFill (const uint64_t inValue, c
   char s [32] ;
   snprintf (s, 31, "%" PRIu64, inValue) ;
   for (uint32_t i = uint32_t (strlen (s)) ; i < inWidth ; i++) {
-    appendString (" ") ;
+    appendCString (" ") ;
   }
-  appendString (s) ;
+  appendCString (s) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -256,7 +256,7 @@ void AbstractOutputStream::appendUnsignedWithZeroFill (const uint64_t inValue, c
 void AbstractOutputStream::appendUnsignedHex (const uint64_t inValue) {
   char s [32] ;
   snprintf (s, 31, "%" PRIX64, inValue) ;
-  appendString (s) ;
+  appendCString (s) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -264,7 +264,7 @@ void AbstractOutputStream::appendUnsignedHex (const uint64_t inValue) {
 void AbstractOutputStream::appendUnsigned0xHex (const uint64_t inValue) {
   char s [32] ;
   snprintf (s, 31, "0x%" PRIX64, inValue) ;
-  appendString (s) ;
+  appendCString (s) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -272,7 +272,7 @@ void AbstractOutputStream::appendUnsigned0xHex (const uint64_t inValue) {
 void AbstractOutputStream::appendUnsignedHex2 (const uint64_t inValue) {
   char s [32] ;
   snprintf (s, 31, "%02" PRIX64, inValue & 0xFF) ;
-  appendString (s) ;
+  appendCString (s) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -280,7 +280,7 @@ void AbstractOutputStream::appendUnsignedHex2 (const uint64_t inValue) {
 void AbstractOutputStream::appendUnsignedHex4 (const uint64_t inValue) {
   char s [32] ;
   snprintf (s, 31, "%04" PRIX64, inValue & 0xFFFF) ;
-  appendString (s) ;
+  appendCString (s) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -288,7 +288,7 @@ void AbstractOutputStream::appendUnsignedHex4 (const uint64_t inValue) {
 void AbstractOutputStream::appendUnsignedHex8 (const uint64_t inValue) {
   char s [32] ;
   snprintf (s, 31, "%08" PRIX64, inValue) ;
-  appendString (s) ;
+  appendCString (s) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -302,7 +302,7 @@ void AbstractOutputStream::appendUnsignedHex8 (const uint64_t inValue) {
 void AbstractOutputStream::appendPointer (const void * inValue) {
   char s [30] ;
   snprintf (s, 29, "%p", inValue) ;
-  appendString (s) ;
+  appendCString (s) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -330,18 +330,18 @@ static const int32_t kCommentMaxLength = 99 ;
 
 //--------------------------------------------------------------------------------------------------
 
-void AbstractOutputStream::appendHyphenLineCommentWithoutExtraBlankLine (const String & inLineCommentPrefix) {
-  appendString (inLineCommentPrefix) ;
+void AbstractOutputStream::appendHyphenLineCommentWithoutExtraBlankLine (const char * inLineCommentPrefix) {
+  appendCString (inLineCommentPrefix) ;
   for (int32_t i=1 ; i<kCommentMaxLength ; i++) {
-    appendString ("-") ;
+    appendCString ("-") ;
   }
-  appendString ("\n") ;
+  appendCString ("\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void AbstractOutputStream::appendTitleComment (const String & inLineCommentPrefix,
-                                          const String & inCommentString) {
+void AbstractOutputStream::appendTitleComment (const char * inLineCommentPrefix,
+                                               const String & inCommentString) {
   appendHyphenLineCommentWithoutExtraBlankLine (inLineCommentPrefix) ;
   appendSpaceLineComment (inLineCommentPrefix) ;
   appendCenterJustifiedComment (inLineCommentPrefix, inCommentString) ;
@@ -351,45 +351,45 @@ void AbstractOutputStream::appendTitleComment (const String & inLineCommentPrefi
 
 //--------------------------------------------------------------------------------------------------
 
-void AbstractOutputStream::appendComment (const String & inLineCommentPrefix,
+void AbstractOutputStream::appendComment (const char * inLineCommentPrefix,
                                           const String & inCommentString) {
   appendString (inLineCommentPrefix) ;
-  appendString (" ") ;
+  appendCString (" ") ;
   appendString (inCommentString) ;
-  appendString ("\n") ;
+  appendCString ("\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void AbstractOutputStream::appendCenterJustifiedComment (const String & inLineCommentPrefix,
+void AbstractOutputStream::appendCenterJustifiedComment (const char * inLineCommentPrefix,
                                                          const String & inCommentString) {
   const int32_t commentLength = inCommentString.length () ;
   const int32_t n = (kCommentMaxLength - 3 - commentLength) / 2 ;
 
   appendString (inLineCommentPrefix) ;
   for (int32_t i=0 ; i<n ; i++) {
-   appendString (" ") ;
+   appendCString (" ") ;
   }
   appendString (inCommentString) ;
   const int32_t fin = kCommentMaxLength - n - commentLength - 2 ;
   for (int32_t j=0 ; j<=fin ; j++) {
-    appendString (" ") ;
+    appendCString (" ") ;
   }
-  appendString ("\n") ;
+  appendCString ("\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void AbstractOutputStream::appendSpaceLineComment (const String & inLineCommentPrefix) {
+void AbstractOutputStream::appendSpaceLineComment (const char * inLineCommentPrefix) {
   appendString (inLineCommentPrefix) ;
-  appendString ("\n") ;
+  appendCString ("\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void AbstractOutputStream::appendHyphenLineComment (const String & inLineCommentPrefix) {
+void AbstractOutputStream::appendHyphenLineComment (const char * inLineCommentPrefix) {
   appendHyphenLineCommentWithoutExtraBlankLine (inLineCommentPrefix) ;
-  appendString ("\n") ;
+  appendCString ("\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -397,21 +397,21 @@ void AbstractOutputStream::appendHyphenLineComment (const String & inLineComment
 //--------------------------------------------------------------------------------------------------
 
 void AbstractOutputStream::append_C_HyphenLineComment (void) {
-  appendString ("/*") ;
+  appendCString ("/*") ;
   for (int32_t i=0 ; i<(kCommentMaxLength-4) ; i++) {
-    appendString ("-") ;
+    appendCString ("-") ;
   }
-  appendString ("*/\n") ;
+  appendCString ("*/\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void AbstractOutputStream::append_C_SpaceLineComment (void) {
-  appendString ("/*") ;
+  appendCString ("/*") ;
   for (int32_t i=0 ; i<(kCommentMaxLength-4) ; i++) {
-    appendString (" ") ;
+    appendCString (" ") ;
   }
-  appendString ("*/\n") ;
+  appendCString ("*/\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -467,7 +467,7 @@ static void internalWriteCstringConstantWithoutDelimiters (AbstractOutputStream 
   int32_t currentColumn = 0 ;
   for (int32_t i=0 ; i<inStringLength ; i++) {
     if (currentColumn > inLineMaxLength) {
-      ioStream.appendString ("\"\n  \"") ;
+      ioStream.appendCString ("\"\n  \"") ;
       currentColumn = 0 ;
     }
     currentColumn ++ ;
@@ -476,35 +476,35 @@ static void internalWriteCstringConstantWithoutDelimiters (AbstractOutputStream 
     case '\0' :
       break ;
     case '\a' :
-      ioStream.appendString ("\\a") ;
+      ioStream.appendCString ("\\a") ;
       break ;
     case '\b' :
-      ioStream.appendString ("\\b") ;
+      ioStream.appendCString ("\\b") ;
       break ;
     case '\f' :
-      ioStream.appendString ("\\f") ;
+      ioStream.appendCString ("\\f") ;
       break ;
     case '\n' :
-      ioStream.appendString ("\\n") ;
+      ioStream.appendCString ("\\n") ;
       if (i < (inStringLength - 1)) {
-        ioStream.appendString ("\"\n  \"") ;
+        ioStream.appendCString ("\"\n  \"") ;
         currentColumn = 1 ;
       }
       break ;
     case '\r' :
-      ioStream.appendString ("\\r") ;
+      ioStream.appendCString ("\\r") ;
       break ;
     case '\t' :
-      ioStream.appendString ("\\t") ;
+      ioStream.appendCString ("\\t") ;
       break ;
     case '\v' :
-      ioStream.appendString ("\\v") ;
+      ioStream.appendCString ("\\v") ;
       break ;
     case '\\' :
-      ioStream.appendString ("\\\\") ;
+      ioStream.appendCString ("\\\\") ;
       break ;
     case '\"' :
-      ioStream.appendString ("\\\"") ;
+      ioStream.appendCString ("\\\"") ;
       break ;
     default :
       if ((UNICODE_VALUE (c) >= ' ') && (UNICODE_VALUE (c) < 127)) {
@@ -513,9 +513,9 @@ static void internalWriteCstringConstantWithoutDelimiters (AbstractOutputStream 
         char buffer [5] ;
         const int32_t n = UTF8StringFromUTF32Character (c, buffer) ;
         for (int32_t j=0 ; j<n ; j++) {
-          ioStream.appendString ("\\x") ;
+          ioStream.appendCString ("\\x") ;
           ioStream.appendUnsignedHex2 ((uint32_t) buffer [j]) ;
-          ioStream.appendString ("\"\"")  ;
+          ioStream.appendCString ("\"\"")  ;
         }
       }
     }
@@ -528,9 +528,9 @@ static void internalWriteCstringConstant (AbstractOutputStream & ioStream,
                                           const String & inString,
                                           const int32_t inStringLength,
                                           const int32_t inLineMaxLength) {
-  ioStream.appendString ("\"") ;
+  ioStream.appendCString ("\"") ;
   internalWriteCstringConstantWithoutDelimiters (ioStream, inString, inStringLength, inLineMaxLength) ;
-  ioStream.appendString ("\"") ;
+  ioStream.appendCString ("\"") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -550,46 +550,46 @@ void AbstractOutputStream::appendStringAsCLiteralStringConstantWithoutDelimiters
 void AbstractOutputStream::appendStringAsCLiteralCharConstant (const utf32 c) {
   switch (UNICODE_VALUE (c)) {
   case '\0' :
-    appendString ("'\\0'") ;
+    appendCString ("'\\0'") ;
     break ;
   case '\a' :
-    appendString ("'\\a'") ;
+    appendCString ("'\\a'") ;
     break ;
   case '\b' :
-    appendString ("'\\b'") ;
+    appendCString ("'\\b'") ;
     break ;
   case '\f' :
-    appendString ("'\\f'") ;
+    appendCString ("'\\f'") ;
     break ;
   case '\n' :
-    appendString ("'\\n'") ;
+    appendCString ("'\\n'") ;
     break ;
   case '\r' :
-    appendString ("'\\r'") ;
+    appendCString ("'\\r'") ;
     break ;
   case '\t' :
-    appendString ("'\\t'") ;
+    appendCString ("'\\t'") ;
     break ;
   case '\v' :
-    appendString ("'\\v'") ;
+    appendCString ("'\\v'") ;
     break ;
   case '\\' :
-    appendString ("'\\\\'") ;
+    appendCString ("'\\\\'") ;
     break ;
   case '\'' :
-    appendString ("'\\''") ;
+    appendCString ("'\\''") ;
     break ;
   case '\"' :
-    appendString ("'\\\"'") ;
+    appendCString ("'\\\"'") ;
     break ;
   case '\?' :
-    appendString ("'\\\?'") ;
+    appendCString ("'\\\?'") ;
     break ;
   default :
     if ((UNICODE_VALUE (c) >= ' ') && (UNICODE_VALUE (c) <= '~')) {
-      appendString ("'") ;
+      appendCString ("'") ;
       appendUnicodeChar (c COMMA_HERE) ;
-      appendString ("'") ;
+      appendCString ("'") ;
     }else{
       appendUnsigned (UNICODE_VALUE (c)) ;
     }

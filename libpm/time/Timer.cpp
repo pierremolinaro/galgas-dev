@@ -71,10 +71,10 @@ String Timer::timeString (void) const {
   String result ;
   if (minutes > 0) {
     result.appendUnsigned (minutes) ;
-    result.appendString (" min ") ;
+    result.appendCString (" min ") ;
   }
   result.appendUnsigned (secondes) ;
-  result.appendString (" s ") ;
+  result.appendCString (" s ") ;
   result.appendUnsigned (ms / 100) ;
   result.appendUnsigned ((ms / 10) % 10) ;
   result.appendUnsigned (ms % 10) ;

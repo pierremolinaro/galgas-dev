@@ -73,16 +73,16 @@ const char * galgasVersionString (void) {
 static void print_usage (int argv, const char * argc []) {
   gCout.setForeColor (kMagentaForeColor) ;
   gCout.setTextAttribute (kBoldTextAttribute) ;
-  gCout.appendString ("Usage:\n") ;
+  gCout.appendCString ("Usage:\n") ;
   gCout.setTextAttribute (kAllAttributesOff) ;
   if (argv > 0) {
-    gCout.appendString (argc [0]) ;
+    gCout.appendCString (argc [0]) ;
   }
   C_BoolCommandLineOption::printUsageOfBoolOptions () ;
   C_UIntCommandLineOption::printUsageOfUIntOptions () ;
   C_StringCommandLineOption::printUsageOfStringOptions () ;
   C_StringListCommandLineOption::printUsageOfStringOptions () ;
-  gCout.appendString (" file...\n") ;
+  gCout.appendCString (" file...\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -111,21 +111,21 @@ static void print_help (const int argv,
                         const char* * inHelpMessageArray,
                         void print_tool_help_message (void)) {
   #ifdef __LP64__
-    gCout.appendString ("Compiled in 64 bits mode") ;
+    gCout.appendCString ("Compiled in 64 bits mode") ;
   #else
-    gCout.appendString ("Compiled in 32 bits mode") ;
+    gCout.appendCString ("Compiled in 32 bits mode") ;
   #endif
   #ifndef DO_NOT_GENERATE_CHECKINGS
-    gCout.appendString (" (with debug code)") ;
+    gCout.appendCString (" (with debug code)") ;
   #endif
-  gCout.appendString (".\n") ;
+  gCout.appendCString (".\n") ;
   print_tool_help_message () ;
   print_usage (argv, argc) ;
   gCout.setForeColor (kMagentaForeColor) ;
   gCout.setTextAttribute (kBoldTextAttribute) ;
-  gCout.appendString ("Options:\n") ;
+  gCout.appendCString ("Options:\n") ;
   gCout.setTextAttribute (kAllAttributesOff) ;
-  gCout.appendString ("You can place options anywhere in the command line: they will be executed before the files are processed.\n") ;
+  gCout.appendCString ("You can place options anywhere in the command line: they will be executed before the files are processed.\n") ;
   C_BoolCommandLineOption::printBoolOptions () ;
   C_UIntCommandLineOption::printUIntOptions () ;
   C_StringCommandLineOption::printStringOptions () ;
@@ -137,28 +137,28 @@ static void print_help (const int argv,
   }
   gCout.setForeColor (kMagentaForeColor) ;
   gCout.setTextAttribute (kBoldTextAttribute) ;
-  gCout.appendString ("Handled extension") ;
-  gCout.appendString ((extensionIndex > 1) ? "s" : "") ;
-  gCout.appendString (":\n") ;
+  gCout.appendCString ("Handled extension") ;
+  gCout.appendCString ((extensionIndex > 1) ? "s" : "") ;
+  gCout.appendCString (":\n") ;
   gCout.setTextAttribute (kAllAttributesOff) ;
   extensionIndex = 0 ;
   while (inExtensionArray [extensionIndex] != nullptr) {
     gCout.setForeColor (kBlueForeColor) ;
     gCout.setTextAttribute (kBoldTextAttribute) ;
-    gCout.appendString (".") ;
-    gCout.appendString (inExtensionArray [extensionIndex]) ;
+    gCout.appendCString (".") ;
+    gCout.appendCString (inExtensionArray [extensionIndex]) ;
     gCout.setTextAttribute (kAllAttributesOff) ;
     const uint32_t extensionLength = (uint32_t) (strlen (inExtensionArray [extensionIndex]) & UINT32_MAX) ;
     const uint32_t kDisplayLength = 20 ;
     if (extensionLength < kDisplayLength) {
       for (uint32_t i=extensionLength ; i<kDisplayLength ; i++) {
-        gCout.appendString (" ") ;
+        gCout.appendCString (" ") ;
       }
     }else{
       gCout.appendNewLine () ; ;
       gCout.appendSpaces (kDisplayLength+2) ;
     }
-    gCout.appendString (inHelpMessageArray [extensionIndex]) ;
+    gCout.appendCString (inHelpMessageArray [extensionIndex]) ;
     gCout.appendNewLine () ; ;
     extensionIndex ++ ;
   }
@@ -178,9 +178,9 @@ static void option_beginning_with_single_minus_sign (const char * inCommand,
   if (optionLength == 2) {
     C_BoolCommandLineOption::setBoolOptionForCommandChar (inCommand [1], outOk) ;
     if (! outOk) {
-      gCout.appendString ("Error : unknown '") ;
-      gCout.appendString (inCommand) ;
-      gCout.appendString ("' command line option.\n") ;
+      gCout.appendCString ("Error : unknown '") ;
+      gCout.appendCString (inCommand) ;
+      gCout.appendCString ("' command line option.\n") ;
     }
   }else if (optionLength > 2) {
   //--- Search for an UInt option
@@ -194,21 +194,21 @@ static void option_beginning_with_single_minus_sign (const char * inCommand,
       C_StringListCommandLineOption::setStringListOptionForCommandChar (& inCommand [1], outOk, correctFormat) ;
     }
     if (! outOk) {
-      gCout.appendString ("Error : unknown '") ;
-      gCout.appendString (inCommand) ;
-      gCout.appendString ("' command line option.\n") ;
+      gCout.appendCString ("Error : unknown '") ;
+      gCout.appendCString (inCommand) ;
+      gCout.appendCString ("' command line option.\n") ;
     }else if (! correctFormat) {
       outOk = false ;
-      gCout.appendString ("Error : incorrect format for '") ;
-      gCout.appendString (inCommand) ;
-      gCout.appendString ("' command line option (correct format is : '-") ;
-      gCout.appendString (inCommand) ;
-      gCout.appendString ("=value').\n") ;
+      gCout.appendCString ("Error : incorrect format for '") ;
+      gCout.appendCString (inCommand) ;
+      gCout.appendCString ("' command line option (correct format is : '-") ;
+      gCout.appendCString (inCommand) ;
+      gCout.appendCString ("=value').\n") ;
     }
   }else{
-    gCout.appendString ("Error : unknown '") ;
-    gCout.appendString (inCommand) ;
-    gCout.appendString ("' command line option.\n") ;
+    gCout.appendCString ("Error : unknown '") ;
+    gCout.appendCString (inCommand) ;
+    gCout.appendCString ("' command line option.\n") ;
   }
 }
 
@@ -236,14 +236,14 @@ static void option_beginning_with_double_minus_sign (const char * inCommand,
     C_StringListCommandLineOption::setStringListOptionForCommandString (& inCommand [2], outFound, correctFormat) ;
   }
   if (! outFound) {
-    gCout.appendString ("Error : unknown '") ;
-    gCout.appendString (inCommand) ;
-    gCout.appendString ("' command line option.\n") ;
+    gCout.appendCString ("Error : unknown '") ;
+    gCout.appendCString (inCommand) ;
+    gCout.appendCString ("' command line option.\n") ;
   }else if (! correctFormat) {
     outFound = false ;
-    gCout.appendString ("Error : incorrect format for '") ;
-    gCout.appendString (inCommand) ;
-    gCout.appendString ("' command line option.\n") ;
+    gCout.appendCString ("Error : incorrect format for '") ;
+    gCout.appendCString (inCommand) ;
+    gCout.appendCString ("' command line option.\n") ;
   }
 }
 
@@ -280,9 +280,9 @@ static void analyze_one_option (const char * inCommand,
          && isalpha (inCommand [0])
          && (inCommand [1] == ':')
          && (inCommand [2] == '\\')) {
-          fileName.appendString ("/") ;
+          fileName.appendCString ("/") ;
           fileName.appendUnicodeChar (TO_UNICODE (inCommand [0]) COMMA_HERE) ;
-          fileName.appendString ("/") ;
+          fileName.appendCString ("/") ;
           firstChar = 3 ;
         }
         for (int32_t i=firstChar ; i<fileLength ; i++) {
@@ -346,9 +346,9 @@ static void analyze_one_option (const char * inCommand,
        && isalpha (szFile [0])
        && (szFile [1] == ':')
        && (szFile [2] == '\\')) {
-        fileName.appendString ("/") ;
+        fileName.appendCString ("/") ;
         fileName.appendUnicodeChar (TO_UNICODE (szFile [0]) COMMA_HERE) ;
-        fileName.appendString ("/") ;
+        fileName.appendCString ("/") ;
         firstChar = 3 ;
       }
       for (int32_t i=firstChar ; i<fileLength ; i++) {
@@ -394,14 +394,14 @@ void F_Analyze_CLI_Options (const int argv,
   #endif
 //--- Print version ?
   if (gOption_generic_5F_cli_5F_options_display_5F_version.mValue) {
-    gCout.appendString (argc [0]) ;
-    gCout.appendString (" : ") ;
-    gCout.appendString (projectVersionString ()) ;
+    gCout.appendCString (argc [0]) ;
+    gCout.appendCString (" : ") ;
+    gCout.appendCString (projectVersionString ()) ;
     #ifndef DO_NOT_GENERATE_CHECKINGS
-      gCout.appendString (" [DEBUG]") ;
+      gCout.appendCString (" [DEBUG]") ;
     #endif
-    gCout.appendString (", build with GALGAS ") ;
-    gCout.appendString (galgasVersionString ()) ;
+    gCout.appendCString (", build with GALGAS ") ;
+    gCout.appendCString (galgasVersionString ()) ;
     gCout.appendNewLine () ;
   }
 //--- Print Help ?

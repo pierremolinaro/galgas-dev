@@ -30,10 +30,10 @@
 class C_StringListCommandLineOption final : public C_CommandLineOption {
 //--- Constructor
   public: C_StringListCommandLineOption (const char * inDomainName,
-                                          const char * inIdentifier,
-                                          const char inChar,
-                                          const char * inString,
-                                          const char * inComment) ;
+                                         const char * inIdentifier,
+                                         const char inChar,
+                                         const char * inString,
+                                         const char * inComment) ;
 //--- No Copy
   private: C_StringListCommandLineOption (const C_StringListCommandLineOption &) ;
   private: C_StringListCommandLineOption & operator = (const C_StringListCommandLineOption &) ;

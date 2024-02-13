@@ -238,15 +238,15 @@ void cSharedGraph::copyFrom (const cSharedGraph * inSource) {
 
 void cSharedGraph::description (String & ioString,
                                 const int32_t /* inIndentation */) const {
-  ioString.appendString (" (") ;
+  ioString.appendCString (" (") ;
   ioString.appendUnsigned (mDirectedGraph.nodeCount ()) ;
-  ioString.appendString (" node") ;
-  ioString.appendString ((mDirectedGraph.nodeCount () > 1) ? "s" : "") ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (" node") ;
+  ioString.appendCString ((mDirectedGraph.nodeCount () > 1) ? "s" : "") ;
+  ioString.appendCString (", ") ;
   ioString.appendUnsigned (mDirectedGraph.edgeCount ()) ;
-  ioString.appendString (" edge") ;
-  ioString.appendString ((mDirectedGraph.edgeCount () > 1) ? "s" : "") ;
-  ioString.appendString (")") ;
+  ioString.appendCString (" edge") ;
+  ioString.appendCString ((mDirectedGraph.edgeCount () > 1) ? "s" : "") ;
+  ioString.appendCString (")") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -304,14 +304,14 @@ void AC_GALGAS_graph::makeNewEmptyGraph (LOCATION_ARGS) {
 
 void AC_GALGAS_graph::description (String & ioString,
                                    const int32_t inIndentation) const {
-  ioString.appendString ("<graph @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString ("<graph @") ;
+  ioString.appendCString (staticTypeDescriptor ()->mGalgasTypeName) ;
   if (isValid ()) {
     mSharedGraph->description (ioString, inIndentation) ;
   }else{
-    ioString.appendString (" not built") ;
+    ioString.appendCString (" not built") ;
   }
-  ioString.appendString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -558,9 +558,9 @@ void cSharedGraph::subGraph (AC_GALGAS_graph & outResultingGraph,
   while (enumerator1.hasCurrentObject ()) {
     const cGraphNode * nodePtr = findNode (enumerator1.current_mValue (THERE).mProperty_string.stringValue(), root()) ;
     if (nullptr == nodePtr) {
-      String message = "subgraphFromNodes: '" ;
+      String message ("subgraphFromNodes: '") ;
       message.appendString (enumerator1.current_mValue (THERE).mProperty_string.stringValue()) ;
-      message.appendString ("' is not a declared node, cannot start from it") ;
+      message.appendCString ("' is not a declared node, cannot start from it") ;
       inCompiler->emitSemanticError (enumerator1.current_mValue (THERE).mProperty_location,
                                      message,
                                      TC_Array <C_FixItDescription> ()
@@ -576,9 +576,9 @@ void cSharedGraph::subGraph (AC_GALGAS_graph & outResultingGraph,
   while (enumerator2.hasCurrentObject ()) {
     const cGraphNode * nodePtr = findNode (enumerator2.current_key (THERE).stringValue(), root()) ;
     if (nullptr == nodePtr) {
-      String message = "subgraphFromNodes: '" ;
+      String message ("subgraphFromNodes: '") ;
       message.appendString (enumerator2.current_key (THERE).stringValue()) ;
-      message.appendString ("' is not a declared node, cannot be excluded") ;
+      message.appendCString ("' is not a declared node, cannot be excluded") ;
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }else{
       nodesToExcludeSet.add (nodePtr->mNodeID) ;
@@ -1211,13 +1211,13 @@ void AC_GALGAS_graph::internalTopologicalSort (capCollectionElementArray & outSo
     uint32_t undefinedNodeCount = 0 ;
     countUndefinedNodeCount (mSharedGraph->root (), undefinedNodeCount) ;
     if (0 != undefinedNodeCount) {
-      String s = "Cannot apply graph topologicalSort: there " ;
+      String s ("Cannot apply graph topologicalSort: there ") ;
       if (undefinedNodeCount > 1) {
-        s.appendString ("are ") ;
+        s.appendCString ("are ") ;
         s.appendUnsigned (undefinedNodeCount) ;
-        s.appendString (" undefined nodes") ;
+        s.appendCString (" undefined nodes") ;
       }else{
-        s.appendString ("is 1 undefined node") ;
+        s.appendCString ("is 1 undefined node") ;
       }
       inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
     }else{
@@ -1281,13 +1281,13 @@ void AC_GALGAS_graph::internalDepthFirstTopologicalSort (capCollectionElementArr
     uint32_t undefinedNodeCount = 0 ;
     countUndefinedNodeCount (mSharedGraph->root (), undefinedNodeCount) ;
     if (0 != undefinedNodeCount) {
-      String s = "Cannot apply graph topologicalSort: there " ;
+      String s ("Cannot apply graph topologicalSort: there ") ;
       if (undefinedNodeCount > 1) {
-        s.appendString ("are ") ;
+        s.appendCString ("are ") ;
         s.appendUnsigned (undefinedNodeCount) ;
-        s.appendString (" undefined nodes") ;
+        s.appendCString (" undefined nodes") ;
       }else{
-        s.appendString ("is 1 undefined node") ;
+        s.appendCString ("is 1 undefined node") ;
       }
       inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
     }else{
@@ -1359,9 +1359,9 @@ void cSharedGraph::removeEdgesToNode (const String & inNodeName,
 //--- Find node
   const cGraphNode * node = findNode (inNodeName, mRoot) ;
   if (nullptr == node) {
-    String s = "graph removeEdgesToNode: node '" ;
+    String s ("graph removeEdgesToNode: node '") ;
     s.appendString (inNodeName) ;
-    s.appendString ("' does not exist") ;
+    s.appendCString ("' does not exist") ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
     const uint32_t nodeIndex = node->mNodeID ;

@@ -75,27 +75,27 @@ cIssueDescriptor & cIssueDescriptor::operator = (const cIssueDescriptor & inSour
 //--------------------------------------------------------------------------------------------------
 
 void cIssueDescriptor::appendToJSONstring (String & ioJSONstring, const bool inIsFirstIssue) const {
-  String s = mMessage.stringByReplacingStringByString("\n", "\\n") ;
-  s = s.stringByReplacingStringByString("\"", "\\\"") ;
-  ioJSONstring.appendString (inIsFirstIssue ? "" : ",\n") ;
-  ioJSONstring.appendString ("  { \"ERROR\" : ") ;
-  ioJSONstring.appendString (mIsError ? "true" : "false") ;
-  ioJSONstring.appendString (",\n") ;
-  ioJSONstring.appendString ("    \"SOURCE\" : \"") ;
+  String s = mMessage.stringByReplacingStringByString (String ("\n"), String ("\\n")) ;
+  s = s.stringByReplacingStringByString (String ("\""), String ("\\\"")) ;
+  ioJSONstring.appendCString (inIsFirstIssue ? "" : ",\n") ;
+  ioJSONstring.appendCString ("  { \"ERROR\" : ") ;
+  ioJSONstring.appendCString (mIsError ? "true" : "false") ;
+  ioJSONstring.appendCString (",\n") ;
+  ioJSONstring.appendCString ("    \"SOURCE\" : \"") ;
   ioJSONstring.appendString (mFile.lastPathComponent ()) ;
-  ioJSONstring.appendString ("\",\n") ;
-  ioJSONstring.appendString ("    \"LINE\"  : ") ;
+  ioJSONstring.appendCString ("\",\n") ;
+  ioJSONstring.appendCString ("    \"LINE\"  : ") ;
   ioJSONstring.appendSigned (mLine) ;
-  ioJSONstring.appendString (",\n") ;
-  ioJSONstring.appendString ("    \"START_COLUMN\"  : ") ;
+  ioJSONstring.appendCString (",\n") ;
+  ioJSONstring.appendCString ("    \"START_COLUMN\"  : ") ;
   ioJSONstring.appendSigned (mStartColumn) ;
-  ioJSONstring.appendString (",\n") ;
-  ioJSONstring.appendString ("    \"END_COLUMN\"  : ") ;
+  ioJSONstring.appendCString (",\n") ;
+  ioJSONstring.appendCString ("    \"END_COLUMN\"  : ") ;
   ioJSONstring.appendSigned (mEndColumn) ;
-  ioJSONstring.appendString (",\n") ;
-  ioJSONstring.appendString ("    \"MESSAGE\" : \"") ;
+  ioJSONstring.appendCString (",\n") ;
+  ioJSONstring.appendCString ("    \"MESSAGE\" : \"") ;
   ioJSONstring.appendString (s) ;
-  ioJSONstring.appendString ("\"\n"
+  ioJSONstring.appendCString ("\"\n"
                   "  }") ;
 }
 

@@ -203,11 +203,11 @@ void capCollectionElementArray::insertObjectAtIndex (const capCollectionElement 
     mSharedRoot->mArray [inInsertionIndex] = inObject ;
     mSharedRoot->mCount ++ ;
   }else{
-    String s = "insertAtIndex: insertion index (" ;
+    String s ("insertAtIndex: insertion index (") ;
     s.appendUnsigned (inInsertionIndex) ;
-    s.appendString (") > length (") ;
+    s.appendCString (") > length (") ;
     s.appendUnsigned (count ()) ;
-    s.appendString (")") ;
+    s.appendCString (")") ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }
 }
@@ -229,11 +229,11 @@ void capCollectionElementArray::removeObjectAtIndex (capCollectionElement & outO
     mSharedRoot->mCount -- ;
     mSharedRoot->mArray [mSharedRoot->mCount].drop () ;
   }else{
-    String s = "removeObjectAtIndex: index (" ;
+    String s ("removeObjectAtIndex: index (") ;
     s.appendUnsigned (inIndex) ;
-    s.appendString (") >= length (") ;
+    s.appendCString (") >= length (") ;
     s.appendUnsigned (count ()) ;
-    s.appendString (")") ;
+    s.appendCString (")") ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }
 }
@@ -414,7 +414,7 @@ void capCollectionElementArray::description (String & ioString,
   for (uint32_t i=0 ; i<count () ; i++) {
     ioString.appendNewLine () ;
     ioString.appendStringMultiple ("| ", inIndentation) ;
-    ioString.appendString ("|-at ") ;
+    ioString.appendCString ("|-at ") ;
     ioString.appendUnsigned (i) ;
     mSharedRoot->mArray [i].description (ioString, inIndentation + 1) ;
   }
@@ -431,9 +431,9 @@ void capCollectionElementArray::subListToIndex (capCollectionElementArray & outS
   outOk = false ;
   if (inIndex >= count ()) {
     String s ;
-    s.appendString ("Cannot get a sub list from index ") ;
+    s.appendCString ("Cannot get a sub list from index ") ;
     s.appendUnsigned (inIndex) ;
-    s.appendString (" with a list of length ") ;
+    s.appendCString (" with a list of length ") ;
     s.appendUnsigned (count ()) ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
@@ -458,11 +458,11 @@ void capCollectionElementArray::subListWithRange (capCollectionElementArray & ou
   outSubList.removeAllObjects () ;
   if ((inStartIndex + inLength) > count ()) {
     String s ;
-    s.appendString ("Cannot get a sub list of range [") ;
+    s.appendCString ("Cannot get a sub list of range [") ;
     s.appendUnsigned (inStartIndex) ;
-    s.appendString (":") ;
+    s.appendCString (":") ;
     s.appendUnsigned (inLength) ;
-    s.appendString ("] from a list of length ") ;
+    s.appendCString ("] from a list of length ") ;
     s.appendUnsigned (count ()) ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
@@ -484,10 +484,9 @@ void capCollectionElementArray::subListFromIndex (capCollectionElementArray & ou
   outOk = false ;
   outSubList.removeAllObjects () ;
   if (inIndex > count ()) {
-    String s ;
-    s.appendString ("Cannot get a sub list from index ") ;
+    String s ("Cannot get a sub list from index ") ;
     s.appendUnsigned (inIndex) ;
-    s.appendString (" with a list of length ") ;
+    s.appendCString (" with a list of length ") ;
     s.appendUnsigned (count ()) ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{

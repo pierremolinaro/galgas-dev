@@ -109,8 +109,8 @@ setUIntOptionForCommandString (const char * inCommandCommandLineOptionString,
   if (outCommandLineOptionStringIsValid) {
     C_UIntCommandLineOption * p = gFirstIntOption ;
     while ((p != nullptr) && ! outFound) {
-      outFound = (strlen (p->mCommandString) == equalSignIndex) &&
-                  (strncmp (inCommandCommandLineOptionString, p->mCommandString, equalSignIndex) == 0) ;
+      outFound = (p->mCommandString.length () == int32_t (equalSignIndex)) &&
+                  (strncmp (inCommandCommandLineOptionString, p->mCommandString.cString (), equalSignIndex) == 0) ;
       if (outFound) {
         p->mValue = optionValue ;
       }
@@ -128,9 +128,8 @@ void C_UIntCommandLineOption::printUsageOfUIntOptions (void) {
     if (c != '\0') {
       printf (" [-%c=number]", c) ;
     }
-    const char * s = p->mCommandString ;
-    if (s [0] != 0) {
-      printf (" [--%s=number]", s) ;
+    if (p->mCommandString.length () > 0) {
+      printf (" [--%s=number]", p->mCommandString.cString ()) ;
     }
     p = p->mNext ;
   }
@@ -150,7 +149,7 @@ void C_UIntCommandLineOption::printUIntOptions (void) {
       gCout.setTextAttribute (kAllAttributesOff) ;
       gCout.appendNewLine () ;
     }
-    if (p->mCommandString [0] != '\0') {
+    if (p->mCommandString.length () > 0) {
       gCout.setForeColor (kBlueForeColor) ;
       gCout.setTextAttribute (kBoldTextAttribute) ;
       gCout.appendString ("--") ;

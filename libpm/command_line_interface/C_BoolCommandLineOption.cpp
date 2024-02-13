@@ -76,7 +76,7 @@ void C_BoolCommandLineOption::setBoolOptionForCommandString (const char * inComm
   }
   C_BoolCommandLineOption * p = gFirstBoolCommand ;
   while ((p != nullptr) && ! outFound) {
-    if (strcmp (p->mCommandString, inCommandString) == 0) {
+    if (strcmp (p->mCommandString.cString (), inCommandString) == 0) {
       outFound = true ;
       p->mValue = true ;
     }
@@ -93,9 +93,8 @@ void C_BoolCommandLineOption::printUsageOfBoolOptions (void) {
     if (c != '\0') {
       printf (" [-%c]", c) ;
     }
-    const char * s = p->mCommandString ;
-    if (s [0] != 0) {
-      printf (" [--%s]", s) ;
+    if (p->mCommandString.length () > 0) {
+      printf (" [--%s]", p->mCommandString.cString ()) ;
     }
     p = p->mNext ;
   }
@@ -114,7 +113,7 @@ void C_BoolCommandLineOption::printBoolOptions (void) {
       gCout.setTextAttribute (kAllAttributesOff) ;
       gCout.appendNewLine () ;
     }
-    if (p->mCommandString [0] != '\0') {
+    if (p->mCommandString.length () > 0) {
       gCout.setForeColor (kBlueForeColor) ;
       gCout.setTextAttribute (kBoldTextAttribute) ;
       gCout.appendString ("--") ;

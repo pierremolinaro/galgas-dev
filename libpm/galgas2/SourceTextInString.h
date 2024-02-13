@@ -71,12 +71,12 @@ class SourceTextInString final {
   public: SourceTextInString & operator = (const SourceTextInString & inSource) ;
 
   public: inline String sourceFilePath (void) const {
-    return (mObject == nullptr) ? "" : mObject->mFilePath ;
+    return (mObject == nullptr) ? String () : mObject->mFilePath ;
   }
 
 //--- Source text
   public: inline String sourceString (void) const {
-    return (mObject == nullptr) ? "" : mObject->mSourceString ;
+    return (mObject == nullptr) ? String () : mObject->mSourceString ;
   }
 
   public: inline bool isValid (void) const {
