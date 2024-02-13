@@ -17,11 +17,11 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
     %//--------------------------------------------------------------------------------------------------\n\n%
     %void cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName%::description (%?^%String & ioString,\n%
                        !^%const int32_t inIndentation) const {\n%
-    %  ioString.appendString ("(\\n") ;\n%
+    %  ioString.appendCString ("(\\n") ;\n%
     for (mType) in mAssociatedValueTypeList do (idx)
       %  mAssociatedValue%![idx string]%.description (ioString, inIndentation) ;\n%
     end
-    %  ioString.appendString (")") ;\n%
+    %  ioString.appendCString (")") ;\n%
     %}\n\n%
     %//--------------------------------------------------------------------------------------------------\n\n%
     %typeComparisonResult cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName%::compare (const cEnumAssociatedValues * inOperand) const {\n%
@@ -102,7 +102,7 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
       %    outAssociatedValue%![idx string]%.drop () ;\n%
     end
     %    String s ;\n%
-    %    s.appendString ("method @%!TYPE_IDENTIFIER% %!mConstantName% invoked with an invalid enum value") ;\n%
+    %    s.appendCString ("method @%!TYPE_IDENTIFIER% %!mConstantName% invoked with an invalid enum value") ;\n%
     %    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;\n%
     %  }else{\n%
     %    const cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% * ptr = (const cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% *) unsafePointer () ;\n%    
@@ -165,13 +165,13 @@ else
   %/* inIndentation */%
 end
 %) const {
-  ioString.appendString ("<enum @%!TYPE_NAME%: ") ;
-  ioString.appendString (gEnumNameArrayFor_%!TYPE_IDENTIFIER% [mEnum]) ;
+  ioString.appendCString ("<enum @%!TYPE_NAME%: ") ;
+  ioString.appendCString (gEnumNameArrayFor_%!TYPE_IDENTIFIER% [mEnum]) ;
 %
 if HAS_ASSOCIATED_VALUES then
   %  mAssociatedValues.description (ioString, inIndentation) ;\n%
 end
-%  ioString.appendString (">") ;
+%  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------

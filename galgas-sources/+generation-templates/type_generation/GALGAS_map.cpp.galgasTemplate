@@ -40,7 +40,7 @@ else
   for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST do
     %  ioString.appendNewLine () ;\n%
     %  ioString.appendStringMultiple ("| ", inIndentation) ;\n%
-    %  ioString.appendString (%![mPropertyName utf8RepresentationEscapingQuestionMark]% ":") ;\n%
+    %  ioString.appendCString (%![mPropertyName utf8RepresentationEscapingQuestionMark]% ":") ;\n%
     %  mProperty_%![mPropertyName identifierRepresentation]%.description (ioString, inIndentation) ;\n%
   end
 end

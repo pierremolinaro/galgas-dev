@@ -8,6 +8,157 @@
 #include "all-declarations-8.h"
 
 //--------------------------------------------------------------------------------------------------
+// @falseExpressionAST reference class
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_falseExpressionAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticExpressionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mLocation.printNonNullClassInstanceProperties ("mLocation") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+typeComparisonResult cPtr_falseExpressionAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_falseExpressionAST * p = (const cPtr_falseExpressionAST *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_falseExpressionAST) ;
+  if (kOperandEqual == result) {
+    result = mProperty_mLocation.objectCompare (p->mProperty_mLocation) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+
+typeComparisonResult GALGAS_falseExpressionAST::objectCompare (const GALGAS_falseExpressionAST & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = kOperandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_falseExpressionAST::GALGAS_falseExpressionAST (void) :
+GALGAS_semanticExpressionAST () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_falseExpressionAST::GALGAS_falseExpressionAST (const cPtr_falseExpressionAST * inSourcePtr) :
+GALGAS_semanticExpressionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_falseExpressionAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_falseExpressionAST GALGAS_falseExpressionAST::class_func_new (const GALGAS_location & inAttribute_mLocation
+                                                                     COMMA_LOCATION_ARGS) {
+  GALGAS_falseExpressionAST result ;
+  if (inAttribute_mLocation.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_falseExpressionAST (inAttribute_mLocation COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_location GALGAS_falseExpressionAST::readProperty_mLocation (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_location () ;
+  }else{
+    cPtr_falseExpressionAST * p = (cPtr_falseExpressionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_falseExpressionAST) ;
+    return p->mProperty_mLocation ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @falseExpressionAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_falseExpressionAST::cPtr_falseExpressionAST (const GALGAS_location & in_mLocation
+                                                  COMMA_LOCATION_ARGS) :
+cPtr_semanticExpressionAST (THERE),
+mProperty_mLocation (in_mLocation) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * cPtr_falseExpressionAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_falseExpressionAST ;
+}
+
+void cPtr_falseExpressionAST::description (String & ioString,
+                                           const int32_t inIndentation) const {
+  ioString.appendCString ("[@falseExpressionAST:") ;
+  mProperty_mLocation.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_falseExpressionAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_falseExpressionAST (mProperty_mLocation COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @falseExpressionAST generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_falseExpressionAST ("falseExpressionAST",
+                                                                          & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_falseExpressionAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_falseExpressionAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_falseExpressionAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_falseExpressionAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_falseExpressionAST GALGAS_falseExpressionAST::extractObject (const GALGAS_object & inObject,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_falseExpressionAST result ;
+  const GALGAS_falseExpressionAST * p = (const GALGAS_falseExpressionAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_falseExpressionAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("falseExpressionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult GALGAS_falseExpressionAST_2D_weak::objectCompare (const GALGAS_falseExpressionAST_2D_weak & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
@@ -451,11 +602,11 @@ const C_galgas_type_descriptor * cPtr_literalStringExpressionAST::classDescripto
 
 void cPtr_literalStringExpressionAST::description (String & ioString,
                                                    const int32_t inIndentation) const {
-  ioString.appendString ("[@literalStringExpressionAST:") ;
+  ioString.appendCString ("[@literalStringExpressionAST:") ;
   mProperty_mLocation.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mStringSequence.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2021,9 +2172,9 @@ GALGAS_bool GALGAS_comparison::getter_isDifferentInstances (UNUSED_LOCATION_ARGS
 
 void GALGAS_comparison::description (String & ioString,
                                      const int32_t /* inIndentation */) const {
-  ioString.appendString ("<enum @comparison: ") ;
-  ioString.appendString (gEnumNameArrayFor_comparison [mEnum]) ;
-  ioString.appendString (">") ;
+  ioString.appendCString ("<enum @comparison: ") ;
+  ioString.appendCString (gEnumNameArrayFor_comparison [mEnum]) ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2236,15 +2387,15 @@ const C_galgas_type_descriptor * cPtr_comparisonExpressionAST::classDescriptor (
 
 void cPtr_comparisonExpressionAST::description (String & ioString,
                                                 const int32_t inIndentation) const {
-  ioString.appendString ("[@comparisonExpressionAST:") ;
+  ioString.appendCString ("[@comparisonExpressionAST:") ;
   mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mComparison.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2651,13 +2802,13 @@ const C_galgas_type_descriptor * cPtr_rightShiftExpressionAST::classDescriptor (
 
 void cPtr_rightShiftExpressionAST::description (String & ioString,
                                                 const int32_t inIndentation) const {
-  ioString.appendString ("[@rightShiftExpressionAST:") ;
+  ioString.appendCString ("[@rightShiftExpressionAST:") ;
   mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2954,13 +3105,13 @@ const C_galgas_type_descriptor * cPtr_leftShiftExpressionAST::classDescriptor (v
 
 void cPtr_leftShiftExpressionAST::description (String & ioString,
                                                const int32_t inIndentation) const {
-  ioString.appendString ("[@leftShiftExpressionAST:") ;
+  ioString.appendCString ("[@leftShiftExpressionAST:") ;
   mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3257,13 +3408,13 @@ const C_galgas_type_descriptor * cPtr_addExpressionAST::classDescriptor (void) c
 
 void cPtr_addExpressionAST::description (String & ioString,
                                          const int32_t inIndentation) const {
-  ioString.appendString ("[@addExpressionAST:") ;
+  ioString.appendCString ("[@addExpressionAST:") ;
   mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3560,13 +3711,13 @@ const C_galgas_type_descriptor * cPtr_addExpressionNoOverflowAST::classDescripto
 
 void cPtr_addExpressionNoOverflowAST::description (String & ioString,
                                                    const int32_t inIndentation) const {
-  ioString.appendString ("[@addExpressionNoOverflowAST:") ;
+  ioString.appendCString ("[@addExpressionNoOverflowAST:") ;
   mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3863,13 +4014,13 @@ const C_galgas_type_descriptor * cPtr_subExpressionAST::classDescriptor (void) c
 
 void cPtr_subExpressionAST::description (String & ioString,
                                          const int32_t inIndentation) const {
-  ioString.appendString ("[@subExpressionAST:") ;
+  ioString.appendCString ("[@subExpressionAST:") ;
   mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4166,13 +4317,13 @@ const C_galgas_type_descriptor * cPtr_subExpressionNoOverflowAST::classDescripto
 
 void cPtr_subExpressionNoOverflowAST::description (String & ioString,
                                                    const int32_t inIndentation) const {
-  ioString.appendString ("[@subExpressionNoOverflowAST:") ;
+  ioString.appendCString ("[@subExpressionNoOverflowAST:") ;
   mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4660,9 +4811,9 @@ GALGAS_bool GALGAS_binaryOperator::getter_isModulo_5F_operation (UNUSED_LOCATION
 
 void GALGAS_binaryOperator::description (String & ioString,
                                          const int32_t /* inIndentation */) const {
-  ioString.appendString ("<enum @binaryOperator: ") ;
-  ioString.appendString (gEnumNameArrayFor_binaryOperator [mEnum]) ;
-  ioString.appendString (">") ;
+  ioString.appendCString ("<enum @binaryOperator: ") ;
+  ioString.appendCString (gEnumNameArrayFor_binaryOperator [mEnum]) ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4966,13 +5117,13 @@ const C_galgas_type_descriptor * cPtr_multiplicationExpressionAST::classDescript
 
 void cPtr_multiplicationExpressionAST::description (String & ioString,
                                                     const int32_t inIndentation) const {
-  ioString.appendString ("[@multiplicationExpressionAST:") ;
+  ioString.appendCString ("[@multiplicationExpressionAST:") ;
   mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5269,13 +5420,13 @@ const C_galgas_type_descriptor * cPtr_multiplicationExpressionNoOverflowAST::cla
 
 void cPtr_multiplicationExpressionNoOverflowAST::description (String & ioString,
                                                               const int32_t inIndentation) const {
-  ioString.appendString ("[@multiplicationExpressionNoOverflowAST:") ;
+  ioString.appendCString ("[@multiplicationExpressionNoOverflowAST:") ;
   mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5572,13 +5723,13 @@ const C_galgas_type_descriptor * cPtr_divisionExpressionAST::classDescriptor (vo
 
 void cPtr_divisionExpressionAST::description (String & ioString,
                                               const int32_t inIndentation) const {
-  ioString.appendString ("[@divisionExpressionAST:") ;
+  ioString.appendCString ("[@divisionExpressionAST:") ;
   mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5875,13 +6026,13 @@ const C_galgas_type_descriptor * cPtr_divisionExpressionNoOverflowAST::classDesc
 
 void cPtr_divisionExpressionNoOverflowAST::description (String & ioString,
                                                         const int32_t inIndentation) const {
-  ioString.appendString ("[@divisionExpressionNoOverflowAST:") ;
+  ioString.appendCString ("[@divisionExpressionNoOverflowAST:") ;
   mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6178,13 +6329,13 @@ const C_galgas_type_descriptor * cPtr_moduloExpressionAST::classDescriptor (void
 
 void cPtr_moduloExpressionAST::description (String & ioString,
                                             const int32_t inIndentation) const {
-  ioString.appendString ("[@moduloExpressionAST:") ;
+  ioString.appendCString ("[@moduloExpressionAST:") ;
   mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9269,7 +9420,7 @@ cCollectionElement * cCollectionElement_collectionValueElementList::copy (void) 
 void cCollectionElement_collectionValueElementList::description (String & ioString, const int32_t inIndentation) const {
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mElement" ":") ;
+  ioString.appendCString ("mElement" ":") ;
   mObject.mProperty_mElement.description (ioString, inIndentation) ;
 }
 
@@ -9933,11 +10084,11 @@ const C_galgas_type_descriptor * cPtr_expressionCollectionValue::classDescriptor
 
 void cPtr_expressionCollectionValue::description (String & ioString,
                                                   const int32_t inIndentation) const {
-  ioString.appendString ("[@expressionCollectionValue:") ;
+  ioString.appendCString ("[@expressionCollectionValue:") ;
   mProperty_mExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mExpressionLocation.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10215,11 +10366,11 @@ const C_galgas_type_descriptor * cPtr_expressionListCollectionValue::classDescri
 
 void cPtr_expressionListCollectionValue::description (String & ioString,
                                                       const int32_t inIndentation) const {
-  ioString.appendString ("[@expressionListCollectionValue:") ;
+  ioString.appendCString ("[@expressionListCollectionValue:") ;
   mProperty_mExpressionList.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mEndOfExpressionLocation.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10594,7 +10745,7 @@ cCollectionElement * cCollectionElement_collectionValueElementListForGeneration:
 void cCollectionElement_collectionValueElementListForGeneration::description (String & ioString, const int32_t inIndentation) const {
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mElement" ":") ;
+  ioString.appendCString ("mElement" ":") ;
   mObject.mProperty_mElement.description (ioString, inIndentation) ;
 }
 
@@ -11391,11 +11542,11 @@ const C_galgas_type_descriptor * cPtr_expressionListCollectionForGeneration::cla
 
 void cPtr_expressionListCollectionForGeneration::description (String & ioString,
                                                               const int32_t inIndentation) const {
-  ioString.appendString ("[@expressionListCollectionForGeneration:") ;
+  ioString.appendCString ("[@expressionListCollectionForGeneration:") ;
   mProperty_mExpressionLocation.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mExpressionList.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11764,9 +11915,9 @@ const C_galgas_type_descriptor * cPtr_selfInExpressionAST::classDescriptor (void
 
 void cPtr_selfInExpressionAST::description (String & ioString,
                                             const int32_t inIndentation) const {
-  ioString.appendString ("[@selfInExpressionAST:") ;
+  ioString.appendCString ("[@selfInExpressionAST:") ;
   mProperty_mSelfLocation.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -12374,11 +12525,11 @@ const C_galgas_type_descriptor * cPtr_notExpressionAST::classDescriptor (void) c
 
 void cPtr_notExpressionAST::description (String & ioString,
                                          const int32_t inIndentation) const {
-  ioString.appendString ("[@notExpressionAST:") ;
+  ioString.appendCString ("[@notExpressionAST:") ;
   mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -12766,11 +12917,11 @@ const C_galgas_type_descriptor * cPtr_tildeExpressionAST::classDescriptor (void)
 
 void cPtr_tildeExpressionAST::description (String & ioString,
                                            const int32_t inIndentation) const {
-  ioString.appendString ("[@tildeExpressionAST:") ;
+  ioString.appendCString ("[@tildeExpressionAST:") ;
   mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13158,11 +13309,11 @@ const C_galgas_type_descriptor * cPtr_bangExpressionAST::classDescriptor (void) 
 
 void cPtr_bangExpressionAST::description (String & ioString,
                                           const int32_t inIndentation) const {
-  ioString.appendString ("[@bangExpressionAST:") ;
+  ioString.appendCString ("[@bangExpressionAST:") ;
   mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13550,11 +13701,11 @@ const C_galgas_type_descriptor * cPtr_unaryWrappingMinusExpressionAST::classDesc
 
 void cPtr_unaryWrappingMinusExpressionAST::description (String & ioString,
                                                         const int32_t inIndentation) const {
-  ioString.appendString ("[@unaryWrappingMinusExpressionAST:") ;
+  ioString.appendCString ("[@unaryWrappingMinusExpressionAST:") ;
   mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13961,13 +14112,13 @@ const C_galgas_type_descriptor * cPtr_orExpressionAST::classDescriptor (void) co
 
 void cPtr_orExpressionAST::description (String & ioString,
                                         const int32_t inIndentation) const {
-  ioString.appendString ("[@orExpressionAST:") ;
+  ioString.appendCString ("[@orExpressionAST:") ;
   mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -14264,13 +14415,13 @@ const C_galgas_type_descriptor * cPtr_orShortExpressionAST::classDescriptor (voi
 
 void cPtr_orShortExpressionAST::description (String & ioString,
                                              const int32_t inIndentation) const {
-  ioString.appendString ("[@orShortExpressionAST:") ;
+  ioString.appendCString ("[@orShortExpressionAST:") ;
   mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -14567,13 +14718,13 @@ const C_galgas_type_descriptor * cPtr_xorExpressionAST::classDescriptor (void) c
 
 void cPtr_xorExpressionAST::description (String & ioString,
                                          const int32_t inIndentation) const {
-  ioString.appendString ("[@xorExpressionAST:") ;
+  ioString.appendCString ("[@xorExpressionAST:") ;
   mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -14870,13 +15021,13 @@ const C_galgas_type_descriptor * cPtr_closedSliceExpressionAST::classDescriptor 
 
 void cPtr_closedSliceExpressionAST::description (String & ioString,
                                                  const int32_t inIndentation) const {
-  ioString.appendString ("[@closedSliceExpressionAST:") ;
+  ioString.appendCString ("[@closedSliceExpressionAST:") ;
   mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -15173,13 +15324,13 @@ const C_galgas_type_descriptor * cPtr_openedSliceExpressionAST::classDescriptor 
 
 void cPtr_openedSliceExpressionAST::description (String & ioString,
                                                  const int32_t inIndentation) const {
-  ioString.appendString ("[@openedSliceExpressionAST:") ;
+  ioString.appendCString ("[@openedSliceExpressionAST:") ;
   mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -15806,13 +15957,13 @@ const C_galgas_type_descriptor * cPtr_andShortExpressionAST::classDescriptor (vo
 
 void cPtr_andShortExpressionAST::description (String & ioString,
                                               const int32_t inIndentation) const {
-  ioString.appendString ("[@andShortExpressionAST:") ;
+  ioString.appendCString ("[@andShortExpressionAST:") ;
   mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -16109,13 +16260,13 @@ const C_galgas_type_descriptor * cPtr_andExpressionAST::classDescriptor (void) c
 
 void cPtr_andExpressionAST::description (String & ioString,
                                          const int32_t inIndentation) const {
-  ioString.appendString ("[@andExpressionAST:") ;
+  ioString.appendCString ("[@andExpressionAST:") ;
   mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -16405,11 +16556,11 @@ mAssociatedValue2 (inAssociatedValue2) {
 
 void cEnumAssociatedValues_selfAvailability_available::description (String & ioString,
                                                                     const int32_t inIndentation) const {
-  ioString.appendString ("(\n") ;
+  ioString.appendCString ("(\n") ;
   mAssociatedValue0.description (ioString, inIndentation) ;
   mAssociatedValue1.description (ioString, inIndentation) ;
   mAssociatedValue2.description (ioString, inIndentation) ;
-  ioString.appendString (")") ;
+  ioString.appendCString (")") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -16474,7 +16625,7 @@ void GALGAS_selfAvailability::method_available (GALGAS_unifiedTypeMapEntry & out
     outAssociatedValue1.drop () ;
     outAssociatedValue2.drop () ;
     String s ;
-    s.appendString ("method @selfAvailability available invoked with an invalid enum value") ;
+    s.appendCString ("method @selfAvailability available invoked with an invalid enum value") ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
     const cEnumAssociatedValues_selfAvailability_available * ptr = (const cEnumAssociatedValues_selfAvailability_available *) unsafePointer () ;
@@ -16530,10 +16681,10 @@ GALGAS_bool GALGAS_selfAvailability::getter_isAvailable (UNUSED_LOCATION_ARGS) c
 
 void GALGAS_selfAvailability::description (String & ioString,
                                            const int32_t inIndentation) const {
-  ioString.appendString ("<enum @selfAvailability: ") ;
-  ioString.appendString (gEnumNameArrayFor_selfAvailability [mEnum]) ;
+  ioString.appendCString ("<enum @selfAvailability: ") ;
+  ioString.appendCString (gEnumNameArrayFor_selfAvailability [mEnum]) ;
   mAssociatedValues.description (ioString, inIndentation) ;
-  ioString.appendString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------

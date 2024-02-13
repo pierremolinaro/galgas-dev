@@ -185,17 +185,17 @@ if not IS_ABSTRACT then
   if [ALL_PROPERTY_LIST count] == 0 then
     %void cPtr_%!TYPE_IDENTIFIER%::description (%?^%String & ioString,\n%
                                !^%const int32_t /* inIndentation */) const {\n%
-    %  ioString.appendString ("[@%!TYPE_NAME%]") ;\n%
+    %  ioString.appendCString ("[@%!TYPE_NAME%]") ;\n%
     %}\n\n%
   else
     %void cPtr_%!TYPE_IDENTIFIER%::description (%?^%String & ioString,\n%
                                !^%const int32_t inIndentation) const {\n%
-    %  ioString.appendString ("[@%!TYPE_NAME%:") ;\n%
+    %  ioString.appendCString ("[@%!TYPE_NAME%:") ;\n%
     for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ALL_PROPERTY_LIST
       do %  mProperty_%![mPropertyName identifierRepresentation]%.description (ioString, inIndentation+1) ;\n%
-      between %  ioString.appendString (", ") ;\n%
+      between %  ioString.appendCString (", ") ;\n%
     end
-    %  ioString.appendString ("]") ;\n%
+    %  ioString.appendCString ("]") ;\n%
     %}\n\n%
   end
 end

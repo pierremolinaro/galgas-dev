@@ -417,15 +417,15 @@ static void internalDescription_%!TYPE_IDENTIFIER% (const cNode_%!TYPE_IDENTIFIE
 
 void GALGAS_%!TYPE_IDENTIFIER%::description (String & ioString,
                                              const int32_t inIndentation) const {
-  ioString.appendString ("<dict @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendString (":") ;
+  ioString.appendCString ("<dict @") ;
+  ioString.appendCString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (":") ;
   if (isValid ()) {
     internalDescription_%!TYPE_IDENTIFIER% (mSharedDict->mRoot, ioString, inIndentation) ;
   }else{
-    ioString.appendString (" not built") ;
+    ioString.appendCString (" not built") ;
   }
-  ioString.appendString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------

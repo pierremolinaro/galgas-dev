@@ -70,11 +70,11 @@ cCollectionElement * cCollectionElement_syntaxComponentListForGrammarAnalysis::c
 void cCollectionElement_syntaxComponentListForGrammarAnalysis::description (String & ioString, const int32_t inIndentation) const {
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mProductionRulesList" ":") ;
+  ioString.appendCString ("mProductionRulesList" ":") ;
   mObject.mProperty_mProductionRulesList.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mSyntaxComponentName" ":") ;
+  ioString.appendCString ("mSyntaxComponentName" ":") ;
   mObject.mProperty_mSyntaxComponentName.description (ioString, inIndentation) ;
 }
 
@@ -509,7 +509,7 @@ cMapElement * cMapElement_terminalSymbolsMapForGrammarAnalysis::copy (void) {
 void cMapElement_terminalSymbolsMapForGrammarAnalysis::description (String & ioString, const int32_t inIndentation) const {
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mTerminalIndex" ":") ;
+  ioString.appendCString ("mTerminalIndex" ":") ;
   mProperty_mTerminalIndex.description (ioString, inIndentation) ;
 }
 
@@ -889,7 +889,7 @@ cCollectionElement * cCollectionElement_rowList::copy (void) {
 void cCollectionElement_rowList::description (String & ioString, const int32_t inIndentation) const {
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("columns" ":") ;
+  ioString.appendCString ("columns" ":") ;
   mObject.mProperty_columns.description (ioString, inIndentation) ;
 }
 
@@ -1416,7 +1416,7 @@ cCollectionElement * cCollectionElement_programListForGeneration::copy (void) {
 void cCollectionElement_programListForGeneration::description (String & ioString, const int32_t inIndentation) const {
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mDeclaration" ":") ;
+  ioString.appendCString ("mDeclaration" ":") ;
   mObject.mProperty_mDeclaration.description (ioString, inIndentation) ;
 }
 
@@ -2743,11 +2743,11 @@ cCollectionElement * cCollectionElement_galgas_33_QualifiedFeatureList::copy (vo
 void cCollectionElement_galgas_33_QualifiedFeatureList::description (String & ioString, const int32_t inIndentation) const {
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mFeatureName" ":") ;
+  ioString.appendCString ("mFeatureName" ":") ;
   mObject.mProperty_mFeatureName.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mFeatureValue" ":") ;
+  ioString.appendCString ("mFeatureValue" ":") ;
   mObject.mProperty_mFeatureValue.description (ioString, inIndentation) ;
 }
 

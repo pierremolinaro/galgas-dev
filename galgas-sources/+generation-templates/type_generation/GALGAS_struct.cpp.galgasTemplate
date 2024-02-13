@@ -102,16 +102,16 @@ void GALGAS_%!TYPE_IDENTIFIER%::drop (void) {
 
 void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%String & ioString,
                               %!^%const int32_t inIndentation) const {
-  ioString.appendString ("<struct @%!TYPE_NAME%:") ;
+  ioString.appendCString ("<struct @%!TYPE_NAME%:") ;
   if (! isValid ()) {
-    ioString.appendString (" not built") ;
+    ioString.appendCString (" not built") ;
   }else{
 %
 for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in PROPERTY_LIST
   do (IDX) %    mProperty_%![mPropertyName identifierRepresentation]%.description (ioString, inIndentation+1) ;\n%
-  between %    ioString.appendString (", ") ;\n%
+  between %    ioString.appendCString (", ") ;\n%
 end
 %  }
-  ioString.appendString (">") ;
+  ioString.appendCString (">") ;
 }
 

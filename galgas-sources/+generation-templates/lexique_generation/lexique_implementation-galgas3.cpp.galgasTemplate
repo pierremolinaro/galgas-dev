@@ -105,16 +105,16 @@ String Lexique_%!LEXIQUE_IDENTIFIER%::getCurrentTokenString (const cToken * inTo
   const cTokenFor_%!LEXIQUE_IDENTIFIER% * ptr = (const cTokenFor_%!LEXIQUE_IDENTIFIER% *) inTokenPtr ;
   String s ;
   if (ptr == nullptr) {
-    s.appendString ("$$") ;
+    s.appendCString ("$$") ;
   }else{
     switch (ptr->mTokenCode) {
     case kToken_:
-      s.appendString ("$$") ;
+      s.appendCString ("$$") ;
       break ;
 %for (mTerminalName mSentAttributeList mSyntaxErrorMessage mIsEndOfTemplateMark mAtomicSelection mStyleIndex) in TERMINAL_LIST do
    %    case kToken_%![mTerminalName.string identifierRepresentation]%:\n%
    %      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;\n%
-   %      s.appendString (%![mTerminalName.string utf8RepresentationEscapingQuestionMark]%) ;\n%
+   %      s.appendCString (%![mTerminalName.string utf8RepresentationEscapingQuestionMark]%) ;\n%
    %      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;\n%
    for (mLexicalFormalSelector mLexicalAttributeName mLexicalType) in mSentAttributeList do
      %      s.appendUnicodeChar (TO_UNICODE (' ') COMMA_HERE) ;\n%

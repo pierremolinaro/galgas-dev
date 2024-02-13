@@ -8511,11 +8511,11 @@ cMapElement * cMapElement_headerCompositionMap::copy (void) {
 void cMapElement_headerCompositionMap::description (String & ioString, const int32_t inIndentation) const {
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mInclusion" ":") ;
+  ioString.appendCString ("mInclusion" ":") ;
   mProperty_mInclusion.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mHeaderString" ":") ;
+  ioString.appendCString ("mHeaderString" ":") ;
   mProperty_mHeaderString.description (ioString, inIndentation) ;
 }
 
@@ -8847,7 +8847,7 @@ cMapElement * cMapElement_headerRepartitionMap::copy (void) {
 void cMapElement_headerRepartitionMap::description (String & ioString, const int32_t inIndentation) const {
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mHeaderFileName" ":") ;
+  ioString.appendCString ("mHeaderFileName" ":") ;
   mProperty_mHeaderFileName.description (ioString, inIndentation) ;
 }
 
@@ -9131,7 +9131,7 @@ cMapElement * cMapElement_projectQualifiedFeatureMap::copy (void) {
 void cMapElement_projectQualifiedFeatureMap::description (String & ioString, const int32_t inIndentation) const {
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mFeatureValue" ":") ;
+  ioString.appendCString ("mFeatureValue" ":") ;
   mProperty_mFeatureValue.description (ioString, inIndentation) ;
 }
 
@@ -9454,19 +9454,19 @@ cCollectionElement * cCollectionElement_XCodeGroupList::copy (void) {
 void cCollectionElement_XCodeGroupList::description (String & ioString, const int32_t inIndentation) const {
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mGroupReference" ":") ;
+  ioString.appendCString ("mGroupReference" ":") ;
   mObject.mProperty_mGroupReference.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mGroupName" ":") ;
+  ioString.appendCString ("mGroupName" ":") ;
   mObject.mProperty_mGroupName.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mGroupPath" ":") ;
+  ioString.appendCString ("mGroupPath" ":") ;
   mObject.mProperty_mGroupPath.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mChildrenRefs" ":") ;
+  ioString.appendCString ("mChildrenRefs" ":") ;
   mObject.mProperty_mChildrenRefs.description (ioString, inIndentation) ;
 }
 
@@ -10074,47 +10074,47 @@ cCollectionElement * cCollectionElement_XCodeToolTargetList::copy (void) {
 void cCollectionElement_XCodeToolTargetList::description (String & ioString, const int32_t inIndentation) const {
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mTargetRef" ":") ;
+  ioString.appendCString ("mTargetRef" ":") ;
   mObject.mProperty_mTargetRef.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mTargetName" ":") ;
+  ioString.appendCString ("mTargetName" ":") ;
   mObject.mProperty_mTargetName.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mProductFileReference" ":") ;
+  ioString.appendCString ("mProductFileReference" ":") ;
   mObject.mProperty_mProductFileReference.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mProductFileName" ":") ;
+  ioString.appendCString ("mProductFileName" ":") ;
   mObject.mProperty_mProductFileName.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mBuildPhaseRefList" ":") ;
+  ioString.appendCString ("mBuildPhaseRefList" ":") ;
   mObject.mProperty_mBuildPhaseRefList.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mBuildPhaseRef" ":") ;
+  ioString.appendCString ("mBuildPhaseRef" ":") ;
   mObject.mProperty_mBuildPhaseRef.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mBuildConfigurationListRef" ":") ;
+  ioString.appendCString ("mBuildConfigurationListRef" ":") ;
   mObject.mProperty_mBuildConfigurationListRef.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mBuildConfigurationSettingList" ":") ;
+  ioString.appendCString ("mBuildConfigurationSettingList" ":") ;
   mObject.mProperty_mBuildConfigurationSettingList.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mBuildConfigurationRef" ":") ;
+  ioString.appendCString ("mBuildConfigurationRef" ":") ;
   mObject.mProperty_mBuildConfigurationRef.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mFrameworksFileRefList" ":") ;
+  ioString.appendCString ("mFrameworksFileRefList" ":") ;
   mObject.mProperty_mFrameworksFileRefList.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mFrameworkBuildPhaseRef" ":") ;
+  ioString.appendCString ("mFrameworkBuildPhaseRef" ":") ;
   mObject.mProperty_mFrameworkBuildPhaseRef.description (ioString, inIndentation) ;
 }
 
@@ -11148,59 +11148,59 @@ cCollectionElement * cCollectionElement_XCodeAppTargetList::copy (void) {
 void cCollectionElement_XCodeAppTargetList::description (String & ioString, const int32_t inIndentation) const {
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mTargetRef" ":") ;
+  ioString.appendCString ("mTargetRef" ":") ;
   mObject.mProperty_mTargetRef.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mTargetName" ":") ;
+  ioString.appendCString ("mTargetName" ":") ;
   mObject.mProperty_mTargetName.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mProductFileReference" ":") ;
+  ioString.appendCString ("mProductFileReference" ":") ;
   mObject.mProperty_mProductFileReference.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mProductFileName" ":") ;
+  ioString.appendCString ("mProductFileName" ":") ;
   mObject.mProperty_mProductFileName.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mBuildPhaseRefList" ":") ;
+  ioString.appendCString ("mBuildPhaseRefList" ":") ;
   mObject.mProperty_mBuildPhaseRefList.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mBuildPhaseRef" ":") ;
+  ioString.appendCString ("mBuildPhaseRef" ":") ;
   mObject.mProperty_mBuildPhaseRef.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mBuildConfigurationListRef" ":") ;
+  ioString.appendCString ("mBuildConfigurationListRef" ":") ;
   mObject.mProperty_mBuildConfigurationListRef.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mBuildConfigurationSettingList" ":") ;
+  ioString.appendCString ("mBuildConfigurationSettingList" ":") ;
   mObject.mProperty_mBuildConfigurationSettingList.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mBuildConfigurationRef" ":") ;
+  ioString.appendCString ("mBuildConfigurationRef" ":") ;
   mObject.mProperty_mBuildConfigurationRef.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mFrameworksFileRefList" ":") ;
+  ioString.appendCString ("mFrameworksFileRefList" ":") ;
   mObject.mProperty_mFrameworksFileRefList.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mFrameworkBuildPhaseRef" ":") ;
+  ioString.appendCString ("mFrameworkBuildPhaseRef" ":") ;
   mObject.mProperty_mFrameworkBuildPhaseRef.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mDependentTargets" ":") ;
+  ioString.appendCString ("mDependentTargets" ":") ;
   mObject.mProperty_mDependentTargets.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mResourceBuildRef" ":") ;
+  ioString.appendCString ("mResourceBuildRef" ":") ;
   mObject.mProperty_mResourceBuildRef.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mResourceFileBuildRefs" ":") ;
+  ioString.appendCString ("mResourceFileBuildRefs" ":") ;
   mObject.mProperty_mResourceFileBuildRefs.description (ioString, inIndentation) ;
 }
 
