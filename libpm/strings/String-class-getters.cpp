@@ -933,8 +933,7 @@ int32_t String::compareStringByLength (const String & inString) const {
 //--------------------------------------------------------------------------------------------------
 
 String String::pathExtension (void) const {
-  const utf32 * source = utf32String (HERE) ;
-  String result ;
+//  const utf32 * source = utf32String (HERE) ;
   int32_t receiver_length = length ();
 //--- Suppress training '/'
   while ((receiver_length > 1) && (UNICODE_VALUE (this->operator () (receiver_length - 1 COMMA_HERE)) == '/')) {
@@ -947,10 +946,10 @@ String String::pathExtension (void) const {
     lastOccurrenceIndex -- ;
     found = UNICODE_VALUE (this->operator () (lastOccurrenceIndex COMMA_HERE)) == '.' ;
   }
-  if (found) {
-    if (lastOccurrenceIndex < (receiver_length - 1)) {
-      result.genericUnicodeArrayOutput (& source [lastOccurrenceIndex + 1], receiver_length - 1 - lastOccurrenceIndex) ;
-    }
+  String result ;
+  if (found && (lastOccurrenceIndex < (receiver_length - 1))) {
+    result = subString (lastOccurrenceIndex + 1, receiver_length - 1 - lastOccurrenceIndex) ;
+//    result.genericUnicodeArrayOutput (& source [lastOccurrenceIndex + 1], receiver_length - 1 - lastOccurrenceIndex) ;
   }
   return result ;
 }

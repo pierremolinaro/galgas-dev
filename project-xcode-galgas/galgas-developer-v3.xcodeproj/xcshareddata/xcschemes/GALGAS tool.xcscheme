@@ -60,7 +60,7 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "/Volumes/dev-git/lpm-dev/+lpm.ggsproject"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "--check-usefulness"
@@ -92,7 +92,7 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "/Volumes/dev-git/galgas-dev/+galgas.galgasProject"
-            isEnabled = "NO">
+            isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "--check-big-int"
