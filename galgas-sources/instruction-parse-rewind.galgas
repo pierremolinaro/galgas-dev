@@ -32,16 +32,17 @@ syntax extension galgas3SyntaxComponentSyntax {
 
   #·······························································································
 
-  rule <syntax_instruction_ggs3> !@syntaxInstructionAST outInstruction {
+  rule <syntax_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                 !@syntaxInstructionAST outInstruction {
     $parse$
     let instructionLocation = @location.here
     $do$
     var mParseDoBranchList = @listOfSyntaxInstructionList {}
-    <syntax_instruction_list_ggs3> ?let @syntaxInstructionList il
+    <syntax_instruction_list_ggs3> !?ioDeclarations ?let @syntaxInstructionList il
     mParseDoBranchList += !il !@location.here
     repeat
       $rewind$
-      <syntax_instruction_list_ggs3> ?let @syntaxInstructionList instructionList
+      <syntax_instruction_list_ggs3> !?ioDeclarations ?let @syntaxInstructionList instructionList
       mParseDoBranchList += !instructionList !@location.here
     while
     end

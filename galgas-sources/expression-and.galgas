@@ -41,20 +41,21 @@ syntax extension galgas3ExpressionSyntax {
 
   #·······························································································
 
-  rule <expression_and_ggs3> !@semanticExpressionAST outExpression {
-    <relation_factor_ggs3> ? outExpression
+  rule <expression_and_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                             !@semanticExpressionAST outExpression {
+    <relation_factor_ggs3> !?ioDeclarations ? outExpression
     repeat
     while
       let operatorLocation = @location.here
       $&$
       let leftOperand = outExpression
-      <relation_factor_ggs3> ?let @semanticExpressionAST rightOperand
+      <relation_factor_ggs3> !?ioDeclarations ?let @semanticExpressionAST rightOperand
       outExpression = @andExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $&&$
       let leftOperand = outExpression
-      <relation_factor_ggs3> ?let @semanticExpressionAST rightOperand
+      <relation_factor_ggs3> !?ioDeclarations ?let @semanticExpressionAST rightOperand
       outExpression = @andShortExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
     end
   }
@@ -69,20 +70,21 @@ syntax extension galgas4ExpressionSyntax {
 
   #·······························································································
 
-  rule <expression_and> !@semanticExpressionAST outExpression {
-    <relation_factor> ? outExpression
+  rule <expression_and> ?!@galgasDeclarationAST ioDeclarations
+                        !@semanticExpressionAST outExpression {
+    <relation_factor> !?ioDeclarations ? outExpression
     repeat
     while
       let operatorLocation = @location.here
       $&$
       let leftOperand = outExpression
-      <relation_factor> ?let @semanticExpressionAST rightOperand
+      <relation_factor> !?ioDeclarations ?let @semanticExpressionAST rightOperand
       outExpression = @andExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $&&$
       let leftOperand = outExpression
-      <relation_factor> ?let @semanticExpressionAST rightOperand
+      <relation_factor> !?ioDeclarations ?let @semanticExpressionAST rightOperand
       outExpression = @andShortExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
     end
   }

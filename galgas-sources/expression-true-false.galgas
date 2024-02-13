@@ -37,14 +37,16 @@ syntax extension galgas3ExpressionSyntax {
 
   #·······························································································
 
-  rule <primary_ggs3> !@semanticExpressionAST outExpression {
+  rule <primary_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
+                      !@semanticExpressionAST outExpression {
     $true$
     outExpression = @trueExpressionAST.new {!.here}
   }
 
   #·······························································································
 
-  rule <primary_ggs3> !@semanticExpressionAST outExpression {
+  rule <primary_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
+                      !@semanticExpressionAST outExpression {
     $false$
     outExpression = @falseExpressionAST.new {!.here}
   }
@@ -59,14 +61,16 @@ syntax extension galgas4ExpressionSyntax {
 
   #·······························································································
 
-  rule <primary> !@semanticExpressionAST outExpression {
+  rule <primary> ?!@galgasDeclarationAST unused ioDeclarations
+                 !@semanticExpressionAST outExpression {
     $true$
     outExpression = @trueExpressionAST.new {!.here}
   }
 
   #·······························································································
 
-  rule <primary> !@semanticExpressionAST outExpression {
+  rule <primary> ?!@galgasDeclarationAST unused ioDeclarations
+                 !@semanticExpressionAST outExpression {
     $false$
     outExpression = @falseExpressionAST.new {!.here}
   }

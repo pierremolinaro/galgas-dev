@@ -39,7 +39,8 @@ syntax extension galgas3InstructionsSyntax {
 
   #·······························································································
 
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
     $log$
     let instructionLocation = @location.here
     var @logListAST logList = {}
@@ -57,7 +58,7 @@ syntax extension galgas3InstructionsSyntax {
       or
         $"string"$ ?let logMessage
         $:$
-        <expression_ggs3> ?let logExpression
+        <expression_ggs3> !?ioDeclarations ?let logExpression
         logList += !logMessage !logExpression
       end
     while
@@ -79,7 +80,7 @@ syntax extension galgas4InstructionsSyntax {
 
   #·······························································································
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations
+  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionAST outInstruction {
     $log$
     let instructionLocation = @location.here
@@ -98,7 +99,7 @@ syntax extension galgas4InstructionsSyntax {
       or
         $"string"$ ?let logMessage
         $:$
-        <expression> ?let logExpression
+        <expression> !?ioDeclarations ?let logExpression
         logList += !logMessage !logExpression
       end
     while

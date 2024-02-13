@@ -129,7 +129,8 @@ syntax extension galgas3InstructionsSyntax {
 
   #·······························································································
 
-  rule <for_instruction_enumerated_object> !@abstractEnumeratedCollectionAST outEnumeratedObject {
+  rule <for_instruction_enumerated_object> ?!@galgasDeclarationAST ioDeclarations
+                                           !@abstractEnumeratedCollectionAST outEnumeratedObject {
     $($
     var elementList = @forInstructionEnumeratedObjectElementListAST {}
     let @bool endsWithEllipsis
@@ -151,7 +152,7 @@ syntax extension galgas3InstructionsSyntax {
     let location = @location.here
     $)$
     $in$
-    <expression_ggs3> ?let @semanticExpressionAST enumeratedExpression
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST enumeratedExpression
     outEnumeratedObject = @enumeratedCollectionCstListInExpAST.new {
       !elementList
       !mEndsWithEllipsis: endsWithEllipsis
@@ -162,7 +163,8 @@ syntax extension galgas3InstructionsSyntax {
 
   #·······························································································
 
-  rule <for_instruction_enumerated_object> !@abstractEnumeratedCollectionAST outEnumeratedObject {
+  rule <for_instruction_enumerated_object> ?!@galgasDeclarationAST ioDeclarations
+                                           !@abstractEnumeratedCollectionAST outEnumeratedObject {
     let @lstring typeName
     select
       typeName = ["" nowhere]
@@ -177,7 +179,7 @@ syntax extension galgas3InstructionsSyntax {
       $identifier$ ?enumerationVariable
     end
     $in$
-    <expression_ggs3> ?let @semanticExpressionAST enumeratedExpression
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST enumeratedExpression
     outEnumeratedObject = @enumeratedCollectionVarInExpAST.new {
       !typeName
       !enumerationVariable
@@ -188,7 +190,8 @@ syntax extension galgas3InstructionsSyntax {
 
   #·······························································································
 
-  rule <for_instruction_enumerated_object> !@abstractEnumeratedCollectionAST outEnumeratedObject {
+  rule <for_instruction_enumerated_object> ?!@galgasDeclarationAST ioDeclarations
+                                           !@abstractEnumeratedCollectionAST outEnumeratedObject {
     $($
     let startLocation = @location.here
     $)$
@@ -200,7 +203,7 @@ syntax extension galgas3InstructionsSyntax {
     end
     let endLocation = @location.here
     $in$
-    <expression_ggs3> ?let @semanticExpressionAST enumeratedExpression
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST enumeratedExpression
     outEnumeratedObject = @enumeratedCollectionImplicitVarInExpAST.new {
       !prefix
       !enumeratedExpression
@@ -210,7 +213,8 @@ syntax extension galgas3InstructionsSyntax {
 
   #·······························································································
 
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
     $for$
     let instructionLocation = @location.here
     var mEnumeratedObjectList = @forInstructionEnumeratedObjectListAST {}
@@ -222,7 +226,7 @@ syntax extension galgas3InstructionsSyntax {
         $>$
         ascending = false
       end
-      <for_instruction_enumerated_object> ?let @abstractEnumeratedCollectionAST enumeratedObject
+      <for_instruction_enumerated_object> !?ioDeclarations ?let @abstractEnumeratedCollectionAST enumeratedObject
       mEnumeratedObjectList += !ascending !enumeratedObject
     while
       $,$
@@ -232,7 +236,7 @@ syntax extension galgas3InstructionsSyntax {
       mWhileExpression = @trueExpressionAST.new {!@location.here}
     or
       $while$
-      <expression_ggs3> ? mWhileExpression
+      <expression_ggs3> !?ioDeclarations ? mWhileExpression
     end
     let endof_while_expression = @location.here
     let @semanticInstructionListAST mBeforeInstructionList
@@ -240,7 +244,7 @@ syntax extension galgas3InstructionsSyntax {
       mBeforeInstructionList = @semanticInstructionListAST {}
     or
       $before$
-      <semantic_instruction_list_ggs3> ? mBeforeInstructionList
+      <semantic_instruction_list_ggs3> !?ioDeclarations ?mBeforeInstructionList
     end
     let endof_before_branch = @location.here
     $do$
@@ -252,14 +256,14 @@ syntax extension galgas3InstructionsSyntax {
       $identifier$ ? indexVariableName
       $)$
     end
-    <semantic_instruction_list_ggs3> ?let mDoInstructionList
+    <semantic_instruction_list_ggs3> !?ioDeclarations ?let mDoInstructionList
     let endof_do_branch = @location.here
     let @semanticInstructionListAST mBetweenInstructionList
     select
       mBetweenInstructionList = @semanticInstructionListAST {}
     or
       $between$
-      <semantic_instruction_list_ggs3> ? mBetweenInstructionList
+      <semantic_instruction_list_ggs3> !?ioDeclarations ?mBetweenInstructionList
     end
     let endof_between_branch = @location.here
     let @semanticInstructionListAST mAfterInstructionList
@@ -267,7 +271,7 @@ syntax extension galgas3InstructionsSyntax {
       mAfterInstructionList = @semanticInstructionListAST {}
     or
       $after$
-      <semantic_instruction_list_ggs3> ? mAfterInstructionList
+      <semantic_instruction_list_ggs3> !?ioDeclarations ?mAfterInstructionList
     end
     let endof_after_branch = @location.here
     $end$
@@ -340,7 +344,8 @@ syntax extension galgas4InstructionsSyntax {
 
   #·······························································································
 
-  rule <for_instruction_enumerated_object> !@abstractEnumeratedCollectionAST outEnumeratedObject {
+  rule <for_instruction_enumerated_object> ?!@galgasDeclarationAST ioDeclarations
+                                           !@abstractEnumeratedCollectionAST outEnumeratedObject {
     $($
     var elementList = @forInstructionEnumeratedObjectElementListAST {}
     repeat
@@ -351,7 +356,7 @@ syntax extension galgas4InstructionsSyntax {
     let location = @location.here
     $)$
     $in$
-    <expression> ?let @semanticExpressionAST enumeratedExpression
+    <expression> !?ioDeclarations ?let @semanticExpressionAST enumeratedExpression
     outEnumeratedObject = @enumeratedCollectionCstListInExpAST.new {
       !elementList
       !mEndsWithEllipsis: false
@@ -362,7 +367,8 @@ syntax extension galgas4InstructionsSyntax {
 
   #·······························································································
 
-  rule <for_instruction_enumerated_object> !@abstractEnumeratedCollectionAST outEnumeratedObject {
+  rule <for_instruction_enumerated_object> ?!@galgasDeclarationAST ioDeclarations
+                                           !@abstractEnumeratedCollectionAST outEnumeratedObject {
     let @lstring typeName
     select
       typeName = ["" nowhere]
@@ -377,7 +383,7 @@ syntax extension galgas4InstructionsSyntax {
       $identifier$ ?enumerationVariable
     end
     $in$
-    <expression> ?let @semanticExpressionAST enumeratedExpression
+    <expression> !?ioDeclarations ?let @semanticExpressionAST enumeratedExpression
     outEnumeratedObject = @enumeratedCollectionVarInExpAST.new {
       !typeName
       !enumerationVariable
@@ -388,7 +394,8 @@ syntax extension galgas4InstructionsSyntax {
 
   #·······························································································
 
-  rule <for_instruction_enumerated_object> !@abstractEnumeratedCollectionAST outEnumeratedObject {
+  rule <for_instruction_enumerated_object> ?!@galgasDeclarationAST ioDeclarations
+                                           !@abstractEnumeratedCollectionAST outEnumeratedObject {
     $($
     let startLocation = @location.here
     $)$
@@ -400,7 +407,7 @@ syntax extension galgas4InstructionsSyntax {
     end
     let endLocation = @location.here
     $in$
-    <expression> ?let @semanticExpressionAST enumeratedExpression
+    <expression> !?ioDeclarations ?let @semanticExpressionAST enumeratedExpression
     outEnumeratedObject = @enumeratedCollectionImplicitVarInExpAST.new {
       !prefix
       !enumeratedExpression
@@ -423,7 +430,7 @@ syntax extension galgas4InstructionsSyntax {
         $>$
         ascending = false
       end
-      <for_instruction_enumerated_object> ?let @abstractEnumeratedCollectionAST enumeratedObject
+      <for_instruction_enumerated_object> !?ioDeclarations ?let @abstractEnumeratedCollectionAST enumeratedObject
       mEnumeratedObjectList += !ascending !enumeratedObject
     while
       $,$
@@ -433,7 +440,7 @@ syntax extension galgas4InstructionsSyntax {
       mWhileExpression = @trueExpressionAST.new {!@location.here}
     or
       $while$
-      <expression> ? mWhileExpression
+      <expression> !?ioDeclarations ? mWhileExpression
     end
     let endof_while_expression = @location.here
     let @semanticInstructionListAST mBeforeInstructionList

@@ -26,9 +26,15 @@ syntax galgas3ExpressionSyntax (galgasScanner3) {
 
   #·······························································································
 
-  rule <primary_ggs3> !@semanticExpressionAST outExpression {
+  rule <type_definition_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                              !@lstring outTypeName
+
+  #·······························································································
+
+  rule <primary_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                      !@semanticExpressionAST outExpression {
     $($
-    <expression_ggs3> ? outExpression
+    <expression_ggs3> !?ioDeclarations ?outExpression
     $)$
   }
 
@@ -42,13 +48,20 @@ syntax galgas4ExpressionSyntax (galgasScanner4) {
 
   #·······························································································
 
-  rule <actual_parameter_list_within_parenthesis> !@actualParameterListAST outActualParameterList
+  rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
+                         !@lstring outTypeName
 
   #·······························································································
 
-  rule <primary> !@semanticExpressionAST outExpression {
+  rule <actual_parameter_list_within_parenthesis> ?!@galgasDeclarationAST ioDeclarations
+                                                  !@actualParameterListAST outActualParameterList
+
+  #·······························································································
+
+  rule <primary> ?!@galgasDeclarationAST ioDeclarations
+                 !@semanticExpressionAST outExpression {
     $($
-    <expression> ? outExpression
+    <expression> !?ioDeclarations ?outExpression
     $)$
   }
 

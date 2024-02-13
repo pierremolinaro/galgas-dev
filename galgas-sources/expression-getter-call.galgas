@@ -23,15 +23,16 @@ syntax extension galgas3ExpressionSyntax {
 
   #·······························································································
 
-  rule <primary_ggs3> !@semanticExpressionAST outExpression {
+  rule <primary_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                      !@semanticExpressionAST outExpression {
     $[$
   #--- Get source identity characteristics
     let startLocation = @location.here
-    <expression_ggs3> ?let @semanticExpressionAST receiverExpression
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST receiverExpression
   #--- Get getter name
     $identifier$ ?let @lstring getterName
   #--- Actual parameters
-    <output_expression_list_ggs3> ?let @actualOutputExpressionList expressionList
+    <output_expression_list_ggs3> !?ioDeclarations ?let @actualOutputExpressionList expressionList
     $]$
     let endLocation = @location.here
     outExpression = @getterCallExpressionAST.new {

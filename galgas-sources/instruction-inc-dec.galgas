@@ -63,21 +63,25 @@ syntax extension galgas3InstructionsSyntax {
 
   #·······························································································
 
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
-    <semantic_instruction_inc_dec> !prefixedBySelf: false ?outInstruction
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
+    <semantic_instruction_inc_dec> !?ioDeclarations !prefixedBySelf: false ?outInstruction
   }
 
  #·····················································································································
 
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
     $self$
     $.$
-    <semantic_instruction_inc_dec> !prefixedBySelf: true ?outInstruction
+    <semantic_instruction_inc_dec> !?ioDeclarations !prefixedBySelf: true ?outInstruction
   }
 
   #·······························································································
 
-  rule <semantic_instruction_inc_dec> ?prefixedBySelf: let @bool inPrefixedBySelf !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_inc_dec> ?!@galgasDeclarationAST unused ioDeclarations
+                                      ?prefixedBySelf: let @bool inPrefixedBySelf
+                                      !@semanticInstructionAST outInstruction {
     $identifier$ ?let mReceiverName
     var mStructAttributeList = @lstringlist {}
     repeat
@@ -127,7 +131,8 @@ syntax extension galgas3InstructionsSyntax {
 
   #·······························································································
 
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
     $self$
     let instructionLocation = @location.here
     select

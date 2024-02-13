@@ -76,7 +76,9 @@ HTMLFileWrite::~HTMLFileWrite (void) {
 //--------------------------------------------------------------------------------------------------
 
 void HTMLFileWrite::appendRawData (const char * in_Cstring) {
-  Super::performActualCharArrayOutput (in_Cstring, int32_t (strlen (in_Cstring))) ;
+  if (nullptr != in_Cstring) {
+    Super::performActualCharArrayOutput (in_Cstring, int32_t (strlen (in_Cstring))) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -39,7 +39,8 @@ syntax extension galgas3InstructionsSyntax {
 
   #·······························································································
 
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
     $var$
     $@type$ ?let typeName
     $identifier$ ?let variableName
@@ -48,7 +49,8 @@ syntax extension galgas3InstructionsSyntax {
 
   #·······························································································
 
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
     $@type$ ?let typeName
     $identifier$ ?let variableName
     outInstruction = @localVariableDeclarationNoAssignmentAST.new {!typeName.location !typeName !variableName}
@@ -60,11 +62,12 @@ syntax extension galgas3InstructionsSyntax {
 
   #·······························································································
 
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
     $var$
     $identifier$ ?let variableName
     $=$
-    <expression_ggs3> ?let @semanticExpressionAST sourceExpression
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST sourceExpression
     outInstruction = @localVariableDeclarationWithAssignmentAST.new {
       !variableName.location
       !variableName
@@ -74,12 +77,13 @@ syntax extension galgas3InstructionsSyntax {
 
   #·······························································································
 
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
     $var$
     $@type$ ?let typeName
     $identifier$ ?let variableName
     $=$
-    <expression_ggs3> ?let @semanticExpressionAST sourceExpression
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST sourceExpression
     outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST.new {
       !typeName.location
       !false
@@ -91,11 +95,12 @@ syntax extension galgas3InstructionsSyntax {
 
   #·······························································································
 
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
     $@type$ ?let typeName
     $identifier$ ?let variableName
     $=$
-    <expression_ggs3> ?let @semanticExpressionAST sourceExpression
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST sourceExpression
     outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST.new {
       !typeName.location
       !false
@@ -119,12 +124,12 @@ syntax extension galgas4InstructionsSyntax {
 
   #·······························································································
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations
+  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionAST outInstruction {
     $var$
     $identifier$ ?let variableName
     $=$
-    <expression> ?let @semanticExpressionAST sourceExpression
+    <expression> !?ioDeclarations ?let @semanticExpressionAST sourceExpression
     outInstruction = @localVariableDeclarationWithAssignmentAST.new {
       !variableName.location
       !variableName
@@ -143,7 +148,7 @@ syntax extension galgas4InstructionsSyntax {
       outInstruction = @localVariableDeclarationNoAssignmentAST.new {!typeName.location !typeName !variableName}
     or
       $=$
-      <expression> ?let @semanticExpressionAST sourceExpression
+      <expression> !?ioDeclarations ?let @semanticExpressionAST sourceExpression
       outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST.new {
         !typeName.location
         !false

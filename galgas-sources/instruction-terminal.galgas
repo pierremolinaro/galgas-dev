@@ -21,9 +21,10 @@ syntax extension galgas3SyntaxComponentSyntax {
 
   #·······························································································
 
-  rule <syntax_instruction_ggs3> !@syntaxInstructionAST outInstruction {
+  rule <syntax_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                 !@syntaxInstructionAST outInstruction {
     $\$terminal\$$ ?let @lstring terminalName indexing terminalReference
-    <actual_input_parameter_list_ggs3> ?let @actualInputParameterListAST actualInputParameterList
+    <actual_input_parameter_list_ggs3> !?ioDeclarations ?let @actualInputParameterListAST actualInputParameterList
     <terminal_instruction_indexing> ?let indexNameList
   #--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
@@ -33,8 +34,8 @@ syntax extension galgas3SyntaxComponentSyntax {
       grammarInstructionSyntaxDirectedTranslationPreceedingToken = @grammarInstructionSyntaxDirectedTranslationResultNone.new
     or
       $:>$
-      <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
-      <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationPreceedingToken
+      <syntax_directed_translation_result> !?ioDeclarations ?grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
+      <syntax_directed_translation_result> !?ioDeclarations ?grammarInstructionSyntaxDirectedTranslationPreceedingToken
     end
     outInstruction = @terminalCheckInstructionAST.new {
       !terminalName.location
@@ -78,10 +79,10 @@ syntax extension galgas4SyntaxComponentSyntax {
 
   #·······························································································
 
-  rule <syntax_instruction> ?!@galgasDeclarationAST unused ioDeclarations
+  rule <syntax_instruction> ?!@galgasDeclarationAST ioDeclarations
                             !@syntaxInstructionAST outInstruction {
     $\$terminal\$$ ?let @lstring terminalName indexing terminalReference
-    <actual_input_parameter_list> ?let actualInputParameterList
+    <actual_input_parameter_list> !?ioDeclarations ?let actualInputParameterList
     <terminal_instruction_indexing> ?let indexNameList
   #--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
@@ -91,8 +92,8 @@ syntax extension galgas4SyntaxComponentSyntax {
       grammarInstructionSyntaxDirectedTranslationPreceedingToken = @grammarInstructionSyntaxDirectedTranslationResultNone.new
     or
       $:>$
-      <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
-      <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationPreceedingToken
+      <syntax_directed_translation_result> !?ioDeclarations ?grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
+      <syntax_directed_translation_result> !?ioDeclarations ?grammarInstructionSyntaxDirectedTranslationPreceedingToken
     end
     outInstruction = @terminalCheckInstructionAST.new {
       !terminalName.location

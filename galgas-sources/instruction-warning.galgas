@@ -33,14 +33,14 @@ syntax extension galgas3InstructionsSyntax {
 
   #·······························································································
 
-  rule <semantic_instruction_ggs3>
-    !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
     $warning$
     let instructionLocation = @location.here
-    <expression_ggs3> ?let @semanticExpressionAST mReceiverExpression
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST mReceiverExpression
     $:$
-    <expression_ggs3> ?let @semanticExpressionAST mWarningExpression
-    <issue_fixit> ?let @fixitListAST fixitListAST
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST mWarningExpression
+    <issue_fixit> !?ioDeclarations ?let @fixitListAST fixitListAST
     outInstruction = @warningInstructionAST.new {
       !instructionLocation
       !mReceiverExpression
@@ -59,14 +59,14 @@ syntax extension galgas4InstructionsSyntax {
 
   #·······························································································
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations
+  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionAST outInstruction {
     $warning$
     let instructionLocation = @location.here
-    <expression> ?let @semanticExpressionAST mReceiverExpression
+    <expression> !?ioDeclarations ?let @semanticExpressionAST mReceiverExpression
     $:$
-    <expression> ?let @semanticExpressionAST mWarningExpression
-    <issue_fixit> ?let @fixitListAST fixitListAST
+    <expression> !?ioDeclarations ?let @semanticExpressionAST mWarningExpression
+    <issue_fixit> !?ioDeclarations ?let @fixitListAST fixitListAST
     outInstruction = @warningInstructionAST.new {
       !instructionLocation
       !mReceiverExpression

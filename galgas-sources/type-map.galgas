@@ -83,7 +83,7 @@ syntax extension galgas3DeclarationsSyntax {
     var @insertOrReplaceDeclarationListAST insertOrReplaceDeclarationListAST = {}
     repeat
     while
-      <property_declaration_ggs3> !? propertyList
+      <property_declaration_ggs3> !?ioDeclarations !? propertyList
     while
       <map_insert_setter_declaration> !? mInsertMethodList
     while

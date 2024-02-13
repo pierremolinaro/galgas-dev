@@ -33,12 +33,13 @@ syntax extension galgas3ExpressionSyntax {
 
   #·······························································································
 
-  rule <output_expression_list_ggs3> !@actualOutputExpressionList outExpressionList {
+  rule <output_expression_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                     !@actualOutputExpressionList outExpressionList {
     outExpressionList = {}
     repeat
     while
       $!$ ?let selector
-      <expression_ggs3> ?let @semanticExpressionAST expression
+      <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
       outExpressionList += !selector !expression !.here
     end
   }
@@ -53,7 +54,8 @@ syntax extension galgas4ExpressionSyntax {
 
   #·······························································································
 
-  rule <output_expression_list> !@actualOutputExpressionList outExpressionList {
+  rule <output_expression_list> ?!@galgasDeclarationAST ioDeclarations
+                                !@actualOutputExpressionList outExpressionList {
     outExpressionList = {}
     select
       repeat
@@ -66,7 +68,7 @@ syntax extension galgas4ExpressionSyntax {
         or
           selector = ["" here]
         end
-        <expression> ?let @semanticExpressionAST expression
+        <expression> !?ioDeclarations ?let @semanticExpressionAST expression
         outExpressionList += !selector !expression !.here
       while
         $,$

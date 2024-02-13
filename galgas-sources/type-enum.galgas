@@ -52,7 +52,7 @@ syntax extension galgas3DeclarationsSyntax {
       or
         $($
         repeat
-          $@type$ ?let associatedValueType
+          <type_definition_ggs3> !?ioDeclarations ?let associatedValueType
           $identifier$ ?let associatedValueName
           associatedValueTypeList += !associatedValueType !associatedValueName
         while
@@ -97,7 +97,7 @@ syntax extension galgas4DeclarationsSyntax {
       or
         $($
         repeat
-          $@type$ ?let associatedValueType
+          <type_definition> !?ioDeclarations ?let associatedValueType
           $identifier$ ?let associatedValueName
           associatedValueTypeList += !associatedValueType !associatedValueName
         while

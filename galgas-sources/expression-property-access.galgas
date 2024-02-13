@@ -33,8 +33,9 @@ syntax extension galgas3ExpressionSyntax {
 
   #·······························································································
 
-  rule <factor_ggs3> !@semanticExpressionAST outExpression {
-    <primary_ggs3> ? outExpression
+  rule <factor_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                     !@semanticExpressionAST outExpression {
+    <primary_ggs3> !?ioDeclarations ?outExpression
     repeat
     while
       $.$
@@ -53,8 +54,9 @@ syntax extension galgas4ExpressionSyntax {
 
   #·······························································································
 
-  rule <factor> !@semanticExpressionAST outExpression {
-    <primary> ? outExpression
+  rule <factor> ?!@galgasDeclarationAST ioDeclarations
+                !@semanticExpressionAST outExpression {
+    <primary> !?ioDeclarations ? outExpression
     repeat
     while
       $.$
@@ -65,7 +67,7 @@ syntax extension galgas4ExpressionSyntax {
         let getterName = structFieldName
         let startLocation = @location.next
         $($
-        <output_expression_list> ?let @actualOutputExpressionList expressionList
+        <output_expression_list> !?ioDeclarations ?let @actualOutputExpressionList expressionList
         $)$
         let endLocation = @location.here
         outExpression = @getterCallExpressionAST.new {

@@ -51,7 +51,7 @@ syntax extension galgas3DeclarationsSyntax {
     var propertyList = @propertyInCollectionListAST {}
     repeat
     while
-      <property_declaration_ggs3> !? propertyList
+      <property_declaration_ggs3> !?ioDeclarations !? propertyList
     while
       <method_declaration_ggs3> !mDictTypeName !?ioDeclarations
     end

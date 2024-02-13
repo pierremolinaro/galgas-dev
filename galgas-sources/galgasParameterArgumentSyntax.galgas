@@ -24,13 +24,18 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
 
   #·······························································································
 
-  rule <expression_ggs3> !@semanticExpressionAST outExpressionAST
+  rule <expression_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                         !@semanticExpressionAST outExpressionAST
+
+  rule <type_definition_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                              !@lstring outTypeName
 
   #·······························································································
   #          F O R M A L    P A R A M E T E R    L I S T
   #·······························································································
 
-  rule <formal_parameter_list_ggs3> !@formalParameterListAST outFormalParameterList {
+  rule <formal_parameter_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                    !@formalParameterListAST outFormalParameterList {
     outFormalParameterList = {}
     repeat
     while
@@ -50,7 +55,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
         $!$ ?selector
         mFormalParameterPassingMode = @formalArgumentPassingModeAST. argumentOut
       end
-      $@type$ ?let @lstring formalParameterTypeName
+      <type_definition_ggs3> !?ioDeclarations ?let @lstring formalParameterTypeName
       let @bool mIsUnused
       select
         mIsUnused = false
@@ -72,12 +77,13 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
   #  A C T U A L    P A R A M E T E R    L I S T
   #·······························································································
 
-  rule <actual_parameter_list_ggs3> !@actualParameterListAST outActualParameterList {
+  rule <actual_parameter_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                    !@actualParameterListAST outActualParameterList {
     outActualParameterList = {}
     repeat
     while
       $!$ ?let selector
-      <expression_ggs3> ?let @semanticExpressionAST e
+      <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST e
       let @location endOfExpressionLocation = @location.here
       outActualParameterList += !@outputActualParameterAST.new {
         !selector
@@ -183,7 +189,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
       select
         declarationTypeName = ["" nowhere]
       or
-        $@type$ ?declarationTypeName
+        <type_definition_ggs3> !?ioDeclarations ?declarationTypeName
       end
       $identifier$ ?let inputActualParameterName
       <poisoned_var_list_ggs3> ?let poisonedVarNameList
@@ -195,7 +201,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
       }
     while  # input parameter, new variable, explicit type
       $?$ ?let selector
-      $@type$ ?let @lstring declarationTypeName
+      <type_definition_ggs3> !?ioDeclarations ?let @lstring declarationTypeName
       $identifier$ ?let inputActualParameterName
       <poisoned_var_list_ggs3> ?let poisonedVarNameList
       outActualParameterList += !@inputActualNewVariableParameterAST.new {
@@ -211,7 +217,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
       select
         declarationTypeName = ["" nowhere]
       or
-        $@type$ ?declarationTypeName
+        <type_definition_ggs3> !?ioDeclarations ?declarationTypeName
       end
       let @bool markedAsUnused
       select
@@ -236,7 +242,8 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
   #  F O R M A L    I N P U T    P A R A M E T E R S
   #·······························································································
 
-  rule <formal_input_parameter_list_ggs3> !@formalInputParameterListAST outFormalInputParameterList {
+  rule <formal_input_parameter_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                          !@formalInputParameterListAST outFormalInputParameterList {
     outFormalInputParameterList = {}
     repeat
     while
@@ -248,7 +255,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
         $let$
         isConstant = true
       end
-      $@type$ ?let @lstring mFormalParameterTypeName
+      <type_definition_ggs3> !?ioDeclarations ?let mFormalParameterTypeName
       let @bool mIsUnused
       select
         mIsUnused = false
@@ -295,7 +302,8 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
 
   #·······························································································
 
-  rule <expression> !@semanticExpressionAST outExpressionAST
+  rule <expression> ?!@galgasDeclarationAST ioDeclarations
+                    !@semanticExpressionAST outExpressionAST
 
   rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
                          !@lstring outTypeName
@@ -366,13 +374,14 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
   #  A C T U A L    P A R A M E T E R    L I S T
   #·······························································································
 
-  rule <actual_parameter_list_within_parenthesis> !@actualParameterListAST outActualParameterList {
+  rule <actual_parameter_list_within_parenthesis> ?!@galgasDeclarationAST ioDeclarations
+                                                  !@actualParameterListAST outActualParameterList {
     $($
     outActualParameterList = {}
     select
     or
       repeat
-         <actual_parameter> !?outActualParameterList
+         <actual_parameter> !?ioDeclarations !?outActualParameterList
        while
          $,$
       end
@@ -382,7 +391,8 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
 
   #·······························································································
 
-  rule <actual_parameter> ?!@actualParameterListAST ioActualParameterList {
+  rule <actual_parameter> ?!@galgasDeclarationAST unused ioDeclarations
+                          ?!@actualParameterListAST ioActualParameterList {
     $?$ ?let selector
     select
       $*$
@@ -409,7 +419,8 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
 
   #·······························································································
 
-  rule <actual_parameter> ?!@actualParameterListAST ioActualParameterList {
+  rule <actual_parameter> ?!@galgasDeclarationAST unused ioDeclarations
+                          ?!@actualParameterListAST ioActualParameterList {
     $!?$ ?let selector
     select
       $identifier$ ?let outputInputActualParameterName
@@ -453,12 +464,13 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
 
   #·······························································································
 
-  rule <actual_parameter> ?!@actualParameterListAST ioActualParameterList {
+  rule <actual_parameter> ?!@galgasDeclarationAST ioDeclarations
+                          ?!@actualParameterListAST ioActualParameterList {
     $!$ ?let selector
     if [option galgas_cli_options.errorOnUselessSelector value] && (selector.string == "") then
       error selector.location : "check no useless selector: this selector should be removed"
     end
-    <expression> ?let @semanticExpressionAST e
+    <expression> !?ioDeclarations ?let @semanticExpressionAST e
     let @location endOfExpressionLocation = @location.here
     ioActualParameterList += !@outputActualParameterAST.new {
       !selector
@@ -469,9 +481,10 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
 
   #·······························································································
 
-  rule <actual_parameter> ?!@actualParameterListAST ioActualParameterList {
+  rule <actual_parameter> ?!@galgasDeclarationAST ioDeclarations
+                          ?!@actualParameterListAST ioActualParameterList {
     let selector = ["" here]
-    <expression> ?let @semanticExpressionAST e
+    <expression> !?ioDeclarations ?let @semanticExpressionAST e
     let @location endOfExpressionLocation = @location.here
     ioActualParameterList += !@outputActualParameterAST.new {
       !selector
@@ -482,7 +495,8 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
 
   #·······························································································
 
-  rule <actual_parameter> ?!@actualParameterListAST ioActualParameterList {
+  rule <actual_parameter> ?!@galgasDeclarationAST ioDeclarations
+                          ?!@actualParameterListAST ioActualParameterList {
     $?$ ?let selector
     select
       $identifier$ ?let inputActualParameterName
@@ -516,7 +530,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
       select
         declarationTypeName = ["" nowhere]
       or
-        $@type$ ?declarationTypeName
+        <type_definition> !?ioDeclarations ?declarationTypeName
       end
       $identifier$ ?let inputActualParameterName
       <poisoned_var_list> ?let poisonedVarNameList
@@ -527,7 +541,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
         !poisonedVarNameList
       }
     or # input parameter, new variable, explicit type
-      $@type$ ?let @lstring declarationTypeName
+      <type_definition> !?ioDeclarations ?let declarationTypeName
       $identifier$ ?let inputActualParameterName
       <poisoned_var_list> ?let poisonedVarNameList
       ioActualParameterList += !@inputActualNewVariableParameterAST.new {
@@ -542,7 +556,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
       select
         declarationTypeName = ["" nowhere]
       or
-        $@type$ ?declarationTypeName
+        <type_definition> !?ioDeclarations ?declarationTypeName
       end
       let @bool markedAsUnused
       select
@@ -567,7 +581,8 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
   #  F O R M A L    I N P U T    P A R A M E T E R S
   #·······························································································
 
-  rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputParameterList {
+  rule <formal_input_parameter_list> ?!@galgasDeclarationAST ioDeclarations
+                                     !@formalInputParameterListAST outFormalInputParameterList {
     outFormalInputParameterList = {}
     $($
     select
@@ -589,7 +604,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
           $let$
           isConstant = true
         end
-        $@type$ ?let @lstring mFormalParameterTypeName
+        <type_definition> !?ioDeclarations ?let mFormalParameterTypeName
         let @bool mIsUnused
         select
           mIsUnused = false

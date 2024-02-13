@@ -44,7 +44,8 @@ syntax extension galgas3InstructionsSyntax {
 
   #·······························································································
 
-  rule <cast_instruction_branch> ?!@castInstructionBranchListAST ioCastInstructionBranchList {
+  rule <cast_instruction_branch> ?!@galgasDeclarationAST ioDeclarations
+                                 ?!@castInstructionBranchListAST ioCastInstructionBranchList {
     $case$
     let @dynamicTypeComparisonKind kind
     select
@@ -57,7 +58,7 @@ syntax extension galgas3InstructionsSyntax {
       $>$
       kind = .strictlyInherited
     end
-    $@type$ ?let mTypeName
+    <type_definition_ggs3> !?ioDeclarations ?let typeName
     let @lstring mConstantVarName # Empty string if no constant var
     select
       $identifier$ ?mConstantVarName
@@ -65,9 +66,9 @@ syntax extension galgas3InstructionsSyntax {
       mConstantVarName = @lstring.new {!"" !@location.here}
     end
     $:$
-    <semantic_instruction_list_ggs3> ?let @semanticInstructionListAST mCastBranchInstructionList
+    <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST mCastBranchInstructionList
     ioCastInstructionBranchList +=
-      !mTypeName
+      !typeName
       !mConstantVarName
       !mCastBranchInstructionList
       !kind
@@ -76,17 +77,18 @@ syntax extension galgas3InstructionsSyntax {
 
   #·······························································································
 
-  rule <cast_else_or_default> !@semanticInstructionListAST outElseOrDefault {
+  rule <cast_else_or_default> ?!@galgasDeclarationAST ioDeclarations
+                              !@semanticInstructionListAST outElseOrDefault {
     select
       outElseOrDefault = {}
     or
       $else$
-      <semantic_instruction_list_ggs3> ? outElseOrDefault
+      <semantic_instruction_list_ggs3> !?ioDeclarations ?outElseOrDefault
     or
       $default$
       let instructionLocation = @location.here
       $error$
-      <expression_ggs3> ?let @semanticExpressionAST errorLocationExpression
+      <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST errorLocationExpression
       outElseOrDefault = {}
       outElseOrDefault += !@errorInstructionAST.new {
         !instructionLocation
@@ -100,19 +102,20 @@ syntax extension galgas3InstructionsSyntax {
 
   #·······························································································
 
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
     $cast$
     if [option galgas_cli_options.errorOldStylePropertyDeclaration value] then
       warning .here : "This instruction is not handled in GALGAS 4"
     end
     let instructionLocation = @location.here
-    <expression_ggs3> ?let @semanticExpressionAST expression
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
     var mCastInstructionBranchList = @castInstructionBranchListAST {}
     repeat
-      <cast_instruction_branch> !? mCastInstructionBranchList
+      <cast_instruction_branch> !?ioDeclarations !?mCastInstructionBranchList
     while
     end
-    <cast_else_or_default> ?let @semanticInstructionListAST mElseOrDefault
+    <cast_else_or_default> !?ioDeclarations ?let @semanticInstructionListAST mElseOrDefault
     $end$
     let endOfInstructionLocation = @location.here
     outInstruction = @structuredCastInstructionAST.new {

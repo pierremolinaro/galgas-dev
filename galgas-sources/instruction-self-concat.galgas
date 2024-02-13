@@ -55,11 +55,12 @@ syntax extension galgas3InstructionsSyntax {
 
   #·······························································································
 
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
     $self$
     let instructionLocation = @location.here
     $+=$
-    <non_empty_output_expression_list_ggs3> ?let @actualOutputExpressionList expressionList
+    <non_empty_output_expression_list_ggs3> !?ioDeclarations ?let @actualOutputExpressionList expressionList
     outInstruction = @selfPlusEqualElementsInstructionAST.new {
       !instructionLocation
       !expressionList
@@ -68,11 +69,12 @@ syntax extension galgas3InstructionsSyntax {
 
   #·······························································································
 
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
     $self$
     let instructionLocation = @location.here
     $+=$
-    <expression_ggs3> ?let @semanticExpressionAST expression
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
     outInstruction = @selfPlusEqualExpressionInstructionAST.new {
       !instructionLocation
       !expression
@@ -81,11 +83,12 @@ syntax extension galgas3InstructionsSyntax {
 
   #·······························································································
 
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
     $self$
     let instructionLocation = @location.here
     $-=$
-    <expression_ggs3> ?let @semanticExpressionAST expression
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
     outInstruction = @selfMinusEqualExpressionInstructionAST.new {
       !instructionLocation
       !expression
@@ -94,11 +97,12 @@ syntax extension galgas3InstructionsSyntax {
 
   #·······························································································
 
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
     $self$
     let instructionLocation = @location.here
     $*=$
-    <expression_ggs3> ?let @semanticExpressionAST expression
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
     outInstruction = @selfMulEqualExpressionInstructionAST.new {
       !instructionLocation
       !expression
@@ -107,11 +111,12 @@ syntax extension galgas3InstructionsSyntax {
 
   #·······························································································
 
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
     $self$
     let instructionLocation = @location.here
     $/=$
-    <expression_ggs3> ?let @semanticExpressionAST expression
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
     outInstruction = @selfDivEqualExpressionInstructionAST.new {
       !instructionLocation
       !expression
@@ -143,12 +148,12 @@ syntax extension galgas4InstructionsSyntax {
 
   #·······························································································
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations
+  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionAST outInstruction {
     $self$
     let instructionLocation = @location.here
     $+=$
-    <expression> ?let @semanticExpressionAST expression
+    <expression> !?ioDeclarations ?let @semanticExpressionAST expression
     outInstruction = @selfPlusEqualExpressionInstructionAST.new {
       !instructionLocation
       !expression
@@ -157,12 +162,12 @@ syntax extension galgas4InstructionsSyntax {
 
   #·······························································································
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations
+  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionAST outInstruction {
     $self$
     let instructionLocation = @location.here
     $-=$
-    <expression> ?let @semanticExpressionAST expression
+    <expression> !?ioDeclarations ?let @semanticExpressionAST expression
     outInstruction = @selfMinusEqualExpressionInstructionAST.new {
       !instructionLocation
       !expression
@@ -171,12 +176,12 @@ syntax extension galgas4InstructionsSyntax {
 
   #·······························································································
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations
+  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionAST outInstruction {
     $self$
     let instructionLocation = @location.here
     $*=$
-    <expression> ?let @semanticExpressionAST expression
+    <expression> !?ioDeclarations ?let @semanticExpressionAST expression
     outInstruction = @selfMulEqualExpressionInstructionAST.new {
       !instructionLocation
       !expression
@@ -185,12 +190,12 @@ syntax extension galgas4InstructionsSyntax {
 
   #·······························································································
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations
+  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionAST outInstruction {
     $self$
     let instructionLocation = @location.here
     $/=$
-    <expression> ?let @semanticExpressionAST expression
+    <expression> !?ioDeclarations ?let @semanticExpressionAST expression
     outInstruction = @selfDivEqualExpressionInstructionAST.new {
       !instructionLocation
       !expression

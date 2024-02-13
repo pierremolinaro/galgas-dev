@@ -50,7 +50,8 @@ syntax extension galgas3ExpressionSyntax {
 
   #·······························································································
 
-  rule <primary_ggs3> !@semanticExpressionAST outExpression {
+  rule <primary_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                      !@semanticExpressionAST outExpression {
   #--- Type name
     <optional_type> ?let @lstring typeName
     $.$
@@ -63,7 +64,7 @@ syntax extension galgas3ExpressionSyntax {
       expressionList = {}
     or
       ${$
-      <output_expression_list_ggs3> ?expressionList
+      <output_expression_list_ggs3> !?ioDeclarations ?expressionList
       $}$
     end
     let endOfExpression = @location.here
@@ -104,7 +105,8 @@ syntax extension galgas4ExpressionSyntax {
 
   #·······························································································
 
-  rule <primary> !@semanticExpressionAST outExpression {
+  rule <primary> ?!@galgasDeclarationAST ioDeclarations
+                 !@semanticExpressionAST outExpression {
   #--- Type name
     <optional_type> ?let @lstring typeName
     $.$
@@ -118,11 +120,11 @@ syntax extension galgas4ExpressionSyntax {
     or
       ${$
       error .here : "'{' is obsolete here, use '('" #GGS4
-      <output_expression_list> ?expressionList
+      <output_expression_list> !?ioDeclarations ?expressionList
       $}$
     or
       $($
-      <output_expression_list> ?expressionList
+      <output_expression_list> !?ioDeclarations ?expressionList
       select
         $)$
       or
@@ -141,14 +143,15 @@ syntax extension galgas4ExpressionSyntax {
 
   #·······························································································
 
-  rule <primary> !@semanticExpressionAST outExpression {
+  rule <primary> ?!@galgasDeclarationAST ioDeclarations
+                 !@semanticExpressionAST outExpression {
   #--- Type name
     $@type$ ?let typeName indexing typeReferenceInConstructor
     let startOfExpression = @location.here
   #--- Actual arguments
     let @actualOutputExpressionList expressionList
     $($
-    <output_expression_list> ?expressionList
+    <output_expression_list> !?ioDeclarations ?expressionList
     $)$
     let endOfExpression = @location.here
     outExpression = @constructorExpressionAST.new {

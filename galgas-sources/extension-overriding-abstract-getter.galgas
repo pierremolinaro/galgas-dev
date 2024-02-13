@@ -40,7 +40,7 @@ syntax extension galgas3DeclarationsSyntax {
     $getter$
     $@type$ ?let className indexing typeReferenceOverrideAbstractExtensionGetter
     $identifier$ ?let mGetterName indexing overrideAbstractExtensionGetterDefinition
-    <formal_input_parameter_list_ggs3> ?let @formalInputParameterListAST mFormalInputParameterList
+    <formal_input_parameter_list_ggs3> !?ioDeclarations ?let @formalInputParameterListAST mFormalInputParameterList
     $->$
     $@type$ ?let @lstring mReturnedTypeName
     select
@@ -64,7 +64,7 @@ syntax extension galgas3DeclarationsSyntax {
     $abstract$
     $getter$
     $identifier$ ?let mGetterName indexing overrideAbstractExtensionGetterDefinition
-    <formal_input_parameter_list_ggs3> ?let @formalInputParameterListAST mFormalInputParameterList
+    <formal_input_parameter_list_ggs3> !?ioDeclarations ?let @formalInputParameterListAST mFormalInputParameterList
     $->$
     $@type$ ?let @lstring mReturnedTypeName
     select
@@ -98,7 +98,7 @@ syntax extension galgas4DeclarationsSyntax {
     $@type$ ?let className indexing typeReferenceOverrideAbstractExtensionGetter
     $.$
     $identifier$ ?let mGetterName indexing overrideAbstractExtensionGetterDefinition
-    <formal_input_parameter_list> ?let @formalInputParameterListAST mFormalInputParameterList
+    <formal_input_parameter_list> !?ioDeclarations ?let @formalInputParameterListAST mFormalInputParameterList
     $->$
     <type_definition> !?ioDeclarations ?let returnedTypeName
     select
@@ -123,7 +123,7 @@ syntax extension galgas4DeclarationsSyntax {
     $abstract$
     $func$
     $identifier$ ?let mGetterName indexing overrideAbstractExtensionGetterDefinition
-    <formal_input_parameter_list> ?let @formalInputParameterListAST mFormalInputParameterList
+    <formal_input_parameter_list> !?ioDeclarations ?let @formalInputParameterListAST mFormalInputParameterList
     $->$
     <type_definition> !?ioDeclarations ?let returnedTypeName
     select

@@ -136,8 +136,8 @@ void GALGAS_string::description (String & ioString,
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_string::class_func_stringByRepeatingString (const GALGAS_string & inString,
-                                                                  const GALGAS_uint & inCount
-                                                                  COMMA_UNUSED_LOCATION_ARGS) {
+                                                                 const GALGAS_uint & inCount
+                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result ;
   if (inString.isValid () && inCount.isValid ()) {
     String s ;
@@ -158,7 +158,7 @@ GALGAS_string GALGAS_string::class_func_newWithStdIn (UNUSED_LOCATION_ARGS) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_string::class_func_CppChar (const GALGAS_char & inCharacter
-                                                  COMMA_UNUSED_LOCATION_ARGS) {
+                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result ;
   if (inCharacter.isValid ()) {
     String s ;
@@ -178,7 +178,7 @@ GALGAS_string GALGAS_string::class_func_CppLineComment (UNUSED_LOCATION_ARGS) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_string::class_func_CppTitleComment (const GALGAS_string & inTitle
-                                                          COMMA_UNUSED_LOCATION_ARGS) {
+                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result ;
   if (inTitle.isValid ()) {
     String s ;
@@ -198,7 +198,7 @@ GALGAS_string GALGAS_string::class_func_CppSpaceComment (UNUSED_LOCATION_ARGS) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_string::class_func_CppString (const GALGAS_string & inString
-                                                    COMMA_UNUSED_LOCATION_ARGS) {
+                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result ;
   if (inString.isValid ()) {
     String s ;

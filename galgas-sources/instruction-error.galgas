@@ -49,7 +49,8 @@ syntax extension galgas3InstructionsSyntax {
 
   #·······························································································
 
-  rule <issue_fixit> !@fixitListAST outFixitListAST {
+  rule <issue_fixit> ?!@galgasDeclarationAST ioDeclarations
+                     !@fixitListAST outFixitListAST {
     outFixitListAST = {}
     select
     or
@@ -68,17 +69,17 @@ syntax extension galgas3InstructionsSyntax {
       while
         $replace$
         let errorLocation = @location.here
-        <expression_ggs3> ?let @semanticExpressionAST expression
+        <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
         outFixitListAST += !.fixItReplace {!exp:expression !errorLocation:errorLocation}
       while
         $insert$ ; $after$
         let errorLocation = @location.here
-        <expression_ggs3> ?let @semanticExpressionAST expression
+        <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
         outFixitListAST += !.fixItInsertAfter {!exp:expression !errorLocation:errorLocation}
       while
         $insert$ ; $before$
         let errorLocation = @location.here
-        <expression_ggs3> ?let @semanticExpressionAST expression
+        <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
         outFixitListAST += !.fixItInsertBefore {!exp:expression !errorLocation:errorLocation}
       end
       $}$
@@ -87,12 +88,13 @@ syntax extension galgas3InstructionsSyntax {
 
   #·······························································································
 
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
     $error$
     let instructionLocation = @location.here
-    <expression_ggs3> ?let @semanticExpressionAST mReceiverExpression
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST mReceiverExpression
     $:$
-    <expression_ggs3> ?let @semanticExpressionAST mErrorExpression
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST mErrorExpression
     var mBuiltVariableList = @lstringlist {}
     select
     or
@@ -104,7 +106,7 @@ syntax extension galgas3InstructionsSyntax {
         $,$
       end
     end
-    <issue_fixit> ?let @fixitListAST fixitListAST
+    <issue_fixit> !?ioDeclarations ?let @fixitListAST fixitListAST
     outInstruction = @errorInstructionAST.new {
       !instructionLocation
       !mReceiverExpression
@@ -124,7 +126,8 @@ syntax extension galgas4InstructionsSyntax {
 
   #·······························································································
 
-  rule <issue_fixit> !@fixitListAST outFixitListAST {
+  rule <issue_fixit> ?!@galgasDeclarationAST ioDeclarations
+                     !@fixitListAST outFixitListAST {
     outFixitListAST = {}
     select
     or
@@ -143,17 +146,17 @@ syntax extension galgas4InstructionsSyntax {
         or
           $%replaceBy$
           let errorLocation = @location.here
-          <expression> ?let @semanticExpressionAST expression
+          <expression> !?ioDeclarations ?let @semanticExpressionAST expression
           outFixitListAST += !.fixItReplace {!exp:expression !errorLocation:errorLocation}
         or
           $%insertAfter$
           let errorLocation = @location.here
-          <expression> ?let @semanticExpressionAST expression
+          <expression> !?ioDeclarations ?let @semanticExpressionAST expression
           outFixitListAST += !.fixItInsertAfter {!exp:expression !errorLocation:errorLocation}
         or
           $%insertBefore$
           let errorLocation = @location.here
-          <expression> ?let @semanticExpressionAST expression
+          <expression> !?ioDeclarations ?let @semanticExpressionAST expression
           outFixitListAST += !.fixItInsertBefore {!exp:expression !errorLocation:errorLocation}
         end
       while
@@ -165,13 +168,13 @@ syntax extension galgas4InstructionsSyntax {
 
   #·······························································································
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations
+  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionAST outInstruction {
     $error$
     let instructionLocation = @location.here
-    <expression> ?let @semanticExpressionAST mReceiverExpression
+    <expression> !?ioDeclarations ?let @semanticExpressionAST mReceiverExpression
     $:$
-    <expression> ?let @semanticExpressionAST mErrorExpression
+    <expression> !?ioDeclarations ?let @semanticExpressionAST mErrorExpression
     var mBuiltVariableList = @lstringlist {}
     select
     or
@@ -185,7 +188,7 @@ syntax extension galgas4InstructionsSyntax {
       end
       $)$
     end
-    <issue_fixit> ?let @fixitListAST fixitListAST
+    <issue_fixit> !?ioDeclarations ?let @fixitListAST fixitListAST
     outInstruction = @errorInstructionAST.new {
       !instructionLocation
       !mReceiverExpression

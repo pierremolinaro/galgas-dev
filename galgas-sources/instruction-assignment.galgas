@@ -41,7 +41,8 @@ syntax extension galgas3InstructionsSyntax {
 
   #·······························································································
 
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
     $identifier$ ?let mTargetVariableName
     let @lstring optionalProperty
     select
@@ -52,7 +53,7 @@ syntax extension galgas3InstructionsSyntax {
       optionalProperty = attributeName
     end
     $=$
-    <expression_ggs3> ?let @semanticExpressionAST mSourceExpression
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST mSourceExpression
     outInstruction = @assignmentInstructionAST.new {
       !mTargetVariableName.location
       !mTargetVariableName
@@ -63,7 +64,8 @@ syntax extension galgas3InstructionsSyntax {
 
   #·······························································································
 
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
     $self$
     $.$
     $identifier$ ?let mTargetVariableName
@@ -76,7 +78,7 @@ syntax extension galgas3InstructionsSyntax {
       optionalProperty = attributeName
     end
     $=$
-    <expression_ggs3> ?let @semanticExpressionAST mSourceExpression
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST mSourceExpression
     outInstruction = @selfPropertyAssignmentInstructionAST.new {
       !mTargetVariableName.location
       !mTargetVariableName
@@ -95,7 +97,7 @@ syntax extension galgas4InstructionsSyntax {
 
   #·······························································································
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations
+  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionAST outInstruction {
     $identifier$ ?let mTargetVariableName
     let @lstring optionalProperty
@@ -107,7 +109,7 @@ syntax extension galgas4InstructionsSyntax {
       optionalProperty = attributeName
     end
     $=$
-    <expression> ?let @semanticExpressionAST mSourceExpression
+    <expression> !?ioDeclarations ?let @semanticExpressionAST mSourceExpression
     outInstruction = @assignmentInstructionAST.new {
       !mTargetVariableName.location
       !mTargetVariableName
@@ -118,7 +120,7 @@ syntax extension galgas4InstructionsSyntax {
 
   #·······························································································
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations
+  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionAST outInstruction {
     $self$
     $.$
@@ -132,7 +134,7 @@ syntax extension galgas4InstructionsSyntax {
       optionalProperty = attributeName
     end
     $=$
-    <expression> ?let @semanticExpressionAST mSourceExpression
+    <expression> !?ioDeclarations ?let @semanticExpressionAST mSourceExpression
     outInstruction = @selfPropertyAssignmentInstructionAST.new {
       !mTargetVariableName.location
       !mTargetVariableName

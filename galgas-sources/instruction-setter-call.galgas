@@ -43,7 +43,8 @@ syntax extension galgas3InstructionsSyntax {
 
   #·······························································································
 
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
     $[$
     let instructionLocation = @location.here
     $!?$ ?let selector
@@ -74,7 +75,7 @@ syntax extension galgas3InstructionsSyntax {
       $@type$ ?typeNameForCasting
     end
     $identifier$ ?let mSetterName
-    <actual_parameter_list_ggs3> ?let @actualParameterListAST actualParameterList
+    <actual_parameter_list_ggs3> !?ioDeclarations ?let @actualParameterListAST actualParameterList
     $]$
     outInstruction = @setterCallInstructionAST.new {
       !instructionLocation
@@ -89,7 +90,8 @@ syntax extension galgas3InstructionsSyntax {
 
   #·······························································································
 
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
     $[$
     let instructionLocation = @location.here
     $!?$ ?let selector
@@ -98,7 +100,7 @@ syntax extension galgas3InstructionsSyntax {
     end
     $self$
     $identifier$ ?let mSetterName
-    <actual_parameter_list_ggs3> ?let @actualParameterListAST actualParameterList
+    <actual_parameter_list_ggs3> !?ioDeclarations ?let @actualParameterListAST actualParameterList
     $]$
     outInstruction = @selfSetterCallInstructionAST.new {
       !instructionLocation
@@ -156,7 +158,7 @@ syntax extension galgas4InstructionsSyntax {
 
   #·······························································································
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations
+  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionAST outInstruction {
     let instructionLocation = @location.here
     $!?$ ?let selector
@@ -173,7 +175,7 @@ syntax extension galgas4InstructionsSyntax {
     end
     $identifier$ ?let mReceiverName
     select
-      <actual_parameter_list_within_parenthesis> ?let @actualParameterListAST actualParameterList
+      <actual_parameter_list_within_parenthesis> !?ioDeclarations ?let @actualParameterListAST actualParameterList
       if prefixedBySelf then
         outInstruction = @selfSetterCallInstructionAST.new {
           !instructionLocation
@@ -192,7 +194,7 @@ syntax extension galgas4InstructionsSyntax {
       while
       end
       [!?receiverStructProperties popLast ?let setterName]
-      <actual_parameter_list_within_parenthesis> ?let @actualParameterListAST actualParameterList
+      <actual_parameter_list_within_parenthesis> !?ioDeclarations ?let @actualParameterListAST actualParameterList
       outInstruction = @setterCallInstructionAST.new {
         !instructionLocation
         !prefixedBySelf

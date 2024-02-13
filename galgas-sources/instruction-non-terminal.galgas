@@ -21,7 +21,8 @@ syntax extension galgas3SyntaxComponentSyntax {
 
   #·······························································································
 
-  rule <syntax_instruction_ggs3> !@syntaxInstructionAST outInstruction {
+  rule <syntax_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                 !@syntaxInstructionAST outInstruction {
     let @lstring mLabelName # No label : empty string
     select
       mLabelName = @lstring.new {!"" !@location.here}
@@ -33,14 +34,14 @@ syntax extension galgas3SyntaxComponentSyntax {
       $identifier$ ? mLabelName
     end
     $<non_terminal>$ ?let @lstring mNonterminalName indexing ruleReference
-    <actual_parameter_list_ggs3> ?let @actualParameterListAST mActualParameterList
+    <actual_parameter_list_ggs3> !?ioDeclarations ?let @actualParameterListAST mActualParameterList
   #--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
     select
       grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone.new
     or
       $:>$
-      <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationResult
+      <syntax_directed_translation_result> !?ioDeclarations ?grammarInstructionSyntaxDirectedTranslationResult
     end
     outInstruction = @nonterminalCallInstruction.new {
       !mNonterminalName.location
@@ -61,7 +62,7 @@ syntax extension galgas4SyntaxComponentSyntax {
 
   #·······························································································
 
-  rule <syntax_instruction> ?!@galgasDeclarationAST unused ioDeclarations
+  rule <syntax_instruction> ?!@galgasDeclarationAST ioDeclarations
                             !@syntaxInstructionAST outInstruction {
     let @lstring mLabelName # No label : empty string
     select
@@ -74,14 +75,14 @@ syntax extension galgas4SyntaxComponentSyntax {
       $identifier$ ? mLabelName
     end
     $<non_terminal>$ ?let @lstring mNonterminalName indexing ruleReference
-    <actual_parameter_list_within_parenthesis> ?let @actualParameterListAST mActualParameterList
+    <actual_parameter_list_within_parenthesis> !?ioDeclarations ?let @actualParameterListAST mActualParameterList
   #--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
     select
       grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone.new
     or
       $:>$
-      <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationResult
+      <syntax_directed_translation_result> !?ioDeclarations ?grammarInstructionSyntaxDirectedTranslationResult
     end
     outInstruction = @nonterminalCallInstruction.new {
       !mNonterminalName.location

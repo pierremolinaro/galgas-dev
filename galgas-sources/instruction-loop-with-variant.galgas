@@ -39,23 +39,24 @@ syntax extension galgas3InstructionsSyntax {
 
   #·······························································································
 
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
     $loop$
     let instructionLocation = @location.here
   #--- Variant
     $($
-    <expression_ggs3> ?let @semanticExpressionAST variantExpression
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST variantExpression
     let endOfVariantExpression = @location.here
     $)$
   #---
-    <semantic_instruction_list_ggs3> ?let @semanticInstructionListAST firstInstructions
+    <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST firstInstructions
   #---
     let endOfFirstInstructions = @location.here
     $while$
-    <expression_ggs3> ?let @semanticExpressionAST loopExpression
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST loopExpression
     let endOfLoopExpression = @location.here
     $do$
-    <semantic_instruction_list_ggs3> ?let @semanticInstructionListAST secondInstructions
+    <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST secondInstructions
     let endOfSecondInstructions = @location.here
     $end$
     let endOfLoopInstruction = @location.here
@@ -89,7 +90,7 @@ syntax extension galgas4InstructionsSyntax {
     let instructionLocation = @location.here
   #--- Variant
     $($
-    <expression> ?let @semanticExpressionAST variantExpression
+    <expression> !?ioDeclarations ?let @semanticExpressionAST variantExpression
     let endOfVariantExpression = @location.here
     $)$
   #---
@@ -97,7 +98,7 @@ syntax extension galgas4InstructionsSyntax {
   #---
     let endOfFirstInstructions = @location.here
     $while$
-    <expression> ?let @semanticExpressionAST loopExpression
+    <expression> !?ioDeclarations ?let @semanticExpressionAST loopExpression
     let endOfLoopExpression = @location.here
     $do$
     <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST secondInstructions

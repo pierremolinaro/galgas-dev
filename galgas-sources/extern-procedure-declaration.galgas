@@ -40,7 +40,7 @@ syntax extension galgas3InstructionsSyntax {
       isUsefull = true
     end
     $identifier$ ?let @lstring mActionName indexing routineDefinition
-    <formal_parameter_list_ggs3> ?let @formalParameterListAST mFormalParameterList
+    <formal_parameter_list_ggs3> !?ioDeclarations ?let @formalParameterListAST mFormalParameterList
     ioDeclarations.mDeclarationList += !@externProcedureDeclarationAST.new {
       !isPredefined: false # Is not predefined
       !isFilePrivate: false # Is not internal

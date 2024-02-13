@@ -51,8 +51,9 @@ syntax extension galgas3ExpressionSyntax {
 
   #·······························································································
 
-  rule <expression_ggs3> !@semanticExpressionAST outExpression {
-    <expression_or_ggs3> ?outExpression
+  rule <expression_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                         !@semanticExpressionAST outExpression {
+    <expression_or_ggs3> !?ioDeclarations ?outExpression
     select
     or
       let endOfReceiverExpression = @location.here
@@ -71,6 +72,7 @@ syntax extension galgas3ExpressionSyntax {
         kind = .strictlyInherited
       end
       $@type$ ?let typeName
+#      <type_definition_ggs3> !?ioDeclarations ?let typeName
       outExpression = @testDynamicClassInExpressionAST.new {
         !outExpression
         !endOfReceiverExpression
@@ -99,8 +101,9 @@ syntax extension galgas4ExpressionSyntax {
 
   #·······························································································
 
-  rule <expression> !@semanticExpressionAST outExpression {
-    <expression_or> ?outExpression
+  rule <expression> ?!@galgasDeclarationAST ioDeclarations
+                    !@semanticExpressionAST outExpression {
+    <expression_or> !?ioDeclarations ?outExpression
     select
     or
       let endOfReceiverExpression = @location.here
@@ -119,6 +122,7 @@ syntax extension galgas4ExpressionSyntax {
         kind = .strictlyInherited
       end
       $@type$ ?let typeName
+#      <type_definition> !?ioDeclarations ?let typeName
       outExpression = @testDynamicClassInExpressionAST.new {
         !outExpression
         !endOfReceiverExpression

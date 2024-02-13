@@ -48,7 +48,8 @@ syntax extension galgas3InstructionsSyntax {
 
   #·······························································································
 
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
     $let$
     $@type$ ?let typeName
     $identifier$ ?let constantName
@@ -61,27 +62,30 @@ syntax extension galgas3InstructionsSyntax {
 
   #·······························································································
 
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
     $let$
     $@type$ ?let typeName
     $identifier$ ?let variableName
     $=$
-    <expression_ggs3> ?let @semanticExpressionAST sourceExpression
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST sourceExpression
     outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST.new {
       !typeName.location
       !true # Is Constant
       !typeName
       !variableName
-      !sourceExpression}
+      !sourceExpression
+    }
   }
 
   #·······························································································
 
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
     $let$
     $identifier$ ?let variableName
     $=$
-    <expression_ggs3> ?let @semanticExpressionAST sourceExpression
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST sourceExpression
     outInstruction = @localConstantDeclarationWithAssignmentAST.new {
       !variableName.location
       !variableName
@@ -102,7 +106,6 @@ syntax extension galgas4InstructionsSyntax {
                               !@semanticInstructionAST outInstruction {
     $let$
     <type_definition> !?ioDeclarations ?let typeName
-#    $@type$ ?let typeName
     $identifier$ ?let constantName
     select
       outInstruction = @undefinedLocalConstantDeclarationAST.new {
@@ -112,7 +115,7 @@ syntax extension galgas4InstructionsSyntax {
      }
     or
       $=$
-      <expression> ?let @semanticExpressionAST sourceExpression
+      <expression> !?ioDeclarations ?let @semanticExpressionAST sourceExpression
       outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST.new {
         !typeName.location
         !true # Is Constant
@@ -125,12 +128,12 @@ syntax extension galgas4InstructionsSyntax {
 
   #·······························································································
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations
+  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionAST outInstruction {
     $let$
     $identifier$ ?let variableName
     $=$
-    <expression> ?let @semanticExpressionAST sourceExpression
+    <expression> !?ioDeclarations ?let @semanticExpressionAST sourceExpression
     outInstruction = @localConstantDeclarationWithAssignmentAST.new {
       !variableName.location
       !variableName

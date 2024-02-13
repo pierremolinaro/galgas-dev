@@ -36,18 +36,18 @@ syntax extension galgas3SyntaxComponentSyntax {
 
   #·······························································································
 
-  rule <syntax_instruction_ggs3>
-    !@syntaxInstructionAST outInstruction {
+  rule <syntax_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                 !@syntaxInstructionAST outInstruction {
     $parse$
     let instructionLocation = @location.here
     $loop$
-    <expression_ggs3> ?let @semanticExpressionAST variantExpression
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST variantExpression
     let endOfVariantExpression = @location.here
     $while$
-    <expression_ggs3> ?let @semanticExpressionAST whileExpression
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST whileExpression
     let endOfWhileExpression = @location.here
     $do$
-    <syntax_instruction_list_ggs3> ?let @syntaxInstructionList instructionList
+    <syntax_instruction_list_ggs3> !?ioDeclarations ?let @syntaxInstructionList instructionList
     $end$
     let endOfInstructionList = @location.here
     outInstruction = @parseLoopInstruction.new {
@@ -57,7 +57,8 @@ syntax extension galgas3SyntaxComponentSyntax {
       !whileExpression
       !endOfWhileExpression
       !instructionList
-      !endOfInstructionList}
+      !endOfInstructionList
+    }
   }
 
   #·······························································································
@@ -75,10 +76,10 @@ syntax extension galgas4SyntaxComponentSyntax {
     $parse$
     let instructionLocation = @location.here
     $loop$
-    <expression> ?let @semanticExpressionAST variantExpression
+    <expression> !?ioDeclarations ?let @semanticExpressionAST variantExpression
     let endOfVariantExpression = @location.here
     $while$
-    <expression> ?let @semanticExpressionAST whileExpression
+    <expression> !?ioDeclarations ?let @semanticExpressionAST whileExpression
     let endOfWhileExpression = @location.here
     $do$
     <syntax_instruction_list> !?ioDeclarations ?let @syntaxInstructionList instructionList

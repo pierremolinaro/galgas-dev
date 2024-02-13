@@ -23,10 +23,11 @@ syntax extension galgas3InstructionsSyntax {
 
   #·······························································································
 
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
     $identifier$ ?let mRoutineName indexing routineCall
     $($
-    <actual_parameter_list_ggs3> ?let @actualParameterListAST actualParameterList
+    <actual_parameter_list_ggs3> !?ioDeclarations ?let @actualParameterListAST actualParameterList
     $)$
     outInstruction = @procCallInstructionAST.new {
       !mRoutineName.location

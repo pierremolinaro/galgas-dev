@@ -57,10 +57,11 @@ syntax extension galgas3InstructionsSyntax {
 
   #·······························································································
 
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
     $with$
     let instructionLocation = @location.here
-    <expression_ggs3> ?let @semanticExpressionAST keyExpression
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST keyExpression
     let endOfKeyExpression = @location.here
     let @lstring withPrefix
     select
@@ -70,20 +71,19 @@ syntax extension galgas3InstructionsSyntax {
       $identifier$ ? withPrefix
     end
     $in$
-    <with_instruction_core> !instructionLocation !keyExpression !endOfKeyExpression !withPrefix ?outInstruction
+    <with_instruction_core> !?ioDeclarations !instructionLocation !keyExpression !endOfKeyExpression !withPrefix ?outInstruction
     $end$
    }
 
   #·······························································································
 
-  rule <with_instruction_core>
-    ?let @location inInstructionLocation
-    ?let @semanticExpressionAST inKeyExpression
-    ?let @location inEndOfKeyExpression
-    ?let @lstring inWithPrefix
-    !@semanticInstructionAST outInstruction
-  {
-    <expression_ggs3> ?let @semanticExpressionAST receiverExpression
+  rule <with_instruction_core> ?!@galgasDeclarationAST ioDeclarations
+                                ?let @location inInstructionLocation
+                                ?let @semanticExpressionAST inKeyExpression
+                                ?let @location inEndOfKeyExpression
+                                ?let @lstring inWithPrefix
+                                !@semanticInstructionAST outInstruction {
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST receiverExpression
     let endOfReceiverExpression = @location.here
     let @lstring searchMethodNameForErrorSignaling
     select
@@ -94,7 +94,7 @@ syntax extension galgas3InstructionsSyntax {
       $identifier$ ?searchMethodNameForErrorSignaling
     end
     $do$
-    <semantic_instruction_list_ggs3> ?let @semanticInstructionListAST mDoBranchInstructions
+    <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST mDoBranchInstructions
     let endOfDoInstructions = @location.here
     let @semanticInstructionListAST mElseBranchInstructions
     select
@@ -104,7 +104,7 @@ syntax extension galgas3InstructionsSyntax {
       if searchMethodNameForErrorSignaling.string != "" then
         error searchMethodNameForErrorSignaling : "no 'else' branch if error on search is enabled"
       end
-      <semantic_instruction_list_ggs3> ?mElseBranchInstructions
+      <semantic_instruction_list_ggs3> !?ioDeclarations ?mElseBranchInstructions
     end
     outInstruction = @readAccessWithInstructionAST.new {
       !inInstructionLocation
@@ -123,13 +123,12 @@ syntax extension galgas3InstructionsSyntax {
 
   #·······························································································
 
-  rule <with_instruction_core>
-    ?let @location inInstructionLocation
-    ?let @semanticExpressionAST inKeyExpression
-    ?let @location inEndOfKeyExpression
-    ?let @lstring inWithPrefix
-    !@semanticInstructionAST outInstruction
-  {
+  rule <with_instruction_core> ?!@galgasDeclarationAST ioDeclarations                          
+                                ?let @location inInstructionLocation
+                                ?let @semanticExpressionAST inKeyExpression
+                                ?let @location inEndOfKeyExpression
+                                ?let @lstring inWithPrefix
+                                !@semanticInstructionAST outInstruction {
     $!?$ ?let selector
     if selector.string != "" then
       error selector : "an empty selector '!?' is required here"
@@ -172,7 +171,7 @@ syntax extension galgas3InstructionsSyntax {
       $identifier$ ?searchMethodNameForErrorSignaling
     end
     $do$
-    <semantic_instruction_list_ggs3> ?let @semanticInstructionListAST mDoBranchInstructions
+    <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST mDoBranchInstructions
     let endOf_do_instructions = @location.here
     let @semanticInstructionListAST mElseBranchInstructions
     select
@@ -182,7 +181,7 @@ syntax extension galgas3InstructionsSyntax {
       if searchMethodNameForErrorSignaling.string != "" then
         error searchMethodNameForErrorSignaling : "no 'else' branch if error on search is enabled"
       end
-      <semantic_instruction_list_ggs3> ? mElseBranchInstructions
+      <semantic_instruction_list_ggs3> !?ioDeclarations ?mElseBranchInstructions
     end
     let endOf_else_instructions = @location.here
     outInstruction = @readWriteAccessWithInstructionAST.new {
@@ -216,7 +215,7 @@ syntax extension galgas4InstructionsSyntax {
                               !@semanticInstructionAST outInstruction {
     $with$
     let instructionLocation = @location.here
-    <expression> ?let @semanticExpressionAST keyExpression
+    <expression> !?ioDeclarations ?let @semanticExpressionAST keyExpression
     let endOfKeyExpression = @location.here
     let @lstring withPrefix
     select
@@ -232,15 +231,13 @@ syntax extension galgas4InstructionsSyntax {
 
   #·······························································································
 
-  rule <with_instruction_core>
-    ?!@galgasDeclarationAST ioDeclarations
-    ?let @location inInstructionLocation
-    ?let @semanticExpressionAST inKeyExpression
-    ?let @location inEndOfKeyExpression
-    ?let @lstring inWithPrefix
-    !@semanticInstructionAST outInstruction
-  {
-    <expression> ?let @semanticExpressionAST receiverExpression
+  rule <with_instruction_core> ?!@galgasDeclarationAST ioDeclarations
+                                ?let @location inInstructionLocation
+                                ?let @semanticExpressionAST inKeyExpression
+                                ?let @location inEndOfKeyExpression
+                                ?let @lstring inWithPrefix
+                                !@semanticInstructionAST outInstruction {
+    <expression> !?ioDeclarations ?let @semanticExpressionAST receiverExpression
     let endOfReceiverExpression = @location.here
     let @lstring searchMethodNameForErrorSignaling
     select

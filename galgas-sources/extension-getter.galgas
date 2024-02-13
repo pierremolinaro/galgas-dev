@@ -42,7 +42,7 @@ syntax extension galgas3DeclarationsSyntax {
     $getter$
     $@type$ ?let @lstring className indexing typeReferenceExtensionGetter
     $identifier$ ?let @lstring mMethodName indexing extensionGetterDefinition
-    <formal_input_parameter_list_ggs3> ?let mFormalInputParameterList
+    <formal_input_parameter_list_ggs3> !?ioDeclarations ?let mFormalInputParameterList
     $->$
     $@type$ ?let @lstring mReturnedTypeName
     let @lstring resultVariableName
@@ -52,7 +52,7 @@ syntax extension galgas3DeclarationsSyntax {
       resultVariableName = .new {!"result" !.here}
     end
     ${$
-    <semantic_instruction_list_ggs3> ?let @semanticInstructionListAST routineInstructionList
+    <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
     let @location endOfInstructionList = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@extensionGetterAST.new {
@@ -73,7 +73,7 @@ syntax extension galgas3DeclarationsSyntax {
   rule <method_declaration_ggs3> ?let @lstring inClassName ?!@galgasDeclarationAST ioDeclarations {
     $getter$
     $identifier$ ?let @lstring mMethodName indexing extensionGetterDefinition
-    <formal_input_parameter_list_ggs3> ?let mFormalInputParameterList
+    <formal_input_parameter_list_ggs3> !?ioDeclarations ?let mFormalInputParameterList
     $->$
     $@type$ ?let @lstring mReturnedTypeName
     let @lstring resultVariableName
@@ -83,7 +83,7 @@ syntax extension galgas3DeclarationsSyntax {
       resultVariableName = .new {!"result" !.here}
     end
     ${$
-    <semantic_instruction_list_ggs3> ?let @semanticInstructionListAST routineInstructionList
+    <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
     let @location endOfInstructionList = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@extensionGetterAST.new {
@@ -114,7 +114,7 @@ syntax extension galgas4DeclarationsSyntax {
     $@type$ ?let @lstring className indexing typeReferenceExtensionGetter
     $.$
     $identifier$ ?let @lstring mMethodName indexing extensionGetterDefinition
-    <formal_input_parameter_list> ?let mFormalInputParameterList
+    <formal_input_parameter_list> !?ioDeclarations ?let mFormalInputParameterList
     $->$
     <type_definition> !?ioDeclarations ?let returnedTypeName
     let @lstring resultVariableName
@@ -146,7 +146,7 @@ syntax extension galgas4DeclarationsSyntax {
                             ?!@galgasDeclarationAST ioDeclarations {
     $func$
     $identifier$ ?let @lstring mMethodName indexing extensionGetterDefinition
-    <formal_input_parameter_list> ?let mFormalInputParameterList
+    <formal_input_parameter_list> !?ioDeclarations ?let mFormalInputParameterList
     $->$
     <type_definition> !?ioDeclarations ?let returnedTypeName
     let @lstring resultVariableName = .new {!"result" !.here}

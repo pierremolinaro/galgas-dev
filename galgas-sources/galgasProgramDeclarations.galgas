@@ -26,7 +26,8 @@ syntax galgas3ProgramDeclarations (galgasScanner3) {
 
   #·······························································································
 
-  rule <semantic_instruction_list_ggs3> !@semanticInstructionListAST outInstructionsList
+  rule <semantic_instruction_list_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
+                                        !@semanticInstructionListAST outInstructionsList
 
   #·······························································································
   #   P R O L O G U E
@@ -35,7 +36,7 @@ syntax galgas3ProgramDeclarations (galgasScanner3) {
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $before$
     ${$
-    <semantic_instruction_list_ggs3> ?let @semanticInstructionListAST prologueInstructionList
+    <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST prologueInstructionList
     let endOfPrologue = @location.here
     $}$
     ioDeclarations.mPrologueDeclarationList +=
@@ -50,7 +51,7 @@ syntax galgas3ProgramDeclarations (galgasScanner3) {
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $after$
     ${$
-    <semantic_instruction_list_ggs3> ?let @semanticInstructionListAST prologueInstructionList
+    <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST prologueInstructionList
     let endOfPrologue = @location.here
     $}$
     ioDeclarations.mEpilogueDeclarationList +=
@@ -99,7 +100,7 @@ syntax galgas3ProgramDeclarations (galgasScanner3) {
     $identifier$ ?let @lstring mSourceFileVariableName
   #---
     ${$
-    <semantic_instruction_list_ggs3> ?let @semanticInstructionListAST mInstructionList
+    <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST mInstructionList
     let endOfInstructionList = @location.here
     $}$
     ioDeclarations.mSourceRuleList +=

@@ -28,9 +28,9 @@ syntax extension galgas3DeclarationsSyntax {
     $method$
     $@type$ ?let @lstring className indexing typeReferenceOverrideExtensionMethodDefinition
     $identifier$ ?let @lstring mMethodName indexing overrideExtensionMethodDefinition
-    <formal_parameter_list_ggs3> ?let @formalParameterListAST formalParameterList
+    <formal_parameter_list_ggs3> !?ioDeclarations ?let @formalParameterListAST formalParameterList
     ${$
-    <semantic_instruction_list_ggs3> ?let @semanticInstructionListAST routineInstructionList
+    <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
     let @location endOfMethodLocation = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@overridingExtensionMethodAST.new {
@@ -50,9 +50,9 @@ syntax extension galgas3DeclarationsSyntax {
     $override$
     $method$
     $identifier$ ?let @lstring mMethodName indexing overrideExtensionMethodDefinition
-    <formal_parameter_list_ggs3> ?let @formalParameterListAST formalParameterList
+    <formal_parameter_list_ggs3> !?ioDeclarations ?let @formalParameterListAST formalParameterList
     ${$
-    <semantic_instruction_list_ggs3> ?let @semanticInstructionListAST routineInstructionList
+    <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
     let @location endOfMethodLocation = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@overridingExtensionMethodAST.new {

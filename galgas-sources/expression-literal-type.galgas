@@ -31,7 +31,8 @@ syntax extension galgas3ExpressionSyntax {
 
   #·······························································································
 
-  rule <primary_ggs3> !@semanticExpressionAST outExpression {
+  rule <primary_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
+                      !@semanticExpressionAST outExpression {
     $`$
     $@type$ ?let @lstring typeName
     outExpression = @literalTypeInExpressionAST.new {!typeName}
@@ -47,7 +48,8 @@ syntax extension galgas4ExpressionSyntax {
 
   #·······························································································
 
-  rule <primary> !@semanticExpressionAST outExpression {
+  rule <primary> ?!@galgasDeclarationAST unused ioDeclarations
+                 !@semanticExpressionAST outExpression {
     $`$
     $@type$ ?let @lstring typeName
     outExpression = @literalTypeInExpressionAST.new {!typeName}

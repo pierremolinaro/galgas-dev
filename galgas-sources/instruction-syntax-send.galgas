@@ -21,10 +21,11 @@ syntax extension galgas3SyntaxComponentSyntax {
 
   #·······························································································
 
-  rule <syntax_instruction_ggs3> !@syntaxInstructionAST outInstruction {
+  rule <syntax_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                 !@syntaxInstructionAST outInstruction {
     $send$
     let instructionLocation = @location.here
-    <expression_ggs3> ?let @semanticExpressionAST sentExpression
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST sentExpression
     outInstruction = @syntaxSendInstructionAST.new {
       !instructionLocation
       !sentExpression
@@ -41,11 +42,11 @@ syntax extension galgas4SyntaxComponentSyntax {
 
   #·······························································································
 
-  rule <syntax_instruction> ?!@galgasDeclarationAST unused ioDeclarations
+  rule <syntax_instruction> ?!@galgasDeclarationAST ioDeclarations
                             !@syntaxInstructionAST outInstruction {
     $send$
     let instructionLocation = @location.here
-    <expression> ?let @semanticExpressionAST sentExpression
+    <expression> !?ioDeclarations ?let @semanticExpressionAST sentExpression
     outInstruction = @syntaxSendInstructionAST.new {
       !instructionLocation
       !sentExpression

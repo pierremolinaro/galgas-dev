@@ -46,7 +46,8 @@ syntax extension galgas3ExpressionSyntax {
 
   #·······························································································
 
-  rule <primary_ggs3> !@semanticExpressionAST outExpression {
+  rule <primary_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                      !@semanticExpressionAST outExpression {
     $[$
     $filewrapper$
     $identifier$ ?let filewrapperName indexing filewrapperReference
@@ -64,7 +65,7 @@ syntax extension galgas3ExpressionSyntax {
         }
       or
         $identifier$ ?let @lstring filewrapperTemplateName
-        <output_expression_list_ggs3> ?let @actualOutputExpressionList expressionList
+        <output_expression_list_ggs3> !?ioDeclarations ?let @actualOutputExpressionList expressionList
         outExpression = @filewrapperTemplateInExpressionAST.new {
           !filewrapperName
           !filewrapperTemplateName
@@ -85,7 +86,8 @@ syntax extension galgas4ExpressionSyntax {
 
   #·······························································································
 
-  rule <primary> !@semanticExpressionAST outExpression {
+  rule <primary> ?!@galgasDeclarationAST ioDeclarations
+                 !@semanticExpressionAST outExpression {
     $filewrapper$
     $[$
     $identifier$ ?let filewrapperName indexing filewrapperReference
@@ -102,7 +104,7 @@ syntax extension galgas4ExpressionSyntax {
       or
         $identifier$ ?let @lstring filewrapperTemplateName
         $:$
-        <output_expression_list> ?let @actualOutputExpressionList expressionList
+        <output_expression_list> !?ioDeclarations ?let @actualOutputExpressionList expressionList
         outExpression = @filewrapperTemplateInExpressionAST.new {
           !filewrapperName
           !filewrapperTemplateName

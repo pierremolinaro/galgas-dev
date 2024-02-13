@@ -57,14 +57,15 @@ syntax extension galgas3ExpressionSyntax {
 
   #·······························································································
 
-  rule <primary_ggs3> !@semanticExpressionAST outExpression {
+  rule <primary_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                      !@semanticExpressionAST outExpression {
     <optional_type> ?let @lstring typeName
     ${$
     var @collectionValueElementList elementList = {}
     select
     or
       repeat
-        <collection_value_element> ?let @abstractCollectionValueElement element
+        <collection_value_element> !?ioDeclarations ?let @abstractCollectionValueElement element
         elementList += !element
       while
         $,$
@@ -80,11 +81,12 @@ syntax extension galgas3ExpressionSyntax {
 
   #·······························································································
 
-  rule <collection_value_element> !@abstractCollectionValueElement outValueElement {
+  rule <collection_value_element> ?!@galgasDeclarationAST ioDeclarations
+                                  !@abstractCollectionValueElement outValueElement {
     var @actualOutputExpressionList expressionList = {}
     repeat
       $!$ ?let selector
-      <expression_ggs3> ?let @semanticExpressionAST expression
+      <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
       expressionList += !selector !expression !@location.here
     while
     end
@@ -93,8 +95,9 @@ syntax extension galgas3ExpressionSyntax {
 
   #·······························································································
 
-  rule <collection_value_element> !@abstractCollectionValueElement outValueElement {
-    <expression_ggs3> ?let @semanticExpressionAST expression
+  rule <collection_value_element> ?!@galgasDeclarationAST ioDeclarations
+                                  !@abstractCollectionValueElement outValueElement {
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
     outValueElement = @expressionCollectionValue.new {!expression !@location.here}
   }
 
@@ -108,14 +111,15 @@ syntax extension galgas4ExpressionSyntax {
 
   #·······························································································
 
-  rule <primary> !@semanticExpressionAST outExpression {
+  rule <primary> ?!@galgasDeclarationAST ioDeclarations
+                 !@semanticExpressionAST outExpression {
     <optional_type> ?let @lstring typeName
     $[$
     var @collectionValueElementList elementList = {}
     select
     or
       repeat
-        <collection_value_element> ?let @abstractCollectionValueElement element
+        <collection_value_element> !?ioDeclarations ?let @abstractCollectionValueElement element
         elementList += !element
       while
         $:$
@@ -131,7 +135,8 @@ syntax extension galgas4ExpressionSyntax {
 
   #·······························································································
 
-  rule <collection_value_element> !@abstractCollectionValueElement outValueElement {
+  rule <collection_value_element> ?!@galgasDeclarationAST ioDeclarations
+                                  !@abstractCollectionValueElement outValueElement {
     var @actualOutputExpressionList expressionList = {}
     repeat
       select
@@ -139,11 +144,11 @@ syntax extension galgas4ExpressionSyntax {
         if [option galgas_cli_options.errorOnUselessSelector value] && (selector.string == "") then
           error selector.location : "check no useless selector: this selector should be removed"
         end
-        <expression> ?let @semanticExpressionAST expression
+        <expression> !?ioDeclarations ?let @semanticExpressionAST expression
         expressionList += !selector !expression !@location.here
       or
         let selector = ["" here]
-        <expression> ?let @semanticExpressionAST expression
+        <expression> !?ioDeclarations ?let @semanticExpressionAST expression
         expressionList += !selector !expression !@location.here
       end
     while

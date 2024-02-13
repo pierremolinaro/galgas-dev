@@ -34,16 +34,16 @@ syntax extension galgas3SyntaxComponentSyntax {
 
   #·······························································································
 
-  rule <syntax_instruction_ggs3>
-    !@syntaxInstructionAST outInstruction {
+  rule <syntax_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                 !@syntaxInstructionAST outInstruction {
     $repeat$
     let mRepeatInstructionLocation = @location.here
-    <syntax_instruction_list_ggs3> ?let @syntaxInstructionList mRepeatedInstructionList
+    <syntax_instruction_list_ggs3> !?ioDeclarations ?let @syntaxInstructionList mRepeatedInstructionList
     let endOf_repeated_instructions = @location.here
     var mRepeatBranchList = @listOfSyntaxInstructionList {}
     repeat
       $while$
-      <syntax_instruction_list_ggs3> ?let @syntaxInstructionList mInstructionList
+      <syntax_instruction_list_ggs3> !?ioDeclarations ?let @syntaxInstructionList mInstructionList
       mRepeatBranchList += ! mInstructionList !@location.here
     while
     end

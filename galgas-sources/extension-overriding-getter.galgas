@@ -43,9 +43,9 @@ syntax extension galgas3DeclarationsSyntax {
     $getter$
     $@type$ ?let @lstring className indexing typeReferenceOverrideExtensionGetter
     $identifier$ ?let @lstring mMethodName indexing overrideExtensionGetterDefinition
-    <formal_input_parameter_list_ggs3> ?let formalInputParameterList
+    <formal_input_parameter_list_ggs3> !?ioDeclarations ?let formalInputParameterList
     $->$
-    $@type$ ?let @lstring mReturnedTypeName
+    <type_definition_ggs3> !?ioDeclarations ?let mReturnedTypeName
     let @lstring resultVariableName
     select
       $identifier$ ?resultVariableName
@@ -53,7 +53,7 @@ syntax extension galgas3DeclarationsSyntax {
       resultVariableName = .new {!"result" !.here}
     end
     ${$
-    <semantic_instruction_list_ggs3> ?let @semanticInstructionListAST routineInstructionList
+    <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
     let @location endOfInstructionList = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@overridingExtensionGetterAST.new {
@@ -75,9 +75,9 @@ syntax extension galgas3DeclarationsSyntax {
     $override$
     $getter$
     $identifier$ ?let @lstring mMethodName indexing overrideExtensionGetterDefinition
-    <formal_input_parameter_list_ggs3> ?let formalInputParameterList
+    <formal_input_parameter_list_ggs3> !?ioDeclarations ?let formalInputParameterList
     $->$
-    $@type$ ?let @lstring mReturnedTypeName
+    <type_definition_ggs3> !?ioDeclarations ?let mReturnedTypeName
     let @lstring resultVariableName
     select
       $identifier$ ?resultVariableName
@@ -85,7 +85,7 @@ syntax extension galgas3DeclarationsSyntax {
       resultVariableName = .new {!"result" !.here}
     end
     ${$
-    <semantic_instruction_list_ggs3> ?let @semanticInstructionListAST routineInstructionList
+    <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
     let @location endOfInstructionList = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@overridingExtensionGetterAST.new {
@@ -117,7 +117,7 @@ syntax extension galgas4DeclarationsSyntax {
     $@type$ ?let @lstring className indexing typeReferenceOverrideExtensionGetter
     $.$
     $identifier$ ?let @lstring mMethodName indexing overrideExtensionGetterDefinition
-    <formal_input_parameter_list> ?let formalInputParameterList
+    <formal_input_parameter_list> !?ioDeclarations ?let formalInputParameterList
     $->$
     <type_definition> !?ioDeclarations ?let returnedTypeName
     let @lstring resultVariableName
@@ -150,7 +150,7 @@ syntax extension galgas4DeclarationsSyntax {
     $override$
     $func$
     $identifier$ ?let @lstring mMethodName indexing overrideExtensionGetterDefinition
-    <formal_input_parameter_list> ?let formalInputParameterList
+    <formal_input_parameter_list> !?ioDeclarations ?let formalInputParameterList
     $->$
     <type_definition> !?ioDeclarations ?let returnedTypeName
     let @lstring resultVariableName

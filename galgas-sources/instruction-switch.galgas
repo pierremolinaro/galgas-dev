@@ -51,10 +51,11 @@ syntax extension galgas3InstructionsSyntax {
 
   #·······························································································
 
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
     $switch$
     let instructionLocation = @location.here
-    <expression_ggs3> ?let switchExpression
+    <expression_ggs3> !?ioDeclarations ?let switchExpression
     let endOfSwitchExpression = @location.here
     var @switchBranchesAST switchBranches = {}
     repeat
@@ -63,7 +64,7 @@ syntax extension galgas3InstructionsSyntax {
         ?let @lstringlist constantNameList
         ?let @switchExtractedValuesListAST associatedValuesExtraction
       $:$
-      <semantic_instruction_list_ggs3> ?let instructions
+      <semantic_instruction_list_ggs3> !?ioDeclarations ?let instructions
       switchBranches += !constantNameList !associatedValuesExtraction !instructions !@location.here
     while
     end
@@ -142,7 +143,7 @@ syntax extension galgas4InstructionsSyntax {
                               !@semanticInstructionAST outInstruction {
     $switch$
     let instructionLocation = @location.here
-    <expression> ?let switchExpression
+    <expression> !?ioDeclarations ?let switchExpression
     let endOfSwitchExpression = @location.here
     var @switchBranchesAST switchBranches = {}
     repeat

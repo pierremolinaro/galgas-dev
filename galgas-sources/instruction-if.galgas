@@ -69,25 +69,27 @@ syntax extension galgas3InstructionsSyntax {
 
   #·······························································································
 
-  rule <expression_or_ggs3> !@semanticExpressionAST outExpression
+  rule <expression_or_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                            !@semanticExpressionAST outExpression
 
   #·······························································································
 
-  rule <if_instruction_core> !@semanticInstructionAST outInstruction {
+  rule <if_instruction_core> ?!@galgasDeclarationAST ioDeclarations
+                             !@semanticInstructionAST outInstruction {
     let instructionLocation = @location.here
-    <if_expression_ggs3> ?let testExpression
+    <if_expression_ggs3> !?ioDeclarations ?let testExpression
     $then$
-    <semantic_instruction_list_ggs3> ?let then_instructionList
+    <semantic_instruction_list_ggs3> !?ioDeclarations ?let then_instructionList
     let endOf_then_branchLocation = @location.here
     let @semanticInstructionListAST else_instructionList
     select
       else_instructionList = @semanticInstructionListAST {}
     or
       $else$
-      <semantic_instruction_list_ggs3> ? else_instructionList
+      <semantic_instruction_list_ggs3> !?ioDeclarations ?else_instructionList
     or
       $elsif$
-      <if_instruction_core> ?let instruction
+      <if_instruction_core> !?ioDeclarations ?let instruction
       else_instructionList = {!instruction}
     end
     outInstruction = @ifInstructionAST.new {
@@ -102,15 +104,17 @@ syntax extension galgas3InstructionsSyntax {
 
   #·······························································································
 
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
     $if$
-    <if_instruction_core> ?outInstruction
+    <if_instruction_core> !?ioDeclarations ?outInstruction
     $end$
   }
 
   #·······························································································
 
-  rule <if_expression_ggs3> !@ifExpressionList outExpressionList {
+  rule <if_expression_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                            !@ifExpressionList outExpressionList {
     outExpressionList = {}
     repeat
       select
@@ -123,7 +127,7 @@ syntax extension galgas3InstructionsSyntax {
           constantName = ["" here]
         end
         $=$
-        <expression_or_ggs3> ?let expression
+        <expression_or_ggs3> !?ioDeclarations ?let expression
         let endOfReceiverExpression = @location.here
         select
           outExpressionList += !.letExp {
@@ -134,7 +138,7 @@ syntax extension galgas3InstructionsSyntax {
           }
         or
           $as$
-          $@type$ ?let @lstring typeName
+          <type_definition_ggs3> !?ioDeclarations ?let typeName
           outExpressionList += !.letExp {
             !constantName: constantName
             !exp: expression
@@ -145,13 +149,13 @@ syntax extension galgas3InstructionsSyntax {
       or
         $let$
         $[$
-        <expression_ggs3> ?let @semanticExpressionAST receiverExpression
+        <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST receiverExpression
         $identifier$ ?let @lstring optionalMethodName
         var @optionalMethodActualArgumentList optionalMethodActualArgumentList = {}
         repeat
         while
           $!$ ?let selector
-          <expression_ggs3> ?let expression
+          <expression_ggs3> !?ioDeclarations ?let expression
           optionalMethodActualArgumentList += !selector !.actualOutput {!expression: expression !location: .here}
         while
           $?$ ?let selector
@@ -161,7 +165,7 @@ syntax extension galgas3InstructionsSyntax {
             select
               typeName = ["" nowhere]
             or
-              $@type$ ?typeName
+              <type_definition_ggs3> !?ioDeclarations ?typeName
             end
             $identifier$ ?let constantName
             optionalMethodActualArgumentList += !selector !.actualLetInput {!typeName: typeName !constantName: constantName}
@@ -171,7 +175,7 @@ syntax extension galgas3InstructionsSyntax {
             select
               typeName = ["" nowhere]
             or
-              $@type$ ?typeName
+              <type_definition_ggs3> !?ioDeclarations ?typeName
             end
            $identifier$ ?let variableName
             optionalMethodActualArgumentList += !selector !.actualVarInput {!typeName: typeName !variableName: variableName}
@@ -199,7 +203,7 @@ syntax extension galgas3InstructionsSyntax {
           !parameters: optionalMethodActualArgumentList
         }
       or
-        <expression_ggs3> ?let expression
+        <expression_ggs3> !?ioDeclarations ?let expression
         outExpressionList += !.regularExp {!exp: expression !endOfExp: .here}
       end
     while
@@ -217,14 +221,15 @@ syntax extension galgas4InstructionsSyntax {
 
   #·······························································································
 
-  rule <expression_or> !@semanticExpressionAST outExpression
+  rule <expression_or> ?!@galgasDeclarationAST ioDeclarations
+                       !@semanticExpressionAST outExpression
 
   #·······························································································
 
   rule <if_instruction_core> ?!@galgasDeclarationAST ioDeclarations
                              !@semanticInstructionAST outInstruction {
     let instructionLocation = @location.here
-    <if_expression> ?let testExpression
+    <if_expression> !?ioDeclarations ?let testExpression
     $then$
     <semantic_instruction_list> !?ioDeclarations ?let then_instructionList
     let endOf_then_branchLocation = @location.here
@@ -260,7 +265,8 @@ syntax extension galgas4InstructionsSyntax {
 
   #·······························································································
 
-  rule <if_expression> !@ifExpressionList outExpressionList {
+  rule <if_expression> ?!@galgasDeclarationAST ioDeclarations
+                       !@ifExpressionList outExpressionList {
     outExpressionList = {}
     repeat
       select
@@ -273,7 +279,7 @@ syntax extension galgas4InstructionsSyntax {
           constantName = ["" here]
         end
         $=$
-        <expression_or> ?let expression
+        <expression_or> !?ioDeclarations ?let expression
         let endOfReceiverExpression = @location.here
         select
           outExpressionList += !.letExp {
@@ -284,7 +290,7 @@ syntax extension galgas4InstructionsSyntax {
           }
         or
           $as$
-          $@type$ ?let @lstring typeName
+          <type_definition> !?ioDeclarations ?let typeName
           outExpressionList += !.letExp {
             !constantName: constantName
             !exp: expression
@@ -295,13 +301,13 @@ syntax extension galgas4InstructionsSyntax {
       or
         $let$
         $[$
-        <expression> ?let @semanticExpressionAST receiverExpression
+        <expression> !?ioDeclarations ?let @semanticExpressionAST receiverExpression
         $identifier$ ?let @lstring optionalMethodName
         var @optionalMethodActualArgumentList optionalMethodActualArgumentList = {}
         repeat
         while
           $!$ ?let selector
-          <expression> ?let expression
+          <expression> !?ioDeclarations ?let expression
           optionalMethodActualArgumentList += !selector !.actualOutput {!expression: expression !location: .here}
         while
           $?$ ?let selector
@@ -311,7 +317,7 @@ syntax extension galgas4InstructionsSyntax {
             select
               typeName = ["" nowhere]
             or
-              $@type$ ?typeName
+              <type_definition> !?ioDeclarations ?typeName
             end
             $identifier$ ?let constantName
             optionalMethodActualArgumentList += !selector !.actualLetInput {!typeName: typeName !constantName: constantName}
@@ -321,7 +327,7 @@ syntax extension galgas4InstructionsSyntax {
             select
               typeName = ["" nowhere]
             or
-              $@type$ ?typeName
+              <type_definition> !?ioDeclarations ?typeName
             end
             $identifier$ ?let variableName
             optionalMethodActualArgumentList += !selector !.actualVarInput {!typeName: typeName !variableName: variableName}
@@ -349,7 +355,7 @@ syntax extension galgas4InstructionsSyntax {
           !parameters: optionalMethodActualArgumentList
         }
       or
-        <expression> ?let expression
+        <expression> !?ioDeclarations ?let expression
         outExpressionList += !.regularExp {!exp: expression !endOfExp: .here}
       end
     while

@@ -31,12 +31,12 @@ syntax extension galgas3InstructionsSyntax {
 
   #·······························································································
 
-  rule <semantic_instruction_ggs3>
-    !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3>  ?!@galgasDeclarationAST ioDeclarations
+                                    !@semanticInstructionAST outInstruction {
     $self$
     let instructionLocation = @location.here
     $=$
-    <expression_ggs3> ?let @semanticExpressionAST sourceExpression
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST sourceExpression
     outInstruction = @selfAssignmentInstructionAST.new {
       !instructionLocation
       !sourceExpression
@@ -53,12 +53,12 @@ syntax extension galgas4InstructionsSyntax {
 
   #·······························································································
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations
+  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionAST outInstruction {
     $self$
     let instructionLocation = @location.here
     $=$
-    <expression> ?let @semanticExpressionAST sourceExpression
+    <expression> !?ioDeclarations ?let @semanticExpressionAST sourceExpression
     outInstruction = @selfAssignmentInstructionAST.new {
       !instructionLocation
       !sourceExpression

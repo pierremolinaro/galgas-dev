@@ -70,23 +70,25 @@ syntax extension galgas3InstructionsSyntax {
 
   #·······························································································
 
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
-    <semantic_instruction_beginning_with_identifier> !prefixedBySelf: false ?outInstruction
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
+    <semantic_instruction_beginning_with_identifier> !?ioDeclarations !prefixedBySelf: false ?outInstruction
   }
   
   #·······························································································
 
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
     $self$
     $.$
-    <semantic_instruction_beginning_with_identifier> !prefixedBySelf: true ?outInstruction
+    <semantic_instruction_beginning_with_identifier> !?ioDeclarations !prefixedBySelf: true ?outInstruction
   }
 
   #·······························································································
 
-  rule <semantic_instruction_beginning_with_identifier>
-        ?prefixedBySelf: let @bool inHasSelfPrefix
-        !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_beginning_with_identifier> ?!@galgasDeclarationAST ioDeclarations
+                                                        ?prefixedBySelf: let @bool inHasSelfPrefix
+                                                        !@semanticInstructionAST outInstruction {
     $identifier$ ?let @lstring receiverName
     let instructionLocation = @location.here
     var @lstringlist mStructAttributeList = {}
@@ -98,7 +100,7 @@ syntax extension galgas3InstructionsSyntax {
     end
     select
       $-=$
-      <expression_ggs3> ?let @semanticExpressionAST expression
+      <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
       outInstruction = @minusEqualExpressionInstructionAST.new {
         !instructionLocation
         !inHasSelfPrefix
@@ -109,7 +111,7 @@ syntax extension galgas3InstructionsSyntax {
     or
       $+=$
       select
-        <non_empty_output_expression_list_ggs3> ?let @actualOutputExpressionList expressionList
+        <non_empty_output_expression_list_ggs3> !?ioDeclarations ?let @actualOutputExpressionList expressionList
         outInstruction = @plusEqualElementsInstructionAST.new {
           !instructionLocation
           !inHasSelfPrefix
@@ -118,7 +120,7 @@ syntax extension galgas3InstructionsSyntax {
           !expressionList
         }
       or
-        <expression_ggs3> ?let @semanticExpressionAST expression
+        <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
         outInstruction = @plusEqualExpressionInstructionAST.new {
           !instructionLocation
           !inHasSelfPrefix
@@ -129,7 +131,7 @@ syntax extension galgas3InstructionsSyntax {
       end
     or
       $*=$
-      <expression_ggs3> ?let @semanticExpressionAST expression
+      <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
       outInstruction = @mulEqualExpressionInstructionAST.new {
         !instructionLocation
         !inHasSelfPrefix
@@ -139,7 +141,7 @@ syntax extension galgas3InstructionsSyntax {
       }
     or
       $/=$
-      <expression_ggs3> ?let @semanticExpressionAST expression
+      <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
       outInstruction = @divEqualExpressionInstructionAST.new {
         !instructionLocation
         !inHasSelfPrefix
@@ -152,11 +154,12 @@ syntax extension galgas3InstructionsSyntax {
 
   #·······························································································
 
-  rule <non_empty_output_expression_list_ggs3> !@actualOutputExpressionList outExpressionList {
+  rule <non_empty_output_expression_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                               !@actualOutputExpressionList outExpressionList {
     outExpressionList = {}
     repeat
       $!$ ?let selector
-      <expression_ggs3> ?let @semanticExpressionAST expression
+      <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
       outExpressionList += !selector !expression !@location.here
     while
     end
@@ -170,25 +173,25 @@ syntax extension galgas4InstructionsSyntax {
 
   #·······························································································
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations
+  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionAST outInstruction {
-    <semantic_instruction_beginning_with_identifier> !prefixedBySelf: false ?outInstruction
+    <semantic_instruction_beginning_with_identifier> !?ioDeclarations !prefixedBySelf: false ?outInstruction
   }
   
   #·······························································································
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations
+  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionAST outInstruction {
     $self$
     $.$
-    <semantic_instruction_beginning_with_identifier> !prefixedBySelf: true ?outInstruction
+    <semantic_instruction_beginning_with_identifier> !?ioDeclarations !prefixedBySelf: true ?outInstruction
   }
 
   #·······························································································
 
-  rule <semantic_instruction_beginning_with_identifier>
-        ?prefixedBySelf: let @bool inHasSelfPrefix
-        !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_beginning_with_identifier> ?!@galgasDeclarationAST ioDeclarations
+                                                        ?prefixedBySelf: let @bool inHasSelfPrefix
+                                                        !@semanticInstructionAST outInstruction {
     $identifier$ ?let @lstring receiverName
     let instructionLocation = @location.here
     var @lstringlist propertyList = {}
@@ -201,7 +204,7 @@ syntax extension galgas4InstructionsSyntax {
   #---
     select
       $-=$
-      <expression> ?let @semanticExpressionAST expression
+      <expression> !?ioDeclarations ?let @semanticExpressionAST expression
       outInstruction = @minusEqualExpressionInstructionAST.new {
         !instructionLocation
         !inHasSelfPrefix
@@ -211,7 +214,7 @@ syntax extension galgas4InstructionsSyntax {
       }
     or
       $+=$
-      <expression> ?let @semanticExpressionAST expression
+      <expression> !?ioDeclarations ?let @semanticExpressionAST expression
       outInstruction = @plusEqualExpressionInstructionAST.new {
         !instructionLocation
         !inHasSelfPrefix
@@ -221,7 +224,7 @@ syntax extension galgas4InstructionsSyntax {
       }
     or
       $*=$
-      <expression> ?let @semanticExpressionAST expression
+      <expression> !?ioDeclarations ?let @semanticExpressionAST expression
       outInstruction = @mulEqualExpressionInstructionAST.new {
         !instructionLocation
         !inHasSelfPrefix
@@ -231,7 +234,7 @@ syntax extension galgas4InstructionsSyntax {
       }
     or
       $/=$
-      <expression> ?let @semanticExpressionAST expression
+      <expression> !?ioDeclarations ?let @semanticExpressionAST expression
       outInstruction = @divEqualExpressionInstructionAST.new {
         !instructionLocation
         !inHasSelfPrefix
@@ -240,7 +243,7 @@ syntax extension galgas4InstructionsSyntax {
         !expression
       }
     or
-      <actual_parameter_list_within_parenthesis> ?let @actualParameterListAST actualParameterList
+      <actual_parameter_list_within_parenthesis> !?ioDeclarations ?let @actualParameterListAST actualParameterList
       if inHasSelfPrefix then
         if [propertyList length] == 0 then
           outInstruction = @methodCallInstructionAST.new {

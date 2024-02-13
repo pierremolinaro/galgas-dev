@@ -64,7 +64,7 @@ void AbstractOutputStream::genericCharArrayOutput (const char * inCharArray, con
           performActualCharArrayOutput (" ", 1) ;
         }
       }
-      performActualCharArrayOutput (& (inCharArray [i]) , 1) ;
+      performActualCharArrayOutput (& inCharArray [i], 1) ;
       mStartingLine = inCharArray [i] == '\n' ;
     }
   }

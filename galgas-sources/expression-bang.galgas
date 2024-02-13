@@ -32,10 +32,10 @@ syntax extension galgas3ExpressionSyntax {
 
   #·······························································································
 
-  rule <primary_ggs3> !@semanticExpressionAST outExpression {
+  rule <primary_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                      !@semanticExpressionAST outExpression {
     let operatorLocation = @location.here
-    <primary_ggs3> ? outExpression
-#    $°$
+    <primary_ggs3> !?ioDeclarations ?outExpression
     $.$
     $bang$
     outExpression = @bangExpressionAST.new {!operatorLocation !outExpression}
@@ -51,9 +51,10 @@ syntax extension galgas4ExpressionSyntax {
 
   #·······························································································
 
-  rule <primary> !@semanticExpressionAST outExpression {
+  rule <primary> ?!@galgasDeclarationAST ioDeclarations
+                 !@semanticExpressionAST outExpression {
     let operatorLocation = @location.here
-    <primary> ? outExpression
+    <primary> !?ioDeclarations ?outExpression
 #    $°$
     $.$
     $bang$

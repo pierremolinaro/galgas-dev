@@ -40,9 +40,9 @@ syntax extension galgas3DeclarationsSyntax {
     $method$
     $@type$ ?let @lstring className indexing typeReferenceExtensionMethod
     $identifier$ ?let @lstring mMethodName indexing extensionMethodDefinition
-    <formal_parameter_list_ggs3> ?let @formalParameterListAST formalParameterList
+    <formal_parameter_list_ggs3> !?ioDeclarations ?let @formalParameterListAST formalParameterList
     ${$
-    <semantic_instruction_list_ggs3> ?let @semanticInstructionListAST routineInstructionList
+    <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
     let endOfMethodLocation = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@extensionMethodAST.new {
@@ -62,9 +62,9 @@ syntax extension galgas3DeclarationsSyntax {
                                  ?!@galgasDeclarationAST ioDeclarations {
     $method$
     $identifier$ ?let @lstring mMethodName indexing extensionMethodDefinition
-    <formal_parameter_list_ggs3> ?let @formalParameterListAST formalParameterList
+    <formal_parameter_list_ggs3> !?ioDeclarations ?let @formalParameterListAST formalParameterList
     ${$
-    <semantic_instruction_list_ggs3> ?let @semanticInstructionListAST routineInstructionList
+    <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
     let endOfMethodLocation = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@extensionMethodAST.new {

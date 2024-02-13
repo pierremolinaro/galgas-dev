@@ -92,7 +92,8 @@ syntax extension galgas3InstructionsSyntax {
   # NEW GRAMMAR INSTRUCTION, COMPATIBLE WITH GALGAS 4
   #·······························································································
 
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
     $grammar$
     let instructionLocation = @location.here
     $identifier$ ?let @lstring grammarComponentName indexing grammarComponentReference
@@ -104,20 +105,21 @@ syntax extension galgas3InstructionsSyntax {
       $identifier$ ?labelName
     end
     $($
-    <actual_parameter_list_ggs3> ?let @actualParameterListAST actualParameterList
+    <actual_parameter_list_ggs3> !?ioDeclarations ?let @actualParameterListAST actualParameterList
     $)$
-    <grammar_instruction_core> !instructionLocation !actualParameterList !grammarComponentName !labelName ?outInstruction
+    <grammar_instruction_core> !?ioDeclarations !instructionLocation !actualParameterList !grammarComponentName !labelName ?outInstruction
   }
 
   #·······························································································
 
-  rule <grammar_instruction_core> ?let @location inInstructionLocation
+  rule <grammar_instruction_core> ?!@galgasDeclarationAST ioDeclarations
+                                  ?let @location inInstructionLocation
                                   ?let @actualParameterListAST actualParameterList
                                   ?let @lstring inGrammarComponentName
                                   ?let @lstring inLabelName
                                   !@semanticInstructionAST outInstruction {
     $in$
-    <expression_ggs3> ?let @semanticExpressionAST sourceExpression
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST sourceExpression
     let endOfSourceExpression = @location.here
   #--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
@@ -125,7 +127,7 @@ syntax extension galgas3InstructionsSyntax {
       grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone.new
     or
       $:>$
-      <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationResult
+      <syntax_directed_translation_result> !?ioDeclarations ?grammarInstructionSyntaxDirectedTranslationResult
     end
     outInstruction = @grammarInFileInstructionAST.new {
       !inInstructionLocation
@@ -140,16 +142,17 @@ syntax extension galgas3InstructionsSyntax {
 
   #·······························································································
 
-  rule <grammar_instruction_core> ?let @location inInstructionLocation
+  rule <grammar_instruction_core> ?!@galgasDeclarationAST ioDeclarations
+                                  ?let @location inInstructionLocation
                                   ?let @actualParameterListAST actualParameterList
                                   ?let @lstring inGrammarComponentName
                                   ?let @lstring inLabelName
                                   !@semanticInstructionAST outInstruction {
     $on$
-    <expression_ggs3> ?let @semanticExpressionAST sourceExpression
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST sourceExpression
     let @location endOfSourceExpression = .here
     $:$
-    <expression_ggs3> ?let @semanticExpressionAST nameExpression
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST nameExpression
     let @location endOfNameExpression = .here
   #--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
@@ -157,7 +160,7 @@ syntax extension galgas3InstructionsSyntax {
       grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone.new
     or
       $:>$
-      <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationResult
+      <syntax_directed_translation_result> !?ioDeclarations ?grammarInstructionSyntaxDirectedTranslationResult
     end
     outInstruction = @grammarInStringInstructionAST.new {
       !inInstructionLocation
@@ -176,7 +179,8 @@ syntax extension galgas3InstructionsSyntax {
   # OBSOLETE GRAMMAR INSTRUCTION, NOT COMPATIBLE WITH GALGAS 4
   #·······························································································
 
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction { #obsolete
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction { #obsolete
     $grammar$
     let instructionLocation = @location.here
     if [option galgas_cli_options.errorOldStyleCollectionInitializer value] then
@@ -190,26 +194,27 @@ syntax extension galgas3InstructionsSyntax {
       $label$
       $identifier$ ?labelName
     end
-    <grammar_instruction_core_obsolete> !instructionLocation !grammarComponentName !labelName ?outInstruction
+    <grammar_instruction_core_obsolete> !?ioDeclarations !instructionLocation !grammarComponentName !labelName ?outInstruction
   }
 
   #·······························································································
 
-  rule <grammar_instruction_core_obsolete> ?let @location inInstructionLocation
+  rule <grammar_instruction_core_obsolete> ?!@galgasDeclarationAST ioDeclarations
+                                           ?let @location inInstructionLocation
                                            ?let @lstring inGrammarComponentName
                                            ?let @lstring inLabelName
                                            !@semanticInstructionAST outInstruction {
     $in$
-    <expression_ggs3> ?let @semanticExpressionAST mSourceExpression
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST mSourceExpression
     let endOfSourceExpression = @location.here
-    <actual_parameter_list_ggs3> ?let @actualParameterListAST actualParameterList
+    <actual_parameter_list_ggs3> !?ioDeclarations ?let @actualParameterListAST actualParameterList
   #--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
     select
       grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone.new
     or
       $:>$
-      <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationResult
+      <syntax_directed_translation_result> !?ioDeclarations ?grammarInstructionSyntaxDirectedTranslationResult
     end
     outInstruction = @grammarInFileInstructionAST.new {
       !inInstructionLocation
@@ -224,26 +229,27 @@ syntax extension galgas3InstructionsSyntax {
 
   #·······························································································
 
-  rule <grammar_instruction_core_obsolete> ?let @location inInstructionLocation
+  rule <grammar_instruction_core_obsolete> ?!@galgasDeclarationAST ioDeclarations
+                                           ?let @location inInstructionLocation
                                            ?let @lstring inGrammarComponentName
                                            ?let @lstring inLabelName
                                            !@semanticInstructionAST outInstruction {
     $on$
     $($
-    <expression_ggs3> ?let @semanticExpressionAST sourceExpression
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST sourceExpression
     let @location endOfSourceExpression = .here
     $,$
-    <expression_ggs3> ?let @semanticExpressionAST nameExpression
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST nameExpression
     let @location endOfNameExpression = .here
     $)$
-    <actual_parameter_list_ggs3> ?let @actualParameterListAST actualParameterList
+    <actual_parameter_list_ggs3> !?ioDeclarations ?let @actualParameterListAST actualParameterList
   #--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
     select
       grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone.new
     or
       $:>$
-      <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationResult
+      <syntax_directed_translation_result> !?ioDeclarations ?grammarInstructionSyntaxDirectedTranslationResult
     end
     outInstruction = @grammarInStringInstructionAST.new {
       !inInstructionLocation
@@ -268,7 +274,7 @@ syntax extension galgas4InstructionsSyntax {
 
   #·······························································································
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations
+  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionAST outInstruction {
     $grammar$
     let instructionLocation = @location.here
@@ -280,19 +286,20 @@ syntax extension galgas4InstructionsSyntax {
       $label$
       $identifier$ ?labelName
     end
-    <actual_parameter_list_within_parenthesis> ?let @actualParameterListAST actualParameterList
-    <grammar_instruction_core> !instructionLocation !actualParameterList !grammarComponentName !labelName ?outInstruction
+    <actual_parameter_list_within_parenthesis> !?ioDeclarations ?let @actualParameterListAST actualParameterList
+    <grammar_instruction_core> !?ioDeclarations !instructionLocation !actualParameterList !grammarComponentName !labelName ?outInstruction
   }
 
   #·······························································································
 
-  rule <grammar_instruction_core> ?let @location inInstructionLocation
+  rule <grammar_instruction_core> ?!@galgasDeclarationAST ioDeclarations
+                                  ?let @location inInstructionLocation
                                   ?let @actualParameterListAST actualParameterList
                                   ?let @lstring inGrammarComponentName
                                   ?let @lstring inLabelName
                                   !@semanticInstructionAST outInstruction {
     $in$
-    <expression> ?let @semanticExpressionAST sourceExpression
+    <expression> !?ioDeclarations ?let @semanticExpressionAST sourceExpression
     let endOfSourceExpression = @location.here
   #--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
@@ -300,7 +307,7 @@ syntax extension galgas4InstructionsSyntax {
       grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone.new
     or
       $:>$
-      <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationResult
+      <syntax_directed_translation_result> !?ioDeclarations ?grammarInstructionSyntaxDirectedTranslationResult
     end
     outInstruction = @grammarInFileInstructionAST.new {
       !inInstructionLocation
@@ -315,16 +322,17 @@ syntax extension galgas4InstructionsSyntax {
 
   #·······························································································
 
-  rule <grammar_instruction_core> ?let @location inInstructionLocation
+  rule <grammar_instruction_core> ?!@galgasDeclarationAST ioDeclarations
+                                  ?let @location inInstructionLocation
                                   ?let @actualParameterListAST actualParameterList
                                   ?let @lstring inGrammarComponentName
                                   ?let @lstring inLabelName
                                   !@semanticInstructionAST outInstruction {
     $on$
-    <expression> ?let @semanticExpressionAST sourceExpression
+    <expression> !?ioDeclarations ?let @semanticExpressionAST sourceExpression
     let @location endOfSourceExpression = .here
     $:$
-    <expression> ?let @semanticExpressionAST nameExpression
+    <expression> !?ioDeclarations ?let @semanticExpressionAST nameExpression
     let @location endOfNameExpression = .here
   #--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
@@ -332,7 +340,7 @@ syntax extension galgas4InstructionsSyntax {
       grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone.new
     or
       $:>$
-      <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationResult
+      <syntax_directed_translation_result> !?ioDeclarations ?grammarInstructionSyntaxDirectedTranslationResult
     end
     outInstruction = @grammarInStringInstructionAST.new {
       !inInstructionLocation

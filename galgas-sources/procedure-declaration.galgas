@@ -39,9 +39,9 @@ syntax extension galgas3InstructionsSyntax {
       isUsefull = true
     end
     $identifier$ ?let mRoutineName indexing routineDefinition
-    <formal_parameter_list_ggs3> ?let @formalParameterListAST mFormalParameterList
+    <formal_parameter_list_ggs3> !?ioDeclarations ?let @formalParameterListAST mFormalParameterList
     ${$
-    <semantic_instruction_list_ggs3> ?let @semanticInstructionListAST mRoutineInstructionList
+    <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST mRoutineInstructionList
     $}$
     let endOfInstructionList = @location.here
     ioDeclarations.mDeclarationList += !@procDeclarationAST.new {
@@ -70,9 +70,9 @@ syntax extension galgas3InstructionsSyntax {
       isUsefull = true
     end
     $identifier$ ?let mRoutineName indexing routineDefinition
-    <formal_parameter_list_ggs3> ?let @formalParameterListAST mFormalParameterList
+    <formal_parameter_list_ggs3> !?ioDeclarations ?let @formalParameterListAST mFormalParameterList
     ${$
-    <semantic_instruction_list_ggs3> ?let @semanticInstructionListAST mRoutineInstructionList
+    <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST mRoutineInstructionList
     $}$
     let endOfInstructionList = @location.here
     ioDeclarations.mDeclarationList += !@procDeclarationAST.new {

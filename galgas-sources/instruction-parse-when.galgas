@@ -36,23 +36,25 @@ syntax extension galgas3SyntaxComponentSyntax {
 
   #·······························································································
 
-  rule <branchOfParseWhithInstruction> !@syntaxInstructionList outElseInstructionList {
+  rule <branchOfParseWhithInstruction> ?!@galgasDeclarationAST ioDeclarations
+                                       !@syntaxInstructionList outElseInstructionList {
     $else$
-    <syntax_instruction_list_ggs3> ? outElseInstructionList
+    <syntax_instruction_list_ggs3> !?ioDeclarations ?outElseInstructionList
   }
 
   #·······························································································
 
-  rule <branchOfParseWhithInstruction> !@syntaxInstructionList outElseInstructionList {
+  rule <branchOfParseWhithInstruction> ?!@galgasDeclarationAST ioDeclarations
+                                       !@syntaxInstructionList outElseInstructionList {
     $case$
     let instructionLocation = @location.here
-    <expression_ggs3> ?let whenExpression
+    <expression_ggs3> !?ioDeclarations ?let whenExpression
     let endOfWhenExpression = @location.here
     $:$
-    <syntax_instruction_list_ggs3> ?let whenInstructionList
+    <syntax_instruction_list_ggs3> !?ioDeclarations ?let whenInstructionList
     let endOfWhenInstructions = @location.here
   #--- Else part
-    <branchOfParseWhithInstruction> ?let elseInstructionList
+    <branchOfParseWhithInstruction> !?ioDeclarations ?let elseInstructionList
     let endOfElseInstructions = @location.here
     outElseInstructionList = {}
     outElseInstructionList += !@parseWhenInstruction.new {
@@ -68,17 +70,18 @@ syntax extension galgas3SyntaxComponentSyntax {
 
   #·······························································································
 
-  rule <syntax_instruction_ggs3> !@syntaxInstructionAST outInstruction {
+  rule <syntax_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                 !@syntaxInstructionAST outInstruction {
     $parse$
     let instructionLocation = @location.here
     $with$
-    <expression_ggs3> ?let @semanticExpressionAST whenExpression
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST whenExpression
     let endOfWhenExpression = @location.here
     $:$
-    <syntax_instruction_list_ggs3> ?let @syntaxInstructionList whenInstructionList
+    <syntax_instruction_list_ggs3> !?ioDeclarations ?let @syntaxInstructionList whenInstructionList
     let endOfWhenInstructions = @location.here
   #--- Else part
-    <branchOfParseWhithInstruction> ?let @syntaxInstructionList elseInstructionList
+    <branchOfParseWhithInstruction> !?ioDeclarations ?let @syntaxInstructionList elseInstructionList
     let endOfElseInstructions = @location.here
     $end$
     outInstruction = @parseWhenInstruction.new {
@@ -114,7 +117,7 @@ syntax extension galgas4SyntaxComponentSyntax {
                                        !@syntaxInstructionList outElseInstructionList {
     $case$
     let instructionLocation = @location.here
-    <expression> ?let whenExpression
+    <expression> !?ioDeclarations ?let whenExpression
     let endOfWhenExpression = @location.here
     $:$
     <syntax_instruction_list> !?ioDeclarations ?let whenInstructionList
@@ -141,7 +144,7 @@ syntax extension galgas4SyntaxComponentSyntax {
     $parse$
     let instructionLocation = @location.here
     $with$
-    <expression> ?let @semanticExpressionAST whenExpression
+    <expression> !?ioDeclarations ?let @semanticExpressionAST whenExpression
     let endOfWhenExpression = @location.here
     $:$
     <syntax_instruction_list> !?ioDeclarations ?let @syntaxInstructionList whenInstructionList
