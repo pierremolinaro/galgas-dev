@@ -948,3 +948,18 @@ void routine_generateExtensionSetter_3F__3F__3F__26__3F__3F__21_ (const class GA
                                                                   class Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
 
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'checkGetterSignatures??????'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_checkGetterSignatures_3F__3F__3F__3F__3F__3F_ (const class GALGAS_formalInputParameterListForGeneration constinArgument0,
+                                                            const class GALGAS_unifiedTypeMapEntry constinArgument1,
+                                                            const class GALGAS_location constinArgument2,
+                                                            const class GALGAS_functionSignature constinArgument3,
+                                                            const class GALGAS_unifiedTypeMapEntry constinArgument4,
+                                                            const class GALGAS_location constinArgument5,
+                                                            class Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) ;
+

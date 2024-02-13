@@ -32,8 +32,6 @@
 #define __STDC_FORMAT_MACROS // This is required for GCC for windows
 #include <inttypes.h>
 
-void AbstractOutputStream::appendCString (const String inString) { appendString (inString) ; }
-
 //--------------------------------------------------------------------------------------------------
 
 AbstractOutputStream::AbstractOutputStream (void) :
