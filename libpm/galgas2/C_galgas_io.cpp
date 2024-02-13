@@ -37,7 +37,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-C_unicode_lexique_table_entry::C_unicode_lexique_table_entry (const utf32 * inEntryString,
+C_unicode_lexique_table_entry::C_unicode_lexique_table_entry (const std::initializer_list <utf32> & inEntryString,
                                                               const int16_t inEntryStringLength,
                                                               const int16_t inTokenCode) :
 mEntryString (inEntryString),

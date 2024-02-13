@@ -8265,42 +8265,36 @@ mMatchedTemplateDelimiterIndex (-1) {
 //--------------------------------------------------------------------------------------------------
 
 //--- Unicode string for '$\n$'
-static const utf32 kUnicodeString_galgasTemplateScanner__A_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasTemplateScanner__A_ = {
   TO_UNICODE (10),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$%$'
-static const utf32 kUnicodeString_galgasTemplateScanner__25_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasTemplateScanner__25_ = {
   TO_UNICODE ('%'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$\\$'
-static const utf32 kUnicodeString_galgasTemplateScanner__5C_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasTemplateScanner__5C_ = {
   TO_UNICODE ('\\'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$\\%$'
-static const utf32 kUnicodeString_galgasTemplateScanner__5C__25_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasTemplateScanner__5C__25_ = {
   TO_UNICODE ('\\'),
   TO_UNICODE ('%'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$\\\\$'
-static const utf32 kUnicodeString_galgasTemplateScanner__5C__5C_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasTemplateScanner__5C__5C_ = {
   TO_UNICODE ('\\'),
   TO_UNICODE ('\\'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$\\n$'
-static const utf32 kUnicodeString_galgasTemplateScanner__5C_n [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasTemplateScanner__5C_n = {
   TO_UNICODE ('\\'),
   TO_UNICODE ('n'),
-  TO_UNICODE (0)
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -8534,7 +8528,7 @@ bool Lexique_galgasTemplateScanner::parseLexicalToken (void) {
         replacementIndex = findTemplateDelimiterIndex (galgasTemplateScanner_kTemplateReplacementArray, 3) ;
         if (replacementIndex >= 0) {
           if (galgasTemplateScanner_kTemplateReplacementArray [replacementIndex].mReplacementFunction == nullptr) {
-            token.mTemplateStringBeforeToken.appendString (String (galgasTemplateScanner_kTemplateReplacementArray [replacementIndex].mEndString)) ;
+            token.mTemplateStringBeforeToken.appendString (galgasTemplateScanner_kTemplateReplacementArray [replacementIndex].mEndString) ;
           }else{
             String s ;
             while (notTestForInputUTF32String (galgasTemplateScanner_kTemplateReplacementArray [replacementIndex].mEndString,

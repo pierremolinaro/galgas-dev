@@ -753,282 +753,242 @@ String Lexique_galgasScanner_33_::getMessageForTerminal (const int32_t inTermina
 //--------------------------------------------------------------------------------------------------
 
 //--- Unicode string for '$!=$'
-static const utf32 kUnicodeString_galgasScanner_33___21__3D_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___21__3D_ = {
   TO_UNICODE ('!'),
   TO_UNICODE ('='),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$!==$'
-static const utf32 kUnicodeString_galgasScanner_33___21__3D__3D_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___21__3D__3D_ = {
   TO_UNICODE ('!'),
   TO_UNICODE ('='),
   TO_UNICODE ('='),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$!^$'
-static const utf32 kUnicodeString_galgasScanner_33___21__5E_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___21__5E_ = {
   TO_UNICODE ('!'),
   TO_UNICODE ('^'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$&$'
-static const utf32 kUnicodeString_galgasScanner_33___26_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___26_ = {
   TO_UNICODE ('&'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$&&$'
-static const utf32 kUnicodeString_galgasScanner_33___26__26_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___26__26_ = {
   TO_UNICODE ('&'),
   TO_UNICODE ('&'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$&*$'
-static const utf32 kUnicodeString_galgasScanner_33___26__2A_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___26__2A_ = {
   TO_UNICODE ('&'),
   TO_UNICODE ('*'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$&+$'
-static const utf32 kUnicodeString_galgasScanner_33___26__2B_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___26__2B_ = {
   TO_UNICODE ('&'),
   TO_UNICODE ('+'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$&++$'
-static const utf32 kUnicodeString_galgasScanner_33___26__2B__2B_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___26__2B__2B_ = {
   TO_UNICODE ('&'),
   TO_UNICODE ('+'),
   TO_UNICODE ('+'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$&-$'
-static const utf32 kUnicodeString_galgasScanner_33___26__2D_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___26__2D_ = {
   TO_UNICODE ('&'),
   TO_UNICODE ('-'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$&--$'
-static const utf32 kUnicodeString_galgasScanner_33___26__2D__2D_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___26__2D__2D_ = {
   TO_UNICODE ('&'),
   TO_UNICODE ('-'),
   TO_UNICODE ('-'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$&/$'
-static const utf32 kUnicodeString_galgasScanner_33___26__2F_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___26__2F_ = {
   TO_UNICODE ('&'),
   TO_UNICODE ('/'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$($'
-static const utf32 kUnicodeString_galgasScanner_33___28_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___28_ = {
   TO_UNICODE ('('),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$)$'
-static const utf32 kUnicodeString_galgasScanner_33___29_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___29_ = {
   TO_UNICODE (')'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$*$'
-static const utf32 kUnicodeString_galgasScanner_33___2A_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___2A_ = {
   TO_UNICODE ('*'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$*=$'
-static const utf32 kUnicodeString_galgasScanner_33___2A__3D_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___2A__3D_ = {
   TO_UNICODE ('*'),
   TO_UNICODE ('='),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$+$'
-static const utf32 kUnicodeString_galgasScanner_33___2B_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___2B_ = {
   TO_UNICODE ('+'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$++$'
-static const utf32 kUnicodeString_galgasScanner_33___2B__2B_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___2B__2B_ = {
   TO_UNICODE ('+'),
   TO_UNICODE ('+'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$+=$'
-static const utf32 kUnicodeString_galgasScanner_33___2B__3D_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___2B__3D_ = {
   TO_UNICODE ('+'),
   TO_UNICODE ('='),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$,$'
-static const utf32 kUnicodeString_galgasScanner_33___2C_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___2C_ = {
   TO_UNICODE (','),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$-$'
-static const utf32 kUnicodeString_galgasScanner_33___2D_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___2D_ = {
   TO_UNICODE ('-'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$--$'
-static const utf32 kUnicodeString_galgasScanner_33___2D__2D_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___2D__2D_ = {
   TO_UNICODE ('-'),
   TO_UNICODE ('-'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$-=$'
-static const utf32 kUnicodeString_galgasScanner_33___2D__3D_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___2D__3D_ = {
   TO_UNICODE ('-'),
   TO_UNICODE ('='),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$->$'
-static const utf32 kUnicodeString_galgasScanner_33___2D__3E_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___2D__3E_ = {
   TO_UNICODE ('-'),
   TO_UNICODE ('>'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$..$'
-static const utf32 kUnicodeString_galgasScanner_33___2E__2E_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___2E__2E_ = {
   TO_UNICODE ('.'),
   TO_UNICODE ('.'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$.<$'
-static const utf32 kUnicodeString_galgasScanner_33___2E__3C_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___2E__3C_ = {
   TO_UNICODE ('.'),
   TO_UNICODE ('<'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$/$'
-static const utf32 kUnicodeString_galgasScanner_33___2F_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___2F_ = {
   TO_UNICODE ('/'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$//$'
-static const utf32 kUnicodeString_galgasScanner_33___2F__2F_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___2F__2F_ = {
   TO_UNICODE ('/'),
   TO_UNICODE ('/'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$/=$'
-static const utf32 kUnicodeString_galgasScanner_33___2F__3D_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___2F__3D_ = {
   TO_UNICODE ('/'),
   TO_UNICODE ('='),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$0x$'
-static const utf32 kUnicodeString_galgasScanner_33___30_x [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___30_x = {
   TO_UNICODE ('0'),
   TO_UNICODE ('x'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$:$'
-static const utf32 kUnicodeString_galgasScanner_33___3A_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___3A_ = {
   TO_UNICODE (':'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$:>$'
-static const utf32 kUnicodeString_galgasScanner_33___3A__3E_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___3A__3E_ = {
   TO_UNICODE (':'),
   TO_UNICODE ('>'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$;$'
-static const utf32 kUnicodeString_galgasScanner_33___3B_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___3B_ = {
   TO_UNICODE (';'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$=$'
-static const utf32 kUnicodeString_galgasScanner_33___3D_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___3D_ = {
   TO_UNICODE ('='),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$==$'
-static const utf32 kUnicodeString_galgasScanner_33___3D__3D_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___3D__3D_ = {
   TO_UNICODE ('='),
   TO_UNICODE ('='),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$===$'
-static const utf32 kUnicodeString_galgasScanner_33___3D__3D__3D_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___3D__3D__3D_ = {
   TO_UNICODE ('='),
   TO_UNICODE ('='),
   TO_UNICODE ('='),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$>$'
-static const utf32 kUnicodeString_galgasScanner_33___3E_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___3E_ = {
   TO_UNICODE ('>'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$>=$'
-static const utf32 kUnicodeString_galgasScanner_33___3E__3D_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___3E__3D_ = {
   TO_UNICODE ('>'),
   TO_UNICODE ('='),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$>>$'
-static const utf32 kUnicodeString_galgasScanner_33___3E__3E_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___3E__3E_ = {
   TO_UNICODE ('>'),
   TO_UNICODE ('>'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$?^$'
-static const utf32 kUnicodeString_galgasScanner_33___3F__5E_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___3F__5E_ = {
   TO_UNICODE ('\?'),
   TO_UNICODE ('^'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$MacOS$'
-static const utf32 kUnicodeString_galgasScanner_33__MacOS [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__MacOS = {
   TO_UNICODE ('M'),
   TO_UNICODE ('a'),
   TO_UNICODE ('c'),
   TO_UNICODE ('O'),
   TO_UNICODE ('S'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$MacOSDeployment$'
-static const utf32 kUnicodeString_galgasScanner_33__MacOSDeployment [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__MacOSDeployment = {
   TO_UNICODE ('M'),
   TO_UNICODE ('a'),
   TO_UNICODE ('c'),
@@ -1044,49 +1004,42 @@ static const utf32 kUnicodeString_galgasScanner_33__MacOSDeployment [] = {
   TO_UNICODE ('e'),
   TO_UNICODE ('n'),
   TO_UNICODE ('t'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$[$'
-static const utf32 kUnicodeString_galgasScanner_33___5B_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___5B_ = {
   TO_UNICODE ('['),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$\\$$'
-static const utf32 kUnicodeString_galgasScanner_33___5C__24_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___5C__24_ = {
   TO_UNICODE ('\\'),
   TO_UNICODE ('$'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$\\\\$'
-static const utf32 kUnicodeString_galgasScanner_33___5C__5C_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___5C__5C_ = {
   TO_UNICODE ('\\'),
   TO_UNICODE ('\\'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$]$'
-static const utf32 kUnicodeString_galgasScanner_33___5D_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___5D_ = {
   TO_UNICODE (']'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$^$'
-static const utf32 kUnicodeString_galgasScanner_33___5E_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___5E_ = {
   TO_UNICODE ('^'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$`$'
-static const utf32 kUnicodeString_galgasScanner_33___60_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___60_ = {
   TO_UNICODE ('`'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$abstract$'
-static const utf32 kUnicodeString_galgasScanner_33__abstract [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__abstract = {
   TO_UNICODE ('a'),
   TO_UNICODE ('b'),
   TO_UNICODE ('s'),
@@ -1095,21 +1048,19 @@ static const utf32 kUnicodeString_galgasScanner_33__abstract [] = {
   TO_UNICODE ('a'),
   TO_UNICODE ('c'),
   TO_UNICODE ('t'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$after$'
-static const utf32 kUnicodeString_galgasScanner_33__after [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__after = {
   TO_UNICODE ('a'),
   TO_UNICODE ('f'),
   TO_UNICODE ('t'),
   TO_UNICODE ('e'),
   TO_UNICODE ('r'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$app-link$'
-static const utf32 kUnicodeString_galgasScanner_33__app_2D_link [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__app_2D_link = {
   TO_UNICODE ('a'),
   TO_UNICODE ('p'),
   TO_UNICODE ('p'),
@@ -1118,11 +1069,10 @@ static const utf32 kUnicodeString_galgasScanner_33__app_2D_link [] = {
   TO_UNICODE ('i'),
   TO_UNICODE ('n'),
   TO_UNICODE ('k'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$app-source$'
-static const utf32 kUnicodeString_galgasScanner_33__app_2D_source [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__app_2D_source = {
   TO_UNICODE ('a'),
   TO_UNICODE ('p'),
   TO_UNICODE ('p'),
@@ -1133,11 +1083,10 @@ static const utf32 kUnicodeString_galgasScanner_33__app_2D_source [] = {
   TO_UNICODE ('r'),
   TO_UNICODE ('c'),
   TO_UNICODE ('e'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$applicationBundleBase$'
-static const utf32 kUnicodeString_galgasScanner_33__applicationBundleBase [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__applicationBundleBase = {
   TO_UNICODE ('a'),
   TO_UNICODE ('p'),
   TO_UNICODE ('p'),
@@ -1159,48 +1108,43 @@ static const utf32 kUnicodeString_galgasScanner_33__applicationBundleBase [] = {
   TO_UNICODE ('a'),
   TO_UNICODE ('s'),
   TO_UNICODE ('e'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$array$'
-static const utf32 kUnicodeString_galgasScanner_33__array [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__array = {
   TO_UNICODE ('a'),
   TO_UNICODE ('r'),
   TO_UNICODE ('r'),
   TO_UNICODE ('a'),
   TO_UNICODE ('y'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$as$'
-static const utf32 kUnicodeString_galgasScanner_33__as [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__as = {
   TO_UNICODE ('a'),
   TO_UNICODE ('s'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$bang$'
-static const utf32 kUnicodeString_galgasScanner_33__bang [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__bang = {
   TO_UNICODE ('b'),
   TO_UNICODE ('a'),
   TO_UNICODE ('n'),
   TO_UNICODE ('g'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$before$'
-static const utf32 kUnicodeString_galgasScanner_33__before [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__before = {
   TO_UNICODE ('b'),
   TO_UNICODE ('e'),
   TO_UNICODE ('f'),
   TO_UNICODE ('o'),
   TO_UNICODE ('r'),
   TO_UNICODE ('e'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$between$'
-static const utf32 kUnicodeString_galgasScanner_33__between [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__between = {
   TO_UNICODE ('b'),
   TO_UNICODE ('e'),
   TO_UNICODE ('t'),
@@ -1208,21 +1152,19 @@ static const utf32 kUnicodeString_galgasScanner_33__between [] = {
   TO_UNICODE ('e'),
   TO_UNICODE ('e'),
   TO_UNICODE ('n'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$block$'
-static const utf32 kUnicodeString_galgasScanner_33__block [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__block = {
   TO_UNICODE ('b'),
   TO_UNICODE ('l'),
   TO_UNICODE ('o'),
   TO_UNICODE ('c'),
   TO_UNICODE ('k'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$boolset$'
-static const utf32 kUnicodeString_galgasScanner_33__boolset [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__boolset = {
   TO_UNICODE ('b'),
   TO_UNICODE ('o'),
   TO_UNICODE ('o'),
@@ -1230,39 +1172,35 @@ static const utf32 kUnicodeString_galgasScanner_33__boolset [] = {
   TO_UNICODE ('s'),
   TO_UNICODE ('e'),
   TO_UNICODE ('t'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$case$'
-static const utf32 kUnicodeString_galgasScanner_33__case [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__case = {
   TO_UNICODE ('c'),
   TO_UNICODE ('a'),
   TO_UNICODE ('s'),
   TO_UNICODE ('e'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$cast$'
-static const utf32 kUnicodeString_galgasScanner_33__cast [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__cast = {
   TO_UNICODE ('c'),
   TO_UNICODE ('a'),
   TO_UNICODE ('s'),
   TO_UNICODE ('t'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$class$'
-static const utf32 kUnicodeString_galgasScanner_33__class [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__class = {
   TO_UNICODE ('c'),
   TO_UNICODE ('l'),
   TO_UNICODE ('a'),
   TO_UNICODE ('s'),
   TO_UNICODE ('s'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$codeblocks-linux32$'
-static const utf32 kUnicodeString_galgasScanner_33__codeblocks_2D_linux_33__32_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__codeblocks_2D_linux_33__32_ = {
   TO_UNICODE ('c'),
   TO_UNICODE ('o'),
   TO_UNICODE ('d'),
@@ -1281,11 +1219,10 @@ static const utf32 kUnicodeString_galgasScanner_33__codeblocks_2D_linux_33__32_ 
   TO_UNICODE ('x'),
   TO_UNICODE ('3'),
   TO_UNICODE ('2'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$codeblocks-linux64$'
-static const utf32 kUnicodeString_galgasScanner_33__codeblocks_2D_linux_36__34_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__codeblocks_2D_linux_36__34_ = {
   TO_UNICODE ('c'),
   TO_UNICODE ('o'),
   TO_UNICODE ('d'),
@@ -1304,11 +1241,10 @@ static const utf32 kUnicodeString_galgasScanner_33__codeblocks_2D_linux_36__34_ 
   TO_UNICODE ('x'),
   TO_UNICODE ('6'),
   TO_UNICODE ('4'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$codeblocks-windows$'
-static const utf32 kUnicodeString_galgasScanner_33__codeblocks_2D_windows [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__codeblocks_2D_windows = {
   TO_UNICODE ('c'),
   TO_UNICODE ('o'),
   TO_UNICODE ('d'),
@@ -1327,11 +1263,10 @@ static const utf32 kUnicodeString_galgasScanner_33__codeblocks_2D_windows [] = {
   TO_UNICODE ('o'),
   TO_UNICODE ('w'),
   TO_UNICODE ('s'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$default$'
-static const utf32 kUnicodeString_galgasScanner_33__default [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__default = {
   TO_UNICODE ('d'),
   TO_UNICODE ('e'),
   TO_UNICODE ('f'),
@@ -1339,82 +1274,73 @@ static const utf32 kUnicodeString_galgasScanner_33__default [] = {
   TO_UNICODE ('u'),
   TO_UNICODE ('l'),
   TO_UNICODE ('t'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$dict$'
-static const utf32 kUnicodeString_galgasScanner_33__dict [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__dict = {
   TO_UNICODE ('d'),
   TO_UNICODE ('i'),
   TO_UNICODE ('c'),
   TO_UNICODE ('t'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$do$'
-static const utf32 kUnicodeString_galgasScanner_33__do [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__do = {
   TO_UNICODE ('d'),
   TO_UNICODE ('o'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$drop$'
-static const utf32 kUnicodeString_galgasScanner_33__drop [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__drop = {
   TO_UNICODE ('d'),
   TO_UNICODE ('r'),
   TO_UNICODE ('o'),
   TO_UNICODE ('p'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$else$'
-static const utf32 kUnicodeString_galgasScanner_33__else [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__else = {
   TO_UNICODE ('e'),
   TO_UNICODE ('l'),
   TO_UNICODE ('s'),
   TO_UNICODE ('e'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$elsif$'
-static const utf32 kUnicodeString_galgasScanner_33__elsif [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__elsif = {
   TO_UNICODE ('e'),
   TO_UNICODE ('l'),
   TO_UNICODE ('s'),
   TO_UNICODE ('i'),
   TO_UNICODE ('f'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$end$'
-static const utf32 kUnicodeString_galgasScanner_33__end [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__end = {
   TO_UNICODE ('e'),
   TO_UNICODE ('n'),
   TO_UNICODE ('d'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$enum$'
-static const utf32 kUnicodeString_galgasScanner_33__enum [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__enum = {
   TO_UNICODE ('e'),
   TO_UNICODE ('n'),
   TO_UNICODE ('u'),
   TO_UNICODE ('m'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$error$'
-static const utf32 kUnicodeString_galgasScanner_33__error [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__error = {
   TO_UNICODE ('e'),
   TO_UNICODE ('r'),
   TO_UNICODE ('r'),
   TO_UNICODE ('o'),
   TO_UNICODE ('r'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$extension$'
-static const utf32 kUnicodeString_galgasScanner_33__extension [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__extension = {
   TO_UNICODE ('e'),
   TO_UNICODE ('x'),
   TO_UNICODE ('t'),
@@ -1424,32 +1350,29 @@ static const utf32 kUnicodeString_galgasScanner_33__extension [] = {
   TO_UNICODE ('i'),
   TO_UNICODE ('o'),
   TO_UNICODE ('n'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$extern$'
-static const utf32 kUnicodeString_galgasScanner_33__extern [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__extern = {
   TO_UNICODE ('e'),
   TO_UNICODE ('x'),
   TO_UNICODE ('t'),
   TO_UNICODE ('e'),
   TO_UNICODE ('r'),
   TO_UNICODE ('n'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$false$'
-static const utf32 kUnicodeString_galgasScanner_33__false [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__false = {
   TO_UNICODE ('f'),
   TO_UNICODE ('a'),
   TO_UNICODE ('l'),
   TO_UNICODE ('s'),
   TO_UNICODE ('e'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$fileprivate$'
-static const utf32 kUnicodeString_galgasScanner_33__fileprivate [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__fileprivate = {
   TO_UNICODE ('f'),
   TO_UNICODE ('i'),
   TO_UNICODE ('l'),
@@ -1461,11 +1384,10 @@ static const utf32 kUnicodeString_galgasScanner_33__fileprivate [] = {
   TO_UNICODE ('a'),
   TO_UNICODE ('t'),
   TO_UNICODE ('e'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$filewrapper$'
-static const utf32 kUnicodeString_galgasScanner_33__filewrapper [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__filewrapper = {
   TO_UNICODE ('f'),
   TO_UNICODE ('i'),
   TO_UNICODE ('l'),
@@ -1477,48 +1399,43 @@ static const utf32 kUnicodeString_galgasScanner_33__filewrapper [] = {
   TO_UNICODE ('p'),
   TO_UNICODE ('e'),
   TO_UNICODE ('r'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$final$'
-static const utf32 kUnicodeString_galgasScanner_33__final [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__final = {
   TO_UNICODE ('f'),
   TO_UNICODE ('i'),
   TO_UNICODE ('n'),
   TO_UNICODE ('a'),
   TO_UNICODE ('l'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$fixit$'
-static const utf32 kUnicodeString_galgasScanner_33__fixit [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__fixit = {
   TO_UNICODE ('f'),
   TO_UNICODE ('i'),
   TO_UNICODE ('x'),
   TO_UNICODE ('i'),
   TO_UNICODE ('t'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$for$'
-static const utf32 kUnicodeString_galgasScanner_33__for [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__for = {
   TO_UNICODE ('f'),
   TO_UNICODE ('o'),
   TO_UNICODE ('r'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$func$'
-static const utf32 kUnicodeString_galgasScanner_33__func [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__func = {
   TO_UNICODE ('f'),
   TO_UNICODE ('u'),
   TO_UNICODE ('n'),
   TO_UNICODE ('c'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$generatedInSeparateFile$'
-static const utf32 kUnicodeString_galgasScanner_33__generatedInSeparateFile [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__generatedInSeparateFile = {
   TO_UNICODE ('g'),
   TO_UNICODE ('e'),
   TO_UNICODE ('n'),
@@ -1542,22 +1459,20 @@ static const utf32 kUnicodeString_galgasScanner_33__generatedInSeparateFile [] =
   TO_UNICODE ('i'),
   TO_UNICODE ('l'),
   TO_UNICODE ('e'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$getter$'
-static const utf32 kUnicodeString_galgasScanner_33__getter [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__getter = {
   TO_UNICODE ('g'),
   TO_UNICODE ('e'),
   TO_UNICODE ('t'),
   TO_UNICODE ('t'),
   TO_UNICODE ('e'),
   TO_UNICODE ('r'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$grammar$'
-static const utf32 kUnicodeString_galgasScanner_33__grammar [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__grammar = {
   TO_UNICODE ('g'),
   TO_UNICODE ('r'),
   TO_UNICODE ('a'),
@@ -1565,43 +1480,38 @@ static const utf32 kUnicodeString_galgasScanner_33__grammar [] = {
   TO_UNICODE ('m'),
   TO_UNICODE ('a'),
   TO_UNICODE ('r'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$graph$'
-static const utf32 kUnicodeString_galgasScanner_33__graph [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__graph = {
   TO_UNICODE ('g'),
   TO_UNICODE ('r'),
   TO_UNICODE ('a'),
   TO_UNICODE ('p'),
   TO_UNICODE ('h'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$gui$'
-static const utf32 kUnicodeString_galgasScanner_33__gui [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__gui = {
   TO_UNICODE ('g'),
   TO_UNICODE ('u'),
   TO_UNICODE ('i'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$if$'
-static const utf32 kUnicodeString_galgasScanner_33__if [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__if = {
   TO_UNICODE ('i'),
   TO_UNICODE ('f'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$in$'
-static const utf32 kUnicodeString_galgasScanner_33__in [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__in = {
   TO_UNICODE ('i'),
   TO_UNICODE ('n'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$indexing$'
-static const utf32 kUnicodeString_galgasScanner_33__indexing [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__indexing = {
   TO_UNICODE ('i'),
   TO_UNICODE ('n'),
   TO_UNICODE ('d'),
@@ -1610,56 +1520,50 @@ static const utf32 kUnicodeString_galgasScanner_33__indexing [] = {
   TO_UNICODE ('i'),
   TO_UNICODE ('n'),
   TO_UNICODE ('g'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$init$'
-static const utf32 kUnicodeString_galgasScanner_33__init [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__init = {
   TO_UNICODE ('i'),
   TO_UNICODE ('n'),
   TO_UNICODE ('i'),
   TO_UNICODE ('t'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$insert$'
-static const utf32 kUnicodeString_galgasScanner_33__insert [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__insert = {
   TO_UNICODE ('i'),
   TO_UNICODE ('n'),
   TO_UNICODE ('s'),
   TO_UNICODE ('e'),
   TO_UNICODE ('r'),
   TO_UNICODE ('t'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$is$'
-static const utf32 kUnicodeString_galgasScanner_33__is [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__is = {
   TO_UNICODE ('i'),
   TO_UNICODE ('s'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$label$'
-static const utf32 kUnicodeString_galgasScanner_33__label [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__label = {
   TO_UNICODE ('l'),
   TO_UNICODE ('a'),
   TO_UNICODE ('b'),
   TO_UNICODE ('e'),
   TO_UNICODE ('l'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$let$'
-static const utf32 kUnicodeString_galgasScanner_33__let [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__let = {
   TO_UNICODE ('l'),
   TO_UNICODE ('e'),
   TO_UNICODE ('t'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$lexique$'
-static const utf32 kUnicodeString_galgasScanner_33__lexique [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__lexique = {
   TO_UNICODE ('l'),
   TO_UNICODE ('e'),
   TO_UNICODE ('x'),
@@ -1667,11 +1571,10 @@ static const utf32 kUnicodeString_galgasScanner_33__lexique [] = {
   TO_UNICODE ('q'),
   TO_UNICODE ('u'),
   TO_UNICODE ('e'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$libpmAtPath$'
-static const utf32 kUnicodeString_galgasScanner_33__libpmAtPath [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__libpmAtPath = {
   TO_UNICODE ('l'),
   TO_UNICODE ('i'),
   TO_UNICODE ('b'),
@@ -1683,20 +1586,18 @@ static const utf32 kUnicodeString_galgasScanner_33__libpmAtPath [] = {
   TO_UNICODE ('a'),
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$list$'
-static const utf32 kUnicodeString_galgasScanner_33__list [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__list = {
   TO_UNICODE ('l'),
   TO_UNICODE ('i'),
   TO_UNICODE ('s'),
   TO_UNICODE ('t'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$listmap$'
-static const utf32 kUnicodeString_galgasScanner_33__listmap [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__listmap = {
   TO_UNICODE ('l'),
   TO_UNICODE ('i'),
   TO_UNICODE ('s'),
@@ -1704,28 +1605,25 @@ static const utf32 kUnicodeString_galgasScanner_33__listmap [] = {
   TO_UNICODE ('m'),
   TO_UNICODE ('a'),
   TO_UNICODE ('p'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$log$'
-static const utf32 kUnicodeString_galgasScanner_33__log [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__log = {
   TO_UNICODE ('l'),
   TO_UNICODE ('o'),
   TO_UNICODE ('g'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$loop$'
-static const utf32 kUnicodeString_galgasScanner_33__loop [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__loop = {
   TO_UNICODE ('l'),
   TO_UNICODE ('o'),
   TO_UNICODE ('o'),
   TO_UNICODE ('p'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$macCodeSign$'
-static const utf32 kUnicodeString_galgasScanner_33__macCodeSign [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__macCodeSign = {
   TO_UNICODE ('m'),
   TO_UNICODE ('a'),
   TO_UNICODE ('c'),
@@ -1737,11 +1635,10 @@ static const utf32 kUnicodeString_galgasScanner_33__macCodeSign [] = {
   TO_UNICODE ('i'),
   TO_UNICODE ('g'),
   TO_UNICODE ('n'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$makefile-macosx$'
-static const utf32 kUnicodeString_galgasScanner_33__makefile_2D_macosx [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__makefile_2D_macosx = {
   TO_UNICODE ('m'),
   TO_UNICODE ('a'),
   TO_UNICODE ('k'),
@@ -1757,11 +1654,10 @@ static const utf32 kUnicodeString_galgasScanner_33__makefile_2D_macosx [] = {
   TO_UNICODE ('o'),
   TO_UNICODE ('s'),
   TO_UNICODE ('x'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$makefile-unix$'
-static const utf32 kUnicodeString_galgasScanner_33__makefile_2D_unix [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__makefile_2D_unix = {
   TO_UNICODE ('m'),
   TO_UNICODE ('a'),
   TO_UNICODE ('k'),
@@ -1775,11 +1671,10 @@ static const utf32 kUnicodeString_galgasScanner_33__makefile_2D_unix [] = {
   TO_UNICODE ('n'),
   TO_UNICODE ('i'),
   TO_UNICODE ('x'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$makefile-win32-on-macosx$'
-static const utf32 kUnicodeString_galgasScanner_33__makefile_2D_win_33__32__2D_on_2D_macosx [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__makefile_2D_win_33__32__2D_on_2D_macosx = {
   TO_UNICODE ('m'),
   TO_UNICODE ('a'),
   TO_UNICODE ('k'),
@@ -1804,11 +1699,10 @@ static const utf32 kUnicodeString_galgasScanner_33__makefile_2D_win_33__32__2D_o
   TO_UNICODE ('o'),
   TO_UNICODE ('s'),
   TO_UNICODE ('x'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$makefile-x86linux32-on-macosx$'
-static const utf32 kUnicodeString_galgasScanner_33__makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx = {
   TO_UNICODE ('m'),
   TO_UNICODE ('a'),
   TO_UNICODE ('k'),
@@ -1838,11 +1732,10 @@ static const utf32 kUnicodeString_galgasScanner_33__makefile_2D_x_38__36_linux_3
   TO_UNICODE ('o'),
   TO_UNICODE ('s'),
   TO_UNICODE ('x'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$makefile-x86linux64-on-macosx$'
-static const utf32 kUnicodeString_galgasScanner_33__makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx = {
   TO_UNICODE ('m'),
   TO_UNICODE ('a'),
   TO_UNICODE ('k'),
@@ -1872,19 +1765,17 @@ static const utf32 kUnicodeString_galgasScanner_33__makefile_2D_x_38__36_linux_3
   TO_UNICODE ('o'),
   TO_UNICODE ('s'),
   TO_UNICODE ('x'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$map$'
-static const utf32 kUnicodeString_galgasScanner_33__map [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__map = {
   TO_UNICODE ('m'),
   TO_UNICODE ('a'),
   TO_UNICODE ('p'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$message$'
-static const utf32 kUnicodeString_galgasScanner_33__message [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__message = {
   TO_UNICODE ('m'),
   TO_UNICODE ('e'),
   TO_UNICODE ('s'),
@@ -1892,30 +1783,27 @@ static const utf32 kUnicodeString_galgasScanner_33__message [] = {
   TO_UNICODE ('a'),
   TO_UNICODE ('g'),
   TO_UNICODE ('e'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$method$'
-static const utf32 kUnicodeString_galgasScanner_33__method [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__method = {
   TO_UNICODE ('m'),
   TO_UNICODE ('e'),
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('o'),
   TO_UNICODE ('d'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$mod$'
-static const utf32 kUnicodeString_galgasScanner_33__mod [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__mod = {
   TO_UNICODE ('m'),
   TO_UNICODE ('o'),
   TO_UNICODE ('d'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$mutating$'
-static const utf32 kUnicodeString_galgasScanner_33__mutating [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__mutating = {
   TO_UNICODE ('m'),
   TO_UNICODE ('u'),
   TO_UNICODE ('t'),
@@ -1924,11 +1812,10 @@ static const utf32 kUnicodeString_galgasScanner_33__mutating [] = {
   TO_UNICODE ('i'),
   TO_UNICODE ('n'),
   TO_UNICODE ('g'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$nonAtomicSelection$'
-static const utf32 kUnicodeString_galgasScanner_33__nonAtomicSelection [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__nonAtomicSelection = {
   TO_UNICODE ('n'),
   TO_UNICODE ('o'),
   TO_UNICODE ('n'),
@@ -1947,35 +1834,31 @@ static const utf32 kUnicodeString_galgasScanner_33__nonAtomicSelection [] = {
   TO_UNICODE ('i'),
   TO_UNICODE ('o'),
   TO_UNICODE ('n'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$not$'
-static const utf32 kUnicodeString_galgasScanner_33__not [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__not = {
   TO_UNICODE ('n'),
   TO_UNICODE ('o'),
   TO_UNICODE ('t'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$on$'
-static const utf32 kUnicodeString_galgasScanner_33__on [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__on = {
   TO_UNICODE ('o'),
   TO_UNICODE ('n'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$once$'
-static const utf32 kUnicodeString_galgasScanner_33__once [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__once = {
   TO_UNICODE ('o'),
   TO_UNICODE ('n'),
   TO_UNICODE ('c'),
   TO_UNICODE ('e'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$operator$'
-static const utf32 kUnicodeString_galgasScanner_33__operator [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__operator = {
   TO_UNICODE ('o'),
   TO_UNICODE ('p'),
   TO_UNICODE ('e'),
@@ -1984,29 +1867,26 @@ static const utf32 kUnicodeString_galgasScanner_33__operator [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('o'),
   TO_UNICODE ('r'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$option$'
-static const utf32 kUnicodeString_galgasScanner_33__option [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__option = {
   TO_UNICODE ('o'),
   TO_UNICODE ('p'),
   TO_UNICODE ('t'),
   TO_UNICODE ('i'),
   TO_UNICODE ('o'),
   TO_UNICODE ('n'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$or$'
-static const utf32 kUnicodeString_galgasScanner_33__or [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__or = {
   TO_UNICODE ('o'),
   TO_UNICODE ('r'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$override$'
-static const utf32 kUnicodeString_galgasScanner_33__override [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__override = {
   TO_UNICODE ('o'),
   TO_UNICODE ('v'),
   TO_UNICODE ('e'),
@@ -2015,21 +1895,19 @@ static const utf32 kUnicodeString_galgasScanner_33__override [] = {
   TO_UNICODE ('i'),
   TO_UNICODE ('d'),
   TO_UNICODE ('e'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$parse$'
-static const utf32 kUnicodeString_galgasScanner_33__parse [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__parse = {
   TO_UNICODE ('p'),
   TO_UNICODE ('a'),
   TO_UNICODE ('r'),
   TO_UNICODE ('s'),
   TO_UNICODE ('e'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$preserved$'
-static const utf32 kUnicodeString_galgasScanner_33__preserved [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__preserved = {
   TO_UNICODE ('p'),
   TO_UNICODE ('r'),
   TO_UNICODE ('e'),
@@ -2039,11 +1917,10 @@ static const utf32 kUnicodeString_galgasScanner_33__preserved [] = {
   TO_UNICODE ('v'),
   TO_UNICODE ('e'),
   TO_UNICODE ('d'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$private$'
-static const utf32 kUnicodeString_galgasScanner_33__private [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__private = {
   TO_UNICODE ('p'),
   TO_UNICODE ('r'),
   TO_UNICODE ('i'),
@@ -2051,20 +1928,18 @@ static const utf32 kUnicodeString_galgasScanner_33__private [] = {
   TO_UNICODE ('a'),
   TO_UNICODE ('t'),
   TO_UNICODE ('e'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$proc$'
-static const utf32 kUnicodeString_galgasScanner_33__proc [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__proc = {
   TO_UNICODE ('p'),
   TO_UNICODE ('r'),
   TO_UNICODE ('o'),
   TO_UNICODE ('c'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$project$'
-static const utf32 kUnicodeString_galgasScanner_33__project [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__project = {
   TO_UNICODE ('p'),
   TO_UNICODE ('r'),
   TO_UNICODE ('o'),
@@ -2072,11 +1947,10 @@ static const utf32 kUnicodeString_galgasScanner_33__project [] = {
   TO_UNICODE ('e'),
   TO_UNICODE ('c'),
   TO_UNICODE ('t'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$protected$'
-static const utf32 kUnicodeString_galgasScanner_33__protected [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__protected = {
   TO_UNICODE ('p'),
   TO_UNICODE ('r'),
   TO_UNICODE ('o'),
@@ -2086,22 +1960,20 @@ static const utf32 kUnicodeString_galgasScanner_33__protected [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('e'),
   TO_UNICODE ('d'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$public$'
-static const utf32 kUnicodeString_galgasScanner_33__public [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__public = {
   TO_UNICODE ('p'),
   TO_UNICODE ('u'),
   TO_UNICODE ('b'),
   TO_UNICODE ('l'),
   TO_UNICODE ('i'),
   TO_UNICODE ('c'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$quietOutputByDefault$'
-static const utf32 kUnicodeString_galgasScanner_33__quietOutputByDefault [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__quietOutputByDefault = {
   TO_UNICODE ('q'),
   TO_UNICODE ('u'),
   TO_UNICODE ('i'),
@@ -2122,11 +1994,10 @@ static const utf32 kUnicodeString_galgasScanner_33__quietOutputByDefault [] = {
   TO_UNICODE ('u'),
   TO_UNICODE ('l'),
   TO_UNICODE ('t'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$refclass$'
-static const utf32 kUnicodeString_galgasScanner_33__refclass [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__refclass = {
   TO_UNICODE ('r'),
   TO_UNICODE ('e'),
   TO_UNICODE ('f'),
@@ -2135,33 +2006,30 @@ static const utf32 kUnicodeString_galgasScanner_33__refclass [] = {
   TO_UNICODE ('a'),
   TO_UNICODE ('s'),
   TO_UNICODE ('s'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$remove$'
-static const utf32 kUnicodeString_galgasScanner_33__remove [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__remove = {
   TO_UNICODE ('r'),
   TO_UNICODE ('e'),
   TO_UNICODE ('m'),
   TO_UNICODE ('o'),
   TO_UNICODE ('v'),
   TO_UNICODE ('e'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$repeat$'
-static const utf32 kUnicodeString_galgasScanner_33__repeat [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__repeat = {
   TO_UNICODE ('r'),
   TO_UNICODE ('e'),
   TO_UNICODE ('p'),
   TO_UNICODE ('e'),
   TO_UNICODE ('a'),
   TO_UNICODE ('t'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$replace$'
-static const utf32 kUnicodeString_galgasScanner_33__replace [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__replace = {
   TO_UNICODE ('r'),
   TO_UNICODE ('e'),
   TO_UNICODE ('p'),
@@ -2169,53 +2037,48 @@ static const utf32 kUnicodeString_galgasScanner_33__replace [] = {
   TO_UNICODE ('a'),
   TO_UNICODE ('c'),
   TO_UNICODE ('e'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$rewind$'
-static const utf32 kUnicodeString_galgasScanner_33__rewind [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__rewind = {
   TO_UNICODE ('r'),
   TO_UNICODE ('e'),
   TO_UNICODE ('w'),
   TO_UNICODE ('i'),
   TO_UNICODE ('n'),
   TO_UNICODE ('d'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$rule$'
-static const utf32 kUnicodeString_galgasScanner_33__rule [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__rule = {
   TO_UNICODE ('r'),
   TO_UNICODE ('u'),
   TO_UNICODE ('l'),
   TO_UNICODE ('e'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$search$'
-static const utf32 kUnicodeString_galgasScanner_33__search [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__search = {
   TO_UNICODE ('s'),
   TO_UNICODE ('e'),
   TO_UNICODE ('a'),
   TO_UNICODE ('r'),
   TO_UNICODE ('c'),
   TO_UNICODE ('h'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$select$'
-static const utf32 kUnicodeString_galgasScanner_33__select [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__select = {
   TO_UNICODE ('s'),
   TO_UNICODE ('e'),
   TO_UNICODE ('l'),
   TO_UNICODE ('e'),
   TO_UNICODE ('c'),
   TO_UNICODE ('t'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$selector$'
-static const utf32 kUnicodeString_galgasScanner_33__selector [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__selector = {
   TO_UNICODE ('s'),
   TO_UNICODE ('e'),
   TO_UNICODE ('l'),
@@ -2224,40 +2087,36 @@ static const utf32 kUnicodeString_galgasScanner_33__selector [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('o'),
   TO_UNICODE ('r'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$self$'
-static const utf32 kUnicodeString_galgasScanner_33__self [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__self = {
   TO_UNICODE ('s'),
   TO_UNICODE ('e'),
   TO_UNICODE ('l'),
   TO_UNICODE ('f'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$send$'
-static const utf32 kUnicodeString_galgasScanner_33__send [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__send = {
   TO_UNICODE ('s'),
   TO_UNICODE ('e'),
   TO_UNICODE ('n'),
   TO_UNICODE ('d'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$setter$'
-static const utf32 kUnicodeString_galgasScanner_33__setter [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__setter = {
   TO_UNICODE ('s'),
   TO_UNICODE ('e'),
   TO_UNICODE ('t'),
   TO_UNICODE ('t'),
   TO_UNICODE ('e'),
   TO_UNICODE ('r'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$sortedlist$'
-static const utf32 kUnicodeString_galgasScanner_33__sortedlist [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__sortedlist = {
   TO_UNICODE ('s'),
   TO_UNICODE ('o'),
   TO_UNICODE ('r'),
@@ -2268,82 +2127,74 @@ static const utf32 kUnicodeString_galgasScanner_33__sortedlist [] = {
   TO_UNICODE ('i'),
   TO_UNICODE ('s'),
   TO_UNICODE ('t'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$spoil$'
-static const utf32 kUnicodeString_galgasScanner_33__spoil [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__spoil = {
   TO_UNICODE ('s'),
   TO_UNICODE ('p'),
   TO_UNICODE ('o'),
   TO_UNICODE ('i'),
   TO_UNICODE ('l'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$struct$'
-static const utf32 kUnicodeString_galgasScanner_33__struct [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__struct = {
   TO_UNICODE ('s'),
   TO_UNICODE ('t'),
   TO_UNICODE ('r'),
   TO_UNICODE ('u'),
   TO_UNICODE ('c'),
   TO_UNICODE ('t'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$style$'
-static const utf32 kUnicodeString_galgasScanner_33__style [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__style = {
   TO_UNICODE ('s'),
   TO_UNICODE ('t'),
   TO_UNICODE ('y'),
   TO_UNICODE ('l'),
   TO_UNICODE ('e'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$super$'
-static const utf32 kUnicodeString_galgasScanner_33__super [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__super = {
   TO_UNICODE ('s'),
   TO_UNICODE ('u'),
   TO_UNICODE ('p'),
   TO_UNICODE ('e'),
   TO_UNICODE ('r'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$switch$'
-static const utf32 kUnicodeString_galgasScanner_33__switch [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__switch = {
   TO_UNICODE ('s'),
   TO_UNICODE ('w'),
   TO_UNICODE ('i'),
   TO_UNICODE ('t'),
   TO_UNICODE ('c'),
   TO_UNICODE ('h'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$syntax$'
-static const utf32 kUnicodeString_galgasScanner_33__syntax [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__syntax = {
   TO_UNICODE ('s'),
   TO_UNICODE ('y'),
   TO_UNICODE ('n'),
   TO_UNICODE ('t'),
   TO_UNICODE ('a'),
   TO_UNICODE ('x'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$tag$'
-static const utf32 kUnicodeString_galgasScanner_33__tag [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__tag = {
   TO_UNICODE ('t'),
   TO_UNICODE ('a'),
   TO_UNICODE ('g'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$template$'
-static const utf32 kUnicodeString_galgasScanner_33__template [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__template = {
   TO_UNICODE ('t'),
   TO_UNICODE ('e'),
   TO_UNICODE ('m'),
@@ -2352,11 +2203,10 @@ static const utf32 kUnicodeString_galgasScanner_33__template [] = {
   TO_UNICODE ('a'),
   TO_UNICODE ('t'),
   TO_UNICODE ('e'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$templateEndMark$'
-static const utf32 kUnicodeString_galgasScanner_33__templateEndMark [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__templateEndMark = {
   TO_UNICODE ('t'),
   TO_UNICODE ('e'),
   TO_UNICODE ('m'),
@@ -2372,20 +2222,18 @@ static const utf32 kUnicodeString_galgasScanner_33__templateEndMark [] = {
   TO_UNICODE ('a'),
   TO_UNICODE ('r'),
   TO_UNICODE ('k'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$then$'
-static const utf32 kUnicodeString_galgasScanner_33__then [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__then = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
   TO_UNICODE ('n'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$tool-source$'
-static const utf32 kUnicodeString_galgasScanner_33__tool_2D_source [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__tool_2D_source = {
   TO_UNICODE ('t'),
   TO_UNICODE ('o'),
   TO_UNICODE ('o'),
@@ -2397,11 +2245,10 @@ static const utf32 kUnicodeString_galgasScanner_33__tool_2D_source [] = {
   TO_UNICODE ('r'),
   TO_UNICODE ('c'),
   TO_UNICODE ('e'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$translate$'
-static const utf32 kUnicodeString_galgasScanner_33__translate [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__translate = {
   TO_UNICODE ('t'),
   TO_UNICODE ('r'),
   TO_UNICODE ('a'),
@@ -2411,20 +2258,18 @@ static const utf32 kUnicodeString_galgasScanner_33__translate [] = {
   TO_UNICODE ('a'),
   TO_UNICODE ('t'),
   TO_UNICODE ('e'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$true$'
-static const utf32 kUnicodeString_galgasScanner_33__true [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__true = {
   TO_UNICODE ('t'),
   TO_UNICODE ('r'),
   TO_UNICODE ('u'),
   TO_UNICODE ('e'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$typealias$'
-static const utf32 kUnicodeString_galgasScanner_33__typealias [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__typealias = {
   TO_UNICODE ('t'),
   TO_UNICODE ('y'),
   TO_UNICODE ('p'),
@@ -2434,22 +2279,20 @@ static const utf32 kUnicodeString_galgasScanner_33__typealias [] = {
   TO_UNICODE ('i'),
   TO_UNICODE ('a'),
   TO_UNICODE ('s'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$unused$'
-static const utf32 kUnicodeString_galgasScanner_33__unused [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__unused = {
   TO_UNICODE ('u'),
   TO_UNICODE ('n'),
   TO_UNICODE ('u'),
   TO_UNICODE ('s'),
   TO_UNICODE ('e'),
   TO_UNICODE ('d'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$useGrammar$'
-static const utf32 kUnicodeString_galgasScanner_33__useGrammar [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__useGrammar = {
   TO_UNICODE ('u'),
   TO_UNICODE ('s'),
   TO_UNICODE ('e'),
@@ -2460,11 +2303,10 @@ static const utf32 kUnicodeString_galgasScanner_33__useGrammar [] = {
   TO_UNICODE ('m'),
   TO_UNICODE ('a'),
   TO_UNICODE ('r'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$usefull$'
-static const utf32 kUnicodeString_galgasScanner_33__usefull [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__usefull = {
   TO_UNICODE ('u'),
   TO_UNICODE ('s'),
   TO_UNICODE ('e'),
@@ -2472,19 +2314,17 @@ static const utf32 kUnicodeString_galgasScanner_33__usefull [] = {
   TO_UNICODE ('u'),
   TO_UNICODE ('l'),
   TO_UNICODE ('l'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$var$'
-static const utf32 kUnicodeString_galgasScanner_33__var [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__var = {
   TO_UNICODE ('v'),
   TO_UNICODE ('a'),
   TO_UNICODE ('r'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$warning$'
-static const utf32 kUnicodeString_galgasScanner_33__warning [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__warning = {
   TO_UNICODE ('w'),
   TO_UNICODE ('a'),
   TO_UNICODE ('r'),
@@ -2492,57 +2332,49 @@ static const utf32 kUnicodeString_galgasScanner_33__warning [] = {
   TO_UNICODE ('i'),
   TO_UNICODE ('n'),
   TO_UNICODE ('g'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$while$'
-static const utf32 kUnicodeString_galgasScanner_33__while [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__while = {
   TO_UNICODE ('w'),
   TO_UNICODE ('h'),
   TO_UNICODE ('i'),
   TO_UNICODE ('l'),
   TO_UNICODE ('e'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$with$'
-static const utf32 kUnicodeString_galgasScanner_33__with [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__with = {
   TO_UNICODE ('w'),
   TO_UNICODE ('i'),
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '${$'
-static const utf32 kUnicodeString_galgasScanner_33___7B_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___7B_ = {
   TO_UNICODE ('{'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$|$'
-static const utf32 kUnicodeString_galgasScanner_33___7C_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___7C_ = {
   TO_UNICODE ('|'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$||$'
-static const utf32 kUnicodeString_galgasScanner_33___7C__7C_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___7C__7C_ = {
   TO_UNICODE ('|'),
   TO_UNICODE ('|'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$}$'
-static const utf32 kUnicodeString_galgasScanner_33___7D_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___7D_ = {
   TO_UNICODE ('}'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$~$'
-static const utf32 kUnicodeString_galgasScanner_33___7E_ [] = {
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___7E_ = {
   TO_UNICODE ('~'),
-  TO_UNICODE (0)
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -16949,116 +16781,6 @@ GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionListForGen
       result = *p ;
     }else{
       inCompiler->castError ("templateInstructionListForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-typeComparisonResult GALGAS_templateBlockInstructionForGeneration_2D_weak::objectCompare (const GALGAS_templateBlockInstructionForGeneration_2D_weak & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
-    const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
-    const size_t operandObjectPtr = size_t (operandPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = kOperandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_templateBlockInstructionForGeneration_2D_weak::GALGAS_templateBlockInstructionForGeneration_2D_weak (void) :
-GALGAS_templateInstructionForGeneration_2D_weak () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_templateBlockInstructionForGeneration_2D_weak & GALGAS_templateBlockInstructionForGeneration_2D_weak::operator = (const GALGAS_templateBlockInstructionForGeneration & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = nullptr ;
-  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
-  if (p != nullptr) {
-    proxyPtr = p->getProxy () ;
-  }
-  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
-  return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_templateBlockInstructionForGeneration_2D_weak::GALGAS_templateBlockInstructionForGeneration_2D_weak (const GALGAS_templateBlockInstructionForGeneration & inSource) :
-GALGAS_templateInstructionForGeneration_2D_weak (inSource) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_templateBlockInstructionForGeneration_2D_weak GALGAS_templateBlockInstructionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_templateBlockInstructionForGeneration_2D_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_templateBlockInstructionForGeneration GALGAS_templateBlockInstructionForGeneration_2D_weak::bang_templateBlockInstructionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GALGAS_templateBlockInstructionForGeneration result ;
-  if (mProxyPtr != nullptr) {
-    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
-    if (strongPtr == nullptr) {
-      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
-    }else{
-      macroValidSharedObject (strongPtr, cPtr_templateBlockInstructionForGeneration) ;
-      result = GALGAS_templateBlockInstructionForGeneration ((cPtr_templateBlockInstructionForGeneration *) strongPtr) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @templateBlockInstructionForGeneration-weak generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateBlockInstructionForGeneration_2D_weak ("templateBlockInstructionForGeneration-weak",
-                                                                                                     & kTypeDescriptor_GALGAS_templateInstructionForGeneration_2D_weak) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_templateBlockInstructionForGeneration_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateBlockInstructionForGeneration_2D_weak ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_templateBlockInstructionForGeneration_2D_weak::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_templateBlockInstructionForGeneration_2D_weak (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_templateBlockInstructionForGeneration_2D_weak GALGAS_templateBlockInstructionForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                                          Compiler * inCompiler
-                                                                                                                          COMMA_LOCATION_ARGS) {
-  GALGAS_templateBlockInstructionForGeneration_2D_weak result ;
-  const GALGAS_templateBlockInstructionForGeneration_2D_weak * p = (const GALGAS_templateBlockInstructionForGeneration_2D_weak *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_templateBlockInstructionForGeneration_2D_weak *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("templateBlockInstructionForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

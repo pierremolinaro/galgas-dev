@@ -28,6 +28,10 @@
 
 //--------------------------------------------------------------------------------------------------
 
+#include <initializer_list>
+
+//--------------------------------------------------------------------------------------------------
+
 class String ;
 
 //--------------------------------------------------------------------------------------------------
@@ -49,6 +53,7 @@ class AbstractOutputStream {
 //--- Appending C string
   public: void appendString (const char * inCstring) ;
   public: void appendString (const char * inCstring, const int32_t inCount) ;
+  public: void appendString (const std::initializer_list <utf32> & inSource) ;
 
 //--- Appending UTF32 string
   public: void appendUTF32String (const utf32 * inUTF32String) ;

@@ -44,9 +44,9 @@
 
 //--------------------------------------------------------------------------------------------------
 
-cTemplateDelimiter::cTemplateDelimiter (const utf32 * inStartString,
+cTemplateDelimiter::cTemplateDelimiter (const std::initializer_list <utf32> & inStartString,
     const int32_t inStartStringLength,
-    const utf32 * inEndString,
+    const std::initializer_list <utf32> & inEndString,
     const int32_t inEndStringLength,
     void (* inReplacementFunction) (Lexique & inLexique, const String & inElementString, String & ioTemplateString),
     const bool inDiscardStartString) :
@@ -376,13 +376,20 @@ bool Lexique::testForCharWithFunction (bool (*inFunction) (const utf32 inUnicode
 
 //--------------------------------------------------------------------------------------------------
 
-bool Lexique::testForInputUTF32String (const utf32 * inTestCstring,
+bool Lexique::testForInputUTF32String (const std::initializer_list <utf32> & inTestCstring,
                                        const int32_t inStringLength,
                                        const bool inAdvanceOnMatch) {
 //--- Test
-  bool ok = utf32_strncmp (sourceText ().temporaryUTF32StringAtIndex (mCurrentLocation.index () COMMA_HERE),
-                           inTestCstring,
-                           inStringLength) == 0 ;
+  bool ok = true ;
+  int32_t i = 0 ;
+  for (auto it = inTestCstring.begin () ; (it != inTestCstring.end ()) && ok ; it++) {
+    ok = UNICODE_VALUE (sourceText ().readCharOrNul (mCurrentLocation.index () + i COMMA_HERE)) == UNICODE_VALUE (* it) ;
+    i += 1 ;
+  }
+
+//  bool ok = utf32_strncmp (sourceText ().temporaryUTF32StringAtIndex (mCurrentLocation.index () COMMA_HERE),
+//                           inTestCstring,
+//                           inStringLength) == 0 ;
 //--- Avancer dans la lecture si test ok et fin de source non atteinte
   if (ok && inAdvanceOnMatch) {
     advance (inStringLength) ;
@@ -393,7 +400,7 @@ bool Lexique::testForInputUTF32String (const utf32 * inTestCstring,
 
 //--------------------------------------------------------------------------------------------------
 
-bool Lexique::notTestForInputUTF32String (const utf32 * inTestCstring,
+bool Lexique::notTestForInputUTF32String (const std::initializer_list <utf32> & inTestCstring,
                                           const int32_t inStringLength,
                                           const char * inEndOfFileErrorMessage
                                           COMMA_LOCATION_ARGS) {
@@ -403,9 +410,10 @@ bool Lexique::notTestForInputUTF32String (const utf32 * inTestCstring,
   }else{
   //--- Test
     ok = false ;
-    for (int32_t i=0 ; (i<inStringLength) && ! ok ; i++) {
-      ok = UNICODE_VALUE (sourceText ().readCharOrNul (mCurrentLocation.index () + i COMMA_HERE)) != UNICODE_VALUE (* inTestCstring) ;
-      inTestCstring ++ ;
+    int32_t i = 0 ;
+    for (auto it = inTestCstring.begin () ; (it != inTestCstring.end ()) && ! ok ; it++) {
+      ok = UNICODE_VALUE (sourceText ().readCharOrNul (mCurrentLocation.index () + i COMMA_HERE)) != UNICODE_VALUE (* it) ;
+      i += 1 ;
     }
     if (ok) {
       advance () ;
@@ -445,7 +453,7 @@ int32_t Lexique::searchInList (const String & inString,
     const int32_t index = (bottom + top) / 2 ;
     int32_t result = searchedStringLength - inTableArray [index].mEntryStringLength ;
     if (result == 0) {
-      result = inString.compare (String (inTableArray [index].mEntryString)) ;
+      result = inString.compareWithInitializerList (inTableArray [index].mEntryString) ;
     }
     if (result < 0) { // <
       top = index - 1 ;

@@ -22,16 +22,17 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include <typeinfo>
-
-//--------------------------------------------------------------------------------------------------
-
 #include "String-class.h"
 #include "TC_UniqueArray.h"
 #include "LocationInSource.h"
 #include "SourceTextInString.h"
 #include "C_IssueWithFixIt.h"
 #include "SharedObject.h"
+
+//--------------------------------------------------------------------------------------------------
+
+#include <typeinfo>
+#include <initializer_list>
 
 //--------------------------------------------------------------------------------------------------
 
@@ -73,17 +74,17 @@ class C_lexicalErrorException {
 //--------------------------------------------------------------------------------------------------
 
 class C_unicode_lexique_table_entry final {
-  public: const utf32 * mEntryString ;
+  public: const std::initializer_list <utf32> mEntryString ;
   public: const int16_t mEntryStringLength ;
   public: const int16_t mTokenCode ;
 
 //--- Constructor
-  public: C_unicode_lexique_table_entry (const utf32 * inEntryString,
+  public: C_unicode_lexique_table_entry (const std::initializer_list <utf32> & inEntryString,
                                          const int16_t inEntryStringLength,
                                          const int16_t inTokenCode) ;
-//--- No copy
+//--- Handle copy
   public: C_unicode_lexique_table_entry (const C_unicode_lexique_table_entry & inOperand) ;
-  private: C_unicode_lexique_table_entry & operator = (const C_unicode_lexique_table_entry &) ;
+  private: C_unicode_lexique_table_entry & operator = (const C_unicode_lexique_table_entry &) = delete ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

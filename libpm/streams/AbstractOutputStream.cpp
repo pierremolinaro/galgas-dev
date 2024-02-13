@@ -109,6 +109,14 @@ void AbstractOutputStream::appendString (const String inString) {
 
 //--------------------------------------------------------------------------------------------------
 
+void AbstractOutputStream::appendString (const std::initializer_list <utf32> & inSource) {
+  for (auto it = inSource.begin () ; it != inSource.end () ; it++) {
+    genericUnicodeArrayOutput (it, 1) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark << char *
 #endif

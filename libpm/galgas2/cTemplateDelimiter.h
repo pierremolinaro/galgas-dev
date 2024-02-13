@@ -35,26 +35,26 @@ class Lexique ;
 //--------------------------------------------------------------------------------------------------
 
 class cTemplateDelimiter final {
-  public: const utf32 * mStartString ;
+  public: const std::initializer_list <utf32> mStartString ;
   public: const int32_t mStartStringLength ;
-  public: const utf32 * mEndString ;
+  public: const std::initializer_list <utf32> mEndString ;
   public: const int32_t mEndStringLength ;
   public: void (* mReplacementFunction) (Lexique & inLexique, const String & inElementString, String & ioTemplateString) ;
   public: const bool mDiscardStartString ;
 
 //--- Constructor
-  public: cTemplateDelimiter (const utf32 * inStartString,
-                               const int32_t inStartStringLength,
-                               const utf32 * inEndString,
-                               const int32_t inEndStringLength,
-                               void (* inReplacementFunction) (Lexique & inLexique, const String & inElementString, String & ioTemplateString),
-                               const bool inDiscardStartString) ;
+  public: cTemplateDelimiter (const std::initializer_list <utf32> & inStartString,
+                              const int32_t inStartStringLength,
+                              const std::initializer_list <utf32> & inEndString,
+                              const int32_t inEndStringLength,
+                              void (* inReplacementFunction) (Lexique & inLexique, const String & inElementString, String & ioTemplateString),
+                              const bool inDiscardStartString) ;
 
 //--- Copy
   public: cTemplateDelimiter (const cTemplateDelimiter & inOperand) ;
 
 //--- No assignment
-  private: cTemplateDelimiter & operator = (const cTemplateDelimiter &) ;
+  private: cTemplateDelimiter & operator = (const cTemplateDelimiter &) = delete ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
