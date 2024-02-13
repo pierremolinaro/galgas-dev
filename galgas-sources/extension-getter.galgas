@@ -44,7 +44,7 @@ syntax extension galgas3DeclarationsSyntax {
     $identifier$ ?let @lstring mMethodName indexing extensionGetterDefinition
     <formal_input_parameter_list_ggs3> !?ioDeclarations ?let mFormalInputParameterList
     $->$
-    $@type$ ?let @lstring mReturnedTypeName
+    <type_definition_ggs3> !?ioDeclarations ?let mReturnedTypeName
     let @lstring resultVariableName
     select
       $identifier$ ?resultVariableName
@@ -75,7 +75,7 @@ syntax extension galgas3DeclarationsSyntax {
     $identifier$ ?let @lstring mMethodName indexing extensionGetterDefinition
     <formal_input_parameter_list_ggs3> !?ioDeclarations ?let mFormalInputParameterList
     $->$
-    $@type$ ?let @lstring mReturnedTypeName
+    <type_definition_ggs3> !?ioDeclarations ?let mReturnedTypeName
     let @lstring resultVariableName
     select
       $identifier$ ?resultVariableName

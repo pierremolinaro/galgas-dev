@@ -94,7 +94,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
 
   rule <property_declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                    ?!@propertyInCollectionListAST ioAttributeInCollectionList {
-    $@type$ ?let propertyTypeName
+    $@type$ ?let propertyTypeName // Ne pas utiliser <type_definition_ggs3>
     $identifier$ ?let propertyName
     let @bool selectorAttribute
     select

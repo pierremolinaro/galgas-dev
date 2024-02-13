@@ -79,9 +79,9 @@ void AbstractFileHandle::appendBinaryData (const size_t inByteCount,
 //   appendUTF8String
 //--------------------------------------------------------------------------------------------------
 
-void AbstractFileHandle::appendUTF8String (const size_t inByteCount, const char * inByteArray) {
+void AbstractFileHandle::appendUTF8String (const int inByteCount, const char * inByteArray) {
   if ((mFilePtr != nullptr) && (inByteCount > 0)) {
-    ::fprintf (mFilePtr, "%.*s", int (inByteCount), inByteArray) ;
+    ::fprintf (mFilePtr, "%.*s", inByteCount, inByteArray) ;
   }
 }
 

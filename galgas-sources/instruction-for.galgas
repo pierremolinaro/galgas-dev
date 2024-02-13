@@ -89,7 +89,8 @@ syntax extension galgas3InstructionsSyntax {
 
   #·······························································································
 
-  rule <for_instruction_element> ?!@forInstructionEnumeratedObjectElementListAST ioElementList {
+  rule <for_instruction_element> ?!@galgasDeclarationAST unused ioDeclarations
+                                 ?!@forInstructionEnumeratedObjectElementListAST ioElementList {
     $literalInt$ ?let count
     $*$
     var n = [count.bigint uint]
@@ -104,12 +105,13 @@ syntax extension galgas3InstructionsSyntax {
 
   #·······························································································
 
-  rule <for_instruction_element> ?!@forInstructionEnumeratedObjectElementListAST ioElementList {
+  rule <for_instruction_element> ?!@galgasDeclarationAST ioDeclarations
+                                 ?!@forInstructionEnumeratedObjectElementListAST ioElementList {
     let @lstring typeName
     select
       typeName = ["" nowhere]
     or
-      $@type$ ?typeName
+      <type_definition_ggs3> !?ioDeclarations ?typeName
     end
     select
       $*$
@@ -139,7 +141,7 @@ syntax extension galgas3InstructionsSyntax {
       endsWithEllipsis = true
     or
       repeat
-        <for_instruction_element> !?elementList
+        <for_instruction_element> !?ioDeclarations !?elementList
       while
       end
       select
@@ -169,7 +171,7 @@ syntax extension galgas3InstructionsSyntax {
     select
       typeName = ["" nowhere]
     or
-      $@type$ ?typeName
+      <type_definition_ggs3> !?ioDeclarations ?typeName
     end
     let @lstring enumerationVariable
     select
@@ -304,7 +306,8 @@ syntax extension galgas4InstructionsSyntax {
 
   #·······························································································
 
-  rule <for_instruction_element> ?!@forInstructionEnumeratedObjectElementListAST ioElementList {
+  rule <for_instruction_element> ?!@galgasDeclarationAST unused ioDeclarations
+                                 ?!@forInstructionEnumeratedObjectElementListAST ioElementList {
     $literalInt$ ?let count
     $*$
     var n = [count.bigint uint]
@@ -319,12 +322,13 @@ syntax extension galgas4InstructionsSyntax {
 
   #·······························································································
 
-  rule <for_instruction_element> ?!@forInstructionEnumeratedObjectElementListAST ioElementList {
+  rule <for_instruction_element> ?!@galgasDeclarationAST ioDeclarations
+                                 ?!@forInstructionEnumeratedObjectElementListAST ioElementList {
     let @lstring typeName
     select
       typeName = ["" nowhere]
     or
-      $@type$ ?typeName
+      <type_definition> !?ioDeclarations ?typeName
     end
     select
       $*$
@@ -349,7 +353,7 @@ syntax extension galgas4InstructionsSyntax {
     $($
     var elementList = @forInstructionEnumeratedObjectElementListAST {}
     repeat
-      <for_instruction_element> !?elementList
+      <for_instruction_element> !?ioDeclarations !?elementList
     while
       $,$
     end
@@ -373,7 +377,7 @@ syntax extension galgas4InstructionsSyntax {
     select
       typeName = ["" nowhere]
     or
-      $@type$ ?typeName
+      <type_definition> !?ioDeclarations ?typeName
     end
     let @lstring enumerationVariable
     select

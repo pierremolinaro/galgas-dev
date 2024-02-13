@@ -36,12 +36,13 @@ syntax extension galgas3DeclarationsSyntax {
     $listmap$
     $@type$ ?let @lstring mListmapTypeName indexing listmapDefinition
     $($
-    $@type$ ?let @lstring mAssociatedListTypeName
+    <type_definition_ggs3> !?ioDeclarations ?let associatedListTypeName
     $)$
     ioDeclarations.mDeclarationList += !@listmapDeclarationAST.new {
       !isPredefined: false # Is not predefined
       !mListmapTypeName
-      !mAssociatedListTypeName}
+      !associatedListTypeName
+    }
   }
 
   #·······························································································
@@ -58,12 +59,13 @@ syntax extension galgas4DeclarationsSyntax {
     $listmap$
     $@type$ ?let @lstring mListmapTypeName indexing listmapDefinition
     $($
-    $@type$ ?let @lstring mAssociatedListTypeName
+    <type_definition> !?ioDeclarations ?let associatedListTypeName
     $)$
     ioDeclarations.mDeclarationList += !@listmapDeclarationAST.new {
       !isPredefined: false # Is not predefined
       !mListmapTypeName
-      !mAssociatedListTypeName}
+      !associatedListTypeName
+    }
   }
 
   #·······························································································

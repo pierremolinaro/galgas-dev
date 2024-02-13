@@ -41,17 +41,7 @@ syntax extension galgas3InstructionsSyntax {
 
   rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
                                    !@semanticInstructionAST outInstruction {
-    $var$
-    $@type$ ?let typeName
-    $identifier$ ?let variableName
-    outInstruction = @localVariableDeclarationNoAssignmentAST.new {!typeName.location !typeName !variableName}
-  }
-
-  #·······························································································
-
-  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
-                                   !@semanticInstructionAST outInstruction {
-    $@type$ ?let typeName
+    $@type$ ?let typeName # Obsolete, dont't use <type_definition_ggs3>
     $identifier$ ?let variableName
     outInstruction = @localVariableDeclarationNoAssignmentAST.new {!typeName.location !typeName !variableName}
     if [option galgas_cli_options.errorOldStyleLocalVarDeclaration value] then
@@ -80,24 +70,32 @@ syntax extension galgas3InstructionsSyntax {
   rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                    !@semanticInstructionAST outInstruction {
     $var$
-    $@type$ ?let typeName
+    <type_definition_ggs3> !?ioDeclarations ?let typeName
     $identifier$ ?let variableName
-    $=$
-    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST sourceExpression
-    outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST.new {
-      !typeName.location
-      !false
-      !typeName
-      !variableName
-      !sourceExpression
-    }
+    select
+      outInstruction = @localVariableDeclarationNoAssignmentAST.new {
+        !typeName.location
+        !typeName
+        !variableName
+      }
+    or
+      $=$
+      <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST sourceExpression
+      outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST.new {
+        !typeName.location
+        !false
+        !typeName
+        !variableName
+        !sourceExpression
+      }
+    end
   }
 
   #·······························································································
 
   rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                    !@semanticInstructionAST outInstruction {
-    $@type$ ?let typeName
+    $@type$ ?let typeName # Obsolete, dont't use <type_definition_ggs3>
     $identifier$ ?let variableName
     $=$
     <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST sourceExpression

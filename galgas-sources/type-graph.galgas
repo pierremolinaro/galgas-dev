@@ -44,7 +44,7 @@ syntax extension galgas3DeclarationsSyntax {
     $graph$
     $@type$ ?let @lstring graphTypeName indexing graphDefinition
     $($
-    $@type$ ?let @lstring associatedListTypeName
+    <type_definition_ggs3> !?ioDeclarations ?let associatedListTypeName
     $)$
     ${$
     var graphInsertModifierList = @graphInsertModifierList {}
@@ -79,7 +79,7 @@ syntax extension galgas4DeclarationsSyntax {
     $graph$
     $@type$ ?let @lstring graphTypeName indexing graphDefinition
     $($
-    $@type$ ?let @lstring associatedListTypeName
+    <type_definition> !?ioDeclarations ?let associatedListTypeName
     $)$
     ${$
     var graphInsertModifierList = @graphInsertModifierList {}

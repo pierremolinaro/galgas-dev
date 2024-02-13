@@ -45,7 +45,7 @@ syntax extension galgas3DeclarationsSyntax {
     $@type$ ?let mDictTypeName indexing mapDefinition, structDefinition "-element"
   #--- Dict key type name
     $:$
-    $@type$ ?let keyTypeName
+    <type_definition_ggs3> !?ioDeclarations ?let keyTypeName
   #--- Map properties
     ${$
     var propertyList = @propertyInCollectionListAST {}
@@ -80,7 +80,7 @@ syntax extension galgas4DeclarationsSyntax {
     $@type$ ?let mDictTypeName indexing mapDefinition, structDefinition "-element"
   #--- Dict key type name
     $:$
-    $@type$ ?let keyTypeName
+    <type_definition> !?ioDeclarations ?let keyTypeName
   #--- Map properties
     ${$
     var propertyList = @propertyInCollectionListAST {}

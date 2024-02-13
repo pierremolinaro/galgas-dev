@@ -75,10 +75,8 @@ syntax extension templateSyntax {
 
   #·······························································································
 
-  rule <switch_case>
-    !@lstringlist outConstantNameList
-    !@switchExtractedValuesListAST outAssociatedValuesExtraction
-  {
+  rule <switch_case> !@lstringlist outConstantNameList
+                     !@switchExtractedValuesListAST outAssociatedValuesExtraction {
     outConstantNameList = {}
     repeat
       $identifier$ ?let @lstring constantName

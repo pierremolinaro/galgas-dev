@@ -82,6 +82,7 @@ syntax extension galgas3ExpressionSyntax {
     or
       let endOfReceiverExpression = @location.here
       $as$
+#      <type_definition_ggs3> !?ioDeclarations ?let typeName
       $@type$ ?let typeName
       outExpression = @castInExpressionAST.new {
         !outExpression
@@ -132,6 +133,7 @@ syntax extension galgas4ExpressionSyntax {
     or
       let endOfReceiverExpression = @location.here
       $as$
+#      <type_definition> !?ioDeclarations ?let typeName
       $@type$ ?let typeName
       outExpression = @castInExpressionAST.new {
         !outExpression

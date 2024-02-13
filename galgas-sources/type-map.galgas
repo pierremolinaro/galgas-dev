@@ -73,7 +73,7 @@ syntax extension galgas3DeclarationsSyntax {
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $map$
   #--- Map type name
-    $@type$ ?let @lstring mMapTypeName indexing mapDefinition, structDefinition "-element"
+    $@type$ ?let @lstring mapTypeName indexing mapDefinition, structDefinition "-element"
   #--- Map properties
     ${$
     var propertyList = @propertyInCollectionListAST {}
@@ -93,12 +93,12 @@ syntax extension galgas3DeclarationsSyntax {
     while
       <insert_or_replace_declaration> !?insertOrReplaceDeclarationListAST
     while
-      <method_declaration_ggs3> !mMapTypeName !?ioDeclarations
+      <method_declaration_ggs3> !mapTypeName !?ioDeclarations
     end
     $}$
     ioDeclarations.mDeclarationList += !@mapDeclarationAST.new {
       !isPredefined: false # Is not predefined
-      !mMapTypeName
+      !mapTypeName
       !propertyList
       !mInsertMethodList
       !mSearchMethodList
@@ -171,7 +171,7 @@ syntax extension galgas4DeclarationsSyntax {
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $map$
   #--- Map type name
-    $@type$ ?let @lstring mMapTypeName indexing mapDefinition, structDefinition "-element"
+    $@type$ ?let @lstring mapTypeName indexing mapDefinition, structDefinition "-element"
   #--- Map properties
     ${$
     var propertyList = @propertyInCollectionListAST {}
@@ -191,12 +191,12 @@ syntax extension galgas4DeclarationsSyntax {
     while
       <insert_or_replace_declaration> !?insertOrReplaceDeclarationListAST
     while
-      <method_declaration> !mMapTypeName !?ioDeclarations
+      <method_declaration> !mapTypeName !?ioDeclarations
     end
     $}$
     ioDeclarations.mDeclarationList += !@mapDeclarationAST.new {
       !isPredefined: false # Is not predefined
-      !mMapTypeName
+      !mapTypeName
       !propertyList
       !mInsertMethodList
       !mSearchMethodList

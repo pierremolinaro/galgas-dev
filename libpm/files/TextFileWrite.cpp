@@ -39,8 +39,8 @@ AbstractFileHandle (inFileName, "wt") {
 
 void TextFileWrite::performActualCharArrayOutput (const char * inCharArray,
                                                   const int32_t inArrayCount) {
-  if (isOpened () && (inArrayCount > 0)) {
-    appendUTF8String (size_t (inArrayCount), inCharArray) ;
+  if (isOpened () && (inCharArray != nullptr) && (inArrayCount > 0)) {
+    appendUTF8String (int (inArrayCount), inCharArray) ;
   }
 }
 
@@ -52,7 +52,7 @@ void TextFileWrite::performActualUnicodeArrayOutput (const utf32 * inCharArray,
     for (int32_t i=0 ; i<inArrayCount ; i++) {
       char buffer [8] ;
       const int32_t length = UTF8StringFromUTF32Character (inCharArray [i], buffer) ;
-      appendUTF8String (size_t (length), buffer) ;
+      appendUTF8String (int (length), buffer) ;
     }
   }
 }

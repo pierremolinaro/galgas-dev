@@ -61,6 +61,7 @@ syntax extension galgas3InstructionsSyntax {
     repeat
       $case$
       <switch_case>
+        !?ioDeclarations
         ?let @lstringlist constantNameList
         ?let @switchExtractedValuesListAST associatedValuesExtraction
       $:$
@@ -81,10 +82,9 @@ syntax extension galgas3InstructionsSyntax {
 
   #·······························································································
 
-  rule <switch_case>
-    !@lstringlist outConstantNameList
-    !@switchExtractedValuesListAST outAssociatedValuesExtraction
-  {
+  rule <switch_case> ?!@galgasDeclarationAST ioDeclarations
+                     !@lstringlist outConstantNameList
+                     !@switchExtractedValuesListAST outAssociatedValuesExtraction  {
     outConstantNameList = {}
     repeat
       $identifier$ ?let @lstring constantName
@@ -109,7 +109,7 @@ syntax extension galgas3InstructionsSyntax {
          or
           let @lstring typeName
           select
-            $@type$ ?typeName
+            <type_definition_ggs3> !?ioDeclarations ?typeName
           or
             typeName = ["" nowhere]
           end
@@ -149,6 +149,7 @@ syntax extension galgas4InstructionsSyntax {
     repeat
       $case$
       <switch_case>
+        !?ioDeclarations
         ?let @lstringlist constantNameList
         ?let @switchExtractedValuesListAST associatedValuesExtraction
       $:$
@@ -169,7 +170,8 @@ syntax extension galgas4InstructionsSyntax {
 
   #·······························································································
 
-  rule <switch_case> !@lstringlist outConstantNameList
+  rule <switch_case> ?!@galgasDeclarationAST ioDeclarations
+                     !@lstringlist outConstantNameList
                      !@switchExtractedValuesListAST outAssociatedValuesExtraction {
     outConstantNameList = {}
     repeat
@@ -195,7 +197,7 @@ syntax extension galgas4InstructionsSyntax {
          or
           let @lstring typeName
           select
-            $@type$ ?typeName
+            <type_definition> !?ioDeclarations ?typeName
           or
             typeName = ["" nowhere]
           end

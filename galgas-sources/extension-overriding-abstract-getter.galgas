@@ -39,10 +39,10 @@ syntax extension galgas3DeclarationsSyntax {
     $abstract$
     $getter$
     $@type$ ?let className indexing typeReferenceOverrideAbstractExtensionGetter
-    $identifier$ ?let mGetterName indexing overrideAbstractExtensionGetterDefinition
-    <formal_input_parameter_list_ggs3> !?ioDeclarations ?let @formalInputParameterListAST mFormalInputParameterList
+    $identifier$ ?let getterName indexing overrideAbstractExtensionGetterDefinition
+    <formal_input_parameter_list_ggs3> !?ioDeclarations ?let @formalInputParameterListAST formalInputParameterList
     $->$
-    $@type$ ?let @lstring mReturnedTypeName
+    <type_definition_ggs3> !?ioDeclarations ?let returnedTypeName
     select
       $identifier$ ? let idf
       warning idf : "an identifier is no longer required here" fixit { remove }
@@ -51,9 +51,9 @@ syntax extension galgas3DeclarationsSyntax {
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionGetterAST.new {
       !isPredefined: false # Is not predefined
       !className
-      !mGetterName
-      !mFormalInputParameterList
-      !mReturnedTypeName
+      !getterName
+      !formalInputParameterList
+      !returnedTypeName
     }
   }
 
@@ -63,10 +63,10 @@ syntax extension galgas3DeclarationsSyntax {
     $override$
     $abstract$
     $getter$
-    $identifier$ ?let mGetterName indexing overrideAbstractExtensionGetterDefinition
-    <formal_input_parameter_list_ggs3> !?ioDeclarations ?let @formalInputParameterListAST mFormalInputParameterList
+    $identifier$ ?let getterName indexing overrideAbstractExtensionGetterDefinition
+    <formal_input_parameter_list_ggs3> !?ioDeclarations ?let @formalInputParameterListAST formalInputParameterList
     $->$
-    $@type$ ?let @lstring mReturnedTypeName
+    <type_definition_ggs3> !?ioDeclarations ?let returnedTypeName
     select
       $identifier$ ? let idf
       warning idf : "an identifier is no longer required here" fixit { remove }
@@ -75,9 +75,9 @@ syntax extension galgas3DeclarationsSyntax {
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionGetterAST.new {
       !isPredefined: false # Is not predefined
       !inClassName
-      !mGetterName
-      !mFormalInputParameterList
-      !mReturnedTypeName
+      !getterName
+      !formalInputParameterList
+      !returnedTypeName
     }
   }
 
@@ -97,8 +97,8 @@ syntax extension galgas4DeclarationsSyntax {
     $func$
     $@type$ ?let className indexing typeReferenceOverrideAbstractExtensionGetter
     $.$
-    $identifier$ ?let mGetterName indexing overrideAbstractExtensionGetterDefinition
-    <formal_input_parameter_list> !?ioDeclarations ?let @formalInputParameterListAST mFormalInputParameterList
+    $identifier$ ?let getterName indexing overrideAbstractExtensionGetterDefinition
+    <formal_input_parameter_list> !?ioDeclarations ?let @formalInputParameterListAST formalInputParameterList
     $->$
     <type_definition> !?ioDeclarations ?let returnedTypeName
     select
@@ -109,8 +109,8 @@ syntax extension galgas4DeclarationsSyntax {
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionGetterAST.new {
       !isPredefined: false # Is not predefined
       !className
-      !mGetterName
-      !mFormalInputParameterList
+      !getterName
+      !formalInputParameterList
       !returnedTypeName
     }
   }
@@ -122,8 +122,8 @@ syntax extension galgas4DeclarationsSyntax {
     $override$
     $abstract$
     $func$
-    $identifier$ ?let mGetterName indexing overrideAbstractExtensionGetterDefinition
-    <formal_input_parameter_list> !?ioDeclarations ?let @formalInputParameterListAST mFormalInputParameterList
+    $identifier$ ?let getterName indexing overrideAbstractExtensionGetterDefinition
+    <formal_input_parameter_list> !?ioDeclarations ?let @formalInputParameterListAST formalInputParameterList
     $->$
     <type_definition> !?ioDeclarations ?let returnedTypeName
     select
@@ -134,8 +134,8 @@ syntax extension galgas4DeclarationsSyntax {
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionGetterAST.new {
       !isPredefined: false # Is not predefined
       !inClassName
-      !mGetterName
-      !mFormalInputParameterList
+      !getterName
+      !formalInputParameterList
       !returnedTypeName
     }
   }
