@@ -33,8 +33,8 @@ mMatchedTemplateDelimiterIndex (-1) {
 %
   for (key) in STRINGS_IN_EXPLICIT_RULES do
    if [key count] > 0 then
-   %\n//--- Unicode string for '$%![key identifierRepresentation]%$'\n%
-   %static const utf32 kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![key identifierRepresentation]% [] = % ![key utf32Representation]% ;\n%
+   %\n//--- Unicode string for '$%![key utf8RepresentationWithoutDelimiters]%$'\n%
+   %static const utf32 kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![key identifierRepresentation]% [] = % ![key utf32Representation !withZeroTerminator: true]% ;\n%
    end
   end
 %

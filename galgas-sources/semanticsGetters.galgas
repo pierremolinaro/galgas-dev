@@ -184,8 +184,8 @@ proc enterBaseGetterWithArgument
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ?getterName: let @string inGetterName
   ?argSelector: let @string inArgument1Selector
-  ?let @string inArgument1TypeName
-  ?let @string inArgument1Name
+  ?argType: let @string inArgument1TypeName
+  ?argName: let @string inArgument1Name
   ?returnedTypeName:let @string inReturnedTypeName
   ?hasCompilerArgument:let @bool inHasCompilerArgument
 {

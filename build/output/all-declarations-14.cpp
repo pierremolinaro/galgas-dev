@@ -8264,39 +8264,39 @@ mMatchedTemplateDelimiterIndex (-1) {
 //                      U N I C O D E    S T R I N G S
 //--------------------------------------------------------------------------------------------------
 
-//--- Unicode string for '$_A_$'
+//--- Unicode string for '$\n$'
 static const utf32 kUnicodeString_galgasTemplateScanner__A_ [] = {
   TO_UNICODE (10),
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_25_$'
+//--- Unicode string for '$%$'
 static const utf32 kUnicodeString_galgasTemplateScanner__25_ [] = {
   TO_UNICODE ('%'),
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_5C_$'
+//--- Unicode string for '$\\$'
 static const utf32 kUnicodeString_galgasTemplateScanner__5C_ [] = {
   TO_UNICODE ('\\'),
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_5C__25_$'
+//--- Unicode string for '$\\%$'
 static const utf32 kUnicodeString_galgasTemplateScanner__5C__25_ [] = {
   TO_UNICODE ('\\'),
   TO_UNICODE ('%'),
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_5C__5C_$'
+//--- Unicode string for '$\\\\$'
 static const utf32 kUnicodeString_galgasTemplateScanner__5C__5C_ [] = {
   TO_UNICODE ('\\'),
   TO_UNICODE ('\\'),
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_5C_n$'
+//--- Unicode string for '$\\n$'
 static const utf32 kUnicodeString_galgasTemplateScanner__5C_n [] = {
   TO_UNICODE ('\\'),
   TO_UNICODE ('n'),

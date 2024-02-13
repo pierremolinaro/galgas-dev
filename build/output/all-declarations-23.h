@@ -178,20 +178,20 @@ void routine_check_5F_K_5F_L_5F_escapeCharacters_3F_ (const class GALGAS_lstring
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'enterBaseGetterWithArgument&&?getterName?argSelector???returnedTypeName?hasCompilerArgument'
+//Routine 'enterBaseGetterWithArgument&&?getterName?argSelector?argType?argName?returnedTypeName?hasCompilerArgument'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_enterBaseGetterWithArgument_26__26__3F_getterName_3F_argSelector_3F__3F__3F_returnedTypeName_3F_hasCompilerArgument (class GALGAS_getterMap & ioArgument0,
-                                                                                                                                  class GALGAS_unifiedTypeMap & ioArgument1,
-                                                                                                                                  const class GALGAS_string constinArgument2,
-                                                                                                                                  const class GALGAS_string constinArgument3,
-                                                                                                                                  const class GALGAS_string constinArgument4,
-                                                                                                                                  const class GALGAS_string constinArgument5,
-                                                                                                                                  const class GALGAS_string constinArgument6,
-                                                                                                                                  const class GALGAS_bool constinArgument7,
-                                                                                                                                  class Compiler * inCompiler
-                                                                                                                                  COMMA_LOCATION_ARGS) ;
+void routine_enterBaseGetterWithArgument_26__26__3F_getterName_3F_argSelector_3F_argType_3F_argName_3F_returnedTypeName_3F_hasCompilerArgument (class GALGAS_getterMap & ioArgument0,
+                                                                                                                                                class GALGAS_unifiedTypeMap & ioArgument1,
+                                                                                                                                                const class GALGAS_string constinArgument2,
+                                                                                                                                                const class GALGAS_string constinArgument3,
+                                                                                                                                                const class GALGAS_string constinArgument4,
+                                                                                                                                                const class GALGAS_string constinArgument5,
+                                                                                                                                                const class GALGAS_string constinArgument6,
+                                                                                                                                                const class GALGAS_bool constinArgument7,
+                                                                                                                                                class Compiler * inCompiler
+                                                                                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

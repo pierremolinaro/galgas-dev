@@ -44,7 +44,7 @@ class AbstractOutputStream {
 
 //--- Appending string
   public: void appendString (const String inString) ; // Pass by copy (for handling 's.appendString (s) ;' instruction)
-  public: void appendUTF32LiteralStringConstant (const String & inUTF32String) ;
+  public: void appendUTF32LiteralStringConstant (const String & inUTF32String, const bool inAppendZeroTerminator) ;
 
 //--- Appending C string
   public: void appendString (const char * inCstring) ;

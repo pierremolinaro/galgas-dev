@@ -9,6 +9,22 @@
 
 //--------------------------------------------------------------------------------------------------
 //
+//Overriding extension getter '@externFunctionDeclarationAST keyRepresentation'
+//
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_string cPtr_externFunctionDeclarationAST::getter_keyRepresentation (Compiler * inCompiler
+                                                                           COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_string result_result ; // Returned variable
+  const GALGAS_externFunctionDeclarationAST temp_0 = this ;
+  result_result = GALGAS_string ("extern function ").add_operation (temp_0.readProperty_mFunctionName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 374)) ;
+//---
+  return result_result ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
 //Routine 'addExtensions???&&??isClass&&&?acceptSetters'
 //
 //--------------------------------------------------------------------------------------------------

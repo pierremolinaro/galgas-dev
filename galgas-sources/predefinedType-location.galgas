@@ -160,7 +160,7 @@ refclass @locationPredefinedTypeAST : @predefinedTypeAST {
       !?outMap
       !?ioUnifiedTypeMap
       !getterName: "union"
-      !argSelector: "" !"location" !"inOtherLocation"
+      !argSelector: "" !argType: "location" !argName: "inOtherLocation"
       !returnedTypeName:"location"
       !hasCompilerArgument: true
     )

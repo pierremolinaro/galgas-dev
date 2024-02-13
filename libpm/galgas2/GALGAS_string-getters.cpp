@@ -139,11 +139,12 @@ GALGAS_string GALGAS_string::getter_sha_32__35__36_ (UNUSED_LOCATION_ARGS) const
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_string::getter_utf_33__32_Representation (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_string::getter_utf_33__32_Representation (const GALGAS_bool & inAppendZeroTerminator
+                                                               COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
-  if (isValid ()) {
+  if (isValid () && inAppendZeroTerminator.isValid ()) {
     String s ;
-    s.appendUTF32LiteralStringConstant (mString) ;
+    s.appendUTF32LiteralStringConstant (mString, inAppendZeroTerminator.boolValue ()) ;
     result = GALGAS_string (s) ;
   }
   return result ;

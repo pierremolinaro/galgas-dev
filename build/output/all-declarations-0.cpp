@@ -752,14 +752,14 @@ String Lexique_galgasScanner_33_::getMessageForTerminal (const int32_t inTermina
 //                      U N I C O D E    S T R I N G S                                           
 //--------------------------------------------------------------------------------------------------
 
-//--- Unicode string for '$_21__3D_$'
+//--- Unicode string for '$!=$'
 static const utf32 kUnicodeString_galgasScanner_33___21__3D_ [] = {
   TO_UNICODE ('!'),
   TO_UNICODE ('='),
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_21__3D__3D_$'
+//--- Unicode string for '$!==$'
 static const utf32 kUnicodeString_galgasScanner_33___21__3D__3D_ [] = {
   TO_UNICODE ('!'),
   TO_UNICODE ('='),
@@ -767,41 +767,41 @@ static const utf32 kUnicodeString_galgasScanner_33___21__3D__3D_ [] = {
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_21__5E_$'
+//--- Unicode string for '$!^$'
 static const utf32 kUnicodeString_galgasScanner_33___21__5E_ [] = {
   TO_UNICODE ('!'),
   TO_UNICODE ('^'),
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_26_$'
+//--- Unicode string for '$&$'
 static const utf32 kUnicodeString_galgasScanner_33___26_ [] = {
   TO_UNICODE ('&'),
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_26__26_$'
+//--- Unicode string for '$&&$'
 static const utf32 kUnicodeString_galgasScanner_33___26__26_ [] = {
   TO_UNICODE ('&'),
   TO_UNICODE ('&'),
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_26__2A_$'
+//--- Unicode string for '$&*$'
 static const utf32 kUnicodeString_galgasScanner_33___26__2A_ [] = {
   TO_UNICODE ('&'),
   TO_UNICODE ('*'),
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_26__2B_$'
+//--- Unicode string for '$&+$'
 static const utf32 kUnicodeString_galgasScanner_33___26__2B_ [] = {
   TO_UNICODE ('&'),
   TO_UNICODE ('+'),
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_26__2B__2B_$'
+//--- Unicode string for '$&++$'
 static const utf32 kUnicodeString_galgasScanner_33___26__2B__2B_ [] = {
   TO_UNICODE ('&'),
   TO_UNICODE ('+'),
@@ -809,14 +809,14 @@ static const utf32 kUnicodeString_galgasScanner_33___26__2B__2B_ [] = {
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_26__2D_$'
+//--- Unicode string for '$&-$'
 static const utf32 kUnicodeString_galgasScanner_33___26__2D_ [] = {
   TO_UNICODE ('&'),
   TO_UNICODE ('-'),
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_26__2D__2D_$'
+//--- Unicode string for '$&--$'
 static const utf32 kUnicodeString_galgasScanner_33___26__2D__2D_ [] = {
   TO_UNICODE ('&'),
   TO_UNICODE ('-'),
@@ -824,165 +824,165 @@ static const utf32 kUnicodeString_galgasScanner_33___26__2D__2D_ [] = {
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_26__2F_$'
+//--- Unicode string for '$&/$'
 static const utf32 kUnicodeString_galgasScanner_33___26__2F_ [] = {
   TO_UNICODE ('&'),
   TO_UNICODE ('/'),
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_28_$'
+//--- Unicode string for '$($'
 static const utf32 kUnicodeString_galgasScanner_33___28_ [] = {
   TO_UNICODE ('('),
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_29_$'
+//--- Unicode string for '$)$'
 static const utf32 kUnicodeString_galgasScanner_33___29_ [] = {
   TO_UNICODE (')'),
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_2A_$'
+//--- Unicode string for '$*$'
 static const utf32 kUnicodeString_galgasScanner_33___2A_ [] = {
   TO_UNICODE ('*'),
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_2A__3D_$'
+//--- Unicode string for '$*=$'
 static const utf32 kUnicodeString_galgasScanner_33___2A__3D_ [] = {
   TO_UNICODE ('*'),
   TO_UNICODE ('='),
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_2B_$'
+//--- Unicode string for '$+$'
 static const utf32 kUnicodeString_galgasScanner_33___2B_ [] = {
   TO_UNICODE ('+'),
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_2B__2B_$'
+//--- Unicode string for '$++$'
 static const utf32 kUnicodeString_galgasScanner_33___2B__2B_ [] = {
   TO_UNICODE ('+'),
   TO_UNICODE ('+'),
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_2B__3D_$'
+//--- Unicode string for '$+=$'
 static const utf32 kUnicodeString_galgasScanner_33___2B__3D_ [] = {
   TO_UNICODE ('+'),
   TO_UNICODE ('='),
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_2C_$'
+//--- Unicode string for '$,$'
 static const utf32 kUnicodeString_galgasScanner_33___2C_ [] = {
   TO_UNICODE (','),
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_2D_$'
+//--- Unicode string for '$-$'
 static const utf32 kUnicodeString_galgasScanner_33___2D_ [] = {
   TO_UNICODE ('-'),
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_2D__2D_$'
+//--- Unicode string for '$--$'
 static const utf32 kUnicodeString_galgasScanner_33___2D__2D_ [] = {
   TO_UNICODE ('-'),
   TO_UNICODE ('-'),
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_2D__3D_$'
+//--- Unicode string for '$-=$'
 static const utf32 kUnicodeString_galgasScanner_33___2D__3D_ [] = {
   TO_UNICODE ('-'),
   TO_UNICODE ('='),
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_2D__3E_$'
+//--- Unicode string for '$->$'
 static const utf32 kUnicodeString_galgasScanner_33___2D__3E_ [] = {
   TO_UNICODE ('-'),
   TO_UNICODE ('>'),
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_2E__2E_$'
+//--- Unicode string for '$..$'
 static const utf32 kUnicodeString_galgasScanner_33___2E__2E_ [] = {
   TO_UNICODE ('.'),
   TO_UNICODE ('.'),
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_2E__3C_$'
+//--- Unicode string for '$.<$'
 static const utf32 kUnicodeString_galgasScanner_33___2E__3C_ [] = {
   TO_UNICODE ('.'),
   TO_UNICODE ('<'),
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_2F_$'
+//--- Unicode string for '$/$'
 static const utf32 kUnicodeString_galgasScanner_33___2F_ [] = {
   TO_UNICODE ('/'),
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_2F__2F_$'
+//--- Unicode string for '$//$'
 static const utf32 kUnicodeString_galgasScanner_33___2F__2F_ [] = {
   TO_UNICODE ('/'),
   TO_UNICODE ('/'),
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_2F__3D_$'
+//--- Unicode string for '$/=$'
 static const utf32 kUnicodeString_galgasScanner_33___2F__3D_ [] = {
   TO_UNICODE ('/'),
   TO_UNICODE ('='),
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_30_x$'
+//--- Unicode string for '$0x$'
 static const utf32 kUnicodeString_galgasScanner_33___30_x [] = {
   TO_UNICODE ('0'),
   TO_UNICODE ('x'),
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_3A_$'
+//--- Unicode string for '$:$'
 static const utf32 kUnicodeString_galgasScanner_33___3A_ [] = {
   TO_UNICODE (':'),
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_3A__3E_$'
+//--- Unicode string for '$:>$'
 static const utf32 kUnicodeString_galgasScanner_33___3A__3E_ [] = {
   TO_UNICODE (':'),
   TO_UNICODE ('>'),
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_3B_$'
+//--- Unicode string for '$;$'
 static const utf32 kUnicodeString_galgasScanner_33___3B_ [] = {
   TO_UNICODE (';'),
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_3D_$'
+//--- Unicode string for '$=$'
 static const utf32 kUnicodeString_galgasScanner_33___3D_ [] = {
   TO_UNICODE ('='),
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_3D__3D_$'
+//--- Unicode string for '$==$'
 static const utf32 kUnicodeString_galgasScanner_33___3D__3D_ [] = {
   TO_UNICODE ('='),
   TO_UNICODE ('='),
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_3D__3D__3D_$'
+//--- Unicode string for '$===$'
 static const utf32 kUnicodeString_galgasScanner_33___3D__3D__3D_ [] = {
   TO_UNICODE ('='),
   TO_UNICODE ('='),
@@ -990,27 +990,27 @@ static const utf32 kUnicodeString_galgasScanner_33___3D__3D__3D_ [] = {
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_3E_$'
+//--- Unicode string for '$>$'
 static const utf32 kUnicodeString_galgasScanner_33___3E_ [] = {
   TO_UNICODE ('>'),
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_3E__3D_$'
+//--- Unicode string for '$>=$'
 static const utf32 kUnicodeString_galgasScanner_33___3E__3D_ [] = {
   TO_UNICODE ('>'),
   TO_UNICODE ('='),
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_3E__3E_$'
+//--- Unicode string for '$>>$'
 static const utf32 kUnicodeString_galgasScanner_33___3E__3E_ [] = {
   TO_UNICODE ('>'),
   TO_UNICODE ('>'),
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_3F__5E_$'
+//--- Unicode string for '$?^$'
 static const utf32 kUnicodeString_galgasScanner_33___3F__5E_ [] = {
   TO_UNICODE ('\?'),
   TO_UNICODE ('^'),
@@ -1047,39 +1047,39 @@ static const utf32 kUnicodeString_galgasScanner_33__MacOSDeployment [] = {
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_5B_$'
+//--- Unicode string for '$[$'
 static const utf32 kUnicodeString_galgasScanner_33___5B_ [] = {
   TO_UNICODE ('['),
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_5C__24_$'
+//--- Unicode string for '$\\$$'
 static const utf32 kUnicodeString_galgasScanner_33___5C__24_ [] = {
   TO_UNICODE ('\\'),
   TO_UNICODE ('$'),
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_5C__5C_$'
+//--- Unicode string for '$\\\\$'
 static const utf32 kUnicodeString_galgasScanner_33___5C__5C_ [] = {
   TO_UNICODE ('\\'),
   TO_UNICODE ('\\'),
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_5D_$'
+//--- Unicode string for '$]$'
 static const utf32 kUnicodeString_galgasScanner_33___5D_ [] = {
   TO_UNICODE (']'),
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_5E_$'
+//--- Unicode string for '$^$'
 static const utf32 kUnicodeString_galgasScanner_33___5E_ [] = {
   TO_UNICODE ('^'),
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_60_$'
+//--- Unicode string for '$`$'
 static const utf32 kUnicodeString_galgasScanner_33___60_ [] = {
   TO_UNICODE ('`'),
   TO_UNICODE (0)
@@ -1108,7 +1108,7 @@ static const utf32 kUnicodeString_galgasScanner_33__after [] = {
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$app_2D_link$'
+//--- Unicode string for '$app-link$'
 static const utf32 kUnicodeString_galgasScanner_33__app_2D_link [] = {
   TO_UNICODE ('a'),
   TO_UNICODE ('p'),
@@ -1121,7 +1121,7 @@ static const utf32 kUnicodeString_galgasScanner_33__app_2D_link [] = {
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$app_2D_source$'
+//--- Unicode string for '$app-source$'
 static const utf32 kUnicodeString_galgasScanner_33__app_2D_source [] = {
   TO_UNICODE ('a'),
   TO_UNICODE ('p'),
@@ -1261,7 +1261,7 @@ static const utf32 kUnicodeString_galgasScanner_33__class [] = {
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$codeblocks_2D_linux_33__32_$'
+//--- Unicode string for '$codeblocks-linux32$'
 static const utf32 kUnicodeString_galgasScanner_33__codeblocks_2D_linux_33__32_ [] = {
   TO_UNICODE ('c'),
   TO_UNICODE ('o'),
@@ -1284,7 +1284,7 @@ static const utf32 kUnicodeString_galgasScanner_33__codeblocks_2D_linux_33__32_ 
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$codeblocks_2D_linux_36__34_$'
+//--- Unicode string for '$codeblocks-linux64$'
 static const utf32 kUnicodeString_galgasScanner_33__codeblocks_2D_linux_36__34_ [] = {
   TO_UNICODE ('c'),
   TO_UNICODE ('o'),
@@ -1307,7 +1307,7 @@ static const utf32 kUnicodeString_galgasScanner_33__codeblocks_2D_linux_36__34_ 
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$codeblocks_2D_windows$'
+//--- Unicode string for '$codeblocks-windows$'
 static const utf32 kUnicodeString_galgasScanner_33__codeblocks_2D_windows [] = {
   TO_UNICODE ('c'),
   TO_UNICODE ('o'),
@@ -1740,7 +1740,7 @@ static const utf32 kUnicodeString_galgasScanner_33__macCodeSign [] = {
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$makefile_2D_macosx$'
+//--- Unicode string for '$makefile-macosx$'
 static const utf32 kUnicodeString_galgasScanner_33__makefile_2D_macosx [] = {
   TO_UNICODE ('m'),
   TO_UNICODE ('a'),
@@ -1760,7 +1760,7 @@ static const utf32 kUnicodeString_galgasScanner_33__makefile_2D_macosx [] = {
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$makefile_2D_unix$'
+//--- Unicode string for '$makefile-unix$'
 static const utf32 kUnicodeString_galgasScanner_33__makefile_2D_unix [] = {
   TO_UNICODE ('m'),
   TO_UNICODE ('a'),
@@ -1778,7 +1778,7 @@ static const utf32 kUnicodeString_galgasScanner_33__makefile_2D_unix [] = {
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$makefile_2D_win_33__32__2D_on_2D_macosx$'
+//--- Unicode string for '$makefile-win32-on-macosx$'
 static const utf32 kUnicodeString_galgasScanner_33__makefile_2D_win_33__32__2D_on_2D_macosx [] = {
   TO_UNICODE ('m'),
   TO_UNICODE ('a'),
@@ -1807,7 +1807,7 @@ static const utf32 kUnicodeString_galgasScanner_33__makefile_2D_win_33__32__2D_o
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx$'
+//--- Unicode string for '$makefile-x86linux32-on-macosx$'
 static const utf32 kUnicodeString_galgasScanner_33__makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx [] = {
   TO_UNICODE ('m'),
   TO_UNICODE ('a'),
@@ -1841,7 +1841,7 @@ static const utf32 kUnicodeString_galgasScanner_33__makefile_2D_x_38__36_linux_3
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx$'
+//--- Unicode string for '$makefile-x86linux64-on-macosx$'
 static const utf32 kUnicodeString_galgasScanner_33__makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx [] = {
   TO_UNICODE ('m'),
   TO_UNICODE ('a'),
@@ -2384,7 +2384,7 @@ static const utf32 kUnicodeString_galgasScanner_33__then [] = {
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$tool_2D_source$'
+//--- Unicode string for '$tool-source$'
 static const utf32 kUnicodeString_galgasScanner_33__tool_2D_source [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('o'),
@@ -2514,32 +2514,32 @@ static const utf32 kUnicodeString_galgasScanner_33__with [] = {
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_7B_$'
+//--- Unicode string for '${$'
 static const utf32 kUnicodeString_galgasScanner_33___7B_ [] = {
   TO_UNICODE ('{'),
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_7C_$'
+//--- Unicode string for '$|$'
 static const utf32 kUnicodeString_galgasScanner_33___7C_ [] = {
   TO_UNICODE ('|'),
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_7C__7C_$'
+//--- Unicode string for '$||$'
 static const utf32 kUnicodeString_galgasScanner_33___7C__7C_ [] = {
   TO_UNICODE ('|'),
   TO_UNICODE ('|'),
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_7D_$'
+//--- Unicode string for '$}$'
 static const utf32 kUnicodeString_galgasScanner_33___7D_ [] = {
   TO_UNICODE ('}'),
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_7E_$'
+//--- Unicode string for '$~$'
 static const utf32 kUnicodeString_galgasScanner_33___7E_ [] = {
   TO_UNICODE ('~'),
   TO_UNICODE (0)
@@ -16949,6 +16949,116 @@ GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionListForGen
       result = *p ;
     }else{
       inCompiler->castError ("templateInstructionListForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+typeComparisonResult GALGAS_templateBlockInstructionForGeneration_2D_weak::objectCompare (const GALGAS_templateBlockInstructionForGeneration_2D_weak & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = kOperandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_templateBlockInstructionForGeneration_2D_weak::GALGAS_templateBlockInstructionForGeneration_2D_weak (void) :
+GALGAS_templateInstructionForGeneration_2D_weak () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_templateBlockInstructionForGeneration_2D_weak & GALGAS_templateBlockInstructionForGeneration_2D_weak::operator = (const GALGAS_templateBlockInstructionForGeneration & inSource) {
+  cPtr_weakReference_proxy * proxyPtr = nullptr ;
+  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_templateBlockInstructionForGeneration_2D_weak::GALGAS_templateBlockInstructionForGeneration_2D_weak (const GALGAS_templateBlockInstructionForGeneration & inSource) :
+GALGAS_templateInstructionForGeneration_2D_weak (inSource) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_templateBlockInstructionForGeneration_2D_weak GALGAS_templateBlockInstructionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_templateBlockInstructionForGeneration_2D_weak result ;
+  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_templateBlockInstructionForGeneration GALGAS_templateBlockInstructionForGeneration_2D_weak::bang_templateBlockInstructionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GALGAS_templateBlockInstructionForGeneration result ;
+  if (mProxyPtr != nullptr) {
+    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_templateBlockInstructionForGeneration) ;
+      result = GALGAS_templateBlockInstructionForGeneration ((cPtr_templateBlockInstructionForGeneration *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @templateBlockInstructionForGeneration-weak generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateBlockInstructionForGeneration_2D_weak ("templateBlockInstructionForGeneration-weak",
+                                                                                                     & kTypeDescriptor_GALGAS_templateInstructionForGeneration_2D_weak) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_templateBlockInstructionForGeneration_2D_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateBlockInstructionForGeneration_2D_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_templateBlockInstructionForGeneration_2D_weak::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_templateBlockInstructionForGeneration_2D_weak (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_templateBlockInstructionForGeneration_2D_weak GALGAS_templateBlockInstructionForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
+                                                                                                                          Compiler * inCompiler
+                                                                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_templateBlockInstructionForGeneration_2D_weak result ;
+  const GALGAS_templateBlockInstructionForGeneration_2D_weak * p = (const GALGAS_templateBlockInstructionForGeneration_2D_weak *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_templateBlockInstructionForGeneration_2D_weak *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("templateBlockInstructionForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

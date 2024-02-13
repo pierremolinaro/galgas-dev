@@ -553,11 +553,13 @@ refclass @stringPredefinedTypeAST : @predefinedTypeAST {
       !returnedTypeName:"uint"
       !hasCompilerArgument:false
     )
-    enterBaseGetterWithoutArgument (
+    enterBaseGetterWithArgument (
       !?outMap
       !?ioUnifiedTypeMap
       !getterName: "utf32Representation"
-      !obsoleteName: ""
+      !argSelector: "withZeroTerminator"
+      !argType: "bool"
+      !argName: "inAppendZeroTerminator"
       !returnedTypeName:"string"
       !hasCompilerArgument:false
     )
@@ -837,7 +839,8 @@ refclass @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap
       !?ioUnifiedTypeMap
       !getterName: "utf8RepresentationEnclosedWithin"
-      !argSelector: "" !"char" !"inCharacter"
+      !argSelector: ""
+      !argType: "char" !argName: "inCharacter"
       !returnedTypeName: "string"
       !hasCompilerArgument: false
     )
@@ -845,7 +848,8 @@ refclass @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap
       !?ioUnifiedTypeMap
       !getterName: "commandWithArguments"
-      !argSelector: "" !"stringlist" !"inArguments"
+      !argSelector: ""
+      !argType: "stringlist" !argName: "inArguments"
       !returnedTypeName: "sint"
       !hasCompilerArgument: true
     )
@@ -853,7 +857,8 @@ refclass @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap
       !?ioUnifiedTypeMap
       !getterName: "hiddenCommandWithArguments"
-      !argSelector: "" !"stringlist" !"inArguments"
+      !argSelector: ""
+      !argType: "stringlist" !argName: "inArguments"
       !returnedTypeName: "string"
       !hasCompilerArgument: true
     )
@@ -861,7 +866,8 @@ refclass @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap
       !?ioUnifiedTypeMap
       !getterName: "characterAtIndex"
-      !argSelector: "" !"uint" !"inIndex"
+      !argSelector: ""
+      !argType: "uint" !argName: "inIndex"
       !returnedTypeName:"char"
       !hasCompilerArgument:true
     )
@@ -869,7 +875,8 @@ refclass @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap
       !?ioUnifiedTypeMap
       !getterName: "containsCharacter"
-      !argSelector: "" !"char" !"inCharacter"
+      !argSelector: ""
+      !argType: "char" !argName: "inCharacter"
       !returnedTypeName:"bool"
       !hasCompilerArgument:false
     )
@@ -890,7 +897,8 @@ refclass @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap
       !?ioUnifiedTypeMap
       !getterName: "stringByRemovingCharacterAtIndex"
-      !argSelector: "" !"uint" !"inIndex"
+      !argSelector: ""
+      !argType: "uint" !argName: "inIndex"
       !returnedTypeName:"string"
       !hasCompilerArgument:true
     )
@@ -898,7 +906,8 @@ refclass @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap
       !?ioUnifiedTypeMap
       !getterName: "subStringFromIndex"
-      !argSelector: "" !"uint" !"inIndex"
+      !argSelector: ""
+      !argType: "uint" !argName: "inIndex"
       !returnedTypeName:"string"
       !hasCompilerArgument:false
     )
@@ -906,7 +915,8 @@ refclass @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap
       !?ioUnifiedTypeMap
       !getterName: "rightSubString"
-      !argSelector: "" !"uint" !"inLength"
+      !argSelector: ""
+      !argType: "uint" !argName: "inLength"
       !returnedTypeName:"string"
       !hasCompilerArgument:false
     )
@@ -914,7 +924,8 @@ refclass @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap
       !?ioUnifiedTypeMap
       !getterName: "leftSubString"
-      !argSelector: "" !"uint" !"inLength"
+      !argSelector: ""
+      !argType: "uint" !argName: "inLength"
       !returnedTypeName:"string"
       !hasCompilerArgument:false
     )
@@ -931,7 +942,8 @@ refclass @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap
       !?ioUnifiedTypeMap
       !getterName: "absolutePathFromPath"
-      !argSelector: "" !"string" !"inPath"
+      !argSelector: ""
+      !argType: "string" !argName: "inPath"
       !returnedTypeName:"string"
       !hasCompilerArgument:false
     )
@@ -939,7 +951,7 @@ refclass @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap
       !?ioUnifiedTypeMap
       !getterName: "relativePathFromPath"
-      !argSelector: "" !"string" !"inPath"
+      !argSelector: "" !argType: "string" !argName: "inPath"
       !returnedTypeName:"string"
       !hasCompilerArgument:false
     )
@@ -947,7 +959,7 @@ refclass @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap
       !?ioUnifiedTypeMap
       !getterName: "componentsSeparatedByString"
-      !argSelector: "" !"string" !"inSeparator"
+      !argSelector: "" !argType: "string" !argName: "inSeparator"
       !returnedTypeName:"stringlist"
       !hasCompilerArgument:false
     )
@@ -992,8 +1004,8 @@ refclass @stringPredefinedTypeAST : @predefinedTypeAST {
       !?ioUnifiedTypeMap
       !getterName: "regularFiles"
       !argSelector: ""
-      !"bool"
-      !"inRecursiveSearch"
+      !argType: "bool"
+      !argName: "inRecursiveSearch"
       !returnedTypeName:"stringlist"
       !hasCompilerArgument:false
     )
@@ -1001,7 +1013,8 @@ refclass @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap
       !?ioUnifiedTypeMap
       !getterName: "hiddenFiles"
-      !argSelector: "" !"bool" !"inRecursiveSearch"
+      !argSelector: ""
+      !argType: "bool" !argName: "inRecursiveSearch"
       !returnedTypeName:"stringlist"
       !hasCompilerArgument:false
     )
@@ -1009,7 +1022,8 @@ refclass @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap
       !?ioUnifiedTypeMap
       !getterName: "directories"
-      !argSelector: "" !"bool" !"inRecursiveSearch"
+      !argSelector: ""
+      !argType: "bool" !argName: "inRecursiveSearch"
       !returnedTypeName:"stringlist"
       !hasCompilerArgument:false
     )

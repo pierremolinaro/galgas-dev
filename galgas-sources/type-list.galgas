@@ -214,7 +214,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !?getterMap
     !?ioTypeMap
     !getterName: "subListFromIndex"
-    !argSelector: "" !"uint" !"inIndex"
+    !argSelector: "" !argType: "uint" !argName: "inIndex"
     !returnedTypeName:self.mListTypeName.string
     !hasCompilerArgument:true
   )
@@ -222,7 +222,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !?getterMap
     !?ioTypeMap
     !getterName: "subListToIndex"
-    !argSelector: "" !"uint" !"inIndex"
+    !argSelector: "" !argType: "uint" !argName: "inIndex"
     !returnedTypeName:self.mListTypeName.string
     !hasCompilerArgument:true
   )
@@ -230,7 +230,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !?getterMap
     !?ioTypeMap
     !getterName: "subListWithRange"
-    !argSelector: "" !"range" !"inRange"
+    !argSelector: "" !argType: "range" !argName: "inRange"
     !returnedTypeName:self.mListTypeName.string
     !hasCompilerArgument:true
   )
