@@ -146,8 +146,8 @@ utf32 cEmbeddedString::operator () (const int32_t inIndex COMMA_LOCATION_ARGS) c
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cEmbeddedString::checkEmbeddedString (LOCATION_ARGS) const {
     if (mCapacity == 0) {
-      macroAssertThere (UNICODE_VALUE (mUTF32String [0]) == '\0', "mUTF32String [0] (%lld) != '\\0'",
-                        int32_t (UNICODE_VALUE (mUTF32String [0])), 0) ;
+//      macroAssertThere (UNICODE_VALUE (mUTF32String [0]) == '\0', "mUTF32String [0] (%lld) != '\\0'",
+//                        int32_t (UNICODE_VALUE (mUTF32String [0])), 0) ;
       macroAssertThere (mLength == 0, "mLength (%ld) != 0", mLength, 0) ;
     }else{
       macroAssertThere (mLength <= mCapacity, "mLength (%ld) > mCapacity (%ld)", mLength, mCapacity) ;
@@ -491,18 +491,6 @@ void String::insulate (void) const {
 
 //--------------------------------------------------------------------------------------------------
 //
-//   S E T   F R O M    S T R I N G
-//
-//--------------------------------------------------------------------------------------------------
-
-void String::setFromString (const String & inString) {
-  if (this != & inString) {
-    macroAssignSharedObject (mEmbeddedString, inString.mEmbeddedString) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//
 //   S E T    C A P A C I T Y
 //
 //--------------------------------------------------------------------------------------------------
@@ -515,7 +503,6 @@ void String::setCapacity (const uint32_t inNewCapacity) {
     macroMyDeletePODArray (mEmbeddedString->mEncodedCString) ;
     if ((mEmbeddedString->mLength < inNewCapacity) && (mEmbeddedString->mCapacity < inNewCapacity)) {
       if (mEmbeddedString->isUniquelyReferenced ()) {
-//        macroMyDeletePODArray (mEmbeddedString->mEncodedCString) ;
         mEmbeddedString->reallocEmbeddedString (inNewCapacity) ;
       }else{
         cEmbeddedString * p = nullptr ;
@@ -549,10 +536,10 @@ void String::performActualUnicodeArrayOutput (const utf32 * inUTF32CharArray,
   #endif
   if (inArrayCount > 0) {
     const int32_t kNewLength = length () + inArrayCount ;
-    insulateEmbeddedString ((uint32_t) (kNewLength + 1)) ;
+    insulateEmbeddedString (uint32_t (kNewLength + 1)) ;
     macroAssert (mEmbeddedString->isUniquelyReferenced (), "mEmbeddedString->isUniquelyReferenced () is false", 0, 0) ;
     for (int32_t i=0 ; i<inArrayCount ; i++) {
-      mEmbeddedString->mUTF32String [mEmbeddedString->mLength + (uint32_t) i] = inUTF32CharArray [i] ;
+      mEmbeddedString->mUTF32String [mEmbeddedString->mLength + uint32_t (i)] = inUTF32CharArray [i] ;
     }
     mEmbeddedString->mLength = uint32_t (kNewLength) ;
     mEmbeddedString->mUTF32String [kNewLength] = TO_UNICODE ('\0') ;
@@ -614,11 +601,11 @@ void String::setUnicodeCharacterAtIndex (const utf32 inCharacter,
   macroAssertThere (inIndex >= 0, "inIndex (%ld) < 0", inIndex, 0) ;
   if (nullptr != mEmbeddedString) {
     macroAssertThere (uint32_t (inIndex) < mEmbeddedString->mLength,
-                    "inIndex (%ld) >= string length (%ld)",
-                    inIndex, mEmbeddedString->mLength) ;
+                      "inIndex (%ld) >= string length (%ld)",
+                      inIndex, mEmbeddedString->mLength) ;
     insulateEmbeddedString (mEmbeddedString->mCapacity) ;
-    mEmbeddedString->mUTF32String [inIndex] = inCharacter ;
     macroUniqueSharedObject (mEmbeddedString) ;
+    mEmbeddedString->mUTF32String [inIndex] = inCharacter ;
   }
 }
 
@@ -637,6 +624,7 @@ void String::removeCountFromIndex (const int32_t inCount,
       checkString (HERE) ;
     #endif
     macroValidPointerThere (mEmbeddedString) ;
+    macroUniqueSharedObject (mEmbeddedString) ;
     macroAssertThere (inIndex >= 0, "inIndex (%ld) < 0", inIndex, 0) ;
     macroAssertThere (uint32_t (inIndex) <= mEmbeddedString->mLength,
                       "inIndex (%ld) > mLength (%ld)",
@@ -656,7 +644,6 @@ void String::removeCountFromIndex (const int32_t inCount,
       #ifndef DO_NOT_GENERATE_CHECKINGS
         checkString (HERE) ;
       #endif
-      macroUniqueSharedObject (mEmbeddedString) ;
     }
   }
 }
@@ -676,6 +663,7 @@ void String::insertCharacterAtIndex (const utf32 inChar,
     checkString (THERE) ;
   #endif
   macroValidPointerThere (mEmbeddedString) ;
+  macroUniqueSharedObjectThere (mEmbeddedString) ;
   macroAssertThere (inIndex >= 0, "inIndex (%ld) < 0", inIndex, 0) ;
   macroAssertThere (uint32_t (inIndex) <= mEmbeddedString->mLength,
                     "inIndex (%ld) > mLength (%ld)",
@@ -689,7 +677,6 @@ void String::insertCharacterAtIndex (const utf32 inChar,
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkString (THERE) ;
   #endif
-  macroUniqueSharedObjectThere (mEmbeddedString) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -800,31 +787,6 @@ String String::operator + (const char * inOperand) const {
   String s = *this ;
   s.appendString (inOperand) ;
   return s ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//   A S S I G N M E N T    O P E R A T O R S
-//
-//--------------------------------------------------------------------------------------------------
-
-String & String::operator = (const char * inSource) {
-  removeAllKeepingCapacity () ;
-  if (inSource != nullptr) {
-    genericCharArrayOutput (inSource, int32_t (strlen (inSource) & UINT32_MAX)) ;
-  }
-  return * this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//   S E T   F R O M    S T R I N G
-//
-//--------------------------------------------------------------------------------------------------
-
-void String::setFromCstring (const char * inCstring) {
-  removeAllKeepingCapacity () ;
-  appendString (inCstring) ;
 }
 
 //--------------------------------------------------------------------------------------------------

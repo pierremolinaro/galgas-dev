@@ -101,9 +101,6 @@ class String : public AbstractOutputStream {
 //--- Get string from stdin
   public: static String newWithStdIn (void) ;
 
-//--- Copy from a C string
-  public: String & operator = (const char * inSource) ;
-
 //--- Set capacity (does nothing if length >= inCapacity)
   public: void setCapacity (const uint32_t inCapacity) ;
   
@@ -112,10 +109,6 @@ class String : public AbstractOutputStream {
 
 //--- Insert 'inChar' character at 'inIndex' index
   public: void insertCharacterAtIndex (const utf32 inChar, const int32_t inIndex COMMA_LOCATION_ARGS) ;
-
-//--- Init from a string
-  public: void setFromCstring (const char * inCstring) ;
-  public: void setFromString (const String & inString) ;
 
 //--- Insulate
   public: void insulate (void) const ;
