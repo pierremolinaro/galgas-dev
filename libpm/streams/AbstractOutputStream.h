@@ -55,9 +55,6 @@ class AbstractOutputStream {
   public: void appendString (const char * inCstring, const int32_t inCount) ;
   public: void appendString (const std::initializer_list <utf32> & inSource) ;
 
-//--- Appending UTF32 string
-  public: void appendUTF32String (const utf32 * inUTF32String) ;
-
 //--- Appending character
   public: void appendASCIIChar (const char inCharacter) ;
   public: void appendUnicodeChar (const utf32 inUnicodeCharacter COMMA_LOCATION_ARGS) ;

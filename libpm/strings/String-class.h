@@ -254,9 +254,6 @@ class String : public AbstractOutputStream {
 //    from the receiver.
   public: String stringByDeletingPathExtension (void) const ;
 
-//--- Returns a string made by deleting from the receiver all characters from inSearchedString
-  public: String stringByDeletingTailFromString (const String & inSearchedString) const ;
-
 //--- Returns the last path component of the receiver.
   public: String lastPathComponent (void) const ;
   public: String lastPathComponentWithoutExtension (void) const ;

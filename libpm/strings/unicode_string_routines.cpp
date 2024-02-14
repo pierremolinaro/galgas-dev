@@ -24,56 +24,6 @@
 
 //--------------------------------------------------------------------------------------------------
 
-int32_t utf32_char_strcmp (const utf32 * inString1, const char * inString2) {
-  int32_t c1, c2;
-  do{
-    c1 = (int32_t) UNICODE_VALUE (*inString1) ;
-    inString1 ++ ;
-    c2 = (int32_t) (*inString2) ;
-    inString2 ++ ;
-    if (c1 == 0) return c1 - c2 ;
-  }while (c1 == c2) ;
-  return c1 - c2 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-int32_t utf32_strncmp (const utf32 * inString1, const utf32 * inString2, const int32_t inLength) {
-  if (inLength == 0) return 0 ;
-  int32_t c1, c2;
-  int32_t remaining = inLength ;
-  do{
-    c1 = (int32_t) UNICODE_VALUE (*inString1) ;
-    inString1 ++ ;
-    c2 = (int32_t) UNICODE_VALUE (*inString2) ;
-    inString2 ++ ;
-    if (c1 == 0) return c1 - c2 ;
-    remaining -- ;
-  }while ((c1 == c2) && (remaining > 0)) ;
-  return c1 - c2 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-int32_t utf32_char_strncmp (const utf32 * inString1,
-                           const char * inString2,
-                           const int32_t inLength) {
-  if (inLength == 0) return 0 ;
-  int32_t c1, c2;
-  int32_t remaining = inLength ;
-  do{
-    c1 = (int32_t) UNICODE_VALUE (*inString1) ;
-    inString1 ++ ;
-    c2 = (int32_t) (*inString2) ;
-    inString2 ++ ;
-    if (c1 == 0) return c1 - c2 ;
-    remaining -- ;
-  }while ((c1 == c2) && (remaining > 0)) ;
-  return c1 - c2 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 int32_t utf32_strlen (const utf32 * inString) {
   int32_t result = 0 ;
   while (UNICODE_VALUE (* inString) != 0) {
@@ -81,28 +31,6 @@ int32_t utf32_strlen (const utf32 * inString) {
     result ++ ;
   }
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const utf32 * utf32_strstr (const utf32 * haystack, const utf32 * needle) {
-  const utf32 * s = haystack;
-  const utf32 * p = needle;
-  do {
-    if (! UNICODE_VALUE (*p)) {
-      return haystack ;
-    }
-    if (UNICODE_VALUE (*p) == UNICODE_VALUE (*s)) {
-      ++p;
-      ++s;
-    }else{
-      p = needle;
-      if (!UNICODE_VALUE (*s)) {
-        return nullptr;
-      }
-      s = ++haystack;
-    }
-  } while (1);
 }
 
 //--------------------------------------------------------------------------------------------------

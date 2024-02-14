@@ -28,14 +28,6 @@
 
 //--------------------------------------------------------------------------------------------------
 
-int32_t utf32_char_strncmp (const utf32 * inString1, const char * inString2, const int32_t inLength) ;
-
-int32_t utf32_strncmp (const utf32 * inString1, const utf32 * inString2, const int32_t inLength) ;
-
 int32_t utf32_strlen (const utf32 * inString) ;
-
-int32_t utf32_char_strcmp (const utf32 * inString1, const char * inString2) ;
-
-const utf32 * utf32_strstr (const utf32 * haystack, const utf32 * needle) ;
 
 //--------------------------------------------------------------------------------------------------

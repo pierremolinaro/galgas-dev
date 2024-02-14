@@ -129,12 +129,6 @@ void AbstractOutputStream::appendString (const char * inCstring, const int32_t i
 
 //--------------------------------------------------------------------------------------------------
 
-void AbstractOutputStream::appendUTF32String (const utf32 * inUTF32String) {
-  genericUnicodeArrayOutput (inUTF32String, utf32_strlen (inUTF32String)) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void AbstractOutputStream::appendUTF32LiteralStringConstant (const String & inString,
                                                              const bool inAppendZeroTerminator) {
   appendUnicodeChar (TO_UNICODE ('{') COMMA_HERE) ;
