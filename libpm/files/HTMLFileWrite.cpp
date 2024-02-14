@@ -77,7 +77,7 @@ HTMLFileWrite::~HTMLFileWrite (void) {
 
 void HTMLFileWrite::appendRawData (const char * in_Cstring) {
   if (nullptr != in_Cstring) {
-    Super::performActualCharArrayOutput (in_Cstring, int32_t (strlen (in_Cstring))) ;
+    Super::handleAppendUTF8Array (in_Cstring, int32_t (strlen (in_Cstring))) ;
   }
 }
 
@@ -86,22 +86,22 @@ void HTMLFileWrite::appendRawData (const char * in_Cstring) {
 //  Performs HTML character translation (i.e. '<' --> '&lt;', ...)
 //--------------------------------------------------------------------------------------------------
 
-void HTMLFileWrite::performActualCharArrayOutput (const char * inCharArray,
+void HTMLFileWrite::handleAppendUTF8Array (const char * inCharArray,
                                                   const int32_t inArrayCount) {
   for (int32_t i=0 ; i<inArrayCount ; i++) {
     const char c = inCharArray [i] ;
     switch (c) {
     case '<' :
-      Super::performActualCharArrayOutput ("&lt;", 4) ;
+      Super::handleAppendUTF8Array ("&lt;", 4) ;
       break ;
     case '>' :
-      Super::performActualCharArrayOutput ("&gt;", 4) ;
+      Super::handleAppendUTF8Array ("&gt;", 4) ;
       break ;
     case '&' :
-      Super::performActualCharArrayOutput ("&amp;", 5) ;
+      Super::handleAppendUTF8Array ("&amp;", 5) ;
       break ;
     default :
-      Super::performActualCharArrayOutput (& c, 1) ;
+      Super::handleAppendUTF8Array (& c, 1) ;
       break ;
     }
   }
@@ -109,24 +109,20 @@ void HTMLFileWrite::performActualCharArrayOutput (const char * inCharArray,
 
 //--------------------------------------------------------------------------------------------------
 
-void HTMLFileWrite::performActualUnicodeArrayOutput (const utf32 * inCharArray,
-                                                     const int32_t inArrayCount) {
-  for (int32_t i=0 ; i<inArrayCount ; i++) {
-    const utf32 codePoint = inCharArray [i] ;
-    switch (UNICODE_VALUE (codePoint)) {
-    case '<' :
-      Super::performActualCharArrayOutput ("&lt;", 4) ;
-      break ;
-    case '>' :
-      Super::performActualCharArrayOutput ("&gt;", 4) ;
-      break ;
-    case '&' :
-      Super::performActualCharArrayOutput ("&amp;", 5) ;
-      break ;
-    default :
-      Super::performActualUnicodeArrayOutput (& codePoint, 1) ;
-      break ;
-    }
+void HTMLFileWrite::handleAppendCharacter (const utf32 inCharacter) {
+  switch (UNICODE_VALUE (inCharacter)) {
+  case '<' :
+    Super::handleAppendUTF8Array ("&lt;", 4) ;
+    break ;
+  case '>' :
+    Super::handleAppendUTF8Array ("&gt;", 4) ;
+    break ;
+  case '&' :
+    Super::handleAppendUTF8Array ("&amp;", 5) ;
+    break ;
+  default :
+    Super::handleAppendCharacter (inCharacter) ;
+    break ;
   }
 }
 

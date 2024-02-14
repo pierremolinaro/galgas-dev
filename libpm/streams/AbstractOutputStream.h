@@ -84,17 +84,15 @@ class AbstractOutputStream {
   public: void appendPointer (const void * inValue) ;
 
 //--- Abstract method for output single byte characters
-  public: void genericCharArrayOutput (const char * inCharArray,
+  public: void performAppendCString (const char * inCharArray,
                                        const int32_t inArrayCount) ;
 
-  protected: virtual void performActualCharArrayOutput (const char * inCharArray,
-                                                        const int32_t inArrayCount) = 0 ;
+  protected: virtual void handleAppendUTF8Array (const char * inCharArray,
+                                                 const int32_t inArrayCount) = 0 ;
 
 //--- Abstract method for output unicode characters
-  public: void genericUnicodeArrayOutput (const utf32 * inCharArray, const int32_t inArrayCount) ;
-
-  protected: virtual void performActualUnicodeArrayOutput (const utf32 * inCharArray,
-                                                           const int32_t inArrayCount) = 0 ;
+  public: void performAppendCharacter (const utf32 inCharacter) ;
+  protected: virtual void handleAppendCharacter (const utf32 inCharacter) = 0 ;
 
 //--- Writing spaces
   public: void appendSpaces (const int32_t inSpaceCount) ;

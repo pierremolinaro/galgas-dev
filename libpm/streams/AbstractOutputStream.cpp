@@ -48,23 +48,23 @@ AbstractOutputStream::~AbstractOutputStream (void) {
 
 void AbstractOutputStream::appendCString (const char * inCstring) {
   if (inCstring != nullptr) {
-    genericCharArrayOutput (inCstring, int32_t (strlen (inCstring))) ;
+    performAppendCString (inCstring, int32_t (strlen (inCstring))) ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void AbstractOutputStream::genericCharArrayOutput (const char * inCharArray, const int32_t inArrayCount) {
+void AbstractOutputStream::performAppendCString (const char * inCharArray, const int32_t inArrayCount) {
   if (mIndentation == 0) {
-    performActualCharArrayOutput (inCharArray, inArrayCount) ;
+    handleAppendUTF8Array (inCharArray, inArrayCount) ;
   }else if (inArrayCount > 0) {
     for (int32_t i=0 ; i<inArrayCount ; i++) {
       if (mStartingLine) {
         for (int32_t j=0 ; j<mIndentation ; j++) {
-          performActualCharArrayOutput (" ", 1) ;
+          handleAppendUTF8Array (" ", 1) ;
         }
       }
-      performActualCharArrayOutput (& inCharArray [i], 1) ;
+      handleAppendUTF8Array (& inCharArray [i], 1) ;
       mStartingLine = inCharArray [i] == '\n' ;
     }
   }
@@ -72,20 +72,17 @@ void AbstractOutputStream::genericCharArrayOutput (const char * inCharArray, con
 
 //--------------------------------------------------------------------------------------------------
 
-void AbstractOutputStream::genericUnicodeArrayOutput (const utf32 * inCharArray, const int32_t inArrayCount) {
+void AbstractOutputStream::performAppendCharacter (const utf32 inCharacter) {
   if (mIndentation == 0) {
-    performActualUnicodeArrayOutput (inCharArray, inArrayCount) ;
-  }else if (inArrayCount > 0) {
-    for (int32_t i=0 ; i<inArrayCount ; i++) {
-      if (mStartingLine) {
-        for (int32_t j=0 ; j<mIndentation ; j++) {
-          const utf32 space [1] = {TO_UNICODE (' ')} ;
-          performActualUnicodeArrayOutput (space, 1) ;
-        }
+    handleAppendCharacter (inCharacter) ;
+  }else{
+    if (mStartingLine) {
+      for (int32_t j=0 ; j<mIndentation ; j++) {
+        handleAppendCharacter (TO_UNICODE (' ')) ;
       }
-      performActualUnicodeArrayOutput (& (inCharArray [i]) , 1) ;
-      mStartingLine = UNICODE_VALUE (inCharArray [i]) == '\n' ;
     }
+    handleAppendCharacter (inCharacter) ;
+    mStartingLine = UNICODE_VALUE (inCharacter) == '\n' ;
   }
 }
 
@@ -104,14 +101,16 @@ void AbstractOutputStream::appendNewLine (void) {
 //--------------------------------------------------------------------------------------------------
 
 void AbstractOutputStream::appendString (const String inString) {
-  genericUnicodeArrayOutput (inString.utf32String (HERE), inString.length ()) ;
+  for (int32_t i = 0 ; i < inString.length () ; i++) {
+    performAppendCharacter (inString.charAtIndex (i COMMA_HERE)) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void AbstractOutputStream::appendString (const std::initializer_list <utf32> & inSource) {
   for (auto it = inSource.begin () ; it != inSource.end () ; it++) {
-    genericUnicodeArrayOutput (it, 1) ;
+    performAppendCharacter (*it) ;
   }
 }
 
@@ -124,7 +123,7 @@ void AbstractOutputStream::appendString (const std::initializer_list <utf32> & i
 //--------------------------------------------------------------------------------------------------
 
 void AbstractOutputStream::appendString (const char * inCString, const int32_t inCount) {
-  genericCharArrayOutput (inCString, inCount) ;
+  performAppendCString (inCString, inCount) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -163,7 +162,7 @@ void AbstractOutputStream::appendASCIIChar (const char inValue) {
 //--------------------------------------------------------------------------------------------------
 
 void AbstractOutputStream::appendUnicodeChar (const utf32 inUnicodeCharacter COMMA_UNUSED_LOCATION_ARGS) {
-  genericUnicodeArrayOutput (& inUnicodeCharacter, 1) ;
+  performAppendCharacter (inUnicodeCharacter) ;
 }
 
 //--------------------------------------------------------------------------------------------------

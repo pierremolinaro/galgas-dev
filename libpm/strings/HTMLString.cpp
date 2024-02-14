@@ -70,7 +70,7 @@ void HTMLString::writeEndCode (void) {
 //--------------------------------------------------------------------------------------------------
 
 void HTMLString::addRawData (const char * in_Cstring) {
-  super::performActualCharArrayOutput (in_Cstring, (int32_t) (strlen (in_Cstring) & UINT32_MAX)) ;
+  super::handleAppendUTF8Array (in_Cstring, (int32_t) (strlen (in_Cstring) & UINT32_MAX)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -78,22 +78,22 @@ void HTMLString::addRawData (const char * in_Cstring) {
 //  Performs HTML character translation (i.e. '<' --> '&lt;', ...)                               
 //--------------------------------------------------------------------------------------------------
 
-void HTMLString::performActualCharArrayOutput (const char * inCharArray,
+void HTMLString::handleAppendUTF8Array (const char * inCharArray,
                                                const int32_t inArrayCount) {
   for (int32_t i=0 ; i<inArrayCount ; i++) {
     const char c = inCharArray [i] ;
     switch (c) {
     case '<' :
-      super::performActualCharArrayOutput ("&lt;", 4) ;
+      super::handleAppendUTF8Array ("&lt;", 4) ;
       break ;
     case '>' :
-      super::performActualCharArrayOutput ("&gt;", 4) ;
+      super::handleAppendUTF8Array ("&gt;", 4) ;
       break ;
     case '&' :
-      super::performActualCharArrayOutput ("&amp;", 5) ;
+      super::handleAppendUTF8Array ("&amp;", 5) ;
       break ;
     default :
-      super::performActualCharArrayOutput (& c, 1) ;
+      super::handleAppendUTF8Array (& c, 1) ;
       break ;
     }
   }
@@ -101,24 +101,20 @@ void HTMLString::performActualCharArrayOutput (const char * inCharArray,
 
 //--------------------------------------------------------------------------------------------------
 
-void HTMLString::performActualUnicodeArrayOutput (const utf32 * inCharArray,
-                                                  const int32_t inArrayCount) {
-  for (int32_t i=0 ; i<inArrayCount ; i++) {
-    const utf32 codePoint = inCharArray [i] ;
-    switch (UNICODE_VALUE (codePoint)) {
-    case '<' :
-      super::performActualCharArrayOutput ("&lt;", 4) ;
-      break ;
-    case '>' :
-      super::performActualCharArrayOutput ("&gt;", 4) ;
-      break ;
-    case '&' :
-      super::performActualCharArrayOutput ("&amp;", 5) ;
-      break ;
-    default :
-      super::performActualUnicodeArrayOutput (& codePoint, 1) ;
-      break ;
-    }
+void HTMLString::handleAppendCharacter (const utf32 inCharacter) {
+  switch (UNICODE_VALUE (inCharacter)) {
+  case '<' :
+    super::handleAppendUTF8Array ("&lt;", 4) ;
+    break ;
+  case '>' :
+    super::handleAppendUTF8Array ("&gt;", 4) ;
+    break ;
+  case '&' :
+    super::handleAppendUTF8Array ("&amp;", 5) ;
+    break ;
+  default :
+    super::handleAppendCharacter (inCharacter) ;
+    break ;
   }
 }
 

@@ -42,7 +42,7 @@ void C_ConsoleOut::flush (void) {
 //
 //--------------------------------------------------------------------------------------------------
 
-void C_ConsoleOut::performActualCharArrayOutput (const char * inCharArray,
+void C_ConsoleOut::handleAppendUTF8Array (const char * inCharArray,
                                                  const int32_t inArrayCount) {
   if (inArrayCount > 0) {
     printf ("%.*s", (int) inArrayCount, inCharArray) ;
@@ -51,13 +51,10 @@ void C_ConsoleOut::performActualCharArrayOutput (const char * inCharArray,
 
 //--------------------------------------------------------------------------------------------------
 
-void C_ConsoleOut::performActualUnicodeArrayOutput (const utf32 * inCharArray,
-                                                    const int32_t inArrayCount) {
-  for (int32_t i=0 ; i<inArrayCount ; i++) {
-    char buffer [5] ;
-    UTF8StringFromUTF32Character (inCharArray [i], buffer) ;
-    printf ("%s", buffer) ;
-  }
+void C_ConsoleOut::handleAppendCharacter (const utf32 inCharacter) {
+  char buffer [8] ;
+  UTF8StringFromUTF32Character (inCharacter, buffer) ;
+  printf ("%s", buffer) ;
 }
 
 //--------------------------------------------------------------------------------------------------

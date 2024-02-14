@@ -54,11 +54,10 @@ class HTMLFileWrite final : public TextFileWrite {
   public: void appendRawData (const char * inCString) ;
 
 //--- General stream methods
-  protected: virtual void performActualCharArrayOutput (const char * inCharArray,
-                                                        const int32_t inArrayCount) ;
+  protected: virtual void handleAppendUTF8Array (const char * inCharArray,
+                                                 const int32_t inArrayCount) ;
 
-  protected: virtual void performActualUnicodeArrayOutput (const utf32 * inCharArray,
-                                                           const int32_t inArrayCount) ;
+  protected: virtual void handleAppendCharacter (const utf32 inCharacter) ;
 
 //--- Method for writing a HTML table
   public: void appendCppTitleComment (const String & inCommentString,

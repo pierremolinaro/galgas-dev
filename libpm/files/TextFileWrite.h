@@ -43,11 +43,10 @@ class TextFileWrite : public AbstractOutputStream, public AbstractFileHandle {
   private: TextFileWrite & operator = (TextFileWrite &) = delete ;
 
 //--- General stream methods
-  protected: virtual void performActualCharArrayOutput (const char * inCharArray,
+  protected: virtual void handleAppendUTF8Array (const char * inCharArray,
                                                         const int32_t inArrayCount) override ;
 
-  protected: virtual void performActualUnicodeArrayOutput (const utf32 * inCharArray,
-                                                           const int32_t inArrayCount) override ;
+  protected: virtual void handleAppendCharacter (const utf32 inCharacter) override ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

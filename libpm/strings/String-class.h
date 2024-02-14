@@ -88,7 +88,6 @@ class String : public AbstractOutputStream {
 //--- Constructors
   public: explicit String (void) ; // Empty string
   public: String (const char * inCString) ; // From a C string
-  public: explicit String (const utf32 * inUTF32String) ;
   public: static String spaces (const int32_t inSpaceCount) ;
   
 //--- Virtual destructor
@@ -306,11 +305,10 @@ class String : public AbstractOutputStream {
                                 bool & outOk) const ;
 
 //---------------- Virtual output stream methods --------------
-  protected: virtual void performActualCharArrayOutput (const char * inCharArray,
-                                                        const int32_t inArrayCount) ;
+  protected: virtual void handleAppendUTF8Array (const char * inCharArray,
+                                                 const int32_t inArrayCount) ;
 
-  protected: virtual void performActualUnicodeArrayOutput (const utf32 * inCharArray,
-                                                           const int32_t inArrayCount) ;
+  protected: virtual void handleAppendCharacter (const utf32 inCharacter) ;
 
 //--- Private (internal) methods
   private: void insulateEmbeddedString (const uint32_t inNewCapacity) const ;

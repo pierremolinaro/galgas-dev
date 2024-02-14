@@ -191,18 +191,8 @@ mEmbeddedString (nullptr) {
 
 String::String (const char * inCstring) :
 mEmbeddedString (nullptr) {
-//  appendCString (inCstring) ;
   if (inCstring != nullptr) {
-    genericCharArrayOutput (inCstring, int32_t (strlen (inCstring))) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-String::String (const utf32 * inUTF32String) :
-mEmbeddedString (nullptr) {
-  if (inUTF32String != nullptr) {
-    genericUnicodeArrayOutput (inUTF32String, utf32_strlen (inUTF32String)) ;
+    performAppendCString (inCstring, int32_t (strlen (inCstring))) ;
   }
 }
 
@@ -488,31 +478,24 @@ void String::setCapacity (const uint32_t inNewCapacity) {
 
 //--------------------------------------------------------------------------------------------------
 
-void String::performActualUnicodeArrayOutput (const utf32 * inUTF32CharArray,
-                                              const int32_t inArrayCount) {
+void String::handleAppendCharacter (const utf32 inCharacter) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkString (HERE) ;
   #endif
-  if (inArrayCount > 0) {
-    const int32_t kNewLength = length () + inArrayCount ;
-    insulateEmbeddedString (uint32_t (kNewLength + 1)) ;
-    macroAssert (mEmbeddedString->isUniquelyReferenced (), "mEmbeddedString->isUniquelyReferenced () is false", 0, 0) ;
-    for (int32_t i=0 ; i<inArrayCount ; i++) {
-      mEmbeddedString->mUTF32String [mEmbeddedString->mLength + uint32_t (i)] = inUTF32CharArray [i] ;
-    }
-    mEmbeddedString->mLength = uint32_t (kNewLength) ;
-    mEmbeddedString->mUTF32String [kNewLength] = TO_UNICODE ('\0') ;
-    #ifndef DO_NOT_GENERATE_CHECKINGS
-      checkString (HERE) ;
-    #endif
-    macroAssert (capacity () > uint32_t (kNewLength), "capacity (%lld) <= kNewLength (%lld)", capacity (), kNewLength) ;
-    macroUniqueSharedObject (mEmbeddedString) ;
-  }
+  insulateEmbeddedString (uint32_t (length () + 2)) ;
+  macroAssert (mEmbeddedString->isUniquelyReferenced (), "mEmbeddedString->isUniquelyReferenced () is false", 0, 0) ;
+  mEmbeddedString->mUTF32String [mEmbeddedString->mLength] = inCharacter ;
+  mEmbeddedString->mLength += 1 ;
+  mEmbeddedString->mUTF32String [mEmbeddedString->mLength] = TO_UNICODE ('\0') ;
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkString (HERE) ;
+  #endif
+  macroUniqueSharedObject (mEmbeddedString) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void String::performActualCharArrayOutput (const char * inCharArray,
+void String::handleAppendUTF8Array (const char * inCharArray,
                                            const int32_t inArrayCount) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkString (HERE) ;

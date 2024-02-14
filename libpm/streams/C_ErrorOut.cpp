@@ -43,7 +43,7 @@ void C_ErrorOut::flush (void) {
 //--------------------------------------------------------------------------------------------------
 
 void C_ErrorOut::
-performActualCharArrayOutput (const char * inCharArray,
+handleAppendUTF8Array (const char * inCharArray,
                               const int32_t inArrayCount) {
   if (inArrayCount > 0) {
     ::fprintf (stderr, "%.*s", (int) inArrayCount, inCharArray) ;
@@ -52,14 +52,10 @@ performActualCharArrayOutput (const char * inCharArray,
 
 //--------------------------------------------------------------------------------------------------
 
-void C_ErrorOut::
-performActualUnicodeArrayOutput (const utf32 * inCharArray,
-                                 const int32_t inArrayCount) {
-  for (int32_t i=0 ; i<inArrayCount ; i++) {
-    char buffer [5] ;
-    UTF8StringFromUTF32Character (inCharArray [i], buffer) ;
-    fprintf (stderr, "%s", buffer) ;
-  }
+void C_ErrorOut::handleAppendCharacter (const utf32 inCharacter) {
+  char buffer [8] ;
+  UTF8StringFromUTF32Character (inCharacter, buffer) ;
+  fprintf (stderr, "%s", buffer) ;
 }
 
 //--------------------------------------------------------------------------------------------------
