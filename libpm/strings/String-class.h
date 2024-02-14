@@ -130,7 +130,7 @@ class String : public AbstractOutputStream {
 
 //--- Set an UTF32 character
   public: void setCharAtIndex (const utf32 inCharacter, const int32_t inIndex COMMA_LOCATION_ARGS) ;
-  public: void appendChar (const utf32 inCharacter COMMA_LOCATION_ARGS) ;
+//  public: void appendChar (const utf32 inCharacter COMMA_LOCATION_ARGS) ;
 
 //--- Contains a character
   public: bool containsChar (const utf32 inCharacter) const ;

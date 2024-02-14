@@ -150,7 +150,7 @@ void String::componentsSeparatedByString (const String & inSeparatorString,
         }
       }else{
         for (int32_t j = 0 ; j <= splitStringIndex ; j++) {
-          s.appendChar (charAtIndex (i + j - splitStringIndex COMMA_HERE) COMMA_HERE) ;
+          s.appendUnicodeChar (charAtIndex (i + j - splitStringIndex COMMA_HERE) COMMA_HERE) ;
         }
         splitStringIndex = 0 ;
       }
@@ -249,7 +249,7 @@ String String::stringByReplacingStringByString (const String inSearchedString,
         }
       }else{
         for (int32_t j=0 ; j <= searchedStringIdx ; j++) {
-          result.appendChar (charAtIndex (i + j - searchedStringIdx COMMA_HERE) COMMA_HERE) ;
+          result.appendUnicodeChar (charAtIndex (i + j - searchedStringIdx COMMA_HERE) COMMA_HERE) ;
         }
         outReplacementCount += 1 ;
         searchedStringIdx = 0 ;
@@ -257,7 +257,7 @@ String String::stringByReplacingStringByString (const String inSearchedString,
     }
   //--- Append trailing characters, if any
     for (int32_t j = 0 ; j < searchedStringIdx ; j++) {
-      result.appendChar (charAtIndex (sourceLength + j - searchedStringIdx COMMA_HERE) COMMA_HERE) ;
+      result.appendUnicodeChar (charAtIndex (sourceLength + j - searchedStringIdx COMMA_HERE) COMMA_HERE) ;
     }
   }
   return result ;

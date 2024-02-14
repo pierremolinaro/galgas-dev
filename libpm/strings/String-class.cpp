@@ -616,21 +616,21 @@ void String::insertCharacterAtIndex (const utf32 inChar,
 
 //--------------------------------------------------------------------------------------------------
 
-void String::appendChar (const utf32 inChar COMMA_LOCATION_ARGS) {
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    checkString (THERE) ;
-  #endif
-  const uint32_t kNewLength = uint32_t (length ()) + 2 ; // inserted character, zero termination
-  insulateEmbeddedString (kNewLength) ;
-  macroValidPointerThere (mEmbeddedString) ;
-  macroUniqueSharedObjectThere (mEmbeddedString) ;
-  mEmbeddedString->mUTF32String [mEmbeddedString->mLength] = inChar ;
-  mEmbeddedString->mLength += 1 ;
-  mEmbeddedString->mUTF32String [mEmbeddedString->mLength] = TO_UNICODE (0) ;
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    checkString (THERE) ;
-  #endif
-}
+//void String::appendChar (const utf32 inChar COMMA_LOCATION_ARGS) {
+//  #ifndef DO_NOT_GENERATE_CHECKINGS
+//    checkString (THERE) ;
+//  #endif
+//  const uint32_t kNewLength = uint32_t (length ()) + 2 ; // inserted character, zero termination
+//  insulateEmbeddedString (kNewLength) ;
+//  macroValidPointerThere (mEmbeddedString) ;
+//  macroUniqueSharedObjectThere (mEmbeddedString) ;
+//  mEmbeddedString->mUTF32String [mEmbeddedString->mLength] = inChar ;
+//  mEmbeddedString->mLength += 1 ;
+//  mEmbeddedString->mUTF32String [mEmbeddedString->mLength] = TO_UNICODE (0) ;
+//  #ifndef DO_NOT_GENERATE_CHECKINGS
+//    checkString (THERE) ;
+//  #endif
+//}
 
 //--------------------------------------------------------------------------------------------------
 //   G E T    L I N E S    A R R A Y

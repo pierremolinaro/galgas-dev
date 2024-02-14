@@ -844,7 +844,7 @@ String FileManager::absolutePathFromPath (const String & inPath,
   }else{
     result = absolutePathFromCurrentDirectory (inFromPath) ;
     if (UNICODE_VALUE (result.lastChar (HERE)) != '/') {
-      result.appendChar (TO_UNICODE ('/') COMMA_HERE) ;
+      result.appendUnicodeChar (TO_UNICODE ('/') COMMA_HERE) ;
     }
     result.appendString (inPath) ;
   }
