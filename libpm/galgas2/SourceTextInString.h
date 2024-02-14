@@ -48,8 +48,8 @@ class cSourceTextInString final : public SharedObject {
   public: bool mShowSourceOnDetailledErrorMessage ;
 
 //--- No copy
-  private: cSourceTextInString (const cSourceTextInString &) ;
-  private: cSourceTextInString & operator = (const cSourceTextInString &) ;
+  private: cSourceTextInString (const cSourceTextInString &) = delete ;
+  private: cSourceTextInString & operator = (const cSourceTextInString &) = delete ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -97,10 +97,6 @@ class SourceTextInString final {
 
   public: utf32 readCharOrNul (const int32_t inIndex COMMA_LOCATION_ARGS) const {
     return (mObject == nullptr) ? TO_UNICODE (0) : mObject->mSourceString.readCharOrNul (inIndex COMMA_THERE) ;
-  }
-
-  public: const utf32 * temporaryUTF32StringAtIndex (const int32_t inIndex COMMA_LOCATION_ARGS) const {
-    return (mObject == nullptr) ? nullptr : & (mObject->mSourceString.utf32String (THERE)) [inIndex] ;
   }
 
   public: String getLineForLocation (const class LocationInSource & inLocation) const ;

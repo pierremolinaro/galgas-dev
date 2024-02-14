@@ -39,14 +39,10 @@
 
 //--------------------------------------------------------------------------------------------------
 
-static const utf32 kEmptyUTF32String [1] = {TO_UNICODE (0)} ;
-
-//--------------------------------------------------------------------------------------------------
-
 class PrivateEmbeddedString final : public SharedObject {
   public: uint32_t mCapacity ; // Maximun allowed length of the following C string
   public: uint32_t mLength ; // Current length of the following C string
-  public: char * mUTF8CString ;
+  public: char * mUTF8CString ; // Zero terminated string
   public: utf32 * mUTF32String ; // Zero terminated string
 
   public: PrivateEmbeddedString (const uint32_t inCapacity COMMA_LOCATION_ARGS) ;
@@ -381,16 +377,6 @@ const char * String::cString (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-const utf32 * String::utf32String (UNUSED_LOCATION_ARGS) const {
-  const utf32 * result = kEmptyUTF32String ;
-  if (nullptr != mEmbeddedString) {
-    result = mEmbeddedString->mUTF32String ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Methods that change string
 #endif
@@ -613,24 +599,6 @@ void String::insertCharacterAtIndex (const utf32 inChar,
     checkString (THERE) ;
   #endif
 }
-
-//--------------------------------------------------------------------------------------------------
-
-//void String::appendChar (const utf32 inChar COMMA_LOCATION_ARGS) {
-//  #ifndef DO_NOT_GENERATE_CHECKINGS
-//    checkString (THERE) ;
-//  #endif
-//  const uint32_t kNewLength = uint32_t (length ()) + 2 ; // inserted character, zero termination
-//  insulateEmbeddedString (kNewLength) ;
-//  macroValidPointerThere (mEmbeddedString) ;
-//  macroUniqueSharedObjectThere (mEmbeddedString) ;
-//  mEmbeddedString->mUTF32String [mEmbeddedString->mLength] = inChar ;
-//  mEmbeddedString->mLength += 1 ;
-//  mEmbeddedString->mUTF32String [mEmbeddedString->mLength] = TO_UNICODE (0) ;
-//  #ifndef DO_NOT_GENERATE_CHECKINGS
-//    checkString (THERE) ;
-//  #endif
-//}
 
 //--------------------------------------------------------------------------------------------------
 //   G E T    L I N E S    A R R A Y

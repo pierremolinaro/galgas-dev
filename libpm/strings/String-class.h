@@ -130,7 +130,6 @@ class String : public AbstractOutputStream {
 
 //--- Set an UTF32 character
   public: void setCharAtIndex (const utf32 inCharacter, const int32_t inIndex COMMA_LOCATION_ARGS) ;
-//  public: void appendChar (const utf32 inCharacter COMMA_LOCATION_ARGS) ;
 
 //--- Contains a character
   public: bool containsChar (const utf32 inCharacter) const ;
@@ -166,9 +165,6 @@ class String : public AbstractOutputStream {
 
 //--- Get a string pointer
   public: const char * cString (void) const ;
-
-//--- Get a UTF32 string pointer
-  public: const utf32 * utf32String (LOCATION_ARGS) const ;
 
 //--- Compare with an other string 
   public: int32_t compareWithCString (const char * const inCstring) const ;
@@ -363,7 +359,6 @@ class LineColumnContents final {
   public: int32_t lineNumber (void) const { return mLineNumber ; }
   public: int32_t columnNumber (void) const { return mColumnNumber ; }
   public: String lineContents (void) const { return mLineContents ; }
-
 } ;
 
 //--------------------------------------------------------------------------------------------------
