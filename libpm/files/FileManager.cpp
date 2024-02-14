@@ -74,7 +74,7 @@
      && (UNICODE_VALUE (inFilePath.charAtIndex (1 COMMA_HERE)) == ':')
      && (UNICODE_VALUE (inFilePath.charAtIndex (2 COMMA_HERE)) == '\\')) {
       result.appendCString ("/") ;
-      result.appendChar (inFilePath.charAtIndex (0 COMMA_HERE) COMMA_HERE) ;
+      result.appendChar (inFilePath.charAtIndex (0 COMMA_HERE)) ;
       result.appendCString ("/") ;
       firstChar = 3 ;
     }
@@ -83,7 +83,7 @@
       if (UNICODE_VALUE (c) == '\\') {
         result.appendCString ("/") ;
       }else{
-        result.appendChar (c COMMA_HERE) ;
+        result.appendChar (c) ;
       }
     }
     return result ;
@@ -121,13 +121,13 @@
        && (UNICODE_VALUE (inFilePath.charAtIndex (0 COMMA_HERE)) == '/')
        && isalpha ((int) UNICODE_VALUE (inFilePath.charAtIndex (1 COMMA_HERE)))
        && (UNICODE_VALUE (inFilePath.charAtIndex (2 COMMA_HERE)) == '/')) {
-        winPath.appendChar (inFilePath.charAtIndex (1 COMMA_HERE) COMMA_HERE) ;
+        winPath.appendChar (inFilePath.charAtIndex (1 COMMA_HERE)) ;
         winPath.appendCString (":\\") ;
         firstChar = 3 ;
       }
       for (int32_t i=firstChar ; i<fileLength ; i++) {
         const utf32 c = inFilePath.charAtIndex (i COMMA_HERE) ;
-        winPath.appendChar ((UNICODE_VALUE (c) == '/') ? TO_UNICODE ('\\') : c COMMA_HERE) ;
+        winPath.appendChar ((UNICODE_VALUE (c) == '/') ? TO_UNICODE ('\\') : c) ;
       }
     return winPath ;
   }

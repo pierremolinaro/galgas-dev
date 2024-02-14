@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library
 //
-//  Copyright (C) 2001, ..., 2017 Pierre Molinaro.
+//  Copyright (C) 2001, ..., 2024 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -281,12 +281,12 @@ static void analyze_one_option (const char * inCommand,
          && (inCommand [1] == ':')
          && (inCommand [2] == '\\')) {
           fileName.appendCString ("/") ;
-          fileName.appendChar (TO_UNICODE (inCommand [0]) COMMA_HERE) ;
+          fileName.appendChar (TO_UNICODE (inCommand [0])) ;
           fileName.appendCString ("/") ;
           firstChar = 3 ;
         }
         for (int32_t i=firstChar ; i<fileLength ; i++) {
-          fileName.appendChar (TO_UNICODE (((inCommand [i] == '\\') ? '/' : inCommand [i])) COMMA_HERE) ;
+          fileName.appendChar (TO_UNICODE (((inCommand [i] == '\\') ? '/' : inCommand [i]))) ;
         }
       #else
         fileName = inCommand ;
@@ -347,12 +347,12 @@ static void analyze_one_option (const char * inCommand,
        && (szFile [1] == ':')
        && (szFile [2] == '\\')) {
         fileName.appendCString ("/") ;
-        fileName.appendChar (TO_UNICODE (szFile [0]) COMMA_HERE) ;
+        fileName.appendChar (TO_UNICODE (szFile [0])) ;
         fileName.appendCString ("/") ;
         firstChar = 3 ;
       }
       for (int32_t i=firstChar ; i<fileLength ; i++) {
-        fileName.appendChar (TO_UNICODE ((szFile [i] == '\\') ? '/' : szFile [i]) COMMA_HERE) ;
+        fileName.appendChar (TO_UNICODE ((szFile [i] == '\\') ? '/' : szFile [i])) ;
       }
       outSourceFileArray.appendObject (fileName) ;
     }
