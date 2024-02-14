@@ -34,7 +34,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark cEmbeddedString
+  #pragma mark PrivateEmbeddedString
 #endif
 
 //--------------------------------------------------------------------------------------------------
@@ -43,26 +43,26 @@ static const utf32 kEmptyUTF32String [1] = {TO_UNICODE (0)} ;
 
 //--------------------------------------------------------------------------------------------------
 
-class cEmbeddedString final : public SharedObject {
+class PrivateEmbeddedString final : public SharedObject {
   public: uint32_t mCapacity ; // Maximun allowed length of the following C string
   public: uint32_t mLength ; // Current length of the following C string
   public: char * mUTF8CString ;
   public: utf32 * mUTF32String ; // Zero terminated string
 
-  public: cEmbeddedString (const uint32_t inCapacity COMMA_LOCATION_ARGS) ;
+  public: PrivateEmbeddedString (const uint32_t inCapacity COMMA_LOCATION_ARGS) ;
 
-  public: cEmbeddedString (const cEmbeddedString * inEmbeddedString,
-                           const uint32_t inCapacity
-                           COMMA_LOCATION_ARGS) ;
+  public: PrivateEmbeddedString (const PrivateEmbeddedString * inEmbeddedString,
+                                 const uint32_t inCapacity
+                                 COMMA_LOCATION_ARGS) ;
 
-  public: virtual ~cEmbeddedString (void) ;
+  public: virtual ~ PrivateEmbeddedString (void) ;
 
 //--- Accessor
   public: utf32 operator () (const int32_t inIndex COMMA_LOCATION_ARGS) const ;
 
 //--- No copy
-  private: cEmbeddedString (const cEmbeddedString &) = delete ;
-  private: cEmbeddedString & operator = (const cEmbeddedString &) = delete ;
+  private: PrivateEmbeddedString (const PrivateEmbeddedString &) = delete ;
+  private: PrivateEmbeddedString & operator = (const PrivateEmbeddedString &) = delete ;
 
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: void checkEmbeddedString (LOCATION_ARGS) const ;
@@ -84,7 +84,7 @@ static uint32_t stringGoodSize (const uint32_t inCurrentCapacity,
 
 //--------------------------------------------------------------------------------------------------
 
-cEmbeddedString::cEmbeddedString (const uint32_t inCapacity COMMA_LOCATION_ARGS) :
+PrivateEmbeddedString::PrivateEmbeddedString (const uint32_t inCapacity COMMA_LOCATION_ARGS) :
 SharedObject (THERE),
 mCapacity (0),
 mLength (0),
@@ -101,9 +101,9 @@ mUTF32String (nullptr) {
 
 //--------------------------------------------------------------------------------------------------
 
-cEmbeddedString::cEmbeddedString (const cEmbeddedString * inEmbeddedString,
-                                  const uint32_t inCapacity
-                                  COMMA_LOCATION_ARGS) :
+PrivateEmbeddedString::PrivateEmbeddedString (const PrivateEmbeddedString * inEmbeddedString,
+                                              const uint32_t inCapacity
+                                              COMMA_LOCATION_ARGS) :
 SharedObject (THERE),
 mCapacity (0),
 mLength (0),
@@ -128,14 +128,14 @@ mUTF32String (nullptr) {
 
 //--------------------------------------------------------------------------------------------------
 
-cEmbeddedString::~cEmbeddedString (void) {
+PrivateEmbeddedString::~PrivateEmbeddedString (void) {
   macroMyDeletePODArray (mUTF8CString) ;
   macroMyDeletePODArray (mUTF32String) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-utf32 cEmbeddedString::operator () (const int32_t inIndex COMMA_LOCATION_ARGS) const {
+utf32 PrivateEmbeddedString::operator () (const int32_t inIndex COMMA_LOCATION_ARGS) const {
   macroAssertThere (inIndex >= 0, "String index (%lld) is < 0", inIndex, 0) ;
   macroAssertThere (uint32_t (inIndex) < mLength, "String index (%lld) is > length (%lld)", inIndex, mLength) ;
   return mUTF32String [inIndex] ;
@@ -144,7 +144,7 @@ utf32 cEmbeddedString::operator () (const int32_t inIndex COMMA_LOCATION_ARGS) c
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
-  void cEmbeddedString::checkEmbeddedString (LOCATION_ARGS) const {
+  void PrivateEmbeddedString::checkEmbeddedString (LOCATION_ARGS) const {
     macroAssertThere (mCapacity > 0, "mCapacity == 0", 0, 0) ;
     macroAssertThere (mLength < mCapacity, "mLength (%ld) >= mCapacity (%ld)", mLength, mCapacity) ;
     macroAssertThere (UNICODE_VALUE (mUTF32String [mLength]) == 0,
@@ -158,7 +158,7 @@ utf32 cEmbeddedString::operator () (const int32_t inIndex COMMA_LOCATION_ARGS) c
 
 //--------------------------------------------------------------------------------------------------
 
-void cEmbeddedString::reallocEmbeddedString (const uint32_t inCapacity) {
+void PrivateEmbeddedString::reallocEmbeddedString (const uint32_t inCapacity) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkEmbeddedString (HERE) ;
   #endif
@@ -191,6 +191,7 @@ mEmbeddedString (nullptr) {
 
 String::String (const char * inCstring) :
 mEmbeddedString (nullptr) {
+//  appendCString (inCstring) ;
   if (inCstring != nullptr) {
     genericCharArrayOutput (inCstring, int32_t (strlen (inCstring))) ;
   }
@@ -273,7 +274,7 @@ void String::removeAll (void) {
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void String::checkString (LOCATION_ARGS) const {
     if (mEmbeddedString != nullptr) {
-      macroValidSharedObject (mEmbeddedString, cEmbeddedString) ;
+      macroValidSharedObject (mEmbeddedString, PrivateEmbeddedString) ;
       mEmbeddedString->checkEmbeddedString (THERE) ;
     }
   }
@@ -287,7 +288,7 @@ utf32 String::charAtIndex (const int32_t inIndex COMMA_LOCATION_ARGS) const {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkString (THERE) ;
   #endif
-  macroValidSharedObjectThere (mEmbeddedString, cEmbeddedString) ;
+  macroValidSharedObjectThere (mEmbeddedString, PrivateEmbeddedString) ;
   return mEmbeddedString->operator () (inIndex COMMA_THERE) ;
 }
 
@@ -359,7 +360,7 @@ int32_t String::length (void) const {
 const char * String::cString (void) const {
   const char * result = "" ;
   if (nullptr != mEmbeddedString) {
-    macroValidSharedObject (mEmbeddedString, cEmbeddedString) ;
+    macroValidSharedObject (mEmbeddedString, PrivateEmbeddedString) ;
     if (nullptr == mEmbeddedString->mUTF8CString) {
       uint32_t allocatedSize = mEmbeddedString->mLength + 1 + mEmbeddedString->mLength / 2 ;
       macroMyNewPODArray (mEmbeddedString->mUTF8CString, char, allocatedSize) ;
@@ -408,15 +409,15 @@ const utf32 * String::utf32String (UNUSED_LOCATION_ARGS) const {
 
 void String::insulateEmbeddedString (const uint32_t inNewCapacity) const {
   if (mEmbeddedString == nullptr) {
-    macroMyNew (mEmbeddedString, cEmbeddedString (inNewCapacity COMMA_HERE)) ;
+    macroMyNew (mEmbeddedString, PrivateEmbeddedString (inNewCapacity COMMA_HERE)) ;
   }else{
-    macroValidSharedObject (mEmbeddedString, cEmbeddedString) ;
+    macroValidSharedObject (mEmbeddedString, PrivateEmbeddedString) ;
     if (mEmbeddedString->isUniquelyReferenced ()) {
       macroMyDeletePODArray (mEmbeddedString->mUTF8CString) ;
       mEmbeddedString->reallocEmbeddedString (inNewCapacity) ;
     }else{
-      cEmbeddedString * p = nullptr ;
-      macroMyNew (p, cEmbeddedString (mEmbeddedString, inNewCapacity COMMA_HERE)) ;
+      PrivateEmbeddedString * p = nullptr ;
+      macroMyNew (p, PrivateEmbeddedString (mEmbeddedString, inNewCapacity COMMA_HERE)) ;
       macroAssignSharedObject (mEmbeddedString, p) ;
       macroDetachSharedObject (p) ;
     }
@@ -425,7 +426,7 @@ void String::insulateEmbeddedString (const uint32_t inNewCapacity) const {
     #endif
   }
   macroAssert (capacity () >= inNewCapacity, "capacity (%lld) < inNewCapacity (%lld)", capacity (), inNewCapacity) ;
-  macroValidSharedObject (mEmbeddedString, cEmbeddedString) ;
+  macroValidSharedObject (mEmbeddedString, PrivateEmbeddedString) ;
   macroUniqueSharedObject (mEmbeddedString) ;
 }
 
@@ -450,9 +451,7 @@ void String::removeAllKeepingCapacity (void) {
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //   S E T    C A P A C I T Y
-//
 //--------------------------------------------------------------------------------------------------
 
 void String::setCapacity (const uint32_t inNewCapacity) {
@@ -465,8 +464,8 @@ void String::setCapacity (const uint32_t inNewCapacity) {
       if (mEmbeddedString->isUniquelyReferenced ()) {
         mEmbeddedString->reallocEmbeddedString (inNewCapacity) ;
       }else{
-        cEmbeddedString * p = nullptr ;
-        macroMyNew (p, cEmbeddedString (mEmbeddedString, inNewCapacity COMMA_HERE)) ;
+        PrivateEmbeddedString * p = nullptr ;
+        macroMyNew (p, PrivateEmbeddedString (mEmbeddedString, inNewCapacity COMMA_HERE)) ;
         macroAssignSharedObject (mEmbeddedString, p)  ;
         macroDetachSharedObject (p) ;
       }
@@ -475,14 +474,14 @@ void String::setCapacity (const uint32_t inNewCapacity) {
       #endif
     }
   }else if (inNewCapacity > 0) {
-    macroMyNew (mEmbeddedString, cEmbeddedString (inNewCapacity COMMA_HERE)) ;
+    macroMyNew (mEmbeddedString, PrivateEmbeddedString (inNewCapacity COMMA_HERE)) ;
     #ifndef DO_NOT_GENERATE_CHECKINGS
       checkString (HERE) ;
     #endif
   }
   macroAssert (capacity () >= inNewCapacity, "capacity (%lld) < inNewCapacity (%lld)", capacity (), inNewCapacity) ;
   if (mEmbeddedString != nullptr) {
-    macroValidSharedObject (mEmbeddedString, cEmbeddedString) ;
+    macroValidSharedObject (mEmbeddedString, PrivateEmbeddedString) ;
     macroUniqueSharedObject (mEmbeddedString) ;
   }
 }
@@ -564,14 +563,6 @@ void String::setCharAtIndex (const utf32 inCharacter,
   }
   macroUniqueSharedObject (mEmbeddedString) ;
   mEmbeddedString->mUTF32String [inIndex] = inCharacter ;
-//  if (nullptr != mEmbeddedString) {
-//    macroAssertThere (uint32_t (inIndex) < mEmbeddedString->mLength,
-//                      "inIndex (%ld) >= string length (%ld)",
-//                      inIndex, mEmbeddedString->mLength) ;
-//    insulateEmbeddedString (mEmbeddedString->mCapacity) ;
-//    macroUniqueSharedObject (mEmbeddedString) ;
-//    mEmbeddedString->mUTF32String [inIndex] = inCharacter ;
-//  }
 }
 
 //--------------------------------------------------------------------------------------------------

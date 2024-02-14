@@ -123,8 +123,8 @@ void AbstractOutputStream::appendString (const std::initializer_list <utf32> & i
 
 //--------------------------------------------------------------------------------------------------
 
-void AbstractOutputStream::appendString (const char * inCstring, const int32_t inCount) {
-  genericCharArrayOutput (inCstring, inCount) ;
+void AbstractOutputStream::appendString (const char * inCString, const int32_t inCount) {
+  genericCharArrayOutput (inCString, inCount) ;
 }
 
 //--------------------------------------------------------------------------------------------------
