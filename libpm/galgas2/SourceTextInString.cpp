@@ -77,7 +77,7 @@ String SourceTextInString::getLineForLocation (const LocationInSource & inLocati
   //--- Get error line text
     for (int32_t i=index ; (i<sourceTextLength) && (UNICODE_VALUE (mObject->mSourceString.readCharOrNul (i COMMA_HERE)) != '\n') ; i++) {
       const utf32 character = mObject->mSourceString.charAtIndex (i COMMA_HERE) ;
-      errorLine.appendUnicodeChar (character COMMA_HERE) ;
+      errorLine.appendChar (character COMMA_HERE) ;
     }
   }
   return errorLine ;

@@ -164,7 +164,7 @@ void GALGAS_char::description (String & ioString,
   if (isValid ()) {
     if (isprint ((int) UNICODE_VALUE (mCharValue))) {
       ioString.appendCString ("'") ;
-      ioString.appendUnicodeChar (mCharValue COMMA_HERE) ;
+      ioString.appendChar (mCharValue COMMA_HERE) ;
       ioString.appendCString ("'") ;
     }else{
       ioString.appendString (unicodeName (mCharValue)) ;
@@ -181,7 +181,7 @@ GALGAS_string GALGAS_char::getter_string (LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
     String s ;
-    s.appendUnicodeChar (mCharValue COMMA_THERE) ;
+    s.appendChar (mCharValue COMMA_THERE) ;
     result = GALGAS_string (s) ;
   }
   return result ;

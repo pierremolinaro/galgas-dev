@@ -344,7 +344,7 @@ void Compiler::semanticErrorWith_K_message (const GALGAS_lstring & inKey,
     }else if (UNICODE_VALUE (c) == '%') {
       perCentFound = true ;
     }else{
-      message.appendUnicodeChar (c COMMA_HERE) ;
+      message.appendChar (c COMMA_HERE) ;
     }
   }
 //--- Add nearest keys, if any
@@ -387,7 +387,7 @@ void Compiler::semanticErrorWith_K_L_message (const GALGAS_lstring & inKey,
     }else if (UNICODE_VALUE (c) == '%') {
       perCentFound = true ;
     }else{
-      message.appendUnicodeChar (c COMMA_HERE) ;
+      message.appendChar (c COMMA_HERE) ;
     }
   }
 //--- Emit error message
@@ -419,7 +419,7 @@ void Compiler::semanticWarningWith_K_L_message (const GALGAS_lstring & inKey,
     }else if (UNICODE_VALUE (c) == '%') {
       perCentFound = true ;
     }else{
-      message.appendUnicodeChar (c COMMA_HERE) ;
+      message.appendChar (c COMMA_HERE) ;
     }
   }
 //--- Emit error message

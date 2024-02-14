@@ -663,7 +663,7 @@ void String::linesArray (TC_UniqueArray <String> & outStringArray) const {
           state = kGotCarriageReturn ;
           break ;
         default: // Other character
-          outStringArray (index COMMA_HERE).appendUnicodeChar (c COMMA_HERE) ;
+          outStringArray (index COMMA_HERE).appendChar (c COMMA_HERE) ;
         }
         break ;
       case kGotCarriageReturn :
@@ -678,7 +678,7 @@ void String::linesArray (TC_UniqueArray <String> & outStringArray) const {
         default: // Other character
           outStringArray.appendObject (String ()) ;
           index ++ ;
-          outStringArray (index COMMA_HERE).appendUnicodeChar (c COMMA_HERE) ;
+          outStringArray (index COMMA_HERE).appendChar (c COMMA_HERE) ;
           state = kAppendToCurrentLine ;
         }
         break ;
@@ -696,7 +696,7 @@ void String::linesArray (TC_UniqueArray <String> & outStringArray) const {
         default: // Other character
           outStringArray.appendObject (String ()) ;
           index ++ ;
-          outStringArray (index COMMA_HERE).appendUnicodeChar (c COMMA_HERE) ;
+          outStringArray (index COMMA_HERE).appendChar (c COMMA_HERE) ;
           state = kAppendToCurrentLine ;
         }
         break ;
@@ -744,16 +744,16 @@ bool String::parseUTF8 (const U8Data & inDataString,
       idx = inDataString.count () ; // For exiting loop
     }else if (c == 0x0A) { // LF
       if (! foundCR) {
-        outString.appendUnicodeChar (TO_UNICODE ('\n') COMMA_HERE) ;
+        outString.appendChar (TO_UNICODE ('\n') COMMA_HERE) ;
       }
       foundCR = false ;
       idx ++ ;
     }else if (c == 0x0D) { // CR
-      outString.appendUnicodeChar (TO_UNICODE ('\n') COMMA_HERE) ;
+      outString.appendChar (TO_UNICODE ('\n') COMMA_HERE) ;
       foundCR = true ;
       idx ++ ;
     }else if ((c & 0x80) == 0) { // ASCII Character
-      outString.appendUnicodeChar (TO_UNICODE (c) COMMA_HERE) ;
+      outString.appendChar (TO_UNICODE (c) COMMA_HERE) ;
       foundCR = false ;
       idx ++ ;
     }else{
@@ -764,17 +764,17 @@ bool String::parseUTF8 (const U8Data & inDataString,
       case 0x0085 : // NEL: Next Line
       case 0x2028 : // LS: Line Separator
       case 0x2029 : // PS: Paragraph Separator
-        outString.appendUnicodeChar ('\n' COMMA_HERE) ;
+        outString.appendChar ('\n' COMMA_HERE) ;
         break ;
       default :
-        outString.appendUnicodeChar (uc COMMA_HERE) ;
+        outString.appendChar (uc COMMA_HERE) ;
         foundCR = false ;
         break ;
       }
     }
   }
   if (foundCR) {
-    outString.appendUnicodeChar (TO_UNICODE ('\n') COMMA_HERE) ;
+    outString.appendChar (TO_UNICODE ('\n') COMMA_HERE) ;
   }
   return ok ;
 }

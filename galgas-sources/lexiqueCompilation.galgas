@@ -40,7 +40,7 @@ getter @lexicalTypeEnum cppTypeName -> @string {
 getter @lexicalTypeEnum appendMethodName -> @string {
   switch self
     case lexicalType_string : result = "appendStringAsCLiteralStringConstant"
-    case lexicalType_char   : result = "appendUnicodeChar"
+    case lexicalType_char   : result = "appendChar"
     case lexicalType_uint   : result = "appendUnsigned"
     case lexicalType_uint64 : result = "appendUnsigned"
     case lexicalType_sint   : result = "appendSigned"

@@ -88,12 +88,6 @@ void AbstractOutputStream::performAppendCharacter (const utf32 inCharacter) {
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark << String
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 void AbstractOutputStream::appendNewLine (void) {
   appendCString ("\n") ;
 }
@@ -116,12 +110,6 @@ void AbstractOutputStream::appendString (const std::initializer_list <utf32> & i
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark << char *
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 void AbstractOutputStream::appendString (const char * inCString, const int32_t inCount) {
   performAppendCString (inCString, inCount) ;
 }
@@ -130,7 +118,7 @@ void AbstractOutputStream::appendString (const char * inCString, const int32_t i
 
 void AbstractOutputStream::appendUTF32LiteralStringConstant (const String & inString,
                                                              const bool inAppendZeroTerminator) {
-  appendUnicodeChar (TO_UNICODE ('{') COMMA_HERE) ;
+  appendChar (TO_UNICODE ('{') COMMA_HERE) ;
   for (int32_t i=0 ; i < inString.length () ; i++) {
     const utf32 c = inString.charAtIndex (i COMMA_HERE) ;
     appendCString ("\n  TO_UNICODE (") ;
@@ -149,27 +137,15 @@ void AbstractOutputStream::appendUTF32LiteralStringConstant (const String & inSt
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark << char
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 void AbstractOutputStream::appendASCIIChar (const char inValue) {
-  appendUnicodeChar (TO_UNICODE (uint32_t (inValue)) COMMA_HERE) ;
+  appendChar (TO_UNICODE (uint32_t (inValue)) COMMA_HERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void AbstractOutputStream::appendUnicodeChar (const utf32 inUnicodeCharacter COMMA_UNUSED_LOCATION_ARGS) {
+void AbstractOutputStream::appendChar (const utf32 inUnicodeCharacter COMMA_UNUSED_LOCATION_ARGS) {
   performAppendCharacter (inUnicodeCharacter) ;
 }
-
-//--------------------------------------------------------------------------------------------------
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark << double
-#endif
 
 //--------------------------------------------------------------------------------------------------
 
@@ -178,12 +154,6 @@ void AbstractOutputStream::appendDouble (const double inValue) {
   snprintf (s, 40, "%g", inValue) ;
   appendCString (s) ;
 }
-
-//--------------------------------------------------------------------------------------------------
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark uint64_t
-#endif
 
 //--------------------------------------------------------------------------------------------------
 
@@ -203,12 +173,6 @@ void AbstractOutputStream::appendUnsignedHex16 (const uint64_t inValue) {
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark << int64_t
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 void AbstractOutputStream::appendSigned (const int64_t inValue) {
   char s [32] ;
   snprintf (s, 31, "%" PRId64, inValue) ;
@@ -217,21 +181,9 @@ void AbstractOutputStream::appendSigned (const int64_t inValue) {
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark Bool
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 void AbstractOutputStream::appendBool (const bool inValue) {
   appendCString (inValue ? "true" : "false") ;
 }
-
-//--------------------------------------------------------------------------------------------------
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark << uint32_t
-#endif
 
 //--------------------------------------------------------------------------------------------------
 
@@ -286,14 +238,8 @@ void AbstractOutputStream::appendUnsignedHex8 (const uint64_t inValue) {
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark << void *
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 void AbstractOutputStream::appendPointer (const void * inValue) {
-  char s [30] ;
+  char s [32] ;
   snprintf (s, 29, "%p", inValue) ;
   appendCString (s) ;
 }
@@ -302,7 +248,7 @@ void AbstractOutputStream::appendPointer (const void * inValue) {
 
 void AbstractOutputStream::appendSpaces (const int32_t inSpaceCount) {
   for (int32_t i=0 ; i<inSpaceCount ; i++) {
-    appendUnicodeChar (TO_UNICODE (' ') COMMA_HERE) ;
+    appendChar (TO_UNICODE (' ') COMMA_HERE) ;
   }
 }
 
@@ -501,7 +447,7 @@ static void internalWriteCstringConstantWithoutDelimiters (AbstractOutputStream 
       break ;
     default :
       if ((UNICODE_VALUE (c) >= ' ') && (UNICODE_VALUE (c) < 127)) {
-        ioStream.appendUnicodeChar (c COMMA_HERE) ;
+        ioStream.appendChar (c COMMA_HERE) ;
       }else{
         char buffer [5] ;
         const int32_t n = UTF8StringFromUTF32Character (c, buffer) ;
@@ -581,7 +527,7 @@ void AbstractOutputStream::appendStringAsCLiteralCharConstant (const utf32 c) {
   default :
     if ((UNICODE_VALUE (c) >= ' ') && (UNICODE_VALUE (c) <= '~')) {
       appendCString ("'") ;
-      appendUnicodeChar (c COMMA_HERE) ;
+      appendChar (c COMMA_HERE) ;
       appendCString ("'") ;
     }else{
       appendUnsigned (UNICODE_VALUE (c)) ;
@@ -624,7 +570,7 @@ String stringWithSigned (const int64_t inValue) {
 
 String stringWithCharacter (const char inValue) {
   String result ;
-  result.appendUnicodeChar (TO_UNICODE (uint32_t (inValue)) COMMA_HERE) ;
+  result.appendChar (TO_UNICODE (uint32_t (inValue)) COMMA_HERE) ;
   return result ;
 }
 
@@ -632,7 +578,7 @@ String stringWithCharacter (const char inValue) {
 
 String stringWithUnicodeCharacter (const utf32 inValue) {
   String result ;
-  result.appendUnicodeChar (inValue COMMA_HERE) ;
+  result.appendChar (inValue COMMA_HERE) ;
   return result ;
 }
 

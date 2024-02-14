@@ -74,7 +74,7 @@
      && (UNICODE_VALUE (inFilePath.charAtIndex (1 COMMA_HERE)) == ':')
      && (UNICODE_VALUE (inFilePath.charAtIndex (2 COMMA_HERE)) == '\\')) {
       result.appendCString ("/") ;
-      result.appendUnicodeChar (inFilePath.charAtIndex (0 COMMA_HERE) COMMA_HERE) ;
+      result.appendChar (inFilePath.charAtIndex (0 COMMA_HERE) COMMA_HERE) ;
       result.appendCString ("/") ;
       firstChar = 3 ;
     }
@@ -83,7 +83,7 @@
       if (UNICODE_VALUE (c) == '\\') {
         result.appendCString ("/") ;
       }else{
-        result.appendUnicodeChar (c COMMA_HERE) ;
+        result.appendChar (c COMMA_HERE) ;
       }
     }
     return result ;
@@ -121,13 +121,13 @@
        && (UNICODE_VALUE (inFilePath.charAtIndex (0 COMMA_HERE)) == '/')
        && isalpha ((int) UNICODE_VALUE (inFilePath.charAtIndex (1 COMMA_HERE)))
        && (UNICODE_VALUE (inFilePath.charAtIndex (2 COMMA_HERE)) == '/')) {
-        winPath.appendUnicodeChar (inFilePath.charAtIndex (1 COMMA_HERE) COMMA_HERE) ;
+        winPath.appendChar (inFilePath.charAtIndex (1 COMMA_HERE) COMMA_HERE) ;
         winPath.appendCString (":\\") ;
         firstChar = 3 ;
       }
       for (int32_t i=firstChar ; i<fileLength ; i++) {
         const utf32 c = inFilePath.charAtIndex (i COMMA_HERE) ;
-        winPath.appendUnicodeChar ((UNICODE_VALUE (c) == '/') ? TO_UNICODE ('\\') : c COMMA_HERE) ;
+        winPath.appendChar ((UNICODE_VALUE (c) == '/') ? TO_UNICODE ('\\') : c COMMA_HERE) ;
       }
     return winPath ;
   }
@@ -231,7 +231,7 @@ static bool parseUTF32LE (const U8Data & inDataString,
     n <<= 8 ;
     n |= inDataString (i COMMA_HERE) ;
     ok = isUnicodeCharacterAssigned (TO_UNICODE (n)) ;
-    outString.appendUnicodeChar (TO_UNICODE (n) COMMA_HERE) ;
+    outString.appendChar (TO_UNICODE (n) COMMA_HERE) ;
   }
   if (! ok) {
     outString.removeAllKeepingCapacity () ;
@@ -254,7 +254,7 @@ static bool parseUTF32BE (const U8Data & inDataString,
     n <<= 8 ;
     n |= inDataString (i+3 COMMA_HERE) ;
     ok = isUnicodeCharacterAssigned (TO_UNICODE (n)) ;
-    outString.appendUnicodeChar (TO_UNICODE (n) COMMA_HERE) ;
+    outString.appendChar (TO_UNICODE (n) COMMA_HERE) ;
   }
   if (! ok) {
     outString.removeAllKeepingCapacity () ;
@@ -282,7 +282,7 @@ static bool parseUTF16LE (const U8Data & inDataString,
       foundUTF16prefix = false ;
     }else{
       ok = isUnicodeCharacterAssigned (TO_UNICODE (n)) && ! foundUTF16prefix ;
-      outString.appendUnicodeChar (TO_UNICODE (n) COMMA_HERE) ;
+      outString.appendChar (TO_UNICODE (n) COMMA_HERE) ;
     }
   }
   ok &= ! foundUTF16prefix ;
@@ -312,7 +312,7 @@ static bool parseUTF16BE (const U8Data & inDataString,
       foundUTF16prefix = false ;
     }else{
       ok = isUnicodeCharacterAssigned (TO_UNICODE (n)) && ! foundUTF16prefix ;
-      outString.appendUnicodeChar (TO_UNICODE (n) COMMA_HERE) ;
+      outString.appendChar (TO_UNICODE (n) COMMA_HERE) ;
     }
   }
   ok &= ! foundUTF16prefix ;
@@ -470,23 +470,23 @@ static bool parseWithEncoding (const U8Data & inDataString,
     const uint8_t c = inDataString (idx COMMA_HERE) ;
     if (c == 0x0A) { // LF
       if (! foundCR) {
-        outString.appendUnicodeChar (TO_UNICODE ('\n') COMMA_HERE) ;
+        outString.appendChar (TO_UNICODE ('\n') COMMA_HERE) ;
       }
       foundCR = false ;
     }else if (c == 0x0D) { // CR
-      outString.appendUnicodeChar (TO_UNICODE ('\n') COMMA_HERE) ;
+      outString.appendChar (TO_UNICODE ('\n') COMMA_HERE) ;
       foundCR = true ;
     }else if ((c & 0x80) == 0) { // ASCII Character
-      outString.appendUnicodeChar (TO_UNICODE (c) COMMA_HERE) ;
+      outString.appendChar (TO_UNICODE (c) COMMA_HERE) ;
       foundCR = false ;
     }else{
       const utf32 uc = unicodeCharacterForSingleByteCharacter ((char) c, inTextFileEncoding) ;
-      outString.appendUnicodeChar (uc COMMA_HERE) ;
+      outString.appendChar (uc COMMA_HERE) ;
       foundCR = false ;
     }
   }
   if (foundCR) {
-    outString.appendUnicodeChar (TO_UNICODE ('\n') COMMA_HERE) ;
+    outString.appendChar (TO_UNICODE ('\n') COMMA_HERE) ;
   }
   return ok ;
 }
@@ -547,17 +547,17 @@ static void parseASCIIWithReplacementCharacter (const U8Data & inDataString,
     index ++ ;
     if (c == 0x0A) { // LF
       if (! foundCR) {
-        outString.appendUnicodeChar (TO_UNICODE ('\n') COMMA_HERE) ;
+        outString.appendChar (TO_UNICODE ('\n') COMMA_HERE) ;
       }
       foundCR = false ;
     }else if (c == 0x0D) { // CR
-      outString.appendUnicodeChar (TO_UNICODE ('\n') COMMA_HERE) ;
+      outString.appendChar (TO_UNICODE ('\n') COMMA_HERE) ;
       foundCR = true ;
     }else if ((c != 0) && (c & 0x80) == 0) { // ASCII Character (not NUL)
-      outString.appendUnicodeChar (TO_UNICODE (c) COMMA_HERE) ;
+      outString.appendChar (TO_UNICODE (c) COMMA_HERE) ;
       foundCR = false ;
     }else{
-      outString.appendUnicodeChar (UNICODE_REPLACEMENT_CHARACTER COMMA_HERE) ;
+      outString.appendChar (UNICODE_REPLACEMENT_CHARACTER COMMA_HERE) ;
       foundCR = false ;
     }
   }
@@ -844,7 +844,7 @@ String FileManager::absolutePathFromPath (const String & inPath,
   }else{
     result = absolutePathFromCurrentDirectory (inFromPath) ;
     if (UNICODE_VALUE (result.lastChar (HERE)) != '/') {
-      result.appendUnicodeChar (TO_UNICODE ('/') COMMA_HERE) ;
+      result.appendChar (TO_UNICODE ('/') COMMA_HERE) ;
     }
     result.appendString (inPath) ;
   }

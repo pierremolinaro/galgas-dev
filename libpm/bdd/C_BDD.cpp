@@ -449,7 +449,7 @@ C_BDD C_BDD::BDDWithPredicateString (const String & inPredicateStringValue
     utf32 cc = inPredicateStringValue.charAtIndex (stringIndex COMMA_HERE) ;
     String s ;
     while ((stringIndex < stringLength) && ((UNICODE_VALUE (cc) == '0') || (UNICODE_VALUE (cc) == '1') || (UNICODE_VALUE (cc) == 'X') || (UNICODE_VALUE (cc) == ' '))) {
-      s.appendUnicodeChar (cc COMMA_HERE) ;
+      s.appendChar (cc COMMA_HERE) ;
       stringIndex ++ ;
       if (stringIndex < stringLength) {
         cc = inPredicateStringValue.charAtIndex (stringIndex COMMA_HERE) ;

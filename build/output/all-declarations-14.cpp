@@ -8533,7 +8533,7 @@ bool Lexique_galgasTemplateScanner::parseLexicalToken (void) {
             while (notTestForInputUTF32String (galgasTemplateScanner_kTemplateReplacementArray [replacementIndex].mEndString,
                                                kEndOfSourceLexicalErrorMessage
                                                COMMA_HERE)) {
-              s.appendUnicodeChar (previousChar () COMMA_HERE) ;
+              s.appendChar (previousChar () COMMA_HERE) ;
             }
             galgasTemplateScanner_kTemplateReplacementArray [replacementIndex].mReplacementFunction (*this, s, token.mTemplateStringBeforeToken) ;
           }
@@ -8541,7 +8541,7 @@ bool Lexique_galgasTemplateScanner::parseLexicalToken (void) {
       }
       mMatchedTemplateDelimiterIndex = findTemplateDelimiterIndex (galgasTemplateScanner_kTemplateDefinitionArray, 1) ;
       if (mMatchedTemplateDelimiterIndex < 0) {
-        token.mTemplateStringBeforeToken.appendUnicodeChar (mCurrentChar COMMA_HERE) ;
+        token.mTemplateStringBeforeToken.appendChar (mCurrentChar COMMA_HERE) ;
         advance () ;
       }
     }

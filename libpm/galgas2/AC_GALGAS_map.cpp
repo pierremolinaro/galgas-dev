@@ -1501,7 +1501,7 @@ void cSharedMapRoot::performRemove (GALGAS_lstring & inKey,
         }else if (UNICODE_VALUE (c) == '%') {
           perCentFound = true ;
         }else{
-          message.appendUnicodeChar (c COMMA_HERE) ;
+          message.appendChar (c COMMA_HERE) ;
         }
       }
     //--- Emit error message

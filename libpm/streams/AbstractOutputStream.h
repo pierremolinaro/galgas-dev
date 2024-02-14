@@ -57,7 +57,7 @@ class AbstractOutputStream {
 
 //--- Appending character
   public: void appendASCIIChar (const char inCharacter) ;
-  public: void appendUnicodeChar (const utf32 inUnicodeCharacter COMMA_LOCATION_ARGS) ;
+  public: void appendChar (const utf32 inUnicodeCharacter COMMA_LOCATION_ARGS) ;
 
 //--- Appending uint64_t in Hex
   public: void appendUnsigned0xHex (const uint64_t inValue) ;

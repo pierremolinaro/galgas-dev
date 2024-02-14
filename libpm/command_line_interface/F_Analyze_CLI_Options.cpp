@@ -281,12 +281,12 @@ static void analyze_one_option (const char * inCommand,
          && (inCommand [1] == ':')
          && (inCommand [2] == '\\')) {
           fileName.appendCString ("/") ;
-          fileName.appendUnicodeChar (TO_UNICODE (inCommand [0]) COMMA_HERE) ;
+          fileName.appendChar (TO_UNICODE (inCommand [0]) COMMA_HERE) ;
           fileName.appendCString ("/") ;
           firstChar = 3 ;
         }
         for (int32_t i=firstChar ; i<fileLength ; i++) {
-          fileName.appendUnicodeChar (TO_UNICODE (((inCommand [i] == '\\') ? '/' : inCommand [i])) COMMA_HERE) ;
+          fileName.appendChar (TO_UNICODE (((inCommand [i] == '\\') ? '/' : inCommand [i])) COMMA_HERE) ;
         }
       #else
         fileName = inCommand ;
@@ -347,12 +347,12 @@ static void analyze_one_option (const char * inCommand,
        && (szFile [1] == ':')
        && (szFile [2] == '\\')) {
         fileName.appendCString ("/") ;
-        fileName.appendUnicodeChar (TO_UNICODE (szFile [0]) COMMA_HERE) ;
+        fileName.appendChar (TO_UNICODE (szFile [0]) COMMA_HERE) ;
         fileName.appendCString ("/") ;
         firstChar = 3 ;
       }
       for (int32_t i=firstChar ; i<fileLength ; i++) {
-        fileName.appendUnicodeChar (TO_UNICODE ((szFile [i] == '\\') ? '/' : szFile [i]) COMMA_HERE) ;
+        fileName.appendChar (TO_UNICODE ((szFile [i] == '\\') ? '/' : szFile [i]) COMMA_HERE) ;
       }
       outSourceFileArray.appendObject (fileName) ;
     }
