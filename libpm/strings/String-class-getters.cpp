@@ -88,7 +88,7 @@ LineColumnContents String::lineAndColumnFromIndex (const int32_t inIndex) const 
 //--------------------------------------------------------------------------------------------------
 
 int32_t String::indexFromLineAndColumn (const int32_t inLineNumber,
-                                          const int32_t inColumnNumber) const {
+                                        const int32_t inColumnNumber) const {
   int32_t idx = 0 ;
   int32_t line = 1 ;
   while (line < inLineNumber) {
@@ -149,7 +149,7 @@ void String::componentsSeparatedByString (const String & inSeparatorString,
 //--------------------------------------------------------------------------------------------------
 
 String String::componentsJoinedByString (const TC_UniqueArray <String> & inComponentArray,
-                                             const String & inSeparator) {
+                                         const String & inSeparator) {
   String result ;
   if (inComponentArray.count () > 0) {
     result.appendString (inComponentArray (0 COMMA_HERE)) ;
@@ -566,7 +566,7 @@ void String::convertToSInt64 (int64_t & outResult,
 //--------------------------------------------------------------------------------------------------
 
 void String::convertToDouble (double & outDoubleValue,
-                                bool & outOk) const {
+                              bool & outOk) const {
   outDoubleValue = 0.0 ;
   int32_t idx = 0 ;
 //--- Sign
@@ -864,7 +864,7 @@ String String::HTMLRepresentation (void) const {
 //   S T R I N G    C O M P A R E
 //--------------------------------------------------------------------------------------------------
 
-int32_t String::compare (const char * const inCstring) const {
+int32_t String::compareWithCString (const char * const inCstring) const {
   int32_t result = 0 ;
   const utf32 * myStringPtr = utf32String (HERE) ;
   if (inCstring == nullptr) {
@@ -1004,9 +1004,7 @@ String String::stringByDeletingPathExtension (void) const {
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //   stringByDeletingLastPathComponent
-//
 //--------------------------------------------------------------------------------------------------
 
 String String::stringByDeletingLastPathComponent (void) const {
@@ -1030,13 +1028,10 @@ String String::stringByDeletingLastPathComponent (void) const {
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //   stringByAppendingPathComponent
-//
 //--------------------------------------------------------------------------------------------------
 
-String String::
-stringByAppendingPathComponent (const String & inPathComponent) const {
+String String::stringByAppendingPathComponent (const String & inPathComponent) const {
   String result = *this ;
   if (result.length () == 0) {
     result = inPathComponent ;
@@ -1050,9 +1045,7 @@ stringByAppendingPathComponent (const String & inPathComponent) const {
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //   lastPathComponent
-//
 //--------------------------------------------------------------------------------------------------
 
 String String::lastPathComponent (void) const {
@@ -1090,7 +1083,7 @@ String String::lastPathComponentWithoutExtension (void) const {
 
 String String::md5 (void) const {
   MD5pm md5 ;
-  md5.appendData ((uint8_t *) cString (),  size_t (length ())) ;
+  md5.appendData ((uint8_t *) cString (), size_t (length ())) ;
   const MD5Digest digest = md5.finalizeAndGetDigest () ;
   String result ;
   char s [4] ;
@@ -1131,9 +1124,7 @@ String String::subStringFromIndex (const int32_t inStartIndex) const  {
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //   R I G H T    S U B    S T R I N G
-//
 //--------------------------------------------------------------------------------------------------
 
 String String::rightSubString (const int32_t inLength) const  {
@@ -1147,9 +1138,7 @@ String String::rightSubString (const int32_t inLength) const  {
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //   L E F T    S U B    S T R I N G
-//
 //--------------------------------------------------------------------------------------------------
 
 String String::leftSubString (const int32_t inLength) const  {
@@ -1163,9 +1152,7 @@ String String::leftSubString (const int32_t inLength) const  {
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //   X M L    E S C A P E D    S T R I N G
-//
 //--------------------------------------------------------------------------------------------------
 
 //--- Returns a string where ", ', <, > and & have been replaced by &quot;, &apos;, &lt;, &gt; and &amp;
@@ -1197,16 +1184,9 @@ String String::stringByStandardizingPath (void) const {
   if (path.length () == 0) {
     path.appendCString (".") ;
   }else{
-  //#define TRACE_stringByStandardizingPath
   //--- Decompose path
     TC_UniqueArray <String> componentArray ;
     path.componentsSeparatedByString ("/", componentArray) ;
-    #ifdef TRACE_stringByStandardizingPath
-      printf ("----- Decomposition of '%s':\n", path.cString ()) ;
-      for (int32_t i=0 ; i<componentArray.count () ; i++) {
-        printf ("  '%s'\n", componentArray (i COMMA_HERE).cString ()) ;
-      }
-    #endif
   //--- Remove empty components (but the first one)
     int32_t componentIndex = 1 ;
     while (componentIndex < componentArray.count ()) {
@@ -1216,12 +1196,6 @@ String String::stringByStandardizingPath (void) const {
         componentIndex ++ ;
       }
     }
-    #ifdef TRACE_stringByStandardizingPath
-      printf ("-- After removing empty components:\n") ;
-      for (int32_t i=0 ; i<componentArray.count () ; i++) {
-        printf ("  '%s'\n", componentArray (i COMMA_HERE).cString ()) ;
-      }
-    #endif
   //--- Remove '.' components
     componentIndex = 0 ;
     while (componentIndex < componentArray.count ()) {
@@ -1231,12 +1205,6 @@ String String::stringByStandardizingPath (void) const {
         componentIndex ++ ;
       }
     }
-    #ifdef TRACE_stringByStandardizingPath
-      printf ("-- After removing '.' components:\n") ;
-      for (int32_t i=0 ; i<componentArray.count () ; i++) {
-        printf ("  '%s'\n", componentArray (i COMMA_HERE).cString ()) ;
-      }
-    #endif
   //--- Remove '..' components
     componentIndex = 1 ;
     while (componentIndex < componentArray.count ()) {
@@ -1251,17 +1219,8 @@ String String::stringByStandardizingPath (void) const {
         componentIndex ++ ;
       }
     }
-    #ifdef TRACE_stringByStandardizingPath
-      printf ("-- After removing '..' components:\n") ;
-      for (int32_t i=0 ; i<componentArray.count () ; i++) {
-        printf ("  '%s'\n", componentArray (i COMMA_HERE).cString ()) ;
-      }
-    #endif
   //--- Recompose path
     path = componentsJoinedByString (componentArray, "/") ;
-    #ifdef TRACE_stringByStandardizingPath
-      printf ("-- Recomposed path: '%s'\n", path.cString ()) ;
-    #endif
   }
 //---
   return path ;
@@ -1306,36 +1265,5 @@ uint32_t String::LevenshteinDistanceFromString (const String & inOperand) const 
   }
   return distance (myLength, operandLength COMMA_HERE) ;
 }
-
-/* int LevenshteinDistance(char s[1..m], char t[1..n])
-{
-  // for all i and j, d[i,j] will hold the Levenshtein distance between
-  // the first i characters of s and the first j characters of t;
-  // note that d has (m+1)x(n+1) values
-  declare int d[0..m, 0..n]
-
-  for i from 0 to m
-    d[i, 0] := i // the distance of any first string to an empty second string
-  for j from 0 to n
-    d[0, j] := j // the distance of any second string to an empty first string
-
-  for j from 1 to n
-  {
-    for i from 1 to m
-    {
-      if s[i] = t[j] then
-        d[i, j] := d[i-1, j-1]       // no operation required
-      else
-        d[i, j] := minimum
-                   (
-                     d[i-1, j] + 1,  // a deletion
-                     d[i, j-1] + 1,  // an insertion
-                     d[i-1, j-1] + 1 // a substitution
-                   )
-    }
-  }
-
-  return d[m,n]
-} */
 
 //--------------------------------------------------------------------------------------------------

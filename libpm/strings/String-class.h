@@ -110,11 +110,8 @@ class String : public AbstractOutputStream {
 //--- Insert 'inChar' character at 'inIndex' index
   public: void insertCharacterAtIndex (const utf32 inChar, const int32_t inIndex COMMA_LOCATION_ARGS) ;
 
-//--- Insulate
-  public: void insulate (void) const ;
-
 //--- hash code
-  public: uint32_t hash (void) const ;
+//  public: uint32_t hash (void) const ;
 
 //--- Set length to 0 ; do not release memory
   public: void removeAllKeepingCapacity (void) ;
@@ -177,7 +174,7 @@ class String : public AbstractOutputStream {
   public: const utf32 * utf32String (LOCATION_ARGS) const ;
 
 //--- Compare with an other string 
-  public: int32_t compare (const char * const inCstring) const ;
+  public: int32_t compareWithCString (const char * const inCstring) const ;
   public: int32_t compare (const String & inString) const ;
   public: int32_t compareWithInitializerList (const std::initializer_list <utf32> & inString) const ;
   public: int32_t compareStringByLength (const String & inString) const ;
@@ -234,7 +231,6 @@ class String : public AbstractOutputStream {
 
 //--- String concatenation
   public: String operator + (const String & inOperand) const ;
-  public: String operator + (const char * inOperand) const ;
 
 //--- Returns a string where ", ', <, > and & have been replaced by &quot;, &apos;, &lt;, &gt; and &amp;
   public: String XMLEscapedString (void) const ;
