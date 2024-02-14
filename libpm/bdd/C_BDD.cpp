@@ -446,20 +446,20 @@ C_BDD C_BDD::BDDWithPredicateString (const String & inPredicateStringValue
   int32_t stringIndex = 0 ;
   bool ok = true ;
   while ((stringIndex < stringLength) && ok) {
-    utf32 cc = inPredicateStringValue (stringIndex COMMA_HERE) ;
+    utf32 cc = inPredicateStringValue.utf32AtIndex (stringIndex COMMA_HERE) ;
     String s ;
     while ((stringIndex < stringLength) && ((UNICODE_VALUE (cc) == '0') || (UNICODE_VALUE (cc) == '1') || (UNICODE_VALUE (cc) == 'X') || (UNICODE_VALUE (cc) == ' '))) {
       s.appendUnicodeChar (cc COMMA_HERE) ;
       stringIndex ++ ;
       if (stringIndex < stringLength) {
-        cc = inPredicateStringValue (stringIndex COMMA_HERE) ;
+        cc = inPredicateStringValue.utf32AtIndex (stringIndex COMMA_HERE) ;
       }
     }
     if (s.length () > 0) {
       C_BDD v ; v.setToTrue () ;
       int32_t bitIndex = 0 ;
       for (int32_t i=s.length () - 1 ; i>=0 ; i--) {
-        const utf32 c = s (i COMMA_HERE) ;
+        const utf32 c = s.utf32AtIndex (i COMMA_HERE) ;
         if (UNICODE_VALUE (c) == '0') {
           v &= C_BDD ((uint32_t) (((uint32_t) bitIndex) & UINT16_MAX), false) ;
           bitIndex ++ ;
@@ -1319,16 +1319,16 @@ static void internalPrintBDDInLittleEndianStringArray (const uint32_t inValue,
   }else{
     const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
     while (inVariableIndex > var) {
-      ioDisplayString.setUnicodeCharacterAtIndex (TO_UNICODE ('X'), (int32_t) inVariableIndex COMMA_THERE) ;
+      ioDisplayString.setUTF32AtIndex (TO_UNICODE ('X'), (int32_t) inVariableIndex COMMA_THERE) ;
       inVariableIndex -- ;
     }
   //--- Branche Zero
     const uint32_t branche0 = gNodeArray [nodeIndex].mELSE ^ complement ;
     if (branche0 != 0) {
-      ioDisplayString.setUnicodeCharacterAtIndex (TO_UNICODE ('0'), (int32_t) var COMMA_HERE) ;
+      ioDisplayString.setUTF32AtIndex (TO_UNICODE ('0'), (int32_t) var COMMA_HERE) ;
       if (branche0 == 1) {
         for (uint32_t i=0 ; i<var ; i++) {
-          ioDisplayString.setUnicodeCharacterAtIndex (TO_UNICODE ('X'), (int32_t) i COMMA_HERE) ;
+          ioDisplayString.setUTF32AtIndex (TO_UNICODE ('X'), (int32_t) i COMMA_HERE) ;
         }
         outStringArray.appendObject (ioDisplayString) ;
       }else{
@@ -1338,10 +1338,10 @@ static void internalPrintBDDInLittleEndianStringArray (const uint32_t inValue,
   //--- Branche 1
     const uint32_t branche1 = gNodeArray [nodeIndex].mTHEN ^ complement ;
     if (branche1 != 0) {
-      ioDisplayString.setUnicodeCharacterAtIndex (TO_UNICODE ('1'), (int32_t) var COMMA_HERE) ;
+      ioDisplayString.setUTF32AtIndex (TO_UNICODE ('1'), (int32_t) var COMMA_HERE) ;
       if (branche1 == 1) {
         for (uint32_t i=0 ; i<var ; i++) {
-          ioDisplayString.setUnicodeCharacterAtIndex (TO_UNICODE ('X'), (int32_t) i COMMA_HERE) ;
+          ioDisplayString.setUTF32AtIndex (TO_UNICODE ('X'), (int32_t) i COMMA_HERE) ;
         }
         outStringArray.appendObject (ioDisplayString) ;
       }else{
@@ -1396,16 +1396,16 @@ static void internalPrintBDDInBigEndianStringArray (const uint32_t inValue,
   }else{
     const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
     while (inVariableIndex > var) {
-      ioDisplayString.setUnicodeCharacterAtIndex (TO_UNICODE ('X'), (int32_t) (inTotalVariableCountMinusOne - inVariableIndex) COMMA_THERE) ;
+      ioDisplayString.setUTF32AtIndex (TO_UNICODE ('X'), (int32_t) (inTotalVariableCountMinusOne - inVariableIndex) COMMA_THERE) ;
       inVariableIndex -- ;
     }
   //--- Branche Zero
     const uint32_t branche0 = gNodeArray [nodeIndex].mELSE ^ complement ;
     if (branche0 != 0) {
-      ioDisplayString.setUnicodeCharacterAtIndex (TO_UNICODE ('0'), (int32_t) (inTotalVariableCountMinusOne - var) COMMA_THERE) ;
+      ioDisplayString.setUTF32AtIndex (TO_UNICODE ('0'), (int32_t) (inTotalVariableCountMinusOne - var) COMMA_THERE) ;
       if (branche0 == 1) {
         for (uint32_t i=0 ; i<var ; i++) {
-          ioDisplayString.setUnicodeCharacterAtIndex (TO_UNICODE ('X'), (int32_t) (inTotalVariableCountMinusOne - i) COMMA_THERE) ;
+          ioDisplayString.setUTF32AtIndex (TO_UNICODE ('X'), (int32_t) (inTotalVariableCountMinusOne - i) COMMA_THERE) ;
         }
         outStringArray.appendObject (ioDisplayString) ;
       }else{
@@ -1415,10 +1415,10 @@ static void internalPrintBDDInBigEndianStringArray (const uint32_t inValue,
   //--- Branche 1
     const uint32_t branche1 = gNodeArray [nodeIndex].mTHEN ^ complement ;
     if (branche1 != 0) {
-      ioDisplayString.setUnicodeCharacterAtIndex (TO_UNICODE ('1'), (int32_t) (inTotalVariableCountMinusOne - var) COMMA_HERE) ;
+      ioDisplayString.setUTF32AtIndex (TO_UNICODE ('1'), (int32_t) (inTotalVariableCountMinusOne - var) COMMA_HERE) ;
       if (branche1 == 1) {
         for (uint32_t i=0 ; i<var ; i++) {
-          ioDisplayString.setUnicodeCharacterAtIndex (TO_UNICODE ('X'), (int32_t) (inTotalVariableCountMinusOne - i) COMMA_HERE) ;
+          ioDisplayString.setUTF32AtIndex (TO_UNICODE ('X'), (int32_t) (inTotalVariableCountMinusOne - i) COMMA_HERE) ;
         }
         outStringArray.appendObject (ioDisplayString) ;
       }else{

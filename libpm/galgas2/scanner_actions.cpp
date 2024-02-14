@@ -297,7 +297,7 @@ void scanner_routine_convertDecimalStringIntoUInt (Lexique & inLexique,
   bool ok = true ;
   const uint32_t max = UINT32_MAX / 10 ;
   for (int32_t i=0 ; (i<inDecimalString.length ()) && ok ; i++) {
-    const utf32 c = inDecimalString (i COMMA_HERE) ;
+    const utf32 c = inDecimalString.utf32AtIndex (i COMMA_HERE) ;
     if ((UNICODE_VALUE (c) < '0') || (UNICODE_VALUE (c) > '9')) {
       inLexique.lexicalError (inCharacterIsNotDecimalDigitError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
       ok = false ;
@@ -326,7 +326,7 @@ void scanner_routine_convertDecimalStringIntoSInt (Lexique & inLexique,
   outValue = 0 ;
   bool ok = true ;
   for (int32_t i=0 ; (i<inDecimalString.length ()) && ok ; i++) {
-    const utf32 c = inDecimalString (i COMMA_HERE) ;
+    const utf32 c = inDecimalString.utf32AtIndex (i COMMA_HERE) ;
     if ((UNICODE_VALUE (c) < '0') || (UNICODE_VALUE (c) > '9')) {
       inLexique.lexicalError (inCharacterIsNotDecimalDigitError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
     }else{
@@ -355,7 +355,7 @@ void scanner_routine_convertDecimalStringIntoUInt64 (Lexique & inLexique,
   outValue = 0 ;
   bool ok = true ;
   for (int32_t i=0 ; (i<inDecimalString.length ()) && ok ; i++) {
-    const utf32 c = inDecimalString (i COMMA_HERE) ;
+    const utf32 c = inDecimalString.utf32AtIndex (i COMMA_HERE) ;
     if ((UNICODE_VALUE (c) < '0') || (UNICODE_VALUE (c) > '9')) {
       inLexique.lexicalError (inCharacterIsNotDecimalDigitError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
     }else{
@@ -384,7 +384,7 @@ void scanner_routine_convertDecimalStringIntoSInt64 (Lexique & inLexique,
   outValue = 0 ;
   bool ok = true ;
   for (int32_t i=0 ; (i<inDecimalString.length ()) && ok ; i++) {
-    const utf32 c = inDecimalString (i COMMA_HERE) ;
+    const utf32 c = inDecimalString.utf32AtIndex (i COMMA_HERE) ;
     if ((UNICODE_VALUE (c) < '0') || (UNICODE_VALUE (c) > '9')) {
       inLexique.lexicalError (inCharacterIsNotDecimalDigitError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
     }else{
@@ -554,7 +554,7 @@ void scanner_routine_convertHexStringIntoUInt (Lexique & inLexique,
   bool ok = true ;
   const uint32_t max = UINT32_MAX >> 4 ;
   for (int32_t i=0 ; (i<inHexString.length ()) && ok ; i++) {
-    const utf32 c = inHexString (i COMMA_HERE) ;
+    const utf32 c = inHexString.utf32AtIndex (i COMMA_HERE) ;
     if (outValue > max) {
       inLexique.lexicalError (inNumberTooLargeError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
       ok = false ;
@@ -585,7 +585,7 @@ void scanner_routine_convertHexStringIntoUInt64 (Lexique & inLexique,
   bool ok = true ;
   const uint64_t max = UINT64_MAX >> 4 ;
   for (int32_t i=0 ; (i<inHexString.length ()) && ok ; i++) {
-    const utf32 c = inHexString (i COMMA_HERE) ;
+    const utf32 c = inHexString.utf32AtIndex (i COMMA_HERE) ;
     if (outValue > max) {
       inLexique.lexicalError (inNumberTooLargeError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
       ok = false ;
@@ -616,7 +616,7 @@ void scanner_routine_convertHexStringIntoSInt (Lexique & inLexique,
   bool ok = true ;
   const int32_t max = INT32_MAX >> 4 ;
   for (int32_t i=0 ; (i<inHexString.length ()) && ok ; i++) {
-    const utf32 c = inHexString (i COMMA_HERE) ;
+    const utf32 c = inHexString.utf32AtIndex (i COMMA_HERE) ;
     if (outValue > max) {
       inLexique.lexicalError (inNumberTooLargeError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
       ok = false ;
@@ -647,7 +647,7 @@ void scanner_routine_convertHexStringIntoSInt64 (Lexique & inLexique,
   bool ok = true ;
   const int64_t max = INT64_MAX >> 4 ;
   for (int32_t i=0 ; (i<inHexString.length ()) && ok ; i++) {
-    const utf32 c = inHexString (i COMMA_HERE) ;
+    const utf32 c = inHexString.utf32AtIndex (i COMMA_HERE) ;
     if (outValue > max) {
       inLexique.lexicalError (inNumberTooLargeError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
       ok = false ;
@@ -706,12 +706,12 @@ void scanner_routine_codePointToUnicode (Lexique & inLexique,
                                          String & ioTemplateString) {
   if (inElementString.length () == 0) {
     inLexique.lexicalError ("the escape sequence '&#...;' contains no character(s)" COMMA_HERE) ;
-  }else if ((UNICODE_VALUE (inElementString (0 COMMA_HERE)) == 'x') || (UNICODE_VALUE (inElementString (0 COMMA_HERE)) == 'X')) {
+  }else if ((UNICODE_VALUE (inElementString.utf32AtIndex (0 COMMA_HERE)) == 'x') || (UNICODE_VALUE (inElementString.utf32AtIndex (0 COMMA_HERE)) == 'X')) {
     bool ok = true ;
     uint32_t code = 0 ;
     for (int32_t i=1 ; (i<inElementString.length ()) && ok ; i++) {
       code <<= 4 ;
-      const utf32 c = inElementString (i COMMA_HERE) ;
+      const utf32 c = inElementString.utf32AtIndex (i COMMA_HERE) ;
       if ((UNICODE_VALUE (c) >= '0') && (UNICODE_VALUE (c) <= '9')) {
         code += UNICODE_VALUE (c) - '0' ;
       }else if ((UNICODE_VALUE (c) >= 'A') && (UNICODE_VALUE (c) <= 'F')) {
@@ -733,7 +733,7 @@ void scanner_routine_codePointToUnicode (Lexique & inLexique,
     uint32_t code = 0 ;
     for (int32_t i=0 ; (i<inElementString.length ()) && ok ; i++) {
       code *= 10 ;
-      const utf32 c = inElementString (i COMMA_HERE) ;
+      const utf32 c = inElementString.utf32AtIndex (i COMMA_HERE) ;
       if ((UNICODE_VALUE (c) >= '0') && (UNICODE_VALUE (c) <= '9')) {
         code += UNICODE_VALUE (c) - '0' ;
       }else{

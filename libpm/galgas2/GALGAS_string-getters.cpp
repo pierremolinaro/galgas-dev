@@ -349,7 +349,7 @@ GALGAS_string GALGAS_string::getter_absolutePathFromPath (const GALGAS_string & 
     const String path = mString ;
     const int32_t stringLength = path.length () ;
     String r ;
-    if ((stringLength > 0) && (UNICODE_VALUE (path (0 COMMA_HERE)) == '/')) {
+    if ((stringLength > 0) && (UNICODE_VALUE (path.utf32AtIndex (0 COMMA_HERE)) == '/')) {
       r = path ;
     }else{
       r = inBasePath.mString ;
@@ -590,7 +590,7 @@ GALGAS_char GALGAS_string::getter_characterAtIndex (const GALGAS_uint & inIndex,
       message.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
     }else{
-      result = GALGAS_char (mString (idx COMMA_HERE)) ;
+      result = GALGAS_char (mString.utf32AtIndex (idx COMMA_HERE)) ;
     }
   }
   return result ;
@@ -1118,13 +1118,13 @@ GALGAS_bool GALGAS_string::getter_isDecimalSignedBigInt (UNUSED_LOCATION_ARGS) c
   //--- Sign
     int32_t idx = 0 ;
     if (ok) {
-      const utf32 c = mString (0 COMMA_HERE) ;
+      const utf32 c = mString.utf32AtIndex (0 COMMA_HERE) ;
       if ((UNICODE_VALUE (c) == '+') || (UNICODE_VALUE (c) == '-')) {
         idx = 1 ;
       }
     }
     while ((idx < mString.length ()) && ok) {
-      const utf32 c = mString (idx COMMA_HERE) ;
+      const utf32 c = mString.utf32AtIndex (idx COMMA_HERE) ;
       idx += 1 ;
       ok = (UNICODE_VALUE (c) >= '0') && (UNICODE_VALUE (c) <= '9') ;
     }

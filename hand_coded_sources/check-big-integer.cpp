@@ -63,7 +63,7 @@ static void testBigUnsignedDecimalStringConstructor (void) {
       refString.appendUnsigned (value) ;
     }
   //--- Remove leading zeros
-    while ((refString.length () > 1) && (refString (0 COMMA_HERE) == '0')) {
+    while ((refString.length () > 1) && (refString.utf32AtIndex (0 COMMA_HERE) == '0')) {
       refString.removeCountFromIndex (1, 0 COMMA_HERE) ;
     }
   //---
@@ -110,7 +110,7 @@ static void testBigUnsignedBinaryStringConstructor (void) {
       }
     }
   //--- Remove leading zeros
-    while ((refString.length () > 1) && (refString (0 COMMA_HERE) == '0')) {
+    while ((refString.length () > 1) && (refString.utf32AtIndex (0 COMMA_HERE) == '0')) {
       refString.removeCountFromIndex (1, 0 COMMA_HERE) ; // Remove first character
     }
   //---
@@ -156,7 +156,7 @@ static void testBigUnsignedHexadecimalStringConstructor (void) {
       refString.appendString (s) ;
     }
   //--- Remove leading zeros
-    while ((refString.length () > 1) && (refString (0 COMMA_HERE) == '0')) {
+    while ((refString.length () > 1) && (refString.utf32AtIndex (0 COMMA_HERE) == '0')) {
       refString.removeCountFromIndex (1, 0 COMMA_HERE) ; // Remove first character
     }
   //---
@@ -204,7 +204,7 @@ static void testBigUnsignedU8ArrayConstructor (void) {
       refString.appendString (s) ;
     }
   //--- Remove leading zeros
-    while ((refString.length () > 1) && (refString (0 COMMA_HERE) == '0')) {
+    while ((refString.length () > 1) && (refString.utf32AtIndex (0 COMMA_HERE) == '0')) {
       refString.removeCountFromIndex (1, 0 COMMA_HERE) ; // Remove first character
     }
   //---

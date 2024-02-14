@@ -614,7 +614,7 @@ private proc generateFewImplementationFilesWithFewHeaders
       end
       implementationString += code
       implementationString += [declaration.mDeclaration appendTypeGenericImplementation]
-      if [implementationString count] > 786432 then # 1048576 then
+      if [implementationString count] > 786432 then
         inclusionSet = {!"all-declarations-" + fileIdx}
         let cppHeader = [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
           ![inclusionSet stringList]

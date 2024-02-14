@@ -139,7 +139,7 @@ void AbstractOutputStream::appendUTF32LiteralStringConstant (const String & inSt
                                                              const bool inAppendZeroTerminator) {
   appendUnicodeChar (TO_UNICODE ('{') COMMA_HERE) ;
   for (int32_t i=0 ; i < inString.length () ; i++) {
-    const utf32 c = inString (i COMMA_HERE) ;
+    const utf32 c = inString.utf32AtIndex (i COMMA_HERE) ;
     appendCString ("\n  TO_UNICODE (") ;
     if (isprint (int (UNICODE_VALUE (c)))) {
       appendStringAsCLiteralCharConstant (c) ;
@@ -471,7 +471,7 @@ static void internalWriteCstringConstantWithoutDelimiters (AbstractOutputStream 
       currentColumn = 0 ;
     }
     currentColumn ++ ;
-    const utf32 c = inString (i COMMA_HERE) ;
+    const utf32 c = inString.utf32AtIndex (i COMMA_HERE) ;
     switch (UNICODE_VALUE (c)) {
     case '\0' :
       break ;

@@ -50,9 +50,7 @@
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     C++ Management
-//
 //--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
@@ -124,9 +122,7 @@ void GALGAS_string::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     Constructors
-//
 //--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
@@ -384,9 +380,7 @@ GALGAS_string GALGAS_string::class_func_stringWithSymbolicLinkContents (const GA
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     Operators
-//
 //--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
@@ -395,12 +389,12 @@ GALGAS_string GALGAS_string::class_func_stringWithSymbolicLinkContents (const GA
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_string::add_operation (const GALGAS_string & inOperand2,
+GALGAS_string GALGAS_string::add_operation (const GALGAS_string & inOperand,
                                             Compiler * /* inCompiler */
                                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
-  if (isValid () && inOperand2.isValid ()) {
-    result = GALGAS_string (mString + inOperand2.mString) ;
+  if (isValid () && inOperand.isValid ()) {
+    result = GALGAS_string (mString + inOperand.mString) ;
   }
   return result ;
 }
@@ -408,7 +402,7 @@ GALGAS_string GALGAS_string::add_operation (const GALGAS_string & inOperand2,
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_string::plusAssign_operation (GALGAS_string inOperand,
-                                          Compiler *
+                                          Compiler * /* inCompiler */
                                           COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     mString.appendString (inOperand.mString) ;
@@ -418,19 +412,7 @@ void GALGAS_string::plusAssign_operation (GALGAS_string inOperand,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
-//     Getters
-//
-//--------------------------------------------------------------------------------------------------
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark Getters
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//
 //     Methods
-//
 //--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
@@ -653,9 +635,7 @@ void GALGAS_string::method_makeSymbolicLinkWithPath (GALGAS_string inPath,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     Setters
-//
 //--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
@@ -726,7 +706,7 @@ void GALGAS_string::setter_setCharacterAtIndex (GALGAS_char inCharacter,
       message.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
     }else{
-      mString.setUnicodeCharacterAtIndex (inCharacter.charValue (), idx COMMA_THERE) ;
+      mString.setUTF32AtIndex (inCharacter.charValue (), idx COMMA_THERE) ;
     }
   }
 }
@@ -771,16 +751,14 @@ void GALGAS_string::setter_removeCharacterAtIndex (GALGAS_char & outChar,
       message.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
     }else{
-      outChar = GALGAS_char (mString (idx COMMA_HERE)) ;
+      outChar = GALGAS_char (mString.utf32AtIndex (idx COMMA_HERE)) ;
       mString.removeCountFromIndex (1, idx COMMA_THERE) ;
     }
   }
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     Type methods
-//
 //--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED

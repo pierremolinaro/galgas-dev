@@ -61,7 +61,7 @@ GALGAS_uint_36__34_ GALGAS_uint_36__34_::class_func_uint_36__34_MaskWithCompress
     uint64_t v = 0 ;
     for (int32_t i=0 ; (i<bitStringLength) && ok ; i++) {
       v <<= 1 ;
-      const utf32 c = inBitString.stringValue () (i COMMA_HERE) ;
+      const utf32 c = inBitString.stringValue ().utf32AtIndex (i COMMA_HERE) ;
       if ((UNICODE_VALUE (c) == '1') || (UNICODE_VALUE (c) == '0')) {
         v ++ ;
       }else if (UNICODE_VALUE (c) != 'X') {
@@ -89,7 +89,7 @@ GALGAS_uint_36__34_ GALGAS_uint_36__34_::class_func_uint_36__34_BaseValueWithCom
     const int32_t bitStringLength = inBitString.stringValue ().length () ;
     for (int32_t i=0 ; (i<bitStringLength) && ok ; i++) {
       v <<= 1 ;
-      const utf32 c = inBitString.stringValue () (i COMMA_HERE) ;
+      const utf32 c = inBitString.stringValue ().utf32AtIndex (i COMMA_HERE) ;
       if (UNICODE_VALUE (c) == '1') {
         v += 1 ;
       }else if ((UNICODE_VALUE (c) != '0') && (UNICODE_VALUE (c) != 'X')) {
@@ -117,7 +117,7 @@ GALGAS_uint_36__34_ GALGAS_uint_36__34_::class_func_uint_36__34_WithBitString (c
     const int32_t bitStringLength = inBitString.stringValue ().length () ;
     for (int32_t i=0 ; (i<bitStringLength) && ok ; i++) {
       v <<= 1 ;
-      const utf32 c = inBitString.stringValue () (i COMMA_HERE) ;
+      const utf32 c = inBitString.stringValue ().utf32AtIndex (i COMMA_HERE) ;
       if (UNICODE_VALUE (c) == '1') {
         v += 1 ;
       }else if (UNICODE_VALUE (c) != '0') {
@@ -609,7 +609,7 @@ GALGAS_string GALGAS_uint_36__34_::getter_alphaString (UNUSED_LOCATION_ARGS) con
     int32_t idx = 13 ;
     while (v > 0) {
       const utf32 c = TO_UNICODE (uint32_t ((v % 26) + 'a')) ;
-      s.setUnicodeCharacterAtIndex (c, idx COMMA_HERE) ;
+      s.setUTF32AtIndex (c, idx COMMA_HERE) ;
       idx -= 1 ;
       v /= 26 ;
     }

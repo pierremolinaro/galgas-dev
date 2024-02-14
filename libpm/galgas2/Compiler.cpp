@@ -335,7 +335,7 @@ void Compiler::semanticErrorWith_K_message (const GALGAS_lstring & inKey,
   const String searchErrorMessage (in_K_ErrorMessage) ;
   const int32_t errorMessageLength = searchErrorMessage.length () ;
   for (int32_t i=0 ; i<errorMessageLength ; i++) {
-    const utf32 c = searchErrorMessage (i COMMA_HERE) ;
+    const utf32 c = searchErrorMessage.utf32AtIndex (i COMMA_HERE) ;
     if (perCentFound) {
       if (UNICODE_VALUE (c) == 'K') {
         message.appendString (key) ;
@@ -370,7 +370,7 @@ void Compiler::semanticErrorWith_K_L_message (const GALGAS_lstring & inKey,
   const String searchErrorMessage (in_K_L_ErrorMessage) ;
   const int32_t errorMessageLength = searchErrorMessage.length () ;
   for (int32_t i=0 ; i<errorMessageLength ; i++) {
-    const utf32 c = searchErrorMessage (i COMMA_HERE) ;
+    const utf32 c = searchErrorMessage.utf32AtIndex (i COMMA_HERE) ;
     if (perCentFound) {
       if (UNICODE_VALUE (c) == 'K') {
         message.appendString (key) ;
@@ -408,7 +408,7 @@ void Compiler::semanticWarningWith_K_L_message (const GALGAS_lstring & inKey,
   const String searchErrorMessage (in_K_L_ErrorMessage) ;
   const int32_t errorMessageLength = searchErrorMessage.length () ;
   for (int32_t i=0 ; i<errorMessageLength ; i++) {
-    const utf32 c = searchErrorMessage (i COMMA_HERE) ;
+    const utf32 c = searchErrorMessage.utf32AtIndex (i COMMA_HERE) ;
     if (perCentFound) {
       if (UNICODE_VALUE (c) == 'K') {
         message.appendString (key) ;

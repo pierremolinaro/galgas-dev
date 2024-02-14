@@ -110,9 +110,6 @@ class String : public AbstractOutputStream {
 //--- Insert 'inChar' character at 'inIndex' index
   public: void insertCharacterAtIndex (const utf32 inChar, const int32_t inIndex COMMA_LOCATION_ARGS) ;
 
-//--- hash code
-//  public: uint32_t hash (void) const ;
-
 //--- Set length to 0 ; do not release memory
   public: void removeAllKeepingCapacity (void) ;
 
@@ -129,11 +126,11 @@ class String : public AbstractOutputStream {
   public: void appendSpacesUntilColumn (const uint32_t inColumn) ;
 
 //--- Get a character
-  public: utf32 operator () (const int32_t inIndex COMMA_LOCATION_ARGS) const ;
+  public: utf32 utf32AtIndex (const int32_t inIndex COMMA_LOCATION_ARGS) const ;
   public: utf32 readCharOrNul (const int32_t inIndex COMMA_LOCATION_ARGS) const ;
 
-//--- Set a character
-  public: void setUnicodeCharacterAtIndex (const utf32 inCharacter, const int32_t inIndex COMMA_LOCATION_ARGS) ;
+//--- Set an UTF32 character
+  public: void setUTF32AtIndex (const utf32 inCharacter, const int32_t inIndex COMMA_LOCATION_ARGS) ;
 
 //--- Contains a character
   public: bool containsCharacter (const utf32 inCharacter) const ;
