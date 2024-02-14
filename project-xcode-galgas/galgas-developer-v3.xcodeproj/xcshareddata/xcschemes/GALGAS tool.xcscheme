@@ -72,7 +72,7 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "--no-color"
-            isEnabled = "NO">
+            isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "--output-html-grammar-file"

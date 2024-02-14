@@ -283,7 +283,7 @@ void String::removeAll (void) {
 //   G E T    M E T H O D S
 //--------------------------------------------------------------------------------------------------
 
-utf32 String::utf32AtIndex (const int32_t inIndex COMMA_LOCATION_ARGS) const {
+utf32 String::charAtIndex (const int32_t inIndex COMMA_LOCATION_ARGS) const {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkString (THERE) ;
   #endif
@@ -301,10 +301,10 @@ utf32 String::readCharOrNul (const int32_t inIndex COMMA_LOCATION_ARGS) const {
 }
 
 //--------------------------------------------------------------------------------------------------
-//   lastCharacter
+//   lastChar
 //--------------------------------------------------------------------------------------------------
 
-utf32 String::lastCharacter (LOCATION_ARGS) const {
+utf32 String::lastChar (LOCATION_ARGS) const {
   const uint32_t stringLength = mEmbeddedString->mLength ;
   macroAssertThere (stringLength > 0, "length == 0", 0, 0) ;
   return (stringLength == 0) ? TO_UNICODE ('\0') : mEmbeddedString->mUTF32String [stringLength - 1] ;
@@ -312,14 +312,14 @@ utf32 String::lastCharacter (LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-bool String::containsCharacter (const utf32 inCharacter) const {
+bool String::containsChar (const utf32 inCharacter) const {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkString (HERE) ;
   #endif
   bool found = false ;
   if (nullptr != mEmbeddedString) {
-    for (int32_t i=0 ; (i < int32_t (mEmbeddedString->mLength)) && !found ; i++) {
-      found = UNICODE_VALUE (utf32AtIndex (i COMMA_HERE)) == UNICODE_VALUE (inCharacter) ;
+    for (int32_t i=0 ; (i < length ()) && !found ; i++) {
+      found = UNICODE_VALUE (charAtIndex (i COMMA_HERE)) == UNICODE_VALUE (inCharacter) ;
     }
   }
   return found ;
@@ -327,8 +327,8 @@ bool String::containsCharacter (const utf32 inCharacter) const {
 
 //--------------------------------------------------------------------------------------------------
 
-bool String::containsCharacterInRange (const utf32 inFirstCharacter,
-                                       const utf32 inLastCharacter) const {
+bool String::containsCharInRange (const utf32 inFirstCharacter,
+                                  const utf32 inLastCharacter) const {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkString (HERE) ;
   #endif
@@ -336,9 +336,9 @@ bool String::containsCharacterInRange (const utf32 inFirstCharacter,
   if (nullptr != mEmbeddedString) {
     for (int32_t i=0 ; (i < int32_t (mEmbeddedString->mLength)) && !found ; i++) {
       found =
-        (UNICODE_VALUE (utf32AtIndex (i COMMA_HERE)) >= UNICODE_VALUE (inFirstCharacter))
+        (UNICODE_VALUE (charAtIndex (i COMMA_HERE)) >= UNICODE_VALUE (inFirstCharacter))
       &&
-        (UNICODE_VALUE (utf32AtIndex (i COMMA_HERE)) <= UNICODE_VALUE (inLastCharacter))
+        (UNICODE_VALUE (charAtIndex (i COMMA_HERE)) <= UNICODE_VALUE (inLastCharacter))
       ;
     }
   }
@@ -366,7 +366,7 @@ const char * String::cString (void) const {
       uint32_t idx = 0 ;
       for (int32_t i=0 ; i<int32_t (mEmbeddedString->mLength) ; i++) {
         char buffer [5] ;
-        const int32_t n = UTF8StringFromUTF32Character (UNICODE_VALUE (utf32AtIndex (i COMMA_HERE)), buffer) ;
+        const int32_t n = UTF8StringFromUTF32Character (UNICODE_VALUE (charAtIndex (i COMMA_HERE)), buffer) ;
         for (int32_t j=0 ; j<n ; j++) {
           if (allocatedSize == idx) {
             allocatedSize += allocatedSize / 2 ;
@@ -548,7 +548,7 @@ void String::performActualCharArrayOutput (const char * inCharArray,
 //   setCharacterAtIndex
 //--------------------------------------------------------------------------------------------------
 
-void String::setUTF32AtIndex (const utf32 inCharacter,
+void String::setCharAtIndex (const utf32 inCharacter,
                               const int32_t inIndex
                               COMMA_LOCATION_ARGS) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -641,6 +641,24 @@ void String::insertCharacterAtIndex (const utf32 inChar,
 }
 
 //--------------------------------------------------------------------------------------------------
+
+void String::appendChar (const utf32 inChar COMMA_LOCATION_ARGS) {
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkString (THERE) ;
+  #endif
+  const uint32_t kNewLength = uint32_t (length ()) + 2 ; // inserted character, zero termination
+  insulateEmbeddedString (kNewLength) ;
+  macroValidPointerThere (mEmbeddedString) ;
+  macroUniqueSharedObjectThere (mEmbeddedString) ;
+  mEmbeddedString->mUTF32String [mEmbeddedString->mLength] = inChar ;
+  mEmbeddedString->mLength += 1 ;
+  mEmbeddedString->mUTF32String [mEmbeddedString->mLength] = TO_UNICODE (0) ;
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkString (THERE) ;
+  #endif
+}
+
+//--------------------------------------------------------------------------------------------------
 //   G E T    L I N E S    A R R A Y
 //--------------------------------------------------------------------------------------------------
 
@@ -652,7 +670,7 @@ void String::linesArray (TC_UniqueArray <String> & outStringArray) const {
     typedef enum {kAppendToCurrentLine, kGotCarriageReturn, kGotLineFeed} enumState ;
     enumState state = kAppendToCurrentLine ;
     for (int32_t i=0 ; i<currentStringLength ; i++) {
-      const utf32 c = utf32AtIndex (i COMMA_HERE) ;
+      const utf32 c = charAtIndex (i COMMA_HERE) ;
       switch (state) {
       case kAppendToCurrentLine :
         switch (UNICODE_VALUE (c)) {
@@ -721,9 +739,9 @@ void String::reverseStringInPlace (void) {
     macroUniqueSharedObject (mEmbeddedString) ;
     const int32_t receiver_length = length () ;
     for (int32_t i=0 ; i<(receiver_length/2) ; i++) {
-      const utf32 temp = utf32AtIndex (i COMMA_HERE) ;
-      setUTF32AtIndex (utf32AtIndex (receiver_length - i - 1 COMMA_HERE), i COMMA_HERE) ;
-      setUTF32AtIndex (temp, receiver_length - i - 1 COMMA_HERE) ;
+      const utf32 temp = charAtIndex (i COMMA_HERE) ;
+      setCharAtIndex (charAtIndex (receiver_length - i - 1 COMMA_HERE), i COMMA_HERE) ;
+      setCharAtIndex (temp, receiver_length - i - 1 COMMA_HERE) ;
     }
   }
 }

@@ -274,7 +274,7 @@ GALGAS_string GALGAS_uint::getter_alphaString (UNUSED_LOCATION_ARGS) const {
   int32_t idx = 6 ;
   while (v > 0) {
     const utf32 c = TO_UNICODE ((v % 26) + 'a') ;
-    s.setUTF32AtIndex (c, idx COMMA_HERE) ;
+    s.setCharAtIndex (c, idx COMMA_HERE) ;
     idx -= 1 ;
     v /= 26 ;
   }

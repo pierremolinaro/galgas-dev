@@ -126,18 +126,19 @@ class String : public AbstractOutputStream {
   public: void appendSpacesUntilColumn (const uint32_t inColumn) ;
 
 //--- Get a character
-  public: utf32 utf32AtIndex (const int32_t inIndex COMMA_LOCATION_ARGS) const ;
+  public: utf32 charAtIndex (const int32_t inIndex COMMA_LOCATION_ARGS) const ;
   public: utf32 readCharOrNul (const int32_t inIndex COMMA_LOCATION_ARGS) const ;
 
 //--- Set an UTF32 character
-  public: void setUTF32AtIndex (const utf32 inCharacter, const int32_t inIndex COMMA_LOCATION_ARGS) ;
+  public: void setCharAtIndex (const utf32 inCharacter, const int32_t inIndex COMMA_LOCATION_ARGS) ;
+  public: void appendChar (const utf32 inCharacter COMMA_LOCATION_ARGS) ;
 
 //--- Contains a character
-  public: bool containsCharacter (const utf32 inCharacter) const ;
-  public: bool containsCharacterInRange (const utf32 inFirstCharacter, const utf32 inLastCharacter) const ;
+  public: bool containsChar (const utf32 inCharacter) const ;
+  public: bool containsCharInRange (const utf32 inFirstCharacter, const utf32 inLastCharacter) const ;
 
 //--- Get last character
-  public: utf32 lastCharacter (LOCATION_ARGS) const ;
+  public: utf32 lastChar (LOCATION_ARGS) const ;
 
 //--- Get string length
   public: int32_t length (void) const ;
@@ -202,8 +203,7 @@ class String : public AbstractOutputStream {
 //--- Substitute 'inSearchedString' by 'inReplacementString'
   public: String stringByReplacingStringByString (const String inSearchedString,
                                                   const String inReplacementString,
-                                                  uint32_t & outReplacementCount,
-                                                  bool & outOk) const ;
+                                                  uint32_t & outReplacementCount) const ;
 
   public: String stringByReplacingStringByString (const String inSearchedString,
                                                   const String inReplacementString) const ;

@@ -1492,7 +1492,7 @@ void cSharedMapRoot::performRemove (GALGAS_lstring & inKey,
       const String removeErrorMessage (inRemoveErrorMessage) ;
       const int32_t errorMessageLength = removeErrorMessage.length () ;
       for (int32_t i=0 ; i<errorMessageLength ; i++) {
-        const utf32 c = removeErrorMessage.utf32AtIndex (i COMMA_HERE) ;
+        const utf32 c = removeErrorMessage.charAtIndex (i COMMA_HERE) ;
         if (perCentFound) {
           if (UNICODE_VALUE (c) == 'K') {
             message.appendString (key) ;

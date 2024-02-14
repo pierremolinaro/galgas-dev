@@ -349,7 +349,7 @@ GALGAS_string GALGAS_string::getter_absolutePathFromPath (const GALGAS_string & 
     const String path = mString ;
     const int32_t stringLength = path.length () ;
     String r ;
-    if ((stringLength > 0) && (UNICODE_VALUE (path.utf32AtIndex (0 COMMA_HERE)) == '/')) {
+    if ((stringLength > 0) && (UNICODE_VALUE (path.charAtIndex (0 COMMA_HERE)) == '/')) {
       r = path ;
     }else{
       r = inBasePath.mString ;
@@ -384,7 +384,7 @@ GALGAS_char GALGAS_string::getter_lastCharacter (Compiler * inCompiler
         COMMA_THERE
       ) ;
     }else{
-      result = GALGAS_char (mString.lastCharacter (THERE)) ;
+      result = GALGAS_char (mString.lastChar (THERE)) ;
     }
   }
   return result ;
@@ -543,9 +543,8 @@ GALGAS_string GALGAS_string::getter_stringByReplacingStringByString (const GALGA
         COMMA_THERE
       ) ;
     }else{
-      bool ok = false ;
       uint32_t replacementCount = 0 ;
-      const String s = mString.stringByReplacingStringByString (inSearchedString.mString, inReplacementString.mString, replacementCount, ok) ;
+      const String s = mString.stringByReplacingStringByString (inSearchedString.mString, inReplacementString.mString, replacementCount) ;
       result = GALGAS_string (s) ;
     }
   }
@@ -590,7 +589,7 @@ GALGAS_char GALGAS_string::getter_characterAtIndex (const GALGAS_uint & inIndex,
       message.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
     }else{
-      result = GALGAS_char (mString.utf32AtIndex (idx COMMA_HERE)) ;
+      result = GALGAS_char (mString.charAtIndex (idx COMMA_HERE)) ;
     }
   }
   return result ;
@@ -602,7 +601,7 @@ GALGAS_bool GALGAS_string::getter_containsCharacter (const GALGAS_char & inChara
                                                      COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (isValid () && inCharacter.isValid ()) {
-    result = GALGAS_bool (mString.containsCharacter (inCharacter.charValue ())) ;
+    result = GALGAS_bool (mString.containsChar (inCharacter.charValue ())) ;
   }
   return result ;
 }
@@ -614,7 +613,7 @@ GALGAS_bool GALGAS_string::getter_containsCharacterInRange (const GALGAS_char & 
                                                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (isValid () && inFirstCharacter.isValid () && inLastCharacter.isValid ()) {
-    result = GALGAS_bool (mString.containsCharacterInRange (inFirstCharacter.charValue (), inLastCharacter.charValue ())) ;
+    result = GALGAS_bool (mString.containsCharInRange (inFirstCharacter.charValue (), inLastCharacter.charValue ())) ;
   }
   return result ;
 }
@@ -1118,13 +1117,13 @@ GALGAS_bool GALGAS_string::getter_isDecimalSignedBigInt (UNUSED_LOCATION_ARGS) c
   //--- Sign
     int32_t idx = 0 ;
     if (ok) {
-      const utf32 c = mString.utf32AtIndex (0 COMMA_HERE) ;
+      const utf32 c = mString.charAtIndex (0 COMMA_HERE) ;
       if ((UNICODE_VALUE (c) == '+') || (UNICODE_VALUE (c) == '-')) {
         idx = 1 ;
       }
     }
     while ((idx < mString.length ()) && ok) {
-      const utf32 c = mString.utf32AtIndex (idx COMMA_HERE) ;
+      const utf32 c = mString.charAtIndex (idx COMMA_HERE) ;
       idx += 1 ;
       ok = (UNICODE_VALUE (c) >= '0') && (UNICODE_VALUE (c) <= '9') ;
     }

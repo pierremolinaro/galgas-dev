@@ -214,7 +214,7 @@ void GALGAS_data::setter_appendUTF_38_String (GALGAS_string inString
   if (inString.isValid ()) {
     const String s = inString.stringValue () ;
     for (int32_t i=0 ; i<s.length () ; i++) {
-      const utf32 c = s.utf32AtIndex (i COMMA_HERE) ;
+      const utf32 c = s.charAtIndex (i COMMA_HERE) ;
       char sequence [5] ;
       const int32_t n = UTF8StringFromUTF32Character (c, sequence) ;
       for (int32_t j=0 ; j<n ; j++) {

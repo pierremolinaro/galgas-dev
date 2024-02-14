@@ -706,7 +706,7 @@ void GALGAS_string::setter_setCharacterAtIndex (GALGAS_char inCharacter,
       message.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
     }else{
-      mString.setUTF32AtIndex (inCharacter.charValue (), idx COMMA_THERE) ;
+      mString.setCharAtIndex (inCharacter.charValue (), idx COMMA_THERE) ;
     }
   }
 }
@@ -751,7 +751,7 @@ void GALGAS_string::setter_removeCharacterAtIndex (GALGAS_char & outChar,
       message.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
     }else{
-      outChar = GALGAS_char (mString.utf32AtIndex (idx COMMA_HERE)) ;
+      outChar = GALGAS_char (mString.charAtIndex (idx COMMA_HERE)) ;
       mString.removeCountFromIndex (1, idx COMMA_THERE) ;
     }
   }

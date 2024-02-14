@@ -67,7 +67,7 @@ LineColumnContents String::lineAndColumnFromIndex (const int32_t inIndex) const 
     bool parseLine = true ;
     while ((idx < receiverLength) && parseLine) {
       while ((idx < receiverLength) && parseLine) {
-        parseLine = UNICODE_VALUE (utf32AtIndex (idx COMMA_HERE)) != '\n' ;
+        parseLine = UNICODE_VALUE (charAtIndex (idx COMMA_HERE)) != '\n' ;
         idx += parseLine ;
       }
       if (idx < inIndex) {
@@ -92,7 +92,7 @@ int32_t String::indexFromLineAndColumn (const int32_t inLineNumber,
   int32_t idx = 0 ;
   int32_t line = 1 ;
   while (line < inLineNumber) {
-    while ((idx < length ()) && (UNICODE_VALUE (utf32AtIndex (idx COMMA_HERE)) != '\n')) {
+    while ((idx < length ()) && (UNICODE_VALUE (charAtIndex (idx COMMA_HERE)) != '\n')) {
       idx += 1 ;
     }
     line += 1 ;
@@ -188,7 +188,7 @@ bool String::endsWithString (const String & inString) const {
   const int32_t offset = length () - inString.length () ;
   bool result = offset >= 0 ;
   for (int32_t i=0 ; (i<inString.length ()) && result ; i++) {
-    result = utf32AtIndex (i + offset COMMA_HERE) == inString.utf32AtIndex (i COMMA_HERE) ;
+    result = charAtIndex (i + offset COMMA_HERE) == inString.charAtIndex (i COMMA_HERE) ;
   }
   return result ;
 }
@@ -205,7 +205,7 @@ String String::stringByReplacingCharacterByString (const utf32 inCharacter,
   String resultingString ;
   bool previousCharIsSubstituteChar = false ;
   for (int32_t i=0 ; i<stringLength ; i++) {
-    const utf32 c = (utf32AtIndex (i COMMA_HERE)) ;
+    const utf32 c = (charAtIndex (i COMMA_HERE)) ;
     if (previousCharIsSubstituteChar) {
       if (UNICODE_VALUE (c) == UNICODE_VALUE (inCharacter)) {
         resultingString.appendUnicodeChar (inCharacter COMMA_HERE) ;
@@ -229,33 +229,56 @@ String String::stringByReplacingCharacterByString (const utf32 inCharacter,
 
 //--------------------------------------------------------------------------------------------------
 //   stringByReplacingStringByString
+//  if inSearchedString is empty, returns the receiver
 //--------------------------------------------------------------------------------------------------
 
 String String::stringByReplacingStringByString (const String inSearchedString,
                                                 const String inReplacementString,
-                                                uint32_t & outReplacementCount,
-                                                bool & outOk) const {
+                                                uint32_t & outReplacementCount) const {
   String result ;
   outReplacementCount = 0 ;
-  outOk = inSearchedString.length () != 0 ;
-  if (outOk) {
-    const utf32 * sourceString = utf32String (HERE) ;
+  if (inSearchedString.length () == 0) {
+    result = *this ;
+  }else{
     const int32_t sourceLength = length () ;
-    const utf32 * searchedString = inSearchedString.utf32String (HERE) ;
     const int32_t searchedStringLength = inSearchedString.length () ;
-    int32_t index = 0 ;
-    while (index <= (sourceLength - searchedStringLength)) {
-      const bool found = utf32_strncmp (& sourceString [index], searchedString, searchedStringLength) == 0 ;
-      if (found) {
-        result.appendString (inReplacementString) ;
-        index += searchedStringLength ;
-        outReplacementCount ++ ;
+    int32_t searchedStringIdx = 0 ;
+    for (int32_t i = 0 ; i < sourceLength ; i++) {
+      const utf32 c = charAtIndex (i COMMA_HERE) ;
+      if (c == inSearchedString.charAtIndex (searchedStringIdx COMMA_HERE)) {
+        searchedStringIdx += 1 ;
+        if (searchedStringIdx == searchedStringLength) { // Searched string found
+          result.appendString (inReplacementString) ;
+          searchedStringIdx = 0 ;
+        }
       }else{
-        result.appendUnicodeChar (sourceString [index] COMMA_HERE) ;
-        index ++ ;
+        for (int32_t j=0 ; j <= searchedStringIdx ; j++) {
+          result.appendChar (charAtIndex (i + j - searchedStringIdx COMMA_HERE) COMMA_HERE) ;
+        }
+        outReplacementCount += 1 ;
+        searchedStringIdx = 0 ;
       }
     }
-    result.appendUTF32String (& sourceString [index]) ;
+  //--- Append trailing characters, if any
+    for (int32_t j = 0 ; j < searchedStringIdx ; j++) {
+      result.appendChar (charAtIndex (sourceLength + j - searchedStringIdx COMMA_HERE) COMMA_HERE) ;
+    }
+  
+//    const utf32 * sourceString = utf32String (HERE) ;
+//    const utf32 * searchedString = inSearchedString.utf32String (HERE) ;
+//    int32_t index = 0 ;
+//    while (index <= (sourceLength - searchedStringLength)) {
+//      const bool found = utf32_strncmp (& sourceString [index], searchedString, searchedStringLength) == 0 ;
+//      if (found) {
+//        result.appendString (inReplacementString) ;
+//        index += searchedStringLength ;
+//        outReplacementCount ++ ;
+//      }else{
+//        result.appendUnicodeChar (sourceString [index] COMMA_HERE) ;
+//        index ++ ;
+//      }
+//    }
+//    result.appendUTF32String (& sourceString [index]) ;
   }
   return result ;
 }
@@ -265,8 +288,7 @@ String String::stringByReplacingStringByString (const String inSearchedString,
 String String::stringByReplacingStringByString (const String inSearchedString,
                                                 const String inReplacementString) const {
   uint32_t unusedReplacementCount = 0 ;
-  bool unusedOk = true ;
-  return stringByReplacingStringByString (inSearchedString, inReplacementString, unusedReplacementCount, unusedOk) ;
+  return stringByReplacingStringByString (inSearchedString, inReplacementString, unusedReplacementCount) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -278,7 +300,7 @@ int32_t String::lastOccurrenceIndexOfChar (const utf32 inChar) const {
   bool notFound = true ;
   while ((result > 0) && notFound) {
     result -- ;
-    notFound = UNICODE_VALUE (utf32AtIndex (result COMMA_HERE)) != UNICODE_VALUE (inChar) ;
+    notFound = UNICODE_VALUE (charAtIndex (result COMMA_HERE)) != UNICODE_VALUE (inChar) ;
   }
   if (notFound) {
     result = -1 ;
@@ -298,7 +320,7 @@ String String::subString (const int32_t inStartIndex,
       last = receiver_length ;
     }
     for (int32_t i=inStartIndex ; i<last ; i++) {
-      s.appendUnicodeChar (utf32AtIndex (i COMMA_HERE) COMMA_HERE) ;
+      s.appendUnicodeChar (charAtIndex (i COMMA_HERE) COMMA_HERE) ;
     }
   }
   return s ;
@@ -311,9 +333,9 @@ String String::stringByCapitalizingFirstCharacter (void) const {
   const int32_t receiver_length = length () ;
   s.setCapacity ((uint32_t) receiver_length) ;
   if (receiver_length > 0) {
-    s.appendUnicodeChar (unicodeToUpper (utf32AtIndex (0 COMMA_HERE)) COMMA_HERE) ;
+    s.appendUnicodeChar (unicodeToUpper (charAtIndex (0 COMMA_HERE)) COMMA_HERE) ;
     for (int32_t i=1 ; i<receiver_length ; i++) {
-      s.appendUnicodeChar (utf32AtIndex (i COMMA_HERE) COMMA_HERE) ;
+      s.appendUnicodeChar (charAtIndex (i COMMA_HERE) COMMA_HERE) ;
     }
   }
   return s ;
@@ -326,7 +348,7 @@ String String::lowercaseString (void) const {
   const int32_t receiver_length = length () ;
   s.setCapacity ((uint32_t) receiver_length) ;
   for (int32_t i=0 ; i<receiver_length ; i++) {
-    s.appendUnicodeChar (unicodeToLower (utf32AtIndex (i COMMA_HERE)) COMMA_HERE) ;
+    s.appendUnicodeChar (unicodeToLower (charAtIndex (i COMMA_HERE)) COMMA_HERE) ;
   }
   return s ;
 }
@@ -339,13 +361,13 @@ String String::stringByTrimmingSeparators (void) const {
   s.setCapacity ((uint32_t) receiver_length) ;
 //--- Trim left
   int32_t idx = 0 ;
-  while ((idx < receiver_length) && ((UNICODE_VALUE (utf32AtIndex (idx COMMA_HERE)) == ' ') || (UNICODE_VALUE (utf32AtIndex (idx COMMA_HERE)) == '\n'))) {
+  while ((idx < receiver_length) && ((UNICODE_VALUE (charAtIndex (idx COMMA_HERE)) == ' ') || (UNICODE_VALUE (charAtIndex (idx COMMA_HERE)) == '\n'))) {
     idx += 1 ;
   }
 //--- Trim and replace
   bool isCurrentlyTrimming = false ;
   while (idx < receiver_length) {
-    const utf32 c = utf32AtIndex (idx COMMA_HERE) ;
+    const utf32 c = charAtIndex (idx COMMA_HERE) ;
     if ((UNICODE_VALUE (c) == ' ') || (UNICODE_VALUE (c) == '\n')) {
       isCurrentlyTrimming = true ;
     }else{
@@ -367,7 +389,7 @@ String String::uppercaseString (void) const {
   const int32_t receiver_length = length () ;
   s.setCapacity ((uint32_t) receiver_length) ;
   for (int32_t i=0 ; i<receiver_length ; i++) {
-    s.appendUnicodeChar (unicodeToUpper (utf32AtIndex (i COMMA_HERE)) COMMA_HERE) ;
+    s.appendUnicodeChar (unicodeToUpper (charAtIndex (i COMMA_HERE)) COMMA_HERE) ;
   }
   return s ;
 }
@@ -385,7 +407,7 @@ String String::reversedString (void) const {
 bool String::isUnsignedInteger (void) const {
   bool ok = length () > 0 ;
   for (int32_t i=0 ; (i < length ()) && ok ; i++) {
-    const uint32_t c = UNICODE_VALUE (utf32AtIndex (i COMMA_HERE)) ;
+    const uint32_t c = UNICODE_VALUE (charAtIndex (i COMMA_HERE)) ;
     ok = (c >= '0') && (c <= '9') ;
   }
   return ok ;
@@ -397,7 +419,7 @@ uint32_t String::unsignedIntegerValue (void) const {
   uint32_t result = 0 ;
   bool ok = true ;
   for (int32_t i=0 ; (i < length ()) && ok ; i++) {
-    const uint32_t c = UNICODE_VALUE (utf32AtIndex (i COMMA_HERE)) ;
+    const uint32_t c = UNICODE_VALUE (charAtIndex (i COMMA_HERE)) ;
     ok = (c >= '0') && (c <= '9') ;
     if (ok) {
       result *= 10 ;
@@ -414,7 +436,7 @@ uint32_t String::currentColumn (void) const {
   bool found = false ;
   const int32_t receiver_length = length () ;
   for (int32_t i=receiver_length-1 ; (i>=0) && ! found ; i--) {
-    found = UNICODE_VALUE (utf32AtIndex (i COMMA_HERE)) == '\n' ;
+    found = UNICODE_VALUE (charAtIndex (i COMMA_HERE)) == '\n' ;
     if (! found) {
       result ++ ;
     }
@@ -449,7 +471,7 @@ void String::convertToUInt32 (uint32_t & outResult,
   outOk = length () > 0 ;
   int32_t idx = 0 ;
   while ((idx < length ()) && outOk) {
-    const utf32 c = utf32AtIndex (idx COMMA_HERE) ;
+    const utf32 c = charAtIndex (idx COMMA_HERE) ;
     idx ++ ;
     const uint32_t r = outResult ;
     outResult = outResult * 10 + (UNICODE_VALUE (c) - '0') ;
@@ -468,7 +490,7 @@ void String::convertToUInt64 (uint64_t & outResult,
   outOk = length () > 0 ;
   int32_t idx = 0 ;
   while ((idx < length ()) && outOk) {
-    const utf32 c = utf32AtIndex (idx COMMA_HERE) ;
+    const utf32 c = charAtIndex (idx COMMA_HERE) ;
     idx ++ ;
     const uint64_t r = outResult ;
     outResult = outResult * 10 + (UNICODE_VALUE (c) - '0') ;
@@ -486,7 +508,7 @@ void String::convertToSInt32 (int32_t & outResult,
   bool isPositive = true ;
   int32_t idx = 0 ;
   if (length () > 0) {
-    const utf32 c = utf32AtIndex (0 COMMA_HERE) ;
+    const utf32 c = charAtIndex (0 COMMA_HERE) ;
     if (UNICODE_VALUE (c) == '-') {
       isPositive = false ;
       idx = 1 ;
@@ -497,7 +519,7 @@ void String::convertToSInt32 (int32_t & outResult,
   uint32_t decimalUnsignedValue = 0 ;
   outOk = length () > 0 ;
   while ((idx < length ()) && outOk) {
-    const utf32 c = utf32AtIndex (idx COMMA_HERE) ;
+    const utf32 c = charAtIndex (idx COMMA_HERE) ;
     idx ++ ;
     const uint32_t r = decimalUnsignedValue ;
     decimalUnsignedValue = decimalUnsignedValue * 10 + (UNICODE_VALUE (c) - '0') ;
@@ -528,7 +550,7 @@ void String::convertToSInt64 (int64_t & outResult,
   bool isPositive = true ;
   int32_t idx = 0 ;
   if (length () > 0) {
-    const utf32 c = utf32AtIndex (0 COMMA_HERE) ;
+    const utf32 c = charAtIndex (0 COMMA_HERE) ;
     if (UNICODE_VALUE (c) == '-') {
       isPositive = false ;
       idx = 1 ;
@@ -539,7 +561,7 @@ void String::convertToSInt64 (int64_t & outResult,
   uint64_t decimalUnsignedValue = 0 ;
   outOk = length () > 0 ;
   while ((idx < length ()) && outOk) {
-    const utf32 c = utf32AtIndex (idx COMMA_HERE) ;
+    const utf32 c = charAtIndex (idx COMMA_HERE) ;
     idx ++ ;
     const uint64_t r = decimalUnsignedValue ;
     decimalUnsignedValue = decimalUnsignedValue * 10 + (UNICODE_VALUE (c) - '0') ;
@@ -572,7 +594,7 @@ void String::convertToDouble (double & outDoubleValue,
 //--- Sign
   bool positive = true ;
   if (idx < length ()) {
-    const utf32 c = utf32AtIndex (idx COMMA_HERE) ;
+    const utf32 c = charAtIndex (idx COMMA_HERE) ;
     if (UNICODE_VALUE (c) == '-') {
       positive = false ;
       idx ++ ;
@@ -581,32 +603,32 @@ void String::convertToDouble (double & outDoubleValue,
     }
   }
 //--- Mantissa
-  while ((idx < length ()) && isdigit ((int) UNICODE_VALUE (utf32AtIndex (idx COMMA_HERE)))) {
+  while ((idx < length ()) && isdigit ((int) UNICODE_VALUE (charAtIndex (idx COMMA_HERE)))) {
     outDoubleValue *= 10.0 ;
-    outDoubleValue += (double) (UNICODE_VALUE (utf32AtIndex (idx COMMA_HERE)) - '0') ;
+    outDoubleValue += (double) (UNICODE_VALUE (charAtIndex (idx COMMA_HERE)) - '0') ;
     idx ++ ;
   }
 //--- Fractional part
   double divisor = 1.0 ;
-  if ((idx < length ()) && (UNICODE_VALUE (utf32AtIndex (idx COMMA_HERE)) == '.')) { // Dot
+  if ((idx < length ()) && (UNICODE_VALUE (charAtIndex (idx COMMA_HERE)) == '.')) { // Dot
     idx ++ ;
-    while ((idx < length ()) && isdigit ((int) UNICODE_VALUE (utf32AtIndex (idx COMMA_HERE)))) {
+    while ((idx < length ()) && isdigit ((int) UNICODE_VALUE (charAtIndex (idx COMMA_HERE)))) {
       divisor *= 10.0 ;
       outDoubleValue *= 10.0 ;
-      outDoubleValue += (double) (UNICODE_VALUE (utf32AtIndex (idx COMMA_HERE)) - '0') ;
+      outDoubleValue += (double) (UNICODE_VALUE (charAtIndex (idx COMMA_HERE)) - '0') ;
       idx ++ ;
     }
   }
   outDoubleValue /= divisor ;
 //--- Exponent ?
   if (idx < length ()) {
-    switch (UNICODE_VALUE (utf32AtIndex (idx COMMA_HERE))) {
+    switch (UNICODE_VALUE (charAtIndex (idx COMMA_HERE))) {
     case 'E' : case 'e' : case 'd' : case 'D' : {
       idx ++ ;
     //--- Exponent sign
       bool exponentIsPositive = true ;
       if (idx < length ()) {
-        const utf32 c = utf32AtIndex (idx COMMA_HERE) ;
+        const utf32 c = charAtIndex (idx COMMA_HERE) ;
         if (UNICODE_VALUE (c) == '-') {
           exponentIsPositive = false ;
           idx ++ ;
@@ -615,9 +637,9 @@ void String::convertToDouble (double & outDoubleValue,
         }
       }
       double exponentValue = 0.0 ;
-      while ((idx < length ()) && isdigit ((int) UNICODE_VALUE (utf32AtIndex (idx COMMA_HERE)))) {
+      while ((idx < length ()) && isdigit ((int) UNICODE_VALUE (charAtIndex (idx COMMA_HERE)))) {
         exponentValue *= 10.0 ;
-        exponentValue += (double) (UNICODE_VALUE (utf32AtIndex (idx COMMA_HERE)) - '0') ;
+        exponentValue += (double) (UNICODE_VALUE (charAtIndex (idx COMMA_HERE)) - '0') ;
         idx ++ ;
       }
       outDoubleValue *= ::pow (10.0, exponentIsPositive ? exponentValue : - exponentValue) ;
@@ -641,7 +663,7 @@ String String::identifierRepresentation (void) const {
   const int32_t receiver_length = length () ;
   s.setCapacity ((uint32_t) receiver_length) ;
   for (int32_t i=0 ; i<receiver_length ; i++) {
-    const utf32 c = utf32AtIndex (i COMMA_HERE) ;
+    const utf32 c = charAtIndex (i COMMA_HERE) ;
     if (isalpha ((int) UNICODE_VALUE (c))) {
       s.appendUnicodeChar (c COMMA_HERE) ;
     }else{
@@ -660,7 +682,7 @@ String String::nameRepresentation (void) const {
   const int32_t receiver_length = length () ;
   s.setCapacity ((uint32_t) receiver_length) ;
   for (int32_t i=0 ; i<receiver_length ; i++) {
-    const utf32 c = utf32AtIndex (i COMMA_HERE) ;
+    const utf32 c = charAtIndex (i COMMA_HERE) ;
     if (isalnum ((int) UNICODE_VALUE (c))) {
       s.appendUnicodeChar (c COMMA_HERE) ;
     }else{
@@ -679,7 +701,7 @@ String String::fileNameRepresentation (void) const {
   const int32_t receiverLength = length () ;
   s.setCapacity (uint32_t (receiverLength)) ;
   for (int32_t i=0 ; i<receiverLength ; i++) {
-    const utf32 c = utf32AtIndex (i COMMA_HERE) ;
+    const utf32 c = charAtIndex (i COMMA_HERE) ;
     const int nc = int (UNICODE_VALUE (c)) ;
     if (isdigit (nc) || islower (nc)) {
       s.appendUnicodeChar (c COMMA_HERE) ;
@@ -708,7 +730,7 @@ String String::assemblerRepresentation (void) const {
   const int32_t receiver_length = length () ;
   s.setCapacity ((uint32_t) receiver_length) ;
   for (int32_t i=0 ; i<receiver_length ; i++) {
-    const utf32 c = utf32AtIndex (i COMMA_HERE) ;
+    const utf32 c = charAtIndex (i COMMA_HERE) ;
     if (isalnum ((int) UNICODE_VALUE (c)) || (UNICODE_VALUE (c) == '.')  || (UNICODE_VALUE (c) == '-') || (UNICODE_VALUE (c) == '$')) {
       s.appendUnicodeChar (c COMMA_HERE) ;
     }else{
@@ -728,7 +750,7 @@ String String::utf8RepresentationEnclosedWithin (const utf32 inCharacter, const 
   s.setCapacity ((uint32_t) receiver_length) ;
   s.appendUnicodeChar  (inCharacter COMMA_HERE) ;
   for (int32_t i=0 ; i<receiver_length ; i++) {
-    const utf32 c = utf32AtIndex (i COMMA_HERE) ;
+    const utf32 c = charAtIndex (i COMMA_HERE) ;
     if (UNICODE_VALUE (c) == '\\') {
       s.appendUnicodeChar ('\\' COMMA_HERE) ;
       s.appendUnicodeChar ('\\' COMMA_HERE) ;
@@ -781,7 +803,7 @@ String String::utf8RepresentationWithUnicodeEscaping (void) const {
   s.setCapacity ((uint32_t) receiver_length) ;
   s.appendUnicodeChar  ('\"' COMMA_HERE) ;
   for (int32_t i=0 ; i<receiver_length ; i++) {
-    const utf32 c = utf32AtIndex (i COMMA_HERE) ;
+    const utf32 c = charAtIndex (i COMMA_HERE) ;
     if (UNICODE_VALUE (c) == '\\') {
       s.appendUnicodeChar ('\\' COMMA_HERE) ;
       s.appendUnicodeChar ('\\' COMMA_HERE) ;
@@ -822,7 +844,7 @@ String String::decodedStringFromRepresentation (bool & outOk) const {
       uint32_t codePoint = 0 ;
       for (int32_t j=0 ; j<components (i COMMA_HERE).length () ; j++) {
         codePoint *= 16 ;
-        const uint32_t c = UNICODE_VALUE (components (i COMMA_HERE).utf32AtIndex (j COMMA_HERE)) ;
+        const uint32_t c = UNICODE_VALUE (components (i COMMA_HERE).charAtIndex (j COMMA_HERE)) ;
         if ((c >= '0') && (c <= '9')) {
           codePoint += c - '0' ;
         }else if ((c >= 'a') && (c <= 'f')) {
@@ -844,7 +866,7 @@ String String::decodedStringFromRepresentation (bool & outOk) const {
 String String::HTMLRepresentation (void) const {
   String result ;
   for (int32_t i=0 ; i<length () ; i++) {
-    const utf32 c = utf32AtIndex (i COMMA_HERE) ;
+    const utf32 c = charAtIndex (i COMMA_HERE) ;
     if (UNICODE_VALUE (c) == '&') {
       result.appendCString ("&amp;") ;
     }else if (UNICODE_VALUE (c) == '"') {
@@ -883,8 +905,8 @@ int32_t String::compare (const String & inString) const {
   int32_t result = 0 ;
   const int32_t minLength = std::min (length (), inString.length ()) ;
   for (int32_t i=0 ; (i < minLength) && (result == 0) ; i++) {
-    const uint32_t left = UNICODE_VALUE (utf32AtIndex (i COMMA_HERE)) ;
-    const uint32_t right = UNICODE_VALUE (inString.utf32AtIndex (i COMMA_HERE)) ;
+    const uint32_t left = UNICODE_VALUE (charAtIndex (i COMMA_HERE)) ;
+    const uint32_t right = UNICODE_VALUE (inString.charAtIndex (i COMMA_HERE)) ;
     if (left < right) {
       result = -1 ;
     }else if (left > right) {
@@ -913,7 +935,7 @@ int32_t String::compareWithInitializerList (const std::initializer_list <utf32> 
   }else{
     int32_t i = 0 ;
     for (auto it = inString.begin () ; (it != inString.end ()) && (result == 0) ; it++) {
-      const uint32_t left = UNICODE_VALUE (utf32AtIndex (i COMMA_HERE)) ;
+      const uint32_t left = UNICODE_VALUE (charAtIndex (i COMMA_HERE)) ;
       i += 1 ;
       const uint32_t right = UNICODE_VALUE (*it) ;
       if (left < right) {
@@ -941,8 +963,8 @@ int32_t String::compareStringByLength (const String & inString) const {
   }else{
     result = length () - inString.length () ;
     for (int32_t i=0 ; (i < length ()) && (result == 0) ; i++) {
-      const uint32_t left = UNICODE_VALUE (utf32AtIndex (i COMMA_HERE)) ;
-      const uint32_t right = UNICODE_VALUE (inString.utf32AtIndex (i COMMA_HERE)) ;
+      const uint32_t left = UNICODE_VALUE (charAtIndex (i COMMA_HERE)) ;
+      const uint32_t right = UNICODE_VALUE (inString.charAtIndex (i COMMA_HERE)) ;
       if (left < right) {
         result = -1 ;
       }else if (left > right) {
@@ -960,7 +982,7 @@ int32_t String::compareStringByLength (const String & inString) const {
 String String::pathExtension (void) const {
   int32_t receiver_length = length ();
 //--- Suppress training '/'
-  while ((receiver_length > 1) && (UNICODE_VALUE (utf32AtIndex (receiver_length - 1 COMMA_HERE)) == '/')) {
+  while ((receiver_length > 1) && (UNICODE_VALUE (charAtIndex (receiver_length - 1 COMMA_HERE)) == '/')) {
     receiver_length -- ;
   }
 //--- Search last '.'
@@ -968,7 +990,7 @@ String String::pathExtension (void) const {
   int32_t lastOccurrenceIndex = receiver_length ;
   while ((lastOccurrenceIndex > 0) && ! found) {
     lastOccurrenceIndex -- ;
-    found = UNICODE_VALUE (utf32AtIndex (lastOccurrenceIndex COMMA_HERE)) == '.' ;
+    found = UNICODE_VALUE (charAtIndex (lastOccurrenceIndex COMMA_HERE)) == '.' ;
   }
   String result ;
   if (found && (lastOccurrenceIndex < (receiver_length - 1))) {
@@ -986,7 +1008,7 @@ String String::pathExtension (void) const {
 String String::stringByDeletingPathExtension (void) const {
   int32_t receiver_length = length ();
 //--- Suppress training '/'
-  while ((receiver_length > 1) && (UNICODE_VALUE (utf32AtIndex (receiver_length - 1 COMMA_HERE)) == '/')) {
+  while ((receiver_length > 1) && (UNICODE_VALUE (charAtIndex (receiver_length - 1 COMMA_HERE)) == '/')) {
     receiver_length -- ;
   }
 //--- Search last '.'
@@ -994,7 +1016,7 @@ String String::stringByDeletingPathExtension (void) const {
   int32_t lastOccurrenceIndex = receiver_length ;
   while ((lastOccurrenceIndex > 0) && ! found) {
     lastOccurrenceIndex -- ;
-    found = UNICODE_VALUE (utf32AtIndex (lastOccurrenceIndex COMMA_HERE)) == '.' ;
+    found = UNICODE_VALUE (charAtIndex (lastOccurrenceIndex COMMA_HERE)) == '.' ;
   }
   String result ;
   if (found) {
@@ -1011,7 +1033,7 @@ String String::stringByDeletingLastPathComponent (void) const {
   String result ;
   int32_t receiver_length = length () ;
 //--- Suppress training '/'
-  while ((receiver_length > 1) && (UNICODE_VALUE (utf32AtIndex (receiver_length - 1 COMMA_HERE)) == '/')) {
+  while ((receiver_length > 1) && (UNICODE_VALUE (charAtIndex (receiver_length - 1 COMMA_HERE)) == '/')) {
     receiver_length -- ;
   }
 //--- Search last '/'
@@ -1019,7 +1041,7 @@ String String::stringByDeletingLastPathComponent (void) const {
   int32_t lastOccurrenceIndex = receiver_length ;
   while ((lastOccurrenceIndex > 0) && ! found) {
     lastOccurrenceIndex -- ;
-    found = UNICODE_VALUE (utf32AtIndex (lastOccurrenceIndex COMMA_HERE)) == '/' ;
+    found = UNICODE_VALUE (charAtIndex (lastOccurrenceIndex COMMA_HERE)) == '/' ;
   }
   if (found) {
     result = subString (0, lastOccurrenceIndex) ;
@@ -1035,7 +1057,7 @@ String String::stringByAppendingPathComponent (const String & inPathComponent) c
   String result = *this ;
   if (result.length () == 0) {
     result = inPathComponent ;
-  }else if (UNICODE_VALUE (result.lastCharacter (HERE)) != '/') {
+  }else if (UNICODE_VALUE (result.lastChar (HERE)) != '/') {
     result.appendUnicodeChar (TO_UNICODE ('/') COMMA_HERE) ;
     result.appendString (inPathComponent) ;
   }else{
@@ -1051,7 +1073,7 @@ String String::stringByAppendingPathComponent (const String & inPathComponent) c
 String String::lastPathComponent (void) const {
   int32_t usefulLength = length ();
 //--- Suppress training '/'
-  while ((usefulLength > 1) && (UNICODE_VALUE (utf32AtIndex (usefulLength - 1 COMMA_HERE)) == '/')) {
+  while ((usefulLength > 1) && (UNICODE_VALUE (charAtIndex (usefulLength - 1 COMMA_HERE)) == '/')) {
     usefulLength -= 1 ;
   }
 //--- Search last '/'
@@ -1059,7 +1081,7 @@ String String::lastPathComponent (void) const {
   int32_t lastOccurrenceIndex = usefulLength ;
   while ((lastOccurrenceIndex > 0) && ! found) {
     lastOccurrenceIndex -= 1 ;
-    found = UNICODE_VALUE (utf32AtIndex (lastOccurrenceIndex COMMA_HERE)) == '/' ;
+    found = UNICODE_VALUE (charAtIndex (lastOccurrenceIndex COMMA_HERE)) == '/' ;
   }
   String result ;
   if (found) {
@@ -1159,7 +1181,7 @@ String String::leftSubString (const int32_t inLength) const  {
 String String::XMLEscapedString (void) const {
   String result ;
   for (int32_t i=0 ; i<length () ; i++) {
-    const utf32 c = utf32AtIndex (i COMMA_HERE) ;
+    const utf32 c = charAtIndex (i COMMA_HERE) ;
     switch (UNICODE_VALUE (c)) {
     case '"'  : result.appendCString ("&quot;") ; break ;
     case '\'' : result.appendCString ("&apos;") ; break ;
@@ -1252,7 +1274,7 @@ uint32_t String::LevenshteinDistanceFromString (const String & inOperand) const 
 
   for (int32_t j=1 ; j<=operandLength ; j++) {
     for (int32_t i=1 ; i<=myLength ; i++) {
-      if (UNICODE_VALUE (utf32AtIndex (i-1 COMMA_HERE)) == UNICODE_VALUE (inOperand.utf32AtIndex (j-1 COMMA_HERE))) {
+      if (UNICODE_VALUE (charAtIndex (i-1 COMMA_HERE)) == UNICODE_VALUE (inOperand.charAtIndex (j-1 COMMA_HERE))) {
         distance (i, j COMMA_HERE) = distance (i-1, j-1 COMMA_HERE) ;       // no operation required
       }else{
         distance (i, j COMMA_HERE) = std::min (std::min (

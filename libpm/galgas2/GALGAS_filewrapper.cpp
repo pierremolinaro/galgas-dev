@@ -455,7 +455,7 @@ GALGAS_string GALGAS_filewrapper::getter_absolutePathForPath (const GALGAS_strin
     const String path = inPath.stringValue () ;
   //--- Build absolute path
     String absolutePath = path ;
-    if ((path.length () == 0) || (UNICODE_VALUE (path.utf32AtIndex (0 COMMA_HERE)) != '/')) {
+    if ((path.length () == 0) || (UNICODE_VALUE (path.charAtIndex (0 COMMA_HERE)) != '/')) {
       absolutePath = mCurrentDirectory ;
       absolutePath.appendString (path) ;
     }

@@ -135,7 +135,7 @@ String BigUnsigned::bitString (void) const {
         v = (v & (UINT64_MAX >> 1)) << 1 ;
       }
     }
-    while ((result.length () > 0) && (result.utf32AtIndex (0 COMMA_HERE) == '0')) {
+    while ((result.length () > 0) && (result.charAtIndex (0 COMMA_HERE) == '0')) {
       result.removeCountFromIndex (1, 0 COMMA_HERE) ; // Remove first character
     }
   }

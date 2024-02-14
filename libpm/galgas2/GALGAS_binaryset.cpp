@@ -78,20 +78,20 @@ GALGAS_binaryset GALGAS_binaryset::class_func_binarySetWithPredicateString (cons
     bool ok = true ;
     C_BDD resultBDD ;
     while ((stringIndex < stringLength) && ok) {
-      utf32 cc = bitString.utf32AtIndex (stringIndex COMMA_HERE) ;
+      utf32 cc = bitString.charAtIndex (stringIndex COMMA_HERE) ;
       String s ;
       while ((stringIndex < stringLength) && ((UNICODE_VALUE (cc) == '0') || (UNICODE_VALUE (cc) == '1') || (UNICODE_VALUE (cc) == 'X') || (UNICODE_VALUE (cc) == ' '))) {
         s.appendUnicodeChar (cc COMMA_HERE) ;
         stringIndex ++ ;
         if (stringIndex < stringLength) {
-          cc = bitString.utf32AtIndex (stringIndex COMMA_HERE) ;
+          cc = bitString.charAtIndex (stringIndex COMMA_HERE) ;
         }
       }
       if (s.length () > 0) {
         C_BDD v ; v.setToTrue () ;
         uint32_t bitIndex = 0 ;
         for (int32_t i=s.length () - 1 ; i>=0 ; i--) {
-          const utf32 c = s.utf32AtIndex (i COMMA_HERE) ;
+          const utf32 c = s.charAtIndex (i COMMA_HERE) ;
           if (UNICODE_VALUE (c) == '0') {
             v &= C_BDD (bitIndex, false) ;
             bitIndex ++ ;
