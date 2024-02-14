@@ -7681,945 +7681,945 @@ String Lexique_galgasScanner_34_::getCurrentTokenString (const cToken * inTokenP
       s.appendCString ("$$") ;
       break ;
     case kToken_identifier:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("identifier") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendChar (TO_UNICODE (' ') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (TO_UNICODE (' ')) ;
       s.appendStringAsCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
       break ;
     case kToken_double_2E_xxx:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("double.xxx") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendChar (TO_UNICODE (' ') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (TO_UNICODE (' ')) ;
       s.appendDouble (ptr->mLexicalAttribute_floatValue) ;
-      s.appendChar (TO_UNICODE (' ') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE (' ')) ;
       s.appendStringAsCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
       break ;
     case kToken_literalInt:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("literalInt") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendChar (TO_UNICODE (' ') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (TO_UNICODE (' ')) ;
       s.appendStringAsCLiteralStringConstant (ptr->mLexicalAttribute_bigintValue.decimalString ()) ;
       break ;
     case kToken__2E_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString (".") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__2E__2E__2E_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("...") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__2E__2E__3C_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("..<") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__40_type:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("@type") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendChar (TO_UNICODE (' ') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (TO_UNICODE (' ')) ;
       s.appendStringAsCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
       break ;
     case kToken__27_char_27_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("'char'") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendChar (TO_UNICODE (' ') COMMA_HERE) ;
-      s.appendChar (ptr->mLexicalAttribute_charValue COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (TO_UNICODE (' ')) ;
+      s.appendChar (ptr->mLexicalAttribute_charValue) ;
       break ;
     case kToken__24_terminal_24_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("$terminal$") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendChar (TO_UNICODE (' ') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (TO_UNICODE (' ')) ;
       s.appendStringAsCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
       break ;
     case kToken_comment:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("comment") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_commentMark:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("commentMark") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__3F_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("\?") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendChar (TO_UNICODE (' ') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (TO_UNICODE (' ')) ;
       s.appendStringAsCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
       break ;
     case kToken__3F__21_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("\?!") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendChar (TO_UNICODE (' ') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (TO_UNICODE (' ')) ;
       s.appendStringAsCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
       break ;
     case kToken__21_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("!") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendChar (TO_UNICODE (' ') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (TO_UNICODE (' ')) ;
       s.appendStringAsCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
       break ;
     case kToken__21__3F_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("!\?") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendChar (TO_UNICODE (' ') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (TO_UNICODE (' ')) ;
       s.appendStringAsCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
       break ;
     case kToken__3C_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("<") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__3C__3D_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("<=") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__3C__3C_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("<<") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__3C_non_5F_terminal_3E_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("<non_terminal>") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendChar (TO_UNICODE (' ') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (TO_UNICODE (' ')) ;
       s.appendStringAsCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
       break ;
     case kToken__22_string_22_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("\"string\"") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendChar (TO_UNICODE (' ') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (TO_UNICODE (' ')) ;
       s.appendStringAsCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
       break ;
     case kToken_abstract:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("abstract") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_after:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("after") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_as:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("as") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_bang:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("bang") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_before:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("before") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_between:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("between") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_block:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("block") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_boolset:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("boolset") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_case:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("case") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_class:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("class") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_default:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("default") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_dict:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("dict") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_do:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("do") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_drop:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("drop") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_else:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("else") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_elsif:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("elsif") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_end:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("end") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_enum:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("enum") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_error:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("error") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_extension:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("extension") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_extern:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("extern") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_false:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("false") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_fileprivate:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("fileprivate") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_filewrapper:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("filewrapper") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_final:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("final") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_for:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("for") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_fixit:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("fixit") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_func:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("func") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_grammar:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("grammar") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_graph:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("graph") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_gui:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("gui") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_if:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("if") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_in:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("in") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_indexing:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("indexing") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_init:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("init") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_is:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("is") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_label:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("label") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_let:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("let") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_lexique:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("lexique") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_list:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("list") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_listmap:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("listmap") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_log:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("log") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_loop:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("loop") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_map:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("map") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_mod:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("mod") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_mutating:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("mutating") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_not:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("not") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_on:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("on") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_operator:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("operator") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_option:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("option") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_or:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("or") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_override:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("override") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_package:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("package") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_parse:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("parse") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_public:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("public") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_protected:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("protected") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_private:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("private") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_proc:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("proc") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_project:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("project") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_repeat:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("repeat") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_rewind:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("rewind") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_rule:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("rule") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_select:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("select") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_self:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("self") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_send:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("send") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_sortedlist:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("sortedlist") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_spoil:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("spoil") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_super:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("super") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_struct:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("struct") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_style:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("style") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_switch:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("switch") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_syntax:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("syntax") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_tag:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("tag") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_template:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("template") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_then:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("then") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_true:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("true") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_typealias:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("typealias") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_unused:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("unused") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_var:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("var") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_warning:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("warning") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_while:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("while") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_with:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("with") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__25_app_2D_link:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("%app-link") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__25_app_2D_source:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("%app-source") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__25_makefile_2D_macosx:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("%makefile-macosx") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__25_makefile_2D_unix:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("%makefile-unix") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__25_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("%makefile-x86linux32-on-macosx") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__25_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("%makefile-x86linux64-on-macosx") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__25_makefile_2D_win_33__32__2D_on_2D_macosx:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("%makefile-win32-on-macosx") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__25_codeblocks_2D_windows:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("%codeblocks-windows") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__25_codeblocks_2D_linux_33__32_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("%codeblocks-linux32") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__25_codeblocks_2D_linux_36__34_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("%codeblocks-linux64") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__25_applicationBundleBase:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("%applicationBundleBase") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__25_MacOS:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("%MacOS") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__25_MacOSDeployment:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("%MacOSDeployment") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__25_quietOutputByDefault:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("%quietOutputByDefault") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__25_macCodeSign:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("%macCodeSign") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__25_libpmAtPath:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("%libpmAtPath") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__25_tool_2D_source:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("%tool-source") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__25_translate:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("%translate") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__25_once:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("%once") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__25_usefull:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("%usefull") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__25_generatedInSeparateFile:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("%generatedInSeparateFile") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__25_nonAtomicSelection:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("%nonAtomicSelection") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__25_templateEndMark:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("%templateEndMark") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__25_preserved:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("%preserved") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__25_selector:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("%selector") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__25_insertSetter:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("%insertSetter") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__25_searchMethod:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("%searchMethod") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__25_removeSetter:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("%removeSetter") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__25_errorMessage:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("%errorMessage") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__25_insertOrReplaceSetter:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("%insertOrReplaceSetter") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__25_remove:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("%remove") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__25_replaceBy:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("%replaceBy") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__25_insertAfter:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("%insertAfter") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__25_insertBefore:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("%insertBefore") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__25_useGrammar:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("%useGrammar") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__25_searchString:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("%searchString") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__25_templateReplacement:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("%templateReplacement") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__2A_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("*") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__2C_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString (",") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__2B_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("+") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__26__2B_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("&+") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__26__2D_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("&-") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__26__2A_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("&*") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__26__2F_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("&/") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__3E_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString (">") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__3B_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString (";") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__3A_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString (":") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__3A__3E_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString (":>") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__2D_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("-") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__28_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("(") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__29_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString (")") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__2D__3E_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("->") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__3D__3D_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("==") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__3D_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("=") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__26__26_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("&&") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__5B_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("[") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__5D_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("]") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__2B__3D_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("+=") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__2D__3D_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("-=") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__2A__3D_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("*=") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__2F__3D_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("/=") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__2F_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("/") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__21__3D_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("!=") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__3E__3D_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString (">=") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__26_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("&") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__7B_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("{") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__7D_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("}") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__60_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("`") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__7C__7C_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("||") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__7C_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("|") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__5E_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("^") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__3E__3E_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString (">>") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__7E_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("~") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__2D__2D_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("--") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__2B__2B_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("++") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__26__2D__2D_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("&--") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__26__2B__2B_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("&++") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__3D__3D__3D_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("===") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__21__3D__3D_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("!==") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__3F__5E_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("\?^") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__21__5E_:
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("!^") ;
-      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     default:
       break ;

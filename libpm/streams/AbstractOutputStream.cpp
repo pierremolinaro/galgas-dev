@@ -118,7 +118,7 @@ void AbstractOutputStream::appendString (const char * inCString, const int32_t i
 
 void AbstractOutputStream::appendUTF32LiteralStringConstant (const String & inString,
                                                              const bool inAppendZeroTerminator) {
-  appendChar (TO_UNICODE ('{') COMMA_HERE) ;
+  appendChar (TO_UNICODE ('{')) ;
   for (int32_t i=0 ; i < inString.length () ; i++) {
     const utf32 c = inString.charAtIndex (i COMMA_HERE) ;
     appendCString ("\n  TO_UNICODE (") ;
@@ -138,12 +138,12 @@ void AbstractOutputStream::appendUTF32LiteralStringConstant (const String & inSt
 //--------------------------------------------------------------------------------------------------
 
 void AbstractOutputStream::appendASCIIChar (const char inValue) {
-  appendChar (TO_UNICODE (uint32_t (inValue)) COMMA_HERE) ;
+  appendChar (TO_UNICODE (uint32_t (inValue))) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void AbstractOutputStream::appendChar (const utf32 inUnicodeCharacter COMMA_UNUSED_LOCATION_ARGS) {
+void AbstractOutputStream::appendChar (const utf32 inUnicodeCharacter) {
   performAppendCharacter (inUnicodeCharacter) ;
 }
 
@@ -248,7 +248,7 @@ void AbstractOutputStream::appendPointer (const void * inValue) {
 
 void AbstractOutputStream::appendSpaces (const int32_t inSpaceCount) {
   for (int32_t i=0 ; i<inSpaceCount ; i++) {
-    appendChar (TO_UNICODE (' ') COMMA_HERE) ;
+    appendChar (TO_UNICODE (' ')) ;
   }
 }
 
@@ -447,7 +447,7 @@ static void internalWriteCstringConstantWithoutDelimiters (AbstractOutputStream 
       break ;
     default :
       if ((UNICODE_VALUE (c) >= ' ') && (UNICODE_VALUE (c) < 127)) {
-        ioStream.appendChar (c COMMA_HERE) ;
+        ioStream.appendChar (c) ;
       }else{
         char buffer [5] ;
         const int32_t n = UTF8StringFromUTF32Character (c, buffer) ;
@@ -527,7 +527,7 @@ void AbstractOutputStream::appendStringAsCLiteralCharConstant (const utf32 c) {
   default :
     if ((UNICODE_VALUE (c) >= ' ') && (UNICODE_VALUE (c) <= '~')) {
       appendCString ("'") ;
-      appendChar (c COMMA_HERE) ;
+      appendChar (c) ;
       appendCString ("'") ;
     }else{
       appendUnsigned (UNICODE_VALUE (c)) ;
@@ -570,7 +570,7 @@ String stringWithSigned (const int64_t inValue) {
 
 String stringWithCharacter (const char inValue) {
   String result ;
-  result.appendChar (TO_UNICODE (uint32_t (inValue)) COMMA_HERE) ;
+  result.appendChar (TO_UNICODE (uint32_t (inValue))) ;
   return result ;
 }
 
@@ -578,7 +578,7 @@ String stringWithCharacter (const char inValue) {
 
 String stringWithUnicodeCharacter (const utf32 inValue) {
   String result ;
-  result.appendChar (inValue COMMA_HERE) ;
+  result.appendChar (inValue) ;
   return result ;
 }
 

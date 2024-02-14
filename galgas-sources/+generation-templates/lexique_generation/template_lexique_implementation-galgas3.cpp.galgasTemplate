@@ -116,7 +116,7 @@ bool Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
             while (notTestForInputUTF32String (%!LEXIQUE_IDENTIFIER%_kTemplateReplacementArray [replacementIndex].mEndString,
                                                kEndOfSourceLexicalErrorMessage
                                                COMMA_HERE)) {
-              s.appendChar (previousChar () COMMA_HERE) ;
+              s.appendChar (previousChar ()) ;
             }
             %!LEXIQUE_IDENTIFIER%_kTemplateReplacementArray [replacementIndex].mReplacementFunction (*this, s, token.mTemplateStringBeforeToken) ;
           }
@@ -124,7 +124,7 @@ bool Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
       }
       mMatchedTemplateDelimiterIndex = findTemplateDelimiterIndex (%!LEXIQUE_IDENTIFIER%_kTemplateDefinitionArray, %![[TEMPLATE_DELIMITOR_LIST count] string]%) ;
       if (mMatchedTemplateDelimiterIndex < 0) {
-        token.mTemplateStringBeforeToken.appendChar (mCurrentChar COMMA_HERE) ;
+        token.mTemplateStringBeforeToken.appendChar (mCurrentChar) ;
         advance () ;
       }
     }

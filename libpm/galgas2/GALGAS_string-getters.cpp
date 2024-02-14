@@ -353,7 +353,7 @@ GALGAS_string GALGAS_string::getter_absolutePathFromPath (const GALGAS_string & 
       r = path ;
     }else{
       r = inBasePath.mString ;
-      r.appendChar (TO_UNICODE ('/') COMMA_HERE) ;
+      r.appendChar (TO_UNICODE ('/')) ;
       r.appendString (path) ;
     }
     result = GALGAS_string (r.stringByStandardizingPath ()) ;
@@ -472,7 +472,7 @@ GALGAS_string GALGAS_string::getter_stringByLeftPadding (const GALGAS_uint & inP
     const int32_t paddingLength = paddedStringLength - mString.length () ;
     String s ; s.setCapacity ((uint32_t) paddedStringLength) ;
     for (int32_t i=0 ; i<paddingLength ; i++) {
-      s.appendChar (paddingChar COMMA_HERE) ;
+      s.appendChar (paddingChar) ;
     }
     s.appendString (mString) ;
     result = GALGAS_string (s) ;
@@ -493,7 +493,7 @@ GALGAS_string GALGAS_string::getter_stringByRightPadding (const GALGAS_uint & in
     String s ; s.setCapacity ((uint32_t) paddedStringLength) ;
     s.appendString (mString) ;
     for (int32_t i=0 ; i<paddingLength ; i++) {
-      s.appendChar (paddingChar COMMA_HERE) ;
+      s.appendChar (paddingChar) ;
     }
     result = GALGAS_string (s) ;
   }
@@ -512,11 +512,11 @@ GALGAS_string GALGAS_string::getter_stringByLeftAndRightPadding (const GALGAS_ui
     const int32_t paddingLength = paddedStringLength - mString.length () ;
     String s ; s.setCapacity ((uint32_t) paddedStringLength) ;
     for (int32_t i=0 ; i<(paddingLength / 2) ; i++) {
-      s.appendChar (paddingChar COMMA_HERE) ;
+      s.appendChar (paddingChar) ;
     }
     s.appendString (mString) ;
     for (int32_t i=paddingLength / 2 ; i<paddingLength ; i++) {
-      s.appendChar (paddingChar COMMA_HERE) ;
+      s.appendChar (paddingChar) ;
     }
     result = GALGAS_string (s) ;
   }

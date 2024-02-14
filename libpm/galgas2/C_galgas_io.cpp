@@ -582,7 +582,7 @@ void ggs_printError (Compiler * inCompiler,
     if (cocoaOutput ()) {
       gCout.setForeColor (kRedForeColor) ;
       gCout.setTextAttribute (kBoldTextAttribute) ;
-      gCout.appendChar (COCOA_ERROR_ID COMMA_HERE) ;
+      gCout.appendChar (COCOA_ERROR_ID) ;
       gCout.appendString (errorMessage) ;
       gCout.setTextAttribute (kAllAttributesOff) ;
       gCout.appendNewLine () ; ;
@@ -628,7 +628,7 @@ void fatalError (const String & inErrorMessage,
     if (cocoaOutput ()) {
       gCout.setForeColor (kRedForeColor) ;
       gCout.setTextAttribute (kBoldTextAttribute) ;
-      gCout.appendChar (COCOA_ERROR_ID COMMA_HERE) ;
+      gCout.appendChar (COCOA_ERROR_ID) ;
       gCout.appendString (message) ;
       gCout.setTextAttribute (kAllAttributesOff) ;
       gCout.appendNewLine () ; ;
@@ -685,7 +685,7 @@ void ggs_printWarning (Compiler * inCompiler,
     if (cocoaOutput ()) {
       gCout.setForeColor (kYellowForeColor) ;
       gCout.setTextAttribute (kBoldTextAttribute) ;
-      gCout.appendChar (COCOA_WARNING_ID COMMA_HERE) ;
+      gCout.appendChar (COCOA_WARNING_ID) ;
       gCout.appendString (warningMessage) ;
       gCout.setTextAttribute (kAllAttributesOff) ;
       gCout.appendNewLine () ; ;

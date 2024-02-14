@@ -91,7 +91,7 @@ void scanner_routine_enterDigitIntoASCIIcharacter (Lexique & inLexique,
 void scanner_routine_enterCharacterIntoString (Lexique & /* inLexique */,
                                                String & ioString,
                                                const utf32 inChar) {
-  ioString.appendChar (inChar COMMA_HERE) ;
+  ioString.appendChar (inChar) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -724,7 +724,7 @@ void scanner_routine_codePointToUnicode (Lexique & inLexique,
       }
     }
     if (isUnicodeCharacterAssigned (TO_UNICODE (code))) {
-      ioTemplateString.appendChar (TO_UNICODE (code) COMMA_HERE) ;
+      ioTemplateString.appendChar (TO_UNICODE (code)) ;
     }else{
       inLexique.lexicalError ("the escape sequence '&#...;' is not an assigned unicode character" COMMA_HERE) ;
     }
@@ -742,7 +742,7 @@ void scanner_routine_codePointToUnicode (Lexique & inLexique,
       }
     }
     if (isUnicodeCharacterAssigned (TO_UNICODE (code))) {
-      ioTemplateString.appendChar (TO_UNICODE (code) COMMA_HERE) ;
+      ioTemplateString.appendChar (TO_UNICODE (code)) ;
     }else{
       inLexique.lexicalError ("the escape sequence '&#...;' is not an assigned unicode character" COMMA_HERE) ;
     }

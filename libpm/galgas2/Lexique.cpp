@@ -197,7 +197,7 @@ void Lexique::enterTokenFromPointer (cToken * inToken) {
     for (int32_t i=inToken->mStartLocation.index () ; i<=inToken->mEndLocation.index () ; i++) {
       const utf32 c = sourceText ().readCharOrNul (i COMMA_HERE) ;
       if (UNICODE_VALUE (c) != '\0') {
-        s.appendChar (c COMMA_HERE) ;
+        s.appendChar (c) ;
       }
     }
     gCout.appendCString ("  ") ;
@@ -842,7 +842,7 @@ void Lexique::appendCharacterToLatexFile (const utf32 inUnicodeCharacter) {
   case '\'' : mLatexOutputString.appendCString ("\\textquotesingle{}") ; break ;
   case '"' : mLatexOutputString.appendCString ("\"") ; break ;
   default:
-    mLatexOutputString.appendChar (inUnicodeCharacter COMMA_HERE) ;
+    mLatexOutputString.appendChar (inUnicodeCharacter) ;
     mLatexOutputString.appendCString ("{}") ;
     break ;
   }

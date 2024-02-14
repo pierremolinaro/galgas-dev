@@ -230,7 +230,7 @@ GALGAS_string GALGAS_string::class_func_stringWithSequenceOfCharacters (const GA
     const utf32 character = inCharacter.charValue () ;
     String s ;
     for (uint32_t i=0 ; i<inCount.uintValue () ; i++) {
-      s.appendChar (character COMMA_HERE) ;
+      s.appendChar (character) ;
     }
     result = GALGAS_string (s) ;
   }

@@ -9348,7 +9348,7 @@ GALGAS_string extensionGetter_appendArgumentOfMethod (const GALGAS_lexicalTypeEn
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_char:
     {
-      result_result = GALGAS_string (" COMMA_HERE") ;
+      result_result = GALGAS_string::makeEmptyString () ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_uint:

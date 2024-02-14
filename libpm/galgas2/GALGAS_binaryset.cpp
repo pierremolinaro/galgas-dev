@@ -81,7 +81,7 @@ GALGAS_binaryset GALGAS_binaryset::class_func_binarySetWithPredicateString (cons
       utf32 cc = bitString.charAtIndex (stringIndex COMMA_HERE) ;
       String s ;
       while ((stringIndex < stringLength) && ((UNICODE_VALUE (cc) == '0') || (UNICODE_VALUE (cc) == '1') || (UNICODE_VALUE (cc) == 'X') || (UNICODE_VALUE (cc) == ' '))) {
-        s.appendChar (cc COMMA_HERE) ;
+        s.appendChar (cc) ;
         stringIndex ++ ;
         if (stringIndex < stringLength) {
           cc = bitString.charAtIndex (stringIndex COMMA_HERE) ;

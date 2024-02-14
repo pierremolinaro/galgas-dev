@@ -113,11 +113,11 @@ String Lexique_%!LEXIQUE_IDENTIFIER%::getCurrentTokenString (const cToken * inTo
       break ;
 %for (mTerminalName mSentAttributeList mSyntaxErrorMessage mIsEndOfTemplateMark mAtomicSelection mStyleIndex) in TERMINAL_LIST do
    %    case kToken_%![mTerminalName.string identifierRepresentation]%:\n%
-   %      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;\n%
+   %      s.appendChar (TO_UNICODE ('$')) ;\n%
    %      s.appendCString (%![mTerminalName.string utf8RepresentationEscapingQuestionMark]%) ;\n%
-   %      s.appendChar (TO_UNICODE ('$') COMMA_HERE) ;\n%
+   %      s.appendChar (TO_UNICODE ('$')) ;\n%
    for (mLexicalFormalSelector mLexicalAttributeName mLexicalType) in mSentAttributeList do
-     %      s.appendChar (TO_UNICODE (' ') COMMA_HERE) ;\n%
+     %      s.appendChar (TO_UNICODE (' ')) ;\n%
      %      s.%![mLexicalType appendMethodName]% (ptr->mLexicalAttribute_%![mLexicalAttributeName identifierRepresentation] ![mLexicalType appendArgumentOfMethod]%) ;\n%
    end
    %      break ;\n%
@@ -244,7 +244,7 @@ bool Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
             while (notTestForInputUTF32String (%!LEXIQUE_IDENTIFIER%_kTemplateReplacementArray [replacementIndex].mEndString,
                                                 kEndOfSourceLexicalErrorMessage
                                                COMMA_HERE)) {
-              s.appendChar (previousChar () COMMA_HERE) ;
+              s.appendChar (previousChar ()) ;
             }
             %!LEXIQUE_IDENTIFIER%_kTemplateReplacementArray [replacementIndex].mReplacementFunction (*this, s, token.mTemplateStringBeforeToken) ;
           }
@@ -252,7 +252,7 @@ bool Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
       }
       mMatchedTemplateDelimiterIndex = findTemplateDelimiterIndex (%!LEXIQUE_IDENTIFIER%_kTemplateDefinitionArray, %![[TEMPLATE_DELIMITOR_LIST count] string]%) ;
       if (mMatchedTemplateDelimiterIndex < 0) {
-        token.mTemplateStringBeforeToken.appendChar (mCurrentChar COMMA_HERE) ;
+        token.mTemplateStringBeforeToken.appendChar (mCurrentChar) ;
         advance () ;
       }
     }
