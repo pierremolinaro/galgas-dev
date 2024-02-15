@@ -367,7 +367,8 @@ int32_t String::length (void) const {
 //--------------------------------------------------------------------------------------------------
 
 const char * String::cString (void) const {
-  const char * result = "" ;
+  static const char * kEmptyString = "" ;
+  const char * result = kEmptyString ;
   if (nullptr != mEmbeddedString) {
     macroValidSharedObject (mEmbeddedString, PrivateEmbeddedString) ;
     if (nullptr == mEmbeddedString->mUTF8CString) {
