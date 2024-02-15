@@ -195,7 +195,7 @@ empty_strings_computations (const cPureBNFproductionsList & inPureBNFproductions
   }
 //--- Print in BNF file
   if (inPopulateHTMLstring) {
-    ioHTMLFileContents.appendCppTitleComment ("Searching for nonterminal symbols deriving in empty string", "title") ;
+    ioHTMLFileContents.appendTitleComment ("Searching for nonterminal symbols deriving in empty string", "title") ;
   }
 
   const C_Relation nonTerminalHavingEmptyDerivation

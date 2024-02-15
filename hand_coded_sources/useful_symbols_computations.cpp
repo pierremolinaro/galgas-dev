@@ -202,7 +202,7 @@ void useful_symbols_computations (Compiler * inCompiler,
   }
 //--- Print in BNF file
   if (inPopulateHTMLHelperString) {
-    ioHTMLFileContents.appendCppTitleComment ("Useful terminal and nonterminal symbols", "title") ;
+    ioHTMLFileContents.appendTitleComment ("Useful terminal and nonterminal symbols", "title") ;
   }
   int32_t iterationsCount = 0 ;
   computeUsefulSymbols (inPureBNFproductions,

@@ -289,7 +289,7 @@ static void analyze_one_option (const char * inCommand,
           fileName.appendChar (TO_UNICODE (((inCommand [i] == '\\') ? '/' : inCommand [i]))) ;
         }
       #else
-        fileName = inCommand ;
+        fileName = String (inCommand) ;
       #endif
       outSourceFileArray.appendObject (FileManager::absolutePathFromPath (fileName, String (""))) ;
       found = true ;

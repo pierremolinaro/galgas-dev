@@ -1040,7 +1040,7 @@ LL1_computations (const cPureBNFproductionsList & inPureBNFproductions,
     gCout.flush () ;
   }
 //--- Print in BNF file
-  ioHTMLFileContents.appendCppTitleComment ("Checking LL(1) condition", "title") ;
+  ioHTMLFileContents.appendTitleComment ("Checking LL(1) condition", "title") ;
 
 //--- Check LL(1) condition
   outOk = check_LL1_condition (inPureBNFproductions,

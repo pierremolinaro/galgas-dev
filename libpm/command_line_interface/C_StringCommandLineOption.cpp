@@ -63,7 +63,7 @@ void C_StringCommandLineOption::setStringOptionForCommandChar (const char * inCo
       outFound = inCommandString [0] == p->mCommandChar ;
       if (outFound) {
         p->mValue.removeAllKeepingCapacity () ;
-        p->mValue.appendString (& inCommandString [2]) ;
+        p->mValue.appendCString (& inCommandString [2]) ;
       }
       p = p->mNext ;
     }
@@ -98,7 +98,7 @@ void C_StringCommandLineOption::setStringOptionForCommandString (const char * in
                  (strncmp (p->mCommandString.cString (), inCommandString, equalSignIndex) == 0) ;
       if (outFound) {
         p->mValue.removeAllKeepingCapacity () ;
-        p->mValue.appendString (& inCommandString [p->mCommandString.length () + 1]) ;
+        p->mValue.appendCString (& inCommandString [p->mCommandString.length () + 1]) ;
       }
       p = p->mNext ;
     }
@@ -147,7 +147,7 @@ void C_StringCommandLineOption::printStringOptions (void) {
     gCout.appendCString ("    ") ;
     gCout.appendString (p->mComment)  ;
     gCout.appendCString (" (default value: '") ;
-    gCout.appendString (p->mDefaultValue) ;
+    gCout.appendCString (p->mDefaultValue) ;
     gCout.appendCString ("')\n") ;
     p = p->mNext ;
   }

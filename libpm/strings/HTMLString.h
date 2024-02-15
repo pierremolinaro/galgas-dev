@@ -44,8 +44,8 @@ class HTMLString : public String {
   protected: virtual void handleAppendCharacter (const utf32 inCharacter) ;
 
 //--- Method for writing a HTML table
-  public: void appendCppTitleComment (const String & inCommentString,
-                                      const String & inTableStyleClass) ;
+  public: void appendTitleComment (const String & inCommentString,
+                                   const char * inTableStyleClass) ;
 
 //--- Write start code
   public: void writeStartCode (const String & inWindowTitle,

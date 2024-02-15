@@ -156,7 +156,7 @@ static bool
 searchForIdenticalProductions (const cPureBNFproductionsList & productions,
                                HTMLString & ioHTMLFileContents) {
   ioHTMLFileContents.addRawData ("<p><a name=\"identical_productions\"></a></p>") ;
-  ioHTMLFileContents.appendCppTitleComment ("Step 2 : searching for identical productions", "title") ;
+  ioHTMLFileContents.appendTitleComment ("Step 2 : searching for identical productions", "title") ;
   bool ok = true ;
   for (int32_t i=0 ; i<productions.mProductionArray.count () ; i++) {
     const cProduction & pi = productions.mProductionArray (i COMMA_HERE) ;
@@ -363,7 +363,7 @@ analyzeGrammar (Compiler * inCompiler,
 
 //--- Print original grammar in BNF file
   if ((errorFlag == 0) && (grammarClass != kGrammarClassError)) {
-    outHTMLHelperFileContents.appendCppTitleComment ("Original grammar", "title") ;
+    outHTMLHelperFileContents.appendTitleComment ("Original grammar", "title") ;
     printOriginalGrammar (outHTMLHelperFileContents, inSyntaxComponentsList) ;
   }
 //--- Building pure BNF productions ---------------------------------------------------------------------
@@ -385,7 +385,7 @@ analyzeGrammar (Compiler * inCompiler,
 
   //--- Print in bnf file the pure BNF productions
     outHTMLHelperFileContents.addRawData ("<p></p>") ;
-    outHTMLHelperFileContents.appendCppTitleComment ("  Pure BNF productions list", "title") ;
+    outHTMLHelperFileContents.appendTitleComment ("  Pure BNF productions list", "title") ;
     printPureBNFgrammarInBNFfile (outHTMLHelperFileContents, vocabulary, pureBNFproductions) ;
     if (verboseOptionOn) {
       gCout.appendSigned (pureBNFproductions.mProductionArray.count ()) ;
@@ -599,7 +599,7 @@ analyzeGrammar (Compiler * inCompiler,
     String s ;
     s.appendCString ("ENDING ON ERROR, STEP") ;
     s.appendSigned ((uint16_t) errorFlag) ;
-    outHTMLHelperFileContents.appendCppTitleComment (s, "title") ;
+    outHTMLHelperFileContents.appendTitleComment (s, "title") ;
     String errorMessage  ;
     if (inPopulateHTMLHelperString) {
       errorMessage.appendCString ("errors have been raised when analyzing the grammar: see file"
@@ -623,7 +623,7 @@ analyzeGrammar (Compiler * inCompiler,
       warningFlag >>= 1 ;
       i ++ ;
     }
-    outHTMLHelperFileContents.appendCppTitleComment (s, "title") ;
+    outHTMLHelperFileContents.appendTitleComment (s, "title") ;
     String warningMessage  ;
     warningMessage.appendCString ("warnings have been raised when analyzing the grammar: ") ;
     if (inPopulateHTMLHelperString) {
@@ -637,7 +637,7 @@ analyzeGrammar (Compiler * inCompiler,
     }
     inCompiler->semanticWarningAtLocation (inErrorLocation, warningMessage COMMA_HERE) ;
   }else{
-    outHTMLHelperFileContents.appendCppTitleComment ("OK (no error, no warning)", "title") ;
+    outHTMLHelperFileContents.appendTitleComment ("OK (no error, no warning)", "title") ;
   }
   outHTMLHelperFileContents.writeEndCode () ;
 }

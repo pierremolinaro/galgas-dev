@@ -1451,7 +1451,7 @@ SLR_computations (const cPureBNFproductionsList & inProductionRules,
   }
 //--- Print in BNF file
   if (inPopulateHTMLHelperString) {
-    ioHTMLFileContents.appendCppTitleComment ("Building SLR automaton", "title") ;
+    ioHTMLFileContents.appendTitleComment ("Building SLR automaton", "title") ;
     ioHTMLFileContents.addRawData ("<p></p>") ;
   }
 
@@ -1503,7 +1503,7 @@ SLR_computations (const cPureBNFproductionsList & inProductionRules,
   }
 //--- Print in BNF file
   if (inPopulateHTMLHelperString) {
-    ioHTMLFileContents.appendCppTitleComment ("Checking SLR condition", "title") ;
+    ioHTMLFileContents.appendTitleComment ("Checking SLR condition", "title") ;
   }
 
 //--- Build SLR table... detect if grammar is not SLR

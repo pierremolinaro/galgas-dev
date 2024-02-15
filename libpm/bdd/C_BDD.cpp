@@ -1245,10 +1245,10 @@ static void buildGraphvizRepresentation (String & ioString,
     ioString.appendString (THENlabel) ;
     ioString.appendCString ("}}\"]\n") ;
     if (ELSEbranch > 1) {
-      buildGraphvizRepresentation (ioString, node + ":f0:c", ELSEbranch, inBitNames) ;
+      buildGraphvizRepresentation (ioString, node + String (":f0:c"), ELSEbranch, inBitNames) ;
     }
     if (THENbranch > 1) {
-      buildGraphvizRepresentation (ioString, node + ":f1:c", THENbranch, inBitNames) ;
+      buildGraphvizRepresentation (ioString, node + String (":f1:c"), THENbranch, inBitNames) ;
     }
   }
   ioString.appendCString ("  ") ;

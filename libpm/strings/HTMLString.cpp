@@ -70,7 +70,7 @@ void HTMLString::writeEndCode (void) {
 //--------------------------------------------------------------------------------------------------
 
 void HTMLString::addRawData (const char * in_Cstring) {
-  super::handleAppendUTF8Array (in_Cstring, (int32_t) (strlen (in_Cstring) & UINT32_MAX)) ;
+  super::handleAppendUTF8Array (in_Cstring, int32_t (strlen (in_Cstring))) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -79,7 +79,7 @@ void HTMLString::addRawData (const char * in_Cstring) {
 //--------------------------------------------------------------------------------------------------
 
 void HTMLString::handleAppendUTF8Array (const char * inCharArray,
-                                               const int32_t inArrayCount) {
+                                        const int32_t inArrayCount) {
   for (int32_t i=0 ; i<inArrayCount ; i++) {
     const char c = inCharArray [i] ;
     switch (c) {
@@ -122,12 +122,12 @@ void HTMLString::handleAppendCharacter (const utf32 inCharacter) {
 //                 Comments as a table                                                           
 //--------------------------------------------------------------------------------------------------
 
-void HTMLString::appendCppTitleComment (const String & inCommentString,
-                                     const String & inTableStyleClass) {
+void HTMLString::appendTitleComment (const String & inCommentString,
+                                     const char * inTableStyleClass) {
   addRawData ("<table") ;
-  if (inTableStyleClass.length () > 0) {
+  if (inTableStyleClass != nullptr) {
     addRawData (" class=\"") ;
-    addRawData (inTableStyleClass.cString ()) ;
+    addRawData (inTableStyleClass) ;
     addRawData ("\"") ;
   }
   addRawData ("><tr><td>\n") ;

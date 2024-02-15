@@ -259,7 +259,7 @@ void FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
 //--- Print in BNF file
   if (inPopulateHTMLHelperString) {
     ioHTMLFileContents.addRawData ("<p></p>") ;
-    ioHTMLFileContents.appendCppTitleComment ("Computing the FOLLOW sets", "title") ;
+    ioHTMLFileContents.appendTitleComment ("Computing the FOLLOW sets", "title") ;
   }
 //--- Compute FOLLOW (with BDD)
   int32_t iterationsCount = 0 ;

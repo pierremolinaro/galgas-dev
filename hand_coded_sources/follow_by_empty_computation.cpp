@@ -137,7 +137,7 @@ follow_by_empty_computations (const cPureBNFproductionsList & inPureBNFproductio
   }
 //--- Print in BNF file
   if (inPopulateHTMLHelperString) {
-    ioHTMLFileContents.appendCppTitleComment ("Nonterminal symbol set followed by empty string", "title") ;
+    ioHTMLFileContents.appendTitleComment ("Nonterminal symbol set followed by empty string", "title") ;
   }
 
 //--- Compute nonterminal symbols followed by empty 

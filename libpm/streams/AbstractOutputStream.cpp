@@ -291,7 +291,7 @@ void AbstractOutputStream::appendTitleComment (const char * inLineCommentPrefix,
 
 void AbstractOutputStream::appendComment (const char * inLineCommentPrefix,
                                           const String & inCommentString) {
-  appendString (inLineCommentPrefix) ;
+  appendCString (inLineCommentPrefix) ;
   appendCString (" ") ;
   appendString (inCommentString) ;
   appendCString ("\n") ;
@@ -304,7 +304,7 @@ void AbstractOutputStream::appendCenterJustifiedComment (const char * inLineComm
   const int32_t commentLength = inCommentString.length () ;
   const int32_t n = (kCommentMaxLength - 3 - commentLength) / 2 ;
 
-  appendString (inLineCommentPrefix) ;
+  appendCString (inLineCommentPrefix) ;
   for (int32_t i=0 ; i<n ; i++) {
    appendCString (" ") ;
   }
@@ -319,7 +319,7 @@ void AbstractOutputStream::appendCenterJustifiedComment (const char * inLineComm
 //--------------------------------------------------------------------------------------------------
 
 void AbstractOutputStream::appendSpaceLineComment (const char * inLineCommentPrefix) {
-  appendString (inLineCommentPrefix) ;
+  appendCString (inLineCommentPrefix) ;
   appendCString ("\n") ;
 }
 
@@ -363,12 +363,6 @@ void AbstractOutputStream::appendCppHyphenLineCommentWithoutExtraBlankLine (void
 //--------------------------------------------------------------------------------------------------
 
 void AbstractOutputStream::appendCppTitleComment (const String & inCommentString) {
-  appendTitleComment ("//", inCommentString) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void AbstractOutputStream::appendCppTitleComment (const char * inCommentString) {
   appendTitleComment ("//", inCommentString) ;
 }
 

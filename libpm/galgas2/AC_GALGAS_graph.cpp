@@ -415,7 +415,7 @@ GALGAS_location cSharedGraph::locationForKey (const String & inKey,
   }
   if (!ok) {
     inCompiler->emitSemanticError (GALGAS_location (),
-                                   String ("graph locationForKey: node '") + inKey + "' is undefined",
+                                   String ("graph locationForKey: node '") + inKey + String ("' is undefined"),
                                    TC_Array <C_FixItDescription> ()
                                    COMMA_THERE) ;
   }

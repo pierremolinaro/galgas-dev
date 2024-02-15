@@ -1920,7 +1920,7 @@ LR1_computations (const cPureBNFproductionsList & inProductionRules,
 //--- Print in BNF file
   if (inPopulateHTMLHelperString) {
     ioHTMLFileContents.addRawData ("<p></p>") ;
-    ioHTMLFileContents.appendCppTitleComment ("Building LR(1) automaton", "title") ;
+    ioHTMLFileContents.appendTitleComment ("Building LR(1) automaton", "title") ;
   }
 
 //--- Compute LR1 automaton
@@ -1973,7 +1973,7 @@ LR1_computations (const cPureBNFproductionsList & inProductionRules,
 //--- Print in BNF file
   if (inPopulateHTMLHelperString) {
     ioHTMLFileContents.addRawData ("<p></p>") ;
-    ioHTMLFileContents.appendCppTitleComment ("Checking LR(1) condition", "title") ;
+    ioHTMLFileContents.appendTitleComment ("Checking LR(1) condition", "title") ;
   }
 
 //--- Build LR1 table... detect if grammar is not LR1

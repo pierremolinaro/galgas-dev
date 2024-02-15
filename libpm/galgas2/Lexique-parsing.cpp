@@ -92,7 +92,7 @@ bool Lexique::acceptTerminalForErrorSignaling (const int32_t inTerminal,
         gCout.appendCString ("reached '") ;
         gCout.appendString (m) ;
         gCout.appendCString ("' terminal") ;
-        gCout.appendString (accept ? " (accepted)" : "") ;
+        gCout.appendCString (accept ? " (accepted)" : "") ;
         gCout.appendNewLine () ;
         gCout.flush () ;
       }
@@ -127,7 +127,7 @@ bool Lexique::acceptTerminalForErrorSignaling (const int32_t inTerminal,
               gCout.appendCString ("try '") ;
               gCout.appendString (m) ;
               gCout.appendCString ("' non terminal") ;
-              gCout.appendString (found ? " (accepted)": "") ;
+              gCout.appendCString (found ? " (accepted)": "") ;
               gCout.appendNewLine () ;
               gCout.flush () ;
             }
@@ -161,7 +161,7 @@ bool Lexique::acceptTerminalForErrorSignaling (const int32_t inTerminal,
   }
   if (TRACE_LL1_PARSING ()) {
     gCout.appendCString ("------ Exit 'acceptTerminalForErrorSignaling' with accept == ") ;
-    gCout.appendString (accept ? "true" : "false") ;
+    gCout.appendCString (accept ? "true" : "false") ;
     gCout.appendNewLine () ;
   }
   return accept ;
@@ -344,7 +344,7 @@ bool Lexique::performTopDownParsing (const int32_t * inProductionArray,
   if (! executionModeIsLexicalAnalysisOnly ()) {
   //--- Variables for generating syntax tree in a form suitable for graphviz
     const bool produceSyntaxTree = gOption_galgas_5F_builtin_5F_options_outputConcreteSyntaxTree.mValue
-       && (sourceFilePath ().stringByDeletingPathExtension () != "") ;
+       && (sourceFilePath ().stringByDeletingPathExtension ().length () > 0) ;
     String syntaxTreeDescriptionString ;
     TC_Array <uint32_t> productionUniqueNameStack ;
     uint32_t uniqueProductionNameIndex = 0 ;
@@ -423,7 +423,7 @@ bool Lexique::performTopDownParsing (const int32_t * inProductionArray,
             syntaxTreeDescriptionString.appendCString ("  NT") ;
             syntaxTreeDescriptionString.appendUnsigned (uniqueProductionNameIndex) ;
             syntaxTreeDescriptionString.appendCString (" [label=\"") ;
-            syntaxTreeDescriptionString.appendString (inProductionNameArray [inFirstProductionIndexArray [nonTerminalToParse]].mName) ;
+            syntaxTreeDescriptionString.appendCString (inProductionNameArray [inFirstProductionIndexArray [nonTerminalToParse]].mName) ;
             syntaxTreeDescriptionString.appendCString ("\", shape=box];\n") ;
             if (currentProductionName > 0) {
               syntaxTreeDescriptionString.appendCString ("  NT") ;
@@ -437,9 +437,9 @@ bool Lexique::performTopDownParsing (const int32_t * inProductionArray,
           }
           if (executionModeIsSyntaxAnalysisOnly ()) {
             indentForParseOnly (indentationForParseOnly) ;
-            gCout.appendString (inProductionNameArray [inFirstProductionIndexArray [nonTerminalToParse]].mName) ;
+            gCout.appendCString (inProductionNameArray [inFirstProductionIndexArray [nonTerminalToParse]].mName) ;
             gCout.appendCString (", file '") ;
-            gCout.appendString (inProductionNameArray [inFirstProductionIndexArray [nonTerminalToParse]].mFileName) ;
+            gCout.appendCString (inProductionNameArray [inFirstProductionIndexArray [nonTerminalToParse]].mFileName) ;
             gCout.appendCString ("', line ") ;
             gCout.appendUnsigned (inProductionNameArray [inFirstProductionIndexArray [nonTerminalToParse]].mLineNumber) ;
             gCout.appendNewLine () ;
@@ -493,9 +493,9 @@ bool Lexique::performTopDownParsing (const int32_t * inProductionArray,
             }
             if (executionModeIsSyntaxAnalysisOnly ()) {
               indentForParseOnly (indentationForParseOnly) ;
-              gCout.appendString (inProductionNameArray [inFirstProductionIndexArray [nonTerminalToParse + choice]].mName) ;
+              gCout.appendCString (inProductionNameArray [inFirstProductionIndexArray [nonTerminalToParse + choice]].mName) ;
               gCout.appendCString (", file '") ;
-              gCout.appendString (inProductionNameArray [inFirstProductionIndexArray [nonTerminalToParse + choice]].mFileName) ;
+              gCout.appendCString (inProductionNameArray [inFirstProductionIndexArray [nonTerminalToParse + choice]].mFileName) ;
               gCout.appendCString ("', line ") ;
               gCout.appendUnsigned (inProductionNameArray [inFirstProductionIndexArray [nonTerminalToParse + choice]].mLineNumber) ;
               gCout.appendNewLine () ;
@@ -610,7 +610,7 @@ bool Lexique::performTopDownParsing (const int32_t * inProductionArray,
   //--- Output graphviz file
     if (produceSyntaxTree) {
       syntaxTreeDescriptionString.appendCString ("}\n") ;
-      const String dotFilePath = sourceFilePath ().stringByDeletingPathExtension () + ".dot" ;
+      const String dotFilePath = sourceFilePath ().stringByDeletingPathExtension () + String (".dot") ;
       GALGAS_bool fileWritten ;
       GALGAS_string (syntaxTreeDescriptionString).method_writeToFileWhenDifferentContents (GALGAS_string (dotFilePath), fileWritten, this COMMA_HERE) ;
     }

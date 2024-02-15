@@ -208,7 +208,7 @@ FIRST_computations (const cPureBNFproductionsList & inPureBNFproductions,
 //--- Print in BNF file
   if (inPopulateHTMLHelperString) {
     ioHTMLFileContents.addRawData ("<p><a name=\"first_sets\"></a></p>") ;
-    ioHTMLFileContents.appendCppTitleComment ("FIRST set", "title") ;
+    ioHTMLFileContents.appendTitleComment ("FIRST set", "title") ;
   }
 
 //--- Compute FIRST sets

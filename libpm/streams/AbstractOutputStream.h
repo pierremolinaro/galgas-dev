@@ -118,7 +118,6 @@ class AbstractOutputStream {
 
 //--- Writing C++ Comments (// ...)
   public: void appendCppTitleComment (const String & inCommentString) ;
-  public: void appendCppTitleComment (const char * inCommentString) ;
   public: void appendCppHyphenLineCommentWithoutExtraBlankLine (void) ;
   public: void appendCppHyphenLineComment (void) ;
   public: void appendCppSpaceLineComment (void) ;
