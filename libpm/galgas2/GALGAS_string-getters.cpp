@@ -470,7 +470,7 @@ GALGAS_string GALGAS_string::getter_stringByLeftPadding (const GALGAS_uint & inP
     const utf32 paddingChar = inPaddingChar.charValue () ;
     const int32_t paddedStringLength = (int32_t) inPaddedStringLength.uintValue () ;
     const int32_t paddingLength = paddedStringLength - mString.length () ;
-    String s ; s.setCapacity ((uint32_t) paddedStringLength) ;
+    String s ; s.setCapacity (paddedStringLength) ;
     for (int32_t i=0 ; i<paddingLength ; i++) {
       s.appendChar (paddingChar) ;
     }
@@ -490,7 +490,7 @@ GALGAS_string GALGAS_string::getter_stringByRightPadding (const GALGAS_uint & in
     const utf32 paddingChar = inPaddingChar.charValue () ;
     const int32_t paddedStringLength = (int32_t) inPaddedStringLength.uintValue () ;
     const int32_t paddingLength = paddedStringLength - mString.length () ;
-    String s ; s.setCapacity ((uint32_t) paddedStringLength) ;
+    String s ; s.setCapacity (paddedStringLength) ;
     s.appendString (mString) ;
     for (int32_t i=0 ; i<paddingLength ; i++) {
       s.appendChar (paddingChar) ;
@@ -510,7 +510,7 @@ GALGAS_string GALGAS_string::getter_stringByLeftAndRightPadding (const GALGAS_ui
     const utf32 paddingChar = inPaddingChar.charValue () ;
     const int32_t paddedStringLength = (int32_t) inPaddedStringLength.uintValue () ;
     const int32_t paddingLength = paddedStringLength - mString.length () ;
-    String s ; s.setCapacity ((uint32_t) paddedStringLength) ;
+    String s ; s.setCapacity (paddedStringLength) ;
     for (int32_t i=0 ; i<(paddingLength / 2) ; i++) {
       s.appendChar (paddingChar) ;
     }

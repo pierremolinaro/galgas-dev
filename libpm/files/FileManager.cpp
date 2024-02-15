@@ -578,7 +578,7 @@ String FileManager::stringWithContentOfFile (const String & inFilePath,
 //--- Assign C string to String
   String result_string ;
   if (outOk) {
-    result_string.setCapacity ((uint32_t) (length + 2)) ;
+    result_string.setCapacity (length + 2) ;
   //------------ 1- Search for BOM
     outOk = searchBOMandParse (stringData, length, outTextFileEncoding, result_string) ;
   //------------ 2- Try UTF-32BE, UTF-32LE, UTF-16BE, UTF-16LE, UTF-8 encodings

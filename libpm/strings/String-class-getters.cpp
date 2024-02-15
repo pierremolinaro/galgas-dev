@@ -310,7 +310,7 @@ String String::subString (const int32_t inStartIndex,
 String String::stringByCapitalizingFirstCharacter (void) const {
   String s ;
   const int32_t receiver_length = length () ;
-  s.setCapacity ((uint32_t) receiver_length) ;
+  s.setCapacity (receiver_length) ;
   if (receiver_length > 0) {
     s.appendChar (unicodeToUpper (charAtIndex (0 COMMA_HERE))) ;
     for (int32_t i=1 ; i<receiver_length ; i++) {
@@ -325,7 +325,7 @@ String String::stringByCapitalizingFirstCharacter (void) const {
 String String::lowercaseString (void) const {
   String s ;
   const int32_t receiver_length = length () ;
-  s.setCapacity ((uint32_t) receiver_length) ;
+  s.setCapacity (receiver_length) ;
   for (int32_t i=0 ; i<receiver_length ; i++) {
     s.appendChar (unicodeToLower (charAtIndex (i COMMA_HERE))) ;
   }
@@ -337,7 +337,7 @@ String String::lowercaseString (void) const {
 String String::stringByTrimmingSeparators (void) const {
   String s ;
   const int32_t receiver_length = length () ;
-  s.setCapacity ((uint32_t) receiver_length) ;
+  s.setCapacity (receiver_length) ;
 //--- Trim left
   int32_t idx = 0 ;
   while ((idx < receiver_length) && ((UNICODE_VALUE (charAtIndex (idx COMMA_HERE)) == ' ') || (UNICODE_VALUE (charAtIndex (idx COMMA_HERE)) == '\n'))) {
@@ -366,7 +366,7 @@ String String::stringByTrimmingSeparators (void) const {
 String String::uppercaseString (void) const {
   String s ;
   const int32_t receiver_length = length () ;
-  s.setCapacity ((uint32_t) receiver_length) ;
+  s.setCapacity (receiver_length) ;
   for (int32_t i=0 ; i<receiver_length ; i++) {
     s.appendChar (unicodeToUpper (charAtIndex (i COMMA_HERE))) ;
   }
@@ -640,7 +640,7 @@ void String::convertToDouble (double & outDoubleValue,
 String String::identifierRepresentation (void) const {
   String s ;
   const int32_t receiver_length = length () ;
-  s.setCapacity ((uint32_t) receiver_length) ;
+  s.setCapacity (receiver_length) ;
   for (int32_t i=0 ; i<receiver_length ; i++) {
     const utf32 c = charAtIndex (i COMMA_HERE) ;
     if (isalpha ((int) UNICODE_VALUE (c))) {
@@ -659,7 +659,7 @@ String String::identifierRepresentation (void) const {
 String String::nameRepresentation (void) const {
   String s ;
   const int32_t receiver_length = length () ;
-  s.setCapacity ((uint32_t) receiver_length) ;
+  s.setCapacity (receiver_length) ;
   for (int32_t i=0 ; i<receiver_length ; i++) {
     const utf32 c = charAtIndex (i COMMA_HERE) ;
     if (isalnum ((int) UNICODE_VALUE (c))) {
@@ -678,7 +678,7 @@ String String::nameRepresentation (void) const {
 String String::fileNameRepresentation (void) const {
   String s ;
   const int32_t receiverLength = length () ;
-  s.setCapacity (uint32_t (receiverLength)) ;
+  s.setCapacity (receiverLength) ;
   for (int32_t i=0 ; i<receiverLength ; i++) {
     const utf32 c = charAtIndex (i COMMA_HERE) ;
     const int nc = int (UNICODE_VALUE (c)) ;
@@ -707,7 +707,7 @@ String String::fileNameRepresentation (void) const {
 String String::assemblerRepresentation (void) const {
   String s ;
   const int32_t receiver_length = length () ;
-  s.setCapacity ((uint32_t) receiver_length) ;
+  s.setCapacity (receiver_length) ;
   for (int32_t i=0 ; i<receiver_length ; i++) {
     const utf32 c = charAtIndex (i COMMA_HERE) ;
     if (isalnum ((int) UNICODE_VALUE (c)) || (UNICODE_VALUE (c) == '.')  || (UNICODE_VALUE (c) == '-') || (UNICODE_VALUE (c) == '$')) {
@@ -726,7 +726,7 @@ String String::assemblerRepresentation (void) const {
 String String::utf8RepresentationEnclosedWithin (const utf32 inCharacter, const bool inEscapeQuestionMark) const {
   String s ;
   const int32_t receiver_length = length () ;
-  s.setCapacity ((uint32_t) receiver_length) ;
+  s.setCapacity (receiver_length) ;
   s.appendChar  (inCharacter) ;
   for (int32_t i=0 ; i<receiver_length ; i++) {
     const utf32 c = charAtIndex (i COMMA_HERE) ;
@@ -779,7 +779,7 @@ static String hex8 (const uint32_t inValue) {
 String String::utf8RepresentationWithUnicodeEscaping (void) const {
   String s ;
   const int32_t receiver_length = length () ;
-  s.setCapacity ((uint32_t) receiver_length) ;
+  s.setCapacity (receiver_length) ;
   s.appendChar  ('\"') ;
   for (int32_t i=0 ; i<receiver_length ; i++) {
     const utf32 c = charAtIndex (i COMMA_HERE) ;

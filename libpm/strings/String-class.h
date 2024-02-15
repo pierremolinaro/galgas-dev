@@ -101,7 +101,7 @@ class String : public AbstractOutputStream {
   public: static String newWithStdIn (void) ;
 
 //--- Set capacity (does nothing if length >= inCapacity)
-  public: void setCapacity (const uint32_t inCapacity) ;
+  public: void setCapacity (const int32_t inCapacity) ;
   
 //--- Remove 'inCount' characters from 'inIndex' index
   public: void removeCountFromIndex (const int32_t inCount, const int32_t inIndex COMMA_LOCATION_ARGS) ;
@@ -116,7 +116,7 @@ class String : public AbstractOutputStream {
   public: void removeAll (void) ;
 
 //--- Get dynamic array allocated size
-  public: uint32_t capacity (void) const ;
+  public: int32_t capacity (void) const ;
 
 //--- Get current column index (starting from 0)
   public: uint32_t currentColumn (void) const ;
@@ -307,7 +307,7 @@ class String : public AbstractOutputStream {
   protected: virtual void handleAppendCharacter (const utf32 inCharacter) ;
 
 //--- Private (internal) methods
-  private: void insulateEmbeddedString (const uint32_t inNewCapacity) const ;
+  private: void insulateEmbeddedString (const int32_t inNewCapacity) const ;
 
   #ifndef DO_NOT_GENERATE_CHECKINGS
     private: void checkString (LOCATION_ARGS) const ;

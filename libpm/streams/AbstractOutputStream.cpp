@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library
 //
-//  Copyright (C) 1997, ..., 2023 Pierre Molinaro.
+//  Copyright (C) 1997, ..., 2024 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -115,7 +115,7 @@ void AbstractOutputStream::appendString (const char * inCString, const int32_t i
 
 //--------------------------------------------------------------------------------------------------
 
-void AbstractOutputStream::appendUTF32LiteralStringConstant (const String & inString,
+void AbstractOutputStream::appendUTF32LiteralStringConstant (const String inString,
                                                              const bool inAppendZeroTerminator) {
   appendChar (TO_UNICODE ('{')) ;
   for (int32_t i=0 ; i < inString.length () ; i++) {

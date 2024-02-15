@@ -659,7 +659,7 @@ void GALGAS_string::setter_setCapacity (GALGAS_uint inNewCapacity,
                                         COMMA_LOCATION_ARGS) {
   if (isValid () && inNewCapacity.isValid ()) {
     if (inNewCapacity.uintValue () <= ((uint32_t) INT32_MAX)) {
-      mString.setCapacity (inNewCapacity.uintValue ()) ;
+      mString.setCapacity (int32_t (inNewCapacity.uintValue ())) ;
     }else{
       String message = "setCapacity argument value (" ;
       message.appendUnsigned (inNewCapacity.uintValue ()) ;

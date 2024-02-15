@@ -48,7 +48,7 @@ class AbstractOutputStream {
 
 //--- Appending string
   public: void appendString (const String inString) ; // Pass by copy (for handling 's.appendString (s) ;' instruction)
-  public: void appendUTF32LiteralStringConstant (const String & inUTF32String, const bool inAppendZeroTerminator) ;
+  public: void appendUTF32LiteralStringConstant (const String inString, const bool inAppendZeroTerminator) ;
 
 //--- Appending C string
   public: void appendCString (const char * inCstring) ;
@@ -85,7 +85,7 @@ class AbstractOutputStream {
 
 //--- Abstract method for output single byte characters
   public: void performAppendCString (const char * inCharArray,
-                                       const int32_t inArrayCount) ;
+                                     const int32_t inArrayCount) ;
 
   protected: virtual void handleAppendUTF8Array (const char * inCharArray,
                                                  const int32_t inArrayCount) = 0 ;
