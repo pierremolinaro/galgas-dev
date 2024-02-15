@@ -1486,11 +1486,11 @@ SLR_computations (const cPureBNFproductionsList & inProductionRules,
     for (int32_t i=0 ; i<transitionList.count () ; i++) {
       ioHTMLFileContents.addRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
       ioHTMLFileContents.appendCString ("  S") ;
-      ioCppFileContents.appendSigned (transitionList (i COMMA_HERE).sourceState ()) ;
-      ioCppFileContents.appendCString (" |- ") ;
+      ioHTMLFileContents.appendSigned (transitionList (i COMMA_HERE).sourceState ()) ;
+      ioHTMLFileContents.appendCString (" |- ") ;
       inVocabulary.printInFile (ioHTMLFileContents, transitionList (i COMMA_HERE).action () COMMA_HERE) ;
       ioHTMLFileContents.appendCString (" -> S") ;
-      ioCppFileContents.appendSigned (transitionList (i COMMA_HERE).targetState ()) ;
+      ioHTMLFileContents.appendSigned (transitionList (i COMMA_HERE).targetState ()) ;
       ioHTMLFileContents.addRawData ("</code></td></tr>") ;
     }
     ioHTMLFileContents.addRawData ("</table><p></p>") ;

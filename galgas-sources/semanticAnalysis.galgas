@@ -812,12 +812,12 @@ override method @galgas3GrammarComponentAST semanticAnalysis
     ?let @string grammarHTMLHelperContents
   )
 #---------------------------------------------------------- Generate HTML grammer helper file
-#  if [option galgas_cli_options.outputHTMLgrammarFile value] then
+  if [option galgas_cli_options.outputHTMLgrammarFile value] then
     [[HTMLFilePath stringByDeletingLastPathComponent] makeDirectory]
     [grammarHTMLHelperContents writeToFileWhenDifferentContents !HTMLFilePath ?*]
-#  else
-#    [@string deleteFileIfExists !HTMLFilePath]
-#  end
+  else
+    [@string deleteFileIfExists !HTMLFilePath]
+  end
 #---
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: ""

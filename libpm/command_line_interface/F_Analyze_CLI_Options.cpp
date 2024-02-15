@@ -371,14 +371,14 @@ static void analyze_one_option (const String & inCommand,
 //--------------------------------------------------------------------------------------------------
 
 void F_Analyze_CLI_Options (const int argv,
-                            const char* * argc,
+                            const char * * argc,
                             TC_UniqueArray <String> & outSourceFileArray,
                             const char* * inExtensionArray,
                             const char* * inHelpMessageArray,
                             void print_tool_help_message (void)) {
 //--- Analyze command
   bool errorFound = false ;
-  for (int i=1 ; i<argv ; i++) {
+  for (int i = 1 ; i < argv ; i++) {
     bool ok = true ;
     analyze_one_option (String (argc [i]), outSourceFileArray, ok) ;
     if (! ok) {
