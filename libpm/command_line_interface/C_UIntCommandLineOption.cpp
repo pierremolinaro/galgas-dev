@@ -32,11 +32,11 @@ static C_UIntCommandLineOption * gLastIntOption ;
 
 //--------------------------------------------------------------------------------------------------
 
-C_UIntCommandLineOption::C_UIntCommandLineOption (const char * inDomainName,
-                                                  const char * inIdentifier,
+C_UIntCommandLineOption::C_UIntCommandLineOption (const String & inDomainName,
+                                                  const String & inIdentifier,
                                                   const char inChar,
-                                                  const char * inString,
-                                                  const char * inComment,
+                                                  const String & inString,
+                                                  const String & inComment,
                                                   const uint32_t inDefaultValue) :
 C_CommandLineOption (inDomainName, inIdentifier, inChar, inString, inComment),
 mNext (nullptr),
@@ -53,22 +53,23 @@ mDefaultValue (inDefaultValue) {
 //--------------------------------------------------------------------------------------------------
 
 void C_UIntCommandLineOption::
-setUIntOptionForCommandChar (const char * inCommandCommandLineOptionString,
+setUIntOptionForCommandChar (const String & inCommandCommandLineOptionString,
                              bool & outFound,
                              bool & outCommandLineOptionStringIsValid) {
-  const uint32_t optionLength = (uint32_t) (strlen (inCommandCommandLineOptionString) & UINT32_MAX) ;
-  outCommandLineOptionStringIsValid = (optionLength > 2) && (inCommandCommandLineOptionString [1] == '=') ;
+  const int32_t optionLength = inCommandCommandLineOptionString.length () ;
+  outCommandLineOptionStringIsValid = (optionLength > 2) && (inCommandCommandLineOptionString.charAtIndex (1 COMMA_HERE) == '=') ;
   uint32_t optionValue = 0 ;
-  for (uint32_t i=2 ; (i<optionLength) && outCommandLineOptionStringIsValid ; i++) {
-    outCommandLineOptionStringIsValid = (inCommandCommandLineOptionString [i] >= '0') && (inCommandCommandLineOptionString [i] <= '9') ;
+  for (int32_t i=2 ; (i<optionLength) && outCommandLineOptionStringIsValid ; i++) {
+    const uint32_t c = UNICODE_VALUE (inCommandCommandLineOptionString.charAtIndex (i COMMA_HERE)) ;
+    outCommandLineOptionStringIsValid = (c >= '0') && (c <= '9') ;
     optionValue *= 10 ;
-    optionValue += (uint32_t) (inCommandCommandLineOptionString [i] - '0') ;
+    optionValue += c - '0' ;
   }
   outFound = false ;
   C_UIntCommandLineOption * p = gFirstIntOption ;
   if (outCommandLineOptionStringIsValid) {
     while ((p != nullptr) && ! outFound) {
-      outFound = inCommandCommandLineOptionString [0] == p->mCommandChar ;
+      outFound = UNICODE_VALUE (inCommandCommandLineOptionString.charAtIndex (0 COMMA_HERE)) == uint32_t (p->mCommandChar) ;
       if (outFound) {
         p->mValue = optionValue ;
       }
@@ -80,17 +81,17 @@ setUIntOptionForCommandChar (const char * inCommandCommandLineOptionString,
 //--------------------------------------------------------------------------------------------------
 
 void C_UIntCommandLineOption::
-setUIntOptionForCommandString (const char * inCommandCommandLineOptionString,
+setUIntOptionForCommandString (const String & inCommandCommandLineOptionString,
                                bool & outFound,
                                bool & outCommandLineOptionStringIsValid) {
-  const uint32_t optionLength = (uint32_t) (strlen (inCommandCommandLineOptionString) & UINT32_MAX) ;
+  const int32_t optionLength = inCommandCommandLineOptionString.length () ;
   outCommandLineOptionStringIsValid = optionLength > 2 ;
 //--- Find '=' character
-  uint32_t equalSignIndex = 0 ;
+  int32_t equalSignIndex = 0 ;
   if (outCommandLineOptionStringIsValid) {
     bool found = false ;
     while ((equalSignIndex < optionLength) && outCommandLineOptionStringIsValid && !found) {
-      found = inCommandCommandLineOptionString [equalSignIndex] == '=' ;
+      found = inCommandCommandLineOptionString.charAtIndex (equalSignIndex COMMA_HERE) == '=' ;
       if (! found) {
         equalSignIndex ++ ;
       }
@@ -99,18 +100,19 @@ setUIntOptionForCommandString (const char * inCommandCommandLineOptionString,
   }
 //--- Compute option value
   uint32_t optionValue = 0 ;
-  for (uint32_t i=equalSignIndex+1 ; (i<optionLength) && outCommandLineOptionStringIsValid ; i++) {
-    outCommandLineOptionStringIsValid = (inCommandCommandLineOptionString [i] >= '0') && (inCommandCommandLineOptionString [i] <= '9') ;
+  for (int32_t i=equalSignIndex+1 ; (i<optionLength) && outCommandLineOptionStringIsValid ; i++) {
+    const uint32_t c = UNICODE_VALUE (inCommandCommandLineOptionString.charAtIndex (i COMMA_HERE)) ;
+    outCommandLineOptionStringIsValid = (c >= '0') && (c <= '9') ;
     optionValue *= 10 ;
-    optionValue += (uint32_t) (inCommandCommandLineOptionString [i] - '0') ;
+    optionValue += uint32_t (c - '0') ;
   }
 //--- Search option
   outFound = false ;
+  const String command = inCommandCommandLineOptionString.leftSubString (equalSignIndex) ;
   if (outCommandLineOptionStringIsValid) {
     C_UIntCommandLineOption * p = gFirstIntOption ;
     while ((p != nullptr) && ! outFound) {
-      outFound = (p->mCommandString.length () == int32_t (equalSignIndex)) &&
-                  (strncmp (inCommandCommandLineOptionString, p->mCommandString.cString (), equalSignIndex) == 0) ;
+      outFound = p->mCommandString == command ;
       if (outFound) {
         p->mValue = optionValue ;
       }

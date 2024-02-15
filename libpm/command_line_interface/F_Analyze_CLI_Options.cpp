@@ -170,44 +170,45 @@ static void print_help (const int argv,
 //
 //--------------------------------------------------------------------------------------------------
 
-static void option_beginning_with_single_minus_sign (const char * inCommand,
+static void option_beginning_with_single_minus_sign (const String & inCommand, // Without leading '-'
                                                      bool & outOk) {
   outOk = false ;
-  const uint32_t optionLength = (uint32_t) (strlen (inCommand) & UINT32_MAX) ;
+  const int32_t optionLength = inCommand.length () ;
 //--- Search for boolean option (minus following by a character)
-  if (optionLength == 2) {
-    C_BoolCommandLineOption::setBoolOptionForCommandChar (inCommand [1], outOk) ;
+  if (optionLength == 1) {
+    C_BoolCommandLineOption::setBoolOptionForCommandChar (inCommand.charAtIndex (0 COMMA_HERE), outOk) ;
     if (! outOk) {
       gCout.appendCString ("Error : unknown '") ;
-      gCout.appendCString (inCommand) ;
+      gCout.appendString (inCommand) ;
       gCout.appendCString ("' command line option.\n") ;
     }
-  }else if (optionLength > 2) {
+  }else if (optionLength > 1) {
+    const String command = inCommand.subStringFromIndex (1) ;
   //--- Search for an UInt option
     bool correctFormat = false ;
-    C_UIntCommandLineOption::setUIntOptionForCommandChar (& inCommand [1], outOk, correctFormat) ;
+    C_UIntCommandLineOption::setUIntOptionForCommandChar (command, outOk, correctFormat) ;
   //--- Not found : search for a string option
     if (! outOk) {
-      C_StringCommandLineOption::setStringOptionForCommandChar (& inCommand [1], outOk, correctFormat) ;
+      C_StringCommandLineOption::setStringOptionForCommandChar (command, outOk, correctFormat) ;
     }
     if (! outOk) {
-      C_StringListCommandLineOption::setStringListOptionForCommandChar (& inCommand [1], outOk, correctFormat) ;
+      C_StringListCommandLineOption::setStringListOptionForCommandChar (command, outOk, correctFormat) ;
     }
     if (! outOk) {
-      gCout.appendCString ("Error : unknown '") ;
-      gCout.appendCString (inCommand) ;
+      gCout.appendCString ("Error : unknown '-") ;
+      gCout.appendString (inCommand) ;
       gCout.appendCString ("' command line option.\n") ;
     }else if (! correctFormat) {
       outOk = false ;
-      gCout.appendCString ("Error : incorrect format for '") ;
-      gCout.appendCString (inCommand) ;
+      gCout.appendCString ("Error : incorrect format for '-") ;
+      gCout.appendString (inCommand) ;
       gCout.appendCString ("' command line option (correct format is : '-") ;
-      gCout.appendCString (inCommand) ;
+      gCout.appendString (inCommand) ;
       gCout.appendCString ("=value').\n") ;
     }
   }else{
-    gCout.appendCString ("Error : unknown '") ;
-    gCout.appendCString (inCommand) ;
+    gCout.appendCString ("Error : unknown '-") ;
+    gCout.appendString (inCommand) ;
     gCout.appendCString ("' command line option.\n") ;
   }
 }
@@ -218,31 +219,31 @@ static void option_beginning_with_single_minus_sign (const char * inCommand,
 //
 //--------------------------------------------------------------------------------------------------
 
-static void option_beginning_with_double_minus_sign (const char * inCommand,
+static void option_beginning_with_double_minus_sign (const String & inCommand,
                                                      bool & outFound) {
   outFound = false ;
   bool correctFormat = true ;
 //--- Look for a boolean argument
-  C_BoolCommandLineOption::setBoolOptionForCommandString (& inCommand [2], outFound, gCocoaOutput) ;
+  C_BoolCommandLineOption::setBoolOptionForCommandString (inCommand, outFound, gCocoaOutput) ;
 //--- If not found, look for a Uint option
   if (! outFound) {
-    C_UIntCommandLineOption::setUIntOptionForCommandString (& inCommand [2], outFound, correctFormat) ;
+    C_UIntCommandLineOption::setUIntOptionForCommandString (inCommand, outFound, correctFormat) ;
   }
 //--- If not found, look for a String option
   if (! outFound) {
-    C_StringCommandLineOption::setStringOptionForCommandString (& inCommand [2], outFound, correctFormat) ;
+    C_StringCommandLineOption::setStringOptionForCommandString (inCommand, outFound, correctFormat) ;
   }
   if (! outFound) {
-    C_StringListCommandLineOption::setStringListOptionForCommandString (& inCommand [2], outFound, correctFormat) ;
+    C_StringListCommandLineOption::setStringListOptionForCommandString (inCommand, outFound, correctFormat) ;
   }
   if (! outFound) {
-    gCout.appendCString ("Error : unknown '") ;
-    gCout.appendCString (inCommand) ;
+    gCout.appendCString ("Error : unknown '--") ;
+    gCout.appendString (inCommand) ;
     gCout.appendCString ("' command line option.\n") ;
   }else if (! correctFormat) {
     outFound = false ;
-    gCout.appendCString ("Error : incorrect format for '") ;
-    gCout.appendCString (inCommand) ;
+    gCout.appendCString ("Error : incorrect format for '--") ;
+    gCout.appendString (inCommand) ;
     gCout.appendCString ("' command line option.\n") ;
   }
 }
@@ -253,45 +254,48 @@ static void option_beginning_with_double_minus_sign (const char * inCommand,
 //
 //--------------------------------------------------------------------------------------------------
 
-static void analyze_one_option (const char * inCommand,
+static void analyze_one_option (const String & inCommand,
                                 TC_UniqueArray <String> & outSourceFileArray,
                                 bool & outOk) {
-  const int32_t optionLength = (int32_t) (strlen (inCommand) & UINT32_MAX) ;
+  const int32_t optionLength = inCommand.length () ;
   bool found = false ;
 //--- Begin by a '-' character ?
-  if ((optionLength > 1) && (inCommand [0] == '-')) {
+  if ((optionLength > 1) && (inCommand.charAtIndex (0 COMMA_HERE) == '-')) {
   //--- Second character is also a '-' ?
-    if ((optionLength > 2) && (inCommand [1] == '-')) {
+    if ((optionLength > 2) && (inCommand.charAtIndex (1 COMMA_HERE) == '-')) {
     //--- two minus signs '--' at beginning
-      option_beginning_with_double_minus_sign (inCommand, found) ;
+      const String command = inCommand.subStringFromIndex (2) ;
+      option_beginning_with_double_minus_sign (command, found) ;
     }else{
     //--- Single '-' at beginning
-      option_beginning_with_single_minus_sign (inCommand, found) ;
+      const String command = inCommand.subStringFromIndex (1) ;
+      option_beginning_with_single_minus_sign (command, found) ;
     }
   }
 //--- Look for a file
   if (! found) {
-    if (inCommand [0] != '-') {
+    if (UNICODE_VALUE (inCommand.charAtIndex (0 COMMA_HERE)) != '-') {
       String fileName ;
       #if COMPILE_FOR_WINDOWS == 1
-        const int32_t fileLength = (int32_t) strlen (inCommand) ;
+        const int32_t fileLength = inCommand.length () ;
         int32_t firstChar = 0 ;
         if ((fileLength > 3)
-         && isalpha (inCommand [0])
+         && isalpha (inCommand.charAtIndex (0 COMMA_HERE))
          && (inCommand [1] == ':')
          && (inCommand [2] == '\\')) {
           fileName.appendCString ("/") ;
-          fileName.appendChar (TO_UNICODE (inCommand [0])) ;
+          fileName.appendChar (inCommand.charAtIndex (0 COMMA_HERE)) ;
           fileName.appendCString ("/") ;
           firstChar = 3 ;
         }
         for (int32_t i=firstChar ; i<fileLength ; i++) {
-          fileName.appendChar (TO_UNICODE (((inCommand [i] == '\\') ? '/' : inCommand [i]))) ;
+          const utf32 c = inCommand.charAtIndex (i COMMA_HERE) ;
+          fileName.appendChar ((UNICODE_VALUE (c) == '\\') ? '/' : c) ;
         }
       #else
-        fileName = String (inCommand) ;
+        fileName = inCommand ;
       #endif
-      outSourceFileArray.appendObject (FileManager::absolutePathFromPath (fileName, String (""))) ;
+      outSourceFileArray.appendObject (FileManager::absolutePathFromPath (fileName, String ())) ;
       found = true ;
     }
   }

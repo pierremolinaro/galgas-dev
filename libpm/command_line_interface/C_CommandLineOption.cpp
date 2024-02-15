@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2009, ..., 2010 Pierre Molinaro.
+//  Copyright (C) 2009, ..., 2024 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -22,11 +22,11 @@
 
 //--------------------------------------------------------------------------------------------------
 
-C_CommandLineOption::C_CommandLineOption (const char * inDomainName,
-                                          const char * inIdentifier,
+C_CommandLineOption::C_CommandLineOption (const String & inDomainName,
+                                          const String & inIdentifier,
                                           const char inChar,
-                                          const char * inString,
-                                          const char * inComment) :
+                                          const String & inString,
+                                          const String & inComment) :
 mDomainName (inDomainName),
 mIdentifier (inIdentifier),
 mCommandChar (inChar),

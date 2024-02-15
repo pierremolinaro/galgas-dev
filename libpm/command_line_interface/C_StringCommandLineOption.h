@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2009, ..., 2023 Pierre Molinaro.
+//  Copyright (C) 2009, ..., 2024 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -29,29 +29,31 @@
 
 class C_StringCommandLineOption final : public C_CommandLineOption {
 //--- Constructor
-  public: C_StringCommandLineOption (const char * inDomainName,
-                                      const char * inIdentifier,
+  public: C_StringCommandLineOption (const String & inDomainName,
+                                      const String & inIdentifier,
                                       const char inChar,
-                                      const char * inString,
-                                      const char * inComment,
-                                      const char * inDefaultValue) ;
+                                      const String & inString,
+                                      const String & inComment,
+                                      const String & inDefaultValue) ;
 //--- No Copy
-  private: C_StringCommandLineOption (const C_StringCommandLineOption &) ;
-  private: C_StringCommandLineOption & operator = (const C_StringCommandLineOption &) ;
+  private: C_StringCommandLineOption (const C_StringCommandLineOption &) = delete ;
+  private: C_StringCommandLineOption & operator = (const C_StringCommandLineOption &) = delete ;
 
 //--- Attributes
   private: C_StringCommandLineOption * mNext ;
   public: String mValue ;
   public: inline String readProperty_value (void) const { return mValue ; }
-  public: const char * mDefaultValue ;
+  public: const String mDefaultValue ;
 
 //--- Static methods
-  public: static void setStringOptionForCommandChar (const char * inCommandCommandLineOptionString,
-                                                      bool & outFound,
-                                                      bool & outCommandLineOptionStringIsValid) ;
-  public: static void setStringOptionForCommandString (const char * inCommandCommandLineOptionString,
-                                                        bool & outFound,
-                                                        bool & outCommandLineOptionStringIsValid)  ;
+  public: static void setStringOptionForCommandChar (const String & inCommandCommandLineOptionString,
+                                                     bool & outFound,
+                                                     bool & outCommandLineOptionStringIsValid) ;
+
+  public: static void setStringOptionForCommandString (const String & inCommandCommandLineOptionString,
+                                                       bool & outFound,
+                                                       bool & outCommandLineOptionStringIsValid)  ;
+
   public: static void printUsageOfStringOptions (void) ;
   public: static void printStringOptions (void) ;
 

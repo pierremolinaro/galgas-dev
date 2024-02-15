@@ -32,11 +32,11 @@ static C_StringListCommandLineOption * gLastStringListOption ;
 
 //--------------------------------------------------------------------------------------------------
 
-C_StringListCommandLineOption::C_StringListCommandLineOption (const char * inDomainName,
-                                                              const char * inIdentifier,
+C_StringListCommandLineOption::C_StringListCommandLineOption (const String & inDomainName,
+                                                              const String & inIdentifier,
                                                               const char inChar,
-                                                              const char * inString,
-                                                              const char * inComment) :
+                                                              const String & inString,
+                                                              const String & inComment) :
 C_CommandLineOption (inDomainName, inIdentifier, inChar, inString, inComment),
 mNext (nullptr),
 mValue () {
@@ -50,17 +50,17 @@ mValue () {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_StringListCommandLineOption::setStringListOptionForCommandChar (const char * inCommandString,
+void C_StringListCommandLineOption::setStringListOptionForCommandChar (const String & inCommandString,
                                                                        bool & outFound,
                                                                        bool & outCommandLineOptionStringIsValid) {
-  outCommandLineOptionStringIsValid = (strlen (inCommandString) > 2) && (inCommandString [1] == '=') ;
+  outCommandLineOptionStringIsValid = (inCommandString.length () > 2) && (inCommandString.charAtIndex (1 COMMA_HERE) == '=') ;
   outFound = false ;
   if (outCommandLineOptionStringIsValid) {
     C_StringListCommandLineOption * p = gFirstStringListOption ;
     while ((p != nullptr) && ! outFound) {
-      outFound = inCommandString [0] == p->mCommandChar ;
+      outFound = UNICODE_VALUE (inCommandString.charAtIndex (0 COMMA_HERE)) == uint32_t (p->mCommandChar) ;
       if (outFound) {
-        p->mValue.appendObject (String (& inCommandString [2])) ;
+        p->mValue.appendObject (inCommandString.subStringFromIndex (2)) ;
       }
       p = p->mNext ;
     }
@@ -69,17 +69,17 @@ void C_StringListCommandLineOption::setStringListOptionForCommandChar (const cha
 
 //--------------------------------------------------------------------------------------------------
 
-void C_StringListCommandLineOption::setStringListOptionForCommandString (const char * inCommandString,
+void C_StringListCommandLineOption::setStringListOptionForCommandString (const String & inCommandString,
                                                                          bool & outFound,
                                                                          bool & outCommandLineOptionStringIsValid) {
-  const int32_t optionLength = int32_t (strlen (inCommandString)) ;
+  const int32_t optionLength = inCommandString.length () ;
   outCommandLineOptionStringIsValid = optionLength > 4 ;
 //--- Find '=' character
   int32_t equalSignIndex = 0 ;
   if (outCommandLineOptionStringIsValid) {
     outFound = false ;
     while ((equalSignIndex < optionLength) && outCommandLineOptionStringIsValid && ! outFound) {
-      outFound = inCommandString [equalSignIndex] == '=' ;
+      outFound = UNICODE_VALUE (inCommandString.charAtIndex (equalSignIndex COMMA_HERE)) == '=' ;
       if (! outFound) {
         equalSignIndex ++ ;
       }
@@ -87,14 +87,15 @@ void C_StringListCommandLineOption::setStringListOptionForCommandString (const c
     outCommandLineOptionStringIsValid = outFound && (equalSignIndex > 0) && (equalSignIndex < (optionLength - 1)) ;
   }
 //--- Search option
+  const String command = inCommandString.leftSubString (equalSignIndex) ;
   outFound = false ;
   if (outCommandLineOptionStringIsValid) {
     C_StringListCommandLineOption * p = gFirstStringListOption ;
     while ((p != nullptr) && ! outFound) {
-      outFound = (p->mCommandString.length () == equalSignIndex) &&
-                 (strncmp (p->mCommandString.cString (), inCommandString, size_t (equalSignIndex)) == 0) ;
+      outFound = p->mCommandString == command ;
       if (outFound) {
-        p->mValue.appendObject (String (& inCommandString [p->mCommandString.length () + 1])) ;
+  //      p->mValue.appendObject (String (& inCommandString [p->mCommandString.length () + 1])) ;
+        p->mValue.appendObject (inCommandString.subStringFromIndex (p->mCommandString.length () + 1)) ;
       }
       p = p->mNext ;
     }

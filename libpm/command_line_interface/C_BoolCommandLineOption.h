@@ -30,16 +30,16 @@
 
 class C_BoolCommandLineOption final : public C_CommandLineOption {
 //--- Constructor
-  public: C_BoolCommandLineOption (const char * inDomainName,
-                                    const char * inIdentifier,
-                                    const char inChar,
-                                    const char * inString,
-                                    const char * inComment,
-                                    const bool inVisibleInGalgas = true) ;
+  public: C_BoolCommandLineOption (const String & inDomainName,
+                                   const String & inIdentifier,
+                                   const char inChar,
+                                   const String & inString,
+                                   const String & inComment,
+                                   const bool inVisibleInGalgas = true) ;
 
 //--- No Copy
-  private: C_BoolCommandLineOption (const C_BoolCommandLineOption &) ;
-  private: C_BoolCommandLineOption & operator = (const C_BoolCommandLineOption &) ;
+  private: C_BoolCommandLineOption (const C_BoolCommandLineOption &) = delete ;
+  private: C_BoolCommandLineOption & operator = (const C_BoolCommandLineOption &) = delete ;
 
 //--- Attributes
   private: C_BoolCommandLineOption * mNext ;
@@ -48,11 +48,12 @@ class C_BoolCommandLineOption final : public C_CommandLineOption {
   public: const bool mVisibleInGalgas ;
 
 //--- Static methods
-  public: static void setBoolOptionForCommandChar (const char inCommandChar,
-                                                    bool & outFound) ;
-  public: static void setBoolOptionForCommandString (const char * inCommandString,
-                                                      bool & outFound,
-                                                      bool & outCocoaOutput) ;
+  public: static void setBoolOptionForCommandChar (const utf32 inCommandChar,
+                                                   bool & outFound) ;
+
+  public: static void setBoolOptionForCommandString (const String & inCommandString,
+                                                     bool & outFound,
+                                                     bool & outCocoaOutput) ;
   public: static void printUsageOfBoolOptions (void) ;
   public: static void printBoolOptions (void) ;
 
@@ -60,20 +61,20 @@ class C_BoolCommandLineOption final : public C_CommandLineOption {
   public: static void getBoolOptionNameList (TC_UniqueArray <String> & outArray) ;
 
   public: static utf32 getBoolOptionInvocationLetter (const String & inDomainName,
-                                                       const String & inIdentifier) ;
+                                                      const String & inIdentifier) ;
 
   public: static String getBoolOptionInvocationString (const String & inDomainName,
-                                                          const String & inIdentifier) ;
-
-  public: static String getBoolOptionCommentString (const String & inDomainName,
                                                        const String & inIdentifier) ;
 
+  public: static String getBoolOptionCommentString (const String & inDomainName,
+                                                    const String & inIdentifier) ;
+
   public: static bool getBoolOptionValue (const String & inDomainName,
-                                           const String & inIdentifier) ;
+                                          const String & inIdentifier) ;
 
   public: static void setBoolOptionValue (const String & inDomainName,
-                                           const String & inIdentifier,
-                                           const bool inValue) ;
+                                          const String & inIdentifier,
+                                          const bool inValue) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

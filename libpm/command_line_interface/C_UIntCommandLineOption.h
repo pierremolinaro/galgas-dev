@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2009, ..., 2023 Pierre Molinaro.
+//  Copyright (C) 2009, ..., 2024 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -30,12 +30,12 @@
 
 class C_UIntCommandLineOption final : public C_CommandLineOption {
 //--- Constructor
-  public: C_UIntCommandLineOption (const char * inDomainName,
-                                    const char * inIdentifier,
-                                    const char inChar,
-                                    const char * inString,
-                                    const char * inComment,
-                                    const uint32_t inDefaultValue) ;
+  public: C_UIntCommandLineOption (const String & inDomainName,
+                                   const String & inIdentifier,
+                                   const char inChar,
+                                   const String & inString,
+                                   const String & inComment,
+                                   const uint32_t inDefaultValue) ;
 //--- No Copy
   private: C_UIntCommandLineOption (const C_UIntCommandLineOption &) ;
   private: C_UIntCommandLineOption & operator = (const C_UIntCommandLineOption &) ;
@@ -47,12 +47,12 @@ class C_UIntCommandLineOption final : public C_CommandLineOption {
   public: const uint32_t mDefaultValue ;
 
 //--- Static methods
-  public: static void setUIntOptionForCommandChar (const char * inCommandCommandLineOptionString,
-                                                    bool & outFound,
-                                                    bool & outCommandLineOptionStringIsValid) ;
-  public: static void setUIntOptionForCommandString (const char * inCommandCommandLineOptionString,
-                                                      bool & outFound,
-                                                      bool & outCommandLineOptionStringIsValid)  ;
+  public: static void setUIntOptionForCommandChar (const String & inCommandCommandLineOptionString,
+                                                   bool & outFound,
+                                                   bool & outCommandLineOptionStringIsValid) ;
+  public: static void setUIntOptionForCommandString (const String & inCommandCommandLineOptionString,
+                                                     bool & outFound,
+                                                     bool & outCommandLineOptionStringIsValid)  ;
   public: static void printUsageOfUIntOptions (void) ;
   public: static void printUIntOptions (void) ;
 
