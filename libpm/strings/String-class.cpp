@@ -41,8 +41,8 @@
 class PrivateEmbeddedString final : public SharedObject {
   public: uint32_t mCapacity ; // Maximun allowed length of the following C string
   public: uint32_t mLength ; // Current length of the following C string
-  public: char * mUTF8CString ; // Zero terminated string
   public: utf32 * mUTF32String ;
+  private: char * mUTF8CString ; // Zero terminated string
 
   public: PrivateEmbeddedString (const uint32_t inCapacity COMMA_LOCATION_ARGS) ;
 
@@ -52,10 +52,18 @@ class PrivateEmbeddedString final : public SharedObject {
 
   public: virtual ~ PrivateEmbeddedString (void) ;
 
-//--- Accessor
+//--- Methods
   public: utf32 charAtIndex (const int32_t inIndex COMMA_LOCATION_ARGS) const ;
+
   public: void setCharAtIndex (const utf32 inChar, const int32_t inIndex COMMA_LOCATION_ARGS) ;
+
   public: void appendChar (const utf32 inChar  COMMA_LOCATION_ARGS) ;
+
+  public: const char * cString (void) ;
+
+  public: void reallocEmbeddedString (const uint32_t inCapacity) ;
+
+  public: void removeAllKeepingCapacity (void) ;
 
 //--- No copy
   private: PrivateEmbeddedString (const PrivateEmbeddedString &) = delete ;
@@ -64,8 +72,6 @@ class PrivateEmbeddedString final : public SharedObject {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: void checkEmbeddedString (LOCATION_ARGS) const ;
   #endif
-
-  public: void reallocEmbeddedString (const uint32_t inCapacity) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -85,11 +91,10 @@ PrivateEmbeddedString::PrivateEmbeddedString (const uint32_t inCapacity COMMA_LO
 SharedObject (THERE),
 mCapacity (0),
 mLength (0),
-mUTF8CString (nullptr),
-mUTF32String (nullptr) {
+mUTF32String (nullptr),
+mUTF8CString (nullptr) {
   const uint32_t newCapacity = stringGoodSize (0, inCapacity) ;
   macroMyNewPODArray (mUTF32String, utf32, newCapacity) ;
-//  mUTF32String [0] = TO_UNICODE ('\0') ;
   mCapacity = newCapacity ;
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkEmbeddedString (HERE) ;
@@ -104,16 +109,14 @@ PrivateEmbeddedString::PrivateEmbeddedString (const PrivateEmbeddedString * inEm
 SharedObject (THERE),
 mCapacity (0),
 mLength (0),
-mUTF8CString (nullptr),
-mUTF32String (nullptr) {
+mUTF32String (nullptr),
+mUTF8CString (nullptr) {
   macroValidPointer (inEmbeddedString) ;
   macroValidPointer (inEmbeddedString->mUTF32String) ;
   macroAssert (inCapacity > inEmbeddedString->mLength, "inCapacity (%lld) < inEmbeddedString->mLength (%lld)", inCapacity, inEmbeddedString->mLength) ;
   const uint32_t newCapacity = stringGoodSize (inEmbeddedString->mCapacity, inCapacity) ;
   macroMyNewPODArray (mUTF32String, utf32, newCapacity) ;
-//  mUTF32String [0] = TO_UNICODE ('\0') ;
   mCapacity = newCapacity ;
-//  mLength = inEmbeddedString->mLength ;
   macroAssert (inEmbeddedString->mLength < mCapacity, "inEmbeddedString->mLength (%lld) >= mCapacity (%lld)", inEmbeddedString->mLength, mCapacity) ;
   for (int32_t i=0 ; i<int32_t (inEmbeddedString->mLength) ; i++) {
     appendChar (inEmbeddedString->charAtIndex (i COMMA_HERE) COMMA_HERE) ;
@@ -146,6 +149,7 @@ void PrivateEmbeddedString::setCharAtIndex (const utf32 inChar,
   macroUniqueSharedObjectThere (this) ;
   macroAssertThere (inIndex >= 0, "String index (%lld) is < 0", inIndex, 0) ;
   macroAssertThere (uint32_t (inIndex) < mLength, "String index (%lld) is > length (%lld)", inIndex, mLength) ;
+  macroMyDeletePODArray (mUTF8CString) ;
   mUTF32String [inIndex] = inChar ;
 }
 
@@ -153,11 +157,47 @@ void PrivateEmbeddedString::setCharAtIndex (const utf32 inChar,
 
 void PrivateEmbeddedString::appendChar (const utf32 inChar COMMA_LOCATION_ARGS) {
   macroUniqueSharedObjectThere (this) ;
+  macroMyDeletePODArray (mUTF8CString) ;
   reallocEmbeddedString (mLength + 1) ;
   macroAssertThere (mLength < mCapacity, "String length (%lld) is >= capacity (%lld)", mLength, mCapacity) ;
   mUTF32String [mLength] = inChar ;
   mLength += 1 ;
-//  mUTF32String [mLength] = 0 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void PrivateEmbeddedString::removeAllKeepingCapacity (void) {
+  mLength = 0 ;
+  macroMyDeletePODArray (mUTF8CString) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const char * PrivateEmbeddedString::cString (void) {
+  if (nullptr == mUTF8CString) {
+    uint32_t allocatedSize = mLength + 1 + mLength / 2 ;
+    macroMyNewPODArray (mUTF8CString, char, allocatedSize) ;
+    uint32_t idx = 0 ;
+    for (int32_t i=0 ; i<int32_t (mLength) ; i++) {
+      char buffer [5] ;
+      const int32_t n = UTF8StringFromUTF32Character (UNICODE_VALUE (charAtIndex (i COMMA_HERE)), buffer) ;
+      for (int32_t j=0 ; j<n ; j++) {
+        if (allocatedSize == idx) {
+          allocatedSize += allocatedSize / 2 ;
+          macroMyReallocPODArray (mUTF8CString, char, allocatedSize) ;
+        }
+        mUTF8CString [idx] = buffer [j] ;
+        idx += 1 ;
+      }
+    }
+  //--- Append zero terminator
+    if (allocatedSize == idx) {
+      allocatedSize += 1 ;
+      macroMyReallocPODArray (mUTF8CString, char, allocatedSize) ;
+    }
+    mUTF8CString [idx] = '\0' ;
+  }
+  return mUTF8CString ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -166,9 +206,6 @@ void PrivateEmbeddedString::appendChar (const utf32 inChar COMMA_LOCATION_ARGS) 
   void PrivateEmbeddedString::checkEmbeddedString (LOCATION_ARGS) const {
     macroAssertThere (mCapacity > 0, "mCapacity == 0", 0, 0) ;
     macroAssertThere (mLength <= mCapacity, "mLength (%ld) > mCapacity (%ld)", mLength, mCapacity) ;
-//    macroAssertThere (UNICODE_VALUE (mUTF32String [mLength]) == 0,
-//                      "mUTF32String [mLength (%ld)] == %ld != 0",
-//                      mLength, int32_t (UNICODE_VALUE (mUTF32String [mLength]))) ;
     if (mUTF8CString != nullptr) {
       macroValidPointerThere (mUTF8CString) ;
     }
@@ -367,34 +404,9 @@ int32_t String::length (void) const {
 //--------------------------------------------------------------------------------------------------
 
 const char * String::cString (void) const {
-  static const char * kEmptyString = "" ;
-  const char * result = kEmptyString ;
+  const char * result = "" ;
   if (nullptr != mEmbeddedString) {
-    macroValidSharedObject (mEmbeddedString, PrivateEmbeddedString) ;
-    if (nullptr == mEmbeddedString->mUTF8CString) {
-      uint32_t allocatedSize = mEmbeddedString->mLength + 1 + mEmbeddedString->mLength / 2 ;
-      macroMyNewPODArray (mEmbeddedString->mUTF8CString, char, allocatedSize) ;
-      uint32_t idx = 0 ;
-      for (int32_t i=0 ; i<int32_t (mEmbeddedString->mLength) ; i++) {
-        char buffer [5] ;
-        const int32_t n = UTF8StringFromUTF32Character (UNICODE_VALUE (charAtIndex (i COMMA_HERE)), buffer) ;
-        for (int32_t j=0 ; j<n ; j++) {
-          if (allocatedSize == idx) {
-            allocatedSize += allocatedSize / 2 ;
-            macroMyReallocPODArray (mEmbeddedString->mUTF8CString, char, allocatedSize) ;
-          }
-          mEmbeddedString->mUTF8CString [idx] = buffer [j] ;
-          idx += 1 ;
-        }
-      }
-    //--- Append zero terminator
-      if (allocatedSize == idx) {
-        allocatedSize += 1 ;
-        macroMyReallocPODArray (mEmbeddedString->mUTF8CString, char, allocatedSize) ;
-      }
-      mEmbeddedString->mUTF8CString [idx] = '\0' ;
-    }
-    result = mEmbeddedString->mUTF8CString ;
+    result = mEmbeddedString->cString () ;
   }
   return result ;
 }
@@ -413,7 +425,7 @@ void String::insulateEmbeddedString (const uint32_t inNewCapacity) const {
   }else{
     macroValidSharedObject (mEmbeddedString, PrivateEmbeddedString) ;
     if (mEmbeddedString->isUniquelyReferenced ()) {
-      macroMyDeletePODArray (mEmbeddedString->mUTF8CString) ;
+//      macroMyDeletePODArray (mEmbeddedString->mUTF8CString) ;
       mEmbeddedString->reallocEmbeddedString (inNewCapacity) ;
     }else{
       PrivateEmbeddedString * p = nullptr ;
@@ -438,9 +450,7 @@ void String::removeAllKeepingCapacity (void) {
   #endif
   if (mEmbeddedString != nullptr) {
     if (mEmbeddedString->isUniquelyReferenced ()) {
-      macroMyDeletePODArray (mEmbeddedString->mUTF8CString) ;
-      mEmbeddedString->mLength = 0 ;
-//      mEmbeddedString->mUTF32String [0] = TO_UNICODE ('\0') ;
+      mEmbeddedString->removeAllKeepingCapacity () ;
     }else{
       macroDetachSharedObject (mEmbeddedString) ;
     }
@@ -459,7 +469,6 @@ void String::setCapacity (const uint32_t inNewCapacity) {
     checkString (HERE) ;
   #endif
   if (mEmbeddedString != nullptr) {
-    macroMyDeletePODArray (mEmbeddedString->mUTF8CString) ;
     if (mEmbeddedString->mCapacity < inNewCapacity) {
       if (mEmbeddedString->isUniquelyReferenced ()) {
         mEmbeddedString->reallocEmbeddedString (inNewCapacity) ;
@@ -495,8 +504,6 @@ void String::handleAppendCharacter (const utf32 inCharacter) {
   insulateEmbeddedString (uint32_t (length () + 1)) ;
   macroAssert (mEmbeddedString->isUniquelyReferenced (), "mEmbeddedString->isUniquelyReferenced () is false", 0, 0) ;
   mEmbeddedString->appendChar (inCharacter COMMA_HERE) ;
-//  mEmbeddedString->mLength += 1 ;
-//  mEmbeddedString->mUTF32String [mEmbeddedString->mLength] = TO_UNICODE ('\0') ;
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkString (HERE) ;
   #endif
@@ -512,28 +519,20 @@ void String::handleAppendUTF8Array (const char * inCharArray,
   #endif
   if (inArrayCount != 0) {
     insulateEmbeddedString (uint32_t (length () + inArrayCount + 1)) ;
-//    int32_t newLength = int32_t (mEmbeddedString->mLength) ;
     int32_t idx = 0 ;
     bool ok = true ;
     while ((idx < inArrayCount) && ok) {
       if ((inCharArray [idx] & 0x80) == 0) { // ASCII
         mEmbeddedString->appendChar (TO_UNICODE (uint32_t (inCharArray [idx])) COMMA_HERE) ;
-//        mEmbeddedString->mUTF32String [newLength] = TO_UNICODE (uint32_t (inCharArray [idx])) ;
         idx += 1 ;
-  //      newLength += 1 ;
       }else{
         const utf32 unicodeChar = utf32CharacterForPointer ((const uint8_t *) inCharArray, idx, inArrayCount, ok) ;
         mEmbeddedString->appendChar (unicodeChar COMMA_HERE) ;
-//        mEmbeddedString->mUTF32String [newLength] = unicodeChar ;
-//        newLength += 1 ;
       }
-//      mEmbeddedString->mLength = uint32_t (newLength) ;
-//      mEmbeddedString->mUTF32String [newLength] = TO_UNICODE ('\0') ;
     }
     #ifndef DO_NOT_GENERATE_CHECKINGS
       checkString (HERE) ;
     #endif
-//    macroAssert (capacity () > uint32_t (newLength), "capacity (%lld) <= kNewLength (%lld)", capacity (), newLength) ;
     macroUniqueSharedObject (mEmbeddedString) ;
   }
 }
@@ -543,8 +542,8 @@ void String::handleAppendUTF8Array (const char * inCharArray,
 //--------------------------------------------------------------------------------------------------
 
 void String::setCharAtIndex (const utf32 inCharacter,
-                              const int32_t inIndex
-                              COMMA_LOCATION_ARGS) {
+                             const int32_t inIndex
+                             COMMA_LOCATION_ARGS) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkString (HERE) ;
   #endif
@@ -558,7 +557,6 @@ void String::setCharAtIndex (const utf32 inCharacter,
   }
   macroUniqueSharedObject (mEmbeddedString) ;
   mEmbeddedString->setCharAtIndex (inCharacter, inIndex COMMA_HERE) ;
-//  mEmbeddedString->mUTF32String [inIndex] = inCharacter ;
 }
 
 //--------------------------------------------------------------------------------------------------
