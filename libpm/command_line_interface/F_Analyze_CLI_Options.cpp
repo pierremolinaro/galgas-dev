@@ -280,9 +280,9 @@ static void analyze_one_option (const String & inCommand,
         const int32_t fileLength = inCommand.length () ;
         int32_t firstChar = 0 ;
         if ((fileLength > 3)
-         && isalpha (inCommand.charAtIndex (0 COMMA_HERE))
-         && (inCommand [1] == ':')
-         && (inCommand [2] == '\\')) {
+         && isalpha (int (UNICODE_VALUE (inCommand.charAtIndex (0 COMMA_HERE))))
+         && (inCommand.charAtIndex (1 COMMA_HERE) == ':')
+         && (inCommand.charAtIndex (2 COMMA_HERE) == '\\')) {
           fileName.appendCString ("/") ;
           fileName.appendChar (inCommand.charAtIndex (0 COMMA_HERE)) ;
           fileName.appendCString ("/") ;
@@ -378,11 +378,9 @@ void F_Analyze_CLI_Options (const int argv,
                             void print_tool_help_message (void)) {
 //--- Analyze command
   bool errorFound = false ;
-  for (int32_t i=1 ; i<argv ; i++) {
+  for (int i=1 ; i<argv ; i++) {
     bool ok = true ;
-    analyze_one_option (argc [i],
-                        outSourceFileArray,
-                        ok) ;
+    analyze_one_option (String (argc [i]), outSourceFileArray, ok) ;
     if (! ok) {
       errorFound = true ;
     }
