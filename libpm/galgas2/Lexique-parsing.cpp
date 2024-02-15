@@ -23,7 +23,6 @@
 #include "all-predefined-types.h"
 #include "MF_MemoryControl.h"
 #include "unicode_character_cpp.h"
-#include "unicode_string_routines.h"
 #include "C_galgas_CLI_Options.h"
 #include "cIndexingDictionary.h"
 #include "FileManager.h"

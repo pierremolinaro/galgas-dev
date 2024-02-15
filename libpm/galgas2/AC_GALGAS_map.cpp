@@ -23,7 +23,6 @@
 #include "C_galgas_type_descriptor.h"
 #include "MF_MemoryControl.h"
 #include "Compiler.h"
-#include "unicode_string_routines.h"
 #include "C_galgas_CLI_Options.h"
 
 //--------------------------------------------------------------------------------------------------

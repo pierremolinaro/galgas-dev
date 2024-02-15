@@ -21,7 +21,6 @@
 #include "MF_MemoryControl.h"
 #include "md5.h"
 #include "SharedObject.h"
-#include "unicode_string_routines.h"
 #include "unicode_character_cpp.h"
 #include "TC_UniqueArray2.h"
 
@@ -54,7 +53,9 @@ class PrivateEmbeddedString final : public SharedObject {
   public: virtual ~ PrivateEmbeddedString (void) ;
 
 //--- Accessor
-  public: utf32 operator () (const int32_t inIndex COMMA_LOCATION_ARGS) const ;
+  public: utf32 charAtIndex (const int32_t inIndex COMMA_LOCATION_ARGS) const ;
+  public: void setCharAtIndex (const utf32 inChar, const int32_t inIndex COMMA_LOCATION_ARGS) ;
+  public: void appendChar (const utf32 inChar  COMMA_LOCATION_ARGS) ;
 
 //--- No copy
   private: PrivateEmbeddedString (const PrivateEmbeddedString &) = delete ;
@@ -131,10 +132,32 @@ PrivateEmbeddedString::~PrivateEmbeddedString (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-utf32 PrivateEmbeddedString::operator () (const int32_t inIndex COMMA_LOCATION_ARGS) const {
+utf32 PrivateEmbeddedString::charAtIndex (const int32_t inIndex COMMA_LOCATION_ARGS) const {
   macroAssertThere (inIndex >= 0, "String index (%lld) is < 0", inIndex, 0) ;
   macroAssertThere (uint32_t (inIndex) < mLength, "String index (%lld) is > length (%lld)", inIndex, mLength) ;
   return mUTF32String [inIndex] ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void PrivateEmbeddedString::setCharAtIndex (const utf32 inChar,
+                                            const int32_t inIndex
+                                            COMMA_LOCATION_ARGS) {
+  macroUniqueSharedObjectThere (this) ;
+  macroAssertThere (inIndex >= 0, "String index (%lld) is < 0", inIndex, 0) ;
+  macroAssertThere (uint32_t (inIndex) < mLength, "String index (%lld) is > length (%lld)", inIndex, mLength) ;
+  mUTF32String [inIndex] = inChar ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void PrivateEmbeddedString::appendChar (const utf32 inChar COMMA_LOCATION_ARGS) {
+  macroUniqueSharedObjectThere (this) ;
+  reallocEmbeddedString (mLength + 2) ;
+  macroAssertThere (mLength < mCapacity, "String length (%lld) is >= capacity (%lld)", mLength, mCapacity) ;
+  mUTF32String [mLength] = inChar ;
+  mLength += 1 ;
+  mUTF32String [mLength] = 0 ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -275,7 +298,7 @@ utf32 String::charAtIndex (const int32_t inIndex COMMA_LOCATION_ARGS) const {
     checkString (THERE) ;
   #endif
   macroValidSharedObjectThere (mEmbeddedString, PrivateEmbeddedString) ;
-  return mEmbeddedString->operator () (inIndex COMMA_THERE) ;
+  return mEmbeddedString->charAtIndex (inIndex COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------

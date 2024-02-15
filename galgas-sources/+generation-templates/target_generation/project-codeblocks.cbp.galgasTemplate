@@ -141,7 +141,6 @@ end
    <Unit filename="%!LIBPM_PATH%/streams/C_ConsoleOut.cpp" />
    <Unit filename="%!LIBPM_PATH%/streams/C_ErrorOut.cpp" />
    <Unit filename="%!LIBPM_PATH%/strings/unicode_character_cpp.cpp" />
-   <Unit filename="%!LIBPM_PATH%/strings/unicode_string_routines.cpp" />
    <Unit filename="%!LIBPM_PATH%/strings/String-class-getters.cpp" />
    <Unit filename="%!LIBPM_PATH%/strings/String-class.cpp" />
    <Unit filename="%!LIBPM_PATH%/strings/HTMLString.cpp" />

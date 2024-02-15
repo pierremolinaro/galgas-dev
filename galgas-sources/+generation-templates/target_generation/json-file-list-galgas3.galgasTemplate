@@ -45,7 +45,6 @@ end
        "C_ConsoleOut.cpp",
        "C_ErrorOut.cpp",
        "unicode_character_cpp.cpp",
-       "unicode_string_routines.cpp",
        "String-class-getters.cpp",
        "String-class.cpp",
        "HTMLString.cpp",

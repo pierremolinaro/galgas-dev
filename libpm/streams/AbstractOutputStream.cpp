@@ -22,7 +22,6 @@
 #include "String-class.h"
 #include "DateTime.h"
 #include "unicode_character_cpp.h"
-#include "unicode_string_routines.h"
 
 //--------------------------------------------------------------------------------------------------
 

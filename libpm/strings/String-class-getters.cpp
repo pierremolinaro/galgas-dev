@@ -22,7 +22,6 @@
 #include "md5.h"
 #include "SHA256.h"
 #include "SharedObject.h"
-#include "unicode_string_routines.h"
 #include "unicode_character_cpp.h"
 #include "TC_UniqueArray2.h"
 
