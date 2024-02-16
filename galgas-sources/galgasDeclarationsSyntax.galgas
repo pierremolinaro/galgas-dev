@@ -220,7 +220,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
       var @formalTemplateInputParameterListAST filewrapperTemplateFormalInputParameters = {}
       repeat
       while
-        $?$ ?let selector
+        $?selector:$ ?let selector
         <type_definition_ggs3> !?ioDeclarations ?let typeName
         let @bool isUnused
         select
@@ -420,7 +420,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
           select
             selector = ["" nowhere]
           or
-            $?$ ?selector
+            $?selector:$ ?selector
             if [option galgas_cli_options.errorOnUselessSelector value] && (selector.string == "") then
               error selector.location : "check no useless selector: this selector should be removed"
             end

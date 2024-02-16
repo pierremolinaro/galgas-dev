@@ -63,7 +63,7 @@ syntax extension galgas3LexiqueComponentSyntax {
     $($
     repeat
     while
-      $!$ ?let selector
+      $!selector:$ ?let selector
       if selector.string != "" then
         error selector : "the selector should be '!'" fixit { replace "!" }
       end
@@ -71,7 +71,7 @@ syntax extension galgas3LexiqueComponentSyntax {
       <lexical_output_effective_argument> ?let @lexicalRoutineOrFunctionFormalInputArgumentAST arg
       actualArgumentList += !@lexicalFormalInputArgumentAST.new {!passingModeLocation !arg}
     while
-      $!?$ ?let selector
+      $!?selector:$ ?let selector
       if selector.string != "" then
         error selector : "the selector should be '!?'" fixit { replace "!?" }
       end
@@ -114,7 +114,7 @@ syntax extension galgas4LexiqueComponentSyntax {
     $($
     repeat
     while
-      $!$ ?let selector
+      $!selector:$ ?let selector
       if selector.string != "" then
         error selector : "the selector should be '!'" fixit { replace "!" }
       end
@@ -122,9 +122,9 @@ syntax extension galgas4LexiqueComponentSyntax {
       <lexical_output_effective_argument> ?let @lexicalRoutineOrFunctionFormalInputArgumentAST arg
       actualArgumentList += !@lexicalFormalInputArgumentAST.new {!passingModeLocation !arg}
     while
-      $!?$ ?let selector
+      $!?selector:$ ?let selector
       if selector.string != "" then
-        error selector : "the selector should be '!?'" fixit { replace "!?" }
+        error selector : "an empty selector '!?' is required here"
       end
       let passingModeLocation = @location.here
       $identifier$ ?let @lstring attributeName

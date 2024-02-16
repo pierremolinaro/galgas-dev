@@ -485,7 +485,7 @@ rule <output_expression_list_tpl> !@templateExpressionListAST outExpressionList 
   outExpressionList = {}
   repeat
   while
-    $!$ ?let selector
+    $!selector:$ ?let selector
     <expression_tpl> ?let @templateExpressionAST expression
     outExpressionList += !selector !expression !@location.here
   end
@@ -498,7 +498,7 @@ rule <output_expression_list_tpl> !@templateExpressionListAST outExpressionList 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <template_instruction> ?!@templateInstructionListAST ioResultingInstructionList {
-  $!$ ?let selector
+  $!selector:$ ?let selector
   if selector.string != "" then
     error selector : "the selector should be '!'"
     fixit { replace "!" }

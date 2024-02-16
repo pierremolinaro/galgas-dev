@@ -47,7 +47,7 @@ syntax extension galgas3InstructionsSyntax {
                                    !@semanticInstructionAST outInstruction {
     $[$
     let instructionLocation = @location.here
-    $!?$ ?let selector
+    $!?selector:$ ?let selector
     if selector.string != "" then
       error selector : "an empty selector '!?' is required here"
     end
@@ -94,7 +94,7 @@ syntax extension galgas3InstructionsSyntax {
                                    !@semanticInstructionAST outInstruction {
     $[$
     let instructionLocation = @location.here
-    $!?$ ?let selector
+    $!?selector:$ ?let selector
     if selector.string != "" then
       error selector : "an empty selector '!?' is required here"
     end
@@ -122,7 +122,7 @@ syntax extension galgas4InstructionsSyntax {
 #  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
 #    $[$
 #    let instructionLocation = @location.here
-#    $!?$ ?let selector
+#    $!?selector:$ ?let selector
 #    if selector.string != "" then
 #      error selector : "an empty selector '!?' is required here"
 #    end
@@ -161,7 +161,7 @@ syntax extension galgas4InstructionsSyntax {
   rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionAST outInstruction {
     let instructionLocation = @location.here
-    $!?$ ?let selector
+    $!?selector:$ ?let selector
     if selector.string != "" then
       error selector : "an empty selector '!?' is required here"
     end

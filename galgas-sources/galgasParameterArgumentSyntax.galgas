@@ -42,17 +42,17 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
       let @lstring selector
       let @formalArgumentPassingModeAST mFormalParameterPassingMode
       select
-        $?$ ?selector
+        $?selector:$ ?selector
         mFormalParameterPassingMode = @formalArgumentPassingModeAST. argumentIn
       or
-        $?$ ?selector
+        $?selector:$ ?selector
         $let$
         mFormalParameterPassingMode = @formalArgumentPassingModeAST. argumentConstantIn
       or
-        $?!$ ?selector
+        $?!selector:$ ?selector
         mFormalParameterPassingMode = @formalArgumentPassingModeAST. argumentInOut
       or
-        $!$ ?selector
+        $!selector:$ ?selector
         mFormalParameterPassingMode = @formalArgumentPassingModeAST. argumentOut
       end
       <type_definition_ggs3> !?ioDeclarations ?let @lstring formalParameterTypeName
@@ -82,7 +82,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
     outActualParameterList = {}
     repeat
     while
-      $!$ ?let selector
+      $!selector:$ ?let selector
       <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST e
       let @location endOfExpressionLocation = @location.here
       outActualParameterList += !@outputActualParameterAST.new {
@@ -91,7 +91,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
         !endOfExpressionLocation
       }
     while
-      $?$ ?let selector
+      $?selector:$ ?let selector
       select
         $*$
         <poisoned_var_list_ggs3> ?let poisonedVarNameList
@@ -114,11 +114,11 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
         end
       end
     while
-      $!?$ ?let selector
+      $!?selector:$ ?let selector
       $self$
       outActualParameterList += !@outputInputSelfParameterAST.new {!selector}
     while
-      $!?$ ?let selector
+      $!?selector:$ ?let selector
       $identifier$ ?let outputInputActualParameterName
       var structAttributeList = @lstringlist {}
       repeat
@@ -133,11 +133,11 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
         !structAttributeList
       }
     while
-      $!?$ ?let selector
+      $!?selector:$ ?let selector
       $*$
       outActualParameterList += !@outputInputSingleJokerParameterAST.new {!selector}
     while
-      $!?$ ?let selector
+      $!?selector:$ ?let selector
       $literalInt$ ?let count
       $*$
       var n = [count.bigint uint]
@@ -154,7 +154,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
         end
       end
     while # input parameter, existing variable
-      $?$ ?let selector
+      $?selector:$ ?let selector
       $identifier$ ?let inputActualParameterName
       <poisoned_var_list_ggs3> ?let poisonedVarNameList
       outActualParameterList += !@inputActualExistingVariableParameterAST.new {
@@ -163,7 +163,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
         !poisonedVarNameList
       }
     while # input parameter, self.property
-      $?$ ?let selector
+      $?selector:$ ?let selector
       $self$
       $.$
       $identifier$ ?let inputActualParameterName
@@ -174,7 +174,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
         !poisonedVarNameList
       }
     while # input parameter, self
-      $?$ ?let selector
+      $?selector:$ ?let selector
       $self$
       <poisoned_var_list_ggs3> ?let poisonedVarNameList
       outActualParameterList += !@inputActualSelfParameterAST.new {
@@ -183,7 +183,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
         !poisonedVarNameList
       }
     while  # input parameter, new variable
-      $?$ ?let selector
+      $?selector:$ ?let selector
       $var$
       let @lstring declarationTypeName
       select
@@ -200,7 +200,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
         !poisonedVarNameList
       }
     while  # input parameter, new variable, explicit type
-      $?$ ?let selector
+      $?selector:$ ?let selector
       <type_definition_ggs3> !?ioDeclarations ?let @lstring declarationTypeName
       $identifier$ ?let inputActualParameterName
       <poisoned_var_list_ggs3> ?let poisonedVarNameList
@@ -211,7 +211,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
         !poisonedVarNameList
       }
     while # input parameter, new constant
-      $?$ ?let selector
+      $?selector:$ ?let selector
       $let$
       let @lstring declarationTypeName
       select
@@ -248,7 +248,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
     repeat
     while
       let @bool isConstant
-      $?$ ?let selector
+      $?selector:$ ?let selector
       select
         isConstant = false
       or
@@ -322,7 +322,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
         let @lstring selector
         let @formalArgumentPassingModeAST mFormalParameterPassingMode
         select
-          $?$ ?selector
+          $?selector:$ ?selector
           if [option galgas_cli_options.errorOnUselessSelector value] && (selector.string == "") then
             error selector.location : "check no useless selector: this selector should be removed"
           end
@@ -331,7 +331,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
           selector = ["" here]
           mFormalParameterPassingMode = @formalArgumentPassingModeAST.argumentIn
         or
-          $?$ ?selector
+          $?selector:$ ?selector
           if [option galgas_cli_options.errorOnUselessSelector value] && (selector.string == "") then
             error selector.location : "check no useless selector: this selector should be removed"
           end
@@ -342,10 +342,14 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
           selector = ["" here]
           mFormalParameterPassingMode = @formalArgumentPassingModeAST.argumentConstantIn
         or
-          $?!$ ?selector
+          $?!selector:$ ?selector
           mFormalParameterPassingMode = @formalArgumentPassingModeAST.argumentInOut
         or
-          $!$ ?selector
+          $?!$ 
+          selector = ["" here]
+          mFormalParameterPassingMode = @formalArgumentPassingModeAST.argumentInOut
+        or
+          $!selector:$ ?selector
           mFormalParameterPassingMode = @formalArgumentPassingModeAST.argumentOut
         end
         <type_definition> !?ioDeclarations ?let formalParameterTypeName
@@ -393,7 +397,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
 
   rule <actual_parameter> ?!@galgasDeclarationAST unused ioDeclarations
                           ?!@actualParameterListAST ioActualParameterList {
-    $?$ ?let selector
+    $?selector:$ ?let selector
     select
       $*$
       <poisoned_var_list> ?let poisonedVarNameList
@@ -421,7 +425,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
 
   rule <actual_parameter> ?!@galgasDeclarationAST unused ioDeclarations
                           ?!@actualParameterListAST ioActualParameterList {
-    $!?$ ?let selector
+    $!?selector:$ ?let selector
     select
       $identifier$ ?let outputInputActualParameterName
       var structAttributeList = @lstringlist {}
@@ -443,7 +447,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
       $self$
       ioActualParameterList += !@outputInputSelfParameterAST.new {!selector}
     or
-      $!?$ ?let selector
+      $!?selector:$ ?let selector
       $literalInt$ ?let count
       $*$
       var n = [count.bigint uint]
@@ -466,7 +470,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
 
   rule <actual_parameter> ?!@galgasDeclarationAST ioDeclarations
                           ?!@actualParameterListAST ioActualParameterList {
-    $!$ ?let selector
+    $!selector:$ ?let selector
     if [option galgas_cli_options.errorOnUselessSelector value] && (selector.string == "") then
       error selector.location : "check no useless selector: this selector should be removed"
     end
@@ -497,7 +501,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
 
   rule <actual_parameter> ?!@galgasDeclarationAST ioDeclarations
                           ?!@actualParameterListAST ioActualParameterList {
-    $?$ ?let selector
+    $?selector:$ ?let selector
     select
       $identifier$ ?let inputActualParameterName
       <poisoned_var_list> ?let poisonedVarNameList
@@ -590,7 +594,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
       repeat
         let @lstring selector
         select
-          $?$ ?selector
+          $?selector:$ ?selector
           if [option galgas_cli_options.errorOnUselessSelector value] && (selector.string == "") then
             error selector.location : "check no useless selector: this selector should be removed"
           end

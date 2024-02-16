@@ -85,7 +85,7 @@ syntax extension galgas3ExpressionSyntax {
                                   !@abstractCollectionValueElement outValueElement {
     var @actualOutputExpressionList expressionList = {}
     repeat
-      $!$ ?let selector
+      $!selector:$ ?let selector
       <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
       expressionList += !selector !expression !@location.here
     while
@@ -140,7 +140,7 @@ syntax extension galgas4ExpressionSyntax {
     var @actualOutputExpressionList expressionList = {}
     repeat
       select
-        $!$ ?let selector
+        $!selector:$ ?let selector
         if [option galgas_cli_options.errorOnUselessSelector value] && (selector.string == "") then
           error selector.location : "check no useless selector: this selector should be removed"
         end

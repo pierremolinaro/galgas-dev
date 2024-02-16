@@ -611,10 +611,10 @@ list galgasDelimitorsList style delimitersStyle error message "the '%K' delimito
 rule list galgasDelimitorsList
 
 # --------- Special formal arguments, actual parameters --------------------------
-$?$ ! tokenString style selectorStyle error message "the '\?' or '\?selector:' delimitor"
-$?!$ ! tokenString style selectorStyle error message "the '\?!' or '\?!selector:' delimitor"
-$!$ ! tokenString style selectorStyle error message "the '!' or '!selector:' delimitor"
-$!?$ ! tokenString style selectorStyle error message "the '!\?' or '!\?selector:' delimitor"
+$?selector:$ ! tokenString style selectorStyle error message "the '\?' or '\?selector:' delimitor"
+$?!selector:$ ! tokenString style selectorStyle error message "the '\?!' or '\?!selector:' delimitor"
+$!selector:$ ! tokenString style selectorStyle error message "the '!' or '!selector:' delimitor"
+$!?selector:$ ! tokenString style selectorStyle error message "the '!\?' or '!\?selector:' delimitor"
 
 rule '?' {
   tag onlyInterrogationMark
@@ -629,13 +629,13 @@ rule '?' {
       end
       select
       case ':' :
-        send $?!$
+        send $?!selector:$
       default
         resetString (!?tokenString )
-        rewind onlyExclamationInterrogationMark send $?!$
+        rewind onlyExclamationInterrogationMark send $?!selector:$
       end
     default
-      send $?!$
+      send $?!selector:$
     end
   case 'a' -> 'z' | 'A' ->'Z' :
     repeat
@@ -644,13 +644,13 @@ rule '?' {
     end
     select
     case ':' :
-      send $?$
+      send $?selector:$
     default
       resetString (!?tokenString )
-      rewind onlyInterrogationMark send $?$
+      rewind onlyInterrogationMark send $?selector:$
     end
   default
-    send $?$
+    send $?selector:$
   end
 }
 
@@ -667,13 +667,13 @@ rule '!' {
       end
       select
       case ':' :
-        send $!?$
+        send $!?selector:$
       default
         resetString (!?tokenString )
-        rewind onlyInterrogationExclamationMark send $!?$
+        rewind onlyInterrogationExclamationMark send $!?selector:$
       end
     default
-      send $!?$
+      send $!?selector:$
     end
   case 'a' -> 'z' | 'A' ->'Z' :
     repeat
@@ -682,13 +682,13 @@ rule '!' {
     end
     select
     case ':' :
-      send $!$
+      send $!selector:$
     default
       resetString (!?tokenString )
-      rewind onlyExclamationMark send $!$
+      rewind onlyExclamationMark send $!selector:$
     end
   default
-    send $!$
+    send $!selector:$
   end
 }
 

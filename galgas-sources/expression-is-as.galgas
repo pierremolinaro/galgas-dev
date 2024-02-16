@@ -109,25 +109,12 @@ syntax extension galgas4ExpressionSyntax {
     or
       let endOfReceiverExpression = @location.here
       $is$
-      let @dynamicTypeComparisonKind kind
-      select
-        $==$
-        kind = .equal
-      or
-        $>=$
-        kind = .inherited
-      or
-        kind = .inherited
-      or
-        $>$
-        kind = .strictlyInherited
-      end
       $@type$ ?let typeName
 #      <type_definition> !?ioDeclarations ?let typeName
       outExpression = @testDynamicClassInExpressionAST.new {
         !outExpression
         !endOfReceiverExpression
-        !kind
+        !.inherited
         !typeName
       }
     or

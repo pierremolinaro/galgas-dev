@@ -2691,7 +2691,7 @@ static const char * gNonTerminalNames_templateGrammar [51] = {
 
 static const int32_t gActionTable_templateGrammar [] = {
 // State S0 (index = 0)
-  Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+  Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
@@ -2715,7 +2715,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
 , BOTTOM_UP_END ()
 // State S2 (index = 42)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (22)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (22)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (22)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (22)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (22)
@@ -2732,7 +2732,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (22)
 , BOTTOM_UP_END ()
 // State S3 (index = 73)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (23)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (23)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (23)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (23)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (23)
@@ -2796,7 +2796,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
 , BOTTOM_UP_END ()
 // State S8 (index = 186)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
@@ -2848,7 +2848,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (9)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (9)
 , Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (9)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (9)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (9)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (9)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (9)
@@ -2931,7 +2931,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (11)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (11)
 , Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (11)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (11)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (11)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (11)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (11)
@@ -2972,7 +2972,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (12)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (12)
 , Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (12)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (12)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (12)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (12)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (12)
@@ -3013,7 +3013,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (13)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (13)
 , Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (13)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (13)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (13)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (13)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (13)
@@ -3054,7 +3054,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (14)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (14)
 , Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (14)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (14)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (14)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (14)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (14)
@@ -3095,7 +3095,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (15)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (15)
 , Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (15)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (15)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (15)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (15)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (15)
@@ -3137,7 +3137,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (42)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (58)
 , Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (58)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (58)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (58)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (58)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (58)
@@ -3175,7 +3175,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_option, BOTTOM_UP_SHIFT (47)
 , BOTTOM_UP_END ()
 // State S23 (index = 899)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (21)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (21)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (21)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (21)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (21)
@@ -3197,7 +3197,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (35)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (35)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (35)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (35)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (35)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (35)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (35)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (35)
@@ -3223,7 +3223,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (38)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (38)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (38)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (38)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (38)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (38)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (38)
@@ -3255,7 +3255,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (40)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (40)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (40)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (40)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (40)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (40)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (40)
@@ -3291,7 +3291,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (47)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (47)
@@ -3330,7 +3330,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (52)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (52)
@@ -3371,7 +3371,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (56)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (56)
 , Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_SHIFT (72)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (56)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (56)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (56)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (56)
@@ -3432,7 +3432,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (6)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (6)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (6)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (6)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (6)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (6)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (6)
@@ -3454,7 +3454,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 // State S38 (index = 1408)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (70)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (70)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (80)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (80)
 , BOTTOM_UP_END ()
 // State S39 (index = 1415)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (7)
@@ -3476,7 +3476,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (7)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (7)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (7)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (7)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (7)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (7)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (7)
@@ -3515,7 +3515,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (8)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (8)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (8)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (8)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (8)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (8)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (8)
@@ -3560,7 +3560,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (42)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (58)
 , Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (58)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (58)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (58)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (58)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (58)
@@ -3601,7 +3601,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (16)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (16)
 , Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (16)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (16)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (16)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (16)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (16)
@@ -3669,7 +3669,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (17)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (17)
 , Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (17)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (17)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (17)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (17)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (17)
@@ -3720,7 +3720,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (0)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (0)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (0)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (0)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (0)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (0)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (0)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (0)
@@ -3759,7 +3759,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (1)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (1)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (1)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (1)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (1)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (1)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (1)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (1)
@@ -3869,7 +3869,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (2)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (2)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (2)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (2)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (2)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (2)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (2)
@@ -3957,7 +3957,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (3)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (3)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (3)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (3)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (3)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (3)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (3)
@@ -4035,7 +4035,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (4)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (4)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (4)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (4)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (4)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (4)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (4)
@@ -4082,7 +4082,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (5)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (5)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (5)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (5)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (5)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (5)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (5)
@@ -4102,7 +4102,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (5)
 , BOTTOM_UP_END ()
 // State S74 (index = 2600)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
@@ -4112,7 +4112,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
 , BOTTOM_UP_END ()
 // State S75 (index = 2617)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
@@ -4182,7 +4182,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (10)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (10)
 , Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (10)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (10)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (10)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (10)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (10)
@@ -4223,7 +4223,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (59)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (59)
 , Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (59)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (59)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (59)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (59)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (59)
@@ -4248,7 +4248,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 // State S86 (index = 2852)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (70)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (70)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (80)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (80)
 , BOTTOM_UP_END ()
 // State S87 (index = 2859)
 , Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_SHIFT (131)
@@ -4265,7 +4265,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 // State S91 (index = 2871)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (70)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (70)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (80)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (80)
 , BOTTOM_UP_END ()
 // State S92 (index = 2878)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_SHIFT (50)
@@ -4273,7 +4273,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (35)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (35)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (35)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (35)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (35)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (35)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (35)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (35)
@@ -4298,7 +4298,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (35)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (35)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (35)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (35)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (35)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (35)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (35)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (35)
@@ -4324,7 +4324,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (38)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (38)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (38)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (38)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (38)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (38)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (38)
@@ -4350,7 +4350,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (41)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (41)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (41)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (41)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (41)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (41)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (41)
@@ -4376,7 +4376,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (42)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (42)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (42)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (42)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (42)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (42)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (42)
@@ -4402,7 +4402,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (43)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (43)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (43)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (43)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (43)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (43)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (43)
@@ -4428,7 +4428,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (44)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (44)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (44)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (44)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (44)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (44)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (44)
@@ -4454,7 +4454,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (45)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (45)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (45)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (45)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (45)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (45)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (45)
@@ -4480,7 +4480,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (46)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (46)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (46)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (46)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (46)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (46)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (46)
@@ -4516,7 +4516,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (47)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (47)
@@ -4552,7 +4552,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (47)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (47)
@@ -4588,7 +4588,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (47)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (47)
@@ -4624,7 +4624,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (47)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (47)
@@ -4663,7 +4663,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (52)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (52)
@@ -4702,7 +4702,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (52)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (52)
@@ -4741,7 +4741,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (52)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (52)
@@ -4781,7 +4781,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (56)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (56)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (56)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (56)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (56)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (56)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (56)
@@ -4813,7 +4813,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__40_type, BOTTOM_UP_SHIFT (147)
 , BOTTOM_UP_END ()
 // State S113 (index = 3905)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
@@ -4826,7 +4826,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_SHIFT (149)
 , BOTTOM_UP_END ()
 // State S115 (index = 3925)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
@@ -4867,7 +4867,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (120)
 , BOTTOM_UP_END ()
 // State S122 (index = 3986)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
@@ -4888,7 +4888,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_SHIFT (162)
 , BOTTOM_UP_END ()
 // State S126 (index = 4016)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (33)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (33)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (33)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (33)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (33)
@@ -4907,7 +4907,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 // State S127 (index = 4047)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (70)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (70)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (80)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (80)
 , BOTTOM_UP_END ()
 // State S128 (index = 4054)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (18)
@@ -4931,7 +4931,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (18)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (18)
 , Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (18)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (18)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (18)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (18)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (18)
@@ -4953,7 +4953,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 // State S129 (index = 4133)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (70)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (70)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (80)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (80)
 , BOTTOM_UP_END ()
 // State S130 (index = 4140)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_SHIFT (165)
@@ -4989,7 +4989,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (64)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (64)
 , Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (64)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (64)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (64)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (64)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (64)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (64)
@@ -5015,7 +5015,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (36)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (36)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (36)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (36)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (36)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (36)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (36)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (36)
@@ -5038,7 +5038,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (37)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (37)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (37)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (37)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (37)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (37)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (37)
@@ -5063,7 +5063,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (39)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (39)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (39)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (39)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (39)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (39)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (39)
@@ -5095,7 +5095,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (48)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (48)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (48)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (48)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (48)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (48)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (48)
@@ -5127,7 +5127,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (49)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (49)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (49)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (49)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (49)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (49)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (49)
@@ -5159,7 +5159,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (50)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (50)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (50)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (50)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (50)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (50)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (50)
@@ -5191,7 +5191,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (51)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (51)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (51)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (51)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (51)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (51)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (51)
@@ -5227,7 +5227,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (53)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (53)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (53)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (53)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (53)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (53)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (53)
@@ -5263,7 +5263,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (54)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (54)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (54)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (54)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (54)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (54)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (54)
@@ -5299,7 +5299,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (55)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (55)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (55)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (55)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (55)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (55)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (55)
@@ -5338,7 +5338,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (57)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (57)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (57)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (57)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (57)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (57)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (57)
@@ -5379,7 +5379,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (19)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (19)
 , Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (19)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (19)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (19)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (19)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (19)
@@ -5402,7 +5402,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (73)
 , BOTTOM_UP_END ()
 // State S149 (index = 4975)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (24)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (24)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (24)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (24)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (24)
@@ -5471,7 +5471,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_SHIFT (175)
 , BOTTOM_UP_END ()
 // State S157 (index = 5089)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
@@ -5485,7 +5485,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , BOTTOM_UP_END ()
 // State S159 (index = 5109)
 , Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (177)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (97)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (97)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (97)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (97)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (97)
@@ -5504,7 +5504,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (115)
 , BOTTOM_UP_END ()
 // State S162 (index = 5140)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
@@ -5543,7 +5543,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (61)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (61)
 , Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (61)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (61)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (61)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (61)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (61)
@@ -5565,7 +5565,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 // State S166 (index = 5246)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (70)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (70)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (80)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (80)
 , BOTTOM_UP_END ()
 // State S167 (index = 5253)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (65)
@@ -5595,7 +5595,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (63)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (63)
 , Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (63)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (63)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (63)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (63)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (63)
@@ -5618,7 +5618,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_SHIFT (187)
 , BOTTOM_UP_END ()
 // State S171 (index = 5341)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
@@ -5648,7 +5648,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (194)
 , BOTTOM_UP_END ()
 // State S178 (index = 5380)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
@@ -5675,7 +5675,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (34)
 , BOTTOM_UP_END ()
 // State S182 (index = 5422)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
@@ -5711,7 +5711,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (60)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (60)
 , Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (60)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (60)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (60)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (60)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (60)
@@ -5737,7 +5737,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (66)
 , BOTTOM_UP_END ()
 // State S187 (index = 5531)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
@@ -5749,7 +5749,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
 , BOTTOM_UP_END ()
 // State S188 (index = 5552)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
@@ -5762,7 +5762,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (79)
 , BOTTOM_UP_END ()
 // State S190 (index = 5572)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (25)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (25)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (25)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (25)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (25)
@@ -5803,7 +5803,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_SHIFT (210)
 , BOTTOM_UP_END ()
 // State S195 (index = 5639)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
@@ -5879,7 +5879,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (62)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (62)
 , Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (62)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (62)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (62)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (62)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (62)
@@ -5916,7 +5916,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (88)
 , BOTTOM_UP_END ()
 // State S210 (index = 5820)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (98)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (98)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (98)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (98)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (98)
@@ -5933,7 +5933,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (100)
 , BOTTOM_UP_END ()
 // State S212 (index = 5848)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
@@ -5984,7 +5984,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (31)
 , BOTTOM_UP_END ()
 // State S222 (index = 5920)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
@@ -5999,7 +5999,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (102)
 , BOTTOM_UP_END ()
 // State S224 (index = 5944)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
@@ -6034,7 +6034,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (104)
 , BOTTOM_UP_END ()
 // State S231 (index = 5993)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
@@ -6047,7 +6047,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (106)
 , BOTTOM_UP_END ()
 // State S233 (index = 6013)
-, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (32)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (32)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (32)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (32)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (32)
@@ -9915,12 +9915,12 @@ void routine_projectCreation_3F_ (const GALGAS_string constinArgument_inProjectP
 void routine_enterTemplateString_26_ (GALGAS_templateInstructionListAST & ioArgument_outResultingInstructionList,
                                       Compiler * inCompiler
                                       COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string var_s_21591 = GALGAS_string::class_func_retrieveAndResetTemplateString (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 599)) ;
+  GALGAS_string var_s_21609 = GALGAS_string::class_func_retrieveAndResetTemplateString (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 599)) ;
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
-    test_0 = GALGAS_bool (kIsStrictSup, var_s_21591.getter_count (SOURCE_FILE ("templateSyntax.galgas", 600)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
+    test_0 = GALGAS_bool (kIsStrictSup, var_s_21609.getter_count (SOURCE_FILE ("templateSyntax.galgas", 600)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
     if (kBoolTrue == test_0) {
-      ioArgument_outResultingInstructionList.addAssign_operation (GALGAS_templateInstructionStringAST::class_func_new (var_s_21591  COMMA_SOURCE_FILE ("templateSyntax.galgas", 601))  COMMA_SOURCE_FILE ("templateSyntax.galgas", 601)) ;
+      ioArgument_outResultingInstructionList.addAssign_operation (GALGAS_templateInstructionStringAST::class_func_new (var_s_21609  COMMA_SOURCE_FILE ("templateSyntax.galgas", 601))  COMMA_SOURCE_FILE ("templateSyntax.galgas", 601)) ;
     }
   }
 }
@@ -12225,10 +12225,10 @@ void cPtr_lexiqueComponentAST::method_enterDeclarationInGraph (GALGAS_semanticTy
                                                                COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_lexiqueComponentAST temp_0 = this ;
   const GALGAS_lexiqueComponentAST temp_1 = this ;
-  GALGAS_lstring var_key_29533 = GALGAS_lstring::class_func_new (GALGAS_string ("lexique ").add_operation (temp_0.readProperty_mLexiqueComponentName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 816)), temp_1.readProperty_mLexiqueComponentName ().readProperty_location (), inCompiler  COMMA_SOURCE_FILE ("lexique-component.galgas", 816)) ;
+  GALGAS_lstring var_key_29587 = GALGAS_lstring::class_func_new (GALGAS_string ("lexique ").add_operation (temp_0.readProperty_mLexiqueComponentName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 816)), temp_1.readProperty_mLexiqueComponentName ().readProperty_location (), inCompiler  COMMA_SOURCE_FILE ("lexique-component.galgas", 816)) ;
   {
   const GALGAS_lexiqueComponentAST temp_2 = this ;
-  ioArgument_ioSemanticTypePrecedenceGraph.setter_addNode (var_key_29533, temp_2, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 817)) ;
+  ioArgument_ioSemanticTypePrecedenceGraph.setter_addNode (var_key_29587, temp_2, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 817)) ;
   }
 }
 //--------------------------------------------------------------------------------------------------
@@ -12244,48 +12244,48 @@ void cPtr_lexiqueComponentAST::method_enterDeclarationInSemanticContext (const G
                                                                          GALGAS_semanticContext & ioArgument_ioSemanticContext,
                                                                          Compiler * inCompiler
                                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_lexicalTypeMap var_lexicalTypeMap_30333 = function_buildLexicalTypeMap (inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 829)) ;
-  GALGAS_lexicalAttributeMap var_lexicalAttributeMap_30400 = GALGAS_lexicalAttributeMap::class_func_emptyMap (SOURCE_FILE ("lexique-component.galgas", 830)) ;
+  GALGAS_lexicalTypeMap var_lexicalTypeMap_30387 = function_buildLexicalTypeMap (inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 829)) ;
+  GALGAS_lexicalAttributeMap var_lexicalAttributeMap_30454 = GALGAS_lexicalAttributeMap::class_func_emptyMap (SOURCE_FILE ("lexique-component.galgas", 830)) ;
   {
   const GALGAS_lexiqueComponentAST temp_0 = this ;
-  routine_buildLexicalAttributeMap_3F__3F__26_ (var_lexicalTypeMap_30333, temp_0.readProperty_mLexicalAttributeListAST (), var_lexicalAttributeMap_30400, inCompiler  COMMA_SOURCE_FILE ("lexique-component.galgas", 831)) ;
+  routine_buildLexicalAttributeMap_3F__3F__26_ (var_lexicalTypeMap_30387, temp_0.readProperty_mLexicalAttributeListAST (), var_lexicalAttributeMap_30454, inCompiler  COMMA_SOURCE_FILE ("lexique-component.galgas", 831)) ;
   }
-  GALGAS_terminalMap var_terminalMap_30596 = GALGAS_terminalMap::class_func_emptyMap (SOURCE_FILE ("lexique-component.galgas", 837)) ;
+  GALGAS_terminalMap var_terminalMap_30650 = GALGAS_terminalMap::class_func_emptyMap (SOURCE_FILE ("lexique-component.galgas", 837)) ;
   const GALGAS_lexiqueComponentAST temp_1 = this ;
-  cEnumerator_terminalDeclarationListAST enumerator_30644 (temp_1.readProperty_mTerminalDeclarationListAST (), kENUMERATION_UP) ;
-  while (enumerator_30644.hasCurrentObject ()) {
-    GALGAS_lexicalSentValueList var_argumentTypeList_30694 = GALGAS_lexicalSentValueList::class_func_emptyList (SOURCE_FILE ("lexique-component.galgas", 839)) ;
-    cEnumerator_sentLexicalAttributeListAST enumerator_30763 (enumerator_30644.current_mSentAttributeList (HERE), kENUMERATION_UP) ;
-    while (enumerator_30763.hasCurrentObject ()) {
-      GALGAS_lexicalTypeEnum var_attributeLexicalType_30861 ;
-      var_lexicalAttributeMap_30400.method_searchKey (enumerator_30763.current_mAttributeName (HERE), var_attributeLexicalType_30861, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 841)) ;
-      var_argumentTypeList_30694.addAssign_operation (enumerator_30763.current_mFormalSelector (HERE), enumerator_30763.current_mAttributeName (HERE).readProperty_string (), var_attributeLexicalType_30861  COMMA_SOURCE_FILE ("lexique-component.galgas", 842)) ;
-      enumerator_30763.gotoNextObject () ;
+  cEnumerator_terminalDeclarationListAST enumerator_30698 (temp_1.readProperty_mTerminalDeclarationListAST (), kENUMERATION_UP) ;
+  while (enumerator_30698.hasCurrentObject ()) {
+    GALGAS_lexicalSentValueList var_argumentTypeList_30748 = GALGAS_lexicalSentValueList::class_func_emptyList (SOURCE_FILE ("lexique-component.galgas", 839)) ;
+    cEnumerator_sentLexicalAttributeListAST enumerator_30817 (enumerator_30698.current_mSentAttributeList (HERE), kENUMERATION_UP) ;
+    while (enumerator_30817.hasCurrentObject ()) {
+      GALGAS_lexicalTypeEnum var_attributeLexicalType_30915 ;
+      var_lexicalAttributeMap_30454.method_searchKey (enumerator_30817.current_mAttributeName (HERE), var_attributeLexicalType_30915, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 841)) ;
+      var_argumentTypeList_30748.addAssign_operation (enumerator_30817.current_mFormalSelector (HERE), enumerator_30817.current_mAttributeName (HERE).readProperty_string (), var_attributeLexicalType_30915  COMMA_SOURCE_FILE ("lexique-component.galgas", 842)) ;
+      enumerator_30817.gotoNextObject () ;
     }
     {
-    var_terminalMap_30596.setter_insertKey (enumerator_30644.current_mName (HERE), var_argumentTypeList_30694, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 844)) ;
+    var_terminalMap_30650.setter_insertKey (enumerator_30698.current_mName (HERE), var_argumentTypeList_30748, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 844)) ;
     }
-    enumerator_30644.gotoNextObject () ;
+    enumerator_30698.gotoNextObject () ;
   }
   const GALGAS_lexiqueComponentAST temp_2 = this ;
-  cEnumerator_lexicalListDeclarationListAST enumerator_31076 (temp_2.readProperty_mLexicalListDeclarationListAST (), kENUMERATION_UP) ;
-  while (enumerator_31076.hasCurrentObject ()) {
-    GALGAS_lexicalSentValueList var_argumentTypeList_31138 = GALGAS_lexicalSentValueList::class_func_emptyList (SOURCE_FILE ("lexique-component.galgas", 848)) ;
-    cEnumerator_sentLexicalAttributeListAST enumerator_31207 (enumerator_31076.current_mSentAttributeList (HERE), kENUMERATION_UP) ;
-    while (enumerator_31207.hasCurrentObject ()) {
-      GALGAS_lexicalTypeEnum var_attributeLexicalType_31306 ;
-      var_lexicalAttributeMap_30400.method_searchKey (enumerator_31207.current_mAttributeName (HERE), var_attributeLexicalType_31306, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 850)) ;
-      var_argumentTypeList_31138.addAssign_operation (enumerator_31207.current_mFormalSelector (HERE), enumerator_31207.current_mAttributeName (HERE).readProperty_string (), var_attributeLexicalType_31306  COMMA_SOURCE_FILE ("lexique-component.galgas", 851)) ;
-      enumerator_31207.gotoNextObject () ;
+  cEnumerator_lexicalListDeclarationListAST enumerator_31130 (temp_2.readProperty_mLexicalListDeclarationListAST (), kENUMERATION_UP) ;
+  while (enumerator_31130.hasCurrentObject ()) {
+    GALGAS_lexicalSentValueList var_argumentTypeList_31192 = GALGAS_lexicalSentValueList::class_func_emptyList (SOURCE_FILE ("lexique-component.galgas", 848)) ;
+    cEnumerator_sentLexicalAttributeListAST enumerator_31261 (enumerator_31130.current_mSentAttributeList (HERE), kENUMERATION_UP) ;
+    while (enumerator_31261.hasCurrentObject ()) {
+      GALGAS_lexicalTypeEnum var_attributeLexicalType_31360 ;
+      var_lexicalAttributeMap_30454.method_searchKey (enumerator_31261.current_mAttributeName (HERE), var_attributeLexicalType_31360, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 850)) ;
+      var_argumentTypeList_31192.addAssign_operation (enumerator_31261.current_mFormalSelector (HERE), enumerator_31261.current_mAttributeName (HERE).readProperty_string (), var_attributeLexicalType_31360  COMMA_SOURCE_FILE ("lexique-component.galgas", 851)) ;
+      enumerator_31261.gotoNextObject () ;
     }
-    cEnumerator_lexicalListEntryListAST enumerator_31454 (enumerator_31076.current_mEntryList (HERE), kENUMERATION_UP) ;
-    while (enumerator_31454.hasCurrentObject ()) {
+    cEnumerator_lexicalListEntryListAST enumerator_31508 (enumerator_31130.current_mEntryList (HERE), kENUMERATION_UP) ;
+    while (enumerator_31508.hasCurrentObject ()) {
       {
-      var_terminalMap_30596.setter_insertKey (enumerator_31454.current_mTerminalSpelling (HERE), var_argumentTypeList_31138, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 854)) ;
+      var_terminalMap_30650.setter_insertKey (enumerator_31508.current_mTerminalSpelling (HERE), var_argumentTypeList_31192, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 854)) ;
       }
-      enumerator_31454.gotoNextObject () ;
+      enumerator_31508.gotoNextObject () ;
     }
-    enumerator_31076.gotoNextObject () ;
+    enumerator_31130.gotoNextObject () ;
   }
   {
   const GALGAS_lexiqueComponentAST temp_3 = this ;
@@ -12295,7 +12295,7 @@ void cPtr_lexiqueComponentAST::method_enterDeclarationInSemanticContext (const G
   const GALGAS_lexiqueComponentAST temp_7 = this ;
   const GALGAS_lexiqueComponentAST temp_8 = this ;
   const GALGAS_lexiqueComponentAST temp_9 = this ;
-  ioArgument_ioSemanticContext.mProperty_mLexiqueComponentMapForSemanticAnalysis.setter_insertKey (temp_3.readProperty_mLexiqueComponentName (), temp_4.readProperty_mIsTemplate (), var_terminalMap_30596, temp_5.readProperty_mIndexingListAST (), temp_6.readProperty_mTerminalDeclarationListAST (), temp_7.readProperty_mLexicalAttributeListAST (), temp_8.readProperty_mLexicalStyleListAST (), temp_9.readProperty_mLexicalListDeclarationListAST (), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 858)) ;
+  ioArgument_ioSemanticContext.mProperty_mLexiqueComponentMapForSemanticAnalysis.setter_insertKey (temp_3.readProperty_mLexiqueComponentName (), temp_4.readProperty_mIsTemplate (), var_terminalMap_30650, temp_5.readProperty_mIndexingListAST (), temp_6.readProperty_mTerminalDeclarationListAST (), temp_7.readProperty_mLexicalAttributeListAST (), temp_8.readProperty_mLexicalStyleListAST (), temp_9.readProperty_mLexicalListDeclarationListAST (), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 858)) ;
   }
 }
 //--------------------------------------------------------------------------------------------------
@@ -12314,161 +12314,161 @@ void cPtr_lexiqueComponentAST::method_semanticAnalysis (GALGAS_lstringlist & /* 
                                                         Compiler * inCompiler
                                                         COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_lexiqueComponentAST temp_0 = this ;
-  GALGAS_lstring var_nameForUsefulness_32687 = function_lexiqueNameForUsefulEntitiesGraph (temp_0.readProperty_mLexiqueComponentName (), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 881)) ;
+  GALGAS_lstring var_nameForUsefulness_32741 = function_lexiqueNameForUsefulEntitiesGraph (temp_0.readProperty_mLexiqueComponentName (), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 881)) ;
   {
-  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_nameForUsefulness_32687, var_nameForUsefulness_32687, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 882)) ;
+  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_nameForUsefulness_32741, var_nameForUsefulness_32741, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 882)) ;
   }
-  GALGAS_lexicalTypeMap var_lexicalTypeMap_32940 = function_buildLexicalTypeMap (inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 884)) ;
-  GALGAS_lexicalRoutineMap var_lexicalRoutineMap_33078 ;
+  GALGAS_lexicalTypeMap var_lexicalTypeMap_32994 = function_buildLexicalTypeMap (inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 884)) ;
+  GALGAS_lexicalRoutineMap var_lexicalRoutineMap_33132 ;
   {
-  routine_buildLexicalRoutineMap_21_ (var_lexicalRoutineMap_33078, inCompiler  COMMA_SOURCE_FILE ("lexique-component.galgas", 886)) ;
+  routine_buildLexicalRoutineMap_21_ (var_lexicalRoutineMap_33132, inCompiler  COMMA_SOURCE_FILE ("lexique-component.galgas", 886)) ;
   }
-  GALGAS_lexicalFunctionMap var_lexicalFunctionMap_33197 ;
+  GALGAS_lexicalFunctionMap var_lexicalFunctionMap_33251 ;
   {
-  routine_buildLexicalFunctionMap_21_ (var_lexicalFunctionMap_33197, inCompiler  COMMA_SOURCE_FILE ("lexique-component.galgas", 888)) ;
+  routine_buildLexicalFunctionMap_21_ (var_lexicalFunctionMap_33251, inCompiler  COMMA_SOURCE_FILE ("lexique-component.galgas", 888)) ;
   }
-  GALGAS_stringset var_unicodeTestFunctions_33324 ;
+  GALGAS_stringset var_unicodeTestFunctions_33378 ;
   {
-  routine_lexicalUnicodeTestFunctionAnalysis_21_ (var_unicodeTestFunctions_33324, inCompiler  COMMA_SOURCE_FILE ("lexique-component.galgas", 890)) ;
+  routine_lexicalUnicodeTestFunctionAnalysis_21_ (var_unicodeTestFunctions_33378, inCompiler  COMMA_SOURCE_FILE ("lexique-component.galgas", 890)) ;
   }
   const GALGAS_lexiqueComponentAST temp_1 = this ;
-  GALGAS_lexiqueAnalysisContext var_lexiqueAnalysisContext_33417 = GALGAS_lexiqueAnalysisContext::class_func_new (temp_1.readProperty_mLexiqueComponentName ().readProperty_string (), var_lexicalRoutineMap_33078, var_lexicalFunctionMap_33197, GALGAS_lexicalMessageMap::class_func_emptyMap (SOURCE_FILE ("lexique-component.galgas", 896)), GALGAS_terminalMap::class_func_emptyMap (SOURCE_FILE ("lexique-component.galgas", 897)), GALGAS_terminalList::class_func_emptyList (SOURCE_FILE ("lexique-component.galgas", 898)), GALGAS_lexicalAttributeMap::class_func_emptyMap (SOURCE_FILE ("lexique-component.galgas", 899)), GALGAS_lexicalExplicitTokenListMapMap::class_func_emptyMap (SOURCE_FILE ("lexique-component.galgas", 900)), GALGAS_stringset::class_func_emptySet (SOURCE_FILE ("lexique-component.galgas", 901)), GALGAS_templateDelimitorList::class_func_emptyList (SOURCE_FILE ("lexique-component.galgas", 902)), GALGAS_styleMap::class_func_emptyMap (SOURCE_FILE ("lexique-component.galgas", 903)), var_unicodeTestFunctions_33324, inCompiler  COMMA_SOURCE_FILE ("lexique-component.galgas", 892)) ;
-  GALGAS_bigint var_styleIndex_33824 = GALGAS_bigint ("1", inCompiler  COMMA_SOURCE_FILE ("lexique-component.galgas", 907)) ;
+  GALGAS_lexiqueAnalysisContext var_lexiqueAnalysisContext_33471 = GALGAS_lexiqueAnalysisContext::class_func_new (temp_1.readProperty_mLexiqueComponentName ().readProperty_string (), var_lexicalRoutineMap_33132, var_lexicalFunctionMap_33251, GALGAS_lexicalMessageMap::class_func_emptyMap (SOURCE_FILE ("lexique-component.galgas", 896)), GALGAS_terminalMap::class_func_emptyMap (SOURCE_FILE ("lexique-component.galgas", 897)), GALGAS_terminalList::class_func_emptyList (SOURCE_FILE ("lexique-component.galgas", 898)), GALGAS_lexicalAttributeMap::class_func_emptyMap (SOURCE_FILE ("lexique-component.galgas", 899)), GALGAS_lexicalExplicitTokenListMapMap::class_func_emptyMap (SOURCE_FILE ("lexique-component.galgas", 900)), GALGAS_stringset::class_func_emptySet (SOURCE_FILE ("lexique-component.galgas", 901)), GALGAS_templateDelimitorList::class_func_emptyList (SOURCE_FILE ("lexique-component.galgas", 902)), GALGAS_styleMap::class_func_emptyMap (SOURCE_FILE ("lexique-component.galgas", 903)), var_unicodeTestFunctions_33378, inCompiler  COMMA_SOURCE_FILE ("lexique-component.galgas", 892)) ;
+  GALGAS_bigint var_styleIndex_33878 = GALGAS_bigint ("1", inCompiler  COMMA_SOURCE_FILE ("lexique-component.galgas", 907)) ;
   const GALGAS_lexiqueComponentAST temp_2 = this ;
-  cEnumerator_lexicalStyleListAST enumerator_33852 (temp_2.readProperty_mLexicalStyleListAST (), kENUMERATION_UP) ;
-  while (enumerator_33852.hasCurrentObject ()) {
+  cEnumerator_lexicalStyleListAST enumerator_33906 (temp_2.readProperty_mLexicalStyleListAST (), kENUMERATION_UP) ;
+  while (enumerator_33906.hasCurrentObject ()) {
     {
-    var_lexiqueAnalysisContext_33417.mProperty_mStyleMap.setter_insertKey (enumerator_33852.current_mName (HERE), enumerator_33852.current_mComment (HERE), var_styleIndex_33824.getter_uint (inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 909)), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 909)) ;
+    var_lexiqueAnalysisContext_33471.mProperty_mStyleMap.setter_insertKey (enumerator_33906.current_mName (HERE), enumerator_33906.current_mComment (HERE), var_styleIndex_33878.getter_uint (inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 909)), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 909)) ;
     }
-    var_styleIndex_33824.plusAssign_operation(GALGAS_bigint ("1", inCompiler  COMMA_SOURCE_FILE ("lexique-component.galgas", 910)), inCompiler  COMMA_SOURCE_FILE ("lexique-component.galgas", 910)) ;
-    enumerator_33852.gotoNextObject () ;
+    var_styleIndex_33878.plusAssign_operation(GALGAS_bigint ("1", inCompiler  COMMA_SOURCE_FILE ("lexique-component.galgas", 910)), inCompiler  COMMA_SOURCE_FILE ("lexique-component.galgas", 910)) ;
+    enumerator_33906.gotoNextObject () ;
   }
   {
   const GALGAS_lexiqueComponentAST temp_3 = this ;
-  routine_buildLexicalAttributeMap_3F__3F__26_ (var_lexicalTypeMap_32940, temp_3.readProperty_mLexicalAttributeListAST (), var_lexiqueAnalysisContext_33417.mProperty_mLexicalAttributeMap, inCompiler  COMMA_SOURCE_FILE ("lexique-component.galgas", 913)) ;
+  routine_buildLexicalAttributeMap_3F__3F__26_ (var_lexicalTypeMap_32994, temp_3.readProperty_mLexicalAttributeListAST (), var_lexiqueAnalysisContext_33471.mProperty_mLexicalAttributeMap, inCompiler  COMMA_SOURCE_FILE ("lexique-component.galgas", 913)) ;
   }
   const GALGAS_lexiqueComponentAST temp_4 = this ;
-  cEnumerator_terminalDeclarationListAST enumerator_34342 (temp_4.readProperty_mTerminalDeclarationListAST (), kENUMERATION_UP) ;
-  while (enumerator_34342.hasCurrentObject ()) {
-    GALGAS_uint var_terminalStyleIndex_34416 = GALGAS_uint (uint32_t (0U)) ;
+  cEnumerator_terminalDeclarationListAST enumerator_34396 (temp_4.readProperty_mTerminalDeclarationListAST (), kENUMERATION_UP) ;
+  while (enumerator_34396.hasCurrentObject ()) {
+    GALGAS_uint var_terminalStyleIndex_34470 = GALGAS_uint (uint32_t (0U)) ;
     enumGalgasBool test_5 = kBoolTrue ;
     if (kBoolTrue == test_5) {
-      test_5 = GALGAS_bool (kIsStrictSup, enumerator_34342.current_mStyle (HERE).readProperty_string ().getter_count (SOURCE_FILE ("lexique-component.galgas", 921)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
+      test_5 = GALGAS_bool (kIsStrictSup, enumerator_34396.current_mStyle (HERE).readProperty_string ().getter_count (SOURCE_FILE ("lexique-component.galgas", 921)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
       if (kBoolTrue == test_5) {
-        GALGAS_lstring joker_34535 ; // Joker input parameter
-        var_lexiqueAnalysisContext_33417.readProperty_mStyleMap ().method_searchKey (enumerator_34342.current_mStyle (HERE), joker_34535, var_terminalStyleIndex_34416, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 922)) ;
+        GALGAS_lstring joker_34589 ; // Joker input parameter
+        var_lexiqueAnalysisContext_33471.readProperty_mStyleMap ().method_searchKey (enumerator_34396.current_mStyle (HERE), joker_34589, var_terminalStyleIndex_34470, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 922)) ;
       }
     }
-    GALGAS_lexicalSentValueList var_argumentTypeList_34575 = GALGAS_lexicalSentValueList::class_func_emptyList (SOURCE_FILE ("lexique-component.galgas", 924)) ;
-    cEnumerator_sentLexicalAttributeListAST enumerator_34644 (enumerator_34342.current_mSentAttributeList (HERE), kENUMERATION_UP) ;
-    while (enumerator_34644.hasCurrentObject ()) {
-      GALGAS_lexicalTypeEnum var_attributeLexicalType_34767 ;
-      var_lexiqueAnalysisContext_33417.readProperty_mLexicalAttributeMap ().method_searchKey (enumerator_34644.current_mAttributeName (HERE), var_attributeLexicalType_34767, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 926)) ;
-      var_argumentTypeList_34575.addAssign_operation (enumerator_34644.current_mFormalSelector (HERE), enumerator_34644.current_mAttributeName (HERE).readProperty_string (), var_attributeLexicalType_34767  COMMA_SOURCE_FILE ("lexique-component.galgas", 927)) ;
-      enumerator_34644.gotoNextObject () ;
+    GALGAS_lexicalSentValueList var_argumentTypeList_34629 = GALGAS_lexicalSentValueList::class_func_emptyList (SOURCE_FILE ("lexique-component.galgas", 924)) ;
+    cEnumerator_sentLexicalAttributeListAST enumerator_34698 (enumerator_34396.current_mSentAttributeList (HERE), kENUMERATION_UP) ;
+    while (enumerator_34698.hasCurrentObject ()) {
+      GALGAS_lexicalTypeEnum var_attributeLexicalType_34821 ;
+      var_lexiqueAnalysisContext_33471.readProperty_mLexicalAttributeMap ().method_searchKey (enumerator_34698.current_mAttributeName (HERE), var_attributeLexicalType_34821, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 926)) ;
+      var_argumentTypeList_34629.addAssign_operation (enumerator_34698.current_mFormalSelector (HERE), enumerator_34698.current_mAttributeName (HERE).readProperty_string (), var_attributeLexicalType_34821  COMMA_SOURCE_FILE ("lexique-component.galgas", 927)) ;
+      enumerator_34698.gotoNextObject () ;
     }
     {
-    var_lexiqueAnalysisContext_33417.mProperty_mTerminalMap.setter_insertKey (enumerator_34342.current_mName (HERE), var_argumentTypeList_34575, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 929)) ;
+    var_lexiqueAnalysisContext_33471.mProperty_mTerminalMap.setter_insertKey (enumerator_34396.current_mName (HERE), var_argumentTypeList_34629, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 929)) ;
     }
-    var_lexiqueAnalysisContext_33417.mProperty_mTerminalList.addAssign_operation (enumerator_34342.current_mName (HERE), var_argumentTypeList_34575, enumerator_34342.current_mSyntaxErrorMessage (HERE).readProperty_string (), enumerator_34342.current_isEndOfTemplateMark (HERE), enumerator_34342.current_nonAtomicSelection (HERE).operator_not (SOURCE_FILE ("lexique-component.galgas", 952)), var_terminalStyleIndex_34416  COMMA_SOURCE_FILE ("lexique-component.galgas", 947)) ;
-    enumerator_34342.gotoNextObject () ;
+    var_lexiqueAnalysisContext_33471.mProperty_mTerminalList.addAssign_operation (enumerator_34396.current_mName (HERE), var_argumentTypeList_34629, enumerator_34396.current_mSyntaxErrorMessage (HERE).readProperty_string (), enumerator_34396.current_isEndOfTemplateMark (HERE), enumerator_34396.current_nonAtomicSelection (HERE).operator_not (SOURCE_FILE ("lexique-component.galgas", 952)), var_terminalStyleIndex_34470  COMMA_SOURCE_FILE ("lexique-component.galgas", 947)) ;
+    enumerator_34396.gotoNextObject () ;
   }
   const GALGAS_lexiqueComponentAST temp_6 = this ;
-  cEnumerator_lexicalListDeclarationListAST enumerator_35929 (temp_6.readProperty_mLexicalListDeclarationListAST (), kENUMERATION_UP) ;
-  while (enumerator_35929.hasCurrentObject ()) {
-    GALGAS_uint var_terminalStyleIndex_35997 = GALGAS_uint (uint32_t (0U)) ;
+  cEnumerator_lexicalListDeclarationListAST enumerator_35983 (temp_6.readProperty_mLexicalListDeclarationListAST (), kENUMERATION_UP) ;
+  while (enumerator_35983.hasCurrentObject ()) {
+    GALGAS_uint var_terminalStyleIndex_36051 = GALGAS_uint (uint32_t (0U)) ;
     enumGalgasBool test_7 = kBoolTrue ;
     if (kBoolTrue == test_7) {
-      test_7 = GALGAS_bool (kIsStrictSup, enumerator_35929.current_mStyle (HERE).readProperty_string ().getter_count (SOURCE_FILE ("lexique-component.galgas", 957)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
+      test_7 = GALGAS_bool (kIsStrictSup, enumerator_35983.current_mStyle (HERE).readProperty_string ().getter_count (SOURCE_FILE ("lexique-component.galgas", 957)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
       if (kBoolTrue == test_7) {
-        GALGAS_lstring joker_36116 ; // Joker input parameter
-        var_lexiqueAnalysisContext_33417.readProperty_mStyleMap ().method_searchKey (enumerator_35929.current_mStyle (HERE), joker_36116, var_terminalStyleIndex_35997, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 958)) ;
+        GALGAS_lstring joker_36170 ; // Joker input parameter
+        var_lexiqueAnalysisContext_33471.readProperty_mStyleMap ().method_searchKey (enumerator_35983.current_mStyle (HERE), joker_36170, var_terminalStyleIndex_36051, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 958)) ;
       }
     }
-    GALGAS_lexicalSentValueList var_argumentTypeList_36156 = GALGAS_lexicalSentValueList::class_func_emptyList (SOURCE_FILE ("lexique-component.galgas", 960)) ;
-    cEnumerator_sentLexicalAttributeListAST enumerator_36225 (enumerator_35929.current_mSentAttributeList (HERE), kENUMERATION_UP) ;
-    while (enumerator_36225.hasCurrentObject ()) {
-      GALGAS_lexicalTypeEnum var_attributeLexicalType_36348 ;
-      var_lexiqueAnalysisContext_33417.readProperty_mLexicalAttributeMap ().method_searchKey (enumerator_36225.current_mAttributeName (HERE), var_attributeLexicalType_36348, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 962)) ;
-      var_argumentTypeList_36156.addAssign_operation (enumerator_36225.current_mFormalSelector (HERE), enumerator_36225.current_mAttributeName (HERE).readProperty_string (), var_attributeLexicalType_36348  COMMA_SOURCE_FILE ("lexique-component.galgas", 963)) ;
-      enumerator_36225.gotoNextObject () ;
+    GALGAS_lexicalSentValueList var_argumentTypeList_36210 = GALGAS_lexicalSentValueList::class_func_emptyList (SOURCE_FILE ("lexique-component.galgas", 960)) ;
+    cEnumerator_sentLexicalAttributeListAST enumerator_36279 (enumerator_35983.current_mSentAttributeList (HERE), kENUMERATION_UP) ;
+    while (enumerator_36279.hasCurrentObject ()) {
+      GALGAS_lexicalTypeEnum var_attributeLexicalType_36402 ;
+      var_lexiqueAnalysisContext_33471.readProperty_mLexicalAttributeMap ().method_searchKey (enumerator_36279.current_mAttributeName (HERE), var_attributeLexicalType_36402, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 962)) ;
+      var_argumentTypeList_36210.addAssign_operation (enumerator_36279.current_mFormalSelector (HERE), enumerator_36279.current_mAttributeName (HERE).readProperty_string (), var_attributeLexicalType_36402  COMMA_SOURCE_FILE ("lexique-component.galgas", 963)) ;
+      enumerator_36279.gotoNextObject () ;
     }
-    GALGAS_lexicalExplicitTokenListMap var_lexicalTokenListMap_36503 = GALGAS_lexicalExplicitTokenListMap::class_func_emptyMap (SOURCE_FILE ("lexique-component.galgas", 965)) ;
-    GALGAS_tokenSortedlist var_tokenSortedlist_36536 = GALGAS_tokenSortedlist::class_func_emptySortedList (SOURCE_FILE ("lexique-component.galgas", 966)) ;
-    cEnumerator_lexicalListEntryListAST enumerator_36635 (enumerator_35929.current_mEntryList (HERE), kENUMERATION_UP) ;
-    while (enumerator_36635.hasCurrentObject ()) {
-      GALGAS_string var_syntaxErrorMessage_36681 = enumerator_35929.current_mSyntaxErrorMessage (HERE).readProperty_string ().getter_stringByReplacingStringByString (GALGAS_string ("%K"), enumerator_36635.current_mTerminalSpelling (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 968)) ;
-      var_lexiqueAnalysisContext_33417.mProperty_mTerminalList.addAssign_operation (enumerator_36635.current_mTerminalSpelling (HERE), var_argumentTypeList_36156, var_syntaxErrorMessage_36681, enumerator_36635.current_isEndOfTemplateMark (HERE), enumerator_36635.current_nonAtomicSelection (HERE).operator_not (SOURCE_FILE ("lexique-component.galgas", 991)), var_terminalStyleIndex_35997  COMMA_SOURCE_FILE ("lexique-component.galgas", 986)) ;
+    GALGAS_lexicalExplicitTokenListMap var_lexicalTokenListMap_36557 = GALGAS_lexicalExplicitTokenListMap::class_func_emptyMap (SOURCE_FILE ("lexique-component.galgas", 965)) ;
+    GALGAS_tokenSortedlist var_tokenSortedlist_36590 = GALGAS_tokenSortedlist::class_func_emptySortedList (SOURCE_FILE ("lexique-component.galgas", 966)) ;
+    cEnumerator_lexicalListEntryListAST enumerator_36689 (enumerator_35983.current_mEntryList (HERE), kENUMERATION_UP) ;
+    while (enumerator_36689.hasCurrentObject ()) {
+      GALGAS_string var_syntaxErrorMessage_36735 = enumerator_35983.current_mSyntaxErrorMessage (HERE).readProperty_string ().getter_stringByReplacingStringByString (GALGAS_string ("%K"), enumerator_36689.current_mTerminalSpelling (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 968)) ;
+      var_lexiqueAnalysisContext_33471.mProperty_mTerminalList.addAssign_operation (enumerator_36689.current_mTerminalSpelling (HERE), var_argumentTypeList_36210, var_syntaxErrorMessage_36735, enumerator_36689.current_isEndOfTemplateMark (HERE), enumerator_36689.current_nonAtomicSelection (HERE).operator_not (SOURCE_FILE ("lexique-component.galgas", 991)), var_terminalStyleIndex_36051  COMMA_SOURCE_FILE ("lexique-component.galgas", 986)) ;
       {
-      var_lexiqueAnalysisContext_33417.mProperty_mTerminalMap.setter_insertKey (enumerator_36635.current_mTerminalSpelling (HERE), var_argumentTypeList_36156, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 993)) ;
+      var_lexiqueAnalysisContext_33471.mProperty_mTerminalMap.setter_insertKey (enumerator_36689.current_mTerminalSpelling (HERE), var_argumentTypeList_36210, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 993)) ;
       }
       {
-      var_lexicalTokenListMap_36503.setter_insertKey (enumerator_36635.current_mEntrySpelling (HERE), enumerator_36635.current_mTerminalSpelling (HERE), enumerator_36635.current_nonAtomicSelection (HERE), enumerator_36635.current_isEndOfTemplateMark (HERE), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 994)) ;
+      var_lexicalTokenListMap_36557.setter_insertKey (enumerator_36689.current_mEntrySpelling (HERE), enumerator_36689.current_mTerminalSpelling (HERE), enumerator_36689.current_nonAtomicSelection (HERE), enumerator_36689.current_isEndOfTemplateMark (HERE), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 994)) ;
       }
-      var_tokenSortedlist_36536.addAssign_operation (enumerator_36635.current_mEntrySpelling (HERE).readProperty_string ().getter_count (SOURCE_FILE ("lexique-component.galgas", 1000)), enumerator_36635.current_mEntrySpelling (HERE).readProperty_string (), enumerator_36635.current_mTerminalSpelling (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("lexique-component.galgas", 1000)) ;
-      var_lexiqueAnalysisContext_33417.mProperty_mUnicodeStringToGenerate.addAssign_operation (enumerator_36635.current_mEntrySpelling (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("lexique-component.galgas", 1001)) ;
-      enumerator_36635.gotoNextObject () ;
+      var_tokenSortedlist_36590.addAssign_operation (enumerator_36689.current_mEntrySpelling (HERE).readProperty_string ().getter_count (SOURCE_FILE ("lexique-component.galgas", 1000)), enumerator_36689.current_mEntrySpelling (HERE).readProperty_string (), enumerator_36689.current_mTerminalSpelling (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("lexique-component.galgas", 1000)) ;
+      var_lexiqueAnalysisContext_33471.mProperty_mUnicodeStringToGenerate.addAssign_operation (enumerator_36689.current_mEntrySpelling (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("lexique-component.galgas", 1001)) ;
+      enumerator_36689.gotoNextObject () ;
     }
     {
-    var_lexiqueAnalysisContext_33417.mProperty_mLexicalTokenListMap.setter_insertKey (enumerator_35929.current_mName (HERE), var_lexicalTokenListMap_36503, var_tokenSortedlist_36536, GALGAS_bool (false), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 1003)) ;
+    var_lexiqueAnalysisContext_33471.mProperty_mLexicalTokenListMap.setter_insertKey (enumerator_35983.current_mName (HERE), var_lexicalTokenListMap_36557, var_tokenSortedlist_36590, GALGAS_bool (false), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 1003)) ;
     }
-    enumerator_35929.gotoNextObject () ;
+    enumerator_35983.gotoNextObject () ;
   }
   const GALGAS_lexiqueComponentAST temp_8 = this ;
-  cEnumerator_lexicalMessageDeclarationListAST enumerator_38424 (temp_8.readProperty_mLexicalMessageDeclarationListAST (), kENUMERATION_UP) ;
-  while (enumerator_38424.hasCurrentObject ()) {
+  cEnumerator_lexicalMessageDeclarationListAST enumerator_38478 (temp_8.readProperty_mLexicalMessageDeclarationListAST (), kENUMERATION_UP) ;
+  while (enumerator_38478.hasCurrentObject ()) {
     {
-    var_lexiqueAnalysisContext_33417.mProperty_mLexicalMessageMap.setter_insertKey (enumerator_38424.current_mMessageName (HERE), enumerator_38424.current_mMessageValue (HERE), GALGAS_bool (false), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 1007)) ;
+    var_lexiqueAnalysisContext_33471.mProperty_mLexicalMessageMap.setter_insertKey (enumerator_38478.current_mMessageName (HERE), enumerator_38478.current_mMessageValue (HERE), GALGAS_bool (false), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 1007)) ;
     }
-    enumerator_38424.gotoNextObject () ;
+    enumerator_38478.gotoNextObject () ;
   }
   const GALGAS_lexiqueComponentAST temp_9 = this ;
-  cEnumerator_lexicalRuleListAST enumerator_38646 (temp_9.readProperty_mLexicalRuleListAST (), kENUMERATION_UP) ;
-  while (enumerator_38646.hasCurrentObject ()) {
-    callExtensionMethod_checkLexicalRule ((cPtr_abstractLexicalRuleAST *) enumerator_38646.current_mLexicalRule (HERE).ptr (), var_lexiqueAnalysisContext_33417, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 1011)) ;
-    enumerator_38646.gotoNextObject () ;
+  cEnumerator_lexicalRuleListAST enumerator_38700 (temp_9.readProperty_mLexicalRuleListAST (), kENUMERATION_UP) ;
+  while (enumerator_38700.hasCurrentObject ()) {
+    callExtensionMethod_checkLexicalRule ((cPtr_abstractLexicalRuleAST *) enumerator_38700.current_mLexicalRule (HERE).ptr (), var_lexiqueAnalysisContext_33471, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 1011)) ;
+    enumerator_38700.gotoNextObject () ;
   }
-  cEnumerator_lexicalMessageMap enumerator_38838 (var_lexiqueAnalysisContext_33417.readProperty_mLexicalMessageMap (), kENUMERATION_UP) ;
-  while (enumerator_38838.hasCurrentObject ()) {
+  cEnumerator_lexicalMessageMap enumerator_38892 (var_lexiqueAnalysisContext_33471.readProperty_mLexicalMessageMap (), kENUMERATION_UP) ;
+  while (enumerator_38892.hasCurrentObject ()) {
     enumGalgasBool test_10 = kBoolTrue ;
     if (kBoolTrue == test_10) {
-      test_10 = enumerator_38838.current_mMessageIsUsed (HERE).operator_not (SOURCE_FILE ("lexique-component.galgas", 1015)).boolEnum () ;
+      test_10 = enumerator_38892.current_mMessageIsUsed (HERE).operator_not (SOURCE_FILE ("lexique-component.galgas", 1015)).boolEnum () ;
       if (kBoolTrue == test_10) {
         TC_Array <C_FixItDescription> fixItArray11 ;
-        inCompiler->emitSemanticWarning (enumerator_38838.current_lkey (HERE).readProperty_location (), GALGAS_string ("unused message"), fixItArray11  COMMA_SOURCE_FILE ("lexique-component.galgas", 1016)) ;
+        inCompiler->emitSemanticWarning (enumerator_38892.current_lkey (HERE).readProperty_location (), GALGAS_string ("unused message"), fixItArray11  COMMA_SOURCE_FILE ("lexique-component.galgas", 1016)) ;
       }
     }
-    enumerator_38838.gotoNextObject () ;
+    enumerator_38892.gotoNextObject () ;
   }
   const GALGAS_lexiqueComponentAST temp_12 = this ;
-  cEnumerator_templateDelimitorListAST enumerator_39092 (temp_12.readProperty_mTemplateDelimitorListAST (), kENUMERATION_UP) ;
-  while (enumerator_39092.hasCurrentObject ()) {
-    var_lexiqueAnalysisContext_33417.mProperty_mUnicodeStringToGenerate.addAssign_operation (enumerator_39092.current_mStartString (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("lexique-component.galgas", 1021)) ;
-    var_lexiqueAnalysisContext_33417.mProperty_mUnicodeStringToGenerate.addAssign_operation (enumerator_39092.current_mEndString (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("lexique-component.galgas", 1022)) ;
-    var_lexiqueAnalysisContext_33417.mProperty_mTemplateDelimitorList.addAssign_operation (enumerator_39092.current_mStartString (HERE), enumerator_39092.current_mEndString (HERE), enumerator_39092.current_mPreserved (HERE)  COMMA_SOURCE_FILE ("lexique-component.galgas", 1023)) ;
-    enumerator_39092.gotoNextObject () ;
+  cEnumerator_templateDelimitorListAST enumerator_39146 (temp_12.readProperty_mTemplateDelimitorListAST (), kENUMERATION_UP) ;
+  while (enumerator_39146.hasCurrentObject ()) {
+    var_lexiqueAnalysisContext_33471.mProperty_mUnicodeStringToGenerate.addAssign_operation (enumerator_39146.current_mStartString (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("lexique-component.galgas", 1021)) ;
+    var_lexiqueAnalysisContext_33471.mProperty_mUnicodeStringToGenerate.addAssign_operation (enumerator_39146.current_mEndString (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("lexique-component.galgas", 1022)) ;
+    var_lexiqueAnalysisContext_33471.mProperty_mTemplateDelimitorList.addAssign_operation (enumerator_39146.current_mStartString (HERE), enumerator_39146.current_mEndString (HERE), enumerator_39146.current_mPreserved (HERE)  COMMA_SOURCE_FILE ("lexique-component.galgas", 1023)) ;
+    enumerator_39146.gotoNextObject () ;
   }
-  GALGAS_stringset var_indexNameSet_39415 = GALGAS_stringset::class_func_emptySet (SOURCE_FILE ("lexique-component.galgas", 1025)) ;
+  GALGAS_stringset var_indexNameSet_39469 = GALGAS_stringset::class_func_emptySet (SOURCE_FILE ("lexique-component.galgas", 1025)) ;
   const GALGAS_lexiqueComponentAST temp_13 = this ;
-  cEnumerator_indexingListAST enumerator_39451 (temp_13.readProperty_mIndexingListAST (), kENUMERATION_UP) ;
-  while (enumerator_39451.hasCurrentObject ()) {
+  cEnumerator_indexingListAST enumerator_39505 (temp_13.readProperty_mIndexingListAST (), kENUMERATION_UP) ;
+  while (enumerator_39505.hasCurrentObject ()) {
     enumGalgasBool test_14 = kBoolTrue ;
     if (kBoolTrue == test_14) {
-      test_14 = var_indexNameSet_39415.getter_hasKey (enumerator_39451.current_mIndexName (HERE).readProperty_string () COMMA_SOURCE_FILE ("lexique-component.galgas", 1027)).boolEnum () ;
+      test_14 = var_indexNameSet_39469.getter_hasKey (enumerator_39505.current_mIndexName (HERE).readProperty_string () COMMA_SOURCE_FILE ("lexique-component.galgas", 1027)).boolEnum () ;
       if (kBoolTrue == test_14) {
         TC_Array <C_FixItDescription> fixItArray15 ;
-        inCompiler->emitSemanticError (enumerator_39451.current_mIndexName (HERE).readProperty_location (), GALGAS_string ("the '").add_operation (enumerator_39451.current_mIndexName (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 1028)).add_operation (GALGAS_string ("' index is already declared"), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 1028)), fixItArray15  COMMA_SOURCE_FILE ("lexique-component.galgas", 1028)) ;
+        inCompiler->emitSemanticError (enumerator_39505.current_mIndexName (HERE).readProperty_location (), GALGAS_string ("the '").add_operation (enumerator_39505.current_mIndexName (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 1028)).add_operation (GALGAS_string ("' index is already declared"), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 1028)), fixItArray15  COMMA_SOURCE_FILE ("lexique-component.galgas", 1028)) ;
       }
     }
-    var_indexNameSet_39415.addAssign_operation (enumerator_39451.current_mIndexName (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("lexique-component.galgas", 1030)) ;
-    enumerator_39451.gotoNextObject () ;
+    var_indexNameSet_39469.addAssign_operation (enumerator_39505.current_mIndexName (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("lexique-component.galgas", 1030)) ;
+    enumerator_39505.gotoNextObject () ;
   }
   const GALGAS_lexiqueComponentAST temp_16 = this ;
-  cEnumerator_templateReplacementListAST enumerator_39768 (temp_16.readProperty_mTemplateReplacementListAST (), kENUMERATION_UP) ;
-  while (enumerator_39768.hasCurrentObject ()) {
-    var_lexiqueAnalysisContext_33417.mProperty_mUnicodeStringToGenerate.addAssign_operation (enumerator_39768.current_mMatchString (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("lexique-component.galgas", 1034)) ;
-    var_lexiqueAnalysisContext_33417.mProperty_mUnicodeStringToGenerate.addAssign_operation (enumerator_39768.current_mReplacementString (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("lexique-component.galgas", 1035)) ;
-    enumerator_39768.gotoNextObject () ;
+  cEnumerator_templateReplacementListAST enumerator_39822 (temp_16.readProperty_mTemplateReplacementListAST (), kENUMERATION_UP) ;
+  while (enumerator_39822.hasCurrentObject ()) {
+    var_lexiqueAnalysisContext_33471.mProperty_mUnicodeStringToGenerate.addAssign_operation (enumerator_39822.current_mMatchString (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("lexique-component.galgas", 1034)) ;
+    var_lexiqueAnalysisContext_33471.mProperty_mUnicodeStringToGenerate.addAssign_operation (enumerator_39822.current_mReplacementString (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("lexique-component.galgas", 1035)) ;
+    enumerator_39822.gotoNextObject () ;
   }
   enumGalgasBool test_17 = kBoolTrue ;
   if (kBoolTrue == test_17) {
@@ -12478,7 +12478,7 @@ void cPtr_lexiqueComponentAST::method_semanticAnalysis (GALGAS_lstringlist & /* 
       const GALGAS_lexiqueComponentAST temp_19 = this ;
       const GALGAS_lexiqueComponentAST temp_20 = this ;
       const GALGAS_lexiqueComponentAST temp_21 = this ;
-      GALGAS_string var_headerContents_40136 = GALGAS_string (filewrapperTemplate_lexiqueGenerationTemplates_headerZone_32_ (inCompiler, temp_18.readProperty_mLexiqueComponentName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique-component.galgas", 1042)), temp_19.readProperty_mLexicalListDeclarationListAST (), var_lexiqueAnalysisContext_33417, temp_20.readProperty_mTemplateDelimitorListAST (), temp_21.readProperty_mIndexingListAST () COMMA_SOURCE_FILE ("lexique-component.galgas", 1041))) ;
+      GALGAS_string var_headerContents_40190 = GALGAS_string (filewrapperTemplate_lexiqueGenerationTemplates_headerZone_32_ (inCompiler, temp_18.readProperty_mLexiqueComponentName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique-component.galgas", 1042)), temp_19.readProperty_mLexicalListDeclarationListAST (), var_lexiqueAnalysisContext_33471, temp_20.readProperty_mTemplateDelimitorListAST (), temp_21.readProperty_mIndexingListAST () COMMA_SOURCE_FILE ("lexique-component.galgas", 1041))) ;
       const GALGAS_lexiqueComponentAST temp_22 = this ;
       const GALGAS_lexiqueComponentAST temp_23 = this ;
       const GALGAS_lexiqueComponentAST temp_24 = this ;
@@ -12486,9 +12486,9 @@ void cPtr_lexiqueComponentAST::method_semanticAnalysis (GALGAS_lstringlist & /* 
       const GALGAS_lexiqueComponentAST temp_26 = this ;
       const GALGAS_lexiqueComponentAST temp_27 = this ;
       const GALGAS_lexiqueComponentAST temp_28 = this ;
-      GALGAS_string var_cppContents_40438 = GALGAS_string (filewrapperTemplate_lexiqueGenerationTemplates_implementationZone_32_Galgas_33_ (inCompiler, temp_22.readProperty_mLexiqueComponentName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique-component.galgas", 1050)), extensionGetter_useLoopLocalVar (temp_23.readProperty_mLexicalRuleListAST (), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 1051)), var_lexiqueAnalysisContext_33417.readProperty_mLexicalAttributeMap (), var_lexiqueAnalysisContext_33417.readProperty_mLexicalMessageMap (), var_lexiqueAnalysisContext_33417.readProperty_mTerminalList (), var_lexiqueAnalysisContext_33417.readProperty_mLexicalTokenListMap (), var_lexiqueAnalysisContext_33417.readProperty_mUnicodeStringToGenerate (), temp_24.readProperty_mLexicalRuleListAST (), var_lexiqueAnalysisContext_33417, temp_25.readProperty_mTemplateDelimitorListAST (), temp_26.readProperty_mLexiqueComponentName ().readProperty_string (), temp_27.readProperty_mTemplateReplacementListAST (), temp_28.readProperty_mLexicalStyleListAST () COMMA_SOURCE_FILE ("lexique-component.galgas", 1049))) ;
+      GALGAS_string var_cppContents_40492 = GALGAS_string (filewrapperTemplate_lexiqueGenerationTemplates_implementationZone_32_Galgas_33_ (inCompiler, temp_22.readProperty_mLexiqueComponentName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique-component.galgas", 1050)), extensionGetter_useLoopLocalVar (temp_23.readProperty_mLexicalRuleListAST (), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 1051)), var_lexiqueAnalysisContext_33471.readProperty_mLexicalAttributeMap (), var_lexiqueAnalysisContext_33471.readProperty_mLexicalMessageMap (), var_lexiqueAnalysisContext_33471.readProperty_mTerminalList (), var_lexiqueAnalysisContext_33471.readProperty_mLexicalTokenListMap (), var_lexiqueAnalysisContext_33471.readProperty_mUnicodeStringToGenerate (), temp_24.readProperty_mLexicalRuleListAST (), var_lexiqueAnalysisContext_33471, temp_25.readProperty_mTemplateDelimitorListAST (), temp_26.readProperty_mLexiqueComponentName ().readProperty_string (), temp_27.readProperty_mTemplateReplacementListAST (), temp_28.readProperty_mLexicalStyleListAST () COMMA_SOURCE_FILE ("lexique-component.galgas", 1049))) ;
       const GALGAS_lexiqueComponentAST temp_29 = this ;
-      GALGAS_string var_objCocoaHeader_41136 = GALGAS_string (filewrapperTemplate_lexiqueGenerationTemplates_cocoaHeaderZone_32_ (inCompiler, temp_29.readProperty_mLexiqueComponentName ().readProperty_string (), var_lexiqueAnalysisContext_33417 COMMA_SOURCE_FILE ("lexique-component.galgas", 1065))) ;
+      GALGAS_string var_objCocoaHeader_41190 = GALGAS_string (filewrapperTemplate_lexiqueGenerationTemplates_cocoaHeaderZone_32_ (inCompiler, temp_29.readProperty_mLexiqueComponentName ().readProperty_string (), var_lexiqueAnalysisContext_33471 COMMA_SOURCE_FILE ("lexique-component.galgas", 1065))) ;
       const GALGAS_lexiqueComponentAST temp_30 = this ;
       const GALGAS_lexiqueComponentAST temp_31 = this ;
       const GALGAS_lexiqueComponentAST temp_32 = this ;
@@ -12496,7 +12496,7 @@ void cPtr_lexiqueComponentAST::method_semanticAnalysis (GALGAS_lstringlist & /* 
       const GALGAS_lexiqueComponentAST temp_34 = this ;
       const GALGAS_lexiqueComponentAST temp_35 = this ;
       const GALGAS_lexiqueComponentAST temp_36 = this ;
-      GALGAS_string var_objCocoaImplementation_41328 = GALGAS_string (filewrapperTemplate_lexiqueGenerationTemplates_cocoaImplementationZone_32_ (inCompiler, GALGAS_string ("lexique-").add_operation (temp_30.readProperty_mLexiqueComponentName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("lexique-component.galgas", 1071)), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 1071)).add_operation (GALGAS_string ("-cocoa"), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 1071)), temp_31.readProperty_mLexiqueComponentName ().readProperty_string (), var_lexiqueAnalysisContext_33417.readProperty_mLexicalAttributeMap (), var_lexiqueAnalysisContext_33417.readProperty_mLexicalMessageMap (), var_lexiqueAnalysisContext_33417.readProperty_mTerminalList (), var_lexiqueAnalysisContext_33417.readProperty_mUnicodeStringToGenerate (), temp_32.readProperty_mLexicalRuleListAST (), var_lexiqueAnalysisContext_33417, temp_33.readProperty_mTemplateReplacementListAST (), temp_34.readProperty_mIndexingListAST (), temp_35.readProperty_mLexicalStyleListAST (), temp_36.readProperty_mTemplateDelimitorListAST () COMMA_SOURCE_FILE ("lexique-component.galgas", 1070))) ;
+      GALGAS_string var_objCocoaImplementation_41382 = GALGAS_string (filewrapperTemplate_lexiqueGenerationTemplates_cocoaImplementationZone_32_ (inCompiler, GALGAS_string ("lexique-").add_operation (temp_30.readProperty_mLexiqueComponentName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("lexique-component.galgas", 1071)), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 1071)).add_operation (GALGAS_string ("-cocoa"), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 1071)), temp_31.readProperty_mLexiqueComponentName ().readProperty_string (), var_lexiqueAnalysisContext_33471.readProperty_mLexicalAttributeMap (), var_lexiqueAnalysisContext_33471.readProperty_mLexicalMessageMap (), var_lexiqueAnalysisContext_33471.readProperty_mTerminalList (), var_lexiqueAnalysisContext_33471.readProperty_mUnicodeStringToGenerate (), temp_32.readProperty_mLexicalRuleListAST (), var_lexiqueAnalysisContext_33471, temp_33.readProperty_mTemplateReplacementListAST (), temp_34.readProperty_mIndexingListAST (), temp_35.readProperty_mLexicalStyleListAST (), temp_36.readProperty_mTemplateDelimitorListAST () COMMA_SOURCE_FILE ("lexique-component.galgas", 1070))) ;
       const GALGAS_lexiqueComponentAST temp_37 = this ;
       const GALGAS_lexiqueComponentAST temp_38 = this ;
       const GALGAS_lexiqueComponentAST temp_39 = this ;
@@ -12504,10 +12504,10 @@ void cPtr_lexiqueComponentAST::method_semanticAnalysis (GALGAS_lstringlist & /* 
       const GALGAS_lexiqueComponentAST temp_41 = this ;
       const GALGAS_lexiqueComponentAST temp_42 = this ;
       const GALGAS_lexiqueComponentAST temp_43 = this ;
-      GALGAS_string var_swiftCocoaImplementation_41998 = GALGAS_string (filewrapperTemplate_lexiqueGenerationTemplates_swiftCocoaImplementationZone_32_ (inCompiler, GALGAS_string ("lexique-").add_operation (temp_37.readProperty_mLexiqueComponentName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("lexique-component.galgas", 1086)), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 1086)).add_operation (GALGAS_string ("-cocoa"), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 1086)), temp_38.readProperty_mLexiqueComponentName ().readProperty_string (), var_lexiqueAnalysisContext_33417.readProperty_mLexicalAttributeMap (), var_lexiqueAnalysisContext_33417.readProperty_mLexicalMessageMap (), var_lexiqueAnalysisContext_33417.readProperty_mTerminalList (), var_lexiqueAnalysisContext_33417.readProperty_mUnicodeStringToGenerate (), temp_39.readProperty_mLexicalRuleListAST (), var_lexiqueAnalysisContext_33417, temp_40.readProperty_mTemplateReplacementListAST (), temp_41.readProperty_mIndexingListAST (), temp_42.readProperty_mLexicalStyleListAST (), temp_43.readProperty_mTemplateDelimitorListAST () COMMA_SOURCE_FILE ("lexique-component.galgas", 1085))) ;
+      GALGAS_string var_swiftCocoaImplementation_42052 = GALGAS_string (filewrapperTemplate_lexiqueGenerationTemplates_swiftCocoaImplementationZone_32_ (inCompiler, GALGAS_string ("lexique-").add_operation (temp_37.readProperty_mLexiqueComponentName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("lexique-component.galgas", 1086)), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 1086)).add_operation (GALGAS_string ("-cocoa"), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 1086)), temp_38.readProperty_mLexiqueComponentName ().readProperty_string (), var_lexiqueAnalysisContext_33471.readProperty_mLexicalAttributeMap (), var_lexiqueAnalysisContext_33471.readProperty_mLexicalMessageMap (), var_lexiqueAnalysisContext_33471.readProperty_mTerminalList (), var_lexiqueAnalysisContext_33471.readProperty_mUnicodeStringToGenerate (), temp_39.readProperty_mLexicalRuleListAST (), var_lexiqueAnalysisContext_33471, temp_40.readProperty_mTemplateReplacementListAST (), temp_41.readProperty_mIndexingListAST (), temp_42.readProperty_mLexicalStyleListAST (), temp_43.readProperty_mTemplateDelimitorListAST () COMMA_SOURCE_FILE ("lexique-component.galgas", 1085))) ;
       const GALGAS_lexiqueComponentAST temp_44 = this ;
       const GALGAS_lexiqueComponentAST temp_45 = this ;
-      ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GALGAS_string::makeEmptyString (), GALGAS_lexiqueDeclarationForGeneration::class_func_new (GALGAS_bool (true), GALGAS_string ("lexique-").add_operation (temp_44.readProperty_mLexiqueComponentName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("lexique-component.galgas", 1104)), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 1104)), temp_45.readProperty_mLexiqueComponentName ().readProperty_string (), GALGAS_string::makeEmptyString (), var_headerContents_40136, var_cppContents_40438, var_objCocoaHeader_41136, var_objCocoaImplementation_41328, var_swiftCocoaImplementation_41998  COMMA_SOURCE_FILE ("lexique-component.galgas", 1102))  COMMA_SOURCE_FILE ("lexique-component.galgas", 1100)) ;
+      ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GALGAS_string::makeEmptyString (), GALGAS_lexiqueDeclarationForGeneration::class_func_new (GALGAS_bool (true), GALGAS_string ("lexique-").add_operation (temp_44.readProperty_mLexiqueComponentName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("lexique-component.galgas", 1104)), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 1104)), temp_45.readProperty_mLexiqueComponentName ().readProperty_string (), GALGAS_string::makeEmptyString (), var_headerContents_40190, var_cppContents_40492, var_objCocoaHeader_41190, var_objCocoaImplementation_41382, var_swiftCocoaImplementation_42052  COMMA_SOURCE_FILE ("lexique-component.galgas", 1102))  COMMA_SOURCE_FILE ("lexique-component.galgas", 1100)) ;
     }
   }
 }

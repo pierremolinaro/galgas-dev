@@ -114,7 +114,7 @@ syntax galgas3GrammarComponentSyntax (galgasScanner3) {
   rule <label_formal_parameter_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                      !@lstring outArgumentName
                                      ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
-    $?$ ?let selector
+    $?selector:$ ?let selector
     <type_definition_ggs3> !?ioDeclarations ?let @lstring mTypeName
     select
     or
@@ -134,7 +134,7 @@ syntax galgas3GrammarComponentSyntax (galgasScanner3) {
   rule <label_formal_parameter_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                      !@lstring outArgumentName
                                      ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
-    $?$ ?let selector
+    $?selector:$ ?let selector
     $let$
     <type_definition_ggs3> !?ioDeclarations ?let @lstring mTypeName
     select
@@ -155,7 +155,7 @@ syntax galgas3GrammarComponentSyntax (galgasScanner3) {
   rule <label_formal_parameter_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                      !@lstring outArgumentName
                                      ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
-    $?!$ ?let selector
+    $?!selector:$ ?let selector
     <type_definition_ggs3> !?ioDeclarations ?let @lstring mTypeName
     select
     or
@@ -175,7 +175,7 @@ syntax galgas3GrammarComponentSyntax (galgasScanner3) {
   rule <label_formal_parameter_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                      !@lstring outArgumentName
                                      ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
-    $!$ ?let selector
+    $!selector:$ ?let selector
     <type_definition_ggs3> !?ioDeclarations ?let @lstring mTypeName
     $identifier$ ?outArgumentName
     ioStartSymbolLabelFormalParameterList +=
@@ -293,7 +293,7 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
   rule <label_formal_parameter> ?!@galgasDeclarationAST ioDeclarations
                                 !@lstring outArgumentName
                                 ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
-    $?$ ?let selector
+    $?selector:$ ?let selector
     <type_definition> !?ioDeclarations ?let @lstring mTypeName
     select
     or
@@ -313,7 +313,7 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
   rule <label_formal_parameter> ?!@galgasDeclarationAST ioDeclarations
                                 !@lstring outArgumentName
                                 ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
-    $?$ ?let selector
+    $?selector:$ ?let selector
     $let$
     <type_definition> !?ioDeclarations ?let @lstring mTypeName
     select
@@ -334,7 +334,7 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
   rule <label_formal_parameter> ?!@galgasDeclarationAST ioDeclarations
                                 !@lstring outArgumentName
                                 ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
-    $?!$ ?let selector
+    $?!selector:$ ?let selector
     <type_definition> !?ioDeclarations ?let @lstring mTypeName
     select
     or
@@ -354,7 +354,28 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
   rule <label_formal_parameter> ?!@galgasDeclarationAST ioDeclarations
                                 !@lstring outArgumentName
                                 ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
-    $!$ ?let selector
+    $?!$
+    let selector = ["" here]
+    <type_definition> !?ioDeclarations ?let @lstring mTypeName
+    select
+    or
+     $unused$
+    end
+    $identifier$ ?outArgumentName
+    ioStartSymbolLabelFormalParameterList +=
+      !selector
+      !@formalArgumentPassingModeAST. argumentInOut
+      !mTypeName
+      !outArgumentName
+      !false
+  }
+
+  #·······························································································
+
+  rule <label_formal_parameter> ?!@galgasDeclarationAST ioDeclarations
+                                !@lstring outArgumentName
+                                ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
+    $!selector:$ ?let selector
     <type_definition> !?ioDeclarations ?let @lstring mTypeName
     $identifier$ ?outArgumentName
     ioStartSymbolLabelFormalParameterList +=

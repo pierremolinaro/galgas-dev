@@ -210,7 +210,7 @@ fileprivate let gPopUpData_0_galgasScanner_33_ : [[UInt16]] = [
   ],
   [0, // Leading character count to strip
     galgasScanner3_1__24_terminal_24_, 0,
-    galgasScanner3_1__21_, 65535
+    galgasScanner3_1__21_selector_3A_, 65535
   ],
   [0, // Leading character count to strip
     galgasScanner3_1__24_terminal_24_, 0,

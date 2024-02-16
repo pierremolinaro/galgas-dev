@@ -154,11 +154,11 @@ syntax extension galgas3InstructionsSyntax {
         var @optionalMethodActualArgumentList optionalMethodActualArgumentList = {}
         repeat
         while
-          $!$ ?let selector
+          $!selector:$ ?let selector
           <expression_ggs3> !?ioDeclarations ?let expression
           optionalMethodActualArgumentList += !selector !.actualOutput {!expression: expression !location: .here}
         while
-          $?$ ?let selector
+          $?selector:$ ?let selector
           select
             $let$
             let @lstring typeName
@@ -306,11 +306,11 @@ syntax extension galgas4InstructionsSyntax {
         var @optionalMethodActualArgumentList optionalMethodActualArgumentList = {}
         repeat
         while
-          $!$ ?let selector
+          $!selector:$ ?let selector
           <expression> !?ioDeclarations ?let expression
           optionalMethodActualArgumentList += !selector !.actualOutput {!expression: expression !location: .here}
         while
-          $?$ ?let selector
+          $?selector:$ ?let selector
           select
             $let$
             let @lstring typeName

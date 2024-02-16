@@ -251,7 +251,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
       var @lexicalFunctionCallActualArgumentListAST functionActualArgumentList = {}
       repeat
       while
-        $!$ ?let selector
+        $!selector:$ ?let selector
         if selector.string != "" then
           error selector : "the selector should be '!'" fixit { replace "!" }
         end
@@ -326,7 +326,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
     var @sentLexicalAttributeListAST sentAttributeList = {}
     repeat
     while
-      $!$ ?let selector
+      $!selector:$ ?let selector
       $identifier$ ?let sentAttribute
       sentAttributeList += !selector !sentAttribute
     end
@@ -393,7 +393,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
     var sentAttributeList = @sentLexicalAttributeListAST {}
     repeat
     while
-      $!$ ?let selector
+      $!selector:$ ?let selector
       $identifier$ ?let sentAttribute
       sentAttributeList += !selector !sentAttribute
     end
@@ -605,7 +605,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
       var @lexicalFunctionCallActualArgumentListAST functionActualArgumentList = {}
       repeat
       while
-        $!$ ?let selector
+        $!selector:$ ?let selector
         if selector.string != "" then
           error selector : "the selector should be '!'" fixit { replace "!" }
         end
@@ -680,7 +680,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     var @sentLexicalAttributeListAST sentAttributeList = {}
     repeat
     while
-      $!$ ?let selector
+      $!selector:$ ?let selector
       $identifier$ ?let sentAttribute
       sentAttributeList += !selector !sentAttribute
     end
@@ -747,7 +747,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     var sentAttributeList = @sentLexicalAttributeListAST {}
     repeat
     while
-      $!$ ?let selector
+      $!selector:$ ?let selector
       $identifier$ ?let sentAttribute
       sentAttributeList += !selector !sentAttribute
     end

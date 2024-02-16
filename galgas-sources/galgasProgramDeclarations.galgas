@@ -79,7 +79,7 @@ syntax galgas3ProgramDeclarations (galgasScanner3) {
       $identifier$ ?referenceGrammar
     end
   #--- Source file
-    $?$ ?let selector
+    $?selector:$ ?let selector
     if selector.string != "sourceFilePath" then
       error selector : "the selector should be '?sourceFilePath:'" fixit { replace "?sourceFilePath:" }
     end
@@ -175,7 +175,7 @@ syntax galgas4ProgramDeclarations (galgasScanner4) {
       $identifier$ ?referenceGrammar
     end
   #--- Source file
-    $?$ ?let selector
+    $?selector:$ ?let selector
     if selector.string != "sourceFilePath" then
       error selector : "the selector should be '?sourceFilePath:'" fixit { replace "?sourceFilePath:" }
     end

@@ -235,7 +235,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
 
   rule <syntax_directed_translation_result> ?!@galgasDeclarationAST ioDeclarations
                                             !@abstractGrammarInstructionSyntaxDirectedTranslationResult result {
-    $?$ ?let selector
+    $?selector:$ ?let selector
     if selector.string != "" then
       error selector : "the selector should be '?'" fixit { replace "?" }
     end
@@ -264,11 +264,11 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
     outActualInputParameterList = @actualInputParameterListAST {}
     repeat
     while
-      $?$ ?let selector
+      $?selector:$ ?let selector
       $*$
       outActualInputParameterList += !selector !@inputParameterAnonymousVariable.new
     while
-      $?$ ?let selector
+      $?selector:$ ?let selector
       $var$
       let @lstring actualParameterTypeName
       select
@@ -281,7 +281,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
         !selector
         !@inputParameterDeclaredVariable.new {!actualParameterTypeName !actualParameterName}
     while
-      $?$ ?let selector
+      $?selector:$ ?let selector
       $let$
       let @lstring actualParameterTypeName
       select
@@ -294,7 +294,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
         !selector
         !@inputParameterDeclaredConstant.new {!actualParameterTypeName !actualParameterName}
     while
-      $?$ ?let selector
+      $?selector:$ ?let selector
       $identifier$ ?let actualParameterName
       outActualInputParameterList += !selector !@inputParameterVariable.new {!actualParameterName}
     end
@@ -522,7 +522,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
   rule <syntax_directed_translation_result> ?!@galgasDeclarationAST ioDeclarations
                                             !@abstractGrammarInstructionSyntaxDirectedTranslationResult result {
     $($
-    $?$ ?let selector
+    $?selector:$ ?let selector
     if selector.string != "" then
       error selector : "the selector should be '?'" fixit { replace "?" }
     end
@@ -555,11 +555,11 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
       $($
       repeat
         select
-          $?$ ?let selector
+          $?selector:$ ?let selector
           $*$
           outActualInputParameterList += !selector !@inputParameterAnonymousVariable.new
         or
-          $?$ ?let selector
+          $?selector:$ ?let selector
           $var$
           let @lstring actualParameterTypeName
           select
@@ -572,7 +572,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
             !selector
             !@inputParameterDeclaredVariable.new {!actualParameterTypeName !actualParameterName}
         or
-          $?$ ?let selector
+          $?selector:$ ?let selector
           $let$
           let @lstring actualParameterTypeName
           select
@@ -585,7 +585,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
             !selector
             !@inputParameterDeclaredConstant.new {!actualParameterTypeName !actualParameterName}
         or
-          $?$ ?let selector
+          $?selector:$ ?let selector
           $identifier$ ?let actualParameterName
           outActualInputParameterList += !selector !@inputParameterVariable.new {!actualParameterName}
         end

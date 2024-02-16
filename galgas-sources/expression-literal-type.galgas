@@ -51,7 +51,7 @@ syntax extension galgas4ExpressionSyntax {
   rule <primary> ?!@galgasDeclarationAST unused ioDeclarations
                  !@semanticExpressionAST outExpression {
     $`$
-    $@type$ ?let @lstring typeName
+    $@type$ ?let @lstring typeName # Cannot use <type_definition> !? ioDeclarations ?let @lstring typeName
     outExpression = @literalTypeInExpressionAST.new {!typeName}
   }
 

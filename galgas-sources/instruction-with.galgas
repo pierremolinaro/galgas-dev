@@ -129,7 +129,7 @@ syntax extension galgas3InstructionsSyntax {
                                 ?let @location inEndOfKeyExpression
                                 ?let @lstring inWithPrefix
                                 !@semanticInstructionAST outInstruction {
-    $!?$ ?let selector
+    $!?selector:$ ?let selector
     if selector.string != "" then
       error selector : "an empty selector '!?' is required here"
     end
@@ -284,7 +284,7 @@ syntax extension galgas4InstructionsSyntax {
     ?let @lstring inWithPrefix
     !@semanticInstructionAST outInstruction
   {
-    $!?$ ?let selector
+    $!?selector:$ ?let selector
     if selector.string != "" then
       error selector : "an empty selector '!?' is required here"
     end

@@ -78,7 +78,7 @@ gui cocoa {
 
     label $case$, $.$, $"string"$
     label * $commentMark$ (2, 0)
-    label $\$terminal\$$, $!$ -
+    label $\$terminal\$$, $!selector:$ -
     label $\$terminal\$$, $error$ -
 
 

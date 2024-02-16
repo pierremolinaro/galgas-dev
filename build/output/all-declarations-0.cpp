@@ -2662,30 +2662,30 @@ String Lexique_galgasScanner_33_::getCurrentTokenString (const cToken * inTokenP
       s.appendCString ("commentMark") ;
       s.appendChar (TO_UNICODE ('$')) ;
       break ;
-    case kToken__3F_:
+    case kToken__3F_selector_3A_:
       s.appendChar (TO_UNICODE ('$')) ;
-      s.appendCString ("\?") ;
-      s.appendChar (TO_UNICODE ('$')) ;
-      s.appendChar (TO_UNICODE (' ')) ;
-      s.appendStringAsCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
-      break ;
-    case kToken__3F__21_:
-      s.appendChar (TO_UNICODE ('$')) ;
-      s.appendCString ("\?!") ;
+      s.appendCString ("\?selector:") ;
       s.appendChar (TO_UNICODE ('$')) ;
       s.appendChar (TO_UNICODE (' ')) ;
       s.appendStringAsCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
       break ;
-    case kToken__21_:
+    case kToken__3F__21_selector_3A_:
       s.appendChar (TO_UNICODE ('$')) ;
-      s.appendCString ("!") ;
+      s.appendCString ("\?!selector:") ;
       s.appendChar (TO_UNICODE ('$')) ;
       s.appendChar (TO_UNICODE (' ')) ;
       s.appendStringAsCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
       break ;
-    case kToken__21__3F_:
+    case kToken__21_selector_3A_:
       s.appendChar (TO_UNICODE ('$')) ;
-      s.appendCString ("!\?") ;
+      s.appendCString ("!selector:") ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (TO_UNICODE (' ')) ;
+      s.appendStringAsCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
+      break ;
+    case kToken__21__3F_selector_3A_:
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("!\?selector:") ;
       s.appendChar (TO_UNICODE ('$')) ;
       s.appendChar (TO_UNICODE (' ')) ;
       s.appendStringAsCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
@@ -4052,18 +4052,18 @@ void Lexique_galgasScanner_33_::internalParseLexicalToken (cTokenFor_galgasScann
           }while (loop) ;
           loop = true ;
           if (testForInputUTF32Char (TO_UNICODE (':'))) {
-            token.mTokenCode = kToken__3F__21_ ;
+            token.mTokenCode = kToken__3F__21_selector_3A_ ;
             enterToken (token) ;
           }else{
             ::scanner_routine_resetString (*this, token.mLexicalAttribute_tokenString) ;
             mCurrentLocation = currentLocationForTag_onlyExclamationInterrogationMark ;
             mTokenEndLocation = endLocationForTag_onlyExclamationInterrogationMark ;
             mCurrentChar = currentCharForTag_onlyExclamationInterrogationMark ;
-            token.mTokenCode = kToken__3F__21_ ;
+            token.mTokenCode = kToken__3F__21_selector_3A_ ;
             enterToken (token) ;
           }
         }else{
-          token.mTokenCode = kToken__3F__21_ ;
+          token.mTokenCode = kToken__3F__21_selector_3A_ ;
           enterToken (token) ;
         }
       }else if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z'))) {
@@ -4076,18 +4076,18 @@ void Lexique_galgasScanner_33_::internalParseLexicalToken (cTokenFor_galgasScann
         }while (loop) ;
         loop = true ;
         if (testForInputUTF32Char (TO_UNICODE (':'))) {
-          token.mTokenCode = kToken__3F_ ;
+          token.mTokenCode = kToken__3F_selector_3A_ ;
           enterToken (token) ;
         }else{
           ::scanner_routine_resetString (*this, token.mLexicalAttribute_tokenString) ;
           mCurrentLocation = currentLocationForTag_onlyInterrogationMark ;
           mTokenEndLocation = endLocationForTag_onlyInterrogationMark ;
           mCurrentChar = currentCharForTag_onlyInterrogationMark ;
-          token.mTokenCode = kToken__3F_ ;
+          token.mTokenCode = kToken__3F_selector_3A_ ;
           enterToken (token) ;
         }
       }else{
-        token.mTokenCode = kToken__3F_ ;
+        token.mTokenCode = kToken__3F_selector_3A_ ;
         enterToken (token) ;
       }
     }else if (testForInputUTF32Char (TO_UNICODE ('!'))) {
@@ -4108,18 +4108,18 @@ void Lexique_galgasScanner_33_::internalParseLexicalToken (cTokenFor_galgasScann
           }while (loop) ;
           loop = true ;
           if (testForInputUTF32Char (TO_UNICODE (':'))) {
-            token.mTokenCode = kToken__21__3F_ ;
+            token.mTokenCode = kToken__21__3F_selector_3A_ ;
             enterToken (token) ;
           }else{
             ::scanner_routine_resetString (*this, token.mLexicalAttribute_tokenString) ;
             mCurrentLocation = currentLocationForTag_onlyInterrogationExclamationMark ;
             mTokenEndLocation = endLocationForTag_onlyInterrogationExclamationMark ;
             mCurrentChar = currentCharForTag_onlyInterrogationExclamationMark ;
-            token.mTokenCode = kToken__21__3F_ ;
+            token.mTokenCode = kToken__21__3F_selector_3A_ ;
             enterToken (token) ;
           }
         }else{
-          token.mTokenCode = kToken__21__3F_ ;
+          token.mTokenCode = kToken__21__3F_selector_3A_ ;
           enterToken (token) ;
         }
       }else if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z'))) {
@@ -4132,18 +4132,18 @@ void Lexique_galgasScanner_33_::internalParseLexicalToken (cTokenFor_galgasScann
         }while (loop) ;
         loop = true ;
         if (testForInputUTF32Char (TO_UNICODE (':'))) {
-          token.mTokenCode = kToken__21_ ;
+          token.mTokenCode = kToken__21_selector_3A_ ;
           enterToken (token) ;
         }else{
           ::scanner_routine_resetString (*this, token.mLexicalAttribute_tokenString) ;
           mCurrentLocation = currentLocationForTag_onlyExclamationMark ;
           mTokenEndLocation = endLocationForTag_onlyExclamationMark ;
           mCurrentChar = currentCharForTag_onlyExclamationMark ;
-          token.mTokenCode = kToken__21_ ;
+          token.mTokenCode = kToken__21_selector_3A_ ;
           enterToken (token) ;
         }
       }else{
-        token.mTokenCode = kToken__21_ ;
+        token.mTokenCode = kToken__21_selector_3A_ ;
         enterToken (token) ;
       }
     }else if (testForInputUTF32Char (TO_UNICODE ('<'))) {
@@ -4520,10 +4520,10 @@ GALGAS_stringlist Lexique_galgasScanner_33_::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("$terminal$") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("comment") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("commentMark") COMMA_HERE) ;
-  result.addAssign_operation (GALGAS_string ("\?") COMMA_HERE) ;
-  result.addAssign_operation (GALGAS_string ("\?!") COMMA_HERE) ;
-  result.addAssign_operation (GALGAS_string ("!") COMMA_HERE) ;
-  result.addAssign_operation (GALGAS_string ("!\?") COMMA_HERE) ;
+  result.addAssign_operation (GALGAS_string ("\?selector:") COMMA_HERE) ;
+  result.addAssign_operation (GALGAS_string ("\?!selector:") COMMA_HERE) ;
+  result.addAssign_operation (GALGAS_string ("!selector:") COMMA_HERE) ;
+  result.addAssign_operation (GALGAS_string ("!\?selector:") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("<") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("<=") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("<<") COMMA_HERE) ;
@@ -4906,10 +4906,10 @@ uint32_t Lexique_galgasScanner_33_::styleIndexForTerminal (const int32_t inTermi
     4 /* galgasScanner3_1__24_terminal_24_ */,
     13 /* galgasScanner3_1_comment */,
     13 /* galgasScanner3_1_commentMark */,
-    3 /* galgasScanner3_1__3F_ */,
-    3 /* galgasScanner3_1__3F__21_ */,
-    3 /* galgasScanner3_1__21_ */,
-    3 /* galgasScanner3_1__21__3F_ */,
+    3 /* galgasScanner3_1__3F_selector_3A_ */,
+    3 /* galgasScanner3_1__3F__21_selector_3A_ */,
+    3 /* galgasScanner3_1__21_selector_3A_ */,
+    3 /* galgasScanner3_1__21__3F_selector_3A_ */,
     2 /* galgasScanner3_1__3C_ */,
     2 /* galgasScanner3_1__3C__3D_ */,
     2 /* galgasScanner3_1__3C__3C_ */,

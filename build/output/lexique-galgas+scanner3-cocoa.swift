@@ -112,10 +112,10 @@ let galgasScanner3_1__27_char_27_ : UInt16 = 8
 let galgasScanner3_1__24_terminal_24_ : UInt16 = 9
 let galgasScanner3_1_comment : UInt16 = 10
 let galgasScanner3_1_commentMark : UInt16 = 11
-let galgasScanner3_1__3F_ : UInt16 = 12
-let galgasScanner3_1__3F__21_ : UInt16 = 13
-let galgasScanner3_1__21_ : UInt16 = 14
-let galgasScanner3_1__21__3F_ : UInt16 = 15
+let galgasScanner3_1__3F_selector_3A_ : UInt16 = 12
+let galgasScanner3_1__3F__21_selector_3A_ : UInt16 = 13
+let galgasScanner3_1__21_selector_3A_ : UInt16 = 14
+let galgasScanner3_1__21__3F_selector_3A_ : UInt16 = 15
 let galgasScanner3_1__3C_ : UInt16 = 16
 let galgasScanner3_1__3C__3D_ : UInt16 = 17
 let galgasScanner3_1__3C__3C_ : UInt16 = 18
@@ -418,10 +418,10 @@ class SWIFT_Lexique_galgasScanner3 : SWIFT_Lexique {
       4, // 9 : galgasScanner3_1__24_terminal_24_
       13, // 10 : galgasScanner3_1_comment
       13, // 11 : galgasScanner3_1_commentMark
-      3, // 12 : galgasScanner3_1__3F_
-      3, // 13 : galgasScanner3_1__3F__21_
-      3, // 14 : galgasScanner3_1__21_
-      3, // 15 : galgasScanner3_1__21__3F_
+      3, // 12 : galgasScanner3_1__3F_selector_3A_
+      3, // 13 : galgasScanner3_1__3F__21_selector_3A_
+      3, // 14 : galgasScanner3_1__21_selector_3A_
+      3, // 15 : galgasScanner3_1__21__3F_selector_3A_
       2, // 16 : galgasScanner3_1__3C_
       2, // 17 : galgasScanner3_1__3C__3D_
       2, // 18 : galgasScanner3_1__3C__3C_
@@ -611,10 +611,10 @@ class SWIFT_Lexique_galgasScanner3 : SWIFT_Lexique {
       true, // 9 : galgasScanner3_1__24_terminal_24_
       false, // 10 : galgasScanner3_1_comment
       false, // 11 : galgasScanner3_1_commentMark
-      true, // 12 : galgasScanner3_1__3F_
-      true, // 13 : galgasScanner3_1__3F__21_
-      true, // 14 : galgasScanner3_1__21_
-      true, // 15 : galgasScanner3_1__21__3F_
+      true, // 12 : galgasScanner3_1__3F_selector_3A_
+      true, // 13 : galgasScanner3_1__3F__21_selector_3A_
+      true, // 14 : galgasScanner3_1__21_selector_3A_
+      true, // 15 : galgasScanner3_1__21__3F_selector_3A_
       true, // 16 : galgasScanner3_1__3C_
       true, // 17 : galgasScanner3_1__3C__3D_
       true, // 18 : galgasScanner3_1__3C__3C_
@@ -1313,14 +1313,14 @@ class SWIFT_Lexique_galgasScanner3 : SWIFT_Lexique {
           }
           loop = true
           if scanningOk && (self.testForInputChar (58)) {
-            tokenCode = galgasScanner3_1__3F__21_
+            tokenCode = galgasScanner3_1__3F__21_selector_3A_
           }else{
             scanner_cocoa_routine_resetString (&scanningOk, &self.mLexicalAttribute_tokenString)
             self.restoreScanningPoint (locationForTag_onlyExclamationInterrogationMark)
-            tokenCode = galgasScanner3_1__3F__21_
+            tokenCode = galgasScanner3_1__3F__21_selector_3A_
           }
         }else{
-          tokenCode = galgasScanner3_1__3F__21_
+          tokenCode = galgasScanner3_1__3F__21_selector_3A_
         }
       }else if scanningOk && (self.testForInputFromChar (97, toChar:122) || self.testForInputFromChar (65, toChar:90)) {
         while (loop && scanningOk) {
@@ -1332,14 +1332,14 @@ class SWIFT_Lexique_galgasScanner3 : SWIFT_Lexique {
         }
         loop = true
         if scanningOk && (self.testForInputChar (58)) {
-          tokenCode = galgasScanner3_1__3F_
+          tokenCode = galgasScanner3_1__3F_selector_3A_
         }else{
           scanner_cocoa_routine_resetString (&scanningOk, &self.mLexicalAttribute_tokenString)
           self.restoreScanningPoint (locationForTag_onlyInterrogationMark)
-          tokenCode = galgasScanner3_1__3F_
+          tokenCode = galgasScanner3_1__3F_selector_3A_
         }
       }else{
-        tokenCode = galgasScanner3_1__3F_
+        tokenCode = galgasScanner3_1__3F_selector_3A_
       }
     }else if scanningOk && (self.testForInputChar (33)) {
       let locationForTag_onlyExclamationMark = self.savedScanningPoint ()
@@ -1355,14 +1355,14 @@ class SWIFT_Lexique_galgasScanner3 : SWIFT_Lexique {
           }
           loop = true
           if scanningOk && (self.testForInputChar (58)) {
-            tokenCode = galgasScanner3_1__21__3F_
+            tokenCode = galgasScanner3_1__21__3F_selector_3A_
           }else{
             scanner_cocoa_routine_resetString (&scanningOk, &self.mLexicalAttribute_tokenString)
             self.restoreScanningPoint (locationForTag_onlyInterrogationExclamationMark)
-            tokenCode = galgasScanner3_1__21__3F_
+            tokenCode = galgasScanner3_1__21__3F_selector_3A_
           }
         }else{
-          tokenCode = galgasScanner3_1__21__3F_
+          tokenCode = galgasScanner3_1__21__3F_selector_3A_
         }
       }else if scanningOk && (self.testForInputFromChar (97, toChar:122) || self.testForInputFromChar (65, toChar:90)) {
         while (loop && scanningOk) {
@@ -1374,14 +1374,14 @@ class SWIFT_Lexique_galgasScanner3 : SWIFT_Lexique {
         }
         loop = true
         if scanningOk && (self.testForInputChar (58)) {
-          tokenCode = galgasScanner3_1__21_
+          tokenCode = galgasScanner3_1__21_selector_3A_
         }else{
           scanner_cocoa_routine_resetString (&scanningOk, &self.mLexicalAttribute_tokenString)
           self.restoreScanningPoint (locationForTag_onlyExclamationMark)
-          tokenCode = galgasScanner3_1__21_
+          tokenCode = galgasScanner3_1__21_selector_3A_
         }
       }else{
-        tokenCode = galgasScanner3_1__21_
+        tokenCode = galgasScanner3_1__21_selector_3A_
       }
     }else if scanningOk && (self.testForInputChar (60)) {
       let locationForTag_onlyInfDelimiter = self.savedScanningPoint ()
