@@ -8,6 +8,413 @@
 #include "all-declarations-18.h"
 
 //--------------------------------------------------------------------------------------------------
+// @enumeratedCollectionImplicitVarInExpAST reference class
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_enumeratedCollectionImplicitVarInExpAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_abstractEnumeratedCollectionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mPrefix.printNonNullClassInstanceProperties ("mPrefix") ;
+    mProperty_mEnumeratedExpression.printNonNullClassInstanceProperties ("mEnumeratedExpression") ;
+    mProperty_mEndOfAnonymousEnumeration.printNonNullClassInstanceProperties ("mEndOfAnonymousEnumeration") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+typeComparisonResult cPtr_enumeratedCollectionImplicitVarInExpAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_enumeratedCollectionImplicitVarInExpAST * p = (const cPtr_enumeratedCollectionImplicitVarInExpAST *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_enumeratedCollectionImplicitVarInExpAST) ;
+  if (kOperandEqual == result) {
+    result = mProperty_mPrefix.objectCompare (p->mProperty_mPrefix) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mEnumeratedExpression.objectCompare (p->mProperty_mEnumeratedExpression) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mEndOfAnonymousEnumeration.objectCompare (p->mProperty_mEndOfAnonymousEnumeration) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+
+typeComparisonResult GALGAS_enumeratedCollectionImplicitVarInExpAST::objectCompare (const GALGAS_enumeratedCollectionImplicitVarInExpAST & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = kOperandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_enumeratedCollectionImplicitVarInExpAST::GALGAS_enumeratedCollectionImplicitVarInExpAST (void) :
+GALGAS_abstractEnumeratedCollectionAST () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_enumeratedCollectionImplicitVarInExpAST::GALGAS_enumeratedCollectionImplicitVarInExpAST (const cPtr_enumeratedCollectionImplicitVarInExpAST * inSourcePtr) :
+GALGAS_abstractEnumeratedCollectionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_enumeratedCollectionImplicitVarInExpAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_enumeratedCollectionImplicitVarInExpAST GALGAS_enumeratedCollectionImplicitVarInExpAST::class_func_new (const GALGAS_lstring & inAttribute_mPrefix,
+                                                                                                               const GALGAS_semanticExpressionAST & inAttribute_mEnumeratedExpression,
+                                                                                                               const GALGAS_location & inAttribute_mEndOfAnonymousEnumeration
+                                                                                                               COMMA_LOCATION_ARGS) {
+  GALGAS_enumeratedCollectionImplicitVarInExpAST result ;
+  if (inAttribute_mPrefix.isValid () && inAttribute_mEnumeratedExpression.isValid () && inAttribute_mEndOfAnonymousEnumeration.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_enumeratedCollectionImplicitVarInExpAST (inAttribute_mPrefix, inAttribute_mEnumeratedExpression, inAttribute_mEndOfAnonymousEnumeration COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lstring GALGAS_enumeratedCollectionImplicitVarInExpAST::readProperty_mPrefix (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_lstring () ;
+  }else{
+    cPtr_enumeratedCollectionImplicitVarInExpAST * p = (cPtr_enumeratedCollectionImplicitVarInExpAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_enumeratedCollectionImplicitVarInExpAST) ;
+    return p->mProperty_mPrefix ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_semanticExpressionAST GALGAS_enumeratedCollectionImplicitVarInExpAST::readProperty_mEnumeratedExpression (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_semanticExpressionAST () ;
+  }else{
+    cPtr_enumeratedCollectionImplicitVarInExpAST * p = (cPtr_enumeratedCollectionImplicitVarInExpAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_enumeratedCollectionImplicitVarInExpAST) ;
+    return p->mProperty_mEnumeratedExpression ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_location GALGAS_enumeratedCollectionImplicitVarInExpAST::readProperty_mEndOfAnonymousEnumeration (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_location () ;
+  }else{
+    cPtr_enumeratedCollectionImplicitVarInExpAST * p = (cPtr_enumeratedCollectionImplicitVarInExpAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_enumeratedCollectionImplicitVarInExpAST) ;
+    return p->mProperty_mEndOfAnonymousEnumeration ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @enumeratedCollectionImplicitVarInExpAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_enumeratedCollectionImplicitVarInExpAST::cPtr_enumeratedCollectionImplicitVarInExpAST (const GALGAS_lstring & in_mPrefix,
+                                                                                            const GALGAS_semanticExpressionAST & in_mEnumeratedExpression,
+                                                                                            const GALGAS_location & in_mEndOfAnonymousEnumeration
+                                                                                            COMMA_LOCATION_ARGS) :
+cPtr_abstractEnumeratedCollectionAST (THERE),
+mProperty_mPrefix (in_mPrefix),
+mProperty_mEnumeratedExpression (in_mEnumeratedExpression),
+mProperty_mEndOfAnonymousEnumeration (in_mEndOfAnonymousEnumeration) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * cPtr_enumeratedCollectionImplicitVarInExpAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_enumeratedCollectionImplicitVarInExpAST ;
+}
+
+void cPtr_enumeratedCollectionImplicitVarInExpAST::description (String & ioString,
+                                                                const int32_t inIndentation) const {
+  ioString.appendCString ("[@enumeratedCollectionImplicitVarInExpAST:") ;
+  mProperty_mPrefix.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mEnumeratedExpression.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mEndOfAnonymousEnumeration.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_enumeratedCollectionImplicitVarInExpAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_enumeratedCollectionImplicitVarInExpAST (mProperty_mPrefix, mProperty_mEnumeratedExpression, mProperty_mEndOfAnonymousEnumeration COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @enumeratedCollectionImplicitVarInExpAST generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumeratedCollectionImplicitVarInExpAST ("enumeratedCollectionImplicitVarInExpAST",
+                                                                                               & kTypeDescriptor_GALGAS_abstractEnumeratedCollectionAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_enumeratedCollectionImplicitVarInExpAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_enumeratedCollectionImplicitVarInExpAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_enumeratedCollectionImplicitVarInExpAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_enumeratedCollectionImplicitVarInExpAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_enumeratedCollectionImplicitVarInExpAST GALGAS_enumeratedCollectionImplicitVarInExpAST::extractObject (const GALGAS_object & inObject,
+                                                                                                              Compiler * inCompiler
+                                                                                                              COMMA_LOCATION_ARGS) {
+  GALGAS_enumeratedCollectionImplicitVarInExpAST result ;
+  const GALGAS_enumeratedCollectionImplicitVarInExpAST * p = (const GALGAS_enumeratedCollectionImplicitVarInExpAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_enumeratedCollectionImplicitVarInExpAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("enumeratedCollectionImplicitVarInExpAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @enumeratedCollectionVarInExpAST reference class
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_enumeratedCollectionVarInExpAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_abstractEnumeratedCollectionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mEnumerationOptionalTypeName.printNonNullClassInstanceProperties ("mEnumerationOptionalTypeName") ;
+    mProperty_mEnumerationVariable.printNonNullClassInstanceProperties ("mEnumerationVariable") ;
+    mProperty_mEnumeratedExpression.printNonNullClassInstanceProperties ("mEnumeratedExpression") ;
+    mProperty_mEndOfEnumerationExpression.printNonNullClassInstanceProperties ("mEndOfEnumerationExpression") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+typeComparisonResult cPtr_enumeratedCollectionVarInExpAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_enumeratedCollectionVarInExpAST * p = (const cPtr_enumeratedCollectionVarInExpAST *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_enumeratedCollectionVarInExpAST) ;
+  if (kOperandEqual == result) {
+    result = mProperty_mEnumerationOptionalTypeName.objectCompare (p->mProperty_mEnumerationOptionalTypeName) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mEnumerationVariable.objectCompare (p->mProperty_mEnumerationVariable) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mEnumeratedExpression.objectCompare (p->mProperty_mEnumeratedExpression) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mEndOfEnumerationExpression.objectCompare (p->mProperty_mEndOfEnumerationExpression) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+
+typeComparisonResult GALGAS_enumeratedCollectionVarInExpAST::objectCompare (const GALGAS_enumeratedCollectionVarInExpAST & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = kOperandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_enumeratedCollectionVarInExpAST::GALGAS_enumeratedCollectionVarInExpAST (void) :
+GALGAS_abstractEnumeratedCollectionAST () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_enumeratedCollectionVarInExpAST::GALGAS_enumeratedCollectionVarInExpAST (const cPtr_enumeratedCollectionVarInExpAST * inSourcePtr) :
+GALGAS_abstractEnumeratedCollectionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_enumeratedCollectionVarInExpAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_enumeratedCollectionVarInExpAST GALGAS_enumeratedCollectionVarInExpAST::class_func_new (const GALGAS_lstring & inAttribute_mEnumerationOptionalTypeName,
+                                                                                               const GALGAS_lstring & inAttribute_mEnumerationVariable,
+                                                                                               const GALGAS_semanticExpressionAST & inAttribute_mEnumeratedExpression,
+                                                                                               const GALGAS_location & inAttribute_mEndOfEnumerationExpression
+                                                                                               COMMA_LOCATION_ARGS) {
+  GALGAS_enumeratedCollectionVarInExpAST result ;
+  if (inAttribute_mEnumerationOptionalTypeName.isValid () && inAttribute_mEnumerationVariable.isValid () && inAttribute_mEnumeratedExpression.isValid () && inAttribute_mEndOfEnumerationExpression.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_enumeratedCollectionVarInExpAST (inAttribute_mEnumerationOptionalTypeName, inAttribute_mEnumerationVariable, inAttribute_mEnumeratedExpression, inAttribute_mEndOfEnumerationExpression COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lstring GALGAS_enumeratedCollectionVarInExpAST::readProperty_mEnumerationOptionalTypeName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_lstring () ;
+  }else{
+    cPtr_enumeratedCollectionVarInExpAST * p = (cPtr_enumeratedCollectionVarInExpAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_enumeratedCollectionVarInExpAST) ;
+    return p->mProperty_mEnumerationOptionalTypeName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lstring GALGAS_enumeratedCollectionVarInExpAST::readProperty_mEnumerationVariable (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_lstring () ;
+  }else{
+    cPtr_enumeratedCollectionVarInExpAST * p = (cPtr_enumeratedCollectionVarInExpAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_enumeratedCollectionVarInExpAST) ;
+    return p->mProperty_mEnumerationVariable ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_semanticExpressionAST GALGAS_enumeratedCollectionVarInExpAST::readProperty_mEnumeratedExpression (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_semanticExpressionAST () ;
+  }else{
+    cPtr_enumeratedCollectionVarInExpAST * p = (cPtr_enumeratedCollectionVarInExpAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_enumeratedCollectionVarInExpAST) ;
+    return p->mProperty_mEnumeratedExpression ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_location GALGAS_enumeratedCollectionVarInExpAST::readProperty_mEndOfEnumerationExpression (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_location () ;
+  }else{
+    cPtr_enumeratedCollectionVarInExpAST * p = (cPtr_enumeratedCollectionVarInExpAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_enumeratedCollectionVarInExpAST) ;
+    return p->mProperty_mEndOfEnumerationExpression ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @enumeratedCollectionVarInExpAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_enumeratedCollectionVarInExpAST::cPtr_enumeratedCollectionVarInExpAST (const GALGAS_lstring & in_mEnumerationOptionalTypeName,
+                                                                            const GALGAS_lstring & in_mEnumerationVariable,
+                                                                            const GALGAS_semanticExpressionAST & in_mEnumeratedExpression,
+                                                                            const GALGAS_location & in_mEndOfEnumerationExpression
+                                                                            COMMA_LOCATION_ARGS) :
+cPtr_abstractEnumeratedCollectionAST (THERE),
+mProperty_mEnumerationOptionalTypeName (in_mEnumerationOptionalTypeName),
+mProperty_mEnumerationVariable (in_mEnumerationVariable),
+mProperty_mEnumeratedExpression (in_mEnumeratedExpression),
+mProperty_mEndOfEnumerationExpression (in_mEndOfEnumerationExpression) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * cPtr_enumeratedCollectionVarInExpAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_enumeratedCollectionVarInExpAST ;
+}
+
+void cPtr_enumeratedCollectionVarInExpAST::description (String & ioString,
+                                                        const int32_t inIndentation) const {
+  ioString.appendCString ("[@enumeratedCollectionVarInExpAST:") ;
+  mProperty_mEnumerationOptionalTypeName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mEnumerationVariable.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mEnumeratedExpression.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mEndOfEnumerationExpression.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_enumeratedCollectionVarInExpAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_enumeratedCollectionVarInExpAST (mProperty_mEnumerationOptionalTypeName, mProperty_mEnumerationVariable, mProperty_mEnumeratedExpression, mProperty_mEndOfEnumerationExpression COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @enumeratedCollectionVarInExpAST generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumeratedCollectionVarInExpAST ("enumeratedCollectionVarInExpAST",
+                                                                                       & kTypeDescriptor_GALGAS_abstractEnumeratedCollectionAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_enumeratedCollectionVarInExpAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_enumeratedCollectionVarInExpAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_enumeratedCollectionVarInExpAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_enumeratedCollectionVarInExpAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_enumeratedCollectionVarInExpAST GALGAS_enumeratedCollectionVarInExpAST::extractObject (const GALGAS_object & inObject,
+                                                                                              Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) {
+  GALGAS_enumeratedCollectionVarInExpAST result ;
+  const GALGAS_enumeratedCollectionVarInExpAST * p = (const GALGAS_enumeratedCollectionVarInExpAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_enumeratedCollectionVarInExpAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("enumeratedCollectionVarInExpAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
 // @forInstructionAST reference class
 //--------------------------------------------------------------------------------------------------
 

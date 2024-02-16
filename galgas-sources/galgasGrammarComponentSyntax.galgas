@@ -313,7 +313,50 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
   rule <label_formal_parameter> ?!@galgasDeclarationAST ioDeclarations
                                 !@lstring outArgumentName
                                 ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
+    $?$
+    let selector = ["" here]
+    <type_definition> !?ioDeclarations ?let @lstring mTypeName
+    select
+    or
+     $unused$
+    end
+    $identifier$ ?outArgumentName
+    ioStartSymbolLabelFormalParameterList +=
+      !selector
+      !@formalArgumentPassingModeAST. argumentIn
+      !mTypeName
+      !outArgumentName
+      !false
+  }
+
+  #·······························································································
+
+  rule <label_formal_parameter> ?!@galgasDeclarationAST ioDeclarations
+                                !@lstring outArgumentName
+                                ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
     $?selector:$ ?let selector
+    $let$
+    <type_definition> !?ioDeclarations ?let @lstring mTypeName
+    select
+    or
+     $unused$
+    end
+    $identifier$ ?outArgumentName
+    ioStartSymbolLabelFormalParameterList +=
+      !selector
+      !@formalArgumentPassingModeAST. argumentConstantIn
+      !mTypeName
+      !outArgumentName
+      !false
+  }
+
+  #·······························································································
+
+  rule <label_formal_parameter> ?!@galgasDeclarationAST ioDeclarations
+                                !@lstring outArgumentName
+                                ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
+    $?$
+    let selector = ["" here]
     $let$
     <type_definition> !?ioDeclarations ?let @lstring mTypeName
     select
@@ -376,6 +419,23 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
                                 !@lstring outArgumentName
                                 ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
     $!selector:$ ?let selector
+    <type_definition> !?ioDeclarations ?let @lstring mTypeName
+    $identifier$ ?outArgumentName
+    ioStartSymbolLabelFormalParameterList +=
+      !selector
+      !@formalArgumentPassingModeAST. argumentOut
+      !mTypeName
+      !outArgumentName
+      !false
+  }
+
+  #·······························································································
+
+  rule <label_formal_parameter> ?!@galgasDeclarationAST ioDeclarations
+                                !@lstring outArgumentName
+                                ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
+    $!$
+    let selector = ["" here]
     <type_definition> !?ioDeclarations ?let @lstring mTypeName
     $identifier$ ?outArgumentName
     ioStartSymbolLabelFormalParameterList +=

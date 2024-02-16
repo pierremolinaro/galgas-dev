@@ -131,14 +131,6 @@ func enterOptions (_ ioBoolOptionArray : inout [SWIFT_CommandLineOption],
   ))
   ioBoolOptionArray.append (SWIFT_CommandLineOption (
     domainName: "galgas_cli_options",
-    identifier: "errorOnUselessSelector",
-    commandChar: "",
-    commandString: "error-on-useless-selector",
-    comment: "Error on useless selector (GGS4)",
-    defaultValue: ""
-  ))
-  ioBoolOptionArray.append (SWIFT_CommandLineOption (
-    domainName: "galgas_cli_options",
     identifier: "generateManyFiles",
     commandChar: "",
     commandString: "generate-many-cpp-files",

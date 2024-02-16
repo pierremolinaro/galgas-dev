@@ -308,9 +308,24 @@ syntax extension galgas4InstructionsSyntax {
         while
           $!selector:$ ?let selector
           <expression> !?ioDeclarations ?let expression
-          optionalMethodActualArgumentList += !selector !.actualOutput {!expression: expression !location: .here}
+          optionalMethodActualArgumentList +=
+            !selector
+            !.actualOutput {!expression: expression !location: .here}
         while
-          $?selector:$ ?let selector
+          $!$
+          let selector = ["" here]
+          <expression> !?ioDeclarations ?let expression
+          optionalMethodActualArgumentList +=
+            !selector
+            !.actualOutput {!expression: expression !location: .here}
+        while
+          let @lstring selector
+          select
+            $?selector:$ ?selector
+          or
+            $?$
+            selector = ["" here]
+          end
           select
             $let$
             let @lstring typeName
@@ -320,7 +335,9 @@ syntax extension galgas4InstructionsSyntax {
               <type_definition> !?ioDeclarations ?typeName
             end
             $identifier$ ?let constantName
-            optionalMethodActualArgumentList += !selector !.actualLetInput {!typeName: typeName !constantName: constantName}
+            optionalMethodActualArgumentList +=
+              !selector
+              !.actualLetInput {!typeName: typeName !constantName: constantName}
           or
             $var$
             let @lstring typeName

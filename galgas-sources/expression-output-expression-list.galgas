@@ -62,9 +62,9 @@ syntax extension galgas4ExpressionSyntax {
         let @lstring selector
         select
           $!selector:$ ?selector
-          if [option galgas_cli_options.errorOnUselessSelector value] && (selector.string == "") then
-            error selector.location : "check no useless selector: this selector should be removed"
-          end
+        or
+          $!$
+          selector = ["" here]
         or
           selector = ["" here]
         end

@@ -420,10 +420,10 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
           select
             selector = ["" nowhere]
           or
+            $?$
+            selector = ["" nowhere]
+          or
             $?selector:$ ?selector
-            if [option galgas_cli_options.errorOnUselessSelector value] && (selector.string == "") then
-              error selector.location : "check no useless selector: this selector should be removed"
-            end
           end
           <type_definition> !?ioDeclarations ?let typeName
           let @bool isUnused

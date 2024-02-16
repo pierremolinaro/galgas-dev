@@ -276,6 +276,12 @@ syntax extension galgas4DeclarationsSyntax {
       <type_definition> !?ioDeclarations ?let argumentTypeName
       $identifier$ ?let @lstring argumentName
       argumentTypeList += !selector !argumentTypeName !argumentName
+    while
+      $?$
+      let selector = ["" here]
+      <type_definition> !?ioDeclarations ?let argumentTypeName
+      $identifier$ ?let @lstring argumentName
+      argumentTypeList += !selector !argumentTypeName !argumentName
     end
     $->$
     <type_definition> !?ioDeclarations ?let resultTypeName
@@ -292,6 +298,12 @@ syntax extension galgas4DeclarationsSyntax {
     repeat
     while
       $?selector:$ ?let selector
+      <type_definition> !?ioDeclarations ?let argumentTypeName
+      $identifier$ ?let @lstring argumentName
+      argumentTypeList += !selector !argumentTypeName !argumentName
+    while
+      $?$
+      let selector = ["" here]
       <type_definition> !?ioDeclarations ?let argumentTypeName
       $identifier$ ?let @lstring argumentName
       argumentTypeList += !selector !argumentTypeName !argumentName

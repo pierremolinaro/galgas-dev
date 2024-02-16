@@ -522,10 +522,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
   rule <syntax_directed_translation_result> ?!@galgasDeclarationAST ioDeclarations
                                             !@abstractGrammarInstructionSyntaxDirectedTranslationResult result {
     $($
-    $?selector:$ ?let selector
-    if selector.string != "" then
-      error selector : "the selector should be '?'" fixit { replace "?" }
-    end
+    $?$
     select
       $*$
       result = @grammarInstructionSyntaxDirectedTranslationDropResult.new {!@location.here}
@@ -555,11 +552,30 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
       $($
       repeat
         select
+          $?$
+          let selector = ["" here]
+          $*$
+          outActualInputParameterList += !selector !@inputParameterAnonymousVariable.new
+        or
           $?selector:$ ?let selector
           $*$
           outActualInputParameterList += !selector !@inputParameterAnonymousVariable.new
         or
           $?selector:$ ?let selector
+          $var$
+          let @lstring actualParameterTypeName
+          select
+            actualParameterTypeName = ["" nowhere]
+          or
+           <type_definition> !?ioDeclarations ?actualParameterTypeName
+          end
+          $identifier$ ?let actualParameterName
+          outActualInputParameterList +=
+            !selector
+            !@inputParameterDeclaredVariable.new {!actualParameterTypeName !actualParameterName}
+        or
+          $?$
+          let selector = ["" here]
           $var$
           let @lstring actualParameterTypeName
           select
@@ -585,7 +601,26 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
             !selector
             !@inputParameterDeclaredConstant.new {!actualParameterTypeName !actualParameterName}
         or
+          $?$
+          let selector = ["" here]
+          $let$
+          let @lstring actualParameterTypeName
+          select
+            actualParameterTypeName = ["" nowhere]
+          or
+            <type_definition> !?ioDeclarations ?actualParameterTypeName
+          end
+          $identifier$ ?let actualParameterName
+          outActualInputParameterList +=
+            !selector
+            !@inputParameterDeclaredConstant.new {!actualParameterTypeName !actualParameterName}
+        or
           $?selector:$ ?let selector
+          $identifier$ ?let actualParameterName
+          outActualInputParameterList += !selector !@inputParameterVariable.new {!actualParameterName}
+        or
+          $?$
+          let selector = ["" here]
           $identifier$ ?let actualParameterName
           outActualInputParameterList += !selector !@inputParameterVariable.new {!actualParameterName}
         end

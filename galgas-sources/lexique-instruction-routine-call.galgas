@@ -114,18 +114,12 @@ syntax extension galgas4LexiqueComponentSyntax {
     $($
     repeat
     while
-      $!selector:$ ?let selector
-      if selector.string != "" then
-        error selector : "the selector should be '!'" fixit { replace "!" }
-      end
+      $!$
       let passingModeLocation = @location.here
       <lexical_output_effective_argument> ?let @lexicalRoutineOrFunctionFormalInputArgumentAST arg
       actualArgumentList += !@lexicalFormalInputArgumentAST.new {!passingModeLocation !arg}
     while
-      $!?selector:$ ?let selector
-      if selector.string != "" then
-        error selector : "an empty selector '!?' is required here"
-      end
+      $!?$
       let passingModeLocation = @location.here
       $identifier$ ?let @lstring attributeName
       let arg = @lexicalAttributeInputOutputArgumentAST.new{!passingModeLocation !attributeName}

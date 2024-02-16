@@ -67,9 +67,6 @@ option galgas_cli_options {
 
 #--- GGS4 optimization
 
-  @bool errorOnUselessSelector : '\0', "error-on-useless-selector"
-    -> "Error on useless selector (GGS4)"
-
   @bool errorOnGetterCallWithNoArgument : '\0', "error-on-getter-call-with-no-argument"
     -> "Error on getter call; with no argument (GGS4, suppress parenthesis)"
 

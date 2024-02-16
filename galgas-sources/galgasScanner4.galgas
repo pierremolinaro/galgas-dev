@@ -605,13 +605,16 @@ rule list galgasDelimitorsList
 
 # --------- Special formal arguments, actual parameters --------------------------
 $?selector:$ ! tokenString style selectorStyle error message "the '\?selector:' delimitor"
+$?$ style delimitersStyle error message "the '?' delimitor"
 
 $?!selector:$ ! tokenString style selectorStyle error message "the '\?!selector:' delimitor"
 $?!$ style delimitersStyle error message "the '?!' delimitor"
 
 $!selector:$ ! tokenString style selectorStyle error message "the '!selector:' delimitor"
+$!$ style delimitersStyle error message "the '!' delimitor"
 
 $!?selector:$ ! tokenString style selectorStyle error message "the '!\?selector:' delimitor"
+$!?$ style delimitersStyle error message "the '!?' delimitor"
 
 rule "?!" {
   tag onlyInterrogationExclamationMark
@@ -646,34 +649,36 @@ rule '?' {
       send $?selector:$
     default
       resetString (!?tokenString )
-      rewind onlyInterrogationMark send $?selector:$
+      rewind onlyInterrogationMark send $?$
     end
   default
-    send $?selector:$
+    send $?$
+  end
+}
+
+rule "!?" {
+  tag onlyExclamationInterrogationMark
+  select
+  case 'a' -> 'z' | 'A' ->'Z' :
+    repeat
+      enterCharacterIntoString (!?tokenString !* )
+    while 'a' -> 'z' | 'A' ->'Z' | '0' -> '9' | '_' :
+    end
+    select
+    case ':' :
+      send $!?selector:$
+    default
+      resetString (!?tokenString )
+      rewind onlyExclamationInterrogationMark send $!?$
+    end
+  default
+    send $!?$
   end
 }
 
 rule '!' {
   tag onlyExclamationMark
   select
-  case '?' :
-    tag onlyExclamationInterrogationMark
-    select
-    case 'a' -> 'z' | 'A' ->'Z' :
-      repeat
-        enterCharacterIntoString (!?tokenString !* )
-      while 'a' -> 'z' | 'A' ->'Z' | '0' -> '9' | '_' :
-      end
-      select
-      case ':' :
-        send $!?selector:$
-      default
-        resetString (!?tokenString )
-        rewind onlyExclamationInterrogationMark send $!?selector:$
-      end
-    default
-      send $!?selector:$
-    end
   case 'a' -> 'z' | 'A' ->'Z' :
     repeat
       enterCharacterIntoString (!?tokenString !* )
@@ -684,10 +689,10 @@ rule '!' {
       send $!selector:$
     default
       resetString (!?tokenString )
-      rewind onlyExclamationMark send $!selector:$
+      rewind onlyExclamationMark send $!$
     end
   default
-    send $!selector:$
+    send $!$
   end
 }
 

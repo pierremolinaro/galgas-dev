@@ -141,9 +141,11 @@ syntax extension galgas4ExpressionSyntax {
     repeat
       select
         $!selector:$ ?let selector
-        if [option galgas_cli_options.errorOnUselessSelector value] && (selector.string == "") then
-          error selector.location : "check no useless selector: this selector should be removed"
-        end
+        <expression> !?ioDeclarations ?let @semanticExpressionAST expression
+        expressionList += !selector !expression !@location.here
+      or
+        $!$
+        let selector = ["" here]
         <expression> !?ioDeclarations ?let @semanticExpressionAST expression
         expressionList += !selector !expression !@location.here
       or
