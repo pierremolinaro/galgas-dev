@@ -318,176 +318,180 @@ class Lexique_galgasScanner_33_ : public Lexique {
    kToken_comment /* 10 */ ,
    kToken_commentMark /* 11 */ ,
    kToken__3F_selector_3A_ /* 12 */ ,
-   kToken__3F__21_selector_3A_ /* 13 */ ,
-   kToken__21_selector_3A_ /* 14 */ ,
-   kToken__21__3F_selector_3A_ /* 15 */ ,
-   kToken__3C_ /* 16 */ ,
-   kToken__3C__3D_ /* 17 */ ,
-   kToken__3C__3C_ /* 18 */ ,
-   kToken__3C_non_5F_terminal_3E_ /* 19 */ ,
-   kToken__22_string_22_ /* 20 */ ,
-   kToken_abstract /* 21 */ ,
-   kToken_after /* 22 */ ,
-   kToken_array /* 23 */ ,
-   kToken_as /* 24 */ ,
-   kToken_bang /* 25 */ ,
-   kToken_before /* 26 */ ,
-   kToken_between /* 27 */ ,
-   kToken_block /* 28 */ ,
-   kToken_boolset /* 29 */ ,
-   kToken_cast /* 30 */ ,
-   kToken_case /* 31 */ ,
-   kToken_class /* 32 */ ,
-   kToken_default /* 33 */ ,
-   kToken_dict /* 34 */ ,
-   kToken_do /* 35 */ ,
-   kToken_drop /* 36 */ ,
-   kToken_else /* 37 */ ,
-   kToken_elsif /* 38 */ ,
-   kToken_end /* 39 */ ,
-   kToken_enum /* 40 */ ,
-   kToken_error /* 41 */ ,
-   kToken_extension /* 42 */ ,
-   kToken_extern /* 43 */ ,
-   kToken_false /* 44 */ ,
-   kToken_fileprivate /* 45 */ ,
-   kToken_filewrapper /* 46 */ ,
-   kToken_for /* 47 */ ,
-   kToken_final /* 48 */ ,
-   kToken_fixit /* 49 */ ,
-   kToken_func /* 50 */ ,
-   kToken_getter /* 51 */ ,
-   kToken_grammar /* 52 */ ,
-   kToken_graph /* 53 */ ,
-   kToken_gui /* 54 */ ,
-   kToken_if /* 55 */ ,
-   kToken_in /* 56 */ ,
-   kToken_indexing /* 57 */ ,
-   kToken_init /* 58 */ ,
-   kToken_insert /* 59 */ ,
-   kToken_is /* 60 */ ,
-   kToken_label /* 61 */ ,
-   kToken_let /* 62 */ ,
-   kToken_lexique /* 63 */ ,
-   kToken_list /* 64 */ ,
-   kToken_listmap /* 65 */ ,
-   kToken_log /* 66 */ ,
-   kToken_loop /* 67 */ ,
-   kToken_map /* 68 */ ,
-   kToken_message /* 69 */ ,
-   kToken_method /* 70 */ ,
-   kToken_mod /* 71 */ ,
-   kToken_mutating /* 72 */ ,
-   kToken_not /* 73 */ ,
-   kToken_on /* 74 */ ,
-   kToken_operator /* 75 */ ,
-   kToken_option /* 76 */ ,
-   kToken_or /* 77 */ ,
-   kToken_override /* 78 */ ,
-   kToken_parse /* 79 */ ,
-   kToken_public /* 80 */ ,
-   kToken_protected /* 81 */ ,
-   kToken_private /* 82 */ ,
-   kToken_proc /* 83 */ ,
-   kToken_project /* 84 */ ,
-   kToken_refclass /* 85 */ ,
-   kToken_remove /* 86 */ ,
-   kToken_repeat /* 87 */ ,
-   kToken_replace /* 88 */ ,
-   kToken_rewind /* 89 */ ,
-   kToken_rule /* 90 */ ,
-   kToken_search /* 91 */ ,
-   kToken_select /* 92 */ ,
-   kToken_self /* 93 */ ,
-   kToken_send /* 94 */ ,
-   kToken_setter /* 95 */ ,
-   kToken_sortedlist /* 96 */ ,
-   kToken_spoil /* 97 */ ,
-   kToken_struct /* 98 */ ,
-   kToken_style /* 99 */ ,
-   kToken_super /* 100 */ ,
-   kToken_switch /* 101 */ ,
-   kToken_syntax /* 102 */ ,
-   kToken_tag /* 103 */ ,
-   kToken_template /* 104 */ ,
-   kToken_then /* 105 */ ,
-   kToken_true /* 106 */ ,
-   kToken_typealias /* 107 */ ,
-   kToken_unused /* 108 */ ,
-   kToken_var /* 109 */ ,
-   kToken_warning /* 110 */ ,
-   kToken_while /* 111 */ ,
-   kToken_with /* 112 */ ,
-   kToken__25_app_2D_link /* 113 */ ,
-   kToken__25_app_2D_source /* 114 */ ,
-   kToken__25_makefile_2D_macosx /* 115 */ ,
-   kToken__25_makefile_2D_unix /* 116 */ ,
-   kToken__25_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx /* 117 */ ,
-   kToken__25_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx /* 118 */ ,
-   kToken__25_makefile_2D_win_33__32__2D_on_2D_macosx /* 119 */ ,
-   kToken__25_codeblocks_2D_windows /* 120 */ ,
-   kToken__25_codeblocks_2D_linux_33__32_ /* 121 */ ,
-   kToken__25_codeblocks_2D_linux_36__34_ /* 122 */ ,
-   kToken__25_applicationBundleBase /* 123 */ ,
-   kToken__25_MacOS /* 124 */ ,
-   kToken__25_MacOSDeployment /* 125 */ ,
-   kToken__25_quietOutputByDefault /* 126 */ ,
-   kToken__25_macCodeSign /* 127 */ ,
-   kToken__25_libpmAtPath /* 128 */ ,
-   kToken__25_tool_2D_source /* 129 */ ,
-   kToken__25_translate /* 130 */ ,
-   kToken__25_once /* 131 */ ,
-   kToken__25_usefull /* 132 */ ,
-   kToken__25_generatedInSeparateFile /* 133 */ ,
-   kToken__25_nonAtomicSelection /* 134 */ ,
-   kToken__25_templateEndMark /* 135 */ ,
-   kToken__25_preserved /* 136 */ ,
-   kToken__25_selector /* 137 */ ,
-   kToken__25_useGrammar /* 138 */ ,
-   kToken__2A_ /* 139 */ ,
-   kToken__2C_ /* 140 */ ,
-   kToken__2B_ /* 141 */ ,
-   kToken__26__2B_ /* 142 */ ,
-   kToken__26__2D_ /* 143 */ ,
-   kToken__26__2A_ /* 144 */ ,
-   kToken__26__2F_ /* 145 */ ,
-   kToken__3E_ /* 146 */ ,
-   kToken__3B_ /* 147 */ ,
-   kToken__3A_ /* 148 */ ,
-   kToken__3A__3E_ /* 149 */ ,
-   kToken__2D_ /* 150 */ ,
-   kToken__28_ /* 151 */ ,
-   kToken__29_ /* 152 */ ,
-   kToken__2D__3E_ /* 153 */ ,
-   kToken__3D__3D_ /* 154 */ ,
-   kToken__3D_ /* 155 */ ,
-   kToken__26__26_ /* 156 */ ,
-   kToken__5B_ /* 157 */ ,
-   kToken__5D_ /* 158 */ ,
-   kToken__2B__3D_ /* 159 */ ,
-   kToken__2D__3D_ /* 160 */ ,
-   kToken__2A__3D_ /* 161 */ ,
-   kToken__2F__3D_ /* 162 */ ,
-   kToken__2F_ /* 163 */ ,
-   kToken__21__3D_ /* 164 */ ,
-   kToken__3E__3D_ /* 165 */ ,
-   kToken__26_ /* 166 */ ,
-   kToken__7B_ /* 167 */ ,
-   kToken__7D_ /* 168 */ ,
-   kToken__60_ /* 169 */ ,
-   kToken__7C__7C_ /* 170 */ ,
-   kToken__7C_ /* 171 */ ,
-   kToken__5E_ /* 172 */ ,
-   kToken__3E__3E_ /* 173 */ ,
-   kToken__7E_ /* 174 */ ,
-   kToken__2D__2D_ /* 175 */ ,
-   kToken__2B__2B_ /* 176 */ ,
-   kToken__26__2D__2D_ /* 177 */ ,
-   kToken__26__2B__2B_ /* 178 */ ,
-   kToken__3D__3D__3D_ /* 179 */ ,
-   kToken__21__3D__3D_ /* 180 */ ,
-   kToken__3F__5E_ /* 181 */ ,
-   kToken__21__5E_ /* 182 */ } ;
+   kToken__3F_ /* 13 */ ,
+   kToken__3F__21_selector_3A_ /* 14 */ ,
+   kToken__3F__21_ /* 15 */ ,
+   kToken__21_selector_3A_ /* 16 */ ,
+   kToken__21_ /* 17 */ ,
+   kToken__21__3F_selector_3A_ /* 18 */ ,
+   kToken__21__3F_ /* 19 */ ,
+   kToken__3C_ /* 20 */ ,
+   kToken__3C__3D_ /* 21 */ ,
+   kToken__3C__3C_ /* 22 */ ,
+   kToken__3C_non_5F_terminal_3E_ /* 23 */ ,
+   kToken__22_string_22_ /* 24 */ ,
+   kToken_abstract /* 25 */ ,
+   kToken_after /* 26 */ ,
+   kToken_array /* 27 */ ,
+   kToken_as /* 28 */ ,
+   kToken_bang /* 29 */ ,
+   kToken_before /* 30 */ ,
+   kToken_between /* 31 */ ,
+   kToken_block /* 32 */ ,
+   kToken_boolset /* 33 */ ,
+   kToken_cast /* 34 */ ,
+   kToken_case /* 35 */ ,
+   kToken_class /* 36 */ ,
+   kToken_default /* 37 */ ,
+   kToken_dict /* 38 */ ,
+   kToken_do /* 39 */ ,
+   kToken_drop /* 40 */ ,
+   kToken_else /* 41 */ ,
+   kToken_elsif /* 42 */ ,
+   kToken_end /* 43 */ ,
+   kToken_enum /* 44 */ ,
+   kToken_error /* 45 */ ,
+   kToken_extension /* 46 */ ,
+   kToken_extern /* 47 */ ,
+   kToken_false /* 48 */ ,
+   kToken_fileprivate /* 49 */ ,
+   kToken_filewrapper /* 50 */ ,
+   kToken_for /* 51 */ ,
+   kToken_final /* 52 */ ,
+   kToken_fixit /* 53 */ ,
+   kToken_func /* 54 */ ,
+   kToken_getter /* 55 */ ,
+   kToken_grammar /* 56 */ ,
+   kToken_graph /* 57 */ ,
+   kToken_gui /* 58 */ ,
+   kToken_if /* 59 */ ,
+   kToken_in /* 60 */ ,
+   kToken_indexing /* 61 */ ,
+   kToken_init /* 62 */ ,
+   kToken_insert /* 63 */ ,
+   kToken_is /* 64 */ ,
+   kToken_label /* 65 */ ,
+   kToken_let /* 66 */ ,
+   kToken_lexique /* 67 */ ,
+   kToken_list /* 68 */ ,
+   kToken_listmap /* 69 */ ,
+   kToken_log /* 70 */ ,
+   kToken_loop /* 71 */ ,
+   kToken_map /* 72 */ ,
+   kToken_message /* 73 */ ,
+   kToken_method /* 74 */ ,
+   kToken_mod /* 75 */ ,
+   kToken_mutating /* 76 */ ,
+   kToken_not /* 77 */ ,
+   kToken_on /* 78 */ ,
+   kToken_operator /* 79 */ ,
+   kToken_option /* 80 */ ,
+   kToken_or /* 81 */ ,
+   kToken_override /* 82 */ ,
+   kToken_parse /* 83 */ ,
+   kToken_public /* 84 */ ,
+   kToken_protected /* 85 */ ,
+   kToken_private /* 86 */ ,
+   kToken_proc /* 87 */ ,
+   kToken_project /* 88 */ ,
+   kToken_refclass /* 89 */ ,
+   kToken_remove /* 90 */ ,
+   kToken_repeat /* 91 */ ,
+   kToken_replace /* 92 */ ,
+   kToken_rewind /* 93 */ ,
+   kToken_rule /* 94 */ ,
+   kToken_search /* 95 */ ,
+   kToken_select /* 96 */ ,
+   kToken_self /* 97 */ ,
+   kToken_send /* 98 */ ,
+   kToken_setter /* 99 */ ,
+   kToken_sortedlist /* 100 */ ,
+   kToken_spoil /* 101 */ ,
+   kToken_struct /* 102 */ ,
+   kToken_style /* 103 */ ,
+   kToken_super /* 104 */ ,
+   kToken_switch /* 105 */ ,
+   kToken_syntax /* 106 */ ,
+   kToken_tag /* 107 */ ,
+   kToken_template /* 108 */ ,
+   kToken_then /* 109 */ ,
+   kToken_true /* 110 */ ,
+   kToken_typealias /* 111 */ ,
+   kToken_unused /* 112 */ ,
+   kToken_var /* 113 */ ,
+   kToken_warning /* 114 */ ,
+   kToken_while /* 115 */ ,
+   kToken_with /* 116 */ ,
+   kToken__25_app_2D_link /* 117 */ ,
+   kToken__25_app_2D_source /* 118 */ ,
+   kToken__25_makefile_2D_macosx /* 119 */ ,
+   kToken__25_makefile_2D_unix /* 120 */ ,
+   kToken__25_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx /* 121 */ ,
+   kToken__25_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx /* 122 */ ,
+   kToken__25_makefile_2D_win_33__32__2D_on_2D_macosx /* 123 */ ,
+   kToken__25_codeblocks_2D_windows /* 124 */ ,
+   kToken__25_codeblocks_2D_linux_33__32_ /* 125 */ ,
+   kToken__25_codeblocks_2D_linux_36__34_ /* 126 */ ,
+   kToken__25_applicationBundleBase /* 127 */ ,
+   kToken__25_MacOS /* 128 */ ,
+   kToken__25_MacOSDeployment /* 129 */ ,
+   kToken__25_quietOutputByDefault /* 130 */ ,
+   kToken__25_macCodeSign /* 131 */ ,
+   kToken__25_libpmAtPath /* 132 */ ,
+   kToken__25_tool_2D_source /* 133 */ ,
+   kToken__25_translate /* 134 */ ,
+   kToken__25_once /* 135 */ ,
+   kToken__25_usefull /* 136 */ ,
+   kToken__25_generatedInSeparateFile /* 137 */ ,
+   kToken__25_nonAtomicSelection /* 138 */ ,
+   kToken__25_templateEndMark /* 139 */ ,
+   kToken__25_preserved /* 140 */ ,
+   kToken__25_selector /* 141 */ ,
+   kToken__25_useGrammar /* 142 */ ,
+   kToken__2A_ /* 143 */ ,
+   kToken__2C_ /* 144 */ ,
+   kToken__2B_ /* 145 */ ,
+   kToken__26__2B_ /* 146 */ ,
+   kToken__26__2D_ /* 147 */ ,
+   kToken__26__2A_ /* 148 */ ,
+   kToken__26__2F_ /* 149 */ ,
+   kToken__3E_ /* 150 */ ,
+   kToken__3B_ /* 151 */ ,
+   kToken__3A_ /* 152 */ ,
+   kToken__3A__3E_ /* 153 */ ,
+   kToken__2D_ /* 154 */ ,
+   kToken__28_ /* 155 */ ,
+   kToken__29_ /* 156 */ ,
+   kToken__2D__3E_ /* 157 */ ,
+   kToken__3D__3D_ /* 158 */ ,
+   kToken__3D_ /* 159 */ ,
+   kToken__26__26_ /* 160 */ ,
+   kToken__5B_ /* 161 */ ,
+   kToken__5D_ /* 162 */ ,
+   kToken__2B__3D_ /* 163 */ ,
+   kToken__2D__3D_ /* 164 */ ,
+   kToken__2A__3D_ /* 165 */ ,
+   kToken__2F__3D_ /* 166 */ ,
+   kToken__2F_ /* 167 */ ,
+   kToken__21__3D_ /* 168 */ ,
+   kToken__3E__3D_ /* 169 */ ,
+   kToken__26_ /* 170 */ ,
+   kToken__7B_ /* 171 */ ,
+   kToken__7D_ /* 172 */ ,
+   kToken__60_ /* 173 */ ,
+   kToken__7C__7C_ /* 174 */ ,
+   kToken__7C_ /* 175 */ ,
+   kToken__5E_ /* 176 */ ,
+   kToken__3E__3E_ /* 177 */ ,
+   kToken__7E_ /* 178 */ ,
+   kToken__2D__2D_ /* 179 */ ,
+   kToken__2B__2B_ /* 180 */ ,
+   kToken__26__2D__2D_ /* 181 */ ,
+   kToken__26__2B__2B_ /* 182 */ ,
+   kToken__3D__3D__3D_ /* 183 */ ,
+   kToken__21__3D__3D_ /* 184 */ ,
+   kToken__3F__5E_ /* 185 */ ,
+   kToken__21__5E_ /* 186 */ } ;
 
 //--- Key words table 'galgasKeyWordList'
   public: static int32_t search_into_galgasKeyWordList (const String & inSearchedString) ;
@@ -591,7 +595,7 @@ class Lexique_galgasScanner_33_ : public Lexique {
   protected: virtual String getMessageForTerminal (const int32_t inTerminalSymbol) const override ;
 
 //--- Get terminal count
-  public: virtual int32_t terminalVocabularyCount (void) const override { return 182 ; }
+  public: virtual int32_t terminalVocabularyCount (void) const override { return 186 ; }
 
 //--- Get Token String
   public: virtual String getCurrentTokenString (const cToken * inTokenPtr) const override ;
@@ -11562,91 +11566,4 @@ class GALGAS_templateBlockInstructionForGeneration_2D_weak : public GALGAS_templ
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateBlockInstructionForGeneration_2D_weak ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @templateInstructionGetColumnLocationForGeneration reference class
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_templateInstructionGetColumnLocationForGeneration : public GALGAS_templateInstructionForGeneration {
-//--------------------------------- Default constructor
-  public: GALGAS_templateInstructionGetColumnLocationForGeneration (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GALGAS_templateInstructionGetColumnLocationForGeneration (const class cPtr_templateInstructionGetColumnLocationForGeneration * inSourcePtr) ;
-
-//--------------------------------- Property read access
-//-- Start of type generic part
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_templateInstructionGetColumnLocationForGeneration extractObject (const GALGAS_object & inObject,
-                                                                                         Compiler * inCompiler
-                                                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_templateInstructionGetColumnLocationForGeneration class_func_new (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_templateInstructionGetColumnLocationForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GALGAS_templateInstructionGetColumnLocationForGeneration class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionGetColumnLocationForGeneration ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 2: pointer class for @templateInstructionGetColumnLocationForGeneration class
-//
-//--------------------------------------------------------------------------------------------------
-
-class cPtr_templateInstructionGetColumnLocationForGeneration : public cPtr_templateInstructionForGeneration {
-
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const override ;
-  #endif
-//--- Extension method templateCodeGeneration
-  public: virtual void method_templateCodeGeneration (class GALGAS_string & ioGeneratedCode,
-           class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           class GALGAS_bool & ioUseColumnMarker,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Properties
-
-//--- Constructor
-  public: cPtr_templateInstructionGetColumnLocationForGeneration (LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
-
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
-
-} ;
 

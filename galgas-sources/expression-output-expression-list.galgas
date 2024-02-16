@@ -41,6 +41,11 @@ syntax extension galgas3ExpressionSyntax {
       $!selector:$ ?let selector
       <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
       outExpressionList += !selector !expression !.here
+    while
+      $!$
+      let selector = ["" here]
+      <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
+      outExpressionList += !selector !expression !.here
     end
   }
 

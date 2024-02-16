@@ -233,12 +233,10 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
 
   #·······························································································
 
-  rule <syntax_directed_translation_result> ?!@galgasDeclarationAST ioDeclarations
-                                            !@abstractGrammarInstructionSyntaxDirectedTranslationResult result {
-    $?selector:$ ?let selector
-    if selector.string != "" then
-      error selector : "the selector should be '?'" fixit { replace "?" }
-    end
+  rule <syntax_directed_translation_result>
+          ?!@galgasDeclarationAST ioDeclarations
+          !@abstractGrammarInstructionSyntaxDirectedTranslationResult result {
+    $?$
     select
       $*$
       result = @grammarInstructionSyntaxDirectedTranslationDropResult.new {!@location.here}
@@ -264,39 +262,44 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
     outActualInputParameterList = @actualInputParameterListAST {}
     repeat
     while
-      $?selector:$ ?let selector
-      $*$
-      outActualInputParameterList += !selector !@inputParameterAnonymousVariable.new
-    while
-      $?selector:$ ?let selector
-      $var$
-      let @lstring actualParameterTypeName
+      let @lstring selector
       select
-        actualParameterTypeName = ["" nowhere]
+        $?selector:$ ?selector
       or
-       <type_definition_ggs3> !?ioDeclarations ?actualParameterTypeName
+        $?$
+        selector = ["" here]
       end
-      $identifier$ ?let actualParameterName
-      outActualInputParameterList +=
-        !selector
-        !@inputParameterDeclaredVariable.new {!actualParameterTypeName !actualParameterName}
-    while
-      $?selector:$ ?let selector
-      $let$
-      let @lstring actualParameterTypeName
       select
-        actualParameterTypeName = ["" nowhere]
+        $*$
+        outActualInputParameterList += !selector !@inputParameterAnonymousVariable.new
       or
-       <type_definition_ggs3> !?ioDeclarations ?actualParameterTypeName
+        $var$
+        let @lstring actualParameterTypeName
+        select
+          actualParameterTypeName = ["" nowhere]
+        or
+         <type_definition_ggs3> !?ioDeclarations ?actualParameterTypeName
+        end
+        $identifier$ ?let actualParameterName
+        outActualInputParameterList +=
+          !selector
+          !@inputParameterDeclaredVariable.new {!actualParameterTypeName !actualParameterName}
+      or
+        $let$
+        let @lstring actualParameterTypeName
+        select
+          actualParameterTypeName = ["" nowhere]
+        or
+          <type_definition_ggs3> !?ioDeclarations ?actualParameterTypeName
+        end
+        $identifier$ ?let actualParameterName
+        outActualInputParameterList +=
+          !selector
+          !@inputParameterDeclaredConstant.new {!actualParameterTypeName !actualParameterName}
+      or
+        $identifier$ ?let actualParameterName
+        outActualInputParameterList += !selector !@inputParameterVariable.new {!actualParameterName}
       end
-      $identifier$ ?let actualParameterName
-      outActualInputParameterList +=
-        !selector
-        !@inputParameterDeclaredConstant.new {!actualParameterTypeName !actualParameterName}
-    while
-      $?selector:$ ?let selector
-      $identifier$ ?let actualParameterName
-      outActualInputParameterList += !selector !@inputParameterVariable.new {!actualParameterName}
     end
   }
 

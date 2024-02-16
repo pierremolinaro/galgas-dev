@@ -114,7 +114,13 @@ syntax galgas3GrammarComponentSyntax (galgasScanner3) {
   rule <label_formal_parameter_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                      !@lstring outArgumentName
                                      ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
-    $?selector:$ ?let selector
+    let @lstring selector
+    select
+      $?selector:$ ?selector
+    or
+      $?$
+      selector = ["" here]
+    end
     <type_definition_ggs3> !?ioDeclarations ?let @lstring mTypeName
     select
     or
@@ -134,7 +140,13 @@ syntax galgas3GrammarComponentSyntax (galgasScanner3) {
   rule <label_formal_parameter_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                      !@lstring outArgumentName
                                      ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
-    $?selector:$ ?let selector
+    let @lstring selector
+    select
+      $?selector:$ ?selector
+    or
+      $?$
+      selector = ["" here]
+    end
     $let$
     <type_definition_ggs3> !?ioDeclarations ?let @lstring mTypeName
     select
@@ -155,7 +167,13 @@ syntax galgas3GrammarComponentSyntax (galgasScanner3) {
   rule <label_formal_parameter_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                      !@lstring outArgumentName
                                      ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
-    $?!selector:$ ?let selector
+    let @lstring selector
+    select
+      $?!selector:$ ?selector
+    or
+      $?!$
+      selector = ["" here]
+    end
     <type_definition_ggs3> !?ioDeclarations ?let @lstring mTypeName
     select
     or
@@ -175,7 +193,13 @@ syntax galgas3GrammarComponentSyntax (galgasScanner3) {
   rule <label_formal_parameter_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                      !@lstring outArgumentName
                                      ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
-    $!selector:$ ?let selector
+    let @lstring selector
+    select
+      $!selector:$ ?selector
+    or
+      $!$
+      selector = ["" here]
+    end
     <type_definition_ggs3> !?ioDeclarations ?let @lstring mTypeName
     $identifier$ ?outArgumentName
     ioStartSymbolLabelFormalParameterList +=

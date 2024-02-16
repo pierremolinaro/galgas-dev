@@ -155,15 +155,3 @@ void routine_analyzeConstructorInvocation_3F__26__3F__3F__26__26__3F__3F__3F__3F
                                                                                                    class Compiler * inCompiler
                                                                                                    COMMA_LOCATION_ARGS) ;
 
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'checkAssignmentTypes???'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_checkAssignmentTypes_3F__3F__3F_ (const class GALGAS_unifiedTypeMapEntry constinArgument0,
-                                               const class GALGAS_unifiedTypeMapEntry constinArgument1,
-                                               const class GALGAS_location constinArgument2,
-                                               class Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) ;
-

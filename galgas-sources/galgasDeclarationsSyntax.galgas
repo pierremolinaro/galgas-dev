@@ -231,6 +231,19 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
         end
         $identifier$ ?let argumentName
         filewrapperTemplateFormalInputParameters += !selector !typeName !argumentName !isUnused
+      while
+        $?$
+        let selector = ["" here]
+        <type_definition_ggs3> !?ioDeclarations ?let typeName
+        let @bool isUnused
+        select
+          isUnused = false
+        or
+          $unused$
+          isUnused = true
+        end
+        $identifier$ ?let argumentName
+        filewrapperTemplateFormalInputParameters += !selector !typeName !argumentName !isUnused
       end
       outFilewrapperTemplateList +=
         !mFilewrapperTemplateName

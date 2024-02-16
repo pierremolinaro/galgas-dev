@@ -2691,14 +2691,14 @@ static const char * gNonTerminalNames_templateGrammar [51] = {
 
 static const int32_t gActionTable_templateGrammar [] = {
 // State S0 (index = 0)
-  Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1)
+  Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
 , Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
 , Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
 , Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
-, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (82)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (83)
 , BOTTOM_UP_END ()
 // State S1 (index = 17)
 , Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
@@ -2715,7 +2715,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
 , BOTTOM_UP_END ()
 // State S2 (index = 42)
-, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (22)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (22)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (22)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (22)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (22)
@@ -2732,7 +2732,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (22)
 , BOTTOM_UP_END ()
 // State S3 (index = 73)
-, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (23)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (23)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (23)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (23)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (23)
@@ -2779,7 +2779,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 // State S6 (index = 154)
 , Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_SHIFT (32)
 , Lexique_galgasTemplateScanner::kToken__3C_, BOTTOM_UP_SHIFT (33)
-, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_REDUCE (90)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_REDUCE (91)
 , BOTTOM_UP_END ()
 // State S7 (index = 161)
 , Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
@@ -2796,14 +2796,14 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
 , BOTTOM_UP_END ()
 // State S8 (index = 186)
-, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
 , Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
 , Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
 , Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
-, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (82)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (83)
 , BOTTOM_UP_END ()
 // State S9 (index = 203)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_ACCEPT ()
@@ -2849,6 +2849,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (9)
 , Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (9)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (9)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (9)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (9)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (9)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (9)
@@ -2867,7 +2868,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (9)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (9)
 , BOTTOM_UP_END ()
-// State S13 (index = 315)
+// State S13 (index = 317)
 , Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
 , Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
@@ -2881,7 +2882,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
 , Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
 , BOTTOM_UP_END ()
-// State S14 (index = 340)
+// State S14 (index = 342)
 , Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
 , Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
@@ -2895,7 +2896,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
 , Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
 , BOTTOM_UP_END ()
-// State S15 (index = 365)
+// State S15 (index = 367)
 , Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
 , Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
@@ -2909,7 +2910,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
 , Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
 , BOTTOM_UP_END ()
-// State S16 (index = 390)
+// State S16 (index = 392)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (11)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (11)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (11)
@@ -2932,6 +2933,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (11)
 , Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (11)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (11)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (11)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (11)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (11)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (11)
@@ -2950,7 +2952,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (11)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (11)
 , BOTTOM_UP_END ()
-// State S17 (index = 469)
+// State S17 (index = 473)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (12)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (12)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (12)
@@ -2973,6 +2975,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (12)
 , Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (12)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (12)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (12)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (12)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (12)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (12)
@@ -2991,7 +2994,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (12)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (12)
 , BOTTOM_UP_END ()
-// State S18 (index = 548)
+// State S18 (index = 554)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (13)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (13)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (13)
@@ -3014,6 +3017,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (13)
 , Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (13)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (13)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (13)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (13)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (13)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (13)
@@ -3032,7 +3036,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (13)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (13)
 , BOTTOM_UP_END ()
-// State S19 (index = 627)
+// State S19 (index = 635)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (14)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (14)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (14)
@@ -3055,6 +3059,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (14)
 , Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (14)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (14)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (14)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (14)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (14)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (14)
@@ -3073,7 +3078,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (14)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (14)
 , BOTTOM_UP_END ()
-// State S20 (index = 706)
+// State S20 (index = 716)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (15)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (15)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (15)
@@ -3096,6 +3101,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (15)
 , Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (15)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (15)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (15)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (15)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (15)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (15)
@@ -3114,7 +3120,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (15)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (15)
 , BOTTOM_UP_END ()
-// State S21 (index = 785)
+// State S21 (index = 797)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (58)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (58)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (58)
@@ -3138,6 +3144,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (58)
 , Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (58)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (58)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (58)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (58)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (58)
@@ -3156,7 +3163,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (58)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (58)
 , BOTTOM_UP_END ()
-// State S22 (index = 866)
+// State S22 (index = 880)
 , Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
 , Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
@@ -3174,8 +3181,8 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_filewrapper, BOTTOM_UP_SHIFT (46)
 , Lexique_galgasTemplateScanner::kToken_option, BOTTOM_UP_SHIFT (47)
 , BOTTOM_UP_END ()
-// State S23 (index = 899)
-, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (21)
+// State S23 (index = 913)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (21)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (21)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (21)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (21)
@@ -3191,13 +3198,14 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (21)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (21)
 , BOTTOM_UP_END ()
-// State S24 (index = 930)
+// State S24 (index = 944)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_SHIFT (50)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_SHIFT (51)
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (35)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (35)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (35)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (35)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (35)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (35)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (35)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (35)
@@ -3216,7 +3224,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (35)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (35)
 , BOTTOM_UP_END ()
-// State S25 (index = 977)
+// State S25 (index = 993)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (38)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (38)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_SHIFT (53)
@@ -3224,6 +3232,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (38)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (38)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (38)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (38)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (38)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (38)
@@ -3242,7 +3251,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (38)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (38)
 , BOTTOM_UP_END ()
-// State S26 (index = 1026)
+// State S26 (index = 1044)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (40)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (40)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (40)
@@ -3256,6 +3265,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (40)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (40)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (40)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (40)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (40)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (40)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (40)
@@ -3274,7 +3284,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (40)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (40)
 , BOTTOM_UP_END ()
-// State S27 (index = 1087)
+// State S27 (index = 1107)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (47)
@@ -3292,6 +3302,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (47)
@@ -3310,7 +3321,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (47)
 , BOTTOM_UP_END ()
-// State S28 (index = 1156)
+// State S28 (index = 1178)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (52)
@@ -3331,6 +3342,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (52)
@@ -3349,7 +3361,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (52)
 , BOTTOM_UP_END ()
-// State S29 (index = 1231)
+// State S29 (index = 1255)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (56)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (56)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (56)
@@ -3372,6 +3384,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (56)
 , Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_SHIFT (72)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (56)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (56)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (56)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (56)
@@ -3390,29 +3403,29 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (56)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (56)
 , BOTTOM_UP_END ()
-// State S30 (index = 1310)
+// State S30 (index = 1336)
 , Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_SHIFT (74)
 , BOTTOM_UP_END ()
-// State S31 (index = 1313)
+// State S31 (index = 1339)
 , Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_SHIFT (75)
 , BOTTOM_UP_END ()
-// State S32 (index = 1316)
+// State S32 (index = 1342)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_REDUCE (93)
+, BOTTOM_UP_END ()
+// State S33 (index = 1345)
 , Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_REDUCE (92)
 , BOTTOM_UP_END ()
-// State S33 (index = 1319)
-, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_REDUCE (91)
-, BOTTOM_UP_END ()
-// State S34 (index = 1322)
+// State S34 (index = 1348)
 , Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (76)
 , BOTTOM_UP_END ()
-// State S35 (index = 1325)
-, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (109)
+// State S35 (index = 1351)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (110)
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_SHIFT (78)
 , BOTTOM_UP_END ()
-// State S36 (index = 1330)
-, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (83)
+// State S36 (index = 1356)
+, Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (84)
 , BOTTOM_UP_END ()
-// State S37 (index = 1333)
+// State S37 (index = 1359)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (6)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (6)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (6)
@@ -3433,6 +3446,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (6)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (6)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (6)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (6)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (6)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (6)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (6)
@@ -3451,12 +3465,13 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (6)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (6)
 , BOTTOM_UP_END ()
-// State S38 (index = 1408)
+// State S38 (index = 1436)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (70)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (70)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (80)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (81)
 , BOTTOM_UP_END ()
-// State S39 (index = 1415)
+// State S39 (index = 1445)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (7)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (7)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (7)
@@ -3477,6 +3492,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (7)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (7)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (7)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (7)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (7)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (7)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (7)
@@ -3495,7 +3511,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (7)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (7)
 , BOTTOM_UP_END ()
-// State S40 (index = 1490)
+// State S40 (index = 1522)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (8)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (8)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (8)
@@ -3516,6 +3532,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (8)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (8)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (8)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (8)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (8)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (8)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (8)
@@ -3534,10 +3551,10 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (8)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (8)
 , BOTTOM_UP_END ()
-// State S41 (index = 1565)
-, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_SHIFT (83)
+// State S41 (index = 1599)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_SHIFT (84)
 , BOTTOM_UP_END ()
-// State S42 (index = 1568)
+// State S42 (index = 1602)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (58)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (58)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (58)
@@ -3561,6 +3578,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (58)
 , Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (58)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (58)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (58)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (58)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (58)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (58)
@@ -3579,7 +3597,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (58)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (58)
 , BOTTOM_UP_END ()
-// State S43 (index = 1649)
+// State S43 (index = 1685)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (16)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (16)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (16)
@@ -3602,6 +3620,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (16)
 , Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (16)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (16)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (16)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (16)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (16)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (16)
@@ -3620,7 +3639,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (16)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (16)
 , BOTTOM_UP_END ()
-// State S44 (index = 1728)
+// State S44 (index = 1766)
 , Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
 , Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
@@ -3634,20 +3653,20 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
 , Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
 , BOTTOM_UP_END ()
-// State S45 (index = 1753)
-, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (86)
-, BOTTOM_UP_END ()
-// State S46 (index = 1756)
+// State S45 (index = 1791)
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (87)
 , BOTTOM_UP_END ()
-// State S47 (index = 1759)
-, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_SHIFT (88)
-, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (89)
+// State S46 (index = 1794)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (88)
 , BOTTOM_UP_END ()
-// State S48 (index = 1764)
-, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (91)
+// State S47 (index = 1797)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_SHIFT (89)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (90)
 , BOTTOM_UP_END ()
-// State S49 (index = 1767)
+// State S48 (index = 1802)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (92)
+, BOTTOM_UP_END ()
+// State S49 (index = 1805)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (17)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (17)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (17)
@@ -3670,6 +3689,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (17)
 , Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (17)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (17)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (17)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (17)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (17)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (17)
@@ -3688,7 +3708,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (17)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (17)
 , BOTTOM_UP_END ()
-// State S50 (index = 1846)
+// State S50 (index = 1886)
 , Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
 , Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
@@ -3702,7 +3722,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
 , Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
 , BOTTOM_UP_END ()
-// State S51 (index = 1871)
+// State S51 (index = 1911)
 , Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
 , Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
@@ -3716,11 +3736,12 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
 , Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
 , BOTTOM_UP_END ()
-// State S52 (index = 1896)
+// State S52 (index = 1936)
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (0)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (0)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (0)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (0)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (0)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (0)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (0)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (0)
@@ -3739,7 +3760,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (0)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (0)
 , BOTTOM_UP_END ()
-// State S53 (index = 1939)
+// State S53 (index = 1981)
 , Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
 , Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
@@ -3753,13 +3774,14 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
 , Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
 , BOTTOM_UP_END ()
-// State S54 (index = 1964)
+// State S54 (index = 2006)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (1)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (1)
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (1)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (1)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (1)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (1)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (1)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (1)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (1)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (1)
@@ -3778,7 +3800,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (1)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (1)
 , BOTTOM_UP_END ()
-// State S55 (index = 2011)
+// State S55 (index = 2055)
 , Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
 , Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
@@ -3792,7 +3814,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
 , Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
 , BOTTOM_UP_END ()
-// State S56 (index = 2036)
+// State S56 (index = 2080)
 , Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
 , Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
@@ -3806,7 +3828,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
 , Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
 , BOTTOM_UP_END ()
-// State S57 (index = 2061)
+// State S57 (index = 2105)
 , Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
 , Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
@@ -3820,7 +3842,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
 , Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
 , BOTTOM_UP_END ()
-// State S58 (index = 2086)
+// State S58 (index = 2130)
 , Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
 , Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
@@ -3834,7 +3856,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
 , Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
 , BOTTOM_UP_END ()
-// State S59 (index = 2111)
+// State S59 (index = 2155)
 , Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
 , Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
@@ -3848,7 +3870,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
 , Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
 , BOTTOM_UP_END ()
-// State S60 (index = 2136)
+// State S60 (index = 2180)
 , Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
 , Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
@@ -3862,7 +3884,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
 , Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
 , BOTTOM_UP_END ()
-// State S61 (index = 2161)
+// State S61 (index = 2205)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (2)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (2)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (2)
@@ -3870,6 +3892,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (2)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (2)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (2)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (2)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (2)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (2)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (2)
@@ -3888,7 +3911,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (2)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (2)
 , BOTTOM_UP_END ()
-// State S62 (index = 2210)
+// State S62 (index = 2256)
 , Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
 , Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
@@ -3902,7 +3925,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
 , Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
 , BOTTOM_UP_END ()
-// State S63 (index = 2235)
+// State S63 (index = 2281)
 , Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
 , Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
@@ -3916,7 +3939,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
 , Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
 , BOTTOM_UP_END ()
-// State S64 (index = 2260)
+// State S64 (index = 2306)
 , Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
 , Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
@@ -3930,7 +3953,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
 , Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
 , BOTTOM_UP_END ()
-// State S65 (index = 2285)
+// State S65 (index = 2331)
 , Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
 , Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
@@ -3944,7 +3967,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
 , Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
 , BOTTOM_UP_END ()
-// State S66 (index = 2310)
+// State S66 (index = 2356)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (3)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (3)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (3)
@@ -3958,6 +3981,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (3)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (3)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (3)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (3)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (3)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (3)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (3)
@@ -3976,7 +4000,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (3)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (3)
 , BOTTOM_UP_END ()
-// State S67 (index = 2371)
+// State S67 (index = 2419)
 , Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
 , Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
@@ -3990,7 +4014,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
 , Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
 , BOTTOM_UP_END ()
-// State S68 (index = 2396)
+// State S68 (index = 2444)
 , Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
 , Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
@@ -4004,7 +4028,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
 , Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
 , BOTTOM_UP_END ()
-// State S69 (index = 2421)
+// State S69 (index = 2469)
 , Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
 , Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
@@ -4018,7 +4042,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
 , Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
 , BOTTOM_UP_END ()
-// State S70 (index = 2446)
+// State S70 (index = 2494)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (4)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (4)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (4)
@@ -4036,6 +4060,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (4)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (4)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (4)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (4)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (4)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (4)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (4)
@@ -4054,15 +4079,15 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (4)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (4)
 , BOTTOM_UP_END ()
-// State S71 (index = 2515)
-, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (108)
+// State S71 (index = 2565)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (109)
 , BOTTOM_UP_END ()
-// State S72 (index = 2518)
-, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_SHIFT (109)
-, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_SHIFT (110)
-, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_SHIFT (111)
+// State S72 (index = 2568)
+, Lexique_galgasTemplateScanner::kToken__3D__3D_, BOTTOM_UP_SHIFT (110)
+, Lexique_galgasTemplateScanner::kToken__3E__3D_, BOTTOM_UP_SHIFT (111)
+, Lexique_galgasTemplateScanner::kToken__3E_, BOTTOM_UP_SHIFT (112)
 , BOTTOM_UP_END ()
-// State S73 (index = 2525)
+// State S73 (index = 2575)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (5)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (5)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (5)
@@ -4083,6 +4108,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (5)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (5)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (5)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (5)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (5)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (5)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (5)
@@ -4101,45 +4127,45 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (5)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (5)
 , BOTTOM_UP_END ()
-// State S74 (index = 2600)
-, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1)
+// State S74 (index = 2652)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
-, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (72)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (73)
 , Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
 , Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
 , Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
 , BOTTOM_UP_END ()
-// State S75 (index = 2617)
-, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1)
+// State S75 (index = 2669)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
-, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (76)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (77)
 , Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
-, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (76)
-, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (76)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (77)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (77)
 , Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
 , Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
 , BOTTOM_UP_END ()
-// State S76 (index = 2638)
-, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_SHIFT (117)
-, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (118)
-, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_SHIFT (119)
-, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (120)
+// State S76 (index = 2690)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_SHIFT (118)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (119)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_SHIFT (120)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (121)
 , BOTTOM_UP_END ()
-// State S77 (index = 2647)
-, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_SHIFT (122)
-, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (93)
+// State S77 (index = 2699)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_SHIFT (123)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (94)
 , BOTTOM_UP_END ()
-// State S78 (index = 2652)
-, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (124)
+// State S78 (index = 2704)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (125)
 , BOTTOM_UP_END ()
-// State S79 (index = 2655)
-, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_SHIFT (126)
+// State S79 (index = 2707)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_SHIFT (127)
 , BOTTOM_UP_END ()
-// State S80 (index = 2658)
+// State S80 (index = 2710)
 , Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
 , Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
@@ -4153,14 +4179,28 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
 , Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
 , BOTTOM_UP_END ()
-// State S81 (index = 2683)
-, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_SHIFT (128)
+// State S81 (index = 2735)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
 , BOTTOM_UP_END ()
-// State S82 (index = 2686)
+// State S82 (index = 2760)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_SHIFT (130)
+, BOTTOM_UP_END ()
+// State S83 (index = 2763)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (20)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (20)
 , BOTTOM_UP_END ()
-// State S83 (index = 2691)
+// State S84 (index = 2768)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (10)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (10)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (10)
@@ -4183,6 +4223,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (10)
 , Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (10)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (10)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (10)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (10)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (10)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (10)
@@ -4201,7 +4242,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (10)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (10)
 , BOTTOM_UP_END ()
-// State S84 (index = 2770)
+// State S85 (index = 2849)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (59)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (59)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (59)
@@ -4224,6 +4265,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (59)
 , Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (59)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (59)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (59)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (59)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (59)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (59)
@@ -4242,38 +4284,41 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (59)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (59)
 , BOTTOM_UP_END ()
-// State S85 (index = 2849)
-, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (129)
+// State S86 (index = 2930)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (131)
 , BOTTOM_UP_END ()
-// State S86 (index = 2852)
+// State S87 (index = 2933)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (70)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (70)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (80)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (81)
 , BOTTOM_UP_END ()
-// State S87 (index = 2859)
-, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_SHIFT (131)
-, BOTTOM_UP_END ()
-// State S88 (index = 2862)
-, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (132)
-, BOTTOM_UP_END ()
-// State S89 (index = 2865)
+// State S88 (index = 2942)
 , Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_SHIFT (133)
 , BOTTOM_UP_END ()
-// State S90 (index = 2868)
-, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_SHIFT (134)
+// State S89 (index = 2945)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (134)
 , BOTTOM_UP_END ()
-// State S91 (index = 2871)
+// State S90 (index = 2948)
+, Lexique_galgasTemplateScanner::kToken__2E_, BOTTOM_UP_SHIFT (135)
+, BOTTOM_UP_END ()
+// State S91 (index = 2951)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_SHIFT (136)
+, BOTTOM_UP_END ()
+// State S92 (index = 2954)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (70)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (70)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (80)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (81)
 , BOTTOM_UP_END ()
-// State S92 (index = 2878)
+// State S93 (index = 2963)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_SHIFT (50)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_SHIFT (51)
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (35)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (35)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (35)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (35)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (35)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (35)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (35)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (35)
@@ -4292,13 +4337,14 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (35)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (35)
 , BOTTOM_UP_END ()
-// State S93 (index = 2925)
+// State S94 (index = 3012)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_SHIFT (50)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_SHIFT (51)
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (35)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (35)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (35)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (35)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (35)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (35)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (35)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (35)
@@ -4317,7 +4363,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (35)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (35)
 , BOTTOM_UP_END ()
-// State S94 (index = 2972)
+// State S95 (index = 3061)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (38)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (38)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_SHIFT (53)
@@ -4325,6 +4371,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (38)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (38)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (38)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (38)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (38)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (38)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (38)
@@ -4343,7 +4390,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (38)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (38)
 , BOTTOM_UP_END ()
-// State S95 (index = 3021)
+// State S96 (index = 3112)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (41)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (41)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (41)
@@ -4351,6 +4398,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (41)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (41)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (41)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (41)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (41)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (41)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (41)
@@ -4369,7 +4417,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (41)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (41)
 , BOTTOM_UP_END ()
-// State S96 (index = 3070)
+// State S97 (index = 3163)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (42)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (42)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (42)
@@ -4377,6 +4425,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (42)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (42)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (42)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (42)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (42)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (42)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (42)
@@ -4395,7 +4444,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (42)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (42)
 , BOTTOM_UP_END ()
-// State S97 (index = 3119)
+// State S98 (index = 3214)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (43)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (43)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (43)
@@ -4403,6 +4452,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (43)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (43)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (43)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (43)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (43)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (43)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (43)
@@ -4421,7 +4471,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (43)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (43)
 , BOTTOM_UP_END ()
-// State S98 (index = 3168)
+// State S99 (index = 3265)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (44)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (44)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (44)
@@ -4429,6 +4479,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (44)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (44)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (44)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (44)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (44)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (44)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (44)
@@ -4447,7 +4498,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (44)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (44)
 , BOTTOM_UP_END ()
-// State S99 (index = 3217)
+// State S100 (index = 3316)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (45)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (45)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (45)
@@ -4455,6 +4506,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (45)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (45)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (45)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (45)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (45)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (45)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (45)
@@ -4473,7 +4525,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (45)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (45)
 , BOTTOM_UP_END ()
-// State S100 (index = 3266)
+// State S101 (index = 3367)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (46)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (46)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (46)
@@ -4481,6 +4533,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (46)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (46)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (46)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (46)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (46)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (46)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (46)
@@ -4499,7 +4552,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (46)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (46)
 , BOTTOM_UP_END ()
-// State S101 (index = 3315)
+// State S102 (index = 3418)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (47)
@@ -4517,6 +4570,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (47)
@@ -4535,7 +4589,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (47)
 , BOTTOM_UP_END ()
-// State S102 (index = 3384)
+// State S103 (index = 3489)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (47)
@@ -4553,6 +4607,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (47)
@@ -4571,7 +4626,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (47)
 , BOTTOM_UP_END ()
-// State S103 (index = 3453)
+// State S104 (index = 3560)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (47)
@@ -4589,6 +4644,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (47)
@@ -4607,7 +4663,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (47)
 , BOTTOM_UP_END ()
-// State S104 (index = 3522)
+// State S105 (index = 3631)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (47)
@@ -4625,6 +4681,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (47)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (47)
@@ -4643,7 +4700,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (47)
 , BOTTOM_UP_END ()
-// State S105 (index = 3591)
+// State S106 (index = 3702)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (52)
@@ -4664,6 +4721,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (52)
@@ -4682,7 +4740,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (52)
 , BOTTOM_UP_END ()
-// State S106 (index = 3666)
+// State S107 (index = 3779)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (52)
@@ -4703,6 +4761,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (52)
@@ -4721,7 +4780,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (52)
 , BOTTOM_UP_END ()
-// State S107 (index = 3741)
+// State S108 (index = 3856)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (52)
@@ -4742,6 +4801,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (52)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (52)
@@ -4760,7 +4820,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (52)
 , BOTTOM_UP_END ()
-// State S108 (index = 3816)
+// State S109 (index = 3933)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (56)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (56)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (56)
@@ -4782,6 +4842,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (56)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (56)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (56)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (56)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (56)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (56)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (56)
@@ -4800,95 +4861,95 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (56)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (56)
 , BOTTOM_UP_END ()
-// State S109 (index = 3893)
+// State S110 (index = 4012)
 , Lexique_galgasTemplateScanner::kToken__40_type, BOTTOM_UP_REDUCE (67)
 , BOTTOM_UP_END ()
-// State S110 (index = 3896)
+// State S111 (index = 4015)
 , Lexique_galgasTemplateScanner::kToken__40_type, BOTTOM_UP_REDUCE (68)
 , BOTTOM_UP_END ()
-// State S111 (index = 3899)
+// State S112 (index = 4018)
 , Lexique_galgasTemplateScanner::kToken__40_type, BOTTOM_UP_REDUCE (69)
 , BOTTOM_UP_END ()
-// State S112 (index = 3902)
-, Lexique_galgasTemplateScanner::kToken__40_type, BOTTOM_UP_SHIFT (147)
+// State S113 (index = 4021)
+, Lexique_galgasTemplateScanner::kToken__40_type, BOTTOM_UP_SHIFT (149)
 , BOTTOM_UP_END ()
-// State S113 (index = 3905)
-, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1)
+// State S114 (index = 4024)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
-, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (72)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (73)
 , Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
 , Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
 , Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
 , BOTTOM_UP_END ()
-// State S114 (index = 3922)
-, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_SHIFT (149)
+// State S115 (index = 4041)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_SHIFT (151)
 , BOTTOM_UP_END ()
-// State S115 (index = 3925)
-, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1)
+// State S116 (index = 4044)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
-, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (76)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (77)
 , Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
-, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (76)
-, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (76)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (77)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (77)
 , Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
 , Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
 , BOTTOM_UP_END ()
-// State S116 (index = 3946)
-, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (74)
-, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_SHIFT (151)
-, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (74)
+// State S117 (index = 4065)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (75)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_SHIFT (153)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (75)
 , BOTTOM_UP_END ()
-// State S117 (index = 3953)
+// State S118 (index = 4072)
 , Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (28)
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (28)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (28)
 , Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_REDUCE (28)
 , BOTTOM_UP_END ()
-// State S118 (index = 3962)
+// State S119 (index = 4081)
 , Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (29)
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (29)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (29)
 , Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_REDUCE (29)
 , BOTTOM_UP_END ()
-// State S119 (index = 3971)
-, Lexique_galgasTemplateScanner::kToken_in, BOTTOM_UP_SHIFT (153)
+// State S120 (index = 4090)
+, Lexique_galgasTemplateScanner::kToken_in, BOTTOM_UP_SHIFT (155)
 , BOTTOM_UP_END ()
-// State S120 (index = 3974)
-, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_SHIFT (154)
+// State S121 (index = 4093)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_SHIFT (156)
 , BOTTOM_UP_END ()
-// State S121 (index = 3977)
-, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_SHIFT (117)
-, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (118)
-, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (86)
-, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (120)
+// State S122 (index = 4096)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_SHIFT (118)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (119)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (87)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (121)
 , BOTTOM_UP_END ()
-// State S122 (index = 3986)
-, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1)
+// State S123 (index = 4105)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
 , Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
 , Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
-, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (95)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (96)
 , Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
 , BOTTOM_UP_END ()
-// State S123 (index = 4003)
-, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_SHIFT (159)
+// State S124 (index = 4122)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_SHIFT (161)
 , BOTTOM_UP_END ()
-// State S124 (index = 4006)
-, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_REDUCE (113)
-, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (113)
-, Lexique_galgasTemplateScanner::kToken__2C_, BOTTOM_UP_SHIFT (160)
+// State S125 (index = 4125)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_REDUCE (114)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (114)
+, Lexique_galgasTemplateScanner::kToken__2C_, BOTTOM_UP_SHIFT (162)
 , BOTTOM_UP_END ()
-// State S125 (index = 4013)
-, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_SHIFT (162)
+// State S126 (index = 4132)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_SHIFT (164)
 , BOTTOM_UP_END ()
-// State S126 (index = 4016)
-, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (33)
+// State S127 (index = 4135)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (33)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (33)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (33)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (33)
@@ -4904,12 +4965,19 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (33)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (33)
 , BOTTOM_UP_END ()
-// State S127 (index = 4047)
+// State S128 (index = 4166)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (70)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (70)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (80)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (81)
 , BOTTOM_UP_END ()
-// State S128 (index = 4054)
+// State S129 (index = 4175)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (70)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (70)
+, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (80)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (81)
+, BOTTOM_UP_END ()
+// State S130 (index = 4184)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (18)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (18)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (18)
@@ -4932,6 +5000,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (18)
 , Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (18)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (18)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (18)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (18)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (18)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (18)
@@ -4950,24 +5019,25 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (18)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (18)
 , BOTTOM_UP_END ()
-// State S129 (index = 4133)
+// State S131 (index = 4265)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (70)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (70)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (80)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (81)
 , BOTTOM_UP_END ()
-// State S130 (index = 4140)
-, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_SHIFT (165)
+// State S132 (index = 4274)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_SHIFT (168)
 , BOTTOM_UP_END ()
-// State S131 (index = 4143)
-, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (166)
+// State S133 (index = 4277)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (169)
 , BOTTOM_UP_END ()
-// State S132 (index = 4146)
-, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (167)
+// State S134 (index = 4280)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (170)
 , BOTTOM_UP_END ()
-// State S133 (index = 4149)
-, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (168)
+// State S135 (index = 4283)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (171)
 , BOTTOM_UP_END ()
-// State S134 (index = 4152)
+// State S136 (index = 4286)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (64)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (64)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (64)
@@ -4990,6 +5060,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (64)
 , Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (64)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (64)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (64)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (64)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (64)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (64)
@@ -5008,14 +5079,15 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (64)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (64)
 , BOTTOM_UP_END ()
-// State S135 (index = 4231)
-, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_SHIFT (169)
+// State S137 (index = 4367)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_SHIFT (172)
 , BOTTOM_UP_END ()
-// State S136 (index = 4234)
+// State S138 (index = 4370)
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (36)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (36)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (36)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (36)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (36)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (36)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (36)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (36)
@@ -5034,11 +5106,12 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (36)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (36)
 , BOTTOM_UP_END ()
-// State S137 (index = 4277)
+// State S139 (index = 4415)
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (37)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (37)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (37)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (37)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (37)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (37)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (37)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (37)
@@ -5057,13 +5130,14 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (37)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (37)
 , BOTTOM_UP_END ()
-// State S138 (index = 4320)
+// State S140 (index = 4460)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (39)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (39)
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (39)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (39)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (39)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (39)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (39)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (39)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (39)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (39)
@@ -5082,7 +5156,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (39)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (39)
 , BOTTOM_UP_END ()
-// State S139 (index = 4367)
+// State S141 (index = 4509)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (48)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (48)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (48)
@@ -5096,6 +5170,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (48)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (48)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (48)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (48)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (48)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (48)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (48)
@@ -5114,7 +5189,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (48)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (48)
 , BOTTOM_UP_END ()
-// State S140 (index = 4428)
+// State S142 (index = 4572)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (49)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (49)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (49)
@@ -5128,6 +5203,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (49)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (49)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (49)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (49)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (49)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (49)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (49)
@@ -5146,7 +5222,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (49)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (49)
 , BOTTOM_UP_END ()
-// State S141 (index = 4489)
+// State S143 (index = 4635)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (50)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (50)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (50)
@@ -5160,6 +5236,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (50)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (50)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (50)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (50)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (50)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (50)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (50)
@@ -5178,7 +5255,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (50)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (50)
 , BOTTOM_UP_END ()
-// State S142 (index = 4550)
+// State S144 (index = 4698)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (51)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (51)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (51)
@@ -5192,6 +5269,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (51)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (51)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (51)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (51)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (51)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (51)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (51)
@@ -5210,7 +5288,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (51)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (51)
 , BOTTOM_UP_END ()
-// State S143 (index = 4611)
+// State S145 (index = 4761)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (53)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (53)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (53)
@@ -5228,6 +5306,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (53)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (53)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (53)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (53)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (53)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (53)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (53)
@@ -5246,7 +5325,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (53)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (53)
 , BOTTOM_UP_END ()
-// State S144 (index = 4680)
+// State S146 (index = 4832)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (54)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (54)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (54)
@@ -5264,6 +5343,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (54)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (54)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (54)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (54)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (54)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (54)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (54)
@@ -5282,7 +5362,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (54)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (54)
 , BOTTOM_UP_END ()
-// State S145 (index = 4749)
+// State S147 (index = 4903)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (55)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (55)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (55)
@@ -5300,6 +5380,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (55)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (55)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (55)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (55)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (55)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (55)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (55)
@@ -5318,7 +5399,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (55)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (55)
 , BOTTOM_UP_END ()
-// State S146 (index = 4818)
+// State S148 (index = 4974)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (57)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (57)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (57)
@@ -5339,6 +5420,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (57)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (57)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (57)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (57)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (57)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (57)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (57)
@@ -5357,7 +5439,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (57)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (57)
 , BOTTOM_UP_END ()
-// State S147 (index = 4893)
+// State S149 (index = 5051)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (19)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (19)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (19)
@@ -5380,6 +5462,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (19)
 , Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (19)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (19)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (19)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (19)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (19)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (19)
@@ -5398,11 +5481,11 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (19)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (19)
 , BOTTOM_UP_END ()
-// State S148 (index = 4972)
-, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (73)
+// State S150 (index = 5132)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (74)
 , BOTTOM_UP_END ()
-// State S149 (index = 4975)
-, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (24)
+// State S151 (index = 5135)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (24)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (24)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (24)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (24)
@@ -5418,30 +5501,12 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (24)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (24)
 , BOTTOM_UP_END ()
-// State S150 (index = 5006)
-, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (77)
-, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (77)
-, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (77)
-, BOTTOM_UP_END ()
-// State S151 (index = 5013)
-, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
-, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
-, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
-, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
-, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
-, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
-, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
-, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
-, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
-, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
-, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
-, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
-, BOTTOM_UP_END ()
-// State S152 (index = 5038)
+// State S152 (index = 5166)
 , Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (78)
-, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_SHIFT (171)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (78)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (78)
 , BOTTOM_UP_END ()
-// State S153 (index = 5043)
+// State S153 (index = 5173)
 , Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
 , Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
@@ -5455,73 +5520,95 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
 , Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
 , BOTTOM_UP_END ()
-// State S154 (index = 5068)
+// State S154 (index = 5198)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (79)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_SHIFT (174)
+, BOTTOM_UP_END ()
+// State S155 (index = 5203)
+, Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
+, Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
+, Lexique_galgasTemplateScanner::kToken__7E_, BOTTOM_UP_SHIFT (14)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (15)
+, Lexique_galgasTemplateScanner::kToken_true, BOTTOM_UP_SHIFT (16)
+, Lexique_galgasTemplateScanner::kToken_false, BOTTOM_UP_SHIFT (17)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (18)
+, Lexique_galgasTemplateScanner::kToken_double_2E_xxx, BOTTOM_UP_SHIFT (19)
+, Lexique_galgasTemplateScanner::kToken__27_char_27_, BOTTOM_UP_SHIFT (20)
+, Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
+, Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END ()
+// State S156 (index = 5228)
 , Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (27)
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (27)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (27)
 , Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_REDUCE (27)
 , BOTTOM_UP_END ()
-// State S155 (index = 5077)
-, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_SHIFT (117)
-, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (118)
-, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (86)
-, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (120)
+// State S157 (index = 5237)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_SHIFT (118)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (119)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (87)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (121)
 , BOTTOM_UP_END ()
-// State S156 (index = 5086)
-, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_SHIFT (175)
+// State S158 (index = 5246)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_SHIFT (178)
 , BOTTOM_UP_END ()
-// State S157 (index = 5089)
-, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1)
+// State S159 (index = 5249)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
 , Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
 , Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (96)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
+, BOTTOM_UP_END ()
+// State S160 (index = 5266)
 , Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (95)
-, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
 , BOTTOM_UP_END ()
-// State S158 (index = 5106)
-, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (94)
-, BOTTOM_UP_END ()
-// State S159 (index = 5109)
-, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (177)
-, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (97)
-, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (97)
-, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (97)
-, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (97)
-, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (97)
-, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (97)
-, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (97)
-, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (97)
-, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (97)
-, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (97)
-, BOTTOM_UP_END ()
-// State S160 (index = 5132)
-, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (179)
-, BOTTOM_UP_END ()
-// State S161 (index = 5135)
+// State S161 (index = 5269)
 , Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (180)
-, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (115)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (98)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (98)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (98)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (98)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (98)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (98)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (98)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (98)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (98)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (98)
 , BOTTOM_UP_END ()
-// State S162 (index = 5140)
-, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1)
+// State S162 (index = 5292)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (182)
+, BOTTOM_UP_END ()
+// State S163 (index = 5295)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_SHIFT (183)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (116)
+, BOTTOM_UP_END ()
+// State S164 (index = 5300)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
-, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (111)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (112)
 , Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
 , Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
 , Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
-, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (111)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (112)
 , BOTTOM_UP_END ()
-// State S163 (index = 5159)
+// State S165 (index = 5319)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (71)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (71)
 , BOTTOM_UP_END ()
-// State S164 (index = 5164)
-, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_SHIFT (184)
+// State S166 (index = 5324)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (72)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (72)
 , BOTTOM_UP_END ()
-// State S165 (index = 5167)
+// State S167 (index = 5329)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_SHIFT (187)
+, BOTTOM_UP_END ()
+// State S168 (index = 5332)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (61)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (61)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (61)
@@ -5544,6 +5631,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (61)
 , Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (61)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (61)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (61)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (61)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (61)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (61)
@@ -5562,18 +5650,19 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (61)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (61)
 , BOTTOM_UP_END ()
-// State S166 (index = 5246)
+// State S169 (index = 5413)
 , Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (70)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (70)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (80)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (81)
 , BOTTOM_UP_END ()
-// State S167 (index = 5253)
+// State S170 (index = 5422)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (65)
 , BOTTOM_UP_END ()
-// State S168 (index = 5256)
-, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (186)
+// State S171 (index = 5425)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (189)
 , BOTTOM_UP_END ()
-// State S169 (index = 5259)
+// State S172 (index = 5428)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (63)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (63)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (63)
@@ -5596,6 +5685,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (63)
 , Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (63)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (63)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (63)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (63)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (63)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (63)
@@ -5614,82 +5704,82 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (63)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (63)
 , BOTTOM_UP_END ()
-// State S170 (index = 5338)
-, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_SHIFT (187)
+// State S173 (index = 5509)
+, Lexique_galgasTemplateScanner::kToken_then, BOTTOM_UP_SHIFT (190)
 , BOTTOM_UP_END ()
-// State S171 (index = 5341)
-, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1)
+// State S174 (index = 5512)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
-, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (80)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (81)
 , Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
 , Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
 , Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
 , BOTTOM_UP_END ()
-// State S172 (index = 5358)
-, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_SHIFT (190)
+// State S175 (index = 5529)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_SHIFT (193)
 , BOTTOM_UP_END ()
-// State S173 (index = 5361)
-, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_SHIFT (191)
-, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (84)
-, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (84)
+// State S176 (index = 5532)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_SHIFT (194)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (85)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (85)
 , BOTTOM_UP_END ()
-// State S174 (index = 5368)
-, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (87)
+// State S177 (index = 5539)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (88)
 , BOTTOM_UP_END ()
-// State S175 (index = 5371)
-, Lexique_galgasTemplateScanner::kToken_in, BOTTOM_UP_SHIFT (193)
+// State S178 (index = 5542)
+, Lexique_galgasTemplateScanner::kToken_in, BOTTOM_UP_SHIFT (196)
 , BOTTOM_UP_END ()
-// State S176 (index = 5374)
-, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (96)
+// State S179 (index = 5545)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (97)
 , BOTTOM_UP_END ()
-// State S177 (index = 5377)
-, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (194)
+// State S180 (index = 5548)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (197)
 , BOTTOM_UP_END ()
-// State S178 (index = 5380)
-, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1)
+// State S181 (index = 5551)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
-, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (99)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (100)
 , Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
 , Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
-, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (99)
-, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (99)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (100)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (100)
 , Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
 , BOTTOM_UP_END ()
-// State S179 (index = 5401)
-, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_REDUCE (113)
-, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (113)
-, Lexique_galgasTemplateScanner::kToken__2C_, BOTTOM_UP_SHIFT (160)
+// State S182 (index = 5572)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_REDUCE (114)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (114)
+, Lexique_galgasTemplateScanner::kToken__2C_, BOTTOM_UP_SHIFT (162)
 , BOTTOM_UP_END ()
-// State S180 (index = 5408)
-, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_SHIFT (198)
-, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (123)
-, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (199)
-, Lexique_galgasTemplateScanner::kToken__40_type, BOTTOM_UP_SHIFT (200)
-, Lexique_galgasTemplateScanner::kToken_unused, BOTTOM_UP_REDUCE (123)
+// State S183 (index = 5579)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_SHIFT (201)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (124)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (202)
+, Lexique_galgasTemplateScanner::kToken__40_type, BOTTOM_UP_SHIFT (203)
+, Lexique_galgasTemplateScanner::kToken_unused, BOTTOM_UP_REDUCE (124)
 , BOTTOM_UP_END ()
-// State S181 (index = 5419)
+// State S184 (index = 5590)
 , Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (34)
 , BOTTOM_UP_END ()
-// State S182 (index = 5422)
-, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1)
+// State S185 (index = 5593)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
-, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (111)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (112)
 , Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
 , Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
 , Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
-, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (111)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (112)
 , BOTTOM_UP_END ()
-// State S183 (index = 5441)
-, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (109)
+// State S186 (index = 5612)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (110)
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_SHIFT (78)
 , BOTTOM_UP_END ()
-// State S184 (index = 5446)
+// State S187 (index = 5617)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (60)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (60)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (60)
@@ -5712,6 +5802,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (60)
 , Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (60)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (60)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (60)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (60)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (60)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (60)
@@ -5730,39 +5821,39 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (60)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (60)
 , BOTTOM_UP_END ()
-// State S185 (index = 5525)
-, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_SHIFT (205)
+// State S188 (index = 5698)
+, Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_SHIFT (208)
 , BOTTOM_UP_END ()
-// State S186 (index = 5528)
+// State S189 (index = 5701)
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (66)
 , BOTTOM_UP_END ()
-// State S187 (index = 5531)
-, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1)
+// State S190 (index = 5704)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
-, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (76)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (77)
 , Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
-, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (76)
-, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (76)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_REDUCE (77)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (77)
 , Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
 , Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
 , BOTTOM_UP_END ()
-// State S188 (index = 5552)
-, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1)
+// State S191 (index = 5725)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (81)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
+, BOTTOM_UP_END ()
+// State S192 (index = 5742)
 , Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (80)
-, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
-, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
-, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
 , BOTTOM_UP_END ()
-// State S189 (index = 5569)
-, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (79)
-, BOTTOM_UP_END ()
-// State S190 (index = 5572)
-, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (25)
+// State S193 (index = 5745)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (25)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (25)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (25)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (25)
@@ -5778,14 +5869,14 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (25)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (25)
 , BOTTOM_UP_END ()
-// State S191 (index = 5603)
-, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (208)
+// State S194 (index = 5776)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (211)
 , BOTTOM_UP_END ()
-// State S192 (index = 5606)
+// State S195 (index = 5779)
 , Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (30)
 , Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (30)
 , BOTTOM_UP_END ()
-// State S193 (index = 5611)
+// State S196 (index = 5784)
 , Lexique_galgasTemplateScanner::kToken__2D_, BOTTOM_UP_SHIFT (11)
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (12)
 , Lexique_galgasTemplateScanner::kToken_not, BOTTOM_UP_SHIFT (13)
@@ -5799,65 +5890,65 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__22_string_22_, BOTTOM_UP_SHIFT (21)
 , Lexique_galgasTemplateScanner::kToken__5B_, BOTTOM_UP_SHIFT (22)
 , BOTTOM_UP_END ()
-// State S194 (index = 5636)
-, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_SHIFT (210)
+// State S197 (index = 5809)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_SHIFT (213)
 , BOTTOM_UP_END ()
-// State S195 (index = 5639)
-, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1)
+// State S198 (index = 5812)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
-, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (99)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (100)
 , Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
 , Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
-, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (99)
-, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (99)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (100)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (100)
 , Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
 , BOTTOM_UP_END ()
-// State S196 (index = 5660)
-, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (101)
-, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_SHIFT (212)
-, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (101)
+// State S199 (index = 5833)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (102)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_SHIFT (215)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (102)
 , BOTTOM_UP_END ()
-// State S197 (index = 5667)
-, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_REDUCE (114)
-, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (114)
+// State S200 (index = 5840)
+, Lexique_galgasTemplateScanner::kToken__28_, BOTTOM_UP_REDUCE (115)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (115)
 , BOTTOM_UP_END ()
-// State S198 (index = 5672)
-, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (120)
-, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (120)
-, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (120)
-, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_REDUCE (120)
-, Lexique_galgasTemplateScanner::kToken__40_type, BOTTOM_UP_REDUCE (120)
-, Lexique_galgasTemplateScanner::kToken_unused, BOTTOM_UP_REDUCE (120)
+// State S201 (index = 5845)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (121)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (121)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (121)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_REDUCE (121)
+, Lexique_galgasTemplateScanner::kToken__40_type, BOTTOM_UP_REDUCE (121)
+, Lexique_galgasTemplateScanner::kToken_unused, BOTTOM_UP_REDUCE (121)
 , BOTTOM_UP_END ()
-// State S199 (index = 5685)
-, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_SHIFT (214)
+// State S202 (index = 5858)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_SHIFT (217)
 , BOTTOM_UP_END ()
-// State S200 (index = 5688)
-, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (122)
-, Lexique_galgasTemplateScanner::kToken_unused, BOTTOM_UP_REDUCE (122)
-, BOTTOM_UP_END ()
-// State S201 (index = 5693)
-, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_SHIFT (198)
+// State S203 (index = 5861)
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (123)
-, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (117)
-, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (199)
-, Lexique_galgasTemplateScanner::kToken__40_type, BOTTOM_UP_SHIFT (200)
 , Lexique_galgasTemplateScanner::kToken_unused, BOTTOM_UP_REDUCE (123)
 , BOTTOM_UP_END ()
-// State S202 (index = 5706)
+// State S204 (index = 5866)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_SHIFT (201)
 , Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (124)
-, Lexique_galgasTemplateScanner::kToken_unused, BOTTOM_UP_SHIFT (217)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (118)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (202)
+, Lexique_galgasTemplateScanner::kToken__40_type, BOTTOM_UP_SHIFT (203)
+, Lexique_galgasTemplateScanner::kToken_unused, BOTTOM_UP_REDUCE (124)
 , BOTTOM_UP_END ()
-// State S203 (index = 5711)
-, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (112)
-, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (112)
+// State S205 (index = 5879)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (125)
+, Lexique_galgasTemplateScanner::kToken_unused, BOTTOM_UP_SHIFT (220)
 , BOTTOM_UP_END ()
-// State S204 (index = 5716)
-, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (110)
+// State S206 (index = 5884)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (113)
+, Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (113)
 , BOTTOM_UP_END ()
-// State S205 (index = 5719)
+// State S207 (index = 5889)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (111)
+, BOTTOM_UP_END ()
+// State S208 (index = 5892)
 , Lexique_galgasTemplateScanner::kToken__7C_, BOTTOM_UP_REDUCE (62)
 , Lexique_galgasTemplateScanner::kToken__5E_, BOTTOM_UP_REDUCE (62)
 , Lexique_galgasTemplateScanner::kToken__26_, BOTTOM_UP_REDUCE (62)
@@ -5880,6 +5971,7 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken__5D_, BOTTOM_UP_REDUCE (62)
 , Lexique_galgasTemplateScanner::kToken_is, BOTTOM_UP_REDUCE (62)
 , Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (62)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (62)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (62)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (62)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (62)
@@ -5898,156 +5990,156 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (62)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (62)
 , BOTTOM_UP_END ()
-// State S206 (index = 5798)
-, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (74)
-, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_SHIFT (151)
-, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (74)
-, BOTTOM_UP_END ()
-// State S207 (index = 5805)
-, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (81)
-, BOTTOM_UP_END ()
-// State S208 (index = 5808)
-, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (85)
-, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (85)
-, BOTTOM_UP_END ()
-// State S209 (index = 5813)
-, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_SHIFT (220)
-, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (88)
-, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (88)
-, BOTTOM_UP_END ()
-// State S210 (index = 5820)
-, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (98)
-, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (98)
-, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (98)
-, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (98)
-, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (98)
-, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (98)
-, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (98)
-, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (98)
-, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (98)
-, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (98)
-, BOTTOM_UP_END ()
-// State S211 (index = 5841)
-, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (100)
-, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (100)
-, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (100)
-, BOTTOM_UP_END ()
-// State S212 (index = 5848)
-, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1)
-, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
-, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
-, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
-, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (103)
-, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
-, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
-, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (103)
-, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
-, BOTTOM_UP_END ()
-// State S213 (index = 5867)
-, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (105)
-, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_SHIFT (224)
-, BOTTOM_UP_END ()
-// State S214 (index = 5872)
-, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (119)
-, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (119)
-, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (119)
-, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_REDUCE (119)
-, Lexique_galgasTemplateScanner::kToken__40_type, BOTTOM_UP_REDUCE (119)
-, Lexique_galgasTemplateScanner::kToken_unused, BOTTOM_UP_REDUCE (119)
-, BOTTOM_UP_END ()
-// State S215 (index = 5885)
-, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_SHIFT (226)
-, BOTTOM_UP_END ()
-// State S216 (index = 5888)
-, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_SHIFT (198)
-, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (123)
-, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (117)
-, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (199)
-, Lexique_galgasTemplateScanner::kToken__40_type, BOTTOM_UP_SHIFT (200)
-, Lexique_galgasTemplateScanner::kToken_unused, BOTTOM_UP_REDUCE (123)
-, BOTTOM_UP_END ()
-// State S217 (index = 5901)
-, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (125)
-, BOTTOM_UP_END ()
-// State S218 (index = 5904)
-, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (228)
-, BOTTOM_UP_END ()
-// State S219 (index = 5907)
+// State S209 (index = 5973)
 , Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (75)
+, Lexique_galgasTemplateScanner::kToken_elsif, BOTTOM_UP_SHIFT (153)
 , Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (75)
 , BOTTOM_UP_END ()
-// State S220 (index = 5912)
-, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (229)
+// State S210 (index = 5980)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (82)
 , BOTTOM_UP_END ()
-// State S221 (index = 5915)
-, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (31)
-, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (31)
+// State S211 (index = 5983)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (86)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (86)
 , BOTTOM_UP_END ()
-// State S222 (index = 5920)
-, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1)
-, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
-, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
-, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
-, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (103)
-, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
-, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
-, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (103)
-, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
-, BOTTOM_UP_END ()
-// State S223 (index = 5939)
-, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (102)
-, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (102)
-, BOTTOM_UP_END ()
-// State S224 (index = 5944)
-, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1)
-, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
-, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
-, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
-, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (107)
-, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
-, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
-, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
-, BOTTOM_UP_END ()
-// State S225 (index = 5961)
-, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_SHIFT (233)
-, BOTTOM_UP_END ()
-// State S226 (index = 5964)
-, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (116)
-, BOTTOM_UP_END ()
-// State S227 (index = 5967)
-, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (118)
-, BOTTOM_UP_END ()
-// State S228 (index = 5970)
-, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (121)
-, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (121)
-, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (121)
-, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_REDUCE (121)
-, Lexique_galgasTemplateScanner::kToken__40_type, BOTTOM_UP_REDUCE (121)
-, Lexique_galgasTemplateScanner::kToken_unused, BOTTOM_UP_REDUCE (121)
-, BOTTOM_UP_END ()
-// State S229 (index = 5983)
+// State S212 (index = 5988)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_SHIFT (223)
 , Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (89)
 , Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (89)
 , BOTTOM_UP_END ()
-// State S230 (index = 5988)
-, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (104)
-, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (104)
+// State S213 (index = 5995)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (99)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (99)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (99)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (99)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (99)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_REDUCE (99)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_REDUCE (99)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (99)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (99)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_REDUCE (99)
 , BOTTOM_UP_END ()
-// State S231 (index = 5993)
-, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1)
+// State S214 (index = 6016)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (101)
+, Lexique_galgasTemplateScanner::kToken_between, BOTTOM_UP_REDUCE (101)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (101)
+, BOTTOM_UP_END ()
+// State S215 (index = 6023)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
-, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (107)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (104)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (104)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
+, BOTTOM_UP_END ()
+// State S216 (index = 6042)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (106)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_SHIFT (227)
+, BOTTOM_UP_END ()
+// State S217 (index = 6047)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (120)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (120)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (120)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_REDUCE (120)
+, Lexique_galgasTemplateScanner::kToken__40_type, BOTTOM_UP_REDUCE (120)
+, Lexique_galgasTemplateScanner::kToken_unused, BOTTOM_UP_REDUCE (120)
+, BOTTOM_UP_END ()
+// State S218 (index = 6060)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_SHIFT (229)
+, BOTTOM_UP_END ()
+// State S219 (index = 6063)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_SHIFT (201)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (124)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (118)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_SHIFT (202)
+, Lexique_galgasTemplateScanner::kToken__40_type, BOTTOM_UP_SHIFT (203)
+, Lexique_galgasTemplateScanner::kToken_unused, BOTTOM_UP_REDUCE (124)
+, BOTTOM_UP_END ()
+// State S220 (index = 6076)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (126)
+, BOTTOM_UP_END ()
+// State S221 (index = 6079)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (231)
+, BOTTOM_UP_END ()
+// State S222 (index = 6082)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (76)
+, Lexique_galgasTemplateScanner::kToken_else, BOTTOM_UP_REDUCE (76)
+, BOTTOM_UP_END ()
+// State S223 (index = 6087)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_SHIFT (232)
+, BOTTOM_UP_END ()
+// State S224 (index = 6090)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (31)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (31)
+, BOTTOM_UP_END ()
+// State S225 (index = 6095)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (104)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (104)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
+, BOTTOM_UP_END ()
+// State S226 (index = 6114)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (103)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (103)
+, BOTTOM_UP_END ()
+// State S227 (index = 6119)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (108)
 , Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
 , Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
 , Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
 , BOTTOM_UP_END ()
-// State S232 (index = 6010)
-, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (106)
+// State S228 (index = 6136)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_SHIFT (236)
 , BOTTOM_UP_END ()
-// State S233 (index = 6013)
-, Lexique_galgasTemplateScanner::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (32)
+// State S229 (index = 6139)
+, Lexique_galgasTemplateScanner::kToken__3A_, BOTTOM_UP_REDUCE (117)
+, BOTTOM_UP_END ()
+// State S230 (index = 6142)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (119)
+, BOTTOM_UP_END ()
+// State S231 (index = 6145)
+, Lexique_galgasTemplateScanner::kToken__2A_, BOTTOM_UP_REDUCE (122)
+, Lexique_galgasTemplateScanner::kToken_identifier, BOTTOM_UP_REDUCE (122)
+, Lexique_galgasTemplateScanner::kToken__29_, BOTTOM_UP_REDUCE (122)
+, Lexique_galgasTemplateScanner::kToken_literalInt, BOTTOM_UP_REDUCE (122)
+, Lexique_galgasTemplateScanner::kToken__40_type, BOTTOM_UP_REDUCE (122)
+, Lexique_galgasTemplateScanner::kToken_unused, BOTTOM_UP_REDUCE (122)
+, BOTTOM_UP_END ()
+// State S232 (index = 6158)
+, Lexique_galgasTemplateScanner::kToken_before, BOTTOM_UP_REDUCE (90)
+, Lexique_galgasTemplateScanner::kToken_do, BOTTOM_UP_REDUCE (90)
+, BOTTOM_UP_END ()
+// State S233 (index = 6163)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (105)
+, Lexique_galgasTemplateScanner::kToken_after, BOTTOM_UP_REDUCE (105)
+, BOTTOM_UP_END ()
+// State S234 (index = 6168)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_SHIFT (1)
+, Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_SHIFT (2)
+, Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_SHIFT (3)
+, Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_SHIFT (4)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (108)
+, Lexique_galgasTemplateScanner::kToken_if, BOTTOM_UP_SHIFT (5)
+, Lexique_galgasTemplateScanner::kToken_for, BOTTOM_UP_SHIFT (6)
+, Lexique_galgasTemplateScanner::kToken_switch, BOTTOM_UP_SHIFT (7)
+, BOTTOM_UP_END ()
+// State S235 (index = 6185)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (107)
+, BOTTOM_UP_END ()
+// State S236 (index = 6188)
+, Lexique_galgasTemplateScanner::kToken__21_, BOTTOM_UP_REDUCE (32)
 , Lexique_galgasTemplateScanner::kToken__3F__5E_, BOTTOM_UP_REDUCE (32)
 , Lexique_galgasTemplateScanner::kToken__21__5E_, BOTTOM_UP_REDUCE (32)
 , Lexique_galgasTemplateScanner::kToken_block, BOTTOM_UP_REDUCE (32)
@@ -6063,11 +6155,11 @@ static const int32_t gActionTable_templateGrammar [] = {
 , Lexique_galgasTemplateScanner::kToken_case, BOTTOM_UP_REDUCE (32)
 , Lexique_galgasTemplateScanner::kToken_, BOTTOM_UP_REDUCE (32)
 , BOTTOM_UP_END ()
-// State S234 (index = 6044)
-, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (108)
+// State S237 (index = 6219)
+, Lexique_galgasTemplateScanner::kToken_end, BOTTOM_UP_REDUCE (109)
 , BOTTOM_UP_END ()} ;
 
-static const uint32_t gActionTableIndex_templateGrammar [235] = {
+static const uint32_t gActionTableIndex_templateGrammar [238] = {
   0  // S0
 , 17  // S1
 , 42  // S2
@@ -6081,228 +6173,231 @@ static const uint32_t gActionTableIndex_templateGrammar [235] = {
 , 206  // S10
 , 209  // S11
 , 234  // S12
-, 315  // S13
-, 340  // S14
-, 365  // S15
-, 390  // S16
-, 469  // S17
-, 548  // S18
-, 627  // S19
-, 706  // S20
-, 785  // S21
-, 866  // S22
-, 899  // S23
-, 930  // S24
-, 977  // S25
-, 1026  // S26
-, 1087  // S27
-, 1156  // S28
-, 1231  // S29
-, 1310  // S30
-, 1313  // S31
-, 1316  // S32
-, 1319  // S33
-, 1322  // S34
-, 1325  // S35
-, 1330  // S36
-, 1333  // S37
-, 1408  // S38
-, 1415  // S39
-, 1490  // S40
-, 1565  // S41
-, 1568  // S42
-, 1649  // S43
-, 1728  // S44
-, 1753  // S45
-, 1756  // S46
-, 1759  // S47
-, 1764  // S48
-, 1767  // S49
-, 1846  // S50
-, 1871  // S51
-, 1896  // S52
-, 1939  // S53
-, 1964  // S54
-, 2011  // S55
-, 2036  // S56
-, 2061  // S57
-, 2086  // S58
-, 2111  // S59
-, 2136  // S60
-, 2161  // S61
-, 2210  // S62
-, 2235  // S63
-, 2260  // S64
-, 2285  // S65
-, 2310  // S66
-, 2371  // S67
-, 2396  // S68
-, 2421  // S69
-, 2446  // S70
-, 2515  // S71
-, 2518  // S72
-, 2525  // S73
-, 2600  // S74
-, 2617  // S75
-, 2638  // S76
-, 2647  // S77
-, 2652  // S78
-, 2655  // S79
-, 2658  // S80
-, 2683  // S81
-, 2686  // S82
-, 2691  // S83
-, 2770  // S84
+, 317  // S13
+, 342  // S14
+, 367  // S15
+, 392  // S16
+, 473  // S17
+, 554  // S18
+, 635  // S19
+, 716  // S20
+, 797  // S21
+, 880  // S22
+, 913  // S23
+, 944  // S24
+, 993  // S25
+, 1044  // S26
+, 1107  // S27
+, 1178  // S28
+, 1255  // S29
+, 1336  // S30
+, 1339  // S31
+, 1342  // S32
+, 1345  // S33
+, 1348  // S34
+, 1351  // S35
+, 1356  // S36
+, 1359  // S37
+, 1436  // S38
+, 1445  // S39
+, 1522  // S40
+, 1599  // S41
+, 1602  // S42
+, 1685  // S43
+, 1766  // S44
+, 1791  // S45
+, 1794  // S46
+, 1797  // S47
+, 1802  // S48
+, 1805  // S49
+, 1886  // S50
+, 1911  // S51
+, 1936  // S52
+, 1981  // S53
+, 2006  // S54
+, 2055  // S55
+, 2080  // S56
+, 2105  // S57
+, 2130  // S58
+, 2155  // S59
+, 2180  // S60
+, 2205  // S61
+, 2256  // S62
+, 2281  // S63
+, 2306  // S64
+, 2331  // S65
+, 2356  // S66
+, 2419  // S67
+, 2444  // S68
+, 2469  // S69
+, 2494  // S70
+, 2565  // S71
+, 2568  // S72
+, 2575  // S73
+, 2652  // S74
+, 2669  // S75
+, 2690  // S76
+, 2699  // S77
+, 2704  // S78
+, 2707  // S79
+, 2710  // S80
+, 2735  // S81
+, 2760  // S82
+, 2763  // S83
+, 2768  // S84
 , 2849  // S85
-, 2852  // S86
-, 2859  // S87
-, 2862  // S88
-, 2865  // S89
-, 2868  // S90
-, 2871  // S91
-, 2878  // S92
-, 2925  // S93
-, 2972  // S94
-, 3021  // S95
-, 3070  // S96
-, 3119  // S97
-, 3168  // S98
-, 3217  // S99
-, 3266  // S100
-, 3315  // S101
-, 3384  // S102
-, 3453  // S103
-, 3522  // S104
-, 3591  // S105
-, 3666  // S106
-, 3741  // S107
-, 3816  // S108
-, 3893  // S109
-, 3896  // S110
-, 3899  // S111
-, 3902  // S112
-, 3905  // S113
-, 3922  // S114
-, 3925  // S115
-, 3946  // S116
-, 3953  // S117
-, 3962  // S118
-, 3971  // S119
-, 3974  // S120
-, 3977  // S121
-, 3986  // S122
-, 4003  // S123
-, 4006  // S124
-, 4013  // S125
-, 4016  // S126
-, 4047  // S127
-, 4054  // S128
-, 4133  // S129
-, 4140  // S130
-, 4143  // S131
-, 4146  // S132
-, 4149  // S133
-, 4152  // S134
-, 4231  // S135
-, 4234  // S136
-, 4277  // S137
-, 4320  // S138
-, 4367  // S139
-, 4428  // S140
-, 4489  // S141
-, 4550  // S142
-, 4611  // S143
-, 4680  // S144
-, 4749  // S145
-, 4818  // S146
-, 4893  // S147
-, 4972  // S148
-, 4975  // S149
-, 5006  // S150
-, 5013  // S151
-, 5038  // S152
-, 5043  // S153
-, 5068  // S154
-, 5077  // S155
-, 5086  // S156
-, 5089  // S157
-, 5106  // S158
-, 5109  // S159
-, 5132  // S160
-, 5135  // S161
-, 5140  // S162
-, 5159  // S163
-, 5164  // S164
-, 5167  // S165
-, 5246  // S166
-, 5253  // S167
-, 5256  // S168
-, 5259  // S169
-, 5338  // S170
-, 5341  // S171
-, 5358  // S172
-, 5361  // S173
-, 5368  // S174
-, 5371  // S175
-, 5374  // S176
-, 5377  // S177
-, 5380  // S178
-, 5401  // S179
-, 5408  // S180
-, 5419  // S181
-, 5422  // S182
-, 5441  // S183
-, 5446  // S184
-, 5525  // S185
-, 5528  // S186
-, 5531  // S187
-, 5552  // S188
-, 5569  // S189
-, 5572  // S190
-, 5603  // S191
-, 5606  // S192
-, 5611  // S193
-, 5636  // S194
-, 5639  // S195
-, 5660  // S196
-, 5667  // S197
-, 5672  // S198
-, 5685  // S199
-, 5688  // S200
-, 5693  // S201
-, 5706  // S202
-, 5711  // S203
-, 5716  // S204
-, 5719  // S205
-, 5798  // S206
-, 5805  // S207
-, 5808  // S208
-, 5813  // S209
-, 5820  // S210
-, 5841  // S211
-, 5848  // S212
-, 5867  // S213
-, 5872  // S214
-, 5885  // S215
-, 5888  // S216
-, 5901  // S217
-, 5904  // S218
-, 5907  // S219
-, 5912  // S220
-, 5915  // S221
-, 5920  // S222
-, 5939  // S223
-, 5944  // S224
-, 5961  // S225
-, 5964  // S226
-, 5967  // S227
-, 5970  // S228
-, 5983  // S229
-, 5988  // S230
-, 5993  // S231
-, 6010  // S232
-, 6013  // S233
-, 6044  // S234
+, 2930  // S86
+, 2933  // S87
+, 2942  // S88
+, 2945  // S89
+, 2948  // S90
+, 2951  // S91
+, 2954  // S92
+, 2963  // S93
+, 3012  // S94
+, 3061  // S95
+, 3112  // S96
+, 3163  // S97
+, 3214  // S98
+, 3265  // S99
+, 3316  // S100
+, 3367  // S101
+, 3418  // S102
+, 3489  // S103
+, 3560  // S104
+, 3631  // S105
+, 3702  // S106
+, 3779  // S107
+, 3856  // S108
+, 3933  // S109
+, 4012  // S110
+, 4015  // S111
+, 4018  // S112
+, 4021  // S113
+, 4024  // S114
+, 4041  // S115
+, 4044  // S116
+, 4065  // S117
+, 4072  // S118
+, 4081  // S119
+, 4090  // S120
+, 4093  // S121
+, 4096  // S122
+, 4105  // S123
+, 4122  // S124
+, 4125  // S125
+, 4132  // S126
+, 4135  // S127
+, 4166  // S128
+, 4175  // S129
+, 4184  // S130
+, 4265  // S131
+, 4274  // S132
+, 4277  // S133
+, 4280  // S134
+, 4283  // S135
+, 4286  // S136
+, 4367  // S137
+, 4370  // S138
+, 4415  // S139
+, 4460  // S140
+, 4509  // S141
+, 4572  // S142
+, 4635  // S143
+, 4698  // S144
+, 4761  // S145
+, 4832  // S146
+, 4903  // S147
+, 4974  // S148
+, 5051  // S149
+, 5132  // S150
+, 5135  // S151
+, 5166  // S152
+, 5173  // S153
+, 5198  // S154
+, 5203  // S155
+, 5228  // S156
+, 5237  // S157
+, 5246  // S158
+, 5249  // S159
+, 5266  // S160
+, 5269  // S161
+, 5292  // S162
+, 5295  // S163
+, 5300  // S164
+, 5319  // S165
+, 5324  // S166
+, 5329  // S167
+, 5332  // S168
+, 5413  // S169
+, 5422  // S170
+, 5425  // S171
+, 5428  // S172
+, 5509  // S173
+, 5512  // S174
+, 5529  // S175
+, 5532  // S176
+, 5539  // S177
+, 5542  // S178
+, 5545  // S179
+, 5548  // S180
+, 5551  // S181
+, 5572  // S182
+, 5579  // S183
+, 5590  // S184
+, 5593  // S185
+, 5612  // S186
+, 5617  // S187
+, 5698  // S188
+, 5701  // S189
+, 5704  // S190
+, 5725  // S191
+, 5742  // S192
+, 5745  // S193
+, 5776  // S194
+, 5779  // S195
+, 5784  // S196
+, 5809  // S197
+, 5812  // S198
+, 5833  // S199
+, 5840  // S200
+, 5845  // S201
+, 5858  // S202
+, 5861  // S203
+, 5866  // S204
+, 5879  // S205
+, 5884  // S206
+, 5889  // S207
+, 5892  // S208
+, 5973  // S209
+, 5980  // S210
+, 5983  // S211
+, 5988  // S212
+, 5995  // S213
+, 6016  // S214
+, 6023  // S215
+, 6042  // S216
+, 6047  // S217
+, 6060  // S218
+, 6063  // S219
+, 6076  // S220
+, 6079  // S221
+, 6082  // S222
+, 6087  // S223
+, 6090  // S224
+, 6095  // S225
+, 6114  // S226
+, 6119  // S227
+, 6136  // S228
+, 6139  // S229
+, 6142  // S230
+, 6145  // S231
+, 6158  // S232
+, 6163  // S233
+, 6168  // S234
+, 6185  // S235
+, 6188  // S236
+, 6219  // S237
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -6399,12 +6494,12 @@ static const int32_t gSuccessorTable_templateGrammar_34 [3] = {11, 77, -1} ;
 
 static const int32_t gSuccessorTable_templateGrammar_35 [3] = {42, 79, -1} ;
 
-static const int32_t gSuccessorTable_templateGrammar_38 [5] = {7, 81,
-  23, 82, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_38 [5] = {7, 82,
+  23, 83, -1} ;
 
-static const int32_t gSuccessorTable_templateGrammar_42 [3] = {19, 84, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_42 [3] = {19, 85, -1} ;
 
-static const int32_t gSuccessorTable_templateGrammar_44 [15] = {0, 85,
+static const int32_t gSuccessorTable_templateGrammar_44 [15] = {0, 86,
   1, 24,
   2, 25,
   3, 26,
@@ -6412,98 +6507,98 @@ static const int32_t gSuccessorTable_templateGrammar_44 [15] = {0, 85,
   5, 28,
   6, 29, -1} ;
 
-static const int32_t gSuccessorTable_templateGrammar_47 [3] = {21, 90, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_47 [3] = {21, 91, -1} ;
 
-static const int32_t gSuccessorTable_templateGrammar_50 [13] = {1, 92,
+static const int32_t gSuccessorTable_templateGrammar_50 [13] = {1, 93,
   2, 25,
   3, 26,
   4, 27,
   5, 28,
   6, 29, -1} ;
 
-static const int32_t gSuccessorTable_templateGrammar_51 [13] = {1, 93,
+static const int32_t gSuccessorTable_templateGrammar_51 [13] = {1, 94,
   2, 25,
   3, 26,
   4, 27,
   5, 28,
   6, 29, -1} ;
 
-static const int32_t gSuccessorTable_templateGrammar_53 [11] = {2, 94,
+static const int32_t gSuccessorTable_templateGrammar_53 [11] = {2, 95,
   3, 26,
   4, 27,
   5, 28,
   6, 29, -1} ;
 
-static const int32_t gSuccessorTable_templateGrammar_55 [9] = {3, 95,
+static const int32_t gSuccessorTable_templateGrammar_55 [9] = {3, 96,
   4, 27,
   5, 28,
   6, 29, -1} ;
 
-static const int32_t gSuccessorTable_templateGrammar_56 [9] = {3, 96,
+static const int32_t gSuccessorTable_templateGrammar_56 [9] = {3, 97,
   4, 27,
   5, 28,
   6, 29, -1} ;
 
-static const int32_t gSuccessorTable_templateGrammar_57 [9] = {3, 97,
+static const int32_t gSuccessorTable_templateGrammar_57 [9] = {3, 98,
   4, 27,
   5, 28,
   6, 29, -1} ;
 
-static const int32_t gSuccessorTable_templateGrammar_58 [9] = {3, 98,
+static const int32_t gSuccessorTable_templateGrammar_58 [9] = {3, 99,
   4, 27,
   5, 28,
   6, 29, -1} ;
 
-static const int32_t gSuccessorTable_templateGrammar_59 [9] = {3, 99,
+static const int32_t gSuccessorTable_templateGrammar_59 [9] = {3, 100,
   4, 27,
   5, 28,
   6, 29, -1} ;
 
-static const int32_t gSuccessorTable_templateGrammar_60 [9] = {3, 100,
+static const int32_t gSuccessorTable_templateGrammar_60 [9] = {3, 101,
   4, 27,
   5, 28,
   6, 29, -1} ;
 
-static const int32_t gSuccessorTable_templateGrammar_62 [7] = {4, 101,
+static const int32_t gSuccessorTable_templateGrammar_62 [7] = {4, 102,
   5, 28,
   6, 29, -1} ;
 
-static const int32_t gSuccessorTable_templateGrammar_63 [7] = {4, 102,
+static const int32_t gSuccessorTable_templateGrammar_63 [7] = {4, 103,
   5, 28,
   6, 29, -1} ;
 
-static const int32_t gSuccessorTable_templateGrammar_64 [7] = {4, 103,
+static const int32_t gSuccessorTable_templateGrammar_64 [7] = {4, 104,
   5, 28,
   6, 29, -1} ;
 
-static const int32_t gSuccessorTable_templateGrammar_65 [7] = {4, 104,
+static const int32_t gSuccessorTable_templateGrammar_65 [7] = {4, 105,
   5, 28,
   6, 29, -1} ;
 
-static const int32_t gSuccessorTable_templateGrammar_67 [5] = {5, 105,
+static const int32_t gSuccessorTable_templateGrammar_67 [5] = {5, 106,
   6, 29, -1} ;
 
-static const int32_t gSuccessorTable_templateGrammar_68 [5] = {5, 106,
+static const int32_t gSuccessorTable_templateGrammar_68 [5] = {5, 107,
   6, 29, -1} ;
 
-static const int32_t gSuccessorTable_templateGrammar_69 [5] = {5, 107,
+static const int32_t gSuccessorTable_templateGrammar_69 [5] = {5, 108,
   6, 29, -1} ;
 
-static const int32_t gSuccessorTable_templateGrammar_72 [3] = {22, 112, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_72 [3] = {22, 113, -1} ;
 
-static const int32_t gSuccessorTable_templateGrammar_74 [5] = {8, 113,
-  24, 114, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_74 [5] = {8, 114,
+  24, 115, -1} ;
 
-static const int32_t gSuccessorTable_templateGrammar_75 [5] = {8, 115,
-  26, 116, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_75 [5] = {8, 116,
+  26, 117, -1} ;
 
-static const int32_t gSuccessorTable_templateGrammar_76 [3] = {10, 121, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_76 [3] = {10, 122, -1} ;
 
-static const int32_t gSuccessorTable_templateGrammar_77 [3] = {34, 123, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_77 [3] = {34, 124, -1} ;
 
-static const int32_t gSuccessorTable_templateGrammar_78 [3] = {12, 125, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_78 [3] = {12, 126, -1} ;
 
-static const int32_t gSuccessorTable_templateGrammar_80 [15] = {0, 127,
+static const int32_t gSuccessorTable_templateGrammar_80 [15] = {0, 128,
   1, 24,
   2, 25,
   3, 26,
@@ -6511,56 +6606,7 @@ static const int32_t gSuccessorTable_templateGrammar_80 [15] = {0, 127,
   5, 28,
   6, 29, -1} ;
 
-static const int32_t gSuccessorTable_templateGrammar_86 [5] = {7, 130,
-  23, 82, -1} ;
-
-static const int32_t gSuccessorTable_templateGrammar_91 [5] = {7, 135,
-  23, 82, -1} ;
-
-static const int32_t gSuccessorTable_templateGrammar_92 [3] = {13, 136, -1} ;
-
-static const int32_t gSuccessorTable_templateGrammar_93 [3] = {13, 137, -1} ;
-
-static const int32_t gSuccessorTable_templateGrammar_94 [3] = {14, 138, -1} ;
-
-static const int32_t gSuccessorTable_templateGrammar_101 [3] = {16, 139, -1} ;
-
-static const int32_t gSuccessorTable_templateGrammar_102 [3] = {16, 140, -1} ;
-
-static const int32_t gSuccessorTable_templateGrammar_103 [3] = {16, 141, -1} ;
-
-static const int32_t gSuccessorTable_templateGrammar_104 [3] = {16, 142, -1} ;
-
-static const int32_t gSuccessorTable_templateGrammar_105 [3] = {17, 143, -1} ;
-
-static const int32_t gSuccessorTable_templateGrammar_106 [3] = {17, 144, -1} ;
-
-static const int32_t gSuccessorTable_templateGrammar_107 [3] = {17, 145, -1} ;
-
-static const int32_t gSuccessorTable_templateGrammar_108 [3] = {18, 146, -1} ;
-
-static const int32_t gSuccessorTable_templateGrammar_113 [5] = {8, 113,
-  24, 148, -1} ;
-
-static const int32_t gSuccessorTable_templateGrammar_115 [5] = {8, 115,
-  26, 150, -1} ;
-
-static const int32_t gSuccessorTable_templateGrammar_116 [3] = {25, 152, -1} ;
-
-static const int32_t gSuccessorTable_templateGrammar_121 [5] = {10, 155,
-  31, 156, -1} ;
-
-static const int32_t gSuccessorTable_templateGrammar_122 [5] = {8, 157,
-  35, 158, -1} ;
-
-static const int32_t gSuccessorTable_templateGrammar_124 [3] = {44, 161, -1} ;
-
-static const int32_t gSuccessorTable_templateGrammar_127 [3] = {23, 163, -1} ;
-
-static const int32_t gSuccessorTable_templateGrammar_129 [5] = {7, 164,
-  23, 82, -1} ;
-
-static const int32_t gSuccessorTable_templateGrammar_151 [15] = {0, 170,
+static const int32_t gSuccessorTable_templateGrammar_81 [15] = {0, 129,
   1, 24,
   2, 25,
   3, 26,
@@ -6568,7 +6614,56 @@ static const int32_t gSuccessorTable_templateGrammar_151 [15] = {0, 170,
   5, 28,
   6, 29, -1} ;
 
-static const int32_t gSuccessorTable_templateGrammar_152 [3] = {27, 172, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_87 [5] = {7, 132,
+  23, 83, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_92 [5] = {7, 137,
+  23, 83, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_93 [3] = {13, 138, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_94 [3] = {13, 139, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_95 [3] = {14, 140, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_102 [3] = {16, 141, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_103 [3] = {16, 142, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_104 [3] = {16, 143, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_105 [3] = {16, 144, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_106 [3] = {17, 145, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_107 [3] = {17, 146, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_108 [3] = {17, 147, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_109 [3] = {18, 148, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_114 [5] = {8, 114,
+  24, 150, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_116 [5] = {8, 116,
+  26, 152, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_117 [3] = {25, 154, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_122 [5] = {10, 157,
+  31, 158, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_123 [5] = {8, 159,
+  35, 160, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_125 [3] = {44, 163, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_128 [3] = {23, 165, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_129 [3] = {23, 166, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_131 [5] = {7, 167,
+  23, 83, -1} ;
 
 static const int32_t gSuccessorTable_templateGrammar_153 [15] = {0, 173,
   1, 24,
@@ -6578,47 +6673,9 @@ static const int32_t gSuccessorTable_templateGrammar_153 [15] = {0, 173,
   5, 28,
   6, 29, -1} ;
 
-static const int32_t gSuccessorTable_templateGrammar_155 [5] = {10, 155,
-  31, 174, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_154 [3] = {27, 175, -1} ;
 
-static const int32_t gSuccessorTable_templateGrammar_157 [5] = {8, 157,
-  35, 176, -1} ;
-
-static const int32_t gSuccessorTable_templateGrammar_159 [3] = {36, 178, -1} ;
-
-static const int32_t gSuccessorTable_templateGrammar_161 [3] = {45, 181, -1} ;
-
-static const int32_t gSuccessorTable_templateGrammar_162 [5] = {8, 182,
-  43, 183, -1} ;
-
-static const int32_t gSuccessorTable_templateGrammar_166 [5] = {7, 185,
-  23, 82, -1} ;
-
-static const int32_t gSuccessorTable_templateGrammar_171 [5] = {8, 188,
-  28, 189, -1} ;
-
-static const int32_t gSuccessorTable_templateGrammar_173 [3] = {30, 192, -1} ;
-
-static const int32_t gSuccessorTable_templateGrammar_178 [5] = {8, 195,
-  37, 196, -1} ;
-
-static const int32_t gSuccessorTable_templateGrammar_179 [3] = {44, 197, -1} ;
-
-static const int32_t gSuccessorTable_templateGrammar_180 [5] = {47, 201,
-  48, 202, -1} ;
-
-static const int32_t gSuccessorTable_templateGrammar_182 [5] = {8, 182,
-  43, 203, -1} ;
-
-static const int32_t gSuccessorTable_templateGrammar_183 [3] = {42, 204, -1} ;
-
-static const int32_t gSuccessorTable_templateGrammar_187 [5] = {8, 115,
-  26, 206, -1} ;
-
-static const int32_t gSuccessorTable_templateGrammar_188 [5] = {8, 188,
-  28, 207, -1} ;
-
-static const int32_t gSuccessorTable_templateGrammar_193 [15] = {0, 209,
+static const int32_t gSuccessorTable_templateGrammar_155 [15] = {0, 176,
   1, 24,
   2, 25,
   3, 26,
@@ -6626,40 +6683,88 @@ static const int32_t gSuccessorTable_templateGrammar_193 [15] = {0, 209,
   5, 28,
   6, 29, -1} ;
 
-static const int32_t gSuccessorTable_templateGrammar_195 [5] = {8, 195,
-  37, 211, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_157 [5] = {10, 157,
+  31, 177, -1} ;
 
-static const int32_t gSuccessorTable_templateGrammar_196 [3] = {38, 213, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_159 [5] = {8, 159,
+  35, 179, -1} ;
 
-static const int32_t gSuccessorTable_templateGrammar_201 [7] = {46, 215,
-  47, 216,
-  48, 202, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_161 [3] = {36, 181, -1} ;
 
-static const int32_t gSuccessorTable_templateGrammar_202 [3] = {49, 218, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_163 [3] = {45, 184, -1} ;
 
-static const int32_t gSuccessorTable_templateGrammar_206 [3] = {25, 219, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_164 [5] = {8, 185,
+  43, 186, -1} ;
 
-static const int32_t gSuccessorTable_templateGrammar_209 [3] = {32, 221, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_169 [5] = {7, 188,
+  23, 83, -1} ;
 
-static const int32_t gSuccessorTable_templateGrammar_212 [5] = {8, 222,
-  39, 223, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_174 [5] = {8, 191,
+  28, 192, -1} ;
 
-static const int32_t gSuccessorTable_templateGrammar_213 [3] = {40, 225, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_176 [3] = {30, 195, -1} ;
 
-static const int32_t gSuccessorTable_templateGrammar_216 [7] = {46, 227,
-  47, 216,
-  48, 202, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_181 [5] = {8, 198,
+  37, 199, -1} ;
 
-static const int32_t gSuccessorTable_templateGrammar_222 [5] = {8, 222,
-  39, 230, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_182 [3] = {44, 200, -1} ;
 
-static const int32_t gSuccessorTable_templateGrammar_224 [5] = {8, 231,
-  41, 232, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_183 [5] = {47, 204,
+  48, 205, -1} ;
 
-static const int32_t gSuccessorTable_templateGrammar_231 [5] = {8, 231,
-  41, 234, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_185 [5] = {8, 185,
+  43, 206, -1} ;
 
-static const int32_t * gSuccessorTable_templateGrammar [235] = {
+static const int32_t gSuccessorTable_templateGrammar_186 [3] = {42, 207, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_190 [5] = {8, 116,
+  26, 209, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_191 [5] = {8, 191,
+  28, 210, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_196 [15] = {0, 212,
+  1, 24,
+  2, 25,
+  3, 26,
+  4, 27,
+  5, 28,
+  6, 29, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_198 [5] = {8, 198,
+  37, 214, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_199 [3] = {38, 216, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_204 [7] = {46, 218,
+  47, 219,
+  48, 205, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_205 [3] = {49, 221, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_209 [3] = {25, 222, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_212 [3] = {32, 224, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_215 [5] = {8, 225,
+  39, 226, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_216 [3] = {40, 228, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_219 [7] = {46, 230,
+  47, 219,
+  48, 205, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_225 [5] = {8, 225,
+  39, 233, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_227 [5] = {8, 234,
+  41, 235, -1} ;
+
+static const int32_t gSuccessorTable_templateGrammar_234 [5] = {8, 234,
+  41, 237, -1} ;
+
+static const int32_t * gSuccessorTable_templateGrammar [238] = {
 gSuccessorTable_templateGrammar_0, gSuccessorTable_templateGrammar_1, nullptr, nullptr, 
   gSuccessorTable_templateGrammar_4, gSuccessorTable_templateGrammar_5, gSuccessorTable_templateGrammar_6, gSuccessorTable_templateGrammar_7, 
   gSuccessorTable_templateGrammar_8, nullptr, nullptr, gSuccessorTable_templateGrammar_11, 
@@ -6680,45 +6785,46 @@ gSuccessorTable_templateGrammar_0, gSuccessorTable_templateGrammar_1, nullptr, n
   gSuccessorTable_templateGrammar_68, gSuccessorTable_templateGrammar_69, nullptr, nullptr, 
   gSuccessorTable_templateGrammar_72, nullptr, gSuccessorTable_templateGrammar_74, gSuccessorTable_templateGrammar_75, 
   gSuccessorTable_templateGrammar_76, gSuccessorTable_templateGrammar_77, gSuccessorTable_templateGrammar_78, nullptr, 
-  gSuccessorTable_templateGrammar_80, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, gSuccessorTable_templateGrammar_86, nullptr, 
-  nullptr, nullptr, nullptr, gSuccessorTable_templateGrammar_91, 
-  gSuccessorTable_templateGrammar_92, gSuccessorTable_templateGrammar_93, gSuccessorTable_templateGrammar_94, nullptr, 
+  gSuccessorTable_templateGrammar_80, gSuccessorTable_templateGrammar_81, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_templateGrammar_87, 
   nullptr, nullptr, nullptr, nullptr, 
-  nullptr, gSuccessorTable_templateGrammar_101, gSuccessorTable_templateGrammar_102, gSuccessorTable_templateGrammar_103, 
+  gSuccessorTable_templateGrammar_92, gSuccessorTable_templateGrammar_93, gSuccessorTable_templateGrammar_94, gSuccessorTable_templateGrammar_95, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_templateGrammar_102, gSuccessorTable_templateGrammar_103, 
   gSuccessorTable_templateGrammar_104, gSuccessorTable_templateGrammar_105, gSuccessorTable_templateGrammar_106, gSuccessorTable_templateGrammar_107, 
-  gSuccessorTable_templateGrammar_108, nullptr, nullptr, nullptr, 
-  nullptr, gSuccessorTable_templateGrammar_113, nullptr, gSuccessorTable_templateGrammar_115, 
-  gSuccessorTable_templateGrammar_116, nullptr, nullptr, nullptr, 
-  nullptr, gSuccessorTable_templateGrammar_121, gSuccessorTable_templateGrammar_122, nullptr, 
-  gSuccessorTable_templateGrammar_124, nullptr, nullptr, gSuccessorTable_templateGrammar_127, 
-  nullptr, gSuccessorTable_templateGrammar_129, nullptr, nullptr, 
+  gSuccessorTable_templateGrammar_108, gSuccessorTable_templateGrammar_109, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_templateGrammar_114, nullptr, 
+  gSuccessorTable_templateGrammar_116, gSuccessorTable_templateGrammar_117, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_templateGrammar_122, gSuccessorTable_templateGrammar_123, 
+  nullptr, gSuccessorTable_templateGrammar_125, nullptr, nullptr, 
+  gSuccessorTable_templateGrammar_128, gSuccessorTable_templateGrammar_129, nullptr, gSuccessorTable_templateGrammar_131, 
   nullptr, nullptr, nullptr, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, nullptr, gSuccessorTable_templateGrammar_151, 
-  gSuccessorTable_templateGrammar_152, gSuccessorTable_templateGrammar_153, nullptr, gSuccessorTable_templateGrammar_155, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_templateGrammar_153, gSuccessorTable_templateGrammar_154, gSuccessorTable_templateGrammar_155, 
   nullptr, gSuccessorTable_templateGrammar_157, nullptr, gSuccessorTable_templateGrammar_159, 
-  nullptr, gSuccessorTable_templateGrammar_161, gSuccessorTable_templateGrammar_162, nullptr, 
-  nullptr, nullptr, gSuccessorTable_templateGrammar_166, nullptr, 
-  nullptr, nullptr, nullptr, gSuccessorTable_templateGrammar_171, 
-  nullptr, gSuccessorTable_templateGrammar_173, nullptr, nullptr, 
-  nullptr, nullptr, gSuccessorTable_templateGrammar_178, gSuccessorTable_templateGrammar_179, 
-  gSuccessorTable_templateGrammar_180, nullptr, gSuccessorTable_templateGrammar_182, gSuccessorTable_templateGrammar_183, 
-  nullptr, nullptr, nullptr, gSuccessorTable_templateGrammar_187, 
-  gSuccessorTable_templateGrammar_188, nullptr, nullptr, nullptr, 
-  nullptr, gSuccessorTable_templateGrammar_193, nullptr, gSuccessorTable_templateGrammar_195, 
-  gSuccessorTable_templateGrammar_196, nullptr, nullptr, nullptr, 
-  nullptr, gSuccessorTable_templateGrammar_201, gSuccessorTable_templateGrammar_202, nullptr, 
-  nullptr, nullptr, gSuccessorTable_templateGrammar_206, nullptr, 
+  nullptr, gSuccessorTable_templateGrammar_161, nullptr, gSuccessorTable_templateGrammar_163, 
+  gSuccessorTable_templateGrammar_164, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_templateGrammar_169, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_templateGrammar_174, nullptr, 
+  gSuccessorTable_templateGrammar_176, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_templateGrammar_181, gSuccessorTable_templateGrammar_182, gSuccessorTable_templateGrammar_183, 
+  nullptr, gSuccessorTable_templateGrammar_185, gSuccessorTable_templateGrammar_186, nullptr, 
+  nullptr, nullptr, gSuccessorTable_templateGrammar_190, gSuccessorTable_templateGrammar_191, 
+  nullptr, nullptr, nullptr, nullptr, 
+  gSuccessorTable_templateGrammar_196, nullptr, gSuccessorTable_templateGrammar_198, gSuccessorTable_templateGrammar_199, 
+  nullptr, nullptr, nullptr, nullptr, 
+  gSuccessorTable_templateGrammar_204, gSuccessorTable_templateGrammar_205, nullptr, nullptr, 
   nullptr, gSuccessorTable_templateGrammar_209, nullptr, nullptr, 
-  gSuccessorTable_templateGrammar_212, gSuccessorTable_templateGrammar_213, nullptr, nullptr, 
-  gSuccessorTable_templateGrammar_216, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, gSuccessorTable_templateGrammar_222, nullptr, 
-  gSuccessorTable_templateGrammar_224, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, nullptr, gSuccessorTable_templateGrammar_231, 
-  nullptr, nullptr, nullptr} ;
+  gSuccessorTable_templateGrammar_212, nullptr, nullptr, gSuccessorTable_templateGrammar_215, 
+  gSuccessorTable_templateGrammar_216, nullptr, nullptr, gSuccessorTable_templateGrammar_219, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_templateGrammar_225, nullptr, gSuccessorTable_templateGrammar_227, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_templateGrammar_234, nullptr, 
+  nullptr, nullptr} ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -6726,7 +6832,7 @@ gSuccessorTable_templateGrammar_0, gSuccessorTable_templateGrammar_1, nullptr, n
 //
 //--------------------------------------------------------------------------------------------------
 
-static const int32_t gProductionsTable_templateGrammar [127 * 2] = {
+static const int32_t gProductionsTable_templateGrammar [128 * 2] = {
   0, 2,
   1, 2,
   2, 2,
@@ -6798,6 +6904,7 @@ static const int32_t gProductionsTable_templateGrammar [127 * 2] = {
   22, 1,
   22, 1,
   23, 0,
+  23, 3,
   23, 3,
   24, 0,
   24, 2,
@@ -7733,7 +7840,7 @@ int32_t cGrammar_templateGrammar::select_templateSyntax_9 (Lexique_galgasTemplat
 //--------------------------------------------------------------------------------------------------
 
 int32_t cGrammar_templateGrammar::select_templateSyntax_10 (Lexique_galgasTemplateScanner * inLexique) {
-// Productions numbers:  70 71
+// Productions numbers:  70 71 72
   return inLexique->nextProductionIndex () - 69 ;
 }
 
@@ -7744,8 +7851,8 @@ int32_t cGrammar_templateGrammar::select_templateSyntax_10 (Lexique_galgasTempla
 //--------------------------------------------------------------------------------------------------
 
 int32_t cGrammar_templateGrammar::select_templateSyntax_11 (Lexique_galgasTemplateScanner * inLexique) {
-// Productions numbers:  72 73
-  return inLexique->nextProductionIndex () - 71 ;
+// Productions numbers:  73 74
+  return inLexique->nextProductionIndex () - 72 ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7755,8 +7862,8 @@ int32_t cGrammar_templateGrammar::select_templateSyntax_11 (Lexique_galgasTempla
 //--------------------------------------------------------------------------------------------------
 
 int32_t cGrammar_templateGrammar::select_templateSyntax_12 (Lexique_galgasTemplateScanner * inLexique) {
-// Productions numbers:  74 75
-  return inLexique->nextProductionIndex () - 73 ;
+// Productions numbers:  75 76
+  return inLexique->nextProductionIndex () - 74 ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7766,8 +7873,8 @@ int32_t cGrammar_templateGrammar::select_templateSyntax_12 (Lexique_galgasTempla
 //--------------------------------------------------------------------------------------------------
 
 int32_t cGrammar_templateGrammar::select_templateSyntax_13 (Lexique_galgasTemplateScanner * inLexique) {
-// Productions numbers:  76 77
-  return inLexique->nextProductionIndex () - 75 ;
+// Productions numbers:  77 78
+  return inLexique->nextProductionIndex () - 76 ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7777,8 +7884,8 @@ int32_t cGrammar_templateGrammar::select_templateSyntax_13 (Lexique_galgasTempla
 //--------------------------------------------------------------------------------------------------
 
 int32_t cGrammar_templateGrammar::select_templateSyntax_14 (Lexique_galgasTemplateScanner * inLexique) {
-// Productions numbers:  78 79
-  return inLexique->nextProductionIndex () - 77 ;
+// Productions numbers:  79 80
+  return inLexique->nextProductionIndex () - 78 ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7788,8 +7895,8 @@ int32_t cGrammar_templateGrammar::select_templateSyntax_14 (Lexique_galgasTempla
 //--------------------------------------------------------------------------------------------------
 
 int32_t cGrammar_templateGrammar::select_templateSyntax_15 (Lexique_galgasTemplateScanner * inLexique) {
-// Productions numbers:  80 81
-  return inLexique->nextProductionIndex () - 79 ;
+// Productions numbers:  81 82
+  return inLexique->nextProductionIndex () - 80 ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7799,8 +7906,8 @@ int32_t cGrammar_templateGrammar::select_templateSyntax_15 (Lexique_galgasTempla
 //--------------------------------------------------------------------------------------------------
 
 int32_t cGrammar_templateGrammar::select_templateSyntax_16 (Lexique_galgasTemplateScanner * inLexique) {
-// Productions numbers:  82 83
-  return inLexique->nextProductionIndex () - 81 ;
+// Productions numbers:  83 84
+  return inLexique->nextProductionIndex () - 82 ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7810,8 +7917,8 @@ int32_t cGrammar_templateGrammar::select_templateSyntax_16 (Lexique_galgasTempla
 //--------------------------------------------------------------------------------------------------
 
 int32_t cGrammar_templateGrammar::select_templateSyntax_17 (Lexique_galgasTemplateScanner * inLexique) {
-// Productions numbers:  84 85
-  return inLexique->nextProductionIndex () - 83 ;
+// Productions numbers:  85 86
+  return inLexique->nextProductionIndex () - 84 ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7821,8 +7928,8 @@ int32_t cGrammar_templateGrammar::select_templateSyntax_17 (Lexique_galgasTempla
 //--------------------------------------------------------------------------------------------------
 
 int32_t cGrammar_templateGrammar::select_templateSyntax_18 (Lexique_galgasTemplateScanner * inLexique) {
-// Productions numbers:  86 87
-  return inLexique->nextProductionIndex () - 85 ;
+// Productions numbers:  87 88
+  return inLexique->nextProductionIndex () - 86 ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7832,8 +7939,8 @@ int32_t cGrammar_templateGrammar::select_templateSyntax_18 (Lexique_galgasTempla
 //--------------------------------------------------------------------------------------------------
 
 int32_t cGrammar_templateGrammar::select_templateSyntax_19 (Lexique_galgasTemplateScanner * inLexique) {
-// Productions numbers:  88 89
-  return inLexique->nextProductionIndex () - 87 ;
+// Productions numbers:  89 90
+  return inLexique->nextProductionIndex () - 88 ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7843,8 +7950,8 @@ int32_t cGrammar_templateGrammar::select_templateSyntax_19 (Lexique_galgasTempla
 //--------------------------------------------------------------------------------------------------
 
 int32_t cGrammar_templateGrammar::select_templateSyntax_20 (Lexique_galgasTemplateScanner * inLexique) {
-// Productions numbers:  90 91 92
-  return inLexique->nextProductionIndex () - 89 ;
+// Productions numbers:  91 92 93
+  return inLexique->nextProductionIndex () - 90 ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7854,8 +7961,8 @@ int32_t cGrammar_templateGrammar::select_templateSyntax_20 (Lexique_galgasTempla
 //--------------------------------------------------------------------------------------------------
 
 int32_t cGrammar_templateGrammar::select_templateSyntax_21 (Lexique_galgasTemplateScanner * inLexique) {
-// Productions numbers:  93 94
-  return inLexique->nextProductionIndex () - 92 ;
+// Productions numbers:  94 95
+  return inLexique->nextProductionIndex () - 93 ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7865,8 +7972,8 @@ int32_t cGrammar_templateGrammar::select_templateSyntax_21 (Lexique_galgasTempla
 //--------------------------------------------------------------------------------------------------
 
 int32_t cGrammar_templateGrammar::select_templateSyntax_22 (Lexique_galgasTemplateScanner * inLexique) {
-// Productions numbers:  95 96
-  return inLexique->nextProductionIndex () - 94 ;
+// Productions numbers:  96 97
+  return inLexique->nextProductionIndex () - 95 ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7876,8 +7983,8 @@ int32_t cGrammar_templateGrammar::select_templateSyntax_22 (Lexique_galgasTempla
 //--------------------------------------------------------------------------------------------------
 
 int32_t cGrammar_templateGrammar::select_templateSyntax_23 (Lexique_galgasTemplateScanner * inLexique) {
-// Productions numbers:  97 98
-  return inLexique->nextProductionIndex () - 96 ;
+// Productions numbers:  98 99
+  return inLexique->nextProductionIndex () - 97 ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7887,8 +7994,8 @@ int32_t cGrammar_templateGrammar::select_templateSyntax_23 (Lexique_galgasTempla
 //--------------------------------------------------------------------------------------------------
 
 int32_t cGrammar_templateGrammar::select_templateSyntax_24 (Lexique_galgasTemplateScanner * inLexique) {
-// Productions numbers:  99 100
-  return inLexique->nextProductionIndex () - 98 ;
+// Productions numbers:  100 101
+  return inLexique->nextProductionIndex () - 99 ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7898,8 +8005,8 @@ int32_t cGrammar_templateGrammar::select_templateSyntax_24 (Lexique_galgasTempla
 //--------------------------------------------------------------------------------------------------
 
 int32_t cGrammar_templateGrammar::select_templateSyntax_25 (Lexique_galgasTemplateScanner * inLexique) {
-// Productions numbers:  101 102
-  return inLexique->nextProductionIndex () - 100 ;
+// Productions numbers:  102 103
+  return inLexique->nextProductionIndex () - 101 ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7909,8 +8016,8 @@ int32_t cGrammar_templateGrammar::select_templateSyntax_25 (Lexique_galgasTempla
 //--------------------------------------------------------------------------------------------------
 
 int32_t cGrammar_templateGrammar::select_templateSyntax_26 (Lexique_galgasTemplateScanner * inLexique) {
-// Productions numbers:  103 104
-  return inLexique->nextProductionIndex () - 102 ;
+// Productions numbers:  104 105
+  return inLexique->nextProductionIndex () - 103 ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7920,8 +8027,8 @@ int32_t cGrammar_templateGrammar::select_templateSyntax_26 (Lexique_galgasTempla
 //--------------------------------------------------------------------------------------------------
 
 int32_t cGrammar_templateGrammar::select_templateSyntax_27 (Lexique_galgasTemplateScanner * inLexique) {
-// Productions numbers:  105 106
-  return inLexique->nextProductionIndex () - 104 ;
+// Productions numbers:  106 107
+  return inLexique->nextProductionIndex () - 105 ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7931,8 +8038,8 @@ int32_t cGrammar_templateGrammar::select_templateSyntax_27 (Lexique_galgasTempla
 //--------------------------------------------------------------------------------------------------
 
 int32_t cGrammar_templateGrammar::select_templateSyntax_28 (Lexique_galgasTemplateScanner * inLexique) {
-// Productions numbers:  107 108
-  return inLexique->nextProductionIndex () - 106 ;
+// Productions numbers:  108 109
+  return inLexique->nextProductionIndex () - 107 ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7942,8 +8049,8 @@ int32_t cGrammar_templateGrammar::select_templateSyntax_28 (Lexique_galgasTempla
 //--------------------------------------------------------------------------------------------------
 
 int32_t cGrammar_templateGrammar::select_templateSyntax_29 (Lexique_galgasTemplateScanner * inLexique) {
-// Productions numbers:  109 110
-  return inLexique->nextProductionIndex () - 108 ;
+// Productions numbers:  110 111
+  return inLexique->nextProductionIndex () - 109 ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7953,8 +8060,8 @@ int32_t cGrammar_templateGrammar::select_templateSyntax_29 (Lexique_galgasTempla
 //--------------------------------------------------------------------------------------------------
 
 int32_t cGrammar_templateGrammar::select_templateSyntax_30 (Lexique_galgasTemplateScanner * inLexique) {
-// Productions numbers:  111 112
-  return inLexique->nextProductionIndex () - 110 ;
+// Productions numbers:  112 113
+  return inLexique->nextProductionIndex () - 111 ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7964,8 +8071,8 @@ int32_t cGrammar_templateGrammar::select_templateSyntax_30 (Lexique_galgasTempla
 //--------------------------------------------------------------------------------------------------
 
 int32_t cGrammar_templateGrammar::select_templateSyntax_31 (Lexique_galgasTemplateScanner * inLexique) {
-// Productions numbers:  113 114
-  return inLexique->nextProductionIndex () - 112 ;
+// Productions numbers:  114 115
+  return inLexique->nextProductionIndex () - 113 ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7975,8 +8082,8 @@ int32_t cGrammar_templateGrammar::select_templateSyntax_31 (Lexique_galgasTempla
 //--------------------------------------------------------------------------------------------------
 
 int32_t cGrammar_templateGrammar::select_templateSyntax_32 (Lexique_galgasTemplateScanner * inLexique) {
-// Productions numbers:  115 116
-  return inLexique->nextProductionIndex () - 114 ;
+// Productions numbers:  116 117
+  return inLexique->nextProductionIndex () - 115 ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7986,8 +8093,8 @@ int32_t cGrammar_templateGrammar::select_templateSyntax_32 (Lexique_galgasTempla
 //--------------------------------------------------------------------------------------------------
 
 int32_t cGrammar_templateGrammar::select_templateSyntax_33 (Lexique_galgasTemplateScanner * inLexique) {
-// Productions numbers:  117 118
-  return inLexique->nextProductionIndex () - 116 ;
+// Productions numbers:  118 119
+  return inLexique->nextProductionIndex () - 117 ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7997,8 +8104,8 @@ int32_t cGrammar_templateGrammar::select_templateSyntax_33 (Lexique_galgasTempla
 //--------------------------------------------------------------------------------------------------
 
 int32_t cGrammar_templateGrammar::select_templateSyntax_34 (Lexique_galgasTemplateScanner * inLexique) {
-// Productions numbers:  119 120 121
-  return inLexique->nextProductionIndex () - 118 ;
+// Productions numbers:  120 121 122
+  return inLexique->nextProductionIndex () - 119 ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8008,8 +8115,8 @@ int32_t cGrammar_templateGrammar::select_templateSyntax_34 (Lexique_galgasTempla
 //--------------------------------------------------------------------------------------------------
 
 int32_t cGrammar_templateGrammar::select_templateSyntax_35 (Lexique_galgasTemplateScanner * inLexique) {
-// Productions numbers:  122 123
-  return inLexique->nextProductionIndex () - 121 ;
+// Productions numbers:  123 124
+  return inLexique->nextProductionIndex () - 122 ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8019,8 +8126,8 @@ int32_t cGrammar_templateGrammar::select_templateSyntax_35 (Lexique_galgasTempla
 //--------------------------------------------------------------------------------------------------
 
 int32_t cGrammar_templateGrammar::select_templateSyntax_36 (Lexique_galgasTemplateScanner * inLexique) {
-// Productions numbers:  124 125
-  return inLexique->nextProductionIndex () - 123 ;
+// Productions numbers:  125 126
+  return inLexique->nextProductionIndex () - 124 ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9909,12 +10016,12 @@ void routine_projectCreation_3F_ (const GALGAS_string constinArgument_inProjectP
 void routine_enterTemplateString_26_ (GALGAS_templateInstructionListAST & ioArgument_outResultingInstructionList,
                                       Compiler * inCompiler
                                       COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string var_s_21609 = GALGAS_string::class_func_retrieveAndResetTemplateString (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 599)) ;
+  GALGAS_string var_s_21664 = GALGAS_string::class_func_retrieveAndResetTemplateString (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 604)) ;
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
-    test_0 = GALGAS_bool (kIsStrictSup, var_s_21609.getter_count (SOURCE_FILE ("templateSyntax.galgas", 600)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
+    test_0 = GALGAS_bool (kIsStrictSup, var_s_21664.getter_count (SOURCE_FILE ("templateSyntax.galgas", 605)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
     if (kBoolTrue == test_0) {
-      ioArgument_outResultingInstructionList.addAssign_operation (GALGAS_templateInstructionStringAST::class_func_new (var_s_21609  COMMA_SOURCE_FILE ("templateSyntax.galgas", 601))  COMMA_SOURCE_FILE ("templateSyntax.galgas", 601)) ;
+      ioArgument_outResultingInstructionList.addAssign_operation (GALGAS_templateInstructionStringAST::class_func_new (var_s_21664  COMMA_SOURCE_FILE ("templateSyntax.galgas", 606))  COMMA_SOURCE_FILE ("templateSyntax.galgas", 606)) ;
     }
   }
 }
@@ -9971,43 +10078,43 @@ void cPtr_templateGetterCallInExpressionAST::method_templateExpressionAnalysis (
           extensionMethod_checkSetAccess (var_accessControl_4264, GALGAS_selfAvailability::class_func_none (SOURCE_FILE ("templateAnalysis.galgas", 96)), temp_8.readProperty_mGetterName ().readProperty_location (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 96)) ;
           const GALGAS_templateGetterCallInExpressionAST temp_9 = this ;
           const GALGAS_templateGetterCallInExpressionAST temp_10 = this ;
-          outArgument_outExpression = GALGAS_structPropertyAccessExpressionForGeneration::class_func_new (var_propertyType_4286, temp_9.readProperty_mGetterName ().readProperty_location (), var_receiverExpression_3806, temp_10.readProperty_mGetterName ().readProperty_string ()  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 100)) ;
+          outArgument_outExpression = GALGAS_structPropertyAccessExpressionForGeneration::class_func_new (var_propertyType_4286, temp_9.readProperty_mGetterName ().readProperty_location (), var_receiverExpression_3806, temp_10.readProperty_mGetterName ().readProperty_string ()  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 97)) ;
         }
       }
     }
   }
   if (kBoolFalse == test_1) {
-    GALGAS_getterMap var_getterMap_4907 = extensionGetter_definition (var_receiverType_3856, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 108)).readProperty_mGetterMap () ;
-    GALGAS_functionSignature var_getterFormalArgumentTypeList_5008 ;
-    GALGAS_methodKind var_kind_5057 ;
-    GALGAS_bool var_hasCompilerArgument_5076 ;
-    GALGAS_unifiedTypeMapEntry var_returnedType_5125 ;
-    GALGAS_stringlist var_fieldList_5146 = GALGAS_stringlist::class_func_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 114)) ;
+    GALGAS_getterMap var_getterMap_4787 = extensionGetter_definition (var_receiverType_3856, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 105)).readProperty_mGetterMap () ;
+    GALGAS_functionSignature var_getterFormalArgumentTypeList_4888 ;
+    GALGAS_methodKind var_kind_4937 ;
+    GALGAS_bool var_hasCompilerArgument_4956 ;
+    GALGAS_unifiedTypeMapEntry var_returnedType_5005 ;
+    GALGAS_stringlist var_fieldList_5026 = GALGAS_stringlist::class_func_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 111)) ;
     const GALGAS_templateGetterCallInExpressionAST temp_11 = this ;
-    GALGAS_string var_actualGetterName_5181 = temp_11.readProperty_mGetterName ().readProperty_string () ;
+    GALGAS_string var_actualGetterName_5061 = temp_11.readProperty_mGetterName ().readProperty_string () ;
     enumGalgasBool test_12 = kBoolTrue ;
     if (kBoolTrue == test_12) {
       const GALGAS_templateGetterCallInExpressionAST temp_13 = this ;
-      test_12 = var_getterMap_4907.getter_hasKey (temp_13.readProperty_mGetterName ().readProperty_string () COMMA_SOURCE_FILE ("templateAnalysis.galgas", 116)).boolEnum () ;
+      test_12 = var_getterMap_4787.getter_hasKey (temp_13.readProperty_mGetterName ().readProperty_string () COMMA_SOURCE_FILE ("templateAnalysis.galgas", 113)).boolEnum () ;
       if (kBoolTrue == test_12) {
-        GALGAS_string var_actualGetterNameString_5463 ;
+        GALGAS_string var_actualGetterNameString_5343 ;
         const GALGAS_templateGetterCallInExpressionAST temp_14 = this ;
-        GALGAS_location joker_5385 ; // Joker input parameter
-        GALGAS_methodQualifier joker_5447 ; // Joker input parameter
-        var_getterMap_4907.method_searchKey (temp_14.readProperty_mGetterName (), var_kind_5057, var_getterFormalArgumentTypeList_5008, joker_5385, var_hasCompilerArgument_5076, var_returnedType_5125, joker_5447, var_actualGetterNameString_5463, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 117)) ;
+        GALGAS_location joker_5265 ; // Joker input parameter
+        GALGAS_methodQualifier joker_5327 ; // Joker input parameter
+        var_getterMap_4787.method_searchKey (temp_14.readProperty_mGetterName (), var_kind_4937, var_getterFormalArgumentTypeList_4888, joker_5265, var_hasCompilerArgument_4956, var_returnedType_5005, joker_5327, var_actualGetterNameString_5343, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 114)) ;
         enumGalgasBool test_15 = kBoolTrue ;
         if (kBoolTrue == test_15) {
-          test_15 = GALGAS_bool (kIsNotEqual, var_actualGetterNameString_5463.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+          test_15 = GALGAS_bool (kIsNotEqual, var_actualGetterNameString_5343.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
           if (kBoolTrue == test_15) {
-            var_actualGetterName_5181 = var_actualGetterNameString_5463 ;
+            var_actualGetterName_5061 = var_actualGetterNameString_5343 ;
             enumGalgasBool test_16 = kBoolTrue ;
             if (kBoolTrue == test_16) {
               test_16 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_errorObsoleteGetterCall.readProperty_value ()).boolEnum () ;
               if (kBoolTrue == test_16) {
                 const GALGAS_templateGetterCallInExpressionAST temp_17 = this ;
                 TC_Array <C_FixItDescription> fixItArray18 ;
-                appendFixItActions (fixItArray18, kFixItReplace, var_actualGetterName_5181) ;
-                inCompiler->emitSemanticError (temp_17.readProperty_mGetterName ().readProperty_location (), GALGAS_string ("obsolete getter"), fixItArray18  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 129)) ;
+                appendFixItActions (fixItArray18, kFixItReplace, var_actualGetterName_5061) ;
+                inCompiler->emitSemanticError (temp_17.readProperty_mGetterName ().readProperty_location (), GALGAS_string ("obsolete getter"), fixItArray18  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 126)) ;
               }
             }
           }
@@ -10015,74 +10122,74 @@ void cPtr_templateGetterCallInExpressionAST::method_templateExpressionAnalysis (
       }
     }
     if (kBoolFalse == test_12) {
-      GALGAS_uint var_matchingReaderCount_5796 = GALGAS_uint (uint32_t (0U)) ;
+      GALGAS_uint var_matchingReaderCount_5676 = GALGAS_uint (uint32_t (0U)) ;
       enumGalgasBool test_19 = kBoolTrue ;
       if (kBoolTrue == test_19) {
-        test_19 = GALGAS_bool (kIsEqual, extensionGetter_definition (var_receiverType_3856, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 134)).readProperty_mTypeKindEnum ().objectCompare (GALGAS_typeKindEnum::class_func_structType (SOURCE_FILE ("templateAnalysis.galgas", 134)))).boolEnum () ;
+        test_19 = GALGAS_bool (kIsEqual, extensionGetter_definition (var_receiverType_3856, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 131)).readProperty_mTypeKindEnum ().objectCompare (GALGAS_typeKindEnum::class_func_structType (SOURCE_FILE ("templateAnalysis.galgas", 131)))).boolEnum () ;
         if (kBoolTrue == test_19) {
-          var_getterFormalArgumentTypeList_5008 = GALGAS_functionSignature::class_func_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 135)) ;
-          var_hasCompilerArgument_5076 = GALGAS_bool (true) ;
-          var_returnedType_5125 = GALGAS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("templateAnalysis.galgas", 137)) ;
-          var_kind_5057 = GALGAS_methodKind::class_func_definedAsMember (SOURCE_FILE ("templateAnalysis.galgas", 138)) ;
-          cEnumerator_typedPropertyList enumerator_6118 (extensionGetter_definition (var_receiverType_3856, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 139)).readProperty_mCurrentTypedPropertyList (), kENUMERATION_UP) ;
-          while (enumerator_6118.hasCurrentObject ()) {
-            GALGAS_getterMap var_aMap_6204 = extensionGetter_definition (enumerator_6118.current_mPropertyTypeEntry (HERE), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 140)).readProperty_mGetterMap () ;
+          var_getterFormalArgumentTypeList_4888 = GALGAS_functionSignature::class_func_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 132)) ;
+          var_hasCompilerArgument_4956 = GALGAS_bool (true) ;
+          var_returnedType_5005 = GALGAS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("templateAnalysis.galgas", 134)) ;
+          var_kind_4937 = GALGAS_methodKind::class_func_definedAsMember (SOURCE_FILE ("templateAnalysis.galgas", 135)) ;
+          cEnumerator_typedPropertyList enumerator_5998 (extensionGetter_definition (var_receiverType_3856, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 136)).readProperty_mCurrentTypedPropertyList (), kENUMERATION_UP) ;
+          while (enumerator_5998.hasCurrentObject ()) {
+            GALGAS_getterMap var_aMap_6084 = extensionGetter_definition (enumerator_5998.current_mPropertyTypeEntry (HERE), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 137)).readProperty_mGetterMap () ;
             const GALGAS_templateGetterCallInExpressionAST temp_20 = this ;
-            const cMapElement_getterMap * objectArray_6264 = (const cMapElement_getterMap *) var_aMap_6204.readAccessForWithInstruction (temp_20.readProperty_mGetterName ().readProperty_string ()) ;
-            if (nullptr != objectArray_6264) {
-                macroValidSharedObject (objectArray_6264, cMapElement_getterMap) ;
-              var_matchingReaderCount_5796.plusAssign_operation(GALGAS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 142)) ;
-              var_getterFormalArgumentTypeList_5008 = objectArray_6264->mProperty_mArgumentTypeList ;
-              var_hasCompilerArgument_5076 = objectArray_6264->mProperty_mHasCompilerArgument ;
-              var_returnedType_5125 = objectArray_6264->mProperty_mReturnedType ;
-              var_kind_5057 = objectArray_6264->mProperty_mKind ;
+            const cMapElement_getterMap * objectArray_6144 = (const cMapElement_getterMap *) var_aMap_6084.readAccessForWithInstruction (temp_20.readProperty_mGetterName ().readProperty_string ()) ;
+            if (nullptr != objectArray_6144) {
+                macroValidSharedObject (objectArray_6144, cMapElement_getterMap) ;
+              var_matchingReaderCount_5676.plusAssign_operation(GALGAS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 139)) ;
+              var_getterFormalArgumentTypeList_4888 = objectArray_6144->mProperty_mArgumentTypeList ;
+              var_hasCompilerArgument_4956 = objectArray_6144->mProperty_mHasCompilerArgument ;
+              var_returnedType_5005 = objectArray_6144->mProperty_mReturnedType ;
+              var_kind_4937 = objectArray_6144->mProperty_mKind ;
               enumGalgasBool test_21 = kBoolTrue ;
               if (kBoolTrue == test_21) {
-                test_21 = GALGAS_bool (kIsNotEqual, objectArray_6264->mProperty_mGetterNameThatObsoletesInvokationName.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+                test_21 = GALGAS_bool (kIsNotEqual, objectArray_6144->mProperty_mGetterNameThatObsoletesInvokationName.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
                 if (kBoolTrue == test_21) {
-                  var_actualGetterName_5181 = objectArray_6264->mProperty_mGetterNameThatObsoletesInvokationName ;
+                  var_actualGetterName_5061 = objectArray_6144->mProperty_mGetterNameThatObsoletesInvokationName ;
                 }
               }
-              var_fieldList_5146.addAssign_operation (enumerator_6118.current_mPropertyName (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 150)) ;
+              var_fieldList_5026.addAssign_operation (enumerator_5998.current_mPropertyName (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 147)) ;
             }
-            enumerator_6118.gotoNextObject () ;
+            enumerator_5998.gotoNextObject () ;
           }
           enumGalgasBool test_22 = kBoolTrue ;
           if (kBoolTrue == test_22) {
-            test_22 = GALGAS_bool (kIsEqual, var_matchingReaderCount_5796.objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
+            test_22 = GALGAS_bool (kIsEqual, var_matchingReaderCount_5676.objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
             if (kBoolTrue == test_22) {
               const GALGAS_templateGetterCallInExpressionAST temp_23 = this ;
               const GALGAS_templateGetterCallInExpressionAST temp_24 = this ;
               TC_Array <C_FixItDescription> fixItArray25 ;
-              inCompiler->emitSemanticError (temp_23.readProperty_mGetterName ().readProperty_location (), GALGAS_string ("the '@").add_operation (var_receiverTypeName_3908, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 155)).add_operation (GALGAS_string ("' struct type does not define the '"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 155)).add_operation (temp_24.readProperty_mGetterName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 155)).add_operation (GALGAS_string ("' getter, and none of its fields defines it"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 155)), fixItArray25  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 154)) ;
-              var_getterFormalArgumentTypeList_5008.drop () ; // Release error dropped variable
-              var_hasCompilerArgument_5076.drop () ; // Release error dropped variable
-              var_returnedType_5125.drop () ; // Release error dropped variable
-              var_kind_5057.drop () ; // Release error dropped variable
+              inCompiler->emitSemanticError (temp_23.readProperty_mGetterName ().readProperty_location (), GALGAS_string ("the '@").add_operation (var_receiverTypeName_3908, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 152)).add_operation (GALGAS_string ("' struct type does not define the '"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 152)).add_operation (temp_24.readProperty_mGetterName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 152)).add_operation (GALGAS_string ("' getter, and none of its fields defines it"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 152)), fixItArray25  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 151)) ;
+              var_getterFormalArgumentTypeList_4888.drop () ; // Release error dropped variable
+              var_hasCompilerArgument_4956.drop () ; // Release error dropped variable
+              var_returnedType_5005.drop () ; // Release error dropped variable
+              var_kind_4937.drop () ; // Release error dropped variable
             }
           }
           if (kBoolFalse == test_22) {
             enumGalgasBool test_26 = kBoolTrue ;
             if (kBoolTrue == test_26) {
-              test_26 = GALGAS_bool (kIsStrictSup, var_matchingReaderCount_5796.objectCompare (GALGAS_uint (uint32_t (1U)))).boolEnum () ;
+              test_26 = GALGAS_bool (kIsStrictSup, var_matchingReaderCount_5676.objectCompare (GALGAS_uint (uint32_t (1U)))).boolEnum () ;
               if (kBoolTrue == test_26) {
-                GALGAS_string var_s_7135 = GALGAS_string::makeEmptyString () ;
-                cEnumerator_stringlist enumerator_7157 (var_fieldList_5146, kENUMERATION_UP) ;
-                while (enumerator_7157.hasCurrentObject ()) {
-                  var_s_7135.plusAssign_operation(enumerator_7157.current_mValue (HERE), inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 161)) ;
-                  if (enumerator_7157.hasNextObject ()) {
-                    var_s_7135.plusAssign_operation(GALGAS_string (", "), inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 162)) ;
+                GALGAS_string var_s_7015 = GALGAS_string::makeEmptyString () ;
+                cEnumerator_stringlist enumerator_7037 (var_fieldList_5026, kENUMERATION_UP) ;
+                while (enumerator_7037.hasCurrentObject ()) {
+                  var_s_7015.plusAssign_operation(enumerator_7037.current_mValue (HERE), inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 158)) ;
+                  if (enumerator_7037.hasNextObject ()) {
+                    var_s_7015.plusAssign_operation(GALGAS_string (", "), inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 159)) ;
                   }
-                  enumerator_7157.gotoNextObject () ;
+                  enumerator_7037.gotoNextObject () ;
                 }
                 const GALGAS_templateGetterCallInExpressionAST temp_27 = this ;
                 const GALGAS_templateGetterCallInExpressionAST temp_28 = this ;
                 TC_Array <C_FixItDescription> fixItArray29 ;
-                inCompiler->emitSemanticError (temp_27.readProperty_mGetterName ().readProperty_location (), GALGAS_string ("the '@").add_operation (var_receiverTypeName_3908, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 165)).add_operation (GALGAS_string ("' struct type does not define the '"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 165)).add_operation (temp_28.readProperty_mGetterName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 165)).add_operation (GALGAS_string ("' getter, and several of its fields defines it:"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 165)).add_operation (var_s_7135, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 166)).add_operation (GALGAS_string (" (exactly one field should define it)"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 166)), fixItArray29  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 164)) ;
-                var_getterFormalArgumentTypeList_5008.drop () ; // Release error dropped variable
-                var_hasCompilerArgument_5076.drop () ; // Release error dropped variable
-                var_returnedType_5125.drop () ; // Release error dropped variable
-                var_kind_5057.drop () ; // Release error dropped variable
+                inCompiler->emitSemanticError (temp_27.readProperty_mGetterName ().readProperty_location (), GALGAS_string ("the '@").add_operation (var_receiverTypeName_3908, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 162)).add_operation (GALGAS_string ("' struct type does not define the '"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 162)).add_operation (temp_28.readProperty_mGetterName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 162)).add_operation (GALGAS_string ("' getter, and several of its fields defines it:"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 162)).add_operation (var_s_7015, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 163)).add_operation (GALGAS_string (" (exactly one field should define it)"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 163)), fixItArray29  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 161)) ;
+                var_getterFormalArgumentTypeList_4888.drop () ; // Release error dropped variable
+                var_hasCompilerArgument_4956.drop () ; // Release error dropped variable
+                var_returnedType_5005.drop () ; // Release error dropped variable
+                var_kind_4937.drop () ; // Release error dropped variable
               }
             }
           }
@@ -10091,79 +10198,79 @@ void cPtr_templateGetterCallInExpressionAST::method_templateExpressionAnalysis (
       if (kBoolFalse == test_19) {
         enumGalgasBool test_30 = kBoolTrue ;
         if (kBoolTrue == test_30) {
-          test_30 = GALGAS_bool (kIsEqual, var_getterMap_4907.getter_count (SOURCE_FILE ("templateAnalysis.galgas", 169)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
+          test_30 = GALGAS_bool (kIsEqual, var_getterMap_4787.getter_count (SOURCE_FILE ("templateAnalysis.galgas", 166)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
           if (kBoolTrue == test_30) {
             const GALGAS_templateGetterCallInExpressionAST temp_31 = this ;
             TC_Array <C_FixItDescription> fixItArray32 ;
-            inCompiler->emitSemanticError (temp_31.readProperty_mGetterName ().readProperty_location (), GALGAS_string ("the '@").add_operation (var_receiverTypeName_3908, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 171)).add_operation (GALGAS_string ("' type does not define any getter"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 171)), fixItArray32  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 170)) ;
-            var_getterFormalArgumentTypeList_5008.drop () ; // Release error dropped variable
-            var_hasCompilerArgument_5076.drop () ; // Release error dropped variable
-            var_returnedType_5125.drop () ; // Release error dropped variable
-            var_kind_5057.drop () ; // Release error dropped variable
+            inCompiler->emitSemanticError (temp_31.readProperty_mGetterName ().readProperty_location (), GALGAS_string ("the '@").add_operation (var_receiverTypeName_3908, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 168)).add_operation (GALGAS_string ("' type does not define any getter"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 168)), fixItArray32  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 167)) ;
+            var_getterFormalArgumentTypeList_4888.drop () ; // Release error dropped variable
+            var_hasCompilerArgument_4956.drop () ; // Release error dropped variable
+            var_returnedType_5005.drop () ; // Release error dropped variable
+            var_kind_4937.drop () ; // Release error dropped variable
           }
         }
         if (kBoolFalse == test_30) {
           const GALGAS_templateGetterCallInExpressionAST temp_33 = this ;
           const GALGAS_templateGetterCallInExpressionAST temp_34 = this ;
           TC_Array <C_FixItDescription> fixItArray35 ;
-          appendFixItActions (fixItArray35, kFixItReplace, var_getterMap_4907.getter_keyList (SOURCE_FILE ("templateAnalysis.galgas", 177))) ;
-          inCompiler->emitSemanticError (temp_33.readProperty_mGetterName ().readProperty_location (), GALGAS_string ("the '@").add_operation (var_receiverTypeName_3908, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 175)).add_operation (GALGAS_string ("' type does not define the '"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 175)).add_operation (temp_34.readProperty_mGetterName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 175)).add_operation (GALGAS_string ("' getter"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 175)), fixItArray35  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 174)) ;
-          var_getterFormalArgumentTypeList_5008.drop () ; // Release error dropped variable
-          var_hasCompilerArgument_5076.drop () ; // Release error dropped variable
-          var_returnedType_5125.drop () ; // Release error dropped variable
-          var_kind_5057.drop () ; // Release error dropped variable
+          appendFixItActions (fixItArray35, kFixItReplace, var_getterMap_4787.getter_keyList (SOURCE_FILE ("templateAnalysis.galgas", 174))) ;
+          inCompiler->emitSemanticError (temp_33.readProperty_mGetterName ().readProperty_location (), GALGAS_string ("the '@").add_operation (var_receiverTypeName_3908, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 172)).add_operation (GALGAS_string ("' type does not define the '"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 172)).add_operation (temp_34.readProperty_mGetterName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 172)).add_operation (GALGAS_string ("' getter"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 172)), fixItArray35  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 171)) ;
+          var_getterFormalArgumentTypeList_4888.drop () ; // Release error dropped variable
+          var_hasCompilerArgument_4956.drop () ; // Release error dropped variable
+          var_returnedType_5005.drop () ; // Release error dropped variable
+          var_kind_4937.drop () ; // Release error dropped variable
         }
       }
     }
     enumGalgasBool test_36 = kBoolTrue ;
     if (kBoolTrue == test_36) {
       const GALGAS_templateGetterCallInExpressionAST temp_37 = this ;
-      test_36 = GALGAS_bool (kIsNotEqual, temp_37.readProperty_mExpressionList ().getter_count (SOURCE_FILE ("templateAnalysis.galgas", 181)).objectCompare (var_getterFormalArgumentTypeList_5008.getter_count (SOURCE_FILE ("templateAnalysis.galgas", 181)))).boolEnum () ;
+      test_36 = GALGAS_bool (kIsNotEqual, temp_37.readProperty_mExpressionList ().getter_count (SOURCE_FILE ("templateAnalysis.galgas", 178)).objectCompare (var_getterFormalArgumentTypeList_4888.getter_count (SOURCE_FILE ("templateAnalysis.galgas", 178)))).boolEnum () ;
       if (kBoolTrue == test_36) {
         const GALGAS_templateGetterCallInExpressionAST temp_38 = this ;
         const GALGAS_templateGetterCallInExpressionAST temp_39 = this ;
         const GALGAS_templateGetterCallInExpressionAST temp_40 = this ;
         TC_Array <C_FixItDescription> fixItArray41 ;
-        inCompiler->emitSemanticError (temp_38.readProperty_mGetterName ().readProperty_location (), GALGAS_string ("calling the '").add_operation (temp_39.readProperty_mGetterName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 182)).add_operation (GALGAS_string ("' getter of '@"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 182)).add_operation (var_receiverTypeName_3908, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 182)).add_operation (GALGAS_string ("' requires "), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 182)).add_operation (var_getterFormalArgumentTypeList_5008.getter_count (SOURCE_FILE ("templateAnalysis.galgas", 183)).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 183)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 182)).add_operation (GALGAS_string (" parameter(s), while this call has "), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 183)).add_operation (temp_40.readProperty_mExpressionList ().getter_count (SOURCE_FILE ("templateAnalysis.galgas", 184)).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 184)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 183)).add_operation (GALGAS_string (" parameter(s)"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 184)), fixItArray41  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 182)) ;
+        inCompiler->emitSemanticError (temp_38.readProperty_mGetterName ().readProperty_location (), GALGAS_string ("calling the '").add_operation (temp_39.readProperty_mGetterName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 179)).add_operation (GALGAS_string ("' getter of '@"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 179)).add_operation (var_receiverTypeName_3908, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 179)).add_operation (GALGAS_string ("' requires "), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 179)).add_operation (var_getterFormalArgumentTypeList_4888.getter_count (SOURCE_FILE ("templateAnalysis.galgas", 180)).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 180)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 179)).add_operation (GALGAS_string (" parameter(s), while this call has "), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 180)).add_operation (temp_40.readProperty_mExpressionList ().getter_count (SOURCE_FILE ("templateAnalysis.galgas", 181)).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 181)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 180)).add_operation (GALGAS_string (" parameter(s)"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 181)), fixItArray41  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 179)) ;
         outArgument_outExpression.drop () ; // Release error dropped variable
       }
     }
     if (kBoolFalse == test_36) {
-      GALGAS_semanticExpressionListForGeneration var_constructorEffectiveParameterList_8559 = GALGAS_semanticExpressionListForGeneration::class_func_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 186)) ;
+      GALGAS_semanticExpressionListForGeneration var_constructorEffectiveParameterList_8439 = GALGAS_semanticExpressionListForGeneration::class_func_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 183)) ;
       const GALGAS_templateGetterCallInExpressionAST temp_42 = this ;
-      cEnumerator_templateExpressionListAST enumerator_8637 (temp_42.readProperty_mExpressionList (), kENUMERATION_UP) ;
-      cEnumerator_functionSignature enumerator_8735 (var_getterFormalArgumentTypeList_5008, kENUMERATION_UP) ;
-      while (enumerator_8637.hasCurrentObject () && enumerator_8735.hasCurrentObject ()) {
+      cEnumerator_templateExpressionListAST enumerator_8517 (temp_42.readProperty_mExpressionList (), kENUMERATION_UP) ;
+      cEnumerator_functionSignature enumerator_8615 (var_getterFormalArgumentTypeList_4888, kENUMERATION_UP) ;
+      while (enumerator_8517.hasCurrentObject () && enumerator_8615.hasCurrentObject ()) {
         enumGalgasBool test_43 = kBoolTrue ;
         if (kBoolTrue == test_43) {
-          test_43 = GALGAS_bool (kIsNotEqual, enumerator_8735.current_mFormalSelector (HERE).readProperty_string ().objectCompare (enumerator_8637.current_mActualSelector (HERE).readProperty_string ())).boolEnum () ;
+          test_43 = GALGAS_bool (kIsNotEqual, enumerator_8615.current_mFormalSelector (HERE).readProperty_string ().objectCompare (enumerator_8517.current_mActualSelector (HERE).readProperty_string ())).boolEnum () ;
           if (kBoolTrue == test_43) {
             GALGAS_string temp_44 ;
-            const enumGalgasBool test_45 = GALGAS_bool (kIsNotEqual, enumerator_8735.current_mFormalSelector (HERE).readProperty_string ().objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+            const enumGalgasBool test_45 = GALGAS_bool (kIsNotEqual, enumerator_8615.current_mFormalSelector (HERE).readProperty_string ().objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
             if (kBoolTrue == test_45) {
-              temp_44 = enumerator_8735.current_mFormalSelector (HERE).readProperty_string ().add_operation (GALGAS_string (":"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 190)) ;
+              temp_44 = enumerator_8615.current_mFormalSelector (HERE).readProperty_string ().add_operation (GALGAS_string (":"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 187)) ;
             }else if (kBoolFalse == test_45) {
               temp_44 = GALGAS_string::makeEmptyString () ;
             }
-            GALGAS_string var_s_8860 = GALGAS_string ("!").add_operation (temp_44, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 190)) ;
+            GALGAS_string var_s_8740 = GALGAS_string ("!").add_operation (temp_44, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 187)) ;
             TC_Array <C_FixItDescription> fixItArray46 ;
-            appendFixItActions (fixItArray46, kFixItReplace, var_s_8860) ;
-            inCompiler->emitSemanticError (enumerator_8637.current_mActualSelector (HERE).readProperty_location (), GALGAS_string ("the selector should be '").add_operation (var_s_8860, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 191)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 191)), fixItArray46  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 191)) ;
+            appendFixItActions (fixItArray46, kFixItReplace, var_s_8740) ;
+            inCompiler->emitSemanticError (enumerator_8517.current_mActualSelector (HERE).readProperty_location (), GALGAS_string ("the selector should be '").add_operation (var_s_8740, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 188)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 188)), fixItArray46  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 188)) ;
           }
         }
-        GALGAS_semanticExpressionForGeneration var_exp_9268 ;
-        callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) enumerator_8637.current_mExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_exp_9268, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 193)) ;
+        GALGAS_semanticExpressionForGeneration var_exp_9148 ;
+        callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) enumerator_8517.current_mExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_exp_9148, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 190)) ;
         {
-        routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (enumerator_8735.current_mFormalArgumentType (HERE), var_exp_9268.readProperty_mResultType (), enumerator_8637.current_mEndOfExpressionLocation (HERE), var_exp_9268, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 200)) ;
+        routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (enumerator_8615.current_mFormalArgumentType (HERE), var_exp_9148.readProperty_mResultType (), enumerator_8517.current_mEndOfExpressionLocation (HERE), var_exp_9148, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 197)) ;
         }
-        var_constructorEffectiveParameterList_8559.addAssign_operation (var_exp_9268  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 201)) ;
-        enumerator_8637.gotoNextObject () ;
-        enumerator_8735.gotoNextObject () ;
+        var_constructorEffectiveParameterList_8439.addAssign_operation (var_exp_9148  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 198)) ;
+        enumerator_8517.gotoNextObject () ;
+        enumerator_8615.gotoNextObject () ;
       }
       enumGalgasBool test_47 = kBoolTrue ;
       if (kBoolTrue == test_47) {
         const GALGAS_templateGetterCallInExpressionAST temp_48 = this ;
-        GALGAS_bool test_49 = GALGAS_bool (kIsNotEqual, var_actualGetterName_5181.objectCompare (temp_48.readProperty_mGetterName ().readProperty_string ())) ;
+        GALGAS_bool test_49 = GALGAS_bool (kIsNotEqual, var_actualGetterName_5061.objectCompare (temp_48.readProperty_mGetterName ().readProperty_string ())) ;
         if (kBoolTrue == test_49.boolEnum ()) {
           test_49 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_errorObsoleteGetterCall.readProperty_value ()) ;
         }
@@ -10171,12 +10278,12 @@ void cPtr_templateGetterCallInExpressionAST::method_templateExpressionAnalysis (
         if (kBoolTrue == test_47) {
           const GALGAS_templateGetterCallInExpressionAST temp_50 = this ;
           TC_Array <C_FixItDescription> fixItArray51 ;
-          appendFixItActions (fixItArray51, kFixItReplace, var_actualGetterName_5181) ;
-          inCompiler->emitSemanticError (temp_50.readProperty_mGetterName ().readProperty_location (), GALGAS_string ("obsolete getter"), fixItArray51  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 204)) ;
+          appendFixItActions (fixItArray51, kFixItReplace, var_actualGetterName_5061) ;
+          inCompiler->emitSemanticError (temp_50.readProperty_mGetterName ().readProperty_location (), GALGAS_string ("obsolete getter"), fixItArray51  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 201)) ;
         }
       }
       const GALGAS_templateGetterCallInExpressionAST temp_52 = this ;
-      outArgument_outExpression = GALGAS_getterCallExpressionForGeneration::class_func_new (var_returnedType_5125, temp_52.readProperty_mGetterName ().readProperty_location (), var_kind_5057, var_receiverExpression_3806, var_fieldList_5146, var_actualGetterName_5181, var_constructorEffectiveParameterList_8559, var_hasCompilerArgument_5076  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 206)) ;
+      outArgument_outExpression = GALGAS_getterCallExpressionForGeneration::class_func_new (var_returnedType_5005, temp_52.readProperty_mGetterName ().readProperty_location (), var_kind_4937, var_receiverExpression_3806, var_fieldList_5026, var_actualGetterName_5061, var_constructorEffectiveParameterList_8439, var_hasCompilerArgument_4956  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 203)) ;
     }
   }
 }
@@ -10194,30 +10301,30 @@ void cPtr_templateClassFunctionAST::method_templateExpressionAnalysis (const GAL
                                                                        Compiler * inCompiler
                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_templateClassFunctionAST temp_0 = this ;
-  GALGAS_unifiedTypeMapEntry var_constructorType_10530 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, temp_0.readProperty_mTypeName (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 231)) ;
-  GALGAS_classFunctionMap var_classFunctionMap_10662 = extensionGetter_definition (var_constructorType_10530, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 233)).readProperty_mClassFunctionMap () ;
-  GALGAS_unifiedTypeMapEntry var_returnedType_10782 ;
-  GALGAS_bool var_hasCompilerArgument_10807 ;
-  GALGAS_functionSignature var_classFuncFormalArgumentTypeList_10852 ;
+  GALGAS_unifiedTypeMapEntry var_constructorType_10410 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, temp_0.readProperty_mTypeName (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 228)) ;
+  GALGAS_classFunctionMap var_classFunctionMap_10542 = extensionGetter_definition (var_constructorType_10410, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 230)).readProperty_mClassFunctionMap () ;
+  GALGAS_unifiedTypeMapEntry var_returnedType_10662 ;
+  GALGAS_bool var_hasCompilerArgument_10687 ;
+  GALGAS_functionSignature var_classFuncFormalArgumentTypeList_10732 ;
   const GALGAS_templateClassFunctionAST temp_1 = this ;
-  const cMapElement_classFunctionMap * objectArray_10886 = (const cMapElement_classFunctionMap *) var_classFunctionMap_10662.readAccessForWithInstruction (temp_1.readProperty_mClassFunctionName ().readProperty_string ()) ;
-  if (nullptr != objectArray_10886) {
-      macroValidSharedObject (objectArray_10886, cMapElement_classFunctionMap) ;
-    var_classFuncFormalArgumentTypeList_10852 = objectArray_10886->mProperty_mArgumentTypeList ;
-    var_hasCompilerArgument_10807 = objectArray_10886->mProperty_mHasCompilerArgument ;
-    var_returnedType_10782 = objectArray_10886->mProperty_mReturnedType ;
+  const cMapElement_classFunctionMap * objectArray_10766 = (const cMapElement_classFunctionMap *) var_classFunctionMap_10542.readAccessForWithInstruction (temp_1.readProperty_mClassFunctionName ().readProperty_string ()) ;
+  if (nullptr != objectArray_10766) {
+      macroValidSharedObject (objectArray_10766, cMapElement_classFunctionMap) ;
+    var_classFuncFormalArgumentTypeList_10732 = objectArray_10766->mProperty_mArgumentTypeList ;
+    var_hasCompilerArgument_10687 = objectArray_10766->mProperty_mHasCompilerArgument ;
+    var_returnedType_10662 = objectArray_10766->mProperty_mReturnedType ;
   }else{
     enumGalgasBool test_2 = kBoolTrue ;
     if (kBoolTrue == test_2) {
-      test_2 = GALGAS_bool (kIsEqual, var_classFunctionMap_10662.getter_count (SOURCE_FILE ("templateAnalysis.galgas", 243)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
+      test_2 = GALGAS_bool (kIsEqual, var_classFunctionMap_10542.getter_count (SOURCE_FILE ("templateAnalysis.galgas", 240)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
       if (kBoolTrue == test_2) {
         const GALGAS_templateClassFunctionAST temp_3 = this ;
         const GALGAS_templateClassFunctionAST temp_4 = this ;
         TC_Array <C_FixItDescription> fixItArray5 ;
-        inCompiler->emitSemanticError (temp_3.readProperty_mClassFunctionName ().readProperty_location (), GALGAS_string ("the '@").add_operation (temp_4.readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 245)).add_operation (GALGAS_string ("' type does not define any constructor"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 245)), fixItArray5  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 244)) ;
-        var_classFuncFormalArgumentTypeList_10852.drop () ; // Release error dropped variable
-        var_hasCompilerArgument_10807.drop () ; // Release error dropped variable
-        var_returnedType_10782.drop () ; // Release error dropped variable
+        inCompiler->emitSemanticError (temp_3.readProperty_mClassFunctionName ().readProperty_location (), GALGAS_string ("the '@").add_operation (temp_4.readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 242)).add_operation (GALGAS_string ("' type does not define any constructor"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 242)), fixItArray5  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 241)) ;
+        var_classFuncFormalArgumentTypeList_10732.drop () ; // Release error dropped variable
+        var_hasCompilerArgument_10687.drop () ; // Release error dropped variable
+        var_returnedType_10662.drop () ; // Release error dropped variable
       }
     }
     if (kBoolFalse == test_2) {
@@ -10225,63 +10332,63 @@ void cPtr_templateClassFunctionAST::method_templateExpressionAnalysis (const GAL
       const GALGAS_templateClassFunctionAST temp_7 = this ;
       const GALGAS_templateClassFunctionAST temp_8 = this ;
       TC_Array <C_FixItDescription> fixItArray9 ;
-      appendFixItActions (fixItArray9, kFixItReplace, var_classFunctionMap_10662.getter_keyList (SOURCE_FILE ("templateAnalysis.galgas", 251))) ;
-      inCompiler->emitSemanticError (temp_6.readProperty_mClassFunctionName ().readProperty_location (), GALGAS_string ("the '@").add_operation (temp_7.readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 249)).add_operation (GALGAS_string ("' type does not define the '"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 249)).add_operation (temp_8.readProperty_mClassFunctionName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 249)).add_operation (GALGAS_string ("' constructor"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 249)), fixItArray9  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 248)) ;
-      var_classFuncFormalArgumentTypeList_10852.drop () ; // Release error dropped variable
-      var_hasCompilerArgument_10807.drop () ; // Release error dropped variable
-      var_returnedType_10782.drop () ; // Release error dropped variable
+      appendFixItActions (fixItArray9, kFixItReplace, var_classFunctionMap_10542.getter_keyList (SOURCE_FILE ("templateAnalysis.galgas", 248))) ;
+      inCompiler->emitSemanticError (temp_6.readProperty_mClassFunctionName ().readProperty_location (), GALGAS_string ("the '@").add_operation (temp_7.readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 246)).add_operation (GALGAS_string ("' type does not define the '"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 246)).add_operation (temp_8.readProperty_mClassFunctionName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 246)).add_operation (GALGAS_string ("' constructor"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 246)), fixItArray9  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 245)) ;
+      var_classFuncFormalArgumentTypeList_10732.drop () ; // Release error dropped variable
+      var_hasCompilerArgument_10687.drop () ; // Release error dropped variable
+      var_returnedType_10662.drop () ; // Release error dropped variable
     }
   }
-  GALGAS_semanticExpressionListForGeneration var_classFunctionEffectiveParameterList_11680 ;
+  GALGAS_semanticExpressionListForGeneration var_classFunctionEffectiveParameterList_11560 ;
   enumGalgasBool test_10 = kBoolTrue ;
   if (kBoolTrue == test_10) {
     const GALGAS_templateClassFunctionAST temp_11 = this ;
-    test_10 = GALGAS_bool (kIsNotEqual, temp_11.readProperty_mExpressionList ().getter_count (SOURCE_FILE ("templateAnalysis.galgas", 256)).objectCompare (var_classFuncFormalArgumentTypeList_10852.getter_count (SOURCE_FILE ("templateAnalysis.galgas", 256)))).boolEnum () ;
+    test_10 = GALGAS_bool (kIsNotEqual, temp_11.readProperty_mExpressionList ().getter_count (SOURCE_FILE ("templateAnalysis.galgas", 253)).objectCompare (var_classFuncFormalArgumentTypeList_10732.getter_count (SOURCE_FILE ("templateAnalysis.galgas", 253)))).boolEnum () ;
     if (kBoolTrue == test_10) {
       const GALGAS_templateClassFunctionAST temp_12 = this ;
       const GALGAS_templateClassFunctionAST temp_13 = this ;
       const GALGAS_templateClassFunctionAST temp_14 = this ;
       TC_Array <C_FixItDescription> fixItArray15 ;
-      inCompiler->emitSemanticError (temp_12.readProperty_mClassFunctionName ().readProperty_location (), GALGAS_string ("calling the '").add_operation (temp_13.readProperty_mClassFunctionName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 258)).add_operation (GALGAS_string ("' constructor of '@"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 258)).add_operation (extensionGetter_definition (var_constructorType_10530, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 258)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 258)).add_operation (GALGAS_string ("' requires "), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 258)).add_operation (var_classFuncFormalArgumentTypeList_10852.getter_count (SOURCE_FILE ("templateAnalysis.galgas", 259)).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 259)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 258)).add_operation (GALGAS_string (" parameter(s), while this call has "), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 259)).add_operation (temp_14.readProperty_mExpressionList ().getter_count (SOURCE_FILE ("templateAnalysis.galgas", 260)).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 260)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 259)).add_operation (GALGAS_string (" parameter(s)"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 260)), fixItArray15  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 257)) ;
-      var_classFunctionEffectiveParameterList_11680.drop () ; // Release error dropped variable
+      inCompiler->emitSemanticError (temp_12.readProperty_mClassFunctionName ().readProperty_location (), GALGAS_string ("calling the '").add_operation (temp_13.readProperty_mClassFunctionName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 255)).add_operation (GALGAS_string ("' constructor of '@"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 255)).add_operation (extensionGetter_definition (var_constructorType_10410, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 255)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 255)).add_operation (GALGAS_string ("' requires "), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 255)).add_operation (var_classFuncFormalArgumentTypeList_10732.getter_count (SOURCE_FILE ("templateAnalysis.galgas", 256)).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 256)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 255)).add_operation (GALGAS_string (" parameter(s), while this call has "), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 256)).add_operation (temp_14.readProperty_mExpressionList ().getter_count (SOURCE_FILE ("templateAnalysis.galgas", 257)).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 257)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 256)).add_operation (GALGAS_string (" parameter(s)"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 257)), fixItArray15  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 254)) ;
+      var_classFunctionEffectiveParameterList_11560.drop () ; // Release error dropped variable
     }
   }
   if (kBoolFalse == test_10) {
-    var_classFunctionEffectiveParameterList_11680 = GALGAS_semanticExpressionListForGeneration::class_func_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 263)) ;
+    var_classFunctionEffectiveParameterList_11560 = GALGAS_semanticExpressionListForGeneration::class_func_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 260)) ;
     const GALGAS_templateClassFunctionAST temp_16 = this ;
-    cEnumerator_templateExpressionListAST enumerator_12293 (temp_16.readProperty_mExpressionList (), kENUMERATION_UP) ;
-    cEnumerator_functionSignature enumerator_12381 (var_classFuncFormalArgumentTypeList_10852, kENUMERATION_UP) ;
-    while (enumerator_12293.hasCurrentObject () && enumerator_12381.hasCurrentObject ()) {
+    cEnumerator_templateExpressionListAST enumerator_12173 (temp_16.readProperty_mExpressionList (), kENUMERATION_UP) ;
+    cEnumerator_functionSignature enumerator_12261 (var_classFuncFormalArgumentTypeList_10732, kENUMERATION_UP) ;
+    while (enumerator_12173.hasCurrentObject () && enumerator_12261.hasCurrentObject ()) {
       enumGalgasBool test_17 = kBoolTrue ;
       if (kBoolTrue == test_17) {
-        test_17 = GALGAS_bool (kIsNotEqual, enumerator_12381.current_mFormalSelector (HERE).readProperty_string ().objectCompare (enumerator_12293.current_mActualSelector (HERE).readProperty_string ())).boolEnum () ;
+        test_17 = GALGAS_bool (kIsNotEqual, enumerator_12261.current_mFormalSelector (HERE).readProperty_string ().objectCompare (enumerator_12173.current_mActualSelector (HERE).readProperty_string ())).boolEnum () ;
         if (kBoolTrue == test_17) {
           GALGAS_string temp_18 ;
-          const enumGalgasBool test_19 = GALGAS_bool (kIsNotEqual, enumerator_12381.current_mFormalSelector (HERE).readProperty_string ().objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+          const enumGalgasBool test_19 = GALGAS_bool (kIsNotEqual, enumerator_12261.current_mFormalSelector (HERE).readProperty_string ().objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
           if (kBoolTrue == test_19) {
-            temp_18 = enumerator_12381.current_mFormalSelector (HERE).readProperty_string ().add_operation (GALGAS_string (":"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 266)) ;
+            temp_18 = enumerator_12261.current_mFormalSelector (HERE).readProperty_string ().add_operation (GALGAS_string (":"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 263)) ;
           }else if (kBoolFalse == test_19) {
             temp_18 = GALGAS_string::makeEmptyString () ;
           }
-          GALGAS_string var_s_12505 = GALGAS_string ("!").add_operation (temp_18, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 266)) ;
+          GALGAS_string var_s_12385 = GALGAS_string ("!").add_operation (temp_18, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 263)) ;
           TC_Array <C_FixItDescription> fixItArray20 ;
-          appendFixItActions (fixItArray20, kFixItReplace, var_s_12505) ;
-          inCompiler->emitSemanticError (enumerator_12293.current_mActualSelector (HERE).readProperty_location (), GALGAS_string ("the selector should be '").add_operation (var_s_12505, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 267)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 267)), fixItArray20  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 267)) ;
+          appendFixItActions (fixItArray20, kFixItReplace, var_s_12385) ;
+          inCompiler->emitSemanticError (enumerator_12173.current_mActualSelector (HERE).readProperty_location (), GALGAS_string ("the selector should be '").add_operation (var_s_12385, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 264)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 264)), fixItArray20  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 264)) ;
         }
       }
-      GALGAS_semanticExpressionForGeneration var_exp_13048 ;
-      callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) enumerator_12293.current_mExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_exp_13048, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 271)) ;
+      GALGAS_semanticExpressionForGeneration var_exp_12777 ;
+      callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) enumerator_12173.current_mExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_exp_12777, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 266)) ;
       {
-      routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (enumerator_12381.current_mFormalArgumentType (HERE), var_exp_13048.readProperty_mResultType (), enumerator_12293.current_mEndOfExpressionLocation (HERE), var_exp_13048, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 278)) ;
+      routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (enumerator_12261.current_mFormalArgumentType (HERE), var_exp_12777.readProperty_mResultType (), enumerator_12173.current_mEndOfExpressionLocation (HERE), var_exp_12777, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 273)) ;
       }
-      var_classFunctionEffectiveParameterList_11680.addAssign_operation (var_exp_13048  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 279)) ;
-      enumerator_12293.gotoNextObject () ;
-      enumerator_12381.gotoNextObject () ;
+      var_classFunctionEffectiveParameterList_11560.addAssign_operation (var_exp_12777  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 274)) ;
+      enumerator_12173.gotoNextObject () ;
+      enumerator_12261.gotoNextObject () ;
     }
   }
   const GALGAS_templateClassFunctionAST temp_21 = this ;
   const GALGAS_templateClassFunctionAST temp_22 = this ;
-  outArgument_outExpression = GALGAS_constructorExpressionForGeneration::class_func_new (var_returnedType_10782, temp_21.readProperty_mClassFunctionName ().readProperty_location (), var_constructorType_10530, temp_22.readProperty_mClassFunctionName ().readProperty_string (), var_classFunctionEffectiveParameterList_11680, var_hasCompilerArgument_10807  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 283)) ;
+  outArgument_outExpression = GALGAS_constructorExpressionForGeneration::class_func_new (var_returnedType_10662, temp_21.readProperty_mClassFunctionName ().readProperty_location (), var_constructorType_10410, temp_22.readProperty_mClassFunctionName ().readProperty_string (), var_classFunctionEffectiveParameterList_11560, var_hasCompilerArgument_10687  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 278)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -10298,7 +10405,7 @@ void cPtr_templateFileWrapperTemplateCallAST::method_templateExpressionAnalysis 
                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_templateFileWrapperTemplateCallAST temp_0 = this ;
   TC_Array <C_FixItDescription> fixItArray1 ;
-  inCompiler->emitSemanticError (temp_0.readProperty_mFileWrapperName ().readProperty_location (), GALGAS_string ("unhandled @templateFileWrapperTemplateCallAST templateExpressionAnalysis"), fixItArray1  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 304)) ;
+  inCompiler->emitSemanticError (temp_0.readProperty_mFileWrapperName ().readProperty_location (), GALGAS_string ("unhandled @templateFileWrapperTemplateCallAST templateExpressionAnalysis"), fixItArray1  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 299)) ;
   outArgument_outExpression.drop () ; // Release error dropped variable
 }
 //--------------------------------------------------------------------------------------------------
@@ -10314,18 +10421,18 @@ void cPtr_templateAndOperationAST::method_templateExpressionAnalysis (const GALG
                                                                       GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
                                                                       Compiler * inCompiler
                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_semanticExpressionForGeneration var_leftExpression_14960 ;
+  GALGAS_semanticExpressionForGeneration var_leftExpression_14689 ;
   const GALGAS_templateAndOperationAST temp_0 = this ;
-  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_leftExpression_14960, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 319)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression_15201 ;
+  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_leftExpression_14689, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 314)) ;
+  GALGAS_semanticExpressionForGeneration var_rightExpression_14930 ;
   const GALGAS_templateAndOperationAST temp_1 = this ;
-  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_rightExpression_15201, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 327)) ;
+  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_rightExpression_14930, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 322)) ;
   {
   const GALGAS_templateAndOperationAST temp_2 = this ;
-  routine_checkDiadicOperator_3F__3F__3F__26__26_ (extensionGetter_definition (var_leftExpression_14960.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 336)).readProperty_mHandledOperatorFlags ().getter_infixAndOperator (SOURCE_FILE ("templateAnalysis.galgas", 336)), GALGAS_string ("&"), temp_2.readProperty_mOperatorLocation (), var_leftExpression_14960, var_rightExpression_15201, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 335)) ;
+  routine_checkDiadicOperator_3F__3F__3F__26__26_ (extensionGetter_definition (var_leftExpression_14689.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 331)).readProperty_mHandledOperatorFlags ().getter_infixAndOperator (SOURCE_FILE ("templateAnalysis.galgas", 331)), GALGAS_string ("&"), temp_2.readProperty_mOperatorLocation (), var_leftExpression_14689, var_rightExpression_14930, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 330)) ;
   }
   const GALGAS_templateAndOperationAST temp_3 = this ;
-  outArgument_outExpression = GALGAS_binaryOperatorExpressionForGeneration::class_func_new (var_leftExpression_14960.readProperty_mResultType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_14960, GALGAS_binaryOperator::class_func_operator_5F_and (SOURCE_FILE ("templateAnalysis.galgas", 347)), var_rightExpression_15201  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 343)) ;
+  outArgument_outExpression = GALGAS_binaryOperatorExpressionForGeneration::class_func_new (var_leftExpression_14689.readProperty_mResultType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_14689, GALGAS_binaryOperator::class_func_operator_5F_and (SOURCE_FILE ("templateAnalysis.galgas", 342)), var_rightExpression_14930  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 338)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -10340,18 +10447,18 @@ void cPtr_templateOrOperationAST::method_templateExpressionAnalysis (const GALGA
                                                                      GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
                                                                      Compiler * inCompiler
                                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_semanticExpressionForGeneration var_leftExpression_16279 ;
+  GALGAS_semanticExpressionForGeneration var_leftExpression_16008 ;
   const GALGAS_templateOrOperationAST temp_0 = this ;
-  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_leftExpression_16279, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 362)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression_16520 ;
+  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_leftExpression_16008, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 357)) ;
+  GALGAS_semanticExpressionForGeneration var_rightExpression_16249 ;
   const GALGAS_templateOrOperationAST temp_1 = this ;
-  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_rightExpression_16520, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 370)) ;
+  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_rightExpression_16249, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 365)) ;
   {
   const GALGAS_templateOrOperationAST temp_2 = this ;
-  routine_checkDiadicOperator_3F__3F__3F__26__26_ (extensionGetter_definition (var_leftExpression_16279.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 379)).readProperty_mHandledOperatorFlags ().getter_infixOrOperator (SOURCE_FILE ("templateAnalysis.galgas", 379)), GALGAS_string ("|"), temp_2.readProperty_mOperatorLocation (), var_leftExpression_16279, var_rightExpression_16520, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 378)) ;
+  routine_checkDiadicOperator_3F__3F__3F__26__26_ (extensionGetter_definition (var_leftExpression_16008.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 374)).readProperty_mHandledOperatorFlags ().getter_infixOrOperator (SOURCE_FILE ("templateAnalysis.galgas", 374)), GALGAS_string ("|"), temp_2.readProperty_mOperatorLocation (), var_leftExpression_16008, var_rightExpression_16249, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 373)) ;
   }
   const GALGAS_templateOrOperationAST temp_3 = this ;
-  outArgument_outExpression = GALGAS_binaryOperatorExpressionForGeneration::class_func_new (var_leftExpression_16279.readProperty_mResultType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_16279, GALGAS_binaryOperator::class_func_operator_5F_or (SOURCE_FILE ("templateAnalysis.galgas", 390)), var_rightExpression_16520  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 386)) ;
+  outArgument_outExpression = GALGAS_binaryOperatorExpressionForGeneration::class_func_new (var_leftExpression_16008.readProperty_mResultType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_16008, GALGAS_binaryOperator::class_func_operator_5F_or (SOURCE_FILE ("templateAnalysis.galgas", 385)), var_rightExpression_16249  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 381)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -10366,18 +10473,18 @@ void cPtr_templateXorOperationAST::method_templateExpressionAnalysis (const GALG
                                                                       GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
                                                                       Compiler * inCompiler
                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_semanticExpressionForGeneration var_leftExpression_17597 ;
+  GALGAS_semanticExpressionForGeneration var_leftExpression_17326 ;
   const GALGAS_templateXorOperationAST temp_0 = this ;
-  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_leftExpression_17597, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 405)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression_17838 ;
+  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_leftExpression_17326, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 400)) ;
+  GALGAS_semanticExpressionForGeneration var_rightExpression_17567 ;
   const GALGAS_templateXorOperationAST temp_1 = this ;
-  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_rightExpression_17838, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 413)) ;
+  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_rightExpression_17567, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 408)) ;
   {
   const GALGAS_templateXorOperationAST temp_2 = this ;
-  routine_checkDiadicOperator_3F__3F__3F__26__26_ (extensionGetter_definition (var_leftExpression_17597.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 422)).readProperty_mHandledOperatorFlags ().getter_infixXorOperator (SOURCE_FILE ("templateAnalysis.galgas", 422)), GALGAS_string ("^"), temp_2.readProperty_mOperatorLocation (), var_leftExpression_17597, var_rightExpression_17838, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 421)) ;
+  routine_checkDiadicOperator_3F__3F__3F__26__26_ (extensionGetter_definition (var_leftExpression_17326.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 417)).readProperty_mHandledOperatorFlags ().getter_infixXorOperator (SOURCE_FILE ("templateAnalysis.galgas", 417)), GALGAS_string ("^"), temp_2.readProperty_mOperatorLocation (), var_leftExpression_17326, var_rightExpression_17567, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 416)) ;
   }
   const GALGAS_templateXorOperationAST temp_3 = this ;
-  outArgument_outExpression = GALGAS_binaryOperatorExpressionForGeneration::class_func_new (var_leftExpression_17597.readProperty_mResultType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_17597, GALGAS_binaryOperator::class_func_operator_5F_xor (SOURCE_FILE ("templateAnalysis.galgas", 433)), var_rightExpression_17838  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 429)) ;
+  outArgument_outExpression = GALGAS_binaryOperatorExpressionForGeneration::class_func_new (var_leftExpression_17326.readProperty_mResultType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_17326, GALGAS_binaryOperator::class_func_operator_5F_xor (SOURCE_FILE ("templateAnalysis.galgas", 428)), var_rightExpression_17567  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 424)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -10393,7 +10500,7 @@ void cPtr_templateTrueBoolAST::method_templateExpressionAnalysis (const GALGAS_l
                                                                   Compiler * /* inCompiler */
                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_templateTrueBoolAST temp_0 = this ;
-  outArgument_outExpression = GALGAS_trueExpressionForGeneration::class_func_new (constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mBoolType (), temp_0.readProperty_mLocation ()  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 447)) ;
+  outArgument_outExpression = GALGAS_trueExpressionForGeneration::class_func_new (constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mBoolType (), temp_0.readProperty_mLocation ()  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 442)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -10409,7 +10516,7 @@ void cPtr_templateFalseBoolAST::method_templateExpressionAnalysis (const GALGAS_
                                                                    Compiler * /* inCompiler */
                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_templateFalseBoolAST temp_0 = this ;
-  outArgument_outExpression = GALGAS_falseExpressionForGeneration::class_func_new (constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mBoolType (), temp_0.readProperty_mLocation ()  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 459)) ;
+  outArgument_outExpression = GALGAS_falseExpressionForGeneration::class_func_new (constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mBoolType (), temp_0.readProperty_mLocation ()  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 454)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -10424,15 +10531,15 @@ void cPtr_templateLiteralStringExpressionAST::method_templateExpressionAnalysis 
                                                                                  GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
                                                                                  Compiler * inCompiler
                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string var_s_19795 = GALGAS_string::makeEmptyString () ;
+  GALGAS_string var_s_19524 = GALGAS_string::makeEmptyString () ;
   const GALGAS_templateLiteralStringExpressionAST temp_0 = this ;
-  cEnumerator_stringlist enumerator_19809 (temp_0.readProperty_mLiteralStringList (), kENUMERATION_UP) ;
-  while (enumerator_19809.hasCurrentObject ()) {
-    var_s_19795.plusAssign_operation(enumerator_19809.current_mValue (HERE), inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 473)) ;
-    enumerator_19809.gotoNextObject () ;
+  cEnumerator_stringlist enumerator_19538 (temp_0.readProperty_mLiteralStringList (), kENUMERATION_UP) ;
+  while (enumerator_19538.hasCurrentObject ()) {
+    var_s_19524.plusAssign_operation(enumerator_19538.current_mValue (HERE), inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 468)) ;
+    enumerator_19538.gotoNextObject () ;
   }
   const GALGAS_templateLiteralStringExpressionAST temp_1 = this ;
-  outArgument_outExpression = GALGAS_literalStringExpressionForGeneration::class_func_new (constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mStringType (), temp_1.readProperty_mLocation (), var_s_19795  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 475)) ;
+  outArgument_outExpression = GALGAS_literalStringExpressionForGeneration::class_func_new (constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mStringType (), temp_1.readProperty_mLocation (), var_s_19524  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 470)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -10449,7 +10556,7 @@ void cPtr_templateLiteralUIntExpressionAST::method_templateExpressionAnalysis (c
                                                                                COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_templateLiteralUIntExpressionAST temp_0 = this ;
   const GALGAS_templateLiteralUIntExpressionAST temp_1 = this ;
-  outArgument_outExpression = GALGAS_literalBigIntExpressionForGeneration::class_func_new (constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mBigIntType (), temp_0.readProperty_mLiteralInt ().readProperty_location (), temp_1.readProperty_mLiteralInt ().readProperty_bigint ()  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 487)) ;
+  outArgument_outExpression = GALGAS_literalBigIntExpressionForGeneration::class_func_new (constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mBigIntType (), temp_0.readProperty_mLiteralInt ().readProperty_location (), temp_1.readProperty_mLiteralInt ().readProperty_bigint ()  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 482)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -10466,7 +10573,7 @@ void cPtr_templateLiteralCharExpressionAST::method_templateExpressionAnalysis (c
                                                                                COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_templateLiteralCharExpressionAST temp_0 = this ;
   const GALGAS_templateLiteralCharExpressionAST temp_1 = this ;
-  outArgument_outExpression = GALGAS_literalCharExpressionForGeneration::class_func_new (constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mCharType (), temp_0.readProperty_mLiteralChar ().readProperty_location (), temp_1.readProperty_mLiteralChar ().readProperty_char ()  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 545)) ;
+  outArgument_outExpression = GALGAS_literalCharExpressionForGeneration::class_func_new (constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mCharType (), temp_0.readProperty_mLiteralChar ().readProperty_location (), temp_1.readProperty_mLiteralChar ().readProperty_char ()  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 540)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -10483,7 +10590,7 @@ void cPtr_templateLiteralDoubleExpressionAST::method_templateExpressionAnalysis 
                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_templateLiteralDoubleExpressionAST temp_0 = this ;
   const GALGAS_templateLiteralDoubleExpressionAST temp_1 = this ;
-  outArgument_outExpression = GALGAS_literalDoubleExpressionForGeneration::class_func_new (constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mDoubleType (), temp_0.readProperty_mLiteralDouble ().readProperty_location (), temp_1.readProperty_mLiteralDouble ().readProperty_double ()  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 559)) ;
+  outArgument_outExpression = GALGAS_literalDoubleExpressionForGeneration::class_func_new (constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mDoubleType (), temp_0.readProperty_mLiteralDouble ().readProperty_location (), temp_1.readProperty_mLiteralDouble ().readProperty_double ()  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 554)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -10498,23 +10605,23 @@ void cPtr_templateNotOperatorAST::method_templateExpressionAnalysis (const GALGA
                                                                      GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
                                                                      Compiler * inCompiler
                                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_semanticExpressionForGeneration var_expression_24101 ;
+  GALGAS_semanticExpressionForGeneration var_expression_23830 ;
   const GALGAS_templateNotOperatorAST temp_0 = this ;
-  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_0.readProperty_mExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_expression_24101, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 576)) ;
-  GALGAS_unifiedTypeMapEntry var_type_24176 = var_expression_24101.readProperty_mResultType () ;
+  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_0.readProperty_mExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_expression_23830, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 571)) ;
+  GALGAS_unifiedTypeMapEntry var_type_23905 = var_expression_23830.readProperty_mResultType () ;
   enumGalgasBool test_1 = kBoolTrue ;
   if (kBoolTrue == test_1) {
-    test_1 = extensionGetter_definition (var_type_24176, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 585)).readProperty_mHandledOperatorFlags ().getter_prefixNotOperator (SOURCE_FILE ("templateAnalysis.galgas", 585)).operator_not (SOURCE_FILE ("templateAnalysis.galgas", 585)).boolEnum () ;
+    test_1 = extensionGetter_definition (var_type_23905, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 580)).readProperty_mHandledOperatorFlags ().getter_prefixNotOperator (SOURCE_FILE ("templateAnalysis.galgas", 580)).operator_not (SOURCE_FILE ("templateAnalysis.galgas", 580)).boolEnum () ;
     if (kBoolTrue == test_1) {
       const GALGAS_templateNotOperatorAST temp_2 = this ;
       TC_Array <C_FixItDescription> fixItArray3 ;
-      inCompiler->emitSemanticError (temp_2.readProperty_mOperatorLocation (), GALGAS_string ("operand type is '@").add_operation (extensionGetter_definition (var_type_24176, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 587)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 587)).add_operation (GALGAS_string ("' and does not support the 'not' operator"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 587)), fixItArray3  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 586)) ;
+      inCompiler->emitSemanticError (temp_2.readProperty_mOperatorLocation (), GALGAS_string ("operand type is '@").add_operation (extensionGetter_definition (var_type_23905, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 582)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 582)).add_operation (GALGAS_string ("' and does not support the 'not' operator"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 582)), fixItArray3  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 581)) ;
       outArgument_outExpression.drop () ; // Release error dropped variable
     }
   }
   if (kBoolFalse == test_1) {
     const GALGAS_templateNotOperatorAST temp_4 = this ;
-    outArgument_outExpression = GALGAS_notExpressionForGeneration::class_func_new (var_type_24176, temp_4.readProperty_mOperatorLocation (), var_expression_24101  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 591)) ;
+    outArgument_outExpression = GALGAS_notExpressionForGeneration::class_func_new (var_type_23905, temp_4.readProperty_mOperatorLocation (), var_expression_23830  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 586)) ;
   }
 }
 //--------------------------------------------------------------------------------------------------
@@ -10530,23 +10637,23 @@ void cPtr_templateLogicalNegateAST::method_templateExpressionAnalysis (const GAL
                                                                        GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
                                                                        Compiler * inCompiler
                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_semanticExpressionForGeneration var_expression_25180 ;
+  GALGAS_semanticExpressionForGeneration var_expression_24909 ;
   const GALGAS_templateLogicalNegateAST temp_0 = this ;
-  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_0.readProperty_mExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_expression_25180, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 609)) ;
-  GALGAS_unifiedTypeMapEntry var_type_25255 = var_expression_25180.readProperty_mResultType () ;
+  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_0.readProperty_mExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_expression_24909, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 604)) ;
+  GALGAS_unifiedTypeMapEntry var_type_24984 = var_expression_24909.readProperty_mResultType () ;
   enumGalgasBool test_1 = kBoolTrue ;
   if (kBoolTrue == test_1) {
-    test_1 = extensionGetter_definition (var_type_25255, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 618)).readProperty_mHandledOperatorFlags ().getter_prefixTildeOperator (SOURCE_FILE ("templateAnalysis.galgas", 618)).operator_not (SOURCE_FILE ("templateAnalysis.galgas", 618)).boolEnum () ;
+    test_1 = extensionGetter_definition (var_type_24984, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 613)).readProperty_mHandledOperatorFlags ().getter_prefixTildeOperator (SOURCE_FILE ("templateAnalysis.galgas", 613)).operator_not (SOURCE_FILE ("templateAnalysis.galgas", 613)).boolEnum () ;
     if (kBoolTrue == test_1) {
       const GALGAS_templateLogicalNegateAST temp_2 = this ;
       TC_Array <C_FixItDescription> fixItArray3 ;
-      inCompiler->emitSemanticError (temp_2.readProperty_mOperatorLocation (), GALGAS_string ("operand type is '@").add_operation (extensionGetter_definition (var_type_25255, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 620)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 620)).add_operation (GALGAS_string ("' and does not support the '~' operator"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 620)), fixItArray3  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 619)) ;
+      inCompiler->emitSemanticError (temp_2.readProperty_mOperatorLocation (), GALGAS_string ("operand type is '@").add_operation (extensionGetter_definition (var_type_24984, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 615)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 615)).add_operation (GALGAS_string ("' and does not support the '~' operator"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 615)), fixItArray3  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 614)) ;
       outArgument_outExpression.drop () ; // Release error dropped variable
     }
   }
   if (kBoolFalse == test_1) {
     const GALGAS_templateLogicalNegateAST temp_4 = this ;
-    outArgument_outExpression = GALGAS_tildeExpressionForGeneration::class_func_new (var_type_25255, temp_4.readProperty_mOperatorLocation (), var_expression_25180  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 624)) ;
+    outArgument_outExpression = GALGAS_tildeExpressionForGeneration::class_func_new (var_type_24984, temp_4.readProperty_mOperatorLocation (), var_expression_24909  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 619)) ;
   }
 }
 //--------------------------------------------------------------------------------------------------
@@ -10562,55 +10669,55 @@ void cPtr_templateTestDynamicClassAST::method_templateExpressionAnalysis (const 
                                                                           GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
                                                                           Compiler * inCompiler
                                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_semanticExpressionForGeneration var_expression_26306 ;
+  GALGAS_semanticExpressionForGeneration var_expression_26035 ;
   const GALGAS_templateTestDynamicClassAST temp_0 = this ;
-  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_0.readProperty_mReceiverExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_expression_26306, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 641)) ;
+  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_0.readProperty_mReceiverExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_expression_26035, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 636)) ;
   const GALGAS_templateTestDynamicClassAST temp_1 = this ;
-  GALGAS_unifiedTypeMapEntry var_castType_26354 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, temp_1.readProperty_mTypeName (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 649)) ;
+  GALGAS_unifiedTypeMapEntry var_castType_26083 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, temp_1.readProperty_mTypeName (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 644)) ;
   enumGalgasBool test_2 = kBoolTrue ;
   if (kBoolTrue == test_2) {
-    test_2 = extensionGetter_definition (var_expression_26306.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 651)).readProperty_mTypeKindEnum ().getter_isClassType (SOURCE_FILE ("templateAnalysis.galgas", 651)).boolEnum () ;
+    test_2 = extensionGetter_definition (var_expression_26035.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 646)).readProperty_mTypeKindEnum ().getter_isClassType (SOURCE_FILE ("templateAnalysis.galgas", 646)).boolEnum () ;
     if (kBoolTrue == test_2) {
-      GALGAS_unifiedTypeMapEntry var_t_26608 = var_castType_26354 ;
-      GALGAS_bool var_found_26635 = GALGAS_bool (kIsEqual, var_t_26608.objectCompare (var_expression_26306.readProperty_mResultType ())) ;
-      if (ioArgument_ioTypeMap.getter_count (SOURCE_FILE ("templateAnalysis.galgas", 655)).add_operation (GALGAS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 655)).isValid ()) {
-        uint32_t variant_26675 = ioArgument_ioTypeMap.getter_count (SOURCE_FILE ("templateAnalysis.galgas", 655)).add_operation (GALGAS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 655)).uintValue () ;
-        bool loop_26675 = true ;
-        while (loop_26675) {
-          loop_26675 = var_found_26635.operator_not (SOURCE_FILE ("templateAnalysis.galgas", 656)).operator_and (extensionGetter_definition (var_t_26608, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 656)).readProperty_mSuperType ().getter_isNull (SOURCE_FILE ("templateAnalysis.galgas", 656)).operator_not (SOURCE_FILE ("templateAnalysis.galgas", 656)) COMMA_SOURCE_FILE ("templateAnalysis.galgas", 656)).isValid () ;
-          if (loop_26675) {
-            loop_26675 = var_found_26635.operator_not (SOURCE_FILE ("templateAnalysis.galgas", 656)).operator_and (extensionGetter_definition (var_t_26608, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 656)).readProperty_mSuperType ().getter_isNull (SOURCE_FILE ("templateAnalysis.galgas", 656)).operator_not (SOURCE_FILE ("templateAnalysis.galgas", 656)) COMMA_SOURCE_FILE ("templateAnalysis.galgas", 656)).boolValue () ;
+      GALGAS_unifiedTypeMapEntry var_t_26337 = var_castType_26083 ;
+      GALGAS_bool var_found_26364 = GALGAS_bool (kIsEqual, var_t_26337.objectCompare (var_expression_26035.readProperty_mResultType ())) ;
+      if (ioArgument_ioTypeMap.getter_count (SOURCE_FILE ("templateAnalysis.galgas", 650)).add_operation (GALGAS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 650)).isValid ()) {
+        uint32_t variant_26404 = ioArgument_ioTypeMap.getter_count (SOURCE_FILE ("templateAnalysis.galgas", 650)).add_operation (GALGAS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 650)).uintValue () ;
+        bool loop_26404 = true ;
+        while (loop_26404) {
+          loop_26404 = var_found_26364.operator_not (SOURCE_FILE ("templateAnalysis.galgas", 651)).operator_and (extensionGetter_definition (var_t_26337, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 651)).readProperty_mSuperType ().getter_isNull (SOURCE_FILE ("templateAnalysis.galgas", 651)).operator_not (SOURCE_FILE ("templateAnalysis.galgas", 651)) COMMA_SOURCE_FILE ("templateAnalysis.galgas", 651)).isValid () ;
+          if (loop_26404) {
+            loop_26404 = var_found_26364.operator_not (SOURCE_FILE ("templateAnalysis.galgas", 651)).operator_and (extensionGetter_definition (var_t_26337, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 651)).readProperty_mSuperType ().getter_isNull (SOURCE_FILE ("templateAnalysis.galgas", 651)).operator_not (SOURCE_FILE ("templateAnalysis.galgas", 651)) COMMA_SOURCE_FILE ("templateAnalysis.galgas", 651)).boolValue () ;
           }
-          if (loop_26675 && (0 == variant_26675)) {
-            loop_26675 = false ;
-            inCompiler->loopRunTimeVariantError (SOURCE_FILE ("templateAnalysis.galgas", 655)) ;
+          if (loop_26404 && (0 == variant_26404)) {
+            loop_26404 = false ;
+            inCompiler->loopRunTimeVariantError (SOURCE_FILE ("templateAnalysis.galgas", 650)) ;
           }
-          if (loop_26675) {
-            variant_26675 -- ;
-            var_t_26608 = extensionGetter_definition (var_t_26608, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 657)).readProperty_mSuperType () ;
-            var_found_26635 = GALGAS_bool (kIsEqual, var_t_26608.objectCompare (var_expression_26306.readProperty_mResultType ())) ;
+          if (loop_26404) {
+            variant_26404 -- ;
+            var_t_26337 = extensionGetter_definition (var_t_26337, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 652)).readProperty_mSuperType () ;
+            var_found_26364 = GALGAS_bool (kIsEqual, var_t_26337.objectCompare (var_expression_26035.readProperty_mResultType ())) ;
           }
         }
       }
       enumGalgasBool test_3 = kBoolTrue ;
       if (kBoolTrue == test_3) {
-        test_3 = var_found_26635.operator_not (SOURCE_FILE ("templateAnalysis.galgas", 660)).boolEnum () ;
+        test_3 = var_found_26364.operator_not (SOURCE_FILE ("templateAnalysis.galgas", 655)).boolEnum () ;
         if (kBoolTrue == test_3) {
           const GALGAS_templateTestDynamicClassAST temp_4 = this ;
           const GALGAS_templateTestDynamicClassAST temp_5 = this ;
           TC_Array <C_FixItDescription> fixItArray6 ;
-          inCompiler->emitSemanticError (temp_4.readProperty_mTypeName ().readProperty_location (), GALGAS_string ("the '@").add_operation (temp_5.readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 662)).add_operation (GALGAS_string ("' is not a descendant of the '@"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 662)).add_operation (extensionGetter_definition (var_expression_26306.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 662)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 662)).add_operation (GALGAS_string ("' type of the cast expression"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 662)), fixItArray6  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 661)) ;
+          inCompiler->emitSemanticError (temp_4.readProperty_mTypeName ().readProperty_location (), GALGAS_string ("the '@").add_operation (temp_5.readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 657)).add_operation (GALGAS_string ("' is not a descendant of the '@"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 657)).add_operation (extensionGetter_definition (var_expression_26035.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 657)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 657)).add_operation (GALGAS_string ("' type of the cast expression"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 657)), fixItArray6  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 656)) ;
         }
       }
     }
   }
   if (kBoolFalse == test_2) {
     TC_Array <C_FixItDescription> fixItArray7 ;
-    inCompiler->emitSemanticError (var_expression_26306.readProperty_mLocation (), GALGAS_string ("expression should be a class instance: it is an @").add_operation (extensionGetter_definition (var_expression_26306.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 666)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 665)).add_operation (GALGAS_string (" instance"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 666)), fixItArray7  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 665)) ;
+    inCompiler->emitSemanticError (var_expression_26035.readProperty_mLocation (), GALGAS_string ("expression should be a class instance: it is an @").add_operation (extensionGetter_definition (var_expression_26035.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 661)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 660)).add_operation (GALGAS_string (" instance"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 661)), fixItArray7  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 660)) ;
   }
   const GALGAS_templateTestDynamicClassAST temp_8 = this ;
   const GALGAS_templateTestDynamicClassAST temp_9 = this ;
-  outArgument_outExpression = GALGAS_testDynamicClassInExpressionForGeneration::class_func_new (constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mBoolType (), temp_8.readProperty_mTypeName ().readProperty_location (), var_expression_26306, temp_9.readProperty_mTypeComparisonKind (), var_castType_26354  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 669)) ;
+  outArgument_outExpression = GALGAS_testDynamicClassInExpressionForGeneration::class_func_new (constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mBoolType (), temp_8.readProperty_mTypeName ().readProperty_location (), var_expression_26035, temp_9.readProperty_mTypeComparisonKind (), var_castType_26083  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 664)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -10626,50 +10733,50 @@ void cPtr_templateOptionAccessAST::method_templateExpressionAnalysis (const GALG
                                                                       Compiler * inCompiler
                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_templateOptionAccessAST temp_0 = this ;
-  GALGAS_lstring var_usefulnessName_27883 = function_optionNameForUsefulEntitiesGraph (temp_0.readProperty_mOptionComponentName (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 686)) ;
+  GALGAS_lstring var_usefulnessName_27612 = function_optionNameForUsefulEntitiesGraph (temp_0.readProperty_mOptionComponentName (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 681)) ;
   {
-  ioArgument_ioUsefulEntitiesGraph.setter_addEdge (constinArgument_inUsefulnessCallerEntityName, var_usefulnessName_27883 COMMA_SOURCE_FILE ("templateAnalysis.galgas", 687)) ;
+  ioArgument_ioUsefulEntitiesGraph.setter_addEdge (constinArgument_inUsefulnessCallerEntityName, var_usefulnessName_27612 COMMA_SOURCE_FILE ("templateAnalysis.galgas", 682)) ;
   }
-  GALGAS_bool var_optionComponentIsPredefined_28177 ;
-  GALGAS_commandLineOptionMap var_boolOptionMap_28236 ;
-  GALGAS_commandLineOptionMap var_uintOptionMap_28281 ;
-  GALGAS_commandLineOptionMap var_stringOptionMap_28326 ;
-  GALGAS_commandLineOptionMap var_stringListOptionMap_28373 ;
+  GALGAS_bool var_optionComponentIsPredefined_27906 ;
+  GALGAS_commandLineOptionMap var_boolOptionMap_27965 ;
+  GALGAS_commandLineOptionMap var_uintOptionMap_28010 ;
+  GALGAS_commandLineOptionMap var_stringOptionMap_28055 ;
+  GALGAS_commandLineOptionMap var_stringListOptionMap_28102 ;
   const GALGAS_templateOptionAccessAST temp_1 = this ;
-  constinArgument_inAnalysisContext.readProperty_mSemanticContext ().readProperty_mOptionComponentMapForSemanticAnalysis ().method_searchKey (temp_1.readProperty_mOptionComponentName (), var_optionComponentIsPredefined_28177, var_boolOptionMap_28236, var_uintOptionMap_28281, var_stringOptionMap_28326, var_stringListOptionMap_28373, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 688)) ;
+  constinArgument_inAnalysisContext.readProperty_mSemanticContext ().readProperty_mOptionComponentMapForSemanticAnalysis ().method_searchKey (temp_1.readProperty_mOptionComponentName (), var_optionComponentIsPredefined_27906, var_boolOptionMap_27965, var_uintOptionMap_28010, var_stringOptionMap_28055, var_stringListOptionMap_28102, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 683)) ;
   const GALGAS_templateOptionAccessAST temp_2 = this ;
-  GALGAS_bool var_found_28403 = var_boolOptionMap_28236.getter_hasKey (temp_2.readProperty_mOptionName ().readProperty_string () COMMA_SOURCE_FILE ("templateAnalysis.galgas", 696)) ;
-  GALGAS_unifiedTypeMapEntry var_returnedType_28486 = constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mBoolType () ;
+  GALGAS_bool var_found_28132 = var_boolOptionMap_27965.getter_hasKey (temp_2.readProperty_mOptionName ().readProperty_string () COMMA_SOURCE_FILE ("templateAnalysis.galgas", 691)) ;
+  GALGAS_unifiedTypeMapEntry var_returnedType_28215 = constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mBoolType () ;
   enumGalgasBool test_3 = kBoolTrue ;
   if (kBoolTrue == test_3) {
-    test_3 = var_found_28403.operator_not (SOURCE_FILE ("templateAnalysis.galgas", 698)).boolEnum () ;
+    test_3 = var_found_28132.operator_not (SOURCE_FILE ("templateAnalysis.galgas", 693)).boolEnum () ;
     if (kBoolTrue == test_3) {
       const GALGAS_templateOptionAccessAST temp_4 = this ;
-      var_found_28403 = var_uintOptionMap_28281.getter_hasKey (temp_4.readProperty_mOptionName ().readProperty_string () COMMA_SOURCE_FILE ("templateAnalysis.galgas", 699)) ;
-      var_returnedType_28486 = constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mUIntType () ;
+      var_found_28132 = var_uintOptionMap_28010.getter_hasKey (temp_4.readProperty_mOptionName ().readProperty_string () COMMA_SOURCE_FILE ("templateAnalysis.galgas", 694)) ;
+      var_returnedType_28215 = constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mUIntType () ;
     }
   }
   enumGalgasBool test_5 = kBoolTrue ;
   if (kBoolTrue == test_5) {
-    test_5 = var_found_28403.operator_not (SOURCE_FILE ("templateAnalysis.galgas", 702)).boolEnum () ;
+    test_5 = var_found_28132.operator_not (SOURCE_FILE ("templateAnalysis.galgas", 697)).boolEnum () ;
     if (kBoolTrue == test_5) {
       const GALGAS_templateOptionAccessAST temp_6 = this ;
-      var_found_28403 = var_stringOptionMap_28326.getter_hasKey (temp_6.readProperty_mOptionName ().readProperty_string () COMMA_SOURCE_FILE ("templateAnalysis.galgas", 703)) ;
-      var_returnedType_28486 = constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mStringType () ;
+      var_found_28132 = var_stringOptionMap_28055.getter_hasKey (temp_6.readProperty_mOptionName ().readProperty_string () COMMA_SOURCE_FILE ("templateAnalysis.galgas", 698)) ;
+      var_returnedType_28215 = constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mStringType () ;
     }
   }
   enumGalgasBool test_7 = kBoolTrue ;
   if (kBoolTrue == test_7) {
-    test_7 = var_found_28403.operator_not (SOURCE_FILE ("templateAnalysis.galgas", 706)).boolEnum () ;
+    test_7 = var_found_28132.operator_not (SOURCE_FILE ("templateAnalysis.galgas", 701)).boolEnum () ;
     if (kBoolTrue == test_7) {
       const GALGAS_templateOptionAccessAST temp_8 = this ;
-      var_found_28403 = var_stringListOptionMap_28373.getter_hasKey (temp_8.readProperty_mOptionName ().readProperty_string () COMMA_SOURCE_FILE ("templateAnalysis.galgas", 707)) ;
-      var_returnedType_28486 = constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mStringListType () ;
+      var_found_28132 = var_stringListOptionMap_28102.getter_hasKey (temp_8.readProperty_mOptionName ().readProperty_string () COMMA_SOURCE_FILE ("templateAnalysis.galgas", 702)) ;
+      var_returnedType_28215 = constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mStringListType () ;
     }
   }
   enumGalgasBool test_9 = kBoolTrue ;
   if (kBoolTrue == test_9) {
-    test_9 = var_found_28403.boolEnum () ;
+    test_9 = var_found_28132.boolEnum () ;
     if (kBoolTrue == test_9) {
       enumGalgasBool test_10 = kBoolTrue ;
       if (kBoolTrue == test_10) {
@@ -10679,7 +10786,7 @@ void cPtr_templateOptionAccessAST::method_templateExpressionAnalysis (const GALG
           const GALGAS_templateOptionAccessAST temp_12 = this ;
           const GALGAS_templateOptionAccessAST temp_13 = this ;
           const GALGAS_templateOptionAccessAST temp_14 = this ;
-          outArgument_outExpression = GALGAS_optionValueExpressionForGeneration::class_func_new (var_returnedType_28486, temp_12.readProperty_mOptionComponentName ().readProperty_location (), var_optionComponentIsPredefined_28177, temp_13.readProperty_mOptionComponentName ().readProperty_string (), temp_14.readProperty_mOptionName ().readProperty_string ()  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 712)) ;
+          outArgument_outExpression = GALGAS_optionValueExpressionForGeneration::class_func_new (var_returnedType_28215, temp_12.readProperty_mOptionComponentName ().readProperty_location (), var_optionComponentIsPredefined_27906, temp_13.readProperty_mOptionComponentName ().readProperty_string (), temp_14.readProperty_mOptionName ().readProperty_string ()  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 707)) ;
         }
       }
       if (kBoolFalse == test_10) {
@@ -10691,7 +10798,7 @@ void cPtr_templateOptionAccessAST::method_templateExpressionAnalysis (const GALG
             const GALGAS_templateOptionAccessAST temp_17 = this ;
             const GALGAS_templateOptionAccessAST temp_18 = this ;
             const GALGAS_templateOptionAccessAST temp_19 = this ;
-            outArgument_outExpression = GALGAS_optionCharExpressionForGeneration::class_func_new (constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mCharType (), temp_17.readProperty_mOptionComponentName ().readProperty_location (), var_optionComponentIsPredefined_28177, temp_18.readProperty_mOptionComponentName ().readProperty_string (), temp_19.readProperty_mOptionName ().readProperty_string ()  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 720)) ;
+            outArgument_outExpression = GALGAS_optionCharExpressionForGeneration::class_func_new (constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mCharType (), temp_17.readProperty_mOptionComponentName ().readProperty_location (), var_optionComponentIsPredefined_27906, temp_18.readProperty_mOptionComponentName ().readProperty_string (), temp_19.readProperty_mOptionName ().readProperty_string ()  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 715)) ;
           }
         }
         if (kBoolFalse == test_15) {
@@ -10703,7 +10810,7 @@ void cPtr_templateOptionAccessAST::method_templateExpressionAnalysis (const GALG
               const GALGAS_templateOptionAccessAST temp_22 = this ;
               const GALGAS_templateOptionAccessAST temp_23 = this ;
               const GALGAS_templateOptionAccessAST temp_24 = this ;
-              outArgument_outExpression = GALGAS_optionStringExpressionForGeneration::class_func_new (constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mStringType (), temp_22.readProperty_mOptionComponentName ().readProperty_location (), var_optionComponentIsPredefined_28177, temp_23.readProperty_mOptionComponentName ().readProperty_string (), temp_24.readProperty_mOptionName ().readProperty_string ()  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 728)) ;
+              outArgument_outExpression = GALGAS_optionStringExpressionForGeneration::class_func_new (constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mStringType (), temp_22.readProperty_mOptionComponentName ().readProperty_location (), var_optionComponentIsPredefined_27906, temp_23.readProperty_mOptionComponentName ().readProperty_string (), temp_24.readProperty_mOptionName ().readProperty_string ()  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 723)) ;
             }
           }
           if (kBoolFalse == test_20) {
@@ -10715,13 +10822,13 @@ void cPtr_templateOptionAccessAST::method_templateExpressionAnalysis (const GALG
                 const GALGAS_templateOptionAccessAST temp_27 = this ;
                 const GALGAS_templateOptionAccessAST temp_28 = this ;
                 const GALGAS_templateOptionAccessAST temp_29 = this ;
-                outArgument_outExpression = GALGAS_optionCommentExpressionForGeneration::class_func_new (constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mStringType (), temp_27.readProperty_mOptionComponentName ().readProperty_location (), var_optionComponentIsPredefined_28177, temp_28.readProperty_mOptionComponentName ().readProperty_string (), temp_29.readProperty_mOptionName ().readProperty_string ()  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 736)) ;
+                outArgument_outExpression = GALGAS_optionCommentExpressionForGeneration::class_func_new (constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mStringType (), temp_27.readProperty_mOptionComponentName ().readProperty_location (), var_optionComponentIsPredefined_27906, temp_28.readProperty_mOptionComponentName ().readProperty_string (), temp_29.readProperty_mOptionName ().readProperty_string ()  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 731)) ;
               }
             }
             if (kBoolFalse == test_25) {
               const GALGAS_templateOptionAccessAST temp_30 = this ;
               TC_Array <C_FixItDescription> fixItArray31 ;
-              inCompiler->emitSemanticError (temp_30.readProperty_mGetterName ().readProperty_location (), GALGAS_string ("only the 'value', 'char', 'string' and 'comment' getters are defined for an option"), fixItArray31  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 744)) ;
+              inCompiler->emitSemanticError (temp_30.readProperty_mGetterName ().readProperty_location (), GALGAS_string ("only the 'value', 'char', 'string' and 'comment' getters are defined for an option"), fixItArray31  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 739)) ;
               outArgument_outExpression.drop () ; // Release error dropped variable
             }
           }
@@ -10730,28 +10837,28 @@ void cPtr_templateOptionAccessAST::method_templateExpressionAnalysis (const GALG
     }
   }
   if (kBoolFalse == test_9) {
-    GALGAS_stringset var_s_30501 = GALGAS_stringset::class_func_emptySet (SOURCE_FILE ("templateAnalysis.galgas", 747)) ;
-    cEnumerator_commandLineOptionMap enumerator_30528 (var_boolOptionMap_28236, kENUMERATION_UP) ;
-    while (enumerator_30528.hasCurrentObject ()) {
-      var_s_30501.addAssign_operation (enumerator_30528.current_lkey (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 749)) ;
-      enumerator_30528.gotoNextObject () ;
+    GALGAS_stringset var_s_30230 = GALGAS_stringset::class_func_emptySet (SOURCE_FILE ("templateAnalysis.galgas", 742)) ;
+    cEnumerator_commandLineOptionMap enumerator_30257 (var_boolOptionMap_27965, kENUMERATION_UP) ;
+    while (enumerator_30257.hasCurrentObject ()) {
+      var_s_30230.addAssign_operation (enumerator_30257.current_lkey (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 744)) ;
+      enumerator_30257.gotoNextObject () ;
     }
-    cEnumerator_commandLineOptionMap enumerator_30596 (var_uintOptionMap_28281, kENUMERATION_UP) ;
-    while (enumerator_30596.hasCurrentObject ()) {
-      var_s_30501.addAssign_operation (enumerator_30596.current_lkey (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 752)) ;
-      enumerator_30596.gotoNextObject () ;
+    cEnumerator_commandLineOptionMap enumerator_30325 (var_uintOptionMap_28010, kENUMERATION_UP) ;
+    while (enumerator_30325.hasCurrentObject ()) {
+      var_s_30230.addAssign_operation (enumerator_30325.current_lkey (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 747)) ;
+      enumerator_30325.gotoNextObject () ;
     }
-    cEnumerator_commandLineOptionMap enumerator_30664 (var_stringOptionMap_28326, kENUMERATION_UP) ;
-    while (enumerator_30664.hasCurrentObject ()) {
-      var_s_30501.addAssign_operation (enumerator_30664.current_lkey (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 755)) ;
-      enumerator_30664.gotoNextObject () ;
+    cEnumerator_commandLineOptionMap enumerator_30393 (var_stringOptionMap_28055, kENUMERATION_UP) ;
+    while (enumerator_30393.hasCurrentObject ()) {
+      var_s_30230.addAssign_operation (enumerator_30393.current_lkey (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 750)) ;
+      enumerator_30393.gotoNextObject () ;
     }
     const GALGAS_templateOptionAccessAST temp_32 = this ;
     const GALGAS_templateOptionAccessAST temp_33 = this ;
     const GALGAS_templateOptionAccessAST temp_34 = this ;
     TC_Array <C_FixItDescription> fixItArray35 ;
-    appendFixItActions (fixItArray35, kFixItReplace, var_s_30501) ;
-    inCompiler->emitSemanticError (temp_32.readProperty_mOptionName ().readProperty_location (), GALGAS_string ("the '").add_operation (temp_33.readProperty_mOptionComponentName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 758)).add_operation (GALGAS_string ("' option component does not define the '"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 758)).add_operation (temp_34.readProperty_mOptionName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 758)).add_operation (GALGAS_string ("' option"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 758)), fixItArray35  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 757)) ;
+    appendFixItActions (fixItArray35, kFixItReplace, var_s_30230) ;
+    inCompiler->emitSemanticError (temp_32.readProperty_mOptionName ().readProperty_location (), GALGAS_string ("the '").add_operation (temp_33.readProperty_mOptionComponentName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 753)).add_operation (GALGAS_string ("' option component does not define the '"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 753)).add_operation (temp_34.readProperty_mOptionName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 753)).add_operation (GALGAS_string ("' option"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 753)), fixItArray35  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 752)) ;
     outArgument_outExpression.drop () ; // Release error dropped variable
   }
 }
@@ -10769,29 +10876,29 @@ void cPtr_templateFunctionCallAST::method_templateExpressionAnalysis (const GALG
                                                                       Compiler * inCompiler
                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_templateFunctionCallAST temp_0 = this ;
-  GALGAS_lstring var_usefulnessName_31441 = function_functionNameForUsefulEntitiesGraph (temp_0.readProperty_mFunctionName (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 775)) ;
+  GALGAS_lstring var_usefulnessName_31170 = function_functionNameForUsefulEntitiesGraph (temp_0.readProperty_mFunctionName (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 770)) ;
   {
-  ioArgument_ioUsefulEntitiesGraph.setter_addEdge (constinArgument_inUsefulnessCallerEntityName, var_usefulnessName_31441 COMMA_SOURCE_FILE ("templateAnalysis.galgas", 776)) ;
+  ioArgument_ioUsefulEntitiesGraph.setter_addEdge (constinArgument_inUsefulnessCallerEntityName, var_usefulnessName_31170 COMMA_SOURCE_FILE ("templateAnalysis.galgas", 771)) ;
   }
-  GALGAS_functionSignature var_functionSignature_31742 ;
-  GALGAS_unifiedTypeMapEntry var_resultType_31790 ;
-  GALGAS_bool var_isInternal_31816 ;
+  GALGAS_functionSignature var_functionSignature_31471 ;
+  GALGAS_unifiedTypeMapEntry var_resultType_31519 ;
+  GALGAS_bool var_isInternal_31545 ;
   const GALGAS_templateFunctionCallAST temp_1 = this ;
-  constinArgument_inAnalysisContext.readProperty_mSemanticContext ().readProperty_mFunctionMap ().method_searchKey (temp_1.readProperty_mFunctionName (), var_functionSignature_31742, var_resultType_31790, var_isInternal_31816, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 778)) ;
+  constinArgument_inAnalysisContext.readProperty_mSemanticContext ().readProperty_mFunctionMap ().method_searchKey (temp_1.readProperty_mFunctionName (), var_functionSignature_31471, var_resultType_31519, var_isInternal_31545, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 773)) ;
   enumGalgasBool test_2 = kBoolTrue ;
   if (kBoolTrue == test_2) {
-    test_2 = var_isInternal_31816.boolEnum () ;
+    test_2 = var_isInternal_31545.boolEnum () ;
     if (kBoolTrue == test_2) {
       const GALGAS_templateFunctionCallAST temp_3 = this ;
-      GALGAS_location var_procDeclarationLocation_31880 = constinArgument_inAnalysisContext.readProperty_mSemanticContext ().readProperty_mFunctionMap ().getter_locationForKey (temp_3.readProperty_mFunctionName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 786)) ;
+      GALGAS_location var_procDeclarationLocation_31609 = constinArgument_inAnalysisContext.readProperty_mSemanticContext ().readProperty_mFunctionMap ().getter_locationForKey (temp_3.readProperty_mFunctionName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 781)) ;
       enumGalgasBool test_4 = kBoolTrue ;
       if (kBoolTrue == test_4) {
         const GALGAS_templateFunctionCallAST temp_5 = this ;
-        test_4 = GALGAS_bool (kIsNotEqual, temp_5.readProperty_mFunctionName ().readProperty_location ().getter_file (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 787)).objectCompare (var_procDeclarationLocation_31880.getter_file (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 787)))).boolEnum () ;
+        test_4 = GALGAS_bool (kIsNotEqual, temp_5.readProperty_mFunctionName ().readProperty_location ().getter_file (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 782)).objectCompare (var_procDeclarationLocation_31609.getter_file (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 782)))).boolEnum () ;
         if (kBoolTrue == test_4) {
           const GALGAS_templateFunctionCallAST temp_6 = this ;
           TC_Array <C_FixItDescription> fixItArray7 ;
-          inCompiler->emitSemanticError (temp_6.readProperty_mFunctionName ().readProperty_location (), GALGAS_string ("this proc is internal to '").add_operation (var_procDeclarationLocation_31880.getter_file (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 788)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 788)).add_operation (GALGAS_string ("' file"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 788)), fixItArray7  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 788)) ;
+          inCompiler->emitSemanticError (temp_6.readProperty_mFunctionName ().readProperty_location (), GALGAS_string ("this proc is internal to '").add_operation (var_procDeclarationLocation_31609.getter_file (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 783)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 783)).add_operation (GALGAS_string ("' file"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 783)), fixItArray7  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 783)) ;
         }
       }
     }
@@ -10799,51 +10906,51 @@ void cPtr_templateFunctionCallAST::method_templateExpressionAnalysis (const GALG
   enumGalgasBool test_8 = kBoolTrue ;
   if (kBoolTrue == test_8) {
     const GALGAS_templateFunctionCallAST temp_9 = this ;
-    test_8 = GALGAS_bool (kIsNotEqual, var_functionSignature_31742.getter_count (SOURCE_FILE ("templateAnalysis.galgas", 792)).objectCompare (temp_9.readProperty_mExpressionList ().getter_count (SOURCE_FILE ("templateAnalysis.galgas", 792)))).boolEnum () ;
+    test_8 = GALGAS_bool (kIsNotEqual, var_functionSignature_31471.getter_count (SOURCE_FILE ("templateAnalysis.galgas", 787)).objectCompare (temp_9.readProperty_mExpressionList ().getter_count (SOURCE_FILE ("templateAnalysis.galgas", 787)))).boolEnum () ;
     if (kBoolTrue == test_8) {
       const GALGAS_templateFunctionCallAST temp_10 = this ;
       const GALGAS_templateFunctionCallAST temp_11 = this ;
       const GALGAS_templateFunctionCallAST temp_12 = this ;
       TC_Array <C_FixItDescription> fixItArray13 ;
-      inCompiler->emitSemanticError (temp_10.readProperty_mFunctionName ().readProperty_location (), GALGAS_string ("the '").add_operation (temp_11.readProperty_mFunctionName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 794)).add_operation (GALGAS_string ("' function header declares "), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 794)).add_operation (var_functionSignature_31742.getter_count (SOURCE_FILE ("templateAnalysis.galgas", 794)).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 794)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 794)).add_operation (GALGAS_string (" formal parameter(s), but this function call names "), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 794)).add_operation (temp_12.readProperty_mExpressionList ().getter_count (SOURCE_FILE ("templateAnalysis.galgas", 795)).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 795)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 795)).add_operation (GALGAS_string (" effective argument(s)"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 795)), fixItArray13  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 793)) ;
+      inCompiler->emitSemanticError (temp_10.readProperty_mFunctionName ().readProperty_location (), GALGAS_string ("the '").add_operation (temp_11.readProperty_mFunctionName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 789)).add_operation (GALGAS_string ("' function header declares "), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 789)).add_operation (var_functionSignature_31471.getter_count (SOURCE_FILE ("templateAnalysis.galgas", 789)).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 789)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 789)).add_operation (GALGAS_string (" formal parameter(s), but this function call names "), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 789)).add_operation (temp_12.readProperty_mExpressionList ().getter_count (SOURCE_FILE ("templateAnalysis.galgas", 790)).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 790)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 790)).add_operation (GALGAS_string (" effective argument(s)"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 790)), fixItArray13  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 788)) ;
       outArgument_outExpression.drop () ; // Release error dropped variable
     }
   }
   if (kBoolFalse == test_8) {
-    GALGAS_semanticExpressionListForGeneration var_semanticExpressionListForGeneration_32603 = GALGAS_semanticExpressionListForGeneration::class_func_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 799)) ;
+    GALGAS_semanticExpressionListForGeneration var_semanticExpressionListForGeneration_32332 = GALGAS_semanticExpressionListForGeneration::class_func_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 794)) ;
     const GALGAS_templateFunctionCallAST temp_14 = this ;
-    cEnumerator_functionSignature enumerator_32726 (var_functionSignature_31742, kENUMERATION_UP) ;
-    cEnumerator_templateExpressionListAST enumerator_32780 (temp_14.readProperty_mExpressionList (), kENUMERATION_UP) ;
-    while (enumerator_32726.hasCurrentObject () && enumerator_32780.hasCurrentObject ()) {
-      GALGAS_semanticExpressionForGeneration var_expression_33038 ;
-      callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) enumerator_32780.current_mExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_expression_33038, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 801)) ;
+    cEnumerator_functionSignature enumerator_32455 (var_functionSignature_31471, kENUMERATION_UP) ;
+    cEnumerator_templateExpressionListAST enumerator_32509 (temp_14.readProperty_mExpressionList (), kENUMERATION_UP) ;
+    while (enumerator_32455.hasCurrentObject () && enumerator_32509.hasCurrentObject ()) {
+      GALGAS_semanticExpressionForGeneration var_expression_32767 ;
+      callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) enumerator_32509.current_mExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_expression_32767, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 796)) ;
       {
-      routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (enumerator_32726.current_mFormalArgumentType (HERE), var_expression_33038.readProperty_mResultType (), enumerator_32780.current_mEndOfExpressionLocation (HERE), var_expression_33038, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 808)) ;
+      routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (enumerator_32455.current_mFormalArgumentType (HERE), var_expression_32767.readProperty_mResultType (), enumerator_32509.current_mEndOfExpressionLocation (HERE), var_expression_32767, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 803)) ;
       }
-      var_semanticExpressionListForGeneration_32603.addAssign_operation (var_expression_33038  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 809)) ;
+      var_semanticExpressionListForGeneration_32332.addAssign_operation (var_expression_32767  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 804)) ;
       enumGalgasBool test_15 = kBoolTrue ;
       if (kBoolTrue == test_15) {
-        test_15 = GALGAS_bool (kIsNotEqual, enumerator_32726.current_mFormalSelector (HERE).readProperty_string ().objectCompare (enumerator_32780.current_mActualSelector (HERE).readProperty_string ())).boolEnum () ;
+        test_15 = GALGAS_bool (kIsNotEqual, enumerator_32455.current_mFormalSelector (HERE).readProperty_string ().objectCompare (enumerator_32509.current_mActualSelector (HERE).readProperty_string ())).boolEnum () ;
         if (kBoolTrue == test_15) {
           GALGAS_string temp_16 ;
-          const enumGalgasBool test_17 = GALGAS_bool (kIsNotEqual, enumerator_32726.current_mFormalSelector (HERE).readProperty_string ().objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+          const enumGalgasBool test_17 = GALGAS_bool (kIsNotEqual, enumerator_32455.current_mFormalSelector (HERE).readProperty_string ().objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
           if (kBoolTrue == test_17) {
-            temp_16 = enumerator_32726.current_mFormalSelector (HERE).readProperty_string ().add_operation (GALGAS_string (":"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 811)) ;
+            temp_16 = enumerator_32455.current_mFormalSelector (HERE).readProperty_string ().add_operation (GALGAS_string (":"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 806)) ;
           }else if (kBoolFalse == test_17) {
             temp_16 = GALGAS_string::makeEmptyString () ;
           }
-          GALGAS_string var_s_33331 = GALGAS_string ("!").add_operation (temp_16, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 811)) ;
+          GALGAS_string var_s_33060 = GALGAS_string ("!").add_operation (temp_16, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 806)) ;
           TC_Array <C_FixItDescription> fixItArray18 ;
-          appendFixItActions (fixItArray18, kFixItReplace, var_s_33331) ;
-          inCompiler->emitSemanticError (enumerator_32780.current_mActualSelector (HERE).readProperty_location (), GALGAS_string ("the selector should be '").add_operation (var_s_33331, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 812)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 812)), fixItArray18  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 812)) ;
+          appendFixItActions (fixItArray18, kFixItReplace, var_s_33060) ;
+          inCompiler->emitSemanticError (enumerator_32509.current_mActualSelector (HERE).readProperty_location (), GALGAS_string ("the selector should be '").add_operation (var_s_33060, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 807)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 807)), fixItArray18  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 807)) ;
         }
       }
-      enumerator_32726.gotoNextObject () ;
-      enumerator_32780.gotoNextObject () ;
+      enumerator_32455.gotoNextObject () ;
+      enumerator_32509.gotoNextObject () ;
     }
     const GALGAS_templateFunctionCallAST temp_19 = this ;
     const GALGAS_templateFunctionCallAST temp_20 = this ;
-    outArgument_outExpression = GALGAS_functionCallExpressionForGeneration::class_func_new (var_resultType_31790, temp_19.readProperty_mFunctionName ().readProperty_location (), temp_20.readProperty_mFunctionName ().readProperty_string (), var_semanticExpressionListForGeneration_32603  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 816)) ;
+    outArgument_outExpression = GALGAS_functionCallExpressionForGeneration::class_func_new (var_resultType_31519, temp_19.readProperty_mFunctionName ().readProperty_location (), temp_20.readProperty_mFunctionName ().readProperty_string (), var_semanticExpressionListForGeneration_32332  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 811)) ;
   }
 }
 //--------------------------------------------------------------------------------------------------
@@ -10861,7 +10968,7 @@ void cPtr_templateExtensionTemplateCallAST::method_templateExpressionAnalysis (c
                                                                                COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_templateExtensionTemplateCallAST temp_0 = this ;
   TC_Array <C_FixItDescription> fixItArray1 ;
-  inCompiler->emitSemanticError (temp_0.readProperty_mTemplateName ().readProperty_location (), GALGAS_string ("INTERNAL ERROR: @templateExtensionTemplateCallAST templateExpressionAnalysis not implemented yet"), fixItArray1  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 835)) ;
+  inCompiler->emitSemanticError (temp_0.readProperty_mTemplateName ().readProperty_location (), GALGAS_string ("INTERNAL ERROR: @templateExtensionTemplateCallAST templateExpressionAnalysis not implemented yet"), fixItArray1  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 830)) ;
   outArgument_outExpression.drop () ; // Release error dropped variable
 }
 //--------------------------------------------------------------------------------------------------
@@ -10877,12 +10984,12 @@ void cPtr_templateVarInExpressionAST::method_templateExpressionAnalysis (const G
                                                                          GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
                                                                          Compiler * inCompiler
                                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_unifiedTypeMapEntry var_type_35215 ;
-  GALGAS_string var_sourceVariableCppName_35225 ;
+  GALGAS_unifiedTypeMapEntry var_type_34944 ;
+  GALGAS_string var_sourceVariableCppName_34954 ;
   const GALGAS_templateVarInExpressionAST temp_0 = this ;
-  constinArgument_inAnalysisContext.readProperty_mTemplateVariableMap ().method_searchKey (temp_0.readProperty_mVarName (), var_type_35215, var_sourceVariableCppName_35225, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 851)) ;
+  constinArgument_inAnalysisContext.readProperty_mTemplateVariableMap ().method_searchKey (temp_0.readProperty_mVarName (), var_type_34944, var_sourceVariableCppName_34954, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 846)) ;
   const GALGAS_templateVarInExpressionAST temp_1 = this ;
-  outArgument_outExpression = GALGAS_varInExpressionForGeneration::class_func_new (var_type_35215, temp_1.readProperty_mVarName ().readProperty_location (), var_sourceVariableCppName_35225, var_sourceVariableCppName_35225  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 852)) ;
+  outArgument_outExpression = GALGAS_varInExpressionForGeneration::class_func_new (var_type_34944, temp_1.readProperty_mVarName ().readProperty_location (), var_sourceVariableCppName_34954, var_sourceVariableCppName_34954  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 847)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -10897,18 +11004,18 @@ void cPtr_templateAddOperationAST::method_templateExpressionAnalysis (const GALG
                                                                       GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
                                                                       Compiler * inCompiler
                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_semanticExpressionForGeneration var_leftExpression_36154 ;
+  GALGAS_semanticExpressionForGeneration var_leftExpression_35883 ;
   const GALGAS_templateAddOperationAST temp_0 = this ;
-  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_leftExpression_36154, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 871)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression_36395 ;
+  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_leftExpression_35883, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 866)) ;
+  GALGAS_semanticExpressionForGeneration var_rightExpression_36124 ;
   const GALGAS_templateAddOperationAST temp_1 = this ;
-  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_rightExpression_36395, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 879)) ;
+  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_rightExpression_36124, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 874)) ;
   {
   const GALGAS_templateAddOperationAST temp_2 = this ;
-  routine_checkDiadicOperator_3F__3F__3F__26__26_ (extensionGetter_definition (var_leftExpression_36154.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 888)).readProperty_mHandledOperatorFlags ().getter_infixAddOperator (SOURCE_FILE ("templateAnalysis.galgas", 888)), GALGAS_string ("+"), temp_2.readProperty_mOperatorLocation (), var_leftExpression_36154, var_rightExpression_36395, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 887)) ;
+  routine_checkDiadicOperator_3F__3F__3F__26__26_ (extensionGetter_definition (var_leftExpression_35883.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 883)).readProperty_mHandledOperatorFlags ().getter_infixAddOperator (SOURCE_FILE ("templateAnalysis.galgas", 883)), GALGAS_string ("+"), temp_2.readProperty_mOperatorLocation (), var_leftExpression_35883, var_rightExpression_36124, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 882)) ;
   }
   const GALGAS_templateAddOperationAST temp_3 = this ;
-  outArgument_outExpression = GALGAS_binaryOperatorExpressionForGeneration::class_func_new (var_leftExpression_36154.readProperty_mResultType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_36154, GALGAS_binaryOperator::class_func_add (SOURCE_FILE ("templateAnalysis.galgas", 899)), var_rightExpression_36395  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 895)) ;
+  outArgument_outExpression = GALGAS_binaryOperatorExpressionForGeneration::class_func_new (var_leftExpression_35883.readProperty_mResultType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_35883, GALGAS_binaryOperator::class_func_add (SOURCE_FILE ("templateAnalysis.galgas", 894)), var_rightExpression_36124  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 890)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -10923,18 +11030,18 @@ void cPtr_templateSubOperationAST::method_templateExpressionAnalysis (const GALG
                                                                       GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
                                                                       Compiler * inCompiler
                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_semanticExpressionForGeneration var_leftExpression_37613 ;
+  GALGAS_semanticExpressionForGeneration var_leftExpression_37342 ;
   const GALGAS_templateSubOperationAST temp_0 = this ;
-  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_leftExpression_37613, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 916)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression_37854 ;
+  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_leftExpression_37342, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 911)) ;
+  GALGAS_semanticExpressionForGeneration var_rightExpression_37583 ;
   const GALGAS_templateSubOperationAST temp_1 = this ;
-  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_rightExpression_37854, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 924)) ;
+  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_rightExpression_37583, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 919)) ;
   {
   const GALGAS_templateSubOperationAST temp_2 = this ;
-  routine_checkDiadicOperator_3F__3F__3F__26__26_ (extensionGetter_definition (var_leftExpression_37613.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 933)).readProperty_mHandledOperatorFlags ().getter_infixSubOperator (SOURCE_FILE ("templateAnalysis.galgas", 933)), GALGAS_string ("-"), temp_2.readProperty_mOperatorLocation (), var_leftExpression_37613, var_rightExpression_37854, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 932)) ;
+  routine_checkDiadicOperator_3F__3F__3F__26__26_ (extensionGetter_definition (var_leftExpression_37342.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 928)).readProperty_mHandledOperatorFlags ().getter_infixSubOperator (SOURCE_FILE ("templateAnalysis.galgas", 928)), GALGAS_string ("-"), temp_2.readProperty_mOperatorLocation (), var_leftExpression_37342, var_rightExpression_37583, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 927)) ;
   }
   const GALGAS_templateSubOperationAST temp_3 = this ;
-  outArgument_outExpression = GALGAS_binaryOperatorExpressionForGeneration::class_func_new (var_leftExpression_37613.readProperty_mResultType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_37613, GALGAS_binaryOperator::class_func_sub (SOURCE_FILE ("templateAnalysis.galgas", 944)), var_rightExpression_37854  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 940)) ;
+  outArgument_outExpression = GALGAS_binaryOperatorExpressionForGeneration::class_func_new (var_leftExpression_37342.readProperty_mResultType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_37342, GALGAS_binaryOperator::class_func_sub (SOURCE_FILE ("templateAnalysis.galgas", 939)), var_rightExpression_37583  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 935)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -10949,18 +11056,18 @@ void cPtr_templateMultiplyOperationAST::method_templateExpressionAnalysis (const
                                                                            GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
                                                                            Compiler * inCompiler
                                                                            COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_semanticExpressionForGeneration var_leftExpression_39081 ;
+  GALGAS_semanticExpressionForGeneration var_leftExpression_38810 ;
   const GALGAS_templateMultiplyOperationAST temp_0 = this ;
-  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_leftExpression_39081, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 961)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression_39322 ;
+  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_leftExpression_38810, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 956)) ;
+  GALGAS_semanticExpressionForGeneration var_rightExpression_39051 ;
   const GALGAS_templateMultiplyOperationAST temp_1 = this ;
-  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_rightExpression_39322, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 969)) ;
+  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_rightExpression_39051, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 964)) ;
   {
   const GALGAS_templateMultiplyOperationAST temp_2 = this ;
-  routine_checkDiadicOperator_3F__3F__3F__26__26_ (extensionGetter_definition (var_leftExpression_39081.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 978)).readProperty_mHandledOperatorFlags ().getter_infixMulOperator (SOURCE_FILE ("templateAnalysis.galgas", 978)), GALGAS_string ("*"), temp_2.readProperty_mOperatorLocation (), var_leftExpression_39081, var_rightExpression_39322, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 977)) ;
+  routine_checkDiadicOperator_3F__3F__3F__26__26_ (extensionGetter_definition (var_leftExpression_38810.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 973)).readProperty_mHandledOperatorFlags ().getter_infixMulOperator (SOURCE_FILE ("templateAnalysis.galgas", 973)), GALGAS_string ("*"), temp_2.readProperty_mOperatorLocation (), var_leftExpression_38810, var_rightExpression_39051, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 972)) ;
   }
   const GALGAS_templateMultiplyOperationAST temp_3 = this ;
-  outArgument_outExpression = GALGAS_binaryOperatorExpressionForGeneration::class_func_new (var_leftExpression_39081.readProperty_mResultType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_39081, GALGAS_binaryOperator::class_func_multiply_5F_operation (SOURCE_FILE ("templateAnalysis.galgas", 989)), var_rightExpression_39322  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 985)) ;
+  outArgument_outExpression = GALGAS_binaryOperatorExpressionForGeneration::class_func_new (var_leftExpression_38810.readProperty_mResultType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_38810, GALGAS_binaryOperator::class_func_multiply_5F_operation (SOURCE_FILE ("templateAnalysis.galgas", 984)), var_rightExpression_39051  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 980)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -10975,18 +11082,18 @@ void cPtr_templateDivideOperationAST::method_templateExpressionAnalysis (const G
                                                                          GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
                                                                          Compiler * inCompiler
                                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_semanticExpressionForGeneration var_leftExpression_40550 ;
+  GALGAS_semanticExpressionForGeneration var_leftExpression_40279 ;
   const GALGAS_templateDivideOperationAST temp_0 = this ;
-  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_leftExpression_40550, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1006)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression_40791 ;
+  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_leftExpression_40279, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1001)) ;
+  GALGAS_semanticExpressionForGeneration var_rightExpression_40520 ;
   const GALGAS_templateDivideOperationAST temp_1 = this ;
-  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_rightExpression_40791, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1014)) ;
+  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_rightExpression_40520, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1009)) ;
   {
   const GALGAS_templateDivideOperationAST temp_2 = this ;
-  routine_checkDiadicOperator_3F__3F__3F__26__26_ (extensionGetter_definition (var_leftExpression_40550.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1023)).readProperty_mHandledOperatorFlags ().getter_infixDivOperator (SOURCE_FILE ("templateAnalysis.galgas", 1023)), GALGAS_string ("/"), temp_2.readProperty_mOperatorLocation (), var_leftExpression_40550, var_rightExpression_40791, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1022)) ;
+  routine_checkDiadicOperator_3F__3F__3F__26__26_ (extensionGetter_definition (var_leftExpression_40279.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1018)).readProperty_mHandledOperatorFlags ().getter_infixDivOperator (SOURCE_FILE ("templateAnalysis.galgas", 1018)), GALGAS_string ("/"), temp_2.readProperty_mOperatorLocation (), var_leftExpression_40279, var_rightExpression_40520, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1017)) ;
   }
   const GALGAS_templateDivideOperationAST temp_3 = this ;
-  outArgument_outExpression = GALGAS_binaryOperatorExpressionForGeneration::class_func_new (var_leftExpression_40550.readProperty_mResultType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_40550, GALGAS_binaryOperator::class_func_divide_5F_operation (SOURCE_FILE ("templateAnalysis.galgas", 1034)), var_rightExpression_40791  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1030)) ;
+  outArgument_outExpression = GALGAS_binaryOperatorExpressionForGeneration::class_func_new (var_leftExpression_40279.readProperty_mResultType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_40279, GALGAS_binaryOperator::class_func_divide_5F_operation (SOURCE_FILE ("templateAnalysis.galgas", 1029)), var_rightExpression_40520  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1025)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -11001,18 +11108,18 @@ void cPtr_templateModuloOperationAST::method_templateExpressionAnalysis (const G
                                                                          GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
                                                                          Compiler * inCompiler
                                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_semanticExpressionForGeneration var_leftExpression_42013 ;
+  GALGAS_semanticExpressionForGeneration var_leftExpression_41742 ;
   const GALGAS_templateModuloOperationAST temp_0 = this ;
-  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_leftExpression_42013, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1051)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression_42254 ;
+  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_leftExpression_41742, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1046)) ;
+  GALGAS_semanticExpressionForGeneration var_rightExpression_41983 ;
   const GALGAS_templateModuloOperationAST temp_1 = this ;
-  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_rightExpression_42254, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1059)) ;
+  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_rightExpression_41983, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1054)) ;
   {
   const GALGAS_templateModuloOperationAST temp_2 = this ;
-  routine_checkDiadicOperator_3F__3F__3F__26__26_ (extensionGetter_definition (var_leftExpression_42013.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1068)).readProperty_mHandledOperatorFlags ().getter_infixModOperator (SOURCE_FILE ("templateAnalysis.galgas", 1068)), GALGAS_string ("mod"), temp_2.readProperty_mOperatorLocation (), var_leftExpression_42013, var_rightExpression_42254, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1067)) ;
+  routine_checkDiadicOperator_3F__3F__3F__26__26_ (extensionGetter_definition (var_leftExpression_41742.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1063)).readProperty_mHandledOperatorFlags ().getter_infixModOperator (SOURCE_FILE ("templateAnalysis.galgas", 1063)), GALGAS_string ("mod"), temp_2.readProperty_mOperatorLocation (), var_leftExpression_41742, var_rightExpression_41983, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1062)) ;
   }
   const GALGAS_templateModuloOperationAST temp_3 = this ;
-  outArgument_outExpression = GALGAS_binaryOperatorExpressionForGeneration::class_func_new (var_leftExpression_42013.readProperty_mResultType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_42013, GALGAS_binaryOperator::class_func_modulo_5F_operation (SOURCE_FILE ("templateAnalysis.galgas", 1079)), var_rightExpression_42254  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1075)) ;
+  outArgument_outExpression = GALGAS_binaryOperatorExpressionForGeneration::class_func_new (var_leftExpression_41742.readProperty_mResultType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_41742, GALGAS_binaryOperator::class_func_modulo_5F_operation (SOURCE_FILE ("templateAnalysis.galgas", 1074)), var_rightExpression_41983  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1070)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -11027,23 +11134,23 @@ void cPtr_templateUnaryMinusOperationAST::method_templateExpressionAnalysis (con
                                                                              GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
                                                                              Compiler * inCompiler
                                                                              COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_semanticExpressionForGeneration var_expression_43442 ;
+  GALGAS_semanticExpressionForGeneration var_expression_43171 ;
   const GALGAS_templateUnaryMinusOperationAST temp_0 = this ;
-  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_0.readProperty_mExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_expression_43442, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1096)) ;
-  GALGAS_unifiedTypeMapEntry var_type_43517 = var_expression_43442.readProperty_mResultType () ;
+  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_0.readProperty_mExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_expression_43171, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1091)) ;
+  GALGAS_unifiedTypeMapEntry var_type_43246 = var_expression_43171.readProperty_mResultType () ;
   enumGalgasBool test_1 = kBoolTrue ;
   if (kBoolTrue == test_1) {
-    test_1 = extensionGetter_definition (var_type_43517, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1105)).readProperty_mHandledOperatorFlags ().getter_prefixMinusOperator (SOURCE_FILE ("templateAnalysis.galgas", 1105)).operator_not (SOURCE_FILE ("templateAnalysis.galgas", 1105)).boolEnum () ;
+    test_1 = extensionGetter_definition (var_type_43246, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1100)).readProperty_mHandledOperatorFlags ().getter_prefixMinusOperator (SOURCE_FILE ("templateAnalysis.galgas", 1100)).operator_not (SOURCE_FILE ("templateAnalysis.galgas", 1100)).boolEnum () ;
     if (kBoolTrue == test_1) {
       const GALGAS_templateUnaryMinusOperationAST temp_2 = this ;
       TC_Array <C_FixItDescription> fixItArray3 ;
-      inCompiler->emitSemanticError (temp_2.readProperty_mOperatorLocation (), GALGAS_string ("operand type is '@").add_operation (extensionGetter_definition (var_type_43517, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1107)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1107)).add_operation (GALGAS_string ("' and does not support the prefix minus operator"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1107)), fixItArray3  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1106)) ;
+      inCompiler->emitSemanticError (temp_2.readProperty_mOperatorLocation (), GALGAS_string ("operand type is '@").add_operation (extensionGetter_definition (var_type_43246, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1102)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1102)).add_operation (GALGAS_string ("' and does not support the prefix minus operator"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1102)), fixItArray3  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1101)) ;
       outArgument_outExpression.drop () ; // Release error dropped variable
     }
   }
   if (kBoolFalse == test_1) {
     const GALGAS_templateUnaryMinusOperationAST temp_4 = this ;
-    outArgument_outExpression = GALGAS_unaryMinusExpressionForGeneration::class_func_new (var_type_43517, temp_4.readProperty_mOperatorLocation (), var_expression_43442  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1111)) ;
+    outArgument_outExpression = GALGAS_unaryMinusExpressionForGeneration::class_func_new (var_type_43246, temp_4.readProperty_mOperatorLocation (), var_expression_43171  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1106)) ;
   }
 }
 //--------------------------------------------------------------------------------------------------
@@ -11059,33 +11166,33 @@ void cPtr_structFieldAccessTemplateExpressionAST::method_templateExpressionAnaly
                                                                                      GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
                                                                                      Compiler * inCompiler
                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_semanticExpressionForGeneration var_expression_44743 ;
+  GALGAS_semanticExpressionForGeneration var_expression_44472 ;
   const GALGAS_structFieldAccessTemplateExpressionAST temp_0 = this ;
-  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_0.readProperty_mExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_expression_44743, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1130)) ;
-  GALGAS_unifiedTypeMapEntry var_type_44822 = var_expression_44743.readProperty_mResultType () ;
+  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_0.readProperty_mExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_expression_44472, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1125)) ;
+  GALGAS_unifiedTypeMapEntry var_type_44551 = var_expression_44472.readProperty_mResultType () ;
   enumGalgasBool test_1 = kBoolTrue ;
   if (kBoolTrue == test_1) {
-    GALGAS_bool test_2 = GALGAS_bool (kIsNotEqual, extensionGetter_definition (var_type_44822, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1139)).readProperty_mTypeKindEnum ().objectCompare (GALGAS_typeKindEnum::class_func_structType (SOURCE_FILE ("templateAnalysis.galgas", 1139)))) ;
+    GALGAS_bool test_2 = GALGAS_bool (kIsNotEqual, extensionGetter_definition (var_type_44551, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1134)).readProperty_mTypeKindEnum ().objectCompare (GALGAS_typeKindEnum::class_func_structType (SOURCE_FILE ("templateAnalysis.galgas", 1134)))) ;
     if (kBoolTrue == test_2.boolEnum ()) {
-      test_2 = extensionGetter_definition (var_type_44822, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1139)).readProperty_mTypeKindEnum ().getter_isClassType (SOURCE_FILE ("templateAnalysis.galgas", 1139)).operator_not (SOURCE_FILE ("templateAnalysis.galgas", 1139)) ;
+      test_2 = extensionGetter_definition (var_type_44551, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1134)).readProperty_mTypeKindEnum ().getter_isClassType (SOURCE_FILE ("templateAnalysis.galgas", 1134)).operator_not (SOURCE_FILE ("templateAnalysis.galgas", 1134)) ;
     }
     test_1 = test_2.boolEnum () ;
     if (kBoolTrue == test_1) {
       const GALGAS_structFieldAccessTemplateExpressionAST temp_3 = this ;
       TC_Array <C_FixItDescription> fixItArray4 ;
-      inCompiler->emitSemanticError (temp_3.readProperty_mStructFieldName ().readProperty_location (), GALGAS_string ("the '.' operator requires the receiver to be a struct ou a class"), fixItArray4  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1140)) ;
+      inCompiler->emitSemanticError (temp_3.readProperty_mStructFieldName ().readProperty_location (), GALGAS_string ("the '.' operator requires the receiver to be a struct ou a class"), fixItArray4  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1135)) ;
     }
   }
-  GALGAS_propertyMap var_propertyMap_45075 = extensionGetter_definition (var_type_44822, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1142)).readProperty_mPropertyMap () ;
-  GALGAS_AccessControl var_accessControl_45173 ;
+  GALGAS_propertyMap var_propertyMap_44804 = extensionGetter_definition (var_type_44551, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1137)).readProperty_mPropertyMap () ;
+  GALGAS_AccessControl var_accessControl_44902 ;
   const GALGAS_structFieldAccessTemplateExpressionAST temp_5 = this ;
-  GALGAS_bool joker_45187 ; // Joker input parameter
-  var_propertyMap_45075.method_searchKey (temp_5.readProperty_mStructFieldName (), var_accessControl_45173, joker_45187, var_type_44822, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1143)) ;
+  GALGAS_bool joker_44916 ; // Joker input parameter
+  var_propertyMap_44804.method_searchKey (temp_5.readProperty_mStructFieldName (), var_accessControl_44902, joker_44916, var_type_44551, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1138)) ;
   const GALGAS_structFieldAccessTemplateExpressionAST temp_6 = this ;
-  extensionMethod_checkSetAccess (var_accessControl_45173, GALGAS_selfAvailability::class_func_none (SOURCE_FILE ("templateAnalysis.galgas", 1144)), temp_6.readProperty_mStructFieldName ().readProperty_location (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1144)) ;
+  extensionMethod_checkSetAccess (var_accessControl_44902, GALGAS_selfAvailability::class_func_none (SOURCE_FILE ("templateAnalysis.galgas", 1139)), temp_6.readProperty_mStructFieldName ().readProperty_location (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1139)) ;
   const GALGAS_structFieldAccessTemplateExpressionAST temp_7 = this ;
   const GALGAS_structFieldAccessTemplateExpressionAST temp_8 = this ;
-  outArgument_outExpression = GALGAS_structPropertyAccessExpressionForGeneration::class_func_new (var_type_44822, temp_7.readProperty_mOperatorLocation (), var_expression_44743, temp_8.readProperty_mStructFieldName ().readProperty_string ()  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1149)) ;
+  outArgument_outExpression = GALGAS_structPropertyAccessExpressionForGeneration::class_func_new (var_type_44551, temp_7.readProperty_mOperatorLocation (), var_expression_44472, temp_8.readProperty_mStructFieldName ().readProperty_string ()  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1144)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -11100,18 +11207,18 @@ void cPtr_templateEqualTestAST::method_templateExpressionAnalysis (const GALGAS_
                                                                    GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
                                                                    Compiler * inCompiler
                                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_semanticExpressionForGeneration var_leftExpression_46317 ;
+  GALGAS_semanticExpressionForGeneration var_leftExpression_46046 ;
   const GALGAS_templateEqualTestAST temp_0 = this ;
-  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_leftExpression_46317, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1169)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression_46562 ;
+  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_leftExpression_46046, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1164)) ;
+  GALGAS_semanticExpressionForGeneration var_rightExpression_46291 ;
   const GALGAS_templateEqualTestAST temp_1 = this ;
-  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_rightExpression_46562, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1177)) ;
+  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_rightExpression_46291, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1172)) ;
   {
   const GALGAS_templateEqualTestAST temp_2 = this ;
-  routine_checkDiadicOperator_3F__3F__3F__26__26_ (GALGAS_bool (true), GALGAS_string ("=="), temp_2.readProperty_mOperatorLocation (), var_leftExpression_46317, var_rightExpression_46562, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1185)) ;
+  routine_checkDiadicOperator_3F__3F__3F__26__26_ (GALGAS_bool (true), GALGAS_string ("=="), temp_2.readProperty_mOperatorLocation (), var_leftExpression_46046, var_rightExpression_46291, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1180)) ;
   }
   const GALGAS_templateEqualTestAST temp_3 = this ;
-  outArgument_outExpression = GALGAS_comparisonExpressionForGeneration::class_func_new (constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mBoolType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_46317, GALGAS_comparison::class_func_equal (SOURCE_FILE ("templateAnalysis.galgas", 1197)), var_rightExpression_46562  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1193)) ;
+  outArgument_outExpression = GALGAS_comparisonExpressionForGeneration::class_func_new (constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mBoolType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_46046, GALGAS_comparison::class_func_equal (SOURCE_FILE ("templateAnalysis.galgas", 1192)), var_rightExpression_46291  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1188)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -11126,18 +11233,18 @@ void cPtr_templateNonEqualTestAST::method_templateExpressionAnalysis (const GALG
                                                                       GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
                                                                       Compiler * inCompiler
                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_semanticExpressionForGeneration var_leftExpression_47573 ;
+  GALGAS_semanticExpressionForGeneration var_leftExpression_47302 ;
   const GALGAS_templateNonEqualTestAST temp_0 = this ;
-  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_leftExpression_47573, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1212)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression_47818 ;
+  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_leftExpression_47302, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1207)) ;
+  GALGAS_semanticExpressionForGeneration var_rightExpression_47547 ;
   const GALGAS_templateNonEqualTestAST temp_1 = this ;
-  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_rightExpression_47818, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1220)) ;
+  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_rightExpression_47547, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1215)) ;
   {
   const GALGAS_templateNonEqualTestAST temp_2 = this ;
-  routine_checkDiadicOperator_3F__3F__3F__26__26_ (GALGAS_bool (true), GALGAS_string ("!="), temp_2.readProperty_mOperatorLocation (), var_leftExpression_47573, var_rightExpression_47818, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1228)) ;
+  routine_checkDiadicOperator_3F__3F__3F__26__26_ (GALGAS_bool (true), GALGAS_string ("!="), temp_2.readProperty_mOperatorLocation (), var_leftExpression_47302, var_rightExpression_47547, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1223)) ;
   }
   const GALGAS_templateNonEqualTestAST temp_3 = this ;
-  outArgument_outExpression = GALGAS_comparisonExpressionForGeneration::class_func_new (constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mBoolType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_47573, GALGAS_comparison::class_func_notEqual (SOURCE_FILE ("templateAnalysis.galgas", 1240)), var_rightExpression_47818  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1236)) ;
+  outArgument_outExpression = GALGAS_comparisonExpressionForGeneration::class_func_new (constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mBoolType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_47302, GALGAS_comparison::class_func_notEqual (SOURCE_FILE ("templateAnalysis.galgas", 1235)), var_rightExpression_47547  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1231)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -11152,18 +11259,18 @@ void cPtr_templateStrictInfTestAST::method_templateExpressionAnalysis (const GAL
                                                                        GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
                                                                        Compiler * inCompiler
                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_semanticExpressionForGeneration var_leftExpression_48833 ;
+  GALGAS_semanticExpressionForGeneration var_leftExpression_48562 ;
   const GALGAS_templateStrictInfTestAST temp_0 = this ;
-  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_leftExpression_48833, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1255)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression_49078 ;
+  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_leftExpression_48562, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1250)) ;
+  GALGAS_semanticExpressionForGeneration var_rightExpression_48807 ;
   const GALGAS_templateStrictInfTestAST temp_1 = this ;
-  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_rightExpression_49078, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1263)) ;
+  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_rightExpression_48807, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1258)) ;
   {
   const GALGAS_templateStrictInfTestAST temp_2 = this ;
-  routine_checkDiadicOperator_3F__3F__3F__26__26_ (GALGAS_bool (true), GALGAS_string ("<"), temp_2.readProperty_mOperatorLocation (), var_leftExpression_48833, var_rightExpression_49078, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1271)) ;
+  routine_checkDiadicOperator_3F__3F__3F__26__26_ (GALGAS_bool (true), GALGAS_string ("<"), temp_2.readProperty_mOperatorLocation (), var_leftExpression_48562, var_rightExpression_48807, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1266)) ;
   }
   const GALGAS_templateStrictInfTestAST temp_3 = this ;
-  outArgument_outExpression = GALGAS_comparisonExpressionForGeneration::class_func_new (constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mBoolType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_48833, GALGAS_comparison::class_func_lowerThan (SOURCE_FILE ("templateAnalysis.galgas", 1283)), var_rightExpression_49078  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1279)) ;
+  outArgument_outExpression = GALGAS_comparisonExpressionForGeneration::class_func_new (constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mBoolType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_48562, GALGAS_comparison::class_func_lowerThan (SOURCE_FILE ("templateAnalysis.galgas", 1278)), var_rightExpression_48807  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1274)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -11178,18 +11285,18 @@ void cPtr_templateInfOrEqualTestAST::method_templateExpressionAnalysis (const GA
                                                                         GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
                                                                         Compiler * inCompiler
                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_semanticExpressionForGeneration var_leftExpression_50094 ;
+  GALGAS_semanticExpressionForGeneration var_leftExpression_49823 ;
   const GALGAS_templateInfOrEqualTestAST temp_0 = this ;
-  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_leftExpression_50094, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1298)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression_50339 ;
+  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_leftExpression_49823, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1293)) ;
+  GALGAS_semanticExpressionForGeneration var_rightExpression_50068 ;
   const GALGAS_templateInfOrEqualTestAST temp_1 = this ;
-  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_rightExpression_50339, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1306)) ;
+  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_rightExpression_50068, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1301)) ;
   {
   const GALGAS_templateInfOrEqualTestAST temp_2 = this ;
-  routine_checkDiadicOperator_3F__3F__3F__26__26_ (GALGAS_bool (true), GALGAS_string ("<="), temp_2.readProperty_mOperatorLocation (), var_leftExpression_50094, var_rightExpression_50339, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1314)) ;
+  routine_checkDiadicOperator_3F__3F__3F__26__26_ (GALGAS_bool (true), GALGAS_string ("<="), temp_2.readProperty_mOperatorLocation (), var_leftExpression_49823, var_rightExpression_50068, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1309)) ;
   }
   const GALGAS_templateInfOrEqualTestAST temp_3 = this ;
-  outArgument_outExpression = GALGAS_comparisonExpressionForGeneration::class_func_new (constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mBoolType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_50094, GALGAS_comparison::class_func_lowerOrEqual (SOURCE_FILE ("templateAnalysis.galgas", 1326)), var_rightExpression_50339  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1322)) ;
+  outArgument_outExpression = GALGAS_comparisonExpressionForGeneration::class_func_new (constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mBoolType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_49823, GALGAS_comparison::class_func_lowerOrEqual (SOURCE_FILE ("templateAnalysis.galgas", 1321)), var_rightExpression_50068  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1317)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -11204,18 +11311,18 @@ void cPtr_templateStrictSupTestAST::method_templateExpressionAnalysis (const GAL
                                                                        GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
                                                                        Compiler * inCompiler
                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_semanticExpressionForGeneration var_leftExpression_51358 ;
+  GALGAS_semanticExpressionForGeneration var_leftExpression_51087 ;
   const GALGAS_templateStrictSupTestAST temp_0 = this ;
-  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_leftExpression_51358, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1341)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression_51603 ;
+  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_leftExpression_51087, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1336)) ;
+  GALGAS_semanticExpressionForGeneration var_rightExpression_51332 ;
   const GALGAS_templateStrictSupTestAST temp_1 = this ;
-  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_rightExpression_51603, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1349)) ;
+  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_rightExpression_51332, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1344)) ;
   {
   const GALGAS_templateStrictSupTestAST temp_2 = this ;
-  routine_checkDiadicOperator_3F__3F__3F__26__26_ (GALGAS_bool (true), GALGAS_string (">"), temp_2.readProperty_mOperatorLocation (), var_leftExpression_51358, var_rightExpression_51603, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1357)) ;
+  routine_checkDiadicOperator_3F__3F__3F__26__26_ (GALGAS_bool (true), GALGAS_string (">"), temp_2.readProperty_mOperatorLocation (), var_leftExpression_51087, var_rightExpression_51332, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1352)) ;
   }
   const GALGAS_templateStrictSupTestAST temp_3 = this ;
-  outArgument_outExpression = GALGAS_comparisonExpressionForGeneration::class_func_new (constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mBoolType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_51358, GALGAS_comparison::class_func_greaterThan (SOURCE_FILE ("templateAnalysis.galgas", 1369)), var_rightExpression_51603  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1365)) ;
+  outArgument_outExpression = GALGAS_comparisonExpressionForGeneration::class_func_new (constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mBoolType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_51087, GALGAS_comparison::class_func_greaterThan (SOURCE_FILE ("templateAnalysis.galgas", 1364)), var_rightExpression_51332  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1360)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -11230,18 +11337,18 @@ void cPtr_templateSupOrEqualTestAST::method_templateExpressionAnalysis (const GA
                                                                         GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
                                                                         Compiler * inCompiler
                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_semanticExpressionForGeneration var_leftExpression_52621 ;
+  GALGAS_semanticExpressionForGeneration var_leftExpression_52350 ;
   const GALGAS_templateSupOrEqualTestAST temp_0 = this ;
-  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_leftExpression_52621, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1384)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression_52866 ;
+  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_leftExpression_52350, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1379)) ;
+  GALGAS_semanticExpressionForGeneration var_rightExpression_52595 ;
   const GALGAS_templateSupOrEqualTestAST temp_1 = this ;
-  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_rightExpression_52866, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1392)) ;
+  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_rightExpression_52595, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1387)) ;
   {
   const GALGAS_templateSupOrEqualTestAST temp_2 = this ;
-  routine_checkDiadicOperator_3F__3F__3F__26__26_ (GALGAS_bool (true), GALGAS_string (">="), temp_2.readProperty_mOperatorLocation (), var_leftExpression_52621, var_rightExpression_52866, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1400)) ;
+  routine_checkDiadicOperator_3F__3F__3F__26__26_ (GALGAS_bool (true), GALGAS_string (">="), temp_2.readProperty_mOperatorLocation (), var_leftExpression_52350, var_rightExpression_52595, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1395)) ;
   }
   const GALGAS_templateSupOrEqualTestAST temp_3 = this ;
-  outArgument_outExpression = GALGAS_comparisonExpressionForGeneration::class_func_new (constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mBoolType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_52621, GALGAS_comparison::class_func_greaterOrEqual (SOURCE_FILE ("templateAnalysis.galgas", 1412)), var_rightExpression_52866  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1408)) ;
+  outArgument_outExpression = GALGAS_comparisonExpressionForGeneration::class_func_new (constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mBoolType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_52350, GALGAS_comparison::class_func_greaterOrEqual (SOURCE_FILE ("templateAnalysis.galgas", 1407)), var_rightExpression_52595  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1403)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -11256,38 +11363,38 @@ void cPtr_templateLeftShiftOperationAST::method_templateExpressionAnalysis (cons
                                                                             GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
                                                                             Compiler * inCompiler
                                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_semanticExpressionForGeneration var_leftExpression_53892 ;
+  GALGAS_semanticExpressionForGeneration var_leftExpression_53621 ;
   const GALGAS_templateLeftShiftOperationAST temp_0 = this ;
-  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_leftExpression_53892, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1427)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression_54137 ;
+  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_leftExpression_53621, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1422)) ;
+  GALGAS_semanticExpressionForGeneration var_rightExpression_53866 ;
   const GALGAS_templateLeftShiftOperationAST temp_1 = this ;
-  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_rightExpression_54137, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1435)) ;
-  GALGAS_unifiedTypeMapEntry var_leftType_54218 = var_leftExpression_53892.readProperty_mResultType () ;
-  GALGAS_unifiedTypeMapEntry var_rightType_54283 = var_rightExpression_54137.readProperty_mResultType () ;
+  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_rightExpression_53866, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1430)) ;
+  GALGAS_unifiedTypeMapEntry var_leftType_53947 = var_leftExpression_53621.readProperty_mResultType () ;
+  GALGAS_unifiedTypeMapEntry var_rightType_54012 = var_rightExpression_53866.readProperty_mResultType () ;
   enumGalgasBool test_2 = kBoolTrue ;
   if (kBoolTrue == test_2) {
-    test_2 = extensionGetter_definition (var_leftType_54218, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1445)).readProperty_mHandledOperatorFlags ().getter_infixShiftOperator (SOURCE_FILE ("templateAnalysis.galgas", 1445)).operator_not (SOURCE_FILE ("templateAnalysis.galgas", 1445)).boolEnum () ;
+    test_2 = extensionGetter_definition (var_leftType_53947, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1440)).readProperty_mHandledOperatorFlags ().getter_infixShiftOperator (SOURCE_FILE ("templateAnalysis.galgas", 1440)).operator_not (SOURCE_FILE ("templateAnalysis.galgas", 1440)).boolEnum () ;
     if (kBoolTrue == test_2) {
       const GALGAS_templateLeftShiftOperationAST temp_3 = this ;
       TC_Array <C_FixItDescription> fixItArray4 ;
-      inCompiler->emitSemanticError (temp_3.readProperty_mOperatorLocation (), GALGAS_string ("left operand type is '@").add_operation (extensionGetter_definition (var_leftType_54218, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1447)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1447)).add_operation (GALGAS_string ("' and does not support a shift operator"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1447)), fixItArray4  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1446)) ;
+      inCompiler->emitSemanticError (temp_3.readProperty_mOperatorLocation (), GALGAS_string ("left operand type is '@").add_operation (extensionGetter_definition (var_leftType_53947, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1442)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1442)).add_operation (GALGAS_string ("' and does not support a shift operator"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1442)), fixItArray4  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1441)) ;
       outArgument_outExpression.drop () ; // Release error dropped variable
     }
   }
   if (kBoolFalse == test_2) {
     enumGalgasBool test_5 = kBoolTrue ;
     if (kBoolTrue == test_5) {
-      test_5 = GALGAS_bool (kIsNotEqual, extensionGetter_definition (var_rightType_54283, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1449)).readProperty_mTypeName ().readProperty_string ().objectCompare (GALGAS_string ("uint"))).boolEnum () ;
+      test_5 = GALGAS_bool (kIsNotEqual, extensionGetter_definition (var_rightType_54012, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1444)).readProperty_mTypeName ().readProperty_string ().objectCompare (GALGAS_string ("uint"))).boolEnum () ;
       if (kBoolTrue == test_5) {
         const GALGAS_templateLeftShiftOperationAST temp_6 = this ;
         TC_Array <C_FixItDescription> fixItArray7 ;
-        inCompiler->emitSemanticError (temp_6.readProperty_mOperatorLocation (), GALGAS_string ("for a shift operator, right operand type should be '@uint': it is '@").add_operation (extensionGetter_definition (var_rightType_54283, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1451)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1451)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1451)), fixItArray7  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1450)) ;
+        inCompiler->emitSemanticError (temp_6.readProperty_mOperatorLocation (), GALGAS_string ("for a shift operator, right operand type should be '@uint': it is '@").add_operation (extensionGetter_definition (var_rightType_54012, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1446)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1446)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1446)), fixItArray7  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1445)) ;
         outArgument_outExpression.drop () ; // Release error dropped variable
       }
     }
     if (kBoolFalse == test_5) {
       const GALGAS_templateLeftShiftOperationAST temp_8 = this ;
-      outArgument_outExpression = GALGAS_binaryOperatorExpressionForGeneration::class_func_new (var_leftType_54218, temp_8.readProperty_mOperatorLocation (), var_leftExpression_53892, GALGAS_binaryOperator::class_func_leftShift (SOURCE_FILE ("templateAnalysis.galgas", 1459)), var_rightExpression_54137  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1455)) ;
+      outArgument_outExpression = GALGAS_binaryOperatorExpressionForGeneration::class_func_new (var_leftType_53947, temp_8.readProperty_mOperatorLocation (), var_leftExpression_53621, GALGAS_binaryOperator::class_func_leftShift (SOURCE_FILE ("templateAnalysis.galgas", 1454)), var_rightExpression_53866  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1450)) ;
     }
   }
 }
@@ -11304,38 +11411,38 @@ void cPtr_templateRightShiftOperationAST::method_templateExpressionAnalysis (con
                                                                              GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
                                                                              Compiler * inCompiler
                                                                              COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_semanticExpressionForGeneration var_leftExpression_55657 ;
+  GALGAS_semanticExpressionForGeneration var_leftExpression_55386 ;
   const GALGAS_templateRightShiftOperationAST temp_0 = this ;
-  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_leftExpression_55657, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1475)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression_55902 ;
+  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_leftExpression_55386, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1470)) ;
+  GALGAS_semanticExpressionForGeneration var_rightExpression_55631 ;
   const GALGAS_templateRightShiftOperationAST temp_1 = this ;
-  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_rightExpression_55902, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1483)) ;
-  GALGAS_unifiedTypeMapEntry var_leftType_55983 = var_leftExpression_55657.readProperty_mResultType () ;
-  GALGAS_unifiedTypeMapEntry var_rightType_56048 = var_rightExpression_55902.readProperty_mResultType () ;
+  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_rightExpression_55631, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1478)) ;
+  GALGAS_unifiedTypeMapEntry var_leftType_55712 = var_leftExpression_55386.readProperty_mResultType () ;
+  GALGAS_unifiedTypeMapEntry var_rightType_55777 = var_rightExpression_55631.readProperty_mResultType () ;
   enumGalgasBool test_2 = kBoolTrue ;
   if (kBoolTrue == test_2) {
-    test_2 = extensionGetter_definition (var_leftType_55983, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1493)).readProperty_mHandledOperatorFlags ().getter_infixShiftOperator (SOURCE_FILE ("templateAnalysis.galgas", 1493)).operator_not (SOURCE_FILE ("templateAnalysis.galgas", 1493)).boolEnum () ;
+    test_2 = extensionGetter_definition (var_leftType_55712, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1488)).readProperty_mHandledOperatorFlags ().getter_infixShiftOperator (SOURCE_FILE ("templateAnalysis.galgas", 1488)).operator_not (SOURCE_FILE ("templateAnalysis.galgas", 1488)).boolEnum () ;
     if (kBoolTrue == test_2) {
       const GALGAS_templateRightShiftOperationAST temp_3 = this ;
       TC_Array <C_FixItDescription> fixItArray4 ;
-      inCompiler->emitSemanticError (temp_3.readProperty_mOperatorLocation (), GALGAS_string ("left operand type is '@").add_operation (extensionGetter_definition (var_leftType_55983, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1495)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1495)).add_operation (GALGAS_string ("' and does not support a shift operator"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1495)), fixItArray4  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1494)) ;
+      inCompiler->emitSemanticError (temp_3.readProperty_mOperatorLocation (), GALGAS_string ("left operand type is '@").add_operation (extensionGetter_definition (var_leftType_55712, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1490)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1490)).add_operation (GALGAS_string ("' and does not support a shift operator"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1490)), fixItArray4  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1489)) ;
       outArgument_outExpression.drop () ; // Release error dropped variable
     }
   }
   if (kBoolFalse == test_2) {
     enumGalgasBool test_5 = kBoolTrue ;
     if (kBoolTrue == test_5) {
-      test_5 = GALGAS_bool (kIsNotEqual, extensionGetter_definition (var_rightType_56048, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1497)).readProperty_mTypeName ().readProperty_string ().objectCompare (GALGAS_string ("uint"))).boolEnum () ;
+      test_5 = GALGAS_bool (kIsNotEqual, extensionGetter_definition (var_rightType_55777, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1492)).readProperty_mTypeName ().readProperty_string ().objectCompare (GALGAS_string ("uint"))).boolEnum () ;
       if (kBoolTrue == test_5) {
         const GALGAS_templateRightShiftOperationAST temp_6 = this ;
         TC_Array <C_FixItDescription> fixItArray7 ;
-        inCompiler->emitSemanticError (temp_6.readProperty_mOperatorLocation (), GALGAS_string ("for a shift operator, right operand type should be '@uint': it is '@").add_operation (extensionGetter_definition (var_rightType_56048, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1499)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1499)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1499)), fixItArray7  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1498)) ;
+        inCompiler->emitSemanticError (temp_6.readProperty_mOperatorLocation (), GALGAS_string ("for a shift operator, right operand type should be '@uint': it is '@").add_operation (extensionGetter_definition (var_rightType_55777, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1494)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1494)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1494)), fixItArray7  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1493)) ;
         outArgument_outExpression.drop () ; // Release error dropped variable
       }
     }
     if (kBoolFalse == test_5) {
       const GALGAS_templateRightShiftOperationAST temp_8 = this ;
-      outArgument_outExpression = GALGAS_binaryOperatorExpressionForGeneration::class_func_new (var_leftType_55983, temp_8.readProperty_mOperatorLocation (), var_leftExpression_55657, GALGAS_binaryOperator::class_func_rightShift (SOURCE_FILE ("templateAnalysis.galgas", 1507)), var_rightExpression_55902  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1503)) ;
+      outArgument_outExpression = GALGAS_binaryOperatorExpressionForGeneration::class_func_new (var_leftType_55712, temp_8.readProperty_mOperatorLocation (), var_leftExpression_55386, GALGAS_binaryOperator::class_func_rightShift (SOURCE_FILE ("templateAnalysis.galgas", 1502)), var_rightExpression_55631  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1498)) ;
     }
   }
 }
@@ -11353,10 +11460,10 @@ void routine_templateInstructionListAnalysis_3F__26__3F__26__3F__26_ (const GALG
                                                                       GALGAS_templateInstructionListForGeneration & ioArgument_ioInstructionList,
                                                                       Compiler * inCompiler
                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  cEnumerator_templateInstructionListAST enumerator_57764 (constinArgument_inInstructionList, kENUMERATION_UP) ;
-  while (enumerator_57764.hasCurrentObject ()) {
-    callExtensionMethod_templateInstructionAnalysis ((cPtr_templateInstructionAST *) enumerator_57764.current_mInstruction (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioInstructionList, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1537)) ;
-    enumerator_57764.gotoNextObject () ;
+  cEnumerator_templateInstructionListAST enumerator_57493 (constinArgument_inInstructionList, kENUMERATION_UP) ;
+  while (enumerator_57493.hasCurrentObject ()) {
+    callExtensionMethod_templateInstructionAnalysis ((cPtr_templateInstructionAST *) enumerator_57493.current_mInstruction (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioInstructionList, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1532)) ;
+    enumerator_57493.gotoNextObject () ;
   }
 }
 
@@ -11375,7 +11482,7 @@ void cPtr_templateInstructionStringAST::method_templateInstructionAnalysis (cons
                                                                             Compiler * /* inCompiler */
                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_templateInstructionStringAST temp_0 = this ;
-  ioArgument_ioInstructionList.addAssign_operation (GALGAS_templateInstructionStringForGeneration::class_func_new (temp_0.readProperty_mTemplateString ()  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1556))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1556)) ;
+  ioArgument_ioInstructionList.addAssign_operation (GALGAS_templateInstructionStringForGeneration::class_func_new (temp_0.readProperty_mTemplateString ()  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1551))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1551)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -11390,19 +11497,19 @@ void cPtr_templateInstructionExpressionAST::method_templateInstructionAnalysis (
                                                                                 GALGAS_templateInstructionListForGeneration & ioArgument_ioInstructionList,
                                                                                 Compiler * inCompiler
                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_semanticExpressionForGeneration var_expression_59098 ;
+  GALGAS_semanticExpressionForGeneration var_expression_58827 ;
   const GALGAS_templateInstructionExpressionAST temp_0 = this ;
-  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_0.readProperty_mExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_expression_59098, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1568)) ;
+  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_0.readProperty_mExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_expression_58827, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1563)) ;
   enumGalgasBool test_1 = kBoolTrue ;
   if (kBoolTrue == test_1) {
-    test_1 = GALGAS_bool (kIsNotEqual, extensionGetter_definition (var_expression_59098.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1575)).readProperty_mTypeName ().readProperty_string ().objectCompare (GALGAS_string ("string"))).boolEnum () ;
+    test_1 = GALGAS_bool (kIsNotEqual, extensionGetter_definition (var_expression_58827.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1570)).readProperty_mTypeName ().readProperty_string ().objectCompare (GALGAS_string ("string"))).boolEnum () ;
     if (kBoolTrue == test_1) {
       const GALGAS_templateInstructionExpressionAST temp_2 = this ;
       TC_Array <C_FixItDescription> fixItArray3 ;
-      inCompiler->emitSemanticError (temp_2.readProperty_mLocation (), GALGAS_string ("expression type should be '@string' (it is '@").add_operation (extensionGetter_definition (var_expression_59098.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1576)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1576)).add_operation (GALGAS_string ("')"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1576)), fixItArray3  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1576)) ;
+      inCompiler->emitSemanticError (temp_2.readProperty_mLocation (), GALGAS_string ("expression type should be '@string' (it is '@").add_operation (extensionGetter_definition (var_expression_58827.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1571)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1571)).add_operation (GALGAS_string ("')"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1571)), fixItArray3  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1571)) ;
     }
   }
-  ioArgument_ioInstructionList.addAssign_operation (GALGAS_templateInstructionExpressionForGeneration::class_func_new (var_expression_59098  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1578))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1578)) ;
+  ioArgument_ioInstructionList.addAssign_operation (GALGAS_templateInstructionExpressionForGeneration::class_func_new (var_expression_58827  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1573))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1573)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -11417,35 +11524,35 @@ void cPtr_templateBlockInstructionAST::method_templateInstructionAnalysis (const
                                                                            GALGAS_templateInstructionListForGeneration & ioArgument_ioInstructionList,
                                                                            Compiler * inCompiler
                                                                            COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_semanticExpressionForGeneration var_expression_59982 ;
+  GALGAS_semanticExpressionForGeneration var_expression_59711 ;
   const GALGAS_templateBlockInstructionAST temp_0 = this ;
-  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_0.readProperty_mExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_expression_59982, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1590)) ;
+  callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_0.readProperty_mExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_expression_59711, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1585)) ;
   enumGalgasBool test_1 = kBoolTrue ;
   if (kBoolTrue == test_1) {
-    test_1 = GALGAS_bool (kIsEqual, extensionGetter_definition (var_expression_59982.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1597)).readProperty_mTypeName ().readProperty_string ().objectCompare (GALGAS_string ("bigint"))).boolEnum () ;
+    test_1 = GALGAS_bool (kIsEqual, extensionGetter_definition (var_expression_59711.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1592)).readProperty_mTypeName ().readProperty_string ().objectCompare (GALGAS_string ("bigint"))).boolEnum () ;
     if (kBoolTrue == test_1) {
-      GALGAS_getterCallExpressionForGeneration var_conversionExpression_60080 = GALGAS_getterCallExpressionForGeneration::class_func_new (var_expression_59982.readProperty_mResultType (), var_expression_59982.readProperty_mLocation (), GALGAS_methodKind::class_func_definedAsMember (SOURCE_FILE ("templateAnalysis.galgas", 1601)), var_expression_59982, GALGAS_stringlist::class_func_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 1603)), GALGAS_string ("uint"), GALGAS_semanticExpressionListForGeneration::class_func_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 1605)), GALGAS_bool (true)  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1598)) ;
-      var_expression_59982 = var_conversionExpression_60080 ;
+      GALGAS_getterCallExpressionForGeneration var_conversionExpression_59809 = GALGAS_getterCallExpressionForGeneration::class_func_new (var_expression_59711.readProperty_mResultType (), var_expression_59711.readProperty_mLocation (), GALGAS_methodKind::class_func_definedAsMember (SOURCE_FILE ("templateAnalysis.galgas", 1596)), var_expression_59711, GALGAS_stringlist::class_func_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 1598)), GALGAS_string ("uint"), GALGAS_semanticExpressionListForGeneration::class_func_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 1600)), GALGAS_bool (true)  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1593)) ;
+      var_expression_59711 = var_conversionExpression_59809 ;
     }
   }
   if (kBoolFalse == test_1) {
     enumGalgasBool test_2 = kBoolTrue ;
     if (kBoolTrue == test_2) {
-      test_2 = GALGAS_bool (kIsNotEqual, extensionGetter_definition (var_expression_59982.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1609)).readProperty_mTypeName ().readProperty_string ().objectCompare (GALGAS_string ("uint"))).boolEnum () ;
+      test_2 = GALGAS_bool (kIsNotEqual, extensionGetter_definition (var_expression_59711.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1604)).readProperty_mTypeName ().readProperty_string ().objectCompare (GALGAS_string ("uint"))).boolEnum () ;
       if (kBoolTrue == test_2) {
         const GALGAS_templateBlockInstructionAST temp_3 = this ;
         TC_Array <C_FixItDescription> fixItArray4 ;
-        inCompiler->emitSemanticError (temp_3.readProperty_mLocation (), GALGAS_string ("expression type should be '@uint' (it is '@").add_operation (extensionGetter_definition (var_expression_59982.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1610)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1610)).add_operation (GALGAS_string ("')"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1610)), fixItArray4  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1610)) ;
+        inCompiler->emitSemanticError (temp_3.readProperty_mLocation (), GALGAS_string ("expression type should be '@uint' (it is '@").add_operation (extensionGetter_definition (var_expression_59711.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1605)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1605)).add_operation (GALGAS_string ("')"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1605)), fixItArray4  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1605)) ;
       }
     }
   }
-  GALGAS_templateInstructionListForGeneration var_blockInstructionList_60555 = GALGAS_templateInstructionListForGeneration::class_func_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 1612)) ;
+  GALGAS_templateInstructionListForGeneration var_blockInstructionList_60284 = GALGAS_templateInstructionListForGeneration::class_func_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 1607)) ;
   {
   const GALGAS_templateBlockInstructionAST temp_5 = this ;
-  routine_templateInstructionListAnalysis_3F__26__3F__26__3F__26_ (constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, temp_5.readProperty_mBlockInstructionList (), var_blockInstructionList_60555, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1613)) ;
+  routine_templateInstructionListAnalysis_3F__26__3F__26__3F__26_ (constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, temp_5.readProperty_mBlockInstructionList (), var_blockInstructionList_60284, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1608)) ;
   }
   const GALGAS_templateBlockInstructionAST temp_6 = this ;
-  ioArgument_ioInstructionList.addAssign_operation (GALGAS_templateBlockInstructionForGeneration::class_func_new (var_expression_59982, temp_6.readProperty_mLocation (), var_blockInstructionList_60555  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1621))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1621)) ;
+  ioArgument_ioInstructionList.addAssign_operation (GALGAS_templateBlockInstructionForGeneration::class_func_new (var_expression_59711, temp_6.readProperty_mLocation (), var_blockInstructionList_60284  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1616))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1616)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -11460,7 +11567,7 @@ void cPtr_templateInstructionGetColumnLocationAST::method_templateInstructionAna
                                                                                        GALGAS_templateInstructionListForGeneration & ioArgument_ioInstructionList,
                                                                                        Compiler * /* inCompiler */
                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  ioArgument_ioInstructionList.addAssign_operation (GALGAS_templateInstructionGetColumnLocationForGeneration::class_func_new (SOURCE_FILE ("templateAnalysis.galgas", 1633))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1633)) ;
+  ioArgument_ioInstructionList.addAssign_operation (GALGAS_templateInstructionGetColumnLocationForGeneration::class_func_new (SOURCE_FILE ("templateAnalysis.galgas", 1628))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1628)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -11475,7 +11582,7 @@ void cPtr_templateInstructionGotoColumnLocationAST::method_templateInstructionAn
                                                                                         GALGAS_templateInstructionListForGeneration & ioArgument_ioInstructionList,
                                                                                         Compiler * /* inCompiler */
                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  ioArgument_ioInstructionList.addAssign_operation (GALGAS_templateInstructionGotoColumnLocationForGeneration::class_func_new (SOURCE_FILE ("templateAnalysis.galgas", 1645))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1645)) ;
+  ioArgument_ioInstructionList.addAssign_operation (GALGAS_templateInstructionGotoColumnLocationForGeneration::class_func_new (SOURCE_FILE ("templateAnalysis.galgas", 1640))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1640)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -11490,33 +11597,33 @@ void cPtr_templateInstructionIfAST::method_templateInstructionAnalysis (const GA
                                                                         GALGAS_templateInstructionListForGeneration & ioArgument_ioInstructionList,
                                                                         Compiler * inCompiler
                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_templateInstructionIfBranchListForGeneration var_templateInstructionIfBranchList_62412 = GALGAS_templateInstructionIfBranchListForGeneration::class_func_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 1658)) ;
+  GALGAS_templateInstructionIfBranchListForGeneration var_templateInstructionIfBranchList_62141 = GALGAS_templateInstructionIfBranchListForGeneration::class_func_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 1653)) ;
   const GALGAS_templateInstructionIfAST temp_0 = this ;
-  cEnumerator_templateInstructionIfBranchListAST enumerator_62514 (temp_0.readProperty_mTemplateInstructionIfBranchList (), kENUMERATION_UP) ;
-  while (enumerator_62514.hasCurrentObject ()) {
-    GALGAS_semanticExpressionForGeneration var_expression_62740 ;
-    callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) enumerator_62514.current_mExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_expression_62740, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1660)) ;
+  cEnumerator_templateInstructionIfBranchListAST enumerator_62243 (temp_0.readProperty_mTemplateInstructionIfBranchList (), kENUMERATION_UP) ;
+  while (enumerator_62243.hasCurrentObject ()) {
+    GALGAS_semanticExpressionForGeneration var_expression_62469 ;
+    callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) enumerator_62243.current_mExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_expression_62469, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1655)) ;
     enumGalgasBool test_1 = kBoolTrue ;
     if (kBoolTrue == test_1) {
-      test_1 = GALGAS_bool (kIsNotEqual, extensionGetter_definition (var_expression_62740.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1667)).readProperty_mTypeName ().readProperty_string ().objectCompare (GALGAS_string ("bool"))).boolEnum () ;
+      test_1 = GALGAS_bool (kIsNotEqual, extensionGetter_definition (var_expression_62469.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1662)).readProperty_mTypeName ().readProperty_string ().objectCompare (GALGAS_string ("bool"))).boolEnum () ;
       if (kBoolTrue == test_1) {
         TC_Array <C_FixItDescription> fixItArray2 ;
-        inCompiler->emitSemanticError (var_expression_62740.readProperty_mLocation (), GALGAS_string ("'if' expression type should be '@bool' (it is '@").add_operation (extensionGetter_definition (var_expression_62740.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1668)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1668)).add_operation (GALGAS_string ("')"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1668)), fixItArray2  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1668)) ;
+        inCompiler->emitSemanticError (var_expression_62469.readProperty_mLocation (), GALGAS_string ("'if' expression type should be '@bool' (it is '@").add_operation (extensionGetter_definition (var_expression_62469.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1663)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1663)).add_operation (GALGAS_string ("')"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1663)), fixItArray2  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1663)) ;
       }
     }
-    GALGAS_templateInstructionListForGeneration var_instructionList_62996 = GALGAS_templateInstructionListForGeneration::class_func_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 1670)) ;
+    GALGAS_templateInstructionListForGeneration var_instructionList_62725 = GALGAS_templateInstructionListForGeneration::class_func_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 1665)) ;
     {
-    routine_templateInstructionListAnalysis_3F__26__3F__26__3F__26_ (constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, enumerator_62514.current_mInstructionList (HERE), var_instructionList_62996, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1671)) ;
+    routine_templateInstructionListAnalysis_3F__26__3F__26__3F__26_ (constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, enumerator_62243.current_mInstructionList (HERE), var_instructionList_62725, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1666)) ;
     }
-    var_templateInstructionIfBranchList_62412.addAssign_operation (var_expression_62740, var_instructionList_62996  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1679)) ;
-    enumerator_62514.gotoNextObject () ;
+    var_templateInstructionIfBranchList_62141.addAssign_operation (var_expression_62469, var_instructionList_62725  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1674)) ;
+    enumerator_62243.gotoNextObject () ;
   }
-  GALGAS_templateInstructionListForGeneration var_elseInstructionList_63341 = GALGAS_templateInstructionListForGeneration::class_func_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 1682)) ;
+  GALGAS_templateInstructionListForGeneration var_elseInstructionList_63070 = GALGAS_templateInstructionListForGeneration::class_func_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 1677)) ;
   {
   const GALGAS_templateInstructionIfAST temp_3 = this ;
-  routine_templateInstructionListAnalysis_3F__26__3F__26__3F__26_ (constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, temp_3.readProperty_mElseInstructionList (), var_elseInstructionList_63341, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1683)) ;
+  routine_templateInstructionListAnalysis_3F__26__3F__26__3F__26_ (constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, temp_3.readProperty_mElseInstructionList (), var_elseInstructionList_63070, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1678)) ;
   }
-  ioArgument_ioInstructionList.addAssign_operation (GALGAS_templateInstructionIfForGeneration::class_func_new (var_templateInstructionIfBranchList_62412, var_elseInstructionList_63341  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1692))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1692)) ;
+  ioArgument_ioInstructionList.addAssign_operation (GALGAS_templateInstructionIfForGeneration::class_func_new (var_templateInstructionIfBranchList_62141, var_elseInstructionList_63070  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1687))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1687)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -12198,7 +12305,7 @@ GALGAS_string cPtr_lexiqueComponentAST::getter_keyRepresentation (Compiler * inC
                                                                   COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_lexiqueComponentAST temp_0 = this ;
-  result_result = GALGAS_string ("lexique ").add_operation (temp_0.readProperty_mLexiqueComponentName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 812)) ;
+  result_result = GALGAS_string ("lexique ").add_operation (temp_0.readProperty_mLexiqueComponentName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 810)) ;
 //---
   return result_result ;
 }
@@ -12219,10 +12326,10 @@ void cPtr_lexiqueComponentAST::method_enterDeclarationInGraph (GALGAS_semanticTy
                                                                COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_lexiqueComponentAST temp_0 = this ;
   const GALGAS_lexiqueComponentAST temp_1 = this ;
-  GALGAS_lstring var_key_29718 = GALGAS_lstring::class_func_new (GALGAS_string ("lexique ").add_operation (temp_0.readProperty_mLexiqueComponentName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 823)), temp_1.readProperty_mLexiqueComponentName ().readProperty_location (), inCompiler  COMMA_SOURCE_FILE ("lexique-component.galgas", 823)) ;
+  GALGAS_lstring var_key_29575 = GALGAS_lstring::class_func_new (GALGAS_string ("lexique ").add_operation (temp_0.readProperty_mLexiqueComponentName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 821)), temp_1.readProperty_mLexiqueComponentName ().readProperty_location (), inCompiler  COMMA_SOURCE_FILE ("lexique-component.galgas", 821)) ;
   {
   const GALGAS_lexiqueComponentAST temp_2 = this ;
-  ioArgument_ioSemanticTypePrecedenceGraph.setter_addNode (var_key_29718, temp_2, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 824)) ;
+  ioArgument_ioSemanticTypePrecedenceGraph.setter_addNode (var_key_29575, temp_2, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 822)) ;
   }
 }
 //--------------------------------------------------------------------------------------------------
@@ -12238,48 +12345,48 @@ void cPtr_lexiqueComponentAST::method_enterDeclarationInSemanticContext (const G
                                                                          GALGAS_semanticContext & ioArgument_ioSemanticContext,
                                                                          Compiler * inCompiler
                                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_lexicalTypeMap var_lexicalTypeMap_30518 = function_buildLexicalTypeMap (inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 836)) ;
-  GALGAS_lexicalAttributeMap var_lexicalAttributeMap_30585 = GALGAS_lexicalAttributeMap::class_func_emptyMap (SOURCE_FILE ("lexique-component.galgas", 837)) ;
+  GALGAS_lexicalTypeMap var_lexicalTypeMap_30375 = function_buildLexicalTypeMap (inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 834)) ;
+  GALGAS_lexicalAttributeMap var_lexicalAttributeMap_30442 = GALGAS_lexicalAttributeMap::class_func_emptyMap (SOURCE_FILE ("lexique-component.galgas", 835)) ;
   {
   const GALGAS_lexiqueComponentAST temp_0 = this ;
-  routine_buildLexicalAttributeMap_3F__3F__26_ (var_lexicalTypeMap_30518, temp_0.readProperty_mLexicalAttributeListAST (), var_lexicalAttributeMap_30585, inCompiler  COMMA_SOURCE_FILE ("lexique-component.galgas", 838)) ;
+  routine_buildLexicalAttributeMap_3F__3F__26_ (var_lexicalTypeMap_30375, temp_0.readProperty_mLexicalAttributeListAST (), var_lexicalAttributeMap_30442, inCompiler  COMMA_SOURCE_FILE ("lexique-component.galgas", 836)) ;
   }
-  GALGAS_terminalMap var_terminalMap_30781 = GALGAS_terminalMap::class_func_emptyMap (SOURCE_FILE ("lexique-component.galgas", 844)) ;
+  GALGAS_terminalMap var_terminalMap_30638 = GALGAS_terminalMap::class_func_emptyMap (SOURCE_FILE ("lexique-component.galgas", 842)) ;
   const GALGAS_lexiqueComponentAST temp_1 = this ;
-  cEnumerator_terminalDeclarationListAST enumerator_30829 (temp_1.readProperty_mTerminalDeclarationListAST (), kENUMERATION_UP) ;
-  while (enumerator_30829.hasCurrentObject ()) {
-    GALGAS_lexicalSentValueList var_argumentTypeList_30879 = GALGAS_lexicalSentValueList::class_func_emptyList (SOURCE_FILE ("lexique-component.galgas", 846)) ;
-    cEnumerator_sentLexicalAttributeListAST enumerator_30948 (enumerator_30829.current_mSentAttributeList (HERE), kENUMERATION_UP) ;
-    while (enumerator_30948.hasCurrentObject ()) {
-      GALGAS_lexicalTypeEnum var_attributeLexicalType_31046 ;
-      var_lexicalAttributeMap_30585.method_searchKey (enumerator_30948.current_mAttributeName (HERE), var_attributeLexicalType_31046, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 848)) ;
-      var_argumentTypeList_30879.addAssign_operation (enumerator_30948.current_mFormalSelector (HERE), enumerator_30948.current_mAttributeName (HERE).readProperty_string (), var_attributeLexicalType_31046  COMMA_SOURCE_FILE ("lexique-component.galgas", 849)) ;
-      enumerator_30948.gotoNextObject () ;
+  cEnumerator_terminalDeclarationListAST enumerator_30686 (temp_1.readProperty_mTerminalDeclarationListAST (), kENUMERATION_UP) ;
+  while (enumerator_30686.hasCurrentObject ()) {
+    GALGAS_lexicalSentValueList var_argumentTypeList_30736 = GALGAS_lexicalSentValueList::class_func_emptyList (SOURCE_FILE ("lexique-component.galgas", 844)) ;
+    cEnumerator_sentLexicalAttributeListAST enumerator_30805 (enumerator_30686.current_mSentAttributeList (HERE), kENUMERATION_UP) ;
+    while (enumerator_30805.hasCurrentObject ()) {
+      GALGAS_lexicalTypeEnum var_attributeLexicalType_30903 ;
+      var_lexicalAttributeMap_30442.method_searchKey (enumerator_30805.current_mAttributeName (HERE), var_attributeLexicalType_30903, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 846)) ;
+      var_argumentTypeList_30736.addAssign_operation (enumerator_30805.current_mFormalSelector (HERE), enumerator_30805.current_mAttributeName (HERE).readProperty_string (), var_attributeLexicalType_30903  COMMA_SOURCE_FILE ("lexique-component.galgas", 847)) ;
+      enumerator_30805.gotoNextObject () ;
     }
     {
-    var_terminalMap_30781.setter_insertKey (enumerator_30829.current_mName (HERE), var_argumentTypeList_30879, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 851)) ;
+    var_terminalMap_30638.setter_insertKey (enumerator_30686.current_mName (HERE), var_argumentTypeList_30736, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 849)) ;
     }
-    enumerator_30829.gotoNextObject () ;
+    enumerator_30686.gotoNextObject () ;
   }
   const GALGAS_lexiqueComponentAST temp_2 = this ;
-  cEnumerator_lexicalListDeclarationListAST enumerator_31261 (temp_2.readProperty_mLexicalListDeclarationListAST (), kENUMERATION_UP) ;
-  while (enumerator_31261.hasCurrentObject ()) {
-    GALGAS_lexicalSentValueList var_argumentTypeList_31323 = GALGAS_lexicalSentValueList::class_func_emptyList (SOURCE_FILE ("lexique-component.galgas", 855)) ;
-    cEnumerator_sentLexicalAttributeListAST enumerator_31392 (enumerator_31261.current_mSentAttributeList (HERE), kENUMERATION_UP) ;
-    while (enumerator_31392.hasCurrentObject ()) {
-      GALGAS_lexicalTypeEnum var_attributeLexicalType_31491 ;
-      var_lexicalAttributeMap_30585.method_searchKey (enumerator_31392.current_mAttributeName (HERE), var_attributeLexicalType_31491, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 857)) ;
-      var_argumentTypeList_31323.addAssign_operation (enumerator_31392.current_mFormalSelector (HERE), enumerator_31392.current_mAttributeName (HERE).readProperty_string (), var_attributeLexicalType_31491  COMMA_SOURCE_FILE ("lexique-component.galgas", 858)) ;
-      enumerator_31392.gotoNextObject () ;
+  cEnumerator_lexicalListDeclarationListAST enumerator_31118 (temp_2.readProperty_mLexicalListDeclarationListAST (), kENUMERATION_UP) ;
+  while (enumerator_31118.hasCurrentObject ()) {
+    GALGAS_lexicalSentValueList var_argumentTypeList_31180 = GALGAS_lexicalSentValueList::class_func_emptyList (SOURCE_FILE ("lexique-component.galgas", 853)) ;
+    cEnumerator_sentLexicalAttributeListAST enumerator_31249 (enumerator_31118.current_mSentAttributeList (HERE), kENUMERATION_UP) ;
+    while (enumerator_31249.hasCurrentObject ()) {
+      GALGAS_lexicalTypeEnum var_attributeLexicalType_31348 ;
+      var_lexicalAttributeMap_30442.method_searchKey (enumerator_31249.current_mAttributeName (HERE), var_attributeLexicalType_31348, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 855)) ;
+      var_argumentTypeList_31180.addAssign_operation (enumerator_31249.current_mFormalSelector (HERE), enumerator_31249.current_mAttributeName (HERE).readProperty_string (), var_attributeLexicalType_31348  COMMA_SOURCE_FILE ("lexique-component.galgas", 856)) ;
+      enumerator_31249.gotoNextObject () ;
     }
-    cEnumerator_lexicalListEntryListAST enumerator_31639 (enumerator_31261.current_mEntryList (HERE), kENUMERATION_UP) ;
-    while (enumerator_31639.hasCurrentObject ()) {
+    cEnumerator_lexicalListEntryListAST enumerator_31496 (enumerator_31118.current_mEntryList (HERE), kENUMERATION_UP) ;
+    while (enumerator_31496.hasCurrentObject ()) {
       {
-      var_terminalMap_30781.setter_insertKey (enumerator_31639.current_mTerminalSpelling (HERE), var_argumentTypeList_31323, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 861)) ;
+      var_terminalMap_30638.setter_insertKey (enumerator_31496.current_mTerminalSpelling (HERE), var_argumentTypeList_31180, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 859)) ;
       }
-      enumerator_31639.gotoNextObject () ;
+      enumerator_31496.gotoNextObject () ;
     }
-    enumerator_31261.gotoNextObject () ;
+    enumerator_31118.gotoNextObject () ;
   }
   {
   const GALGAS_lexiqueComponentAST temp_3 = this ;
@@ -12289,219 +12396,6 @@ void cPtr_lexiqueComponentAST::method_enterDeclarationInSemanticContext (const G
   const GALGAS_lexiqueComponentAST temp_7 = this ;
   const GALGAS_lexiqueComponentAST temp_8 = this ;
   const GALGAS_lexiqueComponentAST temp_9 = this ;
-  ioArgument_ioSemanticContext.mProperty_mLexiqueComponentMapForSemanticAnalysis.setter_insertKey (temp_3.readProperty_mLexiqueComponentName (), temp_4.readProperty_mIsTemplate (), var_terminalMap_30781, temp_5.readProperty_mIndexingListAST (), temp_6.readProperty_mTerminalDeclarationListAST (), temp_7.readProperty_mLexicalAttributeListAST (), temp_8.readProperty_mLexicalStyleListAST (), temp_9.readProperty_mLexicalListDeclarationListAST (), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 865)) ;
-  }
-}
-//--------------------------------------------------------------------------------------------------
-//
-//Overriding extension method '@lexiqueComponentAST semanticAnalysis'
-//
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_lexiqueComponentAST::method_semanticAnalysis (GALGAS_lstringlist & /* ioArgument_ioUsefulnessRootEntities */,
-                                                        GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
-                                                        const GALGAS_string /* constinArgument_inProductDirectory */,
-                                                        const GALGAS_semanticContext /* constinArgument_inSemanticContext */,
-                                                        GALGAS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
-                                                        const GALGAS_predefinedTypes /* constinArgument_inPredefinedTypes */,
-                                                        GALGAS_semanticDeclarationListForGeneration & ioArgument_ioSemanticDeclarationListForGeneration,
-                                                        Compiler * inCompiler
-                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  const GALGAS_lexiqueComponentAST temp_0 = this ;
-  GALGAS_lstring var_nameForUsefulness_32872 = function_lexiqueNameForUsefulEntitiesGraph (temp_0.readProperty_mLexiqueComponentName (), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 888)) ;
-  {
-  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_nameForUsefulness_32872, var_nameForUsefulness_32872, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 889)) ;
-  }
-  GALGAS_lexicalTypeMap var_lexicalTypeMap_33125 = function_buildLexicalTypeMap (inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 891)) ;
-  GALGAS_lexicalRoutineMap var_lexicalRoutineMap_33263 ;
-  {
-  routine_buildLexicalRoutineMap_21_ (var_lexicalRoutineMap_33263, inCompiler  COMMA_SOURCE_FILE ("lexique-component.galgas", 893)) ;
-  }
-  GALGAS_lexicalFunctionMap var_lexicalFunctionMap_33382 ;
-  {
-  routine_buildLexicalFunctionMap_21_ (var_lexicalFunctionMap_33382, inCompiler  COMMA_SOURCE_FILE ("lexique-component.galgas", 895)) ;
-  }
-  GALGAS_stringset var_unicodeTestFunctions_33509 ;
-  {
-  routine_lexicalUnicodeTestFunctionAnalysis_21_ (var_unicodeTestFunctions_33509, inCompiler  COMMA_SOURCE_FILE ("lexique-component.galgas", 897)) ;
-  }
-  const GALGAS_lexiqueComponentAST temp_1 = this ;
-  GALGAS_lexiqueAnalysisContext var_lexiqueAnalysisContext_33602 = GALGAS_lexiqueAnalysisContext::class_func_new (temp_1.readProperty_mLexiqueComponentName ().readProperty_string (), var_lexicalRoutineMap_33263, var_lexicalFunctionMap_33382, GALGAS_lexicalMessageMap::class_func_emptyMap (SOURCE_FILE ("lexique-component.galgas", 903)), GALGAS_terminalMap::class_func_emptyMap (SOURCE_FILE ("lexique-component.galgas", 904)), GALGAS_terminalList::class_func_emptyList (SOURCE_FILE ("lexique-component.galgas", 905)), GALGAS_lexicalAttributeMap::class_func_emptyMap (SOURCE_FILE ("lexique-component.galgas", 906)), GALGAS_lexicalExplicitTokenListMapMap::class_func_emptyMap (SOURCE_FILE ("lexique-component.galgas", 907)), GALGAS_stringset::class_func_emptySet (SOURCE_FILE ("lexique-component.galgas", 908)), GALGAS_templateDelimitorList::class_func_emptyList (SOURCE_FILE ("lexique-component.galgas", 909)), GALGAS_styleMap::class_func_emptyMap (SOURCE_FILE ("lexique-component.galgas", 910)), var_unicodeTestFunctions_33509, inCompiler  COMMA_SOURCE_FILE ("lexique-component.galgas", 899)) ;
-  GALGAS_bigint var_styleIndex_34009 = GALGAS_bigint ("1", inCompiler  COMMA_SOURCE_FILE ("lexique-component.galgas", 914)) ;
-  const GALGAS_lexiqueComponentAST temp_2 = this ;
-  cEnumerator_lexicalStyleListAST enumerator_34037 (temp_2.readProperty_mLexicalStyleListAST (), kENUMERATION_UP) ;
-  while (enumerator_34037.hasCurrentObject ()) {
-    {
-    var_lexiqueAnalysisContext_33602.mProperty_mStyleMap.setter_insertKey (enumerator_34037.current_mName (HERE), enumerator_34037.current_mComment (HERE), var_styleIndex_34009.getter_uint (inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 916)), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 916)) ;
-    }
-    var_styleIndex_34009.plusAssign_operation(GALGAS_bigint ("1", inCompiler  COMMA_SOURCE_FILE ("lexique-component.galgas", 917)), inCompiler  COMMA_SOURCE_FILE ("lexique-component.galgas", 917)) ;
-    enumerator_34037.gotoNextObject () ;
-  }
-  {
-  const GALGAS_lexiqueComponentAST temp_3 = this ;
-  routine_buildLexicalAttributeMap_3F__3F__26_ (var_lexicalTypeMap_33125, temp_3.readProperty_mLexicalAttributeListAST (), var_lexiqueAnalysisContext_33602.mProperty_mLexicalAttributeMap, inCompiler  COMMA_SOURCE_FILE ("lexique-component.galgas", 920)) ;
-  }
-  const GALGAS_lexiqueComponentAST temp_4 = this ;
-  cEnumerator_terminalDeclarationListAST enumerator_34527 (temp_4.readProperty_mTerminalDeclarationListAST (), kENUMERATION_UP) ;
-  while (enumerator_34527.hasCurrentObject ()) {
-    GALGAS_uint var_terminalStyleIndex_34601 = GALGAS_uint (uint32_t (0U)) ;
-    enumGalgasBool test_5 = kBoolTrue ;
-    if (kBoolTrue == test_5) {
-      test_5 = GALGAS_bool (kIsStrictSup, enumerator_34527.current_mStyle (HERE).readProperty_string ().getter_count (SOURCE_FILE ("lexique-component.galgas", 928)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
-      if (kBoolTrue == test_5) {
-        GALGAS_lstring joker_34720 ; // Joker input parameter
-        var_lexiqueAnalysisContext_33602.readProperty_mStyleMap ().method_searchKey (enumerator_34527.current_mStyle (HERE), joker_34720, var_terminalStyleIndex_34601, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 929)) ;
-      }
-    }
-    GALGAS_lexicalSentValueList var_argumentTypeList_34760 = GALGAS_lexicalSentValueList::class_func_emptyList (SOURCE_FILE ("lexique-component.galgas", 931)) ;
-    cEnumerator_sentLexicalAttributeListAST enumerator_34829 (enumerator_34527.current_mSentAttributeList (HERE), kENUMERATION_UP) ;
-    while (enumerator_34829.hasCurrentObject ()) {
-      GALGAS_lexicalTypeEnum var_attributeLexicalType_34952 ;
-      var_lexiqueAnalysisContext_33602.readProperty_mLexicalAttributeMap ().method_searchKey (enumerator_34829.current_mAttributeName (HERE), var_attributeLexicalType_34952, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 933)) ;
-      var_argumentTypeList_34760.addAssign_operation (enumerator_34829.current_mFormalSelector (HERE), enumerator_34829.current_mAttributeName (HERE).readProperty_string (), var_attributeLexicalType_34952  COMMA_SOURCE_FILE ("lexique-component.galgas", 934)) ;
-      enumerator_34829.gotoNextObject () ;
-    }
-    {
-    var_lexiqueAnalysisContext_33602.mProperty_mTerminalMap.setter_insertKey (enumerator_34527.current_mName (HERE), var_argumentTypeList_34760, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 936)) ;
-    }
-    var_lexiqueAnalysisContext_33602.mProperty_mTerminalList.addAssign_operation (enumerator_34527.current_mName (HERE), var_argumentTypeList_34760, enumerator_34527.current_mSyntaxErrorMessage (HERE).readProperty_string (), enumerator_34527.current_isEndOfTemplateMark (HERE), enumerator_34527.current_nonAtomicSelection (HERE).operator_not (SOURCE_FILE ("lexique-component.galgas", 959)), var_terminalStyleIndex_34601  COMMA_SOURCE_FILE ("lexique-component.galgas", 954)) ;
-    enumerator_34527.gotoNextObject () ;
-  }
-  const GALGAS_lexiqueComponentAST temp_6 = this ;
-  cEnumerator_lexicalListDeclarationListAST enumerator_36114 (temp_6.readProperty_mLexicalListDeclarationListAST (), kENUMERATION_UP) ;
-  while (enumerator_36114.hasCurrentObject ()) {
-    GALGAS_uint var_terminalStyleIndex_36182 = GALGAS_uint (uint32_t (0U)) ;
-    enumGalgasBool test_7 = kBoolTrue ;
-    if (kBoolTrue == test_7) {
-      test_7 = GALGAS_bool (kIsStrictSup, enumerator_36114.current_mStyle (HERE).readProperty_string ().getter_count (SOURCE_FILE ("lexique-component.galgas", 964)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
-      if (kBoolTrue == test_7) {
-        GALGAS_lstring joker_36301 ; // Joker input parameter
-        var_lexiqueAnalysisContext_33602.readProperty_mStyleMap ().method_searchKey (enumerator_36114.current_mStyle (HERE), joker_36301, var_terminalStyleIndex_36182, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 965)) ;
-      }
-    }
-    GALGAS_lexicalSentValueList var_argumentTypeList_36341 = GALGAS_lexicalSentValueList::class_func_emptyList (SOURCE_FILE ("lexique-component.galgas", 967)) ;
-    cEnumerator_sentLexicalAttributeListAST enumerator_36410 (enumerator_36114.current_mSentAttributeList (HERE), kENUMERATION_UP) ;
-    while (enumerator_36410.hasCurrentObject ()) {
-      GALGAS_lexicalTypeEnum var_attributeLexicalType_36533 ;
-      var_lexiqueAnalysisContext_33602.readProperty_mLexicalAttributeMap ().method_searchKey (enumerator_36410.current_mAttributeName (HERE), var_attributeLexicalType_36533, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 969)) ;
-      var_argumentTypeList_36341.addAssign_operation (enumerator_36410.current_mFormalSelector (HERE), enumerator_36410.current_mAttributeName (HERE).readProperty_string (), var_attributeLexicalType_36533  COMMA_SOURCE_FILE ("lexique-component.galgas", 970)) ;
-      enumerator_36410.gotoNextObject () ;
-    }
-    GALGAS_lexicalExplicitTokenListMap var_lexicalTokenListMap_36688 = GALGAS_lexicalExplicitTokenListMap::class_func_emptyMap (SOURCE_FILE ("lexique-component.galgas", 972)) ;
-    GALGAS_tokenSortedlist var_tokenSortedlist_36721 = GALGAS_tokenSortedlist::class_func_emptySortedList (SOURCE_FILE ("lexique-component.galgas", 973)) ;
-    cEnumerator_lexicalListEntryListAST enumerator_36820 (enumerator_36114.current_mEntryList (HERE), kENUMERATION_UP) ;
-    while (enumerator_36820.hasCurrentObject ()) {
-      GALGAS_string var_syntaxErrorMessage_36866 = enumerator_36114.current_mSyntaxErrorMessage (HERE).readProperty_string ().getter_stringByReplacingStringByString (GALGAS_string ("%K"), enumerator_36820.current_mTerminalSpelling (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 975)) ;
-      var_lexiqueAnalysisContext_33602.mProperty_mTerminalList.addAssign_operation (enumerator_36820.current_mTerminalSpelling (HERE), var_argumentTypeList_36341, var_syntaxErrorMessage_36866, enumerator_36820.current_isEndOfTemplateMark (HERE), enumerator_36820.current_nonAtomicSelection (HERE).operator_not (SOURCE_FILE ("lexique-component.galgas", 998)), var_terminalStyleIndex_36182  COMMA_SOURCE_FILE ("lexique-component.galgas", 993)) ;
-      {
-      var_lexiqueAnalysisContext_33602.mProperty_mTerminalMap.setter_insertKey (enumerator_36820.current_mTerminalSpelling (HERE), var_argumentTypeList_36341, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 1000)) ;
-      }
-      {
-      var_lexicalTokenListMap_36688.setter_insertKey (enumerator_36820.current_mEntrySpelling (HERE), enumerator_36820.current_mTerminalSpelling (HERE), enumerator_36820.current_nonAtomicSelection (HERE), enumerator_36820.current_isEndOfTemplateMark (HERE), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 1001)) ;
-      }
-      var_tokenSortedlist_36721.addAssign_operation (enumerator_36820.current_mEntrySpelling (HERE).readProperty_string ().getter_count (SOURCE_FILE ("lexique-component.galgas", 1007)), enumerator_36820.current_mEntrySpelling (HERE).readProperty_string (), enumerator_36820.current_mTerminalSpelling (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("lexique-component.galgas", 1007)) ;
-      var_lexiqueAnalysisContext_33602.mProperty_mUnicodeStringToGenerate.addAssign_operation (enumerator_36820.current_mEntrySpelling (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("lexique-component.galgas", 1008)) ;
-      enumerator_36820.gotoNextObject () ;
-    }
-    {
-    var_lexiqueAnalysisContext_33602.mProperty_mLexicalTokenListMap.setter_insertKey (enumerator_36114.current_mName (HERE), var_lexicalTokenListMap_36688, var_tokenSortedlist_36721, GALGAS_bool (false), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 1010)) ;
-    }
-    enumerator_36114.gotoNextObject () ;
-  }
-  const GALGAS_lexiqueComponentAST temp_8 = this ;
-  cEnumerator_lexicalMessageDeclarationListAST enumerator_38609 (temp_8.readProperty_mLexicalMessageDeclarationListAST (), kENUMERATION_UP) ;
-  while (enumerator_38609.hasCurrentObject ()) {
-    {
-    var_lexiqueAnalysisContext_33602.mProperty_mLexicalMessageMap.setter_insertKey (enumerator_38609.current_mMessageName (HERE), enumerator_38609.current_mMessageValue (HERE), GALGAS_bool (false), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 1014)) ;
-    }
-    enumerator_38609.gotoNextObject () ;
-  }
-  const GALGAS_lexiqueComponentAST temp_9 = this ;
-  cEnumerator_lexicalRuleListAST enumerator_38831 (temp_9.readProperty_mLexicalRuleListAST (), kENUMERATION_UP) ;
-  while (enumerator_38831.hasCurrentObject ()) {
-    callExtensionMethod_checkLexicalRule ((cPtr_abstractLexicalRuleAST *) enumerator_38831.current_mLexicalRule (HERE).ptr (), var_lexiqueAnalysisContext_33602, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 1018)) ;
-    enumerator_38831.gotoNextObject () ;
-  }
-  cEnumerator_lexicalMessageMap enumerator_39023 (var_lexiqueAnalysisContext_33602.readProperty_mLexicalMessageMap (), kENUMERATION_UP) ;
-  while (enumerator_39023.hasCurrentObject ()) {
-    enumGalgasBool test_10 = kBoolTrue ;
-    if (kBoolTrue == test_10) {
-      test_10 = enumerator_39023.current_mMessageIsUsed (HERE).operator_not (SOURCE_FILE ("lexique-component.galgas", 1022)).boolEnum () ;
-      if (kBoolTrue == test_10) {
-        TC_Array <C_FixItDescription> fixItArray11 ;
-        inCompiler->emitSemanticWarning (enumerator_39023.current_lkey (HERE).readProperty_location (), GALGAS_string ("unused message"), fixItArray11  COMMA_SOURCE_FILE ("lexique-component.galgas", 1023)) ;
-      }
-    }
-    enumerator_39023.gotoNextObject () ;
-  }
-  const GALGAS_lexiqueComponentAST temp_12 = this ;
-  cEnumerator_templateDelimitorListAST enumerator_39277 (temp_12.readProperty_mTemplateDelimitorListAST (), kENUMERATION_UP) ;
-  while (enumerator_39277.hasCurrentObject ()) {
-    var_lexiqueAnalysisContext_33602.mProperty_mUnicodeStringToGenerate.addAssign_operation (enumerator_39277.current_mStartString (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("lexique-component.galgas", 1028)) ;
-    var_lexiqueAnalysisContext_33602.mProperty_mUnicodeStringToGenerate.addAssign_operation (enumerator_39277.current_mEndString (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("lexique-component.galgas", 1029)) ;
-    var_lexiqueAnalysisContext_33602.mProperty_mTemplateDelimitorList.addAssign_operation (enumerator_39277.current_mStartString (HERE), enumerator_39277.current_mEndString (HERE), enumerator_39277.current_mPreserved (HERE)  COMMA_SOURCE_FILE ("lexique-component.galgas", 1030)) ;
-    enumerator_39277.gotoNextObject () ;
-  }
-  GALGAS_stringset var_indexNameSet_39600 = GALGAS_stringset::class_func_emptySet (SOURCE_FILE ("lexique-component.galgas", 1032)) ;
-  const GALGAS_lexiqueComponentAST temp_13 = this ;
-  cEnumerator_indexingListAST enumerator_39636 (temp_13.readProperty_mIndexingListAST (), kENUMERATION_UP) ;
-  while (enumerator_39636.hasCurrentObject ()) {
-    enumGalgasBool test_14 = kBoolTrue ;
-    if (kBoolTrue == test_14) {
-      test_14 = var_indexNameSet_39600.getter_hasKey (enumerator_39636.current_mIndexName (HERE).readProperty_string () COMMA_SOURCE_FILE ("lexique-component.galgas", 1034)).boolEnum () ;
-      if (kBoolTrue == test_14) {
-        TC_Array <C_FixItDescription> fixItArray15 ;
-        inCompiler->emitSemanticError (enumerator_39636.current_mIndexName (HERE).readProperty_location (), GALGAS_string ("the '").add_operation (enumerator_39636.current_mIndexName (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 1035)).add_operation (GALGAS_string ("' index is already declared"), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 1035)), fixItArray15  COMMA_SOURCE_FILE ("lexique-component.galgas", 1035)) ;
-      }
-    }
-    var_indexNameSet_39600.addAssign_operation (enumerator_39636.current_mIndexName (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("lexique-component.galgas", 1037)) ;
-    enumerator_39636.gotoNextObject () ;
-  }
-  const GALGAS_lexiqueComponentAST temp_16 = this ;
-  cEnumerator_templateReplacementListAST enumerator_39953 (temp_16.readProperty_mTemplateReplacementListAST (), kENUMERATION_UP) ;
-  while (enumerator_39953.hasCurrentObject ()) {
-    var_lexiqueAnalysisContext_33602.mProperty_mUnicodeStringToGenerate.addAssign_operation (enumerator_39953.current_mMatchString (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("lexique-component.galgas", 1041)) ;
-    var_lexiqueAnalysisContext_33602.mProperty_mUnicodeStringToGenerate.addAssign_operation (enumerator_39953.current_mReplacementString (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("lexique-component.galgas", 1042)) ;
-    enumerator_39953.gotoNextObject () ;
-  }
-  enumGalgasBool test_17 = kBoolTrue ;
-  if (kBoolTrue == test_17) {
-    test_17 = GALGAS_bool (kIsEqual, GALGAS_uint::class_func_errorCount (SOURCE_FILE ("lexique-component.galgas", 1046)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
-    if (kBoolTrue == test_17) {
-      const GALGAS_lexiqueComponentAST temp_18 = this ;
-      const GALGAS_lexiqueComponentAST temp_19 = this ;
-      const GALGAS_lexiqueComponentAST temp_20 = this ;
-      const GALGAS_lexiqueComponentAST temp_21 = this ;
-      GALGAS_string var_headerContents_40321 = GALGAS_string (filewrapperTemplate_lexiqueGenerationTemplates_headerZone_32_ (inCompiler, temp_18.readProperty_mLexiqueComponentName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique-component.galgas", 1049)), temp_19.readProperty_mLexicalListDeclarationListAST (), var_lexiqueAnalysisContext_33602, temp_20.readProperty_mTemplateDelimitorListAST (), temp_21.readProperty_mIndexingListAST () COMMA_SOURCE_FILE ("lexique-component.galgas", 1048))) ;
-      const GALGAS_lexiqueComponentAST temp_22 = this ;
-      const GALGAS_lexiqueComponentAST temp_23 = this ;
-      const GALGAS_lexiqueComponentAST temp_24 = this ;
-      const GALGAS_lexiqueComponentAST temp_25 = this ;
-      const GALGAS_lexiqueComponentAST temp_26 = this ;
-      const GALGAS_lexiqueComponentAST temp_27 = this ;
-      const GALGAS_lexiqueComponentAST temp_28 = this ;
-      GALGAS_string var_cppContents_40623 = GALGAS_string (filewrapperTemplate_lexiqueGenerationTemplates_implementationZone_32_Galgas_33_ (inCompiler, temp_22.readProperty_mLexiqueComponentName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique-component.galgas", 1057)), extensionGetter_useLoopLocalVar (temp_23.readProperty_mLexicalRuleListAST (), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 1058)), var_lexiqueAnalysisContext_33602.readProperty_mLexicalAttributeMap (), var_lexiqueAnalysisContext_33602.readProperty_mLexicalMessageMap (), var_lexiqueAnalysisContext_33602.readProperty_mTerminalList (), var_lexiqueAnalysisContext_33602.readProperty_mLexicalTokenListMap (), var_lexiqueAnalysisContext_33602.readProperty_mUnicodeStringToGenerate (), temp_24.readProperty_mLexicalRuleListAST (), var_lexiqueAnalysisContext_33602, temp_25.readProperty_mTemplateDelimitorListAST (), temp_26.readProperty_mLexiqueComponentName ().readProperty_string (), temp_27.readProperty_mTemplateReplacementListAST (), temp_28.readProperty_mLexicalStyleListAST () COMMA_SOURCE_FILE ("lexique-component.galgas", 1056))) ;
-      const GALGAS_lexiqueComponentAST temp_29 = this ;
-      GALGAS_string var_objCocoaHeader_41321 = GALGAS_string (filewrapperTemplate_lexiqueGenerationTemplates_cocoaHeaderZone_32_ (inCompiler, temp_29.readProperty_mLexiqueComponentName ().readProperty_string (), var_lexiqueAnalysisContext_33602 COMMA_SOURCE_FILE ("lexique-component.galgas", 1072))) ;
-      const GALGAS_lexiqueComponentAST temp_30 = this ;
-      const GALGAS_lexiqueComponentAST temp_31 = this ;
-      const GALGAS_lexiqueComponentAST temp_32 = this ;
-      const GALGAS_lexiqueComponentAST temp_33 = this ;
-      const GALGAS_lexiqueComponentAST temp_34 = this ;
-      const GALGAS_lexiqueComponentAST temp_35 = this ;
-      const GALGAS_lexiqueComponentAST temp_36 = this ;
-      GALGAS_string var_objCocoaImplementation_41513 = GALGAS_string (filewrapperTemplate_lexiqueGenerationTemplates_cocoaImplementationZone_32_ (inCompiler, GALGAS_string ("lexique-").add_operation (temp_30.readProperty_mLexiqueComponentName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("lexique-component.galgas", 1078)), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 1078)).add_operation (GALGAS_string ("-cocoa"), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 1078)), temp_31.readProperty_mLexiqueComponentName ().readProperty_string (), var_lexiqueAnalysisContext_33602.readProperty_mLexicalAttributeMap (), var_lexiqueAnalysisContext_33602.readProperty_mLexicalMessageMap (), var_lexiqueAnalysisContext_33602.readProperty_mTerminalList (), var_lexiqueAnalysisContext_33602.readProperty_mUnicodeStringToGenerate (), temp_32.readProperty_mLexicalRuleListAST (), var_lexiqueAnalysisContext_33602, temp_33.readProperty_mTemplateReplacementListAST (), temp_34.readProperty_mIndexingListAST (), temp_35.readProperty_mLexicalStyleListAST (), temp_36.readProperty_mTemplateDelimitorListAST () COMMA_SOURCE_FILE ("lexique-component.galgas", 1077))) ;
-      const GALGAS_lexiqueComponentAST temp_37 = this ;
-      const GALGAS_lexiqueComponentAST temp_38 = this ;
-      const GALGAS_lexiqueComponentAST temp_39 = this ;
-      const GALGAS_lexiqueComponentAST temp_40 = this ;
-      const GALGAS_lexiqueComponentAST temp_41 = this ;
-      const GALGAS_lexiqueComponentAST temp_42 = this ;
-      const GALGAS_lexiqueComponentAST temp_43 = this ;
-      GALGAS_string var_swiftCocoaImplementation_42183 = GALGAS_string (filewrapperTemplate_lexiqueGenerationTemplates_swiftCocoaImplementationZone_32_ (inCompiler, GALGAS_string ("lexique-").add_operation (temp_37.readProperty_mLexiqueComponentName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("lexique-component.galgas", 1093)), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 1093)).add_operation (GALGAS_string ("-cocoa"), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 1093)), temp_38.readProperty_mLexiqueComponentName ().readProperty_string (), var_lexiqueAnalysisContext_33602.readProperty_mLexicalAttributeMap (), var_lexiqueAnalysisContext_33602.readProperty_mLexicalMessageMap (), var_lexiqueAnalysisContext_33602.readProperty_mTerminalList (), var_lexiqueAnalysisContext_33602.readProperty_mUnicodeStringToGenerate (), temp_39.readProperty_mLexicalRuleListAST (), var_lexiqueAnalysisContext_33602, temp_40.readProperty_mTemplateReplacementListAST (), temp_41.readProperty_mIndexingListAST (), temp_42.readProperty_mLexicalStyleListAST (), temp_43.readProperty_mTemplateDelimitorListAST () COMMA_SOURCE_FILE ("lexique-component.galgas", 1092))) ;
-      const GALGAS_lexiqueComponentAST temp_44 = this ;
-      const GALGAS_lexiqueComponentAST temp_45 = this ;
-      ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GALGAS_string::makeEmptyString (), GALGAS_lexiqueDeclarationForGeneration::class_func_new (GALGAS_bool (true), GALGAS_string ("lexique-").add_operation (temp_44.readProperty_mLexiqueComponentName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("lexique-component.galgas", 1111)), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 1111)), temp_45.readProperty_mLexiqueComponentName ().readProperty_string (), GALGAS_string::makeEmptyString (), var_headerContents_40321, var_cppContents_40623, var_objCocoaHeader_41321, var_objCocoaImplementation_41513, var_swiftCocoaImplementation_42183  COMMA_SOURCE_FILE ("lexique-component.galgas", 1109))  COMMA_SOURCE_FILE ("lexique-component.galgas", 1107)) ;
-    }
+  ioArgument_ioSemanticContext.mProperty_mLexiqueComponentMapForSemanticAnalysis.setter_insertKey (temp_3.readProperty_mLexiqueComponentName (), temp_4.readProperty_mIsTemplate (), var_terminalMap_30638, temp_5.readProperty_mIndexingListAST (), temp_6.readProperty_mTerminalDeclarationListAST (), temp_7.readProperty_mLexicalAttributeListAST (), temp_8.readProperty_mLexicalStyleListAST (), temp_9.readProperty_mLexicalListDeclarationListAST (), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 863)) ;
   }
 }

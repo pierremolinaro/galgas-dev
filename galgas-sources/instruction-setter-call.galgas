@@ -47,10 +47,7 @@ syntax extension galgas3InstructionsSyntax {
                                    !@semanticInstructionAST outInstruction {
     $[$
     let instructionLocation = @location.here
-    $!?selector:$ ?let selector
-    if selector.string != "" then
-      error selector : "an empty selector '!?' is required here"
-    end
+    $!?$
     let @bool prefixedBySelf
     select
       prefixedBySelf = false
@@ -94,10 +91,7 @@ syntax extension galgas3InstructionsSyntax {
                                    !@semanticInstructionAST outInstruction {
     $[$
     let instructionLocation = @location.here
-    $!?selector:$ ?let selector
-    if selector.string != "" then
-      error selector : "an empty selector '!?' is required here"
-    end
+    $!?$
     $self$
     $identifier$ ?let mSetterName
     <actual_parameter_list_ggs3> !?ioDeclarations ?let @actualParameterListAST actualParameterList

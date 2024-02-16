@@ -94,9 +94,6 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
       error self.mExpressionLocation : "property getter call (due to '--error-property-getter-call' option)"
     end
     [accessControl checkSetAccess !.none !self.mGetterName]
-#    if not isPublic then
-#      error self.mGetterName : "inaccessible property (due to 'private' qualifier)"
-#    end
     outExpression = @structPropertyAccessExpressionForGeneration.new {
       !propertyType
       !self.mGetterName.location
@@ -265,8 +262,6 @@ override method @templateClassFunctionAST templateExpressionAnalysis
       if mFormalSelector.string != mActualSelector.string then
         let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
         error mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
-#        error mActualSelector
-#          : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
       end
       [mExpression templateExpressionAnalysis
         !inUsefulnessCallerEntityName

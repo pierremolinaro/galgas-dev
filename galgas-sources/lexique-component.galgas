@@ -251,10 +251,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
       var @lexicalFunctionCallActualArgumentListAST functionActualArgumentList = {}
       repeat
       while
-        $!selector:$ ?let selector
-        if selector.string != "" then
-          error selector : "the selector should be '!'" fixit { replace "!" }
-        end
+        $!$
         <lexical_output_effective_argument> ?let @lexicalRoutineOrFunctionFormalInputArgumentAST arg
         functionActualArgumentList += !arg
       end
@@ -393,7 +390,8 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
     var sentAttributeList = @sentLexicalAttributeListAST {}
     repeat
     while
-      $!selector:$ ?let selector
+      $!$
+      let selector = ["" here]
       $identifier$ ?let sentAttribute
       sentAttributeList += !selector !sentAttribute
     end

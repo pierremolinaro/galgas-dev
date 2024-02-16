@@ -10,6 +10,37 @@
 
 //--------------------------------------------------------------------------------------------------
 //
+//Routine 'generateExtensionSetter???&??!'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_generateExtensionSetter_3F__3F__3F__26__3F__3F__21_ (const class GALGAS_string constinArgument0,
+                                                                  const class GALGAS_string constinArgument1,
+                                                                  const class GALGAS_string constinArgument2,
+                                                                  class GALGAS_stringset & ioArgument3,
+                                                                  const class GALGAS_formalParameterListForGeneration constinArgument4,
+                                                                  const class GALGAS_semanticInstructionListForGeneration constinArgument5,
+                                                                  class GALGAS_string & outArgument6,
+                                                                  class Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'checkGetterSignatures??????'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_checkGetterSignatures_3F__3F__3F__3F__3F__3F_ (const class GALGAS_formalInputParameterListForGeneration constinArgument0,
+                                                            const class GALGAS_unifiedTypeMapEntry constinArgument1,
+                                                            const class GALGAS_location constinArgument2,
+                                                            const class GALGAS_functionSignature constinArgument3,
+                                                            const class GALGAS_unifiedTypeMapEntry constinArgument4,
+                                                            const class GALGAS_location constinArgument5,
+                                                            class Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Routine 'buildLocalVariableMapAndSignature?&?&!'
 //
 //--------------------------------------------------------------------------------------------------
@@ -578,13 +609,4 @@ class GALGAS_lstring function_procedureNameForUsefulEntitiesGraph (const class G
 
 class GALGAS_bool function_generateFewHeaderFiles (class Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Function 'syntaxDirectedTranslationResultVarName'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_string function_syntaxDirectedTranslationResultVarName (class Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) ;
 

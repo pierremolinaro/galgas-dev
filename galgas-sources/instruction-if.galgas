@@ -154,11 +154,25 @@ syntax extension galgas3InstructionsSyntax {
         var @optionalMethodActualArgumentList optionalMethodActualArgumentList = {}
         repeat
         while
-          $!selector:$ ?let selector
+          let @lstring selector
+          select
+            $!selector:$ ?selector
+          or
+            $!$
+            selector = ["" here]
+          end
           <expression_ggs3> !?ioDeclarations ?let expression
-          optionalMethodActualArgumentList += !selector !.actualOutput {!expression: expression !location: .here}
+          optionalMethodActualArgumentList +=
+            !selector
+            !.actualOutput {!expression: expression !location: .here}
         while
-          $?selector:$ ?let selector
+          let @lstring selector
+          select
+            $?selector:$ ?selector
+          or
+            $?$
+            selector = ["" here]
+          end
           select
             $let$
             let @lstring typeName
@@ -168,7 +182,9 @@ syntax extension galgas3InstructionsSyntax {
               <type_definition_ggs3> !?ioDeclarations ?typeName
             end
             $identifier$ ?let constantName
-            optionalMethodActualArgumentList += !selector !.actualLetInput {!typeName: typeName !constantName: constantName}
+            optionalMethodActualArgumentList +=
+              !selector
+              !.actualLetInput {!typeName: typeName !constantName: constantName}
           or
             $var$
             let @lstring typeName
@@ -177,11 +193,15 @@ syntax extension galgas3InstructionsSyntax {
             or
               <type_definition_ggs3> !?ioDeclarations ?typeName
             end
-           $identifier$ ?let variableName
-            optionalMethodActualArgumentList += !selector !.actualVarInput {!typeName: typeName !variableName: variableName}
+            $identifier$ ?let variableName
+            optionalMethodActualArgumentList += 
+              !selector
+              !.actualVarInput {!typeName: typeName !variableName: variableName}
           or
             $*$
-            optionalMethodActualArgumentList += !selector !.actualInputJoker {!checkSelector: true !location: .here !idx: 0}
+            optionalMethodActualArgumentList +=
+              !selector
+              !.actualInputJoker {!checkSelector: true !location: .here !idx: 0}
           or
             $literalInt$ ?let repetitionCount
             $*$
@@ -192,7 +212,9 @@ syntax extension galgas3InstructionsSyntax {
               error repetitionCount : "the repetition count should be > 0"
             end
             for i in 0 ..< repetitionCount.bigint do
-              optionalMethodActualArgumentList += !selector !.actualInputJoker {!checkSelector: false !location: .here !idx: i}
+              optionalMethodActualArgumentList +=
+                !selector
+                !.actualInputJoker {!checkSelector: false !location: .here !idx: i}
             end
           end
         end

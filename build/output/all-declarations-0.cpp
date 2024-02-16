@@ -558,8 +558,8 @@ static const char * gLexicalMessage_galgasScanner_33__undefinedAttribute = "unde
 
 String Lexique_galgasScanner_33_::getMessageForTerminal (const int32_t inTerminalIndex) const {
   String result = "<unknown>" ;
-  if ((inTerminalIndex >= 0) && (inTerminalIndex < 183)) {
-    static const char * syntaxErrorMessageArray [183] = {kEndOfSourceLexicalErrorMessage,
+  if ((inTerminalIndex >= 0) && (inTerminalIndex < 187)) {
+    static const char * syntaxErrorMessageArray [187] = {kEndOfSourceLexicalErrorMessage,
         "an identifier",
         "a float number",
         "a big integer number",
@@ -571,10 +571,14 @@ String Lexique_galgasScanner_33_::getMessageForTerminal (const int32_t inTermina
         "a terminal symbol ($...$)",
         "a comment",
         "a comment",
-        "the '\?' or '\?selector:' delimitor",
-        "the '\?!' or '\?!selector:' delimitor",
-        "the '!' or '!selector:' delimitor",
-        "the '!\?' or '!\?selector:' delimitor",
+        "the '\?selector:' delimitor",
+        "the '\?' delimitor",
+        "the '\?!selector:' delimitor",
+        "the '\?!' delimitor",
+        "the '!selector:' delimitor",
+        "the '!' delimitor",
+        "the '!\?selector:' delimitor",
+        "the '!\?' delimitor",
         "the '<' delimitor",
         "the '<=' delimitor",
         "the '<<' delimitor",
@@ -763,6 +767,12 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___21_
   TO_UNICODE ('!'),
   TO_UNICODE ('='),
   TO_UNICODE ('='),
+} ;
+
+//--- Unicode string for '$!?$'
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___21__3F_ = {
+  TO_UNICODE ('!'),
+  TO_UNICODE ('\?'),
 } ;
 
 //--- Unicode string for '$!^$'
@@ -970,6 +980,12 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___3E_
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___3E__3E_ = {
   TO_UNICODE ('>'),
   TO_UNICODE ('>'),
+} ;
+
+//--- Unicode string for '$?!$'
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___3F__21_ = {
+  TO_UNICODE ('\?'),
+  TO_UNICODE ('!'),
 } ;
 
 //--- Unicode string for '$?^$'
@@ -2669,12 +2685,22 @@ String Lexique_galgasScanner_33_::getCurrentTokenString (const cToken * inTokenP
       s.appendChar (TO_UNICODE (' ')) ;
       s.appendStringAsCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
       break ;
+    case kToken__3F_:
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("\?") ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      break ;
     case kToken__3F__21_selector_3A_:
       s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("\?!selector:") ;
       s.appendChar (TO_UNICODE ('$')) ;
       s.appendChar (TO_UNICODE (' ')) ;
       s.appendStringAsCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
+      break ;
+    case kToken__3F__21_:
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("\?!") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__21_selector_3A_:
       s.appendChar (TO_UNICODE ('$')) ;
@@ -2683,12 +2709,22 @@ String Lexique_galgasScanner_33_::getCurrentTokenString (const cToken * inTokenP
       s.appendChar (TO_UNICODE (' ')) ;
       s.appendStringAsCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
       break ;
+    case kToken__21_:
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("!") ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      break ;
     case kToken__21__3F_selector_3A_:
       s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("!\?selector:") ;
       s.appendChar (TO_UNICODE ('$')) ;
       s.appendChar (TO_UNICODE (' ')) ;
       s.appendStringAsCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
+      break ;
+    case kToken__21__3F_:
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("!\?") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__3C_:
       s.appendChar (TO_UNICODE ('$')) ;
@@ -4034,39 +4070,39 @@ void Lexique_galgasScanner_33_::internalParseLexicalToken (cTokenFor_galgasScann
     }else if (testForInputUTF32String (kUnicodeString_galgasScanner_33___26_, true)) {
       token.mTokenCode = kToken__26_ ;
       enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_galgasScanner_33___3F__21_, true)) {
+      const LocationInSource currentLocationForTag_onlyInterrogationExclamationMark = mCurrentLocation ;
+      const LocationInSource endLocationForTag_onlyInterrogationExclamationMark = mTokenEndLocation ;
+      const utf32 currentCharForTag_onlyInterrogationExclamationMark = mCurrentChar ;
+      if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z'))) {
+        do {
+          ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
+          if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z')) || testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32Char (TO_UNICODE ('_'))) {
+          }else{
+            loop = false ;
+          }
+        }while (loop) ;
+        loop = true ;
+        if (testForInputUTF32Char (TO_UNICODE (':'))) {
+          token.mTokenCode = kToken__3F__21_selector_3A_ ;
+          enterToken (token) ;
+        }else{
+          ::scanner_routine_resetString (*this, token.mLexicalAttribute_tokenString) ;
+          mCurrentLocation = currentLocationForTag_onlyInterrogationExclamationMark ;
+          mTokenEndLocation = endLocationForTag_onlyInterrogationExclamationMark ;
+          mCurrentChar = currentCharForTag_onlyInterrogationExclamationMark ;
+          token.mTokenCode = kToken__3F__21_ ;
+          enterToken (token) ;
+        }
+      }else{
+        token.mTokenCode = kToken__3F__21_ ;
+        enterToken (token) ;
+      }
     }else if (testForInputUTF32Char (TO_UNICODE ('\?'))) {
       const LocationInSource currentLocationForTag_onlyInterrogationMark = mCurrentLocation ;
       const LocationInSource endLocationForTag_onlyInterrogationMark = mTokenEndLocation ;
       const utf32 currentCharForTag_onlyInterrogationMark = mCurrentChar ;
-      if (testForInputUTF32Char (TO_UNICODE ('!'))) {
-        const LocationInSource currentLocationForTag_onlyExclamationInterrogationMark = mCurrentLocation ;
-        const LocationInSource endLocationForTag_onlyExclamationInterrogationMark = mTokenEndLocation ;
-        const utf32 currentCharForTag_onlyExclamationInterrogationMark = mCurrentChar ;
-        if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z'))) {
-          do {
-            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-            if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z')) || testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32Char (TO_UNICODE ('_'))) {
-            }else{
-              loop = false ;
-            }
-          }while (loop) ;
-          loop = true ;
-          if (testForInputUTF32Char (TO_UNICODE (':'))) {
-            token.mTokenCode = kToken__3F__21_selector_3A_ ;
-            enterToken (token) ;
-          }else{
-            ::scanner_routine_resetString (*this, token.mLexicalAttribute_tokenString) ;
-            mCurrentLocation = currentLocationForTag_onlyExclamationInterrogationMark ;
-            mTokenEndLocation = endLocationForTag_onlyExclamationInterrogationMark ;
-            mCurrentChar = currentCharForTag_onlyExclamationInterrogationMark ;
-            token.mTokenCode = kToken__3F__21_selector_3A_ ;
-            enterToken (token) ;
-          }
-        }else{
-          token.mTokenCode = kToken__3F__21_selector_3A_ ;
-          enterToken (token) ;
-        }
-      }else if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z'))) {
+      if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z'))) {
         do {
           ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
           if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z')) || testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32Char (TO_UNICODE ('_'))) {
@@ -4083,46 +4119,46 @@ void Lexique_galgasScanner_33_::internalParseLexicalToken (cTokenFor_galgasScann
           mCurrentLocation = currentLocationForTag_onlyInterrogationMark ;
           mTokenEndLocation = endLocationForTag_onlyInterrogationMark ;
           mCurrentChar = currentCharForTag_onlyInterrogationMark ;
-          token.mTokenCode = kToken__3F_selector_3A_ ;
+          token.mTokenCode = kToken__3F_ ;
           enterToken (token) ;
         }
       }else{
-        token.mTokenCode = kToken__3F_selector_3A_ ;
+        token.mTokenCode = kToken__3F_ ;
+        enterToken (token) ;
+      }
+    }else if (testForInputUTF32String (kUnicodeString_galgasScanner_33___21__3F_, true)) {
+      const LocationInSource currentLocationForTag_onlyExclamationInterrogationMark = mCurrentLocation ;
+      const LocationInSource endLocationForTag_onlyExclamationInterrogationMark = mTokenEndLocation ;
+      const utf32 currentCharForTag_onlyExclamationInterrogationMark = mCurrentChar ;
+      if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z'))) {
+        do {
+          ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
+          if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z')) || testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32Char (TO_UNICODE ('_'))) {
+          }else{
+            loop = false ;
+          }
+        }while (loop) ;
+        loop = true ;
+        if (testForInputUTF32Char (TO_UNICODE (':'))) {
+          token.mTokenCode = kToken__21__3F_selector_3A_ ;
+          enterToken (token) ;
+        }else{
+          ::scanner_routine_resetString (*this, token.mLexicalAttribute_tokenString) ;
+          mCurrentLocation = currentLocationForTag_onlyExclamationInterrogationMark ;
+          mTokenEndLocation = endLocationForTag_onlyExclamationInterrogationMark ;
+          mCurrentChar = currentCharForTag_onlyExclamationInterrogationMark ;
+          token.mTokenCode = kToken__21__3F_ ;
+          enterToken (token) ;
+        }
+      }else{
+        token.mTokenCode = kToken__21__3F_ ;
         enterToken (token) ;
       }
     }else if (testForInputUTF32Char (TO_UNICODE ('!'))) {
       const LocationInSource currentLocationForTag_onlyExclamationMark = mCurrentLocation ;
       const LocationInSource endLocationForTag_onlyExclamationMark = mTokenEndLocation ;
       const utf32 currentCharForTag_onlyExclamationMark = mCurrentChar ;
-      if (testForInputUTF32Char (TO_UNICODE ('\?'))) {
-        const LocationInSource currentLocationForTag_onlyInterrogationExclamationMark = mCurrentLocation ;
-        const LocationInSource endLocationForTag_onlyInterrogationExclamationMark = mTokenEndLocation ;
-        const utf32 currentCharForTag_onlyInterrogationExclamationMark = mCurrentChar ;
-        if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z'))) {
-          do {
-            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-            if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z')) || testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32Char (TO_UNICODE ('_'))) {
-            }else{
-              loop = false ;
-            }
-          }while (loop) ;
-          loop = true ;
-          if (testForInputUTF32Char (TO_UNICODE (':'))) {
-            token.mTokenCode = kToken__21__3F_selector_3A_ ;
-            enterToken (token) ;
-          }else{
-            ::scanner_routine_resetString (*this, token.mLexicalAttribute_tokenString) ;
-            mCurrentLocation = currentLocationForTag_onlyInterrogationExclamationMark ;
-            mTokenEndLocation = endLocationForTag_onlyInterrogationExclamationMark ;
-            mCurrentChar = currentCharForTag_onlyInterrogationExclamationMark ;
-            token.mTokenCode = kToken__21__3F_selector_3A_ ;
-            enterToken (token) ;
-          }
-        }else{
-          token.mTokenCode = kToken__21__3F_selector_3A_ ;
-          enterToken (token) ;
-        }
-      }else if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z'))) {
+      if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z'))) {
         do {
           ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
           if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z')) || testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32Char (TO_UNICODE ('_'))) {
@@ -4139,11 +4175,11 @@ void Lexique_galgasScanner_33_::internalParseLexicalToken (cTokenFor_galgasScann
           mCurrentLocation = currentLocationForTag_onlyExclamationMark ;
           mTokenEndLocation = endLocationForTag_onlyExclamationMark ;
           mCurrentChar = currentCharForTag_onlyExclamationMark ;
-          token.mTokenCode = kToken__21_selector_3A_ ;
+          token.mTokenCode = kToken__21_ ;
           enterToken (token) ;
         }
       }else{
-        token.mTokenCode = kToken__21_selector_3A_ ;
+        token.mTokenCode = kToken__21_ ;
         enterToken (token) ;
       }
     }else if (testForInputUTF32Char (TO_UNICODE ('<'))) {
@@ -4521,9 +4557,13 @@ GALGAS_stringlist Lexique_galgasScanner_33_::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("comment") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("commentMark") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("\?selector:") COMMA_HERE) ;
+  result.addAssign_operation (GALGAS_string ("\?") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("\?!selector:") COMMA_HERE) ;
+  result.addAssign_operation (GALGAS_string ("\?!") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("!selector:") COMMA_HERE) ;
+  result.addAssign_operation (GALGAS_string ("!") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("!\?selector:") COMMA_HERE) ;
+  result.addAssign_operation (GALGAS_string ("!\?") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("<") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("<=") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("<<") COMMA_HERE) ;
@@ -4894,7 +4934,7 @@ __attribute__ ((unused)) (getKeywordLists_galgasScanner_33_, getKeywordsForIdent
 //--------------------------------------------------------------------------------------------------
 
 uint32_t Lexique_galgasScanner_33_::styleIndexForTerminal (const int32_t inTerminalIndex) const {
-  static const uint32_t kTerminalSymbolStyles [183] = {0,
+  static const uint32_t kTerminalSymbolStyles [187] = {0,
     0 /* galgasScanner3_1_identifier */,
     8 /* galgasScanner3_1_double_2E_xxx */,
     7 /* galgasScanner3_1_literalInt */,
@@ -4907,9 +4947,13 @@ uint32_t Lexique_galgasScanner_33_::styleIndexForTerminal (const int32_t inTermi
     13 /* galgasScanner3_1_comment */,
     13 /* galgasScanner3_1_commentMark */,
     3 /* galgasScanner3_1__3F_selector_3A_ */,
+    2 /* galgasScanner3_1__3F_ */,
     3 /* galgasScanner3_1__3F__21_selector_3A_ */,
+    2 /* galgasScanner3_1__3F__21_ */,
     3 /* galgasScanner3_1__21_selector_3A_ */,
+    2 /* galgasScanner3_1__21_ */,
     3 /* galgasScanner3_1__21__3F_selector_3A_ */,
+    2 /* galgasScanner3_1__21__3F_ */,
     2 /* galgasScanner3_1__3C_ */,
     2 /* galgasScanner3_1__3C__3D_ */,
     2 /* galgasScanner3_1__3C__3C_ */,
@@ -16891,131 +16935,6 @@ GALGAS_templateBlockInstructionForGeneration_2D_weak GALGAS_templateBlockInstruc
       result = *p ;
     }else{
       inCompiler->castError ("templateBlockInstructionForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @templateInstructionGetColumnLocationForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_templateInstructionGetColumnLocationForGeneration::printNonNullClassInstanceProperties (void) const {
-    cPtr_templateInstructionForGeneration::printNonNullClassInstanceProperties () ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
-typeComparisonResult cPtr_templateInstructionGetColumnLocationForGeneration::dynamicObjectCompare (const acPtr_class * /* inOperandPtr */) const {
-  return kOperandEqual ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-
-typeComparisonResult GALGAS_templateInstructionGetColumnLocationForGeneration::objectCompare (const GALGAS_templateInstructionGetColumnLocationForGeneration & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = kOperandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionGetColumnLocationForGeneration::GALGAS_templateInstructionGetColumnLocationForGeneration (void) :
-GALGAS_templateInstructionForGeneration () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionGetColumnLocationForGeneration::GALGAS_templateInstructionGetColumnLocationForGeneration (const cPtr_templateInstructionGetColumnLocationForGeneration * inSourcePtr) :
-GALGAS_templateInstructionForGeneration (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateInstructionGetColumnLocationForGeneration) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionGetColumnLocationForGeneration GALGAS_templateInstructionGetColumnLocationForGeneration::class_func_new (LOCATION_ARGS) {
-  GALGAS_templateInstructionGetColumnLocationForGeneration result ;
-  macroMyNew (result.mObjectPtr, cPtr_templateInstructionGetColumnLocationForGeneration (THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @templateInstructionGetColumnLocationForGeneration class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_templateInstructionGetColumnLocationForGeneration::cPtr_templateInstructionGetColumnLocationForGeneration (LOCATION_ARGS) :
-cPtr_templateInstructionForGeneration (THERE) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * cPtr_templateInstructionGetColumnLocationForGeneration::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateInstructionGetColumnLocationForGeneration ;
-}
-
-void cPtr_templateInstructionGetColumnLocationForGeneration::description (String & ioString,
-                                                                          const int32_t /* inIndentation */) const {
-  ioString.appendCString ("[@templateInstructionGetColumnLocationForGeneration]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_templateInstructionGetColumnLocationForGeneration::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_templateInstructionGetColumnLocationForGeneration (THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @templateInstructionGetColumnLocationForGeneration generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionGetColumnLocationForGeneration ("templateInstructionGetColumnLocationForGeneration",
-                                                                                                         & kTypeDescriptor_GALGAS_templateInstructionForGeneration) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_templateInstructionGetColumnLocationForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateInstructionGetColumnLocationForGeneration ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_templateInstructionGetColumnLocationForGeneration::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_templateInstructionGetColumnLocationForGeneration (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionGetColumnLocationForGeneration GALGAS_templateInstructionGetColumnLocationForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                                                  Compiler * inCompiler
-                                                                                                                                  COMMA_LOCATION_ARGS) {
-  GALGAS_templateInstructionGetColumnLocationForGeneration result ;
-  const GALGAS_templateInstructionGetColumnLocationForGeneration * p = (const GALGAS_templateInstructionGetColumnLocationForGeneration *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_templateInstructionGetColumnLocationForGeneration *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("templateInstructionGetColumnLocationForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

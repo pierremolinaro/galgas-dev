@@ -82,11 +82,7 @@ syntax extension galgas3DeclarationsSyntax {
       end
       $>$
     end
-    $?selector:$ ?let selector
-    error .here : "Not handled yet"
-    if selector.string != "" then
-      error selector : "only '?' is allowed here"
-    end
+    $?$
   }
 
   #·······························································································

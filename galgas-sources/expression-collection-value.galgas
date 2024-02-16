@@ -85,7 +85,13 @@ syntax extension galgas3ExpressionSyntax {
                                   !@abstractCollectionValueElement outValueElement {
     var @actualOutputExpressionList expressionList = {}
     repeat
-      $!selector:$ ?let selector
+      let @lstring selector
+      select
+        $!selector:$ ?selector
+      or
+        $!$
+        selector = ["" here]
+      end
       <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
       expressionList += !selector !expression !@location.here
     while
