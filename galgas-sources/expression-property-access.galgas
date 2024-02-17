@@ -37,6 +37,10 @@ syntax extension galgas3ExpressionSyntax {
                      !@semanticExpressionAST outExpression {
     <primary_ggs3> !?ioDeclarations ?outExpression
     repeat
+#    while 
+#      $[$
+#      <non_empty_output_expression_list_ggs3> !?ioDeclarations ?let @actualOutputExpressionList expressionList
+#      $]$
     while
       $.$
       $identifier$ ?let structFieldName
@@ -58,11 +62,22 @@ syntax extension galgas4ExpressionSyntax {
                 !@semanticExpressionAST outExpression {
     <primary> !?ioDeclarations ? outExpression
     repeat
+    while 
+      $[$
+      <non_empty_output_expression_list>
+        !?ioDeclarations
+        ?let @actualOutputExpressionList unused expressionList
+      error .here : "not handled yet"
+      $]$
     while
       $.$
       $identifier$ ?let structFieldName
       select
-        outExpression = @structPropertyAccessExpressionAST.new {!structFieldName.location !outExpression !structFieldName}
+        outExpression = @structPropertyAccessExpressionAST.new {
+          !structFieldName.location
+          !outExpression
+          !structFieldName
+        }
       or #--- Getter call ?
         let getterName = structFieldName
         let startLocation = @location.next

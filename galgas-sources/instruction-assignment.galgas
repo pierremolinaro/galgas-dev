@@ -104,6 +104,13 @@ syntax extension galgas4InstructionsSyntax {
     select
       optionalProperty = ["" nowhere]
     or
+      $[$
+      <non_empty_output_expression_list>
+         !?ioDeclarations
+         ?let @actualOutputExpressionList unused outExpressionList
+      $]$
+      error .here : "not handled yet" : optionalProperty
+    or
       $.$
       $identifier$ ?let attributeName
       optionalProperty = attributeName
@@ -128,6 +135,13 @@ syntax extension galgas4InstructionsSyntax {
     let @lstring optionalProperty
     select
       optionalProperty = ["" nowhere]
+    or
+      $[$
+      <non_empty_output_expression_list>
+         !?ioDeclarations
+         ?let @actualOutputExpressionList unused outExpressionList
+      $]$
+      error .here : "not handled yet" : optionalProperty
     or
       $.$
       $identifier$ ?let attributeName

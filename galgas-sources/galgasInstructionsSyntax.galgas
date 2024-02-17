@@ -330,6 +330,9 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
   rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
                          !@lstring outTypeName
 
+  rule <non_empty_output_expression_list> ?!@galgasDeclarationAST ioDeclarations
+                                          !@actualOutputExpressionList outExpressionList
+
   #·······························································································
   #    S E M A N T I C    I N S T R U C T I O N    L I S T
   #·······························································································

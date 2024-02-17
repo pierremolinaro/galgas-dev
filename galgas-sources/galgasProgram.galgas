@@ -354,8 +354,7 @@ private proc compileProject ?let @lstring inProjectSourceFile
 #------------------------------------ Check entity usefulness
   checkUsefulEntities (!usefulEntitiesGraph !usefulnessRootEntities !productDirectory)
 #------------------------------------ Build an HTML file that contains all declared types
-  let typeDumpFilePath = [inProjectSourceFile stringByDeletingLastPathComponent]
-         + buildDirectoryName + "/helpers/" +  [inProjectSourceFile lastPathComponent] + ".html"
+  let typeDumpFilePath = productDirectory + "/../helpers/" + [inProjectSourceFile lastPathComponent] + ".html"
   if [option galgas_cli_options.outputHTMLTypeListFile value] then
     var @stringset firstLetterSet = {}
     for (lkey *) in typeMap do
@@ -366,7 +365,8 @@ private proc compileProject ?let @lstring inProjectSourceFile
     for (type_lkey *) in typeMap do
       if currentFirstLetter != [type_lkey.string characterAtIndex !0] then
         currentFirstLetter = [type_lkey.string characterAtIndex !0]
-        tableOfTypeString += "<br><a name=\"" + [currentFirstLetter uint] + "\"><b>" + currentFirstLetter + "</b></a><br>"
+        tableOfTypeString += "<br><a name=\"" + [currentFirstLetter uint]
+        tableOfTypeString += "\"><b>" + currentFirstLetter + "</b></a><br>"
       end
       tableOfTypeString += linkForType (!type_lkey.string) + "<br>"
     end
