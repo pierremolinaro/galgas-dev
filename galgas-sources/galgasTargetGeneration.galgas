@@ -554,7 +554,7 @@ proc updateGalgasTargets
     var @stringlist xcodeSettingList = {
       !"ALWAYS_SEARCH_USER_PATHS = NO",
 #      !"ARCHS = \"$(ARCHS_STANDARD_64_BIT)\"",
-      !"CLANG_CXX_LANGUAGE_STANDARD = \"c++14\"",
+      !"CLANG_CXX_LANGUAGE_STANDARD = \"c++20\"",
       !"CLANG_ENABLE_OBJC_ARC = YES",
       !"CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES",
       !"CLANG_WARN_COMMA = YES",
