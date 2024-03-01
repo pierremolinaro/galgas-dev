@@ -29,11 +29,11 @@
 
 class C_CommandLineOption {
 //--- Constructor
-  public: C_CommandLineOption (const String & inDomainName,
-                               const String & inIdentifier,
+  public: C_CommandLineOption (const char * inDomainName,
+                               const char * inIdentifier,
                                const char inChar,
-                               const String & inString,
-                               const String & inComment) ;
+                               const char * inString,
+                               const char * inComment) ;
 
 //--- Virtual destructor
   public: virtual ~ C_CommandLineOption (void) ;
@@ -42,12 +42,12 @@ class C_CommandLineOption {
   private: C_CommandLineOption (const C_CommandLineOption &) = delete ;
   private: C_CommandLineOption & operator = (const C_CommandLineOption &) = delete ;
 
-//--- Attributes
-  public: const String mDomainName ;
-  public: const String mIdentifier ;
+//--- Properties
+  public: const char * mDomainName ;
+  public: const char * mIdentifier ;
   public: const char mCommandChar ;
-  public: const String mCommandString ;
-  public: const String mComment ;
+  public: const char * mCommandString ;
+  public: const char * mComment ;
 
 //--- Accessing option parameters from GALGAS
   public: inline char readProperty_char (void) const { return mCommandChar ; }

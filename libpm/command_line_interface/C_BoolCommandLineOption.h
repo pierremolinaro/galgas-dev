@@ -30,11 +30,11 @@
 
 class C_BoolCommandLineOption final : public C_CommandLineOption {
 //--- Constructor
-  public: C_BoolCommandLineOption (const String & inDomainName,
-                                   const String & inIdentifier,
+  public: C_BoolCommandLineOption (const char * inDomainName,
+                                   const char * inIdentifier,
                                    const char inChar,
-                                   const String & inString,
-                                   const String & inComment,
+                                   const char * inString,
+                                   const char * inComment,
                                    const bool inVisibleInGalgas = true) ;
 
 //--- No Copy

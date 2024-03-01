@@ -29,11 +29,11 @@
 
 class C_StringListCommandLineOption final : public C_CommandLineOption {
 //--- Constructor
-  public: C_StringListCommandLineOption (const String & inDomainName,
-                                         const String & inIdentifier,
+  public: C_StringListCommandLineOption (const char * inDomainName,
+                                         const char * inIdentifier,
                                          const char inChar,
-                                         const String & inString,
-                                         const String & inComment) ;
+                                         const char * inString,
+                                         const char * inComment) ;
 //--- No Copy
   private: C_StringListCommandLineOption (const C_StringListCommandLineOption &) = delete ;
   private: C_StringListCommandLineOption & operator = (const C_StringListCommandLineOption &) = delete ;

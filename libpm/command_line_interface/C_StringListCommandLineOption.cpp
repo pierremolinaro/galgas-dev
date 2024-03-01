@@ -32,11 +32,11 @@ static C_StringListCommandLineOption * gLastStringListOption ;
 
 //--------------------------------------------------------------------------------------------------
 
-C_StringListCommandLineOption::C_StringListCommandLineOption (const String & inDomainName,
-                                                              const String & inIdentifier,
+C_StringListCommandLineOption::C_StringListCommandLineOption (const char * inDomainName,
+                                                              const char * inIdentifier,
                                                               const char inChar,
-                                                              const String & inString,
-                                                              const String & inComment) :
+                                                              const char * inString,
+                                                              const char * inComment) :
 C_CommandLineOption (inDomainName, inIdentifier, inChar, inString, inComment),
 mNext (nullptr),
 mValue () {
@@ -92,10 +92,9 @@ void C_StringListCommandLineOption::setStringListOptionForCommandString (const S
   if (outCommandLineOptionStringIsValid) {
     C_StringListCommandLineOption * p = gFirstStringListOption ;
     while ((p != nullptr) && ! outFound) {
-      outFound = p->mCommandString == command ;
+      outFound = strcmp (p->mCommandString, command.cString ()) == 0 ;
       if (outFound) {
-  //      p->mValue.appendObject (String (& inCommandString [p->mCommandString.length () + 1])) ;
-        p->mValue.appendObject (inCommandString.subStringFromIndex (p->mCommandString.length () + 1)) ;
+        p->mValue.appendObject (inCommandString.subStringFromIndex (int32_t (strlen (p->mCommandString) + 1))) ;
       }
       p = p->mNext ;
     }
@@ -111,8 +110,8 @@ void C_StringListCommandLineOption::printUsageOfStringOptions (void) {
     if (c != '\0') {
       printf (" [-%c=string]", c) ;
     }
-    if (p->mCommandString.length () > 0) {
-      printf (" [--%s=string]", p->mCommandString.cString ()) ;
+    if (p->mCommandString [0] != '\0') {
+      printf (" [--%s=string]", p->mCommandString) ;
     }
     p = p->mNext ;
   }
@@ -137,7 +136,7 @@ void C_StringListCommandLineOption::printStringOptions (void) {
       }
       gCout.appendCString (" ...\n") ;
     }
-    if (p->mCommandString.length () > 0) {
+    if (p->mCommandString [0] != '\0') {
       for (uint32_t i=0 ; i<2 ; i++) {
         if (i != 0) {
           gCout.appendCString (" ") ;

@@ -32,12 +32,12 @@ static C_StringCommandLineOption * gLastStringOption ;
 
 //--------------------------------------------------------------------------------------------------
 
-C_StringCommandLineOption::C_StringCommandLineOption (const String & inDomainName,
-                                                      const String & inIdentifier,
+C_StringCommandLineOption::C_StringCommandLineOption (const char * inDomainName,
+                                                      const char * inIdentifier,
                                                       const char inChar,
-                                                      const String & inString,
-                                                      const String & inComment,
-                                                      const String & inDefaultValue) :
+                                                      const char * inString,
+                                                      const char * inComment,
+                                                      const char * inDefaultValue) :
 C_CommandLineOption (inDomainName, inIdentifier, inChar, inString, inComment),
 mNext (nullptr),
 mValue (inDefaultValue),
@@ -95,10 +95,10 @@ void C_StringCommandLineOption::setStringOptionForCommandString (const String & 
   if (outCommandLineOptionStringIsValid) {
     C_StringCommandLineOption * p = gFirstStringOption ;
     while ((p != nullptr) && ! outFound) {
-      outFound = p->mCommandString == command ;
+      outFound = strcmp (p->mCommandString, command.cString ()) == 0 ;
       if (outFound) {
         p->mValue.removeAllKeepingCapacity () ;
-        p->mValue.appendString (inCommandString.subStringFromIndex (p->mCommandString.length () + 1)) ;
+        p->mValue.appendString (inCommandString.subStringFromIndex (int32_t (strlen (p->mCommandString) + 1))) ;
       }
       p = p->mNext ;
     }
@@ -114,8 +114,8 @@ void C_StringCommandLineOption::printUsageOfStringOptions (void) {
     if (c != '\0') {
       printf (" [-%c=string]", c) ;
     }
-    if (p->mCommandString.length () > 0) {
-      printf (" [--%s=string]", p->mCommandString.cString ()) ;
+    if (p->mCommandString [0] != '\0') {
+      printf (" [--%s=string]", p->mCommandString) ;
     }
     p = p->mNext ;
   }
@@ -135,7 +135,7 @@ void C_StringCommandLineOption::printStringOptions (void) {
       gCout.setTextAttribute (kAllAttributesOff) ;
       gCout.appendNewLine () ;
     }
-    if (p->mCommandString.length () > 0) {
+    if (p->mCommandString [0] != '\0') {
       gCout.setForeColor (kBlueForeColor) ;
       gCout.setTextAttribute (kBoldTextAttribute) ;
       gCout.appendCString ("--") ;

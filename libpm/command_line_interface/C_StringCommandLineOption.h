@@ -29,12 +29,12 @@
 
 class C_StringCommandLineOption final : public C_CommandLineOption {
 //--- Constructor
-  public: C_StringCommandLineOption (const String & inDomainName,
-                                      const String & inIdentifier,
+  public: C_StringCommandLineOption (const char * inDomainName,
+                                      const char * inIdentifier,
                                       const char inChar,
-                                      const String & inString,
-                                      const String & inComment,
-                                      const String & inDefaultValue) ;
+                                      const char * inString,
+                                      const char * inComment,
+                                      const char * inDefaultValue) ;
 //--- No Copy
   private: C_StringCommandLineOption (const C_StringCommandLineOption &) = delete ;
   private: C_StringCommandLineOption & operator = (const C_StringCommandLineOption &) = delete ;
@@ -43,7 +43,7 @@ class C_StringCommandLineOption final : public C_CommandLineOption {
   private: C_StringCommandLineOption * mNext ;
   public: String mValue ;
   public: inline String readProperty_value (void) const { return mValue ; }
-  public: const String mDefaultValue ;
+  public: const char * mDefaultValue ;
 
 //--- Static methods
   public: static void setStringOptionForCommandChar (const String & inCommandCommandLineOptionString,

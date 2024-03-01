@@ -22,11 +22,11 @@
 
 //--------------------------------------------------------------------------------------------------
 
-C_CommandLineOption::C_CommandLineOption (const String & inDomainName,
-                                          const String & inIdentifier,
+C_CommandLineOption::C_CommandLineOption (const char * inDomainName,
+                                          const char * inIdentifier,
                                           const char inChar,
-                                          const String & inString,
-                                          const String & inComment) :
+                                          const char * inString,
+                                          const char * inComment) :
 mDomainName (inDomainName),
 mIdentifier (inIdentifier),
 mCommandChar (inChar),

@@ -32,11 +32,11 @@ static C_UIntCommandLineOption * gLastIntOption ;
 
 //--------------------------------------------------------------------------------------------------
 
-C_UIntCommandLineOption::C_UIntCommandLineOption (const String & inDomainName,
-                                                  const String & inIdentifier,
+C_UIntCommandLineOption::C_UIntCommandLineOption (const char * inDomainName,
+                                                  const char * inIdentifier,
                                                   const char inChar,
-                                                  const String & inString,
-                                                  const String & inComment,
+                                                  const char * inString,
+                                                  const char * inComment,
                                                   const uint32_t inDefaultValue) :
 C_CommandLineOption (inDomainName, inIdentifier, inChar, inString, inComment),
 mNext (nullptr),
@@ -112,7 +112,7 @@ setUIntOptionForCommandString (const String & inCommandCommandLineOptionString,
   if (outCommandLineOptionStringIsValid) {
     C_UIntCommandLineOption * p = gFirstIntOption ;
     while ((p != nullptr) && ! outFound) {
-      outFound = p->mCommandString == command ;
+      outFound = command == p->mCommandString ;
       if (outFound) {
         p->mValue = optionValue ;
       }
@@ -130,8 +130,8 @@ void C_UIntCommandLineOption::printUsageOfUIntOptions (void) {
     if (c != '\0') {
       printf (" [-%c=number]", c) ;
     }
-    if (p->mCommandString.length () > 0) {
-      printf (" [--%s=number]", p->mCommandString.cString ()) ;
+    if (p->mCommandString [0] != '\0') {
+      printf (" [--%s=number]", p->mCommandString) ;
     }
     p = p->mNext ;
   }
@@ -151,7 +151,7 @@ void C_UIntCommandLineOption::printUIntOptions (void) {
       gCout.setTextAttribute (kAllAttributesOff) ;
       gCout.appendNewLine () ;
     }
-    if (p->mCommandString.length () > 0) {
+    if (p->mCommandString [0] != '\0') {
       gCout.setForeColor (kBlueForeColor) ;
       gCout.setTextAttribute (kBoldTextAttribute) ;
       gCout.appendCString ("--") ;

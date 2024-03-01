@@ -31,11 +31,11 @@ static C_BoolCommandLineOption * gFirstBoolCommand ;
 
 //--------------------------------------------------------------------------------------------------
 
-C_BoolCommandLineOption::C_BoolCommandLineOption (const String & inDomainName,
-                                                  const String & inIdentifier,
+C_BoolCommandLineOption::C_BoolCommandLineOption (const char * inDomainName,
+                                                  const char * inIdentifier,
                                                   const char inChar,
-                                                  const String & inString,
-                                                  const String & inComment,
+                                                  const char * inString,
+                                                  const char * inComment,
                                                   const bool inVisibleInGalgas) :
 C_CommandLineOption (inDomainName, inIdentifier, inChar, inString, inComment),
 mNext (gFirstBoolCommand),
@@ -70,7 +70,7 @@ void C_BoolCommandLineOption::setBoolOptionForCommandString (const String & inCo
   }
   C_BoolCommandLineOption * p = gFirstBoolCommand ;
   while ((p != nullptr) && ! outFound) {
-    if (p->mCommandString == inCommandString) {
+    if (inCommandString == p->mCommandString) {
       outFound = true ;
       p->mValue = true ;
     }
@@ -87,8 +87,8 @@ void C_BoolCommandLineOption::printUsageOfBoolOptions (void) {
     if (c != '\0') {
       printf (" [-%c]", c) ;
     }
-    if (p->mCommandString.length () > 0) {
-      printf (" [--%s]", p->mCommandString.cString ()) ;
+    if (p->mCommandString [0] != '\0') {
+      printf (" [--%s]", p->mCommandString) ;
     }
     p = p->mNext ;
   }
@@ -107,7 +107,7 @@ void C_BoolCommandLineOption::printBoolOptions (void) {
       gCout.setTextAttribute (kAllAttributesOff) ;
       gCout.appendNewLine () ;
     }
-    if (p->mCommandString.length () > 0) {
+    if (p->mCommandString [0] != '\0') {
       gCout.setForeColor (kBlueForeColor) ;
       gCout.setTextAttribute (kBoldTextAttribute) ;
       gCout.appendCString ("--") ;

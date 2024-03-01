@@ -1453,49 +1453,49 @@
     settings = {ATTRIBUTES = (); };
   };
 
-  472EC9115B10C292EF8BC986 /* unicode_string_routines.cpp */ = {
+  3D2760C8BBAFB4ACB29E3446 /* DateTime.cpp */ = {
     isa = PBXBuildFile;
-    fileRef = D39D2BCEF4622B2499A05FE6 ;
+    fileRef = 472EC9115B10C292EF8BC986 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  0D927DCD0980F86024E5208B /* DateTime.cpp */ = {
+  0D927DCD0980F86024E5208B /* Timer.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 08FC6938F52CB96F7E087941 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  0B77BCB3B283AF5BE021448F /* Timer.cpp */ = {
+  05533ABA051261497ECFFCBB /* DirectedGraph.cpp */ = {
     isa = PBXBuildFile;
-    fileRef = 48FAC1B4A0F97AA554886EC8 ;
+    fileRef = 0B77BCB3B283AF5BE021448F ;
     settings = {ATTRIBUTES = (); };
   };
 
-  4A5380AF7CA75622A6426917 /* DirectedGraph.cpp */ = {
+  4A5380AF7CA75622A6426917 /* F_DisplayException.cpp */ = {
     isa = PBXBuildFile;
     fileRef = E1BF64D32A5527244D104CEA ;
     settings = {ATTRIBUTES = (); };
   };
 
-  97405321542838D77F855226 /* F_DisplayException.cpp */ = {
+  97405321542838D77F855226 /* F_GetPrime.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 4F678F3B13B9D5EE16489088 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  72E08B4C5312DCDAFDF6EF36 /* F_GetPrime.cpp */ = {
+  72E08B4C5312DCDAFDF6EF36 /* MF_MemoryControl.cpp */ = {
     isa = PBXBuildFile;
     fileRef = C3B01637C607CE05F52A2FED ;
     settings = {ATTRIBUTES = (); };
   };
 
-  9A4FEAB575962E78E006250D /* MF_MemoryControl.cpp */ = {
+  884A62116BE975A9BB8257E3 /* PrologueEpilogue.cpp */ = {
     isa = PBXBuildFile;
-    fileRef = 297FE25A71D030B67EB83BFC ;
+    fileRef = 4F5350C12C322B5B664544C1 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  56967D946471AF29D7BF99F1 /* PrologueEpilogue.cpp */ = {
+  56967D946471AF29D7BF99F1 /* SHA256.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 140A811D0C45CE03C1C93A28 ;
     settings = {ATTRIBUTES = (); };
@@ -3446,16 +3446,7 @@
     sourceTree = "<group>";
   };
 
-  D39D2BCEF4622B2499A05FE6 /* unicode_string_routines.cpp */ = {
-    isa = PBXFileReference;
-    fileEncoding = 4;
-    lastKnownFileType = sourcecode.cpp.cpp;
-    name = "unicode_string_routines.cpp";
-    path = "unicode_string_routines.cpp";
-    sourceTree = "<group>";
-  };
-
-  08FC6938F52CB96F7E087941 /* DateTime.cpp */ = {
+  472EC9115B10C292EF8BC986 /* DateTime.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
@@ -3464,7 +3455,7 @@
     sourceTree = "<group>";
   };
 
-  48FAC1B4A0F97AA554886EC8 /* Timer.cpp */ = {
+  08FC6938F52CB96F7E087941 /* Timer.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
@@ -3473,7 +3464,7 @@
     sourceTree = "<group>";
   };
 
-  E1BF64D32A5527244D104CEA /* DirectedGraph.cpp */ = {
+  0B77BCB3B283AF5BE021448F /* DirectedGraph.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
@@ -3482,7 +3473,7 @@
     sourceTree = "<group>";
   };
 
-  4F678F3B13B9D5EE16489088 /* F_DisplayException.cpp */ = {
+  E1BF64D32A5527244D104CEA /* F_DisplayException.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
@@ -3491,7 +3482,7 @@
     sourceTree = "<group>";
   };
 
-  C3B01637C607CE05F52A2FED /* F_GetPrime.cpp */ = {
+  4F678F3B13B9D5EE16489088 /* F_GetPrime.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
@@ -3500,7 +3491,7 @@
     sourceTree = "<group>";
   };
 
-  297FE25A71D030B67EB83BFC /* MF_MemoryControl.cpp */ = {
+  C3B01637C607CE05F52A2FED /* MF_MemoryControl.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
@@ -3509,12 +3500,21 @@
     sourceTree = "<group>";
   };
 
-  140A811D0C45CE03C1C93A28 /* PrologueEpilogue.cpp */ = {
+  4F5350C12C322B5B664544C1 /* PrologueEpilogue.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
     name = "PrologueEpilogue.cpp";
     path = "PrologueEpilogue.cpp";
+    sourceTree = "<group>";
+  };
+
+  140A811D0C45CE03C1C93A28 /* SHA256.cpp */ = {
+    isa = PBXFileReference;
+    fileEncoding = 4;
+    lastKnownFileType = sourcecode.cpp.cpp;
+    name = "SHA256.cpp";
+    path = "SHA256.cpp";
     sourceTree = "<group>";
   };
 
@@ -5741,16 +5741,7 @@
     sourceTree = "<group>";
   };
 
-  3D2760C8BBAFB4ACB29E3446 /* unicode_string_routines.h */ = {
-    isa = PBXFileReference;
-    fileEncoding = 4;
-    lastKnownFileType = sourcecode.c.h;
-    name = "unicode_string_routines.h";
-    path = "unicode_string_routines.h";
-    sourceTree = "<group>";
-  };
-
-  66AEEC73C49038385428EC4C /* DateTime.h */ = {
+  75A764C8E3A691FA2B3A321D /* DateTime.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
@@ -5759,7 +5750,7 @@
     sourceTree = "<group>";
   };
 
-  05533ABA051261497ECFFCBB /* Timer.h */ = {
+  66AEEC73C49038385428EC4C /* Timer.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
@@ -5768,7 +5759,7 @@
     sourceTree = "<group>";
   };
 
-  5D186D28E06FF97135CADE7F /* DirectedGraph.h */ = {
+  4917B24303EE6A220679DAB3 /* DirectedGraph.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
@@ -5777,7 +5768,7 @@
     sourceTree = "<group>";
   };
 
-  8CE0780A2142A6EB7BC4F3C8 /* F_DisplayException.h */ = {
+  5D186D28E06FF97135CADE7F /* F_DisplayException.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
@@ -5786,7 +5777,7 @@
     sourceTree = "<group>";
   };
 
-  E6D743BF1E848C206E16A1D7 /* F_GetPrime.h */ = {
+  8CE0780A2142A6EB7BC4F3C8 /* F_GetPrime.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
@@ -5795,7 +5786,7 @@
     sourceTree = "<group>";
   };
 
-  4F5350C12C322B5B664544C1 /* MF_MemoryControl.h */ = {
+  E6D743BF1E848C206E16A1D7 /* MF_MemoryControl.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
@@ -5804,7 +5795,7 @@
     sourceTree = "<group>";
   };
 
-  884A62116BE975A9BB8257E3 /* M_SourceLocation.h */ = {
+  297FE25A71D030B67EB83BFC /* M_SourceLocation.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
@@ -5813,7 +5804,7 @@
     sourceTree = "<group>";
   };
 
-  0C3540F67C1E9575E213BE0A /* M_machine.h */ = {
+  9A4FEAB575962E78E006250D /* M_machine.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
@@ -5822,12 +5813,21 @@
     sourceTree = "<group>";
   };
 
-  6F0150C77BDA2EDA01AE484C /* PrologueEpilogue.h */ = {
+  0C3540F67C1E9575E213BE0A /* PrologueEpilogue.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
     name = "PrologueEpilogue.h";
     path = "PrologueEpilogue.h";
+    sourceTree = "<group>";
+  };
+
+  6F0150C77BDA2EDA01AE484C /* SHA256.h */ = {
+    isa = PBXFileReference;
+    fileEncoding = 4;
+    lastKnownFileType = sourcecode.c.h;
+    name = "SHA256.h";
+    path = "SHA256.h";
     sourceTree = "<group>";
   };
 
@@ -6560,28 +6560,28 @@
       F2CD8F0EFA196F8AD173178E, 
       3C8BD392B120B627E0E1CAB4, 
       3C102B71C593D98D96093FDE, 
-      D39D2BCEF4622B2499A05FE6, 
-      3D2760C8BBAFB4ACB29E3446, 
     );
     name = "Strings";
     path = "strings";
     sourceTree = "<group>";
   };
-  75A764C8E3A691FA2B3A321D /* Time */ = {
+  D39D2BCEF4622B2499A05FE6 /* Time */ = {
     isa = PBXGroup;
     children = (
+      472EC9115B10C292EF8BC986, 
+      75A764C8E3A691FA2B3A321D, 
       08FC6938F52CB96F7E087941, 
       66AEEC73C49038385428EC4C, 
-      48FAC1B4A0F97AA554886EC8, 
-      05533ABA051261497ECFFCBB, 
     );
     name = "Time";
     path = "time";
     sourceTree = "<group>";
   };
-  4917B24303EE6A220679DAB3 /* Utilities */ = {
+  48FAC1B4A0F97AA554886EC8 /* Utilities */ = {
     isa = PBXGroup;
     children = (
+      0B77BCB3B283AF5BE021448F, 
+      4917B24303EE6A220679DAB3, 
       E1BF64D32A5527244D104CEA, 
       5D186D28E06FF97135CADE7F, 
       4F678F3B13B9D5EE16489088, 
@@ -6589,8 +6589,8 @@
       C3B01637C607CE05F52A2FED, 
       E6D743BF1E848C206E16A1D7, 
       297FE25A71D030B67EB83BFC, 
+      9A4FEAB575962E78E006250D, 
       4F5350C12C322B5B664544C1, 
-      884A62116BE975A9BB8257E3, 
       0C3540F67C1E9575E213BE0A, 
       140A811D0C45CE03C1C93A28, 
       6F0150C77BDA2EDA01AE484C, 
@@ -6630,8 +6630,8 @@
       EF330C13A05A3ED7E599D5F7, 
       2A252123C40D2ADBA6A11D84, 
       61097CCB54BE14D6A47439B0, 
-      75A764C8E3A691FA2B3A321D, 
-      4917B24303EE6A220679DAB3, 
+      D39D2BCEF4622B2499A05FE6, 
+      48FAC1B4A0F97AA554886EC8, 
     );
     name = "libpm";
     path = "../build/libpm";
@@ -6979,13 +6979,13 @@
         1E428B65688F14B84D61C610,
         FD37FA5B98D5BB769BA1A7CC,
         726A60554BC78518D5F9B32C,
-        472EC9115B10C292EF8BC986,
+        3D2760C8BBAFB4ACB29E3446,
         0D927DCD0980F86024E5208B,
-        0B77BCB3B283AF5BE021448F,
+        05533ABA051261497ECFFCBB,
         4A5380AF7CA75622A6426917,
         97405321542838D77F855226,
         72E08B4C5312DCDAFDF6EF36,
-        9A4FEAB575962E78E006250D,
+        884A62116BE975A9BB8257E3,
         56967D946471AF29D7BF99F1,
         0048B187F7182F1B9CE7A6A7,
         FDAF6C699B223C61B1B5AB89,
@@ -7210,13 +7210,13 @@
         1E428B65688F14B84D61C610,
         FD37FA5B98D5BB769BA1A7CC,
         726A60554BC78518D5F9B32C,
-        472EC9115B10C292EF8BC986,
+        3D2760C8BBAFB4ACB29E3446,
         0D927DCD0980F86024E5208B,
-        0B77BCB3B283AF5BE021448F,
+        05533ABA051261497ECFFCBB,
         4A5380AF7CA75622A6426917,
         97405321542838D77F855226,
         72E08B4C5312DCDAFDF6EF36,
-        9A4FEAB575962E78E006250D,
+        884A62116BE975A9BB8257E3,
         56967D946471AF29D7BF99F1,
         0048B187F7182F1B9CE7A6A7,
         FDAF6C699B223C61B1B5AB89,
@@ -7285,9 +7285,9 @@
     A0B923820DCC509A6F75849B /* Default */ = {
       isa = XCBuildConfiguration;
       buildSettings = {
-        CLANG_CXX_LANGUAGE_STANDARD = "c++14";
+        CLANG_CXX_LANGUAGE_STANDARD = "c++17";
       ALWAYS_SEARCH_USER_PATHS = NO ;
-      CLANG_CXX_LANGUAGE_STANDARD = "c++14" ;
+      CLANG_CXX_LANGUAGE_STANDARD = "c++17" ;
       CLANG_ENABLE_OBJC_ARC = YES ;
       CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES ;
       CLANG_WARN_COMMA = YES ;

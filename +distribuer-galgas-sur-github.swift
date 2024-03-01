@@ -34,7 +34,7 @@ let BUGFIXES : [String] = [
 ]
 let CHANGES : [String] = [
   "Remplacement de GMP par la librairie BigSignedBigUnsigned",
-  "Re-écriture de MD5 pour éliminer les débordements"
+  "Re-écriture de MD5 pour éliminer les débordements atrithmétiques"
 ]
 let NEWS : [String] = [
   "Ajout de @string SHA256"

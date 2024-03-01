@@ -30,11 +30,11 @@
 
 class C_UIntCommandLineOption final : public C_CommandLineOption {
 //--- Constructor
-  public: C_UIntCommandLineOption (const String & inDomainName,
-                                   const String & inIdentifier,
+  public: C_UIntCommandLineOption (const char * inDomainName,
+                                   const char * inIdentifier,
                                    const char inChar,
-                                   const String & inString,
-                                   const String & inComment,
+                                   const char * inString,
+                                   const char * inComment,
                                    const uint32_t inDefaultValue) ;
 //--- No Copy
   private: C_UIntCommandLineOption (const C_UIntCommandLineOption &) ;
