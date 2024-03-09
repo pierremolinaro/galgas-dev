@@ -311,3 +311,5 @@ makefile-macosx/universal/galgas
 makefile-macosx/x86_64/galgas-debug
 galgas-3-documentation-latex-sources/temp.galgas.tex
 *.dot
+project-codeblocks-linux64/galgas
+project-codeblocks-linux64/galgas-debug
